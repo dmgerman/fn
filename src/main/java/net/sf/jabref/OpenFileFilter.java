@@ -61,6 +61,8 @@ implements|implements
 name|FilenameFilter
 block|{
 DECL|field|extSet
+specifier|private
+specifier|final
 name|HashSet
 argument_list|<
 name|String
@@ -75,6 +77,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|desc
+specifier|private
+specifier|final
 name|String
 name|desc
 decl_stmt|;
@@ -87,11 +91,11 @@ index|[]
 name|extensions
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|buf
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|int
@@ -243,6 +247,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|accept (File file)
 specifier|public
 name|boolean
@@ -259,9 +265,11 @@ operator|.
 name|isDirectory
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 return|return
 name|accept
 argument_list|(
@@ -305,9 +313,11 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|int
 name|dotDotPos
 init|=
@@ -337,9 +347,11 @@ argument_list|)
 argument_list|)
 operator|||
 operator|(
+operator|(
 name|dotDotPos
 operator|>=
 literal|0
+operator|)
 operator|&&
 name|extSet
 operator|.
@@ -386,9 +398,11 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|suffix
 operator|=
 name|filenm
@@ -407,9 +421,11 @@ argument_list|(
 name|suffix
 argument_list|)
 condition|)
+block|{
 return|return
 name|suffix
 return|;
+block|}
 name|dotPos
 operator|=
 name|filenm
@@ -431,9 +447,11 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|suffix
 operator|=
 name|filenm
@@ -452,13 +470,17 @@ argument_list|(
 name|suffix
 argument_list|)
 condition|)
+block|{
 return|return
 name|suffix
 return|;
+block|}
 return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getDescription ()
 specifier|public
 name|String
@@ -469,6 +491,8 @@ return|return
 name|desc
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|accept (File dir, String name)
 specifier|public
 name|boolean

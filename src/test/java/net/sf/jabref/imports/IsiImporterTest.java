@@ -30,6 +30,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -74,32 +84,8 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_comment
-comment|/**  * Test cases for the IsiImporter  *  * @author $Author$  * @version $Revision$ ($Date$)  */
+comment|/**  * Test cases for the IsiImporter  */
 end_comment
 
 begin_class
@@ -155,6 +141,8 @@ operator|new
 name|IsiImporter
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|importer
@@ -172,6 +160,8 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|importer
@@ -189,6 +179,8 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|importer
@@ -206,6 +198,8 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|importer
@@ -265,6 +259,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$_3$"
@@ -293,6 +289,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$_3$"
@@ -321,6 +319,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$_{31}$"
@@ -349,6 +349,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$_3$"
@@ -377,6 +379,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$_{31}$"
@@ -405,6 +409,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$^3$"
@@ -433,6 +439,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$^{31}$"
@@ -461,6 +469,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$^3$"
@@ -489,6 +499,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$^{31}$"
@@ -517,6 +529,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$_{\\$Hello}$"
@@ -571,6 +585,8 @@ name|OutputPrinterToNull
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -591,6 +607,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Optical properties of MgO doped LiNbO$_3$ single crystals"
@@ -603,6 +621,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"James Brown and James Marc Brown and Brown, J. M. and Brown, J. and Brown, J. M. and Brown, J."
@@ -615,6 +635,8 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|BibtexEntryType
@@ -627,6 +649,8 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Optical Materials"
@@ -639,6 +663,8 @@ literal|"journal"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2006"
@@ -651,6 +677,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"28"
@@ -663,6 +691,8 @@ literal|"volume"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"5"
@@ -675,6 +705,8 @@ literal|"number"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"467--72"
@@ -730,6 +762,8 @@ name|OutputPrinterToNull
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -790,6 +824,8 @@ name|tmp
 expr_stmt|;
 block|}
 comment|// Check a
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Second harmonic generation of continuous wave ultraviolet light and production of beta -BaB$_2$O$_4$ optical waveguides"
@@ -802,6 +838,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|BibtexEntryType
@@ -814,6 +852,8 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Degl'Innocenti, R. and Guarino, A. and Poberaj, G. and Gunter, P."
@@ -826,6 +866,8 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Applied Physics Letters"
@@ -838,6 +880,8 @@ literal|"journal"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2006"
@@ -850,6 +894,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#jul#"
@@ -862,6 +908,8 @@ literal|"month"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"89"
@@ -874,6 +922,8 @@ literal|"volume"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"4"
@@ -892,6 +942,8 @@ comment|// EP 41103-41103-3
 comment|// PS 41103-1-3
 comment|// assertEquals("41103-1-3", a.getField("pages"));
 comment|// LA English
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"We report on the generation of continuous-wave (cw) ultraviolet"
@@ -928,6 +980,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/*          * DE Experimental/ barium compounds; ion implantation; optical harmonic          * generation; optical losses; optical pumping; photolithography; solid          * lasers; sputter etching; ultraviolet sources; waveguide lasers/          * second harmonic generation; continuous-wave light; beta -BaB/sub          * 2/O/sub 4/ optical waveguides; UV laser light; optical frequency          * doubling; visible light; ridge-type waveguides; He/sup +/          * implantation; photolithography masking; plasma etching; transmission          * losses; optical pumping; 278 nm; 532 nm; 266 nm; 24 muW; 8 mm; 153          * mW; 556 nm; BaB/sub 2/O/sub 4// A4265K Optical harmonic generation,          * frequency conversion, parametric oscillation and amplification A4255R          * Lasing action in other solids A4260B Design of specific laser systems          * B4340K Optical harmonic generation, frequency conversion, parametric          * oscillation and amplification B4320G Solid lasers/ wavelength          * 2.78E-07 m; wavelength 5.32E-07 m; wavelength 2.66E-07 m; power          * 2.4E-05 W; size 8.0E-03 m; power 1.53E-01 W; wavelength 5.56E-07 m/          * BaB2O4/ss B2/ss Ba/ss O4/ss B/ss O/ss C1 Degl'Innocenti, R.; Guarino,          * A.; Poberaj, G.; Gunter, P.; Nonlinear Opt. Lab., Inst. of Quantum          * Electron., Zurich, Switzerland          */
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Aip"
@@ -948,6 +1002,8 @@ comment|// ID
 comment|// 0003-6951/2006/89(4)/041103-1(3)/$23.00],[0003-6951(20060724)89:4L.41103:SHGC;1-T],[S0003-6951(06)22430-6],[10.1063/1.2234275]
 comment|// UT INSPEC:9027814
 comment|// Check B
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Optical and photoelectric spectroscopy of photorefractive Sn$_2$P$_2$S$_6$ crystals"
@@ -960,6 +1016,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|BibtexEntryType
@@ -1014,6 +1072,8 @@ name|OutputPrinterToNull
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1073,6 +1133,8 @@ operator|=
 name|tmp
 expr_stmt|;
 block|}
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Optical and photoelectric spectroscopy of photorefractive Sn2P2S6 crystals"
@@ -1085,6 +1147,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Optical waveguides in Sn2P2S6 by low fluence MeV He+ ion implantation"
@@ -1097,6 +1161,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Journal of Physics-condensed Matter"
@@ -1118,6 +1184,8 @@ name|void
 name|testIsiAuthorsConvert
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"James Brown and James Marc Brown and Brown, J. M. and Brown, J. and Brown, J. M. and Brown, J."
@@ -1130,6 +1198,8 @@ literal|"James Brown and James Marc Brown and Brown, J.M. and Brown, J. and Brow
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Joffe, Hadine and Hall, Janet E. and Gruber, Staci and Sarmiento, Ingrid A. and Cohen, Lee S. and Yurgelun-Todd, Deborah and Martin, Kathryn A."
@@ -1151,6 +1221,8 @@ name|void
 name|testMonthConvert
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#jun#"
@@ -1163,6 +1235,8 @@ literal|"06"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#jun#"
@@ -1175,6 +1249,8 @@ literal|"JUN"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#jun#"
@@ -1187,6 +1263,8 @@ literal|"jUn"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#may#"
@@ -1199,6 +1277,8 @@ literal|"MAY-JUN"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#jun#"
@@ -1211,6 +1291,8 @@ literal|"2006 06"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#jun#"
@@ -1223,6 +1305,8 @@ literal|"2006 06-07"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#jul#"
@@ -1235,6 +1319,8 @@ literal|"2006 07 03"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#may#"
@@ -1256,6 +1342,8 @@ name|void
 name|testIsiAuthorConvert
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"James Brown"
@@ -1268,6 +1356,8 @@ literal|"James Brown"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"James Marc Brown"
@@ -1280,6 +1370,8 @@ literal|"James Marc Brown"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Brown, J. M."
@@ -1292,6 +1384,8 @@ literal|"Brown, J.M."
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Brown, J."
@@ -1304,6 +1398,8 @@ literal|"Brown, J."
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Brown, J. M."
@@ -1316,6 +1412,8 @@ literal|"Brown, JM"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Brown, J."
@@ -1328,6 +1426,8 @@ literal|"Brown, J"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Brown, James"
@@ -1340,6 +1440,8 @@ literal|"Brown, James"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Hall, Janet E."
@@ -1352,6 +1454,8 @@ literal|"Hall, Janet E"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -1380,6 +1484,8 @@ operator|new
 name|IsiImporter
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|false
@@ -1432,6 +1538,8 @@ name|OutputPrinterToNull
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1452,6 +1560,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|a
@@ -1472,6 +1582,8 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Geoscience and Remote Sensing Letters, IEEE"
@@ -1484,6 +1596,8 @@ literal|"journal"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Improving Urban Road Extraction in High-Resolution "
@@ -1500,6 +1614,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"4"
@@ -1512,6 +1628,8 @@ literal|"volume"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"3"
@@ -1524,6 +1642,8 @@ literal|"number"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1545-598X"
@@ -1536,6 +1656,8 @@ literal|"SN"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"387--391"
@@ -1548,6 +1670,8 @@ literal|"pages"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Gamba, P. and Dell'Acqua, F. and Lisini, G."
@@ -1560,6 +1684,8 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2006"
@@ -1572,6 +1698,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Perceptual grouping, street extraction, urban remote sensing"
@@ -1584,6 +1712,8 @@ literal|"keywords"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"In this letter, the problem of detecting urban road "
@@ -1672,6 +1802,8 @@ name|OutputPrinterToNull
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1734,6 +1866,8 @@ name|tmp
 expr_stmt|;
 block|}
 comment|// Check A
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Effects of modafinil on cognitive performance and alertness during sleep deprivation."
@@ -1746,6 +1880,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Wesensten, Nancy J."
@@ -1758,6 +1894,8 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Curr Pharm Des"
@@ -1770,6 +1908,8 @@ literal|"journal"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2006"
@@ -1782,6 +1922,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|null
@@ -1794,6 +1936,8 @@ literal|"month"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"12"
@@ -1806,6 +1950,8 @@ literal|"volume"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"20"
@@ -1818,6 +1964,8 @@ literal|"number"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2457--71"
@@ -1830,6 +1978,8 @@ literal|"pages"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|BibtexEntryType
@@ -1843,6 +1993,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Check B
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Estrogen therapy selectively enhances prefrontal cognitive processes: a randomized, double-blind, placebo-controlled study with functional magnetic resonance imaging in perimenopausal and recently postmenopausal women."
@@ -1855,6 +2007,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Joffe, Hadine and Hall, Janet E. and Gruber, Staci and Sarmiento, Ingrid A. and Cohen, Lee S. and Yurgelun-Todd, Deborah and Martin, Kathryn A."
@@ -1867,6 +2021,8 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2006"
@@ -1879,6 +2035,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#may#"
@@ -1891,6 +2049,8 @@ literal|"month"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"13"
@@ -1903,6 +2063,8 @@ literal|"volume"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"3"
@@ -1915,6 +2077,8 @@ literal|"number"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"411--22"
@@ -1927,6 +2091,8 @@ literal|"pages"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|BibtexEntryType

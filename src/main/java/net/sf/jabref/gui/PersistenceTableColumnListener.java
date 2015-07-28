@@ -86,6 +86,18 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_comment
 comment|/**  * Listens for TableColumnModelEvents to keep track of changes made to the  * MainTable columns, like reordering or resizing.  *   * Changes to columns without a name and the "#" column are not saved. To have  * consistent behavior (e.g. as in TableColumnsTab).  *   * @author Fabian Bieker  * @author Daniel Waeber  * @since 12/2008  *   */
 end_comment
@@ -239,16 +251,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|name
 operator|==
 literal|null
+operator|)
 operator|||
 name|name
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{             }
 elseif|else
@@ -323,7 +335,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"columnNames"
+name|JabRefPreferences
+operator|.
+name|COLUMN_NAMES
 argument_list|,
 name|storedColumns
 operator|.
@@ -346,7 +360,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"columnWidths"
+name|JabRefPreferences
+operator|.
+name|COLUMN_WIDTHS
 argument_list|,
 name|columnsWidths
 operator|.
@@ -370,13 +386,17 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"numberColWidth"
+name|JabRefPreferences
+operator|.
+name|NUMBER_COL_WIDTH
 argument_list|,
 name|ncWidth
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @see javax.swing.event.TableColumnModelListener#columnAdded(javax.swing.event.TableColumnModelEvent)      */
+annotation|@
+name|Override
 DECL|method|columnAdded (TableColumnModelEvent e)
 specifier|public
 name|void
@@ -391,6 +411,8 @@ name|e
 operator|!=
 literal|null
 operator|:
+name|PersistenceTableColumnListener
+operator|.
 name|simpleClassName
 operator|+
 literal|" received null event"
@@ -400,6 +422,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @see javax.swing.event.TableColumnModelListener#columnMarginChanged(javax.swing.event.ChangeEvent)      */
+annotation|@
+name|Override
 DECL|method|columnMarginChanged (ChangeEvent e)
 specifier|public
 name|void
@@ -414,6 +438,8 @@ name|e
 operator|!=
 literal|null
 operator|:
+name|PersistenceTableColumnListener
+operator|.
 name|simpleClassName
 operator|+
 literal|" received null event"
@@ -423,6 +449,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @see javax.swing.event.TableColumnModelListener#columnMoved(javax.swing.event.TableColumnModelEvent)      */
+annotation|@
+name|Override
 DECL|method|columnMoved (TableColumnModelEvent e)
 specifier|public
 name|void
@@ -437,6 +465,8 @@ name|e
 operator|!=
 literal|null
 operator|:
+name|PersistenceTableColumnListener
+operator|.
 name|simpleClassName
 operator|+
 literal|" received null event"
@@ -454,12 +484,16 @@ operator|.
 name|getToIndex
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 name|updateColumnPrefs
 argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @see javax.swing.event.TableColumnModelListener#columnRemoved(javax.swing.event.TableColumnModelEvent)      */
+annotation|@
+name|Override
 DECL|method|columnRemoved (TableColumnModelEvent e)
 specifier|public
 name|void
@@ -474,6 +508,8 @@ name|e
 operator|!=
 literal|null
 operator|:
+name|PersistenceTableColumnListener
+operator|.
 name|simpleClassName
 operator|+
 literal|" received null event"
@@ -483,6 +519,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @see javax.swing.event.TableColumnModelListener#columnSelectionChanged(javax.swing.event.ListSelectionEvent)      */
+annotation|@
+name|Override
 DECL|method|columnSelectionChanged (ListSelectionEvent e)
 specifier|public
 name|void

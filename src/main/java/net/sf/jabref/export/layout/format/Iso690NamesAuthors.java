@@ -54,6 +54,8 @@ specifier|public
 name|Iso690NamesAuthors
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|format (String s)
 specifier|public
 name|String
@@ -65,23 +67,25 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|s
 operator|==
 literal|null
+operator|)
 operator|||
 name|s
 operator|.
 name|trim
 argument_list|()
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|StringBuilder
 name|sb
 init|=
@@ -160,12 +164,8 @@ expr_stmt|;
 comment|//declaramos y damos un valor para evitar problemas
 name|String
 name|name
-init|=
-literal|""
 decl_stmt|,
 name|surname
-init|=
-literal|""
 decl_stmt|;
 if|if
 condition|(
@@ -289,7 +289,7 @@ operator|.
 name|toUpperCase
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|author
 index|[
@@ -347,7 +347,7 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|author
 index|[
@@ -371,7 +371,7 @@ operator|.
 name|toUpperCase
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|author
 index|[
@@ -465,11 +465,13 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|authors
 operator|.
 name|length
 operator|-
 literal|2
+operator|)
 condition|)
 block|{
 comment|//si hay mas de 2 autores, lo separamos por ", "
@@ -486,11 +488,13 @@ if|if
 condition|(
 name|i
 operator|==
+operator|(
 name|authors
 operator|.
 name|length
 operator|-
 literal|2
+operator|)
 condition|)
 block|{
 comment|// si hay 2 autores, lo separamos por " y "

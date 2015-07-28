@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Remove brackets formatter.  *  * @author $author$  * @version $Revision$  */
+comment|/**  * Remove brackets formatter.  */
 end_comment
 
 begin_class
@@ -132,7 +132,8 @@ name|RemoveBrackets
 implements|implements
 name|LayoutFormatter
 block|{
-comment|//~ Methods ////////////////////////////////////////////////////////////////
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -147,11 +148,11 @@ name|fieldEntry
 init|=
 name|fieldText
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|fieldEntry
 operator|.
@@ -231,18 +232,6 @@ return|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 

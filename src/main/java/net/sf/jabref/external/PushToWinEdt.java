@@ -107,6 +107,7 @@ literal|null
 decl_stmt|;
 DECL|field|winEdtPath
 specifier|private
+specifier|final
 name|JTextField
 name|winEdtPath
 init|=
@@ -115,8 +116,11 @@ name|JTextField
 argument_list|(
 literal|30
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|citeCommand
+specifier|private
+specifier|final
+name|JTextField
 name|citeCommand
 init|=
 operator|new
@@ -125,6 +129,8 @@ argument_list|(
 literal|30
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -140,6 +146,8 @@ literal|"Insert selected citations into WinEdt"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getApplicationName ()
 specifier|public
 name|String
@@ -150,6 +158,8 @@ return|return
 literal|"WinEdt"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTooltip ()
 specifier|public
 name|String
@@ -165,6 +175,8 @@ literal|"Push selection to WinEdt"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIcon ()
 specifier|public
 name|Icon
@@ -180,6 +192,8 @@ literal|"winedt"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyStrokeName ()
 specifier|public
 name|String
@@ -190,6 +204,8 @@ return|return
 literal|"Push to WinEdt"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keyString, MetaData metaData)
 specifier|public
 name|void
@@ -226,7 +242,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"winEdtPath"
+name|JabRefPreferences
+operator|.
+name|WIN_EDT_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -279,7 +297,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandWinEdt"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_WIN_EDT
 argument_list|)
 operator|+
 literal|"{"
@@ -315,6 +335,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|operationCompleted (BasePanel panel)
 specifier|public
 name|void
@@ -390,7 +412,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"winEdtPath"
+name|JabRefPreferences
+operator|.
+name|WIN_EDT_PATH
 argument_list|)
 operator|+
 literal|"'."
@@ -398,6 +422,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|Globals
 operator|.
 name|lang
@@ -406,6 +431,9 @@ literal|"Pushed citations to WinEdt"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|requiresBibtexKeys ()
 specifier|public
 name|boolean
@@ -416,6 +444,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSettingsPanel ()
 specifier|public
 name|JPanel
@@ -428,9 +458,11 @@ name|settings
 operator|==
 literal|null
 condition|)
+block|{
 name|initSettingsPanel
 argument_list|()
 expr_stmt|;
+block|}
 name|winEdtPath
 operator|.
 name|setText
@@ -441,7 +473,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"winEdtPath"
+name|JabRefPreferences
+operator|.
+name|WIN_EDT_PATH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -455,7 +489,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandWinEdt"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_WIN_EDT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -512,14 +548,11 @@ expr_stmt|;
 name|BrowseAction
 name|action
 init|=
-operator|new
 name|BrowseAction
+operator|.
+name|buildForFile
 argument_list|(
-literal|null
-argument_list|,
 name|winEdtPath
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|JButton
@@ -584,6 +617,8 @@ name|getPanel
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -596,7 +631,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"winEdtPath"
+name|JabRefPreferences
+operator|.
+name|WIN_EDT_PATH
 argument_list|,
 name|winEdtPath
 operator|.
@@ -610,7 +647,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"citeCommandWinEdt"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_WIN_EDT
 argument_list|,
 name|citeCommand
 operator|.

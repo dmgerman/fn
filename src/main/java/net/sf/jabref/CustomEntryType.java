@@ -68,19 +68,27 @@ name|BibtexEntryType
 block|{
 DECL|field|name
 specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|req
-DECL|field|opt
-DECL|field|priOpt
 specifier|private
 name|String
 index|[]
 name|req
-decl_stmt|,
+decl_stmt|;
+DECL|field|opt
+specifier|private
+specifier|final
+name|String
+index|[]
 name|opt
-decl_stmt|,
+decl_stmt|;
+DECL|field|priOpt
+specifier|private
+name|String
+index|[]
 name|priOpt
 decl_stmt|;
 DECL|field|reqSets
@@ -207,7 +215,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|CustomEntryType (String name_, String reqStr, String optStr)
-specifier|public
+specifier|private
 name|CustomEntryType
 parameter_list|(
 name|String
@@ -228,11 +236,10 @@ if|if
 condition|(
 name|reqStr
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
+block|{
 name|req
 operator|=
 operator|new
@@ -241,6 +248,7 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+block|}
 else|else
 block|{
 name|parseRequiredFields
@@ -253,11 +261,10 @@ if|if
 condition|(
 name|optStr
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
+block|{
 name|opt
 operator|=
 operator|new
@@ -266,7 +273,9 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+block|}
 else|else
+block|{
 name|opt
 operator|=
 name|optStr
@@ -277,8 +286,9 @@ literal|";"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 DECL|method|parseRequiredFields (String reqStr)
-specifier|protected
+specifier|private
 name|void
 name|parseRequiredFields
 parameter_list|(
@@ -304,7 +314,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|parseRequiredFields (String[] parts)
-specifier|protected
+specifier|private
 name|void
 name|parseRequiredFields
 parameter_list|(
@@ -406,12 +416,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|sets
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|reqSets
@@ -433,6 +442,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -443,6 +454,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionalFields ()
 specifier|public
 name|String
@@ -454,6 +467,8 @@ return|return
 name|opt
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRequiredFields ()
 specifier|public
 name|String
@@ -478,6 +493,8 @@ return|return
 name|priOpt
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRequiredFieldsForCustomization ()
 specifier|public
 name|String
@@ -496,17 +513,19 @@ argument_list|)
 return|;
 block|}
 comment|//    public boolean isTemporary
+annotation|@
+name|Override
 DECL|method|describeRequiredFields ()
 specifier|public
 name|String
 name|describeRequiredFields
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
@@ -544,11 +563,13 @@ operator|(
 operator|(
 name|i
 operator|<=
+operator|(
 name|req
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -579,11 +600,11 @@ name|String
 name|describeOptionalFields
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
@@ -621,11 +642,13 @@ operator|(
 operator|(
 name|i
 operator|<=
+operator|(
 name|opt
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -651,6 +674,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Check whether this entry's required fields are set, taking crossreferenced entries and      * either-or fields into account:      * @param entry The entry to check.      * @param database The entry's database.      * @return True if required fields are set, false otherwise.      */
+annotation|@
+name|Override
 DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|boolean
@@ -677,9 +702,11 @@ argument_list|)
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|// Then check other fields:
 name|boolean
 index|[]
@@ -710,6 +737,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|isSet
 index|[
 name|i
@@ -731,6 +759,7 @@ argument_list|)
 operator|!=
 literal|null
 expr_stmt|;
+block|}
 comment|// Then go through all fields. If a field is not set, see if it is part of an either-or
 comment|// set where another field is set. If not, return false:
 for|for
@@ -774,9 +803,11 @@ argument_list|,
 name|database
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 block|}
 comment|// Passed all fields, so return true:
@@ -785,7 +816,7 @@ literal|true
 return|;
 block|}
 DECL|method|isCoupledFieldSet (String field, BibtexEntry entry, BibtexDatabase database)
-specifier|protected
+specifier|private
 name|boolean
 name|isCoupledFieldSet
 parameter_list|(
@@ -805,9 +836,11 @@ name|reqSets
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 for|for
 control|(
 name|String
@@ -844,11 +877,12 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 name|takesPart
 operator|=
 literal|true
 expr_stmt|;
-comment|// If it is a different field, check if it is set:
+block|}
 elseif|else
 if|if
 condition|(
@@ -865,10 +899,12 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|oneSet
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 comment|// Ths the field is part of the set, and at least one other field is set, return true:
 if|if
@@ -877,9 +913,11 @@ name|takesPart
 operator|&&
 name|oneSet
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 comment|// No hits, so return false:
 return|return
@@ -1007,6 +1045,7 @@ if|if
 condition|(
 name|j
 operator|<
+operator|(
 name|reqSets
 index|[
 name|reqSetsPiv
@@ -1015,14 +1054,17 @@ operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"/"
+literal|'/'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Skip next n-1 fields:
 name|i
@@ -1041,6 +1083,7 @@ operator|++
 expr_stmt|;
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -1051,23 +1094,28 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|req
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -1172,19 +1220,23 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|opt
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|out
 operator|.
@@ -1289,11 +1341,13 @@ name|rPos
 operator|<
 literal|4
 condition|)
+block|{
 throw|throw
 operator|new
 name|IndexOutOfBoundsException
 argument_list|()
 throw|;
+block|}
 name|String
 name|reqFields
 init|=

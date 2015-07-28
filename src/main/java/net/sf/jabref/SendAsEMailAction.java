@@ -120,6 +120,20 @@ name|LatexFieldFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * Sends the selected entry as email - by Oliver Kopp  *   * It uses the mailto:-mechanism  *   * Microsoft Outlook does not support attachments via mailto  * Therefore, the folder(s), where the file(s) belonging to the entry are stored,  * are opened. This feature is disabled by default and can be switched on at  * preferences/external programs     */
 end_comment
@@ -152,6 +166,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|message
+specifier|private
 name|String
 name|message
 init|=
@@ -159,6 +174,7 @@ literal|null
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -177,6 +193,8 @@ operator|=
 name|frame
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -217,7 +235,9 @@ name|panel
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|panel
@@ -329,7 +349,9 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
-literal|"openFoldersOfAttachedFiles"
+name|JabRefPreferences
+operator|.
+name|OPEN_FOLDERS_OF_ATTACHED_FILES
 argument_list|)
 decl_stmt|;
 name|List
@@ -402,6 +424,8 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|SendAsEMailAction
+operator|.
 name|logger
 operator|.
 name|fine
@@ -493,8 +517,6 @@ expr_stmt|;
 block|}
 name|URI
 name|uriMailTo
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -594,6 +616,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void

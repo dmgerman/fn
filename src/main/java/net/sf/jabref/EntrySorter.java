@@ -34,6 +34,7 @@ name|DatabaseChangeListener
 block|{
 comment|//TreeSet set;
 DECL|field|set
+specifier|private
 specifier|final
 name|ArrayList
 argument_list|<
@@ -42,6 +43,8 @@ argument_list|>
 name|set
 decl_stmt|;
 DECL|field|comp
+specifier|private
+specifier|final
 name|Comparator
 argument_list|<
 name|BibtexEntry
@@ -49,11 +52,13 @@ argument_list|>
 name|comp
 decl_stmt|;
 DECL|field|idArray
+specifier|private
 name|String
 index|[]
 name|idArray
 decl_stmt|;
 DECL|field|entryArray
+specifier|private
 name|BibtexEntry
 index|[]
 name|entryArray
@@ -113,22 +118,30 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|String
-name|aKeySet
+argument_list|,
+name|BibtexEntry
+argument_list|>
+name|stringBibtexEntryEntry
 range|:
-name|keySet
+name|entries
+operator|.
+name|entrySet
+argument_list|()
 control|)
 block|{
 name|set
 operator|.
 name|add
 argument_list|(
-name|entries
+name|stringBibtexEntryEntry
 operator|.
-name|get
-argument_list|(
-name|aKeySet
-argument_list|)
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -142,7 +155,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|index ()
-specifier|public
+specifier|private
 name|void
 name|index
 parameter_list|()
@@ -242,13 +255,8 @@ name|boolean
 name|isOutdated
 parameter_list|()
 block|{
-name|boolean
-name|outdated
-init|=
-literal|false
-decl_stmt|;
 return|return
-name|outdated
+literal|false
 return|;
 block|}
 DECL|method|getIdAt (int pos)
@@ -313,17 +321,23 @@ name|entryArray
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|entryArray
 operator|.
 name|length
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|0
 return|;
 block|}
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void

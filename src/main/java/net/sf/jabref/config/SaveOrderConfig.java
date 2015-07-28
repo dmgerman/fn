@@ -43,9 +43,10 @@ decl_stmt|;
 comment|// quick hack for outside modifications
 DECL|field|sortCriteria
 specifier|public
+specifier|final
 name|SortCriterion
-name|sortCriteria
 index|[]
+name|sortCriteria
 init|=
 operator|new
 name|SortCriterion
@@ -178,10 +179,8 @@ if|if
 condition|(
 name|data
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 throw|throw
@@ -214,24 +213,8 @@ name|setSaveInOriginalOrder
 argument_list|()
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-literal|"specified"
-operator|.
-name|equals
-argument_list|(
-name|choice
-argument_list|)
-condition|)
-block|{
-name|setSaveInSpecifiedOrder
-argument_list|()
-expr_stmt|;
-block|}
 else|else
 block|{
-comment|// fallback
 name|setSaveInSpecifiedOrder
 argument_list|()
 expr_stmt|;

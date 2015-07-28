@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  *  This file is part of JabRef and is based on XNap Commons.  *  This file may be used under the LGPL 2.1 license if used without JabRef.   *  JabRef is free software: you can redistribute it and/or modify  *  it under the terms of the GNU General Public License as published by  *  the Free Software Foundation, either version 3 of the License, or  *  (at your option) any later version.  *  *  JabRef is distributed in the hope that it will be useful,  *  but WITHOUT ANY WARRANTY; without even the implied warranty of  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  *  GNU General Public License for more details.  *  *  You should have received a copy of the GNU General Public License  *  along with JabRef.  If not, see<http://www.gnu.org/licenses/>.  *  *  *  XNap Commons - EmacsKeyBindings  *  *  Copyright (C) 2005  Steffen Pingel  *  Copyright (C) 2005  Felix Berger  *  *  This library is free software; you can redistribute it and/or  *  modify it under the terms of the GNU Lesser General Public  *  License as published by the Free Software Foundation; either  *  version 2.1 of the License, or (at your option) any later version.  *  *  This library is distributed in the hope that it will be useful,  *  but WITHOUT ANY WARRANTY; without even the implied warranty of  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU  *  Lesser General Public License for more details.  *  *  You should have received a copy of the GNU Lesser General Public  *  License along with this library; if not, write to the Free Software  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA  */
+comment|/*  *  Copyright (C) 2015  Oliver Kopp  *  *  This file is part of JabRef and is based on XNap Commons.  *  This file may be used under the LGPL 2.1 license if used without JabRef.   *  JabRef is free software: you can redistribute it and/or modify  *  it under the terms of the GNU General Public License as published by  *  the Free Software Foundation, either version 3 of the License, or  *  (at your option) any later version.  *  *  JabRef is distributed in the hope that it will be useful,  *  but WITHOUT ANY WARRANTY; without even the implied warranty of  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  *  GNU General Public License for more details.  *  *  You should have received a copy of the GNU General Public License  *  along with JabRef.  If not, see<http://www.gnu.org/licenses/>.  *  *  *  XNap Commons - EmacsKeyBindings  *  *  Copyright (C) 2005  Steffen Pingel  *  Copyright (C) 2005  Felix Berger  *  *  This library is free software; you can redistribute it and/or  *  modify it under the terms of the GNU Lesser General Public  *  License as published by the Free Software Foundation; either  *  version 2.1 of the License, or (at your option) any later version.  *  *  This library is distributed in the hope that it will be useful,  *  but WITHOUT ANY WARRANTY; without even the implied warranty of  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU  *  Lesser General Public License for more details.  *  *  You should have received a copy of the GNU Lesser General Public  *  License along with this library; if not, write to the Free Software  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA  */
 end_comment
 
 begin_package
@@ -279,7 +279,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Generic class which activates Emacs keybindings for java input {@link  * JTextComponent}s.  *   * The inner class actions can also be used independently.  *  * @author Felix Berger  */
+comment|/**  * Generic class which activates Emacs keybindings for java input {@link  * JTextComponent}s.  *   * The inner class actions can also be used independently.  */
 end_comment
 
 begin_class
@@ -289,7 +289,7 @@ class|class
 name|EmacsKeyBindings
 block|{
 DECL|field|killLineAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -298,7 +298,7 @@ init|=
 literal|"emacs-kill-line"
 decl_stmt|;
 DECL|field|killRingSaveAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -307,7 +307,7 @@ init|=
 literal|"emacs-kill-ring-save"
 decl_stmt|;
 DECL|field|killRegionAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -316,7 +316,7 @@ init|=
 literal|"emacs-kill-region"
 decl_stmt|;
 DECL|field|backwardKillWordAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -325,7 +325,7 @@ init|=
 literal|"emacs-backward-kill-word"
 decl_stmt|;
 DECL|field|capitalizeWordAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -334,7 +334,7 @@ init|=
 literal|"emacs-capitalize-word"
 decl_stmt|;
 DECL|field|downcaseWordAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -343,7 +343,7 @@ init|=
 literal|"emacs-downcase-word"
 decl_stmt|;
 DECL|field|killWordAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -352,7 +352,7 @@ init|=
 literal|"emacs-kill-word"
 decl_stmt|;
 DECL|field|setMarkCommandAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -361,7 +361,7 @@ init|=
 literal|"emacs-set-mark-command"
 decl_stmt|;
 DECL|field|yankAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -370,7 +370,7 @@ init|=
 literal|"emacs-yank"
 decl_stmt|;
 DECL|field|yankPopAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -379,7 +379,7 @@ init|=
 literal|"emacs-yank-pop"
 decl_stmt|;
 DECL|field|upcaseWordAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -388,7 +388,7 @@ init|=
 literal|"emacs-upcase-word"
 decl_stmt|;
 DECL|field|EMACS_KEY_BINDINGS_BASE
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|JTextComponent
@@ -586,12 +586,6 @@ operator|.
 name|nextWordAction
 argument_list|)
 block|,
-comment|// CTRL+F is also used for "search", which is used more often than going forward one letter
-comment|// Therefore, we just disalbe this key
-comment|//		new JTextComponent.
-comment|//			KeyBinding(KeyStroke.getKeyStroke(KeyEvent.VK_F,
-comment|//											  InputEvent.CTRL_MASK),
-comment|//					   DefaultEditorKit.forwardAction),
 operator|new
 name|JTextComponent
 operator|.
@@ -879,7 +873,7 @@ argument_list|)
 block|,     }
 decl_stmt|;
 DECL|field|EMACS_KEY_BINDING_C_A
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|JTextComponent
@@ -910,6 +904,38 @@ operator|.
 name|beginLineAction
 argument_list|)
 decl_stmt|;
+DECL|field|EMACS_KEY_BINDING_C_F
+specifier|private
+specifier|static
+specifier|final
+name|JTextComponent
+operator|.
+name|KeyBinding
+name|EMACS_KEY_BINDING_C_F
+init|=
+operator|new
+name|JTextComponent
+operator|.
+name|KeyBinding
+argument_list|(
+name|KeyStroke
+operator|.
+name|getKeyStroke
+argument_list|(
+name|KeyEvent
+operator|.
+name|VK_F
+argument_list|,
+name|InputEvent
+operator|.
+name|CTRL_MASK
+argument_list|)
+argument_list|,
+name|DefaultEditorKit
+operator|.
+name|forwardAction
+argument_list|)
+decl_stmt|;
 DECL|field|EMACS_ACTIONS
 specifier|private
 specifier|static
@@ -922,66 +948,88 @@ block|{
 operator|new
 name|KillWordAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|killWordAction
 argument_list|)
 block|,
 operator|new
 name|BackwardKillWordAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|backwardKillWordAction
 argument_list|)
 block|,
 operator|new
 name|SetMarkCommandAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|setMarkCommandAction
 argument_list|)
 block|,
 operator|new
 name|KillRingSaveAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|killRingSaveAction
 argument_list|)
 block|,
 operator|new
 name|KillRegionAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|killRegionAction
 argument_list|)
 block|,
 operator|new
 name|KillLineAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|killLineAction
 argument_list|)
 block|,
 operator|new
 name|YankAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|yankAction
 argument_list|)
 block|,
 operator|new
 name|YankPopAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|yankPopAction
 argument_list|)
 block|,
 operator|new
 name|CapitalizeWordAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|capitalizeWordAction
 argument_list|)
 block|,
 operator|new
 name|DowncaseWordAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|downcaseWordAction
 argument_list|)
 block|,
 operator|new
 name|UpcaseWordAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|upcaseWordAction
 argument_list|)
 block|}
@@ -1019,6 +1067,7 @@ decl_stmt|;
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Log
 name|logger
 init|=
@@ -1039,9 +1088,13 @@ name|void
 name|load
 parameter_list|()
 block|{
+name|EmacsKeyBindings
+operator|.
 name|createBackup
 argument_list|()
 expr_stmt|;
+name|EmacsKeyBindings
+operator|.
 name|loadEmacsKeyBindings
 argument_list|()
 expr_stmt|;
@@ -1060,6 +1113,8 @@ name|JTextComponent
 operator|.
 name|getKeymap
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|JTCS
 index|[
 literal|0
@@ -1087,6 +1142,8 @@ control|(
 name|JTextComponent
 name|JTC
 range|:
+name|EmacsKeyBindings
+operator|.
 name|JTCS
 control|)
 block|{
@@ -1192,6 +1249,8 @@ literal|0
 init|;
 name|i
 operator|<
+name|EmacsKeyBindings
+operator|.
 name|JTCS
 operator|.
 name|length
@@ -1207,6 +1266,8 @@ name|JTextComponent
 operator|.
 name|getKeymap
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|JTCS
 index|[
 name|i
@@ -1229,6 +1290,8 @@ block|{
 name|Keymap
 name|current
 init|=
+name|EmacsKeyBindings
+operator|.
 name|JTCS
 index|[
 name|i
@@ -1313,6 +1376,8 @@ name|void
 name|loadEmacsKeyBindings
 parameter_list|()
 block|{
+name|EmacsKeyBindings
+operator|.
 name|logger
 operator|.
 name|debug
@@ -1325,6 +1390,8 @@ control|(
 name|JTextComponent
 name|JTC
 range|:
+name|EmacsKeyBindings
+operator|.
 name|JTCS
 control|)
 block|{
@@ -1348,6 +1415,8 @@ name|origActions
 operator|.
 name|length
 operator|+
+name|EmacsKeyBindings
+operator|.
 name|EMACS_ACTIONS
 operator|.
 name|length
@@ -1374,6 +1443,8 @@ name|System
 operator|.
 name|arraycopy
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|EMACS_ACTIONS
 argument_list|,
 literal|0
@@ -1384,6 +1455,8 @@ name|origActions
 operator|.
 name|length
 argument_list|,
+name|EmacsKeyBindings
+operator|.
 name|EMACS_ACTIONS
 operator|.
 name|length
@@ -1403,8 +1476,9 @@ name|KeyBinding
 index|[]
 name|keybindings
 decl_stmt|;
-if|if
-condition|(
+name|boolean
+name|rebindCA
+init|=
 name|JabRefPreferences
 operator|.
 name|getInstance
@@ -1416,17 +1490,79 @@ name|JabRefPreferences
 operator|.
 name|EDITOR_EMACS_KEYBINDINGS_REBIND_CA
 argument_list|)
+decl_stmt|;
+name|boolean
+name|rebindCF
+init|=
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS_REBIND_CF
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|rebindCA
+operator|||
+name|rebindCF
 condition|)
 block|{
+comment|// if we additionally rebind C-a or C-f, we have to add the shortcuts to EmacsKeyBindings.EMACS_KEY_BINDINGS_BASE
+comment|// determine size of new array and position of the new key bindings in the array
 name|int
 name|size
 init|=
+name|EmacsKeyBindings
+operator|.
 name|EMACS_KEY_BINDINGS_BASE
 operator|.
 name|length
-operator|+
+decl_stmt|;
+name|int
+name|CAPos
+init|=
+operator|-
 literal|1
 decl_stmt|;
+name|int
+name|CFPos
+init|=
+operator|-
+literal|1
+decl_stmt|;
+if|if
+condition|(
+name|rebindCA
+condition|)
+block|{
+name|CAPos
+operator|=
+name|size
+expr_stmt|;
+name|size
+operator|++
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|rebindCF
+condition|)
+block|{
+name|CFPos
+operator|=
+name|size
+expr_stmt|;
+name|size
+operator|++
+expr_stmt|;
+block|}
+comment|// generate new array
 name|keybindings
 operator|=
 operator|new
@@ -1441,6 +1577,8 @@ name|System
 operator|.
 name|arraycopy
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|EMACS_KEY_BINDINGS_BASE
 argument_list|,
 literal|0
@@ -1449,25 +1587,50 @@ name|keybindings
 argument_list|,
 literal|0
 argument_list|,
+name|EmacsKeyBindings
+operator|.
 name|EMACS_KEY_BINDINGS_BASE
 operator|.
 name|length
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|rebindCA
+condition|)
+block|{
 name|keybindings
 index|[
-name|EMACS_KEY_BINDINGS_BASE
-operator|.
-name|length
+name|CAPos
 index|]
 operator|=
+name|EmacsKeyBindings
+operator|.
 name|EMACS_KEY_BINDING_C_A
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|rebindCF
+condition|)
+block|{
+name|keybindings
+index|[
+name|CFPos
+index|]
+operator|=
+name|EmacsKeyBindings
+operator|.
+name|EMACS_KEY_BINDING_C_F
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
 name|keybindings
 operator|=
+name|EmacsKeyBindings
+operator|.
 name|EMACS_KEY_BINDINGS_BASE
 expr_stmt|;
 block|}
@@ -1512,6 +1675,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1555,6 +1720,8 @@ argument_list|)
 expr_stmt|;
 name|offs
 operator|=
+name|EmacsKeyBindings
+operator|.
 name|getWordEnd
 argument_list|(
 name|jtc
@@ -1634,6 +1801,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1758,6 +1927,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1814,6 +1985,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2059,6 +2232,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2107,9 +2282,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|start
 operator|==
 name|end
+operator|)
 operator|&&
 name|jtc
 operator|.
@@ -2233,6 +2410,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2242,6 +2421,8 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|SetMarkCommandAction
+operator|.
 name|jtc
 operator|=
 name|getTextComponent
@@ -2251,13 +2432,19 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|SetMarkCommandAction
+operator|.
 name|jtc
 operator|!=
 literal|null
 condition|)
 block|{
+name|SetMarkCommandAction
+operator|.
 name|position
 operator|=
+name|SetMarkCommandAction
+operator|.
 name|jtc
 operator|.
 name|getCaretPosition
@@ -2277,14 +2464,22 @@ parameter_list|)
 block|{
 return|return
 operator|(
+operator|(
+name|SetMarkCommandAction
+operator|.
 name|jtc
 operator|==
 name|jt
+operator|)
 operator|&&
+operator|(
+name|SetMarkCommandAction
+operator|.
 name|position
 operator|!=
 operator|-
 literal|1
+operator|)
 operator|)
 return|;
 block|}
@@ -2295,10 +2490,14 @@ name|void
 name|reset
 parameter_list|()
 block|{
+name|SetMarkCommandAction
+operator|.
 name|jtc
 operator|=
 literal|null
 expr_stmt|;
+name|SetMarkCommandAction
+operator|.
 name|position
 operator|=
 operator|-
@@ -2313,6 +2512,8 @@ name|getCaretPosition
 parameter_list|()
 block|{
 return|return
+name|SetMarkCommandAction
+operator|.
 name|position
 return|;
 block|}
@@ -2363,6 +2564,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -2389,6 +2592,8 @@ condition|)
 block|{
 try|try
 block|{
+name|YankAction
+operator|.
 name|start
 operator|=
 name|jtc
@@ -2401,6 +2606,8 @@ operator|.
 name|paste
 argument_list|()
 expr_stmt|;
+name|YankAction
+operator|.
 name|end
 operator|=
 name|jtc
@@ -2419,8 +2626,12 @@ name|jtc
 operator|.
 name|getText
 argument_list|(
+name|YankAction
+operator|.
 name|start
 argument_list|,
+name|YankAction
+operator|.
 name|end
 argument_list|)
 argument_list|)
@@ -2473,6 +2684,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -2634,6 +2847,7 @@ name|jtc
 decl_stmt|;
 DECL|field|ring
 specifier|private
+specifier|final
 name|LinkedList
 argument_list|<
 name|String
@@ -2678,6 +2892,8 @@ name|getInstance
 parameter_list|()
 block|{
 return|return
+name|KillRing
+operator|.
 name|instance
 return|;
 block|}
@@ -2884,6 +3100,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**          * At first the same code as in {@link          * EmacsKeyBindings.DowncaseWordAction} is performed, to ensure the          * word is in lower case, then the first letter is capialized.          */
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -2922,6 +3140,8 @@ decl_stmt|;
 name|int
 name|end
 init|=
+name|EmacsKeyBindings
+operator|.
 name|getWordEnd
 argument_list|(
 name|jtc
@@ -3136,6 +3356,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -3173,6 +3395,8 @@ decl_stmt|;
 name|int
 name|end
 init|=
+name|EmacsKeyBindings
+operator|.
 name|getWordEnd
 argument_list|(
 name|jtc
@@ -3272,6 +3496,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -3309,6 +3535,8 @@ decl_stmt|;
 name|int
 name|end
 init|=
+name|EmacsKeyBindings
+operator|.
 name|getWordEnd
 argument_list|(
 name|jtc

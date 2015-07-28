@@ -976,6 +976,8 @@ argument_list|)
 operator|.
 name|desc
 argument_list|(
+name|JabRefCLI
+operator|.
 name|getExportMatchesSyntax
 argument_list|()
 argument_list|)
@@ -1089,7 +1091,7 @@ decl_stmt|;
 name|String
 name|footer
 init|=
-literal|"\n"
+literal|'\n'
 operator|+
 name|importFormatsList
 operator|+
@@ -1134,9 +1136,12 @@ name|format
 argument_list|(
 literal|"JabRef %s"
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
-name|version
+name|BUILD_INFO
+operator|.
+name|getVersion
+argument_list|()
 argument_list|)
 return|;
 block|}

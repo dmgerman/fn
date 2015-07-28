@@ -155,7 +155,7 @@ init|=
 literal|"http://jabref.sourceforge.net/bibteXMP/"
 decl_stmt|;
 DECL|field|KEY
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -176,8 +176,12 @@ name|super
 argument_list|(
 name|parent
 argument_list|,
+name|XMPSchemaBibtex
+operator|.
 name|KEY
 argument_list|,
+name|XMPSchemaBibtex
+operator|.
 name|NAMESPACE
 argument_list|)
 expr_stmt|;
@@ -198,12 +202,14 @@ name|super
 argument_list|(
 name|e
 argument_list|,
+name|XMPSchemaBibtex
+operator|.
 name|KEY
 argument_list|)
 expr_stmt|;
 block|}
 DECL|method|makeProperty (String propertyName)
-specifier|protected
+specifier|private
 name|String
 name|makeProperty
 parameter_list|(
@@ -212,9 +218,11 @@ name|propertyName
 parameter_list|)
 block|{
 return|return
+name|XMPSchemaBibtex
+operator|.
 name|KEY
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|propertyName
 return|;
@@ -304,6 +312,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getTextProperty (String field)
 specifier|public
 name|String
@@ -325,6 +335,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setTextProperty (String field, String value)
 specifier|public
 name|void
@@ -350,6 +362,8 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -379,6 +393,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|removeBagValue (String bagName, String value)
 specifier|public
 name|void
@@ -404,6 +420,8 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|addBagValue (String bagName, String value)
 specifier|public
 name|void
@@ -429,6 +447,8 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -458,6 +478,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|removeSequenceValue (String seqName, String value)
 specifier|public
 name|void
@@ -483,6 +505,8 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|addSequenceValue (String seqName, String value)
 specifier|public
 name|void
@@ -508,6 +532,8 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSequenceDateList (String seqName)
 specifier|public
 name|List
@@ -534,6 +560,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|removeSequenceDateValue (String seqName, Calendar date)
 specifier|public
 name|void
@@ -559,6 +587,8 @@ name|date
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|addSequenceDateValue (String field, Calendar date)
 specifier|public
 name|void
@@ -585,7 +615,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getContents (NodeList seqList)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|getContents
@@ -681,6 +711,8 @@ name|seq
 operator|.
 name|append
 argument_list|(
+name|XMPSchemaBibtex
+operator|.
 name|getTextContent
 argument_list|(
 name|li
@@ -800,6 +832,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|node
 operator|.
 name|getNodeType
@@ -808,7 +841,9 @@ operator|!=
 name|Node
 operator|.
 name|ATTRIBUTE_NODE
+operator|)
 operator|&&
+operator|(
 name|node
 operator|.
 name|getNodeType
@@ -817,8 +852,11 @@ operator|!=
 name|Node
 operator|.
 name|ELEMENT_NODE
+operator|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 name|nodeName
 init|=
@@ -840,11 +878,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|split
 operator|.
 name|length
 operator|==
 literal|2
+operator|)
 operator|&&
 name|split
 index|[
@@ -885,6 +925,8 @@ block|{
 name|String
 name|seq
 init|=
+name|XMPSchemaBibtex
+operator|.
 name|getContents
 argument_list|(
 name|seqList
@@ -941,6 +983,8 @@ block|{
 name|String
 name|seq
 init|=
+name|XMPSchemaBibtex
+operator|.
 name|getContents
 argument_list|(
 name|bagList
@@ -978,6 +1022,8 @@ index|[
 literal|1
 index|]
 argument_list|,
+name|XMPSchemaBibtex
+operator|.
 name|getTextContent
 argument_list|(
 name|node
@@ -1054,11 +1100,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|split
 operator|.
 name|length
 operator|==
 literal|2
+operator|)
 operator|&&
 name|split
 index|[
@@ -1117,6 +1165,8 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|XMPSchemaBibtex
+operator|.
 name|preserveWhiteSpace
 operator|.
 name|contains
@@ -1124,7 +1174,9 @@ argument_list|(
 name|key
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|entry
 operator|.
 name|setValue
@@ -1151,8 +1203,9 @@ name|result
 return|;
 block|}
 DECL|field|preserveWhiteSpace
-specifier|public
+specifier|private
 specifier|static
+specifier|final
 name|HashSet
 argument_list|<
 name|String
@@ -1168,6 +1221,8 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
+name|XMPSchemaBibtex
+operator|.
 name|preserveWhiteSpace
 operator|.
 name|add
@@ -1175,6 +1230,8 @@ argument_list|(
 literal|"abstract"
 argument_list|)
 expr_stmt|;
+name|XMPSchemaBibtex
+operator|.
 name|preserveWhiteSpace
 operator|.
 name|add
@@ -1182,6 +1239,8 @@ argument_list|(
 literal|"note"
 argument_list|)
 expr_stmt|;
+name|XMPSchemaBibtex
+operator|.
 name|preserveWhiteSpace
 operator|.
 name|add
@@ -1246,7 +1305,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useXmpPrivacyFilter"
+name|JabRefPreferences
+operator|.
+name|USE_XMP_PRIVACY_FILTER
 argument_list|)
 condition|)
 block|{
@@ -1380,6 +1441,7 @@ name|type
 operator|!=
 literal|null
 condition|)
+block|{
 name|t
 operator|=
 name|BibtexEntryType
@@ -1389,22 +1451,25 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|t
 operator|=
 name|BibtexEntryType
 operator|.
 name|OTHER
 expr_stmt|;
+block|}
 name|BibtexEntry
 name|e
 init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|,
 name|t
@@ -1419,6 +1484,8 @@ name|String
 argument_list|>
 name|text
 init|=
+name|XMPSchemaBibtex
+operator|.
 name|getAllProperties
 argument_list|(
 name|this

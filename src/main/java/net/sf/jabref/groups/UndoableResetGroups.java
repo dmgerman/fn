@@ -40,6 +40,22 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|groups
+operator|.
+name|structure
+operator|.
+name|AllEntriesGroup
+import|;
+end_import
+
 begin_class
 DECL|class|UndoableResetGroups
 class|class
@@ -107,6 +123,8 @@ operator|=
 name|groupSelector
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -131,6 +149,8 @@ literal|"clear all groups"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String
@@ -155,6 +175,8 @@ literal|"clear all groups"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -202,6 +224,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|m_groupsRootHandle
 operator|.
 name|add
@@ -222,16 +245,21 @@ name|deepCopy
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|m_revalidate
 condition|)
+block|{
 name|m_groupSelector
 operator|.
 name|revalidateGroups
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void
@@ -261,11 +289,13 @@ if|if
 condition|(
 name|m_revalidate
 condition|)
+block|{
 name|m_groupSelector
 operator|.
 name|revalidateGroups
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Call this method to decide if the group list should be immediately      * revalidated by this operation. Default is true.      */
 DECL|method|setRevalidate (boolean revalidate)

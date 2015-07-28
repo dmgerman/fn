@@ -30,6 +30,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -143,17 +157,19 @@ implements|implements
 name|FieldEditor
 block|{
 DECL|field|fieldName
-specifier|protected
+specifier|private
+specifier|final
 name|String
 name|fieldName
 decl_stmt|;
 DECL|field|label
-specifier|protected
+specifier|private
+specifier|final
 name|JLabel
 name|label
 decl_stmt|;
 DECL|field|undo
-specifier|protected
+specifier|private
 name|UndoManager
 name|undo
 decl_stmt|;
@@ -206,6 +222,7 @@ if|if
 condition|(
 name|changeColorOnFocus
 condition|)
+block|{
 name|addFocusListener
 argument_list|(
 operator|new
@@ -213,6 +230,7 @@ name|FieldEditorFocusListener
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|fieldName
 operator|=
 name|fieldName_
@@ -222,16 +240,16 @@ operator|=
 operator|new
 name|FieldNameLabel
 argument_list|(
-literal|" "
+literal|' '
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
 name|fieldName
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 comment|// label = new JLabel(" "+Util.nCase(fieldName)+" ", JLabel.CENTER);
@@ -280,7 +298,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setupUndoRedo ()
-specifier|protected
+specifier|private
 name|void
 name|setupUndoRedo
 parameter_list|()
@@ -306,6 +324,8 @@ operator|new
 name|UndoableEditListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|undoableEditHappened
@@ -342,6 +362,8 @@ argument_list|(
 literal|"Undo"
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -409,6 +431,8 @@ argument_list|(
 literal|"Redo"
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -487,12 +511,16 @@ name|undo
 operator|!=
 literal|null
 condition|)
+block|{
 name|undo
 operator|.
 name|discardAllEdits
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|append (String text)
 specifier|public
 name|void
@@ -511,6 +539,8 @@ name|text
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getFieldName ()
 specifier|public
 name|String
@@ -521,6 +551,8 @@ return|return
 name|fieldName
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getLabel ()
 specifier|public
 name|JLabel
@@ -531,6 +563,8 @@ return|return
 name|label
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setLabelColor (Color c)
 specifier|public
 name|void
@@ -555,6 +589,8 @@ literal|"ok"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 DECL|method|getPane ()
 specifier|public
 name|JComponent
@@ -565,6 +601,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTextComponent ()
 specifier|public
 name|JComponent
@@ -575,6 +613,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setActiveBackgroundColor ()
 specifier|public
 name|void
@@ -589,6 +629,8 @@ name|activeBackground
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValidBackgroundColor ()
 specifier|public
 name|void
@@ -603,6 +645,8 @@ name|validFieldBackgroundColor
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setInvalidBackgroundColor ()
 specifier|public
 name|void
@@ -617,6 +661,8 @@ name|invalidFieldBackgroundColor
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|updateFontColor ()
 specifier|public
 name|void
@@ -631,6 +677,8 @@ name|editorTextColor
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|updateFont ()
 specifier|public
 name|void
@@ -646,6 +694,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/*public void paint(Graphics g) {     	Graphics2D g2 = (Graphics2D) g;     	if (antialias)     		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);     	super.paint(g2);     }*/
+annotation|@
+name|Override
 DECL|method|paste (String textToInsert)
 specifier|public
 name|void
@@ -691,6 +741,8 @@ name|textToInsert
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|hasUndoInformation ()
 specifier|public
 name|boolean
@@ -702,6 +754,8 @@ literal|false
 return|;
 comment|//undo.canUndo();
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -710,6 +764,8 @@ parameter_list|()
 block|{
 comment|/*try {             if (undo.canUndo()) {                 undo.undo();             }         } catch (CannotUndoException e) {         }*/
 block|}
+annotation|@
+name|Override
 DECL|method|hasRedoInformation ()
 specifier|public
 name|boolean
@@ -721,6 +777,8 @@ literal|false
 return|;
 comment|//undo.canRedo();
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void
@@ -729,6 +787,8 @@ parameter_list|()
 block|{
 comment|/*try {             if (undo.canRedo()) {                 undo.redo();             }         } catch (CannotUndoException e) {         }*/
 block|}
+annotation|@
+name|Override
 DECL|method|addUndoableEditListener (UndoableEditListener listener)
 specifier|public
 name|void
@@ -747,6 +807,8 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
 specifier|public
 name|void
@@ -761,6 +823,8 @@ operator|=
 name|listener
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|clearAutoCompleteSuggestion ()
 specifier|public
 name|void
@@ -773,6 +837,7 @@ name|autoCompleteListener
 operator|!=
 literal|null
 condition|)
+block|{
 name|autoCompleteListener
 operator|.
 name|clearCurrentSuggestion
@@ -780,6 +845,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

@@ -18,67 +18,37 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|net
 operator|.
-name|URL
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexDatabase
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|Set
+name|jabref
+operator|.
+name|Globals
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|zip
+name|jabref
 operator|.
-name|CRC32
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|zip
-operator|.
-name|ZipEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|zip
-operator|.
-name|ZipOutputStream
+name|MetaData
 import|;
 end_import
 
@@ -148,37 +118,67 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|io
 operator|.
-name|jabref
-operator|.
-name|BibtexDatabase
+name|*
 import|;
 end_import
 
 begin_import
 import|import
+name|java
+operator|.
 name|net
 operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
+name|URL
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|MetaData
+name|util
+operator|.
+name|zip
+operator|.
+name|CRC32
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|zip
+operator|.
+name|ZipEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|zip
+operator|.
+name|ZipOutputStream
 import|;
 end_import
 
@@ -219,6 +219,8 @@ literal|".ods"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> keySet)
 specifier|public
 name|void
@@ -249,6 +251,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|OpenDocumentSpreadsheetCreator
+operator|.
 name|exportOpenDocumentSpreadsheet
 argument_list|(
 operator|new
@@ -264,7 +268,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|storeOpenDocumentSpreadsheetFile (File file, InputStream source)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|storeOpenDocumentSpreadsheetFile
@@ -420,9 +424,6 @@ argument_list|)
 expr_stmt|;
 name|int
 name|c
-init|=
-operator|-
-literal|1
 decl_stmt|;
 while|while
 condition|(
@@ -453,6 +454,8 @@ argument_list|()
 expr_stmt|;
 comment|// Add manifest (required for OOo 2.0) and "meta.xml": These are in the
 comment|// resource/ods directory, and are copied verbatim into the zip file.
+name|OpenDocumentSpreadsheetCreator
+operator|.
 name|addResourceFile
 argument_list|(
 literal|"meta.xml"
@@ -462,6 +465,8 @@ argument_list|,
 name|out
 argument_list|)
 expr_stmt|;
+name|OpenDocumentSpreadsheetCreator
+operator|.
 name|addResourceFile
 argument_list|(
 literal|"META-INF/manifest.xml"
@@ -483,7 +488,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|exportOpenDocumentSpreadsheet (File file, BibtexDatabase database, Set<String> keySet)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|exportOpenDocumentSpreadsheet
@@ -516,6 +521,8 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
+name|OpenDocumentSpreadsheetCreator
+operator|.
 name|exportOpenDocumentSpreadsheetXML
 argument_list|(
 name|tmpFile
@@ -539,6 +546,8 @@ name|tmpFile
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|OpenDocumentSpreadsheetCreator
+operator|.
 name|storeOpenDocumentSpreadsheetFile
 argument_list|(
 name|file
@@ -554,7 +563,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|exportOpenDocumentSpreadsheetXML (File tmpFile, BibtexDatabase database, Set<String> keySet)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|exportOpenDocumentSpreadsheetXML
@@ -714,6 +723,8 @@ argument_list|(
 name|zipEntry
 argument_list|)
 expr_stmt|;
+name|OpenDocumentSpreadsheetCreator
+operator|.
 name|addFromResource
 argument_list|(
 name|resource
@@ -774,11 +785,6 @@ index|]
 decl_stmt|;
 synchronized|synchronized
 init|(
-name|in
-init|)
-block|{
-synchronized|synchronized
-init|(
 name|out
 init|)
 block|{
@@ -804,7 +810,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 name|out
 operator|.
 name|write
@@ -816,7 +824,6 @@ argument_list|,
 name|bytesRead
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

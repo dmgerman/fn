@@ -235,6 +235,8 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
+name|EntryFromPDFCreator
+operator|.
 name|getPDFExternalFileType
 argument_list|()
 argument_list|)
@@ -300,9 +302,11 @@ name|f
 parameter_list|)
 block|{
 return|return
+operator|(
 name|f
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|f
 operator|.

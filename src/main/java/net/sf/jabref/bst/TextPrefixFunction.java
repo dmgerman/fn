@@ -59,7 +59,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  The |built_in| function {\.{text.prefix\$}} pops the top two literals  (the integer literal |pop_lit1| and a string literal, in that order).  It pushes the substring of the (at most) |pop_lit1| consecutive text  characters starting from the beginning of the string.  This function  is similar to {\.{substring\$}}, but this one considers an accented  character (or more precisely, a ``special character''$\!$, even if  it's missing its matching |right_brace|) to be a single text character  (rather than however many |ASCII_code| characters it actually  comprises), and this function doesn't consider braces to be text  characters; furthermore, this function appends any needed matching  |right_brace|s.  If any of the types is incorrect, it complains and  pushes the null string.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  The |built_in| function {\.{text.prefix\$}} pops the top two literals  (the integer literal |pop_lit1| and a string literal, in that order).  It pushes the substring of the (at most) |pop_lit1| consecutive text  characters starting from the beginning of the string.  This function  is similar to {\.{substring\$}}, but this one considers an accented  character (or more precisely, a ``special character''$\!$, even if  it's missing its matching |right_brace|) to be a single text character  (rather than however many |ASCII_code| characters it actually  comprises), and this function doesn't consider braces to be text  characters; furthermore, this function appends any needed matching  |right_brace|s.  If any of the types is incorrect, it complains and  pushes the null string.  *   */
 end_comment
 
 begin_class
@@ -71,6 +71,8 @@ implements|implements
 name|BstFunction
 block|{
 DECL|field|vm
+specifier|private
+specifier|final
 name|VM
 name|vm
 decl_stmt|;
@@ -89,6 +91,8 @@ operator|=
 name|vm
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|execute (BstEntry context)
 specifier|public
 name|void

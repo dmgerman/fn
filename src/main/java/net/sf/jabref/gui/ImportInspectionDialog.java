@@ -380,7 +380,27 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JSplitPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JTable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingConstants
 import|;
 end_import
 
@@ -462,7 +482,247 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|AuthorList
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexFields
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|CheckBoxMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|DuplicateCheck
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|DuplicateResolverDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|EntryMarker
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|FieldComparator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|GeneralRenderer
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|IdGenerator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|KeyCollisionException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|OutputPrinter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|PreviewPanel
 import|;
 end_import
 
@@ -504,6 +764,8 @@ name|jabref
 operator|.
 name|groups
 operator|.
+name|structure
+operator|.
 name|AbstractGroup
 import|;
 end_import
@@ -517,6 +779,8 @@ operator|.
 name|jabref
 operator|.
 name|groups
+operator|.
+name|structure
 operator|.
 name|AllEntriesGroup
 import|;
@@ -636,6 +900,34 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
 name|ca
 operator|.
 name|odell
@@ -695,6 +987,20 @@ operator|.
 name|event
 operator|.
 name|ListEventListener
+import|;
+end_import
+
+begin_import
+import|import
+name|ca
+operator|.
+name|odell
+operator|.
+name|glazedlists
+operator|.
+name|gui
+operator|.
+name|AbstractTableComparatorChooser
 import|;
 end_import
 
@@ -782,20 +1088,6 @@ name|ButtonStackBuilder
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|jgoodies
-operator|.
-name|uif_lite
-operator|.
-name|component
-operator|.
-name|UIFSplitPane
-import|;
-end_import
-
 begin_comment
 comment|/**  * Dialog to allow the selection of entries as part of an Import.  *   * The usual way to use this class is to pass it to an Importer which will do  * the following:  *<ul>  *<li>Register itself as a callback to get notified if the user wants to stop  * the import.</li>  *<li>Call setVisible(true) to display the dialog</li>  *<li>For each entry that has been found call addEntry(...)</li>  *<li>Call entryListComplete() after all entries have been fetched</li>  *</ul>  *   * If the importer wants to cancel the import, it should call the dispose()  * method.  *   * If the importer receives the stopFetching-call, it should stop fetching as  * soon as possible (it is not really critical, but good style to not contribute  * any more results via addEntry, call entryListComplete() or dispose(), after  * receiving this call).  *   * @author alver  */
 end_comment
@@ -814,13 +1106,11 @@ name|OutputPrinter
 block|{
 DECL|interface|CallBack
 specifier|public
-specifier|static
 interface|interface
 name|CallBack
 block|{
 comment|/**          * This method is called by the dialog when the user has cancelled or          * signalled a stop. It is expected that any long-running fetch          * operations will stop after this method is called.          */
 DECL|method|stopFetching ()
-specifier|public
 name|void
 name|stopFetching
 parameter_list|()
@@ -834,40 +1124,45 @@ init|=
 name|this
 decl_stmt|;
 DECL|field|panel
-specifier|protected
+specifier|private
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|frame
-specifier|protected
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|metaData
-specifier|protected
+specifier|private
+specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|contentPane
-specifier|protected
-name|UIFSplitPane
+specifier|private
+specifier|final
+name|JSplitPane
 name|contentPane
 init|=
 operator|new
-name|UIFSplitPane
+name|JSplitPane
 argument_list|(
-name|UIFSplitPane
+name|JSplitPane
 operator|.
 name|VERTICAL_SPLIT
 argument_list|)
 decl_stmt|;
 DECL|field|glTable
-specifier|protected
+specifier|private
+specifier|final
 name|JTable
 name|glTable
 decl_stmt|;
 DECL|field|comparatorChooser
-specifier|protected
+specifier|private
+specifier|final
 name|TableComparatorChooser
 argument_list|<
 name|BibtexEntry
@@ -875,7 +1170,8 @@ argument_list|>
 name|comparatorChooser
 decl_stmt|;
 DECL|field|selectionModel
-specifier|protected
+specifier|private
+specifier|final
 name|EventSelectionModel
 argument_list|<
 name|BibtexEntry
@@ -883,27 +1179,29 @@ argument_list|>
 name|selectionModel
 decl_stmt|;
 DECL|field|fields
-specifier|protected
+specifier|private
+specifier|final
 name|String
 index|[]
 name|fields
 decl_stmt|;
 DECL|field|progressBar
-specifier|protected
+specifier|private
+specifier|final
 name|JProgressBar
 name|progressBar
 init|=
 operator|new
 name|JProgressBar
 argument_list|(
-name|JProgressBar
+name|SwingConstants
 operator|.
 name|HORIZONTAL
 argument_list|)
 decl_stmt|;
 DECL|field|ok
-DECL|field|cancel
-specifier|protected
+specifier|private
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -917,21 +1215,11 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
-name|cancel
-init|=
-operator|new
-name|JButton
-argument_list|(
+decl_stmt|;
 DECL|field|generate
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Cancel"
-argument_list|)
-argument_list|)
-decl_stmt|,
+specifier|private
+specifier|final
+name|JButton
 name|generate
 init|=
 operator|new
@@ -946,7 +1234,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|entries
-specifier|protected
+specifier|private
+specifier|final
 name|EventList
 argument_list|<
 name|BibtexEntry
@@ -961,7 +1250,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|sortedList
-specifier|protected
+specifier|private
+specifier|final
 name|SortedList
 argument_list|<
 name|BibtexEntry
@@ -970,7 +1260,8 @@ name|sortedList
 decl_stmt|;
 comment|/**      * Duplicate resolving may require deletion of old entries.      */
 DECL|field|entriesToDelete
-specifier|protected
+specifier|private
+specifier|final
 name|List
 argument_list|<
 name|BibtexEntry
@@ -985,12 +1276,14 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|undoName
-specifier|protected
+specifier|private
+specifier|final
 name|String
 name|undoName
 decl_stmt|;
 DECL|field|callBacks
-specifier|protected
+specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|CallBack
@@ -1005,28 +1298,14 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|newDatabase
-specifier|protected
+specifier|private
+specifier|final
 name|boolean
 name|newDatabase
 decl_stmt|;
-DECL|field|groupsAdd
-specifier|protected
-name|JMenu
-name|groupsAdd
-init|=
-operator|new
-name|JMenu
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Add to group"
-argument_list|)
-argument_list|)
-decl_stmt|;
 DECL|field|popup
-specifier|protected
+specifier|private
+specifier|final
 name|JPopupMenu
 name|popup
 init|=
@@ -1034,40 +1313,9 @@ operator|new
 name|JPopupMenu
 argument_list|()
 decl_stmt|;
-DECL|field|selectAll
-specifier|protected
-name|JButton
-name|selectAll
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Select all"
-argument_list|)
-argument_list|)
-decl_stmt|;
-DECL|field|deselectAll
-specifier|protected
-name|JButton
-name|deselectAll
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Deselect all"
-argument_list|)
-argument_list|)
-decl_stmt|;
 DECL|field|deselectAllDuplicates
-specifier|protected
+specifier|private
+specifier|final
 name|JButton
 name|deselectAllDuplicates
 init|=
@@ -1083,7 +1331,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|stop
-specifier|protected
+specifier|private
+specifier|final
 name|JButton
 name|stop
 init|=
@@ -1098,45 +1347,14 @@ literal|"Stop"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|field|delete
-specifier|protected
-name|JButton
-name|delete
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Delete"
-argument_list|)
-argument_list|)
-decl_stmt|;
-DECL|field|help
-specifier|protected
-name|JButton
-name|help
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Help"
-argument_list|)
-argument_list|)
-decl_stmt|;
 DECL|field|preview
-specifier|protected
+specifier|private
+specifier|final
 name|PreviewPanel
 name|preview
 decl_stmt|;
 DECL|field|generatedKeys
-specifier|protected
+specifier|private
 name|boolean
 name|generatedKeys
 init|=
@@ -1146,14 +1364,15 @@ comment|// Set to true after keys have
 comment|// been
 comment|// generated.
 DECL|field|defaultSelected
-specifier|protected
+specifier|private
 name|boolean
 name|defaultSelected
 init|=
 literal|true
 decl_stmt|;
 DECL|field|toRect
-specifier|protected
+specifier|private
+specifier|final
 name|Rectangle
 name|toRect
 init|=
@@ -1170,7 +1389,8 @@ literal|1
 argument_list|)
 decl_stmt|;
 DECL|field|groupAdditions
-specifier|protected
+specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|BibtexEntry
@@ -1195,7 +1415,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|autoGenerate
-specifier|protected
+specifier|private
+specifier|final
 name|JCheckBox
 name|autoGenerate
 init|=
@@ -1215,12 +1436,15 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"generateKeysAfterInspection"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_AFTER_INSPECTION
 argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|duplLabel
-specifier|protected
+specifier|private
+specifier|final
 name|JLabel
 name|duplLabel
 init|=
@@ -1234,9 +1458,11 @@ argument_list|(
 literal|"duplicate"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|fileLabel
-DECL|field|pdfLabel
+specifier|private
+specifier|final
+name|JLabel
 name|fileLabel
 init|=
 operator|new
@@ -1249,21 +1475,28 @@ argument_list|(
 literal|"psSmall"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+DECL|field|pdfLabel
+specifier|private
+specifier|final
+name|JLabel
 name|pdfLabel
 init|=
 operator|new
 name|JLabel
 argument_list|(
 name|GUIGlobals
-DECL|field|psLabel
 operator|.
 name|getImage
 argument_list|(
 literal|"pdfSmall"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+DECL|field|psLabel
+specifier|private
+specifier|final
+name|JLabel
 name|psLabel
 init|=
 operator|new
@@ -1276,8 +1509,11 @@ argument_list|(
 literal|"psSmall"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|urlLabel
+specifier|private
+specifier|final
+name|JLabel
 name|urlLabel
 init|=
 operator|new
@@ -1292,39 +1528,54 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|DUPL_COL
-DECL|field|FILE_COL
-DECL|field|PDF_COL
-specifier|protected
+specifier|private
 specifier|final
 name|int
 name|DUPL_COL
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
+DECL|field|FILE_COL
+specifier|private
+specifier|final
+name|int
 name|FILE_COL
 init|=
 literal|2
-decl_stmt|,
+decl_stmt|;
+DECL|field|PDF_COL
+specifier|private
+specifier|final
+name|int
 name|PDF_COL
 init|=
 operator|-
 literal|1
-decl_stmt|,
+decl_stmt|;
 comment|// 3,
 DECL|field|PS_COL
+specifier|private
+specifier|final
+name|int
 name|PS_COL
 init|=
 operator|-
 literal|2
-decl_stmt|,
+decl_stmt|;
 comment|// 4,
 DECL|field|URL_COL
+specifier|private
+specifier|final
+name|int
 name|URL_COL
 init|=
 literal|3
-decl_stmt|,
+decl_stmt|;
 comment|// 5,
 DECL|field|PAD
+specifier|private
+specifier|final
+name|int
 name|PAD
 init|=
 literal|4
@@ -1433,7 +1684,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview0"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_0
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1598,7 +1851,7 @@ name|glTable
 argument_list|,
 name|sortedList
 argument_list|,
-name|TableComparatorChooser
+name|AbstractTableComparatorChooser
 operator|.
 name|MULTIPLE_COLUMN_KEYBOARD
 argument_list|)
@@ -1717,6 +1970,20 @@ operator|.
 name|getGroups
 argument_list|()
 decl_stmt|;
+name|JMenu
+name|groupsAdd
+init|=
+operator|new
+name|JMenu
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Add to group"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|groupsAdd
 operator|.
 name|setEnabled
@@ -1818,6 +2085,20 @@ argument_list|(
 name|stop
 argument_list|)
 expr_stmt|;
+name|JButton
+name|cancel
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Cancel"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|bb
 operator|.
 name|addButton
@@ -1830,6 +2111,20 @@ operator|.
 name|addRelatedGap
 argument_list|()
 expr_stmt|;
+name|JButton
+name|help
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Help"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|bb
 operator|.
 name|addButton
@@ -1870,6 +2165,20 @@ operator|new
 name|ButtonStackBuilder
 argument_list|()
 decl_stmt|;
+name|JButton
+name|selectAll
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Select all"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|builder
 operator|.
 name|addButton
@@ -1877,6 +2186,20 @@ argument_list|(
 name|selectAll
 argument_list|)
 expr_stmt|;
+name|JButton
+name|deselectAll
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Deselect all"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|builder
 operator|.
 name|addButton
@@ -1896,6 +2219,20 @@ operator|.
 name|addRelatedGap
 argument_list|()
 expr_stmt|;
+name|JButton
+name|delete
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Delete"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|builder
 operator|.
 name|addButton
@@ -2096,7 +2433,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"importInspectionDialogWidth"
+name|JabRefPreferences
+operator|.
+name|IMPORT_INSPECTION_DIALOG_WIDTH
 argument_list|)
 argument_list|,
 name|Globals
@@ -2105,7 +2444,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"importInspectionDialogHeight"
+name|JabRefPreferences
+operator|.
+name|IMPORT_INSPECTION_DIALOG_HEIGHT
 argument_list|)
 argument_list|)
 argument_list|)
@@ -2116,6 +2457,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowOpened
@@ -2132,6 +2475,8 @@ literal|0.5f
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosed
@@ -2146,7 +2491,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"importInspectionDialogWidth"
+name|JabRefPreferences
+operator|.
+name|IMPORT_INSPECTION_DIALOG_WIDTH
 argument_list|,
 name|getSize
 argument_list|()
@@ -2160,7 +2507,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"importInspectionDialogHeight"
+name|JabRefPreferences
+operator|.
+name|IMPORT_INSPECTION_DIALOG_HEIGHT
 argument_list|,
 name|getSize
 argument_list|()
@@ -2180,6 +2529,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2241,6 +2592,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#setProgress(int, int)      */
+annotation|@
+name|Override
 DECL|method|setProgress (int current, int max)
 specifier|public
 name|void
@@ -2283,6 +2636,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibtexEntry)      */
+annotation|@
+name|Override
 DECL|method|addEntry (BibtexEntry entry)
 specifier|public
 name|void
@@ -2447,7 +2802,7 @@ block|}
 block|}
 comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *       * @param entries      *            A Collection of BibtexEntry instances.      * @param entry      *            The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
 DECL|method|internalDuplicate (Collection<BibtexEntry> entries, BibtexEntry entry)
-specifier|protected
+specifier|private
 name|BibtexEntry
 name|internalDuplicate
 parameter_list|(
@@ -2475,8 +2830,10 @@ name|othEntry
 operator|==
 name|entry
 condition|)
+block|{
 continue|continue;
 comment|// Don't compare the entry to itself
+block|}
 if|if
 condition|(
 name|DuplicateCheck
@@ -2488,9 +2845,11 @@ argument_list|,
 name|othEntry
 argument_list|)
 condition|)
+block|{
 return|return
 name|othEntry
 return|;
+block|}
 block|}
 return|return
 literal|null
@@ -2498,7 +2857,7 @@ return|;
 block|}
 comment|/**      * Removes all selected entries from the table. Synchronizes on this.entries      * to prevent conflict with addition of new entries.      */
 DECL|method|removeSelectedEntries ()
-specifier|public
+specifier|private
 name|void
 name|removeSelectedEntries
 parameter_list|()
@@ -2586,12 +2945,11 @@ literal|0
 operator|)
 operator|&&
 operator|(
+operator|!
 name|entries
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -2655,6 +3013,7 @@ condition|(
 operator|!
 name|generatedKeys
 condition|)
+block|{
 name|generate
 operator|.
 name|setEnabled
@@ -2662,6 +3021,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|stop
 operator|.
 name|setEnabled
@@ -2688,7 +3048,7 @@ argument_list|()
 operator|==
 literal|0
 condition|)
-comment|//Only if no row selection is done, until now
+block|{
 if|if
 condition|(
 name|this
@@ -2700,6 +3060,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|this
 operator|.
 name|glTable
@@ -2713,9 +3074,11 @@ argument_list|)
 expr_stmt|;
 comment|//Select first row in the table
 block|}
+block|}
+block|}
 comment|/**      * This method returns a List containing all entries that are selected      * (checkbox checked).      *       * @return a List containing the selected entries.      */
 DECL|method|getSelectedEntries ()
-specifier|public
+specifier|private
 name|List
 argument_list|<
 name|BibtexEntry
@@ -2751,6 +3114,7 @@ operator|.
 name|isSearchHit
 argument_list|()
 condition|)
+block|{
 name|selected
 operator|.
 name|add
@@ -2759,6 +3123,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|/*          * for (int i = 0; i< table.getRowCount(); i++) { Boolean sel =          * (Boolean) table.getValueAt(i, 0); if (sel.booleanValue()) {          * selected.add(entries.get(i)); } }          */
 return|return
 name|selected
@@ -2766,7 +3131,7 @@ return|;
 block|}
 comment|/**      * Generate key for the selected entry only.      */
 DECL|method|generateKeySelectedEntry ()
-specifier|public
+specifier|private
 name|void
 name|generateKeySelectedEntry
 parameter_list|()
@@ -2783,7 +3148,9 @@ argument_list|()
 operator|!=
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 name|BibtexEntry
 name|entry
 init|=
@@ -2858,9 +3225,9 @@ name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2929,7 +3296,7 @@ expr_stmt|;
 block|}
 comment|/**      * Generate keys for all entries. All keys will be unique with respect to      * one another, and, if they are destined for an existing database, with      * respect to existing keys in the database.      */
 DECL|method|generateKeys (boolean addColumn)
-specifier|public
+specifier|private
 name|void
 name|generateKeys
 parameter_list|(
@@ -3028,9 +3395,9 @@ name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3120,7 +3487,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|insertNodes (JMenu menu, GroupTreeNode node)
-specifier|public
+specifier|private
 name|void
 name|insertNodes
 parameter_list|(
@@ -3164,6 +3531,7 @@ operator|.
 name|isEnabled
 argument_list|()
 condition|)
+block|{
 name|menu
 operator|.
 name|setEnabled
@@ -3171,12 +3539,11 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 name|JMenu
 name|submenu
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -3230,7 +3597,7 @@ operator|=
 operator|new
 name|JMenu
 argument_list|(
-literal|"["
+literal|'['
 operator|+
 name|node
 operator|.
@@ -3240,7 +3607,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|"]"
+literal|']'
 argument_list|)
 expr_stmt|;
 comment|// setEnabled(true) is done above/below if at least one menu
@@ -3290,6 +3657,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|insertNodes
 argument_list|(
 name|submenu
@@ -3305,6 +3673,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|menu
 operator|.
 name|add
@@ -3319,6 +3688,7 @@ operator|.
 name|isEnabled
 argument_list|()
 condition|)
+block|{
 name|menu
 operator|.
 name|setEnabled
@@ -3328,8 +3698,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|method|getAction (GroupTreeNode node)
-specifier|protected
+specifier|private
 name|AbstractAction
 name|getAction
 parameter_list|(
@@ -3376,7 +3747,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|node
-specifier|protected
+specifier|final
 name|GroupTreeNode
 name|node
 decl_stmt|;
@@ -3406,6 +3777,8 @@ operator|=
 name|node
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -3525,11 +3898,14 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|OkListener
+specifier|private
 class|class
 name|OkListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -3550,7 +3926,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"warnAboutDuplicatesInInspection"
+name|JabRefPreferences
+operator|.
+name|WARN_ABOUT_DUPLICATES_IN_INSPECTION
 argument_list|)
 condition|)
 block|{
@@ -3573,7 +3951,9 @@ operator|.
 name|isSearchHit
 argument_list|()
 condition|)
+block|{
 continue|continue;
+block|}
 comment|// Check if the entry is a suspected, unresolved, duplicate.
 comment|// This status
 comment|// is indicated by the entry's group hit status:
@@ -3640,17 +4020,21 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"warnAboutDuplicatesInInspection"
+name|JabRefPreferences
+operator|.
+name|WARN_ABOUT_DUPLICATES_IN_INSPECTION
 argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|answer
@@ -3659,7 +4043,9 @@ name|JOptionPane
 operator|.
 name|NO_OPTION
 condition|)
+block|{
 return|return;
+block|}
 break|break;
 block|}
 block|}
@@ -3678,12 +4064,11 @@ decl_stmt|;
 comment|// See if we should remove any old entries for duplicate resolving:
 if|if
 condition|(
+operator|!
 name|entriesToDelete
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for
@@ -3753,7 +4138,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"generateKeysAfterInspection"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_AFTER_INSPECTION
 argument_list|,
 name|autoGenerate
 operator|.
@@ -3773,12 +4160,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|selected
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 if|if
@@ -3815,7 +4201,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3838,7 +4226,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteOwner"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_OWNER
 argument_list|)
 argument_list|,
 name|Globals
@@ -3847,7 +4237,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteTimeStamp"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_TIME_STAMP
 argument_list|)
 argument_list|,
 name|Globals
@@ -3856,7 +4248,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"markImportedEntries"
+name|JabRefPreferences
+operator|.
+name|MARK_IMPORTED_ENTRIES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3869,9 +4263,12 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"unmarkAllEntriesBeforeImporting"
+name|JabRefPreferences
+operator|.
+name|UNMARK_ALL_ENTRIES_BEFORE_IMPORTING
 argument_list|)
 condition|)
+block|{
 for|for
 control|(
 name|BibtexEntry
@@ -3886,7 +4283,7 @@ name|getEntries
 argument_list|()
 control|)
 block|{
-name|Util
+name|EntryMarker
 operator|.
 name|unmarkEntry
 argument_list|(
@@ -3902,6 +4299,7 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
@@ -4018,10 +4416,12 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|groupingCanceled
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 comment|// If the key existed, or exists now, go ahead:
 if|if
@@ -4082,6 +4482,7 @@ name|undo
 operator|instanceof
 name|UndoableChangeAssignment
 condition|)
+block|{
 operator|(
 operator|(
 name|UndoableChangeAssignment
@@ -4094,6 +4495,7 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
+block|}
 name|ce
 operator|.
 name|addEdit
@@ -4115,9 +4517,9 @@ name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4186,9 +4588,11 @@ operator|.
 name|invokeLater
 argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -4218,12 +4622,11 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|selected
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|frame
@@ -4268,7 +4671,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|signalStopFetching ()
-specifier|protected
+specifier|private
 name|void
 name|signalStopFetching
 parameter_list|()
@@ -4289,7 +4692,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|setWidths ()
-specifier|protected
+specifier|private
 name|void
 name|setWidths
 parameter_list|()
@@ -4512,11 +4915,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|StopListener
+specifier|private
 class|class
 name|StopListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -4535,11 +4941,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|CancelListener
+specifier|private
 class|class
 name|CancelListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -4570,11 +4979,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|GenerateListener
+specifier|private
 class|class
 name|GenerateListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -4636,6 +5048,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -4651,6 +5065,8 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|MyTable
+specifier|private
+specifier|static
 class|class
 name|MyTable
 extends|extends
@@ -4671,6 +5087,8 @@ argument_list|)
 expr_stmt|;
 comment|// setDefaultRenderer(Boolean.class, );
 block|}
+annotation|@
+name|Override
 DECL|method|isCellEditable (int row, int col)
 specifier|public
 name|boolean
@@ -4691,11 +5109,15 @@ return|;
 block|}
 block|}
 DECL|class|MyTableModel
+specifier|private
+specifier|static
 class|class
 name|MyTableModel
 extends|extends
 name|DefaultTableModel
 block|{
+annotation|@
+name|Override
 DECL|method|getColumnClass (int i)
 specifier|public
 name|Class
@@ -4714,17 +5136,21 @@ name|i
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|Boolean
 operator|.
 name|class
 return|;
+block|}
 else|else
+block|{
 return|return
 name|String
 operator|.
 name|class
 return|;
+block|}
 block|}
 block|}
 DECL|class|SelectionButton
@@ -4734,7 +5160,7 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|enable
-specifier|protected
+specifier|final
 name|Boolean
 name|enable
 decl_stmt|;
@@ -4753,6 +5179,8 @@ operator|=
 name|enable
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -4800,11 +5228,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|DeselectDuplicatesButtonListener
+specifier|private
 class|class
 name|DeselectDuplicatesButtonListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -4867,6 +5298,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|EntrySelectionListener
+specifier|private
 class|class
 name|EntrySelectionListener
 implements|implements
@@ -4875,6 +5307,8 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|listChanged (ListEvent<BibtexEntry> listEvent)
 specifier|public
 name|void
@@ -4930,6 +5364,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -4991,6 +5427,8 @@ name|URL_COL
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|mouseClicked (MouseEvent e)
 specifier|public
 name|void
@@ -5097,7 +5535,9 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 name|FileListEntry
 name|fl
 init|=
@@ -5180,6 +5620,8 @@ break|break;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|mouseEntered (MouseEvent e)
 specifier|public
 name|void
@@ -5189,6 +5631,8 @@ name|MouseEvent
 name|e
 parameter_list|)
 block|{          }
+annotation|@
+name|Override
 DECL|method|mouseExited (MouseEvent e)
 specifier|public
 name|void
@@ -5398,12 +5842,11 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
+block|{
 name|description
 operator|=
 name|flEntry
@@ -5411,6 +5854,7 @@ operator|.
 name|getLink
 argument_list|()
 expr_stmt|;
+block|}
 name|menu
 operator|.
 name|add
@@ -5470,6 +5914,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|menu
 operator|.
 name|show
@@ -5487,6 +5932,7 @@ name|getY
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**          * Open old-style external links after user clicks icon.          *           * @param fieldName          *            The name of the BibTeX field this icon is used for.          * @param e          *            The MouseEvent that triggered this operation.          */
 DECL|method|openExternalLink (String fieldName, MouseEvent e)
@@ -5543,6 +5989,7 @@ name|link
 operator|!=
 literal|null
 condition|)
+block|{
 name|Util
 operator|.
 name|openExternalViewer
@@ -5561,6 +6008,7 @@ name|fieldName
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|IOException
@@ -5574,6 +6022,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|mouseReleased (MouseEvent e)
 specifier|public
 name|void
@@ -5600,6 +6050,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|mousePressed (MouseEvent e)
 specifier|public
 name|void
@@ -6024,6 +6476,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -6045,7 +6499,9 @@ argument_list|()
 operator|!=
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 name|BibtexEntry
 name|entry
 init|=
@@ -6107,10 +6563,8 @@ if|if
 condition|(
 name|result
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|entry
@@ -6191,6 +6645,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent actionEvent)
 specifier|public
 name|void
@@ -6212,7 +6668,9 @@ argument_list|()
 operator|!=
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 name|entry
 operator|=
 name|selectionModel
@@ -6329,6 +6787,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|downloadComplete (FileListEntry file)
 specifier|public
 name|void
@@ -6371,6 +6831,7 @@ name|oldVal
 operator|!=
 literal|null
 condition|)
+block|{
 name|model
 operator|.
 name|setContent
@@ -6378,6 +6839,7 @@ argument_list|(
 name|oldVal
 argument_list|)
 expr_stmt|;
+block|}
 name|model
 operator|.
 name|addEntry
@@ -6462,6 +6924,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent actionEvent)
 specifier|public
 name|void
@@ -6483,7 +6947,9 @@ argument_list|()
 operator|!=
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 specifier|final
 name|BibtexEntry
 name|entry
@@ -6566,8 +7032,10 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 return|return;
 comment|// Can't go on without the bibtex key.
+block|}
 block|}
 specifier|final
 name|FileListTableModel
@@ -6595,6 +7063,7 @@ name|oldVal
 operator|!=
 literal|null
 condition|)
+block|{
 name|model
 operator|.
 name|setContent
@@ -6602,6 +7071,7 @@ argument_list|(
 name|oldVal
 argument_list|)
 expr_stmt|;
+block|}
 comment|// We have a static utility method for searching for all relevant
 comment|// links:
 name|JDialog
@@ -6617,6 +7087,12 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 name|Util
 operator|.
 name|autoSetLinks
@@ -6631,6 +7107,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -6696,6 +7174,7 @@ block|}
 argument_list|,
 name|diag
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -6738,6 +7217,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent actionEvent)
 specifier|public
 name|void
@@ -6759,7 +7240,9 @@ argument_list|()
 operator|!=
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 name|entry
 operator|=
 name|selectionModel
@@ -6844,6 +7327,7 @@ name|oldVal
 operator|!=
 literal|null
 condition|)
+block|{
 name|model
 operator|.
 name|setContent
@@ -6851,6 +7335,7 @@ argument_list|(
 name|oldVal
 argument_list|)
 expr_stmt|;
+block|}
 name|model
 operator|.
 name|addEntry
@@ -6906,6 +7391,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|downloadComplete (FileListEntry file)
 specifier|public
 name|void
@@ -6948,6 +7435,7 @@ name|oldVal
 operator|!=
 literal|null
 condition|)
+block|{
 name|model
 operator|.
 name|setContent
@@ -6955,6 +7443,7 @@ argument_list|(
 name|oldVal
 argument_list|)
 expr_stmt|;
+block|}
 name|model
 operator|.
 name|addEntry
@@ -7019,6 +7508,7 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|fileType
+specifier|final
 name|String
 name|fileType
 decl_stmt|;
@@ -7062,6 +7552,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -7083,7 +7575,9 @@ argument_list|()
 operator|!=
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 name|BibtexEntry
 name|entry
 init|=
@@ -7193,7 +7687,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 DECL|method|setupComparatorChooser ()
-specifier|protected
+specifier|private
 name|void
 name|setupComparatorChooser
 parameter_list|()
@@ -7271,6 +7765,7 @@ name|i
 operator|==
 name|FILE_COL
 condition|)
+block|{
 name|comparators
 operator|.
 name|add
@@ -7289,6 +7784,7 @@ block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -7296,6 +7792,7 @@ name|i
 operator|==
 name|PDF_COL
 condition|)
+block|{
 name|comparators
 operator|.
 name|add
@@ -7312,6 +7809,7 @@ block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -7319,6 +7817,7 @@ name|i
 operator|==
 name|PS_COL
 condition|)
+block|{
 name|comparators
 operator|.
 name|add
@@ -7335,6 +7834,7 @@ block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -7342,6 +7842,7 @@ name|i
 operator|==
 name|URL_COL
 condition|)
+block|{
 name|comparators
 operator|.
 name|add
@@ -7359,6 +7860,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|// Remaining columns:
 for|for
 control|(
@@ -7369,11 +7871,13 @@ name|PAD
 init|;
 name|i
 operator|<
+operator|(
 name|PAD
 operator|+
 name|fields
 operator|.
 name|length
+operator|)
 condition|;
 name|i
 operator|++
@@ -7453,6 +7957,7 @@ extends|extends
 name|JTable
 block|{
 DECL|field|renderer
+specifier|final
 name|GeneralRenderer
 name|renderer
 init|=
@@ -7486,6 +7991,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getCellRenderer (int row, int column)
 specifier|public
 name|TableCellRenderer
@@ -7514,6 +8021,8 @@ name|renderer
 return|;
 block|}
 comment|/*          * public TableCellEditor getCellEditor() { return          * getDefaultEditor(Boolean.class); }          */
+annotation|@
+name|Override
 DECL|method|getColumnClass (int col)
 specifier|public
 name|Class
@@ -7532,11 +8041,13 @@ name|col
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|Boolean
 operator|.
 name|class
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -7544,18 +8055,24 @@ name|col
 operator|<
 name|PAD
 condition|)
+block|{
 return|return
 name|JLabel
 operator|.
 name|class
 return|;
+block|}
 else|else
+block|{
 return|return
 name|String
 operator|.
 name|class
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|isCellEditable (int row, int column)
 specifier|public
 name|boolean
@@ -7574,6 +8091,8 @@ operator|==
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValueAt (Object value, int row, int column)
 specifier|public
 name|void
@@ -7636,6 +8155,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|EntryTableFormat
+specifier|private
 class|class
 name|EntryTableFormat
 implements|implements
@@ -7644,6 +8164,8 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -7658,6 +8180,8 @@ operator|.
 name|length
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int i)
 specifier|public
 name|String
@@ -7673,6 +8197,7 @@ name|i
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|Globals
 operator|.
@@ -7681,6 +8206,7 @@ argument_list|(
 literal|"Keep"
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|i
@@ -7689,7 +8215,7 @@ name|PAD
 condition|)
 block|{
 return|return
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -7706,6 +8232,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnValue (BibtexEntry entry, int i)
 specifier|public
 name|Object
@@ -7724,6 +8252,7 @@ name|i
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|entry
 operator|.
@@ -7738,6 +8267,7 @@ name|Boolean
 operator|.
 name|FALSE
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -7824,6 +8354,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|fileLabel
 operator|.
 name|setIcon
@@ -7842,14 +8373,17 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|fileLabel
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 case|case
 name|PDF_COL
 case|:
@@ -7884,9 +8418,11 @@ name|pdfLabel
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 case|case
 name|PS_COL
 case|:
@@ -7921,9 +8457,11 @@ name|psLabel
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 case|case
 name|URL_COL
 case|:
@@ -7958,9 +8496,11 @@ name|urlLabel
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 default|default:
 return|return
 literal|null
@@ -8024,6 +8564,7 @@ literal|""
 return|;
 block|}
 else|else
+block|{
 return|return
 name|entry
 operator|.
@@ -8035,6 +8576,9 @@ return|;
 block|}
 block|}
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|toFront ()
 specifier|public
 name|void
@@ -8047,6 +8591,8 @@ name|toFront
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setStatus (String s)
 specifier|public
 name|void
@@ -8064,6 +8610,8 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|showMessage (Object message, String title, int msgType)
 specifier|public
 name|void
@@ -8093,6 +8641,8 @@ name|msgType
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|showMessage (String message)
 specifier|public
 name|void

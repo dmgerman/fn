@@ -72,6 +72,22 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|groups
+operator|.
+name|structure
+operator|.
+name|ExplicitGroup
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author jzieren  *   */
 end_comment
@@ -221,6 +237,8 @@ name|getIndexedPath
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -245,6 +263,8 @@ literal|"change assignment of entries"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String
@@ -269,6 +289,8 @@ literal|"change assignment of entries"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -308,6 +330,7 @@ name|aM_previousAssignmentBackup
 range|:
 name|m_previousAssignmentBackup
 control|)
+block|{
 name|group
 operator|.
 name|addEntry
@@ -316,6 +339,9 @@ name|aM_previousAssignmentBackup
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void
@@ -355,6 +381,7 @@ name|aM_newAssignmentBackup
 range|:
 name|m_newAssignmentBackup
 control|)
+block|{
 name|group
 operator|.
 name|addEntry
@@ -362,6 +389,7 @@ argument_list|(
 name|aM_newAssignmentBackup
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

@@ -38,18 +38,12 @@ extends|extends
 name|SpecialField
 block|{
 DECL|method|Rank ()
-specifier|public
 name|Rank
 parameter_list|()
 block|{
 name|TEXT_DONE_PATTERN
 operator|=
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"Set rank to '%0' for %1 entries"
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getInstance ()
@@ -90,6 +84,8 @@ argument_list|()
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getFieldName ()
 specifier|public
 name|String
@@ -102,6 +98,8 @@ operator|.
 name|FIELDNAME_RANKING
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getToolTip ()
 specifier|public
 name|String
@@ -117,6 +115,8 @@ literal|"Rank"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getMenuString ()
 specifier|public
 name|String

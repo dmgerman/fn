@@ -24,14 +24,12 @@ name|FileUpdateListener
 block|{
 comment|/**      * The file has been updated. A new call will not result until the file has been modified again.      */
 DECL|method|fileUpdated ()
-specifier|public
 name|void
 name|fileUpdated
 parameter_list|()
 function_decl|;
 comment|/**      * The file does no longer exist.      */
 DECL|method|fileRemoved ()
-specifier|public
 name|void
 name|fileRemoved
 parameter_list|()

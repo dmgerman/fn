@@ -102,23 +102,26 @@ end_import
 
 begin_class
 DECL|class|PreambleChange
-specifier|public
 class|class
 name|PreambleChange
 extends|extends
 name|Change
 block|{
-DECL|field|tmp
 DECL|field|mem
-DECL|field|disk
+specifier|private
+specifier|final
 name|String
-name|tmp
-decl_stmt|,
 name|mem
-decl_stmt|,
+decl_stmt|;
+DECL|field|disk
+specifier|private
+specifier|final
+name|String
 name|disk
 decl_stmt|;
 DECL|field|tp
+specifier|private
+specifier|final
 name|InfoPane
 name|tp
 init|=
@@ -127,6 +130,8 @@ name|InfoPane
 argument_list|()
 decl_stmt|;
 DECL|field|sp
+specifier|private
+specifier|final
 name|JScrollPane
 name|sp
 init|=
@@ -167,17 +172,11 @@ name|mem
 operator|=
 name|mem
 expr_stmt|;
-name|this
-operator|.
-name|tmp
-operator|=
-name|tmp
-expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|text
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|text
@@ -220,11 +219,10 @@ operator|&&
 operator|!
 name|disk
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
+block|{
 name|text
 operator|.
 name|append
@@ -259,7 +257,9 @@ argument_list|(
 literal|"</CODE>"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|text
 operator|.
 name|append
@@ -282,6 +282,7 @@ argument_list|(
 literal|"</H3>"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -293,11 +294,10 @@ operator|&&
 operator|!
 name|mem
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
+block|{
 name|text
 operator|.
 name|append
@@ -332,6 +332,7 @@ argument_list|(
 literal|"</CODE>"
 argument_list|)
 expr_stmt|;
+block|}
 comment|//tp.setContentType("text/html");
 name|tp
 operator|.
@@ -344,6 +345,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
@@ -400,6 +403,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description

@@ -62,7 +62,6 @@ end_comment
 
 begin_class
 DECL|class|CookieHandlerImpl
-specifier|public
 class|class
 name|CookieHandlerImpl
 extends|extends
@@ -72,6 +71,7 @@ comment|// "Long" term storage for cookies, not serialized so only
 comment|// for current JVM instance
 DECL|field|cache
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|Cookie
@@ -86,6 +86,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 comment|/**      * Saves all applicable cookies present in the response      * headers into cache.      *      * @param uri             URI source of cookies      * @param responseHeaders Immutable map from field names to      *                        lists of field      *                        values representing the response header fields returned      */
+annotation|@
+name|Override
 DECL|method|put ( URI uri, Map<String, List<String>> responseHeaders)
 specifier|public
 name|void
@@ -229,6 +231,8 @@ block|}
 block|}
 block|}
 comment|/**      * Gets all the applicable cookies from a cookie cache for      * the specified uri in the request header.      *      * @param uri            URI to send cookies to in a request      * @param requestHeaders Map from request header field names      *                       to lists of field values representing the current request      *                       headers      * @return Immutable map, with field name "Cookie" to a list      *         of cookies      */
+annotation|@
+name|Override
 DECL|method|get ( URI uri, Map<String, List<String>> requestHeaders)
 specifier|public
 name|Map

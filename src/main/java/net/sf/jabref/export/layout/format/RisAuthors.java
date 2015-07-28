@@ -63,6 +63,8 @@ name|arg
 init|=
 literal|""
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|format (String s)
 specifier|public
 name|String
@@ -78,9 +80,11 @@ name|s
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|StringBuilder
 name|sb
 init|=
@@ -149,12 +153,15 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|authors
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -165,6 +172,7 @@ name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|sb
 operator|.
@@ -172,6 +180,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setArgument (String arg)
 specifier|public
 name|void

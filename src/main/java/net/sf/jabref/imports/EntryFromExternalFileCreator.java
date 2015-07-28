@@ -126,15 +126,10 @@ return|return
 literal|null
 return|;
 block|}
-name|BibtexEntry
-name|entry
-init|=
+return|return
 operator|new
 name|BibtexEntry
 argument_list|()
-decl_stmt|;
-return|return
-name|entry
 return|;
 block|}
 annotation|@

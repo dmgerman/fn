@@ -38,6 +38,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -75,6 +85,8 @@ operator|new
 name|HTMLChars
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -87,6 +99,8 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"hallo"
@@ -99,6 +113,8 @@ literal|"hallo"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"RÃ©flexions sur le timing de la quantitÃ©"
@@ -111,6 +127,8 @@ literal|"RÃ©flexions sur le timing de la quantitÃ©"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"h&aacute;llo"
@@ -123,6 +141,8 @@ literal|"h\\'allo"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"&#305;&#305;"
@@ -135,6 +155,8 @@ literal|"\\i \\i"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"&#305;"
@@ -147,6 +169,8 @@ literal|"\\i"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"&#305;"
@@ -159,6 +183,8 @@ literal|"\\{i}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"&#305;&#305;"
@@ -171,6 +197,8 @@ literal|"\\i\\i"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"&#319;&#305;"
@@ -183,6 +211,8 @@ literal|"\\Lmidot\\i"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"&ntilde;&ntilde;&iacute;&#305;&#305;"
@@ -211,6 +241,8 @@ operator|new
 name|HTMLChars
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"<em>hallo</em>"
@@ -223,6 +255,8 @@ literal|"\\emph{hallo}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"<em>hallo</em>"
@@ -235,6 +269,8 @@ literal|"{\\emph hallo}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"<em>hallo</em>"
@@ -247,6 +283,8 @@ literal|"\\textit{hallo}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"<em>hallo</em>"
@@ -259,6 +297,8 @@ literal|"{\\textit hallo}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"<b>hallo</b>"
@@ -271,6 +311,8 @@ literal|"\\textbf{hallo}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"<b>hallo</b>"

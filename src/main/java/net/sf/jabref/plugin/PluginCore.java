@@ -243,12 +243,14 @@ class|class
 name|PluginCore
 block|{
 DECL|field|singleton
+specifier|private
 specifier|static
 name|PluginManager
 name|singleton
 decl_stmt|;
 DECL|field|userPluginDir
 specifier|static
+specifier|final
 name|File
 name|userPluginDir
 init|=
@@ -266,6 +268,7 @@ literal|"/.jabref/plugins"
 argument_list|)
 decl_stmt|;
 DECL|method|getLocationInsideJar (String context, String manifest)
+specifier|private
 specifier|static
 name|PluginLocation
 name|getLocationInsideJar
@@ -423,6 +426,7 @@ literal|null
 return|;
 block|}
 DECL|method|initialize ()
+specifier|private
 specifier|static
 name|PluginManager
 name|initialize
@@ -530,6 +534,8 @@ name|directoriesToSearch
 operator|.
 name|add
 argument_list|(
+name|PluginCore
+operator|.
 name|userPluginDir
 argument_list|)
 expr_stmt|;
@@ -652,6 +658,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -659,6 +666,7 @@ argument_list|(
 literal|','
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -727,6 +735,8 @@ block|{
 name|PluginLocation
 name|location
 init|=
+name|PluginCore
+operator|.
 name|getLocationInsideJar
 argument_list|(
 name|jarLocation
@@ -740,6 +750,7 @@ name|location
 operator|!=
 literal|null
 condition|)
+block|{
 name|plugins
 operator|.
 name|add
@@ -747,6 +758,7 @@ argument_list|(
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1003,11 +1015,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|PluginCore
+operator|.
 name|singleton
 operator|==
 literal|null
 condition|)
 block|{
+name|PluginCore
+operator|.
 name|singleton
 operator|=
 name|PluginCore
@@ -1017,6 +1033,8 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|PluginCore
+operator|.
 name|singleton
 return|;
 block|}

@@ -269,6 +269,7 @@ extends|extends
 name|AbstractWorker
 block|{
 DECL|field|message
+specifier|private
 name|String
 name|message
 init|=
@@ -276,11 +277,13 @@ literal|null
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|database
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|database
 decl_stmt|;
@@ -308,6 +311,8 @@ operator|=
 name|database
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -328,7 +333,9 @@ name|panel
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|panel
@@ -533,7 +540,9 @@ name|JOptionPane
 operator|.
 name|NO_OPTION
 condition|)
+block|{
 return|return;
+block|}
 name|IExportFormat
 name|format
 init|=
@@ -651,6 +660,7 @@ name|be
 range|:
 name|bes
 control|)
+block|{
 name|entries
 operator|.
 name|add
@@ -661,6 +671,7 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Write to file:
 name|format
 operator|.
@@ -747,6 +758,8 @@ operator|new
 name|ClipboardOwner
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|lostOwnership
@@ -835,17 +848,20 @@ name|tmp
 operator|!=
 literal|null
 condition|)
+block|{
 name|tmp
 operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|reader
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|reader
@@ -868,6 +884,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void

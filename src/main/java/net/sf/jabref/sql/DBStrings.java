@@ -28,6 +28,18 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_comment
 comment|/**  *  * @author pattonlk  */
 end_comment
@@ -175,7 +187,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"dbConnectServerType"
+name|JabRefPreferences
+operator|.
+name|DB_CONNECT_SERVER_TYPE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -187,7 +201,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"dbConnectHostname"
+name|JabRefPreferences
+operator|.
+name|DB_CONNECT_HOSTNAME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -199,7 +215,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"dbConnectDatabase"
+name|JabRefPreferences
+operator|.
+name|DB_CONNECT_DATABASE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -211,7 +229,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"dbConnectUsername"
+name|JabRefPreferences
+operator|.
+name|DB_CONNECT_USERNAME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -368,7 +388,7 @@ name|serverTypes
 return|;
 block|}
 DECL|method|setServerTypes (String[] serverTypes)
-specifier|public
+specifier|private
 name|void
 name|setServerTypes
 parameter_list|(
@@ -395,7 +415,7 @@ name|isInitialized
 return|;
 block|}
 DECL|method|isInitialized (boolean isInitialized)
-specifier|public
+specifier|private
 name|void
 name|isInitialized
 parameter_list|(
@@ -449,7 +469,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"dbConnectServerType"
+name|JabRefPreferences
+operator|.
+name|DB_CONNECT_SERVER_TYPE
 argument_list|,
 name|getServerType
 argument_list|()
@@ -461,7 +483,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"dbConnectHostname"
+name|JabRefPreferences
+operator|.
+name|DB_CONNECT_HOSTNAME
 argument_list|,
 name|getServerHostname
 argument_list|()
@@ -473,7 +497,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"dbConnectDatabase"
+name|JabRefPreferences
+operator|.
+name|DB_CONNECT_DATABASE
 argument_list|,
 name|getDatabase
 argument_list|()
@@ -485,7 +511,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"dbConnectUsername"
+name|JabRefPreferences
+operator|.
+name|DB_CONNECT_USERNAME
 argument_list|,
 name|getUsername
 argument_list|()

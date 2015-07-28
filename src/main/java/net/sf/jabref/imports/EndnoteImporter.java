@@ -100,6 +100,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * Importer for the Refer/Endnote format.  * modified to use article number for pages if pages are missing (some  * journals, e.g., Physical Review Letters, don't use pages anymore)  *  * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
 end_comment
@@ -113,6 +127,8 @@ extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -124,6 +140,8 @@ literal|"Refer/Endnote"
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -135,6 +153,8 @@ literal|"refer"
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -219,15 +239,19 @@ operator|.
 name|matches
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -258,11 +282,11 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|BufferedReader
@@ -355,6 +379,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -362,6 +387,7 @@ argument_list|(
 name|str
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -403,20 +429,12 @@ argument_list|()
 decl_stmt|;
 name|String
 name|author
-init|=
-literal|""
 decl_stmt|,
 name|Type
-init|=
-literal|""
 decl_stmt|,
 name|editor
-init|=
-literal|""
 decl_stmt|,
 name|artnum
-init|=
-literal|""
 decl_stmt|;
 for|for
 control|(
@@ -489,7 +507,9 @@ argument_list|()
 operator|<
 literal|3
 condition|)
+block|{
 continue|continue;
+block|}
 comment|/*                    * Details of Refer format for Journal Article and Book:                    *                    * Generic Ref Journal Article Book Code Author %A Author Author Year %D                    * Year Year Title %T Title Title Secondary Author %E Series Editor                    * Secondary Title %B Journal Series Title Place Published %C City                    * Publisher %I Publisher Volume %V Volume Volume Number of Volumes %6                    * Number of Volumes Number %N Issue Pages %P Pages Number of Pages                    * Edition %7 Edition Subsidiary Author %? Translator Alternate Title %J                    * Alternate Journal Label %F Label Label Keywords %K Keywords Keywords                    * Abstract %X Abstract Abstract Notes %O Notes Notes                    */
 name|String
 name|prefix
@@ -532,17 +552,21 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|author
 operator|=
 name|val
 expr_stmt|;
+block|}
 else|else
+block|{
 name|author
 operator|+=
 literal|" and "
 operator|+
 name|val
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -564,17 +588,21 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|editor
 operator|=
 name|val
 expr_stmt|;
+block|}
 else|else
+block|{
 name|editor
 operator|+=
 literal|" and "
 operator|+
 name|val
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -586,6 +614,7 @@ argument_list|(
 literal|"T"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -595,6 +624,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -617,10 +647,12 @@ argument_list|)
 operator|==
 literal|0
 condition|)
+block|{
 name|Type
 operator|=
 literal|"article"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -635,10 +667,12 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"incollection"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -653,10 +687,12 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"book"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -691,11 +727,12 @@ argument_list|)
 operator|==
 literal|0
 condition|)
-comment|// Proceedings
+block|{
 name|Type
 operator|=
 literal|"inproceedings"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -708,11 +745,12 @@ argument_list|)
 operator|==
 literal|0
 condition|)
-comment|// Techreport
+block|{
 name|Type
 operator|=
 literal|"techreport"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -725,10 +763,12 @@ argument_list|)
 operator|==
 literal|0
 condition|)
+block|{
 name|Type
 operator|=
 literal|"article"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -741,16 +781,20 @@ argument_list|)
 operator|==
 literal|0
 condition|)
+block|{
 name|Type
 operator|=
 literal|"phdthesis"
 expr_stmt|;
+block|}
 else|else
+block|{
 name|Type
 operator|=
 literal|"misc"
 expr_stmt|;
 comment|//
+block|}
 block|}
 elseif|else
 if|if
@@ -762,6 +806,7 @@ argument_list|(
 literal|"7"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -771,6 +816,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -781,6 +827,7 @@ argument_list|(
 literal|"C"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -790,6 +837,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -800,6 +848,7 @@ argument_list|(
 literal|"D"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -809,6 +858,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -819,6 +869,7 @@ argument_list|(
 literal|"8"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -828,6 +879,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -852,6 +904,7 @@ argument_list|)
 operator|==
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -861,6 +914,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -884,6 +938,7 @@ argument_list|(
 literal|"article"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -893,6 +948,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -910,6 +966,7 @@ argument_list|(
 literal|"inbook"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -919,7 +976,9 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 comment|/* if (Type.equals("inproceedings")) */
 name|hm
 operator|.
@@ -930,6 +989,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -951,6 +1011,7 @@ argument_list|(
 literal|"phdthesis"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -960,7 +1021,9 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|hm
 operator|.
 name|put
@@ -970,6 +1033,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// replace single dash page ranges (23-45) with double dashes (23--45):
 elseif|else
@@ -982,6 +1046,7 @@ argument_list|(
 literal|"P"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -998,6 +1063,7 @@ literal|"$1--$2"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1008,6 +1074,7 @@ argument_list|(
 literal|"V"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1017,6 +1084,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1027,6 +1095,7 @@ argument_list|(
 literal|"N"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1036,6 +1105,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1046,6 +1116,7 @@ argument_list|(
 literal|"U"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1055,6 +1126,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1080,6 +1152,7 @@ argument_list|(
 literal|"doi:"
 argument_list|)
 condition|)
+block|{
 name|doi
 operator|=
 name|doi
@@ -1089,6 +1162,7 @@ argument_list|(
 literal|4
 argument_list|)
 expr_stmt|;
+block|}
 name|hm
 operator|.
 name|put
@@ -1163,6 +1237,7 @@ argument_list|(
 literal|"K"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1172,6 +1247,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1182,6 +1258,7 @@ argument_list|(
 literal|"X"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1191,6 +1268,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1214,10 +1292,12 @@ argument_list|)
 operator|==
 literal|0
 condition|)
+block|{
 name|Type
 operator|=
 literal|"phdthesis"
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|val
@@ -1229,10 +1309,12 @@ argument_list|)
 operator|==
 literal|0
 condition|)
+block|{
 name|Type
 operator|=
 literal|"mastersthesis"
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1244,6 +1326,7 @@ argument_list|(
 literal|"F"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1260,6 +1343,7 @@ name|val
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// For Edited Book, EndNote puts the editors in the author field.
 comment|// We want them in the editor field so that bibtex knows it's an edited book
@@ -1295,6 +1379,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1307,6 +1392,7 @@ name|author
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1317,6 +1403,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1329,6 +1416,7 @@ name|editor
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|//if pages missing and article number given, use the article number
 if|if
 condition|(
@@ -1365,6 +1453,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1374,6 +1463,7 @@ argument_list|,
 name|artnum
 argument_list|)
 expr_stmt|;
+block|}
 name|BibtexEntry
 name|b
 init|=
@@ -1414,6 +1504,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|bibitems
 operator|.
 name|add
@@ -1421,6 +1512,7 @@ argument_list|(
 name|b
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|bibitems
@@ -1452,6 +1544,7 @@ name|index
 operator|>=
 literal|0
 condition|)
+block|{
 return|return
 name|AuthorList
 operator|.
@@ -1460,6 +1553,7 @@ argument_list|(
 name|s
 argument_list|)
 return|;
+block|}
 comment|// Look for the comma at the end:
 name|index
 operator|=
@@ -1474,12 +1568,14 @@ if|if
 condition|(
 name|index
 operator|==
+operator|(
 name|s
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|String
@@ -1516,6 +1612,7 @@ argument_list|)
 return|;
 block|}
 else|else
+block|{
 return|return
 name|AuthorList
 operator|.
@@ -1524,6 +1621,7 @@ argument_list|(
 name|s
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 end_class

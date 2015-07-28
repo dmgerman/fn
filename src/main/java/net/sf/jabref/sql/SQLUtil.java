@@ -82,37 +82,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ListIterator
+name|*
 import|;
 end_import
 
@@ -154,9 +124,9 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 literal|"key"
 argument_list|)
@@ -180,7 +150,7 @@ parameter_list|()
 block|{     }
 comment|/**      * loop through entry types to get required, optional, general and utility      * fields for this type.      */
 DECL|method|refreshFields ()
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|refreshFields
@@ -188,11 +158,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|SQLUtil
+operator|.
 name|allFields
 operator|==
 literal|null
 condition|)
 block|{
+name|SQLUtil
+operator|.
 name|allFields
 operator|=
 operator|new
@@ -205,14 +179,20 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|SQLUtil
+operator|.
 name|allFields
 operator|.
 name|clear
 argument_list|()
 expr_stmt|;
 block|}
+name|SQLUtil
+operator|.
 name|uniqueInsert
 argument_list|(
+name|SQLUtil
+operator|.
 name|allFields
 argument_list|,
 name|BibtexFields
@@ -221,8 +201,12 @@ name|getAllFieldNames
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|SQLUtil
+operator|.
 name|uniqueInsert
 argument_list|(
+name|SQLUtil
+operator|.
 name|allFields
 argument_list|,
 name|BibtexFields
@@ -245,14 +229,22 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|SQLUtil
+operator|.
 name|allFields
 operator|==
 literal|null
 condition|)
+block|{
+name|SQLUtil
+operator|.
 name|refreshFields
 argument_list|()
 expr_stmt|;
+block|}
 return|return
+name|SQLUtil
+operator|.
 name|allFields
 return|;
 block|}
@@ -272,8 +264,6 @@ literal|""
 decl_stmt|;
 name|String
 name|field
-init|=
-literal|""
 decl_stmt|;
 for|for
 control|(
@@ -284,6 +274,8 @@ literal|0
 init|;
 name|i
 operator|<
+name|SQLUtil
+operator|.
 name|getAllFields
 argument_list|()
 operator|.
@@ -296,6 +288,8 @@ control|)
 block|{
 name|field
 operator|=
+name|SQLUtil
+operator|.
 name|allFields
 operator|.
 name|get
@@ -309,14 +303,18 @@ name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|fieldstr
 operator|=
 name|fieldstr
 operator|+
 literal|", "
 expr_stmt|;
+block|}
 if|if
 condition|(
+name|SQLUtil
+operator|.
 name|reservedDBWords
 operator|.
 name|contains
@@ -324,10 +322,12 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 name|field
 operator|+=
 literal|"_"
 expr_stmt|;
+block|}
 name|fieldstr
 operator|=
 name|fieldstr
@@ -385,6 +385,7 @@ argument_list|(
 name|anArray
 argument_list|)
 condition|)
+block|{
 if|if
 condition|(
 operator|!
@@ -395,6 +396,7 @@ argument_list|(
 literal|"#"
 argument_list|)
 condition|)
+block|{
 name|list
 operator|.
 name|add
@@ -402,6 +404,8 @@ argument_list|(
 name|anArray
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 return|return
@@ -432,8 +436,6 @@ literal|""
 decl_stmt|;
 name|String
 name|field
-init|=
-literal|""
 decl_stmt|;
 name|ListIterator
 argument_list|<
@@ -463,6 +465,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|SQLUtil
+operator|.
 name|reservedDBWords
 operator|.
 name|contains
@@ -470,12 +474,14 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 name|field
 operator|=
 name|field
 operator|+
-literal|"_"
+literal|'_'
 expr_stmt|;
+block|}
 name|str
 operator|=
 name|str
@@ -491,12 +497,14 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|str
 operator|=
 name|str
 operator|+
 literal|", "
 expr_stmt|;
+block|}
 block|}
 return|return
 name|str
@@ -545,8 +553,6 @@ parameter_list|)
 block|{
 name|String
 name|currentField
-init|=
-literal|null
 decl_stmt|;
 for|for
 control|(
@@ -584,6 +590,7 @@ argument_list|(
 name|currentField
 argument_list|)
 condition|)
+block|{
 name|origList
 operator|.
 name|set
@@ -593,6 +600,7 @@ argument_list|,
 literal|"req"
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -603,6 +611,7 @@ argument_list|(
 name|currentField
 argument_list|)
 condition|)
+block|{
 name|origList
 operator|.
 name|set
@@ -612,6 +621,7 @@ argument_list|,
 literal|"opt"
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -622,6 +632,7 @@ argument_list|(
 name|currentField
 argument_list|)
 condition|)
+block|{
 name|origList
 operator|.
 name|set
@@ -631,6 +642,7 @@ argument_list|,
 literal|"uti"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|origList
@@ -649,8 +661,6 @@ parameter_list|)
 block|{
 name|String
 name|msg
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -707,7 +717,7 @@ literal|"SELECT * FROM "
 operator|+
 name|tableName
 operator|+
-literal|";"
+literal|';'
 decl_stmt|;
 name|Statement
 name|res
@@ -715,6 +725,8 @@ init|=
 operator|(
 name|Statement
 operator|)
+name|SQLUtil
+operator|.
 name|processQueryWithResults
 argument_list|(
 name|conn
@@ -783,6 +795,8 @@ name|Connection
 operator|)
 name|out
 decl_stmt|;
+name|SQLUtil
+operator|.
 name|executeQuery
 argument_list|(
 name|conn
@@ -852,6 +866,8 @@ operator|)
 name|out
 decl_stmt|;
 return|return
+name|SQLUtil
+operator|.
 name|executeQueryWithResults
 argument_list|(
 name|conn
@@ -880,8 +896,6 @@ parameter_list|)
 block|{
 name|String
 name|url
-init|=
-literal|""
 decl_stmt|;
 name|url
 operator|=
@@ -905,7 +919,7 @@ operator|+
 operator|(
 name|withDBName
 condition|?
-literal|"/"
+literal|'/'
 operator|+
 name|dbStrings
 operator|.
@@ -938,6 +952,8 @@ block|{
 name|ResultSet
 name|rs
 init|=
+name|SQLUtil
+operator|.
 name|executeQueryWithResults
 argument_list|(
 name|conn
@@ -977,7 +993,7 @@ return|;
 block|}
 comment|/**      * Utility method for executing DML      *       * @param conn      *            The DML Connection object that will execute the SQL      * @param qry      *            The DML statements to be executed      */
 DECL|method|executeQuery (Connection conn, String qry)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|executeQuery
@@ -1042,7 +1058,7 @@ expr_stmt|;
 block|}
 comment|/**      * Utility method for executing DML      *       * @param conn      *            The DML Connection object that will execute the SQL      * @param qry      *            The DML statements to be executed      */
 DECL|method|executeQueryWithResults (Connection conn, String qry)
-specifier|public
+specifier|private
 specifier|static
 name|Statement
 name|executeQueryWithResults

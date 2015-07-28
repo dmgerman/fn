@@ -30,6 +30,48 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|MonthUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|YearUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|text
@@ -69,7 +111,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * A comparator for BibtexEntry fields  *   * Initial Version:  *   * @author alver  * @version Date: Oct 13, 2005 Time: 10:10:04 PM To  *   * Current Version:  *   * @author $Author$  * @version $Revision$ ($Date$)  *   * TODO: Testcases  *   */
+comment|/**  *   * A comparator for BibtexEntry fields  *   * Initial Version:  *   * @author alver  * @version Date: Oct 13, 2005 Time: 10:10:04 PM To  *   * TODO: Testcases  *   */
 end_comment
 
 begin_class
@@ -93,6 +135,8 @@ static|static
 block|{
 try|try
 block|{
+name|FieldComparator
+operator|.
 name|collator
 operator|=
 operator|new
@@ -126,6 +170,8 @@ name|ParseException
 name|e
 parameter_list|)
 block|{
+name|FieldComparator
+operator|.
 name|collator
 operator|=
 name|Collator
@@ -137,32 +183,50 @@ block|}
 block|}
 DECL|field|field
 specifier|private
+specifier|final
 name|String
 index|[]
 name|field
 decl_stmt|;
 DECL|field|fieldName
 specifier|private
+specifier|final
 name|String
 name|fieldName
 decl_stmt|;
 DECL|field|isNameField
-DECL|field|isTypeHeader
-DECL|field|isYearField
-DECL|field|isMonthField
-DECL|field|isNumeric
+specifier|private
+specifier|final
 name|boolean
 name|isNameField
-decl_stmt|,
+decl_stmt|;
+DECL|field|isTypeHeader
+specifier|private
+specifier|final
+name|boolean
 name|isTypeHeader
-decl_stmt|,
+decl_stmt|;
+DECL|field|isYearField
+specifier|private
+specifier|final
+name|boolean
 name|isYearField
-decl_stmt|,
+decl_stmt|;
+DECL|field|isMonthField
+specifier|private
+specifier|final
+name|boolean
 name|isMonthField
-decl_stmt|,
+decl_stmt|;
+DECL|field|isNumeric
+specifier|private
+specifier|final
+name|boolean
 name|isNumeric
 decl_stmt|;
 DECL|field|multiplier
+specifier|private
+specifier|final
 name|int
 name|multiplier
 decl_stmt|;
@@ -308,6 +372,8 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int
@@ -381,11 +447,13 @@ if|if
 condition|(
 name|isMonthField
 condition|)
+block|{
 name|localMultiplier
 operator|=
 operator|-
 name|localMultiplier
 expr_stmt|;
+block|}
 comment|// Catch all cases involving null:
 if|if
 condition|(
@@ -393,6 +461,7 @@ name|f1
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|f2
 operator|==
@@ -402,16 +471,19 @@ literal|0
 else|:
 name|localMultiplier
 return|;
+block|}
 if|if
 condition|(
 name|f2
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 operator|-
 name|localMultiplier
 return|;
+block|}
 comment|// Now we now that both f1 and f2 are != null
 if|if
 condition|(
@@ -452,7 +524,7 @@ block|{
 comment|/*              * [ 1285977 ] Impossible to properly sort a numeric field              *               * http://sourceforge.net/tracker/index.php?func=detail&aid=1285977&group_id=92314&atid=600307              */
 name|f1
 operator|=
-name|Util
+name|YearUtil
 operator|.
 name|toFourDigitYear
 argument_list|(
@@ -464,7 +536,7 @@ argument_list|)
 expr_stmt|;
 name|f2
 operator|=
-name|Util
+name|YearUtil
 operator|.
 name|toFourDigitYear
 argument_list|(
@@ -573,13 +645,17 @@ comment|// Parsing failed.
 block|}
 if|if
 condition|(
+operator|(
 name|i2
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|i1
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// Ok, parsing was successful. Update f1 and f2:
@@ -638,8 +714,6 @@ comment|// Else none of them were parseable, and we can fall back on comparing s
 block|}
 name|int
 name|result
-init|=
-literal|0
 decl_stmt|;
 if|if
 condition|(
@@ -781,6 +855,8 @@ argument_list|()
 decl_stmt|;
 name|result
 operator|=
+name|FieldComparator
+operator|.
 name|collator
 operator|.
 name|compare
@@ -831,9 +907,11 @@ name|o
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|o
 return|;
+block|}
 block|}
 return|return
 literal|null

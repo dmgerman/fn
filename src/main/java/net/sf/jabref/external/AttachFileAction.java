@@ -89,17 +89,12 @@ DECL|class|AttachFileAction
 specifier|public
 class|class
 name|AttachFileAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
-DECL|field|entry
-name|BibtexEntry
-name|entry
-init|=
-literal|null
-decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -118,6 +113,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void
@@ -135,10 +132,13 @@ name|length
 operator|!=
 literal|1
 condition|)
+block|{
 return|return;
 comment|// TODO: display error message?
+block|}
+name|BibtexEntry
 name|entry
-operator|=
+init|=
 name|panel
 operator|.
 name|getSelectedEntries
@@ -146,7 +146,7 @@ argument_list|()
 index|[
 literal|0
 index|]
-expr_stmt|;
+decl_stmt|;
 name|FileListEntry
 name|flEntry
 init|=
@@ -225,6 +225,7 @@ name|oldVal
 operator|!=
 literal|null
 condition|)
+block|{
 name|model
 operator|.
 name|setContent
@@ -232,6 +233,7 @@ argument_list|(
 name|oldVal
 argument_list|)
 expr_stmt|;
+block|}
 name|model
 operator|.
 name|addEntry

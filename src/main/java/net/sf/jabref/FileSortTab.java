@@ -206,22 +206,27 @@ implements|implements
 name|PrefsTab
 block|{
 DECL|field|_prefs
+specifier|private
+specifier|final
 name|JabRefPreferences
 name|_prefs
 decl_stmt|;
-DECL|field|_frame
-name|JabRefFrame
-name|_frame
-decl_stmt|;
 DECL|field|saveInOriginalOrder
-DECL|field|saveInTableOrder
-DECL|field|saveInSpecifiedOrder
 specifier|private
+specifier|final
 name|JRadioButton
 name|saveInOriginalOrder
-decl_stmt|,
+decl_stmt|;
+DECL|field|saveInTableOrder
+specifier|private
+specifier|final
+name|JRadioButton
 name|saveInTableOrder
-decl_stmt|,
+decl_stmt|;
+DECL|field|saveInSpecifiedOrder
+specifier|private
+specifier|final
+name|JRadioButton
 name|saveInSpecifiedOrder
 decl_stmt|;
 DECL|field|savePriDesc
@@ -258,14 +263,21 @@ decl_stmt|,
 name|saveTerSort
 decl_stmt|;
 DECL|field|exportInOriginalOrder
-DECL|field|exportInTableOrder
-DECL|field|exportInSpecifiedOrder
 specifier|private
+specifier|final
 name|JRadioButton
 name|exportInOriginalOrder
-decl_stmt|,
+decl_stmt|;
+DECL|field|exportInTableOrder
+specifier|private
+specifier|final
+name|JRadioButton
 name|exportInTableOrder
-decl_stmt|,
+decl_stmt|;
+DECL|field|exportInSpecifiedOrder
+specifier|private
+specifier|final
+name|JRadioButton
 name|exportInSpecifiedOrder
 decl_stmt|;
 DECL|field|exportPriDesc
@@ -317,12 +329,6 @@ operator|.
 name|_prefs
 operator|=
 name|prefs
-expr_stmt|;
-name|this
-operator|.
-name|_frame
-operator|=
-name|frame
 expr_stmt|;
 name|FormLayout
 name|layout
@@ -428,6 +434,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -688,6 +696,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -739,6 +749,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -790,6 +802,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1182,6 +1196,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1442,6 +1458,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1493,6 +1511,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1544,6 +1564,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1898,6 +1920,8 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -2371,6 +2395,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -2638,6 +2664,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -2648,6 +2676,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

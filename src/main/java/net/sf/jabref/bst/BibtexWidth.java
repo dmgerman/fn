@@ -21,7 +21,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  *   * The |built_in| function {\.{purify\$}} pops the top (string) literal, removes  * nonalphanumeric characters except for |white_space| and |sep_char| characters  * (these get converted to a |space|) and removes certain alphabetic characters  * contained in the control sequences associated with a special character, and  * pushes the resulting string. If the literal isn't a string, it complains and  * pushes the null string.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  *   * The |built_in| function {\.{purify\$}} pops the top (string) literal, removes  * nonalphanumeric characters except for |white_space| and |sep_char| characters  * (these get converted to a |space|) and removes certain alphabetic characters  * contained in the control sequences associated with a special character, and  * pushes the resulting string. If the literal isn't a string, it complains and  * pushes the null string.  *   */
 end_comment
 
 begin_class
@@ -32,12 +32,14 @@ name|BibtexWidth
 block|{
 comment|/*      * Quoted from Bibtex:      *       * Now we initialize the system-dependent |char_width| array, for which      * |space| is the only |white_space| character given a nonzero printing      * width. The widths here are taken from Stanford's June~'87 $cmr10$~font      * and represent hundredths of a point (rounded), but since they're used      * only for relative comparisons, the units have no meaning.      */
 DECL|field|widths
+specifier|private
 specifier|static
 name|int
 index|[]
 name|widths
 decl_stmt|;
 DECL|method|getSpecialCharWidth (char[] c, int pos)
+specifier|private
 specifier|static
 name|int
 name|getSpecialCharWidth
@@ -52,9 +54,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|pos
 operator|+
 literal|1
+operator|)
 operator|<
 name|c
 operator|.
@@ -63,13 +67,16 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|c
 index|[
 name|pos
 index|]
 operator|==
 literal|'o'
+operator|)
 operator|&&
+operator|(
 name|c
 index|[
 name|pos
@@ -78,19 +85,25 @@ literal|1
 index|]
 operator|==
 literal|'e'
+operator|)
 condition|)
+block|{
 return|return
 literal|778
 return|;
+block|}
 if|if
 condition|(
+operator|(
 name|c
 index|[
 name|pos
 index|]
 operator|==
 literal|'O'
+operator|)
 operator|&&
+operator|(
 name|c
 index|[
 name|pos
@@ -99,19 +112,25 @@ literal|1
 index|]
 operator|==
 literal|'E'
+operator|)
 condition|)
+block|{
 return|return
 literal|1014
 return|;
+block|}
 if|if
 condition|(
+operator|(
 name|c
 index|[
 name|pos
 index|]
 operator|==
 literal|'a'
+operator|)
 operator|&&
+operator|(
 name|c
 index|[
 name|pos
@@ -120,19 +139,25 @@ literal|1
 index|]
 operator|==
 literal|'e'
+operator|)
 condition|)
+block|{
 return|return
 literal|722
 return|;
+block|}
 if|if
 condition|(
+operator|(
 name|c
 index|[
 name|pos
 index|]
 operator|==
 literal|'A'
+operator|)
 operator|&&
+operator|(
 name|c
 index|[
 name|pos
@@ -141,19 +166,25 @@ literal|1
 index|]
 operator|==
 literal|'E'
+operator|)
 condition|)
+block|{
 return|return
 literal|903
 return|;
+block|}
 if|if
 condition|(
+operator|(
 name|c
 index|[
 name|pos
 index|]
 operator|==
 literal|'s'
+operator|)
 operator|&&
+operator|(
 name|c
 index|[
 name|pos
@@ -162,12 +193,17 @@ literal|1
 index|]
 operator|==
 literal|'s'
+operator|)
 condition|)
+block|{
 return|return
 literal|500
 return|;
 block|}
+block|}
 return|return
+name|BibtexWidth
+operator|.
 name|getCharWidth
 argument_list|(
 name|c
@@ -189,11 +225,15 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|BibtexWidth
+operator|.
 name|widths
 operator|==
 literal|null
 condition|)
 block|{
+name|BibtexWidth
+operator|.
 name|widths
 operator|=
 operator|new
@@ -217,6 +257,8 @@ name|i
 operator|++
 control|)
 block|{
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 name|i
@@ -225,6 +267,8 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|32
@@ -232,6 +276,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|33
@@ -239,6 +285,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|34
@@ -246,6 +294,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|35
@@ -253,6 +303,8 @@ index|]
 operator|=
 literal|833
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|36
@@ -260,6 +312,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|37
@@ -267,6 +321,8 @@ index|]
 operator|=
 literal|833
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|38
@@ -274,6 +330,8 @@ index|]
 operator|=
 literal|778
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|39
@@ -281,6 +339,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|40
@@ -288,6 +348,8 @@ index|]
 operator|=
 literal|389
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|41
@@ -295,6 +357,8 @@ index|]
 operator|=
 literal|389
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|42
@@ -302,6 +366,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|43
@@ -309,6 +375,8 @@ index|]
 operator|=
 literal|778
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|44
@@ -316,6 +384,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|45
@@ -323,6 +393,8 @@ index|]
 operator|=
 literal|333
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|46
@@ -330,6 +402,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|47
@@ -337,6 +411,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|48
@@ -344,6 +420,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|49
@@ -351,6 +429,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|50
@@ -358,6 +438,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|51
@@ -365,6 +447,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|52
@@ -372,6 +456,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|53
@@ -379,6 +465,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|54
@@ -386,6 +474,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|55
@@ -393,6 +483,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|56
@@ -400,6 +492,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|57
@@ -407,6 +501,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|58
@@ -414,6 +510,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|59
@@ -421,6 +519,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|60
@@ -428,6 +528,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|61
@@ -435,6 +537,8 @@ index|]
 operator|=
 literal|778
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|62
@@ -442,6 +546,8 @@ index|]
 operator|=
 literal|472
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|63
@@ -449,6 +555,8 @@ index|]
 operator|=
 literal|472
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|64
@@ -456,6 +564,8 @@ index|]
 operator|=
 literal|778
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|65
@@ -463,6 +573,8 @@ index|]
 operator|=
 literal|750
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|66
@@ -470,6 +582,8 @@ index|]
 operator|=
 literal|708
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|67
@@ -477,6 +591,8 @@ index|]
 operator|=
 literal|722
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|68
@@ -484,6 +600,8 @@ index|]
 operator|=
 literal|764
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|69
@@ -491,6 +609,8 @@ index|]
 operator|=
 literal|681
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|70
@@ -498,6 +618,8 @@ index|]
 operator|=
 literal|653
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|71
@@ -505,6 +627,8 @@ index|]
 operator|=
 literal|785
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|72
@@ -512,6 +636,8 @@ index|]
 operator|=
 literal|750
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|73
@@ -519,6 +645,8 @@ index|]
 operator|=
 literal|361
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|74
@@ -526,6 +654,8 @@ index|]
 operator|=
 literal|514
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|75
@@ -533,6 +663,8 @@ index|]
 operator|=
 literal|778
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|76
@@ -540,6 +672,8 @@ index|]
 operator|=
 literal|625
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|77
@@ -547,6 +681,8 @@ index|]
 operator|=
 literal|917
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|78
@@ -554,6 +690,8 @@ index|]
 operator|=
 literal|750
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|79
@@ -561,6 +699,8 @@ index|]
 operator|=
 literal|778
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|80
@@ -568,6 +708,8 @@ index|]
 operator|=
 literal|681
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|81
@@ -575,6 +717,8 @@ index|]
 operator|=
 literal|778
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|82
@@ -582,6 +726,8 @@ index|]
 operator|=
 literal|736
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|83
@@ -589,6 +735,8 @@ index|]
 operator|=
 literal|556
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|84
@@ -596,6 +744,8 @@ index|]
 operator|=
 literal|722
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|85
@@ -603,6 +753,8 @@ index|]
 operator|=
 literal|750
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|86
@@ -610,6 +762,8 @@ index|]
 operator|=
 literal|750
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|87
@@ -617,6 +771,8 @@ index|]
 operator|=
 literal|1028
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|88
@@ -624,6 +780,8 @@ index|]
 operator|=
 literal|750
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|89
@@ -631,6 +789,8 @@ index|]
 operator|=
 literal|750
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|90
@@ -638,6 +798,8 @@ index|]
 operator|=
 literal|611
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|91
@@ -645,6 +807,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|92
@@ -652,6 +816,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|93
@@ -659,6 +825,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|94
@@ -666,6 +834,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|95
@@ -673,6 +843,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|96
@@ -680,6 +852,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|97
@@ -687,6 +861,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|98
@@ -694,6 +870,8 @@ index|]
 operator|=
 literal|556
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|99
@@ -701,6 +879,8 @@ index|]
 operator|=
 literal|444
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|100
@@ -708,6 +888,8 @@ index|]
 operator|=
 literal|556
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|101
@@ -715,6 +897,8 @@ index|]
 operator|=
 literal|444
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|102
@@ -722,6 +906,8 @@ index|]
 operator|=
 literal|306
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|103
@@ -729,6 +915,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|104
@@ -736,6 +924,8 @@ index|]
 operator|=
 literal|556
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|105
@@ -743,6 +933,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|106
@@ -750,6 +942,8 @@ index|]
 operator|=
 literal|306
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|107
@@ -757,6 +951,8 @@ index|]
 operator|=
 literal|528
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|108
@@ -764,6 +960,8 @@ index|]
 operator|=
 literal|278
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|109
@@ -771,6 +969,8 @@ index|]
 operator|=
 literal|833
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|110
@@ -778,6 +978,8 @@ index|]
 operator|=
 literal|556
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|111
@@ -785,6 +987,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|112
@@ -792,6 +996,8 @@ index|]
 operator|=
 literal|556
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|113
@@ -799,6 +1005,8 @@ index|]
 operator|=
 literal|528
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|114
@@ -806,6 +1014,8 @@ index|]
 operator|=
 literal|392
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|115
@@ -813,6 +1023,8 @@ index|]
 operator|=
 literal|394
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|116
@@ -820,6 +1032,8 @@ index|]
 operator|=
 literal|389
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|117
@@ -827,6 +1041,8 @@ index|]
 operator|=
 literal|556
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|118
@@ -834,6 +1050,8 @@ index|]
 operator|=
 literal|528
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|119
@@ -841,6 +1059,8 @@ index|]
 operator|=
 literal|722
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|120
@@ -848,6 +1068,8 @@ index|]
 operator|=
 literal|528
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|121
@@ -855,6 +1077,8 @@ index|]
 operator|=
 literal|528
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|122
@@ -862,6 +1086,8 @@ index|]
 operator|=
 literal|444
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|123
@@ -869,6 +1095,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|124
@@ -876,6 +1104,8 @@ index|]
 operator|=
 literal|1000
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|125
@@ -883,6 +1113,8 @@ index|]
 operator|=
 literal|500
 expr_stmt|;
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 literal|126
@@ -893,16 +1125,22 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 literal|0
 operator|<=
 name|c
+operator|)
 operator|&&
+operator|(
 name|c
 operator|<
 literal|128
+operator|)
 condition|)
 block|{
 return|return
+name|BibtexWidth
+operator|.
 name|widths
 index|[
 name|c
@@ -986,15 +1224,21 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|braceLevel
 operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|<
 name|n
+operator|)
 operator|&&
 operator|(
 name|c
@@ -1014,13 +1258,17 @@ expr_stmt|;
 comment|// skip brace
 while|while
 condition|(
+operator|(
 name|i
-argument_list|<
+operator|<
 name|n
+operator|)
 operator|&&
+operator|(
 name|braceLevel
-argument_list|>
+operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|i
@@ -1034,9 +1282,11 @@ name|i
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|n
+operator|)
 operator|&&
 name|Character
 operator|.
@@ -1055,13 +1305,17 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|i
 operator|<
 name|n
+operator|)
 operator|&&
+operator|(
 name|i
 operator|==
 name|afterBackslash
+operator|)
 condition|)
 block|{
 name|i
@@ -1087,6 +1341,8 @@ condition|)
 block|{
 name|result
 operator|+=
+name|BibtexWidth
+operator|.
 name|getSpecialCharWidth
 argument_list|(
 name|c
@@ -1098,9 +1354,11 @@ block|}
 block|}
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|n
+operator|)
 operator|&&
 name|Character
 operator|.
@@ -1119,20 +1377,26 @@ expr_stmt|;
 block|}
 while|while
 condition|(
+operator|(
 name|i
-argument_list|<
+operator|<
 name|n
+operator|)
 operator|&&
+operator|(
 name|braceLevel
-argument_list|>
+operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 name|c
 index|[
 name|i
 index|]
 operator|!=
 literal|'\\'
+operator|)
 condition|)
 block|{
 if|if
@@ -1165,8 +1429,11 @@ operator|++
 expr_stmt|;
 block|}
 else|else
+block|{
 name|result
 operator|+=
+name|BibtexWidth
+operator|.
 name|getCharWidth
 argument_list|(
 name|c
@@ -1175,6 +1442,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -1218,6 +1486,8 @@ block|}
 block|}
 name|result
 operator|+=
+name|BibtexWidth
+operator|.
 name|getCharWidth
 argument_list|(
 name|c

@@ -56,6 +56,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -508,6 +518,8 @@ name|expecting
 init|=
 literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b> In this paper, we initiate a formal study of security on Android: Google's new open-source platform for mobile devices. Tags: Paper android google Open-Source Devices</font>"
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|expecting
@@ -588,6 +600,8 @@ init|=
 literal|"<span style=\"background-color:#3399FF;\">Google</span>"
 decl_stmt|;
 comment|// check
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|"Actual message: "
@@ -687,6 +701,8 @@ init|=
 literal|"<span style=\"background-color:#3399FF;\">study</span>"
 decl_stmt|;
 comment|// check
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|result
@@ -697,6 +713,8 @@ name|containing
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|result
@@ -780,6 +798,8 @@ init|=
 literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b> In this paper, we initiate a formal study of security on Android: Google's new open-source platform for mobile devices. Tags: Paper android<span style=\"background-color:#3399FF;\">google</span> Open-Source Devices</font>"
 decl_stmt|;
 comment|// check
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -899,6 +919,8 @@ operator|+
 literal|"\">Open</span>-Source Devices</font>"
 decl_stmt|;
 comment|// check
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|expected

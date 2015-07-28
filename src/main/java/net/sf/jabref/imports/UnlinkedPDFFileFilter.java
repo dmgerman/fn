@@ -108,6 +108,8 @@ name|database
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|accept (File pathname)
 specifier|public
 name|boolean
@@ -126,6 +128,7 @@ argument_list|(
 name|pathname
 argument_list|)
 condition|)
+block|{
 return|return
 operator|!
 name|lookup
@@ -135,6 +138,7 @@ argument_list|(
 name|pathname
 argument_list|)
 return|;
+block|}
 return|return
 literal|false
 return|;

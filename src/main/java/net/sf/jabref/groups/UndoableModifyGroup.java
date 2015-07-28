@@ -40,9 +40,24 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|groups
+operator|.
+name|structure
+operator|.
+name|AbstractGroup
+import|;
+end_import
+
 begin_class
 DECL|class|UndoableModifyGroup
-specifier|public
 class|class
 name|UndoableModifyGroup
 extends|extends
@@ -130,6 +145,8 @@ operator|=
 name|groupsRoot
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -154,6 +171,8 @@ literal|"modify group"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String
@@ -178,6 +197,8 @@ literal|"modify group"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -210,6 +231,8 @@ name|revalidateGroups
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void

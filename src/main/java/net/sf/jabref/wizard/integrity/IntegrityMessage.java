@@ -132,14 +132,19 @@ literal|2010
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
 name|int
 DECL|field|FULL_MODE
 name|FULL_MODE
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 comment|// print with Bibtex Entry
 DECL|field|SINLGE_MODE
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|SINLGE_MODE
 init|=
 literal|2
@@ -151,30 +156,37 @@ specifier|static
 name|int
 name|printMode
 init|=
+name|IntegrityMessage
+operator|.
 name|SINLGE_MODE
 decl_stmt|;
 DECL|field|type
 specifier|private
+specifier|final
 name|int
 name|type
 decl_stmt|;
 DECL|field|entry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|fieldName
 specifier|private
+specifier|final
 name|String
 name|fieldName
 decl_stmt|;
 DECL|field|additionalInfo
 specifier|private
+specifier|final
 name|Object
 name|additionalInfo
 decl_stmt|;
 DECL|field|msg
 specifier|private
+specifier|final
 name|String
 name|msg
 decl_stmt|;
@@ -186,7 +198,6 @@ decl_stmt|;
 comment|// the user has changed sometings on BibtexEntry
 DECL|method|setPrintMode (int newMode)
 specifier|public
-specifier|final
 specifier|synchronized
 specifier|static
 name|void
@@ -196,6 +207,8 @@ name|int
 name|newMode
 parameter_list|)
 block|{
+name|IntegrityMessage
+operator|.
 name|printMode
 operator|=
 name|newMode
@@ -253,7 +266,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getMessage ()
-specifier|public
+specifier|private
 name|String
 name|getMessage
 parameter_list|()
@@ -301,6 +314,8 @@ return|return
 name|back
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -314,8 +329,12 @@ name|msg
 decl_stmt|;
 if|if
 condition|(
+name|IntegrityMessage
+operator|.
 name|printMode
 operator|==
+name|IntegrityMessage
+operator|.
 name|FULL_MODE
 condition|)
 block|{

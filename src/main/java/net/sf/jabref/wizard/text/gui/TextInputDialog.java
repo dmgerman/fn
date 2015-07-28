@@ -366,6 +366,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|ActionMap
 import|;
 end_import
@@ -814,6 +824,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
 name|Util
 import|;
 end_import
@@ -906,6 +918,7 @@ name|ActionListener
 block|{
 DECL|field|okButton
 specifier|private
+specifier|final
 name|JButton
 name|okButton
 init|=
@@ -915,6 +928,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|cancelButton
 specifier|private
+specifier|final
 name|JButton
 name|cancelButton
 init|=
@@ -924,6 +938,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|insertButton
 specifier|private
+specifier|final
 name|JButton
 name|insertButton
 init|=
@@ -933,6 +948,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|parseWithFreeCiteButton
 specifier|private
+specifier|final
 name|JButton
 name|parseWithFreeCiteButton
 init|=
@@ -942,6 +958,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|panel1
 specifier|private
+specifier|final
 name|JPanel
 name|panel1
 init|=
@@ -951,6 +968,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|buttons
 specifier|private
+specifier|final
 name|JPanel
 name|buttons
 init|=
@@ -960,6 +978,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|rawPanel
 specifier|private
+specifier|final
 name|JPanel
 name|rawPanel
 init|=
@@ -969,6 +988,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|sourcePanel
 specifier|private
+specifier|final
 name|JPanel
 name|sourcePanel
 init|=
@@ -978,6 +998,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|warnPanel
 specifier|private
+specifier|final
 name|IntegrityMessagePanel
 name|warnPanel
 decl_stmt|;
@@ -993,11 +1014,13 @@ name|overRadio
 decl_stmt|;
 DECL|field|entry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|inputMenu
-specifier|public
+specifier|private
+specifier|final
 name|JPopupMenu
 name|inputMenu
 init|=
@@ -1023,17 +1046,20 @@ name|preview
 decl_stmt|;
 DECL|field|inputChanged
 specifier|private
+specifier|final
 name|boolean
 name|inputChanged
 decl_stmt|;
 comment|// input changed, fired by insert buttons
 DECL|field|marked
 specifier|private
+specifier|final
 name|TagToMarkedTextStore
 name|marked
 decl_stmt|;
 DECL|field|_frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|_frame
 decl_stmt|;
@@ -1249,6 +1275,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1396,6 +1424,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2451,7 +2481,7 @@ block|}
 comment|// ---------------------------------------------------------------------------
 comment|// ---------------------------------------------------------------------------
 DECL|method|addStylesToDocument (StyledDocument doc)
-specifier|protected
+specifier|private
 name|void
 name|addStylesToDocument
 parameter_list|(
@@ -2832,6 +2862,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|entry
 operator|.
 name|setField
@@ -2843,6 +2874,7 @@ operator|+
 name|txt
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 comment|// "null"+"txt" Strings forbidden
@@ -2880,6 +2912,8 @@ block|}
 comment|// ---------------------------------------------------------------------------
 comment|//  ActionListener
 comment|//  handling of buttons-click actions
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -3282,6 +3316,7 @@ argument_list|(
 name|allField
 argument_list|)
 condition|)
+block|{
 name|f
 operator|.
 name|add
@@ -3289,6 +3324,7 @@ argument_list|(
 name|allField
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|f
@@ -3333,6 +3369,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -3377,9 +3415,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|selEnd
 operator|-
 name|selStart
+operator|)
 operator|>
 literal|0
 condition|)
@@ -3455,6 +3495,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -3598,6 +3640,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -3641,6 +3685,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -3666,6 +3712,8 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|valueChanged (ListSelectionEvent e)
 specifier|public
 name|void
@@ -3799,16 +3847,19 @@ name|DefaultListCellRenderer
 block|{
 DECL|field|baseFont
 specifier|private
+specifier|final
 name|Font
 name|baseFont
 decl_stmt|;
 DECL|field|usedFont
 specifier|private
+specifier|final
 name|Font
 name|usedFont
 decl_stmt|;
 DECL|field|okIcon
 specifier|private
+specifier|final
 name|ImageIcon
 name|okIcon
 init|=
@@ -3821,6 +3872,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|needIcon
 specifier|private
+specifier|final
 name|ImageIcon
 name|needIcon
 init|=
@@ -3856,6 +3908,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* This is the only method defined by ListCellRenderer.  We just          * reconfigure the Jlabel each time we're called.          */
+annotation|@
+name|Override
 DECL|method|getListCellRendererComponent ( JList list, Object value, int index, boolean iss, boolean chf)
 specifier|public
 name|Component
@@ -3974,11 +4028,14 @@ block|}
 block|}
 comment|//---------------------------------------------------------------
 DECL|class|FieldListMouseListener
+specifier|private
 class|class
 name|FieldListMouseListener
 extends|extends
 name|MouseAdapter
 block|{
+annotation|@
+name|Override
 DECL|method|mouseClicked (MouseEvent e)
 specifier|public
 name|void
@@ -4020,6 +4077,7 @@ name|MouseAdapter
 block|{
 DECL|field|popMenu
 specifier|private
+specifier|final
 name|JPopupMenu
 name|popMenu
 decl_stmt|;
@@ -4036,6 +4094,8 @@ operator|=
 name|menu
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|mousePressed (MouseEvent e)
 specifier|public
 name|void
@@ -4051,6 +4111,8 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|mouseReleased (MouseEvent e)
 specifier|public
 name|void
@@ -4155,6 +4217,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -4201,6 +4265,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -4208,6 +4274,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -4261,12 +4329,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 specifier|abstract

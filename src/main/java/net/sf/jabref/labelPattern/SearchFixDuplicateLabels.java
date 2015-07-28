@@ -110,10 +110,12 @@ name|AbstractWorker
 block|{
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|dupes
+specifier|private
 name|HashMap
 argument_list|<
 name|String
@@ -142,6 +144,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void

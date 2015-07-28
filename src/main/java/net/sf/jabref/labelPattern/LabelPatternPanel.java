@@ -214,7 +214,21 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -257,6 +271,7 @@ block|{
 comment|// used by both LabelPatternPanel and TabLabelPAttern
 DECL|field|gbl
 specifier|protected
+specifier|final
 name|GridBagLayout
 name|gbl
 init|=
@@ -266,6 +281,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|con
 specifier|protected
+specifier|final
 name|GridBagConstraints
 name|con
 init|=
@@ -275,28 +291,14 @@ argument_list|()
 decl_stmt|;
 DECL|field|help
 specifier|private
+specifier|final
 name|HelpAction
 name|help
-decl_stmt|;
-DECL|field|btnDefaultAll
-DECL|field|btnDefault
-specifier|private
-name|JButton
-name|btnDefaultAll
-decl_stmt|,
-name|btnDefault
-decl_stmt|;
-DECL|field|lblEntryType
-DECL|field|lblKeyPattern
-specifier|private
-name|JLabel
-name|lblEntryType
-decl_stmt|,
-name|lblKeyPattern
 decl_stmt|;
 comment|// default pattern
 DECL|field|defaultPat
 specifier|protected
+specifier|final
 name|JTextField
 name|defaultPat
 init|=
@@ -307,6 +309,7 @@ decl_stmt|;
 comment|// one field for each type
 DECL|field|textFields
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -408,8 +411,9 @@ name|gbl
 argument_list|)
 expr_stmt|;
 comment|// The header - can be removed
+name|JLabel
 name|lblEntryType
-operator|=
+init|=
 operator|new
 name|JLabel
 argument_list|(
@@ -420,7 +424,7 @@ argument_list|(
 literal|"Entry type"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|Font
 name|f
 init|=
@@ -515,8 +519,9 @@ argument_list|(
 name|lblEntryType
 argument_list|)
 expr_stmt|;
+name|JLabel
 name|lblKeyPattern
-operator|=
+init|=
 operator|new
 name|JLabel
 argument_list|(
@@ -527,7 +532,7 @@ argument_list|(
 literal|"Key pattern"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|lblKeyPattern
 operator|.
 name|setFont
@@ -682,8 +687,9 @@ argument_list|,
 literal|5
 argument_list|)
 expr_stmt|;
+name|JButton
 name|btnDefault
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -694,7 +700,7 @@ argument_list|(
 literal|"Default"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|btnDefault
 operator|.
 name|addActionListener
@@ -703,6 +709,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -726,7 +734,9 @@ name|defaults
 operator|.
 name|get
 argument_list|(
-literal|"defaultLabelPattern"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_LABEL_PATTERN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -958,8 +968,9 @@ name|help
 argument_list|)
 expr_stmt|;
 comment|// And finally a button to reset everything
+name|JButton
 name|btnDefaultAll
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -970,7 +981,7 @@ argument_list|(
 literal|"Reset all"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|con
 operator|.
 name|gridx
@@ -1093,7 +1104,9 @@ name|defaults
 operator|.
 name|get
 argument_list|(
-literal|"defaultLabelPattern"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_LABEL_PATTERN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1128,7 +1141,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -1456,17 +1469,13 @@ argument_list|()
 control|)
 block|{
 name|String
-name|s
-init|=
-name|s1
-decl_stmt|,
 name|text
 init|=
 name|textFields
 operator|.
 name|get
 argument_list|(
-name|s
+name|s1
 argument_list|)
 operator|.
 name|getText
@@ -1485,15 +1494,17 @@ name|trim
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|keypatterns
 operator|.
 name|addLabelPattern
 argument_list|(
-name|s
+name|s1
 argument_list|,
 name|text
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// default value
 name|String
@@ -1633,6 +1644,7 @@ argument_list|(
 name|fieldName
 argument_list|)
 condition|)
+block|{
 name|tf
 operator|.
 name|setText
@@ -1640,6 +1652,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|//System.out.println(":: "+_keypatterns.getValue(fieldName).get(0).toString());

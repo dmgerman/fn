@@ -22,6 +22,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Ignore
 import|;
 end_import
@@ -67,6 +77,8 @@ name|void
 name|testOneAuthorSimpleName
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Abbreviator Test"
@@ -89,6 +101,8 @@ name|void
 name|testOneAuthorCommonName
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Abbreviator Test"
@@ -124,6 +138,8 @@ name|expectedResult
 init|=
 literal|"Lastname, N. M. and Sobrenome, N. N."
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Abbreviator Test"
@@ -146,6 +162,8 @@ name|testJrAuthor
 parameter_list|()
 block|{
 comment|//TODO what should be done here? reimplement it?
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Other, A. N."
@@ -165,6 +183,8 @@ name|void
 name|testFormat
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -175,6 +195,8 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Someone, V. S."
@@ -185,6 +207,8 @@ literal|"Someone, Van Something"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Smith, J."
@@ -195,6 +219,8 @@ literal|"Smith, John"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"von Neumann, J. and Smith, J. and Black Brown, P."

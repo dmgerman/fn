@@ -82,6 +82,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * The menu item used in the popup menu for opening external resources associated  * with an entry. Shows the resource name and icon given, and adds an action listener  * to process the request if the user clicks this menu item.  */
 end_comment
@@ -98,24 +112,29 @@ name|ActionListener
 block|{
 DECL|field|entry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|link
+specifier|private
 specifier|final
 name|String
 name|link
 decl_stmt|;
 DECL|field|metaData
+specifier|private
 specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|fileType
+specifier|private
 name|ExternalFileType
 name|fileType
 decl_stmt|;
 DECL|field|frame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
@@ -249,6 +268,8 @@ operator|=
 name|fieldName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -394,12 +415,14 @@ operator|&&
 operator|(
 name|pos
 operator|<
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 operator|)
 condition|?
@@ -444,6 +467,7 @@ name|type
 operator|instanceof
 name|UnknownExternalFileType
 condition|)
+block|{
 return|return
 name|Util
 operator|.
@@ -463,7 +487,9 @@ operator|)
 name|type
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|Util
 operator|.
@@ -476,6 +502,7 @@ argument_list|,
 name|type
 argument_list|)
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(

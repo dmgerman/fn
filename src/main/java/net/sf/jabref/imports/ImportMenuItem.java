@@ -216,6 +216,20 @@ name|UndoableRemoveEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/*   * TODO: could separate the "menu item" functionality from the importing functionality  *   */
 end_comment
@@ -231,24 +245,25 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|openInNew
+specifier|private
+specifier|final
 name|boolean
 name|openInNew
 decl_stmt|;
-DECL|field|worker
-name|MyWorker
-name|worker
-init|=
-literal|null
-decl_stmt|;
 DECL|field|importer
+specifier|private
+specifier|final
 name|ImportFormat
 name|importer
 decl_stmt|;
 DECL|field|importError
+specifier|private
 name|IOException
 name|importError
 init|=
@@ -332,6 +347,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -341,12 +358,13 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|MyWorker
 name|worker
-operator|=
+init|=
 operator|new
 name|MyWorker
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|worker
 operator|.
 name|init
@@ -443,6 +461,8 @@ name|fileOk
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -470,7 +490,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
@@ -534,7 +556,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|,
 name|filenames
 index|[
@@ -544,6 +568,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -555,7 +581,9 @@ condition|(
 operator|!
 name|fileOk
 condition|)
+block|{
 return|return;
+block|}
 comment|// We import all files and collect their results:
 name|List
 argument_list|<
@@ -732,7 +760,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"displayKeyWarningDialogAtStartup"
+name|JabRefPreferences
+operator|.
+name|DISPLAY_KEY_WARNING_DIALOG_AT_STARTUP
 argument_list|)
 operator|&&
 name|pr
@@ -750,11 +780,11 @@ operator|.
 name|warnings
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|wrn
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
@@ -773,6 +803,7 @@ condition|;
 name|j
 operator|++
 control|)
+block|{
 name|wrn
 operator|.
 name|append
@@ -800,6 +831,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|wrn
@@ -809,6 +841,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|wrn
 operator|.
 name|deleteCharAt
@@ -821,6 +854,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -849,6 +883,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -860,7 +896,9 @@ condition|(
 operator|!
 name|fileOk
 condition|)
+block|{
 return|return;
+block|}
 comment|// TODO: undo is not handled properly here, except for the entries
 comment|// added by
 comment|//  the import inspection dialog.
@@ -911,7 +949,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useImportInspectionDialog"
+name|JabRefPreferences
+operator|.
+name|USE_IMPORT_INSPECTION_DIALOG
 argument_list|)
 operator|&&
 operator|(
@@ -921,7 +961,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useImportInspectionDialogForSingle"
+name|JabRefPreferences
+operator|.
+name|USE_IMPORT_INSPECTION_DIALOG_FOR_SINGLE
 argument_list|)
 operator|||
 operator|(
@@ -1013,7 +1055,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"generateKeysAfterInspection"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_AFTER_INSPECTION
 argument_list|)
 decl_stmt|;
 name|NamedCompound
@@ -1039,9 +1083,12 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"unmarkAllEntriesBeforeImporting"
+name|JabRefPreferences
+operator|.
+name|UNMARK_ALL_ENTRIES_BEFORE_IMPORTING
 argument_list|)
 condition|)
+block|{
 for|for
 control|(
 name|BibtexEntry
@@ -1053,7 +1100,7 @@ name|getEntries
 argument_list|()
 control|)
 block|{
-name|Util
+name|EntryMarker
 operator|.
 name|unmarkEntry
 argument_list|(
@@ -1066,6 +1113,7 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
@@ -1131,10 +1179,12 @@ name|DuplicateResolverDialog
 operator|.
 name|DO_NOT_IMPORT
 condition|)
+block|{
 name|keepEntry
 operator|=
 literal|false
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|answer
@@ -1294,7 +1344,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|,
 literal|true
@@ -1332,6 +1384,7 @@ name|importer
 operator|==
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|output
@@ -1344,6 +1397,7 @@ literal|"Could not find a suitable import format."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// Import in a specific format was specified. Check if we have stored error information:
@@ -1418,7 +1472,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|mergeImportResults (List<ImportFormatReader.UnknownFormatImport> imports)
-specifier|public
+specifier|private
 name|ParserResult
 name|mergeImportResults
 parameter_list|(
@@ -1464,7 +1518,9 @@ name|importResult
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|ImportFormatReader
@@ -1644,7 +1700,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteOwner"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_OWNER
 argument_list|)
 argument_list|,
 name|Globals
@@ -1653,7 +1711,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteTimeStamp"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_TIME_STAMP
 argument_list|)
 argument_list|,
 operator|!
@@ -1665,7 +1725,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"markImportedEntries"
+name|JabRefPreferences
+operator|.
+name|MARK_IMPORTED_ENTRIES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1693,9 +1755,11 @@ condition|(
 operator|!
 name|anythingUseful
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1720,9 +1784,7 @@ return|;
 block|}
 else|else
 block|{
-name|ParserResult
-name|pr
-init|=
+return|return
 operator|new
 name|ParserResult
 argument_list|(
@@ -1741,9 +1803,6 @@ name|BibtexEntryType
 argument_list|>
 argument_list|()
 argument_list|)
-decl_stmt|;
-return|return
-name|pr
 return|;
 block|}
 block|}

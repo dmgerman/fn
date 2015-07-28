@@ -130,23 +130,33 @@ implements|implements
 name|PrefsTab
 block|{
 DECL|field|_prefs
+specifier|private
+specifier|final
 name|JabRefPreferences
 name|_prefs
 decl_stmt|;
 DECL|field|colorCodes
-DECL|field|overrideFonts
-DECL|field|showGrid
 specifier|private
+specifier|final
 name|JCheckBox
 name|colorCodes
-decl_stmt|,
+decl_stmt|;
+DECL|field|overrideFonts
+specifier|private
+specifier|final
+name|JCheckBox
 name|overrideFonts
-decl_stmt|,
+decl_stmt|;
+DECL|field|showGrid
+specifier|private
+specifier|final
+name|JCheckBox
 name|showGrid
 decl_stmt|;
 comment|//, useCustomIconTheme;
 DECL|field|colorPanel
 specifier|private
+specifier|final
 name|ColorSetupPanel
 name|colorPanel
 init|=
@@ -174,11 +184,15 @@ name|boolean
 name|oldOverrideFontSize
 decl_stmt|;
 DECL|field|fontSize
-DECL|field|rowPadding
 specifier|private
+specifier|final
 name|JTextField
 name|fontSize
-decl_stmt|,
+decl_stmt|;
+DECL|field|rowPadding
+specifier|private
+specifier|final
+name|JTextField
 name|rowPadding
 decl_stmt|;
 comment|//, customIconThemeFile;
@@ -571,6 +585,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -601,6 +617,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -678,6 +696,8 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -692,7 +712,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"tableColorCodesOn"
+name|JabRefPreferences
+operator|.
+name|TABLE_COLOR_CODES_ON
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -707,7 +729,9 @@ name|_prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"menuFontSize"
+name|JabRefPreferences
+operator|.
+name|MENU_FONT_SIZE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -721,7 +745,9 @@ name|_prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"tableRowPadding"
+name|JabRefPreferences
+operator|.
+name|TABLE_ROW_PADDING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -731,7 +757,9 @@ name|_prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"menuFontSize"
+name|JabRefPreferences
+operator|.
+name|MENU_FONT_SIZE
 argument_list|)
 expr_stmt|;
 name|overrideFonts
@@ -742,7 +770,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overrideDefaultFonts"
+name|JabRefPreferences
+operator|.
+name|OVERRIDE_DEFAULT_FONTS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -773,7 +803,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"tableShowGrid"
+name|JabRefPreferences
+operator|.
+name|TABLE_SHOW_GRID
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -784,6 +816,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Store changes to table preferences. This method is called when      * the user clicks Ok.      *      */
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -794,7 +828,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"tableColorCodesOn"
+name|JabRefPreferences
+operator|.
+name|TABLE_COLOR_CODES_ON
 argument_list|,
 name|colorCodes
 operator|.
@@ -807,7 +843,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"fontFamily"
+name|JabRefPreferences
+operator|.
+name|FONT_FAMILY
 argument_list|,
 name|font
 operator|.
@@ -819,7 +857,9 @@ name|_prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"fontStyle"
+name|JabRefPreferences
+operator|.
+name|FONT_STYLE
 argument_list|,
 name|font
 operator|.
@@ -831,7 +871,9 @@ name|_prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"fontSize"
+name|JabRefPreferences
+operator|.
+name|FONT_SIZE
 argument_list|,
 name|font
 operator|.
@@ -843,7 +885,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"overrideDefaultFonts"
+name|JabRefPreferences
+operator|.
+name|OVERRIDE_DEFAULT_FONTS
 argument_list|,
 name|overrideFonts
 operator|.
@@ -866,7 +910,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"tableShowGrid"
+name|JabRefPreferences
+operator|.
+name|TABLE_SHOW_GRID
 argument_list|,
 name|showGrid
 operator|.
@@ -911,7 +957,9 @@ name|_prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"menuFontSize"
+name|JabRefPreferences
+operator|.
+name|MENU_FONT_SIZE
 argument_list|,
 name|size
 argument_list|)
@@ -989,7 +1037,9 @@ name|_prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"tableRowPadding"
+name|JabRefPreferences
+operator|.
+name|TABLE_ROW_PADDING
 argument_list|,
 name|padding
 argument_list|)
@@ -1084,6 +1134,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -1138,6 +1190,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

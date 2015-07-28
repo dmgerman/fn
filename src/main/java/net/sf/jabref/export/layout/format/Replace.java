@@ -60,6 +60,8 @@ name|replaceWith
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|setArgument (String arg)
 specifier|public
 name|void
@@ -73,6 +75,8 @@ name|String
 index|[]
 name|parts
 init|=
+name|AbstractParamLayoutFormatter
+operator|.
 name|parseArgument
 argument_list|(
 name|arg
@@ -86,8 +90,10 @@ name|length
 operator|<
 literal|2
 condition|)
+block|{
 return|return;
 comment|// TODO: too few arguments. Print an error message here?
+block|}
 name|regex
 operator|=
 name|parts
@@ -103,6 +109,8 @@ literal|1
 index|]
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -118,10 +126,12 @@ name|regex
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|fieldText
 return|;
 comment|// TODO: argument missing or invalid. Print an error message here?
+block|}
 return|return
 name|fieldText
 operator|.

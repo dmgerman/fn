@@ -74,55 +74,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|AuthorList
+name|*
 import|;
 end_import
 
@@ -139,6 +91,8 @@ extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -150,6 +104,8 @@ literal|"JStor (tab delimited)"
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -161,6 +117,8 @@ literal|"jstor"
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream in)
 specifier|public
 name|boolean
@@ -177,6 +135,8 @@ literal|true
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -242,6 +202,7 @@ argument_list|(
 literal|"Item Type"
 argument_list|)
 condition|)
+block|{
 name|s
 operator|=
 name|in
@@ -249,6 +210,7 @@ operator|.
 name|readLine
 argument_list|()
 expr_stmt|;
+block|}
 while|while
 condition|(
 operator|(
@@ -272,7 +234,9 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|s
@@ -282,7 +246,9 @@ argument_list|(
 literal|"-----------------------------"
 argument_list|)
 condition|)
+block|{
 break|break;
+block|}
 name|String
 index|[]
 name|fields
@@ -300,9 +266,9 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -320,6 +286,7 @@ argument_list|(
 literal|"FLA"
 argument_list|)
 condition|)
+block|{
 name|be
 operator|.
 name|setType
@@ -332,6 +299,7 @@ literal|"article"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|ImportFormatReader
 operator|.
 name|setIfNecessary
@@ -467,6 +435,7 @@ argument_list|(
 literal|","
 argument_list|)
 condition|)
+block|{
 name|datefield
 index|[
 literal|0
@@ -492,6 +461,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|ImportFormatReader
 operator|.
 name|setIfNecessary

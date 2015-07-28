@@ -50,7 +50,6 @@ end_comment
 
 begin_class
 DECL|class|OverlayPanel
-specifier|public
 class|class
 name|OverlayPanel
 extends|extends
@@ -58,6 +57,7 @@ name|JPanel
 block|{
 DECL|field|label
 specifier|private
+specifier|final
 name|JLabel
 name|label
 decl_stmt|;
@@ -175,6 +175,8 @@ name|scroller
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|paint (Graphics g)
 specifier|public
 name|void
@@ -215,9 +217,11 @@ name|dim
 operator|.
 name|width
 operator|>
+operator|(
 name|len
 operator|+
 literal|10
+operator|)
 operator|)
 condition|)
 block|{

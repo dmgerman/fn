@@ -321,6 +321,7 @@ init|=
 literal|7745223550102664896L
 decl_stmt|;
 DECL|field|PLAIN
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -329,6 +330,7 @@ init|=
 literal|"plain"
 decl_stmt|;
 DECL|field|BOLD
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -337,6 +339,7 @@ init|=
 literal|"bold"
 decl_stmt|;
 DECL|field|BOLD_ITALIC
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -345,6 +348,7 @@ init|=
 literal|"bold-italic"
 decl_stmt|;
 DECL|field|ITALIC
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -376,7 +380,7 @@ expr_stmt|;
 block|}
 comment|/** init with the given font */
 DECL|method|FontSelector (Font font)
-specifier|public
+specifier|private
 name|FontSelector
 parameter_list|(
 name|Font
@@ -401,6 +405,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setFont (Font font)
 specifier|public
 name|void
@@ -452,6 +458,8 @@ name|PLAIN
 case|:
 name|styleString
 operator|=
+name|FontSelector
+operator|.
 name|PLAIN
 expr_stmt|;
 break|break;
@@ -462,6 +470,8 @@ name|BOLD
 case|:
 name|styleString
 operator|=
+name|FontSelector
+operator|.
 name|BOLD
 expr_stmt|;
 break|break;
@@ -472,6 +482,8 @@ name|ITALIC
 case|:
 name|styleString
 operator|=
+name|FontSelector
+operator|.
 name|ITALIC
 expr_stmt|;
 break|break;
@@ -486,6 +498,8 @@ name|ITALIC
 case|:
 name|styleString
 operator|=
+name|FontSelector
+operator|.
 name|BOLD_ITALIC
 expr_stmt|;
 break|break;
@@ -518,11 +532,14 @@ expr_stmt|;
 block|}
 comment|/**      * button's action-listener ; open a FontSelectorDialog      */
 DECL|class|ActionHandler
+specifier|private
 class|class
 name|ActionHandler
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void
@@ -590,6 +607,7 @@ operator|-
 literal|8670346696048738055L
 decl_stmt|;
 DECL|field|PLAIN
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -598,6 +616,7 @@ init|=
 literal|"plain"
 decl_stmt|;
 DECL|field|BOLD
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -606,6 +625,7 @@ init|=
 literal|"bold"
 decl_stmt|;
 DECL|field|BOLD_ITALIC
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -614,6 +634,7 @@ init|=
 literal|"bold-italic"
 decl_stmt|;
 DECL|field|ITALIC
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -799,12 +820,20 @@ index|[]
 name|styles
 init|=
 block|{
+name|FontSelectorDialog
+operator|.
 name|PLAIN
 block|,
+name|FontSelectorDialog
+operator|.
 name|BOLD
 block|,
+name|FontSelectorDialog
+operator|.
 name|ITALIC
 block|,
+name|FontSelectorDialog
+operator|.
 name|BOLD_ITALIC
 block|}
 decl_stmt|;
@@ -989,6 +1018,8 @@ init|=
 operator|-
 literal|4191591634265068189L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|paint
@@ -1248,7 +1279,7 @@ expr_stmt|;
 comment|// show(); -> deprecated since 1.5
 block|}
 DECL|method|ok ()
-specifier|public
+specifier|private
 name|void
 name|ok
 parameter_list|()
@@ -1262,7 +1293,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|cancel ()
-specifier|public
+specifier|private
 name|void
 name|cancel
 parameter_list|()
@@ -1282,9 +1313,11 @@ condition|(
 operator|!
 name|isOK
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|int
 name|size
 decl_stmt|;
@@ -1340,46 +1373,55 @@ name|isOK
 decl_stmt|;
 DECL|field|familyField
 specifier|private
+specifier|final
 name|JTextField
 name|familyField
 decl_stmt|;
 DECL|field|familyList
 specifier|private
+specifier|final
 name|JList
 name|familyList
 decl_stmt|;
 DECL|field|sizeField
 specifier|private
+specifier|final
 name|JTextField
 name|sizeField
 decl_stmt|;
 DECL|field|sizeList
 specifier|private
+specifier|final
 name|JList
 name|sizeList
 decl_stmt|;
 DECL|field|styleField
 specifier|private
+specifier|final
 name|JTextField
 name|styleField
 decl_stmt|;
 DECL|field|styleList
 specifier|private
+specifier|final
 name|JList
 name|styleList
 decl_stmt|;
 DECL|field|preview
 specifier|private
+specifier|final
 name|JLabel
 name|preview
 decl_stmt|;
 DECL|field|ok
 specifier|private
+specifier|final
 name|JButton
 name|ok
 decl_stmt|;
 DECL|field|cancel
 specifier|private
+specifier|final
 name|JButton
 name|cancel
 decl_stmt|;
@@ -1501,6 +1543,8 @@ literal|0
 init|;
 name|j
 operator|<
+name|FontSelectorDialog
+operator|.
 name|HIDEFONTS
 operator|.
 name|length
@@ -1518,22 +1562,29 @@ index|]
 operator|.
 name|contains
 argument_list|(
+name|FontSelectorDialog
+operator|.
 name|HIDEFONTS
 index|[
 name|j
 index|]
 argument_list|)
 condition|)
+block|{
 break|break;
+block|}
 block|}
 if|if
 condition|(
 name|j
 operator|==
+name|FontSelectorDialog
+operator|.
 name|HIDEFONTS
 operator|.
 name|length
 condition|)
+block|{
 name|nameVector
 operator|.
 name|addElement
@@ -1544,6 +1595,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 index|[]
@@ -1880,11 +1932,14 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|ActionHandler
+specifier|private
 class|class
 name|ActionHandler
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void
@@ -1903,9 +1958,11 @@ argument_list|()
 operator|==
 name|ok
 condition|)
+block|{
 name|ok
 argument_list|()
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1916,17 +1973,22 @@ argument_list|()
 operator|==
 name|cancel
 condition|)
+block|{
 name|cancel
 argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|class|ListHandler
+specifier|private
 class|class
 name|ListHandler
 implements|implements
 name|ListSelectionListener
 block|{
+annotation|@
+name|Override
 DECL|method|valueChanged (ListSelectionEvent evt)
 specifier|public
 name|void
@@ -1968,6 +2030,7 @@ name|family
 operator|!=
 literal|null
 condition|)
+block|{
 name|familyField
 operator|.
 name|setText
@@ -1976,6 +2039,7 @@ name|family
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -2001,6 +2065,7 @@ name|size
 operator|!=
 literal|null
 condition|)
+block|{
 name|sizeField
 operator|.
 name|setText
@@ -2008,6 +2073,7 @@ argument_list|(
 name|size
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -2034,6 +2100,7 @@ name|style
 operator|!=
 literal|null
 condition|)
+block|{
 name|styleField
 operator|.
 name|setText
@@ -2041,6 +2108,7 @@ argument_list|(
 name|style
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|updatePreview
 argument_list|()

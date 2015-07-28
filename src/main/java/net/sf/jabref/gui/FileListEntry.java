@@ -166,6 +166,8 @@ operator|=
 name|type
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

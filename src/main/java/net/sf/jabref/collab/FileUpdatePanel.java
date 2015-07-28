@@ -66,37 +66,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|BorderFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JButton
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JPanel
+name|*
 import|;
 end_import
 
@@ -135,38 +105,21 @@ name|NAME
 init|=
 literal|"fileUpdate"
 decl_stmt|;
-DECL|field|test
-name|JButton
-name|test
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Review changes"
-argument_list|)
-argument_list|)
-decl_stmt|;
 DECL|field|panel
+specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|frame
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|manager
+specifier|private
+specifier|final
 name|SidePaneManager
 name|manager
 decl_stmt|;
-DECL|field|message
-name|JLabel
-name|message
-decl_stmt|;
 DECL|field|scanner
+specifier|private
+specifier|final
 name|ChangeScanner
 name|scanner
 decl_stmt|;
@@ -224,12 +177,6 @@ name|panel
 expr_stmt|;
 name|this
 operator|.
-name|frame
-operator|=
-name|frame
-expr_stmt|;
-name|this
-operator|.
 name|manager
 operator|=
 name|manager
@@ -256,8 +203,9 @@ name|BorderLayout
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|JLabel
 name|message
-operator|=
+init|=
 operator|new
 name|JLabel
 argument_list|(
@@ -277,11 +225,11 @@ argument_list|)
 operator|+
 literal|"</center></html>"
 argument_list|,
-name|JLabel
+name|SwingConstants
 operator|.
 name|CENTER
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|main
 operator|.
 name|add
@@ -293,6 +241,20 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
+name|JButton
+name|test
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Review changes"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|main
 operator|.
 name|add
@@ -351,6 +313,8 @@ name|panel
 return|;
 block|}
 comment|/**      * Unregister when this component closes. We need that to avoid showing      * two such external change warnings at the same time, only the latest one.      */
+annotation|@
+name|Override
 DECL|method|componentClosing ()
 specifier|public
 name|void
@@ -361,11 +325,15 @@ name|manager
 operator|.
 name|unregisterComponent
 argument_list|(
+name|FileUpdatePanel
+operator|.
 name|NAME
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * actionPerformed      *       * @param e      *            ActionEvent      */
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -391,6 +359,8 @@ comment|// ex.printStackTrace();
 comment|// }
 block|}
 comment|/**      * Callback method for signalling that the change scanner has displayed the      * scan results to the user.      * @param resolved true if there were no changes, or if the user has resolved them.      */
+annotation|@
+name|Override
 DECL|method|scanResultsResolved (boolean resolved)
 specifier|public
 name|void

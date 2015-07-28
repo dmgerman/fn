@@ -82,6 +82,8 @@ name|jabref
 operator|.
 name|groups
 operator|.
+name|structure
+operator|.
 name|AllEntriesGroup
 import|;
 end_import
@@ -130,20 +132,20 @@ end_import
 
 begin_class
 DECL|class|GroupChange
-specifier|public
 class|class
 name|GroupChange
 extends|extends
 name|Change
 block|{
-DECL|field|m_changedGroups
+DECL|field|changedGroups
 specifier|private
 specifier|final
 name|GroupTreeNode
-name|m_changedGroups
+name|changedGroups
 decl_stmt|;
 DECL|field|tmpGroupRoot
 specifier|private
+specifier|final
 name|GroupTreeNode
 name|tmpGroupRoot
 decl_stmt|;
@@ -170,7 +172,9 @@ literal|"Removed all groups"
 argument_list|)
 expr_stmt|;
 comment|// JZTODO lyrics
-name|m_changedGroups
+name|this
+operator|.
+name|changedGroups
 operator|=
 name|changedGroups
 expr_stmt|;
@@ -181,6 +185,8 @@ operator|=
 name|tmpGroupRoot
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
@@ -238,7 +244,6 @@ literal|"Modified groups"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// JZTODO lyrics
 name|root
 operator|.
 name|removeAllChildren
@@ -246,7 +251,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|m_changedGroups
+name|changedGroups
 operator|==
 literal|null
 condition|)
@@ -269,7 +274,7 @@ name|root
 operator|.
 name|setGroup
 argument_list|(
-name|m_changedGroups
+name|changedGroups
 operator|.
 name|getGroup
 argument_list|()
@@ -284,7 +289,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|m_changedGroups
+name|changedGroups
 operator|.
 name|getChildCount
 argument_list|()
@@ -292,6 +297,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|root
 operator|.
 name|add
@@ -300,7 +306,7 @@ operator|(
 operator|(
 name|GroupTreeNode
 operator|)
-name|m_changedGroups
+name|changedGroups
 operator|.
 name|getChildAt
 argument_list|(
@@ -312,6 +318,7 @@ name|deepCopy
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 comment|// the group tree is now appled to a different BibtexDatabase than it was created
 comment|// for, which affects groups such as ExplicitGroup (which links to BibtexEntry objects).
 comment|// We must traverse the tree and refresh all groups:
@@ -338,6 +345,7 @@ argument_list|()
 operator|==
 name|root
 condition|)
+block|{
 name|panel
 operator|.
 name|getGroupSelector
@@ -346,6 +354,7 @@ operator|.
 name|revalidateGroups
 argument_list|()
 expr_stmt|;
+block|}
 name|undoEdit
 operator|.
 name|addEdit
@@ -357,7 +366,7 @@ comment|// Update tmp database:
 name|GroupTreeNode
 name|copied
 init|=
-name|m_changedGroups
+name|changedGroups
 operator|.
 name|deepCopy
 argument_list|()
@@ -394,6 +403,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|tmpGroupRoot
 operator|.
 name|add
@@ -414,6 +424,7 @@ name|deepCopy
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|tmpGroupRoot
 operator|.
 name|refreshGroupsForNewDatabase
@@ -425,6 +436,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description
@@ -438,14 +451,14 @@ literal|"<html>"
 operator|+
 name|name
 operator|+
-literal|"."
+literal|'.'
 operator|+
 operator|(
-name|m_changedGroups
+name|changedGroups
 operator|!=
 literal|null
 condition|?
-literal|" "
+literal|' '
 operator|+
 literal|"Accepting the change replaces the complete "
 operator|+

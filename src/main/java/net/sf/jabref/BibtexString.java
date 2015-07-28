@@ -56,6 +56,7 @@ argument_list|)
 block|;
 DECL|field|prefix
 specifier|private
+specifier|final
 name|String
 name|prefix
 decl_stmt|;
@@ -76,7 +77,6 @@ block|}
 DECL|method|get (String name)
 specifier|public
 specifier|static
-specifier|final
 name|Type
 name|get
 parameter_list|(
@@ -129,9 +129,11 @@ literal|""
 operator|)
 argument_list|)
 condition|)
+block|{
 return|return
 name|OTHER
 return|;
+block|}
 for|for
 control|(
 name|Type
@@ -161,9 +163,11 @@ operator|+
 literal|""
 argument_list|)
 condition|)
+block|{
 return|return
 name|t
 return|;
+block|}
 block|}
 return|return
 name|OTHER
@@ -171,16 +175,22 @@ return|;
 block|}
 block|}
 DECL|field|_name
-DECL|field|_content
-DECL|field|_id
+specifier|private
 name|String
 name|_name
-decl_stmt|,
+decl_stmt|;
+DECL|field|_content
+specifier|private
+name|String
 name|_content
-decl_stmt|,
+decl_stmt|;
+DECL|field|_id
+specifier|private
+name|String
 name|_id
 decl_stmt|;
 DECL|field|_type
+specifier|private
 name|Type
 name|_type
 decl_stmt|;
@@ -345,6 +355,8 @@ operator|=
 name|content
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|clone ()
 specifier|public
 name|Object

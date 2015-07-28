@@ -28,6 +28,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
+name|DOIUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|export
 operator|.
 name|layout
@@ -48,18 +62,6 @@ name|Globals
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
-import|;
-end_import
-
 begin_comment
 comment|/**  * Used to fix [ 1588028 ] export HTML table doi url.  *   * Will prepend "http://dx.doi.org/" if only doi number and not a URL is given.  *  * @author mark-schenk  * @author olly98  */
 end_comment
@@ -72,6 +74,8 @@ name|DOICheck
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -109,7 +113,7 @@ return|;
 block|}
 if|if
 condition|(
-name|Util
+name|DOIUtil
 operator|.
 name|checkForDOIwithHTTPprefix
 argument_list|(
@@ -130,7 +134,7 @@ name|DOI_LOOKUP_PREFIX
 operator|.
 name|concat
 argument_list|(
-name|Util
+name|DOIUtil
 operator|.
 name|getDOI
 argument_list|(

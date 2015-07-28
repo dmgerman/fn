@@ -22,7 +22,6 @@ end_comment
 
 begin_class
 DECL|class|BibtexEntryNotFoundException
-specifier|public
 class|class
 name|BibtexEntryNotFoundException
 extends|extends
@@ -30,6 +29,7 @@ name|Exception
 block|{
 DECL|field|bibtexKey
 specifier|private
+specifier|final
 name|String
 name|bibtexKey
 decl_stmt|;

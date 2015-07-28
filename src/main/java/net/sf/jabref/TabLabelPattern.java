@@ -208,11 +208,13 @@ name|PrefsTab
 block|{
 DECL|field|_prefs
 specifier|private
+specifier|final
 name|JabRefPreferences
 name|_prefs
 decl_stmt|;
 DECL|field|dontOverwrite
 specifier|private
+specifier|final
 name|JCheckBox
 name|dontOverwrite
 init|=
@@ -226,8 +228,11 @@ argument_list|(
 literal|"Do not overwrite existing keys"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|warnBeforeOverwriting
+specifier|private
+specifier|final
+name|JCheckBox
 name|warnBeforeOverwriting
 init|=
 operator|new
@@ -240,8 +245,11 @@ argument_list|(
 literal|"Warn before overwriting existing keys"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|generateOnSave
+specifier|private
+specifier|final
+name|JCheckBox
 name|generateOnSave
 init|=
 operator|new
@@ -254,8 +262,11 @@ argument_list|(
 literal|"Generate keys before saving (for entries without a key)"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|autoGenerateOnImport
+specifier|private
+specifier|final
+name|JCheckBox
 name|autoGenerateOnImport
 init|=
 operator|new
@@ -269,9 +280,10 @@ literal|"Generate keys for imported entries"
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|private
-name|JRadioButton
 DECL|field|letterStartA
+specifier|private
+specifier|final
+name|JRadioButton
 name|letterStartA
 init|=
 operator|new
@@ -284,8 +296,11 @@ argument_list|(
 literal|"Ensure unique keys using letters (a, b, ...)"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|letterStartB
+specifier|private
+specifier|final
+name|JRadioButton
 name|letterStartB
 init|=
 operator|new
@@ -298,8 +313,11 @@ argument_list|(
 literal|"Ensure unique keys using letters (b, c, ...)"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|alwaysAddLetter
+specifier|private
+specifier|final
+name|JRadioButton
 name|alwaysAddLetter
 init|=
 operator|new
@@ -315,6 +333,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|KeyPatternRegex
 specifier|private
+specifier|final
 name|JTextField
 name|KeyPatternRegex
 init|=
@@ -326,6 +345,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|KeyPatternReplacement
 specifier|private
+specifier|final
 name|JTextField
 name|KeyPatternReplacement
 init|=
@@ -359,7 +379,9 @@ name|appendKeyGeneratorSettings
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Store changes to table preferences. This method is called when      * the user clicks Ok.      *      */
+comment|/**      * Store changes to table preferences. This method is called when the user clicks Ok.      *      */
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -373,7 +395,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"defaultLabelPattern"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_LABEL_PATTERN
 argument_list|,
 name|defaultPat
 operator|.
@@ -387,7 +411,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"warnBeforeOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|WARN_BEFORE_OVERWRITING_KEY
 argument_list|,
 name|warnBeforeOverwriting
 operator|.
@@ -401,7 +427,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"avoidOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|AVOID_OVERWRITING_KEY
 argument_list|,
 name|dontOverwrite
 operator|.
@@ -445,7 +473,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"generateKeysAfterInspection"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_AFTER_INSPECTION
 argument_list|,
 name|autoGenerateOnImport
 operator|.
@@ -459,7 +489,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"generateKeysBeforeSaving"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_BEFORE_SAVING
 argument_list|,
 name|generateOnSave
 operator|.
@@ -474,17 +506,21 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -500,7 +536,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenFirstLetterA"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_FIRST_LETTER_A
 argument_list|,
 literal|true
 argument_list|)
@@ -511,7 +549,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|,
 literal|false
 argument_list|)
@@ -525,7 +565,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenFirstLetterA"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_FIRST_LETTER_A
 argument_list|,
 literal|false
 argument_list|)
@@ -536,7 +578,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|,
 literal|false
 argument_list|)
@@ -778,7 +822,7 @@ argument_list|(
 literal|"Replace (regular expression)"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|builder
@@ -792,7 +836,7 @@ argument_list|(
 literal|"by"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|builder
@@ -904,6 +948,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -929,6 +975,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -939,6 +987,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -965,7 +1015,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultLabelPattern"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_LABEL_PATTERN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -979,7 +1031,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"avoidOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|AVOID_OVERWRITING_KEY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -993,7 +1047,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"generateKeysBeforeSaving"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_BEFORE_SAVING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1007,7 +1063,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"generateKeysAfterInspection"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_AFTER_INSPECTION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1021,7 +1079,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"warnBeforeOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|WARN_BEFORE_OVERWRITING_KEY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1034,7 +1094,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|)
 decl_stmt|,
 name|firstLetterA
@@ -1045,13 +1107,16 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"keyGenFirstLetterA"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_FIRST_LETTER_A
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
 name|alwaysAddLetter
 condition|)
+block|{
 name|this
 operator|.
 name|alwaysAddLetter
@@ -1061,11 +1126,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|firstLetterA
 condition|)
+block|{
 name|this
 operator|.
 name|letterStartA
@@ -1075,7 +1142,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|this
 operator|.
 name|letterStartB
@@ -1085,6 +1154,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Warning before overwriting is only relevant if overwriting can happen:
 name|warnBeforeOverwriting
 operator|.
@@ -1128,6 +1198,8 @@ expr_stmt|;
 comment|//basenamePatternRegex.setText(Globals.prefs.get("basenamePatternRegex"));
 comment|//basenamePatternReplacement.setText(Globals.prefs.get("basenamePatternReplacement"));
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

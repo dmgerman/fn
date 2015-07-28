@@ -108,6 +108,7 @@ name|Transferable
 block|{
 DECL|field|data
 specifier|private
+specifier|final
 name|BibtexEntry
 index|[]
 name|data
@@ -115,6 +116,7 @@ decl_stmt|;
 DECL|field|entryFlavor
 specifier|public
 specifier|static
+specifier|final
 name|DataFlavor
 name|entryFlavor
 init|=
@@ -144,6 +146,8 @@ operator|=
 name|data
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTransferDataFlavors ()
 specifier|public
 name|DataFlavor
@@ -166,6 +170,8 @@ name|stringFlavor
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isDataFlavorSupported (DataFlavor flavor)
 specifier|public
 name|boolean
@@ -181,6 +187,8 @@ name|flavor
 operator|.
 name|equals
 argument_list|(
+name|TransferableBibtexEntry
+operator|.
 name|entryFlavor
 argument_list|)
 operator|||
@@ -195,6 +203,8 @@ argument_list|)
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTransferData (DataFlavor flavor)
 specifier|public
 name|Object
@@ -212,12 +222,16 @@ name|flavor
 operator|.
 name|equals
 argument_list|(
+name|TransferableBibtexEntry
+operator|.
 name|entryFlavor
 argument_list|)
 condition|)
+block|{
 return|return
 name|data
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -310,6 +324,7 @@ return|;
 block|}
 block|}
 else|else
+block|{
 throw|throw
 operator|new
 name|UnsupportedFlavorException
@@ -317,6 +332,7 @@ argument_list|(
 name|flavor
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 end_class

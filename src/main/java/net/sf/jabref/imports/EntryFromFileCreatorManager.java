@@ -151,6 +151,7 @@ name|EntryFromFileCreatorManager
 block|{
 DECL|field|entryCreators
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|EntryFromFileCreator
@@ -246,13 +247,16 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|entryCreator
 operator|.
 name|getExternalFileType
 argument_list|()
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|entryCreator
 operator|.
 name|getExternalFileType
@@ -262,6 +266,7 @@ name|getExtension
 argument_list|()
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 continue|continue;
@@ -306,9 +311,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|file
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|file
@@ -540,9 +547,9 @@ name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -601,6 +608,7 @@ name|panel
 operator|!=
 literal|null
 condition|)
+block|{
 name|ce
 operator|.
 name|addEdit
@@ -616,6 +624,7 @@ name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -642,6 +651,7 @@ name|changeListener
 operator|!=
 literal|null
 condition|)
+block|{
 name|changeListener
 operator|.
 name|stateChanged
@@ -653,6 +663,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|System
 operator|.
@@ -710,7 +721,7 @@ return|;
 block|}
 comment|/**      * Returns a {@link FileFilter} instance which will accept all files, for      * which a {@link EntryFromFileCreator} exists, that accepts the files.<br>      *<br>      * This {@link FileFilter} will be displayed in the GUI as      * "All supported files".      *       * @return A {@link FileFilter} that accepts all files for which creators      *         exist.      */
 DECL|method|getFileFilter ()
-specifier|public
+specifier|private
 name|FileFilter
 name|getFileFilter
 parameter_list|()
@@ -721,6 +732,8 @@ name|FileFilter
 argument_list|()
 block|{
 comment|/**              * Accepts all files, which are accepted by any known creator.              */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|accept

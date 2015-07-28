@@ -28,6 +28,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -69,6 +83,7 @@ argument_list|>
 block|{
 DECL|field|hitOrMiss
 specifier|private
+specifier|final
 name|Matcher
 argument_list|<
 name|BibtexEntry
@@ -90,9 +105,16 @@ name|this
 operator|.
 name|hitOrMiss
 operator|=
+name|Preconditions
+operator|.
+name|checkNotNull
+argument_list|(
 name|hitOrMiss
+argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry o1, BibtexEntry o2)
 specifier|public
 name|int
@@ -111,9 +133,11 @@ name|hitOrMiss
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|0
 return|;
+block|}
 name|boolean
 name|hit1
 init|=
@@ -123,7 +147,8 @@ name|matches
 argument_list|(
 name|o1
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|hit2
 init|=
 name|hitOrMiss
@@ -133,16 +158,20 @@ argument_list|(
 name|o2
 argument_list|)
 decl_stmt|;
+comment|// TODO use Boolean.compareTo when converting to Java8
 if|if
 condition|(
 name|hit1
 operator|==
 name|hit2
 condition|)
+block|{
 return|return
 literal|0
 return|;
+block|}
 else|else
+block|{
 return|return
 name|hit1
 condition|?
@@ -151,6 +180,7 @@ literal|1
 else|:
 literal|1
 return|;
+block|}
 block|}
 block|}
 end_class

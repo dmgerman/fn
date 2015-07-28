@@ -58,18 +58,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|text
-operator|.
-name|JTextComponent
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -77,30 +65,6 @@ operator|.
 name|jabref
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
 import|;
 end_import
 
@@ -110,30 +74,14 @@ end_comment
 
 begin_class
 DECL|class|AbstractAutoCompleter
-specifier|public
 specifier|abstract
 class|class
 name|AbstractAutoCompleter
+implements|implements
+name|AutoCompleter
 block|{
-DECL|field|SHORTEST_TO_COMPLETE
-specifier|public
-specifier|static
-name|int
-name|SHORTEST_TO_COMPLETE
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SHORTEST_TO_COMPLETE
-argument_list|)
-decl_stmt|;
 DECL|field|SHORTEST_WORD
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -142,13 +90,14 @@ init|=
 literal|4
 decl_stmt|;
 comment|// stores the strings as is
-DECL|field|_index_casesensitive
+DECL|field|indexCaseSensitive
 specifier|private
+specifier|final
 name|TreeSet
 argument_list|<
 name|String
 argument_list|>
-name|_index_casesensitive
+name|indexCaseSensitive
 init|=
 operator|new
 name|TreeSet
@@ -158,13 +107,14 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// stores strings in lowercase
-DECL|field|_index_caseinsensitive
+DECL|field|indexCaseInsensitive
 specifier|private
+specifier|final
 name|TreeSet
 argument_list|<
 name|String
 argument_list|>
-name|_index_caseinsensitive
+name|indexCaseInsensitive
 init|=
 operator|new
 name|TreeSet
@@ -174,8 +124,9 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// stores for a lowercase string the possible expanded strings
-DECL|field|_possibleStringsForSearchString
+DECL|field|possibleStringsForSearchString
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -185,7 +136,7 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|>
-name|_possibleStringsForSearchString
+name|possibleStringsForSearchString
 init|=
 operator|new
 name|HashMap
@@ -199,7 +150,6 @@ argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Add a BibtexEntry to this autocompleter. The autocompleter (respectively      * to the concrete implementations of {@link AbstractAutoCompleter}) itself      * decides which information should be stored for later completion.      *       */
 DECL|method|addBibtexEntry (BibtexEntry entry)
 specifier|abstract
 specifier|public
@@ -209,14 +159,6 @@ parameter_list|(
 name|BibtexEntry
 name|entry
 parameter_list|)
-function_decl|;
-comment|/**      * States whether the field consists of multiple values (false) or of a single value (true)      *       * Symptom: if false, {@link net.sf.jabref.gui.AutoCompleteListener#getCurrentWord(JTextComponent comp)}       * returns current word only, if true, it returns the text beginning from the buffer      */
-DECL|method|isSingleUnitField ()
-specifier|abstract
-specifier|public
-name|boolean
-name|isSingleUnitField
-parameter_list|()
 function_decl|;
 comment|/**      * Returns one or more possible completions for a given String. The returned      * completion depends on which informations were stored while adding      * BibtexEntries by the used implementation of {@link AbstractAutoCompleter}      * .      *       * @see AbstractAutoCompleter#addBibtexEntry(BibtexEntry)      */
 DECL|method|complete (String str)
@@ -231,14 +173,18 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|AbstractAutoCompleter
+operator|.
 name|stringMinLength
 argument_list|(
 name|str
 argument_list|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|String
 name|lstr
 init|=
@@ -261,6 +207,8 @@ comment|// user typed in lower case word -> we do an case-insenstive search
 name|String
 name|ender
 init|=
+name|AbstractAutoCompleter
+operator|.
 name|incrementLastCharacter
 argument_list|(
 name|lstr
@@ -272,7 +220,7 @@ name|String
 argument_list|>
 name|subset
 init|=
-name|_index_caseinsensitive
+name|indexCaseInsensitive
 operator|.
 name|subSet
 argument_list|(
@@ -308,7 +256,7 @@ name|res
 operator|.
 name|addAll
 argument_list|(
-name|_possibleStringsForSearchString
+name|possibleStringsForSearchString
 operator|.
 name|get
 argument_list|(
@@ -340,6 +288,8 @@ comment|// we assume user wants to have exact search
 name|String
 name|ender
 init|=
+name|AbstractAutoCompleter
+operator|.
 name|incrementLastCharacter
 argument_list|(
 name|str
@@ -351,7 +301,7 @@ name|String
 argument_list|>
 name|subset
 init|=
-name|_index_casesensitive
+name|indexCaseSensitive
 operator|.
 name|subSet
 argument_list|(
@@ -403,9 +353,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-name|String
-name|ender
-init|=
+return|return
 name|str
 operator|.
 name|substring
@@ -433,9 +381,6 @@ operator|+
 literal|1
 argument_list|)
 argument_list|)
-decl_stmt|;
-return|return
-name|ender
 return|;
 block|}
 DECL|method|stringMinLength (String str)
@@ -454,7 +399,7 @@ operator|.
 name|length
 argument_list|()
 operator|<
-name|AbstractAutoCompleter
+name|AutoCompleterFactory
 operator|.
 name|SHORTEST_TO_COMPLETE
 return|;
@@ -475,10 +420,12 @@ operator|.
 name|length
 argument_list|()
 operator|>=
+name|AbstractAutoCompleter
+operator|.
 name|SHORTEST_WORD
 condition|)
 block|{
-name|_index_casesensitive
+name|indexCaseSensitive
 operator|.
 name|add
 argument_list|(
@@ -496,7 +443,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
-name|_index_caseinsensitive
+name|indexCaseInsensitive
 operator|.
 name|add
 argument_list|(
@@ -509,7 +456,7 @@ name|String
 argument_list|>
 name|set
 init|=
-name|_possibleStringsForSearchString
+name|possibleStringsForSearchString
 operator|.
 name|get
 argument_list|(
@@ -540,7 +487,7 @@ argument_list|(
 name|word
 argument_list|)
 expr_stmt|;
-name|_possibleStringsForSearchString
+name|possibleStringsForSearchString
 operator|.
 name|put
 argument_list|(
@@ -561,7 +508,7 @@ name|word
 parameter_list|)
 block|{
 return|return
-name|_index_caseinsensitive
+name|indexCaseInsensitive
 operator|.
 name|contains
 argument_list|(

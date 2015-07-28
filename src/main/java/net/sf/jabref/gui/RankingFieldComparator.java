@@ -58,7 +58,6 @@ end_comment
 
 begin_class
 DECL|class|RankingFieldComparator
-specifier|public
 class|class
 name|RankingFieldComparator
 implements|implements
@@ -67,6 +66,8 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int

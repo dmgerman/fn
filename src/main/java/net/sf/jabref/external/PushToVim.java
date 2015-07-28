@@ -107,6 +107,7 @@ literal|null
 decl_stmt|;
 DECL|field|vimPath
 specifier|private
+specifier|final
 name|JTextField
 name|vimPath
 init|=
@@ -115,8 +116,11 @@ name|JTextField
 argument_list|(
 literal|30
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|vimServer
+specifier|private
+specifier|final
+name|JTextField
 name|vimServer
 init|=
 operator|new
@@ -124,8 +128,11 @@ name|JTextField
 argument_list|(
 literal|30
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|citeCommand
+specifier|private
+specifier|final
+name|JTextField
 name|citeCommand
 init|=
 operator|new
@@ -146,6 +153,8 @@ name|couldNotRunClient
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -161,6 +170,8 @@ literal|"Insert selected citations into Vim"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getApplicationName ()
 specifier|public
 name|String
@@ -171,6 +182,8 @@ return|return
 literal|"Vim"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTooltip ()
 specifier|public
 name|String
@@ -186,6 +199,8 @@ literal|"Push selection to Vim"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIcon ()
 specifier|public
 name|Icon
@@ -201,6 +216,8 @@ literal|"vim"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyStrokeName ()
 specifier|public
 name|String
@@ -211,6 +228,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSettingsPanel ()
 specifier|public
 name|JPanel
@@ -223,9 +242,11 @@ name|settings
 operator|==
 literal|null
 condition|)
+block|{
 name|initSettingsPanel
 argument_list|()
 expr_stmt|;
+block|}
 name|vimPath
 operator|.
 name|setText
@@ -236,7 +257,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"vim"
+name|JabRefPreferences
+operator|.
+name|VIM
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -250,7 +273,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"vimServer"
+name|JabRefPreferences
+operator|.
+name|VIM_SERVER
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -264,7 +289,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandVim"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_VIM
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -272,6 +299,8 @@ return|return
 name|settings
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -284,7 +313,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"vim"
+name|JabRefPreferences
+operator|.
+name|VIM
 argument_list|,
 name|vimPath
 operator|.
@@ -298,7 +329,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"vimServer"
+name|JabRefPreferences
+operator|.
+name|VIM_SERVER
 argument_list|,
 name|vimServer
 operator|.
@@ -312,7 +345,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"citeCommandVim"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_VIM
 argument_list|,
 name|citeCommand
 operator|.
@@ -370,14 +405,11 @@ expr_stmt|;
 name|BrowseAction
 name|action
 init|=
-operator|new
 name|BrowseAction
+operator|.
+name|buildForFile
 argument_list|(
-literal|null
-argument_list|,
 name|vimPath
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|JButton
@@ -468,6 +500,8 @@ name|getPanel
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keys, MetaData metaData)
 specifier|public
 name|void
@@ -511,7 +545,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"vim"
+name|JabRefPreferences
+operator|.
+name|VIM
 argument_list|)
 block|,
 literal|"--servername"
@@ -522,7 +558,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"vimServer"
+name|JabRefPreferences
+operator|.
+name|VIM_SERVER
 argument_list|)
 block|,
 literal|"--remote-send"
@@ -535,7 +573,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandVim"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_VIM
 argument_list|)
 operator|+
 literal|"{"
@@ -566,6 +606,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -582,11 +624,11 @@ decl_stmt|;
 name|int
 name|c
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 try|try
@@ -605,6 +647,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -615,6 +658,7 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -665,24 +709,14 @@ block|}
 block|}
 block|}
 decl_stmt|;
-name|Thread
-name|t
-init|=
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|executeAndWait
 argument_list|(
 name|errorListener
 argument_list|)
-decl_stmt|;
-name|t
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-name|t
-operator|.
-name|join
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -696,19 +730,9 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 block|}
-block|}
+annotation|@
+name|Override
 DECL|method|operationCompleted (BasePanel panel)
 specifier|public
 name|void
@@ -722,6 +746,7 @@ if|if
 condition|(
 name|couldNotConnect
 condition|)
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -756,11 +781,13 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|couldNotRunClient
 condition|)
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -789,6 +816,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|panel
@@ -805,6 +833,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|requiresBibtexKeys ()
 specifier|public
 name|boolean

@@ -60,6 +60,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
 name|Util
 import|;
 end_import
@@ -78,20 +80,26 @@ name|AbstractUndoableEdit
 block|{
 DECL|field|entry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|field
 specifier|private
+specifier|final
 name|String
 name|field
 decl_stmt|;
 DECL|field|oldValue
-DECL|field|newValue
 specifier|private
+specifier|final
 name|String
 name|oldValue
-decl_stmt|,
+decl_stmt|;
+DECL|field|newValue
+specifier|private
+specifier|final
+name|String
 name|newValue
 decl_stmt|;
 DECL|method|UndoableFieldChange (BibtexEntry entry, String field, String oldValue, String newValue)
@@ -205,6 +213,8 @@ literal|"change field"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -225,6 +235,7 @@ name|oldValue
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -234,7 +245,9 @@ argument_list|,
 name|oldValue
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|entry
 operator|.
 name|clearField
@@ -242,6 +255,7 @@ argument_list|(
 name|field
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -261,6 +275,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void
@@ -281,6 +297,7 @@ name|newValue
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -290,7 +307,9 @@ argument_list|,
 name|newValue
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|entry
 operator|.
 name|clearField
@@ -298,6 +317,7 @@ argument_list|(
 name|field
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

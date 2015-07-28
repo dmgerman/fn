@@ -57,7 +57,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Inserts the current date (the time a database is being exported).  *   *<p>If a fieldText is given, it must be a valid {@link SimpleDateFormat} pattern.  * If none is given, the format pattern will be<code>yyyy.MM.dd hh:mm:ss z</code></p>  *  * @author andreas_sf at rudert-home dot de  * @version $Revision$  */
+comment|/**  * Inserts the current date (the time a database is being exported).  *   *<p>If a fieldText is given, it must be a valid {@link SimpleDateFormat} pattern.  * If none is given, the format pattern will be<code>yyyy.MM.dd hh:mm:ss z</code></p>  *  * @author andreas_sf at rudert-home dot de  */
 end_comment
 
 begin_class
@@ -78,6 +78,8 @@ init|=
 literal|"yyyy.MM.dd hh:mm:ss z"
 decl_stmt|;
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.export.layout.LayoutFormatter#format(java.lang.String)      */
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -90,24 +92,33 @@ block|{
 name|String
 name|format
 init|=
+name|CurrentDate
+operator|.
 name|defaultFormat
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|fieldText
 operator|!=
 literal|null
+operator|)
 operator|&&
-operator|!
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|fieldText
 operator|.
 name|trim
 argument_list|()
-argument_list|)
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|fieldText
+operator|.
+name|trim
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|format

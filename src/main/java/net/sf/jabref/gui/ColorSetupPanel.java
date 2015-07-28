@@ -138,6 +138,7 @@ literal|20
 decl_stmt|;
 DECL|field|buttons
 specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|ColorButton
@@ -618,6 +619,7 @@ name|ActionListener
 block|{
 DECL|field|button
 specifier|private
+specifier|final
 name|ColorButton
 name|button
 decl_stmt|;
@@ -636,6 +638,8 @@ operator|=
 name|button
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -671,6 +675,7 @@ name|chosen
 operator|!=
 literal|null
 condition|)
+block|{
 name|button
 operator|.
 name|setColor
@@ -678,6 +683,7 @@ argument_list|(
 name|chosen
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * A button to display the chosen color, and hold key information about a color setting.      * Includes a method to produce a Default button for this setting.      */
@@ -699,11 +705,15 @@ operator|.
 name|white
 decl_stmt|;
 DECL|field|key
-DECL|field|name
 specifier|private
+specifier|final
 name|String
 name|key
-decl_stmt|,
+decl_stmt|;
+DECL|field|name
+specifier|private
+specifier|final
+name|String
 name|name
 decl_stmt|;
 DECL|method|ColorButton (String key, String name)
@@ -771,6 +781,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -812,6 +824,8 @@ return|return
 name|key
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -848,6 +862,8 @@ operator|=
 name|color
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|paintIcon (Component c, Graphics g, int x, int y)
 specifier|public
 name|void
@@ -903,6 +919,8 @@ name|height
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIconWidth ()
 specifier|public
 name|int
@@ -910,9 +928,13 @@ name|getIconWidth
 parameter_list|()
 block|{
 return|return
+name|ColorSetupPanel
+operator|.
 name|ICON_WIDTH
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIconHeight ()
 specifier|public
 name|int
@@ -920,6 +942,8 @@ name|getIconHeight
 parameter_list|()
 block|{
 return|return
+name|ColorSetupPanel
+operator|.
 name|ICON_HEIGHT
 return|;
 block|}

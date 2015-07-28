@@ -86,6 +86,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
+name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -99,18 +113,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRef
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
 import|;
 end_import
 
@@ -148,7 +150,6 @@ end_comment
 
 begin_class
 DECL|class|DatabaseFileLookup
-specifier|public
 class|class
 name|DatabaseFileLookup
 block|{
@@ -230,6 +231,7 @@ name|aDatabase
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -237,6 +239,7 @@ argument_list|(
 literal|"Passing a 'null' BibtexDatabase."
 argument_list|)
 throw|;
+block|}
 name|entries
 operator|=
 name|aDatabase
@@ -342,7 +345,7 @@ block|}
 block|}
 comment|/**      * Searches the specified {@link BibtexEntry}<code>anEntry</code> for the      * appearance of the specified {@link File}<code>aFile</code>.<br>      *<br>      * Therefore the<i>file</i>-field of the bibtex-entry will be searched for      * the absolute filepath of the searched file.<br>      *<br>      *       * @param aFile      *            A file that is searched in an bibtex-entry.      * @param anEntry      *            A bibtex-entry, in which the file is searched.      * @return<code>true</code>, if the bibtex entry stores the file in its      *<i>file</i>-field, otherwise<code>false</code>.      */
 DECL|method|lookupEntry (File aFile, BibtexEntry anEntry)
-specifier|public
+specifier|private
 name|boolean
 name|lookupEntry
 parameter_list|(
@@ -355,17 +358,23 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|aFile
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|anEntry
 operator|==
 literal|null
+operator|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|FileListTableModel
 name|model
 init|=
@@ -380,6 +389,8 @@ name|anEntry
 operator|.
 name|getField
 argument_list|(
+name|DatabaseFileLookup
+operator|.
 name|KEY_FILE_FIELD
 argument_list|)
 decl_stmt|;
@@ -438,7 +449,7 @@ block|}
 name|File
 name|expandedFilename
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -449,10 +460,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|expandedFilename
 operator|!=
 literal|null
 comment|// file exists
+operator|)
 operator|&&
 name|expandedFilename
 operator|.

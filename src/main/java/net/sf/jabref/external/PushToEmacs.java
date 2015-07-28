@@ -107,6 +107,7 @@ literal|null
 decl_stmt|;
 DECL|field|citeCommand
 specifier|private
+specifier|final
 name|JTextField
 name|citeCommand
 init|=
@@ -118,6 +119,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|emacsPath
 specifier|private
+specifier|final
 name|JTextField
 name|emacsPath
 init|=
@@ -129,6 +131,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|additionalParams
 specifier|private
+specifier|final
 name|JTextField
 name|additionalParams
 init|=
@@ -140,6 +143,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|useEmacs23
 specifier|private
+specifier|final
 name|JCheckBox
 name|useEmacs23
 init|=
@@ -159,6 +163,8 @@ name|couldNotRunClient
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -174,6 +180,8 @@ literal|"Insert selected citations into Emacs"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getApplicationName ()
 specifier|public
 name|String
@@ -184,6 +192,8 @@ return|return
 literal|"Emacs"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTooltip ()
 specifier|public
 name|String
@@ -199,6 +209,8 @@ literal|"Push selection to Emacs"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIcon ()
 specifier|public
 name|Icon
@@ -214,6 +226,8 @@ literal|"emacs"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyStrokeName ()
 specifier|public
 name|String
@@ -224,6 +238,8 @@ return|return
 literal|"Push to Emacs"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSettingsPanel ()
 specifier|public
 name|JPanel
@@ -236,9 +252,11 @@ name|settings
 operator|==
 literal|null
 condition|)
+block|{
 name|initSettingsPanel
 argument_list|()
 expr_stmt|;
+block|}
 name|citeCommand
 operator|.
 name|setText
@@ -249,7 +267,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandEmacs"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_EMACS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -305,6 +325,8 @@ return|return
 name|settings
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -317,7 +339,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"citeCommandEmacs"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_EMACS
 argument_list|,
 name|citeCommand
 operator|.
@@ -426,14 +450,11 @@ expr_stmt|;
 name|BrowseAction
 name|action
 init|=
-operator|new
 name|BrowseAction
+operator|.
+name|buildForFile
 argument_list|(
-literal|null
-argument_list|,
 name|emacsPath
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|JButton
@@ -556,6 +577,8 @@ name|getPanel
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keys, MetaData metaData)
 specifier|public
 name|void
@@ -726,7 +749,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandEmacs"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_EMACS
 argument_list|)
 operator|.
 name|replaceAll
@@ -764,7 +789,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandEmacs"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_EMACS
 argument_list|)
 operator|.
 name|replaceAll
@@ -807,6 +834,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -828,11 +857,11 @@ comment|//                    }
 name|int
 name|c
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 try|try
@@ -851,6 +880,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -861,6 +891,7 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -911,24 +942,14 @@ block|}
 block|}
 block|}
 decl_stmt|;
-name|Thread
-name|t
-init|=
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|executeAndWait
 argument_list|(
 name|errorListener
 argument_list|)
-decl_stmt|;
-name|t
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-name|t
-operator|.
-name|join
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -942,19 +963,9 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 block|}
-block|}
+annotation|@
+name|Override
 DECL|method|operationCompleted (BasePanel panel)
 specifier|public
 name|void
@@ -968,6 +979,7 @@ if|if
 condition|(
 name|couldNotConnect
 condition|)
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1004,11 +1016,13 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|couldNotRunClient
 condition|)
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1039,6 +1053,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|panel
@@ -1055,6 +1070,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|requiresBibtexKeys ()
 specifier|public
 name|boolean

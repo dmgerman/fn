@@ -246,6 +246,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|groupingField
 specifier|private
+specifier|final
 name|JTextField
 name|groupingField
 init|=
@@ -257,6 +258,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|keywordSeparator
 specifier|private
+specifier|final
 name|JTextField
 name|keywordSeparator
 init|=
@@ -294,6 +296,8 @@ operator|new
 name|FocusListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|focusGained
@@ -308,6 +312,8 @@ name|selectAll
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|focusLost
@@ -659,6 +665,8 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -673,7 +681,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupShowIcons"
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_ICONS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -685,7 +695,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupShowDynamic"
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_DYNAMIC
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -697,7 +709,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupExpandTree"
+name|JabRefPreferences
+operator|.
+name|GROUP_EXPAND_TREE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -709,7 +723,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"groupsDefaultField"
+name|JabRefPreferences
+operator|.
+name|GROUPS_DEFAULT_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -721,7 +737,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupAutoShow"
+name|JabRefPreferences
+operator|.
+name|GROUP_AUTO_SHOW
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -733,7 +751,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupAutoHide"
+name|JabRefPreferences
+operator|.
+name|GROUP_AUTO_HIDE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -745,7 +765,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"groupKeywordSeparator"
+name|JabRefPreferences
+operator|.
+name|GROUP_KEYWORD_SEPARATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -757,11 +779,15 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoAssignGroup"
+name|JabRefPreferences
+operator|.
+name|AUTO_ASSIGN_GROUP
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -772,7 +798,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"groupShowIcons"
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_ICONS
 argument_list|,
 name|showIcons
 operator|.
@@ -784,7 +812,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"groupShowDynamic"
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_DYNAMIC
 argument_list|,
 name|showDynamic
 operator|.
@@ -796,7 +826,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"groupExpandTree"
+name|JabRefPreferences
+operator|.
+name|GROUP_EXPAND_TREE
 argument_list|,
 name|expandTree
 operator|.
@@ -808,7 +840,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"groupsDefaultField"
+name|JabRefPreferences
+operator|.
+name|GROUPS_DEFAULT_FIELD
 argument_list|,
 name|groupingField
 operator|.
@@ -823,7 +857,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"groupAutoShow"
+name|JabRefPreferences
+operator|.
+name|GROUP_AUTO_SHOW
 argument_list|,
 name|autoShow
 operator|.
@@ -835,7 +871,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"groupAutoHide"
+name|JabRefPreferences
+operator|.
+name|GROUP_AUTO_HIDE
 argument_list|,
 name|autoHide
 operator|.
@@ -847,7 +885,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autoAssignGroup"
+name|JabRefPreferences
+operator|.
+name|AUTO_ASSIGN_GROUP
 argument_list|,
 name|autoAssignGroup
 operator|.
@@ -859,7 +899,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"groupKeywordSeparator"
+name|JabRefPreferences
+operator|.
+name|GROUP_KEYWORD_SEPARATOR
 argument_list|,
 name|keywordSeparator
 operator|.
@@ -868,6 +910,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -878,6 +922,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

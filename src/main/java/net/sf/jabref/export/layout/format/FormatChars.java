@@ -40,7 +40,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|util
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -83,8 +85,9 @@ implements|implements
 name|LayoutFormatter
 block|{
 DECL|field|CHARS
-specifier|public
+specifier|private
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -120,7 +123,7 @@ name|put
 argument_list|(
 literal|"'A"
 argument_list|,
-literal|"Ã?"
+literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #193
@@ -240,7 +243,7 @@ name|put
 argument_list|(
 literal|"'I"
 argument_list|,
-literal|"Ã?"
+literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #205
@@ -260,7 +263,7 @@ name|put
 argument_list|(
 literal|"\"I"
 argument_list|,
-literal|"Ã?"
+literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #207
@@ -270,7 +273,7 @@ name|put
 argument_list|(
 literal|"DH"
 argument_list|,
-literal|"Ã?"
+literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #208
@@ -393,7 +396,7 @@ name|put
 argument_list|(
 literal|"'Y"
 argument_list|,
-literal|"Ã?"
+literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #221
@@ -748,7 +751,7 @@ name|put
 argument_list|(
 literal|"=a"
 argument_list|,
-literal|"Ä?"
+literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "amacr"
@@ -868,7 +871,7 @@ name|put
 argument_list|(
 literal|"vc"
 argument_list|,
-literal|"Ä?"
+literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "ccaron"
@@ -882,14 +885,14 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Dcaron"
-comment|// Symbol #271 (dï¿½) has no special Latex command
+comment|// Symbol #271 (d) has no special Latex command
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"DJ"
 argument_list|,
-literal|"Ä?"
+literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Dstrok"
@@ -1019,7 +1022,7 @@ name|put
 argument_list|(
 literal|"^g"
 argument_list|,
-literal|"Ä?"
+literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "gcirc"
@@ -1306,8 +1309,8 @@ literal|"Ä¼"
 argument_list|)
 expr_stmt|;
 comment|// "lcedil"
-comment|// Symbol #317 (Lï¿½) has no special Latex command
-comment|// Symbol #318 (lï¿½) has no special Latex command
+comment|// Symbol #317 (L) has no special Latex command
+comment|// Symbol #318 (l) has no special Latex command
 name|CHARS
 operator|.
 name|put
@@ -1334,7 +1337,7 @@ name|put
 argument_list|(
 literal|"L"
 argument_list|,
-literal|"Å?"
+literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Lstrok"
@@ -1408,7 +1411,7 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "ncaron"
-comment|// Symbol #329 (ï¿½n) has no special Latex command
+comment|// Symbol #329 (n) has no special Latex command
 name|CHARS
 operator|.
 name|put
@@ -1445,7 +1448,7 @@ name|put
 argument_list|(
 literal|"=o"
 argument_list|,
-literal|"Å?"
+literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "omacr"
@@ -1465,7 +1468,7 @@ name|put
 argument_list|(
 literal|"uo"
 argument_list|,
-literal|"Å?"
+literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "obreve"
@@ -1475,7 +1478,7 @@ name|put
 argument_list|(
 literal|"HO"
 argument_list|,
-literal|"Å?"
+literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Odblac"
@@ -1605,7 +1608,7 @@ name|put
 argument_list|(
 literal|"^s"
 argument_list|,
-literal|"Å?"
+literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "scirc"
@@ -1679,7 +1682,7 @@ literal|"Å¤"
 argument_list|)
 expr_stmt|;
 comment|// "Tcaron"
-comment|// Symbol #357 (tï¿½) has no special Latex command
+comment|// Symbol #357 (t) has no special Latex command
 name|CHARS
 operator|.
 name|put
@@ -1942,6 +1945,8 @@ argument_list|)
 expr_stmt|;
 comment|// percent sign
 block|}
+annotation|@
+name|Override
 DECL|method|format (String field)
 specifier|public
 name|String
@@ -1972,11 +1977,11 @@ argument_list|,
 literal|"<p>"
 argument_list|)
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|StringBuffer
@@ -2070,6 +2075,8 @@ decl_stmt|;
 name|Object
 name|result
 init|=
+name|FormatChars
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2128,13 +2135,17 @@ operator|!
 name|incommand
 operator|&&
 operator|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 operator|)
 condition|)
 block|{
@@ -2182,6 +2193,7 @@ condition|(
 operator|!
 name|incommand
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -2189,7 +2201,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|// Else we are in a command, and should not keep the letter.
+block|}
 else|else
 block|{
 name|currentCommand
@@ -2233,16 +2245,20 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 break|break
 name|testCharCom
 break|;
+block|}
 name|String
 name|command
 init|=
@@ -2277,7 +2293,7 @@ block|{
 name|String
 name|part
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -2320,6 +2336,8 @@ block|}
 name|Object
 name|result
 init|=
+name|FormatChars
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2335,6 +2353,7 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -2345,6 +2364,7 @@ operator|)
 name|result
 argument_list|)
 expr_stmt|;
+block|}
 name|incommand
 operator|=
 literal|false
@@ -2359,9 +2379,11 @@ block|{
 comment|//	Are we already at the end of the string?
 if|if
 condition|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|==
 name|field
 operator|.
@@ -2380,6 +2402,8 @@ decl_stmt|;
 name|Object
 name|result
 init|=
+name|FormatChars
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2424,8 +2448,6 @@ else|else
 block|{
 name|String
 name|argument
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -2485,7 +2507,7 @@ block|{
 name|String
 name|part
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -2518,6 +2540,8 @@ comment|// handle common case of general latex command
 name|Object
 name|result
 init|=
+name|FormatChars
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2576,6 +2600,8 @@ comment|// substitute the evaluated command and swallow the brace:
 name|Object
 name|result
 init|=
+name|FormatChars
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2618,6 +2644,8 @@ block|{
 name|Object
 name|result
 init|=
+name|FormatChars
+operator|.
 name|CHARS
 operator|.
 name|get

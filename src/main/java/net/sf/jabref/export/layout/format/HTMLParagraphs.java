@@ -61,7 +61,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Will interpret two consecutive newlines as the start of a new paragraph and thus  * wrap the paragraph in HTML-p-tags.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Will interpret two consecutive newlines as the start of a new paragraph and thus  * wrap the paragraph in HTML-p-tags.  */
 end_comment
 
 begin_class
@@ -73,10 +73,13 @@ implements|implements
 name|LayoutFormatter
 block|{
 DECL|field|beforeNewLines
+specifier|private
 specifier|static
 name|Pattern
 name|beforeNewLines
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -97,10 +100,8 @@ if|if
 condition|(
 name|fieldText
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 return|return
@@ -109,11 +110,15 @@ return|;
 block|}
 if|if
 condition|(
+name|HTMLParagraphs
+operator|.
 name|beforeNewLines
 operator|==
 literal|null
 condition|)
 block|{
+name|HTMLParagraphs
+operator|.
 name|beforeNewLines
 operator|=
 name|Pattern
@@ -127,6 +132,8 @@ block|}
 name|Matcher
 name|m
 init|=
+name|HTMLParagraphs
+operator|.
 name|beforeNewLines
 operator|.
 name|matcher
@@ -164,12 +171,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|middle
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|s

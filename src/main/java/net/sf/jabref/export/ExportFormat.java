@@ -171,22 +171,27 @@ implements|implements
 name|IExportFormat
 block|{
 DECL|field|displayName
+specifier|private
 name|String
 name|displayName
 decl_stmt|;
 DECL|field|consoleName
+specifier|private
 name|String
 name|consoleName
 decl_stmt|;
 DECL|field|lfFileName
+specifier|private
 name|String
 name|lfFileName
 decl_stmt|;
 DECL|field|directory
+specifier|private
 name|String
 name|directory
 decl_stmt|;
 DECL|field|extension
+specifier|private
 name|String
 name|extension
 decl_stmt|;
@@ -199,10 +204,12 @@ decl_stmt|;
 comment|// If this value is set, it will be used to override
 comment|// the default encoding for the basePanel.
 DECL|field|fileFilter
+specifier|private
 name|FileFilter
 name|fileFilter
 decl_stmt|;
 DECL|field|customExport
+specifier|private
 name|boolean
 name|customExport
 init|=
@@ -262,7 +269,6 @@ expr_stmt|;
 block|}
 comment|/** Empty default constructor for subclasses */
 DECL|method|ExportFormat ()
-specifier|protected
 name|ExportFormat
 parameter_list|()
 block|{
@@ -286,6 +292,8 @@ name|custom
 expr_stmt|;
 block|}
 comment|/**      * @see IExportFormat#getConsoleName()      */
+annotation|@
+name|Override
 DECL|method|getConsoleName ()
 specifier|public
 name|String
@@ -297,6 +305,8 @@ name|consoleName
 return|;
 block|}
 comment|/**      * @see IExportFormat#getDisplayName()      */
+annotation|@
+name|Override
 DECL|method|getDisplayName ()
 specifier|public
 name|String
@@ -309,7 +319,6 @@ return|;
 block|}
 comment|/**      * Set an encoding which will be used in preference to the default value      * obtained from the basepanel.      * @param encoding The name of the encoding to use.      */
 DECL|method|setEncoding (String encoding)
-specifier|protected
 name|void
 name|setEncoding
 parameter_list|(
@@ -326,7 +335,6 @@ expr_stmt|;
 block|}
 comment|/**      * This method should return a reader from which the given layout file can      * be read.      *       * This standard implementation of this method will use the      * {@link FileActions#getReader(String)} method.      *       * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *       * @param filename      *            the file name      * @throws IOException      *             if the reader could not be created      *       * @return a newly created reader      */
 DECL|method|getReader (String filename)
-specifier|protected
 name|Reader
 name|getReader
 parameter_list|(
@@ -367,7 +375,7 @@ literal|""
 else|:
 name|directory
 operator|+
-literal|"/"
+literal|'/'
 operator|)
 expr_stmt|;
 block|}
@@ -383,6 +391,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Perform the export of {@code database}.      *       * @param database      *            The database to export from.      * @param metaData      *            The database's meta data.      * @param file      *            the file to write the resulting export to      * @param encoding      *            The encoding of the database      * @param entryIds      *            Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      *       * @throws IOException      *             if a problem occurred while trying to write to {@code writer}      *             or read from required resources.      * @throws Exception      *             if any other error occurred during export.      *       * @see net.sf.jabref.export.IExportFormat#performExport(net.sf.jabref.BibtexDatabase,      *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set)      */
+annotation|@
+name|Override
 DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> entryIds)
 specifier|public
 name|void
@@ -471,6 +481,7 @@ name|ss
 operator|==
 literal|null
 condition|)
+block|{
 name|ss
 operator|=
 name|getSaveSession
@@ -480,6 +491,7 @@ argument_list|,
 name|outFile
 argument_list|)
 expr_stmt|;
+block|}
 name|VerifyingWriter
 name|ps
 init|=
@@ -495,23 +507,8 @@ literal|null
 decl_stmt|;
 name|Reader
 name|reader
-init|=
-literal|null
 decl_stmt|;
 comment|// Check if this export filter has bundled name formatters:
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|customNameFormatters
-init|=
-name|readFormatterFile
-argument_list|(
-name|lfFileName
-argument_list|)
-decl_stmt|;
 comment|// Set a global field, so all layouts have access to the custom name formatters:
 name|Globals
 operator|.
@@ -519,7 +516,10 @@ name|prefs
 operator|.
 name|customExportNameFormatters
 operator|=
-name|customNameFormatters
+name|readFormatterFile
+argument_list|(
+name|lfFileName
+argument_list|)
 expr_stmt|;
 name|ArrayList
 argument_list|<
@@ -766,6 +766,7 @@ argument_list|(
 name|type
 argument_list|)
 condition|)
+block|{
 name|layout
 operator|=
 name|layouts
@@ -775,6 +776,7 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 try|try
@@ -786,7 +788,7 @@ name|getReader
 argument_list|(
 name|lfFileName
 operator|+
-literal|"."
+literal|'.'
 operator|+
 name|type
 operator|+
@@ -832,6 +834,7 @@ name|layout
 operator|!=
 literal|null
 condition|)
+block|{
 name|missingFormatters
 operator|.
 name|addAll
@@ -842,6 +845,7 @@ name|getMissingFormatters
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -970,12 +974,11 @@ literal|null
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|missingFormatters
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|StringBuilder
@@ -1029,6 +1032,7 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1036,6 +1040,7 @@ argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|System
 operator|.
@@ -1195,12 +1200,12 @@ if|if
 condition|(
 name|line
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
+block|{
 continue|continue;
+block|}
 name|int
 name|index
 init|=
@@ -1221,9 +1226,11 @@ literal|0
 operator|)
 operator|&&
 operator|(
+operator|(
 name|index
 operator|+
 literal|1
+operator|)
 operator|<
 name|line
 operator|.
@@ -1291,6 +1298,7 @@ name|in
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|in
@@ -1313,12 +1321,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 return|return
 name|formatters
 return|;
 block|}
 DECL|method|getSaveSession (final String encoding, final File outFile)
-specifier|protected
 name|SaveSession
 name|getSaveSession
 parameter_list|(
@@ -1346,6 +1354,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @see net.sf.jabref.export.IExportFormat#getFileFilter()      */
+annotation|@
+name|Override
 DECL|method|getFileFilter ()
 specifier|public
 name|FileFilter
@@ -1358,6 +1368,7 @@ name|fileFilter
 operator|==
 literal|null
 condition|)
+block|{
 name|fileFilter
 operator|=
 operator|new
@@ -1368,12 +1379,12 @@ argument_list|,
 name|extension
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|fileFilter
 return|;
 block|}
 DECL|method|finalizeSaveSession (final SaveSession ss)
-specifier|public
 name|void
 name|finalizeSaveSession
 parameter_list|(

@@ -70,7 +70,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|format (String text, String[] listOfWords)
-specifier|public
+specifier|private
 name|String
 name|format
 parameter_list|(
@@ -138,6 +138,8 @@ return|return
 name|text
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String text)
 specifier|public
 name|String

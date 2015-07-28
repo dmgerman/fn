@@ -36,43 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
+name|*
 import|;
 end_import
 
@@ -90,16 +54,19 @@ name|AbstractUndoableEdit
 block|{
 DECL|field|base
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|base
 decl_stmt|;
 DECL|field|entry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -136,6 +103,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -146,6 +115,8 @@ return|return
 literal|"Undo: insert entry"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String
@@ -156,6 +127,8 @@ return|return
 literal|"Redo: insert entry"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -202,6 +175,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void
@@ -219,9 +194,9 @@ block|{
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 name|entry

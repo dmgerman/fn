@@ -22,13 +22,13 @@ end_comment
 
 begin_class
 DECL|class|CaseKeeperList
-specifier|public
 class|class
 name|CaseKeeperList
 block|{
 comment|// Common words in IEEE Xplore that should always be in the given case
 DECL|field|wordListIEEEXplore
-specifier|public
+specifier|private
+specifier|final
 name|String
 index|[]
 name|wordListIEEEXplore
@@ -1321,7 +1321,8 @@ block|}
 decl_stmt|;
 comment|// Weekdays and months
 DECL|field|wordListDayMonth
-specifier|public
+specifier|private
+specifier|final
 name|String
 index|[]
 name|wordListDayMonth
@@ -1371,6 +1372,7 @@ block|}
 decl_stmt|;
 DECL|field|wordListCountries
 specifier|private
+specifier|final
 name|String
 index|[]
 name|wordListCountries
@@ -1957,6 +1959,7 @@ decl_stmt|;
 comment|// List of all keyword lists
 DECL|field|allLists
 specifier|private
+specifier|final
 name|String
 index|[]
 index|[]
@@ -1976,6 +1979,7 @@ block|}
 decl_stmt|;
 DECL|field|genericLists
 specifier|private
+specifier|final
 name|String
 index|[]
 index|[]

@@ -54,6 +54,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -83,6 +93,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|util
 operator|.
 name|Util
 import|;
@@ -118,6 +130,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -129,6 +143,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

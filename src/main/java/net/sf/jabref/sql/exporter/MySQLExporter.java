@@ -56,7 +56,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|IdGenerator
 import|;
 end_import
 
@@ -123,17 +123,25 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|MySQLExporter
+operator|.
 name|instance
 operator|==
 literal|null
 condition|)
+block|{
+name|MySQLExporter
+operator|.
 name|instance
 operator|=
 operator|new
 name|MySQLExporter
 argument_list|()
 expr_stmt|;
+block|}
 return|return
+name|MySQLExporter
+operator|.
 name|instance
 return|;
 block|}
@@ -216,7 +224,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|+
-literal|"`"
+literal|'`'
 argument_list|)
 expr_stmt|;
 name|SQLUtil
@@ -232,7 +240,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|+
-literal|"`"
+literal|'`'
 argument_list|)
 expr_stmt|;
 return|return
@@ -313,7 +321,7 @@ literal|"entries_id      INTEGER         NOT NULL AUTO_INCREMENT, \n"
 operator|+
 literal|"jabref_eid      VARCHAR("
 operator|+
-name|Util
+name|IdGenerator
 operator|.
 name|getMinimumIntegerDigits
 argument_list|()

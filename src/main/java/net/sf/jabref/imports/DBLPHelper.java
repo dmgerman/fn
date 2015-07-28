@@ -50,7 +50,6 @@ end_import
 
 begin_class
 DECL|class|DBLPHelper
-specifier|public
 class|class
 name|DBLPHelper
 block|{

@@ -265,6 +265,8 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
+name|NameFormatterTab
+operator|.
 name|NAME_FORMATER_KEY
 argument_list|)
 decl_stmt|;
@@ -278,6 +280,8 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
+name|NameFormatterTab
+operator|.
 name|NAME_FORMATTER_VALUE
 argument_list|)
 decl_stmt|;
@@ -336,6 +340,7 @@ name|formats
 operator|.
 name|length
 condition|)
+block|{
 name|result
 operator|.
 name|put
@@ -351,7 +356,9 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|result
 operator|.
 name|put
@@ -367,6 +374,7 @@ name|DEFAULT_FORMAT
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|result
 return|;
@@ -380,6 +388,7 @@ literal|false
 decl_stmt|;
 DECL|field|table
 specifier|private
+specifier|final
 name|JTable
 name|table
 decl_stmt|;
@@ -393,6 +402,7 @@ literal|1
 decl_stmt|;
 DECL|field|tableRows
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|TableRow
@@ -409,6 +419,7 @@ literal|10
 argument_list|)
 decl_stmt|;
 DECL|class|TableRow
+specifier|static
 class|class
 name|TableRow
 block|{
@@ -497,6 +508,8 @@ operator|new
 name|AbstractTableModel
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getRowCount
@@ -506,6 +519,8 @@ return|return
 name|rowCount
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getColumnCount
@@ -515,6 +530,8 @@ return|return
 literal|2
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|getValueAt
@@ -535,9 +552,11 @@ operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|TableRow
 name|tr
 init|=
@@ -554,9 +573,11 @@ name|tr
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 switch|switch
 condition|(
 name|column
@@ -584,6 +605,8 @@ literal|null
 return|;
 comment|// Unreachable.
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getColumnName
@@ -614,6 +637,8 @@ argument_list|)
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Class
 argument_list|<
@@ -625,24 +650,14 @@ name|int
 name|column
 parameter_list|)
 block|{
-if|if
-condition|(
-name|column
-operator|==
-literal|0
-condition|)
-return|return
-name|String
-operator|.
-name|class
-return|;
-else|else
 return|return
 name|String
 operator|.
 name|class
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isCellEditable
@@ -658,6 +673,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setValueAt
@@ -686,6 +703,7 @@ operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 name|tableRows
 operator|.
 name|add
@@ -695,6 +713,7 @@ name|TableRow
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|TableRow
 name|rowContent
 init|=
@@ -711,6 +730,7 @@ name|col
 operator|==
 literal|0
 condition|)
+block|{
 name|rowContent
 operator|.
 name|name
@@ -720,7 +740,9 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|rowContent
 operator|.
 name|format
@@ -730,6 +752,7 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 decl_stmt|;
@@ -824,11 +847,11 @@ name|JScrollPane
 argument_list|(
 name|table
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_NEVER
 argument_list|)
@@ -1032,6 +1055,8 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1053,6 +1078,8 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
+name|NameFormatterTab
+operator|.
 name|NAME_FORMATER_KEY
 argument_list|)
 decl_stmt|;
@@ -1066,6 +1093,8 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
+name|NameFormatterTab
+operator|.
 name|NAME_FORMATTER_VALUE
 argument_list|)
 decl_stmt|;
@@ -1124,6 +1153,7 @@ name|formats
 operator|.
 name|length
 condition|)
+block|{
 name|tableRows
 operator|.
 name|add
@@ -1143,7 +1173,9 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|tableRows
 operator|.
 name|add
@@ -1158,6 +1190,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|rowCount
 operator|=
@@ -1194,6 +1227,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -1205,6 +1240,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1291,11 +1328,13 @@ name|length
 operator|>
 literal|1
 condition|)
+block|{
 name|table
 operator|.
 name|clearSelection
 argument_list|()
 expr_stmt|;
+block|}
 name|table
 operator|.
 name|revalidate
@@ -1333,6 +1372,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -1344,6 +1385,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1406,20 +1449,25 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
+operator|(
 name|rows
 index|[
 name|i
 index|]
 operator|+
 name|i
+operator|)
 operator|-
 literal|1
+operator|)
 operator|<
 name|tableRows
 operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 name|tableRows
 operator|.
 name|add
@@ -1430,12 +1478,14 @@ name|max
 argument_list|(
 literal|0
 argument_list|,
+operator|(
 name|rows
 index|[
 name|i
 index|]
 operator|+
 name|i
+operator|)
 operator|-
 literal|1
 argument_list|)
@@ -1445,6 +1495,7 @@ name|TableRow
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|rowCount
 operator|+=
@@ -1460,11 +1511,13 @@ name|length
 operator|>
 literal|1
 condition|)
+block|{
 name|table
 operator|.
 name|clearSelection
 argument_list|()
 expr_stmt|;
+block|}
 name|table
 operator|.
 name|revalidate
@@ -1482,6 +1535,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *       */
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1558,11 +1613,10 @@ argument_list|)
 operator|.
 name|name
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
+block|{
 name|tableRows
 operator|.
 name|removeElementAt
@@ -1570,10 +1624,13 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|i
 operator|++
 expr_stmt|;
+block|}
 block|}
 comment|// Then we make arrays
 name|String
@@ -1653,6 +1710,8 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
+name|NameFormatterTab
+operator|.
 name|NAME_FORMATER_KEY
 argument_list|,
 name|names
@@ -1664,6 +1723,8 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
+name|NameFormatterTab
+operator|.
 name|NAME_FORMATTER_VALUE
 argument_list|,
 name|formats
@@ -1671,6 +1732,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -1681,6 +1744,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

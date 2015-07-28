@@ -296,12 +296,13 @@ end_comment
 
 begin_class
 DECL|class|OOUtil
-specifier|public
 class|class
 name|OOUtil
 block|{
 DECL|field|htmlTag
+specifier|private
 specifier|static
+specifier|final
 name|Pattern
 name|htmlTag
 init|=
@@ -314,6 +315,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|postformatter
 specifier|static
+specifier|final
 name|OOPreFormatter
 name|postformatter
 init|=
@@ -403,6 +405,8 @@ name|oldUniqVal
 argument_list|)
 expr_stmt|;
 comment|// Insert the formatted text:
+name|OOUtil
+operator|.
 name|insertOOFormattedTextAtCurrentLocation
 argument_list|(
 name|text
@@ -536,6 +540,8 @@ comment|//cursor.goLeft((short)1, true);
 name|Matcher
 name|m
 init|=
+name|OOUtil
+operator|.
 name|htmlTag
 operator|.
 name|matcher
@@ -576,6 +582,8 @@ operator|>
 literal|0
 condition|)
 block|{
+name|OOUtil
+operator|.
 name|insertTextAtCurrentLocation
 argument_list|(
 name|text
@@ -636,9 +644,11 @@ argument_list|(
 literal|"<b>"
 argument_list|)
 condition|)
+block|{
 name|bold
 operator|++
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -649,9 +659,11 @@ argument_list|(
 literal|"</b>"
 argument_list|)
 condition|)
+block|{
 name|bold
 operator|--
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -669,9 +681,11 @@ argument_list|(
 literal|"<em>"
 argument_list|)
 condition|)
+block|{
 name|italic
 operator|++
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -689,9 +703,11 @@ argument_list|(
 literal|"</em>"
 argument_list|)
 condition|)
+block|{
 name|italic
 operator|--
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -702,10 +718,12 @@ argument_list|(
 literal|"</monospace>"
 argument_list|)
 condition|)
+block|{
 name|mono
 operator|=
 literal|0
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -716,10 +734,12 @@ argument_list|(
 literal|"<monospace>"
 argument_list|)
 condition|)
+block|{
 name|mono
 operator|=
 literal|1
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -730,10 +750,12 @@ argument_list|(
 literal|"</smallcaps>"
 argument_list|)
 condition|)
+block|{
 name|smallCaps
 operator|=
 literal|0
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -744,10 +766,12 @@ argument_list|(
 literal|"<smallcaps>"
 argument_list|)
 condition|)
+block|{
 name|smallCaps
 operator|=
 literal|1
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -758,10 +782,12 @@ argument_list|(
 literal|"</sup>"
 argument_list|)
 condition|)
+block|{
 name|sup
 operator|=
 literal|0
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -772,10 +798,12 @@ argument_list|(
 literal|"<sup>"
 argument_list|)
 condition|)
+block|{
 name|sup
 operator|=
 literal|1
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -786,10 +814,12 @@ argument_list|(
 literal|"</sub>"
 argument_list|)
 condition|)
+block|{
 name|sub
 operator|=
 literal|0
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -800,10 +830,12 @@ argument_list|(
 literal|"<sub>"
 argument_list|)
 condition|)
+block|{
 name|sub
 operator|=
 literal|1
 expr_stmt|;
+block|}
 name|piv
 operator|=
 name|m
@@ -821,6 +853,9 @@ operator|.
 name|length
 argument_list|()
 condition|)
+block|{
+name|OOUtil
+operator|.
 name|insertTextAtCurrentLocation
 argument_list|(
 name|text
@@ -867,6 +902,7 @@ operator|>
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 name|cursor
 operator|.
 name|collapseToEnd
@@ -974,6 +1010,7 @@ if|if
 condition|(
 name|bold
 condition|)
+block|{
 name|xCursorProps
 operator|.
 name|setPropertyValue
@@ -993,7 +1030,9 @@ operator|.
 name|BOLD
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|xCursorProps
 operator|.
 name|setPropertyValue
@@ -1013,10 +1052,12 @@ operator|.
 name|NORMAL
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|italic
 condition|)
+block|{
 name|xCursorProps
 operator|.
 name|setPropertyValue
@@ -1036,7 +1077,9 @@ operator|.
 name|ITALIC
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|xCursorProps
 operator|.
 name|setPropertyValue
@@ -1056,6 +1099,7 @@ operator|.
 name|NONE
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|smallCaps
@@ -1460,13 +1504,14 @@ block|{
 name|values
 index|[
 name|ii
-operator|++
 index|]
 operator|=
 name|String
 operator|.
 name|valueOf
 argument_list|(
+name|OOUtil
+operator|.
 name|getProperty
 argument_list|(
 name|doc
@@ -1480,6 +1525,9 @@ argument_list|,
 literal|"Title"
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|ii
+operator|++
 expr_stmt|;
 block|}
 name|JList
@@ -1556,9 +1604,11 @@ argument_list|)
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 comment|/**      * Make a cloned BibtexEntry and do the necessary preprocessing for use by the plugin.      * If the running JabRef version doesn't support post-processing in Layout, this      * preprocessing includes running the OOPreFormatter formatter for all fields except the      * BibTeX key.      * @param entry the original entry      * @return the cloned and processed entry      */
 DECL|method|createAdaptedEntry (BibtexEntry entry)
@@ -1577,9 +1627,11 @@ name|entry
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|BibtexEntry
 name|e
 init|=
@@ -1613,7 +1665,9 @@ operator|.
 name|KEY_FIELD
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 name|value
 init|=
@@ -1639,12 +1693,15 @@ operator|!=
 literal|null
 operator|)
 condition|)
+block|{
 name|e
 operator|.
 name|setField
 argument_list|(
 name|field
 argument_list|,
+name|OOUtil
+operator|.
 name|postformatter
 operator|.
 name|format
@@ -1653,6 +1710,7 @@ name|value
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|e

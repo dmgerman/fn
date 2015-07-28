@@ -24,7 +24,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|util
+operator|.
+name|FileUtil
 import|;
 end_import
 
@@ -36,7 +38,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|Globals
 import|;
 end_import
 
@@ -101,12 +103,13 @@ DECL|class|FileUpdateMonitor
 specifier|public
 class|class
 name|FileUpdateMonitor
-extends|extends
-name|Thread
+implements|implements
+name|Runnable
 block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -123,26 +126,24 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|WAIT
+specifier|private
+specifier|static
 specifier|final
 name|int
 name|WAIT
 init|=
 literal|4000
 decl_stmt|;
-DECL|field|tmpNum
-specifier|static
+DECL|field|numberOfUpdateListener
+specifier|private
 name|int
-name|tmpNum
-init|=
-literal|0
-decl_stmt|;
-DECL|field|no
-name|int
-name|no
+name|numberOfUpdateListener
 init|=
 literal|0
 decl_stmt|;
 DECL|field|entries
+specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -160,35 +161,18 @@ name|Entry
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|field|running
-name|boolean
-name|running
-decl_stmt|;
-DECL|method|FileUpdateMonitor ()
-specifier|public
-name|FileUpdateMonitor
-parameter_list|()
-block|{
-name|setPriority
-argument_list|(
-name|MIN_PRIORITY
-argument_list|)
-expr_stmt|;
-block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
 name|run
 parameter_list|()
 block|{
-name|running
-operator|=
-literal|true
-expr_stmt|;
 comment|// The running variable is used to make the thread stop when needed.
 while|while
 condition|(
-name|running
+literal|true
 condition|)
 block|{
 comment|//System.out.println("Polling...");
@@ -238,11 +222,13 @@ operator|.
 name|hasBeenUpdated
 argument_list|()
 condition|)
+block|{
 name|e
 operator|.
 name|notifyListener
 argument_list|()
 expr_stmt|;
+block|}
 comment|//else
 comment|//System.out.println("File '"+e.file.getPath()+"' not modified.");
 block|}
@@ -262,6 +248,8 @@ block|}
 comment|// Sleep for a while before starting a new polling round.
 try|try
 block|{
+name|Thread
+operator|.
 name|sleep
 argument_list|(
 name|WAIT
@@ -274,6 +262,8 @@ name|InterruptedException
 name|ex
 parameter_list|)
 block|{
+name|FileUpdateMonitor
+operator|.
 name|logger
 operator|.
 name|finest
@@ -281,31 +271,9 @@ argument_list|(
 literal|"FileUpdateMonitor has been interrupted."
 argument_list|)
 expr_stmt|;
-comment|/*  the (?) correct way to interrupt threads, according to                  *  http://www.roseindia.net/javatutorials/shutting_down_threads_cleanly.shtml                  */
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|interrupt
-argument_list|()
-expr_stmt|;
-comment|// very important
-break|break;
+return|return;
 block|}
 block|}
-block|}
-comment|/**      * Cause the thread to stop monitoring. It will finish the current round before stopping.      */
-DECL|method|stopMonitoring ()
-specifier|public
-name|void
-name|stopMonitoring
-parameter_list|()
-block|{
-name|running
-operator|=
-literal|false
-expr_stmt|;
 block|}
 comment|/**      * Add a new file to monitor. Returns a handle for accessing the entry.      * @param ul FileUpdateListener The listener to notify when the file changes.      * @param file File The file to monitor.      * @throws IOException if the file does not exist.      */
 DECL|method|addUpdateListener (FileUpdateListener ul, File file)
@@ -322,7 +290,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// System.out.println(file.getPath());
 if|if
 condition|(
 operator|!
@@ -331,6 +298,7 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -338,7 +306,8 @@ argument_list|(
 literal|"File not found"
 argument_list|)
 throw|;
-name|no
+block|}
+name|numberOfUpdateListener
 operator|++
 expr_stmt|;
 name|String
@@ -346,7 +315,7 @@ name|key
 init|=
 literal|""
 operator|+
-name|no
+name|numberOfUpdateListener
 decl_stmt|;
 name|entries
 operator|.
@@ -395,9 +364,11 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|//	    throw new IllegalArgumentException("Entry not found");
 try|try
 block|{
@@ -451,7 +422,9 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 operator|(
 operator|(
 name|Entry
@@ -508,6 +481,7 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -515,6 +489,7 @@ argument_list|(
 literal|"Entry not found"
 argument_list|)
 throw|;
+block|}
 name|Entry
 name|entry
 init|=
@@ -527,72 +502,6 @@ name|entry
 operator|.
 name|updateTimeStamp
 argument_list|()
-expr_stmt|;
-block|}
-DECL|method|changeFile (String key, File file)
-specifier|public
-name|void
-name|changeFile
-parameter_list|(
-name|String
-name|key
-parameter_list|,
-name|File
-name|file
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|IllegalArgumentException
-block|{
-if|if
-condition|(
-operator|!
-name|file
-operator|.
-name|exists
-argument_list|()
-condition|)
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"File not found"
-argument_list|)
-throw|;
-name|Object
-name|o
-init|=
-name|entries
-operator|.
-name|get
-argument_list|(
-name|key
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|o
-operator|==
-literal|null
-condition|)
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Entry not found"
-argument_list|)
-throw|;
-operator|(
-operator|(
-name|Entry
-operator|)
-name|o
-operator|)
-operator|.
-name|file
-operator|=
-name|file
 expr_stmt|;
 block|}
 comment|/**      * Method for getting the temporary file used for this database. The tempfile      * is used for comparison with the changed on-disk version.      * @param key String The handle for this monitor.      * @throws IllegalArgumentException If the handle doesn't correspond to an entry.      * @return File The temporary file.      */
@@ -623,6 +532,7 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -630,6 +540,7 @@ argument_list|(
 literal|"Entry not found"
 argument_list|)
 throw|;
+block|}
 return|return
 operator|(
 operator|(
@@ -643,18 +554,22 @@ return|;
 block|}
 comment|/**      * A class containing the File, the FileUpdateListener and the current time stamp for one file.      */
 DECL|class|Entry
+specifier|static
 class|class
 name|Entry
 block|{
 DECL|field|listener
+specifier|final
 name|FileUpdateListener
 name|listener
 decl_stmt|;
 DECL|field|file
+specifier|final
 name|File
 name|file
 decl_stmt|;
 DECL|field|tmpFile
+specifier|final
 name|File
 name|tmpFile
 decl_stmt|;
@@ -700,6 +615,8 @@ argument_list|()
 expr_stmt|;
 name|tmpFile
 operator|=
+name|FileUpdateMonitor
+operator|.
 name|getTempFile
 argument_list|()
 expr_stmt|;
@@ -743,6 +660,7 @@ name|modified
 operator|==
 literal|0L
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -750,14 +668,19 @@ argument_list|(
 literal|"File deleted"
 argument_list|)
 throw|;
+block|}
 return|return
+operator|(
 name|timeStamp
 operator|!=
 name|modified
+operator|)
 operator|||
+operator|(
 name|fileSize
 operator|!=
 name|fileSizeNow
+operator|)
 return|;
 block|}
 DECL|method|updateTimeStamp ()
@@ -779,9 +702,11 @@ name|timeStamp
 operator|==
 literal|0L
 condition|)
+block|{
 name|notifyFileRemoved
 argument_list|()
 expr_stmt|;
+block|}
 name|fileSize
 operator|=
 name|file
@@ -809,7 +734,7 @@ try|try
 block|{
 name|res
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|copyFile
 argument_list|(
@@ -838,7 +763,7 @@ operator|.
 name|getPath
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 block|}
@@ -892,6 +817,7 @@ block|}
 comment|/*public void finalize() {           try {             tmpFile.delete();           } catch (Throwable e) {             Globals.logger("Cannot delete temporary file '"+tmpFile.getPath()+"'");           }         }*/
 block|}
 DECL|method|getTempFile ()
+specifier|private
 specifier|static
 specifier|synchronized
 name|File

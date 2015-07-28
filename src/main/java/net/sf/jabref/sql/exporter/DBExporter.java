@@ -260,7 +260,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|groups
+operator|.
+name|structure
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -288,77 +306,7 @@ name|jabref
 operator|.
 name|groups
 operator|.
-name|AbstractGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|groups
-operator|.
-name|AllEntriesGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|groups
-operator|.
-name|ExplicitGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|groups
-operator|.
 name|GroupTreeNode
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|groups
-operator|.
-name|KeywordGroup
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|groups
-operator|.
-name|SearchGroup
 import|;
 end_import
 
@@ -432,6 +380,8 @@ extends|extends
 name|DBImporterExporter
 block|{
 DECL|field|fieldStr
+specifier|private
+specifier|final
 name|String
 name|fieldStr
 init|=
@@ -447,6 +397,8 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|dbNames
+specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|String
@@ -613,13 +565,9 @@ name|SQLException
 block|{
 name|String
 name|query
-init|=
-literal|""
 decl_stmt|;
 name|String
 name|val
-init|=
-literal|""
 decl_stmt|;
 name|String
 name|insert
@@ -642,14 +590,14 @@ name|query
 operator|=
 name|insert
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|entry
 operator|.
 name|getId
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 literal|", (SELECT entry_types_id FROM entry_types WHERE label='"
 operator|+
@@ -671,7 +619,7 @@ operator|.
 name|getCiteKey
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 for|for
 control|(
@@ -772,11 +720,11 @@ name|query
 operator|=
 name|query
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|val
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 block|}
 else|else
@@ -879,7 +827,7 @@ literal|"VALUES ("
 operator|+
 literal|"(SELECT entries_id FROM entries WHERE jabref_eid="
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|be
 operator|.
@@ -894,19 +842,19 @@ literal|"), "
 operator|+
 literal|"(SELECT groups_id FROM groups WHERE database_id="
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|database_id
 operator|+
 literal|"' AND parent_id="
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|parentID
 operator|+
 literal|"' AND label="
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|grp
 operator|.
@@ -953,10 +901,12 @@ argument_list|)
 decl_stmt|;
 comment|// setting values to ID and myID to be used in case of textual SQL
 comment|// export
+operator|++
+name|currentID
+expr_stmt|;
 name|int
 name|myID
 init|=
-operator|++
 name|currentID
 decl_stmt|;
 if|if
@@ -1013,6 +963,7 @@ name|hasMoreElements
 argument_list|()
 condition|;
 control|)
+block|{
 name|currentID
 operator|=
 name|populateEntryGroupsTable
@@ -1031,6 +982,7 @@ argument_list|,
 name|database_id
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|currentID
 return|;
@@ -1049,8 +1001,6 @@ name|SQLException
 block|{
 name|String
 name|query
-init|=
-literal|""
 decl_stmt|;
 name|ArrayList
 argument_list|<
@@ -1313,7 +1263,7 @@ name|query
 operator|=
 name|insert
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|val
 operator|.
@@ -1323,7 +1273,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 for|for
 control|(
@@ -1341,7 +1291,7 @@ literal|", '"
 operator|+
 name|aFieldRequirement
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 block|}
 name|query
@@ -1433,7 +1383,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 block|}
 name|SQLUtil
@@ -1496,7 +1446,7 @@ name|reg_exp
 init|=
 literal|null
 decl_stmt|;
-name|int
+name|GroupHierarchyType
 name|hierContext
 init|=
 name|group
@@ -1628,9 +1578,10 @@ name|searchField
 operator|!=
 literal|null
 condition|)
+block|{
 name|searchField
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -1641,15 +1592,17 @@ argument_list|,
 literal|'\\'
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|searchExpr
 operator|!=
 literal|null
 condition|)
+block|{
 name|searchExpr
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -1660,6 +1613,7 @@ argument_list|,
 literal|'\\'
 argument_list|)
 expr_stmt|;
+block|}
 name|SQLUtil
 operator|.
 name|processQuery
@@ -1697,11 +1651,11 @@ name|searchField
 operator|!=
 literal|null
 condition|?
-literal|"'"
+literal|'\''
 operator|+
 name|searchField
 operator|+
-literal|"'"
+literal|'\''
 else|:
 literal|"NULL"
 operator|)
@@ -1713,11 +1667,11 @@ name|searchExpr
 operator|!=
 literal|null
 condition|?
-literal|"'"
+literal|'\''
 operator|+
 name|searchExpr
 operator|+
-literal|"'"
+literal|'\''
 else|:
 literal|"NULL"
 operator|)
@@ -1729,11 +1683,11 @@ name|caseSens
 operator|!=
 literal|null
 condition|?
-literal|"'"
+literal|'\''
 operator|+
 name|caseSens
 operator|+
-literal|"'"
+literal|'\''
 else|:
 literal|"NULL"
 operator|)
@@ -1745,11 +1699,11 @@ name|reg_exp
 operator|!=
 literal|null
 condition|?
-literal|"'"
+literal|'\''
 operator|+
 name|reg_exp
 operator|+
-literal|"'"
+literal|'\''
 else|:
 literal|"NULL"
 operator|)
@@ -1757,6 +1711,9 @@ operator|+
 literal|", "
 operator|+
 name|hierContext
+operator|.
+name|ordinal
+argument_list|()
 operator|+
 literal|", '"
 operator|+
@@ -1857,6 +1814,10 @@ name|hasMoreElements
 argument_list|()
 condition|;
 control|)
+block|{
+operator|++
+name|currentID
+expr_stmt|;
 name|currentID
 operator|=
 name|populateGroupsTable
@@ -1868,7 +1829,6 @@ argument_list|()
 argument_list|,
 name|myID
 argument_list|,
-operator|++
 name|currentID
 argument_list|,
 name|out
@@ -1876,6 +1836,7 @@ argument_list|,
 name|database_id
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|currentID
 return|;
@@ -2048,9 +2009,9 @@ name|insert
 operator|+
 literal|"'@PREAMBLE', "
 operator|+
-literal|"'"
+literal|'\''
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -2066,7 +2027,7 @@ argument_list|)
 operator|+
 literal|"', "
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|database_id
 operator|+
@@ -2108,9 +2069,9 @@ name|dml
 init|=
 name|insert
 operator|+
-literal|"'"
+literal|'\''
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -2126,9 +2087,9 @@ argument_list|)
 operator|+
 literal|"', "
 operator|+
-literal|"'"
+literal|'\''
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -2144,11 +2105,11 @@ argument_list|)
 operator|+
 literal|"', "
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|database_id
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 literal|");"
 decl_stmt|;
@@ -2232,15 +2193,15 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 name|outfile
 operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+block|}
 name|BufferedOutputStream
 name|writer
-init|=
-literal|null
 decl_stmt|;
 name|writer
 operator|=
@@ -2256,8 +2217,6 @@ argument_list|)
 expr_stmt|;
 name|PrintStream
 name|fout
-init|=
-literal|null
 decl_stmt|;
 name|fout
 operator|=
@@ -2317,8 +2276,6 @@ name|Exception
 block|{
 name|String
 name|dbName
-init|=
-literal|""
 decl_stmt|;
 name|Connection
 name|conn
@@ -2479,6 +2436,7 @@ if|if
 condition|(
 name|redisplay
 condition|)
+block|{
 name|exportDatabaseToDBMS
 argument_list|(
 name|database
@@ -2492,6 +2450,7 @@ argument_list|,
 name|frame
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2689,6 +2648,7 @@ block|}
 block|}
 block|}
 else|else
+block|{
 name|dbName
 operator|=
 name|JOptionPane
@@ -2706,6 +2666,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|dbName
 return|;
@@ -2871,6 +2832,7 @@ name|desiredName
 parameter_list|)
 block|{
 return|return
+operator|(
 name|desiredName
 operator|.
 name|trim
@@ -2880,6 +2842,7 @@ name|length
 argument_list|()
 operator|>
 literal|1
+operator|)
 operator|&&
 operator|!
 name|dbNames

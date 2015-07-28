@@ -122,6 +122,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -316,6 +326,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -326,6 +338,8 @@ name|getEntryCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -336,11 +350,15 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|entry1
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|entry2
@@ -462,6 +480,8 @@ name|EntryFromPDFCreator
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|treeNode
@@ -519,6 +539,8 @@ argument_list|(
 name|treeNode
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|resultList
@@ -527,6 +549,8 @@ name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|resultList
@@ -539,6 +563,8 @@ name|FILE_NOT_IN_DATABASE
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|resultList
@@ -568,6 +594,8 @@ throws|throws
 name|Exception
 block|{
 return|return
+name|DatabaseFileLookupTest
+operator|.
 name|invokeMethod
 argument_list|(
 literal|"getFileListFromNode"
@@ -616,6 +644,8 @@ block|{
 name|T
 name|instance
 init|=
+name|DatabaseFileLookupTest
+operator|.
 name|getInstanceFromType
 argument_list|(
 name|targetClass
@@ -674,6 +704,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|paramTypes
 index|[
 name|i
@@ -687,6 +718,7 @@ operator|.
 name|getClass
 argument_list|()
 expr_stmt|;
+block|}
 name|Method
 name|method
 init|=
@@ -781,6 +813,8 @@ parameter_list|)
 block|{
 name|instance
 operator|=
+name|DatabaseFileLookupTest
+operator|.
 name|getInstanceFromNonDefaultConstructor
 argument_list|(
 name|targetClass
@@ -857,6 +891,8 @@ argument_list|>
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compare
@@ -965,6 +1001,8 @@ argument_list|()
 decl_stmt|;
 name|constructors
 operator|=
+name|DatabaseFileLookupTest
+operator|.
 name|orderByParamCount
 argument_list|(
 name|constructors
@@ -1042,6 +1080,8 @@ name|Object
 index|[]
 name|arguments
 init|=
+name|DatabaseFileLookupTest
+operator|.
 name|createArguments
 argument_list|(
 name|parameterTypes
@@ -1185,6 +1225,8 @@ index|[
 name|i
 index|]
 operator|=
+name|DatabaseFileLookupTest
+operator|.
 name|getInstanceFromType
 argument_list|(
 name|typeClass

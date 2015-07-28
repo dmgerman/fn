@@ -22,7 +22,6 @@ end_comment
 
 begin_class
 DECL|class|ConnectionLostException
-specifier|public
 class|class
 name|ConnectionLostException
 extends|extends

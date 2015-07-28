@@ -30,6 +30,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -173,12 +185,13 @@ name|source
 operator|=
 name|source
 expr_stmt|;
+name|URLDownload
+operator|.
 name|setCookieHandler
 argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getSource ()
-specifier|public
 name|URL
 name|getSource
 parameter_list|()
@@ -274,7 +287,7 @@ block|{              }
 block|}
 block|}
 DECL|method|openConnection ()
-specifier|protected
+specifier|private
 name|URLConnection
 name|openConnection
 parameter_list|()
@@ -308,7 +321,7 @@ return|return
 name|connection
 return|;
 block|}
-comment|/**      * Encoding will be determined from "defaultEncoding"      *      * @return the downloaded string      * @throws IOException      */
+comment|/**      * Encoding will be determined from JabRefPreferences.DEFAULT_ENCODING      *      * @return the downloaded string      * @throws IOException      */
 DECL|method|downloadToString ()
 specifier|public
 name|String
@@ -326,7 +339,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 return|;
@@ -647,7 +662,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 name|out
 operator|.
 name|write

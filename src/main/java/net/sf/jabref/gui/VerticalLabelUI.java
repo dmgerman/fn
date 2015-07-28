@@ -143,7 +143,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A UI delegate for JLabel that rotates the label 90ï¿½  *<P>  * Extends {@link BasicLabelUI}.  *<P>  * The only difference between the appearance of labels in the Basic and Metal  * L&Fs is the manner in which diabled text is painted.  As VerticalLabelUI  * does not override the method paintDisabledText, this class can be adapted  * for Metal L&F by extending MetalLabelUI instead of BasicLabelUI.  *<P>  * No other changes are required.  *   * @author Darryl  */
+comment|/**  * A UI delegate for JLabel that rotates the label 90Â°  *<P>  * Extends {@link BasicLabelUI}.  *<P>  * The only difference between the appearance of labels in the Basic and Metal  * L&Fs is the manner in which diabled text is painted.  As VerticalLabelUI  * does not override the method paintDisabledText, this class can be adapted  * for Metal L&F by extending MetalLabelUI instead of BasicLabelUI.  *<P>  * No other changes are required.  *   * @author Darryl  */
 end_comment
 
 begin_class
@@ -163,6 +163,7 @@ literal|false
 decl_stmt|;
 comment|// see comment in BasicLabelUI
 DECL|field|verticalViewR
+specifier|private
 name|Rectangle
 name|verticalViewR
 init|=
@@ -171,6 +172,7 @@ name|Rectangle
 argument_list|()
 decl_stmt|;
 DECL|field|verticalIconR
+specifier|private
 name|Rectangle
 name|verticalIconR
 init|=
@@ -179,6 +181,7 @@ name|Rectangle
 argument_list|()
 decl_stmt|;
 DECL|field|verticalTextR
+specifier|private
 name|Rectangle
 name|verticalTextR
 init|=
@@ -187,8 +190,9 @@ name|Rectangle
 argument_list|()
 decl_stmt|;
 DECL|field|verticalLabelUI
-specifier|protected
+specifier|private
 specifier|static
+specifier|final
 name|VerticalLabelUI
 name|verticalLabelUI
 init|=
@@ -209,7 +213,7 @@ argument_list|()
 decl_stmt|;
 comment|/**      * Constructs a<code>VerticalLabelUI</code> with the default anticlockwise      * rotation      */
 DECL|method|VerticalLabelUI ()
-specifier|public
+specifier|private
 name|VerticalLabelUI
 parameter_list|()
 block|{     }
@@ -251,12 +255,16 @@ literal|null
 condition|)
 block|{
 return|return
+name|VerticalLabelUI
+operator|.
 name|SAFE_VERTICAL_LABEL_UI
 return|;
 block|}
 else|else
 block|{
 return|return
+name|VerticalLabelUI
+operator|.
 name|verticalLabelUI
 return|;
 block|}

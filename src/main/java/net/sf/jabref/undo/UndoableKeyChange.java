@@ -66,20 +66,26 @@ name|AbstractUndoableEdit
 block|{
 DECL|field|entryId
 specifier|private
+specifier|final
 name|String
 name|entryId
 decl_stmt|;
 DECL|field|base
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|base
 decl_stmt|;
 DECL|field|oldValue
-DECL|field|newValue
 specifier|private
+specifier|final
 name|String
 name|oldValue
-decl_stmt|,
+decl_stmt|;
+DECL|field|newValue
+specifier|private
+specifier|final
+name|String
 name|newValue
 decl_stmt|;
 DECL|method|UndoableKeyChange (BibtexDatabase base, String entryId, String oldValue, String newValue)
@@ -193,6 +199,8 @@ literal|"change key"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -211,6 +219,8 @@ name|oldValue
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void

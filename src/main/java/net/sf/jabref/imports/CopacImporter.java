@@ -127,7 +127,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for COPAC format.  *   * Documentation can be found online at:  *   * http://copac.ac.uk/faq/#format  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Importer for COPAC format.  *   * Documentation can be found online at:  *   * http://copac.ac.uk/faq/#format  */
 end_comment
 
 begin_class
@@ -139,6 +139,8 @@ extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -150,6 +152,8 @@ literal|"Copac"
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -161,6 +165,7 @@ literal|"cpc"
 return|;
 block|}
 DECL|field|copacPattern
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -174,6 +179,8 @@ literal|"^\\s*TI- "
 argument_list|)
 decl_stmt|;
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -218,6 +225,8 @@ condition|)
 block|{
 if|if
 condition|(
+name|CopacImporter
+operator|.
 name|copacPattern
 operator|.
 name|matcher
@@ -228,15 +237,19 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -260,6 +273,7 @@ name|stream
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -267,6 +281,7 @@ argument_list|(
 literal|"No stream given."
 argument_list|)
 throw|;
+block|}
 name|BufferedReader
 name|in
 init|=
@@ -329,7 +344,9 @@ argument_list|()
 operator|<
 literal|4
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 name|code
 init|=
@@ -439,6 +456,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|entries
 operator|.
 name|add
@@ -449,6 +467,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|List
 argument_list|<
@@ -524,7 +543,9 @@ argument_list|()
 operator|<
 literal|4
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 name|code
 init|=
@@ -546,6 +567,7 @@ argument_list|(
 literal|"TI- "
 argument_list|)
 condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -565,6 +587,7 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -575,6 +598,7 @@ argument_list|(
 literal|"AU- "
 argument_list|)
 condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -594,6 +618,7 @@ argument_list|,
 literal|" and "
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -604,6 +629,7 @@ argument_list|(
 literal|"PY- "
 argument_list|)
 condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -623,6 +649,7 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -633,6 +660,7 @@ argument_list|(
 literal|"PU- "
 argument_list|)
 condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -652,6 +680,7 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -662,6 +691,7 @@ argument_list|(
 literal|"SE- "
 argument_list|)
 condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -681,6 +711,7 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -691,6 +722,7 @@ argument_list|(
 literal|"IS- "
 argument_list|)
 condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -710,6 +742,7 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -720,6 +753,7 @@ argument_list|(
 literal|"KW- "
 argument_list|)
 condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -739,6 +773,7 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -749,6 +784,7 @@ argument_list|(
 literal|"NT- "
 argument_list|)
 condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -768,6 +804,7 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -778,6 +815,7 @@ argument_list|(
 literal|"PD- "
 argument_list|)
 condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -797,6 +835,7 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -807,6 +846,7 @@ argument_list|(
 literal|"DT- "
 argument_list|)
 condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -826,7 +866,9 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -854,6 +896,7 @@ literal|", "
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|results
 operator|.
 name|add
@@ -867,6 +910,7 @@ name|results
 return|;
 block|}
 DECL|method|setOrAppend (BibtexEntry b, String field, String value, String separator)
+specifier|private
 name|void
 name|setOrAppend
 parameter_list|(
@@ -899,6 +943,7 @@ name|o
 operator|!=
 literal|null
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -912,7 +957,9 @@ operator|+
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|b
 operator|.
 name|setField
@@ -922,6 +969,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

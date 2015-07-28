@@ -127,6 +127,8 @@ implements|implements
 name|DatabaseChangeListener
 block|{
 DECL|field|list
+specifier|private
+specifier|final
 name|EventList
 argument_list|<
 name|BibtexEntry
@@ -246,6 +248,8 @@ return|return
 name|list
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void

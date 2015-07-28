@@ -234,7 +234,6 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|JTextAreaWithHighlighting (String text)
-specifier|public
 name|JTextAreaWithHighlighting
 parameter_list|(
 name|String
@@ -349,7 +348,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|setupUndoRedo ()
-specifier|protected
+specifier|private
 name|void
 name|setupUndoRedo
 parameter_list|()
@@ -375,6 +374,8 @@ operator|new
 name|UndoableEditListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|undoableEditHappened
@@ -411,6 +412,8 @@ argument_list|(
 literal|"Undo"
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -478,6 +481,8 @@ argument_list|(
 literal|"Redo"
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -658,9 +663,11 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|words
 operator|==
 literal|null
+operator|)
 operator|||
 name|words
 operator|.
@@ -693,7 +700,9 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 name|Matcher
 name|matcher
 init|=
@@ -784,7 +793,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highLightWords"
+name|JabRefPreferences
+operator|.
+name|HIGH_LIGHT_WORDS
 argument_list|)
 condition|)
 block|{
@@ -800,12 +811,16 @@ name|undo
 operator|!=
 literal|null
 condition|)
+block|{
 name|undo
 operator|.
 name|discardAllEdits
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|searchText (ArrayList<String> words)
 specifier|public
 name|void
@@ -828,7 +843,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highLightWords"
+name|JabRefPreferences
+operator|.
+name|HIGH_LIGHT_WORDS
 argument_list|)
 condition|)
 block|{

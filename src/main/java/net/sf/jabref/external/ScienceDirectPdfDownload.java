@@ -64,6 +64,8 @@ specifier|public
 name|ScienceDirectPdfDownload
 parameter_list|()
 block|{      }
+annotation|@
+name|Override
 DECL|method|supportsSite (URL url)
 specifier|public
 name|boolean
@@ -88,6 +90,8 @@ literal|"www.sciencedirect.com"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|findFullTextURL (URL url)
 specifier|public
 name|URL
@@ -165,9 +169,11 @@ literal|1
 operator|)
 operator|&&
 operator|(
+operator|(
 name|index
 operator|+
 literal|9
+operator|)
 operator|<
 name|leading
 operator|.
@@ -226,9 +232,11 @@ literal|null
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 block|}
 end_class

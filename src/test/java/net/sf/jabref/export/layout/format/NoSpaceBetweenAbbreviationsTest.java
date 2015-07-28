@@ -38,6 +38,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -75,6 +85,8 @@ operator|new
 name|NoSpaceBetweenAbbreviations
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -87,6 +99,8 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"John Meier"
@@ -99,6 +113,8 @@ literal|"John Meier"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"J.F. Kennedy"
@@ -111,6 +127,8 @@ literal|"J. F. Kennedy"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"J.R.R. Tolkien"
@@ -123,6 +141,8 @@ literal|"J. R. R. Tolkien"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"J.R.R. Tolkien and J.F. Kennedy"

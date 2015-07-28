@@ -68,11 +68,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|LayoutFormatter
+name|Globals
 import|;
 end_import
 
@@ -84,7 +80,23 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|layout
+operator|.
+name|LayoutFormatter
 import|;
 end_import
 
@@ -107,6 +119,7 @@ comment|// {"decimal number of HTML entity", "text HTML entity", "corresponding 
 comment|// Leaving a field empty is OK as it then will not be included
 DECL|field|conversionList
 specifier|private
+specifier|final
 name|String
 index|[]
 index|[]
@@ -3924,6 +3937,7 @@ decl_stmt|;
 comment|// List of combining accents
 DECL|field|accentList
 specifier|private
+specifier|final
 name|String
 index|[]
 index|[]
@@ -4368,6 +4382,7 @@ block|}
 decl_stmt|;
 DECL|field|escapedSymbols
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -4387,6 +4402,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|escapedAccents
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|Integer
@@ -4406,6 +4422,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|numSymbols
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|Integer
@@ -4425,6 +4442,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|unicodeSymbols
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|Character
@@ -4635,9 +4653,11 @@ name|text
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|Set
 argument_list|<
 name|Character
@@ -4682,6 +4702,8 @@ return|return
 name|text
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String text)
 specifier|public
 name|String
@@ -4697,9 +4719,11 @@ name|text
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|StringBuffer
 name|sb
 init|=
@@ -4718,7 +4742,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useConvertToEquation"
+name|JabRefPreferences
+operator|.
+name|USE_CONVERT_TO_EQUATION
 argument_list|)
 condition|)
 block|{
@@ -4821,6 +4847,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -4831,6 +4858,7 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|text
 operator|=
@@ -5458,9 +5486,11 @@ name|position
 operator|)
 operator|&&
 operator|(
+operator|(
 name|index
 operator|-
 name|position
+operator|)
 operator|<
 name|MAX_TAG_LENGTH
 operator|)
@@ -5473,10 +5503,12 @@ return|;
 comment|// Just skip the tag.
 block|}
 else|else
+block|{
 return|return
 name|position
 return|;
 comment|// Don't do anything.
+block|}
 block|}
 block|}
 end_class

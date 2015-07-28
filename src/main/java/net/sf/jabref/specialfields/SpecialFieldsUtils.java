@@ -44,6 +44,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
 name|Util
 import|;
 end_import
@@ -392,6 +394,8 @@ name|nullFieldIfValueIsTheSame
 argument_list|)
 expr_stmt|;
 comment|// we cannot use "value" here as updateField has side effects: "nullFieldIfValueIsTheSame" nulls the field if value is the same
+name|SpecialFieldsUtils
+operator|.
 name|exportFieldToKeywords
 argument_list|(
 name|e
@@ -428,6 +432,8 @@ name|NamedCompound
 name|ce
 parameter_list|)
 block|{
+name|SpecialFieldsUtils
+operator|.
 name|exportFieldToKeywords
 argument_list|(
 name|e
@@ -475,7 +481,9 @@ operator|.
 name|keywordSyncEnabled
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 name|ArrayList
 argument_list|<
 name|String
@@ -607,6 +615,8 @@ name|NamedCompound
 name|nc
 parameter_list|)
 block|{
+name|SpecialFieldsUtils
+operator|.
 name|exportFieldToKeywords
 argument_list|(
 name|Priority
@@ -619,6 +629,8 @@ argument_list|,
 name|nc
 argument_list|)
 expr_stmt|;
+name|SpecialFieldsUtils
+operator|.
 name|exportFieldToKeywords
 argument_list|(
 name|Rank
@@ -631,6 +643,8 @@ argument_list|,
 name|nc
 argument_list|)
 expr_stmt|;
+name|SpecialFieldsUtils
+operator|.
 name|exportFieldToKeywords
 argument_list|(
 name|Relevance
@@ -643,6 +657,8 @@ argument_list|,
 name|nc
 argument_list|)
 expr_stmt|;
+name|SpecialFieldsUtils
+operator|.
 name|exportFieldToKeywords
 argument_list|(
 name|Quality
@@ -655,6 +671,8 @@ argument_list|,
 name|nc
 argument_list|)
 expr_stmt|;
+name|SpecialFieldsUtils
+operator|.
 name|exportFieldToKeywords
 argument_list|(
 name|ReadStatus
@@ -667,6 +685,8 @@ argument_list|,
 name|nc
 argument_list|)
 expr_stmt|;
+name|SpecialFieldsUtils
+operator|.
 name|exportFieldToKeywords
 argument_list|(
 name|Printed
@@ -785,7 +805,9 @@ argument_list|)
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|ArrayList
 argument_list|<
 name|String
@@ -804,6 +826,8 @@ literal|"keywords"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|SpecialFieldsUtils
+operator|.
 name|importKeywordsForField
 argument_list|(
 name|keywordList
@@ -818,6 +842,8 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+name|SpecialFieldsUtils
+operator|.
 name|importKeywordsForField
 argument_list|(
 name|keywordList
@@ -832,6 +858,8 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+name|SpecialFieldsUtils
+operator|.
 name|importKeywordsForField
 argument_list|(
 name|keywordList
@@ -846,6 +874,8 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+name|SpecialFieldsUtils
+operator|.
 name|importKeywordsForField
 argument_list|(
 name|keywordList
@@ -860,6 +890,8 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+name|SpecialFieldsUtils
+operator|.
 name|importKeywordsForField
 argument_list|(
 name|keywordList
@@ -874,6 +906,8 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+name|SpecialFieldsUtils
+operator|.
 name|importKeywordsForField
 argument_list|(
 name|keywordList
@@ -906,6 +940,8 @@ name|fieldName
 operator|.
 name|equals
 argument_list|(
+name|SpecialFieldsUtils
+operator|.
 name|FIELDNAME_PRIORITY
 argument_list|)
 condition|)
@@ -924,6 +960,8 @@ name|fieldName
 operator|.
 name|equals
 argument_list|(
+name|SpecialFieldsUtils
+operator|.
 name|FIELDNAME_QUALITY
 argument_list|)
 condition|)
@@ -942,6 +980,8 @@ name|fieldName
 operator|.
 name|equals
 argument_list|(
+name|SpecialFieldsUtils
+operator|.
 name|FIELDNAME_RANKING
 argument_list|)
 condition|)
@@ -960,6 +1000,8 @@ name|fieldName
 operator|.
 name|equals
 argument_list|(
+name|SpecialFieldsUtils
+operator|.
 name|FIELDNAME_RELEVANCE
 argument_list|)
 condition|)
@@ -978,6 +1020,8 @@ name|fieldName
 operator|.
 name|equals
 argument_list|(
+name|SpecialFieldsUtils
+operator|.
 name|FIELDNAME_READ
 argument_list|)
 condition|)
@@ -996,6 +1040,8 @@ name|fieldName
 operator|.
 name|equals
 argument_list|(
+name|SpecialFieldsUtils
+operator|.
 name|FIELDNAME_PRINTED
 argument_list|)
 condition|)
@@ -1027,6 +1073,8 @@ parameter_list|)
 block|{
 return|return
 operator|(
+name|SpecialFieldsUtils
+operator|.
 name|getSpecialFieldInstanceFromFieldName
 argument_list|(
 name|fieldName

@@ -76,7 +76,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|IdGenerator
 import|;
 end_import
 
@@ -143,17 +143,25 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|PostgreSQLExporter
+operator|.
 name|instance
 operator|==
 literal|null
 condition|)
+block|{
+name|PostgreSQLExporter
+operator|.
 name|instance
 operator|=
 operator|new
 name|PostgreSQLExporter
 argument_list|()
 expr_stmt|;
+block|}
 return|return
+name|PostgreSQLExporter
+operator|.
 name|instance
 return|;
 block|}
@@ -243,7 +251,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 operator|)
 operator|.
@@ -438,7 +446,7 @@ literal|"entries_id      SERIAL, \n"
 operator|+
 literal|"jabref_eid      VARCHAR("
 operator|+
-name|Util
+name|IdGenerator
 operator|.
 name|getMinimumIntegerDigits
 argument_list|()

@@ -16,93 +16,135 @@ end_package
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|awt
+name|sf
 operator|.
-name|Dimension
+name|jabref
+operator|.
+name|gui
+operator|.
+name|AutoCompleteListener
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|awt
+name|sf
 operator|.
-name|GridBagConstraints
+name|jabref
+operator|.
+name|gui
+operator|.
+name|SearchResultsDialog
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|awt
+name|sf
 operator|.
-name|GridBagLayout
+name|jabref
+operator|.
+name|help
+operator|.
+name|HelpAction
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|awt
+name|sf
 operator|.
-name|Insets
+name|jabref
+operator|.
+name|search
+operator|.
+name|SearchRule
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|awt
+name|sf
 operator|.
-name|event
+name|jabref
 operator|.
-name|*
+name|search
+operator|.
+name|SearchRules
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|ArrayList
+name|jabref
+operator|.
+name|search
+operator|.
+name|matchers
+operator|.
+name|SearchMatcher
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|Collections
+name|jabref
+operator|.
+name|search
+operator|.
+name|rules
+operator|.
+name|BasicRegexSearchRule
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|Hashtable
+name|jabref
+operator|.
+name|search
+operator|.
+name|rules
+operator|.
+name|BasicSearchRule
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|Vector
+name|jabref
+operator|.
+name|search
+operator|.
+name|rules
+operator|.
+name|SearchExpression
 import|;
 end_import
 
@@ -166,99 +208,53 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|awt
 operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|AutoCompleteListener
+name|*
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|awt
 operator|.
-name|jabref
+name|event
 operator|.
-name|search
-operator|.
-name|BasicSearch
+name|*
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|search
-operator|.
-name|SearchExpression
+name|ArrayList
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|search
-operator|.
-name|SearchExpressionParser
+name|Collections
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|search
-operator|.
-name|SearchMatcher
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|SearchResultsDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|help
-operator|.
-name|HelpAction
+name|Vector
 import|;
 end_import
 
@@ -277,41 +273,28 @@ implements|,
 name|ItemListener
 implements|,
 name|CaretListener
-implements|,
-name|ErrorMessageDisplay
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|field|gbl
-name|GridBagLayout
-name|gbl
-init|=
-operator|new
-name|GridBagLayout
-argument_list|()
-decl_stmt|;
-DECL|field|con
-name|GridBagConstraints
-name|con
-init|=
-operator|new
-name|GridBagConstraints
-argument_list|()
-decl_stmt|;
 DECL|field|incSearcher
+specifier|private
+specifier|final
 name|IncrementalSearcher
 name|incSearcher
 decl_stmt|;
 DECL|field|searchDialog
+specifier|private
 name|SearchResultsDialog
 name|searchDialog
 init|=
 literal|null
 decl_stmt|;
 DECL|field|autoCompleteListener
+specifier|private
 name|AutoCompleteListener
 name|autoCompleteListener
 init|=
@@ -320,6 +303,7 @@ decl_stmt|;
 comment|/**      * subscribed Objects      */
 DECL|field|listeners
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|SearchTextListener
@@ -336,6 +320,7 @@ decl_stmt|;
 comment|//private JabRefFrame frame;
 DECL|field|searchField
 specifier|private
+specifier|final
 name|JTextField
 name|searchField
 init|=
@@ -349,6 +334,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|settings
 specifier|private
+specifier|final
 name|JPopupMenu
 name|settings
 init|=
@@ -358,6 +344,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|openset
 specifier|private
+specifier|final
 name|JButton
 name|openset
 init|=
@@ -374,6 +361,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|escape
 specifier|private
+specifier|final
 name|JButton
 name|escape
 init|=
@@ -388,9 +376,10 @@ literal|"Clear"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/** This button's text will be set later. */
+comment|/**      * This button's text will be set later.      */
 DECL|field|search
 specifier|private
+specifier|final
 name|JButton
 name|search
 init|=
@@ -399,50 +388,86 @@ name|JButton
 argument_list|()
 decl_stmt|;
 DECL|field|searchReq
-DECL|field|searchOpt
-DECL|field|searchGen
 specifier|private
+specifier|final
 name|JCheckBoxMenuItem
 name|searchReq
-decl_stmt|,
+decl_stmt|;
+DECL|field|searchOpt
+specifier|private
+specifier|final
+name|JCheckBoxMenuItem
 name|searchOpt
-decl_stmt|,
+decl_stmt|;
+DECL|field|searchGen
+specifier|private
+specifier|final
+name|JCheckBoxMenuItem
 name|searchGen
-decl_stmt|,
+decl_stmt|;
 DECL|field|searchAll
-DECL|field|caseSensitive
-DECL|field|regExpSearch
-DECL|field|highLightWords
-DECL|field|searchAutoComplete
+specifier|private
+specifier|final
+name|JCheckBoxMenuItem
 name|searchAll
-decl_stmt|,
+decl_stmt|;
+DECL|field|caseSensitive
+specifier|private
+specifier|final
+name|JCheckBoxMenuItem
 name|caseSensitive
-decl_stmt|,
+decl_stmt|;
+DECL|field|regExpSearch
+specifier|private
+specifier|final
+name|JCheckBoxMenuItem
 name|regExpSearch
-decl_stmt|,
+decl_stmt|;
+DECL|field|highLightWords
+specifier|private
+specifier|final
+name|JCheckBoxMenuItem
 name|highLightWords
-decl_stmt|,
+decl_stmt|;
+DECL|field|searchAutoComplete
+specifier|private
+specifier|final
+name|JCheckBoxMenuItem
 name|searchAutoComplete
 decl_stmt|;
 DECL|field|increment
-DECL|field|floatSearch
-DECL|field|hideSearch
-DECL|field|showResultsInDialog
 specifier|private
+specifier|final
 name|JRadioButton
 name|increment
-decl_stmt|,
+decl_stmt|;
+DECL|field|floatSearch
+specifier|private
+specifier|final
+name|JRadioButton
 name|floatSearch
-decl_stmt|,
+decl_stmt|;
+DECL|field|hideSearch
+specifier|private
+specifier|final
+name|JRadioButton
 name|hideSearch
-decl_stmt|,
+decl_stmt|;
+DECL|field|showResultsInDialog
+specifier|private
+specifier|final
+name|JRadioButton
 name|showResultsInDialog
-decl_stmt|,
+decl_stmt|;
 DECL|field|searchAllBases
+specifier|private
+specifier|final
+name|JRadioButton
 name|searchAllBases
 decl_stmt|;
 DECL|field|select
 specifier|private
+specifier|final
 name|JCheckBoxMenuItem
 name|select
 decl_stmt|;
@@ -539,7 +564,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"searchReq"
+name|JabRefPreferences
+operator|.
+name|SEARCH_REQ
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -561,7 +588,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"searchOpt"
+name|JabRefPreferences
+operator|.
+name|SEARCH_OPT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -583,7 +612,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"searchGen"
+name|JabRefPreferences
+operator|.
+name|SEARCH_GEN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -605,7 +636,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"searchAll"
+name|JabRefPreferences
+operator|.
+name|SEARCH_ALL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -627,7 +660,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"regExpSearch"
+name|JabRefPreferences
+operator|.
+name|REG_EXP_SEARCH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -709,7 +744,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"searchAllBases"
+name|JabRefPreferences
+operator|.
+name|SEARCH_ALL_BASES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -897,6 +934,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -957,7 +996,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"caseSensitiveSearch"
+name|JabRefPreferences
+operator|.
+name|CASE_SENSITIVE_SEARCH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -979,7 +1020,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highLightWords"
+name|JabRefPreferences
+operator|.
+name|HIGH_LIGHT_WORDS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1001,7 +1044,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"searchAutoComplete"
+name|JabRefPreferences
+operator|.
+name|SEARCH_AUTO_COMPLETE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1093,6 +1138,8 @@ operator|new
 name|FocusAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|focusGained
@@ -1108,6 +1155,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|searchField
 operator|.
 name|setText
@@ -1116,6 +1164,9 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|focusLost
@@ -1176,6 +1227,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1235,6 +1288,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1249,7 +1304,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"searchAutoComplete"
+name|JabRefPreferences
+operator|.
+name|SEARCH_AUTO_COMPLETE
 argument_list|,
 name|searchAutoComplete
 operator|.
@@ -1405,9 +1462,12 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"incrementS"
+name|JabRefPreferences
+operator|.
+name|INCREMENT_S
 argument_list|)
 condition|)
+block|{
 name|increment
 operator|.
 name|setSelected
@@ -1415,6 +1475,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1424,9 +1485,12 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"floatSearch"
+name|JabRefPreferences
+operator|.
+name|FLOAT_SEARCH
 argument_list|)
 condition|)
+block|{
 name|floatSearch
 operator|.
 name|setSelected
@@ -1434,6 +1498,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1443,9 +1508,12 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"showSearchInDialog"
+name|JabRefPreferences
+operator|.
+name|SHOW_SEARCH_IN_DIALOG
 argument_list|)
 condition|)
+block|{
 name|showResultsInDialog
 operator|.
 name|setSelected
@@ -1453,6 +1521,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1462,9 +1531,12 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"searchAllBases"
+name|JabRefPreferences
+operator|.
+name|SEARCH_ALL_BASES
 argument_list|)
 condition|)
+block|{
 name|searchAllBases
 operator|.
 name|setSelected
@@ -1472,7 +1544,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|hideSearch
 operator|.
 name|setSelected
@@ -1480,11 +1554,19 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|JPanel
 name|main
 init|=
 operator|new
 name|JPanel
+argument_list|()
+decl_stmt|;
+name|GridBagLayout
+name|gbl
+init|=
+operator|new
+name|GridBagLayout
 argument_list|()
 decl_stmt|;
 name|main
@@ -1494,6 +1576,13 @@ argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
+name|GridBagConstraints
+name|con
+init|=
+operator|new
+name|GridBagConstraints
+argument_list|()
+decl_stmt|;
 name|con
 operator|.
 name|gridwidth
@@ -1790,7 +1879,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setContent
+name|setContentContainer
 argument_list|(
 name|main
 argument_list|)
@@ -1827,6 +1916,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1842,9 +1933,11 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|repeatIncremental
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -1881,6 +1974,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1925,7 +2020,7 @@ expr_stmt|;
 block|}
 comment|/**      * Add the correct key listeners to the search text field, depending on whether      * and autocomplete listener has been set and whether incremental search      * is selected.      */
 DECL|method|updateKeyListeners ()
-specifier|protected
+specifier|private
 name|void
 name|updateKeyListeners
 parameter_list|()
@@ -1980,10 +2075,13 @@ operator|.
 name|isSelected
 argument_list|()
 operator|&&
+operator|(
 name|autoCompleteListener
 operator|!=
 literal|null
+operator|)
 condition|)
+block|{
 name|searchField
 operator|.
 name|addKeyListener
@@ -1993,7 +2091,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Subscribe to the SearchListener and receive events, if the user searches for some thing. You      * will receive a list of words      *       * @param l      */
+block|}
+comment|/**      * Subscribe to the SearchListener and receive events, if the user searches for some thing. You      * will receive a list of words      *      * @param l      */
 DECL|method|addSearchListener (SearchTextListener l)
 specifier|public
 name|void
@@ -2012,8 +2111,11 @@ argument_list|(
 name|l
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 else|else
+block|{
 name|listeners
 operator|.
 name|add
@@ -2021,6 +2123,7 @@ argument_list|(
 name|l
 argument_list|)
 expr_stmt|;
+block|}
 comment|//fire event for the new subscriber
 name|l
 operator|.
@@ -2036,7 +2139,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Remove object from the SearchListener      * @param l      */
+comment|/**      * Remove object from the SearchListener      *      * @param l      */
 DECL|method|removeSearchListener (SearchTextListener l)
 specifier|public
 name|void
@@ -2054,7 +2157,7 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * parse the search string for valid words and return a list of words      * Like "The great Vikinger" will be ["The","great","Vikinger"]       *       * @param t      * @return      */
+comment|/**      * parse the search string for valid words and return a list of words      * Like "The great Vikinger" will be ["The","great","Vikinger"]      *      * @param t      * @return      */
 DECL|method|getSearchwords (String t)
 specifier|private
 name|ArrayList
@@ -2109,7 +2212,7 @@ return|return
 name|words
 return|;
 block|}
-comment|/**      * Fires an event if a search was started / canceled      * @param t      */
+comment|/**      * Fires an event if a search was started / canceled      *      * @param t      */
 DECL|method|fireSearchlistenerEvent (String t)
 specifier|private
 name|void
@@ -2165,6 +2268,7 @@ name|s
 range|:
 name|listeners
 control|)
+block|{
 name|s
 operator|.
 name|searchText
@@ -2173,7 +2277,8 @@ name|words
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** force the search button to be large enough for      * the longer of the two texts */
+block|}
+comment|/**      * force the search button to be large enough for      * the longer of the two texts      */
 DECL|method|setSearchButtonSizes ()
 specifier|private
 name|void
@@ -2254,7 +2359,7 @@ expr_stmt|;
 block|}
 comment|/**      * Instantiate the search dialog, unless it has already been instantiated:      */
 DECL|method|instantiateSearchDialog ()
-specifier|protected
+specifier|private
 name|void
 name|instantiateSearchDialog
 parameter_list|()
@@ -2265,6 +2370,7 @@ name|searchDialog
 operator|==
 literal|null
 condition|)
+block|{
 name|searchDialog
 operator|=
 operator|new
@@ -2281,6 +2387,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 DECL|method|updatePrefs ()
 specifier|public
 name|void
@@ -2293,7 +2400,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"searchReq"
+name|JabRefPreferences
+operator|.
+name|SEARCH_REQ
 argument_list|,
 name|searchReq
 operator|.
@@ -2307,7 +2416,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"searchOpt"
+name|JabRefPreferences
+operator|.
+name|SEARCH_OPT
 argument_list|,
 name|searchOpt
 operator|.
@@ -2321,7 +2432,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"searchGen"
+name|JabRefPreferences
+operator|.
+name|SEARCH_GEN
 argument_list|,
 name|searchGen
 operator|.
@@ -2335,7 +2448,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"searchAll"
+name|JabRefPreferences
+operator|.
+name|SEARCH_ALL
 argument_list|,
 name|searchAll
 operator|.
@@ -2349,7 +2464,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"incrementS"
+name|JabRefPreferences
+operator|.
+name|INCREMENT_S
 argument_list|,
 name|increment
 operator|.
@@ -2363,7 +2480,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"selectS"
+name|JabRefPreferences
+operator|.
+name|SELECT_S
 argument_list|,
 name|select
 operator|.
@@ -2377,7 +2496,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"floatSearch"
+name|JabRefPreferences
+operator|.
+name|FLOAT_SEARCH
 argument_list|,
 name|floatSearch
 operator|.
@@ -2391,7 +2512,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"caseSensitiveSearch"
+name|JabRefPreferences
+operator|.
+name|CASE_SENSITIVE_SEARCH
 argument_list|,
 name|caseSensitive
 operator|.
@@ -2405,7 +2528,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"regExpSearch"
+name|JabRefPreferences
+operator|.
+name|REG_EXP_SEARCH
 argument_list|,
 name|regExpSearch
 operator|.
@@ -2419,7 +2544,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"highLightWords"
+name|JabRefPreferences
+operator|.
+name|HIGH_LIGHT_WORDS
 argument_list|,
 name|highLightWords
 operator|.
@@ -2433,7 +2560,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"showSearchInDialog"
+name|JabRefPreferences
+operator|.
+name|SHOW_SEARCH_IN_DIALOG
 argument_list|,
 name|showResultsInDialog
 operator|.
@@ -2447,7 +2576,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"searchAllBases"
+name|JabRefPreferences
+operator|.
+name|SEARCH_ALL_BASES
 argument_list|,
 name|searchAllBases
 operator|.
@@ -2535,6 +2666,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|floatSearch
 operator|.
 name|setSelected
@@ -2542,6 +2674,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2550,6 +2683,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|hideSearch
 operator|.
 name|setSelected
@@ -2557,6 +2691,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2565,6 +2700,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|showResultsInDialog
 operator|.
 name|setSelected
@@ -2572,6 +2708,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2580,6 +2717,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|searchAllBases
 operator|.
 name|setSelected
@@ -2587,6 +2725,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|increment
@@ -2623,17 +2762,21 @@ block|{
 if|if
 condition|(
 name|panel
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
-name|Thread
+return|return;
+block|}
+name|Runnable
 name|t
 init|=
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2654,7 +2797,8 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
-block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2729,10 +2873,8 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 comment|// An empty search field should cause the search to be cleared.
@@ -2750,57 +2892,27 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Setup search parameters common to both normal and float.
-name|Hashtable
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchOptions
+name|SearchRule
+name|searchRule
 init|=
-operator|new
-name|Hashtable
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-argument_list|()
-decl_stmt|;
-name|searchOptions
+name|SearchRules
 operator|.
-name|put
+name|getSearchRuleByQuery
 argument_list|(
-literal|"option"
-argument_list|,
 name|searchField
 operator|.
 name|getText
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|SearchRuleSet
-name|searchRules
-init|=
-operator|new
-name|SearchRuleSet
-argument_list|()
-decl_stmt|;
-name|SearchRule
-name|rule1
-decl_stmt|;
-name|rule1
-operator|=
-operator|new
-name|BasicSearch
-argument_list|(
+argument_list|,
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"caseSensitiveSearch"
+name|JabRefPreferences
+operator|.
+name|CASE_SENSITIVE_SEARCH
 argument_list|)
 argument_list|,
 name|Globals
@@ -2809,50 +2921,23 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"regExpSearch"
-argument_list|)
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-comment|// this searches specified fields if specified,
-comment|// and all fields otherwise
-name|rule1
-operator|=
-operator|new
-name|SearchExpression
-argument_list|(
-name|Globals
+name|JabRefPreferences
 operator|.
-name|prefs
-argument_list|,
-name|searchOptions
+name|REG_EXP_SEARCH
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ex
-parameter_list|)
-block|{
-comment|// we'll do a search in all fields
-block|}
-name|searchRules
-operator|.
-name|addRule
-argument_list|(
-name|rule1
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|!
-name|searchRules
+name|searchRule
 operator|.
 name|validateSearchStrings
 argument_list|(
-name|searchOptions
+name|searchField
+operator|.
+name|getText
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -2881,9 +2966,12 @@ init|=
 operator|new
 name|SearchWorker
 argument_list|(
-name|searchRules
+name|searchRule
 argument_list|,
-name|searchOptions
+name|searchField
+operator|.
+name|getText
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|worker
@@ -2929,18 +3017,16 @@ name|SearchWorker
 extends|extends
 name|AbstractWorker
 block|{
-DECL|field|rules
+DECL|field|rule
 specifier|private
-name|SearchRuleSet
-name|rules
+specifier|final
+name|SearchRule
+name|rule
 decl_stmt|;
 DECL|field|searchTerm
-name|Hashtable
-argument_list|<
+specifier|private
+specifier|final
 name|String
-argument_list|,
-name|String
-argument_list|>
 name|searchTerm
 decl_stmt|;
 DECL|field|hits
@@ -2949,27 +3035,22 @@ name|hits
 init|=
 literal|0
 decl_stmt|;
-DECL|method|SearchWorker (SearchRuleSet rules, Hashtable<String, String> searchTerm)
+DECL|method|SearchWorker (SearchRule rule, String searchTerm)
 specifier|public
 name|SearchWorker
 parameter_list|(
-name|SearchRuleSet
-name|rules
+name|SearchRule
+name|rule
 parameter_list|,
-name|Hashtable
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
 name|searchTerm
 parameter_list|)
 block|{
 name|this
 operator|.
-name|rules
+name|rule
 operator|=
-name|rules
+name|rule
 expr_stmt|;
 name|this
 operator|.
@@ -2978,6 +3059,8 @@ operator|=
 name|searchTerm
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -3011,7 +3094,7 @@ block|{
 name|boolean
 name|hit
 init|=
-name|rules
+name|rule
 operator|.
 name|applyRule
 argument_list|(
@@ -3019,8 +3102,6 @@ name|searchTerm
 argument_list|,
 name|entry
 argument_list|)
-operator|>
-literal|0
 decl_stmt|;
 name|entry
 operator|.
@@ -3033,9 +3114,11 @@ if|if
 condition|(
 name|hit
 condition|)
+block|{
 name|hits
 operator|++
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -3089,7 +3172,7 @@ block|{
 name|boolean
 name|hit
 init|=
-name|rules
+name|rule
 operator|.
 name|applyRule
 argument_list|(
@@ -3097,8 +3180,6 @@ name|searchTerm
 argument_list|,
 name|entry
 argument_list|)
-operator|>
-literal|0
 decl_stmt|;
 name|entry
 operator|.
@@ -3111,6 +3192,7 @@ if|if
 condition|(
 name|hit
 condition|)
+block|{
 name|hits
 operator|++
 expr_stmt|;
@@ -3118,6 +3200,9 @@ block|}
 block|}
 block|}
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -3244,6 +3329,7 @@ operator|.
 name|isSearchHit
 argument_list|()
 condition|)
+block|{
 name|searchDialog
 operator|.
 name|addEntry
@@ -3253,6 +3339,7 @@ argument_list|,
 name|p
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|searchDialog
@@ -3340,6 +3427,7 @@ operator|.
 name|isSearchHit
 argument_list|()
 condition|)
+block|{
 name|searchDialog
 operator|.
 name|addEntry
@@ -3349,6 +3437,7 @@ argument_list|,
 name|panel
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|searchDialog
 operator|.
@@ -3398,9 +3487,9 @@ name|panel
 operator|.
 name|setSearchMatcher
 argument_list|(
+operator|new
 name|SearchMatcher
-operator|.
-name|INSTANCE
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3432,9 +3521,9 @@ name|mainTable
 operator|.
 name|showFloatSearch
 argument_list|(
+operator|new
 name|SearchMatcher
-operator|.
-name|INSTANCE
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3457,7 +3546,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|clearSearch ()
-specifier|public
+specifier|private
 name|void
 name|clearSearch
 parameter_list|()
@@ -3518,6 +3607,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|itemStateChanged (ItemEvent e)
 specifier|public
 name|void
@@ -3582,11 +3673,15 @@ name|panel
 operator|!=
 literal|null
 condition|)
+block|{
 name|goIncremental
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Used for incremental search. Only activated when incremental      * is selected.      *      * The variable incSearchPos keeps track of which entry was last      * checked.      */
+block|}
+comment|/**      * Used for incremental search. Only activated when incremental      * is selected.      *<p/>      * The variable incSearchPos keeps track of which entry was last      * checked.      */
+annotation|@
+name|Override
 DECL|method|keyTyped (KeyEvent e)
 specifier|public
 name|void
@@ -3612,9 +3707,11 @@ name|panel
 operator|!=
 literal|null
 condition|)
+block|{
 name|goIncremental
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|goIncremental ()
 specifier|private
@@ -3638,9 +3735,11 @@ operator|.
 name|invokeLater
 argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -3671,7 +3770,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-literal|"'"
+literal|'\''
 operator|+
 name|text
 operator|+
@@ -3684,7 +3783,7 @@ argument_list|(
 literal|"Incremental search failed. Repeat to search from top."
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|incSearchPos
@@ -3701,22 +3800,24 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|incSearchPos
 operator|<
 literal|0
 condition|)
+block|{
 name|incSearchPos
 operator|=
 literal|0
 expr_stmt|;
+block|}
 name|BibtexEntry
 name|be
 init|=
@@ -3757,6 +3858,7 @@ operator|.
 name|getEntryCount
 argument_list|()
 condition|)
+block|{
 name|be
 operator|=
 name|panel
@@ -3768,13 +3870,14 @@ argument_list|(
 name|incSearchPos
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|panel
 operator|.
 name|output
 argument_list|(
-literal|"'"
+literal|'\''
 operator|+
 name|text
 operator|+
@@ -3814,7 +3917,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-literal|"'"
+literal|'\''
 operator|+
 name|text
 operator|+
@@ -3827,7 +3930,7 @@ argument_list|(
 literal|"found"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -3836,6 +3939,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|componentClosing ()
 specifier|public
 name|void
@@ -3864,11 +3969,15 @@ name|startedFilterSearch
 operator|||
 name|startedFloatSearch
 condition|)
+block|{
 name|clearSearch
 argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|keyPressed (KeyEvent e)
 specifier|public
 name|void
@@ -3878,6 +3987,8 @@ name|KeyEvent
 name|e
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|keyReleased (KeyEvent e)
 specifier|public
 name|void
@@ -3887,6 +3998,8 @@ name|KeyEvent
 name|e
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|caretUpdate (CaretEvent e)
 specifier|public
 name|void
@@ -3911,7 +4024,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** Updates the text on the search button to reflect      * the type of search that will happen on click. */
+comment|/**      * Updates the text on the search button to reflect      * the type of search that will happen on click.      */
 DECL|method|updateSearchButtonText ()
 specifier|private
 name|void
@@ -3922,33 +4035,8 @@ name|search
 operator|.
 name|setText
 argument_list|(
-operator|!
-name|increment
-operator|.
-name|isSelected
+name|isSpecificSearch
 argument_list|()
-operator|&&
-name|SearchExpressionParser
-operator|.
-name|checkSyntax
-argument_list|(
-name|searchField
-operator|.
-name|getText
-argument_list|()
-argument_list|,
-name|caseSensitive
-operator|.
-name|isSelected
-argument_list|()
-argument_list|,
-name|regExpSearch
-operator|.
-name|isSelected
-argument_list|()
-argument_list|)
-operator|!=
-literal|null
 condition|?
 name|Globals
 operator|.
@@ -3966,56 +4054,42 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
-DECL|method|reportError (String errorMessage)
-specifier|public
-name|void
-name|reportError
-parameter_list|(
-name|String
-name|errorMessage
-parameter_list|)
+DECL|method|isSpecificSearch ()
+specifier|private
+name|boolean
+name|isSpecificSearch
+parameter_list|()
 block|{
-name|JOptionPane
+return|return
+operator|!
+name|increment
 operator|.
-name|showMessageDialog
+name|isSelected
+argument_list|()
+operator|&&
+name|SearchExpression
+operator|.
+name|isValid
 argument_list|(
-name|panel
-argument_list|,
-name|errorMessage
-argument_list|,
-name|Globals
+name|caseSensitive
 operator|.
-name|lang
-argument_list|(
-literal|"Search error"
-argument_list|)
+name|isSelected
+argument_list|()
 argument_list|,
-name|JOptionPane
+name|regExpSearch
 operator|.
-name|ERROR_MESSAGE
+name|isSelected
+argument_list|()
+argument_list|,
+name|searchField
+operator|.
+name|getText
+argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
-comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
-DECL|method|reportError (String errorMessage, Exception exception)
-specifier|public
-name|void
-name|reportError
-parameter_list|(
-name|String
-name|errorMessage
-parameter_list|,
-name|Exception
-name|exception
-parameter_list|)
-block|{
-name|reportError
-argument_list|(
-name|errorMessage
-argument_list|)
-expr_stmt|;
-block|}
+annotation|@
+name|Override
 DECL|method|setActiveBasePanel (BasePanel panel)
 specifier|public
 name|void
@@ -4038,6 +4112,7 @@ name|panel
 operator|!=
 literal|null
 condition|)
+block|{
 name|escape
 operator|.
 name|setEnabled
@@ -4053,7 +4128,9 @@ name|isShowingFilterSearch
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|escape
 operator|.
 name|setEnabled
@@ -4061,6 +4138,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

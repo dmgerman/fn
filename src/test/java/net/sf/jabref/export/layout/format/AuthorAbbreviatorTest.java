@@ -42,24 +42,22 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|Assert
 import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-operator|.
-name|assertEquals
+name|Test
 import|;
 end_import
 
 begin_comment
-comment|/**  * Is the save as the AuthorLastFirstAbbreviator.  *  * @author $Author$  * @version $Revision$ ($Date$)  */
+comment|/**  * Is the save as the AuthorLastFirstAbbreviator.  */
 end_comment
 
 begin_class
@@ -90,6 +88,8 @@ operator|new
 name|AuthorAbbreviator
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|b
@@ -107,6 +107,8 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|b
@@ -124,6 +126,8 @@ literal|"Someone, Van Something"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|b
@@ -141,6 +145,8 @@ literal|"Smith, John"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|b

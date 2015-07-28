@@ -78,22 +78,20 @@ end_import
 
 begin_class
 DECL|class|EntryAddChange
-specifier|public
 class|class
 name|EntryAddChange
 extends|extends
 name|Change
 block|{
 DECL|field|diskEntry
+specifier|private
+specifier|final
 name|BibtexEntry
 name|diskEntry
 decl_stmt|;
-comment|//  boolean isModifiedLocally, modificationsAgree;[[[[[[
-DECL|field|pp
-name|PreviewPanel
-name|pp
-decl_stmt|;
 DECL|field|sp
+specifier|private
+specifier|final
 name|JScrollPane
 name|sp
 decl_stmt|;
@@ -116,8 +114,9 @@ name|diskEntry
 operator|=
 name|diskEntry
 expr_stmt|;
+name|PreviewPanel
 name|pp
-operator|=
+init|=
 operator|new
 name|PreviewPanel
 argument_list|(
@@ -137,10 +136,12 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview0"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_0
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|sp
 operator|=
 operator|new
@@ -150,6 +151,8 @@ name|pp
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
@@ -169,9 +172,9 @@ name|diskEntry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -214,6 +217,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description

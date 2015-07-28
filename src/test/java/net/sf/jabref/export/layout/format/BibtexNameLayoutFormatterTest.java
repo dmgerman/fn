@@ -42,6 +42,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -79,6 +89,8 @@ operator|new
 name|NameFormat
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Doe"
@@ -95,6 +107,8 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"moremoremoremore"
@@ -111,6 +125,8 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Doe"
@@ -127,6 +143,8 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"JoeDoe and MaryJ"
@@ -143,6 +161,8 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Doe, Joe and Jane, M. and Kamp, J.~A."
@@ -159,6 +179,8 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Doe Joe and Jane, M. and Kamp, J.~A."
@@ -192,6 +214,8 @@ name|NameFormat
 argument_list|()
 decl_stmt|;
 comment|// Empty case
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -210,6 +234,8 @@ init|=
 literal|"1@1@{vv }{ll}{ ff}@@2@1@{vv }{ll}{ ff}@2@ and {vv }{ll}{, ff}@@*@1@{vv }{ll}{ ff}@2..-2@, {vv }{ll}{, ff}@-1@ and {vv }{ll}{, ff}"
 decl_stmt|;
 comment|// Single Names
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Vandekamp Mary~Ann"
@@ -227,6 +253,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Two names
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"von Neumann John and Black~Brown, Peter"
@@ -244,6 +272,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Three names
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"von Neumann John, Smith, John and Black~Brown, Peter"
@@ -260,6 +290,8 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"von Neumann John, Smith, John and Black~Brown, Peter"
@@ -277,6 +309,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Four names
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"von Neumann John, Smith, John, Vandekamp, Mary~Ann and Black~Brown, Peter"

@@ -16,7 +16,7 @@ comment|// modified : r.nagel 2.09.2004
 end_comment
 
 begin_comment
-comment|//            - new SearcherThread.setFinish() method
+comment|//            - new SearcherRunnable.setFinish() method
 end_comment
 
 begin_comment
@@ -105,19 +105,23 @@ DECL|class|DuplicateSearch
 specifier|public
 class|class
 name|DuplicateSearch
-extends|extends
-name|Thread
+implements|implements
+name|Runnable
 block|{
 DECL|field|panel
+specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|bes
+specifier|private
 name|BibtexEntry
 index|[]
 name|bes
 decl_stmt|;
 DECL|field|duplicates
+specifier|private
 specifier|final
 name|Vector
 argument_list|<
@@ -134,12 +138,6 @@ index|[]
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|field|autoRemoveExactDuplicates
-name|boolean
-name|autoRemoveExactDuplicates
-init|=
-literal|false
-decl_stmt|;
 DECL|method|DuplicateSearch (BasePanel bp)
 specifier|public
 name|DuplicateSearch
@@ -153,6 +151,8 @@ operator|=
 name|bp
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -179,10 +179,11 @@ name|duplicateCounter
 init|=
 literal|0
 decl_stmt|;
+name|boolean
 name|autoRemoveExactDuplicates
-operator|=
+init|=
 literal|false
-expr_stmt|;
+decl_stmt|;
 name|panel
 operator|.
 name|output
@@ -219,7 +220,9 @@ operator|<
 literal|2
 operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|bes
 operator|=
 operator|new
@@ -246,6 +249,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|bes
 index|[
 name|i
@@ -266,26 +270,24 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-name|SearcherThread
+block|}
+name|SearcherRunnable
 name|st
 init|=
 operator|new
-name|SearcherThread
+name|SearcherRunnable
 argument_list|()
 decl_stmt|;
-name|st
+name|JabRefExecutorService
 operator|.
-name|setPriority
+name|INSTANCE
+operator|.
+name|executeWithLowPriorityInOwnThread
 argument_list|(
-name|Thread
-operator|.
-name|MIN_PRIORITY
-argument_list|)
-expr_stmt|;
 name|st
-operator|.
-name|start
-argument_list|()
+argument_list|,
+literal|"Searcher"
+argument_list|)
 expr_stmt|;
 name|int
 name|current
@@ -549,11 +551,13 @@ name|DuplicateResolverDialog
 operator|.
 name|AUTOREMOVE_EXACT
 condition|)
+block|{
 name|autoRemoveExactDuplicates
 operator|=
 literal|true
 expr_stmt|;
 comment|// Remember choice
+block|}
 block|}
 elseif|else
 if|if
@@ -620,6 +624,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -628,12 +634,11 @@ block|{
 comment|// Now, do the actual removal:
 if|if
 condition|(
+operator|!
 name|toRemove
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for
@@ -698,7 +703,7 @@ operator|.
 name|size
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -731,19 +736,22 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|class|SearcherThread
+DECL|class|SearcherRunnable
 class|class
-name|SearcherThread
-extends|extends
-name|Thread
+name|SearcherRunnable
+implements|implements
+name|Runnable
 block|{
 DECL|field|finished
 specifier|private
+specifier|volatile
 name|boolean
 name|finished
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -760,11 +768,13 @@ init|;
 operator|(
 name|i
 operator|<
+operator|(
 name|bes
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|!
@@ -899,6 +909,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|DuplicateCallBack
+specifier|static
 class|class
 name|DuplicateCallBack
 implements|implements
@@ -918,21 +929,25 @@ name|diag
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|one
 specifier|private
+specifier|final
 name|BibtexEntry
 name|one
 decl_stmt|;
 DECL|field|two
 specifier|private
+specifier|final
 name|BibtexEntry
 name|two
 decl_stmt|;
 DECL|field|dialogType
 specifier|private
+specifier|final
 name|int
 name|dialogType
 decl_stmt|;
@@ -988,6 +1003,8 @@ return|return
 name|reply
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void

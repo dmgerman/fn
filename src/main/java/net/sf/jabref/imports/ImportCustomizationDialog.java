@@ -190,6 +190,20 @@ name|ButtonBarBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * Dialog to manage custom importers.  */
 end_comment
@@ -215,6 +229,7 @@ name|customImporterTable
 decl_stmt|;
 DECL|field|prefs
 specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
 init|=
@@ -224,10 +239,13 @@ name|prefs
 decl_stmt|;
 DECL|field|importCustomizationDialog
 specifier|private
+specifier|final
 name|ImportCustomizationDialog
 name|importCustomizationDialog
 decl_stmt|;
 comment|/*     *  (non-Javadoc)     * @see java.awt.Component#getSize()     */
+annotation|@
+name|Override
 DECL|method|getSize ()
 specifier|public
 name|Dimension
@@ -338,9 +356,11 @@ name|lastDot
 operator|<
 literal|0
 condition|)
+block|{
 return|return
 name|className
 return|;
+block|}
 name|className
 operator|=
 name|className
@@ -454,6 +474,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -497,7 +519,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
@@ -527,6 +551,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|chosenFileStr
 operator|=
 name|FileDialogs
@@ -556,6 +581,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|chosenFileStr
@@ -716,6 +742,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -740,7 +768,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
@@ -955,6 +985,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1104,6 +1136,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1210,6 +1244,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1636,6 +1672,7 @@ name|AbstractTableModel
 block|{
 DECL|field|columnNames
 specifier|private
+specifier|final
 name|String
 index|[]
 name|columnNames
@@ -1673,6 +1710,8 @@ literal|"Contained in"
 argument_list|)
 block|}
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getValueAt (int rowIndex, int columnIndex)
 specifier|public
 name|Object
@@ -1767,6 +1806,8 @@ return|return
 name|value
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1779,6 +1820,8 @@ operator|.
 name|length
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -1796,6 +1839,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int col)
 specifier|public
 name|String

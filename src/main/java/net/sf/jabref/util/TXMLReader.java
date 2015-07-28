@@ -328,7 +328,7 @@ return|;
 block|}
 comment|/** collect all "plain" data of a xml node */
 DECL|method|getSimpleElementText (Element node)
-specifier|public
+specifier|private
 name|String
 name|getSimpleElementText
 parameter_list|(
@@ -457,12 +457,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|data
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 try|try
@@ -531,12 +530,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|data
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 return|return
@@ -590,12 +588,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|data
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 return|return

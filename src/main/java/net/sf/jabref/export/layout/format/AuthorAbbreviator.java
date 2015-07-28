@@ -61,6 +61,8 @@ implements|implements
 name|LayoutFormatter
 block|{
 comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.export.layout.LayoutFormatter#format(java.lang.String)      */
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String

@@ -97,7 +97,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Wraps the XMPUtility function to be used as an ImportFormat.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Wraps the XMPUtility function to be used as an ImportFormat.  */
 end_comment
 
 begin_class
@@ -108,6 +108,8 @@ name|PdfXmpImporter
 extends|extends
 name|ImportFormat
 block|{
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -124,6 +126,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns a list of all BibtexEntries found in the inputstream.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List
@@ -174,10 +178,10 @@ argument_list|)
 return|;
 block|}
 comment|/**      * String used to identify this import filter on the command line.      *       * @return "xmp"      */
-DECL|method|getCLIid ()
+DECL|method|getCommandLineId ()
 specifier|public
 name|String
-name|getCLIid
+name|getCommandLineId
 parameter_list|()
 block|{
 return|return

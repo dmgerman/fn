@@ -104,21 +104,29 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|JLabel
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JToolBar
 import|;
 end_import
 
 begin_import
 import|import
-name|com
+name|org
 operator|.
-name|jgoodies
+name|jdesktop
 operator|.
-name|uif_lite
+name|swingx
 operator|.
-name|panel
-operator|.
-name|SimpleInternalFrame
+name|JXTitledPanel
 import|;
 end_import
 
@@ -129,10 +137,20 @@ specifier|abstract
 class|class
 name|SidePaneComponent
 extends|extends
-name|SimpleInternalFrame
+name|JXTitledPanel
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|close
 specifier|protected
+specifier|final
 name|JButton
 name|close
 init|=
@@ -147,47 +165,16 @@ literal|"close"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|field|up
-specifier|protected
-name|JButton
-name|up
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|GUIGlobals
-operator|.
-name|getImage
-argument_list|(
-literal|"up"
-argument_list|)
-argument_list|)
-decl_stmt|;
-DECL|field|down
-specifier|protected
-name|JButton
-name|down
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|GUIGlobals
-operator|.
-name|getImage
-argument_list|(
-literal|"down"
-argument_list|)
-argument_list|)
-decl_stmt|;
 DECL|field|visible
-specifier|protected
+specifier|private
 name|boolean
 name|visible
 init|=
 literal|false
 decl_stmt|;
 DECL|field|manager
-specifier|protected
+specifier|private
+specifier|final
 name|SidePaneManager
 name|manager
 decl_stmt|;
@@ -214,13 +201,22 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|title
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|add
+argument_list|(
+operator|new
+name|JLabel
+argument_list|(
 operator|new
 name|ImageIcon
 argument_list|(
 name|icon
 argument_list|)
-argument_list|,
-name|title
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -228,11 +224,6 @@ operator|.
 name|manager
 operator|=
 name|manager
-expr_stmt|;
-name|setSelected
-argument_list|(
-literal|true
-argument_list|)
 expr_stmt|;
 name|JToolBar
 name|tlb
@@ -258,7 +249,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// tlb.setOpaque(false);
 name|close
 operator|.
 name|setBorder
@@ -266,6 +256,20 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|JButton
+name|up
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"up"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|up
 operator|.
 name|setMargin
@@ -283,6 +287,20 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|JButton
+name|down
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"down"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|down
 operator|.
 name|setMargin
@@ -369,12 +387,19 @@ name|CloseButtonListener
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setToolBar
+name|this
+operator|.
+name|getUI
+argument_list|()
+operator|.
+name|getTitleBar
+argument_list|()
+operator|.
+name|add
 argument_list|(
 name|tlb
 argument_list|)
 expr_stmt|;
-comment|// setBorder(BorderFactory.createEtchedBorder());
 name|setBorder
 argument_list|(
 name|BorderFactory
@@ -383,13 +408,8 @@ name|createEmptyBorder
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// setBorder(BorderFactory.createMatteBorder(1,1,1,1,java.awt.Color.green));
-comment|// setPreferredSize(new java.awt.Dimension
-comment|// (GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION, 200));
-comment|// Util.pr(""+GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION);
 block|}
 DECL|method|hideAway ()
-specifier|public
 name|void
 name|hideAway
 parameter_list|()
@@ -403,7 +423,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|moveUp ()
-specifier|public
+specifier|private
 name|void
 name|moveUp
 parameter_list|()
@@ -417,7 +437,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|moveDown ()
-specifier|public
+specifier|private
 name|void
 name|moveDown
 parameter_list|()
@@ -480,20 +500,22 @@ return|return
 name|panel
 return|;
 block|}
-comment|/**      * Override this method if the component needs to make any changes before it      * can close.      */
+comment|/**      * Override this method if the component needs to make any changes before it can close.      */
 DECL|method|componentClosing ()
 specifier|public
 name|void
 name|componentClosing
 parameter_list|()
 block|{      }
-comment|/**      * Override this method if the component needs to do any actions when      * opening.      */
+comment|/**      * Override this method if the component needs to do any actions when opening.      */
 DECL|method|componentOpening ()
 specifier|public
 name|void
 name|componentOpening
 parameter_list|()
 block|{      }
+annotation|@
+name|Override
 DECL|method|getMinimumSize ()
 specifier|public
 name|Dimension
@@ -506,11 +528,14 @@ argument_list|()
 return|;
 block|}
 DECL|class|CloseButtonListener
+specifier|private
 class|class
 name|CloseButtonListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -526,11 +551,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|UpButtonListener
+specifier|private
 class|class
 name|UpButtonListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -546,11 +574,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|DownButtonListener
+specifier|private
 class|class
 name|DownButtonListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

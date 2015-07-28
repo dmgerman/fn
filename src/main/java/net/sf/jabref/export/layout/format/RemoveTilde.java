@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Replace a non-command tilde ~ by a space.  *   * Usefull for formatting Latex code.  *   * @author $author$  * @version $Revision$  */
+comment|/**  * Replace a non-command tilde ~ by a space.  *   * Usefull for formatting Latex code.  */
 end_comment
 
 begin_class
@@ -132,6 +132,8 @@ name|RemoveTilde
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -141,11 +143,11 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|result
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|fieldText
 operator|.
@@ -202,20 +204,26 @@ expr_stmt|;
 comment|// Skip the next character if the current one is a backslash
 if|if
 condition|(
+operator|(
 name|c
 index|[
 name|i
 index|]
 operator|==
 literal|'\\'
+operator|)
 operator|&&
+operator|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|<
 name|c
 operator|.
 name|length
+operator|)
 condition|)
 block|{
 name|i

@@ -100,6 +100,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
 name|Util
 import|;
 end_import
@@ -165,6 +167,8 @@ specifier|public
 name|FileListTableModel
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -184,6 +188,8 @@ argument_list|()
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -194,6 +200,8 @@ return|return
 literal|3
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnClass (int columnIndex)
 specifier|public
 name|Class
@@ -212,6 +220,8 @@ operator|.
 name|class
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getValueAt (int rowIndex, int columnIndex)
 specifier|public
 name|Object
@@ -384,6 +394,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -402,6 +414,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|fireTableRowsInserted
 argument_list|(
 name|index
@@ -411,6 +424,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|setValueAt (Object aValue, int rowIndex, int columnIndex)
 specifier|public
 name|void
@@ -486,10 +502,12 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 name|value
 operator|=
 literal|""
 expr_stmt|;
+block|}
 name|ArrayList
 argument_list|<
 name|FileListEntry
@@ -612,9 +630,11 @@ operator|.
 name|length
 argument_list|()
 operator|>
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -630,10 +650,12 @@ operator|==
 literal|'#'
 operator|)
 condition|)
+block|{
 name|inXmlChar
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 comment|// Check if we are exiting an XML special character construct:
 elseif|else
@@ -729,6 +751,7 @@ if|if
 condition|(
 name|firstOnly
 condition|)
+block|{
 return|return
 name|decodeEntry
 argument_list|(
@@ -737,6 +760,7 @@ argument_list|,
 name|deduceUnknownTypes
 argument_list|)
 return|;
+block|}
 else|else
 block|{
 name|newList
@@ -759,6 +783,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -766,6 +791,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 name|escaped
 operator|=
 literal|false
@@ -780,6 +806,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|thisEntry
 operator|.
 name|add
@@ -790,20 +817,21 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
+operator|!
 name|thisEntry
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 if|if
 condition|(
 name|firstOnly
 condition|)
+block|{
 return|return
 name|decodeEntry
 argument_list|(
@@ -812,7 +840,9 @@ argument_list|,
 name|deduceUnknownTypes
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 name|newList
 operator|.
 name|add
@@ -825,6 +855,7 @@ name|deduceUnknownTypes
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 synchronized|synchronized
 init|(
@@ -891,20 +922,26 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|entry
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|entry
 operator|.
 name|getType
 argument_list|()
 operator|==
 literal|null
+operator|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 name|entry
 operator|.
@@ -1021,12 +1058,14 @@ operator|&&
 operator|(
 name|index
 operator|<
+operator|(
 name|link
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -1060,10 +1099,12 @@ name|typeGuess
 operator|!=
 literal|null
 condition|)
+block|{
 name|type
 operator|=
 name|typeGuess
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
@@ -1112,6 +1153,7 @@ operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 return|return
 name|contents
 operator|.
@@ -1120,10 +1162,13 @@ argument_list|(
 name|index
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|""
 return|;
+block|}
 block|}
 comment|/**      * Transform the file list shown in the table into a flat string representable      * as a BibTeX field:      * @return String representation.      */
 DECL|method|getStringRepresentation ()
@@ -1184,6 +1229,7 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1191,6 +1237,7 @@ argument_list|(
 literal|';'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -1278,6 +1325,7 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1285,6 +1333,7 @@ argument_list|(
 literal|"<br>"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb

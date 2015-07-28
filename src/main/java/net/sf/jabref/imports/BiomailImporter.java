@@ -149,6 +149,8 @@ extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -160,6 +162,8 @@ literal|"Biomail"
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -171,6 +175,8 @@ literal|"biomail"
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -236,15 +242,19 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -322,7 +332,9 @@ argument_list|()
 operator|<
 literal|3
 condition|)
+block|{
 continue|continue;
+block|}
 comment|// begining of a new item
 if|if
 condition|(
@@ -340,6 +352,7 @@ argument_list|(
 literal|"PMID- "
 argument_list|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -352,6 +365,7 @@ argument_list|(
 name|str
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|String
@@ -476,6 +490,7 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 name|fields
 operator|=
 name|entry
@@ -485,6 +500,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|Type
 init|=
@@ -541,7 +557,9 @@ argument_list|()
 operator|<=
 literal|2
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 name|beg
 init|=
@@ -608,10 +626,12 @@ argument_list|(
 name|value
 argument_list|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"inproceedings"
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -623,6 +643,7 @@ argument_list|(
 literal|"JO  - "
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -632,6 +653,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -666,6 +688,7 @@ argument_list|(
 name|fullauthor
 argument_list|)
 condition|)
+block|{
 name|fullauthor
 operator|=
 name|fullauthor
@@ -674,11 +697,14 @@ literal|" and "
 operator|+
 name|tmpauthor
 expr_stmt|;
+block|}
 else|else
+block|{
 name|fullauthor
 operator|=
 name|tmpauthor
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -721,6 +747,7 @@ argument_list|(
 name|shortauthor
 argument_list|)
 condition|)
+block|{
 name|shortauthor
 operator|=
 name|shortauthor
@@ -729,11 +756,14 @@ literal|" and "
 operator|+
 name|tmpauthor
 expr_stmt|;
+block|}
 else|else
+block|{
 name|shortauthor
 operator|=
 name|tmpauthor
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -745,6 +775,7 @@ argument_list|(
 literal|"TI  - "
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -761,6 +792,7 @@ literal|" "
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -771,6 +803,7 @@ argument_list|(
 literal|"TA  - "
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -787,6 +820,7 @@ literal|" "
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -797,6 +831,7 @@ argument_list|(
 literal|"AB  - "
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -813,6 +848,7 @@ literal|" "
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -823,6 +859,7 @@ argument_list|(
 literal|"PG  - "
 argument_list|)
 condition|)
+block|{
 name|pages
 operator|=
 name|value
@@ -834,6 +871,7 @@ argument_list|,
 literal|"--"
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -844,6 +882,7 @@ argument_list|(
 literal|"IP  - "
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -853,6 +892,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -899,6 +939,7 @@ argument_list|(
 literal|"VI  - "
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -908,6 +949,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -982,6 +1024,7 @@ argument_list|(
 name|pages
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -991,6 +1034,7 @@ argument_list|,
 name|pages
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1001,6 +1045,7 @@ argument_list|(
 name|fullauthor
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1010,6 +1055,7 @@ argument_list|,
 name|fullauthor
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1021,6 +1067,7 @@ argument_list|(
 name|shortauthor
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1030,6 +1077,7 @@ argument_list|,
 name|shortauthor
 argument_list|)
 expr_stmt|;
+block|}
 name|BibtexEntry
 name|b
 init|=
@@ -1062,6 +1110,7 @@ comment|// to parse header informaion. So add only if we have at least author or
 comment|// title fields.
 if|if
 condition|(
+operator|(
 name|hm
 operator|.
 name|get
@@ -1070,7 +1119,9 @@ literal|"author"
 argument_list|)
 operator|!=
 literal|null
+operator|)
 operator|||
+operator|(
 name|hm
 operator|.
 name|get
@@ -1079,7 +1130,9 @@ literal|"title"
 argument_list|)
 operator|!=
 literal|null
+operator|)
 condition|)
+block|{
 name|bibitems
 operator|.
 name|add
@@ -1087,6 +1140,7 @@ argument_list|(
 name|b
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|bibitems

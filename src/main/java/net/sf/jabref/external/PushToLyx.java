@@ -88,6 +88,7 @@ name|PushToApplication
 block|{
 DECL|field|lyxPipe
 specifier|private
+specifier|final
 name|JTextField
 name|lyxPipe
 init|=
@@ -118,6 +119,8 @@ name|couldNotWrite
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|pushEntries (BibtexDatabase database, final BibtexEntry[] entries, final String keyString, MetaData metaData)
 specifier|public
 name|void
@@ -156,7 +159,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"lyxpipe"
+name|JabRefPreferences
+operator|.
+name|LYXPIPE
 argument_list|)
 decl_stmt|;
 if|if
@@ -169,12 +174,14 @@ argument_list|(
 literal|".in"
 argument_list|)
 condition|)
+block|{
 name|lyxpipeSetting
 operator|=
 name|lyxpipeSetting
 operator|+
 literal|".in"
 expr_stmt|;
+block|}
 name|File
 name|lp
 init|=
@@ -239,16 +246,18 @@ name|lyxpipe
 init|=
 name|lp
 decl_stmt|;
-name|Thread
-name|t
-init|=
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|executeAndWait
 argument_list|(
 operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -276,8 +285,6 @@ argument_list|)
 decl_stmt|;
 name|String
 name|citeStr
-init|=
-literal|""
 decl_stmt|;
 name|citeStr
 operator|=
@@ -314,35 +321,10 @@ block|}
 block|}
 block|}
 argument_list|)
-decl_stmt|;
-name|t
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-comment|//new Timeout(2000, t, Globals.lang("Error")+": "+
-comment|//Globals.lang("unable to access LyX-pipe"));
-try|try
-block|{
-name|t
-operator|.
-name|join
-argument_list|()
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-block|}
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -358,6 +340,8 @@ literal|"Insert selected citations into LyX/Kile"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getApplicationName ()
 specifier|public
 name|String
@@ -368,6 +352,8 @@ return|return
 literal|"LyX/Kile"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTooltip ()
 specifier|public
 name|String
@@ -383,6 +369,8 @@ literal|"Push selection to LyX/Kile"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIcon ()
 specifier|public
 name|Icon
@@ -398,6 +386,8 @@ literal|"lyx"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyStrokeName ()
 specifier|public
 name|String
@@ -408,6 +398,8 @@ return|return
 literal|"Push to LyX"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|operationCompleted (BasePanel panel)
 specifier|public
 name|void
@@ -450,7 +442,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"lyxpipe"
+name|JabRefPreferences
+operator|.
+name|LYXPIPE
 argument_list|)
 operator|+
 literal|"]"
@@ -491,7 +485,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"lyxpipe"
+name|JabRefPreferences
+operator|.
+name|LYXPIPE
 argument_list|)
 operator|+
 literal|".in"
@@ -523,6 +519,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|requiresBibtexKeys ()
 specifier|public
 name|boolean
@@ -533,6 +531,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSettingsPanel ()
 specifier|public
 name|JPanel
@@ -545,9 +545,11 @@ name|settings
 operator|==
 literal|null
 condition|)
+block|{
 name|initSettingsPanel
 argument_list|()
 expr_stmt|;
+block|}
 name|lyxPipe
 operator|.
 name|setText
@@ -558,7 +560,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"lyxpipe"
+name|JabRefPreferences
+operator|.
+name|LYXPIPE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -566,6 +570,8 @@ return|return
 name|settings
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -578,7 +584,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"lyxpipe"
+name|JabRefPreferences
+operator|.
+name|LYXPIPE
 argument_list|,
 name|lyxPipe
 operator|.

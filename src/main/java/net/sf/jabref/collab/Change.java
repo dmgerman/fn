@@ -90,7 +90,6 @@ end_import
 
 begin_class
 DECL|class|Change
-specifier|public
 specifier|abstract
 class|class
 name|Change
@@ -102,13 +101,13 @@ name|String
 name|name
 decl_stmt|;
 DECL|field|accepted
+specifier|private
 name|boolean
 name|accepted
 init|=
 literal|true
 decl_stmt|;
 DECL|method|Change ()
-specifier|public
 name|Change
 parameter_list|()
 block|{
@@ -118,7 +117,6 @@ literal|""
 expr_stmt|;
 block|}
 DECL|method|Change (String name)
-specifier|public
 name|Change
 parameter_list|(
 name|String
@@ -138,7 +136,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getName ()
-specifier|public
+specifier|private
 name|String
 name|getName
 parameter_list|()
@@ -147,6 +145,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -205,6 +205,7 @@ operator|instanceof
 name|Change
 operator|)
 condition|)
+block|{
 return|return
 operator|(
 operator|(
@@ -217,10 +218,13 @@ operator|.
 name|isAccepted
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 comment|/**      * This method returns a JComponent detailing the nature of the change.      * @return JComponent      */
 DECL|method|description ()

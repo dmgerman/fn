@@ -78,19 +78,25 @@ name|AbstractUndoableEdit
 block|{
 DECL|field|base
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|base
 decl_stmt|;
 DECL|field|oldValue
-DECL|field|newValue
 specifier|private
+specifier|final
 name|String
 name|oldValue
-decl_stmt|,
+decl_stmt|;
+DECL|field|newValue
+specifier|private
+specifier|final
+name|String
 name|newValue
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -136,6 +142,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -160,6 +168,8 @@ literal|"change preamble"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String
@@ -184,6 +194,8 @@ literal|"change preamble"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -210,6 +222,8 @@ name|updatePreamble
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void

@@ -137,6 +137,7 @@ block|{
 DECL|field|clipBoard
 specifier|public
 specifier|static
+specifier|final
 name|ClipBoardManager
 name|clipBoard
 init|=
@@ -145,6 +146,8 @@ name|ClipBoardManager
 argument_list|()
 decl_stmt|;
 comment|/**      * Empty implementation of the ClipboardOwner interface.      */
+annotation|@
+name|Override
 DECL|method|lostOwnership (Clipboard aClipboard, Transferable aContents)
 specifier|public
 name|void

@@ -62,6 +62,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
+name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -87,18 +101,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
 import|;
 end_import
 
@@ -162,12 +164,12 @@ operator|.
 name|FileFilter
 block|{
 DECL|field|externalFileType
+specifier|final
 name|ExternalFileType
 name|externalFileType
 decl_stmt|;
 comment|/**      * Constructor.<br>      * Forces subclasses to provide an {@link ExternalFileType} instance, which      * they build on.      *       * @param externalFileType      */
 DECL|method|EntryFromFileCreator (ExternalFileType externalFileType)
-specifier|public
 name|EntryFromFileCreator
 parameter_list|(
 name|ExternalFileType
@@ -192,6 +194,8 @@ name|f
 parameter_list|)
 function_decl|;
 comment|/**      *<p>      * To support platform independence, a creator must define what types of      * files it accepts on it's own.      *</p>      *<p>      * Basically, accepting files which end with the file extension that is      * described in the nested {@link #externalFileType} would work on windows      * systems. This is also the recommended criterion, on which files should be      * accepted.      *</p>      *<p>      * However, defining what types of files this creator accepts, is a property      * of<i>entry creators</i>, that is left to the user.      *</p>      */
+annotation|@
+name|Override
 DECL|method|accept (File f)
 specifier|public
 specifier|abstract
@@ -225,9 +229,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|f
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|f
@@ -439,7 +445,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|addFileInfo (BibtexEntry entry, File file)
-specifier|protected
+specifier|private
 name|void
 name|addFileInfo
 parameter_list|(
@@ -495,7 +501,7 @@ decl_stmt|;
 name|File
 name|shortenedFileName
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(
@@ -550,7 +556,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|appendToField (BibtexEntry entry, String field, String value)
-specifier|protected
 name|void
 name|appendToField
 parameter_list|(
@@ -566,9 +571,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|value
 operator|==
 literal|null
+operator|)
 operator|||
 literal|""
 operator|.
@@ -577,7 +584,9 @@ argument_list|(
 name|value
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|oVal
 init|=
@@ -636,7 +645,6 @@ block|}
 block|}
 block|}
 DECL|method|addEntrysToEntry (BibtexEntry entry, List<BibtexEntry> entrys)
-specifier|protected
 name|void
 name|addEntrysToEntry
 parameter_list|(
@@ -676,7 +684,6 @@ block|}
 block|}
 block|}
 DECL|method|addEntryDataToEntry (BibtexEntry entry, BibtexEntry e)
-specifier|protected
 name|void
 name|addEntryDataToEntry
 parameter_list|(
@@ -714,6 +721,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

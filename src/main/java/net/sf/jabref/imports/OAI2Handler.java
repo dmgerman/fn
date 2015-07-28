@@ -67,7 +67,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SAX-Handler to parse OAI2-xml files.  *   * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  *   * @version $Revision$ ($Date$)  *   */
+comment|/**  * SAX-Handler to parse OAI2-xml files.  *   * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  */
 end_comment
 
 begin_class
@@ -79,22 +79,28 @@ extends|extends
 name|DefaultHandler
 block|{
 DECL|field|entry
+specifier|private
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|authors
+specifier|private
 name|StringBuffer
 name|authors
 decl_stmt|;
 DECL|field|keyname
+specifier|private
 name|String
 name|keyname
 decl_stmt|;
 DECL|field|forenames
+specifier|private
 name|String
 name|forenames
 decl_stmt|;
 DECL|field|characters
+specifier|private
 name|StringBuffer
 name|characters
 decl_stmt|;
@@ -113,6 +119,8 @@ operator|=
 name|be
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|startDocument ()
 specifier|public
 name|void
@@ -128,6 +136,8 @@ name|StringBuffer
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|characters (char[] ch, int start, int length)
 specifier|public
 name|void
@@ -158,6 +168,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|startElement (String uri, String localName, String qualifiedName, Attributes attributes)
 specifier|public
 name|void
@@ -185,6 +197,8 @@ name|StringBuffer
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|endElement (String uri, String localName, String qualifiedName)
 specifier|public
 name|void
@@ -459,9 +473,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|year
 operator|==
 literal|null
+operator|)
 operator|||
 name|year
 operator|.
@@ -602,6 +618,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|authors
 operator|.
 name|append
@@ -609,6 +626,7 @@ argument_list|(
 literal|" and "
 argument_list|)
 expr_stmt|;
+block|}
 name|authors
 operator|.
 name|append
@@ -618,6 +636,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|endDocument ()
 specifier|public
 name|void

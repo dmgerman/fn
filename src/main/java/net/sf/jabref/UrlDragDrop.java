@@ -213,6 +213,7 @@ block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -230,16 +231,19 @@ argument_list|)
 decl_stmt|;
 DECL|field|feditor
 specifier|private
+specifier|final
 name|FieldEditor
 name|feditor
 decl_stmt|;
 DECL|field|editor
 specifier|private
+specifier|final
 name|EntryEditor
 name|editor
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -271,6 +275,8 @@ name|_frame
 expr_stmt|;
 block|}
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragEnter(java.awt.dnd.DropTargetDragEvent)      */
+annotation|@
+name|Override
 DECL|method|dragEnter (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -281,6 +287,8 @@ name|dtde
 parameter_list|)
 block|{     }
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragOver(java.awt.dnd.DropTargetDragEvent)      */
+annotation|@
+name|Override
 DECL|method|dragOver (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -291,6 +299,8 @@ name|dtde
 parameter_list|)
 block|{     }
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dropActionChanged(java.awt.dnd.DropTargetDragEvent)      */
+annotation|@
+name|Override
 DECL|method|dropActionChanged (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -301,6 +311,8 @@ name|dtde
 parameter_list|)
 block|{     }
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragExit(java.awt.dnd.DropTargetEvent)      */
+annotation|@
+name|Override
 DECL|method|dragExit (DropTargetEvent dte)
 specifier|public
 name|void
@@ -318,11 +330,13 @@ name|JOptionChoice
 block|{
 DECL|field|label
 specifier|private
+specifier|final
 name|String
 name|label
 decl_stmt|;
 DECL|field|id
 specifier|private
+specifier|final
 name|int
 name|id
 decl_stmt|;
@@ -346,6 +360,8 @@ operator|=
 name|_id
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -368,6 +384,8 @@ return|;
 block|}
 block|}
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#drop(java.awt.dnd.DropTargetDropEvent)      */
+annotation|@
+name|Override
 DECL|method|drop (DropTargetDropEvent dtde)
 specifier|public
 name|void
@@ -417,6 +435,8 @@ name|ClassNotFoundException
 name|e
 parameter_list|)
 block|{
+name|UrlDragDrop
+operator|.
 name|logger
 operator|.
 name|log
@@ -657,6 +677,8 @@ name|IOException
 name|ioex
 parameter_list|)
 block|{
+name|UrlDragDrop
+operator|.
 name|logger
 operator|.
 name|log
@@ -719,6 +741,8 @@ name|IOException
 name|ioex
 parameter_list|)
 block|{
+name|UrlDragDrop
+operator|.
 name|logger
 operator|.
 name|log
@@ -864,6 +888,8 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+name|UrlDragDrop
+operator|.
 name|logger
 operator|.
 name|log
@@ -884,6 +910,8 @@ name|IOException
 name|ioex
 parameter_list|)
 block|{
+name|UrlDragDrop
+operator|.
 name|logger
 operator|.
 name|log

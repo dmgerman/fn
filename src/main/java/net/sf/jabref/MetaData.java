@@ -58,6 +58,8 @@ name|jabref
 operator|.
 name|groups
 operator|.
+name|migrations
+operator|.
 name|VersionHandling
 import|;
 end_import
@@ -87,6 +89,20 @@ operator|.
 name|sql
 operator|.
 name|DBStrings
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -121,6 +137,7 @@ literal|"keypatterndefault"
 decl_stmt|;
 DECL|field|metaData
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -143,11 +160,6 @@ name|String
 argument_list|>
 argument_list|>
 argument_list|()
-decl_stmt|;
-DECL|field|data
-specifier|private
-name|StringReader
-name|data
 decl_stmt|;
 DECL|field|groupsRoot
 specifier|private
@@ -238,6 +250,7 @@ name|inData
 operator|!=
 literal|null
 condition|)
+block|{
 for|for
 control|(
 name|String
@@ -249,8 +262,9 @@ name|keySet
 argument_list|()
 control|)
 block|{
+name|StringReader
 name|data
-operator|=
+init|=
 operator|new
 name|StringReader
 argument_list|(
@@ -261,7 +275,7 @@ argument_list|(
 name|key
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|String
 name|unit
 decl_stmt|;
@@ -339,6 +353,7 @@ argument_list|()
 operator|>=
 literal|1
 condition|)
+block|{
 name|groupsVersionOnDisk
 operator|=
 name|Integer
@@ -351,6 +366,7 @@ name|firstElement
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -402,11 +418,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|// this possibly handles import of a previous groups version
 if|if
 condition|(
 name|groupsTreePresent
 condition|)
+block|{
 name|putGroups
 argument_list|(
 name|treeGroupsData
@@ -416,14 +434,17 @@ argument_list|,
 name|groupsVersionOnDisk
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
 name|groupsTreePresent
 operator|&&
+operator|(
 name|flatGroupsData
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 try|try
@@ -560,6 +581,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @return Iterator on all keys stored in the metadata      */
+annotation|@
+name|Override
 DECL|method|iterator ()
 specifier|public
 name|Iterator
@@ -670,7 +693,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"userFileDirIndividual"
+name|JabRefPreferences
+operator|.
+name|USER_FILE_DIR_INDIVIDUAL
 argument_list|)
 decl_stmt|;
 name|List
@@ -712,7 +737,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"userFileDir"
+name|JabRefPreferences
+operator|.
+name|USER_FILE_DIR
 argument_list|)
 expr_stmt|;
 name|vec
@@ -832,10 +859,12 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 name|dir
 operator|=
 name|relDir
 expr_stmt|;
+block|}
 block|}
 name|dirs
 operator|.
@@ -867,6 +896,7 @@ name|dir
 operator|!=
 literal|null
 condition|)
+block|{
 name|dirs
 operator|.
 name|add
@@ -874,6 +904,7 @@ argument_list|(
 name|dir
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Check if the bib file location should be included, and if so, if it is set:
 if|if
@@ -884,13 +915,17 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"bibLocationAsFileDir"
+name|JabRefPreferences
+operator|.
+name|BIB_LOCATION_AS_FILE_DIR
 argument_list|)
 operator|&&
+operator|(
 name|getFile
 argument_list|()
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// Check if we should add it as primary file dir (first in the list) or not:
@@ -902,9 +937,12 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"bibLocAsPrimaryDir"
+name|JabRefPreferences
+operator|.
+name|BIB_LOC_AS_PRIMARY_DIR
 argument_list|)
 condition|)
+block|{
 name|dirs
 operator|.
 name|add
@@ -918,7 +956,9 @@ name|getParent
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|dirs
 operator|.
 name|add
@@ -930,6 +970,7 @@ name|getParent
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|dirs
@@ -1050,15 +1091,30 @@ throws|throws
 name|IOException
 block|{
 comment|// write all meta data except groups
+name|SortedSet
+argument_list|<
+name|String
+argument_list|>
+name|sortedKeys
+init|=
+operator|new
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
+argument_list|(
+name|metaData
+operator|.
+name|keySet
+argument_list|()
+argument_list|)
+decl_stmt|;
 for|for
 control|(
 name|String
 name|key
 range|:
-name|metaData
-operator|.
-name|keySet
-argument_list|()
+name|sortedKeys
 control|)
 block|{
 name|StringBuffer
@@ -1081,16 +1137,6 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|orderedData
-operator|.
-name|size
-argument_list|()
-operator|>=
-literal|0
-condition|)
-block|{
 name|sb
 operator|.
 name|append
@@ -1137,7 +1183,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -1167,7 +1213,6 @@ argument_list|(
 literal|"}"
 argument_list|)
 expr_stmt|;
-block|}
 name|wrapStringBuffer
 argument_list|(
 name|sb
@@ -1210,16 +1255,20 @@ comment|// write groups if present. skip this if only the root node exists
 comment|// (which is always the AllEntriesGroup).
 if|if
 condition|(
+operator|(
 name|groupsRoot
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|groupsRoot
 operator|.
 name|getChildCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|StringBuffer
@@ -1363,7 +1412,7 @@ init|=
 operator|new
 name|StringBuffer
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -1511,11 +1560,11 @@ name|escape
 init|=
 literal|false
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|res
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 while|while
@@ -1599,12 +1648,14 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 return|return
 name|res
 operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 return|return
 literal|null
 return|;
@@ -1722,6 +1773,8 @@ name|key
 operator|.
 name|startsWith
 argument_list|(
+name|MetaData
+operator|.
 name|PREFIX_KEYPATTERN
 argument_list|)
 condition|)
@@ -1744,6 +1797,8 @@ name|key
 operator|.
 name|substring
 argument_list|(
+name|MetaData
+operator|.
 name|PREFIX_KEYPATTERN
 operator|.
 name|length
@@ -1774,6 +1829,8 @@ name|defaultPattern
 init|=
 name|getData
 argument_list|(
+name|MetaData
+operator|.
 name|KEYPATTERNDEFAULT
 argument_list|)
 decl_stmt|;
@@ -1845,6 +1902,8 @@ name|key
 operator|.
 name|startsWith
 argument_list|(
+name|MetaData
+operator|.
 name|PREFIX_KEYPATTERN
 argument_list|)
 condition|)
@@ -1871,6 +1930,8 @@ block|{
 name|String
 name|metaDataKey
 init|=
+name|MetaData
+operator|.
 name|PREFIX_KEYPATTERN
 operator|+
 name|key
@@ -1946,6 +2007,8 @@ name|this
 operator|.
 name|remove
 argument_list|(
+name|MetaData
+operator|.
 name|KEYPATTERNDEFAULT
 argument_list|)
 expr_stmt|;
@@ -1984,6 +2047,8 @@ name|this
 operator|.
 name|putData
 argument_list|(
+name|MetaData
+operator|.
 name|KEYPATTERNDEFAULT
 argument_list|,
 name|data

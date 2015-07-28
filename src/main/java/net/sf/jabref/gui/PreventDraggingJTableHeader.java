@@ -82,6 +82,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|specialfields
 operator|.
 name|SpecialFieldsUtils
@@ -94,7 +106,6 @@ end_comment
 
 begin_class
 DECL|class|PreventDraggingJTableHeader
-specifier|public
 class|class
 name|PreventDraggingJTableHeader
 extends|extends
@@ -153,6 +164,8 @@ comment|// to be safe, we keep this call nevertheless
 comment|// (this is the null check for getHeaderValue())
 if|if
 condition|(
+name|PreventDraggingJTableHeader
+operator|.
 name|isUnnamed
 argument_list|(
 name|column
@@ -254,6 +267,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|PreventDraggingJTableHeader
+operator|.
 name|preventDragBeforeIndex
 argument_list|(
 name|this
@@ -295,7 +310,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"fileColumn"
+name|JabRefPreferences
+operator|.
+name|FILE_COLUMN
 argument_list|)
 condition|)
 block|{
@@ -311,7 +328,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"pdfColumn"
+name|JabRefPreferences
+operator|.
+name|PDF_COLUMN
 argument_list|)
 condition|)
 block|{
@@ -327,7 +346,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"urlColumn"
+name|JabRefPreferences
+operator|.
+name|URL_COLUMN
 argument_list|)
 condition|)
 block|{
@@ -343,7 +364,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"arxivColumn"
+name|JabRefPreferences
+operator|.
+name|ARXIV_COLUMN
 argument_list|)
 condition|)
 block|{
@@ -359,7 +382,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"extraFileColumns"
+name|JabRefPreferences
+operator|.
+name|EXTRA_FILE_COLUMNS
 argument_list|)
 condition|)
 block|{
@@ -371,7 +396,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"listOfFileColumns"
+name|JabRefPreferences
+operator|.
+name|LIST_OF_FILE_COLUMNS
 argument_list|)
 operator|.
 name|length
@@ -405,9 +432,11 @@ operator|.
 name|PREF_SHOWCOLUMN_RANKING
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -421,9 +450,11 @@ operator|.
 name|PREF_SHOWCOLUMN_RELEVANCE
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -437,9 +468,11 @@ operator|.
 name|PREF_SHOWCOLUMN_QUALITY
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -453,9 +486,11 @@ operator|.
 name|PREF_SHOWCOLUMN_PRIORITY
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -469,9 +504,11 @@ operator|.
 name|PREF_SHOWCOLUMN_PRINTED
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -485,9 +522,11 @@ operator|.
 name|PREF_SHOWCOLUMN_READ
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 block|}
 return|return
 name|count
@@ -504,17 +543,15 @@ name|column
 parameter_list|)
 block|{
 return|return
+operator|(
 name|column
 operator|.
 name|getHeaderValue
 argument_list|()
 operator|==
 literal|null
+operator|)
 operator|||
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|column
 operator|.
 name|getHeaderValue
@@ -522,7 +559,19 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
-argument_list|)
+operator|!=
+literal|null
+operator|&&
+name|column
+operator|.
+name|getHeaderValue
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
 return|;
 block|}
 comment|/**      * Transform model index<code>mColIndex</code> to a view based index and      * prevent dragging before model index<code>toIndex</code> (inclusive).      */
@@ -577,16 +626,20 @@ comment|// found the element in the view ...
 comment|// ... and check if it should not be dragged
 if|if
 condition|(
+operator|(
 name|col
 operator|.
 name|getModelIndex
 argument_list|()
 operator|==
 name|mColIndex
+operator|)
 operator|&&
+operator|(
 name|c
 operator|<=
 name|toIndex
+operator|)
 condition|)
 block|{
 comment|// Util.pr("prevented! viewIndex = " + c + " modelIndex = "

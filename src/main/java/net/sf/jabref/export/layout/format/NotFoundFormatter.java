@@ -62,6 +62,7 @@ name|LayoutFormatter
 block|{
 DECL|field|notFound
 specifier|private
+specifier|final
 name|String
 name|notFound
 decl_stmt|;
@@ -90,6 +91,8 @@ return|return
 name|notFound
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -100,7 +103,7 @@ name|fieldText
 parameter_list|)
 block|{
 return|return
-literal|"["
+literal|'['
 operator|+
 name|Globals
 operator|.

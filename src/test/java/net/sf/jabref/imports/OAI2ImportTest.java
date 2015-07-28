@@ -44,7 +44,17 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|IdGenerator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
 import|;
 end_import
 
@@ -114,32 +124,8 @@ name|SAXParserFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
 begin_comment
-comment|/**  * Test for OAI2-Handler and Fetcher.  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  * @version $Revision$ ($Date$)  */
+comment|/**  * Test for OAI2-Handler and Fetcher.  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  */
 end_comment
 
 begin_class
@@ -195,9 +181,9 @@ operator|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|,
 name|BibtexEntryType
@@ -225,6 +211,8 @@ name|void
 name|testCorrectLineBreaks
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Test this"
@@ -237,6 +225,8 @@ literal|"Test\nthis"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Test this"
@@ -249,6 +239,8 @@ literal|"Test \n this"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Test\nthis"
@@ -261,6 +253,8 @@ literal|"Test\n\nthis"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Test\nthis"
@@ -273,6 +267,8 @@ literal|"Test\n    \nthis"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Test\nthis"
@@ -315,6 +311,8 @@ argument_list|,
 name|handler
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"hep-ph/0408155"
@@ -327,6 +325,8 @@ literal|"eprint"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"G. F. Giudice and A. Riotto and A. Zaffaroni and J. LÃ³pez-PeÃ±a"
@@ -339,6 +339,8 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Nucl.Phys. B"
@@ -351,6 +353,8 @@ literal|"journal"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"710"
@@ -363,6 +367,8 @@ literal|"volume"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2005"
@@ -375,6 +381,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"511-525"
@@ -389,6 +397,8 @@ argument_list|)
 expr_stmt|;
 comment|// Citekey is only generated if the user says so in the import
 comment|// inspection dialog.
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|null
@@ -399,6 +409,8 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Heavy Particles from Inflation"
@@ -411,6 +423,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|be
@@ -421,6 +435,8 @@ literal|"abstract"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"23 pages"
@@ -433,6 +449,8 @@ literal|"comments"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"CERN-PH-TH/2004-151"
@@ -489,6 +507,8 @@ argument_list|,
 name|handler
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2005"
@@ -545,6 +565,8 @@ argument_list|,
 name|handler
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Javier LÃ³pez PeÃ±a and Gabriel Navarro"
@@ -587,6 +609,8 @@ operator|new
 name|OAI2Fetcher
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"http://export.arxiv.org/oai2?verb=GetRecord&identifier=oai%3AarXiv.org%3Ahep-ph%2F0408155&metadataPrefix=arXiv"
@@ -599,6 +623,8 @@ literal|"hep-ph/0408155"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"http://export.arxiv.org/oai2?verb=GetRecord&identifier=oai%3AarXiv.org%3Amath%2F0612188&metadataPrefix=arXiv"
@@ -620,6 +646,8 @@ name|void
 name|testFixKey
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -632,6 +660,8 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -644,6 +674,8 @@ literal|"test"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"math/0601001"
@@ -656,6 +688,8 @@ literal|"math.RA/0601001"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"math/0601001"
@@ -668,6 +702,8 @@ literal|"math.QA/0601001"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"hep-ph/0408155"
@@ -680,6 +716,8 @@ literal|"hep-ph/0408155"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"0709.3040v1"
@@ -692,6 +730,8 @@ literal|"arXiv:0709.3040v1"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -734,11 +774,15 @@ argument_list|(
 literal|"math.RA/0612188"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"math/0612188"
@@ -751,6 +795,8 @@ literal|"eprint"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"On the classification and properties of noncommutative duplicates"
@@ -763,6 +809,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Javier LÃ³pez PeÃ±a and Gabriel Navarro"
@@ -775,6 +823,8 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2007"
@@ -812,11 +862,15 @@ argument_list|(
 literal|"astro-ph/0702080"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"astro-ph/0702080"
@@ -829,6 +883,8 @@ literal|"eprint"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Magnetized Hypermassive Neutron Star Collapse: a candidate central engine for short-hard GRBs"
@@ -866,11 +922,15 @@ argument_list|(
 literal|"math.QA/0601001"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"math/0601001"
@@ -908,11 +968,15 @@ argument_list|(
 literal|"hep-ph/0408155"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"hep-ph/0408155"
@@ -950,11 +1014,15 @@ argument_list|(
 literal|"0709.3040"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2007"
@@ -967,6 +1035,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#sep#"

@@ -292,6 +292,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
 name|Util
 import|;
 end_import
@@ -316,6 +318,7 @@ name|AbstractTableModel
 block|{
 DECL|field|columnNames
 specifier|private
+specifier|final
 name|String
 index|[]
 name|columnNames
@@ -389,6 +392,8 @@ name|zipFile
 expr_stmt|;
 block|}
 comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getColumnCount()          */
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -402,6 +407,8 @@ name|length
 return|;
 block|}
 comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getRowCount()          */
+annotation|@
+name|Override
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -417,6 +424,8 @@ name|length
 return|;
 block|}
 comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getColumnName(int)          */
+annotation|@
+name|Override
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -466,6 +475,8 @@ name|zipFile
 return|;
 block|}
 comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getValueAt(int, int)          */
+annotation|@
+name|Override
 DECL|method|getValueAt (int rowIndex, int columnIndex)
 specifier|public
 name|Object
@@ -558,12 +569,14 @@ block|}
 comment|/** table of Zip entries */
 DECL|field|table
 specifier|private
+specifier|final
 name|JTable
 name|table
 decl_stmt|;
 comment|/** shortcut to preferences */
 DECL|field|prefs
 specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
 init|=
@@ -574,16 +587,20 @@ decl_stmt|;
 comment|/** this */
 DECL|field|zipFileChooser
 specifier|private
+specifier|final
 name|ZipFileChooser
 name|zipFileChooser
 decl_stmt|;
 comment|/** import customization dialog, owner of this dialog */
 DECL|field|importCustomizationDialog
 specifier|private
+specifier|final
 name|ImportCustomizationDialog
 name|importCustomizationDialog
 decl_stmt|;
 comment|/*      *  (non-Javadoc)      * @see java.awt.Component#getSize()      */
+annotation|@
+name|Override
 DECL|method|getSize ()
 specifier|public
 name|Dimension
@@ -760,6 +777,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -798,6 +817,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

@@ -28,6 +28,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
 name|MonthUtil
 import|;
 end_import
@@ -56,6 +58,8 @@ name|RisMonth
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String month)
 specifier|public
 name|String
@@ -71,9 +75,11 @@ name|month
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|MonthUtil
 operator|.
 name|Month

@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Create DocBook editors formatter.  *  * @author $author$  * @version $Revision$  */
+comment|/**  * Create DocBook editors formatter.  */
 end_comment
 
 begin_class
@@ -128,7 +128,8 @@ name|CreateDocBookEditors
 extends|extends
 name|CreateDocBookAuthors
 block|{
-comment|//~ Methods ////////////////////////////////////////////////////////////////
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -176,18 +177,6 @@ return|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 

@@ -162,6 +162,7 @@ name|AuxSubGenerator
 block|{
 DECL|field|mySet
 specifier|private
+specifier|final
 name|HashSet
 argument_list|<
 name|String
@@ -171,6 +172,7 @@ decl_stmt|;
 comment|// all unique bibtex keys in aux file
 DECL|field|notFoundList
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|String
@@ -238,8 +240,7 @@ name|refDBase
 expr_stmt|;
 block|}
 DECL|method|setReferenceDatabase (BibtexDatabase newRefDB)
-specifier|public
-specifier|final
+specifier|private
 name|void
 name|setReferenceDatabase
 parameter_list|(
@@ -281,8 +282,7 @@ comment|//
 comment|// \\bibcite{x}{y}
 comment|//   x is a label for an item and y is the index in bibliography
 DECL|method|parseAuxFile (String filename)
-specifier|public
-specifier|final
+specifier|private
 name|boolean
 name|parseAuxFile
 parameter_list|(
@@ -300,8 +300,6 @@ decl_stmt|;
 comment|// while condition
 name|boolean
 name|weiter
-init|=
-literal|false
 decl_stmt|;
 comment|// return value -> default: no error
 name|boolean
@@ -312,8 +310,6 @@ decl_stmt|;
 comment|// fileopen status
 name|boolean
 name|loopFileOpen
-init|=
-literal|false
 decl_stmt|;
 comment|// the important tag
 name|pattern
@@ -378,6 +374,7 @@ name|path
 operator|!=
 literal|null
 condition|)
+block|{
 name|path
 operator|=
 name|path
@@ -386,11 +383,14 @@ name|File
 operator|.
 name|separator
 expr_stmt|;
+block|}
 else|else
+block|{
 name|path
 operator|=
 literal|""
 expr_stmt|;
+block|}
 name|nestedAuxCounter
 operator|=
 operator|-
@@ -728,10 +728,12 @@ block|}
 block|}
 comment|// line != null
 else|else
+block|{
 name|weiter
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 comment|// end of while
 if|if
@@ -769,8 +771,7 @@ return|;
 block|}
 comment|/**      * resolveTags      * Try to find an equivalent bibtex entry into reference database for all keys      * (found in aux file). This methode will fill up some intern data structures.....      */
 DECL|method|resolveTags ()
-specifier|public
-specifier|final
+specifier|private
 name|void
 name|resolveTags
 parameter_list|()
@@ -995,9 +996,9 @@ name|clonedEntry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1068,12 +1069,14 @@ name|auxDB
 operator|==
 literal|null
 condition|)
+block|{
 name|auxDB
 operator|=
 operator|new
 name|BibtexDatabase
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|auxDB
 return|;

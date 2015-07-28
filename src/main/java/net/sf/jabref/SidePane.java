@@ -65,7 +65,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The side pane is displayed at the right side of JabRef and shows instances of  * SidePaneComponents, for instance the GroupSelector, or the SearchManager2.  *   * @version $Revision$ ($Date$)  *   */
+comment|/**  * The side pane is displayed at the right side of JabRef and shows instances of  * SidePaneComponents, for instance the GroupSelector, or the SearchManager2.  */
 end_comment
 
 begin_class
@@ -77,6 +77,7 @@ extends|extends
 name|JPanel
 block|{
 DECL|field|PREFERRED_SIZE
+specifier|private
 specifier|final
 name|Dimension
 name|PREFERRED_SIZE
@@ -92,6 +93,8 @@ literal|100
 argument_list|)
 decl_stmt|;
 DECL|field|gridBagLayout
+specifier|private
+specifier|final
 name|GridBagLayout
 name|gridBagLayout
 init|=
@@ -100,6 +103,8 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|constraint
+specifier|private
+specifier|final
 name|GridBagConstraints
 name|constraint
 init|=
@@ -108,6 +113,8 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|mainPanel
+specifier|private
+specifier|final
 name|JPanel
 name|mainPanel
 init|=
@@ -309,6 +316,8 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|remove (Component c)
 specifier|public
 name|void
@@ -326,6 +335,8 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getMaximumSize ()
 specifier|public
 name|Dimension
@@ -337,6 +348,8 @@ name|getPreferredSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getPreferredSize ()
 specifier|public
 name|Dimension

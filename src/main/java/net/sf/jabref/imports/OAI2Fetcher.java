@@ -156,6 +156,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|MonthUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|xml
@@ -181,7 +195,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *   * @author Ulrich St&auml;rk  * @author Christian Kopf  *   * @version $Revision$ ($Date$)  *   */
+comment|/**  *   * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *   * @author Ulrich St&auml;rk  * @author Christian Kopf  */
 end_comment
 
 begin_class
@@ -193,7 +207,7 @@ implements|implements
 name|EntryFetcher
 block|{
 DECL|field|OAI2_ARXIV_PREFIXIDENTIFIER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -202,7 +216,7 @@ init|=
 literal|"oai%3AarXiv.org%3A"
 decl_stmt|;
 DECL|field|OAI2_ARXIV_HOST
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -211,7 +225,7 @@ init|=
 literal|"export.arxiv.org"
 decl_stmt|;
 DECL|field|OAI2_ARXIV_SCRIPT
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -220,7 +234,7 @@ init|=
 literal|"oai2"
 decl_stmt|;
 DECL|field|OAI2_ARXIV_METADATAPREFIX
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -229,7 +243,7 @@ init|=
 literal|"arXiv"
 decl_stmt|;
 DECL|field|OAI2_ARXIV_ARCHIVENAME
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -238,18 +252,13 @@ init|=
 literal|"ArXiv.org"
 decl_stmt|;
 DECL|field|OAI2_IDENTIFIER_FIELD
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
 name|OAI2_IDENTIFIER_FIELD
 init|=
 literal|"oai2identifier"
-decl_stmt|;
-DECL|field|parserFactory
-specifier|private
-name|SAXParserFactory
-name|parserFactory
 decl_stmt|;
 DECL|field|saxParser
 specifier|private
@@ -258,26 +267,31 @@ name|saxParser
 decl_stmt|;
 DECL|field|oai2Host
 specifier|private
+specifier|final
 name|String
 name|oai2Host
 decl_stmt|;
 DECL|field|oai2Script
 specifier|private
+specifier|final
 name|String
 name|oai2Script
 decl_stmt|;
 DECL|field|oai2MetaDataPrefix
 specifier|private
+specifier|final
 name|String
 name|oai2MetaDataPrefix
 decl_stmt|;
 DECL|field|oai2PrefixIdentifier
 specifier|private
+specifier|final
 name|String
 name|oai2PrefixIdentifier
 decl_stmt|;
 DECL|field|oai2ArchiveName
 specifier|private
+specifier|final
 name|String
 name|oai2ArchiveName
 decl_stmt|;
@@ -381,13 +395,14 @@ name|waitTimeMs
 expr_stmt|;
 try|try
 block|{
+name|SAXParserFactory
 name|parserFactory
-operator|=
+init|=
 name|SAXParserFactory
 operator|.
 name|newInstance
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|saxParser
 operator|=
 name|parserFactory
@@ -429,14 +444,24 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
+name|OAI2Fetcher
+operator|.
 name|OAI2_ARXIV_HOST
 argument_list|,
+name|OAI2Fetcher
+operator|.
 name|OAI2_ARXIV_SCRIPT
 argument_list|,
+name|OAI2Fetcher
+operator|.
 name|OAI2_ARXIV_METADATAPREFIX
 argument_list|,
+name|OAI2Fetcher
+operator|.
 name|OAI2_ARXIV_PREFIXIDENTIFIER
 argument_list|,
+name|OAI2Fetcher
+operator|.
 name|OAI2_ARXIV_ARCHIVENAME
 argument_list|,
 literal|20000L
@@ -455,8 +480,6 @@ parameter_list|)
 block|{
 name|String
 name|identifier
-init|=
-literal|""
 decl_stmt|;
 try|try
 block|{
@@ -562,14 +585,18 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|dot
 operator|>
 operator|-
 literal|1
+operator|)
 operator|&&
+operator|(
 name|dot
 operator|<
 name|slash
+operator|)
 condition|)
 block|{
 name|key
@@ -663,6 +690,8 @@ block|{
 comment|/**          * Fix for problem reported in mailing-list:           *   https://sourceforge.net/forum/message.php?msg_id=4087158          */
 name|key
 operator|=
+name|OAI2Fetcher
+operator|.
 name|fixKey
 argument_list|(
 name|key
@@ -722,9 +751,9 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|,
 name|BibtexEntryType
@@ -736,6 +765,8 @@ name|be
 operator|.
 name|setField
 argument_list|(
+name|OAI2Fetcher
+operator|.
 name|OAI2_IDENTIFIER_FIELD
 argument_list|,
 name|key
@@ -1008,6 +1039,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -1019,21 +1052,8 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -1044,6 +1064,8 @@ return|return
 name|oai2ArchiveName
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -1055,6 +1077,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -1071,6 +1095,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
 name|boolean
@@ -1152,9 +1178,11 @@ condition|(
 name|shouldWait
 argument_list|()
 operator|&&
+operator|(
 name|lastCall
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|long
@@ -1341,6 +1369,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void

@@ -48,6 +48,8 @@ name|CROSS_REF_FIELD
 init|=
 literal|"crossref"
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int
@@ -69,6 +71,8 @@ name|e1
 operator|.
 name|getField
 argument_list|(
+name|CrossRefEntryComparator
+operator|.
 name|CROSS_REF_FIELD
 argument_list|)
 decl_stmt|,
@@ -78,6 +82,8 @@ name|e2
 operator|.
 name|getField
 argument_list|(
+name|CrossRefEntryComparator
+operator|.
 name|CROSS_REF_FIELD
 argument_list|)
 decl_stmt|;
@@ -95,10 +101,12 @@ operator|==
 literal|null
 operator|)
 condition|)
+block|{
 return|return
 literal|0
 return|;
 comment|// secComparator.compare(e1, e2);
+block|}
 if|if
 condition|(
 operator|(
@@ -113,24 +121,30 @@ operator|!=
 literal|null
 operator|)
 condition|)
+block|{
 return|return
 literal|0
 return|;
 comment|// secComparator.compare(e1, e2);
+block|}
 if|if
 condition|(
 name|f1
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 operator|-
 literal|1
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|1
 return|;
+block|}
 block|}
 block|}
 end_class
