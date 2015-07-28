@@ -24,7 +24,7 @@ name|search
 operator|.
 name|rules
 operator|.
-name|BasicRegexSearchRule
+name|RegexBasedSearchRule
 import|;
 end_import
 
@@ -40,7 +40,7 @@ name|search
 operator|.
 name|rules
 operator|.
-name|BasicSearchRule
+name|ContainBasedSearchRule
 import|;
 end_import
 
@@ -56,7 +56,7 @@ name|search
 operator|.
 name|rules
 operator|.
-name|SearchExpression
+name|GrammarBasedSearchRule
 import|;
 end_import
 
@@ -89,7 +89,7 @@ name|SearchRule
 name|searchExpression
 init|=
 operator|new
-name|SearchExpression
+name|GrammarBasedSearchRule
 argument_list|(
 name|caseSensitive
 argument_list|,
@@ -142,7 +142,7 @@ condition|)
 block|{
 return|return
 operator|new
-name|BasicRegexSearchRule
+name|RegexBasedSearchRule
 argument_list|(
 name|caseSensitive
 argument_list|)
@@ -152,7 +152,7 @@ else|else
 block|{
 return|return
 operator|new
-name|BasicSearchRule
+name|ContainBasedSearchRule
 argument_list|(
 name|caseSensitive
 argument_list|)
