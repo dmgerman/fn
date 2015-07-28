@@ -20,13 +20,13 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
 operator|.
-name|undo
+name|jabref
 operator|.
-name|AbstractUndoableEdit
+name|BibtexDatabase
 import|;
 end_import
 
@@ -38,7 +38,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|BibtexEntry
 import|;
 end_import
 
@@ -50,11 +50,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|search
-operator|.
-name|describer
-operator|.
-name|BasicSearchDescriber
+name|Globals
 import|;
 end_import
 
@@ -66,27 +62,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|search
-operator|.
-name|describer
-operator|.
-name|SearchExpressionDescriber
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|search
-operator|.
-name|rules
-operator|.
-name|RegExpSearchRule
+name|JabRefPreferences
 import|;
 end_import
 
@@ -114,9 +90,7 @@ name|jabref
 operator|.
 name|search
 operator|.
-name|rules
-operator|.
-name|SearchExpression
+name|SearchRules
 import|;
 end_import
 
@@ -130,9 +104,9 @@ name|jabref
 operator|.
 name|search
 operator|.
-name|rules
+name|describer
 operator|.
-name|SimpleSearchRule
+name|SearchDescribers
 import|;
 end_import
 
@@ -161,6 +135,18 @@ operator|.
 name|util
 operator|.
 name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|AbstractUndoableEdit
 import|;
 end_import
 
@@ -203,18 +189,11 @@ specifier|final
 name|boolean
 name|regExp
 decl_stmt|;
-comment|/**      * If searchExpression is in valid syntax for advanced search,<b>this      *</b> will do the search; otherwise, either<b>RegExpSearchRule</b> or      *<b>SimpleSearchRule</b> will be used.      */
 DECL|field|searchRule
 specifier|private
 specifier|final
 name|SearchRule
 name|searchRule
-decl_stmt|;
-DECL|field|expressionSearchRule
-specifier|private
-specifier|final
-name|SearchExpression
-name|expressionSearchRule
 decl_stmt|;
 comment|/**      * Creates a SearchGroup with the specified properties.      */
 DECL|method|SearchGroup (String name, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context)
@@ -262,67 +241,21 @@ name|regExp
 operator|=
 name|regExp
 expr_stmt|;
-comment|// TODO why use other search rules instead of "normal" search in JabRef. This WILL cause confusion!
-name|expressionSearchRule
+name|this
+operator|.
+name|searchRule
 operator|=
-operator|new
-name|SearchExpression
+name|SearchRules
+operator|.
+name|getSearchRuleByQuery
 argument_list|(
+name|searchExpression
+argument_list|,
 name|caseSensitive
 argument_list|,
 name|regExp
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|expressionSearchRule
-operator|.
-name|validateSearchStrings
-argument_list|(
-name|this
-operator|.
-name|searchExpression
-argument_list|)
-condition|)
-block|{
-name|searchRule
-operator|=
-name|expressionSearchRule
-expr_stmt|;
-comment|// do advanced search
-block|}
-elseif|else
-if|if
-condition|(
-name|this
-operator|.
-name|regExp
-condition|)
-block|{
-name|searchRule
-operator|=
-operator|new
-name|RegExpSearchRule
-argument_list|(
-name|this
-operator|.
-name|caseSensitive
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|searchRule
-operator|=
-operator|new
-name|SimpleSearchRule
-argument_list|(
-name|this
-operator|.
-name|caseSensitive
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Parses s and recreates the SearchGroup from it.      *      * @param s The String representation obtained from      *          SearchGroup.toString(), or null if incompatible      */
 DECL|method|fromString (String s, BibtexDatabase db, int version)
@@ -1015,43 +948,12 @@ name|String
 name|getDescription
 parameter_list|()
 block|{
-if|if
-condition|(
-name|expressionSearchRule
-operator|.
-name|getTree
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
 return|return
-operator|new
-name|SearchExpressionDescriber
-argument_list|(
-name|caseSensitive
-argument_list|,
-name|regExp
-argument_list|,
-name|expressionSearchRule
+name|SearchDescribers
 operator|.
-name|getTree
-argument_list|()
-argument_list|)
-operator|.
-name|getDescription
-argument_list|()
-return|;
-block|}
-else|else
-block|{
-return|return
-operator|new
-name|BasicSearchDescriber
+name|getSearchDescriberFor
 argument_list|(
-name|caseSensitive
-argument_list|,
-name|regExp
+name|searchRule
 argument_list|,
 name|searchExpression
 argument_list|)
@@ -1059,7 +961,6 @@ operator|.
 name|getDescription
 argument_list|()
 return|;
-block|}
 block|}
 annotation|@
 name|Override

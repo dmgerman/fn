@@ -80,7 +80,7 @@ name|search
 operator|.
 name|rules
 operator|.
-name|SearchExpression
+name|GrammarBasedSearchRule
 import|;
 end_import
 
@@ -127,10 +127,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|SearchExpressionDescriber
+DECL|class|GrammarBasedSearchRuleDescriber
 specifier|public
 class|class
-name|SearchExpressionDescriber
+name|GrammarBasedSearchRuleDescriber
 implements|implements
 name|SearchDescriber
 block|{
@@ -152,9 +152,9 @@ specifier|final
 name|ParseTree
 name|parseTree
 decl_stmt|;
-DECL|method|SearchExpressionDescriber (boolean caseSensitive, boolean regExp, ParseTree parseTree)
+DECL|method|GrammarBasedSearchRuleDescriber (boolean caseSensitive, boolean regExp, ParseTree parseTree)
 specifier|public
-name|SearchExpressionDescriber
+name|GrammarBasedSearchRuleDescriber
 parameter_list|(
 name|boolean
 name|caseSensitive
@@ -457,12 +457,12 @@ literal|'"'
 argument_list|)
 decl_stmt|;
 specifier|final
-name|SearchExpression
+name|GrammarBasedSearchRule
 operator|.
 name|ComparisonOperator
 name|operator
 init|=
-name|SearchExpression
+name|GrammarBasedSearchRule
 operator|.
 name|ComparisonOperator
 operator|.
@@ -539,7 +539,7 @@ if|if
 condition|(
 name|operator
 operator|==
-name|SearchExpression
+name|GrammarBasedSearchRule
 operator|.
 name|ComparisonOperator
 operator|.
@@ -582,7 +582,7 @@ if|if
 condition|(
 name|operator
 operator|==
-name|SearchExpression
+name|GrammarBasedSearchRule
 operator|.
 name|ComparisonOperator
 operator|.
@@ -625,7 +625,7 @@ if|if
 condition|(
 name|operator
 operator|==
-name|SearchExpression
+name|GrammarBasedSearchRule
 operator|.
 name|ComparisonOperator
 operator|.

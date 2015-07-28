@@ -16,6 +16,24 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|search
+operator|.
+name|rules
+operator|.
+name|util
+operator|.
+name|SentenceAnalyzer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -84,8 +102,6 @@ literal|"b"
 argument_list|)
 argument_list|,
 operator|new
-name|BasicSearchRule
-operator|.
 name|SentenceAnalyzer
 argument_list|(
 literal|"a b"
@@ -107,8 +123,6 @@ literal|"b"
 argument_list|)
 argument_list|,
 operator|new
-name|BasicSearchRule
-operator|.
 name|SentenceAnalyzer
 argument_list|(
 literal|" a b "
@@ -128,8 +142,6 @@ literal|"b "
 argument_list|)
 argument_list|,
 operator|new
-name|BasicSearchRule
-operator|.
 name|SentenceAnalyzer
 argument_list|(
 literal|"\"b \" "
@@ -149,8 +161,6 @@ literal|" a"
 argument_list|)
 argument_list|,
 operator|new
-name|BasicSearchRule
-operator|.
 name|SentenceAnalyzer
 argument_list|(
 literal|" \\ a"

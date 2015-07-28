@@ -156,11 +156,15 @@ name|Pattern
 import|;
 end_import
 
+begin_comment
+comment|/**  * The search query must be specified in an expression that is acceptable by the Search.g4 grammar.  */
+end_comment
+
 begin_class
-DECL|class|SearchExpression
+DECL|class|GrammarBasedSearchRule
 specifier|public
 class|class
-name|SearchExpression
+name|GrammarBasedSearchRule
 implements|implements
 name|SearchRule
 block|{
@@ -257,9 +261,9 @@ specifier|private
 name|String
 name|query
 decl_stmt|;
-DECL|method|SearchExpression (boolean caseSensitiveSearch, boolean regExpSearch)
+DECL|method|GrammarBasedSearchRule (boolean caseSensitiveSearch, boolean regExpSearch)
 specifier|public
-name|SearchExpression
+name|GrammarBasedSearchRule
 parameter_list|(
 name|boolean
 name|caseSensitiveSearch
@@ -301,7 +305,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|SearchExpression
+name|GrammarBasedSearchRule
 argument_list|(
 name|caseSensitive
 argument_list|,

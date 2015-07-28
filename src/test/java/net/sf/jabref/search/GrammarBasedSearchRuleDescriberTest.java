@@ -24,7 +24,7 @@ name|search
 operator|.
 name|describer
 operator|.
-name|SearchExpressionDescriber
+name|GrammarBasedSearchRuleDescriber
 import|;
 end_import
 
@@ -40,7 +40,7 @@ name|search
 operator|.
 name|rules
 operator|.
-name|SearchExpression
+name|GrammarBasedSearchRule
 import|;
 end_import
 
@@ -67,10 +67,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|SearchExpressionDescriberTest
+DECL|class|GrammarBasedSearchRuleDescriberTest
 specifier|public
 class|class
-name|SearchExpressionDescriberTest
+name|GrammarBasedSearchRuleDescriberTest
 block|{
 annotation|@
 name|Test
@@ -246,11 +246,11 @@ name|String
 name|expected
 parameter_list|)
 block|{
-name|SearchExpression
-name|searchExpression
+name|GrammarBasedSearchRule
+name|grammarBasedSearchRule
 init|=
 operator|new
-name|SearchExpression
+name|GrammarBasedSearchRule
 argument_list|(
 name|caseSensitive
 argument_list|,
@@ -259,7 +259,7 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
-name|searchExpression
+name|grammarBasedSearchRule
 operator|.
 name|validateSearchStrings
 argument_list|(
@@ -267,17 +267,17 @@ name|query
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|SearchExpressionDescriber
+name|GrammarBasedSearchRuleDescriber
 name|describer
 init|=
 operator|new
-name|SearchExpressionDescriber
+name|GrammarBasedSearchRuleDescriber
 argument_list|(
 name|caseSensitive
 argument_list|,
 name|regex
 argument_list|,
-name|searchExpression
+name|grammarBasedSearchRule
 operator|.
 name|getTree
 argument_list|()

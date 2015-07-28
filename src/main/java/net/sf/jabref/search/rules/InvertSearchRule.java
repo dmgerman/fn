@@ -55,7 +55,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Inverts result score.  *  * Example:  * false --> true  * true --> false  */
+comment|/**  * Inverts the search result.  *  * Example:  * false --> true  * true --> false  */
 end_comment
 
 begin_class
