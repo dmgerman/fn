@@ -18,22 +18,6 @@ name|layout
 package|;
 end_package
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|LayoutFormatter
-import|;
-end_import
-
 begin_comment
 comment|/**  * This interface extends LayoutFormatter, adding the capability of taking  * and additional parameter. Such a parameter is specified in the layout file  * by the following construct: \format[MyFormatter(argument){\field}  * If and only if MyFormatter is a class that implements ParamLayoutFormatter,  * it will be set up with the argument given in the parenthesis by way of the  * method setArgument(String). If no argument is given, the formatter will be  * invoked without the setArgument() method being called first.  */
 end_comment
