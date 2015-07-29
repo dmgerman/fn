@@ -135,6 +135,16 @@ name|KEYPATTERNDEFAULT
 init|=
 literal|"keypatterndefault"
 decl_stmt|;
+DECL|field|METADATA_LINE_LENGTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|METADATA_LINE_LENGTH
+init|=
+literal|70
+decl_stmt|;
+comment|// The line length used to wrap metadata.
 DECL|field|metaData
 specifier|private
 specifier|final
@@ -1217,8 +1227,6 @@ name|wrapStringBuffer
 argument_list|(
 name|sb
 argument_list|,
-name|Globals
-operator|.
 name|METADATA_LINE_LENGTH
 argument_list|)
 expr_stmt|;
@@ -1433,8 +1441,6 @@ name|wrapStringBuffer
 argument_list|(
 name|s
 argument_list|,
-name|Globals
-operator|.
 name|METADATA_LINE_LENGTH
 argument_list|)
 expr_stmt|;

@@ -601,16 +601,6 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-DECL|field|METADATA_LINE_LENGTH
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|METADATA_LINE_LENGTH
-init|=
-literal|70
-decl_stmt|;
-comment|// The line length used to wrap metadata.
 comment|// used at highlighting in preview area.
 comment|// Color chosen similar to JTextComponent.getSelectionColor(), which is
 comment|// used at highlighting words at the editor
