@@ -28,7 +28,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|HTMLCharFormatter
+name|HTMLChars
 import|;
 end_import
 
@@ -82,7 +82,7 @@ name|LayoutFormatter
 name|layout
 init|=
 operator|new
-name|HTMLCharFormatter
+name|HTMLChars
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -238,7 +238,7 @@ name|LayoutFormatter
 name|layout
 init|=
 operator|new
-name|HTMLCharFormatter
+name|HTMLChars
 argument_list|()
 decl_stmt|;
 name|Assert

@@ -67,10 +67,10 @@ comment|/**  * This formatter escapes characters so they are suitable for HTML. 
 end_comment
 
 begin_class
-DECL|class|HTMLCharFormatter
+DECL|class|HTMLChars
 specifier|public
 class|class
-name|HTMLCharFormatter
+name|HTMLChars
 implements|implements
 name|LayoutFormatter
 block|{

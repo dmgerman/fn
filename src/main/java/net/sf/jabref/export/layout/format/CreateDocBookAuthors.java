@@ -174,11 +174,11 @@ DECL|field|xc
 specifier|private
 specifier|static
 specifier|final
-name|XMLCharFormatter
+name|XMLChars
 name|xc
 init|=
 operator|new
-name|XMLCharFormatter
+name|XMLChars
 argument_list|()
 decl_stmt|;
 annotation|@

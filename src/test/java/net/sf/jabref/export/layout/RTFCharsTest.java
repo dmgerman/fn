@@ -28,7 +28,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|RTFCharFormatter
+name|RTFChars
 import|;
 end_import
 
@@ -92,7 +92,7 @@ name|LayoutFormatter
 name|layout
 init|=
 operator|new
-name|RTFCharFormatter
+name|RTFChars
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -179,7 +179,7 @@ name|LayoutFormatter
 name|layout
 init|=
 operator|new
-name|RTFCharFormatter
+name|RTFChars
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -281,7 +281,7 @@ name|LayoutFormatter
 name|layout
 init|=
 operator|new
-name|RTFCharFormatter
+name|RTFChars
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -327,7 +327,7 @@ name|LayoutFormatter
 name|layout
 init|=
 operator|new
-name|RTFCharFormatter
+name|RTFChars
 argument_list|()
 decl_stmt|;
 name|Assert

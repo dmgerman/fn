@@ -145,10 +145,10 @@ comment|/**  * Changes {\^o} or {\^{o}} to ?  */
 end_comment
 
 begin_class
-DECL|class|XMLCharFormatter
+DECL|class|XMLChars
 specifier|public
 class|class
-name|XMLCharFormatter
+name|XMLChars
 implements|implements
 name|LayoutFormatter
 block|{

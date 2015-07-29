@@ -234,7 +234,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|XMLCharFormatter
+name|XMLChars
 import|;
 end_import
 
@@ -3619,7 +3619,7 @@ name|LayoutFormatter
 name|chars
 init|=
 operator|new
-name|XMLCharFormatter
+name|XMLChars
 argument_list|()
 decl_stmt|;
 name|result

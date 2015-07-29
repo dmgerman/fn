@@ -81,10 +81,10 @@ comment|/**  * Transform a LaTeX-String to RTF.  *   * This method will:  *   * 
 end_comment
 
 begin_class
-DECL|class|RTFCharFormatter
+DECL|class|RTFChars
 specifier|public
 class|class
-name|RTFCharFormatter
+name|RTFChars
 implements|implements
 name|LayoutFormatter
 block|{
