@@ -81,10 +81,10 @@ comment|/**  * Transform a LaTeX-String to RTF.  *   * This method will:  *   * 
 end_comment
 
 begin_class
-DECL|class|RTFChars
+DECL|class|RTFCharFormatter
 specifier|public
 class|class
-name|RTFChars
+name|RTFCharFormatter
 implements|implements
 name|LayoutFormatter
 block|{
@@ -104,6 +104,17 @@ name|LayoutFormatter
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+DECL|field|RTF_CHARS
+specifier|private
+specifier|static
+specifier|final
+name|RtfCharMap
+name|RTF_CHARS
+init|=
+operator|new
+name|RtfCharMap
+argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
@@ -472,9 +483,7 @@ block|}
 name|String
 name|result
 init|=
-name|Globals
-operator|.
-name|RTFCHARS
+name|RTF_CHARS
 operator|.
 name|get
 argument_list|(
@@ -611,9 +620,7 @@ decl_stmt|;
 name|String
 name|result
 init|=
-name|Globals
-operator|.
-name|RTFCHARS
+name|RTF_CHARS
 operator|.
 name|get
 argument_list|(
