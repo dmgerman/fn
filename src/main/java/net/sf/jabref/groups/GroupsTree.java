@@ -1613,18 +1613,9 @@ begin_catch
 catch|catch
 parameter_list|(
 name|IOException
-name|ioe
-parameter_list|)
-block|{
-comment|// ignore
-block|}
-end_catch
-
-begin_catch
-catch|catch
-parameter_list|(
+decl||
 name|UnsupportedFlavorException
-name|e
+name|ioe
 parameter_list|)
 block|{
 comment|// ignore
@@ -1772,9 +1763,7 @@ name|freshPaths
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|TreePath
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 while|while
@@ -1825,14 +1814,14 @@ comment|/**      * Refresh paths that may have become invalid due to node moveme
 end_comment
 
 begin_function
-DECL|method|refreshPaths (TreePath[] paths)
+DECL|method|refreshPaths (TreePath... paths)
 specifier|public
 name|TreePath
 index|[]
 name|refreshPaths
 parameter_list|(
 name|TreePath
-index|[]
+modifier|...
 name|paths
 parameter_list|)
 block|{
@@ -1929,13 +1918,13 @@ comment|/** Highlights the specified cells or disables highlight if cells == nul
 end_comment
 
 begin_function
-DECL|method|setHighlight2Cells (Object[] cells)
+DECL|method|setHighlight2Cells (Object... cells)
 specifier|public
 name|void
 name|setHighlight2Cells
 parameter_list|(
 name|Object
-index|[]
+modifier|...
 name|cells
 parameter_list|)
 block|{
@@ -1957,13 +1946,13 @@ comment|/** Highlights the specified cells or disables highlight if cells == nul
 end_comment
 
 begin_function
-DECL|method|setHighlight3Cells (Object[] cells)
+DECL|method|setHighlight3Cells (Object... cells)
 specifier|public
 name|void
 name|setHighlight3Cells
 parameter_list|(
 name|Object
-index|[]
+modifier|...
 name|cells
 parameter_list|)
 block|{

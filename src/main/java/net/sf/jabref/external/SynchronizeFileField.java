@@ -639,9 +639,7 @@ name|changedEntries
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// First we try to autoset fields
@@ -658,9 +656,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Collections
@@ -826,9 +822,7 @@ name|dirs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1309,9 +1303,7 @@ name|fileTypes
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ExternalFileType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|ExternalFileType
@@ -1716,19 +1708,8 @@ name|ok
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|canceled
 operator|=
@@ -1737,7 +1718,6 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;

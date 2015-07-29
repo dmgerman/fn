@@ -668,12 +668,7 @@ name|matrix
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|Vector
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 while|while
@@ -688,9 +683,7 @@ name|v
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|v

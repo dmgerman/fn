@@ -191,9 +191,7 @@ name|storedColumns
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|columnCount
 operator|-
@@ -208,9 +206,7 @@ name|columnsWidths
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|columnCount
 operator|-

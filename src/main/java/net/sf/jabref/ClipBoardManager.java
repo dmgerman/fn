@@ -272,26 +272,12 @@ block|}
 catch|catch
 parameter_list|(
 name|UnsupportedFlavorException
-name|ex
-parameter_list|)
-block|{
-comment|//highly unlikely since we are using a standard DataFlavor
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|ex
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|IOException
 name|ex
 parameter_list|)
 block|{
+comment|//highly unlikely since we are using a standard DataFlavor
 name|System
 operator|.
 name|out

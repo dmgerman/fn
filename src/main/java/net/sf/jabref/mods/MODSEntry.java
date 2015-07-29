@@ -354,20 +354,14 @@ name|extensionFields
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|handledExtensions
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -849,9 +843,7 @@ name|result
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|PersonName
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|LayoutFormatter
@@ -1876,11 +1868,11 @@ name|String
 name|in
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|out
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 comment|// Used to hold the output.

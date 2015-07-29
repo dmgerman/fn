@@ -130,12 +130,12 @@ argument_list|,
 literal|"JabRef entry"
 argument_list|)
 decl_stmt|;
-DECL|method|TransferableBibtexEntry (BibtexEntry[] data)
+DECL|method|TransferableBibtexEntry (BibtexEntry... data)
 specifier|public
 name|TransferableBibtexEntry
 parameter_list|(
 name|BibtexEntry
-index|[]
+modifier|...
 name|data
 parameter_list|)
 block|{

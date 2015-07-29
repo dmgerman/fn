@@ -103,9 +103,7 @@ name|formats
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|ImportFormat
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|LOGGER
@@ -791,9 +789,7 @@ name|result
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|ImportFormat
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -843,9 +839,7 @@ name|result
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|ImportFormat
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

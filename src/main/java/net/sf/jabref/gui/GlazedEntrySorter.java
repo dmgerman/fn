@@ -162,9 +162,7 @@ name|list
 operator|=
 operator|new
 name|BasicEventList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|list

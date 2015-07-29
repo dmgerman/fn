@@ -320,20 +320,8 @@ name|doc
 operator|.
 name|addUndoableEditListener
 argument_list|(
-operator|new
-name|UndoableEditListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|undoableEditHappened
-parameter_list|(
-name|UndoableEditEvent
 name|evt
-parameter_list|)
-block|{
+lambda|->
 name|undo
 operator|.
 name|addEdit
@@ -343,9 +331,6 @@ operator|.
 name|getEdit
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 comment|// Create an undo action and add it to the text component

@@ -160,9 +160,7 @@ name|entries
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|MSBibEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -260,9 +258,7 @@ name|entries
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|MSBibEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|ArrayList
@@ -273,9 +269,7 @@ name|bibitems
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Document
@@ -484,9 +478,7 @@ name|entries
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|MSBibEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for

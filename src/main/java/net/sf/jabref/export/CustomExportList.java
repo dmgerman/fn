@@ -127,11 +127,7 @@ name|formats
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|ExportFormat
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|array
@@ -156,20 +152,14 @@ name|list
 operator|=
 operator|new
 name|BasicEventList
-argument_list|<
-name|String
-index|[]
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|sorted
 operator|=
 operator|new
 name|SortedList
-argument_list|<
-name|String
-index|[]
-argument_list|>
+argument_list|<>
 argument_list|(
 name|list
 argument_list|,
@@ -345,13 +335,13 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-DECL|method|createFormat (String[] s)
+DECL|method|createFormat (String... s)
 specifier|private
 name|ExportFormat
 name|createFormat
 parameter_list|(
 name|String
-index|[]
+modifier|...
 name|s
 parameter_list|)
 block|{
@@ -454,13 +444,13 @@ return|return
 name|format
 return|;
 block|}
-DECL|method|addFormat (String[] s)
+DECL|method|addFormat (String... s)
 specifier|public
 name|void
 name|addFormat
 parameter_list|(
 name|String
-index|[]
+modifier|...
 name|s
 parameter_list|)
 block|{
@@ -492,13 +482,13 @@ name|format
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|remove (String[] toRemove)
+DECL|method|remove (String... toRemove)
 specifier|public
 name|void
 name|remove
 parameter_list|(
 name|String
-index|[]
+modifier|...
 name|toRemove
 parameter_list|)
 block|{

@@ -471,9 +471,7 @@ name|al
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -560,7 +558,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      *      * Will look in each of the given dirs starting from the beginning and      * returning the first found file to match if any.      */
-DECL|method|expandFilename (String name, String[] dir)
+DECL|method|expandFilename (String name, String... dir)
 specifier|public
 specifier|static
 name|File
@@ -570,7 +568,7 @@ name|String
 name|name
 parameter_list|,
 name|String
-index|[]
+modifier|...
 name|dir
 parameter_list|)
 block|{
@@ -823,7 +821,7 @@ name|file
 return|;
 block|}
 comment|/**      * Converts an absolute filename to a relative one, if necessary.      * Returns the parameter fileName itself if no shortening is possible      *      * This method works correctly only if dirs are sorted decent in their length      * i.e. /home/user/literature/important before /home/user/literature      *      * @param fileName the file name to be shortened      * @param dirs directories to check.      */
-DECL|method|shortenFileName (File fileName, String[] dirs)
+DECL|method|shortenFileName (File fileName, String... dirs)
 specifier|public
 specifier|static
 name|File
@@ -833,7 +831,7 @@ name|File
 name|fileName
 parameter_list|,
 name|String
-index|[]
+modifier|...
 name|dirs
 parameter_list|)
 block|{

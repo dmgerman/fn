@@ -1339,9 +1339,7 @@ name|left
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|5
 argument_list|,
@@ -1356,9 +1354,7 @@ name|right
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|5
 argument_list|,

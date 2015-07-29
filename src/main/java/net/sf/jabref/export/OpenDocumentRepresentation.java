@@ -264,9 +264,7 @@ name|comparators
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|FieldComparator
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|comparators
@@ -313,9 +311,7 @@ name|entryList
 init|=
 operator|new
 name|BasicEventList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Set up a list of all entries, if keySet==null, or the entries whose

@@ -778,22 +778,14 @@ name|meta
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|entryTypes
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexEntryType
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// To store custem entry types parsed.

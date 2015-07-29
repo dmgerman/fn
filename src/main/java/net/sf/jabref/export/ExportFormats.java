@@ -136,11 +136,7 @@ name|exportFormats
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|IExportFormat
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Global variable that is used for counting output entries when exporting:
@@ -1094,9 +1090,7 @@ name|entryIds
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for
@@ -1469,9 +1463,7 @@ name|filters
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|FileFilter
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

@@ -659,9 +659,7 @@ name|sortedForTable
 operator|=
 operator|new
 name|SortedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|list
 argument_list|,
@@ -673,9 +671,7 @@ name|sortedForMarking
 operator|=
 operator|new
 name|SortedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedForTable
 argument_list|,
@@ -687,9 +683,7 @@ name|sortedForSearch
 operator|=
 operator|new
 name|SortedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedForMarking
 argument_list|,
@@ -701,9 +695,7 @@ name|sortedForGrouping
 operator|=
 operator|new
 name|SortedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedForSearch
 argument_list|,
@@ -736,9 +728,7 @@ name|tableModel
 init|=
 operator|new
 name|EventTableModel
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedForGrouping
 argument_list|,
@@ -767,9 +757,7 @@ name|selectionModel
 operator|=
 operator|new
 name|EventSelectionModel
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedForGrouping
 argument_list|)
@@ -1967,9 +1955,7 @@ name|order
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|List
@@ -2036,9 +2022,7 @@ name|fields
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2500,19 +2484,8 @@ name|comparatorChooser
 operator|.
 name|addSortActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|actionEvent
-parameter_list|)
+lambda|->
 block|{
 comment|// Get the information about the current sort order:
 name|List
@@ -2741,7 +2714,6 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)
@@ -4072,26 +4044,14 @@ name|result
 operator|.
 name|addSortActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 comment|// We need to reset the stack of sorted list each time sorting order
 comment|// changes, or the sorting breaks down:
 name|refreshSorting
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;

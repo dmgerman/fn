@@ -458,11 +458,7 @@ name|defaults
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|/* contents of the defaults HashMap that are defined in this class.       * There are more default parameters in this map which belong to separate preference classes.     */
@@ -2999,9 +2995,7 @@ name|putBracesAroundCapitalsFields
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|4
 argument_list|)
@@ -3017,9 +3011,7 @@ name|nonWrappableFields
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|5
 argument_list|)
@@ -3064,9 +3056,7 @@ name|externalFileTypes
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|ExternalFileType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|HTML_FALLBACK_TYPE
@@ -7542,7 +7532,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|putByteArray (String key, byte[] value)
+DECL|method|putByteArray (String key, byte... value)
 specifier|public
 name|void
 name|putByteArray
@@ -7551,7 +7541,7 @@ name|String
 name|key
 parameter_list|,
 name|byte
-index|[]
+modifier|...
 name|value
 parameter_list|)
 block|{
@@ -7583,7 +7573,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Puts a string array into the Preferences, by linking its elements with ';' into a single string. Escape      * characters make the process transparent even if strings contain ';'.      */
-DECL|method|putStringArray (String key, String[] value)
+DECL|method|putStringArray (String key, String... value)
 specifier|public
 name|void
 name|putStringArray
@@ -7592,7 +7582,7 @@ name|String
 name|key
 parameter_list|,
 name|String
-index|[]
+modifier|...
 name|value
 parameter_list|)
 block|{
@@ -7752,9 +7742,7 @@ name|arr
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -9400,9 +9388,7 @@ name|secOpt
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Collections
@@ -9478,9 +9464,7 @@ name|list
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ExternalFileType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|list
@@ -10242,9 +10226,7 @@ name|unchanged
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ExternalFileType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|externalFileTypes

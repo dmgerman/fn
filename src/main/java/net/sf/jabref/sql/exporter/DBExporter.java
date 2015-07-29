@@ -407,9 +407,7 @@ name|dbNames
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|/**      * Method for the exportDatabase methods.      *       * @param database      *            The DBTYPE of the database      * @param database      *            The BibtexDatabase to export      * @param metaData      *            The MetaData object containing the groups information      * @param keySet      *            The set of IDs of the entries to export.      * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be written.      */
@@ -1010,9 +1008,7 @@ name|fieldRequirement
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|ArrayList
@@ -1023,9 +1019,7 @@ name|existentTypes
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -2725,12 +2719,7 @@ name|matrix
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|Vector
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|dbNames
@@ -2742,9 +2731,7 @@ name|v
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|v
@@ -2778,9 +2765,7 @@ name|v
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|v

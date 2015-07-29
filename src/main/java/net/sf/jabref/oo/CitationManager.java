@@ -332,9 +332,7 @@ name|list
 operator|=
 operator|new
 name|BasicEventList
-argument_list|<
-name|CitEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|XNameAccess
@@ -421,9 +419,7 @@ name|tableModel
 operator|=
 operator|new
 name|EventTableModel
-argument_list|<
-name|CitEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|list
 argument_list|,

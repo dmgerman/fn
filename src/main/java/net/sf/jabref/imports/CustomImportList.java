@@ -147,12 +147,12 @@ name|super
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Importer (String[] data)
+DECL|method|Importer (String... data)
 specifier|public
 name|Importer
 parameter_list|(
 name|String
-index|[]
+modifier|...
 name|data
 parameter_list|)
 block|{

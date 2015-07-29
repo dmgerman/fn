@@ -59,12 +59,12 @@ name|String
 index|[]
 name|fields
 decl_stmt|;
-DECL|method|IconComparator (String[] fields)
+DECL|method|IconComparator (String... fields)
 specifier|public
 name|IconComparator
 parameter_list|(
 name|String
-index|[]
+modifier|...
 name|fields
 parameter_list|)
 block|{

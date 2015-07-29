@@ -109,9 +109,7 @@ name|m_modifiedSubtree
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|TreeNode
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|m_revalidate

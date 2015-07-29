@@ -364,14 +364,14 @@ name|zipFile
 init|=
 literal|null
 decl_stmt|;
-DECL|method|ZipFileChooserTableModel (ZipFile zipFile, ZipEntry[] rows)
+DECL|method|ZipFileChooserTableModel (ZipFile zipFile, ZipEntry... rows)
 name|ZipFileChooserTableModel
 parameter_list|(
 name|ZipFile
 name|zipFile
 parameter_list|,
 name|ZipEntry
-index|[]
+modifier|...
 name|rows
 parameter_list|)
 block|{
@@ -636,9 +636,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ZipEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Enumeration
@@ -773,25 +771,10 @@ name|cancelButton
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|dispose
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 comment|// ok: get selected class and check if it is instantiable as an importer

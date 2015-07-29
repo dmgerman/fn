@@ -329,9 +329,7 @@ operator|.
 name|util
 operator|.
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// and static constructor to initialize it
@@ -460,11 +458,7 @@ name|authorCache
 init|=
 operator|new
 name|WeakHashMap
-argument_list|<
-name|String
-argument_list|,
-name|AuthorList
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|/**      * Parses the parameter strings and stores preformatted author information.      *       * Don't call this constructor directly but rather use the getAuthorList()      * method which caches its results.      *       * @param bibtex_authors      *            contents of either<CODE>author</CODE> or<CODE>editor</CODE>      *            bibtex field.      */
@@ -480,9 +474,7 @@ name|authors
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|Author
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|5
 argument_list|)
@@ -825,9 +817,7 @@ name|tokens
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 comment|// initialization
@@ -4319,14 +4309,14 @@ argument_list|()
 return|;
 block|}
 block|}
-DECL|method|main (String[] args)
+DECL|method|main (String... args)
 specifier|public
 specifier|static
 name|void
 name|main
 parameter_list|(
 name|String
-index|[]
+modifier|...
 name|args
 parameter_list|)
 block|{

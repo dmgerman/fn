@@ -953,17 +953,8 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
-block|{
+lambda|->
 name|table
 operator|.
 name|ensureVisible
@@ -973,9 +964,6 @@ operator|.
 name|getSelectedRow
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1063,20 +1051,8 @@ name|Timer
 argument_list|(
 literal|50
 argument_list|,
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|actionEvent
-parameter_list|)
-block|{
+lambda|->
 name|updatePreview
 argument_list|(
 name|toShow
@@ -1085,9 +1061,6 @@ name|changedPreview
 argument_list|,
 literal|1
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 decl_stmt|;
 name|t
@@ -1158,16 +1131,8 @@ specifier|final
 name|Runnable
 name|update
 init|=
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 comment|// If nothing was already shown, set the preview and move the separator:
 if|if
@@ -1201,22 +1166,13 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-block|}
 decl_stmt|;
 specifier|final
 name|Runnable
 name|worker
 init|=
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|preview
 operator|.
@@ -1232,7 +1188,6 @@ argument_list|(
 name|update
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 decl_stmt|;
 name|JabRefExecutorService
@@ -1854,16 +1809,8 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 name|panel
 operator|.
@@ -2173,13 +2120,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*ExternalFileType type = Globals.prefs.getExternalFileTypeByMimeType("text/html");                         ExternalFileMenuItem item = new ExternalFileMenuItem                                 (panel.frame(), entry, "",                                 (String)link, type.getIcon(),                                 panel.metaData(), type);                         boolean success = item.openLink();                         if (!success) {                             panel.output(Globals.lang("Unable to open link."));                         } */
+comment|/*ExternalFileType type = Globals.prefs.getExternalFileTypeByMimeType("text/html");                     ExternalFileMenuItem item = new ExternalFileMenuItem                             (panel.frame(), entry, "",                             (String)link, type.getIcon(),                             panel.metaData(), type);                     boolean success = item.openLink();                     if (!success) {                         panel.output(Globals.lang("Unable to open link."));                     } */
 comment|//Util.openExternalViewer(panel.metaData(), (String)link, fieldName);
 block|}
 comment|//catch (IOException ex) {
 comment|//    panel.output(Globals.lang("Error") + ": " + ex.getMessage());
 comment|//}
-block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -2277,7 +2223,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Process popup trigger events occurring on an icon cell in the table. Show      * a menu where the user can choose which external resource to open for the      * entry. If no relevant external resources exist, let the normal popup trigger      * handler do its thing instead.      * @param e The mouse event defining this popup trigger.      * @param row The row where the event occurred.      * @param iconType A string array containing the resource fields associated with      *  this table cell.      */
-DECL|method|showIconRightClickMenu (MouseEvent e, int row, String[] iconType)
+DECL|method|showIconRightClickMenu (MouseEvent e, int row, String... iconType)
 specifier|private
 name|void
 name|showIconRightClickMenu
@@ -2289,7 +2235,7 @@ name|int
 name|row
 parameter_list|,
 name|String
-index|[]
+modifier|...
 name|iconType
 parameter_list|)
 block|{

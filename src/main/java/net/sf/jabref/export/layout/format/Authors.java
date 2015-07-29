@@ -95,9 +95,7 @@ name|authorOrder
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|authorAbbr
@@ -112,9 +110,7 @@ name|authorAbbr
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|authorPunc
@@ -129,9 +125,7 @@ name|authorPunc
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|separators
@@ -146,9 +140,7 @@ name|separators
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|lastSeparators
@@ -163,9 +155,7 @@ name|lastSeparators
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|numberPattern
@@ -1915,14 +1905,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|main (String[] args)
+DECL|method|main (String... args)
 specifier|public
 specifier|static
 name|void
 name|main
 parameter_list|(
 name|String
-index|[]
+modifier|...
 name|args
 parameter_list|)
 block|{

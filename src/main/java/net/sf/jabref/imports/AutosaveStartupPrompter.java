@@ -230,9 +230,7 @@ name|loaded
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ParserResult
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Map
@@ -245,11 +243,7 @@ name|location
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|ParserResult
-argument_list|,
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

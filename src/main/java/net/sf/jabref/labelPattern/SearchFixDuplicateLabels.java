@@ -157,14 +157,7 @@ name|dupes
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|List
-argument_list|<
-name|BibtexEntry
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|HashMap
@@ -177,11 +170,7 @@ name|foundKeys
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|BibtexDatabase
@@ -286,9 +275,7 @@ name|al
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Add both the first one we found, and the one we found just now:
@@ -365,9 +352,7 @@ name|toGenerateFor
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

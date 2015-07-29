@@ -2889,11 +2889,7 @@ name|ALL_TYPES
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexEntryType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|STANDARD_TYPES
@@ -3586,11 +3582,7 @@ name|STANDARD_TYPES
 operator|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexEntryType
-argument_list|>
+argument_list|<>
 argument_list|(
 name|BibtexEntryType
 operator|.

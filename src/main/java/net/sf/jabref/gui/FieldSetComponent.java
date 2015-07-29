@@ -336,9 +336,7 @@ name|additionListeners
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|ActionListener
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|list
@@ -432,9 +430,7 @@ name|modelListeners
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|ListDataListener
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|/**       * Creates a new instance of FieldSetComponent, with preset selection      * values. These are put into a JComboBox.      */
@@ -1596,9 +1592,7 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|listModel
 operator|.

@@ -95,7 +95,7 @@ name|DEFAULT_FORMAT
 init|=
 literal|"1@*@{ff }{vv }{ll}{, jj}@@*@1@{ff }{vv }{ll}{, jj}@*@, {ff }{vv }{ll}{, jj}"
 decl_stmt|;
-DECL|method|format (String toFormat, AuthorList al, String[] formats)
+DECL|method|format (String toFormat, AuthorList al, String... formats)
 specifier|private
 name|String
 name|format
@@ -107,7 +107,7 @@ name|AuthorList
 name|al
 parameter_list|,
 name|String
-index|[]
+modifier|...
 name|formats
 parameter_list|)
 block|{

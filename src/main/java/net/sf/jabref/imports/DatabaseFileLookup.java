@@ -163,11 +163,7 @@ name|fileToFound
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|File
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|entries

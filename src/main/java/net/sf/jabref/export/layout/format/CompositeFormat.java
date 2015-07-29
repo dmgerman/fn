@@ -85,12 +85,12 @@ name|second
 block|}
 expr_stmt|;
 block|}
-DECL|method|CompositeFormat (LayoutFormatter[] formatters)
+DECL|method|CompositeFormat (LayoutFormatter... formatters)
 specifier|public
 name|CompositeFormat
 parameter_list|(
 name|LayoutFormatter
-index|[]
+modifier|...
 name|formatters
 parameter_list|)
 block|{

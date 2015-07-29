@@ -179,12 +179,10 @@ name|fileList
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|TransferableFileLinkSelection (BasePanel panel, BibtexEntry[] selection)
+DECL|method|TransferableFileLinkSelection (BasePanel panel, BibtexEntry... selection)
 specifier|public
 name|TransferableFileLinkSelection
 parameter_list|(
@@ -192,7 +190,7 @@ name|BasePanel
 name|panel
 parameter_list|,
 name|BibtexEntry
-index|[]
+modifier|...
 name|selection
 parameter_list|)
 block|{

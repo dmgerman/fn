@@ -191,11 +191,7 @@ name|FieldAliasesOldToNew
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Bibtex to BibLatex
@@ -213,11 +209,7 @@ name|FieldAliasesNewToOld
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// BibLatex to Bibtex
@@ -422,11 +414,7 @@ name|_fields
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|_changeSupport
@@ -583,9 +571,7 @@ block|{
 return|return
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|_fields
 operator|.
@@ -900,11 +886,7 @@ name|aliases
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|aliases
@@ -1804,11 +1786,7 @@ name|_fields
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|_fields
 argument_list|)

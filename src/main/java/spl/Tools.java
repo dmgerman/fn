@@ -662,16 +662,14 @@ argument_list|(
 literal|"file.separator"
 argument_list|)
 decl_stmt|;
-if|if
+switch|switch
 condition|(
 name|osNameStart
-operator|.
-name|equals
-argument_list|(
-literal|"Win"
-argument_list|)
 condition|)
 block|{
+case|case
+literal|"Win"
+case|:
 comment|//Todo SciPlore
 return|return
 name|path
@@ -710,18 +708,9 @@ argument_list|(
 literal|"\\\\"
 argument_list|)
 return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|osNameStart
-operator|.
-name|equals
-argument_list|(
+case|case
 literal|"Mac"
-argument_list|)
-condition|)
-block|{
+case|:
 comment|//Koh:Panther (or Java 1.4.2) may change file path rule
 return|return
 name|path
@@ -731,9 +720,7 @@ argument_list|(
 name|fileSeparator
 argument_list|)
 return|;
-block|}
-else|else
-block|{
+default|default:
 return|return
 name|path
 operator|.

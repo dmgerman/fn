@@ -246,11 +246,7 @@ name|result
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -409,9 +405,7 @@ name|tableRows
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|TableRow
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|10
 argument_list|)

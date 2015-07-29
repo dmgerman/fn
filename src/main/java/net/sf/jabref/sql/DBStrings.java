@@ -387,13 +387,13 @@ return|return
 name|serverTypes
 return|;
 block|}
-DECL|method|setServerTypes (String[] serverTypes)
+DECL|method|setServerTypes (String... serverTypes)
 specifier|private
 name|void
 name|setServerTypes
 parameter_list|(
 name|String
-index|[]
+modifier|...
 name|serverTypes
 parameter_list|)
 block|{

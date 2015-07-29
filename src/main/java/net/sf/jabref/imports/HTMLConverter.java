@@ -4393,11 +4393,7 @@ name|escapedSymbols
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|escapedAccents
@@ -4413,11 +4409,7 @@ name|escapedAccents
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|Integer
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|numSymbols
@@ -4433,11 +4425,7 @@ name|numSymbols
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|Integer
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|unicodeSymbols
@@ -4453,11 +4441,7 @@ name|unicodeSymbols
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|Character
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|HTMLConverter ()

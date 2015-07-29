@@ -90,9 +90,7 @@ name|missingFormatters
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|Layout (Vector<StringInt> parsedEntries, String classPrefix)
@@ -122,9 +120,7 @@ name|tmpEntries
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|LayoutEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|parsedEntries
 operator|.
@@ -195,9 +191,7 @@ name|blockEntries
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|StringInt
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|blockStart
@@ -325,9 +319,7 @@ name|blockEntries
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|StringInt
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|blockStart

@@ -146,12 +146,12 @@ literal|"nogui"
 argument_list|)
 return|;
 block|}
-DECL|method|JabRefCLI (String[] args)
+DECL|method|JabRefCLI (String... args)
 specifier|public
 name|JabRefCLI
 parameter_list|(
 name|String
-index|[]
+modifier|...
 name|args
 parameter_list|)
 block|{

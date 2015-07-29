@@ -185,9 +185,7 @@ name|journals
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Formatter to be run on fields before they are used as part of citation marker:
@@ -220,11 +218,7 @@ name|bibLayout
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Layout
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|properties
@@ -240,11 +234,7 @@ name|properties
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|citProperties
@@ -260,11 +250,7 @@ name|citProperties
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|numPattern
@@ -957,11 +943,11 @@ throws|throws
 name|IOException
 block|{
 comment|// First read all the contents of the file:
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|int
@@ -1092,18 +1078,16 @@ block|{
 continue|continue;
 block|}
 comment|// Check if we should change mode:
-if|if
+switch|switch
 condition|(
 name|line
-operator|.
-name|equals
-argument_list|(
+condition|)
+block|{
+case|case
 name|OOBibStyle
 operator|.
 name|NAME_MARK
-argument_list|)
-condition|)
-block|{
+case|:
 name|mode
 operator|=
 name|OOBibStyle
@@ -1111,20 +1095,11 @@ operator|.
 name|NAME
 expr_stmt|;
 continue|continue;
-block|}
-elseif|else
-if|if
-condition|(
-name|line
-operator|.
-name|equals
-argument_list|(
+case|case
 name|OOBibStyle
 operator|.
 name|LAYOUT_MRK
-argument_list|)
-condition|)
-block|{
+case|:
 name|mode
 operator|=
 name|OOBibStyle
@@ -1132,20 +1107,11 @@ operator|.
 name|LAYOUT
 expr_stmt|;
 continue|continue;
-block|}
-elseif|else
-if|if
-condition|(
-name|line
-operator|.
-name|equals
-argument_list|(
+case|case
 name|OOBibStyle
 operator|.
 name|PROPERTIES_MARK
-argument_list|)
-condition|)
-block|{
+case|:
 name|mode
 operator|=
 name|OOBibStyle
@@ -1153,20 +1119,11 @@ operator|.
 name|PROPERTIES
 expr_stmt|;
 continue|continue;
-block|}
-elseif|else
-if|if
-condition|(
-name|line
-operator|.
-name|equals
-argument_list|(
+case|case
 name|OOBibStyle
 operator|.
 name|CITATION_MARK
-argument_list|)
-condition|)
-block|{
+case|:
 name|mode
 operator|=
 name|OOBibStyle
@@ -1174,20 +1131,11 @@ operator|.
 name|CITATION
 expr_stmt|;
 continue|continue;
-block|}
-elseif|else
-if|if
-condition|(
-name|line
-operator|.
-name|equals
-argument_list|(
+case|case
 name|OOBibStyle
 operator|.
 name|JOURNALS_MARK
-argument_list|)
-condition|)
-block|{
+case|:
 name|mode
 operator|=
 name|OOBibStyle
@@ -2207,17 +2155,12 @@ block|{
 name|uniquefier
 block|}
 argument_list|,
-operator|new
-name|int
-index|[]
-block|{
 name|unlimAuthors
-block|}
 argument_list|)
 return|;
 block|}
 comment|/**      * Format the marker for the in-text citation according to this bib style. Uniquefier letters are added as      * provided by the uniquefiers argument. If successive entries within the citation are uniquefied from each other,      * this method will perform a grouping of these entries.      *      * @param entries The array of JabRef BibtexEntry providing the data.      * @param inParenthesis Signals whether a parenthesized citation or an in-text citation is wanted.      * @param uniquefiers Strings to add behind the year for each entry in case it's needed to separate similar      *   entries.      * @param unlimAuthors Boolean for each entry. If true, we should not use "et al" formatting regardless      *   of the number of authors. Can be null to indicate that no entries should have unlimited names.      * @return The formatted citation.      */
-DECL|method|getCitationMarker (BibtexEntry[] entries, BibtexDatabase database, boolean inParenthesis, String[] uniquefiers, int[] unlimAuthors)
+DECL|method|getCitationMarker (BibtexEntry[] entries, BibtexDatabase database, boolean inParenthesis, String[] uniquefiers, int... unlimAuthors)
 specifier|public
 name|String
 name|getCitationMarker
@@ -2237,7 +2180,7 @@ index|[]
 name|uniquefiers
 parameter_list|,
 name|int
-index|[]
+modifier|...
 name|unlimAuthors
 parameter_list|)
 block|{
@@ -3113,7 +3056,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * This method produces (Author, year) style citation strings in many different forms.      *      * @param entries The array of BibtexEntry to get fields from.      * @param authorField The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField The bibtex field providing the year, e.g. "year".      * @param maxA The maximum number of authors to write out in full without using etal. Set to      *              -1 to always write out all authors.      * @param authorSep The String to add between author names except the last two, e.g. ", ".      * @param andString The String to add between the two last author names, e.g. "& ".      * @param etAlString The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep The String to separate authors from year, e.g. "; ".      * @param startBrace The opening parenthesis.      * @param endBrace The closing parenthesis.      * @param citationSeparator The String to separate citations from each other.      * @param uniquifiers Optional parameter to separate similar citations. Elements can be null if not needed.      * @return The formatted citation.      */
-DECL|method|getAuthorYearParenthesisMarker (BibtexEntry[] entries, BibtexDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquifiers, int[] unlimAuthors)
+DECL|method|getAuthorYearParenthesisMarker (BibtexEntry[] entries, BibtexDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquifiers, int... unlimAuthors)
 specifier|private
 name|String
 name|getAuthorYearParenthesisMarker
@@ -3160,15 +3103,15 @@ index|[]
 name|uniquifiers
 parameter_list|,
 name|int
-index|[]
+modifier|...
 name|unlimAuthors
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|startBrace
 argument_list|)
@@ -3473,7 +3416,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * This method produces "Author (year)" style citation strings in many different forms.      *      * @param entries The array of BibtexEntry to get fields from.      * @param authorField The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField The bibtex field providing the year, e.g. "year".      * @param maxA The maximum number of authors to write out in full without using etal. Set to      *              -1 to always write out all authors.      * @param authorSep The String to add between author names except the last two, e.g. ", ".      * @param andString The String to add between the two last author names, e.g. "& ".      * @param etAlString The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep The String to separate authors from year, e.g. "; ".      * @param startBrace The opening parenthesis.      * @param endBrace The closing parenthesis.      * @param uniquefiers Optional parameters to separate similar citations. Can be null if not needed.      * @return The formatted citation.      */
-DECL|method|getAuthorYearInTextMarker (BibtexEntry[] entries, BibtexDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquefiers, int[] unlimAuthors)
+DECL|method|getAuthorYearInTextMarker (BibtexEntry[] entries, BibtexDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquefiers, int... unlimAuthors)
 specifier|private
 name|String
 name|getAuthorYearInTextMarker
@@ -3520,15 +3463,15 @@ index|[]
 name|uniquefiers
 parameter_list|,
 name|int
-index|[]
+modifier|...
 name|unlimAuthors
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for

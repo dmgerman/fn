@@ -167,9 +167,7 @@ name|entryCreators
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|EntryFromFileCreator
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|10
 argument_list|)
@@ -382,9 +380,7 @@ name|importGUIMessages
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addEntrysFromFiles
@@ -791,9 +787,7 @@ name|filters
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|FileFilter
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|filters

@@ -440,21 +440,10 @@ name|comboBox
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
-comment|/*                  * These conditions signify arrow key navigation in the dropdown                  * list, so we should not react to it. I'm not sure if this is                  * well defined enough to be guaranteed to work everywhere.                  */
+comment|/*              * These conditions signify arrow key navigation in the dropdown              * list, so we should not react to it. I'm not sure if this is              * well defined enough to be guaranteed to work everywhere.              */
 if|if
 condition|(
 name|e
@@ -480,7 +469,6 @@ block|}
 name|selectionMade
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -599,19 +587,8 @@ name|manage
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|ContentSelectorDialog2
 name|csd
@@ -669,7 +646,6 @@ comment|// So we need to rebuild the ComboBox afterwards
 name|rebuildComboBox
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;

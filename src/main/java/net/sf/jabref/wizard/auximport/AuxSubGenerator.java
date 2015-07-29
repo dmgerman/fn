@@ -218,9 +218,7 @@ name|mySet
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|20
 argument_list|)
@@ -229,9 +227,7 @@ name|notFoundList
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|db
@@ -336,9 +332,7 @@ name|fileList
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|5
 argument_list|)

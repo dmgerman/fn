@@ -225,9 +225,7 @@ name|filters
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|ImportFileFilter
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -564,15 +562,10 @@ name|imi
 operator|.
 name|automatedImport
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
 name|file
 operator|.
 name|getAbsolutePath
 argument_list|()
-block|}
 argument_list|)
 expr_stmt|;
 comment|// Make sure we remember which filter was used, to set the default

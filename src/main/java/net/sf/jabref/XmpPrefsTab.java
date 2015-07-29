@@ -199,9 +199,7 @@ name|tableRows
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|10
 argument_list|)

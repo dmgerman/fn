@@ -756,7 +756,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Check the database to find out whether any of a set of fields are used      * for any of the entries.      * @param database The bib database.      * @param fields The set of fields to look for.      * @return true if at least one of the given fields is set in at least one entry,      *  false otherwise.      */
-DECL|method|linksFound (BibtexDatabase database, String[] fields)
+DECL|method|linksFound (BibtexDatabase database, String... fields)
 specifier|private
 name|boolean
 name|linksFound
@@ -765,7 +765,7 @@ name|BibtexDatabase
 name|database
 parameter_list|,
 name|String
-index|[]
+modifier|...
 name|fields
 parameter_list|)
 block|{

@@ -345,9 +345,7 @@ name|attachments
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// open folders is needed to indirectly support email programs, which cannot handle

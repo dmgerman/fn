@@ -132,10 +132,7 @@ name|duplicates
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|BibtexEntry
-index|[]
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|DuplicateSearch (BasePanel bp)
@@ -301,9 +298,7 @@ name|toRemove
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 while|while
@@ -610,16 +605,8 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
 comment|// Now, do the actual removal:
 if|if
@@ -721,7 +708,6 @@ argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;

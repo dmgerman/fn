@@ -1271,12 +1271,7 @@ name|sorted
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-index|[]
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1676,19 +1671,8 @@ name|ok
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 comment|// save all the key bindings
 name|dispose
@@ -1700,26 +1684,14 @@ literal|true
 expr_stmt|;
 comment|// also displays message: key bindings will take into effect next time you start JBM
 block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|cancel
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|dispose
 argument_list|()
@@ -1729,26 +1701,14 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|defB
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|int
 index|[]
@@ -1822,7 +1782,7 @@ name|lang
 argument_list|(
 literal|"Ok"
 argument_list|)
-block|,
+operator|,
 name|Globals
 operator|.
 name|lang
@@ -1830,7 +1790,7 @@ argument_list|(
 literal|"Cancel"
 argument_list|)
 block|}
-argument_list|,
+operator|,
 name|Globals
 operator|.
 name|lang
@@ -1838,7 +1798,7 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|answer
@@ -1962,13 +1922,21 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
-argument_list|)
-expr_stmt|;
-block|}
+end_class
+
+begin_empty_stmt
+unit|)
+empty_stmt|;
+end_empty_stmt
+
+begin_comment
+unit|}
 comment|/**      * Resets a single accelerator key      * @param name the action name      * @return the default accelerator key      */
+end_comment
+
+begin_function
 DECL|method|setToDefault (String name)
-specifier|private
+unit|private
 name|String
 name|setToDefault
 parameter_list|(
@@ -1999,9 +1967,12 @@ return|return
 name|defKey
 return|;
 block|}
-comment|/*          public static void main(String args[])          {       HashMap h=new HashMap();       h.put("new-bibtex","ctrl N");       h.put("edit-bibtex","ctrl E");       h.put("exit-bibtex","ctrl Q");       KeyBindingsDialog d= new KeyBindingsDialog(h);       d.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       d.setSize(200,300);       d.setVisible(true);        }*/
-block|}
-end_class
+end_function
 
+begin_comment
+comment|/*          public static void main(String args[])          {       HashMap h=new HashMap();       h.put("new-bibtex","ctrl N");       h.put("edit-bibtex","ctrl E");       h.put("exit-bibtex","ctrl Q");       KeyBindingsDialog d= new KeyBindingsDialog(h);       d.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       d.setSize(200,300);       d.setVisible(true);        }*/
+end_comment
+
+unit|}
 end_unit
 
