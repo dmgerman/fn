@@ -467,11 +467,9 @@ operator|.
 name|format
 argument_list|(
 operator|(
-operator|(
 name|d2
 operator|-
 name|i
-operator|)
 operator|+
 literal|100
 operator|)

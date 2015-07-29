@@ -2554,14 +2554,12 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|desc
 operator|.
 name|getPluginClassName
 argument_list|()
 operator|==
 literal|null
-operator|)
 operator|||
 operator|!
 name|desc

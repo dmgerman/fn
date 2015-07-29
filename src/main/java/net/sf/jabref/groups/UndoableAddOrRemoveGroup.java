@@ -378,13 +378,11 @@ literal|0
 init|;
 name|i
 operator|<
-operator|(
 name|m_pathToNode
 operator|.
 name|length
 operator|-
 literal|1
-operator|)
 condition|;
 operator|++
 name|i
@@ -448,11 +446,9 @@ name|childIndex
 init|;
 name|i
 operator|<
-operator|(
 name|childIndex
 operator|+
 name|m_subtreeRootChildCount
-operator|)
 condition|;
 operator|++
 name|i

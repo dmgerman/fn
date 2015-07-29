@@ -240,11 +240,9 @@ name|groups
 operator|.
 name|get
 argument_list|(
-operator|(
 literal|3
 operator|*
 name|i
-operator|)
 operator|+
 literal|1
 argument_list|)
@@ -255,11 +253,9 @@ name|groups
 operator|.
 name|get
 argument_list|(
-operator|(
 literal|3
 operator|*
 name|i
-operator|)
 operator|+
 literal|2
 argument_list|)

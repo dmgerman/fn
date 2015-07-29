@@ -683,17 +683,13 @@ argument_list|)
 throw|;
 block|}
 return|return
-operator|(
 name|timeStamp
 operator|!=
 name|modified
-operator|)
 operator|||
-operator|(
 name|fileSize
 operator|!=
 name|fileSizeNow
-operator|)
 return|;
 block|}
 DECL|method|updateTimeStamp ()

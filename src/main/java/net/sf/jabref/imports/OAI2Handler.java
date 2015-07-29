@@ -473,11 +473,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|year
 operator|==
 literal|null
-operator|)
 operator|||
 name|year
 operator|.

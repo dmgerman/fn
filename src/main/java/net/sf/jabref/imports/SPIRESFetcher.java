@@ -420,15 +420,13 @@ block|{
 name|HttpURLConnection
 name|conn
 init|=
-call|(
+operator|(
 name|HttpURLConnection
-call|)
-argument_list|(
+operator|)
 operator|new
 name|URL
 argument_list|(
 name|url
-argument_list|)
 argument_list|)
 operator|.
 name|openConnection

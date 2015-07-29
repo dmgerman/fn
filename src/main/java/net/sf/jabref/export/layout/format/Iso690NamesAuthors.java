@@ -67,11 +67,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|s
 operator|==
 literal|null
-operator|)
 operator|||
 name|s
 operator|.
@@ -465,13 +463,11 @@ if|if
 condition|(
 name|i
 operator|<
-operator|(
 name|authors
 operator|.
 name|length
 operator|-
 literal|2
-operator|)
 condition|)
 block|{
 comment|//si hay mas de 2 autores, lo separamos por ", "
@@ -488,13 +484,11 @@ if|if
 condition|(
 name|i
 operator|==
-operator|(
 name|authors
 operator|.
 name|length
 operator|-
 literal|2
-operator|)
 condition|)
 block|{
 comment|// si hay 2 autores, lo separamos por " y "

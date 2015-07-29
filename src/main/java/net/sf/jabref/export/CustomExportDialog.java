@@ -344,7 +344,6 @@ block|{
 comment|// Check that there are no empty strings.
 if|if
 condition|(
-operator|(
 name|layoutFile
 operator|.
 name|getText
@@ -352,9 +351,7 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 operator|||
-operator|(
 name|name
 operator|.
 name|getText
@@ -362,9 +359,7 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 operator|||
-operator|(
 name|extension
 operator|.
 name|getText
@@ -372,9 +367,7 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 operator|||
-operator|(
 operator|!
 name|layoutFile
 operator|.
@@ -385,7 +378,6 @@ name|endsWith
 argument_list|(
 literal|".layout"
 argument_list|)
-operator|)
 condition|)
 block|{
 comment|//JOptionPane.showMessageDialog

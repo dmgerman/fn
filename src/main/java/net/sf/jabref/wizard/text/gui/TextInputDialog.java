@@ -3415,11 +3415,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|selEnd
 operator|-
 name|selStart
-operator|)
 operator|>
 literal|0
 condition|)

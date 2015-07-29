@@ -146,7 +146,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|res
 operator|.
 name|getEndOffset
@@ -156,7 +155,6 @@ name|res
 operator|.
 name|getStartOffset
 argument_list|()
-operator|)
 operator|>
 name|HTMLParagraphView
 operator|.

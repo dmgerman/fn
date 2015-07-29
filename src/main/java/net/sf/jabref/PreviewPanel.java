@@ -597,11 +597,9 @@ expr_stmt|;
 comment|/*          * If we have been given a panel and the preference option          * previewPrintButton is set, show the tool bar          */
 if|if
 condition|(
-operator|(
 name|panel
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|JabRefPreferences
 operator|.
@@ -1710,11 +1708,9 @@ name|hasEntry
 parameter_list|()
 block|{
 return|return
-operator|(
 name|entry
 operator|!=
 literal|null
-operator|)
 return|;
 block|}
 comment|/**      * The PreviewPanel has registered itself as an event listener with the      * currently displayed BibtexEntry. If the entry changes, an event is      * received here, and we can update the preview immediately.      */

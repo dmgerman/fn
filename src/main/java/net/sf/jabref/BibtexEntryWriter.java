@@ -490,11 +490,9 @@ operator|.
 name|write
 argument_list|(
 operator|(
-operator|(
 name|str
 operator|==
 literal|null
-operator|)
 condition|?
 literal|""
 else|:
@@ -758,7 +756,6 @@ block|{
 name|boolean
 name|writeIt
 init|=
-operator|(
 name|write
 condition|?
 name|BibtexFields
@@ -774,7 +771,6 @@ name|isDisplayableField
 argument_list|(
 name|key
 argument_list|)
-operator|)
 decl_stmt|;
 if|if
 condition|(
@@ -919,11 +915,9 @@ operator|.
 name|write
 argument_list|(
 operator|(
-operator|(
 name|str
 operator|==
 literal|null
-operator|)
 condition|?
 literal|""
 else|:
@@ -1116,7 +1110,6 @@ block|{
 name|boolean
 name|writeIt
 init|=
-operator|(
 name|write
 condition|?
 name|BibtexFields
@@ -1132,7 +1125,6 @@ name|isDisplayableField
 argument_list|(
 name|key
 argument_list|)
-operator|)
 decl_stmt|;
 if|if
 condition|(
@@ -1259,11 +1251,9 @@ operator|.
 name|write
 argument_list|(
 operator|(
-operator|(
 name|str
 operator|==
 literal|null
-operator|)
 condition|?
 literal|""
 else|:
@@ -1416,7 +1406,6 @@ comment|//iterate through all fields
 name|boolean
 name|writeIt
 init|=
-operator|(
 name|write
 condition|?
 name|BibtexFields
@@ -1432,7 +1421,6 @@ name|isDisplayableField
 argument_list|(
 name|key
 argument_list|)
-operator|)
 decl_stmt|;
 comment|//find the ones has not been written.
 if|if
@@ -1553,11 +1541,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|o
 operator|!=
 literal|null
-operator|)
 operator|||
 name|includeEmptyFields
 condition|)

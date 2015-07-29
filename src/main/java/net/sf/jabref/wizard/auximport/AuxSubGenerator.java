@@ -845,13 +845,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|crossref
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|!
 name|mySet
 operator|.
@@ -859,7 +856,6 @@ name|contains
 argument_list|(
 name|crossref
 argument_list|)
-operator|)
 condition|)
 block|{
 name|BibtexEntry

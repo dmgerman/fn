@@ -1004,8 +1004,6 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
-operator|(
 name|sb
 operator|.
 name|length
@@ -1017,10 +1015,8 @@ name|name
 operator|.
 name|length
 argument_list|()
-operator|)
 operator|-
 name|lastBreak
-operator|)
 operator|>
 name|maxLineLength
 condition|)
@@ -1715,12 +1711,10 @@ block|}
 block|}
 decl_stmt|;
 comment|// Run the export action in a background thread:
-operator|(
 name|exportWorker
 operator|.
 name|getWorker
 argument_list|()
-operator|)
 operator|.
 name|run
 argument_list|()

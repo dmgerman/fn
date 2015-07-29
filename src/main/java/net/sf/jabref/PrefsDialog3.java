@@ -1205,7 +1205,6 @@ operator|.
 name|exists
 argument_list|()
 operator|||
-operator|(
 name|JOptionPane
 operator|.
 name|showConfirmDialog
@@ -1245,7 +1244,6 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
-operator|)
 condition|)
 block|{
 try|try

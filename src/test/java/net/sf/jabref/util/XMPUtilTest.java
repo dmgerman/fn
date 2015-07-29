@@ -4441,7 +4441,6 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4450,9 +4449,7 @@ literal|"<bibtex:bibtexkey>canh05</bibtex:bibtexkey>"
 argument_list|)
 operator|>
 literal|0
-operator|)
 operator|||
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4461,7 +4458,6 @@ literal|"bibtex:bibtexkey="
 argument_list|)
 operator|>
 literal|0
-operator|)
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -4482,7 +4478,6 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4491,9 +4486,7 @@ literal|"id='W5M0MpCehiHzreSzNTczkc9d'?>"
 argument_list|)
 operator|>
 literal|0
-operator|)
 operator|||
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4502,14 +4495,12 @@ literal|"id=\"W5M0MpCehiHzreSzNTczkc9d\"?>"
 argument_list|)
 operator|>
 literal|0
-operator|)
 argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
 name|assertTrue
 argument_list|(
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4518,9 +4509,7 @@ literal|"xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'"
 argument_list|)
 operator|>
 literal|0
-operator|)
 operator|||
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4529,7 +4518,6 @@ literal|"xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\""
 argument_list|)
 operator|>
 literal|0
-operator|)
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -4550,7 +4538,6 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4559,9 +4546,7 @@ literal|"<?xpacket end='w'?>"
 argument_list|)
 operator|>
 literal|0
-operator|)
 operator|||
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4570,7 +4555,6 @@ literal|"<?xpacket end=\"w\"?>"
 argument_list|)
 operator|>
 literal|0
-operator|)
 argument_list|)
 expr_stmt|;
 comment|/* Test contents of string */
@@ -6816,7 +6800,6 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -6825,9 +6808,7 @@ literal|"<bibtex:bibtexkey>canh05</bibtex:bibtexkey>"
 argument_list|)
 operator|>
 literal|0
-operator|)
 operator|||
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -6836,7 +6817,6 @@ literal|"bibtex:bibtexkey="
 argument_list|)
 operator|>
 literal|0
-operator|)
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -6857,7 +6837,6 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -6866,9 +6845,7 @@ literal|"id='W5M0MpCehiHzreSzNTczkc9d'?>"
 argument_list|)
 operator|>
 literal|0
-operator|)
 operator|||
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -6877,14 +6854,12 @@ literal|"id=\"W5M0MpCehiHzreSzNTczkc9d\"?>"
 argument_list|)
 operator|>
 literal|0
-operator|)
 argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
 name|assertTrue
 argument_list|(
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -6893,9 +6868,7 @@ literal|"xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'"
 argument_list|)
 operator|>
 literal|0
-operator|)
 operator|||
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -6904,7 +6877,6 @@ literal|"xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\""
 argument_list|)
 operator|>
 literal|0
-operator|)
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -6925,7 +6897,6 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -6934,9 +6905,7 @@ literal|"<?xpacket end='w'?>"
 argument_list|)
 operator|>
 literal|0
-operator|)
 operator|||
-operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -6945,7 +6914,6 @@ literal|"<?xpacket end=\"w\"?>"
 argument_list|)
 operator|>
 literal|0
-operator|)
 argument_list|)
 expr_stmt|;
 comment|/* Test contents of string */

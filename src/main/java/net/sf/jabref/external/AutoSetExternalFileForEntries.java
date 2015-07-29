@@ -736,11 +736,9 @@ decl_stmt|;
 comment|// Check if a extension is already set, and if so, if we are allowed to overwrite it:
 if|if
 condition|(
-operator|(
 name|old
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|old
@@ -772,11 +770,9 @@ name|editor
 operator|.
 name|setText
 argument_list|(
-operator|(
 name|old
 operator|!=
 literal|null
-operator|)
 condition|?
 name|old
 else|:
@@ -907,11 +903,9 @@ decl_stmt|;
 comment|// Check if a extension is set:
 if|if
 condition|(
-operator|(
 name|old
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|old
@@ -937,11 +931,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|file
 operator|==
 literal|null
-operator|)
 operator|||
 operator|!
 name|file

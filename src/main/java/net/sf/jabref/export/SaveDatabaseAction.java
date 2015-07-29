@@ -569,11 +569,9 @@ decl_stmt|;
 name|boolean
 name|databaseProtectionFlag
 init|=
-operator|(
 name|pd
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|Boolean
 operator|.
@@ -792,14 +790,12 @@ if|if
 condition|(
 name|cancelled
 operator|||
-operator|(
 name|panel
 operator|.
 name|getFile
 argument_list|()
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 return|return;
@@ -1791,7 +1787,6 @@ operator|.
 name|exists
 argument_list|()
 operator|&&
-operator|(
 name|JOptionPane
 operator|.
 name|showConfirmDialog
@@ -1829,7 +1824,6 @@ operator|!=
 name|JOptionPane
 operator|.
 name|OK_OPTION
-operator|)
 condition|)
 block|{
 name|f

@@ -363,7 +363,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|(
 name|and
 operator|.
 name|equals
@@ -371,7 +370,6 @@ argument_list|(
 literal|""
 argument_list|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -380,10 +378,7 @@ name|p
 argument_list|)
 operator|==
 literal|' '
-operator|)
-operator|)
 operator|||
-operator|(
 name|and
 operator|.
 name|equals
@@ -391,7 +386,6 @@ argument_list|(
 literal|" "
 argument_list|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -400,10 +394,7 @@ name|p
 argument_list|)
 operator|==
 literal|'a'
-operator|)
-operator|)
 operator|||
-operator|(
 name|and
 operator|.
 name|equals
@@ -411,7 +402,6 @@ argument_list|(
 literal|" a"
 argument_list|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -420,10 +410,7 @@ name|p
 argument_list|)
 operator|==
 literal|'n'
-operator|)
-operator|)
 operator|||
-operator|(
 name|and
 operator|.
 name|equals
@@ -431,7 +418,6 @@ argument_list|(
 literal|" an"
 argument_list|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -440,8 +426,6 @@ name|p
 argument_list|)
 operator|==
 literal|'d'
-operator|)
-operator|)
 condition|)
 block|{
 name|and
@@ -464,7 +448,6 @@ argument_list|(
 literal|" and"
 argument_list|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -473,7 +456,6 @@ name|p
 argument_list|)
 operator|==
 literal|' '
-operator|)
 condition|)
 block|{
 name|and
@@ -820,7 +802,6 @@ literal|0
 argument_list|)
 decl_stmt|;
 return|return
-operator|(
 name|author
 operator|.
 name|charAt
@@ -829,9 +810,7 @@ literal|0
 argument_list|)
 operator|==
 literal|'{'
-operator|)
 operator|&&
-operator|(
 name|author
 operator|.
 name|charAt
@@ -845,7 +824,6 @@ literal|1
 argument_list|)
 operator|==
 literal|'}'
-operator|)
 return|;
 block|}
 comment|/**      *<p>      * An author or editor may be and institution not a person. In that case the      * key generator builds very long keys, e.g.: for&ldquo;The Attributed      * Graph Grammar System (AGG)&rdquo; ->      *&ldquo;TheAttributedGraphGrammarSystemAGG&rdquo;.      *</p>      *       *<p>      * An institution name should be inside<code>{}</code> brackets. If the      * institution name also includes its abbreviation this abbreviation should      * be also in<code>{}</code> brackets. For the previous example the value      * should look like:      *<code>{The Attributed Graph Grammar System ({AGG})}</code>.      *</p>      *       *<p>      * If an institution includes its abbreviation, i.e. "...({XYZ})", first      * such abbreviation should be used as the key value part of such author.      *</p>      *       *<p>      * If an institution does not include its abbreviation the key should be      * generated form its name in the following way:      *</p>      *       *<p>      * The institution value can contain: institution name, part of the      * institution, address, etc. Those information should be separated by      * comma. Name of the institution and possible part of the institution      * should be on the beginning, while address and secondary information      * should be on the end.      *</p>      *       * Each part is examined separately:      *<ol>      *<li>We remove all tokens of a part which are one of the defined ignore      * words (the, press), which end with a dot (ltd., co., ...) and which first      * character is lowercase (of, on, di, ...).</li>      *<li>We detect a type of the part: university, technology institute,      * department, school, rest      *<ul>      *<li>University:<code>"Uni[NameOfTheUniversity]"</code></li>      *<li>Department: will be an abbreviation of all words beginning with the      * uppercase letter except of words:<code>d[ei]part.*</code>, school,      * faculty</li>      *<li>School: same as department</li>      *<li>Rest: If there are less than 3 tokens in such part than the result      * will be by concatenating those tokens, otherwise the result will be build      * from the first letters of words starting with and uppercase letter.</li>      *</ul>      *</ol>      *       * Parts are concatenated together in the following way:      *<ul>      *<li>If there is a university part use it otherwise use the rest part.</li>      *<li>If there is a school part append it.</li>      *<li>If there is a department part and it is not same as school part      * append it.</li>      *</ul>      *       * Rest part is only the first part which do not match any other type. All      * other parts (address, ...) are ignored.      *       * @param content the institution to generate a Bibtex key for      * @return<ul>      *<li>the institutation key</li>      *<li>"" in the case of a failure</li>      *<li>null if content is null</li>      *</ul>      */
@@ -1046,7 +1024,6 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 operator|!
 name|k
 operator|.
@@ -1068,7 +1045,6 @@ argument_list|()
 argument_list|)
 comment|// remove ignored words
 operator|&&
-operator|(
 name|k
 operator|.
 name|charAt
@@ -1082,8 +1058,6 @@ literal|1
 argument_list|)
 operator|!=
 literal|'.'
-comment|// remove ltd., co., ...
-operator|)
 operator|&&
 operator|(
 name|k
@@ -1100,18 +1074,13 @@ name|matches
 argument_list|(
 literal|"[A-Z]"
 argument_list|)
-comment|// remove of, di, ...
-operator|)
 operator|||
-operator|(
-operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|3
-operator|)
 operator|&&
 name|k
 operator|.
@@ -1129,7 +1098,6 @@ name|equals
 argument_list|(
 literal|"uni"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|part
@@ -1176,14 +1144,12 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|5
-operator|)
 operator|&&
 name|k
 operator|.
@@ -1210,14 +1176,12 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|6
-operator|)
 operator|&&
 name|k
 operator|.
@@ -1262,15 +1226,12 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
-operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|7
-operator|)
 operator|&&
 name|k
 operator|.
@@ -1288,17 +1249,13 @@ name|matches
 argument_list|(
 literal|"d[ei]part"
 argument_list|)
-operator|)
 operator|||
-operator|(
-operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|4
-operator|)
 operator|&&
 name|k
 operator|.
@@ -1316,7 +1273,6 @@ name|equals
 argument_list|(
 literal|"lab"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|isDepartment
@@ -1359,14 +1315,12 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|5
-operator|)
 operator|&&
 operator|!
 name|k
@@ -1395,17 +1349,13 @@ block|}
 block|}
 if|if
 condition|(
-operator|(
 name|index
 operator|>
 literal|0
-operator|)
 operator|&&
-operator|(
 name|department
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 name|department
@@ -1462,14 +1412,12 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|7
-operator|)
 operator|&&
 operator|!
 name|k
@@ -1667,19 +1615,13 @@ name|school
 operator|)
 operator|+
 operator|(
-operator|(
-operator|(
 name|department
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
-operator|(
 name|school
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|department
 operator|.
@@ -1687,8 +1629,6 @@ name|equals
 argument_list|(
 name|school
 argument_list|)
-operator|)
-operator|)
 condition|?
 literal|""
 else|:
@@ -2043,13 +1983,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|regex
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|!
 name|regex
 operator|.
@@ -2058,7 +1995,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|String
@@ -2133,11 +2069,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|oldKey
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|oldKey
 operator|.
@@ -2184,11 +2118,9 @@ condition|(
 operator|!
 name|alwaysAddLetter
 operator|&&
-operator|(
 name|occurences
 operator|==
 literal|0
-operator|)
 condition|)
 block|{
 comment|// No dupes found, so we can just go ahead.
@@ -2299,11 +2231,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|oldKey
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|oldKey
 operator|.
@@ -2351,11 +2281,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|oldKey
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|oldKey
 operator|.
@@ -2630,14 +2558,12 @@ argument_list|(
 literal|""
 argument_list|)
 operator|&&
-operator|(
 name|modifier
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|2
-operator|)
 condition|)
 block|{
 return|return
@@ -2770,11 +2696,9 @@ else|else
 block|{
 if|if
 condition|(
-operator|(
 name|authString
 operator|==
 literal|null
-operator|)
 operator|||
 name|authString
 operator|.
@@ -4064,19 +3988,15 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|num
 operator|>
 literal|0
-operator|)
 operator|&&
-operator|(
 name|num
 operator|<
 name|keywords
 operator|.
 name|length
-operator|)
 condition|)
 block|{
 name|sb
@@ -4206,7 +4126,6 @@ name|LabelPatternUtil
 operator|.
 name|getAddition
 argument_list|(
-operator|(
 name|number
 operator|/
 name|LabelPatternUtil
@@ -4215,7 +4134,6 @@ name|CHARS
 operator|.
 name|length
 argument_list|()
-operator|)
 operator|-
 literal|1
 argument_list|)
@@ -4268,11 +4186,9 @@ block|{
 name|String
 name|ss
 init|=
-operator|(
 operator|new
 name|RemoveLatexCommands
 argument_list|()
-operator|)
 operator|.
 name|format
 argument_list|(
@@ -4308,20 +4224,16 @@ name|mainl
 label|:
 while|while
 condition|(
-operator|(
 name|piv
 operator|<
 name|ss
 operator|.
 name|length
 argument_list|()
-operator|)
 operator|&&
-operator|(
 name|words
 operator|<
 name|number
-operator|)
 condition|)
 block|{
 name|current
@@ -4333,14 +4245,12 @@ expr_stmt|;
 comment|// Get the next word:
 while|while
 condition|(
-operator|(
 name|piv
 operator|<
 name|ss
 operator|.
 name|length
 argument_list|()
-operator|)
 operator|&&
 operator|!
 name|Character
@@ -4355,7 +4265,6 @@ name|piv
 argument_list|)
 argument_list|)
 operator|&&
-operator|(
 name|ss
 operator|.
 name|charAt
@@ -4364,7 +4273,6 @@ name|piv
 argument_list|)
 operator|!=
 literal|'-'
-operator|)
 condition|)
 block|{
 name|current
@@ -5177,7 +5085,6 @@ decl_stmt|;
 name|int
 name|max
 init|=
-operator|(
 name|tokens
 operator|.
 name|length
@@ -5189,7 +5096,6 @@ else|:
 name|tokens
 operator|.
 name|length
-operator|)
 decl_stmt|;
 if|if
 condition|(
@@ -5232,13 +5138,11 @@ literal|0
 init|;
 name|j
 operator|<
-operator|(
 name|firstAuthor
 operator|.
 name|length
 operator|-
 literal|1
-operator|)
 condition|;
 name|j
 operator|++
@@ -5442,19 +5346,15 @@ literal|0
 decl_stmt|;
 while|while
 condition|(
-operator|(
 name|tokens
 operator|.
 name|length
 operator|>
 name|i
-operator|)
 operator|&&
-operator|(
 name|i
 operator|<
 name|n
-operator|)
 condition|)
 block|{
 comment|// convert lastname, firstname to firstname lastname
@@ -5958,25 +5858,19 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|tokens
 operator|.
 name|length
 operator|<=
 name|m
-operator|)
 operator|||
-operator|(
 name|n
 operator|<
 literal|0
-operator|)
 operator|||
-operator|(
 name|m
 operator|<
 literal|0
-operator|)
 condition|)
 block|{
 return|return
@@ -6116,19 +6010,15 @@ condition|)
 block|{
 while|while
 condition|(
-operator|(
 name|tokens
 operator|.
 name|length
 operator|>
 name|i
-operator|)
 operator|&&
-operator|(
 name|i
 operator|<
 literal|3
-operator|)
 condition|)
 block|{
 name|author
@@ -6271,13 +6161,11 @@ if|if
 condition|(
 name|i
 operator|<
-operator|(
 name|n
 operator|%
 name|tokens
 operator|.
 name|length
-operator|)
 condition|)
 block|{
 name|author
@@ -6598,7 +6486,6 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|arg
 operator|.
 name|charAt
@@ -6607,16 +6494,13 @@ name|i
 argument_list|)
 operator|==
 literal|':'
-operator|)
 operator|&&
 operator|!
 name|escaped
 operator|&&
-operator|(
 name|inParenthesis
 operator|==
 literal|0
-operator|)
 condition|)
 block|{
 name|parts
@@ -6639,7 +6523,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|arg
 operator|.
 name|charAt
@@ -6648,7 +6531,6 @@ name|i
 argument_list|)
 operator|==
 literal|'('
-operator|)
 operator|&&
 operator|!
 name|escaped
@@ -6673,7 +6555,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|arg
 operator|.
 name|charAt
@@ -6682,16 +6563,13 @@ name|i
 argument_list|)
 operator|==
 literal|')'
-operator|)
 operator|&&
 operator|!
 name|escaped
 operator|&&
-operator|(
 name|inParenthesis
 operator|>
 literal|0
-operator|)
 condition|)
 block|{
 name|inParenthesis

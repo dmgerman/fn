@@ -474,26 +474,21 @@ block|{
 name|int
 name|code
 init|=
-operator|(
 name|fieldText
 operator|.
 name|charAt
 argument_list|(
 name|i
 argument_list|)
-operator|)
 decl_stmt|;
 comment|// Checking the case when the character is already escaped
 comment|// Just push "&#" to the buffer and keep going from the next char
 if|if
 condition|(
-operator|(
 name|code
 operator|==
 literal|38
-operator|)
 operator|&&
-operator|(
 name|fieldText
 operator|.
 name|charAt
@@ -504,7 +499,6 @@ literal|1
 argument_list|)
 operator|==
 literal|35
-operator|)
 condition|)
 block|{
 name|i
@@ -520,24 +514,20 @@ argument_list|)
 expr_stmt|;
 name|code
 operator|=
-operator|(
 name|fieldText
 operator|.
 name|charAt
 argument_list|(
 name|i
 argument_list|)
-operator|)
 expr_stmt|;
 block|}
 comment|// TODO: Check whether> 125 is correct here or whether it should rather be>=
 if|if
 condition|(
-operator|(
 name|code
 operator|>
 literal|125
-operator|)
 operator|||
 name|forceReplace
 index|[

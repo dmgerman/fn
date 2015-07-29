@@ -185,7 +185,6 @@ comment|// in the same way. Check for this, too.
 name|boolean
 name|modificationsAgree
 init|=
-operator|(
 name|DuplicateCheck
 operator|.
 name|compareEntriesStrictly
@@ -196,7 +195,6 @@ name|diskEntry
 argument_list|)
 operator|>
 literal|1
-operator|)
 decl_stmt|;
 comment|//Util.pr("Modified entry: "+memEntry.getCiteKey()+"\n Modified locally: "+isModifiedLocally
 comment|//        +" Modifications agree: "+modificationsAgree);
@@ -281,17 +279,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|tmp
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|disk
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 if|if
@@ -330,17 +324,13 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|tmp
 operator|==
 literal|null
-operator|)
 operator|&&
-operator|(
 name|disk
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|disk
@@ -348,17 +338,13 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|||
-operator|(
 name|disk
 operator|==
 literal|null
-operator|)
 operator|&&
-operator|(
 name|tmp
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|tmp
@@ -366,11 +352,9 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|&&
-operator|(
 name|mem
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|mem
@@ -676,11 +660,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|onDisk
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|onDisk
@@ -746,11 +728,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|inMem
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|inMem
@@ -791,11 +771,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|onTmp
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|onTmp

@@ -565,13 +565,11 @@ name|alwaysCapitalizeLastWord
 init|=
 name|i
 operator|==
-operator|(
 name|words
 operator|.
 name|length
 operator|-
 literal|1
-operator|)
 decl_stmt|;
 if|if
 condition|(

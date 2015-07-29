@@ -3297,13 +3297,11 @@ specifier|final
 name|JDialog
 name|progDiag
 init|=
-operator|(
 operator|new
 name|AutoDetectPaths
 argument_list|(
 name|diag
 argument_list|)
-operator|)
 operator|.
 name|showProgressDialog
 argument_list|(

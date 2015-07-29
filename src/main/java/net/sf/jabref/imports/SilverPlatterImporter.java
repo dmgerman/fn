@@ -265,16 +265,13 @@ comment|// This is an inspec file, so return false.
 block|}
 if|if
 condition|(
-operator|(
 name|str
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|5
-operator|)
 operator|&&
-operator|(
 name|str
 operator|.
 name|substring
@@ -288,7 +285,6 @@ name|equals
 argument_list|(
 literal|"TI:  "
 argument_list|)
-operator|)
 condition|)
 block|{
 return|return
@@ -992,11 +988,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|m
 operator|+
 literal|2
-operator|)
 operator|<
 name|frest
 operator|.

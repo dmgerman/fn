@@ -311,11 +311,9 @@ argument_list|(
 name|lastC
 argument_list|)
 operator|&&
-operator|(
 name|lastC
 operator|!=
 literal|')'
-operator|)
 condition|)
 block|{
 comment|// if there is an asterix, a dot or something else at the end: remove it
@@ -672,7 +670,6 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|splitNames
 index|[
 name|i
@@ -682,21 +679,15 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"et"
 argument_list|)
-operator|)
 operator|&&
-operator|(
 name|splitNames
 operator|.
 name|length
 operator|>
-operator|(
 name|i
 operator|+
 literal|1
-operator|)
-operator|)
 operator|&&
-operator|(
 name|splitNames
 index|[
 name|i
@@ -708,7 +699,6 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"al."
 argument_list|)
-operator|)
 condition|)
 block|{
 name|res
@@ -805,7 +795,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 operator|!
 name|splitNames
 index|[
@@ -814,7 +803,6 @@ index|]
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 operator|&&
 name|Character
 operator|.
@@ -1407,15 +1395,12 @@ literal|null
 expr_stmt|;
 while|while
 condition|(
-operator|(
 name|i
 operator|<
 name|split
 operator|.
 name|length
-operator|)
 operator|&&
-operator|(
 operator|!
 name|split
 index|[
@@ -1426,7 +1411,6 @@ name|equals
 argument_list|(
 literal|""
 argument_list|)
-operator|)
 condition|)
 block|{
 comment|// author names are unlikely to be split among different lines
@@ -1515,7 +1499,6 @@ index|]
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|curString
 operator|.
 name|length
@@ -1525,9 +1508,7 @@ literal|"Abstract"
 operator|.
 name|length
 argument_list|()
-operator|)
 operator|&&
-operator|(
 name|curString
 operator|.
 name|substring
@@ -1544,7 +1525,6 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"Abstract"
 argument_list|)
-operator|)
 condition|)
 block|{
 if|if
@@ -1598,15 +1578,12 @@ comment|// fillCurStringWithNonEmptyLines() cannot be used as that uses " " as l
 comment|// whereas we need linebreak as separator
 while|while
 condition|(
-operator|(
 name|i
 operator|<
 name|split
 operator|.
 name|length
-operator|)
 operator|&&
-operator|(
 operator|!
 name|split
 index|[
@@ -1617,7 +1594,6 @@ name|equals
 argument_list|(
 literal|""
 argument_list|)
-operator|)
 condition|)
 block|{
 name|curString
@@ -1652,7 +1628,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|curString
 operator|.
 name|length
@@ -1662,9 +1637,7 @@ literal|"Keywords"
 operator|.
 name|length
 argument_list|()
-operator|)
 operator|&&
-operator|(
 name|curString
 operator|.
 name|substring
@@ -1681,7 +1654,6 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"Keywords"
 argument_list|)
-operator|)
 condition|)
 block|{
 if|if
@@ -1850,17 +1822,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|pos
 operator|>=
 literal|0
-operator|)
 operator|&&
-operator|(
 name|publisher
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 comment|// looks like a Springer last line
@@ -2069,17 +2037,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|delimiter
 operator|==
 literal|':'
-operator|)
 operator|||
-operator|(
 name|delimiter
 operator|==
 literal|' '
-operator|)
 condition|)
 block|{
 name|pos
@@ -2133,20 +2097,16 @@ block|}
 block|}
 if|if
 condition|(
-operator|(
 name|publisher
 operator|==
 literal|null
-operator|)
 operator|&&
-operator|(
 name|curString
 operator|.
 name|contains
 argument_list|(
 literal|"IEEE"
 argument_list|)
-operator|)
 condition|)
 block|{
 comment|// IEEE has the conference things at the end
@@ -2192,13 +2152,10 @@ literal|2
 expr_stmt|;
 while|while
 condition|(
-operator|(
 name|pos
 operator|>=
 literal|0
-operator|)
 operator|&&
-operator|(
 name|curString
 operator|.
 name|charAt
@@ -2207,7 +2164,6 @@ name|pos
 argument_list|)
 operator|!=
 literal|' '
-operator|)
 condition|)
 block|{
 name|pos
@@ -2641,15 +2597,12 @@ parameter_list|()
 block|{
 while|while
 condition|(
-operator|(
 name|i
 operator|<
 name|split
 operator|.
 name|length
-operator|)
 operator|&&
-operator|(
 name|split
 index|[
 name|i
@@ -2662,7 +2615,6 @@ name|equals
 argument_list|(
 literal|""
 argument_list|)
-operator|)
 condition|)
 block|{
 name|i
@@ -2687,15 +2639,12 @@ argument_list|()
 expr_stmt|;
 while|while
 condition|(
-operator|(
 name|i
 operator|<
 name|split
 operator|.
 name|length
-operator|)
 operator|&&
-operator|(
 operator|!
 name|split
 index|[
@@ -2706,7 +2655,6 @@ name|equals
 argument_list|(
 literal|""
 argument_list|)
-operator|)
 condition|)
 block|{
 name|String
@@ -2781,13 +2729,10 @@ parameter_list|()
 block|{
 while|while
 condition|(
-operator|(
 name|i
 operator|>=
 literal|0
-operator|)
 operator|&&
-operator|(
 name|split
 index|[
 name|i
@@ -2800,7 +2745,6 @@ name|equals
 argument_list|(
 literal|""
 argument_list|)
-operator|)
 condition|)
 block|{
 name|i
@@ -2816,13 +2760,10 @@ decl_stmt|;
 comment|// find beginning
 while|while
 condition|(
-operator|(
 name|i
 operator|>=
 literal|0
-operator|)
 operator|&&
-operator|(
 operator|!
 name|split
 index|[
@@ -2833,7 +2774,6 @@ name|equals
 argument_list|(
 literal|""
 argument_list|)
-operator|)
 condition|)
 block|{
 name|i

@@ -382,7 +382,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|e
 operator|.
 name|getButton
@@ -391,16 +390,13 @@ operator|!=
 name|MouseEvent
 operator|.
 name|BUTTON1
-operator|)
 operator|&&
-operator|(
 name|e
 operator|.
 name|getClickCount
 argument_list|()
 operator|==
 literal|1
-operator|)
 condition|)
 block|{
 comment|// if is right-click

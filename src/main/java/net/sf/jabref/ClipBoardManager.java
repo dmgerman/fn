@@ -238,11 +238,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|contents
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|contents
 operator|.

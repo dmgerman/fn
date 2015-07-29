@@ -621,11 +621,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|target
 operator|==
 literal|null
-operator|)
 operator|||
 name|dragNode
 operator|.
@@ -634,11 +632,9 @@ argument_list|(
 name|target
 argument_list|)
 operator|||
-operator|(
 name|dragNode
 operator|==
 name|target
-operator|)
 condition|)
 block|{
 name|dsde
@@ -905,7 +901,6 @@ block|}
 comment|// auto open
 if|if
 condition|(
-operator|(
 name|Math
 operator|.
 name|abs
@@ -922,9 +917,7 @@ operator|<
 name|GroupsTree
 operator|.
 name|idleMargin
-operator|)
 operator|&&
-operator|(
 name|Math
 operator|.
 name|abs
@@ -941,16 +934,13 @@ operator|<
 name|GroupsTree
 operator|.
 name|idleMargin
-operator|)
 condition|)
 block|{
 if|if
 condition|(
-operator|(
 name|currentTime
 operator|-
 name|idleStartTime
-operator|)
 operator|>=
 name|GroupsTree
 operator|.
@@ -986,13 +976,11 @@ block|}
 comment|// autoscrolling
 if|if
 condition|(
-operator|(
 name|currentTime
 operator|-
 name|GroupsTree
 operator|.
 name|lastDragAutoscroll
-operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -1012,7 +1000,6 @@ specifier|final
 name|boolean
 name|scrollUp
 init|=
-operator|(
 name|cursor
 operator|.
 name|y
@@ -1020,7 +1007,6 @@ operator|-
 name|r
 operator|.
 name|y
-operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -1030,8 +1016,6 @@ specifier|final
 name|boolean
 name|scrollDown
 init|=
-operator|(
-operator|(
 name|r
 operator|.
 name|y
@@ -1039,12 +1023,10 @@ operator|+
 name|r
 operator|.
 name|height
-operator|)
 operator|-
 name|cursor
 operator|.
 name|y
-operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -1054,7 +1036,6 @@ specifier|final
 name|boolean
 name|scrollLeft
 init|=
-operator|(
 name|cursor
 operator|.
 name|x
@@ -1062,7 +1043,6 @@ operator|-
 name|r
 operator|.
 name|x
-operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -1072,8 +1052,6 @@ specifier|final
 name|boolean
 name|scrollRight
 init|=
-operator|(
-operator|(
 name|r
 operator|.
 name|x
@@ -1081,12 +1059,10 @@ operator|+
 name|r
 operator|.
 name|width
-operator|)
 operator|-
 name|cursor
 operator|.
 name|x
-operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -2350,12 +2326,10 @@ argument_list|(
 operator|new
 name|TreePath
 argument_list|(
-operator|(
 name|e
 operator|.
 name|nextElement
 argument_list|()
-operator|)
 operator|.
 name|getPath
 argument_list|()

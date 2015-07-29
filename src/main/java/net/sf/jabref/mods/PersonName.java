@@ -299,11 +299,9 @@ literal|1
 init|;
 name|i
 operator|<
-operator|(
 name|amountOfNames
 operator|-
 literal|1
-operator|)
 condition|;
 name|i
 operator|++
@@ -467,11 +465,9 @@ literal|""
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|givenName
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|givenName
@@ -489,11 +485,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|middleName
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|middleName
@@ -511,11 +505,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|surname
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|surname

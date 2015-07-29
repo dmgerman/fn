@@ -250,7 +250,6 @@ name|name
 parameter_list|)
 block|{
 return|return
-operator|(
 name|components
 operator|.
 name|get
@@ -259,7 +258,6 @@ name|name
 argument_list|)
 operator|!=
 literal|null
-operator|)
 return|;
 block|}
 DECL|method|isComponentVisible (String name)
@@ -1017,7 +1015,6 @@ comment|// Manually provide default values, since getOrDefault() doesn't exist p
 name|int
 name|pos1
 init|=
-operator|(
 name|preferredPositions
 operator|.
 name|containsKey
@@ -1033,12 +1030,10 @@ name|comp1Name
 argument_list|)
 else|:
 literal|0
-operator|)
 decl_stmt|;
 name|int
 name|pos2
 init|=
-operator|(
 name|preferredPositions
 operator|.
 name|containsKey
@@ -1054,7 +1049,6 @@ name|comp2Name
 argument_list|)
 else|:
 literal|0
-operator|)
 decl_stmt|;
 return|return
 name|Integer
@@ -1174,14 +1168,12 @@ if|if
 condition|(
 name|currIndex
 operator|<
-operator|(
 name|visible
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|int

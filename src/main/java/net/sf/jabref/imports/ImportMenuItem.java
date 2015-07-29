@@ -496,7 +496,6 @@ name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
-operator|(
 name|importer
 operator|!=
 literal|null
@@ -507,26 +506,21 @@ name|getExtensions
 argument_list|()
 else|:
 literal|null
-operator|)
 argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|filenames
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|filenames
 operator|.
 name|length
 operator|>
 literal|0
-operator|)
 condition|)
 block|{
 name|frame
@@ -966,7 +960,6 @@ operator|.
 name|USE_IMPORT_INSPECTION_DIALOG_FOR_SINGLE
 argument_list|)
 operator|||
-operator|(
 name|bibtexResult
 operator|.
 name|getDatabase
@@ -976,7 +969,6 @@ name|getEntryCount
 argument_list|()
 operator|>
 literal|1
-operator|)
 operator|)
 condition|)
 block|{
@@ -1547,8 +1539,6 @@ name|anythingUseful
 operator|=
 name|anythingUseful
 operator|||
-operator|(
-operator|(
 name|pr
 operator|.
 name|getDatabase
@@ -1558,9 +1548,7 @@ name|getEntryCount
 argument_list|()
 operator|>
 literal|0
-operator|)
 operator|||
-operator|(
 name|pr
 operator|.
 name|getDatabase
@@ -1570,8 +1558,6 @@ name|getStringCount
 argument_list|()
 operator|>
 literal|0
-operator|)
-operator|)
 expr_stmt|;
 comment|// Record the parserResult, as long as this is the first bibtex result:
 if|if
@@ -1678,13 +1664,11 @@ name|anythingUseful
 operator|=
 name|anythingUseful
 operator||
-operator|(
 operator|!
 name|entries
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 expr_stmt|;
 comment|// set timestamp and owner
 name|Util
@@ -1761,20 +1745,16 @@ return|;
 block|}
 if|if
 condition|(
-operator|(
 name|imports
 operator|.
 name|size
 argument_list|()
 operator|==
 literal|1
-operator|)
 operator|&&
-operator|(
 name|directParserResult
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 return|return

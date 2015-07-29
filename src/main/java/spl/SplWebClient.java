@@ -587,7 +587,6 @@ decl_stmt|;
 comment|//System.out.println(response.getEntity(String.class));
 if|if
 condition|(
-operator|(
 name|response
 operator|.
 name|getStatusInfo
@@ -604,7 +603,6 @@ name|OK
 operator|.
 name|getStatusCode
 argument_list|()
-operator|)
 operator|&&
 name|response
 operator|.
@@ -988,7 +986,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|response
 operator|.
 name|getStatusInfo
@@ -1005,7 +1002,6 @@ name|OK
 operator|.
 name|getStatusCode
 argument_list|()
-operator|)
 operator|&&
 name|response
 operator|.
@@ -1096,7 +1092,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|response
 operator|.
 name|getStatusInfo
@@ -1113,7 +1108,6 @@ name|OK
 operator|.
 name|getStatusCode
 argument_list|()
-operator|)
 operator|&&
 name|response
 operator|.
@@ -1135,11 +1129,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|entity
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|entity
 operator|.

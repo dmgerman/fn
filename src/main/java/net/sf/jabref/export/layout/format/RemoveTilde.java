@@ -204,26 +204,20 @@ expr_stmt|;
 comment|// Skip the next character if the current one is a backslash
 if|if
 condition|(
-operator|(
 name|c
 index|[
 name|i
 index|]
 operator|==
 literal|'\\'
-operator|)
 operator|&&
-operator|(
-operator|(
 name|i
 operator|+
 literal|1
-operator|)
 operator|<
 name|c
 operator|.
 name|length
-operator|)
 condition|)
 block|{
 name|i

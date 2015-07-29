@@ -115,7 +115,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|e
 operator|.
 name|getType
@@ -126,7 +125,6 @@ operator|.
 name|ChangeType
 operator|.
 name|ADDED_ENTRY
-operator|)
 operator|&&
 name|SpecialFieldsUtils
 operator|.

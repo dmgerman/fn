@@ -770,11 +770,9 @@ decl_stmt|;
 comment|// Check if a extension is set:
 if|if
 condition|(
-operator|(
 name|old
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|old
@@ -927,11 +925,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|file
 operator|==
 literal|null
-operator|)
 operator|||
 operator|!
 name|file
@@ -1123,14 +1119,12 @@ condition|(
 operator|!
 name|deleted
 operator|&&
-operator|(
 name|flEntry
 operator|.
 name|getType
 argument_list|()
 operator|instanceof
 name|UnknownExternalFileType
-operator|)
 condition|)
 block|{
 name|String

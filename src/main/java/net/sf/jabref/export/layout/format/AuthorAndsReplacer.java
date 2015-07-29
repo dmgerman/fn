@@ -147,11 +147,9 @@ literal|0
 init|;
 name|i
 operator|<
-operator|(
 name|x
 operator|-
 literal|2
-operator|)
 condition|;
 name|i
 operator|++

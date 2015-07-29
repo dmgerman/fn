@@ -373,17 +373,13 @@ name|o
 parameter_list|)
 block|{
 return|return
-operator|(
 name|o
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|o
 operator|instanceof
 name|Importer
-operator|)
 operator|&&
 name|this
 operator|.

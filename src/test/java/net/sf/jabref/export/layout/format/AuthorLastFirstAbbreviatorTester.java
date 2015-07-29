@@ -242,11 +242,9 @@ name|name
 parameter_list|)
 block|{
 return|return
-operator|(
 operator|new
 name|AuthorLastFirstAbbreviator
 argument_list|()
-operator|)
 operator|.
 name|format
 argument_list|(

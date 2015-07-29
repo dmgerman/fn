@@ -188,11 +188,9 @@ argument_list|)
 decl_stmt|;
 while|while
 condition|(
-operator|(
 name|s
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|s

@@ -2169,13 +2169,11 @@ expr_stmt|;
 comment|// english in base help dir.
 block|}
 return|return
-operator|(
 name|GUIGlobals
 operator|.
 name|helpPre
 operator|+
 name|middle
-operator|)
 return|;
 block|}
 comment|/**      * Perform initializations that are only used in graphical mode. This is to prevent      * the "Xlib: connection to ":0.0" refused by server" error when access to the X server      * on Un*x is unavailable.      */

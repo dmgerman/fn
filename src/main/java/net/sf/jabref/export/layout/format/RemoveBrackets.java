@@ -181,7 +181,6 @@ block|{
 comment|//System.out.print(fieldEntry.charAt(i));
 if|if
 condition|(
-operator|(
 name|fieldEntry
 operator|.
 name|charAt
@@ -190,9 +189,7 @@ name|i
 argument_list|)
 operator|!=
 literal|'{'
-operator|)
 operator|&&
-operator|(
 name|fieldEntry
 operator|.
 name|charAt
@@ -201,7 +198,6 @@ name|i
 argument_list|)
 operator|!=
 literal|'}'
-operator|)
 condition|)
 block|{
 comment|//System.out.print(fieldEntry.charAt(i));

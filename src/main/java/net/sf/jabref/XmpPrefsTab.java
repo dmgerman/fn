@@ -929,14 +929,12 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|rows
 index|[
 name|i
 index|]
 operator|+
 name|i
-operator|)
 operator|<
 name|tableRows
 operator|.
@@ -1116,7 +1114,6 @@ if|if
 condition|(
 name|tableChanged
 operator|||
-operator|(
 name|privacyFilterCheckBox
 operator|.
 name|isSelected
@@ -1133,7 +1130,6 @@ name|JabRefPreferences
 operator|.
 name|XMP_PRIVACY_FILTERS
 argument_list|)
-operator|)
 condition|)
 block|{
 comment|// First we remove all rows with empty names.

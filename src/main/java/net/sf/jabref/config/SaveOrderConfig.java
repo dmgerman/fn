@@ -439,9 +439,7 @@ block|}
 else|else
 block|{
 assert|assert
-operator|(
 name|saveInSpecifiedOrder
-operator|)
 assert|;
 name|res
 operator|.

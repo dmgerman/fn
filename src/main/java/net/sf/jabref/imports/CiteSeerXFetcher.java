@@ -447,7 +447,6 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
-operator|(
 name|nextPage
 operator|=
 name|getCitationsFromUrl
@@ -459,15 +458,12 @@ argument_list|)
 operator|)
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|count
 operator|<
 name|CiteSeerXFetcher
 operator|.
 name|MAX_PAGES_TO_LOAD
-operator|)
 condition|)
 block|{
 name|urlQuery

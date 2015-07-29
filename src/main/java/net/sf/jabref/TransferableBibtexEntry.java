@@ -182,7 +182,6 @@ name|flavor
 parameter_list|)
 block|{
 return|return
-operator|(
 name|flavor
 operator|.
 name|equals
@@ -200,7 +199,6 @@ name|DataFlavor
 operator|.
 name|stringFlavor
 argument_list|)
-operator|)
 return|;
 block|}
 annotation|@

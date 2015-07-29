@@ -214,19 +214,15 @@ decl_stmt|;
 comment|// Only handle keys that are actually set:
 if|if
 condition|(
-operator|(
 name|key
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|!
 name|key
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 comment|// See whether this entry's key is already known:

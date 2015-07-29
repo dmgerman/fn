@@ -405,17 +405,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|year1
 operator|<
 literal|2000
-operator|)
 operator|&&
-operator|(
 name|year2
 operator|>=
 literal|2000
-operator|)
 condition|)
 block|{
 comment|//for 199.
@@ -503,7 +499,6 @@ block|}
 block|}
 if|if
 condition|(
-operator|(
 name|Integer
 operator|.
 name|parseInt
@@ -515,13 +510,10 @@ index|]
 argument_list|)
 operator|>=
 literal|2000
-operator|)
 operator|&&
-operator|(
 name|year1
 operator|<
 literal|2000
-operator|)
 condition|)
 block|{
 comment|//for 200.

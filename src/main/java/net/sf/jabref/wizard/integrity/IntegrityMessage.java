@@ -285,17 +285,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|back
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|fieldName
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 name|back

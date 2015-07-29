@@ -1684,14 +1684,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|useDefault
 operator|.
 name|isSelected
 argument_list|()
 operator|==
 name|oldUseDef
-operator|)
 operator|||
 operator|!
 name|oldLnf

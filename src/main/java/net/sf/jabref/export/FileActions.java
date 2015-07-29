@@ -421,14 +421,12 @@ name|getName
 argument_list|()
 argument_list|)
 operator|&&
-operator|(
 name|bs
 operator|.
 name|getType
 argument_list|()
 operator|==
 name|t
-operator|)
 condition|)
 block|{
 name|FileActions
@@ -706,11 +704,9 @@ block|{
 name|String
 name|formatted
 init|=
-operator|(
 operator|new
 name|LatexFieldFormatter
 argument_list|()
-operator|)
 operator|.
 name|format
 argument_list|(
@@ -1411,11 +1407,9 @@ expr_stmt|;
 block|}
 comment|// This case should never be hit as SaveSettings() is never called if InOriginalOrder is true
 assert|assert
-operator|(
 name|storedSaveOrderConfig
 operator|==
 literal|null
-operator|)
 operator|&&
 name|isSaveOperation
 operator|&&
@@ -1432,11 +1426,9 @@ name|SAVE_IN_ORIGINAL_ORDER
 argument_list|)
 assert|;
 assert|assert
-operator|(
 name|storedSaveOrderConfig
 operator|==
 literal|null
-operator|)
 operator|&&
 operator|!
 name|isSaveOperation
@@ -1471,19 +1463,15 @@ name|storedSaveOrderConfig
 argument_list|)
 decl_stmt|;
 assert|assert
-operator|(
 operator|!
 name|saveOrderConfig
 operator|.
 name|saveInOriginalOrder
-operator|)
 assert|;
 assert|assert
-operator|(
 name|saveOrderConfig
 operator|.
 name|saveInSpecifiedOrder
-operator|)
 assert|;
 name|pri
 operator|=
@@ -2211,9 +2199,7 @@ control|)
 block|{
 name|be
 operator|=
-operator|(
 name|aSorter
-operator|)
 expr_stmt|;
 comment|// Check if we must write the type definition for this
 comment|// entry, as well. Our criterion is that all non-standard
@@ -2276,19 +2262,15 @@ block|}
 comment|// Write meta data.
 if|if
 condition|(
-operator|(
 name|saveType
 operator|!=
 name|DatabaseSaveType
 operator|.
 name|PLAIN_BIBTEX
-operator|)
 operator|&&
-operator|(
 name|metaData
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 name|metaData
@@ -2778,12 +2760,10 @@ name|database
 operator|.
 name|getEntryById
 argument_list|(
-operator|(
 name|i
 operator|.
 name|next
 argument_list|()
-operator|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2819,22 +2799,17 @@ block|{
 name|String
 name|o
 init|=
-operator|(
 name|be
 operator|.
 name|getField
 argument_list|(
 name|field
 argument_list|)
-operator|)
 decl_stmt|;
 return|return
-operator|(
-operator|(
 name|o
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|o
@@ -2843,7 +2818,6 @@ name|equals
 argument_list|(
 literal|"0"
 argument_list|)
-operator|)
 return|;
 block|}
 block|}

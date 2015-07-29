@@ -213,7 +213,6 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
-operator|(
 name|str
 operator|=
 name|in
@@ -223,13 +222,10 @@ argument_list|()
 operator|)
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|i
 operator|<
 literal|50
-operator|)
 condition|)
 block|{
 if|if
@@ -743,7 +739,6 @@ argument_list|(
 literal|"Inventor Name"
 argument_list|)
 operator|&&
-operator|(
 operator|!
 name|tmp
 index|[
@@ -755,7 +750,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|hm

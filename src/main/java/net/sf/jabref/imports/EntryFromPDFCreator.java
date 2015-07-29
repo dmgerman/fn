@@ -272,11 +272,9 @@ name|f
 parameter_list|)
 block|{
 return|return
-operator|(
 name|f
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|f
 operator|.
@@ -372,7 +370,6 @@ name|jrf
 argument_list|)
 decl_stmt|;
 assert|assert
-operator|(
 name|res
 operator|.
 name|entries
@@ -381,7 +378,6 @@ name|size
 argument_list|()
 operator|==
 literal|1
-operator|)
 assert|;
 return|return
 name|res

@@ -196,11 +196,9 @@ name|specificEntry
 parameter_list|()
 block|{
 return|return
-operator|(
 name|entry
 operator|!=
 literal|null
-operator|)
 return|;
 block|}
 block|}

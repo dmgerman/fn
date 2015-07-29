@@ -228,7 +228,6 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
-operator|(
 name|str
 operator|=
 name|in
@@ -238,13 +237,10 @@ argument_list|()
 operator|)
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|i
 operator|<
 literal|50
-operator|)
 condition|)
 block|{
 if|if

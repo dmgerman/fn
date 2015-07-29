@@ -249,13 +249,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|winEdt
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|winEdt
 operator|.
 name|trim
@@ -263,7 +260,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|notDefined

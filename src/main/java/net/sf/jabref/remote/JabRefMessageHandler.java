@@ -217,11 +217,9 @@ name|addParserResult
 argument_list|(
 name|pr
 argument_list|,
-operator|(
 name|i
 operator|==
 literal|0
-operator|)
 argument_list|)
 expr_stmt|;
 block|}

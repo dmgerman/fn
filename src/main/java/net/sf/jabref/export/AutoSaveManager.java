@@ -616,7 +616,6 @@ operator|.
 name|exists
 argument_list|()
 operator|&&
-operator|(
 name|asFile
 operator|.
 name|lastModified
@@ -626,7 +625,6 @@ name|f
 operator|.
 name|lastModified
 argument_list|()
-operator|)
 return|;
 block|}
 block|}

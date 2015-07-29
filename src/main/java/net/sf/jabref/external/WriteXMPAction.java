@@ -650,16 +650,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|flEntry
 operator|.
 name|getType
 argument_list|()
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|flEntry
 operator|.
 name|getType
@@ -675,7 +672,6 @@ name|equals
 argument_list|(
 literal|"pdf"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|f

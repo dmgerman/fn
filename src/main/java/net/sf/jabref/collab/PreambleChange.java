@@ -210,11 +210,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|disk
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|disk
@@ -285,11 +283,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|mem
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|mem

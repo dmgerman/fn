@@ -131,11 +131,9 @@ name|check
 parameter_list|)
 block|{
 return|return
-operator|(
 name|check
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|check
 operator|.
@@ -161,11 +159,9 @@ name|check
 parameter_list|)
 block|{
 return|return
-operator|(
 name|check
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|check
 operator|.

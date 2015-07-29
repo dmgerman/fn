@@ -77,11 +77,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|path
 operator|==
 literal|null
-operator|)
 operator|||
 name|path
 operator|.

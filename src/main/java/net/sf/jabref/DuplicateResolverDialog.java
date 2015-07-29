@@ -845,13 +845,11 @@ init|=
 operator|new
 name|TitleLabel
 argument_list|(
-operator|(
 name|type
 operator|==
 name|DuplicateResolverDialog
 operator|.
 name|DUPLICATE_SEARCH
-operator|)
 condition|?
 literal|""
 else|:
@@ -953,13 +951,11 @@ operator|=
 operator|new
 name|TitleLabel
 argument_list|(
-operator|(
 name|type
 operator|==
 name|DuplicateResolverDialog
 operator|.
 name|DUPLICATE_SEARCH
-operator|)
 condition|?
 literal|""
 else|:

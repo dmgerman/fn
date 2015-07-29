@@ -67,11 +67,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|s
 operator|==
 literal|null
-operator|)
 operator|||
 name|s
 operator|.

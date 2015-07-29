@@ -7635,13 +7635,11 @@ literal|0
 init|;
 name|i
 operator|<
-operator|(
 name|value
 operator|.
 name|length
 operator|-
 literal|1
-operator|)
 condition|;
 name|i
 operator|++
@@ -8888,19 +8886,14 @@ decl_stmt|;
 comment|// Then set up the key bindings HashMap.
 if|if
 condition|(
-operator|(
 name|bindNames
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|bindings
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|bindNames
 operator|.
 name|length
@@ -8908,7 +8901,6 @@ operator|!=
 name|bindings
 operator|.
 name|length
-operator|)
 condition|)
 block|{
 comment|// Nothing defined in Preferences, or something is wrong.
@@ -8999,7 +8991,6 @@ operator|!
 name|done
 operator|&&
 operator|(
-operator|(
 name|c
 operator|=
 name|data
@@ -9010,7 +9001,6 @@ operator|)
 operator|!=
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 if|if
@@ -9182,17 +9172,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|c
 operator|==
 literal|'\\'
-operator|)
 operator|||
-operator|(
 name|c
 operator|==
 literal|';'
-operator|)
 condition|)
 block|{
 name|sb
@@ -10036,14 +10022,12 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|type
 operator|.
 name|getExtension
 argument_list|()
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|type
 operator|.
@@ -10096,14 +10080,12 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|type
 operator|.
 name|getExtension
 argument_list|()
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|filename
 operator|.
@@ -10176,14 +10158,12 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|type
 operator|.
 name|getMimeType
 argument_list|()
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|type
 operator|.
@@ -10552,15 +10532,12 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|val
 operator|.
 name|length
 operator|==
 literal|2
-operator|)
 operator|&&
-operator|(
 name|val
 index|[
 literal|1
@@ -10572,7 +10549,6 @@ name|JabRefPreferences
 operator|.
 name|FILE_TYPE_REMOVED_FLAG
 argument_list|)
-operator|)
 condition|)
 block|{
 comment|// This entry indicates that a default entry type should be removed:

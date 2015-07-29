@@ -323,13 +323,10 @@ decl_stmt|;
 comment|// First try the DOI link, if defined:
 if|if
 condition|(
-operator|(
 name|doiText
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|!
 name|doiText
 operator|.
@@ -338,7 +335,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|doiText
@@ -380,13 +376,10 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|urlText
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|!
 name|urlText
 operator|.
@@ -395,7 +388,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|FindResult
@@ -441,13 +433,10 @@ comment|// No DOI? Try URL:
 elseif|else
 if|if
 condition|(
-operator|(
 name|urlText
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|!
 name|urlText
 operator|.
@@ -456,7 +445,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 return|return
@@ -573,13 +561,10 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|mimeType
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|mimeType
 operator|.
 name|toLowerCase
@@ -589,7 +574,6 @@ name|equals
 argument_list|(
 literal|"application/pdf"
 argument_list|)
-operator|)
 condition|)
 block|{
 return|return
@@ -794,19 +778,15 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|responseCode
 operator|==
 name|HttpURLConnection
 operator|.
 name|HTTP_MOVED_TEMP
-operator|)
 operator|&&
-operator|(
 name|redirectCount
 operator|<
 literal|5
-operator|)
 condition|)
 block|{
 comment|//System.out.println(responseCode);

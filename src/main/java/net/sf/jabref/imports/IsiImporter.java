@@ -247,7 +247,6 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
-operator|(
 name|str
 operator|=
 name|in
@@ -257,13 +256,10 @@ argument_list|()
 operator|)
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|i
 operator|<
 literal|50
-operator|)
 condition|)
 block|{
 comment|/**              * The following line gives false positives for RIS files, so it              * should not be uncommented. The hypen is a characteristic of the              * RIS format.              *               * str = str.replace(" - ", "")              */
@@ -1222,11 +1218,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|existingKeywords
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|existingKeywords
@@ -1343,14 +1337,11 @@ decl_stmt|;
 comment|// tweak for IEEE Explore
 if|if
 condition|(
-operator|(
 name|detpos
 operator|!=
 operator|-
 literal|1
-operator|)
 operator|&&
-operator|(
 operator|!
 name|value
 operator|.
@@ -1366,7 +1357,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|value
@@ -1806,13 +1796,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|content
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|content
 operator|.
 name|trim
@@ -1820,7 +1807,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|toRemove
@@ -2217,14 +2203,12 @@ if|if
 condition|(
 name|j
 operator|<
-operator|(
 name|first
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|sb
@@ -2251,13 +2235,11 @@ if|if
 condition|(
 name|i
 operator|<
-operator|(
 name|firstParts
 operator|.
 name|length
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|sb
