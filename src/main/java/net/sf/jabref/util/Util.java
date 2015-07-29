@@ -1051,6 +1051,17 @@ name|SEPARATING_CHARS_NOSPACE
 init|=
 literal|";,\n"
 decl_stmt|;
+DECL|field|UNICODE_CHAR_MAP
+specifier|private
+specifier|static
+specifier|final
+name|UnicodeCharMap
+name|UNICODE_CHAR_MAP
+init|=
+operator|new
+name|UnicodeCharMap
+argument_list|()
+decl_stmt|;
 comment|/**      * This method sets the location of a Dialog such that it is centered with      * regard to another window, but not outside the screen on the left and the      * top.      */
 DECL|method|placeDialog (java.awt.Dialog diag, java.awt.Container win)
 specifier|public
@@ -1661,9 +1672,7 @@ name|String
 argument_list|>
 name|chrAndReplace
 range|:
-name|Globals
-operator|.
-name|UNICODE_CHARS
+name|UNICODE_CHAR_MAP
 operator|.
 name|entrySet
 argument_list|()
