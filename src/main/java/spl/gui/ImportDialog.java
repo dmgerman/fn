@@ -146,8 +146,8 @@ name|JDialog
 block|{
 DECL|field|NOMETA
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|NOMETA
 init|=
@@ -155,8 +155,8 @@ literal|0
 decl_stmt|;
 DECL|field|XMP
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|XMP
 init|=
@@ -164,8 +164,8 @@ literal|1
 decl_stmt|;
 DECL|field|CONTENT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|CONTENT
 init|=
@@ -173,8 +173,8 @@ literal|2
 decl_stmt|;
 DECL|field|MRDLIB
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|MRDLIB
 init|=
@@ -182,8 +182,8 @@ literal|3
 decl_stmt|;
 DECL|field|ONLYATTACH
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|ONLYATTACH
 init|=
@@ -191,8 +191,8 @@ literal|4
 decl_stmt|;
 DECL|field|UPDATEEMPTYFIELDS
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|UPDATEEMPTYFIELDS
 init|=

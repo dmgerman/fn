@@ -50,8 +50,8 @@ DECL|field|EQUAL
 DECL|field|EMPTY_IN_ONE
 DECL|field|EMPTY_IN_TWO
 DECL|field|EMPTY_IN_BOTH
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|NOT_EQUAL
 init|=
@@ -95,8 +95,8 @@ literal|0.05
 decl_stmt|;
 DECL|field|reqWeight
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|double
 name|reqWeight
 init|=

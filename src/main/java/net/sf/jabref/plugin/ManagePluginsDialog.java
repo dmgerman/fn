@@ -76,7 +76,7 @@ name|glazedlists
 operator|.
 name|swing
 operator|.
-name|DefaultEventTableModel
+name|EventTableModel
 import|;
 end_import
 
@@ -1272,14 +1272,14 @@ operator|new
 name|PluginTableFormat
 argument_list|()
 decl_stmt|;
-name|DefaultEventTableModel
+name|EventTableModel
 argument_list|<
 name|NameAndVersion
 argument_list|>
 name|tableModel
 init|=
 operator|new
-name|DefaultEventTableModel
+name|EventTableModel
 argument_list|<
 name|NameAndVersion
 argument_list|>
@@ -1351,14 +1351,14 @@ operator|new
 name|PluginTableFormat
 argument_list|()
 decl_stmt|;
-name|DefaultEventTableModel
+name|EventTableModel
 argument_list|<
 name|NameAndVersion
 argument_list|>
 name|tableModelOther
 init|=
 operator|new
-name|DefaultEventTableModel
+name|EventTableModel
 argument_list|<
 name|NameAndVersion
 argument_list|>

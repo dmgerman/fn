@@ -309,8 +309,8 @@ literal|"/(sub|sup)\\s+(.*?)\\s*/"
 argument_list|)
 decl_stmt|;
 DECL|method|processSubSup (HashMap<String, String> map)
-specifier|static
 specifier|public
+specifier|static
 name|void
 name|processSubSup
 parameter_list|(

@@ -151,8 +151,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|addBibtexEntry (BibtexEntry entry)
-specifier|abstract
 specifier|public
+specifier|abstract
 name|void
 name|addBibtexEntry
 parameter_list|(

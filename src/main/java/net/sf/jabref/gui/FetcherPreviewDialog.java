@@ -60,7 +60,7 @@ name|glazedlists
 operator|.
 name|swing
 operator|.
-name|DefaultEventSelectionModel
+name|EventSelectionModel
 import|;
 end_import
 
@@ -74,7 +74,7 @@ name|glazedlists
 operator|.
 name|swing
 operator|.
-name|DefaultEventTableModel
+name|EventTableModel
 import|;
 end_import
 
@@ -477,14 +477,14 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|DefaultEventTableModel
+name|EventTableModel
 argument_list|<
 name|TableEntry
 argument_list|>
 name|tableModelGl
 init|=
 operator|new
-name|DefaultEventTableModel
+name|EventTableModel
 argument_list|<
 name|TableEntry
 argument_list|>
@@ -539,14 +539,14 @@ literal|600
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|DefaultEventSelectionModel
+name|EventSelectionModel
 argument_list|<
 name|TableEntry
 argument_list|>
 name|selectionModel
 init|=
 operator|new
-name|DefaultEventSelectionModel
+name|EventSelectionModel
 argument_list|<
 name|TableEntry
 argument_list|>

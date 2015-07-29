@@ -32,8 +32,8 @@ name|IdGenerator
 block|{
 DECL|field|idFormat
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|NumberFormat
 name|idFormat
 decl_stmt|;
@@ -75,8 +75,8 @@ literal|0
 decl_stmt|;
 DECL|method|next ()
 specifier|public
-specifier|synchronized
 specifier|static
+specifier|synchronized
 name|String
 name|next
 parameter_list|()

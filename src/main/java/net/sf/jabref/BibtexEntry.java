@@ -170,8 +170,8 @@ name|BibtexEntry
 block|{
 DECL|field|ID_FIELD
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|ID_FIELD
 init|=

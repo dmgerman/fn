@@ -1251,8 +1251,8 @@ literal|"autoCompFirstNameMode"
 decl_stmt|;
 DECL|field|AUTOCOMPLETE_FIRSTNAME_MODE_BOTH
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|AUTOCOMPLETE_FIRSTNAME_MODE_BOTH
 init|=
@@ -2764,8 +2764,8 @@ literal|"allowFileAutoOpenBrowse"
 decl_stmt|;
 DECL|field|CUSTOM_TAB_NAME
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CUSTOM_TAB_NAME
 init|=
@@ -2773,8 +2773,8 @@ literal|"customTabName_"
 decl_stmt|;
 DECL|field|CUSTOM_TAB_FIELDS
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CUSTOM_TAB_FIELDS
 init|=
@@ -2846,8 +2846,8 @@ decl_stmt|;
 comment|//non-default preferences
 DECL|field|CUSTOM_TYPE_NAME
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CUSTOM_TYPE_NAME
 init|=
@@ -2855,8 +2855,8 @@ literal|"customTypeName_"
 decl_stmt|;
 DECL|field|CUSTOM_TYPE_REQ
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CUSTOM_TYPE_REQ
 init|=
@@ -2864,8 +2864,8 @@ literal|"customTypeReq_"
 decl_stmt|;
 DECL|field|CUSTOM_TYPE_OPT
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CUSTOM_TYPE_OPT
 init|=
@@ -2873,8 +2873,8 @@ literal|"customTypeOpt_"
 decl_stmt|;
 DECL|field|CUSTOM_TYPE_PRIOPT
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CUSTOM_TYPE_PRIOPT
 init|=
@@ -2882,8 +2882,8 @@ literal|"customTypePriOpt_"
 decl_stmt|;
 DECL|field|PDF_PREVIEW
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PDF_PREVIEW
 init|=
@@ -2891,8 +2891,8 @@ literal|"pdfPreview"
 decl_stmt|;
 DECL|field|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_FULL
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_FULL
 init|=
@@ -2900,8 +2900,8 @@ literal|"fullOnly"
 decl_stmt|;
 DECL|field|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_ABBR
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_ABBR
 init|=

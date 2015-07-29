@@ -1561,8 +1561,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|SHOWING_NOTHING
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|SHOWING_NOTHING
 init|=
@@ -1570,8 +1570,8 @@ literal|0
 decl_stmt|;
 DECL|field|SHOWING_PREVIEW
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|SHOWING_PREVIEW
 init|=
@@ -1579,8 +1579,8 @@ literal|1
 decl_stmt|;
 DECL|field|SHOWING_EDITOR
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|SHOWING_EDITOR
 init|=
@@ -1588,8 +1588,8 @@ literal|2
 decl_stmt|;
 DECL|field|WILL_SHOW_EDITOR
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|WILL_SHOW_EDITOR
 init|=

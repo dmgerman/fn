@@ -393,8 +393,8 @@ literal|1
 decl_stmt|;
 DECL|field|PREF_IMPORT_CONVERT_TO_EQUATION
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_IMPORT_CONVERT_TO_EQUATION
 init|=
@@ -402,8 +402,8 @@ literal|"importFileConvertToEquation"
 decl_stmt|;
 DECL|field|PREF_IMPORT_FILENAMEPATTERN
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_IMPORT_FILENAMEPATTERN
 init|=

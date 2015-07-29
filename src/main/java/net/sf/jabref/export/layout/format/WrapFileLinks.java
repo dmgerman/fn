@@ -875,8 +875,8 @@ decl_stmt|;
 comment|// Define which escape sequences give what results:
 DECL|field|ESCAPE_SEQ
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Map
 argument_list|<
 name|Character

@@ -621,8 +621,8 @@ name|EMACS_PATH
 argument_list|)
 decl_stmt|;
 name|String
-name|addParams
 index|[]
+name|addParams
 init|=
 name|Globals
 operator|.
