@@ -18,16 +18,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|Toolkit
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|io
 operator|.
 name|File
@@ -378,7 +368,7 @@ specifier|public
 class|class
 name|Globals
 block|{
-comment|/**      * {@link Control} class allowing properties bundles to be in different encodings.      *       * @see<a href="http://stackoverflow.com/questions/4659929/how-to-use-utf-8-in-resource-properties-with-resourcebundle">utf-8 and property files</a>      */
+comment|/**      * {@link Control} class allowing properties bundles to be in different encodings.      *       * @see<a      *      href="http://stackoverflow.com/questions/4659929/how-to-use-utf-8-in-resource-properties-with-resourcebundle">utf-8      *      and property files</a>      */
 DECL|class|EncodingControl
 specifier|private
 specifier|static
@@ -1217,7 +1207,6 @@ literal|"def"
 argument_list|)
 decl_stmt|;
 DECL|field|ON_MAC
-DECL|field|ON_WIN
 specifier|public
 specifier|static
 specifier|final
@@ -1237,6 +1226,7 @@ name|MAC
 argument_list|)
 operator|)
 decl_stmt|,
+DECL|field|ON_WIN
 name|ON_WIN
 init|=
 name|Globals
@@ -1316,7 +1306,7 @@ specifier|static
 name|JournalAbbreviationRepository
 name|journalAbbrev
 decl_stmt|;
-comment|/**      * 	"Fieldname" to indicate that a field should be treated as a bibtex       * string. Used when writing database to file.      */
+comment|/**      * "Fieldname" to indicate that a field should be treated as a bibtex string. Used when writing database to file.      */
 DECL|field|BIBTEX_STRING
 specifier|public
 specifier|static
@@ -1372,7 +1362,7 @@ literal|"FileUpdateMonitor"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Initialize and start the autosave manager.      * @param frame The main frame.      */
+comment|/**      * Initialize and start the autosave manager.      *       * @param frame The main frame.      */
 DECL|method|startAutoSaveManager (JabRefFrame frame)
 specifier|public
 specifier|static
@@ -10996,7 +10986,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Returns a reg exp pattern in the form (w1)|(w2)| ...      * wi are escaped if no regex search is enabled      */
+comment|/**      * Returns a reg exp pattern in the form (w1)|(w2)| ... wi are escaped if no regex search is enabled      */
 DECL|method|getPatternForWords (ArrayList<String> words)
 specifier|public
 specifier|static
