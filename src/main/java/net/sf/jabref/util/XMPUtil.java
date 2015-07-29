@@ -3996,9 +3996,6 @@ name|sw
 operator|.
 name|getBuffer
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

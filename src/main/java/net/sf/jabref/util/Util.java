@@ -3930,9 +3930,6 @@ operator|+
 literal|" in "
 operator|+
 name|entry
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 throw|;
 block|}

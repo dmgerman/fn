@@ -912,9 +912,6 @@ operator|.
 name|append
 argument_list|(
 name|owner
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|sb

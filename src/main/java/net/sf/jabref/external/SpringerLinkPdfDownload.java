@@ -319,9 +319,6 @@ operator|.
 name|println
 argument_list|(
 name|pdfUrl
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

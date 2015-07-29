@@ -1498,9 +1498,6 @@ argument_list|(
 literal|"Duplicate ID in bibtex file: "
 operator|+
 name|kce
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -3190,9 +3187,6 @@ comment|// return what we
 comment|// have found, as the key and try to restore the rest in fixKey().
 return|return
 name|token
-operator|.
-name|toString
-argument_list|()
 operator|+
 name|fixKey
 argument_list|()

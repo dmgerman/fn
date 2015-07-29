@@ -153,9 +153,6 @@ name|this
 operator|.
 name|getSource
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|in
 argument_list|)

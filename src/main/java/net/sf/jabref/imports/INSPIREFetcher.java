@@ -272,9 +272,6 @@ argument_list|(
 literal|"Inspire URL: "
 operator|+
 name|sb
-operator|.
-name|toString
-argument_list|()
 operator|+
 literal|"\n"
 argument_list|)
@@ -396,9 +393,6 @@ operator|+
 literal|"\n\n"
 operator|+
 name|e
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|Globals
 operator|.

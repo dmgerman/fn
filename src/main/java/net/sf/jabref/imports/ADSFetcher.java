@@ -524,9 +524,6 @@ operator|+
 literal|"\n\n"
 operator|+
 name|e
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|Globals
 operator|.
@@ -849,9 +846,6 @@ operator|+
 literal|"\n\n"
 operator|+
 name|e
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|Globals
 operator|.

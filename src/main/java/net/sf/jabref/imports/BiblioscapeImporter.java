@@ -665,9 +665,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -694,9 +691,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -785,9 +779,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -814,9 +805,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -903,9 +891,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -932,9 +917,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1173,9 +1155,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1202,9 +1181,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1233,9 +1209,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1262,9 +1235,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1293,9 +1263,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1322,9 +1289,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1383,9 +1347,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1412,9 +1373,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;

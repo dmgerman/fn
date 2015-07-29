@@ -1044,9 +1044,6 @@ operator|.
 name|println
 argument_list|(
 name|warn
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1109,9 +1106,6 @@ operator|.
 name|println
 argument_list|(
 name|warn
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

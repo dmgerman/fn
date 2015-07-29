@@ -3043,9 +3043,6 @@ operator|+
 literal|"<p><tt>"
 operator|+
 name|sb
-operator|.
-name|toString
-argument_list|()
 operator|+
 literal|"</tt>"
 decl_stmt|;

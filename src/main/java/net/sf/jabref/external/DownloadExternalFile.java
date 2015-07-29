@@ -613,9 +613,6 @@ operator|+
 literal|"'"
 operator|+
 name|urlF
-operator|.
-name|toString
-argument_list|()
 operator|+
 literal|"'"
 argument_list|,

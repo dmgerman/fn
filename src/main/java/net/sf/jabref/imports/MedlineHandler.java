@@ -1227,9 +1227,6 @@ name|sa
 index|[
 literal|0
 index|]
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 for|for
@@ -1264,9 +1261,6 @@ name|sa
 index|[
 name|i
 index|]
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

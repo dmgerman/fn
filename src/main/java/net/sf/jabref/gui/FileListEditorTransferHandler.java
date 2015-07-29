@@ -766,9 +766,6 @@ argument_list|(
 literal|"failed to read dropped data: "
 operator|+
 name|ioe
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -787,9 +784,6 @@ argument_list|(
 literal|"drop type error: "
 operator|+
 name|ufe
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -829,9 +823,6 @@ argument_list|(
 literal|"  "
 operator|+
 name|inflav
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

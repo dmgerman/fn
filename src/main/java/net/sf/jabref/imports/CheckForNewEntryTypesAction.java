@@ -242,9 +242,6 @@ operator|.
 name|append
 argument_list|(
 name|type
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 operator|.
 name|append
