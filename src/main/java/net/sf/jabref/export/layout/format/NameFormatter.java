@@ -79,10 +79,10 @@ comment|/**  * This layout formatter uses the Bibtex name.format$ method and pro
 end_comment
 
 begin_class
-DECL|class|NameFormat
+DECL|class|NameFormatter
 specifier|public
 class|class
-name|NameFormat
+name|NameFormatter
 implements|implements
 name|LayoutFormatter
 block|{
@@ -549,7 +549,7 @@ specifier|private
 name|String
 name|parameter
 init|=
-name|NameFormat
+name|NameFormatter
 operator|.
 name|DEFAULT_FORMAT
 decl_stmt|;

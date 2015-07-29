@@ -96,7 +96,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|NameFormat
+name|NameFormatter
 import|;
 end_import
 
@@ -2119,11 +2119,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|NameFormat
+name|NameFormatter
 name|nf
 init|=
 operator|new
-name|NameFormat
+name|NameFormatter
 argument_list|()
 decl_stmt|;
 name|nf
@@ -2226,11 +2226,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|NameFormat
+name|NameFormatter
 name|nf
 init|=
 operator|new
-name|NameFormat
+name|NameFormatter
 argument_list|()
 decl_stmt|;
 name|nf

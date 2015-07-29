@@ -136,7 +136,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|NameFormat
+name|NameFormatter
 import|;
 end_import
 
@@ -366,7 +366,7 @@ index|[
 name|i
 index|]
 argument_list|,
-name|NameFormat
+name|NameFormatter
 operator|.
 name|DEFAULT_FORMAT
 argument_list|)
@@ -452,7 +452,7 @@ name|this
 argument_list|(
 name|name
 argument_list|,
-name|NameFormat
+name|NameFormatter
 operator|.
 name|DEFAULT_FORMAT
 argument_list|)

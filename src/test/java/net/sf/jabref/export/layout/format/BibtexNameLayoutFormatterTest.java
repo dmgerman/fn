@@ -62,11 +62,11 @@ name|void
 name|testFormatStringStringBibtexEntry
 parameter_list|()
 block|{
-name|NameFormat
+name|NameFormatter
 name|l
 init|=
 operator|new
-name|NameFormat
+name|NameFormatter
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -186,11 +186,11 @@ name|void
 name|testFormat
 parameter_list|()
 block|{
-name|NameFormat
+name|NameFormatter
 name|a
 init|=
 operator|new
-name|NameFormat
+name|NameFormatter
 argument_list|()
 decl_stmt|;
 comment|// Empty case
