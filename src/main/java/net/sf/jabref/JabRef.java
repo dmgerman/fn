@@ -2529,7 +2529,6 @@ expr_stmt|;
 block|}
 comment|//end if(loaded.size> 0)
 block|}
-comment|//end exportMatches invoked
 if|if
 condition|(
 name|cli

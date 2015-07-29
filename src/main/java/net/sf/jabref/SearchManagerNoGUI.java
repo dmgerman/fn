@@ -299,7 +299,6 @@ return|return
 name|base
 return|;
 block|}
-comment|//end getDBfromMatches()
 DECL|method|specifiedYears ()
 specifier|private
 name|boolean

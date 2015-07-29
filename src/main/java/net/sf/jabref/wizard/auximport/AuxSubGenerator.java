@@ -735,7 +735,6 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-comment|// end of while
 if|if
 condition|(
 name|loopFileOpen
