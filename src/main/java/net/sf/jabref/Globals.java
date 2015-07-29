@@ -601,15 +601,6 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-DECL|field|STANDARD_EXPORT_COUNT
-specifier|public
-specifier|static
-name|int
-name|STANDARD_EXPORT_COUNT
-init|=
-literal|5
-decl_stmt|;
-comment|// The number of standard export formats.
 DECL|field|METADATA_LINE_LENGTH
 specifier|public
 specifier|static
