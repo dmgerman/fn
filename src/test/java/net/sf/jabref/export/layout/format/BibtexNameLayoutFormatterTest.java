@@ -18,26 +18,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|plugin
-operator|.
-name|NameFormat
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit

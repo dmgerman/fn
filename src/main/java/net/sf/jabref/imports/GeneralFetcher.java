@@ -396,7 +396,7 @@ name|EntryFetcher
 index|[]
 name|fetcherArray
 decl_stmt|;
-DECL|method|GeneralFetcher (SidePaneManager p0, JabRefFrame frame, final List<EntryFetcher> fetchers)
+DECL|method|GeneralFetcher (SidePaneManager p0, JabRefFrame frame)
 specifier|public
 name|GeneralFetcher
 parameter_list|(
@@ -405,13 +405,6 @@ name|p0
 parameter_list|,
 name|JabRefFrame
 name|frame
-parameter_list|,
-specifier|final
-name|List
-argument_list|<
-name|EntryFetcher
-argument_list|>
-name|fetchers
 parameter_list|)
 block|{
 name|super
@@ -445,6 +438,19 @@ name|frame
 operator|=
 name|frame
 expr_stmt|;
+name|List
+argument_list|<
+name|EntryFetcher
+argument_list|>
+name|fetchers
+init|=
+name|EntryFetchers
+operator|.
+name|INSTANCE
+operator|.
+name|getEntryFetchers
+argument_list|()
+decl_stmt|;
 name|fetcherArray
 operator|=
 name|fetchers

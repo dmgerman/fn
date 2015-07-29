@@ -132,20 +132,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|plugin
-operator|.
-name|SidePanePlugin
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -282,8 +268,6 @@ name|OpenOfficePanel
 extends|extends
 name|AbstractWorker
 implements|implements
-name|SidePanePlugin
-implements|,
 name|PushToApplication
 block|{
 DECL|field|defaultAuthorYearStylePath
@@ -1139,8 +1123,6 @@ literal|"ooBibliographyStyleFile"
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|getSidePaneComponent ()
 specifier|public
 name|SidePaneComponent
@@ -1151,8 +1133,6 @@ return|return
 name|comp
 return|;
 block|}
-annotation|@
-name|Override
 DECL|method|init (JabRefFrame frame, SidePaneManager manager)
 specifier|public
 name|void
@@ -1228,8 +1208,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|Override
 DECL|method|getMenuItem ()
 specifier|public
 name|JMenuItem
@@ -1312,8 +1290,6 @@ return|return
 name|item
 return|;
 block|}
-annotation|@
-name|Override
 DECL|method|getShortcutKey ()
 specifier|public
 name|String

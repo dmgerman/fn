@@ -136,8 +136,6 @@ name|layout
 operator|.
 name|format
 operator|.
-name|plugin
-operator|.
 name|NameFormat
 import|;
 end_import

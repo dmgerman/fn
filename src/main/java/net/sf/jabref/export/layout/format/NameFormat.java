@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.export.layout.format.plugin
+DECL|package|net.sf.jabref.export.layout.format
 package|package
 name|net
 operator|.
@@ -17,8 +17,6 @@ operator|.
 name|layout
 operator|.
 name|format
-operator|.
-name|plugin
 package|;
 end_package
 
