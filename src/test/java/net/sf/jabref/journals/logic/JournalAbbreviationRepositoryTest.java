@@ -151,7 +151,7 @@ argument_list|(
 literal|"Long Name"
 argument_list|)
 operator|.
-name|or
+name|orElse
 argument_list|(
 literal|"WRONG"
 argument_list|)
@@ -168,7 +168,7 @@ argument_list|(
 literal|"?"
 argument_list|)
 operator|.
-name|or
+name|orElse
 argument_list|(
 literal|"UNKNOWN"
 argument_list|)
@@ -185,7 +185,7 @@ argument_list|(
 literal|"Long Name"
 argument_list|)
 operator|.
-name|or
+name|orElse
 argument_list|(
 literal|"WRONG"
 argument_list|)
@@ -202,7 +202,7 @@ argument_list|(
 literal|"?"
 argument_list|)
 operator|.
-name|or
+name|orElse
 argument_list|(
 literal|"UNKNOWN"
 argument_list|)
@@ -219,7 +219,7 @@ argument_list|(
 literal|"Long Name"
 argument_list|)
 operator|.
-name|or
+name|orElse
 argument_list|(
 literal|"WRONG"
 argument_list|)
@@ -236,7 +236,7 @@ argument_list|(
 literal|"L. N."
 argument_list|)
 operator|.
-name|or
+name|orElse
 argument_list|(
 literal|"WRONG"
 argument_list|)
@@ -253,7 +253,7 @@ argument_list|(
 literal|"L N"
 argument_list|)
 operator|.
-name|or
+name|orElse
 argument_list|(
 literal|"WRONG"
 argument_list|)
@@ -270,7 +270,7 @@ argument_list|(
 literal|"?"
 argument_list|)
 operator|.
-name|or
+name|orElse
 argument_list|(
 literal|"UNKNOWN"
 argument_list|)
@@ -507,7 +507,7 @@ argument_list|(
 literal|"Long Name"
 argument_list|)
 operator|.
-name|or
+name|orElse
 argument_list|(
 literal|"WRONG"
 argument_list|)
@@ -547,7 +547,7 @@ argument_list|(
 literal|"Long Name"
 argument_list|)
 operator|.
-name|or
+name|orElse
 argument_list|(
 literal|"WRONG"
 argument_list|)

@@ -16,20 +16,6 @@ end_package
 
 begin_import
 import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -54,8 +40,18 @@ name|SearchRule
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
 begin_comment
-comment|/**  * Inverts the search result.  *  * Example:  * false --> true  * true --> false  */
+comment|/**  * Inverts the search result.  *<p>  * Example:  * false --> true  * true --> false  */
 end_comment
 
 begin_class
@@ -84,9 +80,9 @@ name|this
 operator|.
 name|otherRule
 operator|=
-name|Preconditions
+name|Objects
 operator|.
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|otherRule
 argument_list|)
