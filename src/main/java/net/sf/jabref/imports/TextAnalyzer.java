@@ -76,18 +76,6 @@ name|BibtexEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
 begin_class
 DECL|class|TextAnalyzer
 class|class
@@ -116,6 +104,18 @@ name|TextAnalyzer
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+comment|// Needs to give a year definitely in the future.
+comment|// Used for guessing the
+comment|// year field when parsing textual data. :-)
+DECL|field|FUTURE_YEAR
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|FUTURE_YEAR
+init|=
+literal|2050
 decl_stmt|;
 DECL|method|TextAnalyzer (String text)
 specifier|public
@@ -355,16 +355,12 @@ condition|(
 operator|(
 name|yearFound
 operator|<
-name|Globals
-operator|.
 name|FUTURE_YEAR
 operator|)
 operator|&&
 operator|(
 name|number
 operator|<
-name|Globals
-operator|.
 name|FUTURE_YEAR
 operator|)
 condition|)
@@ -383,16 +379,12 @@ condition|(
 operator|(
 name|yearFound
 operator|>=
-name|Globals
-operator|.
 name|FUTURE_YEAR
 operator|)
 operator|&&
 operator|(
 name|number
 operator|<
-name|Globals
-operator|.
 name|FUTURE_YEAR
 operator|)
 condition|)

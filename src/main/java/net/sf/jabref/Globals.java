@@ -601,18 +601,6 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|int
-DECL|field|FUTURE_YEAR
-name|FUTURE_YEAR
-init|=
-literal|2050
-decl_stmt|;
-comment|// Needs to give a year definitely in the future.
-comment|// Used for guessing the
-comment|// year field when parsing textual data. :-)
 DECL|field|STANDARD_EXPORT_COUNT
 specifier|public
 specifier|static
