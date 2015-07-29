@@ -1145,6 +1145,7 @@ block|{
 comment|// Test if font size is a number:
 if|if
 condition|(
+operator|!
 name|validateIntegerField
 argument_list|(
 literal|"Menu and label font size"
@@ -1156,8 +1157,6 @@ argument_list|()
 argument_list|,
 literal|"Changed font settings"
 argument_list|)
-operator|==
-literal|false
 condition|)
 block|{
 return|return
@@ -1167,6 +1166,7 @@ block|}
 comment|// Test if row padding is a number:
 if|if
 condition|(
+operator|!
 name|validateIntegerField
 argument_list|(
 literal|"Table row height padding"
@@ -1178,8 +1178,6 @@ argument_list|()
 argument_list|,
 literal|"Changed table appearance settings"
 argument_list|)
-operator|==
-literal|false
 condition|)
 block|{
 return|return

@@ -833,8 +833,8 @@ literal|"can't transfer input: "
 argument_list|)
 expr_stmt|;
 name|DataFlavor
-name|inflavs
 index|[]
+name|inflavs
 init|=
 name|t
 operator|.

@@ -122,8 +122,8 @@ name|String
 name|fieldName
 decl_stmt|;
 DECL|field|bull
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|bull
 init|=
@@ -135,8 +135,8 @@ literal|"\\s*[-\\*]+.*"
 argument_list|)
 decl_stmt|;
 DECL|field|indent
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|indent
 init|=

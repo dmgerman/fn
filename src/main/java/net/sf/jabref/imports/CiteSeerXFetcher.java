@@ -169,8 +169,8 @@ literal|8
 decl_stmt|;
 DECL|field|QUERY_MARKER
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|QUERY_MARKER
 init|=
@@ -178,8 +178,8 @@ literal|"___QUERY___"
 decl_stmt|;
 DECL|field|URL_START
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|URL_START
 init|=
@@ -187,8 +187,8 @@ literal|"http://citeseer.ist.psu.edu"
 decl_stmt|;
 DECL|field|SEARCH_URL
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|SEARCH_URL
 init|=
@@ -206,8 +206,8 @@ literal|"&submit=Search&sort=rlv&t=doc"
 decl_stmt|;
 DECL|field|CITE_LINK_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|CITE_LINK_PATTERN
 init|=
@@ -586,8 +586,8 @@ return|;
 block|}
 DECL|field|basePattern
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|basePattern
 init|=
@@ -601,8 +601,8 @@ literal|"\" content=\"(.*)\" />"
 decl_stmt|;
 DECL|field|titlePattern
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|titlePattern
 init|=
@@ -626,8 +626,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|authorPattern
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|authorPattern
 init|=
@@ -651,8 +651,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|yearPattern
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|yearPattern
 init|=
@@ -676,8 +676,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|abstractPattern
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|abstractPattern
 init|=

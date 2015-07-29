@@ -586,8 +586,8 @@ argument_list|)
 decl_stmt|;
 comment|// could be an comma separated list of keys
 name|String
-name|keys
 index|[]
+name|keys
 init|=
 name|str
 operator|.

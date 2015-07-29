@@ -39,8 +39,8 @@ block|{
 comment|/**      * MUST ALWAYS BE A SORTED ARRAY because it is used in a binary search      */
 DECL|field|ILLEGAL_CHARS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 index|[]
 name|ILLEGAL_CHARS

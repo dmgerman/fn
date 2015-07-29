@@ -32,7 +32,7 @@ name|AND
 block|,
 DECL|enumConstant|OR
 name|OR
-block|;     }
+block|}
 DECL|method|build (RuleSetType ruleSet)
 specifier|public
 specifier|static

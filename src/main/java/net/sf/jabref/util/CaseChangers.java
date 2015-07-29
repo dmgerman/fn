@@ -180,8 +180,8 @@ name|CaseChanger
 block|{
 DECL|field|UF_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|UF_PATTERN
 init|=
@@ -387,8 +387,8 @@ name|CaseChanger
 block|{
 DECL|field|notToCapitalize
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Set
 argument_list|<
 name|String
@@ -646,8 +646,8 @@ block|}
 block|}
 DECL|field|LOWER
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|LowerCaseChanger
 name|LOWER
 init|=
@@ -657,8 +657,8 @@ argument_list|()
 decl_stmt|;
 DECL|field|UPPER
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|UpperCaseChanger
 name|UPPER
 init|=
@@ -668,8 +668,8 @@ argument_list|()
 decl_stmt|;
 DECL|field|UPPER_FIRST
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|UpperFirstCaseChanger
 name|UPPER_FIRST
 init|=
@@ -679,8 +679,8 @@ argument_list|()
 decl_stmt|;
 DECL|field|UPPER_EACH_FIRST
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|UpperEachFirstCaseChanger
 name|UPPER_EACH_FIRST
 init|=
@@ -690,8 +690,8 @@ argument_list|()
 decl_stmt|;
 DECL|field|TITLE
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|TitleCaseChanger
 name|TITLE
 init|=
@@ -701,8 +701,8 @@ argument_list|()
 decl_stmt|;
 DECL|field|ALL
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|List
 argument_list|<
 name|CaseChanger

@@ -161,14 +161,14 @@ parameter_list|()
 block|{     }
 annotation|@
 name|Override
-DECL|method|characters (char ch[], int start, int length)
+DECL|method|characters (char[] ch, int start, int length)
 specifier|public
 name|void
 name|characters
 parameter_list|(
 name|char
-name|ch
 index|[]
+name|ch
 parameter_list|,
 name|int
 name|start

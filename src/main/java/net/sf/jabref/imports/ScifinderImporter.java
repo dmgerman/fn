@@ -448,8 +448,8 @@ argument_list|)
 condition|)
 block|{
 name|String
-name|tmp
 index|[]
+name|tmp
 init|=
 operator|new
 name|String

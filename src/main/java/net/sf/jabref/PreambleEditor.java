@@ -117,11 +117,6 @@ argument_list|(
 name|baseFrame
 argument_list|)
 expr_stmt|;
-name|JabRefFrame
-name|baseFrame1
-init|=
-name|baseFrame
-decl_stmt|;
 name|this
 operator|.
 name|panel

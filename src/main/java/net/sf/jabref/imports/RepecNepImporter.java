@@ -146,8 +146,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|recognizedFields
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Collection
 argument_list|<
 name|String

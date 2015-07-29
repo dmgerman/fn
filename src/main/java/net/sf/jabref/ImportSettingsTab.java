@@ -108,8 +108,8 @@ name|PrefsTab
 block|{
 DECL|field|PREF_IMPORT_ALWAYSUSE
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_IMPORT_ALWAYSUSE
 init|=
@@ -117,8 +117,8 @@ literal|"importAlwaysUsePDFImportStyle"
 decl_stmt|;
 DECL|field|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
 init|=
@@ -126,8 +126,8 @@ literal|"importDefaultPDFimportStyle"
 decl_stmt|;
 DECL|field|DEFAULT_STYLE
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|DEFAULT_STYLE
 init|=
@@ -137,8 +137,8 @@ name|CONTENT
 decl_stmt|;
 DECL|field|PREF_IMPORT_FILENAMEPATTERN
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_IMPORT_FILENAMEPATTERN
 init|=
@@ -146,8 +146,8 @@ literal|"importFileNamePattern"
 decl_stmt|;
 DECL|field|DEFAULT_FILENAMEPATTERNS_DISPLAY
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 index|[]
 name|DEFAULT_FILENAMEPATTERNS_DISPLAY
@@ -163,8 +163,8 @@ block|,     }
 decl_stmt|;
 DECL|field|DEFAULT_FILENAMEPATTERNS
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 index|[]
 name|DEFAULT_FILENAMEPATTERNS

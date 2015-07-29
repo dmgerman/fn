@@ -174,8 +174,8 @@ literal|false
 decl_stmt|;
 DECL|field|layout
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|layout
 init|=

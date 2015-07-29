@@ -1213,13 +1213,10 @@ return|return
 name|this
 operator|.
 name|dialogType
-operator|.
-name|equals
-argument_list|(
+operator|==
 name|DialogType
 operator|.
 name|IMPORTER
-argument_list|)
 return|;
 block|}
 DECL|method|isExporter ()
@@ -1232,13 +1229,10 @@ return|return
 name|this
 operator|.
 name|dialogType
-operator|.
-name|equals
-argument_list|(
+operator|==
 name|DialogType
 operator|.
 name|EXPORTER
-argument_list|)
 return|;
 block|}
 DECL|method|getDiag ()

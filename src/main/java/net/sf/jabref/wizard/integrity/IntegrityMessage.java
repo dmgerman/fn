@@ -198,8 +198,8 @@ decl_stmt|;
 comment|// the user has changed sometings on BibtexEntry
 DECL|method|setPrintMode (int newMode)
 specifier|public
-specifier|synchronized
 specifier|static
+specifier|synchronized
 name|void
 name|setPrintMode
 parameter_list|(
