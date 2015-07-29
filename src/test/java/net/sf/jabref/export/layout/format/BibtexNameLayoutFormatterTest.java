@@ -18,26 +18,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|plugin
-operator|.
-name|NameFormat
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -82,11 +62,11 @@ name|void
 name|testFormatStringStringBibtexEntry
 parameter_list|()
 block|{
-name|NameFormat
+name|NameFormatter
 name|l
 init|=
 operator|new
-name|NameFormat
+name|NameFormatter
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -206,11 +186,11 @@ name|void
 name|testFormat
 parameter_list|()
 block|{
-name|NameFormat
+name|NameFormatter
 name|a
 init|=
 operator|new
-name|NameFormat
+name|NameFormatter
 argument_list|()
 decl_stmt|;
 comment|// Empty case

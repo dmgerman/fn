@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.export.layout.format.plugin
+DECL|package|net.sf.jabref.export.layout.format
 package|package
 name|net
 operator|.
@@ -17,8 +17,6 @@ operator|.
 name|layout
 operator|.
 name|format
-operator|.
-name|plugin
 package|;
 end_package
 
@@ -81,10 +79,10 @@ comment|/**  * This layout formatter uses the Bibtex name.format$ method and pro
 end_comment
 
 begin_class
-DECL|class|NameFormat
+DECL|class|NameFormatter
 specifier|public
 class|class
-name|NameFormat
+name|NameFormatter
 implements|implements
 name|LayoutFormatter
 block|{
@@ -544,7 +542,7 @@ specifier|private
 name|String
 name|parameter
 init|=
-name|NameFormat
+name|NameFormatter
 operator|.
 name|DEFAULT_FORMAT
 decl_stmt|;

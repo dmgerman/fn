@@ -390,8 +390,6 @@ argument_list|,
 name|GeneralFetcherTest
 operator|.
 name|jrf
-argument_list|,
-name|al
 argument_list|)
 expr_stmt|;
 block|}
