@@ -340,7 +340,7 @@ name|util
 operator|.
 name|logging
 operator|.
-name|CachebleHandler
+name|CacheableHandler
 import|;
 end_import
 
@@ -742,7 +742,7 @@ decl_stmt|;
 DECL|field|handler
 specifier|public
 specifier|static
-name|CachebleHandler
+name|CacheableHandler
 name|handler
 decl_stmt|;
 DECL|field|BUILD_INFO
@@ -1478,7 +1478,7 @@ operator|.
 name|handler
 operator|=
 operator|new
-name|CachebleHandler
+name|CacheableHandler
 argument_list|()
 expr_stmt|;
 operator|(

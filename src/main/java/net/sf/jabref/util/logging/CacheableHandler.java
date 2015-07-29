@@ -51,10 +51,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|CachebleHandler
+DECL|class|CacheableHandler
 specifier|public
 class|class
-name|CachebleHandler
+name|CacheableHandler
 extends|extends
 name|Handler
 block|{

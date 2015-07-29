@@ -52,7 +52,7 @@ name|util
 operator|.
 name|logging
 operator|.
-name|CachebleHandler
+name|CacheableHandler
 import|;
 end_import
 
@@ -175,10 +175,10 @@ decl_stmt|;
 DECL|field|logHandler
 specifier|private
 specifier|final
-name|CachebleHandler
+name|CacheableHandler
 name|logHandler
 decl_stmt|;
-DECL|method|ErrorConsoleAction (JFrame frame, StreamEavesdropper streamEavesdropper, CachebleHandler logHandler)
+DECL|method|ErrorConsoleAction (JFrame frame, StreamEavesdropper streamEavesdropper, CacheableHandler logHandler)
 specifier|public
 name|ErrorConsoleAction
 parameter_list|(
@@ -188,7 +188,7 @@ parameter_list|,
 name|StreamEavesdropper
 name|streamEavesdropper
 parameter_list|,
-name|CachebleHandler
+name|CacheableHandler
 name|logHandler
 parameter_list|)
 block|{
