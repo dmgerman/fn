@@ -672,28 +672,6 @@ operator|new
 name|SplashScreenLifecycle
 argument_list|()
 decl_stmt|;
-comment|//initialize logging system
-static|static
-block|{
-name|LogFactory
-name|factory
-init|=
-name|LogFactory
-operator|.
-name|getFactory
-argument_list|()
-decl_stmt|;
-comment|//tell commons logging to default to Java's internal logging implementation
-name|factory
-operator|.
-name|setAttribute
-argument_list|(
-literal|"org.apache.commons.logging.Log"
-argument_list|,
-literal|"org.apache.commons.logging.impl.Jdk14Logger"
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|start (String[] args)
 specifier|public
 name|void
