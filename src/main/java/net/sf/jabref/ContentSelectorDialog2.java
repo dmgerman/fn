@@ -288,6 +288,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -321,6 +349,15 @@ name|ContentSelectorDialog2
 extends|extends
 name|JDialog
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|wordEditFieldListener
 specifier|private
 name|ActionListener
@@ -727,6 +764,22 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|()
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ContentSelectorDialog2
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/**      *       * @param owner the parent Window (Dialog or Frame)      * @param frame the JabRef Frame      * @param panel the currently selected BasePanel      * @param modal should this dialog be modal?      * @param metaData The metadata of the current database      * @param fieldName the field this selector is initialized for. May be null.      */
 DECL|method|ContentSelectorDialog2 (Window owner, JabRefFrame frame, BasePanel panel, boolean modal, MetaData metaData, String fieldName)
@@ -1664,11 +1717,13 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logInfo
+name|info
 argument_list|(
 literal|"Could not apply changes in \"Setup selectors\""
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 name|JOptionPane
@@ -1743,11 +1798,13 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logInfo
+name|info
 argument_list|(
 literal|"Could not apply changes in \"Setup selectors\""
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 name|JOptionPane

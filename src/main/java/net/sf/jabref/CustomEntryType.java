@@ -54,6 +54,34 @@ name|Collections
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class is used to represent customized entry types.  *  */
 end_comment
@@ -101,6 +129,22 @@ init|=
 literal|null
 decl_stmt|;
 comment|// Sets of either-or required fields, if any
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|CustomEntryType
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|method|CustomEntryType (String name_, String[] req_, String[] opt_, String[] opt2_)
 specifier|public
 name|CustomEntryType
@@ -1408,11 +1452,13 @@ name|IndexOutOfBoundsException
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logInfo
+name|info
 argument_list|(
 literal|"Ill-formed entrytype comment in BibTeX file."
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 return|return

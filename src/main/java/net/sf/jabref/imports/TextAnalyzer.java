@@ -38,6 +38,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -60,20 +88,6 @@ name|Globals
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
 begin_class
 DECL|class|TextAnalyzer
 class|class
@@ -86,6 +100,22 @@ name|BibtexEntry
 name|be
 init|=
 literal|null
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|TextAnalyzer
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|TextAnalyzer (String text)
 specifier|public
@@ -217,9 +247,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"Guessing 'year': '"
 operator|+
@@ -426,9 +456,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"Guessing 'year': '"
 operator|+
@@ -516,9 +546,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"Guessing 'pages': '"
 operator|+
@@ -664,9 +694,9 @@ name|found
 index|]
 argument_list|)
 decl_stmt|;
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"Guessing 'pages': '"
 operator|+
@@ -777,9 +807,9 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"Guessing 'volume': '"
 operator|+
@@ -906,9 +936,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"Guessing 'journal': '"
 operator|+
@@ -972,9 +1002,9 @@ operator|>
 literal|10
 condition|)
 block|{
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"... "
 operator|+
@@ -1050,9 +1080,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"Free parts:"
 argument_list|)
@@ -1065,9 +1095,9 @@ range|:
 name|free
 control|)
 block|{
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|": '"
 operator|+

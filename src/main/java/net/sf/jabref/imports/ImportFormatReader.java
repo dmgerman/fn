@@ -38,6 +38,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -129,6 +157,22 @@ argument_list|<
 name|ImportFormat
 argument_list|>
 argument_list|()
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ImportFormatReader
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|ImportFormatReader ()
 specifier|public
@@ -1619,22 +1663,9 @@ name|isFile
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Error "
-operator|+
-name|filename
-operator|+
-literal|" is not a valid file and|or is not readable."
-argument_list|)
-expr_stmt|;
-name|Globals
-operator|.
-name|logInfo
+name|info
 argument_list|(
 literal|"Error "
 operator|+

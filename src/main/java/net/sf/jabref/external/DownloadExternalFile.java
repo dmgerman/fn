@@ -96,6 +96,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -180,6 +208,22 @@ name|boolean
 name|dontShowDialog
 init|=
 literal|false
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|DownloadExternalFile
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|DownloadExternalFile (JabRefFrame frame, MetaData metaData, String bibtexKey)
 specifier|public
@@ -437,9 +481,9 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-name|Globals
+name|LOGGER
 operator|.
-name|logInfo
+name|info
 argument_list|(
 literal|"Error while downloading "
 operator|+
@@ -448,6 +492,8 @@ operator|+
 name|res
 operator|+
 literal|"'"
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 return|return;
@@ -560,9 +606,9 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-name|Globals
+name|LOGGER
 operator|.
-name|logInfo
+name|info
 argument_list|(
 literal|"Error while downloading "
 operator|+
@@ -574,6 +620,8 @@ name|toString
 argument_list|()
 operator|+
 literal|"'"
+argument_list|,
+name|e2
 argument_list|)
 expr_stmt|;
 return|return;

@@ -3267,9 +3267,9 @@ operator|.
 name|getDatabase
 argument_list|()
 decl_stmt|;
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"Parsed "
 operator|+
@@ -3498,11 +3498,13 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"KeyCollisionException... this shouldn't happen."
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -9263,9 +9265,9 @@ operator|==
 literal|null
 condition|)
 block|{
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"No action defined for '"
 operator|+
@@ -10186,14 +10188,16 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 name|ex
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -10613,14 +10617,18 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
-name|ex
+literal|"Collision for bibtex key"
+operator|+
+name|bibEntry
 operator|.
-name|getMessage
+name|getId
 argument_list|()
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -14405,9 +14413,9 @@ name|void
 name|fileRemoved
 parameter_list|()
 block|{
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"File '"
 operator|+

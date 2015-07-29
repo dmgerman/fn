@@ -38,6 +38,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -85,6 +113,22 @@ specifier|private
 specifier|final
 name|ExportFormatTemplateExtension
 name|extension
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|PluginBasedExportFormat
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/**      * Load the plugin from the given extension. Might be null if extension      * could not be loaded.      *       * @param extension      * @return      */
 DECL|method|getFormat ( ExportFormatTemplateExtension extension)
@@ -176,9 +220,9 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logInfo
+name|info
 argument_list|(
 literal|"Could not load extension "
 operator|+

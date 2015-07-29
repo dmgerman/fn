@@ -1268,9 +1268,9 @@ else|else
 block|{
 comment|// FIXME: user comments are simply dropped
 comment|// at least, we log that we ignored the comment
-name|Globals
+name|LOGGER
 operator|.
-name|logInfo
+name|info
 argument_list|(
 name|Globals
 operator|.

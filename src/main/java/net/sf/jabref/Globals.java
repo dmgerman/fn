@@ -1497,24 +1497,6 @@ name|handler
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|logInfo (String s)
-specifier|public
-specifier|static
-name|void
-name|logInfo
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-name|s
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**              * true if we have unix newlines              */
 DECL|field|UNIX_NEWLINE
 specifier|public
@@ -11391,14 +11373,13 @@ name|e
 parameter_list|)
 block|{
 comment|// The file couldn't be found... should we tell anyone?
-name|Globals
+name|LOGGER
 operator|.
-name|logInfo
+name|info
 argument_list|(
+literal|"Cannot find file"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -11452,9 +11433,9 @@ name|FileNotFoundException
 name|e
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logInfo
+name|info
 argument_list|(
 literal|"Personal journal list file '"
 operator|+
@@ -11470,6 +11451,8 @@ name|PERSONAL_JOURNAL_LIST
 argument_list|)
 operator|+
 literal|"' not found."
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}

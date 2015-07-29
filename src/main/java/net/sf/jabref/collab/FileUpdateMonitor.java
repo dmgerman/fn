@@ -765,9 +765,9 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logInfo
+name|info
 argument_list|(
 literal|"Cannot copy to temporary file '"
 operator|+
@@ -777,6 +777,8 @@ name|getPath
 argument_list|()
 operator|+
 literal|'\''
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
