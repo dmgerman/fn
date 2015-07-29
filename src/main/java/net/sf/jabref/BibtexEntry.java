@@ -443,11 +443,13 @@ argument_list|)
 decl_stmt|;
 comment|// Search and grouping status is stored in boolean fields for quick reference:
 DECL|field|searchHit
-DECL|field|groupHit
 specifier|private
 name|boolean
 name|searchHit
-decl_stmt|,
+decl_stmt|;
+DECL|field|groupHit
+specifier|private
+name|boolean
 name|groupHit
 decl_stmt|;
 DECL|method|BibtexEntry ()
@@ -871,19 +873,15 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|fieldValue
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|!
 name|fieldValue
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 return|return
@@ -1134,7 +1132,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|source
 operator|.
 name|length
@@ -1144,7 +1141,6 @@ name|pos
 operator|.
 name|getIndex
 argument_list|()
-operator|)
 operator|==
 name|FORMAT1
 operator|.
@@ -1352,7 +1348,6 @@ name|getCiteKey
 parameter_list|()
 block|{
 return|return
-operator|(
 name|_fields
 operator|.
 name|containsKey
@@ -1372,7 +1367,6 @@ name|KEY_FIELD
 argument_list|)
 else|:
 literal|null
-operator|)
 return|;
 block|}
 comment|/**      * Sets a number of fields simultaneously. The given HashMap contains field      * names as keys, each mapped to the value to set.      * WARNING: this method does not notify change listeners, so it should *NOT*      * be used for entries that are being displayed in the GUI. Furthermore, it      * does not check values for content, so e.g. empty strings will be set as such.      */
@@ -1659,19 +1653,15 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|value
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|!
 name|value
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 return|return
@@ -2000,20 +1990,16 @@ literal|')'
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|maxCharacters
 operator|<=
 literal|0
-operator|)
 operator|||
-operator|(
 name|text
 operator|.
 name|length
 argument_list|()
 operator|<=
 name|maxCharacters
-operator|)
 condition|)
 block|{
 return|return

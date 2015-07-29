@@ -300,16 +300,13 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|entry
 operator|.
 name|getCiteKey
 argument_list|()
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|entry
 operator|.
 name|getCiteKey
@@ -320,7 +317,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|JOptionPane
@@ -473,11 +469,9 @@ expr_stmt|;
 comment|// if the key is empty we give a warning and ignore this entry
 if|if
 condition|(
-operator|(
 name|citeKey
 operator|==
 literal|null
-operator|)
 operator|||
 name|citeKey
 operator|.

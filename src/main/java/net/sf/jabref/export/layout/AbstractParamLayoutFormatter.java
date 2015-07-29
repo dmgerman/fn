@@ -117,7 +117,6 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|arg
 operator|.
 name|charAt
@@ -128,7 +127,6 @@ operator|==
 name|AbstractParamLayoutFormatter
 operator|.
 name|SEPARATOR
-operator|)
 operator|&&
 operator|!
 name|escaped
@@ -246,7 +244,6 @@ else|else
 block|{
 if|if
 condition|(
-operator|(
 name|arg
 operator|.
 name|charAt
@@ -255,9 +252,7 @@ name|i
 argument_list|)
 operator|!=
 literal|','
-operator|)
 operator|&&
-operator|(
 name|arg
 operator|.
 name|charAt
@@ -266,7 +261,6 @@ name|i
 argument_list|)
 operator|!=
 literal|'"'
-operator|)
 condition|)
 block|{
 name|current

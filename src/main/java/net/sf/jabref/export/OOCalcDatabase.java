@@ -659,7 +659,8 @@ name|createElement
 argument_list|(
 literal|"office:body"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|Element
 name|table
 init|=
 name|result
@@ -1744,7 +1745,8 @@ name|createElement
 argument_list|(
 literal|"table:table-cell"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|Element
 name|text
 init|=
 name|doc

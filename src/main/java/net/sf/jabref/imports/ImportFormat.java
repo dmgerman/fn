@@ -317,19 +317,14 @@ name|o
 parameter_list|)
 block|{
 return|return
-operator|(
 name|o
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|o
 operator|instanceof
 name|ImportFormat
-operator|)
 operator|&&
-operator|(
 operator|(
 operator|(
 name|ImportFormat
@@ -342,7 +337,6 @@ argument_list|()
 operator|==
 name|getIsCustomImporter
 argument_list|()
-operator|)
 operator|&&
 operator|(
 operator|(

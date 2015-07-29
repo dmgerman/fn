@@ -277,7 +277,6 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
-operator|(
 name|str
 operator|=
 name|in
@@ -287,13 +286,10 @@ argument_list|()
 operator|)
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|i
 operator|<
 literal|50
-operator|)
 condition|)
 block|{
 if|if
@@ -396,15 +392,12 @@ condition|)
 block|{
 if|if
 condition|(
-operator|(
 operator|!
 name|line
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 operator|&&
-operator|(
 name|line
 operator|.
 name|charAt
@@ -413,7 +406,6 @@ literal|0
 argument_list|)
 operator|!=
 literal|' '
-operator|)
 condition|)
 block|{
 name|sb
@@ -551,7 +543,6 @@ comment|// Check if this is the author field (due to a minor special treatment f
 name|boolean
 name|isAuthor
 init|=
-operator|(
 name|fieldName
 operator|.
 name|indexOf
@@ -560,7 +551,6 @@ literal|"Author"
 argument_list|)
 operator|==
 literal|0
-operator|)
 operator|&&
 operator|!
 name|fieldName
@@ -1337,20 +1327,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|auth
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|auth
 operator|.
 name|contains
 argument_list|(
 literal|" [Ed]"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|h

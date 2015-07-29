@@ -1345,7 +1345,8 @@ argument_list|()
 decl_stmt|;
 name|String
 name|name
-decl_stmt|,
+decl_stmt|;
+name|String
 name|fields
 decl_stmt|;
 name|int

@@ -525,7 +525,6 @@ operator|.
 name|getStringValue
 argument_list|(
 operator|(
-operator|(
 name|Element
 operator|)
 name|l
@@ -534,7 +533,6 @@ name|item
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -549,7 +547,6 @@ operator|.
 name|getStringValue
 argument_list|(
 operator|(
-operator|(
 name|Element
 operator|)
 name|l
@@ -558,7 +555,6 @@ name|item
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 argument_list|)
 argument_list|)
 expr_stmt|;

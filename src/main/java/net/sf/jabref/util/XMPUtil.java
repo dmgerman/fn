@@ -909,7 +909,6 @@ block|}
 block|}
 comment|// Return null if no values were found
 return|return
-operator|(
 operator|!
 name|entry
 operator|.
@@ -922,7 +921,6 @@ condition|?
 name|entry
 else|:
 literal|null
-operator|)
 return|;
 block|}
 comment|/**      * Helper function for retrieving a BibtexEntry from the DublinCore metadata      * in a PDF file.      *       * To understand how to get hold of a XMPSchemaDublinCore have a look in the      * test cases for XMPUtil.      *       * The BibtexEntry is build by mapping individual fields in the dublin core      * (like creator, title, subject) to fields in a bibtex entry.      *       * @param dcSchema      *            The document information from which to build a BibtexEntry.      *       * @return The bibtex entry found in the document information.      */
@@ -1162,19 +1160,15 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|dates
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|!
 name|dates
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|String
@@ -1712,19 +1706,15 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|l
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|!
 name|l
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|s
@@ -1771,7 +1761,6 @@ block|}
 block|}
 block|}
 return|return
-operator|(
 operator|!
 name|entry
 operator|.
@@ -1784,7 +1773,6 @@ condition|?
 name|entry
 else|:
 literal|null
-operator|)
 return|;
 block|}
 comment|/**      * Try to write the given BibTexEntry in the XMP-stream of the given      * PDF-file.      *       * Throws an IOException if the file cannot be read or written, so the user      * can remove a lock or cancel the operation.      *       * The method will overwrite existing BibTeX-XMP-data, but keep other      * existing metadata.      *       * This is a convenience method for writeXMP(File, Collection).      *       * @param file      *            The file to write to.      * @param entry      *            The entry to write.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws TransformerException      *             If the entry was malformed or unsupported.      * @throws IOException      *             If the file could not be written to or could not be found.      */
@@ -3448,14 +3436,12 @@ if|if
 condition|(
 name|writePDFInfo
 operator|&&
-operator|(
 name|bibtexEntries
 operator|.
 name|size
 argument_list|()
 operator|==
 literal|1
-operator|)
 condition|)
 block|{
 name|XMPUtil

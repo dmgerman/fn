@@ -184,11 +184,9 @@ return|;
 block|}
 if|if
 condition|(
-operator|(
 name|docin
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|docin

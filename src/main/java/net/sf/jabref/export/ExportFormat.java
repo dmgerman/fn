@@ -1222,24 +1222,18 @@ decl_stmt|;
 comment|// TODO: any need to accept escaped colons here?
 if|if
 condition|(
-operator|(
 name|index
 operator|>
 literal|0
-operator|)
 operator|&&
-operator|(
-operator|(
 name|index
 operator|+
 literal|1
-operator|)
 operator|<
 name|line
 operator|.
 name|length
 argument_list|()
-operator|)
 condition|)
 block|{
 name|String

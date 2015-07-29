@@ -1356,7 +1356,6 @@ argument_list|(
 literal|"bla"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1368,7 +1367,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1399,7 +1397,6 @@ argument_list|(
 literal|"bla"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1411,7 +1408,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1442,7 +1438,6 @@ argument_list|(
 literal|"_bla.bla.blub"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1455,7 +1450,6 @@ argument_list|(
 literal|0
 argument_list|)
 operator|)
-operator|)
 index|[
 literal|0
 index|]
@@ -1485,7 +1479,6 @@ argument_list|(
 literal|"bla"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1497,7 +1490,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1511,7 +1503,6 @@ argument_list|(
 literal|"foo"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1523,7 +1514,6 @@ name|get
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1554,7 +1544,6 @@ argument_list|(
 literal|"bla"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1566,7 +1555,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1580,7 +1568,6 @@ argument_list|(
 literal|"foo"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1592,7 +1579,6 @@ name|get
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1606,7 +1592,6 @@ argument_list|(
 literal|"test"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1618,7 +1603,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|1
@@ -1632,7 +1616,6 @@ argument_list|(
 literal|"fark"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1644,7 +1627,6 @@ name|get
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|1
@@ -1675,7 +1657,6 @@ argument_list|(
 literal|"bla"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1687,7 +1668,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1701,7 +1681,6 @@ argument_list|(
 literal|"foo"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1713,7 +1692,6 @@ name|get
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1727,7 +1705,6 @@ argument_list|(
 literal|"test"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1739,7 +1716,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|1
@@ -1753,7 +1729,6 @@ argument_list|(
 literal|"fark"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1765,7 +1740,6 @@ name|get
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|1

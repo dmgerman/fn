@@ -135,12 +135,10 @@ block|{
 name|String
 name|typeName
 init|=
-operator|(
 name|i
 operator|.
 name|next
 argument_list|()
-operator|)
 operator|.
 name|toLowerCase
 argument_list|()

@@ -613,13 +613,11 @@ name|hasWarnings
 parameter_list|()
 block|{
 return|return
-operator|(
 operator|!
 name|warnings
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 return|;
 block|}
 DECL|method|warnings ()

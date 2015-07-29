@@ -1836,14 +1836,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|a
 operator|.
 name|getField
 argument_list|(
 literal|"title"
 argument_list|)
-operator|)
 operator|.
 name|startsWith
 argument_list|(

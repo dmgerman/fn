@@ -1126,9 +1126,9 @@ block|}
 if|if
 condition|(
 operator|(
-literal|0
-operator|<=
 name|c
+operator|>=
+literal|0
 operator|)
 operator|&&
 operator|(

@@ -1399,7 +1399,6 @@ argument_list|(
 name|s
 argument_list|)
 operator|||
-operator|(
 name|s
 operator|.
 name|indexOf
@@ -1408,7 +1407,6 @@ literal|'&'
 argument_list|)
 operator|>=
 literal|0
-operator|)
 condition|)
 block|{
 comment|// Report error and exit.
@@ -1839,20 +1837,16 @@ block|{
 comment|// Selection has been made, or add button pressed:
 if|if
 condition|(
-operator|(
 name|sel
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|sel
 operator|.
 name|getSelectedItem
 argument_list|()
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 name|String
@@ -1875,11 +1869,9 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|input
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|input
@@ -1953,14 +1945,12 @@ argument_list|(
 literal|"comboBoxChanged"
 argument_list|)
 operator|&&
-operator|(
 name|e
 operator|.
 name|getModifiers
 argument_list|()
 operator|==
 literal|0
-operator|)
 condition|)
 block|{
 comment|// These conditions signify arrow key navigation in the dropdown list, so we should

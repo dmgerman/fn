@@ -324,7 +324,8 @@ name|String
 name|regPt1
 init|=
 literal|""
-decl_stmt|,
+decl_stmt|;
+name|String
 name|regPt2
 init|=
 literal|""
@@ -338,12 +339,13 @@ name|boolean
 name|reg1Set
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+comment|//if beginning of timeframe is BEFORE and end of timeframe is AFTER turn of the century
+name|boolean
 name|reg2Set
 init|=
 literal|false
 decl_stmt|;
-comment|//if beginning of timeframe is BEFORE and end of timeframe is AFTER turn of the century
 name|String
 index|[]
 name|searchTermsToPr
@@ -405,17 +407,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|year1
 operator|<
 literal|2000
-operator|)
 operator|&&
-operator|(
 name|year2
 operator|>=
 literal|2000
-operator|)
 condition|)
 block|{
 comment|//for 199.
@@ -503,7 +501,6 @@ block|}
 block|}
 if|if
 condition|(
-operator|(
 name|Integer
 operator|.
 name|parseInt
@@ -515,13 +512,10 @@ index|]
 argument_list|)
 operator|>=
 literal|2000
-operator|)
 operator|&&
-operator|(
 name|year1
 operator|<
 literal|2000
-operator|)
 condition|)
 block|{
 comment|//for 200.

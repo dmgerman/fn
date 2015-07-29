@@ -213,13 +213,10 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|pr
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|pr
 operator|.
 name|getDatabase
@@ -229,7 +226,6 @@ name|getEntryCount
 argument_list|()
 operator|>
 literal|0
-operator|)
 condition|)
 block|{
 return|return

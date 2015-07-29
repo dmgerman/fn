@@ -960,7 +960,6 @@ argument_list|(
 name|name
 argument_list|)
 operator|&&
-operator|(
 name|other
 operator|.
 name|getHierarchicalContext
@@ -968,7 +967,6 @@ argument_list|()
 operator|==
 name|getHierarchicalContext
 argument_list|()
-operator|)
 return|;
 block|}
 comment|/**      * Returns a String representation of this group and its entries. Entries      * are referenced by their Bibtexkey. Entries that do not have a Bibtexkey      * are not included in the representation and will thus not be available      * upon recreation.      */
@@ -1070,11 +1068,9 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|s
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|s

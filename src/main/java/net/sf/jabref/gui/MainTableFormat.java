@@ -2035,7 +2035,8 @@ name|lastLinkPosition
 init|=
 operator|-
 literal|1
-decl_stmt|,
+decl_stmt|;
+name|int
 name|countLinks
 init|=
 literal|0

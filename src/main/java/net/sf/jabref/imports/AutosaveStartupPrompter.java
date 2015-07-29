@@ -398,11 +398,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|pr
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|pr
@@ -609,11 +607,9 @@ block|}
 block|}
 if|if
 condition|(
-operator|(
 name|pr
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|pr

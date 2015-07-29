@@ -104,11 +104,9 @@ name|m_index
 argument_list|)
 argument_list|)
 operator|&&
-operator|(
 name|m_index
 operator|<
 name|m_contentLength
-operator|)
 condition|)
 block|{
 operator|++
@@ -200,11 +198,9 @@ expr_stmt|;
 block|}
 do|while
 condition|(
-operator|(
 name|m_index
 operator|<
 name|m_contentLength
-operator|)
 operator|&&
 name|isDelimiter
 argument_list|(

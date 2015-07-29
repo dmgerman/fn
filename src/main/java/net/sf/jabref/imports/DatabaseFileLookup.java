@@ -328,17 +328,13 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|aFile
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|anEntry
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 return|return
@@ -430,12 +426,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|expandedFilename
 operator|!=
 literal|null
-comment|// file exists
-operator|)
 operator|&&
 name|expandedFilename
 operator|.

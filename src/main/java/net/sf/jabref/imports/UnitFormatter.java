@@ -338,11 +338,9 @@ name|UnitFormatter
 operator|.
 name|unitCombinations
 index|[
-operator|(
 name|i
 operator|*
 name|uPLLength
-operator|)
 operator|+
 name|j
 index|]

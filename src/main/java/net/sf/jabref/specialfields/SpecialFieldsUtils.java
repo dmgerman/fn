@@ -1072,7 +1072,6 @@ name|fieldName
 parameter_list|)
 block|{
 return|return
-operator|(
 name|SpecialFieldsUtils
 operator|.
 name|getSpecialFieldInstanceFromFieldName
@@ -1081,7 +1080,6 @@ name|fieldName
 argument_list|)
 operator|!=
 literal|null
-operator|)
 return|;
 block|}
 DECL|method|keywordSyncEnabled ()

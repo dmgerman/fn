@@ -468,7 +468,6 @@ comment|// Are multiple entries selected?
 name|boolean
 name|multiple
 init|=
-operator|(
 name|panel
 operator|.
 name|mainTable
@@ -477,7 +476,6 @@ name|getSelectedRowCount
 argument_list|()
 operator|>
 literal|1
-operator|)
 decl_stmt|;
 comment|// If only one entry is selected, get a reference to it for adapting the menu.
 name|BibtexEntry
@@ -1079,18 +1077,14 @@ decl_stmt|;
 comment|// We have to check for "" too as the marked field may be empty
 if|if
 condition|(
-operator|(
 name|marked
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|marked
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|add

@@ -152,13 +152,15 @@ name|JCheckBox
 argument_list|()
 decl_stmt|;
 DECL|field|couldNotConnect
-DECL|field|couldNotRunClient
 specifier|private
 name|boolean
 name|couldNotConnect
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+DECL|field|couldNotRunClient
+specifier|private
+name|boolean
 name|couldNotRunClient
 init|=
 literal|false

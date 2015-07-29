@@ -806,11 +806,9 @@ argument_list|(
 name|ch
 argument_list|)
 operator|&&
-operator|(
 name|t
 operator|>
 literal|1
-operator|)
 condition|)
 block|{
 name|upLowCounter
@@ -934,15 +932,11 @@ block|}
 block|}
 if|if
 condition|(
-operator|(
 operator|!
 name|containsFourDigits
-operator|)
 operator|&&
-operator|(
 operator|!
 name|fourDigitsBlock
-operator|)
 condition|)
 block|{
 name|messages

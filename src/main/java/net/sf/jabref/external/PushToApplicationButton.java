@@ -301,11 +301,13 @@ name|JPanel
 name|comp
 decl_stmt|;
 DECL|field|pushButton
-DECL|field|menuButton
 specifier|private
 name|JButton
 name|pushButton
-decl_stmt|,
+decl_stmt|;
+DECL|field|menuButton
+specifier|private
+name|JButton
 name|menuButton
 decl_stmt|;
 DECL|field|selected

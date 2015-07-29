@@ -808,7 +808,9 @@ operator|.
 name|matches
 argument_list|()
 condition|)
+block|{
 continue|continue;
+block|}
 name|content
 operator|=
 name|entry
@@ -843,7 +845,9 @@ operator|.
 name|matches
 argument_list|()
 condition|)
+block|{
 continue|continue;
+block|}
 name|content
 operator|=
 name|entry
@@ -864,8 +868,10 @@ name|content
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
 comment|// paranoia
+block|}
 if|if
 condition|(
 name|matchInField

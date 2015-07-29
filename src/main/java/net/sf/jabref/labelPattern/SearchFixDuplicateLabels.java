@@ -214,20 +214,15 @@ decl_stmt|;
 comment|// Only handle keys that are actually set:
 if|if
 condition|(
-operator|(
 name|key
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
+operator|!
 name|key
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
-operator|)
 condition|)
 block|{
 comment|// See whether this entry's key is already known:
@@ -484,12 +479,11 @@ block|}
 comment|// Do the actual generation:
 if|if
 condition|(
+operator|!
 name|toGenerateFor
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|NamedCompound

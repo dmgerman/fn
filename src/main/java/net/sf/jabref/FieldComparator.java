@@ -303,7 +303,6 @@ argument_list|)
 expr_stmt|;
 name|isNameField
 operator|=
-operator|(
 name|this
 operator|.
 name|field
@@ -327,7 +326,6 @@ name|equals
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|)
 expr_stmt|;
 name|isYearField
 operator|=
@@ -388,7 +386,8 @@ parameter_list|)
 block|{
 name|Object
 name|f1
-decl_stmt|,
+decl_stmt|;
+name|Object
 name|f2
 decl_stmt|;
 if|if
@@ -592,7 +591,8 @@ name|Integer
 name|i1
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
+name|Integer
 name|i2
 init|=
 literal|null
@@ -645,17 +645,13 @@ comment|// Parsing failed.
 block|}
 if|if
 condition|(
-operator|(
 name|i2
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|i1
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 comment|// Ok, parsing was successful. Update f1 and f2:
@@ -717,22 +713,17 @@ name|result
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|f1
 operator|instanceof
 name|Integer
-operator|)
 operator|&&
-operator|(
 name|f2
 operator|instanceof
 name|Integer
-operator|)
 condition|)
 block|{
 name|result
 operator|=
-operator|(
 operator|(
 operator|(
 name|Integer
@@ -747,7 +738,6 @@ name|Integer
 operator|)
 name|f2
 argument_list|)
-operator|)
 expr_stmt|;
 block|}
 elseif|else
@@ -773,10 +763,7 @@ decl_stmt|;
 name|result
 operator|=
 operator|-
-operator|(
-operator|(
 name|f1AsInteger
-operator|)
 operator|.
 name|compareTo
 argument_list|(
@@ -785,7 +772,6 @@ name|Integer
 operator|)
 name|f2
 argument_list|)
-operator|)
 expr_stmt|;
 block|}
 elseif|else
@@ -813,7 +799,6 @@ operator|=
 operator|-
 operator|(
 operator|(
-operator|(
 name|Integer
 operator|)
 name|f1
@@ -823,7 +808,6 @@ name|compareTo
 argument_list|(
 name|f2AsInteger
 argument_list|)
-operator|)
 expr_stmt|;
 block|}
 else|else
@@ -840,7 +824,8 @@ operator|)
 operator|.
 name|toLowerCase
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
 name|theirs
 init|=
 operator|(

@@ -576,15 +576,12 @@ literal|0
 decl_stmt|;
 while|while
 condition|(
-operator|(
 name|i
 operator|<
 name|keys
 operator|.
 name|length
-operator|)
 operator|&&
-operator|(
 operator|!
 name|keys
 index|[
@@ -595,7 +592,6 @@ name|equals
 argument_list|(
 name|redoKey
 argument_list|)
-operator|)
 condition|)
 block|{
 name|i
@@ -663,11 +659,9 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|words
 operator|==
 literal|null
-operator|)
 operator|||
 name|words
 operator|.

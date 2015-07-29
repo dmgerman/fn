@@ -1249,13 +1249,11 @@ if|if
 condition|(
 name|j
 operator|<
-operator|(
 name|names
 operator|.
 name|length
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|sb
@@ -1349,13 +1347,11 @@ if|if
 condition|(
 name|i
 operator|<
-operator|(
 name|authors
 operator|.
 name|length
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|sb
@@ -1405,16 +1401,13 @@ block|}
 comment|// If only one character (uppercase letter), add a dot and return immediately:
 if|if
 condition|(
-operator|(
 name|s
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|1
-operator|)
 operator|&&
-operator|(
 name|Character
 operator|.
 name|isLetter
@@ -1438,7 +1431,6 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|)
-operator|)
 condition|)
 block|{
 return|return
@@ -1463,7 +1455,8 @@ name|charAt
 argument_list|(
 literal|0
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|char
 name|d
 init|=
 literal|0
@@ -2136,7 +2129,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|pr
 operator|.
 name|getDatabase
@@ -2146,9 +2138,7 @@ name|getEntryCount
 argument_list|()
 operator|>
 literal|0
-operator|)
 operator|||
-operator|(
 name|pr
 operator|.
 name|getDatabase
@@ -2158,7 +2148,6 @@ name|getStringCount
 argument_list|()
 operator|>
 literal|0
-operator|)
 condition|)
 block|{
 name|pr

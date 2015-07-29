@@ -1783,14 +1783,12 @@ name|bibtex
 parameter_list|)
 block|{
 return|return
-operator|(
 name|AuthorList
 operator|.
 name|getAuthorList
 argument_list|(
 name|bibtex
 argument_list|)
-operator|)
 operator|.
 name|size
 argument_list|()

@@ -2235,16 +2235,13 @@ comment|// forename sometimes has initials with " " in middle: is pattern [A-Z] 
 comment|// when above is the case replace it with initials
 if|if
 condition|(
-operator|(
 name|forename
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|3
-operator|)
 operator|&&
-operator|(
 name|forename
 operator|.
 name|charAt
@@ -2253,7 +2250,6 @@ literal|1
 argument_list|)
 operator|==
 literal|' '
-operator|)
 condition|)
 block|{
 name|forename
@@ -3226,7 +3222,8 @@ name|last
 operator|.
 name|length
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|int
 name|lfirst
 init|=
 name|first

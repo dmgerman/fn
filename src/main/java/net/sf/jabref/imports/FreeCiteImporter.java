@@ -546,7 +546,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|(
 name|parser
 operator|.
 name|getEventType
@@ -555,9 +554,7 @@ operator|==
 name|XMLStreamConstants
 operator|.
 name|START_ELEMENT
-operator|)
 operator|&&
-operator|(
 name|parser
 operator|.
 name|getLocalName
@@ -567,7 +564,6 @@ name|equals
 argument_list|(
 literal|"citation"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|parser
@@ -601,7 +597,6 @@ while|while
 condition|(
 operator|!
 operator|(
-operator|(
 name|parser
 operator|.
 name|getEventType
@@ -610,7 +605,6 @@ operator|==
 name|XMLStreamConstants
 operator|.
 name|END_ELEMENT
-operator|)
 operator|&&
 name|parser
 operator|.
@@ -680,7 +674,6 @@ condition|)
 block|{
 comment|// author is directly nested below authors
 assert|assert
-operator|(
 name|parser
 operator|.
 name|getLocalName
@@ -690,7 +683,6 @@ name|equals
 argument_list|(
 literal|"author"
 argument_list|)
-operator|)
 assert|;
 name|String
 name|author
@@ -737,7 +729,6 @@ argument_list|)
 expr_stmt|;
 block|}
 assert|assert
-operator|(
 name|parser
 operator|.
 name|getEventType
@@ -746,10 +737,8 @@ operator|==
 name|XMLStreamConstants
 operator|.
 name|END_ELEMENT
-operator|)
 assert|;
 assert|assert
-operator|(
 name|parser
 operator|.
 name|getLocalName
@@ -759,7 +748,6 @@ name|equals
 argument_list|(
 literal|"author"
 argument_list|)
-operator|)
 assert|;
 name|parser
 operator|.

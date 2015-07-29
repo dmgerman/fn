@@ -748,15 +748,13 @@ expr_stmt|;
 name|BibtexEntry
 name|be
 init|=
-call|(
+operator|(
 name|BibtexEntry
-call|)
-argument_list|(
+operator|)
 name|originalEntry
 operator|.
 name|clone
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|be
 operator|.

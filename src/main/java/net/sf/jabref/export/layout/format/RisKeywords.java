@@ -163,14 +163,12 @@ if|if
 condition|(
 name|i
 operator|<
-operator|(
 name|keywords
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|sb

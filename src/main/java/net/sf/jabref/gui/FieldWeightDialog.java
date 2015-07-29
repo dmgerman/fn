@@ -458,7 +458,6 @@ call|(
 name|int
 call|)
 argument_list|(
-operator|(
 literal|100
 operator|*
 name|BibtexFields
@@ -467,7 +466,6 @@ name|getFieldWeight
 argument_list|(
 name|field
 argument_list|)
-operator|)
 operator|/
 name|GUIGlobals
 operator|.
@@ -664,18 +662,14 @@ block|{
 name|double
 name|weight
 init|=
-operator|(
 name|GUIGlobals
 operator|.
 name|MAX_FIELD_WEIGHT
 operator|*
-operator|(
 name|slider
 operator|.
 name|getValue
 argument_list|()
-operator|)
-operator|)
 operator|/
 literal|100d
 decl_stmt|;

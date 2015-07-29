@@ -98,11 +98,9 @@ name|defaultFormat
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|fieldText
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|fieldText
 operator|.

@@ -494,17 +494,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|height
 operator|==
 literal|0
-operator|)
 operator|||
-operator|(
 name|width
 operator|==
 literal|0
-operator|)
 condition|)
 block|{
 name|height

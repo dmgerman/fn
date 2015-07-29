@@ -62,11 +62,9 @@ parameter_list|)
 block|{
 comment|/**          * This formatter is a duplicate of AuthorAbbreviator, so we simply          * call that one.          */
 return|return
-operator|(
 operator|new
 name|AuthorAbbreviator
 argument_list|()
-operator|)
 operator|.
 name|format
 argument_list|(

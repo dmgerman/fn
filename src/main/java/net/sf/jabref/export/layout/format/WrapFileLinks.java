@@ -215,15 +215,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|parts
 operator|.
 name|length
 operator|>
 literal|1
-operator|)
 operator|&&
-operator|(
 operator|!
 name|parts
 index|[
@@ -235,7 +232,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|fileType
@@ -264,13 +260,11 @@ literal|2
 init|;
 name|i
 operator|<
-operator|(
 name|parts
 operator|.
 name|length
 operator|-
 literal|1
-operator|)
 condition|;
 name|i
 operator|+=
@@ -378,11 +372,9 @@ decl_stmt|;
 comment|// Use this entry if we don't discriminate on types, or if the type fits:
 if|if
 condition|(
-operator|(
 name|fileType
 operator|==
 literal|null
-operator|)
 operator|||
 name|flEntry
 operator|.
@@ -652,16 +644,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|index
 operator|>=
 literal|0
-operator|)
 operator|&&
-operator|(
 name|index
 operator|<
-operator|(
 name|flEntry
 operator|.
 name|getLink
@@ -671,8 +659,6 @@ name|length
 argument_list|()
 operator|-
 literal|1
-operator|)
-operator|)
 condition|)
 block|{
 name|sb

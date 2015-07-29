@@ -413,8 +413,8 @@ name|OOBibBase
 block|{
 DECL|field|BIB_SECTION_NAME
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|BIB_SECTION_NAME
 init|=
@@ -422,8 +422,8 @@ literal|"JR_bib"
 decl_stmt|;
 DECL|field|BIB_SECTION_END_NAME
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|BIB_SECTION_END_NAME
 init|=
@@ -431,8 +431,8 @@ literal|"JR_bib_end"
 decl_stmt|;
 DECL|field|BIB_CITATION
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|BIB_CITATION
 init|=
@@ -456,8 +456,8 @@ literal|"\\d*_(\\d*)_(.*)"
 argument_list|)
 decl_stmt|;
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 DECL|field|AUTHORYEAR_PAR
 name|AUTHORYEAR_PAR
@@ -466,8 +466,8 @@ literal|1
 decl_stmt|;
 DECL|field|AUTHORYEAR_INTEXT
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|AUTHORYEAR_INTEXT
 init|=
@@ -475,16 +475,16 @@ literal|2
 decl_stmt|;
 DECL|field|INVISIBLE_CIT
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|INVISIBLE_CIT
 init|=
 literal|3
 decl_stmt|;
 DECL|field|DEFAULT_CONNECTION_STRING
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|DEFAULT_CONNECTION_STRING
 init|=
@@ -1705,7 +1705,6 @@ name|keyString
 argument_list|,
 name|withText
 condition|?
-operator|(
 name|inParenthesis
 condition|?
 name|OOBibBase
@@ -1715,7 +1714,6 @@ else|:
 name|OOBibBase
 operator|.
 name|AUTHORYEAR_INTEXT
-operator|)
 else|:
 name|OOBibBase
 operator|.
@@ -2828,13 +2826,11 @@ if|if
 condition|(
 name|j
 operator|<
-operator|(
 name|keys
 operator|.
 name|length
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|sb
@@ -3848,20 +3844,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|uniq
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|uniq
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|0
-operator|)
 condition|)
 block|{
 name|needsChange
@@ -4276,7 +4268,6 @@ if|if
 condition|(
 name|hadBibSection
 operator|&&
-operator|(
 name|getBookmarkRange
 argument_list|(
 name|OOBibBase
@@ -4285,7 +4276,6 @@ name|BIB_SECTION_NAME
 argument_list|)
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 comment|// We have overwritten the marker for the start of the reference list.
@@ -5803,15 +5793,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|i
 operator|>=
-operator|(
 name|charBefore
 operator|-
 name|flex
-operator|)
-operator|)
 operator|&&
 name|Character
 operator|.
@@ -5880,11 +5866,9 @@ literal|0
 init|;
 name|i
 operator|<
-operator|(
 name|charAfter
 operator|+
 name|length
-operator|)
 condition|;
 name|i
 operator|++
@@ -5908,15 +5892,11 @@ if|if
 condition|(
 name|i
 operator|>=
-operator|(
-operator|(
 name|charAfter
 operator|+
 name|length
-operator|)
 operator|-
 name|flex
-operator|)
 condition|)
 block|{
 name|String
@@ -6748,7 +6728,6 @@ while|while
 condition|(
 name|couldExpand
 operator|&&
-operator|(
 name|compare
 operator|.
 name|compareRegionEnds
@@ -6759,7 +6738,6 @@ name|rangeEnd
 argument_list|)
 operator|>
 literal|0
-operator|)
 condition|)
 block|{
 name|couldExpand
@@ -8022,13 +8000,11 @@ while|while
 condition|(
 name|piv
 operator|<
-operator|(
 name|names
 operator|.
 name|length
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|XTextRange
@@ -8141,7 +8117,6 @@ while|while
 condition|(
 name|couldExpand
 operator|&&
-operator|(
 name|compare
 operator|.
 name|compareRegionEnds
@@ -8152,7 +8127,6 @@ name|r2
 argument_list|)
 operator|>
 literal|0
-operator|)
 condition|)
 block|{
 name|couldExpand
@@ -8181,7 +8155,6 @@ decl_stmt|;
 comment|// Check if the string contains no line breaks and only whitespace:
 if|if
 condition|(
-operator|(
 name|text
 operator|.
 name|indexOf
@@ -8191,9 +8164,7 @@ argument_list|)
 operator|==
 operator|-
 literal|1
-operator|)
 operator|&&
-operator|(
 name|text
 operator|.
 name|trim
@@ -8201,7 +8172,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 comment|// If we are supposed to set character format for citations, test this before

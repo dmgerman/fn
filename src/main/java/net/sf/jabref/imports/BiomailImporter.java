@@ -1110,7 +1110,6 @@ comment|// to parse header informaion. So add only if we have at least author or
 comment|// title fields.
 if|if
 condition|(
-operator|(
 name|hm
 operator|.
 name|get
@@ -1119,9 +1118,7 @@ literal|"author"
 argument_list|)
 operator|!=
 literal|null
-operator|)
 operator|||
-operator|(
 name|hm
 operator|.
 name|get
@@ -1130,7 +1127,6 @@ literal|"title"
 argument_list|)
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 name|bibitems

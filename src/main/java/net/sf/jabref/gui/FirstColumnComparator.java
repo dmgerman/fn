@@ -99,7 +99,8 @@ name|int
 name|score1
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+name|int
 name|score2
 init|=
 literal|0

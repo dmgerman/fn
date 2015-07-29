@@ -239,14 +239,12 @@ return|;
 comment|// wow, did we ever reach version 3?
 block|}
 return|return
-operator|(
 name|pr
 operator|.
 name|getJabrefMinorVersion
 argument_list|()
 operator|<=
 literal|2
-operator|)
 return|;
 block|}
 comment|/**      * This method presents a dialog box explaining and offering to make the      * changes. If the user confirms, the changes are performed.      * @param panel      * @param pr      */

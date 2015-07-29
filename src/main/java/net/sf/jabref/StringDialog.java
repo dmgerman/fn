@@ -551,7 +551,6 @@ name|c
 parameter_list|)
 block|{
 return|return
-operator|(
 name|super
 operator|.
 name|accept
@@ -559,12 +558,9 @@ argument_list|(
 name|c
 argument_list|)
 operator|&&
-operator|(
 name|c
 operator|instanceof
 name|StringTable
-operator|)
-operator|)
 return|;
 block|}
 block|}
@@ -1371,12 +1367,9 @@ name|col
 parameter_list|)
 block|{
 return|return
-operator|(
-operator|(
 name|col
 operator|==
 literal|0
-operator|)
 condition|?
 operator|(
 operator|(
@@ -1403,7 +1396,6 @@ operator|)
 operator|.
 name|getContent
 argument_list|()
-operator|)
 return|;
 block|}
 annotation|@
@@ -1712,11 +1704,9 @@ condition|)
 block|{
 try|try
 block|{
-operator|(
 operator|new
 name|LatexFieldFormatter
 argument_list|()
-operator|)
 operator|.
 name|format
 argument_list|(
@@ -1822,12 +1812,9 @@ name|col
 parameter_list|)
 block|{
 return|return
-operator|(
-operator|(
 name|col
 operator|==
 literal|0
-operator|)
 condition|?
 name|Globals
 operator|.
@@ -1842,7 +1829,6 @@ name|lang
 argument_list|(
 literal|"Content"
 argument_list|)
-operator|)
 return|;
 block|}
 annotation|@
@@ -1919,7 +1905,8 @@ name|table
 operator|.
 name|getEditingColumn
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|int
 name|row
 init|=
 name|table
@@ -2553,13 +2540,11 @@ operator|+
 literal|' '
 operator|+
 operator|(
-operator|(
 name|sel
 operator|.
 name|length
 operator|>
 literal|1
-operator|)
 condition|?
 name|sel
 operator|.

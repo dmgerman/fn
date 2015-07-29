@@ -388,7 +388,6 @@ name|assertEquals
 argument_list|(
 literal|5
 argument_list|,
-operator|(
 name|vm
 operator|.
 name|getEntries
@@ -398,7 +397,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|getFields
 argument_list|()

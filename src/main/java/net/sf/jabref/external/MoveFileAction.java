@@ -420,11 +420,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|file
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|file
 operator|.
@@ -779,7 +777,6 @@ operator|.
 name|exists
 argument_list|()
 operator|&&
-operator|(
 name|JOptionPane
 operator|.
 name|showConfirmDialog
@@ -817,7 +814,6 @@ operator|!=
 name|JOptionPane
 operator|.
 name|OK_OPTION
-operator|)
 condition|)
 block|{
 if|if
@@ -895,7 +891,6 @@ comment|// Relativise path, if possible.
 name|String
 name|canPath
 init|=
-operator|(
 operator|new
 name|File
 argument_list|(
@@ -904,7 +899,6 @@ index|[
 name|found
 index|]
 argument_list|)
-operator|)
 operator|.
 name|getCanonicalPath
 argument_list|()
@@ -924,7 +918,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|(
 name|newFile
 operator|.
 name|getCanonicalPath
@@ -937,9 +930,7 @@ name|canPath
 operator|.
 name|length
 argument_list|()
-operator|)
 operator|&&
-operator|(
 name|newFile
 operator|.
 name|getCanonicalPath
@@ -956,7 +947,6 @@ operator|==
 name|File
 operator|.
 name|separatorChar
-operator|)
 condition|)
 block|{
 name|flEntry

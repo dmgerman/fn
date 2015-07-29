@@ -137,11 +137,9 @@ condition|(
 operator|!
 name|escaped
 operator|&&
-operator|(
 name|c
 operator|==
 name|ESCAPE_CHAR
-operator|)
 condition|)
 block|{
 name|escaped

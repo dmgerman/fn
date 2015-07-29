@@ -353,8 +353,9 @@ argument_list|)
 operator|+
 literal|":"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|nr
+name|JLabel
 name|nr
 init|=
 operator|new
@@ -487,11 +488,13 @@ name|GroupSelector
 name|gs
 decl_stmt|;
 DECL|field|oldRemove
-DECL|field|oldField
 specifier|private
 name|String
 name|oldRemove
-decl_stmt|,
+decl_stmt|;
+DECL|field|oldField
+specifier|private
+name|String
 name|oldField
 decl_stmt|;
 DECL|field|gbl

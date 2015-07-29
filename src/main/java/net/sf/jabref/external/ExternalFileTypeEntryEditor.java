@@ -1304,7 +1304,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|application
 operator|.
 name|getText
@@ -1312,7 +1311,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|useDefault
@@ -1387,15 +1385,12 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 operator|!
 name|ext
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 operator|&&
-operator|(
 name|ext
 operator|.
 name|charAt
@@ -1404,7 +1399,6 @@ literal|0
 argument_list|)
 operator|==
 literal|'.'
-operator|)
 condition|)
 block|{
 name|entry
@@ -1478,7 +1472,6 @@ operator|.
 name|isSelected
 argument_list|()
 operator|||
-operator|(
 name|application
 operator|.
 name|getText
@@ -1489,7 +1482,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|entry

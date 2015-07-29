@@ -5479,21 +5479,15 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|index
 operator|>
 name|position
-operator|)
 operator|&&
-operator|(
-operator|(
 name|index
 operator|-
 name|position
-operator|)
 operator|<
 name|MAX_TAG_LENGTH
-operator|)
 condition|)
 block|{
 comment|//System.out.println("Removed tag: "+text.substring(position, index));

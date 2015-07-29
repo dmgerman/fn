@@ -550,11 +550,13 @@ name|JList
 name|keywordList
 decl_stmt|;
 DECL|field|intersectKeywords
-DECL|field|mergeKeywords
 specifier|private
 name|JRadioButton
 name|intersectKeywords
-decl_stmt|,
+decl_stmt|;
+DECL|field|mergeKeywords
+specifier|private
+name|JRadioButton
 name|mergeKeywords
 decl_stmt|;
 DECL|field|cancelled
@@ -1120,16 +1122,13 @@ argument_list|)
 decl_stmt|;
 while|while
 condition|(
-operator|(
 name|idx
 operator|<
 name|keywordListModel
 operator|.
 name|size
 argument_list|()
-operator|)
 operator|&&
-operator|(
 name|element
 operator|.
 name|compareTo
@@ -1138,7 +1137,6 @@ name|text
 argument_list|)
 operator|<
 literal|0
-operator|)
 condition|)
 block|{
 name|idx
@@ -2300,12 +2298,10 @@ block|}
 else|else
 block|{
 assert|assert
-operator|(
 name|intersectKeywords
 operator|.
 name|isSelected
 argument_list|()
-operator|)
 assert|;
 comment|// all keywords from first entry have to be added
 name|BibtexEntry

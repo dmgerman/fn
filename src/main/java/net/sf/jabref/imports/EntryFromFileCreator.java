@@ -229,11 +229,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|f
 operator|==
 literal|null
-operator|)
 operator|||
 operator|!
 name|f
@@ -571,11 +569,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|value
 operator|==
 literal|null
-operator|)
 operator|||
 literal|""
 operator|.

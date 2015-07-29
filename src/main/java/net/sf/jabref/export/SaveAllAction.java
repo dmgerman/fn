@@ -79,13 +79,15 @@ name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|databases
-DECL|field|saved
 specifier|private
 name|int
 name|databases
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+DECL|field|saved
+specifier|private
+name|int
 name|saved
 init|=
 literal|0

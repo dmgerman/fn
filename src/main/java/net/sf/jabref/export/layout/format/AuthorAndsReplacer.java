@@ -125,7 +125,8 @@ break|break;
 default|default:
 name|int
 name|i
-decl_stmt|,
+decl_stmt|;
+name|int
 name|x
 init|=
 name|authors
@@ -147,11 +148,9 @@ literal|0
 init|;
 name|i
 operator|<
-operator|(
 name|x
 operator|-
 literal|2
-operator|)
 condition|;
 name|i
 operator|++

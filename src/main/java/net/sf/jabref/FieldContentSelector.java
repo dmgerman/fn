@@ -467,14 +467,12 @@ argument_list|(
 literal|"comboBoxChanged"
 argument_list|)
 operator|&&
-operator|(
 name|e
 operator|.
 name|getModifiers
 argument_list|()
 operator|==
 literal|0
-operator|)
 condition|)
 block|{
 return|return;
@@ -709,11 +707,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|chosen
 operator|==
 literal|null
-operator|)
 operator|||
 name|chosen
 operator|.

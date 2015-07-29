@@ -820,7 +820,6 @@ name|getDatabase
 parameter_list|()
 block|{
 return|return
-operator|(
 name|database
 operator|!=
 literal|null
@@ -831,7 +830,6 @@ name|entryEditor
 operator|.
 name|getDatabase
 argument_list|()
-operator|)
 return|;
 block|}
 DECL|method|getEntry ()
@@ -841,7 +839,6 @@ name|getEntry
 parameter_list|()
 block|{
 return|return
-operator|(
 name|entry
 operator|!=
 literal|null
@@ -852,7 +849,6 @@ name|entryEditor
 operator|.
 name|getEntry
 argument_list|()
-operator|)
 return|;
 block|}
 DECL|method|getKey ()
@@ -1272,25 +1268,22 @@ name|editor
 operator|.
 name|getText
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
 name|retVal
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|directory
 operator|==
 literal|null
-operator|)
 operator|||
 operator|!
-operator|(
 operator|new
 name|File
 argument_list|(
 name|dir
 argument_list|)
-operator|)
 operator|.
 name|isAbsolute
 argument_list|()
@@ -1381,11 +1374,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|directory
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|position
 operator|.
@@ -1537,13 +1528,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|res
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|res
 operator|.
 name|trim
@@ -1551,7 +1539,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 return|return;
@@ -1667,11 +1654,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|plannedName
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|off
@@ -2087,20 +2072,16 @@ block|}
 comment|/*                      * Check if we should update the editor text field, or                      * update the target entry directly:                      */
 if|if
 condition|(
-operator|(
 name|entryEditor
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|entryEditor
 operator|.
 name|getEntry
 argument_list|()
 operator|!=
 name|targetEntry
-operator|)
 condition|)
 block|{
 comment|/*                          * Editor has probably changed to show a different                          * entry. So we must update the target entry directly                          * and not set the text of the editor.                          */
@@ -2266,13 +2247,10 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|o
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|Globals
 operator|.
 name|prefs
@@ -2285,7 +2263,6 @@ literal|"Directory"
 argument_list|)
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 name|output

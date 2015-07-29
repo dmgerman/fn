@@ -832,7 +832,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|node
 operator|.
 name|getNodeType
@@ -841,9 +840,7 @@ operator|!=
 name|Node
 operator|.
 name|ATTRIBUTE_NODE
-operator|)
 operator|&&
-operator|(
 name|node
 operator|.
 name|getNodeType
@@ -852,7 +849,6 @@ operator|!=
 name|Node
 operator|.
 name|ELEMENT_NODE
-operator|)
 condition|)
 block|{
 continue|continue;
@@ -878,13 +874,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|split
 operator|.
 name|length
 operator|==
 literal|2
-operator|)
 operator|&&
 name|split
 index|[
@@ -1100,13 +1094,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|split
 operator|.
 name|length
 operator|==
 literal|2
-operator|)
 operator|&&
 name|split
 index|[
@@ -1599,7 +1591,6 @@ expr_stmt|;
 block|}
 block|}
 return|return
-operator|(
 name|hasTextContent
 condition|?
 name|buffer
@@ -1608,7 +1599,6 @@ name|toString
 argument_list|()
 else|:
 literal|""
-operator|)
 return|;
 block|}
 block|}

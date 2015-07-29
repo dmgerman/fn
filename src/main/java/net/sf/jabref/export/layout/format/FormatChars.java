@@ -1996,7 +1996,8 @@ name|boolean
 name|escaped
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|incommand
 init|=
 literal|false
@@ -2031,11 +2032,9 @@ if|if
 condition|(
 name|escaped
 operator|&&
-operator|(
 name|c
 operator|==
 literal|'\\'
-operator|)
 condition|)
 block|{
 name|sb
@@ -2135,17 +2134,13 @@ operator|!
 name|incommand
 operator|&&
 operator|(
-operator|(
 name|c
 operator|==
 literal|'{'
-operator|)
 operator|||
-operator|(
 name|c
 operator|==
 literal|'}'
-operator|)
 operator|)
 condition|)
 block|{
@@ -2161,13 +2156,10 @@ argument_list|(
 name|c
 argument_list|)
 operator|||
-operator|(
 name|c
 operator|==
 literal|'%'
-operator|)
 operator|||
-operator|(
 name|Globals
 operator|.
 name|SPECIAL_COMMAND_CHARS
@@ -2181,7 +2173,6 @@ argument_list|(
 name|c
 argument_list|)
 argument_list|)
-operator|)
 condition|)
 block|{
 name|escaped
@@ -2215,16 +2206,13 @@ name|testCharCom
 label|:
 if|if
 condition|(
-operator|(
 name|currentCommand
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|1
-operator|)
 operator|&&
-operator|(
 name|Globals
 operator|.
 name|SPECIAL_COMMAND_CHARS
@@ -2236,7 +2224,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-operator|)
 condition|)
 block|{
 comment|// This indicates that we are in a command of the type
@@ -2245,14 +2232,12 @@ if|if
 condition|(
 name|i
 operator|>=
-operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 break|break
@@ -2379,11 +2364,9 @@ block|{
 comment|//	Are we already at the end of the string?
 if|if
 condition|(
-operator|(
 name|i
 operator|+
 literal|1
-operator|)
 operator|==
 name|field
 operator|.
@@ -2473,17 +2456,13 @@ argument_list|(
 name|c
 argument_list|)
 operator|||
-operator|(
 name|c
 operator|==
 literal|'{'
-operator|)
 operator|||
-operator|(
 name|c
 operator|==
 literal|'}'
-operator|)
 condition|)
 block|{
 comment|// First test if we are already at the end of the string.

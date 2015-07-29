@@ -253,13 +253,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|led
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|led
 operator|.
 name|trim
@@ -267,7 +264,6 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 name|notDefined

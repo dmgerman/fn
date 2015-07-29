@@ -346,12 +346,9 @@ name|dotPos
 argument_list|)
 argument_list|)
 operator|||
-operator|(
-operator|(
 name|dotDotPos
 operator|>=
 literal|0
-operator|)
 operator|&&
 name|extSet
 operator|.
@@ -364,7 +361,6 @@ argument_list|(
 name|dotDotPos
 argument_list|)
 argument_list|)
-operator|)
 return|;
 block|}
 DECL|method|getSuffix (String filenm)

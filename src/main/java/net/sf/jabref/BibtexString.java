@@ -117,7 +117,6 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-operator|(
 name|name
 operator|.
 name|charAt
@@ -126,7 +125,6 @@ literal|1
 argument_list|)
 operator|+
 literal|""
-operator|)
 argument_list|)
 condition|)
 block|{
@@ -328,17 +326,13 @@ name|getContent
 parameter_list|()
 block|{
 return|return
-operator|(
-operator|(
 name|_content
 operator|==
 literal|null
-operator|)
 condition|?
 literal|""
 else|:
 name|_content
-operator|)
 return|;
 block|}
 DECL|method|setContent (String content)

@@ -193,7 +193,6 @@ block|{
 while|while
 condition|(
 operator|(
-operator|(
 name|c
 operator|=
 name|in
@@ -203,13 +202,10 @@ argument_list|()
 operator|)
 operator|!=
 literal|'\0'
-operator|)
 operator|&&
-operator|(
 name|c
 operator|>=
 literal|0
-operator|)
 condition|)
 block|{
 name|result

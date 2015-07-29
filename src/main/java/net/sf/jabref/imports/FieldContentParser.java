@@ -114,20 +114,15 @@ condition|)
 block|{
 if|if
 condition|(
-operator|(
 name|content
 operator|.
 name|length
 argument_list|()
 operator|>
-operator|(
 name|i
 operator|+
 literal|1
-operator|)
-operator|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -138,21 +133,16 @@ literal|1
 argument_list|)
 operator|==
 literal|'\t'
-operator|)
 operator|&&
-operator|(
 operator|(
 name|content
 operator|.
 name|length
 argument_list|()
 operator|==
-operator|(
 name|i
 operator|+
 literal|2
-operator|)
-operator|)
 operator|||
 operator|!
 name|Character
@@ -197,11 +187,9 @@ comment|// the line wrap caused a JabRef linke break at the start of a value con
 comment|// The bug was caused by a protective check for i>0 to avoid intexing char -1 in content.
 if|if
 condition|(
-operator|(
 name|i
 operator|==
 literal|0
-operator|)
 operator|||
 operator|!
 name|Character
@@ -237,20 +225,15 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|content
 operator|.
 name|length
 argument_list|()
 operator|>
-operator|(
 name|i
 operator|+
 literal|3
-operator|)
-operator|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -261,9 +244,7 @@ literal|1
 argument_list|)
 operator|==
 literal|'\t'
-operator|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -274,7 +255,6 @@ literal|2
 argument_list|)
 operator|==
 literal|' '
-operator|)
 operator|&&
 operator|!
 name|Character
@@ -313,11 +293,9 @@ comment|// \t
 comment|// Remove space only if necessary:
 if|if
 condition|(
-operator|(
 name|i
 operator|>
 literal|0
-operator|)
 operator|&&
 name|Character
 operator|.
@@ -346,20 +324,15 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|content
 operator|.
 name|length
 argument_list|()
 operator|>
-operator|(
 name|i
 operator|+
 literal|3
-operator|)
-operator|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -370,9 +343,7 @@ literal|1
 argument_list|)
 operator|==
 literal|'\t'
-operator|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -383,9 +354,7 @@ literal|2
 argument_list|)
 operator|==
 literal|'\n'
-operator|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -396,7 +365,6 @@ literal|3
 argument_list|)
 operator|==
 literal|'\t'
-operator|)
 condition|)
 block|{
 comment|// We have \n\t\n\t, which looks like a JabRef-formatted empty line.
@@ -439,20 +407,15 @@ comment|// Now, if more \n\t pairs are following, keep each line break. This
 comment|// preserves several line breaks properly. Repeat until done:
 while|while
 condition|(
-operator|(
 name|content
 operator|.
 name|length
 argument_list|()
 operator|>
-operator|(
 name|i
 operator|+
 literal|1
-operator|)
-operator|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -461,9 +424,7 @@ name|i
 argument_list|)
 operator|==
 literal|'\n'
-operator|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -474,7 +435,6 @@ literal|1
 argument_list|)
 operator|==
 literal|'\t'
-operator|)
 condition|)
 block|{
 name|content
@@ -494,20 +454,15 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|content
 operator|.
 name|length
 argument_list|()
 operator|>
-operator|(
 name|i
 operator|+
 literal|1
-operator|)
-operator|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -518,7 +473,6 @@ literal|1
 argument_list|)
 operator|!=
 literal|'\n'
-operator|)
 condition|)
 block|{
 comment|// We have a line break not followed by another line break.
@@ -533,20 +487,15 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|content
 operator|.
 name|length
 argument_list|()
 operator|>
-operator|(
 name|i
 operator|+
 literal|1
-operator|)
-operator|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -557,7 +506,6 @@ literal|1
 argument_list|)
 operator|==
 literal|'\n'
-operator|)
 condition|)
 block|{
 comment|// we have a line break followed by another line break.
@@ -594,13 +542,10 @@ block|{
 comment|//if ((content.length()>i+2)&& (content.charAt(i+1)==' ')) {
 if|if
 condition|(
-operator|(
 name|i
 operator|>
 literal|0
-operator|)
 operator|&&
-operator|(
 name|content
 operator|.
 name|charAt
@@ -611,7 +556,6 @@ literal|1
 argument_list|)
 operator|==
 literal|' '
-operator|)
 condition|)
 block|{
 comment|// We have two spaces in a row. Don't include this one.
@@ -619,11 +563,9 @@ comment|// Yes, of course we have, but in Filenames it is nessary to have all sp
 comment|// This is the reason why the next lines are required
 if|if
 condition|(
-operator|(
 name|key
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|key
 operator|.

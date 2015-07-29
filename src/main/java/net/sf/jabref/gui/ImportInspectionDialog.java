@@ -5451,7 +5451,9 @@ operator|.
 name|getPoint
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|int
 name|row
 init|=
 name|glTable
@@ -6092,7 +6094,9 @@ operator|.
 name|getPoint
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|int
 name|row
 init|=
 name|glTable

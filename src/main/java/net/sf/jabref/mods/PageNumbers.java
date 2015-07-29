@@ -338,13 +338,11 @@ name|freeform
 return|;
 block|}
 return|return
-operator|(
 name|start
 operator|+
 name|seperator
 operator|+
 name|end
-operator|)
 return|;
 block|}
 annotation|@

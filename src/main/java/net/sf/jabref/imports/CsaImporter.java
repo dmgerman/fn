@@ -584,11 +584,9 @@ comment|// possible day found in two places
 block|}
 if|if
 condition|(
-operator|(
 name|day
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|day
@@ -780,11 +778,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|day
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|day
@@ -1159,18 +1155,14 @@ condition|)
 block|{
 if|if
 condition|(
-operator|(
 name|str
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|str
 operator|.
 name|isEmpty
 argument_list|()
-operator|)
 condition|)
 block|{
 comment|// end of record
@@ -1220,7 +1212,6 @@ argument_list|(
 literal|"article"
 argument_list|)
 operator|&&
-operator|(
 name|hm
 operator|.
 name|get
@@ -1229,7 +1220,6 @@ literal|"booktitle"
 argument_list|)
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 name|String
@@ -1603,23 +1593,19 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
 name|type
 operator|.
 name|contains
 argument_list|(
 literal|"article"
 argument_list|)
-operator|)
 operator|||
-operator|(
 name|type
 operator|.
 name|contains
 argument_list|(
 literal|"journal article"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|Type
@@ -1672,11 +1658,9 @@ argument_list|(
 literal|"book monograph"
 argument_list|)
 operator|&&
-operator|(
 name|Type
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 name|Type
@@ -1695,11 +1679,9 @@ argument_list|(
 literal|"report"
 argument_list|)
 operator|&&
-operator|(
 name|Type
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 name|Type
@@ -2130,13 +2112,11 @@ if|if
 condition|(
 name|ii
 operator|<
-operator|(
 name|lines
 operator|.
 name|length
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|urls

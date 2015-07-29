@@ -721,17 +721,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|headerName
 operator|==
 literal|null
-operator|)
 operator|&&
-operator|(
 name|headerValue
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 comment|// No more headers
@@ -739,11 +735,9 @@ break|break;
 block|}
 if|if
 condition|(
-operator|(
 name|headerName
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|headerName
 operator|.

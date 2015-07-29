@@ -630,11 +630,9 @@ condition|(
 operator|!
 name|onlyMaxLevel
 operator|||
-operator|(
 name|prevMarkLevel
 operator|==
 name|MARK_COLOR_LEVELS
-operator|)
 condition|)
 block|{
 if|if

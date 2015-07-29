@@ -778,23 +778,18 @@ operator|.
 name|searchExpression
 argument_list|)
 operator|&&
-operator|(
 name|caseSensitive
 operator|==
 name|other
 operator|.
 name|caseSensitive
-operator|)
 operator|&&
-operator|(
 name|regExp
 operator|==
 name|other
 operator|.
 name|regExp
-operator|)
 operator|&&
-operator|(
 name|getHierarchicalContext
 argument_list|()
 operator|==
@@ -802,7 +797,6 @@ name|other
 operator|.
 name|getHierarchicalContext
 argument_list|()
-operator|)
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */

@@ -616,7 +616,6 @@ name|col
 parameter_list|)
 block|{
 return|return
-operator|(
 name|col
 operator|==
 literal|0
@@ -634,7 +633,6 @@ name|lang
 argument_list|(
 literal|"Format String"
 argument_list|)
-operator|)
 return|;
 block|}
 annotation|@
@@ -1449,18 +1447,14 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
-operator|(
 name|rows
 index|[
 name|i
 index|]
 operator|+
 name|i
-operator|)
 operator|-
 literal|1
-operator|)
 operator|<
 name|tableRows
 operator|.
@@ -1478,14 +1472,12 @@ name|max
 argument_list|(
 literal|0
 argument_list|,
-operator|(
 name|rows
 index|[
 name|i
 index|]
 operator|+
 name|i
-operator|)
 operator|-
 literal|1
 argument_list|)
@@ -1558,7 +1550,8 @@ name|table
 operator|.
 name|getEditingColumn
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|int
 name|row
 init|=
 name|table
@@ -1645,7 +1638,9 @@ operator|.
 name|size
 argument_list|()
 index|]
-decl_stmt|,
+decl_stmt|;
+name|String
+index|[]
 name|formats
 init|=
 operator|new

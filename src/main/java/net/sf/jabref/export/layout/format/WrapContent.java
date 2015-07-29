@@ -49,13 +49,15 @@ extends|extends
 name|AbstractParamLayoutFormatter
 block|{
 DECL|field|before
-DECL|field|after
 specifier|private
 name|String
 name|before
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
+DECL|field|after
+specifier|private
+name|String
 name|after
 init|=
 literal|null

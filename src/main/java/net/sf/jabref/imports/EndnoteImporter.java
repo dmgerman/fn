@@ -190,7 +190,8 @@ name|compile
 argument_list|(
 literal|"%A .*"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|Pattern
 name|pat2
 init|=
 name|Pattern
@@ -429,11 +430,14 @@ argument_list|()
 decl_stmt|;
 name|String
 name|author
-decl_stmt|,
+decl_stmt|;
+name|String
 name|Type
-decl_stmt|,
+decl_stmt|;
+name|String
 name|editor
-decl_stmt|,
+decl_stmt|;
+name|String
 name|artnum
 decl_stmt|;
 for|for
@@ -656,7 +660,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|val
 operator|.
 name|indexOf
@@ -665,7 +668,6 @@ literal|"Book Section"
 argument_list|)
 operator|==
 literal|0
-operator|)
 condition|)
 block|{
 name|Type
@@ -676,7 +678,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|val
 operator|.
 name|indexOf
@@ -685,7 +686,6 @@ literal|"Book"
 argument_list|)
 operator|==
 literal|0
-operator|)
 condition|)
 block|{
 name|Type
@@ -1421,7 +1421,6 @@ comment|//if pages missing and article number given, use the article number
 if|if
 condition|(
 operator|(
-operator|(
 name|hm
 operator|.
 name|get
@@ -1430,7 +1429,6 @@ literal|"pages"
 argument_list|)
 operator|==
 literal|null
-operator|)
 operator|||
 name|hm
 operator|.
@@ -1567,14 +1565,12 @@ if|if
 condition|(
 name|index
 operator|==
-operator|(
 name|s
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|String

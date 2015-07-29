@@ -385,12 +385,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|indices
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|endIndices
@@ -478,13 +477,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|lastI
 operator|>
 literal|0
-operator|)
 operator|&&
-operator|(
 name|lastI
 operator|>
 name|indices
@@ -498,7 +494,6 @@ argument_list|()
 operator|-
 literal|1
 argument_list|)
-operator|)
 condition|)
 block|{
 name|endIndices

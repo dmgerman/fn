@@ -305,11 +305,9 @@ operator|+
 name|getNameComplete
 argument_list|(
 operator|(
-operator|(
 name|Author
 operator|)
 name|author
-operator|)
 argument_list|)
 expr_stmt|;
 name|value
@@ -328,11 +326,9 @@ operator|+
 name|getNameComplete
 argument_list|(
 operator|(
-operator|(
 name|Author
 operator|)
 name|author
-operator|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -360,16 +356,13 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|xmlDocument
 operator|.
 name|getYear
 argument_list|()
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|(
 operator|(
 name|Year
@@ -384,7 +377,6 @@ name|getValue
 argument_list|()
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 operator|(
@@ -668,14 +660,12 @@ name|bean
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|simpleTypeElementBean
 operator|.
 name|getValue
 argument_list|()
 operator|==
 literal|null
-operator|)
 operator|||
 name|simpleTypeElementBean
 operator|.
@@ -687,7 +677,6 @@ argument_list|(
 literal|"null"
 argument_list|)
 operator|||
-operator|(
 name|simpleTypeElementBean
 operator|.
 name|getValue
@@ -697,7 +686,6 @@ name|length
 argument_list|()
 operator|<=
 literal|0
-operator|)
 condition|)
 block|{
 return|return
@@ -752,14 +740,12 @@ literal|0
 init|;
 name|i
 operator|<
-operator|(
 name|authors
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
-operator|)
 condition|;
 name|i
 operator|++
@@ -779,7 +765,6 @@ if|if
 condition|(
 operator|(
 operator|(
-operator|(
 name|Author
 operator|)
 name|authors
@@ -794,7 +779,6 @@ name|getRank
 argument_list|()
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 operator|(
@@ -845,7 +829,6 @@ if|if
 condition|(
 operator|(
 operator|(
-operator|(
 name|Author
 operator|)
 name|authors
@@ -862,7 +845,6 @@ name|getRank
 argument_list|()
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 operator|(

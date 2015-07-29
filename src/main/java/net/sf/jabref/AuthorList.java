@@ -88,18 +88,22 @@ decl_stmt|;
 comment|// Variables for storing computed strings, so they only need be created
 comment|// once:
 DECL|field|authorsNatbib
-DECL|field|authorsFirstFirstAnds
 specifier|private
 name|String
 name|authorsNatbib
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
+DECL|field|authorsFirstFirstAnds
+specifier|private
+name|String
 name|authorsFirstFirstAnds
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
 DECL|field|authorsAlph
+specifier|private
+name|String
 name|authorsAlph
 init|=
 literal|null
@@ -1007,11 +1011,9 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|last_start
 operator|<
 literal|0
-operator|)
 operator|&&
 name|token_case
 condition|)
@@ -1031,7 +1033,6 @@ break|break;
 block|}
 block|}
 block|}
-comment|// end token_loop
 comment|// Second step: split name into parts (here: calculate indices
 comment|// of parts in 'tokens' Vector)
 if|if
@@ -1053,17 +1054,20 @@ name|first_part_start
 init|=
 operator|-
 literal|1
-decl_stmt|,
+decl_stmt|;
+name|int
 name|von_part_start
 init|=
 operator|-
 literal|1
-decl_stmt|,
+decl_stmt|;
+name|int
 name|last_part_start
 init|=
 operator|-
 literal|1
-decl_stmt|,
+decl_stmt|;
+name|int
 name|jr_part_start
 init|=
 operator|-
@@ -1071,15 +1075,18 @@ literal|1
 decl_stmt|;
 name|int
 name|first_part_end
-decl_stmt|,
+decl_stmt|;
+name|int
 name|von_part_end
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+name|int
 name|last_part_end
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+name|int
 name|jr_part_end
 init|=
 literal|0
@@ -1126,20 +1133,16 @@ expr_stmt|;
 name|int
 name|index
 init|=
-operator|(
 name|tokens
 operator|.
 name|size
 argument_list|()
 operator|-
-operator|(
 literal|2
 operator|*
 name|AuthorList
 operator|.
 name|TOKEN_GROUP_LENGTH
-operator|)
-operator|)
 operator|+
 name|AuthorList
 operator|.
@@ -1384,26 +1387,20 @@ block|}
 block|}
 if|if
 condition|(
-operator|(
 name|first_part_start
 operator|==
 operator|-
 literal|1
-operator|)
 operator|&&
-operator|(
 name|last_part_start
 operator|==
 operator|-
 literal|1
-operator|)
 operator|&&
-operator|(
 name|von_part_start
 operator|!=
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 comment|// There is no first or last name, but we have a von part. This is likely
@@ -1443,7 +1440,6 @@ return|return
 operator|new
 name|Author
 argument_list|(
-operator|(
 name|first_part_start
 operator|<
 literal|0
@@ -1462,9 +1458,7 @@ name|OFFSET_TOKEN
 argument_list|,
 literal|false
 argument_list|)
-operator|)
 argument_list|,
-operator|(
 name|first_part_start
 operator|<
 literal|0
@@ -1483,9 +1477,7 @@ name|OFFSET_TOKEN_ABBR
 argument_list|,
 literal|true
 argument_list|)
-operator|)
 argument_list|,
-operator|(
 name|von_part_start
 operator|<
 literal|0
@@ -1504,9 +1496,7 @@ name|OFFSET_TOKEN
 argument_list|,
 literal|false
 argument_list|)
-operator|)
 argument_list|,
-operator|(
 name|last_part_start
 operator|<
 literal|0
@@ -1525,9 +1515,7 @@ name|OFFSET_TOKEN
 argument_list|,
 literal|false
 argument_list|)
-operator|)
 argument_list|,
-operator|(
 name|jr_part_start
 operator|<
 literal|0
@@ -1546,7 +1534,6 @@ name|OFFSET_TOKEN
 argument_list|,
 literal|false
 argument_list|)
-operator|)
 argument_list|)
 return|;
 block|}
@@ -1628,13 +1615,11 @@ name|tokens
 operator|.
 name|get
 argument_list|(
-operator|(
 name|start
 operator|-
 name|AuthorList
 operator|.
 name|TOKEN_GROUP_LENGTH
-operator|)
 operator|+
 name|AuthorList
 operator|.
@@ -1721,17 +1706,13 @@ if|if
 condition|(
 operator|!
 operator|(
-operator|(
 name|c
 operator|==
 literal|'~'
-operator|)
 operator|||
-operator|(
 name|c
 operator|==
 literal|'-'
-operator|)
 operator|||
 name|Character
 operator|.
@@ -1872,17 +1853,13 @@ if|if
 condition|(
 name|first_letter_is_found
 operator|&&
-operator|(
 name|token_abbr
 operator|<
 literal|0
-operator|)
 operator|&&
-operator|(
 name|braces_level
 operator|==
 literal|0
-operator|)
 condition|)
 block|{
 name|token_abbr
@@ -1895,11 +1872,9 @@ condition|(
 operator|!
 name|first_letter_is_found
 operator|&&
-operator|(
 name|current_backslash
 operator|<
 literal|0
-operator|)
 operator|&&
 name|Character
 operator|.
@@ -1943,11 +1918,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|current_backslash
 operator|>=
 literal|0
-operator|)
 operator|&&
 operator|!
 name|Character
@@ -2037,23 +2010,17 @@ condition|)
 block|{
 if|if
 condition|(
-operator|(
 name|c
 operator|==
 literal|','
-operator|)
 operator|||
-operator|(
 name|c
 operator|==
 literal|'~'
-operator|)
 operator|||
-operator|(
 name|c
 operator|==
 literal|'-'
-operator|)
 operator|||
 name|Character
 operator|.
@@ -2089,16 +2056,13 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|token_end
 operator|<
 name|orig
 operator|.
 name|length
 argument_list|()
-operator|)
 operator|&&
-operator|(
 name|orig
 operator|.
 name|charAt
@@ -2107,7 +2071,6 @@ name|token_end
 argument_list|)
 operator|==
 literal|'-'
-operator|)
 condition|)
 block|{
 name|token_term
@@ -2298,13 +2261,11 @@ block|{
 name|int
 name|abbrInt
 init|=
-operator|(
 name|oxfordComma
 condition|?
 literal|0
 else|:
 literal|1
-operator|)
 decl_stmt|;
 comment|// Check if we've computed this before:
 if|if
@@ -2361,12 +2322,10 @@ while|while
 condition|(
 name|i
 operator|<
-operator|(
 name|size
 argument_list|()
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|res
@@ -2395,12 +2354,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|size
 argument_list|()
 operator|>
 literal|2
-operator|)
 operator|&&
 name|oxfordComma
 condition|)
@@ -2476,23 +2433,19 @@ block|{
 name|int
 name|abbrInt
 init|=
-operator|(
 name|abbreviate
 condition|?
 literal|0
 else|:
 literal|1
-operator|)
 decl_stmt|;
 name|abbrInt
 operator|+=
-operator|(
 name|oxfordComma
 condition|?
 literal|0
 else|:
 literal|2
-operator|)
 expr_stmt|;
 comment|// Check if we've computed this before:
 if|if
@@ -2551,12 +2504,10 @@ while|while
 condition|(
 name|i
 operator|<
-operator|(
 name|size
 argument_list|()
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|res
@@ -2587,12 +2538,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|size
 argument_list|()
 operator|>
 literal|2
-operator|)
 operator|&&
 name|oxfordComma
 condition|)
@@ -2682,13 +2631,11 @@ block|{
 name|int
 name|abbrInt
 init|=
-operator|(
 name|abbreviate
 condition|?
 literal|0
 else|:
 literal|1
-operator|)
 decl_stmt|;
 comment|// Check if we've computed this before:
 if|if
@@ -2807,13 +2754,11 @@ block|{
 name|int
 name|abbrInt
 init|=
-operator|(
 name|abbreviate
 condition|?
 literal|0
 else|:
 literal|1
-operator|)
 decl_stmt|;
 comment|// Check if we've computed this before:
 if|if
@@ -2936,23 +2881,19 @@ block|{
 name|int
 name|abbrInt
 init|=
-operator|(
 name|abbr
 condition|?
 literal|0
 else|:
 literal|1
-operator|)
 decl_stmt|;
 name|abbrInt
 operator|+=
-operator|(
 name|oxfordComma
 condition|?
 literal|0
 else|:
 literal|2
-operator|)
 expr_stmt|;
 comment|// Check if we've computed this before:
 if|if
@@ -3011,12 +2952,10 @@ while|while
 condition|(
 name|i
 operator|<
-operator|(
 name|size
 argument_list|()
 operator|-
 literal|1
-operator|)
 condition|)
 block|{
 name|res
@@ -3047,12 +2986,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|size
 argument_list|()
 operator|>
 literal|2
-operator|)
 operator|&&
 name|oxfordComma
 condition|)
@@ -3187,11 +3124,9 @@ operator|*
 name|result
 operator|+
 operator|(
-operator|(
 name|authors
 operator|==
 literal|null
-operator|)
 condition|?
 literal|0
 else|:
@@ -3463,11 +3398,9 @@ operator|*
 name|result
 operator|+
 operator|(
-operator|(
 name|first_abbr
 operator|==
 literal|null
-operator|)
 condition|?
 literal|0
 else|:
@@ -3484,11 +3417,9 @@ operator|*
 name|result
 operator|+
 operator|(
-operator|(
 name|first_part
 operator|==
 literal|null
-operator|)
 condition|?
 literal|0
 else|:
@@ -3505,11 +3436,9 @@ operator|*
 name|result
 operator|+
 operator|(
-operator|(
 name|jr_part
 operator|==
 literal|null
-operator|)
 condition|?
 literal|0
 else|:
@@ -3526,11 +3455,9 @@ operator|*
 name|result
 operator|+
 operator|(
-operator|(
 name|last_part
 operator|==
 literal|null
-operator|)
 condition|?
 literal|0
 else|:
@@ -3546,12 +3473,10 @@ name|prime
 operator|*
 name|result
 operator|+
-operator|(
 operator|(
 name|von_part
 operator|==
 literal|null
-operator|)
 condition|?
 literal|0
 else|:
@@ -3794,11 +3719,9 @@ operator|++
 expr_stmt|;
 block|}
 return|return
-operator|(
 name|level
 operator|==
 literal|0
-operator|)
 return|;
 block|}
 comment|/**          * Removes start and end brace at a string          *           * E.g.,           *   * {Vall{\'e}e Poussin} -> Vall{\'e}e Poussin          *   * {Vall{\'e}e} {Poussin} -> Vall{\'e}e Poussin          *   * Vall{\'e}e Poussin -> Vall{\'e}e Poussin          */
@@ -4116,7 +4039,6 @@ literal|null
 condition|)
 block|{
 return|return
-operator|(
 name|last_part
 operator|==
 literal|null
@@ -4124,13 +4046,11 @@ condition|?
 literal|""
 else|:
 name|last_part
-operator|)
 return|;
 block|}
 else|else
 block|{
 return|return
-operator|(
 name|last_part
 operator|==
 literal|null
@@ -4142,7 +4062,6 @@ operator|+
 literal|' '
 operator|+
 name|last_part
-operator|)
 return|;
 block|}
 block|}
@@ -4367,16 +4286,13 @@ expr_stmt|;
 block|}
 while|while
 condition|(
-operator|(
 name|res
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|0
-operator|)
 operator|&&
-operator|(
 name|res
 operator|.
 name|charAt
@@ -4385,7 +4301,6 @@ literal|0
 argument_list|)
 operator|==
 literal|'{'
-operator|)
 condition|)
 block|{
 name|res
@@ -4404,7 +4319,6 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|// end Author
 DECL|method|main (String[] args)
 specifier|public
 specifier|static
@@ -4555,11 +4469,9 @@ name|out
 operator|.
 name|println
 argument_list|(
-operator|(
 operator|new
 name|CreateDocBookAuthors
 argument_list|()
-operator|)
 operator|.
 name|format
 argument_list|(
@@ -4570,10 +4482,6 @@ expr_stmt|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|// end AuthorList
-end_comment
 
 end_unit
 

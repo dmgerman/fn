@@ -699,11 +699,9 @@ operator|=
 operator|new
 name|ImportDialog
 argument_list|(
-operator|(
 name|dropRow
 operator|>=
 literal|0
-operator|)
 argument_list|,
 name|fileName
 argument_list|)
@@ -749,7 +747,6 @@ if|if
 condition|(
 name|neverShow
 operator|||
-operator|(
 name|importDialog
 operator|.
 name|getResult
@@ -758,13 +755,11 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
-operator|)
 condition|)
 block|{
 name|int
 name|choice
 init|=
-operator|(
 name|neverShow
 condition|?
 name|globalChoice
@@ -773,7 +768,6 @@ name|importDialog
 operator|.
 name|getChoice
 argument_list|()
-operator|)
 decl_stmt|;
 name|DroppedFileHandler
 name|dfh
@@ -874,20 +868,14 @@ block|{                         }
 block|}
 if|if
 condition|(
-operator|(
 name|localRes
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|localRes
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
-operator|)
 condition|)
 block|{
 comment|// import failed -> generate default entry
@@ -1176,20 +1164,14 @@ block|}
 comment|// import failed -> generate default entry
 if|if
 condition|(
-operator|(
 name|localRes
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|localRes
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
-operator|)
 condition|)
 block|{
 name|entry
@@ -1370,14 +1352,10 @@ expr_stmt|;
 comment|// to satisfy the Java compiler
 if|if
 condition|(
-operator|(
 name|document
 operator|!=
 literal|null
-comment|/*&& documents.getDocuments() != null&& documents.getDocuments().size()> 0*/
-operator|)
 operator|&&
-operator|(
 name|metaDataListDialog
 operator|.
 name|getResult
@@ -1386,7 +1364,6 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
-operator|)
 condition|)
 block|{
 name|int
@@ -1629,14 +1606,10 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|document
 operator|==
 literal|null
-comment|/*|| document.getDocuments() == null || document.getDocuments().size()<= 0*/
-operator|)
 operator|&&
-operator|(
 name|metaDataListDialog
 operator|.
 name|getResult
@@ -1645,7 +1618,6 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
-operator|)
 condition|)
 block|{
 name|entry
@@ -1657,11 +1629,9 @@ argument_list|)
 expr_stmt|;
 block|}
 assert|assert
-operator|(
 name|entry
 operator|!=
 literal|null
-operator|)
 assert|;
 name|res
 operator|.
@@ -1729,14 +1699,10 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|document
 operator|!=
 literal|null
-comment|/*&& document.getDocuments() != null&& document.getDocuments().size()> 0*/
-operator|)
 operator|&&
-operator|(
 name|metaDataListDialog
 operator|.
 name|getResult
@@ -1745,7 +1711,6 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
-operator|)
 condition|)
 block|{
 name|int
@@ -2117,11 +2082,9 @@ name|string
 parameter_list|)
 block|{
 return|return
-operator|(
 name|string
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|string
@@ -2434,20 +2397,14 @@ block|{
 return|return
 operator|!
 operator|(
-operator|(
 name|xmpEntriesInFile
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|xmpEntriesInFile
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
-operator|)
 operator|)
 return|;
 block|}

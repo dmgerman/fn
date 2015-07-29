@@ -127,11 +127,9 @@ if|if
 condition|(
 name|escaped
 operator|&&
-operator|(
 name|c
 operator|==
 literal|'\\'
-operator|)
 condition|)
 block|{
 name|sb
@@ -176,17 +174,13 @@ operator|!
 name|incommand
 operator|&&
 operator|(
-operator|(
 name|c
 operator|==
 literal|'{'
-operator|)
 operator|||
-operator|(
 name|c
 operator|==
 literal|'}'
-operator|)
 operator|)
 condition|)
 block|{
@@ -202,7 +196,6 @@ argument_list|(
 name|c
 argument_list|)
 operator|||
-operator|(
 name|Globals
 operator|.
 name|SPECIAL_COMMAND_CHARS
@@ -213,7 +206,6 @@ literal|""
 operator|+
 name|c
 argument_list|)
-operator|)
 condition|)
 block|{
 name|escaped
@@ -245,16 +237,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|currentCommand
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|1
-operator|)
 operator|&&
-operator|(
 name|Globals
 operator|.
 name|SPECIAL_COMMAND_CHARS
@@ -266,7 +255,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-operator|)
 condition|)
 block|{
 comment|// This indicates that we are in a command of the type \^o or \~{n}
@@ -331,7 +319,6 @@ condition|(
 operator|!
 name|incommand
 operator|||
-operator|(
 operator|!
 name|Character
 operator|.
@@ -340,12 +327,9 @@ argument_list|(
 name|c
 argument_list|)
 operator|&&
-operator|(
 name|c
 operator|!=
 literal|'{'
-operator|)
-operator|)
 condition|)
 block|{
 name|sb
