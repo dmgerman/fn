@@ -132,8 +132,8 @@ name|RegExpFileSearch
 block|{
 DECL|field|EXT_MARKER
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|EXT_MARKER
 init|=

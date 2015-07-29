@@ -337,8 +337,8 @@ extends|extends
 name|AbstractWorker
 block|{
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 DECL|field|AKS_AUTO_NAMING_PDFS_AGAIN
 name|AKS_AUTO_NAMING_PDFS_AGAIN
@@ -347,8 +347,8 @@ literal|"AskAutoNamingPDFsAgain"
 decl_stmt|;
 DECL|field|CLEANUP_DOI
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_DOI
 init|=
@@ -356,8 +356,8 @@ literal|"CleanUpDOI"
 decl_stmt|;
 DECL|field|CLEANUP_MONTH
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_MONTH
 init|=
@@ -365,8 +365,8 @@ literal|"CleanUpMonth"
 decl_stmt|;
 DECL|field|CLEANUP_PAGENUMBERS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_PAGENUMBERS
 init|=
@@ -374,8 +374,8 @@ literal|"CleanUpPageNumbers"
 decl_stmt|;
 DECL|field|CLEANUP_MAKEPATHSRELATIVE
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_MAKEPATHSRELATIVE
 init|=
@@ -383,8 +383,8 @@ literal|"CleanUpMakePathsRelative"
 decl_stmt|;
 DECL|field|CLEANUP_RENAMEPDF
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_RENAMEPDF
 init|=
@@ -392,8 +392,8 @@ literal|"CleanUpRenamePDF"
 decl_stmt|;
 DECL|field|CLEANUP_RENAMEPDF_ONLYRELATIVE_PATHS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_RENAMEPDF_ONLYRELATIVE_PATHS
 init|=
@@ -401,8 +401,8 @@ literal|"CleanUpRenamePDFonlyRelativePaths"
 decl_stmt|;
 DECL|field|CLEANUP_UPGRADE_EXTERNAL_LINKS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_UPGRADE_EXTERNAL_LINKS
 init|=
@@ -410,8 +410,8 @@ literal|"CleanUpUpgradeExternalLinks"
 decl_stmt|;
 DECL|field|CLEANUP_SUPERSCRIPTS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_SUPERSCRIPTS
 init|=
@@ -419,8 +419,8 @@ literal|"CleanUpSuperscripts"
 decl_stmt|;
 DECL|field|CLEANUP_HTML
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_HTML
 init|=
@@ -428,8 +428,8 @@ literal|"CleanUpHTML"
 decl_stmt|;
 DECL|field|CLEANUP_CASE
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_CASE
 init|=
@@ -437,8 +437,8 @@ literal|"CleanUpCase"
 decl_stmt|;
 DECL|field|CLEANUP_LATEX
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_LATEX
 init|=
@@ -446,8 +446,8 @@ literal|"CleanUpLaTeX"
 decl_stmt|;
 DECL|field|CLEANUP_UNITS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_UNITS
 init|=
@@ -455,8 +455,8 @@ literal|"CleanUpUnits"
 decl_stmt|;
 DECL|field|CLEANUP_UNICODE
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_UNICODE
 init|=
@@ -464,8 +464,8 @@ literal|"CleanUpUnicode"
 decl_stmt|;
 DECL|field|CLEANUP_CONVERTTOBIBLATEX
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|CLEANUP_CONVERTTOBIBLATEX
 init|=

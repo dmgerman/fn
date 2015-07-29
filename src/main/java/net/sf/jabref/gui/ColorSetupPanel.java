@@ -125,8 +125,8 @@ block|{
 DECL|field|ICON_WIDTH
 DECL|field|ICON_HEIGHT
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|ICON_WIDTH
 init|=

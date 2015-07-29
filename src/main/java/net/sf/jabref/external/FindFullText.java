@@ -189,8 +189,8 @@ class|class
 name|FindFullText
 block|{
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 DECL|field|FOUND_PDF
 name|FOUND_PDF
@@ -199,8 +199,8 @@ literal|0
 decl_stmt|;
 DECL|field|WRONG_MIME_TYPE
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|WRONG_MIME_TYPE
 init|=
@@ -208,8 +208,8 @@ literal|1
 decl_stmt|;
 DECL|field|UNKNOWN_DOMAIN
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|UNKNOWN_DOMAIN
 init|=
@@ -217,8 +217,8 @@ literal|2
 decl_stmt|;
 DECL|field|LINK_NOT_FOUND
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|LINK_NOT_FOUND
 init|=
@@ -226,8 +226,8 @@ literal|3
 decl_stmt|;
 DECL|field|IO_EXCEPTION
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|IO_EXCEPTION
 init|=
@@ -235,8 +235,8 @@ literal|4
 decl_stmt|;
 DECL|field|NO_URLS_DEFINED
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|NO_URLS_DEFINED
 init|=
