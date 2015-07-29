@@ -235,7 +235,11 @@ name|_entries
 init|=
 operator|new
 name|Hashtable
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|_preamble
@@ -258,7 +262,11 @@ name|_strings
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|BibtexString
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|changeListeners
@@ -272,7 +280,9 @@ name|changeListeners
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|DatabaseChangeListener
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|followCrossrefs
@@ -312,7 +322,11 @@ name|allKeys
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|Integer
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|/*      * Entries are stored in a HashMap with the ID as key. What happens if      * someone changes a BibtexEntry's ID after it has been added to this      * BibtexDatabase? The key of that entry would be the old ID, not the new      * one. Use a PropertyChangeListener to identify an ID change and update the      * Map.      */
@@ -322,8 +336,21 @@ specifier|final
 name|VetoableChangeListener
 name|listener
 init|=
+operator|new
+name|VetoableChangeListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|vetoableChange
+parameter_list|(
+name|PropertyChangeEvent
 name|pce
-lambda|->
+parameter_list|)
+throws|throws
+name|PropertyVetoException
 block|{
 if|if
 condition|(
@@ -520,6 +547,7 @@ argument_list|)
 expr_stmt|;
 comment|//Util.pr(pce.getSource().toString()+"\n"+pce.getPropertyName()
 comment|//    +"\n"+pce.getNewValue());
+block|}
 block|}
 block|}
 decl_stmt|;
@@ -765,7 +793,9 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1324,7 +1354,9 @@ name|content
 argument_list|,
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 argument_list|)
 return|;
@@ -1369,7 +1401,9 @@ name|results
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|entries
 operator|.

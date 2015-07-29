@@ -1692,7 +1692,9 @@ name|res
 init|=
 operator|new
 name|TreeSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1816,7 +1818,9 @@ name|res
 init|=
 operator|new
 name|TreeSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|StringTokenizer
@@ -1936,7 +1940,9 @@ name|res
 init|=
 operator|new
 name|TreeSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2087,17 +2093,23 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-switch|switch
+if|if
 condition|(
 name|fieldName
+operator|.
+name|equals
+argument_list|(
+literal|"ps"
+argument_list|)
+operator|||
+name|fieldName
+operator|.
+name|equals
+argument_list|(
+literal|"pdf"
+argument_list|)
 condition|)
 block|{
-case|case
-literal|"ps"
-case|:
-case|case
-literal|"pdf"
-case|:
 comment|// Find the default directory for this field type:
 name|String
 index|[]
@@ -2256,20 +2268,36 @@ literal|"ps"
 expr_stmt|;
 block|}
 block|}
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|fieldName
+operator|.
+name|equals
+argument_list|(
 literal|"doi"
-case|:
+argument_list|)
+condition|)
+block|{
 name|fieldName
 operator|=
 literal|"url"
 expr_stmt|;
 comment|// sanitizing is done below at the treatment of "URL"
 comment|// in sanatizeUrl a doi-link is correctly treated
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|fieldName
+operator|.
+name|equals
+argument_list|(
 literal|"eprint"
-case|:
+argument_list|)
+condition|)
+block|{
 name|fieldName
 operator|=
 literal|"url"
@@ -2302,16 +2330,17 @@ operator|+
 name|link
 expr_stmt|;
 block|}
-break|break;
 block|}
-switch|switch
+if|if
 condition|(
 name|fieldName
+operator|.
+name|equals
+argument_list|(
+literal|"url"
+argument_list|)
 condition|)
 block|{
-case|case
-literal|"url"
-case|:
 comment|// html
 try|try
 block|{
@@ -2351,10 +2380,18 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|fieldName
+operator|.
+name|equals
+argument_list|(
 literal|"ps"
-case|:
+argument_list|)
+condition|)
+block|{
 try|try
 block|{
 if|if
@@ -2534,10 +2571,18 @@ name|link
 argument_list|)
 expr_stmt|;
 block|}
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|fieldName
+operator|.
+name|equals
+argument_list|(
 literal|"pdf"
-case|:
+argument_list|)
+condition|)
+block|{
 try|try
 block|{
 if|if
@@ -2622,7 +2667,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|/*                      * String[] spl = link.split("\\\\"); StringBuffer sb = new                      * StringBuffer(); for (int i = 0; i< spl.length; i++) { if                      * (i> 0) sb.append("\\"); if (spl[i].indexOf(" ")>= 0)                      * spl[i] = "\"" + spl[i] + "\""; sb.append(spl[i]); }                      * //pr(sb.toString()); link = sb.toString();                      *                      * String cmd = "cmd.exe /c start " + link;                      *                      * Process child = Runtime.getRuntime().exec(cmd);                      */
+comment|/*                      * String[] spl = link.split("\\\\"); StringBuffer sb = new                      * StringBuffer(); for (int i = 0; i< spl.length; i++) { if                      * (i> 0) sb.append("\\"); if (spl[i].indexOf(" ")>= 0)                      * spl[i] = "\"" + spl[i] + "\""; sb.append(spl[i]); }                      * //pr(sb.toString()); link = sb.toString();                      *                       * String cmd = "cmd.exe /c start " + link;                      *                       * Process child = Runtime.getRuntime().exec(cmd);                      */
 block|}
 else|else
 block|{
@@ -2743,8 +2788,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-break|break;
-default|default:
+block|}
+else|else
+block|{
 name|System
 operator|.
 name|err
@@ -2754,7 +2800,6 @@ argument_list|(
 literal|"Message: currently only PDF, PS and HTML files can be opened by double clicking"
 argument_list|)
 expr_stmt|;
-break|break;
 block|}
 block|}
 comment|/**      * Opens a file on a Windows system, using its default viewer.      *       * @param link      *            The file name.      * @param localFile      *            true if it is a local file, not an URL.      * @throws IOException      */
@@ -3360,6 +3405,18 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|MalformedURLException
+name|ex
+parameter_list|)
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|IOException
 name|ex
 parameter_list|)
@@ -3383,8 +3440,16 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
 parameter_list|()
-lambda|->
 block|{
 try|try
 block|{
@@ -3411,6 +3476,7 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -3622,7 +3688,9 @@ name|fileTypes
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|ExternalFileType
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|ExternalFileType
@@ -4138,7 +4206,10 @@ name|result
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+index|[]
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|char
@@ -5133,7 +5204,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Collect file links from the given set of fields, and add them to the list contained      * in the field GUIGlobals.FILE_FIELD.      * @param database The database to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
-DECL|method|upgradePdfPsToFile (BibtexDatabase database, String... fields)
+DECL|method|upgradePdfPsToFile (BibtexDatabase database, String[] fields)
 specifier|public
 specifier|static
 name|NamedCompound
@@ -5143,7 +5214,7 @@ name|BibtexDatabase
 name|database
 parameter_list|,
 name|String
-modifier|...
+index|[]
 name|fields
 parameter_list|)
 block|{
@@ -5165,7 +5236,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Collect file links from the given set of fields, and add them to the list contained      * in the field GUIGlobals.FILE_FIELD.      * @param entries The entries to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
-DECL|method|upgradePdfPsToFile (Collection<BibtexEntry> entries, String... fields)
+DECL|method|upgradePdfPsToFile (Collection<BibtexEntry> entries, String[] fields)
 specifier|public
 specifier|static
 name|NamedCompound
@@ -5178,7 +5249,7 @@ argument_list|>
 name|entries
 parameter_list|,
 name|String
-modifier|...
+index|[]
 name|fields
 parameter_list|)
 block|{
@@ -5444,7 +5515,9 @@ name|affectedFields
 init|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -6392,8 +6465,20 @@ name|flip
 operator|.
 name|addActionListener
 argument_list|(
+operator|new
+name|ActionListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
 name|event
-lambda|->
+parameter_list|)
+block|{
 name|crd
 operator|.
 name|show
@@ -6402,6 +6487,9 @@ name|pan
 argument_list|,
 literal|"details"
 argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 name|pan
@@ -6751,7 +6839,9 @@ name|encodings
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -7071,14 +7161,14 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Encodes a String array into a single string, using ':' as separator.      * The characters ':' and ';' are escaped with '\'.      * @param entry The String array.      * @return The encoded String.      */
-DECL|method|encodeStringArray (String... entry)
+DECL|method|encodeStringArray (String[] entry)
 specifier|private
 specifier|static
 name|String
 name|encodeStringArray
 parameter_list|(
 name|String
-modifier|...
+index|[]
 name|entry
 parameter_list|)
 block|{
@@ -7172,7 +7262,12 @@ name|newList
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|StringBuilder
@@ -7190,7 +7285,9 @@ name|thisEntry
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -7308,7 +7405,9 @@ name|thisEntry
 operator|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -7647,7 +7746,7 @@ expr_stmt|;
 comment|// Runs the update() method on the EDT.
 block|}
 comment|/**      * Build a String array containing all those elements of all that are not      * in subset.      * @param all The array of all values.      * @param subset The subset of values.      * @return The remainder that is not part of the subset.      */
-DECL|method|getRemainder (String[] all, String... subset)
+DECL|method|getRemainder (String[] all, String[] subset)
 specifier|public
 specifier|static
 name|String
@@ -7659,7 +7758,7 @@ index|[]
 name|all
 parameter_list|,
 name|String
-modifier|...
+index|[]
 name|subset
 parameter_list|)
 block|{
@@ -7671,7 +7770,9 @@ name|al
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -7903,7 +8004,9 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 if|if
@@ -8802,7 +8905,9 @@ name|dirs
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|File
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|String
@@ -8847,7 +8952,9 @@ name|extensions
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -9442,7 +9549,9 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|entries
@@ -9704,7 +9813,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns the list of linked files. The files have the absolute filename      *       * @param bes list of BibTeX entries      * @param fileDirs list of directories to try for expansion      *       * @return list of files. May be empty      */
-DECL|method|getListOfLinkedFiles (BibtexEntry[] bes, String... fileDirs)
+DECL|method|getListOfLinkedFiles (BibtexEntry[] bes, String[] fileDirs)
 specifier|public
 specifier|static
 name|List
@@ -9718,7 +9827,7 @@ index|[]
 name|bes
 parameter_list|,
 name|String
-modifier|...
+index|[]
 name|fileDirs
 parameter_list|)
 block|{
@@ -9730,7 +9839,9 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|File
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -9870,7 +9981,14 @@ name|result
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|,
+name|List
+argument_list|<
+name|File
+argument_list|>
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// First scan directories
@@ -9906,7 +10024,9 @@ name|entry
 argument_list|,
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|File
+argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;

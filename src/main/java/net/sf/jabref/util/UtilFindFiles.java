@@ -276,7 +276,9 @@ name|result
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|File
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -335,7 +337,9 @@ name|result
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|File
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|File
@@ -460,12 +464,17 @@ name|entry
 argument_list|,
 name|extension
 argument_list|,
+operator|new
+name|String
+index|[]
+block|{
 name|directory
+block|}
 argument_list|)
 return|;
 block|}
 comment|/**      * Convenience method for findPDF. Can search multiple PDF directories.      */
-DECL|method|findPdf (BibtexEntry entry, String extension, String... directories)
+DECL|method|findPdf (BibtexEntry entry, String extension, String[] directories)
 specifier|public
 specifier|static
 name|String
@@ -478,7 +487,7 @@ name|String
 name|extension
 parameter_list|,
 name|String
-modifier|...
+index|[]
 name|directories
 parameter_list|)
 block|{
@@ -585,7 +594,9 @@ name|dirs
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|dirs
@@ -1313,7 +1324,9 @@ name|toDo
 init|=
 operator|new
 name|LinkedList
-argument_list|<>
+argument_list|<
+name|File
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|toDo
@@ -1495,12 +1508,22 @@ name|directory
 operator|.
 name|listFiles
 argument_list|(
+operator|new
+name|FilenameFilter
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|accept
 parameter_list|(
+name|File
 name|arg0
 parameter_list|,
+name|String
 name|arg1
 parameter_list|)
-lambda|->
 block|{
 return|return
 name|toMatch
@@ -1513,6 +1536,7 @@ operator|.
 name|matches
 argument_list|()
 return|;
+block|}
 block|}
 argument_list|)
 decl_stmt|;
@@ -1608,12 +1632,22 @@ name|directory
 operator|.
 name|listFiles
 argument_list|(
+operator|new
+name|FilenameFilter
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|accept
 parameter_list|(
+name|File
 name|arg0
 parameter_list|,
+name|String
 name|arg1
 parameter_list|)
-lambda|->
 block|{
 return|return
 name|toMatch
@@ -1626,6 +1660,7 @@ operator|.
 name|matches
 argument_list|()
 return|;
+block|}
 block|}
 argument_list|)
 decl_stmt|;

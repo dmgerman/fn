@@ -245,7 +245,9 @@ name|filesToOpen
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|File
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|AppendDatabaseAction (JabRefFrame frame, BasePanel panel)
@@ -397,8 +399,17 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
 parameter_list|()
-lambda|->
+block|{
 name|openIt
 argument_list|(
 name|md
@@ -421,6 +432,9 @@ operator|.
 name|importSelectorWords
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 comment|//frame.getFileHistory().newFile(panel.fileToOpen.getPath());
@@ -626,7 +640,9 @@ name|appendedEntries
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|ArrayList
@@ -637,7 +653,9 @@ name|originalEntries
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|BibtexDatabase

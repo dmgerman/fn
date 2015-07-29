@@ -535,7 +535,9 @@ name|missingFormatters
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 literal|1
 argument_list|)
@@ -716,7 +718,11 @@ name|layouts
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|Layout
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|Layout
@@ -1083,7 +1089,11 @@ name|formatters
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|File

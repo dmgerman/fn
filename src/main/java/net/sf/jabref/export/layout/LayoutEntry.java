@@ -299,7 +299,9 @@ name|v
 init|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|WSITools
@@ -405,7 +407,9 @@ name|invalidFormatter
 operator|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -469,7 +473,9 @@ name|tmpEntries
 init|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|LayoutEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|LayoutEntry
@@ -614,7 +620,9 @@ name|blockEntries
 operator|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|StringInt
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|blockStart
@@ -843,7 +851,9 @@ name|invalidFormatter
 operator|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 literal|1
 argument_list|)
@@ -2007,7 +2017,9 @@ name|results
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|LayoutFormatter
+argument_list|>
 argument_list|(
 name|formatterStrings
 operator|.

@@ -123,11 +123,11 @@ block|{
 name|char
 name|c
 decl_stmt|;
-name|StringBuilder
+name|StringBuffer
 name|sb
 init|=
 operator|new
-name|StringBuilder
+name|StringBuffer
 argument_list|()
 decl_stmt|;
 while|while

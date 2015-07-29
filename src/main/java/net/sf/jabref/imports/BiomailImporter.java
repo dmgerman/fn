@@ -280,7 +280,9 @@ name|bibitems
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|StringBuilder
@@ -454,7 +456,11 @@ name|hm
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -583,24 +589,34 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
-switch|switch
+if|if
 condition|(
 name|beg
+operator|.
+name|equals
+argument_list|(
+literal|"PT  - "
+argument_list|)
 condition|)
 block|{
-case|case
-literal|"PT  - "
-case|:
 comment|// PT = value.replaceAll("JOURNAL ARTICLE", "article").replaceAll("Journal Article", "article");
 name|Type
 operator|=
 literal|"article"
 expr_stmt|;
 comment|//make all of them PT?
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"TY  - "
-case|:
+argument_list|)
+condition|)
+block|{
 if|if
 condition|(
 literal|"CONF"
@@ -616,10 +632,18 @@ operator|=
 literal|"inproceedings"
 expr_stmt|;
 block|}
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"JO  - "
-case|:
+argument_list|)
+condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -629,10 +653,17 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"FAU - "
-case|:
+argument_list|)
+condition|)
 block|{
 name|String
 name|tmpauthor
@@ -674,11 +705,17 @@ operator|=
 name|tmpauthor
 expr_stmt|;
 block|}
-break|break;
 block|}
-case|case
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"AU  - "
-case|:
+argument_list|)
+condition|)
 block|{
 name|String
 name|tmpauthor
@@ -727,11 +764,18 @@ operator|=
 name|tmpauthor
 expr_stmt|;
 block|}
-break|break;
 block|}
-case|case
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"TI  - "
-case|:
+argument_list|)
+condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -748,10 +792,18 @@ literal|" "
 argument_list|)
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"TA  - "
-case|:
+argument_list|)
+condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -768,10 +820,18 @@ literal|" "
 argument_list|)
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"AB  - "
-case|:
+argument_list|)
+condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -788,10 +848,18 @@ literal|" "
 argument_list|)
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"PG  - "
-case|:
+argument_list|)
+condition|)
+block|{
 name|pages
 operator|=
 name|value
@@ -803,10 +871,18 @@ argument_list|,
 literal|"--"
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"IP  - "
-case|:
+argument_list|)
+condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -816,10 +892,17 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"DP  - "
-case|:
+argument_list|)
+condition|)
 block|{
 name|String
 index|[]
@@ -845,11 +928,18 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-break|break;
 block|}
-case|case
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"VI  - "
-case|:
+argument_list|)
+condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -859,10 +949,17 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"AID - "
-case|:
+argument_list|)
+condition|)
 block|{
 name|String
 index|[]
@@ -914,8 +1011,6 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-block|}
-break|break;
 block|}
 block|}
 block|}

@@ -1198,11 +1198,11 @@ name|void
 name|setFieldsText
 parameter_list|()
 block|{
-name|StringBuilder
+name|StringBuffer
 name|sb
 init|=
 operator|new
-name|StringBuilder
+name|StringBuffer
 argument_list|()
 decl_stmt|;
 name|EntryEditorTabList
@@ -1336,11 +1336,11 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|StringBuilder
+name|StringBuffer
 name|sb
 init|=
 operator|new
-name|StringBuilder
+name|StringBuffer
 argument_list|()
 decl_stmt|;
 name|String

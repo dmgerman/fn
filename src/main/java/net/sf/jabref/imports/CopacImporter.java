@@ -304,7 +304,9 @@ name|entries
 init|=
 operator|new
 name|LinkedList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// Preprocess entries
@@ -473,7 +475,9 @@ name|results
 init|=
 operator|new
 name|LinkedList
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -552,14 +556,16 @@ argument_list|,
 literal|4
 argument_list|)
 decl_stmt|;
-switch|switch
+if|if
 condition|(
 name|code
+operator|.
+name|equals
+argument_list|(
+literal|"TI- "
+argument_list|)
 condition|)
 block|{
-case|case
-literal|"TI- "
-case|:
 name|setOrAppend
 argument_list|(
 name|b
@@ -579,10 +585,18 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|code
+operator|.
+name|equals
+argument_list|(
 literal|"AU- "
-case|:
+argument_list|)
+condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -602,10 +616,18 @@ argument_list|,
 literal|" and "
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|code
+operator|.
+name|equals
+argument_list|(
 literal|"PY- "
-case|:
+argument_list|)
+condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -625,10 +647,18 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|code
+operator|.
+name|equals
+argument_list|(
 literal|"PU- "
-case|:
+argument_list|)
+condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -648,10 +678,18 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|code
+operator|.
+name|equals
+argument_list|(
 literal|"SE- "
-case|:
+argument_list|)
+condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -671,10 +709,18 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|code
+operator|.
+name|equals
+argument_list|(
 literal|"IS- "
-case|:
+argument_list|)
+condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -694,10 +740,18 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|code
+operator|.
+name|equals
+argument_list|(
 literal|"KW- "
-case|:
+argument_list|)
+condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -717,10 +771,18 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|code
+operator|.
+name|equals
+argument_list|(
 literal|"NT- "
-case|:
+argument_list|)
+condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -740,10 +802,18 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|code
+operator|.
+name|equals
+argument_list|(
 literal|"PD- "
-case|:
+argument_list|)
+condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -763,10 +833,18 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|code
+operator|.
+name|equals
+argument_list|(
 literal|"DT- "
-case|:
+argument_list|)
+condition|)
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -786,8 +864,9 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
-break|break;
-default|default:
+block|}
+else|else
+block|{
 name|setOrAppend
 argument_list|(
 name|b
@@ -814,7 +893,6 @@ argument_list|,
 literal|", "
 argument_list|)
 expr_stmt|;
-break|break;
 block|}
 block|}
 name|results

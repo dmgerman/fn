@@ -735,8 +735,16 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
 parameter_list|()
-lambda|->
 block|{
 name|ChangeDisplayDialog
 name|dial
@@ -794,6 +802,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -845,8 +854,16 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
 parameter_list|()
-lambda|->
 block|{
 try|try
 block|{
@@ -912,6 +929,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -949,7 +967,9 @@ name|handledOnDisk
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// Loop through the metadata entries of the "tmp" database, looking for
@@ -1129,7 +1149,9 @@ name|used
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|disk
 operator|.
@@ -1145,7 +1167,9 @@ name|notMatched
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|Integer
+argument_list|>
 argument_list|(
 name|tmp
 operator|.
@@ -2005,7 +2029,9 @@ name|used
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|HashSet
@@ -2016,7 +2042,9 @@ name|usedInMem
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|HashSet
@@ -2027,7 +2055,9 @@ name|notMatched
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|onTmp
 operator|.

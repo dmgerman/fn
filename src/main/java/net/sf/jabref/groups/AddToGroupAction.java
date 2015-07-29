@@ -303,7 +303,9 @@ name|removeGroupsNodes
 init|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// used only when moving

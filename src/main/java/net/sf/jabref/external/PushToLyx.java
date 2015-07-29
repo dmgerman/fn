@@ -252,8 +252,16 @@ name|INSTANCE
 operator|.
 name|executeAndWait
 argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
 parameter_list|()
-lambda|->
 block|{
 try|try
 block|{
@@ -309,6 +317,7 @@ name|couldNotWrite
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)

@@ -520,7 +520,12 @@ name|iconCols
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|Integer
+argument_list|,
+name|String
+index|[]
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|nameCols
@@ -1818,7 +1823,7 @@ operator|)
 operator|)
 return|;
 block|}
-DECL|method|hasField (BibtexEntry be, String... field)
+DECL|method|hasField (BibtexEntry be, String[] field)
 specifier|private
 name|int
 index|[]
@@ -1828,7 +1833,7 @@ name|BibtexEntry
 name|be
 parameter_list|,
 name|String
-modifier|...
+index|[]
 name|field
 parameter_list|)
 block|{
@@ -2753,7 +2758,10 @@ name|tmp
 init|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|int
+index|[]
+argument_list|>
 argument_list|(
 literal|2
 argument_list|,

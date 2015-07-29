@@ -518,8 +518,19 @@ name|ok
 operator|.
 name|addActionListener
 argument_list|(
+operator|new
+name|ActionListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
 name|e
-lambda|->
+parameter_list|)
 block|{
 name|storeSettings
 argument_list|()
@@ -527,6 +538,7 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -565,10 +577,21 @@ name|toDefaults
 operator|.
 name|addActionListener
 argument_list|(
-name|e
-lambda|->
+operator|new
+name|ActionListener
+argument_list|()
 block|{
-comment|/*int reply = JOptionPane.showConfirmDialog(ExternalFileTypeEditor.this,                     Globals.lang("All custom file types will be lost. Proceed?"),                     Globals.lang("Reset file type definitons"), JOptionPane.YES_NO_OPTION,                     JOptionPane.QUESTION_MESSAGE);*/
+annotation|@
+name|Override
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+comment|/*int reply = JOptionPane.showConfirmDialog(ExternalFileTypeEditor.this,                         Globals.lang("All custom file types will be lost. Proceed?"),                         Globals.lang("Reset file type definitons"), JOptionPane.YES_NO_OPTION,                         JOptionPane.QUESTION_MESSAGE);*/
 comment|//if (reply == JOptionPane.YES_OPTION) {
 name|java
 operator|.
@@ -615,6 +638,7 @@ argument_list|()
 expr_stmt|;
 comment|//}
 block|}
+block|}
 argument_list|)
 expr_stmt|;
 name|add
@@ -646,7 +670,9 @@ name|fileTypes
 operator|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|ExternalFileType
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|setValues

@@ -83,7 +83,11 @@ name|fullNameLowerCase2Abbreviation
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|Abbreviation
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|isoLowerCase2Abbreviation
@@ -99,7 +103,11 @@ name|isoLowerCase2Abbreviation
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|Abbreviation
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|medlineLowerCase2Abbreviation
@@ -115,7 +123,11 @@ name|medlineLowerCase2Abbreviation
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|Abbreviation
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|abbreviations
@@ -129,7 +141,9 @@ name|abbreviations
 init|=
 operator|new
 name|TreeSet
-argument_list|<>
+argument_list|<
+name|Abbreviation
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|readJournalListFromResource (String resource)

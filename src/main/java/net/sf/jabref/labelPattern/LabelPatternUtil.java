@@ -316,7 +316,9 @@ name|tokens
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|int
@@ -991,7 +993,9 @@ name|part
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// Cleanup: remove unnecessary words.
@@ -1655,7 +1659,9 @@ name|_alist
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// Before we do anything, we add the parameter to the ArrayLIst
@@ -4196,11 +4202,11 @@ literal|"title"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|StringBuilder
+name|StringBuffer
 name|_sbvalue
 init|=
 operator|new
-name|StringBuilder
+name|StringBuffer
 argument_list|()
 decl_stmt|;
 name|StringBuffer
@@ -4317,10 +4323,19 @@ continue|continue;
 block|}
 for|for
 control|(
-name|String
-name|SKIP_WORD
-range|:
+name|int
+name|_i
+init|=
+literal|0
+init|;
+name|_i
+operator|<
 name|SKIP_WORDS
+operator|.
+name|length
+condition|;
+name|_i
+operator|++
 control|)
 block|{
 if|if
@@ -4329,7 +4344,10 @@ name|word
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-name|SKIP_WORD
+name|SKIP_WORDS
+index|[
+name|_i
+index|]
 argument_list|)
 condition|)
 block|{
@@ -6430,7 +6448,9 @@ name|parts
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|StringBuilder

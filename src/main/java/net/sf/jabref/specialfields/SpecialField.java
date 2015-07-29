@@ -120,7 +120,9 @@ name|keywords
 operator|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|this
@@ -129,7 +131,11 @@ name|map
 operator|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|SpecialFieldValue
+argument_list|>
 argument_list|()
 expr_stmt|;
 for|for

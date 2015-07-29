@@ -71,7 +71,9 @@ name|extSet
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|desc
@@ -80,12 +82,12 @@ specifier|final
 name|String
 name|desc
 decl_stmt|;
-DECL|method|OpenFileFilter (String... extensions)
+DECL|method|OpenFileFilter (String[] extensions)
 specifier|public
 name|OpenFileFilter
 parameter_list|(
 name|String
-modifier|...
+index|[]
 name|extensions
 parameter_list|)
 block|{
@@ -196,21 +198,31 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
+operator|new
+name|String
+index|[]
+block|{
 literal|".bib"
-argument_list|,
+block|,
 literal|".dat"
-argument_list|,
+block|,
+comment|// silverplatter ending
 literal|".txt"
-argument_list|,
+block|,
+comment|// windows puts ".txt" extentions and for scifinder
 literal|".ris"
-argument_list|,
+block|,
 literal|".ref"
-argument_list|,
+block|,
+comment|// refer/endnote format
 literal|".fcgi"
-argument_list|,
+block|,
+comment|// default for pubmed
 literal|".bibx"
-argument_list|,
+block|,
+comment|// default for BibTeXML
 literal|".xml"
+block|}
 argument_list|)
 expr_stmt|;
 block|}

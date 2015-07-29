@@ -145,7 +145,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|CustomEntryType (String name_, String[] req_, String[] opt_, String... opt2_)
+DECL|method|CustomEntryType (String name_, String[] req_, String[] opt_, String[] opt2_)
 specifier|public
 name|CustomEntryType
 parameter_list|(
@@ -161,7 +161,7 @@ index|[]
 name|opt_
 parameter_list|,
 name|String
-modifier|...
+index|[]
 name|opt2_
 parameter_list|)
 block|{
@@ -182,7 +182,9 @@ name|allOpt
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|Collections
@@ -224,7 +226,7 @@ operator|=
 name|opt_
 expr_stmt|;
 block|}
-DECL|method|CustomEntryType (String name_, String[] req_, String... opt_)
+DECL|method|CustomEntryType (String name_, String[] req_, String[] opt_)
 specifier|public
 name|CustomEntryType
 parameter_list|(
@@ -236,7 +238,7 @@ index|[]
 name|req_
 parameter_list|,
 name|String
-modifier|...
+index|[]
 name|opt_
 parameter_list|)
 block|{
@@ -355,13 +357,13 @@ name|parts
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseRequiredFields (String... parts)
+DECL|method|parseRequiredFields (String[] parts)
 specifier|private
 name|void
 name|parseRequiredFields
 parameter_list|(
 name|String
-modifier|...
+index|[]
 name|parts
 parameter_list|)
 block|{
@@ -373,7 +375,9 @@ name|fields
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|ArrayList
@@ -385,7 +389,10 @@ name|sets
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+index|[]
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for

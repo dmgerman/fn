@@ -199,12 +199,12 @@ name|flavorExternal
 block|}
 expr_stmt|;
 block|}
-DECL|method|TransferableEntrySelection (BibtexEntry... selectedEntries)
+DECL|method|TransferableEntrySelection (BibtexEntry[] selectedEntries)
 specifier|public
 name|TransferableEntrySelection
 parameter_list|(
 name|BibtexEntry
-modifier|...
+index|[]
 name|selectedEntries
 parameter_list|)
 block|{

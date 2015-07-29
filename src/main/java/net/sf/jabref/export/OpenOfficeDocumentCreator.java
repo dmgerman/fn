@@ -270,8 +270,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-init|(
 name|ZipOutputStream
 name|out
 init|=
@@ -288,7 +286,8 @@ name|file
 argument_list|)
 argument_list|)
 argument_list|)
-init|)
+decl_stmt|;
+try|try
 block|{
 name|ZipEntry
 name|zipEntry
@@ -372,6 +371,14 @@ name|out
 argument_list|)
 expr_stmt|;
 comment|//zipEntry = new ZipEntry()
+block|}
+finally|finally
+block|{
+name|out
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 DECL|method|exportOpenOfficeCalc (File file, BibtexDatabase database, Set<String> keySet)
@@ -481,8 +488,6 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-try|try
-init|(
 name|Writer
 name|ps
 init|=
@@ -497,7 +502,8 @@ argument_list|)
 argument_list|,
 literal|"UTF8"
 argument_list|)
-init|)
+decl_stmt|;
+try|try
 block|{
 comment|//            Writer ps = new FileWriter(tmpFile);
 name|DOMSource
@@ -551,6 +557,14 @@ name|source
 argument_list|,
 name|result
 argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|ps
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 block|}

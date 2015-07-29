@@ -158,7 +158,9 @@ name|usedParts
 init|=
 operator|new
 name|TreeSet
-argument_list|<>
+argument_list|<
+name|Substring
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|text
@@ -949,7 +951,9 @@ name|free
 init|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|int

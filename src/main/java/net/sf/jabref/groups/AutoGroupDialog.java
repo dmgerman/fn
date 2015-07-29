@@ -746,7 +746,9 @@ name|fields
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 literal|2
 argument_list|)
@@ -794,7 +796,9 @@ name|fields
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 literal|2
 argument_list|)

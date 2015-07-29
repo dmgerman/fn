@@ -612,6 +612,14 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|EncryptionNotSupportedException
+name|e
+parameter_list|)
+block|{
+comment|// no canceling here, just no data added.
+block|}
+catch|catch
+parameter_list|(
 name|IOException
 name|e
 parameter_list|)

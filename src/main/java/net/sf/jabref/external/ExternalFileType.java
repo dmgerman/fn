@@ -159,12 +159,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Construct an ExternalFileType from a String array. This constructor is used when      * reading file type definitions from Preferences, where the available data types are      * limited. We assume that the array contains the same values as the main constructor,      * in the same order.      *      * TODO: The icon argument needs special treatment. At the moment, we assume that the fourth      * element of the array contains the icon keyword to be looked up in the current icon theme.      * To support icons found elsewhere on the file system we simply need to prefix the icon name      * with a marker.       *      * @param val Constructor arguments.      */
-DECL|method|ExternalFileType (String... val)
+DECL|method|ExternalFileType (String[] val)
 specifier|public
 name|ExternalFileType
 parameter_list|(
 name|String
-modifier|...
+index|[]
 name|val
 parameter_list|)
 block|{

@@ -630,8 +630,16 @@ expr_stmt|;
 name|Runnable
 name|errorListener
 init|=
+operator|new
+name|Runnable
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
 parameter_list|()
-lambda|->
 block|{
 name|InputStream
 name|out
@@ -713,6 +721,7 @@ name|couldNotConnect
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 block|}
 decl_stmt|;

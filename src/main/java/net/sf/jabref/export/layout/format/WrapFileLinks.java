@@ -174,7 +174,11 @@ name|replacements
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 annotation|@
@@ -864,7 +868,11 @@ name|ESCAPE_SEQ
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|Character
+argument_list|,
+name|Integer
+argument_list|>
 argument_list|()
 decl_stmt|;
 static|static
@@ -969,7 +977,9 @@ name|l
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|FormatEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|StringBuilder

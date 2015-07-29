@@ -194,7 +194,9 @@ name|entries
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|ExplicitGroup (String name, GroupHierarchyType context)
@@ -535,13 +537,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (BibtexEntry... entries)
+DECL|method|add (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|add
 parameter_list|(
 name|BibtexEntry
-modifier|...
+index|[]
 name|entries
 parameter_list|)
 block|{
@@ -567,7 +569,9 @@ name|entriesBeforeEdit
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|this
 operator|.
@@ -617,13 +621,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|remove (BibtexEntry... entries)
+DECL|method|remove (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|remove
 parameter_list|(
 name|BibtexEntry
-modifier|...
+index|[]
 name|entries
 parameter_list|)
 block|{
@@ -649,7 +653,9 @@ name|entriesBeforeEdit
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|this
 operator|.
@@ -839,7 +845,9 @@ name|keys
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|BibtexEntry
@@ -1038,7 +1046,9 @@ name|sortedKeys
 init|=
 operator|new
 name|TreeSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1310,7 +1320,9 @@ name|newSet
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for

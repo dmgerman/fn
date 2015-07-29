@@ -253,7 +253,9 @@ name|finders
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|FullTextFinder
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|FindFullText ()
@@ -672,6 +674,18 @@ name|url
 argument_list|)
 return|;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|MalformedURLException
+name|e
+parameter_list|)
+block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(

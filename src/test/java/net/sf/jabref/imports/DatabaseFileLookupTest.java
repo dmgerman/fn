@@ -830,7 +830,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|orderByParamCount (Constructor<? extends T>.... constructors)
+DECL|method|orderByParamCount (Constructor<? extends T>[] constructors)
 specifier|private
 specifier|static
 parameter_list|<
@@ -851,7 +851,7 @@ name|?
 extends|extends
 name|T
 argument_list|>
-modifier|...
+index|[]
 name|constructors
 parameter_list|)
 block|{
@@ -879,12 +879,42 @@ name|sort
 argument_list|(
 name|list
 argument_list|,
+operator|new
+name|Comparator
+argument_list|<
+name|Constructor
+argument_list|<
+name|?
+extends|extends
+name|T
+argument_list|>
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|int
+name|compare
 parameter_list|(
+name|Constructor
+argument_list|<
+name|?
+extends|extends
+name|T
+argument_list|>
 name|c1
 parameter_list|,
+name|Constructor
+argument_list|<
+name|?
+extends|extends
+name|T
+argument_list|>
 name|c2
 parameter_list|)
-lambda|->
+block|{
+return|return
 operator|new
 name|Integer
 argument_list|(
@@ -905,12 +935,22 @@ argument_list|()
 operator|.
 name|length
 argument_list|)
-argument_list|)
-expr_stmt|;
+return|;
+block|}
+block|}
+block|)
+function|;
 return|return
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|Constructor
+argument_list|<
+name|?
+extends|extends
+name|T
+argument_list|>
+argument_list|>
 argument_list|(
 name|list
 argument_list|)
@@ -928,6 +968,9 @@ index|]
 argument_list|)
 return|;
 block|}
+end_class
+
+begin_function
 DECL|method|getInstanceFromNonDefaultConstructor (Class<T> targetClass)
 specifier|private
 specifier|static
@@ -1090,7 +1133,13 @@ return|return
 literal|null
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Creates an argument-array for the type-array<code>parameterTypes</code>      * by trying to instanciate every single parameter type.<br>      *<br>      * If one of the instanciation fails, the<code>null</code> value will be written      * into the argument-array.      *      * @param parameterTypes An Array of types, which shall be created.      * @return An array of arguments.      */
+end_comment
+
+begin_function
 DECL|method|createArguments (Class<?>[] parameterTypes, Class<T> targetClass)
 specifier|private
 specifier|static
@@ -1203,8 +1252,8 @@ return|return
 name|parameterValues
 return|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

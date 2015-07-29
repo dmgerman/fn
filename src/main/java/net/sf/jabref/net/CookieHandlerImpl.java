@@ -80,7 +80,9 @@ name|cache
 init|=
 operator|new
 name|LinkedList
-argument_list|<>
+argument_list|<
+name|Cookie
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|/**      * Saves all applicable cookies present in the response      * headers into cache.      *      * @param uri             URI source of cookies      * @param responseHeaders Immutable map from field names to      *                        lists of field      *                        values representing the response header fields returned      */
@@ -366,7 +368,14 @@ name|cookieMap
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 argument_list|(
 name|requestHeaders
 argument_list|)

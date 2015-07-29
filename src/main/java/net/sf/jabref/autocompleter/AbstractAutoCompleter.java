@@ -101,7 +101,9 @@ name|indexCaseSensitive
 init|=
 operator|new
 name|TreeSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// stores strings in lowercase
@@ -116,7 +118,9 @@ name|indexCaseInsensitive
 init|=
 operator|new
 name|TreeSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// stores for a lowercase string the possible expanded strings
@@ -136,7 +140,14 @@ name|possibleStringsForSearchString
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|addBibtexEntry (BibtexEntry entry)
@@ -228,7 +239,9 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -461,7 +474,9 @@ name|set
 operator|=
 operator|new
 name|TreeSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}

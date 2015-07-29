@@ -1250,10 +1250,15 @@ name|importer
 operator|.
 name|automatedImport
 argument_list|(
+operator|new
+name|String
+index|[]
+block|{
 name|tmpfile
 operator|.
 name|getAbsolutePath
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
 return|return
@@ -1301,7 +1306,9 @@ name|files
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|File
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1350,7 +1357,17 @@ block|}
 catch|catch
 parameter_list|(
 name|URISyntaxException
-decl||
+name|e
+parameter_list|)
+block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|MalformedURLException
 name|e
 parameter_list|)
@@ -1549,8 +1566,16 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
 parameter_list|()
-lambda|->
 block|{
 comment|// Done by MrDlib
 specifier|final
@@ -1600,6 +1625,7 @@ block|}
 comment|//loadOrImportFiles(fileNames, dropRow);
 comment|// Done by MrDlib
 block|}
+block|}
 argument_list|)
 expr_stmt|;
 return|return
@@ -1639,7 +1665,9 @@ name|notBibFiles
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|String
@@ -2002,10 +2030,15 @@ name|importer
 operator|.
 name|automatedImport
 argument_list|(
+operator|new
+name|String
+index|[]
+block|{
 name|tmpfile
 operator|.
 name|getAbsolutePath
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
 return|return

@@ -307,7 +307,14 @@ name|reqLists
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|optLists
@@ -326,7 +333,14 @@ name|optLists
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|opt2Lists
@@ -345,7 +359,14 @@ name|opt2Lists
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|defaulted
@@ -359,7 +380,9 @@ name|defaulted
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|changed
@@ -373,7 +396,9 @@ name|changed
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|biblatexMode
@@ -507,7 +532,9 @@ name|entryTypes
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -586,7 +613,9 @@ argument_list|)
 argument_list|,
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 argument_list|,
 name|preset
@@ -649,7 +678,9 @@ argument_list|)
 argument_list|,
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 argument_list|,
 name|preset
@@ -726,7 +757,9 @@ literal|" 2"
 argument_list|,
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 argument_list|,
 name|preset
@@ -1231,7 +1264,9 @@ name|req
 operator|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -1268,7 +1303,9 @@ name|opt
 operator|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -1311,7 +1348,9 @@ name|opt
 operator|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -1323,7 +1362,9 @@ name|opt2
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 if|if
@@ -1415,7 +1456,9 @@ name|setFields
 argument_list|(
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1432,7 +1475,9 @@ name|setFields
 argument_list|(
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1454,7 +1499,9 @@ name|setFields
 argument_list|(
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1991,7 +2038,9 @@ name|toRemove
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2211,7 +2260,7 @@ block|}
 comment|//messageLabel.setText("'"+type.getName()+"' "+
 comment|//        Globals.lang("is a standard type."));
 block|}
-DECL|method|equalArrays (String[] one, String... two)
+DECL|method|equalArrays (String[] one, String[] two)
 specifier|private
 name|boolean
 name|equalArrays
@@ -2221,7 +2270,7 @@ index|[]
 name|one
 parameter_list|,
 name|String
-modifier|...
+index|[]
 name|two
 parameter_list|)
 block|{
@@ -2672,7 +2721,9 @@ name|req
 operator|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -2680,14 +2731,18 @@ name|opt1
 operator|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|opt2
 operator|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 if|if

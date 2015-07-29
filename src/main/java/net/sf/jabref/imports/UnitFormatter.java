@@ -362,7 +362,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|format (String text, String... listOfWords)
+DECL|method|format (String text, String[] listOfWords)
 specifier|private
 name|String
 name|format
@@ -371,7 +371,7 @@ name|String
 name|text
 parameter_list|,
 name|String
-modifier|...
+index|[]
 name|listOfWords
 parameter_list|)
 block|{

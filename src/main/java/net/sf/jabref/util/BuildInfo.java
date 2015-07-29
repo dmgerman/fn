@@ -133,7 +133,11 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-decl||
+name|ignored
+parameter_list|)
+block|{         }
+catch|catch
+parameter_list|(
 name|NullPointerException
 name|ignored
 parameter_list|)

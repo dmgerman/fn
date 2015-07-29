@@ -157,7 +157,9 @@ name|m_previousAssignmentBackup
 operator|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|previousAssignment
 argument_list|)
@@ -166,7 +168,9 @@ name|m_newAssignmentBackup
 operator|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|currentAssignment
 argument_list|)

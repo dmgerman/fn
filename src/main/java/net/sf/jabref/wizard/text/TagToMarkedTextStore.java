@@ -113,7 +113,14 @@ name|tagMap
 operator|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|LinkedList
+argument_list|<
+name|TMarkedStoreItem
+argument_list|>
+argument_list|>
 argument_list|(
 literal|10
 argument_list|)
@@ -159,7 +166,9 @@ name|ll
 operator|=
 operator|new
 name|LinkedList
-argument_list|<>
+argument_list|<
+name|TMarkedStoreItem
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|tagMap
@@ -239,7 +248,9 @@ name|ll
 operator|=
 operator|new
 name|LinkedList
-argument_list|<>
+argument_list|<
+name|TMarkedStoreItem
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|tagMap

@@ -148,7 +148,9 @@ name|entries
 operator|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|MODSEntry
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -227,7 +229,9 @@ name|entries
 operator|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|MODSEntry
+argument_list|>
 argument_list|()
 expr_stmt|;
 for|for

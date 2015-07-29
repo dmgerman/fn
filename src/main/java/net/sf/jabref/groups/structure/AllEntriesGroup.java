@@ -274,13 +274,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (BibtexEntry... entries)
+DECL|method|add (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|add
 parameter_list|(
 name|BibtexEntry
-modifier|...
+index|[]
 name|entries
 parameter_list|)
 block|{
@@ -291,13 +291,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|remove (BibtexEntry... entries)
+DECL|method|remove (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|remove
 parameter_list|(
 name|BibtexEntry
-modifier|...
+index|[]
 name|entries
 parameter_list|)
 block|{

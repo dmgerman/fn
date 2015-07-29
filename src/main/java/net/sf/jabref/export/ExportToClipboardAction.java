@@ -644,7 +644,9 @@ name|entries
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|bes
 operator|.
@@ -752,13 +754,24 @@ block|}
 name|ClipboardOwner
 name|owner
 init|=
+operator|new
+name|ClipboardOwner
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|lostOwnership
 parameter_list|(
+name|Clipboard
 name|clipboard
 parameter_list|,
+name|Transferable
 name|content
 parameter_list|)
-lambda|->
-block|{             }
+block|{                 }
+block|}
 decl_stmt|;
 comment|//StringSelection ss = new StringSelection(sw.toString());
 name|RtfSelection

@@ -1244,7 +1244,9 @@ name|stringsSet
 init|=
 operator|new
 name|TreeSet
-argument_list|<>
+argument_list|<
+name|BibtexString
+argument_list|>
 argument_list|(
 operator|new
 name|BibtexStringComparator

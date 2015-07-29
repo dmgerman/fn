@@ -184,7 +184,9 @@ name|warnings
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|duplicateKeys
@@ -198,7 +200,9 @@ name|duplicateKeys
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|errorMessage
@@ -291,7 +295,11 @@ literal|null
 argument_list|,
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;

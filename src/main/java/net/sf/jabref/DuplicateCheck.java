@@ -130,7 +130,11 @@ name|fieldWeights
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|Double
+argument_list|>
 argument_list|()
 decl_stmt|;
 static|static
@@ -625,17 +629,22 @@ name|EMPTY_IN_TWO
 return|;
 block|}
 comment|// Util.pr(field+": '"+s1+"' vs '"+s2+"'");
-switch|switch
+if|if
 condition|(
 name|field
-condition|)
-block|{
-case|case
+operator|.
+name|equals
+argument_list|(
 literal|"author"
-case|:
-case|case
+argument_list|)
+operator|||
+name|field
+operator|.
+name|equals
+argument_list|(
 literal|"editor"
-case|:
+argument_list|)
+condition|)
 block|{
 comment|// Specific for name fields.
 comment|// Harmonise case:
@@ -718,9 +727,17 @@ name|NOT_EQUAL
 return|;
 block|}
 block|}
-case|case
+elseif|else
+if|if
+condition|(
+name|field
+operator|.
+name|equals
+argument_list|(
 literal|"pages"
-case|:
+argument_list|)
+condition|)
+block|{
 comment|// Pages can be given with a variety of delimiters, "-", "--", " - ", " -- ".
 comment|// We do a replace to harmonize these to a simple "-":
 comment|// After this, a simple test for equality should be enough:
@@ -766,9 +783,17 @@ return|return
 name|NOT_EQUAL
 return|;
 block|}
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|field
+operator|.
+name|equals
+argument_list|(
 literal|"journal"
-case|:
+argument_list|)
+condition|)
 block|{
 comment|// We do not attempt to harmonize abbreviation state of the journal names,
 comment|// but we remove periods from the names in case they are abbreviated with
@@ -834,7 +859,7 @@ name|NOT_EQUAL
 return|;
 block|}
 block|}
-default|default:
+else|else
 block|{
 name|s1
 operator|=
@@ -884,7 +909,6 @@ comment|/*if (s1.trim().equals(s2.trim()))                 return Util.EQUAL;   
 block|}
 block|}
 block|}
-block|}
 DECL|method|compareEntriesStrictly (BibtexEntry one, BibtexEntry two)
 specifier|public
 specifier|static
@@ -906,7 +930,9 @@ name|allFields
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// one.getAllFields());
@@ -1463,7 +1489,7 @@ name|n2
 argument_list|)
 return|;
 block|}
-DECL|method|corrCoef (double[] n1, double... n2)
+DECL|method|corrCoef (double[] n1, double[] n2)
 specifier|private
 specifier|static
 name|double
@@ -1474,7 +1500,7 @@ index|[]
 name|n1
 parameter_list|,
 name|double
-modifier|...
+index|[]
 name|n2
 parameter_list|)
 block|{
@@ -1881,14 +1907,14 @@ return|return
 name|newArray
 return|;
 block|}
-DECL|method|main (String... args)
+DECL|method|main (String[] args)
 specifier|public
 specifier|static
 name|void
 name|main
 parameter_list|(
 name|String
-modifier|...
+index|[]
 name|args
 parameter_list|)
 block|{

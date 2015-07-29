@@ -87,7 +87,9 @@ name|values
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|SpecialFieldValue
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// DO NOT TRANSLATE "qualityAssured" as this makes the produced .bib files non portable

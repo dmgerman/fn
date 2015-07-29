@@ -151,7 +151,9 @@ name|buttons
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|ColorButton
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|ColorSetupPanel ()
@@ -779,8 +781,19 @@ name|toDefault
 operator|.
 name|addActionListener
 argument_list|(
+operator|new
+name|ActionListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
 name|e
-lambda|->
+parameter_list|)
 block|{
 name|setColor
 argument_list|(
@@ -797,6 +810,7 @@ expr_stmt|;
 name|repaint
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;

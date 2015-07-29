@@ -85,7 +85,9 @@ name|abbreviations
 init|=
 operator|new
 name|LinkedList
-argument_list|<>
+argument_list|<
+name|Abbreviation
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|readJournalListFromResource (String resourceFileName)
@@ -132,6 +134,19 @@ name|openStream
 argument_list|()
 argument_list|)
 argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|FileNotFoundException
+name|e
+parameter_list|)
+block|{
+comment|// TODO logging
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -374,7 +389,9 @@ block|{
 return|return
 operator|new
 name|LinkedList
-argument_list|<>
+argument_list|<
+name|Abbreviation
+argument_list|>
 argument_list|(
 name|abbreviations
 argument_list|)

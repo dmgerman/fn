@@ -388,13 +388,13 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Automatically imports the files given as arguments      * @param filenames List of files to import      */
-DECL|method|automatedImport (String... filenames)
+DECL|method|automatedImport (String[] filenames)
 specifier|public
 name|void
 name|automatedImport
 parameter_list|(
 name|String
-modifier|...
+index|[]
 name|filenames
 parameter_list|)
 block|{
@@ -589,7 +589,11 @@ name|imports
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|ImportFormatReader
+operator|.
+name|UnknownFormatImport
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1771,7 +1775,11 @@ argument_list|()
 argument_list|,
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 argument_list|()
 argument_list|)
 return|;

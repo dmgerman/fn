@@ -207,7 +207,11 @@ name|map
 init|=
 operator|new
 name|TreeMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|BasePanel
+argument_list|>
 argument_list|(
 name|this
 argument_list|)

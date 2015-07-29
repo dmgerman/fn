@@ -193,7 +193,9 @@ name|wordsToHighlight
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|wordsToHighlight
@@ -463,7 +465,9 @@ name|wordsToHighlight
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|wordsToHighlight
@@ -497,7 +501,9 @@ name|wordsToHighlight2
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|ta

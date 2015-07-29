@@ -211,14 +211,14 @@ block|}
 comment|//========================================================
 comment|//
 comment|//========================================================
-DECL|method|main (String... args)
+DECL|method|main (String[] args)
 specifier|public
 specifier|static
 name|void
 name|main
 parameter_list|(
 name|String
-modifier|...
+index|[]
 name|args
 parameter_list|)
 block|{

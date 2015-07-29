@@ -237,7 +237,9 @@ name|matchEntries
 init|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for

@@ -319,7 +319,11 @@ name|fieldSet
 operator|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|BibtexSingleField
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|BibtexSingleField
@@ -1609,7 +1613,9 @@ name|pFields
 init|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|fieldSet
 operator|.
@@ -1720,7 +1726,9 @@ name|nF
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|Collections
@@ -2450,7 +2458,9 @@ name|pFields
 init|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for

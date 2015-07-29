@@ -120,7 +120,9 @@ name|reservedDBWords
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|Collections
 operator|.
@@ -169,7 +171,9 @@ name|allFields
 operator|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -336,7 +340,7 @@ name|fieldstr
 return|;
 block|}
 comment|/**      * Inserts the elements of a String array into an ArrayList making sure not      * to duplicate entries in the ArrayList      *       * @param list      *            The ArrayList containing unique entries      * @param array      *            The String array to be inserted into the ArrayList      * @return The updated ArrayList with new unique entries      */
-DECL|method|uniqueInsert (ArrayList<String> list, String... array)
+DECL|method|uniqueInsert (ArrayList<String> list, String[] array)
 specifier|private
 specifier|static
 name|ArrayList
@@ -352,7 +356,7 @@ argument_list|>
 name|list
 parameter_list|,
 name|String
-modifier|...
+index|[]
 name|array
 parameter_list|)
 block|{

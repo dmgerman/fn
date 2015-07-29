@@ -624,13 +624,13 @@ name|indexedPath
 return|;
 block|}
 comment|/**      * Returns the node indicated by the specified indexedPath, which contains      * child indices obtained e.g. by getIndexedPath().      */
-DECL|method|getNode (int... indexedPath)
+DECL|method|getNode (int[] indexedPath)
 specifier|public
 name|GroupTreeNode
 name|getNode
 parameter_list|(
 name|int
-modifier|...
+index|[]
 name|indexedPath
 parameter_list|)
 block|{
@@ -665,13 +665,13 @@ name|cursor
 return|;
 block|}
 comment|/**      * @param indexedPath A sequence of child indices that describe a path from this      *                    node to one of its desendants. Be aware that if<b>indexedPath      *</b> was obtained by getIndexedPath(), this node should      *                    usually be the root node.      * @return The descendant found by evaluating<b>indexedPath</b>. If the      * path could not be traversed completely (i.e. one of the child      * indices did not exist), null will be returned.      */
-DECL|method|getDescendant (int... indexedPath)
+DECL|method|getDescendant (int[] indexedPath)
 specifier|public
 name|GroupTreeNode
 name|getDescendant
 parameter_list|(
 name|int
-modifier|...
+index|[]
 name|indexedPath
 parameter_list|)
 block|{
@@ -1019,7 +1019,9 @@ name|matchingGroups
 init|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|AbstractGroup
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|Enumeration
@@ -1508,13 +1510,13 @@ name|undo
 return|;
 block|}
 comment|/**      * @param path A sequence of child indices that designate a node relative to      *             this node.      * @return The node designated by the specified path, or null if one or more      * indices in the path could not be resolved.      */
-DECL|method|getChildAt (int... path)
+DECL|method|getChildAt (int[] path)
 specifier|public
 name|GroupTreeNode
 name|getChildAt
 parameter_list|(
 name|int
-modifier|...
+index|[]
 name|path
 parameter_list|)
 block|{
@@ -1565,13 +1567,13 @@ name|cursor
 return|;
 block|}
 comment|/**      * Adds the selected entries to this node's group.      */
-DECL|method|addToGroup (BibtexEntry... entries)
+DECL|method|addToGroup (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|addToGroup
 parameter_list|(
 name|BibtexEntry
-modifier|...
+index|[]
 name|entries
 parameter_list|)
 block|{
@@ -1624,13 +1626,13 @@ name|undo
 return|;
 block|}
 comment|/**      * Removes the selected entries from this node's group.      */
-DECL|method|removeFromGroup (BibtexEntry... entries)
+DECL|method|removeFromGroup (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|removeFromGroup
 parameter_list|(
 name|BibtexEntry
-modifier|...
+index|[]
 name|entries
 parameter_list|)
 block|{

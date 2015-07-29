@@ -2099,8 +2099,19 @@ block|}
 name|ChangeListener
 name|cl
 init|=
+operator|new
+name|ChangeListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|stateChanged
+parameter_list|(
+name|ChangeEvent
 name|arg0
-lambda|->
+parameter_list|)
 block|{
 name|renameCheckBox
 operator|.
@@ -2142,6 +2153,7 @@ argument_list|(
 literal|"Multiple entries"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 decl_stmt|;

@@ -195,7 +195,9 @@ name|parsedEntries
 init|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|StringInt
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|_eof

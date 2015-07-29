@@ -948,12 +948,12 @@ name|cell
 expr_stmt|;
 block|}
 comment|/**      * Highlights the specified cells (in red), or disables highlight if cells ==      * null.      */
-DECL|method|setHighlight2Cells (Object... cells)
+DECL|method|setHighlight2Cells (Object[] cells)
 name|void
 name|setHighlight2Cells
 parameter_list|(
 name|Object
-modifier|...
+index|[]
 name|cells
 parameter_list|)
 block|{
@@ -965,12 +965,12 @@ name|cells
 expr_stmt|;
 block|}
 comment|/**      * Highlights the specified cells (by unterlining), or disables highlight if      * cells == null.      */
-DECL|method|setHighlight3Cells (Object... cells)
+DECL|method|setHighlight3Cells (Object[] cells)
 name|void
 name|setHighlight3Cells
 parameter_list|(
 name|Object
-modifier|...
+index|[]
 name|cells
 parameter_list|)
 block|{

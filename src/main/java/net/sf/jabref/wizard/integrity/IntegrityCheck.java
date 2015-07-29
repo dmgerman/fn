@@ -112,7 +112,9 @@ name|messages
 operator|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|IntegrityMessage
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -161,7 +163,9 @@ block|}
 return|return
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|IntegrityMessage
+argument_list|>
 argument_list|(
 name|messages
 argument_list|)
@@ -192,7 +196,9 @@ expr_stmt|;
 return|return
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|IntegrityMessage
+argument_list|>
 argument_list|(
 name|messages
 argument_list|)

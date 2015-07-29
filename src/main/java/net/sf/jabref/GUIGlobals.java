@@ -617,7 +617,11 @@ name|tableIcons
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|JLabel
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// Contains table icon mappings. Set up
@@ -1441,7 +1445,11 @@ name|LANGUAGES
 operator|=
 operator|new
 name|TreeMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 comment|// LANGUAGES contains mappings for supported languages.
@@ -2125,7 +2133,11 @@ name|map
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|InputStream

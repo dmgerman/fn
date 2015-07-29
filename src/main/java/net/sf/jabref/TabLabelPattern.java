@@ -944,8 +944,19 @@ name|dontOverwrite
 operator|.
 name|addChangeListener
 argument_list|(
+operator|new
+name|ChangeListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|stateChanged
+parameter_list|(
+name|ChangeEvent
 name|event
-lambda|->
+parameter_list|)
 block|{
 comment|// Warning before overwriting is only relevant if overwriting can happen:
 name|warnBeforeOverwriting
@@ -959,6 +970,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 argument_list|)
 expr_stmt|;

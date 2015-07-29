@@ -188,7 +188,9 @@ name|bibItems
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|BufferedReader
@@ -218,7 +220,11 @@ name|hm
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|HashMap
@@ -231,7 +237,11 @@ name|lines
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|StringBuffer
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|StringBuffer
@@ -324,7 +334,9 @@ name|comments
 init|=
 operator|new
 name|Vector
-argument_list|<>
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// add item
@@ -1636,14 +1648,16 @@ block|}
 block|}
 comment|// depending on bibtexType, decide where to place the titleRT and
 comment|// titleTI
-switch|switch
+if|if
 condition|(
 name|bibtexType
+operator|.
+name|equals
+argument_list|(
+literal|"article"
+argument_list|)
 condition|)
 block|{
-case|case
-literal|"article"
-case|:
 if|if
 condition|(
 name|titleST
@@ -1678,10 +1692,18 @@ name|titleTI
 argument_list|)
 expr_stmt|;
 block|}
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|bibtexType
+operator|.
+name|equals
+argument_list|(
 literal|"inbook"
-case|:
+argument_list|)
+condition|)
+block|{
 if|if
 condition|(
 name|titleST
@@ -1716,8 +1738,9 @@ name|titleTI
 argument_list|)
 expr_stmt|;
 block|}
-break|break;
-default|default:
+block|}
+else|else
+block|{
 if|if
 condition|(
 name|titleST
@@ -1755,7 +1778,6 @@ name|titleTI
 argument_list|)
 expr_stmt|;
 block|}
-break|break;
 block|}
 comment|// concatenate pages
 if|if

@@ -261,7 +261,11 @@ name|editors
 init|=
 operator|new
 name|HashMap
-argument_list|<>
+argument_list|<
+name|String
+argument_list|,
+name|FieldEditor
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|activeField
@@ -2162,7 +2166,9 @@ name|keys
 init|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|AWTKeyStroke
+argument_list|>
 argument_list|(
 name|component
 operator|.
@@ -2206,7 +2212,9 @@ name|keys
 operator|=
 operator|new
 name|HashSet
-argument_list|<>
+argument_list|<
+name|AWTKeyStroke
+argument_list|>
 argument_list|(
 name|component
 operator|.

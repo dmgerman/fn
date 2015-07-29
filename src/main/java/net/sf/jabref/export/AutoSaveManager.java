@@ -250,7 +250,9 @@ name|panels
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|BasePanel
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -534,7 +536,9 @@ name|panels
 init|=
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|BasePanel
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
