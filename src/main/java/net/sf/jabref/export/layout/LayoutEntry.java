@@ -246,6 +246,18 @@ name|invalidFormatter
 init|=
 literal|null
 decl_stmt|;
+comment|// used at highlighting in preview area.
+comment|// Color chosen similar to JTextComponent.getSelectionColor(), which is
+comment|// used at highlighting words at the editor
+DECL|field|HIGHLIGHT_COLOR
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|HIGHLIGHT_COLOR
+init|=
+literal|"#3399FF"
+decl_stmt|;
 DECL|method|LayoutEntry (StringInt si, String classPrefix_)
 specifier|public
 name|LayoutEntry
@@ -2692,9 +2704,7 @@ block|{
 name|String
 name|hlColor
 init|=
-name|Globals
-operator|.
-name|highlightColor
+name|HIGHLIGHT_COLOR
 decl_stmt|;
 name|StringBuffer
 name|sb

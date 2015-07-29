@@ -601,18 +601,6 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-comment|// used at highlighting in preview area.
-comment|// Color chosen similar to JTextComponent.getSelectionColor(), which is
-comment|// used at highlighting words at the editor
-DECL|field|highlightColor
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|highlightColor
-init|=
-literal|"#3399FF"
-decl_stmt|;
 DECL|field|RESOURCE_PREFIX
 DECL|field|MENU_RESOURCE_PREFIX
 specifier|private
