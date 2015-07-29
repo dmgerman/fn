@@ -372,22 +372,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|impl
-operator|.
-name|Jdk14Logger
-import|;
-end_import
-
 begin_class
 DECL|class|Globals
 specifier|public
