@@ -687,12 +687,6 @@ operator|new
 name|BuildInfo
 argument_list|()
 decl_stmt|;
-DECL|field|locale
-specifier|private
-specifier|static
-name|Locale
-name|locale
-decl_stmt|;
 DECL|field|FILETYPE_PREFS_EXT
 DECL|field|SELECTOR_META_PREFIX
 specifier|public
@@ -1529,10 +1523,9 @@ name|String
 name|country
 parameter_list|)
 block|{
-name|Globals
-operator|.
+name|Locale
 name|locale
-operator|=
+init|=
 operator|new
 name|Locale
 argument_list|(
@@ -1540,7 +1533,7 @@ name|language
 argument_list|,
 name|country
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|Globals
 operator|.
 name|messages
@@ -1553,8 +1546,6 @@ name|Globals
 operator|.
 name|RESOURCE_PREFIX
 argument_list|,
-name|Globals
-operator|.
 name|locale
 argument_list|,
 operator|new
@@ -1576,8 +1567,6 @@ name|Globals
 operator|.
 name|MENU_RESOURCE_PREFIX
 argument_list|,
-name|Globals
-operator|.
 name|locale
 argument_list|,
 operator|new
@@ -1599,8 +1588,6 @@ name|Globals
 operator|.
 name|INTEGRITY_RESOURCE_PREFIX
 argument_list|,
-name|Globals
-operator|.
 name|locale
 argument_list|,
 operator|new
@@ -1614,8 +1601,6 @@ name|Locale
 operator|.
 name|setDefault
 argument_list|(
-name|Globals
-operator|.
 name|locale
 argument_list|)
 expr_stmt|;
@@ -1627,8 +1612,6 @@ name|JComponent
 operator|.
 name|setDefaultLocale
 argument_list|(
-name|Globals
-operator|.
 name|locale
 argument_list|)
 expr_stmt|;
