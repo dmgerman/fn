@@ -18,25 +18,15 @@ end_package
 
 begin_import
 import|import
-name|java
+name|ca
 operator|.
-name|util
+name|odell
 operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|com
+name|glazedlists
 operator|.
-name|google
+name|matchers
 operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Preconditions
+name|Matcher
 import|;
 end_import
 
@@ -54,15 +44,21 @@ end_import
 
 begin_import
 import|import
-name|ca
+name|java
 operator|.
-name|odell
+name|util
 operator|.
-name|glazedlists
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|matchers
+name|util
 operator|.
-name|Matcher
+name|Objects
 import|;
 end_import
 
@@ -105,9 +101,9 @@ name|this
 operator|.
 name|hitOrMiss
 operator|=
-name|Preconditions
+name|Objects
 operator|.
-name|checkNotNull
+name|requireNonNull
 argument_list|(
 name|hitOrMiss
 argument_list|)
