@@ -986,10 +986,8 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|useDefault
@@ -1312,10 +1310,8 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{
@@ -1392,12 +1388,11 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
+operator|!
 name|ext
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 operator|&&
 operator|(
@@ -1492,10 +1487,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{
@@ -1601,10 +1594,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 comment|// Nothing in the field. Go to the last file dir used:

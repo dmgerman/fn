@@ -4734,12 +4734,11 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
 name|oldValue
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 operator|&&
 operator|(
@@ -4826,10 +4825,8 @@ argument_list|(
 literal|"date"
 argument_list|)
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{

@@ -425,12 +425,11 @@ name|g
 decl_stmt|;
 while|while
 condition|(
+operator|!
 name|s
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 if|if
@@ -861,10 +860,8 @@ if|if
 condition|(
 name|s
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 continue|continue;

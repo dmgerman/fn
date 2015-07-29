@@ -145,12 +145,11 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
+operator|!
 name|auxName
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 operator|&&
 operator|(

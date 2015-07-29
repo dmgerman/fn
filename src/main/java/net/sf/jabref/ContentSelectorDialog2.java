@@ -1196,12 +1196,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|wordListModel
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|wordList
@@ -1619,12 +1618,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|fieldListModel
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|fieldList
@@ -1889,10 +1887,8 @@ condition|(
 operator|(
 name|wordListModel
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 operator|||
 operator|!
@@ -2025,12 +2021,11 @@ decl_stmt|;
 comment|// Avoid storing the<new word> marker if it is there:
 if|if
 condition|(
+operator|!
 name|lm
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 while|while
@@ -2285,10 +2280,8 @@ if|if
 condition|(
 name|contents
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 comment|// if nothing was added, put the default fields (as described in the help)

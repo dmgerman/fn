@@ -738,12 +738,11 @@ comment|// Run the actual open in a thread to prevent the program
 comment|// locking until the file is loaded.
 if|if
 condition|(
+operator|!
 name|filesToOpen
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 specifier|final

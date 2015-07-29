@@ -267,10 +267,8 @@ if|if
 condition|(
 name|line
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 continue|continue;
@@ -1921,12 +1919,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 name|comments
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 comment|// set comment if present

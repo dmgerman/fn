@@ -1434,10 +1434,8 @@ if|if
 condition|(
 name|toSet
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|toSet

@@ -1351,6 +1351,7 @@ literal|1
 operator|)
 operator|&&
 operator|(
+operator|!
 name|value
 operator|.
 name|substring
@@ -1363,10 +1364,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -1745,10 +1744,8 @@ if|if
 condition|(
 name|hm
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 continue|continue;
@@ -1821,10 +1818,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{

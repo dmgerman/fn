@@ -377,10 +377,8 @@ if|if
 condition|(
 name|citations
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|status

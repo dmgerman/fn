@@ -848,10 +848,8 @@ if|if
 condition|(
 name|bibs
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|frame
@@ -889,12 +887,11 @@ return|;
 block|}
 if|if
 condition|(
+operator|!
 name|query
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|frame

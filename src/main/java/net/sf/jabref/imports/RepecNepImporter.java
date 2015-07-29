@@ -522,10 +522,8 @@ name|this
 operator|.
 name|lastLine
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|?
 name|this
 operator|.

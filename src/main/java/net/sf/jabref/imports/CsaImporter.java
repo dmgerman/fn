@@ -1168,10 +1168,8 @@ operator|||
 operator|(
 name|str
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{
@@ -1452,10 +1450,8 @@ if|if
 condition|(
 name|fstr
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|int

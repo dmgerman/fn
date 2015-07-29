@@ -278,10 +278,8 @@ if|if
 condition|(
 name|input
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 return|return
@@ -339,12 +337,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|input
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|lastC
@@ -809,15 +806,14 @@ expr_stmt|;
 if|if
 condition|(
 operator|(
+operator|!
 name|splitNames
 index|[
 name|i
 index|]
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 operator|&&
 name|Character
@@ -1171,12 +1167,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|res
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|!=
-literal|0
 condition|)
 block|{
 comment|// if something has been found, return the result
@@ -2738,12 +2733,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|curString
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 comment|// insert separating space if necessary

@@ -658,10 +658,8 @@ operator|||
 operator|(
 name|name
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{

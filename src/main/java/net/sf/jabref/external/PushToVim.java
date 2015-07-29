@@ -675,6 +675,7 @@ block|}
 comment|// Error stream has been closed. See if there were any errors:
 if|if
 condition|(
+operator|!
 name|sb
 operator|.
 name|toString
@@ -683,10 +684,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|System

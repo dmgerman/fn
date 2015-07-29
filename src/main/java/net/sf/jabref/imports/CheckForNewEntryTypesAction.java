@@ -167,15 +167,14 @@ expr_stmt|;
 block|}
 block|}
 return|return
+operator|!
 name|pr
 operator|.
 name|getEntryTypes
 argument_list|()
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 return|;
 block|}
 annotation|@

@@ -307,10 +307,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{
@@ -1375,12 +1373,11 @@ name|bibtexKey
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|suffix
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|plannedName

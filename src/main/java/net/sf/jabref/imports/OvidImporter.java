@@ -397,12 +397,11 @@ block|{
 if|if
 condition|(
 operator|(
+operator|!
 name|line
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 operator|&&
 operator|(
