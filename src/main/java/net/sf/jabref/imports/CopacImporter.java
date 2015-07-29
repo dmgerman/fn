@@ -309,7 +309,6 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-block|{
 comment|// Preprocess entries
 name|String
 name|str
@@ -467,7 +466,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|List
 argument_list|<

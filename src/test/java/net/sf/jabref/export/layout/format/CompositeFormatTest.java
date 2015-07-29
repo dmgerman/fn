@@ -192,9 +192,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|{
-name|LayoutFormatter
-name|f
+function|LayoutFormatter f
 init|=
 operator|new
 name|CompositeFormat
@@ -207,7 +205,7 @@ operator|new
 name|NoSpaceBetweenAbbreviations
 argument_list|()
 argument_list|)
-decl_stmt|;
+function|;
 name|LayoutFormatter
 name|first
 init|=
@@ -271,7 +269,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-function|}  }
+block|}
 end_class
 
 end_unit

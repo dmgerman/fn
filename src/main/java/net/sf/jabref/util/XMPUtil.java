@@ -3914,7 +3914,6 @@ break|break;
 case|case
 literal|1
 case|:
-block|{
 if|if
 condition|(
 name|args
@@ -4101,11 +4100,9 @@ argument_list|()
 expr_stmt|;
 block|}
 break|break;
-block|}
 case|case
 literal|2
 case|:
-block|{
 if|if
 condition|(
 name|args
@@ -4305,11 +4302,9 @@ name|usage
 argument_list|()
 expr_stmt|;
 break|break;
-block|}
 case|case
 literal|3
 case|:
-block|{
 if|if
 condition|(
 operator|!
@@ -4438,7 +4433,6 @@ argument_list|)
 expr_stmt|;
 block|}
 break|break;
-block|}
 default|default:
 name|XMPUtil
 operator|.

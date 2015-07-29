@@ -914,7 +914,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 name|String
 index|[]
 name|dirsToSearch
@@ -1154,7 +1153,6 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test

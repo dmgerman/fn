@@ -1565,7 +1565,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 comment|// First set:
 name|prefs
 operator|.
@@ -1698,7 +1697,6 @@ argument_list|(
 literal|"url"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|/**      * Are authors and editors correctly read?      *      * @throws Exception      */
 annotation|@
@@ -2355,7 +2353,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-block|{
 name|String
 name|bibtex
 init|=
@@ -2469,7 +2466,6 @@ literal|"abstract"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|/**      * Test whether XMP.readFile can deal with text-properties that are not      * element-nodes, but attribute-nodes      *      * @throws Exception      */
 annotation|@
@@ -3383,7 +3379,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|{
 comment|// Now alter the Bibtex entry, write it and do all the checks again
 name|BibtexEntry
 name|toSet
@@ -4025,7 +4020,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -6709,7 +6703,6 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 comment|// Write XMP to file
 name|BibtexEntry
 name|e
@@ -7002,7 +6995,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 comment|/**      * Test whether the command-line client can pick one of several entries from      * a bibtex file      *      * @throws Exception      */
 annotation|@
 name|Test
@@ -7171,7 +7163,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 comment|// Now try OezbekC06
 name|ByteArrayOutputStream
 name|s
@@ -7277,7 +7268,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 finally|finally
 block|{

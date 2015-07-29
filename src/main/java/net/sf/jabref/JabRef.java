@@ -2299,7 +2299,6 @@ operator|(
 literal|3
 operator|)
 case|:
-block|{
 name|formatName
 operator|=
 name|data
@@ -2308,22 +2307,18 @@ literal|2
 index|]
 expr_stmt|;
 break|break;
-block|}
 case|case
 operator|(
 literal|2
 operator|)
 case|:
-block|{
 comment|//default ExportFormat: HTML table (with Abstract& BibTeX)
 name|formatName
 operator|=
 literal|"tablerefsabsbib"
 expr_stmt|;
 break|break;
-block|}
 default|default:
-block|{
 name|System
 operator|.
 name|err
@@ -2362,7 +2357,6 @@ return|return
 literal|null
 return|;
 comment|// TODO replace with optional one day
-block|}
 block|}
 comment|//end switch
 comment|//export new database

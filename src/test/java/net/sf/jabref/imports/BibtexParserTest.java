@@ -635,7 +635,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 comment|// Error
 name|Collection
 argument_list|<
@@ -659,7 +658,6 @@ argument_list|,
 name|c
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test

@@ -4923,9 +4923,6 @@ name|e
 operator|.
 name|getClass
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 operator|+
 literal|"): "
 operator|+
