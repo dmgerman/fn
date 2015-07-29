@@ -220,7 +220,8 @@ argument_list|)
 decl_stmt|;
 name|int
 name|s
-decl_stmt|,
+decl_stmt|;
+name|int
 name|e
 decl_stmt|;
 if|if

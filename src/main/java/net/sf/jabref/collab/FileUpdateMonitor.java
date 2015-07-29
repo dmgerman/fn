@@ -587,10 +587,11 @@ name|File
 name|tmpFile
 decl_stmt|;
 DECL|field|timeStamp
-DECL|field|fileSize
 name|long
 name|timeStamp
-decl_stmt|,
+decl_stmt|;
+DECL|field|fileSize
+name|long
 name|fileSize
 decl_stmt|;
 DECL|method|Entry (FileUpdateListener ul, File f)

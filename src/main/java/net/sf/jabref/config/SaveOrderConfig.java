@@ -33,11 +33,13 @@ class|class
 name|SaveOrderConfig
 block|{
 DECL|field|saveInOriginalOrder
-DECL|field|saveInSpecifiedOrder
 specifier|public
 name|boolean
 name|saveInOriginalOrder
-decl_stmt|,
+decl_stmt|;
+DECL|field|saveInSpecifiedOrder
+specifier|public
+name|boolean
 name|saveInSpecifiedOrder
 decl_stmt|;
 comment|// quick hack for outside modifications

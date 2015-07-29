@@ -275,7 +275,8 @@ name|good
 init|=
 operator|-
 literal|1
-decl_stmt|,
+decl_stmt|;
+name|int
 name|yearFound
 init|=
 operator|-
@@ -610,7 +611,8 @@ index|[
 literal|0
 index|]
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|int
 name|second
 init|=
 name|Integer
@@ -712,7 +714,8 @@ block|}
 comment|//String journalRx = "(\\.|\\n)\\s??([a-zA-Z\\. ]{8,30}+)((vol\\.|Vol\\.|Volume|volume))??(.??)(\\d{1,3})(\\.|,|\\s)";
 name|String
 name|journal
-decl_stmt|,
+decl_stmt|;
+name|String
 name|volume
 decl_stmt|;
 name|String
@@ -1255,7 +1258,8 @@ name|int
 name|left
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+name|int
 name|right
 init|=
 name|s

@@ -244,14 +244,18 @@ name|JabRefFrame
 name|parent
 decl_stmt|;
 DECL|field|oldName
-DECL|field|oldRegexp
-DECL|field|oldField
 specifier|private
 name|String
 name|oldName
-decl_stmt|,
+decl_stmt|;
+DECL|field|oldRegexp
+specifier|private
+name|String
 name|oldRegexp
-decl_stmt|,
+decl_stmt|;
+DECL|field|oldField
+specifier|private
+name|String
 name|oldField
 decl_stmt|;
 DECL|method|CustomExportDialog (JabRefFrame parent_, String name_, String layoutFile_, String extension_)

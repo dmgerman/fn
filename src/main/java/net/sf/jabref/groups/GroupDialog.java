@@ -2381,7 +2381,8 @@ return|return;
 block|}
 name|String
 name|s1
-decl_stmt|,
+decl_stmt|;
+name|String
 name|s2
 decl_stmt|;
 if|if

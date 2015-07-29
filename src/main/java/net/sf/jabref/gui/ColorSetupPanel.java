@@ -123,7 +123,6 @@ extends|extends
 name|JPanel
 block|{
 DECL|field|ICON_WIDTH
-DECL|field|ICON_HEIGHT
 specifier|private
 specifier|static
 specifier|final
@@ -131,7 +130,12 @@ name|int
 name|ICON_WIDTH
 init|=
 literal|30
-decl_stmt|,
+decl_stmt|;
+DECL|field|ICON_HEIGHT
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|ICON_HEIGHT
 init|=
 literal|20

@@ -4160,10 +4160,11 @@ name|JournalEntry
 argument_list|>
 block|{
 DECL|field|name
-DECL|field|abbreviation
 name|String
 name|name
-decl_stmt|,
+decl_stmt|;
+DECL|field|abbreviation
+name|String
 name|abbreviation
 decl_stmt|;
 DECL|method|JournalEntry (String name, String abbreviation)

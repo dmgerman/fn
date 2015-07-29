@@ -731,7 +731,8 @@ name|getString
 argument_list|(
 literal|"label"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|String
 name|content
 init|=
 name|rsStrings
@@ -1371,7 +1372,8 @@ name|getString
 argument_list|(
 literal|"entries_id"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|String
 name|groupId
 init|=
 name|rsEntryGroup

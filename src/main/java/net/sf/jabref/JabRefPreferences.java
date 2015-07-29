@@ -8544,7 +8544,9 @@ operator|.
 name|size
 argument_list|()
 index|]
-decl_stmt|,
+decl_stmt|;
+name|String
+index|[]
 name|bindings
 init|=
 operator|new
@@ -8875,7 +8877,9 @@ name|getStringArray
 argument_list|(
 literal|"bindNames"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|String
+index|[]
 name|bindings
 init|=
 name|getStringArray
@@ -9326,7 +9330,9 @@ name|CUSTOM_TYPE_REQ
 operator|+
 name|nr
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|String
+index|[]
 name|opt
 init|=
 name|getStringArray
@@ -9337,7 +9343,9 @@ name|CUSTOM_TYPE_OPT
 operator|+
 name|nr
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|String
+index|[]
 name|priOpt
 init|=
 name|getStringArray

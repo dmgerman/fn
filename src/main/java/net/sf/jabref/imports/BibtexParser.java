@@ -2323,7 +2323,8 @@ name|int
 name|i
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+name|int
 name|count
 init|=
 literal|0

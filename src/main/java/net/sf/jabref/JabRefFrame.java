@@ -1772,17 +1772,23 @@ name|JToggleButton
 name|groupToggle
 decl_stmt|;
 DECL|field|searchToggle
-DECL|field|previewToggle
-DECL|field|highlightAny
-DECL|field|highlightAll
 specifier|public
 name|JToggleButton
 name|searchToggle
-decl_stmt|,
+decl_stmt|;
+DECL|field|previewToggle
+specifier|public
+name|JToggleButton
 name|previewToggle
-decl_stmt|,
+decl_stmt|;
+DECL|field|highlightAny
+specifier|public
+name|JToggleButton
 name|highlightAny
-decl_stmt|,
+decl_stmt|;
+DECL|field|highlightAll
+specifier|public
+name|JToggleButton
 name|highlightAll
 decl_stmt|;
 DECL|field|open
@@ -8079,7 +8085,8 @@ name|subMenu
 argument_list|(
 literal|"File"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|JMenu
 name|sessions
 init|=
 name|JabRefFrame
@@ -8088,7 +8095,8 @@ name|subMenu
 argument_list|(
 literal|"Sessions"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|JMenu
 name|edit
 init|=
 name|JabRefFrame
@@ -8097,7 +8105,8 @@ name|subMenu
 argument_list|(
 literal|"Edit"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|JMenu
 name|search
 init|=
 name|JabRefFrame
@@ -8106,7 +8115,8 @@ name|subMenu
 argument_list|(
 literal|"Search"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|JMenu
 name|bibtex
 init|=
 name|JabRefFrame
@@ -8115,7 +8125,8 @@ name|subMenu
 argument_list|(
 literal|"BibTeX"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|JMenu
 name|view
 init|=
 name|JabRefFrame
@@ -8124,7 +8135,8 @@ name|subMenu
 argument_list|(
 literal|"View"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|JMenu
 name|tools
 init|=
 name|JabRefFrame
@@ -8133,8 +8145,8 @@ name|subMenu
 argument_list|(
 literal|"Tools"
 argument_list|)
-decl_stmt|,
-comment|//web = subMenu("Web search"),
+decl_stmt|;
+name|JMenu
 name|options
 init|=
 name|JabRefFrame
@@ -8143,7 +8155,8 @@ name|subMenu
 argument_list|(
 literal|"Options"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|JMenu
 name|newSpec
 init|=
 name|JabRefFrame
@@ -8152,7 +8165,8 @@ name|subMenu
 argument_list|(
 literal|"New entry..."
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|JMenu
 name|helpMenu
 init|=
 name|JabRefFrame

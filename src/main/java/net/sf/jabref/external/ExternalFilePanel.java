@@ -1268,7 +1268,8 @@ name|editor
 operator|.
 name|getText
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
 name|retVal
 decl_stmt|;
 if|if

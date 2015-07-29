@@ -75,7 +75,8 @@ name|CrossRefEntryComparator
 operator|.
 name|CROSS_REF_FIELD
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|Object
 name|f2
 init|=
 name|e2

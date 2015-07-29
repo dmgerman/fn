@@ -1280,7 +1280,8 @@ argument_list|)
 decl_stmt|;
 name|String
 name|language
-decl_stmt|,
+decl_stmt|;
+name|String
 name|country
 decl_stmt|;
 if|if

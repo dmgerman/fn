@@ -3222,7 +3222,8 @@ name|last
 operator|.
 name|length
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|int
 name|lfirst
 init|=
 name|first

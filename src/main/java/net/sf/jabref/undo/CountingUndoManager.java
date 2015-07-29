@@ -78,8 +78,10 @@ name|int
 name|unchangedPoint
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
 DECL|field|current
+specifier|private
+name|int
 name|current
 init|=
 literal|0

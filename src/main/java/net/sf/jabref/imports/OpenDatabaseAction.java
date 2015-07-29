@@ -621,7 +621,8 @@ name|filesToOpen
 operator|.
 name|size
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|int
 name|removed
 init|=
 literal|0
@@ -2199,7 +2200,8 @@ name|int
 name|piv
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+name|int
 name|offset
 init|=
 literal|0

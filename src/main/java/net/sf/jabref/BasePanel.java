@@ -2613,7 +2613,9 @@ name|mainTable
 operator|.
 name|getSelectedRows
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|int
+index|[]
 name|cols
 init|=
 name|mainTable
@@ -9483,7 +9485,8 @@ operator|.
 name|getEntry
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|int
 name|topShow
 init|=
 name|Math
@@ -13345,7 +13348,8 @@ literal|"entry"
 argument_list|)
 operator|+
 literal|'?'
-decl_stmt|,
+decl_stmt|;
+name|String
 name|title
 init|=
 name|Globals

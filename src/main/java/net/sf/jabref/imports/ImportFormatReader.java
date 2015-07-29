@@ -1455,7 +1455,8 @@ name|charAt
 argument_list|(
 literal|0
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|char
 name|d
 init|=
 literal|0

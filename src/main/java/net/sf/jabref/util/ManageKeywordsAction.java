@@ -550,11 +550,13 @@ name|JList
 name|keywordList
 decl_stmt|;
 DECL|field|intersectKeywords
-DECL|field|mergeKeywords
 specifier|private
 name|JRadioButton
 name|intersectKeywords
-decl_stmt|,
+decl_stmt|;
+DECL|field|mergeKeywords
+specifier|private
+name|JRadioButton
 name|mergeKeywords
 decl_stmt|;
 DECL|field|cancelled

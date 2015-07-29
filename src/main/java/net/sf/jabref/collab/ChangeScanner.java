@@ -1133,7 +1133,8 @@ comment|// successive order from the beginning. Entries "further down" in the "d
 comment|// can also be matched.
 name|int
 name|piv1
-decl_stmt|,
+decl_stmt|;
+name|int
 name|piv2
 init|=
 literal|0
@@ -1889,14 +1890,16 @@ name|inMem
 operator|.
 name|getPreamble
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
 name|tmp
 init|=
 name|onTmp
 operator|.
 name|getPreamble
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
 name|disk
 init|=
 name|onDisk
@@ -1996,7 +1999,8 @@ name|onTmp
 operator|.
 name|getStringCount
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|int
 name|nDisk
 init|=
 name|onDisk

@@ -162,7 +162,8 @@ expr_stmt|;
 comment|//declaramos y damos un valor para evitar problemas
 name|String
 name|name
-decl_stmt|,
+decl_stmt|;
+name|String
 name|surname
 decl_stmt|;
 if|if

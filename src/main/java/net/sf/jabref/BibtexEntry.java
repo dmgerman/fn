@@ -443,11 +443,13 @@ argument_list|)
 decl_stmt|;
 comment|// Search and grouping status is stored in boolean fields for quick reference:
 DECL|field|searchHit
-DECL|field|groupHit
 specifier|private
 name|boolean
 name|searchHit
-decl_stmt|,
+decl_stmt|;
+DECL|field|groupHit
+specifier|private
+name|boolean
 name|groupHit
 decl_stmt|;
 DECL|method|BibtexEntry ()

@@ -125,7 +125,8 @@ break|break;
 default|default:
 name|int
 name|i
-decl_stmt|,
+decl_stmt|;
+name|int
 name|x
 init|=
 name|authors

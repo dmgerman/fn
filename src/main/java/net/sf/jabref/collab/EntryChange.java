@@ -258,7 +258,8 @@ name|getField
 argument_list|(
 name|field
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|String
 name|tmp
 init|=
 name|tmpEntry
@@ -267,7 +268,8 @@ name|getField
 argument_list|(
 name|field
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|String
 name|disk
 init|=
 name|diskEntry

@@ -2069,7 +2069,8 @@ comment|// nothing to sort
 block|}
 name|GroupTreeNode
 name|child1
-decl_stmt|,
+decl_stmt|;
+name|GroupTreeNode
 name|child2
 decl_stmt|;
 name|int

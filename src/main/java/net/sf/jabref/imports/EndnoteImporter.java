@@ -190,7 +190,8 @@ name|compile
 argument_list|(
 literal|"%A .*"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|Pattern
 name|pat2
 init|=
 name|Pattern
@@ -429,11 +430,14 @@ argument_list|()
 decl_stmt|;
 name|String
 name|author
-decl_stmt|,
+decl_stmt|;
+name|String
 name|Type
-decl_stmt|,
+decl_stmt|;
+name|String
 name|editor
-decl_stmt|,
+decl_stmt|;
+name|String
 name|artnum
 decl_stmt|;
 for|for

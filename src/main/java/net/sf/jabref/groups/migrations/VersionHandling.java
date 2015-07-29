@@ -203,9 +203,11 @@ literal|3
 decl_stmt|;
 name|String
 name|name
-decl_stmt|,
+decl_stmt|;
+name|String
 name|field
-decl_stmt|,
+decl_stmt|;
+name|String
 name|regexp
 decl_stmt|;
 for|for

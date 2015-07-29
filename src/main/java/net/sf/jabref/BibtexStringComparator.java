@@ -85,7 +85,8 @@ argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
 name|name2
 init|=
 name|s2
@@ -126,7 +127,8 @@ block|{
 comment|// First order them:
 name|BibtexString
 name|pre
-decl_stmt|,
+decl_stmt|;
+name|BibtexString
 name|post
 decl_stmt|;
 if|if
@@ -168,7 +170,8 @@ argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
 name|textPre
 init|=
 name|pre

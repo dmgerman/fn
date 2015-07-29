@@ -949,7 +949,8 @@ name|getField
 argument_list|(
 name|searchField
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|String
 name|pre
 init|=
 name|Globals
@@ -1568,9 +1569,11 @@ argument_list|()
 decl_stmt|;
 name|int
 name|i
-decl_stmt|,
+decl_stmt|;
+name|int
 name|j
-decl_stmt|,
+decl_stmt|;
+name|int
 name|k
 decl_stmt|;
 specifier|final

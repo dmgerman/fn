@@ -49,13 +49,15 @@ extends|extends
 name|AbstractParamLayoutFormatter
 block|{
 DECL|field|regex
-DECL|field|replaceWith
 specifier|private
 name|String
 name|regex
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
+DECL|field|replaceWith
+specifier|private
+name|String
 name|replaceWith
 init|=
 literal|null

@@ -1018,7 +1018,8 @@ name|wordList
 operator|.
 name|getSelectedValue
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
 name|newVal
 init|=
 name|wordEditField
