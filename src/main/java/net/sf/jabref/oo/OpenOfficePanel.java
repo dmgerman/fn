@@ -678,13 +678,15 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|dialogOkPressed
-DECL|field|autoDetected
 specifier|private
 name|boolean
 name|dialogOkPressed
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+DECL|field|autoDetected
+specifier|private
+name|boolean
 name|autoDetected
 init|=
 literal|false
@@ -871,7 +873,8 @@ argument_list|)
 expr_stmt|;
 name|String
 name|defExecutable
-decl_stmt|,
+decl_stmt|;
+name|String
 name|defJarsDir
 decl_stmt|;
 if|if
@@ -2907,7 +2910,8 @@ block|{
 comment|/*if (ooBase != null) {             try {                 java.util.List<XTextDocument> list = ooBase.getTextDocuments();                 // TODO: how to find the title of the documents?             } catch (Exception ex) {                 ex.printStackTrace();             }             return;         }*/
 name|String
 name|unoilDir
-decl_stmt|,
+decl_stmt|;
+name|String
 name|ooBaseDirectory
 decl_stmt|;
 if|if
