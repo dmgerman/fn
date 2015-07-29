@@ -1098,7 +1098,8 @@ name|JabRefPreferences
 operator|.
 name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|firstLetterA
 init|=
 name|Globals

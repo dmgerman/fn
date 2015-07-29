@@ -386,7 +386,8 @@ parameter_list|)
 block|{
 name|Object
 name|f1
-decl_stmt|,
+decl_stmt|;
+name|Object
 name|f2
 decl_stmt|;
 if|if
@@ -590,7 +591,8 @@ name|Integer
 name|i1
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
+name|Integer
 name|i2
 init|=
 literal|null
@@ -822,7 +824,8 @@ operator|)
 operator|.
 name|toLowerCase
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
 name|theirs
 init|=
 operator|(

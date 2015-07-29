@@ -1705,7 +1705,8 @@ name|int
 name|piv
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+name|int
 name|next
 decl_stmt|;
 while|while

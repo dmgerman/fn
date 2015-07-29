@@ -646,7 +646,8 @@ name|boolean
 name|first
 init|=
 literal|true
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|previous
 decl_stmt|;
 name|previous
@@ -1370,7 +1371,8 @@ block|}
 comment|// Then write remaining fields in alphabetic order.
 name|boolean
 name|first
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|previous
 decl_stmt|;
 name|previous

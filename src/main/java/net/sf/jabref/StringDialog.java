@@ -1905,7 +1905,8 @@ name|table
 operator|.
 name|getEditingColumn
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|int
 name|row
 init|=
 name|table

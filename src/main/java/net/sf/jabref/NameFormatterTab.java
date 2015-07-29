@@ -1550,7 +1550,8 @@ name|table
 operator|.
 name|getEditingColumn
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|int
 name|row
 init|=
 name|table
@@ -1637,7 +1638,9 @@ operator|.
 name|size
 argument_list|()
 index|]
-decl_stmt|,
+decl_stmt|;
+name|String
+index|[]
 name|formats
 init|=
 operator|new

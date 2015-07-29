@@ -882,7 +882,8 @@ name|boolean
 name|takesPart
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|oneSet
 init|=
 literal|false

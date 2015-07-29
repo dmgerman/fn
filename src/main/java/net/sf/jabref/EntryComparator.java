@@ -216,7 +216,8 @@ name|getField
 argument_list|(
 name|sortField
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|Object
 name|f2
 init|=
 name|e2
@@ -639,7 +640,8 @@ operator|)
 operator|.
 name|toLowerCase
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
 name|theirs
 init|=
 operator|(

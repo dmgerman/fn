@@ -1867,7 +1867,8 @@ name|combineFrom
 init|=
 operator|-
 literal|1
-decl_stmt|,
+decl_stmt|;
+name|int
 name|written
 init|=
 literal|0

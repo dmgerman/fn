@@ -889,7 +889,8 @@ init|=
 operator|new
 name|JPanel
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|JPanel
 name|two
 init|=
 operator|new
@@ -1002,7 +1003,8 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|JButton
 name|cancel
 init|=
 operator|new
