@@ -67,6 +67,14 @@ specifier|final
 name|String
 name|fieldName
 decl_stmt|;
+DECL|field|SEPARATING_CHARS
+specifier|private
+specifier|final
+name|String
+name|SEPARATING_CHARS
+init|=
+literal|";,\n "
+decl_stmt|;
 comment|/**      * @see AutoCompleterFactory      */
 DECL|method|DefaultAutoCompleter (String fieldName)
 name|DefaultAutoCompleter
@@ -139,8 +147,6 @@ name|StringTokenizer
 argument_list|(
 name|fieldValue
 argument_list|,
-name|Globals
-operator|.
 name|SEPARATING_CHARS
 argument_list|)
 decl_stmt|;

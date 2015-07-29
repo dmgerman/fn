@@ -40,9 +40,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|export
 operator|.
-name|StringUtil
+name|layout
+operator|.
+name|LayoutFormatter
 import|;
 end_import
 
@@ -54,11 +56,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|util
 operator|.
-name|layout
-operator|.
-name|LayoutFormatter
+name|StringUtil
 import|;
 end_import
 
@@ -74,6 +74,17 @@ name|HTMLChars
 implements|implements
 name|LayoutFormatter
 block|{
+DECL|field|HTML_CHARS
+specifier|private
+specifier|static
+specifier|final
+name|HtmlCharsMap
+name|HTML_CHARS
+init|=
+operator|new
+name|HtmlCharsMap
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|format (String field)
@@ -211,9 +222,7 @@ decl_stmt|;
 name|Object
 name|result
 init|=
-name|Globals
-operator|.
-name|HTMLCHARS
+name|HTML_CHARS
 operator|.
 name|get
 argument_list|(
@@ -472,9 +481,7 @@ block|}
 name|Object
 name|result
 init|=
-name|Globals
-operator|.
-name|HTMLCHARS
+name|HTML_CHARS
 operator|.
 name|get
 argument_list|(
@@ -538,9 +545,7 @@ decl_stmt|;
 name|Object
 name|result
 init|=
-name|Globals
-operator|.
-name|HTMLCHARS
+name|HTML_CHARS
 operator|.
 name|get
 argument_list|(
@@ -793,9 +798,7 @@ comment|// handle common case of general latex command
 name|Object
 name|result
 init|=
-name|Globals
-operator|.
-name|HTMLCHARS
+name|HTML_CHARS
 operator|.
 name|get
 argument_list|(
@@ -853,9 +856,7 @@ comment|// substitute the evaluated command and swallow the brace:
 name|Object
 name|result
 init|=
-name|Globals
-operator|.
-name|HTMLCHARS
+name|HTML_CHARS
 operator|.
 name|get
 argument_list|(
@@ -897,9 +898,7 @@ block|{
 name|Object
 name|result
 init|=
-name|Globals
-operator|.
-name|HTMLCHARS
+name|HTML_CHARS
 operator|.
 name|get
 argument_list|(

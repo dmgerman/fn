@@ -30,6 +30,16 @@ name|java
 operator|.
 name|awt
 operator|.
+name|Toolkit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
 name|event
 operator|.
 name|InputEvent
@@ -2945,6 +2955,14 @@ specifier|public
 specifier|final
 name|String
 name|MARKING_WITH_NUMBER_PATTERN
+decl_stmt|;
+DECL|field|SHORTCUT_MASK
+specifier|private
+name|int
+name|SHORTCUT_MASK
+init|=
+operator|-
+literal|1
 decl_stmt|;
 DECL|field|prefs
 specifier|private
@@ -8307,8 +8325,6 @@ name|getKeyStroke
 argument_list|(
 name|keyCode
 argument_list|,
-name|Globals
-operator|.
 name|getShortcutMask
 argument_list|()
 operator|+
@@ -8316,6 +8332,44 @@ name|modifiers
 argument_list|)
 return|;
 block|}
+block|}
+DECL|method|getShortcutMask ()
+specifier|private
+name|int
+name|getShortcutMask
+parameter_list|()
+block|{
+if|if
+condition|(
+name|SHORTCUT_MASK
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+try|try
+block|{
+name|SHORTCUT_MASK
+operator|=
+name|Toolkit
+operator|.
+name|getDefaultToolkit
+argument_list|()
+operator|.
+name|getMenuShortcutKeyMask
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ignored
+parameter_list|)
+block|{              }
+block|}
+return|return
+name|SHORTCUT_MASK
+return|;
 block|}
 comment|/**      * Returns the HashMap containing all key bindings.      */
 DECL|method|getKeyBindings ()

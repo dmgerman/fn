@@ -1033,6 +1033,35 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|ARXIV_LOOKUP_PREFIX
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|ARXIV_LOOKUP_PREFIX
+init|=
+literal|"http://arxiv.org/abs/"
+decl_stmt|;
+DECL|field|SEPARATING_CHARS_NOSPACE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SEPARATING_CHARS_NOSPACE
+init|=
+literal|";,\n"
+decl_stmt|;
+DECL|field|UNICODE_CHAR_MAP
+specifier|private
+specifier|static
+specifier|final
+name|UnicodeCharMap
+name|UNICODE_CHAR_MAP
+init|=
+operator|new
+name|UnicodeCharMap
+argument_list|()
+decl_stmt|;
 comment|/**      * This method sets the location of a Dialog such that it is centered with      * regard to another window, but not outside the screen on the left and the      * top.      */
 DECL|method|placeDialog (java.awt.Dialog diag, java.awt.Container win)
 specifier|public
@@ -1643,9 +1672,7 @@ name|String
 argument_list|>
 name|chrAndReplace
 range|:
-name|Globals
-operator|.
-name|UNICODE_CHARS
+name|UNICODE_CHAR_MAP
 operator|.
 name|entrySet
 argument_list|()
@@ -2349,8 +2376,6 @@ condition|)
 block|{
 name|link
 operator|=
-name|Globals
-operator|.
 name|ARXIV_LOOKUP_PREFIX
 operator|+
 name|link
@@ -8169,8 +8194,6 @@ name|StringTokenizer
 argument_list|(
 name|keywords
 argument_list|,
-name|Globals
-operator|.
 name|SEPARATING_CHARS_NOSPACE
 argument_list|)
 decl_stmt|;

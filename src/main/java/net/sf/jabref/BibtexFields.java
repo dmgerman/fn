@@ -233,6 +233,16 @@ name|ENTRYTYPE
 init|=
 literal|"entrytype"
 decl_stmt|;
+comment|/*      * some extra field definitions      */
+DECL|field|ADDITIONAL_FIELDS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|ADDITIONAL_FIELDS
+init|=
+literal|"/resource/fields/fields.xml"
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -1591,9 +1601,7 @@ expr_stmt|;
 comment|// read external field definitions
 name|readXML
 argument_list|(
-name|Globals
-operator|.
-name|additionalFields
+name|ADDITIONAL_FIELDS
 argument_list|)
 expr_stmt|;
 comment|// collect all public fields for the PUBLIC_FIELDS array
