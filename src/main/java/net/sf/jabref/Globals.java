@@ -1269,15 +1269,6 @@ argument_list|(
 literal|"Linux"
 argument_list|)
 decl_stmt|;
-DECL|field|SEPARATING_CHARS_NOSPACE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEPARATING_CHARS_NOSPACE
-init|=
-literal|";,\n"
-decl_stmt|;
 DECL|field|sidePaneManager
 specifier|public
 specifier|static

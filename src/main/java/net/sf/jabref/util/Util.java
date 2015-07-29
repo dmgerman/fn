@@ -1042,6 +1042,15 @@ name|ARXIV_LOOKUP_PREFIX
 init|=
 literal|"http://arxiv.org/abs/"
 decl_stmt|;
+DECL|field|SEPARATING_CHARS_NOSPACE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SEPARATING_CHARS_NOSPACE
+init|=
+literal|";,\n"
+decl_stmt|;
 comment|/**      * This method sets the location of a Dialog such that it is centered with      * regard to another window, but not outside the screen on the left and the      * top.      */
 DECL|method|placeDialog (java.awt.Dialog diag, java.awt.Container win)
 specifier|public
@@ -8176,8 +8185,6 @@ name|StringTokenizer
 argument_list|(
 name|keywords
 argument_list|,
-name|Globals
-operator|.
 name|SEPARATING_CHARS_NOSPACE
 argument_list|)
 decl_stmt|;
