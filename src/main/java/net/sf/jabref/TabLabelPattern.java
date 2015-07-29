@@ -116,6 +116,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|help
 operator|.
 name|HelpDialog

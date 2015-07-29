@@ -454,16 +454,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JMenuItem
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JOptionPane
 import|;
 end_import
@@ -966,6 +956,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|help
 operator|.
 name|HelpAction
@@ -979,6 +971,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|help
 operator|.
