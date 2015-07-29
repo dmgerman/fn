@@ -302,7 +302,7 @@ name|glazedlists
 operator|.
 name|swing
 operator|.
-name|DefaultEventSelectionModel
+name|EventSelectionModel
 import|;
 end_import
 
@@ -316,7 +316,7 @@ name|glazedlists
 operator|.
 name|swing
 operator|.
-name|DefaultEventTableModel
+name|EventTableModel
 import|;
 end_import
 
@@ -426,7 +426,7 @@ decl_stmt|;
 DECL|field|selectionModel
 specifier|private
 specifier|final
-name|DefaultEventSelectionModel
+name|EventSelectionModel
 argument_list|<
 name|BibtexEntry
 argument_list|>
@@ -723,14 +723,14 @@ operator|=
 literal|null
 expr_stmt|;
 comment|//new HitOrMissComparator(groupMatcher);
-name|DefaultEventTableModel
+name|EventTableModel
 argument_list|<
 name|BibtexEntry
 argument_list|>
 name|tableModel
 init|=
 operator|new
-name|DefaultEventTableModel
+name|EventTableModel
 argument_list|<
 name|BibtexEntry
 argument_list|>
@@ -761,7 +761,7 @@ expr_stmt|;
 name|selectionModel
 operator|=
 operator|new
-name|DefaultEventSelectionModel
+name|EventSelectionModel
 argument_list|<
 name|BibtexEntry
 argument_list|>
