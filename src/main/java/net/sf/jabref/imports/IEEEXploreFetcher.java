@@ -1400,12 +1400,7 @@ argument_list|)
 operator|+
 name|endUrl
 operator|+
-name|String
-operator|.
-name|valueOf
-argument_list|(
 name|startIndex
-argument_list|)
 return|;
 block|}
 DECL|method|parse (ImportInspector dialog, String text, int startIndex, int firstEntryNumber)
