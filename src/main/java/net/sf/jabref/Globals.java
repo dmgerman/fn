@@ -706,12 +706,7 @@ name|PROTECTED_FLAG_META
 init|=
 literal|"protectedFlag"
 decl_stmt|,
-DECL|field|LAYOUT_PREFIX
 DECL|field|MAC
-name|LAYOUT_PREFIX
-init|=
-literal|"/resource/layout/"
-decl_stmt|,
 name|MAC
 init|=
 literal|"Mac OS X"

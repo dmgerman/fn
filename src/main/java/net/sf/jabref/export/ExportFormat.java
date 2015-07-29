@@ -215,6 +215,14 @@ name|customExport
 init|=
 literal|false
 decl_stmt|;
+DECL|field|LAYOUT_PREFIX
+specifier|private
+specifier|final
+name|String
+name|LAYOUT_PREFIX
+init|=
+literal|"/resource/layout/"
+decl_stmt|;
 comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *       * @param displayName      *            Name to display to the user.      * @param consoleName      *            Name to call this format in the console.      * @param lfFileName      *            Name of the main layout file.      * @param directory      *            Directory in which to find the layout file.      * @param extension      *            Should contain the . (for instance .txt).      */
 DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, String extension)
 specifier|public
@@ -362,8 +370,6 @@ else|else
 block|{
 name|dir
 operator|=
-name|Globals
-operator|.
 name|LAYOUT_PREFIX
 operator|+
 operator|(
