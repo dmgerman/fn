@@ -147,13 +147,23 @@ comment|/**  * Changes {\^o} or {\^{o}} to ?  */
 end_comment
 
 begin_class
-DECL|class|XMLChars
+DECL|class|XMLCharFormatter
 specifier|public
 class|class
-name|XMLChars
+name|XMLCharFormatter
 implements|implements
 name|LayoutFormatter
 block|{
+DECL|field|xmlChars
+specifier|private
+specifier|static
+name|XmlCharsMap
+name|xmlChars
+init|=
+operator|new
+name|XmlCharsMap
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|format (String fieldText)
@@ -184,9 +194,7 @@ name|String
 argument_list|>
 name|entry
 range|:
-name|Globals
-operator|.
-name|XML_CHARS
+name|xmlChars
 operator|.
 name|entrySet
 argument_list|()

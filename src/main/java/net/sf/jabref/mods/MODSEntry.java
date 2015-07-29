@@ -178,7 +178,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|XMLChars
+name|XMLCharFormatter
 import|;
 end_import
 
@@ -445,7 +445,7 @@ name|LayoutFormatter
 name|chars
 init|=
 operator|new
-name|XMLChars
+name|XMLCharFormatter
 argument_list|()
 decl_stmt|;
 if|if
@@ -862,7 +862,7 @@ name|LayoutFormatter
 name|chars
 init|=
 operator|new
-name|XMLChars
+name|XMLCharFormatter
 argument_list|()
 decl_stmt|;
 if|if
