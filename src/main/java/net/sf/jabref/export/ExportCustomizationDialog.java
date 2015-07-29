@@ -156,7 +156,7 @@ name|glazedlists
 operator|.
 name|swing
 operator|.
-name|EventTableModel
+name|DefaultEventTableModel
 import|;
 end_import
 
@@ -721,7 +721,7 @@ literal|"Help"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|EventTableModel
+name|DefaultEventTableModel
 argument_list|<
 name|String
 index|[]
@@ -729,7 +729,7 @@ argument_list|>
 name|tableModel
 init|=
 operator|new
-name|EventTableModel
+name|DefaultEventTableModel
 argument_list|<
 name|String
 index|[]

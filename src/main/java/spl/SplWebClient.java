@@ -590,7 +590,10 @@ condition|(
 operator|(
 name|response
 operator|.
-name|getClientResponseStatus
+name|getStatusInfo
+argument_list|()
+operator|.
+name|getStatusCode
 argument_list|()
 operator|==
 name|ClientResponse
@@ -598,6 +601,9 @@ operator|.
 name|Status
 operator|.
 name|OK
+operator|.
+name|getStatusCode
+argument_list|()
 operator|)
 operator|&&
 name|response
@@ -895,7 +901,10 @@ if|if
 condition|(
 name|response
 operator|.
-name|getClientResponseStatus
+name|getStatusInfo
+argument_list|()
+operator|.
+name|getStatusCode
 argument_list|()
 operator|==
 name|ClientResponse
@@ -903,6 +912,9 @@ operator|.
 name|Status
 operator|.
 name|SERVICE_UNAVAILABLE
+operator|.
+name|getStatusCode
+argument_list|()
 condition|)
 block|{
 return|return
@@ -979,7 +991,10 @@ condition|(
 operator|(
 name|response
 operator|.
-name|getClientResponseStatus
+name|getStatusInfo
+argument_list|()
+operator|.
+name|getStatusCode
 argument_list|()
 operator|==
 name|ClientResponse
@@ -987,6 +1002,9 @@ operator|.
 name|Status
 operator|.
 name|OK
+operator|.
+name|getStatusCode
+argument_list|()
 operator|)
 operator|&&
 name|response
@@ -1081,7 +1099,10 @@ condition|(
 operator|(
 name|response
 operator|.
-name|getClientResponseStatus
+name|getStatusInfo
+argument_list|()
+operator|.
+name|getStatusCode
 argument_list|()
 operator|==
 name|ClientResponse
@@ -1089,6 +1110,9 @@ operator|.
 name|Status
 operator|.
 name|OK
+operator|.
+name|getStatusCode
+argument_list|()
 operator|)
 operator|&&
 name|response
