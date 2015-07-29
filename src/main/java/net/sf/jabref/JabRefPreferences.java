@@ -204,6 +204,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -390,6 +418,22 @@ specifier|public
 class|class
 name|JabRefPreferences
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * HashMap that contains all preferences which are set by default      */
 DECL|field|defaults
 specifier|public
@@ -3491,9 +3535,9 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Could not import preferences from jabref.xml:"
 operator|+
@@ -3501,6 +3545,8 @@ name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -6827,11 +6873,13 @@ name|UnknownHostException
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Hostname not found."
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -8085,9 +8133,9 @@ condition|)
 block|{
 comment|// there isn't even a default value
 comment|// Output error
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Could not get key binding for \""
 operator|+
@@ -8368,9 +8416,9 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Could not save preferences for memory stick mode: "
 operator|+
@@ -8378,6 +8426,8 @@ name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -8611,11 +8661,13 @@ name|BackingStoreException
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"BackingStoreException in JabRefPreferences.getKeyPattern"
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -8677,11 +8729,13 @@ name|BackingStoreException
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"BackingStoreException in JabRefPreferences.putKeyPattern"
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
