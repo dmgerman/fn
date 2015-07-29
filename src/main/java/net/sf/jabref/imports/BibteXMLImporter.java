@@ -390,7 +390,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|error
 argument_list|(
 literal|"Error with XML parser configuration"
 argument_list|,
@@ -422,7 +422,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|error
 argument_list|(
 literal|"Error during XML parsing"
 argument_list|,
@@ -452,7 +452,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|error
 argument_list|(
 literal|"Error during file import"
 argument_list|,

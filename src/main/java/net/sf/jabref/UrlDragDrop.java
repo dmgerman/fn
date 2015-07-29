@@ -438,7 +438,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not find DropTargetDropEvent class"
 argument_list|,
@@ -674,7 +674,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|error
 argument_list|(
 literal|"Error while downloading file"
 argument_list|,
@@ -725,7 +725,7 @@ block|{
 comment|// not an URL then...
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not parse URL"
 argument_list|,
@@ -741,7 +741,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not perform drage and drop"
 argument_list|,
@@ -882,7 +882,7 @@ argument_list|)
 expr_stmt|;
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not perform drage and drop"
 argument_list|,
@@ -898,7 +898,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not perform drage and drop"
 argument_list|,

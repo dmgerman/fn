@@ -2168,7 +2168,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not register FileUpdateMonitor"
 argument_list|,
@@ -7136,7 +7136,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Could not open folder"
 argument_list|,

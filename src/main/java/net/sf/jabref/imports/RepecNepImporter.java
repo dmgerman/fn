@@ -1824,7 +1824,7 @@ argument_list|()
 expr_stmt|;
 name|LOGGER
 operator|.
-name|debug
+name|error
 argument_list|(
 name|message
 argument_list|,

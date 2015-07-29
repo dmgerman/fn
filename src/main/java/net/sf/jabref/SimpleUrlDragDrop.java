@@ -317,7 +317,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not find DropTargetDropEvent class"
 argument_list|,
@@ -404,7 +404,7 @@ argument_list|)
 expr_stmt|;
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not perform drage and drop"
 argument_list|,
@@ -420,7 +420,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not perform drage and drop"
 argument_list|,

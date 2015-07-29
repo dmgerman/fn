@@ -565,7 +565,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not execute copy"
 argument_list|,
@@ -625,7 +625,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not execute paste"
 argument_list|,
@@ -685,7 +685,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not execute cut"
 argument_list|,
@@ -746,7 +746,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not execute delete"
 argument_list|,
@@ -803,7 +803,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not execute exportToClipboard"
 argument_list|,
@@ -856,7 +856,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not execute sendAsEmail"
 argument_list|,
@@ -975,7 +975,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not execute markEntries"
 argument_list|,
@@ -1040,7 +1040,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not execute unmarkEntries"
 argument_list|,
@@ -1141,7 +1141,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not execute markEntries"
 argument_list|,
@@ -1214,7 +1214,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not execute unmarkEntries"
 argument_list|,
@@ -1543,7 +1543,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not open folder"
 argument_list|,
@@ -1603,7 +1603,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not open external file"
 argument_list|,
@@ -1663,7 +1663,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not attach file"
 argument_list|,
@@ -1724,7 +1724,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not execute open URL"
 argument_list|,
@@ -1777,7 +1777,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not copy BibTex key"
 argument_list|,
@@ -1841,7 +1841,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"Could not copy cite key"
 argument_list|,

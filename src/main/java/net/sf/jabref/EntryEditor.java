@@ -8646,7 +8646,7 @@ condition|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|warn
 argument_list|(
 literal|"No file list editor found."
 argument_list|)
