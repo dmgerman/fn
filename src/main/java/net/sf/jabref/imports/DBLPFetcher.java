@@ -152,8 +152,8 @@ name|EntryFetcher
 block|{
 DECL|field|URL_START
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|URL_START
 init|=
@@ -161,8 +161,8 @@ literal|"http://www.dblp.org/search/api/"
 decl_stmt|;
 DECL|field|URL_PART1
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|URL_PART1
 init|=
@@ -170,8 +170,8 @@ literal|"?q="
 decl_stmt|;
 DECL|field|URL_END
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|URL_END
 init|=

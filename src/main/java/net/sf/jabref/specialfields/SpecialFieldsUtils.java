@@ -96,8 +96,8 @@ name|SpecialFieldsUtils
 block|{
 DECL|field|FIELDNAME_PRIORITY
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|FIELDNAME_PRIORITY
 init|=
@@ -105,8 +105,8 @@ literal|"priority"
 decl_stmt|;
 DECL|field|FIELDNAME_RANKING
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|FIELDNAME_RANKING
 init|=
@@ -114,8 +114,8 @@ literal|"ranking"
 decl_stmt|;
 DECL|field|FIELDNAME_RELEVANCE
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|FIELDNAME_RELEVANCE
 init|=
@@ -123,8 +123,8 @@ literal|"relevance"
 decl_stmt|;
 DECL|field|FIELDNAME_QUALITY
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|FIELDNAME_QUALITY
 init|=
@@ -132,8 +132,8 @@ literal|"qualityassured"
 decl_stmt|;
 DECL|field|FIELDNAME_READ
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|FIELDNAME_READ
 init|=
@@ -141,8 +141,8 @@ literal|"readstatus"
 decl_stmt|;
 DECL|field|FIELDNAME_PRINTED
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|FIELDNAME_PRINTED
 init|=
@@ -150,8 +150,8 @@ literal|"printed"
 decl_stmt|;
 DECL|field|PREF_SPECIALFIELDSENABLED
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_SPECIALFIELDSENABLED
 init|=
@@ -159,8 +159,8 @@ literal|"specialFieldsEnabled"
 decl_stmt|;
 DECL|field|PREF_SPECIALFIELDSENABLED_DEFAULT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|Boolean
 name|PREF_SPECIALFIELDSENABLED_DEFAULT
 init|=
@@ -170,8 +170,8 @@ name|FALSE
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_RANKING
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_SHOWCOLUMN_RANKING
 init|=
@@ -179,8 +179,8 @@ literal|"showRankingColumn"
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_RANKING_DEFAULT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|Boolean
 name|PREF_SHOWCOLUMN_RANKING_DEFAULT
 init|=
@@ -190,8 +190,8 @@ name|TRUE
 decl_stmt|;
 DECL|field|PREF_RANKING_COMPACT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_RANKING_COMPACT
 init|=
@@ -199,8 +199,8 @@ literal|"compactRankingColumn"
 decl_stmt|;
 DECL|field|PREF_RANKING_COMPACT_DEFAULT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|Boolean
 name|PREF_RANKING_COMPACT_DEFAULT
 init|=
@@ -210,8 +210,8 @@ name|TRUE
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_PRIORITY
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_SHOWCOLUMN_PRIORITY
 init|=
@@ -219,8 +219,8 @@ literal|"showPriorityColumn"
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_PRIORITY_DEFAULT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|Boolean
 name|PREF_SHOWCOLUMN_PRIORITY_DEFAULT
 init|=
@@ -230,8 +230,8 @@ name|FALSE
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_RELEVANCE
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_SHOWCOLUMN_RELEVANCE
 init|=
@@ -239,8 +239,8 @@ literal|"showRelevanceColumn"
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_RELEVANCE_DEFAULT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|Boolean
 name|PREF_SHOWCOLUMN_RELEVANCE_DEFAULT
 init|=
@@ -250,8 +250,8 @@ name|FALSE
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_QUALITY
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_SHOWCOLUMN_QUALITY
 init|=
@@ -259,8 +259,8 @@ literal|"showQualityColumn"
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_QUALITY_DEFAULT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|Boolean
 name|PREF_SHOWCOLUMN_QUALITY_DEFAULT
 init|=
@@ -270,8 +270,8 @@ name|FALSE
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_READ
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_SHOWCOLUMN_READ
 init|=
@@ -279,8 +279,8 @@ literal|"showReadColumn"
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_READ_DEFAULT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|Boolean
 name|PREF_SHOWCOLUMN_READ_DEFAULT
 init|=
@@ -290,8 +290,8 @@ name|FALSE
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_PRINTED
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_SHOWCOLUMN_PRINTED
 init|=
@@ -299,8 +299,8 @@ literal|"showPrintedColumn"
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_PRINTED_DEFAULT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|Boolean
 name|PREF_SHOWCOLUMN_PRINTED_DEFAULT
 init|=
@@ -310,8 +310,8 @@ name|FALSE
 decl_stmt|;
 DECL|field|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS
 init|=
@@ -319,8 +319,8 @@ literal|"autoSyncSpecialFieldsToKeywords"
 decl_stmt|;
 DECL|field|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS_DEFAULT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|Boolean
 name|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS_DEFAULT
 init|=
@@ -330,8 +330,8 @@ name|FALSE
 decl_stmt|;
 DECL|field|PREF_SERIALIZESPECIALFIELDS
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PREF_SERIALIZESPECIALFIELDS
 init|=
@@ -339,8 +339,8 @@ literal|"serializeSpecialFields"
 decl_stmt|;
 DECL|field|PREF_SERIALIZESPECIALFIELDS_DEFAULT
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|Boolean
 name|PREF_SERIALIZESPECIALFIELDS_DEFAULT
 init|=

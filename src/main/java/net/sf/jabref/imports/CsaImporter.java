@@ -169,8 +169,8 @@ decl_stmt|;
 comment|// pre-compiled patterns
 DECL|field|FIELD_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|FIELD_PATTERN
 init|=
@@ -183,8 +183,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|VOLNOPP_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|VOLNOPP_PATTERN
 init|=
@@ -197,8 +197,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|PAGES_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|PAGES_PATTERN
 init|=
@@ -211,8 +211,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|VOLUME_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|VOLUME_PATTERN
 init|=
@@ -225,8 +225,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|NUMBER_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|NUMBER_PATTERN
 init|=
@@ -239,8 +239,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|DATE_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|DATE_PATTERN
 init|=
@@ -253,8 +253,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|LT_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|LT_PATTERN
 init|=

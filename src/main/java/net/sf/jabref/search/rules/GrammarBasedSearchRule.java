@@ -169,8 +169,8 @@ implements|implements
 name|SearchRule
 block|{
 DECL|class|ThrowingErrorListener
-specifier|static
 specifier|public
+specifier|static
 class|class
 name|ThrowingErrorListener
 extends|extends
