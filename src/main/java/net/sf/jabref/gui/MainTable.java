@@ -4146,10 +4146,8 @@ decl_stmt|;
 return|return
 name|l
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|?
 literal|null
 else|:

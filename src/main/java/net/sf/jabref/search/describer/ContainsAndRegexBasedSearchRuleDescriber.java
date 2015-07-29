@@ -163,12 +163,11 @@ decl_stmt|;
 name|String
 name|firstWord
 init|=
+operator|!
 name|words
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|?
 name|words
 operator|.

@@ -1906,7 +1906,6 @@ expr_stmt|;
 return|return;
 comment|// There is an icon, but the field is not set.
 block|}
-block|{
 comment|// See if this is a simple file link field, or if it is a file-list
 comment|// field that can specify a list of links:
 if|if
@@ -2170,9 +2169,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*ExternalFileType type = Globals.prefs.getExternalFileTypeByMimeType("text/html");                             ExternalFileMenuItem item = new ExternalFileMenuItem                                     (panel.frame(), entry, "",                                     (String)link, type.getIcon(),                                     panel.metaData(), type);                             boolean success = item.openLink();                             if (!success) {                                 panel.output(Globals.lang("Unable to open link."));                             } */
+comment|/*ExternalFileType type = Globals.prefs.getExternalFileTypeByMimeType("text/html");                         ExternalFileMenuItem item = new ExternalFileMenuItem                                 (panel.frame(), entry, "",                                 (String)link, type.getIcon(),                                 panel.metaData(), type);                         boolean success = item.openLink();                         if (!success) {                             panel.output(Globals.lang("Unable to open link."));                         } */
 comment|//Util.openExternalViewer(panel.metaData(), (String)link, fieldName);
-block|}
 block|}
 comment|//catch (IOException ex) {
 comment|//    panel.output(Globals.lang("Error") + ": " + ex.getMessage());

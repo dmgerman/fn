@@ -253,7 +253,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 name|AuthorList
 name|al
 init|=
@@ -309,7 +308,6 @@ block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|assertNameFormatA
 argument_list|(
 literal|"Meyer, J?"
@@ -620,7 +618,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 name|StringBuffer
 name|sb
 init|=
@@ -661,7 +658,6 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test

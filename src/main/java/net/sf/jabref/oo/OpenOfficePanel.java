@@ -3834,9 +3834,7 @@ literal|"Error, could not add URL to system classloader"
 argument_list|)
 throw|;
 block|}
-comment|//end try catch
 block|}
-comment|//end method
 DECL|method|updateConnectionParams (String ooPath, String ooExec, String ooJars, boolean oo3)
 specifier|private
 name|void

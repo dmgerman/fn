@@ -1494,15 +1494,14 @@ expr_stmt|;
 comment|//if (hm.isEmpty())
 if|if
 condition|(
+operator|!
 name|b
 operator|.
 name|getAllFields
 argument_list|()
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|bibitems

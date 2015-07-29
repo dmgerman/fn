@@ -912,9 +912,6 @@ operator|.
 name|append
 argument_list|(
 name|owner
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|sb
@@ -937,10 +934,8 @@ if|if
 condition|(
 name|newVal
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|newVal

@@ -166,8 +166,8 @@ literal|50
 decl_stmt|;
 DECL|field|QUERY_MARKER
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|QUERY_MARKER
 init|=
@@ -175,8 +175,8 @@ literal|"___QUERY___"
 decl_stmt|;
 DECL|field|URL_START
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|URL_START
 init|=
@@ -184,8 +184,8 @@ literal|"http://scholar.google.com"
 decl_stmt|;
 DECL|field|URL_SETTING
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|URL_SETTING
 init|=
@@ -193,8 +193,8 @@ literal|"http://scholar.google.com/scholar_settings"
 decl_stmt|;
 DECL|field|URL_SETPREFS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|URL_SETPREFS
 init|=
@@ -202,8 +202,8 @@ literal|"http://scholar.google.com/scholar_setprefs"
 decl_stmt|;
 DECL|field|SEARCH_URL
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|SEARCH_URL
 init|=
@@ -221,8 +221,8 @@ literal|"&amp;hl=en&amp;btnG=Search"
 decl_stmt|;
 DECL|field|BIBTEX_LINK_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|BIBTEX_LINK_PATTERN
 init|=
@@ -235,8 +235,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|TITLE_START_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|TITLE_START_PATTERN
 init|=
@@ -249,8 +249,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|LINK_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|LINK_PATTERN
 init|=
@@ -263,8 +263,8 @@ argument_list|)
 decl_stmt|;
 DECL|field|TITLE_END_PATTERN
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Pattern
 name|TITLE_END_PATTERN
 init|=
@@ -1569,10 +1569,8 @@ if|if
 condition|(
 name|entries
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|System

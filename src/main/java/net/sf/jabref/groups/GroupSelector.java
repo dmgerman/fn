@@ -4692,9 +4692,6 @@ argument_list|(
 literal|"Removing entry "
 operator|+
 name|entry
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|toRemove
@@ -4714,9 +4711,6 @@ argument_list|(
 literal|"Adding entry "
 operator|+
 name|entry
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|toAdd
@@ -4929,9 +4923,6 @@ argument_list|(
 literal|"Performing annotation "
 operator|+
 name|node
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if

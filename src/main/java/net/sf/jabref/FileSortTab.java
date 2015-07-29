@@ -1119,7 +1119,6 @@ name|nextLine
 argument_list|()
 expr_stmt|;
 block|}
-block|{
 comment|// EXPORT SORT ORDER
 comment|// create Components
 name|exportInOriginalOrder
@@ -1875,7 +1874,6 @@ operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
-block|}
 comment|// COMBINE EVERYTHING
 name|JPanel
 name|pan
@@ -2212,7 +2210,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 name|boolean
 name|selected
 init|=
@@ -2288,7 +2285,6 @@ argument_list|(
 name|selected
 argument_list|)
 expr_stmt|;
-block|}
 name|exportPriField
 operator|.
 name|setText

@@ -728,7 +728,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 name|VM
 name|vm
 init|=
@@ -963,7 +962,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -1298,7 +1296,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 name|VM
 name|vm
 init|=
@@ -1345,8 +1342,7 @@ parameter_list|(
 name|VMException
 name|ignored
 parameter_list|)
-block|{              }
-block|}
+block|{          }
 block|}
 annotation|@
 name|Test
@@ -1423,7 +1419,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 name|VM
 name|vm
 init|=
@@ -1486,7 +1481,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 annotation|@
 name|Test
 DECL|method|testVMStringOps1 ()
@@ -1498,7 +1492,6 @@ throws|throws
 name|RecognitionException
 throws|,
 name|IOException
-block|{
 block|{
 name|VM
 name|vm
@@ -1685,7 +1678,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -2689,7 +2681,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 name|VM
 name|vm
 init|=
@@ -2751,7 +2742,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -3592,7 +3582,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 name|VM
 name|vm
 init|=
@@ -3699,7 +3688,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test

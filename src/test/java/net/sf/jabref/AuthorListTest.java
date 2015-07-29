@@ -208,7 +208,6 @@ name|void
 name|testFixAuthor_firstNameFirstCommas
 parameter_list|()
 block|{
-block|{
 comment|// No Commas
 name|Assert
 operator|.
@@ -417,8 +416,6 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-block|{
 comment|// Oxford Commas
 name|Assert
 operator|.
@@ -627,7 +624,6 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -964,7 +960,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 comment|// Oxford Commas
 name|Assert
 operator|.
@@ -1190,7 +1185,6 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -1506,7 +1500,6 @@ name|void
 name|testFixAuthor_lastNameOnlyCommas
 parameter_list|()
 block|{
-block|{
 comment|// No comma before and
 name|Assert
 operator|.
@@ -1610,8 +1603,6 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-block|{
 comment|// Oxford Comma
 name|Assert
 operator|.
@@ -1715,7 +1706,6 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -2580,7 +2570,6 @@ name|void
 name|testGetAuthorsLastOnly
 parameter_list|()
 block|{
-block|{
 comment|// No comma before and
 name|Assert
 operator|.
@@ -2658,8 +2647,6 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-block|{
 comment|// Oxford comma
 name|Assert
 operator|.
@@ -2737,7 +2724,6 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -2944,7 +2930,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 comment|// Oxford comma
 name|AuthorList
 name|al
@@ -3138,7 +3123,6 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test

@@ -614,12 +614,11 @@ parameter_list|()
 block|{
 return|return
 operator|(
+operator|!
 name|warnings
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 return|;
 block|}
@@ -716,12 +715,11 @@ name|hasDuplicateKeys
 parameter_list|()
 block|{
 return|return
+operator|!
 name|duplicateKeys
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 return|;
 block|}
 comment|/**      * Get all duplicated keys found in the database.      * @return An array containing the duplicated keys.      */

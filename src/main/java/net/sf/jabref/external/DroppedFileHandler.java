@@ -1578,10 +1578,8 @@ operator|||
 operator|(
 name|xmpEntriesInFile
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{

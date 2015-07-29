@@ -267,10 +267,8 @@ if|if
 condition|(
 name|line
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 continue|continue;
@@ -667,9 +665,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -696,9 +691,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -787,9 +779,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -816,9 +805,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -905,9 +891,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -934,9 +917,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1175,9 +1155,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1204,9 +1181,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1235,9 +1209,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1264,9 +1235,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1295,9 +1263,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1324,9 +1289,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1385,9 +1347,6 @@ name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1414,9 +1373,6 @@ operator|+
 name|entry
 operator|.
 name|getValue
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1921,12 +1877,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 name|comments
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 comment|// set comment if present

@@ -2003,9 +2003,6 @@ argument_list|(
 literal|"Error while downloading "
 operator|+
 name|url
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|e2
 argument_list|)

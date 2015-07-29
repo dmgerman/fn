@@ -154,8 +154,8 @@ name|LayoutFormatter
 block|{
 DECL|field|XML_CHARS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|XmlCharsMap
 name|XML_CHARS
 init|=
@@ -165,8 +165,8 @@ argument_list|()
 decl_stmt|;
 DECL|field|ASCII_TO_XML_CHARS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Map
 argument_list|<
 name|String

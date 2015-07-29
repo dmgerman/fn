@@ -1394,10 +1394,8 @@ if|if
 condition|(
 name|s
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 return|return
@@ -1892,10 +1890,8 @@ operator|.
 name|getAllFields
 argument_list|()
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|i

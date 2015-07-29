@@ -1679,12 +1679,11 @@ operator|=
 name|anythingUseful
 operator||
 operator|(
+operator|!
 name|entries
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 expr_stmt|;
 comment|// set timestamp and owner

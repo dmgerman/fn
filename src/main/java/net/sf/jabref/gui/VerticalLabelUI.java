@@ -202,8 +202,8 @@ argument_list|()
 decl_stmt|;
 DECL|field|SAFE_VERTICAL_LABEL_UI
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|VerticalLabelUI
 name|SAFE_VERTICAL_LABEL_UI
 init|=

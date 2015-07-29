@@ -443,10 +443,8 @@ operator|||
 operator|(
 name|c
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{
@@ -1500,9 +1498,6 @@ argument_list|(
 literal|"Duplicate ID in bibtex file: "
 operator|+
 name|kce
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1937,12 +1932,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 name|content
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 if|if
@@ -2202,10 +2196,8 @@ if|if
 condition|(
 name|textToken
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 throw|throw
@@ -3195,9 +3187,6 @@ comment|// return what we
 comment|// have found, as the key and try to restore the rest in fixKey().
 return|return
 name|token
-operator|.
-name|toString
-argument_list|()
 operator|+
 name|fixKey
 argument_list|()

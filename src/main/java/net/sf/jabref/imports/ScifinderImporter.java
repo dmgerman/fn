@@ -744,6 +744,7 @@ literal|"Inventor Name"
 argument_list|)
 operator|&&
 operator|(
+operator|!
 name|tmp
 index|[
 literal|1
@@ -752,10 +753,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{

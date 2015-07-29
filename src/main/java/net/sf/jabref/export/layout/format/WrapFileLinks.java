@@ -438,12 +438,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|String
-operator|.
-name|valueOf
-argument_list|(
 name|piv
-argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;

@@ -997,7 +997,6 @@ literal|20000
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 name|OAI2Fetcher
 name|fetcher
 init|=
@@ -1049,7 +1048,6 @@ literal|"month"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class

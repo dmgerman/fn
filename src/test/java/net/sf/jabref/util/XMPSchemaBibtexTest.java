@@ -1062,7 +1062,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 comment|// Removes both
 name|bibtex
 operator|.
@@ -1098,7 +1097,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -1377,7 +1375,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 comment|// Remvoes all
 name|bibtex
 operator|.
@@ -1413,7 +1410,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test

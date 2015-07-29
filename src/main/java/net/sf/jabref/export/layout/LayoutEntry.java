@@ -1518,7 +1518,6 @@ name|LayoutHelper
 operator|.
 name|IS_OPTION_FIELD
 case|:
-block|{
 name|String
 name|fieldEntry
 decl_stmt|;
@@ -1651,13 +1650,11 @@ block|}
 return|return
 name|fieldEntry
 return|;
-block|}
 case|case
 name|LayoutHelper
 operator|.
 name|IS_ENCODING_NAME
 case|:
-block|{
 comment|// Printing the encoding name is not supported in entry layouts, only
 comment|// in begin/end layouts. This prevents breakage if some users depend
 comment|// on a field called "encoding". We simply return this field instead:
@@ -1673,7 +1670,6 @@ argument_list|,
 name|database
 argument_list|)
 return|;
-block|}
 default|default:
 return|return
 literal|""

@@ -703,6 +703,7 @@ name|DELETE_PLUGINS
 argument_list|)
 operator|&&
 operator|(
+operator|!
 name|prefs
 operator|.
 name|get
@@ -712,10 +713,8 @@ operator|.
 name|DELETE_PLUGINS
 argument_list|)
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -2179,12 +2178,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|loaded
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|String
@@ -2301,7 +2299,6 @@ operator|(
 literal|3
 operator|)
 case|:
-block|{
 name|formatName
 operator|=
 name|data
@@ -2310,22 +2307,18 @@ literal|2
 index|]
 expr_stmt|;
 break|break;
-block|}
 case|case
 operator|(
 literal|2
 operator|)
 case|:
-block|{
 comment|//default ExportFormat: HTML table (with Abstract& BibTeX)
 name|formatName
 operator|=
 literal|"tablerefsabsbib"
 expr_stmt|;
 break|break;
-block|}
 default|default:
-block|{
 name|System
 operator|.
 name|err
@@ -2364,7 +2357,6 @@ return|return
 literal|null
 return|;
 comment|// TODO replace with optional one day
-block|}
 block|}
 comment|//end switch
 comment|//export new database
@@ -2529,7 +2521,6 @@ expr_stmt|;
 block|}
 comment|//end if(loaded.size> 0)
 block|}
-comment|//end exportMatches invoked
 if|if
 condition|(
 name|cli
@@ -2540,12 +2531,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|loaded
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|String
@@ -2575,12 +2565,11 @@ comment|// This signals that the latest import should be stored in BibTeX
 comment|// format to the given file.
 if|if
 condition|(
+operator|!
 name|loaded
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|ParserResult
@@ -3099,12 +3088,11 @@ literal|false
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|loaded
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 comment|// bibtex file loaded
 block|{
@@ -3742,10 +3730,8 @@ operator|||
 operator|(
 name|result
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{
@@ -4541,12 +4527,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|loaded
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for
@@ -5196,12 +5181,11 @@ comment|// If any database loading was postponed due to an autosave, schedule th
 comment|// for handing now:
 if|if
 condition|(
+operator|!
 name|postponed
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|AutosaveStartupPrompter
@@ -5227,12 +5211,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 name|loaded
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|JabRef
