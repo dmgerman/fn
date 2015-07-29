@@ -501,7 +501,7 @@ name|this
 operator|.
 name|layout
 argument_list|(
-literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract}\\end{abstract}</font>"
+literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLCharFormatter]{\\abstract}\\end{abstract}</font>"
 argument_list|,
 name|mBTE
 argument_list|,
@@ -587,7 +587,7 @@ name|this
 operator|.
 name|layout
 argument_list|(
-literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract}\\end{abstract}</font>"
+literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLCharFormatter]{\\abstract}\\end{abstract}</font>"
 argument_list|,
 name|mBTE
 argument_list|,
@@ -683,7 +683,7 @@ name|this
 operator|.
 name|layout
 argument_list|(
-literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract}\\end{abstract}</font>"
+literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLCharFormatter]{\\abstract}\\end{abstract}</font>"
 argument_list|,
 name|mBTE
 argument_list|,
@@ -785,7 +785,7 @@ name|this
 operator|.
 name|layout
 argument_list|(
-literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract}\\end{abstract}</font>"
+literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLCharFormatter]{\\abstract}\\end{abstract}</font>"
 argument_list|,
 name|mBTE
 argument_list|,
@@ -886,7 +886,7 @@ name|this
 operator|.
 name|layout
 argument_list|(
-literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract}\\end{abstract}</font>"
+literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLCharFormatter]{\\abstract}\\end{abstract}</font>"
 argument_list|,
 name|mBTE
 argument_list|,
