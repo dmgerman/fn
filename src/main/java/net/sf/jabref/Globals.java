@@ -721,11 +721,6 @@ name|NONE
 init|=
 literal|"_non__"
 decl_stmt|,
-DECL|field|ARXIV_LOOKUP_PREFIX
-name|ARXIV_LOOKUP_PREFIX
-init|=
-literal|"http://arxiv.org/abs/"
-decl_stmt|,
 DECL|field|FORMATTER_PACKAGE
 name|FORMATTER_PACKAGE
 init|=
