@@ -385,12 +385,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|indices
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|endIndices

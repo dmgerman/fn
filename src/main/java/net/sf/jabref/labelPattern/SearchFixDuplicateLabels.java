@@ -221,12 +221,11 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
 name|key
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -484,12 +483,11 @@ block|}
 comment|// Do the actual generation:
 if|if
 condition|(
+operator|!
 name|toGenerateFor
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|NamedCompound

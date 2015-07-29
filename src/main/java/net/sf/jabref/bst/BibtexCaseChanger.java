@@ -899,8 +899,8 @@ return|;
 block|}
 DECL|field|TITLE_LOWERS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|char
 name|TITLE_LOWERS
 init|=
@@ -908,8 +908,8 @@ literal|'t'
 decl_stmt|;
 DECL|field|ALL_LOWERS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|char
 name|ALL_LOWERS
 init|=
@@ -917,8 +917,8 @@ literal|'l'
 decl_stmt|;
 DECL|field|ALL_UPPERS
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|char
 name|ALL_UPPERS
 init|=

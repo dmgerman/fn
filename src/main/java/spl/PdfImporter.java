@@ -883,10 +883,8 @@ operator|||
 operator|(
 name|localRes
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{
@@ -1185,10 +1183,8 @@ operator|||
 operator|(
 name|localRes
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{
@@ -2443,10 +2439,8 @@ operator|||
 operator|(
 name|xmpEntriesInFile
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 operator|)
 return|;

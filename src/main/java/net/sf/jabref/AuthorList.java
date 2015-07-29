@@ -1031,7 +1031,6 @@ break|break;
 block|}
 block|}
 block|}
-comment|// end token_loop
 comment|// Second step: split name into parts (here: calculate indices
 comment|// of parts in 'tokens' Vector)
 if|if
@@ -4404,7 +4403,6 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|// end Author
 DECL|method|main (String[] args)
 specifier|public
 specifier|static
@@ -4570,10 +4568,6 @@ expr_stmt|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|// end AuthorList
-end_comment
 
 end_unit
 

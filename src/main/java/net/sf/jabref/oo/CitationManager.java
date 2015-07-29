@@ -1518,6 +1518,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
 name|pageInfo
 operator|.
 name|getText
@@ -1526,10 +1527,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|_entry

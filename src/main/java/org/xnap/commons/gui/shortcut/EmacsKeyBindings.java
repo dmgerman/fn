@@ -2934,10 +2934,8 @@ if|if
 condition|(
 name|text
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 return|return;
