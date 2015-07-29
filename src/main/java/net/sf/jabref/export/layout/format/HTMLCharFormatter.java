@@ -74,11 +74,12 @@ name|HTMLCharFormatter
 implements|implements
 name|LayoutFormatter
 block|{
-DECL|field|htmlChars
+DECL|field|HTML_CHARS
 specifier|private
 specifier|static
+specifier|final
 name|HtmlCharsMap
-name|htmlChars
+name|HTML_CHARS
 init|=
 operator|new
 name|HtmlCharsMap
@@ -221,7 +222,7 @@ decl_stmt|;
 name|Object
 name|result
 init|=
-name|htmlChars
+name|HTML_CHARS
 operator|.
 name|get
 argument_list|(
@@ -480,7 +481,7 @@ block|}
 name|Object
 name|result
 init|=
-name|htmlChars
+name|HTML_CHARS
 operator|.
 name|get
 argument_list|(
@@ -544,7 +545,7 @@ decl_stmt|;
 name|Object
 name|result
 init|=
-name|htmlChars
+name|HTML_CHARS
 operator|.
 name|get
 argument_list|(
@@ -797,7 +798,7 @@ comment|// handle common case of general latex command
 name|Object
 name|result
 init|=
-name|htmlChars
+name|HTML_CHARS
 operator|.
 name|get
 argument_list|(
@@ -855,7 +856,7 @@ comment|// substitute the evaluated command and swallow the brace:
 name|Object
 name|result
 init|=
-name|htmlChars
+name|HTML_CHARS
 operator|.
 name|get
 argument_list|(
@@ -897,7 +898,7 @@ block|{
 name|Object
 name|result
 init|=
-name|htmlChars
+name|HTML_CHARS
 operator|.
 name|get
 argument_list|(
