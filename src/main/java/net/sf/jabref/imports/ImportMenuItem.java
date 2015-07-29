@@ -388,14 +388,14 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Automatically imports the files given as arguments      * @param filenames List of files to import      */
-DECL|method|automatedImport (String filenames[])
+DECL|method|automatedImport (String[] filenames)
 specifier|public
 name|void
 name|automatedImport
 parameter_list|(
 name|String
-name|filenames
 index|[]
+name|filenames
 parameter_list|)
 block|{
 comment|// replace the work of the init step:

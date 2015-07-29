@@ -441,8 +441,8 @@ argument_list|)
 expr_stmt|;
 block|}
 name|String
-name|items
 index|[]
+name|items
 init|=
 name|sb
 operator|.

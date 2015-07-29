@@ -657,8 +657,8 @@ init|=
 literal|1
 decl_stmt|;
 name|String
-name|numberOfRefs
 index|[]
+name|numberOfRefs
 init|=
 operator|new
 name|String
