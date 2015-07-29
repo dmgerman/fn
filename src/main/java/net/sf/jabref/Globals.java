@@ -1319,23 +1319,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**              * true if we have unix newlines              */
-DECL|field|UNIX_NEWLINE
-specifier|public
-specifier|static
-specifier|final
-name|boolean
-name|UNIX_NEWLINE
-init|=
-name|Globals
-operator|.
-name|NEWLINE
-operator|.
-name|equals
-argument_list|(
-literal|"\n"
-argument_list|)
-decl_stmt|;
 comment|/**      * 	"Fieldname" to indicate that a field should be treated as a bibtex       * string. Used when writing database to file.      */
 DECL|field|BIBTEX_STRING
 specifier|public
