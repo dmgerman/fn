@@ -28,7 +28,6 @@ end_import
 
 begin_class
 DECL|class|HtmlCharsMap
-specifier|public
 class|class
 name|HtmlCharsMap
 extends|extends

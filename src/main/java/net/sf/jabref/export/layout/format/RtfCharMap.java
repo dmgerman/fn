@@ -28,7 +28,6 @@ end_import
 
 begin_class
 DECL|class|RtfCharMap
-specifier|public
 class|class
 name|RtfCharMap
 extends|extends

@@ -28,7 +28,6 @@ end_import
 
 begin_class
 DECL|class|XmlCharsMap
-specifier|public
 class|class
 name|XmlCharsMap
 extends|extends
