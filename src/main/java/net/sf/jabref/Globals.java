@@ -1427,28 +1427,6 @@ operator|.
 name|length
 argument_list|()
 decl_stmt|;
-comment|//initialize logging system
-static|static
-block|{
-name|LogFactory
-name|factory
-init|=
-name|LogFactory
-operator|.
-name|getFactory
-argument_list|()
-decl_stmt|;
-comment|//tell commons logging to default to Java's internal logging implementation
-name|factory
-operator|.
-name|setAttribute
-argument_list|(
-literal|"org.apache.commons.logging.Log"
-argument_list|,
-literal|"org.apache.commons.logging.impl.Jdk14Logger"
-argument_list|)
-expr_stmt|;
-block|}
 comment|// Instantiate logger:
 DECL|field|LOGGER
 specifier|private
@@ -1466,37 +1444,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|setupLogHandlerForErrorConsole ()
-specifier|public
-specifier|static
-name|void
-name|setupLogHandlerForErrorConsole
-parameter_list|()
-block|{
-name|Globals
-operator|.
-name|handler
-operator|=
-operator|new
-name|CacheableHandler
-argument_list|()
-expr_stmt|;
-operator|(
-operator|(
-name|Jdk14Logger
-operator|)
-name|LOGGER
-operator|)
-operator|.
-name|getLogger
-argument_list|()
-operator|.
-name|addHandler
-argument_list|(
-name|handler
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**              * true if we have unix newlines              */
 DECL|field|UNIX_NEWLINE
 specifier|public
