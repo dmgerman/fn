@@ -294,22 +294,6 @@ name|FormLayout
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|preftabs
-operator|.
-name|PrefsTab
-import|;
-end_import
-
 begin_comment
 comment|/**  * Preferences tab for file options. These options were moved out from GeneralTab to  * resolve the space issue.  */
 end_comment
@@ -324,17 +308,17 @@ name|JPanel
 implements|implements
 name|PrefsTab
 block|{
-DECL|field|_prefs
+DECL|field|prefs
 specifier|private
 specifier|final
 name|JabRefPreferences
-name|_prefs
+name|prefs
 decl_stmt|;
-DECL|field|_frame
+DECL|field|frame
 specifier|private
 specifier|final
 name|JabRefFrame
-name|_frame
+name|frame
 decl_stmt|;
 DECL|field|backup
 specifier|private
@@ -396,10 +380,10 @@ specifier|final
 name|JComboBox
 name|newlineSeparator
 decl_stmt|;
+DECL|field|resolveStringsStandard
 specifier|private
 specifier|final
 name|JRadioButton
-DECL|field|resolveStringsStandard
 name|resolveStringsStandard
 decl_stmt|;
 DECL|field|resolveStringsAll
@@ -439,15 +423,12 @@ name|origAutoSaveSetting
 init|=
 literal|false
 decl_stmt|;
-comment|//for LWang_AdjustableFieldOrder
-comment|//    private JRadioButton sortFieldInAlphabetaOrder,unSortFieldStyle,orderAsUserDefined;
 DECL|field|bgFieldOrderStyle
 specifier|private
 specifier|final
 name|ButtonGroup
 name|bgFieldOrderStyle
 decl_stmt|;
-comment|//    int fieldOrderStyle;
 DECL|field|userDefinedFieldOrder
 specifier|private
 name|JTextField
@@ -470,11 +451,15 @@ name|JabRefPreferences
 name|prefs
 parameter_list|)
 block|{
-name|_prefs
+name|this
+operator|.
+name|prefs
 operator|=
 name|prefs
 expr_stmt|;
-name|_frame
+name|this
+operator|.
+name|frame
 operator|=
 name|frame
 expr_stmt|;
@@ -691,20 +676,14 @@ argument_list|(
 name|resolveStringsStandard
 argument_list|)
 expr_stmt|;
-comment|//for LWang_AdjustableFieldOrder
-comment|//        ButtonGroup bgFieldOrderStyle=new ButtonGroup();
-comment|//        sortFieldInAlphabetaOrder = new JRadioButton(Globals.lang("Sort fields in alphabeta order (as ver>= 2.10)"));
-comment|//        unSortFieldStyle = new JRadioButton(Globals.lang("Do not sort fields (as ver<=2.9.2)"));
-comment|//        orderAsUserDefined= new JRadioButton(Globals.lang("Save fields as user defined order"));
-comment|//        bgFieldOrderStyle.add(sortFieldInAlphabetaOrder);
-comment|//        bgFieldOrderStyle.add(unSortFieldStyle);
-comment|//        bgFieldOrderStyle.add(orderAsUserDefined);
 name|userDefinedFieldOrder
 operator|=
 operator|new
 name|JTextField
 argument_list|(
-name|_prefs
+name|this
+operator|.
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -762,8 +741,6 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-comment|//+ Globals.lang("Store fields with double braces, and remove extra braces when loading.<BR>"
-comment|//+ "Double braces signal that BibTeX should preserve character case.") + "</HTML>");
 name|Globals
 operator|.
 name|lang
@@ -1052,7 +1029,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 name|JButton
-name|hlp
+name|help
 init|=
 operator|new
 name|JButton
@@ -1060,14 +1037,14 @@ argument_list|(
 name|autosaveHelp
 argument_list|)
 decl_stmt|;
-name|hlp
+name|help
 operator|.
 name|setText
 argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|hlp
+name|help
 operator|.
 name|setPreferredSize
 argument_list|(
@@ -1100,7 +1077,7 @@ name|hPan
 operator|.
 name|add
 argument_list|(
-name|hlp
+name|help
 argument_list|,
 name|BorderLayout
 operator|.
@@ -1193,7 +1170,6 @@ argument_list|(
 name|sameColumn
 argument_list|)
 expr_stmt|;
-comment|/*FormLayout layout2 = new FormLayout(                 "left:pref, 8dlu, fill:pref", "");         DefaultFormBuilder builder2 = new DefaultFormBuilder(layout2);         builder2.append(new JLabel(Globals.lang("Field value delimiter. E.g., \"author={x}\" or \"author='x'\"") + ":"));         builder2.append(valueDelimiter);         builder.nextLine();         builder.append(builder2.getPanel());*/
 name|builder
 operator|.
 name|append
@@ -1313,7 +1289,9 @@ operator|=
 operator|new
 name|JTextField
 argument_list|(
-name|_prefs
+name|this
+operator|.
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1333,13 +1311,6 @@ argument_list|,
 name|userDefinedFieldOrder
 argument_list|)
 expr_stmt|;
-comment|//        builder.append(sortFieldInAlphabetaOrder);
-comment|//        builder.nextLine();
-comment|//        builder.append(unSortFieldStyle);
-comment|//        builder.nextLine();
-comment|//        builder.append(orderAsUserDefined);
-comment|//        builder.append(userDefinedFieldOrder);
-comment|//        builder.nextLine();
 name|JPanel
 name|pan
 init|=
@@ -1396,7 +1367,7 @@ name|radioButtonLabels
 parameter_list|)
 block|{
 name|ButtonGroup
-name|_bg
+name|buttonGroup
 init|=
 operator|new
 name|ButtonGroup
@@ -1419,7 +1390,7 @@ argument_list|(
 name|_s
 argument_list|)
 decl_stmt|;
-name|_bg
+name|buttonGroup
 operator|.
 name|add
 argument_list|(
@@ -1428,20 +1399,20 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|_bg
+name|buttonGroup
 return|;
 block|}
-DECL|method|getBgValue (ButtonGroup bg)
+DECL|method|getBgValue (ButtonGroup buttonGroup)
 specifier|private
 name|int
 name|getBgValue
 parameter_list|(
 name|ButtonGroup
-name|bg
+name|buttonGroup
 parameter_list|)
 block|{
 name|int
-name|_i
+name|index
 init|=
 literal|0
 decl_stmt|;
@@ -1451,14 +1422,14 @@ name|Enumeration
 argument_list|<
 name|AbstractButton
 argument_list|>
-name|_it
+name|buttons
 init|=
-name|bg
+name|buttonGroup
 operator|.
 name|getElements
 argument_list|()
 init|;
-name|_it
+name|buttons
 operator|.
 name|hasMoreElements
 argument_list|()
@@ -1467,7 +1438,7 @@ control|)
 block|{
 if|if
 condition|(
-name|_it
+name|buttons
 operator|.
 name|nextElement
 argument_list|()
@@ -1477,10 +1448,10 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|_i
+name|index
 return|;
 block|}
-name|_i
+name|index
 operator|++
 expr_stmt|;
 block|}
@@ -1488,20 +1459,20 @@ return|return
 literal|0
 return|;
 block|}
-DECL|method|setBgSelected (ButtonGroup bg, int x)
+DECL|method|setBgSelected (ButtonGroup buttonGroup, int buttonIndex)
 specifier|private
 name|void
 name|setBgSelected
 parameter_list|(
 name|ButtonGroup
-name|bg
+name|buttonGroup
 parameter_list|,
 name|int
-name|x
+name|buttonIndex
 parameter_list|)
 block|{
 name|int
-name|_i
+name|currentIndex
 init|=
 literal|0
 decl_stmt|;
@@ -1511,14 +1482,14 @@ name|Enumeration
 argument_list|<
 name|AbstractButton
 argument_list|>
-name|_it
+name|buttons
 init|=
-name|bg
+name|buttonGroup
 operator|.
 name|getElements
 argument_list|()
 init|;
-name|_it
+name|buttons
 operator|.
 name|hasMoreElements
 argument_list|()
@@ -1527,12 +1498,12 @@ control|)
 block|{
 if|if
 condition|(
-name|_i
+name|currentIndex
 operator|==
-name|x
+name|buttonIndex
 condition|)
 block|{
-name|_it
+name|buttons
 operator|.
 name|nextElement
 argument_list|()
@@ -1545,7 +1516,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|_it
+name|buttons
 operator|.
 name|nextElement
 argument_list|()
@@ -1556,7 +1527,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-name|_i
+name|currentIndex
 operator|++
 expr_stmt|;
 block|}
@@ -1564,7 +1535,7 @@ block|}
 comment|//    private void setValueFieldOrderStyle(){
 comment|//        fieldOrderStyle=getBgValue(bgFieldOrderStyle);
 comment|//    }
-DECL|method|createAdFieldOrderBg (DefaultFormBuilder builder, ButtonGroup bg, JTextField jtf)
+DECL|method|createAdFieldOrderBg (DefaultFormBuilder builder, ButtonGroup buttonGroup, JTextField textField)
 specifier|private
 name|void
 name|createAdFieldOrderBg
@@ -1573,10 +1544,10 @@ name|DefaultFormBuilder
 name|builder
 parameter_list|,
 name|ButtonGroup
-name|bg
+name|buttonGroup
 parameter_list|,
 name|JTextField
-name|jtf
+name|textField
 parameter_list|)
 block|{
 comment|//for LWang_AdjustableFieldOrder
@@ -1586,14 +1557,14 @@ name|Enumeration
 argument_list|<
 name|AbstractButton
 argument_list|>
-name|_it
+name|buttons
 init|=
-name|bg
+name|buttonGroup
 operator|.
 name|getElements
 argument_list|()
 init|;
-name|_it
+name|buttons
 operator|.
 name|hasMoreElements
 argument_list|()
@@ -1604,7 +1575,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|_it
+name|buttons
 operator|.
 name|nextElement
 argument_list|()
@@ -1620,7 +1591,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|jtf
+name|textField
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1641,7 +1612,7 @@ name|openLast
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1655,7 +1626,7 @@ name|backup
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1668,7 +1639,7 @@ expr_stmt|;
 name|String
 name|newline
 init|=
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1731,12 +1702,11 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|//preserveFormatting.setSelected(_prefs.getBoolean("preserveFieldFormatting"));
 name|wrapFieldLine
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1750,7 +1720,7 @@ name|autoDoubleBraces
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1764,7 +1734,7 @@ name|resolveStringsAll
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1789,7 +1759,7 @@ name|doNotResolveStringsFor
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1803,7 +1773,7 @@ name|bracesAroundCapitalsFields
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1817,7 +1787,7 @@ name|nonWrappableFields
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1831,7 +1801,7 @@ name|autoSave
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1845,7 +1815,7 @@ name|promptBeforeUsingAutoSave
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1859,7 +1829,7 @@ name|autoSaveInterval
 operator|.
 name|setValue
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getInt
 argument_list|(
@@ -1880,7 +1850,7 @@ name|valueDelimiter
 operator|.
 name|setSelectedIndex
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getInt
 argument_list|(
@@ -1894,7 +1864,7 @@ name|includeEmptyFields
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1908,7 +1878,7 @@ name|camelCase
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1922,7 +1892,7 @@ name|sameColumn
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1937,7 +1907,7 @@ name|setBgSelected
 argument_list|(
 name|bgFieldOrderStyle
 argument_list|,
-name|_prefs
+name|prefs
 operator|.
 name|getInt
 argument_list|(
@@ -1951,7 +1921,7 @@ name|userDefinedFieldOrder
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -2003,7 +1973,7 @@ operator|=
 literal|"\r\n"
 expr_stmt|;
 block|}
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -2036,7 +2006,7 @@ operator|.
 name|length
 argument_list|()
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2050,7 +2020,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2064,7 +2034,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2078,7 +2048,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2092,7 +2062,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -2109,7 +2079,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2123,7 +2093,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2137,7 +2107,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putInt
 argument_list|(
@@ -2154,7 +2124,7 @@ name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putInt
 argument_list|(
@@ -2168,7 +2138,7 @@ name|getSelectedIndex
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2182,7 +2152,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2196,7 +2166,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2214,7 +2184,7 @@ name|doNotResolveStringsFor
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -2225,7 +2195,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//for LWang_AdjustableFieldOrder
-name|_prefs
+name|prefs
 operator|.
 name|putInt
 argument_list|(
@@ -2239,7 +2209,7 @@ name|bgFieldOrderStyle
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -2256,7 +2226,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2288,7 +2258,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -2299,7 +2269,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -2331,7 +2301,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -2342,7 +2312,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -2367,7 +2337,7 @@ condition|(
 name|updateSpecialFields
 condition|)
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|updateSpecialFieldHandling
 argument_list|()
@@ -2389,7 +2359,7 @@ name|Globals
 operator|.
 name|startAutoSaveManager
 argument_list|(
-name|_frame
+name|frame
 argument_list|)
 expr_stmt|;
 block|}
