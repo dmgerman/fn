@@ -72,23 +72,11 @@ specifier|public
 class|class
 name|BuildInfo
 block|{
-DECL|field|date
-specifier|private
-specifier|final
-name|String
-name|date
-decl_stmt|;
 DECL|field|version
 specifier|private
 specifier|final
 name|String
 name|version
-decl_stmt|;
-DECL|field|number
-specifier|private
-specifier|final
-name|String
-name|number
 decl_stmt|;
 DECL|method|BuildInfo ()
 specifier|public
@@ -135,37 +123,11 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|ignored
-parameter_list|)
-block|{         }
-catch|catch
-parameter_list|(
+decl||
 name|NullPointerException
 name|ignored
 parameter_list|)
 block|{         }
-name|date
-operator|=
-name|properties
-operator|.
-name|getProperty
-argument_list|(
-literal|"builddate"
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-name|number
-operator|=
-name|properties
-operator|.
-name|getProperty
-argument_list|(
-literal|"build"
-argument_list|,
-literal|"1"
-argument_list|)
-expr_stmt|;
 name|version
 operator|=
 name|properties
@@ -178,16 +140,6 @@ literal|"dev"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getDate ()
-specifier|public
-name|String
-name|getDate
-parameter_list|()
-block|{
-return|return
-name|date
-return|;
-block|}
 DECL|method|getVersion ()
 specifier|public
 name|String
@@ -196,16 +148,6 @@ parameter_list|()
 block|{
 return|return
 name|version
-return|;
-block|}
-DECL|method|getNumber ()
-specifier|public
-name|String
-name|getNumber
-parameter_list|()
-block|{
-return|return
-name|number
 return|;
 block|}
 block|}
