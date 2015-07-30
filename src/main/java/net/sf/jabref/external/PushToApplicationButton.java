@@ -319,11 +319,9 @@ name|ARROW_ICON
 init|=
 name|GUIGlobals
 operator|.
-name|class
-operator|.
-name|getResource
+name|getIconUrl
 argument_list|(
-literal|"/images/secondary_sorted_reverse.png"
+literal|"secondary_sorted_reverse"
 argument_list|)
 decl_stmt|;
 DECL|field|mAction

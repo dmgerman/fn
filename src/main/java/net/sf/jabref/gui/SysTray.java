@@ -255,7 +255,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"/images/JabRef-icon-48.png"
+literal|"/images/icons/JabRef-icon-48.png"
 argument_list|)
 argument_list|)
 decl_stmt|;

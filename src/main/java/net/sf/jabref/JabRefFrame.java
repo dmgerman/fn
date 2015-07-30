@@ -4111,7 +4111,6 @@ operator|.
 name|frameTitle
 argument_list|)
 expr_stmt|;
-comment|//setIconImage(GUIGlobals.getImage("jabrefIcon").getImage());
 name|setIconImage
 argument_list|(
 name|GUIGlobals
