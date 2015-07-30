@@ -256,18 +256,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|JabRefPreferences
 import|;
 end_import
@@ -282,11 +270,11 @@ name|JPanel
 implements|implements
 name|PrefsTab
 block|{
-DECL|field|_prefs
+DECL|field|prefs
 specifier|private
 specifier|final
 name|JabRefPreferences
-name|_prefs
+name|prefs
 decl_stmt|;
 DECL|field|autoResizeMode
 specifier|private
@@ -403,18 +391,17 @@ name|JComboBox
 name|terSort
 decl_stmt|;
 comment|/**      * Customization of external program paths.      *       * @param prefs      *            a<code>JabRefPreferences</code> value      */
-DECL|method|TablePrefsTab (JabRefPreferences prefs, JabRefFrame frame)
+DECL|method|TablePrefsTab (JabRefPreferences prefs)
 specifier|public
 name|TablePrefsTab
 parameter_list|(
 name|JabRefPreferences
 name|prefs
-parameter_list|,
-name|JabRefFrame
-name|frame
 parameter_list|)
 block|{
-name|_prefs
+name|this
+operator|.
+name|prefs
 operator|=
 name|prefs
 expr_stmt|;
@@ -430,7 +417,7 @@ name|Vector
 argument_list|<
 name|String
 argument_list|>
-name|v
+name|fieldNames
 init|=
 operator|new
 name|Vector
@@ -449,7 +436,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|v
+name|fieldNames
 operator|.
 name|add
 argument_list|(
@@ -462,21 +449,21 @@ name|Collections
 operator|.
 name|sort
 argument_list|(
-name|v
+name|fieldNames
 argument_list|)
 expr_stmt|;
 name|String
 index|[]
 name|allPlusKey
 init|=
-name|v
+name|fieldNames
 operator|.
 name|toArray
 argument_list|(
 operator|new
 name|String
 index|[
-name|v
+name|fieldNames
 operator|.
 name|size
 argument_list|()
@@ -858,34 +845,34 @@ block|}
 argument_list|)
 expr_stmt|;
 name|ButtonGroup
-name|bg
+name|nameStyle
 init|=
 operator|new
 name|ButtonGroup
 argument_list|()
 decl_stmt|;
-name|bg
+name|nameStyle
 operator|.
 name|add
 argument_list|(
 name|namesAsIs
 argument_list|)
 expr_stmt|;
-name|bg
+name|nameStyle
 operator|.
 name|add
 argument_list|(
 name|namesNatbib
 argument_list|)
 expr_stmt|;
-name|bg
+name|nameStyle
 operator|.
 name|add
 argument_list|(
 name|namesFf
 argument_list|)
 expr_stmt|;
-name|bg
+name|nameStyle
 operator|.
 name|add
 argument_list|(
@@ -893,27 +880,27 @@ name|namesFl
 argument_list|)
 expr_stmt|;
 name|ButtonGroup
-name|bg2
+name|nameAbbrev
 init|=
 operator|new
 name|ButtonGroup
 argument_list|()
 decl_stmt|;
-name|bg2
+name|nameAbbrev
 operator|.
 name|add
 argument_list|(
 name|lastNamesOnly
 argument_list|)
 expr_stmt|;
-name|bg2
+name|nameAbbrev
 operator|.
 name|add
 argument_list|(
 name|abbrNames
 argument_list|)
 expr_stmt|;
-name|bg2
+name|nameAbbrev
 operator|.
 name|add
 argument_list|(
@@ -1102,10 +1089,6 @@ operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
-comment|// builder.append(pan); builder.append(noAbbrNames); builder.nextLine();
-comment|// builder.append(pan); builder.append(abbrNames); builder.nextLine();
-comment|// builder.append(pan); builder.append(lastNamesOnly);
-comment|// builder.nextLine();
 name|builder
 operator|.
 name|appendSeparator
@@ -1510,7 +1493,7 @@ name|autoResizeMode
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getInt
 argument_list|(
@@ -1528,7 +1511,7 @@ name|priField
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1542,7 +1525,7 @@ name|secField
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1556,7 +1539,7 @@ name|terField
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1589,7 +1572,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1610,7 +1593,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1631,7 +1614,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1661,7 +1644,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1682,7 +1665,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1714,7 +1697,7 @@ name|priDesc
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1728,7 +1711,7 @@ name|secDesc
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1742,7 +1725,7 @@ name|terDesc
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1756,7 +1739,7 @@ name|floatMarked
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1802,7 +1785,7 @@ expr_stmt|;
 name|String
 name|numF
 init|=
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1846,7 +1829,7 @@ name|void
 name|storeSettings
 parameter_list|()
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1860,7 +1843,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1874,7 +1857,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1888,7 +1871,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1902,7 +1885,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1916,7 +1899,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putInt
 argument_list|(
@@ -1938,7 +1921,7 @@ operator|.
 name|AUTO_RESIZE_OFF
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1952,7 +1935,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1966,7 +1949,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1980,11 +1963,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// _prefs.put(JabRefPreferences.SECONDARY_SORT_FIELD,
-comment|// GUIGlobals.ALL_FIELDS[secSort.getSelectedIndex()]);
-comment|// _prefs.put(JabRefPreferences.TERTIARY_SORT_FIELD,
-comment|// GUIGlobals.ALL_FIELDS[terSort.getSelectedIndex()]);
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -2004,7 +1983,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -2024,7 +2003,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -2044,7 +2023,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2062,7 +2041,7 @@ comment|// updatefont
 name|String
 name|oldVal
 init|=
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -2126,7 +2105,7 @@ name|oldVal
 argument_list|)
 condition|)
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
