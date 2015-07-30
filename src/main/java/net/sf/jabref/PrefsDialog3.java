@@ -244,7 +244,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|gui
+operator|.
+name|preftabs
 operator|.
 name|GroupsPrefsTab
 import|;
