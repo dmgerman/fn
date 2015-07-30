@@ -613,7 +613,7 @@ specifier|final
 name|String
 name|JOURNALS_FILE_BUILTIN
 init|=
-literal|"/resource/journalList.txt"
+literal|"/journals/journalList.txt"
 decl_stmt|;
 DECL|field|JOURNALS_IEEE_INTERNAL_LIST
 specifier|public
@@ -622,7 +622,7 @@ specifier|final
 name|String
 name|JOURNALS_IEEE_INTERNAL_LIST
 init|=
-literal|"/resource/IEEEJournalList.txt"
+literal|"/journals/IEEEJournalList.txt"
 decl_stmt|;
 DECL|field|messages
 specifier|private
