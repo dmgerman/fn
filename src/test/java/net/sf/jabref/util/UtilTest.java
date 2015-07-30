@@ -56,6 +56,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|preftabs
+operator|.
 name|NameFormatterTab
 import|;
 end_import

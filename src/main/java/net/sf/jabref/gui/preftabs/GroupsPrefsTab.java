@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.groups
+DECL|package|net.sf.jabref.gui.preftabs
 package|package
 name|net
 operator|.
@@ -12,7 +12,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|gui
+operator|.
+name|preftabs
 package|;
 end_package
 
@@ -86,18 +88,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|PrefsTab
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|jgoodies
@@ -124,13 +114,8 @@ name|FormLayout
 import|;
 end_import
 
-begin_comment
-comment|// JZTODO lyrics
-end_comment
-
 begin_class
 DECL|class|GroupsPrefsTab
-specifier|public
 class|class
 name|GroupsPrefsTab
 extends|extends

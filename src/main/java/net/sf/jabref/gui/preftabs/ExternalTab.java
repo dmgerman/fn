@@ -4,13 +4,17 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui.preftabs
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
+operator|.
+name|preftabs
 package|;
 end_package
 
@@ -114,6 +118,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|external
 operator|.
 name|*
@@ -182,7 +198,6 @@ end_import
 
 begin_class
 DECL|class|ExternalTab
-specifier|public
 class|class
 name|ExternalTab
 extends|extends
@@ -190,17 +205,17 @@ name|JPanel
 implements|implements
 name|PrefsTab
 block|{
-DECL|field|_prefs
+DECL|field|prefs
 specifier|private
 specifier|final
 name|JabRefPreferences
-name|_prefs
+name|prefs
 decl_stmt|;
-DECL|field|_frame
+DECL|field|frame
 specifier|private
 specifier|final
 name|JabRefFrame
-name|_frame
+name|frame
 decl_stmt|;
 DECL|field|pdfDir
 specifier|private
@@ -302,14 +317,14 @@ literal|"Autolink files with names starting with the BibTeX key"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|method|ExternalTab (JabRefFrame frame, PrefsDialog3 prefsDiag, JabRefPreferences prefs, HelpDialog helpDialog)
+DECL|method|ExternalTab (JabRefFrame frame, PreferencesDialog prefsDiag, JabRefPreferences prefs, HelpDialog helpDialog)
 specifier|public
 name|ExternalTab
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|PrefsDialog3
+name|PreferencesDialog
 name|prefsDiag
 parameter_list|,
 name|JabRefPreferences
@@ -319,11 +334,15 @@ name|HelpDialog
 name|helpDialog
 parameter_list|)
 block|{
-name|_prefs
+name|this
+operator|.
+name|prefs
 operator|=
 name|prefs
 expr_stmt|;
-name|_frame
+name|this
+operator|.
+name|frame
 operator|=
 name|frame
 expr_stmt|;
@@ -541,27 +560,27 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|ButtonGroup
-name|bg
+name|buttonGroup
 init|=
 operator|new
 name|ButtonGroup
 argument_list|()
 decl_stmt|;
-name|bg
+name|buttonGroup
 operator|.
 name|add
 argument_list|(
 name|matchExactKeyOnly
 argument_list|)
 expr_stmt|;
-name|bg
+name|buttonGroup
 operator|.
 name|add
 argument_list|(
 name|matchStartsWithKey
 argument_list|)
 expr_stmt|;
-name|bg
+name|buttonGroup
 operator|.
 name|add
 argument_list|(
@@ -654,7 +673,9 @@ name|BrowseAction
 operator|.
 name|buildForDir
 argument_list|(
-name|_frame
+name|this
+operator|.
+name|frame
 argument_list|,
 name|fileDir
 argument_list|)
@@ -1080,7 +1101,9 @@ name|BrowseAction
 operator|.
 name|buildForDir
 argument_list|(
-name|_frame
+name|this
+operator|.
+name|frame
 argument_list|,
 name|pdfDir
 argument_list|)
@@ -1149,7 +1172,9 @@ name|BrowseAction
 operator|.
 name|buildForDir
 argument_list|(
-name|_frame
+name|this
+operator|.
+name|frame
 argument_list|,
 name|psDir
 argument_list|)
@@ -1346,11 +1371,6 @@ name|JPanel
 name|p
 parameter_list|)
 block|{
-comment|//if (b.getColumn()< 2)
-comment|//    b.append(new JPanel());
-comment|//JPanel pan = new JPanel();
-comment|//pan.setLayout(new BorderLayout());
-comment|//pan.add(new JLabel(Globals.lang("Settings for %0", pt.getApplicationName())), BorderLayout.CENTER);
 name|JButton
 name|button
 init|=
@@ -1397,7 +1417,7 @@ name|PushToApplicationButton
 operator|.
 name|showSettingsDialog
 argument_list|(
-name|_frame
+name|frame
 argument_list|,
 name|pt
 argument_list|,
@@ -1418,12 +1438,6 @@ argument_list|(
 name|button
 argument_list|)
 expr_stmt|;
-comment|//, BorderLayout.CENTER);
-comment|//b.append(button);
-comment|//b.nextLine();
-comment|//b.append(pan);
-comment|//if (b.getColumn()>= 6)
-comment|//    b.nextLine();
 block|}
 annotation|@
 name|Override
@@ -1437,7 +1451,7 @@ name|pdfDir
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1449,7 +1463,7 @@ name|psDir
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1461,7 +1475,7 @@ name|fileDir
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1477,7 +1491,7 @@ name|bibLocationAsFileDir
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1491,7 +1505,7 @@ name|bibLocAsPrimaryDir
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1515,7 +1529,7 @@ name|runAutoFileSearch
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1529,7 +1543,7 @@ name|regExpTextField
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1543,7 +1557,7 @@ name|allowFileAutoOpenBrowse
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1557,7 +1571,7 @@ name|emailSubject
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1571,7 +1585,7 @@ name|openFoldersOfAttachedFiles
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1583,7 +1597,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1604,7 +1618,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1641,7 +1655,7 @@ name|void
 name|storeSettings
 parameter_list|()
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1663,7 +1677,7 @@ name|isSelected
 argument_list|()
 condition|)
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -1679,7 +1693,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// We should maybe do some checking on the validity of the contents?
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -1691,7 +1705,7 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -1703,7 +1717,7 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -1719,7 +1733,7 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1733,7 +1747,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1747,7 +1761,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1761,7 +1775,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1775,7 +1789,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1789,7 +1803,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -1803,7 +1817,7 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(

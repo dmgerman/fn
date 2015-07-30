@@ -4,13 +4,17 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui.preftabs
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
+operator|.
+name|preftabs
 package|;
 end_package
 
@@ -230,9 +234,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
-operator|.
-name|ExportFormats
+name|*
 import|;
 end_import
 
@@ -244,9 +246,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|export
 operator|.
-name|GroupsPrefsTab
+name|ExportFormats
 import|;
 end_import
 
@@ -311,9 +313,10 @@ comment|/**  * Preferences dialog. Contains a TabbedPane, and tabs will be defin
 end_comment
 
 begin_class
-DECL|class|PrefsDialog3
+DECL|class|PreferencesDialog
+specifier|public
 class|class
-name|PrefsDialog3
+name|PreferencesDialog
 extends|extends
 name|JDialog
 block|{
@@ -329,15 +332,9 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|field|jabRef
-specifier|private
-specifier|final
-name|JabRef
-name|jabRef
-decl_stmt|;
-DECL|method|PrefsDialog3 (JabRefFrame parent, JabRef jabRef)
+DECL|method|PreferencesDialog (JabRefFrame parent, JabRef jabRef)
 specifier|public
-name|PrefsDialog3
+name|PreferencesDialog
 parameter_list|(
 name|JabRefFrame
 name|parent
@@ -359,12 +356,6 @@ argument_list|)
 argument_list|,
 literal|false
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|jabRef
-operator|=
-name|jabRef
 expr_stmt|;
 specifier|final
 name|JabRefPreferences
@@ -516,8 +507,6 @@ argument_list|(
 operator|new
 name|NetworkTab
 argument_list|(
-name|frame
-argument_list|,
 name|prefs
 argument_list|)
 argument_list|)
@@ -542,8 +531,6 @@ argument_list|(
 operator|new
 name|FileSortTab
 argument_list|(
-name|frame
-argument_list|,
 name|prefs
 argument_list|)
 argument_list|)
@@ -610,8 +597,6 @@ operator|new
 name|TablePrefsTab
 argument_list|(
 name|prefs
-argument_list|,
-name|parent
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -633,7 +618,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|TabLabelPattern
+name|LabelPatternPrefTab
 argument_list|(
 name|prefs
 argument_list|,
@@ -706,7 +691,7 @@ name|Iterator
 argument_list|<
 name|PrefsTab
 argument_list|>
-name|it
+name|prefTabs
 init|=
 name|tabs
 operator|.
@@ -727,14 +712,13 @@ argument_list|()
 index|]
 decl_stmt|;
 name|int
-name|i
+name|index
 init|=
 literal|0
 decl_stmt|;
-comment|//ArrayList<Component> comps = new ArrayList<Component>();
 while|while
 condition|(
-name|it
+name|prefTabs
 operator|.
 name|hasNext
 argument_list|()
@@ -743,14 +727,14 @@ block|{
 name|PrefsTab
 name|tab
 init|=
-name|it
+name|prefTabs
 operator|.
 name|next
 argument_list|()
 decl_stmt|;
 name|names
 index|[
-name|i
+name|index
 index|]
 operator|=
 name|tab
@@ -758,7 +742,7 @@ operator|.
 name|getTabName
 argument_list|()
 expr_stmt|;
-name|i
+name|index
 operator|++
 expr_stmt|;
 name|main
@@ -1060,7 +1044,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|ButtonBarBuilder
-name|bb
+name|buttonBarBuilder
 init|=
 operator|new
 name|ButtonBarBuilder
@@ -1068,34 +1052,30 @@ argument_list|(
 name|lower
 argument_list|)
 decl_stmt|;
-name|bb
+name|buttonBarBuilder
 operator|.
 name|addGlue
 argument_list|()
 expr_stmt|;
-name|bb
+name|buttonBarBuilder
 operator|.
 name|addButton
 argument_list|(
 name|ok
 argument_list|)
 expr_stmt|;
-name|bb
+name|buttonBarBuilder
 operator|.
 name|addButton
 argument_list|(
 name|cancel
 argument_list|)
 expr_stmt|;
-comment|//bb.addButton(ok);
-comment|//bb.addButton(cancel);
-name|bb
+name|buttonBarBuilder
 operator|.
 name|addGlue
 argument_list|()
 expr_stmt|;
-comment|// lower.add(ok);
-comment|// lower.add(cancel);
 comment|// Key bindings:
 name|Util
 operator|.
@@ -1211,7 +1191,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|PrefsDialog3
+name|PreferencesDialog
 operator|.
 name|this
 argument_list|,
@@ -1268,7 +1248,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|PrefsDialog3
+name|PreferencesDialog
 operator|.
 name|this
 argument_list|,
@@ -1298,7 +1278,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// ex.printStackTrace();
 block|}
 block|}
 block|}
@@ -1408,7 +1387,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|PrefsDialog3
+name|PreferencesDialog
 operator|.
 name|this
 argument_list|,
@@ -1438,7 +1417,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// ex.printStackTrace();
 block|}
 block|}
 block|}
@@ -1450,8 +1428,6 @@ expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
-comment|// setSize(440, 500);
-comment|/** Look through component sizes to find which tab is to blame          *  when the dialog grows too large:         for (Component co : comps) {             System.out.println(co.getPreferredSize());         }*/
 block|}
 DECL|class|OkAction
 class|class

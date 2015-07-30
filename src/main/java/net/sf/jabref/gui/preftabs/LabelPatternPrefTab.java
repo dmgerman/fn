@@ -4,13 +4,17 @@ comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui.preftabs
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
+operator|.
+name|preftabs
 package|;
 end_package
 
@@ -116,6 +120,30 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|help
@@ -199,20 +227,19 @@ comment|/**  * The Preferences panel for key generation.  */
 end_comment
 
 begin_class
-DECL|class|TabLabelPattern
-specifier|public
+DECL|class|LabelPatternPrefTab
 class|class
-name|TabLabelPattern
+name|LabelPatternPrefTab
 extends|extends
 name|LabelPatternPanel
 implements|implements
 name|PrefsTab
 block|{
-DECL|field|_prefs
+DECL|field|prefs
 specifier|private
 specifier|final
 name|JabRefPreferences
-name|_prefs
+name|prefs
 decl_stmt|;
 DECL|field|dontOverwrite
 specifier|private
@@ -357,9 +384,9 @@ argument_list|(
 literal|20
 argument_list|)
 decl_stmt|;
-DECL|method|TabLabelPattern (JabRefPreferences prefs, HelpDialog helpDiag)
+DECL|method|LabelPatternPrefTab (JabRefPreferences prefs, HelpDialog helpDiag)
 specifier|public
-name|TabLabelPattern
+name|LabelPatternPrefTab
 parameter_list|(
 name|JabRefPreferences
 name|prefs
@@ -373,7 +400,9 @@ argument_list|(
 name|helpDiag
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|this
+operator|.
+name|prefs
 operator|=
 name|prefs
 expr_stmt|;
@@ -439,8 +468,6 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//Globals.prefs.put("basenamePatternRegex", basenamePatternRegex.getText());
-comment|//Globals.prefs.put("basenamePatternReplacement", basenamePatternReplacement.getText());
 name|Globals
 operator|.
 name|prefs
@@ -597,7 +624,7 @@ comment|// fetch the old parent from the currently stored patterns
 name|LabelPattern
 name|defKeyPattern
 init|=
-name|_prefs
+name|prefs
 operator|.
 name|getKeyPattern
 argument_list|()
@@ -621,7 +648,7 @@ name|defKeyPattern
 argument_list|)
 expr_stmt|;
 comment|// store new patterns globally
-name|_prefs
+name|prefs
 operator|.
 name|putKeyPattern
 argument_list|(
@@ -675,7 +702,6 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
-comment|//, 8dlu, 20dlu, 8dlu, fill:pref", "");
 name|JPanel
 name|pan
 init|=
@@ -1001,7 +1027,7 @@ name|super
 operator|.
 name|setValues
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getKeyPattern
 argument_list|()
