@@ -212,33 +212,15 @@ name|String
 name|getSelectedText
 parameter_list|()
 function_decl|;
-DECL|method|hasUndoInformation ()
-name|boolean
-name|hasUndoInformation
-parameter_list|()
-function_decl|;
 DECL|method|undo ()
 name|void
 name|undo
-parameter_list|()
-function_decl|;
-DECL|method|hasRedoInformation ()
-name|boolean
-name|hasRedoInformation
 parameter_list|()
 function_decl|;
 DECL|method|redo ()
 name|void
 name|redo
 parameter_list|()
-function_decl|;
-DECL|method|addUndoableEditListener (UndoableEditListener listener)
-name|void
-name|addUndoableEditListener
-parameter_list|(
-name|UndoableEditListener
-name|listener
-parameter_list|)
 function_decl|;
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
 name|void

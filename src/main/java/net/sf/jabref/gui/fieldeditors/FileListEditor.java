@@ -2600,18 +2600,6 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|hasUndoInformation ()
-specifier|public
-name|boolean
-name|hasUndoInformation
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -2620,34 +2608,11 @@ parameter_list|()
 block|{     }
 annotation|@
 name|Override
-DECL|method|hasRedoInformation ()
-specifier|public
-name|boolean
-name|hasRedoInformation
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|redo ()
 specifier|public
 name|void
 name|redo
 parameter_list|()
-block|{     }
-annotation|@
-name|Override
-DECL|method|addUndoableEditListener (UndoableEditListener listener)
-specifier|public
-name|void
-name|addUndoableEditListener
-parameter_list|(
-name|UndoableEditListener
-name|listener
-parameter_list|)
 block|{     }
 annotation|@
 name|Override

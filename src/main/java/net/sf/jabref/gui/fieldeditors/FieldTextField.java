@@ -797,19 +797,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|hasUndoInformation ()
-specifier|public
-name|boolean
-name|hasUndoInformation
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-comment|//undo.canUndo();
-block|}
-annotation|@
-name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -820,19 +807,6 @@ comment|/*try {             if (undo.canUndo()) {                 undo.undo();  
 block|}
 annotation|@
 name|Override
-DECL|method|hasRedoInformation ()
-specifier|public
-name|boolean
-name|hasRedoInformation
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-comment|//undo.canRedo();
-block|}
-annotation|@
-name|Override
 DECL|method|redo ()
 specifier|public
 name|void
@@ -840,26 +814,6 @@ name|redo
 parameter_list|()
 block|{
 comment|/*try {             if (undo.canRedo()) {                 undo.redo();             }         } catch (CannotUndoException e) {         }*/
-block|}
-annotation|@
-name|Override
-DECL|method|addUndoableEditListener (UndoableEditListener listener)
-specifier|public
-name|void
-name|addUndoableEditListener
-parameter_list|(
-name|UndoableEditListener
-name|listener
-parameter_list|)
-block|{
-name|getDocument
-argument_list|()
-operator|.
-name|addUndoableEditListener
-argument_list|(
-name|listener
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override
