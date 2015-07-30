@@ -76,6 +76,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|autocompleter
 operator|.
 name|AutoCompleterFactory

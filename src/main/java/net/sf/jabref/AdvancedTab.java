@@ -198,9 +198,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|journals
-operator|.
 name|logic
+operator|.
+name|journals
 operator|.
 name|JournalAbbreviationRepository
 import|;
@@ -242,6 +242,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|remote
 operator|.
 name|RemotePreferences
@@ -256,6 +258,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|remote
 operator|.
 name|RemoteUtil
@@ -269,6 +273,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|remote
 operator|.

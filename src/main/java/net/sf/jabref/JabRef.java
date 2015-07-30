@@ -328,6 +328,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|remote
 operator|.
 name|RemotePreferences
@@ -341,6 +343,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|remote
 operator|.
@@ -357,6 +361,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|remote
 operator|.
@@ -430,7 +436,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
 name|logging
 operator|.

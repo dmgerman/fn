@@ -32,7 +32,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
 name|error
 operator|.
@@ -48,7 +48,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
 name|logging
 operator|.

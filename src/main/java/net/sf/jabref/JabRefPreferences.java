@@ -374,6 +374,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|remote
 operator|.
 name|RemotePreferences

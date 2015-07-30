@@ -266,9 +266,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|journals
-operator|.
 name|logic
+operator|.
+name|journals
 operator|.
 name|JournalAbbreviationRepository
 import|;
@@ -281,6 +281,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|remote
 operator|.
@@ -312,7 +314,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
 name|error
 operator|.
@@ -328,7 +330,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
 name|logging
 operator|.
