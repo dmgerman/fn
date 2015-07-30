@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.fieldeditors
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|fieldeditors
 package|;
 end_package
 
@@ -297,6 +299,62 @@ operator|.
 name|layout
 operator|.
 name|FormLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|AutoCompleteListener
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileListEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileListEntryEditor
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileListTableModel
 import|;
 end_import
 
@@ -983,7 +1041,7 @@ name|EAST
 argument_list|)
 expr_stmt|;
 name|TransferHandler
-name|th
+name|transferHandler
 init|=
 operator|new
 name|FileListEditorTransferHandler
@@ -997,14 +1055,14 @@ argument_list|)
 decl_stmt|;
 name|setTransferHandler
 argument_list|(
-name|th
+name|transferHandler
 argument_list|)
 expr_stmt|;
 name|panel
 operator|.
 name|setTransferHandler
 argument_list|(
-name|th
+name|transferHandler
 argument_list|)
 expr_stmt|;
 comment|// Add an input/action pair for deleting entries:
@@ -1595,20 +1653,20 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|setLabelColor (Color c)
+DECL|method|setLabelColor (Color color)
 specifier|public
 name|void
 name|setLabelColor
 parameter_list|(
 name|Color
-name|c
+name|color
 parameter_list|)
 block|{
 name|label
 operator|.
 name|setForeground
 argument_list|(
-name|c
+name|color
 argument_list|)
 expr_stmt|;
 block|}
@@ -2542,18 +2600,6 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|hasUndoInformation ()
-specifier|public
-name|boolean
-name|hasUndoInformation
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -2562,34 +2608,11 @@ parameter_list|()
 block|{     }
 annotation|@
 name|Override
-DECL|method|hasRedoInformation ()
-specifier|public
-name|boolean
-name|hasRedoInformation
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|redo ()
 specifier|public
 name|void
 name|redo
 parameter_list|()
-block|{     }
-annotation|@
-name|Override
-DECL|method|addUndoableEditListener (UndoableEditListener listener)
-specifier|public
-name|void
-name|addUndoableEditListener
-parameter_list|(
-name|UndoableEditListener
-name|listener
-parameter_list|)
 block|{     }
 annotation|@
 name|Override

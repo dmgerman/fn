@@ -38,6 +38,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|fieldeditors
+operator|.
 name|FileListEditor
 import|;
 end_import

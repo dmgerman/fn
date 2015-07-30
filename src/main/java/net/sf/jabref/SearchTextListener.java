@@ -30,6 +30,7 @@ end_comment
 
 begin_interface
 DECL|interface|SearchTextListener
+specifier|public
 interface|interface
 name|SearchTextListener
 block|{

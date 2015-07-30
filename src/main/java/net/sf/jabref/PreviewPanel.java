@@ -236,6 +236,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|fieldeditors
+operator|.
 name|PreviewPanelTransferHandler
 import|;
 end_import

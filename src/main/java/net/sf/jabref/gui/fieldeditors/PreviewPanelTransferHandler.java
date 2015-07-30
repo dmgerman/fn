@@ -4,7 +4,7 @@ comment|/* Copyright (C) 2012 JabRef contributors.    This program is free softw
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.fieldeditors
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|fieldeditors
 package|;
 end_package
 
@@ -150,6 +152,34 @@ name|JabRefFrame
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_class
 DECL|class|PreviewPanelTransferHandler
 specifier|public
@@ -158,6 +188,22 @@ name|PreviewPanelTransferHandler
 extends|extends
 name|FileListEditorTransferHandler
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|PreviewPanelTransferHandler
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|method|PreviewPanelTransferHandler (JabRefFrame frame, EntryContainer entryContainer, TransferHandler textTransferHandler)
 specifier|public
 name|PreviewPanelTransferHandler
@@ -185,13 +231,13 @@ block|}
 comment|/**      * LINK is unsupported as dropping into into Microsoft Word then leads to a link instead to a copy      */
 annotation|@
 name|Override
-DECL|method|getSourceActions (JComponent c)
+DECL|method|getSourceActions (JComponent component)
 specifier|public
 name|int
 name|getSourceActions
 parameter_list|(
 name|JComponent
-name|c
+name|component
 parameter_list|)
 block|{
 return|return
@@ -202,18 +248,18 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|createTransferable (JComponent c)
+DECL|method|createTransferable (JComponent component)
 specifier|protected
 name|Transferable
 name|createTransferable
 parameter_list|(
 name|JComponent
-name|c
+name|component
 parameter_list|)
 block|{
 if|if
 condition|(
-name|c
+name|component
 operator|instanceof
 name|JEditorPane
 condition|)
@@ -225,15 +271,15 @@ comment|// as textTransferHandler.createTransferable() is not available and
 comment|// I don't know any other method, I do the HTML conversion by hand
 comment|// First, get the HTML of the selected text
 name|JEditorPane
-name|e
+name|editorPane
 init|=
 operator|(
 name|JEditorPane
 operator|)
-name|c
+name|component
 decl_stmt|;
 name|StringWriter
-name|sw
+name|stringWriter
 init|=
 operator|new
 name|StringWriter
@@ -241,26 +287,26 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|e
+name|editorPane
 operator|.
 name|getEditorKit
 argument_list|()
 operator|.
 name|write
 argument_list|(
-name|sw
+name|stringWriter
 argument_list|,
-name|e
+name|editorPane
 operator|.
 name|getDocument
 argument_list|()
 argument_list|,
-name|e
+name|editorPane
 operator|.
 name|getSelectionStart
 argument_list|()
 argument_list|,
-name|e
+name|editorPane
 operator|.
 name|getSelectionEnd
 argument_list|()
@@ -270,25 +316,33 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|e1
+name|e
 parameter_list|)
 block|{
-name|e1
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Cannot write preview"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
 name|BadLocationException
-name|e1
+name|e
 parameter_list|)
 block|{
-name|e1
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Cannot write preview"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 comment|// Second, return the HTML (and text as fallback)
@@ -296,12 +350,12 @@ return|return
 operator|new
 name|HtmlTransferable
 argument_list|(
-name|sw
+name|stringWriter
 operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|e
+name|editorPane
 operator|.
 name|getSelectedText
 argument_list|()

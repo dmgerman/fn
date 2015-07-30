@@ -4,13 +4,17 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui.fieldeditors
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
+operator|.
+name|fieldeditors
 package|;
 end_package
 
@@ -127,20 +131,20 @@ name|void
 name|setInvalidBackgroundColor
 parameter_list|()
 function_decl|;
-DECL|method|setLabelColor (Color c)
+DECL|method|setLabelColor (Color color)
 name|void
 name|setLabelColor
 parameter_list|(
 name|Color
-name|c
+name|color
 parameter_list|)
 function_decl|;
-DECL|method|setBackground (Color c)
+DECL|method|setBackground (Color color)
 name|void
 name|setBackground
 parameter_list|(
 name|Color
-name|c
+name|color
 parameter_list|)
 function_decl|;
 DECL|method|updateFontColor ()
@@ -208,33 +212,15 @@ name|String
 name|getSelectedText
 parameter_list|()
 function_decl|;
-DECL|method|hasUndoInformation ()
-name|boolean
-name|hasUndoInformation
-parameter_list|()
-function_decl|;
 DECL|method|undo ()
 name|void
 name|undo
-parameter_list|()
-function_decl|;
-DECL|method|hasRedoInformation ()
-name|boolean
-name|hasRedoInformation
 parameter_list|()
 function_decl|;
 DECL|method|redo ()
 name|void
 name|redo
 parameter_list|()
-function_decl|;
-DECL|method|addUndoableEditListener (UndoableEditListener listener)
-name|void
-name|addUndoableEditListener
-parameter_list|(
-name|UndoableEditListener
-name|listener
-parameter_list|)
 function_decl|;
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
 name|void

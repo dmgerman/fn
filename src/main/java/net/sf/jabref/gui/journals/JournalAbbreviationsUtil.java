@@ -34,6 +34,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|fieldeditors
+operator|.
 name|FieldEditor
 import|;
 end_import
