@@ -220,22 +220,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|preftabs
-operator|.
-name|PrefsTab
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|specialfields
 operator|.
 name|SpecialFieldsUtils
@@ -294,11 +278,11 @@ name|JPanel
 implements|implements
 name|PrefsTab
 block|{
-DECL|field|_prefs
+DECL|field|prefs
 specifier|private
 specifier|final
 name|JabRefPreferences
-name|_prefs
+name|prefs
 decl_stmt|;
 DECL|field|tableChanged
 specifier|private
@@ -599,7 +583,9 @@ name|JabRefFrame
 name|frame
 parameter_list|)
 block|{
-name|_prefs
+name|this
+operator|.
+name|prefs
 operator|=
 name|prefs
 expr_stmt|;
@@ -1071,7 +1057,6 @@ name|FormLayout
 argument_list|(
 literal|"1dlu, 8dlu, left:pref, 4dlu, fill:pref"
 argument_list|,
-comment|//, 4dlu, fill:60dlu, 4dlu, fill:pref",
 literal|""
 argument_list|)
 decl_stmt|;
@@ -1162,7 +1147,7 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 name|JToolBar
-name|tlb
+name|toolBar
 init|=
 operator|new
 name|JToolBar
@@ -1172,24 +1157,22 @@ operator|.
 name|VERTICAL
 argument_list|)
 decl_stmt|;
-name|tlb
+name|toolBar
 operator|.
 name|setFloatable
 argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//tlb.setRollover(true);
-comment|//tlb.setLayout(gbl);
 name|AddRowAction
-name|ara
+name|addRow
 init|=
 operator|new
 name|AddRowAction
 argument_list|()
 decl_stmt|;
 name|DeleteRowAction
-name|dra
+name|deleteRow
 init|=
 operator|new
 name|DeleteRowAction
@@ -1209,53 +1192,51 @@ operator|new
 name|MoveRowDownAction
 argument_list|()
 decl_stmt|;
-name|tlb
+name|toolBar
 operator|.
 name|setBorder
 argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|tlb
+name|toolBar
 operator|.
 name|add
 argument_list|(
-name|ara
+name|addRow
 argument_list|)
 expr_stmt|;
-name|tlb
+name|toolBar
 operator|.
 name|add
 argument_list|(
-name|dra
+name|deleteRow
 argument_list|)
 expr_stmt|;
-name|tlb
+name|toolBar
 operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
-name|tlb
+name|toolBar
 operator|.
 name|add
 argument_list|(
 name|moveUp
 argument_list|)
 expr_stmt|;
-name|tlb
+name|toolBar
 operator|.
 name|add
 argument_list|(
 name|moveDown
 argument_list|)
 expr_stmt|;
-comment|//tlb.addSeparator();
-comment|//tlb.add(new UpdateWidthsAction());
 name|tabPanel
 operator|.
 name|add
 argument_list|(
-name|tlb
+name|toolBar
 argument_list|,
 name|BorderLayout
 operator|.
@@ -1556,7 +1537,7 @@ name|specialFieldsHelp
 argument_list|)
 decl_stmt|;
 name|JButton
-name|hlb
+name|helpButton
 init|=
 operator|new
 name|JButton
@@ -1569,7 +1550,7 @@ literal|"helpSmall"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|hlb
+name|helpButton
 operator|.
 name|setToolTipText
 argument_list|(
@@ -1581,7 +1562,7 @@ literal|"Help on special fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|hlb
+name|helpButton
 operator|.
 name|addActionListener
 argument_list|(
@@ -1601,7 +1582,6 @@ literal|"Enable special fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//		.concat(". ").concat(Globals.lang("You must restart JabRef for this to come into effect.")));
 name|specialFieldsEnabled
 operator|.
 name|addChangeListener
@@ -2119,7 +2099,7 @@ name|specialTableColumnsBuilder
 operator|.
 name|add
 argument_list|(
-name|hlb
+name|helpButton
 argument_list|,
 name|cc
 operator|.
@@ -2327,9 +2307,6 @@ operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
-comment|//	lab = new JLabel("<HTML>("+Globals.lang("this button will update the column width settings<BR>"
-comment|//						+"to match the current widths in your table")+")</HTML>");
-comment|//        lab = new JLabel("<HTML>("+Globals.lang("this_button_will_update") +")</HTML>") ;
 name|builder
 operator|.
 name|append
@@ -2397,7 +2374,6 @@ argument_list|(
 name|pan
 argument_list|)
 expr_stmt|;
-comment|//builder.append(lab);
 name|builder
 operator|.
 name|nextLine
@@ -2450,7 +2426,7 @@ name|fileColumn
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2464,7 +2440,7 @@ name|pdfColumn
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2478,7 +2454,7 @@ name|urlColumn
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2493,7 +2469,7 @@ operator|.
 name|setSelected
 argument_list|(
 operator|!
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2507,7 +2483,7 @@ name|preferDoi
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2521,7 +2497,7 @@ name|fileColumn
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2535,7 +2511,7 @@ name|arxivColumn
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2549,7 +2525,7 @@ name|extraFileColumns
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2571,7 +2547,7 @@ name|String
 index|[]
 name|desiredColumns
 init|=
-name|_prefs
+name|prefs
 operator|.
 name|getStringArray
 argument_list|(
@@ -2686,7 +2662,7 @@ block|}
 comment|/*** begin: special fields ***/
 name|oldRankingColumn
 operator|=
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2704,7 +2680,7 @@ argument_list|)
 expr_stmt|;
 name|oldCompcatRankingColumn
 operator|=
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2722,7 +2698,7 @@ argument_list|)
 expr_stmt|;
 name|oldQualityColumn
 operator|=
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2740,7 +2716,7 @@ argument_list|)
 expr_stmt|;
 name|oldPriorityColumn
 operator|=
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2758,7 +2734,7 @@ argument_list|)
 expr_stmt|;
 name|oldRelevanceColumn
 operator|=
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2776,7 +2752,7 @@ argument_list|)
 expr_stmt|;
 name|oldPrintedColumn
 operator|=
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2794,7 +2770,7 @@ argument_list|)
 expr_stmt|;
 name|oldReadStatusColumn
 operator|=
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2812,7 +2788,7 @@ argument_list|)
 expr_stmt|;
 name|oldSyncKeyWords
 operator|=
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2830,7 +2806,7 @@ argument_list|)
 expr_stmt|;
 name|oldWriteSpecialFields
 operator|=
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2849,7 +2825,7 @@ expr_stmt|;
 comment|// has to be called as last to correctly enable/disable the other settings
 name|oldSpecialFieldsEnabled
 operator|=
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2878,7 +2854,7 @@ comment|/*** end: special fields ***/
 name|boolean
 name|oldShowOneLetterHeadingForIconColumns
 init|=
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2903,7 +2879,7 @@ name|String
 index|[]
 name|names
 init|=
-name|_prefs
+name|prefs
 operator|.
 name|getStringArray
 argument_list|(
@@ -2916,7 +2892,7 @@ name|String
 index|[]
 name|lengths
 init|=
-name|_prefs
+name|prefs
 operator|.
 name|getStringArray
 argument_list|(
@@ -3005,7 +2981,7 @@ literal|5
 expr_stmt|;
 name|ncWidth
 operator|=
-name|_prefs
+name|prefs
 operator|.
 name|getInt
 argument_list|(
@@ -4119,7 +4095,6 @@ specifier|public
 name|UpdateWidthsAction
 parameter_list|()
 block|{
-comment|//super(Globals.lang("Update to current column widths"));
 name|super
 argument_list|(
 name|Globals
@@ -4130,7 +4105,6 @@ literal|"Update to current column widths"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//putValue(SHORT_DESCRIPTION, Globals.lang("Update to current column widths"));
 block|}
 annotation|@
 name|Override
@@ -4239,8 +4213,6 @@ operator|.
 name|getWidth
 argument_list|()
 decl_stmt|;
-comment|//Util.pr(":"+((String)colSetup.getValueAt(i-1, 0)).toLowerCase());
-comment|//Util.pr("-"+name);
 if|if
 condition|(
 name|i
@@ -4392,7 +4364,7 @@ name|void
 name|storeSettings
 parameter_list|()
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4406,7 +4378,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4420,7 +4392,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4434,7 +4406,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4448,7 +4420,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4462,7 +4434,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4547,7 +4519,7 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-name|_prefs
+name|prefs
 operator|.
 name|putStringArray
 argument_list|(
@@ -4561,7 +4533,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|putStringArray
 argument_list|(
@@ -4576,7 +4548,7 @@ block|{}
 argument_list|)
 expr_stmt|;
 block|}
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4769,7 +4741,7 @@ condition|(
 name|restartRequired
 condition|)
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4780,7 +4752,7 @@ argument_list|,
 name|newSpecialFieldsEnabled
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4791,7 +4763,7 @@ argument_list|,
 name|newRankingColumn
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4802,7 +4774,7 @@ argument_list|,
 name|newCompactRankingColumn
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4813,7 +4785,7 @@ argument_list|,
 name|newPriorityColumn
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4824,7 +4796,7 @@ argument_list|,
 name|newQualityColumn
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4835,7 +4807,7 @@ argument_list|,
 name|newRelevanceColumn
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4846,7 +4818,7 @@ argument_list|,
 name|newPrintedColumn
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4857,7 +4829,7 @@ argument_list|,
 name|newReadStatusColumn
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4868,7 +4840,7 @@ argument_list|,
 name|newSyncKeyWords
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -4918,8 +4890,6 @@ name|stopCellEditing
 argument_list|()
 expr_stmt|;
 block|}
-comment|//_prefs.putStringArray("columnNames", getChoices());
-comment|/*String[] cols = tableFields.getText().replaceAll("\\s+","")             .replaceAll("\\n+","").toLowerCase().split(";");         if (cols.length> 0) for (int i=0; i<cols.length; i++)             cols[i] = cols[i].trim();             else cols = null;*/
 comment|// Now we need to make sense of the contents the user has made to the
 comment|// table setup table.
 if|if
@@ -5013,7 +4983,7 @@ name|size
 argument_list|()
 index|]
 decl_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putInt
 argument_list|(
@@ -5083,10 +5053,9 @@ name|tr
 operator|.
 name|length
 expr_stmt|;
-comment|//Util.pr(names[i]+"   "+widths[i]);
 block|}
 comment|// Finally, we store the new preferences.
-name|_prefs
+name|prefs
 operator|.
 name|putStringArray
 argument_list|(
@@ -5097,7 +5066,7 @@ argument_list|,
 name|names
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putStringArray
 argument_list|(
