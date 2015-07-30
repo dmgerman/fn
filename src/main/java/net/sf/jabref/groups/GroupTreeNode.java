@@ -198,6 +198,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|search
 operator|.
 name|SearchRule
@@ -211,6 +213,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|search
 operator|.
@@ -229,6 +233,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|search
 operator|.

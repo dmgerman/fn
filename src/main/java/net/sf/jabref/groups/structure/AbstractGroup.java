@@ -62,6 +62,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|search
 operator|.
 name|SearchRule
