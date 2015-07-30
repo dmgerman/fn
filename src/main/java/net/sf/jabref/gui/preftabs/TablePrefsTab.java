@@ -262,7 +262,6 @@ end_import
 
 begin_class
 DECL|class|TablePrefsTab
-specifier|public
 class|class
 name|TablePrefsTab
 extends|extends

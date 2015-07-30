@@ -256,7 +256,6 @@ end_import
 
 begin_class
 DECL|class|GeneralTab
-specifier|public
 class|class
 name|GeneralTab
 extends|extends

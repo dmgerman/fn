@@ -132,7 +132,6 @@ end_import
 
 begin_class
 DECL|class|PreviewPrefsTab
-specifier|public
 class|class
 name|PreviewPrefsTab
 extends|extends

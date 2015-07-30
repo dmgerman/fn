@@ -300,7 +300,6 @@ end_import
 
 begin_class
 DECL|class|AdvancedTab
-specifier|public
 class|class
 name|AdvancedTab
 extends|extends

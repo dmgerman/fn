@@ -244,7 +244,6 @@ end_comment
 
 begin_class
 DECL|class|FileSortTab
-specifier|public
 class|class
 name|FileSortTab
 extends|extends

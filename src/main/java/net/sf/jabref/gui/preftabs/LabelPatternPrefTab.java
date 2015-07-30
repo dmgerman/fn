@@ -228,7 +228,6 @@ end_comment
 
 begin_class
 DECL|class|LabelPatternPrefTab
-specifier|public
 class|class
 name|LabelPatternPrefTab
 extends|extends

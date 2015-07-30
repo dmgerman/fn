@@ -198,7 +198,6 @@ end_import
 
 begin_class
 DECL|class|ExternalTab
-specifier|public
 class|class
 name|ExternalTab
 extends|extends

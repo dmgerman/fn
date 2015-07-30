@@ -138,7 +138,6 @@ end_import
 
 begin_class
 DECL|class|AppearancePrefsTab
-specifier|public
 class|class
 name|AppearancePrefsTab
 extends|extends

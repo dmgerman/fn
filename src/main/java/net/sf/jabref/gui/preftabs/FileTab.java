@@ -300,7 +300,6 @@ end_comment
 
 begin_class
 DECL|class|FileTab
-specifier|public
 class|class
 name|FileTab
 extends|extends

@@ -116,7 +116,6 @@ end_import
 
 begin_class
 DECL|class|GroupsPrefsTab
-specifier|public
 class|class
 name|GroupsPrefsTab
 extends|extends

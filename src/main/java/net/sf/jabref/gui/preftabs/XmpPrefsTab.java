@@ -186,7 +186,6 @@ end_comment
 
 begin_class
 DECL|class|XmpPrefsTab
-specifier|public
 class|class
 name|XmpPrefsTab
 extends|extends

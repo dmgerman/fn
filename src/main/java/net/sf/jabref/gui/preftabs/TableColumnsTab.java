@@ -270,7 +270,6 @@ end_import
 
 begin_class
 DECL|class|TableColumnsTab
-specifier|public
 class|class
 name|TableColumnsTab
 extends|extends

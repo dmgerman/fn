@@ -196,7 +196,6 @@ end_import
 
 begin_class
 DECL|class|EntryEditorPrefsTab
-specifier|public
 class|class
 name|EntryEditorPrefsTab
 extends|extends
