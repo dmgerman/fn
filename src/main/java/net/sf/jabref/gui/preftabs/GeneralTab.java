@@ -264,10 +264,10 @@ name|JPanel
 implements|implements
 name|PrefsTab
 block|{
+DECL|field|defSort
 specifier|private
 specifier|final
 name|JCheckBox
-DECL|field|defSort
 name|defSort
 decl_stmt|;
 DECL|field|ctrlClick
@@ -390,11 +390,11 @@ specifier|final
 name|JTextField
 name|timeStampField
 decl_stmt|;
-DECL|field|_prefs
+DECL|field|prefs
 specifier|private
 specifier|final
 name|JabRefPreferences
-name|_prefs
+name|prefs
 decl_stmt|;
 DECL|field|language
 specifier|private
@@ -455,7 +455,9 @@ name|JabRefPreferences
 name|prefs
 parameter_list|)
 block|{
-name|_prefs
+name|this
+operator|.
+name|prefs
 operator|=
 name|prefs
 expr_stmt|;
@@ -1125,7 +1127,7 @@ literal|3
 argument_list|)
 expr_stmt|;
 name|JButton
-name|hlp
+name|help
 init|=
 operator|new
 name|JButton
@@ -1133,14 +1135,14 @@ argument_list|(
 name|ownerHelp
 argument_list|)
 decl_stmt|;
-name|hlp
+name|help
 operator|.
 name|setText
 argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|hlp
+name|help
 operator|.
 name|setPreferredSize
 argument_list|(
@@ -1157,7 +1159,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|hlp
+name|help
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1209,7 +1211,7 @@ argument_list|(
 name|timeStampField
 argument_list|)
 expr_stmt|;
-name|hlp
+name|help
 operator|=
 operator|new
 name|JButton
@@ -1217,14 +1219,14 @@ argument_list|(
 name|timeStampHelp
 argument_list|)
 expr_stmt|;
-name|hlp
+name|help
 operator|.
 name|setText
 argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|hlp
+name|help
 operator|.
 name|setPreferredSize
 argument_list|(
@@ -1241,7 +1243,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|hlp
+name|help
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1418,7 +1420,7 @@ name|allowEditing
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1432,7 +1434,7 @@ name|defSort
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1446,7 +1448,7 @@ name|ctrlClick
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1460,7 +1462,7 @@ name|useOwner
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1474,7 +1476,7 @@ name|overwriteOwner
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1488,7 +1490,7 @@ name|useTimeStamp
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1502,7 +1504,7 @@ name|overwriteTimeStamp
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1516,7 +1518,7 @@ name|updateTimeStamp
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1540,7 +1542,7 @@ name|keyDuplicateWarningDialog
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1554,7 +1556,7 @@ name|keyEmptyWarningDialog
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1568,7 +1570,7 @@ name|enforceLegalKeys
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1582,7 +1584,7 @@ name|memoryStick
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1596,7 +1598,7 @@ name|confirmDelete
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1610,7 +1612,7 @@ name|defOwnerField
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1624,7 +1626,7 @@ name|timeStampFormat
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1638,7 +1640,7 @@ name|timeStampField
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1652,7 +1654,7 @@ name|useImportInspector
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1666,7 +1668,7 @@ name|useImportInspectorForSingle
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1680,7 +1682,7 @@ name|inspectionWarnDupli
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1714,7 +1716,7 @@ name|markImportedEntries
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1728,7 +1730,7 @@ name|unmarkAllEntriesBeforeImporting
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -1741,7 +1743,7 @@ expr_stmt|;
 name|String
 name|enc
 init|=
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1797,7 +1799,7 @@ block|}
 name|String
 name|oldLan
 init|=
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -1856,7 +1858,7 @@ name|void
 name|storeSettings
 parameter_list|()
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1870,7 +1872,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1884,7 +1886,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1898,7 +1900,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1912,7 +1914,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1926,7 +1928,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1940,7 +1942,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1954,7 +1956,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -1970,7 +1972,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -2014,7 +2016,7 @@ name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2028,7 +2030,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2042,7 +2044,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2056,7 +2058,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2070,8 +2072,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//_prefs.putBoolean("preserveFieldFormatting", preserveFormatting.isSelected());
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2085,7 +2086,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2099,7 +2100,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2113,7 +2114,6 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//_prefs.putBoolean("defaultAutoSort", defSorrrt.isSelected());
 name|String
 name|owner
 init|=
@@ -2125,7 +2125,7 @@ operator|.
 name|trim
 argument_list|()
 decl_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -2136,7 +2136,7 @@ argument_list|,
 name|owner
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|WRAPPED_USERNAME
 operator|=
@@ -2146,7 +2146,7 @@ name|owner
 operator|+
 literal|']'
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -2163,7 +2163,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -2180,7 +2180,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -2197,7 +2197,7 @@ name|getSelectedItem
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2211,7 +2211,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -2242,7 +2242,7 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -2253,7 +2253,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
