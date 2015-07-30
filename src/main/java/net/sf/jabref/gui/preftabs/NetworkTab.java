@@ -4,13 +4,17 @@ comment|/*  Copyright (C) 2013 JabRef contributors.     This program is free sof
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui.preftabs
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
+operator|.
+name|preftabs
 package|;
 end_package
 
@@ -154,11 +158,31 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
 operator|.
-name|preftabs
+name|sf
 operator|.
-name|PrefsTab
+name|jabref
+operator|.
+name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
