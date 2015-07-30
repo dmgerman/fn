@@ -94,20 +94,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|ColorSetupPanel
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|jgoodies
@@ -144,11 +130,11 @@ name|JPanel
 implements|implements
 name|PrefsTab
 block|{
-DECL|field|_prefs
+DECL|field|prefs
 specifier|private
 specifier|final
 name|JabRefPreferences
-name|_prefs
+name|prefs
 decl_stmt|;
 DECL|field|colorCodes
 specifier|private
@@ -168,7 +154,6 @@ specifier|final
 name|JCheckBox
 name|showGrid
 decl_stmt|;
-comment|//, useCustomIconTheme;
 DECL|field|colorPanel
 specifier|private
 specifier|final
@@ -210,7 +195,6 @@ specifier|final
 name|JTextField
 name|rowPadding
 decl_stmt|;
-comment|//, customIconThemeFile;
 comment|/**      * Customization of appearance parameters.      *      * @param prefs a<code>JabRefPreferences</code> value      */
 DECL|method|AppearancePrefsTab (JabRefPreferences prefs)
 specifier|public
@@ -220,7 +204,9 @@ name|JabRefPreferences
 name|prefs
 parameter_list|)
 block|{
-name|_prefs
+name|this
+operator|.
+name|prefs
 operator|=
 name|prefs
 expr_stmt|;
@@ -262,7 +248,6 @@ literal|"Color codes for required and optional fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*antialias = new JCheckBox(Globals.lang                   ("Use antialiasing font"));*/
 name|overrideFonts
 operator|=
 operator|new
@@ -289,8 +274,6 @@ literal|"Show gridlines"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//useCustomIconTheme = new JCheckBox(Globals.lang("Use custom icon theme"));
-comment|//customIconThemeFile = new JTextField();
 name|FormLayout
 name|layout
 init|=
@@ -405,8 +388,6 @@ literal|"Table appearance"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//builder.append(antialias);
-comment|//builder.nextLine();
 name|JPanel
 name|p2
 init|=
@@ -520,18 +501,6 @@ argument_list|(
 name|colorPanel
 argument_list|)
 expr_stmt|;
-comment|//builder.appendSeparator(Globals.lang("Custom icon theme"));
-comment|//builder.append(useCustomIconTheme);
-comment|//builder.nextLine();
-comment|//JPanel p2 = new JPanel();
-comment|//lab = new JLabel(Globals.lang("Custom icon theme file")+":");
-comment|//p2.add(lab);
-comment|//p2.add(customIconThemeFile);
-comment|//BrowseAction browse = new BrowseAction(null, customIconThemeFile, false);
-comment|//JButton browseBut = new JButton(Globals.lang("Browse"));
-comment|//browseBut.addActionListener(browse);
-comment|//p2.add(browseBut);
-comment|//builder.append(p2);
 name|JPanel
 name|upper
 init|=
@@ -677,7 +646,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/*menuFontButton.addActionListener(new ActionListener() {              public void actionPerformed(ActionEvent e) {                  Font f=new FontSelectorDialog                      (null, menuFont).getSelectedFont();                  if(f==null)                      return;                  else                      menuFont = f;              }              });*/
 name|JPanel
 name|pan
 init|=
@@ -726,7 +694,7 @@ name|colorCodes
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -736,14 +704,13 @@ name|TABLE_COLOR_CODES_ON
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//antialias.setSelected(_prefs.getBoolean("antialias"));
 name|fontSize
 operator|.
 name|setText
 argument_list|(
 literal|""
 operator|+
-name|_prefs
+name|prefs
 operator|.
 name|getInt
 argument_list|(
@@ -759,7 +726,7 @@ name|setText
 argument_list|(
 literal|""
 operator|+
-name|_prefs
+name|prefs
 operator|.
 name|getInt
 argument_list|(
@@ -771,7 +738,7 @@ argument_list|)
 expr_stmt|;
 name|oldMenuFontSize
 operator|=
-name|_prefs
+name|prefs
 operator|.
 name|getInt
 argument_list|(
@@ -784,7 +751,7 @@ name|overrideFonts
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -811,13 +778,11 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//useCustomIconTheme.setSelected(_prefs.getBoolean("useCustomIconTheme"));
-comment|//customIconThemeFile.setText(_prefs.get("customIconThemeFile"));
 name|showGrid
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -842,7 +807,7 @@ name|void
 name|storeSettings
 parameter_list|()
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -856,8 +821,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//_prefs.putBoolean("antialias", antialias.isSelected());
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -871,7 +835,7 @@ name|getFamily
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putInt
 argument_list|(
@@ -885,7 +849,7 @@ name|getStyle
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putInt
 argument_list|(
@@ -899,7 +863,7 @@ name|getSize
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -924,7 +888,7 @@ operator|.
 name|storeSettings
 argument_list|()
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -967,7 +931,7 @@ operator|!=
 name|oldMenuFontSize
 condition|)
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|putInt
 argument_list|(
@@ -1047,7 +1011,7 @@ name|getText
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|putInt
 argument_list|(
