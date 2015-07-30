@@ -4,15 +4,47 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui.fieldeditors
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
+operator|.
+name|fieldeditors
 package|;
 end_package
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|fieldeditors
+operator|.
+name|FieldEditor
+import|;
+end_import
 
 begin_import
 import|import
@@ -54,6 +86,7 @@ end_comment
 
 begin_class
 DECL|class|FieldEditorFocusListener
+specifier|public
 class|class
 name|FieldEditorFocusListener
 implements|implements
