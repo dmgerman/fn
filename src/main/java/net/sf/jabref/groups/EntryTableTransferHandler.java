@@ -176,6 +176,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|net
+operator|.
+name|MonitoredURLDownload
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -371,20 +387,6 @@ operator|.
 name|imports
 operator|.
 name|ParserResult
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|net
-operator|.
-name|URLDownload
 import|;
 end_import
 
@@ -1998,7 +2000,7 @@ argument_list|()
 expr_stmt|;
 comment|// System.out.println("Import url: " + dropLink.toString());
 comment|// System.out.println("Temp file: "+tmpfile.getAbsolutePath());
-name|URLDownload
+name|MonitoredURLDownload
 operator|.
 name|buildMonitoredDownload
 argument_list|(

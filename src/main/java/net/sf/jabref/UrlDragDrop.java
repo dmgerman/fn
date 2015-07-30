@@ -168,9 +168,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|net
 operator|.
-name|URLDownload
+name|MonitoredURLDownload
 import|;
 end_import
 
@@ -616,7 +618,7 @@ literal|"Downloading..."
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|URLDownload
+name|MonitoredURLDownload
 operator|.
 name|buildMonitoredDownload
 argument_list|(

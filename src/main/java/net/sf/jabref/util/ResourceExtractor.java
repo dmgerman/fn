@@ -58,6 +58,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|net
+operator|.
+name|MonitoredURLDownload
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -115,6 +131,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|net
 operator|.
@@ -221,7 +239,7 @@ block|{
 name|URLDownload
 name|ud
 init|=
-name|URLDownload
+name|MonitoredURLDownload
 operator|.
 name|buildMonitoredDownload
 argument_list|(

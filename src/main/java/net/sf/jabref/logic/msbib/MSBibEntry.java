@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.msbib
+DECL|package|net.sf.jabref.logic.msbib
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|msbib
 package|;
@@ -246,6 +248,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|mods
 operator|.
 name|PageNumbers
@@ -259,6 +263,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|mods
 operator|.

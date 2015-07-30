@@ -172,6 +172,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|net
 operator|.
 name|URLDownload

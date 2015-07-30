@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.cookies
+DECL|package|net.sf.jabref.logic.net
 package|package
 name|net
 operator|.
@@ -14,7 +14,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|cookies
+name|net
 package|;
 end_package
 
