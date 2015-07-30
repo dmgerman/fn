@@ -230,6 +230,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelPattern
+operator|.
+name|LabelPattern
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -365,20 +381,6 @@ operator|.
 name|imports
 operator|.
 name|CustomImportList
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|labelPattern
-operator|.
-name|LabelPattern
 import|;
 end_import
 
@@ -8667,14 +8669,6 @@ name|Preferences
 operator|.
 name|userNodeForPackage
 argument_list|(
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|labelPattern
-operator|.
 name|LabelPattern
 operator|.
 name|class
@@ -8775,14 +8769,6 @@ name|Preferences
 operator|.
 name|userNodeForPackage
 argument_list|(
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|labelPattern
-operator|.
 name|LabelPattern
 operator|.
 name|class
@@ -8854,7 +8840,7 @@ condition|)
 block|{
 comment|// no default value
 comment|// the first entry in the array is the full pattern
-comment|// see net.sf.jabref.labelPattern.LabelPatternUtil.split(String)
+comment|// see net.sf.jabref.logic.labelPattern.LabelPatternUtil.split(String)
 name|pre
 operator|.
 name|put

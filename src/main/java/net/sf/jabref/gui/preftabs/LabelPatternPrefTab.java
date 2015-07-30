@@ -160,6 +160,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|labelPattern
 operator|.
 name|LabelPattern
@@ -174,6 +176,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|labelPattern
 operator|.
 name|LabelPatternPanel
@@ -187,6 +191,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|labelPattern
 operator|.

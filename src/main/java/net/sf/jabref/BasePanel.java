@@ -1044,6 +1044,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|labelPattern
 operator|.
 name|LabelPatternUtil
@@ -1057,6 +1059,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|labelPattern
 operator|.

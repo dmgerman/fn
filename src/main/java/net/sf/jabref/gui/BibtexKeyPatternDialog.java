@@ -212,6 +212,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|labelPattern
 operator|.
 name|LabelPattern
@@ -225,6 +227,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|labelPattern
 operator|.

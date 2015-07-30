@@ -852,6 +852,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|labelPattern
 operator|.
 name|LabelPatternUtil
