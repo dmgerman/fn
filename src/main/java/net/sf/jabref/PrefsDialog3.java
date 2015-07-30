@@ -646,7 +646,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|TabLabelPattern
+name|LabelPatternPrefTab
 argument_list|(
 name|prefs
 argument_list|,
