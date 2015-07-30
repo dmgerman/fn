@@ -88,22 +88,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|preftabs
-operator|.
-name|PrefsTab
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|jgoodies
@@ -129,10 +113,6 @@ operator|.
 name|FormLayout
 import|;
 end_import
-
-begin_comment
-comment|// JZTODO lyrics
-end_comment
 
 begin_class
 DECL|class|GroupsPrefsTab
