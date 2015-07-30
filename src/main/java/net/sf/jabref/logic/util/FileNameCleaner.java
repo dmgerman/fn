@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2012 Sarel Botha     This class is based on http://sta
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.util
+DECL|package|net.sf.jabref.logic.util
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|util
 package|;
