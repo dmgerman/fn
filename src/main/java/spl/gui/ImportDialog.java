@@ -70,6 +70,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|preftabs
+operator|.
 name|ImportSettingsTab
 import|;
 end_import
