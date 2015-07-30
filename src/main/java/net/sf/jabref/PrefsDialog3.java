@@ -260,6 +260,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|preftabs
+operator|.
 name|AdvancedTab
 import|;
 end_import
@@ -273,6 +275,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|preftabs
 operator|.
 name|AppearancePrefsTab
 import|;
