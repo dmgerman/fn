@@ -234,13 +234,12 @@ name|autoCompleteListener
 init|=
 literal|null
 decl_stmt|;
-comment|//protected UndoManager undo = new UndoManager();
-DECL|method|FieldTextField (String fieldName_, String content, boolean changeColorOnFocus)
+DECL|method|FieldTextField (String fieldName, String content, boolean changeColorOnFocus)
 specifier|public
 name|FieldTextField
 parameter_list|(
 name|String
-name|fieldName_
+name|fieldName
 parameter_list|,
 name|String
 name|content
@@ -254,8 +253,6 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
-comment|// Listen for undo and redo events
-comment|/*getDocument().addUndoableEditListener(new UndoableEditListener() {             public void undoableEditHappened(UndoableEditEvent evt) {                 undo.addEdit(evt.getEdit());             }         });*/
 name|setupUndoRedo
 argument_list|()
 expr_stmt|;
@@ -285,9 +282,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|this
+operator|.
 name|fieldName
 operator|=
-name|fieldName_
+name|fieldName
 expr_stmt|;
 name|label
 operator|=
@@ -300,14 +299,14 @@ name|StringUtil
 operator|.
 name|nCase
 argument_list|(
+name|this
+operator|.
 name|fieldName
 argument_list|)
 operator|+
 literal|' '
 argument_list|)
 expr_stmt|;
-comment|// label = new JLabel(" "+Util.nCase(fieldName)+" ", JLabel.CENTER);
-comment|// label.setBorder(BorderFactory.createEtchedBorder());
 name|setBackground
 argument_list|(
 name|GUIGlobals
@@ -322,11 +321,6 @@ operator|.
 name|editorTextColor
 argument_list|)
 expr_stmt|;
-comment|// label.setOpaque(true);
-comment|// if ((content != null)&& (content.length()> 0))
-comment|// label.setForeground(GUIGlobals.entryEditorLabelColor);
-comment|// At construction time, the field can never have an invalid value.
-comment|// else label.setForeground(GUIGlobals.nullFieldColor);
 name|FieldTextMenu
 name|popMenu
 init|=
@@ -619,20 +613,20 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|setLabelColor (Color c)
+DECL|method|setLabelColor (Color color)
 specifier|public
 name|void
 name|setLabelColor
 parameter_list|(
 name|Color
-name|c
+name|color
 parameter_list|)
 block|{
 name|label
 operator|.
 name|setForeground
 argument_list|(
-name|c
+name|color
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -747,7 +741,6 @@ name|CURRENTFONT
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*public void paint(Graphics g) {     	Graphics2D g2 = (Graphics2D) g;     	if (antialias)     		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);     	super.paint(g2);     }*/
 annotation|@
 name|Override
 DECL|method|paste (String textToInsert)
@@ -802,9 +795,7 @@ specifier|public
 name|void
 name|undo
 parameter_list|()
-block|{
-comment|/*try {             if (undo.canUndo()) {                 undo.undo();             }         } catch (CannotUndoException e) {         }*/
-block|}
+block|{      }
 annotation|@
 name|Override
 DECL|method|redo ()
@@ -812,9 +803,7 @@ specifier|public
 name|void
 name|redo
 parameter_list|()
-block|{
-comment|/*try {             if (undo.canRedo()) {                 undo.redo();             }         } catch (CannotUndoException e) {         }*/
-block|}
+block|{      }
 annotation|@
 name|Override
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)

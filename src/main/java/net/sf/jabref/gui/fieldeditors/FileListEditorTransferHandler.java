@@ -299,10 +299,10 @@ specifier|final
 name|TransferHandler
 name|textTransferHandler
 decl_stmt|;
-DECL|field|dfh
+DECL|field|droppedFileHandler
 specifier|private
 name|DroppedFileHandler
-name|dfh
+name|droppedFileHandler
 init|=
 literal|null
 decl_stmt|;
@@ -496,8 +496,6 @@ name|javaFileListFlavor
 argument_list|)
 condition|)
 block|{
-comment|// JOptionPane.showMessageDialog(null, "Received
-comment|// javaFileListFlavor");
 name|files
 operator|=
 operator|(
@@ -550,7 +548,6 @@ operator|+
 name|dropLink
 argument_list|)
 expr_stmt|;
-comment|//return handleDropTransfer(dropLink, dropRow);
 block|}
 comment|// This is used when one or more files are pasted from the file manager
 comment|// under Gnome. The data consists of the file paths, one file per line:
@@ -618,11 +615,10 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|//addAll(files);
 for|for
 control|(
 name|File
-name|f
+name|file
 range|:
 name|theFiles
 control|)
@@ -631,7 +627,7 @@ comment|// Find the file's extension, if any:
 name|String
 name|name
 init|=
-name|f
+name|file
 operator|.
 name|getAbsolutePath
 argument_list|()
@@ -707,12 +703,12 @@ condition|)
 block|{
 if|if
 condition|(
-name|dfh
+name|droppedFileHandler
 operator|==
 literal|null
 condition|)
 block|{
-name|dfh
+name|droppedFileHandler
 operator|=
 operator|new
 name|DroppedFileHandler
@@ -726,7 +722,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|dfh
+name|droppedFileHandler
 operator|.
 name|handleDroppedfile
 argument_list|(
@@ -759,11 +755,9 @@ name|IOException
 name|ioe
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|warn
 argument_list|(
 literal|"failed to read dropped data: "
 operator|+
@@ -777,11 +771,9 @@ name|UnsupportedFlavorException
 name|ufe
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|warn
 argument_list|(
 literal|"drop type error: "
 operator|+
@@ -790,15 +782,15 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// all supported flavors failed
-name|System
-operator|.
-name|err
-operator|.
-name|println
+name|StringBuilder
+name|logMessage
+init|=
+operator|new
+name|StringBuilder
 argument_list|(
 literal|"can't transfer input: "
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|DataFlavor
 index|[]
 name|inflavs
@@ -816,11 +808,9 @@ range|:
 name|inflavs
 control|)
 block|{
-name|System
+name|logMessage
 operator|.
-name|out
-operator|.
-name|println
+name|append
 argument_list|(
 literal|"  "
 operator|+
@@ -828,6 +818,16 @@ name|inflav
 argument_list|)
 expr_stmt|;
 block|}
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+name|logMessage
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;

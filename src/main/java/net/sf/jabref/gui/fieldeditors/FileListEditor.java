@@ -1041,7 +1041,7 @@ name|EAST
 argument_list|)
 expr_stmt|;
 name|TransferHandler
-name|th
+name|transferHandler
 init|=
 operator|new
 name|FileListEditorTransferHandler
@@ -1055,14 +1055,14 @@ argument_list|)
 decl_stmt|;
 name|setTransferHandler
 argument_list|(
-name|th
+name|transferHandler
 argument_list|)
 expr_stmt|;
 name|panel
 operator|.
 name|setTransferHandler
 argument_list|(
-name|th
+name|transferHandler
 argument_list|)
 expr_stmt|;
 comment|// Add an input/action pair for deleting entries:
@@ -1653,20 +1653,20 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|setLabelColor (Color c)
+DECL|method|setLabelColor (Color color)
 specifier|public
 name|void
 name|setLabelColor
 parameter_list|(
 name|Color
-name|c
+name|color
 parameter_list|)
 block|{
 name|label
 operator|.
 name|setForeground
 argument_list|(
-name|c
+name|color
 argument_list|)
 expr_stmt|;
 block|}

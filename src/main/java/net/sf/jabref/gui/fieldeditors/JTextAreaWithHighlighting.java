@@ -289,104 +289,6 @@ name|setupUndoRedo
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|JTextAreaWithHighlighting (Document doc)
-specifier|public
-name|JTextAreaWithHighlighting
-parameter_list|(
-name|Document
-name|doc
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|doc
-argument_list|)
-expr_stmt|;
-name|setupUndoRedo
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|JTextAreaWithHighlighting (int rows, int columns)
-specifier|public
-name|JTextAreaWithHighlighting
-parameter_list|(
-name|int
-name|rows
-parameter_list|,
-name|int
-name|columns
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|rows
-argument_list|,
-name|columns
-argument_list|)
-expr_stmt|;
-name|setupUndoRedo
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|JTextAreaWithHighlighting (String text, int rows, int columns)
-specifier|public
-name|JTextAreaWithHighlighting
-parameter_list|(
-name|String
-name|text
-parameter_list|,
-name|int
-name|rows
-parameter_list|,
-name|int
-name|columns
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|text
-argument_list|,
-name|rows
-argument_list|,
-name|columns
-argument_list|)
-expr_stmt|;
-name|setupUndoRedo
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|JTextAreaWithHighlighting (Document doc, String text, int rows, int columns)
-specifier|public
-name|JTextAreaWithHighlighting
-parameter_list|(
-name|Document
-name|doc
-parameter_list|,
-name|String
-name|text
-parameter_list|,
-name|int
-name|rows
-parameter_list|,
-name|int
-name|columns
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|doc
-argument_list|,
-name|text
-argument_list|,
-name|rows
-argument_list|,
-name|columns
-argument_list|)
-expr_stmt|;
-name|setupUndoRedo
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|setupUndoRedo ()
 specifier|private
 name|void
@@ -595,7 +497,7 @@ comment|// If yes, do not bind
 comment|// Typically, we have: CTRL+y is "yank" in emacs and REDO in 'normal' settings
 comment|// The Emacs key bindings are stored in the keymap, not in the input map.
 name|Keymap
-name|keymap2
+name|keymap
 init|=
 name|getKeymap
 argument_list|()
@@ -604,7 +506,7 @@ name|KeyStroke
 index|[]
 name|keys
 init|=
-name|keymap2
+name|keymap
 operator|.
 name|getBoundKeyStrokes
 argument_list|()
@@ -686,13 +588,12 @@ parameter_list|)
 block|{
 comment|// highlight all characters that appear in charsToHighlight
 name|Highlighter
-name|h
+name|highlighter
 init|=
 name|getHighlighter
 argument_list|()
 decl_stmt|;
-comment|// myTa.set
-name|h
+name|highlighter
 operator|.
 name|removeAllHighlights
 argument_list|()
@@ -762,7 +663,7 @@ condition|)
 block|{
 try|try
 block|{
-name|h
+name|highlighter
 operator|.
 name|addHighlight
 argument_list|(
@@ -803,20 +704,20 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|setText (String t)
+DECL|method|setText (String text)
 specifier|public
 name|void
 name|setText
 parameter_list|(
 name|String
-name|t
+name|text
 parameter_list|)
 block|{
 name|super
 operator|.
 name|setText
 argument_list|(
-name|t
+name|text
 argument_list|)
 expr_stmt|;
 if|if

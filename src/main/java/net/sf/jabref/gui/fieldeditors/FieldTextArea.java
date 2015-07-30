@@ -108,35 +108,11 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|UndoableEditListener
 import|;
 end_import
 
@@ -154,15 +130,11 @@ name|JTextAreaWithHighlighting
 implements|implements
 name|FieldEditor
 block|{
-DECL|field|PREFERRED_SIZE
-name|Dimension
-name|PREFERRED_SIZE
-decl_stmt|;
-DECL|field|sp
+DECL|field|scrollPane
 specifier|private
 specifier|final
 name|JScrollPane
-name|sp
+name|scrollPane
 decl_stmt|;
 DECL|field|label
 specifier|private
@@ -175,32 +147,6 @@ specifier|private
 name|String
 name|fieldName
 decl_stmt|;
-DECL|field|bull
-specifier|static
-specifier|final
-name|Pattern
-name|bull
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\s*[-\\*]+.*"
-argument_list|)
-decl_stmt|;
-DECL|field|indent
-specifier|static
-specifier|final
-name|Pattern
-name|indent
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\s+.*"
-argument_list|)
-decl_stmt|;
 DECL|field|autoCompleteListener
 specifier|private
 name|AutoCompleteListener
@@ -208,13 +154,12 @@ name|autoCompleteListener
 init|=
 literal|null
 decl_stmt|;
-comment|// protected UndoManager undo = new UndoManager();
-DECL|method|FieldTextArea (String fieldName_, String content)
+DECL|method|FieldTextArea (String fieldName, String content)
 specifier|public
 name|FieldTextArea
 parameter_list|(
 name|String
-name|fieldName_
+name|fieldName
 parameter_list|,
 name|String
 name|content
@@ -225,8 +170,6 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
-comment|// Listen for undo and redo events
-comment|/*          * getDocument().addUndoableEditListener(new UndoableEditListener() {          * public void undoableEditHappened(UndoableEditEvent evt) {          * undo.addEdit(evt.getEdit()); } });          */
 name|updateFont
 argument_list|()
 expr_stmt|;
@@ -246,7 +189,7 @@ name|FieldEditorFocusListener
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|sp
+name|scrollPane
 operator|=
 operator|new
 name|JScrollPane
@@ -262,7 +205,7 @@ operator|.
 name|HORIZONTAL_SCROLLBAR_NEVER
 argument_list|)
 expr_stmt|;
-name|sp
+name|scrollPane
 operator|.
 name|setMinimumSize
 argument_list|(
@@ -285,9 +228,11 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|fieldName
 operator|=
-name|fieldName_
+name|fieldName
 expr_stmt|;
 name|label
 operator|=
@@ -300,6 +245,8 @@ name|StringUtil
 operator|.
 name|nCase
 argument_list|(
+name|this
+operator|.
 name|fieldName
 argument_list|)
 operator|+
@@ -320,7 +267,6 @@ operator|.
 name|editorTextColor
 argument_list|)
 expr_stmt|;
-comment|// setFont(new Font("Times", Font.PLAIN, 10));
 name|FieldTextMenu
 name|popMenu
 init|=
@@ -358,7 +304,6 @@ name|getPreferredSize
 argument_list|()
 return|;
 block|}
-comment|/*      * public void paint(Graphics g) { Graphics2D g2 = (Graphics2D) g; if      * (antialias) g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,      * RenderingHints.VALUE_ANTIALIAS_ON); super.paint(g2); }      */
 annotation|@
 name|Override
 DECL|method|getFieldName ()
@@ -399,20 +344,20 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|setLabelColor (Color c)
+DECL|method|setLabelColor (Color color)
 specifier|public
 name|void
 name|setLabelColor
 parameter_list|(
 name|Color
-name|c
+name|color
 parameter_list|)
 block|{
 name|label
 operator|.
 name|setForeground
 argument_list|(
-name|c
+name|color
 argument_list|)
 expr_stmt|;
 block|}
@@ -425,7 +370,7 @@ name|getPane
 parameter_list|()
 block|{
 return|return
-name|sp
+name|scrollPane
 return|;
 block|}
 annotation|@
@@ -581,9 +526,7 @@ specifier|public
 name|void
 name|undo
 parameter_list|()
-block|{
-comment|/*          * try { if (undo.canUndo()) { undo.undo(); } } catch          * (CannotUndoException e) { }          */
-block|}
+block|{     }
 annotation|@
 name|Override
 DECL|method|redo ()
@@ -591,9 +534,7 @@ specifier|public
 name|void
 name|redo
 parameter_list|()
-block|{
-comment|/*          * try { if (undo.canRedo()) { undo.redo(); } } catch          * (CannotUndoException e) { }          */
-block|}
+block|{     }
 annotation|@
 name|Override
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)

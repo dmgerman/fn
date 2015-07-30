@@ -131,20 +131,20 @@ name|void
 name|setInvalidBackgroundColor
 parameter_list|()
 function_decl|;
-DECL|method|setLabelColor (Color c)
+DECL|method|setLabelColor (Color color)
 name|void
 name|setLabelColor
 parameter_list|(
 name|Color
-name|c
+name|color
 parameter_list|)
 function_decl|;
-DECL|method|setBackground (Color c)
+DECL|method|setBackground (Color color)
 name|void
 name|setBackground
 parameter_list|(
 name|Color
-name|c
+name|color
 parameter_list|)
 function_decl|;
 DECL|method|updateFontColor ()
