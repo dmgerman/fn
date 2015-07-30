@@ -318,14 +318,14 @@ literal|"Autolink files with names starting with the BibTeX key"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|method|ExternalTab (JabRefFrame frame, PrefsDialog3 prefsDiag, JabRefPreferences prefs, HelpDialog helpDialog)
+DECL|method|ExternalTab (JabRefFrame frame, PreferencesDialog prefsDiag, JabRefPreferences prefs, HelpDialog helpDialog)
 specifier|public
 name|ExternalTab
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|PrefsDialog3
+name|PreferencesDialog
 name|prefsDiag
 parameter_list|,
 name|JabRefPreferences

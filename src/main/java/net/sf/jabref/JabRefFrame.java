@@ -634,7 +634,7 @@ name|gui
 operator|.
 name|preftabs
 operator|.
-name|PrefsDialog3
+name|PreferencesDialog
 import|;
 end_import
 
@@ -1349,7 +1349,7 @@ name|prefs
 decl_stmt|;
 DECL|field|prefsDialog
 specifier|private
-name|PrefsDialog3
+name|PreferencesDialog
 name|prefsDialog
 init|=
 literal|null
@@ -5336,7 +5336,7 @@ block|{
 name|prefsDialog
 operator|=
 operator|new
-name|PrefsDialog3
+name|PreferencesDialog
 argument_list|(
 name|JabRefFrame
 operator|.
