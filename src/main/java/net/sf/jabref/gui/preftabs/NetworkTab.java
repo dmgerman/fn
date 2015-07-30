@@ -170,18 +170,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|JabRefPreferences
 import|;
 end_import
@@ -214,25 +202,23 @@ specifier|final
 name|JTextField
 name|defProxyPort
 decl_stmt|;
-DECL|field|_prefs
+DECL|field|prefs
 specifier|private
 specifier|final
 name|JabRefPreferences
-name|_prefs
+name|prefs
 decl_stmt|;
-comment|//    private HelpAction ownerHelp, timeStampHelp;
-DECL|method|NetworkTab (JabRefFrame frame, JabRefPreferences prefs)
+DECL|method|NetworkTab (JabRefPreferences prefs)
 specifier|public
 name|NetworkTab
 parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|,
 name|JabRefPreferences
 name|prefs
 parameter_list|)
 block|{
-name|_prefs
+name|this
+operator|.
+name|prefs
 operator|=
 name|prefs
 expr_stmt|;
@@ -331,7 +317,6 @@ name|ChangeEvent
 name|event
 parameter_list|)
 block|{
-comment|//useProxy.setEnabled(useProxy.isSelected());
 name|defProxyHostname
 operator|.
 name|setEnabled
@@ -367,8 +352,6 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
-comment|//("right:pref, 10dlu, 50dlu, 5dlu, fill:60dlu", "");
-comment|//("10dlu, left:50dlu, 4dlu, fill:pref", "");
 name|DefaultFormBuilder
 name|builder
 init|=
@@ -485,7 +468,6 @@ argument_list|(
 name|lap2
 argument_list|)
 expr_stmt|;
-comment|//builder.append(new JPanel());
 name|builder
 operator|.
 name|append
@@ -541,7 +523,7 @@ name|useProxy
 operator|.
 name|setSelected
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|getBoolean
 argument_list|(
@@ -551,12 +533,11 @@ name|USE_PROXY
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//_prefs.putBoolean("defaultAutoSort", defSorrrt.isSelected());
 name|defProxyHostname
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -570,7 +551,7 @@ name|defProxyPort
 operator|.
 name|setText
 argument_list|(
-name|_prefs
+name|prefs
 operator|.
 name|get
 argument_list|(
@@ -589,7 +570,7 @@ name|void
 name|storeSettings
 parameter_list|()
 block|{
-name|_prefs
+name|prefs
 operator|.
 name|putBoolean
 argument_list|(
@@ -603,8 +584,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//_prefs.putBoolean("defaultAutoSort", defSorrrt.isSelected());
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(
@@ -621,7 +601,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
+name|prefs
 operator|.
 name|put
 argument_list|(

@@ -532,8 +532,6 @@ argument_list|(
 operator|new
 name|NetworkTab
 argument_list|(
-name|frame
-argument_list|,
 name|prefs
 argument_list|)
 argument_list|)
