@@ -330,6 +330,7 @@ end_comment
 
 begin_class
 DECL|class|PrefsDialog3
+specifier|public
 class|class
 name|PrefsDialog3
 extends|extends
