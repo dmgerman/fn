@@ -38,6 +38,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -83,6 +111,15 @@ name|StringAddChange
 extends|extends
 name|Change
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|string
 specifier|private
 specifier|final
@@ -109,6 +146,22 @@ operator|new
 name|JScrollPane
 argument_list|(
 name|tp
+argument_list|)
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|StringAddChange
+operator|.
+name|class
 argument_list|)
 decl_stmt|;
 DECL|method|StringAddChange (BibtexString string)
@@ -226,9 +279,9 @@ argument_list|)
 condition|)
 block|{
 comment|// The name to change to is already in the database, so we can't comply.
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Cannot add string '"
 operator|+
@@ -280,9 +333,9 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Error: could not add string '"
 operator|+
@@ -297,6 +350,8 @@ name|ex
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -333,9 +388,9 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Error: could not add string '"
 operator|+
@@ -350,6 +405,8 @@ name|ex
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}

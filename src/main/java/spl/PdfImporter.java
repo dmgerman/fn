@@ -236,6 +236,34 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|sciplore
 operator|.
 name|beans
@@ -305,6 +333,22 @@ DECL|field|dropRow
 specifier|private
 name|int
 name|dropRow
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|PdfImporter
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/**      * Creates the PdfImporter      *       * @param frame the JabRef frame      * @param panel the panel to use      * @param entryTable the entry table to work on      * @param dropRow the row the entry is dropped to. May be -1 to indicate that no row is selected.      */
 DECL|method|PdfImporter (JabRefFrame frame, BasePanel panel, MainTable entryTable, int dropRow)
@@ -847,9 +891,9 @@ operator|)
 condition|)
 block|{
 comment|// import failed -> generate default entry
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 name|Globals
 operator|.
@@ -1017,9 +1061,9 @@ name|e
 parameter_list|)
 block|{
 comment|// import failed -> generate default entry
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 name|Globals
 operator|.
@@ -1027,6 +1071,8 @@ name|lang
 argument_list|(
 literal|"Import failed"
 argument_list|)
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 name|e
@@ -1073,9 +1119,9 @@ name|e
 parameter_list|)
 block|{
 comment|// import failed -> generate default entry
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 name|Globals
 operator|.
@@ -1083,6 +1129,8 @@ name|lang
 argument_list|(
 literal|"Import failed"
 argument_list|)
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 name|e
@@ -2312,14 +2360,13 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
+literal|"Key collision occured"
+argument_list|,
 name|ex
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

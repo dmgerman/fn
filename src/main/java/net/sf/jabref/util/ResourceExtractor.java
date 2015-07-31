@@ -58,13 +58,29 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|apache
 operator|.
-name|jabref
+name|commons
 operator|.
-name|Globals
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -135,6 +151,22 @@ specifier|private
 specifier|final
 name|File
 name|destination
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ResourceExtractor
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/** Creates a new instance of ResourceExtractor */
 DECL|method|ResourceExtractor (final Component parent, final String filename, File destination)
@@ -214,9 +246,9 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Error extracting resource: "
 operator|+

@@ -152,30 +152,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Level
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -198,6 +174,34 @@ name|URLDownload
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author Erik Putrycz erik.putrycz-at-nrc-cnrc.gc.ca  */
 end_comment
@@ -210,23 +214,20 @@ name|UrlDragDrop
 implements|implements
 name|DropTargetListener
 block|{
-DECL|field|logger
+DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|logger
+name|Log
+name|LOGGER
 init|=
-name|Logger
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
 name|UrlDragDrop
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|feditor
@@ -435,17 +436,11 @@ name|ClassNotFoundException
 name|e
 parameter_list|)
 block|{
-name|UrlDragDrop
+name|LOGGER
 operator|.
-name|logger
-operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
-literal|"Class not found for DnD... should not happen"
+literal|"Could not find DropTargetDropEvent class"
 argument_list|,
 name|e
 argument_list|)
@@ -677,16 +672,10 @@ name|IOException
 name|ioex
 parameter_list|)
 block|{
-name|UrlDragDrop
+name|LOGGER
 operator|.
-name|logger
-operator|.
-name|log
+name|error
 argument_list|(
-name|Level
-operator|.
-name|SEVERE
-argument_list|,
 literal|"Error while downloading file"
 argument_list|,
 name|ioex
@@ -734,6 +723,15 @@ name|nfe
 parameter_list|)
 block|{
 comment|// not an URL then...
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Could not parse URL"
+argument_list|,
+name|nfe
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -741,17 +739,11 @@ name|IOException
 name|ioex
 parameter_list|)
 block|{
-name|UrlDragDrop
+name|LOGGER
 operator|.
-name|logger
-operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
-literal|"!should not happen!"
+literal|"Could not perform drage and drop"
 argument_list|,
 name|ioex
 argument_list|)
@@ -888,17 +880,11 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-name|UrlDragDrop
+name|LOGGER
 operator|.
-name|logger
-operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
-literal|"Transfer exception"
+literal|"Could not perform drage and drop"
 argument_list|,
 name|nfe
 argument_list|)
@@ -910,17 +896,11 @@ name|IOException
 name|ioex
 parameter_list|)
 block|{
-name|UrlDragDrop
+name|LOGGER
 operator|.
-name|logger
-operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
-literal|"Transfer exception"
+literal|"Could not perform drage and drop"
 argument_list|,
 name|ioex
 argument_list|)

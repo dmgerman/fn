@@ -44,6 +44,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -82,18 +110,6 @@ name|Iterator
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
 begin_comment
 comment|/**  * This thread monitors a set of files, each associated with a FileUpdateListener, for changes  * in the file's last modification time stamp. The  */
 end_comment
@@ -106,23 +122,20 @@ name|FileUpdateMonitor
 implements|implements
 name|Runnable
 block|{
-DECL|field|logger
+DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|logger
+name|Log
+name|LOGGER
 init|=
-name|Logger
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
 name|FileUpdateMonitor
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|WAIT
@@ -262,13 +275,13 @@ name|InterruptedException
 name|ex
 parameter_list|)
 block|{
-name|FileUpdateMonitor
+name|LOGGER
 operator|.
-name|logger
-operator|.
-name|finest
+name|info
 argument_list|(
-literal|"FileUpdateMonitor has been interrupted."
+literal|"FileUpdateMonitor has been interrupted. Terminating..."
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 return|return;
@@ -752,9 +765,9 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Cannot copy to temporary file '"
 operator|+
@@ -764,6 +777,8 @@ name|getPath
 argument_list|()
 operator|+
 literal|'\''
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
