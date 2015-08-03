@@ -3929,7 +3929,7 @@ name|number
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get an array of the required fields in a form appropriate for the entry customization      * dialog - that is, thie either-or fields together and separated by slashes.      *      * @return Array of the required fields in a form appropriate for the entry customization dialog.      */
+comment|/**      * Get an array of the required fields in a form appropriate for the entry customization      * dialog - that is, the either-or fields together and separated by slashes.      *      * @return Array of the required fields in a form appropriate for the entry customization dialog.      */
 DECL|method|getRequiredFieldsForCustomization ()
 specifier|public
 name|String
