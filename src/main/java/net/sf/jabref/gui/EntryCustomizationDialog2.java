@@ -1213,7 +1213,9 @@ name|type
 operator|.
 name|getRequiredFieldsForCustomization
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
+index|[]
 name|of
 init|=
 name|type
@@ -1441,7 +1443,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// New entry, veintle
+comment|// New entry, veintle // FIXME what does veintle mean?
 name|reqComp
 operator|.
 name|setFields
@@ -1870,7 +1872,7 @@ condition|)
 block|{
 name|String
 index|[]
-name|priOpt
+name|oldPriOpt
 init|=
 name|oldType
 operator|.
@@ -1879,16 +1881,12 @@ argument_list|()
 decl_stmt|;
 name|String
 index|[]
-name|secOpt
+name|oldSecOpt
 init|=
-name|Util
+name|oldType
 operator|.
-name|getRemainder
-argument_list|(
-name|oldOpt
-argument_list|,
-name|priOpt
-argument_list|)
+name|getSecondaryOptionalFields
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1901,14 +1899,14 @@ argument_list|)
 operator|&&
 name|equalArrays
 argument_list|(
-name|oldOpt
+name|oldPriOpt
 argument_list|,
 name|optStr
 argument_list|)
 operator|&&
 name|equalArrays
 argument_list|(
-name|secOpt
+name|oldSecOpt
 argument_list|,
 name|opt2Str
 argument_list|)
@@ -2656,7 +2654,9 @@ name|type
 operator|.
 name|getRequiredFieldsForCustomization
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
+index|[]
 name|of
 init|=
 name|type
@@ -2750,14 +2750,10 @@ name|String
 index|[]
 name|secOptArray
 init|=
-name|Util
+name|type
 operator|.
-name|getRemainder
-argument_list|(
-name|of
-argument_list|,
-name|priOptArray
-argument_list|)
+name|getSecondaryOptionalFields
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

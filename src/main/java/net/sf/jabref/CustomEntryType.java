@@ -56,6 +56,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -535,6 +549,26 @@ parameter_list|()
 block|{
 return|return
 name|priOpt
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getSecondaryOptionalFields ()
+specifier|public
+name|String
+index|[]
+name|getSecondaryOptionalFields
+parameter_list|()
+block|{
+return|return
+name|Util
+operator|.
+name|getRemainder
+argument_list|(
+name|opt
+argument_list|,
+name|priOpt
+argument_list|)
 return|;
 block|}
 annotation|@

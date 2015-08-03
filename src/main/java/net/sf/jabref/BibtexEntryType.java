@@ -2721,6 +2721,21 @@ literal|0
 index|]
 return|;
 block|}
+DECL|method|getSecondaryOptionalFields ()
+specifier|public
+name|String
+index|[]
+name|getSecondaryOptionalFields
+parameter_list|()
+block|{
+return|return
+operator|new
+name|String
+index|[
+literal|0
+index|]
+return|;
+block|}
 DECL|method|describeRequiredFields ()
 specifier|public
 specifier|abstract
