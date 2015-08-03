@@ -106,7 +106,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|PersonName (String firstName, String _middleName, String lastName)
+DECL|method|PersonName (String firstName, String middleName, String lastName)
 specifier|public
 name|PersonName
 parameter_list|(
@@ -114,7 +114,7 @@ name|String
 name|firstName
 parameter_list|,
 name|String
-name|_middleName
+name|middleName
 parameter_list|,
 name|String
 name|lastName
@@ -124,9 +124,11 @@ name|givenName
 operator|=
 name|firstName
 expr_stmt|;
+name|this
+operator|.
 name|middleName
 operator|=
-name|_middleName
+name|middleName
 expr_stmt|;
 name|surname
 operator|=
@@ -146,13 +148,11 @@ name|Vector
 argument_list|<
 name|String
 argument_list|>
-name|v
+name|names
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -186,7 +186,7 @@ name|WSITools
 operator|.
 name|tokenize
 argument_list|(
-name|v
+name|names
 argument_list|,
 name|authorMod
 operator|.
@@ -210,7 +210,7 @@ operator|>=
 literal|0
 condition|)
 block|{
-name|v
+name|names
 operator|.
 name|add
 argument_list|(
@@ -228,7 +228,7 @@ block|}
 name|int
 name|amountOfNames
 init|=
-name|v
+name|names
 operator|.
 name|size
 argument_list|()
@@ -242,7 +242,7 @@ condition|)
 block|{
 name|surname
 operator|=
-name|v
+name|names
 operator|.
 name|get
 argument_list|(
@@ -260,7 +260,7 @@ condition|)
 block|{
 name|givenName
 operator|=
-name|v
+name|names
 operator|.
 name|get
 argument_list|(
@@ -269,7 +269,7 @@ argument_list|)
 expr_stmt|;
 name|surname
 operator|=
-name|v
+name|names
 operator|.
 name|get
 argument_list|(
@@ -281,7 +281,7 @@ else|else
 block|{
 name|givenName
 operator|=
-name|v
+name|names
 operator|.
 name|get
 argument_list|(
@@ -313,7 +313,7 @@ name|middleName
 operator|+=
 literal|' '
 operator|+
-name|v
+name|names
 operator|.
 name|get
 argument_list|(
@@ -330,7 +330,7 @@ argument_list|()
 expr_stmt|;
 name|surname
 operator|=
-name|v
+name|names
 operator|.
 name|get
 argument_list|(

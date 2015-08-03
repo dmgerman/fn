@@ -119,17 +119,17 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parsePageNums (String s)
+DECL|method|parsePageNums (String numberString)
 specifier|private
 name|void
 name|parsePageNums
 parameter_list|(
 name|String
-name|s
+name|numberString
 parameter_list|)
 block|{
 name|Pattern
-name|p
+name|pattern
 init|=
 name|Pattern
 operator|.
@@ -139,18 +139,18 @@ literal|"\\s*(\\d+)\\s*-{1,2}\\s*(\\d+)\\s*"
 argument_list|)
 decl_stmt|;
 name|Matcher
-name|m
+name|matcher
 init|=
-name|p
+name|pattern
 operator|.
 name|matcher
 argument_list|(
-name|s
+name|numberString
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|m
+name|matcher
 operator|.
 name|matches
 argument_list|()
@@ -162,7 +162,7 @@ name|Integer
 operator|.
 name|parseInt
 argument_list|(
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -176,7 +176,7 @@ name|Integer
 operator|.
 name|parseInt
 argument_list|(
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -189,23 +189,23 @@ else|else
 block|{
 name|freeform
 operator|=
-name|s
+name|numberString
 expr_stmt|;
 block|}
 block|}
-DECL|method|getDOMrepresentation (Document d)
+DECL|method|getDOMrepresentation (Document document)
 specifier|public
 name|Element
 name|getDOMrepresentation
 parameter_list|(
 name|Document
-name|d
+name|document
 parameter_list|)
 block|{
 name|Element
 name|result
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -229,9 +229,9 @@ literal|null
 condition|)
 block|{
 name|Node
-name|t
+name|textNode
 init|=
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -242,7 +242,7 @@ name|result
 operator|.
 name|appendChild
 argument_list|(
-name|t
+name|textNode
 argument_list|)
 expr_stmt|;
 block|}
@@ -251,7 +251,7 @@ block|{
 name|Element
 name|start
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -261,7 +261,7 @@ decl_stmt|;
 name|Element
 name|end
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -272,7 +272,7 @@ name|start
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -288,7 +288,7 @@ name|end
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -319,13 +319,13 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|toString (String seperator)
+DECL|method|toString (String separator)
 specifier|public
 name|String
 name|toString
 parameter_list|(
 name|String
-name|seperator
+name|separator
 parameter_list|)
 block|{
 if|if
@@ -342,7 +342,7 @@ block|}
 return|return
 name|start
 operator|+
-name|seperator
+name|separator
 operator|+
 name|end
 return|;

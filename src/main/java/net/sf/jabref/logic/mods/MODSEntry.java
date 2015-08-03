@@ -68,9 +68,9 @@ name|javax
 operator|.
 name|xml
 operator|.
-name|transform
+name|parsers
 operator|.
-name|OutputKeys
+name|ParserConfigurationException
 import|;
 end_import
 
@@ -82,19 +82,7 @@ name|xml
 operator|.
 name|transform
 operator|.
-name|Transformer
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|transform
-operator|.
-name|TransformerFactory
+name|*
 import|;
 end_import
 
@@ -188,6 +176,34 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|w3c
 operator|.
 name|dom
@@ -221,7 +237,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Michael Wrighton  *  */
+comment|/**  * @author Michael Wrighton  */
 end_comment
 
 begin_class
@@ -229,6 +245,22 @@ DECL|class|MODSEntry
 class|class
 name|MODSEntry
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MODSEntry
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|entryType
 specifier|private
 name|String
@@ -356,20 +388,14 @@ name|extensionFields
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|handledExtensions
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -851,9 +877,7 @@ name|result
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|PersonName
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|LayoutFormatter
@@ -1097,37 +1121,37 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|ParserConfigurationException
 name|e
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|Error
+name|LOGGER
+operator|.
+name|warn
 argument_list|(
+literal|"Cannot get DOM representation"
+argument_list|,
 name|e
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 return|return
 name|result
 return|;
 block|}
-DECL|method|getDOMrepresentation (Document d)
+DECL|method|getDOMrepresentation (Document document)
 specifier|public
 name|Element
 name|getDOMrepresentation
 parameter_list|(
 name|Document
-name|d
+name|document
 parameter_list|)
-block|{
-try|try
 block|{
 name|Element
 name|mods
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1155,7 +1179,7 @@ block|{
 name|Element
 name|titleInfo
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1165,7 +1189,7 @@ decl_stmt|;
 name|Element
 name|mainTitle
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1176,7 +1200,7 @@ name|mainTitle
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -1220,7 +1244,7 @@ block|{
 name|Element
 name|modsName
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1249,7 +1273,7 @@ block|{
 name|Element
 name|namePart
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1269,7 +1293,7 @@ name|namePart
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -1304,7 +1328,7 @@ block|{
 name|Element
 name|namePart
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1324,7 +1348,7 @@ name|namePart
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -1349,7 +1373,7 @@ block|}
 name|Element
 name|role
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1359,7 +1383,7 @@ decl_stmt|;
 name|Element
 name|roleTerm
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1379,7 +1403,7 @@ name|roleTerm
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -1414,7 +1438,7 @@ comment|//publisher
 name|Element
 name|originInfo
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1440,7 +1464,7 @@ block|{
 name|Element
 name|publisher
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1451,7 +1475,7 @@ name|publisher
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -1482,7 +1506,7 @@ block|{
 name|Element
 name|dateIssued
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1493,7 +1517,7 @@ name|dateIssued
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -1515,7 +1539,7 @@ block|}
 name|Element
 name|issuance
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1526,7 +1550,7 @@ name|issuance
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -1556,7 +1580,7 @@ block|{
 name|Element
 name|idref
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1567,7 +1591,7 @@ name|idref
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -1598,7 +1622,7 @@ block|}
 name|Element
 name|typeOfResource
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1614,7 +1638,7 @@ name|typeOfResource
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -1642,7 +1666,7 @@ block|{
 name|Element
 name|genreElement
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1662,7 +1686,7 @@ name|genreElement
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -1695,7 +1719,7 @@ name|host
 operator|.
 name|getDOMrepresentation
 argument_list|(
-name|d
+name|document
 argument_list|)
 decl_stmt|;
 name|relatedItem
@@ -1730,7 +1754,7 @@ name|pages
 operator|.
 name|getDOMrepresentation
 argument_list|(
-name|d
+name|document
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1757,7 +1781,7 @@ block|{
 name|Element
 name|extension
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1795,7 +1819,7 @@ block|}
 name|Element
 name|theData
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -1806,7 +1830,7 @@ name|theData
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -1836,39 +1860,7 @@ return|return
 name|mods
 return|;
 block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Exception caught..."
-operator|+
-name|e
-argument_list|)
-expr_stmt|;
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-throw|throw
-operator|new
-name|Error
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
-comment|// return result;
-block|}
-comment|/**      * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *       * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
+comment|/**      * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *<p>      * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
 DECL|method|stripNonValidXMLCharacters (String in)
 specifier|private
 name|String
@@ -2065,17 +2057,19 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|TransformerException
 name|e
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|Error
+name|LOGGER
+operator|.
+name|warn
 argument_list|(
+literal|"Could not transform DOM"
+argument_list|,
 name|e
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 return|return
 name|sresult
