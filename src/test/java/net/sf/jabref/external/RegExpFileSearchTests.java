@@ -106,6 +106,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|BibtexFields
 import|;
 end_import
@@ -225,7 +237,7 @@ name|BibtexEntry
 argument_list|(
 literal|"123"
 argument_list|,
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)

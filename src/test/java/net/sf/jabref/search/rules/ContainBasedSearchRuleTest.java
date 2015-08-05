@@ -350,7 +350,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|INCOLLECTION
 argument_list|)

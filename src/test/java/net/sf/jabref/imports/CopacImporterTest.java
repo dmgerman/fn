@@ -412,7 +412,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|BOOK
 argument_list|,

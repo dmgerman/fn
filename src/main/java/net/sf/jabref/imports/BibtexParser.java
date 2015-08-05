@@ -4043,7 +4043,7 @@ name|be
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|OTHER
 argument_list|)

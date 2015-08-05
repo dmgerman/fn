@@ -200,6 +200,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|BibtexFields
 import|;
 end_import
@@ -6411,7 +6423,7 @@ block|{
 name|BibtexEntryType
 name|bibtex
 init|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|OTHER
 decl_stmt|;
@@ -6427,7 +6439,7 @@ condition|)
 block|{
 name|bibtex
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|BOOK
 expr_stmt|;
@@ -6445,7 +6457,7 @@ condition|)
 block|{
 name|bibtex
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|INBOOK
 expr_stmt|;
@@ -6470,7 +6482,7 @@ condition|)
 block|{
 name|bibtex
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 expr_stmt|;
@@ -6488,7 +6500,7 @@ condition|)
 block|{
 name|bibtex
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|CONFERENCE
 expr_stmt|;
@@ -6506,7 +6518,7 @@ condition|)
 block|{
 name|bibtex
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|TECHREPORT
 expr_stmt|;
@@ -6587,7 +6599,7 @@ condition|)
 block|{
 name|bibtex
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|OTHER
 expr_stmt|;
@@ -6596,7 +6608,7 @@ else|else
 block|{
 name|bibtex
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|MISC
 expr_stmt|;
@@ -6663,43 +6675,43 @@ block|}
 comment|// Todo: add check for BibTexEntry types
 comment|//		BibtexEntry entry = new BibtexEntry();
 comment|//		if(sourceType.equals("Book"))
-comment|//			entry.setType(BibtexEntryType.BOOK);
+comment|//			entry.setType(BibtexEntryTypes.BOOK);
 comment|//		else if(sourceType.equals("BookSection"))
-comment|//			entry.setType(BibtexEntryType.INBOOK);
+comment|//			entry.setType(BibtexEntryTypes.INBOOK);
 comment|//		else if(sourceType.equals("JournalArticle"))
-comment|//			entry.setType(BibtexEntryType.ARTICLE);
+comment|//			entry.setType(BibtexEntryTypes.ARTICLE);
 comment|//		else if(sourceType.equals("ArticleInAPeriodical"))
-comment|//			entry.setType(BibtexEntryType.ARTICLE);
+comment|//			entry.setType(BibtexEntryTypes.ARTICLE);
 comment|//		else if(sourceType.equals("ConferenceProceedings"))
-comment|//			entry.setType(BibtexEntryType.CONFERENCE);
+comment|//			entry.setType(BibtexEntryTypes.CONFERENCE);
 comment|//		else if(sourceType.equals("Report"))
-comment|//			entry.setType(BibtexEntryType.TECHREPORT);
+comment|//			entry.setType(BibtexEntryTypes.TECHREPORT);
 comment|//		else if(sourceType.equals("InternetSite"))
-comment|//			entry.setType(BibtexEntryType.OTHER);
+comment|//			entry.setType(BibtexEntryTypes.OTHER);
 comment|//		else if(sourceType.equals("DocumentFromInternetSite"))
-comment|//			entry.setType(BibtexEntryType.OTHER);
+comment|//			entry.setType(BibtexEntryTypes.OTHER);
 comment|//		else if(sourceType.equals("DocumentFromInternetSite"))
-comment|//			entry.setType(BibtexEntryType.OTHER);
+comment|//			entry.setType(BibtexEntryTypes.OTHER);
 comment|//		else if(sourceType.equals("ElectronicSource"))
-comment|//			entry.setType(BibtexEntryType.OTHER);
+comment|//			entry.setType(BibtexEntryTypes.OTHER);
 comment|//		else if(sourceType.equals("Art"))
-comment|//			entry.setType(BibtexEntryType.OTHER);
+comment|//			entry.setType(BibtexEntryTypes.OTHER);
 comment|//		else if(sourceType.equals("SoundRecording"))
-comment|//			entry.setType(BibtexEntryType.OTHER);
+comment|//			entry.setType(BibtexEntryTypes.OTHER);
 comment|//		else if(sourceType.equals("Performance"))
-comment|//			entry.setType(BibtexEntryType.OTHER);
+comment|//			entry.setType(BibtexEntryTypes.OTHER);
 comment|//		else if(sourceType.equals("Film"))
-comment|//			entry.setType(BibtexEntryType.OTHER);
+comment|//			entry.setType(BibtexEntryTypes.OTHER);
 comment|//		else if(sourceType.equals("Interview"))
-comment|//			entry.setType(BibtexEntryType.OTHER);
+comment|//			entry.setType(BibtexEntryTypes.OTHER);
 comment|//		else if(sourceType.equals("Patent"))
-comment|//			entry.setType(BibtexEntryType.OTHER);
+comment|//			entry.setType(BibtexEntryTypes.OTHER);
 comment|//		else if(sourceType.equals("Case"))
-comment|//			entry.setType(BibtexEntryType.OTHER);
+comment|//			entry.setType(BibtexEntryTypes.OTHER);
 comment|//		else if(sourceType.equals("Misc"))
-comment|//			entry.setType(BibtexEntryType.MISC);
+comment|//			entry.setType(BibtexEntryTypes.MISC);
 comment|//		else
-comment|//			entry.setType(BibtexEntryType.MISC);
+comment|//			entry.setType(BibtexEntryTypes.MISC);
 name|HashMap
 argument_list|<
 name|String

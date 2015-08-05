@@ -1458,7 +1458,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 expr_stmt|;
@@ -1477,7 +1477,7 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)

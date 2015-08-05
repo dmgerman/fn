@@ -156,6 +156,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|export
 operator|.
 name|layout
@@ -657,7 +669,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 operator|)
@@ -668,7 +680,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|INPROCEEDINGS
 operator|)
