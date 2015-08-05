@@ -9215,7 +9215,6 @@ name|getRequiredFieldsString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//tp.getRequiredFields());
 name|putStringArray
 argument_list|(
 name|JabRefPreferences

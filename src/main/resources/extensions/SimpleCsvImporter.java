@@ -1,4 +1,11 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_package
+DECL|package|extensions
+package|package
+name|extensions
+package|;
+end_package
+
 begin_import
 import|import
 name|java
