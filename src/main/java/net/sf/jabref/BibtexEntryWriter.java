@@ -191,9 +191,7 @@ name|t
 range|:
 name|BibtexEntryType
 operator|.
-name|ALL_TYPES
-operator|.
-name|values
+name|getAllValues
 argument_list|()
 control|)
 block|{
@@ -340,11 +338,11 @@ operator|.
 name|INCLUDE_EMPTY_FIELDS
 argument_list|)
 decl_stmt|;
-DECL|field|writeFieldSortStype
+DECL|field|writeFieldSortStyle
 specifier|private
 specifier|final
 name|int
-name|writeFieldSortStype
+name|writeFieldSortStyle
 init|=
 name|Globals
 operator|.
@@ -397,13 +395,13 @@ name|IOException
 block|{
 switch|switch
 condition|(
-name|writeFieldSortStype
+name|writeFieldSortStyle
 condition|)
 block|{
 case|case
 literal|0
 case|:
-name|writeSorted
+name|writeNewStyle
 argument_list|(
 name|entry
 argument_list|,
@@ -414,7 +412,7 @@ break|break;
 case|case
 literal|1
 case|:
-name|writeUnsorted
+name|writeOldStyle
 argument_list|(
 name|entry
 argument_list|,
@@ -436,10 +434,10 @@ break|break;
 block|}
 block|}
 comment|/**      * new style ver>=2.10, sort the field for requiredFields, optionalFields and other fields separately      *      * @param entry      * @param out      * @throws IOException      */
-DECL|method|writeSorted (BibtexEntry entry, Writer out)
+DECL|method|writeNewStyle (BibtexEntry entry, Writer out)
 specifier|private
 name|void
-name|writeSorted
+name|writeNewStyle
 parameter_list|(
 name|BibtexEntry
 name|entry
@@ -858,10 +856,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * old style ver<=2.9.2, write fields in the order of requiredFields, optionalFields and other fields, but does not sort the fields.      *      * @param entry      * @param out      * @throws IOException      */
-DECL|method|writeUnsorted (BibtexEntry entry, Writer out)
+DECL|method|writeOldStyle (BibtexEntry entry, Writer out)
 specifier|private
 name|void
-name|writeUnsorted
+name|writeOldStyle
 parameter_list|(
 name|BibtexEntry
 name|entry

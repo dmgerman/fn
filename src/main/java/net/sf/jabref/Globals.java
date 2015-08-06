@@ -2284,7 +2284,7 @@ return|;
 block|}
 block|}
 comment|// ============================================================
-comment|// Using the hashmap of entry types found in BibtexEntryType
+comment|// Get an entry type defined in BibtexEntryType
 comment|// ============================================================
 DECL|method|getEntryType (String type)
 specifier|public
@@ -2302,9 +2302,7 @@ name|o
 init|=
 name|BibtexEntryType
 operator|.
-name|ALL_TYPES
-operator|.
-name|get
+name|getType
 argument_list|(
 name|type
 argument_list|)
