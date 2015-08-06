@@ -2628,7 +2628,7 @@ name|count
 init|=
 name|creatorManager
 operator|.
-name|addEntrysFromFiles
+name|addEntriesFromFiles
 argument_list|(
 name|fileList
 argument_list|,

@@ -393,7 +393,7 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|addEntrysFromFiles
+name|addEntriesFromFiles
 argument_list|(
 name|files
 argument_list|,
@@ -415,10 +415,10 @@ name|importGUIMessages
 return|;
 block|}
 comment|/**      * Tries to add a entry for each file in the List.      *       * @param files      * @param database      * @param panel      * @param entryType      * @param generateKeywordsFromPathToFile      * @param changeListener      * @param importGUIMessages list of unexpected import event - Messages including      *         failures      * @return Returns The number of entries added      */
-DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, BasePanel panel, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener, List<String> importGUIMessages)
+DECL|method|addEntriesFromFiles (List<File> files, BibtexDatabase database, BasePanel panel, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener, List<String> importGUIMessages)
 specifier|public
 name|int
-name|addEntrysFromFiles
+name|addEntriesFromFiles
 parameter_list|(
 name|List
 argument_list|<
