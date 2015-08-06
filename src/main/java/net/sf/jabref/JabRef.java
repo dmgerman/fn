@@ -378,22 +378,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|splash
-operator|.
-name|SplashScreenLifecycle
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|util
@@ -567,26 +551,10 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|graphicFailure
-specifier|private
-name|boolean
-name|graphicFailure
-init|=
-literal|false
-decl_stmt|;
 DECL|field|cli
 specifier|private
 name|JabRefCLI
 name|cli
-decl_stmt|;
-DECL|field|splashScreen
-specifier|private
-name|SplashScreenLifecycle
-name|splashScreen
-init|=
-operator|new
-name|SplashScreenLifecycle
-argument_list|()
 decl_stmt|;
 DECL|method|start (String[] args)
 specifier|public
@@ -1095,8 +1063,6 @@ name|loaded
 operator|==
 literal|null
 operator|||
-name|graphicFailure
-operator|||
 name|cli
 operator|.
 name|isDisableGui
@@ -1448,60 +1414,6 @@ operator|.
 name|isFetcherEngine
 argument_list|()
 decl_stmt|;
-comment|// First we quickly scan the command line parameters for any that signal
-comment|// that the GUI
-comment|// should not be opened. This is used to decide whether we should show the
-comment|// splash screen or not.
-if|if
-condition|(
-name|initialStartup
-operator|&&
-operator|!
-name|commandMode
-operator|&&
-operator|!
-name|cli
-operator|.
-name|isDisableSplash
-argument_list|()
-condition|)
-block|{
-try|try
-block|{
-name|splashScreen
-operator|.
-name|show
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ex
-parameter_list|)
-block|{
-name|graphicFailure
-operator|=
-literal|true
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Unable to create graphical interface"
-argument_list|)
-operator|+
-literal|"."
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 comment|// Check if we should reset all preferences to default values:
 if|if
 condition|(
@@ -4579,11 +4491,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|splashScreen
-operator|.
-name|hide
-argument_list|()
-expr_stmt|;
 comment|/*JOptionPane.showMessageDialog(null, Globals.lang("Please note that this "             +"is an early beta version. Do not use it without backing up your files!"),                 Globals.lang("Beta version"), JOptionPane.WARNING_MESSAGE);*/
 comment|// Start auto save timer:
 if|if

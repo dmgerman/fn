@@ -86,21 +86,6 @@ literal|"version"
 argument_list|)
 return|;
 block|}
-DECL|method|isDisableSplash ()
-specifier|public
-name|boolean
-name|isDisableSplash
-parameter_list|()
-block|{
-return|return
-name|cl
-operator|.
-name|hasOption
-argument_list|(
-literal|"nosplash"
-argument_list|)
-return|;
-block|}
 DECL|method|isBlank ()
 specifier|public
 name|boolean
@@ -532,24 +517,6 @@ operator|.
 name|lang
 argument_list|(
 literal|"No GUI. Only process command line options."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|options
-operator|.
-name|addOption
-argument_list|(
-literal|"s"
-argument_list|,
-literal|"nosplash"
-argument_list|,
-literal|false
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Do not show splash window at startup"
 argument_list|)
 argument_list|)
 expr_stmt|;
