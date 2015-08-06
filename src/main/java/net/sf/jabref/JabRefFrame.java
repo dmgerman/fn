@@ -11086,15 +11086,14 @@ name|getName
 argument_list|()
 expr_stmt|;
 block|}
+comment|// idea: "<html><div style='padding:2px 5px;'>" + title + "</div></html>" instead of "title" to get some space around.
+comment|// However, this causes https://sourceforge.net/p/jabref/bugs/1293/
+comment|// Therefore, plain "title" is used
 name|tabbedPane
 operator|.
 name|add
 argument_list|(
-literal|"<html><div style='padding:2px 5px;'>"
-operator|+
 name|title
-operator|+
-literal|"</div></html>"
 argument_list|,
 name|bp
 argument_list|)
