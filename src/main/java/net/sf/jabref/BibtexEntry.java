@@ -531,6 +531,9 @@ name|_type
 operator|.
 name|getOptionalFields
 argument_list|()
+operator|.
+name|clone
+argument_list|()
 return|;
 block|}
 comment|/**      * Returns an array describing the required fields for this entry.      */
@@ -545,6 +548,9 @@ return|return
 name|_type
 operator|.
 name|getRequiredFields
+argument_list|()
+operator|.
+name|clone
 argument_list|()
 return|;
 block|}
