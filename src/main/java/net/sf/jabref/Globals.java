@@ -2284,7 +2284,7 @@ return|;
 block|}
 block|}
 comment|// ============================================================
-comment|// Using the hashmap of entry types found in BibtexEntryType
+comment|// Get an entry type defined in BibtexEntryType
 comment|// ============================================================
 DECL|method|getEntryType (String type)
 specifier|public
@@ -2302,9 +2302,7 @@ name|o
 init|=
 name|BibtexEntryType
 operator|.
-name|ALL_TYPES
-operator|.
-name|get
+name|getType
 argument_list|(
 name|type
 argument_list|)
@@ -2326,12 +2324,12 @@ block|}
 else|else
 block|{
 return|return
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|OTHER
 return|;
 block|}
-comment|/*          * if(type.equals("article")) return BibtexEntryType.ARTICLE; else          * if(type.equals("book")) return BibtexEntryType.BOOK; else          * if(type.equals("inproceedings")) return          * BibtexEntryType.INPROCEEDINGS;          */
+comment|/*          * if(type.equals("article")) return BibtexEntryTypes.ARTICLE; else          * if(type.equals("book")) return BibtexEntryTypes.BOOK; else          * if(type.equals("inproceedings")) return          * BibtexEntryTypes.INPROCEEDINGS;          */
 block|}
 DECL|field|SPECIAL_COMMAND_CHARS
 specifier|public

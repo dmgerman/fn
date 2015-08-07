@@ -210,18 +210,6 @@ name|*
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
 begin_comment
 comment|/**  * @author Nosh&Dan  * @version 09.11.2008 | 21:06:17  */
 end_comment

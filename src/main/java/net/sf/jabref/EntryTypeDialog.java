@@ -497,9 +497,7 @@ name|tp
 range|:
 name|BibtexEntryType
 operator|.
-name|ALL_TYPES
-operator|.
-name|values
+name|getAllValues
 argument_list|()
 control|)
 block|{

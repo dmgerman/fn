@@ -194,6 +194,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Globals
 import|;
 end_import
@@ -593,7 +605,7 @@ comment|// fallback type
 name|BibtexEntryType
 name|type
 init|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|INPROCEEDINGS
 decl_stmt|;
@@ -800,7 +812,7 @@ comment|// the drawback is that ctx:context-objects is NOT nested in citation, b
 comment|// we would have to change the whole parser to parse that format.
 name|type
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 expr_stmt|;
@@ -830,7 +842,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|TECHREPORT
 expr_stmt|;

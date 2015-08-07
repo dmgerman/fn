@@ -68,7 +68,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|TestUtils
+name|testutils
+operator|.
+name|GuiTestUtils
 import|;
 end_import
 
@@ -142,30 +144,6 @@ name|ArrayList
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
 begin_comment
 comment|/**  * Tests GeneralFetcher  *  * @author Dennis Hartrampf, Ines Moosdorf  */
 end_comment
@@ -220,7 +198,7 @@ init|=
 operator|(
 name|JTextField
 operator|)
-name|TestUtils
+name|GuiTestUtils
 operator|.
 name|getChildNamed
 argument_list|(
@@ -270,7 +248,7 @@ init|=
 operator|(
 name|JButton
 operator|)
-name|TestUtils
+name|GuiTestUtils
 operator|.
 name|getChildNamed
 argument_list|(
