@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.testutils
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|testutils
 package|;
 end_package
 
@@ -21,14 +23,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides helper methods for unit testing such as methods for making testing  * of GUIs easier.  *  * @author Dennis Hartrampf, Ines Moosdorf  */
+comment|/**  * Provides helper methods for making testing of GUIs easier.  *  * @author Dennis Hartrampf, Ines Moosdorf  */
 end_comment
 
 begin_class
-DECL|class|TestUtils
+DECL|class|GuiTestUtils
 specifier|public
 class|class
-name|TestUtils
+name|GuiTestUtils
 block|{
 comment|/**      * Get a Component by name.      *      * @param parent The parent Component, where to search in.      * @param name   The name of the Component to find.      * @return The Component with the given name or null if no      * such Component.      */
 DECL|method|getChildNamed (Component parent, String name)
@@ -93,7 +95,7 @@ block|{
 name|Component
 name|child
 init|=
-name|TestUtils
+name|GuiTestUtils
 operator|.
 name|getChildNamed
 argument_list|(
