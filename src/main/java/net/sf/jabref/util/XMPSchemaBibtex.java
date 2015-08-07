@@ -1448,7 +1448,7 @@ else|else
 block|{
 name|t
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|OTHER
 expr_stmt|;

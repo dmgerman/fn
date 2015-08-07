@@ -110,30 +110,6 @@ name|ArrayList
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_comment
 comment|/**  * The test class LayoutEntryTest test the net.sf.jabref.export.layout.LayoutEntry.  * Indirectly the net.sf.jabref.export.layout.Layout is testet too.  *<p/>  * The LayoutEntry creates a human readable String assinged with html formaters.  * To test the Highlighting Feature, an instance of LayoutEntry will be instatiated via Layout and LayoutHelper.  * With these instance the doLayout() Method is called several times for each test case.  * To simulate a search, a BibtexEntry will be created, wich will be used by LayoutEntry.  * The definiton of the search is set by  *<p/>  * LayoutEntry.setWordsToHighlight(words); and  * Globals.prefs.putBoolean("caseSensitiveSearch", false);  *<p/>  * There are five test cases:  * - The shown result text has no words which should be highlighted.  * - There is one word which will be highlighted ignoring case sensitivity.  * - There are two words which will be highlighted ignoring case sensitivity.  * - There is one word which will be highlighted case sensitivity.  * - There are more words which will be highlighted case sensitivity.  *  * @author Arne  */
 end_comment

@@ -2184,9 +2184,7 @@ name|key
 range|:
 name|BibtexEntryType
 operator|.
-name|ALL_TYPES
-operator|.
-name|keySet
+name|getAllTypes
 argument_list|()
 control|)
 block|{

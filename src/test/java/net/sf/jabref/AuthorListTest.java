@@ -30,18 +30,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
 begin_comment
 comment|/**  * @author Christopher Oezbek<oezi@oezi.de>  * @version 0.1 - Still fails for stuff in AuthorList that is ambiguous  * @see net.sf.jabref.AuthorList Class tested.  */
 end_comment
@@ -52,6 +40,11 @@ specifier|public
 class|class
 name|AuthorListTest
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 annotation|@
 name|Test
 DECL|method|testFixAuthor_Natbib ()
@@ -200,6 +193,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 annotation|@
 name|Test
 DECL|method|testFixAuthor_firstNameFirstCommas ()
@@ -626,6 +624,11 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+annotation|@
 name|Test
 DECL|method|testFixAuthor_firstNameFirst ()
 specifier|public
@@ -725,6 +728,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 annotation|@
 name|Test
 DECL|method|testFixAuthor_lastNameFirstCommas ()
@@ -1187,6 +1195,11 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+annotation|@
 name|Test
 DECL|method|testFixAuthor_lastNameFirst ()
 specifier|public
@@ -1492,6 +1505,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 annotation|@
 name|Test
 DECL|method|testFixAuthor_lastNameOnlyCommas ()

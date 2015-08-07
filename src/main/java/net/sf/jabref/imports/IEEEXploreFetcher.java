@@ -4014,7 +4014,7 @@ name|BibtexEntryType
 operator|.
 name|getType
 argument_list|(
-literal|"Electronic"
+literal|"electronic"
 argument_list|)
 expr_stmt|;
 name|sourceField
@@ -4053,7 +4053,7 @@ name|BibtexEntryType
 operator|.
 name|getType
 argument_list|(
-literal|"inCollection"
+literal|"incollection"
 argument_list|)
 expr_stmt|;
 name|sourceField

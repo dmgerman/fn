@@ -110,6 +110,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|BibtexFields
 import|;
 end_import
@@ -500,7 +512,7 @@ name|BibtexFields
 operator|.
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|BOOK
 argument_list|)

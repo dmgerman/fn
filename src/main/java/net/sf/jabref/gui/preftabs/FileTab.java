@@ -1235,11 +1235,11 @@ index|[]
 name|_rbs0
 init|=
 block|{
-literal|"Sort fields in alphabeta order (as ver 2.10)"
+literal|"Save fields sorted in alphabetic order (as in versions 2.10+)"
 block|,
-literal|"Sort fields in old fasion (as ver 2.9.2)"
+literal|"Save fields in unsorted order (as until version 2.9.2)"
 block|,
-literal|"Save fields as user defined order"
+literal|"Save fields in user-defined order"
 block|}
 decl_stmt|;
 name|ArrayList

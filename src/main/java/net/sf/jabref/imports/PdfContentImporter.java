@@ -1237,7 +1237,7 @@ decl_stmt|;
 name|BibtexEntryType
 name|type
 init|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|INPROCEEDINGS
 decl_stmt|;
@@ -1738,7 +1738,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|TECHREPORT
 expr_stmt|;
