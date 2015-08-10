@@ -40,9 +40,9 @@ name|storeSettings
 parameter_list|()
 function_decl|;
 comment|/**      * This method is called before the {@link #storeSettings()} method,      * to check if there are illegal settings in the tab, or if is ready      * to be closed.      * If the tab is *not* ready, it should display a message to the user       * informing about the illegal setting.      */
-DECL|method|readyToClose ()
+DECL|method|validateSettings ()
 name|boolean
-name|readyToClose
+name|validateSettings
 parameter_list|()
 function_decl|;
 comment|/**      * Should return the localized identifier to use for the tab.      *       * @return Identifier for the tab (for instance "General", "Appearance" or "External Files").      */

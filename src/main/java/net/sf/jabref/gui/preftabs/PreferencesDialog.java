@@ -1522,7 +1522,7 @@ name|i
 index|]
 operator|)
 operator|.
-name|readyToClose
+name|validateSettings
 argument_list|()
 condition|)
 block|{
