@@ -639,7 +639,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
@@ -842,7 +842,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
@@ -1020,7 +1020,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
@@ -1572,7 +1572,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
@@ -1980,7 +1980,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
@@ -2093,7 +2093,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,

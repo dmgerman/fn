@@ -50,30 +50,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Nov 9, 2007  * Time: 7:04:25 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -123,7 +99,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)
@@ -139,7 +115,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)
@@ -213,7 +189,7 @@ name|two
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|BOOK
 argument_list|)
@@ -236,7 +212,7 @@ name|two
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)

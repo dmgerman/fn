@@ -484,7 +484,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Inbook"
+literal|"InBook"
 return|;
 block|}
 annotation|@
@@ -721,7 +721,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Bookinbook"
+literal|"BookInBook"
 return|;
 block|}
 comment|// Same fields as "INBOOK" according to Biblatex 1.0:
@@ -833,7 +833,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Suppbook"
+literal|"SuppBook"
 return|;
 block|}
 comment|// Same fields as "INBOOK" according to Biblatex 1.0:
@@ -1341,7 +1341,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Incollection"
+literal|"InCollection"
 return|;
 block|}
 annotation|@
@@ -1574,7 +1574,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Suppcollection"
+literal|"SuppCollection"
 return|;
 block|}
 comment|// Treated as alias of "INCOLLECTION" according to Biblatex 1.0:
@@ -2535,7 +2535,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Suppperiodical"
+literal|"SuppPeriodical"
 return|;
 block|}
 comment|// Treated as alias of "ARTICLE" according to Biblatex 1.0:
@@ -2858,7 +2858,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Inproceedings"
+literal|"InProceedings"
 return|;
 block|}
 annotation|@
@@ -3189,7 +3189,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Inreference"
+literal|"InReference"
 return|;
 block|}
 comment|// Treated as alias of "INCOLLECTION" according to Biblatex 1.0:
@@ -4137,7 +4137,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Mastersthesis"
+literal|"MastersThesis"
 return|;
 block|}
 comment|// Treated as alias of "THESIS", except "type" field is optional
@@ -4313,7 +4313,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Phdthesis"
+literal|"PhdThesis"
 return|;
 block|}
 comment|// Treated as alias of "THESIS", except "type" field is optional
@@ -4489,7 +4489,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Techreport"
+literal|"TechReport"
 return|;
 block|}
 comment|// Treated as alias of "REPORT", except "type" field is optional
@@ -4675,7 +4675,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Www"
+literal|"WWW"
 return|;
 block|}
 comment|// Treated as alias of "ONLINE" according to Biblatex 1.0:
@@ -4870,8 +4870,6 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|// Unsupported types and custom types left out
-comment|/*public static final BibtexEntryType ARTICLE = new BibtexEntryType() {         public String getName() {             return "Article";         }         public String[] getRequiredFields() {             return new String[] {};         }         public String[] getOptionalFields() {             return new String[] {};         }         public String[] getPrimaryOptionalFields() {             return new String[] {};         }         public String describeRequiredFields() {             return "";         }         public boolean hasAllRequiredFields(BibtexEntry entry, BibtexDatabase database) {             return entry.allFieldsPresent(getRequiredFields(), database);         }     };*/
 block|}
 end_class
 

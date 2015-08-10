@@ -754,7 +754,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)

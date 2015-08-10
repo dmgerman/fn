@@ -46,18 +46,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
 begin_comment
 comment|/**  * Test case  that verifies the functionalities of the  * formater AuthorLastFirstAbbreviator.  *  * @author Carlos Silla  * @author Christopher Oezbek<oezi@oezi.de>  */
 end_comment

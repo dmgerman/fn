@@ -1129,10 +1129,10 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|readyToClose ()
+DECL|method|validateSettings ()
 specifier|public
 name|boolean
-name|readyToClose
+name|validateSettings
 parameter_list|()
 block|{
 comment|// Test if font size is a number:

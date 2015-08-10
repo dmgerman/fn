@@ -1265,10 +1265,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|readyToClose ()
+DECL|method|validateSettings ()
 specifier|public
 name|boolean
-name|readyToClose
+name|validateSettings
 parameter_list|()
 block|{
 return|return

@@ -92,18 +92,6 @@ name|ArrayList
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
 begin_class
 DECL|class|SearchTextListenerTest
 specifier|public
@@ -572,11 +560,6 @@ name|String
 name|content
 init|=
 literal|"Test Word Content"
-decl_stmt|;
-name|String
-name|contentToHighlight1
-init|=
-literal|"Word"
 decl_stmt|;
 name|FieldTextArea
 name|ta

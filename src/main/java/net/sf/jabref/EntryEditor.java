@@ -1591,33 +1591,25 @@ argument_list|)
 expr_stmt|;
 name|String
 index|[]
+name|secondaryOptionalFields
+init|=
+name|entry
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getSecondaryOptionalFields
+argument_list|()
+decl_stmt|;
+name|String
+index|[]
 name|optionalFieldsNotPrimaryOrDeprecated
 init|=
 name|Util
 operator|.
 name|getRemainder
 argument_list|(
-name|entry
-operator|.
-name|getOptionalFields
-argument_list|()
-argument_list|,
-name|entry
-operator|.
-name|getType
-argument_list|()
-operator|.
-name|getPrimaryOptionalFields
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|optionalFieldsNotPrimaryOrDeprecated
-operator|=
-name|Util
-operator|.
-name|getRemainder
-argument_list|(
-name|optionalFieldsNotPrimaryOrDeprecated
+name|secondaryOptionalFields
 argument_list|,
 name|deprecatedFields
 operator|.
@@ -1633,7 +1625,7 @@ argument_list|()
 index|]
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// Get list of all optional fields of this entry and their aliases
 name|Set
 argument_list|<
@@ -1718,8 +1710,9 @@ name|optionalFieldsAndAliases
 argument_list|)
 expr_stmt|;
 comment|// Add tabs
-name|optPan
-operator|=
+name|EntryEditorTab
+name|optPan2
+init|=
 operator|new
 name|EntryEditorTab
 argument_list|(
@@ -1751,10 +1744,10 @@ argument_list|(
 literal|"Optional fields 2"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-name|optPan
+name|optPan2
 operator|.
 name|fileListEditor
 operator|!=
@@ -1763,7 +1756,7 @@ condition|)
 block|{
 name|fileListEditor
 operator|=
-name|optPan
+name|optPan2
 operator|.
 name|fileListEditor
 expr_stmt|;
@@ -1786,7 +1779,7 @@ argument_list|(
 literal|"optional"
 argument_list|)
 argument_list|,
-name|optPan
+name|optPan2
 operator|.
 name|getPane
 argument_list|()
@@ -1803,7 +1796,7 @@ name|tabs
 operator|.
 name|add
 argument_list|(
-name|optPan
+name|optPan2
 argument_list|)
 expr_stmt|;
 if|if
@@ -1815,7 +1808,10 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|optPan
+name|EntryEditorTab
+name|optPan3
+decl_stmt|;
+name|optPan3
 operator|=
 operator|new
 name|EntryEditorTab
@@ -1863,7 +1859,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|optPan
+name|optPan3
 operator|.
 name|fileListEditor
 operator|!=
@@ -1872,7 +1868,7 @@ condition|)
 block|{
 name|fileListEditor
 operator|=
-name|optPan
+name|optPan3
 operator|.
 name|fileListEditor
 expr_stmt|;
@@ -1895,7 +1891,7 @@ argument_list|(
 literal|"optional"
 argument_list|)
 argument_list|,
-name|optPan
+name|optPan3
 operator|.
 name|getPane
 argument_list|()
@@ -1912,7 +1908,7 @@ name|tabs
 operator|.
 name|add
 argument_list|(
-name|optPan
+name|optPan3
 argument_list|)
 expr_stmt|;
 block|}
@@ -5647,9 +5643,7 @@ name|s
 range|:
 name|BibtexEntryType
 operator|.
-name|ALL_TYPES
-operator|.
-name|keySet
+name|getAllTypes
 argument_list|()
 control|)
 block|{
@@ -5838,9 +5832,7 @@ name|s
 range|:
 name|BibtexEntryType
 operator|.
-name|ALL_TYPES
-operator|.
-name|keySet
+name|getAllTypes
 argument_list|()
 control|)
 block|{

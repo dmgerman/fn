@@ -32,7 +32,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntryType
+name|BibtexEntryTypes
 import|;
 end_import
 
@@ -113,18 +113,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
 import|;
 end_import
 
@@ -799,7 +787,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
@@ -839,7 +827,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|INPROCEEDINGS
 argument_list|,
@@ -916,7 +904,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
@@ -1155,7 +1143,7 @@ name|BibtexEntry
 argument_list|(
 literal|""
 argument_list|,
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)
@@ -1470,7 +1458,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|BOOK
 argument_list|,
@@ -1619,7 +1607,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,

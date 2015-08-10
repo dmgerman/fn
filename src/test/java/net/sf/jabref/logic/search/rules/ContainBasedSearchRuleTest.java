@@ -48,18 +48,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
 begin_comment
 comment|/**  * Test case for ContainBasedSearchRule.  */
 end_comment
@@ -352,7 +340,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|INCOLLECTION
 argument_list|)

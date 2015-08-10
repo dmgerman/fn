@@ -480,7 +480,7 @@ name|this
 argument_list|(
 name|id
 argument_list|,
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|OTHER
 argument_list|)
@@ -535,6 +535,9 @@ name|_type
 operator|.
 name|getOptionalFields
 argument_list|()
+operator|.
+name|clone
+argument_list|()
 return|;
 block|}
 comment|/**      * Returns an array describing the required fields for this entry.      */
@@ -549,6 +552,9 @@ return|return
 name|_type
 operator|.
 name|getRequiredFields
+argument_list|()
+operator|.
+name|clone
 argument_list|()
 return|;
 block|}
@@ -718,7 +724,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Prompts the entry to call BibtexEntryType.getType(String) with      * its current type name as argument, and sets its type according      * to what is returned. This method is called when a user changes      * the type customization, to make sure all entries are set with      * current types.      * @return true if the entry could find a type, false if not (in      * this case the type will have been set to      * BibtexEntryType.TYPELESS).      */
+comment|/**      * Prompts the entry to call BibtexEntryType.getType(String) with      * its current type name as argument, and sets its type according      * to what is returned. This method is called when a user changes      * the type customization, to make sure all entries are set with      * current types.      * @return true if the entry could find a type, false if not (in      * this case the type will have been set to      * BibtexEntryTypes.TYPELESS).      */
 DECL|method|updateType ()
 specifier|public
 name|boolean
@@ -755,7 +761,7 @@ return|;
 block|}
 name|_type
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|TYPELESS
 expr_stmt|;
