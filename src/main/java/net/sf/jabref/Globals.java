@@ -586,7 +586,7 @@ specifier|final
 name|String
 name|RESOURCE_PREFIX
 init|=
-literal|"resource/JabRef"
+literal|"l10n/JabRef"
 decl_stmt|;
 DECL|field|MENU_RESOURCE_PREFIX
 specifier|private
@@ -595,7 +595,7 @@ specifier|final
 name|String
 name|MENU_RESOURCE_PREFIX
 init|=
-literal|"resource/Menu"
+literal|"l10n/Menu"
 decl_stmt|;
 DECL|field|INTEGRITY_RESOURCE_PREFIX
 specifier|private
@@ -604,7 +604,7 @@ specifier|final
 name|String
 name|INTEGRITY_RESOURCE_PREFIX
 init|=
-literal|"resource/IntegrityMessage"
+literal|"l10n/IntegrityMessage"
 decl_stmt|;
 DECL|field|JOURNALS_FILE_BUILTIN
 specifier|public
