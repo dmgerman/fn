@@ -9386,7 +9386,7 @@ name|CustomEntryType
 argument_list|(
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|name
 argument_list|)
@@ -9416,7 +9416,7 @@ name|CustomEntryType
 argument_list|(
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|name
 argument_list|)

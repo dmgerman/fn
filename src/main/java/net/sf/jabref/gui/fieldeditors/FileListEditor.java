@@ -238,18 +238,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|UndoableEditListener
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -568,7 +556,7 @@ literal|" "
 operator|+
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|fieldName
 argument_list|)

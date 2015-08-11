@@ -8233,7 +8233,7 @@ block|{
 return|return
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|fields
 index|[

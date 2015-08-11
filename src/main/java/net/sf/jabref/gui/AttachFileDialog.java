@@ -771,14 +771,14 @@ argument_list|(
 name|layout
 argument_list|)
 decl_stmt|;
-comment|//builder.append(Util.nCase(fieldName));//(editor.getLabel());
+comment|//builder.append(Util.capitalizeFirst(fieldName));//(editor.getLabel());
 name|builder
 operator|.
 name|appendSeparator
 argument_list|(
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|fieldName
 argument_list|)

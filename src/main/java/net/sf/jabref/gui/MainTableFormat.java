@@ -766,7 +766,7 @@ name|append
 argument_list|(
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|fld
 index|[
@@ -785,7 +785,7 @@ argument_list|()
 return|;
 comment|/*String disName = BibtexFields.getFieldDisplayName(columns[col - padleft]) ;             if ( disName != null)             {               return disName ;             } */
 block|}
-comment|//return Util.nCase(columns[col - padleft]);
+comment|//return Util.capitalizeFirst(columns[col - padleft]);
 block|}
 comment|/**      * Get the column title, or a string identifying the column if it is an icon      * column without a title.      *      * @param col The column number      * @return the String identifying the column      */
 DECL|method|getColumnType (int col)

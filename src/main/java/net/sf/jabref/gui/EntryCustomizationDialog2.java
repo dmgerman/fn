@@ -1798,7 +1798,7 @@ name|nm
 init|=
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|stringListEntry
 operator|.
@@ -1951,7 +1951,7 @@ name|CustomEntryType
 argument_list|(
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|stringListEntry
 operator|.
@@ -1971,7 +1971,7 @@ name|CustomEntryType
 argument_list|(
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|stringListEntry
 operator|.
@@ -2146,7 +2146,7 @@ literal|" '"
 operator|+
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|name
 argument_list|)
@@ -2185,7 +2185,7 @@ name|updateTypesForEntries
 argument_list|(
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|name
 argument_list|)

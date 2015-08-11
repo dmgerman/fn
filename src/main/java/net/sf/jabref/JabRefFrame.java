@@ -230,18 +230,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|lang
-operator|.
-name|reflect
-operator|.
-name|Method
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|net
 operator|.
 name|URL
@@ -7555,7 +7543,7 @@ name|NAME
 argument_list|,
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|type_
 argument_list|)
@@ -7586,7 +7574,7 @@ name|NAME
 argument_list|,
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|type_
 argument_list|)
@@ -13944,7 +13932,7 @@ name|nName
 init|=
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|command
 argument_list|)

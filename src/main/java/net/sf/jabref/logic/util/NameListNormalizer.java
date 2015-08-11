@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -170,7 +170,7 @@ block|{
 comment|/*             If there are no "and" separators in the original string, we assume it either means that             the author list is comma or semicolon separated or that it contains only a single name.             If there is a semicolon, we go by that. If not, we assume commas, and count the parts             separated by commas to determine which it is.             */
 name|String
 index|[]
-name|a2
+name|authors2
 init|=
 name|in
 operator|.
@@ -181,7 +181,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|a2
+name|authors2
 operator|.
 name|length
 operator|>
@@ -190,12 +190,12 @@ condition|)
 block|{
 name|authors
 operator|=
-name|a2
+name|authors2
 expr_stmt|;
 block|}
 else|else
 block|{
-name|a2
+name|authors2
 operator|=
 name|in
 operator|.
@@ -206,7 +206,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|a2
+name|authors2
 operator|.
 name|length
 operator|>
@@ -216,14 +216,14 @@ block|{
 comment|// Probably more than a single author, so we split by commas.
 name|authors
 operator|=
-name|a2
+name|authors2
 expr_stmt|;
 block|}
 else|else
 block|{
 if|if
 condition|(
-name|a2
+name|authors2
 operator|.
 name|length
 operator|==
@@ -236,7 +236,7 @@ comment|// We check if the middle part is<= 3 characters. If not, we assume we a
 comment|// dealing with three authors.
 if|if
 condition|(
-name|a2
+name|authors2
 index|[
 literal|1
 index|]
@@ -249,7 +249,7 @@ condition|)
 block|{
 name|authors
 operator|=
-name|a2
+name|authors2
 expr_stmt|;
 block|}
 block|}
@@ -507,7 +507,7 @@ block|}
 block|}
 block|}
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
@@ -543,7 +543,7 @@ name|i
 index|]
 argument_list|)
 decl_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -561,7 +561,7 @@ operator|-
 literal|1
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -571,7 +571,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -588,7 +588,7 @@ name|name
 parameter_list|)
 block|{
 name|Matcher
-name|m
+name|matcher
 init|=
 name|NameListNormalizer
 operator|.
@@ -601,7 +601,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|m
+name|matcher
 operator|.
 name|matches
 argument_list|()
@@ -610,7 +610,7 @@ block|{
 name|String
 name|initials
 init|=
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -618,12 +618,12 @@ literal|2
 argument_list|)
 decl_stmt|;
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
 argument_list|(
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -631,7 +631,7 @@ literal|1
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -656,7 +656,7 @@ name|i
 operator|++
 control|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -668,7 +668,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -687,7 +687,7 @@ operator|-
 literal|1
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -697,13 +697,13 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-name|m
+name|matcher
 operator|=
 name|NameListNormalizer
 operator|.
@@ -716,7 +716,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|m
+name|matcher
 operator|.
 name|matches
 argument_list|()
@@ -725,7 +725,7 @@ block|{
 name|String
 name|initials
 init|=
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -740,12 +740,12 @@ literal|""
 argument_list|)
 decl_stmt|;
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
 argument_list|(
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -753,7 +753,7 @@ literal|1
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -778,7 +778,7 @@ name|i
 operator|++
 control|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -790,7 +790,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -809,7 +809,7 @@ operator|-
 literal|1
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -819,13 +819,13 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-name|m
+name|matcher
 operator|=
 name|NameListNormalizer
 operator|.
@@ -838,7 +838,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|m
+name|matcher
 operator|.
 name|matches
 argument_list|()
@@ -847,7 +847,7 @@ block|{
 name|String
 name|initials
 init|=
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -855,12 +855,12 @@ literal|1
 argument_list|)
 decl_stmt|;
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
 argument_list|(
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -868,7 +868,7 @@ literal|2
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -893,7 +893,7 @@ name|i
 operator|++
 control|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -905,7 +905,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -924,7 +924,7 @@ operator|-
 literal|1
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -934,13 +934,13 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-name|m
+name|matcher
 operator|=
 name|NameListNormalizer
 operator|.
@@ -953,7 +953,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|m
+name|matcher
 operator|.
 name|matches
 argument_list|()
@@ -962,7 +962,7 @@ block|{
 name|String
 name|initials
 init|=
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -977,12 +977,12 @@ literal|""
 argument_list|)
 decl_stmt|;
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
 argument_list|(
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -990,7 +990,7 @@ literal|2
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1015,7 +1015,7 @@ name|i
 operator|++
 control|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1027,7 +1027,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1046,7 +1046,7 @@ operator|-
 literal|1
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1056,7 +1056,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -1116,7 +1116,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
@@ -1131,7 +1131,7 @@ name|index
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1140,7 +1140,7 @@ argument_list|)
 expr_stmt|;
 comment|// Check if the remainder is a single name:
 name|String
-name|fName
+name|firstName
 init|=
 name|name
 operator|.
@@ -1156,9 +1156,9 @@ argument_list|()
 decl_stmt|;
 name|String
 index|[]
-name|fParts
+name|firstNameParts
 init|=
-name|fName
+name|firstName
 operator|.
 name|split
 argument_list|(
@@ -1167,7 +1167,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|fParts
+name|firstNameParts
 operator|.
 name|length
 operator|>
@@ -1184,7 +1184,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|fParts
+name|firstNameParts
 operator|.
 name|length
 condition|;
@@ -1194,7 +1194,7 @@ control|)
 block|{
 if|if
 condition|(
-name|fParts
+name|firstNameParts
 index|[
 name|i
 index|]
@@ -1205,11 +1205,11 @@ operator|==
 literal|1
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|fParts
+name|firstNameParts
 index|[
 name|i
 index|]
@@ -1223,11 +1223,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|fParts
+name|firstNameParts
 index|[
 name|i
 index|]
@@ -1238,14 +1238,14 @@ if|if
 condition|(
 name|i
 operator|<
-name|fParts
+name|firstNameParts
 operator|.
 name|length
 operator|-
 literal|1
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1259,7 +1259,7 @@ else|else
 block|{
 comment|// Only a single part. Check if it looks like a name or initials:
 name|Matcher
-name|m2
+name|nameMatcher
 init|=
 name|NameListNormalizer
 operator|.
@@ -1267,7 +1267,7 @@ name|SINGLE_NAME
 operator|.
 name|matcher
 argument_list|(
-name|fParts
+name|firstNameParts
 index|[
 literal|0
 index|]
@@ -1275,17 +1275,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|m2
+name|nameMatcher
 operator|.
 name|matches
 argument_list|()
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|fParts
+name|firstNameParts
 index|[
 literal|0
 index|]
@@ -1298,7 +1298,7 @@ comment|// It looks like initials.
 name|String
 name|initials
 init|=
-name|fParts
+name|firstNameParts
 index|[
 literal|0
 index|]
@@ -1328,7 +1328,7 @@ name|i
 operator|++
 control|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1340,7 +1340,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1359,7 +1359,7 @@ operator|-
 literal|1
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1371,7 +1371,7 @@ block|}
 block|}
 block|}
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -1404,7 +1404,7 @@ range|:
 name|parts
 control|)
 block|{
-name|m
+name|matcher
 operator|=
 name|NameListNormalizer
 operator|.
@@ -1418,7 +1418,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|m
+name|matcher
 operator|.
 name|matches
 argument_list|()
@@ -1439,7 +1439,7 @@ block|{
 comment|// Looks like a name written in full with first name first.
 comment|// Change into last name first format:
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
@@ -1463,7 +1463,7 @@ operator|>
 literal|1
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1489,7 +1489,7 @@ name|i
 operator|++
 control|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1517,7 +1517,7 @@ operator|==
 literal|1
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1528,7 +1528,7 @@ block|}
 block|}
 block|}
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()

@@ -220,7 +220,7 @@ literal|""
 argument_list|,
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 literal|""
 argument_list|)
@@ -234,7 +234,7 @@ literal|"Hello world"
 argument_list|,
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 literal|"Hello World"
 argument_list|)
@@ -248,7 +248,7 @@ literal|"A"
 argument_list|,
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 literal|"a"
 argument_list|)
@@ -262,7 +262,7 @@ literal|"Aa"
 argument_list|,
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 literal|"AA"
 argument_list|)

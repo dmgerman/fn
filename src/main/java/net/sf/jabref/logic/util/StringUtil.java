@@ -32,20 +32,20 @@ specifier|public
 class|class
 name|StringUtil
 block|{
-comment|/**      * Returns the string, after shaving off whitespace at the beginning and end,      * and removing (at most) one pair of braces or " surrounding it.      *      * @param s      * @return      */
-DECL|method|shaveString (String s)
+comment|/**      * Returns the string, after shaving off whitespace at the beginning and end,      * and removing (at most) one pair of braces or " surrounding it.      *      * @param toShave      * @return      */
+DECL|method|shaveString (String toShave)
 specifier|public
 specifier|static
 name|String
 name|shaveString
 parameter_list|(
 name|String
-name|s
+name|toShave
 parameter_list|)
 block|{
 if|if
 condition|(
-name|s
+name|toShave
 operator|==
 literal|null
 condition|)
@@ -55,58 +55,58 @@ literal|null
 return|;
 block|}
 name|char
-name|ch
+name|first
 decl_stmt|;
 name|char
-name|ch2
+name|second
 decl_stmt|;
 name|int
-name|beg
+name|begin
 init|=
 literal|0
 decl_stmt|;
 name|int
 name|end
 init|=
-name|s
+name|toShave
 operator|.
 name|length
 argument_list|()
 decl_stmt|;
 comment|// We start out assuming nothing will be removed.
 name|boolean
-name|begok
+name|beginOk
 init|=
 literal|false
 decl_stmt|;
 name|boolean
-name|endok
+name|endOk
 init|=
 literal|false
 decl_stmt|;
 while|while
 condition|(
 operator|!
-name|begok
+name|beginOk
 condition|)
 block|{
 if|if
 condition|(
-name|beg
+name|begin
 operator|<
-name|s
+name|toShave
 operator|.
 name|length
 argument_list|()
 condition|)
 block|{
-name|ch
+name|first
 operator|=
-name|s
+name|toShave
 operator|.
 name|charAt
 argument_list|(
-name|beg
+name|begin
 argument_list|)
 expr_stmt|;
 if|if
@@ -115,17 +115,17 @@ name|Character
 operator|.
 name|isWhitespace
 argument_list|(
-name|ch
+name|first
 argument_list|)
 condition|)
 block|{
-name|beg
+name|begin
 operator|++
 expr_stmt|;
 block|}
 else|else
 block|{
-name|begok
+name|beginOk
 operator|=
 literal|true
 expr_stmt|;
@@ -133,7 +133,7 @@ block|}
 block|}
 else|else
 block|{
-name|begok
+name|beginOk
 operator|=
 literal|true
 expr_stmt|;
@@ -142,21 +142,21 @@ block|}
 while|while
 condition|(
 operator|!
-name|endok
+name|endOk
 condition|)
 block|{
 if|if
 condition|(
 name|end
 operator|>
-name|beg
+name|begin
 operator|+
 literal|1
 condition|)
 block|{
-name|ch
+name|first
 operator|=
-name|s
+name|toShave
 operator|.
 name|charAt
 argument_list|(
@@ -171,7 +171,7 @@ name|Character
 operator|.
 name|isWhitespace
 argument_list|(
-name|ch
+name|first
 argument_list|)
 condition|)
 block|{
@@ -181,7 +181,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|endok
+name|endOk
 operator|=
 literal|true
 expr_stmt|;
@@ -189,7 +189,7 @@ block|}
 block|}
 else|else
 block|{
-name|endok
+name|endOk
 operator|=
 literal|true
 expr_stmt|;
@@ -199,23 +199,23 @@ if|if
 condition|(
 name|end
 operator|>
-name|beg
+name|begin
 operator|+
 literal|1
 condition|)
 block|{
-name|ch
+name|first
 operator|=
-name|s
+name|toShave
 operator|.
 name|charAt
 argument_list|(
-name|beg
+name|begin
 argument_list|)
 expr_stmt|;
-name|ch2
+name|second
 operator|=
-name|s
+name|toShave
 operator|.
 name|charAt
 argument_list|(
@@ -226,24 +226,24 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|ch
+name|first
 operator|==
 literal|'{'
 operator|&&
-name|ch2
+name|second
 operator|==
 literal|'}'
 operator|||
-name|ch
+name|first
 operator|==
 literal|'"'
 operator|&&
-name|ch2
+name|second
 operator|==
 literal|'"'
 condition|)
 block|{
-name|beg
+name|begin
 operator|++
 expr_stmt|;
 name|end
@@ -251,33 +251,33 @@ operator|--
 expr_stmt|;
 block|}
 block|}
-name|s
+name|toShave
 operator|=
-name|s
+name|toShave
 operator|.
 name|substring
 argument_list|(
-name|beg
+name|begin
 argument_list|,
 name|end
 argument_list|)
 expr_stmt|;
 return|return
-name|s
+name|toShave
 return|;
 block|}
-DECL|method|rtrim (String s)
+DECL|method|rightTrim (String toTrim)
 specifier|private
 specifier|static
 name|String
-name|rtrim
+name|rightTrim
 parameter_list|(
 name|String
-name|s
+name|toTrim
 parameter_list|)
 block|{
 return|return
-name|s
+name|toTrim
 operator|.
 name|replaceAll
 argument_list|(
@@ -287,7 +287,7 @@ literal|""
 argument_list|)
 return|;
 block|}
-comment|/**      * Concatenate all strings in the array from index 'from' to 'to' (excluding      * to) with the given separator.      *      * Example:      *      * String[] s = "ab/cd/ed".split("/"); join(s, "\\", 0, s.length) ->      * "ab\\cd\\ed"      *      * @param strings      * @param separator      * @param from      * @param to      *            Excluding strings[to]      * @return      */
+comment|/**      * Concatenate all strings in the array from index 'from' to 'to' (excluding      * to) with the given separator.      *<p>      * Example:      *<p>      * String[] s = "ab/cd/ed".split("/"); join(s, "\\", 0, s.length) ->      * "ab\\cd\\ed"      *      * @param strings      * @param separator      * @param from      * @param to        Excluding strings[to]      * @return      */
 DECL|method|join (String[] strings, String separator, int from, int to)
 specifier|public
 specifier|static
@@ -350,7 +350,7 @@ name|to
 argument_list|)
 expr_stmt|;
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
@@ -373,7 +373,7 @@ name|i
 operator|++
 control|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -390,7 +390,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -435,7 +435,7 @@ name|length
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the given string but with the first character turned into an      * upper case character.      *      * Example: testTest becomes TestTest      *      * @param string      *            The string to change the first character to upper case to.      * @return A string has the first character turned to upper case and the      *         rest unchanged from the given one.      */
+comment|/**      * Returns the given string but with the first character turned into an      * upper case character.      *<p>      * Example: testTest becomes TestTest      *      * @param string The string to change the first character to upper case to.      * @return A string has the first character turned to upper case and the      * rest unchanged from the given one.      */
 DECL|method|toUpperFirstLetter (String string)
 specifier|public
 specifier|static
@@ -492,7 +492,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**      * Takes a delimited string, splits it and returns      *      * @param names      *            a<code>String</code> value      * @return a<code>String[]</code> value      */
+comment|/**      * Takes a delimited string, splits it and returns      *      * @param names a<code>String</code> value      * @return a<code>String[]</code> value      */
 DECL|method|split (String names, String delimiter)
 specifier|public
 specifier|static
@@ -527,21 +527,21 @@ name|delimiter
 argument_list|)
 return|;
 block|}
-DECL|method|nCase (String s)
+DECL|method|capitalizeFirst (String toCapitalize)
 specifier|public
 specifier|static
 name|String
-name|nCase
+name|capitalizeFirst
 parameter_list|(
 name|String
-name|s
+name|toCapitalize
 parameter_list|)
 block|{
 comment|// Make first character of String uppercase, and the
 comment|// rest lowercase.
 if|if
 condition|(
-name|s
+name|toCapitalize
 operator|.
 name|length
 argument_list|()
@@ -550,7 +550,7 @@ literal|1
 condition|)
 block|{
 return|return
-name|s
+name|toCapitalize
 operator|.
 name|substring
 argument_list|(
@@ -562,13 +562,13 @@ operator|.
 name|toUpperCase
 argument_list|()
 operator|+
-name|s
+name|toCapitalize
 operator|.
 name|substring
 argument_list|(
 literal|1
 argument_list|,
-name|s
+name|toCapitalize
 operator|.
 name|length
 argument_list|()
@@ -581,28 +581,28 @@ block|}
 else|else
 block|{
 return|return
-name|s
+name|toCapitalize
 operator|.
 name|toUpperCase
 argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Removes optional square brackets from the string s      *      * @param s      * @return      */
-DECL|method|stripBrackets (String s)
+comment|/**      * Removes optional square brackets from the string s      *      * @param toStrip      * @return      */
+DECL|method|stripBrackets (String toStrip)
 specifier|public
 specifier|static
 name|String
 name|stripBrackets
 parameter_list|(
 name|String
-name|s
+name|toStrip
 parameter_list|)
 block|{
 name|int
 name|beginIndex
 init|=
-name|s
+name|toStrip
 operator|.
 name|startsWith
 argument_list|(
@@ -616,27 +616,27 @@ decl_stmt|;
 name|int
 name|endIndex
 init|=
-name|s
+name|toStrip
 operator|.
 name|endsWith
 argument_list|(
 literal|"]"
 argument_list|)
 condition|?
-name|s
+name|toStrip
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
 else|:
-name|s
+name|toStrip
 operator|.
 name|length
 argument_list|()
 decl_stmt|;
 return|return
-name|s
+name|toStrip
 operator|.
 name|substring
 argument_list|(
@@ -677,7 +677,7 @@ init|=
 name|orgName
 decl_stmt|;
 name|int
-name|t
+name|hiddenChar
 init|=
 name|orgName
 operator|.
@@ -691,7 +691,7 @@ decl_stmt|;
 comment|// hidden files Linux/Unix (?)
 if|if
 condition|(
-name|t
+name|hiddenChar
 operator|<
 literal|1
 condition|)
@@ -709,8 +709,8 @@ return|return
 name|back
 return|;
 block|}
-comment|/**      * Creates a substring from a text      *      * @param text      * @param i      * @param terminateOnEndBraceOnly      * @return      */
-DECL|method|getPart (String text, int i, boolean terminateOnEndBraceOnly)
+comment|/**      * Creates a substring from a text      *      * @param text      * @param index      * @param terminateOnEndBraceOnly      * @return      */
+DECL|method|getPart (String text, int index, boolean terminateOnEndBraceOnly)
 specifier|public
 specifier|static
 name|String
@@ -720,7 +720,7 @@ name|String
 name|text
 parameter_list|,
 name|int
-name|i
+name|index
 parameter_list|,
 name|boolean
 name|terminateOnEndBraceOnly
@@ -742,12 +742,12 @@ name|StringBuilder
 argument_list|()
 decl_stmt|;
 comment|// advance to first char and skip whitespace
-name|i
+name|index
 operator|++
 expr_stmt|;
 while|while
 condition|(
-name|i
+name|index
 operator|<
 name|text
 operator|.
@@ -762,19 +762,19 @@ name|text
 operator|.
 name|charAt
 argument_list|(
-name|i
+name|index
 argument_list|)
 argument_list|)
 condition|)
 block|{
-name|i
+name|index
 operator|++
 expr_stmt|;
 block|}
 comment|// then grab whathever is the first token (counting braces)
 while|while
 condition|(
-name|i
+name|index
 operator|<
 name|text
 operator|.
@@ -788,7 +788,7 @@ name|text
 operator|.
 name|charAt
 argument_list|(
-name|i
+name|index
 argument_list|)
 expr_stmt|;
 if|if
@@ -844,7 +844,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-name|i
+name|index
 operator|++
 expr_stmt|;
 block|}
@@ -855,7 +855,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Formats field contents for output. Must be "symmetric" with the parse method above,      * so stored and reloaded fields are not mangled.      * @param in      * @param wrapAmount      * @return the wrapped String.      */
+comment|/**      * Formats field contents for output. Must be "symmetric" with the parse method above,      * so stored and reloaded fields are not mangled.      *      * @param in      * @param wrapAmount      * @return the wrapped String.      */
 DECL|method|wrap (String in, int wrapAmount)
 specifier|public
 specifier|static
@@ -880,16 +880,16 @@ argument_list|(
 literal|"\n"
 argument_list|)
 decl_stmt|;
-name|StringBuffer
-name|res
+name|StringBuilder
+name|result
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|addWrappedLine
 argument_list|(
-name|res
+name|result
 argument_list|,
 name|lines
 index|[
@@ -933,7 +933,7 @@ literal|""
 argument_list|)
 condition|)
 block|{
-name|res
+name|result
 operator|.
 name|append
 argument_list|(
@@ -942,14 +942,14 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
-name|res
+name|result
 operator|.
 name|append
 argument_list|(
 literal|'\t'
 argument_list|)
 expr_stmt|;
-name|res
+name|result
 operator|.
 name|append
 argument_list|(
@@ -958,7 +958,7 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
-name|res
+name|result
 operator|.
 name|append
 argument_list|(
@@ -976,14 +976,14 @@ decl_stmt|;
 comment|// remove all whitespace at the end of the string, this especially includes \r created when the field content has \r\n as line separator
 name|line
 operator|=
-name|rtrim
+name|rightTrim
 argument_list|(
 name|line
 argument_list|)
 expr_stmt|;
 name|addWrappedLine
 argument_list|(
-name|res
+name|result
 argument_list|,
 name|line
 argument_list|,
@@ -993,7 +993,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|res
+name|result
 operator|.
 name|append
 argument_list|(
@@ -1002,7 +1002,7 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
-name|res
+name|result
 operator|.
 name|append
 argument_list|(
@@ -1012,20 +1012,20 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|res
+name|result
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|addWrappedLine (StringBuffer res, String line, int wrapAmount)
+DECL|method|addWrappedLine (StringBuilder result, String line, int wrapAmount)
 specifier|private
 specifier|static
 name|void
 name|addWrappedLine
 parameter_list|(
-name|StringBuffer
-name|res
+name|StringBuilder
+name|result
 parameter_list|,
 name|String
 name|line
@@ -1036,15 +1036,15 @@ parameter_list|)
 block|{
 comment|// Set our pointer to the beginning of the new line in the StringBuffer:
 name|int
-name|p
+name|length
 init|=
-name|res
+name|result
 operator|.
 name|length
 argument_list|()
 decl_stmt|;
 comment|// Add the line, unmodified:
-name|res
+name|result
 operator|.
 name|append
 argument_list|(
@@ -1053,37 +1053,37 @@ argument_list|)
 expr_stmt|;
 while|while
 condition|(
-name|p
+name|length
 operator|<
-name|res
+name|result
 operator|.
 name|length
 argument_list|()
 condition|)
 block|{
 name|int
-name|q
+name|current
 init|=
-name|res
+name|result
 operator|.
 name|indexOf
 argument_list|(
 literal|" "
 argument_list|,
-name|p
+name|length
 operator|+
 name|wrapAmount
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|q
+name|current
 operator|<
 literal|0
 operator|||
-name|q
+name|current
 operator|>=
-name|res
+name|result
 operator|.
 name|length
 argument_list|()
@@ -1091,18 +1091,18 @@ condition|)
 block|{
 break|break;
 block|}
-name|res
+name|result
 operator|.
 name|deleteCharAt
 argument_list|(
-name|q
+name|current
 argument_list|)
 expr_stmt|;
-name|res
+name|result
 operator|.
 name|insert
 argument_list|(
-name|q
+name|current
 argument_list|,
 name|Globals
 operator|.
@@ -1111,9 +1111,9 @@ operator|+
 literal|"\t"
 argument_list|)
 expr_stmt|;
-name|p
+name|length
 operator|=
-name|q
+name|current
 operator|+
 name|Globals
 operator|.
@@ -1122,18 +1122,18 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Quotes each and every character, e.g. '!' as&#33;. Used for verbatim      * display of arbitrary strings that may contain HTML entities.      */
-DECL|method|quoteForHTML (String s)
+DECL|method|quoteForHTML (String toQuote)
 specifier|public
 specifier|static
 name|String
 name|quoteForHTML
 parameter_list|(
 name|String
-name|s
+name|toQuote
 parameter_list|)
 block|{
 name|StringBuilder
-name|sb
+name|result
 init|=
 operator|new
 name|StringBuilder
@@ -1148,7 +1148,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|s
+name|toQuote
 operator|.
 name|length
 argument_list|()
@@ -1157,7 +1157,7 @@ operator|++
 name|i
 control|)
 block|{
-name|sb
+name|result
 operator|.
 name|append
 argument_list|(
@@ -1169,7 +1169,7 @@ argument_list|(
 operator|(
 name|int
 operator|)
-name|s
+name|toQuote
 operator|.
 name|charAt
 argument_list|(
@@ -1184,20 +1184,20 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|sb
+name|result
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|quote (String s, String specials, char quoteChar)
+DECL|method|quote (String toQuote, String specials, char quoteChar)
 specifier|public
 specifier|static
 name|String
 name|quote
 parameter_list|(
 name|String
-name|s
+name|toQuote
 parameter_list|,
 name|String
 name|specials
@@ -1209,7 +1209,7 @@ block|{
 return|return
 name|quote
 argument_list|(
-name|s
+name|toQuote
 argument_list|,
 name|specials
 argument_list|,
@@ -1219,15 +1219,15 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**      * Quote special characters.      *      * @param s      *            The String which may contain special characters.      * @param specials      *            A String containing all special characters except the quoting      *            character itself, which is automatically quoted.      * @param quoteChar      *            The quoting character.      * @param linewrap      *            The number of characters after which a linebreak is inserted      *            (this linebreak is undone by unquote()). Set to 0 to disable.      * @return A String with every special character (including the quoting      *         character itself) quoted.      */
-DECL|method|quote (String s, String specials, char quoteChar, int linewrap)
+comment|/**      * Quote special characters.      *      * @param toQuote         The String which may contain special characters.      * @param specials  A String containing all special characters except the quoting      *                  character itself, which is automatically quoted.      * @param quoteChar The quoting character.      * @param linewrap  The number of characters after which a linebreak is inserted      *                  (this linebreak is undone by unquote()). Set to 0 to disable.      * @return A String with every special character (including the quoting      * character itself) quoted.      */
+DECL|method|quote (String toQuote, String specials, char quoteChar, int linewrap)
 specifier|private
 specifier|static
 name|String
 name|quote
 parameter_list|(
 name|String
-name|s
+name|toQuote
 parameter_list|,
 name|String
 name|specials
@@ -1240,7 +1240,7 @@ name|linewrap
 parameter_list|)
 block|{
 name|StringBuilder
-name|sb
+name|result
 init|=
 operator|new
 name|StringBuilder
@@ -1266,7 +1266,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|s
+name|toQuote
 operator|.
 name|length
 argument_list|()
@@ -1277,7 +1277,7 @@ control|)
 block|{
 name|c
 operator|=
-name|s
+name|toQuote
 operator|.
 name|charAt
 argument_list|(
@@ -1322,14 +1322,14 @@ literal|1
 operator|)
 condition|)
 block|{
-name|sb
+name|result
 operator|.
 name|append
 argument_list|(
 name|quoteChar
 argument_list|)
 expr_stmt|;
-name|sb
+name|result
 operator|.
 name|append
 argument_list|(
@@ -1346,7 +1346,7 @@ condition|(
 name|isSpecial
 condition|)
 block|{
-name|sb
+name|result
 operator|.
 name|append
 argument_list|(
@@ -1357,7 +1357,7 @@ operator|++
 name|lineLength
 expr_stmt|;
 block|}
-name|sb
+name|result
 operator|.
 name|append
 argument_list|(
@@ -1366,28 +1366,28 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|sb
+name|result
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Unquote special characters.      *      * @param s      *            The String which may contain quoted special characters.      * @param quoteChar      *            The quoting character.      * @return A String with all quoted characters unquoted.      */
-DECL|method|unquote (String s, char quoteChar)
+comment|/**      * Unquote special characters.      *      * @param toUnquote         The String which may contain quoted special characters.      * @param quoteChar The quoting character.      * @return A String with all quoted characters unquoted.      */
+DECL|method|unquote (String toUnquote, char quoteChar)
 specifier|public
 specifier|static
 name|String
 name|unquote
 parameter_list|(
 name|String
-name|s
+name|toUnquote
 parameter_list|,
 name|char
 name|quoteChar
 parameter_list|)
 block|{
 name|StringBuilder
-name|sb
+name|result
 init|=
 operator|new
 name|StringBuilder
@@ -1410,7 +1410,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|s
+name|toUnquote
 operator|.
 name|length
 argument_list|()
@@ -1421,7 +1421,7 @@ control|)
 block|{
 name|c
 operator|=
-name|s
+name|toUnquote
 operator|.
 name|charAt
 argument_list|(
@@ -1441,7 +1441,7 @@ operator|!=
 literal|'\n'
 condition|)
 block|{
-name|sb
+name|result
 operator|.
 name|append
 argument_list|(
@@ -1462,7 +1462,7 @@ operator|!=
 name|quoteChar
 condition|)
 block|{
-name|sb
+name|result
 operator|.
 name|append
 argument_list|(
@@ -1480,27 +1480,27 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|sb
+name|result
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Append '.bib' to the string unless it ends with that.      *      * makeBibtexExtension("asfd") => "asdf.bib"      * makeBibtexExtension("asdf.bib") => "asdf.bib"      *      * @param s the string      * @return s or s + ".bib"      */
-DECL|method|makeBibtexExtension (String s)
+comment|/**      * Append '.bib' to the string unless it ends with that.      *<p>      * makeBibtexExtension("asfd") => "asdf.bib"      * makeBibtexExtension("asdf.bib") => "asdf.bib"      *      * @param name the string      * @return s or s + ".bib"      */
+DECL|method|makeBibtexExtension (String name)
 specifier|public
 specifier|static
 name|String
 name|makeBibtexExtension
 parameter_list|(
 name|String
-name|s
+name|name
 parameter_list|)
 block|{
 if|if
 condition|(
 operator|!
-name|s
+name|name
 operator|.
 name|toLowerCase
 argument_list|()
@@ -1512,13 +1512,13 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|s
+name|name
 operator|+
 literal|".bib"
 return|;
 block|}
 return|return
-name|s
+name|name
 return|;
 block|}
 DECL|method|booleanToBinaryString (boolean expression)
