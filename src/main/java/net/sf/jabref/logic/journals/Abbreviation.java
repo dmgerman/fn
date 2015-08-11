@@ -206,13 +206,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|compareTo (Abbreviation o)
+DECL|method|compareTo (Abbreviation toCompare)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
 name|Abbreviation
-name|o
+name|toCompare
 parameter_list|)
 block|{
 return|return
@@ -220,7 +220,7 @@ name|name
 operator|.
 name|compareTo
 argument_list|(
-name|o
+name|toCompare
 operator|.
 name|name
 argument_list|)

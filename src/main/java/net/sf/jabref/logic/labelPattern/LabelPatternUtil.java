@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -247,11 +247,11 @@ name|updateDefaultPattern
 argument_list|()
 expr_stmt|;
 block|}
-DECL|field|_db
+DECL|field|database
 specifier|private
 specifier|static
 name|BibtexDatabase
-name|_db
+name|database
 decl_stmt|;
 DECL|method|updateDefaultPattern ()
 specifier|public
@@ -295,7 +295,7 @@ parameter_list|)
 block|{
 name|LabelPatternUtil
 operator|.
-name|_db
+name|database
 operator|=
 name|db
 expr_stmt|;
@@ -318,9 +318,7 @@ name|tokens
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|int
@@ -1657,7 +1655,7 @@ name|ArrayList
 argument_list|<
 name|String
 argument_list|>
-name|_alist
+name|fieldList
 init|=
 operator|new
 name|ArrayList
@@ -1667,7 +1665,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// Before we do anything, we add the parameter to the ArrayLIst
-name|_alist
+name|fieldList
 operator|.
 name|add
 argument_list|(
@@ -1696,7 +1694,7 @@ name|hasMoreTokens
 argument_list|()
 condition|)
 block|{
-name|_alist
+name|fieldList
 operator|.
 name|add
 argument_list|(
@@ -1708,12 +1706,11 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|_alist
+name|fieldList
 return|;
-comment|/*         // Regular expresion for identifying the fields         Pattern pi = Pattern.compile("\\[\\w*\\]");         // Regular expresion for identifying the spacer         Pattern ps = Pattern.compile("\\].()*\\[");          // The matcher for the field         Matcher mi = pi.matcher(labelPattern);         // The matcher for the spacer char         Matcher ms = ps.matcher(labelPattern);          // Before we do anything, we add the parameter to the ArrayLIst         _alist.add(labelPattern);          // If we can find the spacer character         if(ms.find()){         String t_spacer = ms.group();         // Remove the `]' and `[' at the ends         // We cant imagine a spacer of omre than one character.         t_spacer = t_spacer.substring(1,2);         _alist.add(t_spacer);         }          while(mi.find()){         // Get the matched string         String t_str = mi.group();         int _sindex = 1;         int _eindex = t_str.length() -1;         // Remove the `[' and `]' at the ends         t_str = t_str.substring(_sindex, _eindex);         _alist.add(t_str);         }          return _alist;*/
 block|}
-comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      *      * The given database is used to avoid duplicate keys.      *      * @param database a<code>BibtexDatabase</code>      * @param _entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
-DECL|method|makeLabel (MetaData metaData, BibtexDatabase database, BibtexEntry _entry)
+comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      *      * The given database is used to avoid duplicate keys.      *      * @param database a<code>BibtexDatabase</code>      * @param entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
+DECL|method|makeLabel (MetaData metaData, BibtexDatabase database, BibtexEntry entry)
 specifier|public
 specifier|static
 name|BibtexEntry
@@ -1726,12 +1723,12 @@ name|BibtexDatabase
 name|database
 parameter_list|,
 name|BibtexEntry
-name|_entry
+name|entry
 parameter_list|)
 block|{
 name|LabelPatternUtil
 operator|.
-name|_db
+name|database
 operator|=
 name|database
 expr_stmt|;
@@ -1739,13 +1736,13 @@ name|ArrayList
 argument_list|<
 name|String
 argument_list|>
-name|_al
+name|typeList
 decl_stmt|;
 name|String
-name|_label
+name|key
 decl_stmt|;
 name|StringBuilder
-name|_sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
@@ -1765,9 +1762,9 @@ try|try
 block|{
 comment|// get the type of entry
 name|String
-name|_type
+name|entryType
 init|=
-name|_entry
+name|entry
 operator|.
 name|getType
 argument_list|()
@@ -1779,7 +1776,7 @@ name|toLowerCase
 argument_list|()
 decl_stmt|;
 comment|// Get the arrayList corresponding to the type
-name|_al
+name|typeList
 operator|=
 name|metaData
 operator|.
@@ -1788,13 +1785,13 @@ argument_list|()
 operator|.
 name|getValue
 argument_list|(
-name|_type
+name|entryType
 argument_list|)
 expr_stmt|;
 name|int
-name|_alSize
+name|typeListSize
 init|=
-name|_al
+name|typeList
 operator|.
 name|size
 argument_list|()
@@ -1813,16 +1810,16 @@ literal|1
 init|;
 name|i
 operator|<
-name|_alSize
+name|typeListSize
 condition|;
 name|i
 operator|++
 control|)
 block|{
 name|String
-name|val
+name|typeListEntry
 init|=
-name|_al
+name|typeList
 operator|.
 name|get
 argument_list|(
@@ -1831,7 +1828,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|val
+name|typeListEntry
 operator|.
 name|equals
 argument_list|(
@@ -1847,7 +1844,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|val
+name|typeListEntry
 operator|.
 name|equals
 argument_list|(
@@ -1866,7 +1863,6 @@ condition|(
 name|field
 condition|)
 block|{
-comment|/*                      * Edited by Seb Wills<saw27@mrao.cam.ac.uk> on 13-Apr-2004                      * Added new pseudo-fields "shortyear" and "veryshorttitle",                      * and and ":lower" modifier for all fields (in a way easily                      * extended to other modifiers). Helpfile                      * help/LabelPatterns.html updated accordingly.                      */
 comment|// check whether there is a modifier on the end such as
 comment|// ":lower"
 comment|// String modifier = null;
@@ -1878,7 +1874,7 @@ name|LabelPatternUtil
 operator|.
 name|parseFieldMarker
 argument_list|(
-name|val
+name|typeListEntry
 argument_list|)
 decl_stmt|;
 comment|//val.split(":");
@@ -1889,7 +1885,7 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|_entry
+name|entry
 argument_list|,
 name|parts
 index|[
@@ -1921,7 +1917,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-name|_sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1931,11 +1927,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|_sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|val
+name|typeListEntry
 argument_list|)
 expr_stmt|;
 block|}
@@ -1947,30 +1943,29 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|warn
 argument_list|(
+literal|"Cannot make label"
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
 block|}
 comment|// Remove all illegal characters from the key.
-name|_label
+name|key
 operator|=
 name|Util
 operator|.
 name|checkLegalKey
 argument_list|(
-name|_sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Patch by Toralf Senger:
 comment|// Remove Regular Expressions while generating Keys
 name|String
 name|regex
@@ -2012,9 +2007,9 @@ argument_list|(
 literal|"KeyPatternReplacement"
 argument_list|)
 decl_stmt|;
-name|_label
+name|key
 operator|=
-name|_label
+name|key
 operator|.
 name|replaceAll
 argument_list|(
@@ -2029,9 +2024,9 @@ condition|(
 name|forceUpper
 condition|)
 block|{
-name|_label
+name|key
 operator|=
-name|_label
+name|key
 operator|.
 name|toUpperCase
 argument_list|()
@@ -2042,9 +2037,9 @@ condition|(
 name|forceLower
 condition|)
 block|{
-name|_label
+name|key
 operator|=
-name|_label
+name|key
 operator|.
 name|toLowerCase
 argument_list|()
@@ -2053,21 +2048,21 @@ block|}
 name|String
 name|oldKey
 init|=
-name|_entry
+name|entry
 operator|.
 name|getCiteKey
 argument_list|()
 decl_stmt|;
 name|int
-name|occurences
+name|occurrences
 init|=
 name|LabelPatternUtil
 operator|.
-name|_db
+name|database
 operator|.
 name|getNumberOfKeyOccurences
 argument_list|(
-name|_label
+name|key
 argument_list|)
 decl_stmt|;
 if|if
@@ -2080,11 +2075,11 @@ name|oldKey
 operator|.
 name|equals
 argument_list|(
-name|_label
+name|key
 argument_list|)
 condition|)
 block|{
-name|occurences
+name|occurrences
 operator|--
 expr_stmt|;
 comment|// No change, so we can accept one dupe.
@@ -2122,7 +2117,7 @@ condition|(
 operator|!
 name|alwaysAddLetter
 operator|&&
-name|occurences
+name|occurrences
 operator|==
 literal|0
 condition|)
@@ -2131,7 +2126,7 @@ comment|// No dupes found, so we can just go ahead.
 if|if
 condition|(
 operator|!
-name|_label
+name|key
 operator|.
 name|equals
 argument_list|(
@@ -2143,11 +2138,11 @@ if|if
 condition|(
 name|LabelPatternUtil
 operator|.
-name|_db
+name|database
 operator|.
 name|getEntryById
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getId
 argument_list|()
@@ -2157,7 +2152,7 @@ literal|null
 condition|)
 block|{
 comment|// entry does not (yet) exist in the database, just update the entry
-name|_entry
+name|entry
 operator|.
 name|setField
 argument_list|(
@@ -2165,7 +2160,7 @@ name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|,
-name|_label
+name|key
 argument_list|)
 expr_stmt|;
 block|}
@@ -2173,16 +2168,16 @@ else|else
 block|{
 name|LabelPatternUtil
 operator|.
-name|_db
+name|database
 operator|.
 name|setCiteKeyForEntry
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getId
 argument_list|()
 argument_list|,
-name|_label
+name|key
 argument_list|)
 expr_stmt|;
 block|}
@@ -2213,7 +2208,7 @@ block|}
 name|String
 name|moddedKey
 init|=
-name|_label
+name|key
 operator|+
 name|LabelPatternUtil
 operator|.
@@ -2222,11 +2217,11 @@ argument_list|(
 name|number
 argument_list|)
 decl_stmt|;
-name|occurences
+name|occurrences
 operator|=
 name|LabelPatternUtil
 operator|.
-name|_db
+name|database
 operator|.
 name|getNumberOfKeyOccurences
 argument_list|(
@@ -2247,13 +2242,13 @@ name|moddedKey
 argument_list|)
 condition|)
 block|{
-name|occurences
+name|occurrences
 operator|--
 expr_stmt|;
 block|}
 while|while
 condition|(
-name|occurences
+name|occurrences
 operator|>
 literal|0
 condition|)
@@ -2263,7 +2258,7 @@ operator|++
 expr_stmt|;
 name|moddedKey
 operator|=
-name|_label
+name|key
 operator|+
 name|LabelPatternUtil
 operator|.
@@ -2272,11 +2267,11 @@ argument_list|(
 name|number
 argument_list|)
 expr_stmt|;
-name|occurences
+name|occurrences
 operator|=
 name|LabelPatternUtil
 operator|.
-name|_db
+name|database
 operator|.
 name|getNumberOfKeyOccurences
 argument_list|(
@@ -2297,7 +2292,7 @@ name|moddedKey
 argument_list|)
 condition|)
 block|{
-name|occurences
+name|occurrences
 operator|--
 expr_stmt|;
 block|}
@@ -2317,11 +2312,11 @@ if|if
 condition|(
 name|LabelPatternUtil
 operator|.
-name|_db
+name|database
 operator|.
 name|getEntryById
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getId
 argument_list|()
@@ -2331,7 +2326,7 @@ literal|null
 condition|)
 block|{
 comment|// entry does not (yet) exist in the database, just update the entry
-name|_entry
+name|entry
 operator|.
 name|setField
 argument_list|(
@@ -2347,11 +2342,11 @@ else|else
 block|{
 name|LabelPatternUtil
 operator|.
-name|_db
+name|database
 operator|.
 name|setCiteKeyForEntry
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getId
 argument_list|()
@@ -2363,9 +2358,8 @@ block|}
 block|}
 block|}
 return|return
-name|_entry
+name|entry
 return|;
-comment|/** End of edit, Morten Alver 2004.02.04.  */
 block|}
 comment|/**      * Applies modifiers to a label generated based on a field marker.      * @param label The generated label.      * @param parts String array containing the modifiers.      * @param offset The number of initial items in the modifiers array to skip.      * @return The modified label.      */
 DECL|method|applyModifiers (String label, String[] parts, int offset)
@@ -2468,7 +2462,6 @@ argument_list|)
 condition|)
 block|{
 comment|// Abbreviate - that is,
-comment|// System.out.println(_sbvalue.toString());
 name|StringBuilder
 name|abbr
 init|=
@@ -2607,14 +2600,14 @@ return|return
 name|label
 return|;
 block|}
-DECL|method|makeLabel (BibtexEntry _entry, String val)
+DECL|method|makeLabel (BibtexEntry entry, String val)
 specifier|public
 specifier|static
 name|String
 name|makeLabel
 parameter_list|(
 name|BibtexEntry
-name|_entry
+name|entry
 parameter_list|,
 name|String
 name|val
@@ -2643,7 +2636,7 @@ comment|/*                  * For label code "auth...": if there is no author, b
 name|String
 name|authString
 init|=
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -2665,7 +2658,7 @@ name|normalize
 argument_list|(
 name|LabelPatternUtil
 operator|.
-name|_db
+name|database
 operator|.
 name|resolveForStrings
 argument_list|(
@@ -2714,7 +2707,7 @@ condition|)
 block|{
 name|authString
 operator|=
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -2736,7 +2729,7 @@ name|normalize
 argument_list|(
 name|LabelPatternUtil
 operator|.
-name|_db
+name|database
 operator|.
 name|resolveForStrings
 argument_list|(
@@ -3279,7 +3272,7 @@ name|LabelPatternUtil
 operator|.
 name|getField
 argument_list|(
-name|_entry
+name|entry
 argument_list|,
 name|val
 argument_list|)
@@ -3314,7 +3307,7 @@ name|LabelPatternUtil
 operator|.
 name|firstAuthor
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3339,7 +3332,7 @@ name|LabelPatternUtil
 operator|.
 name|firstAuthorForenameInitials
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3364,7 +3357,7 @@ name|LabelPatternUtil
 operator|.
 name|allAuthors
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3390,7 +3383,7 @@ name|LabelPatternUtil
 operator|.
 name|lastAuthor
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3415,7 +3408,7 @@ name|LabelPatternUtil
 operator|.
 name|lastAuthorForenameInitials
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3442,7 +3435,7 @@ name|LabelPatternUtil
 operator|.
 name|oneAuthorPlusIni
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3493,7 +3486,7 @@ name|LabelPatternUtil
 operator|.
 name|authIniN
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3547,7 +3540,7 @@ name|LabelPatternUtil
 operator|.
 name|authN_M
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3605,7 +3598,7 @@ name|LabelPatternUtil
 operator|.
 name|authAuthEa
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3641,7 +3634,7 @@ name|LabelPatternUtil
 operator|.
 name|authshort
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3694,7 +3687,7 @@ name|LabelPatternUtil
 operator|.
 name|firstAuthor
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3751,7 +3744,7 @@ name|LabelPatternUtil
 operator|.
 name|getField
 argument_list|(
-name|_entry
+name|entry
 argument_list|,
 name|val
 argument_list|)
@@ -3774,7 +3767,7 @@ name|LabelPatternUtil
 operator|.
 name|firstPage
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3799,7 +3792,7 @@ name|LabelPatternUtil
 operator|.
 name|lastPage
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -3826,7 +3819,7 @@ name|getTitleWords
 argument_list|(
 literal|3
 argument_list|,
-name|_entry
+name|entry
 argument_list|)
 return|;
 block|}
@@ -3844,7 +3837,7 @@ block|{
 name|String
 name|ss
 init|=
-name|_entry
+name|entry
 operator|.
 name|getFieldOrAlias
 argument_list|(
@@ -3922,7 +3915,7 @@ name|getTitleWords
 argument_list|(
 literal|1
 argument_list|,
-name|_entry
+name|entry
 argument_list|)
 return|;
 block|}
@@ -3966,7 +3959,7 @@ name|LabelPatternUtil
 operator|.
 name|getField
 argument_list|(
-name|_entry
+name|entry
 argument_list|,
 literal|"keywords"
 argument_list|)
@@ -4035,7 +4028,7 @@ name|LabelPatternUtil
 operator|.
 name|getField
 argument_list|(
-name|_entry
+name|entry
 argument_list|,
 name|val
 argument_list|)
@@ -4174,7 +4167,7 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|getTitleWords (int number, BibtexEntry _entry)
+DECL|method|getTitleWords (int number, BibtexEntry entry)
 specifier|private
 specifier|static
 name|String
@@ -4184,7 +4177,7 @@ name|int
 name|number
 parameter_list|,
 name|BibtexEntry
-name|_entry
+name|entry
 parameter_list|)
 block|{
 name|String
@@ -4196,7 +4189,7 @@ argument_list|()
 operator|.
 name|format
 argument_list|(
-name|_entry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -4204,14 +4197,14 @@ literal|"title"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|StringBuffer
-name|_sbvalue
+name|StringBuilder
+name|stringBuilder
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|current
 decl_stmt|;
 name|int
@@ -4245,7 +4238,7 @@ block|{
 name|current
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 comment|// Get the next word:
@@ -4361,7 +4354,7 @@ block|}
 comment|// If we get here, the word was accepted.
 if|if
 condition|(
-name|_sbvalue
+name|stringBuilder
 operator|.
 name|length
 argument_list|()
@@ -4369,7 +4362,7 @@ operator|>
 literal|0
 condition|)
 block|{
-name|_sbvalue
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -4377,7 +4370,7 @@ literal|" "
 argument_list|)
 expr_stmt|;
 block|}
-name|_sbvalue
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -4393,7 +4386,7 @@ name|LabelPatternUtil
 operator|.
 name|keepLettersAndDigitsOnly
 argument_list|(
-name|_sbvalue
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -4411,7 +4404,7 @@ name|in
 parameter_list|)
 block|{
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
@@ -4450,7 +4443,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -4465,105 +4458,10 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
-return|;
-block|}
-comment|/**      * Tests whether a given label is unique.      *       * This method is private as it is currently used nowhere.      * The issue with this method is that it uses the global variable "_db", which might be undefined when calling the method.      *      * @param label a<code>String</code>      * @return<code>true</code> if and only if the<code>label</code> is unique      */
-DECL|method|isLabelUnique (String label)
-specifier|private
-specifier|static
-name|boolean
-name|isLabelUnique
-parameter_list|(
-name|String
-name|label
-parameter_list|)
-block|{
-name|boolean
-name|_isUnique
-init|=
-literal|true
-decl_stmt|;
-name|BibtexEntry
-name|_entry
-decl_stmt|;
-name|int
-name|_dbSize
-init|=
-name|LabelPatternUtil
-operator|.
-name|_db
-operator|.
-name|getEntryCount
-argument_list|()
-decl_stmt|;
-comment|// run through the whole DB and check the key field
-comment|// if this could be made recursive I would be very happy
-comment|// it kinda sux that we have to run through the whole db.
-comment|// The idea here is that if we meet NO match, the _duplicate
-comment|// field will be true
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|_dbSize
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|_entry
-operator|=
-name|LabelPatternUtil
-operator|.
-name|_db
-operator|.
-name|getEntryById
-argument_list|(
-name|String
-operator|.
-name|valueOf
-argument_list|(
-name|i
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// oh my! there is a match! we better set the uniqueness to false
-comment|// and leave this for-loop all together
-if|if
-condition|(
-name|_entry
-operator|.
-name|getField
-argument_list|(
-name|BibtexFields
-operator|.
-name|KEY_FIELD
-argument_list|)
-operator|.
-name|equals
-argument_list|(
-name|label
-argument_list|)
-condition|)
-block|{
-name|_isUnique
-operator|=
-literal|false
-expr_stmt|;
-break|break;
-block|}
-block|}
-return|return
-name|_isUnique
 return|;
 block|}
 comment|/**      * Gets the last name of the first author/editor      *       * @param authorField      *            a<code>String</code>      * @return the surname of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *       * @throws NullPointerException      *             if authorField == null      */
@@ -4578,7 +4476,7 @@ name|authorField
 parameter_list|)
 block|{
 name|AuthorList
-name|al
+name|authorList
 init|=
 name|AuthorList
 operator|.
@@ -4589,7 +4487,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|al
+name|authorList
 operator|.
 name|size
 argument_list|()
@@ -4604,7 +4502,7 @@ block|}
 name|String
 name|s
 init|=
-name|al
+name|authorList
 operator|.
 name|getAuthor
 argument_list|(
@@ -4636,7 +4534,7 @@ name|authorField
 parameter_list|)
 block|{
 name|AuthorList
-name|al
+name|authorList
 init|=
 name|AuthorList
 operator|.
@@ -4647,7 +4545,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|al
+name|authorList
 operator|.
 name|size
 argument_list|()
@@ -4662,7 +4560,7 @@ block|}
 name|String
 name|s
 init|=
-name|al
+name|authorList
 operator|.
 name|getAuthor
 argument_list|(
@@ -4701,7 +4599,7 @@ name|authorField
 parameter_list|)
 block|{
 name|AuthorList
-name|al
+name|authorList
 init|=
 name|AuthorList
 operator|.
@@ -4712,7 +4610,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|al
+name|authorList
 operator|.
 name|size
 argument_list|()
@@ -4725,9 +4623,9 @@ literal|""
 return|;
 block|}
 name|String
-name|s
+name|vonAuthor
 init|=
-name|al
+name|authorList
 operator|.
 name|getAuthor
 argument_list|(
@@ -4738,7 +4636,7 @@ name|getVon
 argument_list|()
 decl_stmt|;
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
@@ -4746,19 +4644,19 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|s
+name|vonAuthor
 operator|!=
 literal|null
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|s
+name|vonAuthor
 argument_list|)
 expr_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -4766,9 +4664,9 @@ literal|' '
 argument_list|)
 expr_stmt|;
 block|}
-name|s
+name|vonAuthor
 operator|=
-name|al
+name|authorList
 operator|.
 name|getAuthor
 argument_list|(
@@ -4780,21 +4678,21 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|s
+name|vonAuthor
 operator|!=
 literal|null
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|s
+name|vonAuthor
 argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -4891,7 +4789,7 @@ name|authorField
 parameter_list|)
 block|{
 name|AuthorList
-name|al
+name|authorList
 init|=
 name|AuthorList
 operator|.
@@ -4902,7 +4800,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|al
+name|authorList
 operator|.
 name|size
 argument_list|()
@@ -4917,11 +4815,11 @@ block|}
 name|String
 name|s
 init|=
-name|al
+name|authorList
 operator|.
 name|getAuthor
 argument_list|(
-name|al
+name|authorList
 operator|.
 name|size
 argument_list|()

@@ -112,9 +112,9 @@ name|javax
 operator|.
 name|xml
 operator|.
-name|transform
+name|parsers
 operator|.
-name|OutputKeys
+name|ParserConfigurationException
 import|;
 end_import
 
@@ -126,19 +126,7 @@ name|xml
 operator|.
 name|transform
 operator|.
-name|Transformer
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|transform
-operator|.
-name|TransformerFactory
+name|*
 import|;
 end_import
 
@@ -288,6 +276,34 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|w3c
 operator|.
 name|dom
@@ -333,7 +349,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Date: May 15, 2007; May 03, 2007  *  * History  * May 03, 2007 - Added export functionality  * May 15, 2007 - Added import functionality  * May 16, 2007 - Changed all interger entries to strings,  * 				  except LCID which must be an integer.  * 				  To avoid exception during integer parsing  *				  the exception is caught and LCID is set to zero.  * Jan 06, 2012 - Changed the XML element ConferenceName to present  * 				  the Booktitle instead of the organization field content  *  * @author S M Mahbub Murshed (udvranto@yahoo.com)  * @version 2.0.0  * @see<a href="http://mahbub.wordpress.com/2007/03/24/details-of-microsoft-office-2007-bibliographic-format-compared-to-bibtex/">ms office 2007 bibliography format compared to bibtex</a>  * @see<a href="http://mahbub.wordpress.com/2007/03/22/deciphering-microsoft-office-2007-bibliography-format/">deciphering ms office 2007 bibliography format</a>  */
+comment|/**  * Date: May 15, 2007; May 03, 2007  *<p>  * History  * May 03, 2007 - Added export functionality  * May 15, 2007 - Added import functionality  * May 16, 2007 - Changed all interger entries to strings,  * except LCID which must be an integer.  * To avoid exception during integer parsing  * the exception is caught and LCID is set to zero.  * Jan 06, 2012 - Changed the XML element ConferenceName to present  * the Booktitle instead of the organization field content  *  * @author S M Mahbub Murshed (udvranto@yahoo.com)  * @version 2.0.0  * @see<a href="http://mahbub.wordpress.com/2007/03/24/details-of-microsoft-office-2007-bibliographic-format-compared-to-bibtex/">ms office 2007 bibliography format compared to bibtex</a>  * @see<a href="http://mahbub.wordpress.com/2007/03/22/deciphering-microsoft-office-2007-bibliography-format/">deciphering ms office 2007 bibliography format</a>  */
 end_comment
 
 begin_class
@@ -341,6 +357,22 @@ DECL|class|MSBibEntry
 class|class
 name|MSBibEntry
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MSBibEntry
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|sourceType
 specifier|private
 name|String
@@ -946,7 +978,7 @@ name|bibtex
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MSBibEntry (Element entry, String _bcol)
+DECL|method|MSBibEntry (Element entry, String bcol)
 specifier|public
 name|MSBibEntry
 parameter_list|(
@@ -954,7 +986,7 @@ name|Element
 name|entry
 parameter_list|,
 name|String
-name|_bcol
+name|bcol
 parameter_list|)
 block|{
 name|this
@@ -964,7 +996,7 @@ name|populateFromXml
 argument_list|(
 name|entry
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 block|}
@@ -1022,7 +1054,7 @@ return|return
 name|value
 return|;
 block|}
-DECL|method|populateFromXml (Element entry, String _bcol)
+DECL|method|populateFromXml (Element entry, String bcol)
 specifier|private
 name|void
 name|populateFromXml
@@ -1031,7 +1063,7 @@ name|Element
 name|entry
 parameter_list|,
 name|String
-name|_bcol
+name|bcol
 parameter_list|)
 block|{
 name|String
@@ -1043,7 +1075,7 @@ name|sourceType
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"SourceType"
 argument_list|,
@@ -1054,7 +1086,7 @@ name|tag
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Tag"
 argument_list|,
@@ -1065,7 +1097,7 @@ name|temp
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"LCID"
 argument_list|,
@@ -1093,7 +1125,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|NumberFormatException
 name|e
 parameter_list|)
 block|{
@@ -1108,7 +1140,7 @@ name|title
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Title"
 argument_list|,
@@ -1119,7 +1151,7 @@ name|year
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Year"
 argument_list|,
@@ -1130,7 +1162,7 @@ name|month
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Month"
 argument_list|,
@@ -1141,7 +1173,7 @@ name|day
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Day"
 argument_list|,
@@ -1152,7 +1184,7 @@ name|shortTitle
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"ShortTitle"
 argument_list|,
@@ -1163,7 +1195,7 @@ name|comments
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Comments"
 argument_list|,
@@ -1174,7 +1206,7 @@ name|temp
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Pages"
 argument_list|,
@@ -1201,7 +1233,7 @@ name|volume
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Volume"
 argument_list|,
@@ -1212,7 +1244,7 @@ name|numberOfVolumes
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"NumberVolumes"
 argument_list|,
@@ -1223,7 +1255,7 @@ name|edition
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Edition"
 argument_list|,
@@ -1234,7 +1266,7 @@ name|standardNumber
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"StandardNumber"
 argument_list|,
@@ -1245,7 +1277,7 @@ name|publisher
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Publisher"
 argument_list|,
@@ -1257,7 +1289,7 @@ name|city
 init|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"City"
 argument_list|,
@@ -1269,7 +1301,7 @@ name|state
 init|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"StateProvince"
 argument_list|,
@@ -1281,7 +1313,7 @@ name|country
 init|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"CountryRegion"
 argument_list|,
@@ -1363,7 +1395,7 @@ name|bookTitle
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"BookTitle"
 argument_list|,
@@ -1374,7 +1406,7 @@ name|chapterNumber
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"ChapterNumber"
 argument_list|,
@@ -1385,7 +1417,7 @@ name|journalName
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"JournalName"
 argument_list|,
@@ -1396,7 +1428,7 @@ name|issue
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Issue"
 argument_list|,
@@ -1407,7 +1439,7 @@ name|periodicalTitle
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"PeriodicalTitle"
 argument_list|,
@@ -1418,7 +1450,7 @@ name|conferenceName
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"ConferenceName"
 argument_list|,
@@ -1429,7 +1461,7 @@ name|department
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Department"
 argument_list|,
@@ -1440,7 +1472,7 @@ name|institution
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Institution"
 argument_list|,
@@ -1451,7 +1483,7 @@ name|thesisType
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"ThesisType"
 argument_list|,
@@ -1462,7 +1494,7 @@ name|internetSiteTitle
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"InternetSiteTitle"
 argument_list|,
@@ -1474,7 +1506,7 @@ name|month
 init|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"MonthAccessed"
 argument_list|,
@@ -1486,7 +1518,7 @@ name|day
 init|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"DayAccessed"
 argument_list|,
@@ -1498,7 +1530,7 @@ name|year
 init|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"YearAccessed"
 argument_list|,
@@ -1580,7 +1612,7 @@ name|url
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"URL"
 argument_list|,
@@ -1591,7 +1623,7 @@ name|productionCompany
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"ProductionCompany"
 argument_list|,
@@ -1602,7 +1634,7 @@ name|publicationTitle
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"PublicationTitle"
 argument_list|,
@@ -1613,7 +1645,7 @@ name|medium
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Medium"
 argument_list|,
@@ -1624,7 +1656,7 @@ name|albumTitle
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"AlbumTitle"
 argument_list|,
@@ -1635,7 +1667,7 @@ name|recordingNumber
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"RecordingNumber"
 argument_list|,
@@ -1646,7 +1678,7 @@ name|theater
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Theater"
 argument_list|,
@@ -1657,7 +1689,7 @@ name|distributor
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Distributor"
 argument_list|,
@@ -1668,7 +1700,7 @@ name|broadcastTitle
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"BroadcastTitle"
 argument_list|,
@@ -1679,7 +1711,7 @@ name|broadcaster
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Broadcaster"
 argument_list|,
@@ -1690,7 +1722,7 @@ name|station
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Station"
 argument_list|,
@@ -1701,7 +1733,7 @@ name|type
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Type"
 argument_list|,
@@ -1712,7 +1744,7 @@ name|patentNumber
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"PatentNumber"
 argument_list|,
@@ -1723,7 +1755,7 @@ name|court
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Court"
 argument_list|,
@@ -1734,7 +1766,7 @@ name|reporter
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Reporter"
 argument_list|,
@@ -1745,7 +1777,7 @@ name|caseNumber
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"CaseNumber"
 argument_list|,
@@ -1756,7 +1788,7 @@ name|abbreviatedCaseNumber
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"AbbreviatedCaseNumber"
 argument_list|,
@@ -1767,7 +1799,7 @@ name|bibTex_Series
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 name|BIBTEX
 operator|+
@@ -1780,7 +1812,7 @@ name|bibTex_Abstract
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 name|BIBTEX
 operator|+
@@ -1793,7 +1825,7 @@ name|bibTex_KeyWords
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 name|BIBTEX
 operator|+
@@ -1806,7 +1838,7 @@ name|bibTex_CrossRef
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 name|BIBTEX
 operator|+
@@ -1819,7 +1851,7 @@ name|bibTex_HowPublished
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 name|BIBTEX
 operator|+
@@ -1832,7 +1864,7 @@ name|bibTex_Affiliation
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 name|BIBTEX
 operator|+
@@ -1845,7 +1877,7 @@ name|bibTex_Contents
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 name|BIBTEX
 operator|+
@@ -1858,7 +1890,7 @@ name|bibTex_Copyright
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 name|BIBTEX
 operator|+
@@ -1871,7 +1903,7 @@ name|bibTex_Price
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 name|BIBTEX
 operator|+
@@ -1884,7 +1916,7 @@ name|bibTex_Size
 operator|=
 name|getFromXml
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 name|BIBTEX
 operator|+
@@ -1900,7 +1932,7 @@ name|entry
 operator|.
 name|getElementsByTagName
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Author"
 argument_list|)
@@ -1927,7 +1959,7 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 block|}
@@ -1941,7 +1973,6 @@ name|BibtexEntry
 name|bibtex
 parameter_list|)
 block|{
-comment|// date = getDate(bibtex);
 name|sourceType
 operator|=
 name|getMSBibSourceType
@@ -2709,8 +2740,6 @@ name|thesisType
 operator|=
 literal|"unpublished"
 expr_stmt|;
-comment|//else if (bibtex.getType().getName().equalsIgnoreCase("manual"))
-comment|//	thesisType = "manual";
 block|}
 block|}
 if|if
@@ -3573,22 +3602,6 @@ argument_list|(
 name|title
 argument_list|)
 expr_stmt|;
-comment|// shortTitle = format(shortTitle);
-comment|// publisher = format(publisher);
-comment|// conferenceName = format(conferenceName);
-comment|// department = format(department);
-comment|// institution = format(institution);
-comment|// internetSiteTitle = format(internetSiteTitle);
-comment|// publicationTitle = format(publicationTitle);
-comment|// albumTitle = format(albumTitle);
-comment|// theater = format(theater);
-comment|// distributor = format(distributor);
-comment|// broadcastTitle = format(broadcastTitle);
-comment|// broadcaster = format(broadcaster);
-comment|// station = format(station);
-comment|// court = format(court);
-comment|// reporter = format(reporter);
-comment|// bibTex_Series = format(bibTex_Series);
 name|bibTex_Abstract
 operator|=
 name|format
@@ -3673,7 +3686,7 @@ return|return
 literal|"english"
 return|;
 block|}
-DECL|method|getSpecificAuthors (String type, Element authors, String _bcol)
+DECL|method|getSpecificAuthors (String type, Element authors, String bcol)
 specifier|private
 name|List
 argument_list|<
@@ -3688,7 +3701,7 @@ name|Element
 name|authors
 parameter_list|,
 name|String
-name|_bcol
+name|bcol
 parameter_list|)
 block|{
 name|List
@@ -3706,7 +3719,7 @@ name|authors
 operator|.
 name|getElementsByTagName
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 name|type
 argument_list|)
@@ -3741,7 +3754,7 @@ operator|)
 operator|.
 name|getElementsByTagName
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"NameList"
 argument_list|)
@@ -3777,7 +3790,7 @@ operator|)
 operator|.
 name|getElementsByTagName
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Person"
 argument_list|)
@@ -3800,9 +3813,7 @@ name|result
 operator|=
 operator|new
 name|LinkedList
-argument_list|<
-name|PersonName
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for
@@ -3840,7 +3851,7 @@ operator|)
 operator|.
 name|getElementsByTagName
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"First"
 argument_list|)
@@ -3862,7 +3873,7 @@ operator|)
 operator|.
 name|getElementsByTagName
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Last"
 argument_list|)
@@ -3884,7 +3895,7 @@ operator|)
 operator|.
 name|getElementsByTagName
 argument_list|(
-name|_bcol
+name|bcol
 operator|+
 literal|"Middle"
 argument_list|)
@@ -3986,7 +3997,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getAuthors (Element authorsElem, String _bcol)
+DECL|method|getAuthors (Element authorsElem, String bcol)
 specifier|private
 name|void
 name|getAuthors
@@ -3995,7 +4006,7 @@ name|Element
 name|authorsElem
 parameter_list|,
 name|String
-name|_bcol
+name|bcol
 parameter_list|)
 block|{
 name|authors
@@ -4006,7 +4017,7 @@ literal|"Author"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|bookAuthors
@@ -4017,7 +4028,7 @@ literal|"BookAuthor"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|editors
@@ -4028,7 +4039,7 @@ literal|"Editor"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|translators
@@ -4039,7 +4050,7 @@ literal|"Translator"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|producerNames
@@ -4050,7 +4061,7 @@ literal|"ProducerName"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|composers
@@ -4061,7 +4072,7 @@ literal|"Composer"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|conductors
@@ -4072,7 +4083,7 @@ literal|"Conductor"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|performers
@@ -4083,7 +4094,7 @@ literal|"Performer"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|writers
@@ -4094,7 +4105,7 @@ literal|"Writer"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|directors
@@ -4105,7 +4116,7 @@ literal|"Director"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|compilers
@@ -4116,7 +4127,7 @@ literal|"Compiler"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|interviewers
@@ -4127,7 +4138,7 @@ literal|"Interviewer"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|interviewees
@@ -4138,7 +4149,7 @@ literal|"Interviewee"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|inventors
@@ -4149,7 +4160,7 @@ literal|"Inventor"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 name|counsels
@@ -4160,7 +4171,7 @@ literal|"Counsel"
 argument_list|,
 name|authorsElem
 argument_list|,
-name|_bcol
+name|bcol
 argument_list|)
 expr_stmt|;
 block|}
@@ -4184,9 +4195,7 @@ name|result
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|PersonName
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -4684,7 +4693,7 @@ decl_stmt|;
 try|try
 block|{
 name|DocumentBuilder
-name|d
+name|documentBuilder
 init|=
 name|DocumentBuilderFactory
 operator|.
@@ -4698,7 +4707,7 @@ name|result
 operator|=
 name|getDOMrepresentation
 argument_list|(
-name|d
+name|documentBuilder
 operator|.
 name|newDocument
 argument_list|()
@@ -4707,29 +4716,31 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|ParserConfigurationException
 name|e
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|Error
+name|LOGGER
+operator|.
+name|warn
 argument_list|(
+literal|"Could not create DocumentBuilder"
+argument_list|,
 name|e
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 return|return
 name|result
 return|;
 block|}
-DECL|method|addField (Document d, Element parent, String name, String value)
+DECL|method|addField (Document document, Element parent, String name, String value)
 specifier|private
 name|void
 name|addField
 parameter_list|(
 name|Document
-name|d
+name|document
 parameter_list|,
 name|Element
 name|parent
@@ -4753,7 +4764,7 @@ block|}
 name|Element
 name|elem
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -4762,17 +4773,11 @@ operator|+
 name|name
 argument_list|)
 decl_stmt|;
-comment|// elem.appendChild(d.createTextNode(healXML(value)));
-comment|//		Text txt = d.createTextNode(value);
-comment|//		if(!txt.getTextContent().equals(value))
-comment|//			System.out.println("Values dont match!");
-comment|//			// throw new Exception("Values dont match!");
-comment|//		elem.appendChild(txt);
 name|elem
 operator|.
 name|appendChild
 argument_list|(
-name|d
+name|document
 operator|.
 name|createTextNode
 argument_list|(
@@ -4791,13 +4796,13 @@ name|elem
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addAuthor (Document d, Element allAuthors, String entryName, List<PersonName> authorsLst)
+DECL|method|addAuthor (Document document, Element allAuthors, String entryName, List<PersonName> authorsLst)
 specifier|private
 name|void
 name|addAuthor
 parameter_list|(
 name|Document
-name|d
+name|document
 parameter_list|,
 name|Element
 name|allAuthors
@@ -4824,7 +4829,7 @@ block|}
 name|Element
 name|authorTop
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -4836,7 +4841,7 @@ decl_stmt|;
 name|Element
 name|nameList
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -4856,7 +4861,7 @@ block|{
 name|Element
 name|person
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -4867,7 +4872,7 @@ argument_list|)
 decl_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|person
 argument_list|,
@@ -4881,7 +4886,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|person
 argument_list|,
@@ -4895,7 +4900,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|person
 argument_list|,
@@ -4930,13 +4935,13 @@ name|authorTop
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addAdrress (Document d, Element parent, String address)
+DECL|method|addAdrress (Document document, Element parent, String address)
 specifier|private
 name|void
 name|addAdrress
 parameter_list|(
 name|Document
-name|d
+name|document
 parameter_list|,
 name|Element
 name|parent
@@ -4954,16 +4959,12 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// US address parser
-comment|// See documentation here http://regexlib.com/REDetails.aspx?regexp_id=472
-comment|// Pattern p = Pattern.compile("^(?n:(((?<address1>(\\d{1,5}(\\ 1\\/[234])?(\\x20[A-Z]([a-z])+)+ )|(P\\.O\\.\\ Box\\ \\d{1,5}))\\s{1,2}(?i:(?<address2>(((APT|B LDG|DEPT|FL|HNGR|LOT|PIER|RM|S(LIP|PC|T(E|OP))|TRLR|UNIT)\\x20\\w{1,5})|(BSMT|FRNT|LBBY|LOWR|OFC|PH|REAR|SIDE|UPPR)\\.?)\\s{1,2})?))?)(?<city>[A-Z]([a-z])+(\\.?)(\\x20[A-Z]([a-z])+){0,2})([,\\x20]+?)(?<state>A[LKSZRAP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADL N]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD] |T[NX]|UT|V[AIT]|W[AIVY])([,\\x20]+?)(?<zipcode>(?!0{5})\\d{5}(-\\d {4})?)((([,\\x20]+?)(?<country>[A-Z]([a-z])+(\\.?)(\\x20[A-Z]([a-z])+){0,2}))?))$");
-comment|// the pattern above is for C#, may not work with java. Never tested though.
 comment|// reduced subset, supports only "CITY , STATE, COUNTRY"
 comment|// \b(\w+)\s?[,]?\s?(\w+)\s?[,]?\s?(\w+)\b
 comment|// WORD SPACE , SPACE WORD SPACE , SPACE WORD
 comment|// tested using http://www.javaregex.com/test.html
 name|Pattern
-name|p
+name|pattern
 init|=
 name|Pattern
 operator|.
@@ -4973,9 +4974,9 @@ literal|"\\b(\\w+)\\s*[,]?\\s*(\\w+)\\s*[,]?\\s*(\\w+)\\b"
 argument_list|)
 decl_stmt|;
 name|Matcher
-name|m
+name|matcher
 init|=
-name|p
+name|pattern
 operator|.
 name|matcher
 argument_list|(
@@ -4984,12 +4985,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|m
+name|matcher
 operator|.
 name|matches
 argument_list|()
 operator|&&
-name|m
+name|matcher
 operator|.
 name|groupCount
 argument_list|()
@@ -4999,13 +5000,13 @@ condition|)
 block|{
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|parent
 argument_list|,
 literal|"City"
 argument_list|,
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -5015,13 +5016,13 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|parent
 argument_list|,
 literal|"StateProvince"
 argument_list|,
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -5031,13 +5032,13 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|parent
 argument_list|,
 literal|"CountryRegion"
 argument_list|,
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -5051,7 +5052,7 @@ block|{
 comment|/* SM: 2010.10 generalized */
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|parent
 argument_list|,
@@ -5062,13 +5063,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addDate (Document d, Element parent, String date, String extra)
+DECL|method|addDate (Document document, Element parent, String date, String extra)
 specifier|private
 name|void
 name|addDate
 parameter_list|(
 name|Document
-name|d
+name|document
 parameter_list|,
 name|Element
 name|parent
@@ -5094,7 +5095,7 @@ comment|// (\d{1,2})\s?[.,-/]\s?(\d{1,2})\s?[.,-/]\s?(\d{2,4})
 comment|// 1-2 DIGITS SPACE SEPERATOR SPACE 1-2 DIGITS SPACE SEPERATOR SPACE 2-4 DIGITS
 comment|// tested using http://www.javaregex.com/test.html
 name|Pattern
-name|p
+name|pattern
 init|=
 name|Pattern
 operator|.
@@ -5104,9 +5105,9 @@ literal|"(\\d{1,2})\\s*[.,-/]\\s*(\\d{1,2})\\s*[.,-/]\\s*(\\d{2,4})"
 argument_list|)
 decl_stmt|;
 name|Matcher
-name|m
+name|matcher
 init|=
-name|p
+name|pattern
 operator|.
 name|matcher
 argument_list|(
@@ -5115,12 +5116,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|m
+name|matcher
 operator|.
 name|matches
 argument_list|()
 operator|&&
-name|m
+name|matcher
 operator|.
 name|groupCount
 argument_list|()
@@ -5130,7 +5131,7 @@ condition|)
 block|{
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|parent
 argument_list|,
@@ -5138,7 +5139,7 @@ literal|"Month"
 operator|+
 name|extra
 argument_list|,
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -5148,7 +5149,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|parent
 argument_list|,
@@ -5156,7 +5157,7 @@ literal|"Day"
 operator|+
 name|extra
 argument_list|,
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -5166,7 +5167,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|parent
 argument_list|,
@@ -5174,7 +5175,7 @@ literal|"Year"
 operator|+
 name|extra
 argument_list|,
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -5184,21 +5185,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getDOMrepresentation (Document d)
+DECL|method|getDOMrepresentation (Document document)
 specifier|public
 name|Element
 name|getDOMrepresentation
 parameter_list|(
 name|Document
-name|d
+name|document
 parameter_list|)
-block|{
-try|try
 block|{
 name|Element
 name|msbibEntry
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -5209,7 +5208,7 @@ argument_list|)
 decl_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5220,7 +5219,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5233,7 +5232,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5244,7 +5243,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5262,7 +5261,7 @@ condition|)
 block|{
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5279,7 +5278,7 @@ expr_stmt|;
 block|}
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5290,7 +5289,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5301,7 +5300,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5312,7 +5311,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5324,7 +5323,7 @@ expr_stmt|;
 name|Element
 name|allAuthors
 init|=
-name|d
+name|document
 operator|.
 name|createElement
 argument_list|(
@@ -5335,7 +5334,7 @@ argument_list|)
 decl_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5344,20 +5343,25 @@ argument_list|,
 name|authors
 argument_list|)
 expr_stmt|;
+name|String
+name|bookAuthor
+init|=
+literal|"BookAuthor"
+decl_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
-literal|"BookAuthor"
+name|bookAuthor
 argument_list|,
 name|bookAuthors
 argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5368,7 +5372,7 @@ argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5379,7 +5383,7 @@ argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5390,7 +5394,7 @@ argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5401,7 +5405,7 @@ argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5412,7 +5416,7 @@ argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5423,7 +5427,7 @@ argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5434,7 +5438,7 @@ argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5445,7 +5449,7 @@ argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5456,7 +5460,7 @@ argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5467,7 +5471,7 @@ argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5478,7 +5482,7 @@ argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5489,7 +5493,7 @@ argument_list|)
 expr_stmt|;
 name|addAuthor
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|allAuthors
 argument_list|,
@@ -5514,7 +5518,7 @@ condition|)
 block|{
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5531,7 +5535,7 @@ expr_stmt|;
 block|}
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5542,7 +5546,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5553,7 +5557,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5564,7 +5568,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5575,7 +5579,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5586,7 +5590,7 @@ argument_list|)
 expr_stmt|;
 name|addAdrress
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5595,7 +5599,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5606,7 +5610,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5617,7 +5621,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5628,7 +5632,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5639,7 +5643,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5650,7 +5654,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5661,7 +5665,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5672,7 +5676,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5683,7 +5687,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5694,7 +5698,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5705,7 +5709,7 @@ argument_list|)
 expr_stmt|;
 name|addDate
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5717,7 +5721,7 @@ expr_stmt|;
 comment|/* SM 2010.10 added month export */
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5728,7 +5732,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5739,7 +5743,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5750,7 +5754,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5761,7 +5765,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5772,7 +5776,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5783,7 +5787,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5794,7 +5798,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5805,7 +5809,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5816,7 +5820,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5827,7 +5831,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5838,7 +5842,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5849,7 +5853,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5860,7 +5864,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5871,7 +5875,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5882,7 +5886,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5893,7 +5897,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5904,7 +5908,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5915,7 +5919,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5928,7 +5932,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5941,7 +5945,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5954,7 +5958,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5967,7 +5971,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5980,7 +5984,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -5993,7 +5997,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -6006,7 +6010,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -6019,7 +6023,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -6032,7 +6036,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -6046,7 +6050,7 @@ expr_stmt|;
 comment|/* SM: 2010.10 end intype, paper support */
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -6059,7 +6063,7 @@ argument_list|)
 expr_stmt|;
 name|addField
 argument_list|(
-name|d
+name|document
 argument_list|,
 name|msbibEntry
 argument_list|,
@@ -6074,39 +6078,7 @@ return|return
 name|msbibEntry
 return|;
 block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Exception caught..."
-operator|+
-name|e
-argument_list|)
-expr_stmt|;
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-throw|throw
-operator|new
-name|Error
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
-comment|// return null;
-block|}
-DECL|method|parseSingleStandardNumber (String type, String bibtype, String standardNum, HashMap<String, String> hm)
+DECL|method|parseSingleStandardNumber (String type, String bibtype, String standardNum, HashMap<String, String> map)
 specifier|private
 name|void
 name|parseSingleStandardNumber
@@ -6126,12 +6098,12 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|hm
+name|map
 parameter_list|)
 block|{
 comment|// tested using http://www.javaregex.com/test.html
 name|Pattern
-name|p
+name|pattern
 init|=
 name|Pattern
 operator|.
@@ -6145,9 +6117,9 @@ literal|":(.[^:]+)"
 argument_list|)
 decl_stmt|;
 name|Matcher
-name|m
+name|matcher
 init|=
-name|p
+name|pattern
 operator|.
 name|matcher
 argument_list|(
@@ -6156,19 +6128,19 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|m
+name|matcher
 operator|.
 name|matches
 argument_list|()
 condition|)
 block|{
-name|hm
+name|map
 operator|.
 name|put
 argument_list|(
 name|bibtype
 argument_list|,
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -6178,7 +6150,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parseStandardNumber (String standardNum, HashMap<String, String> hm)
+DECL|method|parseStandardNumber (String standardNum, HashMap<String, String> map)
 specifier|private
 name|void
 name|parseStandardNumber
@@ -6192,7 +6164,7 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|hm
+name|map
 parameter_list|)
 block|{
 if|if
@@ -6212,7 +6184,7 @@ literal|"isbn"
 argument_list|,
 name|standardNum
 argument_list|,
-name|hm
+name|map
 argument_list|)
 expr_stmt|;
 comment|/* SM: 2010.10: lower case */
@@ -6224,7 +6196,7 @@ literal|"issn"
 argument_list|,
 name|standardNum
 argument_list|,
-name|hm
+name|map
 argument_list|)
 expr_stmt|;
 comment|/* SM: 2010.10: lower case */
@@ -6236,7 +6208,7 @@ literal|"lccn"
 argument_list|,
 name|standardNum
 argument_list|,
-name|hm
+name|map
 argument_list|)
 expr_stmt|;
 comment|/* SM: 2010.10: lower case */
@@ -6248,7 +6220,7 @@ literal|"mrnumber"
 argument_list|,
 name|standardNum
 argument_list|,
-name|hm
+name|map
 argument_list|)
 expr_stmt|;
 comment|/* SM: 2010.10 begin DOI support */
@@ -6260,12 +6232,12 @@ literal|"doi"
 argument_list|,
 name|standardNum
 argument_list|,
-name|hm
+name|map
 argument_list|)
 expr_stmt|;
 comment|/* SM: 2010.10 end DOI support */
 block|}
-DECL|method|addAuthor (HashMap<String, String> hm, String type, List<PersonName> authorsLst)
+DECL|method|addAuthor (HashMap<String, String> map, String type, List<PersonName> authors)
 specifier|private
 name|void
 name|addAuthor
@@ -6276,7 +6248,7 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|hm
+name|map
 parameter_list|,
 name|String
 name|type
@@ -6285,12 +6257,12 @@ name|List
 argument_list|<
 name|PersonName
 argument_list|>
-name|authorsLst
+name|authors
 parameter_list|)
 block|{
 if|if
 condition|(
-name|authorsLst
+name|authors
 operator|==
 literal|null
 condition|)
@@ -6312,7 +6284,7 @@ control|(
 name|PersonName
 name|name
 range|:
-name|authorsLst
+name|authors
 control|)
 block|{
 if|if
@@ -6338,7 +6310,7 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-name|hm
+name|map
 operator|.
 name|put
 argument_list|(
@@ -6348,49 +6320,6 @@ name|allAuthors
 argument_list|)
 expr_stmt|;
 block|}
-comment|//	public String mapMSBibToBibtexTypeString(String msbib) {
-comment|//		String bibtex = "other";
-comment|//		if(msbib.equals("Book"))
-comment|//			bibtex = "book";
-comment|//		else if(msbib.equals("BookSection"))
-comment|//			bibtex = "inbook";
-comment|//		else if(msbib.equals("JournalArticle"))
-comment|//			bibtex = "article";
-comment|//		else if(msbib.equals("ArticleInAPeriodical"))
-comment|//			bibtex = "article";
-comment|//		else if(msbib.equals("ConferenceProceedings"))
-comment|//			bibtex = "conference";
-comment|//		else if(msbib.equals("Report"))
-comment|//			bibtex = "techreport";
-comment|//		else if(msbib.equals("InternetSite"))
-comment|//			bibtex = "other";
-comment|//		else if(msbib.equals("DocumentFromInternetSite"))
-comment|//			bibtex = "other";
-comment|//		else if(msbib.equals("DocumentFromInternetSite"))
-comment|//			bibtex = "other";
-comment|//		else if(msbib.equals("ElectronicSource"))
-comment|//			bibtex = "other";
-comment|//		else if(msbib.equals("Art"))
-comment|//			bibtex = "other";
-comment|//		else if(msbib.equals("SoundRecording"))
-comment|//			bibtex = "other";
-comment|//		else if(msbib.equals("Performance"))
-comment|//			bibtex = "other";
-comment|//		else if(msbib.equals("Film"))
-comment|//			bibtex = "other";
-comment|//		else if(msbib.equals("Interview"))
-comment|//			bibtex = "other";
-comment|//		else if(msbib.equals("Patent"))
-comment|//			bibtex = "other";
-comment|//		else if(msbib.equals("Case"))
-comment|//			bibtex = "other";
-comment|//		else if(msbib.equals("Misc"))
-comment|//			bibtex = "misc";
-comment|//		else
-comment|//			bibtex = "misc";
-comment|//
-comment|//		return bibtex;
-comment|//	}
 DECL|method|mapMSBibToBibtexType (String msbib)
 specifier|private
 name|BibtexEntryType
@@ -6603,10 +6532,6 @@ name|BibtexEntry
 name|getBibtexRepresentation
 parameter_list|()
 block|{
-comment|//		BibtexEntry entry = new BibtexEntry(BibtexFields.DEFAULT_BIBTEXENTRY_ID,
-comment|//				Globals.getEntryType(mapMSBibToBibtexTypeString(sourceType)));
-comment|//		BibtexEntry entry = new BibtexEntry(BibtexFields.DEFAULT_BIBTEXENTRY_ID,
-comment|//				mapMSBibToBibtexType(sourceType));
 name|BibtexEntry
 name|entry
 init|=
@@ -6653,45 +6578,6 @@ expr_stmt|;
 comment|// id assumes an existing database so don't
 block|}
 comment|// Todo: add check for BibTexEntry types
-comment|//		BibtexEntry entry = new BibtexEntry();
-comment|//		if(sourceType.equals("Book"))
-comment|//			entry.setType(BibtexEntryTypes.BOOK);
-comment|//		else if(sourceType.equals("BookSection"))
-comment|//			entry.setType(BibtexEntryTypes.INBOOK);
-comment|//		else if(sourceType.equals("JournalArticle"))
-comment|//			entry.setType(BibtexEntryTypes.ARTICLE);
-comment|//		else if(sourceType.equals("ArticleInAPeriodical"))
-comment|//			entry.setType(BibtexEntryTypes.ARTICLE);
-comment|//		else if(sourceType.equals("ConferenceProceedings"))
-comment|//			entry.setType(BibtexEntryTypes.CONFERENCE);
-comment|//		else if(sourceType.equals("Report"))
-comment|//			entry.setType(BibtexEntryTypes.TECHREPORT);
-comment|//		else if(sourceType.equals("InternetSite"))
-comment|//			entry.setType(BibtexEntryTypes.OTHER);
-comment|//		else if(sourceType.equals("DocumentFromInternetSite"))
-comment|//			entry.setType(BibtexEntryTypes.OTHER);
-comment|//		else if(sourceType.equals("DocumentFromInternetSite"))
-comment|//			entry.setType(BibtexEntryTypes.OTHER);
-comment|//		else if(sourceType.equals("ElectronicSource"))
-comment|//			entry.setType(BibtexEntryTypes.OTHER);
-comment|//		else if(sourceType.equals("Art"))
-comment|//			entry.setType(BibtexEntryTypes.OTHER);
-comment|//		else if(sourceType.equals("SoundRecording"))
-comment|//			entry.setType(BibtexEntryTypes.OTHER);
-comment|//		else if(sourceType.equals("Performance"))
-comment|//			entry.setType(BibtexEntryTypes.OTHER);
-comment|//		else if(sourceType.equals("Film"))
-comment|//			entry.setType(BibtexEntryTypes.OTHER);
-comment|//		else if(sourceType.equals("Interview"))
-comment|//			entry.setType(BibtexEntryTypes.OTHER);
-comment|//		else if(sourceType.equals("Patent"))
-comment|//			entry.setType(BibtexEntryTypes.OTHER);
-comment|//		else if(sourceType.equals("Case"))
-comment|//			entry.setType(BibtexEntryTypes.OTHER);
-comment|//		else if(sourceType.equals("Misc"))
-comment|//			entry.setType(BibtexEntryTypes.MISC);
-comment|//		else
-comment|//			entry.setType(BibtexEntryTypes.MISC);
 name|HashMap
 argument_list|<
 name|String
@@ -6702,11 +6588,7 @@ name|hm
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -6726,8 +6608,6 @@ name|tag
 argument_list|)
 expr_stmt|;
 block|}
-comment|//		if(GUID != null)
-comment|//			hm.put("GUID",GUID);
 if|if
 condition|(
 name|LCID
@@ -7282,10 +7162,6 @@ name|institution
 argument_list|)
 expr_stmt|;
 block|}
-comment|//		if(thesisType !=null )
-comment|//			hm.put("type",thesisType);
-comment|//		if(internetSiteTitle !=null )
-comment|//			hm.put("title",internetSiteTitle);
 if|if
 condition|(
 name|dateAccessed
@@ -7341,8 +7217,6 @@ name|productionCompany
 argument_list|)
 expr_stmt|;
 block|}
-comment|//		if(publicationTitle !=null )
-comment|//			hm.put("title",publicationTitle);
 if|if
 condition|(
 name|medium
@@ -7362,8 +7236,6 @@ name|medium
 argument_list|)
 expr_stmt|;
 block|}
-comment|//		if(albumTitle !=null )
-comment|//			hm.put("title",albumTitle);
 if|if
 condition|(
 name|recordingNumber
@@ -7421,8 +7293,6 @@ name|distributor
 argument_list|)
 expr_stmt|;
 block|}
-comment|//		if(broadcastTitle !=null )
-comment|//			hm.put("title",broadcastTitle);
 if|if
 condition|(
 name|broadcaster
@@ -7756,7 +7626,7 @@ return|return
 name|entry
 return|;
 block|}
-comment|/**      * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *       * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
+comment|/**      * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *<p>      * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
 DECL|method|stripNonValidXMLCharacters (String in)
 specifier|private
 name|String
@@ -7892,7 +7762,7 @@ name|toString
 parameter_list|()
 block|{
 name|StringWriter
-name|sresult
+name|result
 init|=
 operator|new
 name|StringWriter
@@ -7911,12 +7781,12 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|StreamResult
-name|result
+name|streamResult
 init|=
 operator|new
 name|StreamResult
 argument_list|(
-name|sresult
+name|result
 argument_list|)
 decl_stmt|;
 name|Transformer
@@ -7947,26 +7817,28 @@ name|transform
 argument_list|(
 name|source
 argument_list|,
-name|result
+name|streamResult
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|TransformerException
 name|e
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|Error
+name|LOGGER
+operator|.
+name|warn
 argument_list|(
+literal|"Could not build XML representation"
+argument_list|,
 name|e
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
 return|return
-name|sresult
+name|result
 operator|.
 name|toString
 argument_list|()

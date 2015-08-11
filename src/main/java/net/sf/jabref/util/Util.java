@@ -1847,7 +1847,7 @@ name|add
 argument_list|(
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|tok
 operator|.
@@ -1969,7 +1969,7 @@ name|add
 argument_list|(
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|tok
 operator|.

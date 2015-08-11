@@ -598,14 +598,14 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|complete (String str)
+DECL|method|complete (String toComplete)
 specifier|public
 name|String
 index|[]
 name|complete
 parameter_list|(
 name|String
-name|str
+name|toComplete
 parameter_list|)
 block|{
 comment|// Normally, one would implement that using
@@ -617,11 +617,11 @@ operator|.
 name|lastNameOnlyAndSeparationBySpace
 condition|)
 block|{
-name|str
+name|toComplete
 operator|=
 name|determinePrefixAndReturnRemainder
 argument_list|(
-name|str
+name|toComplete
 argument_list|,
 literal|" "
 argument_list|)
@@ -629,11 +629,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|str
+name|toComplete
 operator|=
 name|determinePrefixAndReturnRemainder
 argument_list|(
-name|str
+name|toComplete
 argument_list|,
 literal|" and "
 argument_list|)
@@ -644,7 +644,7 @@ name|super
 operator|.
 name|complete
 argument_list|(
-name|str
+name|toComplete
 argument_list|)
 return|;
 block|}

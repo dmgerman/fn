@@ -602,7 +602,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|Month
-name|m
+name|month
 init|=
 name|MonthUtil
 operator|.
@@ -613,14 +613,14 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|m
+name|month
 operator|.
 name|isValid
 argument_list|()
 condition|)
 block|{
 return|return
-name|m
+name|month
 return|;
 block|}
 try|try

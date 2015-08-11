@@ -199,7 +199,7 @@ name|name
 operator|=
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|name_
 argument_list|)
@@ -275,7 +275,7 @@ name|name
 operator|=
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|name_
 argument_list|)

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -59,7 +59,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -83,9 +83,7 @@ name|cache
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|Cookie
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|/**      * Saves all applicable cookies present in the response      * headers into cache.      *      * @param uri             URI source of cookies      * @param responseHeaders Immutable map from field names to      *                        lists of field      *                        values representing the response header fields returned      */
@@ -184,7 +182,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-comment|/*(cookie.getURI().equals(                             existingCookie.getURI()))*/
 operator|(
 name|cookie
 operator|.
@@ -222,7 +219,6 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-comment|//System.out.println(cookie.getName()+" : "+cookie.domain+" : "+cookie.toString());
 name|cache
 operator|.
 name|add
@@ -233,7 +229,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Gets all the applicable cookies from a cookie cache for      * the specified uri in the request header.      *      * @param uri            URI to send cookies to in a request      * @param requestHeaders Map from request header field names      *                       to lists of field values representing the current request      *                       headers      * @return Immutable map, with field name "Cookie" to a list      *         of cookies      */
+comment|/**      * Gets all the applicable cookies from a cookie cache for      * the specified uri in the request header.      *      * @param uri            URI to send cookies to in a request      * @param requestHeaders Map from request header field names      *                       to lists of field values representing the current request      *                       headers      * @return Immutable map, with field name "Cookie" to a list      * of cookies      */
 annotation|@
 name|Override
 DECL|method|get ( URI uri, Map<String, List<String>> requestHeaders)
@@ -371,14 +367,7 @@ name|cookieMap
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|List
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|(
 name|requestHeaders
 argument_list|)

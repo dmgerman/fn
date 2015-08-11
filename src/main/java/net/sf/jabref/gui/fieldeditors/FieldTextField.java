@@ -297,7 +297,7 @@ literal|' '
 operator|+
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|this
 operator|.

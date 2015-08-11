@@ -201,14 +201,14 @@ name|getDescription
 parameter_list|()
 block|{
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
 comment|// describe advanced search expression
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -225,7 +225,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -245,13 +245,13 @@ parameter_list|(
 name|SearchParser
 operator|.
 name|StartContext
-name|ctx
+name|context
 parameter_list|)
 block|{
 return|return
 name|visit
 argument_list|(
-name|ctx
+name|context
 operator|.
 name|expression
 argument_list|()
@@ -267,7 +267,7 @@ parameter_list|(
 name|SearchParser
 operator|.
 name|UnaryExpressionContext
-name|ctx
+name|context
 parameter_list|)
 block|{
 return|return
@@ -286,7 +286,7 @@ argument_list|)
 argument_list|,
 name|visit
 argument_list|(
-name|ctx
+name|context
 operator|.
 name|expression
 argument_list|()
@@ -303,7 +303,7 @@ parameter_list|(
 name|SearchParser
 operator|.
 name|ParenExpressionContext
-name|ctx
+name|context
 parameter_list|)
 block|{
 return|return
@@ -313,7 +313,7 @@ name|format
 argument_list|(
 literal|"%s"
 argument_list|,
-name|ctx
+name|context
 operator|.
 name|expression
 argument_list|()
@@ -329,12 +329,12 @@ parameter_list|(
 name|SearchParser
 operator|.
 name|BinaryExpressionContext
-name|ctx
+name|context
 parameter_list|)
 block|{
 if|if
 condition|(
-name|ctx
+name|context
 operator|.
 name|operator
 operator|.
@@ -356,7 +356,7 @@ literal|"(%s %s %s)"
 argument_list|,
 name|visit
 argument_list|(
-name|ctx
+name|context
 operator|.
 name|left
 argument_list|)
@@ -370,7 +370,7 @@ argument_list|)
 argument_list|,
 name|visit
 argument_list|(
-name|ctx
+name|context
 operator|.
 name|right
 argument_list|)
@@ -388,7 +388,7 @@ literal|"(%s %s %s)"
 argument_list|,
 name|visit
 argument_list|(
-name|ctx
+name|context
 operator|.
 name|left
 argument_list|)
@@ -402,7 +402,7 @@ argument_list|)
 argument_list|,
 name|visit
 argument_list|(
-name|ctx
+name|context
 operator|.
 name|right
 argument_list|)
@@ -419,7 +419,7 @@ parameter_list|(
 name|SearchParser
 operator|.
 name|ComparisonContext
-name|ctx
+name|context
 parameter_list|)
 block|{
 specifier|final
@@ -430,7 +430,7 @@ name|StringUtil
 operator|.
 name|unquote
 argument_list|(
-name|ctx
+name|context
 operator|.
 name|left
 operator|.
@@ -448,7 +448,7 @@ name|StringUtil
 operator|.
 name|unquote
 argument_list|(
-name|ctx
+name|context
 operator|.
 name|right
 operator|.
@@ -470,7 +470,7 @@ name|ComparisonOperator
 operator|.
 name|build
 argument_list|(
-name|ctx
+name|context
 operator|.
 name|operator
 operator|.
@@ -684,14 +684,14 @@ name|parseTree
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
 literal|". "
 argument_list|)
 expr_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -713,7 +713,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()

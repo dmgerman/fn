@@ -60,13 +60,13 @@ name|String
 name|getPrefix
 parameter_list|()
 function_decl|;
-DECL|method|complete (String str)
+DECL|method|complete (String toComplete)
 name|String
 index|[]
 name|complete
 parameter_list|(
 name|String
-name|str
+name|toComplete
 parameter_list|)
 function_decl|;
 DECL|method|indexContainsWord (String word)

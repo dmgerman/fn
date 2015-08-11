@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -103,9 +103,7 @@ name|indexCaseSensitive
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// stores strings in lowercase
@@ -120,9 +118,7 @@ name|indexCaseInsensitive
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// stores for a lowercase string the possible expanded strings
@@ -142,14 +138,7 @@ name|possibleStringsForSearchString
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|TreeSet
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|addBibtexEntry (BibtexEntry entry)
@@ -163,14 +152,14 @@ name|entry
 parameter_list|)
 function_decl|;
 comment|/**      * Returns one or more possible completions for a given String. The returned      * completion depends on which informations were stored while adding      * BibtexEntries by the used implementation of {@link AbstractAutoCompleter}      * .      *       * @see AbstractAutoCompleter#addBibtexEntry(BibtexEntry)      */
-DECL|method|complete (String str)
+DECL|method|complete (String toComplete)
 specifier|public
 name|String
 index|[]
 name|complete
 parameter_list|(
 name|String
-name|str
+name|toComplete
 parameter_list|)
 block|{
 if|if
@@ -179,7 +168,7 @@ name|AbstractAutoCompleter
 operator|.
 name|stringMinLength
 argument_list|(
-name|str
+name|toComplete
 argument_list|)
 condition|)
 block|{
@@ -188,20 +177,20 @@ literal|null
 return|;
 block|}
 name|String
-name|lstr
+name|lowerCase
 init|=
-name|str
+name|toComplete
 operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|lstr
+name|lowerCase
 operator|.
 name|equals
 argument_list|(
-name|str
+name|toComplete
 argument_list|)
 condition|)
 block|{
@@ -213,7 +202,7 @@ name|AbstractAutoCompleter
 operator|.
 name|incrementLastCharacter
 argument_list|(
-name|lstr
+name|lowerCase
 argument_list|)
 decl_stmt|;
 name|SortedSet
@@ -226,7 +215,7 @@ name|indexCaseInsensitive
 operator|.
 name|subSet
 argument_list|(
-name|lstr
+name|lowerCase
 argument_list|,
 name|ender
 argument_list|)
@@ -237,13 +226,11 @@ name|ArrayList
 argument_list|<
 name|String
 argument_list|>
-name|res
+name|result
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -254,7 +241,7 @@ range|:
 name|subset
 control|)
 block|{
-name|res
+name|result
 operator|.
 name|addAll
 argument_list|(
@@ -268,14 +255,14 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|res
+name|result
 operator|.
 name|toArray
 argument_list|(
 operator|new
 name|String
 index|[
-name|res
+name|result
 operator|.
 name|size
 argument_list|()
@@ -294,7 +281,7 @@ name|AbstractAutoCompleter
 operator|.
 name|incrementLastCharacter
 argument_list|(
-name|str
+name|toComplete
 argument_list|)
 decl_stmt|;
 name|SortedSet
@@ -307,7 +294,7 @@ name|indexCaseSensitive
 operator|.
 name|subSet
 argument_list|(
-name|str
+name|toComplete
 argument_list|,
 name|ender
 argument_list|)
@@ -330,24 +317,24 @@ return|;
 block|}
 block|}
 comment|/**      * Increments the last character of a string.      *       * Example: incrementLastCharacter("abc") returns "abd".      */
-DECL|method|incrementLastCharacter (String str)
+DECL|method|incrementLastCharacter (String toIncrement)
 specifier|private
 specifier|static
 name|String
 name|incrementLastCharacter
 parameter_list|(
 name|String
-name|str
+name|toIncrement
 parameter_list|)
 block|{
 name|char
 name|lastChar
 init|=
-name|str
+name|toIncrement
 operator|.
 name|charAt
 argument_list|(
-name|str
+name|toIncrement
 operator|.
 name|length
 argument_list|()
@@ -356,13 +343,13 @@ literal|1
 argument_list|)
 decl_stmt|;
 return|return
-name|str
+name|toIncrement
 operator|.
 name|substring
 argument_list|(
 literal|0
 argument_list|,
-name|str
+name|toIncrement
 operator|.
 name|length
 argument_list|()
@@ -385,18 +372,18 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|stringMinLength (String str)
+DECL|method|stringMinLength (String toCheck)
 specifier|private
 specifier|static
 name|boolean
 name|stringMinLength
 parameter_list|(
 name|String
-name|str
+name|toCheck
 parameter_list|)
 block|{
 return|return
-name|str
+name|toCheck
 operator|.
 name|length
 argument_list|()
@@ -438,7 +425,7 @@ comment|// insensitive treatment
 comment|// first, add the lower cased word to search index
 comment|// second, add a mapping from the lower cased word to the real word
 name|String
-name|word_lcase
+name|lowerCase
 init|=
 name|word
 operator|.
@@ -449,7 +436,7 @@ name|indexCaseInsensitive
 operator|.
 name|add
 argument_list|(
-name|word_lcase
+name|lowerCase
 argument_list|)
 expr_stmt|;
 name|TreeSet
@@ -462,7 +449,7 @@ name|possibleStringsForSearchString
 operator|.
 name|get
 argument_list|(
-name|word_lcase
+name|lowerCase
 argument_list|)
 decl_stmt|;
 if|if
@@ -476,9 +463,7 @@ name|set
 operator|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -493,7 +478,7 @@ name|possibleStringsForSearchString
 operator|.
 name|put
 argument_list|(
-name|word_lcase
+name|lowerCase
 argument_list|,
 name|set
 argument_list|)
