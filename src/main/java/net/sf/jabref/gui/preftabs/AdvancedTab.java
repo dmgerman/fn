@@ -2024,7 +2024,7 @@ if|if
 condition|(
 name|RemoteUtil
 operator|.
-name|isValidPartNumber
+name|isValidPortNumber
 argument_list|(
 name|portNumber
 argument_list|)

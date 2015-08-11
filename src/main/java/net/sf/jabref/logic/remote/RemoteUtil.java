@@ -20,11 +20,11 @@ specifier|public
 class|class
 name|RemoteUtil
 block|{
-DECL|method|isValidPartNumber (int portNumber)
+DECL|method|isValidPortNumber (int portNumber)
 specifier|public
 specifier|static
 name|boolean
-name|isValidPartNumber
+name|isValidPortNumber
 parameter_list|(
 name|int
 name|portNumber
