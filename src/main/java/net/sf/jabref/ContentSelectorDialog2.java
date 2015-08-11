@@ -288,6 +288,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -440,7 +456,7 @@ name|String
 DECL|field|WORD_EMPTY_TEXT
 name|WORD_EMPTY_TEXT
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -453,7 +469,7 @@ specifier|final
 name|String
 name|WORD_FIRSTLINE_TEXT
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -466,7 +482,7 @@ specifier|final
 name|String
 name|FIELD_FIRST_LINE
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -514,7 +530,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -531,7 +547,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -548,7 +564,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -565,7 +581,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -582,7 +598,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -599,7 +615,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -626,7 +642,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -809,7 +825,7 @@ name|super
 argument_list|(
 name|owner
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1731,7 +1747,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1812,7 +1828,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1861,7 +1877,7 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2628,7 +2644,7 @@ operator|.
 name|createEtchedBorder
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2650,7 +2666,7 @@ operator|.
 name|createEtchedBorder
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

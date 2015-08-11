@@ -108,6 +108,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|util
 operator|.
 name|Util
@@ -150,7 +166,7 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -233,7 +249,7 @@ argument_list|()
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -263,7 +279,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -365,7 +381,7 @@ name|jrf
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -382,7 +398,7 @@ name|jrf
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -391,7 +407,7 @@ argument_list|)
 operator|+
 literal|" "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

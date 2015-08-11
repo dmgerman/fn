@@ -300,6 +300,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|util
 operator|.
 name|DOIUtil
@@ -854,7 +870,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -867,7 +883,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -880,7 +896,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -893,7 +909,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -906,7 +922,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -919,7 +935,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -964,7 +980,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -977,7 +993,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -994,7 +1010,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1007,7 +1023,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1020,7 +1036,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1033,7 +1049,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1046,7 +1062,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1059,7 +1075,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1333,7 +1349,7 @@ expr_stmt|;
 name|String
 name|currentPattern
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1899,7 +1915,7 @@ block|{
 name|String
 name|dialogTitle
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1911,7 +1927,7 @@ index|[]
 name|messages
 init|=
 block|{
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1996,14 +2012,14 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"First select entries to clean up."
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2030,7 +2046,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2211,14 +2227,14 @@ init|=
 operator|new
 name|CheckBoxMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Auto-generating PDF-Names does not support undo. Continue?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2239,7 +2255,7 @@ name|frame
 argument_list|,
 name|cbm
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2354,7 +2370,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2382,7 +2398,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2615,7 +2631,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2628,7 +2644,7 @@ name|unsuccesfullRenames
 operator|+
 literal|" "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2637,7 +2653,7 @@ argument_list|)
 operator|+
 literal|"."
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2681,7 +2697,7 @@ literal|0
 case|:
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2694,7 +2710,7 @@ literal|1
 case|:
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2705,7 +2721,7 @@ break|break;
 default|default:
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

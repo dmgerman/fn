@@ -86,6 +86,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|oo
 operator|.
 name|OpenOfficePanel
@@ -353,7 +369,7 @@ init|=
 operator|new
 name|JMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -575,7 +591,7 @@ name|menuButton
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1129,7 +1145,7 @@ name|JDialog
 operator|)
 name|parent
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1152,7 +1168,7 @@ name|JFrame
 operator|)
 name|parent
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1214,7 +1230,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1228,7 +1244,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1634,7 +1650,7 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

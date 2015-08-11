@@ -152,6 +152,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|util
 operator|.
 name|FileUtil
@@ -299,35 +315,35 @@ index|[]
 name|brokenLinkOptions
 init|=
 block|{
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Ignore"
 argument_list|)
 block|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Assign new file"
 argument_list|)
 block|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Remove link"
 argument_list|)
 block|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Remove all broken links"
 argument_list|)
 block|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -502,7 +518,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -534,7 +550,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -622,7 +638,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -964,7 +980,7 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -986,7 +1002,7 @@ argument_list|()
 block|}
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1143,7 +1159,7 @@ operator|new
 name|String
 index|[]
 block|{
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1158,14 +1174,14 @@ name|getName
 argument_list|()
 argument_list|)
 block|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Change file type"
 argument_list|)
 block|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1193,7 +1209,7 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1208,7 +1224,7 @@ name|getName
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1541,7 +1557,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1625,7 +1641,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1641,7 +1657,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1684,7 +1700,7 @@ name|super
 argument_list|(
 name|parent
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1709,7 +1725,7 @@ specifier|final
 name|String
 name|fn
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1825,7 +1841,7 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1842,7 +1858,7 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1859,7 +1875,7 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1874,7 +1890,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1941,7 +1957,7 @@ name|JLabel
 argument_list|(
 literal|"<HTML>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1961,7 +1977,7 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2021,7 +2037,7 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2036,7 +2052,7 @@ name|JLabel
 argument_list|(
 literal|"<HTML>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

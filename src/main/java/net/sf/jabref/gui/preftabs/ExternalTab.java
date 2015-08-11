@@ -196,6 +196,22 @@ name|FormLayout
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_class
 DECL|class|ExternalTab
 class|class
@@ -292,7 +308,7 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -309,7 +325,7 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -382,7 +398,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -395,7 +411,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -407,7 +423,7 @@ name|bibLocAsPrimaryDir
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -455,7 +471,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -468,7 +484,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -481,7 +497,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -502,7 +518,7 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -614,7 +630,7 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -643,7 +659,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -823,7 +839,7 @@ name|GUIGlobals
 operator|.
 name|regularExpressionSearchHelp
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -901,7 +917,7 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -923,7 +939,7 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -977,7 +993,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1001,7 +1017,7 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1031,7 +1047,7 @@ name|JLabel
 argument_list|(
 literal|"<html>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1071,7 +1087,7 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1142,7 +1158,7 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1199,7 +1215,7 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1377,7 +1393,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1853,7 +1869,7 @@ name|getTabName
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

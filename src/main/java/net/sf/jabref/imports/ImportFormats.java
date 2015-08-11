@@ -158,6 +158,22 @@ name|MnemonicAwareAction
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Oct 22, 2006  * Time: 12:06:09 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -517,7 +533,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -533,7 +549,7 @@ argument_list|()
 operator|+
 literal|"'."
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

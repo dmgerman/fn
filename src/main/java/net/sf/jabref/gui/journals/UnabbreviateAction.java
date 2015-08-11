@@ -82,6 +82,22 @@ name|NamedCompound
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * Converts journal abbreviations back to full name for all selected entries.  */
 end_comment
@@ -272,7 +288,7 @@ argument_list|()
 expr_stmt|;
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -291,7 +307,7 @@ else|else
 block|{
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

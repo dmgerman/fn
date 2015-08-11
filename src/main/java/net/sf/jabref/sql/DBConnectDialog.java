@@ -134,6 +134,22 @@ name|FormLayout
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * Dialog box for collecting database connection strings from the user  *  * @author pattonlk  */
 end_comment
@@ -237,7 +253,7 @@ name|super
 argument_list|(
 name|parent
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -402,7 +418,7 @@ name|lblServerType
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -414,7 +430,7 @@ name|lblServerHostname
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -426,7 +442,7 @@ name|lblDatabase
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -438,7 +454,7 @@ name|lblUsername
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -450,7 +466,7 @@ name|lblPassword
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -489,7 +505,7 @@ name|btnConnect
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -508,7 +524,7 @@ name|btnCancel
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1113,7 +1129,7 @@ block|}
 name|String
 name|errMsg
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

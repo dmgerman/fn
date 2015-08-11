@@ -228,6 +228,22 @@ name|FormLayout
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_class
 DECL|class|NameFormatterTab
 specifier|public
@@ -650,14 +666,14 @@ name|col
 operator|==
 literal|0
 condition|?
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Formatter Name"
 argument_list|)
 else|:
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1016,7 +1032,7 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1259,7 +1275,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1404,7 +1420,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1778,7 +1794,7 @@ name|getTabName
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

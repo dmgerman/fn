@@ -36,7 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|OutputPrinter
 import|;
 end_import
 
@@ -48,7 +48,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|OutputPrinter
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -443,7 +447,7 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -452,7 +456,7 @@ argument_list|,
 name|query
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -471,7 +475,7 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -480,7 +484,7 @@ argument_list|,
 name|query
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -573,7 +577,7 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -957,7 +961,7 @@ name|JOptionPane
 operator|.
 name|showInputDialog
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -970,7 +974,7 @@ name|countOfRefs
 operator|+
 literal|"  "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -996,7 +1000,7 @@ name|status
 operator|.
 name|setStatus
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1046,7 +1050,7 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

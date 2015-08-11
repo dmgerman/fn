@@ -646,6 +646,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -795,7 +811,7 @@ specifier|final
 name|String
 name|ACTION_TITLE
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -830,7 +846,7 @@ specifier|final
 name|String
 name|ACTION_SHORT_DESCRIPTION
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1132,7 +1148,7 @@ name|super
 argument_list|(
 name|owner
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1436,7 +1452,7 @@ operator|=
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1501,7 +1517,7 @@ operator|=
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1567,7 +1583,7 @@ operator|=
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1629,7 +1645,7 @@ operator|=
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1866,7 +1882,7 @@ name|fileChooser
 operator|.
 name|setDialogTitle
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1878,7 +1894,7 @@ name|fileChooser
 operator|.
 name|setApproveButtonText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1890,7 +1906,7 @@ name|fileChooser
 operator|.
 name|setApproveButtonToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2783,7 +2799,7 @@ operator|)
 operator|+
 literal|" could not be imported."
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3375,7 +3391,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3394,7 +3410,7 @@ name|buttonBrowse
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3407,7 +3423,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3426,7 +3442,7 @@ name|buttonScan
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3439,7 +3455,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3458,7 +3474,7 @@ name|buttonApply
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3471,7 +3487,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3483,7 +3499,7 @@ name|buttonClose
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3584,7 +3600,7 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3596,7 +3612,7 @@ name|checkboxCreateKeywords
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3665,7 +3681,7 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3678,7 +3694,7 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3691,7 +3707,7 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3704,7 +3720,7 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3717,7 +3733,7 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3746,7 +3762,7 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3873,7 +3889,7 @@ operator|.
 name|createEtchedBorder
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3895,7 +3911,7 @@ operator|.
 name|createEtchedBorder
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3917,7 +3933,7 @@ operator|.
 name|createEtchedBorder
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5807,7 +5823,7 @@ literal|null
 condition|)
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

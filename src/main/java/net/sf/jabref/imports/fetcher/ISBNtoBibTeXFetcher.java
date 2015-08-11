@@ -216,6 +216,22 @@ name|UnitFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class uses ebook.de's ISBN to BibTeX Converter to convert an ISBN to a BibTeX entry<br />  * There is no separate web-based converter available, just that API  */
 end_comment
@@ -312,7 +328,7 @@ name|status
 operator|.
 name|setStatus
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -397,7 +413,7 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -425,7 +441,7 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

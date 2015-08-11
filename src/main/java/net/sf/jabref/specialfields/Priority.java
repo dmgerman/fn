@@ -56,7 +56,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -124,7 +128,7 @@ literal|null
 argument_list|,
 literal|"clearPriority"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -133,7 +137,7 @@ argument_list|)
 argument_list|,
 literal|null
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -168,7 +172,7 @@ literal|"prio1"
 argument_list|,
 literal|"setPriority1"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -177,7 +181,7 @@ argument_list|)
 argument_list|,
 name|icon
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -208,7 +212,7 @@ literal|"prio2"
 argument_list|,
 literal|"setPriority2"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -217,7 +221,7 @@ argument_list|)
 argument_list|,
 name|icon
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -248,7 +252,7 @@ literal|"prio3"
 argument_list|,
 literal|"setPriority3"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -257,7 +261,7 @@ argument_list|)
 argument_list|,
 name|icon
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -346,7 +350,7 @@ name|getToolTip
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -363,7 +367,7 @@ name|getMenuString
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

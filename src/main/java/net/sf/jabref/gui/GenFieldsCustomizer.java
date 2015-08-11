@@ -134,6 +134,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|util
 operator|.
 name|Util
@@ -308,7 +324,7 @@ name|super
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -352,7 +368,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -407,7 +423,7 @@ name|ok
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -430,7 +446,7 @@ name|cancel
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -454,7 +470,7 @@ name|jLabel1
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -492,7 +508,7 @@ name|jLabel2
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -509,7 +525,7 @@ name|revert
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -963,7 +979,7 @@ comment|// Report error and exit.
 name|String
 name|field
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -976,7 +992,7 @@ name|showMessageDialog
 argument_list|(
 name|this
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -985,7 +1001,7 @@ argument_list|)
 operator|+
 literal|" '"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1006,7 +1022,7 @@ name|field
 operator|+
 literal|"N'"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1068,7 +1084,7 @@ name|showMessageDialog
 argument_list|(
 name|this
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1079,7 +1095,7 @@ argument_list|)
 operator|+
 literal|": # { } ~ , ^&"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

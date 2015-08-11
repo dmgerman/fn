@@ -58,7 +58,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -298,7 +302,7 @@ block|{
 name|String
 name|back
 init|=
-name|Globals
+name|Localization
 operator|.
 name|getIntegrityMessage
 argument_list|(

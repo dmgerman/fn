@@ -90,7 +90,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -205,7 +209,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -294,14 +298,14 @@ argument_list|)
 operator|+
 literal|".\n"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Remember these entry types?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

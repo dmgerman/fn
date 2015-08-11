@@ -342,6 +342,22 @@ name|FetcherPreviewDialog
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_class
 DECL|class|ACMPortalFetcher
 specifier|public
@@ -466,7 +482,7 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -483,7 +499,7 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -500,7 +516,7 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -927,7 +943,7 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -936,7 +952,7 @@ argument_list|,
 name|terms
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1051,14 +1067,14 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Connection to ACM Portal failed"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1081,7 +1097,7 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1091,7 +1107,7 @@ name|getMessage
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2364,7 +2380,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2483,7 +2499,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2502,7 +2518,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2516,7 +2532,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

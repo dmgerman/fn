@@ -68,6 +68,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|search
 operator|.
 name|SearchRule
@@ -329,7 +345,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -346,7 +362,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -503,7 +519,7 @@ argument_list|(
 literal|"search"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -533,7 +549,7 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -557,7 +573,7 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -581,7 +597,7 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -605,7 +621,7 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -629,7 +645,7 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -653,7 +669,7 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -668,7 +684,7 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -683,7 +699,7 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -698,7 +714,7 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -713,7 +729,7 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -779,7 +795,7 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -793,7 +809,7 @@ name|increment
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -805,7 +821,7 @@ name|floatSearch
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -817,7 +833,7 @@ name|hideSearch
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -829,7 +845,7 @@ name|showResultsInDialog
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -965,7 +981,7 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -989,7 +1005,7 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1013,7 +1029,7 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2265,7 +2281,7 @@ name|search
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2285,7 +2301,7 @@ name|search
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2354,7 +2370,7 @@ name|SearchResultsDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2915,7 +2931,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3183,7 +3199,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3746,7 +3762,7 @@ name|text
 operator|+
 literal|"' : "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3853,7 +3869,7 @@ name|text
 operator|+
 literal|"' : "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3893,7 +3909,7 @@ name|text
 operator|+
 literal|"' "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4008,14 +4024,14 @@ argument_list|(
 name|isSpecificSearch
 argument_list|()
 condition|?
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Search specified field(s)"
 argument_list|)
 else|:
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

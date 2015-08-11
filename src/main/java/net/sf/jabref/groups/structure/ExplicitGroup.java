@@ -50,7 +50,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|groups
+operator|.
+name|UndoableChangeAssignment
 import|;
 end_import
 
@@ -62,9 +64,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|logic
 operator|.
-name|UndoableChangeAssignment
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -1185,7 +1189,7 @@ name|getDescriptionForPreview
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1240,7 +1244,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1266,7 +1270,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1287,7 +1291,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

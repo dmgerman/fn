@@ -38,7 +38,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|JabRefFrame
 import|;
 end_import
 
@@ -50,7 +50,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -519,7 +523,7 @@ condition|)
 block|{
 name|dialogTitle
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -528,7 +532,7 @@ argument_list|)
 expr_stmt|;
 name|dialogTopMessage
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -603,7 +607,7 @@ else|else
 block|{
 name|dialogTitle
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -612,7 +616,7 @@ argument_list|)
 expr_stmt|;
 name|dialogTopMessage
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -861,7 +865,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -875,7 +879,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -918,7 +922,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -944,7 +948,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

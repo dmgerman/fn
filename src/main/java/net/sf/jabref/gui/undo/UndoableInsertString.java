@@ -42,6 +42,22 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_class
 DECL|class|UndoableInsertString
 specifier|public
@@ -110,7 +126,7 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -119,7 +135,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -136,7 +152,7 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -145,7 +161,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

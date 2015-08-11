@@ -94,6 +94,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|FileBasedLock
@@ -288,21 +304,21 @@ operator|new
 name|String
 index|[]
 block|{
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Review changes"
 argument_list|)
 block|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Save"
 argument_list|)
 block|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -322,7 +338,7 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -331,7 +347,7 @@ operator|+
 literal|"What do you want to do?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -602,14 +618,14 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Database is protected. Cannot save until external changes have been reviewed."
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -655,7 +671,7 @@ argument_list|()
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -715,7 +731,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -758,7 +774,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -773,7 +789,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1103,7 +1119,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1114,7 +1130,7 @@ argument_list|,
 name|encoding
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1237,7 +1253,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1251,7 +1267,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1337,7 +1353,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1361,7 +1377,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1372,7 +1388,7 @@ expr_stmt|;
 name|String
 name|tryDiff
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1393,7 +1409,7 @@ operator|.
 name|getPanel
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1414,7 +1430,7 @@ operator|new
 name|String
 index|[]
 block|{
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1423,7 +1439,7 @@ argument_list|)
 block|,
 name|tryDiff
 block|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1453,14 +1469,14 @@ name|showInputDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Select encoding"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1473,7 +1489,7 @@ name|QUESTION_MESSAGE
 argument_list|,
 literal|null
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|ENCODINGS
 argument_list|,
@@ -1575,7 +1591,7 @@ name|showConfirmDialog
 argument_list|(
 literal|null
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1584,14 +1600,14 @@ argument_list|)
 operator|+
 literal|". "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Save without backup?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1809,14 +1825,14 @@ argument_list|()
 operator|+
 literal|"' "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"exists. Overwrite file?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

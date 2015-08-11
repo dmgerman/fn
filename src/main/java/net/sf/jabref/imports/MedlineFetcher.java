@@ -152,7 +152,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|OutputPrinter
 import|;
 end_import
 
@@ -164,7 +164,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|OutputPrinter
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -821,7 +825,7 @@ name|frame
 operator|.
 name|setStatus
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -856,7 +860,7 @@ name|frame
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -898,7 +902,7 @@ name|frame
 operator|.
 name|setStatus
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -940,7 +944,7 @@ name|frame
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -980,7 +984,7 @@ name|JOptionPane
 operator|.
 name|showInputDialog
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -993,7 +997,7 @@ name|numberToFetch
 operator|+
 literal|"  "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1019,7 +1023,7 @@ name|frame
 operator|.
 name|setStatus
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1057,7 +1061,7 @@ name|frame
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1175,14 +1179,14 @@ name|frame
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Please enter a comma separated list of Medline IDs (numbers) or search terms."
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

@@ -458,6 +458,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|StringUtil
@@ -1234,7 +1250,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1256,7 +1272,7 @@ name|length
 operator|+
 literal|" "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1265,7 +1281,7 @@ argument_list|)
 else|:
 literal|"1 "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

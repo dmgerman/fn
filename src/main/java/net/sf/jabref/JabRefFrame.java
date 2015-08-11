@@ -642,6 +642,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1536,7 +1552,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1727,7 +1743,7 @@ name|GUIGlobals
 operator|.
 name|baseFrameHelp
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1759,7 +1775,7 @@ name|GUIGlobals
 operator|.
 name|helpContents
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1791,7 +1807,7 @@ name|GUIGlobals
 operator|.
 name|aboutPage
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1819,7 +1835,7 @@ literal|"edit"
 argument_list|,
 literal|"Edit entry"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1847,7 +1863,7 @@ literal|"focusTable"
 argument_list|,
 literal|"Focus entry table"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1875,7 +1891,7 @@ literal|"save"
 argument_list|,
 literal|"Save database"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1903,7 +1919,7 @@ literal|"saveAs"
 argument_list|,
 literal|"Save database as ..."
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1945,7 +1961,7 @@ literal|"saveSelectedAs"
 argument_list|,
 literal|"Save selected as ..."
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1973,7 +1989,7 @@ literal|"saveSelectedAsPlain"
 argument_list|,
 literal|"Save selected as plain BibTeX ..."
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2095,7 +2111,7 @@ literal|"undo"
 argument_list|,
 literal|"Undo"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2123,7 +2139,7 @@ literal|"redo"
 argument_list|,
 literal|"Redo"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2150,7 +2166,7 @@ literal|"forward"
 argument_list|,
 literal|"Forward"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2179,7 +2195,7 @@ literal|"back"
 argument_list|,
 literal|"Back"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2212,7 +2228,7 @@ literal|"delete"
 argument_list|,
 literal|"Delete"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2300,7 +2316,7 @@ literal|"markEntries"
 argument_list|,
 literal|"Mark entries"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2328,7 +2344,7 @@ literal|"unmarkEntries"
 argument_list|,
 literal|"Unmark entries"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2579,7 +2595,7 @@ literal|"incSearch"
 argument_list|,
 literal|"Incremental search"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2607,7 +2623,7 @@ literal|"search"
 argument_list|,
 literal|"Search"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2635,7 +2651,7 @@ literal|"toggleSearch"
 argument_list|,
 literal|"Search"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2721,7 +2737,7 @@ literal|"mergeDatabase"
 argument_list|,
 literal|"Append database"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2793,7 +2809,7 @@ literal|"editPreamble"
 argument_list|,
 literal|"Edit preamble"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2821,7 +2837,7 @@ literal|"editStrings"
 argument_list|,
 literal|"Edit strings"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2849,7 +2865,7 @@ literal|"toggleToolbar"
 argument_list|,
 literal|"Hide/show toolbar"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2877,7 +2893,7 @@ literal|"toggleGroups"
 argument_list|,
 literal|"Toggle groups interface"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2905,7 +2921,7 @@ literal|"togglePreview"
 argument_list|,
 literal|"Toggle entry preview"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2933,7 +2949,7 @@ literal|"toggleHighlightGroupsMatchingAny"
 argument_list|,
 literal|"Highlight groups matching any selected entry"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2961,7 +2977,7 @@ literal|"toggleHighlightGroupsMatchingAll"
 argument_list|,
 literal|"Highlight groups matching all selected entries"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3009,7 +3025,7 @@ literal|"makeKey"
 argument_list|,
 literal|"Autogenerate BibTeX keys"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3037,7 +3053,7 @@ literal|"writeXMP"
 argument_list|,
 literal|"Write XMP-metadata to PDFs"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3065,7 +3081,7 @@ literal|"openFolder"
 argument_list|,
 literal|"Open folder"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3093,7 +3109,7 @@ literal|"openExternalFile"
 argument_list|,
 literal|"Open file"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3121,7 +3137,7 @@ literal|"openFile"
 argument_list|,
 literal|"Open PDF or PS"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3149,7 +3165,7 @@ literal|"openUrl"
 argument_list|,
 literal|"Open URL or DOI"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3177,7 +3193,7 @@ literal|"openSpires"
 argument_list|,
 literal|"Open SPIRES entry"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3286,7 +3302,7 @@ name|GeneralAction
 argument_list|(
 literal|"autoSetPdf"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3316,7 +3332,7 @@ name|GeneralAction
 argument_list|(
 literal|"autoSetPs"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3346,7 +3362,7 @@ name|GeneralAction
 argument_list|(
 literal|"autoSetFile"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3376,7 +3392,7 @@ literal|"abbreviateMedline"
 argument_list|,
 literal|"Abbreviate journal names (MEDLINE)"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3397,7 +3413,7 @@ literal|"abbreviateIso"
 argument_list|,
 literal|"Abbreviate journal names (ISO)"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3427,7 +3443,7 @@ literal|"unabbreviate"
 argument_list|,
 literal|"Unabbreviate journal names"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3521,7 +3537,7 @@ literal|"dbConnect"
 argument_list|,
 literal|"Connect to external SQL database"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3549,7 +3565,7 @@ literal|"dbExport"
 argument_list|,
 literal|"Export to external SQL database"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3577,7 +3593,7 @@ literal|"Cleanup"
 argument_list|,
 literal|"Cleanup entries"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3607,7 +3623,7 @@ literal|"mergeEntries"
 argument_list|,
 literal|"Merge entries"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3672,7 +3688,7 @@ literal|"resolveDuplicateKeys"
 argument_list|,
 literal|"Resolve duplicate BibTeX keys"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4779,7 +4795,7 @@ name|frameTitle
 operator|+
 literal|" - "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5038,7 +5054,7 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5273,7 +5289,7 @@ parameter_list|()
 block|{
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5845,7 +5861,7 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5854,7 +5870,7 @@ operator|+
 literal|"want to save before closing?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5931,7 +5947,7 @@ comment|// The action was either cancelled or unsuccessful.
 comment|// Break!
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6971,7 +6987,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7040,7 +7056,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7177,7 +7193,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7251,7 +7267,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7337,7 +7353,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7517,7 +7533,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -9108,7 +9124,7 @@ parameter_list|)
 block|{
 name|name
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|menuTitle
 argument_list|(
@@ -10648,7 +10664,7 @@ condition|)
 block|{
 name|title
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -10784,7 +10800,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -10889,7 +10905,7 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -10898,7 +10914,7 @@ argument_list|)
 operator|+
 literal|'\n'
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -10907,7 +10923,7 @@ operator|+
 literal|"bindings to work properly."
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -10949,7 +10965,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -11037,7 +11053,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -11110,14 +11126,14 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Database has changed. Do you want to save before closing?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -11279,7 +11295,7 @@ expr_stmt|;
 comment|// Man, this is what I call a bug that this is not called.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -11334,7 +11350,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -11389,7 +11405,7 @@ argument_list|)
 expr_stmt|;
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -11436,7 +11452,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -11545,7 +11561,7 @@ name|tabbedPane
 operator|.
 name|add
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -11566,7 +11582,7 @@ argument_list|)
 expr_stmt|;
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -11591,7 +11607,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|menuTitle
 argument_list|(
@@ -11741,7 +11757,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -11857,7 +11873,7 @@ name|BibtexFields
 operator|.
 name|DEFAULT_INSPECTION_FIELDS
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -12014,7 +12030,7 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -12023,7 +12039,7 @@ operator|+
 literal|"using the correct import filter."
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -12223,7 +12239,7 @@ condition|)
 block|{
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -12236,7 +12252,7 @@ name|filename
 operator|+
 literal|"' "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -12252,7 +12268,7 @@ argument_list|()
 operator|+
 literal|' '
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -12294,7 +12310,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -12550,7 +12566,7 @@ condition|)
 block|{
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -12563,7 +12579,7 @@ name|filename
 operator|+
 literal|"' "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -12583,7 +12599,7 @@ operator|)
 operator|+
 literal|' '
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -12658,7 +12674,7 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -13260,7 +13276,7 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -13269,7 +13285,7 @@ operator|+
 literal|"included in the saved session. Save now?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -13352,7 +13368,7 @@ condition|)
 block|{
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -13420,7 +13436,7 @@ argument_list|)
 expr_stmt|;
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -13510,7 +13526,7 @@ condition|)
 block|{
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -13536,7 +13552,7 @@ expr_stmt|;
 block|}
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -13722,7 +13738,7 @@ block|}
 block|}
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -13966,7 +13982,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

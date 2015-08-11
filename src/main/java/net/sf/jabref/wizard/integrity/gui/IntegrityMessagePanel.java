@@ -286,7 +286,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|undo
+operator|.
+name|UndoableFieldChange
 import|;
 end_import
 
@@ -298,11 +302,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|undo
+name|l10n
 operator|.
-name|UndoableFieldChange
+name|Localization
 import|;
 end_import
 
@@ -517,7 +521,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -545,7 +549,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -573,7 +577,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

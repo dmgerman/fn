@@ -112,6 +112,22 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * User: alver  *   * Date: Oct 18, 2006   *   * Time: 9:35:08 PM   */
 end_comment
@@ -174,7 +190,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -198,7 +214,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -222,7 +238,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -251,7 +267,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -275,7 +291,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -299,7 +315,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -332,7 +348,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -356,7 +372,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -380,7 +396,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -404,7 +420,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -428,7 +444,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -452,7 +468,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -476,7 +492,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -500,7 +516,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -523,7 +539,7 @@ init|=
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -559,7 +575,7 @@ argument_list|(
 operator|new
 name|ExportFormat
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1053,14 +1069,14 @@ argument_list|()
 operator|+
 literal|"' "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"exists. Overwrite file?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1352,7 +1368,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1373,7 +1389,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1392,7 +1408,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1403,7 +1419,7 @@ literal|".\n"
 operator|+
 name|errorMessage
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

@@ -216,6 +216,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|specialfields
 operator|.
 name|SpecialFieldsUtils
@@ -454,7 +470,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -822,7 +838,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -957,7 +973,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1041,14 +1057,14 @@ literal|null
 argument_list|,
 literal|"<html>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"An autosave file was found for this database. This could indicate "
 argument_list|)
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1057,7 +1073,7 @@ argument_list|)
 operator|+
 literal|"<br>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1066,7 +1082,7 @@ argument_list|)
 operator|+
 literal|"</html>"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1203,7 +1219,7 @@ literal|null
 argument_list|,
 literal|"<html>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1216,7 +1232,7 @@ name|fileName
 operator|+
 literal|"'. "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1225,14 +1241,14 @@ argument_list|)
 operator|+
 literal|"<p>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Do you want to override the file lock?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1286,7 +1302,7 @@ name|showMessageDialog
 argument_list|(
 literal|null
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1299,14 +1315,14 @@ name|fileName
 operator|+
 literal|"'. "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"File is locked by another JabRef instance."
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1381,7 +1397,7 @@ name|showMessageDialog
 argument_list|(
 literal|null
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1394,7 +1410,7 @@ name|fileName
 operator|+
 literal|"'"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1418,7 +1434,7 @@ operator|+
 operator|(
 name|tryingAutosave
 condition|?
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1444,7 +1460,7 @@ literal|null
 argument_list|,
 name|message
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1788,7 +1804,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1854,7 +1870,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1867,7 +1883,7 @@ name|fileName
 operator|+
 literal|"' "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1883,7 +1899,7 @@ argument_list|()
 operator|+
 literal|" "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2119,7 +2135,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2144,7 +2160,7 @@ name|pr
 operator|.
 name|addWarning
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

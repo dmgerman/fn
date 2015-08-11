@@ -56,7 +56,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -106,7 +110,7 @@ literal|"qualityAssured"
 argument_list|,
 literal|"toggleQualityAssured"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -120,7 +124,7 @@ argument_list|(
 literal|"qualityAssured"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -241,7 +245,7 @@ name|getMenuString
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

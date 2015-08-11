@@ -20,7 +20,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|error
+operator|.
+name|StreamEavesdropper
 import|;
 end_import
 
@@ -34,9 +38,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|error
+name|l10n
 operator|.
-name|StreamEavesdropper
+name|Localization
 import|;
 end_import
 
@@ -194,7 +198,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|menuTitle
 argument_list|(
@@ -220,7 +224,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -272,7 +276,7 @@ name|addTextArea
 argument_list|(
 name|tabbed
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -289,7 +293,7 @@ name|addTextArea
 argument_list|(
 name|tabbed
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -301,7 +305,7 @@ operator|.
 name|getErrorMessages
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -313,7 +317,7 @@ name|addTextArea
 argument_list|(
 name|tabbed
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -347,7 +351,7 @@ name|parent
 argument_list|,
 name|tabbed
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

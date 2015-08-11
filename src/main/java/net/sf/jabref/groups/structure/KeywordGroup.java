@@ -64,6 +64,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|search
 operator|.
 name|SearchRule
@@ -913,7 +929,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1089,7 +1105,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1948,7 +1964,7 @@ name|header
 init|=
 name|regExp
 condition|?
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1964,7 +1980,7 @@ name|expr
 argument_list|)
 argument_list|)
 else|:
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1985,14 +2001,14 @@ name|caseSensitiveText
 init|=
 name|caseSensitive
 condition|?
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"case sensitive"
 argument_list|)
 else|:
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2004,14 +2020,14 @@ name|footer
 init|=
 name|regExp
 condition|?
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Entries cannot be manually assigned to or removed from this group."
 argument_list|)
 else|:
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2145,7 +2161,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2178,7 +2194,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2230,7 +2246,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2251,7 +2267,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

@@ -38,6 +38,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -178,7 +194,7 @@ parameter_list|)
 block|{
 name|name
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -206,7 +222,7 @@ name|setText
 argument_list|(
 literal|"<HTML><H2>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -215,7 +231,7 @@ argument_list|)
 operator|+
 literal|"</H2><H3>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -231,7 +247,7 @@ argument_list|()
 operator|+
 literal|"<H3>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

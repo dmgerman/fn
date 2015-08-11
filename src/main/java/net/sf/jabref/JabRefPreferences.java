@@ -238,6 +238,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|labelPattern
 operator|.
 name|LabelPattern
@@ -3600,14 +3616,7 @@ if|if
 condition|(
 name|Globals
 operator|.
-name|osName
-operator|.
-name|equals
-argument_list|(
-name|Globals
-operator|.
-name|MAC
-argument_list|)
+name|ON_MAC
 condition|)
 block|{
 comment|//defaults.put("pdfviewer", "/Applications/Preview.app");
@@ -3655,15 +3664,7 @@ if|if
 condition|(
 name|Globals
 operator|.
-name|osName
-operator|.
-name|toLowerCase
-argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-literal|"windows"
-argument_list|)
+name|ON_WIN
 condition|)
 block|{
 comment|//defaults.put("pdfviewer", "cmd.exe /c start /b");
@@ -6463,7 +6464,7 @@ name|put
 argument_list|(
 name|EMAIL_SUBJECT
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6961,7 +6962,7 @@ name|CUSTOM_TAB_NAME
 operator|+
 literal|"_def0"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7002,7 +7003,7 @@ name|CUSTOM_TAB_NAME
 operator|+
 literal|"_def1"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7030,7 +7031,7 @@ name|CUSTOM_TAB_NAME
 operator|+
 literal|"_def2"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

@@ -24,7 +24,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -200,7 +204,7 @@ name|searchDescription
 init|=
 name|regExp
 condition|?
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -214,7 +218,7 @@ name|firstWord
 argument_list|)
 argument_list|)
 else|:
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -306,7 +310,7 @@ name|format
 argument_list|(
 literal|" %s "
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -349,14 +353,14 @@ name|caseSensitiveDescription
 init|=
 name|caseSensitive
 condition|?
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"case sensitive"
 argument_list|)
 else|:
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -366,7 +370,7 @@ decl_stmt|;
 name|String
 name|genericDescription
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -375,7 +379,7 @@ argument_list|)
 operator|+
 literal|"<p><br>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

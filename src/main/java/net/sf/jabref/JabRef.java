@@ -180,6 +180,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -826,7 +842,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -899,7 +915,7 @@ name|showMessageDialog
 argument_list|(
 literal|null
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -913,7 +929,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1143,7 +1159,7 @@ literal|1
 index|]
 expr_stmt|;
 block|}
-name|Globals
+name|Localization
 operator|.
 name|setLanguage
 argument_list|(
@@ -1401,7 +1417,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1429,7 +1445,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1486,7 +1502,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1520,7 +1536,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2078,7 +2094,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2138,7 +2154,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2190,7 +2206,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2222,7 +2238,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2245,7 +2261,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2263,7 +2279,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2357,7 +2373,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2439,7 +2455,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2448,7 +2464,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2488,7 +2504,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2521,7 +2537,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2633,7 +2649,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2711,7 +2727,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2743,7 +2759,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2769,7 +2785,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2951,7 +2967,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3024,7 +3040,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3033,7 +3049,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3073,7 +3089,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3111,7 +3127,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3147,7 +3163,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3161,7 +3177,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3228,7 +3244,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3242,7 +3258,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3347,7 +3363,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3363,7 +3379,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3422,7 +3438,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3435,7 +3451,7 @@ argument_list|)
 operator|+
 literal|" "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3478,7 +3494,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3655,14 +3671,14 @@ name|JabRef
 operator|.
 name|jrf
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Unable to find the requested Look& Feel and thus the default one is used."
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4112,7 +4128,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4543,7 +4559,7 @@ name|message
 init|=
 literal|"<html>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4577,7 +4593,7 @@ name|jrf
 argument_list|,
 name|message
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4729,7 +4745,7 @@ name|wrn
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4793,7 +4809,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4982,7 +4998,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5045,7 +5061,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5054,7 +5070,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5142,7 +5158,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5265,7 +5281,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5385,7 +5401,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5497,7 +5513,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5526,7 +5542,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5610,7 +5626,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5638,7 +5654,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5661,7 +5677,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

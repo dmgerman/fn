@@ -74,6 +74,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -155,7 +171,7 @@ name|basePanel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -418,7 +434,7 @@ name|basePanel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -448,7 +464,7 @@ name|UNKNOWN_DOMAIN
 case|:
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -469,7 +485,7 @@ name|WRONG_MIME_TYPE
 case|:
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -486,7 +502,7 @@ name|LINK_NOT_FOUND
 case|:
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -501,7 +517,7 @@ name|IO_EXCEPTION
 case|:
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -516,7 +532,7 @@ name|NO_URLS_DEFINED
 case|:
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -529,7 +545,7 @@ name|basePanel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -548,7 +564,7 @@ argument_list|()
 argument_list|,
 name|message
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
