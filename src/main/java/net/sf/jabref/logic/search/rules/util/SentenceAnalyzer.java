@@ -100,16 +100,14 @@ name|result
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
-name|StringBuffer
-name|sb
+name|StringBuilder
+name|stringBuilder
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -170,7 +168,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|sb
+name|stringBuilder
 operator|.
 name|length
 argument_list|()
@@ -182,16 +180,16 @@ name|result
 operator|.
 name|add
 argument_list|(
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|sb
+name|stringBuilder
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}
@@ -208,7 +206,7 @@ comment|// Whether it is a start or end quote, store the current
 comment|// word if any:
 if|if
 condition|(
-name|sb
+name|stringBuilder
 operator|.
 name|length
 argument_list|()
@@ -220,16 +218,16 @@ name|result
 operator|.
 name|add
 argument_list|(
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|sb
+name|stringBuilder
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}
@@ -243,7 +241,7 @@ else|else
 block|{
 comment|// All other possibilities exhausted, we add the char to
 comment|// the current word:
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -260,7 +258,7 @@ block|}
 comment|// Finished with the loop. If we have a current word, add it:
 if|if
 condition|(
-name|sb
+name|stringBuilder
 operator|.
 name|length
 argument_list|()
@@ -272,7 +270,7 @@ name|result
 operator|.
 name|add
 argument_list|(
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
