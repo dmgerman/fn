@@ -132,12 +132,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|TWO_SECONDS_TIMEOUT
+DECL|field|TIMEOUT
 specifier|private
 specifier|static
 specifier|final
 name|int
-name|TWO_SECONDS_TIMEOUT
+name|TIMEOUT
 init|=
 literal|2000
 decl_stmt|;
@@ -183,7 +183,7 @@ name|socket
 operator|.
 name|setSoTimeout
 argument_list|(
-name|TWO_SECONDS_TIMEOUT
+name|TIMEOUT
 argument_list|)
 expr_stmt|;
 name|Protocol
