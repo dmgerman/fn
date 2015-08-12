@@ -2894,9 +2894,16 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|/*          * if (localFile) { String[] spl = link.split("\\\\"); StringBuffer sb =          * new StringBuffer(); for (int i = 0; i< spl.length; i++) { if (i> 0)          * sb.append("\\"); if (spl[i].indexOf(" ")>= 0) spl[i] = "\"" + spl[i] +          * "\""; sb.append(spl[i]); } link = sb.toString(); }          */
-name|link
-operator|=
+comment|// escape& and spaces
+name|Runtime
+operator|.
+name|getRuntime
+argument_list|()
+operator|.
+name|exec
+argument_list|(
+literal|"cmd.exe /c start "
+operator|+
 name|link
 operator|.
 name|replaceAll
@@ -2912,48 +2919,6 @@ literal|" "
 argument_list|,
 literal|"\" \""
 argument_list|)
-expr_stmt|;
-comment|// Bug fix for:
-comment|// http://sourceforge.net/tracker/index.php?func=detail&aid=1489454&group_id=92314&atid=600306
-name|String
-name|cmd
-decl_stmt|;
-if|if
-condition|(
-name|Globals
-operator|.
-name|osName
-operator|.
-name|startsWith
-argument_list|(
-literal|"Windows 9"
-argument_list|)
-condition|)
-block|{
-name|cmd
-operator|=
-literal|"command.com /c start "
-operator|+
-name|link
-expr_stmt|;
-block|}
-else|else
-block|{
-name|cmd
-operator|=
-literal|"cmd.exe /c start "
-operator|+
-name|link
-expr_stmt|;
-block|}
-name|Runtime
-operator|.
-name|getRuntime
-argument_list|()
-operator|.
-name|exec
-argument_list|(
-name|cmd
 argument_list|)
 expr_stmt|;
 block|}
@@ -2973,8 +2938,18 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|link
-operator|=
+comment|// escape& and spaces
+name|Runtime
+operator|.
+name|getRuntime
+argument_list|()
+operator|.
+name|exec
+argument_list|(
+name|application
+operator|+
+literal|" "
+operator|+
 name|link
 operator|.
 name|replaceAll
@@ -2990,19 +2965,6 @@ literal|" "
 argument_list|,
 literal|"\" \""
 argument_list|)
-expr_stmt|;
-name|Runtime
-operator|.
-name|getRuntime
-argument_list|()
-operator|.
-name|exec
-argument_list|(
-name|application
-operator|+
-literal|" "
-operator|+
-name|link
 argument_list|)
 expr_stmt|;
 block|}
