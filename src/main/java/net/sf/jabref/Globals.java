@@ -246,6 +246,46 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|// JabRef version info
+DECL|field|BUILD_INFO
+specifier|public
+specifier|static
+specifier|final
+name|BuildInfo
+name|BUILD_INFO
+init|=
+operator|new
+name|BuildInfo
+argument_list|()
+decl_stmt|;
+comment|// Newlines
+comment|// will be overridden in initialization due to feature #857 @ JabRef.java
+DECL|field|NEWLINE
+specifier|public
+specifier|static
+name|String
+name|NEWLINE
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"line.separator"
+argument_list|)
+decl_stmt|;
+DECL|field|NEWLINE_LENGTH
+specifier|public
+specifier|static
+name|int
+name|NEWLINE_LENGTH
+init|=
+name|Globals
+operator|.
+name|NEWLINE
+operator|.
+name|length
+argument_list|()
+decl_stmt|;
 comment|// Remote listener
 DECL|field|remoteListener
 specifier|public
@@ -494,12 +534,6 @@ block|}
 block|}
 block|}
 comment|// TODO: other stuff
-DECL|field|fileUpdateMonitor
-specifier|public
-specifier|static
-name|FileUpdateMonitor
-name|fileUpdateMonitor
-decl_stmt|;
 DECL|field|importFormatReader
 specifier|public
 specifier|static
@@ -511,28 +545,11 @@ operator|new
 name|ImportFormatReader
 argument_list|()
 decl_stmt|;
-DECL|field|streamEavesdropper
-specifier|public
-specifier|static
-name|StreamEavesdropper
-name|streamEavesdropper
-decl_stmt|;
 DECL|field|handler
 specifier|public
 specifier|static
 name|CacheableHandler
 name|handler
-decl_stmt|;
-DECL|field|BUILD_INFO
-specifier|public
-specifier|static
-specifier|final
-name|BuildInfo
-name|BUILD_INFO
-init|=
-operator|new
-name|BuildInfo
-argument_list|()
 decl_stmt|;
 DECL|field|FILETYPE_PREFS_EXT
 specifier|public
@@ -579,18 +596,6 @@ name|FORMATTER_PACKAGE
 init|=
 literal|"net.sf.jabref.export.layout.format."
 decl_stmt|;
-DECL|field|focusListener
-specifier|public
-specifier|static
-name|GlobalFocusListener
-name|focusListener
-decl_stmt|;
-DECL|field|autoSaveManager
-specifier|public
-specifier|static
-name|AutoSaveManager
-name|autoSaveManager
-decl_stmt|;
 comment|// In the main program, this field is initialized in JabRef.java
 comment|// Each test case initializes this field if required
 DECL|field|prefs
@@ -611,33 +616,6 @@ specifier|static
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
-comment|// will be overridden in initialization due to feature #857 @ JabRef.java
-DECL|field|NEWLINE
-specifier|public
-specifier|static
-name|String
-name|NEWLINE
-init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"line.separator"
-argument_list|)
-decl_stmt|;
-DECL|field|NEWLINE_LENGTH
-specifier|public
-specifier|static
-name|int
-name|NEWLINE_LENGTH
-init|=
-name|Globals
-operator|.
-name|NEWLINE
-operator|.
-name|length
-argument_list|()
-decl_stmt|;
 comment|// "Fieldname" to indicate that a field should be treated as a bibtex string. Used when writing database to file.
 DECL|field|BIBTEX_STRING
 specifier|public
@@ -656,6 +634,25 @@ name|String
 name|SPECIAL_COMMAND_CHARS
 init|=
 literal|"\"`^~'c="
+decl_stmt|;
+comment|// Background tasks
+DECL|field|focusListener
+specifier|public
+specifier|static
+name|GlobalFocusListener
+name|focusListener
+decl_stmt|;
+DECL|field|fileUpdateMonitor
+specifier|public
+specifier|static
+name|FileUpdateMonitor
+name|fileUpdateMonitor
+decl_stmt|;
+DECL|field|streamEavesdropper
+specifier|public
+specifier|static
+name|StreamEavesdropper
+name|streamEavesdropper
 decl_stmt|;
 DECL|method|startBackgroundTasks ()
 specifier|public
@@ -703,7 +700,13 @@ literal|"FileUpdateMonitor"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Initialize and start the autosave manager.
+comment|// Autosave manager
+DECL|field|autoSaveManager
+specifier|public
+specifier|static
+name|AutoSaveManager
+name|autoSaveManager
+decl_stmt|;
 DECL|method|startAutoSaveManager (JabRefFrame frame)
 specifier|public
 specifier|static
