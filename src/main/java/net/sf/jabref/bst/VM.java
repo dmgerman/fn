@@ -1253,6 +1253,9 @@ operator|.
 name|push
 argument_list|(
 name|o1
+operator|.
+name|toString
+argument_list|()
 operator|+
 name|o2
 argument_list|)
@@ -4515,16 +4518,15 @@ expr_stmt|;
 block|}
 block|}
 comment|// Integers
-name|Tree
 name|t
-init|=
+operator|=
 name|child
 operator|.
 name|getChild
 argument_list|(
 literal|1
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
@@ -4579,16 +4581,15 @@ expr_stmt|;
 block|}
 block|}
 comment|// Strings
-name|Tree
 name|t
-init|=
+operator|=
 name|child
 operator|.
 name|getChild
 argument_list|(
 literal|2
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
