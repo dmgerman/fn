@@ -570,7 +570,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|Util
+name|JabRefDesktop
 import|;
 end_import
 
@@ -1430,7 +1430,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalFileAnyFormat
 argument_list|(
@@ -1446,7 +1446,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalFileUnknown
 argument_list|(

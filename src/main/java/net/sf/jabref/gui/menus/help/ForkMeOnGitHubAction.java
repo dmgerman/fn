@@ -100,7 +100,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|Util
+name|JabRefDesktop
 import|;
 end_import
 
@@ -160,7 +160,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openBrowser
 argument_list|(

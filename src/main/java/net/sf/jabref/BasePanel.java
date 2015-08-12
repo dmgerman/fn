@@ -1454,6 +1454,20 @@ name|jabref
 operator|.
 name|util
 operator|.
+name|JabRefDesktop
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
 name|Util
 import|;
 end_import
@@ -6219,7 +6233,7 @@ condition|)
 block|{
 try|try
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalFileAnyFormat
 argument_list|(
@@ -6671,7 +6685,7 @@ condition|)
 block|{
 try|try
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalFileAnyFormat
 argument_list|(
@@ -6738,7 +6752,7 @@ block|{
 comment|//output(Globals.lang("Calling external viewer..."));
 try|try
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(
@@ -7115,7 +7129,7 @@ control|)
 block|{
 try|try
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openFolderAndSelectFile
 argument_list|(
@@ -7250,7 +7264,7 @@ block|{
 comment|//output(Globals.lang("Calling external viewer..."));
 try|try
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(
@@ -7413,7 +7427,7 @@ condition|)
 block|{
 try|try
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalFileAnyFormat
 argument_list|(
@@ -7621,7 +7635,7 @@ block|{
 comment|//output(Globals.lang("Calling external viewer..."));
 try|try
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(

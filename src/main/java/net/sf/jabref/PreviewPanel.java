@@ -268,7 +268,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|Util
+name|JabRefDesktop
 import|;
 end_import
 
@@ -1376,7 +1376,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(

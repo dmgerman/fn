@@ -186,6 +186,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|JabRefDesktop
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -347,20 +361,6 @@ operator|.
 name|specialfields
 operator|.
 name|SpecialFieldsUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -2168,7 +2168,7 @@ else|else
 block|{
 try|try
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(

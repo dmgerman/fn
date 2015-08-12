@@ -490,7 +490,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|Util
+name|JabRefDesktop
 import|;
 end_import
 
@@ -2319,7 +2319,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(
