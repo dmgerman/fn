@@ -23,7 +23,6 @@ interface|interface
 name|Warn
 block|{
 DECL|method|warn (String s)
-specifier|public
 name|void
 name|warn
 parameter_list|(

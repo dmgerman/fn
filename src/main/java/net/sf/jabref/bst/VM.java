@@ -376,7 +376,6 @@ interface|interface
 name|BstFunction
 block|{
 DECL|method|execute (BstEntry context)
-specifier|public
 name|void
 name|execute
 parameter_list|(

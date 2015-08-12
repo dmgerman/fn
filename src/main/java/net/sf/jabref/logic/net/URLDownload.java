@@ -351,7 +351,6 @@ operator|=
 operator|new
 name|StringWriter
 argument_list|()
-init|;
 init|)
 block|{
 name|copy
