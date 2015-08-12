@@ -1036,6 +1036,22 @@ specifier|public
 class|class
 name|Util
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|Util
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|REMOTE_LINK_PATTERN
 specifier|private
 specifier|static
@@ -1060,22 +1076,6 @@ init|=
 operator|new
 name|EasyDateFormat
 argument_list|()
-decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|Util
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 DECL|field|ARXIV_LOOKUP_PREFIX
 specifier|private
@@ -6918,7 +6918,7 @@ return|return
 name|encodings
 return|;
 block|}
-comment|/**      * From http://stackoverflow.com/questions/1030479/most-efficient-way-of-converting-string-to-integer-in-java      *      * @param str      * @return      */
+comment|/**      * Optimized method for converting a String into an Integer      *      * From http://stackoverflow.com/questions/1030479/most-efficient-way-of-converting-string-to-integer-in-java      *      * @param str the String holding an Integer value      * @throws NumberFormatException if str cannot be parsed to an int      * @return the int value of str      */
 DECL|method|intValueOf (String str)
 specifier|public
 specifier|static
