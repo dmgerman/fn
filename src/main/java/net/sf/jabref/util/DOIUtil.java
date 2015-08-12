@@ -135,51 +135,23 @@ literal|"http[s]?://[^\\s]*?"
 operator|+
 name|REGEXP_PLAINDOI
 decl_stmt|;
-comment|/**      * Check if the String matches a DOI (with http://...)      */
-DECL|method|isURI (String check)
-specifier|public
-specifier|static
-name|boolean
-name|isURI
-parameter_list|(
-name|String
-name|check
-parameter_list|)
-block|{
-return|return
-name|check
-operator|!=
-literal|null
-operator|&&
-name|check
-operator|.
-name|matches
-argument_list|(
-literal|".*"
-operator|+
-name|REGEXP_DOI_WITH_HTTP_PREFIX
-operator|+
-literal|".*"
-argument_list|)
-return|;
-block|}
-comment|/**      *      * @param check - string to check      * @return true if "check" contains a DOI      */
-DECL|method|isDOI (String check)
+comment|/**      * Check if the String matches a plain DOI      *      * @param value the String to check      * @return true if value contains a DOI      */
+DECL|method|isDOI (String value)
 specifier|public
 specifier|static
 name|boolean
 name|isDOI
 parameter_list|(
 name|String
-name|check
+name|value
 parameter_list|)
 block|{
 return|return
-name|check
+name|value
 operator|!=
 literal|null
 operator|&&
-name|check
+name|value
 operator|.
 name|matches
 argument_list|(
@@ -191,15 +163,43 @@ literal|".*"
 argument_list|)
 return|;
 block|}
-comment|/**      * Remove the http://... from DOI      *      * @param doi - may not be null      * @return first DOI in the given String (without http://... prefix). If no DOI exists, the complete string is returned      */
-DECL|method|getDOI (String doi)
+comment|/**      * Check if the String matches a URI presentation of a DOI      *      *<example>      *     The DOI name "10.1006/jmbi.1998.2354" would be made an actionable link as "http://doi.org/10.1006/jmbi.1998.2354".      *</example>      *      * @param value the String to check      * @return true if value contains a URI presentation of a DOI      */
+DECL|method|isURI (String value)
+specifier|public
+specifier|static
+name|boolean
+name|isURI
+parameter_list|(
+name|String
+name|value
+parameter_list|)
+block|{
+return|return
+name|value
+operator|!=
+literal|null
+operator|&&
+name|value
+operator|.
+name|matches
+argument_list|(
+literal|".*"
+operator|+
+name|REGEXP_DOI_WITH_HTTP_PREFIX
+operator|+
+literal|".*"
+argument_list|)
+return|;
+block|}
+comment|/**      * Extract a plain DOI      *      * TODO: why not return null if no DOI is found?      *      * @param value the String containing the DOI      * @return the first plain DOI in value. If no DOI exists, the complete string is returned.      */
+DECL|method|getDOI (String value)
 specifier|public
 specifier|static
 name|String
 name|getDOI
 parameter_list|(
 name|String
-name|doi
+name|value
 parameter_list|)
 block|{
 name|Matcher
@@ -209,7 +209,7 @@ name|PATTERN_PLAINDOI
 operator|.
 name|matcher
 argument_list|(
-name|doi
+name|value
 argument_list|)
 decl_stmt|;
 if|if
@@ -230,11 +230,11 @@ block|}
 else|else
 block|{
 return|return
-name|doi
+name|value
 return|;
 block|}
 block|}
-comment|/**      * Returns the Http URL for a specific DOI      *      * TODO: this has problems when no doi is detected or is null.      * This has always been unchecked and needs to be investigated!      * @param doi - may not be null      * @return      */
+comment|/**      * Return a URI presentation for a specific DOI      *      * TODO: this has problems when no doi is detected or is null.      * This has always been unchecked and needs to be investigated!      *      * @param doi the DOI value      * @return a URI representation of the DOI      */
 DECL|method|getURI (String doi)
 specifier|public
 specifier|static
