@@ -3094,8 +3094,6 @@ DECL|field|tabList
 specifier|private
 name|EntryEditorTabList
 name|tabList
-init|=
-literal|null
 decl_stmt|;
 comment|// Map containing all registered external file types:
 DECL|field|externalFileTypes
@@ -3144,8 +3142,6 @@ specifier|public
 name|String
 index|[]
 name|fileDirForDatabase
-init|=
-literal|null
 decl_stmt|;
 comment|// Similarly to the previous variable, this is a global that can be used during
 comment|// the export of a database if the database filename should be output. If a database
@@ -3154,8 +3150,6 @@ DECL|field|databaseFile
 specifier|public
 name|File
 name|databaseFile
-init|=
-literal|null
 decl_stmt|;
 comment|// The following field is used as a global variable during the export of a database.
 comment|// It is used to hold custom name formatters defined by a custom export filter.
@@ -3169,8 +3163,6 @@ argument_list|,
 name|String
 argument_list|>
 name|customExportNameFormatters
-init|=
-literal|null
 decl_stmt|;
 comment|// The only instance of this class:
 DECL|field|singleton
@@ -3178,8 +3170,6 @@ specifier|private
 specifier|static
 name|JabRefPreferences
 name|singleton
-init|=
-literal|null
 decl_stmt|;
 DECL|method|getInstance ()
 specifier|public

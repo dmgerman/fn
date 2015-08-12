@@ -294,8 +294,6 @@ DECL|field|inTemp
 specifier|private
 name|BibtexDatabase
 name|inTemp
-init|=
-literal|null
 decl_stmt|;
 DECL|field|mdInTemp
 specifier|private

@@ -249,15 +249,11 @@ DECL|field|downloadFinished
 specifier|private
 name|boolean
 name|downloadFinished
-init|=
-literal|false
 decl_stmt|;
 DECL|field|dontShowDialog
 specifier|private
 name|boolean
 name|dontShowDialog
-init|=
-literal|false
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private

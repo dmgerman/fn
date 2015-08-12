@@ -180,8 +180,6 @@ DECL|field|postFormatter
 specifier|private
 name|LayoutFormatter
 name|postFormatter
-init|=
-literal|null
 decl_stmt|;
 DECL|field|text
 specifier|private
@@ -213,8 +211,6 @@ argument_list|<
 name|String
 argument_list|>
 name|invalidFormatter
-init|=
-literal|null
 decl_stmt|;
 comment|// used at highlighting in preview area.
 comment|// Color chosen similar to JTextComponent.getSelectionColor(), which is

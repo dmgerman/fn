@@ -92,8 +92,6 @@ DECL|field|freeform
 specifier|private
 name|String
 name|freeform
-init|=
-literal|null
 decl_stmt|;
 DECL|field|start
 specifier|private

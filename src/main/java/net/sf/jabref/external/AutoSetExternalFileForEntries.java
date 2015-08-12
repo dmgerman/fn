@@ -297,15 +297,11 @@ specifier|private
 name|BibtexEntry
 index|[]
 name|sel
-init|=
-literal|null
 decl_stmt|;
 DECL|field|optDiag
 specifier|private
 name|OptionsDialog
 name|optDiag
-init|=
-literal|null
 decl_stmt|;
 DECL|field|log
 specifier|private
@@ -392,8 +388,6 @@ DECL|field|entriesChanged
 specifier|private
 name|int
 name|entriesChanged
-init|=
-literal|0
 decl_stmt|;
 DECL|method|AutoSetExternalFileForEntries (BasePanel panel, String fieldName)
 specifier|public

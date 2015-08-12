@@ -324,16 +324,12 @@ DECL|field|activeField
 specifier|private
 name|FieldEditor
 name|activeField
-init|=
-literal|null
 decl_stmt|;
 comment|// UGLY HACK to have a pointer to the fileListEditor to call autoSetLinks()
 DECL|field|fileListEditor
 specifier|public
 name|FileListEditor
 name|fileListEditor
-init|=
-literal|null
 decl_stmt|;
 DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List<String> fields, EntryEditor parent, boolean addKeyField, boolean compressed, String name)
 specifier|public
@@ -1583,8 +1579,6 @@ DECL|field|updating
 specifier|private
 name|boolean
 name|updating
-init|=
-literal|false
 decl_stmt|;
 DECL|method|setEntry (BibtexEntry entry)
 specifier|public

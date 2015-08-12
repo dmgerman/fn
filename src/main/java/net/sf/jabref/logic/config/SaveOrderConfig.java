@@ -73,8 +73,6 @@ DECL|field|descending
 specifier|public
 name|boolean
 name|descending
-init|=
-literal|false
 decl_stmt|;
 DECL|method|SortCriterion ()
 specifier|public

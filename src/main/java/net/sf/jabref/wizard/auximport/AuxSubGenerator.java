@@ -202,8 +202,6 @@ DECL|field|crossreferencedEntriesCount
 specifier|private
 name|int
 name|crossreferencedEntriesCount
-init|=
-literal|0
 decl_stmt|;
 comment|// counts entries pulled in due to crossref
 DECL|method|AuxSubGenerator (BibtexDatabase refDBase)

@@ -171,8 +171,6 @@ DECL|field|name
 specifier|private
 name|String
 name|name
-init|=
-literal|null
 decl_stmt|;
 DECL|field|journals
 specifier|private
@@ -284,8 +282,6 @@ DECL|field|valid
 specifier|private
 name|boolean
 name|valid
-init|=
-literal|false
 decl_stmt|;
 DECL|field|NONE
 specifier|private
@@ -399,8 +395,6 @@ DECL|field|styleFile
 specifier|private
 name|File
 name|styleFile
-init|=
-literal|null
 decl_stmt|;
 DECL|field|styleFileModificationTime
 specifier|private

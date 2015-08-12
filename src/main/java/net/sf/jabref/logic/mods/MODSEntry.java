@@ -249,8 +249,6 @@ argument_list|<
 name|PersonName
 argument_list|>
 name|authors
-init|=
-literal|null
 decl_stmt|;
 comment|// should really be handled with an enum
 DECL|field|issuance
@@ -264,29 +262,21 @@ DECL|field|pages
 specifier|private
 name|PageNumbers
 name|pages
-init|=
-literal|null
 decl_stmt|;
 DECL|field|publisher
 specifier|private
 name|String
 name|publisher
-init|=
-literal|null
 decl_stmt|;
 DECL|field|date
 specifier|private
 name|String
 name|date
-init|=
-literal|null
 decl_stmt|;
 DECL|field|title
 specifier|private
 name|String
 name|title
-init|=
-literal|null
 decl_stmt|;
 DECL|field|number
 specifier|private
@@ -302,8 +292,6 @@ DECL|field|genre
 specifier|private
 name|String
 name|genre
-init|=
-literal|null
 decl_stmt|;
 DECL|field|handledExtensions
 specifier|private

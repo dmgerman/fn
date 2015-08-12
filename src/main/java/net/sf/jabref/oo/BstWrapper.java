@@ -207,8 +207,6 @@ DECL|field|vm
 specifier|private
 name|VM
 name|vm
-init|=
-literal|null
 decl_stmt|;
 DECL|method|BstWrapper ()
 specifier|public

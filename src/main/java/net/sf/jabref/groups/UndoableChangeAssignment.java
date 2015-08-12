@@ -128,16 +128,12 @@ specifier|private
 name|int
 index|[]
 name|m_pathToNode
-init|=
-literal|null
 decl_stmt|;
 comment|/** The root of the global groups tree */
 DECL|field|m_groupsRootHandle
 specifier|private
 name|GroupTreeNode
 name|m_groupsRootHandle
-init|=
-literal|null
 decl_stmt|;
 comment|/**      * Constructor for use in a group itself, where the enclosing node is      * unknown. The node must be set using setEditedNode() before this instance      * may be used.      *       * @param previousAssignment      * @param currentAssignment      */
 DECL|method|UndoableChangeAssignment (Set<BibtexEntry> previousAssignment, Set<BibtexEntry> currentAssignment)

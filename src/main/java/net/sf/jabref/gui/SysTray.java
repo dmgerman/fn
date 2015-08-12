@@ -146,8 +146,6 @@ DECL|field|tray
 specifier|private
 name|SystemTray
 name|tray
-init|=
-literal|null
 decl_stmt|;
 DECL|method|SysTray (JabRefFrame frame)
 specifier|public

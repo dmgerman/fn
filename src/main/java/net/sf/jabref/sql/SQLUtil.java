@@ -140,8 +140,6 @@ argument_list|<
 name|String
 argument_list|>
 name|allFields
-init|=
-literal|null
 decl_stmt|;
 DECL|method|SQLUtil ()
 specifier|private

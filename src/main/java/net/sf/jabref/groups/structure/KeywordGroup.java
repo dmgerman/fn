@@ -199,8 +199,6 @@ DECL|field|pattern
 specifier|private
 name|Pattern
 name|pattern
-init|=
-literal|null
 decl_stmt|;
 comment|/**      * Creates a KeywordGroup with the specified properties.      */
 DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context)

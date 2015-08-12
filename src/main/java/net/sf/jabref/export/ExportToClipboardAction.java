@@ -288,8 +288,6 @@ DECL|field|message
 specifier|private
 name|String
 name|message
-init|=
-literal|null
 decl_stmt|;
 DECL|field|frame
 specifier|private

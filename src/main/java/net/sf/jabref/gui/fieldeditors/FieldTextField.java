@@ -231,8 +231,6 @@ DECL|field|autoCompleteListener
 specifier|private
 name|AutoCompleteListener
 name|autoCompleteListener
-init|=
-literal|null
 decl_stmt|;
 DECL|method|FieldTextField (String fieldName, String content, boolean changeColorOnFocus)
 specifier|public

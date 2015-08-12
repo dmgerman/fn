@@ -152,8 +152,6 @@ DECL|field|resourceOwner
 specifier|private
 name|Class
 name|resourceOwner
-init|=
-literal|null
 decl_stmt|;
 DECL|field|helpFile
 specifier|private

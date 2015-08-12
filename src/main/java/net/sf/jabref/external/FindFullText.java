@@ -1008,8 +1008,6 @@ DECL|field|host
 specifier|public
 name|String
 name|host
-init|=
-literal|null
 decl_stmt|;
 DECL|field|status
 specifier|public

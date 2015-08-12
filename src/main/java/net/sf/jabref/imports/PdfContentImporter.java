@@ -253,8 +253,6 @@ DECL|field|year
 specifier|private
 name|String
 name|year
-init|=
-literal|null
 decl_stmt|;
 annotation|@
 name|Override

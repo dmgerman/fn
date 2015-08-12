@@ -250,8 +250,6 @@ DECL|field|_preamble
 specifier|private
 name|String
 name|_preamble
-init|=
-literal|null
 decl_stmt|;
 DECL|field|_strings
 specifier|private

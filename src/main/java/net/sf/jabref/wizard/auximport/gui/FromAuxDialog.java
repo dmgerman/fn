@@ -514,8 +514,6 @@ DECL|field|generatePressed
 specifier|private
 name|boolean
 name|generatePressed
-init|=
-literal|false
 decl_stmt|;
 DECL|field|auxParser
 specifier|private

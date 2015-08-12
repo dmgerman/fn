@@ -97,8 +97,6 @@ specifier|private
 specifier|static
 name|SpecialFieldUpdateListener
 name|INSTANCE
-init|=
-literal|null
 decl_stmt|;
 annotation|@
 name|Override

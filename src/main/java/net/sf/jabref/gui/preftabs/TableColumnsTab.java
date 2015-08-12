@@ -303,8 +303,6 @@ DECL|field|tableChanged
 specifier|private
 name|boolean
 name|tableChanged
-init|=
-literal|false
 decl_stmt|;
 DECL|field|colSetup
 specifier|private

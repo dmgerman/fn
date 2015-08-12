@@ -536,8 +536,6 @@ name|int
 index|[]
 index|[]
 name|nameCols
-init|=
-literal|null
 decl_stmt|;
 DECL|field|namesAsIs
 specifier|private

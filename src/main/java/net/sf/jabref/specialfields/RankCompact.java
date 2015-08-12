@@ -77,8 +77,6 @@ specifier|private
 specifier|static
 name|RankCompact
 name|INSTANCE
-init|=
-literal|null
 decl_stmt|;
 DECL|method|RankCompact ()
 specifier|private

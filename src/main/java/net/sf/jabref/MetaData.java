@@ -179,15 +179,11 @@ DECL|field|groupsRoot
 specifier|private
 name|GroupTreeNode
 name|groupsRoot
-init|=
-literal|null
 decl_stmt|;
 DECL|field|file
 specifier|private
 name|File
 name|file
-init|=
-literal|null
 decl_stmt|;
 comment|// The File where this base gets saved.
 DECL|field|groupTreeValid
@@ -201,8 +197,6 @@ DECL|field|labelPattern
 specifier|private
 name|LabelPattern
 name|labelPattern
-init|=
-literal|null
 decl_stmt|;
 DECL|field|dbStrings
 specifier|private

@@ -995,8 +995,6 @@ argument_list|<
 name|String
 argument_list|>
 name|wordsToHighlight
-init|=
-literal|null
 decl_stmt|;
 DECL|method|getCloseAction ()
 specifier|private

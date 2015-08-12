@@ -67,8 +67,6 @@ DECL|field|changed
 specifier|private
 name|boolean
 name|changed
-init|=
-literal|false
 decl_stmt|;
 DECL|method|EntrySorter (Map<String, BibtexEntry> entries, Comparator<BibtexEntry> comp)
 specifier|public

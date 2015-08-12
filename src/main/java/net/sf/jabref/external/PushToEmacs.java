@@ -134,8 +134,6 @@ DECL|field|settings
 specifier|private
 name|JPanel
 name|settings
-init|=
-literal|null
 decl_stmt|;
 DECL|field|citeCommand
 specifier|private
@@ -187,15 +185,11 @@ DECL|field|couldNotConnect
 specifier|private
 name|boolean
 name|couldNotConnect
-init|=
-literal|false
 decl_stmt|;
 DECL|field|couldNotRunClient
 specifier|private
 name|boolean
 name|couldNotRunClient
-init|=
-literal|false
 decl_stmt|;
 annotation|@
 name|Override

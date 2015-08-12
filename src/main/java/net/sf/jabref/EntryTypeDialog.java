@@ -173,8 +173,6 @@ DECL|field|type
 specifier|private
 name|BibtexEntryType
 name|type
-init|=
-literal|null
 decl_stmt|;
 DECL|field|cancelAction
 specifier|private

@@ -390,8 +390,6 @@ specifier|private
 name|PreviewPanel
 index|[]
 name|previewPanel
-init|=
-literal|null
 decl_stmt|;
 DECL|field|activePreview
 specifier|private
@@ -455,8 +453,6 @@ DECL|field|workingOnPreview
 specifier|private
 name|boolean
 name|workingOnPreview
-init|=
-literal|false
 decl_stmt|;
 DECL|field|enabled
 specifier|private
@@ -485,15 +481,11 @@ DECL|field|lastPressedCount
 specifier|private
 name|int
 name|lastPressedCount
-init|=
-literal|0
 decl_stmt|;
 DECL|field|lastPressedTime
 specifier|private
 name|long
 name|lastPressedTime
-init|=
-literal|0
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private

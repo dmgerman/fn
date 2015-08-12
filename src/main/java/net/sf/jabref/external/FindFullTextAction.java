@@ -130,8 +130,6 @@ DECL|field|entry
 specifier|private
 name|BibtexEntry
 name|entry
-init|=
-literal|null
 decl_stmt|;
 DECL|field|result
 specifier|private
@@ -139,8 +137,6 @@ name|FindFullText
 operator|.
 name|FindResult
 name|result
-init|=
-literal|null
 decl_stmt|;
 DECL|method|FindFullTextAction (BasePanel basePanel)
 specifier|public

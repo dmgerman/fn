@@ -478,8 +478,6 @@ DECL|field|editor
 specifier|private
 name|FileListEntryEditor
 name|editor
-init|=
-literal|null
 decl_stmt|;
 DECL|field|frame
 specifier|private

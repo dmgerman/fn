@@ -302,15 +302,11 @@ DECL|field|stopFetching
 specifier|private
 name|boolean
 name|stopFetching
-init|=
-literal|false
 decl_stmt|;
 DECL|field|noAccessFound
 specifier|private
 name|boolean
 name|noAccessFound
-init|=
-literal|false
 decl_stmt|;
 annotation|@
 name|Override

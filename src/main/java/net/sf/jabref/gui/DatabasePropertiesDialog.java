@@ -407,8 +407,6 @@ DECL|field|panel
 specifier|private
 name|BasePanel
 name|panel
-init|=
-literal|null
 decl_stmt|;
 DECL|field|encoding
 specifier|private
@@ -601,8 +599,6 @@ DECL|field|oldProtectVal
 specifier|private
 name|boolean
 name|oldProtectVal
-init|=
-literal|false
 decl_stmt|;
 DECL|method|DatabasePropertiesDialog (JFrame parent)
 specifier|public

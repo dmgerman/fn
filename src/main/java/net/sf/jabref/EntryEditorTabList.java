@@ -65,8 +65,6 @@ name|String
 argument_list|>
 argument_list|>
 name|list
-init|=
-literal|null
 decl_stmt|;
 DECL|field|names
 specifier|private
@@ -75,8 +73,6 @@ argument_list|<
 name|String
 argument_list|>
 name|names
-init|=
-literal|null
 decl_stmt|;
 DECL|method|EntryEditorTabList ()
 specifier|public

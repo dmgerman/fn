@@ -937,8 +937,6 @@ DECL|field|draggingFile
 specifier|private
 name|boolean
 name|draggingFile
-init|=
-literal|false
 decl_stmt|;
 annotation|@
 name|Override

@@ -70,8 +70,6 @@ specifier|private
 specifier|static
 name|int
 name|idCounter
-init|=
-literal|0
 decl_stmt|;
 DECL|method|next ()
 specifier|public

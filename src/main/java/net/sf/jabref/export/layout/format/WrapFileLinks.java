@@ -148,8 +148,6 @@ DECL|field|fileType
 specifier|private
 name|String
 name|fileType
-init|=
-literal|null
 decl_stmt|;
 DECL|field|format
 specifier|private
@@ -158,8 +156,6 @@ argument_list|<
 name|FormatEntry
 argument_list|>
 name|format
-init|=
-literal|null
 decl_stmt|;
 DECL|field|replacements
 specifier|private
@@ -1209,8 +1205,6 @@ DECL|field|string
 specifier|private
 name|String
 name|string
-init|=
-literal|null
 decl_stmt|;
 DECL|method|FormatEntry (int type)
 specifier|public

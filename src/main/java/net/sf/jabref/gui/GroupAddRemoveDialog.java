@@ -274,16 +274,12 @@ DECL|field|move
 specifier|private
 name|boolean
 name|move
-init|=
-literal|false
 decl_stmt|;
 DECL|field|selection
 specifier|private
 name|BibtexEntry
 index|[]
 name|selection
-init|=
-literal|null
 decl_stmt|;
 DECL|field|tree
 specifier|private

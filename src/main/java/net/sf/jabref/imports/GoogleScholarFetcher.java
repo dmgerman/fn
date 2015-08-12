@@ -170,8 +170,6 @@ DECL|field|hasRunConfig
 specifier|private
 name|boolean
 name|hasRunConfig
-init|=
-literal|false
 decl_stmt|;
 DECL|field|MAX_ENTRIES_TO_LOAD
 specifier|private
@@ -319,8 +317,6 @@ DECL|field|stopFetching
 specifier|private
 name|boolean
 name|stopFetching
-init|=
-literal|false
 decl_stmt|;
 annotation|@
 name|Override

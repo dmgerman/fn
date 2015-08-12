@@ -180,8 +180,6 @@ DECL|field|message
 specifier|private
 name|String
 name|message
-init|=
-literal|null
 decl_stmt|;
 DECL|method|WriteXMPEntryEditorAction (BasePanel panel, EntryEditor editor)
 specifier|public

@@ -56,8 +56,6 @@ DECL|field|index
 specifier|private
 name|int
 name|index
-init|=
-literal|0
 decl_stmt|;
 comment|/**      * @param content      *            The String to be tokenized.      * @param delimiters      *            The delimiter characters.      * @param quoteCharacter      *            The quoting character. Every character (including, but not      *            limited to, delimiters) that is preceded by this character is      *            not treated as a delimiter, but as a token component.      */
 DECL|method|QuotedStringTokenizer (String content, String delimiters, char quoteCharacter)

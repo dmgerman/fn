@@ -246,15 +246,11 @@ DECL|field|frame
 specifier|private
 name|JFrame
 name|frame
-init|=
-literal|null
 decl_stmt|;
 DECL|field|dialog
 specifier|private
 name|JDialog
 name|dialog
-init|=
-literal|null
 decl_stmt|;
 DECL|field|fileTypes
 specifier|private
@@ -273,8 +269,6 @@ DECL|field|entryEditor
 specifier|private
 name|ExternalFileTypeEntryEditor
 name|entryEditor
-init|=
-literal|null
 decl_stmt|;
 DECL|field|tableModel
 specifier|private
@@ -1848,21 +1842,15 @@ DECL|field|frame
 specifier|private
 name|JabRefFrame
 name|frame
-init|=
-literal|null
 decl_stmt|;
 DECL|field|dialog
 specifier|private
 name|JDialog
 name|dialog
-init|=
-literal|null
 decl_stmt|;
 DECL|field|editor
 name|ExternalFileTypeEditor
 name|editor
-init|=
-literal|null
 decl_stmt|;
 DECL|method|EditExternalFileTypesAction (JabRefFrame frame)
 specifier|public

@@ -359,8 +359,6 @@ DECL|field|moreThanOne
 specifier|public
 name|boolean
 name|moreThanOne
-init|=
-literal|false
 decl_stmt|;
 comment|// EXPORT
 DECL|field|selectedDB
@@ -374,15 +372,11 @@ DECL|field|hasDBSelected
 specifier|public
 name|boolean
 name|hasDBSelected
-init|=
-literal|false
 decl_stmt|;
 DECL|field|removeAction
 specifier|public
 name|boolean
 name|removeAction
-init|=
-literal|false
 decl_stmt|;
 DECL|field|selectedInt
 specifier|public

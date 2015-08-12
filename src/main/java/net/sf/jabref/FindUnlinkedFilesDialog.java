@@ -1100,8 +1100,6 @@ DECL|field|checkBoxWhyIsThereNoGetSelectedStupidSwing
 specifier|private
 name|boolean
 name|checkBoxWhyIsThereNoGetSelectedStupidSwing
-init|=
-literal|false
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -2412,8 +2410,6 @@ argument_list|()
 block|{
 name|int
 name|counter
-init|=
-literal|0
 decl_stmt|;
 annotation|@
 name|Override
@@ -2661,8 +2657,6 @@ argument_list|()
 block|{
 name|int
 name|counter
-init|=
-literal|0
 decl_stmt|;
 annotation|@
 name|Override

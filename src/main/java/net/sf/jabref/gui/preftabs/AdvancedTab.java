@@ -409,8 +409,6 @@ DECL|field|oldBiblMode
 specifier|private
 name|boolean
 name|oldBiblMode
-init|=
-literal|false
 decl_stmt|;
 DECL|field|oldPort
 specifier|private

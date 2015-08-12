@@ -200,15 +200,11 @@ DECL|field|foundPaths
 specifier|private
 name|boolean
 name|foundPaths
-init|=
-literal|false
 decl_stmt|;
 DECL|field|fileSearchCancelled
 specifier|private
 name|boolean
 name|fileSearchCancelled
-init|=
-literal|false
 decl_stmt|;
 DECL|field|prog
 specifier|private

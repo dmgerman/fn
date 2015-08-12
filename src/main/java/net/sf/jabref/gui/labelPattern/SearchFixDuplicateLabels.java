@@ -164,8 +164,6 @@ name|BibtexEntry
 argument_list|>
 argument_list|>
 name|dupes
-init|=
-literal|null
 decl_stmt|;
 DECL|method|SearchFixDuplicateLabels (BasePanel panel)
 specifier|public

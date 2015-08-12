@@ -5256,8 +5256,6 @@ decl_stmt|;
 DECL|field|hits
 name|int
 name|hits
-init|=
-literal|0
 decl_stmt|;
 DECL|method|GroupingWorker (SearchRule rules, String searchTerm)
 specifier|public
@@ -6036,8 +6034,6 @@ block|{
 DECL|field|m_node
 name|GroupTreeNode
 name|m_node
-init|=
-literal|null
 decl_stmt|;
 DECL|method|NodeAction (String s)
 specifier|public

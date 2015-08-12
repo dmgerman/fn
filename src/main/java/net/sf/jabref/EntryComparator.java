@@ -55,8 +55,6 @@ DECL|field|binary
 specifier|private
 name|boolean
 name|binary
-init|=
-literal|false
 decl_stmt|;
 DECL|field|numeric
 specifier|private

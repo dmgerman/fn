@@ -1399,8 +1399,6 @@ DECL|field|generatedKeys
 specifier|private
 name|boolean
 name|generatedKeys
-init|=
-literal|false
 decl_stmt|;
 comment|// Set to true after keys have
 comment|// been
@@ -6667,8 +6665,6 @@ block|{
 DECL|field|entry
 name|BibtexEntry
 name|entry
-init|=
-literal|null
 decl_stmt|;
 DECL|method|DownloadFile ()
 specifier|public
@@ -7239,8 +7235,6 @@ block|{
 DECL|field|entry
 name|BibtexEntry
 name|entry
-init|=
-literal|null
 decl_stmt|;
 DECL|method|LinkLocalFile ()
 specifier|public

@@ -259,8 +259,6 @@ DECL|field|stopFetching
 specifier|private
 name|boolean
 name|stopFetching
-init|=
-literal|false
 decl_stmt|;
 annotation|@
 name|Override

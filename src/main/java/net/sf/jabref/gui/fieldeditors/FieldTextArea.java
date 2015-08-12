@@ -151,8 +151,6 @@ DECL|field|autoCompleteListener
 specifier|private
 name|AutoCompleteListener
 name|autoCompleteListener
-init|=
-literal|null
 decl_stmt|;
 DECL|method|FieldTextArea (String fieldName, String content)
 specifier|public

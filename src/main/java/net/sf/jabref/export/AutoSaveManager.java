@@ -134,8 +134,6 @@ DECL|field|t
 specifier|private
 name|Timer
 name|t
-init|=
-literal|null
 decl_stmt|;
 DECL|method|AutoSaveManager (JabRefFrame frame)
 specifier|public

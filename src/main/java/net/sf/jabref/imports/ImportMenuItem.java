@@ -290,8 +290,6 @@ DECL|field|importError
 specifier|private
 name|IOException
 name|importError
-init|=
-literal|null
 decl_stmt|;
 DECL|method|ImportMenuItem (JabRefFrame frame, boolean openInNew)
 specifier|public
@@ -469,21 +467,15 @@ DECL|field|filenames
 name|String
 index|[]
 name|filenames
-init|=
-literal|null
 decl_stmt|;
 DECL|field|bibtexResult
 name|ParserResult
 name|bibtexResult
-init|=
-literal|null
 decl_stmt|;
 comment|// Contains the merged import results
 DECL|field|fileOk
 name|boolean
 name|fileOk
-init|=
-literal|false
 decl_stmt|;
 annotation|@
 name|Override

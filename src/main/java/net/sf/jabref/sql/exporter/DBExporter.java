@@ -399,8 +399,6 @@ decl_stmt|;
 DECL|field|dbStrings
 name|DBStrings
 name|dbStrings
-init|=
-literal|null
 decl_stmt|;
 DECL|field|dbNames
 specifier|private

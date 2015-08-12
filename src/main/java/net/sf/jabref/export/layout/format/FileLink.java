@@ -138,8 +138,6 @@ DECL|field|fileType
 specifier|private
 name|String
 name|fileType
-init|=
-literal|null
 decl_stmt|;
 annotation|@
 name|Override

@@ -116,8 +116,6 @@ DECL|field|besLength
 specifier|private
 name|int
 name|besLength
-init|=
-literal|0
 decl_stmt|;
 DECL|method|MarkEntriesAction (JabRefFrame frame, int level)
 specifier|public

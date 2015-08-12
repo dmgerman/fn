@@ -1682,22 +1682,16 @@ DECL|field|mode
 specifier|private
 name|int
 name|mode
-init|=
-literal|0
 decl_stmt|;
 DECL|field|currentEditor
 specifier|private
 name|EntryEditor
 name|currentEditor
-init|=
-literal|null
 decl_stmt|;
 DECL|field|currentPreview
 specifier|private
 name|PreviewPanel
 name|currentPreview
-init|=
-literal|null
 decl_stmt|;
 DECL|field|tmp
 name|boolean
@@ -1709,8 +1703,6 @@ DECL|field|selectionListener
 specifier|private
 name|MainTableSelectionListener
 name|selectionListener
-init|=
-literal|null
 decl_stmt|;
 DECL|field|groupsHighlightListener
 specifier|private
@@ -1741,22 +1733,16 @@ DECL|field|fileMonitorHandle
 specifier|private
 name|String
 name|fileMonitorHandle
-init|=
-literal|null
 decl_stmt|;
 DECL|field|saving
 specifier|private
 name|boolean
 name|saving
-init|=
-literal|false
 decl_stmt|;
 DECL|field|updatedExternally
 specifier|private
 name|boolean
 name|updatedExternally
-init|=
-literal|false
 decl_stmt|;
 DECL|field|encoding
 specifier|private
@@ -1790,8 +1776,6 @@ DECL|field|searchCompleteListener
 specifier|private
 name|AutoCompleteListener
 name|searchCompleteListener
-init|=
-literal|null
 decl_stmt|;
 comment|// The undo manager.
 DECL|field|undoManager
@@ -1864,15 +1848,11 @@ DECL|field|baseChanged
 specifier|private
 name|boolean
 name|baseChanged
-init|=
-literal|false
 decl_stmt|;
 DECL|field|nonUndoableChange
 specifier|private
 name|boolean
 name|nonUndoableChange
-init|=
-literal|false
 decl_stmt|;
 comment|// Used to track whether the base has changed since last save.
 comment|//EntryTableModel tableModel = null;
@@ -1881,15 +1861,11 @@ DECL|field|mainTable
 specifier|public
 name|MainTable
 name|mainTable
-init|=
-literal|null
 decl_stmt|;
 DECL|field|tableFormat
 specifier|public
 name|MainTableFormat
 name|tableFormat
-init|=
-literal|null
 decl_stmt|;
 DECL|field|searchFilterList
 specifier|private
@@ -1898,8 +1874,6 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 name|searchFilterList
-init|=
-literal|null
 decl_stmt|;
 DECL|field|groupFilterList
 specifier|private
@@ -1908,8 +1882,6 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 name|groupFilterList
-init|=
-literal|null
 decl_stmt|;
 DECL|field|rcm
 specifier|public
@@ -1920,8 +1892,6 @@ DECL|field|showing
 specifier|private
 name|BibtexEntry
 name|showing
-init|=
-literal|null
 decl_stmt|;
 comment|// Variable to prevent erroneous update of back/forward histories at the time
 comment|// when a Back or Forward operation is being processed:
@@ -1929,8 +1899,6 @@ DECL|field|backOrForwardInProgress
 specifier|private
 name|boolean
 name|backOrForwardInProgress
-init|=
-literal|false
 decl_stmt|;
 comment|// To indicate which entry is currently shown.
 DECL|field|entryEditors
@@ -1962,16 +1930,12 @@ DECL|field|preambleEditor
 specifier|private
 name|PreambleEditor
 name|preambleEditor
-init|=
-literal|null
 decl_stmt|;
 comment|// Keeps track of the preamble dialog if it is open.
 DECL|field|stringDialog
 specifier|private
 name|StringDialog
 name|stringDialog
-init|=
-literal|null
 decl_stmt|;
 comment|// Keeps track of the string dialog if it is open.
 DECL|field|saveAction
@@ -1985,50 +1949,36 @@ DECL|field|showingSearch
 specifier|private
 name|boolean
 name|showingSearch
-init|=
-literal|false
 decl_stmt|;
 DECL|field|sortingBySearchResults
 specifier|public
 name|boolean
 name|sortingBySearchResults
-init|=
-literal|false
 decl_stmt|;
 DECL|field|coloringBySearchResults
 specifier|public
 name|boolean
 name|coloringBySearchResults
-init|=
-literal|false
 decl_stmt|;
 DECL|field|hidingNonHits
 specifier|public
 name|boolean
 name|hidingNonHits
-init|=
-literal|false
 decl_stmt|;
 DECL|field|sortingByGroup
 specifier|public
 name|boolean
 name|sortingByGroup
-init|=
-literal|false
 decl_stmt|;
 DECL|field|sortingByCiteSeerResults
 specifier|public
 name|boolean
 name|sortingByCiteSeerResults
-init|=
-literal|false
 decl_stmt|;
 DECL|field|coloringByGroup
 specifier|public
 name|boolean
 name|coloringByGroup
-init|=
-literal|false
 decl_stmt|;
 DECL|field|lastSearchHits
 name|int
@@ -3940,13 +3890,9 @@ argument_list|()
 block|{
 name|String
 name|errorMessage
-init|=
-literal|null
 decl_stmt|;
 name|boolean
 name|connectToDB
-init|=
-literal|false
 decl_stmt|;
 comment|// run first, in EDT:
 annotation|@
@@ -4392,8 +4338,6 @@ name|numSelected
 decl_stmt|;
 name|boolean
 name|cancelled
-init|=
-literal|false
 decl_stmt|;
 comment|// Run first, in EDT:
 annotation|@

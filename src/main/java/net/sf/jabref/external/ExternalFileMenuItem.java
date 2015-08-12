@@ -159,8 +159,6 @@ DECL|field|fieldName
 specifier|private
 name|String
 name|fieldName
-init|=
-literal|null
 decl_stmt|;
 DECL|method|ExternalFileMenuItem (JabRefFrame frame, BibtexEntry entry, String name, String link, Icon icon, MetaData metaData, ExternalFileType fileType)
 specifier|public

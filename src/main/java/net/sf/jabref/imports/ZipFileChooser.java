@@ -370,15 +370,11 @@ specifier|private
 name|ZipEntry
 index|[]
 name|rows
-init|=
-literal|null
 decl_stmt|;
 DECL|field|zipFile
 specifier|private
 name|ZipFile
 name|zipFile
-init|=
-literal|null
 decl_stmt|;
 DECL|method|ZipFileChooserTableModel (ZipFile zipFile, ZipEntry[] rows)
 name|ZipFileChooserTableModel

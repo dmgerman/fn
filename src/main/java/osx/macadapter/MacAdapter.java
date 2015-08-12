@@ -131,8 +131,6 @@ DECL|field|parentFrame
 specifier|private
 name|JabRefFrame
 name|parentFrame
-init|=
-literal|null
 decl_stmt|;
 DECL|method|registerMacEvents (JabRefFrame inputFrame)
 specifier|public

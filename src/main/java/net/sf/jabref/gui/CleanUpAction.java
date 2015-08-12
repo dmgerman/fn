@@ -829,8 +829,6 @@ DECL|field|unsuccesfullRenames
 specifier|private
 name|int
 name|unsuccesfullRenames
-init|=
-literal|0
 decl_stmt|;
 DECL|method|CleanUpAction (BasePanel panel)
 specifier|public

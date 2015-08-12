@@ -180,8 +180,6 @@ DECL|field|file
 specifier|private
 name|File
 name|file
-init|=
-literal|null
 decl_stmt|;
 comment|/** Creates a new instance of ExpandEndnoteFilters */
 DECL|method|ExpandEndnoteFilters (JabRefFrame frame)

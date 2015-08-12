@@ -263,8 +263,6 @@ DECL|field|okPressed
 specifier|private
 name|boolean
 name|okPressed
-init|=
-literal|false
 decl_stmt|;
 DECL|field|frame
 specifier|private
@@ -1098,8 +1096,6 @@ DECL|field|wanted
 specifier|private
 name|boolean
 name|wanted
-init|=
-literal|false
 decl_stmt|;
 DECL|method|TableEntry (String id, JLabel preview)
 specifier|public

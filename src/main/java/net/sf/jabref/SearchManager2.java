@@ -284,15 +284,11 @@ DECL|field|searchDialog
 specifier|private
 name|SearchResultsDialog
 name|searchDialog
-init|=
-literal|null
 decl_stmt|;
 DECL|field|autoCompleteListener
 specifier|private
 name|AutoCompleteListener
 name|autoCompleteListener
-init|=
-literal|null
 decl_stmt|;
 comment|/**      * subscribed Objects      */
 DECL|field|listeners
@@ -469,22 +465,16 @@ DECL|field|incSearch
 specifier|private
 name|boolean
 name|incSearch
-init|=
-literal|false
 decl_stmt|;
 DECL|field|startedFloatSearch
 specifier|private
 name|boolean
 name|startedFloatSearch
-init|=
-literal|false
 decl_stmt|;
 DECL|field|startedFilterSearch
 specifier|private
 name|boolean
 name|startedFilterSearch
-init|=
-literal|false
 decl_stmt|;
 DECL|field|incSearchPos
 specifier|private
@@ -3018,8 +3008,6 @@ decl_stmt|;
 DECL|field|hits
 name|int
 name|hits
-init|=
-literal|0
 decl_stmt|;
 DECL|method|SearchWorker (SearchRule rule, String searchTerm)
 specifier|public

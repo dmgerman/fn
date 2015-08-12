@@ -234,8 +234,6 @@ DECL|field|connectToDB
 specifier|private
 name|boolean
 name|connectToDB
-init|=
-literal|false
 decl_stmt|;
 comment|/** Creates a new instance of DBConnectDialog */
 DECL|method|DBConnectDialog (JFrame parent, DBStrings dbs)

@@ -169,8 +169,6 @@ DECL|field|visible
 specifier|private
 name|boolean
 name|visible
-init|=
-literal|false
 decl_stmt|;
 DECL|field|manager
 specifier|private
@@ -182,8 +180,6 @@ DECL|field|panel
 specifier|protected
 name|BasePanel
 name|panel
-init|=
-literal|null
 decl_stmt|;
 DECL|method|SidePaneComponent (SidePaneManager manager, URL icon, String title)
 specifier|public

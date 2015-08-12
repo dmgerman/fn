@@ -292,8 +292,6 @@ DECL|field|lastSelected
 specifier|private
 name|String
 name|lastSelected
-init|=
-literal|null
 decl_stmt|;
 DECL|field|reqLists
 specifier|private

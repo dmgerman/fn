@@ -231,8 +231,6 @@ DECL|field|eof
 specifier|private
 name|boolean
 name|eof
-init|=
-literal|false
 decl_stmt|;
 DECL|field|line
 specifier|private

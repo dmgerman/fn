@@ -151,8 +151,6 @@ DECL|field|numberOfUpdateListener
 specifier|private
 name|int
 name|numberOfUpdateListener
-init|=
-literal|0
 decl_stmt|;
 DECL|field|entries
 specifier|private

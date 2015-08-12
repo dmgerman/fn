@@ -65,16 +65,12 @@ argument_list|<
 name|String
 argument_list|>
 name|defaultPattern
-init|=
-literal|null
 decl_stmt|;
 comment|/**      * The parent of this LabelPattern.      */
 DECL|field|parent
 specifier|private
 name|LabelPattern
 name|parent
-init|=
-literal|null
 decl_stmt|;
 DECL|method|LabelPattern ()
 specifier|public

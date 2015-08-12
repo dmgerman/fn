@@ -245,8 +245,6 @@ DECL|field|ok_pressed
 specifier|private
 name|boolean
 name|ok_pressed
-init|=
-literal|false
 decl_stmt|;
 DECL|field|index
 specifier|private

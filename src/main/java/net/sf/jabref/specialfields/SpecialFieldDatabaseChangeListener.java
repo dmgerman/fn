@@ -105,8 +105,6 @@ specifier|private
 specifier|static
 name|SpecialFieldDatabaseChangeListener
 name|INSTANCE
-init|=
-literal|null
 decl_stmt|;
 annotation|@
 name|Override

@@ -817,8 +817,6 @@ DECL|field|fileListEditor
 specifier|private
 name|FileListEditor
 name|fileListEditor
-init|=
-literal|null
 decl_stmt|;
 DECL|field|autoLinkAction
 specifier|private
@@ -961,8 +959,6 @@ DECL|field|movingToDifferentEntry
 specifier|private
 name|boolean
 name|movingToDifferentEntry
-init|=
-literal|false
 decl_stmt|;
 comment|// Indicates that we are about to go to the next or previous entry
 DECL|field|tabs
@@ -999,8 +995,6 @@ DECL|field|lastSourceStringAccepted
 specifier|private
 name|String
 name|lastSourceStringAccepted
-init|=
-literal|null
 decl_stmt|;
 comment|// This is used to prevent double
 comment|// fields.

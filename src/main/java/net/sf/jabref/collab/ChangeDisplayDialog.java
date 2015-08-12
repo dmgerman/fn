@@ -266,22 +266,16 @@ DECL|field|selected
 specifier|private
 name|Change
 name|selected
-init|=
-literal|null
 decl_stmt|;
 DECL|field|infoShown
 specifier|private
 name|JComponent
 name|infoShown
-init|=
-literal|null
 decl_stmt|;
 DECL|field|okPressed
 specifier|private
 name|boolean
 name|okPressed
-init|=
-literal|false
 decl_stmt|;
 DECL|method|ChangeDisplayDialog (JFrame owner, final BasePanel panel, BibtexDatabase secondary, final DefaultMutableTreeNode root)
 specifier|public

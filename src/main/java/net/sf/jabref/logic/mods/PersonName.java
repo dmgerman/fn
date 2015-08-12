@@ -70,22 +70,16 @@ DECL|field|givenName
 specifier|private
 name|String
 name|givenName
-init|=
-literal|null
 decl_stmt|;
 DECL|field|surname
 specifier|private
 name|String
 name|surname
-init|=
-literal|null
 decl_stmt|;
 DECL|field|middleName
 specifier|private
 name|String
 name|middleName
-init|=
-literal|null
 decl_stmt|;
 DECL|method|PersonName ()
 specifier|public

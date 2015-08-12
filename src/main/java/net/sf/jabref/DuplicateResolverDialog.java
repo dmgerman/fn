@@ -350,8 +350,6 @@ DECL|field|removeExact
 specifier|private
 name|JButton
 name|removeExact
-init|=
-literal|null
 decl_stmt|;
 DECL|field|options
 specifier|private

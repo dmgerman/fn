@@ -68,8 +68,6 @@ DECL|field|selBackground
 specifier|private
 name|Color
 name|selBackground
-init|=
-literal|null
 decl_stmt|;
 DECL|method|GeneralRenderer (Color c)
 specifier|public

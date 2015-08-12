@@ -77,8 +77,6 @@ specifier|private
 specifier|static
 name|Priority
 name|INSTANCE
-init|=
-literal|null
 decl_stmt|;
 DECL|field|icon
 specifier|private

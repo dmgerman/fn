@@ -102,8 +102,6 @@ DECL|field|status
 specifier|private
 name|int
 name|status
-init|=
-literal|0
 decl_stmt|;
 DECL|method|SaveException (String message)
 specifier|public

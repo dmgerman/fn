@@ -155,8 +155,6 @@ name|String
 index|[]
 index|[]
 name|reqSets
-init|=
-literal|null
 decl_stmt|;
 comment|// Sets of either-or required fields, if any
 DECL|field|LOGGER

@@ -354,8 +354,6 @@ DECL|field|sp
 specifier|private
 name|JScrollPane
 name|sp
-init|=
-literal|null
 decl_stmt|;
 DECL|field|listModel
 name|DefaultListModel
@@ -386,15 +384,11 @@ DECL|field|up
 specifier|private
 name|JButton
 name|up
-init|=
-literal|null
 decl_stmt|;
 DECL|field|down
 specifier|private
 name|JButton
 name|down
-init|=
-literal|null
 decl_stmt|;
 DECL|field|gbl
 specifier|final
@@ -422,8 +416,6 @@ decl_stmt|;
 DECL|field|changesMade
 name|boolean
 name|changesMade
-init|=
-literal|false
 decl_stmt|;
 DECL|field|modelListeners
 specifier|private

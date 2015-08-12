@@ -550,8 +550,6 @@ DECL|field|diag
 specifier|private
 name|JDialog
 name|diag
-init|=
-literal|null
 decl_stmt|;
 comment|// keyword to add
 DECL|field|keyword

@@ -757,8 +757,6 @@ specifier|private
 specifier|volatile
 name|boolean
 name|finished
-init|=
-literal|false
 decl_stmt|;
 annotation|@
 name|Override

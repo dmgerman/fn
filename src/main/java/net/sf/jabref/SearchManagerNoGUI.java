@@ -120,8 +120,6 @@ DECL|field|base
 specifier|private
 name|BibtexDatabase
 name|base
-init|=
-literal|null
 decl_stmt|;
 DECL|method|SearchManagerNoGUI (String term, BibtexDatabase dataBase)
 specifier|public

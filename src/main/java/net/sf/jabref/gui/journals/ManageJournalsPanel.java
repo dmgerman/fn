@@ -3190,8 +3190,6 @@ argument_list|<
 name|JournalEntry
 argument_list|>
 name|journals
-init|=
-literal|null
 decl_stmt|;
 DECL|method|AbbreviationsTableModel ()
 specifier|public

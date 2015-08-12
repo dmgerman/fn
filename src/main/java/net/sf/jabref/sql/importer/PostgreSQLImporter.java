@@ -113,8 +113,6 @@ specifier|private
 specifier|static
 name|PostgreSQLImporter
 name|instance
-init|=
-literal|null
 decl_stmt|;
 DECL|method|PostgreSQLImporter ()
 specifier|private

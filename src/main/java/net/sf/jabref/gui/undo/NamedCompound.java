@@ -76,8 +76,6 @@ DECL|field|hasEdits
 specifier|private
 name|boolean
 name|hasEdits
-init|=
-literal|false
 decl_stmt|;
 DECL|method|NamedCompound (String name)
 specifier|public

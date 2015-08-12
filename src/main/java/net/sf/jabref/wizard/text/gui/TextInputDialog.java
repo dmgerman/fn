@@ -1083,8 +1083,6 @@ DECL|field|okPressed
 specifier|private
 name|boolean
 name|okPressed
-init|=
-literal|false
 decl_stmt|;
 DECL|method|TextInputDialog (JabRefFrame frame, BasePanel panel, String title, boolean modal, BibtexEntry bibEntry)
 specifier|public

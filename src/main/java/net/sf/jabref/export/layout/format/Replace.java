@@ -52,15 +52,11 @@ DECL|field|regex
 specifier|private
 name|String
 name|regex
-init|=
-literal|null
 decl_stmt|;
 DECL|field|replaceWith
 specifier|private
 name|String
 name|replaceWith
-init|=
-literal|null
 decl_stmt|;
 annotation|@
 name|Override

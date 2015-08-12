@@ -179,8 +179,6 @@ specifier|private
 specifier|static
 name|String
 name|currentGroup
-init|=
-literal|null
 decl_stmt|;
 DECL|field|_in
 specifier|private
@@ -208,8 +206,6 @@ DECL|field|_eof
 specifier|private
 name|boolean
 name|_eof
-init|=
-literal|false
 decl_stmt|;
 DECL|field|line
 specifier|private

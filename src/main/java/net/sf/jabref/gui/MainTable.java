@@ -431,15 +431,11 @@ DECL|field|showingFloatSearch
 specifier|private
 name|boolean
 name|showingFloatSearch
-init|=
-literal|false
 decl_stmt|;
 DECL|field|showingFloatGrouping
 specifier|private
 name|boolean
 name|showingFloatGrouping
-init|=
-literal|false
 decl_stmt|;
 DECL|field|selectionModel
 specifier|private

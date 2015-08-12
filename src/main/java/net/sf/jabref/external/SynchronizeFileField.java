@@ -295,8 +295,6 @@ specifier|private
 name|BibtexEntry
 index|[]
 name|sel
-init|=
-literal|null
 decl_stmt|;
 DECL|field|optDiag
 specifier|private
@@ -304,8 +302,6 @@ name|SynchronizeFileField
 operator|.
 name|OptionsDialog
 name|optDiag
-init|=
-literal|null
 decl_stmt|;
 DECL|field|brokenLinkOptions
 specifier|private

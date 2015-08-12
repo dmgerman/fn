@@ -196,22 +196,16 @@ DECL|field|success
 specifier|private
 name|boolean
 name|success
-init|=
-literal|false
 decl_stmt|;
 DECL|field|cancelled
 specifier|private
 name|boolean
 name|cancelled
-init|=
-literal|false
 decl_stmt|;
 DECL|field|fileLockedError
 specifier|private
 name|boolean
 name|fileLockedError
-init|=
-literal|false
 decl_stmt|;
 DECL|method|SaveDatabaseAction (BasePanel panel)
 specifier|public

@@ -282,16 +282,12 @@ DECL|field|ok_pressed
 specifier|private
 name|boolean
 name|ok_pressed
-init|=
-literal|false
 decl_stmt|;
 DECL|field|flds
 specifier|private
 name|String
 index|[]
 name|flds
-init|=
-literal|null
 decl_stmt|;
 DECL|field|s1
 specifier|private

@@ -92,8 +92,6 @@ DECL|field|remoteListenerServerThread
 specifier|private
 name|RemoteListenerServerThread
 name|remoteListenerServerThread
-init|=
-literal|null
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private

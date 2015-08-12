@@ -282,15 +282,11 @@ DECL|field|selected
 specifier|private
 name|int
 name|selected
-init|=
-literal|0
 decl_stmt|;
 DECL|field|popup
 specifier|private
 name|JPopupMenu
 name|popup
-init|=
-literal|null
 decl_stmt|;
 DECL|field|actions
 specifier|private

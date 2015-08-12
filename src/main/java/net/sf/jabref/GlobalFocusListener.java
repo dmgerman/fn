@@ -70,8 +70,6 @@ DECL|field|focused
 specifier|private
 name|Component
 name|focused
-init|=
-literal|null
 decl_stmt|;
 DECL|method|GlobalFocusListener ()
 specifier|public

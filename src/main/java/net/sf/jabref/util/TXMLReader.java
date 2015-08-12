@@ -92,8 +92,6 @@ DECL|field|ready
 specifier|private
 name|boolean
 name|ready
-init|=
-literal|false
 decl_stmt|;
 DECL|method|TXMLReader (String resPath)
 specifier|public

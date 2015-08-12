@@ -378,8 +378,6 @@ DECL|field|wordEditFieldListener
 specifier|private
 name|ActionListener
 name|wordEditFieldListener
-init|=
-literal|null
 decl_stmt|;
 DECL|field|gbl
 specifier|private
@@ -499,8 +497,6 @@ DECL|field|currentField
 specifier|private
 name|String
 name|currentField
-init|=
-literal|null
 decl_stmt|;
 DECL|field|fieldSet
 name|TreeSet

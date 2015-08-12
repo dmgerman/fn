@@ -136,8 +136,6 @@ DECL|field|popupMenu
 specifier|private
 name|JPopupMenu
 name|popupMenu
-init|=
-literal|null
 decl_stmt|;
 DECL|method|DragDropPopupPane (AbstractAction manageSelectorsAction, AbstractAction databasePropertiesAction, AbstractAction bibtexKeyPatternAction)
 specifier|public

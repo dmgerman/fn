@@ -77,8 +77,6 @@ specifier|private
 specifier|static
 name|RankExtended
 name|INSTANCE
-init|=
-literal|null
 decl_stmt|;
 DECL|method|RankExtended ()
 specifier|private

@@ -303,8 +303,6 @@ DECL|field|droppedFileHandler
 specifier|private
 name|DroppedFileHandler
 name|droppedFileHandler
-init|=
-literal|null
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private

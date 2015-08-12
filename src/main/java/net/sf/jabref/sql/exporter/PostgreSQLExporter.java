@@ -125,8 +125,6 @@ specifier|private
 specifier|static
 name|PostgreSQLExporter
 name|instance
-init|=
-literal|null
 decl_stmt|;
 DECL|method|PostgreSQLExporter ()
 specifier|private

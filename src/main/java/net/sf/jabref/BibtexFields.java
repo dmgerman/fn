@@ -297,8 +297,6 @@ specifier|private
 name|String
 index|[]
 name|PUBLIC_FIELDS
-init|=
-literal|null
 decl_stmt|;
 DECL|method|BibtexFields ()
 specifier|private
@@ -2497,8 +2495,6 @@ DECL|field|alternativeDisplayName
 specifier|private
 name|String
 name|alternativeDisplayName
-init|=
-literal|null
 decl_stmt|;
 comment|// the extras data
 comment|// fieldExtras contains mappings to tell the EntryEditor to add a specific
@@ -2507,8 +2503,6 @@ DECL|field|extras
 specifier|private
 name|String
 name|extras
-init|=
-literal|null
 decl_stmt|;
 comment|// This value defines whether contents of this field are expected to be
 comment|// numeric values. This can be used to sort e.g. volume numbers correctly:
@@ -2516,8 +2510,6 @@ DECL|field|numeric
 specifier|private
 name|boolean
 name|numeric
-init|=
-literal|false
 decl_stmt|;
 comment|// a comma separated list of alternative bibtex-fieldnames, e.g.
 comment|// "LCCN" is the same like "lib-congress"

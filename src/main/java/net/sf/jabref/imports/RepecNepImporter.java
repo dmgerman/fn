@@ -173,8 +173,6 @@ DECL|field|line
 specifier|private
 name|int
 name|line
-init|=
-literal|0
 decl_stmt|;
 DECL|field|lastLine
 specifier|private
@@ -194,15 +192,11 @@ DECL|field|in
 specifier|private
 name|BufferedReader
 name|in
-init|=
-literal|null
 decl_stmt|;
 DECL|field|inOverviewSection
 specifier|private
 name|boolean
 name|inOverviewSection
-init|=
-literal|false
 decl_stmt|;
 comment|/**      * Return the name of this import format.      */
 annotation|@

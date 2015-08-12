@@ -324,22 +324,16 @@ DECL|field|database
 specifier|private
 name|BibtexDatabase
 name|database
-init|=
-literal|null
 decl_stmt|;
 DECL|field|metaData
 specifier|private
 name|MetaData
 name|metaData
-init|=
-literal|null
 decl_stmt|;
 DECL|field|connectToDB
 specifier|private
 name|boolean
 name|connectToDB
-init|=
-literal|false
 decl_stmt|;
 DECL|field|frame
 specifier|private
@@ -351,8 +345,6 @@ DECL|field|dbs
 specifier|private
 name|DBStrings
 name|dbs
-init|=
-literal|null
 decl_stmt|;
 DECL|field|databases
 specifier|private
@@ -362,8 +354,6 @@ name|Object
 index|[]
 argument_list|>
 name|databases
-init|=
-literal|null
 decl_stmt|;
 DECL|method|DbImportAction (JabRefFrame frame)
 specifier|public

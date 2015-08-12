@@ -105,8 +105,6 @@ specifier|private
 specifier|static
 name|MySQLExporter
 name|instance
-init|=
-literal|null
 decl_stmt|;
 DECL|method|MySQLExporter ()
 specifier|private

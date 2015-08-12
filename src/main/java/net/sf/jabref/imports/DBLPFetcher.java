@@ -182,8 +182,6 @@ specifier|private
 specifier|volatile
 name|boolean
 name|shouldContinue
-init|=
-literal|false
 decl_stmt|;
 DECL|field|query
 specifier|private

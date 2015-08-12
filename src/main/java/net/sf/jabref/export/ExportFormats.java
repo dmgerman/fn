@@ -165,8 +165,6 @@ specifier|public
 specifier|static
 name|int
 name|entryNumber
-init|=
-literal|0
 decl_stmt|;
 DECL|method|initAllExports ()
 specifier|public
@@ -1259,8 +1257,6 @@ argument_list|()
 block|{
 name|String
 name|errorMessage
-init|=
-literal|null
 decl_stmt|;
 annotation|@
 name|Override

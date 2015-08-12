@@ -426,8 +426,6 @@ DECL|field|clickedSave
 specifier|private
 name|boolean
 name|clickedSave
-init|=
-literal|false
 decl_stmt|;
 comment|/**      * Checked by the caller whether user has confirmed the change      * @return true if the user wants the keybindings to be stored      */
 DECL|method|getAction ()

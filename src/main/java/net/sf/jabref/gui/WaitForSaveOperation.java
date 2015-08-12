@@ -144,8 +144,6 @@ DECL|field|cancelled
 specifier|private
 name|boolean
 name|cancelled
-init|=
-literal|false
 decl_stmt|;
 DECL|method|WaitForSaveOperation (JabRefFrame frame)
 specifier|public

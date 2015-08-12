@@ -78,22 +78,16 @@ DECL|field|unchangedPoint
 specifier|private
 name|int
 name|unchangedPoint
-init|=
-literal|0
 decl_stmt|;
 DECL|field|current
 specifier|private
 name|int
 name|current
-init|=
-literal|0
 decl_stmt|;
 DECL|field|panel
 specifier|private
 name|BasePanel
 name|panel
-init|=
-literal|null
 decl_stmt|;
 DECL|method|CountingUndoManager (BasePanel basePanel)
 specifier|public

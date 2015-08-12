@@ -318,8 +318,6 @@ specifier|private
 specifier|static
 name|long
 name|lastDragAutoscroll
-init|=
-literal|0L
 decl_stmt|;
 comment|/** minimum interval between two autoscroll events (for limiting speed). */
 DECL|field|minAutoscrollInterval
@@ -342,8 +340,6 @@ DECL|field|idleStartTime
 specifier|private
 name|long
 name|idleStartTime
-init|=
-literal|0L
 decl_stmt|;
 comment|/** max. distance cursor may move in x or y direction while idling. */
 DECL|field|idleMargin
@@ -375,8 +371,6 @@ DECL|field|dragNode
 specifier|private
 name|GroupTreeNode
 name|dragNode
-init|=
-literal|null
 decl_stmt|;
 DECL|field|cellRenderer
 specifier|private

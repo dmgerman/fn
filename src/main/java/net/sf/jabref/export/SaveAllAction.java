@@ -98,15 +98,11 @@ DECL|field|databases
 specifier|private
 name|int
 name|databases
-init|=
-literal|0
 decl_stmt|;
 DECL|field|saved
 specifier|private
 name|int
 name|saved
-init|=
-literal|0
 decl_stmt|;
 comment|/** Creates a new instance of SaveAllAction */
 DECL|method|SaveAllAction (JabRefFrame frame)

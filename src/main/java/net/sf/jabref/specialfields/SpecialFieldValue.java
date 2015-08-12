@@ -85,15 +85,11 @@ DECL|field|action
 specifier|private
 name|SpecialFieldAction
 name|action
-init|=
-literal|null
 decl_stmt|;
 DECL|field|menuAction
 specifier|private
 name|SpecialFieldMenuAction
 name|menuAction
-init|=
-literal|null
 decl_stmt|;
 DECL|field|icon
 specifier|private

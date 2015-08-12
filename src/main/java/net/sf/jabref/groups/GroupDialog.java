@@ -686,8 +686,6 @@ DECL|field|m_okPressed
 specifier|private
 name|boolean
 name|m_okPressed
-init|=
-literal|false
 decl_stmt|;
 DECL|field|m_basePanel
 specifier|private
@@ -704,8 +702,6 @@ DECL|field|m_undoAddPreviousEntires
 specifier|private
 name|AbstractUndoableEdit
 name|m_undoAddPreviousEntires
-init|=
-literal|null
 decl_stmt|;
 DECL|field|m_editedGroup
 specifier|private

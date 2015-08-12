@@ -138,16 +138,12 @@ DECL|field|toSetIn
 specifier|private
 name|String
 name|toSetIn
-init|=
-literal|null
 decl_stmt|;
 comment|// null indicates that there are no completions available
 DECL|field|lastBeginning
 specifier|private
 name|String
 name|lastBeginning
-init|=
-literal|null
 decl_stmt|;
 comment|// the letters, the user has typed until know
 DECL|field|lastCaretPosition
@@ -163,15 +159,11 @@ specifier|private
 name|String
 index|[]
 name|lastCompletions
-init|=
-literal|null
 decl_stmt|;
 DECL|field|lastShownCompletion
 specifier|private
 name|int
 name|lastShownCompletion
-init|=
-literal|0
 decl_stmt|;
 DECL|field|consumeEnterKey
 specifier|private
@@ -187,8 +179,6 @@ DECL|field|nextFocusListener
 specifier|private
 name|FocusListener
 name|nextFocusListener
-init|=
-literal|null
 decl_stmt|;
 DECL|method|AutoCompleteListener (AutoCompleter completer)
 specifier|public

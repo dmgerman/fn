@@ -189,8 +189,6 @@ DECL|field|draggingState
 specifier|private
 name|boolean
 name|draggingState
-init|=
-literal|false
 decl_stmt|;
 comment|// State var if we are at dragging or not
 DECL|field|indexDraggedTab

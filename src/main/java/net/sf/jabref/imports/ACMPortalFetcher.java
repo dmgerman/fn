@@ -560,23 +560,17 @@ DECL|field|shouldContinue
 specifier|private
 name|boolean
 name|shouldContinue
-init|=
-literal|false
 decl_stmt|;
 comment|// user settings
 DECL|field|fetchAbstract
 specifier|private
 name|boolean
 name|fetchAbstract
-init|=
-literal|false
 decl_stmt|;
 DECL|field|acmOrGuide
 specifier|private
 name|boolean
 name|acmOrGuide
-init|=
-literal|false
 decl_stmt|;
 DECL|field|hitsPattern
 specifier|private
@@ -1497,8 +1491,6 @@ DECL|field|piv
 specifier|private
 name|int
 name|piv
-init|=
-literal|0
 decl_stmt|;
 DECL|method|parse (String text, int startIndex, int firstEntryNumber, Map<String, JLabel> entries)
 specifier|private

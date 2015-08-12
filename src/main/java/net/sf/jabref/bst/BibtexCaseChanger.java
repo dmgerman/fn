@@ -385,8 +385,6 @@ DECL|field|braceLevel
 specifier|private
 name|int
 name|braceLevel
-init|=
-literal|0
 decl_stmt|;
 DECL|method|decrBraceLevel (String string, int braceLevel)
 specifier|private

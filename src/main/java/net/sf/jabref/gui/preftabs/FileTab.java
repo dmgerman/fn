@@ -435,8 +435,6 @@ DECL|field|origAutoSaveSetting
 specifier|private
 name|boolean
 name|origAutoSaveSetting
-init|=
-literal|false
 decl_stmt|;
 DECL|field|bgFieldOrderStyle
 specifier|private

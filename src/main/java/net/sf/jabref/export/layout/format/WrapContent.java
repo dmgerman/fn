@@ -52,15 +52,11 @@ DECL|field|before
 specifier|private
 name|String
 name|before
-init|=
-literal|null
 decl_stmt|;
 DECL|field|after
 specifier|private
 name|String
 name|after
-init|=
-literal|null
 decl_stmt|;
 annotation|@
 name|Override

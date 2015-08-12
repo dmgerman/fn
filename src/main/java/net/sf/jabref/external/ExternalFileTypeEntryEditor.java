@@ -242,15 +242,11 @@ DECL|field|fParent
 specifier|private
 name|JFrame
 name|fParent
-init|=
-literal|null
 decl_stmt|;
 DECL|field|dParent
 specifier|private
 name|JDialog
 name|dParent
-init|=
-literal|null
 decl_stmt|;
 DECL|field|diag
 specifier|private
@@ -301,8 +297,6 @@ DECL|field|selectedIcon
 specifier|private
 name|String
 name|selectedIcon
-init|=
-literal|null
 decl_stmt|;
 DECL|field|icon
 specifier|private
@@ -403,8 +397,6 @@ decl_stmt|;
 DECL|field|applicationFieldEmpty
 name|boolean
 name|applicationFieldEmpty
-init|=
-literal|false
 decl_stmt|;
 DECL|field|entry
 specifier|private
@@ -415,8 +407,6 @@ DECL|field|okPressed
 specifier|private
 name|boolean
 name|okPressed
-init|=
-literal|false
 decl_stmt|;
 DECL|method|ExternalFileTypeEntryEditor (JFrame parent, ExternalFileType entry)
 specifier|public

@@ -198,8 +198,6 @@ decl_stmt|;
 DECL|field|encoding
 name|String
 name|encoding
-init|=
-literal|null
 decl_stmt|;
 comment|// If this value is set, it will be used to override
 comment|// the default encoding for the basePanel.
@@ -212,8 +210,6 @@ DECL|field|customExport
 specifier|private
 name|boolean
 name|customExport
-init|=
-literal|false
 decl_stmt|;
 DECL|field|LAYOUT_PREFIX
 specifier|private

@@ -130,8 +130,6 @@ DECL|field|includeCiteKeyword
 specifier|private
 name|boolean
 name|includeCiteKeyword
-init|=
-literal|false
 decl_stmt|;
 static|static
 block|{

@@ -1381,8 +1381,6 @@ DECL|field|prefsDialog
 specifier|private
 name|PreferencesDialog
 name|prefsDialog
-init|=
-literal|null
 decl_stmt|;
 DECL|field|lastTabbedPanelSelectionIndex
 specifier|private
@@ -1610,8 +1608,6 @@ DECL|field|sysTray
 specifier|private
 name|SysTray
 name|sysTray
-init|=
-literal|null
 decl_stmt|;
 comment|// The help window.
 DECL|field|helpDiag
@@ -7495,15 +7491,11 @@ block|{
 DECL|field|type
 name|String
 name|type
-init|=
-literal|null
 decl_stmt|;
 comment|// The type of item to create.
 DECL|field|keyStroke
 name|KeyStroke
 name|keyStroke
-init|=
-literal|null
 decl_stmt|;
 comment|// Used for the specific instances.
 DECL|method|NewEntryAction (KeyStroke key)
@@ -13475,8 +13467,6 @@ DECL|field|running
 specifier|volatile
 name|boolean
 name|running
-init|=
-literal|false
 decl_stmt|;
 DECL|method|LoadSessionAction ()
 specifier|public
@@ -14306,8 +14296,6 @@ block|{
 DECL|field|propertiesDialog
 name|DatabasePropertiesDialog
 name|propertiesDialog
-init|=
-literal|null
 decl_stmt|;
 DECL|method|DatabasePropertiesAction ()
 specifier|public
@@ -14390,8 +14378,6 @@ block|{
 DECL|field|bibtexKeyPatternDialog
 name|BibtexKeyPatternDialog
 name|bibtexKeyPatternDialog
-init|=
-literal|null
 decl_stmt|;
 DECL|method|BibtexKeyPatternAction ()
 specifier|public
