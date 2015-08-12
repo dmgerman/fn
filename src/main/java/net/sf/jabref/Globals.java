@@ -561,15 +561,6 @@ name|PROTECTED_FLAG_META
 init|=
 literal|"protectedFlag"
 decl_stmt|;
-DECL|field|DOI_LOOKUP_PREFIX
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|DOI_LOOKUP_PREFIX
-init|=
-literal|"http://dx.doi.org/"
-decl_stmt|;
 DECL|field|NONE
 specifier|public
 specifier|static

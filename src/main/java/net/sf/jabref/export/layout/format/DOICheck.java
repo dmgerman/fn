@@ -50,18 +50,6 @@ name|LayoutFormatter
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
 begin_comment
 comment|/**  * Used to fix [ 1588028 ] export HTML table doi url.  *   * Will prepend "http://dx.doi.org/" if only doi number and not a URL is given.  *  * @author mark-schenk  * @author olly98  */
 end_comment
@@ -128,7 +116,7 @@ block|}
 else|else
 block|{
 return|return
-name|Globals
+name|DOIUtil
 operator|.
 name|DOI_LOOKUP_PREFIX
 operator|.

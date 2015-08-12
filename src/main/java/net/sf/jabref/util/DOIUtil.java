@@ -86,6 +86,16 @@ specifier|public
 class|class
 name|DOIUtil
 block|{
+comment|// Base URL
+DECL|field|DOI_LOOKUP_PREFIX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DOI_LOOKUP_PREFIX
+init|=
+literal|"http://dx.doi.org/"
+decl_stmt|;
 comment|// DOI-regexp provided by http://stackoverflow.com/a/10324802/873282
 comment|// Some DOI's are not caught by the regexp in the above link, i.e. 10.1002/(SICI)1522-2594(199911)42:5<952::AID-MRM16>3.0.CO;2-S
 comment|// Removed<> from non-permitted characters

@@ -4085,7 +4085,7 @@ argument_list|)
 expr_stmt|;
 name|link
 operator|=
-name|Globals
+name|DOIUtil
 operator|.
 name|DOI_LOOKUP_PREFIX
 operator|+
@@ -4118,7 +4118,7 @@ condition|)
 block|{
 name|link
 operator|=
-name|Globals
+name|DOIUtil
 operator|.
 name|DOI_LOOKUP_PREFIX
 operator|+
