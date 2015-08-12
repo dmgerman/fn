@@ -611,7 +611,7 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*              * try { Thread.currentThread().sleep(500); } catch              * (InterruptedException ex) {}              */
+comment|/*              * try { Thread.currentThread().sleep(500); } catch              * (InterruptedException ignored) {}              */
 break|break;
 block|}
 block|}
@@ -730,7 +730,7 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*              * try { Thread.currentThread().sleep(500); } catch              * (InterruptedException ex) {}              */
+comment|/*              * try { Thread.currentThread().sleep(500); } catch              * (InterruptedException ignored) {}              */
 break|break;
 block|}
 return|return

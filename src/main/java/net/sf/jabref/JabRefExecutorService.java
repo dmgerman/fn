@@ -191,15 +191,9 @@ block|}
 catch|catch
 parameter_list|(
 name|InterruptedException
-name|e
+name|ignored
 parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
+block|{              }
 catch|catch
 parameter_list|(
 name|ExecutionException
@@ -480,15 +474,9 @@ block|}
 catch|catch
 parameter_list|(
 name|InterruptedException
-name|e
+name|ignored
 parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
+block|{              }
 block|}
 block|}
 DECL|method|shutdownEverything ()

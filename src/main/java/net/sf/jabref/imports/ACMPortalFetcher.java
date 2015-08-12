@@ -2298,14 +2298,9 @@ block|}
 catch|catch
 parameter_list|(
 name|InterruptedException
-name|e
+name|ignored
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 return|return
 literal|null
 return|;
