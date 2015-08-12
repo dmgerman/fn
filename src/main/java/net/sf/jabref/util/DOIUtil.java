@@ -134,11 +134,11 @@ operator|+
 name|REGEXP_PLAINDOI
 decl_stmt|;
 comment|/**      * Check if the String matches a DOI (with http://...)      */
-DECL|method|checkForDOIwithHTTPprefix (String check)
+DECL|method|isDOIwithHttpPrefix (String check)
 specifier|public
 specifier|static
 name|boolean
-name|checkForDOIwithHTTPprefix
+name|isDOIwithHttpPrefix
 parameter_list|(
 name|String
 name|check
@@ -162,11 +162,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      *      * @param check - string to check      * @return true if "check" contains a DOI      */
-DECL|method|checkForPlainDOI (String check)
+DECL|method|isPlainDOI (String check)
 specifier|public
 specifier|static
 name|boolean
-name|checkForPlainDOI
+name|isPlainDOI
 parameter_list|(
 name|String
 name|check
@@ -190,11 +190,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Remove the http://... from DOI      *      * @param doi - may not be null      * @return first DOI in the given String (without http://... prefix). If no DOI exists, the complete string is returned      */
-DECL|method|getDOI (String doi)
+DECL|method|getPlainDOI (String doi)
 specifier|public
 specifier|static
 name|String
-name|getDOI
+name|getPlainDOI
 parameter_list|(
 name|String
 name|doi
@@ -231,6 +231,26 @@ return|return
 name|doi
 return|;
 block|}
+block|}
+comment|/**      * Returns the Http URL for a specific DOI      *      * TODO: this has problems when no doi is detected or is null.      * This has always been unchecked and needs to be investigated!      * @param doi - may not be null      * @return      */
+DECL|method|getHttpUrl (String doi)
+specifier|public
+specifier|static
+name|String
+name|getHttpUrl
+parameter_list|(
+name|String
+name|doi
+parameter_list|)
+block|{
+return|return
+name|DOI_LOOKUP_PREFIX
+operator|+
+name|getPlainDOI
+argument_list|(
+name|doi
+argument_list|)
+return|;
 block|}
 DECL|method|removeDOIfromBibtexEntryField (BibtexEntry bes, String fieldName, NamedCompound ce)
 specifier|public

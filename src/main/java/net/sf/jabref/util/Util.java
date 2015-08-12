@@ -4087,9 +4087,10 @@ name|link
 operator|=
 name|DOIUtil
 operator|.
-name|DOI_LOOKUP_PREFIX
-operator|+
+name|getHttpUrl
+argument_list|(
 name|link
+argument_list|)
 expr_stmt|;
 block|}
 comment|// converts doi-only link to full http address
@@ -4102,7 +4103,7 @@ if|if
 condition|(
 name|DOIUtil
 operator|.
-name|checkForPlainDOI
+name|isPlainDOI
 argument_list|(
 name|link
 argument_list|)
@@ -4120,11 +4121,7 @@ name|link
 operator|=
 name|DOIUtil
 operator|.
-name|DOI_LOOKUP_PREFIX
-operator|+
-name|DOIUtil
-operator|.
-name|getDOI
+name|getHttpUrl
 argument_list|(
 name|link
 argument_list|)

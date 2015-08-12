@@ -2892,7 +2892,7 @@ if|if
 condition|(
 name|DOIUtil
 operator|.
-name|checkForDOIwithHTTPprefix
+name|isDOIwithHttpPrefix
 argument_list|(
 name|doiFieldValue
 argument_list|)
@@ -2903,7 +2903,7 @@ name|newValue
 init|=
 name|DOIUtil
 operator|.
-name|getDOI
+name|getPlainDOI
 argument_list|(
 name|doiFieldValue
 argument_list|)
@@ -2939,7 +2939,7 @@ if|if
 condition|(
 name|DOIUtil
 operator|.
-name|checkForPlainDOI
+name|isPlainDOI
 argument_list|(
 name|doiFieldValue
 argument_list|)
@@ -2960,7 +2960,7 @@ if|if
 condition|(
 name|DOIUtil
 operator|.
-name|checkForPlainDOI
+name|isPlainDOI
 argument_list|(
 name|bes
 operator|.
@@ -3001,7 +3001,7 @@ if|if
 condition|(
 name|DOIUtil
 operator|.
-name|checkForPlainDOI
+name|isPlainDOI
 argument_list|(
 name|bes
 operator|.
@@ -3028,7 +3028,7 @@ name|newValue
 init|=
 name|DOIUtil
 operator|.
-name|getDOI
+name|getPlainDOI
 argument_list|(
 name|bes
 operator|.

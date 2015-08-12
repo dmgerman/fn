@@ -1088,7 +1088,7 @@ name|doi
 init|=
 name|DOIUtil
 operator|.
-name|getDOI
+name|getPlainDOI
 argument_list|(
 name|textResult
 argument_list|)

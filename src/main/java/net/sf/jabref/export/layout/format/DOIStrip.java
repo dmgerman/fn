@@ -89,7 +89,7 @@ block|{
 return|return
 name|DOIUtil
 operator|.
-name|getDOI
+name|getPlainDOI
 argument_list|(
 name|fieldText
 argument_list|)

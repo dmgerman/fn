@@ -103,7 +103,7 @@ if|if
 condition|(
 name|DOIUtil
 operator|.
-name|checkForDOIwithHTTPprefix
+name|isDOIwithHttpPrefix
 argument_list|(
 name|fieldText
 argument_list|)
@@ -118,16 +118,9 @@ block|{
 return|return
 name|DOIUtil
 operator|.
-name|DOI_LOOKUP_PREFIX
-operator|.
-name|concat
-argument_list|(
-name|DOIUtil
-operator|.
-name|getDOI
+name|getHttpUrl
 argument_list|(
 name|fieldText
-argument_list|)
 argument_list|)
 return|;
 block|}
