@@ -318,7 +318,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|DOIUtil
+name|Doi
 import|;
 end_import
 
@@ -2865,7 +2865,7 @@ block|,
 literal|"ee"
 block|}
 decl_stmt|;
-comment|// First check if the DOI Field is empty
+comment|// First check if the Doi Field is empty
 if|if
 condition|(
 name|bes
@@ -2890,9 +2890,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|DOIUtil
+name|Doi
 operator|.
-name|isURI
+name|containsHttpDoi
 argument_list|(
 name|doiFieldValue
 argument_list|)
@@ -2901,12 +2901,14 @@ block|{
 name|String
 name|newValue
 init|=
-name|DOIUtil
-operator|.
-name|getDOI
+operator|new
+name|Doi
 argument_list|(
 name|doiFieldValue
 argument_list|)
+operator|.
+name|getDoi
+argument_list|()
 decl_stmt|;
 name|ce
 operator|.
@@ -2937,17 +2939,17 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|DOIUtil
+name|Doi
 operator|.
-name|isDOI
+name|containsDoi
 argument_list|(
 name|doiFieldValue
 argument_list|)
 condition|)
 block|{
-comment|// DOI field seems to contain DOI
+comment|// Doi field seems to contain Doi
 comment|// cleanup note, url, ee field
-comment|// we do NOT copy values to the DOI field as the DOI field contains a DOI!
+comment|// we do NOT copy values to the Doi field as the Doi field contains a Doi!
 for|for
 control|(
 name|String
@@ -2958,9 +2960,9 @@ control|)
 block|{
 if|if
 condition|(
-name|DOIUtil
+name|Doi
 operator|.
-name|isDOI
+name|containsDoi
 argument_list|(
 name|bes
 operator|.
@@ -2971,7 +2973,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|DOIUtil
+name|Doi
 operator|.
 name|removeDOIfromBibtexEntryField
 argument_list|(
@@ -2988,7 +2990,7 @@ block|}
 block|}
 else|else
 block|{
-comment|// As the DOI field is empty we now check if note, url, or ee field contains a DOI
+comment|// As the Doi field is empty we now check if note, url, or ee field contains a Doi
 for|for
 control|(
 name|String
@@ -2999,9 +3001,9 @@ control|)
 block|{
 if|if
 condition|(
-name|DOIUtil
+name|Doi
 operator|.
-name|isDOI
+name|containsDoi
 argument_list|(
 name|bes
 operator|.
@@ -3012,7 +3014,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-comment|// update DOI
+comment|// update Doi
 name|String
 name|oldValue
 init|=
@@ -3026,9 +3028,8 @@ decl_stmt|;
 name|String
 name|newValue
 init|=
-name|DOIUtil
-operator|.
-name|getDOI
+operator|new
+name|Doi
 argument_list|(
 name|bes
 operator|.
@@ -3037,6 +3038,9 @@ argument_list|(
 name|field
 argument_list|)
 argument_list|)
+operator|.
+name|getDoi
+argument_list|()
 decl_stmt|;
 name|ce
 operator|.
@@ -3064,7 +3068,7 @@ argument_list|,
 name|newValue
 argument_list|)
 expr_stmt|;
-name|DOIUtil
+name|Doi
 operator|.
 name|removeDOIfromBibtexEntryField
 argument_list|(

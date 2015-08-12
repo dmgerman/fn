@@ -2354,14 +2354,14 @@ literal|"\\url{www.vg.no/fil%20e.html}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/**          * DOI Test cases          */
+comment|/**          * Doi Test cases          */
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|DOIUtil
+name|Doi
 operator|.
-name|DOI_LOOKUP_PREFIX
+name|RESOLVER
 operator|+
 literal|"10.1109/VLHCC.2004.20"
 argument_list|,
@@ -2377,9 +2377,9 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|DOIUtil
+name|Doi
 operator|.
-name|DOI_LOOKUP_PREFIX
+name|RESOLVER
 operator|+
 literal|"10.1109/VLHCC.2004.20"
 argument_list|,
@@ -2395,9 +2395,9 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|DOIUtil
+name|Doi
 operator|.
-name|DOI_LOOKUP_PREFIX
+name|RESOLVER
 operator|+
 literal|"10.1109/VLHCC.2004.20"
 argument_list|,
@@ -2413,9 +2413,9 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|DOIUtil
+name|Doi
 operator|.
-name|DOI_LOOKUP_PREFIX
+name|RESOLVER
 operator|+
 literal|"10.1109/VLHCC.2004.20"
 argument_list|,

@@ -30,7 +30,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|DOIUtil
+name|Doi
 import|;
 end_import
 
@@ -101,9 +101,9 @@ return|;
 block|}
 if|if
 condition|(
-name|DOIUtil
+name|Doi
 operator|.
-name|isURI
+name|containsHttpDoi
 argument_list|(
 name|fieldText
 argument_list|)
@@ -116,12 +116,14 @@ block|}
 else|else
 block|{
 return|return
-name|DOIUtil
-operator|.
-name|getURI
+operator|new
+name|Doi
 argument_list|(
 name|fieldText
 argument_list|)
+operator|.
+name|getUri
+argument_list|()
 return|;
 block|}
 block|}

@@ -2022,7 +2022,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Make sure an URL is "portable", in that it doesn't contain bad characters      * that break the open command in some OSes.      *       * A call to this method will also remove \\url{} enclosings and clean DOI links. 	 *  	 * @param link :the URL to sanitize. 	 * @return Sanitized URL 	 */
+comment|/**      * Make sure an URL is "portable", in that it doesn't contain bad characters      * that break the open command in some OSes.      *       * A call to this method will also remove \\url{} enclosings and clean Doi links. 	 *  	 * @param link :the URL to sanitize. 	 * @return Sanitized URL 	 */
 DECL|method|sanitizeUrl (String link)
 specifier|public
 specifier|static
@@ -2100,25 +2100,27 @@ argument_list|)
 expr_stmt|;
 name|link
 operator|=
-name|DOIUtil
-operator|.
-name|getURI
+operator|new
+name|Doi
 argument_list|(
 name|link
 argument_list|)
+operator|.
+name|getUri
+argument_list|()
 expr_stmt|;
 block|}
 comment|// converts doi-only link to full http address
-comment|// Morten Alver 6 Nov 2012: this extracts a nonfunctional DOI from some complete
+comment|// Morten Alver 6 Nov 2012: this extracts a nonfunctional Doi from some complete
 comment|// http addresses (e.g. http://onlinelibrary.wiley.com/doi/10.1002/rra.999/abstract, where
-comment|// the trailing "/abstract" is included but doesn't lead to a resolvable DOI).
+comment|// the trailing "/abstract" is included but doesn't lead to a resolvable Doi).
 comment|// To prevent mangling of working URLs I'm disabling this check if the link is already
 comment|// a full http link:
 if|if
 condition|(
-name|DOIUtil
+name|Doi
 operator|.
-name|isDOI
+name|containsDoi
 argument_list|(
 name|link
 argument_list|)
@@ -2134,12 +2136,14 @@ condition|)
 block|{
 name|link
 operator|=
-name|DOIUtil
-operator|.
-name|getURI
+operator|new
+name|Doi
 argument_list|(
 name|link
 argument_list|)
+operator|.
+name|getUri
+argument_list|()
 expr_stmt|;
 block|}
 name|link

@@ -30,7 +30,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|DOIUtil
+name|Doi
 import|;
 end_import
 
@@ -51,7 +51,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Will strip any prefixes from the DOI field, in order to output only the DOI number  *   * @author mark-schenk   * @author olly98  *  */
+comment|/**  * Will strip any prefixes from the Doi field, in order to output only the Doi number  *   * @author mark-schenk   * @author olly98  *  */
 end_comment
 
 begin_class
@@ -87,12 +87,14 @@ block|}
 else|else
 block|{
 return|return
-name|DOIUtil
-operator|.
-name|getDOI
+operator|new
+name|Doi
 argument_list|(
 name|fieldText
 argument_list|)
+operator|.
+name|getDoi
+argument_list|()
 return|;
 block|}
 block|}

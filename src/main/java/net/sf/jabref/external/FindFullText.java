@@ -148,7 +148,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|DOIUtil
+name|Doi
 import|;
 end_import
 
@@ -310,7 +310,7 @@ argument_list|(
 literal|"doi"
 argument_list|)
 decl_stmt|;
-comment|// First try the DOI link, if defined:
+comment|// First try the Doi link, if defined:
 if|if
 condition|(
 name|doiText
@@ -332,12 +332,14 @@ name|resDoi
 init|=
 name|lookForFullTextAtURL
 argument_list|(
-name|DOIUtil
-operator|.
-name|getURI
+operator|new
+name|Doi
 argument_list|(
 name|doiText
 argument_list|)
+operator|.
+name|getUri
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -400,7 +402,7 @@ block|{
 return|return
 name|resDoi
 return|;
-comment|// If both URL and DOI fail, we assume that the error code for DOI is
+comment|// If both URL and Doi fail, we assume that the error code for Doi is
 comment|// probably the most relevant.
 block|}
 block|}
@@ -411,7 +413,7 @@ name|resDoi
 return|;
 block|}
 block|}
-comment|// No DOI? Try URL:
+comment|// No Doi? Try URL:
 elseif|else
 if|if
 condition|(
@@ -685,7 +687,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Follow redirects until the final location is reached. This is necessary to handle DOI links, which      * redirect to publishers' web sites. We need to know the publisher's domain name in order to choose      * which FullTextFinder to use.      * @param url The url to start with.      * @param redirectCount The number of previous redirects. We will follow a maximum of 5 redirects.      * @return the final URL, or the initial one in case there is no redirect.      * @throws IOException for connection error      */
+comment|/**      * Follow redirects until the final location is reached. This is necessary to handle Doi links, which      * redirect to publishers' web sites. We need to know the publisher's domain name in order to choose      * which FullTextFinder to use.      * @param url The url to start with.      * @param redirectCount The number of previous redirects. We will follow a maximum of 5 redirects.      * @return the final URL, or the initial one in case there is no redirect.      * @throws IOException for connection error      */
 DECL|method|resolveRedirects (URL url, int redirectCount)
 specifier|private
 name|URL

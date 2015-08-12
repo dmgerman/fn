@@ -128,7 +128,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|DOIUtil
+name|Doi
 import|;
 end_import
 
@@ -1086,12 +1086,14 @@ decl_stmt|;
 name|String
 name|doi
 init|=
-name|DOIUtil
-operator|.
-name|getDOI
+operator|new
+name|Doi
 argument_list|(
 name|textResult
 argument_list|)
+operator|.
+name|getDoi
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1106,8 +1108,8 @@ name|length
 argument_list|()
 condition|)
 block|{
-comment|// A DOI was found in the text
-comment|// We do NO parsing of the text, but use the DOI fetcher
+comment|// A Doi was found in the text
+comment|// We do NO parsing of the text, but use the Doi fetcher
 name|ImportInspector
 name|i
 init|=
