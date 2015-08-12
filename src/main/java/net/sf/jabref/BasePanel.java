@@ -5612,9 +5612,6 @@ argument_list|(
 literal|"\\cite{"
 operator|+
 name|sb
-operator|.
-name|toString
-argument_list|()
 operator|+
 literal|'}'
 argument_list|)

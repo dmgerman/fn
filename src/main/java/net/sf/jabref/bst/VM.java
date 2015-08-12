@@ -1254,14 +1254,8 @@ operator|.
 name|push
 argument_list|(
 name|o1
-operator|.
-name|toString
-argument_list|()
 operator|+
 name|o2
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

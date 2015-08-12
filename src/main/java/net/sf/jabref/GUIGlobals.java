@@ -1879,9 +1879,6 @@ operator|+
 literal|" '"
 operator|+
 name|resource
-operator|.
-name|toString
-argument_list|()
 operator|+
 literal|'\''
 argument_list|)
