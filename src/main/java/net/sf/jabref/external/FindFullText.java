@@ -334,7 +334,7 @@ name|lookForFullTextAtURL
 argument_list|(
 name|DOIUtil
 operator|.
-name|getHttpUrl
+name|getURI
 argument_list|(
 name|doiText
 argument_list|)

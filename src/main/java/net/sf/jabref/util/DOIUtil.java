@@ -99,6 +99,8 @@ decl_stmt|;
 comment|// DOI-regexp provided by http://stackoverflow.com/a/10324802/873282
 comment|// Some DOI's are not caught by the regexp in the above link, i.e. 10.1002/(SICI)1522-2594(199911)42:5<952::AID-MRM16>3.0.CO;2-S
 comment|// Removed<> from non-permitted characters
+comment|// TODO: We need more tests if the regexes behave correctly!
+comment|// See http://www.doi.org/doi_handbook/2_Numbering.html#2.6
 DECL|field|REGEXP_PLAINDOI
 specifier|private
 specifier|static
@@ -134,11 +136,11 @@ operator|+
 name|REGEXP_PLAINDOI
 decl_stmt|;
 comment|/**      * Check if the String matches a DOI (with http://...)      */
-DECL|method|isDOIwithHttpPrefix (String check)
+DECL|method|isURI (String check)
 specifier|public
 specifier|static
 name|boolean
-name|isDOIwithHttpPrefix
+name|isURI
 parameter_list|(
 name|String
 name|check
@@ -162,11 +164,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      *      * @param check - string to check      * @return true if "check" contains a DOI      */
-DECL|method|isPlainDOI (String check)
+DECL|method|isDOI (String check)
 specifier|public
 specifier|static
 name|boolean
-name|isPlainDOI
+name|isDOI
 parameter_list|(
 name|String
 name|check
@@ -190,11 +192,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Remove the http://... from DOI      *      * @param doi - may not be null      * @return first DOI in the given String (without http://... prefix). If no DOI exists, the complete string is returned      */
-DECL|method|getPlainDOI (String doi)
+DECL|method|getDOI (String doi)
 specifier|public
 specifier|static
 name|String
-name|getPlainDOI
+name|getDOI
 parameter_list|(
 name|String
 name|doi
@@ -233,11 +235,11 @@ return|;
 block|}
 block|}
 comment|/**      * Returns the Http URL for a specific DOI      *      * TODO: this has problems when no doi is detected or is null.      * This has always been unchecked and needs to be investigated!      * @param doi - may not be null      * @return      */
-DECL|method|getHttpUrl (String doi)
+DECL|method|getURI (String doi)
 specifier|public
 specifier|static
 name|String
-name|getHttpUrl
+name|getURI
 parameter_list|(
 name|String
 name|doi
@@ -246,7 +248,7 @@ block|{
 return|return
 name|DOI_LOOKUP_PREFIX
 operator|+
-name|getPlainDOI
+name|getDOI
 argument_list|(
 name|doi
 argument_list|)

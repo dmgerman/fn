@@ -53,7 +53,7 @@ name|assertTrue
 argument_list|(
 name|DOIUtil
 operator|.
-name|isDOIwithHttpPrefix
+name|isURI
 argument_list|(
 literal|"http://doi.acm.org/10.1145/1294928.1294933"
 argument_list|)
@@ -65,7 +65,7 @@ name|assertTrue
 argument_list|(
 name|DOIUtil
 operator|.
-name|isDOIwithHttpPrefix
+name|isURI
 argument_list|(
 literal|"http://dx.doi.org/10.1007/978-3-642-15618-2_19"
 argument_list|)
@@ -77,7 +77,7 @@ name|assertTrue
 argument_list|(
 name|DOIUtil
 operator|.
-name|isDOIwithHttpPrefix
+name|isURI
 argument_list|(
 literal|"http://dx.doi.org/10.1000/182"
 argument_list|)
@@ -89,7 +89,7 @@ name|assertFalse
 argument_list|(
 name|DOIUtil
 operator|.
-name|isDOIwithHttpPrefix
+name|isURI
 argument_list|(
 literal|"http://www.xyz.com"
 argument_list|)
@@ -101,7 +101,7 @@ name|assertFalse
 argument_list|(
 name|DOIUtil
 operator|.
-name|isDOIwithHttpPrefix
+name|isURI
 argument_list|(
 literal|"http://dx.doing.org/fjdlfdsjfdlfdj.htm"
 argument_list|)
@@ -113,7 +113,7 @@ name|assertFalse
 argument_list|(
 name|DOIUtil
 operator|.
-name|isDOIwithHttpPrefix
+name|isURI
 argument_list|(
 literal|"thfjtfjglkjjlkkï¿½lm5476576658796"
 argument_list|)
@@ -125,7 +125,7 @@ name|assertTrue
 argument_list|(
 name|DOIUtil
 operator|.
-name|isDOIwithHttpPrefix
+name|isURI
 argument_list|(
 literal|"http://doii.acm.org/10.1145/1294928.1294933"
 argument_list|)
@@ -137,7 +137,7 @@ name|assertTrue
 argument_list|(
 name|DOIUtil
 operator|.
-name|isDOIwithHttpPrefix
+name|isURI
 argument_list|(
 literal|"http://dx.ddoi.org/10.1007/978-3-642-15618-2_19"
 argument_list|)
@@ -149,7 +149,7 @@ name|assertTrue
 argument_list|(
 name|DOIUtil
 operator|.
-name|isDOIwithHttpPrefix
+name|isURI
 argument_list|(
 literal|"http://dx.eoi.org/10.1000/182"
 argument_list|)
@@ -173,7 +173,7 @@ literal|"10.1145/1294928.1294933"
 argument_list|,
 name|DOIUtil
 operator|.
-name|getPlainDOI
+name|getDOI
 argument_list|(
 literal|"http://doi.acm.org/10.1145/1294928.1294933"
 argument_list|)
@@ -187,7 +187,7 @@ literal|"10.1145/1294928.1294933"
 argument_list|,
 name|DOIUtil
 operator|.
-name|getPlainDOI
+name|getDOI
 argument_list|(
 literal|"http://doi.acm.net/10.1145/1294928.1294933"
 argument_list|)
@@ -201,7 +201,7 @@ literal|"10.1145/1294928.1294933"
 argument_list|,
 name|DOIUtil
 operator|.
-name|getPlainDOI
+name|getDOI
 argument_list|(
 literal|"http://doi.acm.com/10.1145/1294928.1294933"
 argument_list|)
@@ -215,7 +215,7 @@ literal|"10.1145/1294928.1294933"
 argument_list|,
 name|DOIUtil
 operator|.
-name|getPlainDOI
+name|getDOI
 argument_list|(
 literal|"http://doi.acm.de/10.1145/1294928.1294933"
 argument_list|)
@@ -229,7 +229,7 @@ literal|"10.1007/978-3-642-15618-2_19"
 argument_list|,
 name|DOIUtil
 operator|.
-name|getPlainDOI
+name|getDOI
 argument_list|(
 literal|"http://dx.doi.org/10.1007/978-3-642-15618-2_19"
 argument_list|)
@@ -243,7 +243,7 @@ literal|"10.1007/978-3-642-15618-2_19"
 argument_list|,
 name|DOIUtil
 operator|.
-name|getPlainDOI
+name|getDOI
 argument_list|(
 literal|"http://dx.doi.net/10.1007/978-3-642-15618-2_19"
 argument_list|)
@@ -257,7 +257,7 @@ literal|"10.1007/978-3-642-15618-2_19"
 argument_list|,
 name|DOIUtil
 operator|.
-name|getPlainDOI
+name|getDOI
 argument_list|(
 literal|"http://dx.doi.com/10.1007/978-3-642-15618-2_19"
 argument_list|)
@@ -271,7 +271,7 @@ literal|"10.1007/978-3-642-15618-2_19"
 argument_list|,
 name|DOIUtil
 operator|.
-name|getPlainDOI
+name|getDOI
 argument_list|(
 literal|"http://dx.doi.de/10.1007/978-3-642-15618-2_19"
 argument_list|)
@@ -285,7 +285,7 @@ literal|"10.1000/182"
 argument_list|,
 name|DOIUtil
 operator|.
-name|getPlainDOI
+name|getDOI
 argument_list|(
 literal|"http://dx.doi.org/10.1000/182"
 argument_list|)
@@ -299,7 +299,7 @@ literal|"10.4108/ICST.COLLABORATECOM2009.8275"
 argument_list|,
 name|DOIUtil
 operator|.
-name|getPlainDOI
+name|getDOI
 argument_list|(
 literal|"http://dx.doi.org/10.4108/ICST.COLLABORATECOM2009.8275"
 argument_list|)
@@ -313,7 +313,7 @@ literal|"10.1109/MIC.2012.43"
 argument_list|,
 name|DOIUtil
 operator|.
-name|getPlainDOI
+name|getDOI
 argument_list|(
 literal|"http://doi.ieeecomputersociety.org/10.1109/MIC.2012.43"
 argument_list|)

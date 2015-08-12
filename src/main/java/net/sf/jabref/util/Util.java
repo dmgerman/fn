@@ -4087,7 +4087,7 @@ name|link
 operator|=
 name|DOIUtil
 operator|.
-name|getHttpUrl
+name|getURI
 argument_list|(
 name|link
 argument_list|)
@@ -4103,7 +4103,7 @@ if|if
 condition|(
 name|DOIUtil
 operator|.
-name|isPlainDOI
+name|isDOI
 argument_list|(
 name|link
 argument_list|)
@@ -4121,7 +4121,7 @@ name|link
 operator|=
 name|DOIUtil
 operator|.
-name|getHttpUrl
+name|getURI
 argument_list|(
 name|link
 argument_list|)

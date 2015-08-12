@@ -103,7 +103,7 @@ if|if
 condition|(
 name|DOIUtil
 operator|.
-name|isDOIwithHttpPrefix
+name|isURI
 argument_list|(
 name|fieldText
 argument_list|)
@@ -118,7 +118,7 @@ block|{
 return|return
 name|DOIUtil
 operator|.
-name|getHttpUrl
+name|getURI
 argument_list|(
 name|fieldText
 argument_list|)
