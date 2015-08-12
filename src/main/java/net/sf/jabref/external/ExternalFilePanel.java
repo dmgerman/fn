@@ -266,6 +266,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1710,9 +1726,9 @@ block|}
 comment|/*                  * [ 1548875 ] download pdf produces unsupported filename                  *                   * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306                  *                   */
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|plannedName
@@ -1730,9 +1746,9 @@ block|}
 elseif|else
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_MAC
+name|OS_X
 condition|)
 block|{
 name|plannedName

@@ -16,6 +16,22 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -173,9 +189,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_MAC
+name|OS_X
 condition|)
 block|{
 name|super

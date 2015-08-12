@@ -98,6 +98,22 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Jan 14, 2006  * Time: 4:55:23 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -246,9 +262,9 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|String
@@ -580,9 +596,9 @@ name|String
 index|[]
 name|com
 init|=
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|?
 comment|// No additional escaping is needed for TeXstudio:
 operator|new

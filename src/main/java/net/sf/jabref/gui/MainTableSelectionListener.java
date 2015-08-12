@@ -170,6 +170,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1552,9 +1568,9 @@ comment|// on mouseReleased. Therefore we need to avoid taking action at this po
 comment|// action will be taken when the button is released:
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 operator|&&
 operator|(
 name|iconType

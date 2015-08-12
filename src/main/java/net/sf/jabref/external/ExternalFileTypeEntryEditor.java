@@ -212,6 +212,22 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class produces a dialog box for editing an external file type.  */
 end_comment
@@ -647,9 +663,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|builder
@@ -971,9 +987,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|application
@@ -1458,9 +1474,9 @@ block|}
 if|if
 condition|(
 operator|!
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|entry

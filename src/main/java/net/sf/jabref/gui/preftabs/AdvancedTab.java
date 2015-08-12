@@ -314,6 +314,22 @@ name|JabRefMessageHandler
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
 begin_class
 DECL|class|AdvancedTab
 class|class
@@ -783,9 +799,9 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|Globals
+name|OS
 operator|.
-name|ON_MAC
+name|OS_X
 condition|)
 block|{
 name|builder
@@ -1088,7 +1104,7 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
-comment|//if (Globals.ON_MAC) {
+comment|//if (Globals.OS_X) {
 name|builder
 operator|.
 name|nextLine

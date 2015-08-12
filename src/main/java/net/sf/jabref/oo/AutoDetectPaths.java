@@ -168,6 +168,22 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tools for automatically detecting jar and executable paths to OpenOffice.  */
 end_comment
@@ -362,9 +378,9 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|List
@@ -686,9 +702,9 @@ block|}
 elseif|else
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_MAC
+name|OS_X
 condition|)
 block|{
 name|File

@@ -150,6 +150,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -875,9 +891,9 @@ name|defJarsDir
 decl_stmt|;
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|Globals
@@ -917,9 +933,9 @@ block|}
 elseif|else
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_MAC
+name|OS_X
 condition|)
 block|{
 name|Globals
@@ -3077,9 +3093,9 @@ decl_stmt|;
 comment|//Globals.prefs.getBoolean("connectToOO3");
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 comment|//if (openOffice3) {
@@ -3106,9 +3122,9 @@ block|}
 elseif|else
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_MAC
+name|OS_X
 condition|)
 block|{
 comment|//if (openOffice3) {
@@ -4073,13 +4089,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 operator|||
-name|Globals
+name|OS
 operator|.
-name|ON_MAC
+name|OS_X
 condition|)
 block|{
 name|builder

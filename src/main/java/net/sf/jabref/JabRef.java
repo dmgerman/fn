@@ -196,6 +196,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -986,9 +1002,9 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 comment|// Set application user model id so that pinning JabRef to the Win7/8 taskbar works
@@ -1292,9 +1308,9 @@ static|static
 block|{
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|Native
@@ -5426,9 +5442,9 @@ name|entries
 decl_stmt|;
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|entries
@@ -5564,9 +5580,9 @@ name|importResult
 decl_stmt|;
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|importResult

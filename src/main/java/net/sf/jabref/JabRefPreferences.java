@@ -262,6 +262,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -3614,9 +3630,9 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_MAC
+name|OS_X
 condition|)
 block|{
 comment|//defaults.put("pdfviewer", "/Applications/Preview.app");
@@ -3662,9 +3678,9 @@ block|}
 elseif|else
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 comment|//defaults.put("pdfviewer", "cmd.exe /c start /b");
@@ -8186,9 +8202,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_MAC
+name|OS_X
 condition|)
 block|{
 return|return

@@ -32,7 +32,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|MetaData
 import|;
 end_import
 
@@ -44,7 +44,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|MetaData
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -736,9 +740,9 @@ block|}
 comment|// Ok, try to fix / and \ problems:
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 comment|// workaround for catching Java bug in regexp replacer
@@ -975,9 +979,9 @@ name|longName
 decl_stmt|;
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 comment|// case-insensitive matching on Windows

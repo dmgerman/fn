@@ -134,7 +134,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|JabRefFrame
 import|;
 end_import
 
@@ -146,7 +146,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
 import|;
 end_import
 
@@ -212,9 +216,9 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|Globals
+name|OS
 operator|.
-name|ON_MAC
+name|OS_X
 condition|)
 block|{
 name|button
