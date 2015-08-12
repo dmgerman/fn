@@ -84,6 +84,22 @@ name|BasicEventList
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class handles user defined custom export formats. They are initially  * read from Preferences, and kept alphabetically (sorted by name). Formats can  * be added or removed. When modified, the sort() method must be called to make  * sure the formats stay properly sorted. When the method store() is called,  * export formats are written to Preferences.  */
 end_comment
@@ -329,7 +345,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

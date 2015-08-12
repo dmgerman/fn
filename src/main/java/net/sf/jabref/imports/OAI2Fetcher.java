@@ -164,6 +164,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|MonthUtil
@@ -913,7 +929,7 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -926,7 +942,7 @@ literal|"\n\n"
 operator|+
 name|e
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -950,7 +966,7 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -971,7 +987,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -995,7 +1011,7 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1016,7 +1032,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1081,7 +1097,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|menuTitle
 argument_list|(
@@ -1204,7 +1220,7 @@ name|status
 operator|.
 name|setStatus
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1249,7 +1265,7 @@ name|status
 operator|.
 name|setStatus
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1335,7 +1351,7 @@ name|status
 operator|.
 name|setStatus
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

@@ -24,7 +24,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -212,7 +216,7 @@ name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -277,7 +281,7 @@ name|format
 argument_list|(
 literal|"%s %s"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -361,7 +365,7 @@ operator|.
 name|left
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -393,7 +397,7 @@ operator|.
 name|left
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -509,7 +513,7 @@ name|fieldSpecQuoted
 init|=
 name|regExpFieldSpec
 condition|?
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -523,7 +527,7 @@ name|field
 argument_list|)
 argument_list|)
 else|:
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -554,7 +558,7 @@ name|regExp
 condition|)
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -567,7 +571,7 @@ argument_list|)
 return|;
 block|}
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -597,7 +601,7 @@ name|regExp
 condition|)
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -610,7 +614,7 @@ argument_list|)
 return|;
 block|}
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -640,7 +644,7 @@ name|regExp
 condition|)
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -653,7 +657,7 @@ argument_list|)
 return|;
 block|}
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -697,14 +701,14 @@ name|append
 argument_list|(
 name|caseSensitive
 condition|?
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"The search is case sensitive."
 argument_list|)
 else|:
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

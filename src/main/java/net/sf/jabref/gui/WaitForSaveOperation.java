@@ -38,7 +38,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|JabRefFrame
 import|;
 end_import
 
@@ -50,7 +50,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -163,7 +167,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -212,7 +216,7 @@ name|JDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -288,7 +292,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

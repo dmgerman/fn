@@ -136,11 +136,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|logic
 operator|.
-name|structure
+name|l10n
 operator|.
-name|GroupHierarchyType
+name|Localization
 import|;
 end_import
 
@@ -345,7 +345,7 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -362,7 +362,7 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -379,7 +379,7 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -397,7 +397,7 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -426,7 +426,7 @@ init|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -520,7 +520,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -580,7 +580,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -640,7 +640,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -700,7 +700,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -765,7 +765,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -818,7 +818,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -930,7 +930,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -995,7 +995,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1092,7 +1092,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1165,7 +1165,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1494,7 +1494,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1554,7 +1554,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1614,7 +1614,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1675,7 +1675,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1735,7 +1735,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1788,7 +1788,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1797,7 +1797,7 @@ argument_list|)
 operator|+
 literal|" \\cite{"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1863,7 +1863,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1941,7 +1941,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2004,7 +2004,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2065,7 +2065,7 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

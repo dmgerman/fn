@@ -26,6 +26,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -494,7 +510,7 @@ literal|"version"
 argument_list|,
 literal|false
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -512,7 +528,7 @@ literal|"nogui"
 argument_list|,
 literal|false
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -530,7 +546,7 @@ literal|"help"
 argument_list|,
 literal|false
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -548,7 +564,7 @@ literal|"loads"
 argument_list|,
 literal|false
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -566,7 +582,7 @@ literal|"blank"
 argument_list|,
 literal|false
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -598,14 +614,14 @@ name|format
 argument_list|(
 literal|"%s: %s[,import format]"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Import file"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -650,14 +666,14 @@ name|format
 argument_list|(
 literal|"%s: %s[,export format]"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Output or export file"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -696,7 +712,7 @@ argument_list|)
 operator|.
 name|desc
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -734,7 +750,7 @@ argument_list|)
 operator|.
 name|desc
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -772,7 +788,7 @@ argument_list|)
 operator|.
 name|desc
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -816,21 +832,21 @@ name|format
 argument_list|(
 literal|"%s: %s[.aux],%s[.bib]"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Subdatabase from aux"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"file"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -867,7 +883,7 @@ argument_list|)
 operator|.
 name|desc
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -905,7 +921,7 @@ argument_list|)
 operator|.
 name|desc
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1012,7 +1028,7 @@ name|format
 argument_list|(
 literal|"%s:%n%s%n"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1045,7 +1061,7 @@ name|format
 argument_list|(
 literal|"%s: %s%n"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1137,21 +1153,21 @@ name|format
 argument_list|(
 literal|"[%s]searchTerm,outputFile: %s[,%s]"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"field"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"file"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

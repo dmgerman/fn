@@ -116,6 +116,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|util
 operator|.
 name|Util
@@ -225,7 +241,7 @@ condition|)
 block|{
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -265,7 +281,7 @@ condition|)
 block|{
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -556,7 +572,7 @@ argument_list|()
 expr_stmt|;
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -596,7 +612,7 @@ argument_list|()
 expr_stmt|;
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -613,7 +629,7 @@ name|format
 argument_list|(
 literal|"%s: %d"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

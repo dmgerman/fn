@@ -46,7 +46,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|MetaData
 import|;
 end_import
 
@@ -58,7 +58,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|MetaData
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -95,7 +99,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

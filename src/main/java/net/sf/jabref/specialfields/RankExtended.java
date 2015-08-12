@@ -52,7 +52,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -110,7 +114,7 @@ literal|null
 argument_list|,
 literal|"clearRank"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -119,7 +123,7 @@ argument_list|)
 argument_list|,
 literal|null
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -142,7 +146,7 @@ literal|"rank1"
 argument_list|,
 literal|"setRank1"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -156,7 +160,7 @@ argument_list|(
 literal|"rank1"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -178,7 +182,7 @@ literal|"rank2"
 argument_list|,
 literal|"setRank2"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -192,7 +196,7 @@ argument_list|(
 literal|"rank2"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -214,7 +218,7 @@ literal|"rank3"
 argument_list|,
 literal|"setRank3"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -228,7 +232,7 @@ argument_list|(
 literal|"rank3"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -250,7 +254,7 @@ literal|"rank4"
 argument_list|,
 literal|"setRank4"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -264,7 +268,7 @@ argument_list|(
 literal|"rank4"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -286,7 +290,7 @@ literal|"rank5"
 argument_list|,
 literal|"setRank5"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -300,7 +304,7 @@ argument_list|(
 literal|"rank5"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

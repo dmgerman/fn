@@ -48,9 +48,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Util
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -62,7 +64,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|util
+operator|.
+name|Util
 import|;
 end_import
 
@@ -273,7 +277,7 @@ argument_list|()
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -327,7 +331,7 @@ argument_list|()
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -371,7 +375,7 @@ argument_list|()
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -392,7 +396,7 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -403,7 +407,7 @@ literal|'\n'
 operator|+
 name|errorMessage
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

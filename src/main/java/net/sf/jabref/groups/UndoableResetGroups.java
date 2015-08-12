@@ -36,7 +36,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|groups
+operator|.
+name|structure
+operator|.
+name|AllEntriesGroup
 import|;
 end_import
 
@@ -48,11 +52,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|logic
 operator|.
-name|structure
+name|l10n
 operator|.
-name|AllEntriesGroup
+name|Localization
 import|;
 end_import
 
@@ -132,7 +136,7 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -141,7 +145,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -158,7 +162,7 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -167,7 +171,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

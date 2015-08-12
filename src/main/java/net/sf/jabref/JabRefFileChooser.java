@@ -175,14 +175,7 @@ if|if
 condition|(
 name|Globals
 operator|.
-name|osName
-operator|.
-name|equals
-argument_list|(
-name|Globals
-operator|.
-name|MAC
-argument_list|)
+name|ON_MAC
 condition|)
 block|{
 name|super

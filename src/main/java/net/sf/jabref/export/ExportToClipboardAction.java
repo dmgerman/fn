@@ -256,6 +256,22 @@ name|JabRefFrame
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Dec 12, 2006  * Time: 6:22:25 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -350,7 +366,7 @@ condition|)
 block|{
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -488,7 +504,7 @@ name|frame
 argument_list|,
 name|list
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -509,14 +525,14 @@ operator|new
 name|String
 index|[]
 block|{
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Ok"
 argument_list|)
 block|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -524,7 +540,7 @@ literal|"Cancel"
 argument_list|)
 block|}
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -803,7 +819,7 @@ argument_list|)
 expr_stmt|;
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -831,7 +847,7 @@ expr_stmt|;
 comment|//To change body of catch statement use File | Settings | File Templates.
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

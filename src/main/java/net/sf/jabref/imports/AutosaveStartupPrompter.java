@@ -150,6 +150,22 @@ name|AutoSaveManager
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * Runnable task that prompts the user for what to do about files loaded at startup,  * where an autosave file was found. The task should be run on the EDT after startup.  */
 end_comment
@@ -293,14 +309,14 @@ literal|null
 argument_list|,
 literal|"<html>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"An autosave file was found for this database. This could indicate "
 argument_list|)
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -309,7 +325,7 @@ argument_list|)
 operator|+
 literal|"<br>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -318,7 +334,7 @@ argument_list|)
 operator|+
 literal|"</html>"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -490,7 +506,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -502,7 +518,7 @@ name|getName
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -546,7 +562,7 @@ argument_list|()
 operator|+
 literal|"<p>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -565,7 +581,7 @@ else|else
 block|{
 name|message
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -586,7 +602,7 @@ name|frame
 argument_list|,
 name|message
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -744,7 +760,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

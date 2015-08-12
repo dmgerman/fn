@@ -214,6 +214,22 @@ name|ButtonStackBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * Editor for external file types.  */
 end_comment
@@ -274,7 +290,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -291,7 +307,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -359,7 +375,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -389,7 +405,7 @@ name|super
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -421,7 +437,7 @@ name|super
 argument_list|(
 name|dialog
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1571,7 +1587,7 @@ case|case
 literal|1
 case|:
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1582,7 +1598,7 @@ case|case
 literal|2
 case|:
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1593,7 +1609,7 @@ case|case
 literal|3
 case|:
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1604,7 +1620,7 @@ case|case
 literal|4
 case|:
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

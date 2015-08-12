@@ -24,7 +24,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -231,7 +235,7 @@ decl_stmt|;
 name|String
 name|error
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

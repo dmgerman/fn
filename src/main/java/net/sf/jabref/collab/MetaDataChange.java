@@ -60,7 +60,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|undo
+operator|.
+name|NamedCompound
 import|;
 end_import
 
@@ -72,11 +76,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|undo
+name|l10n
 operator|.
-name|NamedCompound
+name|Localization
 import|;
 end_import
 
@@ -211,7 +215,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -237,7 +241,7 @@ name|setText
 argument_list|(
 literal|"<html>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -369,7 +373,7 @@ name|StringBuilder
 argument_list|(
 literal|"<html>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

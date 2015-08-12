@@ -44,7 +44,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -105,7 +109,7 @@ block|{
 return|return
 literal|'['
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

@@ -526,6 +526,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|FileNameCleaner
@@ -2228,7 +2244,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2440,7 +2456,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2938,18 +2954,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// escape& and spaces
-name|Runtime
-operator|.
-name|getRuntime
-argument_list|()
-operator|.
-name|exec
-argument_list|(
-name|application
-operator|+
-literal|" "
-operator|+
+name|link
+operator|=
 name|link
 operator|.
 name|replaceAll
@@ -2965,6 +2971,19 @@ literal|" "
 argument_list|,
 literal|"\" \""
 argument_list|)
+expr_stmt|;
+name|Runtime
+operator|.
+name|getRuntime
+argument_list|()
+operator|.
+name|exec
+argument_list|(
+name|application
+operator|+
+literal|" "
+operator|+
+name|link
 argument_list|)
 expr_stmt|;
 block|}
@@ -3547,7 +3566,7 @@ block|{
 name|String
 name|cancelMessage
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3562,7 +3581,7 @@ operator|new
 name|String
 index|[]
 block|{
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3574,14 +3593,14 @@ name|getName
 argument_list|()
 argument_list|)
 block|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Change file type"
 argument_list|)
 block|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3606,7 +3625,7 @@ name|showOptionDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3618,7 +3637,7 @@ name|getName
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5297,7 +5316,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5740,7 +5759,7 @@ name|parent
 argument_list|,
 name|message
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6385,7 +6404,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6594,7 +6613,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6724,7 +6743,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6891,7 +6910,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|Globals
+name|Localization
 operator|.
 name|ENCODINGS
 operator|.
@@ -6908,7 +6927,7 @@ name|Charset
 operator|.
 name|forName
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|ENCODINGS
 index|[
@@ -6933,7 +6952,7 @@ name|encodings
 operator|.
 name|add
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|ENCODINGS
 index|[
@@ -8072,7 +8091,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8939,7 +8958,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8976,7 +8995,7 @@ name|diag
 operator|.
 name|setTitle
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
