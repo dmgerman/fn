@@ -99,8 +99,6 @@ class|class
 name|BrowseAction
 extends|extends
 name|AbstractAction
-implements|implements
-name|ActionListener
 block|{
 DECL|field|serialVersionUID
 specifier|private

@@ -171,8 +171,6 @@ extends|extends
 name|FieldSetComponent
 implements|implements
 name|ListSelectionListener
-implements|,
-name|ActionListener
 block|{
 DECL|field|def
 specifier|private

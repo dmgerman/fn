@@ -5062,8 +5062,6 @@ class|class
 name|DeleteListener
 extends|extends
 name|AbstractAction
-implements|implements
-name|ActionListener
 block|{
 DECL|method|DeleteListener ()
 specifier|public
