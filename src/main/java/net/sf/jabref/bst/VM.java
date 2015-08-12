@@ -4451,7 +4451,6 @@ name|Tree
 name|child
 parameter_list|)
 block|{
-block|{
 comment|// Fields first
 name|Tree
 name|t
@@ -4516,8 +4515,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-block|{
 comment|// Integers
 name|Tree
 name|t
@@ -4582,8 +4579,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-block|{
 comment|// Strings
 name|Tree
 name|t
@@ -4667,7 +4662,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|reverse (Tree child)
@@ -5021,7 +5015,6 @@ name|BstParser
 operator|.
 name|STRING
 case|:
-block|{
 name|String
 name|s
 init|=
@@ -5047,7 +5040,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 break|break;
 case|case
 name|BstParser
