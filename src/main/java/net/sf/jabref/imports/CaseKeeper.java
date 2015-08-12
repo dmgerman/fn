@@ -60,15 +60,6 @@ name|CaseKeeper
 implements|implements
 name|LayoutFormatter
 block|{
-DECL|method|CaseKeeper ()
-specifier|public
-name|CaseKeeper
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|format (String text, String[] listOfWords)
 specifier|private
 name|String

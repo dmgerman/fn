@@ -48,12 +48,6 @@ name|Iso690FormatDate
 implements|implements
 name|LayoutFormatter
 block|{
-comment|/** Creates a new instance of iso690NamesAuthors */
-DECL|method|Iso690FormatDate ()
-specifier|public
-name|Iso690FormatDate
-parameter_list|()
-block|{     }
 annotation|@
 name|Override
 DECL|method|format (String s)

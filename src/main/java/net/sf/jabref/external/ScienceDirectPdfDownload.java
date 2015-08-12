@@ -59,11 +59,6 @@ implements|implements
 name|FullTextFinder
 block|{
 comment|//private static final String BASE_URL = "http://www.sciencedirect.com";
-DECL|method|ScienceDirectPdfDownload ()
-specifier|public
-name|ScienceDirectPdfDownload
-parameter_list|()
-block|{      }
 annotation|@
 name|Override
 DECL|method|supportsSite (URL url)

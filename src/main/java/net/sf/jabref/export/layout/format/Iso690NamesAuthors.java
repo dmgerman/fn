@@ -48,12 +48,6 @@ name|Iso690NamesAuthors
 implements|implements
 name|LayoutFormatter
 block|{
-comment|/** Creates a new instance of iso690NamesAuthors */
-DECL|method|Iso690NamesAuthors ()
-specifier|public
-name|Iso690NamesAuthors
-parameter_list|()
-block|{     }
 annotation|@
 name|Override
 DECL|method|format (String s)

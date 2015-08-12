@@ -140,15 +140,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|ImportFormatReader ()
-specifier|public
-name|ImportFormatReader
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|resetImportFormats ()
 specifier|public
 name|void

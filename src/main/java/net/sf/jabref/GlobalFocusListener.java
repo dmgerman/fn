@@ -71,11 +71,6 @@ specifier|private
 name|Component
 name|focused
 decl_stmt|;
-DECL|method|GlobalFocusListener ()
-specifier|public
-name|GlobalFocusListener
-parameter_list|()
-block|{     }
 annotation|@
 name|Override
 DECL|method|focusGained (FocusEvent e)

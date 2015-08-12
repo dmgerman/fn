@@ -92,11 +92,6 @@ name|FieldEditorFocusListener
 implements|implements
 name|FocusListener
 block|{
-DECL|method|FieldEditorFocusListener ()
-specifier|public
-name|FieldEditorFocusListener
-parameter_list|()
-block|{     }
 annotation|@
 name|Override
 DECL|method|focusGained (FocusEvent event)

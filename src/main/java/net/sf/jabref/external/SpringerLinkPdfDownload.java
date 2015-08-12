@@ -76,11 +76,6 @@ name|CONTENT_BASE_URL
 init|=
 literal|"http://www.springerlink.com/content/"
 decl_stmt|;
-DECL|method|SpringerLinkPdfDownload ()
-specifier|public
-name|SpringerLinkPdfDownload
-parameter_list|()
-block|{      }
 annotation|@
 name|Override
 DECL|method|supportsSite (URL url)

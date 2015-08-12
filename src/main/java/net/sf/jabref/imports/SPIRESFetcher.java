@@ -179,11 +179,6 @@ name|spiresHost
 init|=
 literal|"www-spires.slac.stanford.edu"
 decl_stmt|;
-DECL|method|SPIRESFetcher ()
-specifier|public
-name|SPIRESFetcher
-parameter_list|()
-block|{     }
 comment|/**      * Construct the query URL      *       * @param key      *            The key of the OAI2 entry that the url should poitn to.      *       * @return a String denoting the query URL      */
 DECL|method|constructUrl (String key)
 specifier|private

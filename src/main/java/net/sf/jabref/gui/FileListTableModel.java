@@ -162,11 +162,6 @@ name|FileListEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|method|FileListTableModel ()
-specifier|public
-name|FileListTableModel
-parameter_list|()
-block|{     }
 annotation|@
 name|Override
 DECL|method|getRowCount ()

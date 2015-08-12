@@ -67,11 +67,6 @@ name|BASE_URL
 init|=
 literal|"http://pubs.acs.org/doi/pdf/"
 decl_stmt|;
-DECL|method|ACSPdfDownload ()
-specifier|public
-name|ACSPdfDownload
-parameter_list|()
-block|{      }
 annotation|@
 name|Override
 DECL|method|supportsSite (URL url)
