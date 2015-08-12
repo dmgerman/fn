@@ -96,16 +96,6 @@ end_import
 
 begin_import
 import|import
-name|spl
-operator|.
-name|localization
-operator|.
-name|LocalizationSupport
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -885,9 +875,9 @@ name|this
 operator|.
 name|setTitle
 argument_list|(
-name|LocalizationSupport
+name|Localization
 operator|.
-name|message
+name|lang
 argument_list|(
 literal|"Import_Metadata_From_PDF"
 argument_list|)
