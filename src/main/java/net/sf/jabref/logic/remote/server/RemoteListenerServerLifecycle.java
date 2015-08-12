@@ -66,6 +66,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|BindException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Manages the RemoteListenerServerThread through typical life cycle methods.  *<p/>  * open -> start -> stop  * openAndStart -> stop  *<p/>  * Observer: isOpen, isNotStartedBefore  */
 end_comment
@@ -75,6 +85,8 @@ DECL|class|RemoteListenerServerLifecycle
 specifier|public
 class|class
 name|RemoteListenerServerLifecycle
+implements|implements
+name|AutoCloseable
 block|{
 DECL|field|remoteListenerServerThread
 specifier|private
@@ -161,23 +173,9 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|BindException
 name|e
 parameter_list|)
-block|{
-if|if
-condition|(
-operator|!
-name|e
-operator|.
-name|getMessage
-argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-literal|"Address already in use"
-argument_list|)
-condition|)
 block|{
 name|LOGGER
 operator|.
@@ -188,7 +186,17 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+name|result
+operator|=
+literal|null
+expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
 name|result
 operator|=
 literal|null
@@ -239,13 +247,19 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|isNotStartedBefore ()
-specifier|private
+specifier|public
 name|boolean
 name|isNotStartedBefore
 parameter_list|()
 block|{
 comment|// threads can only be started when in state NEW
 return|return
+name|remoteListenerServerThread
+operator|==
+literal|null
+condition|?
+literal|true
+else|:
 name|remoteListenerServerThread
 operator|.
 name|getState
@@ -278,6 +292,20 @@ name|port
 argument_list|)
 expr_stmt|;
 name|start
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|close ()
+specifier|public
+name|void
+name|close
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|stop
 argument_list|()
 expr_stmt|;
 block|}

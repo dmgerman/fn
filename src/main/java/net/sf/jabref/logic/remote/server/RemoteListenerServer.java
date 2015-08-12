@@ -239,16 +239,6 @@ argument_list|(
 name|ONE_SECOND_TIMEOUT
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|Thread
-operator|.
-name|interrupted
-argument_list|()
-condition|)
-block|{
-return|return;
-block|}
 name|Protocol
 name|protocol
 init|=
