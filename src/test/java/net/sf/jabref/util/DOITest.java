@@ -863,18 +863,6 @@ name|DOI
 operator|.
 name|isHttpDOI
 argument_list|(
-literal|"http://www.xyz.com"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|Assert
-operator|.
-name|assertFalse
-argument_list|(
-name|DOI
-operator|.
-name|isHttpDOI
-argument_list|(
 literal|"other stuff http://dx.doi.org/10.1000/182 ffgg"
 argument_list|)
 argument_list|)
