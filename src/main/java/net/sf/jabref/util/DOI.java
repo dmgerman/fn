@@ -76,6 +76,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Matcher
@@ -200,13 +210,59 @@ operator|.
 name|CASE_INSENSITIVE
 argument_list|)
 decl_stmt|;
+comment|/**      * Creates an Optional<DOI> from various schemes including URL, URN, and plain DOIs.      *      * Useful for suppressing the<c>IllegalArgumentException</c> of the Constructor      * and checking for Optional.isPresent() instead.      *      * @param doi the DOI string      * @return an Optional containing the DOI or an empty Optional      */
+DECL|method|build (String doi)
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|DOI
+argument_list|>
+name|build
+parameter_list|(
+name|String
+name|doi
+parameter_list|)
+block|{
+try|try
+block|{
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
+operator|new
+name|DOI
+argument_list|(
+name|doi
+argument_list|)
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|NullPointerException
+decl||
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
+block|}
+block|}
 comment|// DOI
 DECL|field|doi
 specifier|private
+specifier|final
 name|String
 name|doi
 decl_stmt|;
-comment|/**      * Creates a DOI from various schemes including URL, URN, and plain DOIs.      *      * @param doi the DOI string      * @throws NullPointerException if DOI is null      * @throws IllegalArgumentException if doi does not include a valid DOI      */
+comment|/**      * Creates a DOI from various schemes including URL, URN, and plain DOIs.      *      * @param doi the DOI string      * @throws NullPointerException if DOI is null      * @throws IllegalArgumentException if doi does not include a valid DOI      * @return an instance of the DOI class      */
 DECL|method|DOI (String doi)
 specifier|public
 name|DOI
@@ -230,12 +286,14 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
-comment|// URL decoding
+comment|// HTTP URL decoding
 if|if
 condition|(
-name|isHttpDOI
-argument_list|(
 name|doi
+operator|.
+name|matches
+argument_list|(
+name|HTTP_EXP
 argument_list|)
 condition|)
 block|{
@@ -332,84 +390,6 @@ literal|" is not a valid DOI."
 argument_list|)
 throw|;
 block|}
-block|}
-comment|/**      * Check if the String matches a plain DOI      *      * @param value the String to check      * @return true if value contains a DOI      */
-DECL|method|isDOI (String value)
-specifier|public
-specifier|static
-name|boolean
-name|isDOI
-parameter_list|(
-name|String
-name|value
-parameter_list|)
-block|{
-if|if
-condition|(
-name|value
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-comment|// whitespace
-name|value
-operator|=
-name|value
-operator|.
-name|trim
-argument_list|()
-expr_stmt|;
-return|return
-name|value
-operator|.
-name|matches
-argument_list|(
-name|DOI_EXP
-argument_list|)
-return|;
-block|}
-comment|/**      * Check if the String matches a URI presentation of a DOI      *      *<example>      *     The Doi name "10.1006/jmbi.1998.2354" would be made an actionable link as "http://doi.org/10.1006/jmbi.1998.2354".      *</example>      *      * @param value the String to check      * @return true if value contains a URI presentation of a DOI      */
-DECL|method|isHttpDOI (String value)
-specifier|public
-specifier|static
-name|boolean
-name|isHttpDOI
-parameter_list|(
-name|String
-name|value
-parameter_list|)
-block|{
-if|if
-condition|(
-name|value
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-comment|// whitespace
-name|value
-operator|=
-name|value
-operator|.
-name|trim
-argument_list|()
-expr_stmt|;
-return|return
-name|value
-operator|.
-name|matches
-argument_list|(
-name|HTTP_EXP
-argument_list|)
-return|;
 block|}
 comment|/**      * Return the plain DOI      *      * @return the plain DOI value.      */
 DECL|method|getDOI ()
