@@ -2101,12 +2101,12 @@ expr_stmt|;
 name|link
 operator|=
 operator|new
-name|Doi
+name|DOI
 argument_list|(
 name|link
 argument_list|)
 operator|.
-name|getUri
+name|getURL
 argument_list|()
 expr_stmt|;
 block|}
@@ -2118,9 +2118,9 @@ comment|// To prevent mangling of working URLs I'm disabling this check if the l
 comment|// a full http link:
 if|if
 condition|(
-name|Doi
+name|DOI
 operator|.
-name|containsDoi
+name|isDOI
 argument_list|(
 name|link
 argument_list|)
@@ -2137,12 +2137,12 @@ block|{
 name|link
 operator|=
 operator|new
-name|Doi
+name|DOI
 argument_list|(
 name|link
 argument_list|)
 operator|.
-name|getUri
+name|getURL
 argument_list|()
 expr_stmt|;
 block|}

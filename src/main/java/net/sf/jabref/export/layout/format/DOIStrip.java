@@ -30,7 +30,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|Doi
+name|DOI
 import|;
 end_import
 
@@ -88,12 +88,12 @@ else|else
 block|{
 return|return
 operator|new
-name|Doi
+name|DOI
 argument_list|(
 name|fieldText
 argument_list|)
 operator|.
-name|getDoi
+name|getDOI
 argument_list|()
 return|;
 block|}

@@ -148,7 +148,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|Doi
+name|DOI
 import|;
 end_import
 
@@ -333,12 +333,12 @@ init|=
 name|lookForFullTextAtURL
 argument_list|(
 operator|new
-name|Doi
+name|DOI
 argument_list|(
 name|doiText
 argument_list|)
 operator|.
-name|getUri
+name|getURL
 argument_list|()
 argument_list|)
 decl_stmt|;
