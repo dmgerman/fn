@@ -868,7 +868,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|removeDOIfromBibtexEntryField (BibtexEntry bes, String fieldName, NamedCompound ce)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|removeDOIfromBibtexEntryField
@@ -3111,7 +3111,7 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|_doi
+name|unused
 lambda|->
 name|removeDOIfromBibtexEntryField
 argument_list|(
