@@ -51,7 +51,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Will strip any prefixes from the Doi field, in order to output only the Doi number  *   * @author mark-schenk   * @author olly98  *  */
+comment|/**  * Will strip any prefixes from the Doi field, in order to output only the Doi number  */
 end_comment
 
 begin_class
@@ -73,30 +73,29 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-if|if
-condition|(
-name|fieldText
-operator|==
-literal|null
-condition|)
-block|{
 return|return
-literal|null
-return|;
-block|}
-else|else
-block|{
-return|return
-operator|new
 name|DOI
+operator|.
+name|build
 argument_list|(
 name|fieldText
 argument_list|)
 operator|.
+name|map
+argument_list|(
+name|doi
+lambda|->
+name|doi
+operator|.
 name|getDOI
 argument_list|()
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 return|;
-block|}
 block|}
 block|}
 end_class

@@ -51,7 +51,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to fix [ 1588028 ] export HTML table doi url.  *   * Will prepend "http://dx.doi.org/" if only doi number and not a URL is given.  *  * @author mark-schenk  * @author olly98  */
+comment|/**  * Used to fix [ 1588028 ] export HTML table DOI URL.  *   * Will prepend "http://doi.org/" if only DOI and not an URL is given.  */
 end_comment
 
 begin_class
@@ -73,41 +73,28 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-if|if
-condition|(
-name|fieldText
-operator|==
-literal|null
-condition|)
-block|{
 return|return
-literal|null
-return|;
-block|}
-if|if
-condition|(
-name|fieldText
-operator|.
-name|trim
-argument_list|()
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-return|return
-literal|""
-return|;
-block|}
-return|return
-operator|new
 name|DOI
+operator|.
+name|build
 argument_list|(
 name|fieldText
 argument_list|)
 operator|.
+name|map
+argument_list|(
+name|doi
+lambda|->
+name|doi
+operator|.
 name|getURL
 argument_list|()
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 return|;
 block|}
 block|}
