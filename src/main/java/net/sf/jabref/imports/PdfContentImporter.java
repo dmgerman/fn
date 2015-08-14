@@ -128,7 +128,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|Doi
+name|DOI
 import|;
 end_import
 
@@ -1085,12 +1085,12 @@ name|String
 name|doi
 init|=
 operator|new
-name|Doi
+name|DOI
 argument_list|(
 name|textResult
 argument_list|)
 operator|.
-name|getDoi
+name|getDOI
 argument_list|()
 decl_stmt|;
 if|if

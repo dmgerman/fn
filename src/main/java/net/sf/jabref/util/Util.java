@@ -110,37 +110,7 @@ name|java
 operator|.
 name|net
 operator|.
-name|URI
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URISyntaxException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URLConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URLDecoder
+name|*
 import|;
 end_import
 
@@ -174,87 +144,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringTokenizer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TreeSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
+name|*
 import|;
 end_import
 
@@ -2040,8 +1930,7 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
-comment|// First check if it is enclosed in \\url{}. If so, remove
-comment|// the wrapper.
+comment|// First check if it is enclosed in \\url{}. If so, remove the wrapper.
 if|if
 condition|(
 name|link
@@ -2076,6 +1965,14 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+comment|// DOI cleanup
+comment|// converts doi-only link to full http address
+comment|// Morten Alver 6 Nov 2012: this extracts a nonfunctional Doi from some complete
+comment|// http addresses (e.g. http://onlinelibrary.wiley.com/doi/10.1002/rra.999/abstract, where
+comment|// the trailing "/abstract" is included but doesn't lead to a resolvable Doi).
+comment|// To prevent mangling of working URLs I'm disabling this check if the link is already
+comment|// a full http link:
+comment|// TODO: not sure if this is allowed
 if|if
 condition|(
 name|link
@@ -2101,51 +1998,56 @@ expr_stmt|;
 name|link
 operator|=
 operator|new
-name|Doi
+name|DOI
 argument_list|(
 name|link
 argument_list|)
 operator|.
-name|getUri
+name|getURL
 argument_list|()
 expr_stmt|;
 block|}
-comment|// converts doi-only link to full http address
-comment|// Morten Alver 6 Nov 2012: this extracts a nonfunctional Doi from some complete
-comment|// http addresses (e.g. http://onlinelibrary.wiley.com/doi/10.1002/rra.999/abstract, where
-comment|// the trailing "/abstract" is included but doesn't lead to a resolvable Doi).
-comment|// To prevent mangling of working URLs I'm disabling this check if the link is already
-comment|// a full http link:
-if|if
-condition|(
-name|Doi
+name|Optional
+argument_list|<
+name|DOI
+argument_list|>
+name|doi
+init|=
+name|DOI
 operator|.
-name|containsDoi
+name|build
 argument_list|(
 name|link
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|doi
+operator|.
+name|isPresent
+argument_list|()
 operator|&&
 operator|!
 name|link
 operator|.
-name|startsWith
+name|matches
 argument_list|(
-literal|"http://"
+literal|"^https?://.*"
 argument_list|)
 condition|)
 block|{
 name|link
 operator|=
-operator|new
-name|Doi
-argument_list|(
-name|link
-argument_list|)
+name|doi
 operator|.
-name|getUri
+name|get
+argument_list|()
+operator|.
+name|getURL
 argument_list|()
 expr_stmt|;
 block|}
+comment|// FIXME: everything below is really flawed atm
 name|link
 operator|=
 name|link

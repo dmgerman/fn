@@ -63,10 +63,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|DoiCheckTest
+DECL|class|DOICheckTest
 specifier|public
 class|class
-name|DoiCheckTest
+name|DOICheckTest
 block|{
 annotation|@
 name|Test

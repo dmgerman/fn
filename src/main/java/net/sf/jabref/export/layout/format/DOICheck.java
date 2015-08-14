@@ -30,7 +30,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|Doi
+name|DOI
 import|;
 end_import
 
@@ -51,7 +51,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to fix [ 1588028 ] export HTML table doi url.  *   * Will prepend "http://dx.doi.org/" if only doi number and not a URL is given.  *  * @author mark-schenk  * @author olly98  */
+comment|/**  * Used to fix [ 1588028 ] export HTML table DOI URL.  *   * Will prepend "http://doi.org/" if only DOI and not an URL is given.  */
 end_comment
 
 begin_class
@@ -84,48 +84,29 @@ return|return
 literal|null
 return|;
 block|}
-if|if
-condition|(
-name|fieldText
-operator|.
-name|trim
-argument_list|()
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
 return|return
-literal|""
-return|;
-block|}
-if|if
-condition|(
-name|Doi
+name|DOI
 operator|.
-name|containsHttpDoi
-argument_list|(
-name|fieldText
-argument_list|)
-condition|)
-block|{
-return|return
-name|fieldText
-return|;
-block|}
-else|else
-block|{
-return|return
-operator|new
-name|Doi
+name|build
 argument_list|(
 name|fieldText
 argument_list|)
 operator|.
-name|getUri
+name|map
+argument_list|(
+name|doi
+lambda|->
+name|doi
+operator|.
+name|getURL
 argument_list|()
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+name|fieldText
+argument_list|)
 return|;
-block|}
 block|}
 block|}
 end_class
