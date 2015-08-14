@@ -2769,14 +2769,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Open "
-operator|+
+literal|"Open %0 file"
+argument_list|,
 name|fileType
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" file"
 argument_list|)
 argument_list|)
 expr_stmt|;
