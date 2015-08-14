@@ -73,6 +73,17 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
+if|if
+condition|(
+name|fieldText
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 return|return
 name|DOI
 operator|.
@@ -93,7 +104,7 @@ argument_list|)
 operator|.
 name|orElse
 argument_list|(
-literal|""
+name|fieldText
 argument_list|)
 return|;
 block|}
