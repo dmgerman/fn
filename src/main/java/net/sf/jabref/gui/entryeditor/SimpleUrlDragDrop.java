@@ -4,13 +4,17 @@ comment|/* Copyright (C) 2004 E. Putrycz  All programs in this directory and sub
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui.entryeditor
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
+operator|.
+name|entryeditor
 package|;
 end_package
 
@@ -122,20 +126,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|EntryEditor
-operator|.
-name|StoreFieldAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|fieldeditors
@@ -224,16 +214,20 @@ decl_stmt|;
 DECL|field|storeFieldAction
 specifier|private
 specifier|final
+name|EntryEditor
+operator|.
 name|StoreFieldAction
 name|storeFieldAction
 decl_stmt|;
-DECL|method|SimpleUrlDragDrop (FieldEditor _editor, StoreFieldAction _storeFieldAction)
+DECL|method|SimpleUrlDragDrop (FieldEditor _editor, EntryEditor.StoreFieldAction _storeFieldAction)
 specifier|public
 name|SimpleUrlDragDrop
 parameter_list|(
 name|FieldEditor
 name|_editor
 parameter_list|,
+name|EntryEditor
+operator|.
 name|StoreFieldAction
 name|_storeFieldAction
 parameter_list|)

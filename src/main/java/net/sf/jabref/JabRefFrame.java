@@ -2077,6 +2077,7 @@ literal|true
 argument_list|)
 decl_stmt|;
 DECL|field|nextTab
+specifier|public
 specifier|final
 name|AbstractAction
 name|nextTab
@@ -2088,6 +2089,7 @@ literal|true
 argument_list|)
 decl_stmt|;
 DECL|field|prevTab
+specifier|public
 specifier|final
 name|AbstractAction
 name|prevTab
