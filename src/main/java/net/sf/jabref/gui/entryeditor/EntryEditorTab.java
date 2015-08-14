@@ -1,16 +1,20 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2014 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui.entryeditor
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
+operator|.
+name|entryeditor
 package|;
 end_package
 
@@ -121,6 +125,18 @@ import|import
 name|javax
 operator|.
 name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
 operator|.
 name|*
 import|;
@@ -313,11 +329,7 @@ name|editors
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|FieldEditor
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|activeField
@@ -330,6 +342,23 @@ DECL|field|fileListEditor
 specifier|public
 name|FileListEditor
 name|fileListEditor
+decl_stmt|;
+DECL|field|entry
+specifier|private
+name|BibtexEntry
+name|entry
+decl_stmt|;
+DECL|field|fieldListener
+specifier|private
+specifier|final
+name|FocusListener
+name|fieldListener
+init|=
+operator|new
+name|EntryEditorTabFocusListener
+argument_list|(
+name|this
+argument_list|)
 decl_stmt|;
 DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List<String> fields, EntryEditor parent, boolean addKeyField, boolean compressed, String name)
 specifier|public
@@ -448,7 +477,7 @@ name|title
 parameter_list|)
 block|{
 name|InputMap
-name|im
+name|inputMap
 init|=
 name|panel
 operator|.
@@ -460,14 +489,14 @@ name|WHEN_FOCUSED
 argument_list|)
 decl_stmt|;
 name|ActionMap
-name|am
+name|actionMap
 init|=
 name|panel
 operator|.
 name|getActionMap
 argument_list|()
 decl_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -483,7 +512,7 @@ argument_list|,
 literal|"prev"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -494,7 +523,7 @@ operator|.
 name|prevEntryAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -510,7 +539,7 @@ argument_list|,
 literal|"next"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -521,7 +550,7 @@ operator|.
 name|nextEntryAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -537,7 +566,7 @@ argument_list|,
 literal|"store"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -548,7 +577,7 @@ operator|.
 name|storeFieldAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -564,7 +593,7 @@ argument_list|,
 literal|"right"
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -580,7 +609,7 @@ argument_list|,
 literal|"right"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -591,7 +620,7 @@ operator|.
 name|switchLeftAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -607,7 +636,7 @@ argument_list|,
 literal|"left"
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -623,7 +652,7 @@ argument_list|,
 literal|"left"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -634,7 +663,7 @@ operator|.
 name|switchRightAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -650,7 +679,7 @@ argument_list|,
 literal|"help"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -661,7 +690,7 @@ operator|.
 name|helpAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -677,7 +706,7 @@ argument_list|,
 literal|"save"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -688,7 +717,7 @@ operator|.
 name|saveDatabaseAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -704,7 +733,7 @@ argument_list|,
 literal|"nexttab"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -717,7 +746,7 @@ operator|.
 name|nextTab
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -733,7 +762,7 @@ argument_list|,
 literal|"prevtab"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -762,7 +791,6 @@ literal|2
 else|:
 literal|1
 decl_stmt|;
-comment|//String rowSpec = "left:pref, 4dlu, fill:pref:grow, 4dlu, fill:pref";
 name|String
 name|colSpec
 init|=
@@ -775,7 +803,7 @@ else|:
 literal|"fill:pref, 1dlu, fill:pref:grow, 1dlu, fill:pref"
 decl_stmt|;
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
@@ -816,7 +844,7 @@ name|i
 operator|++
 control|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -829,7 +857,7 @@ condition|(
 name|addKeyField
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -840,7 +868,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|sb
+name|stringBuilder
 operator|.
 name|length
 argument_list|()
@@ -848,18 +876,18 @@ operator|>=
 literal|2
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|delete
 argument_list|(
-name|sb
+name|stringBuilder
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|2
 argument_list|,
-name|sb
+name|stringBuilder
 operator|.
 name|length
 argument_list|()
@@ -869,7 +897,7 @@ block|}
 name|String
 name|rowSpec
 init|=
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -924,7 +952,7 @@ argument_list|)
 decl_stmt|;
 specifier|final
 name|FieldEditor
-name|ta
+name|fieldEditor
 decl_stmt|;
 name|int
 name|defaultHeight
@@ -958,7 +986,7 @@ operator|.
 name|FILE_LIST_EDITOR
 condition|)
 block|{
-name|ta
+name|fieldEditor
 operator|=
 operator|new
 name|FileListEditor
@@ -985,7 +1013,7 @@ operator|=
 operator|(
 name|FileListEditor
 operator|)
-name|ta
+name|fieldEditor
 expr_stmt|;
 name|defaultHeight
 operator|=
@@ -994,7 +1022,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|ta
+name|fieldEditor
 operator|=
 operator|new
 name|FieldTextArea
@@ -1017,12 +1045,12 @@ argument_list|(
 operator|(
 name|FieldTextArea
 operator|)
-name|ta
+name|fieldEditor
 argument_list|)
 expr_stmt|;
 name|defaultHeight
 operator|=
-name|ta
+name|fieldEditor
 operator|.
 name|getPane
 argument_list|()
@@ -1033,9 +1061,8 @@ operator|.
 name|height
 expr_stmt|;
 block|}
-comment|//ta.addUndoableEditListener(bPanel.undoListener);
 name|JComponent
-name|ex
+name|extra
 init|=
 name|parent
 operator|.
@@ -1046,12 +1073,12 @@ index|[
 name|i
 index|]
 argument_list|,
-name|ta
+name|fieldEditor
 argument_list|)
 decl_stmt|;
 comment|// Add autocompleter listener, if required for this field:
 name|AutoCompleter
-name|autoComp
+name|autoCompleter
 init|=
 name|bPanel
 operator|.
@@ -1067,41 +1094,41 @@ index|]
 argument_list|)
 decl_stmt|;
 name|AutoCompleteListener
-name|acl
+name|autoCompleteListener
 init|=
 literal|null
 decl_stmt|;
 if|if
 condition|(
-name|autoComp
+name|autoCompleter
 operator|!=
 literal|null
 condition|)
 block|{
-name|acl
+name|autoCompleteListener
 operator|=
 operator|new
 name|AutoCompleteListener
 argument_list|(
-name|autoComp
+name|autoCompleter
 argument_list|)
 expr_stmt|;
 block|}
 name|setupJTextComponent
 argument_list|(
-name|ta
+name|fieldEditor
 operator|.
 name|getTextComponent
 argument_list|()
 argument_list|,
-name|acl
+name|autoCompleteListener
 argument_list|)
 expr_stmt|;
-name|ta
+name|fieldEditor
 operator|.
 name|setAutoCompleteListener
 argument_list|(
-name|acl
+name|autoCompleteListener
 argument_list|)
 expr_stmt|;
 comment|// Store the editor for later reference:
@@ -1114,7 +1141,7 @@ index|[
 name|i
 index|]
 argument_list|,
-name|ta
+name|fieldEditor
 argument_list|)
 expr_stmt|;
 if|if
@@ -1126,17 +1153,16 @@ condition|)
 block|{
 name|activeField
 operator|=
-name|ta
+name|fieldEditor
 expr_stmt|;
 block|}
-comment|//System.out.println(fields[i]+": "+BibtexFields.getFieldWeight(fields[i]));
 if|if
 condition|(
 operator|!
 name|compressed
 condition|)
 block|{
-name|ta
+name|fieldEditor
 operator|.
 name|getPane
 argument_list|()
@@ -1164,7 +1190,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|ta
+name|fieldEditor
 operator|.
 name|getLabel
 argument_list|()
@@ -1172,7 +1198,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|ex
+name|extra
 operator|==
 literal|null
 condition|)
@@ -1181,7 +1207,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|ta
+name|fieldEditor
 operator|.
 name|getPane
 argument_list|()
@@ -1196,7 +1222,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|ta
+name|fieldEditor
 operator|.
 name|getPane
 argument_list|()
@@ -1222,7 +1248,7 @@ name|pan
 operator|.
 name|add
 argument_list|(
-name|ex
+name|extra
 argument_list|,
 name|BorderLayout
 operator|.
@@ -1265,7 +1291,7 @@ condition|)
 block|{
 specifier|final
 name|FieldTextField
-name|tf
+name|textField
 init|=
 operator|new
 name|FieldTextField
@@ -1289,10 +1315,9 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-comment|//tf.addUndoableEditListener(bPanel.undoListener);
 name|setupJTextComponent
 argument_list|(
-name|tf
+name|textField
 argument_list|,
 literal|null
 argument_list|)
@@ -1303,7 +1328,7 @@ name|put
 argument_list|(
 literal|"bibtexkey"
 argument_list|,
-name|tf
+name|textField
 argument_list|)
 expr_stmt|;
 comment|/*              * If the key field is the only field, we should have only one              * editor, and this one should be set as active initially:              */
@@ -1319,7 +1344,7 @@ condition|)
 block|{
 name|activeField
 operator|=
-name|tf
+name|textField
 expr_stmt|;
 block|}
 name|builder
@@ -1331,7 +1356,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|tf
+name|textField
 operator|.
 name|getLabel
 argument_list|()
@@ -1341,18 +1366,13 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|tf
+name|textField
 argument_list|,
 literal|3
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|field|entry
-specifier|private
-name|BibtexEntry
-name|entry
-decl_stmt|;
 DECL|method|getEntry ()
 specifier|private
 name|BibtexEntry
@@ -1363,19 +1383,19 @@ return|return
 name|entry
 return|;
 block|}
-DECL|method|isFieldModified (FieldEditor f)
+DECL|method|isFieldModified (FieldEditor fieldEditor)
 specifier|private
 name|boolean
 name|isFieldModified
 parameter_list|(
 name|FieldEditor
-name|f
+name|fieldEditor
 parameter_list|)
 block|{
 name|String
 name|text
 init|=
-name|f
+name|fieldEditor
 operator|.
 name|getText
 argument_list|()
@@ -1397,7 +1417,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|f
+name|fieldEditor
 operator|.
 name|getFieldName
 argument_list|()
@@ -1416,7 +1436,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|f
+name|fieldEditor
 operator|.
 name|getFieldName
 argument_list|()
@@ -1440,13 +1460,13 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|markIfModified (FieldEditor f)
+DECL|method|markIfModified (FieldEditor fieldEditor)
 specifier|public
 name|void
 name|markIfModified
 parameter_list|(
 name|FieldEditor
-name|f
+name|fieldEditor
 parameter_list|)
 block|{
 comment|// Only mark as changed if not already is and the field was indeed
@@ -1466,7 +1486,7 @@ argument_list|()
 operator|&&
 name|isFieldModified
 argument_list|(
-name|f
+name|fieldEditor
 argument_list|)
 condition|)
 block|{
@@ -1489,19 +1509,19 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Only sets the activeField variable but does not focus it.      *       * Call activate afterwards.      *       * @param c      */
-DECL|method|setActive (FieldEditor c)
+comment|/**      * Only sets the activeField variable but does not focus it.      *<p>      * Call activate afterwards.      *      * @param fieldEditor      */
+DECL|method|setActive (FieldEditor fieldEditor)
 specifier|public
 name|void
 name|setActive
 parameter_list|(
 name|FieldEditor
-name|c
+name|fieldEditor
 parameter_list|)
 block|{
 name|activeField
 operator|=
-name|c
+name|fieldEditor
 expr_stmt|;
 block|}
 DECL|method|getActive ()
@@ -1561,7 +1581,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Reset all fields from the data in the BibtexEntry.      *       */
+comment|/**      * Reset all fields from the data in the BibtexEntry.      */
 DECL|method|updateAll ()
 specifier|public
 name|void
@@ -1699,7 +1719,7 @@ literal|false
 return|;
 block|}
 name|FieldEditor
-name|ed
+name|fieldEditor
 init|=
 name|editors
 operator|.
@@ -1708,7 +1728,7 @@ argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
-name|ed
+name|fieldEditor
 operator|.
 name|setText
 argument_list|(
@@ -1841,8 +1861,8 @@ return|return
 name|parent
 return|;
 block|}
-comment|/**      * Set up key bindings and focus listener for the FieldEditor.      *       * @param component      */
-DECL|method|setupJTextComponent (final JComponent component, final AutoCompleteListener acl)
+comment|/**      * Set up key bindings and focus listener for the FieldEditor.      *      * @param component      */
+DECL|method|setupJTextComponent (final JComponent component, final AutoCompleteListener autoCompleteListener)
 specifier|private
 name|void
 name|setupJTextComponent
@@ -1853,7 +1873,7 @@ name|component
 parameter_list|,
 specifier|final
 name|AutoCompleteListener
-name|acl
+name|autoCompleteListener
 parameter_list|)
 block|{
 comment|// Here we add focus listeners to the component. The funny code is because we need
@@ -1866,7 +1886,7 @@ comment|// it to call fieldListener afterwards. If no AutoCompleteListener is us
 comment|// add the fieldListener normally.
 if|if
 condition|(
-name|acl
+name|autoCompleteListener
 operator|!=
 literal|null
 condition|)
@@ -1875,17 +1895,17 @@ name|component
 operator|.
 name|addKeyListener
 argument_list|(
-name|acl
+name|autoCompleteListener
 argument_list|)
 expr_stmt|;
 name|component
 operator|.
 name|addFocusListener
 argument_list|(
-name|acl
+name|autoCompleteListener
 argument_list|)
 expr_stmt|;
-name|acl
+name|autoCompleteListener
 operator|.
 name|setNextFocusListener
 argument_list|(
@@ -1904,7 +1924,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|InputMap
-name|im
+name|inputMap
 init|=
 name|component
 operator|.
@@ -1916,14 +1936,14 @@ name|WHEN_FOCUSED
 argument_list|)
 decl_stmt|;
 name|ActionMap
-name|am
+name|actionMap
 init|=
 name|component
 operator|.
 name|getActionMap
 argument_list|()
 decl_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -1939,7 +1959,7 @@ argument_list|,
 literal|"prev"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -1950,7 +1970,7 @@ operator|.
 name|prevEntryAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -1966,7 +1986,7 @@ argument_list|,
 literal|"next"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -1977,7 +1997,7 @@ operator|.
 name|nextEntryAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -1993,7 +2013,7 @@ argument_list|,
 literal|"store"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -2004,7 +2024,7 @@ operator|.
 name|storeFieldAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -2020,7 +2040,7 @@ argument_list|,
 literal|"right"
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -2036,7 +2056,7 @@ argument_list|,
 literal|"right"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -2047,7 +2067,7 @@ operator|.
 name|switchLeftAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -2063,7 +2083,7 @@ argument_list|,
 literal|"left"
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -2079,7 +2099,7 @@ argument_list|,
 literal|"left"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -2090,7 +2110,7 @@ operator|.
 name|switchRightAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -2106,7 +2126,7 @@ argument_list|,
 literal|"help"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -2117,7 +2137,7 @@ operator|.
 name|helpAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -2133,7 +2153,7 @@ argument_list|,
 literal|"save"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -2144,7 +2164,7 @@ operator|.
 name|saveDatabaseAction
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -2160,7 +2180,7 @@ argument_list|,
 literal|"nexttab"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -2173,7 +2193,7 @@ operator|.
 name|nextTab
 argument_list|)
 expr_stmt|;
-name|im
+name|inputMap
 operator|.
 name|put
 argument_list|(
@@ -2189,7 +2209,7 @@ argument_list|,
 literal|"prevtab"
 argument_list|)
 expr_stmt|;
-name|am
+name|actionMap
 operator|.
 name|put
 argument_list|(
@@ -2202,8 +2222,6 @@ operator|.
 name|prevTab
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|HashSet
 argument_list|<
 name|AWTKeyStroke
@@ -2212,9 +2230,7 @@ name|keys
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|AWTKeyStroke
-argument_list|>
+argument_list|<>
 argument_list|(
 name|component
 operator|.
@@ -2258,9 +2274,7 @@ name|keys
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|AWTKeyStroke
-argument_list|>
+argument_list|<>
 argument_list|(
 name|component
 operator|.
@@ -2301,35 +2315,6 @@ name|keys
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|t
-parameter_list|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|t
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-DECL|field|fieldListener
-specifier|private
-specifier|final
-name|FocusListener
-name|fieldListener
-init|=
-operator|new
-name|EntryEditorTabFocusListener
-argument_list|(
-name|this
-argument_list|)
-decl_stmt|;
 block|}
 end_class
 

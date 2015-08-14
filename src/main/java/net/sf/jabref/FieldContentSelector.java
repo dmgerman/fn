@@ -831,6 +831,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|rebuildComboBox ()
+specifier|public
 name|void
 name|rebuildComboBox
 parameter_list|()

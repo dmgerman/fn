@@ -22,6 +22,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|entryeditor
+operator|.
 name|EntryEditor
 import|;
 end_import

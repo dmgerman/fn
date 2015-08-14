@@ -454,6 +454,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|entryeditor
+operator|.
+name|EntryEditor
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|fieldeditors
 operator|.
 name|FieldEditor
@@ -1675,6 +1691,7 @@ literal|3
 decl_stmt|;
 comment|/*       * The database shown in this panel.      */
 DECL|field|database
+specifier|public
 name|BibtexDatabase
 name|database
 decl_stmt|;
@@ -1991,6 +2008,7 @@ comment|// The number of hits in the latest search.
 comment|// Potential use in hiding non-hits completely.
 comment|// MetaData parses, keeps and writes meta data.
 DECL|field|metaData
+specifier|public
 specifier|final
 name|MetaData
 name|metaData
