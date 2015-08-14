@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2014 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -125,15 +125,15 @@ name|EntryEditorTabFocusListener
 implements|implements
 name|FocusListener
 block|{
-DECL|field|c
+DECL|field|textComponent
 specifier|private
 name|JTextComponent
-name|c
+name|textComponent
 decl_stmt|;
-DECL|field|d
+DECL|field|documentListener
 specifier|private
 name|DocumentListener
-name|d
+name|documentListener
 decl_stmt|;
 DECL|field|entryEditorTab
 specifier|private
@@ -159,13 +159,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|focusGained (FocusEvent e)
+DECL|method|focusGained (FocusEvent event)
 specifier|public
 name|void
 name|focusGained
 parameter_list|(
 name|FocusEvent
-name|e
+name|event
 parameter_list|)
 block|{
 synchronized|synchronized
@@ -175,33 +175,33 @@ init|)
 block|{
 if|if
 condition|(
-name|c
+name|textComponent
 operator|!=
 literal|null
 condition|)
 block|{
-name|c
+name|textComponent
 operator|.
 name|getDocument
 argument_list|()
 operator|.
 name|removeDocumentListener
 argument_list|(
-name|d
+name|documentListener
 argument_list|)
 expr_stmt|;
-name|c
+name|textComponent
 operator|=
 literal|null
 expr_stmt|;
-name|d
+name|documentListener
 operator|=
 literal|null
 expr_stmt|;
 block|}
 if|if
 condition|(
-name|e
+name|event
 operator|.
 name|getSource
 argument_list|()
@@ -209,18 +209,18 @@ operator|instanceof
 name|JTextComponent
 condition|)
 block|{
-name|c
+name|textComponent
 operator|=
 operator|(
 name|JTextComponent
 operator|)
-name|e
+name|event
 operator|.
 name|getSource
 argument_list|()
 expr_stmt|;
 comment|/**                  * [ 1553552 ] Not properly detecting changes to flag as                  * changed                  */
-name|d
+name|documentListener
 operator|=
 operator|new
 name|DocumentListener
@@ -232,7 +232,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|c
+name|textComponent
 operator|.
 name|isFocusOwner
 argument_list|()
@@ -245,7 +245,7 @@ argument_list|(
 operator|(
 name|FieldEditor
 operator|)
-name|c
+name|textComponent
 argument_list|)
 expr_stmt|;
 block|}
@@ -294,21 +294,21 @@ expr_stmt|;
 block|}
 block|}
 expr_stmt|;
-name|c
+name|textComponent
 operator|.
 name|getDocument
 argument_list|()
 operator|.
 name|addDocumentListener
 argument_list|(
-name|d
+name|documentListener
 argument_list|)
 expr_stmt|;
 comment|/**                  * Makes the vertical scroll panel view follow the focus                  */
 name|Component
-name|cScrollPane
+name|scrollPane
 init|=
-name|c
+name|textComponent
 operator|.
 name|getParent
 argument_list|()
@@ -318,7 +318,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|cScrollPane
+name|scrollPane
 operator|instanceof
 name|JScrollPane
 condition|)
@@ -329,7 +329,7 @@ init|=
 operator|(
 name|JScrollPane
 operator|)
-name|cScrollPane
+name|scrollPane
 decl_stmt|;
 name|Component
 name|cPane
@@ -380,7 +380,7 @@ argument_list|(
 operator|(
 name|FieldEditor
 operator|)
-name|e
+name|event
 operator|.
 name|getSource
 argument_list|()
@@ -389,13 +389,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|focusLost (FocusEvent e)
+DECL|method|focusLost (FocusEvent event)
 specifier|public
 name|void
 name|focusLost
 parameter_list|(
 name|FocusEvent
-name|e
+name|event
 parameter_list|)
 block|{
 synchronized|synchronized
@@ -405,26 +405,26 @@ init|)
 block|{
 if|if
 condition|(
-name|c
+name|textComponent
 operator|!=
 literal|null
 condition|)
 block|{
-name|c
+name|textComponent
 operator|.
 name|getDocument
 argument_list|()
 operator|.
 name|removeDocumentListener
 argument_list|(
-name|d
+name|documentListener
 argument_list|)
 expr_stmt|;
-name|c
+name|textComponent
 operator|=
 literal|null
 expr_stmt|;
-name|d
+name|documentListener
 operator|=
 literal|null
 expr_stmt|;
@@ -433,7 +433,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|e
+name|event
 operator|.
 name|isTemporary
 argument_list|()
@@ -446,7 +446,7 @@ argument_list|()
 operator|.
 name|updateField
 argument_list|(
-name|e
+name|event
 operator|.
 name|getSource
 argument_list|()
