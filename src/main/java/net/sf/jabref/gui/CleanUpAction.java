@@ -384,11 +384,11 @@ name|CleanUpAction
 extends|extends
 name|AbstractWorker
 block|{
+DECL|field|AKS_AUTO_NAMING_PDFS_AGAIN
 specifier|private
 specifier|static
 specifier|final
 name|String
-DECL|field|AKS_AUTO_NAMING_PDFS_AGAIN
 name|AKS_AUTO_NAMING_PDFS_AGAIN
 init|=
 literal|"AskAutoNamingPDFsAgain"
@@ -538,8 +538,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|AKS_AUTO_NAMING_PDFS_AGAIN
 argument_list|,
 name|Boolean
@@ -551,8 +549,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_SUPERSCRIPTS
 argument_list|,
 name|Boolean
@@ -564,8 +560,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_DOI
 argument_list|,
 name|Boolean
@@ -577,8 +571,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_MONTH
 argument_list|,
 name|Boolean
@@ -590,8 +582,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_PAGENUMBERS
 argument_list|,
 name|Boolean
@@ -603,8 +593,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_MAKEPATHSRELATIVE
 argument_list|,
 name|Boolean
@@ -616,8 +604,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_RENAMEPDF
 argument_list|,
 name|Boolean
@@ -629,8 +615,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_RENAMEPDF_ONLYRELATIVE_PATHS
 argument_list|,
 name|Boolean
@@ -642,8 +626,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_UPGRADE_EXTERNAL_LINKS
 argument_list|,
 name|Boolean
@@ -655,8 +637,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_MAKEPATHSRELATIVE
 argument_list|,
 name|Boolean
@@ -668,8 +648,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_HTML
 argument_list|,
 name|Boolean
@@ -681,8 +659,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_CASE
 argument_list|,
 name|Boolean
@@ -694,8 +670,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_LATEX
 argument_list|,
 name|Boolean
@@ -707,8 +681,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_UNITS
 argument_list|,
 name|Boolean
@@ -720,8 +692,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_UNICODE
 argument_list|,
 name|Boolean
@@ -733,8 +703,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|CleanUpAction
-operator|.
 name|CLEANUP_CONVERTTOBIBLATEX
 argument_list|,
 name|Boolean
@@ -743,10 +711,10 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 block|}
-DECL|field|cleanUpSuperscrips
+DECL|field|cleanUpSuperscripts
 specifier|private
 name|JCheckBox
-name|cleanUpSuperscrips
+name|cleanUpSuperscripts
 decl_stmt|;
 DECL|field|cleanUpDOI
 specifier|private
@@ -808,10 +776,10 @@ specifier|private
 name|JCheckBox
 name|cleanUpUnicode
 decl_stmt|;
-DECL|field|cleanUpBiblatex
+DECL|field|cleanUpBibLatex
 specifier|private
 name|JCheckBox
-name|cleanUpBiblatex
+name|cleanUpBibLatex
 decl_stmt|;
 DECL|field|optionsPanel
 specifier|private
@@ -835,10 +803,10 @@ name|JabRefFrame
 name|frame
 decl_stmt|;
 comment|// global variable to count unsuccessful renames
-DECL|field|unsuccesfullRenames
+DECL|field|unsuccessfulRenames
 specifier|private
 name|int
-name|unsuccesfullRenames
+name|unsuccessfulRenames
 decl_stmt|;
 DECL|method|CleanUpAction (BasePanel panel)
 specifier|public
@@ -867,39 +835,39 @@ name|initOptionsPanel
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|removeFieldValue (BibtexEntry bes, String fieldName, NamedCompound ce)
+DECL|method|removeFieldValue (BibtexEntry entry, String fieldName, NamedCompound compound)
 specifier|private
 name|void
 name|removeFieldValue
 parameter_list|(
 name|BibtexEntry
-name|bes
+name|entry
 parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
 name|NamedCompound
-name|ce
+name|compound
 parameter_list|)
 block|{
 name|String
 name|origValue
 init|=
-name|bes
+name|entry
 operator|.
 name|getField
 argument_list|(
 name|fieldName
 argument_list|)
 decl_stmt|;
-name|ce
+name|compound
 operator|.
 name|addEdit
 argument_list|(
 operator|new
 name|UndoableFieldChange
 argument_list|(
-name|bes
+name|entry
 argument_list|,
 name|fieldName
 argument_list|,
@@ -909,7 +877,7 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|bes
+name|entry
 operator|.
 name|setField
 argument_list|(
@@ -925,7 +893,7 @@ name|void
 name|initOptionsPanel
 parameter_list|()
 block|{
-name|cleanUpSuperscrips
+name|cleanUpSuperscripts
 operator|=
 operator|new
 name|JCheckBox
@@ -1130,7 +1098,7 @@ literal|"Run Unicode converter on title, author(s), and abstract"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|cleanUpBiblatex
+name|cleanUpBibLatex
 operator|=
 operator|new
 name|JCheckBox
@@ -1284,7 +1252,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|cleanUpSuperscrips
+name|cleanUpSuperscripts
 argument_list|,
 name|cc
 operator|.
@@ -1479,7 +1447,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|cleanUpBiblatex
+name|cleanUpBibLatex
 argument_list|,
 name|cc
 operator|.
@@ -1500,7 +1468,7 @@ name|void
 name|retrieveSettings
 parameter_list|()
 block|{
-name|cleanUpSuperscrips
+name|cleanUpSuperscripts
 operator|.
 name|setSelected
 argument_list|(
@@ -1718,7 +1686,7 @@ name|CLEANUP_UNICODE
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|cleanUpBiblatex
+name|cleanUpBibLatex
 operator|.
 name|setSelected
 argument_list|(
@@ -1751,7 +1719,7 @@ name|CleanUpAction
 operator|.
 name|CLEANUP_SUPERSCRIPTS
 argument_list|,
-name|cleanUpSuperscrips
+name|cleanUpSuperscripts
 operator|.
 name|isSelected
 argument_list|()
@@ -1959,7 +1927,7 @@ name|CleanUpAction
 operator|.
 name|CLEANUP_CONVERTTOBIBLATEX
 argument_list|,
-name|cleanUpBiblatex
+name|cleanUpBibLatex
 operator|.
 name|isSelected
 argument_list|()
@@ -2164,7 +2132,7 @@ expr_stmt|;
 name|boolean
 name|choiceCleanUpSuperscripts
 init|=
-name|cleanUpSuperscrips
+name|cleanUpSuperscripts
 operator|.
 name|isSelected
 argument_list|()
@@ -2260,7 +2228,7 @@ decl_stmt|;
 name|boolean
 name|choiceConvertToBiblatex
 init|=
-name|cleanUpBiblatex
+name|cleanUpBibLatex
 operator|.
 name|isSelected
 argument_list|()
@@ -2679,7 +2647,7 @@ return|return;
 block|}
 if|if
 condition|(
-name|unsuccesfullRenames
+name|unsuccessfulRenames
 operator|>
 literal|0
 condition|)
@@ -2700,7 +2668,7 @@ argument_list|)
 operator|+
 literal|" "
 operator|+
-name|unsuccesfullRenames
+name|unsuccessfulRenames
 operator|+
 literal|" "
 operator|+
@@ -3990,7 +3958,7 @@ continue|continue;
 block|}
 comment|//do rename
 name|boolean
-name|renameSuccesfull
+name|renameSuccessful
 init|=
 name|FileUtil
 operator|.
@@ -4006,7 +3974,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|renameSuccesfull
+name|renameSuccessful
 condition|)
 block|{
 name|changed
@@ -4122,7 +4090,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|unsuccesfullRenames
+name|unsuccessfulRenames
 operator|++
 expr_stmt|;
 block|}
@@ -4163,7 +4131,7 @@ name|newValue
 argument_list|)
 expr_stmt|;
 comment|//we put an undo of the field content here
-comment|//the file is not being renamed back, which leads to inconsostencies
+comment|//the file is not being renamed back, which leads to inconsistencies
 comment|//if we put a null undo object here, the change by "doMakePathsRelative" would overwrite the field value nevertheless.
 name|ce
 operator|.
