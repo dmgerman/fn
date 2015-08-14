@@ -685,7 +685,12 @@ literal|"Warning: could not get translation for \""
 operator|+
 name|key
 operator|+
-literal|"\""
+literal|"\" for locale "
+operator|+
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
