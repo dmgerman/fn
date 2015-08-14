@@ -18,6 +18,22 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|net
@@ -36,8 +52,18 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
-comment|/**  * This interface is used for classes that try to resolve a full-text PDF url from an article  * web page. Implementing classes should specialize on specific article sites.  *  */
+comment|/**  * This interface is used for classes that try to resolve a full-text PDF url for a BibTex entry.  * Implementing classes should specialize on specific article sites.  * See e.g. @link{http://libguides.mit.edu/apis}.  */
 end_comment
 
 begin_interface
@@ -46,22 +72,16 @@ specifier|public
 interface|interface
 name|FullTextFinder
 block|{
-comment|/**      * Report whether this FullTextFinder works for the site providing the given URL.      *      * @param url The url to check.      * @return true if the site is supported, false otherwise. If the site might be supported,      *   it is best to return true.      */
-DECL|method|supportsSite (URL url)
-name|boolean
-name|supportsSite
+comment|/**      * Tries to find a fulltext URL for a given BibTex entry.      *      * @param entry The Bibtex entry      * @return The fulltext PDF URL Optional, if found, or an empty Optional if not found.      * @throws NullPointerException if no BibTex entry is given      * @throws java.io.IOException      */
+DECL|method|findFullText (BibtexEntry entry)
+name|Optional
+argument_list|<
+name|URL
+argument_list|>
+name|findFullText
 parameter_list|(
-name|URL
-name|url
-parameter_list|)
-function_decl|;
-comment|/**      * Take the source HTML for an article page, and try to find the URL to the      * full text for this article.      *      * @param url The URL to the article's web page.      * @return The fulltext PDF URL, if found, or null if not found.      * @throws java.io.IOException      */
-DECL|method|findFullTextURL (URL url)
-name|URL
-name|findFullTextURL
-parameter_list|(
-name|URL
-name|url
+name|BibtexEntry
+name|entry
 parameter_list|)
 throws|throws
 name|IOException

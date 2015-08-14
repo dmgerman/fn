@@ -267,7 +267,6 @@ name|void
 name|update
 parameter_list|()
 block|{
-comment|//pdfURL = new URL("http://geog-www.sbs.ohio-state.edu/faculty/bmark/abbott_etal_ppp03.pdf");
 if|if
 condition|(
 name|result
@@ -277,7 +276,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//System.out.println("PDF URL: "+result.url);
 name|String
 name|bibtexKey
 init|=
@@ -360,15 +358,6 @@ name|FileListEntry
 name|file
 parameter_list|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"finished"
-argument_list|)
-expr_stmt|;
 name|FileListTableModel
 name|tm
 init|=
@@ -504,27 +493,6 @@ block|{
 case|case
 name|FindFullText
 operator|.
-name|UNKNOWN_DOMAIN
-case|:
-name|message
-operator|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Unable to find full text article. No search algorithm "
-operator|+
-literal|"defined for the '%0' web site."
-argument_list|,
-name|result
-operator|.
-name|host
-argument_list|)
-expr_stmt|;
-break|break;
-case|case
-name|FindFullText
-operator|.
 name|WRONG_MIME_TYPE
 case|:
 name|message
@@ -550,7 +518,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Unable to find full text document in the linked web page."
+literal|"Unable to find full text document."
 argument_list|)
 expr_stmt|;
 break|break;
@@ -566,21 +534,6 @@ operator|.
 name|lang
 argument_list|(
 literal|"Connection error when trying to find full text document."
-argument_list|)
-expr_stmt|;
-break|break;
-case|case
-name|FindFullText
-operator|.
-name|NO_URLS_DEFINED
-case|:
-name|message
-operator|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"This entry provides no URL or DOI links."
 argument_list|)
 expr_stmt|;
 break|break;
