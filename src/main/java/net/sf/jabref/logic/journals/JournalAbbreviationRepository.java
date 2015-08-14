@@ -549,7 +549,7 @@ argument_list|)
 expr_stmt|;
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 name|Localization
 operator|.
