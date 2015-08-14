@@ -44,6 +44,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -572,7 +582,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-comment|//@Ignore(value = "only used for checking the parse logic")
 DECL|method|testParsing ()
 specifier|public
 name|void
@@ -595,16 +604,24 @@ operator|.
 name|JOURNALS_FILE_BUILTIN
 argument_list|)
 expr_stmt|;
-comment|//repository.readJournalListFromResource(Globals.JOURNALS_IEEE_INTERNAL_LIST);
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
 name|repository
 operator|.
-name|toPropertiesString
+name|readJournalListFromResource
+argument_list|(
+name|Globals
+operator|.
+name|JOURNALS_IEEE_INTERNAL_LIST
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+operator|!
+name|repository
+operator|.
+name|getAbbreviations
+argument_list|()
+operator|.
+name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;
