@@ -62,6 +62,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|AbstractWorker
 import|;
 end_import
