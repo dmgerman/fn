@@ -120,6 +120,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|jdesktop

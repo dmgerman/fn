@@ -162,18 +162,6 @@ name|SwingUtilities
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
 begin_comment
 comment|/**  * Extends the JTabbedPane class to support Drag&Drop of Tabs.  *   * @author kleinms, strassfn  */
 end_comment

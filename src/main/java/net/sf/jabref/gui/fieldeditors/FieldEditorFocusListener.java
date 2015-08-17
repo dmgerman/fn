@@ -26,23 +26,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
-name|fieldeditors
-operator|.
-name|FieldEditor
+name|GUIGlobals
 import|;
 end_import
 
