@@ -752,7 +752,6 @@ argument_list|(
 name|mimeType
 argument_list|)
 expr_stmt|;
-comment|/*if (suggestedType != null)                 System.out.println("Found type '"+suggestedType.getName()+"' by MIME type '"+udl.getMimeType()+"'");*/
 block|}
 comment|// Then, while the download is proceeding, let the user choose the details of the file:
 name|String
@@ -1420,6 +1419,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME: will break download if no bibtexkey is present!
 DECL|method|getSuggestedFileName (String suffix)
 specifier|private
 name|String
@@ -1450,7 +1450,7 @@ operator|+
 name|suffix
 expr_stmt|;
 block|}
-comment|/*         * [ 1548875 ] download pdf produces unsupported filename         *         * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306         *         */
+comment|/*         * [ 1548875 ] download pdf produces unsupported filename         *         * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306         * FIXME: rework this! just allow alphanumeric stuff or so?         * https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx#naming_conventions         * http://superuser.com/questions/358855/what-characters-are-safe-in-cross-platform-file-names-for-linux-windows-and-os         * https://support.apple.com/en-us/HT202808         */
 if|if
 condition|(
 name|OS
@@ -1494,7 +1494,7 @@ return|return
 name|plannedName
 return|;
 block|}
-comment|/**      * Look for the last '.' in the link, and returnthe following characters.      * This gives the extension for most reasonably named links.      *      * @param link The link      * @return The suffix, excluding the dot (e.g. "pdf")      */
+comment|/**      * Look for the last '.' in the link, and return the following characters.      * This gives the extension for most reasonably named links.      *      * @param link The link      * @return The suffix, excluding the dot (e.g. "pdf")      */
 DECL|method|getSuffix (final String link)
 specifier|private
 name|String

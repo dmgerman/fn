@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.crawler
+DECL|package|net.sf.jabref.logic.fetcher
 package|package
 name|net
 operator|.
@@ -10,7 +10,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|crawler
+name|fetcher
 package|;
 end_package
 
@@ -21,6 +21,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|entry
 operator|.
 name|BibtexEntry
 import|;
@@ -72,16 +76,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|MalformedURLException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|URL
 import|;
 end_import
@@ -96,26 +90,14 @@ name|Optional
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
 begin_class
-DECL|class|SpringerLinkTest
+DECL|class|GoogleScholarTest
 specifier|public
 class|class
-name|SpringerLinkTest
+name|GoogleScholarTest
 block|{
 DECL|field|finder
-name|SpringerLink
+name|GoogleScholar
 name|finder
 decl_stmt|;
 DECL|field|entry
@@ -133,7 +115,7 @@ block|{
 name|finder
 operator|=
 operator|new
-name|SpringerLink
+name|GoogleScholar
 argument_list|()
 expr_stmt|;
 name|entry
@@ -170,10 +152,38 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|findByDOI ()
+DECL|method|requiresEntryTitle ()
 specifier|public
 name|void
-name|findByDOI
+name|requiresEntryTitle
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|finder
+operator|.
+name|findFullText
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|linkFound ()
+specifier|public
+name|void
+name|linkFound
 parameter_list|()
 throws|throws
 name|IOException
@@ -182,9 +192,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"doi"
+literal|"title"
 argument_list|,
-literal|"10.1186/s13677-015-0042-8"
+literal|"Towards Application Portability in Platform as a Service"
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -198,7 +208,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"http://link.springer.com/content/pdf/10.1186/s13677-015-0042-8.pdf"
+literal|"https://www.uni-bamberg.de/fileadmin/uni/fakultaeten/wiai_lehrstuehle/praktische_informatik/Dateien/Publikationen/sose14-towards-application-portability-in-paas.pdf"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -213,23 +223,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|notFoundByDOI ()
+DECL|method|noLinkFound ()
 specifier|public
 name|void
-name|notFoundByDOI
+name|noLinkFound
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"doi"
-argument_list|,
-literal|"10.1186/unknown-doi"
-argument_list|)
-expr_stmt|;
 name|Assert
 operator|.
 name|assertEquals
