@@ -28,6 +28,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|AuthorList
 import|;
 end_import
@@ -39,6 +41,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|AuthorList
 operator|.

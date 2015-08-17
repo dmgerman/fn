@@ -12,6 +12,20 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|AuthorList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -31,7 +45,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Christopher Oezbek<oezi@oezi.de>  * @version 0.1 - Still fails for stuff in AuthorList that is ambiguous  * @see net.sf.jabref.AuthorList Class tested.  */
+comment|/**  * @author Christopher Oezbek<oezi@oezi.de>  * @version 0.1 - Still fails for stuff in AuthorList that is ambiguous  * @see net.sf.jabref.logic.AuthorList Class tested.  */
 end_comment
 
 begin_class

@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.logic
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 package|;
 end_package
 
@@ -592,7 +594,7 @@ return|return
 name|authorList
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsFirstFirst()      *       * @see net.sf.jabref.AuthorList#getAuthorsFirstFirst      */
+comment|/**      * This is a convenience method for getAuthorsFirstFirst()      *       * @see AuthorList#getAuthorsFirstFirst      */
 DECL|method|fixAuthor_firstNameFirstCommas (String authors, boolean abbr, boolean oxfordComma)
 specifier|public
 specifier|static
@@ -625,7 +627,7 @@ name|oxfordComma
 argument_list|)
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsFirstFirstAnds()      *       * @see net.sf.jabref.AuthorList#getAuthorsFirstFirstAnds      */
+comment|/**      * This is a convenience method for getAuthorsFirstFirstAnds()      *       * @see AuthorList#getAuthorsFirstFirstAnds      */
 DECL|method|fixAuthor_firstNameFirst (String authors)
 specifier|public
 specifier|static
@@ -648,7 +650,7 @@ name|getAuthorsFirstFirstAnds
 argument_list|()
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsLastFirst()      *       * @see net.sf.jabref.AuthorList#getAuthorsLastFirst      */
+comment|/**      * This is a convenience method for getAuthorsLastFirst()      *       * @see AuthorList#getAuthorsLastFirst      */
 DECL|method|fixAuthor_lastNameFirstCommas (String authors, boolean abbr, boolean oxfordComma)
 specifier|public
 specifier|static
@@ -681,7 +683,7 @@ name|oxfordComma
 argument_list|)
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsLastFirstAnds(true)      *       * @see net.sf.jabref.AuthorList#getAuthorsLastFirstAnds      */
+comment|/**      * This is a convenience method for getAuthorsLastFirstAnds(true)      *       * @see AuthorList#getAuthorsLastFirstAnds      */
 DECL|method|fixAuthor_lastNameFirst (String authors)
 specifier|public
 specifier|static
@@ -706,7 +708,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsLastFirstAnds()      *       * @see net.sf.jabref.AuthorList#getAuthorsLastFirstAnds      */
+comment|/**      * This is a convenience method for getAuthorsLastFirstAnds()      *       * @see AuthorList#getAuthorsLastFirstAnds      */
 DECL|method|fixAuthor_lastNameFirst (String authors, boolean abbreviate)
 specifier|public
 specifier|static
@@ -734,7 +736,7 @@ name|abbreviate
 argument_list|)
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsLastOnly()      *       * @see net.sf.jabref.AuthorList#getAuthorsLastOnly      */
+comment|/**      * This is a convenience method for getAuthorsLastOnly()      *       * @see AuthorList#getAuthorsLastOnly      */
 DECL|method|fixAuthor_lastNameOnlyCommas (String authors, boolean oxfordComma)
 specifier|public
 specifier|static
@@ -762,7 +764,7 @@ name|oxfordComma
 argument_list|)
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsForAlphabetization()      *       * @see net.sf.jabref.AuthorList#getAuthorsForAlphabetization      */
+comment|/**      * This is a convenience method for getAuthorsForAlphabetization()      *       * @see AuthorList#getAuthorsForAlphabetization      */
 DECL|method|fixAuthorForAlphabetization (String authors)
 specifier|public
 specifier|static
@@ -785,7 +787,7 @@ name|getAuthorsForAlphabetization
 argument_list|()
 return|;
 block|}
-comment|/**      * This is a convenience method for getAuthorsNatbib()      *       * @see net.sf.jabref.AuthorList#getAuthorsNatbib      */
+comment|/**      * This is a convenience method for getAuthorsNatbib()      *       * @see AuthorList#getAuthorsNatbib      */
 DECL|method|fixAuthor_Natbib (String authors)
 specifier|public
 specifier|static
