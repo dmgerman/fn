@@ -82,6 +82,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
 name|CustomEntryType
 import|;
 end_import
