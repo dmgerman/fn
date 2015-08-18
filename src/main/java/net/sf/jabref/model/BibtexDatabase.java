@@ -658,7 +658,7 @@ decl_stmt|;
 for|for
 control|(
 name|String
-name|entrieID
+name|entryID
 range|:
 name|keySet
 control|)
@@ -668,7 +668,7 @@ name|entry
 init|=
 name|getEntryById
 argument_list|(
-name|entrieID
+name|entryID
 argument_list|)
 decl_stmt|;
 if|if
@@ -737,13 +737,11 @@ name|ArrayList
 argument_list|<
 name|BibtexEntry
 argument_list|>
-name|entries
+name|result
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -751,8 +749,6 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|this
-operator|.
 name|entries
 operator|.
 name|values
@@ -772,7 +768,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|entries
+name|result
 operator|.
 name|add
 argument_list|(
@@ -782,14 +778,14 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|entries
+name|result
 operator|.
 name|toArray
 argument_list|(
 operator|new
 name|BibtexEntry
 index|[
-name|entries
+name|result
 operator|.
 name|size
 argument_list|()
@@ -1299,9 +1295,7 @@ name|content
 argument_list|,
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|)
 return|;
@@ -1334,8 +1328,10 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|NullPointerException
-argument_list|()
+name|IllegalArgumentException
+argument_list|(
+literal|"entries must not be null"
+argument_list|)
 throw|;
 block|}
 name|List
@@ -1346,9 +1342,7 @@ name|results
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entries
 operator|.
@@ -1545,18 +1539,18 @@ expr_stmt|;
 comment|// Ok, we found the string. Now we must make sure we
 comment|// resolve any references to other strings in this one.
 name|String
-name|res
+name|result
 init|=
 name|string
 operator|.
 name|getContent
 argument_list|()
 decl_stmt|;
-name|res
+name|result
 operator|=
 name|resolveContent
 argument_list|(
-name|res
+name|result
 argument_list|,
 name|usedIds
 argument_list|)
@@ -1574,7 +1568,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|res
+name|result
 return|;
 block|}
 block|}
@@ -1628,7 +1622,6 @@ argument_list|>
 name|usedIds
 parameter_list|)
 block|{
-comment|//if (res.matches(".*#[-\\^\\:\\w]+#.*")) {
 if|if
 condition|(
 name|res
