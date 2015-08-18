@@ -20,15 +20,29 @@ comment|//                - insert getEntryByKey() methode needed by AuxSubGener
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.model
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
 package|;
 end_package
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|*
+import|;
+end_import
 
 begin_import
 import|import

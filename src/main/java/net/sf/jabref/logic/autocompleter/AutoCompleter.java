@@ -22,6 +22,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
 name|BibtexEntry
 import|;
 end_import

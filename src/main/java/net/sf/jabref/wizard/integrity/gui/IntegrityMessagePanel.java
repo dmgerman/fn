@@ -252,6 +252,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
 name|BibtexDatabase
 import|;
 end_import
@@ -263,6 +265,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
 operator|.
 name|BibtexEntry
 import|;

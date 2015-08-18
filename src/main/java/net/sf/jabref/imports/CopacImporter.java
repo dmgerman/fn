@@ -86,6 +86,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -98,17 +100,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
+name|model
 operator|.
 name|BibtexEntryTypes
 import|;

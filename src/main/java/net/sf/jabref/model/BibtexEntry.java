@@ -4,13 +4,15 @@ comment|/* Copyright (C) 2003 David Weitzman, Morten O. Alver  All programs in t
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.model
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
 package|;
 end_package
 
@@ -129,6 +131,18 @@ import|import
 name|java
 operator|.
 name|util
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
 operator|.
 name|*
 import|;
