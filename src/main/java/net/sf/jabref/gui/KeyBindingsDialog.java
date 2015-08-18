@@ -4,18 +4,8 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui
 package|package
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-package|;
-end_package
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -23,10 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
+package|;
+end_package
 
 begin_import
 import|import

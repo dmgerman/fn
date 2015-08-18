@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 package|;
 end_package
 
@@ -438,9 +440,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|DatabaseChangeEvent
-operator|.
-name|ChangeType
+name|*
 import|;
 end_import
 
@@ -452,9 +452,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|DatabaseChangeEvent
 operator|.
-name|*
+name|ChangeType
 import|;
 end_import
 

@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 package|;
 end_package
 
@@ -617,8 +619,6 @@ operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|gui
 operator|.
 name|*
 import|;
@@ -1319,6 +1319,7 @@ name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
 DECL|field|tabbedPane
+specifier|public
 name|JTabbedPane
 name|tabbedPane
 decl_stmt|;
@@ -2510,6 +2511,7 @@ name|SaveSessionAction
 argument_list|()
 decl_stmt|;
 DECL|field|loadSessionAction
+specifier|public
 specifier|final
 name|AbstractAction
 name|loadSessionAction
@@ -13382,6 +13384,7 @@ block|}
 block|}
 block|}
 DECL|class|LoadSessionAction
+specifier|public
 class|class
 name|LoadSessionAction
 extends|extends

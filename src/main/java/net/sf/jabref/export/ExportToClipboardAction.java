@@ -196,6 +196,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|BasePanel
 import|;
 end_import
@@ -257,6 +259,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|JabRefFrame
 import|;

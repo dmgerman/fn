@@ -78,21 +78,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|*
 import|;
 end_import
 
