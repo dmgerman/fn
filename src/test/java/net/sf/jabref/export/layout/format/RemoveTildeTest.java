@@ -48,6 +48,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -58,6 +68,26 @@ specifier|public
 class|class
 name|RemoveTildeTest
 block|{
+DECL|field|formatter
+specifier|private
+name|LayoutFormatter
+name|formatter
+decl_stmt|;
+annotation|@
+name|Before
+DECL|method|setup ()
+specifier|public
+name|void
+name|setup
+parameter_list|()
+block|{
+name|formatter
+operator|=
+operator|new
+name|RemoveTilde
+argument_list|()
+expr_stmt|;
+block|}
 annotation|@
 name|Test
 DECL|method|testFormatString ()
@@ -66,20 +96,13 @@ name|void
 name|testFormatString
 parameter_list|()
 block|{
-name|LayoutFormatter
-name|l
-init|=
-operator|new
-name|RemoveTilde
-argument_list|()
-decl_stmt|;
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|l
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -93,7 +116,7 @@ name|assertEquals
 argument_list|(
 literal|"simple"
 argument_list|,
-name|l
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -107,7 +130,7 @@ name|assertEquals
 argument_list|(
 literal|" "
 argument_list|,
-name|l
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -121,7 +144,7 @@ name|assertEquals
 argument_list|(
 literal|"   "
 argument_list|,
-name|l
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -135,7 +158,7 @@ name|assertEquals
 argument_list|(
 literal|" \\~ "
 argument_list|,
-name|l
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -149,7 +172,7 @@ name|assertEquals
 argument_list|(
 literal|"\\\\ "
 argument_list|,
-name|l
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -163,7 +186,7 @@ name|assertEquals
 argument_list|(
 literal|"Doe Joe and Jane, M. and Kamp, J. A."
 argument_list|,
-name|l
+name|formatter
 operator|.
 name|format
 argument_list|(
@@ -177,7 +200,7 @@ name|assertEquals
 argument_list|(
 literal|"T\\~olkien, J. R. R."
 argument_list|,
-name|l
+name|formatter
 operator|.
 name|format
 argument_list|(
