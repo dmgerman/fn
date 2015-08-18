@@ -198,16 +198,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -2013,12 +2003,10 @@ operator|&&
 name|issueWarning
 condition|)
 block|{
-name|JOptionPane
+name|LOGGER
 operator|.
-name|showMessageDialog
+name|warn
 argument_list|(
-literal|null
-argument_list|,
 name|Localization
 operator|.
 name|lang
@@ -2029,20 +2017,8 @@ operator|+
 literal|':'
 operator|+
 name|newKey
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Duplicate Key Warning"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|WARNING_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|//, options);
 block|}
 return|return
 name|duplicate
