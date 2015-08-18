@@ -240,7 +240,7 @@ decl_stmt|;
 DECL|field|bibtexStrings
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -249,7 +249,7 @@ argument_list|>
 name|bibtexStrings
 init|=
 operator|new
-name|HashMap
+name|ConcurrentHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
