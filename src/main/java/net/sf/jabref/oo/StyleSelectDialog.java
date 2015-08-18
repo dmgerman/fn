@@ -440,6 +440,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|action
+operator|.
 name|BrowseAction
 import|;
 end_import

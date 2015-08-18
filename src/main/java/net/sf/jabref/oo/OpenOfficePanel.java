@@ -126,6 +126,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|worker
+operator|.
 name|AbstractWorker
 import|;
 end_import
@@ -141,6 +143,22 @@ operator|.
 name|gui
 operator|.
 name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|action
+operator|.
+name|BrowseAction
 import|;
 end_import
 
