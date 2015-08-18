@@ -102,6 +102,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|worker
+operator|.
 name|Worker
 import|;
 end_import
