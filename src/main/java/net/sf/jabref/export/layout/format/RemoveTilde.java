@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Replace a non-command tilde ~ by a space.  *   * Usefull for formatting Latex code.  */
+comment|/**  * Replace a non-command tilde ~ by a space.  *   * Useful for formatting Latex code.  */
 end_comment
 
 begin_class
