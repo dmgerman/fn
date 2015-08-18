@@ -192,6 +192,34 @@ name|MonthUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_class
 DECL|class|BibtexEntry
 specifier|public
@@ -207,7 +235,23 @@ name|ID_FIELD
 init|=
 literal|"id"
 decl_stmt|;
-DECL|field|FieldAliasesOldToNew
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|BibtexEntry
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+DECL|field|FIELD_ALIASES_OLD_TO_NEW
 specifier|public
 specifier|static
 specifier|final
@@ -217,19 +261,15 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|FieldAliasesOldToNew
+name|FIELD_ALIASES_OLD_TO_NEW
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Bibtex to BibLatex
-DECL|field|FieldAliasesNewToOld
+DECL|field|FIELD_ALIASES_NEW_TO_OLD
 specifier|public
 specifier|static
 specifier|final
@@ -239,15 +279,11 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|FieldAliasesNewToOld
+name|FIELD_ALIASES_NEW_TO_OLD
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// BibLatex to Bibtex
@@ -255,7 +291,7 @@ static|static
 block|{
 name|BibtexEntry
 operator|.
-name|FieldAliasesOldToNew
+name|FIELD_ALIASES_OLD_TO_NEW
 operator|.
 name|put
 argument_list|(
@@ -266,7 +302,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesNewToOld
+name|FIELD_ALIASES_NEW_TO_OLD
 operator|.
 name|put
 argument_list|(
@@ -277,7 +313,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesOldToNew
+name|FIELD_ALIASES_OLD_TO_NEW
 operator|.
 name|put
 argument_list|(
@@ -288,7 +324,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesNewToOld
+name|FIELD_ALIASES_NEW_TO_OLD
 operator|.
 name|put
 argument_list|(
@@ -299,7 +335,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesOldToNew
+name|FIELD_ALIASES_OLD_TO_NEW
 operator|.
 name|put
 argument_list|(
@@ -310,7 +346,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesNewToOld
+name|FIELD_ALIASES_NEW_TO_OLD
 operator|.
 name|put
 argument_list|(
@@ -321,7 +357,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesOldToNew
+name|FIELD_ALIASES_OLD_TO_NEW
 operator|.
 name|put
 argument_list|(
@@ -332,7 +368,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesNewToOld
+name|FIELD_ALIASES_NEW_TO_OLD
 operator|.
 name|put
 argument_list|(
@@ -343,7 +379,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesOldToNew
+name|FIELD_ALIASES_OLD_TO_NEW
 operator|.
 name|put
 argument_list|(
@@ -354,7 +390,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesNewToOld
+name|FIELD_ALIASES_NEW_TO_OLD
 operator|.
 name|put
 argument_list|(
@@ -365,7 +401,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesOldToNew
+name|FIELD_ALIASES_OLD_TO_NEW
 operator|.
 name|put
 argument_list|(
@@ -376,7 +412,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesNewToOld
+name|FIELD_ALIASES_NEW_TO_OLD
 operator|.
 name|put
 argument_list|(
@@ -387,7 +423,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesOldToNew
+name|FIELD_ALIASES_OLD_TO_NEW
 operator|.
 name|put
 argument_list|(
@@ -398,7 +434,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesNewToOld
+name|FIELD_ALIASES_NEW_TO_OLD
 operator|.
 name|put
 argument_list|(
@@ -409,7 +445,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesOldToNew
+name|FIELD_ALIASES_OLD_TO_NEW
 operator|.
 name|put
 argument_list|(
@@ -420,7 +456,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexEntry
 operator|.
-name|FieldAliasesNewToOld
+name|FIELD_ALIASES_NEW_TO_OLD
 operator|.
 name|put
 argument_list|(
@@ -430,17 +466,17 @@ literal|"school"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|field|_id
+DECL|field|id
 specifier|private
 name|String
-name|_id
+name|id
 decl_stmt|;
-DECL|field|_type
+DECL|field|type
 specifier|private
 name|BibtexEntryType
-name|_type
+name|type
 decl_stmt|;
-DECL|field|_fields
+DECL|field|fields
 specifier|private
 name|Map
 argument_list|<
@@ -448,22 +484,18 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|_fields
+name|fields
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|_changeSupport
+DECL|field|changeSupport
 specifier|private
 specifier|final
 name|VetoableChangeSupport
-name|_changeSupport
+name|changeSupport
 init|=
 operator|new
 name|VetoableChangeSupport
@@ -540,7 +572,9 @@ literal|"Every BibtexEntry must have an ID"
 argument_list|)
 throw|;
 block|}
-name|_id
+name|this
+operator|.
+name|id
 operator|=
 name|id
 expr_stmt|;
@@ -559,7 +593,7 @@ name|getOptionalFields
 parameter_list|()
 block|{
 return|return
-name|_type
+name|type
 operator|.
 name|getOptionalFields
 argument_list|()
@@ -577,7 +611,7 @@ name|getRequiredFields
 parameter_list|()
 block|{
 return|return
-name|_type
+name|type
 operator|.
 name|getRequiredFields
 argument_list|()
@@ -619,29 +653,13 @@ block|{
 return|return
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
-name|_fields
+name|fields
 operator|.
 name|keySet
 argument_list|()
 argument_list|)
-return|;
-block|}
-comment|/**      * Returns a string describing the required fields for this entry.      */
-DECL|method|describeRequiredFields ()
-specifier|public
-name|String
-name|describeRequiredFields
-parameter_list|()
-block|{
-return|return
-name|_type
-operator|.
-name|describeRequiredFields
-argument_list|()
 return|;
 block|}
 comment|/**      * Returns true if this entry contains the fields it needs to be      * complete.      */
@@ -655,7 +673,7 @@ name|database
 parameter_list|)
 block|{
 return|return
-name|_type
+name|type
 operator|.
 name|hasAllRequiredFields
 argument_list|(
@@ -673,7 +691,7 @@ name|getType
 parameter_list|()
 block|{
 return|return
-name|_type
+name|type
 return|;
 block|}
 comment|/**      * Sets this entry's type.      */
@@ -695,7 +713,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|NullPointerException
+name|IllegalArgumentException
 argument_list|(
 literal|"Every BibtexEntry must have a type.  Instead of null, use type OTHER"
 argument_list|)
@@ -704,14 +722,18 @@ block|}
 name|BibtexEntryType
 name|oldType
 init|=
-name|_type
+name|this
+operator|.
+name|type
 decl_stmt|;
 try|try
 block|{
 comment|// We set the type before throwing the changeEvent, to enable
 comment|// the change listener to access the new value if the change
 comment|// sets off a change in database sorting etc.
-name|_type
+name|this
+operator|.
+name|type
 operator|=
 name|type
 expr_stmt|;
@@ -752,7 +774,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Prompts the entry to call BibtexEntryType.getType(String) with      * its current type name as argument, and sets its type according      * to what is returned. This method is called when a user changes      * the type customization, to make sure all entries are set with      * current types.      * @return true if the entry could find a type, false if not (in      * this case the type will have been set to      * BibtexEntryTypes.TYPELESS).      */
+comment|/**      * Prompts the entry to call BibtexEntryType.getType(String) with      * its current type name as argument, and sets its type according      * to what is returned. This method is called when a user changes      * the type customization, to make sure all entries are set with      * current types.      *      * @return true if the entry could find a type, false if not (in      * this case the type will have been set to      * BibtexEntryTypes.TYPELESS).      */
 DECL|method|updateType ()
 specifier|public
 name|boolean
@@ -766,7 +788,7 @@ name|BibtexEntryType
 operator|.
 name|getType
 argument_list|(
-name|_type
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -779,7 +801,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|_type
+name|type
 operator|=
 name|newType
 expr_stmt|;
@@ -787,7 +809,7 @@ return|return
 literal|true
 return|;
 block|}
-name|_type
+name|type
 operator|=
 name|BibtexEntryTypes
 operator|.
@@ -818,7 +840,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|NullPointerException
+name|IllegalArgumentException
 argument_list|(
 literal|"Every BibtexEntry must have an ID"
 argument_list|)
@@ -832,7 +854,9 @@ name|BibtexEntry
 operator|.
 name|ID_FIELD
 argument_list|,
-name|_id
+name|this
+operator|.
+name|id
 argument_list|,
 name|id
 argument_list|)
@@ -854,7 +878,9 @@ name|pv
 argument_list|)
 throw|;
 block|}
-name|_id
+name|this
+operator|.
+name|id
 operator|=
 name|id
 expr_stmt|;
@@ -867,7 +893,7 @@ name|getId
 parameter_list|()
 block|{
 return|return
-name|_id
+name|id
 return|;
 block|}
 comment|/**      * Returns the contents of the given field, or null if it is not set.      */
@@ -881,7 +907,7 @@ name|name
 parameter_list|)
 block|{
 return|return
-name|_fields
+name|fields
 operator|.
 name|get
 argument_list|(
@@ -889,7 +915,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the contents of the given field, its alias or null if both are      * not set.      *       * The following aliases are considered (old bibtex<-> new biblatex) based      * on the BibLatex documentation, chapter 2.2.5:      *  address<-> location      *  annote<-> annotation       *  archiveprefix<-> eprinttype       *  journal<-> journaltitle       *  key<-> sortkey       * 	pdf<-> file       * 	primaryclass<-> eprintclass       * 	school<-> institution       * These work bidirectional.      *       * Special attention is paid to dates: (see the BibLatex documentation,      * chapter 2.3.8)       * 	The fields 'year' and 'month' are used if the 'date'      * 	field is empty. Conversely, getFieldOrAlias("year") also tries to      * 	extract the year from the 'date' field (analogously for 'month').      */
+comment|/**      * Returns the contents of the given field, its alias or null if both are      * not set.      *<p>      * The following aliases are considered (old bibtex<-> new biblatex) based      * on the BibLatex documentation, chapter 2.2.5:      * address<-> location      * annote<-> annotation      * archiveprefix<-> eprinttype      * journal<-> journaltitle      * key<-> sortkey      * pdf<-> file      * primaryclass<-> eprintclass      * school<-> institution      * These work bidirectional.      *<p>      * Special attention is paid to dates: (see the BibLatex documentation,      * chapter 2.3.8)      * The fields 'year' and 'month' are used if the 'date'      * field is empty. Conversely, getFieldOrAlias("year") also tries to      * extract the year from the 'date' field (analogously for 'month').      */
 DECL|method|getFieldOrAlias (String name)
 specifier|public
 name|String
@@ -936,11 +962,7 @@ name|aliases
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|aliases
@@ -949,7 +971,7 @@ name|putAll
 argument_list|(
 name|BibtexEntry
 operator|.
-name|FieldAliasesOldToNew
+name|FIELD_ALIASES_OLD_TO_NEW
 argument_list|)
 expr_stmt|;
 name|aliases
@@ -958,7 +980,7 @@ name|putAll
 argument_list|(
 name|BibtexEntry
 operator|.
-name|FieldAliasesNewToOld
+name|FIELD_ALIASES_NEW_TO_OLD
 argument_list|)
 expr_stmt|;
 name|String
@@ -1366,6 +1388,17 @@ name|ParseException
 name|e2
 parameter_list|)
 block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Could not parse entry "
+operator|+
+name|name
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
@@ -1384,7 +1417,7 @@ name|getCiteKey
 parameter_list|()
 block|{
 return|return
-name|_fields
+name|fields
 operator|.
 name|containsKey
 argument_list|(
@@ -1393,7 +1426,7 @@ operator|.
 name|KEY_FIELD
 argument_list|)
 condition|?
-name|_fields
+name|fields
 operator|.
 name|get
 argument_list|(
@@ -1420,7 +1453,9 @@ argument_list|>
 name|fields
 parameter_list|)
 block|{
-name|_fields
+name|this
+operator|.
+name|fields
 operator|.
 name|putAll
 argument_list|(
@@ -1428,7 +1463,7 @@ name|fields
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set a field, and notify listeners about the change.      *      * @param name The field to set.      * @param value The value to set.      */
+comment|/**      * Set a field, and notify listeners about the change.      *      * @param name  The field to set.      * @param value The value to set.      */
 DECL|method|setField (String name, String value)
 specifier|public
 name|void
@@ -1468,7 +1503,7 @@ block|}
 name|String
 name|oldValue
 init|=
-name|_fields
+name|fields
 operator|.
 name|get
 argument_list|(
@@ -1480,7 +1515,7 @@ block|{
 comment|// We set the field before throwing the changeEvent, to enable
 comment|// the change listener to access the new value if the change
 comment|// sets off a change in database sorting etc.
-name|_fields
+name|fields
 operator|.
 name|put
 argument_list|(
@@ -1507,7 +1542,7 @@ parameter_list|)
 block|{
 comment|// Since we have already made the change, we must undo it since
 comment|// the change was rejected:
-name|_fields
+name|fields
 operator|.
 name|put
 argument_list|(
@@ -1564,14 +1599,14 @@ block|}
 name|Object
 name|oldValue
 init|=
-name|_fields
+name|fields
 operator|.
 name|get
 argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-name|_fields
+name|fields
 operator|.
 name|remove
 argument_list|(
@@ -1607,7 +1642,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param fields An array of field names to be checked.      * @param database The database in which to look up crossref'd entries, if any. This      *  argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
+comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param fields   An array of field names to be checked.      * @param database The database in which to look up crossref'd entries, if any. This      *                 argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
 DECL|method|allFieldsPresent (String[] fields, BibtexDatabase database)
 name|boolean
 name|allFieldsPresent
@@ -1726,7 +1761,7 @@ parameter_list|)
 throws|throws
 name|PropertyVetoException
 block|{
-name|_changeSupport
+name|changeSupport
 operator|.
 name|fireVetoableChange
 argument_list|(
@@ -1754,7 +1789,7 @@ name|VetoableChangeListener
 name|listener
 parameter_list|)
 block|{
-name|_changeSupport
+name|changeSupport
 operator|.
 name|addVetoableChangeListener
 argument_list|(
@@ -1772,7 +1807,7 @@ name|VetoableChangeListener
 name|listener
 parameter_list|)
 block|{
-name|_changeSupport
+name|changeSupport
 operator|.
 name|removeVetoableChangeListener
 argument_list|(
@@ -1780,7 +1815,7 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Write this entry to the given Writer, with the given FieldFormatter.      * @param write True if this is a write, false if it is a display. The write will      * not include non-writeable fields if it is a write, otherwise non-displayable fields      * will be ignored. Refer to GUIGlobals for isWriteableField(String) and      * isDisplayableField(String).      */
+comment|/**      * Write this entry to the given Writer, with the given FieldFormatter.      *      * @param write True if this is a write, false if it is a display. The write will      *              not include non-writeable fields if it is a write, otherwise non-displayable fields      *              will be ignored. Refer to GUIGlobals for isWriteableField(String) and      *              isDisplayableField(String).      */
 DECL|method|write (Writer out, FieldFormatter ff, boolean write)
 specifier|public
 name|void
@@ -1829,24 +1864,20 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|_id
+name|id
 argument_list|,
-name|_type
+name|type
 argument_list|)
 decl_stmt|;
 name|clone
 operator|.
-name|_fields
+name|fields
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
-name|_fields
+name|fields
 argument_list|)
 expr_stmt|;
 return|return
@@ -1930,7 +1961,7 @@ operator|=
 name|groupHit
 expr_stmt|;
 block|}
-comment|/**      * @param maxCharacters The maximum number of characters (additional      * characters are replaced with "..."). Set to 0 to disable truncation.      * @return A short textual description of the entry in the format:      * Author1, Author2: Title (Year)      */
+comment|/**      * @param maxCharacters The maximum number of characters (additional      *                      characters are replaced with "..."). Set to 0 to disable truncation.      * @return A short textual description of the entry in the format:      * Author1, Author2: Title (Year)      */
 DECL|method|getAuthorTitleYear (int maxCharacters)
 specifier|public
 name|String

@@ -4809,7 +4809,7 @@ name|alias
 range|:
 name|BibtexEntry
 operator|.
-name|FieldAliasesOldToNew
+name|FIELD_ALIASES_OLD_TO_NEW
 operator|.
 name|entrySet
 argument_list|()

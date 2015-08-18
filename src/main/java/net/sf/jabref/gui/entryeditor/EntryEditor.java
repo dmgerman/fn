@@ -1611,7 +1611,7 @@ argument_list|<>
 argument_list|(
 name|BibtexEntry
 operator|.
-name|FieldAliasesOldToNew
+name|FIELD_ALIASES_OLD_TO_NEW
 operator|.
 name|keySet
 argument_list|()
@@ -1702,7 +1702,7 @@ if|if
 condition|(
 name|BibtexEntry
 operator|.
-name|FieldAliasesNewToOld
+name|FIELD_ALIASES_NEW_TO_OLD
 operator|.
 name|containsKey
 argument_list|(
@@ -1716,7 +1716,7 @@ name|add
 argument_list|(
 name|BibtexEntry
 operator|.
-name|FieldAliasesNewToOld
+name|FIELD_ALIASES_NEW_TO_OLD
 operator|.
 name|get
 argument_list|(
