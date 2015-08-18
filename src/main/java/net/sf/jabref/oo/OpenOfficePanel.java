@@ -126,9 +126,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|worker
-operator|.
-name|AbstractWorker
+name|*
 import|;
 end_import
 
@@ -142,7 +140,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|worker
+operator|.
+name|AbstractWorker
 import|;
 end_import
 
