@@ -934,8 +934,6 @@ name|entry
 operator|.
 name|getCiteKey
 argument_list|()
-argument_list|,
-literal|false
 argument_list|)
 return|;
 block|}
@@ -1092,8 +1090,6 @@ name|entry
 operator|.
 name|getCiteKey
 argument_list|()
-argument_list|,
-literal|false
 argument_list|)
 return|;
 block|}
@@ -1919,7 +1915,7 @@ comment|//  isDuplicate=checkForDuplicateKeyAndAdd( null, b.getKey() , issueDupl
 comment|//############################################
 comment|// if the newkey already exists and is not the same as oldkey it will give a warning
 comment|// else it will add the newkey to the to set and remove the oldkey
-DECL|method|checkForDuplicateKeyAndAdd (String oldKey, String newKey, boolean issueWarning)
+DECL|method|checkForDuplicateKeyAndAdd (String oldKey, String newKey)
 specifier|private
 name|boolean
 name|checkForDuplicateKeyAndAdd
@@ -1929,9 +1925,6 @@ name|oldKey
 parameter_list|,
 name|String
 name|newKey
-parameter_list|,
-name|boolean
-name|issueWarning
 parameter_list|)
 block|{
 comment|// Globals.logger(" checkForDuplicateKeyAndAdd [oldKey = " + oldKey + "] [newKey = " + newKey + "]");
@@ -1999,8 +1992,6 @@ block|}
 if|if
 condition|(
 name|duplicate
-operator|&&
-name|issueWarning
 condition|)
 block|{
 name|LOGGER
