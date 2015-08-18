@@ -328,25 +328,12 @@ specifier|final
 name|VetoableChangeListener
 name|listener
 init|=
-operator|new
-name|VetoableChangeListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|vetoableChange
-parameter_list|(
-name|PropertyChangeEvent
-name|pce
-parameter_list|)
-throws|throws
-name|PropertyVetoException
+name|propertyChangeEvent
+lambda|->
 block|{
 if|if
 condition|(
-name|pce
+name|propertyChangeEvent
 operator|.
 name|getPropertyName
 argument_list|()
@@ -372,7 +359,7 @@ argument_list|,
 operator|(
 name|BibtexEntry
 operator|)
-name|pce
+name|propertyChangeEvent
 operator|.
 name|getSource
 argument_list|()
@@ -387,7 +374,7 @@ literal|"id"
 operator|.
 name|equals
 argument_list|(
-name|pce
+name|propertyChangeEvent
 operator|.
 name|getPropertyName
 argument_list|()
@@ -398,11 +385,11 @@ comment|// locate the entry under its old key
 name|BibtexEntry
 name|oldEntry
 init|=
-name|_entries
+name|entries
 operator|.
 name|remove
 argument_list|(
-name|pce
+name|propertyChangeEvent
 operator|.
 name|getOldValue
 argument_list|()
@@ -412,7 +399,7 @@ if|if
 condition|(
 name|oldEntry
 operator|!=
-name|pce
+name|propertyChangeEvent
 operator|.
 name|getSource
 argument_list|()
@@ -422,14 +409,14 @@ comment|// Something is very wrong!
 comment|// The entry under the old key isn't
 comment|// the one that sent this event.
 comment|// Restore the old state.
-name|_entries
+name|entries
 operator|.
 name|put
 argument_list|(
 operator|(
 name|String
 operator|)
-name|pce
+name|propertyChangeEvent
 operator|.
 name|getOldValue
 argument_list|()
@@ -443,17 +430,17 @@ name|PropertyVetoException
 argument_list|(
 literal|"Wrong old ID"
 argument_list|,
-name|pce
+name|propertyChangeEvent
 argument_list|)
 throw|;
 block|}
 if|if
 condition|(
-name|_entries
+name|entries
 operator|.
 name|get
 argument_list|(
-name|pce
+name|propertyChangeEvent
 operator|.
 name|getNewValue
 argument_list|()
@@ -462,14 +449,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|_entries
+name|entries
 operator|.
 name|put
 argument_list|(
 operator|(
 name|String
 operator|)
-name|pce
+name|propertyChangeEvent
 operator|.
 name|getOldValue
 argument_list|()
@@ -483,19 +470,19 @@ name|PropertyVetoException
 argument_list|(
 literal|"New ID already in use, please choose another"
 argument_list|,
-name|pce
+name|propertyChangeEvent
 argument_list|)
 throw|;
 block|}
 comment|// and re-file this entry
-name|_entries
+name|entries
 operator|.
 name|put
 argument_list|(
 operator|(
 name|String
 operator|)
-name|pce
+name|propertyChangeEvent
 operator|.
 name|getNewValue
 argument_list|()
@@ -503,7 +490,7 @@ argument_list|,
 operator|(
 name|BibtexEntry
 operator|)
-name|pce
+name|propertyChangeEvent
 operator|.
 name|getSource
 argument_list|()
@@ -530,16 +517,13 @@ argument_list|,
 operator|(
 name|BibtexEntry
 operator|)
-name|pce
+name|propertyChangeEvent
 operator|.
 name|getSource
 argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//Util.pr(pce.getSource().toString()+"\n"+pce.getPropertyName()
-comment|//    +"\n"+pce.getNewValue());
-block|}
 block|}
 block|}
 decl_stmt|;
@@ -552,7 +536,7 @@ name|getEntryCount
 parameter_list|()
 block|{
 return|return
-name|_entries
+name|entries
 operator|.
 name|size
 argument_list|()
@@ -570,7 +554,7 @@ name|getKeySet
 parameter_list|()
 block|{
 return|return
-name|_entries
+name|entries
 operator|.
 name|keySet
 argument_list|()
@@ -596,7 +580,7 @@ init|=
 operator|new
 name|EntrySorter
 argument_list|(
-name|_entries
+name|entries
 argument_list|,
 name|comp
 argument_list|)
@@ -610,7 +594,7 @@ return|return
 name|sorter
 return|;
 block|}
-comment|/**      * Just temporary, for testing purposes....      * @return      */
+comment|/**      * Just temporary, for testing purposes....      *      * @return      */
 DECL|method|getEntryMap ()
 specifier|public
 name|Map
@@ -623,7 +607,7 @@ name|getEntryMap
 parameter_list|()
 block|{
 return|return
-name|_entries
+name|entries
 return|;
 block|}
 comment|/**      * Returns the entry with the given ID (-> entry_type + hashcode).      */
@@ -638,7 +622,7 @@ name|id
 parameter_list|)
 block|{
 return|return
-name|_entries
+name|entries
 operator|.
 name|get
 argument_list|(
@@ -657,7 +641,7 @@ name|getEntries
 parameter_list|()
 block|{
 return|return
-name|_entries
+name|entries
 operator|.
 name|values
 argument_list|()
@@ -694,7 +678,7 @@ name|String
 argument_list|>
 name|keySet
 init|=
-name|_entries
+name|entries
 operator|.
 name|keySet
 argument_list|()
@@ -795,7 +779,9 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|_entries
+name|this
+operator|.
+name|entries
 operator|.
 name|values
 argument_list|()
@@ -885,7 +871,7 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
-name|_entries
+name|entries
 operator|.
 name|put
 argument_list|(
@@ -923,7 +909,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Removes the entry with the given string.      *       * Returns null if not found.      */
+comment|/**      * Removes the entry with the given string.      *<p>      * Returns null if not found.      */
 DECL|method|removeEntry (String id)
 specifier|public
 specifier|synchronized
@@ -937,7 +923,7 @@ block|{
 name|BibtexEntry
 name|oldValue
 init|=
-name|_entries
+name|entries
 operator|.
 name|remove
 argument_list|(
@@ -1007,7 +993,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|_entries
+name|entries
 operator|.
 name|containsKey
 argument_list|(
@@ -1090,7 +1076,9 @@ name|String
 name|preamble
 parameter_list|)
 block|{
-name|_preamble
+name|this
+operator|.
+name|preamble
 operator|=
 name|preamble
 expr_stmt|;
@@ -1104,7 +1092,7 @@ name|getPreamble
 parameter_list|()
 block|{
 return|return
-name|_preamble
+name|preamble
 return|;
 block|}
 comment|/**      * Inserts a Bibtex String at the given index.      */
@@ -1146,7 +1134,7 @@ throw|;
 block|}
 if|if
 condition|(
-name|_strings
+name|bibtexStrings
 operator|.
 name|containsKey
 argument_list|(
@@ -1165,7 +1153,7 @@ literal|"Duplicate BibtexString id."
 argument_list|)
 throw|;
 block|}
-name|_strings
+name|bibtexStrings
 operator|.
 name|put
 argument_list|(
@@ -1189,7 +1177,7 @@ name|String
 name|id
 parameter_list|)
 block|{
-name|_strings
+name|bibtexStrings
 operator|.
 name|remove
 argument_list|(
@@ -1208,7 +1196,7 @@ name|getStringKeySet
 parameter_list|()
 block|{
 return|return
-name|_strings
+name|bibtexStrings
 operator|.
 name|keySet
 argument_list|()
@@ -1225,7 +1213,7 @@ name|getStringValues
 parameter_list|()
 block|{
 return|return
-name|_strings
+name|bibtexStrings
 operator|.
 name|values
 argument_list|()
@@ -1243,7 +1231,7 @@ name|o
 parameter_list|)
 block|{
 return|return
-name|_strings
+name|bibtexStrings
 operator|.
 name|get
 argument_list|(
@@ -1260,7 +1248,7 @@ name|getStringCount
 parameter_list|()
 block|{
 return|return
-name|_strings
+name|bibtexStrings
 operator|.
 name|size
 argument_list|()
@@ -1282,7 +1270,7 @@ control|(
 name|BibtexString
 name|value
 range|:
-name|_strings
+name|bibtexStrings
 operator|.
 name|values
 argument_list|()
@@ -1349,7 +1337,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Take the given collection of BibtexEntry and resolve any string      * references.      *       * @param entries      *            A collection of BibtexEntries in which all strings of the form      *            #xxx# will be resolved against the hash map of string      *            references stored in the databasee.      *                  * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      *       * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.       */
+comment|/**      * Take the given collection of BibtexEntry and resolve any string      * references.      *      * @param entries A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the databasee.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
 DECL|method|resolveForStrings (Collection<BibtexEntry> entries, boolean inPlace)
 specifier|public
 name|List
@@ -1426,7 +1414,7 @@ return|return
 name|results
 return|;
 block|}
-comment|/**      * Take the given BibtexEntry and resolve any string references.      *       * @param entry      *            A BibtexEntry in which all strings of the form #xxx# will be      *            resolved against the hash map of string references stored in      *            the databasee.      *       * @param inPlace      *            If inPlace is true then the given BibtexEntry will be      *            modified, if false then a copy is made using close made before      *            resolving the strings.      *       * @return a BibtexEntry with all string references resolved. It is      *         dependent on the value of inPlace whether a copy is made or the      *         given BibtexEntries is modified.      */
+comment|/**      * Take the given BibtexEntry and resolve any string references.      *      * @param entry   A BibtexEntry in which all strings of the form #xxx# will be      *                resolved against the hash map of string references stored in      *                the databasee.      * @param inPlace If inPlace is true then the given BibtexEntry will be      *                modified, if false then a copy is made using close made before      *                resolving the strings.      * @return a BibtexEntry with all string references resolved. It is      * dependent on the value of inPlace whether a copy is made or the      * given BibtexEntries is modified.      */
 DECL|method|resolveForStrings (BibtexEntry entry, boolean inPlace)
 specifier|public
 name|BibtexEntry
@@ -1518,7 +1506,7 @@ control|(
 name|BibtexString
 name|string
 range|:
-name|_strings
+name|bibtexStrings
 operator|.
 name|values
 argument_list|()
@@ -2265,7 +2253,7 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns the text stored in the given field of the given bibtex entry      * which belongs to the given database.      *       * If a database is given, this function will try to resolve any string      * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any.      *       * @param field      *            The field to return the value of.      * @param bibtex maybenull      *            The bibtex entry which contains the field.      * @param database maybenull      *            The database of the bibtex entry.      * @return The resolved field value or null if not found.      */
+comment|/**      * Returns the text stored in the given field of the given bibtex entry      * which belongs to the given database.      *<p>      * If a database is given, this function will try to resolve any string      * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any.      *      * @param field    The field to return the value of.      * @param bibtex   maybenull      *                 The bibtex entry which contains the field.      * @param database maybenull      *                 The database of the bibtex entry.      * @return The resolved field value or null if not found.      */
 DECL|method|getResolvedField (String field, BibtexEntry bibtex, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -2407,7 +2395,7 @@ name|database
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a text with references resolved according to an optionally given      * database.           * @param toResolve maybenull The text to resolve.      * @param database maybenull The database to use for resolving the text.      * @return The resolved text or the original text if either the text or the database are null      */
+comment|/**      * Returns a text with references resolved according to an optionally given      * database.      *      * @param toResolve maybenull The text to resolve.      * @param database  maybenull The database to use for resolving the text.      * @return The resolved text or the original text if either the text or the database are null      */
 DECL|method|getText (String toResolve, BibtexDatabase database)
 specifier|public
 specifier|static
