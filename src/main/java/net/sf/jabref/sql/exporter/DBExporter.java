@@ -218,6 +218,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
 name|BibtexString
 import|;
 end_import

@@ -182,6 +182,20 @@ name|BibtexEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|BibtexString
+import|;
+end_import
+
 begin_class
 DECL|class|AuxSubGenerator
 specifier|public
