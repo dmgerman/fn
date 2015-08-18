@@ -136,16 +136,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Hashtable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -516,7 +506,6 @@ decl_stmt|;
 comment|/**      * Returns the number of entries.      */
 DECL|method|getEntryCount ()
 specifier|public
-specifier|synchronized
 name|int
 name|getEntryCount
 parameter_list|()
@@ -531,7 +520,6 @@ block|}
 comment|/**      * Returns a Set containing the keys to all entries.      * Use getKeySet().iterator() to iterate over all entries.      */
 DECL|method|getKeySet ()
 specifier|public
-specifier|synchronized
 name|Set
 argument_list|<
 name|String
@@ -599,7 +587,6 @@ block|}
 comment|/**      * Returns the entry with the given ID (-> entry_type + hashcode).      */
 DECL|method|getEntryById (String id)
 specifier|public
-specifier|synchronized
 name|BibtexEntry
 name|getEntryById
 parameter_list|(
@@ -618,7 +605,6 @@ return|;
 block|}
 DECL|method|getEntries ()
 specifier|public
-specifier|synchronized
 name|Collection
 argument_list|<
 name|BibtexEntry
@@ -1155,7 +1141,6 @@ block|}
 comment|/**      * Removes the string at the given index.      */
 DECL|method|removeString (String id)
 specifier|public
-specifier|synchronized
 name|void
 name|removeString
 parameter_list|(
@@ -1208,7 +1193,6 @@ block|}
 comment|/**      * Returns the string at the given index.      */
 DECL|method|getString (String o)
 specifier|public
-specifier|synchronized
 name|BibtexString
 name|getString
 parameter_list|(
@@ -1228,7 +1212,6 @@ block|}
 comment|/**      * Returns the number of strings.      */
 DECL|method|getStringCount ()
 specifier|public
-specifier|synchronized
 name|int
 name|getStringCount
 parameter_list|()
