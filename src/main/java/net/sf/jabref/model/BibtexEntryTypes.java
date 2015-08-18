@@ -2433,7 +2433,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/** 	     * This type is used for IEEEtran.bst to control various 	     * be repeated or not. Not a very elegant solution, but it works... 	     */
+comment|/**      * This type is used for IEEEtran.bst to control various      * be repeated or not. Not a very elegant solution, but it works...      */
 DECL|field|IEEETRANBSTCTL
 specifier|public
 specifier|static
@@ -2549,7 +2549,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/** 	     * This type is provided as an emergency choice if the user makes 	     * customization changes that remove the type of an entry. 	     */
+comment|/**      * This type is provided as an emergency choice if the user makes      * customization changes that remove the type of an entry.      */
 DECL|field|TYPELESS
 specifier|public
 specifier|static
