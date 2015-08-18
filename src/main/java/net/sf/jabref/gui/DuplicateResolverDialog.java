@@ -198,11 +198,11 @@ name|DuplicateResolverDialog
 extends|extends
 name|JDialog
 block|{
+DECL|field|NOT_CHOSEN
 specifier|private
 specifier|static
 specifier|final
 name|int
-DECL|field|NOT_CHOSEN
 name|NOT_CHOSEN
 init|=
 operator|-

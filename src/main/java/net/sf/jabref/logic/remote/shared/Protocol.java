@@ -308,7 +308,7 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{}
+block|{         }
 try|try
 block|{
 name|out
@@ -322,7 +322,7 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{}
+block|{         }
 try|try
 block|{
 name|socket
@@ -336,7 +336,7 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{}
+block|{         }
 block|}
 block|}
 end_class

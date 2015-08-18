@@ -207,10 +207,10 @@ name|CustomExportDialog
 extends|extends
 name|JDialog
 block|{
+DECL|field|name
 specifier|private
 specifier|final
 name|JTextField
-DECL|field|name
 name|name
 init|=
 operator|new

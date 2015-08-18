@@ -205,10 +205,10 @@ name|ReplaceStringDialog
 extends|extends
 name|JDialog
 block|{
+DECL|field|fields
 specifier|private
 specifier|final
 name|JTextField
-DECL|field|fields
 name|fields
 init|=
 operator|new
@@ -266,10 +266,10 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+DECL|field|allFi
 specifier|private
 specifier|final
 name|JRadioButton
-DECL|field|allFi
 name|allFi
 init|=
 operator|new
