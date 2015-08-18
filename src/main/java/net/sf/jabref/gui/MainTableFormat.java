@@ -1521,7 +1521,7 @@ index|]
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|BibtexEntry
 operator|.
 name|TYPE_HEADER
 argument_list|)
