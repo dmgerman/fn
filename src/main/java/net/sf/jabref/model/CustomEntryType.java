@@ -153,7 +153,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class is used to represent customized entry types.  *  */
+comment|/**  * This class is used to represent customized entry types.  */
 end_comment
 
 begin_class
@@ -170,18 +170,18 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
-DECL|field|req
+DECL|field|required
 specifier|private
 name|String
 index|[]
-name|req
+name|required
 decl_stmt|;
-DECL|field|opt
+DECL|field|optional
 specifier|private
 specifier|final
 name|String
 index|[]
-name|opt
+name|optional
 decl_stmt|;
 DECL|field|priOpt
 specifier|private
@@ -213,79 +213,83 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|CustomEntryType (String name_, String[] req_, String[] priOpt_, String[] secOpt_)
+DECL|method|CustomEntryType (String name, String[] required, String[] priOpt, String[] secOpt)
 specifier|public
 name|CustomEntryType
 parameter_list|(
 name|String
-name|name_
+name|name
 parameter_list|,
 name|String
 index|[]
-name|req_
+name|required
 parameter_list|,
 name|String
 index|[]
-name|priOpt_
+name|priOpt
 parameter_list|,
 name|String
 index|[]
-name|secOpt_
+name|secOpt
 parameter_list|)
 block|{
+name|this
+operator|.
 name|name
 operator|=
 name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
-name|name_
+name|name
 argument_list|)
 expr_stmt|;
 name|parseRequiredFields
 argument_list|(
-name|req_
+name|required
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|priOpt
 operator|=
-name|priOpt_
+name|priOpt
 expr_stmt|;
-name|opt
+name|optional
 operator|=
 name|Util
 operator|.
 name|arrayConcat
 argument_list|(
-name|priOpt_
+name|priOpt
 argument_list|,
-name|secOpt_
+name|secOpt
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|CustomEntryType (String name_, String[] req_, String[] opt_)
+DECL|method|CustomEntryType (String name, String[] required, String[] optional)
 specifier|public
 name|CustomEntryType
 parameter_list|(
 name|String
-name|name_
+name|name
 parameter_list|,
 name|String
 index|[]
-name|req_
+name|required
 parameter_list|,
 name|String
 index|[]
-name|opt_
+name|optional
 parameter_list|)
 block|{
 name|this
 argument_list|(
-name|name_
+name|name
 argument_list|,
-name|req_
+name|required
 argument_list|,
-name|opt_
+name|optional
 argument_list|,
 operator|new
 name|String
@@ -295,38 +299,42 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|CustomEntryType (String name_, String reqStr, String optStr)
+DECL|method|CustomEntryType (String name, String required, String optional)
 specifier|private
 name|CustomEntryType
 parameter_list|(
 name|String
-name|name_
+name|name
 parameter_list|,
 name|String
-name|reqStr
+name|required
 parameter_list|,
 name|String
-name|optStr
+name|optional
 parameter_list|)
 block|{
+name|this
+operator|.
 name|name
 operator|=
 name|StringUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
-name|name_
+name|name
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|reqStr
+name|required
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|req
+name|this
+operator|.
+name|required
 operator|=
 operator|new
 name|String
@@ -339,19 +347,21 @@ else|else
 block|{
 name|parseRequiredFields
 argument_list|(
-name|reqStr
+name|required
 argument_list|)
 expr_stmt|;
 block|}
 if|if
 condition|(
-name|optStr
+name|optional
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|opt
+name|this
+operator|.
+name|optional
 operator|=
 operator|new
 name|String
@@ -362,9 +372,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|opt
+name|this
+operator|.
+name|optional
 operator|=
-name|optStr
+name|optional
 operator|.
 name|split
 argument_list|(
@@ -373,20 +385,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parseRequiredFields (String reqStr)
+DECL|method|parseRequiredFields (String required)
 specifier|private
 name|void
 name|parseRequiredFields
 parameter_list|(
 name|String
-name|reqStr
+name|required
 parameter_list|)
 block|{
 name|String
 index|[]
 name|parts
 init|=
-name|reqStr
+name|required
 operator|.
 name|split
 argument_list|(
@@ -417,9 +429,7 @@ name|fields
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|ArrayList
@@ -431,10 +441,7 @@ name|sets
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-index|[]
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -484,7 +491,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|req
+name|required
 operator|=
 name|fields
 operator|.
@@ -550,7 +557,7 @@ name|getOptionalFields
 parameter_list|()
 block|{
 return|return
-name|opt
+name|optional
 return|;
 block|}
 annotation|@
@@ -563,7 +570,7 @@ name|getRequiredFields
 parameter_list|()
 block|{
 return|return
-name|req
+name|required
 return|;
 block|}
 annotation|@
@@ -593,7 +600,7 @@ name|Util
 operator|.
 name|getRemainder
 argument_list|(
-name|opt
+name|optional
 argument_list|,
 name|priOpt
 argument_list|)
@@ -618,7 +625,6 @@ literal|";"
 argument_list|)
 return|;
 block|}
-comment|//    public boolean isTemporary
 annotation|@
 name|Override
 DECL|method|describeRequiredFields ()
@@ -628,7 +634,7 @@ name|describeRequiredFields
 parameter_list|()
 block|{
 name|StringBuilder
-name|sb
+name|result
 init|=
 operator|new
 name|StringBuilder
@@ -643,7 +649,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|req
+name|required
 operator|.
 name|length
 condition|;
@@ -651,29 +657,29 @@ name|i
 operator|++
 control|)
 block|{
-name|sb
+name|result
 operator|.
 name|append
 argument_list|(
-name|req
+name|required
 index|[
 name|i
 index|]
 argument_list|)
 expr_stmt|;
-name|sb
+name|result
 operator|.
 name|append
 argument_list|(
 name|i
 operator|<=
-name|req
+name|required
 operator|.
 name|length
 operator|-
 literal|1
 operator|&&
-name|req
+name|required
 operator|.
 name|length
 operator|>
@@ -686,84 +692,13 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|sb
+name|result
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|describeOptionalFields ()
-specifier|public
-name|String
-name|describeOptionalFields
-parameter_list|()
-block|{
-name|StringBuilder
-name|sb
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|opt
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-name|opt
-index|[
-name|i
-index|]
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|i
-operator|<=
-name|opt
-operator|.
-name|length
-operator|-
-literal|1
-operator|&&
-name|opt
-operator|.
-name|length
-operator|>
-literal|1
-condition|?
-literal|", "
-else|:
-literal|""
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|sb
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
-comment|/**      * Check whether this entry's required fields are set, taking crossreferenced entries and      * either-or fields into account:      * @param entry The entry to check.      * @param database The entry's database.      * @return True if required fields are set, false otherwise.      */
+comment|/**      * Check whether this entry's required fields are set, taking crossreferenced entries and      * either-or fields into account:      *      * @param entry    The entry to check.      * @param database The entry's database.      * @return True if required fields are set, false otherwise.      */
 annotation|@
 name|Override
 DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
@@ -805,7 +740,7 @@ init|=
 operator|new
 name|boolean
 index|[
-name|req
+name|required
 operator|.
 name|length
 index|]
@@ -820,7 +755,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|req
+name|required
 operator|.
 name|length
 condition|;
@@ -837,7 +772,7 @@ name|BibtexDatabase
 operator|.
 name|getResolvedField
 argument_list|(
-name|req
+name|required
 index|[
 name|i
 index|]
@@ -861,7 +796,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|req
+name|required
 operator|.
 name|length
 condition|;
@@ -883,7 +818,7 @@ condition|(
 operator|!
 name|isCoupledFieldSet
 argument_list|(
-name|req
+name|required
 index|[
 name|i
 index|]
@@ -1015,7 +950,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Get a String describing the required field set for this entry type.      * @return Description of required field set for storage in preferences or bib file.      */
+comment|/**      * Get a String describing the required field set for this entry type.      *      * @return Description of required field set for storage in preferences or bib file.      */
 DECL|method|getRequiredFieldsString ()
 specifier|public
 name|String
@@ -1043,7 +978,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|req
+name|required
 operator|.
 name|length
 condition|;
@@ -1068,7 +1003,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|req
+name|required
 index|[
 name|i
 index|]
@@ -1078,7 +1013,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|req
+name|required
 index|[
 name|i
 index|]
@@ -1173,7 +1108,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|req
+name|required
 index|[
 name|i
 index|]
@@ -1184,7 +1119,7 @@ if|if
 condition|(
 name|i
 operator|<
-name|req
+name|required
 operator|.
 name|length
 operator|-
@@ -1257,7 +1192,6 @@ name|getRequiredFieldsString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/*StringBuffer sb = new StringBuffer();         for (int i=0; i<req.length; i++) {             sb.append(req[i]);             if (i<req.length-1)         	sb.append(";");         }         out.write(sb.toString());*/
 name|out
 operator|.
 name|write
@@ -1281,7 +1215,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|opt
+name|optional
 operator|.
 name|length
 condition|;
@@ -1293,7 +1227,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|opt
+name|optional
 index|[
 name|i
 index|]
@@ -1303,7 +1237,7 @@ if|if
 condition|(
 name|i
 operator|<
-name|opt
+name|optional
 operator|.
 name|length
 operator|-
@@ -1353,9 +1287,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-comment|//if ((comment.length()< 9+GUIGlobals.ENTRYTYPE_FLAG.length())
-comment|//	|| comment
-comment|//System.out.println(">"+comment+"<");
 name|String
 name|rest
 decl_stmt|;
@@ -1441,7 +1372,6 @@ argument_list|,
 name|rPos
 argument_list|)
 decl_stmt|;
-comment|//System.out.println(name+"\nr '"+reqFields+"'");
 name|int
 name|oPos
 init|=
@@ -1470,7 +1400,6 @@ argument_list|,
 name|oPos
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("o '"+optFields+"'");
 return|return
 operator|new
 name|CustomEntryType
