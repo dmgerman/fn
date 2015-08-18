@@ -673,6 +673,7 @@ argument_list|)
 condition|)
 block|{
 comment|//Todo SciPlore
+comment|// @formatter:off
 return|return
 name|path
 operator|.
@@ -710,6 +711,7 @@ argument_list|(
 literal|"\\\\"
 argument_list|)
 return|;
+comment|// @formatter:on
 block|}
 elseif|else
 if|if

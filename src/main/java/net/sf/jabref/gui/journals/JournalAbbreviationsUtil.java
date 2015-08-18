@@ -208,6 +208,7 @@ specifier|public
 class|class
 name|JournalAbbreviationsUtil
 block|{
+comment|// @formatter:off
 DECL|field|TOOLTIP_TEXT
 specifier|private
 specifier|static
@@ -237,6 +238,7 @@ argument_list|)
 operator|+
 literal|".</HTML>"
 decl_stmt|;
+comment|// @formatter:on
 comment|/**      * Create a control panel for the entry editor's journal field, to toggle      * abbreviated/full journal name      * @param editor The FieldEditor for the journal field.      * @return The control panel for the entry editor.      */
 DECL|method|getNameSwitcher (final EntryEditor entryEditor, final FieldEditor editor, final UndoManager undoManager)
 specifier|public

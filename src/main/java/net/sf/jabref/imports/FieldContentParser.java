@@ -114,6 +114,7 @@ operator|==
 literal|'\n'
 condition|)
 block|{
+comment|// @formatter:off
 if|if
 condition|(
 name|content
@@ -165,6 +166,7 @@ condition|)
 block|{
 comment|// We have either \n\t followed by non-whitespace, or \n\t at the
 comment|// end. Both cases indicate a wrap made by JabRef. Remove and insert space if necessary.
+comment|// @formatter:on
 name|content
 operator|.
 name|deleteCharAt
@@ -223,6 +225,7 @@ name|i
 operator|++
 expr_stmt|;
 block|}
+comment|// @formatter:off
 block|}
 elseif|else
 if|if
@@ -276,6 +279,7 @@ condition|)
 block|{
 comment|// We have \n\t followed by ' ' followed by non-whitespace, which indicates
 comment|// a wrap made by JabRef<= 1.7.1. Remove:
+comment|// @formatter:on
 name|content
 operator|.
 name|deleteCharAt
@@ -322,6 +326,7 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
+comment|// @formatter:off
 block|}
 elseif|else
 if|if
@@ -371,6 +376,7 @@ condition|)
 block|{
 comment|// We have \n\t\n\t, which looks like a JabRef-formatted empty line.
 comment|// Remove the tabs and keep one of the line breaks:
+comment|// @formatter:on
 name|content
 operator|.
 name|deleteCharAt

@@ -39,6 +39,7 @@ class|class
 name|FileNameCleaner
 block|{
 comment|/**      * MUST ALWAYS BE A SORTED ARRAY because it is used in a binary search      */
+comment|// @formatter:off
 DECL|field|ILLEGAL_CHARS
 specifier|private
 specifier|static
@@ -131,6 +132,7 @@ block|,
 literal|124
 block|}
 decl_stmt|;
+comment|// @formatter:on
 comment|/**      * Replaces illegal characters in given fileName by '_'      *      * @param badFileName the fileName to clean      * @return a clean filename      */
 DECL|method|cleanFileName (String badFileName)
 specifier|public

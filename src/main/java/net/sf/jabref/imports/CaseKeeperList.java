@@ -25,6 +25,7 @@ DECL|class|CaseKeeperList
 class|class
 name|CaseKeeperList
 block|{
+comment|// @formatter:off
 comment|// Common words in IEEE Xplore that should always be in the given case
 DECL|field|wordListIEEEXplore
 specifier|private
@@ -1995,6 +1996,7 @@ block|,
 name|wordListCountries
 block|}
 decl_stmt|;
+comment|// @formatter:on
 DECL|method|CaseKeeperList ()
 specifier|public
 name|CaseKeeperList
