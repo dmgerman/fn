@@ -360,15 +360,6 @@ name|untitledTitle
 init|=
 literal|"untitled"
 decl_stmt|;
-DECL|field|TYPE_HEADER
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|TYPE_HEADER
-init|=
-literal|"entrytype"
-decl_stmt|;
 DECL|field|NUMBER_COL
 specifier|public
 specifier|static

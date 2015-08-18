@@ -20,6 +20,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
 name|BibtexDatabase
 import|;
 end_import
@@ -31,6 +33,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
 operator|.
 name|BibtexEntry
 import|;
@@ -175,16 +179,6 @@ operator|.
 name|io
 operator|.
 name|StringReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
 import|;
 end_import
 

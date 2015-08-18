@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2003-2014 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.model
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
 package|;
 end_package
 
@@ -24,7 +26,7 @@ specifier|public
 class|class
 name|BibtexString
 block|{
-comment|/**      * Type of a \@String.      *      * Differentiate a \@String based on its usage:      *      * - {@link #AUTHOR}: prefix "a", for author and editor fields.      * - {@link #INSTITUTION}: prefix "i", for institution and organization      *                         field      * - {@link #PUBLISHER}: prefix "p", for publisher fields      * - {@link #OTHER}: no prefix, for any field      *      * Examples:      *      * \@String { aKahle    = "Kahle, Brewster " } -> author      * \@String { aStallman = "Stallman, Richard" } -> author      * \@String { iMIT      = "{Massachusetts Institute of Technology ({MIT})}" } -> institution      * \@String { pMIT      = "{Massachusetts Institute of Technology ({MIT}) press}" } -> publisher      * \@String { anct      = "Anecdote" } -> other      * \@String { eg        = "for example" } -> other      * \@String { et        = " and " } -> other      * \@String { lBigMac   = "Big Mac" } -> other      *      * Usage:      *      * \@Misc {      *   title       = "The GNU Project"      *   author      = aStallman # et # aKahle      *   institution = iMIT      *   publisher   = pMIT      *   note        = "Just " # eg      * }      *      * @author Jan Kubovy<jan@kubovy.eu>      */
+comment|/**      * Type of a \@String.      *<p>      * Differentiate a \@String based on its usage:      *<p>      * - {@link #AUTHOR}: prefix "a", for author and editor fields.      * - {@link #INSTITUTION}: prefix "i", for institution and organization      * field      * - {@link #PUBLISHER}: prefix "p", for publisher fields      * - {@link #OTHER}: no prefix, for any field      *<p>      * Examples:      *<p>      * \@String { aKahle    = "Kahle, Brewster " } -> author      * \@String { aStallman = "Stallman, Richard" } -> author      * \@String { iMIT      = "{Massachusetts Institute of Technology ({MIT})}" } -> institution      * \@String { pMIT      = "{Massachusetts Institute of Technology ({MIT}) press}" } -> publisher      * \@String { anct      = "Anecdote" } -> other      * \@String { eg        = "for example" } -> other      * \@String { et        = " and " } -> other      * \@String { lBigMac   = "Big Mac" } -> other      *<p>      * Usage:      *<p>      * \@Misc {      * title       = "The GNU Project"      * author      = aStallman # et # aKahle      * institution = iMIT      * publisher   = pMIT      * note        = "Just " # eg      * }      *      * @author Jan Kubovy<jan@kubovy.eu>      */
 DECL|enum|Type
 specifier|public
 enum|enum
@@ -172,25 +174,25 @@ name|OTHER
 return|;
 block|}
 block|}
-DECL|field|_name
+DECL|field|name
 specifier|private
 name|String
-name|_name
+name|name
 decl_stmt|;
-DECL|field|_content
+DECL|field|content
 specifier|private
 name|String
-name|_content
+name|content
 decl_stmt|;
-DECL|field|_id
+DECL|field|id
 specifier|private
 name|String
-name|_id
+name|id
 decl_stmt|;
-DECL|field|_type
+DECL|field|type
 specifier|private
 name|Type
-name|_type
+name|type
 decl_stmt|;
 DECL|method|BibtexString (String id, String name, String content)
 specifier|public
@@ -206,19 +208,25 @@ name|String
 name|content
 parameter_list|)
 block|{
-name|_id
+name|this
+operator|.
+name|id
 operator|=
 name|id
 expr_stmt|;
-name|_name
+name|this
+operator|.
+name|name
 operator|=
 name|name
 expr_stmt|;
-name|_content
+name|this
+operator|.
+name|content
 operator|=
 name|content
 expr_stmt|;
-name|_type
+name|type
 operator|=
 name|Type
 operator|.
@@ -245,19 +253,27 @@ name|Type
 name|type
 parameter_list|)
 block|{
-name|_id
+name|this
+operator|.
+name|id
 operator|=
 name|id
 expr_stmt|;
-name|_name
+name|this
+operator|.
+name|name
 operator|=
 name|name
 expr_stmt|;
-name|_content
+name|this
+operator|.
+name|content
 operator|=
 name|content
 expr_stmt|;
-name|_type
+name|this
+operator|.
+name|type
 operator|=
 name|type
 expr_stmt|;
@@ -269,7 +285,7 @@ name|getId
 parameter_list|()
 block|{
 return|return
-name|_id
+name|id
 return|;
 block|}
 DECL|method|setId (String id)
@@ -281,7 +297,9 @@ name|String
 name|id
 parameter_list|)
 block|{
-name|_id
+name|this
+operator|.
+name|id
 operator|=
 name|id
 expr_stmt|;
@@ -293,7 +311,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-name|_name
+name|name
 return|;
 block|}
 DECL|method|setName (String name)
@@ -305,11 +323,13 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|_name
+name|this
+operator|.
+name|name
 operator|=
 name|name
 expr_stmt|;
-name|_type
+name|type
 operator|=
 name|Type
 operator|.
@@ -326,13 +346,13 @@ name|getContent
 parameter_list|()
 block|{
 return|return
-name|_content
+name|content
 operator|==
 literal|null
 condition|?
 literal|""
 else|:
-name|_content
+name|content
 return|;
 block|}
 DECL|method|setContent (String content)
@@ -344,7 +364,9 @@ name|String
 name|content
 parameter_list|)
 block|{
-name|_content
+name|this
+operator|.
+name|content
 operator|=
 name|content
 expr_stmt|;
@@ -361,11 +383,11 @@ return|return
 operator|new
 name|BibtexString
 argument_list|(
-name|_id
+name|id
 argument_list|,
-name|_name
+name|name
 argument_list|,
-name|_content
+name|content
 argument_list|)
 return|;
 block|}
@@ -376,7 +398,7 @@ name|getType
 parameter_list|()
 block|{
 return|return
-name|_type
+name|type
 return|;
 block|}
 block|}

@@ -14,6 +14,20 @@ name|jabref
 package|;
 end_package
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
 begin_comment
 comment|/**  * Entry containers work on a single entry, which can be asked for   */
 end_comment

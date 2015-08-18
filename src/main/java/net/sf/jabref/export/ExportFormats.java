@@ -172,6 +172,20 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
 begin_comment
 comment|/**  * User: alver  *   * Date: Oct 18, 2006   *   * Time: 9:35:08 PM   */
 end_comment

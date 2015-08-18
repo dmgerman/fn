@@ -24,7 +24,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|logic
+operator|.
+name|util
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -36,11 +40,23 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
 operator|.
-name|StringUtil
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|BibtexEntry
 import|;
 end_import
 

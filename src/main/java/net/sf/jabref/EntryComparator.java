@@ -22,9 +22,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|GUIGlobals
+name|AuthorList
 import|;
 end_import
 
@@ -36,9 +36,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|AuthorList
+name|BibtexEntry
 import|;
 end_import
 
@@ -401,7 +401,7 @@ name|sortField
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|BibtexEntry
 operator|.
 name|TYPE_HEADER
 argument_list|)

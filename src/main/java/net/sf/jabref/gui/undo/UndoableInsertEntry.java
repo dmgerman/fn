@@ -56,6 +56,34 @@ name|BasePanel
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class represents the removal of an entry. The constructor needs  * references to the database, the entry, and the map of open entry editors.  * The latter to be able to close the entry's editor if it is opened before  * the insert is undone.  */
 end_comment

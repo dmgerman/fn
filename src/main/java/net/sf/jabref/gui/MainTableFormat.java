@@ -58,6 +58,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -1519,7 +1521,7 @@ index|]
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|BibtexEntry
 operator|.
 name|TYPE_HEADER
 argument_list|)

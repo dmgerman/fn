@@ -54,6 +54,20 @@ name|UndoableFieldChange
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: 5/24/12  * Time: 8:48 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
