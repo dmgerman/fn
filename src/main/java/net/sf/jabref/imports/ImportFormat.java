@@ -62,18 +62,6 @@ name|BibtexEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinter
-import|;
-end_import
-
 begin_comment
 comment|/**  * Role of an importer for JabRef.  *   *<p>Importers are sorted according to following criteria  *<ol><li>  *   custom importers come first, then importers shipped with JabRef  *</li><li>  *   then importers are sorted by name.  *</li></ol>  *</p>  */
 end_comment

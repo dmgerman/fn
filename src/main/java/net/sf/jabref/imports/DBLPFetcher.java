@@ -138,18 +138,6 @@ name|DuplicateCheck
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinter
-import|;
-end_import
-
 begin_class
 DECL|class|DBLPFetcher
 specifier|public

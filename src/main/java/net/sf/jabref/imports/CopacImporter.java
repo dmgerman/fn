@@ -124,18 +124,6 @@ name|BibtexFields
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinter
-import|;
-end_import
-
 begin_comment
 comment|/**  * Importer for COPAC format.  *   * Documentation can be found online at:  *   * http://copac.ac.uk/faq/#format  */
 end_comment

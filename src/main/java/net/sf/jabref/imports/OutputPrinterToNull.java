@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2011 JabRef contributors.     This program is free sof
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.imports
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|imports
 package|;
 end_package
 

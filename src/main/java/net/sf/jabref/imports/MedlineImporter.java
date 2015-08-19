@@ -108,18 +108,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinter
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache

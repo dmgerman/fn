@@ -146,18 +146,6 @@ name|BibtexFields
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinter
-import|;
-end_import
-
 begin_comment
 comment|/**  * Importer for the MEDLINE Plain format.  *   * check here for details on the format  * http://www.nlm.nih.gov/bsd/mms/medlineelements.html  *   * @author vegeziel  */
 end_comment
