@@ -112,6 +112,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|MnemonicAwareAction
 import|;
 end_import
