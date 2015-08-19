@@ -1235,7 +1235,7 @@ name|s
 operator|.
 name|equals
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1272,7 +1272,7 @@ name|fld
 operator|.
 name|equals
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)

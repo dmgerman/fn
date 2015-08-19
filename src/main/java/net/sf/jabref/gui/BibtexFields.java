@@ -144,6 +144,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|specialfields
 operator|.
 name|SpecialFieldsUtils
@@ -182,21 +198,12 @@ specifier|public
 class|class
 name|BibtexFields
 block|{
-DECL|field|KEY_FIELD
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|KEY_FIELD
-init|=
-literal|"bibtexkey"
-decl_stmt|;
 comment|// some internal fields
+DECL|field|SEARCH
 specifier|public
 specifier|static
 specifier|final
 name|String
-DECL|field|SEARCH
 name|SEARCH
 init|=
 literal|"__search"
@@ -276,7 +283,7 @@ literal|"title"
 block|,
 literal|"year"
 block|,
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 block|}
@@ -1085,7 +1092,7 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -1846,7 +1853,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** insert a field into the internal list */
+comment|/**      * insert a field into the internal list      */
 DECL|method|add (BibtexSingleField field)
 specifier|private
 name|void
@@ -2275,7 +2282,7 @@ name|isNumeric
 argument_list|()
 return|;
 block|}
-comment|/** returns an string-array with all fieldnames */
+comment|/**      * returns an string-array with all fieldnames      */
 DECL|method|getAllFieldNames ()
 specifier|public
 specifier|static
@@ -2292,7 +2299,7 @@ operator|.
 name|PUBLIC_FIELDS
 return|;
 block|}
-comment|/** returns an string-array with only private fieldnames */
+comment|/**      * returns an string-array with only private fieldnames      */
 DECL|method|getAllPrivateFieldNames ()
 specifier|public
 specifier|static
@@ -2365,7 +2372,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/** returns the fieldname of the entry at index t */
+comment|/**      * returns the fieldname of the entry at index t      */
 DECL|method|getFieldName (int t)
 specifier|public
 specifier|static
@@ -2387,7 +2394,7 @@ name|t
 index|]
 return|;
 block|}
-comment|/** returns the number of available fields */
+comment|/**      * returns the number of available fields      */
 DECL|method|numberOfPublicFields ()
 specifier|public
 specifier|static
@@ -2673,7 +2680,7 @@ operator|=
 name|pLength
 expr_stmt|;
 block|}
-comment|/** the constructor reads all neccessary data from the xml file */
+comment|/**          * the constructor reads all neccessary data from the xml file          */
 DECL|method|BibtexSingleField (TXMLReader reader, Element node)
 specifier|public
 name|BibtexSingleField
@@ -3217,7 +3224,7 @@ return|return
 name|name
 return|;
 block|}
-comment|/**          * Set this field's numeric propery          * @param numeric true to indicate that this is a numeric field.          * @return this BibtexSingleField instance. Makes it easier to call this          *   method on the fly while initializing without using a local variable.          */
+comment|/**          * Set this field's numeric propery          *          * @param numeric true to indicate that this is a numeric field.          * @return this BibtexSingleField instance. Makes it easier to call this          * method on the fly while initializing without using a local variable.          */
 DECL|method|setNumeric (boolean numeric)
 specifier|public
 name|BibtexSingleField

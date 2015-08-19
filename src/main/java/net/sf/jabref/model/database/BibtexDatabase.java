@@ -38,20 +38,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|BibtexFields
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -1049,7 +1035,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -1063,7 +1049,7 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -2334,7 +2320,7 @@ name|field
 operator|.
 name|equals
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)

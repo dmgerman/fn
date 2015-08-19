@@ -1375,7 +1375,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|,

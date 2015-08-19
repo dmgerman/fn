@@ -232,6 +232,22 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
 begin_comment
 comment|/**  * Preference tab for file sorting options.  */
 end_comment
@@ -629,7 +645,7 @@ name|fieldNames
 operator|.
 name|add
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1390,7 +1406,7 @@ name|fieldNames
 operator|.
 name|add
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)

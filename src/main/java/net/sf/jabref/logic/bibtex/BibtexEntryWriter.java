@@ -569,7 +569,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -617,7 +617,7 @@ name|written
 operator|.
 name|put
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -995,7 +995,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1043,7 +1043,7 @@ name|written
 operator|.
 name|put
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -1331,7 +1331,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1379,7 +1379,7 @@ name|written
 operator|.
 name|put
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|,

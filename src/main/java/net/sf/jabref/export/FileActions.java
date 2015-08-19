@@ -2141,7 +2141,7 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)

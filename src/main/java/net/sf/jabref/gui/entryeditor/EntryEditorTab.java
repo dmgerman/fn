@@ -1312,7 +1312,7 @@ init|=
 operator|new
 name|FieldTextField
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -1323,7 +1323,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
