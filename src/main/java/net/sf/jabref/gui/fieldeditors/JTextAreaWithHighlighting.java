@@ -50,6 +50,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|SearchTextListener
 import|;
 end_import
