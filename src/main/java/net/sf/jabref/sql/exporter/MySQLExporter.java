@@ -56,6 +56,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|id
+operator|.
 name|IdGenerator
 import|;
 end_import

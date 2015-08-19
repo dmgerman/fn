@@ -38,7 +38,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|gui
+operator|.
+name|BasePanel
 import|;
 end_import
 
@@ -50,9 +52,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|BasePanel
+name|id
+operator|.
+name|IdGenerator
 import|;
 end_import
 
