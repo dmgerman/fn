@@ -26,6 +26,8 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
 name|BibtexDatabase
 import|;
 end_import
@@ -39,6 +41,8 @@ operator|.
 name|jabref
 operator|.
 name|model
+operator|.
+name|entry
 operator|.
 name|BibtexEntry
 import|;
@@ -396,7 +400,7 @@ name|filename
 argument_list|)
 return|;
 block|}
-comment|/**      * Perform the export of {@code database}.      *       * @param database      *            The database to export from.      * @param metaData      *            The database's meta data.      * @param file      *            the file to write the resulting export to      * @param encoding      *            The encoding of the database      * @param entryIds      *            Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      *       * @throws IOException      *             if a problem occurred while trying to write to {@code writer}      *             or read from required resources.      * @throws Exception      *             if any other error occurred during export.      *       * @see net.sf.jabref.export.IExportFormat#performExport(net.sf.jabref.model.BibtexDatabase,      *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set)      */
+comment|/**      * Perform the export of {@code database}.      *       * @param database      *            The database to export from.      * @param metaData      *            The database's meta data.      * @param file      *            the file to write the resulting export to      * @param encoding      *            The encoding of the database      * @param entryIds      *            Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      *       * @throws IOException      *             if a problem occurred while trying to write to {@code writer}      *             or read from required resources.      * @throws Exception      *             if any other error occurred during export.      *       * @see net.sf.jabref.export.IExportFormat#performExport(BibtexDatabase,      *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set)      */
 annotation|@
 name|Override
 DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> entryIds)

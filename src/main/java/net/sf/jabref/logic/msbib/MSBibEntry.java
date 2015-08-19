@@ -168,6 +168,8 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -182,6 +184,8 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
 name|BibtexEntryType
 import|;
 end_import
@@ -195,6 +199,8 @@ operator|.
 name|jabref
 operator|.
 name|model
+operator|.
+name|entry
 operator|.
 name|BibtexEntryTypes
 import|;

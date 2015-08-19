@@ -330,6 +330,8 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
 name|CustomEntryType
 import|;
 end_import

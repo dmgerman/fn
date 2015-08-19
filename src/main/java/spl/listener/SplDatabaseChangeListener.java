@@ -74,6 +74,8 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
 name|DatabaseChangeEvent
 import|;
 end_import
@@ -87,6 +89,8 @@ operator|.
 name|jabref
 operator|.
 name|model
+operator|.
+name|database
 operator|.
 name|DatabaseChangeListener
 import|;

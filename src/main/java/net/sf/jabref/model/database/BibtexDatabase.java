@@ -4,7 +4,7 @@ comment|/* Copyright (C) 2003 David Weitzman, Morten O. Alver  All programs in t
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.model
+DECL|package|net.sf.jabref.model.database
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|model
+operator|.
+name|database
 package|;
 end_package
 
@@ -183,6 +185,38 @@ operator|.
 name|concurrent
 operator|.
 name|ConcurrentHashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexString
 import|;
 end_import
 

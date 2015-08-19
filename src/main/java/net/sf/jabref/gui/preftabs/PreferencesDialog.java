@@ -364,6 +364,8 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
 name|BibtexEntryType
 import|;
 end_import

@@ -22,6 +22,8 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -36,6 +38,8 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
 name|DatabaseChangeEvent
 import|;
 end_import
@@ -49,6 +53,8 @@ operator|.
 name|jabref
 operator|.
 name|model
+operator|.
+name|database
 operator|.
 name|DatabaseChangeListener
 import|;

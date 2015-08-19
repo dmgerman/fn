@@ -54,6 +54,8 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
 name|BibtexDatabase
 import|;
 end_import

@@ -158,6 +158,8 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
 name|BibtexDatabase
 import|;
 end_import
@@ -172,6 +174,8 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -185,6 +189,8 @@ operator|.
 name|jabref
 operator|.
 name|model
+operator|.
+name|entry
 operator|.
 name|BibtexEntryType
 import|;
@@ -1918,7 +1924,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Write the given BibtexEntries as XMP-metadata text to the given stream.      *       * The text that is written to the stream contains a complete XMP-document.      *       * @param bibtexEntries      *            The BibtexEntries to write XMP-metadata for.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws TransformerException      *             Thrown if the bibtexEntries could not transformed to XMP.      * @throws IOException      *             Thrown if an IOException occured while writing to the stream.      *       * @see #toXMP(java.util.Collection, net.sf.jabref.model.BibtexDatabase) if you don't need strings to be      *      resolved.      */
+comment|/**      * Write the given BibtexEntries as XMP-metadata text to the given stream.      *       * The text that is written to the stream contains a complete XMP-document.      *       * @param bibtexEntries      *            The BibtexEntries to write XMP-metadata for.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws TransformerException      *             Thrown if the bibtexEntries could not transformed to XMP.      * @throws IOException      *             Thrown if an IOException occured while writing to the stream.      *       * @see #toXMP(java.util.Collection, BibtexDatabase) if you don't need strings to be      *      resolved.      */
 DECL|method|toXMP (Collection<BibtexEntry> bibtexEntries, BibtexDatabase database, OutputStream outputStream)
 specifier|private
 specifier|static
