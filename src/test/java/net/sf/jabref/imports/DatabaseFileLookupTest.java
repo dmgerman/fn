@@ -52,6 +52,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|FindUnlinkedFilesDialog
 import|;
 end_import
@@ -63,6 +65,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|FindUnlinkedFilesDialog
 operator|.
@@ -574,7 +578,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Connector-Method for the private method      * {@link FindUnlinkedFilesDialog#getFileListFromNode(net.sf.jabref.FindUnlinkedFilesDialog.CheckableTreeNode)} of the dialog      * {@link FindUnlinkedFilesDialog}.<br>      *<br>      * This method uses<b>reflection</b> to get access to that method.      *      * @see FindUnlinkedFilesDialog#getFileListFromNode(net.sf.jabref.FindUnlinkedFilesDialog.CheckableTreeNode)      */
+comment|/**      * Connector-Method for the private method      * {@link FindUnlinkedFilesDialog#getFileListFromNode(FindUnlinkedFilesDialog.CheckableTreeNode)} of the dialog      * {@link FindUnlinkedFilesDialog}.<br>      *<br>      * This method uses<b>reflection</b> to get access to that method.      *      * @see FindUnlinkedFilesDialog#getFileListFromNode(FindUnlinkedFilesDialog.CheckableTreeNode)      */
 DECL|method|getFileListFromNode (CheckableTreeNode node)
 specifier|private
 name|List

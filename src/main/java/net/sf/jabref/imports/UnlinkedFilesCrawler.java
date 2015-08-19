@@ -80,6 +80,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|FindUnlinkedFilesDialog
 operator|.
 name|CheckableTreeNode
@@ -93,6 +95,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|FindUnlinkedFilesDialog
 operator|.
