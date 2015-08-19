@@ -104,21 +104,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|FileDialogs
+name|*
 import|;
 end_import
 
@@ -178,21 +164,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|keyboard
 operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|MergeDialog
+name|KeyCollisionException
 import|;
 end_import
 

@@ -616,6 +616,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
 name|KeyCollisionException
 import|;
 end_import

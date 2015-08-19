@@ -517,7 +517,7 @@ DECL|method|MetaData ()
 specifier|public
 name|MetaData
 parameter_list|()
-block|{      }
+block|{}
 comment|/**      * Add default metadata for new database:      */
 DECL|method|initializeNewDatabase ()
 specifier|public

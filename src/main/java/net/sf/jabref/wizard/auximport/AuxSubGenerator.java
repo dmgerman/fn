@@ -150,7 +150,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyCollisionException
 import|;
 end_import
 
