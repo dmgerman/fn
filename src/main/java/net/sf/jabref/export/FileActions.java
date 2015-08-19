@@ -166,7 +166,25 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|bibtex
+operator|.
 name|BibtexEntryWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|bibtex
+operator|.
+name|BibtexStringComparator
 import|;
 end_import
 

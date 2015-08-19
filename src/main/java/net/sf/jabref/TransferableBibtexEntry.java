@@ -38,6 +38,8 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|bibtex
+operator|.
 name|BibtexEntryWriter
 import|;
 end_import
