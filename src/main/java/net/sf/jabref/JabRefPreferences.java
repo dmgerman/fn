@@ -6746,6 +6746,7 @@ operator|.
 name|DEFAULT_STYLE
 argument_list|)
 expr_stmt|;
+comment|// use BibTeX key appended with filename as default pattern
 name|defaults
 operator|.
 name|put
@@ -6758,7 +6759,7 @@ name|ImportSettingsTab
 operator|.
 name|DEFAULT_FILENAMEPATTERNS
 index|[
-literal|0
+literal|1
 index|]
 argument_list|)
 expr_stmt|;
