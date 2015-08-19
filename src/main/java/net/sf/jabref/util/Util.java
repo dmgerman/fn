@@ -544,6 +544,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|EntryMarker
 import|;
 end_import

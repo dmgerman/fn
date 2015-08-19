@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 package|;
 end_package
 
@@ -18,9 +20,19 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
 operator|.
-name|BibtexFields
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
