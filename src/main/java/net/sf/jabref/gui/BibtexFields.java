@@ -60,13 +60,15 @@ comment|//            export/import of some definition from/to a xml file
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 package|;
 end_package
 
@@ -118,9 +120,19 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
 operator|.
-name|GUIGlobals
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 

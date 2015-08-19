@@ -34,7 +34,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|gui
+operator|.
+name|BibtexFields
 import|;
 end_import
 

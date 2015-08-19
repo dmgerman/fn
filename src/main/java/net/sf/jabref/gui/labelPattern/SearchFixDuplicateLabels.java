@@ -26,7 +26,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|gui
+operator|.
+name|BasePanel
 import|;
 end_import
 
@@ -40,7 +42,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
+name|BibtexFields
 import|;
 end_import
 
