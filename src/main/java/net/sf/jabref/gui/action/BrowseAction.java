@@ -26,6 +26,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|FocusRequester
 import|;
 end_import
