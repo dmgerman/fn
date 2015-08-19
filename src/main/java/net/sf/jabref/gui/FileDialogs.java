@@ -90,18 +90,6 @@ name|JabRefPreferences
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OpenFileFilter
-import|;
-end_import
-
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Apr 14, 2009  * Time: 7:24:07 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
