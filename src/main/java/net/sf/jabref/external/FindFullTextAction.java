@@ -253,6 +253,7 @@ name|void
 name|run
 parameter_list|()
 block|{
+comment|// TODO: just download for all entries and save files without dialog
 name|entry
 operator|=
 name|basePanel
@@ -329,10 +330,28 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// TODO: error message if file dir not defined
-comment|//JOptionPane.showMessageDialog(frame, Globals.lang);
+comment|// FIXME: Localization
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|basePanel
+operator|.
+name|frame
+argument_list|()
+argument_list|,
+literal|"Main file directory not set! Preferences -> External programs"
+argument_list|,
+literal|"Directory not found"
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
+comment|// TODO: this needs its own thread as it blocks the UI!
 name|DownloadExternalFile
 name|def
 init|=

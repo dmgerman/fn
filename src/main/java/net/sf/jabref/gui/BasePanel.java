@@ -8733,9 +8733,8 @@ operator|+
 literal|'\''
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
-else|else
-block|{
 name|Object
 name|o
 init|=
@@ -8843,12 +8842,18 @@ operator|.
 name|unblock
 argument_list|()
 expr_stmt|;
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"runCommand error: "
+operator|+
 name|ex
 operator|.
-name|printStackTrace
+name|getMessage
 argument_list|()
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_function

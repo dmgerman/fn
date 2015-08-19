@@ -254,6 +254,22 @@ specifier|public
 class|class
 name|DownloadExternalFile
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|DownloadExternalFile
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|frame
 specifier|private
 specifier|final
@@ -286,22 +302,6 @@ DECL|field|dontShowDialog
 specifier|private
 name|boolean
 name|dontShowDialog
-decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|DownloadExternalFile
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 DECL|method|DownloadExternalFile (JabRefFrame frame, MetaData metaData, String bibtexKey)
 specifier|public
@@ -501,7 +501,6 @@ argument_list|,
 name|url
 argument_list|)
 decl_stmt|;
-comment|//long time = System.currentTimeMillis();
 try|try
 block|{
 comment|// TODO: what if this takes long time?
@@ -582,7 +581,6 @@ name|udlF
 init|=
 name|udl
 decl_stmt|;
-comment|//System.out.println("Time: "+(System.currentTimeMillis()-time));
 name|JabRefExecutorService
 operator|.
 name|INSTANCE
@@ -730,13 +728,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
-literal|"mimetype:"
+literal|"MIME Type suggested: "
 operator|+
 name|mimeType
 argument_list|)
@@ -797,16 +793,10 @@ block|}
 name|String
 name|suggestedName
 init|=
-name|bibtexKey
-operator|!=
-literal|null
-condition|?
 name|getSuggestedFileName
 argument_list|(
 name|suffix
 argument_list|)
-else|:
-literal|""
 decl_stmt|;
 name|String
 index|[]
@@ -885,16 +875,10 @@ name|FileListEntry
 argument_list|(
 literal|""
 argument_list|,
-name|bibtexKey
-operator|!=
-literal|null
-condition|?
 name|file
 operator|.
 name|getCanonicalPath
 argument_list|()
-else|:
-literal|""
 argument_list|,
 name|suggestedType
 argument_list|)
@@ -1433,6 +1417,12 @@ name|String
 name|plannedName
 init|=
 name|bibtexKey
+operator|!=
+literal|null
+condition|?
+name|bibtexKey
+else|:
+literal|"set-filename"
 decl_stmt|;
 if|if
 condition|(
