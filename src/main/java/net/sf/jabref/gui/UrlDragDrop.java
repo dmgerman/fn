@@ -4,13 +4,15 @@ comment|/*  Copyright (C) 2004 E. Putrycz   All programs in this directory and  
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 package|;
 end_package
 
@@ -168,9 +170,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|JabRefFrame
+name|Globals
 import|;
 end_import
 
