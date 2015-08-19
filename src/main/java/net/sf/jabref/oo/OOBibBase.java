@@ -264,7 +264,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|export
+operator|.
+name|layout
+operator|.
+name|Layout
 import|;
 end_import
 
@@ -276,11 +280,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|logic
 operator|.
-name|layout
+name|bibtex
 operator|.
-name|Layout
+name|comparator
+operator|.
+name|FieldComparator
 import|;
 end_import
 

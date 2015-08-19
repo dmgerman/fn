@@ -420,6 +420,8 @@ name|logic
 operator|.
 name|bibtex
 operator|.
+name|comparator
+operator|.
 name|BibtexStringComparator
 import|;
 end_import

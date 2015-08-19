@@ -302,6 +302,12 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|bibtex
+operator|.
+name|comparator
+operator|.
 name|EntryComparator
 import|;
 end_import
@@ -313,6 +319,12 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
+operator|.
+name|bibtex
+operator|.
+name|comparator
 operator|.
 name|FieldComparator
 import|;
