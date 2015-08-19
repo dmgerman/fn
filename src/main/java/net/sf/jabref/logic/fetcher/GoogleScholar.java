@@ -143,7 +143,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FullTextFinder implementation that attempts to find a PDF URL from a GoogleScholar search page.  */
+comment|/**  * FullTextFinder implementation that attempts to find a PDF URL at GoogleScholar.  */
 end_comment
 
 begin_class
@@ -275,7 +275,7 @@ argument_list|)
 operator|.
 name|userAgent
 argument_list|(
-literal|"Mozilla"
+literal|"Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0"
 argument_list|)
 comment|// don't identify as a crawler FIXME: still gets blocked in tests
 operator|.

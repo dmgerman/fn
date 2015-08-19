@@ -169,7 +169,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FullTextFinder implementation that attempts to find a PDF URL from a ScienceDirect article page.  *  * @see http://dev.elsevier.com/  */
+comment|/**  * FullTextFinder implementation that attempts to find a PDF URL at ScienceDirect.  *  * @see http://dev.elsevier.com/  */
 end_comment
 
 begin_class

@@ -149,7 +149,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FullTextFinder implementation that attempts to find a PDF URL from a ACS DOI.  */
+comment|/**  * FullTextFinder implementation that attempts to find a PDF URL at ACS.  */
 end_comment
 
 begin_class
