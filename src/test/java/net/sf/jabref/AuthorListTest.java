@@ -18,7 +18,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
+operator|.
+name|entry
 operator|.
 name|AuthorList
 import|;
@@ -45,7 +47,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Christopher Oezbek<oezi@oezi.de>  * @version 0.1 - Still fails for stuff in AuthorList that is ambiguous  * @see net.sf.jabref.logic.AuthorList Class tested.  */
+comment|/**  * @author Christopher Oezbek<oezi@oezi.de>  * @version 0.1 - Still fails for stuff in AuthorList that is ambiguous  * @see AuthorList Class tested.  */
 end_comment
 
 begin_class

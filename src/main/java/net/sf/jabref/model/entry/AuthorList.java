@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic
+DECL|package|net.sf.jabref.model.entry
 package|package
 name|net
 operator|.
@@ -12,27 +12,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
+operator|.
+name|entry
 package|;
 end_package
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|CreateDocBookAuthors
-import|;
-end_import
 
 begin_import
 import|import
