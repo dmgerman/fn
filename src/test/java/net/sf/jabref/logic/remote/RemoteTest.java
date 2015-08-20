@@ -16,9 +16,9 @@ end_package
 
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 import|;
@@ -39,24 +39,6 @@ operator|.
 name|client
 operator|.
 name|RemoteListenerClient
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|remote
-operator|.
-name|server
-operator|.
-name|MessageHandler
 import|;
 end_import
 
@@ -95,16 +77,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|InetAddress
 import|;
 end_import
 
