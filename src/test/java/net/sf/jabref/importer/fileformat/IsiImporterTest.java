@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.importer
+DECL|package|net.sf.jabref.importer.fileformat
 package|package
 name|net
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|jabref
 operator|.
 name|importer
+operator|.
+name|fileformat
 package|;
 end_package
 
@@ -34,9 +36,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|fileformat
-operator|.
-name|IsiImporter
+name|OutputPrinterToNull
 import|;
 end_import
 
@@ -284,11 +284,7 @@ name|hm
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|hm
