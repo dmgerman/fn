@@ -360,7 +360,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|ImportMenuItem
 import|;
@@ -374,7 +374,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|OpenDatabaseAction
 import|;
@@ -388,7 +388,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|ParserResult
 import|;

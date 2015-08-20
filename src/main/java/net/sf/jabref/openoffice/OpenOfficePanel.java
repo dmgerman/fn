@@ -78,7 +78,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|layout
 operator|.
@@ -94,7 +94,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|layout
 operator|.

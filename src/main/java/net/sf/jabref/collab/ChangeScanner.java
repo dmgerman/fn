@@ -128,7 +128,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|FileActions
 import|;
@@ -142,7 +142,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|SaveException
 import|;
@@ -156,7 +156,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|SaveSession
 import|;
@@ -212,7 +212,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|OpenDatabaseAction
 import|;
@@ -226,7 +226,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|ParserResult
 import|;

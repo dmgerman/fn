@@ -388,7 +388,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|CustomExportList
 import|;
@@ -402,7 +402,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|ExportComparator
 import|;
@@ -486,7 +486,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|CustomImportList
 import|;
@@ -3146,7 +3146,7 @@ specifier|final
 name|CustomExportList
 name|customExports
 decl_stmt|;
-comment|/**      * Set with all custom {@link net.sf.jabref.imports.ImportFormat}s      */
+comment|/**      * Set with all custom {@link net.sf.jabref.importer.ImportFormat}s      */
 DECL|field|customImports
 specifier|public
 specifier|final

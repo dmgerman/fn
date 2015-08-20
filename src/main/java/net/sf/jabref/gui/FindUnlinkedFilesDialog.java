@@ -796,7 +796,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|EntryFromFileCreator
 import|;
@@ -810,7 +810,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|EntryFromFileCreatorManager
 import|;
@@ -824,7 +824,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|UnlinkedFilesCrawler
 import|;
@@ -838,7 +838,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|UnlinkedPDFFileFilter
 import|;
@@ -1203,7 +1203,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * For Unit-testing only.<i>Don't remove!</i><br>      * Used via reflection in {@link net.sf.jabref.imports.DatabaseFileLookup} to construct this      * class.      */
+comment|/**      * For Unit-testing only.<i>Don't remove!</i><br>      * Used via reflection in {@link net.sf.jabref.importer.DatabaseFileLookup} to construct this      * class.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(

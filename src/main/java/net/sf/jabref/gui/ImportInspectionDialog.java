@@ -644,7 +644,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|OutputPrinter
 import|;
@@ -762,7 +762,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|ImportInspector
 import|;

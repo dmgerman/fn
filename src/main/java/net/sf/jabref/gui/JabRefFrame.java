@@ -712,9 +712,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fetcher
+operator|.
+name|GeneralFetcher
 import|;
 end_import
 
@@ -866,7 +882,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|AutoSaveManager
 import|;
@@ -880,7 +896,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|ExportCustomizationDialog
 import|;
@@ -894,7 +910,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|ExportFormats
 import|;
@@ -908,7 +924,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|SaveAllAction
 import|;
@@ -922,7 +938,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|SaveDatabaseAction
 import|;

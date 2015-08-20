@@ -210,7 +210,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|HTMLConverter
 import|;
@@ -224,7 +224,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
+operator|.
+name|fetcher
 operator|.
 name|CaseKeeper
 import|;
@@ -238,7 +240,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
+operator|.
+name|fetcher
 operator|.
 name|UnitFormatter
 import|;

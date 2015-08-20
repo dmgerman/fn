@@ -36,7 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|AutoSaveManager
 import|;
@@ -108,7 +108,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|ImportFormatReader
 import|;
@@ -668,7 +668,7 @@ specifier|final
 name|String
 name|FORMATTER_PACKAGE
 init|=
-literal|"net.sf.jabref.export.layout.format."
+literal|"net.sf.jabref.exporter.layout.format."
 decl_stmt|;
 comment|// In the main program, this field is initialized in JabRef.java
 comment|// Each test case initializes this field if required

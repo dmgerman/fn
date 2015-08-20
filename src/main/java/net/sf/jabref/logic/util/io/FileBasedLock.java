@@ -24,7 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|SaveSession
 import|;
