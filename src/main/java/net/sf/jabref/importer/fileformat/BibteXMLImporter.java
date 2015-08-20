@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.importer
+DECL|package|net.sf.jabref.importer.fileformat
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|importer
+operator|.
+name|fileformat
 package|;
 end_package
 
@@ -22,7 +24,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|BufferedReader
 import|;
 end_import
 
@@ -30,9 +32,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
+name|io
 operator|.
-name|URL
+name|IOException
 import|;
 end_import
 
@@ -40,9 +42,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
+name|io
 operator|.
-name|URLConnection
+name|InputStream
 import|;
 end_import
 
@@ -68,6 +70,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|xml
@@ -87,6 +101,50 @@ operator|.
 name|parsers
 operator|.
 name|SAXParserFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|BibTeXMLHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|ImportFormatReader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|OutputPrinter
 import|;
 end_import
 
@@ -135,14 +193,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for the Refer/Endnote format.  *   * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
+comment|/**  * Importer for the Refer/Endnote format.  *  * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
 end_comment
 
 begin_class
-DECL|class|MedlineImporter
+DECL|class|BibteXMLImporter
 specifier|public
 class|class
-name|MedlineImporter
+name|BibteXMLImporter
 extends|extends
 name|ImportFormat
 block|{
@@ -157,11 +215,12 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|MedlineImporter
+name|BibteXMLImporter
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**              * Return the name of this import format.              */
 annotation|@
 name|Override
 DECL|method|getFormatName ()
@@ -171,10 +230,10 @@ name|getFormatName
 parameter_list|()
 block|{
 return|return
-literal|"Medline"
+literal|"BibTeXML"
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
 DECL|method|getCLIId ()
@@ -184,7 +243,7 @@ name|getCLIId
 parameter_list|()
 block|{
 return|return
-literal|"medline"
+literal|"bibtexml"
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
@@ -201,6 +260,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// Our strategy is to look for the "<bibtex:file *" line.
 name|BufferedReader
 name|in
 init|=
@@ -215,13 +275,18 @@ name|stream
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Pattern
+name|pat1
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"<bibtex:file .*"
+argument_list|)
+decl_stmt|;
 name|String
 name|str
-decl_stmt|;
-name|int
-name|i
-init|=
-literal|0
 decl_stmt|;
 while|while
 condition|(
@@ -235,111 +300,29 @@ argument_list|()
 operator|)
 operator|!=
 literal|null
-operator|&&
-name|i
-operator|<
-literal|50
 condition|)
 block|{
 if|if
 condition|(
-name|str
+name|pat1
 operator|.
-name|toLowerCase
-argument_list|()
-operator|.
-name|contains
+name|matcher
 argument_list|(
-literal|"<pubmedarticle>"
+name|str
 argument_list|)
+operator|.
+name|find
+argument_list|()
 condition|)
 block|{
 return|return
 literal|true
 return|;
 block|}
-name|i
-operator|++
-expr_stmt|;
 block|}
 return|return
 literal|false
 return|;
-block|}
-comment|/**      * Fetch and parse an medline item from eutils.ncbi.nlm.nih.gov.      *       * @param id One or several ids, separated by ","      *       * @return Will return an empty list on error.      */
-DECL|method|fetchMedline (String id, OutputPrinter status)
-specifier|public
-specifier|static
-name|List
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|fetchMedline
-parameter_list|(
-name|String
-name|id
-parameter_list|,
-name|OutputPrinter
-name|status
-parameter_list|)
-block|{
-name|String
-name|baseUrl
-init|=
-literal|"http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&rettype=citation&id="
-operator|+
-name|id
-decl_stmt|;
-try|try
-block|{
-name|URL
-name|url
-init|=
-operator|new
-name|URL
-argument_list|(
-name|baseUrl
-argument_list|)
-decl_stmt|;
-name|URLConnection
-name|data
-init|=
-name|url
-operator|.
-name|openConnection
-argument_list|()
-decl_stmt|;
-return|return
-operator|new
-name|MedlineImporter
-argument_list|()
-operator|.
-name|importEntries
-argument_list|(
-name|data
-operator|.
-name|getInputStream
-argument_list|()
-argument_list|,
-name|status
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-return|return
-operator|new
-name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
-argument_list|()
-return|;
-block|}
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
 annotation|@
@@ -361,6 +344,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
+name|bibItems
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|()
+decl_stmt|;
 comment|// Obtain a factory object for creating SAX parsers
 name|SAXParserFactory
 name|parserFactory
@@ -372,13 +368,7 @@ argument_list|()
 decl_stmt|;
 comment|// Configure the factory object to specify attributes of the parsers it
 comment|// creates
-name|parserFactory
-operator|.
-name|setValidating
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+comment|// parserFactory.setValidating(true);
 name|parserFactory
 operator|.
 name|setNamespaceAware
@@ -387,14 +377,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 comment|// Now create a SAXParser object
-name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|bibItems
-init|=
-literal|null
-decl_stmt|;
 try|try
 block|{
 name|SAXParser
@@ -405,17 +387,15 @@ operator|.
 name|newSAXParser
 argument_list|()
 decl_stmt|;
-comment|// May throw
-comment|// exceptions
-name|MedlineHandler
+comment|//May throw exceptions
+name|BibTeXMLHandler
 name|handler
 init|=
 operator|new
-name|MedlineHandler
+name|BibTeXMLHandler
 argument_list|()
 decl_stmt|;
-comment|// Start the parser. It reads the file and calls methods of the
-comment|// handler.
+comment|// Start the parser. It reads the file and calls methods of the handler.
 name|parser
 operator|.
 name|parse
@@ -425,67 +405,7 @@ argument_list|,
 name|handler
 argument_list|)
 expr_stmt|;
-comment|// Switch this to true if you want to make a local copy for testing.
-if|if
-condition|(
-literal|false
-condition|)
-block|{
-name|stream
-operator|.
-name|reset
-argument_list|()
-expr_stmt|;
-name|FileOutputStream
-name|out
-init|=
-operator|new
-name|FileOutputStream
-argument_list|(
-operator|new
-name|File
-argument_list|(
-literal|"/home/alver/ut.txt"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|int
-name|c
-decl_stmt|;
-while|while
-condition|(
-operator|(
-name|c
-operator|=
-name|stream
-operator|.
-name|read
-argument_list|()
-operator|)
-operator|!=
-operator|-
-literal|1
-condition|)
-block|{
-name|out
-operator|.
-name|write
-argument_list|(
-operator|(
-name|char
-operator|)
-name|c
-argument_list|)
-expr_stmt|;
-block|}
-name|out
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-comment|// When you're done, report the results stored by your handler
-comment|// object
+comment|// When you're done, report the results stored by your handler object
 name|bibItems
 operator|=
 name|handler

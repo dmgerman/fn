@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-06 David Weitzman, Nizar N. Batada, Morten O. Alv
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.importer
+DECL|package|net.sf.jabref.importer.fileformat
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|importer
+operator|.
+name|fileformat
 package|;
 end_package
 
@@ -149,6 +151,36 @@ operator|.
 name|keyboard
 operator|.
 name|KeyCollisionException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|FieldContentParser
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|ParserResult
 import|;
 end_import
 

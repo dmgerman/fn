@@ -914,6 +914,8 @@ name|jabref
 operator|.
 name|importer
 operator|.
+name|fileformat
+operator|.
 name|FreeCiteImporter
 import|;
 end_import

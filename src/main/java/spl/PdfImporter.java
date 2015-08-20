@@ -178,6 +178,8 @@ name|jabref
 operator|.
 name|importer
 operator|.
+name|fileformat
+operator|.
 name|PdfContentImporter
 import|;
 end_import
@@ -191,6 +193,8 @@ operator|.
 name|jabref
 operator|.
 name|importer
+operator|.
+name|fileformat
 operator|.
 name|PdfXmpImporter
 import|;

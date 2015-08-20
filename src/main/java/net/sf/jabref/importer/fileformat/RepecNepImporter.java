@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2005 Andreas Rudert   All programs in this directory a
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.importer
+DECL|package|net.sf.jabref.importer.fileformat
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|importer
+operator|.
+name|fileformat
 package|;
 end_package
 
@@ -73,6 +75,34 @@ operator|.
 name|util
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|ImportFormatReader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|OutputPrinter
 import|;
 end_import
 

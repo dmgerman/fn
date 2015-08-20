@@ -90,6 +90,22 @@ name|JabRefPreferences
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ImportFormat
+import|;
+end_import
+
 begin_comment
 comment|/**  * Collection of user defined custom import formats.   *   *<p>The collection can be stored and retrieved from Preferences. It is sorted by the default  * order of {@link ImportFormat}.</p>  */
 end_comment

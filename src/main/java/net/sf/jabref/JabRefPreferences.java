@@ -296,6 +296,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|ImportFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -3146,7 +3162,7 @@ specifier|final
 name|CustomExportList
 name|customExports
 decl_stmt|;
-comment|/**      * Set with all custom {@link net.sf.jabref.importer.ImportFormat}s      */
+comment|/**      * Set with all custom {@link ImportFormat}s      */
 DECL|field|customImports
 specifier|public
 specifier|final

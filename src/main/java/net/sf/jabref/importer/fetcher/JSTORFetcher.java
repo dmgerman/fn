@@ -148,6 +148,8 @@ name|jabref
 operator|.
 name|importer
 operator|.
+name|fileformat
+operator|.
 name|BibtexParser
 import|;
 end_import

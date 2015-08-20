@@ -146,6 +146,8 @@ name|jabref
 operator|.
 name|importer
 operator|.
+name|fileformat
+operator|.
 name|MedlineImporter
 import|;
 end_import
