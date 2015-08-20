@@ -1058,7 +1058,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|oo
+name|openoffice
 operator|.
 name|OpenOfficePanel
 import|;
@@ -1265,6 +1265,8 @@ operator|.
 name|logic
 operator|.
 name|util
+operator|.
+name|strings
 operator|.
 name|StringUtil
 import|;

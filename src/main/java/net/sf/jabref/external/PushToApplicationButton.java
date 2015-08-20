@@ -108,7 +108,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|oo
+name|openoffice
 operator|.
 name|OpenOfficePanel
 import|;

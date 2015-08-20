@@ -220,6 +220,8 @@ name|logic
 operator|.
 name|util
 operator|.
+name|strings
+operator|.
 name|StringUtil
 import|;
 end_import

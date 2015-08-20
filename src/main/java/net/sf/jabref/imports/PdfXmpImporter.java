@@ -86,7 +86,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
+operator|.
+name|xmp
 operator|.
 name|XMPUtil
 import|;

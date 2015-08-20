@@ -100,11 +100,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|database
+name|util
 operator|.
-name|BibtexDatabase
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -116,9 +118,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|model
 operator|.
-name|Util
+name|database
+operator|.
+name|BibtexDatabase
 import|;
 end_import
 
@@ -818,7 +822,7 @@ name|getSecondaryOptionalFields
 parameter_list|()
 block|{
 return|return
-name|Util
+name|StringUtil
 operator|.
 name|getRemainder
 argument_list|(

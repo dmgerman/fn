@@ -56,6 +56,8 @@ name|logic
 operator|.
 name|util
 operator|.
+name|io
+operator|.
 name|FileBasedLock
 import|;
 end_import
@@ -68,7 +70,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|io
 operator|.
 name|FileUtil
 import|;

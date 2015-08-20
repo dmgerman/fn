@@ -96,6 +96,8 @@ name|logic
 operator|.
 name|util
 operator|.
+name|strings
+operator|.
 name|StringUtil
 import|;
 end_import
@@ -113,20 +115,6 @@ operator|.
 name|database
 operator|.
 name|BibtexDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -263,7 +251,7 @@ name|priOpt
 expr_stmt|;
 name|optional
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|arrayConcat
 argument_list|(
@@ -602,7 +590,7 @@ name|getSecondaryOptionalFields
 parameter_list|()
 block|{
 return|return
-name|Util
+name|StringUtil
 operator|.
 name|getRemainder
 argument_list|(

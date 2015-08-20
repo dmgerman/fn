@@ -256,7 +256,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|io
 operator|.
 name|FileUtil
 import|;
@@ -284,7 +288,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
+operator|.
+name|xmp
 operator|.
 name|XMPUtil
 import|;
