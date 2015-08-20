@@ -534,21 +534,9 @@ name|logic
 operator|.
 name|util
 operator|.
+name|strings
+operator|.
 name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -9467,7 +9455,7 @@ name|String
 index|[]
 name|secOpt
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getRemainder
 argument_list|(
@@ -10488,7 +10476,7 @@ name|put
 argument_list|(
 literal|"externalFileTypes"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|encodeStringArray
 argument_list|(
@@ -10549,7 +10537,7 @@ index|[]
 index|[]
 name|vals
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|decodeStringDoubleArray
 argument_list|(

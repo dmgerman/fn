@@ -138,6 +138,8 @@ name|logic
 operator|.
 name|util
 operator|.
+name|strings
+operator|.
 name|CaseChangers
 import|;
 end_import
@@ -154,6 +156,8 @@ name|logic
 operator|.
 name|util
 operator|.
+name|date
+operator|.
 name|MonthUtil
 import|;
 end_import
@@ -169,6 +173,8 @@ operator|.
 name|logic
 operator|.
 name|util
+operator|.
+name|strings
 operator|.
 name|StringUtil
 import|;

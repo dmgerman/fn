@@ -270,6 +270,8 @@ name|logic
 operator|.
 name|util
 operator|.
+name|io
+operator|.
 name|FileBasedLock
 import|;
 end_import
@@ -285,6 +287,8 @@ operator|.
 name|logic
 operator|.
 name|util
+operator|.
+name|strings
 operator|.
 name|StringUtil
 import|;

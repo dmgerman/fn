@@ -26,6 +26,8 @@ name|logic
 operator|.
 name|util
 operator|.
+name|strings
+operator|.
 name|CaseChangers
 import|;
 end_import

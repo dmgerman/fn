@@ -408,6 +408,8 @@ name|logic
 operator|.
 name|util
 operator|.
+name|strings
+operator|.
 name|StringUtil
 import|;
 end_import
@@ -420,7 +422,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|io
 operator|.
 name|JabRefDesktop
 import|;

@@ -108,6 +108,8 @@ name|logic
 operator|.
 name|util
 operator|.
+name|strings
+operator|.
 name|QuotedStringTokenizer
 import|;
 end_import
@@ -123,6 +125,8 @@ operator|.
 name|logic
 operator|.
 name|util
+operator|.
+name|strings
 operator|.
 name|StringUtil
 import|;

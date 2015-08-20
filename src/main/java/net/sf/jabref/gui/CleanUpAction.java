@@ -358,6 +358,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|DOI
@@ -372,7 +374,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|io
 operator|.
 name|FileUtil
 import|;
@@ -389,6 +395,8 @@ operator|.
 name|logic
 operator|.
 name|util
+operator|.
+name|date
 operator|.
 name|MonthUtil
 import|;

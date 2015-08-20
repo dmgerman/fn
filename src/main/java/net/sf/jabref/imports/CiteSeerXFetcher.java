@@ -60,6 +60,8 @@ name|logic
 operator|.
 name|util
 operator|.
+name|strings
+operator|.
 name|NameListNormalizer
 import|;
 end_import
