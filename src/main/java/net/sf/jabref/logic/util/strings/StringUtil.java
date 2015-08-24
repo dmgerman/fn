@@ -118,6 +118,20 @@ specifier|public
 class|class
 name|StringUtil
 block|{
+DECL|field|LINE_BREAKS
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|LINE_BREAKS
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\r\\n|\\r"
+argument_list|)
+decl_stmt|;
 comment|/**      * Returns the string, after shaving off whitespace at the beginning and end,      * and removing (at most) one pair of braces or " surrounding it.      *      * @param toShave      * @return      */
 DECL|method|shaveString (String toShave)
 specifier|public
@@ -2867,6 +2881,31 @@ name|buf
 operator|.
 name|toString
 argument_list|()
+return|;
+block|}
+comment|/**      * Replaces all platform-dependent line breaks by UNIX-style newlines.      *      *<example>      * Legacy Macintosh \r -> \n      * Windows \r\n -> \n      *</example>      *      * @return a String with only \n as line breaks      */
+DECL|method|unifyLineBreaks (String s)
+specifier|public
+specifier|static
+name|String
+name|unifyLineBreaks
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+return|return
+name|LINE_BREAKS
+operator|.
+name|matcher
+argument_list|(
+name|s
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\n"
+argument_list|)
 return|;
 block|}
 block|}

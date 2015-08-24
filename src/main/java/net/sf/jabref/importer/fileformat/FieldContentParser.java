@@ -32,6 +32,24 @@ name|GUIGlobals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|strings
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class provides the reformatting needed when reading BibTeX fields formatted  * in JabRef style. The reformatting must undo all formatting done by JabRef when  * writing the same fields.  */
 end_comment
@@ -59,31 +77,20 @@ name|i
 init|=
 literal|0
 decl_stmt|;
-comment|// Remove windows newlines and insert unix ones:
-comment|// TODO: 2005.12.3: Added replace from \r to \n, to work around a reported problem of words stiched together.
-comment|// But: we need to find out why these lone \r characters appear in his file.
+comment|// Unify line breaks
 name|content
 operator|=
 operator|new
 name|StringBuffer
 argument_list|(
+name|StringUtil
+operator|.
+name|unifyLineBreaks
+argument_list|(
 name|content
 operator|.
 name|toString
 argument_list|()
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\r\n"
-argument_list|,
-literal|"\n"
-argument_list|)
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\r"
-argument_list|,
-literal|"\n"
 argument_list|)
 argument_list|)
 expr_stmt|;
