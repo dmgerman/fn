@@ -54,8 +54,6 @@ name|String
 name|key
 parameter_list|)
 block|{
-comment|/*System.out.println("Content: '"+content+"'");         byte[] bt = content.toString().getBytes();         for (int i = 0; i< bt.length; i++) {             byte b = bt[i];             System.out.print(b+" ");         }         System.out.println("");         */
-comment|//boolean rep = false;
 name|int
 name|i
 init|=
@@ -189,7 +187,7 @@ comment|// Add space only if necessary:
 comment|// Note 2007-05-26, mortenalver: the following line was modified. It previously
 comment|// didn't add a space if the line break was at i==0. This caused some occurences of
 comment|// "string1 # { and } # string2" constructs lose the space in front of the "and" because
-comment|// the line wrap caused a JabRef linke break at the start of a value containing the " and ".
+comment|// the line wrap caused a JabRef line break at the start of a value containing the " and ".
 comment|// The bug was caused by a protective check for i>0 to avoid intexing char -1 in content.
 if|if
 condition|(
@@ -569,7 +567,7 @@ literal|' '
 condition|)
 block|{
 comment|// We have two spaces in a row. Don't include this one.
-comment|// Yes, of course we have, but in Filenames it is nessary to have all spaces. :-)
+comment|// Yes, of course we have, but in Filenames it is necessary to have all spaces. :-)
 comment|// This is the reason why the next lines are required
 if|if
 condition|(
@@ -633,9 +631,6 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|// normalize to linebreaks of the operating system
-comment|// not necessary as linebreaks are normalized during writing (at LatexFieldFormatter)
-comment|//content = new StringBuffer(content.toString().replaceAll("\n", Globals.NEWLINE));
 return|return
 name|content
 return|;
