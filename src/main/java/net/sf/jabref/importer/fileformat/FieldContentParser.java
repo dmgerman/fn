@@ -569,6 +569,7 @@ block|{
 comment|// We have two spaces in a row. Don't include this one.
 comment|// Yes, of course we have, but in Filenames it is necessary to have all spaces. :-)
 comment|// This is the reason why the next lines are required
+comment|// FIXME: just don't edit some fields rather than hacking every exception?
 if|if
 condition|(
 name|key
