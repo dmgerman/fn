@@ -4,7 +4,7 @@ comment|/* Copyright (C) 2004 R. Nagel  All programs in this directory and subdi
 end_comment
 
 begin_comment
-comment|/**  *<p>Title: Latex Aux to Bibtex</p>  *  *<p>Description: generates a sub-database which contains only bibtex entries  * from input aux file</p>  *  *<p>Copyright: Copyright (c) 2004</p>  *  *<p>Company:</p>  *  * @version 1.0  * @author r.nagel  *  * @todo Redesign of dialog structure for an assitent like feeling....  *   Now - the unknown bibtex entries cannot inserted into the reference  *   database without closing the dialog.  */
+comment|/**  *<p>Title: Latex Aux to Bibtex</p>  *<p>  *<p>Description: generates a sub-database which contains only bibtex entries  * from input aux file</p>  *<p>  *<p>Copyright: Copyright (c) 2004</p>  *<p>  *<p>Company:</p>  *  * @version 1.0  * @author r.nagel  * @todo Redesign of dialog structure for an assitent like feeling....  * Now - the unknown bibtex entries cannot inserted into the reference  * database without closing the dialog.  */
 end_comment
 
 begin_comment
@@ -1040,8 +1040,6 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 block|{
-try|try
-block|{
 name|BibtexEntry
 name|clonedEntry
 init|=
@@ -1070,19 +1068,6 @@ argument_list|(
 name|clonedEntry
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**      * generate      * Shortcut methode for easy generation.      *      * @param auxFileName String      * @param bibDB BibtexDatabase - reference database      * @return Vector - contains all not resolved bibtex entries      */
 DECL|method|generate (String auxFileName, BibtexDatabase bibDB)

@@ -339,7 +339,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class holds the functionality of autolinking to a file that's dropped  * onto an entry.  *   * Options for handling the files are:  *   * 1) Link to the file in its current position (disabled if the file is remote)  *   * 2) Copy the file to ??? directory, rename after bibtex key, and extension  *   * 3) Move the file to ??? directory, rename after bibtex key, and extension  */
+comment|/**  * This class holds the functionality of autolinking to a file that's dropped  * onto an entry.  *<p>  * Options for handling the files are:  *<p>  * 1) Link to the file in its current position (disabled if the file is remote)  *<p>  * 2) Copy the file to ??? directory, rename after bibtex key, and extension  *<p>  * 3) Move the file to ??? directory, rename after bibtex key, and extension  */
 end_comment
 
 begin_class
@@ -689,7 +689,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Offer copy/move/linking options for a dragged external file. Perform the      * chosen operation, if any.      *       * @param fileName      *            The name of the dragged file.      * @param fileType      *            The FileType associated with the file.      * @param localFile      *            Indicate whether this is a local file, or a remote file copied      *            to a local temporary file.      * @param mainTable      *            The MainTable the file was dragged to.      * @param dropRow      *            The row where the file was dropped.      */
+comment|/**      * Offer copy/move/linking options for a dragged external file. Perform the      * chosen operation, if any.      *      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param mainTable The MainTable the file was dragged to.      * @param dropRow   The row where the file was dropped.      */
 DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, boolean localFile, MainTable mainTable, int dropRow)
 specifier|public
 name|void
@@ -733,7 +733,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *      * @param fileName      *        The name of the dragged file.      * @param fileType      *        The FileType associated with the file.      * @param localFile      *            Indicate whether this is a local file, or a remote file copied      *            to a local temporary file.      * @param entry      *        The target entry for the drop.      */
+comment|/**      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param entry     The target entry for the drop.      */
 DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, boolean localFile, BibtexEntry entry)
 specifier|public
 name|void
@@ -1474,8 +1474,6 @@ range|:
 name|xmpEntriesInFile
 control|)
 block|{
-try|try
-block|{
 name|aXmpEntriesInFile
 operator|.
 name|setId
@@ -1527,13 +1525,6 @@ argument_list|,
 name|edits
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ignored
-parameter_list|)
-block|{                  }
 block|}
 name|panel
 operator|.
@@ -1872,8 +1863,6 @@ range|:
 name|xmpEntriesInFile
 control|)
 block|{
-try|try
-block|{
 name|aXmpEntriesInFile
 operator|.
 name|setId
@@ -1925,13 +1914,6 @@ argument_list|,
 name|edits
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ignored
-parameter_list|)
-block|{                  }
 block|}
 name|panel
 operator|.
@@ -2578,7 +2560,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Make a extension to the file.      *       * @param entry      *            The entry to extension from.      * @param fileType      *            The FileType associated with the file.      * @param filename      *            The path to the file.      * @param edits      *            An NamedCompound action this action is to be added to. If none      *            is given, the edit is added to the panel's undoManager.      */
+comment|/**      * Make a extension to the file.      *      * @param entry    The entry to extension from.      * @param fileType The FileType associated with the file.      * @param filename The path to the file.      * @param edits    An NamedCompound action this action is to be added to. If none      *                 is given, the edit is added to the panel's undoManager.      */
 DECL|method|doLink (BibtexEntry entry, ExternalFileType fileType, String filename, boolean avoidDuplicate, NamedCompound edits)
 specifier|private
 name|void
@@ -2871,7 +2853,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Move the given file to the base directory for its file type, and rename      * it to the given filename.      *       * @param fileName      *            The name of the source file.      * @param fileType      *            The FileType associated with the file.      * @param destFilename      *            The destination filename.      * @param edits      *            TODO we should be able to undo this action      * @return true if the operation succeeded.      */
+comment|/**      * Move the given file to the base directory for its file type, and rename      * it to the given filename.      *      * @param fileName     The name of the source file.      * @param fileType     The FileType associated with the file.      * @param destFilename The destination filename.      * @param edits        TODO we should be able to undo this action      * @return true if the operation succeeded.      */
 DECL|method|doMove (String fileName, ExternalFileType fileType, String destFilename, NamedCompound edits)
 specifier|private
 name|boolean
@@ -3077,7 +3059,7 @@ literal|true
 return|;
 block|}
 block|}
-comment|/**      * Copy the given file to the base directory for its file type, and give it      * the given name.      *       * @param fileName      *            The name of the source file.      * @param fileType      *            The FileType associated with the file.      * @param toFile      *            The destination filename. An existing path-component will be removed.      * @param edits      *            TODO we should be able to undo this!      * @return      */
+comment|/**      * Copy the given file to the base directory for its file type, and give it      * the given name.      *      * @param fileName The name of the source file.      * @param fileType The FileType associated with the file.      * @param toFile   The destination filename. An existing path-component will be removed.      * @param edits    TODO we should be able to undo this!      * @return      */
 DECL|method|doCopy (String fileName, ExternalFileType fileType, String toFile, NamedCompound edits)
 specifier|private
 name|boolean

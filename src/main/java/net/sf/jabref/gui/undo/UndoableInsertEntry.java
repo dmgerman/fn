@@ -240,9 +240,7 @@ operator|.
 name|redo
 argument_list|()
 expr_stmt|;
-comment|// Redo the change.
-try|try
-block|{
+comment|// Redo the change
 name|String
 name|id
 init|=
@@ -265,19 +263,6 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 end_class

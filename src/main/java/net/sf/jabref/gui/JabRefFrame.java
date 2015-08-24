@@ -5454,7 +5454,7 @@ return|return
 name|prefs
 return|;
 block|}
-comment|/**      * Tears down all things started by JabRef      *       * FIXME: Currently some threads remain and therefore hinder JabRef to be closed properly      *       * @param filenames the file names of all currently opened files - used for storing them if prefs openLastEdited is set to true      */
+comment|/**      * Tears down all things started by JabRef      *<p>      * FIXME: Currently some threads remain and therefore hinder JabRef to be closed properly      *      * @param filenames the file names of all currently opened files - used for storing them if prefs openLastEdited is set to true      */
 DECL|method|tearDownJabRef (Vector<String> filenames)
 specifier|private
 name|void
@@ -5845,7 +5845,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * General info dialog.  The MacAdapter calls this method when "Quit"      * is selected from the application menu, Cmd-Q is pressed, or "Quit" is selected from the Dock.      * The function returns a boolean indicating if quitting is ok or not.      *       * Non-OSX JabRef calls this when choosing "Quit" from the menu      *       * SIDE EFFECT: tears down JabRef      *       * @return true if the user chose to quit; false otherwise      */
+comment|/**      * General info dialog.  The MacAdapter calls this method when "Quit"      * is selected from the application menu, Cmd-Q is pressed, or "Quit" is selected from the Dock.      * The function returns a boolean indicating if quitting is ok or not.      *<p>      * Non-OSX JabRef calls this when choosing "Quit" from the menu      *<p>      * SIDE EFFECT: tears down JabRef      *      * @return true if the user chose to quit; false otherwise      */
 DECL|method|quit ()
 specifier|public
 name|boolean
@@ -6690,7 +6690,7 @@ name|xfer
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns the indexed BasePanel.      * @param i Index of base      */
+comment|/**      * Returns the indexed BasePanel.      *      * @param i Index of base      */
 DECL|method|baseAt (int i)
 specifier|public
 name|BasePanel
@@ -7537,7 +7537,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/** This got removed when we introduced SearchManager2.          class IncrementalSearchAction extends AbstractAction {       public IncrementalSearchAction() {      super("Incremental search", new ImageIcon(GUIGlobals.searchIconFile));      putValue(SHORT_DESCRIPTION, Globals.lang("Start incremental search"));      putValue(ACCELERATOR_KEY, prefs.getKey("Incremental search"));       }       public void actionPerformed(ActionEvent e) {      if (tabbedPane.getTabCount()> 0)        searchManager.startIncrementalSearch();       }          }           class SearchAction extends AbstractAction {       public SearchAction() {      super("Search", new ImageIcon(GUIGlobals.searchIconFile));      putValue(SHORT_DESCRIPTION, Globals.lang("Start search"));      putValue(ACCELERATOR_KEY, prefs.getKey("Search"));       }       public void actionPerformed(ActionEvent e) {      if (tabbedPane.getTabCount()> 0)        searchManager.startSearch();       }          }      */
+comment|/**      * This got removed when we introduced SearchManager2.      * class IncrementalSearchAction extends AbstractAction {      * public IncrementalSearchAction() {      * super("Incremental search", new ImageIcon(GUIGlobals.searchIconFile));      * putValue(SHORT_DESCRIPTION, Globals.lang("Start incremental search"));      * putValue(ACCELERATOR_KEY, prefs.getKey("Incremental search"));      * }      * public void actionPerformed(ActionEvent e) {      * if (tabbedPane.getTabCount()> 0)      * searchManager.startIncrementalSearch();      * }      * }      *<p>      * class SearchAction extends AbstractAction {      * public SearchAction() {      * super("Search", new ImageIcon(GUIGlobals.searchIconFile));      * putValue(SHORT_DESCRIPTION, Globals.lang("Start search"));      * putValue(ACCELERATOR_KEY, prefs.getKey("Search"));      * }      * public void actionPerformed(ActionEvent e) {      * if (tabbedPane.getTabCount()> 0)      * searchManager.startSearch();      * }      * }      */
 DECL|class|NewEntryAction
 class|class
 name|NewEntryAction
@@ -10409,7 +10409,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Takes a list of Object and calls the method setEnabled on them, depending on whether it is an Action or a Component.      * @param list List that should contain Actions and Components.      * @param enabled       */
+comment|/**      * Takes a list of Object and calls the method setEnabled on them, depending on whether it is an Action or a Component.      *      * @param list    List that should contain Actions and Components.      * @param enabled      */
 DECL|method|setEnabled (List<Object> list, boolean enabled)
 specifier|private
 specifier|static
@@ -10484,7 +10484,7 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-comment|/**      * Enable or Disable all actions based on the number of open tabs.      *       * The action that are affected are set in initActions.      */
+comment|/**      * Enable or Disable all actions based on the number of open tabs.      *<p>      * The action that are affected are set in initActions.      */
 DECL|method|updateEnabledState ()
 specifier|private
 name|void
@@ -11846,7 +11846,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *       * @param panel      *            The BasePanel to add to.      * @param entries      *            The entries to add.      * @param filename      *            Name of the file where the import came from.      * @param openInNew      *            Should the entries be imported into a new database?      */
+comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *      * @param panel     The BasePanel to add to.      * @param entries   The entries to add.      * @param filename  Name of the file where the import came from.      * @param openInNew Should the entries be imported into a new database?      */
 DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, String filename, final boolean openInNew)
 specifier|private
 name|void
@@ -12054,7 +12054,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Adds the entries to the database, possibly checking for duplicates first.      * @param filename If non-null, a message is printed to the status line describing      * how many entries were imported, and from which file. If null, the message will not      * be printed.      * @param intoNew Determines if the entries will be put in a new database or in the current      * one.      */
+comment|/**      * Adds the entries to the database, possibly checking for duplicates first.      *      * @param filename If non-null, a message is printed to the status line describing      *                 how many entries were imported, and from which file. If null, the message will not      *                 be printed.      * @param intoNew  Determines if the entries will be put in a new database or in the current      *                 one.      */
 DECL|method|addBibEntries (List<BibtexEntry> bibentries, String filename, boolean intoNew)
 specifier|private
 name|int
@@ -12193,8 +12193,6 @@ range|:
 name|bibentries
 control|)
 block|{
-try|try
-block|{
 name|entry
 operator|.
 name|setId
@@ -12212,24 +12210,6 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ex
-parameter_list|)
-block|{
-comment|//ignore
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"KeyCollisionException [ addBibEntries(...) ]"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|// Metadata are only put in bibtex files, so we will not find it
 comment|// in imported files. We therefore pass in an empty MetaData:
@@ -12538,8 +12518,6 @@ operator|!
 name|dupli
 condition|)
 block|{
-try|try
-block|{
 name|entry
 operator|.
 name|setId
@@ -12575,24 +12553,6 @@ expr_stmt|;
 name|addedEntries
 operator|++
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ex
-parameter_list|)
-block|{
-comment|//ignore
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"KeyCollisionException [ addBibEntries(...) ]"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 if|if
@@ -12859,7 +12819,7 @@ return|return
 name|fileHistory
 return|;
 block|}
-comment|/**      * Set the preview active state for all BasePanel instances.      * @param enabled      */
+comment|/**      * Set the preview active state for all BasePanel instances.      *      * @param enabled      */
 DECL|method|setPreviewActive (boolean enabled)
 specifier|public
 name|void
@@ -12977,7 +12937,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Set the visibility of the progress bar in the right end of the      * status line at the bottom of the frame.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+comment|/**      * Set the visibility of the progress bar in the right end of the      * status line at the bottom of the frame.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarVisible (final boolean visible)
 specifier|public
 name|void
@@ -13034,7 +12994,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the current value of the progress bar.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+comment|/**      * Sets the current value of the progress bar.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarValue (final int value)
 specifier|public
 name|void
@@ -13091,7 +13051,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the indeterminate status of the progress bar.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+comment|/**      * Sets the indeterminate status of the progress bar.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarIndeterminate (final boolean value)
 specifier|public
 name|void
@@ -13148,7 +13108,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the maximum value of the progress bar. Always call this method      * before using the progress bar, to set a maximum value appropriate to      * the task at hand.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+comment|/**      * Sets the maximum value of the progress bar. Always call this method      * before using the progress bar, to set a maximum value appropriate to      * the task at hand.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarMaximum (final int value)
 specifier|public
 name|void

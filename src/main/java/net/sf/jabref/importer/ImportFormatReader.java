@@ -187,7 +187,7 @@ name|BIBTEX_FORMAT
 init|=
 literal|"BibTeX"
 decl_stmt|;
-comment|/** all import formats, in the default order of import formats */
+comment|/**      * all import formats, in the default order of import formats      */
 DECL|field|formats
 specifier|private
 specifier|final
@@ -492,7 +492,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Format for a given CLI-ID.      *       *<p>Will return the first format according to the default-order of      * format that matches the given ID.</p>      *       * @param cliId  CLI-Id      * @return  Import Format or<code>null</code> if none matches      */
+comment|/**      * Format for a given CLI-ID.      *<p>      *<p>Will return the first format according to the default-order of      * format that matches the given ID.</p>      *      * @param cliId CLI-Id      * @return Import Format or<code>null</code> if none matches      */
 DECL|method|getByCliId (String cliId)
 specifier|private
 name|ImportFormat
@@ -819,8 +819,6 @@ range|:
 name|bibentries
 control|)
 block|{
-try|try
-block|{
 name|entry
 operator|.
 name|setId
@@ -839,28 +837,11 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ex
-parameter_list|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"KeyCollisionException [ addBibEntries(...) ]"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 return|return
 name|database
 return|;
 block|}
-comment|/**      * All custom importers.      *       *<p>Elements are in default order.</p>      *       * @return all custom importers, elements are of type InputFormat      */
+comment|/**      * All custom importers.      *<p>      *<p>Elements are in default order.</p>      *      * @return all custom importers, elements are of type InputFormat      */
 DECL|method|getCustomImportFormats ()
 specifier|public
 name|SortedSet
@@ -912,7 +893,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * All built-in importers.      *       *<p>Elements are in default order.</p>      *       * @return all custom importers, elements are of type InputFormat      */
+comment|/**      * All built-in importers.      *<p>      *<p>Elements are in default order.</p>      *      * @return all custom importers, elements are of type InputFormat      */
 DECL|method|getBuiltInInputFormats ()
 specifier|public
 name|SortedSet
@@ -965,7 +946,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * All importers.      *       *<p>      * Elements are in default order.      *</p>      *       * @return all custom importers, elements are of type InputFormat      */
+comment|/**      * All importers.      *<p>      *<p>      * Elements are in default order.      *</p>      *      * @return all custom importers, elements are of type InputFormat      */
 DECL|method|getImportFormats ()
 specifier|public
 name|SortedSet
@@ -981,7 +962,7 @@ operator|.
 name|formats
 return|;
 block|}
-comment|/**      * Human readable list of all known import formats (name and CLI Id).      *       *<p>List is in default-order.</p>      *       * @return  human readable list of all known import formats      */
+comment|/**      * Human readable list of all known import formats (name and CLI Id).      *<p>      *<p>List is in default-order.</p>      *      * @return human readable list of all known import formats      */
 DECL|method|getImportFormatList ()
 specifier|public
 name|String
@@ -1096,7 +1077,7 @@ argument_list|()
 return|;
 comment|//.substring(0, res.length()-1);
 block|}
-comment|/**      * Expand initials, e.g. EH Wissler -> E. H. Wissler or Wissler, EH -> Wissler, E. H.      * @param name      * @return The name after expanding initials.      */
+comment|/**      * Expand initials, e.g. EH Wissler -> E. H. Wissler or Wissler, EH -> Wissler, E. H.      *      * @param name      * @return The name after expanding initials.      */
 DECL|method|expandAuthorInitials (String name)
 specifier|public
 specifier|static
@@ -1952,7 +1933,7 @@ name|parserResult
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Tries to import a file by iterating through the available import filters,      * and keeping the import that seems most promising.      *       * If all fails this method attempts to read this file as bibtex.      *       * @throws IOException       */
+comment|/**      * Tries to import a file by iterating through the available import filters,      * and keeping the import that seems most promising.      *<p>      * If all fails this method attempts to read this file as bibtex.      *      * @throws IOException      */
 DECL|method|importUnknownFormat (String filename)
 specifier|public
 name|UnknownFormatImport

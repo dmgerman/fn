@@ -138,22 +138,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|keyboard
-operator|.
-name|KeyCollisionException
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|id
@@ -892,8 +876,6 @@ parameter_list|(
 name|String
 name|id
 parameter_list|)
-throws|throws
-name|KeyCollisionException
 block|{
 if|if
 condition|(
@@ -934,7 +916,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|KeyCollisionException
+name|IllegalStateException
 argument_list|(
 literal|"Couldn't change ID: "
 operator|+

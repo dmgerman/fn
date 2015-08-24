@@ -3414,8 +3414,6 @@ range|:
 name|bes
 control|)
 block|{
-try|try
-block|{
 name|BibtexEntry
 name|be
 init|=
@@ -3507,23 +3505,6 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ex
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"KeyCollisionException... this shouldn't happen."
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 name|ce
 operator|.
@@ -10422,7 +10403,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * This method is called from JabRefFrame when the user wants to      * create a new entry.      * @param bibEntry The new entry.      */
+comment|/**      * This method is called from JabRefFrame when the user wants to      * create a new entry.      *      * @param bibEntry The new entry.      */
 DECL|method|insertEntry (BibtexEntry bibEntry)
 specifier|public
 name|void
@@ -11733,7 +11714,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Stores the source view in the entry editor, if one is open, has the source view      * selected and the source has been edited.      * @return boolean false if there is a validation error in the source panel, true otherwise.      */
+comment|/**      * Stores the source view in the entry editor, if one is open, has the source view      * selected and the source has been edited.      *      * @return boolean false if there is a validation error in the source panel, true otherwise.      */
 DECL|method|entryEditorAllowsChange ()
 specifier|public
 name|boolean
@@ -12122,7 +12103,7 @@ argument_list|)
 expr_stmt|;
 comment|// Make sure it is enabled.
 block|}
-comment|/**      * Get an entry editor ready to edit the given entry. If an appropriate editor is already      * cached, it will be updated and returned.      * @param entry The entry to be edited.      * @return A suitable entry editor.      */
+comment|/**      * Get an entry editor ready to edit the given entry. If an appropriate editor is already      * cached, it will be updated and returned.      *      * @param entry The entry to be edited.      * @return A suitable entry editor.      */
 DECL|method|getEntryEditor (BibtexEntry entry)
 specifier|public
 name|EntryEditor
@@ -12255,7 +12236,7 @@ return|return
 name|currentEditor
 return|;
 block|}
-comment|/**      * Sets the given entry editor as the bottom component in the split pane. If an entry editor already      * was shown, makes sure that the divider doesn't move.      * Updates the mode to SHOWING_EDITOR.      * @param editor The entry editor to add.      */
+comment|/**      * Sets the given entry editor as the bottom component in the split pane. If an entry editor already      * was shown, makes sure that the divider doesn't move.      * Updates the mode to SHOWING_EDITOR.      *      * @param editor The entry editor to add.      */
 DECL|method|showEntryEditor (EntryEditor editor)
 specifier|public
 name|void
@@ -12369,7 +12350,7 @@ name|adjustSplitter
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Sets the given preview panel as the bottom component in the split panel.      * Updates the mode to SHOWING_PREVIEW.      * @param preview The preview to show.      */
+comment|/**      * Sets the given preview panel as the bottom component in the split panel.      * Updates the mode to SHOWING_PREVIEW.      *      * @param preview The preview to show.      */
 DECL|method|showPreview (PreviewPanel preview)
 specifier|public
 name|void
@@ -12470,7 +12451,7 @@ block|}
 comment|//     }
 comment|//});
 block|}
-comment|/**      * This method is called from an EntryEditor when it should be closed. We relay      * to the selection listener, which takes care of the rest.      * @param editor The entry editor to close.      */
+comment|/**      * This method is called from an EntryEditor when it should be closed. We relay      * to the selection listener, which takes care of the rest.      *      * @param editor The entry editor to close.      */
 DECL|method|entryEditorClosing (EntryEditor editor)
 specifier|public
 name|void
@@ -12926,7 +12907,7 @@ name|setWindowTitle
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Selects a single entry, and scrolls the table to center it.      *      * @param pos Current position of entry to select.      *      */
+comment|/**      * Selects a single entry, and scrolls the table to center it.      *      * @param pos Current position of entry to select.      */
 DECL|method|selectSingleEntry (int pos)
 specifier|public
 name|void
@@ -13039,7 +13020,7 @@ name|INSTANCE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Query whether this BasePanel is in the mode where a float search result is shown.      * @return true if showing float search, false otherwise.      */
+comment|/**      * Query whether this BasePanel is in the mode where a float search result is shown.      *      * @return true if showing float search, false otherwise.      */
 DECL|method|isShowingFloatSearch ()
 specifier|public
 name|boolean
@@ -13053,7 +13034,7 @@ name|isShowingFloatSearch
 argument_list|()
 return|;
 block|}
-comment|/**      * Query whether this BasePanel is in the mode where a filter search result is shown.      * @return true if showing filter search, false otherwise.      */
+comment|/**      * Query whether this BasePanel is in the mode where a filter search result is shown.      *      * @return true if showing filter search, false otherwise.      */
 DECL|method|isShowingFilterSearch ()
 specifier|public
 name|boolean
@@ -13652,7 +13633,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Activates or deactivates the entry preview, depending on the argument.      * When deactivating, makes sure that any visible preview is hidden.      * @param enabled      */
+comment|/**      * Activates or deactivates the entry preview, depending on the argument.      * When deactivating, makes sure that any visible preview is hidden.      *      * @param enabled      */
 DECL|method|setPreviewActive (boolean enabled)
 specifier|public
 name|void
@@ -14662,7 +14643,7 @@ return|return
 name|showing
 return|;
 block|}
-comment|/**      * Update the pointer to the currently shown entry in all cases where the user has      * moved to a new entry, except when using Back and Forward commands. Also updates      * history for Back command, and clears history for Forward command.      * @param entry The entry that is now to be shown.      */
+comment|/**      * Update the pointer to the currently shown entry in all cases where the user has      * moved to a new entry, except when using Back and Forward commands. Also updates      * history for Back command, and clears history for Forward command.      *      * @param entry The entry that is now to be shown.      */
 DECL|method|newEntryShowing (BibtexEntry entry)
 specifier|public
 name|void
