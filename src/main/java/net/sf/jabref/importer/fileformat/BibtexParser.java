@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-06 David Weitzman, Nizar N. Batada, Morten O. Alver, Christopher Oezbek  Copyright (C) 2015 Oliver Kopp   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.importer.fileformat
 package|package
@@ -85,6 +81,16 @@ operator|.
 name|util
 operator|.
 name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -279,7 +285,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class for importing BibTeX-files.  *   * Use:  *   * BibtexParser parser = new BibtexParser(reader);  *   * ParserResult result = parser.parse();  *   * or  *   * ParserResult result = BibtexParser.parse(reader);  *   * Can be used stand-alone.  *   * @author David Weitzman  * @author Nizar N. Batada  * @author Morten O. Alver  * @author Christopher Oezbek   */
+comment|/**  * Class for importing BibTeX-files.  *<p>  * Use:  *<p>  * BibtexParser parser = new BibtexParser(reader);  *<p>  * ParserResult result = parser.parse();  *<p>  * or  *<p>  * ParserResult result = BibtexParser.parse(reader);  *<p>  * Can be used stand-alone.  */
 end_comment
 
 begin_class
@@ -375,19 +381,13 @@ name|Reader
 name|in
 parameter_list|)
 block|{
-if|if
-condition|(
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|in
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|NullPointerException
-argument_list|()
-throw|;
-block|}
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|Globals
@@ -433,7 +433,7 @@ name|LOOKAHEAD
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Shortcut usage to create a Parser and read the input.      *       * @param in -      *            Reader to read from      * @throws IOException      */
+comment|/**      * Shortcut usage to create a Parser and read the input.      *      * @param in the Reader to read from      * @throws IOException      */
 DECL|method|parse (Reader in)
 specifier|public
 specifier|static
@@ -462,7 +462,7 @@ name|parse
 argument_list|()
 return|;
 block|}
-comment|/**      * Parses BibtexEntries from the given string and returns the collection of all entries found.      *       * @param bibtexString      *       * @return Returns null if an error occurred, returns an empty collection if no entries where found.       */
+comment|/**      * Parses BibtexEntries from the given string and returns the collection of all entries found.      *      * @param bibtexString      * @return Returns null if an error occurred, returns an empty collection if no entries where found.      */
 DECL|method|fromString (String bibtexString)
 specifier|public
 specifier|static
@@ -520,7 +520,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *       * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *       * @param bibtexString      *       * @return The bibtexentry or null if non was found or an error occurred.      */
+comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @return The bibtexentry or null if non was found or an error occurred.      */
 DECL|method|singleFromString (String bibtexString)
 specifier|public
 specifier|static
@@ -659,200 +659,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|skipWhitespace ()
-specifier|private
-name|void
-name|skipWhitespace
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|int
-name|c
-decl_stmt|;
-while|while
-condition|(
-literal|true
-condition|)
-block|{
-name|c
-operator|=
-name|read
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|c
-operator|==
-operator|-
-literal|1
-operator|||
-name|c
-operator|==
-literal|65535
-condition|)
-block|{
-name|eof
-operator|=
-literal|true
-expr_stmt|;
-return|return;
-block|}
-if|if
-condition|(
-name|Character
-operator|.
-name|isWhitespace
-argument_list|(
-operator|(
-name|char
-operator|)
-name|c
-argument_list|)
-condition|)
-block|{
-continue|continue;
-block|}
-else|else
-block|{
-comment|// found non-whitespace char
-comment|// Util.pr("SkipWhitespace, stops: "+c);
-name|unread
-argument_list|(
-name|c
-argument_list|)
-expr_stmt|;
-block|}
-comment|/*              * try { Thread.currentThread().sleep(500); } catch              * (InterruptedException ignored) {}              */
-break|break;
-block|}
-block|}
-DECL|method|skipAndRecordWhitespace (int j)
-specifier|private
-name|String
-name|skipAndRecordWhitespace
-parameter_list|(
-name|int
-name|j
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|int
-name|c
-decl_stmt|;
-name|StringBuilder
-name|sb
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|j
-operator|!=
-literal|' '
-condition|)
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-operator|(
-name|char
-operator|)
-name|j
-argument_list|)
-expr_stmt|;
-block|}
-while|while
-condition|(
-literal|true
-condition|)
-block|{
-name|c
-operator|=
-name|read
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|c
-operator|==
-operator|-
-literal|1
-operator|||
-name|c
-operator|==
-literal|65535
-condition|)
-block|{
-name|eof
-operator|=
-literal|true
-expr_stmt|;
-return|return
-name|sb
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
-if|if
-condition|(
-name|Character
-operator|.
-name|isWhitespace
-argument_list|(
-operator|(
-name|char
-operator|)
-name|c
-argument_list|)
-condition|)
-block|{
-if|if
-condition|(
-name|c
-operator|!=
-literal|' '
-condition|)
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-operator|(
-name|char
-operator|)
-name|c
-argument_list|)
-expr_stmt|;
-block|}
-continue|continue;
-block|}
-else|else
-block|{
-comment|// found non-whitespace char
-comment|// Util.pr("SkipWhitespace, stops: "+c);
-name|unread
-argument_list|(
-name|c
-argument_list|)
-expr_stmt|;
-block|}
-comment|/*              * try { Thread.currentThread().sleep(500); } catch              * (InterruptedException ignored) {}              */
-break|break;
-block|}
-return|return
-name|sb
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
-comment|/**      * Will parse the BibTex-Data found when reading from reader.      *       * The reader will be consumed.      *       * Multiple calls to parse() return the same results      *       * @return ParserResult      * @throws IOException      */
+comment|/**      * Will parse the BibTex-Data found when reading from reader.      *<p>      * The reader will be consumed.      *<p>      * Multiple calls to parse() return the same results      *      * @return ParserResult      * @throws IOException      */
 DECL|method|parse ()
 specifier|public
 name|ParserResult
@@ -873,13 +680,13 @@ return|return
 name|parserResult
 return|;
 block|}
+comment|// Bibtex related contents.
 name|database
 operator|=
 operator|new
 name|BibtexDatabase
 argument_list|()
 expr_stmt|;
-comment|// Bibtex related contents.
 name|HashMap
 argument_list|<
 name|String
@@ -1000,17 +807,16 @@ name|tp
 operator|!=
 literal|null
 decl_stmt|;
-comment|// Util.pr(tp.getName());
+comment|// The entry type name was not recognized. This can mean
+comment|// that it is a string, preamble, or comment. If so,
+comment|// parse and set accordingly. If not, assume it is an entry
+comment|// with an unknown type.
 if|if
 condition|(
 operator|!
 name|isEntry
 condition|)
 block|{
-comment|// The entry type name was not recognized. This can mean
-comment|// that it is a string, preamble, or comment. If so,
-comment|// parse and set accordingly. If not, assume it is an entry
-comment|// with an unknown type.
 if|if
 condition|(
 name|entryType
@@ -1088,7 +894,6 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// ex.printStackTrace();
 block|}
 block|}
 elseif|else
@@ -1111,7 +916,7 @@ init|=
 name|parseBracketedTextExactly
 argument_list|()
 decl_stmt|;
-comment|/**                          *                           * Metadata are used to store Bibkeeper-specific                          * information in .bib files.                          *                           * Metadata are stored in bibtex files in the format                          *                           * @comment{jabref-meta: type:data0;data1;data2;...}                          *                           * Each comment that starts with the META_FLAG is stored                          * in the meta HashMap, with type as key. Unluckily, the                          * old META_FLAG bibkeeper-meta: was used in JabRef 1.0                          * and 1.1, so we need to support it as well. At least                          * for a while. We'll always save with the new one.                          */
+comment|/**                          *                          * Metadata are used to store Bibkeeper-specific                          * information in .bib files.                          *                          * Metadata are stored in bibtex files in the format                          *                          * @comment{jabref-meta: type:data0;data1;data2;...}                          *                          * Each comment that starts with the META_FLAG is stored                          * in the meta HashMap, with type as key. Unluckily, the                          * old META_FLAG bibkeeper-meta: was used in JabRef 1.0                          * and 1.1, so we need to support it as well. At least                          * for a while. We'll always save with the new one.                          */
 name|String
 name|comment
 init|=
@@ -1401,20 +1206,19 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// System.out.println("unknown type: "+entryType);
 name|isEntry
 operator|=
 literal|true
 expr_stmt|;
 block|}
 block|}
+comment|// True if not comment, preamble or string.
 if|if
 condition|(
 name|isEntry
 condition|)
-comment|// True if not comment, preamble or string.
 block|{
-comment|/**                      * Morten Alver 13 Aug 2006: Trying to make the parser more                      * robust. If an exception is thrown when parsing an entry,                      * drop the entry and try to resume parsing. Add a warning                      * for the user.                      *                       * An alternative solution is to try rescuing the entry for                      * which parsing failed, by returning the entry with the                      * exception and adding it before parsing is continued.                      */
+comment|/**                      * Morten Alver 13 Aug 2006: Trying to make the parser more                      * robust. If an exception is thrown when parsing an entry,                      * drop the entry and try to resume parsing. Add a warning                      * for the user.                      */
 try|try
 block|{
 name|BibtexEntry
@@ -1598,6 +1402,195 @@ argument_list|)
 throw|;
 block|}
 block|}
+DECL|method|skipWhitespace ()
+specifier|private
+name|void
+name|skipWhitespace
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|int
+name|c
+decl_stmt|;
+while|while
+condition|(
+literal|true
+condition|)
+block|{
+name|c
+operator|=
+name|read
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|c
+operator|==
+operator|-
+literal|1
+operator|||
+name|c
+operator|==
+literal|65535
+condition|)
+block|{
+name|eof
+operator|=
+literal|true
+expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+operator|(
+name|char
+operator|)
+name|c
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
+else|else
+block|{
+comment|// found non-whitespace char
+name|unread
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
+block|}
+block|}
+DECL|method|skipAndRecordWhitespace (int j)
+specifier|private
+name|String
+name|skipAndRecordWhitespace
+parameter_list|(
+name|int
+name|j
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|int
+name|c
+decl_stmt|;
+name|StringBuilder
+name|sb
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|j
+operator|!=
+literal|' '
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+operator|(
+name|char
+operator|)
+name|j
+argument_list|)
+expr_stmt|;
+block|}
+while|while
+condition|(
+literal|true
+condition|)
+block|{
+name|c
+operator|=
+name|read
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|c
+operator|==
+operator|-
+literal|1
+operator|||
+name|c
+operator|==
+literal|65535
+condition|)
+block|{
+name|eof
+operator|=
+literal|true
+expr_stmt|;
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+if|if
+condition|(
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+operator|(
+name|char
+operator|)
+name|c
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|c
+operator|!=
+literal|' '
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+operator|(
+name|char
+operator|)
+name|c
+argument_list|)
+expr_stmt|;
+block|}
+continue|continue;
+block|}
+else|else
+block|{
+comment|// found non-whitespace char
+name|unread
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
+block|}
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 DECL|method|peek ()
 specifier|private
 name|int
@@ -1690,7 +1683,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// Util.pr("Parsing string");
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -1794,7 +1786,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|// createId(tp, _db);
 name|BibtexEntry
 name|result
 init|=
@@ -2234,9 +2225,6 @@ init|=
 name|parseTextToken
 argument_list|()
 decl_stmt|;
-comment|// Morten Alver 2007-07-04: I don't see the point of parsing the integer
-comment|// and converting it back to a string, so I'm removing the construct below
-comment|// the following line:
 name|value
 operator|.
 name|append
@@ -2244,7 +2232,6 @@ argument_list|(
 name|numString
 argument_list|)
 expr_stmt|;
-comment|/*                 try {                 	// Fixme: What is this for?                 	value.append(String.valueOf(Integer.parseInt(numString)));                 } catch (NumberFormatException e) {                 	// If Integer could not be parsed then just add the text                 	// Used to fix [ 1594123 ] Failure to import big numbers                 	value.append(numString);                 }                 */
 block|}
 elseif|else
 if|if
@@ -2309,14 +2296,11 @@ argument_list|(
 literal|"#"
 argument_list|)
 expr_stmt|;
-comment|// Util.pr(parseTextToken());
-comment|// throw new RuntimeException("Unknown field type");
 block|}
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Util.pr("Returning field content: "+value.toString());
 comment|// Check if we are to strip extra pairs of braces before returning:
 if|if
 condition|(
@@ -2416,11 +2400,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Originalinhalt nach parseFieldContent(String) verschoben.      * @return      * @throws IOException      */
-comment|//	private String parseFieldContent() throws IOException {
-comment|//		return parseFieldContent(null);
-comment|//	}
-comment|/**      * Check if a string at any point has had more ending braces (}) than      * opening ones ({). Will e.g. return true for the string "DNA} blahblal      * {EPA"      *       * @param s      *            The string to check.      * @return true if at any index the brace count is negative.      */
+comment|/**      * Check if a string at any point has had more ending braces (}) than      * opening ones ({). Will e.g. return true for the string "DNA} blahblal      * {EPA"      *      * @param s The string to check.      * @return true if at any index the brace count is negative.      */
 DECL|method|hasNegativeBraceCount (String s)
 specifier|private
 name|boolean
@@ -2430,7 +2410,6 @@ name|String
 name|s
 parameter_list|)
 block|{
-comment|// System.out.println(s);
 name|int
 name|i
 init|=
@@ -2512,6 +2491,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// TODO: why default capacity of 20?
 name|StringBuilder
 name|token
 init|=
@@ -2615,7 +2595,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|// Util.pr("Pasted text token: "+token.toString());
 return|return
 name|token
 operator|.
@@ -2625,7 +2604,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**      * Tries to restore the key      *       * @return rest of key on success, otherwise empty string      * @throws IOException      *             on Reader-Error      */
+comment|/**      * Tries to restore the key      *      * @return rest of key on success, otherwise empty string      * @throws IOException on Reader-Error      */
 DECL|method|fixKey ()
 specifier|private
 name|String
@@ -2944,7 +2923,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * removes whitespaces from<code>sb</code>      *       * @param sb      * @return      */
+comment|/**      * removes whitespaces from<code>sb</code>      *      * @param sb      * @return      */
 DECL|method|removeWhitespaces (StringBuilder sb)
 specifier|private
 name|StringBuilder
@@ -3015,7 +2994,7 @@ return|return
 name|newSb
 return|;
 block|}
-comment|/**      * pushes buffer back into input      *       * @param sb      * @throws IOException      *             can be thrown if buffer is bigger than LOOKAHEAD      */
+comment|/**      * pushes buffer back into input      *      * @param sb      * @throws IOException can be thrown if buffer is bigger than LOOKAHEAD      */
 DECL|method|unreadBuffer (StringBuilder sb)
 specifier|private
 name|void
@@ -3230,8 +3209,6 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|// } else if (Character.isWhitespace((char)c)) {
-comment|// throw new NoLabelException(token.toString());
 block|}
 elseif|else
 if|if
@@ -3249,7 +3226,6 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|// throw new NoLabelException(token.toString());
 block|}
 else|else
 block|{
@@ -3279,28 +3255,6 @@ block|}
 block|}
 block|}
 block|}
-DECL|class|NoLabelException
-specifier|private
-class|class
-name|NoLabelException
-extends|extends
-name|Exception
-block|{
-DECL|method|NoLabelException (String hasRead)
-specifier|public
-name|NoLabelException
-parameter_list|(
-name|String
-name|hasRead
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|hasRead
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 DECL|method|parseBracketedText ()
 specifier|private
 name|StringBuffer
@@ -3309,7 +3263,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// Util.pr("Parse bracketed text");
 name|StringBuffer
 name|value
 init|=
@@ -3420,7 +3373,6 @@ argument_list|(
 name|j
 argument_list|)
 decl_stmt|;
-comment|// System.out.println(":"+whs+":");
 if|if
 condition|(
 operator|!
@@ -3441,7 +3393,6 @@ argument_list|)
 condition|)
 block|{
 comment|//&&
-comment|// !whs.equals("\n"))
 name|whs
 operator|=
 name|whs
@@ -3454,8 +3405,6 @@ literal|""
 argument_list|)
 expr_stmt|;
 comment|// Remove tabulators.
-comment|// while (whs.endsWith("\t"))
-comment|// whs = whs.substring(0, whs.length()-1);
 name|value
 operator|.
 name|append
@@ -3963,8 +3912,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// System.out.println("Unknown entry type:
-comment|// "+be.getType().getName());
 name|_pr
 operator|.
 name|addWarning
@@ -4052,8 +3999,7 @@ name|int
 name|c
 decl_stmt|;
 comment|// We start by reading the standard part of the signature, which precedes
-comment|// the version number:
-comment|//                     This file was created with JabRef X.y.
+comment|// the version number: This file was created with JabRef X.y.
 while|while
 condition|(
 name|keepon
