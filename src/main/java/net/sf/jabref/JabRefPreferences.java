@@ -4375,7 +4375,8 @@ name|System
 operator|.
 name|lineSeparator
 argument_list|()
-argument_list|;
+argument_list|)
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4384,7 +4385,7 @@ name|SIDE_PANE_COMPONENT_NAMES
 argument_list|,
 literal|""
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4393,7 +4394,7 @@ name|SIDE_PANE_COMPONENT_PREFERRED_POSITIONS
 argument_list|,
 literal|""
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4402,7 +4403,7 @@ name|COLUMN_NAMES
 argument_list|,
 literal|"entrytype;author;title;year;journal;owner;timestamp;bibtexkey"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4411,7 +4412,7 @@ name|COLUMN_WIDTHS
 argument_list|,
 literal|"75;280;400;60;100;100;100;100"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4424,7 +4425,7 @@ name|PersistenceTableColumnListener
 operator|.
 name|DEFAULT_ENABLED
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4433,7 +4434,7 @@ name|XMP_PRIVACY_FILTERS
 argument_list|,
 literal|"pdf;timestamp;keywords;owner;note;review"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4444,7 +4445,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4455,7 +4456,7 @@ name|GUIGlobals
 operator|.
 name|NUMBER_COL_LENGTH
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4469,7 +4470,7 @@ argument_list|(
 literal|"user.home"
 argument_list|)
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4483,7 +4484,7 @@ argument_list|(
 literal|"user.home"
 argument_list|)
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4497,7 +4498,7 @@ argument_list|(
 literal|"user.home"
 argument_list|)
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4511,7 +4512,7 @@ argument_list|(
 literal|"user.home"
 argument_list|)
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4522,7 +4523,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4531,7 +4532,7 @@ name|ENTRY_TYPE_FORM_HEIGHT_FACTOR
 argument_list|,
 literal|1
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4540,7 +4541,7 @@ name|ENTRY_TYPE_FORM_WIDTH
 argument_list|,
 literal|1
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4551,7 +4552,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4562,7 +4563,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4571,7 +4572,7 @@ name|LAST_EDITED
 argument_list|,
 literal|null
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4580,7 +4581,7 @@ name|STRINGS_POS_X
 argument_list|,
 literal|0
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4589,7 +4590,7 @@ name|STRINGS_POS_Y
 argument_list|,
 literal|0
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4598,7 +4599,7 @@ name|STRINGS_SIZE_X
 argument_list|,
 literal|600
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4607,7 +4608,7 @@ name|STRINGS_SIZE_Y
 argument_list|,
 literal|400
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4618,7 +4619,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4629,7 +4630,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4640,7 +4641,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4651,7 +4652,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4662,7 +4663,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4673,7 +4674,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4684,7 +4685,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4695,7 +4696,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4706,7 +4707,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4717,7 +4718,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4728,7 +4729,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4739,7 +4740,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4750,7 +4751,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4759,7 +4760,7 @@ name|SEARCH_PANE_POS_X
 argument_list|,
 literal|0
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4768,7 +4769,7 @@ name|SEARCH_PANE_POS_Y
 argument_list|,
 literal|0
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4779,7 +4780,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4790,7 +4791,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4801,7 +4802,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4812,7 +4813,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4821,7 +4822,7 @@ name|AUTO_COMPLETE_FIELDS
 argument_list|,
 literal|"author;editor;title;journal;publisher;keywords;crossref"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4832,7 +4833,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|// "Autocomplete names in 'Firstname Lastname' format only"
 name|defaults
 operator|.
@@ -4844,7 +4845,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|// "Autocomplete names in 'Lastname, Firstname' format only"
 name|defaults
 operator|.
@@ -4854,7 +4855,7 @@ name|SHORTEST_TO_COMPLETE
 argument_list|,
 literal|2
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4865,7 +4866,7 @@ name|JabRefPreferences
 operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_BOTH
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4876,7 +4877,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4887,7 +4888,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4898,7 +4899,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4909,7 +4910,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4920,7 +4921,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4931,7 +4932,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4940,7 +4941,7 @@ name|GROUPS_DEFAULT_FIELD
 argument_list|,
 literal|"keywords"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4951,7 +4952,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4962,7 +4963,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4973,7 +4974,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4984,7 +4985,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -4995,7 +4996,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5006,7 +5007,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5017,7 +5018,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5026,7 +5027,7 @@ name|GROUP_KEYWORD_SEPARATOR
 argument_list|,
 literal|", "
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5037,7 +5038,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5048,7 +5049,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5059,7 +5060,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5070,7 +5071,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5081,7 +5082,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5095,7 +5096,7 @@ argument_list|(
 literal|"file.encoding"
 argument_list|)
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5104,7 +5105,7 @@ name|GROUPS_VISIBLE_ROWS
 argument_list|,
 literal|8
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5118,7 +5119,7 @@ argument_list|(
 literal|"user.name"
 argument_list|)
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5129,7 +5130,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5140,7 +5141,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5151,7 +5152,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|// The general fields stuff is made obsolete by the CUSTOM_TAB_... entries.
 name|defaults
 operator|.
@@ -5163,7 +5164,7 @@ literal|"crossref;keywords;file;doi;url;urldate;"
 operator|+
 literal|"pdf;comment;owner"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5174,7 +5175,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5183,7 +5184,7 @@ name|CUSTOM_ICON_THEME_FILE
 argument_list|,
 literal|"/home/alver/div/crystaltheme_16/Icons.properties"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5192,7 +5193,7 @@ name|HISTORY_SIZE
 argument_list|,
 literal|8
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5207,7 +5208,7 @@ name|Font
 operator|.
 name|PLAIN
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5216,7 +5217,7 @@ name|FONT_SIZE
 argument_list|,
 literal|12
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5227,7 +5228,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5236,7 +5237,7 @@ name|MENU_FONT_FAMILY
 argument_list|,
 literal|"Times"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5251,7 +5252,7 @@ name|Font
 operator|.
 name|PLAIN
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5260,7 +5261,7 @@ name|MENU_FONT_SIZE
 argument_list|,
 literal|11
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5271,7 +5272,7 @@ name|GUIGlobals
 operator|.
 name|TABLE_ROW_PADDING
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5282,7 +5283,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|// Main table color settings:
 name|defaults
 operator|.
@@ -5292,7 +5293,7 @@ name|TABLE_BACKGROUND
 argument_list|,
 literal|"255:255:255"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5301,7 +5302,7 @@ name|TABLE_REQ_FIELD_BACKGROUND
 argument_list|,
 literal|"230:235:255"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5310,7 +5311,7 @@ name|TABLE_OPT_FIELD_BACKGROUND
 argument_list|,
 literal|"230:255:230"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5319,7 +5320,7 @@ name|TABLE_TEXT
 argument_list|,
 literal|"0:0:0"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5328,7 +5329,7 @@ name|GRID_COLOR
 argument_list|,
 literal|"210:210:210"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5337,7 +5338,7 @@ name|GRAYED_OUT_BACKGROUND
 argument_list|,
 literal|"210:210:210"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5346,7 +5347,7 @@ name|GRAYED_OUT_TEXT
 argument_list|,
 literal|"40:40:40"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5355,7 +5356,7 @@ name|VERY_GRAYED_OUT_BACKGROUND
 argument_list|,
 literal|"180:180:180"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5364,7 +5365,7 @@ name|VERY_GRAYED_OUT_TEXT
 argument_list|,
 literal|"40:40:40"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5373,7 +5374,7 @@ name|MARKED_ENTRY_BACKGROUND0
 argument_list|,
 literal|"255:255:180"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5382,7 +5383,7 @@ name|MARKED_ENTRY_BACKGROUND1
 argument_list|,
 literal|"255:220:180"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5391,7 +5392,7 @@ name|MARKED_ENTRY_BACKGROUND2
 argument_list|,
 literal|"255:180:160"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5400,7 +5401,7 @@ name|MARKED_ENTRY_BACKGROUND3
 argument_list|,
 literal|"255:120:120"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5409,7 +5410,7 @@ name|MARKED_ENTRY_BACKGROUND4
 argument_list|,
 literal|"255:75:75"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5418,7 +5419,7 @@ name|MARKED_ENTRY_BACKGROUND5
 argument_list|,
 literal|"220:255:220"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5427,7 +5428,7 @@ name|VALID_FIELD_BACKGROUND_COLOR
 argument_list|,
 literal|"255:255:255"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5436,7 +5437,7 @@ name|INVALID_FIELD_BACKGROUND_COLOR
 argument_list|,
 literal|"255:0:0"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5445,7 +5446,7 @@ name|ACTIVE_FIELD_EDITOR_BACKGROUND_COLOR
 argument_list|,
 literal|"220:220:255"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5454,7 +5455,7 @@ name|FIELD_EDITOR_TEXT_COLOR
 argument_list|,
 literal|"0:0:0"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5463,7 +5464,7 @@ name|INCOMPLETE_ENTRY_BACKGROUND
 argument_list|,
 literal|"250:175:175"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5474,7 +5475,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5485,7 +5486,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5496,7 +5497,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5507,7 +5508,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5518,7 +5519,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5529,7 +5530,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5540,7 +5541,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5551,7 +5552,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5562,7 +5563,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5571,7 +5572,7 @@ name|LIST_OF_FILE_COLUMNS
 argument_list|,
 literal|""
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5584,7 +5585,7 @@ name|SpecialFieldsUtils
 operator|.
 name|PREF_SPECIALFIELDSENABLED_DEFAULT
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5597,7 +5598,7 @@ name|SpecialFieldsUtils
 operator|.
 name|PREF_SHOWCOLUMN_PRIORITY_DEFAULT
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5610,7 +5611,7 @@ name|SpecialFieldsUtils
 operator|.
 name|PREF_SHOWCOLUMN_QUALITY_DEFAULT
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5623,7 +5624,7 @@ name|SpecialFieldsUtils
 operator|.
 name|PREF_SHOWCOLUMN_RANKING_DEFAULT
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5636,7 +5637,7 @@ name|SpecialFieldsUtils
 operator|.
 name|PREF_RANKING_COMPACT_DEFAULT
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5649,7 +5650,7 @@ name|SpecialFieldsUtils
 operator|.
 name|PREF_SHOWCOLUMN_RELEVANCE_DEFAULT
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5662,7 +5663,7 @@ name|SpecialFieldsUtils
 operator|.
 name|PREF_SHOWCOLUMN_PRINTED_DEFAULT
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5675,7 +5676,7 @@ name|SpecialFieldsUtils
 operator|.
 name|PREF_SHOWCOLUMN_READ_DEFAULT
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5688,7 +5689,7 @@ name|SpecialFieldsUtils
 operator|.
 name|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS_DEFAULT
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5701,7 +5702,7 @@ name|SpecialFieldsUtils
 operator|.
 name|PREF_SERIALIZESPECIALFIELDS_DEFAULT
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5712,7 +5713,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5723,7 +5724,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5734,7 +5735,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5745,7 +5746,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5756,7 +5757,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5767,7 +5768,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5778,7 +5779,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5789,7 +5790,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5800,7 +5801,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5811,7 +5812,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5822,7 +5823,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5833,7 +5834,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5844,7 +5845,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5855,7 +5856,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5864,7 +5865,7 @@ name|DEFAULT_LABEL_PATTERN
 argument_list|,
 literal|"[auth][year]"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5875,7 +5876,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5884,7 +5885,7 @@ name|ACTIVE_PREVIEW
 argument_list|,
 literal|0
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5928,7 +5929,7 @@ literal|"\\begin{review}<BR><BR><b>Review:</b> \\format[HTMLChars]{\\review} \\e
 operator|+
 literal|"</dd>__NEWLINE__<p></p></font>"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5968,7 +5969,7 @@ literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}"
 operator|+
 literal|"</dd>__NEWLINE__<p></p></font>"
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|// TODO: Currently not possible to edit this setting:
 name|defaults
 operator|.
@@ -5980,7 +5981,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -5991,7 +5992,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6000,7 +6001,7 @@ name|DO_NOT_RESOLVE_STRINGS_FOR
 argument_list|,
 literal|"url"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6011,7 +6012,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6020,7 +6021,7 @@ name|PUT_BRACES_AROUND_CAPITALS
 argument_list|,
 literal|""
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|//"title;journal;booktitle;review;abstract");
 name|defaults
 operator|.
@@ -6030,7 +6031,7 @@ name|NON_WRAPPABLE_FIELDS
 argument_list|,
 literal|"pdf;ps;url;doi;file"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6041,7 +6042,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6052,7 +6053,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6063,7 +6064,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6074,7 +6075,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6085,7 +6086,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6096,7 +6097,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6107,7 +6108,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6118,7 +6119,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6127,7 +6128,7 @@ name|TIME_STAMP_FORMAT
 argument_list|,
 literal|"yyyy.MM.dd"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6138,7 +6139,7 @@ name|BibtexFields
 operator|.
 name|TIMESTAMP
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6149,7 +6150,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6160,7 +6161,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|// behavior of JabRef before 2.10: both: false
 name|defaults
 operator|.
@@ -6172,7 +6173,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6183,7 +6184,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|//behavior of JabRef before LWang_AdjustableFieldOrder 1
 comment|//0 sorted order (2.10 default), 1 unsorted order (2.9.2 default), 2 user defined
 name|defaults
@@ -6194,7 +6195,7 @@ name|WRITEFIELD_SORTSTYLE
 argument_list|,
 literal|0
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6203,7 +6204,7 @@ name|WRITEFIELD_USERDEFINEDORDER
 argument_list|,
 literal|"author;title;journal;year;volume;number;pages;month;note;volume;pages;part;eid"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6214,7 +6215,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6227,7 +6228,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6238,7 +6239,7 @@ name|REMOTE_SERVER_PORT
 argument_list|,
 literal|6050
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6247,7 +6248,7 @@ name|PERSONAL_JOURNAL_LIST
 argument_list|,
 literal|null
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6256,7 +6257,7 @@ name|EXTERNAL_JOURNAL_LISTS
 argument_list|,
 literal|null
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6265,7 +6266,7 @@ name|CITE_COMMAND
 argument_list|,
 literal|"cite"
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|// obsoleted by the app-specific ones
 name|defaults
 operator|.
@@ -6275,7 +6276,7 @@ name|CITE_COMMAND_VIM
 argument_list|,
 literal|"\\cite"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6284,7 +6285,7 @@ name|CITE_COMMAND_EMACS
 argument_list|,
 literal|"\\cite"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6293,7 +6294,7 @@ name|CITE_COMMAND_WIN_EDT
 argument_list|,
 literal|"\\cite"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6302,7 +6303,7 @@ name|CITE_COMMAND_LED
 argument_list|,
 literal|"\\cite"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6313,7 +6314,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6324,7 +6325,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6335,7 +6336,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6344,7 +6345,7 @@ name|LAST_USED_EXPORT
 argument_list|,
 literal|null
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6354,7 +6355,7 @@ argument_list|,
 operator|-
 literal|1
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6363,7 +6364,7 @@ name|IMPORT_INSPECTION_DIALOG_WIDTH
 argument_list|,
 literal|650
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6372,7 +6373,7 @@ name|IMPORT_INSPECTION_DIALOG_HEIGHT
 argument_list|,
 literal|650
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6381,7 +6382,7 @@ name|SEARCH_DIALOG_WIDTH
 argument_list|,
 literal|650
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6390,7 +6391,7 @@ name|SEARCH_DIALOG_HEIGHT
 argument_list|,
 literal|500
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6401,7 +6402,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6412,7 +6413,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6421,7 +6422,7 @@ name|NUMERIC_FIELDS
 argument_list|,
 literal|"mittnum;author"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6432,7 +6433,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6443,7 +6444,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6454,7 +6455,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6463,7 +6464,7 @@ name|AUTO_SAVE_INTERVAL
 argument_list|,
 literal|5
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6474,7 +6475,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6485,7 +6486,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6496,7 +6497,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|// Curly brackets ({}) are the default delimiters, not quotes (") as these cause trouble when they appear within the field value:
 comment|// Currently, JabRef does not escape them
 name|defaults
@@ -6507,7 +6508,7 @@ name|VALUE_DELIMITERS2
 argument_list|,
 literal|1
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6518,7 +6519,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6529,7 +6530,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6540,7 +6541,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6554,7 +6555,7 @@ argument_list|(
 literal|"References"
 argument_list|)
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6565,7 +6566,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6576,7 +6577,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6587,7 +6588,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6596,7 +6597,7 @@ name|SELECTED_FETCHER_INDEX
 argument_list|,
 literal|0
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6607,7 +6608,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6618,7 +6619,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6627,7 +6628,7 @@ name|DB_CONNECT_SERVER_TYPE
 argument_list|,
 literal|"MySQL"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6636,7 +6637,7 @@ name|DB_CONNECT_HOSTNAME
 argument_list|,
 literal|"localhost"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6645,7 +6646,7 @@ name|DB_CONNECT_DATABASE
 argument_list|,
 literal|"jabref"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6654,14 +6655,14 @@ name|DB_CONNECT_USERNAME
 argument_list|,
 literal|"root"
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|CleanUpAction
 operator|.
 name|putDefaults
 argument_list|(
 name|defaults
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|// defaults for DroppedFileHandler UI
 name|defaults
 operator|.
@@ -6675,7 +6676,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6688,7 +6689,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6701,7 +6702,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6714,7 +6715,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|//defaults.put("lastAutodetectedImport", "");
 comment|//defaults.put("autoRemoveExactDuplicates", Boolean.FALSE);
 comment|//defaults.put("confirmAutoRemoveExactDuplicates", Boolean.TRUE);
@@ -6733,7 +6734,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6746,7 +6747,7 @@ name|ImportSettingsTab
 operator|.
 name|DEFAULT_STYLE
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|// use BibTeX key appended with filename as default pattern
 name|defaults
 operator|.
@@ -6763,10 +6764,10 @@ index|[
 literal|1
 index|]
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|restoreKeyBindings
 argument_list|()
-argument_list|;
+expr_stmt|;
 name|customExports
 operator|=
 operator|new
@@ -6776,7 +6777,7 @@ operator|new
 name|ExportComparator
 argument_list|()
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|customImports
 operator|=
 operator|new
@@ -6784,11 +6785,11 @@ name|CustomImportList
 argument_list|(
 name|this
 argument_list|)
-argument_list|;
+expr_stmt|;
 comment|//defaults.put("oooWarning", Boolean.TRUE);
 name|updateSpecialFieldHandling
 argument_list|()
-argument_list|;
+expr_stmt|;
 name|WRAPPED_USERNAME
 operator|=
 literal|'['
@@ -6799,7 +6800,7 @@ name|DEFAULT_OWNER
 argument_list|)
 operator|+
 literal|']'
-argument_list|;
+expr_stmt|;
 name|MARKING_WITH_NUMBER_PATTERN
 operator|=
 literal|"\\["
@@ -6817,12 +6818,12 @@ literal|"\\\\\\\\"
 argument_list|)
 operator|+
 literal|":(\\d+)\\]"
-argument_list|;
+expr_stmt|;
 name|String
 name|defaultExpression
-operator|=
+init|=
 literal|"**/.*[bibtexkey].*\\\\.[extension]"
-argument_list|;
+decl_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6831,7 +6832,7 @@ name|DEFAULT_REG_EXP_SEARCH_EXPRESSION_KEY
 argument_list|,
 name|defaultExpression
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6840,7 +6841,7 @@ name|REG_EXP_SEARCH_EXPRESSION_KEY
 argument_list|,
 name|defaultExpression
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6851,7 +6852,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6862,7 +6863,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6873,7 +6874,7 @@ name|Boolean
 operator|.
 name|FALSE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6884,7 +6885,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6895,7 +6896,7 @@ name|Boolean
 operator|.
 name|TRUE
 argument_list|)
-argument_list|;
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -6908,7 +6909,8 @@ name|FILE_FIELD
 operator|+
 literal|"Directory"
 argument_list|)
-argument_list|;         try
+expr_stmt|;
+try|try
 block|{
 name|defaults
 operator|.
