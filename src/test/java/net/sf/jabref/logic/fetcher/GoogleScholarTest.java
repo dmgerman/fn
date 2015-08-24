@@ -231,6 +231,15 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"title"
+argument_list|,
+literal|"Pro WF: Windows Workflow in NET 3.5"
+argument_list|)
+expr_stmt|;
 name|Assert
 operator|.
 name|assertEquals

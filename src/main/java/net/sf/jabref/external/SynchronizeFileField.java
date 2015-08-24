@@ -1511,7 +1511,6 @@ block|}
 block|}
 block|}
 comment|//for (BibtexEntry entr : changedEntries)
-comment|//    System.out.println(entr.getCiteKey());
 if|if
 condition|(
 operator|!
