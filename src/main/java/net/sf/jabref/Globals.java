@@ -304,6 +304,15 @@ specifier|public
 class|class
 name|Globals
 block|{
+DECL|field|ENTRYTYPE_FLAG
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ENTRYTYPE_FLAG
+init|=
+literal|"jabref-entrytype: "
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static

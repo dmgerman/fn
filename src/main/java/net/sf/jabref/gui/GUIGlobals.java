@@ -964,15 +964,6 @@ name|META_FLAG_OLD
 init|=
 literal|"bibkeeper-meta: "
 decl_stmt|;
-DECL|field|ENTRYTYPE_FLAG
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ENTRYTYPE_FLAG
-init|=
-literal|"jabref-entrytype: "
-decl_stmt|;
 comment|// some fieldname constants
 DECL|field|DEFAULT_FIELD_WEIGHT
 specifier|public
