@@ -4,7 +4,7 @@ comment|/* Copyright (C) 2003 David Weitzman  All programs in this directory and
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui.keyboard
+DECL|package|net.sf.jabref.model.database
 package|package
 name|net
 operator|.
@@ -12,9 +12,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|model
 operator|.
-name|keyboard
+name|database
 package|;
 end_package
 

@@ -162,9 +162,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|model
 operator|.
-name|keyboard
+name|database
 operator|.
 name|KeyCollisionException
 import|;
