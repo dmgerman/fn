@@ -813,13 +813,6 @@ operator|new
 argument_list|)
 return|;
 block|}
-DECL|method|describeRequiredFields ()
-specifier|public
-specifier|abstract
-name|String
-name|describeRequiredFields
-parameter_list|()
-function_decl|;
 DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|abstract
