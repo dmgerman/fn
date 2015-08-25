@@ -183,11 +183,7 @@ name|tagDisplayNameMap
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 static|static
@@ -608,11 +604,7 @@ name|written
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|written
@@ -638,8 +630,6 @@ argument_list|,
 name|out
 argument_list|,
 literal|"title"
-argument_list|,
-literal|false
 argument_list|,
 literal|false
 argument_list|)
@@ -710,8 +700,6 @@ argument_list|,
 name|value
 argument_list|,
 name|hasWritten
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|written
@@ -769,7 +757,6 @@ argument_list|)
 condition|)
 block|{
 comment|// If field appears both in req. and opt. don't repeat.
-comment|//writeField(s[i], out, fieldFormatter);
 name|hasWritten
 operator|=
 name|hasWritten
@@ -783,8 +770,6 @@ argument_list|,
 name|value
 argument_list|,
 name|hasWritten
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|written
@@ -886,8 +871,6 @@ argument_list|,
 name|field
 argument_list|,
 name|hasWritten
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -1063,8 +1046,6 @@ argument_list|,
 name|value
 argument_list|,
 name|hasWritten
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|written
@@ -1127,8 +1108,6 @@ argument_list|,
 name|value
 argument_list|,
 name|hasWritten
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|written
@@ -1152,9 +1131,7 @@ name|remainingFields
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1230,8 +1207,6 @@ argument_list|,
 name|field
 argument_list|,
 name|hasWritten
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -1412,8 +1387,6 @@ argument_list|,
 name|value
 argument_list|,
 name|hasWritten
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|written
@@ -1429,16 +1402,6 @@ block|}
 block|}
 block|}
 comment|// Then write remaining fields in alphabetic order.
-name|boolean
-name|first
-decl_stmt|;
-name|boolean
-name|previous
-decl_stmt|;
-name|previous
-operator|=
-literal|false
-expr_stmt|;
 comment|//STA get remaining fields
 name|TreeSet
 argument_list|<
@@ -1508,10 +1471,6 @@ expr_stmt|;
 block|}
 block|}
 comment|//END get remaining fields
-name|first
-operator|=
-name|previous
-expr_stmt|;
 for|for
 control|(
 name|String
@@ -1533,15 +1492,7 @@ argument_list|,
 name|field
 argument_list|,
 name|hasWritten
-argument_list|,
-name|hasWritten
-operator|&&
-name|first
 argument_list|)
-expr_stmt|;
-name|first
-operator|=
-literal|false
 expr_stmt|;
 block|}
 comment|// Finally, end the entry.
@@ -1568,7 +1519,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Write a single field, if it has any content.      *      * @param entry      the entry to write      * @param out        the target of the write      * @param name       The field name      * @param isNotFirst Indicates whether this is the first field written for      *                   this entry - if not, start by writing a comma and newline   @return true if this field was written, false if it was skipped because      *                   it was not set      * @throws IOException In case of an IO error      */
-DECL|method|writeField (BibtexEntry entry, Writer out, String name, boolean isNotFirst, boolean isNextGroup)
+DECL|method|writeField (BibtexEntry entry, Writer out, String name, boolean isNotFirst)
 specifier|private
 name|boolean
 name|writeField
@@ -1584,9 +1535,6 @@ name|name
 parameter_list|,
 name|boolean
 name|isNotFirst
-parameter_list|,
-name|boolean
-name|isNextGroup
 parameter_list|)
 throws|throws
 name|IOException
@@ -1621,21 +1569,6 @@ name|write
 argument_list|(
 literal|','
 operator|+
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|isNextGroup
-condition|)
-block|{
-name|out
-operator|.
-name|write
-argument_list|(
 name|Globals
 operator|.
 name|NEWLINE
