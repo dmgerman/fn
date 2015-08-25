@@ -190,7 +190,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|migrations
 operator|.
 name|FileLinksUpgradeWarning
 import|;
