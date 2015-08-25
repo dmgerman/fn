@@ -404,28 +404,6 @@ argument_list|(
 operator|new
 name|StringReader
 argument_list|(
-literal|"This file was created with JabRef 2.1 beta 2."
-operator|+
-literal|"\n"
-operator|+
-literal|"Encoding: Cp1252"
-operator|+
-literal|"\n"
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|Assert
-operator|.
-name|assertTrue
-argument_list|(
-name|BibtexParser
-operator|.
-name|isRecognizedFormat
-argument_list|(
-operator|new
-name|StringReader
-argument_list|(
 literal|"@INPROCEEDINGS{CroAnnHow05,"
 operator|+
 literal|"\n"

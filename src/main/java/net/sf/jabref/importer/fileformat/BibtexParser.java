@@ -4123,7 +4123,6 @@ name|trim
 argument_list|()
 decl_stmt|;
 comment|// See if it fits the X.y. pattern:
-comment|// FIXME: This does not support digits> 9, so 2.80 would be not recognized!
 if|if
 condition|(
 name|Pattern
