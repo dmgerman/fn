@@ -341,6 +341,25 @@ operator|new
 name|BuildInfo
 argument_list|()
 decl_stmt|;
+comment|// Signature written at the top of the .bib file.
+DECL|field|SIGNATURE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SIGNATURE
+init|=
+literal|"This file was created with JabRef"
+decl_stmt|;
+DECL|field|encPrefix
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|encPrefix
+init|=
+literal|"Encoding: "
+decl_stmt|;
 comment|// Newlines
 comment|// will be overridden in initialization due to feature #857 @ JabRef.java
 DECL|field|NEWLINE

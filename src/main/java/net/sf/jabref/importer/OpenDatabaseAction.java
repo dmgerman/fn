@@ -2308,7 +2308,7 @@ if|if
 condition|(
 name|c
 operator|==
-name|GUIGlobals
+name|Globals
 operator|.
 name|SIGNATURE
 operator|.
@@ -2337,7 +2337,7 @@ if|if
 condition|(
 name|piv
 operator|==
-name|GUIGlobals
+name|Globals
 operator|.
 name|SIGNATURE
 operator|.
@@ -2401,7 +2401,7 @@ name|char
 operator|)
 name|c
 operator|!=
-name|GUIGlobals
+name|Globals
 operator|.
 name|encPrefix
 operator|.
@@ -2424,7 +2424,7 @@ literal|1
 init|;
 name|i
 operator|<
-name|GUIGlobals
+name|Globals
 operator|.
 name|encPrefix
 operator|.
@@ -2442,7 +2442,7 @@ operator|.
 name|read
 argument_list|()
 operator|!=
-name|GUIGlobals
+name|Globals
 operator|.
 name|encPrefix
 operator|.

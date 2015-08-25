@@ -4035,7 +4035,7 @@ if|if
 condition|(
 name|c
 operator|==
-name|GUIGlobals
+name|Globals
 operator|.
 name|SIGNATURE
 operator|.
@@ -4063,7 +4063,7 @@ if|if
 condition|(
 name|piv
 operator|==
-name|GUIGlobals
+name|Globals
 operator|.
 name|SIGNATURE
 operator|.

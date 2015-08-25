@@ -397,26 +397,6 @@ specifier|static
 name|Font
 name|typeNameFont
 decl_stmt|;
-comment|// Signature written at the top of the .bib file.
-DECL|field|SIGNATURE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SIGNATURE
-init|=
-literal|"This file was created with JabRef"
-decl_stmt|;
-DECL|field|encPrefix
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|encPrefix
-init|=
-literal|"Encoding: "
-decl_stmt|;
-comment|// Part of the signature in written bib files.
 comment|// Size of help window.
 specifier|public
 specifier|static
