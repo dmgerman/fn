@@ -1510,7 +1510,6 @@ block|}
 block|}
 block|}
 block|}
-comment|//for (BibtexEntry entr : changedEntries)
 if|if
 condition|(
 operator|!
