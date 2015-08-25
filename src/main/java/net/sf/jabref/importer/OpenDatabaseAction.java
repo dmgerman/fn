@@ -2039,9 +2039,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|//System.out.println("Result of UTF-16 test: "+suppliedEncoding);
 block|}
-comment|//System.out.println(suppliedEncoding != null ? "Encoding: '"+suppliedEncoding+"' Len: "+suppliedEncoding.length() : "no supplied encoding");
 if|if
 condition|(
 name|suppliedEncoding
@@ -2333,7 +2331,6 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-comment|//System.out.println(headerText.toString());
 name|found
 label|:
 if|if

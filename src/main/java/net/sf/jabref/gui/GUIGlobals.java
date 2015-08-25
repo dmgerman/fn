@@ -332,12 +332,28 @@ specifier|public
 class|class
 name|GUIGlobals
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|GUIGlobals
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|// Frame titles.
+DECL|field|frameTitle
 specifier|public
 specifier|static
 specifier|final
 name|String
-DECL|field|frameTitle
 name|frameTitle
 init|=
 literal|"JabRef"
@@ -369,16 +385,6 @@ name|NUMBER_COL
 init|=
 literal|"#"
 decl_stmt|;
-DECL|field|encPrefix
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|encPrefix
-init|=
-literal|"Encoding: "
-decl_stmt|;
-comment|// Part of the signature in written bib files.
 DECL|field|CURRENTFONT
 specifier|public
 specifier|static
@@ -391,22 +397,6 @@ specifier|static
 name|Font
 name|typeNameFont
 decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|GUIGlobals
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 comment|// Signature written at the top of the .bib file.
 DECL|field|SIGNATURE
 specifier|public
@@ -417,6 +407,16 @@ name|SIGNATURE
 init|=
 literal|"This file was created with JabRef"
 decl_stmt|;
+DECL|field|encPrefix
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|encPrefix
+init|=
+literal|"Encoding: "
+decl_stmt|;
+comment|// Part of the signature in written bib files.
 comment|// Size of help window.
 specifier|public
 specifier|static

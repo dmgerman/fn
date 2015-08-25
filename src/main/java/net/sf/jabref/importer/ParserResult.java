@@ -220,12 +220,12 @@ specifier|private
 name|String
 name|errorMessage
 decl_stmt|;
+comment|// Which encoding was used?
 DECL|field|encoding
 specifier|private
 name|String
 name|encoding
 decl_stmt|;
-comment|// Which encoding was used?
 DECL|field|postponedAutosaveFound
 specifier|private
 name|boolean
@@ -236,12 +236,17 @@ specifier|private
 name|boolean
 name|invalid
 decl_stmt|;
+DECL|field|toOpenTab
+specifier|private
+name|boolean
+name|toOpenTab
+decl_stmt|;
+comment|// Which JabRef version wrote the file, if any?
 DECL|field|jabrefVersion
 specifier|private
 name|String
 name|jabrefVersion
 decl_stmt|;
-comment|// Which JabRef version wrote the file, if any?
 DECL|field|jabrefMajorVersion
 specifier|private
 name|int
@@ -251,17 +256,6 @@ DECL|field|jabrefMinorVersion
 specifier|private
 name|int
 name|jabrefMinorVersion
-decl_stmt|;
-DECL|field|jabrefMinor2Version
-specifier|private
-name|int
-name|jabrefMinor2Version
-decl_stmt|;
-comment|// Numeric version representation
-DECL|field|toOpenTab
-specifier|private
-name|boolean
-name|toOpenTab
 decl_stmt|;
 DECL|method|ParserResult (Collection<BibtexEntry> entries)
 specifier|public
@@ -439,32 +433,6 @@ operator|.
 name|jabrefMinorVersion
 operator|=
 name|jabrefMinorVersion
-expr_stmt|;
-block|}
-DECL|method|getJabrefMinor2Version ()
-specifier|public
-name|int
-name|getJabrefMinor2Version
-parameter_list|()
-block|{
-return|return
-name|jabrefMinor2Version
-return|;
-block|}
-DECL|method|setJabrefMinor2Version (int jabrefMinor2Version)
-specifier|public
-name|void
-name|setJabrefMinor2Version
-parameter_list|(
-name|int
-name|jabrefMinor2Version
-parameter_list|)
-block|{
-name|this
-operator|.
-name|jabrefMinor2Version
-operator|=
-name|jabrefMinor2Version
 expr_stmt|;
 block|}
 DECL|method|getDatabase ()

@@ -1008,9 +1008,8 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
-comment|// + Globals.NEWLINE);
 block|}
-comment|/**      * Writes the JabRef signature and the encoding.      *      * @param encoding String the name of the encoding, which is part of the      * header.      */
+comment|/**      * Writes the file encoding information.      *      * @param encoding String the name of the encoding, which is part of the file header.      */
 DECL|method|writeBibFileHeader (Writer out, String encoding)
 specifier|private
 specifier|static
@@ -1037,32 +1036,6 @@ name|out
 operator|.
 name|write
 argument_list|(
-name|GUIGlobals
-operator|.
-name|SIGNATURE
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|write
-argument_list|(
-literal|' '
-operator|+
-name|Globals
-operator|.
-name|BUILD_INFO
-operator|.
-name|getVersion
-argument_list|()
-operator|+
-literal|'.'
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"% "
-operator|+
 name|GUIGlobals
 operator|.
 name|encPrefix
