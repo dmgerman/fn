@@ -2014,15 +2014,6 @@ name|NEWLINE
 operator|=
 name|newline
 expr_stmt|;
-name|Globals
-operator|.
-name|NEWLINE_LENGTH
-operator|=
-name|newline
-operator|.
-name|length
-argument_list|()
-expr_stmt|;
 name|prefs
 operator|.
 name|putBoolean

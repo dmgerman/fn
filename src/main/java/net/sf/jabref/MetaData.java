@@ -1541,7 +1541,10 @@ name|lineLength
 operator|+
 name|Globals
 operator|.
-name|NEWLINE_LENGTH
+name|NEWLINE
+operator|.
+name|length
+argument_list|()
 control|)
 block|{
 name|sb

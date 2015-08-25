@@ -1217,7 +1217,10 @@ name|current
 operator|+
 name|Globals
 operator|.
-name|NEWLINE_LENGTH
+name|NEWLINE
+operator|.
+name|length
+argument_list|()
 expr_stmt|;
 block|}
 block|}

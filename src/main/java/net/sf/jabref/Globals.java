@@ -354,19 +354,6 @@ operator|.
 name|lineSeparator
 argument_list|()
 decl_stmt|;
-DECL|field|NEWLINE_LENGTH
-specifier|public
-specifier|static
-name|int
-name|NEWLINE_LENGTH
-init|=
-name|Globals
-operator|.
-name|NEWLINE
-operator|.
-name|length
-argument_list|()
-decl_stmt|;
 comment|// Remote listener
 DECL|field|remoteListener
 specifier|public

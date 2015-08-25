@@ -1087,17 +1087,6 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
-name|Globals
-operator|.
-name|NEWLINE_LENGTH
-operator|=
-name|Globals
-operator|.
-name|NEWLINE
-operator|.
-name|length
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|OS
