@@ -796,9 +796,7 @@ name|value
 argument_list|,
 name|hasWritten
 argument_list|,
-name|hasWritten
-operator|&&
-name|first
+literal|false
 argument_list|)
 expr_stmt|;
 name|written
@@ -809,10 +807,6 @@ name|value
 argument_list|,
 literal|null
 argument_list|)
-expr_stmt|;
-name|first
-operator|=
-literal|false
 expr_stmt|;
 name|previous
 operator|=
