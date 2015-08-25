@@ -734,18 +734,6 @@ operator|.
 name|getOptionalFields
 argument_list|()
 expr_stmt|;
-name|boolean
-name|first
-init|=
-literal|true
-decl_stmt|;
-name|boolean
-name|previous
-decl_stmt|;
-name|previous
-operator|=
-literal|false
-expr_stmt|;
 if|if
 condition|(
 name|s
@@ -807,10 +795,6 @@ name|value
 argument_list|,
 literal|null
 argument_list|)
-expr_stmt|;
-name|previous
-operator|=
-literal|true
 expr_stmt|;
 block|}
 block|}
@@ -881,10 +865,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|first
-operator|=
-name|previous
-expr_stmt|;
 for|for
 control|(
 name|String
@@ -907,14 +887,8 @@ name|field
 argument_list|,
 name|hasWritten
 argument_list|,
-name|hasWritten
-operator|&&
-name|first
-argument_list|)
-expr_stmt|;
-name|first
-operator|=
 literal|false
+argument_list|)
 expr_stmt|;
 block|}
 comment|// Finally, end the entry.
