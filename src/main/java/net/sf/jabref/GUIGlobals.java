@@ -1426,6 +1426,17 @@ argument_list|,
 literal|"ru"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
+literal|"Persian (ÙØ§Ø±Ø³Û)"
+argument_list|,
+literal|"fa"
+argument_list|)
+expr_stmt|;
 comment|// Set up entry editor colors, first time:
 name|GUIGlobals
 operator|.
