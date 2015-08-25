@@ -264,6 +264,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|migrations
+operator|.
+name|PreferencesMigrations
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -529,20 +543,6 @@ operator|.
 name|strings
 operator|.
 name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -3998,7 +3998,7 @@ block|{
 comment|// Call the method performCompatibilityUpdate(), which does any
 comment|// necessary changes for users with a preference set from an older
 comment|// Jabref version.
-name|Util
+name|PreferencesMigrations
 operator|.
 name|performCompatibilityUpdate
 argument_list|()
