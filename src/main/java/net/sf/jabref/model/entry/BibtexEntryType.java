@@ -123,6 +123,15 @@ decl_stmt|;
 static|static
 block|{
 comment|// Put the standard entry types into the type map.
+name|Globals
+operator|.
+name|prefs
+operator|=
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|!
