@@ -124,7 +124,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntryTypes
 import|;
 end_import
 
@@ -1975,7 +1979,7 @@ name|BibtexFields
 operator|.
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,
-name|Globals
+name|BibtexEntryTypes
 operator|.
 name|getEntryType
 argument_list|(

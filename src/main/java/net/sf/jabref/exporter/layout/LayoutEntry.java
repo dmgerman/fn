@@ -2369,7 +2369,7 @@ block|}
 name|Matcher
 name|matcher
 init|=
-name|Globals
+name|Util
 operator|.
 name|getPatternForWords
 argument_list|(

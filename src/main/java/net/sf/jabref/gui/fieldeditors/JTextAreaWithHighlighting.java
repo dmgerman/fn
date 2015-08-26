@@ -58,6 +58,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -643,7 +657,7 @@ block|}
 name|Matcher
 name|matcher
 init|=
-name|Globals
+name|Util
 operator|.
 name|getPatternForWords
 argument_list|(
