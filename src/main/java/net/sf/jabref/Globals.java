@@ -703,16 +703,6 @@ specifier|static
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
-comment|// "Fieldname" to indicate that a field should be treated as a bibtex string. Used when writing database to file.
-DECL|field|BIBTEX_STRING
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|BIBTEX_STRING
-init|=
-literal|"__string"
-decl_stmt|;
 DECL|field|SPECIAL_COMMAND_CHARS
 specifier|public
 specifier|static

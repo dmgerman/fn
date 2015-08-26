@@ -931,7 +931,7 @@ operator|.
 name|getContent
 argument_list|()
 argument_list|,
-name|Globals
+name|LatexFieldFormatter
 operator|.
 name|BIBTEX_STRING
 argument_list|)

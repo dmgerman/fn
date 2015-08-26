@@ -108,6 +108,16 @@ name|LatexFieldFormatter
 implements|implements
 name|FieldFormatter
 block|{
+comment|// "Fieldname" to indicate that a field should be treated as a bibtex string. Used when writing database to file.
+DECL|field|BIBTEX_STRING
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|BIBTEX_STRING
+init|=
+literal|"__string"
+decl_stmt|;
 DECL|method|buildIgnoreHashes ()
 specifier|public
 specifier|static
@@ -297,8 +307,6 @@ name|fieldName
 argument_list|)
 operator|&&
 operator|!
-name|Globals
-operator|.
 name|BIBTEX_STRING
 operator|.
 name|equals
@@ -411,8 +419,6 @@ argument_list|(
 name|fieldName
 argument_list|)
 operator|||
-name|Globals
-operator|.
 name|BIBTEX_STRING
 operator|.
 name|equals
