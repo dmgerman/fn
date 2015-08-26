@@ -234,9 +234,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
 operator|.
-name|GoogleUrlCleaner
+name|io
+operator|.
+name|URLUtil
 import|;
 end_import
 
@@ -322,15 +326,6 @@ name|ReplaceAction
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|inputMenu
-operator|.
-name|add
-argument_list|(
-operator|new
-name|UrlAction
-argument_list|()
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|myFieldName
@@ -370,7 +365,7 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|mouseEntered (MouseEvent e)
@@ -381,7 +376,7 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|mouseExited (MouseEvent e)
@@ -392,7 +387,7 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|mousePressed (MouseEvent e)
@@ -522,7 +517,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|class|BasicAction
 specifier|abstract
 specifier|static
@@ -696,9 +690,6 @@ name|e
 parameter_list|)
 function_decl|;
 block|}
-comment|//---------------------------------------------------------------
-comment|/*class MenuHeaderAction extends BasicAction     {       public MenuHeaderAction(String comment)       {         super("Edit -" +comment);         this.setEnabled(false);       }        public void actionPerformed(ActionEvent e) { }     }       */
-comment|// ---------------------------------------------------------------------------
 DECL|class|PasteAction
 class|class
 name|PasteAction
@@ -750,13 +741,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|data
-operator|!=
-literal|null
-condition|)
-block|{
-if|if
-condition|(
 operator|!
 name|data
 operator|.
@@ -764,6 +748,18 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+comment|// auto corrections
+comment|// clean Google search URLs
+name|data
+operator|=
+name|URLUtil
+operator|.
+name|cleanGoogleSearchURL
+argument_list|(
+name|data
+argument_list|)
+expr_stmt|;
+comment|// paste data
 if|if
 condition|(
 name|myFieldName
@@ -781,16 +777,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
 catch|catch
 parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{             }
+block|{}
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|class|CopyAction
 class|class
 name|CopyAction
@@ -830,8 +824,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-comment|//        String data = ( String ) systemClip.getContents( null ).getTransferData(
-comment|//            DataFlavor.stringFlavor ) ;
 if|if
 condition|(
 name|myFieldName
@@ -956,83 +948,6 @@ argument_list|(
 name|NameListNormalizer
 operator|.
 name|normalizeAuthorList
-argument_list|(
-name|input
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-DECL|class|UrlAction
-class|class
-name|UrlAction
-extends|extends
-name|BasicAction
-block|{
-DECL|method|UrlAction ()
-specifier|public
-name|UrlAction
-parameter_list|()
-block|{
-name|super
-argument_list|(
-literal|"Clean Google URL"
-argument_list|)
-expr_stmt|;
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|SHORT_DESCRIPTION
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"If possible, clean URL that Google search returned"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|actionPerformed (ActionEvent evt)
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|evt
-parameter_list|)
-block|{
-if|if
-condition|(
-name|myFieldName
-operator|.
-name|getText
-argument_list|()
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-return|return;
-block|}
-name|String
-name|input
-init|=
-name|myFieldName
-operator|.
-name|getText
-argument_list|()
-decl_stmt|;
-name|myFieldName
-operator|.
-name|setText
-argument_list|(
-name|GoogleUrlCleaner
-operator|.
-name|cleanUrl
 argument_list|(
 name|input
 argument_list|)
