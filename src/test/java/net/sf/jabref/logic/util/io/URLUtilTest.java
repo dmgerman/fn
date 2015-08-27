@@ -321,6 +321,21 @@ literal|"https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// foreign domain co.uk
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"https://moz.com/ugc/the-ultimate-guide-to-the-google-search-parameters"
+argument_list|,
+name|URLUtil
+operator|.
+name|cleanGoogleSearchURL
+argument_list|(
+literal|"https://www.google.co.uk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0CCEQFjAAahUKEwjJurHd2sfHAhWBsxQKHSrEAaM&url=https%3A%2F%2Fmoz.com%2Fugc%2Fthe-ultimate-guide-to-the-google-search-parameters&ei=0THeVYmOJIHnUqqIh5gK&usg=AFQjCNHnid_r_d2LP8_MqvI7lQnTC3lB_g&sig2=ICzxDroG2ENTJSUGmdhI2w"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// accept ftp results
 name|Assert
 operator|.
