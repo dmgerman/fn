@@ -4881,7 +4881,7 @@ name|this
 operator|.
 name|sidePaneManager
 expr_stmt|;
-name|Globals
+name|GUIGlobals
 operator|.
 name|helpDiag
 operator|=

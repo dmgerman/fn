@@ -978,7 +978,7 @@ init|=
 operator|new
 name|HelpAction
 argument_list|(
-name|Globals
+name|GUIGlobals
 operator|.
 name|helpDiag
 argument_list|,
