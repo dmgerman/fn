@@ -108,7 +108,7 @@ specifier|final
 name|String
 name|searchExp
 init|=
-literal|"^https?://(?:www\\.)?google\\.[a-z]+?/url.*"
+literal|"^https?://(?:www\\.)?google\\.[\\.a-z]+?/url.*"
 decl_stmt|;
 if|if
 condition|(
