@@ -1712,12 +1712,6 @@ specifier|private
 name|PreviewPanel
 name|currentPreview
 decl_stmt|;
-DECL|field|tmp
-name|boolean
-name|tmp
-init|=
-literal|true
-decl_stmt|;
 DECL|field|selectionListener
 specifier|private
 name|MainTableSelectionListener
@@ -1861,8 +1855,6 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|//ExampleFileFilter fileFilter;
-comment|// File filter for .bib files.
 DECL|field|baseChanged
 specifier|private
 name|boolean
@@ -1874,8 +1866,6 @@ name|boolean
 name|nonUndoableChange
 decl_stmt|;
 comment|// Used to track whether the base has changed since last save.
-comment|//EntryTableModel tableModel = null;
-comment|//public EntryTable entryTable = null;
 DECL|field|mainTable
 specifier|public
 name|MainTable
@@ -1942,9 +1932,6 @@ argument_list|()
 decl_stmt|;
 comment|// To contain instantiated entry editors. This is to save time
 comment|// in switching between entries.
-comment|//HashMap entryTypeForms = new HashMap();
-comment|// Hashmap to keep track of which entries currently have open
-comment|// EntryTypeForm dialogs.
 DECL|field|preambleEditor
 specifier|private
 name|PreambleEditor
@@ -3258,10 +3245,6 @@ operator|new
 name|BibtexParser
 argument_list|(
 operator|new
-name|java
-operator|.
-name|io
-operator|.
 name|StringReader
 argument_list|(
 operator|(

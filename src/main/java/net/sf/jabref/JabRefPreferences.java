@@ -8300,7 +8300,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Returns the KeyStroke for this binding, as defined by the defaults, or in the Preferences, but adapted for Mac      * users, with the Command key preferred instead of Control.      */
+comment|/**      * Returns the KeyStroke for this binding, as defined by the defaults, or in the Preferences, but adapted for Mac      * users, with the Command key preferred instead of Control.      * TODO: Move to OS.java? Or replace with portable Java key codes, i.e. KeyEvent      */
 DECL|method|getKeyForMac (KeyStroke ks)
 specifier|private
 name|KeyStroke
@@ -8406,27 +8406,6 @@ operator|.
 name|ALT_MASK
 expr_stmt|;
 block|}
-return|return
-name|KeyStroke
-operator|.
-name|getKeyStroke
-argument_list|(
-name|keyCode
-argument_list|,
-name|getShortcutMask
-argument_list|()
-operator|+
-name|modifiers
-argument_list|)
-return|;
-block|}
-block|}
-DECL|method|getShortcutMask ()
-specifier|private
-name|int
-name|getShortcutMask
-parameter_list|()
-block|{
 if|if
 condition|(
 name|SHORTCUT_MASK
@@ -8453,11 +8432,21 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{              }
+block|{                  }
 block|}
 return|return
+name|KeyStroke
+operator|.
+name|getKeyStroke
+argument_list|(
+name|keyCode
+argument_list|,
 name|SHORTCUT_MASK
+operator|+
+name|modifiers
+argument_list|)
 return|;
+block|}
 block|}
 comment|/**      * Returns the HashMap containing all key bindings.      */
 DECL|method|getKeyBindings ()

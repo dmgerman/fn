@@ -79,9 +79,7 @@ DECL|method|MnemonicAwareAction ()
 specifier|public
 name|MnemonicAwareAction
 parameter_list|()
-block|{
-comment|//super("");
-block|}
+block|{}
 DECL|method|MnemonicAwareAction (ImageIcon icon)
 specifier|public
 name|MnemonicAwareAction
@@ -90,7 +88,6 @@ name|ImageIcon
 name|icon
 parameter_list|)
 block|{
-comment|//super(icon);
 name|putValue
 argument_list|(
 name|Action
