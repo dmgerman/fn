@@ -144,6 +144,15 @@ name|CustomEntryType
 extends|extends
 name|BibtexEntryType
 block|{
+DECL|field|ENTRYTYPE_FLAG
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ENTRYTYPE_FLAG
+init|=
+literal|"jabref-entrytype: "
+decl_stmt|;
 DECL|field|name
 specifier|private
 specifier|final
@@ -1071,8 +1080,6 @@ name|out
 operator|.
 name|write
 argument_list|(
-name|Globals
-operator|.
 name|ENTRYTYPE_FLAG
 argument_list|)
 expr_stmt|;
@@ -1203,8 +1210,6 @@ name|comment
 operator|.
 name|substring
 argument_list|(
-name|Globals
-operator|.
 name|ENTRYTYPE_FLAG
 operator|.
 name|length

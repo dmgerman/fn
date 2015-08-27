@@ -266,15 +266,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|ENTRYTYPE_FLAG
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ENTRYTYPE_FLAG
-init|=
-literal|"jabref-entrytype: "
-decl_stmt|;
 comment|// JabRef version info
 DECL|field|BUILD_INFO
 specifier|public

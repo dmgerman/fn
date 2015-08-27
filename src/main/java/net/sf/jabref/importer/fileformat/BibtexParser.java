@@ -1103,7 +1103,7 @@ operator|.
 name|length
 argument_list|()
 argument_list|,
-name|Globals
+name|CustomEntryType
 operator|.
 name|ENTRYTYPE_FLAG
 operator|.
@@ -1114,7 +1114,7 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
-name|Globals
+name|CustomEntryType
 operator|.
 name|ENTRYTYPE_FLAG
 argument_list|)
