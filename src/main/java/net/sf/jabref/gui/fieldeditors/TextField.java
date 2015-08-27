@@ -28,20 +28,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BaseAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -82,9 +68,11 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|keyboard
+name|fieldeditors
 operator|.
-name|KeyBinds
+name|contextmenu
+operator|.
+name|FieldTextMenu
 import|;
 end_import
 
@@ -103,20 +91,6 @@ operator|.
 name|strings
 operator|.
 name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 

@@ -28,7 +28,7 @@ comment|// modified :
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui.fieldeditors
+DECL|package|net.sf.jabref.gui.fieldeditors.contextmenu
 package|package
 name|net
 operator|.
@@ -39,6 +39,8 @@ operator|.
 name|gui
 operator|.
 name|fieldeditors
+operator|.
+name|contextmenu
 package|;
 end_package
 
@@ -186,11 +188,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|l10n
+name|fieldeditors
 operator|.
-name|Localization
+name|FieldEditor
 import|;
 end_import
 
@@ -202,9 +204,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|CaseChangeMenu
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
