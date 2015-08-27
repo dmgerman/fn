@@ -150,7 +150,7 @@ name|gui
 operator|.
 name|fieldeditors
 operator|.
-name|FieldTextField
+name|TextField
 import|;
 end_import
 
@@ -780,11 +780,11 @@ argument_list|,
 name|off
 argument_list|)
 decl_stmt|;
-name|FieldTextField
+name|TextField
 name|editor
 init|=
 operator|new
-name|FieldTextField
+name|TextField
 argument_list|(
 name|fieldName
 argument_list|,

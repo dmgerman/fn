@@ -85,7 +85,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FieldEditors is a common interface between the FieldTextField and FieldTextArea.  */
+comment|/**  * FieldEditors is a common interface between the TextField and TextArea.  */
 end_comment
 
 begin_interface

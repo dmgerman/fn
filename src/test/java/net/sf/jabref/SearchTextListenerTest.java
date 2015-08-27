@@ -36,7 +36,7 @@ name|gui
 operator|.
 name|fieldeditors
 operator|.
-name|FieldTextArea
+name|TextArea
 import|;
 end_import
 
@@ -160,11 +160,11 @@ name|contentToHighlight2
 init|=
 literal|"Content"
 decl_stmt|;
-name|FieldTextArea
+name|TextArea
 name|ta
 init|=
 operator|new
-name|FieldTextArea
+name|TextArea
 argument_list|(
 literal|""
 argument_list|,
@@ -455,11 +455,11 @@ name|contentToHighlight1
 init|=
 literal|"Word"
 decl_stmt|;
-name|FieldTextArea
+name|TextArea
 name|ta
 init|=
 operator|new
-name|FieldTextArea
+name|TextArea
 argument_list|(
 literal|""
 argument_list|,
@@ -575,11 +575,11 @@ name|content
 init|=
 literal|"Test Word Content"
 decl_stmt|;
-name|FieldTextArea
+name|TextArea
 name|ta
 init|=
 operator|new
-name|FieldTextArea
+name|TextArea
 argument_list|(
 literal|""
 argument_list|,

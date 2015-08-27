@@ -176,7 +176,7 @@ name|gui
 operator|.
 name|fieldeditors
 operator|.
-name|FieldTextField
+name|TextField
 import|;
 end_import
 
@@ -428,7 +428,7 @@ operator|.
 name|editor
 operator|=
 operator|new
-name|FieldTextField
+name|TextField
 argument_list|(
 name|fieldName
 argument_list|,
@@ -493,7 +493,7 @@ operator|.
 name|editor
 operator|=
 operator|new
-name|FieldTextField
+name|TextField
 argument_list|(
 name|fieldName
 argument_list|,

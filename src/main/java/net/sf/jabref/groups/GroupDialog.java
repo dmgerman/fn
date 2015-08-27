@@ -154,7 +154,7 @@ name|gui
 operator|.
 name|fieldeditors
 operator|.
-name|FieldTextField
+name|TextField
 import|;
 end_import
 
@@ -579,11 +579,21 @@ decl_stmt|;
 DECL|field|m_kgSearchTerm
 specifier|private
 specifier|final
-name|FieldTextField
+name|TextField
 name|m_kgSearchTerm
 init|=
 operator|new
-name|FieldTextField
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|fieldeditors
+operator|.
+name|TextField
 argument_list|(
 literal|"keywords"
 argument_list|,

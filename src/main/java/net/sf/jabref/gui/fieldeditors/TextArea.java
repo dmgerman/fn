@@ -88,6 +88,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ActionEvent
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -97,14 +109,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the FieldEditor backed by a JTextArea. Used for  * multi-line input.  */
+comment|/**  * An implementation of the FieldEditor backed by a JTextArea.  * Used for multi-line input, currently all BibTexFields except Bibtex key!  */
 end_comment
 
 begin_class
-DECL|class|FieldTextArea
+DECL|class|TextArea
 specifier|public
 class|class
-name|FieldTextArea
+name|TextArea
 extends|extends
 name|JTextAreaWithHighlighting
 implements|implements
@@ -132,9 +144,9 @@ specifier|private
 name|AutoCompleteListener
 name|autoCompleteListener
 decl_stmt|;
-DECL|method|FieldTextArea (String fieldName, String content)
+DECL|method|TextArea (String fieldName, String content)
 specifier|public
-name|FieldTextArea
+name|TextArea
 parameter_list|(
 name|String
 name|fieldName

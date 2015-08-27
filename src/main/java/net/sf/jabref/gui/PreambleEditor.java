@@ -104,7 +104,7 @@ name|gui
 operator|.
 name|fieldeditors
 operator|.
-name|FieldTextArea
+name|TextArea
 import|;
 end_import
 
@@ -404,7 +404,7 @@ decl_stmt|;
 name|ed
 operator|=
 operator|new
-name|FieldTextArea
+name|TextArea
 argument_list|(
 name|Localization
 operator|.
@@ -426,7 +426,7 @@ comment|//ed.addUndoableEditListener(panel.undoListener);
 name|setupJTextComponent
 argument_list|(
 operator|(
-name|FieldTextArea
+name|TextArea
 operator|)
 name|ed
 argument_list|)
@@ -706,7 +706,7 @@ name|FieldListener
 extends|extends
 name|FocusAdapter
 block|{
-comment|/*         * Focus listener that fires the storeFieldAction when a FieldTextArea         * loses focus.         */
+comment|/*         * Focus listener that fires the storeFieldAction when a TextArea         * loses focus.         */
 annotation|@
 name|Override
 DECL|method|focusLost (FocusEvent e)

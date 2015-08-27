@@ -654,7 +654,7 @@ argument_list|)
 decl_stmt|;
 comment|//final OpenFileFilter off = Util.getFileFilterForField(fieldName);
 comment|//ExternalFilePanel extPan = new ExternalFilePanel(fieldName, panel.metaData(), null, null, off);
-comment|//FieldTextField editor = new FieldTextField(fieldName, "", false);
+comment|//TextField editor = new TextField(fieldName, "", false);
 name|Set
 argument_list|<
 name|BibtexEntry

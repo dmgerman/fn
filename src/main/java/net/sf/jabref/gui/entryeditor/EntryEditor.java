@@ -5994,7 +5994,7 @@ name|FieldListener
 extends|extends
 name|FocusAdapter
 block|{
-comment|/*          * Focus listener that fires the storeFieldAction when a FieldTextArea          * loses focus.          */
+comment|/*          * Focus listener that fires the storeFieldAction when a TextArea          * loses focus.          */
 annotation|@
 name|Override
 DECL|method|focusGained (FocusEvent e)
@@ -6455,15 +6455,15 @@ operator|.
 name|getSource
 argument_list|()
 operator|instanceof
-name|FieldTextField
+name|TextField
 condition|)
 block|{
 comment|// Storage from bibtex key field.
-name|FieldTextField
+name|TextField
 name|textField
 init|=
 operator|(
-name|FieldTextField
+name|TextField
 operator|)
 name|event
 operator|.
@@ -8212,11 +8212,11 @@ operator|==
 literal|2
 condition|)
 block|{
-name|FieldTextArea
+name|TextArea
 name|tf
 init|=
 operator|(
-name|FieldTextArea
+name|TextArea
 operator|)
 name|evt
 operator|.

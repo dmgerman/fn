@@ -70,7 +70,7 @@ name|gui
 operator|.
 name|fieldeditors
 operator|.
-name|FieldTextArea
+name|TextArea
 import|;
 end_import
 
@@ -1472,7 +1472,7 @@ name|FieldEditor
 name|authorTextField
 init|=
 operator|new
-name|FieldTextArea
+name|TextArea
 argument_list|(
 literal|"author"
 argument_list|,
@@ -1607,7 +1607,7 @@ name|FieldEditor
 name|authorTextField
 init|=
 operator|new
-name|FieldTextArea
+name|TextArea
 argument_list|(
 literal|"journal"
 argument_list|,

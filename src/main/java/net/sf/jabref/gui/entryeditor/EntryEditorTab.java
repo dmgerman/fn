@@ -184,7 +184,7 @@ name|gui
 operator|.
 name|fieldeditors
 operator|.
-name|FieldTextArea
+name|TextArea
 import|;
 end_import
 
@@ -200,7 +200,7 @@ name|gui
 operator|.
 name|fieldeditors
 operator|.
-name|FieldTextField
+name|TextField
 import|;
 end_import
 
@@ -935,6 +935,7 @@ argument_list|,
 name|panel
 argument_list|)
 decl_stmt|;
+comment|// BibTex edit fields are defined here
 for|for
 control|(
 name|int
@@ -1041,7 +1042,7 @@ block|{
 name|fieldEditor
 operator|=
 operator|new
-name|FieldTextArea
+name|TextArea
 argument_list|(
 name|fields
 index|[
@@ -1059,7 +1060,7 @@ operator|.
 name|addSearchListener
 argument_list|(
 operator|(
-name|FieldTextArea
+name|TextArea
 operator|)
 name|fieldEditor
 argument_list|)
@@ -1306,11 +1307,11 @@ name|addKeyField
 condition|)
 block|{
 specifier|final
-name|FieldTextField
+name|TextField
 name|textField
 init|=
 operator|new
-name|FieldTextField
+name|TextField
 argument_list|(
 name|BibtexEntry
 operator|.

@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/*  * Focus listener that fires the storeFieldAction when a FieldTextArea loses  * focus.  */
+comment|/*  * Focus listener that fires the storeFieldAction when a TextArea loses  * focus.  */
 end_comment
 
 begin_class
