@@ -82,16 +82,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -116,27 +106,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|ImageIcon
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JPopupMenu
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|KeyStroke
 import|;
 end_import
 
@@ -224,9 +194,9 @@ name|logic
 operator|.
 name|util
 operator|.
-name|strings
+name|io
 operator|.
-name|NameListNormalizer
+name|URLUtil
 import|;
 end_import
 
@@ -242,9 +212,9 @@ name|logic
 operator|.
 name|util
 operator|.
-name|io
+name|strings
 operator|.
-name|URLUtil
+name|NameListNormalizer
 import|;
 end_import
 

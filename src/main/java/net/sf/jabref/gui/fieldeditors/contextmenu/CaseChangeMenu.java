@@ -132,7 +132,6 @@ name|JTextComponent
 name|opener
 parameter_list|)
 block|{
-comment|/* case */
 name|super
 argument_list|(
 name|Localization
