@@ -592,6 +592,12 @@ argument_list|,
 literal|255
 argument_list|)
 decl_stmt|;
+DECL|field|sidePaneManager
+specifier|public
+specifier|static
+name|SidePaneManager
+name|sidePaneManager
+decl_stmt|;
 DECL|field|iconMap
 specifier|private
 specifier|static

@@ -633,12 +633,6 @@ specifier|static
 name|HelpDialog
 name|helpDiag
 decl_stmt|;
-DECL|field|sidePaneManager
-specifier|public
-specifier|static
-name|SidePaneManager
-name|sidePaneManager
-decl_stmt|;
 DECL|field|SPECIAL_COMMAND_CHARS
 specifier|public
 specifier|static

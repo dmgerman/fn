@@ -4873,7 +4873,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|Globals
+name|GUIGlobals
 operator|.
 name|sidePaneManager
 operator|=

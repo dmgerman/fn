@@ -2101,7 +2101,7 @@ name|this
 operator|.
 name|sidePaneManager
 operator|=
-name|Globals
+name|GUIGlobals
 operator|.
 name|sidePaneManager
 expr_stmt|;
