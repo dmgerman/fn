@@ -152,7 +152,6 @@ name|MnemonicAwareAction
 block|{
 DECL|field|LOGGER
 specifier|private
-specifier|static
 specifier|final
 name|Log
 name|LOGGER
