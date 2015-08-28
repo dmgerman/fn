@@ -1502,7 +1502,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|// ---------------------------------------------------------------------------
 comment|// Panel with text import functionality
 DECL|method|initRawPanel ()
 specifier|private
@@ -1754,7 +1753,6 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-comment|// ----------------------------------------------------------------
 name|JPanel
 name|inputPanel
 init|=
@@ -2263,7 +2261,6 @@ argument_list|(
 name|insertButton
 argument_list|)
 expr_stmt|;
-comment|// ----------------------------------------------------------------------
 name|rawPanel
 operator|.
 name|add
@@ -2346,8 +2343,6 @@ name|SOUTH
 argument_list|)
 expr_stmt|;
 block|}
-comment|// ---------------------------------------------------------------------------
-comment|// ---------------------------------------------------------------------------
 DECL|method|initButtonPanel ()
 specifier|private
 name|void
@@ -2451,7 +2446,6 @@ name|addGlue
 argument_list|()
 expr_stmt|;
 block|}
-comment|// ---------------------------------------------------------------------------
 comment|// Panel with bibtex source code
 DECL|method|initSourcePanel ()
 specifier|private
@@ -2538,8 +2532,6 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
-comment|// ---------------------------------------------------------------------------
-comment|// ---------------------------------------------------------------------------
 DECL|method|addStylesToDocument (StyledDocument doc)
 specifier|private
 name|void
@@ -2730,7 +2722,6 @@ literal|16
 argument_list|)
 expr_stmt|;
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|method|insertTextForTag ()
 specifier|private
 name|void
@@ -2860,7 +2851,6 @@ expr_stmt|;
 comment|// insert new selection style
 block|}
 else|else
-comment|// append text
 block|{
 comment|// memorize the selection for text highlighting
 name|marked
@@ -2936,8 +2926,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-else|else
 comment|// "null"+"txt" Strings forbidden
+else|else
 block|{
 name|entry
 operator|.
@@ -2957,8 +2947,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
-comment|// ---------------------------------------------------------------------------
 DECL|method|okPressed ()
 specifier|public
 name|boolean
@@ -2969,7 +2957,6 @@ return|return
 name|okPressed
 return|;
 block|}
-comment|// ---------------------------------------------------------------------------
 comment|//  ActionListener
 comment|//  handling of buttons-click actions
 annotation|@
@@ -3221,7 +3208,6 @@ literal|false
 return|;
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
 comment|// update the bibtex source view and available List
 DECL|method|updateSourceView ()
 specifier|private
@@ -3288,7 +3274,6 @@ name|clearSelection
 argument_list|()
 expr_stmt|;
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|method|getAllFields ()
 specifier|private
 name|String
@@ -3398,7 +3383,6 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|class|PasteAction
 class|class
 name|PasteAction
@@ -3518,11 +3502,10 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{                 }
+block|{}
 block|}
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|class|LoadAction
 class|class
 name|LoadAction
@@ -3664,10 +3647,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{             }
+block|{}
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|class|ClearAction
 class|class
 name|ClearAction
@@ -3714,7 +3696,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|class|MenuHeaderAction
 class|class
 name|MenuHeaderAction
@@ -3749,9 +3730,8 @@ parameter_list|(
 name|ActionEvent
 name|e
 parameter_list|)
-block|{         }
+block|{}
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|class|FieldListSelectionHandler
 class|class
 name|FieldListSelectionHandler
@@ -3816,9 +3796,7 @@ condition|(
 operator|!
 name|isAdjusting
 condition|)
-comment|// if selection is finished
 block|{
-comment|//            System.out.println( "Event for index" + index ) ;
 if|if
 condition|(
 name|lastIndex
@@ -3890,7 +3868,6 @@ block|}
 block|}
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
 comment|// simple JList Renderer
 comment|// based on : Advanced JList Programming at developers.sun.com
 DECL|class|SimpleCellRenderer
@@ -4080,7 +4057,6 @@ name|this
 return|;
 block|}
 block|}
-comment|//---------------------------------------------------------------
 DECL|class|FieldListMouseListener
 specifier|private
 class|class
@@ -4117,10 +4093,6 @@ block|}
 block|}
 block|}
 end_class
-
-begin_comment
-comment|//---------------------------------------------------------------
-end_comment
 
 begin_class
 DECL|class|PopupListener
@@ -4199,9 +4171,6 @@ name|isPopupTrigger
 argument_list|()
 condition|)
 block|{
-comment|//      System.out.println("show "
-comment|//                         + e.getComponent() +"  x =" + e.getX() +"y =" + e.getY() ) ;
-comment|//      popMenu.setVisible(true);
 name|popMenu
 operator|.
 name|show
@@ -4226,10 +4195,6 @@ block|}
 block|}
 block|}
 end_class
-
-begin_comment
-comment|//---------------------------------------------------------------
-end_comment
 
 begin_class
 DECL|class|BasicAction
@@ -4405,14 +4370,6 @@ parameter_list|)
 function_decl|;
 block|}
 end_class
-
-begin_comment
-comment|//---------------------------------------------------------------
-end_comment
-
-begin_comment
-comment|//---------------------------------------------------------------
-end_comment
 
 end_unit
 

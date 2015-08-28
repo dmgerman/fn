@@ -7646,7 +7646,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/*          *  It looks like this action was not being supported for SPIRES anyway          *  so we don't bother to implement it.         actions.put("openInspire", new BaseAction() {         	public void action() {         		BibtexEntry[] bes = mainTable.getSelectedEntries();                 if ((bes != null)&& (bes.length == 1)) {                 	Object link = null;                     if (bes[0].getField("eprint") != null)                       link = INSPIREFetcher.constructUrlFromEprint(bes[0].getField("eprint").toString());                     else if (bes[0].getField("slaccitation") != null)                         link = INSPIREFetcher.constructUrlFromSlaccitation(bes[0].getField("slaccitation").toString());                     if (link != null) {                       //output(Globals.lang("Calling external viewer..."));                       try {                         Util.openExternalViewer(metaData(), link.toString(), "url");                         output(Globals.lang("External viewer called")+".");                       } catch (IOException ex) {                           output(Globals.lang("Error") + ": " + ex.getMessage());                       }                     }                     else                         output(Globals.lang("No url defined")+".");                 } else                   output(Globals.lang("No entries or multiple entries selected."));             }         	});         	*/
 name|actions
 operator|.
 name|put
@@ -8023,8 +8022,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// The action starts the "import from plain text" dialog
-comment|/*actions.put("importPlainText", new BaseAction() {                 public void action()                 {                   BibtexEntry bibEntry = null ;                   // try to get the first marked entry                   BibtexEntry[] bes = entryTable.getSelectedEntries();                   if ((bes != null)&& (bes.length> 0))                     bibEntry = bes[0] ;                    if (bibEntry != null)                   {                     // Create an UndoableInsertEntry object.                     undoManager.addEdit(new UndoableInsertEntry(database, bibEntry, BasePanel.this));                      TextInputDialog tidialog = new TextInputDialog(frame, BasePanel.this,                                                                    "import", true,                                                                    bibEntry) ;                     Util.placeDialog(tidialog, BasePanel.this);                     tidialog.setVisible(true);                      if (tidialog.okPressed())                     {                       output(Globals.lang("changed ")+" '"                              +bibEntry.getType().getName().toLowerCase()+"' "                              +Globals.lang("entry")+".");                       refreshTable();                       int row = tableModel.getNumberFromName(bibEntry.getId());                        entryTable.clearSelection();                       entryTable.scrollTo(row);                       markBaseChanged(); // The database just changed.                       if (Globals.prefs.getBoolean("autoOpenForm"))                       {                             showEntry(bibEntry);                       }                     }                   }                 }             });           */
 name|actions
 operator|.
 name|put
@@ -9166,7 +9163,6 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//actions.put("downloadFullText", new FindFullTextAction(this));
 block|}
 comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.      */
 DECL|method|runCommand (String _command)
@@ -9178,8 +9174,6 @@ name|String
 name|_command
 parameter_list|)
 block|{
-comment|//(new Thread() {
-comment|//  public void run() {
 if|if
 condition|(
 name|actions
@@ -9320,8 +9314,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|//  }
-comment|//}).start();
 block|}
 DECL|method|saveDatabase (File file, boolean selectedOnly, String encoding, FileActions.DatabaseSaveType saveType)
 specifier|private

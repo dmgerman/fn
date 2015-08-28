@@ -67,7 +67,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The side pane is displayed at the right side of JabRef and shows instances of  * SidePaneComponents, for instance the GroupSelector, or the SearchManager2.  */
+comment|/**  * The side pane is displayed at the right side of JabRef and shows instances of  * SidePaneComponents, for instance the GroupSelector, or the SearchManager.  */
 end_comment
 
 begin_class

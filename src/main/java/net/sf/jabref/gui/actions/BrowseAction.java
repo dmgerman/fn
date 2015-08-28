@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui.action
+DECL|package|net.sf.jabref.gui.actions
 package|package
 name|net
 operator|.
@@ -14,7 +14,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|action
+name|actions
 package|;
 end_package
 

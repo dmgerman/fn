@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui.action
+DECL|package|net.sf.jabref.gui.actions
 package|package
 name|net
 operator|.
@@ -10,7 +10,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|action
+name|actions
 package|;
 end_package
 
@@ -60,24 +60,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|io
-operator|.
-name|URLUtil
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -104,16 +86,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|event
 operator|.
 name|ActionEvent
@@ -121,32 +93,31 @@ import|;
 end_import
 
 begin_class
-DECL|class|PasteAction
+DECL|class|CopyAction
 specifier|public
 class|class
-name|PasteAction
+name|CopyAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|target
+DECL|field|field
 specifier|private
-specifier|final
-name|Component
-name|target
+name|JTextComponent
+name|field
 decl_stmt|;
-DECL|method|PasteAction (Component target)
+DECL|method|CopyAction (JTextComponent field)
 specifier|public
-name|PasteAction
+name|CopyAction
 parameter_list|(
-name|Component
-name|target
+name|JTextComponent
+name|field
 parameter_list|)
 block|{
 name|this
 operator|.
-name|target
+name|field
 operator|=
-name|target
+name|field
 expr_stmt|;
 name|putValue
 argument_list|(
@@ -158,7 +129,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Paste from clipboard"
+literal|"Copy to clipboard"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -172,7 +143,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Paste from clipboard"
+literal|"Copy to clipboard"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -186,77 +157,64 @@ name|GUIGlobals
 operator|.
 name|getImage
 argument_list|(
-literal|"paste"
+literal|"copy"
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|actionPerformed (ActionEvent evt)
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
 parameter_list|(
 name|ActionEvent
-name|evt
+name|e
 parameter_list|)
+block|{
+if|if
+condition|(
+name|field
+operator|!=
+literal|null
+condition|)
 block|{
 name|String
 name|data
 init|=
-name|ClipBoardManager
+name|field
 operator|.
-name|clipBoard
-operator|.
-name|getClipboardContents
+name|getSelectedText
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|data
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+operator|!
 name|data
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
-return|return;
+name|ClipBoardManager
+operator|.
+name|clipBoard
+operator|.
+name|setClipboardContents
+argument_list|(
+name|data
+argument_list|)
+expr_stmt|;
 block|}
-comment|// auto corrections
-comment|// clean Google search URLs
-name|data
-operator|=
-name|URLUtil
-operator|.
-name|cleanGoogleSearchURL
-argument_list|(
-name|data
-argument_list|)
-expr_stmt|;
-comment|// caller
-if|if
-condition|(
-name|target
-operator|instanceof
-name|JTextComponent
-condition|)
-block|{
-name|JTextComponent
-name|textField
-init|=
-operator|(
-name|JTextComponent
-operator|)
-name|target
-decl_stmt|;
-comment|// replace text selection
-name|textField
-operator|.
-name|replaceSelection
-argument_list|(
-name|data
-argument_list|)
-expr_stmt|;
+block|}
 block|}
 block|}
 block|}

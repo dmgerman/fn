@@ -94,7 +94,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|action
+name|actions
 operator|.
 name|BrowseAction
 import|;
