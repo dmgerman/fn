@@ -676,16 +676,18 @@ block|}
 block|}
 block|}
 comment|// Then optional fields.
-name|requiredFields
-operator|=
+name|String
+index|[]
+name|optionalFields
+init|=
 name|entry
 operator|.
 name|getOptionalFields
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-name|requiredFields
+name|optionalFields
 operator|!=
 literal|null
 condition|)
@@ -694,7 +696,7 @@ name|Arrays
 operator|.
 name|sort
 argument_list|(
-name|requiredFields
+name|optionalFields
 argument_list|)
 expr_stmt|;
 comment|// Sorting in alphabetic order.
@@ -703,7 +705,7 @@ control|(
 name|String
 name|value
 range|:
-name|requiredFields
+name|optionalFields
 control|)
 block|{
 if|if
