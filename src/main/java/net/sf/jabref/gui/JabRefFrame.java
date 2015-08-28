@@ -2295,7 +2295,7 @@ init|=
 operator|new
 name|EditAction
 argument_list|(
-literal|"paste"
+literal|"Paste"
 argument_list|,
 name|GUIGlobals
 operator|.
