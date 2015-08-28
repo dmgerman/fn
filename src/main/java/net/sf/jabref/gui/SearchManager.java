@@ -283,10 +283,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|SearchManager2
+DECL|class|SearchManager
 specifier|public
 class|class
-name|SearchManager2
+name|SearchManager
 extends|extends
 name|SidePaneComponent
 implements|implements
@@ -517,9 +517,9 @@ decl_stmt|;
 comment|// To keep track of where we are in
 comment|// an incremental search. -1 means
 comment|// that the search is inactive.
-DECL|method|SearchManager2 (JabRefFrame frame, SidePaneManager manager)
+DECL|method|SearchManager (JabRefFrame frame, SidePaneManager manager)
 specifier|public
-name|SearchManager2
+name|SearchManager
 parameter_list|(
 name|JabRefFrame
 name|frame
@@ -1334,7 +1334,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|SearchManager2
+name|SearchManager
 operator|.
 name|this
 operator|.
@@ -1346,7 +1346,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|SearchManager2
+name|SearchManager
 operator|.
 name|this
 operator|.
@@ -2005,7 +2005,7 @@ block|{
 name|hideAway
 argument_list|()
 expr_stmt|;
-comment|//SearchManager2.this.actionPerformed(new ActionEvent(escape, 0, ""));
+comment|//SearchManager.this.actionPerformed(new ActionEvent(escape, 0, ""));
 block|}
 block|}
 argument_list|)
