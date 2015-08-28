@@ -2233,13 +2233,10 @@ literal|"Back"
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|delete
 specifier|private
 specifier|final
 name|AbstractAction
-comment|//cut = new GeneralAction("cut", "Cut", Globals.lang("Cut"),
-comment|//   GUIGlobals.cutIconFile,
-comment|//   prefs.getKey("Cut")),
-DECL|field|delete
 name|delete
 init|=
 operator|new
@@ -2264,13 +2261,10 @@ literal|"Delete"
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|copy
 specifier|private
 specifier|final
 name|AbstractAction
-comment|//copy = new GeneralAction("copy", "Copy", Globals.lang("Copy"),
-comment|//                         GUIGlobals.copyIconFile,
-comment|//                         prefs.getKey("Copy")),
-DECL|field|copy
 name|copy
 init|=
 operator|new
@@ -6988,6 +6982,21 @@ name|GeneralAction
 extends|extends
 name|MnemonicAwareAction
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|JabRefFrame
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|command
 specifier|private
 specifier|final
@@ -10776,8 +10785,6 @@ literal|"Quit JabRef"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Q,
-comment|//    Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 block|}
 annotation|@
 name|Override
@@ -11081,7 +11088,7 @@ expr_stmt|;
 name|updateEnabledState
 argument_list|()
 expr_stmt|;
-comment|// Man, this is what I call a bug that this is not called.
+comment|// FIXME: Man, this is what I call a bug that this is not called.
 name|output
 argument_list|(
 name|Localization
@@ -11094,6 +11101,7 @@ operator|+
 literal|'.'
 argument_list|)
 expr_stmt|;
+comment|// FIXME: why?
 name|System
 operator|.
 name|gc
