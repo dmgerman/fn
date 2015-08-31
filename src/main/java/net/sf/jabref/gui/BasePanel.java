@@ -11692,18 +11692,6 @@ block|}
 end_function
 
 begin_function
-DECL|method|updateEntryPreviewToRow (BibtexEntry e)
-specifier|public
-name|void
-name|updateEntryPreviewToRow
-parameter_list|(
-name|BibtexEntry
-name|e
-parameter_list|)
-block|{      }
-end_function
-
-begin_function
 DECL|method|adjustSplitter ()
 specifier|public
 name|void
