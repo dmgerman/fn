@@ -242,6 +242,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|Key
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -637,6 +647,22 @@ operator|.
 name|actions
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
 import|;
 end_import
 
@@ -1850,7 +1876,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"edit"
+name|Actions
+operator|.
+name|EDIT
 argument_list|,
 literal|"Edit entry"
 argument_list|,
@@ -1865,7 +1893,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Edit entry"
+name|KeyBinds
+operator|.
+name|EDIT_ENTRY
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1878,7 +1908,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"focusTable"
+name|Actions
+operator|.
+name|FOCUS_TABLE
 argument_list|,
 literal|"Focus entry table"
 argument_list|,
@@ -1893,7 +1925,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Focus entry table"
+name|KeyBinds
+operator|.
+name|FOCUS_ENTRY_TABLE
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1906,7 +1940,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"save"
+name|Actions
+operator|.
+name|SAVE
 argument_list|,
 literal|"Save database"
 argument_list|,
@@ -1921,7 +1957,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Save database"
+name|KeyBinds
+operator|.
+name|SAVE_DATABASE
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1934,7 +1972,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"saveAs"
+name|Actions
+operator|.
+name|SAVE_AS
 argument_list|,
 literal|"Save database as ..."
 argument_list|,
@@ -1949,7 +1989,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Save database as ..."
+name|KeyBinds
+operator|.
+name|SAVE_DATABASE_AS
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1976,7 +2018,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"saveSelectedAs"
+name|Actions
+operator|.
+name|SAVE_SELECTED_AS
 argument_list|,
 literal|"Save selected as ..."
 argument_list|,
@@ -2004,7 +2048,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"saveSelectedAsPlain"
+name|Actions
+operator|.
+name|SAVE_SELECTED_AS_PLAIN
 argument_list|,
 literal|"Save selected as plain BibTeX ..."
 argument_list|,
@@ -2128,7 +2174,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"undo"
+name|Actions
+operator|.
+name|UNDO
 argument_list|,
 literal|"Undo"
 argument_list|,
@@ -2143,7 +2191,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Undo"
+name|KeyBinds
+operator|.
+name|UNDO
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2156,7 +2206,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"redo"
+name|Actions
+operator|.
+name|REDO
 argument_list|,
 literal|"Redo"
 argument_list|,
@@ -2171,7 +2223,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Redo"
+name|KeyBinds
+operator|.
+name|REDO
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2183,7 +2237,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"forward"
+name|Actions
+operator|.
+name|FORWARD
 argument_list|,
 literal|"Forward"
 argument_list|,
@@ -2200,7 +2256,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Forward"
+name|KeyBinds
+operator|.
+name|FORWARD
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2212,7 +2270,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"back"
+name|Actions
+operator|.
+name|BACK
 argument_list|,
 literal|"Back"
 argument_list|,
@@ -2229,7 +2289,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Back"
+name|KeyBinds
+operator|.
+name|BACK
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2242,7 +2304,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"delete"
+name|Actions
+operator|.
+name|DELETE
 argument_list|,
 literal|"Delete"
 argument_list|,
@@ -2257,7 +2321,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Delete"
+name|KeyBinds
+operator|.
+name|DELETE
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2270,7 +2336,9 @@ init|=
 operator|new
 name|EditAction
 argument_list|(
-literal|"copy"
+name|Actions
+operator|.
+name|COPY
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -2310,7 +2378,9 @@ init|=
 operator|new
 name|EditAction
 argument_list|(
-literal|"cut"
+name|Actions
+operator|.
+name|CUT
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -2329,7 +2399,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"markEntries"
+name|Actions
+operator|.
+name|MARK_ENTRIES
 argument_list|,
 literal|"Mark entries"
 argument_list|,
@@ -2344,7 +2416,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Mark entries"
+name|Actions
+operator|.
+name|MARK_ENTRIES
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2357,7 +2431,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"unmarkEntries"
+name|Actions
+operator|.
+name|UNMARK_ENTRIES
 argument_list|,
 literal|"Unmark entries"
 argument_list|,
@@ -2372,7 +2448,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Unmark entries"
+name|KeyBinds
+operator|.
+name|UNMARK_ENTRIES
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2385,7 +2463,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"unmarkAll"
+name|Actions
+operator|.
+name|UNMARK_ALL
 argument_list|,
 literal|"Unmark all"
 argument_list|)
@@ -2564,18 +2644,18 @@ name|getToolTipText
 argument_list|()
 argument_list|)
 decl_stmt|;
+DECL|field|manageSelectors
 specifier|private
 specifier|final
 name|AbstractAction
-comment|//    	priority = new GeneralAction("setPriority", "Set priority",
-comment|//    			                                            Globals.lang("Set priority")),
-DECL|field|manageSelectors
 name|manageSelectors
 init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"manageSelectors"
+name|Actions
+operator|.
+name|MANAGE_SELECTORS
 argument_list|,
 literal|"Manage content selectors"
 argument_list|)
@@ -2609,7 +2689,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"incSearch"
+name|Actions
+operator|.
+name|INC_SEARCH
 argument_list|,
 literal|"Incremental search"
 argument_list|,
@@ -2624,7 +2706,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Incremental search"
+name|KeyBinds
+operator|.
+name|INCREMENTAL_SEARCH
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2637,7 +2721,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"search"
+name|Actions
+operator|.
+name|SEARCH
 argument_list|,
 literal|"Search"
 argument_list|,
@@ -2652,7 +2738,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Search"
+name|KeyBinds
+operator|.
+name|SEARCH
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2665,7 +2753,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"toggleSearch"
+name|Actions
+operator|.
+name|TOGGLE_SEARCH
 argument_list|,
 literal|"Search"
 argument_list|,
@@ -2686,7 +2776,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"copyKey"
+name|Actions
+operator|.
+name|COPY_KEY
 argument_list|,
 literal|"Copy BibTeX key"
 argument_list|,
@@ -2694,7 +2786,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Copy BibTeX key"
+name|KeyBinds
+operator|.
+name|COPY_BIB_TE_X_KEY
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2708,7 +2802,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"copyCiteKey"
+name|Actions
+operator|.
+name|COPY_CITE_KEY
 argument_list|,
 literal|"Copy \\cite{BibTeX key}"
 argument_list|,
@@ -2717,7 +2813,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Copy \\cite{BibTeX key}"
+name|KeyBinds
+operator|.
+name|COPY_CITE_BIB_TE_X_KEY
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2730,7 +2828,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"copyKeyAndTitle"
+name|Actions
+operator|.
+name|COPY_KEY_AND_TITLE
 argument_list|,
 literal|"Copy BibTeX key and title"
 argument_list|,
@@ -2738,7 +2838,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Copy BibTeX key and title"
+name|KeyBinds
+operator|.
+name|COPY_BIB_TE_X_KEY_AND_TITLE
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2751,7 +2853,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"mergeDatabase"
+name|Actions
+operator|.
+name|MERGE_DATABASE
 argument_list|,
 literal|"Append database"
 argument_list|,
@@ -2770,18 +2874,18 @@ literal|"open"
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|selectAll
 specifier|private
 specifier|final
 name|AbstractAction
-comment|//prefs.getKey("Open")),
-comment|/*remove = new GeneralAction("remove", "Remove", "Remove selected entries",               GUIGlobals.removeIconFile),*/
-DECL|field|selectAll
 name|selectAll
 init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"selectAll"
+name|Actions
+operator|.
+name|SELECT_ALL
 argument_list|,
 literal|"Select all"
 argument_list|,
@@ -2789,7 +2893,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Select all"
+name|KeyBinds
+operator|.
+name|SELECT_ALL
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2802,7 +2908,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"replaceAll"
+name|Actions
+operator|.
+name|REPLACE_ALL
 argument_list|,
 literal|"Replace string"
 argument_list|,
@@ -2810,7 +2918,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Replace string"
+name|KeyBinds
+operator|.
+name|REPLACE_STRING
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2823,7 +2933,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"editPreamble"
+name|Actions
+operator|.
+name|EDIT_PREAMBLE
 argument_list|,
 literal|"Edit preamble"
 argument_list|,
@@ -2838,7 +2950,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Edit preamble"
+name|KeyBinds
+operator|.
+name|EDIT_PREAMBLE
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2851,7 +2965,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"editStrings"
+name|Actions
+operator|.
+name|EDIT_STRINGS
 argument_list|,
 literal|"Edit strings"
 argument_list|,
@@ -2866,7 +2982,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Edit strings"
+name|KeyBinds
+operator|.
+name|EDIT_STRINGS
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2879,7 +2997,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"toggleToolbar"
+name|Actions
+operator|.
+name|TOGGLE_TOOLBAR
 argument_list|,
 literal|"Hide/show toolbar"
 argument_list|,
@@ -2894,7 +3014,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Hide/show toolbar"
+name|KeyBinds
+operator|.
+name|HIDE_SHOW_TOOLBAR
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2907,7 +3029,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"toggleGroups"
+name|Actions
+operator|.
+name|TOGGLE_GROUPS
 argument_list|,
 literal|"Toggle groups interface"
 argument_list|,
@@ -2922,7 +3046,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Toggle groups interface"
+name|KeyBinds
+operator|.
+name|TOGGLE_GROUPS_INTERFACE
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2935,7 +3061,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"togglePreview"
+name|Actions
+operator|.
+name|TOGGLE_PREVIEW
 argument_list|,
 literal|"Toggle entry preview"
 argument_list|,
@@ -2950,7 +3078,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Toggle entry preview"
+name|KeyBinds
+operator|.
+name|TOGGLE_ENTRY_PREVIEW
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2963,7 +3093,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"toggleHighlightGroupsMatchingAny"
+name|Actions
+operator|.
+name|TOGGLE_HIGHLIGHTS_GROUPS_MATCHING_ANY
 argument_list|,
 literal|"Highlight groups matching any selected entry"
 argument_list|,
@@ -2991,7 +3123,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"toggleHighlightGroupsMatchingAll"
+name|Actions
+operator|.
+name|TOGGLE_HIGHLIGHTS_GROUPS_MATCHING_ALL
 argument_list|,
 literal|"Highlight groups matching all selected entries"
 argument_list|,
@@ -3018,7 +3152,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"switchPreview"
+name|Actions
+operator|.
+name|SWITCH_PREVIEW
 argument_list|,
 literal|"Switch preview layout"
 argument_list|,
@@ -3026,7 +3162,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Switch preview layout"
+name|KeyBinds
+operator|.
+name|SWITCH_PREVIEW_LAYOUT
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3039,7 +3177,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"makeKey"
+name|Actions
+operator|.
+name|MAKE_KEY
 argument_list|,
 literal|"Autogenerate BibTeX keys"
 argument_list|,
@@ -3054,7 +3194,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Autogenerate BibTeX keys"
+name|KeyBinds
+operator|.
+name|AUTOGENERATE_BIB_TE_X_KEYS
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3067,7 +3209,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"writeXMP"
+name|Actions
+operator|.
+name|WRITE_XMP
 argument_list|,
 literal|"Write XMP-metadata to PDFs"
 argument_list|,
@@ -3082,7 +3226,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Write XMP"
+name|KeyBinds
+operator|.
+name|WRITE_XMP
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3095,7 +3241,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"openFolder"
+name|Actions
+operator|.
+name|OPEN_FOLDER
 argument_list|,
 literal|"Open folder"
 argument_list|,
@@ -3110,7 +3258,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Open folder"
+name|KeyBinds
+operator|.
+name|OPEN_FOLDER
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3123,7 +3273,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"openExternalFile"
+name|Actions
+operator|.
+name|OPEN_EXTERNAL_FILE
 argument_list|,
 literal|"Open file"
 argument_list|,
@@ -3138,7 +3290,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Open file"
+name|KeyBinds
+operator|.
+name|OPEN_FILE
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3151,7 +3305,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"openFile"
+name|Actions
+operator|.
+name|OPEN_FILE
 argument_list|,
 literal|"Open PDF or PS"
 argument_list|,
@@ -3166,7 +3322,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Open PDF or PS"
+name|KeyBinds
+operator|.
+name|OPEN_PDF_OR_PS
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3179,7 +3337,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"openUrl"
+name|Actions
+operator|.
+name|OPEN_URL
 argument_list|,
 literal|"Open URL or DOI"
 argument_list|,
@@ -3194,7 +3354,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Open URL or DOI"
+name|KeyBinds
+operator|.
+name|OPEN_URL_OR_DOI
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3207,7 +3369,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"openSpires"
+name|Actions
+operator|.
+name|OPEN_SPIRES
 argument_list|,
 literal|"Open SPIRES entry"
 argument_list|,
@@ -3222,36 +3386,40 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Open SPIRES entry"
+name|KeyBinds
+operator|.
+name|OPEN_SPIRES_ENTRY
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|dupliCheck
 specifier|private
 specifier|final
 name|AbstractAction
-comment|/*              * It looks like this wasn't being implemented for spires anyway so we              * comment it out for now.              *             openInspire = new GeneralAction("openInspire", "Open INSPIRE entry",                                                 Globals.lang("Open INSPIRE entry"),                                                 prefs.getKey("Open INSPIRE entry")),             */
-DECL|field|dupliCheck
 name|dupliCheck
 init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"dupliCheck"
+name|Actions
+operator|.
+name|DUPLI_CHECK
 argument_list|,
 literal|"Find duplicates"
 argument_list|)
 decl_stmt|;
+DECL|field|plainTextImport
 specifier|private
 specifier|final
 name|AbstractAction
-comment|//strictDupliCheck = new GeneralAction("strictDupliCheck", "Find and remove exact duplicates"),
-DECL|field|plainTextImport
 name|plainTextImport
 init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"plainTextImport"
+name|Actions
+operator|.
+name|PLAIN_TEXT_IMPORT
 argument_list|,
 literal|"New entry from plain text"
 argument_list|,
@@ -3259,7 +3427,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"New from plain text"
+name|KeyBinds
+operator|.
+name|NEW_FROM_PLAIN_TEXT
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3308,17 +3478,18 @@ argument_list|,
 literal|"Export selected entries to clipboard"
 argument_list|)
 decl_stmt|;
+DECL|field|autoSetPdf
 specifier|private
 specifier|final
 name|AbstractAction
-comment|//expandEndnoteZip = new ExpandEndnoteFilters(this),
-DECL|field|autoSetPdf
 name|autoSetPdf
 init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"autoSetPdf"
+name|Actions
+operator|.
+name|AUTO_SET_PDF
 argument_list|,
 name|Localization
 operator|.
@@ -3329,13 +3500,13 @@ argument_list|,
 literal|"PDF"
 argument_list|)
 argument_list|,
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Synchronize PDF"
+name|KeyBinds
+operator|.
+name|SYNCHRONIZE_PDF
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3348,7 +3519,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"autoSetPs"
+name|Actions
+operator|.
+name|AUTO_SET_PS
 argument_list|,
 name|Localization
 operator|.
@@ -3359,13 +3532,13 @@ argument_list|,
 literal|"PS"
 argument_list|)
 argument_list|,
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Synchronize PS"
+name|KeyBinds
+operator|.
+name|SYNCHRONIZE_PS
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3378,7 +3551,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"autoSetFile"
+name|Actions
+operator|.
+name|AUTO_SET_FILE
 argument_list|,
 name|Localization
 operator|.
@@ -3393,7 +3568,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Synchronize files"
+name|KeyBinds
+operator|.
+name|SYNCHRONIZE_FILES
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3406,7 +3583,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"abbreviateMedline"
+name|Actions
+operator|.
+name|ABBREVIATE_MEDLINE
 argument_list|,
 literal|"Abbreviate journal names (MEDLINE)"
 argument_list|,
@@ -3427,7 +3606,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"abbreviateIso"
+name|Actions
+operator|.
+name|ABBREVIATE_ISO
 argument_list|,
 literal|"Abbreviate journal names (ISO)"
 argument_list|,
@@ -3444,7 +3625,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Abbreviate"
+name|KeyBinds
+operator|.
+name|ABBREVIATE
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3457,7 +3640,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"unabbreviate"
+name|Actions
+operator|.
+name|UNABBREVIATE
 argument_list|,
 literal|"Unabbreviate journal names"
 argument_list|,
@@ -3474,7 +3659,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Unabbreviate"
+name|KeyBinds
+operator|.
+name|UNABBREVIATE
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3530,18 +3717,6 @@ operator|.
 name|handler
 argument_list|)
 decl_stmt|;
-DECL|field|test
-name|AbstractAction
-name|test
-init|=
-operator|new
-name|GeneralAction
-argument_list|(
-literal|"test"
-argument_list|,
-literal|"Test"
-argument_list|)
-decl_stmt|;
 DECL|field|dbConnect
 specifier|private
 specifier|final
@@ -3551,7 +3726,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"dbConnect"
+name|Actions
+operator|.
+name|DB_CONNECT
 argument_list|,
 literal|"Connect to external SQL database"
 argument_list|,
@@ -3579,7 +3756,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"dbExport"
+name|Actions
+operator|.
+name|DB_EXPORT
 argument_list|,
 literal|"Export to external SQL database"
 argument_list|,
@@ -3607,7 +3786,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"Cleanup"
+name|Actions
+operator|.
+name|CLEANUP
 argument_list|,
 literal|"Cleanup entries"
 argument_list|,
@@ -3622,7 +3803,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Cleanup"
+name|KeyBinds
+operator|.
+name|CLEANUP
 argument_list|)
 argument_list|,
 literal|"cleanupentries"
@@ -3637,7 +3820,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"mergeEntries"
+name|Actions
+operator|.
+name|MERGE_ENTRIES
 argument_list|,
 literal|"Merge entries"
 argument_list|,
@@ -3671,12 +3856,10 @@ operator|.
 name|getAction
 argument_list|()
 decl_stmt|;
+DECL|field|increaseFontSize
 specifier|private
 specifier|final
 name|AbstractAction
-comment|//downloadFullText = new GeneralAction("downloadFullText", "Look up full text document",
-comment|//        Globals.lang("Follow DOI or URL link and try to locate PDF full text document")),
-DECL|field|increaseFontSize
 name|increaseFontSize
 init|=
 operator|new
@@ -3702,7 +3885,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"resolveDuplicateKeys"
+name|Actions
+operator|.
+name|RESOLVE_DUPLICATE_KEYS
 argument_list|,
 literal|"Resolve duplicate BibTeX keys"
 argument_list|,
@@ -3717,7 +3902,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Resolve duplicate BibTeX keys"
+name|KeyBinds
+operator|.
+name|RESOLVE_DUPLICATE_BIB_TE_X_KEYS
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3804,9 +3991,7 @@ name|fetcherActions
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|Action
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|searchManager
