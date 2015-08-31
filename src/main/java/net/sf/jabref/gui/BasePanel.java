@@ -2306,17 +2306,6 @@ name|String
 name|s
 parameter_list|)
 block|{
-name|boolean
-name|suppressOutput
-init|=
-literal|false
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|suppressOutput
-condition|)
-block|{
 name|frame
 operator|.
 name|output
@@ -2324,7 +2313,6 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|setupActions ()
 specifier|private
