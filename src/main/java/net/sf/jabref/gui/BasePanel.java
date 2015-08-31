@@ -6649,7 +6649,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//output(Globals.lang("Calling external viewer..."));
 try|try
 block|{
 name|JabRefDesktop
@@ -7173,7 +7172,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//output(Globals.lang("Calling external viewer..."));
 try|try
 block|{
 name|JabRefDesktop
@@ -7547,7 +7545,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//output(Globals.lang("Calling external viewer..."));
 try|try
 block|{
 name|JabRefDesktop
@@ -10681,7 +10678,6 @@ operator|.
 name|INSTANCE
 argument_list|)
 expr_stmt|;
-comment|//final SortedList sortedList = new SortedList(searchFilterList, null);
 name|tableFormat
 operator|=
 operator|new
@@ -10695,7 +10691,6 @@ operator|.
 name|updateTableFormat
 argument_list|()
 expr_stmt|;
-comment|//EventTableModel tableModel = new EventTableModel(sortedList, tableFormat);
 name|mainTable
 operator|=
 operator|new
@@ -15122,7 +15117,6 @@ operator|=
 literal|true
 expr_stmt|;
 comment|// to avoid the history getting updated erroneously
-comment|//showEntry(toShow);
 name|highlightEntry
 argument_list|(
 name|toShow
@@ -15196,7 +15190,6 @@ operator|=
 literal|true
 expr_stmt|;
 comment|// to avoid the history getting updated erroneously
-comment|//showEntry(toShow);
 name|highlightEntry
 argument_list|(
 name|toShow
@@ -15397,7 +15390,6 @@ argument_list|,
 name|saveType
 argument_list|)
 expr_stmt|;
-comment|//runCommand("save");
 name|frame
 operator|.
 name|getFileHistory
