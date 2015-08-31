@@ -1834,9 +1834,7 @@ name|previousEntries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|nextEntries
@@ -1850,9 +1848,7 @@ name|nextEntries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|baseChanged
@@ -1923,11 +1919,7 @@ name|entryEditors
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|EntryEditor
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// To contain instantiated entry editors. This is to save time
@@ -2015,11 +2007,7 @@ name|actions
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|sidePaneManager
@@ -6284,9 +6272,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|entries
