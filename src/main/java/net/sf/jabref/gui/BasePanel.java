@@ -1725,14 +1725,6 @@ name|BibtexEntry
 argument_list|>
 name|groupsHighlightListener
 decl_stmt|;
-DECL|field|contentPane
-name|JSplitPane
-name|contentPane
-init|=
-operator|new
-name|JSplitPane
-argument_list|()
-decl_stmt|;
 DECL|field|splitPane
 specifier|private
 name|JSplitPane
