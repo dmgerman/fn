@@ -242,16 +242,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|security
-operator|.
-name|Key
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -6034,9 +6024,7 @@ name|filenames
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -9274,9 +9262,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|pr
 operator|.
@@ -10086,9 +10072,7 @@ name|openDatabaseOnlyActions
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|severalDatabasesOnlyActions
@@ -10101,9 +10085,7 @@ name|severalDatabasesOnlyActions
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|initActions ()
@@ -10116,9 +10098,7 @@ name|openDatabaseOnlyActions
 operator|=
 operator|new
 name|LinkedList
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|openDatabaseOnlyActions
@@ -10283,9 +10263,7 @@ name|severalDatabasesOnlyActions
 operator|=
 operator|new
 name|LinkedList
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|severalDatabasesOnlyActions
@@ -10813,11 +10791,7 @@ name|KeyBindingsDialog
 argument_list|(
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|prefs
 operator|.
@@ -12755,9 +12729,7 @@ name|filenames
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -13131,9 +13103,7 @@ name|currentFiles
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
