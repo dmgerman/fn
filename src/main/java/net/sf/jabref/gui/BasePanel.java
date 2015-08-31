@@ -15272,7 +15272,7 @@ name|void
 name|action
 parameter_list|()
 throws|throws
-name|Throwable
+name|SaveException
 block|{
 name|String
 name|chosenFile
