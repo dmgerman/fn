@@ -2095,8 +2095,6 @@ name|metaData
 operator|=
 name|metaData
 expr_stmt|;
-comment|// System.out.println(encoding);
-comment|//super(JSplitPane.HORIZONTAL_SPLIT, true);
 name|this
 operator|.
 name|sidePaneManager
@@ -2115,10 +2113,10 @@ name|database
 operator|=
 name|db
 expr_stmt|;
-name|setupActions
+name|setupMainPanel
 argument_list|()
 expr_stmt|;
-name|setupMainPanel
+name|setupActions
 argument_list|()
 expr_stmt|;
 name|metaData
@@ -2387,27 +2385,16 @@ name|put
 argument_list|(
 literal|"focusTable"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-throws|throws
-name|Throwable
-block|{
+operator|->
 operator|new
 name|FocusRequester
 argument_list|(
 name|mainTable
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 comment|// The action for opening an entry editor.
@@ -2417,26 +2404,12 @@ name|put
 argument_list|(
 literal|"edit"
 argument_list|,
-operator|new
+operator|(
 name|BaseAction
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-block|{
-comment|/*System.out.println(Globals.focusListener.getFocused().getClass().getName());                 if (Globals.focusListener.getFocused() instanceof FieldEditor)                     new FocusRequester(mainTable);                 else*/
+operator|)
 name|selectionListener
-operator|.
+operator|::
 name|editSignalled
-argument_list|()
-expr_stmt|;
-block|}
-comment|/*               if (isShowingEditor()) {                   new FocusRequester(splitPane.getBottomComponent());                   return;               }                frame.block();             //(new Thread() {             //public void run() {             int clickedOn = -1;             // We demand that one and only one row is selected.             if (entryTable.getSelectedRowCount() == 1) {               clickedOn = entryTable.getSelectedRow();             }             if (clickedOn>= 0) {               String id = tableModel.getIdForRow(clickedOn);               BibtexEntry be = database.getEntryById(id);               showEntry(be);                if (splitPane.getBottomComponent() != null) {                   new FocusRequester(splitPane.getBottomComponent());               }              }             frame.unblock();             }             */
-block|}
 argument_list|)
 expr_stmt|;
 name|actions
@@ -2445,7 +2418,6 @@ name|put
 argument_list|(
 literal|"test"
 argument_list|,
-comment|// new AccessLinksForEntries.SaveWithLinkedFiles(this));
 operator|new
 name|FindFullTextAction
 argument_list|(
@@ -2469,26 +2441,12 @@ name|put
 argument_list|(
 literal|"saveAs"
 argument_list|,
-operator|new
+operator|(
 name|BaseAction
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-throws|throws
-name|Throwable
-block|{
+operator|)
 name|saveAction
-operator|.
+operator|::
 name|saveAs
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|actions
@@ -2532,26 +2490,21 @@ name|put
 argument_list|(
 literal|"copy"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 name|BibtexEntry
 index|[]
 name|bes
-init|=
+operator|=
 name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
-decl_stmt|;
+block|;
 if|if
 condition|(
 name|bes
@@ -2744,42 +2697,37 @@ block|}
 block|}
 block|}
 block|}
-block|}
-argument_list|)
-expr_stmt|;
+block|)
+class|;
+end_class
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"cut"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-throws|throws
-name|Throwable
+operator|->
 block|{
 name|runCommand
 argument_list|(
 literal|"copy"
 argument_list|)
-expr_stmt|;
+block|;
 name|BibtexEntry
 index|[]
 name|bes
-init|=
+operator|=
 name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
-decl_stmt|;
+block|;
 comment|//int row0 = mainTable.getSelectedRow();
 if|if
 condition|(
@@ -2903,55 +2851,51 @@ operator|)
 operator|+
 literal|'.'
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|ce
 operator|.
 name|end
 argument_list|()
-expr_stmt|;
+argument_list|;
 name|undoManager
 operator|.
 name|addEdit
 argument_list|(
 name|ce
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|markBaseChanged
 argument_list|()
-expr_stmt|;
-comment|// Reselect the entry in the first prev. selected position:
-comment|/*if (row0>= entryTable.getRowCount())                         row0 = entryTable.getRowCount()-1;                     if (row0>= 0)                         entryTable.addRowSelectionInterval(row0, row0);*/
-block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+argument_list|;
+end_expr_stmt
+
+begin_empty_stmt
+unit|}         })
+empty_stmt|;
+end_empty_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"delete"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 name|BibtexEntry
 index|[]
 name|bes
-init|=
+operator|=
 name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
-decl_stmt|;
+block|;
 if|if
 condition|(
 name|bes
@@ -3047,7 +2991,7 @@ expr_stmt|;
 block|}
 name|markBaseChanged
 argument_list|()
-expr_stmt|;
+argument_list|;
 name|frame
 operator|.
 name|output
@@ -3091,56 +3035,71 @@ operator|)
 operator|+
 literal|'.'
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|ce
 operator|.
 name|end
 argument_list|()
-expr_stmt|;
+argument_list|;
 name|undoManager
 operator|.
 name|addEdit
 argument_list|(
 name|ce
 argument_list|)
-expr_stmt|;
-comment|//entryTable.clearSelection();
-block|}
-comment|// Reselect the entry in the first prev. selected position:
-comment|/*if (row0>= entryTable.getRowCount())                         row0 = entryTable.getRowCount()-1;                     if (row0>= 0) {                        final int toSel = row0;                       //                         SwingUtilities.invokeLater(new Runnable() {                           public void run() {                               entryTable.addRowSelectionInterval(toSel, toSel);                               //entryTable.ensureVisible(toSel);                           }                         });                       */
-block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+argument_list|;
+end_expr_stmt
+
+begin_empty_stmt
+unit|}             }         })
+empty_stmt|;
+end_empty_stmt
+
+begin_comment
 comment|// The action for pasting entries or cell contents.
+end_comment
+
+begin_comment
 comment|// Edited by Seb Wills<saw27@mrao.cam.ac.uk> on 14-Apr-04:
+end_comment
+
+begin_comment
 comment|//  - more robust detection of available content flavors (doesn't only look at first one offered)
+end_comment
+
+begin_comment
 comment|//  - support for parsing string-flavor clipboard contents which are bibtex entries.
+end_comment
+
+begin_comment
 comment|//    This allows you to (a) paste entire bibtex entries from a text editor, web browser, etc
+end_comment
+
+begin_comment
 comment|//                       (b) copy and paste entries between multiple instances of JabRef (since
+end_comment
+
+begin_comment
 comment|//         only the text representation seems to get as far as the X clipboard, at least on my system)
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"paste"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 comment|// Get clipboard contents, and see if TransferableBibtexEntry is among the content flavors offered
 name|Transferable
 name|content
-init|=
+operator|=
 name|Toolkit
 operator|.
 name|getDefaultToolkit
@@ -3153,7 +3112,7 @@ name|getContents
 argument_list|(
 literal|null
 argument_list|)
-decl_stmt|;
+block|;
 if|if
 condition|(
 name|content
@@ -3210,6 +3169,9 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
+end_expr_stmt
+
+begin_catch
 catch|catch
 parameter_list|(
 name|IOException
@@ -3222,8 +3184,10 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-elseif|else
+end_catch
+
+begin_if
+unit|} else
 if|if
 condition|(
 name|content
@@ -3342,8 +3306,17 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_if
+
+begin_comment
 comment|// finally we paste in the entries (if any), which either came from TransferableBibtexEntries
+end_comment
+
+begin_comment
 comment|// or were parsed from a string
+end_comment
+
+begin_if
 if|if
 condition|(
 name|bes
@@ -3578,54 +3551,46 @@ name|firstBE
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+end_if
+
+begin_empty_stmt
+unit|}          })
+empty_stmt|;
+end_empty_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"selectAll"
 argument_list|,
-operator|new
+operator|(
 name|BaseAction
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-block|{
+operator|)
 name|mainTable
-operator|.
+operator|::
 name|selectAll
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// The action for opening the preamble editor
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"editPreamble"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 if|if
 condition|(
@@ -3684,27 +3649,29 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+end_expr_stmt
+
+begin_empty_stmt
+unit|})
+empty_stmt|;
+end_empty_stmt
+
+begin_comment
 comment|// The action for opening the string editor
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"editStrings"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 if|if
 condition|(
@@ -3763,27 +3730,29 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+end_expr_stmt
+
+begin_empty_stmt
+unit|})
+empty_stmt|;
+end_empty_stmt
+
+begin_comment
 comment|// The action for toggling the groups interface
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"toggleGroups"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 name|sidePaneManager
 operator|.
@@ -3791,7 +3760,7 @@ name|toggle
 argument_list|(
 literal|"groups"
 argument_list|)
-expr_stmt|;
+block|;
 name|frame
 operator|.
 name|groupToggle
@@ -3805,29 +3774,27 @@ argument_list|(
 literal|"groups"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-block|}
+block|;         }
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// The action for toggling the visibility of the toolbar
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"toggleToolbar"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-block|{
+operator|->
 name|frame
 operator|.
 name|tlb
@@ -3842,12 +3809,15 @@ operator|.
 name|isVisible
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// action for collecting database strings from user
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -3861,7 +3831,13 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// action for exporting database to external SQL database
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -4016,7 +3992,6 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-comment|/*boolean okToExport = null!=metaData.getFile();                         if (!okToExport)                         {                         	okToExport = false;                         	int response = JOptionPane.showConfirmDialog(null, "You need to save your database in the disk \n" +                         			"before saving. Save it now?", "Database is not saved",                         	        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);                         		if(response == JOptionPane.YES_OPTION)                         		{                         			try {                         				saveAction.saveAs();                         				okToExport = (null!=metaData.getFile());                         			} catch (Throwable e) {                         			e.printStackTrace();                         		}                         	}                         }                         if (okToExport)                         {*/
 name|frame
 operator|.
 name|output
@@ -4071,9 +4046,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//}
-comment|//else
-comment|//	errorMessage = "Database was not exported. Your database must be saved \nbefore exporting to a SQL database";
 block|}
 catch|catch
 parameter_list|(
@@ -4181,9 +4153,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// show an error dialog if an error occurred
 else|else
 block|{
+comment|// show an error dialog if an error occurred
 name|String
 name|preamble
 init|=
@@ -4243,6 +4215,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -4251,22 +4226,15 @@ name|FindUnlinkedFilesDialog
 operator|.
 name|ACTION_COMMAND
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-throws|throws
-name|Throwable
+operator|->
 block|{
 name|FindUnlinkedFilesDialog
 name|dialog
-init|=
+operator|=
 operator|new
 name|FindUnlinkedFilesDialog
 argument_list|(
@@ -4278,7 +4246,7 @@ name|BasePanel
 operator|.
 name|this
 argument_list|)
-decl_stmt|;
+block|;
 name|Util
 operator|.
 name|placeDialog
@@ -4287,19 +4255,23 @@ name|dialog
 argument_list|,
 name|frame
 argument_list|)
-expr_stmt|;
+block|;
 name|dialog
 operator|.
 name|setVisible
 argument_list|(
 literal|true
 argument_list|)
-expr_stmt|;
-block|}
-block|}
+block|;         }
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// The action for auto-generating keys.
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -4936,7 +4908,13 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// The action for cleaning up entry.
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -4946,23 +4924,20 @@ argument_list|,
 name|cleanUpAction
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"mergeEntries"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-block|{
+operator|->
 operator|new
 name|MergeEntriesDialog
 argument_list|(
@@ -4970,37 +4945,30 @@ name|BasePanel
 operator|.
 name|this
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"search"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
+operator|->
 block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-block|{
-comment|//sidePaneManager.togglePanel("search");
 name|sidePaneManager
 operator|.
 name|show
 argument_list|(
 literal|"search"
 argument_list|)
-expr_stmt|;
-comment|//boolean on = sidePaneManager.isPanelVisible("search");
+block|;
 name|frame
 operator|.
 name|searchToggle
@@ -5009,7 +4977,7 @@ name|setSelected
 argument_list|(
 literal|true
 argument_list|)
-expr_stmt|;
+block|;
 name|frame
 operator|.
 name|getSearchManager
@@ -5017,46 +4985,41 @@ argument_list|()
 operator|.
 name|startSearch
 argument_list|()
-expr_stmt|;
-block|}
-block|}
+block|;         }
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"toggleSearch"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
+operator|->
 block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-block|{
-comment|//sidePaneManager.togglePanel("search");
 name|sidePaneManager
 operator|.
 name|toggle
 argument_list|(
 literal|"search"
 argument_list|)
-expr_stmt|;
+block|;
 name|boolean
 name|on
-init|=
+operator|=
 name|sidePaneManager
 operator|.
 name|isComponentVisible
 argument_list|(
 literal|"search"
 argument_list|)
-decl_stmt|;
+block|;
 name|frame
 operator|.
 name|searchToggle
@@ -5065,7 +5028,7 @@ name|setSelected
 argument_list|(
 name|on
 argument_list|)
-expr_stmt|;
+block|;
 if|if
 condition|(
 name|on
@@ -5080,26 +5043,25 @@ name|startSearch
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+end_expr_stmt
+
+begin_empty_stmt
+unit|})
+empty_stmt|;
+end_empty_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"incSearch"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 name|sidePaneManager
 operator|.
@@ -5107,7 +5069,7 @@ name|show
 argument_list|(
 literal|"search"
 argument_list|)
-expr_stmt|;
+block|;
 name|frame
 operator|.
 name|searchToggle
@@ -5116,7 +5078,7 @@ name|setSelected
 argument_list|(
 literal|true
 argument_list|)
-expr_stmt|;
+block|;
 name|frame
 operator|.
 name|getSearchManager
@@ -5124,38 +5086,37 @@ argument_list|()
 operator|.
 name|startIncrementalSearch
 argument_list|()
-expr_stmt|;
-block|}
-block|}
+block|;         }
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// The action for copying the selected entry's key.
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"copyKey"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 name|BibtexEntry
 index|[]
 name|bes
-init|=
+operator|=
 name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
-decl_stmt|;
+block|;
 if|if
 condition|(
 name|bes
@@ -5172,7 +5133,6 @@ block|{
 name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
-comment|//String[] keys = new String[bes.length];
 name|Vector
 argument_list|<
 name|Object
@@ -5224,22 +5184,27 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-if|if
-condition|(
+end_expr_stmt
+
+begin_expr_stmt
+unit|}                 if
+operator|(
 name|keys
 operator|.
 name|isEmpty
 argument_list|()
-condition|)
+operator|)
 block|{
 name|output
 argument_list|(
 literal|"None of the selected entries have BibTeX keys."
 argument_list|)
-expr_stmt|;
+block|;
 return|return;
 block|}
+end_expr_stmt
+
+begin_decl_stmt
 name|StringBuilder
 name|sb
 init|=
@@ -5257,6 +5222,9 @@ literal|0
 argument_list|)
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_for
 for|for
 control|(
 name|int
@@ -5298,6 +5266,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_for
+
+begin_decl_stmt
 name|StringSelection
 name|ss
 init|=
@@ -5310,6 +5281,9 @@ name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
+end_decl_stmt
+
+begin_expr_stmt
 name|Toolkit
 operator|.
 name|getDefaultToolkit
@@ -5327,6 +5301,9 @@ operator|.
 name|this
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_if
 if|if
 condition|(
 name|keys
@@ -5413,12 +5390,18 @@ literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+end_if
+
+begin_empty_stmt
+unit|}         })
+empty_stmt|;
+end_empty_stmt
+
+begin_comment
 comment|// The action for copying a cite for the selected entry.
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -5713,7 +5696,13 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_comment
 comment|// The action for copying the BibTeX key and the title for the first selected entry
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -5976,6 +5965,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -5991,6 +5983,9 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -6764,6 +6759,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -6777,6 +6775,9 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -6978,6 +6979,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -7090,6 +7094,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -7439,6 +7446,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -7646,6 +7656,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -7832,23 +7845,20 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"dupliCheck"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-block|{
+operator|->
 name|JabRefExecutorService
 operator|.
 name|INSTANCE
@@ -7863,11 +7873,11 @@ operator|.
 name|this
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -8022,6 +8032,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -8037,6 +8050,9 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -8202,26 +8218,24 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"unmarkAll"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 name|NamedCompound
 name|ce
-init|=
+operator|=
 operator|new
 name|NamedCompound
 argument_list|(
@@ -8232,7 +8246,7 @@ argument_list|(
 literal|"Unmark all"
 argument_list|)
 argument_list|)
-decl_stmt|;
+block|;
 for|for
 control|(
 name|BibtexEntry
@@ -8262,17 +8276,17 @@ name|ce
 operator|.
 name|end
 argument_list|()
-expr_stmt|;
+argument_list|;
 name|undoManager
 operator|.
 name|addEdit
 argument_list|(
 name|ce
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|markBaseChanged
 argument_list|()
-expr_stmt|;
+argument_list|;
 name|output
 argument_list|(
 name|Localization
@@ -8282,12 +8296,19 @@ argument_list|(
 literal|"Unmarked all entries"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+argument_list|;
+end_expr_stmt
+
+begin_empty_stmt
+unit|})
+empty_stmt|;
+end_empty_stmt
+
+begin_comment
 comment|// Note that we can't put the number of entries that have been reverted into the undoText as the concrete number cannot be injected
+end_comment
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -8352,6 +8373,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -8416,6 +8440,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -8480,6 +8507,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_for
 for|for
 control|(
 name|SpecialFieldValue
@@ -8514,6 +8544,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_for
+
+begin_for
 for|for
 control|(
 name|SpecialFieldValue
@@ -8548,6 +8581,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_for
+
+begin_for
 for|for
 control|(
 name|SpecialFieldValue
@@ -8582,26 +8618,24 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_for
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"togglePreview"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 name|boolean
 name|enabled
-init|=
+operator|=
 operator|!
 name|Globals
 operator|.
@@ -8613,7 +8647,7 @@ name|JabRefPreferences
 operator|.
 name|PREVIEW_ENABLED
 argument_list|)
-decl_stmt|;
+block|;
 name|Globals
 operator|.
 name|prefs
@@ -8626,14 +8660,14 @@ name|PREVIEW_ENABLED
 argument_list|,
 name|enabled
 argument_list|)
-expr_stmt|;
+block|;
 name|frame
 operator|.
 name|setPreviewActive
 argument_list|(
 name|enabled
 argument_list|)
-expr_stmt|;
+block|;
 name|frame
 operator|.
 name|previewToggle
@@ -8642,31 +8676,27 @@ name|setSelected
 argument_list|(
 name|enabled
 argument_list|)
-expr_stmt|;
-block|}
-block|}
+block|;         }
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"toggleHighlightGroupsMatchingAny"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 name|boolean
 name|enabled
-init|=
+operator|=
 operator|!
 name|Globals
 operator|.
@@ -8678,7 +8708,7 @@ name|JabRefPreferences
 operator|.
 name|HIGHLIGHT_GROUPS_MATCHING_ANY
 argument_list|)
-decl_stmt|;
+block|;
 name|Globals
 operator|.
 name|prefs
@@ -8691,7 +8721,7 @@ name|HIGHLIGHT_GROUPS_MATCHING_ANY
 argument_list|,
 name|enabled
 argument_list|)
-expr_stmt|;
+block|;
 name|frame
 operator|.
 name|highlightAny
@@ -8700,7 +8730,7 @@ name|setSelected
 argument_list|(
 name|enabled
 argument_list|)
-expr_stmt|;
+block|;
 if|if
 condition|(
 name|enabled
@@ -8736,31 +8766,30 @@ name|listChanged
 argument_list|(
 literal|null
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+argument_list|;
+end_expr_stmt
+
+begin_empty_stmt
+unit|})
+empty_stmt|;
+end_empty_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"toggleHighlightGroupsMatchingAll"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 name|boolean
 name|enabled
-init|=
+operator|=
 operator|!
 name|Globals
 operator|.
@@ -8772,7 +8801,7 @@ name|JabRefPreferences
 operator|.
 name|HIGHLIGHT_GROUPS_MATCHING_ALL
 argument_list|)
-decl_stmt|;
+block|;
 name|Globals
 operator|.
 name|prefs
@@ -8785,7 +8814,7 @@ name|HIGHLIGHT_GROUPS_MATCHING_ALL
 argument_list|,
 name|enabled
 argument_list|)
-expr_stmt|;
+block|;
 name|frame
 operator|.
 name|highlightAll
@@ -8794,7 +8823,7 @@ name|setSelected
 argument_list|(
 name|enabled
 argument_list|)
-expr_stmt|;
+block|;
 if|if
 condition|(
 name|enabled
@@ -8830,57 +8859,47 @@ name|listChanged
 argument_list|(
 literal|null
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+argument_list|;
+end_expr_stmt
+
+begin_empty_stmt
+unit|})
+empty_stmt|;
+end_empty_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"switchPreview"
 argument_list|,
-operator|new
+operator|(
 name|BaseAction
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-block|{
+operator|)
 name|selectionListener
-operator|.
+operator|::
 name|switchPreview
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"manageSelectors"
 argument_list|,
-operator|new
+call|(
 name|BaseAction
+call|)
 argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
+operator|->
 block|{
 name|ContentSelectorDialog2
 name|csd
-init|=
+operator|=
 operator|new
 name|ContentSelectorDialog2
 argument_list|(
@@ -8898,7 +8917,7 @@ name|metaData
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+block|;
 name|Util
 operator|.
 name|placeDialog
@@ -8907,18 +8926,19 @@ name|csd
 argument_list|,
 name|frame
 argument_list|)
-expr_stmt|;
+block|;
 name|csd
 operator|.
 name|setVisible
 argument_list|(
 literal|true
 argument_list|)
-expr_stmt|;
-block|}
-block|}
+block|;         }
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -8935,6 +8955,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -8948,6 +8971,9 @@ name|frame
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -8961,6 +8987,9 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -8976,6 +9005,9 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -8991,6 +9023,9 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -9004,6 +9039,9 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -9019,6 +9057,9 @@ literal|"pdf"
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -9034,6 +9075,9 @@ literal|"ps"
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -9047,58 +9091,47 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"back"
 argument_list|,
-operator|new
+operator|(
 name|BaseAction
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-throws|throws
-name|Throwable
-block|{
+operator|)
+name|BasePanel
+operator|.
+name|this
+operator|::
 name|back
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
 argument_list|(
 literal|"forward"
 argument_list|,
-operator|new
+operator|(
 name|BaseAction
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|action
-parameter_list|()
-throws|throws
-name|Throwable
-block|{
+operator|)
+name|BasePanel
+operator|.
+name|this
+operator|::
 name|forward
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -9112,6 +9145,9 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -9129,6 +9165,9 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -9146,6 +9185,9 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
 name|actions
 operator|.
 name|put
@@ -9163,10 +9205,16 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
+end_expr_stmt
+
+begin_comment
+unit|}
 comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.      */
+end_comment
+
+begin_function
 DECL|method|runCommand (String _command)
-specifier|public
+unit|public
 name|void
 name|runCommand
 parameter_list|(
@@ -9315,6 +9363,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|saveDatabase (File file, boolean selectedOnly, String encoding, FileActions.DatabaseSaveType saveType)
 specifier|private
 name|boolean
@@ -9859,7 +9910,13 @@ return|return
 name|commit
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method is called from JabRefFrame when the user wants to      * create a new entry. If the argument is null, the user is      * prompted for an entry type.      *      * @param type The type of the entry to create.      * @return The newly created BibtexEntry or null the operation was canceled by the user.      */
+end_comment
+
+begin_function
 DECL|method|newEntry (BibtexEntryType type)
 specifier|public
 name|BibtexEntry
@@ -10126,7 +10183,13 @@ return|return
 literal|null
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This listener is used to add a new entry to a group (or a set of groups)      * in case the Group View is selected and one or more groups are marked      */
+end_comment
+
+begin_class
 DECL|class|GroupTreeUpdater
 specifier|private
 class|class
@@ -10268,7 +10331,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_class
+
+begin_comment
 comment|/**      * Ensures that the search auto completer is up to date when entries are changed      * AKA Let the auto completer, if any, harvest words from the entry      */
+end_comment
+
+begin_class
 DECL|class|SearchAutoCompleterUpdater
 specifier|private
 class|class
@@ -10321,7 +10390,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_class
+
+begin_comment
 comment|/**      * Ensures that auto completers are up to date when entries are changed      * AKA Let the auto completer, if any, harvest words from the entry      */
+end_comment
+
+begin_class
 DECL|class|AutoCompletersUpdater
 specifier|private
 class|class
@@ -10378,7 +10453,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_class
+
+begin_comment
 comment|/**      * This method is called from JabRefFrame when the user wants to      * create a new entry.      *      * @param bibEntry The new entry.      */
+end_comment
+
+begin_function
 DECL|method|insertEntry (BibtexEntry bibEntry)
 specifier|public
 name|void
@@ -10538,6 +10619,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|updateTableFont ()
 specifier|public
 name|void
@@ -10550,6 +10634,9 @@ name|updateFont
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|createMainTable ()
 specifier|private
 name|void
@@ -11236,6 +11323,9 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setupMainPanel ()
 specifier|public
 name|void
@@ -11481,6 +11571,9 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|updateSearchManager ()
 specifier|public
 name|void
@@ -11498,6 +11591,9 @@ name|searchCompleteListener
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|instantiateSearchAutoCompleter ()
 specifier|private
 name|void
@@ -11551,7 +11647,13 @@ argument_list|)
 expr_stmt|;
 comment|// So you don't have to press Enter twice
 block|}
+end_function
+
+begin_comment
 comment|/*     public void refreshTable() {         //System.out.println("hiding="+hidingNonHits+"\tlastHits="+lastSearchHits);         // This method is called by EntryTypeForm when a field value is         // stored. The table is scheduled for repaint.         entryTable.assureNotEditing();         //entryTable.invalidate();         BibtexEntry[] bes = entryTable.getSelectedEntries();     if (hidingNonHits)         tableModel.update(lastSearchHits);     else         tableModel.update();     //tableModel.remap();         if ((bes != null)&& (bes.length> 0))             selectEntries(bes, 0);      //long toc = System.currentTimeMillis();     //	Util.pr("Refresh took: "+(toc-tic)+" ms");     } */
+end_comment
+
+begin_function
 DECL|method|updatePreamble ()
 specifier|public
 name|void
@@ -11572,6 +11674,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|assureStringDialogNotEditing ()
 specifier|public
 name|void
@@ -11592,6 +11697,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|updateStringDialog ()
 specifier|public
 name|void
@@ -11612,6 +11720,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|updateEntryPreviewToRow (BibtexEntry e)
 specifier|public
 name|void
@@ -11621,6 +11732,9 @@ name|BibtexEntry
 name|e
 parameter_list|)
 block|{      }
+end_function
+
+begin_function
 DECL|method|adjustSplitter ()
 specifier|public
 name|void
@@ -11689,7 +11803,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Stores the source view in the entry editor, if one is open, has the source view      * selected and the source has been edited.      *      * @return boolean false if there is a validation error in the source panel, true otherwise.      */
+end_comment
+
+begin_function
 DECL|method|entryEditorAllowsChange ()
 specifier|public
 name|boolean
@@ -11730,6 +11850,9 @@ literal|true
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|moveFocusToEntryEditor ()
 specifier|public
 name|void
@@ -11759,6 +11882,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|isShowingEditor ()
 specifier|private
 name|boolean
@@ -11781,6 +11907,9 @@ operator|instanceof
 name|EntryEditor
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|showEntry (final BibtexEntry be)
 specifier|public
 name|void
@@ -12078,7 +12207,13 @@ argument_list|)
 expr_stmt|;
 comment|// Make sure it is enabled.
 block|}
+end_function
+
+begin_comment
 comment|/**      * Get an entry editor ready to edit the given entry. If an appropriate editor is already      * cached, it will be updated and returned.      *      * @param entry The entry to be edited.      * @return A suitable entry editor.      */
+end_comment
+
+begin_function
 DECL|method|getEntryEditor (BibtexEntry entry)
 specifier|public
 name|EntryEditor
@@ -12201,6 +12336,9 @@ return|return
 name|form
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getCurrentEditor ()
 specifier|public
 name|EntryEditor
@@ -12211,7 +12349,13 @@ return|return
 name|currentEditor
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the given entry editor as the bottom component in the split pane. If an entry editor already      * was shown, makes sure that the divider doesn't move.      * Updates the mode to SHOWING_EDITOR.      *      * @param editor The entry editor to add.      */
+end_comment
+
+begin_function
 DECL|method|showEntryEditor (EntryEditor editor)
 specifier|public
 name|void
@@ -12325,7 +12469,13 @@ name|adjustSplitter
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the given preview panel as the bottom component in the split panel.      * Updates the mode to SHOWING_PREVIEW.      *      * @param preview The preview to show.      */
+end_comment
+
+begin_function
 DECL|method|showPreview (PreviewPanel preview)
 specifier|public
 name|void
@@ -12353,7 +12503,13 @@ name|preview
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Removes the bottom component.      */
+end_comment
+
+begin_function
 DECL|method|hideBottomComponent ()
 specifier|public
 name|void
@@ -12374,7 +12530,13 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method selects the given entry, and scrolls it into view in the table.      * If an entryEditor is shown, it is given focus afterwards.      */
+end_comment
+
+begin_function
 DECL|method|highlightEntry (final BibtexEntry be)
 specifier|public
 name|void
@@ -12426,7 +12588,13 @@ block|}
 comment|//     }
 comment|//});
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method is called from an EntryEditor when it should be closed. We relay      * to the selection listener, which takes care of the rest.      *      * @param editor The entry editor to close.      */
+end_comment
+
+begin_function
 DECL|method|entryEditorClosing (EntryEditor editor)
 specifier|public
 name|void
@@ -12466,9 +12634,21 @@ name|editor
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method selects the given enties.      * If an entryEditor is shown, it is given focus afterwards.      */
+end_comment
+
+begin_comment
 comment|/*public void selectEntries(final BibtexEntry[] bes, final int toScrollTo) {          SwingUtilities.invokeLater(new Thread() {              public void run() {                  int rowToScrollTo = 0;                  entryTable.revalidate();                  entryTable.clearSelection();                  loop: for (int i=0; i<bes.length; i++) {                     if (bes[i] == null)                         continue loop;                     int row = tableModel.getNumberFromName(bes[i].getId());                     if (i==toScrollTo)                     rowToScrollTo = row;                     if (row>= 0)                         entryTable.addRowSelectionIntervalQuietly(row, row);                  }                  entryTable.ensureVisible(rowToScrollTo);                  Component comp = splitPane.getBottomComponent();                  //if (comp instanceof EntryEditor)                  //    comp.requestFocus();              }         });     } */
+end_comment
+
+begin_comment
 comment|/**      * Closes the entry editor if it is showing the given entry.      *      * @param be a<code>BibtexEntry</code> value      */
+end_comment
+
+begin_function
 DECL|method|ensureNotShowing (BibtexEntry be)
 specifier|public
 name|void
@@ -12503,6 +12683,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|updateEntryEditorIfShowing ()
 specifier|public
 name|void
@@ -12572,7 +12755,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * If an entry editor is showing, make sure its currently focused field      * stores its changes, if any.      */
+end_comment
+
+begin_function
 DECL|method|storeCurrentEdit ()
 specifier|public
 name|void
@@ -12603,7 +12792,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method iterates through all existing entry editors in this      * BasePanel, telling each to update all its instances of      * FieldContentSelector. This is done to ensure that the list of words      * in each selector is up-to-date after the user has made changes in      * the Manage dialog.      */
+end_comment
+
+begin_function
 DECL|method|updateAllContentSelectors ()
 specifier|public
 name|void
@@ -12643,6 +12838,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|rebuildAllEntryEditors ()
 specifier|public
 name|void
@@ -12682,6 +12880,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|markBaseChanged ()
 specifier|public
 name|void
@@ -12771,6 +12972,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|markNonUndoableBaseChanged ()
 specifier|public
 name|void
@@ -12785,6 +12989,9 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|markChangedOrUnChanged ()
 specifier|private
 specifier|synchronized
@@ -12882,7 +13089,13 @@ name|setWindowTitle
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Selects a single entry, and scrolls the table to center it.      *      * @param pos Current position of entry to select.      */
+end_comment
+
+begin_function
 DECL|method|selectSingleEntry (int pos)
 specifier|public
 name|void
@@ -12916,8 +13129,17 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/* *      * Selects all entries with a non-zero value in the field      * @param field<code>String</code> field name.      */
+end_comment
+
+begin_comment
 comment|/*    public void selectResults(String field) {           LinkedList intervals = new LinkedList();           int prevStart = -1, prevToSel = 0;           // First we build a list of intervals to select, without touching the table.           for (int i = 0; i< entryTable.getRowCount(); i++) {             String value = (String) (database.getEntryById                                      (tableModel.getIdForRow(i)))                 .getField(field);             if ( (value != null)&& !value.equals("0")) {               if (prevStart< 0)                 prevStart = i;               prevToSel = i;             }             else if (prevStart>= 0) {               intervals.add(new int[] {prevStart, prevToSel});               prevStart = -1;             }           }           // Then select those intervals, if any.           if (intervals.size()> 0) {             entryTable.setSelectionListenerEnabled(false);             entryTable.clearSelection();             for (Iterator i=intervals.iterator(); i.hasNext();) {               int[] interval = (int[])i.next();               entryTable.addRowSelectionInterval(interval[0], interval[1]);             }             entryTable.setSelectionListenerEnabled(true);           }       */
+end_comment
+
+begin_function
 DECL|method|setSearchMatcher (SearchMatcher matcher)
 specifier|public
 name|void
@@ -12939,6 +13161,9 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setGroupMatcher (Matcher<BibtexEntry> matcher)
 specifier|public
 name|void
@@ -12959,6 +13184,9 @@ name|matcher
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|stopShowingSearchResults ()
 specifier|public
 name|void
@@ -12979,6 +13207,9 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|stopShowingGroup ()
 specifier|public
 name|void
@@ -12995,7 +13226,13 @@ name|INSTANCE
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Query whether this BasePanel is in the mode where a float search result is shown.      *      * @return true if showing float search, false otherwise.      */
+end_comment
+
+begin_function
 DECL|method|isShowingFloatSearch ()
 specifier|public
 name|boolean
@@ -13009,7 +13246,13 @@ name|isShowingFloatSearch
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Query whether this BasePanel is in the mode where a filter search result is shown.      *      * @return true if showing filter search, false otherwise.      */
+end_comment
+
+begin_function
 DECL|method|isShowingFilterSearch ()
 specifier|public
 name|boolean
@@ -13020,6 +13263,9 @@ return|return
 name|showingSearch
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getDatabase ()
 specifier|public
 name|BibtexDatabase
@@ -13030,6 +13276,9 @@ return|return
 name|database
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|preambleEditorClosing ()
 specifier|public
 name|void
@@ -13041,6 +13290,9 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|stringsClosing ()
 specifier|public
 name|void
@@ -13052,6 +13304,9 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|changeType (BibtexEntry entry, BibtexEntryType type)
 specifier|public
 name|void
@@ -13077,6 +13332,9 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|changeType (BibtexEntryType type)
 specifier|public
 name|void
@@ -13103,6 +13361,9 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|changeType (BibtexEntry[] bes, BibtexEntryType type)
 specifier|private
 name|void
@@ -13300,6 +13561,9 @@ name|updateEntryEditorIfShowing
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|showDeleteConfirmationDialog (int numberOfEntries)
 specifier|public
 name|boolean
@@ -13472,7 +13736,13 @@ literal|true
 return|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * If the relevant option is set, autogenerate keys for all entries that are      * lacking keys.      */
+end_comment
+
+begin_function
 DECL|method|autoGenerateKeysBeforeSaving ()
 specifier|public
 name|void
@@ -13608,7 +13878,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Activates or deactivates the entry preview, depending on the argument.      * When deactivating, makes sure that any visible preview is hidden.      *      * @param enabled      */
+end_comment
+
+begin_function
 DECL|method|setPreviewActive (boolean enabled)
 specifier|public
 name|void
@@ -13626,6 +13902,9 @@ name|enabled
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setSelectionListenerEnabled (boolean enabled)
 specifier|public
 name|void
@@ -13643,7 +13922,13 @@ name|enabled
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Depending on whether a preview or an entry editor is showing, save the current      * divider location in the correct preference setting.      */
+end_comment
+
+begin_function
 DECL|method|saveDividerLocation ()
 specifier|public
 name|void
@@ -13714,6 +13999,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_class
 DECL|class|UndoAction
 class|class
 name|UndoAction
@@ -13844,6 +14132,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_class
+
+begin_class
 DECL|class|RedoAction
 class|class
 name|RedoAction
@@ -13945,7 +14236,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_class
+
+begin_comment
 comment|// Method pertaining to the ClipboardOwner interface.
+end_comment
+
+begin_function
 annotation|@
 name|Override
 DECL|method|lostOwnership (Clipboard clipboard, Transferable contents)
@@ -13960,6 +14257,9 @@ name|Transferable
 name|contents
 parameter_list|)
 block|{     }
+end_function
+
+begin_function
 DECL|method|setEntryEditorEnabled (boolean enabled)
 specifier|private
 name|void
@@ -14015,6 +14315,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|fileMonitorHandle ()
 specifier|public
 name|String
@@ -14025,6 +14328,9 @@ return|return
 name|fileMonitorHandle
 return|;
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|fileUpdated ()
@@ -14256,6 +14562,9 @@ expr_stmt|;
 comment|//System.out.println("No changes found.");
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 DECL|method|fileRemoved ()
@@ -14280,7 +14589,13 @@ literal|"' has been deleted."
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Perform necessary cleanup when this BasePanel is closed.      */
+end_comment
+
+begin_function
 DECL|method|cleanUp ()
 specifier|public
 name|void
@@ -14349,6 +14664,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|setUpdatedExternally (boolean b)
 specifier|public
 name|void
@@ -14363,7 +14681,13 @@ operator|=
 name|b
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Get an array containing the currently selected entries.      * The array is stable and not changed if the selection changes      *      * @return An array containing the selected entries. Is never null.      */
+end_comment
+
+begin_function
 DECL|method|getSelectedEntries ()
 specifier|public
 name|BibtexEntry
@@ -14378,7 +14702,13 @@ name|getSelectedEntries
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Get the file where this database was last saved to or loaded from, if any.      *      * @return The relevant File, or null if none is defined.      */
+end_comment
+
+begin_function
 DECL|method|getFile ()
 specifier|public
 name|File
@@ -14392,7 +14722,13 @@ name|getFile
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Get a String containing a comma-separated list of the bibtex keys      * of the selected entries.      *      * @return A comma-separated list of the keys of the selected entries.      */
+end_comment
+
+begin_function
 DECL|method|getKeysForSelection ()
 specifier|public
 name|String
@@ -14492,6 +14828,9 @@ name|toString
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getGroupSelector ()
 specifier|public
 name|GroupSelector
@@ -14504,6 +14843,9 @@ operator|.
 name|groupSelector
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|isUpdatedExternally ()
 specifier|public
 name|boolean
@@ -14514,6 +14856,9 @@ return|return
 name|updatedExternally
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getFileMonitorHandle ()
 specifier|public
 name|String
@@ -14524,6 +14869,9 @@ return|return
 name|fileMonitorHandle
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setFileMonitorHandle (String fileMonitorHandle)
 specifier|public
 name|void
@@ -14540,6 +14888,9 @@ operator|=
 name|fileMonitorHandle
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|getSidePaneManager ()
 specifier|public
 name|SidePaneManager
@@ -14550,6 +14901,9 @@ return|return
 name|sidePaneManager
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|setNonUndoableChange (boolean nonUndoableChange)
 specifier|public
 name|void
@@ -14566,6 +14920,9 @@ operator|=
 name|nonUndoableChange
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setBaseChanged (boolean baseChanged)
 specifier|public
 name|void
@@ -14582,6 +14939,9 @@ operator|=
 name|baseChanged
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|setSaving (boolean saving)
 specifier|public
 name|void
@@ -14598,6 +14958,9 @@ operator|=
 name|saving
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|isSaving ()
 specifier|public
 name|boolean
@@ -14608,6 +14971,9 @@ return|return
 name|saving
 return|;
 block|}
+end_function
+
+begin_function
 DECL|method|getShowing ()
 specifier|private
 name|BibtexEntry
@@ -14618,7 +14984,13 @@ return|return
 name|showing
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Update the pointer to the currently shown entry in all cases where the user has      * moved to a new entry, except when using Back and Forward commands. Also updates      * history for Back command, and clears history for Forward command.      *      * @param entry The entry that is now to be shown.      */
+end_comment
+
+begin_function
 DECL|method|newEntryShowing (BibtexEntry entry)
 specifier|public
 name|void
@@ -14706,7 +15078,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Go back (if there is any recorded history) and update the histories for      * the Back and Forward commands.      */
+end_comment
+
+begin_function
 DECL|method|back ()
 specifier|private
 name|void
@@ -14778,6 +15156,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|forward ()
 specifier|private
 name|void
@@ -14849,6 +15230,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 DECL|method|setBackAndForwardEnabledState ()
 specifier|public
 name|void
@@ -14882,6 +15266,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_class
 DECL|class|SaveSelectedAction
 specifier|private
 class|class
@@ -15075,8 +15462,8 @@ block|}
 block|}
 block|}
 block|}
-block|}
 end_class
 
+unit|}
 end_unit
 
