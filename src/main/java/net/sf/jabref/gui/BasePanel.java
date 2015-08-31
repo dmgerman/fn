@@ -1941,8 +1941,6 @@ specifier|private
 name|SaveDatabaseAction
 name|saveAction
 decl_stmt|;
-comment|/**      * The group selector component for this database. Instantiated by the      * SidePaneManager if necessary, or from this class if merging groups from a      * different database.      */
-comment|//GroupSelector groupSelector;
 DECL|field|showingSearch
 specifier|private
 name|boolean
