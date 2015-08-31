@@ -4307,9 +4307,7 @@ name|entries
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -4320,7 +4318,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//rows = entryTable.getSelectedRows() ;
 name|numSelected
 operator|=
 name|entries
@@ -4613,11 +4610,7 @@ name|oldvals
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Iterate again, removing already set keys. This is skipped if overwriting
@@ -6334,9 +6327,7 @@ name|dirs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -6397,9 +6388,7 @@ name|extensions
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -10014,9 +10003,7 @@ name|list
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|list
@@ -10678,9 +10665,7 @@ name|groupFilterList
 operator|=
 operator|new
 name|FilterList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|eventList
 operator|.
@@ -10696,9 +10681,7 @@ name|searchFilterList
 operator|=
 operator|new
 name|FilterList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|groupFilterList
 argument_list|,
