@@ -3186,42 +3186,6 @@ expr_stmt|;
 end_expr_stmt
 
 begin_comment
-comment|// The action for toggling the visibility of the toolbar
-end_comment
-
-begin_expr_stmt
-name|actions
-operator|.
-name|put
-argument_list|(
-name|Actions
-operator|.
-name|TOGGLE_TOOLBAR
-argument_list|,
-call|(
-name|BaseAction
-call|)
-argument_list|()
-operator|->
-name|frame
-operator|.
-name|tlb
-operator|.
-name|setVisible
-argument_list|(
-operator|!
-name|frame
-operator|.
-name|tlb
-operator|.
-name|isVisible
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-end_expr_stmt
-
-begin_comment
 comment|// action for collecting database strings from user
 end_comment
 
