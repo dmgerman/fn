@@ -38,7 +38,7 @@ specifier|public
 class|class
 name|CrossrefAutoCompleter
 extends|extends
-name|AbstractAutoCompleter
+name|StringAbstractAutoCompleter
 block|{
 DECL|field|_fieldName
 specifier|public

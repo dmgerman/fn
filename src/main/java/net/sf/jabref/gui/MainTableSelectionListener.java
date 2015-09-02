@@ -648,7 +648,7 @@ operator|.
 name|frame
 argument_list|()
 operator|.
-name|getSearchManager
+name|getSearchBar
 argument_list|()
 operator|.
 name|addSearchListener
@@ -659,12 +659,13 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+comment|//panel.frame().getSearchManager().addSearchListener(previewPanel[0]);
 name|panel
 operator|.
 name|frame
 argument_list|()
 operator|.
-name|getSearchManager
+name|getSearchBar
 argument_list|()
 operator|.
 name|addSearchListener
@@ -675,6 +676,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
+comment|//panel.frame().getSearchManager().addSearchListener(previewPanel[1]);
 block|}
 DECL|method|updatePreviews ()
 specifier|public

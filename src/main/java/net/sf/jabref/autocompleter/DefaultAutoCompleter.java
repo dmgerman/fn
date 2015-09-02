@@ -60,7 +60,7 @@ specifier|public
 class|class
 name|DefaultAutoCompleter
 extends|extends
-name|AbstractAutoCompleter
+name|StringAbstractAutoCompleter
 block|{
 DECL|field|_fieldName
 specifier|public

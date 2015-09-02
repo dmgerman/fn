@@ -38,7 +38,7 @@ specifier|public
 class|class
 name|EntireFieldAutoCompleter
 extends|extends
-name|AbstractAutoCompleter
+name|StringAbstractAutoCompleter
 block|{
 DECL|field|_fieldName
 specifier|public

@@ -160,6 +160,9 @@ argument_list|)
 decl_stmt|;
 DECL|field|completer
 name|AbstractAutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|completer
 decl_stmt|;
 comment|// These variables keep track of the situation from time to time.

@@ -74,7 +74,7 @@ specifier|public
 class|class
 name|NameFieldAutoCompleter
 extends|extends
-name|AbstractAutoCompleter
+name|StringAbstractAutoCompleter
 block|{
 DECL|field|fieldNames
 specifier|private

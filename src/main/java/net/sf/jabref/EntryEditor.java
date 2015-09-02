@@ -3563,7 +3563,7 @@ argument_list|()
 expr_stmt|;
 name|frame
 operator|.
-name|getSearchManager
+name|getSearchBar
 argument_list|()
 operator|.
 name|addSearchListener
@@ -3574,6 +3574,7 @@ operator|)
 name|source
 argument_list|)
 expr_stmt|;
+comment|//frame.getSearchManager().addSearchListener((SearchTextListener)source);
 comment|/* {             private boolean antialias = Globals.prefs.getBoolean("antialias");              public void paint(Graphics g) {                 Graphics2D g2 = (Graphics2D) g;                 if (antialias)                     g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,                         RenderingHints.VALUE_ANTIALIAS_ON);                 super.paint(g2);             }         };*/
 comment|//DefaultFormBuilder builder = new DefaultFormBuilder
 comment|//        (srcPanel, new FormLayout( "fill:pref:grow", "fill:pref:grow"));

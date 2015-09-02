@@ -998,7 +998,7 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|getSearchManager
+name|getSearchBar
 argument_list|()
 operator|.
 name|addSearchListener
@@ -1009,6 +1009,7 @@ operator|)
 name|ta
 argument_list|)
 expr_stmt|;
+comment|//frame.getSearchManager().addSearchListener((FieldTextArea)ta);
 name|defaultHeight
 operator|=
 name|ta
