@@ -4757,8 +4757,6 @@ operator|.
 name|inActiveTabbed
 argument_list|)
 expr_stmt|;
-comment|//JLabel label = new JLabel ( "Close X" );
-comment|//add ( label, , 0 );
 comment|/*          * The following state listener makes sure focus is registered with the          * correct database when the user switches tabs. Without this,          * cut/paste/copy operations would some times occur in the wrong tab.          */
 name|tabbedPane
 operator|.
@@ -5851,7 +5849,6 @@ name|isVisible
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//prefs.putBoolean(JabRefPreferences.SEARCH_PANEL_VISIBLE, sidePaneManager.isComponentVisible("search"));
 comment|// Store divider location for side pane:
 name|int
 name|width
@@ -6016,6 +6013,17 @@ name|clearAutoSaves
 argument_list|()
 expr_stmt|;
 block|}
+comment|// Let the search interface store changes to prefs.
+name|searchBar
+operator|.
+name|updatePrefs
+argument_list|()
+expr_stmt|;
+name|prefs
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 comment|// hide systray because the JVM can only shut down when no systray icon is shown
 if|if
 condition|(
@@ -6301,17 +6309,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// Let the search interface store changes to prefs.
-name|searchBar
-operator|.
-name|updatePrefs
-argument_list|()
-expr_stmt|;
-name|prefs
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|close
@@ -6739,7 +6736,6 @@ argument_list|(
 name|tabbedPane
 argument_list|)
 expr_stmt|;
-comment|//UIManager.put("TabbedPane.tabAreaInsets", new Insets(2, 20, 0, 6) );
 name|UIManager
 operator|.
 name|put
@@ -6759,7 +6755,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* tabbedPane.setUI(new BasicTabbedPaneUI() {               @Override              protected int calculateTabAreaHeight(int tab_placement, int run_count, int max_tab_height) {                   //if (tabbedPane.getTabCount()> 1)                     return super.calculateTabAreaHeight(tab_placement, run_count, max_tab_height);                   //else                   //    return 0;               }             @Override               protected int calculateTabAreaWidth(int tabPlacement, int vertRunCount, int maxTabWidth) {                   //if (tabbedPane.getTabCount()> 1)                 //    return super.calculateTabAreaWidth(tabPlacement, vertRunCount, maxTabWidth) + 2000;                   //else                   //    return 0;               }           });           */
 name|contentPane
 operator|.
 name|setRightComponent
@@ -11183,13 +11178,15 @@ name|getName
 argument_list|()
 expr_stmt|;
 block|}
-comment|// idea: "<html><div style='padding:2px 5px;'>" + title + "</div></html>" instead of "title" to get some space around.
-comment|// However, this causes https://sourceforge.net/p/jabref/bugs/1293/
-comment|// Therefore, plain "title" is used
+comment|// We use html here to get some padding around the title
+comment|// There are no closing tags since we would otherwise run in a bug
+comment|// see https://sourceforge.net/p/jabref/bugs/1293/
 name|tabbedPane
 operator|.
 name|add
 argument_list|(
+literal|"<html><div style='padding:2px 5px;'>"
+operator|+
 name|title
 argument_list|,
 name|bp
@@ -15568,7 +15565,7 @@ expr_stmt|;
 block|}
 comment|// Copied from org.pushingpixels.lafwidget.LafWidgetSupport
 comment|// http://jarvis.cs.ucdavis.edu/code_essence/functions/5829321
-comment|// We need to use reflection to change the tabAreaInsets since a TappedPaneUI does not a support a setter for this
+comment|// We need to use reflection to change the tabAreaInsets since a TappedPaneUI does not provide an easier way to set this
 DECL|method|setTabAreaInsets (JTabbedPane tabbedPane, Insets tabAreaInsets)
 specifier|private
 name|void

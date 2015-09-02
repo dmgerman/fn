@@ -648,8 +648,6 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-comment|//panel.frame().getSearchManager().addSearchListener(previewPanel[0]);
-comment|//panel.frame().getSearchManager().addSearchListener(previewPanel[1]);
 block|}
 DECL|method|updatePreviews ()
 specifier|public

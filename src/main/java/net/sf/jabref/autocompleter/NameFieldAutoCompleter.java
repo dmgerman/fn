@@ -70,7 +70,6 @@ end_comment
 
 begin_class
 DECL|class|NameFieldAutoCompleter
-specifier|public
 class|class
 name|NameFieldAutoCompleter
 extends|extends

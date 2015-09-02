@@ -50,20 +50,6 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|autocompleter
-operator|.
 name|AutoCompleter
 import|;
 end_import
@@ -148,7 +134,6 @@ name|String
 argument_list|>
 name|completer
 decl_stmt|;
-comment|//private final AutoCompleter completer;
 comment|// These variables keep track of the situation from time to time.
 DECL|field|toSetIn
 specifier|private
@@ -206,11 +191,14 @@ name|nextFocusListener
 init|=
 literal|null
 decl_stmt|;
-DECL|method|AutoCompleteListener (AutoCompleter completer)
+DECL|method|AutoCompleteListener (AutoCompleter<String> completer)
 specifier|public
 name|AutoCompleteListener
 parameter_list|(
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|completer
 parameter_list|)
 block|{

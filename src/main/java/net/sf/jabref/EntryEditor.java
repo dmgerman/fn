@@ -368,20 +368,6 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|autocompleter
-operator|.
 name|AutoCompleter
 import|;
 end_import
@@ -3536,7 +3522,6 @@ operator|)
 name|source
 argument_list|)
 expr_stmt|;
-comment|//frame.getSearchManager().addSearchListener((SearchTextListener) source);
 comment|/* {             private boolean antialias = Globals.prefs.getBoolean("antialias");              public void paint(Graphics g) {                 Graphics2D g2 = (Graphics2D) g;                 if (antialias)                     g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,                         RenderingHints.VALUE_ANTIALIAS_ON);                 super.paint(g2);             }         };*/
 comment|//DefaultFormBuilder builder = new DefaultFormBuilder
 comment|//        (srcPanel, new FormLayout( "fill:pref:grow", "fill:pref:grow"));

@@ -138,7 +138,7 @@ range|:
 name|completeFields
 control|)
 block|{
-name|AbstractAutoCompleter
+name|AutoCompleter
 name|autoCompleter
 init|=
 name|AutoCompleterFactory

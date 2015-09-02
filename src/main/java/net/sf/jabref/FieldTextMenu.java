@@ -170,7 +170,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|GoogleUrlCleaner
+name|NameListNormalizer
 import|;
 end_import
 
@@ -184,7 +184,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|NameListNormalizer
+name|GoogleUrlCleaner
 import|;
 end_import
 

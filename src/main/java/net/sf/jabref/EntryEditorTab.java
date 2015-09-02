@@ -136,20 +136,6 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|autocompleter
-operator|.
 name|AutoCompleter
 import|;
 end_import
@@ -986,7 +972,6 @@ operator|)
 name|ta
 argument_list|)
 expr_stmt|;
-comment|//frame.getSearchManager().addSearchListener((FieldTextArea) ta);
 name|defaultHeight
 operator|=
 name|ta

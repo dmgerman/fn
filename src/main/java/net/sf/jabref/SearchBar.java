@@ -420,6 +420,20 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
+name|AutoCompleter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|autocompleter
+operator|.
 name|FuzzyTextSearchStrategy
 import|;
 end_import
@@ -4014,12 +4028,15 @@ comment|/* 			 * this.getDocument().addDocumentListener(new DocumentListener() {
 comment|// popup.setFocusable(false);
 comment|// popup.add(list);
 block|}
-DECL|method|setAutoCompleter (AbstractAutoCompleter searchCompleter)
+DECL|method|setAutoCompleter (AutoCompleter<String> searchCompleter)
 specifier|public
 name|void
 name|setAutoCompleter
 parameter_list|(
-name|AbstractAutoCompleter
+name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|searchCompleter
 parameter_list|)
 block|{
@@ -4293,12 +4310,15 @@ expr_stmt|;
 block|}
 comment|/* 		 * public String getText() { System.out.println("get text"); if 		 * (this.getSelectedItem() != null) { return 		 * this.getSelectedItem().toString(); } else return ""; 		 *  		 *  		 * } public void setText(String text) { this.setSelectedItem(text); } 		 */
 block|}
-DECL|method|setAutoCompleter (AbstractAutoCompleter searchCompleter)
+DECL|method|setAutoCompleter (AutoCompleter<String> searchCompleter)
 specifier|public
 name|void
 name|setAutoCompleter
 parameter_list|(
-name|AbstractAutoCompleter
+name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|searchCompleter
 parameter_list|)
 block|{

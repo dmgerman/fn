@@ -454,20 +454,6 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|autocompleter
-operator|.
 name|AutoCompleter
 import|;
 end_import
@@ -497,20 +483,6 @@ operator|.
 name|autocompleter
 operator|.
 name|ContentAutoCompleters
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|autocompleter
-operator|.
-name|NameFieldAutoCompleter
 import|;
 end_import
 
@@ -811,20 +783,6 @@ operator|.
 name|groups
 operator|.
 name|GroupTreeNode
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|AutoCompleteListener
 import|;
 end_import
 
@@ -1729,31 +1687,15 @@ operator|new
 name|GridBagConstraints
 argument_list|()
 decl_stmt|;
-comment|// Hashtable indexing the only search auto completer
-comment|// required for the SearchAutoCompleterUpdater
+comment|// AutoCompleter used in the search bar
 DECL|field|searchAutoCompleter
 specifier|private
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|searchAutoCompleter
 decl_stmt|;
-DECL|field|autoCompleters
-specifier|private
-name|ContentAutoCompleters
-name|autoCompleters
-init|=
-literal|null
-decl_stmt|;
-comment|//= new HashMap<String, AbstractAutoCompleter>();
-comment|// Hashtable that holds as keys the names of the fields where
-comment|// autocomplete is active, and references to the autocompleter objects.
-DECL|field|searchCompleter
-specifier|private
-name|NameFieldAutoCompleter
-name|searchCompleter
-init|=
-literal|null
-decl_stmt|;
-comment|//private AutoCompleteListener searchCompleteListener = null;
 comment|// The undo manager.
 DECL|field|undoManager
 specifier|public
@@ -2031,6 +1973,7 @@ specifier|private
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
+comment|// Returns a collection of AutoCompleters, which are populated from the current database
 DECL|method|getAutoCompleters ()
 specifier|public
 name|ContentAutoCompleters
@@ -2041,7 +1984,11 @@ return|return
 name|autoCompleters
 return|;
 block|}
-comment|//private ContentAutoCompleters autoCompleters;
+DECL|field|autoCompleters
+specifier|private
+name|ContentAutoCompleters
+name|autoCompleters
+decl_stmt|;
 DECL|method|BasePanel (JabRefFrame frame, BibtexDatabase db, File file, MetaData metaData, String encoding)
 specifier|public
 name|BasePanel
@@ -5106,20 +5053,16 @@ name|isVisible
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|boolean
-name|on
-init|=
+if|if
+condition|(
 name|frame
 operator|.
 name|searchBar
 operator|.
 name|isVisible
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|on
 condition|)
+block|{
 name|frame
 operator|.
 name|getSearchBar
@@ -5128,6 +5071,7 @@ operator|.
 name|startSearch
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -11592,7 +11536,6 @@ name|void
 name|updateSearchManager
 parameter_list|()
 block|{
-comment|//frame.getSearchManager().setAutoCompleteListener(searchCompleteListener);
 name|frame
 operator|.
 name|getSearchBar
@@ -11600,7 +11543,7 @@ argument_list|()
 operator|.
 name|setAutoCompleter
 argument_list|(
-name|searchCompleter
+name|searchAutoCompleter
 argument_list|)
 expr_stmt|;
 block|}
@@ -11640,8 +11583,6 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|//searchCompleteListener = new AutoCompleteListener(searchAutoCompleter);
-comment|//searchCompleteListener.setConsumeEnterKey(false); // So you don't have to press Enter twice
 block|}
 comment|/*     public void refreshTable() {         //System.out.println("hiding="+hidingNonHits+"\tlastHits="+lastSearchHits);         // This method is called by EntryTypeForm when a field value is         // stored. The table is scheduled for repaint.         entryTable.assureNotEditing();         //entryTable.invalidate();         BibtexEntry[] bes = entryTable.getSelectedEntries();     if (hidingNonHits)         tableModel.update(lastSearchHits);     else         tableModel.update();     //tableModel.remap();         if ((bes != null)&& (bes.length> 0))             selectEntries(bes, 0);      //long toc = System.currentTimeMillis();     //	Util.pr("Refresh took: "+(toc-tic)+" ms");     } */
 DECL|method|updatePreamble ()

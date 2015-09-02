@@ -70,7 +70,10 @@ decl_stmt|;
 DECL|method|getFor (String fieldName)
 specifier|public
 specifier|static
-name|AbstractAutoCompleter
+name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|getFor
 parameter_list|(
 name|String
@@ -159,7 +162,10 @@ block|}
 DECL|method|getFor (String fieldName, String secondFieldName)
 specifier|public
 specifier|static
-name|AbstractAutoCompleter
+name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|getFor
 parameter_list|(
 name|String

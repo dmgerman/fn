@@ -96,27 +96,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|complete (String s)
-specifier|public
-name|String
-index|[]
-name|complete
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-return|return
-name|super
-operator|.
-name|complete
-argument_list|(
-name|s
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|addBibtexEntry (BibtexEntry entry)
 specifier|public
 name|void
