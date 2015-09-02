@@ -18,13 +18,51 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|io
 operator|.
-name|jabref
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|OpenFileFilter
+name|io
+operator|.
+name|FilenameFilter
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JComponent
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JFileChooser
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JFrame
 import|;
 end_import
 
@@ -42,31 +80,25 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
 operator|.
-name|*
+name|jabref
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|io
+name|sf
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|jabref
 operator|.
-name|io
-operator|.
-name|FilenameFilter
+name|OpenFileFilter
 import|;
 end_import
 
@@ -112,12 +144,14 @@ name|extension
 operator|==
 literal|null
 condition|)
+block|{
 name|off
 operator|=
 operator|new
 name|OpenFileFilter
 argument_list|()
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -131,6 +165,7 @@ operator|.
 name|NONE
 argument_list|)
 condition|)
+block|{
 name|off
 operator|=
 operator|new
@@ -139,9 +174,12 @@ argument_list|(
 name|extension
 argument_list|)
 expr_stmt|;
+block|}
 name|Object
 name|files
 init|=
+name|FileDialogs
+operator|.
 name|getNewFileImpl
 argument_list|(
 name|owner
@@ -235,6 +273,8 @@ name|updateWorkingDirectory
 parameter_list|)
 block|{
 return|return
+name|FileDialogs
+operator|.
 name|getNewFile
 argument_list|(
 name|owner
@@ -281,6 +321,8 @@ name|accessory
 parameter_list|)
 block|{
 return|return
+name|FileDialogs
+operator|.
 name|getNewFile
 argument_list|(
 name|owner
@@ -327,6 +369,8 @@ name|updateWorkingDirectory
 parameter_list|)
 block|{
 return|return
+name|FileDialogs
+operator|.
 name|getNewFile
 argument_list|(
 name|owner
@@ -370,6 +414,8 @@ name|updateWorkingDirectory
 parameter_list|)
 block|{
 return|return
+name|FileDialogs
+operator|.
 name|getNewFile
 argument_list|(
 name|owner
@@ -416,6 +462,8 @@ name|updateWorkingDirectory
 parameter_list|)
 block|{
 return|return
+name|FileDialogs
+operator|.
 name|getNewFile
 argument_list|(
 name|owner
@@ -437,7 +485,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getNewFile (JFrame owner, File directory, String extension, String description, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, JComponent accessory)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|getNewFile
@@ -478,12 +526,14 @@ name|extension
 operator|==
 literal|null
 condition|)
+block|{
 name|off
 operator|=
 operator|new
 name|OpenFileFilter
 argument_list|()
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -497,6 +547,7 @@ operator|.
 name|NONE
 argument_list|)
 condition|)
+block|{
 name|off
 operator|=
 operator|new
@@ -505,10 +556,13 @@ argument_list|(
 name|extension
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 operator|(
 name|String
 operator|)
+name|FileDialogs
+operator|.
 name|getNewFileImpl
 argument_list|(
 name|owner
@@ -534,7 +588,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getNewFileImpl (JFrame owner, File directory, String extension, String description, OpenFileFilter off, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, boolean multipleSelection, JComponent accessory)
-specifier|public
+specifier|private
 specifier|static
 name|Object
 name|getNewFileImpl
@@ -583,11 +637,15 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useNativeFileDialogOnMac"
+name|JabRefPreferences
+operator|.
+name|USE_NATIVE_FILE_DIALOG_ON_MAC
 argument_list|)
 condition|)
 block|{
 return|return
+name|FileDialogs
+operator|.
 name|getNewFileForMac
 argument_list|(
 name|owner
@@ -626,6 +684,7 @@ name|accessory
 operator|!=
 literal|null
 condition|)
+block|{
 name|fc
 operator|.
 name|setAccessory
@@ -633,6 +692,7 @@ argument_list|(
 name|accessory
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -646,6 +706,8 @@ comment|// bug in JGoodies Windows PLAF. This clause can be removed if the
 comment|// bug is fixed, but for now we just resort to the native file
 comment|// dialog, using the same method as is always used on Mac:
 return|return
+name|FileDialogs
+operator|.
 name|getNewFileForMac
 argument_list|(
 name|owner
@@ -766,9 +828,11 @@ name|JFileChooser
 operator|.
 name|APPROVE_OPTION
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 comment|// okay button
 name|File
 name|selectedFile
@@ -863,7 +927,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|,
 name|selectedFile
 operator|.
@@ -877,12 +943,14 @@ condition|(
 operator|!
 name|multipleSelection
 condition|)
+block|{
 return|return
 name|selectedFile
 operator|.
 name|getAbsolutePath
 argument_list|()
 return|;
+block|}
 else|else
 block|{
 name|File
@@ -922,6 +990,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|filenames
 index|[
 name|i
@@ -935,13 +1004,14 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|filenames
 return|;
 block|}
 block|}
 DECL|method|getNewFileForMac (JFrame owner, File directory, String extensions, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, FilenameFilter filter)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|getNewFileForMac
@@ -1072,7 +1142,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|,
 name|fc
 operator|.

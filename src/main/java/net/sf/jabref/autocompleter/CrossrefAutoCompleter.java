@@ -29,36 +29,18 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Crossref autocompleter stores info from the key field.  *   * @author kahlert, cordes  *   */
+comment|/**  * Crossref autocompleter stores info from the key field.  *  * @author kahlert, cordes  */
 end_comment
 
 begin_class
 DECL|class|CrossrefAutoCompleter
-specifier|public
 class|class
 name|CrossrefAutoCompleter
 extends|extends
-name|StringAbstractAutoCompleter
+name|AbstractAutoCompleter
 block|{
-DECL|field|_fieldName
-specifier|public
-name|String
-name|_fieldName
-decl_stmt|;
-comment|/** 	 * @see AutoCompleterFactory 	 */
-DECL|method|CrossrefAutoCompleter (String fieldName)
-specifier|protected
-name|CrossrefAutoCompleter
-parameter_list|(
-name|String
-name|fieldName
-parameter_list|)
-block|{
-name|_fieldName
-operator|=
-name|fieldName
-expr_stmt|;
-block|}
+annotation|@
+name|Override
 DECL|method|isSingleUnitField ()
 specifier|public
 name|boolean
@@ -69,6 +51,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|complete (String s)
 specifier|public
 name|String
@@ -102,10 +86,12 @@ block|{
 if|if
 condition|(
 name|entry
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
+return|return;
+block|}
 name|String
 name|key
 init|=
@@ -120,6 +106,7 @@ name|key
 operator|!=
 literal|null
 condition|)
+block|{
 name|addWordToIndex
 argument_list|(
 name|key

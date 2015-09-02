@@ -30,6 +30,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -71,30 +81,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
 import|;
 end_import
 
@@ -155,6 +141,8 @@ operator|new
 name|RisImporter
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|importer
@@ -214,6 +202,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$_3$"
@@ -242,6 +232,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$_3$"
@@ -270,6 +262,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$_{31}$"
@@ -298,6 +292,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$_3$"
@@ -326,6 +322,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$_{31}$"
@@ -354,6 +352,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$^3$"
@@ -382,6 +382,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$^{31}$"
@@ -410,6 +412,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$^3$"
@@ -438,6 +442,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$^{31}$"
@@ -466,6 +472,8 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"$_{\\$Hello}$"
@@ -520,6 +528,8 @@ name|OutputPrinterToNull
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -540,6 +550,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Editorial: Open Source and Empirical Software Engineering"
@@ -552,6 +564,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Harrison, Warren"
@@ -564,9 +578,11 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
@@ -576,6 +592,8 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Empirical Software Engineering"
@@ -588,6 +606,8 @@ literal|"journal"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2001"
@@ -600,6 +620,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"6"
@@ -612,6 +634,8 @@ literal|"volume"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"3"
@@ -624,6 +648,8 @@ literal|"number"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"193--194"
@@ -636,6 +662,8 @@ literal|"pages"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#sep#"

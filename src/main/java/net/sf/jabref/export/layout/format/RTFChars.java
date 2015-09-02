@@ -22,18 +22,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -60,6 +48,34 @@ name|LayoutFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Transform a LaTeX-String to RTF.  *   * This method will:  *   *   1.) Remove LaTeX-Command sequences.  *     *   2.) Replace LaTeX-Special chars with RTF aquivalents.  *     *   3.) Replace emph and textit and textbf with their RTF replacements.  *     *   4.) Take special care to save all unicode characters correctly.  *  *   5.) Replace --- by \emdash and -- by \endash.  */
 end_comment
@@ -73,24 +89,24 @@ implements|implements
 name|LayoutFormatter
 block|{
 comment|// Instantiate logger:
-DECL|field|logger
+DECL|field|LOGGER
 specifier|private
 specifier|static
-name|Logger
-name|logger
+specifier|final
+name|Log
+name|LOGGER
 init|=
-name|Logger
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
-name|RTFChars
+name|LayoutFormatter
 operator|.
 name|class
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|format (String field)
 specifier|public
 name|String
@@ -170,7 +186,7 @@ else|:
 literal|""
 operator|)
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 name|System
@@ -186,7 +202,7 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 comment|/**/
@@ -210,7 +226,7 @@ literal|"Char: '"
 operator|+
 name|c
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 if|if
@@ -266,13 +282,17 @@ operator|!
 name|incommand
 operator|&&
 operator|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 operator|)
 condition|)
 block|{
@@ -364,16 +384,20 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 break|break
 name|testCharCom
 break|;
+block|}
 name|String
 name|command
 init|=
@@ -465,6 +489,7 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -472,6 +497,7 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
+block|}
 name|incommand
 operator|=
 literal|false
@@ -515,6 +541,7 @@ literal|'}'
 operator|)
 operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -522,6 +549,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 assert|assert
@@ -623,16 +651,20 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 break|break
 name|testContent
 break|;
+block|}
 if|if
 condition|(
 operator|(
@@ -731,7 +763,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"}"
+literal|'}'
 argument_list|)
 expr_stmt|;
 block|}
@@ -784,15 +816,15 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"}"
+literal|'}'
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-name|logger
+name|LOGGER
 operator|.
-name|fine
+name|info
 argument_list|(
 literal|"Unknown command "
 operator|+
@@ -812,6 +844,7 @@ comment|// We have to add the space a
 block|}
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -819,6 +852,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|incommand
 operator|=
@@ -862,6 +896,7 @@ name|c
 operator|<
 literal|128
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -869,7 +904,9 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -890,6 +927,7 @@ argument_list|(
 literal|'?'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -926,7 +964,7 @@ literal|"{\\\\rdblquote}"
 argument_list|)
 return|;
 block|}
-comment|/** 	 * @param text the text to extract the part from 	 * @param i the position to start 	 * @param commandNestedInBraces true if the command is nested in braces (\emph{xy}), false if spaces are sued (\emph xy)  	 * @return a tuple of number of added characters and the extracted part 	 */
+comment|/**      * @param text the text to extract the part from      * @param i the position to start      * @param commandNestedInBraces true if the command is nested in braces (\emph{xy}), false if spaces are sued (\emph xy)       * @return a tuple of number of added characters and the extracted part      */
 DECL|method|getPart (String text, int i, boolean commandNestedInBraces)
 specifier|private
 name|IntAndString
@@ -950,11 +988,11 @@ name|count
 init|=
 literal|0
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|part
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|loop
@@ -1058,15 +1096,18 @@ return|;
 block|}
 DECL|class|IntAndString
 specifier|private
+specifier|static
 class|class
 name|IntAndString
 block|{
 DECL|field|i
 specifier|public
+specifier|final
 name|int
 name|i
 decl_stmt|;
 DECL|field|s
+specifier|final
 name|String
 name|s
 decl_stmt|;

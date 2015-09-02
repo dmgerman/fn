@@ -59,7 +59,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages visibility of SideShowComponents in a given newly constructed  * sidePane.  *   * @version $Revision$ ($Date$)  *   */
+comment|/**  * Manages visibility of SideShowComponents in a given newly constructed  * sidePane.  */
 end_comment
 
 begin_class
@@ -69,6 +69,8 @@ class|class
 name|SidePaneManager
 block|{
 DECL|field|frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -77,10 +79,14 @@ name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|sidep
+specifier|private
+specifier|final
 name|SidePane
 name|sidep
 decl_stmt|;
 DECL|field|components
+specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -99,6 +105,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|componentNames
+specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|SidePaneComponent
@@ -117,6 +125,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|visible
+specifier|private
+specifier|final
 name|List
 argument_list|<
 name|SidePaneComponent
@@ -144,7 +154,7 @@ name|frame
 operator|=
 name|frame
 expr_stmt|;
-comment|/* 		 * Change by Morten Alver 2005.12.04: By postponing the updating of the 		 * side pane components, we get rid of the annoying latency when 		 * switching tabs: 		 */
+comment|/*          * Change by Morten Alver 2005.12.04: By postponing the updating of the          * side pane components, we get rid of the annoying latency when          * switching tabs:          */
 name|frame
 operator|.
 name|tabbedPane
@@ -155,6 +165,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -171,6 +183,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -359,6 +373,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|System
 operator|.
 name|err
@@ -372,6 +387,7 @@ operator|+
 literal|"' unknown."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|hide (String name)
 specifier|public
@@ -409,6 +425,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|System
 operator|.
 name|err
@@ -422,6 +439,7 @@ operator|+
 literal|"' unknown."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|register (String name, SidePaneComponent comp)
 specifier|public
@@ -553,7 +571,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getComponentName (SidePaneComponent comp)
-specifier|public
+specifier|private
 name|String
 name|getComponentName
 parameter_list|(
@@ -633,7 +651,9 @@ name|comp
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|visible
@@ -699,7 +719,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"sidePaneComponentNames"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_COMPONENT_NAMES
 argument_list|)
 decl_stmt|;
 name|String
@@ -712,7 +734,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"sidePaneComponentPreferredPositions"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_COMPONENT_PREFERRED_POSITIONS
 argument_list|)
 decl_stmt|;
 for|for
@@ -814,26 +838,39 @@ argument_list|(
 name|componentName
 argument_list|,
 name|index
-operator|++
 argument_list|)
+expr_stmt|;
+name|index
+operator|++
 expr_stmt|;
 block|}
 comment|// Split the map into a pair of parallel String arrays suitable for storage
+name|Set
+argument_list|<
 name|String
-index|[]
-name|componentNames
+argument_list|>
+name|var
 init|=
 name|preferredPositions
 operator|.
 name|keySet
 argument_list|()
+decl_stmt|;
+name|String
+index|[]
+name|componentNames
+init|=
+name|var
 operator|.
 name|toArray
 argument_list|(
 operator|new
 name|String
 index|[
-literal|0
+name|var
+operator|.
+name|size
+argument_list|()
 index|]
 argument_list|)
 decl_stmt|;
@@ -892,7 +929,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"sidePaneComponentNames"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_COMPONENT_NAMES
 argument_list|,
 name|componentNames
 argument_list|)
@@ -903,7 +942,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"sidePaneComponentPreferredPositions"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_COMPONENT_PREFERRED_POSITIONS
 argument_list|,
 name|componentPositions
 argument_list|)
@@ -922,6 +963,7 @@ argument_list|>
 block|{
 DECL|field|preferredPositions
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -1024,12 +1066,7 @@ argument_list|)
 operator|.
 name|compareTo
 argument_list|(
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
 name|pos2
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1209,9 +1246,9 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Update all side pane components to show information from the given 	 * BasePanel. 	 *  	 * @param panel 	 */
+comment|/**      * Update all side pane components to show information from the given      * BasePanel.      *       * @param panel      */
 DECL|method|setActiveBasePanel (BasePanel panel)
-specifier|public
+specifier|private
 name|void
 name|setActiveBasePanel
 parameter_list|(
@@ -1221,21 +1258,26 @@ parameter_list|)
 block|{
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|String
-name|key
+argument_list|,
+name|SidePaneComponent
+argument_list|>
+name|stringSidePaneComponentEntry
 range|:
 name|components
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
 block|{
-name|components
+name|stringSidePaneComponentEntry
 operator|.
-name|get
-argument_list|(
-name|key
-argument_list|)
+name|getValue
+argument_list|()
 operator|.
 name|setActiveBasePanel
 argument_list|(
@@ -1259,12 +1301,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|visible
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|boolean
@@ -1297,7 +1338,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"sidePaneWidth"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_WIDTH
 argument_list|)
 decl_stmt|;
 if|if
@@ -1306,6 +1349,7 @@ name|width
 operator|>
 literal|0
 condition|)
+block|{
 name|frame
 operator|.
 name|contentPane
@@ -1315,7 +1359,9 @@ argument_list|(
 name|width
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|frame
 operator|.
 name|contentPane
@@ -1333,6 +1379,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
 block|{
 if|if
@@ -1342,13 +1389,16 @@ operator|.
 name|isVisible
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"sidePaneWidth"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_WIDTH
 argument_list|,
 name|frame
 operator|.
@@ -1358,6 +1408,7 @@ name|getDividerLocation
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|sidep
 operator|.
 name|setVisible

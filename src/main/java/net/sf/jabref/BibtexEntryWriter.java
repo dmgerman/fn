@@ -26,6 +26,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -85,6 +99,8 @@ decl_stmt|;
 static|static
 block|{
 comment|// The field name display map.
+name|BibtexEntryWriter
+operator|.
 name|tagDisplayNameMap
 operator|.
 name|put
@@ -94,6 +110,8 @@ argument_list|,
 literal|"BibTeXKey"
 argument_list|)
 expr_stmt|;
+name|BibtexEntryWriter
+operator|.
 name|tagDisplayNameMap
 operator|.
 name|put
@@ -103,6 +121,8 @@ argument_list|,
 literal|"HowPublished"
 argument_list|)
 expr_stmt|;
+name|BibtexEntryWriter
+operator|.
 name|tagDisplayNameMap
 operator|.
 name|put
@@ -112,6 +132,8 @@ argument_list|,
 literal|"LastChecked"
 argument_list|)
 expr_stmt|;
+name|BibtexEntryWriter
+operator|.
 name|tagDisplayNameMap
 operator|.
 name|put
@@ -121,6 +143,8 @@ argument_list|,
 literal|"ISBN"
 argument_list|)
 expr_stmt|;
+name|BibtexEntryWriter
+operator|.
 name|tagDisplayNameMap
 operator|.
 name|put
@@ -130,6 +154,8 @@ argument_list|,
 literal|"ISSN"
 argument_list|)
 expr_stmt|;
+name|BibtexEntryWriter
+operator|.
 name|tagDisplayNameMap
 operator|.
 name|put
@@ -165,9 +191,7 @@ name|t
 range|:
 name|BibtexEntryType
 operator|.
-name|ALL_TYPES
-operator|.
-name|values
+name|getAllValues
 argument_list|()
 control|)
 block|{
@@ -309,14 +333,16 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"includeEmptyFields"
+name|JabRefPreferences
+operator|.
+name|INCLUDE_EMPTY_FIELDS
 argument_list|)
 decl_stmt|;
-DECL|field|writeFieldSortStype
+DECL|field|writeFieldSortStyle
 specifier|private
 specifier|final
 name|int
-name|writeFieldSortStype
+name|writeFieldSortStyle
 init|=
 name|Globals
 operator|.
@@ -369,13 +395,13 @@ name|IOException
 block|{
 switch|switch
 condition|(
-name|writeFieldSortStype
+name|writeFieldSortStyle
 condition|)
 block|{
 case|case
 literal|0
 case|:
-name|writeSorted
+name|writeNewStyle
 argument_list|(
 name|entry
 argument_list|,
@@ -386,7 +412,7 @@ break|break;
 case|case
 literal|1
 case|:
-name|writeUnsorted
+name|writeOldStyle
 argument_list|(
 name|entry
 argument_list|,
@@ -408,10 +434,10 @@ break|break;
 block|}
 block|}
 comment|/**      * new style ver>=2.10, sort the field for requiredFields, optionalFields and other fields separately      *      * @param entry      * @param out      * @throws IOException      */
-DECL|method|writeSorted (BibtexEntry entry, Writer out)
+DECL|method|writeNewStyle (BibtexEntry entry, Writer out)
 specifier|private
 name|void
-name|writeSorted
+name|writeNewStyle
 parameter_list|(
 name|BibtexEntry
 name|entry
@@ -427,7 +453,7 @@ name|out
 operator|.
 name|write
 argument_list|(
-literal|"@"
+literal|'@'
 operator|+
 name|entry
 operator|.
@@ -437,13 +463,13 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|"{"
+literal|'{'
 argument_list|)
 expr_stmt|;
 name|String
 name|str
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -473,7 +499,7 @@ else|:
 name|str
 operator|)
 operator|+
-literal|","
+literal|','
 operator|+
 name|Globals
 operator|.
@@ -622,8 +648,6 @@ init|=
 literal|true
 decl_stmt|,
 name|previous
-init|=
-literal|true
 decl_stmt|;
 name|previous
 operator|=
@@ -679,9 +703,7 @@ name|value
 argument_list|,
 name|hasWritten
 argument_list|,
-name|hasWritten
-operator|&&
-name|first
+literal|false
 argument_list|)
 expr_stmt|;
 name|written
@@ -762,6 +784,7 @@ argument_list|)
 operator|&&
 name|writeIt
 condition|)
+block|{
 name|remainingFields
 operator|.
 name|add
@@ -769,6 +792,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|first
 operator|=
@@ -796,9 +820,7 @@ name|field
 argument_list|,
 name|hasWritten
 argument_list|,
-name|hasWritten
-operator|&&
-name|first
+literal|false
 argument_list|)
 expr_stmt|;
 name|first
@@ -821,7 +843,7 @@ else|:
 literal|""
 operator|)
 operator|+
-literal|"}"
+literal|'}'
 operator|+
 name|Globals
 operator|.
@@ -830,10 +852,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * old style ver<=2.9.2, write fields in the order of requiredFields, optionalFields and other fields, but does not sort the fields.      *      * @param entry      * @param out      * @throws IOException      */
-DECL|method|writeUnsorted (BibtexEntry entry, Writer out)
+DECL|method|writeOldStyle (BibtexEntry entry, Writer out)
 specifier|private
 name|void
-name|writeUnsorted
+name|writeOldStyle
 parameter_list|(
 name|BibtexEntry
 name|entry
@@ -849,7 +871,7 @@ name|out
 operator|.
 name|write
 argument_list|(
-literal|"@"
+literal|'@'
 operator|+
 name|entry
 operator|.
@@ -866,13 +888,13 @@ operator|.
 name|US
 argument_list|)
 operator|+
-literal|"{"
+literal|'{'
 argument_list|)
 expr_stmt|;
 name|String
 name|str
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -902,7 +924,7 @@ else|:
 name|str
 operator|)
 operator|+
-literal|","
+literal|','
 operator|+
 name|Globals
 operator|.
@@ -958,6 +980,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 for|for
 control|(
 name|String
@@ -993,6 +1016,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|// Then optional fields.
 name|s
 operator|=
@@ -1007,6 +1031,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 for|for
 control|(
 name|String
@@ -1054,6 +1079,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Then write remaining fields in alphabetic order.
@@ -1114,6 +1140,7 @@ argument_list|)
 operator|&&
 name|writeIt
 condition|)
+block|{
 name|remainingFields
 operator|.
 name|add
@@ -1122,6 +1149,7 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 for|for
 control|(
 name|String
@@ -1129,6 +1157,7 @@ name|field
 range|:
 name|remainingFields
 control|)
+block|{
 name|hasWritten
 operator|=
 name|hasWritten
@@ -1146,6 +1175,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Finally, end the entry.
 name|out
 operator|.
@@ -1161,7 +1191,7 @@ else|:
 literal|""
 operator|)
 operator|+
-literal|"}"
+literal|'}'
 operator|+
 name|Globals
 operator|.
@@ -1188,7 +1218,7 @@ name|out
 operator|.
 name|write
 argument_list|(
-literal|"@"
+literal|'@'
 operator|+
 name|entry
 operator|.
@@ -1198,13 +1228,13 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|"{"
+literal|'{'
 argument_list|)
 expr_stmt|;
 name|String
 name|str
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -1234,7 +1264,7 @@ else|:
 name|str
 operator|)
 operator|+
-literal|","
+literal|','
 operator|+
 name|Globals
 operator|.
@@ -1344,12 +1374,8 @@ block|}
 comment|// Then write remaining fields in alphabetic order.
 name|boolean
 name|first
-init|=
-literal|true
 decl_stmt|,
 name|previous
-init|=
-literal|true
 decl_stmt|;
 name|previous
 operator|=
@@ -1415,6 +1441,7 @@ argument_list|)
 operator|&&
 name|writeIt
 condition|)
+block|{
 name|remainingFields
 operator|.
 name|add
@@ -1422,6 +1449,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|//END get remaining fields
 name|first
@@ -1450,9 +1478,7 @@ name|field
 argument_list|,
 name|hasWritten
 argument_list|,
-name|hasWritten
-operator|&&
-name|first
+literal|false
 argument_list|)
 expr_stmt|;
 name|first
@@ -1475,7 +1501,7 @@ else|:
 literal|""
 operator|)
 operator|+
-literal|"}"
+literal|'}'
 operator|+
 name|Globals
 operator|.
@@ -1519,9 +1545,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|o
 operator|!=
 literal|null
+operator|)
 operator|||
 name|includeEmptyFields
 condition|)
@@ -1530,21 +1558,24 @@ if|if
 condition|(
 name|isNotFirst
 condition|)
+block|{
 name|out
 operator|.
 name|write
 argument_list|(
-literal|","
+literal|','
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|isNextGroup
 condition|)
+block|{
 name|out
 operator|.
 name|write
@@ -1554,6 +1585,7 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
+block|}
 name|out
 operator|.
 name|write
@@ -1620,9 +1652,11 @@ literal|true
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 comment|/**      * Get display version of a entry field.      *<p/>      * BibTeX is case-insensitive therefore there is no difference between:      * howpublished, HOWPUBLISHED, HowPublished, etc. Since the camel case      * version is the most easy to read this should be the one written in the      * *.bib file. Since there is no way how do detect multi-word strings by      * default the first character will be made uppercase. In other characters      * case needs to be changed the {@link #tagDisplayNameMap} will be used.      *      * @param field The name of the field.      * @return The display version of the field name.      */
 DECL|method|getFieldDisplayName (String field)
@@ -1638,10 +1672,8 @@ if|if
 condition|(
 name|field
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 comment|// hard coded "UNKNOWN" is assigned to a field without any name
@@ -1665,6 +1697,8 @@ control|(
 name|int
 name|i
 init|=
+name|BibtexEntryWriter
+operator|.
 name|maxFieldLength
 operator|-
 name|field
@@ -1679,10 +1713,12 @@ condition|;
 name|i
 operator|--
 control|)
+block|{
 name|suffix
 operator|+=
 literal|" "
 expr_stmt|;
+block|}
 block|}
 name|String
 name|res
@@ -1694,6 +1730,8 @@ condition|)
 block|{
 if|if
 condition|(
+name|BibtexEntryWriter
+operator|.
 name|tagDisplayNameMap
 operator|.
 name|containsKey
@@ -1707,6 +1745,8 @@ condition|)
 block|{
 name|res
 operator|=
+name|BibtexEntryWriter
+operator|.
 name|tagDisplayNameMap
 operator|.
 name|get

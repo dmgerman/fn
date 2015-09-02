@@ -78,13 +78,29 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|apache
 operator|.
-name|jabref
+name|commons
 operator|.
-name|BibtexEntry
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -96,43 +112,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
+name|*
 import|;
 end_import
 
@@ -149,6 +129,7 @@ extends|extends
 name|ImportFormat
 block|{
 DECL|field|SEPARATOR
+specifier|private
 specifier|final
 name|String
 name|SEPARATOR
@@ -166,7 +147,25 @@ literal|48
 block|}
 argument_list|)
 decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|SixpackImporter
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -178,6 +177,8 @@ literal|"Sixpack"
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -189,6 +190,8 @@ literal|"sixpack"
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -253,9 +256,11 @@ argument_list|(
 name|SEPARATOR
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -265,6 +270,8 @@ literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -588,9 +595,11 @@ name|ln
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|String
 index|[]
 name|fieldDef
@@ -604,13 +613,9 @@ argument_list|)
 decl_stmt|;
 name|String
 name|s
-init|=
-literal|null
 decl_stmt|;
 name|BibtexEntry
 name|entry
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(
@@ -660,8 +665,10 @@ name|length
 operator|<
 literal|2
 condition|)
+block|{
 continue|continue;
 comment|// Avoid ArrayIndexOutOfBoundsException
+block|}
 name|BibtexEntryType
 name|typ
 init|=
@@ -702,10 +709,12 @@ argument_list|(
 literal|"Masterthesis"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"mastersthesis"
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|fields
@@ -718,10 +727,12 @@ argument_list|(
 literal|"PhD-Thesis"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"phdthesis"
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|fields
@@ -734,10 +745,12 @@ argument_list|(
 literal|"miscellaneous"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"misc"
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|fields
@@ -750,10 +763,12 @@ argument_list|(
 literal|"Conference"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"proceedings"
 expr_stmt|;
+block|}
 name|typ
 operator|=
 name|BibtexEntryType
@@ -772,9 +787,9 @@ operator|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|,
 name|typ
@@ -844,6 +859,7 @@ argument_list|(
 literal|"editor"
 argument_list|)
 condition|)
+block|{
 name|ImportFormatReader
 operator|.
 name|setIfNecessary
@@ -872,6 +888,7 @@ literal|" and "
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -882,6 +899,7 @@ argument_list|(
 literal|"pages"
 argument_list|)
 condition|)
+block|{
 name|ImportFormatReader
 operator|.
 name|setIfNecessary
@@ -903,6 +921,7 @@ literal|"--"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -942,10 +961,12 @@ argument_list|(
 literal|"ps.gz"
 argument_list|)
 condition|)
+block|{
 name|fieldName
 operator|=
 literal|"ps"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -959,10 +980,12 @@ argument_list|(
 literal|"html"
 argument_list|)
 condition|)
+block|{
 name|fieldName
 operator|=
 literal|"url"
 expr_stmt|;
+block|}
 name|ImportFormatReader
 operator|.
 name|setIfNecessary
@@ -979,6 +1002,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|ImportFormatReader
 operator|.
 name|setIfNecessary
@@ -995,6 +1019,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 name|bibitems
 operator|.
 name|add
@@ -1009,11 +1034,13 @@ name|NullPointerException
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Problem parsing Sixpack entry, ignoring entry."
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}

@@ -288,17 +288,18 @@ end_comment
 
 begin_class
 DECL|class|ManagePluginsDialog
-specifier|public
 class|class
 name|ManagePluginsDialog
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|diag
 specifier|private
+specifier|final
 name|JDialog
 name|diag
 decl_stmt|;
@@ -311,11 +312,15 @@ argument_list|>
 name|plugins
 decl_stmt|;
 DECL|field|table
-DECL|field|tableOther
 specifier|private
+specifier|final
 name|JTable
 name|table
-decl_stmt|,
+decl_stmt|;
+DECL|field|tableOther
+specifier|private
+specifier|final
+name|JTable
 name|tableOther
 decl_stmt|;
 DECL|method|ManagePluginsDialog (JabRefFrame frame)
@@ -798,6 +803,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -821,6 +828,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -843,6 +852,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -874,6 +885,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1049,7 +1062,9 @@ name|JOptionPane
 operator|.
 name|YES_OPTION
 condition|)
+block|{
 return|return;
+block|}
 name|boolean
 name|success
 init|=
@@ -1424,7 +1439,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|installPlugin ()
-specifier|public
+specifier|private
 name|void
 name|installPlugin
 parameter_list|()
@@ -1464,7 +1479,9 @@ name|filename
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|File
 name|f
 init|=
@@ -1521,7 +1538,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|downloadPlugin ()
-specifier|public
+specifier|private
 name|void
 name|downloadPlugin
 parameter_list|()
@@ -1547,7 +1564,9 @@ name|url
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 try|try
 block|{
 name|installFromURL
@@ -1594,7 +1613,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|installFromURL (URL url)
-specifier|public
+specifier|private
 name|void
 name|installFromURL
 parameter_list|(
@@ -1669,6 +1688,7 @@ operator|&&
 operator|(
 name|pos
 operator|<
+operator|(
 name|path
 operator|.
 name|length
@@ -1676,7 +1696,9 @@ argument_list|()
 operator|-
 literal|1
 operator|)
+operator|)
 condition|)
+block|{
 name|path
 operator|=
 name|path
@@ -1688,6 +1710,7 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|PluginInstaller
 operator|.
 name|installPlugin
@@ -1722,7 +1745,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|installFromFile (File file)
-specifier|public
+specifier|private
 name|void
 name|installFromFile
 parameter_list|(
@@ -1746,6 +1769,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|class|PluginTableFormat
+specifier|private
 class|class
 name|PluginTableFormat
 implements|implements
@@ -1754,6 +1778,8 @@ argument_list|<
 name|NameAndVersion
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1764,6 +1790,8 @@ return|return
 literal|3
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -1779,6 +1807,7 @@ name|col
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|Globals
 operator|.
@@ -1787,6 +1816,7 @@ argument_list|(
 literal|"Plugin name"
 argument_list|)
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1794,6 +1824,7 @@ name|col
 operator|==
 literal|1
 condition|)
+block|{
 return|return
 name|Globals
 operator|.
@@ -1802,7 +1833,9 @@ argument_list|(
 literal|"Version"
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|Globals
 operator|.
@@ -1812,6 +1845,9 @@ literal|"Status"
 argument_list|)
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|getColumnValue (NameAndVersion nav, int col)
 specifier|public
 name|Object
@@ -1830,11 +1866,13 @@ name|col
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|nav
 operator|.
 name|name
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1859,6 +1897,7 @@ operator|.
 name|ZERO
 argument_list|)
 condition|)
+block|{
 return|return
 name|nav
 operator|.
@@ -1867,7 +1906,9 @@ operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 name|Globals
 operator|.
@@ -1876,6 +1917,7 @@ argument_list|(
 literal|"Unknown"
 argument_list|)
 return|;
+block|}
 block|}
 else|else
 block|{
@@ -1893,6 +1935,7 @@ name|status
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|Globals
 operator|.
@@ -1901,6 +1944,7 @@ argument_list|(
 literal|"Not loaded"
 argument_list|)
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1908,6 +1952,7 @@ name|status
 operator|==
 literal|1
 condition|)
+block|{
 return|return
 name|Globals
 operator|.
@@ -1916,7 +1961,9 @@ argument_list|(
 literal|"Loaded"
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|Globals
 operator|.
@@ -1925,6 +1972,7 @@ argument_list|(
 literal|"Error"
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 block|}

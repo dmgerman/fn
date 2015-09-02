@@ -28,6 +28,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
 name|Util
 import|;
 end_import
@@ -76,10 +78,6 @@ name|IOException
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: Christoph Arbeit  * Date: 28.09.2010  * Time: 12:06:57  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|LabelLinkListener
 specifier|public
@@ -88,13 +86,9 @@ name|LabelLinkListener
 implements|implements
 name|MouseListener
 block|{
-DECL|field|link
-specifier|private
-name|String
-name|link
-decl_stmt|;
 DECL|field|component
 specifier|private
+specifier|final
 name|Component
 name|component
 decl_stmt|;
@@ -111,17 +105,13 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|link
-operator|=
-name|link
-expr_stmt|;
-name|this
-operator|.
 name|component
 operator|=
 name|c
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|mousePressed (MouseEvent e)
 specifier|public
 name|void
@@ -160,6 +150,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|mouseReleased (MouseEvent e)
 specifier|public
 name|void
@@ -168,7 +160,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{          }
+block|{      }
+annotation|@
+name|Override
 DECL|method|mouseEntered (MouseEvent e)
 specifier|public
 name|void
@@ -192,6 +186,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|mouseExited (MouseEvent e)
 specifier|public
 name|void
@@ -215,6 +211,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|mouseClicked (MouseEvent e)
 specifier|public
 name|void
@@ -223,7 +221,7 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{         }
+block|{     }
 block|}
 end_class
 

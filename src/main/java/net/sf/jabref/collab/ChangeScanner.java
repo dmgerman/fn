@@ -204,22 +204,30 @@ name|ParserResult
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_class
 DECL|class|ChangeScanner
 specifier|public
 class|class
 name|ChangeScanner
-extends|extends
-name|Thread
+implements|implements
+name|Runnable
 block|{
-DECL|field|MATCH_THRESHOLD
-specifier|final
-name|double
-name|MATCH_THRESHOLD
-init|=
-literal|0.4
-decl_stmt|;
 DECL|field|sortBy
+specifier|private
 specifier|final
 name|String
 index|[]
@@ -237,36 +245,52 @@ literal|"title"
 block|}
 decl_stmt|;
 DECL|field|f
+specifier|private
+specifier|final
 name|File
 name|f
 decl_stmt|;
 DECL|field|inMem
-DECL|field|inTemp
+specifier|private
+specifier|final
 name|BibtexDatabase
 name|inMem
-decl_stmt|,
-name|inTemp
-init|=
-literal|null
 decl_stmt|;
 DECL|field|mdInMem
-DECL|field|mdInTemp
+specifier|private
+specifier|final
 name|MetaData
 name|mdInMem
-decl_stmt|,
-name|mdInTemp
 decl_stmt|;
 DECL|field|panel
+specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
+decl_stmt|;
+DECL|field|inTemp
+specifier|private
+name|BibtexDatabase
+name|inTemp
+init|=
+literal|null
+decl_stmt|;
+DECL|field|mdInTemp
+specifier|private
+name|MetaData
+name|mdInTemp
 decl_stmt|;
 comment|/**      * We create an ArrayList to hold the changes we find. These will be added in the form      * of UndoEdit objects. We instantiate these so that the changes found in the file on disk      * can be reproduced in memory by calling redo() on them. REDO, not UNDO!      */
 comment|//ArrayList changes = new ArrayList();
 DECL|field|changes
+specifier|private
+specifier|final
 name|DefaultMutableTreeNode
 name|changes
 init|=
@@ -282,7 +306,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|//  NamedCompound edit = new NamedCompound("Merged external changes")
-DECL|method|ChangeScanner (JabRefFrame frame, BasePanel bp)
+DECL|method|ChangeScanner (JabRefFrame frame, BasePanel bp, File file)
 specifier|public
 name|ChangeScanner
 parameter_list|(
@@ -291,9 +315,14 @@ name|frame
 parameter_list|,
 name|BasePanel
 name|bp
+parameter_list|,
+name|File
+name|file
 parameter_list|)
 block|{
 comment|//, BibtexDatabase inMem, MetaData mdInMem) {
+name|this
+operator|.
 name|panel
 operator|=
 name|bp
@@ -322,34 +351,15 @@ operator|.
 name|metaData
 argument_list|()
 expr_stmt|;
-comment|// Set low priority:
-name|setPriority
-argument_list|(
-name|Thread
-operator|.
-name|MIN_PRIORITY
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|changeScan (File f)
-specifier|public
-name|void
-name|changeScan
-parameter_list|(
-name|File
-name|f
-parameter_list|)
-block|{
 name|this
 operator|.
 name|f
 operator|=
-name|f
-expr_stmt|;
-name|start
-argument_list|()
+name|file
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -390,7 +400,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -423,7 +435,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -725,6 +739,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -832,13 +848,18 @@ name|void
 name|storeTempDatabase
 parameter_list|()
 block|{
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
 argument_list|(
 operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -910,9 +931,6 @@ block|}
 block|}
 block|}
 argument_list|)
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|scanMetaData (MetaData inMem, MetaData inTemp, MetaData onDisk)
@@ -1019,6 +1037,7 @@ argument_list|(
 name|vit
 argument_list|)
 condition|)
+block|{
 name|mdc
 operator|.
 name|insertMetaDataChange
@@ -1028,6 +1047,7 @@ argument_list|,
 name|vod
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Remember that we've handled this one:
 name|handledOnDisk
 operator|.
@@ -1083,6 +1103,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|changes
 operator|.
 name|add
@@ -1090,6 +1111,7 @@ argument_list|(
 name|mdc
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|scanEntries (EntrySorter mem, EntrySorter tmp, EntrySorter disk)
 specifier|private
@@ -1111,8 +1133,6 @@ comment|// successive order from the beginning. Entries "further down" in the "d
 comment|// can also be matched.
 name|int
 name|piv1
-init|=
-literal|0
 decl_stmt|,
 name|piv2
 init|=
@@ -1257,12 +1277,14 @@ if|if
 condition|(
 name|piv2
 operator|<
+operator|(
 name|disk
 operator|.
 name|getEntryCount
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 for|for
@@ -1297,6 +1319,7 @@ operator|+
 name|i
 argument_list|)
 condition|)
+block|{
 name|comp
 operator|=
 name|DuplicateCheck
@@ -1318,12 +1341,15 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|comp
 operator|=
 operator|-
 literal|1
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|comp
@@ -1359,12 +1385,11 @@ comment|// Now we've found all exact matches, look through the remaining entries
 comment|// for close matches.
 if|if
 condition|(
+operator|!
 name|notMatched
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for
@@ -1387,17 +1412,12 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|Integer
-name|integ
-init|=
+name|piv1
+operator|=
 name|it
 operator|.
 name|next
 argument_list|()
-decl_stmt|;
-name|piv1
-operator|=
-name|integ
 expr_stmt|;
 comment|// These two variables will keep track of which entry most closely matches the
 comment|// one we're looking at, in case none matches completely.
@@ -1414,20 +1434,19 @@ literal|0
 decl_stmt|;
 name|double
 name|comp
-init|=
-operator|-
-literal|1
 decl_stmt|;
 if|if
 condition|(
 name|piv2
 operator|<
+operator|(
 name|disk
 operator|.
 name|getEntryCount
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 for|for
@@ -1484,11 +1503,13 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|comp
 operator|=
 operator|-
 literal|1
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|comp
@@ -1507,6 +1528,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|double
+name|MATCH_THRESHOLD
+init|=
+literal|0.4
+decl_stmt|;
 if|if
 condition|(
 name|bestMatch
@@ -1606,7 +1632,7 @@ argument_list|(
 name|ec
 argument_list|)
 expr_stmt|;
-comment|/*NamedCompound ce = new NamedCompound("Removed entry");           ce.addEdit(new UndoableInsertEntry(inMem, tmp.getEntryAt(piv1), panel));           ce.end();           changes.add(ce);*/
+comment|/*NamedCompound ce = new NamedCompound("Removed entry");                     ce.addEdit(new UndoableInsertEntry(inMem, tmp.getEntryAt(piv1), panel));                     ce.end();                     changes.add(ce);*/
 block|}
 block|}
 block|}
@@ -1739,7 +1765,7 @@ name|ec
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*NamedCompound ce = new NamedCompound("Added entry");           ce.addEdit(new UndoableRemoveEntry(inMem, disk.getEntryAt(i), panel));           ce.end();           changes.add(ce);*/
+comment|/*NamedCompound ce = new NamedCompound("Added entry");                     ce.addEdit(new UndoableRemoveEntry(inMem, disk.getEntryAt(i), panel));                     ce.end();                     changes.add(ce);*/
 block|}
 block|}
 comment|//System.out.println("Suspected new entries in file: "+(disk.getEntryCount()-used.size()));
@@ -1834,7 +1860,9 @@ name|comp
 operator|>
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 block|}
 return|return
 name|neu
@@ -1905,6 +1933,7 @@ argument_list|(
 name|disk
 argument_list|)
 condition|)
+block|{
 name|changes
 operator|.
 name|add
@@ -1921,6 +1950,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -1933,10 +1963,8 @@ operator|&&
 operator|!
 name|disk
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|changes
@@ -2000,7 +2028,9 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|HashSet
 argument_list|<
 name|Object
@@ -2168,6 +2198,7 @@ name|mem
 operator|!=
 literal|null
 condition|)
+block|{
 name|changes
 operator|.
 name|add
@@ -2201,7 +2232,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|changes
 operator|.
 name|add
@@ -2232,6 +2265,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|used
 operator|.
@@ -2263,12 +2297,11 @@ block|}
 comment|// See if we can detect a name change for those entries that we couldn't match.
 if|if
 condition|(
+operator|!
 name|notMatched
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for
@@ -2473,12 +2506,11 @@ block|}
 block|}
 if|if
 condition|(
+operator|!
 name|notMatched
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 comment|// Still one or more non-matched strings. So they must have been removed.
@@ -2625,9 +2657,11 @@ argument_list|(
 name|name
 argument_list|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 for|for
 control|(
 name|String
@@ -2688,7 +2722,7 @@ return|;
 block|}
 comment|/**      * This method only detects wheter a change took place or not. It does not      * determine the type of change. This would be possible, but difficult to do      * properly, so I rather only report the change.      */
 DECL|method|scanGroups (MetaData inMem, MetaData onTmp, MetaData onDisk)
-specifier|public
+specifier|private
 name|void
 name|scanGroups
 parameter_list|(
@@ -2722,25 +2756,35 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|groupsTmp
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|groupsDisk
 operator|==
 literal|null
+operator|)
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
+operator|(
 operator|(
 name|groupsTmp
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|groupsDisk
 operator|==
 literal|null
+operator|)
 operator|)
 operator|||
 operator|(
@@ -2793,12 +2837,10 @@ block|}
 block|}
 DECL|interface|DisplayResultCallback
 specifier|public
-specifier|static
 interface|interface
 name|DisplayResultCallback
 block|{
 DECL|method|scanResultsResolved (boolean resolved)
-specifier|public
 name|void
 name|scanResultsResolved
 parameter_list|(

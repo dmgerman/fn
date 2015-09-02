@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-06 David Weitzman, Nizar N. Batada, Morten O. Alver, Christopher Oezbek   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
+comment|/*  Copyright (C) 2003-06 David Weitzman, Nizar N. Batada, Morten O. Alver, Christopher Oezbek  Copyright (C) 2015 Oliver Kopp   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -122,6 +122,48 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Class for importing BibTeX-files.  *   * Use:  *   * BibtexParser parser = new BibtexParser(reader);  *   * ParserResult result = parser.parse();  *   * or  *   * ParserResult result = BibtexParser.parse(reader);  *   * Can be used stand-alone.  *   * @author David Weitzman  * @author Nizar N. Batada  * @author Morten O. Alver  * @author Christopher Oezbek   */
 end_comment
@@ -132,15 +174,32 @@ specifier|public
 class|class
 name|BibtexParser
 block|{
-DECL|field|_in
+DECL|field|LOGGER
 specifier|private
-name|PushbackReader
-name|_in
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|BibtexParser
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
-DECL|field|_db
+DECL|field|pushbackReader
+specifier|private
+specifier|final
+name|PushbackReader
+name|pushbackReader
+decl_stmt|;
+DECL|field|database
 specifier|private
 name|BibtexDatabase
-name|_db
+name|database
 decl_stmt|;
 DECL|field|entryTypes
 specifier|private
@@ -152,10 +211,10 @@ name|BibtexEntryType
 argument_list|>
 name|entryTypes
 decl_stmt|;
-DECL|field|_eof
+DECL|field|eof
 specifier|private
 name|boolean
-name|_eof
+name|eof
 init|=
 literal|false
 decl_stmt|;
@@ -168,6 +227,7 @@ literal|1
 decl_stmt|;
 DECL|field|fieldContentParser
 specifier|private
+specifier|final
 name|FieldContentParser
 name|fieldContentParser
 init|=
@@ -175,10 +235,10 @@ operator|new
 name|FieldContentParser
 argument_list|()
 decl_stmt|;
-DECL|field|_pr
+DECL|field|parserResult
 specifier|private
 name|ParserResult
-name|_pr
+name|parserResult
 decl_stmt|;
 DECL|field|LOOKAHEAD
 specifier|private
@@ -194,15 +254,6 @@ specifier|private
 specifier|final
 name|boolean
 name|autoDoubleBraces
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"autoDoubleBraces"
-argument_list|)
 decl_stmt|;
 DECL|method|BibtexParser (Reader in)
 specifier|public
@@ -244,18 +295,33 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
-name|_in
+name|autoDoubleBraces
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|AUTO_DOUBLE_BRACES
+argument_list|)
+expr_stmt|;
+name|pushbackReader
 operator|=
 operator|new
 name|PushbackReader
 argument_list|(
 name|in
 argument_list|,
+name|BibtexParser
+operator|.
 name|LOOKAHEAD
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Shortcut usage to create a Parser and read the input. 	 *  	 * @param in - 	 *            Reader to read from 	 * @throws IOException 	 */
+comment|/**      * Shortcut usage to create a Parser and read the input.      *       * @param in -      *            Reader to read from      * @throws IOException      */
 DECL|method|parse (Reader in)
 specifier|public
 specifier|static
@@ -284,7 +350,7 @@ name|parse
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Parses BibtexEntries from the given string and returns the collection of all entries found. 	 *  	 * @param bibtexString 	 *  	 * @return Returns null if an error occurred, returns an empty collection if no entries where found.  	 */
+comment|/**      * Parses BibtexEntries from the given string and returns the collection of all entries found.      *       * @param bibtexString      *       * @return Returns null if an error occurred, returns an empty collection if no entries where found.       */
 DECL|method|fromString (String bibtexString)
 specifier|public
 specifier|static
@@ -342,7 +408,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/** 	 * Parses BibtexEntries from the given string and returns one entry found (or null if none found) 	 *  	 * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string. 	 *  	 * @param bibtexString 	 *  	 * @return The bibtexentry or null if non was found or an error occurred. 	 */
+comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *       * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *       * @param bibtexString      *       * @return The bibtexentry or null if non was found or an error occurred.      */
 DECL|method|singleFromString (String bibtexString)
 specifier|public
 specifier|static
@@ -359,6 +425,8 @@ name|BibtexEntry
 argument_list|>
 name|c
 init|=
+name|BibtexParser
+operator|.
 name|fromString
 argument_list|(
 name|bibtexString
@@ -396,7 +464,7 @@ name|next
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Check whether the source is in the correct format for this importer. 	 */
+comment|/**      * Check whether the source is in the correct format for this importer.      */
 DECL|method|isRecognizedFormat (Reader inOrig)
 specifier|public
 specifier|static
@@ -458,9 +526,11 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -473,9 +543,11 @@ operator|.
 name|SIGNATURE
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
@@ -518,7 +590,7 @@ literal|65535
 operator|)
 condition|)
 block|{
-name|_eof
+name|eof
 operator|=
 literal|true
 expr_stmt|;
@@ -540,6 +612,7 @@ block|{
 continue|continue;
 block|}
 else|else
+block|{
 comment|// found non-whitespace char
 comment|// Util.pr("SkipWhitespace, stops: "+c);
 name|unread
@@ -547,7 +620,8 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|/* 			 * try { Thread.currentThread().sleep(500); } catch 			 * (InterruptedException ex) {} 			 */
+block|}
+comment|/*              * try { Thread.currentThread().sleep(500); } catch              * (InterruptedException ignored) {}              */
 break|break;
 block|}
 block|}
@@ -578,6 +652,7 @@ name|j
 operator|!=
 literal|' '
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -588,6 +663,7 @@ operator|)
 name|j
 argument_list|)
 expr_stmt|;
+block|}
 while|while
 condition|(
 literal|true
@@ -614,7 +690,7 @@ literal|65535
 operator|)
 condition|)
 block|{
-name|_eof
+name|eof
 operator|=
 literal|true
 expr_stmt|;
@@ -644,6 +720,7 @@ name|c
 operator|!=
 literal|' '
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -654,9 +731,11 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 continue|continue;
 block|}
 else|else
+block|{
 comment|// found non-whitespace char
 comment|// Util.pr("SkipWhitespace, stops: "+c);
 name|unread
@@ -664,7 +743,8 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|/* 			 * try { Thread.currentThread().sleep(500); } catch 			 * (InterruptedException ex) {} 			 */
+block|}
+comment|/*              * try { Thread.currentThread().sleep(500); } catch              * (InterruptedException ignored) {}              */
 break|break;
 block|}
 return|return
@@ -674,7 +754,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Will parse the BibTex-Data found when reading from reader. 	 *  	 * The reader will be consumed. 	 *  	 * Multiple calls to parse() return the same results 	 *  	 * @return ParserResult 	 * @throws IOException 	 */
+comment|/**      * Will parse the BibTex-Data found when reading from reader.      *       * The reader will be consumed.      *       * Multiple calls to parse() return the same results      *       * @return ParserResult      * @throws IOException      */
 DECL|method|parse ()
 specifier|public
 name|ParserResult
@@ -686,14 +766,16 @@ block|{
 comment|// If we already parsed this, just return it.
 if|if
 condition|(
-name|_pr
+name|parserResult
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
-name|_pr
+name|parserResult
 return|;
-name|_db
+block|}
+name|database
 operator|=
 operator|new
 name|BibtexDatabase
@@ -729,12 +811,12 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 comment|// To store custem entry types parsed.
-name|_pr
+name|parserResult
 operator|=
 operator|new
 name|ParserResult
 argument_list|(
-name|_db
+name|database
 argument_list|,
 literal|null
 argument_list|,
@@ -756,7 +838,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|_pr
+name|parserResult
 operator|.
 name|setJabrefVersion
 argument_list|(
@@ -775,7 +857,7 @@ block|{
 while|while
 condition|(
 operator|!
-name|_eof
+name|eof
 condition|)
 block|{
 name|boolean
@@ -791,7 +873,9 @@ condition|(
 operator|!
 name|found
 condition|)
+block|{
 break|break;
+block|}
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -844,7 +928,7 @@ literal|"preamble"
 argument_list|)
 condition|)
 block|{
-name|_db
+name|database
 operator|.
 name|setPreamble
 argument_list|(
@@ -875,7 +959,7 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|_db
+name|database
 operator|.
 name|addString
 argument_list|(
@@ -889,7 +973,7 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
-name|_pr
+name|parserResult
 operator|.
 name|addWarning
 argument_list|(
@@ -931,7 +1015,7 @@ init|=
 name|parseBracketedTextExactly
 argument_list|()
 decl_stmt|;
-comment|/** 						 *  						 * Metadata are used to store Bibkeeper-specific 						 * information in .bib files. 						 *  						 * Metadata are stored in bibtex files in the format 						 *  						 * @comment{jabref-meta: type:data0;data1;data2;...} 						 *  						 * Each comment that starts with the META_FLAG is stored 						 * in the meta HashMap, with type as key. Unluckily, the 						 * old META_FLAG bibkeeper-meta: was used in JabRef 1.0 						 * and 1.1, so we need to support it as well. At least 						 * for a while. We'll always save with the new one. 						 */
+comment|/**                          *                           * Metadata are used to store Bibkeeper-specific                          * information in .bib files.                          *                           * Metadata are stored in bibtex files in the format                          *                           * @comment{jabref-meta: type:data0;data1;data2;...}                          *                           * Each comment that starts with the META_FLAG is stored                          * in the meta HashMap, with type as key. Unluckily, the                          * old META_FLAG bibkeeper-meta: was used in JabRef 1.0                          * and 1.1, so we need to support it as well. At least                          * for a while. We'll always save with the new one.                          */
 name|String
 name|comment
 init|=
@@ -1038,6 +1122,7 @@ operator|.
 name|META_FLAG
 argument_list|)
 condition|)
+block|{
 name|rest
 operator|=
 name|comment
@@ -1052,7 +1137,9 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|rest
 operator|=
 name|comment
@@ -1067,6 +1154,7 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|int
 name|pos
 init|=
@@ -1083,6 +1171,7 @@ name|pos
 operator|>
 literal|0
 condition|)
+block|{
 name|meta
 operator|.
 name|put
@@ -1110,6 +1199,7 @@ comment|// We remove all line breaks in the metadata - these
 comment|// will have been inserted
 comment|// to prevent too long lines when the file was
 comment|// saved, and are not part of the data.
+block|}
 block|}
 elseif|else
 if|if
@@ -1178,9 +1268,9 @@ else|else
 block|{
 comment|// FIXME: user comments are simply dropped
 comment|// at least, we log that we ignored the comment
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 name|Globals
 operator|.
@@ -1228,7 +1318,7 @@ name|isEntry
 condition|)
 comment|// True if not comment, preamble or string.
 block|{
-comment|/** 					 * Morten Alver 13 Aug 2006: Trying to make the parser more 					 * robust. If an exception is thrown when parsing an entry, 					 * drop the entry and try to resume parsing. Add a warning 					 * for the user. 					 *  					 * An alternative solution is to try rescuing the entry for 					 * which parsing failed, by returning the entry with the 					 * exception and adding it before parsing is continued. 					 */
+comment|/**                      * Morten Alver 13 Aug 2006: Trying to make the parser more                      * robust. If an exception is thrown when parsing an entry,                      * drop the entry and try to resume parsing. Add a warning                      * for the user.                      *                       * An alternative solution is to try rescuing the entry for                      * which parsing failed, by returning the entry with the                      * exception and adding it before parsing is continued.                      */
 try|try
 block|{
 name|BibtexEntry
@@ -1242,7 +1332,7 @@ decl_stmt|;
 name|boolean
 name|duplicateKey
 init|=
-name|_db
+name|database
 operator|.
 name|insertEntry
 argument_list|(
@@ -1253,8 +1343,8 @@ if|if
 condition|(
 name|duplicateKey
 condition|)
-comment|// JZTODO lyrics
-name|_pr
+block|{
+name|parserResult
 operator|.
 name|addDuplicateKey
 argument_list|(
@@ -1264,18 +1354,18 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// _pr.addWarning(Globals.lang("duplicate BibTeX key") + ": "
-comment|//	+ be.getCiteKey() + " ("
-comment|//	+ Globals.lang("grouping may not work for this entry") + ")");
+block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|be
 operator|.
 name|getCiteKey
 argument_list|()
 operator|==
 literal|null
+operator|)
 operator|||
 name|be
 operator|.
@@ -1288,7 +1378,7 @@ literal|""
 argument_list|)
 condition|)
 block|{
-name|_pr
+name|parserResult
 operator|.
 name|addWarning
 argument_list|(
@@ -1328,12 +1418,16 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not parse entry"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
-name|_pr
+name|parserResult
 operator|.
 name|addWarning
 argument_list|(
@@ -1371,11 +1465,11 @@ comment|// Before returning the database, update entries with unknown type
 comment|// based on parsed type definitions, if possible.
 name|checkEntryTypes
 argument_list|(
-name|_pr
+name|parserResult
 argument_list|)
 expr_stmt|;
 comment|// Instantiate meta data:
-name|_pr
+name|parserResult
 operator|.
 name|setMetaData
 argument_list|(
@@ -1384,12 +1478,12 @@ name|MetaData
 argument_list|(
 name|meta
 argument_list|,
-name|_db
+name|database
 argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|_pr
+name|parserResult
 return|;
 block|}
 catch|catch
@@ -1447,7 +1541,7 @@ block|{
 name|int
 name|c
 init|=
-name|_in
+name|pushbackReader
 operator|.
 name|read
 argument_list|()
@@ -1458,9 +1552,11 @@ name|c
 operator|==
 literal|'\n'
 condition|)
+block|{
 name|line
 operator|++
 expr_stmt|;
+block|}
 return|return
 name|c
 return|;
@@ -1482,10 +1578,12 @@ name|c
 operator|==
 literal|'\n'
 condition|)
+block|{
 name|line
 operator|--
 expr_stmt|;
-name|_in
+block|}
+name|pushbackReader
 operator|.
 name|unread
 argument_list|(
@@ -1494,7 +1592,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|parseString ()
-specifier|public
+specifier|private
 name|BibtexString
 name|parseString
 parameter_list|()
@@ -1553,9 +1651,9 @@ comment|// Util.pr("Finished string parsing.");
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 return|return
@@ -1571,7 +1669,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|parsePreamble ()
-specifier|public
+specifier|private
 name|String
 name|parsePreamble
 parameter_list|()
@@ -1587,7 +1685,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|parseEntry (BibtexEntryType tp)
-specifier|public
+specifier|private
 name|BibtexEntry
 name|parseEntry
 parameter_list|(
@@ -1600,9 +1698,9 @@ block|{
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 comment|// createId(tp, _db);
@@ -1647,9 +1745,11 @@ operator|!=
 literal|'\r'
 operator|)
 condition|)
+block|{
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
+block|}
 name|String
 name|key
 init|=
@@ -1671,10 +1771,12 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|key
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|result
 operator|.
 name|setField
@@ -1722,11 +1824,13 @@ name|c
 operator|==
 literal|','
 condition|)
+block|{
 name|consume
 argument_list|(
 literal|','
 argument_list|)
 expr_stmt|;
+block|}
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -1852,6 +1956,7 @@ argument_list|)
 operator|==
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1861,6 +1966,7 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// The following hack enables the parser to deal with multiple
@@ -1888,6 +1994,7 @@ argument_list|(
 literal|"editor"
 argument_list|)
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1906,6 +2013,7 @@ operator|+
 name|content
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -1932,8 +2040,6 @@ argument_list|()
 decl_stmt|;
 name|int
 name|c
-init|=
-literal|'.'
 decl_stmt|;
 while|while
 condition|(
@@ -1963,7 +2069,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|_eof
+name|eof
 condition|)
 block|{
 throw|throw
@@ -2003,7 +2109,7 @@ name|text
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* 				 *  				 * The following code doesn't handle {"} correctly: // value is 				 * a string consume('"'); 				 *  				 * while (!((peek() == '"')&& (j != '\\'))) { j = read(); if 				 * (_eof || (j == -1) || (j == 65535)) { throw new 				 * RuntimeException("Error in line "+line+ ": EOF in 				 * mid-string"); } 				 *  				 * value.append((char) j); } 				 *  				 * consume('"'); 				 */
+comment|/*                  *                   * The following code doesn't handle {"} correctly: // value is                  * a string consume('"');                  *                   * while (!((peek() == '"')&& (j != '\\'))) { j = read(); if                  * (_eof || (j == -1) || (j == 65535)) { throw new                  * RuntimeException("Error in line "+line+ ": EOF in                  * mid-string"); }                  *                   * value.append((char) j); }                  *                   * consume('"');                  */
 block|}
 elseif|else
 if|if
@@ -2068,7 +2174,7 @@ argument_list|(
 name|numString
 argument_list|)
 expr_stmt|;
-comment|/*                 try { 					// Fixme: What is this for? 					value.append(String.valueOf(Integer.parseInt(numString))); 				} catch (NumberFormatException e) { 					// If Integer could not be parsed then just add the text 					// Used to fix [ 1594123 ] Failure to import big numbers 					value.append(numString); 				} 				*/
+comment|/*                 try {                 	// Fixme: What is this for?                 	value.append(String.valueOf(Integer.parseInt(numString)));                 } catch (NumberFormatException e) {                 	// If Integer could not be parsed then just add the text                 	// Used to fix [ 1594123 ] Failure to import big numbers                 	value.append(numString);                 }                 */
 block|}
 elseif|else
 if|if
@@ -2101,6 +2207,7 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -2116,6 +2223,7 @@ operator|+
 literal|"by a missing comma between two fields."
 argument_list|)
 throw|;
+block|}
 name|value
 operator|.
 name|append
@@ -2246,11 +2354,11 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Originalinhalt nach parseFieldContent(String) verschoben. 	 * @return 	 * @throws IOException 	 */
+comment|/**      * Originalinhalt nach parseFieldContent(String) verschoben.      * @return      * @throws IOException      */
 comment|//	private String parseFieldContent() throws IOException {
 comment|//		return parseFieldContent(null);
 comment|//	}
-comment|/** 	 * Check if a string at any point has had more ending braces (}) than 	 * opening ones ({). Will e.g. return true for the string "DNA} blahblal 	 * {EPA" 	 *  	 * @param s 	 *            The string to check. 	 * @return true if at any index the brace count is negative. 	 */
+comment|/**      * Check if a string at any point has had more ending braces (}) than      * opening ones ({). Will e.g. return true for the string "DNA} blahblal      * {EPA"      *       * @param s      *            The string to check.      * @return true if at any index the brace count is negative.      */
 DECL|method|hasNegativeBraceCount (String s)
 specifier|private
 name|boolean
@@ -2291,9 +2399,11 @@ argument_list|)
 operator|==
 literal|'{'
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2306,18 +2416,22 @@ argument_list|)
 operator|==
 literal|'}'
 condition|)
+block|{
 name|count
 operator|--
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|count
 operator|<
 literal|0
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -2326,7 +2440,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * This method is used to parse string labels, field names, entry type and 	 * numbers outside brackets. 	 */
+comment|/**      * This method is used to parse string labels, field names, entry type and      * numbers outside brackets.      */
 DECL|method|parseTextToken ()
 specifier|private
 name|String
@@ -2364,7 +2478,7 @@ operator|-
 literal|1
 condition|)
 block|{
-name|_eof
+name|eof
 operator|=
 literal|true
 expr_stmt|;
@@ -2464,7 +2578,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/** 	 * Tries to restore the key 	 *  	 * @return rest of key on success, otherwise empty string 	 * @throws IOException 	 *             on Reader-Error 	 */
+comment|/**      * Tries to restore the key      *       * @return rest of key on success, otherwise empty string      * @throws IOException      *             on Reader-Error      */
 DECL|method|fixKey ()
 specifier|private
 name|String
@@ -2513,22 +2627,30 @@ block|}
 do|while
 condition|(
 operator|(
+operator|(
 name|currentChar
 operator|!=
 literal|','
+operator|)
 operator|&&
+operator|(
 name|currentChar
 operator|!=
 literal|'\n'
+operator|)
 operator|&&
+operator|(
 name|currentChar
 operator|!=
 literal|'='
+operator|)
 operator|)
 operator|&&
 operator|(
 name|lookahead_used
 operator|<
+name|BibtexParser
+operator|.
 name|LOOKAHEAD
 operator|)
 condition|)
@@ -2606,9 +2728,11 @@ condition|(
 operator|!
 name|matchedAlpha
 operator|&&
+operator|(
 name|currentChar
 operator|==
 literal|' '
+operator|)
 condition|)
 block|{
 continue|continue;
@@ -2625,16 +2749,20 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|currentChar
 operator|==
 literal|' '
+operator|)
 operator|||
+operator|(
 name|currentChar
 operator|==
 literal|'\n'
+operator|)
 condition|)
 block|{
-comment|/*                          * found whitespaces, entryfieldname completed -> key in                          * keybuffer, skip whitespaces                          */
+comment|/*                      * found whitespaces, entryfieldname completed -> key in                      * keybuffer, skip whitespaces                      */
 name|StringBuilder
 name|newKey
 init|=
@@ -2690,7 +2818,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// Finished, now reverse newKey and remove whitespaces:
-name|_pr
+name|parserResult
 operator|.
 name|addWarning
 argument_list|(
@@ -2722,7 +2850,7 @@ break|break;
 case|case
 literal|','
 case|:
-name|_pr
+name|parserResult
 operator|.
 name|addWarning
 argument_list|(
@@ -2744,7 +2872,7 @@ expr_stmt|;
 case|case
 literal|'\n'
 case|:
-name|_pr
+name|parserResult
 operator|.
 name|addWarning
 argument_list|(
@@ -2785,7 +2913,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * removes whitespaces from<code>sb</code> 	 *  	 * @param sb 	 * @return 	 */
+comment|/**      * removes whitespaces from<code>sb</code>      *       * @param sb      * @return      */
 DECL|method|removeWhitespaces (StringBuilder sb)
 specifier|private
 name|StringBuilder
@@ -2842,6 +2970,7 @@ argument_list|(
 name|current
 argument_list|)
 condition|)
+block|{
 name|newSb
 operator|.
 name|append
@@ -2850,11 +2979,12 @@ name|current
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|newSb
 return|;
 block|}
-comment|/** 	 * pushes buffer back into input 	 *  	 * @param sb 	 * @throws IOException 	 *             can be thrown if buffer is bigger than LOOKAHEAD 	 */
+comment|/**      * pushes buffer back into input      *       * @param sb      * @throws IOException      *             can be thrown if buffer is bigger than LOOKAHEAD      */
 DECL|method|unreadBuffer (StringBuilder sb)
 specifier|private
 name|void
@@ -2898,7 +3028,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * This method is used to parse the bibtex key for an entry. 	 */
+comment|/**      * This method is used to parse the bibtex key for an entry.      */
 DECL|method|parseKey ()
 specifier|private
 name|String
@@ -2936,7 +3066,7 @@ operator|-
 literal|1
 condition|)
 block|{
-name|_eof
+name|eof
 operator|=
 literal|true
 expr_stmt|;
@@ -3114,6 +3244,7 @@ return|;
 comment|// throw new NoLabelException(token.toString());
 block|}
 else|else
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -3136,6 +3267,7 @@ operator|+
 literal|"allowed in bibtex keys."
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 block|}
@@ -3247,9 +3379,11 @@ name|j
 operator|==
 literal|'{'
 condition|)
+block|{
 name|brackets
 operator|++
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -3257,12 +3391,14 @@ name|j
 operator|==
 literal|'}'
 condition|)
+block|{
 name|brackets
 operator|--
 expr_stmt|;
+block|}
 comment|// If we encounter whitespace of any kind, read it as a
 comment|// simple space, and ignore any others that follow immediately.
-comment|/* 			 * if (j == '\n') { if (peek() == '\n') value.append('\n'); } else 			 */
+comment|/*              * if (j == '\n') { if (peek() == '\n') value.append('\n'); } else              */
 if|if
 condition|(
 name|Character
@@ -3340,6 +3476,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|value
 operator|.
 name|append
@@ -3350,6 +3487,7 @@ operator|)
 name|j
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|consume
 argument_list|(
@@ -3445,9 +3583,11 @@ name|j
 operator|==
 literal|'{'
 condition|)
+block|{
 name|brackets
 operator|++
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -3455,9 +3595,11 @@ name|j
 operator|==
 literal|'}'
 condition|)
+block|{
 name|brackets
 operator|--
 expr_stmt|;
+block|}
 name|value
 operator|.
 name|append
@@ -3563,9 +3705,11 @@ name|j
 operator|==
 literal|'{'
 condition|)
+block|{
 name|brackets
 operator|++
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -3573,9 +3717,11 @@ name|j
 operator|==
 literal|'}'
 condition|)
+block|{
 name|brackets
 operator|--
 expr_stmt|;
+block|}
 name|value
 operator|.
 name|append
@@ -3700,10 +3846,12 @@ operator|==
 literal|65535
 operator|)
 condition|)
-name|_eof
+block|{
+name|eof
 operator|=
 literal|true
 expr_stmt|;
+block|}
 comment|// Return true if we actually found the character we were looking for:
 return|return
 name|c
@@ -3771,7 +3919,7 @@ throw|;
 block|}
 block|}
 DECL|method|checkEntryTypes (ParserResult _pr)
-specifier|public
+specifier|private
 name|void
 name|checkEntryTypes
 parameter_list|(
@@ -3784,7 +3932,7 @@ control|(
 name|BibtexEntry
 name|be
 range|:
-name|_db
+name|database
 operator|.
 name|getEntries
 argument_list|()
@@ -3895,7 +4043,7 @@ name|be
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|OTHER
 argument_list|)
@@ -3982,9 +4130,11 @@ literal|'%'
 operator|)
 operator|)
 condition|)
+block|{
 name|read
 argument_list|()
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -4009,10 +4159,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|keepon
-operator|=
-literal|false
-expr_stmt|;
 return|return
 literal|null
 return|;
@@ -4062,6 +4208,7 @@ operator|-
 literal|1
 operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -4072,6 +4219,7 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|versionNum
 init|=
@@ -4171,7 +4319,7 @@ block|{
 name|String
 name|v
 init|=
-name|_pr
+name|parserResult
 operator|.
 name|getJabrefVersion
 argument_list|()
@@ -4223,6 +4371,7 @@ operator|.
 name|matches
 argument_list|()
 condition|)
+block|{
 if|if
 condition|(
 name|m
@@ -4233,7 +4382,7 @@ operator|>=
 literal|2
 condition|)
 block|{
-name|_pr
+name|parserResult
 operator|.
 name|setJabrefMajorVersion
 argument_list|(
@@ -4250,7 +4399,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|_pr
+name|parserResult
 operator|.
 name|setJabrefMinorVersion
 argument_list|(
@@ -4268,6 +4417,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
 name|m2
@@ -4275,6 +4425,7 @@ operator|.
 name|matches
 argument_list|()
 condition|)
+block|{
 if|if
 condition|(
 name|m2
@@ -4285,7 +4436,7 @@ operator|>=
 literal|3
 condition|)
 block|{
-name|_pr
+name|parserResult
 operator|.
 name|setJabrefMinor2Version
 argument_list|(
@@ -4302,6 +4453,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

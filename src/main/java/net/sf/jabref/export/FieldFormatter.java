@@ -16,10 +16,6 @@ name|export
 package|;
 end_package
 
-begin_comment
-comment|/**  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
-end_comment
-
 begin_interface
 DECL|interface|FieldFormatter
 specifier|public
@@ -27,7 +23,6 @@ interface|interface
 name|FieldFormatter
 block|{
 DECL|method|format (String s, String fieldName)
-specifier|public
 name|String
 name|format
 parameter_list|(

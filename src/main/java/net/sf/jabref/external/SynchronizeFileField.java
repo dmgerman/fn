@@ -142,6 +142,34 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -228,6 +256,7 @@ name|AbstractWorker
 block|{
 DECL|field|fieldName
 specifier|private
+specifier|final
 name|String
 name|fieldName
 init|=
@@ -237,6 +266,7 @@ name|FILE_FIELD
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -258,6 +288,8 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|brokenLinkOptions
+specifier|private
+specifier|final
 name|Object
 index|[]
 name|brokenLinkOptions
@@ -331,6 +363,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -382,6 +416,7 @@ name|optDiag
 operator|==
 literal|null
 condition|)
+block|{
 name|optDiag
 operator|=
 operator|new
@@ -402,6 +437,7 @@ argument_list|,
 name|fieldName
 argument_list|)
 expr_stmt|;
+block|}
 name|Util
 operator|.
 name|placeDialog
@@ -472,6 +508,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -631,8 +669,8 @@ name|sel
 argument_list|)
 expr_stmt|;
 comment|// Start the autosetting process:
-name|Thread
-name|t
+name|Runnable
+name|r
 init|=
 name|Util
 operator|.
@@ -656,27 +694,15 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-comment|// Wait for the autosetting to finish:
-try|try
-block|{
-name|t
+name|JabRefExecutorService
 operator|.
-name|join
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|e
+name|INSTANCE
 operator|.
-name|printStackTrace
-argument_list|()
+name|executeAndWait
+argument_list|(
+name|r
+argument_list|)
 expr_stmt|;
-block|}
 comment|/*                 progress += weightAutoSet;                 panel.frame().setProgressBarValue(progress);                  Object old = sel[i].getField(fieldName);                 FileListTableModel tableModel = new FileListTableModel();                 if (old != null)                     tableModel.setContent((String)old);                 Thread t = FileListEditor.autoSetLinks(sel[i], tableModel, null, null);                  if (!tableModel.getStringRepresentation().equals(old)) {                     String toSet = tableModel.getStringRepresentation();                     if (toSet.length() == 0)                         toSet = null;                     ce.addEdit(new UndoableFieldChange(sel[i], fieldName, old, toSet));                     sel[i].setField(fieldName, toSet);                     entriesChanged++;                 }             }    */
 block|}
 name|progress
@@ -810,6 +836,7 @@ name|dirs1
 range|:
 name|dirsS
 control|)
+block|{
 name|dirs
 operator|.
 name|add
@@ -821,6 +848,7 @@ name|dirs1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|int
@@ -870,9 +898,11 @@ if|if
 condition|(
 name|httpLink
 condition|)
+block|{
 continue|continue;
 comment|// Don't check the remote file.
 comment|// TODO: should there be an option to check remote links?
+block|}
 comment|// A variable to keep track of whether this link gets deleted:
 name|boolean
 name|deleted
@@ -883,7 +913,7 @@ comment|// Get an absolute path representation:
 name|File
 name|file
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -1409,10 +1439,12 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|toSet
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|ce
 operator|.
 name|addEdit
@@ -1484,6 +1516,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -1495,7 +1529,9 @@ condition|(
 operator|!
 name|goOn
 condition|)
+block|{
 return|return;
+block|}
 name|int
 name|entriesChangedCount
 init|=
@@ -1562,20 +1598,27 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|autoSetUnset
-DECL|field|autoSetAll
-DECL|field|autoSetNone
+specifier|final
 name|JRadioButton
 name|autoSetUnset
-decl_stmt|,
+decl_stmt|;
+DECL|field|autoSetAll
+specifier|final
+name|JRadioButton
 name|autoSetAll
-decl_stmt|,
+decl_stmt|;
+DECL|field|autoSetNone
+specifier|final
+name|JRadioButton
 name|autoSetNone
 decl_stmt|;
 DECL|field|checkLinks
+specifier|final
 name|JCheckBox
 name|checkLinks
 decl_stmt|;
 DECL|field|ok
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -1589,8 +1632,10 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -1617,6 +1662,7 @@ literal|true
 decl_stmt|;
 DECL|field|metaData
 specifier|private
+specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
@@ -1678,6 +1724,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1704,6 +1752,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2115,6 +2165,8 @@ name|pack
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setVisible (boolean visible)
 specifier|public
 name|void
@@ -2128,10 +2180,12 @@ if|if
 condition|(
 name|visible
 condition|)
+block|{
 name|canceled
 operator|=
 literal|true
 expr_stmt|;
+block|}
 name|String
 index|[]
 name|dirs

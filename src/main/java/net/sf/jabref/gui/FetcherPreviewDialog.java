@@ -221,7 +221,8 @@ implements|implements
 name|OutputPrinter
 block|{
 DECL|field|entries
-specifier|protected
+specifier|private
+specifier|final
 name|EventList
 argument_list|<
 name|TableEntry
@@ -237,74 +238,13 @@ argument_list|()
 decl_stmt|;
 comment|//protected SortedList<TableEntry> sortedList;
 DECL|field|glTable
-specifier|protected
+specifier|private
+specifier|final
 name|JTable
 name|glTable
 decl_stmt|;
-DECL|field|ok
-specifier|protected
-name|JButton
-name|ok
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Ok"
-argument_list|)
-argument_list|)
-decl_stmt|,
-DECL|field|cancel
-name|cancel
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Cancel"
-argument_list|)
-argument_list|)
-decl_stmt|;
-DECL|field|selectAll
-specifier|protected
-name|JButton
-name|selectAll
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Select all"
-argument_list|)
-argument_list|)
-decl_stmt|;
-DECL|field|deselectAll
-specifier|protected
-name|JButton
-name|deselectAll
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Deselect all"
-argument_list|)
-argument_list|)
-decl_stmt|;
 DECL|field|okPressed
-specifier|protected
+specifier|private
 name|boolean
 name|okPressed
 init|=
@@ -312,11 +252,13 @@ literal|false
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|warningLimit
 specifier|private
+specifier|final
 name|int
 name|warningLimit
 decl_stmt|;
@@ -360,6 +302,20 @@ name|warningLimit
 operator|=
 name|warningLimit
 expr_stmt|;
+name|JButton
+name|ok
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Ok"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|ok
 operator|.
 name|addActionListener
@@ -368,6 +324,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -394,6 +352,20 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|JButton
+name|cancel
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Cancel"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|cancel
 operator|.
 name|addActionListener
@@ -402,6 +374,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -421,6 +395,20 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|JButton
+name|selectAll
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Select all"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|selectAll
 operator|.
 name|addActionListener
@@ -429,6 +417,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -446,6 +436,20 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|JButton
+name|deselectAll
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Deselect all"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|deselectAll
 operator|.
 name|addActionListener
@@ -454,6 +458,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -729,6 +735,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -794,7 +802,7 @@ expr_stmt|;
 block|}
 comment|/**      * Check whether a large number of entries are selected, and if so, ask the user whether      * to go on.      * @return true if we should go on      */
 DECL|method|verifySelection ()
-specifier|public
+specifier|private
 name|boolean
 name|verifySelection
 parameter_list|()
@@ -819,9 +827,11 @@ operator|.
 name|isWanted
 argument_list|()
 condition|)
+block|{
 name|selected
 operator|++
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -880,9 +890,11 @@ name|YES_OPTION
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 DECL|method|getSelection ()
 specifier|public
@@ -919,6 +931,7 @@ name|e
 range|:
 name|entries
 control|)
+block|{
 name|selection
 operator|.
 name|put
@@ -933,11 +946,12 @@ name|isWanted
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|selection
 return|;
 block|}
-comment|/* (non-Javadoc) 	 * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibtexEntry) 	 */
+comment|/* (non-Javadoc)     * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibtexEntry)     */
 DECL|method|addEntry (String entryId, JLabel preview)
 specifier|public
 name|void
@@ -1003,7 +1017,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|setSelectionAll (boolean select)
-specifier|public
+specifier|private
 name|void
 name|setSelectionAll
 parameter_list|(
@@ -1048,16 +1062,19 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|class|TableEntry
+specifier|static
 class|class
 name|TableEntry
 block|{
 DECL|field|id
 specifier|private
+specifier|final
 name|String
 name|id
 decl_stmt|;
 DECL|field|preview
 specifier|private
+specifier|final
 name|JLabel
 name|preview
 decl_stmt|;
@@ -1130,12 +1147,14 @@ return|;
 block|}
 block|}
 DECL|class|PreviewRenderer
+specifier|static
 class|class
 name|PreviewRenderer
 implements|implements
 name|TableCellRenderer
 block|{
 DECL|field|label
+specifier|final
 name|JLabel
 name|label
 init|=
@@ -1143,6 +1162,8 @@ operator|new
 name|JLabel
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getTableCellRendererComponent (JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 specifier|public
 name|Component
@@ -1201,6 +1222,7 @@ extends|extends
 name|JTable
 block|{
 DECL|field|renderer
+specifier|final
 name|PreviewRenderer
 name|renderer
 init|=
@@ -1230,6 +1252,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getCellRenderer (int row, int column)
 specifier|public
 name|TableCellRenderer
@@ -1258,6 +1282,8 @@ name|renderer
 return|;
 block|}
 comment|/*          * public TableCellEditor getCellEditor() { return          * getDefaultEditor(Boolean.class); }          */
+annotation|@
+name|Override
 DECL|method|getColumnClass (int col)
 specifier|public
 name|Class
@@ -1276,18 +1302,24 @@ name|col
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|Boolean
 operator|.
 name|class
 return|;
+block|}
 else|else
+block|{
 return|return
 name|JLabel
 operator|.
 name|class
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|isCellEditable (int row, int column)
 specifier|public
 name|boolean
@@ -1306,6 +1338,8 @@ operator|==
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValueAt (Object value, int row, int column)
 specifier|public
 name|void
@@ -1368,6 +1402,8 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|EntryTableFormat
+specifier|private
+specifier|static
 class|class
 name|EntryTableFormat
 implements|implements
@@ -1376,6 +1412,8 @@ argument_list|<
 name|TableEntry
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1386,6 +1424,8 @@ return|return
 literal|2
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int i)
 specifier|public
 name|String
@@ -1401,6 +1441,7 @@ name|i
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|Globals
 operator|.
@@ -1409,7 +1450,9 @@ argument_list|(
 literal|"Keep"
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|Globals
 operator|.
@@ -1419,6 +1462,9 @@ literal|"Preview"
 argument_list|)
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|getColumnValue (TableEntry entry, int i)
 specifier|public
 name|Object
@@ -1437,6 +1483,7 @@ name|i
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|entry
 operator|.
@@ -1451,13 +1498,16 @@ name|Boolean
 operator|.
 name|FALSE
 return|;
+block|}
 else|else
+block|{
 return|return
 name|entry
 operator|.
 name|getPreview
 argument_list|()
 return|;
+block|}
 block|}
 block|}
 DECL|method|isOkPressed ()
@@ -1470,6 +1520,8 @@ return|return
 name|okPressed
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setStatus (String s)
 specifier|public
 name|void
@@ -1487,6 +1539,8 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|showMessage (Object message, String title, int msgType)
 specifier|public
 name|void
@@ -1516,6 +1570,8 @@ name|msgType
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|showMessage (String message)
 specifier|public
 name|void

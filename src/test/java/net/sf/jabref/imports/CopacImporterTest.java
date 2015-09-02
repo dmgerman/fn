@@ -30,7 +30,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|Assert
 import|;
 end_import
 
@@ -40,7 +40,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|Before
 import|;
 end_import
 
@@ -71,18 +71,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
 import|;
 end_import
 
@@ -139,6 +127,8 @@ operator|new
 name|CopacImporter
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|importer
@@ -156,6 +146,8 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|importer
@@ -173,6 +165,8 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|importer
@@ -190,6 +184,8 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|importer
@@ -207,6 +203,8 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|importer
@@ -224,6 +222,8 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|importer
@@ -244,8 +244,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testImportEntries ()
 specifier|public
 name|void
@@ -254,6 +252,17 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|put
+argument_list|(
+literal|"defaultEncoding"
+argument_list|,
+literal|"UTF8"
+argument_list|)
+expr_stmt|;
 name|CopacImporter
 name|importer
 init|=
@@ -285,6 +294,8 @@ name|OutputPrinterToNull
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -305,6 +316,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"The SIS project : software reuse with a natural language approach"
@@ -317,6 +330,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Prechelt, Lutz and UniversitÃ¤t Karlsruhe. FakultÃ¤t fÃ¼r Informatik"
@@ -329,6 +344,8 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Interner Bericht ; Nr.2/92"
@@ -341,6 +358,8 @@ literal|"series"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1992"
@@ -353,6 +372,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Karlsruhe :  Universitat Karlsruhe, Fakultat fur Informatik"
@@ -365,9 +386,11 @@ literal|"publisher"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|BOOK
 argument_list|,
@@ -419,6 +442,8 @@ name|OutputPrinterToNull
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -439,6 +464,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Computing and operational research at the London Hospital"
@@ -461,6 +488,8 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Real time systems : management and design"

@@ -130,6 +130,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|ActionMap
 import|;
 end_import
@@ -324,7 +334,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|autocompleter
+operator|.
+name|AbstractAutoCompleter
 import|;
 end_import
 
@@ -338,7 +350,7 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
+name|AutoCompleter
 import|;
 end_import
 
@@ -524,6 +536,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -565,6 +578,7 @@ name|cancelled
 decl_stmt|;
 DECL|field|sortedKeywordsOfAllEntriesBeforeUpdateByUser
 specifier|private
+specifier|final
 name|TreeSet
 argument_list|<
 name|String
@@ -588,6 +602,8 @@ parameter_list|)
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Manage keywords"
@@ -766,6 +782,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -979,6 +997,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1007,6 +1027,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1042,6 +1064,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1065,10 +1089,8 @@ if|if
 condition|(
 name|text
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 comment|// no text to add, do nothing
@@ -1214,6 +1236,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1270,6 +1294,8 @@ operator|new
 name|KeyListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyTyped
@@ -1277,7 +1303,9 @@ parameter_list|(
 name|KeyEvent
 name|arg0
 parameter_list|)
-block|{}
+block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyReleased
@@ -1285,7 +1313,9 @@ parameter_list|(
 name|KeyEvent
 name|arg0
 parameter_list|)
-block|{}
+block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyPressed
@@ -1318,7 +1348,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|AbstractAutoCompleter
+name|AutoCompleter
 name|autoComp
 init|=
 name|JabRef
@@ -1328,7 +1358,10 @@ operator|.
 name|basePanel
 argument_list|()
 operator|.
-name|getAutoCompleter
+name|getAutoCompleters
+argument_list|()
+operator|.
+name|get
 argument_list|(
 literal|"keywords"
 argument_list|)
@@ -1364,6 +1397,8 @@ operator|new
 name|KeyListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyTyped
@@ -1371,7 +1406,9 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{}
+block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyReleased
@@ -1379,7 +1416,9 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{}
+block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyPressed
@@ -1500,6 +1539,8 @@ argument_list|)
 expr_stmt|;
 comment|//diag.pack();
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1523,7 +1564,9 @@ name|bp
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|bp
@@ -1583,7 +1626,9 @@ if|if
 condition|(
 name|cancelled
 condition|)
+block|{
 return|return;
+block|}
 name|HashSet
 argument_list|<
 name|String

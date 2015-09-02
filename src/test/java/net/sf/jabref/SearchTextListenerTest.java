@@ -16,6 +16,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -63,18 +73,6 @@ operator|.
 name|util
 operator|.
 name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
 import|;
 end_import
 
@@ -161,6 +159,8 @@ name|getHighlights
 argument_list|()
 decl_stmt|;
 comment|//there is no area to highlight!
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Expected no highlighting area "
@@ -215,6 +215,8 @@ name|getHighlights
 argument_list|()
 expr_stmt|;
 comment|//there is one area to highlight!
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Expected one highlighting area "
@@ -227,6 +229,8 @@ name|length
 argument_list|)
 expr_stmt|;
 comment|//start of ... Word
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|content
@@ -246,6 +250,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//end of ... word
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|content
@@ -299,6 +305,8 @@ name|getHighlights
 argument_list|()
 expr_stmt|;
 comment|//there are two areas to highlight!
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Expected two highlighting areas "
@@ -311,6 +319,8 @@ name|length
 argument_list|)
 expr_stmt|;
 comment|//start of ... content
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|content
@@ -330,6 +340,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//end of ... content
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|content
@@ -381,6 +393,8 @@ name|getHighlights
 argument_list|()
 expr_stmt|;
 comment|//there should be none areas to highlight!
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Expected no highlighting area "
@@ -495,6 +509,8 @@ operator|.
 name|getText
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Highlighting may not change content"
@@ -504,6 +520,8 @@ argument_list|,
 name|textTwo
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Highlighting may not change content"
@@ -526,11 +544,6 @@ name|String
 name|content
 init|=
 literal|"Test Word Content"
-decl_stmt|;
-name|String
-name|contentToHighlight1
-init|=
-literal|"Word"
 decl_stmt|;
 name|FieldTextArea
 name|ta

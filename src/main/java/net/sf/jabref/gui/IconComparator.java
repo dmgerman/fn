@@ -44,7 +44,6 @@ end_comment
 
 begin_class
 DECL|class|IconComparator
-specifier|public
 class|class
 name|IconComparator
 implements|implements
@@ -55,6 +54,7 @@ argument_list|>
 block|{
 DECL|field|fields
 specifier|private
+specifier|final
 name|String
 index|[]
 name|fields
@@ -75,6 +75,8 @@ operator|=
 name|fields
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int

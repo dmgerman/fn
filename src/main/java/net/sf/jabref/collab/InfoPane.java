@@ -58,7 +58,6 @@ end_import
 
 begin_class
 DECL|class|InfoPane
-specifier|public
 class|class
 name|InfoPane
 extends|extends
@@ -80,6 +79,8 @@ literal|"text/html"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|paint (Graphics g)
 specifier|public
 name|void

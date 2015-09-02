@@ -28,11 +28,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|util
 operator|.
-name|layout
-operator|.
-name|LayoutFormatter
+name|DOIUtil
 import|;
 end_import
 
@@ -44,7 +42,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|export
+operator|.
+name|layout
+operator|.
+name|LayoutFormatter
 import|;
 end_import
 
@@ -60,6 +62,8 @@ name|DOIStrip
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -83,7 +87,7 @@ block|}
 else|else
 block|{
 return|return
-name|Util
+name|DOIUtil
 operator|.
 name|getDOI
 argument_list|(

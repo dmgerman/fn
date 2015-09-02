@@ -75,7 +75,7 @@ name|Relevance
 name|INSTANCE
 decl_stmt|;
 DECL|method|Relevance ()
-specifier|public
+specifier|private
 name|Relevance
 parameter_list|()
 block|{
@@ -93,6 +93,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// action directly set by JabRefFrame
+comment|// DO NOT TRANSLATE "relevant" as this makes the produced .bib files non portable
 name|values
 operator|.
 name|add
@@ -141,6 +142,8 @@ operator|=
 literal|"Toggled relevance for %0 entries"
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getFieldName ()
 specifier|public
 name|String
@@ -162,11 +165,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|Relevance
+operator|.
 name|INSTANCE
 operator|==
 literal|null
 condition|)
 block|{
+name|Relevance
+operator|.
 name|INSTANCE
 operator|=
 operator|new
@@ -175,9 +182,13 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|Relevance
+operator|.
 name|INSTANCE
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRepresentingIcon ()
 specifier|public
 name|ImageIcon
@@ -199,6 +210,8 @@ name|getIcon
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getToolTip ()
 specifier|public
 name|String
@@ -220,6 +233,8 @@ name|getToolTipText
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getMenuString ()
 specifier|public
 name|String
@@ -235,6 +250,8 @@ literal|"Relevance"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isSingleValueField ()
 specifier|public
 name|boolean

@@ -144,11 +144,13 @@ name|ActionListener
 block|{
 DECL|field|dbase
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|dbase
 decl_stmt|;
 DECL|field|basePanel
 specifier|private
+specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
@@ -167,7 +169,7 @@ specifier|private
 name|IntegrityMessagePanel
 name|warnPanel
 decl_stmt|;
-DECL|method|IntegrityWizard ( JabRefFrame frame, BasePanel basePanel)
+DECL|method|IntegrityWizard (JabRefFrame frame, BasePanel basePanel)
 specifier|public
 name|IntegrityWizard
 parameter_list|(
@@ -427,6 +429,7 @@ name|infoURL
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|infoText
@@ -510,6 +513,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+block|}
 comment|// -----------------------------------------------------------------------
 comment|// content
 name|Container
@@ -574,7 +578,9 @@ expr_stmt|;
 block|}
 comment|// ---------------------------------------------------------------------------
 comment|// ---------------------------------------------------------------------------
-DECL|method|actionPerformed ( ActionEvent e )
+annotation|@
+name|Override
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -624,6 +630,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

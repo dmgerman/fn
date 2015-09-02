@@ -91,6 +91,8 @@ implements|implements
 name|ImportInspector
 block|{
 DECL|field|entries
+specifier|private
+specifier|final
 name|List
 argument_list|<
 name|BibtexEntry
@@ -104,6 +106,8 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|addEntry (BibtexEntry entry)
 specifier|public
 name|void
@@ -121,6 +125,8 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setProgress (int current, int max)
 specifier|public
 name|void
@@ -161,6 +167,8 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|field|status
+specifier|private
+specifier|final
 name|OutputPrinter
 name|status
 init|=
@@ -168,6 +176,8 @@ operator|new
 name|OutputPrinter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setStatus
@@ -186,6 +196,8 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|showMessage
@@ -214,6 +226,8 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|showMessage
@@ -278,6 +292,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toFront ()
 specifier|public
 name|void

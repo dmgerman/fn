@@ -186,6 +186,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -222,15 +223,8 @@ name|text
 decl_stmt|,
 name|renameTo
 decl_stmt|;
-DECL|field|ok
-DECL|field|cancel
-specifier|private
-name|JButton
-name|ok
-decl_stmt|,
-name|cancel
-decl_stmt|;
 DECL|field|cancelled
+specifier|private
 name|boolean
 name|cancelled
 init|=
@@ -251,6 +245,8 @@ parameter_list|)
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Set/clear/rename fields"
@@ -318,8 +314,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|JButton
 name|ok
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -330,9 +327,10 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+name|JButton
 name|cancel
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -343,7 +341,7 @@ argument_list|(
 literal|"Cancel"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|all
 operator|=
 operator|new
@@ -429,6 +427,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -460,6 +460,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -492,6 +494,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -860,6 +864,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -942,6 +948,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1042,6 +1050,7 @@ if|if
 condition|(
 name|selection
 condition|)
+block|{
 name|selected
 operator|.
 name|setSelected
@@ -1049,7 +1058,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|all
 operator|.
 name|setSelected
@@ -1057,6 +1068,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Make sure one of the following ones is selected:
 if|if
 condition|(
@@ -1078,6 +1090,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|set
 operator|.
 name|setSelected
@@ -1086,6 +1099,9 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1109,7 +1125,9 @@ name|bp
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|BibtexEntry
 index|[]
 name|entries
@@ -1126,9 +1144,11 @@ name|diag
 operator|==
 literal|null
 condition|)
+block|{
 name|createDialog
 argument_list|()
 expr_stmt|;
+block|}
 name|cancelled
 operator|=
 literal|true
@@ -1162,7 +1182,9 @@ if|if
 condition|(
 name|cancelled
 condition|)
+block|{
 return|return;
+block|}
 name|Collection
 argument_list|<
 name|BibtexEntry
@@ -1177,6 +1199,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|entryList
 operator|=
 name|bp
@@ -1187,7 +1210,9 @@ operator|.
 name|getEntries
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|entryList
 operator|=
 name|Arrays
@@ -1197,6 +1222,7 @@ argument_list|(
 name|entries
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|toSet
 init|=
@@ -1209,15 +1235,15 @@ if|if
 condition|(
 name|toSet
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
+block|{
 name|toSet
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|String
 index|[]
 name|fields

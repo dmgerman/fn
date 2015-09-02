@@ -36,7 +36,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
+name|util
+operator|.
+name|FileUtil
 import|;
 end_import
 
@@ -48,7 +50,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|GUIGlobals
 import|;
 end_import
 
@@ -167,6 +169,8 @@ implements|implements
 name|Transferable
 block|{
 DECL|field|fileList
+specifier|private
+specifier|final
 name|List
 argument_list|<
 name|File
@@ -220,6 +224,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|tm
 operator|.
 name|setContent
@@ -227,6 +232,7 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|tm
@@ -257,7 +263,7 @@ decl_stmt|;
 name|File
 name|expLink
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -283,6 +289,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getTransferDataFlavors ()
 specifier|public
 name|DataFlavor
@@ -302,6 +310,8 @@ block|}
 return|;
 comment|//, DataFlavor.stringFlavor};
 block|}
+annotation|@
+name|Override
 DECL|method|isDataFlavorSupported (DataFlavor dataFlavor)
 specifier|public
 name|boolean
@@ -359,6 +369,8 @@ name|stringFlavor
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTransferData (DataFlavor dataFlavor)
 specifier|public
 name|Object

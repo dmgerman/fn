@@ -38,6 +38,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Ignore
 import|;
 end_import
@@ -49,18 +59,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
 import|;
 end_import
 
@@ -87,6 +85,8 @@ operator|new
 name|DOICheck
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -99,6 +99,8 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|null
@@ -111,6 +113,8 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"http://dx.doi.org/10.1000/ISBN1-900512-44-0"
@@ -123,6 +127,8 @@ literal|"10.1000/ISBN1-900512-44-0"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"http://dx.doi.org/10.1000/ISBN1-900512-44-0"
@@ -135,6 +141,8 @@ literal|"http://dx.doi.org/10.1000/ISBN1-900512-44-0"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"http://doi.acm.org/10.1000/ISBN1-900512-44-0"
@@ -147,6 +155,8 @@ literal|"http://doi.acm.org/10.1000/ISBN1-900512-44-0"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"http://doi.acm.org/10.1145/354401.354407"
@@ -159,6 +169,8 @@ literal|"http://doi.acm.org/10.1145/354401.354407"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"http://dx.doi.org/10.1145/354401.354407"
@@ -172,6 +184,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Works even when having a / at the front
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"http://dx.doi.org/10.1145/354401.354407"
@@ -185,6 +199,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Obviously a wrong doi, but we still accept it.
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"http://dx.doi.org/10"
@@ -198,6 +214,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Obviously a wrong doi, but we still accept it.
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1"

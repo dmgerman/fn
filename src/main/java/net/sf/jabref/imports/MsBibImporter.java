@@ -132,6 +132,8 @@ name|MsBibImporter
 extends|extends
 name|ImportFormat
 block|{
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream in)
 specifier|public
 name|boolean
@@ -146,8 +148,6 @@ block|{
 comment|/*             This method is available for checking if a file can be of the MSBib type.             The effect of this method is primarily to avoid unnecessary processing of             files when searching for a suitable import format. If this method returns             false, the import routine will move on to the next import format.              The correct behaviour is to return false if it is certain that the file is             not of the MsBib type, and true otherwise. Returning true is the safe choice             if not certain.          */
 name|Document
 name|docin
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -184,9 +184,11 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|docin
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|docin
@@ -202,9 +204,11 @@ argument_list|(
 literal|"Sources"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|//   		NodeList rootLst = docin.getElementsByTagName("b:Sources");
 comment|//   		if(rootLst.getLength()==0)
 comment|//   			rootLst = docin.getElementsByTagName("Sources");
@@ -215,17 +219,19 @@ return|return
 literal|true
 return|;
 block|}
-comment|/** 	 * String used to identify this import filter on the command line. 	 * @return "msbib" 	 */
-DECL|method|getCLIid ()
+comment|/**      * String used to identify this import filter on the command line.      * @return "msbib"      */
+DECL|method|getCommandLineId ()
 specifier|public
 name|String
-name|getCLIid
+name|getCommandLineId
 parameter_list|()
 block|{
 return|return
 literal|"msbib"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List
@@ -250,23 +256,17 @@ operator|new
 name|MSBibDatabase
 argument_list|()
 decl_stmt|;
-name|List
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|entries
-init|=
+return|return
 name|dbase
 operator|.
 name|importEntries
 argument_list|(
 name|in
 argument_list|)
-decl_stmt|;
-return|return
-name|entries
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String

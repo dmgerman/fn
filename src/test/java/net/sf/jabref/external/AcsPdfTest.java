@@ -18,6 +18,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -29,18 +39,6 @@ operator|.
 name|net
 operator|.
 name|URL
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
 import|;
 end_import
 
@@ -67,6 +65,8 @@ operator|new
 name|ACSPdfDownload
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|acs
@@ -81,6 +81,8 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|acs
@@ -113,6 +115,8 @@ operator|new
 name|ACSPdfDownload
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 operator|new

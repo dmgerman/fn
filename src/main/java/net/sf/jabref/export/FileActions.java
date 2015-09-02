@@ -102,87 +102,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TreeMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
+name|*
 import|;
 end_import
 
@@ -256,6 +176,7 @@ block|}
 DECL|field|refPat
 specifier|private
 specifier|static
+specifier|final
 name|Pattern
 name|refPat
 init|=
@@ -315,7 +236,7 @@ name|fw
 operator|.
 name|write
 argument_list|(
-literal|"}"
+literal|'}'
 operator|+
 name|Globals
 operator|.
@@ -344,6 +265,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|FileActions
+operator|.
 name|previousStringType
 operator|=
 name|BibtexString
@@ -498,14 +421,18 @@ name|getName
 argument_list|()
 argument_list|)
 operator|&&
+operator|(
 name|bs
 operator|.
 name|getType
 argument_list|()
 operator|==
 name|t
+operator|)
 condition|)
 block|{
+name|FileActions
+operator|.
 name|writeString
 argument_list|(
 name|fw
@@ -586,6 +513,8 @@ condition|(
 operator|(
 name|m
 operator|=
+name|FileActions
+operator|.
 name|refPat
 operator|.
 name|matcher
@@ -662,6 +591,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|FileActions
+operator|.
 name|writeString
 argument_list|(
 name|fw
@@ -680,6 +611,8 @@ block|}
 block|}
 if|if
 condition|(
+name|FileActions
+operator|.
 name|previousStringType
 operator|!=
 name|bs
@@ -697,6 +630,8 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
+name|FileActions
+operator|.
 name|previousStringType
 operator|=
 name|bs
@@ -762,10 +697,8 @@ operator|.
 name|getContent
 argument_list|()
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 try|try
@@ -816,7 +749,7 @@ argument_list|(
 literal|"The # character is not allowed in BibTeX strings unless escaped as in '\\#'."
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|Globals
 operator|.
@@ -887,13 +820,16 @@ name|out
 operator|.
 name|write
 argument_list|(
-literal|" "
+literal|' '
 operator|+
-name|GUIGlobals
+name|Globals
 operator|.
-name|version
+name|BUILD_INFO
+operator|.
+name|getVersion
+argument_list|()
 operator|+
-literal|"."
+literal|'.'
 operator|+
 name|Globals
 operator|.
@@ -975,7 +911,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"backup"
+name|JabRefPreferences
+operator|.
+name|BACKUP
 argument_list|)
 decl_stmt|;
 if|if
@@ -1046,7 +984,7 @@ block|}
 comment|// we must catch all exceptions to be able notify users that
 comment|// saving failed, no matter what the reason was
 comment|// (and they won't just quit JabRef thinking
-comment|// everyting worked and loosing data)
+comment|// everything worked and loosing data)
 name|e
 operator|.
 name|printStackTrace
@@ -1076,6 +1014,8 @@ name|getWriter
 argument_list|()
 decl_stmt|;
 comment|// Write signature.
+name|FileActions
+operator|.
 name|writeBibFileHeader
 argument_list|(
 name|fw
@@ -1084,6 +1024,8 @@ name|encoding
 argument_list|)
 expr_stmt|;
 comment|// Write preamble if there is one.
+name|FileActions
+operator|.
 name|writePreamble
 argument_list|(
 name|fw
@@ -1095,6 +1037,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Write strings if there are any.
+name|FileActions
+operator|.
 name|writeStrings
 argument_list|(
 name|fw
@@ -1112,6 +1056,8 @@ name|BibtexEntry
 argument_list|>
 name|sorter
 init|=
+name|FileActions
+operator|.
 name|getSortedEntries
 argument_list|(
 name|database
@@ -1198,6 +1144,8 @@ condition|(
 name|checkSearch
 operator|&&
 operator|!
+name|FileActions
+operator|.
 name|nonZeroField
 argument_list|(
 name|be
@@ -1218,6 +1166,8 @@ condition|(
 name|checkGroup
 operator|&&
 operator|!
+name|FileActions
+operator|.
 name|nonZeroField
 argument_list|(
 name|be
@@ -1277,34 +1227,38 @@ block|}
 comment|// Write type definitions, if any:
 if|if
 condition|(
+operator|!
 name|types
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|String
-name|s
+argument_list|,
+name|BibtexEntryType
+argument_list|>
+name|stringBibtexEntryTypeEntry
 range|:
 name|types
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
 block|{
 name|BibtexEntryType
 name|type
 init|=
-name|types
+name|stringBibtexEntryTypeEntry
 operator|.
-name|get
-argument_list|(
-name|s
-argument_list|)
+name|getValue
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -2075,7 +2029,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"backup"
+name|JabRefPreferences
+operator|.
+name|BACKUP
 argument_list|)
 decl_stmt|;
 name|SaveSession
@@ -2134,6 +2090,8 @@ name|PLAIN_BIBTEX
 condition|)
 block|{
 comment|// Write signature.
+name|FileActions
+operator|.
 name|writeBibFileHeader
 argument_list|(
 name|fw
@@ -2143,6 +2101,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Write preamble if there is one.
+name|FileActions
+operator|.
 name|writePreamble
 argument_list|(
 name|fw
@@ -2154,6 +2114,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Write strings if there are any.
+name|FileActions
+operator|.
 name|writeStrings
 argument_list|(
 name|fw
@@ -2174,6 +2136,8 @@ argument_list|>
 argument_list|>
 name|comparators
 init|=
+name|FileActions
+operator|.
 name|getSaveComparators
 argument_list|(
 literal|true
@@ -2312,15 +2276,19 @@ block|}
 comment|// Write meta data.
 if|if
 condition|(
+operator|(
 name|saveType
 operator|!=
 name|DatabaseSaveType
 operator|.
 name|PLAIN_BIBTEX
+operator|)
 operator|&&
+operator|(
 name|metaData
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|metaData
@@ -2334,22 +2302,28 @@ block|}
 comment|// Write type definitions, if any:
 if|if
 condition|(
+operator|!
 name|types
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|String
-name|s
+argument_list|,
+name|BibtexEntryType
+argument_list|>
+name|stringBibtexEntryTypeEntry
 range|:
 name|types
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
 block|{
@@ -2359,12 +2333,10 @@ init|=
 operator|(
 name|CustomEntryType
 operator|)
-name|types
+name|stringBibtexEntryTypeEntry
 operator|.
-name|get
-argument_list|(
-name|s
-argument_list|)
+name|getValue
+argument_list|()
 decl_stmt|;
 name|tp
 operator|.
@@ -2434,8 +2406,6 @@ name|IOException
 block|{
 name|Reader
 name|reader
-init|=
-literal|null
 decl_stmt|;
 comment|// Try loading as a resource first. This works for files inside the jar:
 name|URL
@@ -2627,7 +2597,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"saveInOriginalOrder"
+name|JabRefPreferences
+operator|.
+name|SAVE_IN_ORIGINAL_ORDER
 argument_list|)
 expr_stmt|;
 block|}
@@ -2660,7 +2632,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"exportInOriginalOrder"
+name|JabRefPreferences
+operator|.
+name|EXPORT_IN_ORIGINAL_ORDER
 argument_list|)
 expr_stmt|;
 block|}
@@ -2715,6 +2689,8 @@ else|else
 block|{
 name|comparators
 operator|=
+name|FileActions
+operator|.
 name|getSaveComparators
 argument_list|(
 name|isSaveOperation
@@ -2872,18 +2848,6 @@ return|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 

@@ -42,6 +42,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -76,18 +86,6 @@ name|URL
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_class
 DECL|class|URLDownloadTest
 specifier|public
@@ -117,6 +115,8 @@ literal|"http://www.google.com"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|"google.com should contain google"
@@ -169,6 +169,8 @@ literal|"http://www.google.com"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|"google.com should contain google"
@@ -239,6 +241,8 @@ argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|"file must exist"
@@ -283,6 +287,8 @@ literal|"http://www.google.com"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|dl

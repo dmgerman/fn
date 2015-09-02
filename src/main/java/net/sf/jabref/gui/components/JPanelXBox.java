@@ -54,7 +54,6 @@ end_comment
 
 begin_class
 DECL|class|JPanelXBox
-specifier|public
 class|class
 name|JPanelXBox
 extends|extends
@@ -62,7 +61,6 @@ name|JPanel
 block|{
 comment|/** Create the panel and set BoxLayout.X_AXIS */
 DECL|method|JPanelXBox ()
-specifier|public
 name|JPanelXBox
 parameter_list|()
 block|{

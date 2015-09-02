@@ -228,6 +228,20 @@ name|AbstractAutoCompleter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|autocompleter
+operator|.
+name|AutoCompleter
+import|;
+end_import
+
 begin_comment
 comment|/**  * Based on code by   * 	Santhosh Kumar (http://www.jroller.com/santhosh/date/20050620)  * 	James Lemieux (Glazed Lists AutoCompleteSupport)  */
 end_comment
@@ -256,7 +270,7 @@ argument_list|>
 name|formater
 decl_stmt|;
 DECL|field|autoCompleter
-name|AbstractAutoCompleter
+name|AutoCompleter
 argument_list|<
 name|E
 argument_list|>
@@ -293,14 +307,14 @@ operator|new
 name|ComboBoxEditorFocusHandler
 argument_list|()
 decl_stmt|;
-DECL|method|AutoCompleteSupport (JTextComponent textComp, AbstractAutoCompleter<E> autoCompleter, AutoCompleteRenderer<E> renderer, AutoCompleteFormater<E> formater)
+DECL|method|AutoCompleteSupport (JTextComponent textComp, AutoCompleter<E> autoCompleter, AutoCompleteRenderer<E> renderer, AutoCompleteFormater<E> formater)
 specifier|public
 name|AutoCompleteSupport
 parameter_list|(
 name|JTextComponent
 name|textComp
 parameter_list|,
-name|AbstractAutoCompleter
+name|AutoCompleter
 argument_list|<
 name|E
 argument_list|>
@@ -374,14 +388,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AutoCompleteSupport (JTextComponent textComp, AbstractAutoCompleter<E> autoCompleter)
+DECL|method|AutoCompleteSupport (JTextComponent textComp, AutoCompleter<E> autoCompleter)
 specifier|public
 name|AutoCompleteSupport
 parameter_list|(
 name|JTextComponent
 name|textComp
 parameter_list|,
-name|AbstractAutoCompleter
+name|AutoCompleter
 argument_list|<
 name|E
 argument_list|>
@@ -1166,12 +1180,15 @@ name|e
 parameter_list|)
 block|{ 		}
 block|}
-DECL|method|setAutoCompleter (AbstractAutoCompleter autoCompleter)
+DECL|method|setAutoCompleter (AutoCompleter<E> autoCompleter)
 specifier|public
 name|void
 name|setAutoCompleter
 parameter_list|(
-name|AbstractAutoCompleter
+name|AutoCompleter
+argument_list|<
+name|E
+argument_list|>
 name|autoCompleter
 parameter_list|)
 block|{

@@ -63,12 +63,11 @@ import|;
 end_import
 
 begin_comment
-comment|/** Based on http://newsgroups.derkeiler.com/Archive/De/de.comp.lang.java/2010-04/msg00203.html */
+comment|/**  Based on http://newsgroups.derkeiler.com/Archive/De/de.comp.lang.java/2010-04/msg00203.html  */
 end_comment
 
 begin_class
 DECL|class|HtmlTransferable
-specifier|public
 class|class
 name|HtmlTransferable
 implements|implements
@@ -93,7 +92,7 @@ init|=
 literal|1
 decl_stmt|;
 DECL|field|HTML_FLAVOR
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|DataFlavor
@@ -117,6 +116,8 @@ index|[]
 name|FLAVORS
 init|=
 block|{
+name|HtmlTransferable
+operator|.
 name|HTML_FLAVOR
 block|,
 name|DataFlavor
@@ -126,11 +127,13 @@ block|}
 decl_stmt|;
 DECL|field|htmlText
 specifier|private
+specifier|final
 name|String
 name|htmlText
 decl_stmt|;
 DECL|field|plainText
 specifier|private
+specifier|final
 name|String
 name|plainText
 decl_stmt|;
@@ -169,6 +172,8 @@ name|getTransferDataFlavors
 parameter_list|()
 block|{
 return|return
+name|HtmlTransferable
+operator|.
 name|FLAVORS
 operator|.
 name|clone
@@ -191,6 +196,8 @@ control|(
 name|DataFlavor
 name|FLAVOR
 range|:
+name|HtmlTransferable
+operator|.
 name|FLAVORS
 control|)
 block|{
@@ -234,8 +241,12 @@ name|flavor
 operator|.
 name|equals
 argument_list|(
+name|HtmlTransferable
+operator|.
 name|FLAVORS
 index|[
+name|HtmlTransferable
+operator|.
 name|STRING
 index|]
 argument_list|)
@@ -252,8 +263,12 @@ name|flavor
 operator|.
 name|equals
 argument_list|(
+name|HtmlTransferable
+operator|.
 name|FLAVORS
 index|[
+name|HtmlTransferable
+operator|.
 name|HTML
 index|]
 argument_list|)

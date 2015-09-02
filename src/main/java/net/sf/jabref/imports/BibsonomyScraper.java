@@ -78,12 +78,11 @@ end_comment
 
 begin_class
 DECL|class|BibsonomyScraper
-specifier|public
 class|class
 name|BibsonomyScraper
 block|{
 DECL|field|BIBSONOMY_SCRAPER
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -92,7 +91,7 @@ init|=
 literal|"http://scraper.bibsonomy.org/service?url="
 decl_stmt|;
 DECL|field|BIBSONOMY_SCRAPER_POST
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -166,10 +165,14 @@ init|=
 operator|new
 name|URL
 argument_list|(
+name|BibsonomyScraper
+operator|.
 name|BIBSONOMY_SCRAPER
 operator|+
 name|entryUrl
 operator|+
+name|BibsonomyScraper
+operator|.
 name|BIBSONOMY_SCRAPER_POST
 argument_list|)
 decl_stmt|;
@@ -246,9 +249,11 @@ argument_list|()
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(

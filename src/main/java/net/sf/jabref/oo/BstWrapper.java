@@ -190,11 +190,12 @@ end_comment
 
 begin_class
 DECL|class|BstWrapper
-specifier|public
 class|class
 name|BstWrapper
 block|{
 DECL|field|formatter
+specifier|private
+specifier|final
 name|LayoutFormatter
 name|formatter
 init|=
@@ -203,6 +204,7 @@ name|FormatChars
 argument_list|()
 decl_stmt|;
 DECL|field|vm
+specifier|private
 name|VM
 name|vm
 init|=
@@ -277,7 +279,9 @@ argument_list|)
 return|;
 block|}
 DECL|field|bibitemTag
+specifier|private
 specifier|static
+specifier|final
 name|Pattern
 name|bibitemTag
 init|=
@@ -323,6 +327,8 @@ comment|// Look through for instances of \bibitem :
 name|Matcher
 name|m
 init|=
+name|BstWrapper
+operator|.
 name|bibitemTag
 operator|.
 name|matcher
@@ -386,6 +392,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|endIndices
 operator|.
 name|add
@@ -396,6 +403,7 @@ name|start
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|System
 operator|.
 name|out
@@ -492,6 +500,7 @@ literal|1
 argument_list|)
 operator|)
 condition|)
+block|{
 name|endIndices
 operator|.
 name|add
@@ -499,6 +508,7 @@ argument_list|(
 name|lastI
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|int

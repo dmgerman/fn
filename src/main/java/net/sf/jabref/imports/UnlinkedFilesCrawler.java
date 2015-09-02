@@ -106,9 +106,9 @@ specifier|public
 class|class
 name|UnlinkedFilesCrawler
 block|{
-comment|/** 	 * File filter, that accepts directorys only. 	 */
+comment|/**      * File filter, that accepts directorys only.      */
 DECL|field|directoryFilter
-specifier|public
+specifier|private
 specifier|final
 name|FileFilter
 name|directoryFilter
@@ -117,6 +117,8 @@ operator|new
 name|FileFilter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|accept
@@ -131,9 +133,11 @@ name|pathname
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 return|return
 name|pathname
 operator|.
@@ -149,7 +153,7 @@ specifier|final
 name|BibtexDatabase
 name|database
 decl_stmt|;
-comment|/** 	 * CONSTRUCTOR 	 *  	 * @param database 	 */
+comment|/**      * CONSTRUCTOR      *       * @param database      */
 DECL|method|UnlinkedFilesCrawler (BibtexDatabase database)
 specifier|public
 name|UnlinkedFilesCrawler
@@ -206,7 +210,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Searches recursively all files in the specified directory.<br> 	 *<br> 	 * All {@link File}s, which match the {@link FileFilter} that comes with the 	 * {@link EntryFromFileCreatorManager}, are taken into the resulting tree.<br> 	 *<br> 	 * The result will be a tree structure of nodes of the type 	 * {@link CheckableTreeNode}.<br> 	 *<br> 	 * The user objects that are attached to the nodes is the 	 * {@link FileNodeWrapper}, which wrapps the {@link File}-Object.<br> 	 *<br> 	 * For ensuring the capability to cancel the work of this recursive method, 	 * the first position in the integer array 'state' must be set to 1, to keep 	 * the recursion running. When the states value changes, the methode will 	 * resolve its recursion and return what it has saved so far. 	 */
+comment|/**      * Searches recursively all files in the specified directory.<br>      *<br>      * All {@link File}s, which match the {@link FileFilter} that comes with the      * {@link EntryFromFileCreatorManager}, are taken into the resulting tree.<br>      *<br>      * The result will be a tree structure of nodes of the type      * {@link CheckableTreeNode}.<br>      *<br>      * The user objects that are attached to the nodes is the      * {@link FileNodeWrapper}, which wrapps the {@link File}-Object.<br>      *<br>      * For ensuring the capability to cancel the work of this recursive method,      * the first position in the integer array 'state' must be set to 1, to keep      * the recursion running. When the states value changes, the methode will      * resolve its recursion and return what it has saved so far.      */
 DECL|method|searchDirectory (File directory, UnlinkedPDFFileFilter ff, int[] state, ChangeListener changeListener)
 specifier|public
 name|CheckableTreeNode
@@ -229,22 +233,28 @@ block|{
 comment|/* Cancellation of the search from outside! */
 if|if
 condition|(
+operator|(
 name|state
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|state
 operator|.
 name|length
 operator|<
 literal|1
+operator|)
 operator|||
+operator|(
 name|state
 index|[
 literal|0
 index|]
 operator|!=
 literal|1
+operator|)
 condition|)
 block|{
 return|return
@@ -254,9 +264,11 @@ block|}
 comment|/* Return null if the directory is not valid. */
 if|if
 condition|(
+operator|(
 name|directory
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|directory
@@ -335,16 +347,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|subRoot
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|subRoot
 operator|.
 name|getChildCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|filesCount
@@ -416,6 +432,7 @@ name|changeListener
 operator|!=
 literal|null
 condition|)
+block|{
 name|changeListener
 operator|.
 name|stateChanged
@@ -427,6 +444,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|root

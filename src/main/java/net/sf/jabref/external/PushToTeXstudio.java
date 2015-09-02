@@ -125,6 +125,7 @@ literal|null
 decl_stmt|;
 DECL|field|citeCommand
 specifier|private
+specifier|final
 name|JTextField
 name|citeCommand
 init|=
@@ -136,6 +137,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|progPath
 specifier|private
+specifier|final
 name|JTextField
 name|progPath
 init|=
@@ -157,6 +159,8 @@ name|couldNotRunClient
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -172,6 +176,8 @@ literal|"Insert selected citations into TeXstudio"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getApplicationName ()
 specifier|public
 name|String
@@ -182,6 +188,8 @@ return|return
 literal|"TeXstudio"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTooltip ()
 specifier|public
 name|String
@@ -197,6 +205,8 @@ literal|"Push selection to TeXstudio"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIcon ()
 specifier|public
 name|Icon
@@ -212,6 +222,8 @@ literal|"texstudio"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyStrokeName ()
 specifier|public
 name|String
@@ -223,7 +235,7 @@ literal|"Push to TeXstudio"
 return|;
 block|}
 DECL|method|defaultProgramPath ()
-specifier|protected
+specifier|private
 name|String
 name|defaultProgramPath
 parameter_list|()
@@ -251,6 +263,7 @@ name|progFiles
 operator|==
 literal|null
 condition|)
+block|{
 name|progFiles
 operator|=
 name|System
@@ -260,6 +273,7 @@ argument_list|(
 literal|"ProgramFiles"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|progFiles
 operator|+
@@ -273,6 +287,8 @@ literal|"texstudio"
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getSettingsPanel ()
 specifier|public
 name|JPanel
@@ -285,9 +301,11 @@ name|settings
 operator|==
 literal|null
 condition|)
+block|{
 name|initSettingsPanel
 argument_list|()
 expr_stmt|;
+block|}
 name|String
 name|citeCom
 init|=
@@ -306,10 +324,12 @@ name|citeCom
 operator|==
 literal|null
 condition|)
+block|{
 name|citeCom
 operator|=
 name|defaultCiteCommand
 expr_stmt|;
+block|}
 name|citeCommand
 operator|.
 name|setText
@@ -335,11 +355,13 @@ name|programPath
 operator|==
 literal|null
 condition|)
+block|{
 name|programPath
 operator|=
 name|defaultProgramPath
 argument_list|()
 expr_stmt|;
+block|}
 name|progPath
 operator|.
 name|setText
@@ -351,6 +373,8 @@ return|return
 name|settings
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -468,6 +492,8 @@ name|getPanel
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keys, MetaData metaData)
 specifier|public
 name|void
@@ -513,10 +539,12 @@ name|citeCom
 operator|==
 literal|null
 condition|)
+block|{
 name|citeCom
 operator|=
 name|defaultCiteCommand
 expr_stmt|;
+block|}
 name|String
 name|programPath
 init|=
@@ -535,11 +563,13 @@ name|programPath
 operator|==
 literal|null
 condition|)
+block|{
 name|programPath
 operator|=
 name|defaultProgramPath
 argument_list|()
 expr_stmt|;
+block|}
 try|try
 block|{
 name|String
@@ -616,6 +646,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -632,11 +664,11 @@ decl_stmt|;
 name|int
 name|c
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 try|try
@@ -655,6 +687,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -665,6 +698,7 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -704,24 +738,14 @@ block|}
 block|}
 block|}
 decl_stmt|;
-name|Thread
-name|t
-init|=
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|executeAndWait
 argument_list|(
 name|errorListener
 argument_list|)
-decl_stmt|;
-name|t
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-name|t
-operator|.
-name|join
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -735,19 +759,9 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 block|}
-block|}
+annotation|@
+name|Override
 DECL|method|operationCompleted (BasePanel panel)
 specifier|public
 name|void
@@ -810,11 +824,13 @@ name|programPath
 operator|==
 literal|null
 condition|)
+block|{
 name|programPath
 operator|=
 name|defaultProgramPath
 argument_list|()
 expr_stmt|;
+block|}
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -864,6 +880,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|requiresBibtexKeys ()
 specifier|public
 name|boolean

@@ -64,6 +64,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JFileChooser
 import|;
 end_import
@@ -205,6 +215,7 @@ block|{
 DECL|field|exportFormats
 specifier|private
 specifier|static
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -238,12 +249,16 @@ name|void
 name|initAllExports
 parameter_list|()
 block|{
+name|ExportFormats
+operator|.
 name|exportFormats
 operator|.
 name|clear
 argument_list|()
 expr_stmt|;
 comment|// Initialize Build-In Export Formats
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -266,6 +281,8 @@ literal|".html"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -288,6 +305,8 @@ literal|".html"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -315,6 +334,8 @@ literal|".xml"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -337,6 +358,8 @@ literal|".rtf"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -359,6 +382,8 @@ literal|".xml"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -381,6 +406,8 @@ literal|".rdf"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -388,6 +415,8 @@ name|ModsExportFormat
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -410,6 +439,8 @@ literal|".html"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -432,6 +463,8 @@ literal|".html"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -454,6 +487,8 @@ literal|".html"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -476,6 +511,8 @@ literal|".rtf"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -498,6 +535,8 @@ literal|".rtf"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -520,6 +559,8 @@ literal|".txt"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -542,6 +583,8 @@ literal|".txt"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -592,11 +635,15 @@ name|encoding
 operator|=
 literal|"UTF-8"
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 name|ef
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -604,6 +651,8 @@ name|OpenOfficeDocumentCreator
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -611,6 +660,8 @@ name|OpenDocumentSpreadsheetCreator
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -618,6 +669,8 @@ name|MSBibExportFormat
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -625,6 +678,8 @@ name|MySQLExport
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
@@ -682,6 +737,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 name|format
@@ -702,12 +759,16 @@ name|getExportFormatExtensions
 argument_list|()
 control|)
 block|{
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 operator|new
 name|IExportFormat
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getConsoleName
@@ -720,6 +781,8 @@ name|getConsoleName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getDisplayName
@@ -732,6 +795,8 @@ name|getDisplayName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|FileFilter
 name|getFileFilter
@@ -753,6 +818,8 @@ block|}
 name|IExportFormat
 name|wrapped
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|performExport
@@ -784,6 +851,7 @@ name|wrapped
 operator|==
 literal|null
 condition|)
+block|{
 name|wrapped
 operator|=
 name|e
@@ -791,6 +859,7 @@ operator|.
 name|getExportFormat
 argument_list|()
 expr_stmt|;
+block|}
 name|wrapped
 operator|.
 name|performExport
@@ -842,6 +911,8 @@ name|getExportFormats
 argument_list|()
 control|)
 block|{
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 name|exportFormat
@@ -879,6 +950,8 @@ name|values
 argument_list|()
 control|)
 block|{
+name|ExportFormats
+operator|.
 name|putFormat
 argument_list|(
 name|format
@@ -886,7 +959,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Build a string listing of all available export formats. 	 *  	 * @param maxLineLength 	 *            The max line length before a line break must be added. 	 * @param linePrefix 	 *            If a line break is added, this prefix will be inserted at the 	 *            beginning of the next line. 	 * @return The string describing available formats. 	 */
+comment|/**      * Build a string listing of all available export formats.      *       * @param maxLineLength      *            The max line length before a line break must be added.      * @param linePrefix      *            If a line break is added, this prefix will be inserted at the      *            beginning of the next line.      * @return The string describing available formats.      */
 DECL|method|getConsoleExportList (int maxLineLength, int firstLineSubtr, String linePrefix)
 specifier|public
 specifier|static
@@ -903,11 +976,11 @@ name|String
 name|linePrefix
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|int
@@ -921,6 +994,8 @@ control|(
 name|String
 name|name
 range|:
+name|ExportFormats
+operator|.
 name|exportFormats
 operator|.
 name|keySet
@@ -929,6 +1004,8 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
+operator|(
 name|sb
 operator|.
 name|length
@@ -940,8 +1017,10 @@ name|name
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|-
 name|lastBreak
+operator|)
 operator|>
 name|maxLineLength
 condition|)
@@ -978,6 +1057,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -985,6 +1065,7 @@ argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -1019,11 +1100,13 @@ name|Collections
 operator|.
 name|unmodifiableMap
 argument_list|(
+name|ExportFormats
+operator|.
 name|exportFormats
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Look up the named export format. 	 *  	 * @param consoleName 	 *            The export name given in the JabRef console help information. 	 * @return The ExportFormat, or null if no exportformat with that name is 	 *         registered. 	 */
+comment|/**      * Look up the named export format.      *       * @param consoleName      *            The export name given in the JabRef console help information.      * @return The ExportFormat, or null if no exportformat with that name is      *         registered.      */
 DECL|method|getExportFormat (String consoleName)
 specifier|public
 specifier|static
@@ -1035,6 +1118,8 @@ name|consoleName
 parameter_list|)
 block|{
 return|return
+name|ExportFormats
+operator|.
 name|exportFormats
 operator|.
 name|get
@@ -1043,7 +1128,7 @@ name|consoleName
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Create an AbstractAction for performing an export operation. 	 *  	 * @param frame 	 *            The JabRefFrame of this JabRef instance. 	 * @param selectedOnly 	 *            true indicates that only selected entries should be exported, 	 *            false indicates that all entries should be exported. 	 * @return The action. 	 */
+comment|/**      * Create an AbstractAction for performing an export operation.      *       * @param frame      *            The JabRefFrame of this JabRef instance.      * @param selectedOnly      *            true indicates that only selected entries should be exported,      *            false indicates that all entries should be exported.      * @return The action.      */
 DECL|method|getExportAction (JabRefFrame frame, boolean selectedOnly)
 specifier|public
 specifier|static
@@ -1071,10 +1156,12 @@ init|=
 literal|639463604530580554L
 decl_stmt|;
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 specifier|private
+specifier|final
 name|boolean
 name|selectedOnly
 decl_stmt|;
@@ -1102,6 +1189,8 @@ name|selectedOnly
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|selectedOnly
@@ -1112,6 +1201,8 @@ literal|"Export"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1138,7 +1229,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"exportWorkingDirectory"
+name|JabRefPreferences
+operator|.
+name|EXPORT_WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1163,7 +1256,9 @@ name|file
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|FileFilter
 name|ff
 init|=
@@ -1208,6 +1303,7 @@ name|getExtension
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|path
 operator|=
 name|path
@@ -1217,6 +1313,7 @@ operator|.
 name|getExtension
 argument_list|()
 expr_stmt|;
+block|}
 name|file
 operator|=
 operator|new
@@ -1242,7 +1339,7 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"'"
+literal|'\''
 operator|+
 name|file
 operator|.
@@ -1274,7 +1371,9 @@ name|JOptionPane
 operator|.
 name|OK_OPTION
 condition|)
+block|{
 return|return;
+block|}
 block|}
 specifier|final
 name|IExportFormat
@@ -1389,7 +1488,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"lastUsedExport"
+name|JabRefPreferences
+operator|.
+name|LAST_USED_EXPORT
 argument_list|,
 name|format
 operator|.
@@ -1403,7 +1504,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"exportWorkingDirectory"
+name|JabRefPreferences
+operator|.
+name|EXPORT_WORKING_DIRECTORY
 argument_list|,
 name|file
 operator|.
@@ -1438,6 +1541,8 @@ name|errorMessage
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1523,6 +1628,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|update
@@ -1638,7 +1745,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|createExportFileChooser (String currentDir)
-specifier|public
+specifier|private
 specifier|static
 name|JFileChooser
 name|createExportFileChooser
@@ -1656,7 +1763,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"lastUsedExport"
+name|JabRefPreferences
+operator|.
+name|LAST_USED_EXPORT
 argument_list|)
 decl_stmt|;
 name|FileFilter
@@ -1698,6 +1807,8 @@ name|IExportFormat
 argument_list|>
 name|e
 range|:
+name|ExportFormats
+operator|.
 name|exportFormats
 operator|.
 name|entrySet
@@ -1739,6 +1850,7 @@ argument_list|(
 name|lastUsedFormat
 argument_list|)
 condition|)
+block|{
 name|defaultFilter
 operator|=
 name|format
@@ -1746,6 +1858,7 @@ operator|.
 name|getFileFilter
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
@@ -1776,6 +1889,7 @@ name|defaultFilter
 operator|!=
 literal|null
 condition|)
+block|{
 name|fc
 operator|.
 name|setFileFilter
@@ -1783,6 +1897,7 @@ argument_list|(
 name|defaultFilter
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|fc
 return|;
@@ -1797,6 +1912,8 @@ name|IExportFormat
 name|format
 parameter_list|)
 block|{
+name|ExportFormats
+operator|.
 name|exportFormats
 operator|.
 name|put

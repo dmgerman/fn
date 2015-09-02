@@ -200,7 +200,63 @@ name|jabref
 operator|.
 name|util
 operator|.
+name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
 name|XMPUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -258,11 +314,13 @@ name|PdfImporter
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -275,6 +333,22 @@ DECL|field|dropRow
 specifier|private
 name|int
 name|dropRow
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|PdfImporter
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/**      * Creates the PdfImporter      *       * @param frame the JabRef frame      * @param panel the panel to use      * @param entryTable the entry table to work on      * @param dropRow the row the entry is dropped to. May be -1 to indicate that no row is selected.      */
 DECL|method|PdfImporter (JabRefFrame frame, BasePanel panel, MainTable entryTable, int dropRow)
@@ -514,12 +588,14 @@ name|panel
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
 return|;
+block|}
 name|ImportDialog
 name|importDialog
 init|=
@@ -794,7 +870,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{                         }
 block|}
 if|if
 condition|(
@@ -815,9 +891,9 @@ operator|)
 condition|)
 block|{
 comment|// import failed -> generate default entry
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 name|Globals
 operator|.
@@ -901,7 +977,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|Util
+name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(
@@ -985,9 +1061,9 @@ name|e
 parameter_list|)
 block|{
 comment|// import failed -> generate default entry
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 name|Globals
 operator|.
@@ -995,6 +1071,8 @@ name|lang
 argument_list|(
 literal|"Import failed"
 argument_list|)
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 name|e
@@ -1041,9 +1119,9 @@ name|e
 parameter_list|)
 block|{
 comment|// import failed -> generate default entry
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 name|Globals
 operator|.
@@ -1051,6 +1129,8 @@ name|lang
 argument_list|(
 literal|"Import failed"
 argument_list|)
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 name|e
@@ -1091,7 +1171,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{                         }
 block|}
 comment|// import failed -> generate default entry
 if|if
@@ -1209,7 +1289,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoOpenForm"
+name|JabRefPreferences
+operator|.
+name|AUTO_OPEN_FORM
 argument_list|)
 condition|)
 block|{
@@ -1288,11 +1370,14 @@ expr_stmt|;
 comment|// to satisfy the Java compiler
 if|if
 condition|(
+operator|(
 name|document
 operator|!=
 literal|null
 comment|/*&& documents.getDocuments() != null&& documents.getDocuments().size()> 0*/
+operator|)
 operator|&&
+operator|(
 name|metaDataListDialog
 operator|.
 name|getResult
@@ -1301,6 +1386,7 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 name|int
@@ -1327,9 +1413,9 @@ comment|//Document document = documents/*.getDocuments().get(selected)*/;
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 name|entry
@@ -1372,7 +1458,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 expr_stmt|;
@@ -1391,7 +1477,7 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|)
@@ -1543,11 +1629,14 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|document
 operator|==
 literal|null
 comment|/*|| document.getDocuments() == null || document.getDocuments().size()<= 0*/
+operator|)
 operator|&&
+operator|(
 name|metaDataListDialog
 operator|.
 name|getResult
@@ -1556,6 +1645,7 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 name|entry
@@ -1639,11 +1729,14 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|document
 operator|!=
 literal|null
 comment|/*&& document.getDocuments() != null&& document.getDocuments().size()> 0*/
+operator|)
 operator|&&
+operator|(
 name|metaDataListDialog
 operator|.
 name|getResult
@@ -1652,6 +1745,7 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 name|int
@@ -2023,9 +2117,11 @@ name|string
 parameter_list|)
 block|{
 return|return
+operator|(
 name|string
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|string
@@ -2086,9 +2182,9 @@ comment|// Only if the dialog was not cancelled.
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -2264,14 +2360,13 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
+literal|"Key collision occured"
+argument_list|,
 name|ex
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

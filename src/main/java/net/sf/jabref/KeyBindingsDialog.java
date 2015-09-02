@@ -16,6 +16,20 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -342,6 +356,7 @@ comment|// displays the key binding of the currently selected entry
 comment|// currently not displayed as it does not get updated
 DECL|field|keyTF
 specifier|private
+specifier|final
 name|JTextField
 name|keyTF
 init|=
@@ -351,16 +366,19 @@ argument_list|()
 decl_stmt|;
 DECL|field|ok
 specifier|private
+specifier|final
 name|JButton
 name|ok
 decl_stmt|;
 DECL|field|cancel
 specifier|private
+specifier|final
 name|JButton
 name|cancel
 decl_stmt|;
 DECL|field|defB
 specifier|private
+specifier|final
 name|JButton
 name|defB
 decl_stmt|;
@@ -379,6 +397,7 @@ decl_stmt|;
 comment|// stores default key bindings
 DECL|field|defBinds
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -394,7 +413,7 @@ name|clickedSave
 init|=
 literal|false
 decl_stmt|;
-comment|/**    * Checked by the caller whether user has confirmed the change    * @return true if the user wants the keybindings to be stored    */
+comment|/**      * Checked by the caller whether user has confirmed the change      * @return true if the user wants the keybindings to be stored      */
 DECL|method|getAction ()
 name|boolean
 name|getAction
@@ -404,7 +423,7 @@ return|return
 name|clickedSave
 return|;
 block|}
-comment|/**    * Used by the caller to retrieve the keybindings    */
+comment|/**      * Used by the caller to retrieve the keybindings      */
 DECL|method|getNewKeyBindings ()
 name|HashMap
 argument_list|<
@@ -663,6 +682,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosing
@@ -787,7 +808,7 @@ name|NORTH
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * respond to grabKey and display the key binding    */
+comment|/**      * respond to grabKey and display the key binding      */
 DECL|class|JBM_CustomKeyBindingsListener
 specifier|private
 class|class
@@ -795,6 +816,8 @@ name|JBM_CustomKeyBindingsListener
 extends|extends
 name|KeyAdapter
 block|{
+annotation|@
+name|Override
 DECL|method|keyPressed (KeyEvent evt)
 specifier|public
 name|void
@@ -819,7 +842,9 @@ name|selRow
 operator|<
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|code
 init|=
@@ -1064,7 +1089,7 @@ expr_stmt|;
 comment|//table.setValueAt(newKey, );
 block|}
 block|}
-comment|/**    * put the corresponding key binding into keyTF    */
+comment|/**      * put the corresponding key binding into keyTF      */
 DECL|class|MyListSelectionListener
 specifier|private
 class|class
@@ -1073,6 +1098,8 @@ implements|implements
 name|ListSelectionListener
 block|{
 comment|// This method is called each time the user changes the set of selected items
+annotation|@
+name|Override
 DECL|method|valueChanged (ListSelectionEvent evt)
 specifier|public
 name|void
@@ -1139,7 +1166,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**    * Puts the content of bindHM into the table    */
+comment|/**      * Puts the content of bindHM into the table      */
 DECL|method|setList ()
 specifier|private
 name|void
@@ -1277,6 +1304,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|sorted
 operator|.
 name|put
@@ -1295,6 +1323,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 name|KeystrokeTableModel
 name|tableModel
 init|=
@@ -1371,6 +1400,8 @@ name|super
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|isCellEditable (int row, int col)
 specifier|public
 name|boolean
@@ -1428,6 +1459,7 @@ extends|extends
 name|AbstractTableModel
 block|{
 DECL|field|data
+specifier|final
 name|String
 index|[]
 index|[]
@@ -1509,6 +1541,8 @@ block|}
 comment|//for (int i=0; i<trData.length; i++)
 comment|//  trData[i] = Globals.lang(data[i][0]);
 block|}
+annotation|@
+name|Override
 DECL|method|isCellEditable (int row, int col)
 specifier|public
 name|boolean
@@ -1525,6 +1559,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -1556,6 +1592,8 @@ argument_list|)
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1566,6 +1604,8 @@ return|return
 literal|2
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -1578,6 +1618,8 @@ operator|.
 name|length
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getValueAt (int rowIndex, int columnIndex)
 specifier|public
 name|Object
@@ -1603,6 +1645,8 @@ return|;
 comment|//else
 comment|//return data[rowIndex][0];
 block|}
+annotation|@
+name|Override
 DECL|method|setValueAt (Object o, int row, int col)
 specifier|public
 name|void
@@ -1648,6 +1692,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1677,6 +1723,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1704,6 +1752,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1928,7 +1978,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Resets a single accelerator key    * @param name the action name    * @return the default accelerator key    */
+comment|/**      * Resets a single accelerator key      * @param name the action name      * @return the default accelerator key      */
 DECL|method|setToDefault (String name)
 specifier|private
 name|String
@@ -1961,7 +2011,7 @@ return|return
 name|defKey
 return|;
 block|}
-comment|/*        public static void main(String args[])        {     HashMap h=new HashMap();     h.put("new-bibtex","ctrl N");     h.put("edit-bibtex","ctrl E");     h.put("exit-bibtex","ctrl Q");     KeyBindingsDialog d= new KeyBindingsDialog(h);     d.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     d.setSize(200,300);     d.setVisible(true);      }*/
+comment|/*          public static void main(String args[])          {       HashMap h=new HashMap();       h.put("new-bibtex","ctrl N");       h.put("edit-bibtex","ctrl E");       h.put("exit-bibtex","ctrl Q");       KeyBindingsDialog d= new KeyBindingsDialog(h);       d.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       d.setSize(200,300);       d.setVisible(true);        }*/
 block|}
 end_class
 

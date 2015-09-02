@@ -240,6 +240,20 @@ name|PreviewPanelTransferHandler
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * Displays an BibtexEntry using the given layout format.  */
 end_comment
@@ -258,42 +272,62 @@ name|SearchTextListener
 implements|,
 name|EntryContainer
 block|{
-comment|/** 	 * The bibtex entry currently shown 	 */
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+comment|/**      * The bibtex entry currently shown      */
 DECL|field|entry
 name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|metaData
+specifier|private
 name|MetaData
 name|metaData
 decl_stmt|;
-comment|/** 	 * If a database is set, the preview will attempt to resolve strings in the 	 * previewed entry using that database. 	 */
+comment|/**      * If a database is set, the preview will attempt to resolve strings in the      * previewed entry using that database.      */
 DECL|field|database
+specifier|private
 name|BibtexDatabase
 name|database
 decl_stmt|;
 DECL|field|layout
+specifier|private
 name|Layout
 name|layout
 decl_stmt|;
 DECL|field|layoutFile
+specifier|private
 name|String
 name|layoutFile
 decl_stmt|;
 DECL|field|previewPane
-specifier|public
+specifier|private
+specifier|final
 name|JEditorPane
 name|previewPane
 decl_stmt|;
 DECL|field|scrollPane
+specifier|private
+specifier|final
 name|JScrollPane
 name|scrollPane
 decl_stmt|;
 DECL|field|pdfPreviewPanel
+specifier|private
+specifier|final
 name|PdfPreviewPanel
 name|pdfPreviewPanel
 decl_stmt|;
 DECL|field|panel
+specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -334,7 +368,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @param database 	 *            (may be null) Optionally used to resolve strings. 	 * @param entry 	 *            (may be null) If given this entry is shown otherwise you have 	 *            to call setEntry to make something visible. 	 * @param panel 	 *            (may be null) If not given no toolbar is shown on the right 	 *            hand side. 	 * @param metaData 	 *            (must be given) Used for resolving pdf directories for links. 	 * @param layoutFile 	 *            (must be given) Used for layout 	 * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel 	 */
+comment|/**      * @param database      *            (may be null) Optionally used to resolve strings.      * @param entry      *            (may be null) If given this entry is shown otherwise you have      *            to call setEntry to make something visible.      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel      */
 DECL|method|PreviewPanel (BibtexDatabase database, BibtexEntry entry, BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
 specifier|public
 name|PreviewPanel
@@ -408,7 +442,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 *  	 * @param panel 	 *            (may be null) If not given no toolbar is shown on the right 	 *            hand side. 	 * @param metaData 	 *            (must be given) Used for resolving pdf directories for links. 	 * @param layoutFile 	 *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel.       * The user can override this setting by setting the config setting JabRefPreferences.PDF_PREVIEW to false.      */
+comment|/**      *       * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel.       * The user can override this setting by setting the config setting JabRefPreferences.PDF_PREVIEW to false.      */
 DECL|method|PreviewPanel (BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
 specifier|private
 name|PreviewPanel
@@ -544,11 +578,11 @@ name|JScrollPane
 argument_list|(
 name|previewPane
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_NEVER
 argument_list|)
@@ -560,12 +594,14 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-comment|/* 		 * If we have been given a panel and the preference option 		 * previewPrintButton is set, show the tool bar 		 */
+comment|/*          * If we have been given a panel and the preference option          * previewPrintButton is set, show the tool bar          */
 if|if
 condition|(
+operator|(
 name|panel
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|JabRefPreferences
 operator|.
@@ -574,7 +610,9 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
-literal|"previewPrintButton"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_PRINT_BUTTON
 argument_list|)
 condition|)
 block|{
@@ -663,6 +701,15 @@ name|PrintAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|PrintAction ()
 specifier|public
 name|PrintAction
@@ -687,6 +734,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -699,6 +748,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//DocumentPrinter printerService;
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent arg0)
 specifier|public
 name|void
@@ -709,10 +760,18 @@ name|arg0
 parameter_list|)
 block|{
 comment|// Background this, as it takes a while.
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -805,18 +864,17 @@ expr_stmt|;
 block|}
 block|}
 block|}
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
 DECL|field|printAction
+specifier|private
 name|Action
 name|printAction
 decl_stmt|;
 DECL|method|getPrintAction ()
-specifier|public
+specifier|private
 name|Action
 name|getPrintAction
 parameter_list|()
@@ -827,12 +885,14 @@ name|printAction
 operator|==
 literal|null
 condition|)
+block|{
 name|printAction
 operator|=
 operator|new
 name|PrintAction
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|printAction
 return|;
@@ -843,6 +903,15 @@ name|CloseAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|CloseAction ()
 specifier|public
 name|CloseAction
@@ -867,6 +936,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -878,6 +949,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -895,6 +968,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|closeAction
+specifier|private
 name|Action
 name|closeAction
 decl_stmt|;
@@ -909,7 +983,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|method|getCloseAction ()
-specifier|public
+specifier|private
 name|Action
 name|getCloseAction
 parameter_list|()
@@ -920,17 +994,20 @@ name|closeAction
 operator|==
 literal|null
 condition|)
+block|{
 name|closeAction
 operator|=
 operator|new
 name|CloseAction
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|closeAction
 return|;
 block|}
 DECL|method|createPopupMenu ()
+specifier|private
 name|JPopupMenu
 name|createPopupMenu
 parameter_list|()
@@ -974,6 +1051,7 @@ name|menu
 return|;
 block|}
 DECL|method|createToolBar ()
+specifier|private
 name|JToolBar
 name|createToolBar
 parameter_list|()
@@ -984,7 +1062,7 @@ init|=
 operator|new
 name|JToolBar
 argument_list|(
-name|JToolBar
+name|SwingConstants
 operator|.
 name|VERTICAL
 argument_list|)
@@ -1137,6 +1215,7 @@ name|comp
 range|:
 name|comps
 control|)
+block|{
 operator|(
 operator|(
 name|JComponent
@@ -1149,11 +1228,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|tlb
 return|;
 block|}
 DECL|method|createPreviewPane ()
+specifier|private
 name|JEditorPane
 name|createPreviewPane
 parameter_list|()
@@ -1165,6 +1246,16 @@ operator|new
 name|JEditorPane
 argument_list|()
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|Dimension
 name|getPreferredScrollableViewportSize
@@ -1232,6 +1323,8 @@ operator|new
 name|HyperlinkListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|hyperlinkUpdate
@@ -1354,7 +1447,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|readLayout ()
-specifier|public
+specifier|private
 name|void
 name|readLayout
 parameter_list|()
@@ -1431,6 +1524,7 @@ name|entry
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|removePropertyChangeListener
@@ -1438,6 +1532,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 name|newEntry
 operator|.
 name|addPropertyChangeListener
@@ -1482,6 +1577,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getEntry ()
 specifier|public
 name|BibtexEntry
@@ -1500,11 +1597,11 @@ name|void
 name|update
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|ExportFormats
@@ -1571,6 +1668,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1618,7 +1717,9 @@ literal|null
 operator|)
 return|;
 block|}
-comment|/** 	 * The PreviewPanel has registered itself as an event listener with the 	 * currently displayed BibtexEntry. If the entry changes, an event is 	 * received here, and we can update the preview immediately. 	 */
+comment|/**      * The PreviewPanel has registered itself as an event listener with the      * currently displayed BibtexEntry. If the entry changes, an event is      * received here, and we can update the preview immediately.      */
+annotation|@
+name|Override
 DECL|method|vetoableChange (PropertyChangeEvent evt)
 specifier|public
 name|void
@@ -1658,7 +1759,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highLightWords"
+name|JabRefPreferences
+operator|.
+name|HIGH_LIGHT_WORDS
 argument_list|)
 condition|)
 block|{
@@ -1683,7 +1786,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// setting of "highLightWords" seems to have changed.
+comment|// setting of JabRefPreferences.HIGH_LIGHT_WORDS seems to have changed.
 comment|// clear all highlights and remember the clearing (by wordsToHighlight = null)
 name|this
 operator|.

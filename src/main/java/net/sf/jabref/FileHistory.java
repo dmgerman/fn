@@ -109,10 +109,14 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|prefs
+specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
 DECL|field|history
+specifier|private
+specifier|final
 name|LinkedList
 argument_list|<
 name|String
@@ -127,6 +131,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -216,11 +222,13 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|setText
 argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|prefs
@@ -293,11 +301,13 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|setEnabled
 argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Adds the file name to the top of the menu. If it already is in      * the menu, it is merely moved to the top.      *      * @param filename a<code>String</code> value      */
 DECL|method|newFile (String filename)
@@ -338,14 +348,18 @@ argument_list|(
 name|filename
 argument_list|)
 condition|)
+block|{
 name|history
 operator|.
 name|remove
 argument_list|(
 name|i
-operator|--
 argument_list|)
 expr_stmt|;
+name|i
+operator|--
+expr_stmt|;
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -368,7 +382,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"historySize"
+name|JabRefPreferences
+operator|.
+name|HISTORY_SIZE
 argument_list|)
 condition|)
 block|{
@@ -387,11 +403,13 @@ operator|!
 name|isEnabled
 argument_list|()
 condition|)
+block|{
 name|setEnabled
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|setItems ()
 specifier|private
@@ -434,8 +452,10 @@ name|next
 argument_list|()
 argument_list|,
 name|count
-operator|++
 argument_list|)
+expr_stmt|;
+name|count
+operator|++
 expr_stmt|;
 block|}
 block|}
@@ -574,12 +594,11 @@ parameter_list|()
 block|{
 if|if
 condition|(
+operator|!
 name|history
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|String
@@ -611,6 +630,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|names
 index|[
 name|i
@@ -623,6 +643,7 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 name|prefs
 operator|.
 name|putStringArray
@@ -634,6 +655,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -734,11 +757,18 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -757,10 +787,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}

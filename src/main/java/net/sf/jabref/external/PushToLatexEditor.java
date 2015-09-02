@@ -111,6 +111,7 @@ literal|null
 decl_stmt|;
 DECL|field|ledPath
 specifier|private
+specifier|final
 name|JTextField
 name|ledPath
 init|=
@@ -119,8 +120,11 @@ name|JTextField
 argument_list|(
 literal|30
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|citeCommand
+specifier|private
+specifier|final
+name|JTextField
 name|citeCommand
 init|=
 operator|new
@@ -129,6 +133,8 @@ argument_list|(
 literal|30
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -144,6 +150,8 @@ literal|"Insert selected citations into LatexEditor"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getApplicationName ()
 specifier|public
 name|String
@@ -154,6 +162,8 @@ return|return
 literal|"LatexEditor"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTooltip ()
 specifier|public
 name|String
@@ -169,6 +179,8 @@ literal|"Push to LatexEditor"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIcon ()
 specifier|public
 name|Icon
@@ -184,6 +196,8 @@ literal|"edit"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyStrokeName ()
 specifier|public
 name|String
@@ -194,6 +208,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keyString, MetaData metaData)
 specifier|public
 name|void
@@ -230,7 +246,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"latexEditorPath"
+name|JabRefPreferences
+operator|.
+name|LATEX_EDITOR_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -281,7 +299,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandLed"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_LED
 argument_list|)
 operator|+
 literal|"{"
@@ -309,6 +329,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|operationCompleted (BasePanel panel)
 specifier|public
 name|void
@@ -384,7 +406,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"latexEditorPath"
+name|JabRefPreferences
+operator|.
+name|LATEX_EDITOR_PATH
 argument_list|)
 operator|+
 literal|"'."
@@ -392,6 +416,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|Globals
 operator|.
 name|lang
@@ -402,6 +427,9 @@ literal|"LatexEditor"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|requiresBibtexKeys ()
 specifier|public
 name|boolean
@@ -412,6 +440,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSettingsPanel ()
 specifier|public
 name|JPanel
@@ -424,9 +454,11 @@ name|settings
 operator|==
 literal|null
 condition|)
+block|{
 name|initSettingsPanel
 argument_list|()
 expr_stmt|;
+block|}
 name|ledPath
 operator|.
 name|setText
@@ -437,7 +469,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"latexEditorPath"
+name|JabRefPreferences
+operator|.
+name|LATEX_EDITOR_PATH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -451,7 +485,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandLed"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_LED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -508,14 +544,11 @@ expr_stmt|;
 name|BrowseAction
 name|action
 init|=
-operator|new
 name|BrowseAction
+operator|.
+name|buildForFile
 argument_list|(
-literal|null
-argument_list|,
 name|ledPath
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|JButton
@@ -580,6 +613,8 @@ name|getPanel
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -592,7 +627,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"latexEditorPath"
+name|JabRefPreferences
+operator|.
+name|LATEX_EDITOR_PATH
 argument_list|,
 name|ledPath
 operator|.
@@ -606,7 +643,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"citeCommandLed"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_LED
 argument_list|,
 name|citeCommand
 operator|.

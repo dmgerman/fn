@@ -44,6 +44,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
 name|Util
 import|;
 end_import
@@ -68,17 +70,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
+name|Assert
 import|;
 end_import
 
@@ -95,14 +87,22 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|fail
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -148,16 +148,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Simon Holland}}"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Holland"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -197,6 +193,8 @@ argument_list|(
 name|bibtexString
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"HerlandHaugeHelgeland"
@@ -236,16 +234,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas KÃ¶ning}, year={2000}}"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Koen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -270,16 +264,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Aoen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -304,16 +294,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Eoen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -338,16 +324,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Ioen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -372,16 +354,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas Ä¹Ã¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Loen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -406,16 +384,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÅÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Noen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -440,16 +414,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Ooen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -474,16 +444,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÅÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Roen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -508,16 +474,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÅÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Soen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -542,16 +504,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Uoen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -576,16 +534,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Yoen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -610,16 +564,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas Å¹Ã¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Zoen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -655,16 +605,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Aoen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -689,16 +635,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Eoen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -723,16 +665,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Ioen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -757,16 +695,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Ooen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -791,16 +725,12 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Uoen"
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -817,7 +747,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests if checkLegalKey replaces Non-ASCII chars.      * There are quite a few chars that should be replaced. Perhaps there is a better method than the current.      *      * @see net.sf.jabref.Util#checkLegalKey(String)      */
+comment|/**      * Tests if checkLegalKey replaces Non-ASCII chars.      * There are quite a few chars that should be replaced. Perhaps there is a better method than the current.      *      * @see Util#checkLegalKey(String)      */
 annotation|@
 name|Test
 DECL|method|testCheckLegalKey ()
@@ -845,12 +775,6 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -871,12 +795,6 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -897,12 +815,6 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -923,12 +835,6 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -949,12 +855,6 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -976,12 +876,6 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -1002,12 +896,6 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -1028,12 +916,6 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -1054,12 +936,6 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -1080,12 +956,6 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -1132,12 +1002,6 @@ name|assertEquals
 argument_list|(
 name|expectedResults
 argument_list|,
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -1155,6 +1019,8 @@ name|void
 name|testFirstAuthor
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -1167,6 +1033,8 @@ literal|"I. Newton and J. Maxwell and A. Einstein and N. Bohr and Harry Unknown"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -1180,6 +1048,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// https://sourceforge.net/forum/message.php?msg_id=4498555
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"K{\\\"o}ning"
@@ -1192,6 +1062,8 @@ literal|"K{\\\"o}ning"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -1213,6 +1085,8 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -1232,6 +1106,8 @@ name|void
 name|testAuthIniN
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"NMEB"
@@ -1246,6 +1122,8 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"NMEB"
@@ -1260,6 +1138,8 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"NeME"
@@ -1274,6 +1154,8 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"NeMa"
@@ -1288,6 +1170,8 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Newt"
@@ -1302,6 +1186,8 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -1309,6 +1195,8 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"N"
@@ -1323,6 +1211,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -1337,6 +1227,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -1352,6 +1244,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -1366,6 +1260,8 @@ literal|6
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -1391,6 +1287,8 @@ argument_list|,
 literal|3
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -1410,6 +1308,8 @@ name|void
 name|testFirstPage
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"7"
@@ -1422,6 +1322,8 @@ literal|"7--27"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"27"
@@ -1434,6 +1336,8 @@ literal|"--27"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -1446,6 +1350,8 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"42"
@@ -1458,6 +1364,8 @@ literal|"42--111"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"7"
@@ -1470,6 +1378,8 @@ literal|"7,41,73--97"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"7"
@@ -1482,6 +1392,8 @@ literal|"41,7,73--97"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"43"
@@ -1503,6 +1415,8 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -1522,6 +1436,8 @@ name|void
 name|testLastPage
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"27"
@@ -1534,6 +1450,8 @@ literal|"7--27"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"27"
@@ -1546,6 +1464,8 @@ literal|"--27"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -1558,6 +1478,8 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"111"
@@ -1570,6 +1492,8 @@ literal|"42--111"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"97"
@@ -1582,6 +1506,8 @@ literal|"7,41,73--97"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"97"
@@ -1594,6 +1520,8 @@ literal|"7,41,97--73"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"43"
@@ -1615,6 +1543,8 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;

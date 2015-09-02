@@ -21,7 +21,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * The |built_in| function {\.{text.prefix\$}} pops the top two literals (the  * integer literal |pop_lit1| and a string literal, in that order). It pushes  * the substring of the (at most) |pop_lit1| consecutive text characters  * starting from the beginning of the string. This function is similar to  * {\.{substring\$}}, but this one considers an accented character (or more  * precisely, a ``special character''$\!$, even if it's missing its matching  * |right_brace|) to be a single text character (rather than however many  * |ASCII_code| characters it actually comprises), and this function doesn't  * consider braces to be text characters; furthermore, this function appends any  * needed matching |right_brace|s. If any of the types is incorrect, it  * complains and pushes the null string.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * The |built_in| function {\.{text.prefix\$}} pops the top two literals (the  * integer literal |pop_lit1| and a string literal, in that order). It pushes  * the substring of the (at most) |pop_lit1| consecutive text characters  * starting from the beginning of the string. This function is similar to  * {\.{substring\$}}, but this one considers an accented character (or more  * precisely, a ``special character''$\!$, even if it's missing its matching  * |right_brace|) to be a single text character (rather than however many  * |ASCII_code| characters it actually comprises), and this function doesn't  * consider braces to be text characters; furthermore, this function appends any  * needed matching |right_brace|s. If any of the types is incorrect, it  * complains and pushes the null string.  *   */
 end_comment
 
 begin_class
@@ -30,7 +30,7 @@ specifier|public
 class|class
 name|BibtexTextPrefix
 block|{
-comment|/** 	 *  	 * @param numOfChars 	 * @param toPrefix 	 * @param warn may-be-null 	 * @return 	 */
+comment|/**      *       * @param numOfChars      * @param toPrefix      * @param warn may-be-null      * @return      */
 DECL|method|textPrefix (int numOfChars, String toPrefix, Warn warn)
 specifier|public
 specifier|static
@@ -82,13 +82,17 @@ literal|0
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|i
-argument_list|<
+operator|<
 name|n
+operator|)
 operator|&&
+operator|(
 name|numOfChars
-argument_list|>
+operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|char
@@ -114,13 +118,17 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|braceLevel
 operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
 name|i
 operator|<
 name|n
+operator|)
 operator|&&
 operator|(
 name|cs
@@ -138,13 +146,17 @@ expr_stmt|;
 comment|// skip backslash
 while|while
 condition|(
+operator|(
 name|i
-argument_list|<
+operator|<
 name|n
+operator|)
 operator|&&
+operator|(
 name|braceLevel
-argument_list|>
+operator|>
 literal|0
+operator|)
 condition|)
 block|{
 if|if
@@ -212,6 +224,7 @@ name|warn
 operator|!=
 literal|null
 condition|)
+block|{
 name|warn
 operator|.
 name|warn
@@ -221,6 +234,7 @@ operator|+
 name|toPrefix
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else

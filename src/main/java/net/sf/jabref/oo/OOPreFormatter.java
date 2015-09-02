@@ -36,7 +36,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|util
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -79,8 +81,9 @@ implements|implements
 name|LayoutFormatter
 block|{
 DECL|field|CHARS
-specifier|public
+specifier|private
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -880,7 +883,7 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Dcaron"
-comment|// Symbol #271 (dï¿½) has no special Latex command
+comment|// Symbol #271 (d) has no special Latex command
 name|CHARS
 operator|.
 name|put
@@ -1304,8 +1307,8 @@ literal|"Ä¼"
 argument_list|)
 expr_stmt|;
 comment|// "lcedil"
-comment|// Symbol #317 (Lï¿½) has no special Latex command
-comment|// Symbol #318 (lï¿½) has no special Latex command
+comment|// Symbol #317 (L) has no special Latex command
+comment|// Symbol #318 (l) has no special Latex command
 name|CHARS
 operator|.
 name|put
@@ -1406,7 +1409,7 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "ncaron"
-comment|// Symbol #329 (ï¿½n) has no special Latex command
+comment|// Symbol #329 (n) has no special Latex command
 name|CHARS
 operator|.
 name|put
@@ -1677,7 +1680,7 @@ literal|"Å¤"
 argument_list|)
 expr_stmt|;
 comment|// "Tcaron"
-comment|// Symbol #357 (tï¿½) has no special Latex command
+comment|// Symbol #357 (t) has no special Latex command
 name|CHARS
 operator|.
 name|put
@@ -1940,6 +1943,8 @@ argument_list|)
 expr_stmt|;
 comment|// percent sign
 block|}
+annotation|@
+name|Override
 DECL|method|format (String field)
 specifier|public
 name|String
@@ -2061,6 +2066,8 @@ decl_stmt|;
 name|Object
 name|result
 init|=
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2119,13 +2126,17 @@ operator|!
 name|incommand
 operator|&&
 operator|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 operator|)
 condition|)
 block|{
@@ -2173,6 +2184,7 @@ condition|(
 operator|!
 name|incommand
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -2180,7 +2192,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|// Else we are in a command, and should not keep the letter.
+block|}
 else|else
 block|{
 name|currentCommand
@@ -2224,16 +2236,20 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 break|break
 name|testCharCom
 break|;
+block|}
 name|String
 name|command
 init|=
@@ -2268,7 +2284,7 @@ block|{
 name|String
 name|part
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -2311,6 +2327,8 @@ block|}
 name|Object
 name|result
 init|=
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2326,6 +2344,7 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -2336,6 +2355,7 @@ operator|)
 name|result
 argument_list|)
 expr_stmt|;
+block|}
 name|incommand
 operator|=
 literal|false
@@ -2350,9 +2370,11 @@ block|{
 comment|//	Are we already at the end of the string?
 if|if
 condition|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|==
 name|field
 operator|.
@@ -2371,6 +2393,8 @@ decl_stmt|;
 name|Object
 name|result
 init|=
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2378,7 +2402,7 @@ argument_list|(
 name|command
 argument_list|)
 decl_stmt|;
-comment|/* If found, then use translated version. If not, 							 * then keep 							 * the text of the parameter intact. 							 */
+comment|/* If found, then use translated version. If not,                              * then keep                              * the text of the parameter intact.                              */
 if|if
 condition|(
 name|result
@@ -2496,7 +2520,7 @@ block|{
 name|String
 name|part
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -2546,7 +2570,7 @@ block|{
 name|String
 name|part
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -2593,7 +2617,7 @@ block|{
 name|String
 name|part
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -2626,6 +2650,8 @@ comment|// handle common case of general latex command
 name|Object
 name|result
 init|=
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2684,6 +2710,8 @@ comment|// substitute the evaluated command and swallow the brace:
 name|Object
 name|result
 init|=
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2726,6 +2754,8 @@ block|{
 name|Object
 name|result
 init|=
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2770,10 +2800,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* else if (c == '}') {                     System.out.printf("com term by }: '%s'\n", currentCommand.toString());                      argument = ""; 				}*/
+comment|/* else if (c == '}') {                     System.out.printf("com term by }: '%s'\n", currentCommand.toString());                      argument = "";                  }*/
 else|else
 block|{
-comment|/* 					 * TODO: this point is reached, apparently, if a command is 					 * terminated in a strange way, such as with "$\omega$". 					 * Also, the command "\&" causes us to get here. The former 					 * issue is maybe a little difficult to address, since it 					 * involves the LaTeX math mode. We don't have a complete 					 * LaTeX parser, so maybe it's better to ignore these 					 * commands? 					 */
+comment|/*                      * TODO: this point is reached, apparently, if a command is                      * terminated in a strange way, such as with "$\omega$".                      * Also, the command "\&" causes us to get here. The former                      * issue is maybe a little difficult to address, since it                      * involves the LaTeX math mode. We don't have a complete                      * LaTeX parser, so maybe it's better to ignore these                      * commands?                      */
 block|}
 name|incommand
 operator|=

@@ -174,8 +174,22 @@ name|Options
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
-comment|/**  * A combo-box and a manage button that will add selected strings to an  * associated entry editor.  *   * Used to manage keywords and authors for instance.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * A combo-box and a manage button that will add selected strings to an  * associated entry editor.  *   * Used to manage keywords and authors for instance.  */
 end_comment
 
 begin_class
@@ -187,39 +201,48 @@ extends|extends
 name|JComponent
 block|{
 DECL|field|comboBox
+specifier|private
+specifier|final
 name|JComboBox
 name|comboBox
 decl_stmt|;
 DECL|field|editor
+specifier|private
+specifier|final
 name|FieldEditor
 name|editor
 decl_stmt|;
 DECL|field|metaData
+specifier|private
+specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|owner
+specifier|private
+specifier|final
 name|Window
 name|owner
 decl_stmt|;
-DECL|field|panel
-name|BasePanel
-name|panel
-decl_stmt|;
 DECL|field|action
 specifier|private
+specifier|final
 name|AbstractAction
 name|action
 decl_stmt|;
 DECL|field|delimiter
+specifier|private
+specifier|final
 name|String
 name|delimiter
 decl_stmt|;
-comment|/** 	 *  	 * Create a new FieldContentSelector. 	 *  	 * @param frame 	 *            The one JabRef-Frame. 	 * @param panel 	 *            The basepanel the entry-editor is on. 	 * @param owner 	 *            The window/frame/dialog which should be the owner of the 	 *            content selector dialog. 	 * @param editor 	 *            The entry editor which will be appended by the text selected 	 *            by the user from the combobox. 	 * @param metaData 	 *            The metadata that contains the list of items to display in the 	 *            combobox under the key Globals.SELECTOR_META_PREFIX + 	 *            editor.getFieldName(). 	 * @param action 	 *            The action that will be performed to after an item from the 	 *            combobox has been appended to the text in the entryeditor. 	 * @param horizontalLayout 	 *            Whether to put a 2 pixel horizontal strut between combobox and 	 *            button. 	 */
+comment|/**      *       * Create a new FieldContentSelector.      *       * @param frame      *            The one JabRef-Frame.      * @param panel      *            The basepanel the entry-editor is on.      * @param owner      *            The window/frame/dialog which should be the owner of the      *            content selector dialog.      * @param editor      *            The entry editor which will be appended by the text selected      *            by the user from the combobox.      * @param metaData      *            The metadata that contains the list of items to display in the      *            combobox under the key Globals.SELECTOR_META_PREFIX +      *            editor.getFieldName().      * @param action      *            The action that will be performed to after an item from the      *            combobox has been appended to the text in the entryeditor.      * @param horizontalLayout      *            Whether to put a 2 pixel horizontal strut between combobox and      *            button.      */
 DECL|method|FieldContentSelector (JabRefFrame frame, final BasePanel panel, Window owner, final FieldEditor editor, final MetaData metaData, final AbstractAction action, boolean horizontalLayout, String delimiter)
 specifier|public
 name|FieldContentSelector
@@ -273,12 +296,6 @@ name|metaData
 expr_stmt|;
 name|this
 operator|.
-name|panel
-operator|=
-name|panel
-expr_stmt|;
-name|this
-operator|.
 name|owner
 operator|=
 name|owner
@@ -301,6 +318,8 @@ operator|new
 name|JComboBox
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Dimension
 name|getPreferredSize
@@ -324,6 +343,7 @@ name|GUIGlobals
 operator|.
 name|MAX_CONTENT_SELECTOR_WIDTH
 condition|)
+block|{
 name|parents
 operator|.
 name|width
@@ -332,6 +352,7 @@ name|GUIGlobals
 operator|.
 name|MAX_CONTENT_SELECTOR_WIDTH
 expr_stmt|;
+block|}
 return|return
 name|parents
 return|;
@@ -423,6 +444,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -431,7 +454,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|/* 				 * These conditions signify arrow key navigation in the dropdown 				 * list, so we should not react to it. I'm not sure if this is 				 * well defined enough to be guaranteed to work everywhere. 				 */
+comment|/*                  * These conditions signify arrow key navigation in the dropdown                  * list, so we should not react to it. I'm not sure if this is                  * well defined enough to be guaranteed to work everywhere.                  */
 if|if
 condition|(
 name|e
@@ -453,7 +476,9 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|selectionMade
 argument_list|()
 expr_stmt|;
@@ -492,6 +517,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -523,6 +550,7 @@ if|if
 condition|(
 name|horizontalLayout
 condition|)
+block|{
 name|add
 argument_list|(
 name|Box
@@ -540,6 +568,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|JButton
 name|manage
 init|=
@@ -576,6 +605,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -662,7 +693,9 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|chosen
 init|=
@@ -676,9 +709,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|chosen
 operator|==
 literal|null
+operator|)
 operator|||
 name|chosen
 operator|.
@@ -687,7 +722,9 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 comment|// The following is not possible at the moment since the
 comment|// combobox cannot be edited!
 comment|// User edited in a new word. Add it.
@@ -707,6 +744,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|editor
 operator|.
 name|append
@@ -718,6 +756,7 @@ operator|.
 name|delimiter
 argument_list|)
 expr_stmt|;
+block|}
 name|editor
 operator|.
 name|append
@@ -739,6 +778,7 @@ name|action
 operator|!=
 literal|null
 condition|)
+block|{
 name|action
 operator|.
 name|actionPerformed
@@ -754,6 +794,7 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Transfer focus to the editor.
 name|editor
 operator|.
@@ -813,6 +854,7 @@ name|item
 range|:
 name|items
 control|)
+block|{
 name|comboBox
 operator|.
 name|addItem
@@ -820,6 +862,7 @@ argument_list|(
 name|item
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Not used since the comboBox is not editable

@@ -124,6 +124,20 @@ name|Sizes
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  *<p>Title:</p>  *<p>Description:</p>  *<p>Copyright: Copyright (c) 2003</p>  *<p>Company:</p>  * @author not attributable  * @version 1.0  */
 end_comment
@@ -137,6 +151,8 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|buttons
+specifier|private
+specifier|final
 name|JPanel
 name|buttons
 init|=
@@ -145,6 +161,8 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|ok
+specifier|private
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -153,6 +171,8 @@ name|JButton
 argument_list|()
 decl_stmt|;
 DECL|field|cancel
+specifier|private
+specifier|final
 name|JButton
 name|cancel
 init|=
@@ -161,6 +181,7 @@ name|JButton
 argument_list|()
 decl_stmt|;
 DECL|field|helpBut
+specifier|private
 name|JButton
 name|helpBut
 init|=
@@ -177,6 +198,8 @@ name|TitledBorder
 name|titledBorder2
 decl_stmt|;
 DECL|field|jLabel1
+specifier|private
+specifier|final
 name|JLabel
 name|jLabel1
 init|=
@@ -185,6 +208,8 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|jPanel3
+specifier|private
+specifier|final
 name|JPanel
 name|jPanel3
 init|=
@@ -193,6 +218,8 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|jPanel4
+specifier|private
+specifier|final
 name|JPanel
 name|jPanel4
 init|=
@@ -201,6 +228,8 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|gridBagLayout1
+specifier|private
+specifier|final
 name|GridBagLayout
 name|gridBagLayout1
 init|=
@@ -209,6 +238,8 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|jScrollPane1
+specifier|private
+specifier|final
 name|JScrollPane
 name|jScrollPane1
 init|=
@@ -217,6 +248,8 @@ name|JScrollPane
 argument_list|()
 decl_stmt|;
 DECL|field|jLabel2
+specifier|private
+specifier|final
 name|JLabel
 name|jLabel2
 init|=
@@ -225,6 +258,8 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|fieldsArea
+specifier|private
+specifier|final
 name|JTextArea
 name|fieldsArea
 init|=
@@ -233,6 +268,8 @@ name|JTextArea
 argument_list|()
 decl_stmt|;
 DECL|field|gridBagLayout2
+specifier|private
+specifier|final
 name|GridBagLayout
 name|gridBagLayout2
 init|=
@@ -241,21 +278,20 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|parent
+specifier|private
+specifier|final
 name|JabRefFrame
 name|parent
 decl_stmt|;
 DECL|field|revert
+specifier|private
+specifier|final
 name|JButton
 name|revert
 init|=
 operator|new
 name|JButton
 argument_list|()
-decl_stmt|;
-comment|//EntryCustomizationDialog diag;
-DECL|field|help
-name|HelpAction
-name|help
 decl_stmt|;
 DECL|method|GenFieldsCustomizer (JabRefFrame frame )
 specifier|public
@@ -285,8 +321,9 @@ operator|=
 name|frame
 expr_stmt|;
 comment|//this.diag = diag;
+name|HelpAction
 name|help
-operator|=
+init|=
 operator|new
 name|HelpAction
 argument_list|(
@@ -307,7 +344,7 @@ argument_list|(
 literal|"helpSmall"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|helpBut
 operator|=
 operator|new
@@ -838,6 +875,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -951,7 +990,7 @@ argument_list|(
 literal|"Tabname"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|field
 operator|+
@@ -1129,7 +1168,7 @@ operator|.
 name|updateEntryEditorTabList
 argument_list|()
 expr_stmt|;
-comment|/*     String delimStr = fieldsArea.getText().replaceAll("\\s+","")         .replaceAll("\\n+","").trim();     parent.prefs.putStringArray("generalFields", Util.delimToStringArray(delimStr, ";"));       */
+comment|/*         String delimStr = fieldsArea.getText().replaceAll("\\s+","")           .replaceAll("\\n+","").trim();         parent.prefs.putStringArray("generalFields", Util.split(delimStr, ";"));         */
 name|parent
 operator|.
 name|removeCachedEntryEditors
@@ -1154,6 +1193,7 @@ expr_stmt|;
 comment|//diag.requestFocus();
 block|}
 DECL|method|setFieldsText ()
+specifier|private
 name|void
 name|setFieldsText
 parameter_list|()
@@ -1209,7 +1249,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 for|for
@@ -1259,19 +1299,21 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1303,12 +1345,8 @@ argument_list|()
 decl_stmt|;
 name|String
 name|name
-init|=
-literal|null
 decl_stmt|,
 name|fields
-init|=
-literal|null
 decl_stmt|;
 name|int
 name|i
@@ -1377,7 +1415,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|sb
@@ -1391,7 +1429,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 name|i
@@ -1426,6 +1464,8 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
+specifier|final
 name|GenFieldsCustomizer
 name|adaptee
 decl_stmt|;
@@ -1443,6 +1483,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1477,6 +1519,8 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
+specifier|final
 name|GenFieldsCustomizer
 name|adaptee
 decl_stmt|;
@@ -1494,6 +1538,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1528,6 +1574,8 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
+specifier|final
 name|GenFieldsCustomizer
 name|adaptee
 decl_stmt|;
@@ -1545,6 +1593,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

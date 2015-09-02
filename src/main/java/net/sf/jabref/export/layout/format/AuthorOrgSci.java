@@ -63,7 +63,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Will return the Authors to match the OrgSci format:  *   *<ul>  *<li>That is the first author is LastFirst, but all others are FirstLast.</li>  *<li>First names are abbreviated</li>  *<li>Spaces between abbreviated first names are NOT removed. Use  * NoSpaceBetweenAbbreviations to achieve this.</li>  *</ul>  *<p>  * See the testcase for examples.  *</p>  *<p>  * Idea from: http://stuermer.ch/blog/bibliography-reference-management-with-jabref.html  *</p>  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Will return the Authors to match the OrgSci format:  *   *<ul>  *<li>That is the first author is LastFirst, but all others are FirstLast.</li>  *<li>First names are abbreviated</li>  *<li>Spaces between abbreviated first names are NOT removed. Use  * NoSpaceBetweenAbbreviations to achieve this.</li>  *</ul>  *<p>  * See the testcase for examples.  *</p>  *<p>  * Idea from: http://stuermer.ch/blog/bibliography-reference-management-with-jabref.html  *</p>  *   */
 end_comment
 
 begin_class
@@ -74,6 +74,8 @@ name|AuthorOrgSci
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String

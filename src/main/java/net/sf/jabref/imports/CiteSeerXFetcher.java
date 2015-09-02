@@ -159,14 +159,16 @@ implements|implements
 name|EntryFetcher
 block|{
 DECL|field|MAX_PAGES_TO_LOAD
-specifier|protected
+specifier|private
 specifier|static
+specifier|final
 name|int
 name|MAX_PAGES_TO_LOAD
 init|=
 literal|8
 decl_stmt|;
 DECL|field|QUERY_MARKER
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -175,6 +177,7 @@ init|=
 literal|"___QUERY___"
 decl_stmt|;
 DECL|field|URL_START
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -183,20 +186,26 @@ init|=
 literal|"http://citeseer.ist.psu.edu"
 decl_stmt|;
 DECL|field|SEARCH_URL
+specifier|private
 specifier|final
 specifier|static
 name|String
 name|SEARCH_URL
 init|=
+name|CiteSeerXFetcher
+operator|.
 name|URL_START
 operator|+
 literal|"/search?q="
 operator|+
+name|CiteSeerXFetcher
+operator|.
 name|QUERY_MARKER
 operator|+
 literal|"&submit=Search&sort=rlv&t=doc"
 decl_stmt|;
 DECL|field|CITE_LINK_PATTERN
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -210,12 +219,14 @@ literal|"<a class=\"remove doc_details\" href=\"(.*)\">"
 argument_list|)
 decl_stmt|;
 DECL|field|stopFetching
-specifier|protected
+specifier|private
 name|boolean
 name|stopFetching
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector inspector, OutputPrinter status)
 specifier|public
 name|boolean
@@ -260,7 +271,9 @@ if|if
 condition|(
 name|stopFetching
 condition|)
+block|{
 break|break;
+block|}
 name|BibtexEntry
 name|entry
 init|=
@@ -277,6 +290,7 @@ name|entry
 operator|!=
 literal|null
 condition|)
+block|{
 name|inspector
 operator|.
 name|addEntry
@@ -284,6 +298,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 literal|true
@@ -305,6 +320,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -315,6 +332,8 @@ return|return
 literal|"CiteSeerX"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -325,21 +344,8 @@ return|return
 literal|"CiteSeerX"
 return|;
 block|}
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -350,6 +356,8 @@ return|return
 literal|"CiteSeerHelp.html"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -360,6 +368,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -373,7 +383,7 @@ expr_stmt|;
 block|}
 comment|/**      *      * @param query      *            The search term to query JStor for.      * @return a list of IDs      * @throws java.io.IOException      */
 DECL|method|getCitations (String query)
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|String
@@ -406,10 +416,14 @@ try|try
 block|{
 name|urlQuery
 operator|=
+name|CiteSeerXFetcher
+operator|.
 name|SEARCH_URL
 operator|.
 name|replace
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|QUERY_MARKER
 argument_list|,
 name|URLEncoder
@@ -429,8 +443,6 @@ literal|1
 decl_stmt|;
 name|String
 name|nextPage
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(
@@ -452,6 +464,8 @@ operator|&&
 operator|(
 name|count
 operator|<
+name|CiteSeerXFetcher
+operator|.
 name|MAX_PAGES_TO_LOAD
 operator|)
 condition|)
@@ -467,7 +481,9 @@ if|if
 condition|(
 name|stopFetching
 condition|)
+block|{
 break|break;
+block|}
 block|}
 return|return
 name|ids
@@ -489,7 +505,7 @@ throw|;
 block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, List<String> ids)
-specifier|protected
+specifier|private
 name|String
 name|getCitationsFromUrl
 parameter_list|(
@@ -530,6 +546,8 @@ comment|//System.out.println(cont);
 name|Matcher
 name|m
 init|=
+name|CiteSeerXFetcher
+operator|.
 name|CITE_LINK_PATTERN
 operator|.
 name|matcher
@@ -549,6 +567,8 @@ name|ids
 operator|.
 name|add
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|URL_START
 operator|+
 name|m
@@ -565,6 +585,7 @@ literal|null
 return|;
 block|}
 DECL|field|basePattern
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -572,11 +593,14 @@ name|basePattern
 init|=
 literal|"<meta name=\""
 operator|+
+name|CiteSeerXFetcher
+operator|.
 name|QUERY_MARKER
 operator|+
 literal|"\" content=\"(.*)\" />"
 decl_stmt|;
 DECL|field|titlePattern
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -586,10 +610,14 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|basePattern
 operator|.
 name|replace
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|QUERY_MARKER
 argument_list|,
 literal|"citation_title"
@@ -597,6 +625,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|authorPattern
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -606,10 +635,14 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|basePattern
 operator|.
 name|replace
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|QUERY_MARKER
 argument_list|,
 literal|"citation_authors"
@@ -617,6 +650,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|yearPattern
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -626,10 +660,14 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|basePattern
 operator|.
 name|replace
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|QUERY_MARKER
 argument_list|,
 literal|"citation_year"
@@ -637,6 +675,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|abstractPattern
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -650,7 +689,7 @@ literal|"<h3>Abstract</h3>\\s*<p>(.*)</p>"
 argument_list|)
 decl_stmt|;
 DECL|method|getSingleCitation (String urlString)
-specifier|protected
+specifier|private
 name|BibtexEntry
 name|getSingleCitation
 parameter_list|(
@@ -687,6 +726,8 @@ comment|// Find title, and create entry if we do. Otherwise assume we didn't get
 name|Matcher
 name|m
 init|=
+name|CiteSeerXFetcher
+operator|.
 name|titlePattern
 operator|.
 name|matcher
@@ -708,9 +749,9 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -731,6 +772,8 @@ expr_stmt|;
 comment|// Find authors:
 name|m
 operator|=
+name|CiteSeerXFetcher
+operator|.
 name|authorPattern
 operator|.
 name|matcher
@@ -774,6 +817,8 @@ block|}
 comment|// Find year:
 name|m
 operator|=
+name|CiteSeerXFetcher
+operator|.
 name|yearPattern
 operator|.
 name|matcher
@@ -788,6 +833,7 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -802,9 +848,12 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Find abstract:
 name|m
 operator|=
+name|CiteSeerXFetcher
+operator|.
 name|abstractPattern
 operator|.
 name|matcher
@@ -819,6 +868,7 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -833,14 +883,17 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|entry
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 block|}
 end_class

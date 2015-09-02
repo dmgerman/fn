@@ -24,6 +24,30 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|AbstractWorker
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -48,30 +72,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|AbstractWorker
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|undo
 operator|.
 name|NamedCompound
@@ -79,7 +79,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Sep 17, 2005  * Time: 12:48:23 AM  * To browseOld this template use File | Settings | File Templates.  */
+comment|/**  * Converts journal abbreviations back to full name for all selected entries.  */
 end_comment
 
 begin_class
@@ -91,10 +91,13 @@ extends|extends
 name|AbstractWorker
 block|{
 DECL|field|panel
+specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|message
+specifier|private
 name|String
 name|message
 init|=
@@ -115,13 +118,14 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
 name|init
 parameter_list|()
 block|{
-comment|//  new FieldWeightDialog(frame).setVisible(true);
 name|panel
 operator|.
 name|output
@@ -130,13 +134,14 @@ literal|"Unabbreviating..."
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
 name|run
 parameter_list|()
 block|{
-comment|//net.sf.jabref.journals.JournalList.downloadJournalList(frame);
 name|BibtexEntry
 index|[]
 name|entries
@@ -152,7 +157,20 @@ name|entries
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
+name|UndoableUnabbreviator
+name|undoableAbbreviator
+init|=
+operator|new
+name|UndoableUnabbreviator
+argument_list|(
+name|Globals
+operator|.
+name|journalAbbrev
+argument_list|)
+decl_stmt|;
 name|NamedCompound
 name|ce
 init|=
@@ -177,9 +195,7 @@ control|)
 block|{
 if|if
 condition|(
-name|Globals
-operator|.
-name|journalAbbrev
+name|undoableAbbreviator
 operator|.
 name|unabbreviate
 argument_list|(
@@ -195,14 +211,14 @@ argument_list|,
 name|ce
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
-name|Globals
-operator|.
-name|journalAbbrev
+name|undoableAbbreviator
 operator|.
 name|unabbreviate
 argument_list|(
@@ -218,9 +234,11 @@ argument_list|,
 name|ce
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -278,6 +296,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void

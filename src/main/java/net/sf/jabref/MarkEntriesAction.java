@@ -78,16 +78,19 @@ name|ActionListener
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|level
+specifier|private
 specifier|final
 name|int
 name|level
 decl_stmt|;
 DECL|field|menuItem
 specifier|private
+specifier|final
 name|JMenuItem
 name|menuItem
 decl_stmt|;
@@ -192,6 +195,8 @@ return|return
 name|menuItem
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent actionEvent)
 specifier|public
 name|void
@@ -234,6 +239,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -295,7 +302,7 @@ range|:
 name|bes
 control|)
 block|{
-name|Util
+name|EntryMarker
 operator|.
 name|markEntry
 argument_list|(

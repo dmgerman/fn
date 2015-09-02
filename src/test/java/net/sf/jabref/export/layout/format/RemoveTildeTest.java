@@ -38,19 +38,17 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|Assert
 import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-operator|.
-name|assertEquals
+name|Test
 import|;
 end_import
 
@@ -75,6 +73,8 @@ operator|new
 name|RemoveTilde
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -87,6 +87,8 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"simple"
@@ -99,6 +101,8 @@ literal|"simple"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|" "
@@ -111,6 +115,8 @@ literal|"~"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"   "
@@ -123,6 +129,8 @@ literal|"~~~"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|" \\~ "
@@ -135,6 +143,8 @@ literal|"~\\~~"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"\\\\ "
@@ -147,6 +157,8 @@ literal|"\\\\~"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Doe Joe and Jane, M. and Kamp, J. A."
@@ -159,6 +171,8 @@ literal|"Doe Joe and Jane, M. and Kamp, J.~A."
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"T\\~olkien, J. R. R."

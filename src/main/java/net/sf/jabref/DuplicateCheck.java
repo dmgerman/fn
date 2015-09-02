@@ -44,6 +44,35 @@ specifier|public
 class|class
 name|DuplicateCheck
 block|{
+comment|/*      * Integer values for indicating result of duplicate check (for entries):      *      */
+DECL|field|NOT_EQUAL
+DECL|field|EQUAL
+DECL|field|EMPTY_IN_ONE
+DECL|field|EMPTY_IN_TWO
+DECL|field|EMPTY_IN_BOTH
+specifier|final
+specifier|static
+name|int
+name|NOT_EQUAL
+init|=
+literal|0
+decl_stmt|,
+name|EQUAL
+init|=
+literal|1
+decl_stmt|,
+name|EMPTY_IN_ONE
+init|=
+literal|2
+decl_stmt|,
+name|EMPTY_IN_TWO
+init|=
+literal|3
+decl_stmt|,
+name|EMPTY_IN_BOTH
+init|=
+literal|4
+decl_stmt|;
 DECL|field|duplicateThreshold
 specifier|public
 specifier|static
@@ -56,14 +85,16 @@ comment|// The overall threshold to signal a duplicate pair
 comment|// Non-required fields are investigated only if the required fields give a value within
 comment|// the doubt range of the threshold:
 DECL|field|doubtRange
-specifier|public
+specifier|private
 specifier|static
+specifier|final
 name|double
 name|doubtRange
 init|=
 literal|0.05
 decl_stmt|;
 DECL|field|reqWeight
+specifier|private
 specifier|final
 specifier|static
 name|double
@@ -74,7 +105,9 @@ decl_stmt|;
 comment|// Weighting of all required fields
 comment|// Extra weighting of those fields that are most likely to provide correct duplicate detection:
 DECL|field|fieldWeights
+specifier|private
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -94,6 +127,8 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
+name|DuplicateCheck
+operator|.
 name|fieldWeights
 operator|.
 name|put
@@ -103,6 +138,8 @@ argument_list|,
 literal|2.5
 argument_list|)
 expr_stmt|;
+name|DuplicateCheck
+operator|.
 name|fieldWeights
 operator|.
 name|put
@@ -112,6 +149,8 @@ argument_list|,
 literal|2.5
 argument_list|)
 expr_stmt|;
+name|DuplicateCheck
+operator|.
 name|fieldWeights
 operator|.
 name|put
@@ -121,6 +160,8 @@ argument_list|,
 literal|3.
 argument_list|)
 expr_stmt|;
+name|DuplicateCheck
+operator|.
 name|fieldWeights
 operator|.
 name|put
@@ -158,9 +199,11 @@ operator|.
 name|getType
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|// The check if they have the same required fields:
 name|String
 index|[]
@@ -198,8 +241,11 @@ block|}
 expr_stmt|;
 block|}
 else|else
+block|{
 name|req
 operator|=
+name|DuplicateCheck
+operator|.
 name|compareFieldSet
 argument_list|(
 name|fields
@@ -209,6 +255,7 @@ argument_list|,
 name|two
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Math
@@ -220,9 +267,13 @@ index|[
 literal|0
 index|]
 operator|-
+name|DuplicateCheck
+operator|.
 name|duplicateThreshold
 argument_list|)
 operator|>
+name|DuplicateCheck
+operator|.
 name|doubtRange
 condition|)
 block|{
@@ -233,6 +284,8 @@ index|[
 literal|0
 index|]
 operator|>=
+name|DuplicateCheck
+operator|.
 name|duplicateThreshold
 return|;
 block|}
@@ -260,6 +313,8 @@ name|double
 index|[]
 name|opt
 init|=
+name|DuplicateCheck
+operator|.
 name|compareFieldSet
 argument_list|(
 name|fields
@@ -273,6 +328,9 @@ name|double
 name|totValue
 init|=
 operator|(
+operator|(
+name|DuplicateCheck
+operator|.
 name|reqWeight
 operator|*
 name|req
@@ -284,7 +342,9 @@ name|req
 index|[
 literal|1
 index|]
+operator|)
 operator|+
+operator|(
 name|opt
 index|[
 literal|0
@@ -295,14 +355,19 @@ index|[
 literal|1
 index|]
 operator|)
+operator|)
 operator|/
+operator|(
 operator|(
 name|req
 index|[
 literal|1
 index|]
 operator|*
+name|DuplicateCheck
+operator|.
 name|reqWeight
+operator|)
 operator|+
 name|opt
 index|[
@@ -313,6 +378,8 @@ decl_stmt|;
 return|return
 name|totValue
 operator|>=
+name|DuplicateCheck
+operator|.
 name|duplicateThreshold
 return|;
 block|}
@@ -325,6 +392,8 @@ index|[
 literal|0
 index|]
 operator|>=
+name|DuplicateCheck
+operator|.
 name|duplicateThreshold
 operator|)
 return|;
@@ -373,6 +442,8 @@ name|weight
 decl_stmt|;
 if|if
 condition|(
+name|DuplicateCheck
+operator|.
 name|fieldWeights
 operator|.
 name|containsKey
@@ -380,8 +451,11 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 name|weight
 operator|=
+name|DuplicateCheck
+operator|.
 name|fieldWeights
 operator|.
 name|get
@@ -389,11 +463,14 @@ argument_list|(
 name|field
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|weight
 operator|=
 literal|1.0
 expr_stmt|;
+block|}
 name|totWeights
 operator|+=
 name|weight
@@ -401,6 +478,8 @@ expr_stmt|;
 name|int
 name|result
 init|=
+name|DuplicateCheck
+operator|.
 name|compareSingleField
 argument_list|(
 name|field
@@ -415,8 +494,6 @@ if|if
 condition|(
 name|result
 operator|==
-name|Util
-operator|.
 name|EQUAL
 condition|)
 block|{
@@ -430,14 +507,14 @@ if|if
 condition|(
 name|result
 operator|==
-name|Util
-operator|.
 name|EMPTY_IN_BOTH
 condition|)
+block|{
 name|totWeights
 operator|-=
 name|weight
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -445,6 +522,7 @@ name|totWeights
 operator|>
 literal|0
 condition|)
+block|{
 return|return
 operator|new
 name|double
@@ -457,7 +535,9 @@ block|,
 name|totWeights
 block|}
 return|;
+block|}
 else|else
+block|{
 comment|// no fields present. This points to a possible duplicate?
 return|return
 operator|new
@@ -469,6 +549,7 @@ block|,
 literal|0.0
 block|}
 return|;
+block|}
 block|}
 DECL|method|compareSingleField (String field, BibtexEntry one, BibtexEntry two)
 specifier|private
@@ -518,17 +599,17 @@ name|s2
 operator|==
 literal|null
 condition|)
+block|{
 return|return
-name|Util
-operator|.
 name|EMPTY_IN_BOTH
 return|;
+block|}
 else|else
+block|{
 return|return
-name|Util
-operator|.
 name|EMPTY_IN_ONE
 return|;
+block|}
 block|}
 elseif|else
 if|if
@@ -537,11 +618,11 @@ name|s2
 operator|==
 literal|null
 condition|)
+block|{
 return|return
-name|Util
-operator|.
 name|EMPTY_IN_TWO
 return|;
+block|}
 comment|// Util.pr(field+": '"+s1+"' vs '"+s2+"'");
 if|if
 condition|(
@@ -611,6 +692,8 @@ comment|//System.out.println(correlateByWords(auth1, auth2));
 name|double
 name|similarity
 init|=
+name|DuplicateCheck
+operator|.
 name|correlateByWords
 argument_list|(
 name|auth1
@@ -626,17 +709,17 @@ name|similarity
 operator|>
 literal|0.8
 condition|)
+block|{
 return|return
-name|Util
-operator|.
 name|EQUAL
 return|;
+block|}
 else|else
+block|{
 return|return
-name|Util
-operator|.
 name|NOT_EQUAL
 return|;
+block|}
 block|}
 elseif|else
 if|if
@@ -683,17 +766,17 @@ argument_list|(
 name|s2
 argument_list|)
 condition|)
+block|{
 return|return
-name|Util
-operator|.
 name|EQUAL
 return|;
+block|}
 else|else
+block|{
 return|return
-name|Util
-operator|.
 name|NOT_EQUAL
 return|;
+block|}
 block|}
 elseif|else
 if|if
@@ -741,6 +824,8 @@ comment|//System.out.println(s1+" :: "+s2);
 name|double
 name|similarity
 init|=
+name|DuplicateCheck
+operator|.
 name|correlateByWords
 argument_list|(
 name|s1
@@ -756,17 +841,17 @@ name|similarity
 operator|>
 literal|0.8
 condition|)
+block|{
 return|return
-name|Util
-operator|.
 name|EQUAL
 return|;
+block|}
 else|else
+block|{
 return|return
-name|Util
-operator|.
 name|NOT_EQUAL
 return|;
+block|}
 block|}
 else|else
 block|{
@@ -787,6 +872,8 @@ expr_stmt|;
 name|double
 name|similarity
 init|=
+name|DuplicateCheck
+operator|.
 name|correlateByWords
 argument_list|(
 name|s1
@@ -802,18 +889,18 @@ name|similarity
 operator|>
 literal|0.8
 condition|)
+block|{
 return|return
-name|Util
-operator|.
 name|EQUAL
 return|;
+block|}
 else|else
+block|{
 return|return
-name|Util
-operator|.
 name|NOT_EQUAL
 return|;
 comment|/*if (s1.trim().equals(s2.trim()))                 return Util.EQUAL;             else                 return Util.NOT_EQUAL;*/
+block|}
 block|}
 block|}
 DECL|method|compareEntriesStrictly (BibtexEntry one, BibtexEntry two)
@@ -917,13 +1004,7 @@ argument_list|(
 name|to
 argument_list|)
 operator|)
-condition|)
-name|score
-operator|++
-expr_stmt|;
-elseif|else
-if|if
-condition|(
+operator|||
 operator|(
 name|en
 operator|==
@@ -936,9 +1017,11 @@ operator|==
 literal|null
 operator|)
 condition|)
+block|{
 name|score
 operator|++
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -949,13 +1032,16 @@ operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 return|return
 literal|1.01
 return|;
 comment|// Just to make sure we can
 comment|// use score>1 without
 comment|// trouble.
+block|}
 else|else
+block|{
 return|return
 operator|(
 operator|(
@@ -969,6 +1055,7 @@ operator|.
 name|size
 argument_list|()
 return|;
+block|}
 block|}
 comment|/**      * Goes through all entries in the given database, and if at least one of      * them is a duplicate of the given entry, as per      * Util.isDuplicate(BibtexEntry, BibtexEntry), the duplicate is returned.      * The search is terminated when the first duplicate is found.      *      * @param database The database to search.      * @param entry    The entry of which we are looking for duplicates.      * @return The first duplicate entry found. null if no duplicates are found.      */
 DECL|method|containsDuplicate (BibtexDatabase database, BibtexEntry entry)
@@ -997,6 +1084,8 @@ control|)
 block|{
 if|if
 condition|(
+name|DuplicateCheck
+operator|.
 name|isDuplicate
 argument_list|(
 name|entry
@@ -1004,19 +1093,21 @@ argument_list|,
 name|other
 argument_list|)
 condition|)
+block|{
 return|return
 name|other
 return|;
 comment|// Duplicate found.
+block|}
 block|}
 return|return
 literal|null
 return|;
 comment|// No duplicate found.
 block|}
-comment|/**      * Compare two strings on the basis of word-by-word correlation analysis.      * @param s1 The first string      * @param s2 The second string      * @param truncate if true, always truncate the longer of two words to be compared to      *   harmonize their length. If false, use interpolation to harmonize the strings.      * @return a value in the interval [0, 1] indicating the degree of match.      */
+comment|/**      * Compare two strings on the basis of word-by-word correlation analysis.      *      * @param s1       The first string      * @param s2       The second string      * @param truncate if true, always truncate the longer of two words to be compared to      *                 harmonize their length. If false, use interpolation to harmonize the strings.      * @return a value in the interval [0, 1] indicating the degree of match.      */
 DECL|method|correlateByWords (String s1, String s2, boolean truncate)
-specifier|public
+specifier|private
 specifier|static
 name|double
 name|correlateByWords
@@ -1091,6 +1182,8 @@ comment|/*if (!w1[i].equalsIgnoreCase(w2[i]))                 misses++;*/
 name|double
 name|corr
 init|=
+name|DuplicateCheck
+operator|.
 name|correlateStrings
 argument_list|(
 name|w1
@@ -1112,9 +1205,11 @@ name|corr
 operator|<
 literal|0.75
 condition|)
+block|{
 name|misses
 operator|++
 expr_stmt|;
+block|}
 block|}
 name|double
 name|missRate
@@ -1140,7 +1235,7 @@ name|missRate
 return|;
 block|}
 DECL|method|correlateStrings (String s1, String s2, boolean truncate)
-specifier|public
+specifier|private
 specifier|static
 name|double
 name|correlateStrings
@@ -1177,9 +1272,11 @@ if|if
 condition|(
 name|truncate
 operator|&&
+operator|(
 name|minLength
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
 return|return
@@ -1205,19 +1302,23 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|s1
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
 name|s2
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
 return|return
@@ -1240,25 +1341,27 @@ name|minLength
 operator|==
 literal|0
 condition|)
+block|{
 return|return
+operator|(
 name|s1
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
+operator|)
 operator|&&
+operator|(
 name|s2
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
+operator|)
 condition|?
 literal|1.0
 else|:
 literal|0
 return|;
+block|}
 comment|// Convert strings to numbers and harmonize length in a method dependent on truncate:
 if|if
 condition|(
@@ -1275,6 +1378,7 @@ argument_list|()
 operator|>
 name|minLength
 condition|)
+block|{
 name|s1
 operator|=
 name|s1
@@ -1286,6 +1390,7 @@ argument_list|,
 name|minLength
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|s2
@@ -1295,6 +1400,7 @@ argument_list|()
 operator|>
 name|minLength
 condition|)
+block|{
 name|s2
 operator|=
 name|s2
@@ -1307,10 +1413,13 @@ name|minLength
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|double
 index|[]
 name|n1
 init|=
+name|DuplicateCheck
+operator|.
 name|numberizeString
 argument_list|(
 name|s1
@@ -1318,6 +1427,8 @@ argument_list|)
 decl_stmt|,
 name|n2
 init|=
+name|DuplicateCheck
+operator|.
 name|numberizeString
 argument_list|(
 name|s2
@@ -1340,8 +1451,11 @@ name|n2
 operator|.
 name|length
 condition|)
+block|{
 name|n1
 operator|=
+name|DuplicateCheck
+operator|.
 name|stretchArray
 argument_list|(
 name|n1
@@ -1351,6 +1465,7 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1362,8 +1477,11 @@ name|n1
 operator|.
 name|length
 condition|)
+block|{
 name|n2
 operator|=
+name|DuplicateCheck
+operator|.
 name|stretchArray
 argument_list|(
 name|n2
@@ -1374,7 +1492,10 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
+name|DuplicateCheck
+operator|.
 name|corrCoef
 argument_list|(
 name|n1
@@ -1442,18 +1563,12 @@ expr_stmt|;
 block|}
 name|mean1
 operator|/=
-operator|(
-name|double
-operator|)
 name|n1
 operator|.
 name|length
 expr_stmt|;
 name|mean2
 operator|/=
-operator|(
-name|double
-operator|)
 name|n2
 operator|.
 name|length
@@ -1571,14 +1686,19 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|sigma1
 operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 name|sigma2
 operator|>
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 name|corr
 operator|/
@@ -1588,10 +1708,13 @@ operator|*
 name|sigma2
 operator|)
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|0
 return|;
+block|}
 block|}
 DECL|method|numberizeString (String s)
 specifier|private
@@ -1634,14 +1757,12 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|res
 index|[
 name|i
 index|]
 operator|=
-operator|(
-name|double
-operator|)
 name|s
 operator|.
 name|charAt
@@ -1649,6 +1770,7 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|res
 return|;
@@ -1670,21 +1792,27 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|length
 operator|<=
 name|array
 operator|.
 name|length
+operator|)
 operator|||
+operator|(
 name|array
 operator|.
 name|length
 operator|==
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 name|array
 return|;
+block|}
 name|double
 name|multip
 init|=
@@ -1735,9 +1863,6 @@ name|double
 name|index
 init|=
 operator|(
-operator|(
-name|double
-operator|)
 name|i
 operator|)
 operator|*
@@ -1773,6 +1898,7 @@ index|[
 name|i
 index|]
 operator|=
+operator|(
 name|dist
 operator|*
 name|array
@@ -1792,7 +1918,9 @@ operator|+
 literal|1
 argument_list|)
 index|]
+operator|)
 operator|+
+operator|(
 operator|(
 literal|1.0
 operator|-
@@ -1803,6 +1931,7 @@ name|array
 index|[
 name|baseInd
 index|]
+operator|)
 expr_stmt|;
 block|}
 return|return
@@ -1824,11 +1953,13 @@ name|String
 name|d1
 init|=
 literal|"Characterization of Calanus finmarchicus habitat in the North Sea"
-decl_stmt|,
+decl_stmt|;
+name|String
 name|d2
 init|=
 literal|"Characterization of Calunus finmarchicus habitat in the North Sea"
-decl_stmt|,
+decl_stmt|;
+name|String
 name|d3
 init|=
 literal|"Characterization of Calanus glacialissss habitat in the South Sea"
@@ -1839,6 +1970,8 @@ name|out
 operator|.
 name|println
 argument_list|(
+name|DuplicateCheck
+operator|.
 name|correlateByWords
 argument_list|(
 name|d1
@@ -1855,6 +1988,8 @@ name|out
 operator|.
 name|println
 argument_list|(
+name|DuplicateCheck
+operator|.
 name|correlateByWords
 argument_list|(
 name|d1
@@ -1871,6 +2006,8 @@ name|out
 operator|.
 name|println
 argument_list|(
+name|DuplicateCheck
+operator|.
 name|correlateByWords
 argument_list|(
 name|d2

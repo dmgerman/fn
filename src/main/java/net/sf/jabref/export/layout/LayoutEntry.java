@@ -180,18 +180,25 @@ name|LayoutFormatterExtension
 import|;
 end_import
 
-begin_comment
-comment|/**  * DOCUMENT ME!  *   * @author $author$  * @version $Revision$  */
-end_comment
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
 
 begin_class
 DECL|class|LayoutEntry
-specifier|public
 class|class
 name|LayoutEntry
 block|{
-comment|// ~ Instance fields
-comment|// ////////////////////////////////////////////////////////
 DECL|field|option
 specifier|private
 name|LayoutFormatter
@@ -219,11 +226,13 @@ name|layoutEntries
 decl_stmt|;
 DECL|field|type
 specifier|private
+specifier|final
 name|int
 name|type
 decl_stmt|;
 DECL|field|classPrefix
 specifier|private
+specifier|final
 name|String
 name|classPrefix
 decl_stmt|;
@@ -237,8 +246,6 @@ name|invalidFormatter
 init|=
 literal|null
 decl_stmt|;
-comment|// ~ Constructors
-comment|// ///////////////////////////////////////////////////////////
 DECL|method|LayoutEntry (StringInt si, String classPrefix_)
 specifier|public
 name|LayoutEntry
@@ -312,11 +319,7 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_FIELD_START
-condition|)
-block|{ 		}
-elseif|else
-if|if
-condition|(
+operator|||
 name|si
 operator|.
 name|i
@@ -325,7 +328,7 @@ name|LayoutHelper
 operator|.
 name|IS_FIELD_END
 condition|)
-block|{ 		}
+block|{         }
 elseif|else
 if|if
 condition|(
@@ -400,6 +403,8 @@ argument_list|()
 expr_stmt|;
 name|option
 operator|=
+name|LayoutEntry
+operator|.
 name|getOptionalLayout
 argument_list|(
 name|v
@@ -447,6 +452,7 @@ name|invalidFormatter
 operator|==
 literal|null
 condition|)
+block|{
 name|invalidFormatter
 operator|=
 operator|new
@@ -456,6 +462,7 @@ name|String
 argument_list|>
 argument_list|()
 expr_stmt|;
+block|}
 name|invalidFormatter
 operator|.
 name|add
@@ -493,13 +500,9 @@ name|classPrefix_
 expr_stmt|;
 name|String
 name|blockStart
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|blockEnd
-init|=
-literal|null
 decl_stmt|;
 name|StringInt
 name|si
@@ -635,11 +638,7 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_LAYOUT_TEXT
-condition|)
-block|{ 			}
-elseif|else
-if|if
-condition|(
+operator|||
 name|si
 operator|.
 name|i
@@ -648,7 +647,7 @@ name|LayoutHelper
 operator|.
 name|IS_SIMPLE_FIELD
 condition|)
-block|{ 			}
+block|{             }
 elseif|else
 if|if
 condition|(
@@ -742,6 +741,7 @@ name|LayoutHelper
 operator|.
 name|IS_GROUP_END
 condition|)
+block|{
 name|le
 operator|=
 operator|new
@@ -756,7 +756,9 @@ operator|.
 name|IS_GROUP_START
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|le
 operator|=
 operator|new
@@ -771,6 +773,7 @@ operator|.
 name|IS_FIELD_START
 argument_list|)
 expr_stmt|;
+block|}
 name|tmpEntries
 operator|.
 name|add
@@ -807,7 +810,7 @@ name|LayoutHelper
 operator|.
 name|IS_OPTION_FIELD
 condition|)
-block|{ 			}
+block|{             }
 comment|// else if (si.i == LayoutHelper.IS_OPTION_FIELD_PARAM)
 comment|// {
 comment|// }
@@ -903,6 +906,7 @@ name|invalidFormatter
 operator|==
 literal|null
 condition|)
+block|{
 name|invalidFormatter
 operator|=
 operator|new
@@ -914,6 +918,7 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|invalidFormatter
 operator|.
 name|addAll
@@ -947,7 +952,7 @@ name|formatter
 expr_stmt|;
 block|}
 DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database)
-specifier|public
+specifier|private
 name|String
 name|doLayout
 parameter_list|(
@@ -969,7 +974,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, ArrayList<String> wordsToHighlight )
+DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, ArrayList<String> wordsToHighlight)
 specifier|public
 name|String
 name|doLayout
@@ -1025,10 +1030,12 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 name|value
 operator|=
 literal|""
 expr_stmt|;
+block|}
 comment|// If a post formatter has been set, call it:
 if|if
 condition|(
@@ -1036,6 +1043,7 @@ name|postFormatter
 operator|!=
 literal|null
 condition|)
+block|{
 name|value
 operator|=
 name|postFormatter
@@ -1045,6 +1053,7 @@ argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|value
 return|;
@@ -1139,7 +1148,9 @@ name|field
 operator|==
 literal|null
 condition|)
+block|{
 break|break;
+block|}
 block|}
 block|}
 else|else
@@ -1187,7 +1198,9 @@ name|field
 operator|!=
 literal|null
 condition|)
+block|{
 break|break;
+block|}
 block|}
 block|}
 if|if
@@ -1244,11 +1257,11 @@ name|field
 argument_list|)
 expr_stmt|;
 block|}
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|100
 argument_list|)
@@ -1331,10 +1344,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|i
@@ -1430,7 +1441,7 @@ else|else
 block|{
 comment|//System.out.println("ENTRY-BLOCK: " +
 comment|//layoutEntries[i].doLayout(bibtex));
-comment|/* 							 * if fieldText is not null and the bibtexentry is marked 							 * as a searchhit, try to highlight the searched words 							 *  							*/
+comment|/*                              * if fieldText is not null and the bibtexentry is marked                              * as a searchhit, try to highlight the searched words                              *                              */
 if|if
 condition|(
 name|bibtex
@@ -1614,6 +1625,7 @@ name|postFormatter
 operator|!=
 literal|null
 condition|)
+block|{
 name|fieldEntry
 operator|=
 name|postFormatter
@@ -1623,6 +1635,7 @@ argument_list|(
 name|fieldEntry
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|fieldEntry
 return|;
@@ -1656,7 +1669,7 @@ return|;
 block|}
 block|}
 comment|// added section - begin (arudert)
-comment|/** 	 * Do layout for general formatters (no bibtex-entry fields). 	 *  	 * @param database 	 *            Bibtex Database 	 * @return 	 */
+comment|/**      * Do layout for general formatters (no bibtex-entry fields).      *       * @param database      *            Bibtex Database      * @return      */
 DECL|method|doLayout (BibtexDatabase database, String encoding)
 specifier|public
 name|String
@@ -1811,6 +1824,7 @@ name|postFormatter
 operator|!=
 literal|null
 condition|)
+block|{
 name|field
 operator|=
 name|postFormatter
@@ -1820,6 +1834,7 @@ argument_list|(
 name|field
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|field
 return|;
@@ -1927,6 +1942,7 @@ return|;
 block|}
 comment|// added section - end (arudert)
 DECL|field|pluginLayoutFormatter
+specifier|private
 specifier|static
 name|Map
 argument_list|<
@@ -1937,7 +1953,7 @@ argument_list|>
 name|pluginLayoutFormatter
 decl_stmt|;
 DECL|method|getLayoutFormatterFromPlugins (String formatterName)
-specifier|public
+specifier|private
 specifier|static
 name|LayoutFormatter
 name|getLayoutFormatterFromPlugins
@@ -1948,11 +1964,15 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|LayoutEntry
+operator|.
 name|pluginLayoutFormatter
 operator|==
 literal|null
 condition|)
 block|{
+name|LayoutEntry
+operator|.
 name|pluginLayoutFormatter
 operator|=
 operator|new
@@ -2017,6 +2037,7 @@ name|name
 operator|==
 literal|null
 condition|)
+block|{
 name|name
 operator|=
 name|e
@@ -2024,6 +2045,7 @@ operator|.
 name|getId
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|formatter
@@ -2031,6 +2053,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|LayoutEntry
+operator|.
 name|pluginLayoutFormatter
 operator|.
 name|put
@@ -2048,6 +2072,8 @@ comment|// We need to make a new instance of this LayoutFormatter, in case it is
 comment|// parameter-accepting layout formatter:
 if|if
 condition|(
+name|LayoutEntry
+operator|.
 name|pluginLayoutFormatter
 operator|.
 name|containsKey
@@ -2064,6 +2090,8 @@ name|LayoutFormatter
 argument_list|>
 name|c
 init|=
+name|LayoutEntry
+operator|.
 name|pluginLayoutFormatter
 operator|.
 name|get
@@ -2099,6 +2127,8 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|LayoutEntry
+operator|.
 name|pluginLayoutFormatter
 operator|.
 name|get
@@ -2108,12 +2138,14 @@ argument_list|)
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
 block|}
+block|}
 DECL|method|getLayoutFormatterByClassName (String className, String classPrefix)
-specifier|public
+specifier|private
 specifier|static
 name|LayoutFormatter
 name|getLayoutFormatterByClassName
@@ -2129,12 +2161,11 @@ name|Exception
 block|{
 if|if
 condition|(
+operator|!
 name|className
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 try|try
@@ -2240,9 +2271,9 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Return an array of LayoutFormatters found in the given formatterName 	 * string (in order of appearance). 	 *  	 */
+comment|/**      * Return an array of LayoutFormatters found in the given formatterName      * string (in order of appearance).      *       */
 DECL|method|getOptionalLayout (String formatterName, String classPrefix)
-specifier|public
+specifier|private
 specifier|static
 name|LayoutFormatter
 index|[]
@@ -2383,6 +2414,8 @@ block|{
 name|LayoutFormatter
 name|f
 init|=
+name|LayoutEntry
+operator|.
 name|getLayoutFormatterByClassName
 argument_list|(
 name|className
@@ -2407,6 +2440,7 @@ name|length
 operator|>=
 literal|2
 condition|)
+block|{
 operator|(
 operator|(
 name|ParamLayoutFormatter
@@ -2423,6 +2457,7 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|results
 operator|.
 name|add
@@ -2437,7 +2472,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{ 			}
+block|{             }
 comment|// Then check whether this is a user defined formatter
 name|String
 name|formatterParameter
@@ -2483,6 +2518,8 @@ comment|// Last load from plug-ins
 name|LayoutFormatter
 name|f
 init|=
+name|LayoutEntry
+operator|.
 name|getLayoutFormatterFromPlugins
 argument_list|(
 name|className
@@ -2617,9 +2654,11 @@ name|toHighlight
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|text
 return|;
+block|}
 name|Matcher
 name|matcher
 init|=

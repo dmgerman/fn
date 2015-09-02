@@ -137,6 +137,7 @@ block|{
 DECL|field|clipBoard
 specifier|public
 specifier|static
+specifier|final
 name|ClipBoardManager
 name|clipBoard
 init|=
@@ -144,8 +145,10 @@ operator|new
 name|ClipBoardManager
 argument_list|()
 decl_stmt|;
-comment|/**    * Empty implementation of the ClipboardOwner interface.    */
-DECL|method|lostOwnership ( Clipboard aClipboard, Transferable aContents )
+comment|/**      * Empty implementation of the ClipboardOwner interface.      */
+annotation|@
+name|Override
+DECL|method|lostOwnership (Clipboard aClipboard, Transferable aContents)
 specifier|public
 name|void
 name|lostOwnership
@@ -159,8 +162,8 @@ parameter_list|)
 block|{
 comment|//do nothing
 block|}
-comment|/**    * Place a String on the clipboard, and make this class the    * owner of the Clipboard's contents.    */
-DECL|method|setClipboardContents ( String aString )
+comment|/**      * Place a String on the clipboard, and make this class the      * owner of the Clipboard's contents.      */
+DECL|method|setClipboardContents (String aString)
 specifier|public
 name|void
 name|setClipboardContents
@@ -199,7 +202,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Get the String residing on the clipboard.    *    * @return any text found on the Clipboard; if none found, return an    * empty String.    */
+comment|/**      * Get the String residing on the clipboard.      *      * @return any text found on the Clipboard; if none found, return an      * empty String.      */
 DECL|method|getClipboardContents ()
 specifier|public
 name|String

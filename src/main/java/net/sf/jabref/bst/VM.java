@@ -275,7 +275,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * A Bibtex Virtual machine that can execute .bst files.  *   * Documentation can be found in the original bibtex distribution:  *   * http://texcatalogue.sarovar.org/entries/bibtex.html#Download  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  *   * A Bibtex Virtual machine that can execute .bst files.  *   * Documentation can be found in the original bibtex distribution:  *   * http://texcatalogue.sarovar.org/entries/bibtex.html#Download  *   */
 end_comment
 
 begin_class
@@ -287,6 +287,8 @@ implements|implements
 name|Warn
 block|{
 DECL|field|out
+specifier|private
+specifier|final
 name|PrintStream
 name|out
 init|=
@@ -301,6 +303,7 @@ name|Identifier
 block|{
 DECL|field|name
 specifier|public
+specifier|final
 name|String
 name|name
 decl_stmt|;
@@ -337,6 +340,7 @@ name|Variable
 block|{
 DECL|field|name
 specifier|public
+specifier|final
 name|String
 name|name
 decl_stmt|;
@@ -401,6 +405,7 @@ literal|1
 decl_stmt|;
 DECL|field|buildInFunctions
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -410,7 +415,7 @@ argument_list|>
 name|buildInFunctions
 decl_stmt|;
 DECL|field|file
-specifier|public
+specifier|private
 name|File
 name|file
 decl_stmt|;
@@ -466,7 +471,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|charStream2CommonTree (CharStream bst)
-specifier|public
+specifier|private
 specifier|static
 name|CommonTree
 name|charStream2CommonTree
@@ -525,7 +530,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|VM (CharStream bst)
-specifier|public
+specifier|private
 name|VM
 parameter_list|(
 name|CharStream
@@ -536,6 +541,8 @@ name|RecognitionException
 block|{
 name|this
 argument_list|(
+name|VM
+operator|.
 name|charStream2CommonTree
 argument_list|(
 name|bst
@@ -544,7 +551,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|VM (CommonTree tree)
-specifier|public
+specifier|private
 name|VM
 parameter_list|(
 name|CommonTree
@@ -582,7 +589,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top two (integer) literals, compares them, and pushes 			 * the integer 1 if the second is greater than the first, 0 			 * otherwise. 			 */
+comment|/**              * Pops the top two (integer) literals, compares them, and pushes              * the integer 1 if the second is greater than the first, 0              * otherwise.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -629,13 +638,17 @@ if|if
 condition|(
 operator|!
 operator|(
+operator|(
 name|o1
 operator|instanceof
 name|Integer
+operator|)
 operator|&&
+operator|(
 name|o2
 operator|instanceof
 name|Integer
+operator|)
 operator|)
 condition|)
 block|{
@@ -710,6 +723,8 @@ name|BstFunction
 argument_list|()
 block|{
 comment|/** Analogous. */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -756,13 +771,17 @@ if|if
 condition|(
 operator|!
 operator|(
+operator|(
 name|o1
 operator|instanceof
 name|Integer
+operator|)
 operator|&&
+operator|(
 name|o2
 operator|instanceof
 name|Integer
+operator|)
 operator|)
 condition|)
 block|{
@@ -836,7 +855,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top two (both integer or both string) literals, compares 			 * them, and pushes the integer 1 if they're equal, 0 otherwise. 			 */
+comment|/**              * Pops the top two (both integer or both string) literals, compares              * them, and pushes the integer 1 if they're equal, 0 otherwise.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -881,13 +902,17 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|o1
 operator|==
 literal|null
+operator|)
 operator|^
+operator|(
 name|o2
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|stack
@@ -954,6 +979,8 @@ name|BstFunction
 argument_list|()
 block|{
 comment|/** Pops the top two (integer) literals and pushes their sum. */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1000,13 +1027,17 @@ if|if
 condition|(
 operator|!
 operator|(
+operator|(
 name|o1
 operator|instanceof
 name|Integer
+operator|)
 operator|&&
+operator|(
 name|o2
 operator|instanceof
 name|Integer
+operator|)
 operator|)
 condition|)
 block|{
@@ -1047,7 +1078,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top two (integer) literals and pushes their difference 			 * (the first subtracted from the second). 			 */
+comment|/**              * Pops the top two (integer) literals and pushes their difference              * (the first subtracted from the second).              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1094,13 +1127,17 @@ if|if
 condition|(
 operator|!
 operator|(
+operator|(
 name|o1
 operator|instanceof
 name|Integer
+operator|)
 operator|&&
+operator|(
 name|o2
 operator|instanceof
 name|Integer
+operator|)
 operator|)
 condition|)
 block|{
@@ -1141,7 +1178,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top two (string) literals, concatenates them (in reverse 			 * order, that is, the order in which pushed), and pushes the 			 * resulting string. 			 */
+comment|/**              * Pops the top two (string) literals, concatenates them (in reverse              * order, that is, the order in which pushed), and pushes the              * resulting string.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1188,13 +1227,17 @@ if|if
 condition|(
 operator|!
 operator|(
+operator|(
 name|o1
 operator|instanceof
 name|String
+operator|)
 operator|&&
+operator|(
 name|o2
 operator|instanceof
 name|String
+operator|)
 operator|)
 condition|)
 block|{
@@ -1235,7 +1278,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top two literals and assigns to the first (which must be 			 * a global or entry variable) the value of the second. 			 */
+comment|/**              * Pops the top two literals and assigns to the first (which must be              * a global or entry variable) the value of the second.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1301,6 +1346,7 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
+specifier|final
 name|Pattern
 name|p
 init|=
@@ -1311,7 +1357,9 @@ argument_list|(
 literal|"([^\\.\\?\\!\\}\\s])(\\}|\\s)*$"
 argument_list|)
 decl_stmt|;
-comment|/** 			 * Pops the top (string) literal, adds a `.' to it if the last non 			 * '}' character isn't a `.', `?', or `!', and pushes this resulting 			 * string. 			 */
+comment|/**              * Pops the top (string) literal, adds a `.' to it if the last non              * '}' character isn't a `.', `?', or `!', and pushes this resulting              * string.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1434,6 +1482,7 @@ name|group2
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1446,6 +1495,7 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|stack
 operator|.
 name|push
@@ -1481,7 +1531,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Executes the function whose name is the entry type of an entry. 			 * For example if an entry is of type book, this function executes 			 * the book function. When given as an argument to the ITERATE 			 * command, call.type$ actually produces the output for the entries. 			 * For an entry with an unknown type, it executes the function 			 * default.type. Thus you should define (before the READ command) 			 * one function for each standard entry type as well as a 			 * default.type function. 			 */
+comment|/**              * Executes the function whose name is the entry type of an entry.              * For example if an entry is of type book, this function executes              * the book function. When given as an argument to the ITERATE              * command, call.type$ actually produces the output for the entries.              * For an entry with an unknown type, it executes the function              * default.type. Thus you should define (before the READ command)              * one function for each standard entry type as well as a              * default.type function.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1554,7 +1606,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top (string) literal, makes sure it's a single 			 * character, converts it to the corresponding ASCII integer, and 			 * pushes this integer. 			 */
+comment|/**              * Pops the top (string) literal, makes sure it's a single              * character, converts it to the corresponding ASCII integer, and              * pushes this integer.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1593,10 +1647,13 @@ if|if
 condition|(
 operator|!
 operator|(
+operator|(
 name|o1
 operator|instanceof
 name|String
+operator|)
 operator|&&
+operator|(
 operator|(
 operator|(
 name|String
@@ -1608,6 +1665,7 @@ name|length
 argument_list|()
 operator|==
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -1656,7 +1714,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pushes the string that was the \cite-command argument for this 			 * entry. 			 */
+comment|/**              * Pushes the string that was the \cite-command argument for this              * entry.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1691,7 +1751,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top literal from the stack and pushes two copies of it. 			 */
+comment|/**              * Pops the top literal from the stack and pushes two copies of it.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1754,7 +1816,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top literal and pushes the integer 1 if it's a missing 			 * field or a string having no non-white-space characters, 0 			 * otherwise. 			 */
+comment|/**              * Pops the top literal and pushes the integer 1 if it's a missing              * field or a string having no non-white-space characters, 0              * otherwise.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1883,7 +1947,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top three literals (they are two function literals and 			 * an integer literal, in that order); if the integer is greater 			 * than 0, it executes the second literal, else it executes the 			 * first. 			 */
+comment|/**              * Pops the top three literals (they are two function literals and              * an integer literal, in that order); if the integer is greater              * than 0, it executes the second literal, else it executes the              * first.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1938,23 +2004,31 @@ if|if
 condition|(
 operator|!
 operator|(
+operator|(
 name|f1
 operator|instanceof
 name|Identifier
+operator|)
 operator|||
+operator|(
 name|f1
 operator|instanceof
 name|Tree
 operator|)
+operator|)
 operator|&&
+operator|(
 operator|(
 name|f2
 operator|instanceof
 name|Identifier
+operator|)
 operator|||
+operator|(
 name|f2
 operator|instanceof
 name|Tree
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -2022,7 +2096,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top (integer) literal, interpreted as the ASCII integer 			 * value of a single character, converts it to the corresponding 			 * single-character string, and pushes this string. 			 */
+comment|/**              * Pops the top (integer) literal, interpreted as the ASCII integer              * value of a single character, converts it to the corresponding              * single-character string, and pushes this string.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2115,7 +2191,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top (integer) literal, converts it to its (unique) 			 * string equivalent, and pushes this string. 			 */
+comment|/**              * Pops the top (integer) literal, converts it to its (unique)              * string equivalent, and pushes this string.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2192,7 +2270,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top literal and pushes the integer 1 if it's a missing 			 * field, 0 otherwise. 			 */
+comment|/**              * Pops the top literal and pushes the integer 1 if it's a missing              * field, 0 otherwise.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2294,7 +2374,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Writes onto the bbl file what's accumulated in the output buffer. 			 * It writes a blank line if and only if the output buffer is empty. 			 * Since write$ does reasonable line breaking, you should use this 			 * function only when you want a blank line or an explicit line 			 * break. 			 */
+comment|/**              * Writes onto the bbl file what's accumulated in the output buffer.              * It writes a blank line if and only if the output buffer is empty.              * Since write$ does reasonable line breaking, you should use this              * function only when you want a blank line or an explicit line              * break.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2328,7 +2410,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top (string) literal and pushes the number of names the 			 * string represents one plus the number of occurrences of the 			 * substring "and" (ignoring case differences) surrounded by 			 * non-null white-space at the top brace level. 			 */
+comment|/**              * Pops the top (string) literal and pushes the number of names the              * string represents one plus the number of occurrences of the              * substring "and" (ignoring case differences) surrounded by              * non-null white-space at the top brace level.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2418,7 +2502,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top of the stack but doesn't print it; this gets rid of 			 * an unwanted stack literal. 			 */
+comment|/**              * Pops the top of the stack but doesn't print it; this gets rid of              * an unwanted stack literal.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2446,7 +2532,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * The |built_in| function {\.{preamble\$}} pushes onto the stack 			 * the concatenation of all the \.{preamble} strings read from the 			 * database files. (or the empty string if there where none) 			 *  			 * @PREAMBLE strings read from the database files. 			 */
+comment|/**              * The |built_in| function {\.{preamble\$}} pushes onto the stack              * the concatenation of all the \.{preamble} strings read from the              * database files. (or the empty string if there where none)              *               * @PREAMBLE strings read from the database files.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2484,7 +2572,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/** 		 * Pops the top (string) literal, removes nonalphanumeric characters 		 * except for white-space characters and hyphens and ties (these all get 		 * converted to a space), removes certain alphabetic characters 		 * contained in the control sequences associated with a \special 		 * character", and pushes the resulting string. 		 */
+comment|/**          * Pops the top (string) literal, removes nonalphanumeric characters          * except for white-space characters and hyphens and ties (these all get          * converted to a space), removes certain alphabetic characters          * contained in the control sequences associated with a \special          * character", and pushes the resulting string.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -2508,7 +2596,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pushes the string consisting of the double-quote character. 			 */
+comment|/**              * Pushes the string consisting of the double-quote character.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2538,7 +2628,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Is a no-op. 			 */
+comment|/**              * Is a no-op.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2562,7 +2654,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops and prints the whole stack; it's meant to be used for style 			 * designers while debugging. 			 */
+comment|/**              * Pops and prints the whole stack; it's meant to be used for style              * designers while debugging.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2607,7 +2701,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top three literals (they are the two integers literals 			 * len and start, and a string literal, in that order). It pushes 			 * the substring of the (at most) len consecutive characters 			 * starting at the startth character (assuming 1-based indexing) if 			 * start is positive, and ending at the start-th character 			 * (including) from the end if start is negative (where the first 			 * character from the end is the last character). 			 */
+comment|/**              * Pops the top three literals (they are the two integers literals              * len and start, and a string literal, in that order). It pushes              * the substring of the (at most) len consecutive characters              * starting at the startth character (assuming 1-based indexing) if              * start is positive, and ending at the start-th character              * (including) from the end if start is negative (where the first              * character from the end is the last character).              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2720,12 +2816,15 @@ if|if
 condition|(
 name|lenI
 operator|>
+operator|(
 name|Integer
 operator|.
 name|MAX_VALUE
 operator|/
 literal|2
+operator|)
 condition|)
+block|{
 name|lenI
 operator|=
 name|Integer
@@ -2734,16 +2833,20 @@ name|MAX_VALUE
 operator|/
 literal|2
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|startI
 operator|>
+operator|(
 name|Integer
 operator|.
 name|MAX_VALUE
 operator|/
 literal|2
+operator|)
 condition|)
+block|{
 name|startI
 operator|=
 name|Integer
@@ -2752,16 +2855,20 @@ name|MAX_VALUE
 operator|/
 literal|2
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|startI
 operator|<
+operator|(
 name|Integer
 operator|.
 name|MIN_VALUE
 operator|/
 literal|2
+operator|)
 condition|)
+block|{
 name|startI
 operator|=
 operator|-
@@ -2771,6 +2878,7 @@ name|MIN_VALUE
 operator|/
 literal|2
 expr_stmt|;
+block|}
 name|String
 name|s
 init|=
@@ -2803,9 +2911,11 @@ name|max
 argument_list|(
 literal|1
 argument_list|,
+operator|(
 name|startI
 operator|+
 literal|1
+operator|)
 operator|-
 name|lenI
 argument_list|)
@@ -2827,9 +2937,11 @@ name|Math
 operator|.
 name|min
 argument_list|(
+operator|(
 name|startI
 operator|-
 literal|1
+operator|)
 operator|+
 name|lenI
 argument_list|,
@@ -2855,7 +2967,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Swaps the top two literals on the stack. text.length$ Pops the 			 * top (string) literal, and pushes the number of text char- acters 			 * it contains, where an accented character (more precisely, a 			 * \special character", defined in Section 4) counts as a single 			 * text character, even if it's missing its matching right brace, 			 * and where braces don't count as text characters. 			 */
+comment|/**              * Swaps the top two literals on the stack. text.length$ Pops the              * top (string) literal, and pushes the number of text char- acters              * it contains, where an accented character (more precisely, a              * \special character", defined in Section 4) counts as a single              * text character, even if it's missing its matching right brace,              * and where braces don't count as text characters.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2926,7 +3040,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * text.length$ Pops the top (string) literal, and pushes the number 			 * of text characters it contains, where an accented character (more 			 * precisely, a "special character", defined in Section 4) counts as 			 * a single text character, even if it's missing its matching right 			 * brace, and where braces don't count as text characters. 			 *  			 * From BibTeXing: For the purposes of counting letters in labels, 			 * BibTEX considers everything contained inside the braces as a 			 * single letter. 			 */
+comment|/**              * text.length$ Pops the top (string) literal, and pushes the number              * of text characters it contains, where an accented character (more              * precisely, a "special character", defined in Section 4) counts as              * a single text character, even if it's missing its matching right              * brace, and where braces don't count as text characters.              *               * From BibTeXing: For the purposes of counting letters in labels,              * BibTEX considers everything contained inside the braces as a              * single letter.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -3056,14 +3172,19 @@ expr_stmt|;
 comment|// if ((sp_brace_level = 1) and (sp_ptr< sp_end)) then
 if|if
 condition|(
+operator|(
 name|braceLevel
 operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
 name|i
 operator|<
 name|n
+operator|)
 condition|)
+block|{
 comment|// if (str_pool[sp_ptr] = backslash) then
 comment|// begin
 if|if
@@ -3085,13 +3206,17 @@ comment|// while ((sp_ptr< sp_end) and (sp_brace_level
 comment|//> 0)) do begin
 while|while
 condition|(
+operator|(
 name|i
-argument_list|<
+operator|<
 name|n
+operator|)
 operator|&&
+operator|(
 name|braceLevel
-argument_list|>
+operator|>
 literal|0
+operator|)
 condition|)
 block|{
 comment|// if (str_pool[sp_ptr] = right_brace) then
@@ -3104,12 +3229,12 @@ index|]
 operator|==
 literal|'}'
 condition|)
+block|{
 comment|// decr(sp_brace_level)
 name|braceLevel
 operator|--
 expr_stmt|;
-comment|// else if (str_pool[sp_ptr] = left_brace)
-comment|// then
+block|}
 elseif|else
 if|if
 condition|(
@@ -3120,10 +3245,12 @@ index|]
 operator|==
 literal|'{'
 condition|)
+block|{
 comment|// incr(sp_brace_level);
 name|braceLevel
 operator|++
 expr_stmt|;
+block|}
 comment|// incr(sp_ptr);
 name|i
 operator|++
@@ -3137,6 +3264,7 @@ expr_stmt|;
 comment|// end;
 block|}
 comment|// end
+block|}
 block|}
 comment|// else if (str_pool[sp_ptr-1] = right_brace) then
 comment|// begin
@@ -3160,18 +3288,22 @@ name|braceLevel
 operator|>
 literal|0
 condition|)
+block|{
 comment|// decr(sp_brace_level);
 name|braceLevel
 operator|--
 expr_stmt|;
 comment|// end
 block|}
+block|}
 comment|// else
 else|else
+block|{
 comment|// incr(num_text_chars);
 name|result
 operator|++
 expr_stmt|;
+block|}
 block|}
 name|stack
 operator|.
@@ -3184,7 +3316,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/** 		 * Pops the top two literals (the integer literal len and a string 		 * literal, in that order). It pushes the substring of the (at most) len 		 * consecutive text characters starting from the beginning of the 		 * string. This function is similar to substring$, but this one 		 * considers a \special character", even if it's missing its matching 		 * right brace, to be a single text character (rather than however many 		 * ASCII characters it actually comprises), and this function doesn't 		 * consider braces to be text characters; furthermore, this function 		 * appends any needed matching right braces. 		 */
+comment|/**          * Pops the top two literals (the integer literal len and a string          * literal, in that order). It pushes the substring of the (at most) len          * consecutive text characters starting from the beginning of the          * string. This function is similar to substring$, but this one          * considers a \special character", even if it's missing its matching          * right brace, to be a single text character (rather than however many          * ASCII characters it actually comprises), and this function doesn't          * consider braces to be text characters; furthermore, this function          * appends any needed matching right braces.          */
 name|buildInFunctions
 operator|.
 name|put
@@ -3208,7 +3340,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops and prints the top of the stack on the terminal and log 			 * file. It's useful for debugging. 			 */
+comment|/**              * Pops and prints the top of the stack on the terminal and log              * file. It's useful for debugging.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -3243,7 +3377,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pushes the current entry's type (book, article, etc.), but pushes 			 * the null string if the type is either unknown or undefined. 			 */
+comment|/**              * Pushes the current entry's type (book, article, etc.), but pushes              * the null string if the type is either unknown or undefined.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -3281,12 +3417,14 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top (string) literal and prints it following a warning 			 * message. This also increments a count of the number of warning 			 * messages issued. 			 */
+comment|/**              * Pops the top (string) literal and prints it following a warning              * message. This also increments a count of the number of warning              * messages issued.              */
 name|int
 name|warning
 init|=
 literal|1
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -3328,7 +3466,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top two (function) literals, and keeps executing the 			 * second as long as the (integer) literal left on the stack by 			 * executing the first is greater than 0. 			 */
+comment|/**              * Pops the top two (function) literals, and keeps executing the              * second as long as the (integer) literal left on the stack by              * executing the first is greater than 0.              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -3375,23 +3515,31 @@ if|if
 condition|(
 operator|!
 operator|(
+operator|(
 name|f1
 operator|instanceof
 name|Identifier
+operator|)
 operator|||
+operator|(
 name|f1
 operator|instanceof
 name|Tree
 operator|)
+operator|)
 operator|&&
+operator|(
 operator|(
 name|f2
 operator|instanceof
 name|Identifier
+operator|)
 operator|||
+operator|(
 name|f2
 operator|instanceof
 name|Tree
+operator|)
 operator|)
 condition|)
 block|{
@@ -3500,7 +3648,9 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/** 			 * Pops the top (string) literal and writes it on the output buffer 			 * (which will result in stuff being written onto the bbl file when 			 * the buffer fills up). 			 */
+comment|/**              * Pops the top (string) literal and writes it on the output buffer              * (which will result in stuff being written onto the bbl file when              * the buffer fills up).              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -3546,7 +3696,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|assign (BstEntry context, Object o1, Object o2)
-specifier|protected
+specifier|private
 name|boolean
 name|assign
 parameter_list|(
@@ -3571,15 +3721,20 @@ operator|)
 operator|||
 operator|!
 operator|(
+operator|(
 name|o2
 operator|instanceof
 name|String
+operator|)
 operator|||
+operator|(
 name|o2
 operator|instanceof
 name|Integer
 operator|)
+operator|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|VMException
@@ -3587,6 +3742,7 @@ argument_list|(
 literal|"Invalid parameters"
 argument_list|)
 throw|;
+block|}
 name|String
 name|name
 init|=
@@ -3609,9 +3765,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|context
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|context
 operator|.
@@ -3673,9 +3831,11 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|context
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|context
 operator|.
@@ -3736,6 +3896,8 @@ literal|false
 return|;
 block|}
 DECL|field|tree
+specifier|private
+specifier|final
 name|CommonTree
 name|tree
 decl_stmt|;
@@ -3745,6 +3907,7 @@ name|StringBuffer
 name|bbl
 decl_stmt|;
 DECL|field|preamble
+specifier|private
 name|String
 name|preamble
 decl_stmt|;
@@ -4080,7 +4243,7 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Dredges up from the database file the field values for each entry in the 	 * list. It has no arguments. If a database entry doesn't have a value for a 	 * field (and probably no database entry will have a value for every field), 	 * that field variable is marked as missing for the entry. 	 *  	 * We use null for the missing entry designator. 	 */
+comment|/**      * Dredges up from the database file the field values for each entry in the      * list. It has no arguments. If a database entry doesn't have a value for a      * field (and probably no database entry will have a value for every field),      * that field variable is marked as missing for the entry.      *       * We use null for the missing entry designator.      */
 DECL|method|read ()
 specifier|private
 name|void
@@ -4185,7 +4348,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Defines a string macro. It has two arguments; the first is the macro's 	 * name, which is treated like any other variable or function name, and the 	 * second is its definition, which must be double-quote-delimited. You must 	 * have one for each three-letter month abbreviation; in addition, you 	 * should have one for common journal names. The user's database may 	 * override any definition you define using this command. If you want to 	 * define a string the user can't touch, use the FUNCTION command, which has 	 * a compatible syntax. 	 *  	 * @param child 	 */
+comment|/**      * Defines a string macro. It has two arguments; the first is the macro's      * name, which is treated like any other variable or function name, and the      * second is its definition, which must be double-quote-delimited. You must      * have one for each three-letter month abbreviation; in addition, you      * should have one for common journal names. The user's database may      * override any definition you define using this command. If you want to      * define a string the user can't touch, use the FUNCTION command, which has      * a compatible syntax.      *       * @param child      */
 DECL|method|macro (Tree child)
 specifier|private
 name|void
@@ -4243,6 +4406,7 @@ implements|implements
 name|BstFunction
 block|{
 DECL|field|replacement
+specifier|final
 name|String
 name|replacement
 decl_stmt|;
@@ -4261,6 +4425,8 @@ operator|=
 name|replacement
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|execute (BstEntry context)
 specifier|public
 name|void
@@ -4281,7 +4447,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* 	 * Declares the fields and entry variables. It has three arguments, each a 	 * (possibly empty) list of variable names. The three lists are of: fields, 	 * integer entry variables, and string entry variables. There is an 	 * additional field that BibTEX automatically declares, crossref, used for 	 * cross ref- erencing. And there is an additional string entry variable 	 * automatically declared, sort.key$, used by the SORT command. Each of 	 * these variables has a value for each entry on the list. 	 */
+comment|/*      * Declares the fields and entry variables. It has three arguments, each a      * (possibly empty) list of variable names. The three lists are of: fields,      * integer entry variables, and string entry variables. There is an      * additional field that BibTEX automatically declares, crossref, used for      * cross ref- erencing. And there is an additional string entry variable      * automatically declared, sort.key$, used by the SORT command. Each of      * these variables has a value for each entry on the list.      */
 DECL|method|entry (Tree child)
 specifier|private
 name|void
@@ -4617,7 +4783,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Sorts the entry list using the values of the string entry variable 	 * sort.key$. It has no arguments. 	 *  	 * @param child 	 */
+comment|/**      * Sorts the entry list using the values of the string entry variable      * sort.key$. It has no arguments.      *       * @param child      */
 DECL|method|sort (Tree child)
 specifier|private
 name|void
@@ -4640,6 +4806,8 @@ name|BstEntry
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compare
@@ -4681,7 +4849,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|executeInContext (Object o, BstEntry context)
-specifier|public
+specifier|private
 name|void
 name|executeInContext
 parameter_list|(
@@ -4745,7 +4913,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|execute (Tree child)
-specifier|public
+specifier|private
 name|void
 name|execute
 parameter_list|(
@@ -4777,6 +4945,7 @@ implements|implements
 name|BstFunction
 block|{
 DECL|field|tree
+specifier|final
 name|Tree
 name|tree
 decl_stmt|;
@@ -4804,6 +4973,8 @@ operator|=
 name|stack
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|execute (BstEntry context)
 specifier|public
 name|void
@@ -5054,7 +5225,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|execute (String name, BstEntry context)
-specifier|public
+specifier|private
 name|void
 name|execute
 parameter_list|(
@@ -5285,7 +5456,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Declares global integer variables. It has one argument, a list of 	 * variable names. There are two such automatically-declared variables, 	 * entry.max$ and global.max$, used for limiting the lengths of string vari- 	 * ables. You may have any number of these commands, but a variable's 	 * declaration must precede its use. 	 *  	 * @param child 	 */
+comment|/**      * Declares global integer variables. It has one argument, a list of      * variable names. There are two such automatically-declared variables,      * entry.max$ and global.max$, used for limiting the lengths of string vari-      * ables. You may have any number of these commands, but a variable's      * declaration must precede its use.      *       * @param child      */
 DECL|method|integers (Tree child)
 specifier|private
 name|void
@@ -5348,7 +5519,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Declares global string variables. It has one argument, a list of variable 	 * names. You may have any number of these commands, but a variable's 	 * declaration must precede its use. 	 *  	 * @param child 	 */
+comment|/**      * Declares global string variables. It has one argument, a list of variable      * names. You may have any number of these commands, but a variable's      * declaration must precede its use.      *       * @param child      */
 DECL|method|strings (Tree child)
 specifier|private
 name|void
@@ -5432,10 +5603,12 @@ name|e
 expr_stmt|;
 block|}
 DECL|field|entry
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|strings
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -5454,6 +5627,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|fields
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -5472,6 +5646,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|integers
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -5516,6 +5691,7 @@ return|;
 block|}
 block|}
 DECL|field|entries
+specifier|private
 name|Vector
 argument_list|<
 name|BstEntry
@@ -5523,6 +5699,7 @@ argument_list|>
 name|entries
 decl_stmt|;
 DECL|field|strings
+specifier|private
 name|Map
 argument_list|<
 name|String
@@ -5541,6 +5718,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|integers
+specifier|private
 name|Map
 argument_list|<
 name|String
@@ -5559,6 +5737,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|functions
+specifier|private
 name|Map
 argument_list|<
 name|String
@@ -5577,6 +5756,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|stack
+specifier|private
 name|Stack
 argument_list|<
 name|Object
@@ -5591,7 +5771,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|push (Integer integer)
-specifier|public
+specifier|private
 name|void
 name|push
 parameter_list|(
@@ -5608,7 +5788,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|push (String string)
-specifier|public
+specifier|private
 name|void
 name|push
 parameter_list|(
@@ -5625,7 +5805,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|push (Identifier identifier)
-specifier|public
+specifier|private
 name|void
 name|push
 parameter_list|(
@@ -5712,6 +5892,8 @@ return|return
 name|stack
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|warn (String string)
 specifier|public
 name|void

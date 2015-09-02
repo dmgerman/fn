@@ -75,7 +75,7 @@ name|Quality
 name|INSTANCE
 decl_stmt|;
 DECL|method|Quality ()
-specifier|public
+specifier|private
 name|Quality
 parameter_list|()
 block|{
@@ -92,6 +92,7 @@ name|SpecialFieldValue
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|// DO NOT TRANSLATE "qualityAssured" as this makes the produced .bib files non portable
 name|values
 operator|.
 name|add
@@ -140,6 +141,8 @@ operator|=
 literal|"Toggled quality for %0 entries"
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getFieldName ()
 specifier|public
 name|String
@@ -161,11 +164,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|Quality
+operator|.
 name|INSTANCE
 operator|==
 literal|null
 condition|)
 block|{
+name|Quality
+operator|.
 name|INSTANCE
 operator|=
 operator|new
@@ -174,9 +181,13 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|Quality
+operator|.
 name|INSTANCE
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRepresentingIcon ()
 specifier|public
 name|ImageIcon
@@ -198,6 +209,8 @@ name|getIcon
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getToolTip ()
 specifier|public
 name|String
@@ -219,6 +232,8 @@ name|getToolTipText
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getMenuString ()
 specifier|public
 name|String
@@ -234,6 +249,8 @@ literal|"Quality"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isSingleValueField ()
 specifier|public
 name|boolean

@@ -108,29 +108,11 @@ end_import
 
 begin_class
 DECL|class|EntryChange
-specifier|public
 class|class
 name|EntryChange
 extends|extends
 name|Change
 block|{
-DECL|field|memEntry
-DECL|field|tmpEntry
-DECL|field|diskEntry
-name|BibtexEntry
-name|memEntry
-decl_stmt|,
-name|tmpEntry
-decl_stmt|,
-name|diskEntry
-decl_stmt|;
-DECL|field|isModifiedLocally
-DECL|field|modificationsAgree
-name|boolean
-name|isModifiedLocally
-decl_stmt|,
-name|modificationsAgree
-decl_stmt|;
 DECL|method|EntryChange (BibtexEntry memEntry, BibtexEntry tmpEntry, BibtexEntry diskEntry)
 specifier|public
 name|EntryChange
@@ -162,41 +144,28 @@ name|key
 operator|==
 literal|null
 condition|)
+block|{
 name|name
 operator|=
 literal|"Modified entry"
 expr_stmt|;
+block|}
 else|else
+block|{
 name|name
 operator|=
 literal|"Modified entry: '"
 operator|+
 name|key
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
-name|this
-operator|.
-name|memEntry
-operator|=
-name|memEntry
-expr_stmt|;
-name|this
-operator|.
-name|tmpEntry
-operator|=
-name|tmpEntry
-expr_stmt|;
-name|this
-operator|.
-name|diskEntry
-operator|=
-name|diskEntry
-expr_stmt|;
+block|}
 comment|// We know that tmpEntry is not equal to diskEntry. Check if it has been modified
 comment|// locally as well, since last tempfile was saved.
+name|boolean
 name|isModifiedLocally
-operator|=
+init|=
 operator|!
 operator|(
 name|DuplicateCheck
@@ -210,11 +179,12 @@ argument_list|)
 operator|>
 literal|1
 operator|)
-expr_stmt|;
+decl_stmt|;
 comment|// Another (unlikely?) possibility is that both disk and mem version has been modified
 comment|// in the same way. Check for this, too.
+name|boolean
 name|modificationsAgree
-operator|=
+init|=
 operator|(
 name|DuplicateCheck
 operator|.
@@ -227,7 +197,7 @@ argument_list|)
 operator|>
 literal|1
 operator|)
-expr_stmt|;
+decl_stmt|;
 comment|//Util.pr("Modified entry: "+memEntry.getCiteKey()+"\n Modified locally: "+isModifiedLocally
 comment|//        +" Modifications agree: "+modificationsAgree);
 name|TreeSet
@@ -375,10 +345,38 @@ operator|&&
 operator|!
 name|disk
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
+operator|||
+operator|(
+name|disk
+operator|==
+literal|null
+operator|)
+operator|&&
+operator|(
+name|tmp
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|!
+name|tmp
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+operator|(
+name|mem
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|!
+name|mem
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 comment|// Added externally.
@@ -402,68 +400,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-operator|(
-name|disk
-operator|==
-literal|null
-operator|)
-operator|&&
-operator|(
-name|tmp
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|!
-name|tmp
-operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
-operator|&&
-operator|(
-name|mem
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|!
-name|mem
-operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
-condition|)
-block|{
-comment|// Deleted externally and not locally.
-name|add
-argument_list|(
-operator|new
-name|FieldChange
-argument_list|(
-name|field
-argument_list|,
-name|memEntry
-argument_list|,
-name|tmpEntry
-argument_list|,
-name|mem
-argument_list|,
-name|tmp
-argument_list|,
-name|disk
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 comment|//Util.pr("Field: "+fld.next());
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
@@ -495,12 +436,6 @@ name|Change
 argument_list|>
 name|e
 init|=
-operator|(
-name|Enumeration
-argument_list|<
-name|Change
-argument_list|>
-operator|)
 name|children
 argument_list|()
 decl_stmt|;
@@ -534,6 +469,7 @@ operator|.
 name|isAccepted
 argument_list|()
 condition|)
+block|{
 name|c
 operator|.
 name|makeChange
@@ -545,17 +481,22 @@ argument_list|,
 name|undoEdit
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|allAccepted
 operator|=
 literal|false
 expr_stmt|;
 block|}
-comment|/*panel.database().removeEntry(memEntry.getId());     try {       diskEntry.setId(Util.createNeutralId());     } catch (KeyCollisionException ex) {}     panel.database().removeEntry(memEntry.getId());*/
+block|}
+comment|/*panel.database().removeEntry(memEntry.getId());         try {           diskEntry.setId(Util.next());         } catch (KeyCollisionException ex) {}         panel.database().removeEntry(memEntry.getId());*/
 return|return
 name|allAccepted
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description
@@ -570,32 +511,44 @@ argument_list|)
 return|;
 block|}
 DECL|class|FieldChange
+specifier|static
 class|class
 name|FieldChange
 extends|extends
 name|Change
 block|{
 DECL|field|entry
-DECL|field|tmpEntry
+specifier|final
 name|BibtexEntry
 name|entry
-decl_stmt|,
+decl_stmt|;
+DECL|field|tmpEntry
+specifier|final
+name|BibtexEntry
 name|tmpEntry
 decl_stmt|;
 DECL|field|field
-DECL|field|inMem
-DECL|field|onTmp
-DECL|field|onDisk
+specifier|final
 name|String
 name|field
-decl_stmt|,
+decl_stmt|;
+DECL|field|inMem
+specifier|final
+name|String
 name|inMem
-decl_stmt|,
+decl_stmt|;
+DECL|field|onTmp
+specifier|final
+name|String
 name|onTmp
-decl_stmt|,
+decl_stmt|;
+DECL|field|onDisk
+specifier|final
+name|String
 name|onDisk
 decl_stmt|;
 DECL|field|tp
+specifier|final
 name|InfoPane
 name|tp
 init|=
@@ -604,6 +557,7 @@ name|InfoPane
 argument_list|()
 decl_stmt|;
 DECL|field|sp
+specifier|final
 name|JScrollPane
 name|sp
 init|=
@@ -674,11 +628,11 @@ name|onDisk
 operator|=
 name|onDisk
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|text
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|text
@@ -731,11 +685,10 @@ operator|&&
 operator|!
 name|onDisk
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
+block|{
 name|text
 operator|.
 name|append
@@ -757,7 +710,7 @@ name|append
 argument_list|(
 literal|":</H3>"
 operator|+
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
@@ -765,7 +718,9 @@ argument_list|(
 name|onDisk
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|text
 operator|.
 name|append
@@ -788,6 +743,7 @@ argument_list|(
 literal|"</H3>"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -799,11 +755,10 @@ operator|&&
 operator|!
 name|inMem
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
+block|{
 name|text
 operator|.
 name|append
@@ -825,7 +780,7 @@ name|append
 argument_list|(
 literal|":</H3>"
 operator|+
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
@@ -833,6 +788,7 @@ argument_list|(
 name|inMem
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -844,11 +800,10 @@ operator|&&
 operator|!
 name|onTmp
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
+block|{
 name|text
 operator|.
 name|append
@@ -870,7 +825,7 @@ name|append
 argument_list|(
 literal|":</H3>"
 operator|+
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
@@ -878,10 +833,11 @@ argument_list|(
 name|onTmp
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// No value in memory.
-comment|/*if ((onTmp != null)&& !onTmp.equals(inMem))           text.append("<H2>"+Globals.lang("You have cleared this field. Original value")+":</H2>"                       +" "+onTmp);*/
+comment|/*if ((onTmp != null)&& !onTmp.equals(inMem))                   text.append("<H2>"+Globals.lang("You have cleared this field. Original value")+":</H2>"                               +" "+onTmp);*/
 block|}
 name|tp
 operator|.
@@ -901,6 +857,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
@@ -956,6 +914,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description

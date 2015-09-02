@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2013 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -70,6 +70,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|autocompleter
+operator|.
+name|AutoCompleterFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|xnap
@@ -81,20 +95,6 @@ operator|.
 name|shortcut
 operator|.
 name|EmacsKeyBindings
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|autocompleter
-operator|.
-name|AbstractAutoCompleter
 import|;
 end_import
 
@@ -151,76 +151,130 @@ implements|implements
 name|PrefsTab
 block|{
 DECL|field|autoOpenForm
-DECL|field|showSource
 specifier|private
+specifier|final
 name|JCheckBox
 name|autoOpenForm
-decl_stmt|,
+decl_stmt|;
+DECL|field|showSource
+specifier|private
+specifier|final
+name|JCheckBox
 name|showSource
-decl_stmt|,
+decl_stmt|;
 DECL|field|defSource
-DECL|field|emacsMode
-DECL|field|emacsRebindCtrlA
-DECL|field|disableOnMultiple
-DECL|field|autoComplete
+specifier|private
+specifier|final
+name|JCheckBox
 name|defSource
-decl_stmt|,
+decl_stmt|;
+DECL|field|emacsMode
+specifier|private
+specifier|final
+name|JCheckBox
 name|emacsMode
-decl_stmt|,
+decl_stmt|;
+DECL|field|emacsRebindCtrlA
+specifier|private
+specifier|final
+name|JCheckBox
 name|emacsRebindCtrlA
-decl_stmt|,
+decl_stmt|;
+DECL|field|emacsRebindCtrlF
+specifier|private
+specifier|final
+name|JCheckBox
+name|emacsRebindCtrlF
+decl_stmt|;
+DECL|field|disableOnMultiple
+specifier|private
+specifier|final
+name|JCheckBox
 name|disableOnMultiple
-decl_stmt|,
+decl_stmt|;
+DECL|field|autoComplete
+specifier|private
+specifier|final
+name|JCheckBox
 name|autoComplete
 decl_stmt|;
 DECL|field|autoCompBoth
-DECL|field|autoCompFF
-DECL|field|autoCompLF
 specifier|private
+specifier|final
 name|JRadioButton
 name|autoCompBoth
-decl_stmt|,
+decl_stmt|;
+DECL|field|autoCompFF
+specifier|private
+specifier|final
+name|JRadioButton
 name|autoCompFF
-decl_stmt|,
+decl_stmt|;
+DECL|field|autoCompLF
+specifier|private
+specifier|final
+name|JRadioButton
 name|autoCompLF
-decl_stmt|,
+decl_stmt|;
 DECL|field|autoCompFirstNameMode_Full
-DECL|field|autoCompFirstNameMode_Abbr
-DECL|field|autoCompFirstNameMode_Both
+specifier|private
+specifier|final
+name|JRadioButton
 name|autoCompFirstNameMode_Full
-decl_stmt|,
+decl_stmt|;
+DECL|field|autoCompFirstNameMode_Abbr
+specifier|private
+specifier|final
+name|JRadioButton
 name|autoCompFirstNameMode_Abbr
-decl_stmt|,
+decl_stmt|;
+DECL|field|autoCompFirstNameMode_Both
+specifier|private
+specifier|final
+name|JRadioButton
 name|autoCompFirstNameMode_Both
 decl_stmt|;
 DECL|field|oldAutoCompFF
-DECL|field|oldAutoCompLF
+specifier|private
 name|boolean
 name|oldAutoCompFF
-decl_stmt|,
+decl_stmt|;
+DECL|field|oldAutoCompLF
+specifier|private
+name|boolean
 name|oldAutoCompLF
-decl_stmt|,
+decl_stmt|;
 DECL|field|oldAutoCompFModeAbbr
-DECL|field|oldAutoCompFModeFull
+specifier|private
+name|boolean
 name|oldAutoCompFModeAbbr
-decl_stmt|,
+decl_stmt|;
+DECL|field|oldAutoCompFModeFull
+specifier|private
+name|boolean
 name|oldAutoCompFModeFull
 decl_stmt|;
 DECL|field|shortestToComplete
 specifier|private
+specifier|final
 name|JSpinner
 name|shortestToComplete
 decl_stmt|;
 DECL|field|autoCompFields
 specifier|private
+specifier|final
 name|JTextField
 name|autoCompFields
 decl_stmt|;
 DECL|field|_prefs
+specifier|private
+specifier|final
 name|JabRefPreferences
 name|_prefs
 decl_stmt|;
 DECL|field|_frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|_frame
 decl_stmt|;
@@ -378,6 +432,19 @@ operator|.
 name|lang
 argument_list|(
 literal|"Rebind C-a, too"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|emacsRebindCtrlF
+operator|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Rebind C-f, too"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -599,6 +666,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -637,6 +706,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -646,6 +717,44 @@ name|event
 parameter_list|)
 block|{
 name|emacsRebindCtrlA
+operator|.
+name|setEnabled
+argument_list|(
+name|emacsMode
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|emacsRebindCtrlF
+operator|.
+name|setMargin
+argument_list|(
+name|marg
+argument_list|)
+expr_stmt|;
+comment|// We need a listener on showSource to enable and disable the source panel-related choices:
+name|emacsMode
+operator|.
+name|addChangeListener
+argument_list|(
+operator|new
+name|ChangeListener
+argument_list|()
+block|{
+specifier|public
+name|void
+name|stateChanged
+parameter_list|(
+name|ChangeEvent
+name|event
+parameter_list|)
+block|{
+name|emacsRebindCtrlF
 operator|.
 name|setEnabled
 argument_list|(
@@ -677,6 +786,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -713,8 +824,8 @@ operator|+
 comment|// rows 11 to 20
 literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
 operator|+
-comment|// rows 21 to 29
-literal|"pref, pref, pref, pref, 6dlu, pref, pref, pref, pref"
+comment|// rows 21 to 31
+literal|"pref, 6dlu, pref, pref, pref, pref, 6dlu, pref, pref, pref, pref"
 argument_list|)
 decl_stmt|;
 name|DefaultFormBuilder
@@ -854,6 +965,22 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
+name|add
+argument_list|(
+name|emacsRebindCtrlF
+argument_list|,
+name|cc
+operator|.
+name|xy
+argument_list|(
+literal|2
+argument_list|,
+literal|15
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
 name|addSeparator
 argument_list|(
 name|Globals
@@ -869,7 +996,7 @@ name|xyw
 argument_list|(
 literal|1
 argument_list|,
-literal|15
+literal|17
 argument_list|,
 literal|5
 argument_list|)
@@ -887,7 +1014,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|17
+literal|19
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -981,7 +1108,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|19
+literal|21
 argument_list|,
 literal|3
 argument_list|)
@@ -1004,7 +1131,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|21
+literal|23
 argument_list|,
 literal|4
 argument_list|)
@@ -1022,7 +1149,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|22
+literal|24
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1038,7 +1165,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|23
+literal|25
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1054,7 +1181,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|24
+literal|26
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1075,7 +1202,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|26
+literal|28
 argument_list|,
 literal|4
 argument_list|)
@@ -1093,7 +1220,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|27
+literal|29
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1109,7 +1236,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|28
+literal|30
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1125,7 +1252,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|29
+literal|31
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1165,6 +1292,8 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1179,7 +1308,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoOpenForm"
+name|JabRefPreferences
+operator|.
+name|AUTO_OPEN_FORM
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1191,7 +1322,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"defaultShowSource"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_SHOW_SOURCE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1203,7 +1336,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"showSource"
+name|JabRefPreferences
+operator|.
+name|SHOW_SOURCE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1235,6 +1370,20 @@ name|EDITOR_EMACS_KEYBINDINGS_REBIND_CA
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|emacsRebindCtrlF
+operator|.
+name|setSelected
+argument_list|(
+name|_prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS_REBIND_CF
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|disableOnMultiple
 operator|.
 name|setSelected
@@ -1243,7 +1392,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"disableOnMultipleSelection"
+name|JabRefPreferences
+operator|.
+name|DISABLE_ON_MULTIPLE_SELECTION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1255,7 +1406,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoComplete"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMPLETE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1267,7 +1420,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"autoCompleteFields"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMPLETE_FIELDS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1291,9 +1446,12 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoCompFF"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMP_FIRST_LAST
 argument_list|)
 condition|)
+block|{
 name|autoCompFF
 operator|.
 name|setSelected
@@ -1301,6 +1459,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1308,9 +1467,12 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoCompLF"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMP_LAST_FIRST
 argument_list|)
 condition|)
+block|{
 name|autoCompLF
 operator|.
 name|setSelected
@@ -1318,7 +1480,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|autoCompBoth
 operator|.
 name|setSelected
@@ -1326,6 +1490,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|oldAutoCompFF
 operator|=
 name|autoCompFF
@@ -1358,6 +1523,7 @@ operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_ABBR
 argument_list|)
 condition|)
+block|{
 name|autoCompFirstNameMode_Abbr
 operator|.
 name|setSelected
@@ -1365,6 +1531,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1384,6 +1551,7 @@ operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_FULL
 argument_list|)
 condition|)
+block|{
 name|autoCompFirstNameMode_Full
 operator|.
 name|setSelected
@@ -1391,7 +1559,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|autoCompFirstNameMode_Both
 operator|.
 name|setSelected
@@ -1399,6 +1569,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 comment|// one field less than the option is enough. If one filed changes, another one also changes.
 name|oldAutoCompFModeAbbr
 operator|=
@@ -1446,6 +1617,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1456,7 +1629,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autoOpenForm"
+name|JabRefPreferences
+operator|.
+name|AUTO_OPEN_FORM
 argument_list|,
 name|autoOpenForm
 operator|.
@@ -1468,7 +1643,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"defaultShowSource"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_SHOW_SOURCE
 argument_list|,
 name|defSource
 operator|.
@@ -1514,11 +1691,32 @@ name|isSelected
 argument_list|()
 operator|)
 decl_stmt|;
+name|boolean
+name|emacsRebindCtrlFChanged
+init|=
+operator|(
+name|_prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS_REBIND_CF
+argument_list|)
+operator|!=
+name|emacsRebindCtrlF
+operator|.
+name|isSelected
+argument_list|()
+operator|)
+decl_stmt|;
 if|if
 condition|(
 name|emacsModeChanged
 operator|||
 name|emacsRebindCtrlAChanged
+operator|||
+name|emacsRebindCtrlFChanged
 condition|)
 block|{
 name|_prefs
@@ -1544,6 +1742,20 @@ operator|.
 name|EDITOR_EMACS_KEYBINDINGS_REBIND_CA
 argument_list|,
 name|emacsRebindCtrlA
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|_prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS_REBIND_CF
+argument_list|,
+name|emacsRebindCtrlF
 operator|.
 name|isSelected
 argument_list|()
@@ -1580,7 +1792,7 @@ block|}
 block|}
 else|else
 block|{
-comment|// only rebinding of CTRL+a changed
+comment|// only rebinding of CTRL+a or CTRL+f changed
 assert|assert
 operator|(
 name|emacsMode
@@ -1589,7 +1801,7 @@ name|isSelected
 argument_list|()
 operator|)
 assert|;
-comment|// we simply reload the emacs mode to activate the CTRL+a change
+comment|// we simply reload the emacs mode to activate the CTRL+a/CTRL+f change
 name|EmacsKeyBindings
 operator|.
 name|unload
@@ -1606,7 +1818,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"disableOnMultipleSelection"
+name|JabRefPreferences
+operator|.
+name|DISABLE_ON_MULTIPLE_SELECTION
 argument_list|,
 name|disableOnMultiple
 operator|.
@@ -1622,7 +1836,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoComplete"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMPLETE
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -1632,7 +1848,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"showSource"
+name|JabRefPreferences
+operator|.
+name|SHOW_SOURCE
 argument_list|)
 decl_stmt|;
 name|String
@@ -1642,7 +1860,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"autoCompleteFields"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMPLETE_FIELDS
 argument_list|)
 decl_stmt|;
 name|_prefs
@@ -1666,7 +1886,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autoComplete"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMPLETE
 argument_list|,
 name|autoComplete
 operator|.
@@ -1678,7 +1900,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"autoCompleteFields"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMPLETE_FIELDS
 argument_list|,
 name|autoCompFields
 operator|.
@@ -1690,7 +1914,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"showSource"
+name|JabRefPreferences
+operator|.
+name|SHOW_SOURCE
 argument_list|,
 name|showSource
 operator|.
@@ -1710,7 +1936,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autoCompFF"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMP_FIRST_LAST
 argument_list|,
 literal|false
 argument_list|)
@@ -1719,7 +1947,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autoCompLF"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMP_LAST_FIRST
 argument_list|,
 literal|false
 argument_list|)
@@ -1738,7 +1968,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autoCompFF"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMP_FIRST_LAST
 argument_list|,
 literal|true
 argument_list|)
@@ -1747,7 +1979,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autoCompLF"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMP_LAST_FIRST
 argument_list|,
 literal|false
 argument_list|)
@@ -1759,7 +1993,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autoCompFF"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMP_FIRST_LAST
 argument_list|,
 literal|false
 argument_list|)
@@ -1768,7 +2004,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autoCompLF"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMP_LAST_FIRST
 argument_list|,
 literal|true
 argument_list|)
@@ -1781,6 +2019,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|_prefs
 operator|.
 name|put
@@ -1794,6 +2033,7 @@ operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_ABBR
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1802,6 +2042,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|_prefs
 operator|.
 name|put
@@ -1815,7 +2056,9 @@ operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_FULL
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|_prefs
 operator|.
 name|put
@@ -1829,6 +2072,7 @@ operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_BOTH
 argument_list|)
 expr_stmt|;
+block|}
 comment|// We need to remove all entry editors from cache if the source panel setting
 comment|// or the autocompletion settings have been changed:
 if|if
@@ -1948,7 +2192,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// the autocompleter has to be updated to the new min length to complete
-name|AbstractAutoCompleter
+name|AutoCompleterFactory
 operator|.
 name|SHORTEST_TO_COMPLETE
 operator|=
@@ -1961,6 +2205,8 @@ name|getValue
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -1971,6 +2217,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

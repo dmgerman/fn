@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Convert the contents to lower case.  *   * @author $author$  * @version $Revision$  */
+comment|/**  * Convert the contents to lower case.  */
 end_comment
 
 begin_class
@@ -132,6 +132,8 @@ name|ToLowerCase
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String

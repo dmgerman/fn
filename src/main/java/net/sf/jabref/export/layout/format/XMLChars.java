@@ -143,7 +143,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Changes {\^o} or {\^{o}} to ?  *   * @author $author$  * @version $Revision$  */
+comment|/**  * Changes {\^o} or {\^{o}} to ?  */
 end_comment
 
 begin_class
@@ -154,6 +154,8 @@ name|XMLChars
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -212,6 +214,7 @@ name|repl
 operator|!=
 literal|null
 condition|)
+block|{
 name|fieldText
 operator|=
 name|fieldText
@@ -223,6 +226,7 @@ argument_list|,
 name|repl
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|restFormat
@@ -259,6 +263,7 @@ argument_list|)
 return|;
 block|}
 DECL|field|forceReplace
+specifier|private
 name|boolean
 index|[]
 name|forceReplace
@@ -470,9 +475,11 @@ block|}
 comment|// TODO: Check whether> 125 is correct here or whether it should rather be>=
 if|if
 condition|(
+operator|(
 name|code
 operator|>
 literal|125
+operator|)
 operator|||
 name|forceReplace
 index|[
@@ -494,7 +501,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 expr_stmt|;
 block|}
@@ -562,6 +569,7 @@ name|repl
 operator|!=
 literal|null
 condition|)
+block|{
 name|fieldText
 operator|=
 name|fieldText
@@ -573,6 +581,7 @@ argument_list|,
 name|repl
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|fieldText

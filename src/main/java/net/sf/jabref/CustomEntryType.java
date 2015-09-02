@@ -54,6 +54,62 @@ name|Collections
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class is used to represent customized entry types.  *  */
 end_comment
@@ -68,19 +124,27 @@ name|BibtexEntryType
 block|{
 DECL|field|name
 specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|req
-DECL|field|opt
-DECL|field|priOpt
 specifier|private
 name|String
 index|[]
 name|req
-decl_stmt|,
+decl_stmt|;
+DECL|field|opt
+specifier|private
+specifier|final
+name|String
+index|[]
 name|opt
-decl_stmt|,
+decl_stmt|;
+DECL|field|priOpt
+specifier|private
+name|String
+index|[]
 name|priOpt
 decl_stmt|;
 DECL|field|reqSets
@@ -93,7 +157,23 @@ init|=
 literal|null
 decl_stmt|;
 comment|// Sets of either-or required fields, if any
-DECL|method|CustomEntryType (String name_, String[] req_, String[] opt_, String[] opt2_)
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|CustomEntryType
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+DECL|method|CustomEntryType (String name_, String[] req_, String[] priOpt_, String[] secOpt_)
 specifier|public
 name|CustomEntryType
 parameter_list|(
@@ -106,72 +186,41 @@ name|req_
 parameter_list|,
 name|String
 index|[]
-name|opt_
+name|priOpt_
 parameter_list|,
 name|String
 index|[]
-name|opt2_
+name|secOpt_
 parameter_list|)
 block|{
 name|name
 operator|=
+name|StringUtil
+operator|.
+name|nCase
+argument_list|(
 name|name_
+argument_list|)
 expr_stmt|;
 name|parseRequiredFields
 argument_list|(
 name|req_
 argument_list|)
 expr_stmt|;
-name|ArrayList
-argument_list|<
-name|String
-argument_list|>
-name|allOpt
-init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|String
-argument_list|>
-argument_list|()
-decl_stmt|;
-name|Collections
-operator|.
-name|addAll
-argument_list|(
-name|allOpt
-argument_list|,
-name|opt_
-argument_list|)
-expr_stmt|;
-name|Collections
-operator|.
-name|addAll
-argument_list|(
-name|allOpt
-argument_list|,
-name|opt2_
-argument_list|)
+name|priOpt
+operator|=
+name|priOpt_
 expr_stmt|;
 name|opt
 operator|=
-name|allOpt
+name|Util
 operator|.
-name|toArray
+name|arrayConcat
 argument_list|(
-operator|new
-name|String
-index|[
-name|allOpt
-operator|.
-name|size
-argument_list|()
-index|]
+name|priOpt_
+argument_list|,
+name|secOpt_
 argument_list|)
-expr_stmt|;
-name|priOpt
-operator|=
-name|opt_
 expr_stmt|;
 block|}
 DECL|method|CustomEntryType (String name_, String[] req_, String[] opt_)
@@ -207,7 +256,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|CustomEntryType (String name_, String reqStr, String optStr)
-specifier|public
+specifier|private
 name|CustomEntryType
 parameter_list|(
 name|String
@@ -222,17 +271,21 @@ parameter_list|)
 block|{
 name|name
 operator|=
+name|StringUtil
+operator|.
+name|nCase
+argument_list|(
 name|name_
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
 name|reqStr
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
+block|{
 name|req
 operator|=
 operator|new
@@ -241,6 +294,7 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+block|}
 else|else
 block|{
 name|parseRequiredFields
@@ -253,11 +307,10 @@ if|if
 condition|(
 name|optStr
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
+block|{
 name|opt
 operator|=
 operator|new
@@ -266,7 +319,9 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+block|}
 else|else
+block|{
 name|opt
 operator|=
 name|optStr
@@ -277,8 +332,9 @@ literal|";"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 DECL|method|parseRequiredFields (String reqStr)
-specifier|protected
+specifier|private
 name|void
 name|parseRequiredFields
 parameter_list|(
@@ -304,7 +360,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|parseRequiredFields (String[] parts)
-specifier|protected
+specifier|private
 name|void
 name|parseRequiredFields
 parameter_list|(
@@ -406,12 +462,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|sets
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|reqSets
@@ -433,6 +488,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -443,6 +500,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionalFields ()
 specifier|public
 name|String
@@ -454,6 +513,8 @@ return|return
 name|opt
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRequiredFields ()
 specifier|public
 name|String
@@ -478,6 +539,28 @@ return|return
 name|priOpt
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getSecondaryOptionalFields ()
+specifier|public
+name|String
+index|[]
+name|getSecondaryOptionalFields
+parameter_list|()
+block|{
+return|return
+name|Util
+operator|.
+name|getRemainder
+argument_list|(
+name|opt
+argument_list|,
+name|priOpt
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getRequiredFieldsForCustomization ()
 specifier|public
 name|String
@@ -496,17 +579,19 @@ argument_list|)
 return|;
 block|}
 comment|//    public boolean isTemporary
+annotation|@
+name|Override
 DECL|method|describeRequiredFields ()
 specifier|public
 name|String
 name|describeRequiredFields
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
@@ -544,11 +629,13 @@ operator|(
 operator|(
 name|i
 operator|<=
+operator|(
 name|req
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -579,11 +666,11 @@ name|String
 name|describeOptionalFields
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
@@ -621,11 +708,13 @@ operator|(
 operator|(
 name|i
 operator|<=
+operator|(
 name|opt
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -651,6 +740,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Check whether this entry's required fields are set, taking crossreferenced entries and      * either-or fields into account:      * @param entry The entry to check.      * @param database The entry's database.      * @return True if required fields are set, false otherwise.      */
+annotation|@
+name|Override
 DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|boolean
@@ -677,9 +768,11 @@ argument_list|)
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|// Then check other fields:
 name|boolean
 index|[]
@@ -710,6 +803,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|isSet
 index|[
 name|i
@@ -731,6 +825,7 @@ argument_list|)
 operator|!=
 literal|null
 expr_stmt|;
+block|}
 comment|// Then go through all fields. If a field is not set, see if it is part of an either-or
 comment|// set where another field is set. If not, return false:
 for|for
@@ -774,9 +869,11 @@ argument_list|,
 name|database
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 block|}
 comment|// Passed all fields, so return true:
@@ -785,7 +882,7 @@ literal|true
 return|;
 block|}
 DECL|method|isCoupledFieldSet (String field, BibtexEntry entry, BibtexDatabase database)
-specifier|protected
+specifier|private
 name|boolean
 name|isCoupledFieldSet
 parameter_list|(
@@ -805,9 +902,11 @@ name|reqSets
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 for|for
 control|(
 name|String
@@ -844,11 +943,12 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 name|takesPart
 operator|=
 literal|true
 expr_stmt|;
-comment|// If it is a different field, check if it is set:
+block|}
 elseif|else
 if|if
 condition|(
@@ -865,10 +965,12 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|oneSet
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 comment|// Ths the field is part of the set, and at least one other field is set, return true:
 if|if
@@ -877,9 +979,11 @@ name|takesPart
 operator|&&
 name|oneSet
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 comment|// No hits, so return false:
 return|return
@@ -1007,6 +1111,7 @@ if|if
 condition|(
 name|j
 operator|<
+operator|(
 name|reqSets
 index|[
 name|reqSetsPiv
@@ -1015,14 +1120,17 @@ operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"/"
+literal|'/'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Skip next n-1 fields:
 name|i
@@ -1041,6 +1149,7 @@ operator|++
 expr_stmt|;
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -1051,23 +1160,28 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|req
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -1126,7 +1240,7 @@ name|getRequiredFieldsString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/*StringBuffer sb = new StringBuffer(); 	for (int i=0; i<req.length; i++) { 	    sb.append(req[i]); 	    if (i<req.length-1) 		sb.append(";"); 	} 	out.write(sb.toString());*/
+comment|/*StringBuffer sb = new StringBuffer();         for (int i=0; i<req.length; i++) {             sb.append(req[i]);             if (i<req.length-1)         	sb.append(";");         }         out.write(sb.toString());*/
 name|out
 operator|.
 name|write
@@ -1172,19 +1286,23 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|opt
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|out
 operator|.
@@ -1289,11 +1407,13 @@ name|rPos
 operator|<
 literal|4
 condition|)
+block|{
 throw|throw
 operator|new
 name|IndexOutOfBoundsException
 argument_list|()
 throw|;
+block|}
 name|String
 name|reqFields
 init|=
@@ -1354,11 +1474,13 @@ name|IndexOutOfBoundsException
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Ill-formed entrytype comment in BibTeX file."
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 return|return

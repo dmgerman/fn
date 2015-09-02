@@ -63,7 +63,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Main class for formatting DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+comment|/**  * Main class for formatting DOCUMENT ME!  */
 end_comment
 
 begin_class
@@ -72,15 +72,16 @@ specifier|public
 class|class
 name|Layout
 block|{
-comment|//~ Instance fields ////////////////////////////////////////////////////////
 DECL|field|layoutEntries
 specifier|private
+specifier|final
 name|LayoutEntry
 index|[]
 name|layoutEntries
 decl_stmt|;
 DECL|field|missingFormatters
 specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|String
@@ -94,7 +95,6 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|//~ Constructors ///////////////////////////////////////////////////////////
 DECL|method|Layout (Vector<StringInt> parsedEntries, String classPrefix)
 specifier|public
 name|Layout
@@ -169,11 +169,7 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_LAYOUT_TEXT
-condition|)
-block|{             }
-elseif|else
-if|if
-condition|(
+operator|||
 name|si
 operator|.
 name|i
@@ -225,13 +221,17 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|blockStart
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|blockEntries
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 if|if
@@ -289,7 +289,7 @@ name|println
 argument_list|(
 name|blockStart
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|si
 operator|.
@@ -355,13 +355,17 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|blockStart
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|blockEntries
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 if|if
@@ -610,11 +614,11 @@ argument_list|>
 name|wordsToHighlight
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|100
 argument_list|)
@@ -651,10 +655,12 @@ name|fieldText
 operator|==
 literal|null
 condition|)
+block|{
 name|fieldText
 operator|=
 literal|""
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -684,11 +690,11 @@ name|encoding
 parameter_list|)
 block|{
 comment|//System.out.println("LAYOUT: " + bibtex.getId());
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|100
 argument_list|)
@@ -844,18 +850,6 @@ return|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 

@@ -78,73 +78,41 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
+operator|.
+name|jabref
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
 operator|.
 name|logging
 operator|.
-name|Level
+name|Log
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
+operator|.
+name|commons
 operator|.
 name|logging
 operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
+name|LogFactory
 import|;
 end_import
 
@@ -160,22 +128,20 @@ name|RepecNepImporter
 extends|extends
 name|ImportFormat
 block|{
-DECL|field|logger
+DECL|field|LOGGER
 specifier|private
 specifier|static
-name|Logger
-name|logger
+specifier|final
+name|Log
+name|LOGGER
 init|=
-name|Logger
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
 name|RepecNepImporter
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|recognizedFields
@@ -238,7 +204,9 @@ name|inOverviewSection
 init|=
 literal|false
 decl_stmt|;
-comment|/**    * Return the name of this import format.    */
+comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -249,7 +217,9 @@ return|return
 literal|"REPEC New Economic Papers (NEP)"
 return|;
 block|}
-comment|/*    *  (non-Javadoc)    * @see net.sf.jabref.imports.ImportFormat#getCLIId()    */
+comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -260,7 +230,9 @@ return|return
 literal|"repecnep"
 return|;
 block|}
-comment|/*    *  (non-Javadoc)    * @see net.sf.jabref.imports.ImportFormat#getExtensions()    */
+comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getExtensions()      */
+annotation|@
+name|Override
 DECL|method|getExtensions ()
 specifier|public
 name|String
@@ -271,7 +243,9 @@ return|return
 literal|".txt"
 return|;
 block|}
-comment|/*    *  (non-Javadoc)    * @see net.sf.jabref.imports.ImportFormat#getDescription()    */
+comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getDescription()      */
+annotation|@
+name|Override
 DECL|method|getDescription ()
 specifier|public
 name|String
@@ -290,7 +264,9 @@ operator|+
 literal|"contains the line \"nep.repec.org\"."
 return|;
 block|}
-comment|/*    *  (non-Javadoc)    * @see net.sf.jabref.imports.ImportFormat#isRecognizedFormat(java.io.InputStream)    */
+comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#isRecognizedFormat(java.io.InputStream)      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -339,13 +315,17 @@ name|i
 init|=
 literal|0
 init|;
+operator|(
 name|i
 operator|<
 literal|25
+operator|)
 operator|&&
+operator|(
 name|line
 operator|!=
 literal|null
+operator|)
 condition|;
 name|i
 operator|++
@@ -478,7 +458,7 @@ name|readLine
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * Read multiple lines.    *     *<p>Reads multiple lines until either    *<ul>    *<li>an empty line</li>    *<li>the end of file</li>    *<li>the next working paper or</li>    *<li>a keyword</li>    *</ul>    * is found. Whitespace at start or end of lines is trimmed except for one blank character.</p>    *     * @return  result    */
+comment|/**      * Read multiple lines.      *       *<p>Reads multiple lines until either      *<ul>      *<li>an empty line</li>      *<li>the end of file</li>      *<li>the next working paper or</li>      *<li>a keyword</li>      *</ul>      * is found. Whitespace at start or end of lines is trimmed except for one blank character.</p>      *       * @return  result      */
 DECL|method|readMultipleLines ()
 specifier|private
 name|String
@@ -502,11 +482,13 @@ argument_list|()
 expr_stmt|;
 while|while
 condition|(
+operator|(
 name|this
 operator|.
 name|lastLine
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|this
@@ -524,6 +506,8 @@ operator|&&
 operator|!
 name|startsWithKeyword
 argument_list|(
+name|RepecNepImporter
+operator|.
 name|recognizedFields
 argument_list|)
 operator|&&
@@ -567,7 +551,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * Implements grammar rule "TitleString".    *     * @param be    * @throws IOException    */
+comment|/**      * Implements grammar rule "TitleString".      *       * @param be      * @throws IOException      */
 DECL|method|parseTitleString (BibtexEntry be)
 specifier|private
 name|void
@@ -620,7 +604,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Implements grammer rule "Authors"    *     * @param be    * @throws IOException    */
+comment|/**      * Implements grammer rule "Authors"      *       * @param be      * @throws IOException      */
 DECL|method|parseAuthors (BibtexEntry be)
 specifier|private
 name|void
@@ -645,11 +629,13 @@ literal|""
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|this
 operator|.
 name|lastLine
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|this
@@ -664,6 +650,8 @@ operator|&&
 operator|!
 name|startsWithKeyword
 argument_list|(
+name|RepecNepImporter
+operator|.
 name|recognizedFields
 argument_list|)
 condition|)
@@ -671,8 +659,6 @@ block|{
 comment|// read single author
 name|String
 name|author
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|institution
@@ -681,8 +667,6 @@ literal|null
 decl_stmt|;
 name|boolean
 name|institutionDone
-init|=
-literal|false
 decl_stmt|;
 if|if
 condition|(
@@ -755,6 +739,7 @@ literal|1
 argument_list|,
 name|institutionDone
 operator|&&
+operator|(
 name|this
 operator|.
 name|lastLine
@@ -764,6 +749,7 @@ argument_list|(
 literal|')'
 argument_list|)
 operator|>
+operator|(
 name|this
 operator|.
 name|lastLine
@@ -774,6 +760,8 @@ literal|'('
 argument_list|)
 operator|+
 literal|1
+operator|)
+operator|)
 condition|?
 name|this
 operator|.
@@ -832,11 +820,13 @@ condition|(
 operator|!
 name|institutionDone
 operator|&&
+operator|(
 name|this
 operator|.
 name|lastLine
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|institutionDone
@@ -984,7 +974,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Implements grammar rule "Abstract".    *     * @param be    * @throws IOException    */
+comment|/**      * Implements grammar rule "Abstract".      *       * @param be      * @throws IOException      */
 DECL|method|parseAbstract (BibtexEntry be)
 specifier|private
 name|void
@@ -1024,7 +1014,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Implements grammar rule "AdditionalFields".    *     * @param be    * @throws IOException    */
+comment|/**      * Implements grammar rule "AdditionalFields".      *       * @param be      * @throws IOException      */
 DECL|method|parseAdditionalFields (BibtexEntry be, boolean multilineUrlFieldAllowed)
 specifier|private
 name|void
@@ -1042,11 +1032,13 @@ block|{
 comment|// one empty line is possible before fields start
 if|if
 condition|(
+operator|(
 name|this
 operator|.
 name|lastLine
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|this
 operator|.
@@ -1068,11 +1060,13 @@ block|}
 comment|// read other fields
 while|while
 condition|(
+operator|(
 name|this
 operator|.
 name|lastLine
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|isStartOfWorkingPaper
@@ -1081,6 +1075,8 @@ operator|&&
 operator|(
 name|startsWithKeyword
 argument_list|(
+name|RepecNepImporter
+operator|.
 name|recognizedFields
 argument_list|)
 operator|||
@@ -1310,15 +1306,19 @@ decl_stmt|;
 for|for
 control|(
 init|;
+operator|(
 name|i
 operator|<
 name|recognizedDateFormats
 operator|.
 name|length
+operator|)
 operator|&&
+operator|(
 name|date
 operator|==
 literal|null
+operator|)
 condition|;
 name|i
 operator|++
@@ -1394,9 +1394,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|date
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|recognizedDateFormats
 index|[
@@ -1445,8 +1447,6 @@ condition|)
 block|{
 name|String
 name|content
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -1508,7 +1508,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * if line starts with a string of the form 'x. ' and we are not in the overview    * section, we have a working paper entry we are interested in    */
+comment|/**      * if line starts with a string of the form 'x. ' and we are not in the overview      * section, we have a working paper entry we are interested in      */
 DECL|method|isStartOfWorkingPaper ()
 specifier|private
 name|boolean
@@ -1543,7 +1543,9 @@ literal|""
 argument_list|)
 return|;
 block|}
-comment|/*    *  (non-Javadoc)    * @see net.sf.jabref.imports.ImportFormat#importEntries(java.io.InputStream)    */
+comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#importEntries(java.io.InputStream)      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -1653,9 +1655,9 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1700,6 +1702,8 @@ if|if
 condition|(
 name|startsWithKeyword
 argument_list|(
+name|RepecNepImporter
+operator|.
 name|recognizedFields
 argument_list|)
 condition|)
@@ -1733,6 +1737,8 @@ condition|(
 operator|!
 name|startsWithKeyword
 argument_list|(
+name|RepecNepImporter
+operator|.
 name|recognizedFields
 argument_list|)
 condition|)
@@ -1816,14 +1822,10 @@ operator|.
 name|getMessage
 argument_list|()
 expr_stmt|;
-name|logger
+name|LOGGER
 operator|.
-name|log
+name|error
 argument_list|(
-name|Level
-operator|.
-name|SEVERE
-argument_list|,
 name|message
 argument_list|,
 name|e

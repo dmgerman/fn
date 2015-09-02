@@ -22,7 +22,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|FileNotFoundException
 import|;
 end_import
 
@@ -32,7 +32,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileNotFoundException
+name|IOException
 import|;
 end_import
 
@@ -126,7 +126,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
+name|Globals
 import|;
 end_import
 
@@ -138,7 +138,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|JabRefPreferences
 import|;
 end_import
 
@@ -161,6 +161,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|util
 operator|.
 name|Util
 import|;
@@ -193,6 +195,7 @@ init|=
 literal|"http://www.diva-portal.org/smash/record.jsf?pid=%s"
 decl_stmt|;
 DECL|field|caseKeeper
+specifier|private
 specifier|final
 name|CaseKeeper
 name|caseKeeper
@@ -202,6 +205,7 @@ name|CaseKeeper
 argument_list|()
 decl_stmt|;
 DECL|field|unitFormatter
+specifier|private
 specifier|final
 name|UnitFormatter
 name|unitFormatter
@@ -211,6 +215,7 @@ name|UnitFormatter
 argument_list|()
 decl_stmt|;
 DECL|field|htmlConverter
+specifier|private
 specifier|final
 name|HTMLConverter
 name|htmlConverter
@@ -298,6 +303,8 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|DiVAtoBibTeXFetcher
+operator|.
 name|URL_PATTERN
 argument_list|,
 name|q
@@ -473,7 +480,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useUnitFormatterOnSearch"
+name|JabRefPreferences
+operator|.
+name|USE_UNIT_FORMATTER_ON_SEARCH
 argument_list|)
 condition|)
 block|{
@@ -496,7 +505,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useCaseKeeperOnSearch"
+name|JabRefPreferences
+operator|.
+name|USE_CASE_KEEPER_ON_SEARCH
 argument_list|)
 condition|)
 block|{
@@ -570,9 +581,11 @@ literal|true
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -596,25 +609,6 @@ parameter_list|()
 block|{
 return|return
 literal|"DiVAtoBibTeX"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-comment|// no special icon for this fetcher available.
-comment|// Therefore, we return some kind of default icon
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
 return|;
 block|}
 annotation|@

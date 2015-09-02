@@ -138,18 +138,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -185,16 +173,16 @@ specifier|final
 name|String
 name|INSPIRE_HOST
 init|=
-literal|"inspirebeta.net"
+literal|"inspirehep.net"
 decl_stmt|;
 DECL|method|INSPIREFetcher ()
 specifier|public
 name|INSPIREFetcher
 parameter_list|()
-block|{ 	}
-comment|/** 	 * Construct the query URL 	 * 	 * NOTE: we truncate at 1000 returned entries but its likely INSPIRE returns 	 * fewer anyway.  This shouldn't be a problem since users should probably do 	 * more specific searches. 	 *  	 * @param key 	 *            The key of the OAI2 entry that the url should poitn to. 	 *  	 * @return a String denoting the query URL 	 */
+block|{     }
+comment|/**      * Construct the query URL      *      * NOTE: we truncate at 1000 returned entries but its likely INSPIRE returns      * fewer anyway.  This shouldn't be a problem since users should probably do      * more specific searches.      *       * @param key      *            The key of the OAI2 entry that the url should poitn to.      *       * @return a String denoting the query URL      */
 DECL|method|constructUrl (String key)
-specifier|public
+specifier|private
 name|String
 name|constructUrl
 parameter_list|(
@@ -204,8 +192,6 @@ parameter_list|)
 block|{
 name|String
 name|identifier
-init|=
-literal|""
 decl_stmt|;
 try|try
 block|{
@@ -231,17 +217,19 @@ return|return
 literal|""
 return|;
 block|}
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|"http://"
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|INSPIREFetcher
+operator|.
 name|INSPIRE_HOST
 argument_list|)
 operator|.
@@ -298,8 +286,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Constructs a INSPIRE query url from slaccitation field 	 *  	 * @param slaccitation 	 * @return query string 	 * 	public static String constructUrlFromSlaccitation(String slaccitation) { 		String cmd = "j"; 		String key = slaccitation.replaceAll("^%%CITATION = ", "").replaceAll( 				";%%$", ""); 		if (key.matches("^\\w*-\\w*[ /].*")) 			cmd = "eprint"; 		try { 			key = URLEncoder.encode(key, "UTF-8"); 		} catch (UnsupportedEncodingException e) { 		} 		StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST) 				.append("/"); 		sb.append("spires/find/hep/www").append("?"); 		sb.append("rawcmd=find+").append(cmd).append("+"); 		sb.append(key); 		return sb.toString(); 	}  	/** 	 * Construct an INSPIRE query url from eprint field 	 *  	 * @param eprint 	 * @return query string 	 * 	public static String constructUrlFromEprint(String eprint) { 		String key = eprint.replaceAll(" [.*]$", ""); 		try { 			key = URLEncoder.encode(key, "UTF-8"); 		} catch (UnsupportedEncodingException e) { 			return ""; 		} 		StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST) 				.append("/"); 		sb.append("spires/find/hep/www").append("?"); 		sb.append("rawcmd=find+eprint+"); 		sb.append(key); 		return sb.toString(); 	}*/
-comment|/** 	 * Import an entry from an OAI2 archive. The BibtexEntry provided has to 	 * have the field OAI2_IDENTIFIER_FIELD set to the search string. 	 *  	 * @param key 	 *            The OAI2 key to fetch from ArXiv. 	 * @return The imnported BibtexEntry or null if none. 	 */
+comment|/**      * Constructs a INSPIRE query url from slaccitation field      *       * @param slaccitation      * @return query string      *     public static String constructUrlFromSlaccitation(String slaccitation) {     	String cmd = "j";     	String key = slaccitation.replaceAll("^%%CITATION = ", "").replaceAll(     			";%%$", "");     	if (key.matches("^\\w*-\\w*[ /].*"))     		cmd = "eprint";     	try {     		key = URLEncoder.encode(key, "UTF-8");     	} catch (UnsupportedEncodingException e) {     	}     	StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST)     			.append("/");     	sb.append("spires/find/hep/www").append("?");     	sb.append("rawcmd=find+").append(cmd).append("+");     	sb.append(key);     	return sb.toString();     }      /**      * Construct an INSPIRE query url from eprint field      *       * @param eprint      * @return query string      *     public static String constructUrlFromEprint(String eprint) {     	String key = eprint.replaceAll(" [.*]$", "");     	try {     		key = URLEncoder.encode(key, "UTF-8");     	} catch (UnsupportedEncodingException e) {     		return "";     	}     	StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST)     			.append("/");     	sb.append("spires/find/hep/www").append("?");     	sb.append("rawcmd=find+eprint+");     	sb.append(key);     	return sb.toString();     }*/
+comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to      * have the field OAI2_IDENTIFIER_FIELD set to the search string.      *       * @param key      *            The OAI2 key to fetch from ArXiv.      * @return The imnported BibtexEntry or null if none.      */
 DECL|method|importInspireEntries (String key, OutputPrinter frame)
 specifier|private
 name|BibtexDatabase
@@ -486,7 +474,9 @@ comment|// Iterator<BibtexEntry> iter = db.getEntries().iterator();
 comment|// while (iter.hasNext())
 comment|// addSpiresURL(iter.next());
 comment|// }
-comment|/* 	 * @see net.sf.jabref.imports.EntryFetcher 	 */
+comment|/*      * @see net.sf.jabref.imports.EntryFetcher      */
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -497,21 +487,8 @@ return|return
 literal|"Spires.html"
 return|;
 block|}
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -522,6 +499,8 @@ return|return
 literal|"INSPIRE"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -533,6 +512,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -549,13 +530,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/* 	 * @see net.sf.jabref.gui.ImportInspectionDialog.CallBack 	 */
+comment|/*      * @see net.sf.jabref.gui.ImportInspectionDialog.CallBack      */
 DECL|method|cancelled ()
 specifier|public
 name|void
 name|cancelled
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|done (int entriesImported)
 specifier|public
 name|void
@@ -564,14 +545,18 @@ parameter_list|(
 name|int
 name|entriesImported
 parameter_list|)
-block|{ 	}
+block|{     }
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
 name|stopFetching
 parameter_list|()
-block|{ 	}
-comment|/* 	 * @see java.lang.Runnable 	 */
+block|{     }
+comment|/*      * @see java.lang.Runnable      */
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter frame)
 specifier|public
 name|boolean
@@ -625,6 +610,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 for|for
 control|(
 name|BibtexEntry
@@ -635,6 +621,7 @@ operator|.
 name|getEntries
 argument_list|()
 control|)
+block|{
 name|dialog
 operator|.
 name|addEntry
@@ -642,6 +629,8 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 comment|/* update the dialogs progress bar */
 comment|// dialog.setProgress(i + 1, keys.length);
 comment|/* inform the inspection dialog, that we're done */

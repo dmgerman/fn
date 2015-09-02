@@ -156,18 +156,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -198,8 +186,9 @@ name|EntryFetcher
 block|{
 comment|/**      * cookies can't save more than 200 citations      */
 DECL|field|MAX_CITATIONS
-specifier|protected
+specifier|private
 specifier|static
+specifier|final
 name|int
 name|MAX_CITATIONS
 init|=
@@ -207,7 +196,7 @@ literal|200
 decl_stmt|;
 comment|/**      * Cookie key for Jstor ticket (authentication)      */
 DECL|field|COOKIE_TICKET
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -217,7 +206,7 @@ literal|"Jstor_Ticket"
 decl_stmt|;
 comment|/**      * location where the ticket is obtained      *       */
 DECL|field|URL_TICKET
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -227,7 +216,7 @@ literal|"http://www.jstor.org/search"
 decl_stmt|;
 comment|/**      * Cookie key for citations to be fetched      *       */
 DECL|field|COOKIE_CITATIONS
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -237,7 +226,7 @@ literal|"Jstor_citations0"
 decl_stmt|;
 comment|/**      * location where to obtain the citations cookie      *       */
 DECL|field|URL_BIBTEX
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -245,6 +234,8 @@ name|URL_BIBTEX
 init|=
 literal|"http://www.jstor.org/browse/citations.txt?exportFormat=bibtex&exportAction=Display&frame=noframe&dpi=3&config=jstor&viewCitations=1&View=View"
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -255,21 +246,8 @@ return|return
 literal|"JSTOR.html"
 return|;
 block|}
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -280,6 +258,8 @@ return|return
 literal|"JSTOR"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -291,6 +271,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -301,6 +283,8 @@ return|return
 literal|"JSTOR"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -309,6 +293,8 @@ parameter_list|()
 block|{
 comment|// cannot be interrupted
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
 name|boolean
@@ -449,7 +435,7 @@ return|;
 block|}
 comment|/**      * Given a ticket an a list of citations, retrieve BibtexEntries from JStor      *       * @param ticket      *            A valid ticket as returned by openTicket()      * @param citations      *            A list of citations as returned by getCitations()      * @return A collection of BibtexEntries parsed from the bibtex returned by      *         JStor.      * @throws IOException      *             Most probably related to a problem connecting to JStor.      */
 DECL|method|getBibtexEntries (String ticket, String citations)
-specifier|protected
+specifier|private
 name|Collection
 argument_list|<
 name|BibtexEntry
@@ -473,6 +459,8 @@ init|=
 operator|new
 name|URL
 argument_list|(
+name|JSTORFetcher
+operator|.
 name|URL_BIBTEX
 argument_list|)
 decl_stmt|;
@@ -553,7 +541,7 @@ block|}
 block|}
 comment|/**      *       * @return a Jstor ticket ID      * @throws IOException      */
 DECL|method|openTicket ()
-specifier|protected
+specifier|private
 name|String
 name|openTicket
 parameter_list|()
@@ -566,6 +554,8 @@ init|=
 operator|new
 name|URL
 argument_list|(
+name|JSTORFetcher
+operator|.
 name|URL_TICKET
 argument_list|)
 decl_stmt|;
@@ -578,8 +568,12 @@ name|openConnection
 argument_list|()
 decl_stmt|;
 return|return
+name|JSTORFetcher
+operator|.
 name|getCookie
 argument_list|(
+name|JSTORFetcher
+operator|.
 name|COOKIE_TICKET
 argument_list|,
 name|conn
@@ -588,7 +582,7 @@ return|;
 block|}
 comment|/**      * requires a valid JStor Ticket ID      *       * @param query      *            The search term to query JStor for.      * @param ticket      *            JStor ticket      * @return cookie value of the key JSTORFetcher.COOKIE_CITATIONS. null if      *         search is empty or ticket is invalid      * @throws IOException      */
 DECL|method|getCitations (String ticket, String query)
-specifier|protected
+specifier|private
 name|String
 name|getCitations
 parameter_list|(
@@ -610,6 +604,8 @@ name|urlQuery
 operator|=
 literal|"http://www.jstor.org/search/BasicResults?hp="
 operator|+
+name|JSTORFetcher
+operator|.
 name|MAX_CITATIONS
 operator|+
 literal|"&si=1&gw=jtx&jtxsi=1&jcpsi=1&artsi=1&Query="
@@ -667,8 +663,12 @@ name|ticket
 argument_list|)
 expr_stmt|;
 return|return
+name|JSTORFetcher
+operator|.
 name|getCookie
 argument_list|(
+name|JSTORFetcher
+operator|.
 name|COOKIE_CITATIONS
 argument_list|,
 name|conn
@@ -677,7 +677,7 @@ return|;
 block|}
 comment|/**      * evaluates the 'Set-Cookie'-Header of a HTTP response      *       * @param name      *            key of a cookie value      * @param conn      *            URLConnection      * @return cookie value referenced by the key. null if key not found      * @throws IOException      */
 DECL|method|getCookie (String name, URLConnection conn)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|getCookie
@@ -723,13 +723,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|headerName
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|headerValue
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 comment|// No more headers
@@ -737,9 +741,11 @@ break|break;
 block|}
 if|if
 condition|(
+operator|(
 name|headerName
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|headerName
 operator|.

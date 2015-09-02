@@ -38,19 +38,17 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|Assert
 import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-operator|.
-name|assertEquals
+name|Test
 import|;
 end_import
 
@@ -76,6 +74,8 @@ operator|new
 name|CompositeFormat
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"No Change"
@@ -104,6 +104,8 @@ operator|new
 name|LayoutFormatter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|format
@@ -123,6 +125,8 @@ operator|,
 function|new LayoutFormatter
 parameter_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|format
@@ -142,6 +146,8 @@ operator|,
 function|new LayoutFormatter
 parameter_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|format
@@ -159,6 +165,8 @@ block|}
 function|}}
 block|)
 function|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"BAff"
@@ -202,6 +210,8 @@ operator|new
 name|NoSpaceBetweenAbbreviations
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|second
@@ -224,6 +234,8 @@ literal|"John Flynn and Sabine Gartska"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|second

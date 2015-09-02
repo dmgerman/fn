@@ -49,7 +49,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Author First First prints ....  *   *   * @author  $Author$  * @version $Revision$ $Date$  *   */
+comment|/**  * Author First First prints ....  *   */
 end_comment
 
 begin_class
@@ -60,6 +60,8 @@ name|AuthorFirstFirst
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String

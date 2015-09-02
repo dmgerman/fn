@@ -89,6 +89,8 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|panel1
+specifier|private
+specifier|final
 name|JPanel
 name|panel1
 init|=
@@ -97,6 +99,8 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|borderLayout1
+specifier|private
+specifier|final
 name|BorderLayout
 name|borderLayout1
 init|=
@@ -105,6 +109,8 @@ name|BorderLayout
 argument_list|()
 decl_stmt|;
 DECL|field|jPanel1
+specifier|private
+specifier|final
 name|JPanel
 name|jPanel1
 init|=
@@ -113,6 +119,8 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|jPanel2
+specifier|private
+specifier|final
 name|JPanel
 name|jPanel2
 init|=
@@ -121,6 +129,8 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|ok
+specifier|private
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -129,6 +139,8 @@ name|JButton
 argument_list|()
 decl_stmt|;
 DECL|field|Cancel
+specifier|private
+specifier|final
 name|JButton
 name|Cancel
 init|=
@@ -138,6 +150,8 @@ argument_list|()
 decl_stmt|;
 comment|//TitledBorder titledBorder1;
 DECL|field|entries
+specifier|private
+specifier|final
 name|JCheckBox
 name|entries
 init|=
@@ -146,6 +160,8 @@ name|JCheckBox
 argument_list|()
 decl_stmt|;
 DECL|field|strings
+specifier|private
+specifier|final
 name|JCheckBox
 name|strings
 init|=
@@ -154,6 +170,8 @@ name|JCheckBox
 argument_list|()
 decl_stmt|;
 DECL|field|gridBagLayout1
+specifier|private
+specifier|final
 name|GridBagLayout
 name|gridBagLayout1
 init|=
@@ -162,6 +180,8 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|groups
+specifier|private
+specifier|final
 name|JCheckBox
 name|groups
 init|=
@@ -170,6 +190,8 @@ name|JCheckBox
 argument_list|()
 decl_stmt|;
 DECL|field|selector
+specifier|private
+specifier|final
 name|JCheckBox
 name|selector
 init|=
@@ -178,6 +200,7 @@ name|JCheckBox
 argument_list|()
 decl_stmt|;
 DECL|field|okPressed
+specifier|private
 name|boolean
 name|okPressed
 init|=
@@ -694,6 +717,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -817,6 +842,8 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
+specifier|final
 name|MergeDialog
 name|adaptee
 decl_stmt|;
@@ -834,6 +861,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -868,6 +897,8 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
+specifier|final
 name|MergeDialog
 name|adaptee
 decl_stmt|;
@@ -885,6 +916,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

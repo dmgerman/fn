@@ -38,6 +38,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -114,20 +142,35 @@ end_import
 
 begin_class
 DECL|class|StringRemoveChange
-specifier|public
 class|class
 name|StringRemoveChange
 extends|extends
 name|Change
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|string
-DECL|field|inMem
+specifier|private
+specifier|final
 name|BibtexString
 name|string
-decl_stmt|,
+decl_stmt|;
+DECL|field|inMem
+specifier|private
+specifier|final
+name|BibtexString
 name|inMem
 decl_stmt|;
 DECL|field|tp
+specifier|private
+specifier|final
 name|InfoPane
 name|tp
 init|=
@@ -136,6 +179,8 @@ name|InfoPane
 argument_list|()
 decl_stmt|;
 DECL|field|sp
+specifier|private
+specifier|final
 name|JScrollPane
 name|sp
 init|=
@@ -147,8 +192,25 @@ argument_list|)
 decl_stmt|;
 DECL|field|tmpString
 specifier|private
+specifier|final
 name|BibtexString
 name|tmpString
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|StringRemoveChange
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|StringRemoveChange (BibtexString string, BibtexString tmpString, BibtexString inMem)
 specifier|public
@@ -186,7 +248,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 name|this
 operator|.
@@ -250,6 +312,8 @@ literal|"</HTML>"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
@@ -305,9 +369,9 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Error: could not add string '"
 operator|+
@@ -322,6 +386,8 @@ name|ex
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -340,6 +406,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description

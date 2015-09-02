@@ -40,7 +40,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|util
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -61,7 +63,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This formatter escapes characters so they are suitable for HTML.  *   * @version $Revision$ ($Date$)  */
+comment|/**  * This formatter escapes characters so they are suitable for HTML.  */
 end_comment
 
 begin_class
@@ -72,6 +74,8 @@ name|HTMLChars
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String field)
 specifier|public
 name|String
@@ -109,11 +113,11 @@ argument_list|,
 literal|"<br>"
 argument_list|)
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|StringBuffer
@@ -267,13 +271,17 @@ operator|!
 name|incommand
 operator|&&
 operator|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 operator|)
 condition|)
 block|{
@@ -321,6 +329,7 @@ condition|(
 operator|!
 name|incommand
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -328,7 +337,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|// Else we are in a command, and should not keep the letter.
+block|}
 else|else
 block|{
 name|currentCommand
@@ -372,16 +381,20 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 break|break
 name|testCharCom
 break|;
+block|}
 name|String
 name|command
 init|=
@@ -416,7 +429,7 @@ block|{
 name|String
 name|part
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -476,6 +489,7 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -486,6 +500,7 @@ operator|)
 name|result
 argument_list|)
 expr_stmt|;
+block|}
 name|incommand
 operator|=
 literal|false
@@ -500,9 +515,11 @@ block|{
 comment|//	Are we already at the end of the string?
 if|if
 condition|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|==
 name|field
 operator|.
@@ -530,7 +547,7 @@ argument_list|(
 name|command
 argument_list|)
 decl_stmt|;
-comment|/* If found, then use translated version. If not, 							 * then keep 							 * the text of the parameter intact. 							 */
+comment|/* If found, then use translated version. If not,                              * then keep                              * the text of the parameter intact.                              */
 if|if
 condition|(
 name|result
@@ -567,8 +584,6 @@ else|else
 block|{
 name|String
 name|argument
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -648,7 +663,7 @@ block|{
 name|String
 name|part
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -698,7 +713,7 @@ block|{
 name|String
 name|part
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -745,7 +760,7 @@ block|{
 name|String
 name|part
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -928,10 +943,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* else if (c == '}') {                     System.out.printf("com term by }: '%s'\n", currentCommand.toString());                      argument = ""; 				}*/
+comment|/* else if (c == '}') {                     System.out.printf("com term by }: '%s'\n", currentCommand.toString());                      argument = "";                  }*/
 else|else
 block|{
-comment|/* 					 * TODO: this point is reached, apparently, if a command is 					 * terminated in a strange way, such as with "$\omega$". 					 * Also, the command "\&" causes us to get here. The former 					 * issue is maybe a little difficult to address, since it 					 * involves the LaTeX math mode. We don't have a complete 					 * LaTeX parser, so maybe it's better to ignore these 					 * commands? 					 */
+comment|/*                      * TODO: this point is reached, apparently, if a command is                      * terminated in a strange way, such as with "$\omega$".                      * Also, the command "\&" causes us to get here. The former                      * issue is maybe a little difficult to address, since it                      * involves the LaTeX math mode. We don't have a complete                      * LaTeX parser, so maybe it's better to ignore these                      * commands?                      */
 block|}
 name|incommand
 operator|=

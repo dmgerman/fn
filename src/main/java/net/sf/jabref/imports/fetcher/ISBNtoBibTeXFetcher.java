@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2012 JabRef contributors.     This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>. */
+comment|/*  Copyright (C) 2012, 2015 JabRef contributors.     This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>. */
 end_comment
 
 begin_package
@@ -24,7 +24,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|FileNotFoundException
 import|;
 end_import
 
@@ -65,16 +65,6 @@ operator|.
 name|net
 operator|.
 name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URLConnection
 import|;
 end_import
 
@@ -128,7 +118,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
+name|Globals
 import|;
 end_import
 
@@ -140,7 +130,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|JabRefPreferences
 import|;
 end_import
 
@@ -227,7 +217,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class uses Manas Tungare's ISBN to BibTeX Converter to convert an ISBN to a BibTeX entry<br />  * The online version of the converter is available at http://manas.tungare.name/software/isbn-to-bibtex/  */
+comment|/**  * This class uses ebook.de's ISBN to BibTeX Converter to convert an ISBN to a BibTeX entry<br />  * There is no separate web-based converter available, just that API  */
 end_comment
 
 begin_class
@@ -245,9 +235,10 @@ specifier|final
 name|String
 name|URL_PATTERN
 init|=
-literal|"http://manas.tungare.name/software/isbn-to-bibtex/isbn-service?isbn=%s"
+literal|"http://www.ebook.de/de/tools/isbn2bibtex?isbn=%s"
 decl_stmt|;
 DECL|field|caseKeeper
+specifier|private
 specifier|final
 name|CaseKeeper
 name|caseKeeper
@@ -257,6 +248,7 @@ name|CaseKeeper
 argument_list|()
 decl_stmt|;
 DECL|field|unitFormatter
+specifier|private
 specifier|final
 name|UnitFormatter
 name|unitFormatter
@@ -344,6 +336,8 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|ISBNtoBibTeXFetcher
+operator|.
 name|URL_PATTERN
 argument_list|,
 name|q
@@ -352,9 +346,6 @@ decl_stmt|;
 comment|// Send the request
 name|URL
 name|url
-decl_stmt|;
-name|URLConnection
-name|conn
 decl_stmt|;
 try|try
 block|{
@@ -397,14 +388,70 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|FileNotFoundException
 name|e
 parameter_list|)
 block|{
+comment|// invalid ISBN --> 404--> FileNotFoundException
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Invalid ISBN"
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|java
+operator|.
+name|net
+operator|.
+name|UnknownHostException
+name|e
+parameter_list|)
+block|{
+comment|// It is very unlikely that ebook.de is an unknown host
+comment|// It is more likely that we don't have an internet connection
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"No_Internet_Connection."
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|status
+operator|.
+name|showMessage
+argument_list|(
 name|e
 operator|.
-name|printStackTrace
+name|toString
 argument_list|()
+argument_list|)
 expr_stmt|;
 return|return
 literal|false
@@ -427,59 +474,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|bibtexString
-operator|.
-name|startsWith
-argument_list|(
-literal|"@comment"
-argument_list|)
-condition|)
-block|{
-comment|// an error occured
-comment|// the error is nested in @comment{...}
-name|String
-name|errorMsg
-init|=
-name|bibtexString
-operator|.
-name|substring
-argument_list|(
-literal|"@comment{"
-operator|.
-name|length
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|errorMsg
-operator|=
-name|errorMsg
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|errorMsg
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-name|status
-operator|.
-name|showMessage
-argument_list|(
-name|errorMsg
-argument_list|)
-expr_stmt|;
-comment|// showMessage does not work -> NPE
-return|return
-literal|false
-return|;
-block|}
 name|BibtexEntry
 name|entry
 init|=
@@ -524,7 +518,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useUnitFormatterOnSearch"
+name|JabRefPreferences
+operator|.
+name|USE_UNIT_FORMATTER_ON_SEARCH
 argument_list|)
 condition|)
 block|{
@@ -547,7 +543,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useCaseKeeperOnSearch"
+name|JabRefPreferences
+operator|.
+name|USE_CASE_KEEPER_ON_SEARCH
 argument_list|)
 condition|)
 block|{
@@ -611,25 +609,6 @@ parameter_list|()
 block|{
 return|return
 literal|"ISBNtoBibTeX"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-comment|// no special icon for this fetcher available.
-comment|// Therefore, we return some kind of default icon
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
 return|;
 block|}
 annotation|@

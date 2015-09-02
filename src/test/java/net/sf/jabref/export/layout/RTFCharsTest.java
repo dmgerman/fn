@@ -38,6 +38,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Ignore
 import|;
 end_import
@@ -49,18 +59,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
 import|;
 end_import
 
@@ -85,6 +83,8 @@ operator|new
 name|RTFChars
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -97,6 +97,8 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"hallo"
@@ -110,6 +112,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// We should be able to replace the ? with e
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"R\\u233?flexions sur le timing de la quantit\\u233?"
@@ -122,6 +126,8 @@ literal|"RÃ©flexions sur le timing de la quantitÃ©"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"h\\u225allo"
@@ -134,6 +140,8 @@ literal|"h\\'allo"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"h\\u225allo"
@@ -162,6 +170,8 @@ operator|new
 name|RTFChars
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\i hallo}"
@@ -174,6 +184,8 @@ literal|"\\emph{hallo}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\i hallo}"
@@ -186,6 +198,8 @@ literal|"{\\emph hallo}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\i hallo}"
@@ -198,6 +212,8 @@ literal|"\\textit{hallo}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\i hallo}"
@@ -210,6 +226,8 @@ literal|"{\\textit hallo}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\b hallo}"
@@ -222,6 +240,8 @@ literal|"\\textbf{hallo}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\b hallo}"
@@ -252,6 +272,8 @@ operator|new
 name|RTFChars
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"R\\u233eflexions sur le timing de la quantit\\u233e \\u230ae should be \\u230ae"
@@ -264,6 +286,8 @@ literal|"RÃ©flexions sur le timing de la quantitÃ© \\ae should be Ã¦"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"h\\u225all{\\uc2\\u339oe}"
@@ -294,6 +318,8 @@ operator|new
 name|RTFChars
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"\\u243o"
@@ -307,6 +333,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã³
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"\\'f2"
@@ -320,6 +348,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã²
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"\\'f4"
@@ -333,6 +363,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã´
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"\\'f6"
@@ -346,6 +378,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã¶
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"\\u245o"
@@ -359,6 +393,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ãµ
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"\\u333o"
@@ -371,6 +407,8 @@ literal|"\\={o}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"\\u334O"
@@ -383,6 +421,8 @@ literal|"\\u{o}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"\\u231c"
@@ -396,6 +436,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã§
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\uc2\\u339oe}"
@@ -408,6 +450,8 @@ literal|"\\oe"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\uc2\\u338OE}"
@@ -420,6 +464,8 @@ literal|"\\OE"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\uc2\\u230ae}"
@@ -433,6 +479,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã¦
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\uc2\\u198AE}"
@@ -446,6 +494,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -459,6 +509,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// ???
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -472,6 +524,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// ???
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -485,6 +539,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã£ // ???
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -497,6 +553,8 @@ literal|"\\t{oo}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -510,6 +568,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// ???
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -523,6 +583,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// ???
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -536,6 +598,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã¥
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -549,6 +613,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -562,6 +628,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã¸
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -575,6 +643,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -587,6 +657,8 @@ literal|"\\l"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -599,6 +671,8 @@ literal|"\\L"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\uc2\\u223ss}"
@@ -612,6 +686,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Ã
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -625,6 +701,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Â¿
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -638,6 +716,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Â¡
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -650,6 +730,8 @@ literal|"\\dag"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -662,6 +744,8 @@ literal|"\\ddag"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -675,6 +759,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Â§
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -688,6 +774,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Â¶
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -701,6 +789,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Â©
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""

@@ -38,6 +38,8 @@ name|String
 index|[]
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|compare (String[] s1, String[] s2)
 specifier|public
 name|int

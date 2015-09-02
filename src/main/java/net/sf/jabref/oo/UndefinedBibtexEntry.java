@@ -36,7 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|IdGenerator
 import|;
 end_import
 
@@ -46,7 +46,6 @@ end_comment
 
 begin_class
 DECL|class|UndefinedBibtexEntry
-specifier|public
 class|class
 name|UndefinedBibtexEntry
 extends|extends
@@ -54,6 +53,7 @@ name|BibtexEntry
 block|{
 DECL|field|key
 specifier|private
+specifier|final
 name|String
 name|key
 decl_stmt|;
@@ -67,9 +67,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;

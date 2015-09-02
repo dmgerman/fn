@@ -29,36 +29,39 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Stores the full original value of one field of the given BibtexEntries.  *   * @author kahlert, cordes  *   */
+comment|/**  * Stores the full original value of one field of the given BibtexEntries.  *  * @author kahlert, cordes  */
 end_comment
 
 begin_class
 DECL|class|EntireFieldAutoCompleter
-specifier|public
 class|class
 name|EntireFieldAutoCompleter
 extends|extends
-name|StringAbstractAutoCompleter
+name|AbstractAutoCompleter
 block|{
-DECL|field|_fieldName
-specifier|public
+DECL|field|fieldName
+specifier|private
+specifier|final
 name|String
-name|_fieldName
+name|fieldName
 decl_stmt|;
-comment|/** 	 * @see AutoCompleterFactory 	 */
+comment|/**      * @see AutoCompleterFactory      */
 DECL|method|EntireFieldAutoCompleter (String fieldName)
-specifier|protected
 name|EntireFieldAutoCompleter
 parameter_list|(
 name|String
 name|fieldName
 parameter_list|)
 block|{
-name|_fieldName
+name|this
+operator|.
+name|fieldName
 operator|=
 name|fieldName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|isSingleUnitField ()
 specifier|public
 name|boolean
@@ -69,6 +72,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|complete (String s)
 specifier|public
 name|String
@@ -102,10 +107,12 @@ block|{
 if|if
 condition|(
 name|entry
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
+return|return;
+block|}
 name|String
 name|fieldValue
 init|=
@@ -113,7 +120,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|_fieldName
+name|fieldName
 argument_list|)
 decl_stmt|;
 if|if
@@ -131,7 +138,6 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

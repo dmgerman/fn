@@ -49,11 +49,14 @@ implements|implements
 name|ParamLayoutFormatter
 block|{
 DECL|field|defValue
+specifier|private
 name|String
 name|defValue
 init|=
 literal|""
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|setArgument (String arg)
 specifier|public
 name|void
@@ -70,6 +73,8 @@ operator|=
 name|arg
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -80,17 +85,18 @@ name|fieldText
 parameter_list|)
 block|{
 return|return
+operator|(
 name|fieldText
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|(
+operator|!
 name|fieldText
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|?
 name|fieldText

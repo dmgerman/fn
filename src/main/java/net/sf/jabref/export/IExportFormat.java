@@ -68,25 +68,25 @@ specifier|public
 interface|interface
 name|IExportFormat
 block|{
-comment|/** 	 * Name to call this format in the console. 	 */
+comment|/**      * Name to call this format in the console.      */
 DECL|method|getConsoleName ()
 name|String
 name|getConsoleName
 parameter_list|()
 function_decl|;
-comment|/** 	 * Name to display to the user (for instance in the Save file format drop 	 * down box. 	 */
+comment|/**      * Name to display to the user (for instance in the Save file format drop      * down box.      */
 DECL|method|getDisplayName ()
 name|String
 name|getDisplayName
 parameter_list|()
 function_decl|;
-comment|/** 	 * A file filter that accepts filetypes that this exporter would create. 	 */
+comment|/**      * A file filter that accepts filetypes that this exporter would create.      */
 DECL|method|getFileFilter ()
 name|FileFilter
 name|getFileFilter
 parameter_list|()
 function_decl|;
-comment|/** 	 * Perform the export. 	 *  	 * @param database 	 *            The database to export from.      * @param metaData      *            The database's metadata. 	 * @param file 	 *            The filename to write to. 	 * @param encoding 	 *            The encoding to use. 	 * @param entryIds 	 *            (may be null) A Set containing the IDs of all entries that 	 *            should be exported. If null, all entries will be exported. 	 * @throws Exception 	 */
+comment|/**      * Perform the export.      *       * @param database      *            The database to export from.      * @param metaData      *            The database's metadata.      * @param file      *            The filename to write to.      * @param encoding      *            The encoding to use.      * @param entryIds      *            (may be null) A Set containing the IDs of all entries that      *            should be exported. If null, all entries will be exported.      * @throws Exception      */
 DECL|method|performExport (BibtexDatabase database, MetaData metaData, String file, String encoding, Set<String> entryIds)
 name|void
 name|performExport

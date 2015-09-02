@@ -84,6 +84,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -135,18 +145,6 @@ operator|.
 name|util
 operator|.
 name|Collection
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
 import|;
 end_import
 
@@ -264,6 +262,8 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -301,6 +301,8 @@ block|{
 name|BibtexEntry
 name|be
 init|=
+name|LayoutTest
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 name|entry
@@ -359,6 +361,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Other"
@@ -371,6 +375,8 @@ literal|"@other{bla, author={This\nis\na\ntext}}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Article"
@@ -383,6 +389,8 @@ literal|"@article{bla, author={This\nis\na\ntext}}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Misc"
@@ -418,6 +426,8 @@ argument_list|,
 literal|"@other{bla, author={This\nis\na\ntext}}"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"This is a text "
@@ -434,6 +444,8 @@ argument_list|,
 literal|"@other{bla, author={This\nis\na\ntext}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"This is a text"
@@ -450,6 +462,8 @@ argument_list|,
 literal|"@other{bla, author={This\nis\na\n\ntext}}"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"This is a<br>text "
@@ -478,6 +492,8 @@ argument_list|,
 literal|"@other{bla, author={Joe Doe and Jane, Moon}}"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Joe Doe, Moon Jane"
@@ -510,6 +526,8 @@ name|t1BibtexString
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b>&ntilde;&ntilde;&iacute;&#305;&#305;</font>"

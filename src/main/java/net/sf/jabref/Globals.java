@@ -204,66 +204,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|logging
-operator|.
-name|ConsoleHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Filter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Handler
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|LogRecord
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|regex
 operator|.
 name|Pattern
@@ -336,7 +276,25 @@ name|jabref
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviations
+name|logic
+operator|.
+name|JournalAbbreviationRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|remote
+operator|.
+name|server
+operator|.
+name|RemoteListenerServerLifecycle
 import|;
 end_import
 
@@ -350,7 +308,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|ErrorConsole
+name|BuildInfo
 import|;
 end_import
 
@@ -364,7 +322,53 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|TBuildInfo
+name|error
+operator|.
+name|StreamEavesdropper
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|logging
+operator|.
+name|CacheableHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -374,7 +378,26 @@ specifier|public
 class|class
 name|Globals
 block|{
-comment|/** 	 * {@link Control} class allowing properties bundles to be in different encodings. 	 *  	 * @see<a href="http://stackoverflow.com/questions/4659929/how-to-use-utf-8-in-resource-properties-with-resourcebundle">utf-8 and property files</a> 	 */
+DECL|field|JOURNALS_IEEE_INTERNAL_LIST
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|JOURNALS_IEEE_INTERNAL_LIST
+init|=
+literal|"/resource/IEEEJournalList.txt"
+decl_stmt|;
+DECL|field|remoteListener
+specifier|public
+specifier|static
+name|RemoteListenerServerLifecycle
+name|remoteListener
+init|=
+operator|new
+name|RemoteListenerServerLifecycle
+argument_list|()
+decl_stmt|;
+comment|/**      * {@link Control} class allowing properties bundles to be in different encodings.      *       * @see<a href="http://stackoverflow.com/questions/4659929/how-to-use-utf-8-in-resource-properties-with-resourcebundle">utf-8 and property files</a>      */
 DECL|class|EncodingControl
 specifier|private
 specifier|static
@@ -404,6 +427,8 @@ operator|=
 name|encoding
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|newBundle (String baseName, Locale locale, String format, ClassLoader loader, boolean reload)
 specifier|public
 name|ResourceBundle
@@ -578,22 +603,30 @@ literal|1
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
 name|int
 DECL|field|FUTURE_YEAR
 name|FUTURE_YEAR
 init|=
 literal|2050
-decl_stmt|,
+decl_stmt|;
 comment|// Needs to give a year definitely in the future.
 comment|// Used for guessing the
 comment|// year field when parsing textual data. :-)
 DECL|field|STANDARD_EXPORT_COUNT
+specifier|public
+specifier|static
+name|int
 name|STANDARD_EXPORT_COUNT
 init|=
 literal|5
-decl_stmt|,
+decl_stmt|;
 comment|// The number of standard export formats.
 DECL|field|METADATA_LINE_LENGTH
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|METADATA_LINE_LENGTH
 init|=
 literal|70
@@ -630,24 +663,16 @@ name|INTEGRITY_RESOURCE_PREFIX
 init|=
 literal|"resource/IntegrityMessage"
 decl_stmt|;
-DECL|field|buildInfos
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|buildInfos
-init|=
-literal|"/resource/build.properties"
-decl_stmt|;
 DECL|field|JOURNALS_FILE_BUILTIN
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|JOURNALS_FILE_BUILTIN
 init|=
 literal|"/resource/journalList.txt"
 decl_stmt|;
-comment|/* 	 * some extra field definitions 	 */
+comment|/*      * some extra field definitions      */
 DECL|field|additionalFields
 specifier|public
 specifier|static
@@ -658,15 +683,21 @@ init|=
 literal|"/resource/fields/fields.xml"
 decl_stmt|;
 DECL|field|messages
-DECL|field|menuTitles
-DECL|field|intMessages
-specifier|public
+specifier|private
 specifier|static
 name|ResourceBundle
 name|messages
-decl_stmt|,
+decl_stmt|;
+DECL|field|menuTitles
+specifier|private
+specifier|static
+name|ResourceBundle
 name|menuTitles
-decl_stmt|,
+decl_stmt|;
+DECL|field|intMessages
+specifier|private
+specifier|static
+name|ResourceBundle
 name|intMessages
 decl_stmt|;
 DECL|field|fileUpdateMonitor
@@ -678,6 +709,7 @@ decl_stmt|;
 DECL|field|importFormatReader
 specifier|public
 specifier|static
+specifier|final
 name|ImportFormatReader
 name|importFormatReader
 init|=
@@ -685,59 +717,31 @@ operator|new
 name|ImportFormatReader
 argument_list|()
 decl_stmt|;
-DECL|field|errorConsole
+DECL|field|streamEavesdropper
 specifier|public
 specifier|static
-name|ErrorConsole
-name|errorConsole
+name|StreamEavesdropper
+name|streamEavesdropper
 decl_stmt|;
-DECL|field|VERSION
-DECL|field|BUILD
-DECL|field|BUILD_DATE
+DECL|field|handler
 specifier|public
 specifier|static
-name|String
-name|VERSION
-decl_stmt|,
-name|BUILD
-decl_stmt|,
-name|BUILD_DATE
+name|CacheableHandler
+name|handler
 decl_stmt|;
-static|static
-block|{
-name|TBuildInfo
-name|bi
+DECL|field|BUILD_INFO
+specifier|public
+specifier|static
+specifier|final
+name|BuildInfo
+name|BUILD_INFO
 init|=
 operator|new
-name|TBuildInfo
-argument_list|(
-name|buildInfos
-argument_list|)
+name|BuildInfo
+argument_list|()
 decl_stmt|;
-name|VERSION
-operator|=
-name|bi
-operator|.
-name|getBUILD_VERSION
-argument_list|()
-expr_stmt|;
-name|BUILD
-operator|=
-name|bi
-operator|.
-name|getBUILD_NUMBER
-argument_list|()
-expr_stmt|;
-name|BUILD_DATE
-operator|=
-name|bi
-operator|.
-name|getBUILD_DATE
-argument_list|()
-expr_stmt|;
-block|}
 DECL|field|locale
-specifier|public
+specifier|private
 specifier|static
 name|Locale
 name|locale
@@ -791,20 +795,20 @@ name|FORMATTER_PACKAGE
 init|=
 literal|"net.sf.jabref.export.layout.format."
 decl_stmt|;
-DECL|field|consoleHandler
-specifier|private
-specifier|static
-name|Handler
-name|consoleHandler
-decl_stmt|;
 DECL|field|ENCODINGS
-DECL|field|ALL_ENCODINGS
 specifier|public
 specifier|static
+specifier|final
 name|String
 index|[]
 name|ENCODINGS
-decl_stmt|,
+decl_stmt|;
+DECL|field|ALL_ENCODINGS
+specifier|private
+specifier|static
+specifier|final
+name|String
+index|[]
 name|ALL_ENCODINGS
 init|=
 comment|// (String[])
@@ -872,6 +876,7 @@ decl_stmt|;
 DECL|field|ENCODING_NAMES_LOOKUP
 specifier|public
 specifier|static
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -880,291 +885,8 @@ name|String
 argument_list|>
 name|ENCODING_NAMES_LOOKUP
 decl_stmt|;
-comment|/**      * Parses month expressions (like 1, jan, #jan#) to the numerical representation       * (with January corresponding to 1)      * Returns 0 if the month could not be parsed.      * TODO: Move this method along with the two arrays 'MONTHS' and 'MONTH_STRINGS' to a seperate class?      */
-DECL|method|ParseMonthToInteger (String value)
-specifier|public
-specifier|static
-name|int
-name|ParseMonthToInteger
-parameter_list|(
-name|String
-name|value
-parameter_list|)
-block|{
-comment|// implementation based on patch 3470076 by Mathias Walter
-comment|// originally, this code was present in the CleanUp-doCleanUpMonth method
-if|if
-condition|(
-name|value
-operator|==
-literal|null
-condition|)
-return|return
-literal|0
-return|;
-try|try
-block|{
-return|return
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
-name|value
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|NumberFormatException
-name|e
-parameter_list|)
-block|{
-comment|// Much more liberal matching covering most known abbreviations etc.
-name|String
-name|testString
-init|=
-name|value
-operator|.
-name|replace
-argument_list|(
-literal|"#"
-argument_list|,
-literal|""
-argument_list|)
-operator|.
-name|trim
-argument_list|()
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-literal|3
-argument_list|)
-operator|.
-name|toLowerCase
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|Globals
-operator|.
-name|MONTH_STRINGS
-operator|.
-name|containsKey
-argument_list|(
-name|testString
-argument_list|)
-condition|)
-block|{
-name|int
-name|i
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|String
-name|month
-range|:
-name|MONTHS
-control|)
-block|{
-if|if
-condition|(
-name|testString
-operator|.
-name|equals
-argument_list|(
-name|MONTHS
-index|[
-name|i
-index|]
-argument_list|)
-condition|)
-return|return
-name|i
-operator|+
-literal|1
-return|;
-name|i
-operator|++
-expr_stmt|;
-block|}
-block|}
-block|}
-return|return
-literal|0
-return|;
-block|}
-comment|// String array that maps from month number to month string label:
-DECL|field|MONTHS
-specifier|public
-specifier|static
-name|String
-index|[]
-name|MONTHS
-init|=
-operator|new
-name|String
-index|[]
-block|{
-literal|"jan"
-block|,
-literal|"feb"
-block|,
-literal|"mar"
-block|,
-literal|"apr"
-block|,
-literal|"may"
-block|,
-literal|"jun"
-block|,
-literal|"jul"
-block|,
-literal|"aug"
-block|,
-literal|"sep"
-block|,
-literal|"oct"
-block|,
-literal|"nov"
-block|,
-literal|"dec"
-block|}
-decl_stmt|;
-comment|// Map that maps from month string labels to
-DECL|field|MONTH_STRINGS
-specifier|public
-specifier|static
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|MONTH_STRINGS
-init|=
-operator|new
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-argument_list|()
-decl_stmt|;
 static|static
 block|{
-name|MONTH_STRINGS
-operator|.
-name|put
-argument_list|(
-literal|"jan"
-argument_list|,
-literal|"January"
-argument_list|)
-expr_stmt|;
-name|MONTH_STRINGS
-operator|.
-name|put
-argument_list|(
-literal|"feb"
-argument_list|,
-literal|"February"
-argument_list|)
-expr_stmt|;
-name|MONTH_STRINGS
-operator|.
-name|put
-argument_list|(
-literal|"mar"
-argument_list|,
-literal|"March"
-argument_list|)
-expr_stmt|;
-name|MONTH_STRINGS
-operator|.
-name|put
-argument_list|(
-literal|"apr"
-argument_list|,
-literal|"April"
-argument_list|)
-expr_stmt|;
-name|MONTH_STRINGS
-operator|.
-name|put
-argument_list|(
-literal|"may"
-argument_list|,
-literal|"May"
-argument_list|)
-expr_stmt|;
-name|MONTH_STRINGS
-operator|.
-name|put
-argument_list|(
-literal|"jun"
-argument_list|,
-literal|"June"
-argument_list|)
-expr_stmt|;
-name|MONTH_STRINGS
-operator|.
-name|put
-argument_list|(
-literal|"jul"
-argument_list|,
-literal|"July"
-argument_list|)
-expr_stmt|;
-name|MONTH_STRINGS
-operator|.
-name|put
-argument_list|(
-literal|"aug"
-argument_list|,
-literal|"August"
-argument_list|)
-expr_stmt|;
-name|MONTH_STRINGS
-operator|.
-name|put
-argument_list|(
-literal|"sep"
-argument_list|,
-literal|"September"
-argument_list|)
-expr_stmt|;
-name|MONTH_STRINGS
-operator|.
-name|put
-argument_list|(
-literal|"oct"
-argument_list|,
-literal|"October"
-argument_list|)
-expr_stmt|;
-name|MONTH_STRINGS
-operator|.
-name|put
-argument_list|(
-literal|"nov"
-argument_list|,
-literal|"November"
-argument_list|)
-expr_stmt|;
-name|MONTH_STRINGS
-operator|.
-name|put
-argument_list|(
-literal|"dec"
-argument_list|,
-literal|"December"
-argument_list|)
-expr_stmt|;
 comment|// Build list of encodings, by filtering out all that are not supported
 comment|// on this system:
 name|List
@@ -1185,6 +907,8 @@ control|(
 name|String
 name|ALL_ENCODING
 range|:
+name|Globals
+operator|.
 name|ALL_ENCODINGS
 control|)
 block|{
@@ -1235,6 +959,8 @@ name|String
 argument_list|>
 argument_list|()
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1244,6 +970,8 @@ argument_list|,
 literal|"windows-1250"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1253,6 +981,8 @@ argument_list|,
 literal|"windows-1251"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1262,6 +992,8 @@ argument_list|,
 literal|"windows-1252"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1271,6 +1003,8 @@ argument_list|,
 literal|"windows-1253"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1280,6 +1014,8 @@ argument_list|,
 literal|"windows-1254"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1289,6 +1025,8 @@ argument_list|,
 literal|"windows-1257"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1298,6 +1036,8 @@ argument_list|,
 literal|"ISO-8859-1"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1307,6 +1047,8 @@ argument_list|,
 literal|"ISO-8859-2"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1316,6 +1058,8 @@ argument_list|,
 literal|"ISO-8859-3"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1325,6 +1069,8 @@ argument_list|,
 literal|"ISO-8859-4"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1334,6 +1080,8 @@ argument_list|,
 literal|"ISO-8859-5"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1343,6 +1091,8 @@ argument_list|,
 literal|"ISO-8859-6"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1352,6 +1102,8 @@ argument_list|,
 literal|"ISO-8859-7"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1361,6 +1113,8 @@ argument_list|,
 literal|"ISO-8859-8"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1370,6 +1124,8 @@ argument_list|,
 literal|"ISO-8859-9"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1379,6 +1135,8 @@ argument_list|,
 literal|"ISO-8859-13"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1388,6 +1146,8 @@ argument_list|,
 literal|"ISO-8859-15"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1397,6 +1157,8 @@ argument_list|,
 literal|"KOI8-R"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1406,6 +1168,8 @@ argument_list|,
 literal|"UTF-8"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1415,6 +1179,8 @@ argument_list|,
 literal|"UTF-16"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1424,6 +1190,8 @@ argument_list|,
 literal|"Shift_JIS"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1433,6 +1201,8 @@ argument_list|,
 literal|"GBK"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1442,6 +1212,8 @@ argument_list|,
 literal|"Big5-HKSCS"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1451,6 +1223,8 @@ argument_list|,
 literal|"Big5"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1460,6 +1234,8 @@ argument_list|,
 literal|"EUC-JP"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ENCODING_NAMES_LOOKUP
 operator|.
 name|put
@@ -1520,7 +1296,6 @@ argument_list|)
 decl_stmt|;
 DECL|field|ON_MAC
 DECL|field|ON_WIN
-DECL|field|ON_LINUX
 specifier|public
 specifier|static
 specifier|final
@@ -1528,16 +1303,22 @@ name|boolean
 name|ON_MAC
 init|=
 operator|(
+name|Globals
+operator|.
 name|osName
 operator|.
 name|equals
 argument_list|(
+name|Globals
+operator|.
 name|MAC
 argument_list|)
 operator|)
 decl_stmt|,
 name|ON_WIN
 init|=
+name|Globals
+operator|.
 name|osName
 operator|.
 name|startsWith
@@ -1545,8 +1326,11 @@ argument_list|(
 literal|"Windows"
 argument_list|)
 decl_stmt|,
+DECL|field|ON_LINUX
 name|ON_LINUX
 init|=
+name|Globals
+operator|.
 name|osName
 operator|.
 name|startsWith
@@ -1620,28 +1404,31 @@ specifier|static
 name|int
 name|NEWLINE_LENGTH
 init|=
+name|Globals
+operator|.
 name|NEWLINE
 operator|.
 name|length
 argument_list|()
 decl_stmt|;
 comment|// Instantiate logger:
-DECL|field|logger
+DECL|field|LOGGER
 specifier|private
 specifier|static
-name|Logger
-name|logger
+specifier|final
+name|Log
+name|LOGGER
 init|=
-name|Logger
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
-name|Logger
+name|Globals
 operator|.
-name|GLOBAL_LOGGER_NAME
+name|class
 argument_list|)
 decl_stmt|;
-comment|/** 	 * true if we have unix newlines 	 */
+comment|/**              * true if we have unix newlines              */
 DECL|field|UNIX_NEWLINE
 specifier|public
 specifier|static
@@ -1649,6 +1436,8 @@ specifier|final
 name|boolean
 name|UNIX_NEWLINE
 init|=
+name|Globals
+operator|.
 name|NEWLINE
 operator|.
 name|equals
@@ -1656,7 +1445,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * 	"Fieldname" to indicate that a field should be treated as a bibtex  	 * string. Used when writing database to file. 	 */
+comment|/**      * 	"Fieldname" to indicate that a field should be treated as a bibtex       * string. Used when writing database to file.      */
 DECL|field|BIBTEX_STRING
 specifier|public
 specifier|static
@@ -1673,30 +1462,43 @@ name|void
 name|startBackgroundTasks
 parameter_list|()
 block|{
+name|Globals
+operator|.
 name|focusListener
 operator|=
 operator|new
 name|GlobalFocusListener
 argument_list|()
 expr_stmt|;
-comment|// TODO: Error console initialization here. When should it be used?
-name|errorConsole
-operator|=
-name|ErrorConsole
+name|Globals
 operator|.
-name|getInstance
+name|streamEavesdropper
+operator|=
+name|StreamEavesdropper
+operator|.
+name|eavesdropOnSystem
 argument_list|()
 expr_stmt|;
+name|Globals
+operator|.
 name|fileUpdateMonitor
 operator|=
 operator|new
 name|FileUpdateMonitor
 argument_list|()
 expr_stmt|;
-name|fileUpdateMonitor
+name|JabRefExecutorService
 operator|.
-name|start
-argument_list|()
+name|INSTANCE
+operator|.
+name|executeWithLowPriorityInOwnThread
+argument_list|(
+name|Globals
+operator|.
+name|fileUpdateMonitor
+argument_list|,
+literal|"FileUpdateMonitor"
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Initialize and start the autosave manager.      * @param frame The main frame.      */
@@ -1710,6 +1512,8 @@ name|JabRefFrame
 name|frame
 parameter_list|)
 block|{
+name|Globals
+operator|.
 name|autoSaveManager
 operator|=
 operator|new
@@ -1718,6 +1522,8 @@ argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|autoSaveManager
 operator|.
 name|startAutoSaveTimer
@@ -1734,166 +1540,34 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|Globals
+operator|.
 name|autoSaveManager
 operator|!=
 literal|null
 condition|)
 block|{
+name|Globals
+operator|.
 name|autoSaveManager
 operator|.
 name|stopAutoSaveTimer
 argument_list|()
 expr_stmt|;
+name|Globals
+operator|.
 name|autoSaveManager
 operator|.
 name|clearAutoSaves
 argument_list|()
 expr_stmt|;
+name|Globals
+operator|.
 name|autoSaveManager
 operator|=
 literal|null
 expr_stmt|;
 block|}
-block|}
-DECL|method|logger (String s)
-specifier|public
-specifier|static
-name|void
-name|logger
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-name|logger
-operator|.
-name|info
-argument_list|(
-name|s
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|turnOffLogging ()
-specifier|public
-specifier|static
-name|void
-name|turnOffLogging
-parameter_list|()
-block|{
-comment|// only log exceptions
-name|logger
-operator|.
-name|setLevel
-argument_list|(
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Level
-operator|.
-name|SEVERE
-argument_list|)
-expr_stmt|;
-block|}
-comment|/** 	 * Should be only called once 	 */
-DECL|method|turnOnConsoleLogging ()
-specifier|public
-specifier|static
-name|void
-name|turnOnConsoleLogging
-parameter_list|()
-block|{
-name|consoleHandler
-operator|=
-operator|new
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|ConsoleHandler
-argument_list|()
-expr_stmt|;
-name|logger
-operator|.
-name|addHandler
-argument_list|(
-name|consoleHandler
-argument_list|)
-expr_stmt|;
-block|}
-comment|/** 	 * Should be only called once 	 */
-DECL|method|turnOnFileLogging ()
-specifier|public
-specifier|static
-name|void
-name|turnOnFileLogging
-parameter_list|()
-block|{
-name|logger
-operator|.
-name|setLevel
-argument_list|(
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Level
-operator|.
-name|ALL
-argument_list|)
-expr_stmt|;
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Handler
-name|handler
-decl_stmt|;
-name|handler
-operator|=
-operator|new
-name|ConsoleHandler
-argument_list|()
-expr_stmt|;
-name|logger
-operator|.
-name|addHandler
-argument_list|(
-name|handler
-argument_list|)
-expr_stmt|;
-name|handler
-operator|.
-name|setFilter
-argument_list|(
-operator|new
-name|Filter
-argument_list|()
-block|{
-comment|// select what gets logged
-specifier|public
-name|boolean
-name|isLoggable
-parameter_list|(
-name|LogRecord
-name|record
-parameter_list|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|setLanguage (String language, String country)
 specifier|public
@@ -1908,6 +1582,8 @@ name|String
 name|country
 parameter_list|)
 block|{
+name|Globals
+operator|.
 name|locale
 operator|=
 operator|new
@@ -1918,14 +1594,20 @@ argument_list|,
 name|country
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|messages
 operator|=
 name|ResourceBundle
 operator|.
 name|getBundle
 argument_list|(
+name|Globals
+operator|.
 name|RESOURCE_PREFIX
 argument_list|,
+name|Globals
+operator|.
 name|locale
 argument_list|,
 operator|new
@@ -1935,14 +1617,20 @@ literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|menuTitles
 operator|=
 name|ResourceBundle
 operator|.
 name|getBundle
 argument_list|(
+name|Globals
+operator|.
 name|MENU_RESOURCE_PREFIX
 argument_list|,
+name|Globals
+operator|.
 name|locale
 argument_list|,
 operator|new
@@ -1952,14 +1640,20 @@ literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|intMessages
 operator|=
 name|ResourceBundle
 operator|.
 name|getBundle
 argument_list|(
+name|Globals
+operator|.
 name|INTEGRITY_RESOURCE_PREFIX
 argument_list|,
+name|Globals
+operator|.
 name|locale
 argument_list|,
 operator|new
@@ -1973,6 +1667,8 @@ name|Locale
 operator|.
 name|setDefault
 argument_list|(
+name|Globals
+operator|.
 name|locale
 argument_list|)
 expr_stmt|;
@@ -1984,6 +1680,8 @@ name|JComponent
 operator|.
 name|setDefaultLocale
 argument_list|(
+name|Globals
+operator|.
 name|locale
 argument_list|)
 expr_stmt|;
@@ -1991,7 +1689,7 @@ block|}
 DECL|field|journalAbbrev
 specifier|public
 specifier|static
-name|JournalAbbreviations
+name|JournalAbbreviationRepository
 name|journalAbbrev
 decl_stmt|;
 DECL|method|lang (String key, String[] params)
@@ -2023,6 +1721,7 @@ name|messages
 operator|!=
 literal|null
 condition|)
+block|{
 name|translation
 operator|=
 name|Globals
@@ -2042,6 +1741,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|MissingResourceException
@@ -2056,10 +1756,12 @@ name|translation
 operator|==
 literal|null
 condition|)
+block|{
 name|translation
 operator|=
 name|key
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -2184,20 +1886,27 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|params
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|index
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|index
 operator|<=
 name|params
 operator|.
 name|length
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -2208,6 +1917,7 @@ name|index
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2282,6 +1992,8 @@ name|key
 parameter_list|)
 block|{
 return|return
+name|Globals
+operator|.
 name|lang
 argument_list|(
 name|key
@@ -2308,6 +2020,8 @@ name|s1
 parameter_list|)
 block|{
 return|return
+name|Globals
+operator|.
 name|lang
 argument_list|(
 name|key
@@ -2338,6 +2052,8 @@ name|s2
 parameter_list|)
 block|{
 return|return
+name|Globals
+operator|.
 name|lang
 argument_list|(
 name|key
@@ -2373,6 +2089,8 @@ name|s3
 parameter_list|)
 block|{
 return|return
+name|Globals
+operator|.
 name|lang
 argument_list|(
 name|key
@@ -2566,7 +2284,7 @@ return|;
 block|}
 block|}
 comment|// ============================================================
-comment|// Using the hashmap of entry types found in BibtexEntryType
+comment|// Get an entry type defined in BibtexEntryType
 comment|// ============================================================
 DECL|method|getEntryType (String type)
 specifier|public
@@ -2584,9 +2302,7 @@ name|o
 init|=
 name|BibtexEntryType
 operator|.
-name|ALL_TYPES
-operator|.
-name|get
+name|getType
 argument_list|(
 name|type
 argument_list|)
@@ -2608,44 +2324,26 @@ block|}
 else|else
 block|{
 return|return
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|OTHER
 return|;
 block|}
-comment|/* 		 * if(type.equals("article")) return BibtexEntryType.ARTICLE; else 		 * if(type.equals("book")) return BibtexEntryType.BOOK; else 		 * if(type.equals("inproceedings")) return 		 * BibtexEntryType.INPROCEEDINGS; 		 */
+comment|/*          * if(type.equals("article")) return BibtexEntryTypes.ARTICLE; else          * if(type.equals("book")) return BibtexEntryTypes.BOOK; else          * if(type.equals("inproceedings")) return          * BibtexEntryTypes.INPROCEEDINGS;          */
 block|}
 DECL|field|SPECIAL_COMMAND_CHARS
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|SPECIAL_COMMAND_CHARS
 init|=
 literal|"\"`^~'c="
 decl_stmt|;
-DECL|field|HTML_CHARS
-specifier|public
-specifier|static
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|HTML_CHARS
-init|=
-operator|new
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-argument_list|()
-decl_stmt|;
 DECL|field|HTMLCHARS
 specifier|public
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -2666,6 +2364,7 @@ decl_stmt|;
 DECL|field|XML_CHARS
 specifier|public
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -2686,6 +2385,7 @@ decl_stmt|;
 DECL|field|ASCII2XML_CHARS
 specifier|public
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -2706,6 +2406,7 @@ decl_stmt|;
 DECL|field|UNICODE_CHARS
 specifier|public
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -2726,6 +2427,7 @@ decl_stmt|;
 DECL|field|RTFCHARS
 specifier|public
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -2744,8 +2446,9 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|URL_CHARS
-specifier|public
+specifier|private
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -2772,13 +2475,18 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|Globals
+operator|.
 name|SHORTCUT_MASK
 operator|==
 operator|-
 literal|1
 condition|)
+block|{
 try|try
 block|{
+name|Globals
+operator|.
 name|SHORTCUT_MASK
 operator|=
 name|Toolkit
@@ -2795,8 +2503,11 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{  		}
+block|{              }
+block|}
 return|return
+name|Globals
+operator|.
 name|SHORTCUT_MASK
 return|;
 block|}
@@ -2804,6 +2515,8 @@ static|static
 block|{
 comment|// Special characters in URLs need to be replaced to ensure that the URL
 comment|// opens properly on all platforms:
+name|Globals
+operator|.
 name|URL_CHARS
 operator|.
 name|put
@@ -2813,6 +2526,8 @@ argument_list|,
 literal|"%3c"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|URL_CHARS
 operator|.
 name|put
@@ -2822,6 +2537,8 @@ argument_list|,
 literal|"%3e"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|URL_CHARS
 operator|.
 name|put
@@ -2831,6 +2548,8 @@ argument_list|,
 literal|"%28"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|URL_CHARS
 operator|.
 name|put
@@ -2840,6 +2559,8 @@ argument_list|,
 literal|"%29"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|URL_CHARS
 operator|.
 name|put
@@ -2849,6 +2570,8 @@ argument_list|,
 literal|"%20"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|URL_CHARS
 operator|.
 name|put
@@ -2858,6 +2581,8 @@ argument_list|,
 literal|"%26"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|URL_CHARS
 operator|.
 name|put
@@ -2867,56 +2592,10 @@ argument_list|,
 literal|"%24"
 argument_list|)
 expr_stmt|;
-comment|// HTMLCHARS.put("\"a", "&auml;");
-comment|// HTMLCHARS.put("\"A", "&Auml;");
-comment|// HTMLCHARS.put("\"e", "&euml;");
-comment|// HTMLCHARS.put("\"E", "&Euml;");
-comment|// HTMLCHARS.put("\"i", "&iuml;");
-comment|// HTMLCHARS.put("\"I", "&Iuml;");
-comment|// HTMLCHARS.put("\"o", "&ouml;");
-comment|// HTMLCHARS.put("\"O", "&Ouml;");
-comment|// HTMLCHARS.put("\"u", "&uuml;");
-comment|// HTMLCHARS.put("\"U", "&Uuml;");
-comment|// HTMLCHARS.put("`a", "&agrave;");
-comment|// HTMLCHARS.put("`A", "&Agrave;");
-comment|// HTMLCHARS.put("`e", "&egrave;");
-comment|// HTMLCHARS.put("`E", "&Egrave;");
-comment|// HTMLCHARS.put("`i", "&igrave;");
-comment|// HTMLCHARS.put("`I", "&Igrave;");
-comment|// HTMLCHARS.put("`o", "&ograve;");
-comment|// HTMLCHARS.put("`O", "&Ograve;");
-comment|// HTMLCHARS.put("`u", "&ugrave;");
-comment|// HTMLCHARS.put("`U", "&Ugrave;");
-comment|// HTMLCHARS.put("'e", "&eacute;");
-comment|// HTMLCHARS.put("'E", "&Eacute;");
-comment|// HTMLCHARS.put("'i", "&iacute;");
-comment|// HTMLCHARS.put("'I", "&Iacute;");
-comment|// HTMLCHARS.put("'o", "&oacute;");
-comment|// HTMLCHARS.put("'O", "&Oacute;");
-comment|// HTMLCHARS.put("'u", "&uacute;");
-comment|// HTMLCHARS.put("'U", "&Uacute;");
-comment|// HTMLCHARS.put("'a", "&aacute;");
-comment|// HTMLCHARS.put("'A", "&Aacute;");
-comment|// HTMLCHARS.put("^a", "&ocirc;");
-comment|// HTMLCHARS.put("^A", "&Ocirc;");
-comment|// HTMLCHARS.put("^o", "&ocirc;");
-comment|// HTMLCHARS.put("^O", "&Ocirc;");
-comment|// HTMLCHARS.put("^u", "&ucirc;");
-comment|// HTMLCHARS.put("^U", "&Ucirc;");
-comment|// HTMLCHARS.put("^e", "&ecirc;");
-comment|// HTMLCHARS.put("^E", "&Ecirc;");
-comment|// HTMLCHARS.put("^i", "&icirc;");
-comment|// HTMLCHARS.put("^I", "&Icirc;");
-comment|// HTMLCHARS.put("~o", "&otilde;");
-comment|// HTMLCHARS.put("~O", "&Otilde;");
-comment|// HTMLCHARS.put("~n", "&ntilde;");
-comment|// HTMLCHARS.put("~N", "&Ntilde;");
-comment|// HTMLCHARS.put("~a", "&atilde;");
-comment|// HTMLCHARS.put("~A", "&Atilde;");
-comment|// HTMLCHARS.put("cc", "&ccedil;");
-comment|// HTMLCHARS.put("cC", "&Ccedil;");
 comment|// Following character definitions contributed by Ervin Kolenovic:
 comment|// HTML named entities from #192 - #255 (UNICODE Latin-1)
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -2927,6 +2606,8 @@ literal|"&Agrave;"
 argument_list|)
 expr_stmt|;
 comment|// #192
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -2937,6 +2618,8 @@ literal|"&Aacute;"
 argument_list|)
 expr_stmt|;
 comment|// #193
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -2947,6 +2630,8 @@ literal|"&Acirc;"
 argument_list|)
 expr_stmt|;
 comment|// #194
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -2957,6 +2642,8 @@ literal|"&Atilde;"
 argument_list|)
 expr_stmt|;
 comment|// #195
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -2967,6 +2654,8 @@ literal|"&Auml;"
 argument_list|)
 expr_stmt|;
 comment|// #196
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -2977,6 +2666,8 @@ literal|"&Aring;"
 argument_list|)
 expr_stmt|;
 comment|// #197
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -2987,6 +2678,8 @@ literal|"&AElig;"
 argument_list|)
 expr_stmt|;
 comment|// #198
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -2997,6 +2690,8 @@ literal|"&Ccedil;"
 argument_list|)
 expr_stmt|;
 comment|// #199
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3007,6 +2702,8 @@ literal|"&Egrave;"
 argument_list|)
 expr_stmt|;
 comment|// #200
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3017,6 +2714,8 @@ literal|"&Eacute;"
 argument_list|)
 expr_stmt|;
 comment|// #201
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3027,6 +2726,8 @@ literal|"&Ecirc;"
 argument_list|)
 expr_stmt|;
 comment|// #202
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3037,6 +2738,8 @@ literal|"&Euml;"
 argument_list|)
 expr_stmt|;
 comment|// #203
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3047,6 +2750,8 @@ literal|"&Igrave;"
 argument_list|)
 expr_stmt|;
 comment|// #204
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3057,6 +2762,8 @@ literal|"&Iacute;"
 argument_list|)
 expr_stmt|;
 comment|// #205
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3067,6 +2774,8 @@ literal|"&Icirc;"
 argument_list|)
 expr_stmt|;
 comment|// #206
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3077,6 +2786,8 @@ literal|"&Iuml;"
 argument_list|)
 expr_stmt|;
 comment|// #207
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3087,6 +2798,8 @@ literal|"&ETH;"
 argument_list|)
 expr_stmt|;
 comment|// #208
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3097,6 +2810,8 @@ literal|"&Ntilde;"
 argument_list|)
 expr_stmt|;
 comment|// #209
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3107,6 +2822,8 @@ literal|"&Ograve;"
 argument_list|)
 expr_stmt|;
 comment|// #210
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3117,6 +2834,8 @@ literal|"&Oacute;"
 argument_list|)
 expr_stmt|;
 comment|// #211
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3127,6 +2846,8 @@ literal|"&Ocirc;"
 argument_list|)
 expr_stmt|;
 comment|// #212
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3137,6 +2858,8 @@ literal|"&Otilde;"
 argument_list|)
 expr_stmt|;
 comment|// #213
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3150,6 +2873,8 @@ comment|// #214
 comment|// According to ISO 8859-1 the "\times" symbol should be placed here
 comment|// (#215).
 comment|// Omitting this, because it is a mathematical symbol.
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3160,6 +2885,8 @@ literal|"&Oslash;"
 argument_list|)
 expr_stmt|;
 comment|// #216
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3170,6 +2897,8 @@ literal|"&Ugrave;"
 argument_list|)
 expr_stmt|;
 comment|// #217
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3180,6 +2909,8 @@ literal|"&Uacute;"
 argument_list|)
 expr_stmt|;
 comment|// #218
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3190,6 +2921,8 @@ literal|"&Ucirc;"
 argument_list|)
 expr_stmt|;
 comment|// #219
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3200,6 +2933,8 @@ literal|"&Uuml;"
 argument_list|)
 expr_stmt|;
 comment|// #220
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3210,6 +2945,8 @@ literal|"&Yacute;"
 argument_list|)
 expr_stmt|;
 comment|// #221
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3220,6 +2957,8 @@ literal|"&THORN;"
 argument_list|)
 expr_stmt|;
 comment|// #222
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3230,6 +2969,8 @@ literal|"&szlig;"
 argument_list|)
 expr_stmt|;
 comment|// #223
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3240,6 +2981,8 @@ literal|"&agrave;"
 argument_list|)
 expr_stmt|;
 comment|// #224
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3250,6 +2993,8 @@ literal|"&aacute;"
 argument_list|)
 expr_stmt|;
 comment|// #225
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3260,6 +3005,8 @@ literal|"&acirc;"
 argument_list|)
 expr_stmt|;
 comment|// #226
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3270,6 +3017,8 @@ literal|"&atilde;"
 argument_list|)
 expr_stmt|;
 comment|// #227
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3280,6 +3029,8 @@ literal|"&auml;"
 argument_list|)
 expr_stmt|;
 comment|// #228
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3290,6 +3041,8 @@ literal|"&aring;"
 argument_list|)
 expr_stmt|;
 comment|// #229
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3300,6 +3053,8 @@ literal|"&aelig;"
 argument_list|)
 expr_stmt|;
 comment|// #230
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3310,6 +3065,8 @@ literal|"&ccedil;"
 argument_list|)
 expr_stmt|;
 comment|// #231
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3320,6 +3077,8 @@ literal|"&egrave;"
 argument_list|)
 expr_stmt|;
 comment|// #232
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3330,6 +3089,8 @@ literal|"&eacute;"
 argument_list|)
 expr_stmt|;
 comment|// #233
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3340,6 +3101,8 @@ literal|"&ecirc;"
 argument_list|)
 expr_stmt|;
 comment|// #234
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3350,6 +3113,8 @@ literal|"&euml;"
 argument_list|)
 expr_stmt|;
 comment|// #235
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3360,6 +3125,8 @@ literal|"&igrave;"
 argument_list|)
 expr_stmt|;
 comment|// #236
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3370,6 +3137,8 @@ literal|"&iacute;"
 argument_list|)
 expr_stmt|;
 comment|// #237
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3380,6 +3149,8 @@ literal|"&icirc;"
 argument_list|)
 expr_stmt|;
 comment|// #238
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3390,6 +3161,8 @@ literal|"&iuml;"
 argument_list|)
 expr_stmt|;
 comment|// #239
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3400,6 +3173,8 @@ literal|"&eth;"
 argument_list|)
 expr_stmt|;
 comment|// #240
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3410,6 +3185,8 @@ literal|"&ntilde;"
 argument_list|)
 expr_stmt|;
 comment|// #241
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3420,6 +3197,8 @@ literal|"&ograve;"
 argument_list|)
 expr_stmt|;
 comment|// #242
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3430,6 +3209,8 @@ literal|"&oacute;"
 argument_list|)
 expr_stmt|;
 comment|// #243
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3440,6 +3221,8 @@ literal|"&ocirc;"
 argument_list|)
 expr_stmt|;
 comment|// #244
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3450,6 +3233,8 @@ literal|"&otilde;"
 argument_list|)
 expr_stmt|;
 comment|// #245
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3463,6 +3248,8 @@ comment|// #246
 comment|// According to ISO 8859-1 the "\div" symbol should be placed here
 comment|// (#247).
 comment|// Omitting this, because it is a mathematical symbol.
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3473,6 +3260,8 @@ literal|"&oslash;"
 argument_list|)
 expr_stmt|;
 comment|// #248
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3483,6 +3272,8 @@ literal|"&ugrave;"
 argument_list|)
 expr_stmt|;
 comment|// #249
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3493,6 +3284,8 @@ literal|"&uacute;"
 argument_list|)
 expr_stmt|;
 comment|// #250
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3503,6 +3296,8 @@ literal|"&ucirc;"
 argument_list|)
 expr_stmt|;
 comment|// #251
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3513,6 +3308,8 @@ literal|"&uuml;"
 argument_list|)
 expr_stmt|;
 comment|// #252
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3523,6 +3320,8 @@ literal|"&yacute;"
 argument_list|)
 expr_stmt|;
 comment|// #253
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3533,6 +3332,8 @@ literal|"&thorn;"
 argument_list|)
 expr_stmt|;
 comment|// #254
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3545,6 +3346,8 @@ expr_stmt|;
 comment|// #255
 comment|// HTML special characters without names (UNICODE Latin Extended-A),
 comment|// indicated by UNICODE number
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3555,6 +3358,8 @@ literal|"&#256;"
 argument_list|)
 expr_stmt|;
 comment|// "Amacr"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3565,6 +3370,8 @@ literal|"&#257;"
 argument_list|)
 expr_stmt|;
 comment|// "amacr"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3575,6 +3382,8 @@ literal|"&#258;"
 argument_list|)
 expr_stmt|;
 comment|// "Abreve"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3585,6 +3394,8 @@ literal|"&#259;"
 argument_list|)
 expr_stmt|;
 comment|// "abreve"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3595,6 +3406,8 @@ literal|"&#260;"
 argument_list|)
 expr_stmt|;
 comment|// "Aogon"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3605,6 +3418,8 @@ literal|"&#261;"
 argument_list|)
 expr_stmt|;
 comment|// "aogon"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3615,6 +3430,8 @@ literal|"&#262;"
 argument_list|)
 expr_stmt|;
 comment|// "Cacute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3625,6 +3442,8 @@ literal|"&#263;"
 argument_list|)
 expr_stmt|;
 comment|// "cacute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3635,6 +3454,8 @@ literal|"&#264;"
 argument_list|)
 expr_stmt|;
 comment|// "Ccirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3645,6 +3466,8 @@ literal|"&#265;"
 argument_list|)
 expr_stmt|;
 comment|// "ccirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3655,6 +3478,8 @@ literal|"&#266;"
 argument_list|)
 expr_stmt|;
 comment|// "Cdot"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3665,6 +3490,8 @@ literal|"&#267;"
 argument_list|)
 expr_stmt|;
 comment|// "cdot"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3675,6 +3502,8 @@ literal|"&#268;"
 argument_list|)
 expr_stmt|;
 comment|// "Ccaron"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3685,6 +3514,8 @@ literal|"&#269;"
 argument_list|)
 expr_stmt|;
 comment|// "ccaron"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3695,7 +3526,9 @@ literal|"&#270;"
 argument_list|)
 expr_stmt|;
 comment|// "Dcaron"
-comment|// Symbol #271 (dï¿½) has no special Latex command
+comment|// Symbol #271 (d) has no special Latex command
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3706,6 +3539,8 @@ literal|"&#272;"
 argument_list|)
 expr_stmt|;
 comment|// "Dstrok"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3716,6 +3551,8 @@ literal|"&#273;"
 argument_list|)
 expr_stmt|;
 comment|// "dstrok"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3726,6 +3563,8 @@ literal|"&#274;"
 argument_list|)
 expr_stmt|;
 comment|// "Emacr"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3736,6 +3575,8 @@ literal|"&#275;"
 argument_list|)
 expr_stmt|;
 comment|// "emacr"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3746,6 +3587,8 @@ literal|"&#276;"
 argument_list|)
 expr_stmt|;
 comment|// "Ebreve"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3756,6 +3599,8 @@ literal|"&#277;"
 argument_list|)
 expr_stmt|;
 comment|// "ebreve"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3766,6 +3611,8 @@ literal|"&#278;"
 argument_list|)
 expr_stmt|;
 comment|// "Edot"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3776,6 +3623,8 @@ literal|"&#279;"
 argument_list|)
 expr_stmt|;
 comment|// "edot"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3786,6 +3635,8 @@ literal|"&#280;"
 argument_list|)
 expr_stmt|;
 comment|// "Eogon"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3796,6 +3647,8 @@ literal|"&#281;"
 argument_list|)
 expr_stmt|;
 comment|// "eogon"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3806,6 +3659,8 @@ literal|"&#282;"
 argument_list|)
 expr_stmt|;
 comment|// "Ecaron"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3816,6 +3671,8 @@ literal|"&#283;"
 argument_list|)
 expr_stmt|;
 comment|// "ecaron"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3826,6 +3683,8 @@ literal|"&#284;"
 argument_list|)
 expr_stmt|;
 comment|// "Gcirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3836,6 +3695,8 @@ literal|"&#285;"
 argument_list|)
 expr_stmt|;
 comment|// "gcirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3846,6 +3707,8 @@ literal|"&#286;"
 argument_list|)
 expr_stmt|;
 comment|// "Gbreve"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3856,6 +3719,8 @@ literal|"&#287;"
 argument_list|)
 expr_stmt|;
 comment|// "gbreve"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3866,6 +3731,8 @@ literal|"&#288;"
 argument_list|)
 expr_stmt|;
 comment|// "Gdot"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3876,6 +3743,8 @@ literal|"&#289;"
 argument_list|)
 expr_stmt|;
 comment|// "gdot"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3886,6 +3755,8 @@ literal|"&#290;"
 argument_list|)
 expr_stmt|;
 comment|// "Gcedil"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3896,6 +3767,8 @@ literal|"&#291;"
 argument_list|)
 expr_stmt|;
 comment|// "gacute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3906,6 +3779,8 @@ literal|"&#292;"
 argument_list|)
 expr_stmt|;
 comment|// "Hcirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3916,6 +3791,8 @@ literal|"&#293;"
 argument_list|)
 expr_stmt|;
 comment|// "hcirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3926,6 +3803,8 @@ literal|"&#294;"
 argument_list|)
 expr_stmt|;
 comment|// "Hstrok"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3936,6 +3815,8 @@ literal|"&#295;"
 argument_list|)
 expr_stmt|;
 comment|// "hstrok"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3946,6 +3827,8 @@ literal|"&#296;"
 argument_list|)
 expr_stmt|;
 comment|// "Itilde"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3956,6 +3839,8 @@ literal|"&#297;"
 argument_list|)
 expr_stmt|;
 comment|// "itilde"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3966,6 +3851,8 @@ literal|"&#298;"
 argument_list|)
 expr_stmt|;
 comment|// "Imacr"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3976,6 +3863,8 @@ literal|"&#299;"
 argument_list|)
 expr_stmt|;
 comment|// "imacr"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3986,6 +3875,8 @@ literal|"&#300;"
 argument_list|)
 expr_stmt|;
 comment|// "Ibreve"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -3996,6 +3887,8 @@ literal|"&#301;"
 argument_list|)
 expr_stmt|;
 comment|// "ibreve"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4006,6 +3899,8 @@ literal|"&#302;"
 argument_list|)
 expr_stmt|;
 comment|// "Iogon"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4016,6 +3911,8 @@ literal|"&#303;"
 argument_list|)
 expr_stmt|;
 comment|// "iogon"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4026,6 +3923,8 @@ literal|"&#304;"
 argument_list|)
 expr_stmt|;
 comment|// "Idot"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4038,6 +3937,8 @@ expr_stmt|;
 comment|// "inodot"
 comment|// Symbol #306 (IJ) has no special Latex command
 comment|// Symbol #307 (ij) has no special Latex command
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4048,6 +3949,8 @@ literal|"&#308;"
 argument_list|)
 expr_stmt|;
 comment|// "Jcirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4058,6 +3961,8 @@ literal|"&#309;"
 argument_list|)
 expr_stmt|;
 comment|// "jcirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4068,6 +3973,8 @@ literal|"&#310;"
 argument_list|)
 expr_stmt|;
 comment|// "Kcedil"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4079,6 +3986,8 @@ argument_list|)
 expr_stmt|;
 comment|// "kcedil"
 comment|// Symbol #312 (k) has no special Latex command
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4089,6 +3998,8 @@ literal|"&#313;"
 argument_list|)
 expr_stmt|;
 comment|// "Lacute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4099,6 +4010,8 @@ literal|"&#314;"
 argument_list|)
 expr_stmt|;
 comment|// "lacute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4109,6 +4022,8 @@ literal|"&#315;"
 argument_list|)
 expr_stmt|;
 comment|// "Lcedil"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4119,8 +4034,10 @@ literal|"&#316;"
 argument_list|)
 expr_stmt|;
 comment|// "lcedil"
-comment|// Symbol #317 (Lï¿½) has no special Latex command
-comment|// Symbol #318 (lï¿½) has no special Latex command
+comment|// Symbol #317 (L) has no special Latex command
+comment|// Symbol #318 (l) has no special Latex command
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4131,6 +4048,8 @@ literal|"&#319;"
 argument_list|)
 expr_stmt|;
 comment|// "Lmidot"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4141,6 +4060,8 @@ literal|"&#320;"
 argument_list|)
 expr_stmt|;
 comment|// "lmidot"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4151,6 +4072,8 @@ literal|"&#321;"
 argument_list|)
 expr_stmt|;
 comment|// "Lstrok"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4161,6 +4084,8 @@ literal|"&#322;"
 argument_list|)
 expr_stmt|;
 comment|// "lstrok"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4171,6 +4096,8 @@ literal|"&#323;"
 argument_list|)
 expr_stmt|;
 comment|// "Nacute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4181,6 +4108,8 @@ literal|"&#324;"
 argument_list|)
 expr_stmt|;
 comment|// "nacute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4191,6 +4120,8 @@ literal|"&#325;"
 argument_list|)
 expr_stmt|;
 comment|// "Ncedil"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4201,6 +4132,8 @@ literal|"&#326;"
 argument_list|)
 expr_stmt|;
 comment|// "ncedil"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4211,6 +4144,8 @@ literal|"&#327;"
 argument_list|)
 expr_stmt|;
 comment|// "Ncaron"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4221,7 +4156,9 @@ literal|"&#328;"
 argument_list|)
 expr_stmt|;
 comment|// "ncaron"
-comment|// Symbol #329 (ï¿½n) has no special Latex command
+comment|// Symbol #329 (n) has no special Latex command
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4232,6 +4169,8 @@ literal|"&#330;"
 argument_list|)
 expr_stmt|;
 comment|// "ENG"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4242,6 +4181,8 @@ literal|"&#331;"
 argument_list|)
 expr_stmt|;
 comment|// "eng"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4252,6 +4193,8 @@ literal|"&#332;"
 argument_list|)
 expr_stmt|;
 comment|// "Omacr"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4262,6 +4205,8 @@ literal|"&#333;"
 argument_list|)
 expr_stmt|;
 comment|// "omacr"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4272,6 +4217,8 @@ literal|"&#334;"
 argument_list|)
 expr_stmt|;
 comment|// "Obreve"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4282,6 +4229,8 @@ literal|"&#335;"
 argument_list|)
 expr_stmt|;
 comment|// "obreve"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4292,6 +4241,8 @@ literal|"&#336;"
 argument_list|)
 expr_stmt|;
 comment|// "Odblac"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4302,6 +4253,8 @@ literal|"&#337;"
 argument_list|)
 expr_stmt|;
 comment|// "odblac"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4312,6 +4265,8 @@ literal|"&#338;"
 argument_list|)
 expr_stmt|;
 comment|// "OElig"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4322,6 +4277,8 @@ literal|"&#339;"
 argument_list|)
 expr_stmt|;
 comment|// "oelig"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4332,6 +4289,8 @@ literal|"&#340;"
 argument_list|)
 expr_stmt|;
 comment|// "Racute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4342,6 +4301,8 @@ literal|"&#341;"
 argument_list|)
 expr_stmt|;
 comment|// "racute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4352,6 +4313,8 @@ literal|"&#342;"
 argument_list|)
 expr_stmt|;
 comment|// "Rcedil"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4362,6 +4325,8 @@ literal|"&#343;"
 argument_list|)
 expr_stmt|;
 comment|// "rcedil"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4372,6 +4337,8 @@ literal|"&#344;"
 argument_list|)
 expr_stmt|;
 comment|// "Rcaron"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4382,6 +4349,8 @@ literal|"&#345;"
 argument_list|)
 expr_stmt|;
 comment|// "rcaron"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4392,6 +4361,8 @@ literal|"&#346;"
 argument_list|)
 expr_stmt|;
 comment|// "Sacute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4402,6 +4373,8 @@ literal|"&#347;"
 argument_list|)
 expr_stmt|;
 comment|// "sacute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4412,6 +4385,8 @@ literal|"&#348;"
 argument_list|)
 expr_stmt|;
 comment|// "Scirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4422,6 +4397,8 @@ literal|"&#349;"
 argument_list|)
 expr_stmt|;
 comment|// "scirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4432,6 +4409,8 @@ literal|"&#350;"
 argument_list|)
 expr_stmt|;
 comment|// "Scedil"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4442,6 +4421,8 @@ literal|"&#351;"
 argument_list|)
 expr_stmt|;
 comment|// "scedil"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4452,6 +4433,8 @@ literal|"&#352;"
 argument_list|)
 expr_stmt|;
 comment|// "Scaron"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4462,6 +4445,8 @@ literal|"&#353;"
 argument_list|)
 expr_stmt|;
 comment|// "scaron"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4472,6 +4457,8 @@ literal|"&#354;"
 argument_list|)
 expr_stmt|;
 comment|// "Tcedil"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4482,6 +4469,8 @@ literal|"&#355;"
 argument_list|)
 expr_stmt|;
 comment|// "tcedil"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4492,7 +4481,9 @@ literal|"&#356;"
 argument_list|)
 expr_stmt|;
 comment|// "Tcaron"
-comment|// Symbol #357 (tï¿½) has no special Latex command
+comment|// Symbol #357 (t) has no special Latex command
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4503,6 +4494,8 @@ literal|"&#358;"
 argument_list|)
 expr_stmt|;
 comment|// "Tstrok"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4513,6 +4506,8 @@ literal|"&#359;"
 argument_list|)
 expr_stmt|;
 comment|// "tstrok"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4523,6 +4518,8 @@ literal|"&#360;"
 argument_list|)
 expr_stmt|;
 comment|// "Utilde"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4533,6 +4530,8 @@ literal|"&#361;"
 argument_list|)
 expr_stmt|;
 comment|// "utilde"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4543,6 +4542,8 @@ literal|"&#362;"
 argument_list|)
 expr_stmt|;
 comment|// "Umacr"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4553,6 +4554,8 @@ literal|"&#363;"
 argument_list|)
 expr_stmt|;
 comment|// "umacr"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4563,6 +4566,8 @@ literal|"&#364;"
 argument_list|)
 expr_stmt|;
 comment|// "Ubreve"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4573,6 +4578,8 @@ literal|"&#365;"
 argument_list|)
 expr_stmt|;
 comment|// "ubreve"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4583,6 +4590,8 @@ literal|"&#366;"
 argument_list|)
 expr_stmt|;
 comment|// "Uring"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4593,6 +4602,8 @@ literal|"&#367;"
 argument_list|)
 expr_stmt|;
 comment|// "uring"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4603,6 +4614,8 @@ literal|"&#368;"
 argument_list|)
 expr_stmt|;
 comment|// "Odblac"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4613,6 +4626,8 @@ literal|"&#369;"
 argument_list|)
 expr_stmt|;
 comment|// "odblac"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4623,6 +4638,8 @@ literal|"&#370;"
 argument_list|)
 expr_stmt|;
 comment|// "Uogon"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4633,6 +4650,8 @@ literal|"&#371;"
 argument_list|)
 expr_stmt|;
 comment|// "uogon"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4643,6 +4662,8 @@ literal|"&#372;"
 argument_list|)
 expr_stmt|;
 comment|// "Wcirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4653,6 +4674,8 @@ literal|"&#373;"
 argument_list|)
 expr_stmt|;
 comment|// "wcirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4663,6 +4686,8 @@ literal|"&#374;"
 argument_list|)
 expr_stmt|;
 comment|// "Ycirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4673,6 +4698,8 @@ literal|"&#375;"
 argument_list|)
 expr_stmt|;
 comment|// "ycirc"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4683,6 +4710,8 @@ literal|"&#376;"
 argument_list|)
 expr_stmt|;
 comment|// "Yuml"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4693,6 +4722,8 @@ literal|"&#377;"
 argument_list|)
 expr_stmt|;
 comment|// "Zacute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4703,6 +4734,8 @@ literal|"&#378;"
 argument_list|)
 expr_stmt|;
 comment|// "zacute"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4713,6 +4746,8 @@ literal|"&#379;"
 argument_list|)
 expr_stmt|;
 comment|// "Zdot"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4723,6 +4758,8 @@ literal|"&#380;"
 argument_list|)
 expr_stmt|;
 comment|// "zdot"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4733,6 +4770,8 @@ literal|"&#381;"
 argument_list|)
 expr_stmt|;
 comment|// "Zcaron"
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4744,6 +4783,8 @@ argument_list|)
 expr_stmt|;
 comment|// "zcaron"
 comment|// Symbol #383 (f) has no special Latex command
+name|Globals
+operator|.
 name|HTMLCHARS
 operator|.
 name|put
@@ -4754,6 +4795,8 @@ literal|"%"
 argument_list|)
 expr_stmt|;
 comment|// percent sign
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4763,6 +4806,8 @@ argument_list|,
 literal|"&#x00E4;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4772,6 +4817,8 @@ argument_list|,
 literal|"&#x00C4;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4781,6 +4828,8 @@ argument_list|,
 literal|"&#x00EB;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4790,6 +4839,8 @@ argument_list|,
 literal|"&#x00CB;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4799,6 +4850,8 @@ argument_list|,
 literal|"&#x00EF;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4808,6 +4861,8 @@ argument_list|,
 literal|"&#x00CF;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4817,6 +4872,8 @@ argument_list|,
 literal|"&#x00F6;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4826,6 +4883,8 @@ argument_list|,
 literal|"&#x00D6;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4835,6 +4894,8 @@ argument_list|,
 literal|"&#x00FC;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4845,6 +4906,8 @@ literal|"&#x00DC;"
 argument_list|)
 expr_stmt|;
 comment|//next 2 rows were missing...
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4854,6 +4917,8 @@ argument_list|,
 literal|"&#x00E0;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4863,6 +4928,8 @@ argument_list|,
 literal|"&#x00C0;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4872,6 +4939,8 @@ argument_list|,
 literal|"&#x00E8;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4881,6 +4950,8 @@ argument_list|,
 literal|"&#x00C8;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4890,6 +4961,8 @@ argument_list|,
 literal|"&#x00EC;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4899,6 +4972,8 @@ argument_list|,
 literal|"&#x00CC;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4908,6 +4983,8 @@ argument_list|,
 literal|"&#x00F2;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4917,6 +4994,8 @@ argument_list|,
 literal|"&#x00D2;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4926,6 +5005,8 @@ argument_list|,
 literal|"&#x00F9;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4936,6 +5017,8 @@ literal|"&#x00D9;"
 argument_list|)
 expr_stmt|;
 comment|//corrected these 10 lines below...
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4945,6 +5028,8 @@ argument_list|,
 literal|"&#x00E1;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4954,6 +5039,8 @@ argument_list|,
 literal|"&#x00C1;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4963,6 +5050,8 @@ argument_list|,
 literal|"&#x00E9;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4972,6 +5061,8 @@ argument_list|,
 literal|"&#x00C9;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4981,6 +5072,8 @@ argument_list|,
 literal|"&#x00ED;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4990,6 +5083,8 @@ argument_list|,
 literal|"&#x00CD;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -4999,6 +5094,8 @@ argument_list|,
 literal|"&#x00F3;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5008,6 +5105,8 @@ argument_list|,
 literal|"&#x00D3;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5017,6 +5116,8 @@ argument_list|,
 literal|"&#x00FA;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5027,6 +5128,8 @@ literal|"&#x00DA;"
 argument_list|)
 expr_stmt|;
 comment|//added next four chars...
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5036,6 +5139,8 @@ argument_list|,
 literal|"&#x0107;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5045,6 +5150,8 @@ argument_list|,
 literal|"&#x0106;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5054,6 +5161,8 @@ argument_list|,
 literal|"&#x00E7;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5063,6 +5172,8 @@ argument_list|,
 literal|"&#x00C7;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5072,6 +5183,8 @@ argument_list|,
 literal|"&#x00C9;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5081,6 +5194,8 @@ argument_list|,
 literal|"&#x00ED;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5090,6 +5205,8 @@ argument_list|,
 literal|"&#x00CD;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5099,6 +5216,8 @@ argument_list|,
 literal|"&#x00F3;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5108,6 +5227,8 @@ argument_list|,
 literal|"&#x00D3;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5117,6 +5238,8 @@ argument_list|,
 literal|"&#x00FA;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5126,6 +5249,8 @@ argument_list|,
 literal|"&#x00DA;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5135,6 +5260,8 @@ argument_list|,
 literal|"&#x00E1;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5145,6 +5272,8 @@ literal|"&#x00C1;"
 argument_list|)
 expr_stmt|;
 comment|//next 2 rows were missing...
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5154,6 +5283,8 @@ argument_list|,
 literal|"&#x00E2;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5163,6 +5294,8 @@ argument_list|,
 literal|"&#x00C2;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5172,6 +5305,8 @@ argument_list|,
 literal|"&#x00F4;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5181,6 +5316,8 @@ argument_list|,
 literal|"&#x00D4;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5190,6 +5327,8 @@ argument_list|,
 literal|"&#x00F9;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5199,6 +5338,8 @@ argument_list|,
 literal|"&#x00D9;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5208,6 +5349,8 @@ argument_list|,
 literal|"&#x00EA;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5217,6 +5360,8 @@ argument_list|,
 literal|"&#x00CA;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5226,6 +5371,8 @@ argument_list|,
 literal|"&#x00EE;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5235,6 +5382,8 @@ argument_list|,
 literal|"&#x00CE;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5244,6 +5393,8 @@ argument_list|,
 literal|"&#x00F5;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5253,6 +5404,8 @@ argument_list|,
 literal|"&#x00D5;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5262,6 +5415,8 @@ argument_list|,
 literal|"&#x00F1;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5271,6 +5426,8 @@ argument_list|,
 literal|"&#x00D1;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5280,6 +5437,8 @@ argument_list|,
 literal|"&#x00E3;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5289,6 +5448,8 @@ argument_list|,
 literal|"&#x00C3;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5298,6 +5459,8 @@ argument_list|,
 literal|"&#x00E4;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5307,6 +5470,8 @@ argument_list|,
 literal|"&#x00C4;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5316,6 +5481,8 @@ argument_list|,
 literal|"&#x00EB;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5325,6 +5492,8 @@ argument_list|,
 literal|"&#x00CB;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5334,6 +5503,8 @@ argument_list|,
 literal|"&#x00EF;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5343,6 +5514,8 @@ argument_list|,
 literal|"&#x00CF;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5352,6 +5525,8 @@ argument_list|,
 literal|"&#x00F6;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5361,6 +5536,8 @@ argument_list|,
 literal|"&#x00D6;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5370,6 +5547,8 @@ argument_list|,
 literal|"&#x00FC;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5380,6 +5559,8 @@ literal|"&#x00DC;"
 argument_list|)
 expr_stmt|;
 comment|//next 2 rows were missing...
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5389,6 +5570,8 @@ argument_list|,
 literal|"&#x00E0;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5398,6 +5581,8 @@ argument_list|,
 literal|"&#x00C0;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5407,6 +5592,8 @@ argument_list|,
 literal|"&#x00E8;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5416,6 +5603,8 @@ argument_list|,
 literal|"&#x00C8;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5425,6 +5614,8 @@ argument_list|,
 literal|"&#x00EC;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5434,6 +5625,8 @@ argument_list|,
 literal|"&#x00CC;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5443,6 +5636,8 @@ argument_list|,
 literal|"&#x00F2;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5452,6 +5647,8 @@ argument_list|,
 literal|"&#x00D2;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5461,6 +5658,8 @@ argument_list|,
 literal|"&#x00F9;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5470,6 +5669,8 @@ argument_list|,
 literal|"&#x00D9;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5479,6 +5680,8 @@ argument_list|,
 literal|"&#x00E9;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5488,6 +5691,8 @@ argument_list|,
 literal|"&#x00C9;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5497,6 +5702,8 @@ argument_list|,
 literal|"&#x00ED;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5506,6 +5713,8 @@ argument_list|,
 literal|"&#x00CD;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5515,6 +5724,8 @@ argument_list|,
 literal|"&#x00F3;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5524,6 +5735,8 @@ argument_list|,
 literal|"&#x00D3;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5533,6 +5746,8 @@ argument_list|,
 literal|"&#x00FA;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5542,6 +5757,8 @@ argument_list|,
 literal|"&#x00DA;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5551,6 +5768,8 @@ argument_list|,
 literal|"&#x00E1;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5561,6 +5780,8 @@ literal|"&#x00C1;"
 argument_list|)
 expr_stmt|;
 comment|//added next two chars...
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5570,6 +5791,8 @@ argument_list|,
 literal|"&#x0107;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5580,6 +5803,8 @@ literal|"&#x0106;"
 argument_list|)
 expr_stmt|;
 comment|//next two lines were wrong...
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5589,6 +5814,8 @@ argument_list|,
 literal|"&#x00E2;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5598,6 +5825,8 @@ argument_list|,
 literal|"&#x00C2;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5607,6 +5836,8 @@ argument_list|,
 literal|"&#x00F4;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5616,6 +5847,8 @@ argument_list|,
 literal|"&#x00D4;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5625,6 +5858,8 @@ argument_list|,
 literal|"&#x00F9;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5634,6 +5869,8 @@ argument_list|,
 literal|"&#x00D9;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5643,6 +5880,8 @@ argument_list|,
 literal|"&#x00EA;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5652,6 +5891,8 @@ argument_list|,
 literal|"&#x00CA;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5661,6 +5902,8 @@ argument_list|,
 literal|"&#x00EE;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5670,6 +5913,8 @@ argument_list|,
 literal|"&#x00CE;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5679,6 +5924,8 @@ argument_list|,
 literal|"&#x00F5;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5688,6 +5935,8 @@ argument_list|,
 literal|"&#x00D5;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5697,6 +5946,8 @@ argument_list|,
 literal|"&#x00F1;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5706,6 +5957,8 @@ argument_list|,
 literal|"&#x00D1;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5715,6 +5968,8 @@ argument_list|,
 literal|"&#x00E3;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|XML_CHARS
 operator|.
 name|put
@@ -5724,6 +5979,8 @@ argument_list|,
 literal|"&#x00C3;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ASCII2XML_CHARS
 operator|.
 name|put
@@ -5733,6 +5990,8 @@ argument_list|,
 literal|"&lt;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ASCII2XML_CHARS
 operator|.
 name|put
@@ -5742,6 +6001,8 @@ argument_list|,
 literal|"&quot;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|ASCII2XML_CHARS
 operator|.
 name|put
@@ -5751,6 +6012,8 @@ argument_list|,
 literal|"&gt;"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5760,6 +6023,8 @@ argument_list|,
 literal|"A"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5769,6 +6034,8 @@ argument_list|,
 literal|"A"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5778,6 +6045,8 @@ argument_list|,
 literal|"A"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5787,6 +6056,8 @@ argument_list|,
 literal|"A"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5796,6 +6067,8 @@ argument_list|,
 literal|"Ae"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5805,6 +6078,8 @@ argument_list|,
 literal|"Aa"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5814,6 +6089,8 @@ argument_list|,
 literal|"Ae"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5823,6 +6100,8 @@ argument_list|,
 literal|"C"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5832,6 +6111,8 @@ argument_list|,
 literal|"E"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5841,6 +6122,8 @@ argument_list|,
 literal|"E"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5850,6 +6133,8 @@ argument_list|,
 literal|"E"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5859,6 +6144,8 @@ argument_list|,
 literal|"E"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5868,6 +6155,8 @@ argument_list|,
 literal|"I"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5877,6 +6166,8 @@ argument_list|,
 literal|"I"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5886,6 +6177,8 @@ argument_list|,
 literal|"I"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5895,6 +6188,8 @@ argument_list|,
 literal|"I"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5904,6 +6199,8 @@ argument_list|,
 literal|"D"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5913,6 +6210,8 @@ argument_list|,
 literal|"N"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5922,6 +6221,8 @@ argument_list|,
 literal|"O"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5931,6 +6232,8 @@ argument_list|,
 literal|"O"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5940,6 +6243,8 @@ argument_list|,
 literal|"O"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5949,6 +6254,8 @@ argument_list|,
 literal|"O"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5958,6 +6265,8 @@ argument_list|,
 literal|"Oe"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5967,6 +6276,8 @@ argument_list|,
 literal|"Oe"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5976,6 +6287,8 @@ argument_list|,
 literal|"U"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5985,6 +6298,8 @@ argument_list|,
 literal|"U"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -5994,6 +6309,8 @@ argument_list|,
 literal|"U"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6004,6 +6321,8 @@ literal|"Ue"
 argument_list|)
 expr_stmt|;
 comment|// U umlaut ..
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6013,6 +6332,8 @@ argument_list|,
 literal|"Y"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6022,6 +6343,8 @@ argument_list|,
 literal|"ss"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6031,6 +6354,8 @@ argument_list|,
 literal|"a"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6040,6 +6365,8 @@ argument_list|,
 literal|"a"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6049,6 +6376,8 @@ argument_list|,
 literal|"a"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6058,6 +6387,8 @@ argument_list|,
 literal|"a"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6067,6 +6398,8 @@ argument_list|,
 literal|"ae"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6076,6 +6409,8 @@ argument_list|,
 literal|"aa"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6085,6 +6420,8 @@ argument_list|,
 literal|"ae"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6094,6 +6431,8 @@ argument_list|,
 literal|"c"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6103,6 +6442,8 @@ argument_list|,
 literal|"e"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6112,6 +6453,8 @@ argument_list|,
 literal|"e"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6121,6 +6464,8 @@ argument_list|,
 literal|"e"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6130,6 +6475,8 @@ argument_list|,
 literal|"e"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6139,6 +6486,8 @@ argument_list|,
 literal|"i"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6148,6 +6497,8 @@ argument_list|,
 literal|"i"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6157,6 +6508,8 @@ argument_list|,
 literal|"i"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6166,6 +6519,8 @@ argument_list|,
 literal|"i"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6175,6 +6530,8 @@ argument_list|,
 literal|"o"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6184,6 +6541,8 @@ argument_list|,
 literal|"n"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6193,6 +6552,8 @@ argument_list|,
 literal|"o"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6202,6 +6563,8 @@ argument_list|,
 literal|"o"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6211,6 +6574,8 @@ argument_list|,
 literal|"o"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6220,6 +6585,8 @@ argument_list|,
 literal|"o"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6229,6 +6596,8 @@ argument_list|,
 literal|"oe"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6238,6 +6607,8 @@ argument_list|,
 literal|"oe"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6247,6 +6618,8 @@ argument_list|,
 literal|"u"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6256,6 +6629,8 @@ argument_list|,
 literal|"u"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6265,6 +6640,8 @@ argument_list|,
 literal|"u"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6275,6 +6652,8 @@ literal|"ue"
 argument_list|)
 expr_stmt|;
 comment|// u umlaut...
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6284,6 +6663,8 @@ argument_list|,
 literal|"y"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6293,6 +6674,8 @@ argument_list|,
 literal|"y"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6302,6 +6685,8 @@ argument_list|,
 literal|"A"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6311,6 +6696,8 @@ argument_list|,
 literal|"a"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6320,6 +6707,8 @@ argument_list|,
 literal|"A"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6329,6 +6718,8 @@ argument_list|,
 literal|"a"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6338,6 +6729,8 @@ argument_list|,
 literal|"A"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6347,6 +6740,8 @@ argument_list|,
 literal|"a"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6356,6 +6751,8 @@ argument_list|,
 literal|"C"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6365,6 +6762,8 @@ argument_list|,
 literal|"c"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6374,6 +6773,8 @@ argument_list|,
 literal|"C"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6383,6 +6784,8 @@ argument_list|,
 literal|"c"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6392,6 +6795,8 @@ argument_list|,
 literal|"C"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6401,6 +6806,8 @@ argument_list|,
 literal|"c"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6410,6 +6817,8 @@ argument_list|,
 literal|"C"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6419,6 +6828,8 @@ argument_list|,
 literal|"c"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6428,6 +6839,8 @@ argument_list|,
 literal|"D"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6437,6 +6850,8 @@ argument_list|,
 literal|"d"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6446,6 +6861,8 @@ argument_list|,
 literal|"D"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6455,6 +6872,8 @@ argument_list|,
 literal|"d"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6464,6 +6883,8 @@ argument_list|,
 literal|"E"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6473,6 +6894,8 @@ argument_list|,
 literal|"e"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6482,6 +6905,8 @@ argument_list|,
 literal|"E"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6491,6 +6916,8 @@ argument_list|,
 literal|"e"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6500,6 +6927,8 @@ argument_list|,
 literal|"E"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6509,6 +6938,8 @@ argument_list|,
 literal|"e"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6518,6 +6949,8 @@ argument_list|,
 literal|"E"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6527,6 +6960,8 @@ argument_list|,
 literal|"e"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6536,6 +6971,8 @@ argument_list|,
 literal|"E"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6545,6 +6982,8 @@ argument_list|,
 literal|"e"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6554,6 +6993,8 @@ argument_list|,
 literal|"G"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6563,6 +7004,8 @@ argument_list|,
 literal|"g"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6572,6 +7015,8 @@ argument_list|,
 literal|"G"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6581,6 +7026,8 @@ argument_list|,
 literal|"g"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6590,6 +7037,8 @@ argument_list|,
 literal|"G"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6599,6 +7048,8 @@ argument_list|,
 literal|"g"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6608,6 +7059,8 @@ argument_list|,
 literal|"G"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6617,6 +7070,8 @@ argument_list|,
 literal|"g"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6626,6 +7081,8 @@ argument_list|,
 literal|"H"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6635,6 +7092,8 @@ argument_list|,
 literal|"h"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6644,6 +7103,8 @@ argument_list|,
 literal|"h"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6653,6 +7114,8 @@ argument_list|,
 literal|"I"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6662,6 +7125,8 @@ argument_list|,
 literal|"i"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6671,6 +7136,8 @@ argument_list|,
 literal|"I"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6680,6 +7147,8 @@ argument_list|,
 literal|"i"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6689,6 +7158,8 @@ argument_list|,
 literal|"I"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6698,6 +7169,8 @@ argument_list|,
 literal|"i"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6707,6 +7180,8 @@ argument_list|,
 literal|"I"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6716,6 +7191,8 @@ argument_list|,
 literal|"i"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6725,6 +7202,8 @@ argument_list|,
 literal|"I"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6734,6 +7213,8 @@ argument_list|,
 literal|"i"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6743,6 +7224,8 @@ argument_list|,
 literal|"IJ"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6752,6 +7235,8 @@ argument_list|,
 literal|"ij"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6761,6 +7246,8 @@ argument_list|,
 literal|"J"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6770,6 +7257,8 @@ argument_list|,
 literal|"j"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6779,6 +7268,8 @@ argument_list|,
 literal|"K"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6788,6 +7279,8 @@ argument_list|,
 literal|"k"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6797,6 +7290,8 @@ argument_list|,
 literal|"k"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6806,6 +7301,8 @@ argument_list|,
 literal|"L"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6815,6 +7312,8 @@ argument_list|,
 literal|"l"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6824,6 +7323,8 @@ argument_list|,
 literal|"L"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6833,6 +7334,8 @@ argument_list|,
 literal|"l"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6842,6 +7345,8 @@ argument_list|,
 literal|"L"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6851,6 +7356,8 @@ argument_list|,
 literal|"l"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6860,6 +7367,8 @@ argument_list|,
 literal|"L"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6869,6 +7378,8 @@ argument_list|,
 literal|"l"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6878,6 +7389,8 @@ argument_list|,
 literal|"L"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6887,6 +7400,8 @@ argument_list|,
 literal|"l"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6896,6 +7411,8 @@ argument_list|,
 literal|"N"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6905,6 +7422,8 @@ argument_list|,
 literal|"n"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6914,6 +7433,8 @@ argument_list|,
 literal|"N"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6923,6 +7444,8 @@ argument_list|,
 literal|"n"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6932,6 +7455,8 @@ argument_list|,
 literal|"N"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6941,6 +7466,8 @@ argument_list|,
 literal|"n"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6950,6 +7477,8 @@ argument_list|,
 literal|"n"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6959,6 +7488,8 @@ argument_list|,
 literal|"N"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6968,6 +7499,8 @@ argument_list|,
 literal|"n"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6977,6 +7510,8 @@ argument_list|,
 literal|"O"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6986,6 +7521,8 @@ argument_list|,
 literal|"o"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -6995,6 +7532,8 @@ argument_list|,
 literal|"O"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7004,6 +7543,8 @@ argument_list|,
 literal|"o"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7013,6 +7554,8 @@ argument_list|,
 literal|"Oe"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7022,6 +7565,8 @@ argument_list|,
 literal|"oe"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7031,6 +7576,8 @@ argument_list|,
 literal|"OE"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7040,6 +7587,8 @@ argument_list|,
 literal|"oe"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7049,6 +7598,8 @@ argument_list|,
 literal|"R"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7058,6 +7609,8 @@ argument_list|,
 literal|"r"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7067,6 +7620,8 @@ argument_list|,
 literal|"R"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7076,6 +7631,8 @@ argument_list|,
 literal|"r"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7085,6 +7642,8 @@ argument_list|,
 literal|"R"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7094,6 +7653,8 @@ argument_list|,
 literal|"r"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7103,6 +7664,8 @@ argument_list|,
 literal|"S"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7112,6 +7675,8 @@ argument_list|,
 literal|"s"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7121,6 +7686,8 @@ argument_list|,
 literal|"S"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7130,6 +7697,8 @@ argument_list|,
 literal|"s"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7139,6 +7708,8 @@ argument_list|,
 literal|"S"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7148,6 +7719,8 @@ argument_list|,
 literal|"s"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7157,6 +7730,8 @@ argument_list|,
 literal|"S"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7166,6 +7741,8 @@ argument_list|,
 literal|"s"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7175,6 +7752,8 @@ argument_list|,
 literal|"T"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7184,6 +7763,8 @@ argument_list|,
 literal|"t"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7193,6 +7774,8 @@ argument_list|,
 literal|"T"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7202,6 +7785,8 @@ argument_list|,
 literal|"t"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7211,6 +7796,8 @@ argument_list|,
 literal|"T"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7220,6 +7807,8 @@ argument_list|,
 literal|"t"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7229,6 +7818,8 @@ argument_list|,
 literal|"U"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7238,6 +7829,8 @@ argument_list|,
 literal|"u"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7247,6 +7840,8 @@ argument_list|,
 literal|"U"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7256,6 +7851,8 @@ argument_list|,
 literal|"u"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7265,6 +7862,8 @@ argument_list|,
 literal|"U"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7274,6 +7873,8 @@ argument_list|,
 literal|"u"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7283,6 +7884,8 @@ argument_list|,
 literal|"UU"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7292,6 +7895,8 @@ argument_list|,
 literal|"uu"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7301,6 +7906,8 @@ argument_list|,
 literal|"Ue"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7310,6 +7917,8 @@ argument_list|,
 literal|"ue"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7319,6 +7928,8 @@ argument_list|,
 literal|"U"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7328,6 +7939,8 @@ argument_list|,
 literal|"u"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7337,6 +7950,8 @@ argument_list|,
 literal|"W"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7346,6 +7961,8 @@ argument_list|,
 literal|"w"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7355,6 +7972,8 @@ argument_list|,
 literal|"Y"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7364,6 +7983,8 @@ argument_list|,
 literal|"y"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7373,6 +7994,8 @@ argument_list|,
 literal|"Y"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7382,6 +8005,8 @@ argument_list|,
 literal|"Z"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7391,6 +8016,8 @@ argument_list|,
 literal|"z"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7400,6 +8027,8 @@ argument_list|,
 literal|"Z"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7409,6 +8038,8 @@ argument_list|,
 literal|"z"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7418,6 +8049,8 @@ argument_list|,
 literal|"Z"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7427,6 +8060,8 @@ argument_list|,
 literal|"z"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7436,6 +8071,8 @@ argument_list|,
 literal|"E"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7445,6 +8082,8 @@ argument_list|,
 literal|"e"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7454,6 +8093,8 @@ argument_list|,
 literal|"Y"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7463,6 +8104,8 @@ argument_list|,
 literal|"y"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7472,6 +8115,8 @@ argument_list|,
 literal|"A"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7481,6 +8126,8 @@ argument_list|,
 literal|"a"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7490,6 +8137,8 @@ argument_list|,
 literal|"I"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7499,6 +8148,8 @@ argument_list|,
 literal|"i"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7508,6 +8159,8 @@ argument_list|,
 literal|"O"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7517,6 +8170,8 @@ argument_list|,
 literal|"o"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7526,6 +8181,8 @@ argument_list|,
 literal|"U"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7535,6 +8192,8 @@ argument_list|,
 literal|"u"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7544,6 +8203,8 @@ argument_list|,
 literal|"Y"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7553,6 +8214,8 @@ argument_list|,
 literal|"y"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7562,6 +8225,8 @@ argument_list|,
 literal|"O"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7571,6 +8236,8 @@ argument_list|,
 literal|"o"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7580,6 +8247,8 @@ argument_list|,
 literal|"D"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7589,6 +8258,8 @@ argument_list|,
 literal|"d"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7598,6 +8269,8 @@ argument_list|,
 literal|"H"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7607,6 +8280,8 @@ argument_list|,
 literal|"h"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7616,6 +8291,8 @@ argument_list|,
 literal|"L"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7625,6 +8302,8 @@ argument_list|,
 literal|"l"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7634,6 +8313,8 @@ argument_list|,
 literal|"L"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7643,6 +8324,8 @@ argument_list|,
 literal|"l"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7652,6 +8335,8 @@ argument_list|,
 literal|"M"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7661,6 +8346,8 @@ argument_list|,
 literal|"m"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7670,6 +8357,8 @@ argument_list|,
 literal|"N"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7679,6 +8368,8 @@ argument_list|,
 literal|"n"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7688,6 +8379,8 @@ argument_list|,
 literal|"R"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7697,6 +8390,8 @@ argument_list|,
 literal|"r"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7706,6 +8401,8 @@ argument_list|,
 literal|"R"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7715,6 +8412,8 @@ argument_list|,
 literal|"r"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7724,6 +8423,8 @@ argument_list|,
 literal|"S"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7733,6 +8434,8 @@ argument_list|,
 literal|"s"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7742,6 +8445,8 @@ argument_list|,
 literal|"T"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7751,6 +8456,8 @@ argument_list|,
 literal|"t"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7760,6 +8467,8 @@ argument_list|,
 literal|"I"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7770,6 +8479,8 @@ literal|"AE"
 argument_list|)
 expr_stmt|;
 comment|// doesn't work?
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7779,6 +8490,8 @@ argument_list|,
 literal|"U"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7788,6 +8501,8 @@ argument_list|,
 literal|"u"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7797,6 +8512,8 @@ argument_list|,
 literal|"Y"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|UNICODE_CHARS
 operator|.
 name|put
@@ -7808,6 +8525,8 @@ argument_list|)
 expr_stmt|;
 comment|// thorn character
 comment|// UNICODE_CHARS.put("\u0100", "");
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7817,6 +8536,8 @@ argument_list|,
 literal|"\\'e0"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7826,6 +8547,8 @@ argument_list|,
 literal|"\\'e8"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7835,6 +8558,8 @@ argument_list|,
 literal|"\\'ec"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7844,6 +8569,8 @@ argument_list|,
 literal|"\\'f2"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7853,6 +8580,8 @@ argument_list|,
 literal|"\\'f9"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7862,6 +8591,8 @@ argument_list|,
 literal|"\\'e1"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7871,6 +8602,8 @@ argument_list|,
 literal|"\\'e9"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7880,6 +8613,8 @@ argument_list|,
 literal|"\\'ed"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7889,6 +8624,8 @@ argument_list|,
 literal|"\\'f3"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7898,6 +8635,8 @@ argument_list|,
 literal|"\\'fa"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7907,6 +8646,8 @@ argument_list|,
 literal|"\\'e2"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7916,6 +8657,8 @@ argument_list|,
 literal|"\\'ea"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7925,6 +8668,8 @@ argument_list|,
 literal|"\\'ee"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7934,6 +8679,8 @@ argument_list|,
 literal|"\\'f4"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7943,6 +8690,8 @@ argument_list|,
 literal|"\\'fa"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7952,6 +8701,8 @@ argument_list|,
 literal|"\\'e4"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7961,6 +8712,8 @@ argument_list|,
 literal|"\\'eb"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7970,6 +8723,8 @@ argument_list|,
 literal|"\\'ef"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7979,6 +8734,8 @@ argument_list|,
 literal|"\\'f6"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7988,6 +8745,8 @@ argument_list|,
 literal|"\\u252u"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -7997,6 +8756,8 @@ argument_list|,
 literal|"\\'f1"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8006,6 +8767,8 @@ argument_list|,
 literal|"\\'c0"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8015,6 +8778,8 @@ argument_list|,
 literal|"\\'c8"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8024,6 +8789,8 @@ argument_list|,
 literal|"\\'cc"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8033,6 +8800,8 @@ argument_list|,
 literal|"\\'d2"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8042,6 +8811,8 @@ argument_list|,
 literal|"\\'d9"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8051,6 +8822,8 @@ argument_list|,
 literal|"\\'c1"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8060,6 +8833,8 @@ argument_list|,
 literal|"\\'c9"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8069,6 +8844,8 @@ argument_list|,
 literal|"\\'cd"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8078,6 +8855,8 @@ argument_list|,
 literal|"\\'d3"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8087,6 +8866,8 @@ argument_list|,
 literal|"\\'da"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8096,6 +8877,8 @@ argument_list|,
 literal|"\\'c2"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8105,6 +8888,8 @@ argument_list|,
 literal|"\\'ca"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8114,6 +8899,8 @@ argument_list|,
 literal|"\\'ce"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8123,6 +8910,8 @@ argument_list|,
 literal|"\\'d4"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8132,6 +8921,8 @@ argument_list|,
 literal|"\\'db"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8141,6 +8932,8 @@ argument_list|,
 literal|"\\'c4"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8150,6 +8943,8 @@ argument_list|,
 literal|"\\'cb"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8159,6 +8954,8 @@ argument_list|,
 literal|"\\'cf"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8168,6 +8965,8 @@ argument_list|,
 literal|"\\'d6"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8179,6 +8978,8 @@ argument_list|)
 expr_stmt|;
 comment|// Use UNICODE characters for RTF-Chars which can not be found in the
 comment|// standard codepage
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8189,6 +8990,8 @@ literal|"\\u192A"
 argument_list|)
 expr_stmt|;
 comment|// "Agrave"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8199,6 +9002,8 @@ literal|"\\u193A"
 argument_list|)
 expr_stmt|;
 comment|// "Aacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8209,6 +9014,8 @@ literal|"\\u194A"
 argument_list|)
 expr_stmt|;
 comment|// "Acirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8219,6 +9026,8 @@ literal|"\\u195A"
 argument_list|)
 expr_stmt|;
 comment|// "Atilde"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8229,6 +9038,8 @@ literal|"\\u196A"
 argument_list|)
 expr_stmt|;
 comment|// "Auml"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8240,6 +9051,8 @@ argument_list|)
 expr_stmt|;
 comment|// "Aring"
 comment|// RTFCHARS.put("AE", "{\\uc2\\u198AE}"); // "AElig"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8250,6 +9063,8 @@ literal|"{\\u198A}"
 argument_list|)
 expr_stmt|;
 comment|// "AElig"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8260,6 +9075,8 @@ literal|"\\u199C"
 argument_list|)
 expr_stmt|;
 comment|// "Ccedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8270,6 +9087,8 @@ literal|"\\u200E"
 argument_list|)
 expr_stmt|;
 comment|// "Egrave"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8280,6 +9099,8 @@ literal|"\\u201E"
 argument_list|)
 expr_stmt|;
 comment|// "Eacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8290,6 +9111,8 @@ literal|"\\u202E"
 argument_list|)
 expr_stmt|;
 comment|// "Ecirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8300,6 +9123,8 @@ literal|"\\u203E"
 argument_list|)
 expr_stmt|;
 comment|// "Euml"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8310,6 +9135,8 @@ literal|"\\u204I"
 argument_list|)
 expr_stmt|;
 comment|// "Igrave
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8320,6 +9147,8 @@ literal|"\\u205I"
 argument_list|)
 expr_stmt|;
 comment|// "Iacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8330,6 +9159,8 @@ literal|"\\u206I"
 argument_list|)
 expr_stmt|;
 comment|// "Icirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8340,6 +9171,8 @@ literal|"\\u207I"
 argument_list|)
 expr_stmt|;
 comment|// "Iuml"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8350,6 +9183,8 @@ literal|"\\u208D"
 argument_list|)
 expr_stmt|;
 comment|// "ETH"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8360,6 +9195,8 @@ literal|"\\u209N"
 argument_list|)
 expr_stmt|;
 comment|// "Ntilde"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8370,6 +9207,8 @@ literal|"\\u210O"
 argument_list|)
 expr_stmt|;
 comment|// "Ograve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8380,6 +9219,8 @@ literal|"\\u211O"
 argument_list|)
 expr_stmt|;
 comment|// "Oacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8390,6 +9231,8 @@ literal|"\\u212O"
 argument_list|)
 expr_stmt|;
 comment|// "Ocirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8400,6 +9243,8 @@ literal|"\\u213O"
 argument_list|)
 expr_stmt|;
 comment|// "Otilde"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8413,6 +9258,8 @@ comment|// "Ouml"
 comment|// According to ISO 8859-1 the "\times" symbol should be placed here
 comment|// (#215).
 comment|// Omitting this, because it is a mathematical symbol.
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8424,6 +9271,8 @@ argument_list|)
 expr_stmt|;
 comment|// "Oslash"
 comment|//  RTFCHARS.put("O", "\\'d8");
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8433,6 +9282,8 @@ argument_list|,
 literal|"\\'f8"
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8443,6 +9294,8 @@ literal|"\\u217U"
 argument_list|)
 expr_stmt|;
 comment|// "Ugrave"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8453,6 +9306,8 @@ literal|"\\u218U"
 argument_list|)
 expr_stmt|;
 comment|// "Uacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8463,6 +9318,8 @@ literal|"\\u219U"
 argument_list|)
 expr_stmt|;
 comment|// "Ucirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8473,6 +9330,8 @@ literal|"\\u220U"
 argument_list|)
 expr_stmt|;
 comment|// "Uuml"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8483,6 +9342,8 @@ literal|"\\u221Y"
 argument_list|)
 expr_stmt|;
 comment|// "Yacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8493,6 +9354,8 @@ literal|"{\\uc2\\u222TH}"
 argument_list|)
 expr_stmt|;
 comment|// "THORN"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8504,6 +9367,8 @@ argument_list|)
 expr_stmt|;
 comment|// "szlig"
 comment|//RTFCHARS.put("ss", "AFFEN"); // "szlig"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8514,6 +9379,8 @@ literal|"\\u224a"
 argument_list|)
 expr_stmt|;
 comment|// "agrave"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8524,6 +9391,8 @@ literal|"\\u225a"
 argument_list|)
 expr_stmt|;
 comment|// "aacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8534,6 +9403,8 @@ literal|"\\u226a"
 argument_list|)
 expr_stmt|;
 comment|// "acirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8544,6 +9415,8 @@ literal|"\\u227a"
 argument_list|)
 expr_stmt|;
 comment|// "atilde"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8554,6 +9427,8 @@ literal|"\\u228a"
 argument_list|)
 expr_stmt|;
 comment|// "auml"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8565,6 +9440,8 @@ argument_list|)
 expr_stmt|;
 comment|// "aring"
 comment|//  RTFCHARS.put("ae", "{\\uc2\\u230ae}"); // "aelig" \\u230e6
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8575,6 +9452,8 @@ literal|"{\\u230a}"
 argument_list|)
 expr_stmt|;
 comment|// "aelig" \\u230e6
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8585,6 +9464,8 @@ literal|"\\u231c"
 argument_list|)
 expr_stmt|;
 comment|// "ccedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8595,6 +9476,8 @@ literal|"\\u232e"
 argument_list|)
 expr_stmt|;
 comment|// "egrave"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8605,6 +9488,8 @@ literal|"\\u233e"
 argument_list|)
 expr_stmt|;
 comment|// "eacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8615,6 +9500,8 @@ literal|"\\u234e"
 argument_list|)
 expr_stmt|;
 comment|// "ecirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8625,6 +9512,8 @@ literal|"\\u235e"
 argument_list|)
 expr_stmt|;
 comment|// "euml"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8635,6 +9524,8 @@ literal|"\\u236i"
 argument_list|)
 expr_stmt|;
 comment|// "igrave"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8645,6 +9536,8 @@ literal|"\\u237i"
 argument_list|)
 expr_stmt|;
 comment|// "iacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8655,6 +9548,8 @@ literal|"\\u238i"
 argument_list|)
 expr_stmt|;
 comment|// "icirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8665,6 +9560,8 @@ literal|"\\u239i"
 argument_list|)
 expr_stmt|;
 comment|// "iuml"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8675,6 +9572,8 @@ literal|"\\u240d"
 argument_list|)
 expr_stmt|;
 comment|// "eth"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8685,6 +9584,8 @@ literal|"\\u241n"
 argument_list|)
 expr_stmt|;
 comment|// "ntilde"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8695,6 +9596,8 @@ literal|"\\u242o"
 argument_list|)
 expr_stmt|;
 comment|// "ograve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8705,6 +9608,8 @@ literal|"\\u243o"
 argument_list|)
 expr_stmt|;
 comment|// "oacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8715,6 +9620,8 @@ literal|"\\u244o"
 argument_list|)
 expr_stmt|;
 comment|// "ocirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8725,6 +9632,8 @@ literal|"\\u245o"
 argument_list|)
 expr_stmt|;
 comment|// "otilde"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8738,6 +9647,8 @@ comment|// "ouml"
 comment|// According to ISO 8859-1 the "\div" symbol should be placed here
 comment|// (#247).
 comment|// Omitting this, because it is a mathematical symbol.
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8748,6 +9659,8 @@ literal|"\\u248o"
 argument_list|)
 expr_stmt|;
 comment|// "oslash"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8758,6 +9671,8 @@ literal|"\\u249u"
 argument_list|)
 expr_stmt|;
 comment|// "ugrave"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8768,6 +9683,8 @@ literal|"\\u250u"
 argument_list|)
 expr_stmt|;
 comment|// "uacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8780,6 +9697,8 @@ expr_stmt|;
 comment|// "ucirc"
 comment|// RTFCHARS.put("\"u", "\\u252"); // "uuml" exists in standard
 comment|// codepage
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8790,6 +9709,8 @@ literal|"\\u253y"
 argument_list|)
 expr_stmt|;
 comment|// "yacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8800,6 +9721,8 @@ literal|"{\\uc2\\u254th}"
 argument_list|)
 expr_stmt|;
 comment|// "thorn"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8810,6 +9733,8 @@ literal|"\\u255y"
 argument_list|)
 expr_stmt|;
 comment|// "yuml"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8820,6 +9745,8 @@ literal|"\\u256A"
 argument_list|)
 expr_stmt|;
 comment|// "Amacr"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8830,6 +9757,8 @@ literal|"\\u257a"
 argument_list|)
 expr_stmt|;
 comment|// "amacr"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8840,6 +9769,8 @@ literal|"\\u258A"
 argument_list|)
 expr_stmt|;
 comment|// "Abreve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8850,6 +9781,8 @@ literal|"\\u259a"
 argument_list|)
 expr_stmt|;
 comment|// "abreve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8860,6 +9793,8 @@ literal|"\\u260A"
 argument_list|)
 expr_stmt|;
 comment|// "Aogon"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8870,6 +9805,8 @@ literal|"\\u261a"
 argument_list|)
 expr_stmt|;
 comment|// "aogon"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8880,6 +9817,8 @@ literal|"\\u262C"
 argument_list|)
 expr_stmt|;
 comment|// "Cacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8890,6 +9829,8 @@ literal|"\\u263c"
 argument_list|)
 expr_stmt|;
 comment|// "cacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8900,6 +9841,8 @@ literal|"\\u264C"
 argument_list|)
 expr_stmt|;
 comment|// "Ccirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8910,6 +9853,8 @@ literal|"\\u265c"
 argument_list|)
 expr_stmt|;
 comment|// "ccirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8920,6 +9865,8 @@ literal|"\\u266C"
 argument_list|)
 expr_stmt|;
 comment|// "Cdot"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8930,6 +9877,8 @@ literal|"\\u267c"
 argument_list|)
 expr_stmt|;
 comment|// "cdot"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8940,6 +9889,8 @@ literal|"\\u268C"
 argument_list|)
 expr_stmt|;
 comment|// "Ccaron"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8950,6 +9901,8 @@ literal|"\\u269c"
 argument_list|)
 expr_stmt|;
 comment|// "ccaron"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8960,7 +9913,9 @@ literal|"\\u270D"
 argument_list|)
 expr_stmt|;
 comment|// "Dcaron"
-comment|// Symbol #271 (dï¿½) has no special Latex command
+comment|// Symbol #271 (d) has no special Latex command
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8971,6 +9926,8 @@ literal|"\\u272D"
 argument_list|)
 expr_stmt|;
 comment|// "Dstrok"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8981,6 +9938,8 @@ literal|"\\u273d"
 argument_list|)
 expr_stmt|;
 comment|// "dstrok"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -8991,6 +9950,8 @@ literal|"\\u274E"
 argument_list|)
 expr_stmt|;
 comment|// "Emacr"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9001,6 +9962,8 @@ literal|"\\u275e"
 argument_list|)
 expr_stmt|;
 comment|// "emacr"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9011,6 +9974,8 @@ literal|"\\u276E"
 argument_list|)
 expr_stmt|;
 comment|// "Ebreve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9021,6 +9986,8 @@ literal|"\\u277e"
 argument_list|)
 expr_stmt|;
 comment|// "ebreve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9031,6 +9998,8 @@ literal|"\\u278E"
 argument_list|)
 expr_stmt|;
 comment|// "Edot"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9041,6 +10010,8 @@ literal|"\\u279e"
 argument_list|)
 expr_stmt|;
 comment|// "edot"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9051,6 +10022,8 @@ literal|"\\u280E"
 argument_list|)
 expr_stmt|;
 comment|// "Eogon"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9061,6 +10034,8 @@ literal|"\\u281e"
 argument_list|)
 expr_stmt|;
 comment|// "eogon"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9071,6 +10046,8 @@ literal|"\\u282E"
 argument_list|)
 expr_stmt|;
 comment|// "Ecaron"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9081,6 +10058,8 @@ literal|"\\u283e"
 argument_list|)
 expr_stmt|;
 comment|// "ecaron"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9091,6 +10070,8 @@ literal|"\\u284G"
 argument_list|)
 expr_stmt|;
 comment|// "Gcirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9101,6 +10082,8 @@ literal|"\\u285g"
 argument_list|)
 expr_stmt|;
 comment|// "gcirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9111,6 +10094,8 @@ literal|"\\u286G"
 argument_list|)
 expr_stmt|;
 comment|// "Gbreve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9121,6 +10106,8 @@ literal|"\\u287g"
 argument_list|)
 expr_stmt|;
 comment|// "gbreve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9131,6 +10118,8 @@ literal|"\\u288G"
 argument_list|)
 expr_stmt|;
 comment|// "Gdot"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9141,6 +10130,8 @@ literal|"\\u289g"
 argument_list|)
 expr_stmt|;
 comment|// "gdot"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9151,6 +10142,8 @@ literal|"\\u290G"
 argument_list|)
 expr_stmt|;
 comment|// "Gcedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9161,6 +10154,8 @@ literal|"\\u291g"
 argument_list|)
 expr_stmt|;
 comment|// "gacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9171,6 +10166,8 @@ literal|"\\u292H"
 argument_list|)
 expr_stmt|;
 comment|// "Hcirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9181,6 +10178,8 @@ literal|"\\u293h"
 argument_list|)
 expr_stmt|;
 comment|// "hcirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9191,6 +10190,8 @@ literal|"\\u294H"
 argument_list|)
 expr_stmt|;
 comment|// "Hstrok"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9201,6 +10202,8 @@ literal|"\\u295h"
 argument_list|)
 expr_stmt|;
 comment|// "hstrok"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9211,6 +10214,8 @@ literal|"\\u296I"
 argument_list|)
 expr_stmt|;
 comment|// "Itilde"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9221,6 +10226,8 @@ literal|"\\u297i"
 argument_list|)
 expr_stmt|;
 comment|// "itilde"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9231,6 +10238,8 @@ literal|"\\u298I"
 argument_list|)
 expr_stmt|;
 comment|// "Imacr"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9241,6 +10250,8 @@ literal|"\\u299i"
 argument_list|)
 expr_stmt|;
 comment|// "imacr"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9251,6 +10262,8 @@ literal|"\\u300I"
 argument_list|)
 expr_stmt|;
 comment|// "Ibreve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9261,6 +10274,8 @@ literal|"\\u301i"
 argument_list|)
 expr_stmt|;
 comment|// "ibreve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9271,6 +10286,8 @@ literal|"\\u302I"
 argument_list|)
 expr_stmt|;
 comment|// "Iogon"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9281,6 +10298,8 @@ literal|"\\u303i"
 argument_list|)
 expr_stmt|;
 comment|// "iogon"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9291,6 +10310,8 @@ literal|"\\u304I"
 argument_list|)
 expr_stmt|;
 comment|// "Idot"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9303,6 +10324,8 @@ expr_stmt|;
 comment|// "inodot"
 comment|// Symbol #306 (IJ) has no special Latex command
 comment|// Symbol #307 (ij) has no special Latex command
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9313,6 +10336,8 @@ literal|"\\u308J"
 argument_list|)
 expr_stmt|;
 comment|// "Jcirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9323,6 +10348,8 @@ literal|"\\u309j"
 argument_list|)
 expr_stmt|;
 comment|// "jcirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9333,6 +10360,8 @@ literal|"\\u310K"
 argument_list|)
 expr_stmt|;
 comment|// "Kcedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9344,6 +10373,8 @@ argument_list|)
 expr_stmt|;
 comment|// "kcedil"
 comment|// Symbol #312 (k) has no special Latex command
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9354,6 +10385,8 @@ literal|"\\u313L"
 argument_list|)
 expr_stmt|;
 comment|// "Lacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9364,6 +10397,8 @@ literal|"\\u314l"
 argument_list|)
 expr_stmt|;
 comment|// "lacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9374,6 +10409,8 @@ literal|"\\u315L"
 argument_list|)
 expr_stmt|;
 comment|// "Lcedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9384,8 +10421,10 @@ literal|"\\u316l"
 argument_list|)
 expr_stmt|;
 comment|// "lcedil"
-comment|// Symbol #317 (Lï¿½) has no special Latex command
-comment|// Symbol #318 (lï¿½) has no special Latex command
+comment|// Symbol #317 (L) has no special Latex command
+comment|// Symbol #318 (l) has no special Latex command
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9396,6 +10435,8 @@ literal|"\\u319L"
 argument_list|)
 expr_stmt|;
 comment|// "Lmidot"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9406,6 +10447,8 @@ literal|"\\u320l"
 argument_list|)
 expr_stmt|;
 comment|// "lmidot"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9416,6 +10459,8 @@ literal|"\\u321L"
 argument_list|)
 expr_stmt|;
 comment|// "Lstrok"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9426,6 +10471,8 @@ literal|"\\u322l"
 argument_list|)
 expr_stmt|;
 comment|// "lstrok"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9436,6 +10483,8 @@ literal|"\\u323N"
 argument_list|)
 expr_stmt|;
 comment|// "Nacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9446,6 +10495,8 @@ literal|"\\u324n"
 argument_list|)
 expr_stmt|;
 comment|// "nacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9456,6 +10507,8 @@ literal|"\\u325N"
 argument_list|)
 expr_stmt|;
 comment|// "Ncedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9466,6 +10519,8 @@ literal|"\\u326n"
 argument_list|)
 expr_stmt|;
 comment|// "ncedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9476,6 +10531,8 @@ literal|"\\u327N"
 argument_list|)
 expr_stmt|;
 comment|// "Ncaron"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9486,7 +10543,9 @@ literal|"\\u328n"
 argument_list|)
 expr_stmt|;
 comment|// "ncaron"
-comment|// Symbol #329 (ï¿½n) has no special Latex command
+comment|// Symbol #329 (n) has no special Latex command
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9497,6 +10556,8 @@ literal|"\\u330G"
 argument_list|)
 expr_stmt|;
 comment|// "ENG"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9507,6 +10568,8 @@ literal|"\\u331g"
 argument_list|)
 expr_stmt|;
 comment|// "eng"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9517,6 +10580,8 @@ literal|"\\u332O"
 argument_list|)
 expr_stmt|;
 comment|// "Omacr"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9527,6 +10592,8 @@ literal|"\\u333o"
 argument_list|)
 expr_stmt|;
 comment|// "omacr"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9537,6 +10604,8 @@ literal|"\\u334O"
 argument_list|)
 expr_stmt|;
 comment|// "Obreve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9547,6 +10616,8 @@ literal|"\\u335o"
 argument_list|)
 expr_stmt|;
 comment|// "obreve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9557,6 +10628,8 @@ literal|"\\u336?"
 argument_list|)
 expr_stmt|;
 comment|// "Odblac"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9567,6 +10640,8 @@ literal|"\\u337?"
 argument_list|)
 expr_stmt|;
 comment|// "odblac"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9577,6 +10652,8 @@ literal|"{\\uc2\\u338OE}"
 argument_list|)
 expr_stmt|;
 comment|// "OElig"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9587,6 +10664,8 @@ literal|"{\\uc2\\u339oe}"
 argument_list|)
 expr_stmt|;
 comment|// "oelig"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9597,6 +10676,8 @@ literal|"\\u340R"
 argument_list|)
 expr_stmt|;
 comment|// "Racute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9607,6 +10688,8 @@ literal|"\\u341r"
 argument_list|)
 expr_stmt|;
 comment|// "racute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9617,6 +10700,8 @@ literal|"\\u342R"
 argument_list|)
 expr_stmt|;
 comment|// "Rcedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9627,6 +10712,8 @@ literal|"\\u343r"
 argument_list|)
 expr_stmt|;
 comment|// "rcedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9637,6 +10724,8 @@ literal|"\\u344R"
 argument_list|)
 expr_stmt|;
 comment|// "Rcaron"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9647,6 +10736,8 @@ literal|"\\u345r"
 argument_list|)
 expr_stmt|;
 comment|// "rcaron"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9657,6 +10748,8 @@ literal|"\\u346S"
 argument_list|)
 expr_stmt|;
 comment|// "Sacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9667,6 +10760,8 @@ literal|"\\u347s"
 argument_list|)
 expr_stmt|;
 comment|// "sacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9677,6 +10772,8 @@ literal|"\\u348S"
 argument_list|)
 expr_stmt|;
 comment|// "Scirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9687,6 +10784,8 @@ literal|"\\u349s"
 argument_list|)
 expr_stmt|;
 comment|// "scirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9697,6 +10796,8 @@ literal|"\\u350S"
 argument_list|)
 expr_stmt|;
 comment|// "Scedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9707,6 +10808,8 @@ literal|"\\u351s"
 argument_list|)
 expr_stmt|;
 comment|// "scedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9717,6 +10820,8 @@ literal|"\\u352S"
 argument_list|)
 expr_stmt|;
 comment|// "Scaron"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9727,6 +10832,8 @@ literal|"\\u353s"
 argument_list|)
 expr_stmt|;
 comment|// "scaron"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9737,6 +10844,8 @@ literal|"\\u354T"
 argument_list|)
 expr_stmt|;
 comment|// "Tcedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9747,6 +10856,8 @@ literal|"\\u355t"
 argument_list|)
 expr_stmt|;
 comment|// "tcedil"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9757,7 +10868,9 @@ literal|"\\u356T"
 argument_list|)
 expr_stmt|;
 comment|// "Tcaron"
-comment|// Symbol #357 (tï¿½) has no special Latex command
+comment|// Symbol #357 (t) has no special Latex command
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9768,6 +10881,8 @@ literal|"\\u358T"
 argument_list|)
 expr_stmt|;
 comment|// "Tstrok"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9778,6 +10893,8 @@ literal|"\\u359t"
 argument_list|)
 expr_stmt|;
 comment|// "tstrok"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9788,6 +10905,8 @@ literal|"\\u360U"
 argument_list|)
 expr_stmt|;
 comment|// "Utilde"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9798,6 +10917,8 @@ literal|"\\u361u"
 argument_list|)
 expr_stmt|;
 comment|// "utilde"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9808,6 +10929,8 @@ literal|"\\u362U"
 argument_list|)
 expr_stmt|;
 comment|// "Umacr"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9818,6 +10941,8 @@ literal|"\\u363u"
 argument_list|)
 expr_stmt|;
 comment|// "umacr"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9828,6 +10953,8 @@ literal|"\\u364U"
 argument_list|)
 expr_stmt|;
 comment|// "Ubreve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9838,6 +10965,8 @@ literal|"\\u365u"
 argument_list|)
 expr_stmt|;
 comment|// "ubreve"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9848,6 +10977,8 @@ literal|"\\u366U"
 argument_list|)
 expr_stmt|;
 comment|// "Uring"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9858,6 +10989,8 @@ literal|"\\u367u"
 argument_list|)
 expr_stmt|;
 comment|// "uring"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9868,6 +11001,8 @@ literal|"\\u368?"
 argument_list|)
 expr_stmt|;
 comment|// "Odblac"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9878,6 +11013,8 @@ literal|"\\u369?"
 argument_list|)
 expr_stmt|;
 comment|// "odblac"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9888,6 +11025,8 @@ literal|"\\u370U"
 argument_list|)
 expr_stmt|;
 comment|// "Uogon"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9898,6 +11037,8 @@ literal|"\\u371u"
 argument_list|)
 expr_stmt|;
 comment|// "uogon"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9908,6 +11049,8 @@ literal|"\\u372W"
 argument_list|)
 expr_stmt|;
 comment|// "Wcirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9918,6 +11061,8 @@ literal|"\\u373w"
 argument_list|)
 expr_stmt|;
 comment|// "wcirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9928,6 +11073,8 @@ literal|"\\u374Y"
 argument_list|)
 expr_stmt|;
 comment|// "Ycirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9938,6 +11085,8 @@ literal|"\\u375y"
 argument_list|)
 expr_stmt|;
 comment|// "ycirc"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9948,6 +11097,8 @@ literal|"\\u376Y"
 argument_list|)
 expr_stmt|;
 comment|// "Yuml"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9958,6 +11109,8 @@ literal|"\\u377Z"
 argument_list|)
 expr_stmt|;
 comment|// "Zacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9968,6 +11121,8 @@ literal|"\\u378z"
 argument_list|)
 expr_stmt|;
 comment|// "zacute"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9978,6 +11133,8 @@ literal|"\\u379Z"
 argument_list|)
 expr_stmt|;
 comment|// "Zdot"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9988,6 +11145,8 @@ literal|"\\u380z"
 argument_list|)
 expr_stmt|;
 comment|// "zdot"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -9998,6 +11157,8 @@ literal|"\\u381Z"
 argument_list|)
 expr_stmt|;
 comment|// "Zcaron"
+name|Globals
+operator|.
 name|RTFCHARS
 operator|.
 name|put
@@ -10019,41 +11180,64 @@ name|initializeJournalNames
 parameter_list|()
 block|{
 comment|// Read internal lists:
+name|Globals
+operator|.
 name|journalAbbrev
 operator|=
 operator|new
-name|JournalAbbreviations
+name|JournalAbbreviationRepository
+argument_list|()
+expr_stmt|;
+name|Globals
+operator|.
+name|journalAbbrev
+operator|.
+name|readJournalListFromResource
 argument_list|(
+name|Globals
+operator|.
 name|JOURNALS_FILE_BUILTIN
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useIEEEAbrv"
+name|JabRefPreferences
+operator|.
+name|USE_IEEE_ABRV
 argument_list|)
 condition|)
+block|{
+name|Globals
+operator|.
 name|journalAbbrev
 operator|.
-name|readJournalList
+name|readJournalListFromResource
 argument_list|(
-literal|"/resource/IEEEJournalList.txt"
+name|JOURNALS_IEEE_INTERNAL_LIST
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Read external lists, if any (in reverse order, so the upper lists
 comment|// override the lower):
 name|String
 index|[]
 name|lists
 init|=
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"externalJournalLists"
+name|JabRefPreferences
+operator|.
+name|EXTERNAL_JOURNAL_LISTS
 argument_list|)
 decl_stmt|;
 if|if
@@ -10094,9 +11278,11 @@ control|)
 block|{
 try|try
 block|{
+name|Globals
+operator|.
 name|journalAbbrev
 operator|.
-name|readJournalList
+name|readJournalListFromFile
 argument_list|(
 operator|new
 name|File
@@ -10116,14 +11302,13 @@ name|e
 parameter_list|)
 block|{
 comment|// The file couldn't be found... should we tell anyone?
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
+literal|"Cannot find file"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -10132,11 +11317,15 @@ block|}
 comment|// Read personal list, if set up:
 if|if
 condition|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"personalJournalList"
+name|JabRefPreferences
+operator|.
+name|PERSONAL_JOURNAL_LIST
 argument_list|)
 operator|!=
 literal|null
@@ -10144,18 +11333,24 @@ condition|)
 block|{
 try|try
 block|{
+name|Globals
+operator|.
 name|journalAbbrev
 operator|.
-name|readJournalList
+name|readJournalListFromFile
 argument_list|(
 operator|new
 name|File
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"personalJournalList"
+name|JabRefPreferences
+operator|.
+name|PERSONAL_JOURNAL_LIST
 argument_list|)
 argument_list|)
 argument_list|)
@@ -10167,26 +11362,32 @@ name|FileNotFoundException
 name|e
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Personal journal list file '"
 operator|+
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"personalJournalList"
+name|JabRefPreferences
+operator|.
+name|PERSONAL_JOURNAL_LIST
 argument_list|)
 operator|+
 literal|"' not found."
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Returns a reg exp pattern in the form (w1)|(w2)| ... 	 * wi are escaped if no regex search is enabled 	 */
+comment|/**      * Returns a reg exp pattern in the form (w1)|(w2)| ...      * wi are escaped if no regex search is enabled      */
 DECL|method|getPatternForWords (ArrayList<String> words)
 specifier|public
 specifier|static
@@ -10227,6 +11428,7 @@ name|isEmpty
 argument_list|()
 operator|)
 condition|)
+block|{
 return|return
 name|Pattern
 operator|.
@@ -10235,6 +11437,7 @@ argument_list|(
 literal|""
 argument_list|)
 return|;
+block|}
 name|boolean
 name|regExSearch
 init|=
@@ -10244,7 +11447,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"regExpSearch"
+name|JabRefPreferences
+operator|.
+name|REG_EXP_SEARCH
 argument_list|)
 decl_stmt|;
 comment|// compile the words to a regex in the form (w1) | (w2) | (w3)
@@ -10350,7 +11555,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"caseSensitiveSearch"
+name|JabRefPreferences
+operator|.
+name|CASE_SENSITIVE_SEARCH
 argument_list|)
 condition|)
 block|{
@@ -10383,140 +11590,6 @@ block|}
 return|return
 name|pattern
 return|;
-block|}
-comment|/** 	 * With Java 7, one could directly set a format for the SimpleFormatter 	 * (http://stackoverflow.com/a/10722260/873282) and use that in a StreamHandler. 	 * As JabRef is compatible with Java6, we have to write our own Handler 	 */
-DECL|class|StdoutConsoleHandler
-specifier|private
-specifier|static
-class|class
-name|StdoutConsoleHandler
-extends|extends
-name|Handler
-block|{
-annotation|@
-name|Override
-DECL|method|close ()
-specifier|public
-name|void
-name|close
-parameter_list|()
-throws|throws
-name|SecurityException
-block|{         }
-annotation|@
-name|Override
-DECL|method|flush ()
-specifier|public
-name|void
-name|flush
-parameter_list|()
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|publish (LogRecord record)
-specifier|public
-name|void
-name|publish
-parameter_list|(
-name|LogRecord
-name|record
-parameter_list|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|record
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-DECL|method|setupLogging ()
-specifier|public
-specifier|static
-name|void
-name|setupLogging
-parameter_list|()
-block|{
-comment|// get the root logger. It is NOT GLOBAL_LOGGER_NAME
-name|Logger
-name|rootLogger
-init|=
-name|Logger
-operator|.
-name|getLogger
-argument_list|(
-literal|""
-argument_list|)
-decl_stmt|;
-comment|// disable console logging by removing all handlers
-name|Handler
-index|[]
-name|handlers
-init|=
-name|rootLogger
-operator|.
-name|getHandlers
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|Handler
-name|handler
-range|:
-name|handlers
-control|)
-block|{
-name|rootLogger
-operator|.
-name|removeHandler
-argument_list|(
-name|handler
-argument_list|)
-expr_stmt|;
-block|}
-comment|// add new handler logging to System.out
-name|StdoutConsoleHandler
-name|h
-init|=
-operator|new
-name|StdoutConsoleHandler
-argument_list|()
-decl_stmt|;
-name|rootLogger
-operator|.
-name|addHandler
-argument_list|(
-name|h
-argument_list|)
-expr_stmt|;
-name|rootLogger
-operator|.
-name|addHandler
-argument_list|(
-name|errorConsole
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class

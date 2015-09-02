@@ -100,13 +100,11 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|swing
 operator|.
-name|logging
-operator|.
-name|Logger
+name|Action
 import|;
 end_import
 
@@ -206,8 +204,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|label
-operator|.
 name|HandleDuplicateWarnings
 import|;
 end_import
@@ -226,6 +222,76 @@ name|SpecialFieldsUtils
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|FileBasedLock
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|// The action concerned with opening an existing database.
 end_comment
@@ -238,30 +304,40 @@ name|OpenDatabaseAction
 extends|extends
 name|MnemonicAwareAction
 block|{
-DECL|field|logger
+DECL|field|serialVersionUID
 specifier|private
 specifier|static
-name|Logger
-name|logger
+specifier|final
+name|long
+name|serialVersionUID
 init|=
-name|Logger
+literal|1L
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
 name|OpenDatabaseAction
 operator|.
 name|class
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|showDialog
+specifier|private
+specifier|final
 name|boolean
 name|showDialog
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -270,6 +346,7 @@ comment|// upgrade actions etc. that may depend on the JabRef version that wrote
 DECL|field|postOpenActions
 specifier|private
 specifier|static
+specifier|final
 name|ArrayList
 argument_list|<
 name|PostOpenAction
@@ -287,6 +364,8 @@ static|static
 block|{
 comment|// Add the action for checking for new custom entry types loaded from
 comment|// the bib file:
+name|OpenDatabaseAction
+operator|.
 name|postOpenActions
 operator|.
 name|add
@@ -297,6 +376,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Add the action for the new external file handling system in version 2.3:
+name|OpenDatabaseAction
+operator|.
 name|postOpenActions
 operator|.
 name|add
@@ -307,6 +388,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Add the action for warning about and handling duplicate BibTeX keys:
+name|OpenDatabaseAction
+operator|.
 name|postOpenActions
 operator|.
 name|add
@@ -352,6 +435,8 @@ name|showDialog
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Open database"
@@ -359,6 +444,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
@@ -373,6 +460,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -384,6 +473,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -431,7 +522,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
@@ -446,6 +539,7 @@ name|chosen
 operator|!=
 literal|null
 condition|)
+block|{
 for|for
 control|(
 name|String
@@ -460,6 +554,7 @@ name|aChosen
 operator|!=
 literal|null
 condition|)
+block|{
 name|filesToOpen
 operator|.
 name|add
@@ -472,21 +567,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
 comment|/*             String chosenFile = Globals.getNewFile(frame,                     new File(Globals.prefs.get("workingDirectory")), ".bib",                     JFileChooser.OPEN_DIALOG, true);              if (chosenFile != null) {                 fileToOpen = new File(chosenFile);             }*/
 block|}
 else|else
 block|{
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
+name|Action
+operator|.
 name|NAME
-argument_list|)
-expr_stmt|;
-name|Util
-operator|.
-name|pr
-argument_list|(
+operator|+
+literal|" "
+operator|+
 name|e
 operator|.
 name|getActionCommand
@@ -500,9 +596,9 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
-name|checkName
+name|makeBibtexExtension
 argument_list|(
 name|e
 operator|.
@@ -664,11 +760,18 @@ argument_list|(
 name|filesToOpen
 argument_list|)
 decl_stmt|;
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -681,6 +784,7 @@ name|theFile
 range|:
 name|theFiles
 control|)
+block|{
 name|openIt
 argument_list|(
 name|theFile
@@ -690,10 +794,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+block|}
+argument_list|)
 expr_stmt|;
 for|for
 control|(
@@ -702,6 +804,7 @@ name|theFile
 range|:
 name|theFiles
 control|)
+block|{
 name|frame
 operator|.
 name|getFileHistory
@@ -715,6 +818,7 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// If no files are remaining to open, this could mean that a file was
 comment|// already open. If so, we may have to raise the correct tab:
@@ -765,14 +869,17 @@ implements|implements
 name|Runnable
 block|{
 DECL|field|bp
+specifier|final
 name|BasePanel
 name|bp
 decl_stmt|;
 DECL|field|raisePanel
+specifier|final
 name|boolean
 name|raisePanel
 decl_stmt|;
 DECL|field|file
+specifier|final
 name|File
 name|file
 decl_stmt|;
@@ -808,6 +915,8 @@ operator|=
 name|file
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -907,7 +1016,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"promptBeforeUsingAutosave"
+name|JabRefPreferences
+operator|.
+name|PROMPT_BEFORE_USING_AUTOSAVE
 argument_list|)
 condition|)
 block|{
@@ -1032,7 +1143,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|,
 name|file
 operator|.
@@ -1050,12 +1163,14 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|Util
+name|FileBasedLock
 operator|.
 name|hasLockFile
 argument_list|(
@@ -1066,7 +1181,7 @@ block|{
 name|long
 name|modTime
 init|=
-name|Util
+name|FileBasedLock
 operator|.
 name|getLockFileTimeStamp
 argument_list|(
@@ -1083,12 +1198,14 @@ literal|1
 operator|)
 operator|&&
 operator|(
+operator|(
 name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
 operator|-
 name|modTime
+operator|)
 operator|>
 name|SaveSession
 operator|.
@@ -1158,7 +1275,7 @@ operator|.
 name|YES_OPTION
 condition|)
 block|{
-name|Util
+name|FileBasedLock
 operator|.
 name|deleteLockFile
 argument_list|(
@@ -1167,13 +1284,15 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 return|return;
+block|}
 block|}
 elseif|else
 if|if
 condition|(
 operator|!
-name|Util
+name|FileBasedLock
 operator|.
 name|waitForFileLock
 argument_list|(
@@ -1236,6 +1355,8 @@ try|try
 block|{
 name|pr
 operator|=
+name|OpenDatabaseAction
+operator|.
 name|loadDatabase
 argument_list|(
 name|fileToLoad
@@ -1376,17 +1497,21 @@ name|file
 expr_stmt|;
 block|}
 else|else
+block|{
 name|done
 operator|=
 literal|true
 expr_stmt|;
+block|}
 continue|continue;
 block|}
 else|else
+block|{
 name|done
 operator|=
 literal|true
 expr_stmt|;
+block|}
 specifier|final
 name|BasePanel
 name|panel
@@ -1404,11 +1529,13 @@ if|if
 condition|(
 name|tryingAutosave
 condition|)
+block|{
 name|panel
 operator|.
 name|markNonUndoableBaseChanged
 argument_list|()
 expr_stmt|;
+block|}
 comment|// After adding the database, go through our list and see if
 comment|// any post open actions need to be done. For instance, checking
 comment|// if we found new entry types that can be imported, or checking
@@ -1428,11 +1555,15 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
 parameter_list|()
 block|{
+name|OpenDatabaseAction
+operator|.
 name|performPostOpenActions
 argument_list|(
 name|panel
@@ -1471,6 +1602,8 @@ control|(
 name|PostOpenAction
 name|action
 range|:
+name|OpenDatabaseAction
+operator|.
 name|postOpenActions
 control|)
 block|{
@@ -1488,6 +1621,7 @@ if|if
 condition|(
 name|mustRaisePanel
 condition|)
+block|{
 name|panel
 operator|.
 name|frame
@@ -1501,6 +1635,7 @@ argument_list|(
 name|panel
 argument_list|)
 expr_stmt|;
+block|}
 name|action
 operator|.
 name|performAction
@@ -1571,21 +1706,28 @@ operator|.
 name|warnings
 argument_list|()
 decl_stmt|;
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|wrn
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
@@ -1604,6 +1746,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|wrn
 operator|.
 name|append
@@ -1631,6 +1774,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|wrn
@@ -1640,6 +1784,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|wrn
 operator|.
 name|deleteCharAt
@@ -1652,6 +1797,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Note to self or to someone else: The following line causes an
 comment|// ArrayIndexOutOfBoundsException in situations with a large number of
 comment|// warnings; approx. 5000 for the database I opened when I observed the problem
@@ -1691,10 +1837,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 name|BasePanel
@@ -1814,16 +1957,16 @@ name|utf8Reader
 init|=
 name|ImportFormatReader
 operator|.
-name|getReader
+name|getUTF8Reader
 argument_list|(
 name|fileToOpen
-argument_list|,
-literal|"UTF8"
 argument_list|)
 decl_stmt|;
 name|String
 name|suppliedEncoding
 init|=
+name|OpenDatabaseAction
+operator|.
 name|checkForEncoding
 argument_list|(
 name|utf8Reader
@@ -1847,15 +1990,15 @@ name|utf16Reader
 init|=
 name|ImportFormatReader
 operator|.
-name|getReader
+name|getUTF16Reader
 argument_list|(
 name|fileToOpen
-argument_list|,
-literal|"UTF-16"
 argument_list|)
 decl_stmt|;
 name|suppliedEncoding
 operator|=
+name|OpenDatabaseAction
+operator|.
 name|checkForEncoding
 argument_list|(
 name|utf16Reader
@@ -2000,9 +2143,9 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-name|logger
+name|LOGGER
 operator|.
-name|fine
+name|info
 argument_list|(
 name|Globals
 operator|.
@@ -2024,6 +2167,7 @@ operator|.
 name|isGroupTreeValid
 argument_list|()
 condition|)
+block|{
 name|pr
 operator|.
 name|addWarning
@@ -2036,6 +2180,7 @@ literal|"Group tree could not be parsed. If you save the BibTeX database, all gr
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|pr
 return|;
@@ -2055,11 +2200,11 @@ name|suppliedEncoding
 init|=
 literal|null
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|headerText
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 try|try
@@ -2121,9 +2266,11 @@ argument_list|)
 operator|)
 operator|)
 condition|)
+block|{
 name|offset
 operator|++
 expr_stmt|;
+block|}
 else|else
 block|{
 name|headerText
@@ -2149,15 +2296,19 @@ argument_list|(
 name|piv
 argument_list|)
 condition|)
+block|{
 name|piv
 operator|++
 expr_stmt|;
+block|}
 else|else
+block|{
 comment|//if (((char)c) == '@')
 name|keepon
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 comment|//System.out.println(headerText.toString());
 name|found
@@ -2243,9 +2394,11 @@ argument_list|(
 literal|0
 argument_list|)
 condition|)
+block|{
 break|break
 name|found
 break|;
+block|}
 for|for
 control|(
 name|int
@@ -2282,6 +2435,7 @@ argument_list|(
 name|i
 argument_list|)
 condition|)
+block|{
 break|break
 name|found
 break|;
@@ -2292,14 +2446,15 @@ comment|// seem
 comment|// to
 comment|// match.
 block|}
+block|}
 comment|// If ok, then read the rest of the line, which should contain the
 comment|// name
 comment|// of the encoding:
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 while|while

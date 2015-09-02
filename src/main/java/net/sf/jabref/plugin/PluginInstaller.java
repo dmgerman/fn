@@ -18,20 +18,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|plugin
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
 name|ca
 operator|.
 name|odell
@@ -51,6 +37,18 @@ operator|.
 name|glazedlists
 operator|.
 name|EventList
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -231,7 +229,7 @@ class|class
 name|PluginInstaller
 block|{
 DECL|field|PLUGIN_XML_FILE
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -239,7 +237,7 @@ name|PLUGIN_XML_FILE
 init|=
 literal|"plugin.xml"
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -247,18 +245,26 @@ DECL|field|SUCCESS
 name|SUCCESS
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
 DECL|field|UNABLE_TO_CREATE_DIR
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|UNABLE_TO_CREATE_DIR
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 DECL|field|UNABLE_TO_COPY_FILE
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|UNABLE_TO_COPY_FILE
 init|=
 literal|2
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -266,28 +272,48 @@ DECL|field|NO_VERSIONS_INSTALLED
 name|NO_VERSIONS_INSTALLED
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
 DECL|field|NEWER_VERSION_INSTALLED
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|NEWER_VERSION_INSTALLED
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 DECL|field|SAME_VERSION_INSTALLED
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|SAME_VERSION_INSTALLED
 init|=
 literal|2
-decl_stmt|,
+decl_stmt|;
 DECL|field|OLDER_VERSION_INSTALLED
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|OLDER_VERSION_INSTALLED
 init|=
 literal|3
-decl_stmt|,
+decl_stmt|;
 DECL|field|UNCONVENTIONAL_FILENAME
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|UNCONVENTIONAL_FILENAME
 init|=
 literal|4
-decl_stmt|,
+decl_stmt|;
 DECL|field|UNKNOWN_VERSION
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|UNKNOWN_VERSION
 init|=
 literal|5
@@ -300,13 +326,21 @@ DECL|field|NOT_LOADED
 name|NOT_LOADED
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
 DECL|field|LOADED
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|LOADED
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 DECL|field|BAD
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|BAD
 init|=
 literal|2
@@ -410,6 +444,8 @@ block|}
 name|int
 name|status
 init|=
+name|PluginInstaller
+operator|.
 name|checkInstalledVersion
 argument_list|(
 name|file
@@ -428,6 +464,8 @@ name|NO_VERSIONS_INSTALLED
 case|:
 name|result
 operator|=
+name|PluginInstaller
+operator|.
 name|copyPlugin
 argument_list|(
 name|frame
@@ -441,8 +479,11 @@ if|if
 condition|(
 name|result
 operator|==
+name|PluginInstaller
+operator|.
 name|SUCCESS
 condition|)
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -468,6 +509,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|String
@@ -477,8 +519,11 @@ if|if
 condition|(
 name|result
 operator|==
+name|PluginInstaller
+operator|.
 name|UNABLE_TO_COPY_FILE
 condition|)
+block|{
 name|reason
 operator|=
 name|Globals
@@ -488,7 +533,9 @@ argument_list|(
 literal|"Unable to copy file"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|reason
 operator|=
 name|Globals
@@ -509,6 +556,7 @@ argument_list|()
 operator|+
 literal|")."
 expr_stmt|;
+block|}
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -603,6 +651,8 @@ name|OLDER_VERSION_INSTALLED
 case|:
 name|result
 operator|=
+name|PluginInstaller
+operator|.
 name|copyPlugin
 argument_list|(
 name|frame
@@ -616,6 +666,8 @@ if|if
 condition|(
 name|result
 operator|==
+name|PluginInstaller
+operator|.
 name|SUCCESS
 condition|)
 block|{
@@ -659,6 +711,8 @@ block|{
 name|boolean
 name|success
 init|=
+name|PluginInstaller
+operator|.
 name|deleteOlderVersions
 argument_list|(
 name|file
@@ -734,8 +788,11 @@ if|if
 condition|(
 name|result
 operator|==
+name|PluginInstaller
+operator|.
 name|UNABLE_TO_COPY_FILE
 condition|)
+block|{
 name|reason
 operator|=
 name|Globals
@@ -745,7 +802,9 @@ argument_list|(
 literal|"Unable to copy file"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|reason
 operator|=
 name|Globals
@@ -766,6 +825,7 @@ argument_list|()
 operator|+
 literal|")."
 expr_stmt|;
+block|}
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -866,6 +926,8 @@ condition|)
 block|{
 name|result
 operator|=
+name|PluginInstaller
+operator|.
 name|copyPlugin
 argument_list|(
 name|frame
@@ -879,8 +941,11 @@ if|if
 condition|(
 name|result
 operator|==
+name|PluginInstaller
+operator|.
 name|SUCCESS
 condition|)
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -906,6 +971,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|String
@@ -915,8 +981,11 @@ if|if
 condition|(
 name|result
 operator|==
+name|PluginInstaller
+operator|.
 name|UNABLE_TO_COPY_FILE
 condition|)
+block|{
 name|reason
 operator|=
 name|Globals
@@ -926,7 +995,9 @@ argument_list|(
 literal|"Unable to copy file"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|reason
 operator|=
 name|Globals
@@ -947,6 +1018,7 @@ argument_list|()
 operator|+
 literal|")."
 expr_stmt|;
+block|}
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -983,7 +1055,7 @@ block|}
 block|}
 comment|/**      * Check the status of the named plugin - whether an older, the same or a      * newer version is already installed.      * @param f The plugin file.      * @return an integer indicating the status      */
 DECL|method|checkInstalledVersion (File f)
-specifier|public
+specifier|private
 specifier|static
 name|int
 name|checkInstalledVersion
@@ -996,6 +1068,8 @@ name|String
 index|[]
 name|nav
 init|=
+name|PluginInstaller
+operator|.
 name|getNameAndVersion
 argument_list|(
 name|f
@@ -1007,9 +1081,13 @@ name|nav
 operator|==
 literal|null
 condition|)
+block|{
 return|return
+name|PluginInstaller
+operator|.
 name|UNKNOWN_VERSION
 return|;
+block|}
 name|VersionNumber
 name|vn
 init|=
@@ -1030,6 +1108,8 @@ name|File
 argument_list|>
 name|versions
 init|=
+name|PluginInstaller
+operator|.
 name|getInstalledVersions
 argument_list|(
 name|nav
@@ -1049,6 +1129,8 @@ literal|0
 condition|)
 block|{
 return|return
+name|PluginInstaller
+operator|.
 name|NO_VERSIONS_INSTALLED
 return|;
 block|}
@@ -1094,17 +1176,27 @@ if|if
 condition|(
 name|hasNewer
 condition|)
+block|{
 return|return
+name|PluginInstaller
+operator|.
 name|NEWER_VERSION_INSTALLED
 return|;
+block|}
 if|if
 condition|(
 name|hasSame
 condition|)
+block|{
 return|return
+name|PluginInstaller
+operator|.
 name|SAME_VERSION_INSTALLED
 return|;
+block|}
 return|return
+name|PluginInstaller
+operator|.
 name|OLDER_VERSION_INSTALLED
 return|;
 block|}
@@ -1121,6 +1213,8 @@ parameter_list|)
 block|{
 comment|/*String file = buildFileName(plugin.name,                 plugin.version.equals(VersionNumber.ZERO) ? null : plugin.version.toString());*/
 return|return
+name|PluginInstaller
+operator|.
 name|deletePluginFile
 argument_list|(
 name|plugin
@@ -1130,7 +1224,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|deleteOlderVersions (File f)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|deleteOlderVersions
@@ -1143,6 +1237,8 @@ name|String
 index|[]
 name|nav
 init|=
+name|PluginInstaller
+operator|.
 name|getNameAndVersion
 argument_list|(
 name|f
@@ -1154,9 +1250,11 @@ name|nav
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|boolean
 name|success
 init|=
@@ -1182,6 +1280,8 @@ name|File
 argument_list|>
 name|versions
 init|=
+name|PluginInstaller
+operator|.
 name|getInstalledVersions
 argument_list|(
 name|nav
@@ -1245,6 +1345,8 @@ decl_stmt|;
 comment|//buildFileName(nav[0], vnString);
 name|success
 operator|=
+name|PluginInstaller
+operator|.
 name|deletePluginFile
 argument_list|(
 name|file
@@ -1259,7 +1361,7 @@ return|;
 block|}
 comment|/**      * This method deletes a plugin file. If deletion fails - typically happens      * on Windows due to file locking - the file is scheduled for deletion on      * the next startup.      *      * @param f The file to delete.      * @return true if deletion was successful, false if scheduled for later.      */
 DECL|method|deletePluginFile (File f)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|deletePluginFile
@@ -1280,11 +1382,15 @@ if|if
 condition|(
 name|success
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 else|else
 block|{
+name|PluginInstaller
+operator|.
 name|schedulePluginForDeletion
 argument_list|(
 name|f
@@ -1321,6 +1427,7 @@ name|destFileName
 operator|==
 literal|null
 condition|)
+block|{
 name|destFileName
 operator|=
 name|source
@@ -1328,6 +1435,7 @@ operator|.
 name|getFile
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1356,6 +1464,8 @@ name|created
 condition|)
 block|{
 return|return
+name|PluginInstaller
+operator|.
 name|UNABLE_TO_CREATE_DIR
 return|;
 block|}
@@ -1395,6 +1505,8 @@ name|destFile
 argument_list|)
 expr_stmt|;
 return|return
+name|PluginInstaller
+operator|.
 name|SUCCESS
 return|;
 block|}
@@ -1410,12 +1522,14 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 return|return
+name|PluginInstaller
+operator|.
 name|UNABLE_TO_COPY_FILE
 return|;
 block|}
 block|}
 DECL|method|copyPlugin (JFrame frame, File source, String destFileName)
-specifier|public
+specifier|private
 specifier|static
 name|int
 name|copyPlugin
@@ -1436,6 +1550,7 @@ name|destFileName
 operator|==
 literal|null
 condition|)
+block|{
 name|destFileName
 operator|=
 name|source
@@ -1443,6 +1558,7 @@ operator|.
 name|getName
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1471,6 +1587,8 @@ name|created
 condition|)
 block|{
 return|return
+name|PluginInstaller
+operator|.
 name|UNABLE_TO_CREATE_DIR
 return|;
 block|}
@@ -1584,6 +1702,8 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 return|return
+name|PluginInstaller
+operator|.
 name|UNABLE_TO_COPY_FILE
 return|;
 block|}
@@ -1639,12 +1759,14 @@ block|}
 block|}
 block|}
 return|return
+name|PluginInstaller
+operator|.
 name|SUCCESS
 return|;
 block|}
 comment|/**      * Based on a plugin name, find all versions that are already present      * in the user plugin directory.      * @param pluginName The name of the plugin.      * @return A map of versions already present, linking to the file containing each.      */
 DECL|method|getInstalledVersions (final String pluginName)
-specifier|public
+specifier|private
 specifier|static
 name|Map
 argument_list|<
@@ -1673,6 +1795,8 @@ operator|new
 name|FilenameFilter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|accept
@@ -1738,6 +1862,8 @@ name|String
 index|[]
 name|nav
 init|=
+name|PluginInstaller
+operator|.
 name|getNameAndVersion
 argument_list|(
 name|f
@@ -1793,7 +1919,7 @@ return|;
 block|}
 comment|/**      * Add the given filename to the list of plugins to be deleted on the next      * JabRef startup.      *      * @param filename The path to the file to delete.      */
 DECL|method|schedulePluginForDeletion (String filename)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|schedulePluginForDeletion
@@ -1812,7 +1938,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"deletePlugins"
+name|JabRefPreferences
+operator|.
+name|DELETE_PLUGINS
 argument_list|)
 decl_stmt|;
 name|String
@@ -1845,6 +1973,7 @@ name|oldValues
 operator|!=
 literal|null
 condition|)
+block|{
 name|System
 operator|.
 name|arraycopy
@@ -1862,6 +1991,7 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+block|}
 name|newValues
 index|[
 name|newValues
@@ -1879,7 +2009,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"deletePlugins"
+name|JabRefPreferences
+operator|.
+name|DELETE_PLUGINS
 argument_list|,
 name|newValues
 argument_list|)
@@ -1940,6 +2072,7 @@ argument_list|()
 decl_stmt|;
 block|}
 else|else
+block|{
 name|System
 operator|.
 name|out
@@ -1951,6 +2084,7 @@ operator|+
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|field|pluginFilePattern
@@ -1979,7 +2113,7 @@ argument_list|)
 decl_stmt|;
 comment|/**      * Look inside a jar file, find the plugin.xml file, and use it to determine the name      * and version of the plugin.      *      * @param f The file to investigate.      * @return A string array containing the plugin name in the first element and      *   the version number in the second, or null if the filename couldn't be      *   interpreted.      *      */
 DECL|method|getNameAndVersion (File f)
-specifier|public
+specifier|private
 specifier|static
 name|String
 index|[]
@@ -1994,6 +2128,8 @@ block|{
 name|File
 name|temp
 init|=
+name|PluginInstaller
+operator|.
 name|unpackPluginXML
 argument_list|(
 name|f
@@ -2005,10 +2141,12 @@ name|temp
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
 comment|// Couldn't find the plugin.xml file
+block|}
 name|ManifestInfo
 name|mi
 init|=
@@ -2085,7 +2223,7 @@ block|}
 block|}
 comment|/**      * Take the name of a jar file and extract the plugin.xml file, if possible,      * to a temporary file.      * @param f The jar file to extract from.      * @return a temporary file to which the plugin.xml file has been copied.      */
 DECL|method|unpackPluginXML (File f)
-specifier|public
+specifier|private
 specifier|static
 name|File
 name|unpackPluginXML
@@ -2122,6 +2260,8 @@ name|jar
 operator|.
 name|getEntry
 argument_list|(
+name|PluginInstaller
+operator|.
 name|PLUGIN_XML_FILE
 argument_list|)
 decl_stmt|;
@@ -2210,7 +2350,9 @@ name|nBytes
 operator|<=
 literal|0
 condition|)
+block|{
 break|break;
+block|}
 name|out
 operator|.
 name|write
@@ -2257,22 +2399,26 @@ name|out
 operator|!=
 literal|null
 condition|)
+block|{
 name|out
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|in
 operator|!=
 literal|null
 condition|)
+block|{
 name|in
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2322,9 +2468,11 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 return|return
 name|plugins
 return|;
+block|}
 name|String
 index|[]
 name|files
@@ -2339,6 +2487,8 @@ operator|new
 name|FilenameFilter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|accept
@@ -2466,6 +2616,8 @@ name|String
 index|[]
 name|nav
 init|=
+name|PluginInstaller
+operator|.
 name|getNameAndVersion
 argument_list|(
 name|file
@@ -2590,21 +2742,29 @@ name|loc
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|nameAndVersion
 operator|.
 name|setStatus
 argument_list|(
+name|PluginInstaller
+operator|.
 name|BAD
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|nameAndVersion
 operator|.
 name|setStatus
 argument_list|(
+name|PluginInstaller
+operator|.
 name|LOADED
 argument_list|)
 expr_stmt|;
+block|}
 name|it
 operator|.
 name|remove
@@ -2674,8 +2834,10 @@ name|getPath
 argument_list|()
 argument_list|)
 condition|)
+block|{
 continue|continue;
 comment|// This must be a loaded user dir plugin that's been deleted.
+block|}
 comment|//System.out.println("File: "+desc.getLocation().getFile());
 name|NameAndVersion
 name|nameAndVersion
@@ -2723,21 +2885,29 @@ name|url
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|nameAndVersion
 operator|.
 name|setStatus
 argument_list|(
+name|PluginInstaller
+operator|.
 name|BAD
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|nameAndVersion
 operator|.
 name|setStatus
 argument_list|(
+name|PluginInstaller
+operator|.
 name|LOADED
 argument_list|)
 expr_stmt|;
+block|}
 name|plugins
 operator|.
 name|add
@@ -2762,10 +2932,12 @@ name|NameAndVersion
 argument_list|>
 block|{
 DECL|field|name
+specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|version
+specifier|final
 name|VersionNumber
 name|version
 decl_stmt|;
@@ -2776,10 +2948,12 @@ init|=
 literal|0
 decl_stmt|;
 DECL|field|inUserDirectory
+specifier|final
 name|boolean
 name|inUserDirectory
 decl_stmt|;
 DECL|field|file
+specifier|final
 name|File
 name|file
 decl_stmt|;
@@ -2825,6 +2999,8 @@ operator|=
 name|file
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (NameAndVersion oth)
 specifier|public
 name|int
@@ -2846,6 +3022,7 @@ operator|.
 name|name
 argument_list|)
 condition|)
+block|{
 return|return
 name|name
 operator|.
@@ -2856,6 +3033,7 @@ operator|.
 name|name
 argument_list|)
 return|;
+block|}
 else|else
 block|{
 if|if
@@ -2864,9 +3042,11 @@ name|version
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|1
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2876,11 +3056,14 @@ name|version
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 operator|-
 literal|1
 return|;
+block|}
 else|else
+block|{
 return|return
 name|version
 operator|.
@@ -2891,6 +3074,7 @@ operator|.
 name|version
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 DECL|method|getStatus ()
@@ -2944,6 +3128,7 @@ literal|"0"
 argument_list|)
 decl_stmt|;
 DECL|field|digits
+specifier|final
 name|List
 argument_list|<
 name|Integer
@@ -3016,6 +3201,8 @@ comment|// Do nothing
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (VersionNumber oth)
 specifier|public
 name|int
@@ -3077,6 +3264,7 @@ name|i
 argument_list|)
 argument_list|)
 condition|)
+block|{
 return|return
 name|oth
 operator|.
@@ -3094,6 +3282,7 @@ argument_list|(
 name|i
 argument_list|)
 return|;
+block|}
 block|}
 comment|// All digits equal so far, and only one of the numbers has more digits.
 comment|// The one with digits remaining is the newest one:
@@ -3111,6 +3300,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -3161,6 +3352,7 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3168,6 +3360,7 @@ argument_list|(
 literal|"."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb

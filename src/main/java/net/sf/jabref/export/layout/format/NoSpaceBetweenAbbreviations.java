@@ -37,7 +37,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>  * LayoutFormatter that removes the space between abbreviated First names  *</p>  *<p>  * What out that this regular expression might also remove other spaces that fit  * the pattern.  *</p>  *<p>  * Example: J. R. R. Tolkien becomes J.R.R. Tolkien.  *</p>  *<p>  * See Testcase for more examples.  *<p>  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  *<p>  * LayoutFormatter that removes the space between abbreviated First names  *</p>  *<p>  * What out that this regular expression might also remove other spaces that fit  * the pattern.  *</p>  *<p>  * Example: J. R. R. Tolkien becomes J.R.R. Tolkien.  *</p>  *<p>  * See Testcase for more examples.  *<p>  */
 end_comment
 
 begin_class
@@ -48,7 +48,9 @@ name|NoSpaceBetweenAbbreviations
 implements|implements
 name|LayoutFormatter
 block|{
-comment|/* 	 * Match '.' followed by spaces followed by uppercase char followed by '.' 	 * but don't include the last dot into the capturing group. 	 *  	 * Replace the match by removing the spaces. 	 *  	 * @see net.sf.jabref.export.layout.LayoutFormatter#format(java.lang.String) 	 */
+comment|/*      * Match '.' followed by spaces followed by uppercase char followed by '.'      * but don't include the last dot into the capturing group.      *       * Replace the match by removing the spaces.      *       * @see net.sf.jabref.export.layout.LayoutFormatter#format(java.lang.String)      */
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String

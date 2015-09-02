@@ -106,30 +106,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Level
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -152,43 +128,70 @@ name|StoreFieldAction
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author Erik Putrycz erik.putrycz-at-nrc-cnrc.gc.ca  */
 end_comment
 
 begin_class
 DECL|class|SimpleUrlDragDrop
-specifier|public
 class|class
 name|SimpleUrlDragDrop
 implements|implements
 name|DropTargetListener
 block|{
-DECL|field|logger
+DECL|field|LOGGER
 specifier|private
 specifier|static
-name|Logger
-name|logger
+specifier|final
+name|Log
+name|LOGGER
 init|=
-name|Logger
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
 name|SimpleUrlDragDrop
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|editor
 specifier|private
+specifier|final
 name|FieldEditor
 name|editor
 decl_stmt|;
 DECL|field|storeFieldAction
 specifier|private
+specifier|final
 name|StoreFieldAction
 name|storeFieldAction
 decl_stmt|;
@@ -213,6 +216,8 @@ name|_storeFieldAction
 expr_stmt|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dragEnter(java.awt.dnd.DropTargetDragEvent)      */
+annotation|@
+name|Override
 DECL|method|dragEnter (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -223,6 +228,8 @@ name|dtde
 parameter_list|)
 block|{     }
 comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dragOver(java.awt.dnd.DropTargetDragEvent)      */
+annotation|@
+name|Override
 DECL|method|dragOver (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -233,6 +240,8 @@ name|dtde
 parameter_list|)
 block|{     }
 comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dropActionChanged(java.awt.dnd.DropTargetDragEvent)      */
+annotation|@
+name|Override
 DECL|method|dropActionChanged (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -243,6 +252,8 @@ name|dtde
 parameter_list|)
 block|{     }
 comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dragExit(java.awt.dnd.DropTargetEvent)      */
+annotation|@
+name|Override
 DECL|method|dragExit (DropTargetEvent dte)
 specifier|public
 name|void
@@ -253,6 +264,8 @@ name|dte
 parameter_list|)
 block|{     }
 comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#drop(java.awt.dnd.DropTargetDropEvent)      */
+annotation|@
+name|Override
 DECL|method|drop (DropTargetDropEvent dtde)
 specifier|public
 name|void
@@ -302,15 +315,11 @@ name|ClassNotFoundException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOGGER
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
-literal|"Class not found for DnD... should not happen"
+literal|"Could not find DropTargetDropEvent class"
 argument_list|,
 name|e
 argument_list|)
@@ -393,15 +402,11 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-name|logger
+name|LOGGER
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
-literal|"Transfer exception"
+literal|"Could not perform drage and drop"
 argument_list|,
 name|nfe
 argument_list|)
@@ -413,15 +418,11 @@ name|IOException
 name|ioex
 parameter_list|)
 block|{
-name|logger
+name|LOGGER
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
-literal|"!should not happen!"
+literal|"Could not perform drage and drop"
 argument_list|,
 name|ioex
 argument_list|)

@@ -148,6 +148,20 @@ name|FieldFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|MonthUtil
+import|;
+end_import
+
 begin_class
 DECL|class|BibtexEntry
 specifier|public
@@ -155,7 +169,7 @@ class|class
 name|BibtexEntry
 block|{
 DECL|field|ID_FIELD
-specifier|public
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -166,6 +180,7 @@ decl_stmt|;
 DECL|field|FieldAliasesOldToNew
 specifier|public
 specifier|static
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -187,6 +202,7 @@ comment|// Bibtex to BibLatex
 DECL|field|FieldAliasesNewToOld
 specifier|public
 specifier|static
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -207,6 +223,8 @@ decl_stmt|;
 comment|// BibLatex to Bibtex
 static|static
 block|{
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -216,6 +234,8 @@ argument_list|,
 literal|"location"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -225,6 +245,8 @@ argument_list|,
 literal|"address"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -234,6 +256,8 @@ argument_list|,
 literal|"annotation"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -243,6 +267,8 @@ argument_list|,
 literal|"annote"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -252,6 +278,8 @@ argument_list|,
 literal|"eprinttype"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -261,6 +289,8 @@ argument_list|,
 literal|"archiveprefix"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -270,6 +300,8 @@ argument_list|,
 literal|"journaltitle"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -279,6 +311,8 @@ argument_list|,
 literal|"journal"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -288,6 +322,8 @@ argument_list|,
 literal|"sortkey"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -297,6 +333,8 @@ argument_list|,
 literal|"key"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -306,6 +344,8 @@ argument_list|,
 literal|"file"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -315,6 +355,8 @@ argument_list|,
 literal|"pdf"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -324,6 +366,8 @@ argument_list|,
 literal|"eprintclass"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -333,6 +377,8 @@ argument_list|,
 literal|"primaryclass"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -342,6 +388,8 @@ argument_list|,
 literal|"institution"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -382,6 +430,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|_changeSupport
+specifier|private
+specifier|final
 name|VetoableChangeSupport
 name|_changeSupport
 init|=
@@ -407,9 +457,9 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -426,7 +476,7 @@ name|this
 argument_list|(
 name|id
 argument_list|,
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|OTHER
 argument_list|)
@@ -468,7 +518,7 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns an array describing the optional fields for this entry.      */
+comment|/**      * @return An array describing the optional fields for this entry. "null" if no fields are required      */
 DECL|method|getOptionalFields ()
 specifier|public
 name|String
@@ -476,14 +526,38 @@ index|[]
 name|getOptionalFields
 parameter_list|()
 block|{
-return|return
+name|String
+index|[]
+name|res
+init|=
 name|_type
 operator|.
 name|getOptionalFields
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|res
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|res
 return|;
 block|}
-comment|/**      * Returns an array describing the required fields for this entry.      */
+else|else
+block|{
+comment|// Fix for https://sourceforge.net/p/jabref/bugs/1221/ - see https://github.com/fc7/jabref/commit/e92238a37cc780eb7fccc0684fa62d2437ddd825
+return|return
+name|res
+operator|.
+name|clone
+argument_list|()
+return|;
+block|}
+block|}
+comment|/**      * @return an array describing the required fields for this entry. "null" if no fields are required      */
 DECL|method|getRequiredFields ()
 specifier|public
 name|String
@@ -491,12 +565,38 @@ index|[]
 name|getRequiredFields
 parameter_list|()
 block|{
-return|return
+name|String
+index|[]
+name|res
+init|=
 name|_type
 operator|.
 name|getRequiredFields
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|res
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|res
 return|;
+block|}
+else|else
+block|{
+comment|// FIXME: This fix slows down saving very much. The issue should be investigated further and the one working on the result should do the clone
+comment|//        Removing the "clone()" here is against a rule in "Effective Java". However, the speed improvement weights more
+comment|// Fix for https://sourceforge.net/p/jabref/bugs/1221/ - see https://github.com/fc7/jabref/commit/e92238a37cc780eb7fccc0684fa62d2437ddd825
+return|return
+name|res
+operator|.
+name|clone
+argument_list|()
+return|;
+block|}
 block|}
 DECL|method|getUserDefinedFields ()
 specifier|public
@@ -664,7 +764,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Prompts the entry to call BibtexEntryType.getType(String) with      * its current type name as argument, and sets its type according      * to what is returned. This method is called when a user changes      * the type customization, to make sure all entries are set with      * current types.      * @return true if the entry could find a type, false if not (in      * this case the type will have been set to      * BibtexEntryType.TYPELESS).      */
+comment|/**      * Prompts the entry to call BibtexEntryType.getType(String) with      * its current type name as argument, and sets its type according      * to what is returned. This method is called when a user changes      * the type customization, to make sure all entries are set with      * current types.      * @return true if the entry could find a type, false if not (in      * this case the type will have been set to      * BibtexEntryTypes.TYPELESS).      */
 DECL|method|updateType ()
 specifier|public
 name|boolean
@@ -701,7 +801,7 @@ return|;
 block|}
 name|_type
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|TYPELESS
 expr_stmt|;
@@ -740,6 +840,8 @@ try|try
 block|{
 name|firePropertyChangedEvent
 argument_list|(
+name|BibtexEntry
+operator|.
 name|ID_FIELD
 argument_list|,
 name|_id
@@ -799,7 +901,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns the contents of the given field, its alias or null if both are 	 * not set. 	 *  	 * The following aliases are considered (old bibtex<-> new biblatex) based 	 * on the BibLatex documentation, chapter 2.2.5: 	 *  address<-> location 	 *  annote<-> annotation  	 *  archiveprefix<-> eprinttype  	 *  journal<-> journaltitle  	 *  key<-> sortkey  	 * 	pdf<-> file  	 * 	primaryclass<-> eprintclass  	 * 	school<-> institution  	 * These work bidirectional. 	 *  	 * Special attention is paid to dates: (see the BibLatex documentation, 	 * chapter 2.3.8)  	 * 	The fields 'year' and 'month' are used if the 'date' 	 * 	field is empty. Conversely, getFieldOrAlias("year") also tries to 	 * 	extract the year from the 'date' field (analogously for 'month'). 	 */
+comment|/**      * Returns the contents of the given field, its alias or null if both are      * not set.      *       * The following aliases are considered (old bibtex<-> new biblatex) based      * on the BibLatex documentation, chapter 2.2.5:      *  address<-> location      *  annote<-> annotation       *  archiveprefix<-> eprinttype       *  journal<-> journaltitle       *  key<-> sortkey       * 	pdf<-> file       * 	primaryclass<-> eprintclass       * 	school<-> institution       * These work bidirectional.      *       * Special attention is paid to dates: (see the BibLatex documentation,      * chapter 2.3.8)       * 	The fields 'year' and 'month' are used if the 'date'      * 	field is empty. Conversely, getFieldOrAlias("year") also tries to      * 	extract the year from the 'date' field (analogously for 'month').      */
 DECL|method|getFieldOrAlias (String name)
 specifier|public
 name|String
@@ -819,20 +921,25 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|fieldValue
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
+operator|!
 name|fieldValue
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
+operator|)
 condition|)
+block|{
 return|return
 name|fieldValue
 return|;
+block|}
 comment|// No value of this field found, so look at the alias
 comment|// Create bidirectional dictionary between field names and their aliases
 name|Map
@@ -856,6 +963,8 @@ name|aliases
 operator|.
 name|putAll
 argument_list|(
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 argument_list|)
 expr_stmt|;
@@ -863,6 +972,8 @@ name|aliases
 operator|.
 name|putAll
 argument_list|(
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 argument_list|)
 expr_stmt|;
@@ -882,12 +993,14 @@ name|aliasForField
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|getField
 argument_list|(
 name|aliasForField
 argument_list|)
 return|;
+block|}
 comment|// So we did not found the field itself or its alias...
 comment|// Finally, handle dates
 if|if
@@ -908,12 +1021,14 @@ argument_list|(
 literal|"year"
 argument_list|)
 decl_stmt|;
-name|int
+name|MonthUtil
+operator|.
+name|Month
 name|month
 init|=
-name|Globals
+name|MonthUtil
 operator|.
-name|ParseMonthToInteger
+name|getMonth
 argument_list|(
 name|getField
 argument_list|(
@@ -931,27 +1046,27 @@ block|{
 if|if
 condition|(
 name|month
-operator|==
-literal|0
-condition|)
-return|return
-name|year
-return|;
-else|else
-return|return
-name|year
-operator|+
-literal|"-"
-operator|+
-name|String
 operator|.
-name|format
-argument_list|(
-literal|"%02d"
-argument_list|,
+name|isValid
+argument_list|()
+condition|)
+block|{
+return|return
+name|year
+operator|+
+literal|'-'
+operator|+
 name|month
-argument_list|)
+operator|.
+name|twoDigitNumber
 return|;
+block|}
+else|else
+block|{
+return|return
+name|year
+return|;
+block|}
 block|}
 block|}
 if|if
@@ -985,9 +1100,11 @@ name|date
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 comment|// Create date format matching dates with year and month
 name|DateFormat
 name|df
@@ -1067,6 +1184,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|source
 operator|.
 name|length
@@ -1076,12 +1194,14 @@ name|pos
 operator|.
 name|getIndex
 argument_list|()
+operator|)
 operator|==
 name|FORMAT1
 operator|.
 name|length
 argument_list|()
 condition|)
+block|{
 return|return
 name|sdf1
 operator|.
@@ -1092,6 +1212,7 @@ argument_list|,
 name|pos
 argument_list|)
 return|;
+block|}
 return|return
 name|sdf2
 operator|.
@@ -1141,6 +1262,7 @@ argument_list|(
 literal|"year"
 argument_list|)
 condition|)
+block|{
 return|return
 name|Integer
 operator|.
@@ -1156,6 +1278,7 @@ name|YEAR
 argument_list|)
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|name
@@ -1165,6 +1288,7 @@ argument_list|(
 literal|"month"
 argument_list|)
 condition|)
+block|{
 return|return
 name|Integer
 operator|.
@@ -1183,6 +1307,7 @@ literal|1
 argument_list|)
 return|;
 comment|// Shift by 1 since in this calendar Jan = 0
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1235,6 +1360,7 @@ argument_list|(
 literal|"year"
 argument_list|)
 condition|)
+block|{
 return|return
 name|Integer
 operator|.
@@ -1250,6 +1376,7 @@ name|YEAR
 argument_list|)
 argument_list|)
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1336,6 +1463,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|BibtexEntry
+operator|.
 name|ID_FIELD
 operator|.
 name|equals
@@ -1430,6 +1559,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|BibtexEntry
+operator|.
 name|ID_FIELD
 operator|.
 name|equals
@@ -1498,7 +1629,6 @@ block|}
 block|}
 comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param fields An array of field names to be checked.      * @param database The database in which to look up crossref'd entries, if any. This      *  argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
 DECL|method|allFieldsPresent (String[] fields, BibtexDatabase database)
-specifier|protected
 name|boolean
 name|allFieldsPresent
 parameter_list|(
@@ -1544,7 +1674,6 @@ literal|true
 return|;
 block|}
 DECL|method|atLeastOnePresent (String[] fields, BibtexDatabase database)
-specifier|protected
 name|boolean
 name|atLeastOnePresent
 parameter_list|(
@@ -1586,12 +1715,13 @@ operator|!=
 literal|null
 operator|)
 operator|&&
+operator|(
+operator|!
 name|value
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
+operator|)
 condition|)
 block|{
 return|return
@@ -1709,6 +1839,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns a clone of this entry. Useful for copying.      */
+annotation|@
+name|Override
 DECL|method|clone ()
 specifier|public
 name|Object
@@ -1745,6 +1877,8 @@ return|return
 name|clone
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -1758,7 +1892,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|getField
 argument_list|(
@@ -1870,6 +2004,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 if|if
 condition|(
 name|s
@@ -1879,6 +2014,7 @@ index|]
 operator|==
 literal|null
 condition|)
+block|{
 name|s
 index|[
 name|i
@@ -1886,6 +2022,8 @@ index|]
 operator|=
 literal|"N/A"
 expr_stmt|;
+block|}
+block|}
 name|String
 name|text
 init|=
@@ -1908,24 +2046,30 @@ index|[
 literal|2
 index|]
 operator|+
-literal|")"
+literal|')'
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|maxCharacters
 operator|<=
 literal|0
+operator|)
 operator|||
+operator|(
 name|text
 operator|.
 name|length
 argument_list|()
 operator|<=
 name|maxCharacters
+operator|)
 condition|)
+block|{
 return|return
 name|text
 return|;
+block|}
 return|return
 name|text
 operator|.

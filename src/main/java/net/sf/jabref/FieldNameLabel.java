@@ -20,16 +20,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Color
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|Graphics
 import|;
 end_import
@@ -74,6 +64,16 @@ name|JLabel
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingConstants
+import|;
+end_import
+
 begin_class
 DECL|class|FieldNameLabel
 specifier|public
@@ -94,13 +94,15 @@ name|super
 argument_list|(
 name|name
 argument_list|,
-name|JLabel
+name|SwingConstants
 operator|.
 name|LEFT
 argument_list|)
 expr_stmt|;
 name|setVerticalAlignment
 argument_list|(
+name|SwingConstants
+operator|.
 name|TOP
 argument_list|)
 expr_stmt|;
@@ -123,6 +125,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|paintComponent (Graphics g)
 specifier|public
 name|void

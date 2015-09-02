@@ -96,13 +96,15 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|logging
+name|jabref
 operator|.
-name|Logger
+name|export
+operator|.
+name|LatexFieldFormatter
 import|;
 end_import
 
@@ -114,9 +116,37 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|util
 operator|.
-name|LatexFieldFormatter
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -132,26 +162,24 @@ name|SendAsEMailAction
 extends|extends
 name|AbstractWorker
 block|{
-DECL|field|logger
+DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|logger
+name|Log
+name|LOGGER
 init|=
-name|Logger
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
 name|SendAsEMailAction
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|message
+specifier|private
 name|String
 name|message
 init|=
@@ -159,6 +187,7 @@ literal|null
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -177,6 +206,8 @@ operator|=
 name|frame
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -217,7 +248,9 @@ name|panel
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|panel
@@ -329,7 +362,9 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
-literal|"openFoldersOfAttachedFiles"
+name|JabRefPreferences
+operator|.
+name|OPEN_FOLDERS_OF_ATTACHED_FILES
 argument_list|)
 decl_stmt|;
 name|List
@@ -402,14 +437,13 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOGGER
 operator|.
-name|fine
+name|debug
 argument_list|(
+literal|"Could not open file"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -493,8 +527,6 @@ expr_stmt|;
 block|}
 name|URI
 name|uriMailTo
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -594,6 +626,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void

@@ -48,19 +48,24 @@ end_import
 
 begin_class
 DECL|class|Cookie
-specifier|public
 class|class
 name|Cookie
 block|{
 DECL|field|name
+specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|value
+specifier|private
+specifier|final
 name|String
 name|value
 decl_stmt|;
 DECL|field|uri
+specifier|private
+specifier|final
 name|URI
 name|uri
 decl_stmt|;
@@ -69,16 +74,19 @@ name|String
 name|domain
 decl_stmt|;
 DECL|field|expires
+specifier|private
 name|Date
 name|expires
 decl_stmt|;
 DECL|field|path
+specifier|private
 name|String
 name|path
 decl_stmt|;
+comment|/**      * DateFormats should not be reused among instances (or rather among threads), because they are not thread-safe.      * If they are shared, their usage should be synchronized.      */
 DECL|field|expiresFormat1
 specifier|private
-specifier|static
+specifier|final
 name|DateFormat
 name|expiresFormat1
 init|=
@@ -94,7 +102,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|expiresFormat2
 specifier|private
-specifier|static
+specifier|final
 name|DateFormat
 name|expiresFormat2
 init|=
@@ -108,7 +116,7 @@ operator|.
 name|US
 argument_list|)
 decl_stmt|;
-comment|/**    * Construct a cookie from the URI and header fields    *    * @param uri URI for cookie    * @param header Set of attributes in header    */
+comment|/**      * Construct a cookie from the URI and header fields      *      * @param uri URI for cookie      * @param header Set of attributes in header      */
 DECL|method|Cookie (URI uri, String header)
 specifier|public
 name|Cookie
@@ -121,8 +129,8 @@ name|header
 parameter_list|)
 block|{
 name|String
-name|attributes
 index|[]
+name|attributes
 init|=
 name|header
 operator|.
@@ -320,7 +328,7 @@ condition|)
 block|{
 name|value
 operator|=
-literal|"."
+literal|'.'
 operator|+
 name|value
 expr_stmt|;
@@ -518,7 +526,7 @@ return|return
 name|uri
 return|;
 block|}
-comment|/**    * Check if cookie isn't expired and if URI matches,    * should cookie be included in response.    *    * @param uri URI to check against    * @return true if match, false otherwise    */
+comment|/**      * Check if cookie isn't expired and if URI matches,      * should cookie be included in response.      *      * @param uri URI to check against      * @return true if match, false otherwise      */
 DECL|method|matches (URI uri)
 specifier|public
 name|boolean
@@ -569,6 +577,8 @@ name|path
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -578,7 +588,7 @@ block|{
 return|return
 name|name
 operator|+
-literal|"="
+literal|'='
 operator|+
 name|value
 return|;

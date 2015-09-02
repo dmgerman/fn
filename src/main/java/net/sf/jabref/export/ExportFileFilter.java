@@ -44,7 +44,6 @@ end_comment
 
 begin_class
 DECL|class|ExportFileFilter
-specifier|public
 class|class
 name|ExportFileFilter
 extends|extends
@@ -57,15 +56,20 @@ argument_list|>
 block|{
 DECL|field|format
 specifier|private
+specifier|final
 name|IExportFormat
 name|format
 decl_stmt|;
 DECL|field|extension
-DECL|field|name
 specifier|private
+specifier|final
 name|String
 name|extension
-decl_stmt|,
+decl_stmt|;
+DECL|field|name
+specifier|private
+specifier|final
+name|String
 name|name
 decl_stmt|;
 DECL|method|ExportFileFilter (IExportFormat format, String extension)
@@ -104,7 +108,7 @@ literal|" (*"
 operator|+
 name|extension
 operator|+
-literal|")"
+literal|')'
 expr_stmt|;
 block|}
 DECL|method|getExportFormat ()
@@ -127,6 +131,8 @@ return|return
 name|extension
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|accept (File file)
 specifier|public
 name|boolean
@@ -143,10 +149,13 @@ operator|.
 name|isDirectory
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 else|else
+block|{
 return|return
 name|file
 operator|.
@@ -162,6 +171,9 @@ name|extension
 argument_list|)
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|getDescription ()
 specifier|public
 name|String
@@ -172,6 +184,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (ExportFileFilter o)
 specifier|public
 name|int

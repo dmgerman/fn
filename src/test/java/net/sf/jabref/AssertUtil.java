@@ -11,26 +11,12 @@ package|;
 end_package
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|junit
 operator|.
 name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
 import|;
 end_import
 
@@ -54,6 +40,8 @@ name|String
 name|path2
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 literal|"first path must not be null"
@@ -61,6 +49,8 @@ argument_list|,
 name|path1
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 literal|"second path must not be null"
@@ -68,6 +58,8 @@ argument_list|,
 name|path2
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|path1

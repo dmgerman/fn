@@ -65,7 +65,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interprets the given values as names and stores them in different  * permutations so we can complete by beginning with last name or first name.  *   * @author kahlert, cordes  *   */
+comment|/**  * Interprets the given values as names and stores them in different  * permutations so we can complete by beginning with last name or first name.  *  * @author kahlert, cordes  */
 end_comment
 
 begin_class
@@ -74,20 +74,46 @@ specifier|public
 class|class
 name|NameFieldAutoCompleter
 extends|extends
-name|StringAbstractAutoCompleter
+name|AbstractAutoCompleter
 block|{
 DECL|field|fieldNames
 specifier|private
+specifier|final
 name|String
 index|[]
 name|fieldNames
 decl_stmt|;
 DECL|field|lastNameOnlyAndSeparationBySpace
 specifier|private
+specifier|final
 name|boolean
 name|lastNameOnlyAndSeparationBySpace
 decl_stmt|;
 comment|// true if only last names should be completed and there is NO separation by " and ", but by " "
+DECL|field|autoCompFF
+specifier|private
+specifier|final
+name|boolean
+name|autoCompFF
+decl_stmt|;
+DECL|field|autoCompLF
+specifier|private
+specifier|final
+name|boolean
+name|autoCompLF
+decl_stmt|;
+DECL|field|autoCompFullFirstOnly
+specifier|private
+specifier|final
+name|boolean
+name|autoCompFullFirstOnly
+decl_stmt|;
+DECL|field|autoCompShortFirstOnly
+specifier|private
+specifier|final
+name|boolean
+name|autoCompShortFirstOnly
+decl_stmt|;
 DECL|field|prefix
 specifier|private
 name|String
@@ -95,23 +121,8 @@ name|prefix
 init|=
 literal|""
 decl_stmt|;
-DECL|field|autoCompFF
-DECL|field|autoCompLF
-DECL|field|autoCompFullFirstOnly
-DECL|field|autoCompShortFirstOnly
-specifier|private
-name|boolean
-name|autoCompFF
-decl_stmt|,
-name|autoCompLF
-decl_stmt|,
-name|autoCompFullFirstOnly
-decl_stmt|,
-name|autoCompShortFirstOnly
-decl_stmt|;
-comment|/** 	 * @see AutoCompleterFactory 	 */
+comment|/**      * @see AutoCompleterFactory      */
 DECL|method|NameFieldAutoCompleter (String fieldName)
-specifier|protected
 name|NameFieldAutoCompleter
 parameter_list|(
 name|String
@@ -163,7 +174,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoCompFF"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMP_FIRST_LAST
 argument_list|)
 condition|)
 block|{
@@ -185,7 +198,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoCompLF"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMP_LAST_FIRST
 argument_list|)
 condition|)
 block|{
@@ -250,6 +265,8 @@ name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_FULL
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|isSingleUnitField ()
 specifier|public
 name|boolean
@@ -271,6 +288,8 @@ operator|.
 name|lastNameOnlyAndSeparationBySpace
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|addBibtexEntry (BibtexEntry entry)
 specifier|public
 name|void
@@ -283,10 +302,12 @@ block|{
 if|if
 condition|(
 name|entry
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
+return|return;
+block|}
 for|for
 control|(
 name|String
@@ -499,15 +520,17 @@ block|}
 block|}
 block|}
 block|}
-block|}
-comment|/** 	 * SIDE EFFECT: sets class variable prefix 	 * Delimiter: " and " 	 *  	 * @return String without prefix 	 */
-DECL|method|determinePrefixAndReturnRemainder_AND (String str)
+comment|/**      * SIDE EFFECT: sets class variable prefix      * Delimiter: " and " or " "      *      * @return String without prefix      */
+DECL|method|determinePrefixAndReturnRemainder (String str, String delimiter)
 specifier|private
 name|String
-name|determinePrefixAndReturnRemainder_AND
+name|determinePrefixAndReturnRemainder
 parameter_list|(
 name|String
 name|str
+parameter_list|,
+name|String
+name|delimiter
 parameter_list|)
 block|{
 name|int
@@ -520,7 +543,7 @@ argument_list|()
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|" and "
+name|delimiter
 argument_list|)
 decl_stmt|;
 if|if
@@ -540,7 +563,10 @@ literal|0
 argument_list|,
 name|index
 operator|+
-literal|5
+name|delimiter
+operator|.
+name|length
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|str
@@ -551,7 +577,10 @@ name|substring
 argument_list|(
 name|index
 operator|+
-literal|5
+name|delimiter
+operator|.
+name|length
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -566,69 +595,8 @@ return|return
 name|str
 return|;
 block|}
-comment|/** 	 * SIDE EFFECT: sets class variable prefix 	 * Delimiter: " " 	 *  	 * @return String without prefix 	 */
-DECL|method|determinePrefixAndReturnRemainder_SPACE (String str)
-specifier|private
-name|String
-name|determinePrefixAndReturnRemainder_SPACE
-parameter_list|(
-name|String
-name|str
-parameter_list|)
-block|{
-name|int
-name|index
-init|=
-name|str
-operator|.
-name|lastIndexOf
-argument_list|(
-literal|" "
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|index
-operator|>=
-literal|0
-condition|)
-block|{
-name|prefix
-operator|=
-name|str
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|index
-operator|+
-literal|1
-argument_list|)
-expr_stmt|;
-name|str
-operator|=
-name|str
-operator|.
-name|substring
-argument_list|(
-name|index
-operator|+
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|prefix
-operator|=
-literal|""
-expr_stmt|;
-block|}
-return|return
-name|str
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|complete (String str)
 specifier|public
 name|String
@@ -640,7 +608,7 @@ name|str
 parameter_list|)
 block|{
 comment|// Normally, one would implement that using
-comment|// class inheritance. But this seemed to overengineered
+comment|// class inheritance. But this seemed overengineered
 if|if
 condition|(
 name|this
@@ -650,9 +618,11 @@ condition|)
 block|{
 name|str
 operator|=
-name|determinePrefixAndReturnRemainder_SPACE
+name|determinePrefixAndReturnRemainder
 argument_list|(
 name|str
+argument_list|,
+literal|" "
 argument_list|)
 expr_stmt|;
 block|}
@@ -660,25 +630,21 @@ else|else
 block|{
 name|str
 operator|=
-name|determinePrefixAndReturnRemainder_AND
+name|determinePrefixAndReturnRemainder
 argument_list|(
 name|str
+argument_list|,
+literal|" and "
 argument_list|)
 expr_stmt|;
 block|}
-name|String
-index|[]
-name|res
-init|=
+return|return
 name|super
 operator|.
 name|complete
 argument_list|(
 name|str
 argument_list|)
-decl_stmt|;
-return|return
-name|res
 return|;
 block|}
 DECL|method|getFieldName ()

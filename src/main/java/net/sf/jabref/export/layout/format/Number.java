@@ -62,6 +62,8 @@ name|Number
 implements|implements
 name|ParamLayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|setArgument (String arg)
 specifier|public
 name|void
@@ -73,6 +75,8 @@ parameter_list|)
 block|{
 comment|// No effect currently.
 block|}
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String

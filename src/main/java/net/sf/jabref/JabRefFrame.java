@@ -20,7 +20,117 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|Component
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Cursor
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Dimension
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Font
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Frame
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|GraphicsEnvironment
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|GridBagConstraints
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|GridBagLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Insets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Rectangle
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Toolkit
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Window
 import|;
 end_import
 
@@ -236,7 +346,287 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|AbstractAction
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|Box
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|ImageIcon
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JButton
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JComponent
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JEditorPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JLabel
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JMenu
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JMenuBar
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JMenuItem
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JOptionPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JPanel
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JProgressBar
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JScrollPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JSplitPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JTabbedPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JToggleButton
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JToolBar
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|KeyStroke
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|OverlayLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|ScrollPaneConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingUtilities
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|TransferHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|UIManager
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|WindowConstants
 import|;
 end_import
 
@@ -292,6 +682,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -300,7 +718,63 @@ name|jabref
 operator|.
 name|export
 operator|.
-name|*
+name|AutoSaveManager
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|ExportCustomizationDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|ExportFormats
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|SaveAllAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|SaveDatabaseAction
 import|;
 end_import
 
@@ -370,7 +844,151 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|*
+name|BibtexKeyPatternDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DatabasePropertiesDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|DragDropPopupPane
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|EntryCustomizationDialog2
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|ErrorConsoleAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|GenFieldsCustomizer
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|ImportInspectionDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|SortTabsAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|SysTray
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|WaitForSaveOperation
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|menus
+operator|.
+name|help
+operator|.
+name|ForkMeOnGitHubAction
 import|;
 end_import
 
@@ -525,76 +1143,6 @@ operator|.
 name|journals
 operator|.
 name|ManageJournalsAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|label
-operator|.
-name|ArticleLabelRule
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|label
-operator|.
-name|BookLabelRule
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|label
-operator|.
-name|IncollectionLabelRule
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|label
-operator|.
-name|InproceedingsLabelRule
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|label
-operator|.
-name|LabelMaker
 import|;
 end_import
 
@@ -868,6 +1416,34 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|wizard
 operator|.
 name|auximport
@@ -920,20 +1496,6 @@ name|Options
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|jgoodies
-operator|.
-name|uif_lite
-operator|.
-name|component
-operator|.
-name|UIFSplitPane
-import|;
-end_import
-
 begin_comment
 comment|/**  * The main window of the application.  */
 end_comment
@@ -948,15 +1510,26 @@ name|JFrame
 implements|implements
 name|OutputPrinter
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|contentPane
-name|UIFSplitPane
+specifier|final
+name|JSplitPane
 name|contentPane
 init|=
 operator|new
-name|UIFSplitPane
+name|JSplitPane
 argument_list|()
 decl_stmt|;
 DECL|field|prefs
+specifier|final
 name|JabRefPreferences
 name|prefs
 init|=
@@ -965,6 +1538,7 @@ operator|.
 name|prefs
 decl_stmt|;
 DECL|field|prefsDialog
+specifier|private
 name|PrefsDialog3
 name|prefsDialog
 init|=
@@ -995,6 +1569,7 @@ name|tabbedPane
 decl_stmt|;
 comment|// initialized at constructor
 DECL|field|marg
+specifier|private
 specifier|final
 name|Insets
 name|marg
@@ -1011,12 +1586,43 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
+DECL|field|jabRef
+specifier|private
+specifier|final
+name|JabRef
+name|jabRef
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|JabRefFrame
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|class|ToolBar
 class|class
 name|ToolBar
 extends|extends
 name|JToolBar
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|addAction (Action a)
 name|void
 name|addAction
@@ -1048,6 +1654,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|b
 operator|.
 name|setMargin
@@ -1055,6 +1662,7 @@ argument_list|(
 name|marg
 argument_list|)
 expr_stmt|;
+block|}
 name|add
 argument_list|(
 name|b
@@ -1063,6 +1671,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|tlb
+specifier|final
 name|ToolBar
 name|tlb
 init|=
@@ -1071,6 +1680,8 @@ name|ToolBar
 argument_list|()
 decl_stmt|;
 DECL|field|mb
+specifier|private
+specifier|final
 name|JMenuBar
 name|mb
 init|=
@@ -1079,21 +1690,28 @@ name|JMenuBar
 argument_list|()
 decl_stmt|;
 DECL|field|pluginMenu
+specifier|private
+specifier|final
 name|JMenu
 name|pluginMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Plugins"
 argument_list|)
 decl_stmt|;
 DECL|field|addedToPluginMenu
+specifier|private
 name|boolean
 name|addedToPluginMenu
 init|=
 literal|false
 decl_stmt|;
 DECL|field|gbl
+specifier|private
+specifier|final
 name|GridBagLayout
 name|gbl
 init|=
@@ -1102,6 +1720,8 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|private
+specifier|final
 name|GridBagConstraints
 name|con
 init|=
@@ -1110,7 +1730,7 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|statusLine
-DECL|field|statusLabel
+specifier|final
 name|JLabel
 name|statusLine
 init|=
@@ -1123,7 +1743,11 @@ name|SwingConstants
 operator|.
 name|LEFT
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+DECL|field|statusLabel
+specifier|private
+specifier|final
+name|JLabel
 name|statusLabel
 init|=
 operator|new
@@ -1136,7 +1760,7 @@ argument_list|(
 literal|"Status"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|,
 name|SwingConstants
 operator|.
@@ -1144,6 +1768,8 @@ name|LEFT
 argument_list|)
 decl_stmt|;
 DECL|field|progressBar
+specifier|private
+specifier|final
 name|JProgressBar
 name|progressBar
 init|=
@@ -1153,6 +1779,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|fileHistory
 specifier|private
+specifier|final
 name|FileHistory
 name|fileHistory
 init|=
@@ -1171,13 +1798,10 @@ name|sysTray
 init|=
 literal|null
 decl_stmt|;
-DECL|field|labelMaker
-name|LabelMaker
-name|labelMaker
-decl_stmt|;
 comment|// The help window.
 DECL|field|helpDiag
 specifier|public
+specifier|final
 name|HelpDialog
 name|helpDiag
 init|=
@@ -1216,8 +1840,9 @@ name|highlightAny
 decl_stmt|,
 name|highlightAll
 decl_stmt|;
-name|OpenDatabaseAction
 DECL|field|open
+specifier|final
+name|OpenDatabaseAction
 name|open
 init|=
 operator|new
@@ -1228,6 +1853,8 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|final
 name|AbstractAction
 DECL|field|close
 name|close
@@ -1235,43 +1862,71 @@ init|=
 operator|new
 name|CloseDatabaseAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|quit
+specifier|private
+specifier|final
+name|AbstractAction
 name|quit
 init|=
 operator|new
 name|CloseAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|selectKeys
+specifier|private
+specifier|final
+name|AbstractAction
 name|selectKeys
 init|=
 operator|new
 name|SelectKeysAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|newDatabaseAction
+specifier|private
+specifier|final
+name|AbstractAction
 name|newDatabaseAction
 init|=
 operator|new
 name|NewDatabaseAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|newSubDatabaseAction
+specifier|private
+specifier|final
+name|AbstractAction
 name|newSubDatabaseAction
 init|=
 operator|new
 name|NewSubDatabaseAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|integrityCheckAction
+specifier|private
+specifier|final
+name|AbstractAction
 name|integrityCheckAction
 init|=
 operator|new
 name|IntegrityCheckAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+DECL|field|forkMeOnGitHubAction
+specifier|private
+specifier|final
+name|AbstractAction
+name|forkMeOnGitHubAction
+init|=
+operator|new
+name|ForkMeOnGitHubAction
+argument_list|()
+decl_stmt|;
 DECL|field|help
+specifier|private
+specifier|final
+name|AbstractAction
 name|help
 init|=
 operator|new
@@ -1299,8 +1954,11 @@ argument_list|(
 literal|"Help"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|contents
+specifier|private
+specifier|final
+name|AbstractAction
 name|contents
 init|=
 operator|new
@@ -1328,8 +1986,11 @@ argument_list|(
 literal|"helpContents"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|about
+specifier|private
+specifier|final
+name|AbstractAction
 name|about
 init|=
 operator|new
@@ -1357,8 +2018,11 @@ argument_list|(
 literal|"about"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|editEntry
+specifier|private
+specifier|final
+name|AbstractAction
 name|editEntry
 init|=
 operator|new
@@ -1382,8 +2046,11 @@ argument_list|(
 literal|"Edit entry"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|focusTable
+specifier|private
+specifier|final
+name|AbstractAction
 name|focusTable
 init|=
 operator|new
@@ -1407,8 +2074,11 @@ argument_list|(
 literal|"Focus entry table"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|save
+specifier|private
+specifier|final
+name|AbstractAction
 name|save
 init|=
 operator|new
@@ -1432,8 +2102,11 @@ argument_list|(
 literal|"Save database"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|saveAs
+specifier|private
+specifier|final
+name|AbstractAction
 name|saveAs
 init|=
 operator|new
@@ -1457,8 +2130,11 @@ argument_list|(
 literal|"Save database as ..."
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|saveAll
+specifier|private
+specifier|final
+name|AbstractAction
 name|saveAll
 init|=
 operator|new
@@ -1468,8 +2144,11 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|saveSelectedAs
+specifier|private
+specifier|final
+name|AbstractAction
 name|saveSelectedAs
 init|=
 operator|new
@@ -1493,8 +2172,11 @@ argument_list|(
 literal|"saveAs"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|saveSelectedAsPlain
+specifier|private
+specifier|final
+name|AbstractAction
 name|saveSelectedAsPlain
 init|=
 operator|new
@@ -1518,8 +2200,11 @@ argument_list|(
 literal|"saveAs"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|exportAll
+specifier|private
+specifier|final
+name|AbstractAction
 name|exportAll
 init|=
 name|ExportFormats
@@ -1530,8 +2215,11 @@ name|this
 argument_list|,
 literal|false
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|exportSelected
+specifier|private
+specifier|final
+name|AbstractAction
 name|exportSelected
 init|=
 name|ExportFormats
@@ -1542,8 +2230,11 @@ name|this
 argument_list|,
 literal|true
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|importCurrent
+specifier|private
+specifier|final
+name|AbstractAction
 name|importCurrent
 init|=
 name|ImportFormats
@@ -1554,8 +2245,11 @@ name|this
 argument_list|,
 literal|false
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|importNew
+specifier|private
+specifier|final
+name|AbstractAction
 name|importNew
 init|=
 name|ImportFormats
@@ -1566,8 +2260,10 @@ name|this
 argument_list|,
 literal|true
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|nextTab
+specifier|final
+name|AbstractAction
 name|nextTab
 init|=
 operator|new
@@ -1575,8 +2271,10 @@ name|ChangeTabAction
 argument_list|(
 literal|true
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|prevTab
+specifier|final
+name|AbstractAction
 name|prevTab
 init|=
 operator|new
@@ -1584,8 +2282,11 @@ name|ChangeTabAction
 argument_list|(
 literal|false
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|sortTabs
+specifier|private
+specifier|final
+name|AbstractAction
 name|sortTabs
 init|=
 operator|new
@@ -1593,8 +2294,11 @@ name|SortTabsAction
 argument_list|(
 name|this
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|undo
+specifier|private
+specifier|final
+name|AbstractAction
 name|undo
 init|=
 operator|new
@@ -1618,8 +2322,11 @@ argument_list|(
 literal|"Undo"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|redo
+specifier|private
+specifier|final
+name|AbstractAction
 name|redo
 init|=
 operator|new
@@ -1643,8 +2350,10 @@ argument_list|(
 literal|"Redo"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|forward
+specifier|final
+name|AbstractAction
 name|forward
 init|=
 operator|new
@@ -1670,8 +2379,10 @@ argument_list|(
 literal|"Forward"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|back
+specifier|final
+name|AbstractAction
 name|back
 init|=
 operator|new
@@ -1697,7 +2408,10 @@ argument_list|(
 literal|"Back"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|private
+specifier|final
+name|AbstractAction
 comment|//cut = new GeneralAction("cut", "Cut", Globals.lang("Cut"),
 comment|//   GUIGlobals.cutIconFile,
 comment|//   prefs.getKey("Cut")),
@@ -1725,7 +2439,10 @@ argument_list|(
 literal|"Delete"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|private
+specifier|final
+name|AbstractAction
 comment|//copy = new GeneralAction("copy", "Copy", Globals.lang("Copy"),
 comment|//                         GUIGlobals.copyIconFile,
 comment|//                         prefs.getKey("Copy")),
@@ -1744,8 +2461,11 @@ argument_list|(
 literal|"copy"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|paste
+specifier|private
+specifier|final
+name|AbstractAction
 name|paste
 init|=
 operator|new
@@ -1760,8 +2480,11 @@ argument_list|(
 literal|"paste"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cut
+specifier|private
+specifier|final
+name|AbstractAction
 name|cut
 init|=
 operator|new
@@ -1776,8 +2499,11 @@ argument_list|(
 literal|"cut"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|mark
+specifier|private
+specifier|final
+name|AbstractAction
 name|mark
 init|=
 operator|new
@@ -1801,8 +2527,11 @@ argument_list|(
 literal|"Mark entries"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|unmark
+specifier|private
+specifier|final
+name|AbstractAction
 name|unmark
 init|=
 operator|new
@@ -1826,8 +2555,11 @@ argument_list|(
 literal|"Unmark entries"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|unmarkAll
+specifier|private
+specifier|final
+name|AbstractAction
 name|unmarkAll
 init|=
 operator|new
@@ -1837,8 +2569,11 @@ literal|"unmarkAll"
 argument_list|,
 literal|"Unmark all"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleRelevance
+specifier|private
+specifier|final
+name|AbstractAction
 name|toggleRelevance
 init|=
 operator|new
@@ -1892,8 +2627,11 @@ operator|.
 name|getToolTipText
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleQualityAssured
+specifier|private
+specifier|final
+name|AbstractAction
 name|toggleQualityAssured
 init|=
 operator|new
@@ -1947,8 +2685,11 @@ operator|.
 name|getToolTipText
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|togglePrinted
+specifier|private
+specifier|final
+name|AbstractAction
 name|togglePrinted
 init|=
 operator|new
@@ -2002,7 +2743,10 @@ operator|.
 name|getToolTipText
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|private
+specifier|final
+name|AbstractAction
 comment|//    	priority = new GeneralAction("setPriority", "Set priority",
 comment|//    			                                            Globals.lang("Set priority")),
 DECL|field|manageSelectors
@@ -2015,22 +2759,30 @@ literal|"manageSelectors"
 argument_list|,
 literal|"Manage content selectors"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|saveSessionAction
+specifier|private
+specifier|final
+name|AbstractAction
 name|saveSessionAction
 init|=
 operator|new
 name|SaveSessionAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|loadSessionAction
+specifier|final
+name|AbstractAction
 name|loadSessionAction
 init|=
 operator|new
 name|LoadSessionAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|incrementalSearch
+specifier|private
+specifier|final
+name|AbstractAction
 name|incrementalSearch
 init|=
 operator|new
@@ -2054,8 +2806,11 @@ argument_list|(
 literal|"Incremental search"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|normalSearch
+specifier|private
+specifier|final
+name|AbstractAction
 name|normalSearch
 init|=
 operator|new
@@ -2079,8 +2834,11 @@ argument_list|(
 literal|"Search"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleSearch
+specifier|private
+specifier|final
+name|AbstractAction
 name|toggleSearch
 init|=
 operator|new
@@ -2097,8 +2855,11 @@ argument_list|(
 literal|"Toggle search panel"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|copyKey
+specifier|private
+specifier|final
+name|AbstractAction
 name|copyKey
 init|=
 operator|new
@@ -2115,7 +2876,10 @@ argument_list|(
 literal|"Copy BibTeX key"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|private
+specifier|final
+name|AbstractAction
 comment|//"Put a BibTeX reference to the selected entries on the clipboard",
 DECL|field|copyCiteKey
 name|copyCiteKey
@@ -2135,8 +2899,11 @@ argument_list|(
 literal|"Copy \\cite{BibTeX key}"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|copyKeyAndTitle
+specifier|private
+specifier|final
+name|AbstractAction
 name|copyKeyAndTitle
 init|=
 operator|new
@@ -2153,8 +2920,11 @@ argument_list|(
 literal|"Copy BibTeX key and title"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|mergeDatabaseAction
+specifier|private
+specifier|final
+name|AbstractAction
 name|mergeDatabaseAction
 init|=
 operator|new
@@ -2178,9 +2948,12 @@ argument_list|(
 literal|"open"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|private
+specifier|final
+name|AbstractAction
 comment|//prefs.getKey("Open")),
-comment|/*remove = new GeneralAction("remove", "Remove", "Remove selected entries",         GUIGlobals.removeIconFile),*/
+comment|/*remove = new GeneralAction("remove", "Remove", "Remove selected entries",               GUIGlobals.removeIconFile),*/
 DECL|field|selectAll
 name|selectAll
 init|=
@@ -2198,8 +2971,11 @@ argument_list|(
 literal|"Select all"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|replaceAll
+specifier|private
+specifier|final
+name|AbstractAction
 name|replaceAll
 init|=
 operator|new
@@ -2216,8 +2992,11 @@ argument_list|(
 literal|"Replace string"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|editPreamble
+specifier|private
+specifier|final
+name|AbstractAction
 name|editPreamble
 init|=
 operator|new
@@ -2241,8 +3020,11 @@ argument_list|(
 literal|"Edit preamble"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|editStrings
+specifier|private
+specifier|final
+name|AbstractAction
 name|editStrings
 init|=
 operator|new
@@ -2266,8 +3048,11 @@ argument_list|(
 literal|"Edit strings"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleToolbar
+specifier|private
+specifier|final
+name|AbstractAction
 name|toggleToolbar
 init|=
 operator|new
@@ -2291,8 +3076,11 @@ argument_list|(
 literal|"Hide/show toolbar"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleGroups
+specifier|private
+specifier|final
+name|AbstractAction
 name|toggleGroups
 init|=
 operator|new
@@ -2316,8 +3104,11 @@ argument_list|(
 literal|"Toggle groups interface"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|togglePreview
+specifier|private
+specifier|final
+name|AbstractAction
 name|togglePreview
 init|=
 operator|new
@@ -2341,8 +3132,11 @@ argument_list|(
 literal|"Toggle entry preview"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleHighlightAny
+specifier|private
+specifier|final
+name|AbstractAction
 name|toggleHighlightAny
 init|=
 operator|new
@@ -2366,8 +3160,11 @@ argument_list|(
 literal|"groupsHighlightAny"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleHighlightAll
+specifier|private
+specifier|final
+name|AbstractAction
 name|toggleHighlightAll
 init|=
 operator|new
@@ -2391,8 +3188,10 @@ argument_list|(
 literal|"groupsHighlightAll"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|switchPreview
+specifier|final
+name|AbstractAction
 name|switchPreview
 init|=
 operator|new
@@ -2409,8 +3208,11 @@ argument_list|(
 literal|"Switch preview layout"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|makeKeyAction
+specifier|private
+specifier|final
+name|AbstractAction
 name|makeKeyAction
 init|=
 operator|new
@@ -2434,8 +3236,11 @@ argument_list|(
 literal|"Autogenerate BibTeX keys"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|writeXmpAction
+specifier|private
+specifier|final
+name|AbstractAction
 name|writeXmpAction
 init|=
 operator|new
@@ -2459,8 +3264,11 @@ argument_list|(
 literal|"Write XMP"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|openFolder
+specifier|private
+specifier|final
+name|AbstractAction
 name|openFolder
 init|=
 operator|new
@@ -2484,8 +3292,11 @@ argument_list|(
 literal|"Open folder"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|openFile
+specifier|private
+specifier|final
+name|AbstractAction
 name|openFile
 init|=
 operator|new
@@ -2509,8 +3320,11 @@ argument_list|(
 literal|"Open file"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|openPdf
+specifier|private
+specifier|final
+name|AbstractAction
 name|openPdf
 init|=
 operator|new
@@ -2534,8 +3348,11 @@ argument_list|(
 literal|"Open PDF or PS"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|openUrl
+specifier|private
+specifier|final
+name|AbstractAction
 name|openUrl
 init|=
 operator|new
@@ -2559,8 +3376,11 @@ argument_list|(
 literal|"Open URL or DOI"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|openSpires
+specifier|private
+specifier|final
+name|AbstractAction
 name|openSpires
 init|=
 operator|new
@@ -2584,8 +3404,11 @@ argument_list|(
 literal|"Open SPIRES entry"
 argument_list|)
 argument_list|)
-decl_stmt|,
-comment|/* 	   * It looks like this wasn't being implemented for spires anyway so we 	   * comment it out for now. 	   * 	  openInspire = new GeneralAction("openInspire", "Open INSPIRE entry",                                           Globals.lang("Open INSPIRE entry"),                                           prefs.getKey("Open INSPIRE entry")), 		*/
+decl_stmt|;
+specifier|private
+specifier|final
+name|AbstractAction
+comment|/*              * It looks like this wasn't being implemented for spires anyway so we              * comment it out for now.              *             openInspire = new GeneralAction("openInspire", "Open INSPIRE entry",                                                 Globals.lang("Open INSPIRE entry"),                                                 prefs.getKey("Open INSPIRE entry")),             */
 DECL|field|dupliCheck
 name|dupliCheck
 init|=
@@ -2596,7 +3419,10 @@ literal|"dupliCheck"
 argument_list|,
 literal|"Find duplicates"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|private
+specifier|final
+name|AbstractAction
 comment|//strictDupliCheck = new GeneralAction("strictDupliCheck", "Find and remove exact duplicates"),
 DECL|field|plainTextImport
 name|plainTextImport
@@ -2615,22 +3441,31 @@ argument_list|(
 literal|"New from plain text"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|customExpAction
+specifier|private
+specifier|final
+name|AbstractAction
 name|customExpAction
 init|=
 operator|new
 name|CustomizeExportsAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|customImpAction
+specifier|private
+specifier|final
+name|AbstractAction
 name|customImpAction
 init|=
 operator|new
 name|CustomizeImportsAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|customFileTypesAction
+specifier|private
+specifier|final
+name|AbstractAction
 name|customFileTypesAction
 init|=
 name|ExternalFileTypeEditor
@@ -2639,8 +3474,9 @@ name|getAction
 argument_list|(
 name|this
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|exportToClipboard
+name|AbstractAction
 name|exportToClipboard
 init|=
 operator|new
@@ -2650,7 +3486,10 @@ literal|"exportToClipboard"
 argument_list|,
 literal|"Export selected entries to clipboard"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|private
+specifier|final
+name|AbstractAction
 comment|//expandEndnoteZip = new ExpandEndnoteFilters(this),
 DECL|field|autoSetPdf
 name|autoSetPdf
@@ -2678,8 +3517,11 @@ argument_list|(
 literal|"Synchronize PDF"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|autoSetPs
+specifier|private
+specifier|final
+name|AbstractAction
 name|autoSetPs
 init|=
 operator|new
@@ -2705,8 +3547,11 @@ argument_list|(
 literal|"Synchronize PS"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|autoSetFile
+specifier|private
+specifier|final
+name|AbstractAction
 name|autoSetFile
 init|=
 operator|new
@@ -2730,8 +3575,11 @@ argument_list|(
 literal|"Synchronize files"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|abbreviateMedline
+specifier|private
+specifier|final
+name|AbstractAction
 name|abbreviateMedline
 init|=
 operator|new
@@ -2748,8 +3596,11 @@ argument_list|(
 literal|"Abbreviate journal names of the selected entries (MEDLINE abbreviation)"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|abbreviateIso
+specifier|private
+specifier|final
+name|AbstractAction
 name|abbreviateIso
 init|=
 operator|new
@@ -2775,8 +3626,11 @@ argument_list|(
 literal|"Abbreviate"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|unabbreviate
+specifier|private
+specifier|final
+name|AbstractAction
 name|unabbreviate
 init|=
 operator|new
@@ -2802,8 +3656,11 @@ argument_list|(
 literal|"Unabbreviate"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|manageJournals
+specifier|private
+specifier|final
+name|AbstractAction
 name|manageJournals
 init|=
 operator|new
@@ -2811,34 +3668,49 @@ name|ManageJournalsAction
 argument_list|(
 name|this
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|databaseProperties
+specifier|private
+specifier|final
+name|AbstractAction
 name|databaseProperties
 init|=
 operator|new
 name|DatabasePropertiesAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|bibtexKeyPattern
+specifier|private
+specifier|final
+name|AbstractAction
 name|bibtexKeyPattern
 init|=
 operator|new
 name|BibtexKeyPatternAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|errorConsole
+specifier|private
+specifier|final
+name|AbstractAction
 name|errorConsole
 init|=
-name|Globals
-operator|.
-name|errorConsole
-operator|.
-name|getAction
+operator|new
+name|ErrorConsoleAction
 argument_list|(
 name|this
+argument_list|,
+name|Globals
+operator|.
+name|streamEavesdropper
+argument_list|,
+name|Globals
+operator|.
+name|handler
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|test
+name|AbstractAction
 name|test
 init|=
 operator|new
@@ -2848,8 +3720,11 @@ literal|"test"
 argument_list|,
 literal|"Test"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|dbConnect
+specifier|private
+specifier|final
+name|AbstractAction
 name|dbConnect
 init|=
 operator|new
@@ -2873,8 +3748,11 @@ argument_list|(
 literal|"dbConnect"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|dbExport
+specifier|private
+specifier|final
+name|AbstractAction
 name|dbExport
 init|=
 operator|new
@@ -2898,8 +3776,11 @@ argument_list|(
 literal|"dbExport"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|Cleanup
+specifier|private
+specifier|final
+name|AbstractAction
 name|Cleanup
 init|=
 operator|new
@@ -2927,8 +3808,11 @@ operator|(
 literal|"cleanupentries"
 operator|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|mergeEntries
+specifier|private
+specifier|final
+name|AbstractAction
 name|mergeEntries
 init|=
 operator|new
@@ -2952,8 +3836,11 @@ argument_list|(
 literal|"mergeentries"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|dbImport
+specifier|private
+specifier|final
+name|AbstractAction
 name|dbImport
 init|=
 operator|new
@@ -2964,7 +3851,10 @@ argument_list|)
 operator|.
 name|getAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+specifier|private
+specifier|final
+name|AbstractAction
 comment|//downloadFullText = new GeneralAction("downloadFullText", "Look up full text document",
 comment|//        Globals.lang("Follow DOI or URL link and try to locate PDF full text document")),
 DECL|field|increaseFontSize
@@ -2973,15 +3863,21 @@ init|=
 operator|new
 name|IncreaseTableFontSizeAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|decreseFontSize
+specifier|private
+specifier|final
+name|AbstractAction
 name|decreseFontSize
 init|=
 operator|new
 name|DecreaseTableFontSizeAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|installPlugin
+specifier|private
+specifier|final
+name|AbstractAction
 name|installPlugin
 init|=
 operator|new
@@ -2989,8 +3885,11 @@ name|PluginInstallerAction
 argument_list|(
 name|this
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|resolveDuplicateKeys
+specifier|private
+specifier|final
+name|AbstractAction
 name|resolveDuplicateKeys
 init|=
 operator|new
@@ -3016,6 +3915,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|massSetField
+specifier|final
 name|MassSetFieldAction
 name|massSetField
 init|=
@@ -3026,6 +3926,7 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|manageKeywords
+specifier|final
 name|ManageKeywordsAction
 name|manageKeywords
 init|=
@@ -3036,6 +3937,8 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|findUnlinkedFiles
+specifier|private
+specifier|final
 name|GeneralAction
 name|findUnlinkedFiles
 init|=
@@ -3069,6 +3972,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|autoLinkFile
+specifier|private
+specifier|final
 name|AutoLinkFilesAction
 name|autoLinkFile
 init|=
@@ -3077,10 +3982,13 @@ name|AutoLinkFilesAction
 argument_list|()
 decl_stmt|;
 DECL|field|pushExternalButton
+specifier|private
 name|PushToApplicationButton
 name|pushExternalButton
 decl_stmt|;
 DECL|field|fetchers
+specifier|private
+specifier|final
 name|List
 argument_list|<
 name|EntryFetcher
@@ -3095,6 +4003,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|fetcherActions
+specifier|private
+specifier|final
 name|List
 argument_list|<
 name|Action
@@ -3115,41 +4025,63 @@ name|groupSelector
 decl_stmt|;
 comment|// The menus for importing/appending other formats
 DECL|field|importMenu
+specifier|private
+specifier|final
 name|JMenu
 name|importMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Import into current database"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|importNewMenu
+specifier|private
+specifier|final
+name|JMenu
 name|importNewMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Import into new database"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|exportMenu
+specifier|private
+specifier|final
+name|JMenu
 name|exportMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Export"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|customExportMenu
+name|JMenu
 name|customExportMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Custom export"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|newDatabaseMenu
+specifier|private
+specifier|final
+name|JMenu
 name|newDatabaseMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"New database"
@@ -3157,9 +4089,13 @@ argument_list|)
 decl_stmt|;
 comment|// Other submenus
 DECL|field|checkAndFix
+specifier|private
+specifier|final
 name|JMenu
 name|checkAndFix
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Legacy tools..."
@@ -3167,6 +4103,8 @@ argument_list|)
 decl_stmt|;
 comment|// The action for adding a new entry of unspecified type.
 DECL|field|newEntryAction
+specifier|private
+specifier|final
 name|NewEntryAction
 name|newEntryAction
 init|=
@@ -3182,6 +4120,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|newSpecificEntryAction
+specifier|private
+specifier|final
 name|NewEntryAction
 index|[]
 name|newSpecificEntryAction
@@ -3330,11 +4270,20 @@ literal|"other"
 argument_list|)
 block|}
 decl_stmt|;
-DECL|method|JabRefFrame ()
+DECL|method|JabRefFrame (JabRef jabRef)
 specifier|public
 name|JabRefFrame
-parameter_list|()
+parameter_list|(
+name|JabRef
+name|jabRef
+parameter_list|)
 block|{
+name|this
+operator|.
+name|jabRef
+operator|=
+name|jabRef
+expr_stmt|;
 name|init
 argument_list|()
 expr_stmt|;
@@ -3372,7 +4321,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"filechooserDisableRename"
+name|JabRefPreferences
+operator|.
+name|FILECHOOSER_DISABLE_RENAME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3423,6 +4374,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosing
@@ -3464,9 +4417,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|initLabelMaker
-argument_list|()
-expr_stmt|;
 name|initSidePane
 argument_list|()
 expr_stmt|;
@@ -3487,7 +4437,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"toolbarVisible"
+name|JabRefPreferences
+operator|.
+name|TOOLBAR_VISIBLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3509,7 +4461,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"windowMaximised"
+name|JabRefPreferences
+operator|.
+name|WINDOW_MAXIMISED
 argument_list|)
 condition|)
 block|{
@@ -3520,7 +4474,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"sizeX"
+name|JabRefPreferences
+operator|.
+name|SIZE_X
 argument_list|)
 decl_stmt|;
 name|int
@@ -3530,7 +4486,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"sizeY"
+name|JabRefPreferences
+operator|.
+name|SIZE_Y
 argument_list|)
 decl_stmt|;
 name|int
@@ -3540,7 +4498,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"posX"
+name|JabRefPreferences
+operator|.
+name|POS_X
 argument_list|)
 decl_stmt|;
 name|int
@@ -3550,10 +4510,12 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"posY"
+name|JabRefPreferences
+operator|.
+name|POS_Y
 argument_list|)
 decl_stmt|;
-comment|/*         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();         GraphicsDevice[] gs = ge.getScreenDevices();           // Get size of each screen         for (int i=0; i<gs.length; i++) {             DisplayMode dm = gs[i].getDisplayMode();             int screenWidth = dm.getWidth();             int screenHeight = dm.getHeight();             System.out.println(gs[i].getDefaultConfiguration().getBounds());         }*/
+comment|/*             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();             GraphicsDevice[] gs = ge.getScreenDevices();               // Get size of each screen             for (int i=0; i<gs.length; i++) {                 DisplayMode dm = gs[i].getDisplayMode();                 int screenWidth = dm.getWidth();                 int screenHeight = dm.getHeight();                 System.out.println(gs[i].getDefaultConfiguration().getBounds());             }*/
 comment|//
 comment|// Fix for [ 1738920 ] Windows Position in Multi-Monitor environment
 comment|//
@@ -3617,12 +4579,14 @@ name|bounds
 operator|.
 name|x
 condition|)
+block|{
 name|posX
 operator|=
 name|bounds
 operator|.
 name|x
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|posY
@@ -3631,12 +4595,14 @@ name|bounds
 operator|.
 name|y
 condition|)
+block|{
 name|posY
 operator|=
 name|bounds
 operator|.
 name|y
 expr_stmt|;
+block|}
 name|int
 name|height
 init|=
@@ -3662,9 +4628,11 @@ decl_stmt|;
 comment|//if (posX< )
 if|if
 condition|(
+operator|(
 name|posX
 operator|+
 name|sizeX
+operator|)
 operator|>
 name|width
 condition|)
@@ -3691,7 +4659,9 @@ name|prefs
 operator|.
 name|getIntDefault
 argument_list|(
-literal|"posX"
+name|JabRefPreferences
+operator|.
+name|POS_X
 argument_list|)
 expr_stmt|;
 name|sizeX
@@ -3700,16 +4670,20 @@ name|prefs
 operator|.
 name|getIntDefault
 argument_list|(
-literal|"sizeX"
+name|JabRefPreferences
+operator|.
+name|SIZE_X
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 if|if
 condition|(
+operator|(
 name|posY
 operator|+
 name|sizeY
+operator|)
 operator|>
 name|height
 condition|)
@@ -3736,7 +4710,9 @@ name|prefs
 operator|.
 name|getIntDefault
 argument_list|(
-literal|"posY"
+name|JabRefPreferences
+operator|.
+name|POS_Y
 argument_list|)
 expr_stmt|;
 name|sizeY
@@ -3745,7 +4721,9 @@ name|prefs
 operator|.
 name|getIntDefault
 argument_list|(
-literal|"sizeY"
+name|JabRefPreferences
+operator|.
+name|SIZE_Y
 argument_list|)
 expr_stmt|;
 block|}
@@ -3790,6 +4768,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -3846,7 +4826,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"previewEnabled"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_ENABLED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3860,7 +4842,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highlightGroupsMatchingAny"
+name|JabRefPreferences
+operator|.
+name|HIGHLIGHT_GROUPS_MATCHING_ANY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3874,7 +4858,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highlightGroupsMatchingAll"
+name|JabRefPreferences
+operator|.
+name|HIGHLIGHT_GROUPS_MATCHING_ALL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4340,11 +5326,18 @@ argument_list|(
 name|filePath
 argument_list|)
 decl_stmt|;
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -4361,54 +5354,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-DECL|field|aboutAction
-name|AboutAction
-name|aboutAction
-init|=
-operator|new
-name|AboutAction
-argument_list|()
-decl_stmt|;
-DECL|class|AboutAction
-class|class
-name|AboutAction
-extends|extends
-name|AbstractAction
-block|{
-DECL|method|AboutAction ()
-specifier|public
-name|AboutAction
-parameter_list|()
-block|{
-name|super
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"About JabRef"
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|actionPerformed (ActionEvent e)
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{
-name|about
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -4455,11 +5401,11 @@ name|JScrollPane
 argument_list|(
 name|jp
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_NEVER
 argument_list|)
@@ -4504,6 +5450,8 @@ operator|.
 name|HyperlinkListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|hyperlinkUpdate
@@ -4564,7 +5512,7 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{}
+block|{                         }
 block|}
 block|}
 block|}
@@ -4654,6 +5602,8 @@ operator|new
 name|AbstractWorker
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -4684,6 +5634,8 @@ argument_list|(
 name|JabRefFrame
 operator|.
 name|this
+argument_list|,
+name|jabRef
 argument_list|)
 expr_stmt|;
 name|Util
@@ -4699,12 +5651,16 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|prefsDialog
 operator|.
 name|setValues
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|update
@@ -4752,9 +5708,364 @@ return|return
 name|prefs
 return|;
 block|}
-comment|// General info dialog.  The MacAdapter calls this method when "Quit"
-comment|// is selected from the application menu, Cmd-Q is pressed, or "Quit" is selected from the Dock.
-comment|// The function returns a boolean indicating if quitting is ok or not.
+comment|/**      * Tears down all things started by JabRef      *       * FIXME: Currently some threads remain and therefore hinder JabRef to be closed properly      *       * @param filenames the file names of all currently opened files - used for storing them if prefs openLastEdited is set to true      */
+DECL|method|tearDownJabRef (Vector<String> filenames)
+specifier|private
+name|void
+name|tearDownJabRef
+parameter_list|(
+name|Vector
+argument_list|<
+name|String
+argument_list|>
+name|filenames
+parameter_list|)
+block|{
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|shutdownEverything
+argument_list|()
+expr_stmt|;
+name|dispose
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|basePanel
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|basePanel
+argument_list|()
+operator|.
+name|saveDividerLocation
+argument_list|()
+expr_stmt|;
+block|}
+name|prefs
+operator|.
+name|putInt
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|POS_X
+argument_list|,
+name|JabRefFrame
+operator|.
+name|this
+operator|.
+name|getLocation
+argument_list|()
+operator|.
+name|x
+argument_list|)
+expr_stmt|;
+name|prefs
+operator|.
+name|putInt
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|POS_Y
+argument_list|,
+name|JabRefFrame
+operator|.
+name|this
+operator|.
+name|getLocation
+argument_list|()
+operator|.
+name|y
+argument_list|)
+expr_stmt|;
+name|prefs
+operator|.
+name|putInt
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SIZE_X
+argument_list|,
+name|JabRefFrame
+operator|.
+name|this
+operator|.
+name|getSize
+argument_list|()
+operator|.
+name|width
+argument_list|)
+expr_stmt|;
+name|prefs
+operator|.
+name|putInt
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SIZE_Y
+argument_list|,
+name|JabRefFrame
+operator|.
+name|this
+operator|.
+name|getSize
+argument_list|()
+operator|.
+name|height
+argument_list|)
+expr_stmt|;
+comment|//prefs.putBoolean(JabRefPreferences.WINDOW_MAXIMISED, (getExtendedState()&MAXIMIZED_BOTH)>0);
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|WINDOW_MAXIMISED
+argument_list|,
+operator|(
+name|getExtendedState
+argument_list|()
+operator|==
+name|Frame
+operator|.
+name|MAXIMIZED_BOTH
+operator|)
+argument_list|)
+expr_stmt|;
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|TOOLBAR_VISIBLE
+argument_list|,
+name|tlb
+operator|.
+name|isVisible
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//prefs.putBoolean(JabRefPreferences.SEARCH_PANEL_VISIBLE, sidePaneManager.isComponentVisible("search"));
+comment|// Store divider location for side pane:
+name|int
+name|width
+init|=
+name|contentPane
+operator|.
+name|getDividerLocation
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|width
+operator|>
+literal|0
+condition|)
+block|{
+name|prefs
+operator|.
+name|putInt
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_WIDTH
+argument_list|,
+name|width
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|OPEN_LAST_EDITED
+argument_list|)
+condition|)
+block|{
+comment|// Here we store the names of all current files. If
+comment|// there is no current file, we remove any
+comment|// previously stored file name.
+if|if
+condition|(
+name|filenames
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|prefs
+operator|.
+name|remove
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|LAST_EDITED
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|String
+index|[]
+name|names
+init|=
+operator|new
+name|String
+index|[
+name|filenames
+operator|.
+name|size
+argument_list|()
+index|]
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|filenames
+operator|.
+name|size
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|names
+index|[
+name|i
+index|]
+operator|=
+name|filenames
+operator|.
+name|elementAt
+argument_list|(
+name|i
+argument_list|)
+expr_stmt|;
+block|}
+name|prefs
+operator|.
+name|putStringArray
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|LAST_EDITED
+argument_list|,
+name|names
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+name|fileHistory
+operator|.
+name|storeHistory
+argument_list|()
+expr_stmt|;
+name|prefs
+operator|.
+name|customExports
+operator|.
+name|store
+argument_list|()
+expr_stmt|;
+name|prefs
+operator|.
+name|customImports
+operator|.
+name|store
+argument_list|()
+expr_stmt|;
+name|BibtexEntryType
+operator|.
+name|saveCustomEntryTypes
+argument_list|(
+name|prefs
+argument_list|)
+expr_stmt|;
+comment|// Clear autosave files:
+if|if
+condition|(
+name|Globals
+operator|.
+name|autoSaveManager
+operator|!=
+literal|null
+condition|)
+block|{
+name|Globals
+operator|.
+name|autoSaveManager
+operator|.
+name|clearAutoSaves
+argument_list|()
+expr_stmt|;
+block|}
+comment|// hide systray because the JVM can only shut down when no systray icon is shown
+if|if
+condition|(
+name|sysTray
+operator|!=
+literal|null
+condition|)
+block|{
+name|sysTray
+operator|.
+name|hide
+argument_list|()
+expr_stmt|;
+block|}
+comment|// dispose all windows, even if they are not displayed anymore
+for|for
+control|(
+name|Window
+name|window
+range|:
+name|Window
+operator|.
+name|getWindows
+argument_list|()
+control|)
+block|{
+name|window
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+comment|// shutdown any timers that are may be active
+if|if
+condition|(
+name|Globals
+operator|.
+name|autoSaveManager
+operator|!=
+literal|null
+condition|)
+block|{
+name|Globals
+operator|.
+name|stopAutoSaveManager
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+comment|/**      * General info dialog.  The MacAdapter calls this method when "Quit"      * is selected from the application menu, Cmd-Q is pressed, or "Quit" is selected from the Dock.      * The function returns a boolean indicating if quitting is ok or not.      *       * Non-OSX JabRef calls this when choosing "Quit" from the menu      *       * SIDE EFFECT: tears down JabRef      *       * @return true if the user chose to quit; false otherwise      */
 DECL|method|quit ()
 specifier|public
 name|boolean
@@ -4878,11 +6189,6 @@ name|CLOSED_OPTION
 operator|)
 condition|)
 block|{
-name|close
-operator|=
-literal|false
-expr_stmt|;
-comment|// The user has cancelled.
 return|return
 literal|false
 return|;
@@ -4995,6 +6301,17 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|// Let the search interface store changes to prefs.
+name|searchBar
+operator|.
+name|updatePrefs
+argument_list|()
+expr_stmt|;
+name|prefs
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|close
@@ -5052,297 +6369,18 @@ operator|.
 name|cancelled
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
 comment|// The user clicked cancel.
 block|}
 block|}
-name|dispose
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|basePanel
-argument_list|()
-operator|!=
-literal|null
-condition|)
-name|basePanel
-argument_list|()
-operator|.
-name|saveDividerLocation
-argument_list|()
-expr_stmt|;
-name|prefs
-operator|.
-name|putInt
-argument_list|(
-literal|"posX"
-argument_list|,
-name|JabRefFrame
-operator|.
-name|this
-operator|.
-name|getLocation
-argument_list|()
-operator|.
-name|x
-argument_list|)
-expr_stmt|;
-name|prefs
-operator|.
-name|putInt
-argument_list|(
-literal|"posY"
-argument_list|,
-name|JabRefFrame
-operator|.
-name|this
-operator|.
-name|getLocation
-argument_list|()
-operator|.
-name|y
-argument_list|)
-expr_stmt|;
-name|prefs
-operator|.
-name|putInt
-argument_list|(
-literal|"sizeX"
-argument_list|,
-name|JabRefFrame
-operator|.
-name|this
-operator|.
-name|getSize
-argument_list|()
-operator|.
-name|width
-argument_list|)
-expr_stmt|;
-name|prefs
-operator|.
-name|putInt
-argument_list|(
-literal|"sizeY"
-argument_list|,
-name|JabRefFrame
-operator|.
-name|this
-operator|.
-name|getSize
-argument_list|()
-operator|.
-name|height
-argument_list|)
-expr_stmt|;
-comment|//prefs.putBoolean("windowMaximised", (getExtendedState()&MAXIMIZED_BOTH)>0);
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-literal|"windowMaximised"
-argument_list|,
-operator|(
-name|getExtendedState
-argument_list|()
-operator|==
-name|Frame
-operator|.
-name|MAXIMIZED_BOTH
-operator|)
-argument_list|)
-expr_stmt|;
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-literal|"toolbarVisible"
-argument_list|,
-name|tlb
-operator|.
-name|isVisible
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-literal|"searchBarVisible"
-argument_list|,
-name|searchBar
-operator|.
-name|isVisible
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// Store divider location for side pane:
-name|int
-name|width
-init|=
-name|contentPane
-operator|.
-name|getDividerLocation
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|width
-operator|>
-literal|0
-condition|)
-name|prefs
-operator|.
-name|putInt
-argument_list|(
-literal|"sidePaneWidth"
-argument_list|,
-name|width
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"openLastEdited"
-argument_list|)
-condition|)
-block|{
-comment|// Here we store the names of allcurrent filea. If
-comment|// there is no current file, we remove any
-comment|// previously stored file name.
-if|if
-condition|(
-name|filenames
-operator|.
-name|size
-argument_list|()
-operator|==
-literal|0
-condition|)
-block|{
-name|prefs
-operator|.
-name|remove
-argument_list|(
-literal|"lastEdited"
-argument_list|)
-expr_stmt|;
 block|}
-else|else
-block|{
-name|String
-index|[]
-name|names
-init|=
-operator|new
-name|String
-index|[
-name|filenames
-operator|.
-name|size
-argument_list|()
-index|]
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|filenames
-operator|.
-name|size
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|names
-index|[
-name|i
-index|]
-operator|=
-name|filenames
-operator|.
-name|elementAt
+name|tearDownJabRef
 argument_list|(
-name|i
+name|filenames
 argument_list|)
-expr_stmt|;
-block|}
-name|prefs
-operator|.
-name|putStringArray
-argument_list|(
-literal|"lastEdited"
-argument_list|,
-name|names
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-name|fileHistory
-operator|.
-name|storeHistory
-argument_list|()
-expr_stmt|;
-name|prefs
-operator|.
-name|customExports
-operator|.
-name|store
-argument_list|()
-expr_stmt|;
-name|prefs
-operator|.
-name|customImports
-operator|.
-name|store
-argument_list|()
-expr_stmt|;
-name|BibtexEntryType
-operator|.
-name|saveCustomEntryTypes
-argument_list|(
-name|prefs
-argument_list|)
-expr_stmt|;
-comment|// Clear autosave files:
-if|if
-condition|(
-name|Globals
-operator|.
-name|autoSaveManager
-operator|!=
-literal|null
-condition|)
-name|Globals
-operator|.
-name|autoSaveManager
-operator|.
-name|clearAutoSaves
-argument_list|()
-expr_stmt|;
-comment|// Let the search interface store changes to prefs.
-name|searchBar
-operator|.
-name|updatePrefs
-argument_list|()
-expr_stmt|;
-name|prefs
-operator|.
-name|flush
-argument_list|()
 expr_stmt|;
 return|return
 literal|true
@@ -5504,7 +6542,7 @@ name|con
 argument_list|)
 expr_stmt|;
 comment|//getContentPane().add(lim);
-comment|/*       JPanel empt = new JPanel();       empt.setBackground(GUIGlobals.lightGray);       gbl.setConstraints(empt, con);            getContentPane().add(empt);        con.insets = new Insets(1,0,1,1);       con.anchor = GridBagConstraints.EAST;       con.weightx = 0;       gbl.setConstraints(searchManager, con);       getContentPane().add(searchManager);*/
+comment|/*           JPanel empt = new JPanel();           empt.setBackground(GUIGlobals.lightGray);           gbl.setConstraints(empt, con);                getContentPane().add(empt);            con.insets = new Insets(1,0,1,1);           con.anchor = GridBagConstraints.EAST;           con.weightx = 0;           gbl.setConstraints(searchManager, con);           getContentPane().add(searchManager);*/
 name|con
 operator|.
 name|gridwidth
@@ -5674,7 +6712,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"searchBarVisible"
+name|JabRefPreferences
+operator|.
+name|SEARCH_BAR_VISIBLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5719,7 +6759,7 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* tabbedPane.setUI(new BasicTabbedPaneUI() {           @Override          protected int calculateTabAreaHeight(int tab_placement, int run_count, int max_tab_height) {               //if (tabbedPane.getTabCount()> 1)                 return super.calculateTabAreaHeight(tab_placement, run_count, max_tab_height);               //else               //    return 0;           }         @Override           protected int calculateTabAreaWidth(int tabPlacement, int vertRunCount, int maxTabWidth) {               //if (tabbedPane.getTabCount()> 1)             //    return super.calculateTabAreaWidth(tabPlacement, vertRunCount, maxTabWidth) + 2000;               //else               //    return 0;           }       });       */
+comment|/* tabbedPane.setUI(new BasicTabbedPaneUI() {               @Override              protected int calculateTabAreaHeight(int tab_placement, int run_count, int max_tab_height) {                   //if (tabbedPane.getTabCount()> 1)                     return super.calculateTabAreaHeight(tab_placement, run_count, max_tab_height);                   //else                   //    return 0;               }             @Override               protected int calculateTabAreaWidth(int tabPlacement, int vertRunCount, int maxTabWidth) {                   //if (tabbedPane.getTabCount()> 1)                 //    return super.calculateTabAreaWidth(tabPlacement, vertRunCount, maxTabWidth) + 2000;                   //else                   //    return 0;               }           });           */
 name|contentPane
 operator|.
 name|setRightComponent
@@ -6001,104 +7041,7 @@ name|xfer
 argument_list|)
 expr_stmt|;
 block|}
-DECL|class|NullComponent
-specifier|private
-class|class
-name|NullComponent
-extends|extends
-name|JPanel
-block|{
-DECL|method|NullComponent ()
-specifier|public
-name|NullComponent
-parameter_list|()
-block|{
-name|setLayout
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-comment|// set width long enough to accommodate tabs
-name|setPreferredSize
-argument_list|(
-operator|new
-name|Dimension
-argument_list|(
-literal|120
-argument_list|,
-literal|0
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-DECL|method|initLabelMaker ()
-specifier|private
-name|void
-name|initLabelMaker
-parameter_list|()
-block|{
-comment|// initialize the labelMaker
-name|labelMaker
-operator|=
-operator|new
-name|LabelMaker
-argument_list|()
-expr_stmt|;
-name|labelMaker
-operator|.
-name|addRule
-argument_list|(
-operator|new
-name|ArticleLabelRule
-argument_list|()
-argument_list|,
-name|BibtexEntryType
-operator|.
-name|ARTICLE
-argument_list|)
-expr_stmt|;
-name|labelMaker
-operator|.
-name|addRule
-argument_list|(
-operator|new
-name|BookLabelRule
-argument_list|()
-argument_list|,
-name|BibtexEntryType
-operator|.
-name|BOOK
-argument_list|)
-expr_stmt|;
-name|labelMaker
-operator|.
-name|addRule
-argument_list|(
-operator|new
-name|IncollectionLabelRule
-argument_list|()
-argument_list|,
-name|BibtexEntryType
-operator|.
-name|INCOLLECTION
-argument_list|)
-expr_stmt|;
-name|labelMaker
-operator|.
-name|addRule
-argument_list|(
-operator|new
-name|InproceedingsLabelRule
-argument_list|()
-argument_list|,
-name|BibtexEntryType
-operator|.
-name|INPROCEEDINGS
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**    * Returns the indexed BasePanel.    * @param i Index of base    */
+comment|/**      * Returns the indexed BasePanel.      * @param i Index of base      */
 DECL|method|baseAt (int i)
 specifier|public
 name|BasePanel
@@ -6154,7 +7097,7 @@ name|bp
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Returns the currently viewed BasePanel.    */
+comment|/**      * Returns the currently viewed BasePanel.      */
 DECL|method|basePanel ()
 specifier|public
 name|BasePanel
@@ -6185,7 +7128,7 @@ name|getComponentCount
 argument_list|()
 return|;
 block|}
-comment|/**    * handle the color of active and inactive JTabbedPane tabs    */
+comment|/**      * handle the color of active and inactive JTabbedPane tabs      */
 DECL|method|markActiveBasePanel ()
 specifier|private
 name|void
@@ -6223,6 +7166,7 @@ operator|<
 name|len
 operator|)
 condition|)
+block|{
 name|tabbedPane
 operator|.
 name|setForegroundAt
@@ -6234,6 +7178,7 @@ operator|.
 name|inActiveTabbed
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -6249,6 +7194,7 @@ operator|<
 name|len
 operator|)
 condition|)
+block|{
 name|tabbedPane
 operator|.
 name|setForegroundAt
@@ -6260,6 +7206,7 @@ operator|.
 name|activeTabbed
 argument_list|)
 expr_stmt|;
+block|}
 name|lastTabbedPanelSelectionIndex
 operator|=
 name|now
@@ -6416,6 +7363,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|command
 specifier|private
+specifier|final
 name|String
 name|command
 decl_stmt|;
@@ -6453,6 +7401,8 @@ name|command
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6460,6 +7410,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6509,6 +7461,8 @@ name|command
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6516,6 +7470,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -6523,6 +7479,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6547,6 +7505,8 @@ parameter_list|)
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6581,6 +7541,8 @@ name|command
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6588,6 +7550,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -6630,15 +7594,21 @@ name|icon
 operator|!=
 literal|null
 condition|)
+block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SMALL_ICON
 argument_list|,
 name|icon
 argument_list|)
 expr_stmt|;
+block|}
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6646,6 +7616,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6696,15 +7668,21 @@ name|icon
 operator|!=
 literal|null
 condition|)
+block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SMALL_ICON
 argument_list|,
 name|icon
 argument_list|)
 expr_stmt|;
+block|}
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6712,6 +7690,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6724,6 +7704,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -6772,15 +7754,21 @@ name|icon
 operator|!=
 literal|null
 condition|)
+block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SMALL_ICON
 argument_list|,
 name|icon
 argument_list|)
 expr_stmt|;
+block|}
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6788,6 +7776,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6800,12 +7790,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6889,9 +7883,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"Action '"
 operator|+
@@ -6904,7 +7898,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/** This got removed when we introduced SearchManager2.        class IncrementalSearchAction extends AbstractAction {     public IncrementalSearchAction() {    super("Incremental search", new ImageIcon(GUIGlobals.searchIconFile));    putValue(SHORT_DESCRIPTION, Globals.lang("Start incremental search"));    putValue(ACCELERATOR_KEY, prefs.getKey("Incremental search"));     }     public void actionPerformed(ActionEvent e) {    if (tabbedPane.getTabCount()> 0)      searchManager.startIncrementalSearch();     }        }         class SearchAction extends AbstractAction {     public SearchAction() {    super("Search", new ImageIcon(GUIGlobals.searchIconFile));    putValue(SHORT_DESCRIPTION, Globals.lang("Start search"));    putValue(ACCELERATOR_KEY, prefs.getKey("Search"));     }     public void actionPerformed(ActionEvent e) {    if (tabbedPane.getTabCount()> 0)      searchManager.startSearch();     }        }    */
+comment|/** This got removed when we introduced SearchManager2.          class IncrementalSearchAction extends AbstractAction {       public IncrementalSearchAction() {      super("Incremental search", new ImageIcon(GUIGlobals.searchIconFile));      putValue(SHORT_DESCRIPTION, Globals.lang("Start incremental search"));      putValue(ACCELERATOR_KEY, prefs.getKey("Incremental search"));       }       public void actionPerformed(ActionEvent e) {      if (tabbedPane.getTabCount()> 0)        searchManager.startIncrementalSearch();       }          }           class SearchAction extends AbstractAction {       public SearchAction() {      super("Search", new ImageIcon(GUIGlobals.searchIconFile));      putValue(SHORT_DESCRIPTION, Globals.lang("Start search"));      putValue(ACCELERATOR_KEY, prefs.getKey("Search"));       }       public void actionPerformed(ActionEvent e) {      if (tabbedPane.getTabCount()> 0)        searchManager.startSearch();       }          }      */
 DECL|class|NewEntryAction
 class|class
 name|NewEntryAction
@@ -6946,6 +7940,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"New entry"
@@ -6953,6 +7949,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -6960,6 +7958,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6982,9 +7982,11 @@ block|{
 comment|// This action leads to the creation of a specific entry.
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -7011,9 +8013,11 @@ block|{
 comment|// This action leads to the creation of a specific entry.
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -7023,6 +8027,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -7033,6 +8039,8 @@ operator|=
 name|type_
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7143,9 +8151,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Util
+name|LOGGER
 operator|.
-name|pr
+name|info
 argument_list|(
 literal|"Action 'New entry' must be disabled when no "
 operator|+
@@ -7155,8 +8163,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*        private void setupDatabaseLayout() {     // This method is called whenever this frame has been provided     // with a database, and completes the layout.       if (file != null)    setTitle(GUIGlobals.baseTitle+file.getName());     else     setTitle(GUIGlobals.untitledTitle);      //DragNDropManager dndm = new DragNDropManager(this);      //setNonEmptyState();     Util.pr("JabRefFrame: Must set non-empty state.");     }*/
-comment|/**    * Refresh import menus.    */
+comment|/*          private void setupDatabaseLayout() {       // This method is called whenever this frame has been provided       // with a database, and completes the layout.         if (file != null)      setTitle(GUIGlobals.baseTitle+file.getName());       else       setTitle(GUIGlobals.untitledTitle);        //DragNDropManager dndm = new DragNDropManager(this);        //setNonEmptyState();       Util.pr("JabRefFrame: Must set non-empty state.");       }*/
+comment|/**      * Refresh import menus.      */
 DECL|method|setUpImportMenus ()
 specifier|public
 name|void
@@ -7195,6 +8203,8 @@ expr_stmt|;
 name|JMenu
 name|file
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"File"
@@ -7202,6 +8212,8 @@ argument_list|)
 decl_stmt|,
 name|sessions
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Sessions"
@@ -7209,6 +8221,8 @@ argument_list|)
 decl_stmt|,
 name|edit
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Edit"
@@ -7216,6 +8230,8 @@ argument_list|)
 decl_stmt|,
 name|search
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Search"
@@ -7223,6 +8239,8 @@ argument_list|)
 decl_stmt|,
 name|bibtex
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"BibTeX"
@@ -7230,6 +8248,8 @@ argument_list|)
 decl_stmt|,
 name|view
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"View"
@@ -7237,6 +8257,8 @@ argument_list|)
 decl_stmt|,
 name|tools
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Tools"
@@ -7245,6 +8267,8 @@ decl_stmt|,
 comment|//web = subMenu("Web search"),
 name|options
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Options"
@@ -7252,6 +8276,8 @@ argument_list|)
 decl_stmt|,
 name|newSpec
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"New entry..."
@@ -7259,6 +8285,8 @@ argument_list|)
 decl_stmt|,
 name|helpMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Help"
@@ -7561,6 +8589,8 @@ expr_stmt|;
 name|JMenu
 name|markSpecific
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Mark specific color"
@@ -7575,13 +8605,14 @@ literal|0
 init|;
 name|i
 operator|<
-name|Util
+name|EntryMarker
 operator|.
 name|MAX_MARKING_LEVEL
 condition|;
 name|i
 operator|++
 control|)
+block|{
 name|markSpecific
 operator|.
 name|add
@@ -7598,6 +8629,7 @@ name|getMenuItem
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|edit
 operator|.
 name|add
@@ -7949,7 +8981,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"webSearchVisible"
+name|JabRefPreferences
+operator|.
+name|WEB_SEARCH_VISIBLE
 argument_list|)
 condition|)
 block|{
@@ -8435,7 +9469,7 @@ argument_list|(
 name|manageJournals
 argument_list|)
 expr_stmt|;
-comment|/*options.add(new AbstractAction("Font") {       public void actionPerformed(ActionEvent e) {           Font f=new FontSelectorDialog         (JabRefFrame.this, GUIGlobals.CURRENTFONT).getSelectedFont();        if(f==null)         return;        else         GUIGlobals.CURRENTFONT=f;        // updatefont        prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());        prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());        prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());        if (tabbedPane.getTabCount()> 0) {         for (int i=0; i<tabbedPane.getTabCount(); i++) {          baseAt(i).entryTable.updateFont();          baseAt(i).refreshTable();         }        }       }       });*/
+comment|/*options.add(new AbstractAction("Font") {         public void actionPerformed(ActionEvent e) {             Font f=new FontSelectorDialog           (JabRefFrame.this, GUIGlobals.CURRENTFONT).getSelectedFont();          if(f==null)           return;          else           GUIGlobals.CURRENTFONT=f;          // updatefont          prefs.put(JabRefPreferences.FONT_FAMILY, GUIGlobals.CURRENTFONT.getFamily());          prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());          prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());          if (tabbedPane.getTabCount()> 0) {           for (int i=0; i<tabbedPane.getTabCount(); i++) {            baseAt(i).entryTable.updateFont();            baseAt(i).refreshTable();           }          }         }         });*/
 name|pluginMenu
 operator|.
 name|add
@@ -8489,6 +9523,13 @@ operator|.
 name|add
 argument_list|(
 name|errorConsole
+argument_list|)
+expr_stmt|;
+name|helpMenu
+operator|.
+name|add
+argument_list|(
+name|forkMeOnGitHubAction
 argument_list|)
 expr_stmt|;
 name|helpMenu
@@ -8603,6 +9644,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|res
 operator|=
 operator|new
@@ -8611,6 +9653,7 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|res
 return|;
@@ -9212,6 +10255,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|searchToggle
 operator|.
 name|setMargin
@@ -9219,6 +10263,7 @@ argument_list|(
 name|marg
 argument_list|)
 expr_stmt|;
+block|}
 name|tlb
 operator|.
 name|add
@@ -9248,6 +10293,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|previewToggle
 operator|.
 name|setMargin
@@ -9255,6 +10301,7 @@ argument_list|(
 name|marg
 argument_list|)
 expr_stmt|;
+block|}
 name|tlb
 operator|.
 name|add
@@ -9289,6 +10336,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|groupToggle
 operator|.
 name|setMargin
@@ -9296,6 +10344,7 @@ argument_list|(
 name|marg
 argument_list|)
 expr_stmt|;
+block|}
 name|tlb
 operator|.
 name|add
@@ -9325,6 +10374,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|highlightAny
 operator|.
 name|setMargin
@@ -9332,6 +10382,7 @@ argument_list|(
 name|marg
 argument_list|)
 expr_stmt|;
+block|}
 name|tlb
 operator|.
 name|add
@@ -9361,6 +10412,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|highlightAll
 operator|.
 name|setMargin
@@ -9368,6 +10420,7 @@ argument_list|(
 name|marg
 argument_list|)
 expr_stmt|;
+block|}
 name|tlb
 operator|.
 name|add
@@ -9453,6 +10506,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -9510,7 +10565,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|openDatabaseOnlyActions
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|Object
@@ -9525,7 +10580,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|severalDatabasesOnlyActions
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|Object
@@ -9540,7 +10595,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|initActions ()
-specifier|protected
+specifier|private
 name|void
 name|initActions
 parameter_list|()
@@ -9626,7 +10681,7 @@ name|importMenu
 argument_list|,
 name|exportMenu
 argument_list|,
-comment|/* openSpires wasn't being supported so no point in supporting 			 * openInspire */
+comment|/* openSpires wasn't being supported so no point in supporting                  * openInspire */
 name|openPdf
 argument_list|,
 name|openUrl
@@ -9745,6 +10800,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -9763,7 +10820,7 @@ expr_stmt|;
 block|}
 comment|/**      * Takes a list of Object and calls the method setEnabled on them, depending on whether it is an Action or a Component.      * @param list List that should contain Actions and Components.      * @param enabled       */
 DECL|method|setEnabled (List<Object> list, boolean enabled)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|setEnabled
@@ -9792,6 +10849,7 @@ name|o
 operator|instanceof
 name|Action
 condition|)
+block|{
 operator|(
 operator|(
 name|Action
@@ -9804,12 +10862,14 @@ argument_list|(
 name|enabled
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|o
 operator|instanceof
 name|Component
 condition|)
+block|{
 operator|(
 operator|(
 name|Component
@@ -9824,8 +10884,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|field|previousTabCount
-specifier|protected
+specifier|private
 name|int
 name|previousTabCount
 init|=
@@ -9834,7 +10895,7 @@ literal|1
 decl_stmt|;
 comment|/**      * Enable or Disable all actions based on the number of open tabs.      *       * The action that are affected are set in initActions.      */
 DECL|method|updateEnabledState ()
-specifier|protected
+specifier|private
 name|void
 name|updateEnabledState
 parameter_list|()
@@ -9858,6 +10919,8 @@ name|previousTabCount
 operator|=
 name|tabCount
 expr_stmt|;
+name|JabRefFrame
+operator|.
 name|setEnabled
 argument_list|(
 name|openDatabaseOnlyActions
@@ -9867,6 +10930,8 @@ operator|>
 literal|0
 argument_list|)
 expr_stmt|;
+name|JabRefFrame
+operator|.
 name|setEnabled
 argument_list|(
 name|severalDatabasesOnlyActions
@@ -9900,7 +10965,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * This method causes all open BasePanels to set up their tables    * anew. When called from PrefsDialog3, this updates to the new    * settings.    */
+comment|/**      * This method causes all open BasePanels to set up their tables      * anew. When called from PrefsDialog3, this updates to the new      * settings.      */
 DECL|method|setupAllTables ()
 specifier|public
 name|void
@@ -9984,18 +11049,21 @@ name|metaData
 operator|==
 literal|null
 condition|)
+block|{
 name|metaData
 operator|=
 operator|new
 name|MetaData
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|encoding
 operator|==
 literal|null
 condition|)
+block|{
 name|encoding
 operator|=
 name|Globals
@@ -10004,9 +11072,12 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 expr_stmt|;
+block|}
 name|BasePanel
 name|bp
 init|=
@@ -10098,7 +11169,7 @@ name|title
 operator|=
 name|title
 operator|+
-literal|"*"
+literal|'*'
 expr_stmt|;
 block|}
 block|}
@@ -10112,15 +11183,14 @@ name|getName
 argument_list|()
 expr_stmt|;
 block|}
+comment|// idea: "<html><div style='padding:2px 5px;'>" + title + "</div></html>" instead of "title" to get some space around.
+comment|// However, this causes https://sourceforge.net/p/jabref/bugs/1293/
+comment|// Therefore, plain "title" is used
 name|tabbedPane
 operator|.
 name|add
 argument_list|(
-literal|"<html><div style='padding:2px 5px;'>"
-operator|+
 name|title
-operator|+
-literal|"</div></html>"
 argument_list|,
 name|bp
 argument_list|)
@@ -10212,6 +11282,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -10251,7 +11323,7 @@ name|d
 operator|.
 name|setDefaultCloseOperation
 argument_list|(
-name|JFrame
+name|WindowConstants
 operator|.
 name|DISPOSE_ON_CLOSE
 argument_list|)
@@ -10313,7 +11385,7 @@ argument_list|(
 literal|"Your new key bindings have been stored."
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|Globals
 operator|.
@@ -10339,7 +11411,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * The action concerned with closing the window.    */
+comment|/**      * The action concerned with closing the window.      */
 DECL|class|CloseAction
 class|class
 name|CloseAction
@@ -10353,6 +11425,8 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Quit"
@@ -10360,6 +11434,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -10372,6 +11448,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|prefs
@@ -10385,6 +11463,8 @@ expr_stmt|;
 comment|//putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Q,
 comment|//    Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -10401,6 +11481,8 @@ block|}
 block|}
 comment|// The action for closing the current database and leaving the window open.
 DECL|field|closeDatabaseAction
+specifier|private
+specifier|final
 name|CloseDatabaseAction
 name|closeDatabaseAction
 init|=
@@ -10431,6 +11513,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Close database"
@@ -10438,6 +11522,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -10450,6 +11536,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|prefs
@@ -10461,6 +11549,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -10593,12 +11683,14 @@ operator|.
 name|isSuccess
 argument_list|()
 condition|)
+block|{
 comment|// The action either not cancelled or unsuccessful.
 comment|// Break!
 name|close
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -10687,7 +11779,7 @@ argument_list|(
 literal|"Closed database"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|System
@@ -10722,6 +11814,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"New database"
@@ -10729,6 +11823,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -10741,6 +11837,8 @@ argument_list|)
 expr_stmt|;
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -10774,7 +11872,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|,
 literal|true
@@ -10816,6 +11916,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"New subdatabase based on AUX file"
@@ -10823,6 +11925,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -10835,7 +11939,9 @@ argument_list|)
 expr_stmt|;
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+annotation|@
+name|Override
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -10921,7 +12027,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -10994,7 +12102,9 @@ expr_stmt|;
 comment|//putValue( SHORT_DESCRIPTION, "integrity" ) ;  //Globals.lang( "integrity" ) ) ;
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+annotation|@
+name|Override
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -11079,6 +12189,8 @@ block|}
 block|}
 comment|// The action for opening the preferences dialog.
 DECL|field|showPrefs
+specifier|private
+specifier|final
 name|AbstractAction
 name|showPrefs
 init|=
@@ -11109,6 +12221,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Preferences"
@@ -11116,6 +12230,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -11127,6 +12243,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -11143,7 +12261,7 @@ block|}
 block|}
 comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *       * @param panel      *            The BasePanel to add to.      * @param entries      *            The entries to add.      * @param filename      *            Name of the file where the import came from.      * @param openInNew      *            Should the entries be imported into a new database?      */
 DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, String filename, final boolean openInNew)
-specifier|public
+specifier|private
 name|void
 name|addImportedEntries
 parameter_list|(
@@ -11175,7 +12293,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useImportInspectionDialog"
+name|JabRefPreferences
+operator|.
+name|USE_IMPORT_INSPECTION_DIALOG
 argument_list|)
 operator|&&
 operator|(
@@ -11185,7 +12305,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useImportInspectionDialogForSingle"
+name|JabRefPreferences
+operator|.
+name|USE_IMPORT_INSPECTION_DIALOG_FOR_SINGLE
 argument_list|)
 operator|||
 operator|(
@@ -11207,6 +12329,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -11323,6 +12447,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -11349,7 +12475,7 @@ block|}
 block|}
 comment|/**      * Adds the entries to the database, possibly checking for duplicates first.      * @param filename If non-null, a message is printed to the status line describing      * how many entries were imported, and from which file. If null, the message will not      * be printed.      * @param intoNew Determines if the entries will be put in a new database or in the current      * one.      */
 DECL|method|addBibEntries (List<BibtexEntry> bibentries, String filename, boolean intoNew)
-specifier|public
+specifier|private
 name|int
 name|addBibEntries
 parameter_list|(
@@ -11368,16 +12494,18 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|bibentries
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|bibentries
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
+operator|)
 condition|)
 block|{
 comment|// No entries found. We need a message for this.
@@ -11432,7 +12560,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteOwner"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_OWNER
 argument_list|)
 argument_list|,
 name|Globals
@@ -11441,7 +12571,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteTimeStamp"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_TIME_STAMP
 argument_list|)
 argument_list|,
 name|Globals
@@ -11450,7 +12582,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"markImportedEntries"
+name|JabRefPreferences
+operator|.
+name|MARK_IMPORTED_ENTRIES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -11490,9 +12624,9 @@ name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -11548,11 +12682,13 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/*             if (prefs.getBoolean("autoComplete")) {             db.setCompleters(autoCompleters);             }        */
+comment|/*                   if (prefs.getBoolean("autoComplete")) {                   db.setCompleters(autoCompleters);                   }              */
 name|addedEntries
 operator|=
 name|database
@@ -11589,6 +12725,7 @@ name|filename
 operator|!=
 literal|null
 condition|)
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -11611,14 +12748,14 @@ argument_list|(
 literal|"with"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|database
 operator|.
 name|getEntryCount
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -11627,9 +12764,10 @@ argument_list|(
 literal|"entries into new database"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -11831,9 +12969,9 @@ name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -11914,6 +13052,7 @@ name|filename
 operator|!=
 literal|null
 condition|)
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -11936,7 +13075,7 @@ argument_list|(
 literal|"with"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|database
@@ -11947,7 +13086,7 @@ operator|-
 name|oldCount
 operator|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -11956,9 +13095,10 @@ argument_list|(
 literal|"entries into new database"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
@@ -11977,12 +13117,6 @@ name|boolean
 name|intoNew_
 parameter_list|)
 block|{
-specifier|final
-name|boolean
-name|intoNew
-init|=
-name|intoNew_
-decl_stmt|;
 name|importMenu
 operator|.
 name|removeAll
@@ -12000,7 +13134,7 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|intoNew
+name|intoNew_
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -12066,7 +13200,7 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|intoNew
+name|intoNew_
 argument_list|,
 name|imFo
 argument_list|)
@@ -12075,18 +13209,19 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 name|customImporters
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
+block|{
 name|submenu
 operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
+block|}
 name|submenu
 operator|.
 name|add
@@ -12131,7 +13266,7 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|intoNew
+name|intoNew_
 argument_list|,
 name|imFo
 argument_list|)
@@ -12267,7 +13402,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Set the visibility of the progress bar in the right end of the       * status line at the bottom of the frame.       *       * If not called on the event dispatch thread, this method uses       * SwingUtilities.invokeLater() to do the actual operation on the EDT.       */
+comment|/** Set the visibility of the progress bar in the right end of the      * status line at the bottom of the frame.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarVisible (final boolean visible)
 specifier|public
 name|void
@@ -12285,6 +13420,7 @@ operator|.
 name|isEventDispatchThread
 argument_list|()
 condition|)
+block|{
 name|progressBar
 operator|.
 name|setVisible
@@ -12292,7 +13428,9 @@ argument_list|(
 name|visible
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -12301,6 +13439,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -12318,7 +13458,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the current value of the progress bar.       *       * If not called on the event dispatch thread, this method uses       * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+block|}
+comment|/**      * Sets the current value of the progress bar.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarValue (final int value)
 specifier|public
 name|void
@@ -12336,6 +13477,7 @@ operator|.
 name|isEventDispatchThread
 argument_list|()
 condition|)
+block|{
 name|progressBar
 operator|.
 name|setValue
@@ -12343,7 +13485,9 @@ argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -12352,6 +13496,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -12368,6 +13514,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Sets the indeterminate status of the progress bar.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarIndeterminate (final boolean value)
@@ -12387,6 +13534,7 @@ operator|.
 name|isEventDispatchThread
 argument_list|()
 condition|)
+block|{
 name|progressBar
 operator|.
 name|setIndeterminate
@@ -12394,7 +13542,9 @@ argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -12403,6 +13553,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -12420,7 +13572,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the maximum value of the progress bar. Always call this method      * before using the progress bar, to set a maximum value appropriate to      * the task at hand.       *       * If not called on the event dispatch thread, this method uses       * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+block|}
+comment|/**      * Sets the maximum value of the progress bar. Always call this method      * before using the progress bar, to set a maximum value appropriate to      * the task at hand.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarMaximum (final int value)
 specifier|public
 name|void
@@ -12438,6 +13591,7 @@ operator|.
 name|isEventDispatchThread
 argument_list|()
 condition|)
+block|{
 name|progressBar
 operator|.
 name|setMaximum
@@ -12445,7 +13599,9 @@ argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -12454,6 +13610,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -12470,6 +13628,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|class|SaveSessionAction
 class|class
@@ -12494,6 +13653,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Save session"
@@ -12501,6 +13662,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|prefs
@@ -12512,6 +13675,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -12521,7 +13686,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|// Here we store the names of allcurrent filea. If
+comment|// Here we store the names of all current files. If
 comment|// there is no current file, we remove any
 comment|// previously stored file name.
 name|Vector
@@ -12647,7 +13812,7 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{}
+block|{                             }
 block|}
 block|}
 if|if
@@ -12686,10 +13851,8 @@ if|if
 condition|(
 name|filenames
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|output
@@ -12701,7 +13864,7 @@ argument_list|(
 literal|"Not saved (empty session)"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -12769,7 +13932,7 @@ argument_list|(
 literal|"Saved session"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -12782,6 +13945,7 @@ extends|extends
 name|MnemonicAwareAction
 block|{
 DECL|field|running
+specifier|volatile
 name|boolean
 name|running
 init|=
@@ -12804,6 +13968,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Load session"
@@ -12811,6 +13977,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|prefs
@@ -12822,6 +13990,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -12859,12 +14029,16 @@ if|if
 condition|(
 name|running
 condition|)
+block|{
 return|return;
+block|}
 else|else
+block|{
 name|running
 operator|=
 literal|true
 expr_stmt|;
+block|}
 name|output
 argument_list|(
 name|Globals
@@ -12875,11 +14049,18 @@ literal|"Loading session..."
 argument_list|)
 argument_list|)
 expr_stmt|;
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -12938,6 +14119,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|currentFiles
 operator|.
 name|add
@@ -12954,6 +14136,7 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|int
@@ -13069,10 +14252,7 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -13084,6 +14264,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|next
 specifier|private
+specifier|final
 name|boolean
 name|next
 decl_stmt|;
@@ -13097,6 +14278,8 @@ parameter_list|)
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|next
@@ -13115,6 +14298,8 @@ expr_stmt|;
 comment|//Util.pr(""+prefs.getKey("Next tab"));
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 operator|(
@@ -13137,6 +14322,8 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13210,7 +14397,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Class for handling general actions; cut, copy and paste. The focused component is    * kept track of by Globals.focusListener, and we call the action stored under the    * relevant name in its action map.    */
+comment|/**      * Class for handling general actions; cut, copy and paste. The focused component is      * kept track of by Globals.focusListener, and we call the action stored under the      * relevant name in its action map.      */
 DECL|class|EditAction
 class|class
 name|EditAction
@@ -13219,6 +14406,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|command
 specifier|private
+specifier|final
 name|String
 name|command
 decl_stmt|;
@@ -13251,7 +14439,7 @@ expr_stmt|;
 name|String
 name|nName
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -13260,6 +14448,8 @@ argument_list|)
 decl_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|nName
@@ -13267,6 +14457,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|prefs
@@ -13279,6 +14471,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -13292,6 +14486,8 @@ expr_stmt|;
 comment|//putValue(ACCELERATOR_KEY,
 comment|//         (next?prefs.getKey("Next tab"):prefs.getKey("Previous tab")));
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13361,12 +14557,16 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Manage custom exports"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13409,12 +14609,16 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Manage custom imports"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13457,12 +14661,16 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Customize entry types"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13516,12 +14724,16 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Set up general fields"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13581,12 +14793,16 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Database properties"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13602,6 +14818,7 @@ name|propertiesDialog
 operator|==
 literal|null
 condition|)
+block|{
 name|propertiesDialog
 operator|=
 operator|new
@@ -13612,6 +14829,7 @@ operator|.
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 name|propertiesDialog
 operator|.
 name|setPanel
@@ -13659,12 +14877,16 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Bibtex key patterns"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13746,6 +14968,8 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Increase table font size"
@@ -13753,6 +14977,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
@@ -13766,6 +14992,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -13817,7 +15045,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"fontSize"
+name|JabRefPreferences
+operator|.
+name|FONT_SIZE
 argument_list|,
 name|currentSize
 operator|+
@@ -13864,6 +15094,8 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Decrease table font size"
@@ -13871,6 +15103,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
@@ -13884,6 +15118,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -13909,7 +15145,9 @@ name|currentSize
 operator|<
 literal|2
 condition|)
+block|{
 return|return;
+block|}
 name|GUIGlobals
 operator|.
 name|CURRENTFONT
@@ -13942,7 +15180,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"fontSize"
+name|JabRefPreferences
+operator|.
+name|FONT_SIZE
 argument_list|,
 name|currentSize
 operator|-
@@ -13989,6 +15229,8 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Minimize to system tray"
@@ -13996,6 +15238,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
@@ -14009,6 +15253,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -14024,6 +15270,7 @@ name|sysTray
 operator|==
 literal|null
 condition|)
+block|{
 name|sysTray
 operator|=
 operator|new
@@ -14034,6 +15281,7 @@ operator|.
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -14042,6 +15290,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -14049,10 +15299,8 @@ parameter_list|()
 block|{
 name|sysTray
 operator|.
-name|setTrayIconVisible
-argument_list|(
-literal|true
-argument_list|)
+name|show
+argument_list|()
 expr_stmt|;
 name|JabRefFrame
 operator|.
@@ -14096,10 +15344,8 @@ condition|)
 block|{
 name|sysTray
 operator|.
-name|setTrayIconVisible
-argument_list|(
-literal|false
-argument_list|)
+name|hide
+argument_list|()
 expr_stmt|;
 block|}
 name|setVisible
@@ -14120,6 +15366,7 @@ block|}
 comment|/*private class ForegroundLabel extends JLabel {          public ForegroundLabel(String s) {              super(s);              setFont(new Font("plain", Font.BOLD, 70));              setHorizontalAlignment(JLabel.CENTER);          }          public void paint(Graphics g) {             Graphics2D g2 = (Graphics2D)g;             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);             super.paint(g2);    //To change body of overridden methods use File | Settings | File Templates.         }     }       */
 DECL|class|MyGlassPane
 specifier|private
+specifier|static
 class|class
 name|MyGlassPane
 extends|extends
@@ -14136,7 +15383,7 @@ argument_list|(
 operator|new
 name|KeyAdapter
 argument_list|()
-block|{ }
+block|{             }
 argument_list|)
 expr_stmt|;
 name|addMouseListener
@@ -14144,10 +15391,10 @@ argument_list|(
 operator|new
 name|MouseAdapter
 argument_list|()
-block|{ }
+block|{             }
 argument_list|)
 expr_stmt|;
-comment|/*  infoLabel.setForeground(new Color(255, 100, 100, 124));          setLayout(new BorderLayout());         add(infoLabel, BorderLayout.CENTER);*/
+comment|/*  infoLabel.setForeground(new Color(255, 100, 100, 124));                setLayout(new BorderLayout());               add(infoLabel, BorderLayout.CENTER);*/
 name|super
 operator|.
 name|setCursor
@@ -14164,6 +15411,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Override isOpaque() to prevent the glasspane from hiding the window contents:
+annotation|@
+name|Override
 DECL|method|isOpaque ()
 specifier|public
 name|boolean
@@ -14175,6 +15424,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|showMessage (Object message, String title, int msgType)
 specifier|public
 name|void
@@ -14204,6 +15455,8 @@ name|msgType
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setStatus (String s)
 specifier|public
 name|void
@@ -14219,6 +15472,8 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|showMessage (String message)
 specifier|public
 name|void

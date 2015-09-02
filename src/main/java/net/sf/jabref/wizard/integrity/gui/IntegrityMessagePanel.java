@@ -370,31 +370,37 @@ name|ActionListener
 block|{
 DECL|field|warnings
 specifier|private
+specifier|final
 name|JList
 name|warnings
 decl_stmt|;
 DECL|field|warningData
 specifier|private
+specifier|final
 name|HintListModel
 name|warningData
 decl_stmt|;
 DECL|field|validChecker
 specifier|private
+specifier|final
 name|IntegrityCheck
 name|validChecker
 decl_stmt|;
 DECL|field|content
 specifier|private
+specifier|final
 name|JTextField
 name|content
 decl_stmt|;
 DECL|field|applyButton
 specifier|private
+specifier|final
 name|JButton
 name|applyButton
 decl_stmt|;
 DECL|field|basePanel
 specifier|private
+specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
@@ -642,7 +648,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// ------------------------------------------------------------------------
-DECL|method|updateView ( BibtexEntry entry )
+DECL|method|updateView (BibtexEntry entry)
 specifier|public
 name|void
 name|updateView
@@ -678,7 +684,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateView ( BibtexDatabase base )
+DECL|method|updateView (BibtexDatabase base)
 specifier|public
 name|void
 name|updateView
@@ -716,7 +722,9 @@ expr_stmt|;
 block|}
 comment|// ------------------------------------------------------------------------
 comment|//This method is required by ListSelectionListener.
-DECL|method|valueChanged ( ListSelectionEvent e )
+annotation|@
+name|Override
+DECL|method|valueChanged (ListSelectionEvent e)
 specifier|public
 name|void
 name|valueChanged
@@ -818,7 +826,9 @@ block|}
 block|}
 comment|// --------------------------------------------------------------------------
 comment|// This methods are required by KeyListener
-DECL|method|keyPressed ( KeyEvent e )
+annotation|@
+name|Override
+DECL|method|keyPressed (KeyEvent e)
 specifier|public
 name|void
 name|keyPressed
@@ -826,8 +836,10 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{   }
-DECL|method|keyReleased ( KeyEvent e )
+block|{     }
+annotation|@
+name|Override
+DECL|method|keyReleased (KeyEvent e)
 specifier|public
 name|void
 name|keyReleased
@@ -862,7 +874,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|keyTyped ( KeyEvent e )
+annotation|@
+name|Override
+DECL|method|keyTyped (KeyEvent e)
 specifier|public
 name|void
 name|keyTyped
@@ -870,8 +884,10 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{   }
-DECL|method|actionPerformed ( ActionEvent e )
+block|{     }
+annotation|@
+name|Override
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -1082,7 +1098,9 @@ argument_list|(
 literal|"complete"
 argument_list|)
 decl_stmt|;
-DECL|method|getListCellRendererComponent ( JList list, Object value, int index, boolean iss, boolean chf )
+annotation|@
+name|Override
+DECL|method|getListCellRendererComponent ( JList list, Object value, int index, boolean iss, boolean chf)
 specifier|public
 name|Component
 name|getListCellRendererComponent
@@ -1167,11 +1185,13 @@ name|id
 operator|<
 literal|1000
 condition|)
+block|{
 name|setIcon
 argument_list|(
 name|infoIcon
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1179,17 +1199,21 @@ name|id
 operator|<
 literal|2000
 condition|)
+block|{
 name|setIcon
 argument_list|(
 name|warnIcon
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|setIcon
 argument_list|(
 name|failIcon
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return

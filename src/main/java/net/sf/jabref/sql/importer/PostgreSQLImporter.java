@@ -120,8 +120,8 @@ DECL|method|PostgreSQLImporter ()
 specifier|private
 name|PostgreSQLImporter
 parameter_list|()
-block|{ 	}
-comment|/** 	 *  	 * @return The singleton instance of the MySQLImporter 	 */
+block|{     }
+comment|/**      *       * @return The singleton instance of the MySQLImporter      */
 DECL|method|getInstance ()
 specifier|public
 specifier|static
@@ -131,17 +131,25 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|PostgreSQLImporter
+operator|.
 name|instance
 operator|==
 literal|null
 condition|)
+block|{
+name|PostgreSQLImporter
+operator|.
 name|instance
 operator|=
 operator|new
 name|PostgreSQLImporter
 argument_list|()
 expr_stmt|;
+block|}
 return|return
+name|PostgreSQLImporter
+operator|.
 name|instance
 return|;
 block|}
@@ -173,16 +181,11 @@ argument_list|,
 literal|"SELECT column_name FROM information_schema.columns WHERE table_name ='entries';"
 argument_list|)
 decl_stmt|;
-name|ResultSet
-name|rs
-init|=
+return|return
 name|statement
 operator|.
 name|getResultSet
 argument_list|()
-decl_stmt|;
-return|return
-name|rs
 return|;
 block|}
 annotation|@
@@ -225,9 +228,7 @@ operator|.
 name|newInstance
 argument_list|()
 expr_stmt|;
-name|Connection
-name|conn
-init|=
+return|return
 name|DriverManager
 operator|.
 name|getConnection
@@ -244,9 +245,6 @@ operator|.
 name|getPassword
 argument_list|()
 argument_list|)
-decl_stmt|;
-return|return
-name|conn
 return|;
 block|}
 block|}

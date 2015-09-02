@@ -30,31 +30,17 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -83,6 +69,8 @@ argument_list|(
 literal|"Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"de~laVall{\\'e}e~PoussinCharles Louis Xavier~Joseph"
@@ -104,6 +92,8 @@ operator|new
 name|Warn
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|warn
@@ -112,6 +102,8 @@ name|String
 name|s
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|fail
 argument_list|(
 name|s
@@ -134,6 +126,8 @@ argument_list|(
 literal|"Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"de~la Vall{\\'e}e~Poussin, C.~L. X.~J."
@@ -155,6 +149,8 @@ operator|new
 name|Warn
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|warn
@@ -163,6 +159,8 @@ name|String
 name|s
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|fail
 argument_list|(
 name|s
@@ -185,6 +183,8 @@ argument_list|(
 literal|"Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"de~la Vall{\\'e}e~Poussin, C.~L. X.~J?"
@@ -206,6 +206,8 @@ operator|new
 name|Warn
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|warn
@@ -214,6 +216,8 @@ name|String
 name|s
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|fail
 argument_list|(
 name|s
@@ -236,6 +240,8 @@ argument_list|(
 literal|"Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"dlVP"
@@ -257,6 +263,8 @@ operator|new
 name|Warn
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|warn
@@ -265,6 +273,8 @@ name|String
 name|s
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|fail
 argument_list|(
 name|s
@@ -379,6 +389,8 @@ name|String
 name|format
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|string
@@ -397,6 +409,8 @@ operator|new
 name|Warn
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|warn
@@ -405,6 +419,8 @@ name|String
 name|s
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|fail
 argument_list|(
 name|s
@@ -504,6 +520,8 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|6
@@ -523,6 +541,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{HELLO}"
@@ -542,6 +562,8 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|18
@@ -561,6 +583,8 @@ literal|12
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{WORLD}"
@@ -580,6 +604,8 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|10
@@ -599,6 +625,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{HE{L{}L}O}"
@@ -619,6 +647,8 @@ name|void
 name|testGetFirstCharOfString
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"C"
@@ -631,6 +661,8 @@ literal|"Charles"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"V"
@@ -643,6 +675,8 @@ literal|"Vall{\\'e}e"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\'e}"
@@ -655,6 +689,8 @@ literal|"{\\'e}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\'e"
@@ -667,6 +703,8 @@ literal|"{\\'e"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"E"
@@ -688,6 +726,8 @@ name|void
 name|testNumberOfChars
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|6
@@ -703,6 +743,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -717,6 +759,8 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -731,6 +775,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|6
@@ -745,6 +791,8 @@ literal|6
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|6
@@ -759,6 +807,8 @@ literal|7
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|8
@@ -774,6 +824,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|6

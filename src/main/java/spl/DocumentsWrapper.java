@@ -107,6 +107,7 @@ class|class
 name|DocumentsWrapper
 block|{
 DECL|field|xmlDocuments
+specifier|private
 name|Document
 name|xmlDocuments
 decl_stmt|;
@@ -262,6 +263,8 @@ argument_list|()
 decl_stmt|;
 name|authors
 operator|=
+name|DocumentsWrapper
+operator|.
 name|sortAuthors
 argument_list|(
 name|authors
@@ -357,13 +360,16 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|xmlDocument
 operator|.
 name|getYear
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 operator|(
 operator|(
 name|Year
@@ -378,6 +384,7 @@ name|getValue
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 operator|(
@@ -418,7 +425,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*if(xmlDocument.getPublishdate() != null&& xmlDocument.getPublishdate().getYear() != null&& !xmlDocument.getPublishdate().getYear().equalsIgnoreCase("null")){                 vector.add(xmlDocument.getPublishdate().getYear());             }*/
+comment|/*if(xmlDocument.getPublishdate() != null&& xmlDocument.getPublishdate().getYear() != null&& !xmlDocument.getPublishdate().getYear().equalsIgnoreCase("null")){             vector.add(xmlDocument.getPublishdate().getYear());         }*/
 else|else
 block|{
 name|vector
@@ -456,9 +463,11 @@ name|author
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|String
 name|result
 init|=
@@ -476,6 +485,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -491,8 +501,9 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getSimpleTypeValue
@@ -505,6 +516,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -520,8 +532,9 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getSimpleTypeValue
@@ -534,6 +547,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -549,8 +563,9 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getSimpleTypeValue
@@ -563,6 +578,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -578,8 +594,9 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getSimpleTypeValue
@@ -592,6 +609,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -607,8 +625,9 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
+block|}
 return|return
 name|result
 operator|.
@@ -627,10 +646,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|bean
-operator|==
-literal|null
-operator|||
 operator|!
 operator|(
 name|bean
@@ -638,9 +653,11 @@ operator|instanceof
 name|SimpleTypeElementBean
 operator|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|SimpleTypeElementBean
 name|simpleTypeElementBean
 init|=
@@ -651,12 +668,14 @@ name|bean
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|simpleTypeElementBean
 operator|.
 name|getValue
 argument_list|()
 operator|==
 literal|null
+operator|)
 operator|||
 name|simpleTypeElementBean
 operator|.
@@ -668,6 +687,7 @@ argument_list|(
 literal|"null"
 argument_list|)
 operator|||
+operator|(
 name|simpleTypeElementBean
 operator|.
 name|getValue
@@ -677,10 +697,13 @@ name|length
 argument_list|()
 operator|<=
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 name|simpleTypeElementBean
 operator|.
@@ -689,7 +712,6 @@ argument_list|()
 return|;
 block|}
 DECL|method|sortAuthors (List<Bean> authors)
-specifier|protected
 specifier|static
 name|List
 argument_list|<
@@ -730,12 +752,14 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|authors
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -755,6 +779,7 @@ if|if
 condition|(
 operator|(
 operator|(
+operator|(
 name|Author
 operator|)
 name|authors
@@ -769,6 +794,7 @@ name|getRank
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 operator|(
@@ -819,6 +845,7 @@ if|if
 condition|(
 operator|(
 operator|(
+operator|(
 name|Author
 operator|)
 name|authors
@@ -835,6 +862,7 @@ name|getRank
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 operator|(

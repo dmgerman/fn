@@ -18,31 +18,17 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -138,6 +124,8 @@ name|String
 name|string2
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|string
@@ -152,6 +140,8 @@ operator|new
 name|Warn
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|warn
@@ -160,6 +150,8 @@ name|String
 name|s
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|fail
 argument_list|(
 literal|"Should not Warn ("

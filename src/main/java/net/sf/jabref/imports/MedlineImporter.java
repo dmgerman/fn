@@ -68,30 +68,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Level
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|xml
@@ -138,6 +114,34 @@ name|OutputPrinter
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Importer for the Refer/Endnote format.  *   * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
 end_comment
@@ -150,25 +154,24 @@ name|MedlineImporter
 extends|extends
 name|ImportFormat
 block|{
-DECL|field|logger
+DECL|field|LOGGER
 specifier|private
 specifier|static
-name|Logger
-name|logger
+specifier|final
+name|Log
+name|LOGGER
 init|=
-name|Logger
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
 name|MedlineImporter
 operator|.
 name|class
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -180,6 +183,8 @@ literal|"Medline"
 return|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -191,6 +196,8 @@ literal|"medline"
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -258,9 +265,11 @@ argument_list|(
 literal|"<pubmedarticle>"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -345,6 +354,8 @@ return|;
 block|}
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -507,18 +518,11 @@ name|ParserConfigurationException
 name|e1
 parameter_list|)
 block|{
-name|logger
+name|LOGGER
 operator|.
-name|log
+name|error
 argument_list|(
-name|Level
-operator|.
-name|SEVERE
-argument_list|,
-name|e1
-operator|.
-name|getLocalizedMessage
-argument_list|()
+literal|"Error with XML parser configuration"
 argument_list|,
 name|e1
 argument_list|)
@@ -546,18 +550,11 @@ name|SAXException
 name|e2
 parameter_list|)
 block|{
-name|logger
+name|LOGGER
 operator|.
-name|log
+name|error
 argument_list|(
-name|Level
-operator|.
-name|SEVERE
-argument_list|,
-name|e2
-operator|.
-name|getLocalizedMessage
-argument_list|()
+literal|"Error during XML parsing"
 argument_list|,
 name|e2
 argument_list|)
@@ -583,18 +580,11 @@ name|IOException
 name|e3
 parameter_list|)
 block|{
-name|logger
+name|LOGGER
 operator|.
-name|log
+name|error
 argument_list|(
-name|Level
-operator|.
-name|SEVERE
-argument_list|,
-name|e3
-operator|.
-name|getLocalizedMessage
-argument_list|()
+literal|"Error during file import"
 argument_list|,
 name|e3
 argument_list|)

@@ -218,6 +218,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -266,6 +294,34 @@ name|jabref
 operator|.
 name|util
 operator|.
+name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|UtilFindFiles
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
 name|XMPUtil
 import|;
 end_import
@@ -298,11 +354,13 @@ name|entryEditor
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|off
 specifier|private
+specifier|final
 name|OpenFileFilter
 name|off
 decl_stmt|;
@@ -318,8 +376,25 @@ name|database
 decl_stmt|;
 DECL|field|metaData
 specifier|private
+specifier|final
 name|MetaData
 name|metaData
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ExternalFilePanel
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|ExternalFilePanel (final String fieldName, final MetaData metaData, final BibtexEntry entry, final FieldEditor editor, final OpenFileFilter off)
 specifier|public
@@ -514,6 +589,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -559,6 +636,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -588,6 +667,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -596,11 +677,18 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 name|autoSetFile
 argument_list|(
 name|fieldName
 argument_list|,
 name|editor
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -615,6 +703,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -661,6 +751,7 @@ name|editor
 operator|!=
 literal|null
 condition|)
+block|{
 operator|(
 operator|(
 name|JComponent
@@ -695,7 +786,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Change which entry this panel is operating on. This is used only when 	 * this panel is not attached to an entry editor. 	 */
+block|}
+comment|/**      * Change which entry this panel is operating on. This is used only when      * this panel is not attached to an entry editor.      */
 DECL|method|setEntry (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|void
@@ -722,7 +814,7 @@ name|database
 expr_stmt|;
 block|}
 DECL|method|getDatabase ()
-specifier|public
+specifier|private
 name|BibtexDatabase
 name|getDatabase
 parameter_list|()
@@ -743,7 +835,7 @@ operator|)
 return|;
 block|}
 DECL|method|getEntry ()
-specifier|public
+specifier|private
 name|BibtexEntry
 name|getEntry
 parameter_list|()
@@ -764,7 +856,7 @@ operator|)
 return|;
 block|}
 DECL|method|getKey ()
-specifier|protected
+specifier|private
 name|Object
 name|getKey
 parameter_list|()
@@ -782,7 +874,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|output (String s)
-specifier|protected
+specifier|private
 name|void
 name|output
 parameter_list|(
@@ -796,6 +888,7 @@ name|frame
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|output
@@ -804,8 +897,9 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 DECL|method|pushXMP (final String fieldName, final FieldEditor editor)
-specifier|public
+specifier|private
 name|void
 name|pushXMP
 parameter_list|(
@@ -818,11 +912,18 @@ name|FieldEditor
 name|editor
 parameter_list|)
 block|{
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -867,7 +968,7 @@ block|{
 name|File
 name|tmp
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -885,10 +986,12 @@ name|tmp
 operator|!=
 literal|null
 condition|)
+block|{
 name|file
 operator|=
 name|tmp
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1000,9 +1103,9 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 name|Globals
 operator|.
@@ -1015,6 +1118,8 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|)
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 name|output
@@ -1072,9 +1177,9 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 name|Globals
 operator|.
@@ -1087,6 +1192,8 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|)
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 name|output
@@ -1107,10 +1214,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|browseFile (final String fieldName, final FieldEditor editor)
@@ -1151,6 +1255,7 @@ name|length
 operator|>
 literal|0
 condition|)
+block|{
 name|directory
 operator|=
 name|dirs
@@ -1159,6 +1264,7 @@ literal|0
 index|]
 expr_stmt|;
 comment|// Default to the first directory in the list
+block|}
 name|String
 name|dir
 init|=
@@ -1168,8 +1274,6 @@ name|getText
 argument_list|()
 decl_stmt|,
 name|retVal
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -1198,11 +1302,14 @@ name|directory
 operator|!=
 literal|null
 condition|)
+block|{
 name|dir
 operator|=
 name|directory
 expr_stmt|;
+block|}
 else|else
+block|{
 name|dir
 operator|=
 name|Globals
@@ -1221,6 +1328,7 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|String
 name|chosenFile
 init|=
@@ -1236,7 +1344,7 @@ argument_list|(
 name|dir
 argument_list|)
 argument_list|,
-literal|"."
+literal|'.'
 operator|+
 name|fieldName
 argument_list|,
@@ -1355,6 +1463,7 @@ name|relPath
 expr_stmt|;
 block|}
 else|else
+block|{
 name|retVal
 operator|=
 name|newFile
@@ -1362,6 +1471,7 @@ operator|.
 name|getPath
 argument_list|()
 expr_stmt|;
+block|}
 name|editor
 operator|.
 name|setText
@@ -1427,22 +1537,26 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|res
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|res
 operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
+operator|)
 condition|)
+block|{
 return|return;
-comment|/* 		 * If this panel belongs in an entry editor, note which entry is 		 * currently shown: 		 */
+block|}
+comment|/*          * If this panel belongs in an entry editor, note which entry is          * currently shown:          */
 specifier|final
 name|BibtexEntry
 name|targetEntry
@@ -1453,6 +1567,7 @@ name|entryEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|targetEntry
 operator|=
 name|entryEditor
@@ -1460,14 +1575,22 @@ operator|.
 name|getEntry
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|targetEntry
 operator|=
 name|entry
 expr_stmt|;
-operator|(
+block|}
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
 specifier|public
@@ -1494,19 +1617,19 @@ name|suffix
 operator|==
 literal|null
 condition|)
+block|{
 name|suffix
 operator|=
-literal|"."
+literal|'.'
 operator|+
 name|fieldName
 operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+block|}
 name|String
 name|plannedName
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -1515,6 +1638,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|plannedName
 operator|=
 name|getKey
@@ -1522,6 +1646,7 @@ argument_list|()
 operator|+
 name|suffix
 expr_stmt|;
+block|}
 else|else
 block|{
 name|plannedName
@@ -1542,9 +1667,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|plannedName
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|off
@@ -1554,12 +1681,14 @@ argument_list|(
 name|plannedName
 argument_list|)
 condition|)
+block|{
 name|plannedName
 operator|+=
 name|suffix
 expr_stmt|;
 block|}
-comment|/* 				 * [ 1548875 ] download pdf produces unsupported filename 				 *  				 * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306 				 *  				 */
+block|}
+comment|/*                  * [ 1548875 ] download pdf produces unsupported filename                  *                   * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306                  *                   */
 if|if
 condition|(
 name|Globals
@@ -1603,6 +1732,8 @@ return|return
 name|plannedName
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1720,6 +1851,7 @@ name|length
 operator|>
 literal|0
 condition|)
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1752,7 +1884,9 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1780,6 +1914,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 name|File
@@ -1861,9 +1996,9 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Error while downloading "
 operator|+
@@ -1871,6 +2006,8 @@ name|url
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+name|e2
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1950,22 +2087,26 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* 					 * Check if we should update the editor text field, or 					 * update the target entry directly: 					 */
+comment|/*                      * Check if we should update the editor text field, or                      * update the target entry directly:                      */
 if|if
 condition|(
+operator|(
 name|entryEditor
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|entryEditor
 operator|.
 name|getEntry
 argument_list|()
 operator|!=
 name|targetEntry
+operator|)
 condition|)
 block|{
-comment|/* 						 * Editor has probably changed to show a different 						 * entry. So we must update the target entry directly 						 * and not set the text of the editor. 						 */
+comment|/*                          * Editor has probably changed to show a different                          * entry. So we must update the target entry directly                          * and not set the text of the editor.                          */
 name|targetEntry
 operator|.
 name|setField
@@ -1996,7 +2137,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* 						 * Need to set the fieldEditor first before running 						 * updateField-Action, because otherwise we might get a 						 * race condition. 						 *  						 * (Hopefully a) Fix for: [ 1545601 ] downloading pdf 						 * corrupts pdf field text 						 *  						 * http://sourceforge.net/tracker/index.php?func=detail&aid=1545601&group_id=92314&atid=600306 						 */
+comment|/*                          * Need to set the fieldEditor first before running                          * updateField-Action, because otherwise we might get a                          * race condition.                          *                           * (Hopefully a) Fix for: [ 1545601 ] downloading pdf                          * corrupts pdf field text                          *                           * http://sourceforge.net/tracker/index.php?func=detail&aid=1545601&group_id=92314&atid=600306                          */
 name|fieldEditor
 operator|.
 name|setText
@@ -2020,9 +2161,11 @@ operator|.
 name|invokeLater
 argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2100,16 +2243,13 @@ block|}
 block|}
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Starts a thread that searches the external file directory for the given 	 * field name, including subdirectories, and looks for files named after the 	 * current entry's bibtex key. Returns a reference to the thread for callers 	 * that may want to wait for the thread to finish (using join()). 	 *  	 * @param fieldName 	 *            The field to set. 	 * @param editor 	 *            An EntryEditor instance where to set the value found. 	 * @return A reference to the Thread that performs the operation. 	 */
+comment|/**      * Creates a Runnable that searches the external file directory for the given      * field name, including subdirectories, and looks for files named after the      * current entry's bibtex key.      *       * @param fieldName      *            The field to set.      * @param editor      *            An EntryEditor instance where to set the value found.      * @return A reference to the Runnable that can perform the operation.      */
 DECL|method|autoSetFile (final String fieldName, final FieldEditor editor)
 specifier|public
-name|Thread
+name|Runnable
 name|autoSetFile
 parameter_list|(
 specifier|final
@@ -2165,7 +2305,7 @@ name|toUpperCase
 argument_list|()
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 return|return
@@ -2190,27 +2330,26 @@ literal|" '"
 operator|+
 name|o
 operator|+
-literal|"."
+literal|'.'
 operator|+
 name|fieldName
 operator|+
 literal|"'..."
 argument_list|)
 expr_stmt|;
-name|Thread
-name|t
-init|=
-operator|(
+return|return
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
 parameter_list|()
 block|{
-comment|/* 				 * Find the following directories to look in for: 				 *  				 * default directory for this field type. 				 *  				 * directory of bibtex-file. // NOT POSSIBLE at the moment. 				 *  				 * JabRef-directory. 				 */
+comment|/*                  * Find the following directories to look in for:                  *                  * default directory for this field type.                  *                  * directory of bibtex-file. // NOT POSSIBLE at the moment.                  *                  * JabRef-directory.                  */
 name|LinkedList
 argument_list|<
 name|String
@@ -2295,6 +2434,7 @@ name|entryEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|entryEditor
 operator|.
 name|updateField
@@ -2302,6 +2442,7 @@ argument_list|(
 name|editor
 argument_list|)
 expr_stmt|;
+block|}
 name|output
 argument_list|(
 name|Globals
@@ -2316,7 +2457,7 @@ name|toUpperCase
 argument_list|()
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -2336,21 +2477,12 @@ name|toUpperCase
 argument_list|()
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-operator|)
-decl_stmt|;
-name|t
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-return|return
-name|t
 return|;
 block|}
 block|}

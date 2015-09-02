@@ -156,6 +156,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|export
 operator|.
 name|layout
@@ -224,12 +236,11 @@ end_comment
 
 begin_class
 DECL|class|MODSEntry
-specifier|public
 class|class
 name|MODSEntry
 block|{
 DECL|field|entryType
-specifier|protected
+specifier|private
 name|String
 name|entryType
 init|=
@@ -237,12 +248,12 @@ literal|"mods"
 decl_stmt|;
 comment|// could also be relatedItem
 DECL|field|id
-specifier|protected
+specifier|private
 name|String
 name|id
 decl_stmt|;
 DECL|field|authors
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|PersonName
@@ -253,74 +264,60 @@ literal|null
 decl_stmt|;
 comment|// should really be handled with an enum
 DECL|field|issuance
-specifier|protected
+specifier|private
 name|String
 name|issuance
 init|=
 literal|"monographic"
 decl_stmt|;
 DECL|field|pages
-specifier|protected
+specifier|private
 name|PageNumbers
 name|pages
 init|=
 literal|null
 decl_stmt|;
 DECL|field|publisher
-specifier|protected
+specifier|private
 name|String
 name|publisher
 init|=
 literal|null
 decl_stmt|;
 DECL|field|date
-specifier|protected
+specifier|private
 name|String
 name|date
 init|=
 literal|null
 decl_stmt|;
-DECL|field|place
-specifier|protected
-name|String
-name|place
-init|=
-literal|null
-decl_stmt|;
 DECL|field|title
-specifier|protected
+specifier|private
 name|String
 name|title
 init|=
 literal|null
 decl_stmt|;
-comment|// should really be handled with an enum
-DECL|field|type
-specifier|protected
-name|String
-name|type
-init|=
-literal|"text"
-decl_stmt|;
 DECL|field|number
-specifier|protected
+specifier|private
 name|String
 name|number
 decl_stmt|;
 DECL|field|volume
-specifier|protected
+specifier|private
 name|String
 name|volume
 decl_stmt|;
 DECL|field|genre
-specifier|protected
+specifier|private
 name|String
 name|genre
 init|=
 literal|null
 decl_stmt|;
 DECL|field|handledExtensions
-specifier|protected
+specifier|private
+specifier|final
 name|Set
 argument_list|<
 name|String
@@ -328,11 +325,13 @@ argument_list|>
 name|handledExtensions
 decl_stmt|;
 DECL|field|host
-specifier|protected
+specifier|private
 name|MODSEntry
 name|host
 decl_stmt|;
 DECL|field|extensionFields
+specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -342,8 +341,9 @@ argument_list|>
 name|extensionFields
 decl_stmt|;
 DECL|field|BIBTEX
-specifier|public
+specifier|private
 specifier|static
+specifier|final
 name|String
 name|BIBTEX
 init|=
@@ -358,7 +358,7 @@ init|=
 literal|false
 decl_stmt|;
 DECL|method|MODSEntry ()
-specifier|public
+specifier|private
 name|MODSEntry
 parameter_list|()
 block|{
@@ -398,6 +398,8 @@ name|handledExtensions
 operator|.
 name|add
 argument_list|(
+name|MODSEntry
+operator|.
 name|BIBTEX
 operator|+
 literal|"publisher"
@@ -407,6 +409,8 @@ name|handledExtensions
 operator|.
 name|add
 argument_list|(
+name|MODSEntry
+operator|.
 name|BIBTEX
 operator|+
 literal|"title"
@@ -416,6 +420,8 @@ name|handledExtensions
 operator|.
 name|add
 argument_list|(
+name|MODSEntry
+operator|.
 name|BIBTEX
 operator|+
 literal|"bibtexkey"
@@ -425,6 +431,8 @@ name|handledExtensions
 operator|.
 name|add
 argument_list|(
+name|MODSEntry
+operator|.
 name|BIBTEX
 operator|+
 literal|"author"
@@ -437,7 +445,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|populateFromBibtex (BibtexEntry bibtex)
-specifier|protected
+specifier|private
 name|void
 name|populateFromBibtex
 parameter_list|(
@@ -468,6 +476,7 @@ if|if
 condition|(
 name|CHARFORMAT
 condition|)
+block|{
 name|title
 operator|=
 name|chars
@@ -482,7 +491,9 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|title
 operator|=
 name|bibtex
@@ -492,6 +503,7 @@ argument_list|(
 literal|"title"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -509,6 +521,7 @@ if|if
 condition|(
 name|CHARFORMAT
 condition|)
+block|{
 name|publisher
 operator|=
 name|chars
@@ -523,7 +536,9 @@ literal|"publisher"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|publisher
 operator|=
 name|bibtex
@@ -533,6 +548,7 @@ argument_list|(
 literal|"publisher"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -545,6 +561,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|id
 operator|=
 name|bibtex
@@ -554,6 +571,7 @@ argument_list|(
 literal|"bibtexkey"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -566,10 +584,16 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|String
+name|place
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|CHARFORMAT
 condition|)
+block|{
 name|place
 operator|=
 name|chars
@@ -584,7 +608,9 @@ literal|"place"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|place
 operator|=
 name|bibtex
@@ -594,6 +620,7 @@ argument_list|(
 literal|"place"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|date
 operator|=
@@ -620,6 +647,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|authors
 operator|=
 name|getAuthors
@@ -632,25 +660,30 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
+operator|(
 name|bibtex
 operator|.
 name|getType
 argument_list|()
 operator|==
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|ARTICLE
+operator|)
 operator|||
+operator|(
 name|bibtex
 operator|.
 name|getType
 argument_list|()
 operator|==
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|INPROCEEDINGS
+operator|)
 condition|)
 block|{
 name|host
@@ -709,6 +742,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|host
 operator|.
 name|volume
@@ -720,6 +754,7 @@ argument_list|(
 literal|"volume"
 argument_list|)
 expr_stmt|;
+block|}
 name|host
 operator|.
 name|issuance
@@ -737,6 +772,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|host
 operator|.
 name|pages
@@ -753,6 +789,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|populateExtensionFields
 argument_list|(
 name|bibtex
@@ -760,7 +797,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|populateExtensionFields (BibtexEntry e)
-specifier|protected
+specifier|private
 name|void
 name|populateExtensionFields
 parameter_list|(
@@ -791,6 +828,8 @@ argument_list|)
 decl_stmt|;
 name|field
 operator|=
+name|MODSEntry
+operator|.
 name|BIBTEX
 operator|+
 name|field
@@ -807,7 +846,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|getAuthors (String authors)
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|PersonName
@@ -853,6 +892,7 @@ if|if
 condition|(
 name|CHARFORMAT
 condition|)
+block|{
 name|result
 operator|.
 name|add
@@ -869,7 +909,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|result
 operator|.
 name|add
@@ -881,6 +923,7 @@ name|authors
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -907,6 +950,7 @@ if|if
 condition|(
 name|CHARFORMAT
 condition|)
+block|{
 name|result
 operator|.
 name|add
@@ -923,7 +967,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|result
 operator|.
 name|add
@@ -937,13 +983,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 return|return
 name|result
 return|;
 block|}
 comment|/* construct a MODS date object */
 DECL|method|getDate (BibtexEntry bibtex)
-specifier|protected
+specifier|private
 name|String
 name|getDate
 parameter_list|(
@@ -967,6 +1014,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|+=
 operator|(
@@ -978,6 +1026,7 @@ literal|"year"
 argument_list|)
 operator|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -989,9 +1038,10 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|+=
-literal|"-"
+literal|'-'
 operator|+
 name|bibtex
 operator|.
@@ -1000,13 +1050,14 @@ argument_list|(
 literal|"month"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|result
 return|;
 block|}
 comment|// must be from http://www.loc.gov/marc/sourcecode/genre/genrelist.html
 DECL|method|getMODSgenre (BibtexEntry bibtex)
-specifier|protected
+specifier|private
 name|String
 name|getMODSgenre
 parameter_list|(
@@ -1014,9 +1065,8 @@ name|BibtexEntry
 name|bibtex
 parameter_list|)
 block|{
-name|String
-name|bibtexType
-init|=
+comment|/**          *<pre> String result; if (bibtexType.equals("Mastersthesis")) result =          * "theses"; else result = "conference publication"; // etc...</pre>          */
+return|return
 name|bibtex
 operator|.
 name|getType
@@ -1024,14 +1074,10 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-decl_stmt|;
-comment|/** 		 *<pre> String result; if (bibtexType.equals("Mastersthesis")) result = 		 * "theses"; else result = "conference publication"; // etc...</pre> 		 */
-return|return
-name|bibtexType
 return|;
 block|}
 DECL|method|getDOMrepresentation ()
-specifier|public
+specifier|private
 name|Node
 name|getDOMrepresentation
 parameter_list|()
@@ -1575,6 +1621,11 @@ argument_list|(
 literal|"typeOfResource"
 argument_list|)
 decl_stmt|;
+name|String
+name|type
+init|=
+literal|"text"
+decl_stmt|;
 name|typeOfResource
 operator|.
 name|appendChild
@@ -1754,7 +1805,9 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|Element
 name|theData
 init|=
@@ -1831,9 +1884,9 @@ throw|;
 block|}
 comment|// return result;
 block|}
-comment|/** 	 * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *       * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
+comment|/**      * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *       * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
 DECL|method|stripNonValidXMLCharacters (String in)
-specifier|public
+specifier|private
 name|String
 name|stripNonValidXMLCharacters
 parameter_list|(
@@ -1855,23 +1908,29 @@ decl_stmt|;
 comment|// Used to reference the current character.
 if|if
 condition|(
+operator|(
 name|in
 operator|==
 literal|null
+operator|)
 operator|||
 operator|(
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|in
-argument_list|)
+operator|!=
+literal|null
+operator|&&
+name|in
+operator|.
+name|isEmpty
+argument_list|()
 operator|)
 condition|)
+block|{
 return|return
 literal|""
 return|;
 comment|// vacancy test.
+block|}
 for|for
 control|(
 name|int
@@ -1962,6 +2021,7 @@ literal|0x10FFFF
 operator|)
 operator|)
 condition|)
+block|{
 name|out
 operator|.
 name|append
@@ -1970,6 +2030,7 @@ name|current
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|out
 operator|.
@@ -1977,7 +2038,9 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/* 	 * render as XML 	 *  	 */
+comment|/*      * render as XML      *       */
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

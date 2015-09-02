@@ -108,55 +108,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexFields
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
+name|*
 import|;
 end_import
 
@@ -174,8 +126,36 @@ name|CaseChangers
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|MonthUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_comment
-comment|/**  * Importer for the ISI Web of Science, INSPEC and Medline format.  *   * Documentation about ISI WOS format:  *   *<ul>  *<li>http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *   *<ul>  *<li>Check compatibility with other ISI2Bib tools like:  * http://www-lab.imr.tohoku.ac.jp/~t-nissie/computer/software/isi/ or  * http://www.tug.org/tex-archive/biblio/bibtex/utils/isi2bibtex/isi2bibtex or  * http://web.mit.edu/emilio/www/utils.html</li>  *<li>Deal with capitalization correctly</li>  *</ul>  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Importer for the ISI Web of Science, INSPEC and Medline format.  *   * Documentation about ISI WOS format:  *   *<ul>  *<li>http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *   *<ul>  *<li>Check compatibility with other ISI2Bib tools like:  * http://www-lab.imr.tohoku.ac.jp/~t-nissie/computer/software/isi/ or  * http://www.tug.org/tex-archive/biblio/bibtex/utils/isi2bibtex/isi2bibtex or  * http://web.mit.edu/emilio/www/utils.html</li>  *<li>Deal with capitalization correctly</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -186,7 +166,9 @@ name|IsiImporter
 extends|extends
 name|ImportFormat
 block|{
-comment|/** 	 * Return the name of this import format. 	 */
+comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -197,7 +179,9 @@ return|return
 literal|"ISI"
 return|;
 block|}
-comment|/* 	 * (non-Javadoc) 	 *  	 * @see net.sf.jabref.imports.ImportFormat#getCLIId() 	 */
+comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -211,6 +195,7 @@ block|}
 comment|// 2006.09.05: Modified pattern to avoid false positives for other files due to an
 comment|// extra | at the end:
 DECL|field|isiPattern
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -223,7 +208,9 @@ argument_list|(
 literal|"FN ISI Export Format|VR 1.|PY \\d{4}"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Check whether the source is in the correct format for this importer. 	 */
+comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -279,9 +266,11 @@ literal|50
 operator|)
 condition|)
 block|{
-comment|/** 			 * The following line gives false positives for RIS files, so it 			 * should not be uncommented. The hypen is a characteristic of the 			 * RIS format. 			 *  			 * str = str.replace(" - ", "") 			 */
+comment|/**              * The following line gives false positives for RIS files, so it              * should not be uncommented. The hypen is a characteristic of the              * RIS format.              *               * str = str.replace(" - ", "")              */
 if|if
 condition|(
+name|IsiImporter
+operator|.
 name|isiPattern
 operator|.
 name|matcher
@@ -292,9 +281,11 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -304,7 +295,9 @@ literal|false
 return|;
 block|}
 DECL|field|subsupPattern
+specifier|private
 specifier|static
+specifier|final
 name|Pattern
 name|subsupPattern
 init|=
@@ -365,6 +358,8 @@ block|{
 name|Matcher
 name|m
 init|=
+name|IsiImporter
+operator|.
 name|subsupPattern
 operator|.
 name|matcher
@@ -504,8 +499,8 @@ block|}
 block|}
 block|}
 DECL|method|processCapitalization (HashMap<String, String> map)
+specifier|private
 specifier|static
-specifier|public
 name|void
 name|processCapitalization
 parameter_list|(
@@ -595,7 +590,9 @@ block|}
 block|}
 block|}
 block|}
-comment|/** 	 * Parse the entries in the source, and return a List of BibtexEntry 	 * objects. 	 */
+comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -641,11 +638,11 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|BufferedReader
@@ -690,7 +687,9 @@ argument_list|()
 operator|<
 literal|3
 condition|)
+block|{
 continue|continue;
+block|}
 comment|// begining of a new item
 if|if
 condition|(
@@ -708,6 +707,7 @@ argument_list|(
 literal|"PT "
 argument_list|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -720,6 +720,7 @@ argument_list|(
 name|str
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|String
@@ -849,6 +850,7 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 name|fields
 operator|=
 name|entry
@@ -858,6 +860,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|Type
 init|=
@@ -896,7 +899,9 @@ argument_list|()
 operator|<=
 literal|2
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 name|beg
 init|=
@@ -1004,10 +1009,12 @@ argument_list|(
 name|value
 argument_list|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"article"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1018,10 +1025,12 @@ argument_list|(
 name|value
 argument_list|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"inproceedings"
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1033,6 +1042,7 @@ argument_list|(
 literal|"JO"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1042,6 +1052,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1056,6 +1067,8 @@ block|{
 name|String
 name|author
 init|=
+name|IsiImporter
+operator|.
 name|isiAuthorsConvert
 argument_list|(
 name|value
@@ -1080,6 +1093,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|author
 operator|=
 name|hm
@@ -1093,6 +1107,7 @@ literal|" and "
 operator|+
 name|author
 expr_stmt|;
+block|}
 name|hm
 operator|.
 name|put
@@ -1113,6 +1128,7 @@ argument_list|(
 literal|"TI"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1129,6 +1145,7 @@ literal|" "
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1146,6 +1163,7 @@ argument_list|(
 literal|"JA"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1162,6 +1180,7 @@ literal|" "
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1203,9 +1222,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|existingKeywords
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|existingKeywords
@@ -1250,6 +1271,7 @@ argument_list|(
 literal|"AB"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1266,6 +1288,7 @@ literal|" "
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1290,10 +1313,12 @@ argument_list|(
 literal|"SP"
 argument_list|)
 condition|)
+block|{
 name|pages
 operator|=
 name|value
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1318,11 +1343,14 @@ decl_stmt|;
 comment|// tweak for IEEE Explore
 if|if
 condition|(
+operator|(
 name|detpos
 operator|!=
 operator|-
 literal|1
+operator|)
 operator|&&
+operator|(
 name|value
 operator|.
 name|substring
@@ -1339,7 +1367,9 @@ name|length
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
+block|{
 name|value
 operator|=
 name|value
@@ -1351,6 +1381,7 @@ argument_list|,
 name|detpos
 argument_list|)
 expr_stmt|;
+block|}
 name|pages
 operator|=
 name|pages
@@ -1373,6 +1404,8 @@ condition|)
 block|{
 name|pages
 operator|=
+name|IsiImporter
+operator|.
 name|parsePages
 argument_list|(
 name|value
@@ -1389,10 +1422,12 @@ argument_list|(
 literal|"AR"
 argument_list|)
 condition|)
+block|{
 name|pages
 operator|=
 name|value
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1403,6 +1438,7 @@ argument_list|(
 literal|"IS"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1412,6 +1448,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1422,6 +1459,7 @@ argument_list|(
 literal|"PY"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1431,6 +1469,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1441,6 +1480,7 @@ argument_list|(
 literal|"VL"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1450,6 +1490,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1460,6 +1501,7 @@ argument_list|(
 literal|"PU"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1469,6 +1511,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1479,6 +1522,7 @@ argument_list|(
 literal|"DI"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1488,6 +1532,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1502,6 +1547,8 @@ block|{
 name|String
 name|month
 init|=
+name|IsiImporter
+operator|.
 name|parseMonth
 argument_list|(
 name|value
@@ -1658,7 +1705,9 @@ argument_list|(
 literal|"FN"
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|hm
 operator|.
 name|put
@@ -1680,6 +1729,7 @@ argument_list|(
 name|pages
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1689,6 +1739,7 @@ argument_list|,
 name|pages
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Skip empty entries
 if|if
 condition|(
@@ -1699,7 +1750,9 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 continue|continue;
+block|}
 name|BibtexEntry
 name|b
 init|=
@@ -1774,6 +1827,7 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 name|toRemove
 operator|.
 name|add
@@ -1781,6 +1835,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
@@ -1799,11 +1854,15 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Polish entries
+name|IsiImporter
+operator|.
 name|processSubSup
 argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
+name|IsiImporter
+operator|.
 name|processCapitalization
 argument_list|(
 name|hm
@@ -1829,7 +1888,7 @@ name|bibitems
 return|;
 block|}
 DECL|method|parsePages (String value)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|parsePages
@@ -1899,30 +1958,33 @@ range|:
 name|parts
 control|)
 block|{
-if|if
-condition|(
-name|Globals
+name|MonthUtil
 operator|.
-name|MONTH_STRINGS
+name|Month
+name|month
+init|=
+name|MonthUtil
 operator|.
-name|containsKey
+name|getMonthByShortName
 argument_list|(
 name|part1
 operator|.
 name|toLowerCase
 argument_list|()
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|month
+operator|.
+name|isValid
+argument_list|()
 condition|)
 block|{
 return|return
-literal|"#"
-operator|+
-name|part1
+name|month
 operator|.
-name|toLowerCase
-argument_list|()
-operator|+
-literal|"#"
+name|bibtexFormat
 return|;
 block|}
 block|}
@@ -1935,44 +1997,42 @@ range|:
 name|parts
 control|)
 block|{
-name|int
-name|number
-decl_stmt|;
 try|try
 block|{
+name|int
 name|number
-operator|=
+init|=
 name|Integer
 operator|.
 name|parseInt
 argument_list|(
 name|part
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+name|MonthUtil
+operator|.
+name|Month
+name|month
+init|=
+name|MonthUtil
+operator|.
+name|getMonthByNumber
+argument_list|(
+name|number
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
-name|number
-operator|>=
-literal|1
-operator|&&
-name|number
-operator|<=
-literal|12
+name|month
+operator|.
+name|isValid
+argument_list|()
 condition|)
 block|{
 return|return
-literal|"#"
-operator|+
-name|Globals
+name|month
 operator|.
-name|MONTHS
-index|[
-name|number
-operator|-
-literal|1
-index|]
-operator|+
-literal|"#"
+name|bibtexFormat
 return|;
 block|}
 block|}
@@ -1987,7 +2047,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Will expand ISI first names. 	 *  	 * Fixed bug from: 	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1542552&group_id=92314&atid=600306 	 *  	 */
+comment|/**      * Will expand ISI first names.      *       * Fixed bug from:      * http://sourceforge.net/tracker/index.php?func=detail&aid=1542552&group_id=92314&atid=600306      *       */
 DECL|method|isiAuthorConvert (String author)
 specifier|public
 specifier|static
@@ -2017,14 +2077,16 @@ name|length
 operator|!=
 literal|2
 condition|)
+block|{
 return|return
 name|author
 return|;
-name|StringBuffer
+block|}
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|String
@@ -2160,13 +2222,16 @@ if|if
 condition|(
 name|j
 operator|<
+operator|(
 name|first
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -2174,6 +2239,7 @@ argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -2190,11 +2256,13 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|firstParts
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -2214,7 +2282,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|isiAuthorsConvert (String[] authors)
-specifier|public
+specifier|private
 specifier|static
 name|String
 index|[]
@@ -2259,6 +2327,8 @@ index|[
 name|i
 index|]
 operator|=
+name|IsiImporter
+operator|.
 name|isiAuthorConvert
 argument_list|(
 name|authors
@@ -2286,6 +2356,8 @@ name|String
 index|[]
 name|s
 init|=
+name|IsiImporter
+operator|.
 name|isiAuthorsConvert
 argument_list|(
 name|authors
@@ -2297,7 +2369,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(

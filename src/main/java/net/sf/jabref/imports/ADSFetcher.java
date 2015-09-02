@@ -150,18 +150,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -202,20 +190,6 @@ name|BibtexDatabase
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|BibtexParser
-import|;
-end_import
-
 begin_comment
 comment|/**  *  * This class handles accessing and obtaining BibTeX entry  * from ADS(The NASA Astrophysics Data System).  * Fetching using DOI(Document Object Identifier) is only supported.  *  * @author Ryo IGARASHI  * @version $Id$  */
 end_comment
@@ -228,6 +202,8 @@ name|ADSFetcher
 implements|implements
 name|EntryFetcher
 block|{
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -239,6 +215,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -250,21 +228,8 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -275,6 +240,8 @@ return|return
 literal|"ADS from ADS-DOI"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -291,6 +258,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
 name|boolean
@@ -434,6 +403,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -441,7 +412,7 @@ name|stopFetching
 parameter_list|()
 block|{     }
 DECL|method|importADSEntries (String key, OutputPrinter status)
-specifier|public
+specifier|private
 name|BibtexDatabase
 name|importADSEntries
 parameter_list|(
@@ -621,7 +592,7 @@ literal|null
 return|;
 block|}
 DECL|method|constructUrl (String key)
-specifier|public
+specifier|private
 name|String
 name|constructUrl
 parameter_list|(
@@ -636,7 +607,7 @@ name|key
 return|;
 block|}
 DECL|method|importADSAbstract (String key, BibtexEntry entry, OutputPrinter status)
-specifier|public
+specifier|private
 name|void
 name|importADSAbstract
 parameter_list|(

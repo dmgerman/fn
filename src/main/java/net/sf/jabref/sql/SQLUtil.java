@@ -82,37 +82,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ListIterator
+name|*
 import|;
 end_import
 
@@ -154,9 +124,9 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 literal|"key"
 argument_list|)
@@ -177,10 +147,10 @@ DECL|method|SQLUtil ()
 specifier|private
 name|SQLUtil
 parameter_list|()
-block|{ 	}
-comment|/** 	 * loop through entry types to get required, optional, general and utility 	 * fields for this type. 	 */
+block|{     }
+comment|/**      * loop through entry types to get required, optional, general and utility      * fields for this type.      */
 DECL|method|refreshFields ()
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|refreshFields
@@ -188,11 +158,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|SQLUtil
+operator|.
 name|allFields
 operator|==
 literal|null
 condition|)
 block|{
+name|SQLUtil
+operator|.
 name|allFields
 operator|=
 operator|new
@@ -205,14 +179,20 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|SQLUtil
+operator|.
 name|allFields
 operator|.
 name|clear
 argument_list|()
 expr_stmt|;
 block|}
+name|SQLUtil
+operator|.
 name|uniqueInsert
 argument_list|(
+name|SQLUtil
+operator|.
 name|allFields
 argument_list|,
 name|BibtexFields
@@ -221,8 +201,12 @@ name|getAllFieldNames
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|SQLUtil
+operator|.
 name|uniqueInsert
 argument_list|(
+name|SQLUtil
+operator|.
 name|allFields
 argument_list|,
 name|BibtexFields
@@ -232,7 +216,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 *  	 * @return All existent fields for a bibtex entry 	 */
+comment|/**      *       * @return All existent fields for a bibtex entry      */
 DECL|method|getAllFields ()
 specifier|public
 specifier|static
@@ -245,18 +229,26 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|SQLUtil
+operator|.
 name|allFields
 operator|==
 literal|null
 condition|)
+block|{
+name|SQLUtil
+operator|.
 name|refreshFields
 argument_list|()
 expr_stmt|;
+block|}
 return|return
+name|SQLUtil
+operator|.
 name|allFields
 return|;
 block|}
-comment|/** 	 *  	 * @return Create a common separated field names 	 */
+comment|/**      *       * @return Create a common separated field names      */
 DECL|method|getFieldStr ()
 specifier|public
 specifier|static
@@ -272,8 +264,6 @@ literal|""
 decl_stmt|;
 name|String
 name|field
-init|=
-literal|""
 decl_stmt|;
 for|for
 control|(
@@ -284,6 +274,8 @@ literal|0
 init|;
 name|i
 operator|<
+name|SQLUtil
+operator|.
 name|getAllFields
 argument_list|()
 operator|.
@@ -296,6 +288,8 @@ control|)
 block|{
 name|field
 operator|=
+name|SQLUtil
+operator|.
 name|allFields
 operator|.
 name|get
@@ -309,14 +303,18 @@ name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|fieldstr
 operator|=
 name|fieldstr
 operator|+
 literal|", "
 expr_stmt|;
+block|}
 if|if
 condition|(
+name|SQLUtil
+operator|.
 name|reservedDBWords
 operator|.
 name|contains
@@ -324,10 +322,12 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 name|field
 operator|+=
 literal|"_"
 expr_stmt|;
+block|}
 name|fieldstr
 operator|=
 name|fieldstr
@@ -339,7 +339,7 @@ return|return
 name|fieldstr
 return|;
 block|}
-comment|/** 	 * Inserts the elements of a String array into an ArrayList making sure not 	 * to duplicate entries in the ArrayList 	 *  	 * @param list 	 *            The ArrayList containing unique entries 	 * @param array 	 *            The String array to be inserted into the ArrayList 	 * @return The updated ArrayList with new unique entries 	 */
+comment|/**      * Inserts the elements of a String array into an ArrayList making sure not      * to duplicate entries in the ArrayList      *       * @param list      *            The ArrayList containing unique entries      * @param array      *            The String array to be inserted into the ArrayList      * @return The updated ArrayList with new unique entries      */
 DECL|method|uniqueInsert (ArrayList<String> list, String[] array)
 specifier|private
 specifier|static
@@ -385,6 +385,7 @@ argument_list|(
 name|anArray
 argument_list|)
 condition|)
+block|{
 if|if
 condition|(
 operator|!
@@ -395,6 +396,7 @@ argument_list|(
 literal|"#"
 argument_list|)
 condition|)
+block|{
 name|list
 operator|.
 name|add
@@ -404,11 +406,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+block|}
 return|return
 name|list
 return|;
 block|}
-comment|/** 	 * Generates DML specifying table columns and their datatypes. The output of 	 * this routine should be used within a CREATE TABLE statement. 	 *  	 * @param fields 	 *            Contains unique field names 	 * @param datatype 	 *            Specifies the SQL data type that the fields should take on. 	 * @return The SQL code to be included in a CREATE TABLE statement. 	 */
+comment|/**      * Generates DML specifying table columns and their datatypes. The output of      * this routine should be used within a CREATE TABLE statement.      *       * @param fields      *            Contains unique field names      * @param datatype      *            Specifies the SQL data type that the fields should take on.      * @return The SQL code to be included in a CREATE TABLE statement.      */
 DECL|method|fieldsAsCols (ArrayList<String> fields, String datatype)
 specifier|public
 specifier|static
@@ -432,8 +436,6 @@ literal|""
 decl_stmt|;
 name|String
 name|field
-init|=
-literal|""
 decl_stmt|;
 name|ListIterator
 argument_list|<
@@ -463,6 +465,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|SQLUtil
+operator|.
 name|reservedDBWords
 operator|.
 name|contains
@@ -470,12 +474,14 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 name|field
 operator|=
 name|field
 operator|+
-literal|"_"
+literal|'_'
 expr_stmt|;
+block|}
 name|str
 operator|=
 name|str
@@ -491,6 +497,7 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|str
 operator|=
 name|str
@@ -498,11 +505,12 @@ operator|+
 literal|", "
 expr_stmt|;
 block|}
+block|}
 return|return
 name|str
 return|;
 block|}
-comment|/** 	 *  	 * @param allFields 	 *            All existent fields for a given entry type 	 * @param reqFields 	 *            list containing required fields for an entry type 	 * @param optFields 	 *            list containing optional fields for an entry type 	 * @param utiFields 	 *            list containing utility fields for an entry type 	 * @param origList 	 *            original list with the correct size filled with the default 	 *            values for each field 	 * @return origList changing the values of the fields that appear on 	 *         reqFields, optFields, utiFields set to 'req', 'opt' and 'uti' 	 *         respectively 	 */
+comment|/**      *       * @param allFields      *            All existent fields for a given entry type      * @param reqFields      *            list containing required fields for an entry type      * @param optFields      *            list containing optional fields for an entry type      * @param utiFields      *            list containing utility fields for an entry type      * @param origList      *            original list with the correct size filled with the default      *            values for each field      * @return origList changing the values of the fields that appear on      *         reqFields, optFields, utiFields set to 'req', 'opt' and 'uti'      *         respectively      */
 DECL|method|setFieldRequirement ( ArrayList<String> allFields, List<String> reqFields, List<String> optFields, List<String> utiFields, ArrayList<String> origList)
 specifier|public
 specifier|static
@@ -545,8 +553,6 @@ parameter_list|)
 block|{
 name|String
 name|currentField
-init|=
-literal|null
 decl_stmt|;
 for|for
 control|(
@@ -584,6 +590,7 @@ argument_list|(
 name|currentField
 argument_list|)
 condition|)
+block|{
 name|origList
 operator|.
 name|set
@@ -593,6 +600,7 @@ argument_list|,
 literal|"req"
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -603,6 +611,7 @@ argument_list|(
 name|currentField
 argument_list|)
 condition|)
+block|{
 name|origList
 operator|.
 name|set
@@ -612,6 +621,7 @@ argument_list|,
 literal|"opt"
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -622,6 +632,7 @@ argument_list|(
 name|currentField
 argument_list|)
 condition|)
+block|{
 name|origList
 operator|.
 name|set
@@ -632,11 +643,12 @@ literal|"uti"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|origList
 return|;
 block|}
-comment|/** 	 * Return a message raised from a SQLException 	 *  	 * @param ex 	 *            The SQLException raised 	 */
+comment|/**      * Return a message raised from a SQLException      *       * @param ex      *            The SQLException raised      */
 DECL|method|getExceptionMessage (Exception ex)
 specifier|public
 specifier|static
@@ -649,8 +661,6 @@ parameter_list|)
 block|{
 name|String
 name|msg
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -684,7 +694,7 @@ return|return
 name|msg
 return|;
 block|}
-comment|/** 	 * return a ResultSet with the result of a "SELECT *" query for a given 	 * table 	 *  	 * @param conn 	 *            Connection to the database 	 * @param tableName 	 *            String containing the name of the table you want to get the 	 *            results. 	 * @return a ResultSet with the query result returned from the DB 	 * @throws SQLException 	 */
+comment|/**      * return a ResultSet with the result of a "SELECT *" query for a given      * table      *       * @param conn      *            Connection to the database      * @param tableName      *            String containing the name of the table you want to get the      *            results.      * @return a ResultSet with the query result returned from the DB      * @throws SQLException      */
 DECL|method|queryAllFromTable (Connection conn, String tableName)
 specifier|public
 specifier|static
@@ -707,7 +717,7 @@ literal|"SELECT * FROM "
 operator|+
 name|tableName
 operator|+
-literal|";"
+literal|';'
 decl_stmt|;
 name|Statement
 name|res
@@ -715,6 +725,8 @@ init|=
 operator|(
 name|Statement
 operator|)
+name|SQLUtil
+operator|.
 name|processQueryWithResults
 argument_list|(
 name|conn
@@ -729,7 +741,7 @@ name|getResultSet
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Utility method for processing DML with proper output 	 *  	 * @param out 	 *            The output (PrintStream or Connection) object to which the DML 	 *            should be sent 	 * @param dml 	 *            The DML statements to be processed 	 */
+comment|/**      * Utility method for processing DML with proper output      *       * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be sent      * @param dml      *            The DML statements to be processed      */
 DECL|method|processQuery (Object out, String dml)
 specifier|public
 specifier|static
@@ -783,6 +795,8 @@ name|Connection
 operator|)
 name|out
 decl_stmt|;
+name|SQLUtil
+operator|.
 name|executeQuery
 argument_list|(
 name|conn
@@ -792,7 +806,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Utility method for processing DML with proper output 	 *  	 * @param out 	 *            The output (PrintStream or Connection) object to which the DML 	 *            should be sent 	 * @param query 	 *            The DML statements to be processed 	 * @return the result of the statement 	 */
+comment|/**      * Utility method for processing DML with proper output      *       * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be sent      * @param query      *            The DML statements to be processed      * @return the result of the statement      */
 DECL|method|processQueryWithResults (Object out, String query)
 specifier|public
 specifier|static
@@ -852,6 +866,8 @@ operator|)
 name|out
 decl_stmt|;
 return|return
+name|SQLUtil
+operator|.
 name|executeQueryWithResults
 argument_list|(
 name|conn
@@ -864,7 +880,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * This routine returns the JDBC url corresponding to the DBStrings input. 	 *  	 * @param dbStrings 	 *            The DBStrings to use to make the connection 	 * @return The JDBC url corresponding to the input DBStrings 	 */
+comment|/**      * This routine returns the JDBC url corresponding to the DBStrings input.      *       * @param dbStrings      *            The DBStrings to use to make the connection      * @return The JDBC url corresponding to the input DBStrings      */
 DECL|method|createJDBCurl (DBStrings dbStrings, boolean withDBName)
 specifier|public
 specifier|static
@@ -880,8 +896,6 @@ parameter_list|)
 block|{
 name|String
 name|url
-init|=
-literal|""
 decl_stmt|;
 name|url
 operator|=
@@ -905,7 +919,7 @@ operator|+
 operator|(
 name|withDBName
 condition|?
-literal|"/"
+literal|'/'
 operator|+
 name|dbStrings
 operator|.
@@ -919,7 +933,7 @@ return|return
 name|url
 return|;
 block|}
-comment|/** 	 * Process a query and returns only the first result of a result set as a 	 * String. To be used when it is certain that only one String (single cell) 	 * will be returned from the DB 	 *  	 * @param conn 	 *            The Connection object to which the DML should be sent 	 * @param query 	 *            The query statements to be processed 	 * @return String with the result returned from the database 	 * @throws SQLException 	 */
+comment|/**      * Process a query and returns only the first result of a result set as a      * String. To be used when it is certain that only one String (single cell)      * will be returned from the DB      *       * @param conn      *            The Connection object to which the DML should be sent      * @param query      *            The query statements to be processed      * @return String with the result returned from the database      * @throws SQLException      */
 DECL|method|processQueryWithSingleResult (Connection conn, String query)
 specifier|public
 specifier|static
@@ -938,6 +952,8 @@ block|{
 name|ResultSet
 name|rs
 init|=
+name|SQLUtil
+operator|.
 name|executeQueryWithResults
 argument_list|(
 name|conn
@@ -975,9 +991,9 @@ return|return
 name|result
 return|;
 block|}
-comment|/** 	 * Utility method for executing DML 	 *  	 * @param conn 	 *            The DML Connection object that will execute the SQL 	 * @param qry 	 *            The DML statements to be executed 	 */
+comment|/**      * Utility method for executing DML      *       * @param conn      *            The DML Connection object that will execute the SQL      * @param qry      *            The DML statements to be executed      */
 DECL|method|executeQuery (Connection conn, String qry)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|executeQuery
@@ -1040,9 +1056,9 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Utility method for executing DML 	 *  	 * @param conn 	 *            The DML Connection object that will execute the SQL 	 * @param qry 	 *            The DML statements to be executed 	 */
+comment|/**      * Utility method for executing DML      *       * @param conn      *            The DML Connection object that will execute the SQL      * @param qry      *            The DML statements to be executed      */
 DECL|method|executeQueryWithResults (Connection conn, String qry)
-specifier|public
+specifier|private
 specifier|static
 name|Statement
 name|executeQueryWithResults

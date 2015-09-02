@@ -72,30 +72,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|logging
-operator|.
-name|Level
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|regex
 operator|.
 name|Matcher
@@ -111,6 +87,60 @@ operator|.
 name|regex
 operator|.
 name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|DOIUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -142,66 +172,6 @@ name|PDFTextStripper
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
-import|;
-end_import
-
 begin_comment
 comment|/**  * PdfContentImporter parses data of the first page of the PDF and creates a BibTeX entry.  *   * Currently, Springer and IEEE formats are supported.  *   * Integrating XMP support is future work  *   * @author koppor  *  */
 end_comment
@@ -214,28 +184,27 @@ name|PdfContentImporter
 extends|extends
 name|ImportFormat
 block|{
-DECL|field|logger
+DECL|field|LOGGER
 specifier|private
 specifier|static
-name|Logger
-name|logger
+specifier|final
+name|Log
+name|LOGGER
 init|=
-name|Logger
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
 name|PdfContentImporter
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// we can store the DOItoBibTeXFetcher as single reference as the fetcher doesn't hold internal state
 DECL|field|doiToBibTeXFetcher
 specifier|private
 specifier|static
+specifier|final
 name|DOItoBibTeXFetcher
 name|doiToBibTeXFetcher
 init|=
@@ -243,7 +212,7 @@ operator|new
 name|DOItoBibTeXFetcher
 argument_list|()
 decl_stmt|;
-comment|/* global variables holding the state of the current parse run 	 * needed to be able to generate methods such as "fillCurStringWithNonEmptyLines" 	 */
+comment|/* global variables holding the state of the current parse run      * needed to be able to generate methods such as "fillCurStringWithNonEmptyLines"      */
 comment|// input split into several lines
 DECL|field|split
 specifier|private
@@ -288,7 +257,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * Removes all non-letter characters at the end 	 *  	 * EXCEPTION: a closing bracket is NOT removed 	 *  	 * @param input 	 * @return 	 * TODO Additionally repalce multiple subsequent spaces by one space 	 */
+comment|/**      * Removes all non-letter characters at the end      *       * EXCEPTION: a closing bracket is NOT removed      *       * @param input      * @return      * TODO Additionally repalce multiple subsequent spaces by one space      */
 DECL|method|removeNonLettersAtEnd (String input)
 specifier|private
 name|String
@@ -314,9 +283,11 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|input
 return|;
+block|}
 name|char
 name|lastC
 init|=
@@ -568,10 +539,12 @@ argument_list|(
 literal|"et al."
 argument_list|)
 condition|)
+block|{
 name|curName
 operator|=
 literal|"others"
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|isFirst
@@ -719,9 +692,11 @@ name|splitNames
 operator|.
 name|length
 operator|>
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -833,6 +808,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|splitNames
 index|[
 name|i
@@ -842,6 +818,7 @@ name|length
 argument_list|()
 operator|>
 literal|0
+operator|)
 operator|&&
 name|Character
 operator|.
@@ -986,8 +963,6 @@ argument_list|)
 decl_stmt|;
 name|PDDocument
 name|document
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -1007,14 +982,10 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOGGER
 operator|.
-name|log
+name|error
 argument_list|(
-name|Level
-operator|.
-name|SEVERE
-argument_list|,
 literal|"Could not load document"
 argument_list|,
 name|e
@@ -1034,14 +1005,10 @@ name|isEncrypted
 argument_list|()
 condition|)
 block|{
-name|logger
+name|LOGGER
 operator|.
-name|log
+name|error
 argument_list|(
-name|Level
-operator|.
-name|INFO
-argument_list|,
 name|Globals
 operator|.
 name|lang
@@ -1119,7 +1086,7 @@ decl_stmt|;
 name|String
 name|doi
 init|=
-name|Util
+name|DOIUtil
 operator|.
 name|getDOI
 argument_list|(
@@ -1154,7 +1121,7 @@ specifier|public
 name|void
 name|toFront
 parameter_list|()
-block|{ 					}
+block|{                     }
 annotation|@
 name|Override
 specifier|public
@@ -1167,7 +1134,7 @@ parameter_list|,
 name|int
 name|max
 parameter_list|)
-block|{ 					}
+block|{                     }
 annotation|@
 name|Override
 specifier|public
@@ -1189,6 +1156,8 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+name|PdfContentImporter
+operator|.
 name|doiToBibTeXFetcher
 operator|.
 name|processQuery
@@ -1222,8 +1191,6 @@ block|}
 block|}
 name|String
 name|author
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|editor
@@ -1247,8 +1214,6 @@ literal|null
 decl_stmt|;
 name|String
 name|title
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|conference
@@ -1289,7 +1254,7 @@ decl_stmt|;
 name|BibtexEntryType
 name|type
 init|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|INPROCEEDINGS
 decl_stmt|;
@@ -1806,7 +1771,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
 name|TECHREPORT
 expr_stmt|;
@@ -2075,6 +2040,7 @@ name|pos
 operator|<
 literal|0
 condition|)
+block|{
 name|pos
 operator|=
 name|curString
@@ -2084,6 +2050,7 @@ argument_list|(
 literal|"doi"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|pos
@@ -2142,6 +2109,7 @@ name|nextSpace
 operator|>
 literal|0
 condition|)
+block|{
 name|DOI
 operator|=
 name|curString
@@ -2153,7 +2121,9 @@ argument_list|,
 name|nextSpace
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|DOI
 operator|=
 name|curString
@@ -2163,6 +2133,7 @@ argument_list|(
 name|pos
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
@@ -2243,9 +2214,11 @@ operator|!=
 literal|' '
 operator|)
 condition|)
+block|{
 name|pos
 operator|--
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|pos
@@ -2294,6 +2267,7 @@ name|author
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2303,12 +2277,14 @@ argument_list|,
 name|author
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|editor
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2318,12 +2294,14 @@ argument_list|,
 name|editor
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|institution
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2333,12 +2311,14 @@ argument_list|,
 name|institution
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|abstractT
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2348,12 +2328,14 @@ argument_list|,
 name|abstractT
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|keywords
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2363,12 +2345,14 @@ argument_list|,
 name|keywords
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|title
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2378,12 +2362,14 @@ argument_list|,
 name|title
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|conference
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2393,12 +2379,14 @@ argument_list|,
 name|conference
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|DOI
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2408,12 +2396,14 @@ argument_list|,
 name|DOI
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|series
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2423,12 +2413,14 @@ argument_list|,
 name|series
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|volume
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2438,12 +2430,14 @@ argument_list|,
 name|volume
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|number
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2453,12 +2447,14 @@ argument_list|,
 name|number
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|pages
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2468,12 +2464,14 @@ argument_list|,
 name|pages
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|year
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2483,12 +2481,14 @@ argument_list|,
 name|year
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|publisher
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2498,6 +2498,7 @@ argument_list|,
 name|publisher
 argument_list|)
 expr_stmt|;
+block|}
 name|entry
 operator|.
 name|setField
@@ -2549,18 +2550,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|logger
+name|LOGGER
 operator|.
-name|log
+name|error
 argument_list|(
-name|Level
-operator|.
-name|SEVERE
-argument_list|,
-name|e
-operator|.
-name|getLocalizedMessage
-argument_list|()
+literal|"Could not find class"
 argument_list|,
 name|e
 argument_list|)
@@ -2579,7 +2573,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/** 	 * Extract the year out of curString (if it is not yet defined) 	 */
+comment|/**      * Extract the year out of curString (if it is not yet defined)      */
 DECL|method|extractYear ()
 specifier|private
 name|void
@@ -2592,7 +2586,9 @@ name|year
 operator|!=
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 specifier|final
 name|Pattern
 name|p
@@ -2641,7 +2637,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * PDFTextStripper normally does NOT produce multiple empty lines  	 * (besides at strange PDFs). These strange PDFs are handled here: 	 * proceed to next non-empty line 	 */
+comment|/**      * PDFTextStripper normally does NOT produce multiple empty lines       * (besides at strange PDFs). These strange PDFs are handled here:      * proceed to next non-empty line      */
 DECL|method|proceedToNextNonEmptyLine ()
 specifier|private
 name|void
@@ -2679,7 +2675,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Fill curString with lines until "" is found 	 * No trailing space is added 	 * i is advanced to the next non-empty line (ignoring white space) 	 *  	 * Lines containing only white spaces are ignored, 	 * but NOT considered as "" 	 *  	 * Uses GLOBAL variables split, curLine, i 	 */
+comment|/**      * Fill curString with lines until "" is found      * No trailing space is added      * i is advanced to the next non-empty line (ignoring white space)      *       * Lines containing only white spaces are ignored,      * but NOT considered as ""      *       * Uses GLOBAL variables split, curLine, i      */
 DECL|method|fillCurStringWithNonEmptyLines ()
 specifier|private
 name|void
@@ -2782,7 +2778,7 @@ name|proceedToNextNonEmptyLine
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * resets curString 	 * curString now contains the last block (until "" reached) 	 * Trailing space is added 	 *  	 * invariant before/after: i points to line before the last handled block 	 */
+comment|/**      * resets curString      * curString now contains the last block (until "" reached)      * Trailing space is added      *       * invariant before/after: i points to line before the last handled block      */
 DECL|method|readLastBlock ()
 specifier|private
 name|void

@@ -36,18 +36,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -171,7 +159,7 @@ implements|implements
 name|EntryFetcher
 block|{
 DECL|field|CANCELLED
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -180,8 +168,9 @@ init|=
 literal|"__CANCELLED__"
 decl_stmt|;
 DECL|field|MAX_PAGES_TO_LOAD
-specifier|protected
+specifier|private
 specifier|static
+specifier|final
 name|int
 name|MAX_PAGES_TO_LOAD
 init|=
@@ -198,8 +187,9 @@ operator|*
 literal|25
 decl_stmt|;
 DECL|field|REFS_PER_PAGE
-specifier|protected
+specifier|private
 specifier|static
+specifier|final
 name|int
 name|REFS_PER_PAGE
 init|=
@@ -207,7 +197,7 @@ literal|25
 decl_stmt|;
 comment|// This is the current default of JSTOR;
 DECL|field|JSTOR_URL
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -216,18 +206,20 @@ init|=
 literal|"http://www.jstor.org"
 decl_stmt|;
 DECL|field|SEARCH_URL
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
 name|SEARCH_URL
 init|=
+name|JSTORFetcher2
+operator|.
 name|JSTOR_URL
 operator|+
 literal|"/action/doBasicSearch?Query="
 decl_stmt|;
 DECL|field|SEARCH_URL_END
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -236,7 +228,7 @@ init|=
 literal|"&x=0&y=0&wc=on"
 decl_stmt|;
 DECL|field|SINGLE_CIT_ENC
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -250,7 +242,7 @@ comment|// to be improved...
 comment|//"http%3A%2F%2Fwww.jstor.org%2Faction%2FexportSingleCitation%3FsingleCitation"
 comment|//+"%3Dtrue%26suffix%3D";
 DECL|field|idPattern
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -264,7 +256,7 @@ literal|"<a class=\"title\" href=\"/stable/(\\d+)\\?"
 argument_list|)
 decl_stmt|;
 DECL|field|numberofhits
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -278,7 +270,7 @@ literal|"<span id=\"NumberOfHits\" name=\"(\\d+)\""
 argument_list|)
 decl_stmt|;
 DECL|field|nextPagePattern
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -292,7 +284,7 @@ literal|"<a href=\"(.*)\">Next&nbsp;&raquo;"
 argument_list|)
 decl_stmt|;
 DECL|field|noAccessIndicator
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -301,19 +293,21 @@ init|=
 literal|"We do not recognize you as having access to JSTOR"
 decl_stmt|;
 DECL|field|stopFetching
-specifier|protected
+specifier|private
 name|boolean
 name|stopFetching
 init|=
 literal|false
 decl_stmt|;
 DECL|field|noAccessFound
-specifier|protected
+specifier|private
 name|boolean
 name|noAccessFound
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -324,21 +318,8 @@ return|return
 literal|"JSTOR.html"
 return|;
 block|}
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -349,6 +330,8 @@ return|return
 literal|"JSTOR"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -360,6 +343,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -370,6 +355,8 @@ return|return
 literal|"JSTOR"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -385,6 +372,8 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
 name|boolean
@@ -606,7 +595,7 @@ return|;
 block|}
 comment|/**      *      * @param query      *            The search term to query JStor for.      * @return a list of IDs      * @throws java.io.IOException      */
 DECL|method|getCitations (String query, ImportInspector dialog, OutputPrinter status)
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|String
@@ -645,6 +634,8 @@ try|try
 block|{
 name|urlQuery
 operator|=
+name|JSTORFetcher2
+operator|.
 name|SEARCH_URL
 operator|+
 name|URLEncoder
@@ -656,6 +647,8 @@ argument_list|,
 literal|"UTF-8"
 argument_list|)
 operator|+
+name|JSTORFetcher2
+operator|.
 name|SEARCH_URL_END
 expr_stmt|;
 name|int
@@ -675,18 +668,16 @@ index|]
 decl_stmt|;
 name|int
 name|refsRequested
-init|=
-literal|0
 decl_stmt|;
 name|int
 name|numberOfPagesRequested
 init|=
+name|JSTORFetcher2
+operator|.
 name|MAX_PAGES_TO_LOAD
 decl_stmt|;
 name|String
 name|nextPage
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(
@@ -697,6 +688,8 @@ name|Math
 operator|.
 name|min
 argument_list|(
+name|JSTORFetcher2
+operator|.
 name|MAX_PAGES_TO_LOAD
 argument_list|,
 name|numberOfPagesRequested
@@ -741,13 +734,17 @@ name|nextPage
 operator|.
 name|equals
 argument_list|(
+name|JSTORFetcher2
+operator|.
 name|CANCELLED
 argument_list|)
 operator|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 comment|//System.out.println("JSTORFetcher2 getCitations numberofrefs=" + numberOfRefs[0]);
 comment|//System.out.println("JSTORFetcher2 getCitations numberofrefs=" + " refsRequested=" + numberOfRefs[1]);
 name|refsRequested
@@ -767,21 +764,29 @@ name|numberOfPagesRequested
 operator|=
 operator|(
 operator|(
+operator|(
 name|refsRequested
 operator|-
 literal|1
 operator|)
 operator|-
 operator|(
+operator|(
 name|refsRequested
 operator|-
 literal|1
 operator|)
 operator|%
+name|JSTORFetcher2
+operator|.
 name|REFS_PER_PAGE
 operator|)
+operator|)
 operator|/
+name|JSTORFetcher2
+operator|.
 name|REFS_PER_PAGE
+operator|)
 operator|+
 literal|1
 expr_stmt|;
@@ -815,7 +820,7 @@ throw|;
 block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, List<String> ids, int count, String[] numberOfRefs, ImportInspector dialog, OutputPrinter status)
-specifier|protected
+specifier|private
 name|String
 name|getCitationsFromUrl
 parameter_list|(
@@ -887,8 +892,6 @@ literal|0
 decl_stmt|;
 name|int
 name|refsRequested
-init|=
-literal|0
 decl_stmt|;
 if|if
 condition|(
@@ -901,6 +904,8 @@ comment|//  Readin the numberofhits (only once)
 name|Matcher
 name|mn
 init|=
+name|JSTORFetcher2
+operator|.
 name|numberofhits
 operator|.
 name|matcher
@@ -1014,6 +1019,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
+name|JSTORFetcher2
+operator|.
 name|CANCELLED
 return|;
 block|}
@@ -1091,6 +1098,8 @@ expr_stmt|;
 name|Matcher
 name|m
 init|=
+name|JSTORFetcher2
+operator|.
 name|idPattern
 operator|.
 name|matcher
@@ -1106,12 +1115,14 @@ name|find
 argument_list|()
 operator|&&
 operator|(
+operator|(
 name|ids
 operator|.
 name|size
 argument_list|()
 operator|+
 literal|1
+operator|)
 operator|<=
 name|refsRequested
 operator|)
@@ -1145,6 +1156,8 @@ argument_list|)
 expr_stmt|;
 name|m
 operator|=
+name|JSTORFetcher2
+operator|.
 name|idPattern
 operator|.
 name|matcher
@@ -1161,12 +1174,14 @@ name|find
 argument_list|()
 operator|&&
 operator|(
+operator|(
 name|ids
 operator|.
 name|size
 argument_list|()
 operator|+
 literal|1
+operator|)
 operator|<=
 name|refsRequested
 operator|)
@@ -1180,6 +1195,8 @@ name|entirePage
 operator|.
 name|contains
 argument_list|(
+name|JSTORFetcher2
+operator|.
 name|noAccessIndicator
 argument_list|)
 condition|)
@@ -1200,6 +1217,8 @@ return|;
 block|}
 name|m
 operator|=
+name|JSTORFetcher2
+operator|.
 name|nextPagePattern
 operator|.
 name|matcher
@@ -1215,9 +1234,9 @@ name|find
 argument_list|()
 condition|)
 block|{
-name|String
-name|newQuery
-init|=
+return|return
+name|JSTORFetcher2
+operator|.
 name|JSTOR_URL
 operator|+
 name|m
@@ -1226,9 +1245,6 @@ name|group
 argument_list|(
 literal|1
 argument_list|)
-decl_stmt|;
-return|return
-name|newQuery
 return|;
 block|}
 else|else
@@ -1239,7 +1255,7 @@ return|;
 block|}
 block|}
 DECL|method|getSingleCitation (String cit)
-specifier|protected
+specifier|private
 name|BibtexEntry
 name|getSingleCitation
 parameter_list|(
@@ -1252,6 +1268,8 @@ name|BibsonomyScraper
 operator|.
 name|getEntry
 argument_list|(
+name|JSTORFetcher2
+operator|.
 name|SINGLE_CIT_ENC
 operator|+
 name|cit

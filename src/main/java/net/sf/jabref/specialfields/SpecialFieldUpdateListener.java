@@ -100,6 +100,8 @@ name|INSTANCE
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|vetoableChange (PropertyChangeEvent e)
 specifier|public
 name|void
@@ -144,6 +146,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -179,6 +183,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -238,6 +244,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -273,11 +281,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|SpecialFieldUpdateListener
+operator|.
 name|INSTANCE
 operator|==
 literal|null
 condition|)
 block|{
+name|SpecialFieldUpdateListener
+operator|.
 name|INSTANCE
 operator|=
 operator|new
@@ -286,6 +298,8 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|SpecialFieldUpdateListener
+operator|.
 name|INSTANCE
 return|;
 block|}

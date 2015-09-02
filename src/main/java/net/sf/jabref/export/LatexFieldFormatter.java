@@ -30,6 +30,34 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -62,20 +90,9 @@ argument_list|)
 return|;
 block|}
 DECL|field|sb
+specifier|private
 name|StringBuffer
 name|sb
-decl_stmt|;
-DECL|field|col
-name|int
-name|col
-decl_stmt|;
-comment|// First line usually starts about so much further to the right.
-DECL|field|STARTCOL
-specifier|final
-name|int
-name|STARTCOL
-init|=
-literal|4
 decl_stmt|;
 DECL|field|neverFailOnHashes
 specifier|private
@@ -149,7 +166,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"resolveStringsAllFields"
+name|JabRefPreferences
+operator|.
+name|RESOLVE_STRINGS_ALL_FIELDS
 argument_list|)
 expr_stmt|;
 name|valueDelimitersZero
@@ -182,7 +201,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"doNotResolveStringsFor"
+name|JabRefPreferences
+operator|.
+name|DO_NOT_RESOLVE_STRINGS_FOR
 argument_list|)
 expr_stmt|;
 name|writefieldWrapfield
@@ -199,6 +220,8 @@ name|WRITEFIELD_WRAPFIELD
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String text, String fieldName)
 specifier|public
 name|String
@@ -219,6 +242,7 @@ name|text
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|valueDelimitersZero
 operator|+
@@ -226,6 +250,7 @@ literal|""
 operator|+
 name|valueDelimitersOne
 return|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -413,18 +438,22 @@ name|c
 operator|==
 literal|'{'
 condition|)
+block|{
 name|brc
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|c
 operator|==
 literal|'}'
 condition|)
+block|{
 name|brc
 operator|--
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|brc
@@ -445,15 +474,18 @@ name|brc
 operator|>
 literal|0
 condition|)
+block|{
 name|ok
 operator|=
 literal|false
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
 name|ok
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -461,6 +493,7 @@ argument_list|(
 literal|"Curly braces { and } must be balanced."
 argument_list|)
 throw|;
+block|}
 name|sb
 operator|=
 operator|new
@@ -490,13 +523,14 @@ argument_list|(
 name|fieldName
 argument_list|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
-name|wrap2
+name|wrap
 argument_list|(
 name|text
 argument_list|,
@@ -506,7 +540,9 @@ name|LINE_LENGTH
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -514,6 +550,7 @@ argument_list|(
 name|text
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -545,10 +582,6 @@ decl_stmt|;
 name|int
 name|pos2
 decl_stmt|;
-name|col
-operator|=
-name|STARTCOL
-expr_stmt|;
 comment|// Here we assume that the user encloses any bibtex strings in #, e.g.:
 comment|// #jan# - #feb#
 comment|// ...which will be written to the file like this:
@@ -628,6 +661,7 @@ operator|++
 expr_stmt|;
 block|}
 else|else
+block|{
 name|goFrom
 operator|=
 name|pos1
@@ -635,6 +669,7 @@ operator|-
 literal|1
 expr_stmt|;
 comment|// Ends the loop.
+block|}
 block|}
 if|if
 condition|(
@@ -698,7 +733,7 @@ argument_list|(
 literal|"The # character is not allowed in BibTeX strings unless escaped as in '\\#'."
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|Globals
 operator|.
@@ -707,7 +742,7 @@ argument_list|(
 literal|"In JabRef, use pairs of # characters to indicate a string."
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|Globals
 operator|.
@@ -737,6 +772,7 @@ name|pos1
 operator|>
 name|pivot
 condition|)
+block|{
 name|writeText
 argument_list|(
 name|text
@@ -746,6 +782,7 @@ argument_list|,
 name|pos1
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -758,13 +795,16 @@ argument_list|()
 operator|)
 operator|&&
 operator|(
+operator|(
 name|pos2
 operator|-
 literal|1
+operator|)
 operator|>
 name|pos1
 operator|)
 condition|)
+block|{
 comment|// We check that the string label is not empty. That means
 comment|// an occurrence of ## will simply be ignored. Should it instead
 comment|// cause an error message?
@@ -785,9 +825,11 @@ name|pivot
 operator|)
 argument_list|,
 operator|(
+operator|(
 name|pos2
 operator|+
 literal|1
+operator|)
 operator|==
 name|text
 operator|.
@@ -796,6 +838,7 @@ argument_list|()
 operator|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|pos2
@@ -803,13 +846,16 @@ operator|>
 operator|-
 literal|1
 condition|)
+block|{
 name|pivot
 operator|=
 name|pos2
 operator|+
 literal|1
 expr_stmt|;
+block|}
 else|else
+block|{
 name|pivot
 operator|=
 name|pos1
@@ -817,6 +863,7 @@ operator|+
 literal|1
 expr_stmt|;
 comment|//if (tell++> 10) System.exit(0);
+block|}
 block|}
 comment|// currently, we do not add newlines and new formatting
 if|if
@@ -836,9 +883,9 @@ condition|)
 block|{
 comment|//             introduce a line break to be read at the parser
 return|return
-name|Util
+name|StringUtil
 operator|.
-name|wrap2
+name|wrap
 argument_list|(
 name|sb
 operator|.
@@ -853,12 +900,14 @@ return|;
 comment|//, but that lead to ugly .tex
 block|}
 else|else
+block|{
 return|return
 name|sb
 operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 block|}
 DECL|method|writeText (String text, int start_pos, int end_pos)
 specifier|private
@@ -905,11 +954,11 @@ name|nestedEnvironments
 init|=
 literal|0
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|commandName
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|char
@@ -965,6 +1014,7 @@ condition|(
 operator|!
 name|inCommandOption
 condition|)
+block|{
 name|commandName
 operator|.
 name|append
@@ -972,6 +1022,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1024,11 +1075,12 @@ operator|==
 literal|']'
 operator|)
 condition|)
+block|{
 name|inCommandOption
 operator|=
 literal|false
 expr_stmt|;
-comment|// Or the beginning of the command body:
+block|}
 elseif|else
 if|if
 condition|(
@@ -1107,9 +1159,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|nestedEnvironments
 operator|>
 literal|0
+operator|)
 operator|&&
 name|commandName
 operator|.
@@ -1188,6 +1242,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -1195,6 +1250,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 name|escape
 operator|=
 operator|(
@@ -1233,7 +1289,7 @@ name|boolean
 name|last
 parameter_list|)
 block|{
-comment|//sb.append(Util.wrap2((first ? "" : " # ") + text.substring(start_pos, end_pos)
+comment|//sb.append(Util.wrap((first ? "" : " # ") + text.substring(start_pos, end_pos)
 comment|//		     + (last ? "" : " # "), GUIGlobals.LINE_LENGTH));
 name|putIn
 argument_list|(
@@ -1277,9 +1333,9 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
-name|wrap2
+name|wrap
 argument_list|(
 name|s
 argument_list|,
@@ -1358,6 +1414,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
+block|{
 name|left
 operator|.
 name|add
@@ -1365,6 +1422,7 @@ argument_list|(
 name|current
 argument_list|)
 expr_stmt|;
+block|}
 while|while
 condition|(
 operator|(
@@ -1385,6 +1443,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
+block|{
 name|right
 operator|.
 name|add
@@ -1392,27 +1451,26 @@ argument_list|(
 name|current
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Then we throw an exception if the error criteria are met.
 if|if
 condition|(
 operator|(
+operator|!
 name|right
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 operator|&&
 operator|(
 name|left
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -1420,15 +1478,15 @@ argument_list|(
 literal|"'}' character ends string prematurely."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 operator|(
+operator|!
 name|right
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 operator|&&
 operator|(
@@ -1447,6 +1505,7 @@ literal|0
 argument_list|)
 operator|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -1454,6 +1513,7 @@ argument_list|(
 literal|"'}' character ends string prematurely."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|left
@@ -1466,6 +1526,7 @@ operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -1473,6 +1534,7 @@ argument_list|(
 literal|"Braces don't match."
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 end_class

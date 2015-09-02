@@ -126,6 +126,20 @@ name|ButtonBarBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_class
 DECL|class|EntryTypeDialog
 specifier|public
@@ -138,12 +152,15 @@ name|ActionListener
 block|{
 comment|/*      * Dialog that prompts the user to choose a type for an entry.      * Returns null if cancelled.      */
 DECL|field|type
+specifier|private
 name|BibtexEntryType
 name|type
 init|=
 literal|null
 decl_stmt|;
 DECL|field|cancelAction
+specifier|private
+specifier|final
 name|CancelAction
 name|cancelAction
 init|=
@@ -161,6 +178,7 @@ init|=
 literal|3
 decl_stmt|;
 DECL|class|TypeButton
+specifier|static
 class|class
 name|TypeButton
 extends|extends
@@ -172,6 +190,7 @@ name|TypeButton
 argument_list|>
 block|{
 DECL|field|type
+specifier|final
 name|BibtexEntryType
 name|type
 decl_stmt|;
@@ -196,6 +215,8 @@ operator|=
 name|type_
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (TypeButton o)
 specifier|public
 name|int
@@ -255,6 +276,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosing
@@ -474,9 +497,7 @@ name|tp
 range|:
 name|BibtexEntryType
 operator|.
-name|ALL_TYPES
-operator|.
-name|values
+name|getAllValues
 argument_list|()
 control|)
 block|{
@@ -494,7 +515,7 @@ init|=
 operator|new
 name|TypeButton
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -522,6 +543,8 @@ if|if
 condition|(
 name|col
 operator|==
+name|EntryTypeDialog
+operator|.
 name|COLNUM
 condition|)
 block|{
@@ -598,6 +621,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -667,6 +692,8 @@ comment|//  new ImageIcon(GUIGlobals.imagepath+GUIGlobals.closeIconFile));
 comment|//putValue(SHORT_DESCRIPTION, "Cancel");
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.closeKeyCode);
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

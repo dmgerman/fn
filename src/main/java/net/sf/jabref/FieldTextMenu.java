@@ -100,6 +100,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|ImageIcon
 import|;
 end_import
@@ -188,11 +198,13 @@ name|MouseListener
 block|{
 DECL|field|myFieldName
 specifier|private
+specifier|final
 name|FieldEditor
 name|myFieldName
 decl_stmt|;
 DECL|field|inputMenu
 specifier|private
+specifier|final
 name|JPopupMenu
 name|inputMenu
 init|=
@@ -202,6 +214,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|copyAct
 specifier|private
+specifier|final
 name|CopyAction
 name|copyAct
 init|=
@@ -275,6 +288,7 @@ argument_list|()
 operator|instanceof
 name|JTextComponent
 condition|)
+block|{
 name|inputMenu
 operator|.
 name|add
@@ -293,6 +307,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|mouseClicked (MouseEvent e)
 specifier|public
 name|void
@@ -301,7 +318,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{   }
+block|{     }
+annotation|@
+name|Override
 DECL|method|mouseEntered (MouseEvent e)
 specifier|public
 name|void
@@ -310,7 +329,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{   }
+block|{     }
+annotation|@
+name|Override
 DECL|method|mouseExited (MouseEvent e)
 specifier|public
 name|void
@@ -319,7 +340,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{   }
+block|{     }
+annotation|@
+name|Override
 DECL|method|mousePressed (MouseEvent e)
 specifier|public
 name|void
@@ -335,6 +358,8 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|mouseReleased (MouseEvent e)
 specifier|public
 name|void
@@ -350,7 +375,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|maybeShowPopup ( MouseEvent e )
+DECL|method|maybeShowPopup (MouseEvent e)
 specifier|private
 name|void
 name|maybeShowPopup
@@ -399,19 +424,22 @@ name|txt
 operator|!=
 literal|null
 condition|)
+block|{
 if|if
 condition|(
+operator|!
 name|txt
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
+block|{
 name|cStat
 operator|=
 literal|true
 expr_stmt|;
+block|}
+block|}
 name|copyAct
 operator|.
 name|setEnabled
@@ -445,6 +473,7 @@ block|}
 comment|// ---------------------------------------------------------------------------
 DECL|class|BasicAction
 specifier|abstract
+specifier|static
 class|class
 name|BasicAction
 extends|extends
@@ -482,6 +511,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -528,6 +559,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -535,6 +568,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -588,12 +623,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 specifier|abstract
@@ -606,7 +645,7 @@ parameter_list|)
 function_decl|;
 block|}
 comment|//---------------------------------------------------------------
-comment|/*class MenuHeaderAction extends BasicAction   {     public MenuHeaderAction(String comment)     {       super("Edit -" +comment);       this.setEnabled(false);     }      public void actionPerformed(ActionEvent e) { }   }     */
+comment|/*class MenuHeaderAction extends BasicAction     {       public MenuHeaderAction(String comment)       {         super("Edit -" +comment);         this.setEnabled(false);       }        public void actionPerformed(ActionEvent e) { }     }       */
 comment|// ---------------------------------------------------------------------------
 DECL|class|PasteAction
 class|class
@@ -634,6 +673,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -661,21 +702,23 @@ name|data
 operator|!=
 literal|null
 condition|)
+block|{
 if|if
 condition|(
+operator|!
 name|data
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
+block|{
 if|if
 condition|(
 name|myFieldName
 operator|!=
 literal|null
 condition|)
+block|{
 name|myFieldName
 operator|.
 name|paste
@@ -684,12 +727,15 @@ name|data
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+block|}
 catch|catch
 parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{             }
 block|}
 block|}
 comment|// ---------------------------------------------------------------------------
@@ -719,6 +765,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -753,15 +801,16 @@ name|data
 operator|!=
 literal|null
 condition|)
+block|{
 if|if
 condition|(
+operator|!
 name|data
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
+block|{
 name|ClipBoardManager
 operator|.
 name|clipBoard
@@ -773,12 +822,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+block|}
 catch|catch
 parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{             }
 block|}
 block|}
 DECL|class|ReplaceAction
@@ -799,6 +850,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -810,6 +863,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void
@@ -826,10 +881,8 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return;
@@ -876,6 +929,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -887,6 +942,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void
@@ -903,10 +960,8 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return;

@@ -62,7 +62,6 @@ end_import
 
 begin_class
 DECL|class|PreambleEditor
-specifier|public
 class|class
 name|PreambleEditor
 extends|extends
@@ -70,59 +69,29 @@ name|JDialog
 block|{
 comment|// A reference to the entry this object works on.
 DECL|field|base
+specifier|private
+specifier|final
 name|BibtexDatabase
 name|base
 decl_stmt|;
 DECL|field|panel
+specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|baseFrame
-name|JabRefFrame
-name|baseFrame
-decl_stmt|;
 DECL|field|prefs
+specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
-decl_stmt|;
-comment|// Layout objects.
-DECL|field|gbl
-name|GridBagLayout
-name|gbl
-init|=
-operator|new
-name|GridBagLayout
-argument_list|()
-decl_stmt|;
-DECL|field|con
-name|GridBagConstraints
-name|con
-init|=
-operator|new
-name|GridBagConstraints
-argument_list|()
 decl_stmt|;
 DECL|field|lab
 name|JLabel
 name|lab
 decl_stmt|;
-DECL|field|conPane
-name|Container
-name|conPane
-init|=
-name|getContentPane
-argument_list|()
-decl_stmt|;
-comment|//JToolBar tlb = new JToolBar();
-DECL|field|pan
-name|JPanel
-name|pan
-init|=
-operator|new
-name|JPanel
-argument_list|()
-decl_stmt|;
 DECL|field|ed
+specifier|private
 name|FieldEditor
 name|ed
 decl_stmt|;
@@ -148,12 +117,11 @@ argument_list|(
 name|baseFrame
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
+name|JabRefFrame
+name|baseFrame1
+init|=
 name|baseFrame
-operator|=
-name|baseFrame
-expr_stmt|;
+decl_stmt|;
 name|this
 operator|.
 name|panel
@@ -178,6 +146,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosing
@@ -194,6 +164,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowOpened
@@ -217,6 +189,8 @@ operator|new
 name|LayoutFocusTraversalPolicy
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|boolean
 name|accept
@@ -264,7 +238,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"entryTypeFormHeightFactor"
+name|JabRefPreferences
+operator|.
+name|ENTRY_TYPE_FORM_HEIGHT_FACTOR
 argument_list|)
 index|]
 argument_list|)
@@ -279,13 +255,29 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"entryTypeFormWidth"
+name|JabRefPreferences
+operator|.
+name|ENTRY_TYPE_FORM_WIDTH
 argument_list|)
 index|]
 argument_list|,
 name|prefHeight
 argument_list|)
 expr_stmt|;
+name|JPanel
+name|pan
+init|=
+operator|new
+name|JPanel
+argument_list|()
+decl_stmt|;
+name|GridBagLayout
+name|gbl
+init|=
+operator|new
+name|GridBagLayout
+argument_list|()
+decl_stmt|;
 name|pan
 operator|.
 name|setLayout
@@ -293,6 +285,13 @@ argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
+name|GridBagConstraints
+name|con
+init|=
+operator|new
+name|GridBagConstraints
+argument_list|()
+decl_stmt|;
 name|con
 operator|.
 name|fill
@@ -417,6 +416,12 @@ argument_list|)
 expr_stmt|;
 comment|//tlb.add(closeAction);
 comment|//conPane.add(tlb, BorderLayout.NORTH);
+name|Container
+name|conPane
+init|=
+name|getContentPane
+argument_list|()
+decl_stmt|;
 name|conPane
 operator|.
 name|add
@@ -628,12 +633,15 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|FieldListener
+specifier|private
 class|class
 name|FieldListener
 extends|extends
 name|FocusAdapter
 block|{
-comment|/*        * Focus listener that fires the storeFieldAction when a FieldTextArea        * loses focus.        */
+comment|/*         * Focus listener that fires the storeFieldAction when a FieldTextArea         * loses focus.         */
+annotation|@
+name|Override
 DECL|method|focusLost (FocusEvent e)
 specifier|public
 name|void
@@ -651,6 +659,7 @@ operator|.
 name|isTemporary
 argument_list|()
 condition|)
+block|{
 name|storeFieldAction
 operator|.
 name|actionPerformed
@@ -671,7 +680,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|field|storeFieldAction
+specifier|private
+specifier|final
 name|StoreFieldAction
 name|storeFieldAction
 init|=
@@ -697,12 +709,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 literal|"Store field value"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -722,16 +738,16 @@ name|set
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|ed
 operator|.
 name|getText
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
+block|{
 name|toSet
 operator|=
 name|ed
@@ -739,6 +755,7 @@ operator|.
 name|getText
 argument_list|()
 expr_stmt|;
+block|}
 comment|// We check if the field has changed, since we don't want to mark the
 comment|// base as changed unless we have a real change.
 if|if
@@ -828,12 +845,11 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
 name|toSet
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -879,11 +895,13 @@ operator|.
 name|hasFocus
 argument_list|()
 condition|)
+block|{
 name|ed
 operator|.
 name|setActiveBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 name|panel
 operator|.
 name|markBaseChanged
@@ -893,6 +911,8 @@ block|}
 block|}
 block|}
 DECL|field|undoAction
+specifier|private
+specifier|final
 name|UndoAction
 name|undoAction
 init|=
@@ -925,12 +945,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 literal|"Undo"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -959,6 +983,8 @@ block|{             }
 block|}
 block|}
 DECL|field|redoAction
+specifier|private
+specifier|final
 name|RedoAction
 name|redoAction
 init|=
@@ -991,12 +1017,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 literal|"Redo"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1026,6 +1056,8 @@ block|}
 block|}
 comment|// The action concerned with closing the window.
 DECL|field|closeAction
+specifier|private
+specifier|final
 name|CloseAction
 name|closeAction
 init|=
@@ -1057,6 +1089,8 @@ expr_stmt|;
 comment|//, new ImageIcon(GUIGlobals.closeIconFile));
 comment|//putValue(SHORT_DESCRIPTION, "Close window (Ctrl-Q)");
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

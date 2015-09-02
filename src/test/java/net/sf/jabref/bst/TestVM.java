@@ -102,6 +102,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -153,18 +163,6 @@ operator|.
 name|util
 operator|.
 name|Vector
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
 import|;
 end_import
 
@@ -225,6 +223,8 @@ name|expected
 init|=
 literal|"\\begin{thebibliography}{1}\\bibitem{canh05}K.~Crowston, H.~Annabi, J.~Howison, and C.~Masango.\\newblock Effective work practices for floss development: A model and  propositions.\\newblock In {\\em Hawaii International Conference On System Sciences (HICSS)}, 2005.\\end{thebibliography}"
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -325,6 +325,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -338,6 +340,8 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|7
@@ -351,6 +355,8 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -364,6 +370,8 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -387,6 +395,8 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|38
@@ -458,6 +468,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Effective work practices for floss development: A model and propositions"
@@ -513,6 +525,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"\"\""
@@ -568,6 +582,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|38
@@ -581,6 +597,8 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|vm
@@ -612,6 +630,8 @@ argument_list|(
 literal|"init.state.consts"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|3
@@ -674,6 +694,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 operator|new
@@ -744,6 +766,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -759,6 +783,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -774,6 +800,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -789,6 +817,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -804,6 +834,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -819,6 +851,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -834,6 +868,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -849,6 +885,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -864,6 +902,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -879,6 +919,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -894,6 +936,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -964,6 +1008,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -979,6 +1025,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -994,6 +1042,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1009,6 +1059,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1024,6 +1076,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1039,6 +1093,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1054,6 +1110,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1069,6 +1127,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1084,6 +1144,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1099,6 +1161,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1114,6 +1178,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -1174,6 +1240,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|3
@@ -1187,6 +1255,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1200,6 +1270,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -1250,6 +1322,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -1306,6 +1380,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1319,6 +1395,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -1365,6 +1443,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1378,6 +1458,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -1441,6 +1523,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Johnny.}"
@@ -1454,6 +1538,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Johnny?}"
@@ -1467,6 +1553,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Johnny!}"
@@ -1480,6 +1568,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Johnny.}"
@@ -1493,6 +1583,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Johnny?"
@@ -1506,6 +1598,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Johnny!"
@@ -1519,6 +1613,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Johnny."
@@ -1532,6 +1628,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Johnny."
@@ -1545,6 +1643,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Hallo"
@@ -1558,6 +1658,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -1643,6 +1745,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"78"
@@ -1656,6 +1760,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"789"
@@ -1669,6 +1775,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"9"
@@ -1682,6 +1790,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"123"
@@ -1695,6 +1805,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"123456789"
@@ -1708,6 +1820,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"123456789"
@@ -1721,6 +1835,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"123456789"
@@ -1734,6 +1850,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"456789"
@@ -1747,6 +1865,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2"
@@ -1760,6 +1880,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -1826,6 +1948,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@article{a, author=\"AAA\"}"
@@ -1839,6 +1963,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1854,6 +1980,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1869,6 +1997,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1884,6 +2014,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1899,6 +2031,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -1914,6 +2048,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -1989,6 +2125,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{\\em Hello}"
@@ -2002,6 +2140,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -2015,6 +2155,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -2098,6 +2240,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"{A}{D}/{C}ycle: {I}{B}{M}'s {F}ramework for {A}pplication {D}evelopment and {C}ase"
@@ -2111,6 +2255,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -2124,6 +2270,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Hello world"
@@ -2137,6 +2285,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Hello world"
@@ -2150,6 +2300,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -2225,6 +2377,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|11
@@ -2238,6 +2392,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2251,6 +2407,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2264,6 +2422,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2277,6 +2437,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|8
@@ -2290,6 +2452,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -2303,6 +2467,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|11
@@ -2316,6 +2482,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|11
@@ -2329,6 +2497,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -2386,13 +2556,12 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"9999"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|vm
 operator|.
 name|getStack
@@ -2402,6 +2571,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"3"
@@ -2415,6 +2586,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -2473,6 +2646,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|72
@@ -2486,6 +2661,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -2532,6 +2709,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"H"
@@ -2545,6 +2724,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -2602,6 +2783,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@article{a, author=\"AAA\"}"
@@ -2612,6 +2795,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@article{b, author=\"BBB\"}"
@@ -2622,6 +2807,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@article{d, author=\"DDD\"}"
@@ -2632,6 +2819,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@article{c, author=\"CCC\"}"
@@ -2656,6 +2845,8 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"a"
@@ -2674,6 +2865,8 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"b"
@@ -2692,6 +2885,8 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"c"
@@ -2710,6 +2905,8 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"d"
@@ -2770,6 +2967,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|Integer
@@ -2785,6 +2984,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|vm
@@ -2836,6 +3037,8 @@ argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|VM
@@ -2949,6 +3152,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2962,6 +3167,8 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"HELLO--WORLD"
@@ -3018,6 +3225,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@article{a, author=\"AAA\"}"
@@ -3028,6 +3237,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@book{b, author=\"BBB\"}"
@@ -3038,6 +3249,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@misc{c, author=\"CCC\"}"
@@ -3048,6 +3261,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@inproceedings{d, author=\"DDD\"}"
@@ -3061,6 +3276,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -3074,6 +3291,8 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"InProceedings"
@@ -3087,6 +3306,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Misc"
@@ -3100,6 +3321,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Book"
@@ -3113,6 +3336,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Article"
@@ -3189,6 +3414,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@article{test, author=\"No title\"}"
@@ -3202,6 +3429,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -3215,6 +3444,8 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -3228,6 +3459,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3241,6 +3474,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"canh05"
@@ -3254,6 +3489,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -3312,13 +3549,12 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"de~la Vall{\\'e}e~Poussin, C.~L. X.~J?"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|vm
 operator|.
 name|getStack
@@ -3328,6 +3564,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -3389,6 +3627,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@book{test, author=\"Jonathan Meyer and Charles Louis Xavier Joseph de la Vall{\\'e}e Poussin\"}"
@@ -3402,6 +3642,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"de~la Vall{\\'e}e~Poussin, C.~L. X.~J?"
@@ -3415,6 +3657,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Annabi, H?"
@@ -3428,6 +3672,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -3495,6 +3741,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@book{test, title=\"Test\"}"
@@ -3508,6 +3756,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -3521,6 +3771,8 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Book called on Test"
@@ -3534,6 +3786,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"InProceedings called on Effective work practices for floss development: A model and propositions"
@@ -3547,6 +3801,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -3625,6 +3881,8 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@article{test, title=\"BLA\"}"
@@ -3638,6 +3896,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -3689,6 +3949,8 @@ literal|"canh05"
 argument_list|)
 condition|)
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -3699,6 +3961,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"canh05"
@@ -3706,6 +3970,8 @@ argument_list|,
 name|s2
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -3868,6 +4134,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|vm
@@ -3881,6 +4149,8 @@ literal|"longest.label.width"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"\\begin{thebibliography}{1}"
@@ -3936,6 +4206,8 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -3949,6 +4221,8 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|3
@@ -3962,6 +4236,8 @@ name|pop
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Hallo"
@@ -4016,6 +4292,8 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -4102,12 +4380,16 @@ name|v
 operator|.
 name|add
 argument_list|(
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 literal|"@article{canh05, author = \"Jean-Paul Sartre\" }"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|vm
@@ -4132,6 +4414,8 @@ throws|throws
 name|IOException
 block|{
 return|return
+name|TestVM
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 name|t1BibtexString

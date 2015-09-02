@@ -42,6 +42,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Ignore
 import|;
 end_import
@@ -96,18 +106,6 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
 begin_comment
 comment|/**  * @version 11.11.2008 | 21:51:54  */
 end_comment
@@ -147,6 +145,8 @@ operator|.
 name|NOT_EXISTING_PDF
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertNull
 argument_list|(
 name|creator
@@ -163,11 +163,15 @@ operator|.
 name|FILE_IN_DATABASE
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|creator
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|creator
@@ -275,6 +279,8 @@ literal|true
 argument_list|)
 decl_stmt|;
 comment|/**          * One file doesn't exist, so adding it as an entry should lead to an          * error message.          */
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -362,11 +368,15 @@ literal|true
 expr_stmt|;
 block|}
 block|}
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|file1Found
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|file2Found

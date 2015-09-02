@@ -163,12 +163,7 @@ name|in
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|List
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|res
-init|=
+return|return
 operator|new
 name|ArrayList
 argument_list|<
@@ -183,9 +178,6 @@ operator|.
 name|getEntries
 argument_list|()
 argument_list|)
-decl_stmt|;
-return|return
-name|res
 return|;
 block|}
 annotation|@

@@ -138,6 +138,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -190,6 +218,20 @@ name|ButtonBarBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * Dialog to manage custom importers.  */
 end_comment
@@ -202,6 +244,15 @@ name|ImportCustomizationDialog
 extends|extends
 name|JDialog
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|frame
 specifier|private
 specifier|final
@@ -215,6 +266,7 @@ name|customImporterTable
 decl_stmt|;
 DECL|field|prefs
 specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
 init|=
@@ -224,10 +276,29 @@ name|prefs
 decl_stmt|;
 DECL|field|importCustomizationDialog
 specifier|private
+specifier|final
 name|ImportCustomizationDialog
 name|importCustomizationDialog
 decl_stmt|;
-comment|/*   *  (non-Javadoc)   * @see java.awt.Component#getSize()   */
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ImportCustomizationDialog
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+comment|/*     *  (non-Javadoc)     * @see java.awt.Component#getSize()     */
+annotation|@
+name|Override
 DECL|method|getSize ()
 specifier|public
 name|Dimension
@@ -265,7 +336,7 @@ literal|2
 argument_list|)
 return|;
 block|}
-comment|/**    * Converts a path relative to a base-path into a class name.    *     * @param basePath  base path    * @param path  path that includes base-path as a prefix    * @return  class name    */
+comment|/**      * Converts a path relative to a base-path into a class name.      *       * @param basePath  base path      * @param path  path that includes base-path as a prefix      * @return  class name      */
 DECL|method|pathToClass (File basePath, File path)
 specifier|private
 name|String
@@ -338,9 +409,11 @@ name|lastDot
 operator|<
 literal|0
 condition|)
+block|{
 return|return
 name|className
 return|;
+block|}
 name|className
 operator|=
 name|className
@@ -356,7 +429,7 @@ return|return
 name|className
 return|;
 block|}
-comment|/**    * Adds an importer to the model that underlies the custom importers.    *     * @param importer  importer    */
+comment|/**      * Adds an importer to the model that underlies the custom importers.      *       * @param importer  importer      */
 DECL|method|addOrReplaceImporter (CustomImportList.Importer importer)
 name|void
 name|addOrReplaceImporter
@@ -397,7 +470,7 @@ name|fireTableDataChanged
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    *     * @param frame_    * @throws HeadlessException    */
+comment|/**      *       * @param frame_      * @throws HeadlessException      */
 DECL|method|ImportCustomizationDialog (JabRefFrame frame_)
 specifier|public
 name|ImportCustomizationDialog
@@ -454,6 +527,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -497,7 +572,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
@@ -527,6 +604,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|chosenFileStr
 operator|=
 name|FileDialogs
@@ -556,6 +634,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|chosenFileStr
@@ -716,6 +795,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -740,7 +821,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
@@ -797,9 +880,9 @@ name|IOException
 name|exc
 parameter_list|)
 block|{
-name|Globals
+name|LOGGER
 operator|.
-name|logger
+name|info
 argument_list|(
 literal|"Could not open Zip-archive: \n"
 operator|+
@@ -807,6 +890,8 @@ name|exc
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|exc
 argument_list|)
 expr_stmt|;
 name|JOptionPane
@@ -955,6 +1040,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1104,6 +1191,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1210,6 +1299,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1627,7 +1718,7 @@ name|customImporterTable
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Table model for the custom importer table.    */
+comment|/**      * Table model for the custom importer table.      */
 DECL|class|ImportTableModel
 class|class
 name|ImportTableModel
@@ -1636,6 +1727,7 @@ name|AbstractTableModel
 block|{
 DECL|field|columnNames
 specifier|private
+specifier|final
 name|String
 index|[]
 name|columnNames
@@ -1673,6 +1765,8 @@ literal|"Contained in"
 argument_list|)
 block|}
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getValueAt (int rowIndex, int columnIndex)
 specifier|public
 name|Object
@@ -1767,6 +1861,8 @@ return|return
 name|value
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1779,6 +1875,8 @@ operator|.
 name|length
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -1796,6 +1894,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int col)
 specifier|public
 name|String

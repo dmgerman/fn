@@ -133,7 +133,7 @@ extends|extends
 name|JFileChooser
 block|{
 DECL|method|JabRefFileChooser ()
-specifier|public
+specifier|private
 name|JabRefFileChooser
 parameter_list|()
 block|{
@@ -160,6 +160,8 @@ comment|/*public int showSaveDialog(Component parent) throws HeadlessException {
 comment|//========================================================
 comment|//
 comment|//========================================================
+annotation|@
+name|Override
 DECL|method|setUI (ComponentUI newUI)
 specifier|protected
 name|void
@@ -182,6 +184,7 @@ operator|.
 name|MAC
 argument_list|)
 condition|)
+block|{
 name|super
 operator|.
 name|setUI
@@ -189,7 +192,9 @@ argument_list|(
 name|newUI
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|super
 operator|.
 name|setUI
@@ -201,6 +206,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|//========================================================
 comment|//
@@ -274,7 +280,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|DoubleClickListener
-specifier|protected
 class|class
 name|DoubleClickListener
 extends|extends
@@ -283,6 +288,7 @@ operator|.
 name|DoubleClickListener
 block|{
 DECL|field|list
+specifier|final
 name|JList
 name|list
 decl_stmt|;
@@ -306,6 +312,8 @@ operator|=
 name|list
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|mouseEntered (MouseEvent e)
 specifier|public
 name|void
@@ -358,6 +366,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|createDoubleClickListener (JFileChooser fc, JList list)
 specifier|protected
 name|MouseListener
