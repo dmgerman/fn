@@ -376,6 +376,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|bibtex
@@ -2333,7 +2349,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Close entry editor"
+name|KeyBinds
+operator|.
+name|CLOSE_ENTRY_EDITOR
 argument_list|)
 argument_list|,
 literal|"close"
@@ -2356,7 +2374,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, store field"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_STORE_FIELD
 argument_list|)
 argument_list|,
 literal|"store"
@@ -2379,7 +2399,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Autogenerate BibTeX keys"
+name|KeyBinds
+operator|.
+name|AUTOGENERATE_BIB_TE_X_KEYS
 argument_list|)
 argument_list|,
 literal|"generateKey"
@@ -2402,7 +2424,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Automatically link files"
+name|KeyBinds
+operator|.
+name|AUTOMATICALLY_LINK_FILES
 argument_list|)
 argument_list|,
 literal|"autoLink"
@@ -2425,7 +2449,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, previous entry"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_PREVIOUS_ENTRY
 argument_list|)
 argument_list|,
 literal|"prev"
@@ -2448,7 +2474,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, next entry"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_NEXT_ENTRY
 argument_list|)
 argument_list|,
 literal|"next"
@@ -2471,7 +2499,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Undo"
+name|KeyBinds
+operator|.
+name|UNDO
 argument_list|)
 argument_list|,
 literal|"undo"
@@ -2494,7 +2524,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Redo"
+name|KeyBinds
+operator|.
+name|REDO
 argument_list|)
 argument_list|,
 literal|"redo"
@@ -2517,7 +2549,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Help"
+name|KeyBinds
+operator|.
+name|HELP
 argument_list|)
 argument_list|,
 literal|"help"
