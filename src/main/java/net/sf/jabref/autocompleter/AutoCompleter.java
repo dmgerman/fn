@@ -25,7 +25,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An AutoCompleter delivers possible completions for a given string.  */
+comment|/**  * Delivers possible completions for a given string.  */
 end_comment
 
 begin_interface
@@ -37,6 +37,15 @@ parameter_list|<
 name|E
 parameter_list|>
 block|{
+comment|/**      * Formats the specified item. This method is called when an item is selected by the user and we need to determine      * the text to be inserted in the textbox.      *       * @param item the item to format      * @return formated string representation of the item      */
+DECL|method|getAutoCompleteText (E item)
+name|String
+name|getAutoCompleteText
+parameter_list|(
+name|E
+name|item
+parameter_list|)
+function_decl|;
 comment|/**      * Add a BibtexEntry to this AutoCompleter. The AutoCompleter (respectively      * to the concrete implementations of {@link AutoCompleter}) itself      * decides which information should be stored for later completion.      */
 DECL|method|addBibtexEntry (BibtexEntry entry)
 name|void
@@ -65,7 +74,7 @@ name|String
 name|getPrefix
 parameter_list|()
 function_decl|;
-comment|/** 	 * Returns one or more possible completions for a given String. The returned 	 * completion depends on which informations were stored while adding 	 * BibtexEntries by the used implementation of {@link AutoCompleter} 	 * . 	 *  	 * @see AutoCompleter#addBibtexEntry(BibtexEntry) 	 */
+comment|/** 	 * Returns one or more possible completions for a given string. The returned 	 * completion depends on which informations were stored while adding 	 * BibtexEntries by the used implementation of {@link AutoCompleter} 	 * . 	 *  	 * @see AutoCompleter#addBibtexEntry(BibtexEntry) 	 */
 DECL|method|complete (String str)
 name|E
 index|[]

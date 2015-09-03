@@ -42,61 +42,96 @@ name|Action
 import|;
 end_import
 
-begin_interface
-DECL|interface|AutoCompleteRenderer
+begin_comment
+comment|/**  * Renders the list of possible autocomplete items. Also takes care of the currently selected item.  * @param<E> the type of the items  */
+end_comment
+
+begin_class
+DECL|class|AutoCompleteRenderer
 specifier|public
-interface|interface
+specifier|abstract
+class|class
 name|AutoCompleteRenderer
 parameter_list|<
 name|E
 parameter_list|>
 block|{
-DECL|method|updateListData (E[] strings)
-name|boolean
-name|updateListData
+comment|/**      * Refreshes the list of possible autocomplete items. Clears the currently selected item.      * @param items list of possible autocomplete items      */
+DECL|method|update (E[] items)
+specifier|public
+specifier|abstract
+name|void
+name|update
 parameter_list|(
 name|E
 index|[]
-name|strings
+name|items
 parameter_list|)
 function_decl|;
-DECL|method|init ()
+comment|/** 	 * Creates the control which will be shown in the autocomplete popup. 	 * @param acceptAction the action to be performed if the current selection is chosen as the autocompletion 	 * @return the control to be added to the autocomplete popup 	 */
+DECL|method|init (ActionListener acceptAction)
+specifier|public
+specifier|abstract
 name|Component
 name|init
-parameter_list|()
-function_decl|;
-comment|/**      * This method will attempt to locate a reasonable autocomplete item      * from all combo box items and select it. It will also populate the      * combo box editor with the remaining text which matches the      * autocomplete item and select it. If the selection changes and the      * JComboBox is not a Table Cell Editor, an ActionEvent will be      * broadcast from the combo box.      */
-DECL|method|selectAutoCompleteTerm (String text)
-name|void
-name|selectAutoCompleteTerm
-parameter_list|(
-name|String
-name|text
-parameter_list|)
-function_decl|;
-DECL|method|selectNewItem (int offset)
-name|void
-name|selectNewItem
-parameter_list|(
-name|int
-name|offset
-parameter_list|)
-function_decl|;
-DECL|method|getSelectedItem ()
-name|E
-name|getSelectedItem
-parameter_list|()
-function_decl|;
-DECL|method|registerAcceptAction (ActionListener acceptAction)
-name|void
-name|registerAcceptAction
 parameter_list|(
 name|ActionListener
 name|acceptAction
 parameter_list|)
 function_decl|;
+comment|/** 	 * Selects the item at the given position. If the specified index is not valid, then the selection will be cleared. 	 * @param index position of the item 	 */
+DECL|method|selectItem (int index)
+specifier|public
+specifier|abstract
+name|void
+name|selectItem
+parameter_list|(
+name|int
+name|index
+parameter_list|)
+function_decl|;
+comment|/** 	 * Selects the item relative to the currently selected item. If the specified offset is not valid, then the selection will be cleared. 	 * @param offset offset of the item 	 */
+DECL|method|selectItemRelative (int offset)
+specifier|public
+name|void
+name|selectItemRelative
+parameter_list|(
+name|int
+name|offset
+parameter_list|)
+block|{
+name|int
+name|newIndex
+init|=
+name|getSelectedIndex
+argument_list|()
+operator|+
+name|offset
+decl_stmt|;
+name|selectItem
+argument_list|(
+name|newIndex
+argument_list|)
+expr_stmt|;
 block|}
-end_interface
+comment|/** 	 * Returns the index of the currently selected item. 	 * @return index of the selected item 	 */
+DECL|method|getSelectedIndex ()
+specifier|public
+specifier|abstract
+name|int
+name|getSelectedIndex
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the currently selected item.      * @return selected item      */
+DECL|method|getSelectedItem ()
+specifier|public
+specifier|abstract
+name|E
+name|getSelectedItem
+parameter_list|()
+function_decl|;
+block|}
+end_class
 
 end_unit
 
