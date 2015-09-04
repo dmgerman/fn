@@ -6504,15 +6504,6 @@ operator|.
 name|getSource
 argument_list|()
 decl_stmt|;
-comment|// get current caret position to restore current editing position after saving
-name|int
-name|initialCaretPosition
-init|=
-name|textField
-operator|.
-name|getCaretPosition
-argument_list|()
-decl_stmt|;
 name|String
 name|oldValue
 init|=
@@ -6786,14 +6777,6 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-comment|// set cursor back to the initial position
-name|textField
-operator|.
-name|setCaretPosition
-argument_list|(
-name|initialCaretPosition
-argument_list|)
-expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -6822,33 +6805,6 @@ operator|.
 name|getSource
 argument_list|()
 decl_stmt|;
-comment|// get current caret position to restore current editing position after saving
-comment|// (is only possible if fieldEditor is an instance of JTextComponent)
-name|int
-name|initialCaretPosition
-init|=
-literal|0
-decl_stmt|;
-if|if
-condition|(
-name|fieldEditor
-operator|instanceof
-name|JTextComponent
-condition|)
-block|{
-name|initialCaretPosition
-operator|=
-operator|(
-operator|(
-name|JTextComponent
-operator|)
-name|fieldEditor
-operator|)
-operator|.
-name|getCaretPosition
-argument_list|()
-expr_stmt|;
-block|}
 name|boolean
 name|set
 decl_stmt|;
@@ -7128,27 +7084,6 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-comment|// set caret back to initial edit position
-if|if
-condition|(
-name|fieldEditor
-operator|instanceof
-name|JTextComponent
-condition|)
-block|{
-operator|(
-operator|(
-name|JTextComponent
-operator|)
-name|fieldEditor
-operator|)
-operator|.
-name|setCaretPosition
-argument_list|(
-name|initialCaretPosition
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
