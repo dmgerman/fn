@@ -2406,7 +2406,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-name|Actions
+name|KeyBinds
 operator|.
 name|MARK_ENTRIES
 argument_list|)
