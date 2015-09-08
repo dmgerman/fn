@@ -165,7 +165,7 @@ name|super
 argument_list|(
 name|manager
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(

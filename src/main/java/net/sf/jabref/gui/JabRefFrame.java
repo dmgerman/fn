@@ -1817,7 +1817,7 @@ argument_list|(
 literal|"Help contents"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -1849,7 +1849,7 @@ argument_list|(
 literal|"About JabRef"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -2021,7 +2021,7 @@ argument_list|(
 literal|"Save selected as ..."
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -2051,7 +2051,7 @@ argument_list|(
 literal|"Save selected as plain BibTeX ..."
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -2330,7 +2330,7 @@ name|Actions
 operator|.
 name|COPY
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -2351,7 +2351,7 @@ name|Actions
 operator|.
 name|PASTE
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -2372,7 +2372,7 @@ name|Actions
 operator|.
 name|CUT
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -2856,7 +2856,7 @@ argument_list|(
 literal|"Append contents from a BibTeX database into the currently viewed database"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -3132,7 +3132,7 @@ argument_list|(
 literal|"Highlight groups matching any selected entry"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -3162,7 +3162,7 @@ argument_list|(
 literal|"Highlight groups matching all selected entries"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -3765,7 +3765,7 @@ argument_list|(
 literal|"Connect to external SQL database"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -3795,7 +3795,7 @@ argument_list|(
 literal|"Export to external SQL database"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -3859,7 +3859,7 @@ argument_list|(
 literal|"Merge entries"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -4388,7 +4388,7 @@ argument_list|)
 expr_stmt|;
 name|setIconImage
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -7292,7 +7292,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -7428,7 +7428,7 @@ expr_stmt|;
 name|ImageIcon
 name|icon
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -7502,7 +7502,7 @@ expr_stmt|;
 name|ImageIcon
 name|icon
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -7588,7 +7588,7 @@ expr_stmt|;
 name|ImageIcon
 name|icon
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -10993,7 +10993,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -11301,7 +11301,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -12681,7 +12681,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -12993,7 +12993,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

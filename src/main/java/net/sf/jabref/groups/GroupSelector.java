@@ -480,9 +480,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|worker
-operator|.
-name|AbstractWorker
+name|*
 import|;
 end_import
 
@@ -496,7 +494,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
+name|worker
+operator|.
+name|AbstractWorker
 import|;
 end_import
 
@@ -524,35 +524,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|JabRefFrame
 import|;
 end_import
 
@@ -659,34 +631,6 @@ operator|.
 name|search
 operator|.
 name|SearchRule
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|SidePaneComponent
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|SidePaneManager
 import|;
 end_import
 
@@ -831,7 +775,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -848,7 +792,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -865,7 +809,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1167,7 +1111,7 @@ name|super
 argument_list|(
 name|manager
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(
@@ -2056,7 +2000,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -2178,7 +2122,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -2387,7 +2331,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

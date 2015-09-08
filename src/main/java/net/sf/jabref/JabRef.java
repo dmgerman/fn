@@ -1711,13 +1711,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Set up custom or default icon theme
-comment|// Has to be done here as openBibFile requires an initialized icon theme (due to the implementation of special fields)
-name|GUIGlobals
-operator|.
-name|setUpIconTheme
-argument_list|()
-expr_stmt|;
 comment|// Vector to put imported/loaded database(s) in.
 name|Vector
 argument_list|<

@@ -26,7 +26,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
+name|*
 import|;
 end_import
 
@@ -43,20 +43,6 @@ operator|.
 name|worker
 operator|.
 name|AbstractWorker
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|GUIGlobals
 import|;
 end_import
 
@@ -139,34 +125,6 @@ operator|.
 name|xmp
 operator|.
 name|XMPUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|FileListTableModel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|FileListEntry
 import|;
 end_import
 
@@ -295,7 +253,7 @@ name|Action
 operator|.
 name|SMALL_ICON
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

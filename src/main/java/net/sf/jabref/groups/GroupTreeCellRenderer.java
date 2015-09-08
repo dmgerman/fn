@@ -86,11 +86,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|gui
 operator|.
-name|entry
-operator|.
-name|BibtexEntry
+name|IconTheme
 import|;
 end_import
 
@@ -102,9 +100,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|model
 operator|.
-name|GUIGlobals
+name|entry
+operator|.
+name|BibtexEntry
 import|;
 end_import
 
@@ -229,7 +229,7 @@ name|ImageIcon
 DECL|field|groupRefiningIcon
 name|groupRefiningIcon
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -243,7 +243,7 @@ specifier|final
 name|ImageIcon
 name|groupIncludingIcon
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

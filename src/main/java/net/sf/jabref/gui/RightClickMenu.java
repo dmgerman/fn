@@ -605,7 +605,7 @@ argument_list|(
 literal|"Copy"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -667,7 +667,7 @@ argument_list|(
 literal|"Paste"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -729,7 +729,7 @@ argument_list|(
 literal|"Cut"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -791,7 +791,7 @@ argument_list|(
 literal|"Delete"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1027,7 +1027,7 @@ argument_list|(
 literal|"Mark entries"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1094,7 +1094,7 @@ argument_list|(
 literal|"Unmark entries"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1193,7 +1193,7 @@ argument_list|(
 literal|"Mark entry"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1268,7 +1268,7 @@ argument_list|(
 literal|"Unmark entry"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1599,7 +1599,7 @@ argument_list|(
 literal|"Open folder"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1680,7 +1680,7 @@ argument_list|(
 literal|"Open file"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1761,7 +1761,7 @@ argument_list|(
 literal|"Attach file"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1824,7 +1824,7 @@ argument_list|(
 literal|"Open URL or DOI"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -3021,7 +3021,7 @@ name|menuItem
 operator|.
 name|setIcon
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -3037,7 +3037,7 @@ name|menuItem
 operator|.
 name|setIcon
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -3051,7 +3051,7 @@ name|menuItem
 operator|.
 name|setIcon
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

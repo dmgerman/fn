@@ -212,20 +212,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|jgoodies
@@ -235,6 +221,20 @@ operator|.
 name|builder
 operator|.
 name|ButtonBarBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|IconTheme
 import|;
 end_import
 
@@ -474,7 +474,7 @@ name|String
 argument_list|>
 name|icns
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getAllIcons
 argument_list|()
@@ -506,7 +506,7 @@ block|{
 name|ImageIcon
 name|icon
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

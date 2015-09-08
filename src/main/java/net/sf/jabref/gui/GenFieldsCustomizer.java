@@ -371,7 +371,7 @@ name|generalFieldsHelp
 argument_list|,
 literal|"Help"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(

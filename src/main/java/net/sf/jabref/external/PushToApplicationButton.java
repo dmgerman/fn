@@ -38,9 +38,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
+name|Globals
 import|;
 end_import
 
@@ -52,7 +50,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|IconTheme
 import|;
 end_import
 
@@ -335,7 +335,7 @@ specifier|final
 name|URL
 name|ARROW_ICON
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(

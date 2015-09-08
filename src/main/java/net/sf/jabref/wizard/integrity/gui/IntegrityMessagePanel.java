@@ -252,6 +252,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -273,20 +287,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|GUIGlobals
 import|;
 end_import
 
@@ -1073,7 +1073,7 @@ specifier|final
 name|ImageIcon
 name|warnIcon
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1085,7 +1085,7 @@ specifier|final
 name|ImageIcon
 name|infoIcon
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1097,7 +1097,7 @@ specifier|final
 name|ImageIcon
 name|failIcon
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1109,7 +1109,7 @@ specifier|final
 name|ImageIcon
 name|fixedIcon
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

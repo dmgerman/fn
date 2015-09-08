@@ -756,7 +756,7 @@ argument_list|()
 operator|.
 name|getImage
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getIconUrl
 argument_list|(

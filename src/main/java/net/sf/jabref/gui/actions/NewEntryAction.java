@@ -195,7 +195,7 @@ block|{
 comment|// This action leads to a dialog asking for entry type.
 name|super
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
