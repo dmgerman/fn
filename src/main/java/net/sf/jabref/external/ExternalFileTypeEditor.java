@@ -146,9 +146,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
+name|Globals
 import|;
 end_import
 
@@ -160,7 +158,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|IconTheme
 import|;
 end_import
 
@@ -324,7 +324,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -341,7 +341,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -358,7 +358,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1242,6 +1242,13 @@ argument_list|,
 literal|""
 argument_list|,
 literal|"new"
+argument_list|,
+name|IconTheme
+operator|.
+name|getImage
+argument_list|(
+literal|"new"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Show the file type editor:

@@ -1405,7 +1405,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1422,7 +1422,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1439,7 +1439,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1456,7 +1456,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1473,7 +1473,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -4944,7 +4944,7 @@ argument_list|(
 literal|"Delete"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

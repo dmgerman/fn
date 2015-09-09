@@ -1429,7 +1429,7 @@ argument_list|(
 literal|"Required fields"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1555,7 +1555,7 @@ argument_list|(
 literal|"Optional fields"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1652,7 +1652,7 @@ argument_list|(
 literal|"Optional fields"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1890,7 +1890,7 @@ argument_list|(
 literal|"Optional fields 2"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -2002,7 +2002,7 @@ argument_list|(
 literal|"Deprecated fields"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -2118,7 +2118,7 @@ argument_list|(
 name|i
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -2176,7 +2176,7 @@ argument_list|(
 literal|"BibTeX source"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -5704,7 +5704,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -6197,7 +6197,7 @@ argument_list|(
 literal|"Delete"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -6347,7 +6347,7 @@ argument_list|(
 literal|"Close window"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -7428,7 +7428,7 @@ argument_list|(
 literal|"Next entry"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -7564,7 +7564,7 @@ argument_list|(
 literal|"Previous entry"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -7717,7 +7717,7 @@ argument_list|(
 literal|"Generate BibTeX key"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -8015,7 +8015,7 @@ name|super
 argument_list|(
 literal|"Undo"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -8077,7 +8077,7 @@ name|super
 argument_list|(
 literal|"Undo"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -8465,7 +8465,7 @@ name|Action
 operator|.
 name|SMALL_ICON
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

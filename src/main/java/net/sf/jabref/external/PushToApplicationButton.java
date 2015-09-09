@@ -38,9 +38,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
+name|Globals
 import|;
 end_import
 
@@ -52,7 +50,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|IconTheme
 import|;
 end_import
 
@@ -332,12 +332,12 @@ DECL|field|ARROW_ICON
 specifier|private
 specifier|static
 specifier|final
-name|URL
+name|ImageIcon
 name|ARROW_ICON
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"secondary_sorted_reverse"
 argument_list|)
@@ -529,13 +529,9 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|PushToApplicationButton
 operator|.
 name|ARROW_ICON
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|menuButton

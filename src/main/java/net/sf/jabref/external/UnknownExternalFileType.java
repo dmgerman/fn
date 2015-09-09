@@ -16,6 +16,20 @@ name|external
 package|;
 end_package
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|IconTheme
+import|;
+end_import
+
 begin_comment
 comment|/**  * This subclass of ExternalFileType is used to mark types that are unknown.  * This can be the case when a database is loaded which contains links to files  * of a type that has not been defined on this JabRef instance.  */
 end_comment
@@ -47,6 +61,13 @@ argument_list|,
 literal|""
 argument_list|,
 literal|"unknown"
+argument_list|,
+name|IconTheme
+operator|.
+name|getImage
+argument_list|(
+literal|"unknown"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

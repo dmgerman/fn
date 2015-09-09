@@ -138,6 +138,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|PreviewPanel
 import|;
 end_import
@@ -993,9 +1007,9 @@ argument_list|(
 literal|"Help on Preview Settings"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"helpSmall"
 argument_list|)

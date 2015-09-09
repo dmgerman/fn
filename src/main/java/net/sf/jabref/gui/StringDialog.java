@@ -2215,7 +2215,7 @@ name|super
 argument_list|(
 literal|"New string"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -2520,7 +2520,7 @@ name|super
 argument_list|(
 literal|"Store string"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -2584,7 +2584,7 @@ name|super
 argument_list|(
 literal|"Remove selected strings"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -2853,7 +2853,7 @@ name|super
 argument_list|(
 literal|"Undo"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -2920,7 +2920,7 @@ name|super
 argument_list|(
 literal|"Undo"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

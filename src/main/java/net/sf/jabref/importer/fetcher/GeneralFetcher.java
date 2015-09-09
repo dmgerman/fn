@@ -317,7 +317,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -417,9 +417,9 @@ name|super
 argument_list|(
 name|p0
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"www"
 argument_list|)
@@ -1680,7 +1680,7 @@ argument_list|(
 literal|"Web search"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

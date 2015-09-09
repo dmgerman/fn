@@ -459,7 +459,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

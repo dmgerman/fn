@@ -1293,6 +1293,13 @@ argument_list|,
 literal|""
 argument_list|,
 literal|"new"
+argument_list|,
+name|IconTheme
+operator|.
+name|getImage
+argument_list|(
+literal|"new"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|ExternalFileTypeEntryEditor

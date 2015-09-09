@@ -64,6 +64,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -260,6 +274,13 @@ argument_list|,
 literal|"evince"
 argument_list|,
 literal|"pdfSmall"
+argument_list|,
+name|IconTheme
+operator|.
+name|getImage
+argument_list|(
+literal|"pdfSmall"
+argument_list|)
 argument_list|)
 return|;
 block|}

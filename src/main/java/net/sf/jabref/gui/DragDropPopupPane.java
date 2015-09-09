@@ -301,7 +301,7 @@ argument_list|(
 literal|"Close"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

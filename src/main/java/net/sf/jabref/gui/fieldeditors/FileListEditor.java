@@ -631,7 +631,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -657,7 +657,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -683,7 +683,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -697,7 +697,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

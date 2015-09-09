@@ -532,9 +532,9 @@ name|super
 argument_list|(
 name|manager
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"search"
 argument_list|)
@@ -1399,7 +1399,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

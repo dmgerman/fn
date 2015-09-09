@@ -46,7 +46,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|IconTheme
 import|;
 end_import
 
@@ -86,15 +86,11 @@ specifier|final
 name|ImageIcon
 name|icon
 init|=
-operator|new
-name|ImageIcon
-argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"readstatus"
-argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|method|ReadStatus ()
@@ -151,7 +147,7 @@ name|icon
 decl_stmt|;
 name|icon
 operator|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -192,7 +188,7 @@ argument_list|)
 expr_stmt|;
 name|icon
 operator|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
