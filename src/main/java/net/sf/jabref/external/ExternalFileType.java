@@ -441,7 +441,7 @@ operator|=
 name|openWith
 expr_stmt|;
 block|}
-comment|/**      * Set the string associated with this file type's icon. The string is used      * to get the actual icon by the method GUIGlobals.getIcon(String)      * @param name The icon name to use.      */
+comment|/**      * Set the string associated with this file type's icon. The string is used      * to get the actual icon.      *      * @param name The icon name to use.      */
 DECL|method|setIconName (String name)
 specifier|public
 name|void

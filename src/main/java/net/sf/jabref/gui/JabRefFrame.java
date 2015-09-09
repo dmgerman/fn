@@ -4201,9 +4201,7 @@ name|IconTheme
 operator|.
 name|getImage
 argument_list|(
-name|FindUnlinkedFilesDialog
-operator|.
-name|ACTION_ICON
+literal|"toggleSearch"
 argument_list|)
 argument_list|)
 decl_stmt|;
