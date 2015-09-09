@@ -94,7 +94,7 @@ operator|new
 name|JLabel
 argument_list|()
 decl_stmt|;
-DECL|method|ExternalFileType (String name, String extension, String mimeType, String openWith, String iconName)
+DECL|method|ExternalFileType (String name, String extension, String mimeType, String openWith, String iconName, ImageIcon icon)
 specifier|public
 name|ExternalFileType
 parameter_list|(
@@ -112,6 +112,9 @@ name|openWith
 parameter_list|,
 name|String
 name|iconName
+parameter_list|,
+name|ImageIcon
+name|icon
 parameter_list|)
 block|{
 name|label
@@ -159,6 +162,11 @@ argument_list|(
 name|iconName
 argument_list|)
 expr_stmt|;
+name|setIcon
+argument_list|(
+name|icon
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Construct an ExternalFileType from a String array. This constructor is used when      * reading file type definitions from Preferences, where the available data types are      * limited. We assume that the array contains the same values as the main constructor,      * in the same order.      *      * TODO: The icon argument needs special treatment. At the moment, we assume that the fourth      * element of the array contains the icon keyword to be looked up in the current icon theme.      * To support icons found elsewhere on the file system we simply need to prefix the icon name      * with a marker.       *      * @param val Constructor arguments.      */
 DECL|method|ExternalFileType (String[] val)
@@ -187,7 +195,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Cannot contruct ExternalFileType without four elements in String[] argument."
+literal|"Cannot construct ExternalFileType without four elements in String[] argument."
 argument_list|)
 throw|;
 block|}
@@ -252,6 +260,17 @@ literal|3
 index|]
 argument_list|)
 expr_stmt|;
+name|setIcon
+argument_list|(
+name|IconTheme
+operator|.
+name|getImage
+argument_list|(
+name|getIconName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|// When mime type is included, the array length should be 5:
 elseif|else
@@ -288,6 +307,17 @@ name|val
 index|[
 literal|4
 index|]
+argument_list|)
+expr_stmt|;
+name|setIcon
+argument_list|(
+name|IconTheme
+operator|.
+name|getImage
+argument_list|(
+name|getIconName
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -441,7 +471,7 @@ operator|=
 name|openWith
 expr_stmt|;
 block|}
-comment|/**      * Set the string associated with this file type's icon. The string is used      * to get the actual icon.      *      * @param name The icon name to use.      */
+comment|/**      * Set the string associated with this file type's icon.      *      * @param name The icon name to use.      */
 DECL|method|setIconName (String name)
 specifier|public
 name|void
@@ -457,26 +487,6 @@ name|iconName
 operator|=
 name|name
 expr_stmt|;
-name|this
-operator|.
-name|icon
-operator|=
-name|IconTheme
-operator|.
-name|getImage
-argument_list|(
-name|iconName
-argument_list|)
-expr_stmt|;
-name|label
-operator|.
-name|setIcon
-argument_list|(
-name|this
-operator|.
-name|icon
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * Obtain a JLabel instance set with this file type's icon. The same JLabel      * is returned from each call of this method.      * @return the label.      */
 DECL|method|getIconLabel ()
@@ -489,7 +499,7 @@ return|return
 name|label
 return|;
 block|}
-comment|/**      * Get the string associated with this file type's icon. The string is used      * to get the actual icon by the method GUIGlobals.getIcon(String)      * @return The icon name.      */
+comment|/**      * Get the string associated with this file type's icon.      *      * @return The icon name.      */
 DECL|method|getIconName ()
 specifier|public
 name|String
@@ -524,6 +534,15 @@ operator|.
 name|icon
 operator|=
 name|icon
+expr_stmt|;
+name|label
+operator|.
+name|setIcon
+argument_list|(
+name|this
+operator|.
+name|icon
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -582,6 +601,8 @@ argument_list|,
 name|openWith
 argument_list|,
 name|iconName
+argument_list|,
+name|icon
 argument_list|)
 return|;
 block|}
