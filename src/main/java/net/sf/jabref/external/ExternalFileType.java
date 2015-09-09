@@ -457,8 +457,6 @@ name|iconName
 operator|=
 name|name
 expr_stmt|;
-try|try
-block|{
 name|this
 operator|.
 name|icon
@@ -470,24 +468,6 @@ argument_list|(
 name|iconName
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NullPointerException
-name|ex
-parameter_list|)
-block|{
-comment|// Loading the icon failed. This could be because the icons have not been
-comment|// initialized, which will be the case if we are operating from the command
-comment|// line and the graphical interface hasn't been initialized. In that case
-comment|// we will do without the icon:
-name|this
-operator|.
-name|icon
-operator|=
-literal|null
-expr_stmt|;
-block|}
 name|label
 operator|.
 name|setIcon
