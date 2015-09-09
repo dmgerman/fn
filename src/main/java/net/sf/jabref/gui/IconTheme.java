@@ -235,12 +235,8 @@ name|name
 parameter_list|)
 block|{
 name|String
-name|path
+name|key
 init|=
-name|KEY_TO_ICON
-operator|.
-name|getOrDefault
-argument_list|(
 name|Objects
 operator|.
 name|requireNonNull
@@ -249,6 +245,40 @@ name|name
 argument_list|,
 literal|"icon name"
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|KEY_TO_ICON
+operator|.
+name|containsKey
+argument_list|(
+name|key
+argument_list|)
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"could not find icon url by name "
+operator|+
+name|name
+operator|+
+literal|", so falling back on default icon "
+operator|+
+name|DEFAULT_ICON_PATH
+argument_list|)
+expr_stmt|;
+block|}
+name|String
+name|path
+init|=
+name|KEY_TO_ICON
+operator|.
+name|getOrDefault
+argument_list|(
+name|key
 argument_list|,
 name|DEFAULT_ICON_PATH
 argument_list|)
