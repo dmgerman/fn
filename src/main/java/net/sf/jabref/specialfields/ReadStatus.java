@@ -86,15 +86,11 @@ specifier|final
 name|ImageIcon
 name|icon
 init|=
-operator|new
-name|ImageIcon
-argument_list|(
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"readstatus"
-argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|method|ReadStatus ()

@@ -223,9 +223,53 @@ name|DEFAULT_ICON_PATH
 init|=
 literal|"/images/crystal_16/red.png"
 decl_stmt|;
+comment|/**      * Get a Map of all application icons mapped from their keys.      *      * @return A Map containing all icons used in the application.      */
+DECL|method|getAllIcons ()
+specifier|public
+specifier|static
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getAllIcons
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableMap
+argument_list|(
+name|KEY_TO_ICON
+argument_list|)
+return|;
+block|}
+comment|/**      * Constructs an ImageIcon for the image representing the given function, in the resource      * file listing images.      *      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The ImageIcon for the function.      */
+DECL|method|getImage (String name)
+specifier|public
+specifier|static
+name|ImageIcon
+name|getImage
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+operator|new
+name|ImageIcon
+argument_list|(
+name|getIconUrl
+argument_list|(
+name|name
+argument_list|)
+argument_list|)
+return|;
+block|}
 comment|/**      * Looks up the URL for the image representing the given function, in the resource      * file listing images.      *      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The URL to the actual image to use.      */
 DECL|method|getIconUrl (String name)
-specifier|public
+specifier|private
 specifier|static
 name|URL
 name|getIconUrl
@@ -298,50 +342,6 @@ name|path
 argument_list|)
 argument_list|,
 literal|"url"
-argument_list|)
-return|;
-block|}
-comment|/**      * Constructs an ImageIcon for the image representing the given function, in the resource      * file listing images.      *      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The ImageIcon for the function.      */
-DECL|method|getImage (String name)
-specifier|public
-specifier|static
-name|ImageIcon
-name|getImage
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-return|return
-operator|new
-name|ImageIcon
-argument_list|(
-name|getIconUrl
-argument_list|(
-name|name
-argument_list|)
-argument_list|)
-return|;
-block|}
-comment|/**      * Get a Map of all application icons mapped from their keys.      *      * @return A Map containing all icons used in the application.      */
-DECL|method|getAllIcons ()
-specifier|public
-specifier|static
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|getAllIcons
-parameter_list|()
-block|{
-return|return
-name|Collections
-operator|.
-name|unmodifiableMap
-argument_list|(
-name|KEY_TO_ICON
 argument_list|)
 return|;
 block|}

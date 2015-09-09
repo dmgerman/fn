@@ -167,7 +167,7 @@ name|manager
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"save"
 argument_list|)

@@ -3332,7 +3332,7 @@ literal|"Paste from clipboard"
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"paste"
 argument_list|)
@@ -3455,7 +3455,7 @@ literal|"Open_file"
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"open"
 argument_list|)
@@ -3599,7 +3599,7 @@ literal|"Clear_inputarea"
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"new"
 argument_list|)
@@ -4134,7 +4134,7 @@ name|BasicAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|method|BasicAction (String text, String description, URL icon)
+DECL|method|BasicAction (String text, String description, ImageIcon icon)
 specifier|public
 name|BasicAction
 parameter_list|(
@@ -4144,7 +4144,7 @@ parameter_list|,
 name|String
 name|description
 parameter_list|,
-name|URL
+name|ImageIcon
 name|icon
 parameter_list|)
 block|{
@@ -4157,11 +4157,7 @@ argument_list|(
 name|text
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|icon
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue

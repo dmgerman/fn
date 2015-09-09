@@ -183,14 +183,14 @@ specifier|protected
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|method|SidePaneComponent (SidePaneManager manager, URL icon, String title)
+DECL|method|SidePaneComponent (SidePaneManager manager, ImageIcon icon, String title)
 specifier|public
 name|SidePaneComponent
 parameter_list|(
 name|SidePaneManager
 name|manager
 parameter_list|,
-name|URL
+name|ImageIcon
 name|icon
 parameter_list|,
 name|String
@@ -209,11 +209,7 @@ argument_list|(
 operator|new
 name|JLabel
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|icon
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -1253,7 +1253,7 @@ name|manager
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"openoffice"
 argument_list|)
@@ -6231,14 +6231,14 @@ name|OOPanel
 extends|extends
 name|SidePaneComponent
 block|{
-DECL|method|OOPanel (SidePaneManager sidePaneManager, URL url, String s)
+DECL|method|OOPanel (SidePaneManager sidePaneManager, ImageIcon url, String s)
 specifier|public
 name|OOPanel
 parameter_list|(
 name|SidePaneManager
 name|sidePaneManager
 parameter_list|,
-name|URL
+name|ImageIcon
 name|url
 parameter_list|,
 name|String

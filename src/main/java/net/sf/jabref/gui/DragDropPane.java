@@ -747,24 +747,19 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+comment|// Sets the marker image
 name|markerImg
 operator|=
-name|Toolkit
-operator|.
-name|getDefaultToolkit
-argument_list|()
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
-name|IconTheme
-operator|.
-name|getIconUrl
-argument_list|(
 literal|"dragNdropArrow"
 argument_list|)
-argument_list|)
+operator|.
+name|getImage
+argument_list|()
 expr_stmt|;
-comment|// Sets the marker image
 block|}
 annotation|@
 name|Override

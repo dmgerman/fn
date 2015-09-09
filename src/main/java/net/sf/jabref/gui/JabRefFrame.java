@@ -1819,7 +1819,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"helpContents"
 argument_list|)
@@ -1851,7 +1851,7 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"about"
 argument_list|)
@@ -2384,7 +2384,7 @@ name|COPY
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"copy"
 argument_list|)
@@ -2405,7 +2405,7 @@ name|PASTE
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"paste"
 argument_list|)
@@ -2426,7 +2426,7 @@ name|CUT
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"cut"
 argument_list|)
@@ -13506,24 +13506,20 @@ specifier|final
 name|String
 name|command
 decl_stmt|;
-DECL|method|EditAction (String command, URL icon)
+DECL|method|EditAction (String command, ImageIcon icon)
 specifier|public
 name|EditAction
 parameter_list|(
 name|String
 name|command
 parameter_list|,
-name|URL
+name|ImageIcon
 name|icon
 parameter_list|)
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|icon
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|this

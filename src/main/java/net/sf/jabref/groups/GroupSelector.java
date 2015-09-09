@@ -1113,7 +1113,7 @@ name|manager
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"toggleGroups"
 argument_list|)

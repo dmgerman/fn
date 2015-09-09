@@ -419,7 +419,7 @@ name|p0
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"www"
 argument_list|)

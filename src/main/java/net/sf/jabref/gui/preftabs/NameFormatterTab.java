@@ -1024,7 +1024,7 @@ literal|"Help on Name Formatting"
 argument_list|,
 name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"helpSmall"
 argument_list|)

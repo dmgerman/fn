@@ -265,7 +265,7 @@ operator|=
 name|helpFile
 expr_stmt|;
 block|}
-DECL|method|HelpAction (HelpDialog diag, String helpFile, String tooltip, URL iconFile)
+DECL|method|HelpAction (HelpDialog diag, String helpFile, String tooltip, ImageIcon iconFile)
 specifier|public
 name|HelpAction
 parameter_list|(
@@ -278,17 +278,13 @@ parameter_list|,
 name|String
 name|tooltip
 parameter_list|,
-name|URL
+name|ImageIcon
 name|iconFile
 parameter_list|)
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|iconFile
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -465,7 +461,7 @@ operator|=
 name|helpFile
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String title, HelpDialog diag, String helpFile, String tooltip, URL iconFile)
+DECL|method|HelpAction (String title, HelpDialog diag, String helpFile, String tooltip, ImageIcon iconFile)
 specifier|public
 name|HelpAction
 parameter_list|(
@@ -481,17 +477,13 @@ parameter_list|,
 name|String
 name|tooltip
 parameter_list|,
-name|URL
+name|ImageIcon
 name|iconFile
 parameter_list|)
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|iconFile
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
