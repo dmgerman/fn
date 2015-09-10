@@ -40,7 +40,7 @@ name|logic
 operator|.
 name|l10n
 operator|.
-name|Localization
+name|Encodings
 import|;
 end_import
 
@@ -1678,7 +1678,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|Localization
+name|Encodings
 operator|.
 name|ENCODINGS
 operator|.
@@ -1695,7 +1695,7 @@ name|Charset
 operator|.
 name|forName
 argument_list|(
-name|Localization
+name|Encodings
 operator|.
 name|ENCODINGS
 index|[
@@ -1720,7 +1720,7 @@ name|encodings
 operator|.
 name|add
 argument_list|(
-name|Localization
+name|Encodings
 operator|.
 name|ENCODINGS
 index|[
