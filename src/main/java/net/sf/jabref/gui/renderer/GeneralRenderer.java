@@ -266,23 +266,6 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|firePropertyChange (String propertyName, boolean old, boolean newV)
-specifier|public
-name|void
-name|firePropertyChange
-parameter_list|(
-name|String
-name|propertyName
-parameter_list|,
-name|boolean
-name|old
-parameter_list|,
-name|boolean
-name|newV
-parameter_list|)
-block|{     }
-annotation|@
-name|Override
 DECL|method|firePropertyChange (String propertyName, Object old, Object newV)
 specifier|public
 name|void
@@ -297,7 +280,9 @@ parameter_list|,
 name|Object
 name|newV
 parameter_list|)
-block|{     }
+block|{
+comment|// disable super.firePropertyChange
+block|}
 comment|/* For enabling the renderer to handle icons. */
 annotation|@
 name|Override
@@ -382,6 +367,7 @@ block|}
 block|}
 else|else
 block|{
+comment|// this is plain text
 name|setIcon
 argument_list|(
 literal|null
