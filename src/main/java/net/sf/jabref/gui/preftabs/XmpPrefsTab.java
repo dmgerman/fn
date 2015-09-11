@@ -152,20 +152,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -179,6 +165,20 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|IconTheme
 import|;
 end_import
 
@@ -748,7 +748,7 @@ name|super
 argument_list|(
 literal|"Delete row"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -898,7 +898,7 @@ name|super
 argument_list|(
 literal|"Add row"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

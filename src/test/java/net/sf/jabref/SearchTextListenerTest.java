@@ -20,7 +20,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|IconTheme
 import|;
 end_import
 
@@ -129,11 +129,6 @@ operator|=
 name|JabRefPreferences
 operator|.
 name|getInstance
-argument_list|()
-expr_stmt|;
-name|GUIGlobals
-operator|.
-name|setUpIconTheme
 argument_list|()
 expr_stmt|;
 block|}

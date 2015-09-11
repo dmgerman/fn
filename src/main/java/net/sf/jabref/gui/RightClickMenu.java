@@ -605,7 +605,7 @@ argument_list|(
 literal|"Copy"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -667,7 +667,7 @@ argument_list|(
 literal|"Paste"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -729,7 +729,7 @@ argument_list|(
 literal|"Cut"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -791,7 +791,7 @@ argument_list|(
 literal|"Delete"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1027,7 +1027,7 @@ argument_list|(
 literal|"Mark entries"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1094,7 +1094,7 @@ argument_list|(
 literal|"Unmark entries"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1193,7 +1193,7 @@ argument_list|(
 literal|"Mark entry"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1268,7 +1268,7 @@ argument_list|(
 literal|"Unmark entry"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1599,7 +1599,7 @@ argument_list|(
 literal|"Open folder"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1607,6 +1607,25 @@ literal|"openFolder"
 argument_list|)
 argument_list|)
 block|{
+block|{
+if|if
+condition|(
+operator|!
+name|isFieldSetForSelectedEntry
+argument_list|(
+literal|"file"
+argument_list|)
+condition|)
+block|{
+name|this
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1661,7 +1680,7 @@ argument_list|(
 literal|"Open file"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1669,6 +1688,25 @@ literal|"openExternalFile"
 argument_list|)
 argument_list|)
 block|{
+block|{
+if|if
+condition|(
+operator|!
+name|isFieldSetForSelectedEntry
+argument_list|(
+literal|"file"
+argument_list|)
+condition|)
+block|{
+name|this
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1723,7 +1761,7 @@ argument_list|(
 literal|"Attach file"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1786,7 +1824,7 @@ argument_list|(
 literal|"Open URL or DOI"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1794,6 +1832,32 @@ literal|"www"
 argument_list|)
 argument_list|)
 block|{
+block|{
+if|if
+condition|(
+operator|!
+operator|(
+name|isFieldSetForSelectedEntry
+argument_list|(
+literal|"url"
+argument_list|)
+operator|||
+name|isFieldSetForSelectedEntry
+argument_list|(
+literal|"doi"
+argument_list|)
+operator|)
+condition|)
+block|{
+name|this
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -2957,7 +3021,7 @@ name|menuItem
 operator|.
 name|setIcon
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -2973,7 +3037,7 @@ name|menuItem
 operator|.
 name|setIcon
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -2987,7 +3051,7 @@ name|menuItem
 operator|.
 name|setIcon
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -3145,6 +3209,73 @@ name|e
 parameter_list|)
 block|{
 comment|// nothing to do
+block|}
+DECL|method|isFieldSetForSelectedEntry (String fieldname)
+specifier|private
+name|boolean
+name|isFieldSetForSelectedEntry
+parameter_list|(
+name|String
+name|fieldname
+parameter_list|)
+block|{
+if|if
+condition|(
+name|panel
+operator|.
+name|mainTable
+operator|.
+name|getSelectedRowCount
+argument_list|()
+operator|==
+literal|1
+condition|)
+block|{
+name|BibtexEntry
+name|entry
+init|=
+name|panel
+operator|.
+name|mainTable
+operator|.
+name|getSelected
+argument_list|()
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|entry
+operator|.
+name|getAllFields
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|fieldname
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 DECL|class|ChangeTypeAction
 specifier|static

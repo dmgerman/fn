@@ -744,7 +744,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
+name|*
 import|;
 end_import
 
@@ -788,48 +788,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|BibtexFields
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|ClipBoardManager
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -843,20 +801,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRef
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|JabRefFrame
 import|;
 end_import
 
@@ -887,20 +831,6 @@ operator|.
 name|util
 operator|.
 name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|FileDialogs
 import|;
 end_import
 
@@ -3400,9 +3330,9 @@ literal|"Paste"
 argument_list|,
 literal|"Paste from clipboard"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"paste"
 argument_list|)
@@ -3523,9 +3453,9 @@ literal|"Open"
 argument_list|,
 literal|"Open_file"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"open"
 argument_list|)
@@ -3667,9 +3597,9 @@ literal|"Clear"
 argument_list|,
 literal|"Clear_inputarea"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"new"
 argument_list|)
@@ -3894,7 +3824,7 @@ specifier|final
 name|ImageIcon
 name|okIcon
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -3907,7 +3837,7 @@ specifier|final
 name|ImageIcon
 name|needIcon
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -4204,7 +4134,7 @@ name|BasicAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|method|BasicAction (String text, String description, URL icon)
+DECL|method|BasicAction (String text, String description, ImageIcon icon)
 specifier|public
 name|BasicAction
 parameter_list|(
@@ -4214,7 +4144,7 @@ parameter_list|,
 name|String
 name|description
 parameter_list|,
-name|URL
+name|ImageIcon
 name|icon
 parameter_list|)
 block|{
@@ -4227,11 +4157,7 @@ argument_list|(
 name|text
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|icon
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue

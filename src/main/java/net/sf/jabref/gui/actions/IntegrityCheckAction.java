@@ -38,7 +38,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|IconTheme
 import|;
 end_import
 
@@ -176,7 +176,7 @@ argument_list|(
 literal|"Integrity check"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

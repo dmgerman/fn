@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.renderer
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|renderer
 package|;
 end_package
 
@@ -57,7 +59,6 @@ DECL|class|GeneralRenderer
 specifier|public
 class|class
 name|GeneralRenderer
-comment|/*extends JTable implements TableCellRenderer {*/
 extends|extends
 name|DefaultTableCellRenderer
 block|{
@@ -265,23 +266,6 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|firePropertyChange (String propertyName, boolean old, boolean newV)
-specifier|public
-name|void
-name|firePropertyChange
-parameter_list|(
-name|String
-name|propertyName
-parameter_list|,
-name|boolean
-name|old
-parameter_list|,
-name|boolean
-name|newV
-parameter_list|)
-block|{     }
-annotation|@
-name|Override
 DECL|method|firePropertyChange (String propertyName, Object old, Object newV)
 specifier|public
 name|void
@@ -296,7 +280,9 @@ parameter_list|,
 name|Object
 name|newV
 parameter_list|)
-block|{     }
+block|{
+comment|// disable super.firePropertyChange
+block|}
 comment|/* For enabling the renderer to handle icons. */
 annotation|@
 name|Override
@@ -309,7 +295,6 @@ name|Object
 name|value
 parameter_list|)
 block|{
-comment|//System.out.println(""+value);
 if|if
 condition|(
 name|value
@@ -330,7 +315,6 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-comment|//super.setValue(null);
 block|}
 elseif|else
 if|if
@@ -356,7 +340,6 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//table.setToolTipText(lab.getToolTipText());
 name|setToolTipText
 argument_list|(
 name|lab
@@ -384,12 +367,12 @@ block|}
 block|}
 else|else
 block|{
+comment|// this is plain text
 name|setIcon
 argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-comment|//table.setToolTipText(null);
 name|setToolTipText
 argument_list|(
 literal|null
@@ -421,7 +404,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*  public void paint(Graphics g) {         Graphics2D g2 = (Graphics2D)g;         //System.out.println(antialiasing);         if (antialiasing) {             RenderingHints rh = g2.getRenderingHints();             rh.put(RenderingHints.KEY_ANTIALIASING,                 RenderingHints.VALUE_ANTIALIAS_ON);             rh.put(RenderingHints.KEY_RENDERING,                 RenderingHints.VALUE_RENDER_QUALITY);             g2.setRenderingHints(rh);         }           super.paint(g2);      }*/
 block|}
 end_class
 

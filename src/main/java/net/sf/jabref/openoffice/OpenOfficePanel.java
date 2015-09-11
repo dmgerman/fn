@@ -679,7 +679,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -826,7 +826,7 @@ block|{
 name|ImageIcon
 name|connectImage
 init|=
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -888,7 +888,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -917,7 +917,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1251,9 +1251,9 @@ name|OOPanel
 argument_list|(
 name|manager
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"openoffice"
 argument_list|)
@@ -1335,7 +1335,7 @@ argument_list|(
 literal|"OpenOffice/LibreOffice connection"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -5926,7 +5926,7 @@ name|getIcon
 parameter_list|()
 block|{
 return|return
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -6231,14 +6231,14 @@ name|OOPanel
 extends|extends
 name|SidePaneComponent
 block|{
-DECL|method|OOPanel (SidePaneManager sidePaneManager, URL url, String s)
+DECL|method|OOPanel (SidePaneManager sidePaneManager, ImageIcon url, String s)
 specifier|public
 name|OOPanel
 parameter_list|(
 name|SidePaneManager
 name|sidePaneManager
 parameter_list|,
-name|URL
+name|ImageIcon
 name|url
 parameter_list|,
 name|String

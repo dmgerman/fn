@@ -800,7 +800,7 @@ argument_list|(
 literal|"Print Preview"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1002,7 +1002,7 @@ argument_list|(
 literal|"Close window"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

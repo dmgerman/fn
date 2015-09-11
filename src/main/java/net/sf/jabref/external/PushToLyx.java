@@ -102,7 +102,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|IconTheme
 import|;
 end_import
 
@@ -448,7 +448,7 @@ name|getIcon
 parameter_list|()
 block|{
 return|return
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

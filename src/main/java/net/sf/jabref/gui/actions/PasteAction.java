@@ -38,7 +38,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|IconTheme
 import|;
 end_import
 
@@ -182,7 +182,7 @@ name|Action
 operator|.
 name|SMALL_ICON
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(

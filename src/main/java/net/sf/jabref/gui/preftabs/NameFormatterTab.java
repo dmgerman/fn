@@ -180,6 +180,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|help
 operator|.
 name|HelpAction
@@ -1008,9 +1022,9 @@ name|nameFormatterHelp
 argument_list|,
 literal|"Help on Name Formatting"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
-name|getIconUrl
+name|getImage
 argument_list|(
 literal|"helpSmall"
 argument_list|)
@@ -1261,7 +1275,7 @@ name|super
 argument_list|(
 literal|"Delete row"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
@@ -1406,7 +1420,7 @@ name|super
 argument_list|(
 literal|"Add row"
 argument_list|,
-name|GUIGlobals
+name|IconTheme
 operator|.
 name|getImage
 argument_list|(
