@@ -110,6 +110,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|print
@@ -974,7 +984,7 @@ name|closeAction
 decl_stmt|;
 DECL|field|wordsToHighlight
 specifier|private
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1739,12 +1749,16 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|searchText (ArrayList<String> words)
+DECL|method|searchText (java.util.List<String> words)
 specifier|public
 name|void
 name|searchText
 parameter_list|(
-name|ArrayList
+name|java
+operator|.
+name|util
+operator|.
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1761,7 +1775,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|HIGH_LIGHT_WORDS
+name|SEARCH_HIGHLIGHT_WORDS
 argument_list|)
 condition|)
 block|{

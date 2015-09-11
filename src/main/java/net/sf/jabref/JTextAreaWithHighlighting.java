@@ -42,6 +42,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Matcher
@@ -210,7 +220,7 @@ name|SearchTextListener
 block|{
 DECL|field|wordsToHighlight
 specifier|private
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -635,17 +645,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Highlight words in the Textarea      *       * @param words to highlight      */
-DECL|method|highLight (ArrayList<String> words)
+comment|/**      * Highlight words in the Textarea      *       * @param wordsToHighlight2 to highlight      */
+DECL|method|highLight (List<String> wordsToHighlight2)
 specifier|private
 name|void
 name|highLight
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
-name|words
+name|wordsToHighlight2
 parameter_list|)
 block|{
 comment|// highlight all characters that appear in charsToHighlight
@@ -664,17 +674,17 @@ expr_stmt|;
 if|if
 condition|(
 operator|(
-name|words
+name|wordsToHighlight2
 operator|==
 literal|null
 operator|)
 operator|||
-name|words
+name|wordsToHighlight2
 operator|.
 name|isEmpty
 argument_list|()
 operator|||
-name|words
+name|wordsToHighlight2
 operator|.
 name|get
 argument_list|(
@@ -710,7 +720,7 @@ name|Globals
 operator|.
 name|getPatternForWords
 argument_list|(
-name|words
+name|wordsToHighlight2
 argument_list|)
 operator|.
 name|matcher
@@ -795,7 +805,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|HIGH_LIGHT_WORDS
+name|SEARCH_HIGHLIGHT_WORDS
 argument_list|)
 condition|)
 block|{
@@ -821,12 +831,12 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|searchText (ArrayList<String> words)
+DECL|method|searchText (List<String> words)
 specifier|public
 name|void
 name|searchText
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -845,7 +855,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|HIGH_LIGHT_WORDS
+name|SEARCH_HIGHLIGHT_WORDS
 argument_list|)
 condition|)
 block|{

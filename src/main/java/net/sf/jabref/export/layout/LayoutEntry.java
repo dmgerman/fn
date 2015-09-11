@@ -54,6 +54,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -974,7 +984,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, ArrayList<String> wordsToHighlight)
+DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, List<String> wordsToHighlight)
 specifier|public
 name|String
 name|doLayout
@@ -985,7 +995,7 @@ parameter_list|,
 name|BibtexDatabase
 name|database
 parameter_list|,
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -2632,8 +2642,8 @@ return|return
 name|invalidFormatter
 return|;
 block|}
-comment|/**       * Will return the text that was called by the method with HTML tags       * to highlight each word the user has searched for and will skip      * the highlight process if the first Char isn't a letter or a digit.      *       * This check is a quick hack to avoid highlighting of HTML tags      * It does not always work, but it does its job mostly        *       * @param text This is a String in which we search for different words      * @param toHighlight List of all words which must be highlighted      *       * @return String that was called by the method, with HTML Tags if a word was found       */
-DECL|method|highlightWords (String text, ArrayList<String> toHighlight)
+comment|/**       * Will return the text that was called by the method with HTML tags       * to highlight each word the user has searched for and will skip      * the highlight process if the first Char isn't a letter or a digit.      *       * This check is a quick hack to avoid highlighting of HTML tags      * It does not always work, but it does its job mostly        *       * @param text This is a String in which we search for different words      * @param wordsToHighlight List of all words which must be highlighted      *       * @return String that was called by the method, with HTML Tags if a word was found       */
+DECL|method|highlightWords (String text, List<String> wordsToHighlight)
 specifier|private
 name|String
 name|highlightWords
@@ -2641,16 +2651,16 @@ parameter_list|(
 name|String
 name|text
 parameter_list|,
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
-name|toHighlight
+name|wordsToHighlight
 parameter_list|)
 block|{
 if|if
 condition|(
-name|toHighlight
+name|wordsToHighlight
 operator|==
 literal|null
 condition|)
@@ -2666,7 +2676,7 @@ name|Globals
 operator|.
 name|getPatternForWords
 argument_list|(
-name|toHighlight
+name|wordsToHighlight
 argument_list|)
 operator|.
 name|matcher

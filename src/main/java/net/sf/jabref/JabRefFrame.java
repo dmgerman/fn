@@ -1568,6 +1568,13 @@ name|JTabbedPane
 name|tabbedPane
 decl_stmt|;
 comment|// initialized at constructor
+DECL|field|htmlPadding
+specifier|final
+name|String
+name|htmlPadding
+init|=
+literal|"<html><div style='padding:2px 5px;'>"
+decl_stmt|;
 DECL|field|marg
 specifier|private
 specifier|final
@@ -7337,6 +7344,8 @@ name|setTitleAt
 argument_list|(
 name|index
 argument_list|,
+name|htmlPadding
+operator|+
 name|title
 argument_list|)
 expr_stmt|;
@@ -11185,7 +11194,7 @@ name|tabbedPane
 operator|.
 name|add
 argument_list|(
-literal|"<html><div style='padding:2px 5px;'>"
+name|htmlPadding
 operator|+
 name|title
 argument_list|,

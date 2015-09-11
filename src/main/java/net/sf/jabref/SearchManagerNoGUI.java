@@ -194,7 +194,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|CASE_SENSITIVE_SEARCH
+name|SEARCH_CASE_SENSITIVE
 argument_list|)
 argument_list|,
 name|Globals
@@ -205,7 +205,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|REG_EXP_SEARCH
+name|SEARCH_REG_EXP
 argument_list|)
 argument_list|)
 decl_stmt|;

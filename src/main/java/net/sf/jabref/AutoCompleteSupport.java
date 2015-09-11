@@ -78,18 +78,6 @@ name|awt
 operator|.
 name|event
 operator|.
-name|FocusListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|KeyEvent
 import|;
 end_import
@@ -243,7 +231,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Based on code by   * 	Santhosh Kumar (http://www.jroller.com/santhosh/date/20050620)  * 	James Lemieux (Glazed Lists AutoCompleteSupport)  */
+comment|/**  * Endows a textbox with the ability to autocomplete the input.  * Based on code by   * 	Santhosh Kumar (http://www.jroller.com/santhosh/date/20050620)  * 	James Lemieux (Glazed Lists AutoCompleteSupport)  *   * @param<E> type of items displayed in the autocomplete popup  */
 end_comment
 
 begin_class
@@ -281,7 +269,6 @@ operator|new
 name|JPopupMenu
 argument_list|()
 decl_stmt|;
-comment|/** 	 *<tt>true</tt> if the text in the combobox editor is selected when the 	 * editor gains focus;<tt>false</tt> otherwise. 	 */
 DECL|field|selectsTextOnFocusGain
 specifier|private
 name|boolean
@@ -289,17 +276,7 @@ name|selectsTextOnFocusGain
 init|=
 literal|true
 decl_stmt|;
-comment|/** 	 * Handles selecting the text in the comboBoxEditorComponent when it gains 	 * focus. 	 */
-DECL|field|selectTextOnFocusGainHandler
-specifier|private
-specifier|final
-name|FocusListener
-name|selectTextOnFocusGainHandler
-init|=
-operator|new
-name|ComboBoxEditorFocusHandler
-argument_list|()
-decl_stmt|;
+comment|/** 	 * Constructs a new AutoCompleteSupport for the textbox using the autocompleter and a renderer. 	 * @param textComp the textbox component for which autocompletion should be enabled 	 * @param autoCompleter the autocompleter providing the data 	 * @param renderer the renderer displaying the popup 	 */
 DECL|method|AutoCompleteSupport (JTextComponent textComp, AutoCompleter<E> autoCompleter, AutoCompleteRenderer<E> renderer)
 specifier|public
 name|AutoCompleteSupport
@@ -339,6 +316,7 @@ operator|=
 name|autoCompleter
 expr_stmt|;
 block|}
+comment|/** 	 * Constructs a new AutoCompleteSupport for the textbox. The possible autocomplete items are displayed as a simple list. The autocompletion items are provided by an AutoCompleter which has to be specified later using {@link setAutoCompleter}.  	 * @param textComp the textbox component for which autocompletion should be enabled 	 */
 DECL|method|AutoCompleteSupport (JTextComponent textComp)
 specifier|public
 name|AutoCompleteSupport
@@ -362,6 +340,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** 	 * Constructs a new AutoCompleteSupport for the textbox using the autocompleter and a renderer. The possible autocomplete items are displayed as a simple list. 	 * @param textComp the textbox component for which autocompletion should be enabled 	 * @param autoCompleter the autocompleter providing the data 	 */
 DECL|method|AutoCompleteSupport (JTextComponent textComp, AutoCompleter<E> autoCompleter)
 specifier|public
 name|AutoCompleteSupport
@@ -391,12 +370,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** 	 * Inits the autocompletion popup. After this method is called, further input in the specified textbox will be autocompleted.  	 */
 DECL|method|install ()
 specifier|public
 name|void
 name|install
 parameter_list|()
 block|{
+comment|// Actions for navigating the suggested autocomplete items with the arrow keys
 specifier|final
 name|Action
 name|upAction
@@ -418,6 +399,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+comment|// Action hiding the autocomplete popup
 specifier|final
 name|Action
 name|hidePopupAction
@@ -444,6 +426,7 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+comment|// Action accepting the currently selected item as the autocompletion
 specifier|final
 name|Action
 name|acceptAction
@@ -485,6 +468,7 @@ argument_list|(
 name|itemToInsert
 argument_list|)
 decl_stmt|;
+comment|// TODO: The following should be refactored. For example, the autocompleter shouldn't know whether we want to complete one word or multiple.
 comment|// In most fields, we are only interested in the currently edited word, so we
 comment|// seek from the caret backward to the closest space:
 if|if
@@ -498,7 +482,7 @@ condition|)
 block|{
 comment|// Get position of last word separator (whitespace or comma)
 name|int
-name|piv
+name|priv
 init|=
 name|textComp
 operator|.
@@ -513,7 +497,7 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
-name|piv
+name|priv
 operator|>=
 literal|0
 operator|)
@@ -530,7 +514,7 @@ argument_list|()
 operator|.
 name|charAt
 argument_list|(
-name|piv
+name|priv
 argument_list|)
 argument_list|)
 operator|&&
@@ -541,13 +525,13 @@ argument_list|()
 operator|.
 name|charAt
 argument_list|(
-name|piv
+name|priv
 argument_list|)
 operator|!=
 literal|','
 condition|)
 block|{
-name|piv
+name|priv
 operator|--
 expr_stmt|;
 block|}
@@ -566,7 +550,7 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-name|piv
+name|priv
 operator|+
 literal|1
 argument_list|)
@@ -610,6 +594,7 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+comment|// Create popup
 name|popup
 operator|.
 name|setBorder
@@ -679,6 +664,7 @@ name|acceptAction
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Listen for changes to the text -> update autocomplete suggestions
 name|textComp
 operator|.
 name|getDocument
@@ -686,9 +672,49 @@ argument_list|()
 operator|.
 name|addDocumentListener
 argument_list|(
-name|documentListener
+operator|new
+name|DocumentListener
+argument_list|()
+block|{
+specifier|public
+name|void
+name|insertUpdate
+parameter_list|(
+name|DocumentEvent
+name|e
+parameter_list|)
+block|{
+name|postProcessTextChange
+argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|removeUpdate
+parameter_list|(
+name|DocumentEvent
+name|e
+parameter_list|)
+block|{
+name|postProcessTextChange
+argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|changedUpdate
+parameter_list|(
+name|DocumentEvent
+name|e
+parameter_list|)
+block|{             }
+block|}
 argument_list|)
 expr_stmt|;
+comment|// Listen for up/down arrow keys -> move currently selected item up or down
+comment|// We have to reimplement this function here since we cannot be sure that a simple list will be used to display the items
+comment|// So better let the renderer decide what to do.
+comment|// (Moreover, the list does not have the focus so probably would not recognize the keystrokes in the first place.)
 name|textComp
 operator|.
 name|registerKeyboardAction
@@ -733,17 +759,7 @@ operator|.
 name|WHEN_FOCUSED
 argument_list|)
 expr_stmt|;
-comment|// add a FocusListener to the ComboBoxEditor which selects all text when
-comment|// focus is gained
-name|this
-operator|.
-name|textComp
-operator|.
-name|addFocusListener
-argument_list|(
-name|selectTextOnFocusGainHandler
-argument_list|)
-expr_stmt|;
+comment|// Listen for ESC key -> hide popup
 name|textComp
 operator|.
 name|registerKeyboardAction
@@ -766,6 +782,19 @@ operator|.
 name|WHEN_IN_FOCUSED_WINDOW
 argument_list|)
 expr_stmt|;
+comment|// Listen to focus events -> select all the text on gaining the focus
+name|this
+operator|.
+name|textComp
+operator|.
+name|addFocusListener
+argument_list|(
+operator|new
+name|ComboBoxEditorFocusHandler
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Listen for ENTER key if popup is visible -> accept current autocomplete suggestion
 name|popup
 operator|.
 name|addPopupMenuListener
@@ -842,7 +871,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns<tt>true</tt> if the combo box editor text is selected when it 	 * gains focus;<tt>false</tt> otherwise. 	 */
+comment|/** 	 * Returns whether the text in the textbox is selected when the textbox gains focus. Defaults to true.  	 * @return  	 */
 DECL|method|getSelectsTextOnFocusGain ()
 specifier|public
 name|boolean
@@ -853,7 +882,7 @@ return|return
 name|selectsTextOnFocusGain
 return|;
 block|}
-comment|/** 	 * If<code>selectsTextOnFocusGain</code> is<tt>true</tt>, all text in the 	 * editor is selected when the combo box editor gains focus. If it is 	 *<tt>false</tt> the selection state of the editor is not effected by focus 	 * changes. 	 * 	 * @throws IllegalStateException 	 *             if this method is called from any Thread other than the Swing 	 *             Event Dispatch Thread 	 */
+comment|/** 	 * Sets whether the text in the textbox is selected when the textbox gains focus. Default is true. 	 * @param selectsTextOnFocusGain new value 	 */
 DECL|method|setSelectsTextOnFocusGain (boolean selectsTextOnFocusGain)
 specifier|public
 name|void
@@ -870,54 +899,29 @@ operator|=
 name|selectsTextOnFocusGain
 expr_stmt|;
 block|}
-DECL|field|documentListener
-name|DocumentListener
-name|documentListener
-init|=
-operator|new
-name|DocumentListener
-argument_list|()
-block|{
-specifier|public
-name|void
-name|insertUpdate
-parameter_list|(
-name|DocumentEvent
-name|e
-parameter_list|)
-block|{
-name|postProcessDocumentChange
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|removeUpdate
-parameter_list|(
-name|DocumentEvent
-name|e
-parameter_list|)
-block|{
-name|postProcessDocumentChange
-argument_list|()
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|changedUpdate
-parameter_list|(
-name|DocumentEvent
-name|e
-parameter_list|)
-block|{ 		}
-block|}
-decl_stmt|;
-DECL|method|postProcessDocumentChange ()
+comment|/** 	 * The text changed so update autocomplete suggestions accordingly. 	 */
+DECL|method|postProcessTextChange ()
 specifier|private
 name|void
-name|postProcessDocumentChange
+name|postProcessTextChange
 parameter_list|()
 block|{
+if|if
+condition|(
+name|autoCompleter
+operator|==
+literal|null
+condition|)
+block|{
+name|popup
+operator|.
+name|setVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|String
 name|text
 init|=
@@ -926,32 +930,6 @@ operator|.
 name|getText
 argument_list|()
 decl_stmt|;
-name|popup
-operator|.
-name|setVisible
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|popup
-operator|.
-name|setPopupSize
-argument_list|(
-name|textComp
-operator|.
-name|getWidth
-argument_list|()
-argument_list|,
-literal|200
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|autoCompleter
-operator|==
-literal|null
-condition|)
-return|return;
 name|E
 index|[]
 name|candidates
@@ -991,9 +969,18 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-comment|// popup.repaint();
-comment|// Hide and show then, to recalculate height
-comment|// popup.hide();
+name|popup
+operator|.
+name|setPopupSize
+argument_list|(
+name|textComp
+operator|.
+name|getWidth
+argument_list|()
+argument_list|,
+literal|200
+argument_list|)
+expr_stmt|;
 name|popup
 operator|.
 name|show
@@ -1031,7 +1018,7 @@ name|requestFocusInWindow
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * The action invoked by hitting the up or down arrow key. 	 */
+comment|/** 	 * The action invoked by hitting the up or down arrow key. 	 * If the popup is currently shown, that the action is relayed to it. Otherwise the arrow keys trigger the popup. 	 */
 DECL|class|MoveAction
 specifier|private
 class|class
@@ -1104,9 +1091,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * When the user selects a value from the popup with the mouse, we want to 	 * honour their selection *without* attempting to autocomplete it to a new 	 * term. Otherwise, it is possible that selections which are prefixes for 	 * values that appear higher in the ComboBoxModel cannot be selected by the 	 * mouse since they can always be successfully autocompleted to another 	 * term. 	 */
-comment|/* 	 * private class PopupMouseHandler extends MouseAdapter { 	 *  	 * @Override public void mousePressed(MouseEvent e) { doNotAutoComplete = 	 * true; } 	 *  	 * @Override public void mouseReleased(MouseEvent e) { doNotAutoComplete = 	 * false; } } 	 */
-comment|/** 	 * To emulate Firefox behaviour, all text in the ComboBoxEditor is selected 	 * from beginning to end when the ComboBoxEditor gains focus if the value 	 * returned from {@link AutoCompleteSupport#getSelectsTextOnFocusGain()} 	 * allows this behaviour. In addition, the JPopupMenu is hidden when the 	 * ComboBoxEditor loses focus if the value returned from 	 * {@link AutoCompleteSupport#getHidesPopupOnFocusLost()} allows this 	 * behaviour. 	 */
+comment|/** 	 * Selects all text when the textbox gains focus. The behavior is controlled by the value 	 * returned from {@link AutoCompleteSupport#getSelectsTextOnFocusGain()}. 	 */
 DECL|class|ComboBoxEditorFocusHandler
 specifier|private
 class|class
@@ -1154,6 +1139,7 @@ name|e
 parameter_list|)
 block|{ 		}
 block|}
+comment|/** 	 * Sets the autocompleter used to present autocomplete suggestions.      * @param autoCompleter the autocompleter providing the data 	 */
 DECL|method|setAutoCompleter (AutoCompleter<E> autoCompleter)
 specifier|public
 name|void

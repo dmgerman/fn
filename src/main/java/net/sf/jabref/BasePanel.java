@@ -5016,7 +5016,7 @@ operator|.
 name|getSearchBar
 argument_list|()
 operator|.
-name|startSearch
+name|focus
 argument_list|()
 expr_stmt|;
 block|}
@@ -5068,7 +5068,7 @@ operator|.
 name|getSearchBar
 argument_list|()
 operator|.
-name|startSearch
+name|focus
 argument_list|()
 expr_stmt|;
 block|}
