@@ -944,6 +944,10 @@ name|isEnabled
 argument_list|()
 operator|&&
 name|candidates
+operator|!=
+literal|null
+operator|&&
+name|candidates
 operator|.
 name|length
 operator|>
