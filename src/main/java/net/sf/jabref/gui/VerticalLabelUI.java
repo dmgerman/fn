@@ -158,8 +158,6 @@ DECL|field|clockwise
 specifier|private
 name|boolean
 name|clockwise
-init|=
-literal|false
 decl_stmt|;
 comment|// see comment in BasicLabelUI
 DECL|field|verticalViewR
@@ -202,8 +200,8 @@ argument_list|()
 decl_stmt|;
 DECL|field|SAFE_VERTICAL_LABEL_UI
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|VerticalLabelUI
 name|SAFE_VERTICAL_LABEL_UI
 init|=

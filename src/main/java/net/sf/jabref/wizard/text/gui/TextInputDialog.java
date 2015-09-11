@@ -728,6 +728,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|exporter
+operator|.
+name|LatexFieldFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|BasePanel
 import|;
 end_import
@@ -739,6 +755,26 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
+operator|.
+name|bibtex
+operator|.
+name|BibtexEntryWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
 operator|.
 name|BibtexEntry
 import|;
@@ -752,6 +788,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|BibtexFields
 import|;
 end_import
@@ -764,6 +802,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|ClipBoardManager
 import|;
 end_import
@@ -775,6 +815,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|GUIGlobals
 import|;
@@ -812,7 +854,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -852,7 +912,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
+operator|.
+name|fileformat
 operator|.
 name|FreeCiteImporter
 import|;
@@ -1067,8 +1129,6 @@ DECL|field|okPressed
 specifier|private
 name|boolean
 name|okPressed
-init|=
-literal|false
 decl_stmt|;
 DECL|method|TextInputDialog (JabRefFrame frame, BasePanel panel, String title, boolean modal, BibtexEntry bibEntry)
 specifier|public
@@ -1183,7 +1243,7 @@ expr_stmt|;
 name|String
 name|typeStr
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1227,7 +1287,7 @@ name|this
 operator|.
 name|setTitle
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1308,7 +1368,7 @@ name|add
 argument_list|(
 name|rawPanel
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1322,7 +1382,7 @@ name|add
 argument_list|(
 name|sourcePanel
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1336,7 +1396,7 @@ name|add
 argument_list|(
 name|warnPanel
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1442,7 +1502,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|// ---------------------------------------------------------------------------
 comment|// Panel with text import functionality
 DECL|method|initRawPanel ()
 specifier|private
@@ -1518,7 +1577,7 @@ name|OverlayPanel
 argument_list|(
 name|textPane
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1694,7 +1753,6 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-comment|// ----------------------------------------------------------------
 name|JPanel
 name|inputPanel
 init|=
@@ -1778,7 +1836,7 @@ argument_list|,
 literal|2
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1890,7 +1948,7 @@ name|insertButton
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1910,7 +1968,7 @@ name|parseWithFreeCiteButton
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1932,7 +1990,7 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1944,7 +2002,7 @@ name|appRadio
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1973,7 +2031,7 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1985,7 +2043,7 @@ name|overRadio
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2067,7 +2125,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2203,7 +2261,6 @@ argument_list|(
 name|insertButton
 argument_list|)
 expr_stmt|;
-comment|// ----------------------------------------------------------------------
 name|rawPanel
 operator|.
 name|add
@@ -2234,7 +2291,7 @@ name|JLabel
 argument_list|(
 literal|"<html><h3>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2243,7 +2300,7 @@ argument_list|)
 operator|+
 literal|"</h3><p>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2286,8 +2343,6 @@ name|SOUTH
 argument_list|)
 expr_stmt|;
 block|}
-comment|// ---------------------------------------------------------------------------
-comment|// ---------------------------------------------------------------------------
 DECL|method|initButtonPanel ()
 specifier|private
 name|void
@@ -2298,7 +2353,7 @@ name|okButton
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2317,7 +2372,7 @@ name|cancelButton
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2391,7 +2446,6 @@ name|addGlue
 argument_list|()
 expr_stmt|;
 block|}
-comment|// ---------------------------------------------------------------------------
 comment|// Panel with bibtex source code
 DECL|method|initSourcePanel ()
 specifier|private
@@ -2478,8 +2532,6 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
-comment|// ---------------------------------------------------------------------------
-comment|// ---------------------------------------------------------------------------
 DECL|method|addStylesToDocument (StyledDocument doc)
 specifier|private
 name|void
@@ -2670,7 +2722,6 @@ literal|16
 argument_list|)
 expr_stmt|;
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|method|insertTextForTag ()
 specifier|private
 name|void
@@ -2800,7 +2851,6 @@ expr_stmt|;
 comment|// insert new selection style
 block|}
 else|else
-comment|// append text
 block|{
 comment|// memorize the selection for text highlighting
 name|marked
@@ -2876,8 +2926,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-else|else
 comment|// "null"+"txt" Strings forbidden
+else|else
 block|{
 name|entry
 operator|.
@@ -2897,8 +2947,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
-comment|// ---------------------------------------------------------------------------
 DECL|method|okPressed ()
 specifier|public
 name|boolean
@@ -2909,7 +2957,6 @@ return|return
 name|okPressed
 return|;
 block|}
-comment|// ---------------------------------------------------------------------------
 comment|//  ActionListener
 comment|//  handling of buttons-click actions
 annotation|@
@@ -3161,7 +3208,6 @@ literal|false
 return|;
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
 comment|// update the bibtex source view and available List
 DECL|method|updateSourceView ()
 specifier|private
@@ -3180,25 +3226,21 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|entry
-operator|.
-name|write
-argument_list|(
-name|sw
-argument_list|,
 operator|new
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
+name|BibtexEntryWriter
+argument_list|(
+operator|new
 name|LatexFieldFormatter
 argument_list|()
 argument_list|,
 literal|false
+argument_list|)
+operator|.
+name|write
+argument_list|(
+name|entry
+argument_list|,
+name|sw
 argument_list|)
 expr_stmt|;
 name|String
@@ -3232,7 +3274,6 @@ name|clearSelection
 argument_list|()
 expr_stmt|;
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|method|getAllFields ()
 specifier|private
 name|String
@@ -3342,7 +3383,6 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|class|PasteAction
 class|class
 name|PasteAction
@@ -3415,11 +3455,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|selEnd
 operator|-
 name|selStart
-operator|)
 operator|>
 literal|0
 condition|)
@@ -3464,11 +3502,10 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{                 }
+block|{}
 block|}
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|class|LoadAction
 class|class
 name|LoadAction
@@ -3610,10 +3647,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{             }
+block|{}
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|class|ClearAction
 class|class
 name|ClearAction
@@ -3660,7 +3696,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|class|MenuHeaderAction
 class|class
 name|MenuHeaderAction
@@ -3695,9 +3730,8 @@ parameter_list|(
 name|ActionEvent
 name|e
 parameter_list|)
-block|{         }
+block|{}
 block|}
-comment|// ---------------------------------------------------------------------------
 DECL|class|FieldListSelectionHandler
 class|class
 name|FieldListSelectionHandler
@@ -3762,9 +3796,7 @@ condition|(
 operator|!
 name|isAdjusting
 condition|)
-comment|// if selection is finished
 block|{
-comment|//            System.out.println( "Event for index" + index ) ;
 if|if
 condition|(
 name|lastIndex
@@ -3836,7 +3868,6 @@ block|}
 block|}
 block|}
 block|}
-comment|// ---------------------------------------------------------------------------
 comment|// simple JList Renderer
 comment|// based on : Advanced JList Programming at developers.sun.com
 DECL|class|SimpleCellRenderer
@@ -4026,7 +4057,6 @@ name|this
 return|;
 block|}
 block|}
-comment|//---------------------------------------------------------------
 DECL|class|FieldListMouseListener
 specifier|private
 class|class
@@ -4063,10 +4093,6 @@ block|}
 block|}
 block|}
 end_class
-
-begin_comment
-comment|//---------------------------------------------------------------
-end_comment
 
 begin_class
 DECL|class|PopupListener
@@ -4145,9 +4171,6 @@ name|isPopupTrigger
 argument_list|()
 condition|)
 block|{
-comment|//      System.out.println("show "
-comment|//                         + e.getComponent() +"  x =" + e.getX() +"y =" + e.getY() ) ;
-comment|//      popMenu.setVisible(true);
 name|popMenu
 operator|.
 name|show
@@ -4173,10 +4196,6 @@ block|}
 block|}
 end_class
 
-begin_comment
-comment|//---------------------------------------------------------------
-end_comment
-
 begin_class
 DECL|class|BasicAction
 specifier|abstract
@@ -4201,7 +4220,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4221,7 +4240,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4249,7 +4268,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4278,7 +4297,7 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4297,7 +4316,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4319,7 +4338,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4351,14 +4370,6 @@ parameter_list|)
 function_decl|;
 block|}
 end_class
-
-begin_comment
-comment|//---------------------------------------------------------------
-end_comment
-
-begin_comment
-comment|//---------------------------------------------------------------
-end_comment
 
 end_unit
 

@@ -24,6 +24,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -36,7 +40,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|io
 operator|.
 name|FileUtil
 import|;
@@ -50,6 +58,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -61,6 +71,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|BasePanel
 import|;

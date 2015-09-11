@@ -134,6 +134,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -146,9 +150,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
 operator|.
-name|DOIUtil
+name|DOI
 import|;
 end_import
 
@@ -160,17 +166,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
+name|logic
 operator|.
 name|net
 operator|.
@@ -189,8 +185,8 @@ class|class
 name|FindFullText
 block|{
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 DECL|field|FOUND_PDF
 name|FOUND_PDF
@@ -199,8 +195,8 @@ literal|0
 decl_stmt|;
 DECL|field|WRONG_MIME_TYPE
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|WRONG_MIME_TYPE
 init|=
@@ -208,8 +204,8 @@ literal|1
 decl_stmt|;
 DECL|field|UNKNOWN_DOMAIN
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|UNKNOWN_DOMAIN
 init|=
@@ -217,8 +213,8 @@ literal|2
 decl_stmt|;
 DECL|field|LINK_NOT_FOUND
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|LINK_NOT_FOUND
 init|=
@@ -226,8 +222,8 @@ literal|3
 decl_stmt|;
 DECL|field|IO_EXCEPTION
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|IO_EXCEPTION
 init|=
@@ -235,8 +231,8 @@ literal|4
 decl_stmt|;
 DECL|field|NO_URLS_DEFINED
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|NO_URLS_DEFINED
 init|=
@@ -320,47 +316,36 @@ argument_list|(
 literal|"doi"
 argument_list|)
 decl_stmt|;
-comment|// First try the DOI link, if defined:
+comment|// First try the Doi link, if defined:
 if|if
 condition|(
-operator|(
 name|doiText
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
+operator|!
 name|doiText
 operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
-operator|)
 condition|)
 block|{
-name|doiText
-operator|=
-name|DOIUtil
-operator|.
-name|getDOI
-argument_list|(
-name|doiText
-argument_list|)
-expr_stmt|;
 name|FindResult
 name|resDoi
 init|=
 name|lookForFullTextAtURL
 argument_list|(
-name|Globals
-operator|.
-name|DOI_LOOKUP_PREFIX
-operator|+
+operator|new
+name|DOI
+argument_list|(
 name|doiText
+argument_list|)
+operator|.
+name|getURL
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -381,23 +366,18 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|urlText
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
+operator|!
 name|urlText
 operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
-operator|)
 condition|)
 block|{
 name|FindResult
@@ -428,7 +408,7 @@ block|{
 return|return
 name|resDoi
 return|;
-comment|// If both URL and DOI fail, we assume that the error code for DOI is
+comment|// If both URL and Doi fail, we assume that the error code for Doi is
 comment|// probably the most relevant.
 block|}
 block|}
@@ -439,27 +419,22 @@ name|resDoi
 return|;
 block|}
 block|}
-comment|// No DOI? Try URL:
+comment|// No Doi? Try URL:
 elseif|else
 if|if
 condition|(
-operator|(
 name|urlText
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
+operator|!
 name|urlText
 operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
-operator|)
 condition|)
 block|{
 return|return
@@ -576,13 +551,10 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|mimeType
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|mimeType
 operator|.
 name|toLowerCase
@@ -592,7 +564,6 @@ name|equals
 argument_list|(
 literal|"application/pdf"
 argument_list|)
-operator|)
 condition|)
 block|{
 return|return
@@ -722,7 +693,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Follow redirects until the final location is reached. This is necessary to handle DOI links, which      * redirect to publishers' web sites. We need to know the publisher's domain name in order to choose      * which FullTextFinder to use.      * @param url The url to start with.      * @param redirectCount The number of previous redirects. We will follow a maximum of 5 redirects.      * @return the final URL, or the initial one in case there is no redirect.      * @throws IOException for connection error      */
+comment|/**      * Follow redirects until the final location is reached. This is necessary to handle Doi links, which      * redirect to publishers' web sites. We need to know the publisher's domain name in order to choose      * which FullTextFinder to use.      * @param url The url to start with.      * @param redirectCount The number of previous redirects. We will follow a maximum of 5 redirects.      * @return the final URL, or the initial one in case there is no redirect.      * @throws IOException for connection error      */
 DECL|method|resolveRedirects (URL url, int redirectCount)
 specifier|private
 name|URL
@@ -797,19 +768,15 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|responseCode
 operator|==
 name|HttpURLConnection
 operator|.
 name|HTTP_MOVED_TEMP
-operator|)
 operator|&&
-operator|(
 name|redirectCount
 operator|<
 literal|5
-operator|)
 condition|)
 block|{
 comment|//System.out.println(responseCode);
@@ -1047,8 +1014,6 @@ DECL|field|host
 specifier|public
 name|String
 name|host
-init|=
-literal|null
 decl_stmt|;
 DECL|field|status
 specifier|public

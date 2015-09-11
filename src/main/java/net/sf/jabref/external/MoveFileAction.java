@@ -38,6 +38,38 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|entryeditor
+operator|.
+name|EntryEditor
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|fieldeditors
+operator|.
 name|FileListEditor
 import|;
 end_import
@@ -50,9 +82,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|FileListEntry
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -64,21 +98,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|FileDialogs
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
+name|logic
 operator|.
 name|util
+operator|.
+name|io
 operator|.
 name|FileUtil
 import|;
@@ -367,14 +391,14 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"File_directory_is_not_set_or_does_not_exist!"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -420,11 +444,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|file
 operator|!=
 literal|null
-operator|)
 operator|&&
 name|file
 operator|.
@@ -528,14 +550,14 @@ init|=
 operator|new
 name|CheckBoxMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Move file to file directory?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -584,7 +606,7 @@ name|frame
 argument_list|,
 name|cbm
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -607,14 +629,14 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Move file to file directory?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -779,7 +801,6 @@ operator|.
 name|exists
 argument_list|()
 operator|&&
-operator|(
 name|JOptionPane
 operator|.
 name|showConfirmDialog
@@ -795,14 +816,14 @@ argument_list|()
 operator|+
 literal|"' "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"exists. Overwrite file?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -817,7 +838,6 @@ operator|!=
 name|JOptionPane
 operator|.
 name|OK_OPTION
-operator|)
 condition|)
 block|{
 if|if
@@ -895,7 +915,6 @@ comment|// Relativise path, if possible.
 name|String
 name|canPath
 init|=
-operator|(
 operator|new
 name|File
 argument_list|(
@@ -904,7 +923,6 @@ index|[
 name|found
 index|]
 argument_list|)
-operator|)
 operator|.
 name|getCanonicalPath
 argument_list|()
@@ -924,7 +942,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|(
 name|newFile
 operator|.
 name|getCanonicalPath
@@ -937,9 +954,7 @@ name|canPath
 operator|.
 name|length
 argument_list|()
-operator|)
 operator|&&
-operator|(
 name|newFile
 operator|.
 name|getCanonicalPath
@@ -956,7 +971,6 @@ operator|==
 name|File
 operator|.
 name|separatorChar
-operator|)
 condition|)
 block|{
 name|flEntry
@@ -1028,7 +1042,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1045,14 +1059,14 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Move file failed"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1083,7 +1097,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1097,7 +1111,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1127,7 +1141,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1141,7 +1155,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1165,7 +1179,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1177,7 +1191,7 @@ name|getLink
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

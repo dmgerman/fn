@@ -20,6 +20,26 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|xmp
+operator|.
+name|XMPSchemaBibtex
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -525,7 +545,6 @@ operator|.
 name|getStringValue
 argument_list|(
 operator|(
-operator|(
 name|Element
 operator|)
 name|l
@@ -534,7 +553,6 @@ name|item
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -549,7 +567,6 @@ operator|.
 name|getStringValue
 argument_list|(
 operator|(
-operator|(
 name|Element
 operator|)
 name|l
@@ -558,7 +575,6 @@ name|item
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1062,7 +1078,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 comment|// Removes both
 name|bibtex
 operator|.
@@ -1098,7 +1113,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -1377,7 +1391,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 comment|// Remvoes all
 name|bibtex
 operator|.
@@ -1413,7 +1426,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test

@@ -354,7 +354,6 @@ block|{
 name|x
 operator|=
 operator|(
-operator|(
 name|parentSize
 operator|.
 name|width
@@ -365,7 +364,6 @@ name|width
 operator|)
 operator|/
 literal|2
-operator|)
 operator|+
 name|topLeft
 operator|.
@@ -395,7 +393,6 @@ block|{
 name|y
 operator|=
 operator|(
-operator|(
 name|parentSize
 operator|.
 name|height
@@ -406,7 +403,6 @@ name|height
 operator|)
 operator|/
 literal|2
-operator|)
 operator|+
 name|topLeft
 operator|.
@@ -447,11 +443,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|link
 operator|==
 literal|null
-operator|)
 operator|||
 name|link
 operator|.
@@ -679,16 +673,14 @@ argument_list|)
 condition|)
 block|{
 comment|//Todo SciPlore
+comment|// @formatter:off
 return|return
-operator|(
-operator|(
 name|path
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|1
-operator|)
 operator|&&
 name|path
 operator|.
@@ -703,9 +695,7 @@ name|equals
 argument_list|(
 literal|":"
 argument_list|)
-operator|)
 operator|||
-operator|(
 name|path
 operator|.
 name|startsWith
@@ -720,8 +710,8 @@ name|startsWith
 argument_list|(
 literal|"\\\\"
 argument_list|)
-operator|)
 return|;
+comment|// @formatter:on
 block|}
 elseif|else
 if|if

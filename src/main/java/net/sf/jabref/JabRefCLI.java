@@ -18,9 +18,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|ExportFormats
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -83,21 +99,6 @@ operator|.
 name|hasOption
 argument_list|(
 literal|"version"
-argument_list|)
-return|;
-block|}
-DECL|method|isDisableSplash ()
-specifier|public
-name|boolean
-name|isDisableSplash
-parameter_list|()
-block|{
-return|return
-name|cl
-operator|.
-name|hasOption
-argument_list|(
-literal|"nosplash"
 argument_list|)
 return|;
 block|}
@@ -509,7 +510,7 @@ literal|"version"
 argument_list|,
 literal|false
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -527,29 +528,11 @@ literal|"nogui"
 argument_list|,
 literal|false
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"No GUI. Only process command line options."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|options
-operator|.
-name|addOption
-argument_list|(
-literal|"s"
-argument_list|,
-literal|"nosplash"
-argument_list|,
-literal|false
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Do not show splash window at startup"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -563,7 +546,7 @@ literal|"help"
 argument_list|,
 literal|false
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -581,7 +564,7 @@ literal|"loads"
 argument_list|,
 literal|false
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -599,7 +582,7 @@ literal|"blank"
 argument_list|,
 literal|false
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -607,6 +590,7 @@ literal|"Do not open any files at startup"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// @formatter:off
 name|options
 operator|.
 name|addOption
@@ -631,14 +615,14 @@ name|format
 argument_list|(
 literal|"%s: %s[,import format]"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Import file"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -683,14 +667,14 @@ name|format
 argument_list|(
 literal|"%s: %s[,export format]"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Output or export file"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -729,7 +713,7 @@ argument_list|)
 operator|.
 name|desc
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -767,7 +751,7 @@ argument_list|)
 operator|.
 name|desc
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -805,7 +789,7 @@ argument_list|)
 operator|.
 name|desc
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -849,21 +833,21 @@ name|format
 argument_list|(
 literal|"%s: %s[.aux],%s[.bib]"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Subdatabase from aux"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"file"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -900,7 +884,7 @@ argument_list|)
 operator|.
 name|desc
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -938,7 +922,7 @@ argument_list|)
 operator|.
 name|desc
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -994,6 +978,7 @@ name|build
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return
 name|options
 return|;
@@ -1045,7 +1030,7 @@ name|format
 argument_list|(
 literal|"%s:%n%s%n"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1078,7 +1063,7 @@ name|format
 argument_list|(
 literal|"%s: %s%n"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1170,21 +1155,21 @@ name|format
 argument_list|(
 literal|"[%s]searchTerm,outputFile: %s[,%s]"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"field"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"file"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

@@ -44,6 +44,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -56,7 +58,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -73,8 +79,6 @@ specifier|private
 specifier|static
 name|ReadStatus
 name|INSTANCE
-init|=
-literal|null
 decl_stmt|;
 DECL|field|icon
 specifier|private
@@ -124,7 +128,7 @@ literal|null
 argument_list|,
 literal|"clearReadStatus"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -133,7 +137,7 @@ argument_list|)
 argument_list|,
 literal|null
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -168,7 +172,7 @@ literal|"read"
 argument_list|,
 literal|"setReadStatusToRead"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -177,7 +181,7 @@ argument_list|)
 argument_list|,
 name|icon
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -208,7 +212,7 @@ literal|"skimmed"
 argument_list|,
 literal|"setReadStatusToSkimmed"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -217,7 +221,7 @@ argument_list|)
 argument_list|,
 name|icon
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -306,7 +310,7 @@ name|getToolTip
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -323,7 +327,7 @@ name|getMenuString
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

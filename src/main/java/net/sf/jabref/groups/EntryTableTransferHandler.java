@@ -176,6 +176,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|net
+operator|.
+name|MonitoredURLDownload
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -209,6 +225,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|BasePanel
 import|;
@@ -245,6 +263,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|JabRefFrame
 import|;
@@ -340,7 +360,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|ImportMenuItem
 import|;
@@ -354,7 +374,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|OpenDatabaseAction
 import|;
@@ -368,23 +388,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|ParserResult
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|net
-operator|.
-name|URLDownload
 import|;
 end_import
 
@@ -599,7 +605,6 @@ operator|=
 literal|false
 expr_stmt|;
 return|return
-operator|(
 operator|new
 name|TransferableFileLinkSelection
 argument_list|(
@@ -610,7 +615,6 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 argument_list|)
-operator|)
 return|;
 comment|//.getTransferable();
 block|}
@@ -795,9 +799,6 @@ argument_list|(
 literal|"failed to read dropped data: "
 operator|+
 name|ioe
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -816,9 +817,6 @@ argument_list|(
 literal|"drop type error: "
 operator|+
 name|ufe
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -833,8 +831,8 @@ literal|"can't transfer input: "
 argument_list|)
 expr_stmt|;
 name|DataFlavor
-name|inflavs
 index|[]
+name|inflavs
 init|=
 name|t
 operator|.
@@ -858,9 +856,6 @@ argument_list|(
 literal|"  "
 operator|+
 name|inflav
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -946,8 +941,6 @@ DECL|field|draggingFile
 specifier|private
 name|boolean
 name|draggingFile
-init|=
-literal|false
 decl_stmt|;
 annotation|@
 name|Override
@@ -1726,20 +1719,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|index
 operator|>=
 literal|0
-operator|)
 operator|&&
-operator|(
 name|index
 operator|<
 name|fileName
 operator|.
 name|length
 argument_list|()
-operator|)
 condition|)
 block|{
 name|extension
@@ -1803,19 +1792,15 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|pr
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|pr
 operator|==
 name|ParserResult
 operator|.
 name|INVALID_FORMAT
-operator|)
 condition|)
 block|{
 name|notBibFiles
@@ -1874,17 +1859,13 @@ block|}
 comment|/*              * This is a linkable file. If the user dropped it on an entry, we              * should offer options for autolinking to this files:              *              * TODO we should offer an option to highlight the row the user is on too.              */
 if|if
 condition|(
-operator|(
 name|fileType
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|dropRow
 operator|>=
 literal|0
-operator|)
 condition|)
 block|{
 comment|/*                  * TODO: need to signal if this is a local or autodownloaded                  * file                  */
@@ -1933,12 +1914,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 name|notBibFiles
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|String
@@ -1971,11 +1951,9 @@ name|ImportMenuItem
 argument_list|(
 name|frame
 argument_list|,
-operator|(
 name|entryTable
 operator|==
 literal|null
-operator|)
 argument_list|)
 decl_stmt|;
 name|importer
@@ -2024,7 +2002,7 @@ argument_list|()
 expr_stmt|;
 comment|// System.out.println("Import url: " + dropLink.toString());
 comment|// System.out.println("Temp file: "+tmpfile.getAbsolutePath());
-name|URLDownload
+name|MonitoredURLDownload
 operator|.
 name|buildMonitoredDownload
 argument_list|(
@@ -2047,11 +2025,9 @@ name|ImportMenuItem
 argument_list|(
 name|frame
 argument_list|,
-operator|(
 name|entryTable
 operator|==
 literal|null
-operator|)
 argument_list|)
 decl_stmt|;
 name|importer

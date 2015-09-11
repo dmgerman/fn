@@ -158,6 +158,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|AuthorList
 import|;
 end_import
@@ -170,6 +174,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|database
+operator|.
 name|BibtexDatabase
 import|;
 end_import
@@ -181,6 +189,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|entry
 operator|.
 name|BibtexEntry
 import|;
@@ -376,7 +388,6 @@ interface|interface
 name|BstFunction
 block|{
 DECL|method|execute (BstEntry context)
-specifier|public
 name|void
 name|execute
 parameter_list|(
@@ -1259,9 +1270,6 @@ name|toString
 argument_list|()
 operator|+
 name|o2
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4457,7 +4465,6 @@ name|Tree
 name|child
 parameter_list|)
 block|{
-block|{
 comment|// Fields first
 name|Tree
 name|t
@@ -4522,19 +4529,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-block|{
 comment|// Integers
-name|Tree
 name|t
-init|=
+operator|=
 name|child
 operator|.
 name|getChild
 argument_list|(
 literal|1
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
@@ -4588,19 +4592,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-block|{
 comment|// Strings
-name|Tree
 name|t
-init|=
+operator|=
 name|child
 operator|.
 name|getChild
 argument_list|(
 literal|2
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
@@ -4673,7 +4674,6 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|reverse (Tree child)
@@ -5027,7 +5027,6 @@ name|BstParser
 operator|.
 name|STRING
 case|:
-block|{
 name|String
 name|s
 init|=
@@ -5053,7 +5052,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 break|break;
 case|case
 name|BstParser

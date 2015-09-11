@@ -54,6 +54,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -65,6 +69,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|database
 operator|.
 name|DatabaseChangeEvent
 import|;
@@ -78,6 +86,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|database
+operator|.
 name|DatabaseChangeListener
 import|;
 end_import
@@ -89,6 +101,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
+operator|.
+name|id
 operator|.
 name|IdComparator
 import|;

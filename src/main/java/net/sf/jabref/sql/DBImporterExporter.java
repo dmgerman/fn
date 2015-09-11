@@ -386,12 +386,12 @@ name|path
 decl_stmt|;
 if|if
 condition|(
-literal|null
-operator|==
 name|metaData
 operator|.
 name|getFile
 argument_list|()
+operator|==
+literal|null
 condition|)
 block|{
 name|path

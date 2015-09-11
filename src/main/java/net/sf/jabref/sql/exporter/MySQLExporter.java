@@ -56,6 +56,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|id
+operator|.
 name|IdGenerator
 import|;
 end_import
@@ -105,8 +109,6 @@ specifier|private
 specifier|static
 name|MySQLExporter
 name|instance
-init|=
-literal|null
 decl_stmt|;
 DECL|method|MySQLExporter ()
 specifier|private

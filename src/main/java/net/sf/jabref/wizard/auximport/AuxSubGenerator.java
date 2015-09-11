@@ -4,7 +4,7 @@ comment|/* Copyright (C) 2004 R. Nagel  All programs in this directory and subdi
 end_comment
 
 begin_comment
-comment|/**  *<p>Title: Latex Aux to Bibtex</p>  *  *<p>Description: generates a sub-database which contains only bibtex entries  * from input aux file</p>  *  *<p>Copyright: Copyright (c) 2004</p>  *  *<p>Company:</p>  *  * @version 1.0  * @author r.nagel  *  * @todo Redesign of dialog structure for an assitent like feeling....  *   Now - the unknown bibtex entries cannot inserted into the reference  *   database without closing the dialog.  */
+comment|/**  *<p>Title: Latex Aux to Bibtex</p>  *<p>  *<p>Description: generates a sub-database which contains only bibtex entries  * from input aux file</p>  *<p>  *<p>Copyright: Copyright (c) 2004</p>  *<p>  *<p>Company:</p>  *  * @version 1.0  * @author r.nagel  * @todo Redesign of dialog structure for an assitent like feeling....  * Now - the unknown bibtex entries cannot inserted into the reference  * database without closing the dialog.  */
 end_comment
 
 begin_comment
@@ -150,7 +150,59 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|logic
+operator|.
+name|id
+operator|.
+name|IdGenerator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexString
 import|;
 end_import
 
@@ -202,8 +254,6 @@ DECL|field|crossreferencedEntriesCount
 specifier|private
 name|int
 name|crossreferencedEntriesCount
-init|=
-literal|0
 decl_stmt|;
 comment|// counts entries pulled in due to crossref
 DECL|method|AuxSubGenerator (BibtexDatabase refDBase)
@@ -586,8 +636,8 @@ argument_list|)
 decl_stmt|;
 comment|// could be an comma separated list of keys
 name|String
-name|keys
 index|[]
+name|keys
 init|=
 name|str
 operator|.
@@ -735,7 +785,6 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-comment|// end of while
 if|if
 condition|(
 name|loopFileOpen
@@ -846,13 +895,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|crossref
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 operator|!
 name|mySet
 operator|.
@@ -860,7 +906,6 @@ name|contains
 argument_list|(
 name|crossref
 argument_list|)
-operator|)
 condition|)
 block|{
 name|BibtexEntry
@@ -979,8 +1024,6 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 block|{
-try|try
-block|{
 name|BibtexEntry
 name|clonedEntry
 init|=
@@ -1009,19 +1052,6 @@ argument_list|(
 name|clonedEntry
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**      * generate      * Shortcut methode for easy generation.      *      * @param auxFileName String      * @param bibDB BibtexDatabase - reference database      * @return Vector - contains all not resolved bibtex entries      */
 DECL|method|generate (String auxFileName, BibtexDatabase bibDB)

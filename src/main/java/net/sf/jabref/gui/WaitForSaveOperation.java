@@ -38,19 +38,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|logic
 operator|.
-name|sf
+name|l10n
 operator|.
-name|jabref
-operator|.
-name|JabRefFrame
+name|Localization
 import|;
 end_import
 
@@ -140,8 +132,6 @@ DECL|field|cancelled
 specifier|private
 name|boolean
 name|cancelled
-init|=
-literal|false
 decl_stmt|;
 DECL|method|WaitForSaveOperation (JabRefFrame frame)
 specifier|public
@@ -163,7 +153,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -212,7 +202,7 @@ name|JDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -288,7 +278,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

@@ -26,6 +26,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|database
+operator|.
 name|BibtexDatabase
 import|;
 end_import
@@ -38,19 +42,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
 import|;
 end_import
 
@@ -76,6 +72,24 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|search
 operator|.
 name|SearchRule
@@ -90,7 +104,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|strings
 operator|.
 name|QuotedStringTokenizer
 import|;
@@ -104,7 +122,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|strings
 operator|.
 name|StringUtil
 import|;
@@ -960,7 +982,6 @@ argument_list|(
 name|name
 argument_list|)
 operator|&&
-operator|(
 name|other
 operator|.
 name|getHierarchicalContext
@@ -968,7 +989,6 @@ argument_list|()
 operator|==
 name|getHierarchicalContext
 argument_list|()
-operator|)
 return|;
 block|}
 comment|/**      * Returns a String representation of this group and its entries. Entries      * are referenced by their Bibtexkey. Entries that do not have a Bibtexkey      * are not included in the representation and will thus not be available      * upon recreation.      */
@@ -1070,11 +1090,9 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|s
 operator|!=
 literal|null
-operator|)
 operator|&&
 operator|!
 name|s
@@ -1183,7 +1201,7 @@ name|getDescriptionForPreview
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1238,7 +1256,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1264,7 +1282,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1285,7 +1303,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

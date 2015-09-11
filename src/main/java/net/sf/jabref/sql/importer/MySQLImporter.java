@@ -113,8 +113,6 @@ specifier|private
 specifier|static
 name|MySQLImporter
 name|instance
-init|=
-literal|null
 decl_stmt|;
 DECL|method|MySQLImporter ()
 specifier|private

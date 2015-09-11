@@ -12,6 +12,22 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|AuthorList
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -31,7 +47,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Christopher Oezbek<oezi@oezi.de>  * @version 0.1 - Still fails for stuff in AuthorList that is ambiguous  * @see net.sf.jabref.AuthorList Class tested.  */
+comment|/**  * @author Christopher Oezbek<oezi@oezi.de>  * @version 0.1 - Still fails for stuff in AuthorList that is ambiguous  * @see AuthorList Class tested.  */
 end_comment
 
 begin_class
@@ -205,7 +221,6 @@ specifier|public
 name|void
 name|testFixAuthor_firstNameFirstCommas
 parameter_list|()
-block|{
 block|{
 comment|// No Commas
 name|Assert
@@ -415,8 +430,6 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-block|{
 comment|// Oxford Commas
 name|Assert
 operator|.
@@ -625,7 +638,6 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|SuppressWarnings
@@ -972,7 +984,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 comment|// Oxford Commas
 name|Assert
 operator|.
@@ -1198,7 +1209,6 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|SuppressWarnings
@@ -1524,7 +1534,6 @@ name|void
 name|testFixAuthor_lastNameOnlyCommas
 parameter_list|()
 block|{
-block|{
 comment|// No comma before and
 name|Assert
 operator|.
@@ -1628,8 +1637,6 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-block|{
 comment|// Oxford Comma
 name|Assert
 operator|.
@@ -1734,7 +1741,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 annotation|@
 name|Test
 DECL|method|testFixAuthorForAlphabetization ()
@@ -1811,14 +1817,12 @@ name|bibtex
 parameter_list|)
 block|{
 return|return
-operator|(
 name|AuthorList
 operator|.
 name|getAuthorList
 argument_list|(
 name|bibtex
 argument_list|)
-operator|)
 operator|.
 name|size
 argument_list|()
@@ -2598,7 +2602,6 @@ name|void
 name|testGetAuthorsLastOnly
 parameter_list|()
 block|{
-block|{
 comment|// No comma before and
 name|Assert
 operator|.
@@ -2676,8 +2679,6 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-block|{
 comment|// Oxford comma
 name|Assert
 operator|.
@@ -2755,7 +2756,6 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -2962,7 +2962,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|{
 comment|// Oxford comma
 name|AuthorList
 name|al
@@ -3156,7 +3155,6 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test

@@ -44,6 +44,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|AuthorList
 import|;
 end_import
@@ -56,43 +60,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|model
 operator|.
-name|sf
-operator|.
-name|jabref
+name|entry
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexFields
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|GUIGlobals
 import|;
 end_import
 
@@ -128,7 +100,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|strings
 operator|.
 name|StringUtil
 import|;
@@ -534,8 +510,6 @@ name|int
 index|[]
 index|[]
 name|nameCols
-init|=
-literal|null
 decl_stmt|;
 DECL|field|namesAsIs
 specifier|private
@@ -764,7 +738,7 @@ name|append
 argument_list|(
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|fld
 index|[
@@ -783,7 +757,7 @@ argument_list|()
 return|;
 comment|/*String disName = BibtexFields.getFieldDisplayName(columns[col - padleft]) ;             if ( disName != null)             {               return disName ;             } */
 block|}
-comment|//return Util.nCase(columns[col - padleft]);
+comment|//return Util.capitalizeFirst(columns[col - padleft]);
 block|}
 comment|/**      * Get the column title, or a string identifying the column if it is an icon      * column without a title.      *      * @param col The column number      * @return the String identifying the column      */
 DECL|method|getColumnType (int col)
@@ -1541,7 +1515,7 @@ index|]
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|BibtexEntry
 operator|.
 name|TYPE_HEADER
 argument_list|)
@@ -2035,7 +2009,8 @@ name|lastLinkPosition
 init|=
 operator|-
 literal|1
-decl_stmt|,
+decl_stmt|;
+name|int
 name|countLinks
 init|=
 literal|0

@@ -34,6 +34,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|AuthorList
 import|;
 end_import
@@ -45,6 +49,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|entry
 operator|.
 name|AuthorList
 operator|.

@@ -108,6 +108,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|worker
+operator|.
 name|AbstractWorker
 import|;
 end_import
@@ -119,6 +123,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|BasePanel
 import|;
@@ -132,6 +138,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|database
+operator|.
 name|BibtexDatabase
 import|;
 end_import
@@ -143,6 +153,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|GUIGlobals
 import|;
@@ -167,6 +179,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|JabRefFrame
 import|;
@@ -204,7 +218,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|MnemonicAwareAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -308,22 +340,16 @@ DECL|field|database
 specifier|private
 name|BibtexDatabase
 name|database
-init|=
-literal|null
 decl_stmt|;
 DECL|field|metaData
 specifier|private
 name|MetaData
 name|metaData
-init|=
-literal|null
 decl_stmt|;
 DECL|field|connectToDB
 specifier|private
 name|boolean
 name|connectToDB
-init|=
-literal|false
 decl_stmt|;
 DECL|field|frame
 specifier|private
@@ -335,8 +361,6 @@ DECL|field|dbs
 specifier|private
 name|DBStrings
 name|dbs
-init|=
-literal|null
 decl_stmt|;
 DECL|field|databases
 specifier|private
@@ -346,8 +370,6 @@ name|Object
 index|[]
 argument_list|>
 name|databases
-init|=
-literal|null
 decl_stmt|;
 DECL|method|DbImportAction (JabRefFrame frame)
 specifier|public
@@ -601,7 +623,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -835,7 +857,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -860,7 +882,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -879,14 +901,14 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"There are no available databases to be imported"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -934,7 +956,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -945,7 +967,7 @@ literal|'\n'
 operator|+
 name|errorMessage
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -961,7 +983,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1095,7 +1117,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

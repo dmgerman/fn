@@ -24,6 +24,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|AuthorList
 import|;
 end_import
@@ -35,6 +39,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|entry
 operator|.
 name|AuthorList
 operator|.
@@ -396,10 +404,8 @@ if|if
 condition|(
 name|control
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 continue|continue;
@@ -1094,6 +1100,7 @@ name|noDisTie
 init|=
 literal|false
 decl_stmt|;
+comment|// @formatter:off
 if|if
 condition|(
 operator|(
@@ -1194,6 +1201,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// @formatter:on
 block|}
 block|}
 elseif|else

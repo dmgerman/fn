@@ -218,19 +218,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
 import|;
 end_import
 
@@ -245,6 +235,22 @@ operator|.
 name|builder
 operator|.
 name|ButtonBarBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -281,7 +287,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -298,7 +304,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -310,8 +316,6 @@ DECL|field|okPressed
 specifier|private
 name|boolean
 name|okPressed
-init|=
-literal|false
 decl_stmt|;
 DECL|field|selected
 specifier|private
@@ -342,7 +346,7 @@ name|super
 argument_list|(
 name|parent
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

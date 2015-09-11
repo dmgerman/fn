@@ -50,18 +50,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|awt
@@ -160,6 +148,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|BasePanel
 import|;
 end_import
@@ -171,6 +161,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|database
 operator|.
 name|BibtexDatabase
 import|;
@@ -184,9 +178,27 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|undo
 operator|.
 name|NamedCompound
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -229,7 +241,7 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -246,7 +258,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -260,22 +272,16 @@ DECL|field|selected
 specifier|private
 name|Change
 name|selected
-init|=
-literal|null
 decl_stmt|;
 DECL|field|infoShown
 specifier|private
 name|JComponent
 name|infoShown
-init|=
-literal|null
 decl_stmt|;
 DECL|field|okPressed
 specifier|private
 name|boolean
 name|okPressed
-init|=
-literal|false
 decl_stmt|;
 DECL|method|ChangeDisplayDialog (JFrame owner, final BasePanel panel, BibtexDatabase secondary, final DefaultMutableTreeNode root)
 specifier|public
@@ -300,7 +306,7 @@ name|super
 argument_list|(
 name|owner
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -465,7 +471,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -493,7 +499,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -623,7 +629,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

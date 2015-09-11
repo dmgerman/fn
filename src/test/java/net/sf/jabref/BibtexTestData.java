@@ -18,7 +18,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
+operator|.
+name|fileformat
 operator|.
 name|BibtexParser
 import|;
@@ -32,9 +34,41 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|ParserResult
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
 import|;
 end_import
 
@@ -96,6 +130,7 @@ name|BibtexDatabase
 name|getBibtexDatabase
 parameter_list|()
 block|{
+comment|// @formatter:off
 name|StringReader
 name|reader
 init|=
@@ -133,6 +168,7 @@ operator|+
 literal|"}"
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 name|BibtexParser
 name|parser
 init|=

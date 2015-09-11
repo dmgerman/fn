@@ -28,9 +28,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
 operator|.
-name|Util
+name|io
+operator|.
+name|JabRefDesktop
 import|;
 end_import
 
@@ -123,7 +127,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(

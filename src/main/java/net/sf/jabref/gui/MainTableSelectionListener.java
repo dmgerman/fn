@@ -154,6 +154,88 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|entryeditor
+operator|.
+name|EntryEditor
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|io
+operator|.
+name|JabRefDesktop
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -318,20 +400,6 @@ name|SpecialFieldsUtils
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
 begin_comment
 comment|/**  * List event, mouse, key and focus listener for the main table that makes up the  * most part of the BasePanel for a single bib database.  */
 end_comment
@@ -358,8 +426,6 @@ specifier|private
 name|PreviewPanel
 index|[]
 name|previewPanel
-init|=
-literal|null
 decl_stmt|;
 DECL|field|activePreview
 specifier|private
@@ -423,8 +489,6 @@ DECL|field|workingOnPreview
 specifier|private
 name|boolean
 name|workingOnPreview
-init|=
-literal|false
 decl_stmt|;
 DECL|field|enabled
 specifier|private
@@ -453,15 +517,11 @@ DECL|field|lastPressedCount
 specifier|private
 name|int
 name|lastPressedCount
-init|=
-literal|0
 decl_stmt|;
 DECL|field|lastPressedTime
 specifier|private
 name|long
 name|lastPressedTime
-init|=
-literal|0
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -1361,7 +1421,9 @@ operator|.
 name|getPoint
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|int
 name|row
 init|=
 name|table
@@ -1474,7 +1536,9 @@ operator|.
 name|getPoint
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|int
 name|row
 init|=
 name|table
@@ -1532,9 +1596,9 @@ comment|// on mouseReleased. Therefore we need to avoid taking action at this po
 comment|// action will be taken when the button is released:
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 operator|&&
 operator|(
 name|iconType
@@ -1865,7 +1929,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1906,7 +1970,6 @@ expr_stmt|;
 return|return;
 comment|// There is an icon, but the field is not set.
 block|}
-block|{
 comment|// See if this is a simple file link field, or if it is a file-list
 comment|// field that can specify a list of links:
 if|if
@@ -2118,7 +2181,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2133,7 +2196,7 @@ else|else
 block|{
 try|try
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(
@@ -2161,7 +2224,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2170,9 +2233,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*ExternalFileType type = Globals.prefs.getExternalFileTypeByMimeType("text/html");                             ExternalFileMenuItem item = new ExternalFileMenuItem                                     (panel.frame(), entry, "",                                     (String)link, type.getIcon(),                                     panel.metaData(), type);                             boolean success = item.openLink();                             if (!success) {                                 panel.output(Globals.lang("Unable to open link."));                             } */
+comment|/*ExternalFileType type = Globals.prefs.getExternalFileTypeByMimeType("text/html");                         ExternalFileMenuItem item = new ExternalFileMenuItem                                 (panel.frame(), entry, "",                                 (String)link, type.getIcon(),                                 panel.metaData(), type);                         boolean success = item.openLink();                         if (!success) {                             panel.output(Globals.lang("Unable to open link."));                         } */
 comment|//Util.openExternalViewer(panel.metaData(), (String)link, fieldName);
-block|}
 block|}
 comment|//catch (IOException ex) {
 comment|//    panel.output(Globals.lang("Error") + ": " + ex.getMessage());

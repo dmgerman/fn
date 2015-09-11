@@ -110,6 +110,22 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Oct 10, 2005  * Time: 4:29:35 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -123,15 +139,19 @@ extends|extends
 name|JPanel
 block|{
 DECL|field|ICON_WIDTH
-DECL|field|ICON_HEIGHT
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|ICON_WIDTH
 init|=
 literal|30
-decl_stmt|,
+decl_stmt|;
+DECL|field|ICON_HEIGHT
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|ICON_HEIGHT
 init|=
 literal|20
@@ -186,7 +206,7 @@ name|ColorButton
 argument_list|(
 literal|"tableText"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -204,7 +224,7 @@ name|ColorButton
 argument_list|(
 literal|"markedEntryBackground0"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -224,7 +244,7 @@ name|ColorButton
 argument_list|(
 literal|"tableBackground"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -242,7 +262,7 @@ name|ColorButton
 argument_list|(
 literal|"markedEntryBackground1"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -262,7 +282,7 @@ name|ColorButton
 argument_list|(
 literal|"tableReqFieldBackground"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -280,7 +300,7 @@ name|ColorButton
 argument_list|(
 literal|"markedEntryBackground2"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -300,7 +320,7 @@ name|ColorButton
 argument_list|(
 literal|"tableOptFieldBackground"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -318,7 +338,7 @@ name|ColorButton
 argument_list|(
 literal|"markedEntryBackground3"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -338,7 +358,7 @@ name|ColorButton
 argument_list|(
 literal|"incompleteEntryBackground"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -356,7 +376,7 @@ name|ColorButton
 argument_list|(
 literal|"markedEntryBackground4"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -376,7 +396,7 @@ name|ColorButton
 argument_list|(
 literal|"gridColor"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -394,7 +414,7 @@ name|ColorButton
 argument_list|(
 literal|"markedEntryBackground5"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -412,7 +432,7 @@ name|ColorButton
 argument_list|(
 literal|"fieldEditorTextColor"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -430,7 +450,7 @@ name|ColorButton
 argument_list|(
 literal|"validFieldBackgroundColor"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -448,7 +468,7 @@ name|ColorButton
 argument_list|(
 literal|"activeFieldEditorBackgroundColor"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -466,7 +486,7 @@ name|ColorButton
 argument_list|(
 literal|"invalidFieldBackgroundColor"
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -765,7 +785,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

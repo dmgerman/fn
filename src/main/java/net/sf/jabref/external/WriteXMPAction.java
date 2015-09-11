@@ -142,7 +142,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FileListTableModel
+name|*
 import|;
 end_import
 
@@ -156,7 +156,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FileListEntry
+name|worker
+operator|.
+name|AbstractWorker
 import|;
 end_import
 
@@ -168,7 +170,59 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|io
 operator|.
 name|FileUtil
 import|;
@@ -196,7 +250,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
+operator|.
+name|xmp
 operator|.
 name|XMPUtil
 import|;
@@ -361,14 +417,14 @@ name|showMessageDialog
 argument_list|(
 name|panel
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"This operation requires at least one entry."
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -397,14 +453,14 @@ name|showConfirmDialog
 argument_list|(
 name|panel
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Write XMP-metadata for all PDFs in current database?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -473,7 +529,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -650,16 +706,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|flEntry
 operator|.
 name|getType
 argument_list|()
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|flEntry
 operator|.
 name|getType
@@ -675,7 +728,6 @@ name|equals
 argument_list|(
 literal|"pdf"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|f
@@ -728,10 +780,8 @@ if|if
 condition|(
 name|files
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|skipped
@@ -745,7 +795,7 @@ name|append
 argument_list|(
 literal|"  "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -786,7 +836,7 @@ name|append
 argument_list|(
 literal|"  "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -836,7 +886,7 @@ name|append
 argument_list|(
 literal|"  "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -864,7 +914,7 @@ name|append
 argument_list|(
 literal|"  "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -919,7 +969,7 @@ name|append
 argument_list|(
 literal|"\n"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -938,7 +988,7 @@ name|append
 argument_list|(
 literal|"\n"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -993,7 +1043,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1046,7 +1096,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1062,7 +1112,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1091,7 +1141,7 @@ name|super
 argument_list|(
 name|parent
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

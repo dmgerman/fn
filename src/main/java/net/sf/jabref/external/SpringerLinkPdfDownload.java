@@ -76,11 +76,6 @@ name|CONTENT_BASE_URL
 init|=
 literal|"http://www.springerlink.com/content/"
 decl_stmt|;
-DECL|method|SpringerLinkPdfDownload ()
-specifier|public
-name|SpringerLinkPdfDownload
-parameter_list|()
-block|{      }
 annotation|@
 name|Override
 DECL|method|supportsSite (URL url)
@@ -238,15 +233,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|index
 operator|>
 operator|-
 literal|1
-operator|)
 operator|&&
-operator|(
-operator|(
 name|index
 operator|+
 name|marker
@@ -255,13 +246,11 @@ name|length
 argument_list|()
 operator|+
 literal|1
-operator|)
 operator|<
 name|leading
 operator|.
 name|length
 argument_list|()
-operator|)
 condition|)
 block|{
 name|int
@@ -319,9 +308,6 @@ operator|.
 name|println
 argument_list|(
 name|pdfUrl
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return

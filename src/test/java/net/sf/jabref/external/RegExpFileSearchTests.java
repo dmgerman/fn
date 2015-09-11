@@ -82,6 +82,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -94,19 +98,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexFields
 import|;
 end_import
 
@@ -234,7 +230,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|,

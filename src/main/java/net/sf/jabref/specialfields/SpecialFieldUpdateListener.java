@@ -64,6 +64,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -97,8 +101,6 @@ specifier|private
 specifier|static
 name|SpecialFieldUpdateListener
 name|INSTANCE
-init|=
-literal|null
 decl_stmt|;
 annotation|@
 name|Override

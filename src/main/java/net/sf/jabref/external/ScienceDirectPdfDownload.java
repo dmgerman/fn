@@ -59,11 +59,6 @@ implements|implements
 name|FullTextFinder
 block|{
 comment|//private static final String BASE_URL = "http://www.sciencedirect.com";
-DECL|method|ScienceDirectPdfDownload ()
-specifier|public
-name|ScienceDirectPdfDownload
-parameter_list|()
-block|{      }
 annotation|@
 name|Override
 DECL|method|supportsSite (URL url)
@@ -161,25 +156,19 @@ expr_stmt|;
 comment|//System.out.println(index);
 if|if
 condition|(
-operator|(
 name|index
 operator|>
 operator|-
 literal|1
-operator|)
 operator|&&
-operator|(
-operator|(
 name|index
 operator|+
 literal|9
-operator|)
 operator|<
 name|leading
 operator|.
 name|length
 argument_list|()
-operator|)
 condition|)
 block|{
 name|int

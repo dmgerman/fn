@@ -100,20 +100,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|external
 operator|.
 name|ExternalFileType
@@ -131,6 +117,24 @@ operator|.
 name|external
 operator|.
 name|UnknownExternalFileType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -162,11 +166,6 @@ name|FileListEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|method|FileListTableModel ()
-specifier|public
-name|FileListTableModel
-parameter_list|()
-block|{     }
 annotation|@
 name|Override
 DECL|method|getRowCount ()
@@ -1377,7 +1376,7 @@ else|:
 literal|""
 decl_stmt|;
 return|return
-name|Util
+name|StringUtil
 operator|.
 name|encodeString
 argument_list|(
@@ -1389,7 +1388,7 @@ argument_list|)
 operator|+
 literal|':'
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|encodeString
 argument_list|(
@@ -1401,7 +1400,7 @@ argument_list|)
 operator|+
 literal|':'
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|encodeString
 argument_list|(

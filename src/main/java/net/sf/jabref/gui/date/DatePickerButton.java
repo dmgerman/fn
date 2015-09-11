@@ -98,6 +98,12 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|date
+operator|.
 name|EasyDateFormat
 import|;
 end_import
@@ -110,6 +116,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|fieldeditors
+operator|.
 name|FieldEditor
 import|;
 end_import
@@ -121,6 +131,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|FocusRequester
 import|;

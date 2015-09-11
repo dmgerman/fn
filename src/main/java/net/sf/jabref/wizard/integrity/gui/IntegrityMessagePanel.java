@@ -238,6 +238,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|BasePanel
 import|;
 end_import
@@ -249,6 +251,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|database
 operator|.
 name|BibtexDatabase
 import|;
@@ -262,6 +268,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -273,6 +283,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|GUIGlobals
 import|;
@@ -286,7 +298,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|undo
+operator|.
+name|UndoableFieldChange
 import|;
 end_import
 
@@ -298,9 +314,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|undo
+name|logic
 operator|.
-name|UndoableFieldChange
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -515,7 +533,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -543,7 +561,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -571,7 +589,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

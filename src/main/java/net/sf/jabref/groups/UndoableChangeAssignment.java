@@ -56,19 +56,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
 import|;
 end_import
 
@@ -85,6 +77,22 @@ operator|.
 name|structure
 operator|.
 name|ExplicitGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -124,16 +132,12 @@ specifier|private
 name|int
 index|[]
 name|m_pathToNode
-init|=
-literal|null
 decl_stmt|;
 comment|/** The root of the global groups tree */
 DECL|field|m_groupsRootHandle
 specifier|private
 name|GroupTreeNode
 name|m_groupsRootHandle
-init|=
-literal|null
 decl_stmt|;
 comment|/**      * Constructor for use in a group itself, where the enclosing node is      * unknown. The node must be set using setEditedNode() before this instance      * may be used.      *       * @param previousAssignment      * @param currentAssignment      */
 DECL|method|UndoableChangeAssignment (Set<BibtexEntry> previousAssignment, Set<BibtexEntry> currentAssignment)
@@ -246,7 +250,7 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -255,7 +259,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -272,7 +276,7 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -281,7 +285,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

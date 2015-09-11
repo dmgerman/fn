@@ -20,6 +20,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|database
+operator|.
 name|BibtexDatabase
 import|;
 end_import
@@ -31,6 +35,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|entry
 operator|.
 name|BibtexEntry
 import|;
@@ -56,6 +64,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|preftabs
+operator|.
 name|NameFormatterTab
 import|;
 end_import
@@ -68,7 +80,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
+operator|.
+name|fileformat
 operator|.
 name|BibtexParser
 import|;
@@ -82,7 +96,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|ParserResult
 import|;
@@ -96,9 +110,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
 operator|.
-name|StringUtil
+name|DOI
 import|;
 end_import
 
@@ -110,9 +126,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
 operator|.
-name|Util
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -228,7 +248,7 @@ literal|""
 argument_list|,
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 literal|""
 argument_list|)
@@ -242,7 +262,7 @@ literal|"Hello world"
 argument_list|,
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 literal|"Hello World"
 argument_list|)
@@ -256,7 +276,7 @@ literal|"A"
 argument_list|,
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 literal|"a"
 argument_list|)
@@ -270,7 +290,7 @@ literal|"Aa"
 argument_list|,
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 literal|"AA"
 argument_list|)
@@ -1384,7 +1404,6 @@ argument_list|(
 literal|"bla"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1396,7 +1415,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1427,7 +1445,6 @@ argument_list|(
 literal|"bla"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1439,7 +1456,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1470,7 +1486,6 @@ argument_list|(
 literal|"_bla.bla.blub"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1483,7 +1498,6 @@ argument_list|(
 literal|0
 argument_list|)
 operator|)
-operator|)
 index|[
 literal|0
 index|]
@@ -1513,7 +1527,6 @@ argument_list|(
 literal|"bla"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1525,7 +1538,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1539,7 +1551,6 @@ argument_list|(
 literal|"foo"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1551,7 +1562,6 @@ name|get
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1582,7 +1592,6 @@ argument_list|(
 literal|"bla"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1594,7 +1603,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1608,7 +1616,6 @@ argument_list|(
 literal|"foo"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1620,7 +1627,6 @@ name|get
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1634,7 +1640,6 @@ argument_list|(
 literal|"test"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1646,7 +1651,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|1
@@ -1660,7 +1664,6 @@ argument_list|(
 literal|"fark"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1672,7 +1675,6 @@ name|get
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|1
@@ -1703,7 +1705,6 @@ argument_list|(
 literal|"bla"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1715,7 +1716,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1729,7 +1729,6 @@ argument_list|(
 literal|"foo"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1741,7 +1740,6 @@ name|get
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|0
@@ -1755,7 +1753,6 @@ argument_list|(
 literal|"test"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1767,7 +1764,6 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|1
@@ -1781,7 +1777,6 @@ argument_list|(
 literal|"fark"
 argument_list|,
 operator|(
-operator|(
 name|Util
 operator|.
 name|parseMethodsCalls
@@ -1793,7 +1788,6 @@ name|get
 argument_list|(
 literal|1
 argument_list|)
-operator|)
 operator|)
 index|[
 literal|1
@@ -2388,12 +2382,22 @@ literal|"\\url{www.vg.no/fil%20e.html}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/**          * DOI Test cases          */
+comment|/**          * Doi Test cases          */
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://dx.doi.org/10.1109/VLHCC.2004.20"
+name|DOI
+operator|.
+name|RESOLVER
+operator|.
+name|resolve
+argument_list|(
+literal|"/10.1109/VLHCC.2004.20"
+argument_list|)
+operator|.
+name|toASCIIString
+argument_list|()
 argument_list|,
 name|Util
 operator|.
@@ -2407,7 +2411,17 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://dx.doi.org/10.1109/VLHCC.2004.20"
+name|DOI
+operator|.
+name|RESOLVER
+operator|.
+name|resolve
+argument_list|(
+literal|"/10.1109/VLHCC.2004.20"
+argument_list|)
+operator|.
+name|toASCIIString
+argument_list|()
 argument_list|,
 name|Util
 operator|.
@@ -2421,7 +2435,17 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://dx.doi.org/10.1109/VLHCC.2004.20"
+name|DOI
+operator|.
+name|RESOLVER
+operator|.
+name|resolve
+argument_list|(
+literal|"/10.1109/VLHCC.2004.20"
+argument_list|)
+operator|.
+name|toASCIIString
+argument_list|()
 argument_list|,
 name|Util
 operator|.
@@ -2435,7 +2459,17 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://dx.doi.org/10.1109/VLHCC.2004.20"
+name|DOI
+operator|.
+name|RESOLVER
+operator|.
+name|resolve
+argument_list|(
+literal|"/10.1109/VLHCC.2004.20"
+argument_list|)
+operator|.
+name|toASCIIString
+argument_list|()
 argument_list|,
 name|Util
 operator|.

@@ -38,6 +38,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -72,6 +88,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|BasePanel
 import|;
 end_import
@@ -83,6 +101,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|entry
 operator|.
 name|BibtexString
 import|;
@@ -96,17 +118,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|model
 operator|.
-name|sf
-operator|.
-name|jabref
+name|database
 operator|.
 name|BibtexDatabase
 import|;
@@ -119,6 +133,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|undo
 operator|.
@@ -133,6 +149,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|undo
 operator|.
@@ -234,7 +252,7 @@ name|tmpString
 expr_stmt|;
 name|name
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -269,7 +287,7 @@ name|setText
 argument_list|(
 literal|"<HTML><H2>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -278,7 +296,7 @@ argument_list|)
 operator|+
 literal|"</H2><H3>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -294,7 +312,7 @@ argument_list|()
 operator|+
 literal|"<H3>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

@@ -56,8 +56,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
-operator|.
 name|migrations
 operator|.
 name|VersionHandling
@@ -72,9 +70,41 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|labelPattern
 operator|.
 name|LabelPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibtexDatabase
 import|;
 end_import
 
@@ -100,7 +130,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|strings
 operator|.
 name|StringUtil
 import|;
@@ -135,6 +169,16 @@ name|KEYPATTERNDEFAULT
 init|=
 literal|"keypatterndefault"
 decl_stmt|;
+DECL|field|METADATA_LINE_LENGTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|METADATA_LINE_LENGTH
+init|=
+literal|70
+decl_stmt|;
+comment|// The line length used to wrap metadata.
 DECL|field|metaData
 specifier|private
 specifier|final
@@ -165,15 +209,11 @@ DECL|field|groupsRoot
 specifier|private
 name|GroupTreeNode
 name|groupsRoot
-init|=
-literal|null
 decl_stmt|;
 DECL|field|file
 specifier|private
 name|File
 name|file
-init|=
-literal|null
 decl_stmt|;
 comment|// The File where this base gets saved.
 DECL|field|groupTreeValid
@@ -187,8 +227,6 @@ DECL|field|labelPattern
 specifier|private
 name|LabelPattern
 name|labelPattern
-init|=
-literal|null
 decl_stmt|;
 DECL|field|dbStrings
 specifier|private
@@ -440,11 +478,9 @@ condition|(
 operator|!
 name|groupsTreePresent
 operator|&&
-operator|(
 name|flatGroupsData
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 try|try
@@ -481,7 +517,7 @@ DECL|method|MetaData ()
 specifier|public
 name|MetaData
 parameter_list|()
-block|{      }
+block|{}
 comment|/**      * Add default metadata for new database:      */
 DECL|method|initializeNewDatabase ()
 specifier|public
@@ -752,20 +788,15 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|(
 name|vec
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
+operator|!
 name|vec
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
-operator|)
 condition|)
 block|{
 name|String
@@ -785,22 +816,18 @@ comment|// the file path of this bib file:
 if|if
 condition|(
 operator|!
-operator|(
 operator|new
 name|File
 argument_list|(
 name|dir
 argument_list|)
-operator|)
 operator|.
 name|isAbsolute
 argument_list|()
 operator|&&
-operator|(
 name|file
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 name|String
@@ -848,13 +875,11 @@ comment|// If this directory actually exists, it is very likely that the
 comment|// user wants us to use it:
 if|if
 condition|(
-operator|(
 operator|new
 name|File
 argument_list|(
 name|relDir
 argument_list|)
-operator|)
 operator|.
 name|exists
 argument_list|()
@@ -920,12 +945,10 @@ operator|.
 name|BIB_LOCATION_AS_FILE_DIR
 argument_list|)
 operator|&&
-operator|(
 name|getFile
 argument_list|()
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 comment|// Check if we should add it as primary file dir (first in the list) or not:
@@ -1217,8 +1240,6 @@ name|wrapStringBuffer
 argument_list|(
 name|sb
 argument_list|,
-name|Globals
-operator|.
 name|METADATA_LINE_LENGTH
 argument_list|)
 expr_stmt|;
@@ -1255,20 +1276,16 @@ comment|// write groups if present. skip this if only the root node exists
 comment|// (which is always the AllEntriesGroup).
 if|if
 condition|(
-operator|(
 name|groupsRoot
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
 name|groupsRoot
 operator|.
 name|getChildCount
 argument_list|()
 operator|>
 literal|0
-operator|)
 condition|)
 block|{
 name|StringBuffer
@@ -1433,8 +1450,6 @@ name|wrapStringBuffer
 argument_list|(
 name|s
 argument_list|,
-name|Globals
-operator|.
 name|METADATA_LINE_LENGTH
 argument_list|)
 expr_stmt|;
@@ -1524,7 +1539,10 @@ name|lineLength
 operator|+
 name|Globals
 operator|.
-name|NEWLINE_LENGTH
+name|NEWLINE
+operator|.
+name|length
+argument_list|()
 control|)
 block|{
 name|sb

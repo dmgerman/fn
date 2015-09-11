@@ -48,6 +48,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|autocompleter
 operator|.
 name|AutoCompleter
@@ -139,16 +141,12 @@ DECL|field|toSetIn
 specifier|private
 name|String
 name|toSetIn
-init|=
-literal|null
 decl_stmt|;
 comment|// null indicates that there are no completions available
 DECL|field|lastBeginning
 specifier|private
 name|String
 name|lastBeginning
-init|=
-literal|null
 decl_stmt|;
 comment|// the letters, the user has typed until know
 DECL|field|lastCaretPosition
@@ -164,15 +162,11 @@ specifier|private
 name|String
 index|[]
 name|lastCompletions
-init|=
-literal|null
 decl_stmt|;
 DECL|field|lastShownCompletion
 specifier|private
 name|int
 name|lastShownCompletion
-init|=
-literal|0
 decl_stmt|;
 DECL|field|consumeEnterKey
 specifier|private
@@ -188,8 +182,6 @@ DECL|field|nextFocusListener
 specifier|private
 name|FocusListener
 name|nextFocusListener
-init|=
-literal|null
 decl_stmt|;
 DECL|method|AutoCompleteListener (AutoCompleter<String> completer)
 specifier|public
@@ -2162,8 +2154,8 @@ return|;
 block|}
 DECL|field|ANY_NAME
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|ANY_NAME
 init|=
@@ -2171,16 +2163,16 @@ literal|0
 decl_stmt|;
 DECL|field|FIRST_NAME
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|FIRST_NAME
 init|=
 literal|1
 decl_stmt|;
 DECL|field|LAST_NAME
-specifier|final
 specifier|static
+specifier|final
 name|int
 name|LAST_NAME
 init|=

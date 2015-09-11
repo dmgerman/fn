@@ -24,6 +24,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|BaseAction
 import|;
 end_import
@@ -36,7 +38,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -51,18 +71,6 @@ operator|.
 name|util
 operator|.
 name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
 import|;
 end_import
 
@@ -273,7 +281,7 @@ argument_list|()
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -327,7 +335,7 @@ argument_list|()
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -371,7 +379,7 @@ argument_list|()
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -392,7 +400,7 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -403,7 +411,7 @@ literal|'\n'
 operator|+
 name|errorMessage
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

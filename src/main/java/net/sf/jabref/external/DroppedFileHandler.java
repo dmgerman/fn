@@ -116,7 +116,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|MainTable
+name|*
 import|;
 end_import
 
@@ -129,32 +129,6 @@ operator|.
 name|jabref
 operator|.
 name|gui
-operator|.
-name|FileListTableModel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|FileListEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
 operator|.
 name|undo
 operator|.
@@ -170,6 +144,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|undo
 operator|.
 name|UndoableFieldChange
@@ -183,6 +159,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|undo
 operator|.
@@ -198,7 +176,75 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|id
+operator|.
+name|IdGenerator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|io
 operator|.
 name|FileUtil
 import|;
@@ -226,7 +272,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
+operator|.
+name|xmp
 operator|.
 name|XMPUtil
 import|;
@@ -275,7 +323,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class holds the functionality of autolinking to a file that's dropped  * onto an entry.  *   * Options for handling the files are:  *   * 1) Link to the file in its current position (disabled if the file is remote)  *   * 2) Copy the file to ??? directory, rename after bibtex key, and extension  *   * 3) Move the file to ??? directory, rename after bibtex key, and extension  */
+comment|/**  * This class holds the functionality of autolinking to a file that's dropped  * onto an entry.  *<p>  * Options for handling the files are:  *<p>  * 1) Link to the file in its current position (disabled if the file is remote)  *<p>  * 2) Copy the file to ??? directory, rename after bibtex key, and extension  *<p>  * 3) Move the file to ??? directory, rename after bibtex key, and extension  */
 end_comment
 
 begin_class
@@ -625,7 +673,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Offer copy/move/linking options for a dragged external file. Perform the      * chosen operation, if any.      *       * @param fileName      *            The name of the dragged file.      * @param fileType      *            The FileType associated with the file.      * @param localFile      *            Indicate whether this is a local file, or a remote file copied      *            to a local temporary file.      * @param mainTable      *            The MainTable the file was dragged to.      * @param dropRow      *            The row where the file was dropped.      */
+comment|/**      * Offer copy/move/linking options for a dragged external file. Perform the      * chosen operation, if any.      *      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param mainTable The MainTable the file was dragged to.      * @param dropRow   The row where the file was dropped.      */
 DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, boolean localFile, MainTable mainTable, int dropRow)
 specifier|public
 name|void
@@ -669,7 +717,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *      * @param fileName      *        The name of the dragged file.      * @param fileType      *        The FileType associated with the file.      * @param localFile      *            Indicate whether this is a local file, or a remote file copied      *            to a local temporary file.      * @param entry      *        The target entry for the drop.      */
+comment|/**      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param entry     The target entry for the drop.      */
 DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, boolean localFile, BibtexEntry entry)
 specifier|public
 name|void
@@ -694,7 +742,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -824,7 +872,6 @@ else|else
 block|{
 name|destFilename
 operator|=
-operator|(
 name|renameCheckBox
 operator|.
 name|isSelected
@@ -843,7 +890,6 @@ argument_list|)
 operator|.
 name|getName
 argument_list|()
-operator|)
 expr_stmt|;
 if|if
 condition|(
@@ -1004,7 +1050,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1104,7 +1150,6 @@ else|else
 block|{
 name|destFilename
 operator|=
-operator|(
 name|renameCheckBox
 operator|.
 name|isSelected
@@ -1123,7 +1168,6 @@ argument_list|)
 operator|.
 name|getName
 argument_list|()
-operator|)
 expr_stmt|;
 if|if
 condition|(
@@ -1243,7 +1287,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1268,7 +1312,6 @@ decl_stmt|;
 name|BibtexEntry
 name|single
 init|=
-operator|(
 name|isSingle
 condition|?
 name|xmpEntriesInFile
@@ -1279,7 +1322,6 @@ literal|0
 argument_list|)
 else|:
 literal|null
-operator|)
 decl_stmt|;
 name|boolean
 name|success
@@ -1416,8 +1458,6 @@ range|:
 name|xmpEntriesInFile
 control|)
 block|{
-try|try
-block|{
 name|aXmpEntriesInFile
 operator|.
 name|setId
@@ -1469,13 +1509,6 @@ argument_list|,
 name|edits
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ignored
-parameter_list|)
-block|{                  }
 block|}
 name|panel
 operator|.
@@ -1569,20 +1602,14 @@ return|;
 block|}
 if|if
 condition|(
-operator|(
 name|xmpEntriesInFile
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|xmpEntriesInFile
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
-operator|)
 condition|)
 block|{
 return|return
@@ -1595,7 +1622,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1614,7 +1641,7 @@ name|frame
 argument_list|,
 name|confirmationMessage
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1674,7 +1701,6 @@ decl_stmt|;
 name|BibtexEntry
 name|single
 init|=
-operator|(
 name|isSingle
 condition|?
 name|xmpEntriesInFile
@@ -1685,7 +1711,6 @@ literal|0
 argument_list|)
 else|:
 literal|null
-operator|)
 decl_stmt|;
 name|boolean
 name|success
@@ -1822,8 +1847,6 @@ range|:
 name|xmpEntriesInFile
 control|)
 block|{
-try|try
-block|{
 name|aXmpEntriesInFile
 operator|.
 name|setId
@@ -1875,13 +1898,6 @@ argument_list|,
 name|edits
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ignored
-parameter_list|)
-block|{                  }
 block|}
 name|panel
 operator|.
@@ -1937,7 +1953,7 @@ decl_stmt|;
 name|String
 name|dialogTitle
 init|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2018,7 +2034,7 @@ name|destDirLabel
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2068,7 +2084,7 @@ name|destDirLabel
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2137,10 +2153,8 @@ operator|.
 name|isSelected
 argument_list|()
 operator|&&
-operator|(
 operator|!
 name|multipleEntries
-operator|)
 argument_list|)
 expr_stmt|;
 name|renameToTextBox
@@ -2153,10 +2167,8 @@ operator|.
 name|isSelected
 argument_list|()
 operator|&&
-operator|(
 operator|!
 name|multipleEntries
-operator|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2184,7 +2196,7 @@ name|linkInPlace
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2196,7 +2208,7 @@ name|copyRadioButton
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2208,7 +2220,7 @@ name|moveRadioButton
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2223,7 +2235,7 @@ name|linkInPlace
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2235,7 +2247,7 @@ name|copyRadioButton
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2247,7 +2259,7 @@ name|moveRadioButton
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2260,7 +2272,7 @@ name|renameCheckBox
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2398,7 +2410,7 @@ index|[]
 name|messages
 init|=
 block|{
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2532,7 +2544,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Make a extension to the file.      *       * @param entry      *            The entry to extension from.      * @param fileType      *            The FileType associated with the file.      * @param filename      *            The path to the file.      * @param edits      *            An NamedCompound action this action is to be added to. If none      *            is given, the edit is added to the panel's undoManager.      */
+comment|/**      * Make a extension to the file.      *      * @param entry    The entry to extension from.      * @param fileType The FileType associated with the file.      * @param filename The path to the file.      * @param edits    An NamedCompound action this action is to be added to. If none      *                 is given, the edit is added to the panel's undoManager.      */
 DECL|method|doLink (BibtexEntry entry, ExternalFileType fileType, String filename, boolean avoidDuplicate, NamedCompound edits)
 specifier|private
 name|void
@@ -2614,9 +2626,7 @@ decl_stmt|;
 name|String
 name|absFilename
 init|=
-operator|(
 operator|!
-operator|(
 operator|new
 name|File
 argument_list|(
@@ -2625,16 +2635,12 @@ argument_list|)
 operator|.
 name|isAbsolute
 argument_list|()
-operator|)
 operator|&&
-operator|(
 name|dirs
 operator|.
 name|length
 operator|>
 literal|0
-operator|)
-operator|)
 condition|?
 name|FileUtil
 operator|.
@@ -2682,9 +2688,7 @@ comment|// Find the absolute filename for this existing link:
 name|String
 name|absName
 init|=
-operator|(
 operator|!
-operator|(
 operator|new
 name|File
 argument_list|(
@@ -2696,16 +2700,12 @@ argument_list|)
 operator|.
 name|isAbsolute
 argument_list|()
-operator|)
 operator|&&
-operator|(
 name|dirs
 operator|.
 name|length
 operator|>
 literal|0
-operator|)
-operator|)
 condition|?
 name|FileUtil
 operator|.
@@ -2837,7 +2837,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Move the given file to the base directory for its file type, and rename      * it to the given filename.      *       * @param fileName      *            The name of the source file.      * @param fileType      *            The FileType associated with the file.      * @param destFilename      *            The destination filename.      * @param edits      *            TODO we should be able to undo this action      * @return true if the operation succeeded.      */
+comment|/**      * Move the given file to the base directory for its file type, and rename      * it to the given filename.      *      * @param fileName     The name of the source file.      * @param fileType     The FileType associated with the file.      * @param destFilename The destination filename.      * @param edits        TODO we should be able to undo this action      * @return true if the operation succeeded.      */
 DECL|method|doMove (String fileName, ExternalFileType fileType, String destFilename, NamedCompound edits)
 specifier|private
 name|boolean
@@ -3043,7 +3043,7 @@ literal|true
 return|;
 block|}
 block|}
-comment|/**      * Copy the given file to the base directory for its file type, and give it      * the given name.      *       * @param fileName      *            The name of the source file.      * @param fileType      *            The FileType associated with the file.      * @param toFile      *            The destination filename. An existing path-component will be removed.      * @param edits      *            TODO we should be able to undo this!      * @return      */
+comment|/**      * Copy the given file to the base directory for its file type, and give it      * the given name.      *      * @param fileName The name of the source file.      * @param fileType The FileType associated with the file.      * @param toFile   The destination filename. An existing path-component will be removed.      * @param edits    TODO we should be able to undo this!      * @return      */
 DECL|method|doCopy (String fileName, ExternalFileType fileType, String toFile, NamedCompound edits)
 specifier|private
 name|boolean
@@ -3234,14 +3234,14 @@ argument_list|()
 operator|+
 literal|"' "
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"exists. Overwrite?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

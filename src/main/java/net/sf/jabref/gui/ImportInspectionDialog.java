@@ -482,6 +482,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|AuthorList
 import|;
 end_import
@@ -494,17 +498,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|model
 operator|.
-name|sf
-operator|.
-name|jabref
+name|database
 operator|.
 name|BibtexDatabase
 import|;
@@ -518,6 +514,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -530,29 +530,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexFields
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|logic
 operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|CheckBoxMessage
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
+name|bibtex
 operator|.
 name|DuplicateCheck
 import|;
@@ -566,55 +546,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|DuplicateResolverDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|logic
 operator|.
-name|sf
+name|bibtex
 operator|.
-name|jabref
-operator|.
-name|EntryMarker
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
+name|comparator
 operator|.
 name|FieldComparator
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|GeneralRenderer
 import|;
 end_import
 
@@ -637,6 +575,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
+operator|.
+name|id
 operator|.
 name|IdGenerator
 import|;
@@ -662,31 +604,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|KeyCollisionException
 import|;
 end_import
 
@@ -710,19 +628,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|importer
+operator|.
 name|OutputPrinter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|PreviewPanel
 import|;
 end_import
 
@@ -822,6 +730,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|help
 operator|.
 name|HelpAction
@@ -836,7 +746,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|ImportInspector
 import|;
@@ -849,6 +759,24 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
 operator|.
 name|labelPattern
 operator|.
@@ -864,6 +792,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|undo
 operator|.
 name|NamedCompound
@@ -877,6 +807,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|undo
 operator|.
@@ -892,6 +824,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|undo
 operator|.
 name|UndoableRemoveEntry
@@ -906,9 +840,31 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
 operator|.
+name|strings
+operator|.
 name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|io
+operator|.
+name|JabRefDesktop
 import|;
 end_import
 
@@ -1089,7 +1045,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog to allow the selection of entries as part of an Import.  *   * The usual way to use this class is to pass it to an Importer which will do  * the following:  *<ul>  *<li>Register itself as a callback to get notified if the user wants to stop  * the import.</li>  *<li>Call setVisible(true) to display the dialog</li>  *<li>For each entry that has been found call addEntry(...)</li>  *<li>Call entryListComplete() after all entries have been fetched</li>  *</ul>  *   * If the importer wants to cancel the import, it should call the dispose()  * method.  *   * If the importer receives the stopFetching-call, it should stop fetching as  * soon as possible (it is not really critical, but good style to not contribute  * any more results via addEntry, call entryListComplete() or dispose(), after  * receiving this call).  *   * @author alver  */
+comment|/**  * Dialog to allow the selection of entries as part of an Import.  *<p>  * The usual way to use this class is to pass it to an Importer which will do  * the following:  *<ul>  *<li>Register itself as a callback to get notified if the user wants to stop  * the import.</li>  *<li>Call setVisible(true) to display the dialog</li>  *<li>For each entry that has been found call addEntry(...)</li>  *<li>Call entryListComplete() after all entries have been fetched</li>  *</ul>  *<p>  * If the importer wants to cancel the import, it should call the dispose()  * method.  *<p>  * If the importer receives the stopFetching-call, it should stop fetching as  * soon as possible (it is not really critical, but good style to not contribute  * any more results via addEntry, call entryListComplete() or dispose(), after  * receiving this call).  *  * @author alver  */
 end_comment
 
 begin_class
@@ -1208,7 +1164,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1225,7 +1181,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1322,7 +1278,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1339,7 +1295,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1357,8 +1313,6 @@ DECL|field|generatedKeys
 specifier|private
 name|boolean
 name|generatedKeys
-init|=
-literal|false
 decl_stmt|;
 comment|// Set to true after keys have
 comment|// been
@@ -1423,7 +1377,7 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1581,7 +1535,7 @@ init|=
 literal|4
 decl_stmt|;
 comment|// 6;
-comment|/**      * The "defaultSelected" boolean value determines if new entries added are      * selected for import or not. This value is true by default.      *       * @param defaultSelected      *            The desired value.      */
+comment|/**      * The "defaultSelected" boolean value determines if new entries added are      * selected for import or not. This value is true by default.      *      * @param defaultSelected The desired value.      */
 DECL|method|setDefaultSelected (boolean defaultSelected)
 specifier|public
 name|void
@@ -1598,7 +1552,7 @@ operator|=
 name|defaultSelected
 expr_stmt|;
 block|}
-comment|/**      * Creates a dialog that displays the given list of fields in the table. The      * dialog allows another process to add entries dynamically while the dialog      * is shown.      *       * @param frame      * @param panel      * @param fields      */
+comment|/**      * Creates a dialog that displays the given list of fields in the table. The      * dialog allows another process to add entries dynamically while the dialog      * is shown.      *      * @param frame      * @param panel      * @param fields      */
 DECL|method|ImportInspectionDialog (JabRefFrame frame, BasePanel panel, String[] fields, String undoName, boolean newDatabase)
 specifier|public
 name|ImportInspectionDialog
@@ -1694,7 +1648,7 @@ name|duplLabel
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1976,7 +1930,7 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2091,7 +2045,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2117,7 +2071,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2171,7 +2125,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2192,7 +2146,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2225,7 +2179,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2800,7 +2754,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *       * @param entries      *            A Collection of BibtexEntry instances.      * @param entry      *            The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
+comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entries A Collection of BibtexEntry instances.      * @param entry   The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
 DECL|method|internalDuplicate (Collection<BibtexEntry> entries, BibtexEntry entry)
 specifier|private
 name|BibtexEntry
@@ -3076,7 +3030,7 @@ comment|//Select first row in the table
 block|}
 block|}
 block|}
-comment|/**      * This method returns a List containing all entries that are selected      * (checkbox checked).      *       * @return a List containing the selected entries.      */
+comment|/**      * This method returns a List containing all entries that are selected      * (checkbox checked).      *      * @return a List containing the selected entries.      */
 DECL|method|getSelectedEntries ()
 specifier|private
 name|List
@@ -3219,8 +3173,6 @@ name|MetaData
 argument_list|()
 expr_stmt|;
 block|}
-try|try
-block|{
 name|entry
 operator|.
 name|setId
@@ -3239,19 +3191,6 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 comment|// Generate a unique key:
 name|LabelPatternUtil
 operator|.
@@ -3388,9 +3327,6 @@ range|:
 name|entries
 control|)
 block|{
-comment|// if (newDatabase) {
-try|try
-block|{
 name|entry
 operator|.
 name|setId
@@ -3408,20 +3344,6 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-comment|// }
 name|LabelPatternUtil
 operator|.
 name|makeLabel
@@ -3971,14 +3893,14 @@ init|=
 operator|new
 name|CheckBoxMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"There are possible duplicates (marked with a 'D' icon) that haven't been resolved. Continue?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4001,7 +3923,7 @@ name|this
 argument_list|,
 name|cbm
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4357,7 +4279,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -4381,14 +4303,14 @@ name|ImportInspectionDialog
 operator|.
 name|this
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Cannot add entries to group without generating keys. Generate keys now?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4430,7 +4352,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|BibtexFields
+name|BibtexEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -4511,8 +4433,6 @@ block|}
 block|}
 block|}
 block|}
-try|try
-block|{
 name|entry
 operator|.
 name|setId
@@ -4551,19 +4471,6 @@ name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 name|ce
 operator|.
@@ -4633,7 +4540,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4655,7 +4562,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4968,7 +4875,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5022,8 +4929,6 @@ class|class
 name|DeleteListener
 extends|extends
 name|AbstractAction
-implements|implements
-name|ActionListener
 block|{
 DECL|method|DeleteListener ()
 specifier|public
@@ -5032,7 +4937,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5451,7 +5356,9 @@ operator|.
 name|getPoint
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|int
 name|row
 init|=
 name|glTable
@@ -5642,7 +5549,7 @@ name|MouseEvent
 name|e
 parameter_list|)
 block|{          }
-comment|/**          * Show right-click menu. If the click happened in an icon column that          * presents its own popup menu, show that. Otherwise, show the ordinary          * popup menu.          *           * @param e          *            The mouse event that triggered the popup.          */
+comment|/**          * Show right-click menu. If the click happened in an icon column that          * presents its own popup menu, show that. Otherwise, show the ordinary          * popup menu.          *          * @param e The mouse event that triggered the popup.          */
 DECL|method|showPopup (MouseEvent e)
 specifier|public
 name|void
@@ -5716,7 +5623,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Show the popup menu for the FILE field.          *           * @param e          *            The mouse event that triggered the popup.          */
+comment|/**          * Show the popup menu for the FILE field.          *          * @param e The mouse event that triggered the popup.          */
 DECL|method|showFileFieldMenu (MouseEvent e)
 specifier|public
 name|void
@@ -5934,7 +5841,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**          * Open old-style external links after user clicks icon.          *           * @param fieldName          *            The name of the BibTeX field this icon is used for.          * @param e          *            The MouseEvent that triggered this operation.          */
+comment|/**          * Open old-style external links after user clicks icon.          *          * @param fieldName The name of the BibTeX field this icon is used for.          * @param e         The MouseEvent that triggered this operation.          */
 DECL|method|openExternalLink (String fieldName, MouseEvent e)
 specifier|public
 name|void
@@ -5990,7 +5897,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|Util
+name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(
@@ -6092,7 +5999,9 @@ operator|.
 name|getPoint
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|int
 name|row
 init|=
 name|glTable
@@ -6462,7 +6371,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6526,7 +6435,7 @@ name|ImportInspectionDialog
 operator|.
 name|this
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6621,8 +6530,6 @@ block|{
 DECL|field|entry
 name|BibtexEntry
 name|entry
-init|=
-literal|null
 decl_stmt|;
 DECL|method|DownloadFile ()
 specifier|public
@@ -6631,7 +6538,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6707,14 +6614,14 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"This entry has no BibTeX key. Generate key now?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6910,7 +6817,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6988,14 +6895,14 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"This entry has no BibTeX key. Generate key now?"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7193,8 +7100,6 @@ block|{
 DECL|field|entry
 name|BibtexEntry
 name|entry
-init|=
-literal|null
 decl_stmt|;
 DECL|method|LinkLocalFile ()
 specifier|public
@@ -7203,7 +7108,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7522,7 +7427,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8199,7 +8104,7 @@ literal|0
 condition|)
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8217,7 +8122,7 @@ block|{
 return|return
 name|StringUtil
 operator|.
-name|nCase
+name|capitalizeFirst
 argument_list|(
 name|fields
 index|[

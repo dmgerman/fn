@@ -26,6 +26,24 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|strings
+operator|.
+name|NameListNormalizer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit

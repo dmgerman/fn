@@ -18,26 +18,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|lang
-operator|.
-name|Integer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|Math
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Collection
@@ -62,7 +42,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
+name|importer
 operator|.
 name|*
 import|;
@@ -75,6 +55,24 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
 operator|.
 name|search
 operator|.
@@ -90,9 +88,43 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|search
 operator|.
 name|SearchRule
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
 import|;
 end_import
 
@@ -120,8 +152,6 @@ DECL|field|base
 specifier|private
 name|BibtexDatabase
 name|base
-init|=
-literal|null
 decl_stmt|;
 DECL|method|SearchManagerNoGUI (String term, BibtexDatabase dataBase)
 specifier|public
@@ -226,7 +256,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -319,7 +349,6 @@ return|return
 name|base
 return|;
 block|}
-comment|//end getDBfromMatches()
 DECL|method|specifiedYears ()
 specifier|private
 name|boolean
@@ -345,7 +374,8 @@ name|String
 name|regPt1
 init|=
 literal|""
-decl_stmt|,
+decl_stmt|;
+name|String
 name|regPt2
 init|=
 literal|""
@@ -359,12 +389,13 @@ name|boolean
 name|reg1Set
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+comment|//if beginning of timeframe is BEFORE and end of timeframe is AFTER turn of the century
+name|boolean
 name|reg2Set
 init|=
 literal|false
 decl_stmt|;
-comment|//if beginning of timeframe is BEFORE and end of timeframe is AFTER turn of the century
 name|String
 index|[]
 name|searchTermsToPr
@@ -426,17 +457,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|year1
 operator|<
 literal|2000
-operator|)
 operator|&&
-operator|(
 name|year2
 operator|>=
 literal|2000
-operator|)
 condition|)
 block|{
 comment|//for 199.
@@ -472,6 +499,7 @@ operator|<
 literal|2000
 condition|)
 block|{
+comment|// @formatter:off
 name|regPt1
 operator|=
 literal|"199+["
@@ -520,11 +548,11 @@ name|reg1Set
 operator|=
 literal|true
 expr_stmt|;
+comment|// @formatter:on
 block|}
 block|}
 if|if
 condition|(
-operator|(
 name|Integer
 operator|.
 name|parseInt
@@ -536,13 +564,10 @@ index|]
 argument_list|)
 operator|>=
 literal|2000
-operator|)
 operator|&&
-operator|(
 name|year1
 operator|<
 literal|2000
-operator|)
 condition|)
 block|{
 comment|//for 200.
@@ -578,6 +603,7 @@ operator|>=
 literal|2000
 condition|)
 block|{
+comment|// @formatter:off
 name|regPt2
 operator|=
 literal|"200+["
@@ -622,6 +648,7 @@ argument_list|)
 operator|+
 literal|"]"
 expr_stmt|;
+comment|// @formatter:on
 name|reg2Set
 operator|=
 literal|true

@@ -38,7 +38,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|JabRefFrame
 import|;
 end_import
 
@@ -50,7 +52,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -355,8 +361,6 @@ DECL|field|moreThanOne
 specifier|public
 name|boolean
 name|moreThanOne
-init|=
-literal|false
 decl_stmt|;
 comment|// EXPORT
 DECL|field|selectedDB
@@ -370,15 +374,11 @@ DECL|field|hasDBSelected
 specifier|public
 name|boolean
 name|hasDBSelected
-init|=
-literal|false
 decl_stmt|;
 DECL|field|removeAction
 specifier|public
 name|boolean
 name|removeAction
-init|=
-literal|false
 decl_stmt|;
 DECL|field|selectedInt
 specifier|public
@@ -519,7 +519,7 @@ condition|)
 block|{
 name|dialogTitle
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -528,7 +528,7 @@ argument_list|)
 expr_stmt|;
 name|dialogTopMessage
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -603,7 +603,7 @@ else|else
 block|{
 name|dialogTitle
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -612,7 +612,7 @@ argument_list|)
 expr_stmt|;
 name|dialogTopMessage
 operator|=
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -861,7 +861,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -875,7 +875,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -918,7 +918,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -944,7 +944,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1213,13 +1213,10 @@ return|return
 name|this
 operator|.
 name|dialogType
-operator|.
-name|equals
-argument_list|(
+operator|==
 name|DialogType
 operator|.
 name|IMPORTER
-argument_list|)
 return|;
 block|}
 DECL|method|isExporter ()
@@ -1232,13 +1229,10 @@ return|return
 name|this
 operator|.
 name|dialogType
-operator|.
-name|equals
-argument_list|(
+operator|==
 name|DialogType
 operator|.
 name|EXPORTER
-argument_list|)
 return|;
 block|}
 DECL|method|getDiag ()

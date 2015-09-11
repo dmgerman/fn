@@ -20,6 +20,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -31,6 +35,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|database
 operator|.
 name|DatabaseChangeEvent
 import|;
@@ -44,19 +52,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|database
+operator|.
 name|DatabaseChangeListener
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
 import|;
 end_import
 
@@ -80,9 +80,27 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|undo
 operator|.
 name|NamedCompound
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -99,8 +117,6 @@ specifier|private
 specifier|static
 name|SpecialFieldDatabaseChangeListener
 name|INSTANCE
-init|=
-literal|null
 decl_stmt|;
 annotation|@
 name|Override
@@ -115,7 +131,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|e
 operator|.
 name|getType
@@ -126,7 +141,6 @@ operator|.
 name|ChangeType
 operator|.
 name|ADDED_ENTRY
-operator|)
 operator|&&
 name|SpecialFieldsUtils
 operator|.
@@ -150,7 +164,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

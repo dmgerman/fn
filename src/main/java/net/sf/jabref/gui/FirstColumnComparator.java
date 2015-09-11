@@ -34,6 +34,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -45,6 +49,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|database
 operator|.
 name|BibtexDatabase
 import|;
@@ -99,7 +107,8 @@ name|int
 name|score1
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+name|int
 name|score2
 init|=
 literal|0

@@ -146,6 +146,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -170,6 +172,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -181,6 +185,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|MnemonicAwareAction
 import|;
@@ -214,6 +220,22 @@ name|ButtonStackBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_comment
 comment|/**  * Editor for external file types.  */
 end_comment
@@ -230,15 +252,11 @@ DECL|field|frame
 specifier|private
 name|JFrame
 name|frame
-init|=
-literal|null
 decl_stmt|;
 DECL|field|dialog
 specifier|private
 name|JDialog
 name|dialog
-init|=
-literal|null
 decl_stmt|;
 DECL|field|fileTypes
 specifier|private
@@ -257,8 +275,6 @@ DECL|field|entryEditor
 specifier|private
 name|ExternalFileTypeEntryEditor
 name|entryEditor
-init|=
-literal|null
 decl_stmt|;
 DECL|field|tableModel
 specifier|private
@@ -274,7 +290,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -291,7 +307,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -359,7 +375,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -389,7 +405,7 @@ name|super
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -421,7 +437,7 @@ name|super
 argument_list|(
 name|dialog
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1338,12 +1354,11 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|fileTypes
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|int
@@ -1572,7 +1587,7 @@ case|case
 literal|1
 case|:
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1583,7 +1598,7 @@ case|case
 literal|2
 case|:
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1594,7 +1609,7 @@ case|case
 literal|3
 case|:
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1605,7 +1620,7 @@ case|case
 literal|4
 case|:
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1833,21 +1848,15 @@ DECL|field|frame
 specifier|private
 name|JabRefFrame
 name|frame
-init|=
-literal|null
 decl_stmt|;
 DECL|field|dialog
 specifier|private
 name|JDialog
 name|dialog
-init|=
-literal|null
 decl_stmt|;
 DECL|field|editor
 name|ExternalFileTypeEditor
 name|editor
-init|=
-literal|null
 decl_stmt|;
 DECL|method|EditExternalFileTypesAction (JabRefFrame frame)
 specifier|public

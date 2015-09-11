@@ -104,20 +104,6 @@ name|UIManager
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|autocompleter
-operator|.
-name|AutoCompleter
-import|;
-end_import
-
 begin_comment
 comment|/**  * A text field which displays a predefined text (e.g. "Search") if it has not the focus and no text is entered.  * Implementation based on https://gmigdos.wordpress.com/2010/03/30/java-a-custom-jtextfield-for-searching/  */
 end_comment

@@ -24,21 +24,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
 operator|.
+name|io
+operator|.
 name|FileUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
 import|;
 end_import
 
@@ -100,16 +92,6 @@ name|IOException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
 begin_comment
 comment|/**  * This thread monitors a set of files, each associated with a FileUpdateListener, for changes  * in the file's last modification time stamp. The  */
 end_comment
@@ -151,8 +133,6 @@ DECL|field|numberOfUpdateListener
 specifier|private
 name|int
 name|numberOfUpdateListener
-init|=
-literal|0
 decl_stmt|;
 DECL|field|entries
 specifier|private
@@ -556,10 +536,11 @@ name|File
 name|tmpFile
 decl_stmt|;
 DECL|field|timeStamp
-DECL|field|fileSize
 name|long
 name|timeStamp
-decl_stmt|,
+decl_stmt|;
+DECL|field|fileSize
+name|long
 name|fileSize
 decl_stmt|;
 DECL|method|Entry (FileUpdateListener ul, File f)
@@ -652,17 +633,13 @@ argument_list|)
 throw|;
 block|}
 return|return
-operator|(
 name|timeStamp
 operator|!=
 name|modified
-operator|)
 operator|||
-operator|(
 name|fileSize
 operator|!=
 name|fileSizeNow
-operator|)
 return|;
 block|}
 DECL|method|updateTimeStamp ()

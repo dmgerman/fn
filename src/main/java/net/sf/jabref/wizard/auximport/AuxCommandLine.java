@@ -56,6 +56,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|database
+operator|.
 name|BibtexDatabase
 import|;
 end_import
@@ -68,7 +72,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -80,7 +88,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|strings
 operator|.
 name|StringUtil
 import|;
@@ -144,20 +156,15 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
-operator|(
+operator|!
 name|auxName
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
-operator|)
 operator|&&
-operator|(
 name|bib
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 name|AuxSubGenerator
@@ -199,7 +206,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -220,7 +227,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -241,7 +248,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -272,7 +279,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -318,7 +325,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

@@ -100,19 +100,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|logic
 operator|.
-name|sf
+name|l10n
 operator|.
-name|jabref
-operator|.
-name|Globals
+name|Localization
 import|;
 end_import
 
@@ -132,8 +124,6 @@ DECL|field|popupMenu
 specifier|private
 name|JPopupMenu
 name|popupMenu
-init|=
-literal|null
 decl_stmt|;
 DECL|method|DragDropPopupPane (AbstractAction manageSelectorsAction, AbstractAction databasePropertiesAction, AbstractAction bibtexKeyPatternAction)
 specifier|public
@@ -220,7 +210,7 @@ init|=
 operator|new
 name|JMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -248,7 +238,7 @@ init|=
 operator|new
 name|JMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -276,7 +266,7 @@ init|=
 operator|new
 name|JMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -304,7 +294,7 @@ init|=
 operator|new
 name|JMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -382,7 +372,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|e
 operator|.
 name|getButton
@@ -391,16 +380,13 @@ operator|!=
 name|MouseEvent
 operator|.
 name|BUTTON1
-operator|)
 operator|&&
-operator|(
 name|e
 operator|.
 name|getClickCount
 argument_list|()
 operator|==
 literal|1
-operator|)
 condition|)
 block|{
 comment|// if is right-click

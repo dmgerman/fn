@@ -112,6 +112,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -196,6 +198,38 @@ name|FormLayout
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class produces a dialog box for editing an external file type.  */
 end_comment
@@ -210,15 +244,11 @@ DECL|field|fParent
 specifier|private
 name|JFrame
 name|fParent
-init|=
-literal|null
 decl_stmt|;
 DECL|field|dParent
 specifier|private
 name|JDialog
 name|dParent
-init|=
-literal|null
 decl_stmt|;
 DECL|field|diag
 specifier|private
@@ -269,8 +299,6 @@ DECL|field|selectedIcon
 specifier|private
 name|String
 name|selectedIcon
-init|=
-literal|null
 decl_stmt|;
 DECL|field|icon
 specifier|private
@@ -298,7 +326,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -315,7 +343,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -332,7 +360,7 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -359,7 +387,7 @@ name|emptyMessage
 init|=
 literal|"<"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -371,8 +399,6 @@ decl_stmt|;
 DECL|field|applicationFieldEmpty
 name|boolean
 name|applicationFieldEmpty
-init|=
-literal|false
 decl_stmt|;
 DECL|field|entry
 specifier|private
@@ -383,8 +409,6 @@ DECL|field|okPressed
 specifier|private
 name|boolean
 name|okPressed
-init|=
-literal|false
 decl_stmt|;
 DECL|method|ExternalFileTypeEntryEditor (JFrame parent, ExternalFileType entry)
 specifier|public
@@ -490,7 +514,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -514,7 +538,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -538,7 +562,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -562,7 +586,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -607,7 +631,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -621,7 +645,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -631,9 +655,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|builder
@@ -955,9 +979,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|application
@@ -986,10 +1010,8 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|useDefault
@@ -1077,7 +1099,7 @@ name|JDialog
 argument_list|(
 name|dParent
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1097,7 +1119,7 @@ name|JDialog
 argument_list|(
 name|fParent
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1306,17 +1328,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|application
 operator|.
 name|getText
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
-operator|)
 condition|)
 block|{
 name|useDefault
@@ -1391,16 +1409,12 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
+operator|!
 name|ext
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
-operator|)
 operator|&&
-operator|(
 name|ext
 operator|.
 name|charAt
@@ -1409,7 +1423,6 @@ literal|0
 argument_list|)
 operator|==
 literal|'.'
-operator|)
 condition|)
 block|{
 name|entry
@@ -1453,9 +1466,9 @@ block|}
 if|if
 condition|(
 operator|!
-name|Globals
+name|OS
 operator|.
-name|ON_WIN
+name|WINDOWS
 condition|)
 block|{
 name|entry
@@ -1483,7 +1496,6 @@ operator|.
 name|isSelected
 argument_list|()
 operator|||
-operator|(
 name|application
 operator|.
 name|getText
@@ -1492,11 +1504,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
-operator|)
 condition|)
 block|{
 name|entry
@@ -1601,10 +1610,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 comment|// Nothing in the field. Go to the last file dir used:

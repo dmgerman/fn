@@ -83,6 +83,7 @@ name|int
 name|i
 parameter_list|)
 block|{
+comment|// @formatter:off
 return|return
 literal|"@article{einstein1916grundlage"
 operator|+
@@ -108,6 +109,7 @@ literal|"  publisher={Wiley Online Library}\n"
 operator|+
 literal|"}\n"
 return|;
+comment|// @formatter:on
 block|}
 block|}
 end_class

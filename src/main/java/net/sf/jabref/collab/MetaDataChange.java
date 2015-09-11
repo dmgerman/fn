@@ -24,6 +24,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|BasePanel
 import|;
 end_import
@@ -35,6 +37,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|database
 operator|.
 name|BibtexDatabase
 import|;
@@ -60,7 +66,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|undo
+operator|.
+name|NamedCompound
 import|;
 end_import
 
@@ -72,9 +82,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|undo
+name|logic
 operator|.
-name|NamedCompound
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -209,7 +221,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -235,7 +247,7 @@ name|setText
 argument_list|(
 literal|"<html>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -367,7 +379,7 @@ name|StringBuilder
 argument_list|(
 literal|"<html>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

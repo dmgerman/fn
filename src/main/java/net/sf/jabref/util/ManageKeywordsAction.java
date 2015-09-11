@@ -262,6 +262,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|BasePanel
 import|;
 end_import
@@ -273,6 +275,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|entry
 operator|.
 name|BibtexEntry
 import|;
@@ -310,6 +316,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -322,6 +330,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|MnemonicAwareAction
 import|;
 end_import
@@ -333,6 +343,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|autocompleter
 operator|.
@@ -351,6 +363,22 @@ operator|.
 name|gui
 operator|.
 name|AutoCompleteListener
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -460,6 +488,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|undo
 operator|.
 name|NamedCompound
@@ -530,8 +560,6 @@ DECL|field|diag
 specifier|private
 name|JDialog
 name|diag
-init|=
-literal|null
 decl_stmt|;
 comment|// keyword to add
 DECL|field|keyword
@@ -550,11 +578,13 @@ name|JList
 name|keywordList
 decl_stmt|;
 DECL|field|intersectKeywords
-DECL|field|mergeKeywords
 specifier|private
 name|JRadioButton
 name|intersectKeywords
-decl_stmt|,
+decl_stmt|;
+DECL|field|mergeKeywords
+specifier|private
+name|JRadioButton
 name|mergeKeywords
 decl_stmt|;
 DECL|field|cancelled
@@ -651,7 +681,7 @@ name|JDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -667,7 +697,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -681,7 +711,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -695,7 +725,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -709,7 +739,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -824,7 +854,7 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1120,16 +1150,13 @@ argument_list|)
 decl_stmt|;
 while|while
 condition|(
-operator|(
 name|idx
 operator|<
 name|keywordListModel
 operator|.
 name|size
 argument_list|()
-operator|)
 operator|&&
-operator|(
 name|element
 operator|.
 name|compareTo
@@ -1138,7 +1165,6 @@ name|text
 argument_list|)
 operator|<
 literal|0
-operator|)
 condition|)
 block|{
 name|idx
@@ -2062,7 +2088,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2300,12 +2326,10 @@ block|}
 else|else
 block|{
 assert|assert
-operator|(
 name|intersectKeywords
 operator|.
 name|isSelected
 argument_list|()
-operator|)
 assert|;
 comment|// all keywords from first entry have to be added
 name|BibtexEntry

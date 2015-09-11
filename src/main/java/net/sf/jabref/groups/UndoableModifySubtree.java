@@ -58,7 +58,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -72,12 +76,15 @@ name|AbstractUndoableEdit
 block|{
 comment|/** A backup of the groups before the modification */
 DECL|field|m_groupRoot
-DECL|field|m_subtreeBackup
 specifier|private
 specifier|final
 name|GroupTreeNode
 name|m_groupRoot
-decl_stmt|,
+decl_stmt|;
+DECL|field|m_subtreeBackup
+specifier|private
+specifier|final
+name|GroupTreeNode
 name|m_subtreeBackup
 decl_stmt|;
 comment|/** The path to the global groups root node */
@@ -178,7 +185,7 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -200,7 +207,7 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(

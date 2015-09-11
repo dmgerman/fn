@@ -80,6 +80,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -130,8 +134,6 @@ DECL|field|includeCiteKeyword
 specifier|private
 name|boolean
 name|includeCiteKeyword
-init|=
-literal|false
 decl_stmt|;
 static|static
 block|{
@@ -253,11 +255,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|i
 operator|+
 literal|1
-operator|)
 operator|<
 name|selectedEntries
 operator|.

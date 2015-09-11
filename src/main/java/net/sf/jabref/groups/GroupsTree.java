@@ -220,6 +220,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -318,8 +322,6 @@ specifier|private
 specifier|static
 name|long
 name|lastDragAutoscroll
-init|=
-literal|0L
 decl_stmt|;
 comment|/** minimum interval between two autoscroll events (for limiting speed). */
 DECL|field|minAutoscrollInterval
@@ -342,8 +344,6 @@ DECL|field|idleStartTime
 specifier|private
 name|long
 name|idleStartTime
-init|=
-literal|0L
 decl_stmt|;
 comment|/** max. distance cursor may move in x or y direction while idling. */
 DECL|field|idleMargin
@@ -375,8 +375,6 @@ DECL|field|dragNode
 specifier|private
 name|GroupTreeNode
 name|dragNode
-init|=
-literal|null
 decl_stmt|;
 DECL|field|cellRenderer
 specifier|private
@@ -621,11 +619,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|target
 operator|==
 literal|null
-operator|)
 operator|||
 name|dragNode
 operator|.
@@ -634,11 +630,9 @@ argument_list|(
 name|target
 argument_list|)
 operator|||
-operator|(
 name|dragNode
 operator|==
 name|target
-operator|)
 condition|)
 block|{
 name|dsde
@@ -905,7 +899,6 @@ block|}
 comment|// auto open
 if|if
 condition|(
-operator|(
 name|Math
 operator|.
 name|abs
@@ -922,9 +915,7 @@ operator|<
 name|GroupsTree
 operator|.
 name|idleMargin
-operator|)
 operator|&&
-operator|(
 name|Math
 operator|.
 name|abs
@@ -941,16 +932,13 @@ operator|<
 name|GroupsTree
 operator|.
 name|idleMargin
-operator|)
 condition|)
 block|{
 if|if
 condition|(
-operator|(
 name|currentTime
 operator|-
 name|idleStartTime
-operator|)
 operator|>=
 name|GroupsTree
 operator|.
@@ -986,13 +974,11 @@ block|}
 comment|// autoscrolling
 if|if
 condition|(
-operator|(
 name|currentTime
 operator|-
 name|GroupsTree
 operator|.
 name|lastDragAutoscroll
-operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -1012,7 +998,6 @@ specifier|final
 name|boolean
 name|scrollUp
 init|=
-operator|(
 name|cursor
 operator|.
 name|y
@@ -1020,7 +1005,6 @@ operator|-
 name|r
 operator|.
 name|y
-operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -1030,8 +1014,6 @@ specifier|final
 name|boolean
 name|scrollDown
 init|=
-operator|(
-operator|(
 name|r
 operator|.
 name|y
@@ -1039,12 +1021,10 @@ operator|+
 name|r
 operator|.
 name|height
-operator|)
 operator|-
 name|cursor
 operator|.
 name|y
-operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -1054,7 +1034,6 @@ specifier|final
 name|boolean
 name|scrollLeft
 init|=
-operator|(
 name|cursor
 operator|.
 name|x
@@ -1062,7 +1041,6 @@ operator|-
 name|r
 operator|.
 name|x
-operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -1072,8 +1050,6 @@ specifier|final
 name|boolean
 name|scrollRight
 init|=
-operator|(
-operator|(
 name|r
 operator|.
 name|x
@@ -1081,12 +1057,10 @@ operator|+
 name|r
 operator|.
 name|width
-operator|)
 operator|-
 name|cursor
 operator|.
 name|x
-operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -2093,7 +2067,8 @@ comment|// nothing to sort
 block|}
 name|GroupTreeNode
 name|child1
-decl_stmt|,
+decl_stmt|;
+name|GroupTreeNode
 name|child2
 decl_stmt|;
 name|int
@@ -2350,12 +2325,10 @@ argument_list|(
 operator|new
 name|TreePath
 argument_list|(
-operator|(
 name|e
 operator|.
 name|nextElement
 argument_list|()
-operator|)
 operator|.
 name|getPath
 argument_list|()

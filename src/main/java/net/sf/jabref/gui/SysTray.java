@@ -24,31 +24,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|logic
 operator|.
-name|sf
+name|l10n
 operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefFrame
+name|Localization
 import|;
 end_import
 
@@ -142,8 +122,6 @@ DECL|field|tray
 specifier|private
 name|SystemTray
 name|tray
-init|=
-literal|null
 decl_stmt|;
 DECL|method|SysTray (JabRefFrame frame)
 specifier|public
@@ -214,7 +192,7 @@ init|=
 operator|new
 name|MenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -255,7 +233,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"/images/JabRef-icon-48.png"
+literal|"/images/icons/JabRef-icon-48.png"
 argument_list|)
 argument_list|)
 decl_stmt|;

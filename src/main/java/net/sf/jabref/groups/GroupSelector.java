@@ -478,6 +478,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|worker
+operator|.
 name|AbstractWorker
 import|;
 end_import
@@ -489,6 +493,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|BasePanel
 import|;
@@ -502,6 +508,10 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -513,6 +523,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|GUIGlobals
 import|;
@@ -537,6 +549,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|JabRefFrame
 import|;
@@ -606,6 +620,24 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|search
 operator|.
 name|rules
@@ -622,6 +654,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|search
 operator|.
 name|SearchRule
@@ -636,6 +670,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|SidePaneComponent
 import|;
 end_import
@@ -648,6 +684,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|SidePaneManager
 import|;
 end_import
@@ -659,6 +697,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|help
 operator|.
@@ -673,6 +713,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|search
 operator|.
@@ -692,6 +734,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|search
 operator|.
 name|rules
@@ -709,6 +753,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|undo
 operator|.
@@ -836,7 +882,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -913,7 +959,7 @@ init|=
 operator|new
 name|JRadioButtonMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -932,7 +978,7 @@ init|=
 operator|new
 name|JRadioButtonMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -951,7 +997,7 @@ init|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -970,7 +1016,7 @@ init|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -989,7 +1035,7 @@ init|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1007,7 +1053,7 @@ init|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1024,7 +1070,7 @@ init|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1041,7 +1087,7 @@ init|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1128,7 +1174,7 @@ argument_list|(
 literal|"toggleGroups"
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1159,7 +1205,7 @@ operator|=
 operator|new
 name|JRadioButtonMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1184,7 +1230,7 @@ operator|=
 operator|new
 name|JRadioButtonMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1475,7 +1521,7 @@ init|=
 operator|new
 name|JRadioButtonMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1537,7 +1583,7 @@ init|=
 operator|new
 name|JRadioButtonMenuItem
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2550,7 +2596,7 @@ name|newButton
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2562,7 +2608,7 @@ name|refresh
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2574,7 +2620,7 @@ name|andCb
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2588,7 +2634,7 @@ name|orCb
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2602,7 +2648,7 @@ name|autoGroup
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2614,7 +2660,7 @@ name|invCb
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2634,7 +2680,7 @@ name|floatCb
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2646,7 +2692,7 @@ name|highlCb
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2658,7 +2704,7 @@ name|select
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2670,7 +2716,7 @@ name|expand
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2682,7 +2728,7 @@ name|reduce
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2694,7 +2740,7 @@ name|editModeCb
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -2908,7 +2954,7 @@ name|helpButton
 operator|.
 name|setToolTipText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -3683,16 +3729,13 @@ return|return;
 block|}
 if|if
 condition|(
-operator|(
 name|e
 operator|.
 name|getClickCount
 argument_list|()
 operator|==
 literal|2
-operator|)
 operator|&&
-operator|(
 name|e
 operator|.
 name|getButton
@@ -3701,7 +3744,6 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON1
-operator|)
 condition|)
 block|{
 comment|// edit
@@ -3717,16 +3759,13 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
 name|e
 operator|.
 name|getClickCount
 argument_list|()
 operator|==
 literal|1
-operator|)
 operator|&&
-operator|(
 name|e
 operator|.
 name|getButton
@@ -3735,7 +3774,6 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON1
-operator|)
 condition|)
 block|{
 name|annotationEvent
@@ -4572,7 +4610,7 @@ name|this
 operator|.
 name|setTitle
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -4692,9 +4730,6 @@ argument_list|(
 literal|"Removing entry "
 operator|+
 name|entry
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|toRemove
@@ -4714,9 +4749,6 @@ argument_list|(
 literal|"Adding entry "
 operator|+
 name|entry
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|toAdd
@@ -4857,20 +4889,16 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|groupsTree
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|groupsTree
 operator|.
 name|getSelectionCount
 argument_list|()
 operator|==
 literal|0
-operator|)
 condition|)
 block|{
 return|return;
@@ -4893,19 +4921,17 @@ call|(
 name|GroupTreeNode
 call|)
 argument_list|(
-operator|(
 name|groupsTree
 operator|.
 name|getSelectionPaths
 argument_list|()
-operator|)
+argument_list|)
 index|[
 literal|0
 index|]
 operator|.
 name|getLastPathComponent
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|updateGroupContent
 argument_list|(
@@ -4929,9 +4955,6 @@ argument_list|(
 literal|"Performing annotation "
 operator|+
 name|node
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -4996,30 +5019,22 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
 name|selection
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|selection
 operator|.
 name|length
 operator|==
 literal|0
-operator|)
 operator|||
-operator|(
-operator|(
 name|selection
 operator|.
 name|length
 operator|==
 literal|1
-operator|)
 operator|&&
-operator|(
 operator|(
 operator|(
 name|GroupTreeNode
@@ -5037,8 +5052,6 @@ name|getGroup
 argument_list|()
 operator|instanceof
 name|AllEntriesGroup
-operator|)
-operator|)
 condition|)
 block|{
 name|panel
@@ -5073,7 +5086,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5261,8 +5274,6 @@ decl_stmt|;
 DECL|field|hits
 name|int
 name|hits
-init|=
-literal|0
 decl_stmt|;
 DECL|method|GroupingWorker (SearchRule rules, String searchTerm)
 specifier|public
@@ -5439,7 +5450,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -5747,7 +5758,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6041,8 +6052,6 @@ block|{
 DECL|field|m_node
 name|GroupTreeNode
 name|m_node
-init|=
-literal|null
 decl_stmt|;
 DECL|method|NodeAction (String s)
 specifier|public
@@ -6330,7 +6339,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6508,7 +6517,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6538,7 +6547,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6725,7 +6734,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6754,7 +6763,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6895,7 +6904,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6924,7 +6933,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6969,7 +6978,7 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -6981,7 +6990,7 @@ name|getName
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7049,7 +7058,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7079,7 +7088,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7124,7 +7133,7 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7136,7 +7145,7 @@ name|getName
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7203,7 +7212,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7233,7 +7242,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7278,7 +7287,7 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7290,7 +7299,7 @@ name|getName
 argument_list|()
 argument_list|)
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7407,7 +7416,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7450,7 +7459,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7493,7 +7502,7 @@ argument_list|()
 argument_list|,
 name|node
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7528,7 +7537,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7552,7 +7561,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7595,7 +7604,7 @@ argument_list|()
 argument_list|,
 name|node
 argument_list|,
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7631,7 +7640,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7650,7 +7659,7 @@ init|=
 operator|new
 name|AbstractAction
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7692,7 +7701,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7763,7 +7772,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7834,7 +7843,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7884,7 +7893,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7934,7 +7943,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -7984,7 +7993,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8052,7 +8061,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8078,7 +8087,6 @@ name|canMoveUp
 argument_list|()
 operator|||
 operator|(
-operator|(
 name|undo
 operator|=
 name|node
@@ -8092,14 +8100,13 @@ argument_list|)
 operator|)
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8186,7 +8193,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8212,7 +8219,6 @@ name|canMoveDown
 argument_list|()
 operator|||
 operator|(
-operator|(
 name|undo
 operator|=
 name|node
@@ -8226,14 +8232,13 @@ argument_list|)
 operator|)
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8320,7 +8325,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8346,7 +8351,6 @@ name|canMoveLeft
 argument_list|()
 operator|||
 operator|(
-operator|(
 name|undo
 operator|=
 name|node
@@ -8360,14 +8364,13 @@ argument_list|)
 operator|)
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8453,7 +8456,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8479,7 +8482,6 @@ name|canMoveRight
 argument_list|()
 operator|||
 operator|(
-operator|(
 name|undo
 operator|=
 name|node
@@ -8493,14 +8495,13 @@ argument_list|)
 operator|)
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8585,7 +8586,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8628,7 +8629,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8693,7 +8694,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8710,7 +8711,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8738,7 +8739,7 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8755,7 +8756,7 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -8998,19 +8999,15 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|entries
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
 name|entries
 operator|.
 name|length
 operator|==
 literal|0
-operator|)
 condition|)
 block|{
 comment|// nothing selected
@@ -9147,13 +9144,11 @@ if|if
 condition|(
 name|requireAll
 operator|&&
-operator|(
 name|i
 operator|>=
 name|entries
 operator|.
 name|length
-operator|)
 condition|)
 comment|// did not break from loop
 block|{

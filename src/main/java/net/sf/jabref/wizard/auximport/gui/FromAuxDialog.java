@@ -256,6 +256,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|BasePanel
 import|;
 end_import
@@ -267,6 +269,10 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|model
+operator|.
+name|database
 operator|.
 name|BibtexDatabase
 import|;
@@ -280,19 +286,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
 import|;
 end_import
 
@@ -315,6 +313,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|JabRefFrame
 import|;
@@ -345,6 +345,22 @@ operator|.
 name|gui
 operator|.
 name|MainTable
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -510,8 +526,6 @@ DECL|field|generatePressed
 specifier|private
 name|boolean
 name|generatePressed
-init|=
-literal|false
 decl_stmt|;
 DECL|field|auxParser
 specifier|private
@@ -617,7 +631,7 @@ name|selectInDBButton
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -665,7 +679,7 @@ name|generateButton
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -695,7 +709,7 @@ name|cancelButton
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -718,7 +732,7 @@ name|parseButton
 operator|.
 name|setText
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -837,7 +851,7 @@ name|this
 operator|.
 name|setTitle
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -853,7 +867,7 @@ name|JLabel
 argument_list|(
 literal|"<html><h3>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -862,7 +876,7 @@ argument_list|)
 operator|+
 literal|"</h3><p>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -875,7 +889,7 @@ literal|"</p>"
 operator|+
 literal|"<p>"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1154,7 +1168,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1242,7 +1256,7 @@ name|b
 operator|.
 name|appendSeparator
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1254,7 +1268,7 @@ name|b
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1282,7 +1296,7 @@ name|b
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1347,7 +1361,7 @@ name|b
 operator|.
 name|appendSeparator
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1359,7 +1373,7 @@ name|b
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1373,7 +1387,7 @@ name|b
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1608,20 +1622,15 @@ condition|)
 block|{
 if|if
 condition|(
-operator|(
 name|refBase
 operator|!=
 literal|null
-operator|)
 operator|&&
-operator|(
+operator|!
 name|auxName
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
-operator|)
 condition|)
 block|{
 name|auxParser
@@ -1647,7 +1656,7 @@ name|statusInfos
 operator|.
 name|append
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1668,7 +1677,7 @@ name|append
 argument_list|(
 literal|"\n"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1689,7 +1698,7 @@ name|append
 argument_list|(
 literal|"\n"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1710,7 +1719,7 @@ name|append
 argument_list|(
 literal|"\n"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1731,7 +1740,7 @@ name|append
 argument_list|(
 literal|"\n"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1767,7 +1776,7 @@ name|append
 argument_list|(
 literal|"\n"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1816,7 +1825,7 @@ name|append
 argument_list|(
 literal|"\n"
 operator|+
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -1897,7 +1906,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
