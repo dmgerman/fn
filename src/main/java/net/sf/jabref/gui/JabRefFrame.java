@@ -244,16 +244,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
-operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -1745,10 +1735,10 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+DECL|field|close
 specifier|private
 specifier|final
 name|AbstractAction
-DECL|field|close
 name|close
 init|=
 operator|new
@@ -4820,7 +4810,7 @@ operator|.
 name|POS_Y
 argument_list|)
 decl_stmt|;
-comment|/*             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();             GraphicsDevice[] gs = ge.getScreenDevices();               // Get size of each screen             for (int i=0; i<gs.length; i++) {                 DisplayMode dm = gs[i].getDisplayMode();                 int screenWidth = dm.getWidth();                 int screenHeight = dm.getHeight();                 System.out.println(gs[i].getDefaultConfiguration().getBounds());             }*/
+comment|/*             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();             GraphicsDevice[] gs = ge.getScreenDevices();                                       // Get size of each screen             for (int i=0; i<gs.length; i++) {                 DisplayMode dm = gs[i].getDisplayMode();                 int screenWidth = dm.getWidth();                 int screenHeight = dm.getHeight();                 System.out.println(gs[i].getDefaultConfiguration().getBounds());             }*/
 comment|//
 comment|// Fix for [ 1738920 ] Windows Position in Multi-Monitor environment
 comment|//
@@ -4933,9 +4923,11 @@ decl_stmt|;
 comment|//if (posX< )
 if|if
 condition|(
+operator|(
 name|posX
 operator|+
 name|sizeX
+operator|)
 operator|>
 name|width
 condition|)
@@ -4982,9 +4974,11 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|posY
 operator|+
 name|sizeY
+operator|)
 operator|>
 name|height
 condition|)
@@ -5230,6 +5224,8 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|JabRefFrame
+operator|.
 name|LOGGER
 operator|.
 name|fatal
@@ -5438,12 +5434,14 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|bp
 operator|.
 name|getFile
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|bp
 operator|.
@@ -5872,7 +5870,7 @@ return|return
 name|prefs
 return|;
 block|}
-comment|/**      * Tears down all things started by JabRef      *<p>      * FIXME: Currently some threads remain and therefore hinder JabRef to be closed properly      *      * @param filenames the file names of all currently opened files - used for storing them if prefs openLastEdited is set to true      */
+comment|/**      * Tears down all things started by JabRef      *<p>      * FIXME: Currently some threads remain and therefore hinder JabRef to be closed properly      *      * @param filenames the file names of all currently opened files - used for storing them if prefs openLastEdited is      *            set to true      */
 DECL|method|tearDownJabRef (Vector<String> filenames)
 specifier|private
 name|void
@@ -6237,7 +6235,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * General info dialog.  The MacAdapter calls this method when "Quit"      * is selected from the application menu, Cmd-Q is pressed, or "Quit" is selected from the Dock.      * The function returns a boolean indicating if quitting is ok or not.      *<p>      * Non-OSX JabRef calls this when choosing "Quit" from the menu      *<p>      * SIDE EFFECT: tears down JabRef      *      * @return true if the user chose to quit; false otherwise      */
+comment|/**      * General info dialog. The MacAdapter calls this method when "Quit" is selected from the application menu, Cmd-Q is      * pressed, or "Quit" is selected from the Dock. The function returns a boolean indicating if quitting is ok or not.      *<p>      * Non-OSX JabRef calls this when choosing "Quit" from the menu      *<p>      * SIDE EFFECT: tears down JabRef      *      * @return true if the user chose to quit; false otherwise      */
 DECL|method|quit ()
 specifier|public
 name|boolean
@@ -6342,17 +6340,21 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|answer
 operator|==
 name|JOptionPane
 operator|.
 name|CANCEL_OPTION
+operator|)
 operator|||
+operator|(
 name|answer
 operator|==
 name|JOptionPane
 operator|.
 name|CLOSED_OPTION
+operator|)
 condition|)
 block|{
 return|return
@@ -6697,7 +6699,7 @@ name|con
 argument_list|)
 expr_stmt|;
 comment|//getContentPane().add(lim);
-comment|/*           JPanel empt = new JPanel();           empt.setBackground(GUIGlobals.lightGray);           gbl.setConstraints(empt, con);                getContentPane().add(empt);            con.insets = new Insets(1,0,1,1);           con.anchor = GridBagConstraints.EAST;           con.weightx = 0;           gbl.setConstraints(searchManager, con);           getContentPane().add(searchManager);*/
+comment|/*           JPanel empt = new JPanel();           empt.setBackground(GUIGlobals.lightGray);           gbl.setConstraints(empt, con);                getContentPane().add(empt);                    con.insets = new Insets(1,0,1,1);           con.anchor = GridBagConstraints.EAST;           con.weightx = 0;           gbl.setConstraints(searchManager, con);           getContentPane().add(searchManager);*/
 name|con
 operator|.
 name|gridwidth
@@ -7306,14 +7308,18 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|lastTabbedPanelSelectionIndex
 operator|>
 operator|-
 literal|1
+operator|)
 operator|&&
+operator|(
 name|lastTabbedPanelSelectionIndex
 operator|<
 name|len
+operator|)
 condition|)
 block|{
 name|tabbedPane
@@ -7330,14 +7336,18 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|now
 operator|>
 operator|-
 literal|1
+operator|)
 operator|&&
+operator|(
 name|now
 operator|<
 name|len
+operator|)
 condition|)
 block|{
 name|tabbedPane
@@ -10345,7 +10355,7 @@ name|importMenu
 argument_list|,
 name|exportMenu
 argument_list|,
-comment|/* openSpires wasn't being supported so no point in supporting                  * openInspire */
+comment|/* openSpires wasn't being supported so no point in supporting          * openInspire */
 name|openPdf
 argument_list|,
 name|openUrl
@@ -10480,7 +10490,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Takes a list of Object and calls the method setEnabled on them, depending on whether it is an Action or a Component.      *      * @param list    List that should contain Actions and Components.      * @param enabled      */
+comment|/**      * Takes a list of Object and calls the method setEnabled on them, depending on whether it is an Action or a      * Component.      *      * @param list List that should contain Actions and Components.      * @param enabled      */
 DECL|method|setEnabled (List<Object> list, boolean enabled)
 specifier|private
 specifier|static
@@ -10627,7 +10637,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This method causes all open BasePanels to set up their tables      * anew. When called from PrefsDialog3, this updates to the new      * settings.      */
+comment|/**      * This method causes all open BasePanels to set up their tables anew. When called from PrefsDialog3, this updates      * to the new settings.      */
 DECL|method|setupAllTables ()
 specifier|public
 name|void
@@ -10896,7 +10906,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Signal closing of the current tab. Standard warnings will be given if the      * database has been changed.      */
+comment|/**      * Signal closing of the current tab. Standard warnings will be given if the database has been changed.      */
 DECL|method|closeCurrentTab ()
 specifier|public
 name|void
@@ -11278,17 +11288,21 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|answer
 operator|==
 name|JOptionPane
 operator|.
 name|CANCEL_OPTION
+operator|)
 operator|||
+operator|(
 name|answer
 operator|==
 name|JOptionPane
 operator|.
 name|CLOSED_OPTION
+operator|)
 condition|)
 block|{
 name|close
@@ -11517,7 +11531,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *      * @param panel     The BasePanel to add to.      * @param entries   The entries to add.      * @param filename  Name of the file where the import came from.      * @param openInNew Should the entries be imported into a new database?      */
+comment|/**      * This method does the job of adding imported entries into the active database, or into a new one. It shows the      * ImportInspectionDialog if preferences indicate it should be used. Otherwise it imports directly.      *      * @param panel The BasePanel to add to.      * @param entries The entries to add.      * @param filename Name of the file where the import came from.      * @param openInNew Should the entries be imported into a new database?      */
 DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, String filename, final boolean openInNew)
 specifier|private
 name|void
@@ -11568,12 +11582,14 @@ operator|.
 name|USE_IMPORT_INSPECTION_DIALOG_FOR_SINGLE
 argument_list|)
 operator|||
+operator|(
 name|entries
 operator|.
 name|size
 argument_list|()
 operator|>
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -11679,16 +11695,20 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|panel
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|entries
 operator|.
 name|size
 argument_list|()
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
 name|SwingUtilities
@@ -11725,7 +11745,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Adds the entries to the database, possibly checking for duplicates first.      *      * @param filename If non-null, a message is printed to the status line describing      *                 how many entries were imported, and from which file. If null, the message will not      *                 be printed.      * @param intoNew  Determines if the entries will be put in a new database or in the current      *                 one.      */
+comment|/**      * Adds the entries to the database, possibly checking for duplicates first.      *      * @param filename If non-null, a message is printed to the status line describing how many entries were imported,      *            and from which file. If null, the message will not be printed.      * @param intoNew Determines if the entries will be put in a new database or in the current one.      */
 DECL|method|addBibEntries (List<BibtexEntry> bibentries, String filename, boolean intoNew)
 specifier|private
 name|int
@@ -11746,9 +11766,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|bibentries
 operator|==
 literal|null
+operator|)
 operator|||
 name|bibentries
 operator|.
@@ -11840,12 +11862,14 @@ if|if
 condition|(
 name|intoNew
 operator|||
+operator|(
 name|tabbedPane
 operator|.
 name|getTabCount
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 comment|// Import into new database.
@@ -12592,7 +12616,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method reverts the cursor to normal, and stops blocking input to the JFrame's contents.      * There are no adverse effects of calling this method redundantly.      */
+comment|/**      * This method reverts the cursor to normal, and stops blocking input to the JFrame's contents. There are no adverse      * effects of calling this method redundantly.      */
 DECL|method|unblock ()
 specifier|public
 name|void
@@ -12608,7 +12632,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set the visibility of the progress bar in the right end of the      * status line at the bottom of the frame.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+comment|/**      * Set the visibility of the progress bar in the right end of the status line at the bottom of the frame.      *<p>      * If not called on the event dispatch thread, this method uses SwingUtilities.invokeLater() to do the actual      * operation on the EDT.      */
 DECL|method|setProgressBarVisible (final boolean visible)
 specifier|public
 name|void
@@ -12665,7 +12689,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the current value of the progress bar.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+comment|/**      * Sets the current value of the progress bar.      *<p>      * If not called on the event dispatch thread, this method uses SwingUtilities.invokeLater() to do the actual      * operation on the EDT.      */
 DECL|method|setProgressBarValue (final int value)
 specifier|public
 name|void
@@ -12722,7 +12746,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the indeterminate status of the progress bar.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+comment|/**      * Sets the indeterminate status of the progress bar.      *<p>      * If not called on the event dispatch thread, this method uses SwingUtilities.invokeLater() to do the actual      * operation on the EDT.      */
 DECL|method|setProgressBarIndeterminate (final boolean value)
 specifier|public
 name|void
@@ -12779,7 +12803,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the maximum value of the progress bar. Always call this method      * before using the progress bar, to set a maximum value appropriate to      * the task at hand.      *<p>      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+comment|/**      * Sets the maximum value of the progress bar. Always call this method before using the progress bar, to set a      * maximum value appropriate to the task at hand.      *<p>      * If not called on the event dispatch thread, this method uses SwingUtilities.invokeLater() to do the actual      * operation on the EDT.      */
 DECL|method|setProgressBarMaximum (final int value)
 specifier|public
 name|void
@@ -13594,7 +13618,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Class for handling general actions; cut, copy and paste. The focused component is      * kept track of by Globals.focusListener, and we call the action stored under the      * relevant name in its action map.      */
+comment|/**      * Class for handling general actions; cut, copy and paste. The focused component is kept track of by      * Globals.focusListener, and we call the action stored under the relevant name in its action map.      */
 DECL|class|EditAction
 class|class
 name|EditAction
@@ -14582,7 +14606,7 @@ argument_list|()
 block|{             }
 argument_list|)
 expr_stmt|;
-comment|/*  infoLabel.setForeground(new Color(255, 100, 100, 124));                setLayout(new BorderLayout());               add(infoLabel, BorderLayout.CENTER);*/
+comment|/*  infoLabel.setForeground(new Color(255, 100, 100, 124));                            setLayout(new BorderLayout());               add(infoLabel, BorderLayout.CENTER);*/
 name|super
 operator|.
 name|setCursor
@@ -14718,6 +14742,7 @@ if|if
 condition|(
 name|visible
 condition|)
+block|{
 name|setTabAreaInsets
 argument_list|(
 name|tabbedPane
@@ -14735,7 +14760,9 @@ literal|250
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|setTabAreaInsets
 argument_list|(
 name|tabbedPane
@@ -14753,6 +14780,7 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Copied from org.pushingpixels.lafwidget.LafWidgetSupport
 comment|// http://jarvis.cs.ucdavis.edu/code_essence/functions/5829321
@@ -14847,7 +14875,7 @@ parameter_list|(
 name|NoSuchFieldException
 name|nsfe
 parameter_list|)
-block|{ 				  }
+block|{                     }
 name|clazz
 operator|=
 name|clazz

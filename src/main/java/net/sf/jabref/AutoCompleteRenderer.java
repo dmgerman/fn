@@ -32,18 +32,8 @@ name|ActionListener
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|Action
-import|;
-end_import
-
 begin_comment
-comment|/**  * Renders the list of possible autocomplete items. Also takes care of the currently selected item.  * @param<E> the type of the items  */
+comment|/**  * Renders the list of possible autocomplete items. Also takes care of the currently selected item.  *   * @param<E> the type of the items  */
 end_comment
 
 begin_class
@@ -56,7 +46,7 @@ parameter_list|<
 name|E
 parameter_list|>
 block|{
-comment|/**      * Refreshes the list of possible autocomplete items. Clears the currently selected item.      * @param items list of possible autocomplete items      */
+comment|/**      * Refreshes the list of possible autocomplete items. Clears the currently selected item.      *       * @param items list of possible autocomplete items      */
 DECL|method|update (E[] items)
 specifier|public
 specifier|abstract
@@ -68,7 +58,7 @@ index|[]
 name|items
 parameter_list|)
 function_decl|;
-comment|/** 	 * Creates the control which will be shown in the autocomplete popup. 	 * @param acceptAction the action to be performed if the current selection is chosen as the autocompletion 	 * @return the control to be added to the autocomplete popup 	 */
+comment|/**      * Creates the control which will be shown in the autocomplete popup.      *       * @param acceptAction the action to be performed if the current selection is chosen as the autocompletion      * @return the control to be added to the autocomplete popup      */
 DECL|method|init (ActionListener acceptAction)
 specifier|public
 specifier|abstract
@@ -79,7 +69,7 @@ name|ActionListener
 name|acceptAction
 parameter_list|)
 function_decl|;
-comment|/** 	 * Selects the item at the given position. If the specified index is not valid, then the selection will be cleared. 	 * @param index position of the item 	 */
+comment|/**      * Selects the item at the given position. If the specified index is not valid, then the selection will be cleared.      *       * @param index position of the item      */
 DECL|method|selectItem (int index)
 specifier|public
 specifier|abstract
@@ -90,7 +80,7 @@ name|int
 name|index
 parameter_list|)
 function_decl|;
-comment|/** 	 * Selects the item relative to the currently selected item. If the specified offset is not valid, then the selection will be cleared. 	 * @param offset offset of the item 	 */
+comment|/**      * Selects the item relative to the currently selected item. If the specified offset is not valid, then the      * selection will be cleared.      *       * @param offset offset of the item      */
 DECL|method|selectItemRelative (int offset)
 specifier|public
 name|void
@@ -114,7 +104,7 @@ name|newIndex
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns the index of the currently selected item. 	 * @return index of the selected item 	 */
+comment|/**      * Returns the index of the currently selected item.      *       * @return index of the selected item      */
 DECL|method|getSelectedIndex ()
 specifier|public
 specifier|abstract
@@ -122,7 +112,7 @@ name|int
 name|getSelectedIndex
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the currently selected item.      * @return selected item      */
+comment|/**      * Returns the currently selected item.      *       * @return selected item      */
 DECL|method|getSelectedItem ()
 specifier|public
 specifier|abstract

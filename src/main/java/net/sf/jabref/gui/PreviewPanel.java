@@ -106,16 +106,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -369,7 +359,7 @@ specifier|private
 name|MetaData
 name|metaData
 decl_stmt|;
-comment|/**      * If a database is set, the preview will attempt to resolve strings in the      * previewed entry using that database.      */
+comment|/**      * If a database is set, the preview will attempt to resolve strings in the previewed entry using that database.      */
 DECL|field|database
 specifier|private
 name|BibtexDatabase
@@ -409,7 +399,7 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-comment|/**      * @param database      *            (may be null) Optionally used to resolve strings.      * @param entry      *            (may be null) If given this entry is shown otherwise you have      *            to call setEntry to make something visible.      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      */
+comment|/**      * @param database (may be null) Optionally used to resolve strings.      * @param entry (may be null) If given this entry is shown otherwise you have to call setEntry to make something      *            visible.      * @param panel (may be null) If not given no toolbar is shown on the right hand side.      * @param metaData (must be given) Used for resolving pdf directories for links.      * @param layoutFile (must be given) Used for layout      */
 DECL|method|PreviewPanel (BibtexDatabase database, BibtexEntry entry, BasePanel panel, MetaData metaData, String layoutFile)
 specifier|public
 name|PreviewPanel
@@ -446,7 +436,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param database      *            (may be null) Optionally used to resolve strings.      * @param entry      *            (may be null) If given this entry is shown otherwise you have      *            to call setEntry to make something visible.      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel      */
+comment|/**      * @param database (may be null) Optionally used to resolve strings.      * @param entry (may be null) If given this entry is shown otherwise you have to call setEntry to make something      *            visible.      * @param panel (may be null) If not given no toolbar is shown on the right hand side.      * @param metaData (must be given) Used for resolving pdf directories for links.      * @param layoutFile (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel      */
 DECL|method|PreviewPanel (BibtexDatabase database, BibtexEntry entry, BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
 specifier|public
 name|PreviewPanel
@@ -493,7 +483,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *       * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      */
+comment|/**      *       * @param panel (may be null) If not given no toolbar is shown on the right hand side.      * @param metaData (must be given) Used for resolving pdf directories for links.      * @param layoutFile (must be given) Used for layout      */
 DECL|method|PreviewPanel (BasePanel panel, MetaData metaData, String layoutFile)
 specifier|public
 name|PreviewPanel
@@ -520,7 +510,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *       * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel.       * The user can override this setting by setting the config setting JabRefPreferences.PDF_PREVIEW to false.      */
+comment|/**      *       * @param panel (may be null) If not given no toolbar is shown on the right hand side.      * @param metaData (must be given) Used for resolving pdf directories for links.      * @param layoutFile (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel. The user can override this setting      *            by setting the config setting JabRefPreferences.PDF_PREVIEW to false.      */
 DECL|method|PreviewPanel (BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
 specifier|private
 name|PreviewPanel
@@ -675,9 +665,11 @@ expr_stmt|;
 comment|/*          * If we have been given a panel and the preference option          * previewPrintButton is set, show the tool bar          */
 if|if
 condition|(
+operator|(
 name|panel
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|JabRefPreferences
 operator|.
@@ -1789,7 +1781,7 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/**      * The PreviewPanel has registered itself as an event listener with the      * currently displayed BibtexEntry. If the entry changes, an event is      * received here, and we can update the preview immediately.      */
+comment|/**      * The PreviewPanel has registered itself as an event listener with the currently displayed BibtexEntry. If the      * entry changes, an event is received here, and we can update the preview immediately.      */
 annotation|@
 name|Override
 DECL|method|vetoableChange (PropertyChangeEvent evt)

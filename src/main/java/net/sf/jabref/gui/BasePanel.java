@@ -8632,7 +8632,7 @@ end_expr_stmt
 
 begin_comment
 unit|}
-comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.      */
+comment|/**      * This method is called from JabRefFrame is a database specific action is requested by the user. Runs the command      * if it is defined, or prints an error message to the standard error stream.      *      * @param _command The name of the command to run.      */
 end_comment
 
 begin_function
@@ -9336,7 +9336,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method is called from JabRefFrame when the user wants to      * create a new entry. If the argument is null, the user is      * prompted for an entry type.      *      * @param type The type of the entry to create.      * @return The newly created BibtexEntry or null the operation was canceled by the user.      */
+comment|/**      * This method is called from JabRefFrame when the user wants to create a new entry. If the argument is null, the      * user is prompted for an entry type.      *      * @param type The type of the entry to create.      * @return The newly created BibtexEntry or null the operation was canceled by the user.      */
 end_comment
 
 begin_function
@@ -9607,7 +9607,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This listener is used to add a new entry to a group (or a set of groups)      * in case the Group View is selected and one or more groups are marked      */
+comment|/**      * This listener is used to add a new entry to a group (or a set of groups) in case the Group View is selected and      * one or more groups are marked      */
 end_comment
 
 begin_class
@@ -9755,7 +9755,7 @@ block|}
 end_class
 
 begin_comment
-comment|/**      * Ensures that the search auto completer is up to date when entries are changed      * AKA Let the auto completer, if any, harvest words from the entry      */
+comment|/**      * Ensures that the search auto completer is up to date when entries are changed AKA Let the auto completer, if any,      * harvest words from the entry      */
 end_comment
 
 begin_class
@@ -9814,7 +9814,7 @@ block|}
 end_class
 
 begin_comment
-comment|/**      * Ensures that auto completers are up to date when entries are changed      * AKA Let the auto completer, if any, harvest words from the entry      */
+comment|/**      * Ensures that auto completers are up to date when entries are changed AKA Let the auto completer, if any, harvest      * words from the entry      */
 end_comment
 
 begin_class
@@ -9877,7 +9877,7 @@ block|}
 end_class
 
 begin_comment
-comment|/**      * This method is called from JabRefFrame when the user wants to      * create a new entry.      *      * @param bibEntry The new entry.      */
+comment|/**      * This method is called from JabRefFrame when the user wants to create a new entry.      *      * @param bibEntry The new entry.      */
 end_comment
 
 begin_function
@@ -11049,7 +11049,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*     public void refreshTable() {         //System.out.println("hiding="+hidingNonHits+"\tlastHits="+lastSearchHits);         // This method is called by EntryTypeForm when a field value is         // stored. The table is scheduled for repaint.         entryTable.assureNotEditing();         //entryTable.invalidate();         BibtexEntry[] bes = entryTable.getSelectedEntries();     if (hidingNonHits)         tableModel.update(lastSearchHits);     else         tableModel.update();     //tableModel.remap();         if ((bes != null)&& (bes.length> 0))             selectEntries(bes, 0);      //long toc = System.currentTimeMillis();     //	Util.pr("Refresh took: "+(toc-tic)+" ms");     } */
+comment|/*     public void refreshTable() {         //System.out.println("hiding="+hidingNonHits+"\tlastHits="+lastSearchHits);         // This method is called by EntryTypeForm when a field value is         // stored. The table is scheduled for repaint.         entryTable.assureNotEditing();         //entryTable.invalidate();         BibtexEntry[] bes = entryTable.getSelectedEntries();     if (hidingNonHits)         tableModel.update(lastSearchHits);     else         tableModel.update();     //tableModel.remap();         if ((bes != null)&& (bes.length> 0))             selectEntries(bes, 0);          //long toc = System.currentTimeMillis();     //	Util.pr("Refresh took: "+(toc-tic)+" ms");     } */
 end_comment
 
 begin_function
@@ -11193,7 +11193,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Stores the source view in the entry editor, if one is open, has the source view      * selected and the source has been edited.      *      * @return boolean false if there is a validation error in the source panel, true otherwise.      */
+comment|/**      * Stores the source view in the entry editor, if one is open, has the source view selected and the source has been      * edited.      *      * @return boolean false if there is a validation error in the source panel, true otherwise.      */
 end_comment
 
 begin_function
@@ -11597,7 +11597,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Get an entry editor ready to edit the given entry. If an appropriate editor is already      * cached, it will be updated and returned.      *      * @param entry The entry to be edited.      * @return A suitable entry editor.      */
+comment|/**      * Get an entry editor ready to edit the given entry. If an appropriate editor is already cached, it will be updated      * and returned.      *      * @param entry The entry to be edited.      * @return A suitable entry editor.      */
 end_comment
 
 begin_function
@@ -11739,7 +11739,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Sets the given entry editor as the bottom component in the split pane. If an entry editor already      * was shown, makes sure that the divider doesn't move.      * Updates the mode to SHOWING_EDITOR.      *      * @param editor The entry editor to add.      */
+comment|/**      * Sets the given entry editor as the bottom component in the split pane. If an entry editor already was shown,      * makes sure that the divider doesn't move. Updates the mode to SHOWING_EDITOR.      *      * @param editor The entry editor to add.      */
 end_comment
 
 begin_function
@@ -11859,7 +11859,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Sets the given preview panel as the bottom component in the split panel.      * Updates the mode to SHOWING_PREVIEW.      *      * @param preview The preview to show.      */
+comment|/**      * Sets the given preview panel as the bottom component in the split panel. Updates the mode to SHOWING_PREVIEW.      *      * @param preview The preview to show.      */
 end_comment
 
 begin_function
@@ -11920,7 +11920,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method selects the given entry, and scrolls it into view in the table.      * If an entryEditor is shown, it is given focus afterwards.      */
+comment|/**      * This method selects the given entry, and scrolls it into view in the table. If an entryEditor is shown, it is      * given focus afterwards.      */
 end_comment
 
 begin_function
@@ -11978,7 +11978,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method is called from an EntryEditor when it should be closed. We relay      * to the selection listener, which takes care of the rest.      *      * @param editor The entry editor to close.      */
+comment|/**      * This method is called from an EntryEditor when it should be closed. We relay to the selection listener, which      * takes care of the rest.      *      * @param editor The entry editor to close.      */
 end_comment
 
 begin_function
@@ -12024,11 +12024,11 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method selects the given enties.      * If an entryEditor is shown, it is given focus afterwards.      */
+comment|/**      * This method selects the given enties. If an entryEditor is shown, it is given focus afterwards.      */
 end_comment
 
 begin_comment
-comment|/*public void selectEntries(final BibtexEntry[] bes, final int toScrollTo) {          SwingUtilities.invokeLater(new Thread() {              public void run() {                  int rowToScrollTo = 0;                  entryTable.revalidate();                  entryTable.clearSelection();                  loop: for (int i=0; i<bes.length; i++) {                     if (bes[i] == null)                         continue loop;                     int row = tableModel.getNumberFromName(bes[i].getId());                     if (i==toScrollTo)                     rowToScrollTo = row;                     if (row>= 0)                         entryTable.addRowSelectionIntervalQuietly(row, row);                  }                  entryTable.ensureVisible(rowToScrollTo);                  Component comp = splitPane.getBottomComponent();                  //if (comp instanceof EntryEditor)                  //    comp.requestFocus();              }         });     } */
+comment|/*public void selectEntries(final BibtexEntry[] bes, final int toScrollTo) {              SwingUtilities.invokeLater(new Thread() {              public void run() {                  int rowToScrollTo = 0;                  entryTable.revalidate();                  entryTable.clearSelection();                  loop: for (int i=0; i<bes.length; i++) {                     if (bes[i] == null)                         continue loop;                     int row = tableModel.getNumberFromName(bes[i].getId());                     if (i==toScrollTo)                     rowToScrollTo = row;                     if (row>= 0)                         entryTable.addRowSelectionIntervalQuietly(row, row);                  }                  entryTable.ensureVisible(rowToScrollTo);                  Component comp = splitPane.getBottomComponent();                  //if (comp instanceof EntryEditor)                  //    comp.requestFocus();              }         });     } */
 end_comment
 
 begin_comment
@@ -12145,7 +12145,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * If an entry editor is showing, make sure its currently focused field      * stores its changes, if any.      */
+comment|/**      * If an entry editor is showing, make sure its currently focused field stores its changes, if any.      */
 end_comment
 
 begin_function
@@ -12182,7 +12182,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method iterates through all existing entry editors in this      * BasePanel, telling each to update all its instances of      * FieldContentSelector. This is done to ensure that the list of words      * in each selector is up-to-date after the user has made changes in      * the Manage dialog.      */
+comment|/**      * This method iterates through all existing entry editors in this BasePanel, telling each to update all its      * instances of FieldContentSelector. This is done to ensure that the list of words in each selector is up-to-date      * after the user has made changes in the Manage dialog.      */
 end_comment
 
 begin_function
@@ -13126,7 +13126,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * If the relevant option is set, autogenerate keys for all entries that are      * lacking keys.      */
+comment|/**      * If the relevant option is set, autogenerate keys for all entries that are lacking keys.      */
 end_comment
 
 begin_function
@@ -13268,7 +13268,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Activates or deactivates the entry preview, depending on the argument.      * When deactivating, makes sure that any visible preview is hidden.      *      * @param enabled      */
+comment|/**      * Activates or deactivates the entry preview, depending on the argument. When deactivating, makes sure that any      * visible preview is hidden.      *      * @param enabled      */
 end_comment
 
 begin_function
@@ -13312,7 +13312,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Depending on whether a preview or an entry editor is showing, save the current      * divider location in the correct preference setting.      */
+comment|/**      * Depending on whether a preview or an entry editor is showing, save the current divider location in the correct      * preference setting.      */
 end_comment
 
 begin_function
@@ -14071,7 +14071,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Get an array containing the currently selected entries.      * The array is stable and not changed if the selection changes      *      * @return An array containing the selected entries. Is never null.      */
+comment|/**      * Get an array containing the currently selected entries. The array is stable and not changed if the selection      * changes      *      * @return An array containing the selected entries. Is never null.      */
 end_comment
 
 begin_function
@@ -14112,7 +14112,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Get a String containing a comma-separated list of the bibtex keys      * of the selected entries.      *      * @return A comma-separated list of the keys of the selected entries.      */
+comment|/**      * Get a String containing a comma-separated list of the bibtex keys of the selected entries.      *      * @return A comma-separated list of the keys of the selected entries.      */
 end_comment
 
 begin_function
@@ -14374,7 +14374,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Update the pointer to the currently shown entry in all cases where the user has      * moved to a new entry, except when using Back and Forward commands. Also updates      * history for Back command, and clears history for Forward command.      *      * @param entry The entry that is now to be shown.      */
+comment|/**      * Update the pointer to the currently shown entry in all cases where the user has moved to a new entry, except when      * using Back and Forward commands. Also updates history for Back command, and clears history for Forward command.      *      * @param entry The entry that is now to be shown.      */
 end_comment
 
 begin_function
@@ -14468,7 +14468,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Go back (if there is any recorded history) and update the histories for      * the Back and Forward commands.      */
+comment|/**      * Go back (if there is any recorded history) and update the histories for the Back and Forward commands.      */
 end_comment
 
 begin_function

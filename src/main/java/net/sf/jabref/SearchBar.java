@@ -2580,7 +2580,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets the autocompleter used in the search field.      * @param searchCompleter the autocompleter      */
+comment|/**      * Sets the autocompleter used in the search field.      *       * @param searchCompleter the autocompleter      */
 DECL|method|setAutoCompleter (AutoCompleter<String> searchCompleter)
 specifier|public
 name|void

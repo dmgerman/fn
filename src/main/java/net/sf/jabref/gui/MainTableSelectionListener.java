@@ -401,7 +401,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * List event, mouse, key and focus listener for the main table that makes up the  * most part of the BasePanel for a single bib database.  */
+comment|/**  * List event, mouse, key and focus listener for the main table that makes up the most part of the BasePanel for a  * single bib database.  */
 end_comment
 
 begin_class
@@ -1956,6 +1956,8 @@ operator|==
 literal|null
 condition|)
 block|{
+name|MainTableSelectionListener
+operator|.
 name|LOGGER
 operator|.
 name|info
@@ -2245,7 +2247,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Process general right-click events on the table. Show the table context menu at      * the position where the user right-clicked.      * @param e The mouse event defining the popup trigger.      * @param row The row where the event occured.      */
+comment|/**      * Process general right-click events on the table. Show the table context menu at the position where the user      * right-clicked.      *       * @param e The mouse event defining the popup trigger.      * @param row The row where the event occured.      */
 DECL|method|processPopupTrigger (MouseEvent e, int row)
 specifier|private
 name|void
@@ -2336,7 +2338,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Process popup trigger events occurring on an icon cell in the table. Show      * a menu where the user can choose which external resource to open for the      * entry. If no relevant external resources exist, let the normal popup trigger      * handler do its thing instead.      * @param e The mouse event defining this popup trigger.      * @param row The row where the event occurred.      * @param iconType A string array containing the resource fields associated with      *  this table cell.      */
+comment|/**      * Process popup trigger events occurring on an icon cell in the table. Show a menu where the user can choose which      * external resource to open for the entry. If no relevant external resources exist, let the normal popup trigger      * handler do its thing instead.      *       * @param e The mouse event defining this popup trigger.      * @param row The row where the event occurred.      * @param iconType A string array containing the resource fields associated with this table cell.      */
 DECL|method|showIconRightClickMenu (MouseEvent e, int row, String[] iconType)
 specifier|private
 name|void
@@ -2961,7 +2963,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Receive key event on the main table. If the key is a letter or a digit,      * we should select the first entry in the table which starts with the given      * letter in the column by which the table is sorted.      * @param e The KeyEvent      */
+comment|/**      * Receive key event on the main table. If the key is a letter or a digit, we should select the first entry in the      * table which starts with the given letter in the column by which the table is sorted.      *       * @param e The KeyEvent      */
 annotation|@
 name|Override
 DECL|method|keyTyped (KeyEvent e)

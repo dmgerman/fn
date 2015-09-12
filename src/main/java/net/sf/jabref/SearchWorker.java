@@ -220,7 +220,7 @@ operator|=
 name|frame
 expr_stmt|;
 block|}
-comment|/**      * Resets the information and display of the previous search.      * DONE      */
+comment|/**      * Resets the information and display of the previous search.      */
 DECL|method|restart ()
 specifier|public
 name|void
@@ -287,7 +287,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * DONE      * Initializes a new search.      */
+comment|/**      * Initializes a new search.      */
 DECL|method|initSearch (SearchRule rule, String query, SearchMode mode)
 specifier|public
 name|void
@@ -320,6 +320,7 @@ argument_list|(
 name|query
 argument_list|)
 operator|&&
+operator|(
 name|this
 operator|.
 name|mode
@@ -327,6 +328,7 @@ operator|==
 name|SearchMode
 operator|.
 name|Incremental
+operator|)
 condition|)
 block|{
 comment|// The query stayed the same and we are in incremental mode
@@ -393,7 +395,6 @@ name|incSearchPos
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see net.sf.jabref.Worker#run()      * DONE      */
 annotation|@
 name|Override
 DECL|method|run ()
@@ -439,7 +440,7 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-comment|/**      * Searches for matches in all open databases. Saves the number of matches in hits. DONE      */
+comment|/**      * Searches for matches in all open databases. Saves the number of matches in hits.      */
 DECL|method|runGlobal ()
 specifier|private
 name|void
@@ -523,7 +524,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Searches for matches in the current database. Saves the number of matches in hits. DONE      */
+comment|/**      * Searches for matches in the current database. Saves the number of matches in hits.      */
 DECL|method|runNormal ()
 specifier|private
 name|void
@@ -578,7 +579,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * DONE Searches for the next match, beginning at incSearchPos. The index of the first match is then saved in      * incSearchPos. Sets it to -1 if no further match was found.      */
+comment|/**      * Searches for the next match, beginning at incSearchPos. The index of the first match is then saved in      * incSearchPos. Sets it to -1 if no further match was found.      */
 DECL|method|runIncremental ()
 specifier|private
 name|void
@@ -693,7 +694,7 @@ literal|1
 expr_stmt|;
 return|return;
 block|}
-comment|/**      * DONE Selects the next match in the entry table based on the position saved in incSearchPos.      */
+comment|/**      * Selects the next match in the entry table based on the position saved in incSearchPos.      */
 DECL|method|updateIncremental ()
 specifier|private
 name|void
@@ -788,7 +789,6 @@ literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see net.sf.jabref.AbstractWorker#update()      * DONE      */
 annotation|@
 name|Override
 DECL|method|update ()
@@ -872,7 +872,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Floats matches to the top of the entry table. DONE      */
+comment|/**      * Floats matches to the top of the entry table.      */
 DECL|method|updateFloat ()
 specifier|private
 name|void
@@ -915,7 +915,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Shows only matches in the entry table by removing non-hits. DONE      */
+comment|/**      * Shows only matches in the entry table by removing non-hits.      */
 DECL|method|updateFilter ()
 specifier|private
 name|void
@@ -956,7 +956,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Displays search results in a dialog window. DONE      */
+comment|/**      * Displays search results in a dialog window.      */
 DECL|method|updateResultsInDialog ()
 specifier|private
 name|void
@@ -1024,7 +1024,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Displays search results in a dialog window. DONE      */
+comment|/**      * Displays search results in a dialog window.      */
 DECL|method|updateGlobal ()
 specifier|private
 name|void
@@ -1118,7 +1118,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Initializes the search dialog, unless it has already been instantiated. DONE       */
+comment|/**      * Initializes the search dialog, unless it has already been instantiated.      */
 DECL|method|initSearchDialog ()
 specifier|private
 name|void

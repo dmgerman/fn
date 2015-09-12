@@ -8167,7 +8167,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Returns the KeyStroke for this binding, as defined by the defaults, or in the Preferences, but adapted for Mac      * users, with the Command key preferred instead of Control.      * TODO: Move to OS.java? Or replace with portable Java key codes, i.e. KeyEvent      */
+comment|/**      * Returns the KeyStroke for this binding, as defined by the defaults, or in the Preferences, but adapted for Mac      * users, with the Command key preferred instead of Control. TODO: Move to OS.java? Or replace with portable Java      * key codes, i.e. KeyEvent      */
 DECL|method|getKeyForMac (KeyStroke ks)
 specifier|private
 name|KeyStroke
