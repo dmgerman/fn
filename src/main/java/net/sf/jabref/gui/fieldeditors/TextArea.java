@@ -40,7 +40,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|autocompleter
+operator|.
+name|AutoCompleteListener
 import|;
 end_import
 
@@ -52,9 +56,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|AutoCompleteListener
+name|Globals
 import|;
 end_import
 

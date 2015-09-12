@@ -48,6 +48,7 @@ end_comment
 
 begin_class
 DECL|class|IconComparator
+specifier|public
 class|class
 name|IconComparator
 implements|implements

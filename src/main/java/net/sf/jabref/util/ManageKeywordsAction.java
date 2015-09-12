@@ -344,11 +344,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
 name|autocompleter
 operator|.
-name|AutoCompleter
+name|AutoCompleteListener
 import|;
 end_import
 
@@ -360,9 +360,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|AutoCompleteListener
+name|autocompleter
+operator|.
+name|AutoCompleter
 import|;
 end_import
 

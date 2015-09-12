@@ -4,13 +4,17 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.gui.search
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
+operator|.
+name|search
 package|;
 end_package
 
@@ -264,6 +268,30 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|GUIGlobals
@@ -308,7 +336,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|SearchTextListener
+name|autocompleter
+operator|.
+name|AutoCompleteSupport
 import|;
 end_import
 
