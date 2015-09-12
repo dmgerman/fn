@@ -421,7 +421,7 @@ specifier|final
 name|int
 name|TABLE_ROW_PADDING
 init|=
-literal|8
+literal|9
 decl_stmt|;
 DECL|field|KEYBIND_COL_0
 specifier|public

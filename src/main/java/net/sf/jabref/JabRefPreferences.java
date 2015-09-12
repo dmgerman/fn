@@ -3992,7 +3992,7 @@ name|TABLE_COLOR_CODES_ON
 argument_list|,
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -4348,7 +4348,7 @@ name|put
 argument_list|(
 name|COLUMN_NAMES
 argument_list|,
-literal|"entrytype;author;title;year;journal;owner;timestamp;bibtexkey"
+literal|"entrytype;author;title;year;journal;timestamp;bibtexkey"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -4357,7 +4357,7 @@ name|put
 argument_list|(
 name|COLUMN_WIDTHS
 argument_list|,
-literal|"75;280;400;60;100;100;100;100"
+literal|"75;280;450;60;100;100;100"
 argument_list|)
 expr_stmt|;
 name|defaults
