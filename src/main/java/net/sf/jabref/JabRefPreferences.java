@@ -4348,7 +4348,7 @@ name|put
 argument_list|(
 name|COLUMN_NAMES
 argument_list|,
-literal|"entrytype;author;title;year;journal;timestamp;bibtexkey"
+literal|"entrytype;author;title;year;journal;bibtexkey"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -4357,7 +4357,7 @@ name|put
 argument_list|(
 name|COLUMN_WIDTHS
 argument_list|,
-literal|"75;280;450;60;100;100;100"
+literal|"75;300;470;60;130;100"
 argument_list|)
 expr_stmt|;
 name|defaults
