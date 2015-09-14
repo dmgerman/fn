@@ -701,6 +701,17 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Warning: could not get menu item translation for \""
+operator|+
+name|key
+operator|+
+literal|"\""
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -782,7 +793,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Warning: could not get menu item translation for \""
+literal|"Warning: could not get translation for integrity message \""
 operator|+
 name|key
 operator|+
