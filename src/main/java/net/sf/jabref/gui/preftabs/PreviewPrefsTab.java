@@ -1000,12 +1000,7 @@ name|GUIGlobals
 operator|.
 name|previewHelp
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Help on Preview Settings"
-argument_list|)
 argument_list|,
 name|IconTheme
 operator|.

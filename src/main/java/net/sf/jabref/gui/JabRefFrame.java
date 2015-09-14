@@ -1778,12 +1778,7 @@ name|GUIGlobals
 operator|.
 name|baseFrameHelp
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"JabRef help"
-argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1810,12 +1805,7 @@ name|GUIGlobals
 operator|.
 name|helpContents
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Help contents"
-argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -1842,12 +1832,7 @@ name|GUIGlobals
 operator|.
 name|aboutPage
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"About JabRef"
-argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
