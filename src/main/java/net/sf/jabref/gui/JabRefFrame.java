@@ -1857,7 +1857,12 @@ name|EDIT
 argument_list|,
 literal|"Edit entry"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Edit entry"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1891,7 +1896,12 @@ name|FOCUS_TABLE
 argument_list|,
 literal|"Focus entry table"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Move the keyboard focus to the entry table"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1918,7 +1928,12 @@ name|SAVE
 argument_list|,
 literal|"Save database"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Save database"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1952,7 +1967,12 @@ name|SAVE_AS
 argument_list|,
 literal|"Save database as ..."
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Save database as ..."
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -2000,7 +2020,12 @@ name|SAVE_SELECTED_AS
 argument_list|,
 literal|"Save selected as ..."
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Save selected as ..."
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -2025,7 +2050,12 @@ name|SAVE_SELECTED_AS_PLAIN
 argument_list|,
 literal|"Save selected as plain BibTeX ..."
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Save selected as plain BibTeX ..."
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -2146,7 +2176,12 @@ name|UNDO
 argument_list|,
 literal|"Undo"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Undo"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -2180,7 +2215,12 @@ name|REDO
 argument_list|,
 literal|"Redo"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Redo"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -2213,7 +2253,12 @@ name|FORWARD
 argument_list|,
 literal|"Forward"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Forward"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -2246,7 +2291,12 @@ name|BACK
 argument_list|,
 literal|"Back"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Back"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -2280,7 +2330,12 @@ name|DELETE
 argument_list|,
 literal|"Delete"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Delete"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -2377,7 +2432,12 @@ name|MARK_ENTRIES
 argument_list|,
 literal|"Mark entries"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Mark entries"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -2411,7 +2471,12 @@ name|UNMARK_ENTRIES
 argument_list|,
 literal|"Unmark entries"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Unmark entries"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -2734,7 +2799,12 @@ name|INC_SEARCH
 argument_list|,
 literal|"Incremental search"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Start incremental search"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -2768,7 +2838,12 @@ name|SEARCH
 argument_list|,
 literal|"Search"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Search"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -2802,7 +2877,12 @@ name|TOGGLE_SEARCH
 argument_list|,
 literal|"Search"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Toggle search panel"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -2904,7 +2984,12 @@ name|MERGE_DATABASE
 argument_list|,
 literal|"Append database"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Append contents from a BibTeX database into the currently viewed database"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -2979,7 +3064,12 @@ name|EDIT_PREAMBLE
 argument_list|,
 literal|"Edit preamble"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Edit preamble"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3013,7 +3103,12 @@ name|EDIT_STRINGS
 argument_list|,
 literal|"Edit strings"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Edit strings"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3115,7 +3210,12 @@ name|TOGGLE_GROUPS
 argument_list|,
 literal|"Toggle groups interface"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Toggle groups interface"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3149,7 +3249,12 @@ name|TOGGLE_PREVIEW
 argument_list|,
 literal|"Toggle entry preview"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Toggle entry preview"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3183,7 +3288,12 @@ name|TOGGLE_HIGHLIGHTS_GROUPS_MATCHING_ANY
 argument_list|,
 literal|"Highlight groups matching any selected entry"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Highlight groups matching any selected entry"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -3208,7 +3318,12 @@ name|TOGGLE_HIGHLIGHTS_GROUPS_MATCHING_ALL
 argument_list|,
 literal|"Highlight groups matching all selected entries"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Highlight groups matching all selected entries"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -3257,7 +3372,12 @@ name|MAKE_KEY
 argument_list|,
 literal|"Autogenerate BibTeX keys"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Autogenerate BibTeX keys"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3291,7 +3411,12 @@ name|WRITE_XMP
 argument_list|,
 literal|"Write XMP-metadata to PDFs"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Will write XMP-metadata to the PDFs linked from selected entries."
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3318,7 +3443,12 @@ name|OPEN_FOLDER
 argument_list|,
 literal|"Open folder"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Open folder"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3345,7 +3475,12 @@ name|OPEN_EXTERNAL_FILE
 argument_list|,
 literal|"Open file"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Open file"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3379,7 +3514,12 @@ name|OPEN_FILE
 argument_list|,
 literal|"Open PDF or PS"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Open PDF or PS"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3413,7 +3553,12 @@ name|OPEN_URL
 argument_list|,
 literal|"Open URL or DOI"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Open URL or DOI"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3447,7 +3592,12 @@ name|OPEN_SPIRES
 argument_list|,
 literal|"Open SPIRES entry"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Open SPIRES entry"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3622,7 +3772,12 @@ name|Actions
 operator|.
 name|AUTO_SET_FILE
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Synchronize file links"
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -3651,7 +3806,12 @@ name|ABBREVIATE_MEDLINE
 argument_list|,
 literal|"Abbreviate journal names (MEDLINE)"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Abbreviate journal names of the selected entries (MEDLINE abbreviation)"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|abbreviateIso
@@ -3669,7 +3829,12 @@ name|ABBREVIATE_ISO
 argument_list|,
 literal|"Abbreviate journal names (ISO)"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Abbreviate journal names of the selected entries (ISO abbreviation)"
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -3698,7 +3863,12 @@ name|UNABBREVIATE
 argument_list|,
 literal|"Unabbreviate journal names"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Unabbreviate journal names of the selected entries"
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -3779,7 +3949,12 @@ name|DB_CONNECT
 argument_list|,
 literal|"Connect to external SQL database"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Connect to external SQL database"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -3804,7 +3979,12 @@ name|DB_EXPORT
 argument_list|,
 literal|"Export to external SQL database"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Export to external SQL database"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -3829,7 +4009,12 @@ name|CLEANUP
 argument_list|,
 literal|"Cleanup entries"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Cleanup entries"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3863,7 +4048,12 @@ name|MERGE_ENTRIES
 argument_list|,
 literal|"Merge entries"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Merge entries"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -3923,7 +4113,12 @@ name|RESOLVE_DUPLICATE_KEYS
 argument_list|,
 literal|"Resolve duplicate BibTeX keys"
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Find and remove duplicate BibTeX keys"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
