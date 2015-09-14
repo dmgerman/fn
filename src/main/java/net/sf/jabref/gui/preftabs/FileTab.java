@@ -553,9 +553,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-name|JabRefPreferences
-operator|.
-name|AUTO_SAVE
+literal|"Autosave"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -594,6 +592,7 @@ name|valueDelimiter
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 operator|new
 name|String
@@ -730,6 +729,7 @@ name|newlineSeparator
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 operator|new
 name|String
@@ -1282,9 +1282,7 @@ name|_rbs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
