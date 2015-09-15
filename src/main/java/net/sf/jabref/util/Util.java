@@ -6232,21 +6232,20 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
-comment|// FIXME: workaround so that dialog doesn't block run()?
-name|Thread
-name|t
-init|=
-operator|new
-name|Thread
-argument_list|(
-name|r
-argument_list|)
-decl_stmt|;
-name|t
+name|SwingUtilities
 operator|.
-name|start
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
 argument_list|()
-expr_stmt|;
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+comment|// show dialog which will be hidden when the task is done
 if|if
 condition|(
 name|diag
@@ -6262,8 +6261,12 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 return|return
-name|t
+name|r
 return|;
 block|}
 comment|/**      * Automatically add links for this entry to the table model given as an argument, based on      * the globally stored list of external file types. The entry itself is not modified. The entry's      * bibtex key must have been set.      *      * @param entry The BibtexEntry to find links for.      * @param singleTableModel The table model to insert links into. Already existing links are not duplicated or removed.      * @param metaData The MetaData providing the relevant file directory, if any.      * @param callback An ActionListener that is notified (on the event dispatch thread) when the search is      *  finished. The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added.      *  This parameter can be null, which means that no callback will be notified. The passed ActionEvent is constructed with      *  (this, id, ""), where id is 1 if something has been done and 0 if nothing has been done.      * @param diag An instantiated modal JDialog which will be used to display the progress of the autosetting.      *      This parameter can be null, which means that no progress update will be shown.      * @return the runnable able to perform the autosetting      */
