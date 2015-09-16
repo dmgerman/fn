@@ -3713,14 +3713,7 @@ name|Actions
 operator|.
 name|AUTO_SET_PDF
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Synchronize %0 links"
-argument_list|,
-literal|"PDF"
-argument_list|)
+literal|"Synchronize PDF links"
 argument_list|,
 name|prefs
 operator|.
@@ -3745,14 +3738,7 @@ name|Actions
 operator|.
 name|AUTO_SET_PS
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Synchronize %0 links"
-argument_list|,
-literal|"PS"
-argument_list|)
+literal|"Synchronize PS links"
 argument_list|,
 name|prefs
 operator|.
@@ -4172,11 +4158,16 @@ name|ACTION_COMMAND
 argument_list|,
 name|FindUnlinkedFilesDialog
 operator|.
-name|ACTION_TITLE
+name|ACTION_MENU_TITLE
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 name|FindUnlinkedFilesDialog
 operator|.
 name|ACTION_SHORT_DESCRIPTION
+argument_list|)
 argument_list|,
 name|prefs
 operator|.

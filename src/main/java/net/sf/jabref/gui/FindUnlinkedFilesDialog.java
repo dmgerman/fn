@@ -890,23 +890,15 @@ name|ACTION_COMMAND
 init|=
 literal|"findUnlinkedFiles"
 decl_stmt|;
-DECL|field|ACTION_TITLE
+DECL|field|ACTION_MENU_TITLE
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|ACTION_TITLE
+name|ACTION_MENU_TITLE
 init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Find unlinked files"
-argument_list|)
-operator|+
-literal|"..."
+literal|"Find unlinked files..."
 decl_stmt|;
-comment|// this entry is NOT in Menu_en.properties as the same string also appears in JabRef_en.properties
 DECL|field|ACTION_ICON
 specifier|public
 specifier|static
@@ -932,12 +924,7 @@ specifier|final
 name|String
 name|ACTION_SHORT_DESCRIPTION
 init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Searches for unlinked PDF files on the file system"
-argument_list|)
 decl_stmt|;
 DECL|field|GLOBAL_PREFS_WORKING_DIRECTORY_KEY
 specifier|private
