@@ -782,7 +782,12 @@ operator|.
 name|getHelpPage
 argument_list|()
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Help"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|helpBut

@@ -777,7 +777,12 @@ name|GUIGlobals
 operator|.
 name|exportCustomizationHelp
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Help"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

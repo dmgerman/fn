@@ -408,7 +408,12 @@ name|GUIGlobals
 operator|.
 name|labelPatternHelp
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Help on key patterns"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|buildGUI

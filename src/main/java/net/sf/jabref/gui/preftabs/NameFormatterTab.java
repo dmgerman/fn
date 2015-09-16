@@ -1020,7 +1020,12 @@ name|GUIGlobals
 operator|.
 name|nameFormatterHelp
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Help on Name Formatting"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.

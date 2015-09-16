@@ -2884,7 +2884,12 @@ name|GUIGlobals
 operator|.
 name|groupsHelp
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Help on groups"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|helpButton

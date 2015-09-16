@@ -844,7 +844,12 @@ name|GUIGlobals
 operator|.
 name|ownerHelp
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Help"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -868,7 +873,12 @@ name|GUIGlobals
 operator|.
 name|timeStampHelp
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Help"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.

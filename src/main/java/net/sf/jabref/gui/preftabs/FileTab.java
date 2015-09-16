@@ -508,7 +508,12 @@ name|GUIGlobals
 operator|.
 name|autosaveHelp
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Help"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
