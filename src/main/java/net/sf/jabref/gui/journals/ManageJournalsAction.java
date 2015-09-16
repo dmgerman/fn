@@ -54,22 +54,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|util
 operator|.
 name|Util
@@ -97,10 +81,6 @@ operator|.
 name|Action
 import|;
 end_import
-
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Sep 22, 2005  * Time: 10:45:02 PM  * To browseOld this template use File | Settings | File Templates.  */
-end_comment
 
 begin_class
 DECL|class|ManageJournalsAction
@@ -133,12 +113,7 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
 literal|"Manage journal abbreviations"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
