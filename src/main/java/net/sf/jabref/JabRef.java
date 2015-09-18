@@ -3988,12 +3988,16 @@ argument_list|>
 name|loaded
 parameter_list|)
 block|{
-comment|// Call the method performCompatibilityUpdate(), which does any
-comment|// necessary changes for users with a preference set from an older
+comment|// Perform checks and changes for users with a preference set from an older
 comment|// Jabref version.
 name|PreferencesMigrations
 operator|.
-name|performCompatibilityUpdate
+name|replaceAbstractField
+argument_list|()
+expr_stmt|;
+name|PreferencesMigrations
+operator|.
+name|upgradeOldPreferences
 argument_list|()
 expr_stmt|;
 name|PreferencesMigrations
