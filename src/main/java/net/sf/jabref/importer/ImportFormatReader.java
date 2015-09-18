@@ -1713,7 +1713,7 @@ name|getReader
 argument_list|(
 name|f
 argument_list|,
-literal|"UTF8"
+literal|"UTF-8"
 argument_list|)
 return|;
 block|}
