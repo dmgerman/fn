@@ -3996,6 +3996,11 @@ operator|.
 name|performCompatibilityUpdate
 argument_list|()
 expr_stmt|;
+name|PreferencesMigrations
+operator|.
+name|upgradeFaultyEncodingStrings
+argument_list|()
+expr_stmt|;
 comment|// Set up custom or default icon theme:
 comment|// This is now done at processArguments
 comment|// TODO: remove temporary registering of external file types?
