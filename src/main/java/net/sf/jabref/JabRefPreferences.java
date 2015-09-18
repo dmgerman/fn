@@ -3602,6 +3602,15 @@ argument_list|(
 name|DEFAULT_ENCODING
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|defaultEncoding
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 switch|switch
 condition|(
 name|defaultEncoding
