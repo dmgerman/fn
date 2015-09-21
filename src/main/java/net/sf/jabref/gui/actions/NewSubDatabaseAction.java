@@ -181,7 +181,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"New subdatabase based on AUX file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -198,7 +203,6 @@ literal|"New BibTeX subdatabase"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
 annotation|@
 name|Override

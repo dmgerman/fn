@@ -1760,7 +1760,12 @@ init|=
 operator|new
 name|HelpAction
 argument_list|(
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"JabRef help"
+argument_list|)
 argument_list|,
 name|helpDiag
 argument_list|,
@@ -1792,7 +1797,12 @@ init|=
 operator|new
 name|HelpAction
 argument_list|(
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Help contents"
+argument_list|)
 argument_list|,
 name|helpDiag
 argument_list|,
@@ -1824,7 +1834,12 @@ init|=
 operator|new
 name|HelpAction
 argument_list|(
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"About JabRef"
+argument_list|)
 argument_list|,
 name|helpDiag
 argument_list|,
@@ -1860,7 +1875,12 @@ name|Actions
 operator|.
 name|EDIT
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Edit entry"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1899,7 +1919,12 @@ name|Actions
 operator|.
 name|FOCUS_TABLE
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Focus entry table"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1931,7 +1956,12 @@ name|Actions
 operator|.
 name|SAVE
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Save database"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1970,7 +2000,12 @@ name|Actions
 operator|.
 name|SAVE_AS
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Save database as ..."
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2023,7 +2058,12 @@ name|Actions
 operator|.
 name|SAVE_SELECTED_AS
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Save selected as ..."
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2053,7 +2093,12 @@ name|Actions
 operator|.
 name|SAVE_SELECTED_AS_PLAIN
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Save selected as plain BibTeX ..."
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2179,7 +2224,12 @@ name|Actions
 operator|.
 name|UNDO
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Undo"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2218,7 +2268,12 @@ name|Actions
 operator|.
 name|REDO
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Redo"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2256,7 +2311,12 @@ name|Actions
 operator|.
 name|FORWARD
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Forward"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2294,7 +2354,12 @@ name|Actions
 operator|.
 name|BACK
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Back"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2333,7 +2398,12 @@ name|Actions
 operator|.
 name|DELETE
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Delete"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2435,7 +2505,12 @@ name|Actions
 operator|.
 name|MARK_ENTRIES
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Mark entries"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2474,7 +2549,12 @@ name|Actions
 operator|.
 name|UNMARK_ENTRIES
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Unmark entries"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2513,7 +2593,12 @@ name|Actions
 operator|.
 name|UNMARK_ALL
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Unmark all"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|toggleRelevance
@@ -2766,7 +2851,12 @@ name|Actions
 operator|.
 name|MANAGE_SELECTORS
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Manage content selectors"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|saveSessionAction
@@ -2802,7 +2892,12 @@ name|Actions
 operator|.
 name|INC_SEARCH
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Incremental search"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2841,7 +2936,12 @@ name|Actions
 operator|.
 name|SEARCH
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Search"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2880,7 +2980,12 @@ name|Actions
 operator|.
 name|TOGGLE_SEARCH
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Search"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2910,7 +3015,12 @@ name|Actions
 operator|.
 name|COPY_KEY
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Copy BibTeX key"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -2936,7 +3046,12 @@ name|Actions
 operator|.
 name|COPY_CITE_KEY
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Copy \\cite{BibTeX key}"
+argument_list|)
 argument_list|,
 comment|//"Put a BibTeX reference to the selected entries on the clipboard",
 name|prefs
@@ -2962,7 +3077,12 @@ name|Actions
 operator|.
 name|COPY_KEY_AND_TITLE
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Copy BibTeX key and title"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -2987,7 +3107,12 @@ name|Actions
 operator|.
 name|MERGE_DATABASE
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Append database"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3017,7 +3142,12 @@ name|Actions
 operator|.
 name|SELECT_ALL
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Select all"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3042,7 +3172,12 @@ name|Actions
 operator|.
 name|REPLACE_ALL
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Replace string"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3067,7 +3202,12 @@ name|Actions
 operator|.
 name|EDIT_PREAMBLE
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Edit preamble"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3106,7 +3246,12 @@ name|Actions
 operator|.
 name|EDIT_STRINGS
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Edit strings"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3141,7 +3286,12 @@ init|=
 operator|new
 name|AbstractAction
 argument_list|(
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Hide/show toolbar"
+argument_list|)
 argument_list|)
 block|{
 block|{
@@ -3213,7 +3363,12 @@ name|Actions
 operator|.
 name|TOGGLE_GROUPS
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Toggle groups interface"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3252,7 +3407,12 @@ name|Actions
 operator|.
 name|TOGGLE_PREVIEW
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Toggle entry preview"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3291,7 +3451,12 @@ name|Actions
 operator|.
 name|TOGGLE_HIGHLIGHTS_GROUPS_MATCHING_ANY
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Highlight groups matching any selected entry"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3321,7 +3486,12 @@ name|Actions
 operator|.
 name|TOGGLE_HIGHLIGHTS_GROUPS_MATCHING_ALL
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Highlight groups matching all selected entries"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3350,7 +3520,12 @@ name|Actions
 operator|.
 name|SWITCH_PREVIEW
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Switch preview layout"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3375,7 +3550,12 @@ name|Actions
 operator|.
 name|MAKE_KEY
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Autogenerate BibTeX keys"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3414,7 +3594,12 @@ name|Actions
 operator|.
 name|WRITE_XMP
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Write XMP-metadata to PDFs"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3446,7 +3631,12 @@ name|Actions
 operator|.
 name|OPEN_FOLDER
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Open folder"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3478,7 +3668,12 @@ name|Actions
 operator|.
 name|OPEN_EXTERNAL_FILE
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Open file"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3517,7 +3712,12 @@ name|Actions
 operator|.
 name|OPEN_FILE
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Open PDF or PS"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3556,7 +3756,12 @@ name|Actions
 operator|.
 name|OPEN_URL
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Open URL or DOI"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3595,7 +3800,12 @@ name|Actions
 operator|.
 name|OPEN_SPIRES
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Open SPIRES entry"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3627,7 +3837,12 @@ name|Actions
 operator|.
 name|DUPLI_CHECK
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Find duplicates"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|plainTextImport
@@ -3643,7 +3858,12 @@ name|Actions
 operator|.
 name|PLAIN_TEXT_IMPORT
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"New entry from plain text"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3697,7 +3917,12 @@ name|GeneralAction
 argument_list|(
 literal|"exportToClipboard"
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Export selected entries to clipboard"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|autoSetPdf
@@ -3713,7 +3938,12 @@ name|Actions
 operator|.
 name|AUTO_SET_PDF
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Synchronize PDF links"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3738,7 +3968,12 @@ name|Actions
 operator|.
 name|AUTO_SET_PS
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Synchronize PS links"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -3795,7 +4030,12 @@ name|Actions
 operator|.
 name|ABBREVIATE_MEDLINE
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Abbreviate journal names (MEDLINE)"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3818,7 +4058,12 @@ name|Actions
 operator|.
 name|ABBREVIATE_ISO
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Abbreviate journal names (ISO)"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3852,7 +4097,12 @@ name|Actions
 operator|.
 name|UNABBREVIATE
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Unabbreviate journal names"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3938,7 +4188,12 @@ name|Actions
 operator|.
 name|DB_CONNECT
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Connect to external SQL database"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3968,7 +4223,12 @@ name|Actions
 operator|.
 name|DB_EXPORT
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Export to external SQL database"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -3998,7 +4258,12 @@ name|Actions
 operator|.
 name|CLEANUP
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Cleanup entries"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -4037,7 +4302,12 @@ name|Actions
 operator|.
 name|MERGE_ENTRIES
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Merge entries"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -4102,7 +4372,12 @@ name|Actions
 operator|.
 name|RESOLVE_DUPLICATE_KEYS
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Resolve duplicate BibTeX keys"
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -4156,9 +4431,14 @@ name|FindUnlinkedFilesDialog
 operator|.
 name|ACTION_COMMAND
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 name|FindUnlinkedFilesDialog
 operator|.
 name|ACTION_MENU_TITLE
+argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -10947,7 +11227,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Quit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -11033,7 +11318,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Close database"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -11341,7 +11631,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Preferences"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -12721,7 +13016,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Save session"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -13033,7 +13333,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Load session"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -13343,9 +13648,19 @@ name|NAME
 argument_list|,
 name|next
 condition|?
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Next tab"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Previous tab"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -13612,7 +13927,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Manage custom exports"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -13664,7 +13984,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Manage custom imports"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -13716,7 +14041,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Customize entry types"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -13779,7 +14109,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Set up general fields"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -13846,7 +14181,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Database properties"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -13928,7 +14268,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Bibtex key patterns"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -14019,7 +14364,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Increase table font size"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -14145,7 +14495,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Decrease table font size"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -14280,7 +14635,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Minimize to system tray"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue

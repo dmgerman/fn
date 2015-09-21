@@ -988,9 +988,19 @@ name|NAME
 argument_list|,
 name|selectedOnly
 condition|?
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Export selected entries"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Export"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

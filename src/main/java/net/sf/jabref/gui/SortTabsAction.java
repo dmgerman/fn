@@ -121,7 +121,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Sort tabs"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue

@@ -215,7 +215,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"New entry"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
