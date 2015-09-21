@@ -1183,8 +1183,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-name|getKeyName
-argument_list|()
+literal|"Fetch ArXiv.org"
 argument_list|)
 return|;
 block|}

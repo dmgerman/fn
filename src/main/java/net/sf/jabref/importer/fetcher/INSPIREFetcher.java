@@ -544,8 +544,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-name|getKeyName
-argument_list|()
+literal|"Fetch INSPIRE"
 argument_list|)
 return|;
 block|}
