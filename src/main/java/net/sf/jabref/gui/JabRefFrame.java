@@ -3802,7 +3802,7 @@ name|OPEN_SPIRES
 argument_list|,
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Open SPIRES entry"
 argument_list|)
@@ -14270,7 +14270,7 @@ name|NAME
 argument_list|,
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Bibtex key patterns"
 argument_list|)

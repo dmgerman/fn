@@ -2412,15 +2412,10 @@ name|menu
 operator|.
 name|setText
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|field
 operator|.
 name|getMenuString
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|menu
