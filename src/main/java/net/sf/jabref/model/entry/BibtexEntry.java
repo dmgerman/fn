@@ -598,36 +598,12 @@ index|[]
 name|getOptionalFields
 parameter_list|()
 block|{
-name|String
-index|[]
-name|res
-init|=
+return|return
 name|type
 operator|.
 name|getOptionalFields
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|res
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-name|res
 return|;
-block|}
-else|else
-block|{
-comment|// Fix for https://sourceforge.net/p/jabref/bugs/1221/ - see https://github.com/fc7/jabref/commit/e92238a37cc780eb7fccc0684fa62d2437ddd825
-return|return
-name|res
-operator|.
-name|clone
-argument_list|()
-return|;
-block|}
 block|}
 comment|/**      * @return an array describing the required fields for this entry. "null" if no fields are required      */
 DECL|method|getRequiredFields ()
@@ -637,38 +613,12 @@ index|[]
 name|getRequiredFields
 parameter_list|()
 block|{
-name|String
-index|[]
-name|res
-init|=
+return|return
 name|type
 operator|.
 name|getRequiredFields
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|res
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-name|res
 return|;
-block|}
-else|else
-block|{
-comment|// FIXME: This fix slows down saving very much. The issue should be investigated further and the one working on the result should do the clone
-comment|//        Removing the "clone()" here is against a rule in "Effective Java". However, the speed improvement weights more
-comment|// Fix for https://sourceforge.net/p/jabref/bugs/1221/ - see https://github.com/fc7/jabref/commit/e92238a37cc780eb7fccc0684fa62d2437ddd825
-return|return
-name|res
-operator|.
-name|clone
-argument_list|()
-return|;
-block|}
 block|}
 DECL|method|getUserDefinedFields ()
 specifier|public
