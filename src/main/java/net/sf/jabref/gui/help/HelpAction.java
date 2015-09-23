@@ -42,16 +42,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -113,6 +103,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|actions
 operator|.
 name|MnemonicAwareAction
 import|;
