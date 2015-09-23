@@ -593,8 +593,10 @@ block|}
 comment|/**      * @return An array describing the optional fields for this entry. "null" if no fields are required      */
 DECL|method|getOptionalFields ()
 specifier|public
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getOptionalFields
 parameter_list|()
 block|{
@@ -608,8 +610,10 @@ block|}
 comment|/**      * @return an array describing the required fields for this entry. "null" if no fields are required      */
 DECL|method|getRequiredFields ()
 specifier|public
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getRequiredFields
 parameter_list|()
 block|{
@@ -1678,6 +1682,36 @@ block|}
 block|}
 return|return
 literal|true
+return|;
+block|}
+DECL|method|allFieldsPresent (List<String> fields, BibtexDatabase database)
+name|boolean
+name|allFieldsPresent
+parameter_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|fields
+parameter_list|,
+name|BibtexDatabase
+name|database
+parameter_list|)
+block|{
+return|return
+name|allFieldsPresent
+argument_list|(
+operator|(
+name|String
+index|[]
+operator|)
+name|fields
+operator|.
+name|toArray
+argument_list|()
+argument_list|,
+name|database
+argument_list|)
 return|;
 block|}
 DECL|method|atLeastOnePresent (String[] fields, BibtexDatabase database)
