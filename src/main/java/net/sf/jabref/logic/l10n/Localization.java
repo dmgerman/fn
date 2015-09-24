@@ -86,6 +86,18 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|defaultLocale
+specifier|private
+specifier|static
+specifier|final
+name|Locale
+name|defaultLocale
+init|=
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
+decl_stmt|;
 DECL|field|RESOURCE_PREFIX
 specifier|private
 specifier|static
@@ -131,7 +143,7 @@ specifier|static
 name|ResourceBundle
 name|intMessages
 decl_stmt|;
-DECL|method|setLanguage (String language, String country)
+DECL|method|setLanguage (String language)
 specifier|public
 specifier|static
 name|void
@@ -139,9 +151,6 @@ name|setLanguage
 parameter_list|(
 name|String
 name|language
-parameter_list|,
-name|String
-name|country
 parameter_list|)
 block|{
 name|Locale
@@ -151,10 +160,10 @@ operator|new
 name|Locale
 argument_list|(
 name|language
-argument_list|,
-name|country
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|messages
 operator|=
 name|ResourceBundle
@@ -206,7 +215,7 @@ literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// these checks are required as when the requested resource bundle is NOT found, the default locale is used as a fallback silently.
+comment|// silent fallback to system locale when bundle is not found
 if|if
 condition|(
 operator|!
@@ -225,7 +234,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"tried loading<"
+literal|"Tried loading<"
 operator|+
 name|RESOURCE_PREFIX
 operator|+
@@ -233,12 +242,9 @@ literal|"> for locale<"
 operator|+
 name|locale
 operator|+
-literal|"> but had to fall back on default locale<"
+literal|"> but had to fall back to default locale<"
 operator|+
-name|Locale
-operator|.
-name|getDefault
-argument_list|()
+name|defaultLocale
 operator|+
 literal|">"
 argument_list|)
@@ -262,7 +268,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"tried loading<"
+literal|"Tried loading<"
 operator|+
 name|MENU_RESOURCE_PREFIX
 operator|+
@@ -270,12 +276,9 @@ literal|"> for locale<"
 operator|+
 name|locale
 operator|+
-literal|"> but had to fall back on default locale<"
+literal|"> but had to fall back to default locale<"
 operator|+
-name|Locale
-operator|.
-name|getDefault
-argument_list|()
+name|defaultLocale
 operator|+
 literal|">"
 argument_list|)
@@ -299,7 +302,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"tried loading<"
+literal|"Tried loading<"
 operator|+
 name|INTEGRITY_RESOURCE_PREFIX
 operator|+
@@ -307,17 +310,94 @@ literal|"> for locale<"
 operator|+
 name|locale
 operator|+
-literal|"> but had to fall back on default locale<"
+literal|"> but had to fall back to default locale<"
 operator|+
-name|Locale
-operator|.
-name|getDefault
-argument_list|()
+name|defaultLocale
 operator|+
 literal|">"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|MissingResourceException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Fallback to system locale<"
+operator|+
+name|defaultLocale
+operator|+
+literal|"> failed, using locale<en> instead"
+argument_list|)
+expr_stmt|;
+name|locale
+operator|=
+operator|new
+name|Locale
+argument_list|(
+literal|"en"
+argument_list|)
+expr_stmt|;
+name|messages
+operator|=
+name|ResourceBundle
+operator|.
+name|getBundle
+argument_list|(
+name|RESOURCE_PREFIX
+argument_list|,
+name|locale
+argument_list|,
+operator|new
+name|EncodingControl
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|menuTitles
+operator|=
+name|ResourceBundle
+operator|.
+name|getBundle
+argument_list|(
+name|MENU_RESOURCE_PREFIX
+argument_list|,
+name|locale
+argument_list|,
+operator|new
+name|EncodingControl
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|intMessages
+operator|=
+name|ResourceBundle
+operator|.
+name|getBundle
+argument_list|(
+name|INTEGRITY_RESOURCE_PREFIX
+argument_list|,
+name|locale
+argument_list|,
+operator|new
+name|EncodingControl
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
 name|Locale
 operator|.
 name|setDefault
@@ -336,6 +416,7 @@ argument_list|(
 name|locale
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|lang (String key, String... params)
 specifier|public
