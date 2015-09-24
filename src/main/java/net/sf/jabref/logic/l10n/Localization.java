@@ -99,7 +99,7 @@ name|getDefault
 argument_list|()
 decl_stmt|;
 DECL|field|RESOURCE_PREFIX
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -108,7 +108,7 @@ init|=
 literal|"l10n/JabRef"
 decl_stmt|;
 DECL|field|MENU_RESOURCE_PREFIX
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -117,7 +117,7 @@ init|=
 literal|"l10n/Menu"
 decl_stmt|;
 DECL|field|INTEGRITY_RESOURCE_PREFIX
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
