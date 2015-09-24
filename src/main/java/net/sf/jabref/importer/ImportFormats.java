@@ -158,6 +158,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|actions
+operator|.
 name|MnemonicAwareAction
 import|;
 end_import
@@ -416,9 +418,19 @@ name|NAME
 argument_list|,
 name|openInNew
 condition|?
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Import into new database"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Import into current database"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue

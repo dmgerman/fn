@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2012 JabRef contributors.     This program is free sof
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.actions
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|actions
 package|;
 end_package
 
@@ -167,6 +169,20 @@ operator|.
 name|external
 operator|.
 name|ExternalFileType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|*
 import|;
 end_import
 

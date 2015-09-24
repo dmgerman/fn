@@ -188,6 +188,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|actions
+operator|.
 name|MnemonicAwareAction
 import|;
 end_import
@@ -1882,7 +1884,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Manage external file types"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -1909,7 +1916,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Manage external file types"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this

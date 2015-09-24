@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.actions
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|actions
 package|;
 end_package
 
@@ -127,15 +129,10 @@ block|{
 name|String
 name|name
 init|=
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
 name|value
 operator|.
 name|toString
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|int
 name|i

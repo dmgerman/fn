@@ -42,16 +42,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -113,6 +103,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|actions
 operator|.
 name|MnemonicAwareAction
 import|;
@@ -189,7 +181,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Help"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -235,7 +232,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Help"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -288,7 +290,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Help"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue

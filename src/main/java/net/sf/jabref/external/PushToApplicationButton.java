@@ -80,6 +80,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|actions
+operator|.
 name|MnemonicAwareAction
 import|;
 end_import
@@ -179,16 +181,6 @@ operator|.
 name|event
 operator|.
 name|MouseEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
 import|;
 end_import
 

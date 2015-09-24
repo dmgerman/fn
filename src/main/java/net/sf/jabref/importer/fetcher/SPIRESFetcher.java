@@ -654,8 +654,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-name|getKeyName
-argument_list|()
+literal|"Fetch_SPIRES"
 argument_list|)
 return|;
 block|}
