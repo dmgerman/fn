@@ -234,83 +234,11 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Tried loading<"
-operator|+
-name|RESOURCE_PREFIX
-operator|+
-literal|"> for locale<"
+literal|"Bundle for locale<"
 operator|+
 name|locale
 operator|+
-literal|"> but had to fall back to default locale<"
-operator|+
-name|defaultLocale
-operator|+
-literal|">"
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-operator|!
-name|menuTitles
-operator|.
-name|getLocale
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|locale
-argument_list|)
-condition|)
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Tried loading<"
-operator|+
-name|MENU_RESOURCE_PREFIX
-operator|+
-literal|"> for locale<"
-operator|+
-name|locale
-operator|+
-literal|"> but had to fall back to default locale<"
-operator|+
-name|defaultLocale
-operator|+
-literal|">"
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-operator|!
-name|intMessages
-operator|.
-name|getLocale
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|locale
-argument_list|)
-condition|)
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Tried loading<"
-operator|+
-name|INTEGRITY_RESOURCE_PREFIX
-operator|+
-literal|"> for locale<"
-operator|+
-name|locale
-operator|+
-literal|"> but had to fall back to default locale<"
+literal|"> not found. Falling back to system locale<"
 operator|+
 name|defaultLocale
 operator|+
@@ -329,7 +257,11 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Fallback to system locale<"
+literal|"Bundle for locale<"
+operator|+
+name|locale
+operator|+
+literal|"> not found. Fallback to system locale<"
 operator|+
 name|defaultLocale
 operator|+
@@ -398,6 +330,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
+comment|// Set consistent VM locales
 name|Locale
 operator|.
 name|setDefault
