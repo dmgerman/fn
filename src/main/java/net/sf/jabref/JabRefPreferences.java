@@ -3727,13 +3727,20 @@ name|TRUE
 argument_list|)
 expr_stmt|;
 comment|// "Show last names only"
+comment|// system locale as default
 name|defaults
 operator|.
 name|put
 argument_list|(
 name|LANGUAGE
 argument_list|,
-literal|"en"
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
+operator|.
+name|getLanguage
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|defaults
