@@ -1947,7 +1947,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_FIELD
+name|TABLE_PRIMARY_SORT_FIELD
 argument_list|)
 expr_stmt|;
 name|sec
@@ -1960,7 +1960,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_FIELD
+name|TABLE_SECONDARY_SORT_FIELD
 argument_list|)
 expr_stmt|;
 name|ter
@@ -1973,7 +1973,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_FIELD
+name|TABLE_TERTIARY_SORT_FIELD
 argument_list|)
 expr_stmt|;
 name|priD
@@ -1986,7 +1986,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_DESCENDING
+name|TABLE_PRIMARY_SORT_DESCENDING
 argument_list|)
 expr_stmt|;
 name|secD
@@ -1999,7 +1999,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_DESCENDING
+name|TABLE_SECONDARY_SORT_DESCENDING
 argument_list|)
 expr_stmt|;
 name|terD
@@ -2012,7 +2012,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_DESCENDING
+name|TABLE_TERTIARY_SORT_DESCENDING
 argument_list|)
 expr_stmt|;
 block|}

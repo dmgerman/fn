@@ -2379,7 +2379,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_FIELD
+name|TABLE_PRIMARY_SORT_FIELD
 argument_list|)
 block|,
 name|Globals
@@ -2390,7 +2390,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_FIELD
+name|TABLE_SECONDARY_SORT_FIELD
 argument_list|)
 block|,
 name|Globals
@@ -2401,7 +2401,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_FIELD
+name|TABLE_TERTIARY_SORT_FIELD
 argument_list|)
 block|}
 decl_stmt|;
@@ -2421,7 +2421,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_DESCENDING
+name|TABLE_PRIMARY_SORT_DESCENDING
 argument_list|)
 block|,
 name|Globals
@@ -2432,7 +2432,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_DESCENDING
+name|TABLE_SECONDARY_SORT_DESCENDING
 argument_list|)
 block|,
 name|Globals
@@ -2443,7 +2443,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_DESCENDING
+name|TABLE_TERTIARY_SORT_DESCENDING
 argument_list|)
 block|}
 decl_stmt|;
@@ -2663,7 +2663,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_FIELD
+name|TABLE_PRIMARY_SORT_FIELD
 argument_list|,
 name|fields
 operator|.
@@ -2681,7 +2681,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_DESCENDING
+name|TABLE_PRIMARY_SORT_DESCENDING
 argument_list|,
 name|order
 operator|.
@@ -2707,7 +2707,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_FIELD
+name|TABLE_SECONDARY_SORT_FIELD
 argument_list|,
 name|fields
 operator|.
@@ -2725,7 +2725,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_DESCENDING
+name|TABLE_SECONDARY_SORT_DESCENDING
 argument_list|,
 name|order
 operator|.
@@ -2746,7 +2746,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_FIELD
+name|TABLE_SECONDARY_SORT_FIELD
 argument_list|,
 literal|""
 argument_list|)
@@ -2759,7 +2759,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_DESCENDING
+name|TABLE_SECONDARY_SORT_DESCENDING
 argument_list|,
 literal|false
 argument_list|)
@@ -2780,7 +2780,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_FIELD
+name|TABLE_TERTIARY_SORT_FIELD
 argument_list|,
 name|fields
 operator|.
@@ -2798,7 +2798,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_DESCENDING
+name|TABLE_TERTIARY_SORT_DESCENDING
 argument_list|,
 name|order
 operator|.
@@ -2819,7 +2819,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_FIELD
+name|TABLE_TERTIARY_SORT_FIELD
 argument_list|,
 literal|""
 argument_list|)
@@ -2832,7 +2832,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_DESCENDING
+name|TABLE_TERTIARY_SORT_DESCENDING
 argument_list|,
 literal|false
 argument_list|)
