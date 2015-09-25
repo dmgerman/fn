@@ -32,11 +32,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|net
 operator|.
-name|junit
+name|sf
 operator|.
-name|Assert
+name|jabref
+operator|.
+name|support
+operator|.
+name|DevEnvironment
 import|;
 end_import
 
@@ -46,17 +50,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
+name|*
 import|;
 end_import
 
@@ -188,6 +182,17 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// CI server is blocked by Google
+name|Assume
+operator|.
+name|assumeFalse
+argument_list|(
+name|DevEnvironment
+operator|.
+name|isCIServer
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|entry
 operator|.
 name|setField
@@ -231,6 +236,17 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// CI server is blocked by Google
+name|Assume
+operator|.
+name|assumeFalse
+argument_list|(
+name|DevEnvironment
+operator|.
+name|isCIServer
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|entry
 operator|.
 name|setField
