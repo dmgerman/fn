@@ -60,6 +60,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -122,6 +150,54 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|DirectoryNotEmptyException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|NoSuchFileException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Paths
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -134,7 +210,23 @@ specifier|public
 class|class
 name|FileUtil
 block|{
-comment|/**      * Returns the extension of a file or null if the file does not have one (no . in name).      *      * @param file      *      * @return The extension, trimmed and in lowercase.      */
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|FileUtil
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+comment|/**      * Returns the extension of a file or null if the file does not have one (no . in name).      *      * @param file      * @return The extension, trimmed and in lowercase.      */
 DECL|method|getFileExtension (File file)
 specifier|public
 specifier|static
@@ -203,7 +295,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Copies a file.      *      * @param source      *            File Source file      * @param dest      *            File Destination file      * @param deleteIfExists      *            boolean Determines whether the copy goes on even if the file      *            exists.      * @throws IOException      * @return boolean Whether the copy succeeded, or was stopped due to the      *         file already existing.      */
+comment|/**      * Copies a file.      *      * @param source         File Source file      * @param dest           File Destination file      * @param deleteIfExists boolean Determines whether the copy goes on even if the file      *                       exists.      * @return boolean Whether the copy succeeded, or was stopped due to the      * file already existing.      * @throws IOException      */
 DECL|method|copyFile (File source, File dest, boolean deleteIfExists)
 specifier|public
 specifier|static
@@ -344,7 +436,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      *      * @param fileName      * @param destFilename      * @return      */
+comment|/**      * @param fileName      * @param destFilename      * @return      */
 DECL|method|renameFile (String fileName, String destFilename)
 specifier|public
 specifier|static
@@ -388,7 +480,82 @@ name|toFile
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param metaData      *            The MetaData for the database this file belongs to.      * @param name      *            The file name, may also be a relative path to the file      */
+comment|/**      * Deletes a file from the local file system.      *      * @param filePath the file to delete      */
+DECL|method|deleteFile (String filePath)
+specifier|public
+specifier|static
+name|void
+name|deleteFile
+parameter_list|(
+name|String
+name|filePath
+parameter_list|)
+block|{
+try|try
+block|{
+name|Files
+operator|.
+name|delete
+argument_list|(
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|filePath
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchFileException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"No such file or directory found: "
+operator|+
+name|filePath
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|DirectoryNotEmptyException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot delete non-empty directory: "
+operator|+
+name|filePath
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"File permission error while deleting: "
+operator|+
+name|filePath
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param metaData The MetaData for the database this file belongs to.      * @param name     The file name, may also be a relative path to the file      */
 DECL|method|expandFilename (final MetaData metaData, String name)
 specifier|public
 specifier|static
@@ -569,7 +736,7 @@ name|dirs
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      *      * Will look in each of the given dirs starting from the beginning and      * returning the first found file to match if any.      */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      *<p>      * Will look in each of the given dirs starting from the beginning and      * returning the first found file to match if any.      */
 DECL|method|expandFilename (String name, String[] dir)
 specifier|public
 specifier|static
@@ -832,7 +999,7 @@ return|return
 name|file
 return|;
 block|}
-comment|/**      * Converts an absolute filename to a relative one, if necessary.      * Returns the parameter fileName itself if no shortening is possible      *      * This method works correctly only if dirs are sorted decent in their length      * i.e. /home/user/literature/important before /home/user/literature      *      * @param fileName the file name to be shortened      * @param dirs directories to check.      */
+comment|/**      * Converts an absolute filename to a relative one, if necessary.      * Returns the parameter fileName itself if no shortening is possible      *<p>      * This method works correctly only if dirs are sorted decent in their length      * i.e. /home/user/literature/important before /home/user/literature      *      * @param fileName the file name to be shortened      * @param dirs     directories to check.      */
 DECL|method|shortenFileName (File fileName, String[] dirs)
 specifier|public
 specifier|static

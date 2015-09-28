@@ -102,6 +102,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -333,6 +343,24 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|io
+operator|.
+name|FileUtil
 import|;
 end_import
 
@@ -1515,6 +1543,106 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|JMenuItem
+name|deleteFile
+init|=
+operator|new
+name|JMenuItem
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Delete local file"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|menu
+operator|.
+name|add
+argument_list|(
+name|deleteFile
+argument_list|)
+expr_stmt|;
+name|deleteFile
+operator|.
+name|addActionListener
+argument_list|(
+operator|new
+name|ActionListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+name|int
+name|row
+init|=
+name|getSelectedRow
+argument_list|()
+decl_stmt|;
+comment|// no selection
+if|if
+condition|(
+name|row
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+return|return;
+block|}
+name|FileListEntry
+name|entry
+init|=
+name|tableModel
+operator|.
+name|getEntry
+argument_list|(
+name|row
+argument_list|)
+decl_stmt|;
+comment|// unlink file
+name|removeEntries
+argument_list|()
+expr_stmt|;
+comment|// delete file from filesystem
+name|File
+name|expandedPath
+init|=
+name|FileUtil
+operator|.
+name|expandFilename
+argument_list|(
+name|metaData
+argument_list|,
+name|entry
+operator|.
+name|getLink
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|FileUtil
+operator|.
+name|deleteFile
+argument_list|(
+name|expandedPath
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|openSelectedFile ()
 specifier|private
@@ -2026,7 +2154,7 @@ name|toIdx
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Open an editor for this entry.      * @param entry The entry to edit.      * @param openBrowse True to indicate that a Browse dialog should be immediately opened.      * @return true if the edit was accepted, false if it was cancelled.      */
+comment|/**      * Open an editor for this entry.      *      * @param entry      The entry to edit.      * @param openBrowse True to indicate that a Browse dialog should be immediately opened.      * @return true if the edit was accepted, false if it was cancelled.      */
 DECL|method|editListEntry (FileListEntry entry, boolean openBrowse)
 specifier|private
 name|boolean
@@ -2377,7 +2505,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This is the callback method that the DownloadExternalFile class uses to report the result      * of a download operation. This call may never come, if the user cancelled the operation.      * @param file The FileListEntry linking to the resulting local file.      */
+comment|/**      * This is the callback method that the DownloadExternalFile class uses to report the result      * of a download operation. This call may never come, if the user cancelled the operation.      *      * @param file The FileListEntry linking to the resulting local file.      */
 annotation|@
 name|Override
 DECL|method|downloadComplete (FileListEntry file)
