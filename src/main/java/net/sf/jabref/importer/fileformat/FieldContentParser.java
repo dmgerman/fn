@@ -50,6 +50,26 @@ name|StringUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class provides the reformatting needed when reading BibTeX fields formatted  * in JabRef style. The reformatting must undo all formatting done by JabRef when  * writing the same fields.  */
 end_comment
@@ -59,8 +79,44 @@ DECL|class|FieldContentParser
 class|class
 name|FieldContentParser
 block|{
-comment|/**      * Performs the reformatting      * @param content StringBuffer containing the field to format. key contains field name according to field      *  was edited by Kuehn/Havalevich      * @return The formatted field content. NOTE: the StringBuffer returned may      * or may not be the same as the argument given.      */
-DECL|method|format (StringBuffer content, String key)
+DECL|field|multiLineFields
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|multiLineFields
+decl_stmt|;
+DECL|method|FieldContentParser ()
+specifier|public
+name|FieldContentParser
+parameter_list|()
+block|{
+name|multiLineFields
+operator|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+expr_stmt|;
+name|multiLineFields
+operator|.
+name|add
+argument_list|(
+literal|"abstract"
+argument_list|)
+expr_stmt|;
+name|multiLineFields
+operator|.
+name|add
+argument_list|(
+literal|"review"
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Performs the reformatting      *      * @param content StringBuffer containing the field to format. bibtexKey contains field name according to field      *                was edited by Kuehn/Havalevich      * @param bibtexKey      * @return The formatted field content. The StringBuffer returned may or may not be the same as the argument given.      */
+DECL|method|format (StringBuffer content, String bibtexKey)
 specifier|public
 name|StringBuffer
 name|format
@@ -69,14 +125,9 @@ name|StringBuffer
 name|content
 parameter_list|,
 name|String
-name|key
+name|bibtexKey
 parameter_list|)
 block|{
-name|int
-name|i
-init|=
-literal|0
-decl_stmt|;
 comment|// Unify line breaks
 name|content
 operator|=
@@ -94,6 +145,26 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Do not format multiline fields
+if|if
+condition|(
+name|multiLineFields
+operator|.
+name|contains
+argument_list|(
+name|bibtexKey
+argument_list|)
+condition|)
+block|{
+return|return
+name|content
+return|;
+block|}
+name|int
+name|i
+init|=
+literal|0
+decl_stmt|;
 while|while
 condition|(
 name|i
@@ -579,11 +650,11 @@ comment|// This is the reason why the next lines are required
 comment|// FIXME: just don't edit some fields rather than hacking every exception?
 if|if
 condition|(
-name|key
+name|bibtexKey
 operator|!=
 literal|null
 operator|&&
-name|key
+name|bibtexKey
 operator|.
 name|equals
 argument_list|(
@@ -641,25 +712,6 @@ block|}
 block|}
 return|return
 name|content
-return|;
-block|}
-comment|/**      * Performs the reformatting      * @param content StringBuffer containing the field to format.      * @return The formatted field content. NOTE: the StringBuffer returned may      * or may not be the same as the argument given.      */
-DECL|method|format (StringBuffer content)
-specifier|public
-name|StringBuffer
-name|format
-parameter_list|(
-name|StringBuffer
-name|content
-parameter_list|)
-block|{
-return|return
-name|format
-argument_list|(
-name|content
-argument_list|,
-literal|null
-argument_list|)
 return|;
 block|}
 block|}
