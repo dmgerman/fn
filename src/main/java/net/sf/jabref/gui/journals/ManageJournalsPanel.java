@@ -4039,9 +4039,7 @@ name|JournalAbbreviationsUtil
 operator|.
 name|getTableModel
 argument_list|(
-name|Globals
-operator|.
-name|journalAbbrev
+name|abbr
 argument_list|)
 argument_list|)
 decl_stmt|;
