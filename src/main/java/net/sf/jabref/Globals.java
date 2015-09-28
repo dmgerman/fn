@@ -416,6 +416,14 @@ name|i
 operator|--
 control|)
 block|{
+name|String
+name|filename
+init|=
+name|lists
+index|[
+name|i
+index|]
+decl_stmt|;
 try|try
 block|{
 name|Globals
@@ -427,10 +435,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-name|lists
-index|[
-name|i
-index|]
+name|filename
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -446,7 +451,9 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Cannot find file"
+literal|"Cannot find external journal list file "
+operator|+
+name|filename
 argument_list|,
 name|e
 argument_list|)
