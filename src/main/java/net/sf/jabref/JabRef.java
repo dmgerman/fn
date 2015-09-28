@@ -70,16 +70,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -221,6 +211,22 @@ operator|.
 name|fetcher
 operator|.
 name|EntryFetchers
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|Abbreviations
 import|;
 end_import
 
@@ -878,10 +884,14 @@ name|initAllExports
 argument_list|()
 expr_stmt|;
 comment|// Read list(s) of journal names and abbreviations:
-name|Globals
+name|Abbreviations
 operator|.
 name|initializeJournalNames
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
 expr_stmt|;
 comment|// Check for running JabRef
 name|RemotePreferences

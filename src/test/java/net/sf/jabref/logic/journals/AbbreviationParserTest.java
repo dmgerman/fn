@@ -15,18 +15,6 @@ package|;
 end_package
 
 begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -75,7 +63,7 @@ name|ap
 operator|.
 name|readJournalListFromResource
 argument_list|(
-name|Globals
+name|Abbreviations
 operator|.
 name|JOURNALS_FILE_BUILTIN
 argument_list|)

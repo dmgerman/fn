@@ -54,7 +54,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|journals
+operator|.
+name|Abbreviation
 import|;
 end_import
 
@@ -70,7 +74,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|Abbreviation
+name|Abbreviations
 import|;
 end_import
 
@@ -308,7 +312,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|Globals
+name|Abbreviations
 operator|.
 name|journalAbbrev
 operator|.
@@ -392,7 +396,7 @@ name|currentText
 parameter_list|)
 block|{
 return|return
-name|Globals
+name|Abbreviations
 operator|.
 name|journalAbbrev
 operator|.
