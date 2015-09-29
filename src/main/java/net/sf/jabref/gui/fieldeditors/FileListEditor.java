@@ -1633,6 +1633,7 @@ argument_list|(
 name|row
 argument_list|)
 decl_stmt|;
+comment|// null if file does not exist
 name|File
 name|file
 init|=
@@ -1648,9 +1649,9 @@ name|getLink
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// transactional delete and unlink
 try|try
 block|{
-comment|// transactional delete and unlink
 if|if
 condition|(
 name|file
@@ -1668,16 +1669,10 @@ name|toPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|removeEntries
 argument_list|()
 expr_stmt|;
-block|}
-else|else
-block|{
-name|removeEntries
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
