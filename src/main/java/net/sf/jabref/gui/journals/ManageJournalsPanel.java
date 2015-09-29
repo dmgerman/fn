@@ -256,6 +256,22 @@ name|logic
 operator|.
 name|journals
 operator|.
+name|Abbreviations
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|journals
+operator|.
 name|JournalAbbreviationRepository
 import|;
 end_import
@@ -1362,7 +1378,7 @@ name|abbr
 operator|.
 name|readJournalListFromResource
 argument_list|(
-name|Globals
+name|Abbreviations
 operator|.
 name|JOURNALS_FILE_BUILTIN
 argument_list|)
@@ -1377,7 +1393,7 @@ name|JournalAbbreviationsUtil
 operator|.
 name|getTableModel
 argument_list|(
-name|Globals
+name|Abbreviations
 operator|.
 name|journalAbbrev
 argument_list|)
@@ -2776,10 +2792,14 @@ name|list
 argument_list|)
 expr_stmt|;
 block|}
-name|Globals
+name|Abbreviations
 operator|.
 name|initializeJournalNames
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
 expr_stmt|;
 comment|// Update the autocompleter for the "journal" field in all base panels,
 comment|// so added journal names are available:
@@ -4039,9 +4059,7 @@ name|JournalAbbreviationsUtil
 operator|.
 name|getTableModel
 argument_list|(
-name|Globals
-operator|.
-name|journalAbbrev
+name|abbr
 argument_list|)
 argument_list|)
 decl_stmt|;

@@ -44,7 +44,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|journals
+operator|.
+name|Abbreviations
 import|;
 end_import
 
@@ -72,7 +76,7 @@ name|fieldText
 parameter_list|)
 block|{
 return|return
-name|Globals
+name|Abbreviations
 operator|.
 name|journalAbbrev
 operator|.

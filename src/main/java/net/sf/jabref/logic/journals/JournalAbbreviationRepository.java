@@ -237,6 +237,15 @@ parameter_list|)
 throws|throws
 name|FileNotFoundException
 block|{
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Reading journal list from file "
+operator|+
+name|file
+argument_list|)
+expr_stmt|;
 name|AbbreviationParser
 name|parser
 init|=
