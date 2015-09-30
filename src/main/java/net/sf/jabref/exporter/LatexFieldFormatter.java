@@ -100,6 +100,10 @@ name|Vector
 import|;
 end_import
 
+begin_comment
+comment|/**  * Currently the only implementation of net.sf.jabref.exporter.FieldFormatter  *   * Obeys following settings:  *  * JabRefPreferences.RESOLVE_STRINGS_ALL_FIELDS  *  * JabRefPreferences.DO_NOT_RESOLVE_STRINGS_FOR  *  * JabRefPreferences.WRITEFIELD_WRAPFIELD  */
+end_comment
+
 begin_class
 DECL|class|LatexFieldFormatter
 specifier|public
@@ -150,17 +154,17 @@ specifier|final
 name|boolean
 name|resolveStringsAllFields
 decl_stmt|;
-DECL|field|valueDelimitersZero
+DECL|field|valueDelimiterStartOfValue
 specifier|private
 specifier|final
 name|char
-name|valueDelimitersZero
+name|valueDelimiterStartOfValue
 decl_stmt|;
-DECL|field|valueDelimitersOne
+DECL|field|valueDelimiterEndOfValue
 specifier|private
 specifier|final
 name|char
-name|valueDelimitersOne
+name|valueDelimiterEndOfValue
 decl_stmt|;
 DECL|field|writefieldWrapfield
 specifier|private
@@ -215,7 +219,7 @@ operator|.
 name|RESOLVE_STRINGS_ALL_FIELDS
 argument_list|)
 expr_stmt|;
-name|valueDelimitersZero
+name|valueDelimiterStartOfValue
 operator|=
 name|Globals
 operator|.
@@ -226,7 +230,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|valueDelimitersOne
+name|valueDelimiterEndOfValue
 operator|=
 name|Globals
 operator|.
@@ -288,11 +292,11 @@ literal|null
 condition|)
 block|{
 return|return
-name|valueDelimitersZero
+name|valueDelimiterStartOfValue
 operator|+
 literal|""
 operator|+
-name|valueDelimitersOne
+name|valueDelimiterEndOfValue
 return|;
 block|}
 if|if
@@ -539,7 +543,7 @@ operator|=
 operator|new
 name|StringBuffer
 argument_list|(
-name|valueDelimitersZero
+name|valueDelimiterStartOfValue
 operator|+
 literal|""
 argument_list|)
@@ -595,7 +599,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|valueDelimitersOne
+name|valueDelimiterEndOfValue
 argument_list|)
 expr_stmt|;
 return|return
@@ -954,7 +958,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|valueDelimitersZero
+name|valueDelimiterStartOfValue
 argument_list|)
 expr_stmt|;
 name|boolean
@@ -1278,7 +1282,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|valueDelimitersOne
+name|valueDelimiterEndOfValue
 argument_list|)
 expr_stmt|;
 block|}
@@ -1411,7 +1415,7 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-comment|// First we collect all occurences:
+comment|// First we collect all occurrences:
 while|while
 condition|(
 operator|(
