@@ -696,6 +696,19 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|dbStrings
+operator|.
+name|getServerType
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"MySQL"
+argument_list|)
+condition|)
+block|{
 name|val
 operator|=
 name|val
@@ -740,6 +753,7 @@ argument_list|,
 literal|"\\`"
 argument_list|)
 expr_stmt|;
+block|}
 name|query
 operator|=
 name|query
