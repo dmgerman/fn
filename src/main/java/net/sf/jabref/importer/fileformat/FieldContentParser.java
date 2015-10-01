@@ -115,8 +115,8 @@ literal|"review"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Performs the reformatting      *      * @param content StringBuffer containing the field to format. bibtexKey contains field name according to field      *                was edited by Kuehn/Havalevich      * @param bibtexKey      * @return The formatted field content. The StringBuffer returned may or may not be the same as the argument given.      */
-DECL|method|format (StringBuffer content, String bibtexKey)
+comment|/**      * Performs the reformatting      *      * @param content StringBuffer containing the field to format. bibtexField contains field name according to field      *                was edited by Kuehn/Havalevich      * @param bibtexField      * @return The formatted field content. The StringBuffer returned may or may not be the same as the argument given.      */
+DECL|method|format (StringBuffer content, String bibtexField)
 specifier|public
 name|StringBuffer
 name|format
@@ -125,7 +125,7 @@ name|StringBuffer
 name|content
 parameter_list|,
 name|String
-name|bibtexKey
+name|bibtexField
 parameter_list|)
 block|{
 comment|// Unify line breaks
@@ -152,7 +152,7 @@ name|multiLineFields
 operator|.
 name|contains
 argument_list|(
-name|bibtexKey
+name|bibtexField
 argument_list|)
 condition|)
 block|{
@@ -650,11 +650,11 @@ comment|// This is the reason why the next lines are required
 comment|// FIXME: just don't edit some fields rather than hacking every exception?
 if|if
 condition|(
-name|bibtexKey
+name|bibtexField
 operator|!=
 literal|null
 operator|&&
-name|bibtexKey
+name|bibtexField
 operator|.
 name|equals
 argument_list|(
