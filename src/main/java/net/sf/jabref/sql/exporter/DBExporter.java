@@ -696,7 +696,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|/**      * This condition is here since PostgreSQL automatically escapes the backslashes,      * so the entry would double the number of slashes after storing/retrieving.      **/
+comment|/**                     * The condition below is there since PostgreSQL automatically escapes the backslashes,                     * so the entry would double the number of slashes after storing/retrieving.                     **/
 if|if
 condition|(
 name|dbStrings
