@@ -406,7 +406,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Insert selected citations into LyX/Kile"
+literal|"Insert selected citations into %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -435,7 +438,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Push selection to LyX/Kile"
+literal|"Push to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}

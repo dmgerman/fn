@@ -278,9 +278,12 @@ block|{
 return|return
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
-literal|"Insert selected citations into Emacs"
+literal|"Insert selected citations into %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -309,7 +312,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Push selection to Emacs"
+literal|"Push to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -1205,7 +1211,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Pushed citations to Emacs"
+literal|"Pushed citations to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -202,14 +202,6 @@ name|PushToTeXstudio
 implements|implements
 name|PushToApplication
 block|{
-DECL|field|defaultCiteCommand
-specifier|private
-specifier|final
-name|String
-name|defaultCiteCommand
-init|=
-literal|"\\cite"
-decl_stmt|;
 DECL|field|settings
 specifier|private
 name|JPanel
@@ -262,7 +254,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Insert selected citations into TeXstudio"
+literal|"Insert selected citations into %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -291,7 +286,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Push selection to TeXstudio"
+literal|"Push to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -405,21 +403,11 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandTeXstudio"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_TEXSTUDIO
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|citeCom
-operator|==
-literal|null
-condition|)
-block|{
-name|citeCom
-operator|=
-name|defaultCiteCommand
-expr_stmt|;
-block|}
 name|citeCommand
 operator|.
 name|setText
@@ -436,7 +424,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"TeXstudioPath"
+name|JabRefPreferences
+operator|.
+name|TEXSTUDIO_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -477,7 +467,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"citeCommandTeXstudio"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_TEXSTUDIO
 argument_list|,
 name|citeCommand
 operator|.
@@ -494,7 +486,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"TeXstudioPath"
+name|JabRefPreferences
+operator|.
+name|TEXSTUDIO_PATH
 argument_list|,
 name|progPath
 operator|.
@@ -541,7 +535,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Path to TeXstudio"
+literal|"Path to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 operator|+
 literal|":"
@@ -694,21 +691,11 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandTeXstudio"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_TEXSTUDIO
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|citeCom
-operator|==
-literal|null
-condition|)
-block|{
-name|citeCom
-operator|=
-name|defaultCiteCommand
-expr_stmt|;
-block|}
 name|String
 name|programPath
 init|=
@@ -718,7 +705,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"TeXstudioPath"
+name|JabRefPreferences
+operator|.
+name|TEXSTUDIO_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -978,7 +967,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"TeXstudioPath"
+name|JabRefPreferences
+operator|.
+name|TEXSTUDIO_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -1039,7 +1030,8 @@ name|lang
 argument_list|(
 literal|"Pushed citations to %0"
 argument_list|,
-literal|"TeXstudio"
+name|getApplicationName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

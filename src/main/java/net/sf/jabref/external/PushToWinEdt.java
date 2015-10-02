@@ -228,7 +228,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Insert selected citations into WinEdt"
+literal|"Insert selected citations into %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -257,7 +260,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Push selection to WinEdt"
+literal|"Push to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -507,7 +513,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Pushed citations to WinEdt"
+literal|"Pushed citations to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

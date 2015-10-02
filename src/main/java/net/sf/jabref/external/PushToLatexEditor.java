@@ -230,9 +230,12 @@ block|{
 return|return
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
-literal|"Insert selected citations into LatexEditor"
+literal|"Insert selected citations into %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -261,7 +264,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Push to LatexEditor"
+literal|"Push to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
