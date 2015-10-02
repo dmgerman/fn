@@ -483,7 +483,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Construct the transfer handler.      *      * @param entryTable The table this transfer handler should operate on. This argument is allowed to equal null,      *                   in which case the transfer handler can assume that it works for a JabRef instance      *                   with no databases open, attached to the empty tabbed pane.      * @param frame      The JabRefFrame instance.      * @param panel      The BasePanel this transferhandler works for.      */
+comment|/**      * Construct the transfer handler.      *      * @param entryTable The table this transfer handler should operate on. This argument is allowed to equal null, in      *            which case the transfer handler can assume that it works for a JabRef instance with no databases open,      *            attached to the empty tabbed pane.      * @param frame The JabRefFrame instance.      * @param panel The BasePanel this transferhandler works for.      */
 DECL|method|EntryTableTransferHandler (MainTable entryTable, JabRefFrame frame, BasePanel panel)
 specifier|public
 name|EntryTableTransferHandler
@@ -619,7 +619,7 @@ return|;
 comment|//.getTransferable();
 block|}
 block|}
-comment|/**      * This method is called when stuff is drag to the component.      *       * Imports the dropped URL or plain text as a new entry in the current      * database.      *       */
+comment|/**      * This method is called when stuff is drag to the component.      *       * Imports the dropped URL or plain text as a new entry in the current database.      *       */
 annotation|@
 name|Override
 DECL|method|importData (JComponent comp, Transferable t)
@@ -1269,7 +1269,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Translate a String describing a set of files or URLs dragged into JabRef      * into a List of File objects, taking care of URL special characters.      *      * @param s      *            String describing a set of files or URLs dragged into JabRef      * @return a List<File> containing the individual file objects.      *      */
+comment|/**      * Translate a String describing a set of files or URLs dragged into JabRef into a List of File objects, taking care      * of URL special characters.      *      * @param s String describing a set of files or URLs dragged into JabRef      * @return a List<File> containing the individual file objects.      *      */
 DECL|method|getFilesFromDraggedFilesString (String s)
 specifier|public
 specifier|static
@@ -1475,7 +1475,7 @@ return|return
 name|files
 return|;
 block|}
-comment|/**      * Handle a String describing a set of files or URLs dragged into JabRef.      *       * @param s      *            String describing a set of files or URLs dragged into JabRef      * @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      *      */
+comment|/**      * Handle a String describing a set of files or URLs dragged into JabRef.      *       * @param s String describing a set of files or URLs dragged into JabRef      * @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      *      */
 DECL|method|handleDraggedFilenames (String s, final int dropRow)
 specifier|private
 name|boolean
@@ -1503,7 +1503,7 @@ name|dropRow
 argument_list|)
 return|;
 block|}
-comment|/**      * Handle a List containing File objects for a set of files to import.      *       * @param files      *            A List containing File instances pointing to files.      * @param dropRow @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      */
+comment|/**      * Handle a List containing File objects for a set of files to import.      *       * @param files A List containing File instances pointing to files.      * @param dropRow @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      */
 DECL|method|handleDraggedFiles (List<File> files, final int dropRow)
 specifier|private
 name|boolean
@@ -1636,7 +1636,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Take a set of filenames. Those with names indicating bib files are opened      * as such if possible. All other files we will attempt to import into the      * current database.      *       * @param fileNames      *            The names of the files to open.      * @param dropRow success status for the operation      */
+comment|/**      * Take a set of filenames. Those with names indicating bib files are opened as such if possible. All other files we      * will attempt to import into the current database.      *       * @param fileNames The names of the files to open.      * @param dropRow success status for the operation      */
 DECL|method|loadOrImportFiles (String[] fileNames, int dropRow)
 specifier|private
 name|void
@@ -1849,10 +1849,6 @@ argument_list|(
 name|fileName
 argument_list|)
 expr_stmt|;
-comment|// No error message, since we want to try importing the
-comment|// file?
-comment|//
-comment|// Util.showQuickErrorDialog(frame, Globals.lang("Open database"), e);
 block|}
 continue|continue;
 block|}
@@ -1903,7 +1899,7 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/*             			if (extension.equals("pdf")) {             				Collection c;             				try {             					c = XMPUtil.readXMP(fileNames[i]);             				} catch (IOException e1) {             					c = null;             					frame.output(Globals.lang("No XMP metadata found in " + fileNames[i]));             				}              				if (c != null&& c.size()> 0) {             					Iterator it = c.iterator();              					BasePanel panel = frame.basePanel();              					if (panel == null) {             						// // Create a new, empty, database.             						BibtexDatabase database = new BibtexDatabase();             						frame.addTab(database, null, null, Globals.prefs.get(JabRefPreferences.DEFAULT_ENCODING),             							true);             						frame.output(Globals.lang("New database created."));             						panel = frame.basePanel();             					}              					BibtexDatabase database = frame.basePanel().database();              					NamedCompound ce = new NamedCompound(Glbals.lang("Drop PDF"));              					while (it.hasNext()) {             						BibtexEntry e = (BibtexEntry) it.next();              						try {             							e.setId(Util.next());             							database.insertEntry(e);             							ce.addEdit(new UndoableInsertEntry(database, e, panel));             						} catch (Exception e2) {             							// Should not happen?             						}             					}              					ce.end();             					panel.undoManager.addEdit(ce);             					panel.markBaseChanged();             					continue;             				}             			}             			*/
+comment|/*             			if (extension.equals("pdf")) {             				Collection c;             				try {             					c = XMPUtil.readXMP(fileNames[i]);             				} catch (IOException e1) {             					c = null;             					frame.output(Globals.lang("No XMP metadata found in " + fileNames[i]));             				}                          				if (c != null&& c.size()> 0) {             					Iterator it = c.iterator();                          					BasePanel panel = frame.basePanel();                          					if (panel == null) {             						// // Create a new, empty, database.             						BibtexDatabase database = new BibtexDatabase();             						frame.addTab(database, null, null, Globals.prefs.get(JabRefPreferences.DEFAULT_ENCODING),             							true);             						frame.output(Globals.lang("New database created."));             						panel = frame.basePanel();             					}                          					BibtexDatabase database = frame.basePanel().database();                          					NamedCompound ce = new NamedCompound(Glbals.lang("Drop PDF"));                          					while (it.hasNext()) {             						BibtexEntry e = (BibtexEntry) it.next();                          						try {             							e.setId(Util.next());             							database.insertEntry(e);             							ce.addEdit(new UndoableInsertEntry(database, e, panel));             						} catch (Exception e2) {             							// Should not happen?             						}             					}                          					ce.end();             					panel.undoManager.addEdit(ce);             					panel.markBaseChanged();             					continue;             				}             			}             			*/
 name|notBibFiles
 operator|.
 name|add
