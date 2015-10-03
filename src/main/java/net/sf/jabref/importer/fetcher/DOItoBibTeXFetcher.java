@@ -42,16 +42,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|net
 operator|.
 name|MalformedURLException
@@ -75,16 +65,6 @@ operator|.
 name|net
 operator|.
 name|URLConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URLEncoder
 import|;
 end_import
 
@@ -364,7 +344,7 @@ literal|null
 return|;
 block|}
 DECL|method|getEntryFromDOI (String doiStr, OutputPrinter status)
-specifier|private
+specifier|public
 name|BibtexEntry
 name|getEntryFromDOI
 parameter_list|(
