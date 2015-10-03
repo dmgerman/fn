@@ -405,10 +405,10 @@ name|doi
 return|;
 block|}
 comment|/**      * Return a URL presentation for the DOI      *      * @return an encoded URL representation of the DOI      */
-DECL|method|getURL ()
+DECL|method|getURI ()
 specifier|public
-name|String
-name|getURL
+name|URI
+name|getURI
 parameter_list|()
 block|{
 try|try
@@ -438,9 +438,6 @@ argument_list|)
 decl_stmt|;
 return|return
 name|uri
-operator|.
-name|toASCIIString
-argument_list|()
 return|;
 block|}
 catch|catch
@@ -456,13 +453,28 @@ name|error
 argument_list|(
 name|doi
 operator|+
-literal|" could not be encoded as URL."
+literal|" could not be encoded as URI."
 argument_list|)
 expr_stmt|;
 return|return
-literal|""
+literal|null
 return|;
 block|}
+block|}
+comment|/**      * Return an ASCII URL presentation for the DOI      *      * @return an encoded URL representation of the DOI      */
+DECL|method|getURLAsASCIIString ()
+specifier|public
+name|String
+name|getURLAsASCIIString
+parameter_list|()
+block|{
+return|return
+name|getURI
+argument_list|()
+operator|.
+name|toASCIIString
+argument_list|()
+return|;
 block|}
 block|}
 end_class

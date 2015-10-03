@@ -344,7 +344,7 @@ argument_list|(
 name|doiText
 argument_list|)
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 argument_list|)
 decl_stmt|;

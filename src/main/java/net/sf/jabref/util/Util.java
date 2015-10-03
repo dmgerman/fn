@@ -2115,7 +2115,7 @@ argument_list|(
 name|link
 argument_list|)
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 expr_stmt|;
 block|}
@@ -2155,7 +2155,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 expr_stmt|;
 block|}

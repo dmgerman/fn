@@ -100,7 +100,7 @@ name|doi
 lambda|->
 name|doi
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 argument_list|)
 operator|.
