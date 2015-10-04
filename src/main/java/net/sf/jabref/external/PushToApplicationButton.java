@@ -462,6 +462,17 @@ name|PushToTeXstudio
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|PushToApplicationButton
+operator|.
+name|applications
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PushToTexmaker
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Finally, sort the entries:
 comment|//Collections.sort(applications, new PushToApplicationComparator());
 block|}
