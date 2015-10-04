@@ -285,7 +285,6 @@ name|serialVersionUID
 init|=
 literal|5454378088546423798L
 decl_stmt|;
-comment|// private String [] preferedOrder = {"author", "title", "journal", "booktitle", "volume", "number", "pages", "year", "month"};
 DECL|field|DIM
 specifier|private
 specifier|final
@@ -404,6 +403,7 @@ operator|!=
 literal|1
 condition|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -429,6 +429,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 name|this
 operator|.
 name|dispose
@@ -496,6 +497,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -530,6 +532,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 name|this
 operator|.
 name|dispose
@@ -572,6 +575,7 @@ name|void
 name|init
 parameter_list|()
 block|{
+comment|// @formatter:off
 name|mergeEntries
 operator|=
 operator|new
@@ -600,6 +604,7 @@ literal|"Entry from DOI"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 comment|// Create undo-compound
 name|ce
 operator|=
