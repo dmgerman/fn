@@ -415,6 +415,7 @@ literal|2
 condition|)
 block|{
 comment|// None selected. Inform the user to select entries first.
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -440,6 +441,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 name|this
 operator|.
 name|dispose

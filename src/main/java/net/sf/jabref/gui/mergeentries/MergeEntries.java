@@ -305,7 +305,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Oscar  *  * Class for dealing with merging entries  */
+comment|/**  * @author Oscar Gustafsson  *  *         Class for dealing with merging entries  */
 end_comment
 
 begin_class
@@ -314,6 +314,7 @@ specifier|public
 class|class
 name|MergeEntries
 block|{
+comment|// @formatter:off
 DECL|field|columnHeadings
 specifier|private
 specifier|final
@@ -369,6 +370,7 @@ literal|"Second entry"
 argument_list|)
 block|}
 decl_stmt|;
+comment|// @formatter:on
 DECL|field|DIM
 specifier|private
 specifier|final
@@ -469,7 +471,7 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
-comment|/**       * Constructor taking two entries      * @param bOne First entry      * @param bTwo Second entry      */
+comment|/**      * Constructor taking two entries      *       * @param bOne First entry      * @param bTwo Second entry      */
 DECL|method|MergeEntries (BibtexEntry bOne, BibtexEntry bTwo)
 specifier|public
 name|MergeEntries
@@ -493,7 +495,7 @@ name|initialize
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**       * Constructor with optional column captions for the two entries      * @param bOne First entry      * @param bTwo Second entry      * @param headingOne Heading for first entry       * @param headingTwo Heading for second entry      */
+comment|/**      * Constructor with optional column captions for the two entries      *       * @param bOne First entry      * @param bTwo Second entry      * @param headingOne Heading for first entry      * @param headingTwo Heading for second entry      */
 DECL|method|MergeEntries (BibtexEntry bOne, BibtexEntry bTwo, String headingOne, String headingTwo)
 specifier|public
 name|MergeEntries
@@ -537,7 +539,7 @@ name|initialize
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *  Main function for building the merge entry JPanel      */
+comment|/**      * Main function for building the merge entry JPanel      */
 DECL|method|initialize ()
 specifier|private
 name|void
@@ -743,7 +745,6 @@ name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// layout.setColumnGroups(new int[][] {{3, 11}});
 name|mergePanel
 operator|.
 name|setLayout
