@@ -404,7 +404,7 @@ return|return
 name|doi
 return|;
 block|}
-comment|/**      * Return a URL presentation for the DOI      *      * @return an encoded URL representation of the DOI      */
+comment|/**      * Return a URI presentation for the DOI      *      * @return an encoded URI representation of the DOI      */
 DECL|method|getURI ()
 specifier|public
 name|URI
