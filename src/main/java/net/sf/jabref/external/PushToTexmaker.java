@@ -430,6 +430,7 @@ condition|(
 name|notDefined
 condition|)
 block|{
+comment|// @formatter:off
 name|panel
 operator|.
 name|output
@@ -499,9 +500,14 @@ operator|+
 literal|"'."
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 else|else
 block|{
+name|panel
+operator|.
+name|output
+argument_list|(
 name|Localization
 operator|.
 name|lang
@@ -510,6 +516,7 @@ literal|"Pushed citations to %0"
 argument_list|,
 name|getApplicationName
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

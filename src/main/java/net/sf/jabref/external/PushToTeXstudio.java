@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.external
 package|package
@@ -191,7 +195,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Jan 14, 2006  * Time: 4:55:23 PM  * To change this template use File | Settings | File Templates.  */
+comment|/**  * Created by IntelliJ IDEA. User: alver Date: Jan 14, 2006 Time: 4:55:23 PM To change this template use File | Settings  * | File Templates.  */
 end_comment
 
 begin_class
@@ -928,6 +932,7 @@ condition|(
 name|couldNotConnect
 condition|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -951,6 +956,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 elseif|else
 if|if
@@ -994,6 +1000,7 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
+comment|// @formatter:off
 literal|"TeXstudio: "
 operator|+
 name|Localization
@@ -1017,6 +1024,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 else|else
 block|{
