@@ -137,10 +137,10 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|field|stringBuffer
+DECL|field|stringBuilder
 specifier|private
-name|StringBuffer
-name|stringBuffer
+name|StringBuilder
+name|stringBuilder
 decl_stmt|;
 DECL|field|neverFailOnHashes
 specifier|private
@@ -538,10 +538,10 @@ literal|"Curly braces { and } must be balanced."
 argument_list|)
 throw|;
 block|}
-name|stringBuffer
+name|stringBuilder
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|valueDelimiterStartOfValue
 operator|+
@@ -604,7 +604,7 @@ operator|&&
 name|doWrap
 condition|)
 block|{
-name|stringBuffer
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -623,7 +623,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|stringBuffer
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -631,7 +631,7 @@ name|text
 argument_list|)
 expr_stmt|;
 block|}
-name|stringBuffer
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -639,16 +639,16 @@ name|valueDelimiterEndOfValue
 argument_list|)
 expr_stmt|;
 return|return
-name|stringBuffer
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-name|stringBuffer
+name|stringBuilder
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 name|int
@@ -952,7 +952,7 @@ name|StringUtil
 operator|.
 name|wrap
 argument_list|(
-name|stringBuffer
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -967,7 +967,7 @@ block|}
 else|else
 block|{
 return|return
-name|stringBuffer
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -990,7 +990,7 @@ name|end_pos
 parameter_list|)
 block|{
 comment|/*sb.append("{");         sb.append(text.substring(start_pos, end_pos));         sb.append("}");*/
-name|stringBuffer
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1289,7 +1289,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|stringBuffer
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1299,7 +1299,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|stringBuffer
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1314,7 +1314,7 @@ operator|==
 literal|'\\'
 expr_stmt|;
 block|}
-name|stringBuffer
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1383,7 +1383,7 @@ name|String
 name|s
 parameter_list|)
 block|{
-name|stringBuffer
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
