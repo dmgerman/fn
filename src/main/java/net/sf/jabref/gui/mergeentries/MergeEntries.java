@@ -471,6 +471,16 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
+DECL|field|mainPanel
+specifier|private
+specifier|final
+name|JPanel
+name|mainPanel
+init|=
+operator|new
+name|JPanel
+argument_list|()
+decl_stmt|;
 comment|/**      * Constructor taking two entries      *       * @param bOne First entry      * @param bTwo Second entry      */
 DECL|method|MergeEntries (BibtexEntry bOne, BibtexEntry bTwo)
 specifier|public
@@ -683,11 +693,16 @@ name|size
 argument_list|()
 index|]
 expr_stmt|;
-comment|// Create layout
+comment|// Create main layout
 name|String
 name|colSpec
 init|=
 literal|"left:pref, 5px, fill:3cm:grow, 5px, right:pref, 3px, center:pref, 3px, left:pref, 5px, fill:3cm:grow"
+decl_stmt|;
+name|String
+name|rowSpec
+init|=
+literal|"pref, pref, 10px, fill:6cm:grow, 10px, pref, 10px, 4cm"
 decl_stmt|;
 name|StringBuilder
 name|rowBuilder
@@ -695,7 +710,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"pref, 10px, pref, "
+literal|""
 argument_list|)
 decl_stmt|;
 for|for
@@ -728,11 +743,22 @@ name|rowBuilder
 operator|.
 name|append
 argument_list|(
-literal|"10px, top:4cm:grow"
+literal|"pref"
 argument_list|)
 expr_stmt|;
 name|FormLayout
-name|layout
+name|mainLayout
+init|=
+operator|new
+name|FormLayout
+argument_list|(
+name|colSpec
+argument_list|,
+name|rowSpec
+argument_list|)
+decl_stmt|;
+name|FormLayout
+name|mergeLayout
 init|=
 operator|new
 name|FormLayout
@@ -745,11 +771,18 @@ name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|mainPanel
+operator|.
+name|setLayout
+argument_list|(
+name|mainLayout
+argument_list|)
+expr_stmt|;
 name|mergePanel
 operator|.
 name|setLayout
 argument_list|(
-name|layout
+name|mergeLayout
 argument_list|)
 expr_stmt|;
 comment|// Set headings
@@ -807,7 +840,7 @@ name|BOLD
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|mergePanel
+name|mainPanel
 operator|.
 name|add
 argument_list|(
@@ -825,12 +858,12 @@ operator|*
 literal|2
 operator|)
 argument_list|,
-literal|1
+literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|mergePanel
+name|mainPanel
 operator|.
 name|add
 argument_list|(
@@ -844,7 +877,7 @@ name|xyw
 argument_list|(
 literal|1
 argument_list|,
-literal|2
+literal|3
 argument_list|,
 literal|11
 argument_list|)
@@ -927,7 +960,7 @@ name|xy
 argument_list|(
 literal|1
 argument_list|,
-literal|3
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -962,7 +995,7 @@ name|xy
 argument_list|(
 literal|3
 argument_list|,
-literal|3
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1062,7 +1095,7 @@ operator|*
 literal|2
 operator|)
 argument_list|,
-literal|3
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1153,7 +1186,7 @@ name|xy
 argument_list|(
 literal|11
 argument_list|,
-literal|3
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1161,7 +1194,7 @@ comment|// For all fields in joint add a row and possibly radio buttons
 name|int
 name|row
 init|=
-literal|4
+literal|2
 decl_stmt|;
 for|for
 control|(
@@ -1175,7 +1208,7 @@ name|jointStrings
 index|[
 name|row
 operator|-
-literal|4
+literal|2
 index|]
 operator|=
 name|field
@@ -1259,7 +1292,7 @@ name|identical
 index|[
 name|row
 operator|-
-literal|3
+literal|1
 index|]
 operator|=
 literal|false
@@ -1293,7 +1326,7 @@ name|identical
 index|[
 name|row
 operator|-
-literal|3
+literal|1
 index|]
 operator|=
 literal|true
@@ -1341,7 +1374,7 @@ argument_list|(
 name|tf
 argument_list|)
 decl_stmt|;
-name|layout
+name|mergeLayout
 operator|.
 name|setRowSpec
 argument_list|(
@@ -1438,7 +1471,7 @@ name|identical
 index|[
 name|row
 operator|-
-literal|3
+literal|1
 index|]
 condition|)
 block|{
@@ -1446,7 +1479,7 @@ name|rbg
 index|[
 name|row
 operator|-
-literal|3
+literal|1
 index|]
 operator|=
 operator|new
@@ -1475,7 +1508,7 @@ index|]
 index|[
 name|row
 operator|-
-literal|3
+literal|1
 index|]
 operator|=
 operator|new
@@ -1486,7 +1519,7 @@ name|rbg
 index|[
 name|row
 operator|-
-literal|3
+literal|1
 index|]
 operator|.
 name|add
@@ -1498,7 +1531,7 @@ index|]
 index|[
 name|row
 operator|-
-literal|3
+literal|1
 index|]
 argument_list|)
 expr_stmt|;
@@ -1513,7 +1546,7 @@ index|]
 index|[
 name|row
 operator|-
-literal|3
+literal|1
 index|]
 argument_list|,
 name|cc
@@ -1539,7 +1572,7 @@ index|]
 index|[
 name|row
 operator|-
-literal|3
+literal|1
 index|]
 operator|.
 name|addChangeListener
@@ -1589,7 +1622,7 @@ index|]
 index|[
 name|row
 operator|-
-literal|3
+literal|1
 index|]
 operator|.
 name|setSelected
@@ -1616,7 +1649,7 @@ index|]
 index|[
 name|row
 operator|-
-literal|3
+literal|1
 index|]
 operator|.
 name|setSelected
@@ -1758,7 +1791,42 @@ name|row
 operator|++
 expr_stmt|;
 block|}
+name|JScrollPane
+name|scrollPane
+init|=
+operator|new
+name|JScrollPane
+argument_list|(
 name|mergePanel
+argument_list|,
+name|JScrollPane
+operator|.
+name|VERTICAL_SCROLLBAR_AS_NEEDED
+argument_list|,
+name|JScrollPane
+operator|.
+name|HORIZONTAL_SCROLLBAR_NEVER
+argument_list|)
+decl_stmt|;
+name|mainPanel
+operator|.
+name|add
+argument_list|(
+name|scrollPane
+argument_list|,
+name|cc
+operator|.
+name|xyw
+argument_list|(
+literal|1
+argument_list|,
+literal|4
+argument_list|,
+literal|11
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|mainPanel
 operator|.
 name|add
 argument_list|(
@@ -1772,14 +1840,11 @@ name|xyw
 argument_list|(
 literal|1
 argument_list|,
-name|row
+literal|5
 argument_list|,
 literal|11
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|row
-operator|++
 expr_stmt|;
 comment|// Setup a PreviewPanel and a Bibtex source box for the merged entry
 name|label
@@ -1821,7 +1886,7 @@ name|BOLD
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|mergePanel
+name|mainPanel
 operator|.
 name|add
 argument_list|(
@@ -1829,11 +1894,13 @@ name|label
 argument_list|,
 name|cc
 operator|.
-name|xy
+name|xyw
 argument_list|(
 literal|1
 argument_list|,
-name|row
+literal|6
+argument_list|,
+literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1869,8 +1936,8 @@ argument_list|,
 name|layoutString
 argument_list|)
 expr_stmt|;
-comment|// JScrollPane jsppp = new JScrollPane(pp);
-name|mergePanel
+comment|// JScrollPane jsppp = new JScrollPane(pp, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+name|mainPanel
 operator|.
 name|add
 argument_list|(
@@ -1880,11 +1947,11 @@ name|cc
 operator|.
 name|xyw
 argument_list|(
-literal|3
+literal|1
 argument_list|,
-name|row
+literal|8
 argument_list|,
-literal|3
+literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1910,7 +1977,7 @@ argument_list|(
 name|jta
 argument_list|)
 decl_stmt|;
-name|mergePanel
+name|mainPanel
 operator|.
 name|add
 argument_list|(
@@ -1922,7 +1989,7 @@ name|xyw
 argument_list|(
 literal|9
 argument_list|,
-name|row
+literal|8
 argument_list|,
 literal|3
 argument_list|)
@@ -2011,7 +2078,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 comment|// Add some margin around the layout
-name|layout
+name|mainLayout
 operator|.
 name|appendRow
 argument_list|(
@@ -2023,7 +2090,7 @@ literal|"10px"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|layout
+name|mainLayout
 operator|.
 name|appendColumn
 argument_list|(
@@ -2035,7 +2102,7 @@ literal|"10px"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|layout
+name|mainLayout
 operator|.
 name|insertRow
 argument_list|(
@@ -2049,7 +2116,7 @@ literal|"10px"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|layout
+name|mainLayout
 operator|.
 name|insertColumn
 argument_list|(
@@ -2065,7 +2132,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|mergePanel
+name|mainPanel
 operator|.
 name|getHeight
 argument_list|()
@@ -2075,7 +2142,7 @@ operator|.
 name|height
 condition|)
 block|{
-name|mergePanel
+name|mainPanel
 operator|.
 name|setSize
 argument_list|(
@@ -2096,7 +2163,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|mergePanel
+name|mainPanel
 operator|.
 name|getWidth
 argument_list|()
@@ -2106,7 +2173,7 @@ operator|.
 name|width
 condition|)
 block|{
-name|mergePanel
+name|mainPanel
 operator|.
 name|setSize
 argument_list|(
@@ -2131,7 +2198,7 @@ operator|=
 literal|true
 expr_stmt|;
 comment|// Show what we've got
-name|mergePanel
+name|mainPanel
 operator|.
 name|setVisible
 argument_list|(
@@ -2158,7 +2225,7 @@ name|getMergeEntryPanel
 parameter_list|()
 block|{
 return|return
-name|mergePanel
+name|mainPanel
 return|;
 block|}
 comment|/**      * Update the merged BibtexEntry with source and preview panel everytime something is changed      */

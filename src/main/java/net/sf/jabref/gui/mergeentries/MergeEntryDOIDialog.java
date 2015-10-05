@@ -627,7 +627,7 @@ name|FormLayout
 argument_list|(
 literal|"fill:700px:grow"
 argument_list|,
-literal|"p, 4px, p, 5px, p"
+literal|"fill:400px:grow, 4px, p, 5px, p"
 argument_list|)
 decl_stmt|;
 comment|// layout.setColumnGroups(new int[][] {{3, 11}});
