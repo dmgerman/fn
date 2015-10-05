@@ -112,6 +112,7 @@ return|return
 literal|"lower"
 return|;
 block|}
+comment|/**          * Converts all characters of the string to lower case, but does not change words starting with "{"          */
 annotation|@
 name|Override
 DECL|method|changeCase (String input)
@@ -238,6 +239,7 @@ return|return
 literal|"UPPER"
 return|;
 block|}
+comment|/**          * Converts all characters of the given string to upper case, but does not change words starting with "{"          */
 annotation|@
 name|Override
 DECL|method|changeCase (String input)
@@ -378,6 +380,7 @@ return|return
 literal|"Upper first"
 return|;
 block|}
+comment|/**          * Converts the first character of the first word of the given string to a upper case (and the remaining characters of the first word to lower case), but does not change anything if word starts with "{"          */
 annotation|@
 name|Override
 DECL|method|changeCase (String input)
@@ -466,6 +469,7 @@ return|return
 literal|"Upper Each First"
 return|;
 block|}
+comment|/**          * Converts the first character of each word of the given string to a upper case (and all others to lower case), but does not change words starting with "{"          */
 annotation|@
 name|Override
 DECL|method|changeCase (String input)
@@ -766,6 +770,7 @@ return|return
 literal|"Title"
 return|;
 block|}
+comment|/**          * Converts all words to upper case, but converts articles, prepositions, and conjunctions to lower case          * Does not change words starting with "{"          */
 annotation|@
 name|Override
 DECL|method|changeCase (String input)
