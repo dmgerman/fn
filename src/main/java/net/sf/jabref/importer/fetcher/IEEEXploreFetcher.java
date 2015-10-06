@@ -1268,6 +1268,7 @@ operator|.
 name|MAX_FETCH
 condition|)
 block|{
+comment|// @formatter:off
 name|status
 operator|.
 name|showMessage
@@ -1276,9 +1277,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"%0 entries found. To reduce server load, "
-operator|+
-literal|"only %1 will be downloaded."
+literal|"%0 entries found. To reduce server load, only %1 will be downloaded."
 argument_list|,
 operator|new
 name|String
@@ -1314,6 +1313,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 name|hits
 operator|=
 name|IEEEXploreFetcher
