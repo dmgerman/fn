@@ -693,12 +693,12 @@ comment|// Create main layout
 name|String
 name|colSpecMain
 init|=
-literal|"left:pref, 5px, center:3cm:grow, 5px, right:pref, 3px, center:pref, 3px, left:pref, 5px, center:3cm:grow"
+literal|"left:pref, 5px, center:3cm:grow, 5px, center:pref, 3px, center:pref, 3px, center:pref, 5px, center:3cm:grow"
 decl_stmt|;
 name|String
 name|colSpecMerge
 init|=
-literal|"left:pref, 5px, fill:3cm:grow, 5px, right:pref, 3px, center:pref, 3px, left:pref, 5px, fill:3cm:grow"
+literal|"left:pref, 5px, fill:3cm:grow, 5px, center:pref, 3px, center:pref, 3px, center:pref, 5px, fill:3cm:grow"
 decl_stmt|;
 name|String
 name|rowSpec
@@ -786,6 +786,67 @@ argument_list|(
 name|mergeLayout
 argument_list|)
 expr_stmt|;
+name|JLabel
+name|label
+init|=
+operator|new
+name|JLabel
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Use"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|Font
+name|font
+init|=
+name|label
+operator|.
+name|getFont
+argument_list|()
+decl_stmt|;
+name|label
+operator|.
+name|setFont
+argument_list|(
+name|font
+operator|.
+name|deriveFont
+argument_list|(
+name|font
+operator|.
+name|getStyle
+argument_list|()
+operator||
+name|Font
+operator|.
+name|BOLD
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|mainPanel
+operator|.
+name|add
+argument_list|(
+name|label
+argument_list|,
+name|cc
+operator|.
+name|xyw
+argument_list|(
+literal|4
+argument_list|,
+literal|1
+argument_list|,
+literal|7
+argument_list|,
+literal|"center, bottom"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Set headings
 name|JLabel
 name|headingLabels
@@ -826,9 +887,8 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-name|Font
 name|font
-init|=
+operator|=
 name|headingLabels
 index|[
 name|i
@@ -836,7 +896,7 @@ index|]
 operator|.
 name|getFont
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|headingLabels
 index|[
 name|i
@@ -929,9 +989,8 @@ argument_list|(
 name|type1
 argument_list|)
 expr_stmt|;
-name|JLabel
 name|label
-init|=
+operator|=
 operator|new
 name|JLabel
 argument_list|(
@@ -942,15 +1001,14 @@ argument_list|(
 literal|"Entry type"
 argument_list|)
 argument_list|)
-decl_stmt|;
-name|Font
+expr_stmt|;
 name|font
-init|=
+operator|=
 name|label
 operator|.
 name|getFont
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|label
 operator|.
 name|setFont
