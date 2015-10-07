@@ -294,6 +294,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -347,6 +375,22 @@ operator|.
 name|id
 operator|.
 name|IdGenerator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|Abbreviations
 import|;
 end_import
 
@@ -422,6 +466,22 @@ name|IEEEXploreFetcher
 implements|implements
 name|EntryFetcher
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|IEEEXploreFetcher
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|caseKeeperList
 specifier|final
 name|CaseKeeperList
@@ -1208,6 +1268,7 @@ operator|.
 name|MAX_FETCH
 condition|)
 block|{
+comment|// @formatter:off
 name|status
 operator|.
 name|showMessage
@@ -1216,9 +1277,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"%0 entries found. To reduce server load, "
-operator|+
-literal|"only %1 will be downloaded."
+literal|"%0 entries found. To reduce server load, only %1 will be downloaded."
 argument_list|,
 operator|new
 name|String
@@ -1254,6 +1313,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 name|hits
 operator|=
 name|IEEEXploreFetcher
@@ -1521,11 +1581,6 @@ name|piv
 operator|=
 name|startIndex
 expr_stmt|;
-name|int
-name|entryNumber
-init|=
-name|firstEntryNumber
-decl_stmt|;
 if|if
 condition|(
 name|importBibtex
@@ -1572,9 +1627,6 @@ name|add
 argument_list|(
 name|id
 argument_list|)
-expr_stmt|;
-name|entryNumber
-operator|++
 expr_stmt|;
 block|}
 try|try
@@ -1705,9 +1757,6 @@ name|parsed
 operator|++
 expr_stmt|;
 block|}
-name|entryNumber
-operator|++
-expr_stmt|;
 block|}
 block|}
 block|}
@@ -1874,11 +1923,9 @@ name|citation
 operator|+
 literal|"&download-format=download-bibtex"
 decl_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 name|content
 argument_list|)
@@ -1985,13 +2032,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 name|sb
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ParserResult
@@ -2875,14 +2923,23 @@ literal|2
 index|]
 expr_stmt|;
 block|}
-if|if
-condition|(
+name|String
+name|note
+init|=
 name|entry
 operator|.
 name|getField
 argument_list|(
 literal|"note"
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|note
+operator|!=
+literal|null
+operator|&&
+name|note
 operator|.
 name|equals
 argument_list|(
@@ -3214,7 +3271,7 @@ condition|)
 block|{
 name|fullName
 operator|=
-name|Globals
+name|Abbreviations
 operator|.
 name|journalAbbrev
 operator|.
@@ -3451,6 +3508,13 @@ argument_list|(
 literal|"year"
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|year
+operator|!=
+literal|null
+condition|)
+block|{
 name|fullName
 operator|=
 name|fullName
@@ -3466,6 +3530,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -4180,26 +4245,17 @@ name|sourceField
 operator|=
 literal|"note"
 expr_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|warn
 argument_list|(
-literal|"Type detection failed. Use MISC instead."
+literal|"Type detection failed. Use MISC instead. Type string: "
+operator|+
+name|text
 argument_list|)
 expr_stmt|;
 name|unparseable
 operator|++
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|text
-argument_list|)
 expr_stmt|;
 block|}
 name|entry
@@ -4563,47 +4619,28 @@ name|authorCount
 operator|++
 expr_stmt|;
 block|}
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"author"
-argument_list|,
+name|String
+name|authorString
+init|=
 name|authorNames
 operator|.
 name|toString
 argument_list|()
-argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-name|entry
-operator|.
-name|getField
-argument_list|(
-literal|"author"
-argument_list|)
+name|authorString
 operator|==
 literal|null
 operator|||
-name|entry
-operator|.
-name|getField
-argument_list|(
-literal|"author"
-argument_list|)
+name|authorString
 operator|.
 name|startsWith
 argument_list|(
 literal|"a href"
 argument_list|)
 operator|||
-name|entry
-operator|.
-name|getField
-argument_list|(
-literal|"author"
-argument_list|)
+name|authorString
 operator|.
 name|startsWith
 argument_list|(
@@ -4619,6 +4656,18 @@ argument_list|(
 literal|"author"
 argument_list|,
 literal|""
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+name|authorString
 argument_list|)
 expr_stmt|;
 block|}
@@ -4786,7 +4835,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Find out how many hits were found.      * @param page      */
+comment|/**      * Find out how many hits were found.      *       * @param page      */
 DECL|method|getNumberOfHits (String page, String marker, Pattern pattern)
 specifier|private
 name|int
@@ -4821,11 +4870,9 @@ operator|<
 literal|0
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 name|page
 argument_list|)
@@ -4906,7 +4953,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Download the URL and return contents as a String.      * @param source      * @return      * @throws IOException      */
+comment|/**      * Download the URL and return contents as a String.      *       * @param source      * @return      * @throws IOException      */
 DECL|method|getResults (URL source)
 specifier|private
 name|String
@@ -5005,7 +5052,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Read results from a file instead of an URL. Just for faster debugging.      * @param f      * @return      * @throws IOException      */
+comment|/**      * Read results from a file instead of an URL. Just for faster debugging.      *       * @param f      * @return      * @throws IOException      */
 DECL|method|getResultsFromFile (File f)
 specifier|public
 name|String
@@ -5102,6 +5149,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|in
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 return|return
 name|sb
 operator|.

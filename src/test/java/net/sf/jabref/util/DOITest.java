@@ -110,6 +110,22 @@ name|getDOI
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"10.1126/sciadv.1500214"
+argument_list|,
+operator|new
+name|DOI
+argument_list|(
+literal|"10.1126/sciadv.1500214"
+argument_list|)
+operator|.
+name|getDOI
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -625,7 +641,7 @@ argument_list|(
 literal|"http://doi.org/10.1006/rwei.1999%25.0001"
 argument_list|)
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -642,7 +658,7 @@ argument_list|(
 literal|"http://doi.org/10.1006/rwei.1999%22.0001"
 argument_list|)
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -659,7 +675,7 @@ argument_list|(
 literal|"http://doi.org/10.1006/rwei.1999%23.0001"
 argument_list|)
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -676,7 +692,7 @@ argument_list|(
 literal|"http://doi.org/10.1006/rwei.1999%20.0001"
 argument_list|)
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -693,7 +709,7 @@ argument_list|(
 literal|"http://doi.org/10.1006/rwei.1999%3F.0001"
 argument_list|)
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -719,7 +735,7 @@ argument_list|(
 literal|"10.1006/jmbi.1998.2354"
 argument_list|)
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -735,7 +751,7 @@ argument_list|(
 literal|"http://doi.org/10.1006/jmbi.1998.2354"
 argument_list|)
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 argument_list|)
 expr_stmt|;

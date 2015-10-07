@@ -139,6 +139,18 @@ name|andSep
 init|=
 literal|false
 decl_stmt|;
+comment|// String can contain newlines. Convert each to a space
+name|in
+operator|=
+name|in
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\n"
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
 name|String
 index|[]
 name|authors

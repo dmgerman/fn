@@ -100,6 +100,10 @@ name|Vector
 import|;
 end_import
 
+begin_comment
+comment|/**  * Currently the only implementation of net.sf.jabref.exporter.FieldFormatter  *   * Obeys following settings:  *  * JabRefPreferences.RESOLVE_STRINGS_ALL_FIELDS  *  * JabRefPreferences.DO_NOT_RESOLVE_STRINGS_FOR  *  * JabRefPreferences.WRITEFIELD_WRAPFIELD  */
+end_comment
+
 begin_class
 DECL|class|LatexFieldFormatter
 specifier|public
@@ -133,10 +137,10 @@ literal|true
 argument_list|)
 return|;
 block|}
-DECL|field|sb
+DECL|field|stringBuilder
 specifier|private
-name|StringBuffer
-name|sb
+name|StringBuilder
+name|stringBuilder
 decl_stmt|;
 DECL|field|neverFailOnHashes
 specifier|private
@@ -150,17 +154,17 @@ specifier|final
 name|boolean
 name|resolveStringsAllFields
 decl_stmt|;
-DECL|field|valueDelimitersZero
+DECL|field|valueDelimiterStartOfValue
 specifier|private
 specifier|final
 name|char
-name|valueDelimitersZero
+name|valueDelimiterStartOfValue
 decl_stmt|;
-DECL|field|valueDelimitersOne
+DECL|field|valueDelimiterEndOfValue
 specifier|private
 specifier|final
 name|char
-name|valueDelimitersOne
+name|valueDelimiterEndOfValue
 decl_stmt|;
 DECL|field|writefieldWrapfield
 specifier|private
@@ -215,7 +219,7 @@ operator|.
 name|RESOLVE_STRINGS_ALL_FIELDS
 argument_list|)
 expr_stmt|;
-name|valueDelimitersZero
+name|valueDelimiterStartOfValue
 operator|=
 name|Globals
 operator|.
@@ -226,7 +230,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|valueDelimitersOne
+name|valueDelimiterEndOfValue
 operator|=
 name|Globals
 operator|.
@@ -288,11 +292,11 @@ literal|null
 condition|)
 block|{
 return|return
-name|valueDelimitersZero
+name|valueDelimiterStartOfValue
 operator|+
 literal|""
 operator|+
-name|valueDelimitersOne
+name|valueDelimiterEndOfValue
 return|;
 block|}
 if|if
@@ -434,7 +438,7 @@ name|resolveStrings
 condition|)
 block|{
 name|int
-name|brc
+name|numberOfBrackets
 init|=
 literal|0
 decl_stmt|;
@@ -479,7 +483,7 @@ operator|==
 literal|'{'
 condition|)
 block|{
-name|brc
+name|numberOfBrackets
 operator|++
 expr_stmt|;
 block|}
@@ -490,13 +494,13 @@ operator|==
 literal|'}'
 condition|)
 block|{
-name|brc
+name|numberOfBrackets
 operator|--
 expr_stmt|;
 block|}
 if|if
 condition|(
-name|brc
+name|numberOfBrackets
 operator|<
 literal|0
 condition|)
@@ -510,7 +514,7 @@ block|}
 block|}
 if|if
 condition|(
-name|brc
+name|numberOfBrackets
 operator|>
 literal|0
 condition|)
@@ -534,12 +538,12 @@ literal|"Curly braces { and } must be balanced."
 argument_list|)
 throw|;
 block|}
-name|sb
+name|stringBuilder
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
-name|valueDelimitersZero
+name|valueDelimiterStartOfValue
 operator|+
 literal|""
 argument_list|)
@@ -549,8 +553,38 @@ comment|//            if (Globals.prefs.getBoolean("preserveFieldFormatting"))
 comment|//              sb.append(text);
 comment|//            else
 comment|//             currently, we do not do any more wrapping
-if|if
-condition|(
+name|boolean
+name|isAbstract
+init|=
+literal|"abstract"
+operator|.
+name|equals
+argument_list|(
+name|fieldName
+argument_list|)
+decl_stmt|;
+name|boolean
+name|isReview
+init|=
+literal|"review"
+operator|.
+name|equals
+argument_list|(
+name|fieldName
+argument_list|)
+decl_stmt|;
+name|boolean
+name|doWrap
+init|=
+operator|!
+name|isAbstract
+operator|||
+operator|!
+name|isReview
+decl_stmt|;
+name|boolean
+name|strangePrefSettings
+init|=
 name|writefieldWrapfield
 operator|&&
 operator|!
@@ -562,9 +596,15 @@ name|isNonWrappableField
 argument_list|(
 name|fieldName
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|strangePrefSettings
+operator|&&
+name|doWrap
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -583,7 +623,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -591,24 +631,24 @@ name|text
 argument_list|)
 expr_stmt|;
 block|}
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|valueDelimitersOne
+name|valueDelimiterEndOfValue
 argument_list|)
 expr_stmt|;
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
 return|;
 block|}
-name|sb
+name|stringBuilder
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 name|int
@@ -912,7 +952,7 @@ name|StringUtil
 operator|.
 name|wrap
 argument_list|(
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -927,7 +967,7 @@ block|}
 else|else
 block|{
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -950,11 +990,11 @@ name|end_pos
 parameter_list|)
 block|{
 comment|/*sb.append("{");         sb.append(text.substring(start_pos, end_pos));         sb.append("}");*/
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|valueDelimitersZero
+name|valueDelimiterStartOfValue
 argument_list|)
 expr_stmt|;
 name|boolean
@@ -1249,7 +1289,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1259,7 +1299,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1274,11 +1314,11 @@ operator|==
 literal|'\\'
 expr_stmt|;
 block|}
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
-name|valueDelimitersOne
+name|valueDelimiterEndOfValue
 argument_list|)
 expr_stmt|;
 block|}
@@ -1343,7 +1383,7 @@ name|String
 name|s
 parameter_list|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1411,7 +1451,7 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-comment|// First we collect all occurences:
+comment|// First we collect all occurrences:
 while|while
 condition|(
 operator|(

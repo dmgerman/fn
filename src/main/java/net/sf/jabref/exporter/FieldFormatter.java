@@ -22,6 +22,7 @@ specifier|public
 interface|interface
 name|FieldFormatter
 block|{
+comment|/**      * Formats the content of a field.      * Currently only one implementation: net.sf.jabref.exporter.LatexFieldFormatter      *       * Reason for this interface: unknown      *       * @param s the content of the field      * @param fieldName the name of the field - used to trigger different serializations, e.g., turning off resolution for some strings      * @return a formatted string suitable for output      * @throws IllegalArgumentException if s is not a correct bibtex string, e.g., because of improperly balanced braces or using # not paired      */
 DECL|method|format (String s, String fieldName)
 name|String
 name|format

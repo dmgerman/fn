@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -406,7 +406,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Insert selected citations into LyX/Kile"
+literal|"Insert selected citations into %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -435,7 +438,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Push selection to LyX/Kile"
+literal|"Push to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -484,6 +490,7 @@ condition|(
 name|couldNotFindPipe
 condition|)
 block|{
+comment|// @formatter:off
 name|panel
 operator|.
 name|output
@@ -563,14 +570,10 @@ operator|+
 literal|".in"
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 else|else
 block|{
-name|String
-name|message
-init|=
-literal|""
-decl_stmt|;
 name|panel
 operator|.
 name|output
@@ -579,12 +582,11 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Pushed the citations for the following rows to"
+literal|"Pushed citations to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
-operator|+
-literal|" Lyx: "
-operator|+
-name|message
 argument_list|)
 expr_stmt|;
 block|}

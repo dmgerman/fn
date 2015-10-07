@@ -15,18 +15,6 @@ package|;
 end_package
 
 begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -35,16 +23,6 @@ operator|.
 name|Assert
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -599,7 +577,7 @@ name|repository
 operator|.
 name|readJournalListFromResource
 argument_list|(
-name|Globals
+name|Abbreviations
 operator|.
 name|JOURNALS_FILE_BUILTIN
 argument_list|)
@@ -608,7 +586,7 @@ name|repository
 operator|.
 name|readJournalListFromResource
 argument_list|(
-name|Globals
+name|Abbreviations
 operator|.
 name|JOURNALS_IEEE_INTERNAL_LIST
 argument_list|)

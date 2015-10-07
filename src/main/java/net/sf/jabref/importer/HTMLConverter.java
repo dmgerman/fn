@@ -62,6 +62,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -108,6 +136,22 @@ name|HTMLConverter
 implements|implements
 name|LayoutFormatter
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|HTMLConverter
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/*   Portions Â© International Organization for Standardization 1986:      Permission to copy in any form is granted for use with      conforming SGML systems and applications as defined in      ISO 8879, provided this notice is included in all copies.     */
 comment|// most of the LaTeX commands can be read at http://en.wikibooks.org/wiki/LaTeX/Accents
 comment|// The symbols can be looked at http://www.fileformat.info/info/unicode/char/a4/index.htm. Replace "a4" with the U+ number
@@ -2633,14 +2677,23 @@ block|,
 comment|// euro sign, U+20AC NEW
 comment|/* Manually added */
 block|{
-literal|"24"
+literal|"35"
+block|,
+literal|""
+block|,
+literal|"\\\\#"
+block|}
+block|,
+comment|// Hash
+block|{
+literal|"36"
 block|,
 literal|"dollar"
 block|,
 literal|"\\\\$"
 block|}
 block|,
-comment|// Percent
+comment|// Dollar
 block|{
 literal|"37"
 block|,
@@ -3120,6 +3173,33 @@ block|}
 block|,
 comment|// Small i without the dot
 block|{
+literal|"306"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\IJ\\}"
+block|}
+block|,
+comment|// Dutch di-graph IJ
+block|{
+literal|"307"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\ij\\}"
+block|}
+block|,
+comment|// Dutch di-graph ij
+block|{
+literal|"312"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\textkra\\}"
+block|}
+block|,
+comment|// Letter kra
+block|{
 literal|"321"
 block|,
 literal|"Lstrok"
@@ -3127,7 +3207,7 @@ block|,
 literal|"\\{\\\\L\\}"
 block|}
 block|,
-comment|// upper case l with stroke
+comment|// upper case L with stroke
 block|{
 literal|"322"
 block|,
@@ -3137,6 +3217,42 @@ literal|"\\{\\\\l\\}"
 block|}
 block|,
 comment|// lower case l with stroke
+block|{
+literal|"330"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\NG\\}"
+block|}
+block|,
+comment|// upper case letter Eng
+block|{
+literal|"331"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\ng\\}"
+block|}
+block|,
+comment|// lower case letter Eng
+block|{
+literal|"338"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\OE\\}"
+block|}
+block|,
+comment|// OE-ligature
+block|{
+literal|"339"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\oe\\}"
+block|}
+block|,
+comment|// oe-ligature
 block|{
 literal|"348"
 block|,
@@ -3191,6 +3307,51 @@ literal|"\\{\\\\v\\{z\\}\\}"
 block|}
 block|,
 comment|// small z with caron
+block|{
+literal|"405"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\hv\\}"
+block|}
+block|,
+comment|// small letter Hv
+block|{
+literal|"416"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\OHORN\\}"
+block|}
+block|,
+comment|// capital O with horn
+block|{
+literal|"417"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\ohorn\\}"
+block|}
+block|,
+comment|// small o with horn
+block|{
+literal|"431"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\UHORN\\}"
+block|}
+block|,
+comment|// capital U with horn
+block|{
+literal|"432"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\uhorn\\}"
+block|}
+block|,
+comment|// small u with horn
 block|{
 literal|"490"
 block|,
@@ -3436,6 +3597,40 @@ literal|"\\.\\."
 block|}
 block|,
 comment|// Double dots - en leader
+block|{
+literal|"8241"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\textpertenthousand\\}"
+block|}
+block|,
+comment|// per ten thousands sign
+block|{
+literal|"8244"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\prime\\\\prime\\\\prime\\}"
+block|}
+block|,
+comment|// triple prime
+block|{
+literal|"8251"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\textreferencemark\\}"
+block|}
+block|,
+block|{
+literal|"8253"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\textinterrobang\\}"
+block|}
+block|,
 block|{
 literal|"8450"
 block|,
@@ -4076,8 +4271,20 @@ block|,
 comment|// Inverted breve
 comment|//        {"786", ""},    // Turned comma above
 comment|//        {"787", ""},    // Comma above
-comment|//        {"788", ""},    // Reversed comma above
-comment|//        {"789", ""},    // Comma above right
+block|{
+literal|"788"
+block|,
+literal|"textrevcommaabove"
+block|}
+block|,
+comment|// Reversed comma above
+block|{
+literal|"789"
+block|,
+literal|"textcommaabover"
+block|}
+block|,
+comment|// Comma above right
 block|{
 literal|"790"
 block|,
@@ -4106,8 +4313,20 @@ literal|"textretracting"
 block|}
 block|,
 comment|// Right tack below - requires tipa
-comment|//        {"794", ""},    // Left angle above
-comment|//        {"795", ""},    // Horn
+block|{
+literal|"794"
+block|,
+literal|"textlangleabove"
+block|}
+block|,
+comment|// Left angle above
+block|{
+literal|"795"
+block|,
+literal|"textrighthorn"
+block|}
+block|,
+comment|// Horn
 block|{
 literal|"796"
 block|,
@@ -4136,9 +4355,27 @@ literal|"textsubplus"
 block|}
 block|,
 comment|// Plus sign below - requires tipa
-comment|//        {"800", ""},    // Minus sign below
-comment|//        {"801", ""},    // Palatalized hook below
-comment|//        {"802", ""},    // Retroflex hook below
+block|{
+literal|"800"
+block|,
+literal|"textsubbar"
+block|}
+block|,
+comment|// Minus sign below
+block|{
+literal|"801"
+block|,
+literal|"textpalhookbelow"
+block|}
+block|,
+comment|// Palatalized hook below
+block|{
+literal|"802"
+block|,
+literal|"M"
+block|}
+block|,
+comment|// Retroflex hook below - textrethookbelow?
 block|{
 literal|"803"
 block|,
@@ -4216,7 +4453,13 @@ literal|"textsubcircum"
 block|}
 block|,
 comment|// Circumflex accent below - requires tipa
-comment|//        {"814", ""},    // Breve below
+block|{
+literal|"814"
+block|,
+literal|"textsubbreve"
+block|}
+block|,
+comment|// Breve below
 block|{
 literal|"815"
 block|,
@@ -4259,10 +4502,34 @@ literal|"textsuperimposetilde"
 block|}
 block|,
 comment|// Tilde overlay - requires tipa
-comment|//        {"821", ""},    // Short stroke overlay
-comment|//        {"822", ""},    // Long stroke overlay
-comment|//        {"823", ""},    // Short solidus overlay
-comment|//        {"824", ""},    // Long solidus overlay
+block|{
+literal|"821"
+block|,
+literal|"B"
+block|}
+block|,
+comment|// Short stroke overlay - textsstrokethru?
+block|{
+literal|"822"
+block|,
+literal|"textlstrokethru"
+block|}
+block|,
+comment|// Long stroke overlay
+block|{
+literal|"823"
+block|,
+literal|"textsstrikethru"
+block|}
+block|,
+comment|// Short solidus overlay
+block|{
+literal|"824"
+block|,
+literal|"textlstrikethru"
+block|}
+block|,
+comment|// Long solidus overlay
 block|{
 literal|"825"
 block|,
@@ -4369,8 +4636,41 @@ literal|"whistle"
 block|}
 block|,
 comment|// Upwards arrow below - requires extraipa
-comment|//        {"864", ""},    // Double tilde
-comment|//        {"865", ""},    // Double inverted breve
+block|{
+literal|"861"
+block|,
+literal|"textdoublebreve"
+block|}
+block|,
+comment|// Double breve
+block|{
+literal|"862"
+block|,
+literal|"textdoublemacron"
+block|}
+block|,
+comment|// Double macron
+block|{
+literal|"863"
+block|,
+literal|"textdoublemacronbelow"
+block|}
+block|,
+comment|// Double macron below
+block|{
+literal|"864"
+block|,
+literal|"textdoubletilde"
+block|}
+block|,
+comment|// Double tilde
+block|{
+literal|"865"
+block|,
+literal|"texttoptiebar"
+block|}
+block|,
+comment|// Double inverted breve
 block|{
 literal|"866"
 block|,
@@ -4698,6 +4998,59 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|Integer
+name|cp
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<=
+name|text
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|cp
+operator|=
+name|text
+operator|.
+name|codePointAt
+argument_list|(
+name|i
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|cp
+operator|>=
+literal|129
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Unicode character not converted: "
+operator|+
+name|cp
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 return|return
 name|text
 return|;
@@ -4933,7 +5286,7 @@ name|find
 argument_list|()
 condition|)
 block|{
-comment|//	    System.err.println("Found pattern: " + m.group(1));
+comment|//      System.err.println("Found pattern: " + m.group(1));
 comment|//      System.err.println("Found pattern: " + m.group(2));
 name|int
 name|num
@@ -5041,7 +5394,7 @@ name|find
 argument_list|()
 condition|)
 block|{
-comment|//	    System.err.println("Found pattern: " + m.group(1));
+comment|//      System.err.println("Found pattern: " + m.group(1));
 comment|//      System.err.println("Found pattern: " + m.group(2));
 name|int
 name|num
@@ -5305,7 +5658,7 @@ name|find
 argument_list|()
 condition|)
 block|{
-comment|//	    System.err.println("Found pattern: " + m.group(1));
+comment|//      System.err.println("Found pattern: " + m.group(1));
 comment|//      System.err.println("Found pattern: " + m.group(2));
 name|int
 name|num
@@ -5336,11 +5689,9 @@ literal|3
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|warn
 argument_list|(
 literal|"HTML escaped char not converted: "
 operator|+
@@ -5415,11 +5766,9 @@ name|find
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|warn
 argument_list|(
 literal|"HTML escaped char not converted: "
 operator|+
@@ -5448,7 +5797,7 @@ init|=
 literal|100
 decl_stmt|;
 comment|/*private final int MAX_TAG_LENGTH = 30;*/
-comment|/*private final int MAX_CHAR_LENGTH = 10;      private int readHtmlChar(String text, StringBuffer sb, int position) {         // Have just read the< character that starts the tag.         int index = text.indexOf(';', position);         if ((index> position)&& (index-position< MAX_CHAR_LENGTH)) {         	//String code = text.substring(position, index);             //System.out.println("Removed code: "+text.substring(position, index));             return index; // Just skip the tag.         } else return position; // Don't do anything.     }*/
+comment|/*private final int MAX_CHAR_LENGTH = 10;          private int readHtmlChar(String text, StringBuffer sb, int position) {         // Have just read the< character that starts the tag.         int index = text.indexOf(';', position);         if ((index> position)&& (index-position< MAX_CHAR_LENGTH)) {             //String code = text.substring(position, index);             //System.out.println("Removed code: "+text.substring(position, index));             return index; // Just skip the tag.         } else return position; // Don't do anything.     }*/
 DECL|method|readTag (String text, StringBuffer sb, int position)
 specifier|private
 name|int
