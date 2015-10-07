@@ -2771,12 +2771,12 @@ name|REG_EXP_SEARCH_EXPRESSION_KEY
 init|=
 literal|"regExpSearchExpression"
 decl_stmt|;
-DECL|field|USE_REG_EXP_SEARCH_KEY
+DECL|field|AUTOLINK_USE_REG_EXP_SEARCH_KEY
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|USE_REG_EXP_SEARCH_KEY
+name|AUTOLINK_USE_REG_EXP_SEARCH_KEY
 init|=
 literal|"useRegExpSearch"
 decl_stmt|;
@@ -6050,7 +6050,7 @@ name|AUTOLINK_EXACT_KEY_ONLY
 argument_list|,
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -6485,7 +6485,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|USE_REG_EXP_SEARCH_KEY
+name|AUTOLINK_USE_REG_EXP_SEARCH_KEY
 argument_list|,
 name|Boolean
 operator|.

@@ -1686,7 +1686,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|USE_REG_EXP_SEARCH_KEY
+name|AUTOLINK_USE_REG_EXP_SEARCH_KEY
 argument_list|)
 condition|)
 block|{
@@ -1744,7 +1744,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|USE_REG_EXP_SEARCH_KEY
+name|AUTOLINK_USE_REG_EXP_SEARCH_KEY
 argument_list|,
 name|useRegExpComboBox
 operator|.
