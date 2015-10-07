@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -26,7 +26,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|DefaultFormBuilder
+name|FormBuilder
 import|;
 end_import
 
@@ -254,7 +254,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Insert selected citations into Vim"
+literal|"Insert selected citations into %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -283,7 +286,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Push selection to Vim"
+literal|"Push to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -450,44 +456,63 @@ name|void
 name|initSettingsPanel
 parameter_list|()
 block|{
-name|DefaultFormBuilder
+name|FormBuilder
 name|builder
 init|=
-operator|new
-name|DefaultFormBuilder
+name|FormBuilder
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|builder
+operator|.
+name|layout
 argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
-literal|"left:pref, 4dlu, fill:pref, 4dlu, fill:pref"
+literal|"left:pref, 4dlu, fill:pref:grow, 4dlu, fill:pref"
 argument_list|,
-literal|""
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|builder
-operator|.
-name|append
-argument_list|(
-operator|new
-name|JLabel
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Path to Vim"
-argument_list|)
-operator|+
-literal|":"
+literal|"p, 2dlu, p, 2dlu, p"
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Path to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
+argument_list|)
+operator|+
+literal|":"
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|1
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|add
 argument_list|(
 name|vimPath
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|3
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|BrowseAction
@@ -523,19 +548,21 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|browse
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|5
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|nextLine
-argument_list|()
-expr_stmt|;
-name|builder
-operator|.
-name|append
+name|add
 argument_list|(
 name|Localization
 operator|.
@@ -546,22 +573,31 @@ argument_list|)
 operator|+
 literal|":"
 argument_list|)
-expr_stmt|;
-name|builder
 operator|.
-name|append
+name|xy
 argument_list|(
-name|vimServer
+literal|1
+argument_list|,
+literal|3
 argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|nextLine
-argument_list|()
+name|add
+argument_list|(
+name|vimServer
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|3
+argument_list|,
+literal|3
+argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|Localization
 operator|.
@@ -572,19 +608,33 @@ argument_list|)
 operator|+
 literal|":"
 argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|1
+argument_list|,
+literal|5
+argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|citeCommand
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|3
+argument_list|,
+literal|5
 argument_list|)
 expr_stmt|;
 name|settings
 operator|=
 name|builder
 operator|.
-name|getPanel
+name|build
 argument_list|()
 expr_stmt|;
 block|}
@@ -619,6 +669,7 @@ literal|false
 expr_stmt|;
 try|try
 block|{
+comment|// @formatter:off
 name|String
 index|[]
 name|com
@@ -673,6 +724,7 @@ operator|+
 literal|"}"
 block|}
 decl_stmt|;
+comment|// @formatter:on
 specifier|final
 name|Process
 name|p
@@ -911,7 +963,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Pushed citations to Vim"
+literal|"Pushed citations to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

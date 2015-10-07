@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.external
 package|package
@@ -64,7 +68,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|DefaultFormBuilder
+name|FormBuilder
 import|;
 end_import
 
@@ -107,6 +111,22 @@ operator|.
 name|gui
 operator|.
 name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|BrowseAction
 import|;
 end_import
 
@@ -175,7 +195,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Jan 14, 2006  * Time: 4:55:23 PM  * To change this template use File | Settings | File Templates.  */
+comment|/**  * Created by IntelliJ IDEA. User: alver Date: Jan 14, 2006 Time: 4:55:23 PM To change this template use File | Settings  * | File Templates.  */
 end_comment
 
 begin_class
@@ -186,14 +206,6 @@ name|PushToTeXstudio
 implements|implements
 name|PushToApplication
 block|{
-DECL|field|defaultCiteCommand
-specifier|private
-specifier|final
-name|String
-name|defaultCiteCommand
-init|=
-literal|"\\cite"
-decl_stmt|;
 DECL|field|settings
 specifier|private
 name|JPanel
@@ -246,7 +258,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Insert selected citations into TeXstudio"
+literal|"Insert selected citations into %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -275,7 +290,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Push selection to TeXstudio"
+literal|"Push to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -389,21 +407,11 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandTeXstudio"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_TEXSTUDIO
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|citeCom
-operator|==
-literal|null
-condition|)
-block|{
-name|citeCom
-operator|=
-name|defaultCiteCommand
-expr_stmt|;
-block|}
 name|citeCommand
 operator|.
 name|setText
@@ -420,7 +428,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"TeXstudioPath"
+name|JabRefPreferences
+operator|.
+name|TEXSTUDIO_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -461,7 +471,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"citeCommandTeXstudio"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_TEXSTUDIO
 argument_list|,
 name|citeCommand
 operator|.
@@ -478,7 +490,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"TeXstudioPath"
+name|JabRefPreferences
+operator|.
+name|TEXSTUDIO_PATH
 argument_list|,
 name|progPath
 operator|.
@@ -496,24 +510,113 @@ name|void
 name|initSettingsPanel
 parameter_list|()
 block|{
-name|DefaultFormBuilder
+name|FormBuilder
 name|builder
 init|=
-operator|new
-name|DefaultFormBuilder
+name|FormBuilder
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|builder
+operator|.
+name|layout
 argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
-literal|"left:pref, 4dlu, fill:pref"
+literal|"left:pref, 4dlu, fill:pref:grow, 4dlu, fill:pref"
 argument_list|,
-literal|""
+literal|"p, 2dlu, p"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|addLabel
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Path to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
+argument_list|)
+operator|+
+literal|":"
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|1
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|add
+argument_list|(
+name|progPath
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|3
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+name|BrowseAction
+name|action
+init|=
+name|BrowseAction
+operator|.
+name|buildForFile
+argument_list|(
+name|progPath
+argument_list|)
+decl_stmt|;
+name|JButton
+name|browse
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Browse"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|browse
+operator|.
+name|addActionListener
+argument_list|(
+name|action
+argument_list|)
+expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
+argument_list|(
+name|browse
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|5
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|addLabel
 argument_list|(
 name|Localization
 operator|.
@@ -524,45 +627,33 @@ argument_list|)
 operator|+
 literal|":"
 argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|1
+argument_list|,
+literal|3
+argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|citeCommand
 argument_list|)
-expr_stmt|;
-name|builder
 operator|.
-name|nextLine
-argument_list|()
-expr_stmt|;
-name|builder
-operator|.
-name|append
+name|xy
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Path to TeXstudio"
-argument_list|)
-operator|+
-literal|":"
-argument_list|)
-expr_stmt|;
-name|builder
-operator|.
-name|append
-argument_list|(
-name|progPath
+literal|3
+argument_list|,
+literal|3
 argument_list|)
 expr_stmt|;
 name|settings
 operator|=
 name|builder
 operator|.
-name|getPanel
+name|build
 argument_list|()
 expr_stmt|;
 block|}
@@ -604,21 +695,11 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandTeXstudio"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_TEXSTUDIO
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|citeCom
-operator|==
-literal|null
-condition|)
-block|{
-name|citeCom
-operator|=
-name|defaultCiteCommand
-expr_stmt|;
-block|}
 name|String
 name|programPath
 init|=
@@ -628,7 +709,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"TeXstudioPath"
+name|JabRefPreferences
+operator|.
+name|TEXSTUDIO_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -849,6 +932,7 @@ condition|(
 name|couldNotConnect
 condition|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -872,6 +956,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 elseif|else
 if|if
@@ -888,7 +973,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"TeXstudioPath"
+name|JabRefPreferences
+operator|.
+name|TEXSTUDIO_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -913,6 +1000,7 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
+comment|// @formatter:off
 literal|"TeXstudio: "
 operator|+
 name|Localization
@@ -936,6 +1024,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 else|else
 block|{
@@ -947,7 +1036,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Pushed citations to TeXstudio"
+literal|"Pushed citations to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
