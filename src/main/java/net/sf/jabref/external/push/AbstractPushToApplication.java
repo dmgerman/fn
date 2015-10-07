@@ -157,7 +157,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class for pushing entries into TexMaker.  */
+comment|/**  * Abstract class for pushing entries into different editors.  */
 end_comment
 
 begin_class
@@ -200,17 +200,17 @@ argument_list|(
 literal|30
 argument_list|)
 decl_stmt|;
-DECL|field|searchPath
+DECL|field|commandPath
 specifier|protected
 name|String
-name|searchPath
+name|commandPath
 init|=
 literal|null
 decl_stmt|;
-DECL|field|searchPathPreferenceKey
+DECL|field|commandPathPreferenceKey
 specifier|protected
 name|String
-name|searchPathPreferenceKey
+name|commandPathPreferenceKey
 init|=
 literal|null
 decl_stmt|;
@@ -279,7 +279,15 @@ name|getKeyStrokeName
 parameter_list|()
 block|{
 return|return
-literal|null
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Push to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -314,7 +322,7 @@ expr_stmt|;
 name|initParameters
 argument_list|()
 expr_stmt|;
-name|searchPath
+name|commandPath
 operator|=
 name|Globals
 operator|.
@@ -322,18 +330,18 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|searchPathPreferenceKey
+name|commandPathPreferenceKey
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
 operator|(
-name|searchPath
+name|commandPath
 operator|==
 literal|null
 operator|)
 operator|||
-name|searchPath
+name|commandPath
 operator|.
 name|trim
 argument_list|()
@@ -453,7 +461,7 @@ argument_list|)
 operator|+
 literal|" '"
 operator|+
-name|searchPath
+name|commandPath
 operator|+
 literal|"'."
 argument_list|)
@@ -494,11 +502,22 @@ block|}
 DECL|method|getCommandLine (String keyString)
 specifier|protected
 name|String
+index|[]
 name|getCommandLine
 parameter_list|(
 name|String
 name|keyString
 parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+DECL|method|getCommandName ()
+specifier|protected
+name|String
+name|getCommandName
+parameter_list|()
 block|{
 return|return
 literal|null
@@ -515,7 +534,7 @@ block|{
 name|initParameters
 argument_list|()
 expr_stmt|;
-name|searchPath
+name|commandPath
 operator|=
 name|Globals
 operator|.
@@ -523,7 +542,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|searchPathPreferenceKey
+name|commandPathPreferenceKey
 argument_list|)
 expr_stmt|;
 if|if
@@ -541,7 +560,7 @@ name|Path
 operator|.
 name|setText
 argument_list|(
-name|searchPath
+name|commandPath
 argument_list|)
 expr_stmt|;
 return|return
@@ -554,13 +573,13 @@ name|void
 name|initParameters
 parameter_list|()
 block|{
-name|searchPathPreferenceKey
+name|commandPathPreferenceKey
 operator|=
 literal|null
 expr_stmt|;
 block|}
 DECL|method|initSettingsPanel ()
-specifier|private
+specifier|protected
 name|void
 name|initSettingsPanel
 parameter_list|()
@@ -582,14 +601,13 @@ name|FormLayout
 argument_list|(
 literal|"left:pref, 4dlu, fill:pref:grow, 4dlu, fill:pref"
 argument_list|,
-literal|"p, 2dlu, p"
+literal|"p"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|builder
-operator|.
-name|add
-argument_list|(
+name|String
+name|label
+init|=
 name|Localization
 operator|.
 name|lang
@@ -599,8 +617,38 @@ argument_list|,
 name|getApplicationName
 argument_list|()
 argument_list|)
+decl_stmt|;
+comment|// In case the application name and the actual command is not the same, add the command in brackets
+if|if
+condition|(
+name|getCommandName
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|label
+operator|+=
+literal|" ("
 operator|+
+name|getCommandName
+argument_list|()
+operator|+
+literal|"):"
+expr_stmt|;
+block|}
+else|else
+block|{
+name|label
+operator|+=
 literal|":"
+expr_stmt|;
+block|}
+name|builder
+operator|.
+name|add
+argument_list|(
+name|label
 argument_list|)
 operator|.
 name|xy
@@ -655,6 +703,20 @@ argument_list|(
 name|action
 argument_list|)
 expr_stmt|;
+name|builder
+operator|.
+name|add
+argument_list|(
+name|browse
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|5
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
 name|settings
 operator|=
 name|builder
@@ -677,7 +739,7 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-name|searchPathPreferenceKey
+name|commandPathPreferenceKey
 argument_list|,
 name|Path
 operator|.

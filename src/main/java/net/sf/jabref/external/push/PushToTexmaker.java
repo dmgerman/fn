@@ -36,7 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|JabRefPreferences
 import|;
 end_import
 
@@ -54,22 +54,6 @@ name|IconTheme
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|external
-operator|.
-name|push
-operator|.
-name|AbstractPushToApplication
-import|;
-end_import
-
 begin_comment
 comment|/**  * Class for pushing entries into TexMaker.  */
 end_comment
@@ -81,6 +65,8 @@ class|class
 name|PushToTexmaker
 extends|extends
 name|AbstractPushToApplication
+implements|implements
+name|PushToApplication
 block|{
 annotation|@
 name|Override
@@ -116,6 +102,7 @@ name|Override
 DECL|method|getCommandLine (String keyString)
 specifier|protected
 name|String
+index|[]
 name|getCommandLine
 parameter_list|(
 name|String
@@ -123,12 +110,14 @@ name|keyString
 parameter_list|)
 block|{
 return|return
-name|searchPath
-operator|+
-literal|" "
-operator|+
-literal|"-insert "
-operator|+
+operator|new
+name|String
+index|[]
+block|{
+name|commandPath
+block|,
+literal|"-insert"
+block|,
 name|citeCommand
 operator|+
 literal|"{"
@@ -136,6 +125,7 @@ operator|+
 name|keyString
 operator|+
 literal|"}"
+block|}
 return|;
 block|}
 annotation|@
@@ -146,7 +136,7 @@ name|void
 name|initParameters
 parameter_list|()
 block|{
-name|searchPathPreferenceKey
+name|commandPathPreferenceKey
 operator|=
 name|JabRefPreferences
 operator|.
