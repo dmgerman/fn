@@ -100,6 +100,14 @@ argument_list|(
 literal|"review"
 argument_list|)
 expr_stmt|;
+comment|// the file field should not be formatted, therefore we treat it as a multi line field
+name|multiLineFields
+operator|.
+name|add
+argument_list|(
+literal|"file"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Performs the reformatting      *      * @param content     StringBuffer containing the field to format. bibtexField contains field name according to field      * @param bibtexField      * @return The formatted field content. The StringBuffer returned may or may not be the same as the argument given.      */
 DECL|method|format (StringBuffer content, String bibtexField)
