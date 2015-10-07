@@ -173,15 +173,16 @@ DECL|field|couldNotCall
 specifier|protected
 name|boolean
 name|couldNotCall
-init|=
-literal|false
+decl_stmt|;
+DECL|field|couldNotConnect
+specifier|protected
+name|boolean
+name|couldNotConnect
 decl_stmt|;
 DECL|field|notDefined
 specifier|protected
 name|boolean
 name|notDefined
-init|=
-literal|false
 decl_stmt|;
 DECL|field|settings
 specifier|protected
@@ -204,15 +205,11 @@ DECL|field|commandPath
 specifier|protected
 name|String
 name|commandPath
-init|=
-literal|null
 decl_stmt|;
 DECL|field|commandPathPreferenceKey
 specifier|protected
 name|String
 name|commandPathPreferenceKey
-init|=
-literal|null
 decl_stmt|;
 DECL|field|citeCommand
 specifier|protected
@@ -229,6 +226,11 @@ name|JabRefPreferences
 operator|.
 name|CITE_COMMAND
 argument_list|)
+decl_stmt|;
+DECL|field|builder
+specifier|protected
+name|FormBuilder
+name|builder
 decl_stmt|;
 annotation|@
 name|Override
@@ -311,6 +313,10 @@ name|MetaData
 name|metaData
 parameter_list|)
 block|{
+name|couldNotConnect
+operator|=
+literal|false
+expr_stmt|;
 name|couldNotCall
 operator|=
 literal|false
@@ -432,6 +438,7 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 elseif|else
 if|if
@@ -443,30 +450,25 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not call executable"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
-name|commandPath
-operator|+
-literal|"'."
+name|getCouldNotCall
+argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
+block|}
+elseif|else
+if|if
+condition|(
+name|couldNotConnect
+condition|)
+block|{
+name|panel
+operator|.
+name|output
+argument_list|(
+name|getCouldNotConnect
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -483,6 +485,8 @@ argument_list|,
 name|getApplicationName
 argument_list|()
 argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 block|}
@@ -568,30 +572,25 @@ name|settings
 return|;
 block|}
 DECL|method|initParameters ()
+specifier|abstract
 specifier|protected
 name|void
 name|initParameters
 parameter_list|()
-block|{
-name|commandPathPreferenceKey
-operator|=
-literal|null
-expr_stmt|;
-block|}
+function_decl|;
 DECL|method|initSettingsPanel ()
 specifier|protected
 name|void
 name|initSettingsPanel
 parameter_list|()
 block|{
-name|FormBuilder
 name|builder
-init|=
+operator|=
 name|FormBuilder
 operator|.
 name|create
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|builder
 operator|.
 name|layout
@@ -747,6 +746,69 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getCouldNotCall ()
+specifier|protected
+name|String
+name|getCouldNotCall
+parameter_list|()
+block|{
+comment|// @formatter:off
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Could not call executable"
+argument_list|)
+operator|+
+literal|" '"
+operator|+
+name|commandPath
+operator|+
+literal|"'."
+return|;
+comment|// @formatter:on
+block|}
+DECL|method|getCouldNotConnect ()
+specifier|protected
+name|String
+name|getCouldNotConnect
+parameter_list|()
+block|{
+comment|// @formatter:off
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Could not connect to "
+argument_list|)
+operator|+
+name|getApplicationName
+argument_list|()
+operator|+
+literal|"."
+return|;
+comment|// @formatter:on
 block|}
 block|}
 end_class

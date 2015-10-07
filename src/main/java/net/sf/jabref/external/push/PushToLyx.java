@@ -90,20 +90,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|IconTheme
 import|;
 end_import
@@ -166,11 +152,6 @@ name|AbstractPushToApplication
 implements|implements
 name|PushToApplication
 block|{
-DECL|field|couldNotFindPipe
-specifier|private
-name|boolean
-name|couldNotFindPipe
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|pushEntries (BibtexDatabase database, final BibtexEntry[] entries, final String keyString, MetaData metaData)
@@ -194,7 +175,7 @@ name|MetaData
 name|metaData
 parameter_list|)
 block|{
-name|couldNotFindPipe
+name|couldNotConnect
 operator|=
 literal|false
 expr_stmt|;
@@ -202,24 +183,51 @@ name|couldNotCall
 operator|=
 literal|false
 expr_stmt|;
-name|String
-name|lyxpipeSetting
-init|=
+name|notDefined
+operator|=
+literal|false
+expr_stmt|;
+name|initParameters
+argument_list|()
+expr_stmt|;
+name|commandPath
+operator|=
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|get
 argument_list|(
-name|JabRefPreferences
-operator|.
-name|LYXPIPE
+name|commandPathPreferenceKey
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+if|if
+condition|(
+operator|(
+name|commandPath
+operator|==
+literal|null
+operator|)
+operator|||
+name|commandPath
+operator|.
+name|trim
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|notDefined
+operator|=
+literal|true
+expr_stmt|;
+return|return;
+block|}
 if|if
 condition|(
 operator|!
-name|lyxpipeSetting
+name|commandPath
 operator|.
 name|endsWith
 argument_list|(
@@ -227,9 +235,9 @@ literal|".in"
 argument_list|)
 condition|)
 block|{
-name|lyxpipeSetting
+name|commandPath
 operator|=
-name|lyxpipeSetting
+name|commandPath
 operator|+
 literal|".in"
 expr_stmt|;
@@ -240,7 +248,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-name|lyxpipeSetting
+name|commandPath
 argument_list|)
 decl_stmt|;
 comment|// this needs to fixed because it gives "asdf" when going prefs.get("lyxpipe")
@@ -265,7 +273,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-name|lyxpipeSetting
+name|commandPath
 operator|+
 literal|".in"
 argument_list|)
@@ -285,7 +293,7 @@ name|canWrite
 argument_list|()
 condition|)
 block|{
-name|couldNotFindPipe
+name|couldNotConnect
 operator|=
 literal|true
 expr_stmt|;
@@ -406,68 +414,29 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|operationCompleted (BasePanel panel)
-specifier|public
+DECL|method|initParameters ()
+specifier|protected
 name|void
-name|operationCompleted
-parameter_list|(
-name|BasePanel
-name|panel
-parameter_list|)
+name|initParameters
+parameter_list|()
 block|{
-if|if
-condition|(
-name|couldNotFindPipe
-condition|)
-block|{
-comment|// @formatter:off
-name|panel
-operator|.
-name|output
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"verify that LyX is running and that the lyxpipe is valid"
-argument_list|)
-operator|+
-literal|". ["
-operator|+
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
+name|commandPathPreferenceKey
+operator|=
 name|JabRefPreferences
 operator|.
 name|LYXPIPE
-argument_list|)
-operator|+
-literal|"]"
-argument_list|)
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-name|couldNotCall
-condition|)
+annotation|@
+name|Override
+DECL|method|getCouldNotCall ()
+specifier|protected
+name|String
+name|getCouldNotCall
+parameter_list|()
 block|{
-name|panel
-operator|.
-name|output
-argument_list|(
+comment|// @formatter:off
+return|return
 name|Localization
 operator|.
 name|lang
@@ -486,56 +455,48 @@ argument_list|)
 operator|+
 literal|" "
 operator|+
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|LYXPIPE
-argument_list|)
+name|commandPath
 operator|+
 literal|".in"
-argument_list|)
-expr_stmt|;
+return|;
 comment|// @formatter:on
 block|}
-else|else
+annotation|@
+name|Override
+DECL|method|getCouldNotConnect ()
+specifier|protected
+name|String
+name|getCouldNotConnect
+parameter_list|()
 block|{
-name|panel
-operator|.
-name|output
-argument_list|(
+comment|// @formatter:off
+return|return
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Pushed citations to %0"
-argument_list|,
-name|getApplicationName
-argument_list|()
+literal|"Error"
 argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"verify that LyX is running and that the lyxpipe is valid"
 argument_list|)
-expr_stmt|;
-block|}
+operator|+
+literal|". ["
+operator|+
+name|commandPath
+operator|+
+literal|"]"
+return|;
+comment|// @formatter:on
 block|}
 annotation|@
 name|Override
-DECL|method|initParameters ()
-specifier|protected
-name|void
-name|initParameters
-parameter_list|()
-block|{
-name|commandPathPreferenceKey
-operator|=
-name|JabRefPreferences
-operator|.
-name|LYXPIPE
-expr_stmt|;
-block|}
 DECL|method|initSettingsPanel ()
 specifier|protected
 name|void
