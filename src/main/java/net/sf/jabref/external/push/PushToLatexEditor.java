@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.external
+DECL|package|net.sf.jabref.external.push
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|external
+operator|.
+name|push
 package|;
 end_package
 
@@ -169,14 +171,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class for pushing entries into TexMaker.  */
+comment|/**  * Class for pushing entries into LatexEditor.  */
 end_comment
 
 begin_class
-DECL|class|PushToTexmaker
+DECL|class|PushToLatexEditor
 specifier|public
 class|class
-name|PushToTexmaker
+name|PushToLatexEditor
 implements|implements
 name|PushToApplication
 block|{
@@ -195,11 +197,11 @@ specifier|private
 name|JPanel
 name|settings
 decl_stmt|;
-DECL|field|texmakerPath
+DECL|field|ledPath
 specifier|private
 specifier|final
 name|JTextField
-name|texmakerPath
+name|ledPath
 init|=
 operator|new
 name|JTextField
@@ -248,7 +250,7 @@ name|getApplicationName
 parameter_list|()
 block|{
 return|return
-literal|"Texmaker"
+literal|"LatexEditor"
 return|;
 block|}
 annotation|@
@@ -284,7 +286,7 @@ name|IconTheme
 operator|.
 name|getImage
 argument_list|(
-literal|"texmaker"
+literal|"edit"
 argument_list|)
 return|;
 block|}
@@ -330,7 +332,7 @@ operator|=
 literal|false
 expr_stmt|;
 name|String
-name|texMaker
+name|led
 init|=
 name|Globals
 operator|.
@@ -340,18 +342,16 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TEXMAKER_PATH
+name|LATEX_EDITOR_PATH
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|texMaker
+name|led
 operator|==
 literal|null
-operator|)
 operator|||
-name|texMaker
+name|led
 operator|.
 name|trim
 argument_list|()
@@ -375,11 +375,11 @@ argument_list|()
 operator|.
 name|exec
 argument_list|(
-name|texMaker
+name|led
 operator|+
 literal|" "
 operator|+
-literal|"-insert "
+literal|"-i "
 operator|+
 name|Globals
 operator|.
@@ -389,7 +389,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|CITE_COMMAND_TEXMAKER
+name|CITE_COMMAND_LED
 argument_list|)
 operator|+
 literal|"{"
@@ -460,6 +460,7 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 elseif|else
 if|if
@@ -467,6 +468,7 @@ condition|(
 name|couldNotCall
 condition|)
 block|{
+comment|// @formatter:off
 name|panel
 operator|.
 name|output
@@ -497,7 +499,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TEXMAKER_PATH
+name|LATEX_EDITOR_PATH
 argument_list|)
 operator|+
 literal|"'."
@@ -507,19 +509,13 @@ comment|// @formatter:on
 block|}
 else|else
 block|{
-name|panel
-operator|.
-name|output
-argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Pushed citations to %0"
 argument_list|,
-name|getApplicationName
-argument_list|()
-argument_list|)
+literal|"LatexEditor"
 argument_list|)
 expr_stmt|;
 block|}
@@ -555,7 +551,7 @@ name|initSettingsPanel
 argument_list|()
 expr_stmt|;
 block|}
-name|texmakerPath
+name|ledPath
 operator|.
 name|setText
 argument_list|(
@@ -567,7 +563,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TEXMAKER_PATH
+name|LATEX_EDITOR_PATH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -583,7 +579,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|CITE_COMMAND_TEXMAKER
+name|CITE_COMMAND_LED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -626,10 +622,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Path to %0"
-argument_list|,
-name|getApplicationName
-argument_list|()
+literal|"Path to LatexEditor (LEd.exe)"
 argument_list|)
 operator|+
 literal|":"
@@ -642,11 +635,12 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+comment|// Note the LEd.exe part
 name|builder
 operator|.
 name|add
 argument_list|(
-name|texmakerPath
+name|ledPath
 argument_list|)
 operator|.
 name|xy
@@ -663,7 +657,7 @@ name|BrowseAction
 operator|.
 name|buildForFile
 argument_list|(
-name|texmakerPath
+name|ledPath
 argument_list|)
 decl_stmt|;
 name|JButton
@@ -760,9 +754,9 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TEXMAKER_PATH
+name|LATEX_EDITOR_PATH
 argument_list|,
-name|texmakerPath
+name|ledPath
 operator|.
 name|getText
 argument_list|()
@@ -776,7 +770,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|CITE_COMMAND_TEXMAKER
+name|CITE_COMMAND_LED
 argument_list|,
 name|citeCommand
 operator|.

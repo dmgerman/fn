@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.external
+DECL|package|net.sf.jabref.external.push
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|external
+operator|.
+name|push
 package|;
 end_package
 
@@ -168,11 +170,15 @@ name|BibtexEntry
 import|;
 end_import
 
+begin_comment
+comment|/**  * Class for pushing entries into TexMaker.  */
+end_comment
+
 begin_class
-DECL|class|PushToWinEdt
+DECL|class|PushToTexmaker
 specifier|public
 class|class
-name|PushToWinEdt
+name|PushToTexmaker
 implements|implements
 name|PushToApplication
 block|{
@@ -191,11 +197,11 @@ specifier|private
 name|JPanel
 name|settings
 decl_stmt|;
-DECL|field|winEdtPath
+DECL|field|texmakerPath
 specifier|private
 specifier|final
 name|JTextField
-name|winEdtPath
+name|texmakerPath
 init|=
 operator|new
 name|JTextField
@@ -244,7 +250,7 @@ name|getApplicationName
 parameter_list|()
 block|{
 return|return
-literal|"WinEdt"
+literal|"Texmaker"
 return|;
 block|}
 annotation|@
@@ -280,7 +286,7 @@ name|IconTheme
 operator|.
 name|getImage
 argument_list|(
-literal|"winedt"
+literal|"texmaker"
 argument_list|)
 return|;
 block|}
@@ -293,7 +299,7 @@ name|getKeyStrokeName
 parameter_list|()
 block|{
 return|return
-literal|"Push to WinEdt"
+literal|null
 return|;
 block|}
 annotation|@
@@ -326,7 +332,7 @@ operator|=
 literal|false
 expr_stmt|;
 name|String
-name|winEdt
+name|texMaker
 init|=
 name|Globals
 operator|.
@@ -336,16 +342,18 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|WIN_EDT_PATH
+name|TEXMAKER_PATH
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|winEdt
+operator|(
+name|texMaker
 operator|==
 literal|null
+operator|)
 operator|||
-name|winEdt
+name|texMaker
 operator|.
 name|trim
 argument_list|()
@@ -369,13 +377,11 @@ argument_list|()
 operator|.
 name|exec
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
-name|winEdt
-block|,
-literal|"\"[InsText('"
+name|texMaker
+operator|+
+literal|" "
+operator|+
+literal|"-insert "
 operator|+
 name|Globals
 operator|.
@@ -385,22 +391,14 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|CITE_COMMAND_WIN_EDT
+name|CITE_COMMAND_TEXMAKER
 argument_list|)
 operator|+
 literal|"{"
 operator|+
 name|keyString
-operator|.
-name|replaceAll
-argument_list|(
-literal|"'"
-argument_list|,
-literal|"''"
-argument_list|)
 operator|+
-literal|"}');]\""
-block|}
+literal|"}"
 argument_list|)
 expr_stmt|;
 block|}
@@ -464,7 +462,6 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 elseif|else
 if|if
@@ -472,7 +469,6 @@ condition|(
 name|couldNotCall
 condition|)
 block|{
-comment|// @formatter:off
 name|panel
 operator|.
 name|output
@@ -503,7 +499,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|WIN_EDT_PATH
+name|TEXMAKER_PATH
 argument_list|)
 operator|+
 literal|"'."
@@ -513,6 +509,10 @@ comment|// @formatter:on
 block|}
 else|else
 block|{
+name|panel
+operator|.
+name|output
+argument_list|(
 name|Localization
 operator|.
 name|lang
@@ -521,6 +521,7 @@ literal|"Pushed citations to %0"
 argument_list|,
 name|getApplicationName
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -556,7 +557,7 @@ name|initSettingsPanel
 argument_list|()
 expr_stmt|;
 block|}
-name|winEdtPath
+name|texmakerPath
 operator|.
 name|setText
 argument_list|(
@@ -568,7 +569,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|WIN_EDT_PATH
+name|TEXMAKER_PATH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -584,7 +585,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|CITE_COMMAND_WIN_EDT
+name|CITE_COMMAND_TEXMAKER
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -647,7 +648,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|winEdtPath
+name|texmakerPath
 argument_list|)
 operator|.
 name|xy
@@ -664,7 +665,7 @@ name|BrowseAction
 operator|.
 name|buildForFile
 argument_list|(
-name|winEdtPath
+name|texmakerPath
 argument_list|)
 decl_stmt|;
 name|JButton
@@ -761,9 +762,9 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|WIN_EDT_PATH
+name|TEXMAKER_PATH
 argument_list|,
-name|winEdtPath
+name|texmakerPath
 operator|.
 name|getText
 argument_list|()
@@ -777,7 +778,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|CITE_COMMAND_WIN_EDT
+name|CITE_COMMAND_TEXMAKER
 argument_list|,
 name|citeCommand
 operator|.
