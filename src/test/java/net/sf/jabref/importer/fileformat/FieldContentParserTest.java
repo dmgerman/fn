@@ -16,26 +16,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|After
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -132,8 +112,6 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -195,8 +173,6 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|original
@@ -204,8 +180,6 @@ argument_list|,
 name|abstrakt
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|original
@@ -291,8 +265,6 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -300,8 +272,6 @@ argument_list|,
 name|abstrakt
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -309,8 +279,6 @@ argument_list|,
 name|review
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expected
