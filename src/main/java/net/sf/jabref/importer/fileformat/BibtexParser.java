@@ -2150,6 +2150,8 @@ operator|.
 name|format
 argument_list|(
 name|text
+argument_list|,
+name|key
 argument_list|)
 argument_list|)
 expr_stmt|;
