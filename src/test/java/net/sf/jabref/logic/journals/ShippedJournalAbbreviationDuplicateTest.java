@@ -77,7 +77,7 @@ name|readJournalListFromResource
 argument_list|(
 name|Abbreviations
 operator|.
-name|JOURNALS_IEEE_OFFICIAL_ABBREVIATION_LIST
+name|JOURNALS_IEEE_ABBREVIATION_LIST_WITH_CODE
 argument_list|)
 expr_stmt|;
 name|JournalAbbreviationRepository
@@ -93,7 +93,7 @@ name|readJournalListFromResource
 argument_list|(
 name|Abbreviations
 operator|.
-name|JOURNALS_IEEE_STANDARD_ABBREVIATION_LIST
+name|JOURNALS_IEEE_ABBREVIATION_LIST_WITH_TEXT
 argument_list|)
 expr_stmt|;
 for|for
