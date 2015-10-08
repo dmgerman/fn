@@ -161,17 +161,7 @@ decl_stmt|;
 name|String
 name|text
 init|=
-literal|"lorem ipsum lorem ipsum"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"lorem ipsum lorem ipsum"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
+literal|"lorem ipsum lorem ipsum\nlorem ipsum lorem ipsum\n"
 decl_stmt|;
 name|String
 name|result
@@ -218,17 +208,7 @@ decl_stmt|;
 name|String
 name|text
 init|=
-literal|"lorem ipsum lorem ipsum"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"lorem ipsum lorem ipsum"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
+literal|"lorem ipsum lorem ipsum\nlorem ipsum lorem ipsum\n"
 decl_stmt|;
 name|String
 name|result
@@ -256,6 +236,65 @@ argument_list|(
 name|expected
 argument_list|,
 name|result
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|removeWhitespaceFromNonMultiLineFields ()
+specifier|public
+name|void
+name|removeWhitespaceFromNonMultiLineFields
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|original
+init|=
+literal|"I\nshould\nnot\ninclude\nadditional\nwhitespaces  \nor\n\ttabs."
+decl_stmt|;
+name|String
+name|expected
+init|=
+literal|"{I should not include additional whitespaces or tabs.}"
+decl_stmt|;
+name|String
+name|title
+init|=
+name|formatter
+operator|.
+name|format
+argument_list|(
+name|original
+argument_list|,
+literal|"title"
+argument_list|)
+decl_stmt|;
+name|String
+name|any
+init|=
+name|formatter
+operator|.
+name|format
+argument_list|(
+name|original
+argument_list|,
+literal|"anyotherfield"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|title
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|any
 argument_list|)
 expr_stmt|;
 block|}

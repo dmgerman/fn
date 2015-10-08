@@ -64,6 +64,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|importer
+operator|.
+name|fileformat
+operator|.
+name|FieldContentParser
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -101,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Currently the only implementation of net.sf.jabref.exporter.FieldFormatter  *   * Obeys following settings:  *  * JabRefPreferences.RESOLVE_STRINGS_ALL_FIELDS  *  * JabRefPreferences.DO_NOT_RESOLVE_STRINGS_FOR  *  * JabRefPreferences.WRITEFIELD_WRAPFIELD  */
+comment|/**  * Currently the only implementation of net.sf.jabref.exporter.FieldFormatter  *<p>  * Obeys following settings:  * * JabRefPreferences.RESOLVE_STRINGS_ALL_FIELDS  * * JabRefPreferences.DO_NOT_RESOLVE_STRINGS_FOR  * * JabRefPreferences.WRITEFIELD_WRAPFIELD  */
 end_comment
 
 begin_class
@@ -178,6 +194,12 @@ specifier|final
 name|String
 index|[]
 name|doNotResolveStringsFors
+decl_stmt|;
+DECL|field|parser
+specifier|private
+specifier|final
+name|FieldContentParser
+name|parser
 decl_stmt|;
 DECL|method|LatexFieldFormatter ()
 specifier|public
@@ -266,6 +288,12 @@ name|JabRefPreferences
 operator|.
 name|WRITEFIELD_WRAPFIELD
 argument_list|)
+expr_stmt|;
+name|parser
+operator|=
+operator|new
+name|FieldContentParser
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -608,6 +636,10 @@ name|stringBuilder
 operator|.
 name|append
 argument_list|(
+name|parser
+operator|.
+name|format
+argument_list|(
 name|StringUtil
 operator|.
 name|wrap
@@ -618,6 +650,9 @@ name|GUIGlobals
 operator|.
 name|LINE_LENGTH
 argument_list|)
+argument_list|,
+name|fieldName
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -627,7 +662,14 @@ name|stringBuilder
 operator|.
 name|append
 argument_list|(
+name|parser
+operator|.
+name|format
+argument_list|(
 name|text
+argument_list|,
+name|fieldName
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -948,6 +990,10 @@ condition|)
 block|{
 comment|//             introduce a line break to be read at the parser
 return|return
+name|parser
+operator|.
+name|format
+argument_list|(
 name|StringUtil
 operator|.
 name|wrap
@@ -961,16 +1007,26 @@ name|GUIGlobals
 operator|.
 name|LINE_LENGTH
 argument_list|)
+argument_list|,
+name|fieldName
+argument_list|)
 return|;
 comment|//, but that lead to ugly .tex
 block|}
 else|else
 block|{
 return|return
+name|parser
+operator|.
+name|format
+argument_list|(
 name|stringBuilder
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+name|fieldName
+argument_list|)
 return|;
 block|}
 block|}

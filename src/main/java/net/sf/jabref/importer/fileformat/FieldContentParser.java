@@ -96,6 +96,7 @@ end_comment
 
 begin_class
 DECL|class|FieldContentParser
+specifier|public
 class|class
 name|FieldContentParser
 block|{
@@ -221,6 +222,34 @@ name|StringBuffer
 argument_list|(
 name|text
 argument_list|)
+return|;
+block|}
+DECL|method|format (String content, String bibtexField)
+specifier|public
+name|String
+name|format
+parameter_list|(
+name|String
+name|content
+parameter_list|,
+name|String
+name|bibtexField
+parameter_list|)
+block|{
+return|return
+name|format
+argument_list|(
+operator|new
+name|StringBuffer
+argument_list|(
+name|content
+argument_list|)
+argument_list|,
+name|bibtexField
+argument_list|)
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 block|}
