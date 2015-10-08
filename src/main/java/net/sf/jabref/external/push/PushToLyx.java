@@ -154,6 +154,158 @@ name|PushToApplication
 block|{
 annotation|@
 name|Override
+DECL|method|getApplicationName ()
+specifier|public
+name|String
+name|getApplicationName
+parameter_list|()
+block|{
+return|return
+literal|"LyX/Kile"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getIcon ()
+specifier|public
+name|Icon
+name|getIcon
+parameter_list|()
+block|{
+return|return
+name|IconTheme
+operator|.
+name|getImage
+argument_list|(
+literal|"lyx"
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|initParameters ()
+specifier|protected
+name|void
+name|initParameters
+parameter_list|()
+block|{
+name|commandPathPreferenceKey
+operator|=
+name|JabRefPreferences
+operator|.
+name|LYXPIPE
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|getCouldNotCall ()
+specifier|protected
+name|String
+name|getCouldNotCall
+parameter_list|()
+block|{
+comment|// @formatter:off
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"unable to write to"
+argument_list|)
+operator|+
+literal|" "
+operator|+
+name|commandPath
+operator|+
+literal|".in"
+return|;
+comment|// @formatter:on
+block|}
+annotation|@
+name|Override
+DECL|method|getCouldNotConnect ()
+specifier|protected
+name|String
+name|getCouldNotConnect
+parameter_list|()
+block|{
+comment|// @formatter:off
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"verify that LyX is running and that the lyxpipe is valid"
+argument_list|)
+operator|+
+literal|". ["
+operator|+
+name|commandPath
+operator|+
+literal|"]"
+return|;
+comment|// @formatter:on
+block|}
+annotation|@
+name|Override
+DECL|method|initSettingsPanel ()
+specifier|protected
+name|void
+name|initSettingsPanel
+parameter_list|()
+block|{
+name|settings
+operator|=
+operator|new
+name|JPanel
+argument_list|()
+expr_stmt|;
+name|settings
+operator|.
+name|add
+argument_list|(
+operator|new
+name|JLabel
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Path to LyX pipe"
+argument_list|)
+operator|+
+literal|":"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|settings
+operator|.
+name|add
+argument_list|(
+name|Path
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
 DECL|method|pushEntries (BibtexDatabase database, final BibtexEntry[] entries, final String keyString, MetaData metaData)
 specifier|public
 name|void
@@ -380,158 +532,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|getApplicationName ()
-specifier|public
-name|String
-name|getApplicationName
-parameter_list|()
-block|{
-return|return
-literal|"LyX/Kile"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getIcon ()
-specifier|public
-name|Icon
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|IconTheme
-operator|.
-name|getImage
-argument_list|(
-literal|"lyx"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|initParameters ()
-specifier|protected
-name|void
-name|initParameters
-parameter_list|()
-block|{
-name|commandPathPreferenceKey
-operator|=
-name|JabRefPreferences
-operator|.
-name|LYXPIPE
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|getCouldNotCall ()
-specifier|protected
-name|String
-name|getCouldNotCall
-parameter_list|()
-block|{
-comment|// @formatter:off
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"unable to write to"
-argument_list|)
-operator|+
-literal|" "
-operator|+
-name|commandPath
-operator|+
-literal|".in"
-return|;
-comment|// @formatter:on
-block|}
-annotation|@
-name|Override
-DECL|method|getCouldNotConnect ()
-specifier|protected
-name|String
-name|getCouldNotConnect
-parameter_list|()
-block|{
-comment|// @formatter:off
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"verify that LyX is running and that the lyxpipe is valid"
-argument_list|)
-operator|+
-literal|". ["
-operator|+
-name|commandPath
-operator|+
-literal|"]"
-return|;
-comment|// @formatter:on
-block|}
-annotation|@
-name|Override
-DECL|method|initSettingsPanel ()
-specifier|protected
-name|void
-name|initSettingsPanel
-parameter_list|()
-block|{
-name|settings
-operator|=
-operator|new
-name|JPanel
-argument_list|()
-expr_stmt|;
-name|settings
-operator|.
-name|add
-argument_list|(
-operator|new
-name|JLabel
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Path to LyX pipe"
-argument_list|)
-operator|+
-literal|":"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|settings
-operator|.
-name|add
-argument_list|(
-name|Path
 argument_list|)
 expr_stmt|;
 block|}

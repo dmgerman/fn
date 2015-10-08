@@ -174,16 +174,19 @@ specifier|protected
 name|boolean
 name|couldNotCall
 decl_stmt|;
+comment|// Set to true in case the command could not be executed, e.g., if the file is not found
 DECL|field|couldNotConnect
 specifier|protected
 name|boolean
 name|couldNotConnect
 decl_stmt|;
+comment|// Set to true in case the tunnel to the program (if one is used) does not operate
 DECL|field|notDefined
 specifier|protected
 name|boolean
 name|notDefined
 decl_stmt|;
+comment|// Set to true if the corresponding path is not defined in the preferences
 DECL|field|settings
 specifier|protected
 name|JPanel
@@ -339,6 +342,7 @@ argument_list|(
 name|commandPathPreferenceKey
 argument_list|)
 expr_stmt|;
+comment|// Check if a path to the command has been specified
 if|if
 condition|(
 operator|(
@@ -362,6 +366,7 @@ literal|true
 expr_stmt|;
 return|return;
 block|}
+comment|// Execute command
 try|try
 block|{
 name|Runtime
@@ -378,6 +383,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// In case it didn't work
 catch|catch
 parameter_list|(
 name|IOException
@@ -503,6 +509,7 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      * Function to get the command to be executed for pushing keys to be cited      *      * @param keyString String containing the Bibtex keys to be pushed to the application      * @return String array with the command to call and its arguments      */
 DECL|method|getCommandLine (String keyString)
 specifier|protected
 name|String
@@ -517,6 +524,7 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * Function to get the command name in case it is different from the application name      *      * @return String with the command name      */
 DECL|method|getCommandName ()
 specifier|protected
 name|String
@@ -571,6 +579,7 @@ return|return
 name|settings
 return|;
 block|}
+comment|/**      * Function to initialize parameters. Currently it is expected that commandPathPreferenceKey is set to the path of      * the application.      */
 DECL|method|initParameters ()
 specifier|abstract
 specifier|protected
@@ -578,6 +587,7 @@ name|void
 name|initParameters
 parameter_list|()
 function_decl|;
+comment|/**      * Create a FormBuilder, fill it with a textbox for the path and store the JPanel in settings      */
 DECL|method|initSettingsPanel ()
 specifier|protected
 name|void
@@ -747,6 +757,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @return Error message in case couldNotCall is set      */
 DECL|method|getCouldNotCall ()
 specifier|protected
 name|String
@@ -779,6 +790,7 @@ literal|"'."
 return|;
 comment|// @formatter:on
 block|}
+comment|/**      * @return Error message in case couldNotConnect is set      */
 DECL|method|getCouldNotConnect ()
 specifier|protected
 name|String
