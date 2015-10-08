@@ -198,17 +198,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JTable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|KeyStroke
+name|*
 import|;
 end_import
 
@@ -3385,6 +3375,18 @@ argument_list|(
 name|FONT_FAMILY
 argument_list|,
 literal|"SansSerif"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|WIN_LOOK_AND_FEEL
+argument_list|,
+name|UIManager
+operator|.
+name|getSystemLookAndFeelClassName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
