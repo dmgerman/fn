@@ -113,7 +113,7 @@ specifier|final
 name|String
 name|JOURNALS_IEEE_OFFICIAL_ABBREVIATION_LIST
 init|=
-literal|"/journals/IEEEJournalList.txt"
+literal|"/journals/IEEEJournalListCode.txt"
 decl_stmt|;
 DECL|field|JOURNALS_IEEE_STANDARD_ABBREVIATION_LIST
 specifier|public
