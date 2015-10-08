@@ -643,18 +643,22 @@ index|[]
 name|possibleLookAndFeels
 init|=
 block|{
-literal|"com.jgoodies.plaf.plastic.Plastic3DLookAndFeel"
+name|UIManager
+operator|.
+name|getSystemLookAndFeelClassName
+argument_list|()
 block|,
-literal|"com.sun.java.swing.plaf.windows.WindowsLookAndFeel"
+name|UIManager
+operator|.
+name|getCrossPlatformLookAndFeelClassName
+argument_list|()
+block|,
+literal|"com.jgoodies.plaf.plastic.Plastic3DLookAndFeel"
 block|,
 literal|"com.sun.java.swing.plaf.motif.MotifLookAndFeel"
 block|,
 literal|"javax.swing.plaf.mac.MacLookAndFeel"
-block|,
-literal|"com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
-block|,
-literal|"javax.swing.plaf.metal.MetalLookAndFeel"
-block|}
+block|,         }
 decl_stmt|;
 comment|// Only list L&F which are available
 name|List
