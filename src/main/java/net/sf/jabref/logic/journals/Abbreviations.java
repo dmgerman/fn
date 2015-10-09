@@ -106,14 +106,23 @@ name|JOURNALS_FILE_BUILTIN
 init|=
 literal|"/journals/journalList.txt"
 decl_stmt|;
-DECL|field|JOURNALS_IEEE_INTERNAL_LIST
+DECL|field|JOURNALS_IEEE_ABBREVIATION_LIST_WITH_CODE
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|JOURNALS_IEEE_INTERNAL_LIST
+name|JOURNALS_IEEE_ABBREVIATION_LIST_WITH_CODE
 init|=
-literal|"/journals/IEEEJournalList.txt"
+literal|"/journals/IEEEJournalListCode.txt"
+decl_stmt|;
+DECL|field|JOURNALS_IEEE_ABBREVIATION_LIST_WITH_TEXT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|JOURNALS_IEEE_ABBREVIATION_LIST_WITH_TEXT
+init|=
+literal|"/journals/IEEEJournalListText.txt"
 decl_stmt|;
 DECL|field|journalAbbrev
 specifier|public
@@ -131,13 +140,16 @@ name|JabRefPreferences
 name|jabRefPreferences
 parameter_list|)
 block|{
-comment|// Read internal lists:
 name|journalAbbrev
 operator|=
 operator|new
 name|JournalAbbreviationRepository
 argument_list|()
 expr_stmt|;
+comment|// the order of reading the journal lists is important
+comment|// method: last added abbreviation wins
+comment|// for instance, in the personal list one can overwrite abbreviations in the built in list
+comment|// Read builtin list
 name|journalAbbrev
 operator|.
 name|readJournalListFromResource
@@ -145,6 +157,7 @@ argument_list|(
 name|JOURNALS_FILE_BUILTIN
 argument_list|)
 expr_stmt|;
+comment|// read IEEE list
 if|if
 condition|(
 name|jabRefPreferences
@@ -161,12 +174,21 @@ name|journalAbbrev
 operator|.
 name|readJournalListFromResource
 argument_list|(
-name|JOURNALS_IEEE_INTERNAL_LIST
+name|JOURNALS_IEEE_ABBREVIATION_LIST_WITH_CODE
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Read external lists, if any (in reverse order, so the upper lists
-comment|// override the lower):
+else|else
+block|{
+name|journalAbbrev
+operator|.
+name|readJournalListFromResource
+argument_list|(
+name|JOURNALS_IEEE_ABBREVIATION_LIST_WITH_TEXT
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Read external lists
 name|String
 index|[]
 name|lists
@@ -255,7 +277,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// Read personal list, if set up:
+comment|// Read personal list
 name|String
 name|personalJournalList
 init|=
