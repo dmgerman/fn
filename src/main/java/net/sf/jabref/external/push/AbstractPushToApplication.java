@@ -437,8 +437,27 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-name|getCouldNotCall
-argument_list|()
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Could not call executable"
+argument_list|)
+operator|+
+literal|" '"
+operator|+
+name|commandPath
+operator|+
+literal|"'."
 argument_list|)
 expr_stmt|;
 block|}
@@ -498,8 +517,27 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|getCouldNotCall
-argument_list|()
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Could not call executable"
+argument_list|)
+operator|+
+literal|" '"
+operator|+
+name|commandPath
+operator|+
+literal|"'."
 argument_list|)
 expr_stmt|;
 block|}
@@ -513,8 +551,26 @@ name|panel
 operator|.
 name|output
 argument_list|(
-name|getCouldNotConnect
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Could not connect to "
+argument_list|)
+operator|+
+name|getApplicationName
 argument_list|()
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 block|}
@@ -798,71 +854,6 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-comment|/**      * @return Error message in case couldNotCall is set      */
-DECL|method|getCouldNotCall ()
-specifier|protected
-name|String
-name|getCouldNotCall
-parameter_list|()
-block|{
-comment|// @formatter:off
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not call executable"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
-name|commandPath
-operator|+
-literal|"'."
-return|;
-comment|// @formatter:on
-block|}
-comment|/**      * @return Error message in case couldNotConnect is set      */
-DECL|method|getCouldNotConnect ()
-specifier|protected
-name|String
-name|getCouldNotConnect
-parameter_list|()
-block|{
-comment|// @formatter:off
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not connect to "
-argument_list|)
-operator|+
-name|getApplicationName
-argument_list|()
-operator|+
-literal|"."
-return|;
-comment|// @formatter:on
 block|}
 block|}
 end_class
