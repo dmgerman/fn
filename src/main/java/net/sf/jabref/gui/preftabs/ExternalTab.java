@@ -1300,7 +1300,7 @@ argument_list|(
 operator|new
 name|GridLayout
 argument_list|(
-literal|2
+literal|3
 argument_list|,
 literal|3
 argument_list|)
@@ -1355,6 +1355,15 @@ name|addSettingsButton
 argument_list|(
 operator|new
 name|PushToTeXstudio
+argument_list|()
+argument_list|,
+name|butpan
+argument_list|)
+expr_stmt|;
+name|addSettingsButton
+argument_list|(
+operator|new
+name|PushToTexmaker
 argument_list|()
 argument_list|,
 name|butpan
@@ -1677,7 +1686,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|USE_REG_EXP_SEARCH_KEY
+name|AUTOLINK_USE_REG_EXP_SEARCH_KEY
 argument_list|)
 condition|)
 block|{
@@ -1735,7 +1744,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|USE_REG_EXP_SEARCH_KEY
+name|AUTOLINK_USE_REG_EXP_SEARCH_KEY
 argument_list|,
 name|useRegExpComboBox
 operator|.

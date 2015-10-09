@@ -57,7 +57,7 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
-literal|"/resource/build.properties"
+literal|"/build.properties"
 argument_list|)
 expr_stmt|;
 block|}

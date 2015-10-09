@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -58,7 +58,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|DefaultFormBuilder
+name|FormBuilder
 import|;
 end_import
 
@@ -230,9 +230,12 @@ block|{
 return|return
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
-literal|"Insert selected citations into LatexEditor"
+literal|"Insert selected citations into %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -261,7 +264,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Push to LatexEditor"
+literal|"Push to %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
@@ -425,6 +431,7 @@ condition|(
 name|notDefined
 condition|)
 block|{
+comment|// @formatter:off
 name|panel
 operator|.
 name|output
@@ -451,6 +458,7 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 elseif|else
 if|if
@@ -458,6 +466,7 @@ condition|(
 name|couldNotCall
 condition|)
 block|{
+comment|// @formatter:off
 name|panel
 operator|.
 name|output
@@ -494,6 +503,7 @@ operator|+
 literal|"'."
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 else|else
 block|{
@@ -581,27 +591,30 @@ name|void
 name|initSettingsPanel
 parameter_list|()
 block|{
-name|DefaultFormBuilder
+name|FormBuilder
 name|builder
 init|=
-operator|new
-name|DefaultFormBuilder
+name|FormBuilder
+operator|.
+name|create
+argument_list|()
+decl_stmt|;
+name|builder
+operator|.
+name|layout
 argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
-literal|"left:pref, 4dlu, fill:pref, 4dlu, fill:pref"
+literal|"left:pref, 4dlu, fill:pref:grow, 4dlu, fill:pref"
 argument_list|,
-literal|""
+literal|"p, 2dlu, p"
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|builder
 operator|.
-name|append
-argument_list|(
-operator|new
-name|JLabel
+name|add
 argument_list|(
 name|Localization
 operator|.
@@ -612,13 +625,27 @@ argument_list|)
 operator|+
 literal|":"
 argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|1
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
+comment|// Note the LEd.exe part
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|ledPath
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|3
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|BrowseAction
@@ -654,19 +681,21 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|browse
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|5
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|nextLine
-argument_list|()
-expr_stmt|;
-name|builder
-operator|.
-name|append
+name|add
 argument_list|(
 name|Localization
 operator|.
@@ -677,19 +706,33 @@ argument_list|)
 operator|+
 literal|":"
 argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|1
+argument_list|,
+literal|3
+argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|citeCommand
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|3
+argument_list|,
+literal|3
 argument_list|)
 expr_stmt|;
 name|settings
 operator|=
 name|builder
 operator|.
-name|getPanel
+name|build
 argument_list|()
 expr_stmt|;
 block|}

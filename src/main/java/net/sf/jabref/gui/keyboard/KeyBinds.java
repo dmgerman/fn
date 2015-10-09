@@ -469,15 +469,6 @@ name|MARK_ENTRIES
 init|=
 literal|"Mark entries"
 decl_stmt|;
-DECL|field|MINIMIZE_TO_SYSTEM_TRAY
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|MINIMIZE_TO_SYSTEM_TRAY
-init|=
-literal|"Minimize to system tray"
-decl_stmt|;
 DECL|field|NEW_ARTICLE
 specifier|public
 specifier|static
@@ -1884,15 +1875,6 @@ argument_list|(
 name|FILE_LIST_EDITOR_MOVE_ENTRY_DOWN
 argument_list|,
 literal|"ctrl DOWN"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|MINIMIZE_TO_SYSTEM_TRAY
-argument_list|,
-literal|"ctrl alt W"
 argument_list|)
 expr_stmt|;
 name|keyBindMap

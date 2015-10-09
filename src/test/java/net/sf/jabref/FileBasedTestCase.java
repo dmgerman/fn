@@ -151,7 +151,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|USE_REG_EXP_SEARCH_KEY
+name|AUTOLINK_USE_REG_EXP_SEARCH_KEY
 argument_list|)
 expr_stmt|;
 name|oldAutoLinkExcatKeyOnly
@@ -186,7 +186,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|USE_REG_EXP_SEARCH_KEY
+name|AUTOLINK_USE_REG_EXP_SEARCH_KEY
 argument_list|,
 literal|false
 argument_list|)
@@ -699,7 +699,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|USE_REG_EXP_SEARCH_KEY
+name|AUTOLINK_USE_REG_EXP_SEARCH_KEY
 argument_list|,
 name|oldUseRegExp
 argument_list|)

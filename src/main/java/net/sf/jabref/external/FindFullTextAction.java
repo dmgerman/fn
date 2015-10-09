@@ -156,6 +156,26 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * Try to download fulltext PDF for selected entry(ies) by following URL or DOI link.  */
 end_comment
@@ -181,9 +201,10 @@ name|entry
 decl_stmt|;
 DECL|field|result
 specifier|private
-name|FindFullText
-operator|.
-name|FindResult
+name|Optional
+argument_list|<
+name|URL
+argument_list|>
 name|result
 decl_stmt|;
 DECL|method|FindFullTextAction (BasePanel basePanel)
@@ -232,6 +253,7 @@ name|void
 name|run
 parameter_list|()
 block|{
+comment|// TODO: just download for all entries and save files without dialog
 name|entry
 operator|=
 name|basePanel
@@ -267,17 +289,14 @@ name|void
 name|update
 parameter_list|()
 block|{
-comment|//pdfURL = new URL("http://geog-www.sbs.ohio-state.edu/faculty/bmark/abbott_etal_ppp03.pdf");
 if|if
 condition|(
 name|result
 operator|.
-name|url
-operator|!=
-literal|null
+name|isPresent
+argument_list|()
 condition|)
 block|{
-comment|//System.out.println("PDF URL: "+result.url);
 name|String
 name|bibtexKey
 init|=
@@ -311,10 +330,28 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// TODO: error message if file dir not defined
-comment|//JOptionPane.showMessageDialog(frame, Globals.lang);
+comment|// FIXME: Localization
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|basePanel
+operator|.
+name|frame
+argument_list|()
+argument_list|,
+literal|"Main file directory not set! Preferences -> External programs"
+argument_list|,
+literal|"Directory not found"
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
+comment|// TODO: this needs its own thread as it blocks the UI!
 name|DownloadExternalFile
 name|def
 init|=
@@ -342,7 +379,8 @@ name|download
 argument_list|(
 name|result
 operator|.
-name|url
+name|get
+argument_list|()
 argument_list|,
 operator|new
 name|DownloadExternalFile
@@ -360,15 +398,6 @@ name|FileListEntry
 name|file
 parameter_list|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"finished"
-argument_list|)
-expr_stmt|;
 name|FileListTableModel
 name|tm
 init|=
@@ -492,109 +521,18 @@ block|{
 name|String
 name|message
 init|=
-literal|null
-decl_stmt|;
-switch|switch
-condition|(
-name|result
-operator|.
-name|status
-condition|)
-block|{
-case|case
-name|FindFullText
-operator|.
-name|UNKNOWN_DOMAIN
-case|:
-name|message
-operator|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Unable to find full text article. No search algorithm "
-operator|+
-literal|"defined for the '%0' web site."
-argument_list|,
-name|result
-operator|.
-name|host
-argument_list|)
-expr_stmt|;
-break|break;
-case|case
-name|FindFullText
-operator|.
-name|WRONG_MIME_TYPE
-case|:
-name|message
-operator|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Found pdf link, but received the wrong MIME type. "
-operator|+
-literal|"This could indicate that you don't have access to the fulltext article."
-argument_list|)
-expr_stmt|;
-break|break;
-case|case
-name|FindFullText
-operator|.
-name|LINK_NOT_FOUND
-case|:
-name|message
-operator|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Unable to find full text document in the linked web page."
-argument_list|)
-expr_stmt|;
-break|break;
-case|case
-name|FindFullText
-operator|.
-name|IO_EXCEPTION
-case|:
-name|message
-operator|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Connection error when trying to find full text document."
-argument_list|)
-expr_stmt|;
-break|break;
-case|case
-name|FindFullText
-operator|.
-name|NO_URLS_DEFINED
-case|:
-name|message
-operator|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"This entry provides no URL or DOI links."
-argument_list|)
-expr_stmt|;
-break|break;
-block|}
-name|basePanel
-operator|.
-name|output
-argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Full text article download failed"
 argument_list|)
+decl_stmt|;
+name|basePanel
+operator|.
+name|output
+argument_list|(
+name|message
 argument_list|)
 expr_stmt|;
 name|JOptionPane
@@ -608,12 +546,7 @@ argument_list|()
 argument_list|,
 name|message
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Full text article download failed"
-argument_list|)
+name|message
 argument_list|,
 name|JOptionPane
 operator|.
