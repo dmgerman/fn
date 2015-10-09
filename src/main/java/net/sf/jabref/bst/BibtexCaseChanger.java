@@ -41,24 +41,36 @@ specifier|public
 enum|enum
 name|FORMAT_MODE
 block|{
+comment|// First character and character after a ":" as upper case - everything else in lower case. Obey {}.
 DECL|enumConstant|TITLE_LOWERS
 name|TITLE_LOWERS
 argument_list|(
 literal|'t'
 argument_list|)
 block|,
+comment|// All characters lower case - Obey {}
 DECL|enumConstant|ALL_LOWERS
 name|ALL_LOWERS
 argument_list|(
 literal|'l'
 argument_list|)
 block|,
+comment|// all characters upper case - Obey {}
 DECL|enumConstant|ALL_UPPERS
 name|ALL_UPPERS
 argument_list|(
 literal|'u'
 argument_list|)
 block|;
+comment|// the following would have to be done if the functionality of CaseChangers would be included here
+comment|// However, we decided against it and will probably do the other way round: https://github.com/JabRef/jabref/pull/215#issuecomment-146981624
+comment|// Each word should start with a capital letter
+comment|//EACH_FIRST_UPPERS('f'),
+comment|// Converts all words to upper case, but converts articles, prepositions, and conjunctions to lower case
+comment|// Capitalizes first and last word
+comment|// Does not change words starting with "{"
+comment|// DIFFERENCE to old CaseChangers.TITLE: last word is NOT capitalized in all cases
+comment|//TITLE_UPPERS('T');
 DECL|method|asChar ()
 specifier|public
 name|char
@@ -313,14 +325,21 @@ operator|)
 operator|)
 condition|)
 block|{
-name|sb
-operator|.
-name|append
-argument_list|(
+assert|assert
+operator|(
 name|c
 index|[
 name|i
 index|]
+operator|==
+literal|'{'
+operator|)
+assert|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|'{'
 argument_list|)
 expr_stmt|;
 name|i
@@ -523,7 +542,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * We're dealing with a special character (usually either an undotted `\i'      * or `\j', or an accent like one in Table~3.1 of the \LaTeX\ manual, or a      * foreign character like one in Table~3.2) if the first character after the      * |left_brace| is a |backslash|; the special character ends with the      * matching |right_brace|. How we handle what's in between depends on the      * special character. In general, this code will do reasonably well if there      * is other stuff, too, between braces, but it doesn't try to do anything      * special with |colon|s.      *       * @param c      * @param i      * @param format      * @return      */
+comment|/**      * We're dealing with a special character (usually either an undotted `\i'      * or `\j', or an accent like one in Table~3.1 of the \LaTeX\ manual, or a      * foreign character like one in Table~3.2) if the first character after the      * |left_brace| is a |backslash|; the special character ends with the      * matching |right_brace|. How we handle what's in between depends on the      * special character. In general, this code will do reasonably well if there      * is other stuff, too, between braces, but it doesn't try to do anything      * special with |colon|s.      *       * @param c      * @param i the current position. It points to the opening brace      * @param format      * @return      */
 DECL|method|convertSpecialChar (StringBuffer sb, char[] c, int i, FORMAT_MODE format)
 specifier|private
 name|int
@@ -543,6 +562,16 @@ name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
+assert|assert
+operator|(
+name|c
+index|[
+name|i
+index|]
+operator|==
+literal|'{'
+operator|)
+assert|;
 name|sb
 operator|.
 name|append
