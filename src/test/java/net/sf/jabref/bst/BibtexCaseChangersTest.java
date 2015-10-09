@@ -464,6 +464,91 @@ literal|"HAllo WORLD- HOW"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testSpecialBracketPlacement ()
+specifier|public
+name|void
+name|testSpecialBracketPlacement
+parameter_list|()
+block|{
+comment|// area between brackets spanning multiple words
+name|assertCaseChangerAllLowers
+argument_list|(
+literal|"this i{S REALLY CraZy ST}uff"
+argument_list|,
+literal|"tHIS I{S REALLY CraZy ST}UfF"
+argument_list|)
+expr_stmt|;
+name|assertCaseChangerAllLowers
+argument_list|(
+literal|"this i{S R{\\'E}ALLY CraZy ST}uff"
+argument_list|,
+literal|"tHIS I{S R{\\'E}ALLY CraZy ST}UfF"
+argument_list|)
+expr_stmt|;
+comment|// real use case: Formulas
+name|assertCaseChangerAllUppers
+argument_list|(
+literal|"AN {$O(n \\log n)$} SORTING ALGORITHM"
+argument_list|,
+literal|"An {$O(n \\log n)$} Sorting Algorithm"
+argument_list|)
+expr_stmt|;
+comment|// only one special character, no strange bracket placement
+name|assertCaseChangerAllLowers
+argument_list|(
+literal|"this is r{\\'e}ally crazy stuff"
+argument_list|,
+literal|"tHIS IS R{\\'E}ALLY CraZy STUfF"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testTitleCase ()
+specifier|public
+name|void
+name|testTitleCase
+parameter_list|()
+block|{
+comment|// CaseChangers.TITLE is good at keeping some words lower case
+comment|// Here some modified test cases to show that escaping with BibtexCaseChanger also works
+comment|// Examples taken from https://github.com/JabRef/jabref/pull/176#issuecomment-142723792
+name|assertCaseChangerAllLowers
+argument_list|(
+literal|"this is a simple example {TITLE}"
+argument_list|,
+literal|"This is a simple example {TITLE}"
+argument_list|)
+expr_stmt|;
+name|assertCaseChangerAllLowers
+argument_list|(
+literal|"this {IS} another simple example tit{LE}"
+argument_list|,
+literal|"This {IS} another simple example tit{LE}"
+argument_list|)
+expr_stmt|;
+name|assertCaseChangerAllLowers
+argument_list|(
+literal|"{What ABOUT thIS} one?"
+argument_list|,
+literal|"{What ABOUT thIS} one?"
+argument_list|)
+expr_stmt|;
+name|assertCaseChangerAllLowers
+argument_list|(
+literal|"{And {thIS} might {a{lso}} be possible}"
+argument_list|,
+literal|"{And {thIS} might {a{lso}} be possible}"
+argument_list|)
+expr_stmt|;
+comment|/* the real test would look like as follows. Also from the comment of issue 176, order reversed as the "should be" comes first */
+comment|// assertCaseChangerTitleUppers("This is a Simple Example {TITLE}", "This is a simple example {TITLE}");
+comment|// assertCaseChangerTitleUppers("This {IS} Another Simple Example Tit{LE}", "This {IS} another simple example tit{LE}");
+comment|// assertCaseChangerTitleUppers("{What ABOUT thIS} one?", "{What ABOUT thIS} one?");
+comment|// assertCaseChangerTitleUppers("{And {thIS} might {a{lso}} be possible}", "{And {thIS} might {a{lso}} be possible}");
+block|}
 DECL|method|assertCaseChangerTitleLowers (final String string, final String string2)
 specifier|private
 name|void
