@@ -152,6 +152,34 @@ name|BibtexEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA. User: alver Date: Jan 14, 2006 Time: 4:55:23 PM  */
 end_comment
@@ -166,6 +194,22 @@ name|AbstractPushToApplication
 implements|implements
 name|PushToApplication
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|PushToEmacs
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|additionalParams
 specifier|private
 specifier|final
@@ -750,10 +794,12 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not read from stderr."
+argument_list|)
 expr_stmt|;
 block|}
 comment|// Error stream has been closed. See if there were any errors:
@@ -772,12 +818,12 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
+literal|"Push to Emacs error: "
+operator|+
 name|sb
 argument_list|)
 expr_stmt|;
