@@ -22,18 +22,7 @@ specifier|public
 class|class
 name|BibtexCaseChanger
 block|{
-DECL|field|s
-specifier|private
-specifier|final
-name|String
-name|s
-decl_stmt|;
-DECL|field|format
-specifier|private
-specifier|final
-name|FORMAT_MODE
-name|format
-decl_stmt|;
+comment|// stores whether the char before the current char was a colon
 DECL|field|prevColon
 specifier|private
 name|boolean
@@ -41,11 +30,11 @@ name|prevColon
 init|=
 literal|true
 decl_stmt|;
-DECL|field|n
+comment|// global variable to store the current brace level
+DECL|field|braceLevel
 specifier|private
-specifier|final
 name|int
-name|n
+name|braceLevel
 decl_stmt|;
 DECL|enum|FORMAT_MODE
 specifier|public
@@ -145,39 +134,11 @@ argument_list|()
 throw|;
 block|}
 block|}
-DECL|method|BibtexCaseChanger (String s, FORMAT_MODE format)
+DECL|method|BibtexCaseChanger ()
 specifier|private
 name|BibtexCaseChanger
-parameter_list|(
-name|String
-name|s
-parameter_list|,
-name|FORMAT_MODE
-name|format
-parameter_list|)
-block|{
-name|this
-operator|.
-name|s
-operator|=
-name|s
-expr_stmt|;
-name|this
-operator|.
-name|format
-operator|=
-name|format
-expr_stmt|;
-name|this
-operator|.
-name|n
-operator|=
-name|s
-operator|.
-name|length
-argument_list|()
-expr_stmt|;
-block|}
+parameter_list|()
+block|{     }
 comment|/**      * Changes case of the given string s      *      * @param s the string to handle      * @param format the format      * @return      */
 DECL|method|changeCase (String s, FORMAT_MODE format)
 specifier|public
@@ -196,22 +157,28 @@ return|return
 operator|(
 operator|new
 name|BibtexCaseChanger
+argument_list|()
+operator|)
+operator|.
+name|doChangeCase
 argument_list|(
 name|s
 argument_list|,
 name|format
 argument_list|)
-operator|)
-operator|.
-name|changeCase
-argument_list|()
 return|;
 block|}
-DECL|method|changeCase ()
+DECL|method|doChangeCase (String s, FORMAT_MODE format)
 specifier|private
 name|String
-name|changeCase
-parameter_list|()
+name|doChangeCase
+parameter_list|(
+name|String
+name|s
+parameter_list|,
+name|FORMAT_MODE
+name|format
+parameter_list|)
 block|{
 name|char
 index|[]
@@ -233,6 +200,14 @@ name|int
 name|i
 init|=
 literal|0
+decl_stmt|;
+name|int
+name|n
+init|=
+name|s
+operator|.
+name|length
+argument_list|()
 decl_stmt|;
 while|while
 condition|(
@@ -462,11 +437,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|field|braceLevel
-specifier|private
-name|int
-name|braceLevel
-decl_stmt|;
 DECL|method|decrBraceLevel (String string, int braceLevel)
 specifier|private
 name|int
