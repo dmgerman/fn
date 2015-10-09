@@ -274,11 +274,6 @@ argument_list|(
 name|source
 argument_list|)
 operator|.
-name|timeout
-argument_list|(
-literal|5000
-argument_list|)
-operator|.
 name|ignoreHttpErrors
 argument_list|(
 literal|true
