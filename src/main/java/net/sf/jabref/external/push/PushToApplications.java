@@ -34,16 +34,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -81,7 +71,6 @@ decl_stmt|;
 comment|/**      * Set up the current available choices:      */
 static|static
 block|{
-comment|//TODO plugins create collection class
 name|applications
 operator|=
 operator|new
@@ -180,50 +169,6 @@ name|PushToTexmaker
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Finally, sort the entries:
-comment|//Collections.sort(applications, new PushToApplicationComparator());
-block|}
-comment|/**      * Comparator for sorting the selection according to name.      */
-DECL|class|PushToApplicationComparator
-specifier|private
-specifier|static
-class|class
-name|PushToApplicationComparator
-implements|implements
-name|Comparator
-argument_list|<
-name|PushToApplication
-argument_list|>
-block|{
-annotation|@
-name|Override
-DECL|method|compare (PushToApplication one, PushToApplication two)
-specifier|public
-name|int
-name|compare
-parameter_list|(
-name|PushToApplication
-name|one
-parameter_list|,
-name|PushToApplication
-name|two
-parameter_list|)
-block|{
-return|return
-name|one
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|compareTo
-argument_list|(
-name|two
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-return|;
-block|}
 block|}
 block|}
 end_class
