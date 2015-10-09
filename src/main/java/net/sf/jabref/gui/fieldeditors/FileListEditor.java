@@ -2372,8 +2372,9 @@ operator|.
 name|getEntry
 argument_list|()
 decl_stmt|;
+comment|// filesystem lookup
 name|JDialog
-name|diag
+name|dialog
 init|=
 operator|new
 name|JDialog
@@ -2475,11 +2476,30 @@ literal|"No files found."
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// auto download file as no file found before
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|.
+name|runCommand
+argument_list|(
+literal|"downloadFullText"
+argument_list|)
+expr_stmt|;
 block|}
+comment|// reset
+name|auto
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|,
-name|diag
+name|dialog
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2858,7 +2878,7 @@ specifier|public
 name|void
 name|undo
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|redo ()
@@ -2866,7 +2886,7 @@ specifier|public
 name|void
 name|redo
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
@@ -2877,7 +2897,7 @@ parameter_list|(
 name|AutoCompleteListener
 name|listener
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|clearAutoCompleteSuggestion ()
@@ -2885,7 +2905,7 @@ specifier|public
 name|void
 name|clearAutoCompleteSuggestion
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|setActiveBackgroundColor ()
@@ -2893,7 +2913,7 @@ specifier|public
 name|void
 name|setActiveBackgroundColor
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|setValidBackgroundColor ()
@@ -2901,7 +2921,7 @@ specifier|public
 name|void
 name|setValidBackgroundColor
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|setInvalidBackgroundColor ()
@@ -2909,7 +2929,7 @@ specifier|public
 name|void
 name|setInvalidBackgroundColor
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|updateFontColor ()
@@ -2917,7 +2937,7 @@ specifier|public
 name|void
 name|updateFontColor
 parameter_list|()
-block|{     }
+block|{}
 block|}
 end_class
 

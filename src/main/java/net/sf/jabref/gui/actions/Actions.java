@@ -177,6 +177,15 @@ name|DELETE
 init|=
 literal|"delete"
 decl_stmt|;
+DECL|field|DOWNLOAD_FULL_TEXT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DOWNLOAD_FULL_TEXT
+init|=
+literal|"downloadFullText"
+decl_stmt|;
 DECL|field|DUPLI_CHECK
 specifier|public
 specifier|static
