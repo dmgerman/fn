@@ -394,7 +394,7 @@ condition|)
 block|{
 name|i
 operator|=
-name|convertChar0
+name|convertCharIfBraceLevelIsZero
 argument_list|(
 name|c
 argument_list|,
@@ -697,7 +697,7 @@ return|return
 name|i
 return|;
 block|}
-comment|/**      * Convert the given string according to the format character (title, lower,      * up) and append the result to the stringBuffer, return the updated      * position.      *       * @param c      * @param pos      * @param s      * @param sb      * @param format      * @return      */
+comment|/**      * Convert the given string according to the format character (title, lower,      * up) and append the result to the stringBuffer, return the updated      * position.      *       * @param c      * @param pos      * @param s      * @param sb      * @param format      * @return the new position      */
 DECL|method|convertAccented (char[] c, int pos, String s, StringBuffer sb, FORMAT_MODE format)
 specifier|private
 name|int
@@ -946,10 +946,10 @@ return|return
 name|pos
 return|;
 block|}
-DECL|method|convertChar0 (char[] c, int i, StringBuffer sb, FORMAT_MODE format)
+DECL|method|convertCharIfBraceLevelIsZero (char[] c, int i, StringBuffer sb, FORMAT_MODE format)
 specifier|private
 name|int
-name|convertChar0
+name|convertCharIfBraceLevelIsZero
 parameter_list|(
 name|char
 index|[]
@@ -1119,7 +1119,9 @@ return|return
 name|i
 return|;
 block|}
+comment|/**      * Determine whether there starts a special char at pos (e.g., oe, AE). Return it as string.      * If nothing found, return null      *      * @param c the current "String"      * @param pos the position      * @return the special LaTeX character or null      */
 DECL|method|findSpecialChar (char[] c, int pos)
+specifier|private
 specifier|static
 name|String
 name|findSpecialChar
