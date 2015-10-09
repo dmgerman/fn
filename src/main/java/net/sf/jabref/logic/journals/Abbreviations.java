@@ -146,6 +146,9 @@ operator|new
 name|JournalAbbreviationRepository
 argument_list|()
 expr_stmt|;
+comment|// the order of reading the journal lists is important
+comment|// method: last added abbreviation wins
+comment|// for instance, in the personal list one can overwrite abbreviations in the built in list
 comment|// Read builtin list
 name|journalAbbrev
 operator|.
