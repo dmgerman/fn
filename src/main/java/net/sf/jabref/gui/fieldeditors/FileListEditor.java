@@ -567,12 +567,6 @@ operator|new
 name|JPopupMenu
 argument_list|()
 decl_stmt|;
-DECL|field|fileFound
-specifier|private
-specifier|static
-name|boolean
-name|fileFound
-decl_stmt|;
 DECL|method|FileListEditor (JabRefFrame frame, MetaData metaData, String fieldName, String content, EntryEditor entryEditor)
 specifier|public
 name|FileListEditor
@@ -2437,10 +2431,6 @@ operator|>
 literal|0
 condition|)
 block|{
-name|fileFound
-operator|=
-literal|true
-expr_stmt|;
 name|entryEditor
 operator|.
 name|updateField
@@ -2486,21 +2476,7 @@ literal|"No files found."
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-block|}
-argument_list|,
-name|dialog
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// auto download file
-if|if
-condition|(
-operator|!
-name|fileFound
-condition|)
-block|{
+comment|// auto download file as no file found before
 name|frame
 operator|.
 name|basePanel
@@ -2520,9 +2496,12 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|fileFound
-operator|=
-literal|false
+block|}
+block|}
+argument_list|,
+name|dialog
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Run a file download operation.      */
