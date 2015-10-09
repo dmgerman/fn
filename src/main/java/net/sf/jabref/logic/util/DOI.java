@@ -106,6 +106,10 @@ name|Pattern
 import|;
 end_import
 
+begin_comment
+comment|/**  * Class for working with Digital object identifiers (DOIs)  *  * @see https://en.wikipedia.org/wiki/Digital_object_identifier  */
+end_comment
+
 begin_class
 DECL|class|DOI
 specifier|public

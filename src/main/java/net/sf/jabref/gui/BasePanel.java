@@ -1874,19 +1874,6 @@ operator|::
 name|editSignalled
 argument_list|)
 expr_stmt|;
-name|actions
-operator|.
-name|put
-argument_list|(
-literal|"test"
-argument_list|,
-operator|new
-name|FindFullTextAction
-argument_list|(
-name|this
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|// The action for saving a database.
 name|actions
 operator|.
@@ -8747,6 +8734,24 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
+begin_expr_stmt
+name|actions
+operator|.
+name|put
+argument_list|(
+name|Actions
+operator|.
+name|DOWNLOAD_FULL_TEXT
+argument_list|,
+operator|new
+name|FindFullTextAction
+argument_list|(
+name|this
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
 begin_comment
 unit|}
 comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.      */
@@ -8785,9 +8790,8 @@ operator|+
 literal|'\''
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
-else|else
-block|{
 name|Object
 name|o
 init|=
@@ -8895,12 +8899,18 @@ operator|.
 name|unblock
 argument_list|()
 expr_stmt|;
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"runCommand error: "
+operator|+
 name|ex
 operator|.
-name|printStackTrace
+name|getMessage
 argument_list|()
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_function

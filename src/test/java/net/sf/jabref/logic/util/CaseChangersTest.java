@@ -193,6 +193,22 @@ literal|"LOWER {UPPER}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"lower {U}pper"
+argument_list|,
+name|CaseChangers
+operator|.
+name|LOWER
+operator|.
+name|changeCase
+argument_list|(
+literal|"LOWER {U}PPER"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -282,6 +298,22 @@ literal|"upper {lower}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"UPPER {l}OWER"
+argument_list|,
+name|CaseChangers
+operator|.
+name|UPPER
+operator|.
+name|changeCase
+argument_list|(
+literal|"upper {l}ower"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -355,6 +387,22 @@ literal|"upper {NOT} FIRST"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Upper {N}ot first"
+argument_list|,
+name|CaseChangers
+operator|.
+name|UPPER_FIRST
+operator|.
+name|changeCase
+argument_list|(
+literal|"upper {N}OT FIRST"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -409,6 +457,22 @@ operator|.
 name|changeCase
 argument_list|(
 literal|"upper each first {NOT} {this}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Upper Each First {N}ot {t}his"
+argument_list|,
+name|CaseChangers
+operator|.
+name|UPPER_EACH_FIRST
+operator|.
+name|changeCase
+argument_list|(
+literal|"upper each first {N}OT {t}his"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -489,6 +553,22 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+literal|"An Upper Each of: The and First And"
+argument_list|,
+name|CaseChangers
+operator|.
+name|TITLE
+operator|.
+name|changeCase
+argument_list|(
+literal|"an upper each of: the and first and"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
 literal|"An Upper First with and without {CURLY} {brackets}"
 argument_list|,
 name|CaseChangers
@@ -498,6 +578,22 @@ operator|.
 name|changeCase
 argument_list|(
 literal|"AN UPPER FIRST WITH AND WITHOUT {CURLY} {brackets}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"An Upper First with {A}nd without {C}urly {b}rackets"
+argument_list|,
+name|CaseChangers
+operator|.
+name|TITLE
+operator|.
+name|changeCase
+argument_list|(
+literal|"AN UPPER FIRST WITH {A}ND WITHOUT {C}URLY {b}rackets"
 argument_list|)
 argument_list|)
 expr_stmt|;
