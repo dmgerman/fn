@@ -238,8 +238,6 @@ argument_list|(
 name|s
 argument_list|,
 name|format
-argument_list|,
-name|vm
 argument_list|)
 argument_list|)
 expr_stmt|;

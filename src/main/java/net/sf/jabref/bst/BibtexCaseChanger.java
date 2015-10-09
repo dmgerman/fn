@@ -47,13 +47,7 @@ specifier|final
 name|int
 name|n
 decl_stmt|;
-DECL|field|warn
-specifier|private
-specifier|final
-name|Warn
-name|warn
-decl_stmt|;
-DECL|method|BibtexCaseChanger (String s, char format, Warn warn)
+DECL|method|BibtexCaseChanger (String s, char format)
 specifier|private
 name|BibtexCaseChanger
 parameter_list|(
@@ -62,9 +56,6 @@ name|s
 parameter_list|,
 name|char
 name|format
-parameter_list|,
-name|Warn
-name|warn
 parameter_list|)
 block|{
 name|this
@@ -88,14 +79,8 @@ operator|.
 name|length
 argument_list|()
 expr_stmt|;
-name|this
-operator|.
-name|warn
-operator|=
-name|warn
-expr_stmt|;
 block|}
-DECL|method|changeCase (String s, char format, Warn warn)
+DECL|method|changeCase (String s, char format)
 specifier|public
 specifier|static
 name|String
@@ -106,9 +91,6 @@ name|s
 parameter_list|,
 name|char
 name|format
-parameter_list|,
-name|Warn
-name|warn
 parameter_list|)
 block|{
 return|return
@@ -119,8 +101,6 @@ argument_list|(
 name|s
 argument_list|,
 name|format
-argument_list|,
-name|warn
 argument_list|)
 operator|)
 operator|.

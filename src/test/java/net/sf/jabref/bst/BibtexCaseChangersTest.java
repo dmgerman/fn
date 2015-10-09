@@ -475,40 +475,6 @@ argument_list|(
 name|string2
 argument_list|,
 literal|'t'
-argument_list|,
-operator|new
-name|Warn
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|warn
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-name|Assert
-operator|.
-name|fail
-argument_list|(
-literal|"Should not Warn ("
-operator|+
-name|s
-operator|+
-literal|")! changeCase('t') should be "
-operator|+
-name|string
-operator|+
-literal|" for "
-operator|+
-name|string2
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -540,40 +506,6 @@ argument_list|(
 name|string2
 argument_list|,
 literal|'l'
-argument_list|,
-operator|new
-name|Warn
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|warn
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-name|Assert
-operator|.
-name|fail
-argument_list|(
-literal|"Should not Warn ("
-operator|+
-name|s
-operator|+
-literal|")! changeCase('l') should be "
-operator|+
-name|string
-operator|+
-literal|" for "
-operator|+
-name|string2
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -605,40 +537,6 @@ argument_list|(
 name|string2
 argument_list|,
 literal|'u'
-argument_list|,
-operator|new
-name|Warn
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|warn
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-name|Assert
-operator|.
-name|fail
-argument_list|(
-literal|"Should not Warn ("
-operator|+
-name|s
-operator|+
-literal|")! changeCase('u') should be "
-operator|+
-name|string
-operator|+
-literal|" for "
-operator|+
-name|string2
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
