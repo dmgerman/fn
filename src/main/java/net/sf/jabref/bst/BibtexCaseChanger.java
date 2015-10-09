@@ -31,7 +31,7 @@ decl_stmt|;
 DECL|field|format
 specifier|private
 specifier|final
-name|char
+name|FORMAT_MODE
 name|format
 decl_stmt|;
 DECL|field|prevColon
@@ -47,14 +47,112 @@ specifier|final
 name|int
 name|n
 decl_stmt|;
-DECL|method|BibtexCaseChanger (String s, char format)
+DECL|enum|FORMAT_MODE
+specifier|public
+enum|enum
+name|FORMAT_MODE
+block|{
+DECL|enumConstant|TITLE_LOWERS
+name|TITLE_LOWERS
+argument_list|(
+literal|'t'
+argument_list|)
+block|,
+DECL|enumConstant|ALL_LOWERS
+name|ALL_LOWERS
+argument_list|(
+literal|'l'
+argument_list|)
+block|,
+DECL|enumConstant|ALL_UPPERS
+name|ALL_UPPERS
+argument_list|(
+literal|'u'
+argument_list|)
+block|;
+DECL|method|asChar ()
+specifier|public
+name|char
+name|asChar
+parameter_list|()
+block|{
+return|return
+name|asChar
+return|;
+block|}
+DECL|field|asChar
+specifier|private
+specifier|final
+name|char
+name|asChar
+decl_stmt|;
+DECL|method|FORMAT_MODE (char asChar)
+specifier|private
+name|FORMAT_MODE
+parameter_list|(
+name|char
+name|asChar
+parameter_list|)
+block|{
+name|this
+operator|.
+name|asChar
+operator|=
+name|asChar
+expr_stmt|;
+block|}
+comment|/**          * Convert bstFormat char into ENUM          *          * @throws IllegalArgumentException if char is not 't', 'l', 'u'          */
+DECL|method|getFormatModeForBSTFormat (final char bstFormat)
+specifier|public
+specifier|static
+name|FORMAT_MODE
+name|getFormatModeForBSTFormat
+parameter_list|(
+specifier|final
+name|char
+name|bstFormat
+parameter_list|)
+block|{
+for|for
+control|(
+name|FORMAT_MODE
+name|mode
+range|:
+name|FORMAT_MODE
+operator|.
+name|values
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|mode
+operator|.
+name|asChar
+operator|==
+name|bstFormat
+condition|)
+block|{
+return|return
+name|mode
+return|;
+block|}
+block|}
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|()
+throw|;
+block|}
+block|}
+DECL|method|BibtexCaseChanger (String s, FORMAT_MODE format)
 specifier|private
 name|BibtexCaseChanger
 parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|char
+name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
@@ -80,7 +178,8 @@ name|length
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|changeCase (String s, char format)
+comment|/**      * Changes case of the given string s      *      * @param s the string to handle      * @param format the format      * @return      */
+DECL|method|changeCase (String s, FORMAT_MODE format)
 specifier|public
 specifier|static
 name|String
@@ -89,7 +188,7 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|char
+name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
@@ -209,7 +308,9 @@ condition|(
 operator|(
 name|format
 operator|==
-literal|'t'
+name|FORMAT_MODE
+operator|.
+name|TITLE_LOWERS
 operator|)
 operator|&&
 operator|(
@@ -453,7 +554,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * We're dealing with a special character (usually either an undotted `\i'      * or `\j', or an accent like one in Table~3.1 of the \LaTeX\ manual, or a      * foreign character like one in Table~3.2) if the first character after the      * |left_brace| is a |backslash|; the special character ends with the      * matching |right_brace|. How we handle what's in between depends on the      * special character. In general, this code will do reasonably well if there      * is other stuff, too, between braces, but it doesn't try to do anything      * special with |colon|s.      *       * @param c      * @param i      * @param format      * @return      */
-DECL|method|convertSpecialChar (StringBuffer sb, char[] c, int i, char format)
+DECL|method|convertSpecialChar (StringBuffer sb, char[] c, int i, FORMAT_MODE format)
 specifier|private
 name|int
 name|convertSpecialChar
@@ -468,7 +569,7 @@ parameter_list|,
 name|int
 name|i
 parameter_list|,
-name|char
+name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
@@ -627,7 +728,7 @@ name|i
 return|;
 block|}
 comment|/**      * Convert the given string according to the format character (title, lower,      * up) and append the result to the stringBuffer, return the updated      * position.      *       * @param c      * @param pos      * @param s      * @param sb      * @param format      * @return      */
-DECL|method|convertAccented (char[] c, int pos, String s, StringBuffer sb, char format)
+DECL|method|convertAccented (char[] c, int pos, String s, StringBuffer sb, FORMAT_MODE format)
 specifier|private
 name|int
 name|convertAccented
@@ -645,7 +746,7 @@ parameter_list|,
 name|StringBuffer
 name|sb
 parameter_list|,
-name|char
+name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
@@ -799,7 +900,7 @@ return|return
 name|pos
 return|;
 block|}
-DECL|method|convertNonControl (char[] c, int pos, StringBuffer sb, char format)
+DECL|method|convertNonControl (char[] c, int pos, StringBuffer sb, FORMAT_MODE format)
 specifier|private
 name|int
 name|convertNonControl
@@ -814,7 +915,7 @@ parameter_list|,
 name|StringBuffer
 name|sb
 parameter_list|,
-name|char
+name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
@@ -875,34 +976,7 @@ return|return
 name|pos
 return|;
 block|}
-DECL|field|TITLE_LOWERS
-specifier|private
-specifier|static
-specifier|final
-name|char
-name|TITLE_LOWERS
-init|=
-literal|'t'
-decl_stmt|;
-DECL|field|ALL_LOWERS
-specifier|private
-specifier|static
-specifier|final
-name|char
-name|ALL_LOWERS
-init|=
-literal|'l'
-decl_stmt|;
-DECL|field|ALL_UPPERS
-specifier|private
-specifier|static
-specifier|final
-name|char
-name|ALL_UPPERS
-init|=
-literal|'u'
-decl_stmt|;
-DECL|method|convertChar0 (char[] c, int i, StringBuffer sb, char format)
+DECL|method|convertChar0 (char[] c, int i, StringBuffer sb, FORMAT_MODE format)
 specifier|private
 name|int
 name|convertChar0
@@ -917,7 +991,7 @@ parameter_list|,
 name|StringBuffer
 name|sb
 parameter_list|,
-name|char
+name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
