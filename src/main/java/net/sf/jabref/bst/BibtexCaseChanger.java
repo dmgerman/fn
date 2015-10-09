@@ -1148,9 +1148,8 @@ return|return
 name|i
 return|;
 block|}
-comment|/**      * Determine whether there starts a special char at pos (e.g., oe, AE). Return it as string.      * If nothing found, return null      *      * @param c the current "String"      * @param pos the position      * @return the special LaTeX character or null      */
+comment|/**      * Determine whether there starts a special char at pos (e.g., oe, AE). Return it as string.      * If nothing found, return null      *      * Also used by BibtexPurify      *      * @param c the current "String"      * @param pos the position      * @return the special LaTeX character or null      */
 DECL|method|findSpecialChar (char[] c, int pos)
-specifier|private
 specifier|static
 name|String
 name|findSpecialChar
