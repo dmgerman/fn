@@ -999,7 +999,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Rename PDFs to given file name format pattern"
+literal|"Rename PDFs to given filename format pattern"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1369,7 +1369,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"File name format pattern"
+literal|"Filename format pattern"
 argument_list|)
 operator|.
 name|concat

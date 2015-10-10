@@ -452,7 +452,7 @@ init|=
 literal|240
 decl_stmt|;
 comment|// The max width of the combobox for content selectors.
-comment|// File names.
+comment|// Filenames.
 DECL|field|backupExt
 specifier|public
 specifier|static

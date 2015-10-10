@@ -12450,7 +12450,7 @@ name|baseChanged
 operator|=
 literal|true
 expr_stmt|;
-comment|// Put an asterix behind the file name to indicate the
+comment|// Put an asterix behind the filename to indicate the
 comment|// database has changed.
 name|String
 name|oldTitle

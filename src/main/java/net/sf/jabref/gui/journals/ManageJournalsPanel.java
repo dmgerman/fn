@@ -2451,7 +2451,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"You must choose a file name to store journal abbreviations"
+literal|"You must choose a filename to store journal abbreviations"
 argument_list|)
 argument_list|,
 name|Localization

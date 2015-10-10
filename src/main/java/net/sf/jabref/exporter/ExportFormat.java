@@ -345,7 +345,7 @@ operator|=
 name|encoding
 expr_stmt|;
 block|}
-comment|/**      * This method should return a reader from which the given layout file can      * be read.      *       * This standard implementation of this method will use the      * {@link FileActions#getReader(String)} method.      *       * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *       * @param filename      *            the file name      * @throws IOException      *             if the reader could not be created      *       * @return a newly created reader      */
+comment|/**      * This method should return a reader from which the given layout file can      * be read.      *       * This standard implementation of this method will use the      * {@link FileActions#getReader(String)} method.      *       * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *       * @param filename      *            the filename      * @throws IOException      *             if the reader could not be created      *       * @return a newly created reader      */
 DECL|method|getReader (String filename)
 name|Reader
 name|getReader
@@ -356,7 +356,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// If this is a custom export, just use the given file name:
+comment|// If this is a custom export, just use the given filename:
 name|String
 name|dir
 decl_stmt|;
@@ -1068,7 +1068,7 @@ name|ss
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * See if there is a name formatter file bundled with this export format. If so, read      * all the name formatters so they can be used by the filter layouts.      * @param lfFileName The layout file name.      */
+comment|/**      * See if there is a name formatter file bundled with this export format. If so, read      * all the name formatters so they can be used by the filter layouts.      * @param lfFileName The layout filename.      */
 DECL|method|readFormatterFile (String lfFileName)
 specifier|private
 name|HashMap

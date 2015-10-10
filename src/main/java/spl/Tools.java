@@ -627,7 +627,7 @@ name|String
 name|path
 parameter_list|)
 block|{
-comment|// On Windows, we cannot just ask if the file name starts with file
+comment|// On Windows, we cannot just ask if the filename starts with file
 comment|// separator.
 comment|// If path contains ":" at the second position, then it is not relative,
 comment|// I guess.

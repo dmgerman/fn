@@ -6153,7 +6153,7 @@ return|return
 name|prefs
 return|;
 block|}
-comment|/**      * Tears down all things started by JabRef      *<p>      * FIXME: Currently some threads remain and therefore hinder JabRef to be closed properly      *      * @param filenames the file names of all currently opened files - used for storing them if prefs openLastEdited is set to true      */
+comment|/**      * Tears down all things started by JabRef      *<p>      * FIXME: Currently some threads remain and therefore hinder JabRef to be closed properly      *      * @param filenames the filenames of all currently opened files - used for storing them if prefs openLastEdited is set to true      */
 DECL|method|tearDownJabRef (Vector<String> filenames)
 specifier|private
 name|void
@@ -6352,7 +6352,7 @@ condition|)
 block|{
 comment|// Here we store the names of all current files. If
 comment|// there is no current file, we remove any
-comment|// previously stored file name.
+comment|// previously stored filename.
 if|if
 condition|(
 name|filenames
@@ -13062,7 +13062,7 @@ parameter_list|)
 block|{
 comment|// Here we store the names of all current files. If
 comment|// there is no current file, we remove any
-comment|// previously stored file name.
+comment|// previously stored filename.
 name|Vector
 argument_list|<
 name|String

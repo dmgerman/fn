@@ -628,7 +628,7 @@ operator|.
 name|getFile
 argument_list|()
 expr_stmt|;
-comment|/*final boolean custom = (list.getSelectedIndex()>= Globals.STANDARD_EXPORT_COUNT);         String dir = null;         if (custom) {             int index = list.getSelectedIndex() - Globals.STANDARD_EXPORT_COUNT;             dir = (String) (Globals.prefs.customExports.getElementAt(index)[1]);             File f = new File(dir);             lfName = f.getName();             lfName = lfName.substring(0, lfName.indexOf("."));             // Remove file name - we want the directory only.             dir = f.getParent() + System.getProperty("file.separator");         }         final String format = lfName,                 directory = dir;         */
+comment|/*final boolean custom = (list.getSelectedIndex()>= Globals.STANDARD_EXPORT_COUNT);         String dir = null;         if (custom) {             int index = list.getSelectedIndex() - Globals.STANDARD_EXPORT_COUNT;             dir = (String) (Globals.prefs.customExports.getElementAt(index)[1]);             File f = new File(dir);             lfName = f.getName();             lfName = lfName.substring(0, lfName.indexOf("."));             // Remove filename - we want the directory only.             dir = f.getParent() + System.getProperty("file.separator");         }         final String format = lfName,                 directory = dir;         */
 name|File
 name|tmp
 init|=

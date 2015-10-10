@@ -361,7 +361,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Adds the file name to the top of the menu. If it already is in      * the menu, it is merely moved to the top.      *      * @param filename a<code>String</code> value      */
+comment|/**      * Adds the filename to the top of the menu. If it already is in      * the menu, it is merely moved to the top.      *      * @param filename a<code>String</code> value      */
 DECL|method|newFile (String filename)
 specifier|public
 name|void

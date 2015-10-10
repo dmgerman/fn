@@ -480,7 +480,7 @@ name|toFile
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param metaData The MetaData for the database this file belongs to.      * @param name     The file name, may also be a relative path to the file      */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param metaData The MetaData for the database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
 DECL|method|expandFilename (final MetaData metaData, String name)
 specifier|public
 specifier|static
@@ -924,7 +924,7 @@ return|return
 name|file
 return|;
 block|}
-comment|/**      * Converts an absolute filename to a relative one, if necessary.      * Returns the parameter fileName itself if no shortening is possible      *<p>      * This method works correctly only if dirs are sorted decent in their length      * i.e. /home/user/literature/important before /home/user/literature      *      * @param fileName the file name to be shortened      * @param dirs     directories to check.      */
+comment|/**      * Converts an absolute filename to a relative one, if necessary.      * Returns the parameter fileName itself if no shortening is possible      *<p>      * This method works correctly only if dirs are sorted decent in their length      * i.e. /home/user/literature/important before /home/user/literature      *      * @param fileName the filename to be shortened      * @param dirs     directories to check.      */
 DECL|method|shortenFileName (File fileName, String[] dirs)
 specifier|public
 specifier|static

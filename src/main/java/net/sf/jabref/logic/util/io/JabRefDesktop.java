@@ -1022,7 +1022,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Opens a file on a Windows system, using its default viewer.      *      * @param link      *            The file name.      * @param localFile      *            true if it is a local file, not an URL.      * @throws IOException      */
+comment|/**      * Opens a file on a Windows system, using its default viewer.      *      * @param link      *            The filename.      * @param localFile      *            true if it is a local file, not an URL.      * @throws IOException      */
 DECL|method|openFileOnWindows (String link, boolean localFile)
 specifier|static
 name|void
@@ -1065,7 +1065,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Opens a file on a Windows system, using the given application.      *      * @param link The file name.      * @param application Link to the app that opens the file.      * @throws IOException      */
+comment|/**      * Opens a file on a Windows system, using the given application.      *      * @param link The filename.      * @param application Link to the app that opens the file.      * @throws IOException      */
 DECL|method|openFileWithApplicationOnWindows (String link, String application)
 specifier|static
 name|void
@@ -1113,7 +1113,7 @@ name|link
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Open an external file, attempting to use the correct viewer for it.      *      * @param metaData      *            The MetaData for the database this file belongs to.      * @param link      *            The file name.      * @return false if the link couldn't be resolved, true otherwise.      */
+comment|/**      * Open an external file, attempting to use the correct viewer for it.      *      * @param metaData      *            The MetaData for the database this file belongs to.      * @param link      *            The filename.      * @return false if the link couldn't be resolved, true otherwise.      */
 DECL|method|openExternalFileAnyFormat (final MetaData metaData, String link, final ExternalFileType fileType)
 specifier|public
 specifier|static

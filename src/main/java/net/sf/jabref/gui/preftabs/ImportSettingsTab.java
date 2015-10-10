@@ -588,7 +588,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"File name format pattern"
+literal|"Filename format pattern"
 argument_list|)
 operator|.
 name|concat

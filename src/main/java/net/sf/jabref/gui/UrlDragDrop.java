@@ -649,7 +649,7 @@ literal|1
 case|:
 try|try
 block|{
-comment|//auto file name:
+comment|//auto filename:
 name|File
 name|file
 init|=
