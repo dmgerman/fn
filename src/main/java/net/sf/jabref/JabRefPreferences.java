@@ -2285,6 +2285,8 @@ name|PREVIEW_ENABLED
 init|=
 literal|"previewEnabled"
 decl_stmt|;
+comment|// Currently, it is not possible to specify defaults for specific entry types
+comment|// When this should be made possible, the code to inspect is net.sf.jabref.gui.preftabs.LabelPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getLabelPattern(); etc
 DECL|field|DEFAULT_LABEL_PATTERN
 specifier|public
 specifier|static
@@ -8398,7 +8400,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Fetches key patterns from preferences Not cached      *      * @return LabelPattern containing all keys. Returned LabelPattern has no parent      */
+comment|/**      * Fetches key patterns from preferences.      * The implementation doesn't cache the results      *      * @return LabelPattern containing all keys. Returned LabelPattern has no parent      */
 DECL|method|getKeyPattern ()
 specifier|public
 name|LabelPattern
