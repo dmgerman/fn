@@ -1052,7 +1052,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|DefaultFormBuilder
+name|FormBuilder
 import|;
 end_import
 
@@ -9016,6 +9016,7 @@ name|UnsupportedCharsetException
 name|ex2
 parameter_list|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -9045,6 +9046,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 throw|throw
 operator|new
 name|SaveException
@@ -9194,18 +9196,22 @@ name|couldEncodeAll
 argument_list|()
 condition|)
 block|{
-name|DefaultFormBuilder
+name|FormBuilder
 name|builder
 init|=
-operator|new
-name|DefaultFormBuilder
+name|FormBuilder
+operator|.
+name|create
+argument_list|()
+operator|.
+name|layout
 argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
 literal|"left:pref, 4dlu, fill:pref"
 argument_list|,
-literal|""
+literal|"pref, 4dlu, pref"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -9233,7 +9239,7 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|Localization
 operator|.
@@ -9247,17 +9253,31 @@ name|getEncoding
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|builder
 operator|.
-name|append
+name|xy
 argument_list|(
-name|ta
+literal|1
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
+argument_list|(
+name|ta
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|3
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|add
 argument_list|(
 name|Localization
 operator|.
@@ -9265,6 +9285,13 @@ name|lang
 argument_list|(
 literal|"What do you want to do?"
 argument_list|)
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|1
+argument_list|,
+literal|3
 argument_list|)
 expr_stmt|;
 name|String
