@@ -3855,7 +3855,7 @@ name|put
 argument_list|(
 name|TABLE_TERTIARY_SORT_FIELD
 argument_list|,
-literal|"author"
+literal|"title"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -3869,6 +3869,7 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+comment|// if both are false, then the entries are saved in table order
 name|defaults
 operator|.
 name|put
@@ -3888,9 +3889,10 @@ name|SAVE_IN_SPECIFIED_ORDER
 argument_list|,
 name|Boolean
 operator|.
-name|FALSE
+name|TRUE
 argument_list|)
 expr_stmt|;
+comment|// save order: if SAVE_IN_SPECIFIED_ORDER, then use following criteria
 name|defaults
 operator|.
 name|put
@@ -3928,7 +3930,7 @@ name|SAVE_SECONDARY_SORT_DESCENDING
 argument_list|,
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -3937,7 +3939,7 @@ name|put
 argument_list|(
 name|SAVE_TERTIARY_SORT_FIELD
 argument_list|,
-literal|""
+literal|"title"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -3951,6 +3953,7 @@ operator|.
 name|TRUE
 argument_list|)
 expr_stmt|;
+comment|// export order
 name|defaults
 operator|.
 name|put
@@ -3973,6 +3976,7 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+comment|// export order: if EXPORT_IN_SPECIFIED_ORDER, then use following criteria
 name|defaults
 operator|.
 name|put
@@ -4010,7 +4014,7 @@ name|EXPORT_SECONDARY_SORT_DESCENDING
 argument_list|,
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -4019,7 +4023,7 @@ name|put
 argument_list|(
 name|EXPORT_TERTIARY_SORT_FIELD
 argument_list|,
-literal|""
+literal|"title"
 argument_list|)
 expr_stmt|;
 name|defaults
