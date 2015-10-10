@@ -5772,13 +5772,14 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+comment|// default time stamp follows ISO-8601. Reason: https://xkcd.com/1179/
 name|defaults
 operator|.
 name|put
 argument_list|(
 name|TIME_STAMP_FORMAT
 argument_list|,
-literal|"yyyy.MM.dd"
+literal|"yyyy-MM-dd"
 argument_list|)
 expr_stmt|;
 name|defaults

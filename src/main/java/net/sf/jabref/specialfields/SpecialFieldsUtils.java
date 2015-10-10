@@ -172,7 +172,7 @@ name|PREF_SPECIALFIELDSENABLED_DEFAULT
 init|=
 name|Boolean
 operator|.
-name|FALSE
+name|TRUE
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_RANKING
 specifier|public
@@ -314,6 +314,8 @@ name|Boolean
 operator|.
 name|FALSE
 decl_stmt|;
+comment|// The choice between PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS and PREF_SERIALIZESPECIALFIELDS is mutually exclusive
+comment|// At least in the settings, not in the implementation. But having both confused the users, therefore, having activated both options at the same time has been disabled
 DECL|field|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS
 specifier|public
 specifier|static
@@ -332,8 +334,9 @@ name|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS_DEFAULT
 init|=
 name|Boolean
 operator|.
-name|FALSE
+name|TRUE
 decl_stmt|;
+comment|// The choice between PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS and PREF_SERIALIZESPECIALFIELDS is mutually exclusive
 DECL|field|PREF_SERIALIZESPECIALFIELDS
 specifier|public
 specifier|static
@@ -352,7 +355,7 @@ name|PREF_SERIALIZESPECIALFIELDS_DEFAULT
 init|=
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 decl_stmt|;
 comment|/****************************************************/
 comment|/** generic treatment                              **/
