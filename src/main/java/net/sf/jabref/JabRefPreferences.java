@@ -5533,7 +5533,7 @@ name|put
 argument_list|(
 name|DEFAULT_LABEL_PATTERN
 argument_list|,
-literal|"[auth][year]"
+literal|"[authors3][year]"
 argument_list|)
 expr_stmt|;
 name|defaults
