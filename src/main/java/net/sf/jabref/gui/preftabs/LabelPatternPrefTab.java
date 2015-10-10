@@ -180,7 +180,23 @@ name|logic
 operator|.
 name|labelPattern
 operator|.
-name|LabelPattern
+name|AbstractLabelPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelPattern
+operator|.
+name|GlobalLabelPattern
 import|;
 end_import
 
@@ -642,33 +658,13 @@ operator|.
 name|updateDefaultPattern
 argument_list|()
 expr_stmt|;
-comment|// fetch the old parent from the currently stored patterns
-name|LabelPattern
-name|defKeyPattern
-init|=
-name|prefs
-operator|.
-name|getKeyPattern
-argument_list|()
-operator|.
-name|getParent
-argument_list|()
-decl_stmt|;
 comment|// fetch entries from GUI
-name|LabelPattern
+name|GlobalLabelPattern
 name|keypatterns
 init|=
-name|getLabelPattern
+name|getLabelPatternAsGlobalLabelPattern
 argument_list|()
 decl_stmt|;
-comment|// restore old parent
-name|keypatterns
-operator|.
-name|setParent
-argument_list|(
-name|defKeyPattern
-argument_list|)
-expr_stmt|;
 comment|// store new patterns globally
 name|prefs
 operator|.

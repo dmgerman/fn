@@ -268,7 +268,39 @@ name|logic
 operator|.
 name|labelPattern
 operator|.
-name|LabelPattern
+name|AbstractLabelPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelPattern
+operator|.
+name|DatabaseLabelPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelPattern
+operator|.
+name|GlobalLabelPattern
 import|;
 end_import
 
@@ -1507,20 +1539,16 @@ return|return
 name|tf
 return|;
 block|}
-comment|/**      * @return the LabelPattern generated from the text fields       */
-DECL|method|getLabelPattern ()
-specifier|public
-name|LabelPattern
-name|getLabelPattern
-parameter_list|()
-block|{
-name|LabelPattern
+comment|/**      * fill the given LabelPattern by values generated from the text fields      */
+DECL|method|fillPatternUsingPanelData (AbstractLabelPattern keypatterns)
+specifier|private
+name|void
+name|fillPatternUsingPanelData
+parameter_list|(
+name|AbstractLabelPattern
 name|keypatterns
-init|=
-operator|new
-name|LabelPattern
-argument_list|()
-decl_stmt|;
+parameter_list|)
+block|{
 comment|// each entry type
 for|for
 control|(
@@ -1603,17 +1631,58 @@ name|text
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|getLabelPatternAsGlobalLabelPattern ()
+specifier|protected
+name|GlobalLabelPattern
+name|getLabelPatternAsGlobalLabelPattern
+parameter_list|()
+block|{
+name|GlobalLabelPattern
+name|res
+init|=
+operator|new
+name|GlobalLabelPattern
+argument_list|()
+decl_stmt|;
+name|fillPatternUsingPanelData
+argument_list|(
+name|res
+argument_list|)
+expr_stmt|;
 return|return
-name|keypatterns
+name|res
+return|;
+block|}
+DECL|method|getLabelPatternAsDatabaseLabelPattern ()
+specifier|public
+name|DatabaseLabelPattern
+name|getLabelPatternAsDatabaseLabelPattern
+parameter_list|()
+block|{
+name|DatabaseLabelPattern
+name|res
+init|=
+operator|new
+name|DatabaseLabelPattern
+argument_list|()
+decl_stmt|;
+name|fillPatternUsingPanelData
+argument_list|(
+name|res
+argument_list|)
+expr_stmt|;
+return|return
+name|res
 return|;
 block|}
 comment|/**      * Fills the current values to the text fields      *       * @param keypatterns the LabelPattern to use as initial value      */
-DECL|method|setValues (LabelPattern keypatterns)
+DECL|method|setValues (AbstractLabelPattern keypatterns)
 specifier|public
 name|void
 name|setValues
 parameter_list|(
-name|LabelPattern
+name|AbstractLabelPattern
 name|keypatterns
 parameter_list|)
 block|{
@@ -1685,7 +1754,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setValue (JTextField tf, String fieldName, LabelPattern keypatterns)
+DECL|method|setValue (JTextField tf, String fieldName, AbstractLabelPattern keypatterns)
 specifier|private
 name|void
 name|setValue
@@ -1696,7 +1765,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|LabelPattern
+name|AbstractLabelPattern
 name|keypatterns
 parameter_list|)
 block|{

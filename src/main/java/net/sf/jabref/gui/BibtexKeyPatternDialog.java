@@ -196,7 +196,7 @@ name|logic
 operator|.
 name|labelPattern
 operator|.
-name|LabelPattern
+name|AbstractLabelPattern
 import|;
 end_import
 
@@ -325,7 +325,7 @@ operator|.
 name|metaData
 argument_list|()
 expr_stmt|;
-name|LabelPattern
+name|AbstractLabelPattern
 name|keypatterns
 init|=
 name|metaData
@@ -511,7 +511,7 @@ name|setLabelPattern
 argument_list|(
 name|labelPatternPanel
 operator|.
-name|getLabelPattern
+name|getLabelPatternAsDatabaseLabelPattern
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -88,7 +88,23 @@ name|logic
 operator|.
 name|labelPattern
 operator|.
-name|LabelPattern
+name|AbstractLabelPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelPattern
+operator|.
+name|DatabaseLabelPattern
 import|;
 end_import
 
@@ -225,7 +241,7 @@ literal|true
 decl_stmt|;
 DECL|field|labelPattern
 specifier|private
-name|LabelPattern
+name|AbstractLabelPattern
 name|labelPattern
 decl_stmt|;
 DECL|field|dbStrings
@@ -1743,7 +1759,7 @@ block|}
 comment|/**      * @return the stored label patterns      */
 DECL|method|getLabelPattern ()
 specifier|public
-name|LabelPattern
+name|AbstractLabelPattern
 name|getLabelPattern
 parameter_list|()
 block|{
@@ -1761,22 +1777,10 @@ block|}
 name|labelPattern
 operator|=
 operator|new
-name|LabelPattern
+name|DatabaseLabelPattern
 argument_list|()
 expr_stmt|;
-comment|// the parent label pattern of a BibTeX data base is the global pattern stored in the preferences
-name|labelPattern
-operator|.
-name|setParent
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getKeyPattern
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// read the data from the metadata and store it into the labelPattern
 for|for
 control|(
 name|String
@@ -1877,12 +1881,12 @@ name|labelPattern
 return|;
 block|}
 comment|/**      * Updates the stored key patterns to the given key patterns.      *       * @param labelPattern the key patterns to update to.<br />      * A reference to this object is stored internally and is returned at getLabelPattern();      */
-DECL|method|setLabelPattern (LabelPattern labelPattern)
+DECL|method|setLabelPattern (DatabaseLabelPattern labelPattern)
 specifier|public
 name|void
 name|setLabelPattern
 parameter_list|(
-name|LabelPattern
+name|DatabaseLabelPattern
 name|labelPattern
 parameter_list|)
 block|{

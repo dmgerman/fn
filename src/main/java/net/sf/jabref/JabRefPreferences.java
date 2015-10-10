@@ -334,7 +334,23 @@ name|logic
 operator|.
 name|labelPattern
 operator|.
-name|LabelPattern
+name|AbstractLabelPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelPattern
+operator|.
+name|GlobalLabelPattern
 import|;
 end_import
 
@@ -3146,7 +3162,7 @@ decl_stmt|;
 DECL|field|keyPattern
 specifier|private
 specifier|static
-name|LabelPattern
+name|GlobalLabelPattern
 name|keyPattern
 decl_stmt|;
 comment|// Object containing custom export formats:
@@ -8403,7 +8419,7 @@ block|}
 comment|/**      * Fetches key patterns from preferences.      * The implementation doesn't cache the results      *      * @return LabelPattern containing all keys. Returned LabelPattern has no parent      */
 DECL|method|getKeyPattern ()
 specifier|public
-name|LabelPattern
+name|GlobalLabelPattern
 name|getKeyPattern
 parameter_list|()
 block|{
@@ -8412,7 +8428,7 @@ operator|.
 name|keyPattern
 operator|=
 operator|new
-name|LabelPattern
+name|GlobalLabelPattern
 argument_list|()
 expr_stmt|;
 name|Preferences
@@ -8422,7 +8438,7 @@ name|Preferences
 operator|.
 name|userNodeForPackage
 argument_list|(
-name|LabelPattern
+name|GlobalLabelPattern
 operator|.
 name|class
 argument_list|)
@@ -8499,12 +8515,12 @@ name|keyPattern
 return|;
 block|}
 comment|/**      * Adds the given key pattern to the preferences      *      * @param pattern the pattern to store      */
-DECL|method|putKeyPattern (LabelPattern pattern)
+DECL|method|putKeyPattern (GlobalLabelPattern pattern)
 specifier|public
 name|void
 name|putKeyPattern
 parameter_list|(
-name|LabelPattern
+name|GlobalLabelPattern
 name|pattern
 parameter_list|)
 block|{
@@ -8522,7 +8538,7 @@ name|Preferences
 operator|.
 name|userNodeForPackage
 argument_list|(
-name|LabelPattern
+name|GlobalLabelPattern
 operator|.
 name|class
 argument_list|)
