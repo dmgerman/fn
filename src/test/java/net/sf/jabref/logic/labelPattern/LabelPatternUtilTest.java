@@ -158,6 +158,96 @@ specifier|public
 class|class
 name|LabelPatternUtilTest
 block|{
+DECL|field|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_1
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_1
+init|=
+literal|"Isaac Newton"
+decl_stmt|;
+DECL|field|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_2
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_2
+init|=
+literal|"Isaac Newton and James Maxwell"
+decl_stmt|;
+DECL|field|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_3
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_3
+init|=
+literal|"Isaac Newton and James Maxwell and Albert Einstein"
+decl_stmt|;
+DECL|field|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_1
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_1
+init|=
+literal|"Wil van der Aalst"
+decl_stmt|;
+DECL|field|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_2
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_2
+init|=
+literal|"Wil van der Aalst and Tammo van Lessen"
+decl_stmt|;
+DECL|field|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
+init|=
+literal|"I. Newton"
+decl_stmt|;
+DECL|field|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
+init|=
+literal|"I. Newton and J. Maxwell"
+decl_stmt|;
+DECL|field|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
+init|=
+literal|"I. Newton and J. Maxwell and A. Einstein"
+decl_stmt|;
+DECL|field|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
+init|=
+literal|"I. Newton and J. Maxwell and A. Einstein and N. Bohr"
+decl_stmt|;
+DECL|field|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_5
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_5
+init|=
+literal|"I. Newton and J. Maxwell and A. Einstein and N. Bohr and Harry Unknown"
+decl_stmt|;
 annotation|@
 name|BeforeClass
 DECL|method|setUpGlobalsPrefs ()
@@ -1094,7 +1184,7 @@ name|LabelPatternUtil
 operator|.
 name|firstAuthor
 argument_list|(
-literal|"I. Newton and J. Maxwell and A. Einstein and N. Bohr and Harry Unknown"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_5
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1108,7 +1198,7 @@ name|LabelPatternUtil
 operator|.
 name|firstAuthor
 argument_list|(
-literal|"I. Newton"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1181,7 +1271,7 @@ name|LabelPatternUtil
 operator|.
 name|authIniN
 argument_list|(
-literal|"I. Newton and J. Maxwell and A. Einstein and N. Bohr and Harry Unknown"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_5
 argument_list|,
 literal|4
 argument_list|)
@@ -1197,7 +1287,7 @@ name|LabelPatternUtil
 operator|.
 name|authIniN
 argument_list|(
-literal|"I. Newton and J. Maxwell and A. Einstein and N. Bohr"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|,
 literal|4
 argument_list|)
@@ -1213,7 +1303,7 @@ name|LabelPatternUtil
 operator|.
 name|authIniN
 argument_list|(
-literal|"I. Newton and J. Maxwell and A. Einstein"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|,
 literal|4
 argument_list|)
@@ -1229,7 +1319,7 @@ name|LabelPatternUtil
 operator|.
 name|authIniN
 argument_list|(
-literal|"I. Newton and J. Maxwell"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|,
 literal|4
 argument_list|)
@@ -1245,7 +1335,7 @@ name|LabelPatternUtil
 operator|.
 name|authIniN
 argument_list|(
-literal|"I. Newton"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
 literal|4
 argument_list|)
@@ -1270,7 +1360,7 @@ name|LabelPatternUtil
 operator|.
 name|authIniN
 argument_list|(
-literal|"I. Newton"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
 literal|1
 argument_list|)
@@ -1286,7 +1376,7 @@ name|LabelPatternUtil
 operator|.
 name|authIniN
 argument_list|(
-literal|"I. Newton"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
 literal|0
 argument_list|)
@@ -1302,7 +1392,7 @@ name|LabelPatternUtil
 operator|.
 name|authIniN
 argument_list|(
-literal|"I. Newton"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
 operator|-
 literal|1
@@ -1319,7 +1409,7 @@ name|LabelPatternUtil
 operator|.
 name|authIniN
 argument_list|(
-literal|"I. Newton"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
 literal|6
 argument_list|)
@@ -1335,7 +1425,7 @@ name|LabelPatternUtil
 operator|.
 name|authIniN
 argument_list|(
-literal|"I. Newton"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
 literal|7
 argument_list|)
@@ -1375,16 +1465,6 @@ name|testAuthEtAl
 parameter_list|()
 block|{
 comment|// tests taken from the comments
-name|String
-name|firstAuthors
-init|=
-literal|"Isaac Newton and James Maxwell and Albert Einstein"
-decl_stmt|;
-name|String
-name|secondAuthors
-init|=
-literal|"Isaac Newton and James Maxwell"
-decl_stmt|;
 comment|// [auth.etal]
 name|String
 name|delim
@@ -1406,7 +1486,7 @@ name|LabelPatternUtil
 operator|.
 name|authEtal
 argument_list|(
-name|firstAuthors
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_3
 argument_list|,
 name|delim
 argument_list|,
@@ -1424,7 +1504,7 @@ name|LabelPatternUtil
 operator|.
 name|authEtal
 argument_list|(
-name|secondAuthors
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_2
 argument_list|,
 name|delim
 argument_list|,
@@ -1451,7 +1531,7 @@ name|LabelPatternUtil
 operator|.
 name|authEtal
 argument_list|(
-name|firstAuthors
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_3
 argument_list|,
 name|delim
 argument_list|,
@@ -1469,7 +1549,7 @@ name|LabelPatternUtil
 operator|.
 name|authEtal
 argument_list|(
-name|secondAuthors
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_2
 argument_list|,
 name|delim
 argument_list|,
@@ -1498,7 +1578,7 @@ name|LabelPatternUtil
 operator|.
 name|authshort
 argument_list|(
-literal|"I. Newton and J. Maxwell and A. Einstein and N. Bohr"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1512,7 +1592,7 @@ name|LabelPatternUtil
 operator|.
 name|authshort
 argument_list|(
-literal|"I. Newton and J. Maxwell and A. Einstein"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1526,7 +1606,7 @@ name|LabelPatternUtil
 operator|.
 name|authshort
 argument_list|(
-literal|"I. Newton and J. Maxwell"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1540,7 +1620,111 @@ name|LabelPatternUtil
 operator|.
 name|authshort
 argument_list|(
-literal|"I. Newton"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Tests [authForeIni]      */
+annotation|@
+name|Test
+DECL|method|firstAuthorForenameInitials ()
+specifier|public
+name|void
+name|firstAuthorForenameInitials
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"I"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|firstAuthorForenameInitials
+argument_list|(
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"I"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|firstAuthorForenameInitials
+argument_list|(
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"I"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|firstAuthorForenameInitials
+argument_list|(
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"I"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|firstAuthorForenameInitials
+argument_list|(
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_2
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Tests [authFirstFull]      */
+annotation|@
+name|Test
+DECL|method|firstAuthorVonAndLast ()
+specifier|public
+name|void
+name|firstAuthorVonAndLast
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"vanderAalst"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|firstAuthorVonAndLast
+argument_list|(
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"vanderAalst"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|firstAuthorVonAndLast
+argument_list|(
+name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_2
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1564,7 +1748,7 @@ name|LabelPatternUtil
 operator|.
 name|allAuthors
 argument_list|(
-literal|"I. Newton"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1578,7 +1762,7 @@ name|LabelPatternUtil
 operator|.
 name|allAuthors
 argument_list|(
-literal|"I. Newton and J. Maxwell"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1592,7 +1776,7 @@ name|LabelPatternUtil
 operator|.
 name|allAuthors
 argument_list|(
-literal|"I. Newton and J. Maxwell and A. Einstein"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1617,7 +1801,7 @@ name|LabelPatternUtil
 operator|.
 name|NAuthors
 argument_list|(
-literal|"I. Newton"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
 literal|3
 argument_list|)
@@ -1633,7 +1817,7 @@ name|LabelPatternUtil
 operator|.
 name|NAuthors
 argument_list|(
-literal|"I. Newton and J. Maxwell"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|,
 literal|3
 argument_list|)
@@ -1649,7 +1833,7 @@ name|LabelPatternUtil
 operator|.
 name|NAuthors
 argument_list|(
-literal|"I. Newton and J. Maxwell and A. Einstein"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|,
 literal|3
 argument_list|)
@@ -1665,7 +1849,7 @@ name|LabelPatternUtil
 operator|.
 name|NAuthors
 argument_list|(
-literal|"I. Newton and J. Maxwell and A. Einstein and N. Bohr"
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|,
 literal|3
 argument_list|)

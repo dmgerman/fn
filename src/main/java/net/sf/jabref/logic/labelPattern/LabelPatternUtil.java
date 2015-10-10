@@ -835,21 +835,6 @@ name|String
 name|author
 parameter_list|)
 block|{
-name|Author
-name|a
-init|=
-name|AuthorList
-operator|.
-name|getAuthorList
-argument_list|(
-name|author
-argument_list|)
-operator|.
-name|getAuthor
-argument_list|(
-literal|0
-argument_list|)
-decl_stmt|;
 return|return
 name|author
 operator|.
@@ -2837,6 +2822,26 @@ name|val
 operator|.
 name|equals
 argument_list|(
+literal|"authFirstFull"
+argument_list|)
+condition|)
+block|{
+return|return
+name|LabelPatternUtil
+operator|.
+name|firstAuthorVonAndLast
+argument_list|(
+name|authString
+argument_list|)
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|val
+operator|.
+name|equals
+argument_list|(
 literal|"authors"
 argument_list|)
 condition|)
@@ -4515,7 +4520,6 @@ return|;
 block|}
 comment|/**      * Gets the last name of the first author/editor      *       * @param authorField      *            a<code>String</code>      * @return the surname of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *       * @throws NullPointerException      *             if authorField == null      */
 DECL|method|firstAuthor (String authorField)
-specifier|public
 specifier|static
 name|String
 name|firstAuthor
@@ -4571,9 +4575,8 @@ else|:
 literal|""
 return|;
 block|}
-comment|/**      * Gets the first name initals of the first author/editor      *       * @param authorField      *            a<code>String</code>      * @return the first name initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *       * @throws NullPointerException      *             if authorField == null      */
+comment|/**      * Gets the first name initials of the first author/editor      *       * @param authorField      *            a<code>String</code>      * @return the first name initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *       * @throws NullPointerException      *             if authorField == null      */
 DECL|method|firstAuthorForenameInitials (String authorField)
-specifier|private
 specifier|static
 name|String
 name|firstAuthorForenameInitials
@@ -4636,9 +4639,8 @@ else|:
 literal|""
 return|;
 block|}
-comment|/**      * Gets the von part and the last name of the first author/editor      *      * @param authorField      *            a<code>String</code>      * @return the von part and surname of an author/editor or "" if no author was found.      *  This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
+comment|/**      * Gets the von part and the last name of the first author/editor      * No spaces are returned      *      * @param authorField      *            a<code>String</code>      * @return the von part and surname of an author/editor or "" if no author was found.      *  This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
 DECL|method|firstAuthorVonAndLast (String authorField)
-specifier|public
 specifier|static
 name|String
 name|firstAuthorVonAndLast
@@ -4683,6 +4685,13 @@ argument_list|)
 operator|.
 name|getVon
 argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|" "
+argument_list|,
+literal|""
+argument_list|)
 decl_stmt|;
 name|StringBuilder
 name|stringBuilder
@@ -4703,13 +4712,6 @@ operator|.
 name|append
 argument_list|(
 name|vonAuthor
-argument_list|)
-expr_stmt|;
-name|stringBuilder
-operator|.
-name|append
-argument_list|(
-literal|' '
 argument_list|)
 expr_stmt|;
 block|}
