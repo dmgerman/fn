@@ -118,6 +118,7 @@ specifier|public
 class|class
 name|StringUtil
 block|{
+comment|// contains all possible line breaks, not ommitting any break such as "\\n"
 DECL|field|LINE_BREAKS
 specifier|private
 specifier|static
@@ -129,7 +130,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\\r\\n|\\r"
+literal|"\\r\\n|\\r|\\n"
 argument_list|)
 decl_stmt|;
 comment|/**      * Returns the string, after shaving off whitespace at the beginning and end,      * and removing (at most) one pair of braces or " surrounding it.      *      * @param toShave      * @return      */
@@ -2750,7 +2751,7 @@ argument_list|()
 return|;
 comment|/*          * if (s.length() == 0) return s; // Protect against ArrayIndexOutOf....          * StringBuffer buf = new StringBuffer();          *          * Matcher mcr = titleCapitalPattern.matcher(s.substring(1)); while          * (mcr.find()) { String replaceStr = mcr.group();          * mcr.appendReplacement(buf, "{" + replaceStr + "}"); }          * mcr.appendTail(buf); return s.substring(0, 1) + buf.toString();          */
 block|}
-comment|/**      * This method looks for occurences of capital letters enclosed in an      * arbitrary number of pairs of braces, e.g. "{AB}" or "{{T}}". All of these      * pairs of braces are removed.      *      * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
+comment|/**      * This method looks for occurrences of capital letters enclosed in an      * arbitrary number of pairs of braces, e.g. "{AB}" or "{{T}}". All of these      * pairs of braces are removed.      *      * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
 DECL|method|removeBracesAroundCapitals (String s)
 specifier|public
 specifier|static
@@ -2795,7 +2796,7 @@ return|return
 name|s
 return|;
 block|}
-comment|/**      * This method looks for occurences of capital letters enclosed in one pair      * of braces, e.g. "{AB}". All these are replaced by only the capitals in      * between the braces.      *      * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
+comment|/**      * This method looks for occurrences of capital letters enclosed in one pair      * of braces, e.g. "{AB}". All these are replaced by only the capitals in      * between the braces.      *      * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
 DECL|method|removeSingleBracesAroundCapitals (String s)
 specifier|private
 specifier|static
@@ -2886,12 +2887,12 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Replaces all platform-dependent line breaks by UNIX-style newlines.      *      *<example>      * Legacy Macintosh \r -> \n      * Windows \r\n -> \n      *</example>      *      * @return a String with only \n as line breaks      */
-DECL|method|unifyLineBreaks (String s)
+comment|/**      * Replaces all platform-dependent line breaks by Globals.NEWLINE line breaks.      *      * We do NOT use UNIX line breaks as the user explicitly configures its linebreaks and this method is used in bibtex field writing      *      *<example>      * Legacy Macintosh \r -> Globals.NEWLINE      * Windows \r\n -> Globals.NEWLINE      *</example>      *      * @return a String with only Globals.NEWLINE as line breaks      */
+DECL|method|unifyLineBreaksToConfiguredLineBreaks (String s)
 specifier|public
 specifier|static
 name|String
-name|unifyLineBreaks
+name|unifyLineBreaksToConfiguredLineBreaks
 parameter_list|(
 name|String
 name|s
@@ -2907,7 +2908,9 @@ argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-literal|"\n"
+name|Globals
+operator|.
+name|NEWLINE
 argument_list|)
 return|;
 block|}

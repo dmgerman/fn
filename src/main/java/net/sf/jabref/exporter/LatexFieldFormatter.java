@@ -578,6 +578,8 @@ comment|//            if (Globals.prefs.getBoolean("preserveFieldFormatting"))
 comment|//              sb.append(text);
 comment|//            else
 comment|//             currently, we do not do any more wrapping
+comment|// these two are also hard coded in net.sf.jabref.importer.fileformat.FieldContentParser.multiLineFields
+comment|// there, JabRefPreferences.NON_WRAPPABLE_FIELDS are also included
 name|boolean
 name|isAbstract
 init|=

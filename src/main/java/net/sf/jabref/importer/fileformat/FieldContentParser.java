@@ -121,6 +121,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
+comment|// the following two are also coded in net.sf.jabref.exporter.LatexFieldFormatter.format(String, String)
 name|multiLineFields
 operator|.
 name|add
@@ -177,7 +178,7 @@ name|text
 init|=
 name|StringUtil
 operator|.
-name|unifyLineBreaks
+name|unifyLineBreaksToConfiguredLineBreaks
 argument_list|(
 name|content
 operator|.
