@@ -7736,6 +7736,7 @@ comment|// editing of a field:
 name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
+comment|// This is a partial clone of net.sf.jabref.gui.BasePanel.setupActions().new AbstractWorker() {...}.run()
 comment|// this updates the table automatically, on close, but not
 comment|// within the tab
 name|Object

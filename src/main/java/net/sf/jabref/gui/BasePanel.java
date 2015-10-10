@@ -3877,6 +3877,7 @@ argument_list|)
 decl_stmt|;
 comment|// First check if any entries have keys set already. If so, possibly remove
 comment|// them from consideration, or warn about overwriting keys.
+comment|// This is a partial clone of net.sf.jabref.gui.entryeditor.EntryEditor.GenerateKeyAction.actionPerformed(ActionEvent)
 for|for
 control|(
 name|Iterator
