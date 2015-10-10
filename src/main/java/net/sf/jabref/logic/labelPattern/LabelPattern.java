@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.                   2003 Ulrik Stervbo (ulriks AT ruc.dk)      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -34,12 +34,22 @@ name|java
 operator|.
 name|util
 operator|.
+name|Enumeration
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Hashtable
 import|;
 end_import
 
 begin_comment
-comment|/**  * A small table, where an entry type is associated with a label pattern (an  *<code>ArrayList</code>). A parent LabelPattern can be set.  *   * @author Ulrik Stervbo (ulriks AT ruc.dk)  */
+comment|/**  * A small table, where an entry type is associated with a label pattern (an  *<code>ArrayList</code>). A parent LabelPattern can be set.  */
 end_comment
 
 begin_class
@@ -47,16 +57,6 @@ DECL|class|LabelPattern
 specifier|public
 class|class
 name|LabelPattern
-extends|extends
-name|Hashtable
-argument_list|<
-name|String
-argument_list|,
-name|ArrayList
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
 block|{
 DECL|field|defaultPattern
 specifier|private
@@ -71,6 +71,24 @@ DECL|field|parent
 specifier|private
 name|LabelPattern
 name|parent
+decl_stmt|;
+DECL|field|data
+specifier|private
+name|Hashtable
+argument_list|<
+name|String
+argument_list|,
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
+name|data
+init|=
+operator|new
+name|Hashtable
+argument_list|<>
+argument_list|()
 decl_stmt|;
 DECL|method|LabelPattern ()
 specifier|public
@@ -132,6 +150,8 @@ name|String
 name|pattern
 parameter_list|)
 block|{
+name|data
+operator|.
 name|put
 argument_list|(
 name|type
@@ -157,6 +177,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|data
+operator|.
 name|containsKey
 argument_list|(
 name|type
@@ -167,6 +189,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|data
+operator|.
 name|remove
 argument_list|(
 name|type
@@ -188,6 +212,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|data
+operator|.
 name|containsKey
 argument_list|(
 name|type
@@ -196,6 +222,8 @@ operator|&&
 name|sure
 condition|)
 block|{
+name|data
+operator|.
 name|remove
 argument_list|(
 name|type
@@ -223,6 +251,8 @@ name|String
 argument_list|>
 name|result
 init|=
+name|data
+operator|.
 name|get
 argument_list|(
 name|key
@@ -299,6 +329,8 @@ block|{
 name|Object
 name|_obj
 init|=
+name|data
+operator|.
 name|get
 argument_list|(
 name|key
@@ -347,6 +379,22 @@ argument_list|(
 name|labelPattern
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getAllKeys ()
+specifier|public
+name|Enumeration
+argument_list|<
+name|String
+argument_list|>
+name|getAllKeys
+parameter_list|()
+block|{
+return|return
+name|data
+operator|.
+name|keys
+argument_list|()
+return|;
 block|}
 block|}
 end_class
