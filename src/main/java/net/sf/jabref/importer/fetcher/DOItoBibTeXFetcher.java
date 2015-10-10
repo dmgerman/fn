@@ -344,7 +344,7 @@ literal|null
 return|;
 block|}
 DECL|method|getEntryFromDOI (String doiStr, OutputPrinter status)
-specifier|private
+specifier|public
 name|BibtexEntry
 name|getEntryFromDOI
 parameter_list|(
