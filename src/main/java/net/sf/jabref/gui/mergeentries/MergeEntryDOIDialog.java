@@ -508,7 +508,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Can not get info based on given DOI: %0"
+literal|"Cannot get info based on given DOI: %0"
 argument_list|,
 name|this
 operator|.

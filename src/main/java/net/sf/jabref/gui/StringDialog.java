@@ -1641,7 +1641,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The label of the string can not contain spaces."
+literal|"The label of the string cannot contain spaces."
 argument_list|)
 argument_list|,
 name|Localization
@@ -1683,7 +1683,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The label of the string can not contain the '#' character."
+literal|"The label of the string cannot contain the '#' character."
 argument_list|)
 argument_list|,
 name|Localization
@@ -1721,7 +1721,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The label of the string can not be a number."
+literal|"The label of the string cannot be a number."
 argument_list|)
 argument_list|,
 name|Localization
@@ -1984,7 +1984,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-comment|// A pure integer number can not be used as a string label,
+comment|// A pure integer number cannot be used as a string label,
 comment|// since Bibtex will read it as a number.
 try|try
 block|{
@@ -2304,7 +2304,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The label of the string can not be a number."
+literal|"The label of the string cannot be a number."
 argument_list|)
 argument_list|,
 name|Localization
@@ -2341,7 +2341,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The label of the string can not contain the '#' character."
+literal|"The label of the string cannot contain the '#' character."
 argument_list|)
 argument_list|,
 name|Localization
@@ -2378,7 +2378,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The label of the string can not contain spaces."
+literal|"The label of the string cannot contain spaces."
 argument_list|)
 argument_list|,
 name|Localization

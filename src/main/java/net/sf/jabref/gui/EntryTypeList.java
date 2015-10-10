@@ -432,7 +432,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The name 'comment' can not be used as an entry type name."
+literal|"The name 'comment' cannot be used as an entry type name."
 argument_list|)
 argument_list|,
 name|Localization

@@ -2031,7 +2031,7 @@ name|Exception
 argument_list|(
 name|className
 operator|+
-literal|" can not be instantiated."
+literal|" cannot be instantiated."
 argument_list|)
 throw|;
 block|}
@@ -2047,7 +2047,7 @@ name|Exception
 argument_list|(
 name|className
 operator|+
-literal|" can't be accessed."
+literal|" cannot be accessed."
 argument_list|)
 throw|;
 block|}
