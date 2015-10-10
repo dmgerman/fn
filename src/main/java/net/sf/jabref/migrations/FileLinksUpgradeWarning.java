@@ -309,7 +309,7 @@ name|pr
 operator|.
 name|getJabrefMajorVersion
 argument_list|()
-operator|<
+operator|<=
 literal|0
 condition|)
 block|{
@@ -318,6 +318,7 @@ literal|false
 return|;
 comment|// non-JabRef file
 block|}
+elseif|else
 if|if
 condition|(
 name|pr
@@ -333,21 +334,17 @@ literal|true
 return|;
 comment|// old
 block|}
+elseif|else
 if|if
 condition|(
 name|pr
 operator|.
 name|getJabrefMajorVersion
 argument_list|()
-operator|>
+operator|==
 literal|2
 condition|)
 block|{
-return|return
-literal|false
-return|;
-comment|// wow, did we ever reach version 3?
-block|}
 return|return
 name|pr
 operator|.
@@ -356,6 +353,14 @@ argument_list|()
 operator|<=
 literal|2
 return|;
+block|}
+else|else
+block|{
+comment|// JabRef version 3 does not contain a header, but who knows
+return|return
+literal|true
+return|;
+block|}
 block|}
 comment|/**      * This method presents a dialog box explaining and offering to make the      * changes. If the user confirms, the changes are performed.      * @param panel      * @param pr      */
 annotation|@

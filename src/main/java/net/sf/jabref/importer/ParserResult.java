@@ -383,6 +383,7 @@ operator|=
 name|jabrefVersion
 expr_stmt|;
 block|}
+comment|/**      * @return 0 if not known (e.g., no version header in file)      */
 DECL|method|getJabrefMajorVersion ()
 specifier|public
 name|int
@@ -409,6 +410,7 @@ operator|=
 name|jabrefMajorVersion
 expr_stmt|;
 block|}
+comment|/**      * @return 0 if not known (e.g., no version header in file)      */
 DECL|method|getJabrefMinorVersion ()
 specifier|public
 name|int
