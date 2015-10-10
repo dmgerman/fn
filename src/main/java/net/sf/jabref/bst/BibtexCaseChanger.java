@@ -22,18 +22,7 @@ specifier|public
 class|class
 name|BibtexCaseChanger
 block|{
-DECL|field|s
-specifier|private
-specifier|final
-name|String
-name|s
-decl_stmt|;
-DECL|field|format
-specifier|private
-specifier|final
-name|char
-name|format
-decl_stmt|;
+comment|// stores whether the char before the current char was a colon
 DECL|field|prevColon
 specifier|private
 name|boolean
@@ -41,61 +30,129 @@ name|prevColon
 init|=
 literal|true
 decl_stmt|;
-DECL|field|n
+comment|// global variable to store the current brace level
+DECL|field|braceLevel
 specifier|private
-specifier|final
 name|int
-name|n
+name|braceLevel
 decl_stmt|;
-DECL|field|warn
+DECL|enum|FORMAT_MODE
+specifier|public
+enum|enum
+name|FORMAT_MODE
+block|{
+comment|// First character and character after a ":" as upper case - everything else in lower case. Obey {}.
+DECL|enumConstant|TITLE_LOWERS
+name|TITLE_LOWERS
+argument_list|(
+literal|'t'
+argument_list|)
+block|,
+comment|// All characters lower case - Obey {}
+DECL|enumConstant|ALL_LOWERS
+name|ALL_LOWERS
+argument_list|(
+literal|'l'
+argument_list|)
+block|,
+comment|// all characters upper case - Obey {}
+DECL|enumConstant|ALL_UPPERS
+name|ALL_UPPERS
+argument_list|(
+literal|'u'
+argument_list|)
+block|;
+comment|// the following would have to be done if the functionality of CaseChangers would be included here
+comment|// However, we decided against it and will probably do the other way round: https://github.com/JabRef/jabref/pull/215#issuecomment-146981624
+comment|// Each word should start with a capital letter
+comment|//EACH_FIRST_UPPERS('f'),
+comment|// Converts all words to upper case, but converts articles, prepositions, and conjunctions to lower case
+comment|// Capitalizes first and last word
+comment|// Does not change words starting with "{"
+comment|// DIFFERENCE to old CaseChangers.TITLE: last word is NOT capitalized in all cases
+comment|//TITLE_UPPERS('T');
+DECL|method|asChar ()
+specifier|public
+name|char
+name|asChar
+parameter_list|()
+block|{
+return|return
+name|asChar
+return|;
+block|}
+DECL|field|asChar
 specifier|private
 specifier|final
-name|Warn
-name|warn
-decl_stmt|;
-DECL|method|BibtexCaseChanger (String s, char format, Warn warn)
-specifier|private
-name|BibtexCaseChanger
-parameter_list|(
-name|String
-name|s
-parameter_list|,
 name|char
-name|format
-parameter_list|,
-name|Warn
-name|warn
+name|asChar
+decl_stmt|;
+DECL|method|FORMAT_MODE (char asChar)
+specifier|private
+name|FORMAT_MODE
+parameter_list|(
+name|char
+name|asChar
 parameter_list|)
 block|{
 name|this
 operator|.
-name|s
+name|asChar
 operator|=
-name|s
-expr_stmt|;
-name|this
-operator|.
-name|format
-operator|=
-name|format
-expr_stmt|;
-name|this
-operator|.
-name|n
-operator|=
-name|s
-operator|.
-name|length
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|warn
-operator|=
-name|warn
+name|asChar
 expr_stmt|;
 block|}
-DECL|method|changeCase (String s, char format, Warn warn)
+comment|/**          * Convert bstFormat char into ENUM          *          * @throws IllegalArgumentException if char is not 't', 'l', 'u'          */
+DECL|method|getFormatModeForBSTFormat (final char bstFormat)
+specifier|public
+specifier|static
+name|FORMAT_MODE
+name|getFormatModeForBSTFormat
+parameter_list|(
+specifier|final
+name|char
+name|bstFormat
+parameter_list|)
+block|{
+for|for
+control|(
+name|FORMAT_MODE
+name|mode
+range|:
+name|FORMAT_MODE
+operator|.
+name|values
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|mode
+operator|.
+name|asChar
+operator|==
+name|bstFormat
+condition|)
+block|{
+return|return
+name|mode
+return|;
+block|}
+block|}
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|()
+throw|;
+block|}
+block|}
+DECL|method|BibtexCaseChanger ()
+specifier|private
+name|BibtexCaseChanger
+parameter_list|()
+block|{     }
+comment|/**      * Changes case of the given string s      *      * @param s the string to handle      * @param format the format      * @return      */
+DECL|method|changeCase (String s, FORMAT_MODE format)
 specifier|public
 specifier|static
 name|String
@@ -104,35 +161,36 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|char
+name|FORMAT_MODE
 name|format
-parameter_list|,
-name|Warn
-name|warn
 parameter_list|)
 block|{
 return|return
 operator|(
 operator|new
 name|BibtexCaseChanger
+argument_list|()
+operator|)
+operator|.
+name|doChangeCase
 argument_list|(
 name|s
 argument_list|,
 name|format
-argument_list|,
-name|warn
 argument_list|)
-operator|)
-operator|.
-name|changeCase
-argument_list|()
 return|;
 block|}
-DECL|method|changeCase ()
+DECL|method|doChangeCase (String s, FORMAT_MODE format)
 specifier|private
 name|String
-name|changeCase
-parameter_list|()
+name|doChangeCase
+parameter_list|(
+name|String
+name|s
+parameter_list|,
+name|FORMAT_MODE
+name|format
+parameter_list|)
 block|{
 name|char
 index|[]
@@ -154,6 +212,14 @@ name|int
 name|i
 init|=
 literal|0
+decl_stmt|;
+name|int
+name|n
+init|=
+name|s
+operator|.
+name|length
+argument_list|()
 decl_stmt|;
 while|while
 condition|(
@@ -229,7 +295,9 @@ condition|(
 operator|(
 name|format
 operator|==
-literal|'t'
+name|FORMAT_MODE
+operator|.
+name|TITLE_LOWERS
 operator|)
 operator|&&
 operator|(
@@ -257,14 +325,21 @@ operator|)
 operator|)
 condition|)
 block|{
-name|sb
-operator|.
-name|append
-argument_list|(
+assert|assert
+operator|(
 name|c
 index|[
 name|i
 index|]
+operator|==
+literal|'{'
+operator|)
+assert|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|'{'
 argument_list|)
 expr_stmt|;
 name|i
@@ -338,7 +413,7 @@ condition|)
 block|{
 name|i
 operator|=
-name|convertChar0
+name|convertCharIfBraceLevelIsZero
 argument_list|(
 name|c
 argument_list|,
@@ -381,11 +456,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|field|braceLevel
-specifier|private
-name|int
-name|braceLevel
-decl_stmt|;
 DECL|method|decrBraceLevel (String string, int braceLevel)
 specifier|private
 name|int
@@ -472,8 +542,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * We're dealing with a special character (usually either an undotted `\i'      * or `\j', or an accent like one in Table~3.1 of the \LaTeX\ manual, or a      * foreign character like one in Table~3.2) if the first character after the      * |left_brace| is a |backslash|; the special character ends with the      * matching |right_brace|. How we handle what's in between depends on the      * special character. In general, this code will do reasonably well if there      * is other stuff, too, between braces, but it doesn't try to do anything      * special with |colon|s.      *       * @param c      * @param i      * @param format      * @return      */
-DECL|method|convertSpecialChar (StringBuffer sb, char[] c, int i, char format)
+comment|/**      * We're dealing with a special character (usually either an undotted `\i'      * or `\j', or an accent like one in Table~3.1 of the \LaTeX\ manual, or a      * foreign character like one in Table~3.2) if the first character after the      * |left_brace| is a |backslash|; the special character ends with the      * matching |right_brace|. How we handle what's in between depends on the      * special character. In general, this code will do reasonably well if there      * is other stuff, too, between braces, but it doesn't try to do anything      * special with |colon|s.      *       * @param c      * @param i the current position. It points to the opening brace      * @param format      * @return      */
+DECL|method|convertSpecialChar (StringBuffer sb, char[] c, int i, FORMAT_MODE format)
 specifier|private
 name|int
 name|convertSpecialChar
@@ -488,10 +558,20 @@ parameter_list|,
 name|int
 name|i
 parameter_list|,
-name|char
+name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
+assert|assert
+operator|(
+name|c
+index|[
+name|i
+index|]
+operator|==
+literal|'{'
+operator|)
+assert|;
 name|sb
 operator|.
 name|append
@@ -646,8 +726,8 @@ return|return
 name|i
 return|;
 block|}
-comment|/**      * Convert the given string according to the format character (title, lower,      * up) and append the result to the stringBuffer, return the updated      * position.      *       * @param c      * @param pos      * @param s      * @param sb      * @param format      * @return      */
-DECL|method|convertAccented (char[] c, int pos, String s, StringBuffer sb, char format)
+comment|/**      * Convert the given string according to the format character (title, lower,      * up) and append the result to the stringBuffer, return the updated      * position.      *       * @param c      * @param pos      * @param s      * @param sb      * @param format      * @return the new position      */
+DECL|method|convertAccented (char[] c, int pos, String s, StringBuffer sb, FORMAT_MODE format)
 specifier|private
 name|int
 name|convertAccented
@@ -665,7 +745,7 @@ parameter_list|,
 name|StringBuffer
 name|sb
 parameter_list|,
-name|char
+name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
@@ -819,7 +899,7 @@ return|return
 name|pos
 return|;
 block|}
-DECL|method|convertNonControl (char[] c, int pos, StringBuffer sb, char format)
+DECL|method|convertNonControl (char[] c, int pos, StringBuffer sb, FORMAT_MODE format)
 specifier|private
 name|int
 name|convertNonControl
@@ -834,7 +914,7 @@ parameter_list|,
 name|StringBuffer
 name|sb
 parameter_list|,
-name|char
+name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
@@ -895,37 +975,10 @@ return|return
 name|pos
 return|;
 block|}
-DECL|field|TITLE_LOWERS
-specifier|private
-specifier|static
-specifier|final
-name|char
-name|TITLE_LOWERS
-init|=
-literal|'t'
-decl_stmt|;
-DECL|field|ALL_LOWERS
-specifier|private
-specifier|static
-specifier|final
-name|char
-name|ALL_LOWERS
-init|=
-literal|'l'
-decl_stmt|;
-DECL|field|ALL_UPPERS
-specifier|private
-specifier|static
-specifier|final
-name|char
-name|ALL_UPPERS
-init|=
-literal|'u'
-decl_stmt|;
-DECL|method|convertChar0 (char[] c, int i, StringBuffer sb, char format)
+DECL|method|convertCharIfBraceLevelIsZero (char[] c, int i, StringBuffer sb, FORMAT_MODE format)
 specifier|private
 name|int
-name|convertChar0
+name|convertCharIfBraceLevelIsZero
 parameter_list|(
 name|char
 index|[]
@@ -937,7 +990,7 @@ parameter_list|,
 name|StringBuffer
 name|sb
 parameter_list|,
-name|char
+name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
@@ -1095,6 +1148,7 @@ return|return
 name|i
 return|;
 block|}
+comment|/**      * Determine whether there starts a special char at pos (e.g., oe, AE). Return it as string.      * If nothing found, return null      *      * Also used by BibtexPurify      *      * @param c the current "String"      * @param pos the position      * @return the special LaTeX character or null      */
 DECL|method|findSpecialChar (char[] c, int pos)
 specifier|static
 name|String

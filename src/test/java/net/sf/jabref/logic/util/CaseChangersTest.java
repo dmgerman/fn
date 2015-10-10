@@ -80,6 +80,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// equals: FORMAT_MODE.ALL_LOWERS
 name|Assert
 operator|.
 name|assertEquals
@@ -94,6 +95,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// equals: FORMAT_MODE.ALL_UPPERS
 name|Assert
 operator|.
 name|assertEquals
@@ -108,6 +110,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// equals: FORMAT_MODE.TITLE_LOWERS
 name|Assert
 operator|.
 name|assertEquals
@@ -122,6 +125,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// equals: FORMAT_MODE.EACH_FIRST_UPPERS
 name|Assert
 operator|.
 name|assertEquals
@@ -136,6 +140,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// equals: FORMAT_MODE.TITLE_UPPERS
 block|}
 annotation|@
 name|Test
