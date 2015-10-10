@@ -66,7 +66,7 @@ name|jabref
 operator|.
 name|exporter
 operator|.
-name|FieldFormatter
+name|LatexFieldFormatter
 import|;
 end_import
 
@@ -461,7 +461,7 @@ block|}
 DECL|field|fieldFormatter
 specifier|private
 specifier|final
-name|FieldFormatter
+name|LatexFieldFormatter
 name|fieldFormatter
 decl_stmt|;
 DECL|field|write
@@ -538,11 +538,11 @@ operator|.
 name|WRITEFIELD_SORTSTYLE
 argument_list|)
 decl_stmt|;
-DECL|method|BibtexEntryWriter (FieldFormatter fieldFormatter, boolean write)
+DECL|method|BibtexEntryWriter (LatexFieldFormatter fieldFormatter, boolean write)
 specifier|public
 name|BibtexEntryWriter
 parameter_list|(
-name|FieldFormatter
+name|LatexFieldFormatter
 name|fieldFormatter
 parameter_list|,
 name|boolean

@@ -125,8 +125,6 @@ DECL|class|LatexFieldFormatter
 specifier|public
 class|class
 name|LatexFieldFormatter
-implements|implements
-name|FieldFormatter
 block|{
 comment|// "Fieldname" to indicate that a field should be treated as a bibtex string. Used when writing database to file.
 DECL|field|BIBTEX_STRING
@@ -296,8 +294,7 @@ name|FieldContentParser
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Override
+comment|/**      * Formats the content of a field.      *      * @param s the content of the field      * @param fieldName the name of the field - used to trigger different serializations, e.g., turning off resolution for some strings      * @return a formatted string suitable for output      * @throws IllegalArgumentException if s is not a correct bibtex string, e.g., because of improperly balanced braces or using # not paired      */
 DECL|method|format (String text, String fieldName)
 specifier|public
 name|String
