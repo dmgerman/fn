@@ -83,6 +83,7 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
+comment|// see also net.sf.jabref.logic.labelPattern.LabelPatternUtil.SKIP_WORDS
 comment|// Articles
 name|smallerWords
 operator|.

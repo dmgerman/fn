@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.                   2003-2015 Ulrik Stervbo (ulriks AT ruc.dk)      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -221,11 +221,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author Ulrik Stervbo (ulriks AT ruc.dk)  */
-end_comment
-
-begin_comment
-comment|/**  * This is the utility class of the LabelPattern package.  * @author Ulrik Stervbo (ulriks AT ruc.dk)  */
+comment|/**  * This is the utility class of the LabelPattern package.  */
 end_comment
 
 begin_class
@@ -260,6 +256,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|// see also net.sf.jabref.logic.util.strings.CaseChangers.Word.smallerWords
 DECL|field|SKIP_WORDS
 specifier|private
 specifier|static
@@ -4901,7 +4898,6 @@ return|;
 block|}
 comment|/**      * Gets the last name of all authors/editors      * @param authorField a<code>String</code>      * @return the sur name of all authors/editors      */
 DECL|method|allAuthors (String authorField)
-specifier|private
 specifier|static
 name|String
 name|allAuthors
@@ -4910,80 +4906,16 @@ name|String
 name|authorField
 parameter_list|)
 block|{
-name|String
-name|author
-init|=
-literal|""
-decl_stmt|;
-name|String
-index|[]
-name|tokens
-init|=
-name|AuthorList
-operator|.
-name|fixAuthorForAlphabetization
+comment|// Quick hack to use NAuthors to avoid code duplication
+return|return
+name|NAuthors
 argument_list|(
 name|authorField
-argument_list|)
-operator|.
-name|split
-argument_list|(
-literal|"\\band\\b"
-argument_list|)
-decl_stmt|;
-name|int
-name|i
-init|=
-literal|0
-decl_stmt|;
-while|while
-condition|(
-name|tokens
-operator|.
-name|length
-operator|>
-name|i
-condition|)
-block|{
-comment|// convert lastname, firstname to firstname lastname
-name|String
-index|[]
-name|firstAuthor
-init|=
-name|tokens
-index|[
-name|i
-index|]
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\\s+"
 argument_list|,
-literal|" "
-argument_list|)
+name|Integer
 operator|.
-name|trim
-argument_list|()
-operator|.
-name|split
-argument_list|(
-literal|" "
+name|MAX_VALUE
 argument_list|)
-decl_stmt|;
-comment|// lastname, firstname
-name|author
-operator|+=
-name|firstAuthor
-index|[
-literal|0
-index|]
-expr_stmt|;
-name|i
-operator|++
-expr_stmt|;
-block|}
-return|return
-name|author
 return|;
 block|}
 comment|/**      * Returns the authors according to the BibTeX-alpha-Style      * @param authorField string containing the value of the author field      * @return the initials of all authornames      */
@@ -5262,7 +5194,6 @@ return|;
 block|}
 comment|/**      * Gets the surnames of the first N authors and appends EtAl if there are more than N authors      * @param authorField a<code>String</code>      * @param n the number of desired authors      * @return Gets the surnames of the first N authors and appends EtAl if there are more than N authors      */
 DECL|method|NAuthors (String authorField, int n)
-specifier|private
 specifier|static
 name|String
 name|NAuthors
@@ -5292,7 +5223,7 @@ argument_list|)
 operator|.
 name|split
 argument_list|(
-literal|"\\band\\b"
+literal|"\\s+\\band\\b\\s+"
 argument_list|)
 decl_stmt|;
 name|int
@@ -5313,10 +5244,8 @@ operator|<
 name|n
 condition|)
 block|{
-comment|// convert lastname, firstname to firstname lastname
 name|String
-index|[]
-name|firstAuthor
+name|lastName
 init|=
 name|tokens
 index|[
@@ -5325,26 +5254,14 @@ index|]
 operator|.
 name|replaceAll
 argument_list|(
-literal|"\\s+"
+literal|",\\s+.*"
 argument_list|,
-literal|" "
-argument_list|)
-operator|.
-name|trim
-argument_list|()
-operator|.
-name|split
-argument_list|(
-literal|" "
+literal|""
 argument_list|)
 decl_stmt|;
-comment|// lastname, firstname
 name|author
 operator|+=
-name|firstAuthor
-index|[
-literal|0
-index|]
+name|lastName
 expr_stmt|;
 name|i
 operator|++
@@ -5364,6 +5281,8 @@ name|author
 return|;
 block|}
 return|return
+name|author
+operator|+
 literal|"EtAl"
 return|;
 block|}
@@ -5638,9 +5557,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * auth.etal, authEtAl, ... format:      * Isaac Newton and James Maxwell and Albert Einstein (1960)      * Isaac Newton and James Maxwell (1960)      *      *  auth.etal give (delim=".", append=".etal"):      * Newton.etal      * Newton.Maxwell      *      *  authEtAl give (delim="", append="EtAl"):      * NewtonEtAl      * NewtonMaxwell      */
+comment|/**      * auth.etal, authEtAl, ... format:      * Isaac Newton and James Maxwell and Albert Einstein (1960)      * Isaac Newton and James Maxwell (1960)      *      *  auth.etal give (delim=".", append=".etal"):      * Newton.etal      * Newton.Maxwell      *      *  authEtAl give (delim="", append="EtAl"):      * NewtonEtAl      * NewtonMaxwell      *      * Note that [authEtAl] equals [authors2]      */
 DECL|method|authEtal (String authorField, String delim, String append)
-specifier|private
 specifier|static
 name|String
 name|authEtal
@@ -5679,7 +5597,7 @@ name|authorField
 operator|.
 name|split
 argument_list|(
-literal|"\\band\\b"
+literal|"\\s*\\band\\b\\s*"
 argument_list|)
 decl_stmt|;
 if|if
@@ -5884,7 +5802,6 @@ block|}
 block|}
 comment|/**      * authshort format:      * added by Kolja Brix, kbx@users.sourceforge.net      *      * given author names      *       *   Isaac Newton and James Maxwell and Albert Einstein and N. Bohr      *       *   Isaac Newton and James Maxwell and Albert Einstein      *         *   Isaac Newton and James Maxwell      *         *   Isaac Newton      *       * yield      *       *   NME+      *         *   NME      *         *   NM      *         *   Newton      */
 DECL|method|authshort (String authorField)
-specifier|private
 specifier|static
 name|String
 name|authshort
@@ -6024,7 +5941,6 @@ return|;
 block|}
 comment|/**      * authIniN format:      *       * Each author gets (N div #authors) chars, the remaining (N mod #authors)      * chars are equally distributed to the authors first in the row.      *       * If (N< #authors), only the first N authors get mentioned.      *       * For example if      *       * a) I. Newton and J. Maxwell and A. Einstein and N. Bohr (..)      *       * b) I. Newton and J. Maxwell and A. Einstein      *       * c) I. Newton and J. Maxwell      *       * d) I. Newton      *       * authIni4 gives: a) NMEB, b) NeME, c) NeMa, d) Newt      *       * @param authorField      *            The authors to format.      *       * @param n      *            The maximum number of characters this string will be long. A      *            negative number or zero will lead to "" be returned.      *       * @throws NullPointerException      *             if authorField is null and n> 0      */
 DECL|method|authIniN (String authorField, int n)
-specifier|public
 specifier|static
 name|String
 name|authIniN
