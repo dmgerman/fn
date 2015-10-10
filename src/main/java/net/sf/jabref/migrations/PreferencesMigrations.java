@@ -482,15 +482,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Upgrade the preferences for the current version
-comment|// The old preference is kept in case an old version of JabRef is used with
-comment|// these preferences, but it is only used when the new preference does not
-comment|// exist
-DECL|method|upgradeOldPreferences ()
+comment|/**      * Upgrade the sort order preferences for the current version      * The old preference is kept in case an old version of JabRef is used with      * these preferences, but it is only used when the new preference does not      * exist      */
+DECL|method|upgradeSortOrder ()
 specifier|public
 specifier|static
 name|void
-name|upgradeOldPreferences
+name|upgradeSortOrder
 parameter_list|()
 block|{
 name|JabRefPreferences

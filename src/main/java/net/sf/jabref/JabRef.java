@@ -3636,7 +3636,7 @@ name|loaded
 parameter_list|)
 block|{
 comment|// Perform checks and changes for users with a preference set from an older
-comment|// Jabref version.
+comment|// JabRef version.
 name|PreferencesMigrations
 operator|.
 name|replaceAbstractField
@@ -3644,7 +3644,7 @@ argument_list|()
 expr_stmt|;
 name|PreferencesMigrations
 operator|.
-name|upgradeOldPreferences
+name|upgradeSortOrder
 argument_list|()
 expr_stmt|;
 name|PreferencesMigrations
