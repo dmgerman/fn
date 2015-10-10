@@ -230,9 +230,12 @@ block|{
 return|return
 name|Localization
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
-literal|"Insert selected citations into Texmaker"
+literal|"Insert selected citations into %0"
+argument_list|,
+name|getApplicationName
+argument_list|()
 argument_list|)
 return|;
 block|}
