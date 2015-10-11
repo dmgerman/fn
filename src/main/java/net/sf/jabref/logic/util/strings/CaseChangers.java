@@ -52,16 +52,8 @@ specifier|public
 class|class
 name|CaseChangers
 block|{
-comment|/**      * Represents a word in a title of a bibtex entry.      *<p>      * A word can have protected chars (enclosed in '{' '}') and may be a small (a, an, the, ...) word.      */
-DECL|class|Word
-specifier|private
-specifier|static
-specifier|final
-class|class
-name|Word
-block|{
 DECL|field|SMALLER_WORDS
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|Set
@@ -83,7 +75,7 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|// see also net.sf.jabref.logic.labelPattern.LabelPatternUtil.SKIP_WORDS
+comment|// NOTE: before JabRef 2.80, it was SKIP_WORDS = {"a", "an", "the", "for", "on", "of"}; in net.sf.jabref.logic.labelPattern.LabelPatternUtil.SKIP_WORDS
 comment|// Articles
 name|smallerWords
 operator|.
@@ -230,6 +222,14 @@ name|smallerWords
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Represents a word in a title of a bibtex entry.      *<p>      * A word can have protected chars (enclosed in '{' '}') and may be a small (a, an, the, ...) word.      */
+DECL|class|Word
+specifier|private
+specifier|static
+specifier|final
+class|class
+name|Word
+block|{
 DECL|field|chars
 specifier|private
 name|char
