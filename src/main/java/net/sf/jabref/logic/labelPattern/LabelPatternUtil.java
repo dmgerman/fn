@@ -2927,24 +2927,13 @@ literal|"authorIni"
 argument_list|)
 condition|)
 block|{
-name|String
-name|s
-init|=
+return|return
 name|LabelPatternUtil
 operator|.
 name|oneAuthorPlusIni
 argument_list|(
 name|authString
 argument_list|)
-decl_stmt|;
-return|return
-name|s
-operator|==
-literal|null
-condition|?
-literal|""
-else|:
-name|s
 return|;
 block|}
 elseif|else
@@ -3182,8 +3171,6 @@ index|[
 literal|1
 index|]
 argument_list|)
-operator|-
-literal|1
 argument_list|)
 decl_stmt|;
 return|return
@@ -3482,9 +3469,7 @@ literal|"editorIni"
 argument_list|)
 condition|)
 block|{
-name|String
-name|s
-init|=
+return|return
 name|LabelPatternUtil
 operator|.
 name|oneAuthorPlusIni
@@ -3496,15 +3481,6 @@ argument_list|(
 literal|"editor"
 argument_list|)
 argument_list|)
-decl_stmt|;
-return|return
-name|s
-operator|==
-literal|null
-condition|?
-literal|""
-else|:
-name|s
 return|;
 block|}
 elseif|else
@@ -4749,9 +4725,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Gets the last name of the last author/editor      * @param authorField a<code>String</code>      * @return the sur name of an author/editor      */
+comment|/**      * Gets the last name of the last author/editor      * @param authorField a<code>String</code>      * @return the surname of an author/editor      */
 DECL|method|lastAuthor (String authorField)
-specifier|private
 specifier|static
 name|String
 name|lastAuthor
@@ -4773,7 +4748,7 @@ argument_list|)
 operator|.
 name|split
 argument_list|(
-literal|"\\band\\b"
+literal|"\\s+\\band\\b\\s+"
 argument_list|)
 decl_stmt|;
 if|if
@@ -4785,7 +4760,6 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|// if author is empty
 name|String
 index|[]
 name|lastAuthor
@@ -4799,19 +4773,9 @@ operator|-
 literal|1
 index|]
 operator|.
-name|replaceAll
-argument_list|(
-literal|"\\s+"
-argument_list|,
-literal|" "
-argument_list|)
-operator|.
-name|trim
-argument_list|()
-operator|.
 name|split
 argument_list|(
-literal|" "
+literal|","
 argument_list|)
 decl_stmt|;
 return|return
@@ -4823,6 +4787,7 @@ return|;
 block|}
 else|else
 block|{
+comment|// if author is empty
 return|return
 literal|""
 return|;
@@ -4830,7 +4795,6 @@ block|}
 block|}
 comment|/**      * Gets the forename initals of the last author/editor      *       * @param authorField      *            a<code>String</code>      * @return the forename initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *       * @throws NullPointerException      *             if authorField == null      */
 DECL|method|lastAuthorForenameInitials (String authorField)
-specifier|private
 specifier|static
 name|String
 name|lastAuthorForenameInitials
@@ -4922,7 +4886,6 @@ return|;
 block|}
 comment|/**      * Returns the authors according to the BibTeX-alpha-Style      * @param authorField string containing the value of the author field      * @return the initials of all authornames      */
 DECL|method|authorsAlpha (String authorField)
-specifier|private
 specifier|static
 name|String
 name|authorsAlpha
@@ -5288,9 +5251,8 @@ operator|+
 literal|"EtAl"
 return|;
 block|}
-comment|/**      * Gets the first part of the last name of the first      * author/editor, and appends the last name initial of the      * remaining authors/editors.      * @param authorField a<code>String</code>      * @return the sur name of all authors/editors      */
+comment|/**      * Gets the first part of the last name of the first      * author/editor, and appends the last name initial of the      * remaining authors/editors.      * Maximum 5 characters      * @param authorField a<code>String</code>      * @return the surname of all authors/editors      */
 DECL|method|oneAuthorPlusIni (String authorField)
-specifier|private
 specifier|static
 name|String
 name|oneAuthorPlusIni
@@ -5327,7 +5289,7 @@ name|authorField
 operator|.
 name|split
 argument_list|(
-literal|"\\band\\b"
+literal|"\\s+\\band\\b\\s+"
 argument_list|)
 decl_stmt|;
 name|int
@@ -5349,7 +5311,6 @@ name|author
 return|;
 block|}
 name|String
-index|[]
 name|firstAuthor
 init|=
 name|tokens
@@ -5357,24 +5318,17 @@ index|[
 literal|0
 index|]
 operator|.
-name|replaceAll
-argument_list|(
-literal|"\\s+"
-argument_list|,
-literal|" "
-argument_list|)
-operator|.
 name|split
 argument_list|(
-literal|" "
+literal|","
 argument_list|)
+index|[
+literal|0
+index|]
 decl_stmt|;
 name|author
 operator|=
 name|firstAuthor
-index|[
-literal|0
-index|]
 operator|.
 name|substring
 argument_list|(
@@ -5387,9 +5341,6 @@ argument_list|(
 name|CHARS_OF_FIRST
 argument_list|,
 name|firstAuthor
-index|[
-literal|0
-index|]
 operator|.
 name|length
 argument_list|()
@@ -5413,9 +5364,6 @@ index|[
 name|i
 index|]
 operator|.
-name|trim
-argument_list|()
-operator|.
 name|charAt
 argument_list|(
 literal|0
@@ -5431,7 +5379,6 @@ return|;
 block|}
 comment|/**      * auth.auth.ea format:      * Isaac Newton and James Maxwell and Albert Einstein (1960)      * Isaac Newton and James Maxwell (1960)      *  give:      * Newton.Maxwell.ea      * Newton.Maxwell      */
 DECL|method|authAuthEa (String authorField)
-specifier|private
 specifier|static
 name|String
 name|authAuthEa
@@ -5464,7 +5411,7 @@ name|authorField
 operator|.
 name|split
 argument_list|(
-literal|"\\band\\b"
+literal|"\\s+\\band\\b\\s+"
 argument_list|)
 decl_stmt|;
 if|if
@@ -5480,6 +5427,7 @@ return|return
 literal|""
 return|;
 block|}
+comment|// append first author
 name|author
 operator|.
 name|append
@@ -5509,6 +5457,7 @@ operator|>=
 literal|2
 condition|)
 block|{
+comment|// append second author
 name|author
 operator|.
 name|append
@@ -5544,6 +5493,7 @@ operator|>
 literal|2
 condition|)
 block|{
+comment|// append ".ea" if more than 2 authors
 name|author
 operator|.
 name|append
@@ -5695,9 +5645,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * The first N characters of the Mth author/editor.      */
+comment|/**      * The first N characters of the Mth author/editor.      * M starts counting from 1      */
 DECL|method|authN_M (String authorField, int n, int m)
-specifier|private
 specifier|static
 name|String
 name|authN_M
@@ -5712,6 +5661,10 @@ name|int
 name|m
 parameter_list|)
 block|{
+comment|// have m counting from 0
+name|m
+operator|--
+expr_stmt|;
 name|authorField
 operator|=
 name|AuthorList
@@ -5729,7 +5682,7 @@ name|authorField
 operator|.
 name|split
 argument_list|(
-literal|"\\band\\b"
+literal|"\\s+\\band\\b\\s+"
 argument_list|)
 decl_stmt|;
 if|if
@@ -5770,9 +5723,6 @@ operator|)
 index|[
 literal|0
 index|]
-operator|.
-name|trim
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -5868,7 +5818,7 @@ operator|.
 name|length
 argument_list|()
 argument_list|,
-literal|0
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5909,6 +5859,8 @@ argument_list|,
 literal|1
 argument_list|,
 name|i
+operator|+
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6057,6 +6009,8 @@ operator|+
 literal|1
 argument_list|,
 name|i
+operator|+
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6076,6 +6030,8 @@ argument_list|,
 name|charsAll
 argument_list|,
 name|i
+operator|+
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
