@@ -138,27 +138,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JPanel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JTabbedPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
+name|*
 import|;
 end_import
 
@@ -750,11 +730,15 @@ expr_stmt|;
 comment|// Sets the marker image
 name|markerImg
 operator|=
+operator|new
+name|ImageIcon
+argument_list|(
 name|IconTheme
 operator|.
-name|getImage
+name|getIconUrl
 argument_list|(
 literal|"dragNdropArrow"
+argument_list|)
 argument_list|)
 operator|.
 name|getImage

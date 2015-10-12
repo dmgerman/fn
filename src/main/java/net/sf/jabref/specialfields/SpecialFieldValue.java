@@ -22,17 +22,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|ImageIcon
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JLabel
+name|*
 import|;
 end_import
 
@@ -96,7 +86,7 @@ decl_stmt|;
 DECL|field|icon
 specifier|private
 specifier|final
-name|ImageIcon
+name|Icon
 name|icon
 decl_stmt|;
 DECL|field|toolTipText
@@ -109,7 +99,7 @@ comment|// value when used in a separate vield
 comment|//private String fieldValue;
 comment|/**      *       * @param field The special field this value is a value of      * @param keyword - The keyword to be used at BibTex's keyword field. May be "null" if no keyword is to be set      * @param actionName - the action to call      * @param menuString - the string to display at a menu      * @param icon - the icon of this value      * @param toolTipText - the tool tip text      */
 comment|// @formatter:off
-DECL|method|SpecialFieldValue ( SpecialField field, String keyword, String actionName, String menuString, ImageIcon icon, String toolTipText)
+DECL|method|SpecialFieldValue ( SpecialField field, String keyword, String actionName, String menuString, Icon icon, String toolTipText)
 specifier|public
 name|SpecialFieldValue
 parameter_list|(
@@ -125,7 +115,7 @@ parameter_list|,
 name|String
 name|menuString
 parameter_list|,
-name|ImageIcon
+name|Icon
 name|icon
 parameter_list|,
 name|String
@@ -250,7 +240,7 @@ return|;
 block|}
 DECL|method|getIcon ()
 specifier|public
-name|ImageIcon
+name|Icon
 name|getIcon
 parameter_list|()
 block|{

@@ -3417,14 +3417,14 @@ name|AbstractMoveRowAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|method|AbstractMoveRowAction (String string, ImageIcon image)
+DECL|method|AbstractMoveRowAction (String string, Icon image)
 specifier|public
 name|AbstractMoveRowAction
 parameter_list|(
 name|String
 name|string
 parameter_list|,
-name|ImageIcon
+name|Icon
 name|image
 parameter_list|)
 block|{

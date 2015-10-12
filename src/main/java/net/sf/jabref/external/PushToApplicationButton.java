@@ -324,7 +324,7 @@ DECL|field|ARROW_ICON
 specifier|private
 specifier|static
 specifier|final
-name|ImageIcon
+name|Icon
 name|ARROW_ICON
 init|=
 name|IconTheme

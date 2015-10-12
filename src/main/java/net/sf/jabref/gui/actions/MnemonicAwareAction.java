@@ -40,27 +40,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|AbstractAction
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|Action
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|ImageIcon
+name|*
 import|;
 end_import
 
@@ -82,11 +62,11 @@ specifier|public
 name|MnemonicAwareAction
 parameter_list|()
 block|{}
-DECL|method|MnemonicAwareAction (ImageIcon icon)
+DECL|method|MnemonicAwareAction (Icon icon)
 specifier|public
 name|MnemonicAwareAction
 parameter_list|(
-name|ImageIcon
+name|Icon
 name|icon
 parameter_list|)
 block|{

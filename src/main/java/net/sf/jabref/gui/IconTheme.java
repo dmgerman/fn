@@ -249,7 +249,7 @@ comment|/**      * Constructs an ImageIcon for the image representing the given 
 DECL|method|getImage (String name)
 specifier|public
 specifier|static
-name|ImageIcon
+name|Icon
 name|getImage
 parameter_list|(
 name|String
@@ -269,7 +269,7 @@ return|;
 block|}
 comment|/**      * Looks up the URL for the image representing the given function, in the resource      * file listing images.      *      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The URL to the actual image to use.      */
 DECL|method|getIconUrl (String name)
-specifier|private
+specifier|public
 specifier|static
 name|URL
 name|getIconUrl

@@ -52,7 +52,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|ImageIcon
+name|*
 import|;
 end_import
 
@@ -250,7 +250,7 @@ function_decl|;
 DECL|method|getRepresentingIcon ()
 specifier|public
 specifier|abstract
-name|ImageIcon
+name|Icon
 name|getRepresentingIcon
 parameter_list|()
 function_decl|;

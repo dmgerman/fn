@@ -32,7 +32,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|ImageIcon
+name|*
 import|;
 end_import
 
@@ -83,7 +83,7 @@ decl_stmt|;
 DECL|field|icon
 specifier|private
 specifier|final
-name|ImageIcon
+name|Icon
 name|icon
 init|=
 name|IconTheme
@@ -142,7 +142,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ImageIcon
+name|Icon
 name|icon
 decl_stmt|;
 name|icon
@@ -287,7 +287,7 @@ annotation|@
 name|Override
 DECL|method|getRepresentingIcon ()
 specifier|public
-name|ImageIcon
+name|Icon
 name|getRepresentingIcon
 parameter_list|()
 block|{

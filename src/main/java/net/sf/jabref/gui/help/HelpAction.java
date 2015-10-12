@@ -46,37 +46,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|Action
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|ImageIcon
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JButton
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|KeyStroke
+name|*
 import|;
 end_import
 
@@ -262,7 +232,7 @@ operator|=
 name|helpFile
 expr_stmt|;
 block|}
-DECL|method|HelpAction (HelpDialog diag, String helpFile, String tooltip, ImageIcon iconFile)
+DECL|method|HelpAction (HelpDialog diag, String helpFile, String tooltip, Icon iconFile)
 specifier|public
 name|HelpAction
 parameter_list|(
@@ -275,7 +245,7 @@ parameter_list|,
 name|String
 name|tooltip
 parameter_list|,
-name|ImageIcon
+name|Icon
 name|iconFile
 parameter_list|)
 block|{
@@ -448,7 +418,7 @@ operator|=
 name|helpFile
 expr_stmt|;
 block|}
-DECL|method|HelpAction (String title, HelpDialog diag, String helpFile, String tooltip, ImageIcon iconFile)
+DECL|method|HelpAction (String title, HelpDialog diag, String helpFile, String tooltip, Icon iconFile)
 specifier|public
 name|HelpAction
 parameter_list|(
@@ -464,7 +434,7 @@ parameter_list|,
 name|String
 name|tooltip
 parameter_list|,
-name|ImageIcon
+name|Icon
 name|iconFile
 parameter_list|)
 block|{

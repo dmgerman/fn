@@ -823,7 +823,7 @@ specifier|private
 name|OpenOfficePanel
 parameter_list|()
 block|{
-name|ImageIcon
+name|Icon
 name|connectImage
 init|=
 name|IconTheme
@@ -6231,14 +6231,14 @@ name|OOPanel
 extends|extends
 name|SidePaneComponent
 block|{
-DECL|method|OOPanel (SidePaneManager sidePaneManager, ImageIcon url, String s)
+DECL|method|OOPanel (SidePaneManager sidePaneManager, Icon url, String s)
 specifier|public
 name|OOPanel
 parameter_list|(
 name|SidePaneManager
 name|sidePaneManager
 parameter_list|,
-name|ImageIcon
+name|Icon
 name|url
 parameter_list|,
 name|String
