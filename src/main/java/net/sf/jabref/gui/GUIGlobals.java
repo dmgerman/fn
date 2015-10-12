@@ -1080,16 +1080,6 @@ name|NUMBER_COL_LENGTH
 init|=
 literal|32
 decl_stmt|;
-DECL|field|WIDTH_ICON_COL_RANKING
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|WIDTH_ICON_COL_RANKING
-init|=
-literal|35
-decl_stmt|;
-comment|// Width of Ranking Icon Column
 DECL|field|WIDTH_ICON_COL
 specifier|public
 specifier|static
