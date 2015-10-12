@@ -757,6 +757,9 @@ decl_stmt|;
 DECL|field|fieldList
 specifier|private
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|fieldList
 decl_stmt|;
 DECL|field|overRadio
@@ -1559,6 +1562,7 @@ name|fieldList
 operator|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|getAllFields
 argument_list|()
@@ -3629,12 +3633,15 @@ block|}
 comment|/* This is the only method defined by ListCellRenderer.  We just          * reconfigure the Jlabel each time we're called.          */
 annotation|@
 name|Override
-DECL|method|getListCellRendererComponent ( JList list, Object value, int index, boolean iss, boolean chf)
+DECL|method|getListCellRendererComponent ( JList<?> list, Object value, int index, boolean iss, boolean chf)
 specifier|public
 name|Component
 name|getListCellRendererComponent
 parameter_list|(
 name|JList
+argument_list|<
+name|?
+argument_list|>
 name|list
 parameter_list|,
 name|Object

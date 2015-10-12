@@ -397,18 +397,27 @@ DECL|field|priSort
 specifier|private
 specifier|final
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|priSort
 decl_stmt|;
 DECL|field|secSort
 specifier|private
 specifier|final
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|secSort
 decl_stmt|;
 DECL|field|terSort
 specifier|private
 specifier|final
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|terSort
 decl_stmt|;
 comment|/**      * Customization of external program paths.      *       * @param prefs      *            a<code>JabRefPreferences</code> value      */
@@ -495,6 +504,7 @@ name|priSort
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|allPlusKey
 argument_list|)
@@ -503,6 +513,7 @@ name|secSort
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|allPlusKey
 argument_list|)
@@ -511,6 +522,7 @@ name|terSort
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|allPlusKey
 argument_list|)

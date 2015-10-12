@@ -473,10 +473,14 @@ operator|++
 expr_stmt|;
 block|}
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|list
 init|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|array
 argument_list|)

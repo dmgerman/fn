@@ -329,6 +329,9 @@ DECL|field|fetcherChoice
 specifier|private
 specifier|final
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|fetcherChoice
 decl_stmt|;
 DECL|field|optionsCards
@@ -535,6 +538,7 @@ name|fetcherChoice
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|choices
 argument_list|)

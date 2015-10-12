@@ -991,6 +991,7 @@ name|sortedFields
 operator|=
 operator|new
 name|ArrayList
+argument_list|<>
 argument_list|(
 name|entry
 operator|.
@@ -1067,6 +1068,7 @@ name|sortedFields
 operator|=
 operator|new
 name|ArrayList
+argument_list|<>
 argument_list|(
 name|entry
 operator|.

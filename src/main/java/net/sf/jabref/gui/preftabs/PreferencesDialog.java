@@ -114,6 +114,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -448,6 +458,9 @@ name|parent
 expr_stmt|;
 specifier|final
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|chooser
 decl_stmt|;
 name|JButton
@@ -550,7 +563,7 @@ expr_stmt|;
 comment|// ----------------------------------------------------------------
 comment|// Add tabs to tabbed here. Remember, tabs must implement PrefsTab.
 comment|// ----------------------------------------------------------------
-name|ArrayList
+name|List
 argument_list|<
 name|PrefsTab
 argument_list|>
@@ -558,9 +571,7 @@ name|tabs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PrefsTab
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|tabs
@@ -851,6 +862,7 @@ name|chooser
 operator|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|names
 argument_list|)

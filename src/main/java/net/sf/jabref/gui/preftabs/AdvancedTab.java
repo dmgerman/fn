@@ -429,6 +429,9 @@ DECL|field|className
 specifier|private
 specifier|final
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|className
 decl_stmt|;
 DECL|field|remoteServerPort
@@ -707,6 +710,7 @@ name|className
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|lookAndFeels
 operator|.
@@ -732,6 +736,9 @@ argument_list|)
 expr_stmt|;
 specifier|final
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|clName
 init|=
 name|className

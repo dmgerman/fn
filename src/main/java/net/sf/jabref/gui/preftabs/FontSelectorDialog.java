@@ -768,6 +768,7 @@ name|familyList
 operator|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|getFontList
 argument_list|()
@@ -823,6 +824,7 @@ name|sizeList
 operator|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|sizes
 argument_list|)
@@ -879,6 +881,7 @@ name|styleList
 operator|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|styles
 argument_list|)
@@ -1401,6 +1404,9 @@ DECL|field|familyList
 specifier|private
 specifier|final
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|familyList
 decl_stmt|;
 DECL|field|sizeField
@@ -1413,6 +1419,9 @@ DECL|field|sizeList
 specifier|private
 specifier|final
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|sizeList
 decl_stmt|;
 DECL|field|styleField
@@ -1425,6 +1434,9 @@ DECL|field|styleList
 specifier|private
 specifier|final
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|styleList
 decl_stmt|;
 DECL|field|preview

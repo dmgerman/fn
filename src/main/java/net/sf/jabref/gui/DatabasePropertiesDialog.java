@@ -424,6 +424,9 @@ DECL|field|encoding
 specifier|private
 specifier|final
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|encoding
 decl_stmt|;
 DECL|field|ok
@@ -539,16 +542,25 @@ decl_stmt|;
 DECL|field|savePriSort
 specifier|private
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|savePriSort
 decl_stmt|;
 DECL|field|saveSecSort
 specifier|private
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|saveSecSort
 decl_stmt|;
 DECL|field|saveTerSort
 specifier|private
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|saveTerSort
 decl_stmt|;
 DECL|field|savePriField
@@ -638,6 +650,7 @@ name|encoding
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|Encodings
 operator|.
@@ -1721,6 +1734,7 @@ name|savePriSort
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|allPlusKey
 argument_list|)
@@ -1729,6 +1743,7 @@ name|saveSecSort
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|allPlusKey
 argument_list|)
@@ -1737,6 +1752,7 @@ name|saveTerSort
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|allPlusKey
 argument_list|)

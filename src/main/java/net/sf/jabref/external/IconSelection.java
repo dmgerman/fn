@@ -178,6 +178,9 @@ block|{
 DECL|field|icons
 specifier|private
 name|JList
+argument_list|<
+name|JLabel
+argument_list|>
 name|icons
 decl_stmt|;
 DECL|field|iconKeys

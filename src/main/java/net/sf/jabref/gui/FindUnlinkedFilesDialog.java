@@ -1104,11 +1104,17 @@ decl_stmt|;
 DECL|field|comboBoxFileTypeSelection
 specifier|private
 name|JComboBox
+argument_list|<
+name|FileFilter
+argument_list|>
 name|comboBoxFileTypeSelection
 decl_stmt|;
 DECL|field|comboBoxEntryTypeSelection
 specifier|private
 name|JComboBox
+argument_list|<
+name|BibtexEntryTypeWrapper
+argument_list|>
 name|comboBoxEntryTypeSelection
 decl_stmt|;
 DECL|field|progressBarSearching
@@ -5658,6 +5664,7 @@ name|comboBoxFileTypeSelection
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|vector
 argument_list|)
@@ -5842,6 +5849,7 @@ name|comboBoxEntryTypeSelection
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|list
 argument_list|)

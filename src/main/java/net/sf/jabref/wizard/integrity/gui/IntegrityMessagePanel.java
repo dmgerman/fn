@@ -320,6 +320,9 @@ DECL|field|warnings
 specifier|private
 specifier|final
 name|JList
+argument_list|<
+name|IntegrityMessage
+argument_list|>
 name|warnings
 decl_stmt|;
 DECL|field|warningData
@@ -384,6 +387,7 @@ name|warnings
 operator|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|warningData
 argument_list|)
@@ -1048,12 +1052,15 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|getListCellRendererComponent ( JList list, Object value, int index, boolean iss, boolean chf)
+DECL|method|getListCellRendererComponent ( JList<?> list, Object value, int index, boolean iss, boolean chf)
 specifier|public
 name|Component
 name|getListCellRendererComponent
 parameter_list|(
 name|JList
+argument_list|<
+name|?
+argument_list|>
 name|list
 parameter_list|,
 name|Object
