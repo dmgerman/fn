@@ -418,10 +418,6 @@ name|SwingUtilities
 import|;
 end_import
 
-begin_comment
-comment|// import javax.swing.table.DefaultTableModel;
-end_comment
-
 begin_import
 import|import
 name|javax
@@ -4938,7 +4934,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/*    private static class MyTable extends JTable {          public MyTable(TableModel model) {             super(model);             // setDefaultRenderer(Boolean.class, );         }          @Override         public boolean isCellEditable(int row, int col) {             return col == 0;         }     }      private static class MyTableModel extends DefaultTableModel {          @Override         public Class<?> getColumnClass(int i) {             if (i == 0) {                 return Boolean.class;             } else {                 return String.class;             }         }      }*/
 DECL|class|SelectionButton
 class|class
 name|SelectionButton
