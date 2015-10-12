@@ -4393,6 +4393,7 @@ return|return
 name|targetName
 return|;
 block|}
+comment|/**      * @param keywords a String of keywords      * @return an ArrayList containing the keywords. An emtpy list if keywords are null or empty      */
 DECL|method|getSeparatedKeywords (String keywords)
 specifier|public
 specifier|static
