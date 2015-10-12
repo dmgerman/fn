@@ -10895,6 +10895,20 @@ name|fieldName
 argument_list|)
 return|;
 block|}
+comment|/**      * ONLY FOR TESTING!      *      * Do not use in production code. Otherwise the singleton pattern is broken and preferences might get lost.      * @param prefs      */
+DECL|method|overwritePreferences (JabRefPreferences prefs)
+name|void
+name|overwritePreferences
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
+block|{
+name|singleton
+operator|=
+name|prefs
+expr_stmt|;
+block|}
 block|}
 end_class
 
