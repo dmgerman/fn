@@ -277,7 +277,7 @@ name|userAgent
 argument_list|(
 literal|"Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0"
 argument_list|)
-comment|// don't identify as a crawler FIXME: still gets blocked in tests
+comment|// don't identify as a crawler
 operator|.
 name|get
 argument_list|()
