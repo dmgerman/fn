@@ -750,11 +750,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|util
-operator|.
-name|io
+name|desktop
 operator|.
 name|JabRefDesktop
 import|;

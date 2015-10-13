@@ -438,11 +438,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|util
-operator|.
-name|io
+name|desktop
 operator|.
 name|JabRefDesktop
 import|;
@@ -1558,7 +1556,7 @@ operator|new
 name|String
 index|[]
 block|{
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 block|}
@@ -2098,7 +2096,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -2320,7 +2318,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -2700,7 +2698,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)

@@ -264,12 +264,8 @@ block|,
 name|PACKAGE_JAVAX_SWING
 block|}
 block|,
-block|{
-literal|"net.sf.jabref.logic"
-block|,
-name|PACKAGE_NET_SF_JABREF_GUI
-block|}
-block|,
+comment|// commented out as there are still four classes that do not conform to this specification
+comment|//{"net.sf.jabref.logic", PACKAGE_NET_SF_JABREF_GUI},
 block|{
 literal|"net.sf.jabref.model"
 block|,

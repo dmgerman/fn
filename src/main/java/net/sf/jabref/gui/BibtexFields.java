@@ -1339,7 +1339,7 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
