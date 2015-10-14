@@ -93,7 +93,7 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"Español"
+literal|"EspaÃ±ol"
 argument_list|,
 literal|"es"
 argument_list|)
@@ -102,7 +102,7 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"Persian (?????)"
+literal|"Persian (ÙØ§Ø±Ø³Û)"
 argument_list|,
 literal|"fa"
 argument_list|)
