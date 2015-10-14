@@ -3221,6 +3221,20 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"BIAI Journals&amp; Magazines"
 argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"MIT Press Journals"
+argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"Alcatel-Lucent Journal"
+argument_list|)
 condition|)
 block|{
 name|type
@@ -3372,6 +3386,31 @@ operator|=
 literal|"booktitle"
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"Morgan and Claypool eBooks"
+argument_list|)
+condition|)
+block|{
+name|type
+operator|=
+name|BibtexEntryType
+operator|.
+name|getType
+argument_list|(
+literal|"book"
+argument_list|)
+expr_stmt|;
+name|sourceField
+operator|=
+literal|"note"
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -3500,6 +3539,27 @@ argument_list|(
 literal|"publisher"
 argument_list|,
 literal|"IEEE USA"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"Morgan \\& Claypool eBooks"
+argument_list|)
+condition|)
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"publisher"
+argument_list|,
+literal|"Morgan and Claypool"
 argument_list|)
 expr_stmt|;
 block|}
