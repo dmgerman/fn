@@ -452,11 +452,6 @@ specifier|private
 name|int
 name|parsed
 decl_stmt|;
-DECL|field|piv
-specifier|private
-name|int
-name|piv
-decl_stmt|;
 DECL|field|shouldContinue
 specifier|private
 name|boolean
@@ -783,10 +778,6 @@ name|terms
 operator|=
 name|query
 expr_stmt|;
-name|piv
-operator|=
-literal|0
-expr_stmt|;
 name|shouldContinue
 operator|=
 literal|true
@@ -1064,8 +1055,6 @@ argument_list|(
 name|dialog
 argument_list|,
 name|page
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 return|return
@@ -1234,7 +1223,7 @@ operator|+
 name|startIndex
 return|;
 block|}
-DECL|method|parse (ImportInspector dialog, String text, int startIndex)
+DECL|method|parse (ImportInspector dialog, String text)
 specifier|private
 name|void
 name|parse
@@ -1244,15 +1233,8 @@ name|dialog
 parameter_list|,
 name|String
 name|text
-parameter_list|,
-name|int
-name|startIndex
 parameter_list|)
 block|{
-name|piv
-operator|=
-name|startIndex
-expr_stmt|;
 name|BibtexEntry
 name|entry
 decl_stmt|;
@@ -3072,7 +3054,7 @@ name|indexOf
 argument_list|(
 literal|"<div class=\"detail"
 argument_list|,
-name|piv
+literal|0
 argument_list|)
 decl_stmt|;
 name|int
@@ -3105,10 +3087,6 @@ block|{
 name|endIndex
 operator|+=
 literal|6
-expr_stmt|;
-name|piv
-operator|=
-name|endIndex
 expr_stmt|;
 name|String
 name|text
