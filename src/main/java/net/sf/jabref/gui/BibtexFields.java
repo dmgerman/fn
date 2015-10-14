@@ -258,17 +258,6 @@ name|ENTRYTYPE
 init|=
 literal|"entrytype"
 decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|String
-comment|// Using this when I have no database open or when I read
-comment|// non bibtex file formats (used by the ImportFormatReader.java)
-DECL|field|DEFAULT_BIBTEXENTRY_ID
-name|DEFAULT_BIBTEXENTRY_ID
-init|=
-literal|"__ID"
-decl_stmt|;
 DECL|field|DEFAULT_INSPECTION_FIELDS
 specifier|public
 specifier|static
