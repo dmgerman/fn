@@ -712,7 +712,25 @@ name|jabref
 operator|.
 name|external
 operator|.
+name|push
+operator|.
 name|PushToApplicationButton
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|external
+operator|.
+name|push
+operator|.
+name|PushToApplications
 import|;
 end_import
 
@@ -6611,7 +6629,7 @@ name|PushToApplicationButton
 argument_list|(
 name|this
 argument_list|,
-name|PushToApplicationButton
+name|PushToApplications
 operator|.
 name|applications
 argument_list|)
