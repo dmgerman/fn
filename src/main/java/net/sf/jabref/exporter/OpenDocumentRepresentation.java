@@ -418,11 +418,17 @@ name|entries
 operator|=
 operator|new
 name|SortedList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|entryList
 argument_list|,
 operator|new
 name|FieldComparatorStack
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|comparators
 argument_list|)
