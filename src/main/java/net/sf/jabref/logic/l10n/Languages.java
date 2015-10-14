@@ -111,7 +111,7 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"Fran\u00E7ais"
+literal|"FranÃ§ais"
 argument_list|,
 literal|"fr"
 argument_list|)
