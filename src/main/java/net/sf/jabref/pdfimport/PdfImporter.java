@@ -1,8 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|spl
+DECL|package|net.sf.jabref.pdfimport
 package|package
-name|spl
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|pdfimport
 package|;
 end_package
 
@@ -515,26 +521,6 @@ operator|.
 name|util
 operator|.
 name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|spl
-operator|.
-name|filter
-operator|.
-name|PdfFileFilter
-import|;
-end_import
-
-begin_import
-import|import
-name|spl
-operator|.
-name|gui
-operator|.
-name|ImportDialog
 import|;
 end_import
 

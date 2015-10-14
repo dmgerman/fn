@@ -92,9 +92,13 @@ end_import
 
 begin_import
 import|import
-name|spl
+name|net
 operator|.
-name|gui
+name|sf
+operator|.
+name|jabref
+operator|.
+name|pdfimport
 operator|.
 name|ImportDialog
 import|;

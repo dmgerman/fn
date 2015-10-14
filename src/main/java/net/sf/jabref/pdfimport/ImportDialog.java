@@ -1,10 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|spl.gui
+DECL|package|net.sf.jabref.pdfimport
 package|package
-name|spl
+name|net
 operator|.
-name|gui
+name|sf
+operator|.
+name|jabref
+operator|.
+name|pdfimport
 package|;
 end_package
 
