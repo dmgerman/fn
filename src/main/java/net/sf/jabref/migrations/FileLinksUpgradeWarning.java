@@ -72,20 +72,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|actions
 operator|.
 name|BrowseAction
@@ -425,7 +411,7 @@ name|prefs
 operator|.
 name|hasKey
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
@@ -1060,7 +1046,7 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
@@ -1162,7 +1148,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -1279,7 +1265,7 @@ name|field
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)

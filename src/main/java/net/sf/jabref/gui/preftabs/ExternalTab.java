@@ -1562,7 +1562,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
@@ -1804,7 +1804,7 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 operator|+

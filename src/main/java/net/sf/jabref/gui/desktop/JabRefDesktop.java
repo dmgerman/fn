@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.util.io
+DECL|package|net.sf.jabref.gui.desktop
 package|package
 name|net
 operator|.
@@ -8,11 +8,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|util
-operator|.
-name|io
+name|desktop
 package|;
 end_package
 
@@ -1964,7 +1962,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -2103,7 +2101,7 @@ name|UndoableFieldChange
 argument_list|(
 name|entry
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
@@ -2116,7 +2114,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,

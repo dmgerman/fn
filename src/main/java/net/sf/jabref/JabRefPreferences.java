@@ -334,22 +334,6 @@ name|logic
 operator|.
 name|labelPattern
 operator|.
-name|AbstractLabelPattern
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|labelPattern
-operator|.
 name|GlobalLabelPattern
 import|;
 end_import
@@ -6579,7 +6563,7 @@ name|put
 argument_list|(
 name|USER_FILE_DIR
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
@@ -6594,7 +6578,7 @@ name|put
 argument_list|(
 name|USER_FILE_DIR_IND_LEGACY
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
@@ -6625,7 +6609,7 @@ name|put
 argument_list|(
 name|USER_FILE_DIR_INDIVIDUAL
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
@@ -6672,7 +6656,7 @@ name|put
 argument_list|(
 name|USER_FILE_DIR_IND_LEGACY
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
@@ -6692,7 +6676,7 @@ name|put
 argument_list|(
 name|USER_FILE_DIR_INDIVIDUAL
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 operator|+

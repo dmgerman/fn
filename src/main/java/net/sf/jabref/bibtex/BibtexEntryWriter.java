@@ -4,15 +4,13 @@ comment|/*  Copyright (C) -2015 JabRef contributors.     Copyright (C) 2015 Oliv
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.bibtex
+DECL|package|net.sf.jabref.bibtex
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|logic
 operator|.
 name|bibtex
 package|;
@@ -133,22 +131,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryTypes
 import|;
 end_import
 
