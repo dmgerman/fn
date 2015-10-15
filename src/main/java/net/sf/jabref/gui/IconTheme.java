@@ -566,6 +566,13 @@ literal|"\uF21C"
 argument_list|)
 comment|/*css: clipboard-arrow-left */
 block|,
+DECL|enumConstant|ATTACH_FILE
+name|ATTACH_FILE
+argument_list|(
+literal|"\uF469"
+argument_list|)
+comment|/*css: paperclip*/
+block|,
 comment|// STILL MISSING:
 DECL|enumConstant|COMPLETE
 name|COMPLETE
@@ -946,7 +953,27 @@ name|Color
 operator|.
 name|RED
 argument_list|)
-block|;
+block|,
+DECL|enumConstant|OPEN_FOLDER
+name|OPEN_FOLDER
+argument_list|(
+literal|"\uF4E6"
+argument_list|,
+name|Color
+operator|.
+name|RED
+argument_list|)
+block|,
+DECL|enumConstant|GROUP_REGULAR
+name|GROUP_REGULAR
+argument_list|(
+literal|"\uF4E6"
+argument_list|,
+name|Color
+operator|.
+name|RED
+argument_list|)
+block|,;
 DECL|field|code
 specifier|private
 specifier|final
@@ -1542,31 +1569,17 @@ name|String
 name|name
 parameter_list|)
 block|{
+comment|//return JabRefIcon.values()[new Random().nextInt(JabRefIcon.values().length)].getImageIcon();
 return|return
-name|JabRefIcon
-operator|.
-name|values
-argument_list|()
-index|[
 operator|new
-name|Random
-argument_list|()
-operator|.
-name|nextInt
+name|ImageIcon
 argument_list|(
-name|JabRefIcon
-operator|.
-name|values
-argument_list|()
-operator|.
-name|length
+name|getIconUrl
+argument_list|(
+name|name
 argument_list|)
-index|]
-operator|.
-name|getImageIcon
-argument_list|()
+argument_list|)
 return|;
-comment|//return new ImageIcon(getIconUrl(name));
 block|}
 comment|/**      * Looks up the URL for the image representing the given function, in the resource      * file listing images.      *      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The URL to the actual image to use.      */
 DECL|method|getIconUrl (String name)
