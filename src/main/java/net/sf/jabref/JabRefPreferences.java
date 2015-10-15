@@ -4737,12 +4737,7 @@ name|put
 argument_list|(
 name|DEFAULT_ENCODING
 argument_list|,
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"file.encoding"
-argument_list|)
+literal|"UTF-8"
 argument_list|)
 expr_stmt|;
 name|defaults
