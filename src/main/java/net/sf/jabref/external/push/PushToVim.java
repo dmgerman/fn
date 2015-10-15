@@ -701,6 +701,8 @@ argument_list|)
 expr_stmt|;
 comment|// formatter:on
 block|}
+else|else
+block|{
 name|super
 operator|.
 name|operationCompleted
@@ -708,6 +710,7 @@ argument_list|(
 name|panel
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override

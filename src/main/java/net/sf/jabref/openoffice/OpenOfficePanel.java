@@ -5938,18 +5938,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getKeyStrokeName ()
-specifier|public
-name|String
-name|getKeyStrokeName
-parameter_list|()
-block|{
-return|return
-literal|null
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|getSettingsPanel ()
 specifier|public
 name|JPanel

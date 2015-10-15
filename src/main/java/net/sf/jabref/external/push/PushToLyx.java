@@ -90,6 +90,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|IconTheme
 import|;
 end_import
@@ -198,48 +212,24 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|getCouldNotCall ()
-specifier|protected
-name|String
-name|getCouldNotCall
-parameter_list|()
+DECL|method|operationCompleted (BasePanel panel)
+specifier|public
+name|void
+name|operationCompleted
+parameter_list|(
+name|BasePanel
+name|panel
+parameter_list|)
 block|{
-comment|// @formatter:off
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"unable to write to"
-argument_list|)
-operator|+
-literal|" "
-operator|+
-name|commandPath
-operator|+
-literal|".in"
-return|;
-comment|// @formatter:on
-block|}
-annotation|@
-name|Override
-DECL|method|getCouldNotConnect ()
-specifier|protected
-name|String
-name|getCouldNotConnect
-parameter_list|()
+if|if
+condition|(
+name|couldNotConnect
+condition|)
 block|{
-comment|// @formatter:off
-return|return
+name|panel
+operator|.
+name|output
+argument_list|(
 name|Localization
 operator|.
 name|lang
@@ -261,8 +251,53 @@ operator|+
 name|commandPath
 operator|+
 literal|"]"
-return|;
-comment|// @formatter:on
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|couldNotCall
+condition|)
+block|{
+name|panel
+operator|.
+name|output
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"unable to write to"
+argument_list|)
+operator|+
+literal|" "
+operator|+
+name|commandPath
+operator|+
+literal|".in"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|super
+operator|.
+name|operationCompleted
+argument_list|(
+name|panel
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
