@@ -321,21 +321,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getKeyStrokeName ()
-specifier|public
-name|String
-name|getKeyStrokeName
-parameter_list|()
-block|{
-return|return
-literal|"Push to "
-operator|+
-name|getApplicationName
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keyString, MetaData metaData)
 specifier|public
 name|void

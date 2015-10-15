@@ -116,11 +116,6 @@ name|Icon
 name|getIcon
 parameter_list|()
 function_decl|;
-DECL|method|getKeyStrokeName ()
-name|String
-name|getKeyStrokeName
-parameter_list|()
-function_decl|;
 comment|/**      * This method asks the implementing class to return a JPanel populated with the imlementation's options panel, if      * necessary. If the JPanel is shown to the user, and the user indicates that settings should be stored, the      * implementation's storeSettings() method will be called. This method must make sure all widgets in the panel are      * in the correct selection states.      *      * @return a JPanel containing options, or null if options are not needed.      */
 DECL|method|getSettingsPanel ()
 name|JPanel
