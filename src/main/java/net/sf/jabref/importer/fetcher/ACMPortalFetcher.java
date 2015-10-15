@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 Aaron Chen     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef Contributors     Copyright (C) 2003-2011 Aaron Chen     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -382,6 +382,34 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_class
 DECL|class|ACMPortalFetcher
 specifier|public
@@ -390,6 +418,22 @@ name|ACMPortalFetcher
 implements|implements
 name|PreviewEntryFetcher
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ACMPortalFetcher
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|htmlConverter
 specifier|private
 specifier|final
@@ -551,18 +595,7 @@ name|perPage
 init|=
 literal|20
 decl_stmt|;
-DECL|field|MAX_FETCH
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|MAX_FETCH
-init|=
-name|ACMPortalFetcher
-operator|.
-name|perPage
-decl_stmt|;
-comment|// only one page. Otherwise, the user will get blocked by ACM. 100 has been the old setting. See Bug 3532752 - https://sourceforge.net/tracker/index.php?func=detail&aid=3532752&group_id=92314&atid=600306
+comment|// Fetch only one page. Otherwise, the user will get blocked by ACM. 100 has been the old setting. See Bug 3532752 - https://sourceforge.net/tracker/index.php?func=detail&aid=3532752&group_id=92314&atid=600306
 DECL|field|WAIT_TIME
 specifier|private
 specifier|static
@@ -1549,16 +1582,13 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-DECL|method|getEntryBibTeXURL (String fullCitation, boolean abs)
+DECL|method|getEntryBibTeXURL (String fullCitation)
 specifier|private
 name|String
 name|getEntryBibTeXURL
 parameter_list|(
 name|String
 name|fullCitation
-parameter_list|,
-name|boolean
-name|abs
 parameter_list|)
 block|{
 comment|// Get ID
@@ -1591,13 +1621,9 @@ literal|1
 argument_list|)
 return|;
 block|}
-else|else
-block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Did not find ID in: "
 operator|+
@@ -1607,7 +1633,6 @@ expr_stmt|;
 return|return
 literal|null
 return|;
-block|}
 block|}
 DECL|method|getNextEntryURL (String allText, int startIndex, int entryNumber, Map<String, JLabel> entries)
 specifier|private
@@ -1718,8 +1743,6 @@ name|group
 argument_list|(
 literal|1
 argument_list|)
-argument_list|,
-name|fetchAbstract
 argument_list|)
 decl_stmt|;
 name|String
@@ -2236,11 +2259,9 @@ name|NoSuchElementException
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Bad Bibtex record read at: "
 operator|+
@@ -2430,20 +2451,16 @@ name|find
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Unmatched!"
 argument_list|)
 expr_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 name|substring
 argument_list|)
@@ -2551,6 +2568,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -2558,7 +2577,8 @@ name|source
 operator|.
 name|openStream
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|StringBuilder
 name|sb
 init|=
@@ -2631,17 +2651,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 return|return
 name|sb
 operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 block|}
 comment|/**      * Read results from a file instead of an URL. Just for faster debugging.      * @param f      * @return      * @throws IOException      */
 DECL|method|getResultsFromFile (File f)
@@ -2655,7 +2671,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|InputStream
+try|try
+init|(
+name|BufferedInputStream
 name|in
 init|=
 operator|new
@@ -2667,7 +2685,8 @@ argument_list|(
 name|f
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|StringBuilder
 name|sb
 init|=
@@ -2740,17 +2759,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 return|return
 name|sb
 operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -2800,18 +2815,6 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-comment|// This method is called by the dialog when the user has selected the
-comment|//wanted entries, and clicked Ok. The callback object can update status
-comment|//line etc.
-DECL|method|done (int entriesImported)
-specifier|public
-name|void
-name|done
-parameter_list|(
-name|int
-name|entriesImported
-parameter_list|)
-block|{      }
 comment|// This method is called by the dialog when the user has cancelled or
 comment|//signalled a stop. It is expected that any long-running fetch operations
 comment|//will stop after this method is called.
@@ -2842,6 +2845,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|BufferedWriter
 name|out
 init|=
@@ -2854,7 +2859,8 @@ argument_list|(
 name|filename
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|out
 operator|.
 name|write
@@ -2862,11 +2868,7 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
-name|out
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 block|}
 block|}
 end_class

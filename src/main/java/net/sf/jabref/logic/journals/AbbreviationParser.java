@@ -208,8 +208,11 @@ parameter_list|)
 throws|throws
 name|FileNotFoundException
 block|{
-name|readJournalList
-argument_list|(
+try|try
+init|(
+name|FileReader
+name|fr
+init|=
 operator|new
 name|FileReader
 argument_list|(
@@ -220,8 +223,33 @@ argument_list|(
 name|file
 argument_list|)
 argument_list|)
+init|)
+block|{
+name|readJournalList
+argument_list|(
+name|fr
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Could not read journal list from file "
+operator|+
+name|file
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Read the given file, which should contain a list of journal names and their      * abbreviations. Each line should be formatted as: "Full Journal Name=Abbr. Journal Name"      *      * @param in      */
 DECL|method|readJournalList (Reader in)

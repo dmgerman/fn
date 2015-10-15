@@ -4155,6 +4155,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -4162,7 +4164,8 @@ name|source
 operator|.
 name|openStream
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|StringBuilder
 name|sb
 init|=
@@ -4235,17 +4238,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 return|return
 name|sb
 operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 block|}
 comment|/**      * Read results from a file instead of an URL. Just for faster debugging.      *       * @param f      * @return      * @throws IOException      */
 DECL|method|getResultsFromFile (File f)
@@ -4259,6 +4258,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -4271,7 +4272,8 @@ argument_list|(
 name|f
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|StringBuilder
 name|sb
 init|=
@@ -4344,17 +4346,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 return|return
 name|sb
 operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 block|}
 block|}
 end_class

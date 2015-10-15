@@ -332,6 +332,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|Scanner
 name|scan
 init|=
@@ -340,7 +342,8 @@ name|Scanner
 argument_list|(
 name|in
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|text
 init|=
@@ -354,11 +357,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|scan
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 return|return
 name|importEntries
 argument_list|(
@@ -367,6 +365,7 @@ argument_list|,
 name|status
 argument_list|)
 return|;
+block|}
 block|}
 DECL|method|importEntries (String text, OutputPrinter status)
 specifier|public

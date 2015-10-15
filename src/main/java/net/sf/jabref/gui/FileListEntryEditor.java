@@ -626,9 +626,7 @@ name|types
 operator|=
 operator|new
 name|JComboBox
-argument_list|<
-name|ExternalFileType
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|types
@@ -1714,9 +1712,7 @@ name|setModel
 argument_list|(
 operator|new
 name|DefaultComboBoxModel
-argument_list|<
-name|ExternalFileType
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Globals
 operator|.
