@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -511,6 +511,15 @@ name|StringDialog
 extends|extends
 name|JDialog
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|3649022684378600168L
+decl_stmt|;
 comment|// A reference to the entry this object works on.
 DECL|field|base
 specifier|private
@@ -663,6 +672,14 @@ operator|new
 name|LayoutFocusTraversalPolicy
 argument_list|()
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|601883449812894601L
+decl_stmt|;
 annotation|@
 name|Override
 specifier|protected
@@ -681,9 +698,11 @@ argument_list|(
 name|c
 argument_list|)
 operator|&&
+operator|(
 name|c
 operator|instanceof
 name|StringTable
+operator|)
 return|;
 block|}
 block|}
@@ -931,10 +950,6 @@ argument_list|,
 name|removeStringAction
 argument_list|)
 expr_stmt|;
-comment|//im.put(prefs.getKey("String dialog, move string up"), "up");
-comment|//am.put("up", stringUpAction);
-comment|//im.put(prefs.getKey("String dialog, move string down"), "down");
-comment|//am.put("down", stringDownAction);
 name|im
 operator|.
 name|put
@@ -1064,8 +1079,6 @@ argument_list|,
 name|redoAction
 argument_list|)
 expr_stmt|;
-comment|//tlb.add(closeAction);
-comment|//tlb.addSeparator();
 name|tlb
 operator|.
 name|add
@@ -1092,8 +1105,6 @@ argument_list|(
 name|saveAction
 argument_list|)
 expr_stmt|;
-comment|//tlb.add(stringUpAction);
-comment|//tlb.add(stringDownAction);
 name|tlb
 operator|.
 name|addSeparator
@@ -1200,6 +1211,16 @@ name|StringTable
 extends|extends
 name|JTable
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|2772213505406760942L
+decl_stmt|;
 DECL|field|sp
 specifier|final
 name|JScrollPane
@@ -1485,10 +1506,20 @@ name|StringTableModel
 extends|extends
 name|AbstractTableModel
 block|{
-DECL|field|base
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|3696860403245796557L
+decl_stmt|;
+DECL|field|tbase
 specifier|final
 name|BibtexDatabase
-name|base
+name|tbase
 decl_stmt|;
 DECL|field|parent
 specifier|final
@@ -1514,7 +1545,7 @@ name|parent
 expr_stmt|;
 name|this
 operator|.
-name|base
+name|tbase
 operator|=
 name|base
 expr_stmt|;
@@ -1582,10 +1613,6 @@ name|int
 name|col
 parameter_list|)
 block|{
-comment|//	    if (row>= base.getStringCount())
-comment|//	return; // After a Remove operation the program somehow
-comment|// thinks the user is still editing an entry,
-comment|// which might now be outside
 if|if
 condition|(
 name|col
@@ -1618,7 +1645,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|base
+name|tbase
 operator|.
 name|hasStringLabel
 argument_list|(
@@ -2114,6 +2141,15 @@ name|CloseAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|5530138721879378049L
+decl_stmt|;
 DECL|field|parent
 specifier|final
 name|StringDialog
@@ -2245,6 +2281,16 @@ name|NewStringAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|950091418779927997L
+decl_stmt|;
 DECL|field|parent
 specifier|final
 name|StringDialog
@@ -2533,81 +2579,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|field|storeContentAction
-name|StoreContentAction
-name|storeContentAction
-init|=
-operator|new
-name|StoreContentAction
-argument_list|(
-name|this
-argument_list|)
-decl_stmt|;
-DECL|class|StoreContentAction
-specifier|static
-class|class
-name|StoreContentAction
-extends|extends
-name|AbstractAction
-block|{
-DECL|field|parent
-specifier|final
-name|StringDialog
-name|parent
-decl_stmt|;
-DECL|method|StoreContentAction (StringDialog parent)
-specifier|public
-name|StoreContentAction
-parameter_list|(
-name|StringDialog
-name|parent
-parameter_list|)
-block|{
-name|super
-argument_list|(
-literal|"Store string"
-argument_list|,
-name|IconTheme
-operator|.
-name|getImage
-argument_list|(
-literal|"add"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|SHORT_DESCRIPTION
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Store string"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|parent
-operator|=
-name|parent
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|actionPerformed (ActionEvent e)
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{         }
-block|}
 DECL|field|saveAction
 name|SaveDatabaseAction
 name|saveAction
@@ -2625,6 +2596,15 @@ name|SaveDatabaseAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|2780778445054043703L
+decl_stmt|;
 DECL|field|parent
 specifier|final
 name|StringDialog
@@ -2695,6 +2675,16 @@ name|RemoveStringAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|1134835504587601867L
+decl_stmt|;
 DECL|field|parent
 specifier|final
 name|StringDialog
@@ -2958,20 +2948,27 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-comment|//table.repaint();
-comment|//panel.markBaseChanged();
 block|}
 block|}
 block|}
 block|}
 block|}
-comment|/*    StringUpAction stringUpAction = new StringUpAction();     class StringUpAction extends AbstractAction {     public StringUpAction() {         super("Move string up",     	  new ImageIcon(GUIGlobals.upIconFile));         putValue(SHORT_DESCRIPTION, Globals.lang("Move string up"));     }     public void actionPerformed(ActionEvent e) {         int[] sel = table.getSelectedRows();         if ((sel.length == 1)&& (sel[0]> 0)) {      	// Make sure no cell is being edited, as caused by the     	// keystroke. This makes the content hang on the screen.     	assureNotEditing();     	// Store undo information:     	panel.undoManager.addEdit(new UndoableMoveString     				      (panel, base, sel[0], true));      	BibtexString bs = base.getString(sel[0]);     	base.removeString(sel[0]);     	try {     	    base.addString(bs, sel[0]-1);     	} catch (KeyCollisionException ex) {}     	table.revalidate();     	table.setRowSelectionInterval(sel[0]-1, sel[0]-1);     	table.repaint();     	panel.markBaseChanged();         }     }     }      StringDownAction stringDownAction = new StringDownAction();     class StringDownAction extends AbstractAction {     public StringDownAction() {         super("Move string down",     	  new ImageIcon(GUIGlobals.downIconFile));         putValue(SHORT_DESCRIPTION, Globals.lang("Move string down"));     }     public void actionPerformed(ActionEvent e) {         int[] sel = table.getSelectedRows();         if ((sel.length == 1)&& (sel[0]+1< base.getStringCount())) {      	// Make sure no cell is being edited, as caused by the     	// keystroke. This makes the content hang on the screen.     	assureNotEditing();       	// Store undo information:     	panel.undoManager.addEdit(new UndoableMoveString     				      (panel, base, sel[0], false));       	BibtexString bs = base.getString(sel[0]);     	base.removeString(sel[0]);     	try {     	    base.addString(bs, sel[0]+1);     	} catch (KeyCollisionException ex) {}     	table.revalidate();     	table.setRowSelectionInterval(sel[0]+1, sel[0]+1);     	table.repaint();     	panel.markBaseChanged();         }      }     }*/
 DECL|class|UndoAction
 class|class
 name|UndoAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|599852779966425698L
+decl_stmt|;
 DECL|method|UndoAction ()
 specifier|public
 name|UndoAction
@@ -3039,6 +3036,16 @@ name|RedoAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|4404964237851372948L
+decl_stmt|;
 DECL|method|RedoAction ()
 specifier|public
 name|RedoAction
