@@ -393,11 +393,6 @@ operator|.
 name|next
 argument_list|()
 expr_stmt|;
-name|scan
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 name|BibtexEntry
 name|entry
