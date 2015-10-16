@@ -1033,7 +1033,7 @@ name|JabRefIcon
 operator|.
 name|HELP
 operator|.
-name|getSmallIcon
+name|getIcon
 argument_list|()
 argument_list|)
 argument_list|)

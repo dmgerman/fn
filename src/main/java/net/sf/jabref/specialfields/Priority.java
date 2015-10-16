@@ -88,10 +88,12 @@ name|icon
 init|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"priority"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|PRIORITY
+operator|.
+name|getIcon
+argument_list|()
 decl_stmt|;
 DECL|method|Priority ()
 specifier|private
@@ -149,10 +151,12 @@ name|icon
 operator|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"red"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|PRIORITY_HIGH
+operator|.
+name|getSmallIcon
+argument_list|()
 expr_stmt|;
 comment|// DO NOT TRANSLATE "prio1" etc. as this makes the .bib files non portable
 name|values
@@ -190,10 +194,12 @@ name|icon
 operator|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"orange"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|PRIORITY_MEDIUM
+operator|.
+name|getSmallIcon
+argument_list|()
 expr_stmt|;
 name|values
 operator|.
@@ -230,10 +236,12 @@ name|icon
 operator|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"green"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|PRIORITY_LOW
+operator|.
+name|getSmallIcon
+argument_list|()
 expr_stmt|;
 name|values
 operator|.

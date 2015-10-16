@@ -122,10 +122,12 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"relevant"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|TOGGLE_RELEVANCE
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|,
 name|Localization
 operator|.
