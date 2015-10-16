@@ -222,6 +222,13 @@ literal|"\uf494"
 argument_list|)
 comment|/*css: plus-box*/
 block|,
+DECL|enumConstant|ADD_NOBOX
+name|ADD_NOBOX
+argument_list|(
+literal|"\uF493"
+argument_list|)
+comment|/*css: plus */
+block|,
 DECL|enumConstant|CLIPBOARD
 name|CLIPBOARD
 argument_list|(
@@ -239,6 +246,13 @@ name|REMOVE
 argument_list|(
 literal|"\uf406"
 argument_list|)
+block|,
+DECL|enumConstant|REMOVE_NOBOX
+name|REMOVE_NOBOX
+argument_list|(
+literal|"\uF405"
+argument_list|)
+comment|/*css: minus */
 block|,
 DECL|enumConstant|FILE
 name|FILE
@@ -1014,9 +1028,15 @@ name|this
 argument_list|(
 name|code
 argument_list|,
+operator|new
 name|Color
-operator|.
-name|BLACK
+argument_list|(
+literal|113
+argument_list|,
+literal|134
+argument_list|,
+literal|145
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
