@@ -267,10 +267,12 @@ name|SMALL_ICON
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"pdfSmall"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|WRITE_XMP
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|putValue

@@ -227,7 +227,7 @@ name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|AUTO_GROUP
+name|AUTO_FILE_LINK
 operator|.
 name|getIcon
 argument_list|()

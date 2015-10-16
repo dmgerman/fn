@@ -573,6 +573,13 @@ literal|"\uF469"
 argument_list|)
 comment|/*css: paperclip*/
 block|,
+DECL|enumConstant|AUTO_FILE_LINK
+name|AUTO_FILE_LINK
+argument_list|(
+literal|"\uF2D6"
+argument_list|)
+comment|/*css: file-find */
+block|,
 comment|// STILL MISSING:
 DECL|enumConstant|COMPLETE
 name|COMPLETE
@@ -973,7 +980,17 @@ name|Color
 operator|.
 name|RED
 argument_list|)
-block|,;
+block|,
+DECL|enumConstant|WRITE_XMP
+name|WRITE_XMP
+argument_list|(
+literal|"\uF4E6"
+argument_list|,
+name|Color
+operator|.
+name|RED
+argument_list|)
+block|;
 DECL|field|code
 specifier|private
 specifier|final
