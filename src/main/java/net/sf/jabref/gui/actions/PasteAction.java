@@ -184,10 +184,12 @@ name|SMALL_ICON
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"paste"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|PASTE
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

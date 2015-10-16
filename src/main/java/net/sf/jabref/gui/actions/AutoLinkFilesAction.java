@@ -225,10 +225,12 @@ name|SMALL_ICON
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"autoGroup"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|AUTO_GROUP
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|putValue
