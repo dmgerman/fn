@@ -287,10 +287,12 @@ name|ARROW_ICON
 init|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"secondary_sorted_reverse"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|DOWN
+operator|.
+name|getSmallIcon
+argument_list|()
 decl_stmt|;
 DECL|field|mAction
 specifier|private

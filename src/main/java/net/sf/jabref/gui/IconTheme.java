@@ -645,6 +645,27 @@ argument_list|(
 literal|"\uF5E7"
 argument_list|)
 block|,
+DECL|enumConstant|OPEN
+name|OPEN
+argument_list|(
+literal|"\uF300"
+argument_list|)
+comment|/*css: folder */
+block|,
+DECL|enumConstant|ADD_ROW
+name|ADD_ROW
+argument_list|(
+literal|"\uf4ed"
+argument_list|)
+comment|/* css: server-plus*/
+block|,
+DECL|enumConstant|REMOVE_ROW
+name|REMOVE_ROW
+argument_list|(
+literal|"\uF4E9"
+argument_list|)
+comment|/*css: server-minus */
+block|,
 comment|// simple color boxes:
 DECL|enumConstant|BOX_RED
 name|BOX_RED
@@ -719,16 +740,6 @@ argument_list|)
 block|,
 DECL|enumConstant|EXPORT_TO_KEYWORDS
 name|EXPORT_TO_KEYWORDS
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|,
-DECL|enumConstant|OPEN
-name|OPEN
 argument_list|(
 literal|"\uF4E6"
 argument_list|,
