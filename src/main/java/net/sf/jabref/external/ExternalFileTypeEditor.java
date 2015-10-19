@@ -1550,7 +1550,7 @@ operator|.
 name|setIcon
 argument_list|(
 operator|(
-name|ImageIcon
+name|Icon
 operator|)
 name|value
 argument_list|)
