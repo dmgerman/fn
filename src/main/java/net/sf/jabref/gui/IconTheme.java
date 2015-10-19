@@ -747,6 +747,13 @@ literal|"\uf24f"
 argument_list|)
 block|,
 comment|/* css: compare */
+DECL|enumConstant|CONNECT_OPEN_OFFICE
+name|CONNECT_OPEN_OFFICE
+argument_list|(
+literal|"\uf454"
+argument_list|)
+comment|/*css: open-in-app */
+block|,
 comment|// simple color boxes:
 DECL|enumConstant|BOX_RED
 name|BOX_RED
