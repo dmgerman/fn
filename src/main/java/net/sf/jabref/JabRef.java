@@ -372,23 +372,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|nativeext
 operator|.
-name|WindowsExtensions
+name|PinToTaskbar
 import|;
 end_import
 
@@ -1105,11 +1091,12 @@ if|if
 condition|(
 name|OS
 operator|.
-name|WINDOWS
+name|isWindows7OrLater
+argument_list|()
 condition|)
 block|{
 comment|// activate pin to taskbar for Windows 7 and up
-name|WindowsExtensions
+name|PinToTaskbar
 operator|.
 name|enablePinToTaskbar
 argument_list|()
