@@ -9556,13 +9556,6 @@ name|tlb
 operator|.
 name|addAction
 argument_list|(
-name|editPreamble
-argument_list|)
-expr_stmt|;
-name|tlb
-operator|.
-name|addAction
-argument_list|(
 name|editStrings
 argument_list|)
 expr_stmt|;
