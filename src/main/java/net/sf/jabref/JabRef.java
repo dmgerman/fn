@@ -194,7 +194,7 @@ name|gui
 operator|.
 name|nativeext
 operator|.
-name|WindowsExtensions
+name|PinToTaskbar
 import|;
 end_import
 
@@ -656,6 +656,22 @@ index|[]
 name|args
 parameter_list|)
 block|{
+comment|// Native extensions
+if|if
+condition|(
+name|OS
+operator|.
+name|isWindows7OrLater
+argument_list|()
+condition|)
+block|{
+comment|// activate pin to taskbar for Windows 7 and up
+name|PinToTaskbar
+operator|.
+name|enablePinToTaskbar
+argument_list|()
+expr_stmt|;
+block|}
 name|JabRefPreferences
 name|prefs
 init|=
@@ -965,20 +981,6 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|OS
-operator|.
-name|WINDOWS
-condition|)
-block|{
-comment|// activate pin to taskbar for Windows 7 and up
-name|WindowsExtensions
-operator|.
-name|enablePinToTaskbar
-argument_list|()
-expr_stmt|;
-block|}
 name|Vector
 argument_list|<
 name|ParserResult

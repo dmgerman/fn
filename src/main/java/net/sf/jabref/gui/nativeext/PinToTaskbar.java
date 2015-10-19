@@ -46,33 +46,7 @@ name|sun
 operator|.
 name|jna
 operator|.
-name|Pointer
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|jna
-operator|.
 name|WString
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|jna
-operator|.
-name|ptr
-operator|.
-name|PointerByReference
 import|;
 end_import
 
@@ -133,14 +107,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Native extensions for Windows.  */
+comment|/**  * Native pin to taskbar extension for Windows.  * Only use this class after checking for OS Windows 7 and up!  *<example>OS.isWindows7OrLater()</example>  */
 end_comment
 
 begin_class
-DECL|class|WindowsExtensions
+DECL|class|PinToTaskbar
 specifier|public
 class|class
-name|WindowsExtensions
+name|PinToTaskbar
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -153,7 +127,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|WindowsExtensions
+name|PinToTaskbar
 operator|.
 name|class
 argument_list|)
@@ -192,12 +166,6 @@ name|void
 name|enablePinToTaskbar
 parameter_list|()
 block|{
-if|if
-condition|(
-name|supportsPinToTaskbar
-argument_list|()
-condition|)
-block|{
 name|setCurrentProcessExplicitAppUserModelID
 argument_list|(
 literal|"JabRef."
@@ -210,17 +178,6 @@ name|getVersion
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Does not support pin to taskbar."
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|setCurrentProcessExplicitAppUserModelID (final String appID)
 specifier|private
@@ -272,60 +229,6 @@ name|WString
 name|appID
 parameter_list|)
 function_decl|;
-DECL|method|supportsPinToTaskbar ()
-specifier|private
-specifier|static
-name|boolean
-name|supportsPinToTaskbar
-parameter_list|()
-block|{
-if|if
-condition|(
-operator|!
-name|OS
-operator|.
-name|WINDOWS
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-try|try
-block|{
-name|Float
-name|version
-init|=
-name|Float
-operator|.
-name|parseFloat
-argument_list|(
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"os.version"
-argument_list|)
-argument_list|)
-decl_stmt|;
-comment|// Windows 7 == 6.1
-return|return
-name|version
-operator|>=
-literal|6.1
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|NumberFormatException
-name|ex
-parameter_list|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-block|}
 block|}
 end_class
 
