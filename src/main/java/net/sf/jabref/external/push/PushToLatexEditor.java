@@ -91,10 +91,12 @@ block|{
 return|return
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"edit"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|EDIT
+operator|.
+name|getSmallIcon
+argument_list|()
 return|;
 block|}
 annotation|@

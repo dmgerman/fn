@@ -303,10 +303,12 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"close"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|CLOSE
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|closeBtn

@@ -598,9 +598,9 @@ block|,
 DECL|enumConstant|GROUP_INCLUDING
 name|GROUP_INCLUDING
 argument_list|(
-literal|"\uF2E8"
+literal|"\uF2E9"
 argument_list|)
-comment|/*css: filter; should be rotated*/
+comment|/*css: filter-outline*/
 block|,
 DECL|enumConstant|GROUP_REFINING
 name|GROUP_REFINING
@@ -609,6 +609,13 @@ literal|"\uF2E8"
 argument_list|)
 comment|/*css: filter*/
 block|,
+DECL|enumConstant|AUTO_GROUP
+name|AUTO_GROUP
+argument_list|(
+literal|"\uF154"
+argument_list|)
+block|,
+comment|/*css: auto-fix*/
 DECL|enumConstant|EMAIL
 name|EMAIL
 argument_list|(
@@ -967,16 +974,6 @@ argument_list|)
 block|,
 DECL|enumConstant|ORANGE
 name|ORANGE
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|,
-DECL|enumConstant|AUTO_GROUP
-name|AUTO_GROUP
 argument_list|(
 literal|"\uF4E6"
 argument_list|,
