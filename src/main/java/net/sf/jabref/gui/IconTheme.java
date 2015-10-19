@@ -768,6 +768,13 @@ literal|"\uf206"
 argument_list|)
 comment|/* checkbox-marked-circle-outline */
 block|,
+DECL|enumConstant|DONATE
+name|DONATE
+argument_list|(
+literal|"\uf34d"
+argument_list|)
+block|,
+comment|/* css: gift */
 comment|// simple color boxes:
 DECL|enumConstant|BOX_RED
 name|BOX_RED
