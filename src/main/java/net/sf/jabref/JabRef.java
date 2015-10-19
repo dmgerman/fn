@@ -1471,7 +1471,7 @@ comment|// We will try to import this file. Normally we
 comment|// will import it into a new tab, but if this import has
 comment|// been initiated by another instance through the remote
 comment|// listener, we will instead import it into the current database.
-comment|// This will enable easy integration with web browers that can
+comment|// This will enable easy integration with web browsers that can
 comment|// open a reference file in JabRef.
 if|if
 condition|(
