@@ -160,12 +160,7 @@ literal|"rank1"
 argument_list|,
 literal|"setRank1"
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Set rank to one star"
-argument_list|)
+literal|""
 argument_list|,
 name|IconTheme
 operator|.
@@ -198,12 +193,7 @@ literal|"rank2"
 argument_list|,
 literal|"setRank2"
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Set rank to two stars"
-argument_list|)
+literal|""
 argument_list|,
 name|IconTheme
 operator|.
@@ -236,12 +226,7 @@ literal|"rank3"
 argument_list|,
 literal|"setRank3"
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Set rank to three stars"
-argument_list|)
+literal|""
 argument_list|,
 name|IconTheme
 operator|.
@@ -274,12 +259,7 @@ literal|"rank4"
 argument_list|,
 literal|"setRank4"
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Set rank to four stars"
-argument_list|)
+literal|""
 argument_list|,
 name|IconTheme
 operator|.
@@ -312,12 +292,7 @@ literal|"rank5"
 argument_list|,
 literal|"setRank5"
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Set rank to five stars"
-argument_list|)
+literal|""
 argument_list|,
 name|IconTheme
 operator|.

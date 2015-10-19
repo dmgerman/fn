@@ -1577,7 +1577,7 @@ name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|EDIT
+name|EDIT_ENTRY
 operator|.
 name|getIcon
 argument_list|()

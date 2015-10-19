@@ -229,6 +229,27 @@ literal|"\uF493"
 argument_list|)
 comment|/*css: plus */
 block|,
+DECL|enumConstant|ADD_ENTRY
+name|ADD_ENTRY
+argument_list|(
+literal|"\uF571"
+argument_list|)
+comment|/*css: tooltip-outline-plus */
+block|,
+DECL|enumConstant|EDIT_ENTRY
+name|EDIT_ENTRY
+argument_list|(
+literal|"\uf56e"
+argument_list|)
+comment|/*css: tooltip-edit */
+block|,
+DECL|enumConstant|EDIT_STRINGS
+name|EDIT_STRINGS
+argument_list|(
+literal|"\uf572"
+argument_list|)
+comment|/*css: tooltip-text */
+block|,
 DECL|enumConstant|CLIPBOARD
 name|CLIPBOARD
 argument_list|(
@@ -532,44 +553,40 @@ block|,
 DECL|enumConstant|RANKING
 name|RANKING
 argument_list|(
-literal|"\uF42C"
+literal|"\uf521"
 argument_list|)
 comment|/*css: numeric*/
 block|,
+comment|//RANK1("\uF430") /*css: numeric-1-box */,
 DECL|enumConstant|RANK1
 name|RANK1
 argument_list|(
-literal|"\uF430"
+literal|"\uf521\uf524\uF524\uF524\uF524"
 argument_list|)
-comment|/*css: numeric-1-box */
 block|,
 DECL|enumConstant|RANK2
 name|RANK2
 argument_list|(
-literal|"\uF433"
+literal|"\uf521\uf521\uF524\uF524\uF524"
 argument_list|)
-comment|/*css: numeric-2-box */
 block|,
 DECL|enumConstant|RANK3
 name|RANK3
 argument_list|(
-literal|"\uF436"
+literal|"\uf521\uf521\uF521\uF524\uF524"
 argument_list|)
-comment|/*css: numeric-3-box */
 block|,
 DECL|enumConstant|RANK4
 name|RANK4
 argument_list|(
-literal|"\uF439"
+literal|"\uf521\uf521\uF521\uF521\uF524"
 argument_list|)
-comment|/*css: numeric-4-box */
 block|,
 DECL|enumConstant|RANK5
 name|RANK5
 argument_list|(
-literal|"\uF43C"
+literal|"\uf521\uf521\uF521\uF521\uF521"
 argument_list|)
-comment|/*css: numeric-5-box */
 block|,
 DECL|enumConstant|WWW
 name|WWW
@@ -777,16 +794,6 @@ argument_list|)
 block|,
 DECL|enumConstant|EDIT_PREAMBLE
 name|EDIT_PREAMBLE
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|,
-DECL|enumConstant|EDIT_STRINGS
-name|EDIT_STRINGS
 argument_list|(
 literal|"\uF4E6"
 argument_list|,
