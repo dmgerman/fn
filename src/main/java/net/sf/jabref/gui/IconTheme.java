@@ -754,6 +754,20 @@ literal|"\uf454"
 argument_list|)
 comment|/*css: open-in-app */
 block|,
+DECL|enumConstant|PLAIN_TEXT_IMPORT_TODO
+name|PLAIN_TEXT_IMPORT_TODO
+argument_list|(
+literal|"\uf202"
+argument_list|)
+comment|/* css: checkbox-blank-circle-outline*/
+block|,
+DECL|enumConstant|PLAIN_TEXT_IMPORT_DONE
+name|PLAIN_TEXT_IMPORT_DONE
+argument_list|(
+literal|"\uf206"
+argument_list|)
+comment|/* checkbox-marked-circle-outline */
+block|,
 comment|// simple color boxes:
 DECL|enumConstant|BOX_RED
 name|BOX_RED
