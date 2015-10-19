@@ -788,11 +788,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|util
-operator|.
-name|io
+name|desktop
 operator|.
 name|JabRefDesktop
 import|;
@@ -5791,7 +5789,7 @@ name|metaData
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -5809,7 +5807,7 @@ name|metaData
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -6271,7 +6269,7 @@ decl_stmt|;
 name|String
 name|field
 init|=
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 decl_stmt|;
@@ -6491,7 +6489,7 @@ argument_list|()
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)

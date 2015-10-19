@@ -1059,7 +1059,7 @@ name|lang
 argument_list|(
 literal|"Upgrade external PDF/PS links to use the '%0' field."
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -3314,7 +3314,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -3475,7 +3475,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
@@ -3491,7 +3491,7 @@ name|UndoableFieldChange
 argument_list|(
 name|entry
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
@@ -3522,7 +3522,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -3623,7 +3623,7 @@ argument_list|()
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -3684,7 +3684,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
@@ -3700,7 +3700,7 @@ name|UndoableFieldChange
 argument_list|(
 name|entry
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
@@ -3732,7 +3732,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -3883,7 +3883,7 @@ argument_list|()
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -4108,7 +4108,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
@@ -4127,7 +4127,7 @@ name|UndoableFieldChange
 argument_list|(
 name|entry
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,

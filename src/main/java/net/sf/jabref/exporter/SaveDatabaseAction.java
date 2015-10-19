@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -26,7 +26,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|DefaultFormBuilder
+name|FormBuilder
 import|;
 end_import
 
@@ -384,6 +384,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+comment|// @formatter:off
 name|String
 index|[]
 name|opts
@@ -460,6 +461,7 @@ literal|0
 index|]
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 comment|//  int choice = JOptionPane.showConfirmDialog(frame, Globals.lang("File has been updated externally. "
 comment|// +"Are you sure you want to save?"), Globals.lang("File updated externally"),
 comment|// JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
@@ -679,9 +681,11 @@ decl_stmt|;
 name|boolean
 name|databaseProtectionFlag
 init|=
+operator|(
 name|pd
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|Boolean
 operator|.
@@ -900,12 +904,14 @@ if|if
 condition|(
 name|cancelled
 operator|||
+operator|(
 name|panel
 operator|.
 name|getFile
 argument_list|()
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return;
@@ -1400,18 +1406,22 @@ name|couldEncodeAll
 argument_list|()
 condition|)
 block|{
-name|DefaultFormBuilder
+name|FormBuilder
 name|builder
 init|=
-operator|new
-name|DefaultFormBuilder
+name|FormBuilder
+operator|.
+name|create
+argument_list|()
+operator|.
+name|layout
 argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
 literal|"left:pref, 4dlu, fill:pref"
 argument_list|,
-literal|""
+literal|"pref, 4dlu, pref"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1439,7 +1449,7 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|Localization
 operator|.
@@ -1453,17 +1463,31 @@ name|getEncoding
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|builder
 operator|.
-name|append
+name|xy
 argument_list|(
-name|ta
+literal|1
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
+argument_list|(
+name|ta
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|3
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|add
 argument_list|(
 name|Localization
 operator|.
@@ -1471,6 +1495,13 @@ name|lang
 argument_list|(
 literal|"What do you want to do?"
 argument_list|)
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|1
+argument_list|,
+literal|3
 argument_list|)
 expr_stmt|;
 name|String
@@ -1898,6 +1929,7 @@ operator|.
 name|exists
 argument_list|()
 operator|&&
+operator|(
 name|JOptionPane
 operator|.
 name|showConfirmDialog
@@ -1935,6 +1967,7 @@ operator|!=
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 name|f

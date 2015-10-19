@@ -112,6 +112,8 @@ name|jabref
 operator|.
 name|external
 operator|.
+name|push
+operator|.
 name|PushToApplication
 import|;
 end_import
@@ -5932,18 +5934,6 @@ name|getImage
 argument_list|(
 literal|"openoffice"
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getKeyStrokeName ()
-specifier|public
-name|String
-name|getKeyStrokeName
-parameter_list|()
-block|{
-return|return
-literal|null
 return|;
 block|}
 annotation|@

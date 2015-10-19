@@ -142,8 +142,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
 name|bibtex
 operator|.
 name|comparator
@@ -159,8 +157,6 @@ operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|logic
 operator|.
 name|bibtex
 operator|.
@@ -422,11 +418,13 @@ name|entries
 operator|=
 operator|new
 name|SortedList
+argument_list|<>
 argument_list|(
 name|entryList
 argument_list|,
 operator|new
 name|FieldComparatorStack
+argument_list|<>
 argument_list|(
 name|comparators
 argument_list|)

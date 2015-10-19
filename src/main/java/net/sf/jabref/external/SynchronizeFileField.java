@@ -288,7 +288,7 @@ specifier|final
 name|String
 name|fieldName
 init|=
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 decl_stmt|;
@@ -841,7 +841,7 @@ argument_list|()
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -2283,7 +2283,7 @@ name|metaData
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)

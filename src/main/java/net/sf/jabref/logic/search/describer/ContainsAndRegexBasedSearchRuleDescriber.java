@@ -190,17 +190,6 @@ argument_list|)
 else|:
 literal|""
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"words = "
-operator|+
-name|words
-argument_list|)
-expr_stmt|;
 name|String
 name|searchDescription
 init|=

@@ -80,20 +80,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|OpenFileFilter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|external
 operator|.
 name|ExternalFileType
@@ -203,7 +189,7 @@ class|class
 name|FileFinder
 block|{
 comment|/**      * Searches the given directory and subdirectories for a pdf file with name      * as given + ".pdf"      */
-DECL|method|findPdf (String key, String extension, String directory, OpenFileFilter off)
+DECL|method|findPdf (String key, String extension, String directory, FilenameFilter off)
 specifier|public
 specifier|static
 name|String
@@ -218,7 +204,7 @@ parameter_list|,
 name|String
 name|directory
 parameter_list|,
-name|OpenFileFilter
+name|FilenameFilter
 name|off
 parameter_list|)
 block|{
@@ -322,9 +308,7 @@ name|result
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -383,9 +367,7 @@ name|result
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|File
@@ -640,9 +622,7 @@ name|dirs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|dirs
@@ -1370,9 +1350,7 @@ name|toDo
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|toDo
@@ -1554,24 +1532,12 @@ name|directory
 operator|.
 name|listFiles
 argument_list|(
-operator|new
-name|FilenameFilter
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|accept
 parameter_list|(
-name|File
 name|arg0
 parameter_list|,
-name|String
 name|arg1
 parameter_list|)
-block|{
-return|return
+lambda|->
 name|toMatch
 operator|.
 name|matcher
@@ -1581,9 +1547,6 @@ argument_list|)
 operator|.
 name|matches
 argument_list|()
-return|;
-block|}
-block|}
 argument_list|)
 decl_stmt|;
 if|if
@@ -1678,24 +1641,12 @@ name|directory
 operator|.
 name|listFiles
 argument_list|(
-operator|new
-name|FilenameFilter
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|accept
 parameter_list|(
-name|File
 name|arg0
 parameter_list|,
-name|String
 name|arg1
 parameter_list|)
-block|{
-return|return
+lambda|->
 name|toMatch
 operator|.
 name|matcher
@@ -1705,9 +1656,6 @@ argument_list|)
 operator|.
 name|matches
 argument_list|()
-return|;
-block|}
-block|}
 argument_list|)
 decl_stmt|;
 if|if
@@ -1750,7 +1698,7 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|findInDir (String key, String dir, OpenFileFilter off, int count)
+DECL|method|findInDir (String key, String dir, FilenameFilter off, int count)
 specifier|private
 specifier|static
 name|String
@@ -1762,7 +1710,7 @@ parameter_list|,
 name|String
 name|dir
 parameter_list|,
-name|OpenFileFilter
+name|FilenameFilter
 name|off
 parameter_list|,
 name|int
@@ -1809,16 +1757,8 @@ block|{
 return|return
 literal|null
 return|;
-comment|// An error occured. We may not have
-comment|// permission to list the files.
+comment|// An error occured. We may not have permission to list the files.
 block|}
-name|int
-name|numFiles
-init|=
-name|all
-operator|.
-name|length
-decl_stmt|;
 for|for
 control|(
 name|File
@@ -1858,6 +1798,8 @@ name|off
 operator|.
 name|accept
 argument_list|(
+name|f
+argument_list|,
 name|name
 argument_list|)
 condition|)

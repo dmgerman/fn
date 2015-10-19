@@ -453,7 +453,7 @@ index|[]
 name|FILE
 init|=
 block|{
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 block|}
@@ -1217,7 +1217,7 @@ index|]
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -1233,7 +1233,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -1867,7 +1867,7 @@ index|]
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -1933,7 +1933,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -2695,7 +2695,7 @@ operator|new
 name|String
 index|[]
 block|{
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 block|,

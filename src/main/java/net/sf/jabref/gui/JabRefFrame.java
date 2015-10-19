@@ -488,8 +488,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
 name|bibtex
 operator|.
 name|DuplicateCheck
@@ -714,7 +712,25 @@ name|jabref
 operator|.
 name|external
 operator|.
+name|push
+operator|.
 name|PushToApplicationButton
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|external
+operator|.
+name|push
+operator|.
+name|PushToApplications
 import|;
 end_import
 
@@ -6613,7 +6629,7 @@ name|PushToApplicationButton
 argument_list|(
 name|this
 argument_list|,
-name|PushToApplicationButton
+name|PushToApplications
 operator|.
 name|applications
 argument_list|)
@@ -9534,13 +9550,6 @@ operator|.
 name|addAction
 argument_list|(
 name|editEntry
-argument_list|)
-expr_stmt|;
-name|tlb
-operator|.
-name|addAction
-argument_list|(
-name|editPreamble
 argument_list|)
 expr_stmt|;
 name|tlb

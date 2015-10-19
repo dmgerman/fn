@@ -658,24 +658,6 @@ name|PUSH_TO_APPLICATION
 init|=
 literal|"Push to application"
 decl_stmt|;
-DECL|field|PUSH_TO_LY_X
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PUSH_TO_LY_X
-init|=
-literal|"Push to LyX"
-decl_stmt|;
-DECL|field|PUSH_TO_WIN_EDT
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PUSH_TO_WIN_EDT
-init|=
-literal|"Push to WinEdt"
-decl_stmt|;
 DECL|field|QUIT_JAB_REF
 specifier|public
 specifier|static
@@ -987,24 +969,6 @@ argument_list|(
 name|PUSH_TO_APPLICATION
 argument_list|,
 literal|"ctrl L"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|PUSH_TO_LY_X
-argument_list|,
-literal|"ctrl L"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|PUSH_TO_WIN_EDT
-argument_list|,
-literal|"ctrl shift W"
 argument_list|)
 expr_stmt|;
 name|keyBindMap

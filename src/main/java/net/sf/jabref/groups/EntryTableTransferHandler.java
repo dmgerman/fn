@@ -396,7 +396,13 @@ end_import
 
 begin_import
 import|import
-name|spl
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|pdfimport
 operator|.
 name|PdfImporter
 import|;
@@ -404,7 +410,13 @@ end_import
 
 begin_import
 import|import
-name|spl
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|pdfimport
 operator|.
 name|PdfImporter
 operator|.

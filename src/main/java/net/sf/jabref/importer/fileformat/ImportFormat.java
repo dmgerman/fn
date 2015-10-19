@@ -94,6 +94,16 @@ argument_list|<
 name|ImportFormat
 argument_list|>
 block|{
+comment|/**      * Using this when I have no database open or when I read      * non bibtex file formats (used by the ImportFormatReader.java)      */
+DECL|field|DEFAULT_BIBTEXENTRY_ID
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_BIBTEXENTRY_ID
+init|=
+literal|"__ID"
+decl_stmt|;
 DECL|field|isCustomImporter
 specifier|private
 name|boolean

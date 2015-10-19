@@ -304,6 +304,24 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import static
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Languages
+operator|.
+name|LANGUAGES
+import|;
+end_import
+
 begin_class
 DECL|class|GeneralTab
 class|class
@@ -458,8 +476,6 @@ operator|new
 name|JComboBox
 argument_list|<>
 argument_list|(
-name|GUIGlobals
-operator|.
 name|LANGUAGES
 operator|.
 name|keySet
@@ -470,8 +486,6 @@ argument_list|(
 operator|new
 name|String
 index|[
-name|GUIGlobals
-operator|.
 name|LANGUAGES
 operator|.
 name|keySet
@@ -1886,8 +1900,6 @@ control|(
 name|String
 name|lan
 range|:
-name|GUIGlobals
-operator|.
 name|LANGUAGES
 operator|.
 name|values
@@ -2295,8 +2307,6 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|GUIGlobals
-operator|.
 name|LANGUAGES
 operator|.
 name|get
@@ -2328,8 +2338,6 @@ name|JabRefPreferences
 operator|.
 name|LANGUAGE
 argument_list|,
-name|GUIGlobals
-operator|.
 name|LANGUAGES
 operator|.
 name|get
@@ -2345,8 +2353,6 @@ name|Localization
 operator|.
 name|setLanguage
 argument_list|(
-name|GUIGlobals
-operator|.
 name|LANGUAGES
 operator|.
 name|get

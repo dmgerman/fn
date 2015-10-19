@@ -236,7 +236,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|prefs
+name|JabRefPreferences
 operator|.
 name|DEFAULT_ENCODING
 argument_list|)

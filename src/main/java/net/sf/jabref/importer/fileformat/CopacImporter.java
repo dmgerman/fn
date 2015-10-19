@@ -140,20 +140,6 @@ name|BibtexEntryTypes
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|BibtexFields
-import|;
-end_import
-
 begin_comment
 comment|/**  * Importer for COPAC format.  *   * Documentation can be found online at:  *   * http://copac.ac.uk/faq/#format  */
 end_comment
@@ -524,8 +510,6 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|BibtexFields
-operator|.
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,
 name|BibtexEntryTypes
