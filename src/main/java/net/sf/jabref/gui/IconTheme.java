@@ -789,6 +789,20 @@ literal|"\uf14d"
 argument_list|)
 block|,
 comment|/*css:  arrow-up-bold */
+DECL|enumConstant|OPTIONAL
+name|OPTIONAL
+argument_list|(
+literal|"\uf3b6"
+argument_list|)
+block|,
+comment|/*css: label-outline */
+DECL|enumConstant|REQUIRED
+name|REQUIRED
+argument_list|(
+literal|"\uf3b5"
+argument_list|)
+block|,
+comment|/*css: label */
 comment|// simple color boxes:
 DECL|enumConstant|BOX_RED
 name|BOX_RED
@@ -962,16 +976,6 @@ operator|.
 name|RED
 argument_list|)
 block|,
-DECL|enumConstant|OPTIONAL
-name|OPTIONAL
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|,
 DECL|enumConstant|ORANGE
 name|ORANGE
 argument_list|(
@@ -994,16 +998,6 @@ argument_list|)
 block|,
 DECL|enumConstant|RED
 name|RED
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|,
-DECL|enumConstant|REQUIRED
-name|REQUIRED
 argument_list|(
 literal|"\uF4E6"
 argument_list|,
