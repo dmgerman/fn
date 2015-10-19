@@ -775,6 +775,13 @@ literal|"\uf34d"
 argument_list|)
 block|,
 comment|/* css: gift */
+DECL|enumConstant|MOVE_TAB_ARROW
+name|MOVE_TAB_ARROW
+argument_list|(
+literal|"\uf14d"
+argument_list|)
+block|,
+comment|/*css:  arrow-up-bold */
 comment|// simple color boxes:
 DECL|enumConstant|BOX_RED
 name|BOX_RED
@@ -809,16 +816,6 @@ block|,
 comment|// STILL MISSING:
 DECL|enumConstant|COMPLETE
 name|COMPLETE
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|,
-DECL|enumConstant|DRAG_AND_DROP_ARROW
-name|DRAG_AND_DROP_ARROW
 argument_list|(
 literal|"\uF4E6"
 argument_list|,
@@ -1176,6 +1173,18 @@ name|color
 argument_list|,
 literal|16
 argument_list|)
+return|;
+block|}
+DECL|method|getCode ()
+specifier|public
+name|String
+name|getCode
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|code
 return|;
 block|}
 DECL|method|getImageIcon ()
