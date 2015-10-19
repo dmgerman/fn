@@ -319,10 +319,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"helpSmall"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|HELP
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|fetcherChoice
@@ -1691,10 +1693,12 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"www"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|WWW
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//if ((activeFetcher.getKeyName() != null)&& (activeFetcher.getKeyName().length()> 0))

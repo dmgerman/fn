@@ -167,10 +167,12 @@ name|manager
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"save"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|SAVE
+operator|.
+name|getIcon
+argument_list|()
 argument_list|,
 name|Localization
 operator|.

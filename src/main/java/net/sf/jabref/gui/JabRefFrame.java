@@ -1496,7 +1496,7 @@ name|JabRefIcon
 operator|.
 name|HELP_CONTENTS
 operator|.
-name|getSmallIcon
+name|getIcon
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1701,15 +1701,6 @@ name|KeyBinds
 operator|.
 name|SAVE_DATABASE_AS
 argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|JabRefIcon
-operator|.
-name|SAVE_AS
-operator|.
-name|getIcon
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|saveAll
@@ -1752,15 +1743,6 @@ name|lang
 argument_list|(
 literal|"Save selected as ..."
 argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|JabRefIcon
-operator|.
-name|SAVE_AS
-operator|.
-name|getIcon
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|saveSelectedAsPlain
@@ -1789,15 +1771,6 @@ name|lang
 argument_list|(
 literal|"Save selected as plain BibTeX ..."
 argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|JabRefIcon
-operator|.
-name|SAVE_AS
-operator|.
-name|getIcon
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|exportAll
@@ -2795,15 +2768,6 @@ name|lang
 argument_list|(
 literal|"Append contents from a BibTeX database into the currently viewed database"
 argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|JabRefIcon
-operator|.
-name|OPEN
-operator|.
-name|getIcon
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|selectAll
@@ -3386,7 +3350,7 @@ name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|OPEN
+name|FILE
 operator|.
 name|getIcon
 argument_list|()
@@ -9889,20 +9853,8 @@ name|getComponent
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|tlb
-operator|.
-name|addAction
-argument_list|(
-name|openFolder
-argument_list|)
-expr_stmt|;
-name|tlb
-operator|.
-name|addAction
-argument_list|(
-name|openFile
-argument_list|)
-expr_stmt|;
+comment|//        tlb.addAction(openFolder);
+comment|//        tlb.addAction(openFile);
 comment|//tlb.addAction(openPdf);
 comment|//tlb.addAction(openUrl);
 comment|//tlb.addSeparator();

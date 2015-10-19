@@ -199,7 +199,7 @@ name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|ADD
+name|ADD_ENTRY
 operator|.
 name|getIcon
 argument_list|()

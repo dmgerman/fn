@@ -722,24 +722,31 @@ comment|/*css: eye */
 DECL|enumConstant|RELEVANT
 name|RELEVANT
 argument_list|(
-literal|"\uF265"
+literal|"\uF522"
 argument_list|)
 block|,
-comment|/*css: crosshairs-gps */
+comment|/*css: star-circle */
 DECL|enumConstant|TOGGLE_RELEVANCE
 name|TOGGLE_RELEVANCE
 argument_list|(
-literal|"\uF265"
+literal|"\uF522"
 argument_list|)
 block|,
-comment|/*css: crosshairs-gps */
+comment|/*css: star-circle */
 DECL|enumConstant|SET_RELEVANT
 name|SET_RELEVANT
 argument_list|(
-literal|"\uF265"
+literal|"\uF522"
 argument_list|)
 block|,
-comment|/*css: crosshairs-gps */
+comment|/*css: star-circle */
+DECL|enumConstant|MERGE_ENTRIES
+name|MERGE_ENTRIES
+argument_list|(
+literal|"\uf24f"
+argument_list|)
+block|,
+comment|/* css: compare */
 comment|// simple color boxes:
 DECL|enumConstant|BOX_RED
 name|BOX_RED
@@ -812,16 +819,7 @@ operator|.
 name|RED
 argument_list|)
 block|,
-DECL|enumConstant|SAVE_AS
-name|SAVE_AS
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|,
+comment|//SAVE_AS("\uF4E6", Color.RED),
 DECL|enumConstant|WRONG
 name|WRONG
 argument_list|(
@@ -924,16 +922,6 @@ argument_list|)
 block|,
 DECL|enumConstant|LOAD_SESSION
 name|LOAD_SESSION
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|,
-DECL|enumConstant|MERGE_ENTRIES
-name|MERGE_ENTRIES
 argument_list|(
 literal|"\uF4E6"
 argument_list|,
