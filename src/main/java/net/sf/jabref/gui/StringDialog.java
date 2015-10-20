@@ -511,15 +511,6 @@ name|StringDialog
 extends|extends
 name|JDialog
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|3649022684378600168L
-decl_stmt|;
 comment|// A reference to the entry this object works on.
 DECL|field|base
 specifier|private
@@ -672,14 +663,6 @@ operator|new
 name|LayoutFocusTraversalPolicy
 argument_list|()
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|601883449812894601L
-decl_stmt|;
 annotation|@
 name|Override
 specifier|protected
@@ -1168,6 +1151,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// @formatter:off
 name|setTitle
 argument_list|(
 name|Localization
@@ -1191,6 +1175,7 @@ name|untitledTitle
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 block|}
 DECL|class|StringTable
@@ -1199,16 +1184,6 @@ name|StringTable
 extends|extends
 name|JTable
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|2772213505406760942L
-decl_stmt|;
 DECL|field|sp
 specifier|final
 name|JScrollPane
@@ -1324,7 +1299,6 @@ name|TABLE_BACKGROUND
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// getInputMap().remove(GUIGlobals.exitDialog);
 name|getInputMap
 argument_list|()
 operator|.
@@ -1494,16 +1468,6 @@ name|StringTableModel
 extends|extends
 name|AbstractTableModel
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|3696860403245796557L
-decl_stmt|;
 DECL|field|tbase
 specifier|final
 name|BibtexDatabase
@@ -1644,6 +1608,7 @@ name|value
 argument_list|)
 condition|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1793,6 +1758,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 else|else
 block|{
@@ -1980,7 +1946,6 @@ name|strings
 operator|.
 name|length
 return|;
-comment|//base.getStringCount();
 block|}
 annotation|@
 name|Override
@@ -1993,6 +1958,7 @@ name|int
 name|col
 parameter_list|)
 block|{
+comment|// @formatter:off
 return|return
 name|col
 operator|==
@@ -2012,6 +1978,7 @@ argument_list|(
 literal|"Content"
 argument_list|)
 return|;
+comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -2129,15 +2096,6 @@ name|CloseAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|5530138721879378049L
-decl_stmt|;
 DECL|field|parent
 specifier|final
 name|StringDialog
@@ -2156,7 +2114,6 @@ argument_list|(
 literal|"Close window"
 argument_list|)
 expr_stmt|;
-comment|//, new ImageIcon(GUIGlobals.closeIconFile));
 name|putValue
 argument_list|(
 name|Action
@@ -2269,16 +2226,6 @@ name|NewStringAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|950091418779927997L
-decl_stmt|;
 DECL|field|parent
 specifier|final
 name|StringDialog
@@ -2370,6 +2317,7 @@ name|name
 argument_list|)
 condition|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2395,6 +2343,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return;
 block|}
 if|if
@@ -2407,6 +2356,7 @@ literal|"#"
 argument_list|)
 condition|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2432,6 +2382,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return;
 block|}
 if|if
@@ -2444,6 +2395,7 @@ literal|" "
 argument_list|)
 condition|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2469,6 +2421,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return;
 block|}
 try|try
@@ -2537,6 +2490,7 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2564,6 +2518,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 block|}
 block|}
@@ -2584,15 +2539,6 @@ name|SaveDatabaseAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|2780778445054043703L
-decl_stmt|;
 DECL|field|parent
 specifier|final
 name|StringDialog
@@ -2663,16 +2609,6 @@ name|RemoveStringAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|1134835504587601867L
-decl_stmt|;
 DECL|field|parent
 specifier|final
 name|StringDialog
@@ -2753,6 +2689,7 @@ comment|// keystroke. This makes the content hang on the screen.
 name|assureNotEditing
 argument_list|()
 expr_stmt|;
+comment|// @formatter:off
 name|String
 name|msg
 init|=
@@ -2822,6 +2759,7 @@ operator|.
 name|QUESTION_MESSAGE
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 if|if
 condition|(
 name|answer
@@ -2947,16 +2885,6 @@ name|UndoAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|599852779966425698L
-decl_stmt|;
 DECL|method|UndoAction ()
 specifier|public
 name|UndoAction
@@ -3024,16 +2952,6 @@ name|RedoAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|4404964237851372948L
-decl_stmt|;
 DECL|method|RedoAction ()
 specifier|public
 name|RedoAction
