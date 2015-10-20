@@ -426,6 +426,11 @@ specifier|private
 name|int
 name|parsed
 decl_stmt|;
+DECL|field|piv
+specifier|private
+name|int
+name|piv
+decl_stmt|;
 DECL|field|shouldContinue
 specifier|private
 name|boolean
@@ -761,6 +766,10 @@ operator|=
 literal|0
 expr_stmt|;
 name|unparseable
+operator|=
+literal|0
+expr_stmt|;
+name|piv
 operator|=
 literal|0
 expr_stmt|;
@@ -3030,7 +3039,7 @@ name|indexOf
 argument_list|(
 literal|"<div class=\"detail"
 argument_list|,
-literal|0
+name|piv
 argument_list|)
 decl_stmt|;
 name|int
@@ -3063,6 +3072,10 @@ block|{
 name|endIndex
 operator|+=
 literal|6
+expr_stmt|;
+name|piv
+operator|=
+name|endIndex
 expr_stmt|;
 name|String
 name|text

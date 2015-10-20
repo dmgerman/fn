@@ -254,16 +254,6 @@ name|DuplicateResolverDialog
 extends|extends
 name|JDialog
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|2557945726792977644L
-decl_stmt|;
 DECL|field|NOT_CHOSEN
 specifier|private
 specifier|static
@@ -697,7 +687,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Keep upper"
+literal|"Keep entry 1"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -710,7 +700,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Keep lower"
+literal|"Keep entry 2"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -724,6 +714,30 @@ operator|.
 name|lang
 argument_list|(
 literal|"Keep both"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|me
+operator|=
+operator|new
+name|MergeEntries
+argument_list|(
+name|one
+argument_list|,
+name|two
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry 1"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry 2"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -770,6 +784,30 @@ literal|"Keep both"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|me
+operator|=
+operator|new
+name|MergeEntries
+argument_list|(
+name|one
+argument_list|,
+name|two
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Old entry"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"From import"
+argument_list|)
+argument_list|)
+expr_stmt|;
 break|break;
 case|case
 name|DUPLICATE_SEARCH_WITH_EXACT
@@ -783,7 +821,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Keep upper"
+literal|"Keep entry 1"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -796,7 +834,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Keep lower"
+literal|"Keep entry 2"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -823,6 +861,30 @@ operator|.
 name|lang
 argument_list|(
 literal|"Automatically remove exact duplicates"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|me
+operator|=
+operator|new
+name|MergeEntries
+argument_list|(
+name|one
+argument_list|,
+name|two
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry 1"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry 2"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -867,7 +929,6 @@ literal|"Import and keep old entry"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|me
 operator|=
 operator|new
@@ -881,17 +942,18 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Upper"
+literal|"Old entry"
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Lower"
+literal|"From import"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|layout
 init|=
@@ -1098,7 +1160,12 @@ operator|.
 name|DUPLICATE_SEARCH_WITH_EXACT
 operator|)
 condition|?
-literal|""
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry 1"
+argument_list|)
 else|:
 name|Localization
 operator|.
@@ -1119,6 +1186,60 @@ name|con
 argument_list|)
 expr_stmt|;
 name|main
+operator|.
+name|add
+argument_list|(
+name|lab
+argument_list|)
+expr_stmt|;
+comment|// @formatter:off
+name|lab
+operator|=
+operator|new
+name|TitleLabel
+argument_list|(
+operator|(
+name|type
+operator|==
+name|DuplicateResolverDialog
+operator|.
+name|DUPLICATE_SEARCH
+operator|)
+operator|||
+operator|(
+name|type
+operator|==
+name|DuplicateResolverDialog
+operator|.
+name|DUPLICATE_SEARCH_WITH_EXACT
+operator|)
+condition|?
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry 1"
+argument_list|)
+else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry in current database"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// @formatter:on
+name|gbl
+operator|.
+name|setConstraints
+argument_list|(
+name|lab
+argument_list|,
+name|con
+argument_list|)
+expr_stmt|;
+name|source
 operator|.
 name|add
 argument_list|(
@@ -1172,6 +1293,30 @@ argument_list|(
 name|sp
 argument_list|)
 expr_stmt|;
+name|sp
+operator|=
+operator|new
+name|JScrollPane
+argument_list|(
+name|ta1
+argument_list|)
+expr_stmt|;
+name|gbl
+operator|.
+name|setConstraints
+argument_list|(
+name|sp
+argument_list|,
+name|con
+argument_list|)
+expr_stmt|;
+name|source
+operator|.
+name|add
+argument_list|(
+name|sp
+argument_list|)
+expr_stmt|;
 name|con
 operator|.
 name|weighty
@@ -1216,7 +1361,12 @@ operator|.
 name|DUPLICATE_SEARCH_WITH_EXACT
 operator|)
 condition|?
-literal|""
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry 2"
+argument_list|)
 else|:
 name|Localization
 operator|.
@@ -1243,6 +1393,60 @@ argument_list|(
 name|lab
 argument_list|)
 expr_stmt|;
+comment|// @formatter:off
+name|lab
+operator|=
+operator|new
+name|TitleLabel
+argument_list|(
+operator|(
+name|type
+operator|==
+name|DuplicateResolverDialog
+operator|.
+name|DUPLICATE_SEARCH
+operator|)
+operator|||
+operator|(
+name|type
+operator|==
+name|DuplicateResolverDialog
+operator|.
+name|DUPLICATE_SEARCH_WITH_EXACT
+operator|)
+condition|?
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry 2"
+argument_list|)
+else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Entry in import"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// @formatter:on
+name|gbl
+operator|.
+name|setConstraints
+argument_list|(
+name|lab
+argument_list|,
+name|con
+argument_list|)
+expr_stmt|;
+name|source
+operator|.
+name|add
+argument_list|(
+name|lab
+argument_list|)
+expr_stmt|;
 name|con
 operator|.
 name|weighty
@@ -1263,30 +1467,6 @@ argument_list|,
 literal|10
 argument_list|,
 literal|10
-argument_list|)
-expr_stmt|;
-name|sp
-operator|=
-operator|new
-name|JScrollPane
-argument_list|(
-name|ta1
-argument_list|)
-expr_stmt|;
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|sp
-argument_list|,
-name|con
-argument_list|)
-expr_stmt|;
-name|source
-operator|.
-name|add
-argument_list|(
-name|sp
 argument_list|)
 expr_stmt|;
 name|sp
@@ -1382,6 +1562,35 @@ name|con
 argument_list|)
 expr_stmt|;
 name|main
+operator|.
+name|add
+argument_list|(
+name|lab
+argument_list|)
+expr_stmt|;
+name|lab
+operator|=
+operator|new
+name|TitleLabel
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Merged entry"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|gbl
+operator|.
+name|setConstraints
+argument_list|(
+name|lab
+argument_list|,
+name|con
+argument_list|)
+expr_stmt|;
+name|source
 operator|.
 name|add
 argument_list|(
