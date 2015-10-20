@@ -127,7 +127,7 @@ specifier|final
 name|String
 name|donationLink
 init|=
-literal|"https://www.paypal.com/cgi-bin/webscr?item_name=JabRef+Bibliography+Manager&cmd=_donations&lc=US&currency_code=EUR&business=jabrefmail%40gmail.com"
+literal|"https://github.com/JabRef/jabref/wiki/Donations"
 decl_stmt|;
 DECL|method|DonateAction ()
 specifier|public
