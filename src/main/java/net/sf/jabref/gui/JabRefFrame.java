@@ -12012,13 +12012,6 @@ operator|.
 name|KEEP_MERGE
 condition|)
 block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Merge button!"
-argument_list|)
-expr_stmt|;
 name|dupli
 operator|=
 literal|true

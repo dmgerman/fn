@@ -2270,7 +2270,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Merged BibTeX entry"
+literal|"Merged BibTeX source code"
 argument_list|)
 argument_list|)
 expr_stmt|;

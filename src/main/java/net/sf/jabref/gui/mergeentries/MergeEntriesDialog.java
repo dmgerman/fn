@@ -266,16 +266,6 @@ name|MergeEntriesDialog
 extends|extends
 name|JDialog
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|5454378088546423798L
-decl_stmt|;
-comment|// private String [] preferedOrder = {"author", "title", "journal", "booktitle", "volume", "number", "pages", "year", "month"};
 DECL|field|DIM
 specifier|private
 specifier|final
