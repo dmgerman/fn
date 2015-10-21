@@ -175,15 +175,6 @@ name|menuTitle
 argument_list|(
 literal|"Integrity check"
 argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|JabRefIcon
-operator|.
-name|INTEGRITY_CHECK
-operator|.
-name|getIcon
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|this

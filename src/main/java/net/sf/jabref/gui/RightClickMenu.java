@@ -1632,15 +1632,6 @@ name|lang
 argument_list|(
 literal|"Open folder"
 argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|JabRefIcon
-operator|.
-name|OPEN_FOLDER
-operator|.
-name|getIcon
-argument_list|()
 argument_list|)
 block|{
 block|{

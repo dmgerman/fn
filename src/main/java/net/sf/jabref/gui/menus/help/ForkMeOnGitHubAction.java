@@ -82,6 +82,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|IconTheme
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -132,6 +146,15 @@ name|menuTitle
 argument_list|(
 literal|"Fork me on GitHub"
 argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|GITHUB
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|putValue
