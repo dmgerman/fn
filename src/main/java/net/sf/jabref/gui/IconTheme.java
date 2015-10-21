@@ -802,6 +802,38 @@ literal|"\uf3b5"
 argument_list|)
 block|,
 comment|/*css: label */
+DECL|enumConstant|INTEGRITY_FAIL
+name|INTEGRITY_FAIL
+argument_list|(
+literal|"\uF226"
+argument_list|,
+name|Color
+operator|.
+name|RED
+argument_list|)
+block|,
+comment|/*css: close-circle */
+DECL|enumConstant|INTEGRITY_INFO
+name|INTEGRITY_INFO
+argument_list|(
+literal|"\uF39E"
+argument_list|)
+block|,
+comment|/*css: information */
+DECL|enumConstant|INTEGRITY_WARN
+name|INTEGRITY_WARN
+argument_list|(
+literal|"\uF120"
+argument_list|)
+block|,
+comment|/*css alert-circle */
+DECL|enumConstant|INTEGRITY_SUCCESS
+name|INTEGRITY_SUCCESS
+argument_list|(
+literal|"\uf206"
+argument_list|)
+comment|/*css: checkbox-marked-circle-outline */
+block|,
 comment|// simple color boxes:
 DECL|enumConstant|BOX_RED
 name|BOX_RED
@@ -856,36 +888,6 @@ argument_list|)
 block|,
 DECL|enumConstant|INTEGRITY_CHECK
 name|INTEGRITY_CHECK
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|,
-DECL|enumConstant|INTEGRITY_FAIL
-name|INTEGRITY_FAIL
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|,
-DECL|enumConstant|INTEGRITY_INFO
-name|INTEGRITY_INFO
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|,
-DECL|enumConstant|INTEGRITY_WARN
-name|INTEGRITY_WARN
 argument_list|(
 literal|"\uF4E6"
 argument_list|,
