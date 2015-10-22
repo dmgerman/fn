@@ -54,11 +54,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|l10n
+name|desktop
 operator|.
-name|Localization
+name|JabRefDesktop
 import|;
 end_import
 
@@ -72,11 +72,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|l10n
 operator|.
-name|io
-operator|.
-name|JabRefDesktop
+name|Localization
 import|;
 end_import
 
