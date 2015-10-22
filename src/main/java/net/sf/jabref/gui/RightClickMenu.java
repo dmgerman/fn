@@ -611,7 +611,7 @@ name|JabRefIcon
 operator|.
 name|COPY
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -675,7 +675,7 @@ name|JabRefIcon
 operator|.
 name|PASTE
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -739,7 +739,7 @@ name|JabRefIcon
 operator|.
 name|CUT
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -803,7 +803,7 @@ name|JabRefIcon
 operator|.
 name|DELETE
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -872,7 +872,7 @@ name|JabRefIcon
 operator|.
 name|EXPORT_TO_CLIPBOARD
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -936,7 +936,7 @@ name|JabRefIcon
 operator|.
 name|EMAIL
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -1059,7 +1059,7 @@ name|JabRefIcon
 operator|.
 name|MARK_ENTRIES
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -1128,7 +1128,7 @@ name|JabRefIcon
 operator|.
 name|UNMARK_ENTRIES
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -1229,7 +1229,7 @@ name|JabRefIcon
 operator|.
 name|MARK_ENTRIES
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -1306,7 +1306,7 @@ name|JabRefIcon
 operator|.
 name|UNMARK_ENTRIES
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -1713,7 +1713,7 @@ name|JabRefIcon
 operator|.
 name|FILE
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -1796,7 +1796,7 @@ name|JabRefIcon
 operator|.
 name|ATTACH_FILE
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -1861,7 +1861,7 @@ name|JabRefIcon
 operator|.
 name|WWW
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -1951,7 +1951,7 @@ name|JabRefIcon
 operator|.
 name|DOI
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 block|{
@@ -2540,9 +2540,19 @@ name|menu
 operator|.
 name|setIcon
 argument_list|(
+operator|(
+operator|(
+name|IconTheme
+operator|.
+name|FontBasedIcon
+operator|)
 name|field
 operator|.
 name|getRepresentingIcon
+argument_list|()
+operator|)
+operator|.
+name|createSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3145,7 +3155,7 @@ name|JabRefIcon
 operator|.
 name|GROUP_INCLUDING
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3163,7 +3173,7 @@ name|JabRefIcon
 operator|.
 name|GROUP_REFINING
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3179,7 +3189,7 @@ name|JabRefIcon
 operator|.
 name|GROUP_REGULAR
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
