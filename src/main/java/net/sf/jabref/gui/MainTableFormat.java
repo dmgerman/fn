@@ -2203,20 +2203,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Read name format options:
-name|boolean
-name|showShort
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SHOW_SHORT
-argument_list|)
-decl_stmt|;
 name|namesNatbib
 operator|=
 name|Globals

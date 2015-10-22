@@ -645,15 +645,6 @@ name|TEXMAKER_PATH
 init|=
 literal|"texmakerPath"
 decl_stmt|;
-DECL|field|SHOW_SHORT
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SHOW_SHORT
-init|=
-literal|"showShort"
-decl_stmt|;
 DECL|field|LANGUAGE
 specifier|public
 specifier|static
@@ -3773,17 +3764,6 @@ argument_list|()
 operator|.
 name|getLanguage
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-name|SHOW_SHORT
-argument_list|,
-name|Boolean
-operator|.
-name|TRUE
 argument_list|)
 expr_stmt|;
 comment|// Sorting preferences
