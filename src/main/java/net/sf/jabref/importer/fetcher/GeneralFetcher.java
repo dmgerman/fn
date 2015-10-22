@@ -1841,6 +1841,15 @@ operator|.
 name|componentClosing
 argument_list|()
 expr_stmt|;
+name|frame
+operator|.
+name|fetcherToggle
+operator|.
+name|setSelected
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|Globals
 operator|.
 name|prefs
