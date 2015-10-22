@@ -295,6 +295,15 @@ condition|(
 name|personalJournalList
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|personalJournalList
+operator|.
+name|trim
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 try|try
