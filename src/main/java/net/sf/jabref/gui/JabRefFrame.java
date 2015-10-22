@@ -2742,11 +2742,10 @@ name|COPY_BIB_TE_X_KEY
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|copyCiteKey
 specifier|private
 specifier|final
 name|AbstractAction
-comment|//"Put a BibTeX reference to the selected entries on the clipboard",
-DECL|field|copyCiteKey
 name|copyCiteKey
 init|=
 operator|new
@@ -2763,7 +2762,6 @@ argument_list|(
 literal|"Copy \\cite{BibTeX key}"
 argument_list|)
 argument_list|,
-comment|//"Put a BibTeX reference to the selected entries on the clipboard",
 name|prefs
 operator|.
 name|getKey
@@ -3619,6 +3617,15 @@ name|menuTitle
 argument_list|(
 literal|"Export selected entries to clipboard"
 argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|EXPORT_TO_CLIPBOARD
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|autoSetFile
@@ -7407,6 +7414,41 @@ name|description
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|GeneralAction (String command, String text, Icon icon)
+specifier|public
+name|GeneralAction
+parameter_list|(
+name|String
+name|command
+parameter_list|,
+name|String
+name|text
+parameter_list|,
+name|Icon
+name|icon
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|icon
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|command
+operator|=
+name|command
+expr_stmt|;
+name|putValue
+argument_list|(
+name|Action
+operator|.
+name|NAME
+argument_list|,
+name|text
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|GeneralAction (String command, String text, String description, Icon icon)
 specifier|public
 name|GeneralAction
@@ -8089,7 +8131,42 @@ argument_list|(
 name|copyKeyAndTitle
 argument_list|)
 expr_stmt|;
-comment|//edit.add(exportToClipboard);
+name|edit
+operator|.
+name|add
+argument_list|(
+name|exportToClipboard
+argument_list|)
+expr_stmt|;
+name|edit
+operator|.
+name|add
+argument_list|(
+operator|new
+name|GeneralAction
+argument_list|(
+name|Actions
+operator|.
+name|SEND_AS_EMAIL
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Send as email"
+argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|EMAIL
+operator|.
+name|getSmallIcon
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|edit
 operator|.
 name|addSeparator
