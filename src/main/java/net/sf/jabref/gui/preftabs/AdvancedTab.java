@@ -656,12 +656,10 @@ operator|.
 name|getCrossPlatformLookAndFeelClassName
 argument_list|()
 block|,
-literal|"com.jgoodies.plaf.plastic.Plastic3DLookAndFeel"
+literal|"com.jgoodies.looks.plastic.Plastic3DLookAndFeel"
 block|,
-literal|"com.sun.java.swing.plaf.motif.MotifLookAndFeel"
-block|,
-literal|"javax.swing.plaf.mac.MacLookAndFeel"
-block|,         }
+literal|"com.jgoodies.looks.windows.WindowsLookAndFeel"
+block|}
 decl_stmt|;
 comment|// Only list L&F which are available
 name|List
