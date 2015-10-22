@@ -681,15 +681,6 @@ name|NAMES_NATBIB
 init|=
 literal|"namesNatbib"
 decl_stmt|;
-DECL|field|NAMES_LAST_FIRST
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|NAMES_LAST_FIRST
-init|=
-literal|"namesLf"
-decl_stmt|;
 DECL|field|NAMES_FIRST_LAST
 specifier|public
 specifier|static
@@ -3702,18 +3693,6 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 comment|// "Show 'Firstname Lastname'"
-name|defaults
-operator|.
-name|put
-argument_list|(
-name|NAMES_LAST_FIRST
-argument_list|,
-name|Boolean
-operator|.
-name|FALSE
-argument_list|)
-expr_stmt|;
-comment|// "Show 'Lastname, Firstname'"
 name|defaults
 operator|.
 name|put
