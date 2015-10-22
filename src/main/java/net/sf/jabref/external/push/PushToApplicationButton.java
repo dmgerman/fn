@@ -832,6 +832,16 @@ name|getApplicationName
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|mAction
+operator|.
+name|setIcon
+argument_list|(
+name|toApp
+operator|.
+name|getIcon
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Get the toolbar component for the push button.      * @return The component.      */
 DECL|method|getComponent ()
@@ -1554,6 +1564,25 @@ operator|.
 name|actionPerformed
 argument_list|(
 literal|null
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setIcon (Icon icon)
+specifier|public
+name|void
+name|setIcon
+parameter_list|(
+name|Icon
+name|icon
+parameter_list|)
+block|{
+name|putValue
+argument_list|(
+name|Action
+operator|.
+name|SMALL_ICON
+argument_list|,
+name|icon
 argument_list|)
 expr_stmt|;
 block|}
