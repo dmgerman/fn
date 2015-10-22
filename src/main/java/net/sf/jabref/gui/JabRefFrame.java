@@ -8458,12 +8458,12 @@ name|m
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 name|edit
 operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
+block|}
 name|edit
 operator|.
 name|add
@@ -9780,12 +9780,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 name|tlb
 operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
+block|}
 name|searchToggle
 operator|=
 operator|new
