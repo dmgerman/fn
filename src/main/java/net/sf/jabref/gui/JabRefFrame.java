@@ -8025,6 +8025,11 @@ argument_list|)
 expr_stmt|;
 name|edit
 operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+name|edit
+operator|.
 name|add
 argument_list|(
 name|copyKey
@@ -8348,6 +8353,11 @@ name|add
 argument_list|(
 name|manageKeywords
 argument_list|)
+expr_stmt|;
+name|edit
+operator|.
+name|addSeparator
+argument_list|()
 expr_stmt|;
 name|edit
 operator|.
