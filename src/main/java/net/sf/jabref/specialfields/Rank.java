@@ -366,7 +366,7 @@ name|JabRefIcon
 operator|.
 name|RANKING
 operator|.
-name|getSmallIcon
+name|getIcon
 argument_list|()
 return|;
 block|}

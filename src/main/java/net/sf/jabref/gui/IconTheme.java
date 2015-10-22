@@ -302,12 +302,6 @@ literal|"\uf572"
 argument_list|)
 comment|/*css: tooltip-text */
 block|,
-DECL|enumConstant|CLIPBOARD
-name|CLIPBOARD
-argument_list|(
-literal|"\uf218"
-argument_list|)
-block|,
 DECL|enumConstant|FOLDER
 name|FOLDER
 argument_list|(
@@ -337,12 +331,6 @@ DECL|enumConstant|PDF_FILE
 name|PDF_FILE
 argument_list|(
 literal|"\uf2dc"
-argument_list|)
-block|,
-DECL|enumConstant|TAGS
-name|TAGS
-argument_list|(
-literal|"\uf485"
 argument_list|)
 block|,
 DECL|enumConstant|DOI
@@ -464,13 +452,6 @@ literal|"\uF3DE"
 argument_list|)
 comment|/*css: magnify */
 block|,
-DECL|enumConstant|INC_SEARCH
-name|INC_SEARCH
-argument_list|(
-literal|"\uF3DE"
-argument_list|)
-comment|/*css: magnify */
-block|,
 DECL|enumConstant|PREFERENCES
 name|PREFERENCES
 argument_list|(
@@ -519,13 +500,6 @@ argument_list|(
 literal|"\uF146"
 argument_list|)
 comment|/*css: arrow-right-bold */
-block|,
-DECL|enumConstant|UNKNOWN
-name|UNKNOWN
-argument_list|(
-literal|"\uF37C"
-argument_list|)
-comment|/*css: help */
 block|,
 DECL|enumConstant|SOURCE
 name|SOURCE
@@ -590,13 +564,6 @@ comment|/*css: flag */
 block|,
 DECL|enumConstant|PRINTED
 name|PRINTED
-argument_list|(
-literal|"\uF4A5"
-argument_list|)
-comment|/*css: printer */
-block|,
-DECL|enumConstant|TOGGLE_PRINTED
-name|TOGGLE_PRINTED
 argument_list|(
 literal|"\uF4A5"
 argument_list|)
@@ -674,13 +641,6 @@ literal|"\uF2AD"
 argument_list|)
 comment|/*css: email*/
 block|,
-DECL|enumConstant|DOWNLOAD
-name|DOWNLOAD
-argument_list|(
-literal|"\uF299"
-argument_list|)
-comment|/*css: download */
-block|,
 DECL|enumConstant|EXPORT_TO_CLIPBOARD
 name|EXPORT_TO_CLIPBOARD
 argument_list|(
@@ -701,12 +661,6 @@ argument_list|(
 literal|"\uF2D6"
 argument_list|)
 comment|/*css: file-find */
-block|,
-DECL|enumConstant|TOGGLE_QUALITY_ASSURED
-name|TOGGLE_QUALITY_ASSURED
-argument_list|(
-literal|"\uF5E7"
-argument_list|)
 block|,
 DECL|enumConstant|QUALITY_ASSURED
 name|QUALITY_ASSURED
@@ -777,22 +731,8 @@ literal|"\uF2C4"
 argument_list|)
 block|,
 comment|/*css: eye */
-DECL|enumConstant|RELEVANT
-name|RELEVANT
-argument_list|(
-literal|"\uF522"
-argument_list|)
-block|,
-comment|/*css: star-circle */
-DECL|enumConstant|TOGGLE_RELEVANCE
-name|TOGGLE_RELEVANCE
-argument_list|(
-literal|"\uF522"
-argument_list|)
-block|,
-comment|/*css: star-circle */
-DECL|enumConstant|SET_RELEVANT
-name|SET_RELEVANT
+DECL|enumConstant|RELEVANCE
+name|RELEVANCE
 argument_list|(
 literal|"\uF522"
 argument_list|)
@@ -893,39 +833,30 @@ literal|"\uF350"
 argument_list|)
 block|,
 comment|/*css: github-circle*/
-comment|// STILL MISSING:
-DECL|enumConstant|TOGGLE_GROUPS
-name|TOGGLE_GROUPS
-argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
-argument_list|)
-block|,
 DECL|enumConstant|TOGGLE_ENTRY_PREVIEW
 name|TOGGLE_ENTRY_PREVIEW
 argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
+literal|"\uf3c7"
 argument_list|)
 block|,
-DECL|enumConstant|GROUP_REGULAR
-name|GROUP_REGULAR
+comment|/*css: library-books */
+DECL|enumConstant|TOGGLE_GROUPS
+name|TOGGLE_GROUPS
 argument_list|(
-literal|"\uF4E6"
-argument_list|,
-name|Color
-operator|.
-name|RED
+literal|"\uf4e8"
 argument_list|)
 block|,
+comment|/*css: server */
 DECL|enumConstant|WRITE_XMP
 name|WRITE_XMP
+argument_list|(
+literal|"\uf39c"
+argument_list|)
+block|,
+comment|/* css: import */
+comment|// STILL MISSING:
+DECL|enumConstant|GROUP_REGULAR
+name|GROUP_REGULAR
 argument_list|(
 literal|"\uF4E6"
 argument_list|,

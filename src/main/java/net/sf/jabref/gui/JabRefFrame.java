@@ -2406,7 +2406,7 @@ name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|TOGGLE_RELEVANCE
+name|RELEVANCE
 operator|.
 name|getIcon
 argument_list|()
@@ -2622,15 +2622,6 @@ name|KeyBinds
 operator|.
 name|INCREMENTAL_SEARCH
 argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|JabRefIcon
-operator|.
-name|INC_SEARCH
-operator|.
-name|getIcon
-argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|normalSearch

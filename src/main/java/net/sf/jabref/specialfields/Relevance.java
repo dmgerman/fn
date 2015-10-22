@@ -124,7 +124,7 @@ name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|TOGGLE_RELEVANCE
+name|RELEVANCE
 operator|.
 name|getSmallIcon
 argument_list|()
