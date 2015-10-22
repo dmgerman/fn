@@ -1695,7 +1695,7 @@ name|JabRefIcon
 operator|.
 name|WWW
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1714,6 +1714,22 @@ name|getKey
 argument_list|(
 literal|"Fetch Medline"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|putValue
+argument_list|(
+name|Action
+operator|.
+name|LARGE_ICON_KEY
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|WWW
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

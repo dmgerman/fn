@@ -153,7 +153,7 @@ name|JabRefIcon
 operator|.
 name|GITHUB
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -169,6 +169,22 @@ name|lang
 argument_list|(
 literal|"Opens JabRef's GitHub page"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|putValue
+argument_list|(
+name|Action
+operator|.
+name|LARGE_ICON_KEY
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|GITHUB
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
