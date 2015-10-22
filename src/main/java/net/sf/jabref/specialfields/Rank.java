@@ -362,10 +362,12 @@ block|{
 return|return
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"ranking"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|RANKING
+operator|.
+name|getSmallIcon
+argument_list|()
 return|;
 block|}
 annotation|@
