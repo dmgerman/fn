@@ -2464,6 +2464,14 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|// create disabledIcons for all menu entries
+name|frame
+operator|.
+name|createDisabledIconsForMenuEntries
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Remove all types from the menu. Then cycle through all available      * types, and add them.      */
 DECL|method|populateTypeMenu ()

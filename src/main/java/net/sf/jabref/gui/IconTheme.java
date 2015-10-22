@@ -1358,6 +1358,10 @@ argument_list|,
 name|IconTheme
 operator|.
 name|DEFAULT_DISABLED_COLOR
+argument_list|,
+name|this
+operator|.
+name|size
 argument_list|)
 return|;
 block|}
