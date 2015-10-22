@@ -166,11 +166,11 @@ init|=
 operator|new
 name|Color
 argument_list|(
-literal|113
+literal|98
 argument_list|,
-literal|134
+literal|119
 argument_list|,
-literal|145
+literal|130
 argument_list|)
 decl_stmt|;
 DECL|field|DEFAULT_DISABLED_COLOR
@@ -183,11 +183,11 @@ init|=
 operator|new
 name|Color
 argument_list|(
-literal|220
+literal|200
 argument_list|,
-literal|220
+literal|200
 argument_list|,
-literal|250
+literal|200
 argument_list|)
 decl_stmt|;
 DECL|field|DEFAULT_SIZE
@@ -556,9 +556,15 @@ name|PRIORITY_LOW
 argument_list|(
 literal|"\uF2F0"
 argument_list|,
+operator|new
 name|Color
-operator|.
-name|GREEN
+argument_list|(
+literal|111
+argument_list|,
+literal|204
+argument_list|,
+literal|117
+argument_list|)
 argument_list|)
 comment|/*css: flag */
 block|,
@@ -707,9 +713,15 @@ name|READ_STATUS_READ
 argument_list|(
 literal|"\uF2C4"
 argument_list|,
+operator|new
 name|Color
-operator|.
-name|GREEN
+argument_list|(
+literal|111
+argument_list|,
+literal|204
+argument_list|,
+literal|117
+argument_list|)
 argument_list|)
 block|,
 comment|/*css: eye */
