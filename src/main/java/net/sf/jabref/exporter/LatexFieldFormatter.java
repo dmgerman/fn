@@ -573,11 +573,6 @@ operator|+
 literal|""
 argument_list|)
 expr_stmt|;
-comment|// No formatting at all for these fields, to allow custom formatting?
-comment|//            if (Globals.prefs.getBoolean("preserveFieldFormatting"))
-comment|//              sb.append(text);
-comment|//            else
-comment|//             currently, we do not do any more wrapping
 comment|// these two are also hard coded in net.sf.jabref.importer.fileformat.FieldContentParser.multiLineFields
 comment|// there, JabRefPreferences.NON_WRAPPABLE_FIELDS are also included
 name|boolean
