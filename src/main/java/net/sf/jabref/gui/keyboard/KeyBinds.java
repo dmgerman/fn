@@ -865,24 +865,6 @@ name|SYNCHRONIZE_FILES
 init|=
 literal|"Synchronize files"
 decl_stmt|;
-DECL|field|SYNCHRONIZE_PDF
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SYNCHRONIZE_PDF
-init|=
-literal|"Synchronize PDF"
-decl_stmt|;
-DECL|field|SYNCHRONIZE_PS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SYNCHRONIZE_PS
-init|=
-literal|"Synchronize PS"
-decl_stmt|;
 DECL|field|TOGGLE_ENTRY_PREVIEW
 specifier|public
 specifier|static
@@ -1603,24 +1585,6 @@ argument_list|(
 name|SYNCHRONIZE_FILES
 argument_list|,
 literal|"ctrl F4"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|SYNCHRONIZE_PDF
-argument_list|,
-literal|"shift F4"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|SYNCHRONIZE_PS
-argument_list|,
-literal|"ctrl shift F4"
 argument_list|)
 expr_stmt|;
 name|keyBindMap
