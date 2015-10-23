@@ -887,9 +887,10 @@ argument_list|(
 name|regExpTextField
 argument_list|)
 expr_stmt|;
-name|HelpAction
-name|helpAction
-init|=
+name|builder
+operator|.
+name|append
+argument_list|(
 operator|new
 name|HelpAction
 argument_list|(
@@ -905,22 +906,7 @@ name|lang
 argument_list|(
 literal|"Help on Regular Expression Search"
 argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|JabRefIcon
-operator|.
-name|HELP
-operator|.
-name|getSmallIcon
-argument_list|()
 argument_list|)
-decl_stmt|;
-name|builder
-operator|.
-name|append
-argument_list|(
-name|helpAction
 operator|.
 name|getIconButton
 argument_list|()
