@@ -223,28 +223,6 @@ name|DEFAULT_ICON_PATH
 init|=
 literal|"/images/crystal_16/red.png"
 decl_stmt|;
-comment|/**      * Get a Map of all application icons mapped from their keys.      *      * @return A Map containing all icons used in the application.      */
-DECL|method|getAllIcons ()
-specifier|public
-specifier|static
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|getAllIcons
-parameter_list|()
-block|{
-return|return
-name|Collections
-operator|.
-name|unmodifiableMap
-argument_list|(
-name|KEY_TO_ICON
-argument_list|)
-return|;
-block|}
 comment|/**      * Constructs an ImageIcon for the image representing the given function, in the resource      * file listing images.      *      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The ImageIcon for the function.      */
 DECL|method|getImage (String name)
 specifier|public
