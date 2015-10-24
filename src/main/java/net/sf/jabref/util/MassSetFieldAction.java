@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -545,12 +545,8 @@ literal|"Move contents of a field into a field with a different name"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Collection
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|be
-init|=
+name|allFields
+operator|=
 name|frame
 operator|.
 name|basePanel
@@ -559,37 +555,9 @@ operator|.
 name|database
 argument_list|()
 operator|.
-name|getEntries
-argument_list|()
-decl_stmt|;
-name|allFields
-operator|=
-operator|new
-name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+name|getAllVisibleFields
 argument_list|()
 expr_stmt|;
-for|for
-control|(
-name|BibtexEntry
-name|e
-range|:
-name|be
-control|)
-block|{
-name|allFields
-operator|.
-name|addAll
-argument_list|(
-name|e
-operator|.
-name|getAllFields
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 for|for
 control|(
 name|String
@@ -597,17 +565,6 @@ name|f
 range|:
 name|allFields
 control|)
-block|{
-if|if
-condition|(
-operator|!
-name|f
-operator|.
-name|startsWith
-argument_list|(
-literal|"__"
-argument_list|)
-condition|)
 block|{
 name|field
 operator|.
@@ -616,7 +573,6 @@ argument_list|(
 name|f
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|set
 operator|.
