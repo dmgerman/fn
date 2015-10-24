@@ -255,7 +255,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Oscar  *   *         Dialog for merging two Bibtex entries  */
+comment|/**  * @author Oscar  *  *         Dialog for merging two Bibtex entries  */
 end_comment
 
 begin_class
@@ -266,7 +266,6 @@ name|MergeEntriesDialog
 extends|extends
 name|JDialog
 block|{
-comment|// private String [] preferedOrder = {"author", "title", "journal", "booktitle", "volume", "number", "pages", "year", "month"};
 DECL|field|DIM
 specifier|private
 specifier|final
@@ -384,7 +383,7 @@ name|frame
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets up the dialog      *       * @param selected Selected BibtexEntries      */
+comment|/**      * Sets up the dialog      *      * @param selected Selected BibtexEntries      */
 DECL|method|init (BibtexEntry[] selected)
 specifier|private
 name|void
@@ -799,7 +798,7 @@ name|pack
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Act on button pressed      *       * @param button Butten pressed      */
+comment|/**      * Act on button pressed      *      * @param button Button pressed      */
 DECL|method|buttonPressed (String button)
 specifier|private
 name|void
