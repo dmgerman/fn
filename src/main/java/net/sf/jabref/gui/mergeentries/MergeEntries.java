@@ -54,16 +54,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|TreeSet
 import|;
 end_import
@@ -444,7 +434,7 @@ literal|false
 decl_stmt|;
 DECL|field|joint
 specifier|private
-name|Set
+name|TreeSet
 argument_list|<
 name|String
 argument_list|>
@@ -476,7 +466,7 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
-comment|/**      * Constructor taking two entries      *       * @param bOne First entry      * @param bTwo Second entry      */
+comment|/**      * Constructor taking two entries      *      * @param bOne First entry      * @param bTwo Second entry      */
 DECL|method|MergeEntries (BibtexEntry bOne, BibtexEntry bTwo)
 specifier|public
 name|MergeEntries
@@ -500,7 +490,7 @@ name|initialize
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Constructor with optional column captions for the two entries      *       * @param bOne First entry      * @param bTwo Second entry      * @param headingOne Heading for first entry      * @param headingTwo Heading for second entry      */
+comment|/**      * Constructor with optional column captions for the two entries      *      * @param bOne First entry      * @param bTwo Second entry      * @param headingOne Heading for first entry      * @param headingTwo Heading for second entry      */
 DECL|method|MergeEntries (BibtexEntry bOne, BibtexEntry bTwo, String headingOne, String headingTwo)
 specifier|public
 name|MergeEntries
@@ -555,9 +545,7 @@ name|joint
 operator|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|one
 operator|.
@@ -576,7 +564,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Remove field starting with __
-name|Set
+name|TreeSet
 argument_list|<
 name|String
 argument_list|>
@@ -584,9 +572,7 @@ name|toberemoved
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2270,7 +2256,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Merged BibTeX entry"
+literal|"Merged BibTeX source code"
 argument_list|)
 argument_list|)
 expr_stmt|;
