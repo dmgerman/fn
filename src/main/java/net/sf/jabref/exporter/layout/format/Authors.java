@@ -1905,46 +1905,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|main (String[] args)
-specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
-block|{
-name|Authors
-name|format
-init|=
-operator|new
-name|Authors
-argument_list|()
-decl_stmt|;
-name|format
-operator|.
-name|setArgument
-argument_list|(
-literal|"lastfirstfirstfirst , initials,  Nocomma,Amp,Semicolon,30 ,EtAl = m.fl."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|format
-operator|.
-name|format
-argument_list|(
-literal|"Alfredsen, Jr, Jo Arve and Morten Omholt Alver and Yngvar von Olsen and Sebastian A. L. M. Kooijman"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 end_class
 

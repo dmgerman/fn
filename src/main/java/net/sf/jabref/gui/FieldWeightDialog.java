@@ -210,29 +210,6 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|method|main (String[] args)
-specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
-block|{
-operator|new
-name|FieldWeightDialog
-argument_list|(
-literal|null
-argument_list|)
-operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|FieldWeightDialog (JabRefFrame frame)
 specifier|private
 name|FieldWeightDialog
