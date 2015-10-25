@@ -458,6 +458,12 @@ name|removeAllElements
 argument_list|()
 expr_stmt|;
 block|}
+comment|// .getResource is called at resourceOwner. This method is available at all Class objects
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 DECL|method|setPage (String filename, Class resourceOwner)
 specifier|public
 name|void
@@ -543,22 +549,6 @@ argument_list|)
 operator|+
 literal|'/'
 decl_stmt|;
-if|if
-condition|(
-name|middle
-operator|.
-name|equals
-argument_list|(
-literal|"en/"
-argument_list|)
-condition|)
-block|{
-name|middle
-operator|=
-literal|""
-expr_stmt|;
-comment|// english in base help dir.
-block|}
 name|URL
 name|old
 init|=
