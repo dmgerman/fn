@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -217,7 +217,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for the ISI Web of Science, INSPEC and Medline format.  *   * Documentation about ISI WOS format:  *   *<ul>  *<li>http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *   *<ul>  *<li>Check compatibility with other ISI2Bib tools like:  * http://www-lab.imr.tohoku.ac.jp/~t-nissie/computer/software/isi/ or  * http://www.tug.org/tex-archive/biblio/bibtex/utils/isi2bibtex/isi2bibtex or  * http://web.mit.edu/emilio/www/utils.html</li>  *<li>Deal with capitalization correctly</li>  *</ul>  */
+comment|/**  * Importer for the ISI Web of Science, INSPEC and Medline format.  *  * Documentation about ISI WOS format:  *  *<ul>  *<li>http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *  *<ul>  *<li>Check compatibility with other ISI2Bib tools like:  * http://www-lab.imr.tohoku.ac.jp/~t-nissie/computer/software/isi/ or  * http://www.tug.org/tex-archive/biblio/bibtex/utils/isi2bibtex/isi2bibtex or  * http://web.mit.edu/emilio/www/utils.html</li>  *<li>Deal with capitalization correctly</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -241,7 +241,7 @@ return|return
 literal|"ISI"
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
 DECL|method|getCLIId ()
@@ -309,6 +309,7 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
+operator|(
 name|str
 operator|=
 name|in
@@ -318,13 +319,16 @@ argument_list|()
 operator|)
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|i
 operator|<
 literal|50
+operator|)
 condition|)
 block|{
-comment|/**              * The following line gives false positives for RIS files, so it              * should not be uncommented. The hypen is a characteristic of the              * RIS format.              *               * str = str.replace(" - ", "")              */
+comment|/**              * The following line gives false positives for RIS files, so it              * should not be uncommented. The hypen is a characteristic of the              * RIS format.              *              * str = str.replace(" - ", "")              */
 if|if
 condition|(
 name|IsiImporter
@@ -691,9 +695,7 @@ name|bibitems
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|StringBuilder
@@ -873,11 +875,7 @@ name|hm
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// skip the first entry as it is either empty or has document header
@@ -1280,9 +1278,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|existingKeywords
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|existingKeywords
@@ -1399,10 +1399,12 @@ decl_stmt|;
 comment|// tweak for IEEE Explore
 if|if
 condition|(
+operator|(
 name|detpos
 operator|!=
 operator|-
 literal|1
+operator|)
 operator|&&
 operator|!
 name|value
@@ -1828,9 +1830,7 @@ name|toRemove
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1856,9 +1856,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|content
 operator|==
 literal|null
+operator|)
 operator|||
 name|content
 operator|.
@@ -2082,13 +2084,15 @@ parameter_list|(
 name|NumberFormatException
 name|ignored
 parameter_list|)
-block|{              }
+block|{
+comment|// Ignored
+block|}
 block|}
 return|return
 literal|null
 return|;
 block|}
-comment|/**      * Will expand ISI first names.      *       * Fixed bug from:      * http://sourceforge.net/tracker/index.php?func=detail&aid=1542552&group_id=92314&atid=600306      *       */
+comment|/**      * Will expand ISI first names.      *      * Fixed bug from:      * http://sourceforge.net/tracker/index.php?func=detail&aid=1542552&group_id=92314&atid=600306      *      */
 DECL|method|isiAuthorConvert (String author)
 specifier|public
 specifier|static
@@ -2263,12 +2267,14 @@ if|if
 condition|(
 name|j
 operator|<
+operator|(
 name|first
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -2295,11 +2301,13 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|firstParts
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb

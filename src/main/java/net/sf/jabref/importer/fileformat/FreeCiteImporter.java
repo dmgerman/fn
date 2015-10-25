@@ -563,9 +563,7 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|XMLInputFactory
@@ -601,6 +599,7 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|parser
 operator|.
 name|getEventType
@@ -609,6 +608,7 @@ operator|==
 name|XMLStreamConstants
 operator|.
 name|START_ELEMENT
+operator|)
 operator|&&
 name|parser
 operator|.
@@ -652,6 +652,7 @@ while|while
 condition|(
 operator|!
 operator|(
+operator|(
 name|parser
 operator|.
 name|getEventType
@@ -660,6 +661,7 @@ operator|==
 name|XMLStreamConstants
 operator|.
 name|END_ELEMENT
+operator|)
 operator|&&
 name|parser
 operator|.

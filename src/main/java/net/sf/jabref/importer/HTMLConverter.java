@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -152,7 +152,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/*   Portions Â© International Organization for Standardization 1986:      Permission to copy in any form is granted for use with      conforming SGML systems and applications as defined in      ISO 8879, provided this notice is included in all copies.     */
+comment|/*   Portions Â© International Organization for Standardization 1986:      Permission to copy in any form is granted for use with      conforming SGML systems and applications as defined in      ISO 8879, provided this notice is included in all copies.      */
 comment|// most of the LaTeX commands can be read at http://en.wikibooks.org/wiki/LaTeX/Accents
 comment|// The symbols can be looked at http://www.fileformat.info/info/unicode/char/a4/index.htm. Replace "a4" with the U+ number
 comment|// http://detexify.kirelabs.org/classify.html and http://www.ctan.org/tex-archive/info/symbols/comprehensive/ might help to find the right LaTeX command
@@ -1877,7 +1877,7 @@ block|}
 block|,
 comment|// rightwards double arrow,
 comment|//                                     U+21D2 ISOtech
-comment|/*   ISO 10646 does not say this is the 'implies' character but does not have               another character with this function so ?              rArr can be used for 'implies' as ISOtech suggests */
+comment|/*   ISO 10646 does not say this is the 'implies' character but does not have              another character with this function so ?              rArr can be used for 'implies' as ISOtech suggests */
 block|{
 literal|"8659"
 block|,
@@ -2188,7 +2188,7 @@ literal|"\\$\\\\supset\\$"
 block|}
 block|,
 comment|// superset of, U+2283 ISOtech
-comment|/*    note that nsup, 'not a superset of, U+2283' is not covered by the Symbol               font encoding and is not included. Should it be, for symmetry?              It is in ISOamsn   */
+comment|/*    note that nsup, 'not a superset of, U+2283' is not covered by the Symbol              font encoding and is not included. Should it be, for symmetry?              It is in ISOamsn   */
 block|{
 literal|"8836"
 block|,
@@ -2306,7 +2306,7 @@ block|}
 block|,
 comment|// left-pointing angle bracket = bra,
 comment|//                                    U+2329 ISOtech
-comment|/*    lang is NOT the same character as U+003C 'less than'               or U+2039 'single left-pointing angle quotation mark' */
+comment|/*    lang is NOT the same character as U+003C 'less than'              or U+2039 'single left-pointing angle quotation mark' */
 block|{
 literal|"9002"
 block|,
@@ -2317,7 +2317,7 @@ block|}
 block|,
 comment|// right-pointing angle bracket = ket,
 comment|//                                    U+232A ISOtech
-comment|/*    rang is NOT the same character as U+003E 'greater than'               or U+203A 'single right-pointing angle quotation mark' */
+comment|/*    rang is NOT the same character as U+003E 'greater than'              or U+203A 'single right-pointing angle quotation mark' */
 comment|/* Geometric Shapes */
 block|{
 literal|"9674"
@@ -4693,11 +4693,7 @@ name|escapedSymbols
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|escapedAccents
@@ -4713,11 +4709,7 @@ name|escapedAccents
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|Integer
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|numSymbols
@@ -4733,11 +4725,7 @@ name|numSymbols
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|Integer
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|unicodeSymbols
@@ -4753,11 +4741,7 @@ name|unicodeSymbols
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|Character
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|HTMLConverter ()
@@ -5010,12 +4994,14 @@ literal|0
 init|;
 name|i
 operator|<=
+operator|(
 name|text
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -5797,7 +5783,7 @@ init|=
 literal|100
 decl_stmt|;
 comment|/*private final int MAX_TAG_LENGTH = 30;*/
-comment|/*private final int MAX_CHAR_LENGTH = 10;          private int readHtmlChar(String text, StringBuffer sb, int position) {         // Have just read the< character that starts the tag.         int index = text.indexOf(';', position);         if ((index> position)&& (index-position< MAX_CHAR_LENGTH)) {             //String code = text.substring(position, index);             //System.out.println("Removed code: "+text.substring(position, index));             return index; // Just skip the tag.         } else return position; // Don't do anything.     }*/
+comment|/*private final int MAX_CHAR_LENGTH = 10;      private int readHtmlChar(String text, StringBuffer sb, int position) {         // Have just read the< character that starts the tag.         int index = text.indexOf(';', position);         if ((index> position)&& (index-position< MAX_CHAR_LENGTH)) {             //String code = text.substring(position, index);             //System.out.println("Removed code: "+text.substring(position, index));             return index; // Just skip the tag.         } else return position; // Don't do anything.     }*/
 DECL|method|readTag (String text, StringBuffer sb, int position)
 specifier|private
 name|int
@@ -5828,15 +5814,21 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|index
 operator|>
 name|position
+operator|)
 operator|&&
+operator|(
+operator|(
 name|index
 operator|-
 name|position
+operator|)
 operator|<
 name|MAX_TAG_LENGTH
+operator|)
 condition|)
 block|{
 comment|//System.out.println("Removed tag: "+text.substring(position, index));

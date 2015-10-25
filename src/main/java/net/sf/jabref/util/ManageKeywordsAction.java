@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.      This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.      This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>.  */
 end_comment
 
 begin_package
@@ -621,9 +621,7 @@ name|sortedKeywordsOfAllEntriesBeforeUpdateByUser
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|ManageKeywordsAction (JabRefFrame frame)
@@ -671,18 +669,14 @@ name|keywordListModel
 operator|=
 operator|new
 name|DefaultListModel
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|keywordList
 operator|=
 operator|new
 name|JList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|keywordListModel
 argument_list|)
@@ -1736,9 +1730,7 @@ name|keywordsToAdd
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|HashSet
@@ -1749,9 +1741,7 @@ name|userSelectedKeywords
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// build keywordsToAdd and userSelectedKeywords in parallel
@@ -1776,7 +1766,7 @@ condition|;
 control|)
 block|{
 name|String
-name|keyword
+name|kword
 init|=
 name|keywords
 operator|.
@@ -1787,7 +1777,7 @@ name|userSelectedKeywords
 operator|.
 name|add
 argument_list|(
-name|keyword
+name|kword
 argument_list|)
 expr_stmt|;
 if|if
@@ -1797,7 +1787,7 @@ name|sortedKeywordsOfAllEntriesBeforeUpdateByUser
 operator|.
 name|contains
 argument_list|(
-name|keyword
+name|kword
 argument_list|)
 condition|)
 block|{
@@ -1805,7 +1795,7 @@ name|keywordsToAdd
 operator|.
 name|add
 argument_list|(
-name|keyword
+name|kword
 argument_list|)
 expr_stmt|;
 block|}
@@ -1818,15 +1808,13 @@ name|keywordsToRemove
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
 name|String
-name|keyword
+name|kword
 range|:
 name|sortedKeywordsOfAllEntriesBeforeUpdateByUser
 control|)
@@ -1838,7 +1826,7 @@ name|userSelectedKeywords
 operator|.
 name|contains
 argument_list|(
-name|keyword
+name|kword
 argument_list|)
 condition|)
 block|{
@@ -1846,7 +1834,7 @@ name|keywordsToRemove
 operator|.
 name|add
 argument_list|(
-name|keyword
+name|kword
 argument_list|)
 expr_stmt|;
 block|}
@@ -2215,9 +2203,7 @@ name|keywords
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|keywords
@@ -2312,6 +2298,7 @@ literal|"unchecked"
 argument_list|)
 DECL|method|createClone (HashSet<String> keywordsToAdd)
 specifier|private
+specifier|static
 name|HashSet
 argument_list|<
 name|String

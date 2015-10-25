@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2012-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -869,6 +869,7 @@ expr_stmt|;
 block|}
 DECL|method|removeFieldValue (BibtexEntry entry, String fieldName, NamedCompound compound)
 specifier|private
+specifier|static
 name|void
 name|removeFieldValue
 parameter_list|(
@@ -1981,10 +1982,6 @@ specifier|private
 name|int
 name|modifiedEntriesCount
 decl_stmt|;
-DECL|field|numSelected
-name|int
-name|numSelected
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|init ()
@@ -2766,6 +2763,7 @@ block|}
 comment|/**      * Converts the text in 1st, 2nd, ... to real superscripts by wrapping in \textsuperscript{st}, ...      */
 DECL|method|doCleanUpSuperscripts (BibtexEntry entry, NamedCompound ce)
 specifier|private
+specifier|static
 name|void
 name|doCleanUpSuperscripts
 parameter_list|(
@@ -2852,9 +2850,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Removes the http://... for each DOI      * Moves DOIs from URL and NOTE filed to DOI field      * @param ce       */
+comment|/**      * Removes the http://... for each DOI      * Moves DOIs from URL and NOTE filed to DOI field      * @param ce      */
 DECL|method|doCleanUpDOI (BibtexEntry bes, NamedCompound ce)
 specifier|private
+specifier|static
 name|void
 name|doCleanUpDOI
 parameter_list|(
@@ -3112,6 +3111,7 @@ block|}
 block|}
 DECL|method|doCleanUpMonth (BibtexEntry entry, NamedCompound ce)
 specifier|private
+specifier|static
 name|void
 name|doCleanUpMonth
 parameter_list|(
@@ -3215,6 +3215,7 @@ block|}
 block|}
 DECL|method|doCleanUpPageNumbers (BibtexEntry entry, NamedCompound ce)
 specifier|private
+specifier|static
 name|void
 name|doCleanUpPageNumbers
 parameter_list|(
@@ -3297,6 +3298,7 @@ block|}
 block|}
 DECL|method|fixWrongFileEntries (BibtexEntry entry, NamedCompound ce)
 specifier|private
+specifier|static
 name|void
 name|fixWrongFileEntries
 parameter_list|(
@@ -4142,6 +4144,7 @@ block|}
 comment|/**      * Converts HTML code to LaTeX code      */
 DECL|method|doConvertHTML (BibtexEntry entry, NamedCompound ce)
 specifier|private
+specifier|static
 name|void
 name|doConvertHTML
 parameter_list|(
@@ -4237,6 +4240,7 @@ block|}
 comment|/**      * Converts Unicode characters to LaTeX code      */
 DECL|method|doConvertUnicode (BibtexEntry entry, NamedCompound ce)
 specifier|private
+specifier|static
 name|void
 name|doConvertUnicode
 parameter_list|(
@@ -4348,6 +4352,7 @@ block|}
 comment|/**      * Adds curly brackets {} around keywords      */
 DECL|method|doConvertCase (BibtexEntry entry, NamedCompound ce)
 specifier|private
+specifier|static
 name|void
 name|doConvertCase
 parameter_list|(
@@ -4442,6 +4447,7 @@ block|}
 block|}
 DECL|method|doConvertUnits (BibtexEntry entry, NamedCompound ce)
 specifier|private
+specifier|static
 name|void
 name|doConvertUnits
 parameter_list|(
@@ -4536,6 +4542,7 @@ block|}
 block|}
 DECL|method|doConvertLaTeX (BibtexEntry entry, NamedCompound ce)
 specifier|private
+specifier|static
 name|void
 name|doConvertLaTeX
 parameter_list|(
@@ -4740,6 +4747,7 @@ block|}
 comment|/**      * Converts to BibLatex format      */
 DECL|method|doConvertToBiblatex (BibtexEntry entry, NamedCompound ce)
 specifier|private
+specifier|static
 name|void
 name|doConvertToBiblatex
 parameter_list|(

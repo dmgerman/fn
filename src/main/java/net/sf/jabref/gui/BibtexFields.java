@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2014 Raik Nagel and JabRef contributors     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 Raik Nagel and JabRef contributors     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_comment
@@ -308,6 +308,7 @@ decl_stmt|;
 comment|// contains all known (and public) bibtex fieldnames
 DECL|field|PUBLIC_FIELDS
 specifier|private
+specifier|final
 name|String
 index|[]
 name|PUBLIC_FIELDS
@@ -321,11 +322,7 @@ name|fieldSet
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexSingleField
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|BibtexSingleField
@@ -1609,9 +1606,7 @@ name|pFields
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|fieldSet
 operator|.
@@ -1722,9 +1717,7 @@ name|nF
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Collections
@@ -2171,9 +2164,11 @@ name|field
 argument_list|)
 decl_stmt|;
 return|return
+operator|(
 name|sField
 operator|==
 literal|null
+operator|)
 operator|||
 name|sField
 operator|.
@@ -2202,9 +2197,11 @@ name|field
 argument_list|)
 decl_stmt|;
 return|return
+operator|(
 name|sField
 operator|==
 literal|null
+operator|)
 operator|||
 name|sField
 operator|.
@@ -2234,9 +2231,11 @@ name|field
 argument_list|)
 decl_stmt|;
 return|return
+operator|(
 name|sField
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|sField
 operator|.
@@ -2265,9 +2264,11 @@ name|field
 argument_list|)
 decl_stmt|;
 return|return
+operator|(
 name|sField
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|sField
 operator|.
@@ -2309,9 +2310,7 @@ name|pFields
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2818,15 +2817,19 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|weight
-argument_list|<
+operator|<
 literal|0.0
+operator|)
 operator|||
+operator|(
 name|weight
-argument_list|>
+operator|>
 name|GUIGlobals
 operator|.
 name|MAX_FIELD_WEIGHT
+operator|)
 condition|)
 block|{
 name|weight
