@@ -601,6 +601,9 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+comment|// TODO: should we rethrow the exception?
+comment|// In BasePanel.java, the exception is catched and a text output to the frame
+comment|// throw e;
 block|}
 block|}
 elseif|else
