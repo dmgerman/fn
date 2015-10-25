@@ -543,22 +543,6 @@ argument_list|)
 operator|+
 literal|'/'
 decl_stmt|;
-if|if
-condition|(
-name|middle
-operator|.
-name|equals
-argument_list|(
-literal|"en/"
-argument_list|)
-condition|)
-block|{
-name|middle
-operator|=
-literal|""
-expr_stmt|;
-comment|// english in base help dir.
-block|}
 name|URL
 name|old
 init|=
