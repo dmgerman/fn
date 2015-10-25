@@ -458,6 +458,12 @@ name|removeAllElements
 argument_list|()
 expr_stmt|;
 block|}
+comment|// .getResource is called at resourceOwner. This method is available at all Class objects
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 DECL|method|setPage (String filename, Class resourceOwner)
 specifier|public
 name|void
