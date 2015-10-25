@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     Copyright (C) 2015 Oliver Kopp      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     Copyright (C) 2015 Oliver Kopp      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_comment
@@ -1108,7 +1108,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Will return the publication date of the given bibtex entry in conformance to ISO 8601, i.e. either YYYY or      * YYYY-MM.      *       * @param entry      * @return will return the publication date of the entry or null if no year was found.      */
+comment|/**      * Will return the publication date of the given bibtex entry in conformance to ISO 8601, i.e. either YYYY or      * YYYY-MM.      *      * @param entry      * @return will return the publication date of the entry or null if no year was found.      */
 comment|// TODO: Should be instance method of BibTexEntry
 DECL|method|getPublicationDate (BibtexEntry entry)
 specifier|public
@@ -1208,7 +1208,7 @@ return|return
 name|year
 return|;
 block|}
-comment|/**      * This method returns a String similar to the one passed in, except that it is molded into a form that is      * acceptable for bibtex.      *       * Watch-out that the returned string might be of length 0 afterwards.      *       * @param key mayBeNull      */
+comment|/**      * This method returns a String similar to the one passed in, except that it is molded into a form that is      * acceptable for bibtex.      *      * Watch-out that the returned string might be of length 0 afterwards.      *      * @param key mayBeNull      */
 DECL|method|checkLegalKey (String key)
 specifier|public
 specifier|static
@@ -1544,9 +1544,7 @@ name|res
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1642,7 +1640,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Returns a HashMap containing all words used in the database in the given field type. Characters in      *<code>remove</code> are not included.      *       * @param db a<code>BibtexDatabase</code> value      * @param field a<code>String</code> value      * @param remove a<code>String</code> value      * @return a<code>HashSet</code> value      */
+comment|/**      * Returns a HashMap containing all words used in the database in the given field type. Characters in      *<code>remove</code> are not included.      *      * @param db a<code>BibtexDatabase</code> value      * @param field a<code>String</code> value      * @param remove a<code>String</code> value      * @return a<code>HashSet</code> value      */
 DECL|method|findAllWordsInField (BibtexDatabase db, String field, String remove)
 specifier|public
 specifier|static
@@ -1670,9 +1668,7 @@ name|res
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|StringTokenizer
@@ -1764,7 +1760,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Finds all authors' last names in all the given fields for the given database.      *       * @param db The database.      * @param fields The fields to look in.      * @return a set containing the names.      */
+comment|/**      * Finds all authors' last names in all the given fields for the given database.      *      * @param db The database.      * @param fields The fields to look in.      * @return a set containing the names.      */
 DECL|method|findAuthorLastNames (BibtexDatabase db, List<String> fields)
 specifier|public
 specifier|static
@@ -1792,9 +1788,7 @@ name|res
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1930,7 +1924,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Make sure an URL is "portable", in that it doesn't contain bad characters that break the open command in some      * OSes.      *       * A call to this method will also remove \\url{} enclosings and clean Doi links.      *       * @param link :the URL to sanitize.      * @return Sanitized URL      */
+comment|/**      * Make sure an URL is "portable", in that it doesn't contain bad characters that break the open command in some      * OSes.      *      * A call to this method will also remove \\url{} enclosings and clean Doi links.      *      * @param link :the URL to sanitize.      * @return Sanitized URL      */
 DECL|method|sanitizeUrl (String link)
 specifier|public
 specifier|static
@@ -2096,8 +2090,10 @@ parameter_list|(
 name|UnsupportedEncodingException
 name|ignored
 parameter_list|)
-block|{         }
-comment|/**          * Fix for: [ 1574773 ] sanitizeUrl() breaks ftp:// and file:///          *           * http://sourceforge.net/tracker/index.php?func=detail&aid=1574773&group_id=92314&atid=600306          */
+block|{
+comment|// Ignored
+block|}
+comment|/**          * Fix for: [ 1574773 ] sanitizeUrl() breaks ftp:// and file:///          *          * http://sourceforge.net/tracker/index.php?func=detail&aid=1574773&group_id=92314&atid=600306          */
 try|try
 block|{
 return|return
@@ -2151,10 +2147,7 @@ name|result
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-index|[]
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|char
@@ -2629,7 +2622,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside a List to a specified default value. Timestamp      * field is also set. Preferences are checked to see if these options are enabled.      *       * @param bibs List of bibtex entries      */
+comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside a List to a specified default value. Timestamp      * field is also set. Preferences are checked to see if these options are enabled.      *      * @param bibs List of bibtex entries      */
 DECL|method|setAutomaticFields (Collection<BibtexEntry> bibs, boolean overwriteOwner, boolean overwriteTimestamp, boolean markEntries)
 specifier|public
 specifier|static
@@ -2828,7 +2821,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Sets empty or non-existing owner fields of a bibtex entry to a specified default value. Timestamp field is also      * set. Preferences are checked to see if these options are enabled.      *       * @param entry The entry to set fields for.      * @param overwriteOwner Indicates whether owner should be set if it is already set.      * @param overwriteTimestamp Indicates whether timestamp should be set if it is already set.      */
+comment|/**      * Sets empty or non-existing owner fields of a bibtex entry to a specified default value. Timestamp field is also      * set. Preferences are checked to see if these options are enabled.      *      * @param entry The entry to set fields for.      * @param overwriteOwner Indicates whether owner should be set if it is already set.      * @param overwriteTimestamp Indicates whether timestamp should be set if it is already set.      */
 DECL|method|setAutomaticFields (BibtexEntry entry, boolean overwriteOwner, boolean overwriteTimestamp)
 specifier|public
 specifier|static
@@ -3025,7 +3018,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Collect file links from the given set of fields, and add them to the list contained in the field      * GUIGlobals.FILE_FIELD.      *       * @param database The database to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
+comment|/**      * Collect file links from the given set of fields, and add them to the list contained in the field      * GUIGlobals.FILE_FIELD.      *      * @param database The database to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
 DECL|method|upgradePdfPsToFile (BibtexDatabase database, String[] fields)
 specifier|public
 specifier|static
@@ -3057,7 +3050,7 @@ name|fields
 argument_list|)
 return|;
 block|}
-comment|/**      * Collect file links from the given set of fields, and add them to the list contained in the field      * GUIGlobals.FILE_FIELD.      *       * @param entries The entries to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
+comment|/**      * Collect file links from the given set of fields, and add them to the list contained in the field      * GUIGlobals.FILE_FIELD.      *      * @param entries The entries to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
 DECL|method|upgradePdfPsToFile (Collection<BibtexEntry> entries, String[] fields)
 specifier|public
 specifier|static
@@ -3307,7 +3300,7 @@ return|return
 name|ce
 return|;
 block|}
-comment|/**      * Warns the user of undesired side effects of an explicit assignment/removal of entries to/from this group.      * Currently there are four types of groups: AllEntriesGroup, SearchGroup - do not support explicit assignment.      * ExplicitGroup - never modifies entries. KeywordGroup - only this modifies entries upon assignment/removal.      * Modifications are acceptable unless they affect a standard field (such as "author") besides the "keywords" field.      *       * @param parent The Component used as a parent when displaying a confirmation dialog.      * @return true if the assignment has no undesired side effects, or the user chose to perform it anyway. false      *         otherwise (this indicates that the user has aborted the assignment).      */
+comment|/**      * Warns the user of undesired side effects of an explicit assignment/removal of entries to/from this group.      * Currently there are four types of groups: AllEntriesGroup, SearchGroup - do not support explicit assignment.      * ExplicitGroup - never modifies entries. KeywordGroup - only this modifies entries upon assignment/removal.      * Modifications are acceptable unless they affect a standard field (such as "author") besides the "keywords" field.      *      * @param parent The Component used as a parent when displaying a confirmation dialog.      * @return true if the assignment has no undesired side effects, or the user chose to perform it anyway. false      *         otherwise (this indicates that the user has aborted the assignment).      */
 DECL|method|warnAssignmentSideEffects (AbstractGroup[] groups, BibtexEntry[] entries, BibtexDatabase db, Component parent)
 specifier|public
 specifier|static
@@ -3337,9 +3330,7 @@ name|affectedFields
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -3573,7 +3564,7 @@ comment|// }
 comment|// }
 comment|// return true; // found no side effects
 block|}
-comment|/**      * This method looks up what kind of external binding is used for the given field, and constructs on OpenFileFilter      * suitable for browsing for an external file.      *       * @param fieldName The BibTeX field in question.      * @return The file filter.      */
+comment|/**      * This method looks up what kind of external binding is used for the given field, and constructs on OpenFileFilter      * suitable for browsing for an external file.      *      * @param fieldName The BibTeX field in question.      * @return The file filter.      */
 DECL|method|getFileFilterForField (String fieldName)
 specifier|public
 specifier|static
@@ -3661,7 +3652,7 @@ return|return
 name|off
 return|;
 block|}
-comment|/**      * Set a given field to a given value for all entries in a Collection. This method DOES NOT update any UndoManager,      * but returns a relevant CompoundEdit that should be registered by the caller.      *       * @param entries The entries to set the field for.      * @param field The name of the field to set.      * @param text The value to set. This value can be null, indicating that the field should be cleared.      * @param overwriteValues Indicate whether the value should be set even if an entry already has the field set.      * @return A CompoundEdit for the entire operation.      */
+comment|/**      * Set a given field to a given value for all entries in a Collection. This method DOES NOT update any UndoManager,      * but returns a relevant CompoundEdit that should be registered by the caller.      *      * @param entries The entries to set the field for.      * @param field The name of the field to set.      * @param text The value to set. This value can be null, indicating that the field should be cleared.      * @param overwriteValues Indicate whether the value should be set even if an entry already has the field set.      * @return A CompoundEdit for the entire operation.      */
 DECL|method|massSetField (Collection<BibtexEntry> entries, String field, String text, boolean overwriteValues)
 specifier|public
 specifier|static
@@ -3793,7 +3784,7 @@ return|return
 name|ce
 return|;
 block|}
-comment|/**      * Move contents from one field to another for a Collection of entries.      *       * @param entries The entries to do this operation for.      * @param field The field to move contents from.      * @param newField The field to move contents into.      * @param overwriteValues If true, overwrites any existing values in the new field. If false, makes no change for      *            entries with existing value in the new field.      * @return A CompoundEdit for the entire operation.      */
+comment|/**      * Move contents from one field to another for a Collection of entries.      *      * @param entries The entries to do this operation for.      * @param field The field to move contents from.      * @param newField The field to move contents into.      * @param overwriteValues If true, overwrites any existing values in the new field. If false, makes no change for      *            entries with existing value in the new field.      * @return A CompoundEdit for the entire operation.      */
 DECL|method|massRenameField (Collection<BibtexEntry> entries, String field, String newField, boolean overwriteValues)
 specifier|public
 specifier|static
@@ -4149,7 +4140,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Static equals that can also return the right result when one of the objects is null.      *       * @param one The object whose equals method is called if the first is not null.      * @param two The object passed to the first one if the first is not null.      * @return<code>one == null ? two == null : one.equals(two);</code>      */
+comment|/**      * Static equals that can also return the right result when one of the objects is null.      *      * @param one The object whose equals method is called if the first is not null.      * @param two The object passed to the first one if the first is not null.      * @return<code>one == null ? two == null : one.equals(two);</code>      */
 DECL|method|equals (Object one, Object two)
 specifier|public
 specifier|static
@@ -4180,7 +4171,7 @@ name|two
 argument_list|)
 return|;
 block|}
-comment|/**      * Run an AbstractWorker's methods using Spin features to put each method on the correct thread.      *       * @param worker The worker to run.      * @throws Throwable      */
+comment|/**      * Run an AbstractWorker's methods using Spin features to put each method on the correct thread.      *      * @param worker The worker to run.      * @throws Throwable      */
 DECL|method|runAbstractWorker (AbstractWorker worker)
 specifier|public
 specifier|static
@@ -4401,9 +4392,7 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -4829,7 +4818,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Binds ESC-Key to cancel button      *       * @param rootPane the pane to bind the action to. Typically, this variable is retrieved by this.getRootPane();      * @param cancelAction the action to bind      */
+comment|/**      * Binds ESC-Key to cancel button      *      * @param rootPane the pane to bind the action to. Typically, this variable is retrieved by this.getRootPane();      * @param cancelAction the action to bind      */
 comment|// TODO: move to GUI
 DECL|method|bindCloseDialogKeyToCancelAction (JRootPane rootPane, Action cancelAction)
 specifier|public
@@ -4890,7 +4879,7 @@ name|cancelAction
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Download the URL and return contents as a String.      *       * @param source      * @return      * @throws IOException      */
+comment|/**      * Download the URL and return contents as a String.      *      * @param source      * @return      * @throws IOException      */
 DECL|method|getResults (URL source)
 specifier|public
 specifier|static
@@ -4917,7 +4906,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * Download the URL and return contents as a String.      *       * @param source      * @return      * @throws IOException      */
+comment|/**      * Download the URL and return contents as a String.      *      * @param source      * @return      * @throws IOException      */
 DECL|method|getResults (URLConnection source)
 specifier|public
 specifier|static
@@ -4941,7 +4930,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * Download the URL using specified encoding and return contents as a String.      *       * @param source encoding      * @return      * @throws IOException      */
+comment|/**      * Download the URL using specified encoding and return contents as a String.      *      * @param source encoding      * @return      * @throws IOException      */
 DECL|method|getResultsWithEncoding (URL source, String encoding)
 specifier|public
 specifier|static
@@ -4971,7 +4960,7 @@ name|encoding
 argument_list|)
 return|;
 block|}
-comment|/**      * Download the URL using specified encoding and return contents as a String.      *       * @param source encoding      * @return      * @throws IOException      */
+comment|/**      * Download the URL using specified encoding and return contents as a String.      *      * @param source encoding      * @return      * @throws IOException      */
 DECL|method|getResultsWithEncoding (URLConnection source, String encoding)
 specifier|public
 specifier|static
@@ -5073,7 +5062,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Read results from a file instead of an URL. Just for faster debugging.      *       * @param f      * @return      * @throws IOException      */
+comment|/**      * Read results from a file instead of an URL. Just for faster debugging.      *      * @param f      * @return      * @throws IOException      */
 DECL|method|getResultsFromFile (File f)
 specifier|public
 name|String
@@ -5486,9 +5475,7 @@ name|dirs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -5533,9 +5520,7 @@ name|extensions
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -6157,9 +6142,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|entries
@@ -6190,7 +6173,7 @@ name|diag
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the list of linked files. The files have the absolute filename      *       * @param bes list of BibTeX entries      * @param fileDirs list of directories to try for expansion      *       * @return list of files. May be empty      */
+comment|/**      * Returns the list of linked files. The files have the absolute filename      *      * @param bes list of BibTeX entries      * @param fileDirs list of directories to try for expansion      *      * @return list of files. May be empty      */
 DECL|method|getListOfLinkedFiles (BibtexEntry[] bes, String[] fileDirs)
 specifier|public
 specifier|static
@@ -6217,9 +6200,7 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -6359,14 +6340,7 @@ name|result
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|List
-argument_list|<
-name|File
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// First scan directories

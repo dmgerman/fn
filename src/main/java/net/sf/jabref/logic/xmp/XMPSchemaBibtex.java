@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -261,7 +261,7 @@ name|KEY
 init|=
 literal|"bibtex"
 decl_stmt|;
-comment|/**      * Create a new empty XMPSchemaBibtex as a child in the given XMPMetadata.      *       * @param parent      */
+comment|/**      * Create a new empty XMPSchemaBibtex as a child in the given XMPMetadata.      *      * @param parent      */
 DECL|method|XMPSchemaBibtex (XMPMetadata parent)
 specifier|public
 name|XMPSchemaBibtex
@@ -284,7 +284,7 @@ name|NAMESPACE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create schema from an existing XML element.      *       * @param e      *            The existing XML element.      */
+comment|/**      * Create schema from an existing XML element.      *      * @param e      *            The existing XML element.      */
 DECL|method|XMPSchemaBibtex (Element e, String namespace)
 specifier|public
 name|XMPSchemaBibtex
@@ -308,6 +308,7 @@ expr_stmt|;
 block|}
 DECL|method|makeProperty (String propertyName)
 specifier|private
+specifier|static
 name|String
 name|makeProperty
 parameter_list|(
@@ -325,7 +326,7 @@ operator|+
 name|propertyName
 return|;
 block|}
-comment|/**      * Uses XMPSchema methods      *       * @param field      * @return      */
+comment|/**      * Uses XMPSchema methods      *      * @param field      * @return      */
 DECL|method|getPersonList (String field)
 specifier|public
 name|List
@@ -836,7 +837,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Returns a map of all properties and their values. LIs and bags in seqs      * are concatenated using " and ".      *       * @return Map from name of textproperty (String) to value (String). For      *         instance: "year" => "2005". Empty map if none found.      * @throws TransformerException      */
+comment|/**      * Returns a map of all properties and their values. LIs and bags in seqs      * are concatenated using " and ".      *      * @return Map from name of textproperty (String) to value (String). For      *         instance: "year" => "2005". Empty map if none found.      * @throws TransformerException      */
 DECL|method|getAllProperties (XMPSchema schema, String namespaceName)
 specifier|public
 specifier|static
@@ -876,11 +877,7 @@ name|result
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -930,6 +927,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|node
 operator|.
 name|getNodeType
@@ -938,7 +936,9 @@ operator|!=
 name|Node
 operator|.
 name|ATTRIBUTE_NODE
+operator|)
 operator|&&
+operator|(
 name|node
 operator|.
 name|getNodeType
@@ -947,6 +947,7 @@ operator|!=
 name|Node
 operator|.
 name|ELEMENT_NODE
+operator|)
 condition|)
 block|{
 continue|continue;
@@ -972,11 +973,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|split
 operator|.
 name|length
 operator|==
 literal|2
+operator|)
 operator|&&
 name|split
 index|[
@@ -1192,11 +1195,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|split
 operator|.
 name|length
 operator|==
 literal|2
+operator|)
 operator|&&
 name|split
 index|[
@@ -1226,7 +1231,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*          * Collapse Whitespace          *           * Quoting from          * http://www.gerg.ca/software/btOOL/doc/bt_postprocess.html:<cite>          * "The exact rules for collapsing whitespace are simple: non-space          * whitespace characters (tabs and newlines mainly) are converted to          * space, any strings of more than one space within are collapsed to a          * single space, and any leading or trailing spaces are deleted."          *</cite>          */
+comment|/*          * Collapse Whitespace          *          * Quoting from          * http://www.gerg.ca/software/btOOL/doc/bt_postprocess.html:<cite>          * "The exact rules for collapsing whitespace are simple: non-space          * whitespace characters (tabs and newlines mainly) are converted to          * space, any strings of more than one space within are collapsed to a          * single space, and any leading or trailing spaces are deleted."          *</cite>          */
 for|for
 control|(
 name|Map
@@ -1304,9 +1309,7 @@ name|preserveWhiteSpace
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 static|static
@@ -1356,7 +1359,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *       * @param entry      * @param database maybenull      */
+comment|/**      *      * @param entry      * @param database maybenull      */
 DECL|method|setBibtexEntry (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|void
@@ -1409,9 +1412,7 @@ name|filters
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -1601,7 +1602,7 @@ return|return
 name|e
 return|;
 block|}
-comment|/**      * Taken from DOM2Utils.java:      *       * JBoss, the OpenSource EJB server      *       * Distributable under LGPL license. See terms of license at gnu.org.      */
+comment|/**      * Taken from DOM2Utils.java:      *      * JBoss, the OpenSource EJB server      *      * Distributable under LGPL license. See terms of license at gnu.org.      */
 DECL|method|getTextContent (Node node)
 specifier|public
 specifier|static

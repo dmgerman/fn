@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2005 Andreas Rudert   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
+comment|/* Copyright (C) 2015 JabRef contributors.  Copyright (C) 2005 Andreas Rudert   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -333,7 +333,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog to allow users to choose a file contained in a ZIP file.  *   * @author andreas_sf at rudert-home dot de  */
+comment|/**  * Dialog to allow users to choose a file contained in a ZIP file.  *  * @author andreas_sf at rudert-home dot de  */
 end_comment
 
 begin_class
@@ -343,7 +343,7 @@ name|ZipFileChooser
 extends|extends
 name|JDialog
 block|{
-comment|/**      * Table model for the ZIP archive contents.      *       *<p>Contains one row for each entry.      * Does not contain rows for directory entries.</p>      *       *<p>The columns contain information about ZIIP file entries:      *<ol><li>      *   name {@link String}      *</li><li>      *   time of last modification {@link Date}      *</li><li>      *   size (uncompressed) {@link Long}      *</li></ol></p>      */
+comment|/**      * Table model for the ZIP archive contents.      *      *<p>Contains one row for each entry.      * Does not contain rows for directory entries.</p>      *      *<p>The columns contain information about ZIIP file entries:      *<ol><li>      *   name {@link String}      *</li><li>      *   time of last modification {@link Date}      *</li><li>      *   size (uncompressed) {@link Long}      *</li></ol></p>      */
 DECL|class|ZipFileChooserTableModel
 class|class
 name|ZipFileChooserTableModel
@@ -385,12 +385,14 @@ block|}
 decl_stmt|;
 DECL|field|rows
 specifier|private
+specifier|final
 name|ZipEntry
 index|[]
 name|rows
 decl_stmt|;
 DECL|field|zipFile
 specifier|private
+specifier|final
 name|ZipFile
 name|zipFile
 decl_stmt|;
@@ -472,7 +474,7 @@ name|col
 index|]
 return|;
 block|}
-comment|/**          * Zip-File entry at the given row index.          *           * @param rowIndex  row index          * @return  Zip file entry          */
+comment|/**          * Zip-File entry at the given row index.          *          * @param rowIndex  row index          * @return  Zip file entry          */
 DECL|method|getZipEntry (int rowIndex)
 specifier|public
 name|ZipEntry
@@ -491,7 +493,7 @@ name|rowIndex
 index|]
 return|;
 block|}
-comment|/**          * Zip file which contains all entries of this model.          *           * @return zip file          */
+comment|/**          * Zip file which contains all entries of this model.          *          * @return zip file          */
 DECL|method|getZipFile ()
 specifier|public
 name|ZipFile
@@ -647,9 +649,10 @@ literal|300
 argument_list|)
 return|;
 block|}
-comment|/**      * Entries that can be selected with this dialog.      *       * @param zipFile  Zip-File      * @return  entries that can be selected      */
+comment|/**      * Entries that can be selected with this dialog.      *      * @param zipFile  Zip-File      * @return  entries that can be selected      */
 DECL|method|getSelectableZipEntries (ZipFile zipFile)
 specifier|private
+specifier|static
 name|ZipEntry
 index|[]
 name|getSelectableZipEntries
@@ -666,9 +669,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ZipEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Enumeration
@@ -744,7 +745,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**      * New Zip file chooser.      *       * @param owner  Owner of the file chooser      * @param zipFile  Zip-Fle to choose from, must be readable      * @throws HeadlessException      */
+comment|/**      * New Zip file chooser.      *      * @param owner  Owner of the file chooser      * @param zipFile  Zip-Fle to choose from, must be readable      * @throws HeadlessException      */
 DECL|method|ZipFileChooser (ImportCustomizationDialog owner, ZipFile zipFile)
 specifier|public
 name|ZipFileChooser
