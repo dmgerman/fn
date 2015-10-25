@@ -1828,10 +1828,12 @@ literal|"new"
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"new"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|FILE
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|ExternalFileTypeEntryEditor

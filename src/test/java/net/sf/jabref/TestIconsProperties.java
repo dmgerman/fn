@@ -181,7 +181,7 @@ block|{
 name|String
 name|folder
 init|=
-literal|"src/main/resources/images/crystal_16"
+literal|"src/main/resources/images/external"
 decl_stmt|;
 name|String
 name|iconsProperties
@@ -191,9 +191,7 @@ decl_stmt|;
 name|String
 name|iconsPropertiesPath
 init|=
-name|folder
-operator|+
-literal|"/"
+literal|"src/main/resources/images/"
 operator|+
 name|iconsProperties
 decl_stmt|;
@@ -412,7 +410,7 @@ name|assertEquals
 argument_list|(
 literal|"Images are in the folder that are unused"
 argument_list|,
-literal|"[Icons.properties]"
+literal|"[red.png]"
 argument_list|,
 name|fileNamesInFolder
 operator|.

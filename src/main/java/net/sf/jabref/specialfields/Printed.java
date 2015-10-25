@@ -121,10 +121,12 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"printed"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|PRINTED
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|,
 name|Localization
 operator|.

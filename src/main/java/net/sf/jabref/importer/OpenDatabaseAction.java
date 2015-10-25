@@ -477,10 +477,12 @@ name|super
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"open"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|OPEN
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this

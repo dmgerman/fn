@@ -984,10 +984,9 @@ operator|.
 name|WEST
 argument_list|)
 expr_stmt|;
-block|{
 comment|// Help Button
-name|HelpAction
-name|helpAction
+name|JButton
+name|help
 init|=
 operator|new
 name|HelpAction
@@ -1006,19 +1005,7 @@ name|lang
 argument_list|(
 literal|"Help on Preview Settings"
 argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|getImage
-argument_list|(
-literal|"helpSmall"
 argument_list|)
-argument_list|)
-decl_stmt|;
-name|JButton
-name|help
-init|=
-name|helpAction
 operator|.
 name|getIconButton
 argument_list|()
@@ -1034,7 +1021,6 @@ operator|.
 name|EAST
 argument_list|)
 expr_stmt|;
-block|}
 name|layoutConstraints
 operator|.
 name|weighty

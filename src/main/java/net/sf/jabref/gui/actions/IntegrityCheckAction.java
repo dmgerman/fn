@@ -175,13 +175,6 @@ name|menuTitle
 argument_list|(
 literal|"Integrity check"
 argument_list|)
-argument_list|,
-name|IconTheme
-operator|.
-name|getImage
-argument_list|(
-literal|"integrityCheck"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|this

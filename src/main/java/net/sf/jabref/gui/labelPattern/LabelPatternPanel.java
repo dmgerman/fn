@@ -1025,10 +1025,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"helpSmall"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|HELP
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|hlb

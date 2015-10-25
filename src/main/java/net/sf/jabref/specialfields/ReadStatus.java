@@ -88,10 +88,12 @@ name|icon
 init|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"readstatus"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|READ_STATUS
+operator|.
+name|getIcon
+argument_list|()
 decl_stmt|;
 DECL|method|ReadStatus ()
 specifier|private
@@ -149,10 +151,12 @@ name|icon
 operator|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"readStatusRead"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|READ_STATUS_READ
+operator|.
+name|getSmallIcon
+argument_list|()
 expr_stmt|;
 comment|// DO NOT TRANSLATE "read" as this makes the produced .bib files non portable
 name|values
@@ -190,10 +194,12 @@ name|icon
 operator|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"readStatusSkimmed"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|READ_STATUS_SKIMMED
+operator|.
+name|getSmallIcon
+argument_list|()
 expr_stmt|;
 name|values
 operator|.
