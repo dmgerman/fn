@@ -152,12 +152,9 @@ name|trim
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|abbreviation
 return|;
-block|}
 block|}
 DECL|method|getMedlineAbbreviation ()
 specifier|public
@@ -363,10 +360,13 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|o
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|getClass
 argument_list|()
 operator|!=
@@ -374,6 +374,7 @@ name|o
 operator|.
 name|getClass
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return

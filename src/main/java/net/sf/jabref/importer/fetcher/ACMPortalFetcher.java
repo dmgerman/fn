@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef Contributors     Copyright (C) 2003-2011 Aaron Chen     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef Contributors     Copyright (C) 2003-2011 Aaron Chen     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -844,11 +844,7 @@ name|previews
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|String
-argument_list|,
-name|JLabel
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 try|try
@@ -1560,6 +1556,7 @@ block|}
 block|}
 DECL|method|getEntryBibTeXURL (String fullCitation)
 specifier|private
+specifier|static
 name|String
 name|getEntryBibTeXURL
 parameter_list|(
@@ -2002,32 +1999,23 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|printf
+name|warn
 argument_list|(
-literal|"Citation Unmatched %d%n"
-argument_list|,
+literal|"Citation Unmatched "
+operator|+
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|entryNumber
 argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|printf
-argument_list|(
-name|text
 argument_list|)
 expr_stmt|;
 return|return
 literal|false
 return|;
-block|}
 block|}
 return|return
 literal|false
@@ -2035,6 +2023,7 @@ return|;
 block|}
 DECL|method|downloadEntryBibTeX (String ID, boolean abs)
 specifier|private
+specifier|static
 name|BibtexEntry
 name|downloadEntryBibTeX
 parameter_list|(
@@ -2252,12 +2241,9 @@ operator|+
 name|ACMPortalFetcher
 operator|.
 name|bibtexUrlEnd
-argument_list|)
-expr_stmt|;
+argument_list|,
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
+argument_list|)
 expr_stmt|;
 return|return
 literal|null
@@ -2269,10 +2255,14 @@ name|MalformedURLException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|info
+argument_list|(
+literal|"Malformed URL."
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 return|return
 literal|null
@@ -2284,10 +2274,14 @@ name|ConnectException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|info
+argument_list|(
+literal|"Cannot connect."
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 return|return
 literal|null
@@ -2299,10 +2293,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|info
+argument_list|(
+literal|"Cannot connect."
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 return|return
 literal|null
@@ -2341,6 +2339,7 @@ block|}
 comment|/**      * Find out how many hits were found.      * @param page      */
 DECL|method|getNumberOfHits (String page, String marker, Pattern pattern)
 specifier|private
+specifier|static
 name|int
 name|getNumberOfHits
 parameter_list|(
@@ -2600,6 +2599,7 @@ expr_stmt|;
 block|}
 DECL|method|save (String filename, String content)
 specifier|private
+specifier|static
 name|void
 name|save
 parameter_list|(

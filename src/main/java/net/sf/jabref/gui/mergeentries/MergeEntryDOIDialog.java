@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2012 JabRef contributors.  This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or  (at your option) any later version.   This program is distributed in the hope that it will be useful,  but WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License for more details.   You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc.,  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2012-2015 JabRef contributors.  This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or  (at your option) any later version.   This program is distributed in the hope that it will be useful,  but WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License for more details.   You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc.,  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -49,6 +49,16 @@ operator|.
 name|event
 operator|.
 name|ActionListener
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -265,7 +275,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Oscar  *   *         Dialog for merging Bibtex entry with data fetched from DOI  */
+comment|/**  * @author Oscar  *  *         Dialog for merging Bibtex entry with data fetched from DOI  */
 end_comment
 
 begin_class
@@ -276,15 +286,6 @@ name|MergeEntryDOIDialog
 extends|extends
 name|JDialog
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|5454378088546423798L
-decl_stmt|;
 DECL|field|DIM
 specifier|private
 specifier|final
@@ -568,7 +569,7 @@ name|frame
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets up the dialog      *       * @param selected Selected BibtexEntries      */
+comment|/**      * Sets up the dialog      *      * @param selected Selected BibtexEntries      */
 DECL|method|init ()
 specifier|private
 name|void
@@ -939,7 +940,7 @@ name|pack
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Act on button pressed      *       * @param button Butten pressed      */
+comment|/**      * Act on button pressed      *      * @param button Butten pressed      */
 DECL|method|buttonPressed (String button)
 specifier|private
 name|void
@@ -997,7 +998,7 @@ condition|)
 block|{
 comment|// Create a new entry and add it to the undo stack
 comment|// Remove the old entry and add it to the undo stack (which is not working...)
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1005,9 +1006,7 @@ name|joint
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|mergedEntry
 operator|.

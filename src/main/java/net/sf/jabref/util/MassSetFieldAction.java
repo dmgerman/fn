@@ -1624,6 +1624,7 @@ expr_stmt|;
 block|}
 DECL|method|getFieldNames (String s)
 specifier|private
+specifier|static
 name|String
 index|[]
 name|getFieldNames

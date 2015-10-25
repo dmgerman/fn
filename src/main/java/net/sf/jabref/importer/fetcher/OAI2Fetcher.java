@@ -685,14 +685,18 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|dot
 operator|>
 operator|-
 literal|1
+operator|)
 operator|&&
+operator|(
 name|dot
 operator|<
 name|slash
+operator|)
 condition|)
 block|{
 name|key
@@ -1270,9 +1274,11 @@ condition|(
 name|shouldWait
 argument_list|()
 operator|&&
+operator|(
 name|lastCall
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|long
@@ -1309,12 +1315,14 @@ literal|"Waiting for ArXiv..."
 argument_list|)
 operator|+
 operator|(
+operator|(
 name|waitTime
 operator|-
 name|elapsed
 operator|)
 operator|/
 literal|1000
+operator|)
 operator|+
 literal|" s"
 argument_list|)

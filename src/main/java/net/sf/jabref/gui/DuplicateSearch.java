@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_comment
@@ -228,10 +228,7 @@ name|duplicates
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|BibtexEntry
-index|[]
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|DuplicateSearch (BasePanel bp)
@@ -397,9 +394,7 @@ name|toRemove
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -411,9 +406,7 @@ name|toAdd
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 while|while
@@ -424,12 +417,14 @@ operator|.
 name|finished
 argument_list|()
 operator|||
+operator|(
 name|current
 operator|<
 name|duplicates
 operator|.
 name|size
 argument_list|()
+operator|)
 condition|)
 block|{
 if|if
@@ -462,7 +457,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{                     }
+block|{
+comment|// Ignore
+block|}
 block|}
 block|}
 else|else
@@ -553,13 +550,10 @@ operator|++
 expr_stmt|;
 continue|continue;
 block|}
-else|else
-block|{
 name|askAboutExact
 operator|=
 literal|true
 expr_stmt|;
-block|}
 block|}
 name|DuplicateCallBack
 name|cb
@@ -620,17 +614,21 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|answer
 operator|==
 name|DuplicateResolverDialog
 operator|.
 name|KEEP_UPPER
+operator|)
 operator|||
+operator|(
 name|answer
 operator|==
 name|DuplicateResolverDialog
 operator|.
 name|AUTOREMOVE_EXACT
+operator|)
 condition|)
 block|{
 name|toRemove
@@ -955,13 +953,17 @@ name|i
 init|=
 literal|0
 init|;
+operator|(
 name|i
 operator|<
+operator|(
 name|bes
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
+operator|)
 operator|&&
 operator|!
 name|finished
@@ -979,11 +981,13 @@ name|i
 operator|+
 literal|1
 init|;
+operator|(
 name|j
 operator|<
 name|bes
 operator|.
 name|length
+operator|)
 operator|&&
 operator|!
 name|finished
