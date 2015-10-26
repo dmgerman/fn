@@ -303,11 +303,11 @@ decl_stmt|;
 DECL|field|icon
 specifier|private
 specifier|final
-name|JButton
+name|JLabel
 name|icon
 init|=
 operator|new
-name|JButton
+name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
