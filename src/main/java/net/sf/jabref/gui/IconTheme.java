@@ -858,6 +858,34 @@ literal|"\uf39c"
 argument_list|)
 block|,
 comment|/* css: import */
+DECL|enumConstant|FILE_WORD
+name|FILE_WORD
+argument_list|(
+literal|"\uf2e2"
+argument_list|)
+block|,
+comment|/*css: file-word */
+DECL|enumConstant|FILE_EXCEL
+name|FILE_EXCEL
+argument_list|(
+literal|"\uf2d4"
+argument_list|)
+block|,
+comment|/*css: file-excel */
+DECL|enumConstant|FILE_POWERPOINT
+name|FILE_POWERPOINT
+argument_list|(
+literal|"\uf2de"
+argument_list|)
+block|,
+comment|/*css: file-powerpoint */
+DECL|enumConstant|FILE_TEXT
+name|FILE_TEXT
+argument_list|(
+literal|"\uf2d2"
+argument_list|)
+block|,
+comment|/*css: file-document */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR
