@@ -29,7 +29,9 @@ interface|interface
 name|Worker
 extends|extends
 name|Runnable
-block|{  }
+block|{
+comment|// Nothing
+block|}
 end_interface
 
 end_unit

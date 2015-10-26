@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -215,7 +215,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class fetches up to 200 citations from JStor by a given search query. It  * communicates with jstor via HTTP and Cookies. The activeFetcher automates the  * following steps:  *<ol>  *<li>Do a basic search on www.jstor.org</li>  *<li>Save the first 200 hits</li>  *<li>Download the saved citations as bibtex</li>  *<li>Parse it with the BibtexParser</li>  *<li>Import the BibtexEntrys via the ImportInspectionDialog</li>  *</ol>  *   * @author Juliane Doege, Tobias Langner  */
+comment|/**  * This class fetches up to 200 citations from JStor by a given search query. It  * communicates with jstor via HTTP and Cookies. The activeFetcher automates the  * following steps:  *<ol>  *<li>Do a basic search on www.jstor.org</li>  *<li>Save the first 200 hits</li>  *<li>Download the saved citations as bibtex</li>  *<li>Parse it with the BibtexParser</li>  *<li>Import the BibtexEntrys via the ImportInspectionDialog</li>  *</ol>  *  * @author Juliane Doege, Tobias Langner  */
 end_comment
 
 begin_class
@@ -246,7 +246,7 @@ name|COOKIE_TICKET
 init|=
 literal|"Jstor_Ticket"
 decl_stmt|;
-comment|/**      * location where the ticket is obtained      *       */
+comment|/**      * location where the ticket is obtained      *      */
 DECL|field|URL_TICKET
 specifier|private
 specifier|static
@@ -256,7 +256,7 @@ name|URL_TICKET
 init|=
 literal|"http://www.jstor.org/search"
 decl_stmt|;
-comment|/**      * Cookie key for citations to be fetched      *       */
+comment|/**      * Cookie key for citations to be fetched      *      */
 DECL|field|COOKIE_CITATIONS
 specifier|private
 specifier|static
@@ -266,7 +266,7 @@ name|COOKIE_CITATIONS
 init|=
 literal|"Jstor_citations0"
 decl_stmt|;
-comment|/**      * location where to obtain the citations cookie      *       */
+comment|/**      * location where to obtain the citations cookie      *      */
 DECL|field|URL_BIBTEX
 specifier|private
 specifier|static
@@ -473,9 +473,10 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Given a ticket an a list of citations, retrieve BibtexEntries from JStor      *       * @param ticket      *            A valid ticket as returned by openTicket()      * @param citations      *            A list of citations as returned by getCitations()      * @return A collection of BibtexEntries parsed from the bibtex returned by      *         JStor.      * @throws IOException      *             Most probably related to a problem connecting to JStor.      */
+comment|/**      * Given a ticket an a list of citations, retrieve BibtexEntries from JStor      *      * @param ticket      *            A valid ticket as returned by openTicket()      * @param citations      *            A list of citations as returned by getCitations()      * @return A collection of BibtexEntries parsed from the bibtex returned by      *         JStor.      * @throws IOException      *             Most probably related to a problem connecting to JStor.      */
 DECL|method|getBibtexEntries (String ticket, String citations)
 specifier|private
+specifier|static
 name|Collection
 argument_list|<
 name|BibtexEntry
@@ -579,9 +580,10 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      *       * @return a Jstor ticket ID      * @throws IOException      */
+comment|/**      *      * @return a Jstor ticket ID      * @throws IOException      */
 DECL|method|openTicket ()
 specifier|private
+specifier|static
 name|String
 name|openTicket
 parameter_list|()
@@ -620,9 +622,10 @@ name|conn
 argument_list|)
 return|;
 block|}
-comment|/**      * requires a valid JStor Ticket ID      *       * @param query      *            The search term to query JStor for.      * @param ticket      *            JStor ticket      * @return cookie value of the key JSTORFetcher.COOKIE_CITATIONS. null if      *         search is empty or ticket is invalid      * @throws IOException      */
+comment|/**      * requires a valid JStor Ticket ID      *      * @param query      *            The search term to query JStor for.      * @param ticket      *            JStor ticket      * @return cookie value of the key JSTORFetcher.COOKIE_CITATIONS. null if      *         search is empty or ticket is invalid      * @throws IOException      */
 DECL|method|getCitations (String ticket, String query)
 specifier|private
+specifier|static
 name|String
 name|getCitations
 parameter_list|(
@@ -715,7 +718,7 @@ name|conn
 argument_list|)
 return|;
 block|}
-comment|/**      * evaluates the 'Set-Cookie'-Header of a HTTP response      *       * @param name      *            key of a cookie value      * @param conn      *            URLConnection      * @return cookie value referenced by the key. null if key not found      * @throws IOException      */
+comment|/**      * evaluates the 'Set-Cookie'-Header of a HTTP response      *      * @param name      *            key of a cookie value      * @param conn      *            URLConnection      * @return cookie value referenced by the key. null if key not found      * @throws IOException      */
 DECL|method|getCookie (String name, URLConnection conn)
 specifier|private
 specifier|static
@@ -763,13 +766,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|headerName
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|headerValue
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 comment|// No more headers
@@ -777,9 +784,11 @@ break|break;
 block|}
 if|if
 condition|(
+operator|(
 name|headerName
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|headerName
 operator|.

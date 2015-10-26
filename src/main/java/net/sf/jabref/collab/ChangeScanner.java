@@ -1067,16 +1067,16 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|scanMetaData (MetaData inMem, MetaData inTemp, MetaData onDisk)
+DECL|method|scanMetaData (MetaData inMem1, MetaData inTemp1, MetaData onDisk)
 specifier|private
 name|void
 name|scanMetaData
 parameter_list|(
 name|MetaData
-name|inMem
+name|inMem1
 parameter_list|,
 name|MetaData
-name|inTemp
+name|inTemp1
 parameter_list|,
 name|MetaData
 name|onDisk
@@ -1088,9 +1088,9 @@ init|=
 operator|new
 name|MetaDataChange
 argument_list|(
-name|inMem
+name|inMem1
 argument_list|,
-name|inTemp
+name|inTemp1
 argument_list|)
 decl_stmt|;
 name|ArrayList
@@ -1111,7 +1111,7 @@ control|(
 name|String
 name|key
 range|:
-name|inTemp
+name|inTemp1
 control|)
 block|{
 comment|// See if the key is missing in the disk database:
@@ -1152,7 +1152,7 @@ name|String
 argument_list|>
 name|vit
 init|=
-name|inTemp
+name|inTemp1
 operator|.
 name|getData
 argument_list|(
@@ -2003,13 +2003,13 @@ name|found
 argument_list|)
 return|;
 block|}
-DECL|method|scanPreamble (BibtexDatabase inMem, BibtexDatabase onTmp, BibtexDatabase onDisk)
+DECL|method|scanPreamble (BibtexDatabase inMem1, BibtexDatabase onTmp, BibtexDatabase onDisk)
 specifier|private
 name|void
 name|scanPreamble
 parameter_list|(
 name|BibtexDatabase
-name|inMem
+name|inMem1
 parameter_list|,
 name|BibtexDatabase
 name|onTmp
@@ -2021,7 +2021,7 @@ block|{
 name|String
 name|mem
 init|=
-name|inMem
+name|inMem1
 operator|.
 name|getPreamble
 argument_list|()
@@ -2116,13 +2116,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|scanStrings (BibtexDatabase inMem, BibtexDatabase onTmp, BibtexDatabase onDisk)
+DECL|method|scanStrings (BibtexDatabase inMem1, BibtexDatabase onTmp, BibtexDatabase onDisk)
 specifier|private
 name|void
 name|scanStrings
 parameter_list|(
 name|BibtexDatabase
-name|inMem
+name|inMem1
 parameter_list|,
 name|BibtexDatabase
 name|onTmp
@@ -2309,7 +2309,7 @@ name|mem
 init|=
 name|findString
 argument_list|(
-name|inMem
+name|inMem1
 argument_list|,
 name|tmp
 operator|.
@@ -2347,11 +2347,6 @@ operator|.
 name|getContent
 argument_list|()
 argument_list|,
-name|tmp
-operator|.
-name|getContent
-argument_list|()
-argument_list|,
 name|disk
 operator|.
 name|getContent
@@ -2379,11 +2374,6 @@ name|getName
 argument_list|()
 argument_list|,
 literal|null
-argument_list|,
-name|tmp
-operator|.
-name|getContent
-argument_list|()
 argument_list|,
 name|disk
 operator|.
@@ -2527,7 +2517,7 @@ control|(
 name|String
 name|memId
 range|:
-name|inMem
+name|inMem1
 operator|.
 name|getStringKeySet
 argument_list|()
@@ -2536,7 +2526,7 @@ block|{
 name|BibtexString
 name|bsMem_cand
 init|=
-name|inMem
+name|inMem1
 operator|.
 name|getString
 argument_list|(
@@ -2664,7 +2654,7 @@ name|mem
 init|=
 name|findString
 argument_list|(
-name|inMem
+name|inMem1
 argument_list|,
 name|tmp
 operator|.

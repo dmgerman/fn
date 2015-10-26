@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -103,6 +103,7 @@ name|descending
 decl_stmt|;
 DECL|field|binary
 specifier|private
+specifier|final
 name|boolean
 name|binary
 decl_stmt|;
@@ -507,13 +508,17 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|f1
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|f2
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return
@@ -540,13 +545,17 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|f1
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|f2
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return
@@ -556,13 +565,17 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|f1
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|f2
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 return|return
@@ -576,13 +589,17 @@ comment|//String ours = ((String)e1.getField(sortField)).toLowerCase(),
 comment|//    theirs = ((String)e2.getField(sortField)).toLowerCase();
 if|if
 condition|(
+operator|(
 name|f1
 operator|instanceof
 name|Integer
+operator|)
 operator|&&
+operator|(
 name|f2
 operator|instanceof
 name|Integer
+operator|)
 condition|)
 block|{
 name|result
@@ -769,6 +786,7 @@ block|}
 block|}
 DECL|method|idCompare (BibtexEntry b1, BibtexEntry b2)
 specifier|private
+specifier|static
 name|int
 name|idCompare
 parameter_list|(

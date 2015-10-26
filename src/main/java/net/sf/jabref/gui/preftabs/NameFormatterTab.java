@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -310,11 +310,7 @@ name|result
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -471,9 +467,7 @@ name|tableRows
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|TableRow
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|10
 argument_list|)
@@ -545,7 +539,7 @@ name|format
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Tab to create custom Name Formatters      *       */
+comment|/**      * Tab to create custom Name Formatters      *      */
 DECL|method|NameFormatterTab (HelpDialog helpDialog)
 specifier|public
 name|NameFormatterTab
@@ -1518,14 +1512,18 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
+operator|(
 name|rows
 index|[
 name|i
 index|]
 operator|+
 name|i
+operator|)
 operator|-
 literal|1
+operator|)
 operator|<
 name|tableRows
 operator|.
@@ -1543,12 +1541,14 @@ name|max
 argument_list|(
 literal|0
 argument_list|,
+operator|(
 name|rows
 index|[
 name|i
 index|]
 operator|+
 name|i
+operator|)
 operator|-
 literal|1
 argument_list|)
@@ -1597,7 +1597,7 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *       */
+comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *      */
 annotation|@
 name|Override
 DECL|method|storeSettings ()

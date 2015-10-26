@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -236,26 +236,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JList
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JOptionPane
 import|;
 end_import
@@ -297,30 +277,6 @@ operator|.
 name|swing
 operator|.
 name|ListSelectionModel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|ListSelectionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|ListSelectionListener
 import|;
 end_import
 
@@ -387,18 +343,82 @@ specifier|private
 specifier|final
 name|JButton
 name|ok
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Ok"
+argument_list|)
+argument_list|)
 decl_stmt|;
 DECL|field|cancel
 specifier|private
 specifier|final
 name|JButton
 name|cancel
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cancel"
+argument_list|)
+argument_list|)
 decl_stmt|;
 DECL|field|defB
 specifier|private
 specifier|final
 name|JButton
 name|defB
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Default"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|grabB
+specifier|private
+specifier|final
+name|JButton
+name|grabB
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Grab"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|buttonBox
+specifier|private
+specifier|final
+name|Box
+name|buttonBox
+init|=
+operator|new
+name|Box
+argument_list|(
+name|BoxLayout
+operator|.
+name|X_AXIS
+argument_list|)
 decl_stmt|;
 comment|// stores the user-selected key bindings
 DECL|field|bindHM
@@ -555,70 +575,6 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-name|Box
-name|buttonBox
-init|=
-operator|new
-name|Box
-argument_list|(
-name|BoxLayout
-operator|.
-name|X_AXIS
-argument_list|)
-decl_stmt|;
-name|ok
-operator|=
-operator|new
-name|JButton
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Ok"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|cancel
-operator|=
-operator|new
-name|JButton
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Cancel"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|JButton
-name|grabB
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Grab"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|defB
-operator|=
-operator|new
-name|JButton
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Default"
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|grabB
 operator|.
 name|addKeyListener
@@ -765,65 +721,7 @@ argument_list|)
 expr_stmt|;
 comment|// TODO: setup so that clicking on list will display the current binding
 block|}
-DECL|method|setTop ()
-specifier|private
-name|void
-name|setTop
-parameter_list|()
-block|{
-name|Box
-name|topBox
-init|=
-operator|new
-name|Box
-argument_list|(
-name|BoxLayout
-operator|.
-name|X_AXIS
-argument_list|)
-decl_stmt|;
-name|topBox
-operator|.
-name|add
-argument_list|(
-operator|new
-name|JLabel
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Binding"
-argument_list|)
-operator|+
-literal|":"
-argument_list|,
-name|JLabel
-operator|.
-name|RIGHT
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|topBox
-operator|.
-name|add
-argument_list|(
-name|keyTF
-argument_list|)
-expr_stmt|;
-name|getContentPane
-argument_list|()
-operator|.
-name|add
-argument_list|(
-name|topBox
-argument_list|,
-name|BorderLayout
-operator|.
-name|NORTH
-argument_list|)
-expr_stmt|;
-block|}
+comment|/*    private void setTop() {         Box topBox = new Box(BoxLayout.X_AXIS);          topBox.add(new JLabel(Localization.lang("Binding") + ":", JLabel.RIGHT));         topBox.add(keyTF);         getContentPane().add(topBox, BorderLayout.NORTH);      }     */
 comment|/**      * respond to grabKey and display the key binding      */
 DECL|class|JBM_CustomKeyBindingsListener
 specifier|private
@@ -910,29 +808,39 @@ if|if
 condition|(
 operator|!
 operator|(
+operator|(
+operator|(
 name|kc
 operator|>=
 name|KeyEvent
 operator|.
 name|VK_F1
+operator|)
 operator|&&
+operator|(
 name|kc
 operator|<=
 name|KeyEvent
 operator|.
 name|VK_F12
+operator|)
+operator|)
 operator|||
+operator|(
 name|kc
 operator|==
 name|KeyEvent
 operator|.
 name|VK_ESCAPE
+operator|)
 operator|||
+operator|(
 name|kc
 operator|==
 name|KeyEvent
 operator|.
 name|VK_DELETE
+operator|)
 operator|)
 condition|)
 block|{
@@ -1079,10 +987,6 @@ operator|.
 name|repaint
 argument_list|()
 expr_stmt|;
-comment|//Util.pr(selectedFunction);
-comment|//String selectedFunction = (String) list.getSelectedValue();
-comment|// log print
-comment|// System.out.println("selectedfunction " + selectedFunction + " new key: " + newKey);
 name|bindHM
 operator|.
 name|put
@@ -1092,84 +996,6 @@ argument_list|,
 name|newKey
 argument_list|)
 expr_stmt|;
-comment|//table.setValueAt(newKey, );
-block|}
-block|}
-comment|/**      * put the corresponding key binding into keyTF      */
-DECL|class|MyListSelectionListener
-specifier|private
-class|class
-name|MyListSelectionListener
-implements|implements
-name|ListSelectionListener
-block|{
-comment|// This method is called each time the user changes the set of selected items
-annotation|@
-name|Override
-DECL|method|valueChanged (ListSelectionEvent evt)
-specifier|public
-name|void
-name|valueChanged
-parameter_list|(
-name|ListSelectionEvent
-name|evt
-parameter_list|)
-block|{
-comment|// When the user release the mouse button and completes the selection,
-comment|// getValueIsAdjusting() becomes false
-if|if
-condition|(
-operator|!
-name|evt
-operator|.
-name|getValueIsAdjusting
-argument_list|()
-condition|)
-block|{
-name|JList
-name|list
-init|=
-operator|(
-name|JList
-operator|)
-name|evt
-operator|.
-name|getSource
-argument_list|()
-decl_stmt|;
-comment|// Get all selected items
-name|Object
-index|[]
-name|selected
-init|=
-name|list
-operator|.
-name|getSelectedValues
-argument_list|()
-decl_stmt|;
-comment|// Iterate all selected items
-for|for
-control|(
-name|Object
-name|sel
-range|:
-name|selected
-control|)
-block|{
-name|keyTF
-operator|.
-name|setText
-argument_list|(
-name|bindHM
-operator|.
-name|get
-argument_list|(
-name|sel
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 comment|/**      * Puts the content of bindHM into the table      */
@@ -1287,12 +1113,7 @@ name|sorted
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-index|[]
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1346,7 +1167,7 @@ argument_list|(
 name|tableModel
 argument_list|)
 expr_stmt|;
-comment|// has to be done each time as the columnModel is dependend on the tableModel
+comment|// has to be done each time as the columnModel is dependent on the tableModel
 name|TableColumnModel
 name|cm
 init|=
@@ -1383,7 +1204,6 @@ operator|.
 name|KEYBIND_COL_1
 argument_list|)
 expr_stmt|;
-comment|//    table.setRowSelectionInterval(0, 0); //select the first entry
 block|}
 annotation|@
 name|SuppressWarnings
@@ -1471,7 +1291,6 @@ index|[]
 index|[]
 name|data
 decl_stmt|;
-comment|//String[] trData;
 DECL|method|KeystrokeTableModel (TreeMap<String, String[]> sorted)
 specifier|public
 name|KeystrokeTableModel
@@ -1544,8 +1363,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|//for (int i=0; i<trData.length; i++)
-comment|//  trData[i] = Globals.lang(data[i][0]);
 block|}
 annotation|@
 name|Override
@@ -1636,7 +1453,6 @@ name|int
 name|columnIndex
 parameter_list|)
 block|{
-comment|//if (columnIndex == 0)
 return|return
 name|data
 index|[
@@ -1646,8 +1462,6 @@ index|[
 name|columnIndex
 index|]
 return|;
-comment|//else
-comment|//return data[rowIndex][0];
 block|}
 annotation|@
 name|Override
@@ -1681,7 +1495,7 @@ name|o
 expr_stmt|;
 block|}
 block|}
-comment|// listners
+comment|// listeners
 DECL|method|setButtons ()
 specifier|private
 name|void

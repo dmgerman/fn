@@ -173,7 +173,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{                  }
+block|{
+comment|// Ignore
+block|}
 block|}
 if|if
 condition|(
@@ -240,6 +242,7 @@ return|;
 block|}
 DECL|method|getFirstElement (Element element, String name)
 specifier|private
+specifier|static
 name|Element
 name|getFirstElement
 parameter_list|(
@@ -329,6 +332,7 @@ block|}
 comment|/** collect all "plain" data of a xml node */
 DECL|method|getSimpleElementText (Element node)
 specifier|private
+specifier|static
 name|String
 name|getSimpleElementText
 parameter_list|(
@@ -481,7 +485,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{                     }
+block|{
+comment|// Ignore
+block|}
 block|}
 block|}
 block|}

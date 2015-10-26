@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -31,6 +31,34 @@ operator|.
 name|util
 operator|.
 name|Vector
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -153,6 +181,22 @@ specifier|private
 name|BibtexDatabase
 name|base
 decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|SearchManagerNoGUI
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|method|SearchManagerNoGUI (String term, BibtexDatabase dataBase)
 specifier|public
 name|SearchManagerNoGUI
@@ -179,16 +223,9 @@ name|BibtexDatabase
 name|getDBfromMatches
 parameter_list|()
 block|{
-name|int
-name|hits
-init|=
-literal|0
-decl_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"search term: "
 operator|+
@@ -250,11 +287,9 @@ name|searchTerm
 argument_list|)
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
 name|Localization
 operator|.
@@ -287,9 +322,7 @@ name|matchEntries
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -324,9 +357,6 @@ condition|(
 name|hit
 condition|)
 block|{
-name|hits
-operator|++
-expr_stmt|;
 name|matchEntries
 operator|.
 name|add
@@ -457,13 +487,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|year1
 operator|<
 literal|2000
+operator|)
 operator|&&
+operator|(
 name|year2
 operator|>=
 literal|2000
+operator|)
 condition|)
 block|{
 comment|//for 199.
@@ -553,6 +587,7 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|Integer
 operator|.
 name|parseInt
@@ -564,10 +599,13 @@ index|]
 argument_list|)
 operator|>=
 literal|2000
+operator|)
 operator|&&
+operator|(
 name|year1
 operator|<
 literal|2000
+operator|)
 condition|)
 block|{
 comment|//for 200.

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -332,9 +332,7 @@ name|listeners
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|SearchTextListener
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|//private JabRefFrame frame;
@@ -1994,7 +1992,7 @@ parameter_list|()
 block|{
 name|KeyListener
 index|[]
-name|listeners
+name|tmpListeners
 init|=
 name|searchField
 operator|.
@@ -2006,7 +2004,7 @@ control|(
 name|KeyListener
 name|listener
 range|:
-name|listeners
+name|tmpListeners
 control|)
 block|{
 name|searchField
@@ -2042,9 +2040,11 @@ operator|.
 name|isSelected
 argument_list|()
 operator|&&
+operator|(
 name|autoCompleteListener
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|searchField
@@ -2125,6 +2125,7 @@ block|}
 comment|/**      * parse the search string for valid words and return a list of words      * Like "The great Vikinger" will be ["The","great","Vikinger"]      *      * @param t      * @return      */
 DECL|method|getSearchwords (String t)
 specifier|private
+specifier|static
 name|ArrayList
 argument_list|<
 name|String
@@ -2155,9 +2156,7 @@ name|words
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|strings
 operator|.
@@ -2196,9 +2195,11 @@ name|words
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|t
 operator|==
 literal|null
+operator|)
 operator|||
 name|t
 operator|.
@@ -2791,19 +2792,23 @@ elseif|else
 if|if
 condition|(
 operator|(
+operator|(
 name|e
 operator|.
 name|getSource
 argument_list|()
 operator|==
 name|searchField
+operator|)
 operator|||
+operator|(
 name|e
 operator|.
 name|getSource
 argument_list|()
 operator|==
 name|search
+operator|)
 operator|)
 operator|&&
 operator|!
@@ -2812,9 +2817,11 @@ operator|.
 name|isSelected
 argument_list|()
 operator|&&
+operator|(
 name|panel
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|updatePrefs
@@ -3939,7 +3946,9 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Nothing
+block|}
 annotation|@
 name|Override
 DECL|method|keyReleased (KeyEvent e)
@@ -3950,7 +3959,9 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Nothing
+block|}
 annotation|@
 name|Override
 DECL|method|caretUpdate (CaretEvent e)

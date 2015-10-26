@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.gui
 package|package
@@ -261,9 +265,7 @@ name|entries
 init|=
 operator|new
 name|BasicEventList
-argument_list|<
-name|TableEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|//protected SortedList<TableEntry> sortedList;
@@ -513,9 +515,7 @@ name|tableModelGl
 init|=
 operator|new
 name|EventTableModel
-argument_list|<
-name|TableEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entries
 argument_list|,
@@ -575,9 +575,7 @@ name|selectionModel
 init|=
 operator|new
 name|EventSelectionModel
-argument_list|<
-name|TableEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entries
 argument_list|)
@@ -945,11 +943,7 @@ name|selection
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1215,28 +1209,24 @@ name|column
 parameter_list|)
 block|{
 name|JLabel
-name|label
+name|valueLabel
 init|=
 operator|(
 name|JLabel
 operator|)
 name|value
 decl_stmt|;
-name|this
-operator|.
 name|label
 operator|.
 name|setText
 argument_list|(
-name|label
+name|valueLabel
 operator|.
 name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|this
-operator|.
 name|label
 return|;
 block|}

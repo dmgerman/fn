@@ -201,14 +201,7 @@ name|metaData
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Vector
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|groupsRoot
@@ -331,9 +324,7 @@ name|orderedData
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// We must allow for ; and \ in escape sequences.
@@ -484,9 +475,11 @@ condition|(
 operator|!
 name|groupsTreePresent
 operator|&&
+operator|(
 name|flatGroupsData
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 try|try
@@ -644,7 +637,7 @@ name|iterator
 argument_list|()
 return|;
 block|}
-comment|/**      * Retrieves the stored meta data.      *       * @param key the key to look up      * @return null if no data is found      */
+comment|/**      * Retrieves the stored meta data.      *      * @param key the key to look up      * @return null if no data is found      */
 DECL|method|getData (String key)
 specifier|public
 name|Vector
@@ -666,7 +659,7 @@ name|key
 argument_list|)
 return|;
 block|}
-comment|/**      * Removes the given key from metadata.      * Nothing is done if key is not found.      *       * @param key the key to remove      */
+comment|/**      * Removes the given key from metadata.      * Nothing is done if key is not found.      *      * @param key the key to remove      */
 DECL|method|remove (String key)
 specifier|public
 name|void
@@ -748,9 +741,7 @@ name|dirs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Vector
@@ -794,9 +785,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|vec
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|vec
@@ -831,9 +824,11 @@ operator|.
 name|isAbsolute
 argument_list|()
 operator|&&
+operator|(
 name|file
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|String
@@ -951,10 +946,12 @@ operator|.
 name|BIB_LOCATION_AS_FILE_DIR
 argument_list|)
 operator|&&
+operator|(
 name|getFile
 argument_list|()
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// Check if we should add it as primary file dir (first in the list) or not:
@@ -1128,9 +1125,7 @@ name|sortedKeys
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|metaData
 operator|.
@@ -1275,16 +1270,20 @@ comment|// write groups if present. skip this if only the root node exists
 comment|// (which is always the AllEntriesGroup).
 if|if
 condition|(
+operator|(
 name|groupsRoot
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|groupsRoot
 operator|.
 name|getChildCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|StringBuffer
@@ -1499,9 +1498,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Reads the next unit. Units are delimited by ';'.       */
+comment|/**      * Reads the next unit. Units are delimited by ';'.      */
 DECL|method|getNextUnit (Reader reader)
 specifier|private
+specifier|static
 name|String
 name|getNextUnit
 parameter_list|(
@@ -1805,7 +1805,7 @@ return|return
 name|labelPattern
 return|;
 block|}
-comment|/**      * Updates the stored key patterns to the given key patterns.      *       * @param labelPattern the key patterns to update to.<br />      * A reference to this object is stored internally and is returned at getLabelPattern();      */
+comment|/**      * Updates the stored key patterns to the given key patterns.      *      * @param labelPattern the key patterns to update to.<br />      * A reference to this object is stored internally and is returned at getLabelPattern();      */
 DECL|method|setLabelPattern (DatabaseLabelPattern labelPattern)
 specifier|public
 name|void
@@ -1931,9 +1931,7 @@ name|data
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|data
@@ -1990,9 +1988,7 @@ name|data
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|data

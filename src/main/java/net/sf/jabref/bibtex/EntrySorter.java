@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -82,7 +82,6 @@ name|EntrySorter
 implements|implements
 name|DatabaseChangeListener
 block|{
-comment|//TreeSet set;
 DECL|field|set
 specifier|private
 specifier|final
@@ -137,14 +136,11 @@ argument_list|>
 name|comp
 parameter_list|)
 block|{
-comment|//set = new TreeSet(comp);
 name|set
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|this
@@ -153,17 +149,6 @@ name|comp
 operator|=
 name|comp
 expr_stmt|;
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|keySet
-init|=
-name|entries
-operator|.
-name|keySet
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|Map
@@ -193,7 +178,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|//Collections.sort(set, comp);
 name|changed
 operator|=
 literal|true
@@ -273,7 +257,6 @@ range|:
 name|set
 control|)
 block|{
-comment|//        for (int i=0; i<idArray.length; i++) {
 name|idArray
 index|[
 name|piv
@@ -328,7 +311,6 @@ name|pos
 index|]
 return|;
 block|}
-comment|//return ((BibtexEntry)(entryArray[pos])).getId();
 block|}
 DECL|method|getEntryAt (int pos)
 specifier|public
@@ -445,10 +427,6 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//addEntry(e.getEntry());
-comment|//set.add(e.getEntry());
-comment|//changed = true;
-comment|//Collections.sort(set, comp);
 break|break;
 case|case
 name|REMOVED_ENTRY
@@ -472,7 +450,6 @@ case|case
 name|CHANGED_ENTRY
 case|:
 comment|// Entry changed. Resort list:
-comment|//Collections.sort(set, comp);
 name|pos
 operator|=
 name|Collections
@@ -532,7 +509,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|//changed = true;
 break|break;
 block|}
 block|}

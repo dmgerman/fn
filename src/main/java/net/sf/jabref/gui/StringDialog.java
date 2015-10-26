@@ -1396,9 +1396,7 @@ name|stringsSet
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|BibtexString
-argument_list|>
+argument_list|<>
 argument_list|(
 operator|new
 name|BibtexStringComparator
@@ -2019,6 +2017,7 @@ block|}
 block|}
 DECL|method|isNumber (String name)
 specifier|private
+specifier|static
 name|boolean
 name|isNumber
 parameter_list|(
@@ -2971,7 +2970,9 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignore
+block|}
 block|}
 block|}
 DECL|class|RedoAction
@@ -3042,7 +3043,9 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignore
+block|}
 block|}
 block|}
 block|}

@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.pdfimport
 package|package
@@ -638,6 +642,7 @@ block|{
 name|x
 operator|=
 operator|(
+operator|(
 name|parentSize
 operator|.
 name|width
@@ -648,6 +653,7 @@ name|width
 operator|)
 operator|/
 literal|2
+operator|)
 operator|+
 name|topLeft
 operator|.
@@ -677,6 +683,7 @@ block|{
 name|y
 operator|=
 operator|(
+operator|(
 name|parentSize
 operator|.
 name|height
@@ -687,6 +694,7 @@ name|height
 operator|)
 operator|/
 literal|2
+operator|)
 operator|+
 name|topLeft
 operator|.
@@ -712,7 +720,7 @@ name|y
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates the PdfImporter      *       * @param frame the JabRef frame      * @param panel the panel to use      * @param entryTable the entry table to work on      * @param dropRow the row the entry is dropped to. May be -1 to indicate that no row is selected.      */
+comment|/**      * Creates the PdfImporter      *      * @param frame the JabRef frame      * @param panel the panel to use      * @param entryTable the entry table to work on      * @param dropRow the row the entry is dropped to. May be -1 to indicate that no row is selected.      */
 DECL|method|PdfImporter (JabRefFrame frame, BasePanel panel, MainTable entryTable, int dropRow)
 specifier|public
 name|PdfImporter
@@ -775,7 +783,7 @@ argument_list|>
 name|entries
 decl_stmt|;
 block|}
-comment|/**      *       * Imports the PDF files given by fileNames      *       * @param fileNames states the names of the files to import      * @return list of successful created BibTeX entries and list of non-PDF files      */
+comment|/**      *      * Imports the PDF files given by fileNames      *      * @param fileNames states the names of the files to import      * @return list of successful created BibTeX entries and list of non-PDF files      */
 DECL|method|importPdfFiles (String[] fileNames, OutputPrinter status)
 specifier|public
 name|ImportPdfFilesResult
@@ -800,9 +808,7 @@ name|files
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -820,9 +826,7 @@ name|noPdfFiles
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|PdfFileFilter
@@ -1021,9 +1025,7 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|fileNameLoop
@@ -1107,6 +1109,7 @@ if|if
 condition|(
 name|neverShow
 operator|||
+operator|(
 name|importDialog
 operator|.
 name|getResult
@@ -1115,6 +1118,7 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 name|int
@@ -1134,9 +1138,6 @@ name|dfh
 decl_stmt|;
 name|BibtexEntry
 name|entry
-decl_stmt|;
-name|BibtexEntryType
-name|type
 decl_stmt|;
 name|InputStream
 name|in
@@ -1161,9 +1162,6 @@ name|ImportDialog
 operator|.
 name|XMP
 case|:
-comment|//SplDatabaseChangeListener dataListener = new SplDatabaseChangeListener(frame, panel, entryTable, fileName);
-comment|//panel.database().addDatabaseChangeListener(dataListener);
-comment|//ImportMenuItem importer = new ImportMenuItem(frame, (entryTable == null));
 name|PdfXmpImporter
 name|importer
 init|=
@@ -1192,7 +1190,6 @@ argument_list|,
 name|frame
 argument_list|)
 expr_stmt|;
-comment|//importer.automatedImport(new String[]{ fileName });
 block|}
 catch|catch
 parameter_list|(
@@ -1221,13 +1218,17 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{                         }
+block|{
+comment|// Ignored
+block|}
 block|}
 if|if
 condition|(
+operator|(
 name|localRes
 operator|==
 literal|null
+operator|)
 operator|||
 name|localRes
 operator|.
@@ -1516,14 +1517,18 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{                         }
+block|{
+comment|// Ignored
+block|}
 block|}
 comment|// import failed -> generate default entry
 if|if
 condition|(
+operator|(
 name|localRes
 operator|==
 literal|null
+operator|)
 operator|||
 name|localRes
 operator|.
@@ -1858,9 +1863,7 @@ name|list
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|list
@@ -1963,7 +1966,7 @@ name|WILL_SHOW_EDITOR
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*int row = entryTable.findEntry(be);                 if (row>= 0)                     // Selects the entry. The selection listener will open the editor.                                            if (row>= 0) {                         try{                             entryTable.setRowSelectionInterval(row, row);                         }catch(IllegalArgumentException e){                             System.out.println("RowCount: " + entryTable.getRowCount());                         }                          //entryTable.setActiveRow(row);                         entryTable.ensureVisible(row);                      }                 else {                     // The entry is not visible in the table, perhaps due to a filtering search                     // or group selection. Show the entry editor anyway:                     panel.showEntry(be);                 }   */
+comment|/*int row = entryTable.findEntry(be);                 if (row>= 0)                     // Selects the entry. The selection listener will open the editor.                      if (row>= 0) {                         try{                             entryTable.setRowSelectionInterval(row, row);                         }catch(IllegalArgumentException e){                             System.out.println("RowCount: " + entryTable.getRowCount());                         }                          //entryTable.setActiveRow(row);                         entryTable.ensureVisible(row);                      }                 else {                     // The entry is not visible in the table, perhaps due to a filtering search                     // or group selection. Show the entry editor anyway:                     panel.showEntry(be);                 }   */
 name|panel
 operator|.
 name|showEntry
@@ -2015,6 +2018,7 @@ return|;
 block|}
 DECL|method|readXmpEntries (String fileName)
 specifier|private
+specifier|static
 name|List
 argument_list|<
 name|BibtexEntry
@@ -2059,6 +2063,7 @@ return|;
 block|}
 DECL|method|hasXmpEntries (List<BibtexEntry> xmpEntriesInFile)
 specifier|private
+specifier|static
 name|boolean
 name|hasXmpEntries
 parameter_list|(
@@ -2072,9 +2077,11 @@ block|{
 return|return
 operator|!
 operator|(
+operator|(
 name|xmpEntriesInFile
 operator|==
 literal|null
+operator|)
 operator|||
 name|xmpEntriesInFile
 operator|.

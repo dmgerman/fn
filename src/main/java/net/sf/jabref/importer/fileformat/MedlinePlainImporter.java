@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.      */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -167,7 +167,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for the MEDLINE Plain format.  *   * check here for details on the format  * http://www.nlm.nih.gov/bsd/mms/medlineelements.html  *   * @author vegeziel  */
+comment|/**  * Importer for the MEDLINE Plain format.  *  * check here for details on the format  * http://www.nlm.nih.gov/bsd/mms/medlineelements.html  *  * @author vegeziel  */
 end_comment
 
 begin_class
@@ -351,9 +351,7 @@ name|bibitems
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|StringBuilder
@@ -495,11 +493,7 @@ name|hm
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -567,13 +561,17 @@ condition|(
 operator|!
 name|done
 operator|&&
+operator|(
 name|j
 operator|<
+operator|(
 name|fields
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
+operator|)
 condition|)
 block|{
 if|if
@@ -620,12 +618,14 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|current
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|0
+operator|)
 operator|&&
 operator|!
 name|Character
@@ -1325,11 +1325,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|parts
 operator|.
 name|length
 operator|>
 literal|1
+operator|)
 operator|&&
 operator|!
 name|parts
@@ -1718,9 +1720,7 @@ name|toRemove
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1746,9 +1746,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|content
 operator|==
 literal|null
+operator|)
 operator|||
 name|content
 operator|.

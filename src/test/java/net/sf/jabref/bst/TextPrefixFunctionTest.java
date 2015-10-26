@@ -112,6 +112,7 @@ expr_stmt|;
 block|}
 DECL|method|assertPrefix (final String string, final String string2)
 specifier|private
+specifier|static
 name|void
 name|assertPrefix
 parameter_list|(

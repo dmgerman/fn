@@ -5189,9 +5189,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|posX
 operator|+
 name|sizeX
+operator|)
 operator|>
 name|width
 condition|)
@@ -5238,9 +5240,11 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|posY
 operator|+
 name|sizeY
+operator|)
 operator|>
 name|height
 condition|)
@@ -5536,7 +5540,6 @@ argument_list|,
 name|searchManager
 argument_list|)
 expr_stmt|;
-empty_stmt|;
 comment|// Show the search panel if it was visible at last shutdown:
 if|if
 condition|(
@@ -5614,12 +5617,14 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|bp
 operator|.
 name|getFile
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|bp
 operator|.
@@ -6320,17 +6325,21 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|answer
 operator|==
 name|JOptionPane
 operator|.
 name|CANCEL_OPTION
+operator|)
 operator|||
+operator|(
 name|answer
 operator|==
 name|JOptionPane
 operator|.
 name|CLOSED_OPTION
+operator|)
 condition|)
 block|{
 return|return
@@ -7170,14 +7179,18 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|lastTabbedPanelSelectionIndex
 operator|>
 operator|-
 literal|1
+operator|)
 operator|&&
+operator|(
 name|lastTabbedPanelSelectionIndex
 operator|<
 name|len
+operator|)
 condition|)
 block|{
 name|tabbedPane
@@ -7194,14 +7207,18 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|now
 operator|>
 operator|-
 literal|1
+operator|)
 operator|&&
+operator|(
 name|now
 operator|<
 name|len
+operator|)
 condition|)
 block|{
 name|tabbedPane
@@ -7370,21 +7387,6 @@ name|GeneralAction
 extends|extends
 name|MnemonicAwareAction
 block|{
-DECL|field|LOGGER
-specifier|private
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|JabRefFrame
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 DECL|field|command
 specifier|private
 specifier|final
@@ -10786,13 +10788,17 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|subElement
 operator|instanceof
 name|JMenu
+operator|)
 operator|||
+operator|(
 name|subElement
 operator|instanceof
 name|JPopupMenu
+operator|)
 condition|)
 block|{
 name|createDisabledIconsForMenuEntries
@@ -11219,17 +11225,21 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|answer
 operator|==
 name|JOptionPane
 operator|.
 name|CANCEL_OPTION
+operator|)
 operator|||
+operator|(
 name|answer
 operator|==
 name|JOptionPane
 operator|.
 name|CLOSED_OPTION
+operator|)
 condition|)
 block|{
 name|close
@@ -12276,7 +12286,9 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{                             }
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 if|if
@@ -13732,7 +13744,9 @@ argument_list|(
 operator|new
 name|KeyAdapter
 argument_list|()
-block|{             }
+block|{
+comment|// Nothing
+block|}
 argument_list|)
 expr_stmt|;
 name|addMouseListener
@@ -13740,7 +13754,9 @@ argument_list|(
 operator|new
 name|MouseAdapter
 argument_list|()
-block|{             }
+block|{
+comment|// Nothing
+block|}
 argument_list|)
 expr_stmt|;
 comment|/*  infoLabel.setForeground(new Color(255, 100, 100, 124));                setLayout(new BorderLayout());               add(infoLabel, BorderLayout.CENTER);*/

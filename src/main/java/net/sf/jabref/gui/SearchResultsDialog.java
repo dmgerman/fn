@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -716,9 +716,7 @@ name|entries
 init|=
 operator|new
 name|BasicEventList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|sortedEntries
@@ -742,11 +740,7 @@ name|entryHome
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|BasePanel
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|entryTable
@@ -873,9 +867,7 @@ name|sortedEntries
 operator|=
 operator|new
 name|SortedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entries
 argument_list|,
@@ -894,9 +886,7 @@ name|model
 operator|=
 operator|new
 name|EventTableModel
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedEntries
 argument_list|,
@@ -991,9 +981,7 @@ name|selectionModel
 init|=
 operator|new
 name|EventSelectionModel
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedEntries
 argument_list|)
@@ -1454,11 +1442,6 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Set up the comparators for each column, so the user can modify sort order      * by clicking the column labels.      * @param comparatorChooser The comparator chooser controlling the sort order.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|setupComparatorChooser (TableComparatorChooser<BibtexEntry> comparatorChooser)
 specifier|private
 name|void
@@ -2711,13 +2694,13 @@ literal|null
 condition|)
 block|{
 name|FileListTableModel
-name|model
+name|tmpModel
 init|=
 operator|new
 name|FileListTableModel
 argument_list|()
 decl_stmt|;
-name|model
+name|tmpModel
 operator|.
 name|setContent
 argument_list|(
@@ -2731,7 +2714,7 @@ name|fileLabel
 operator|.
 name|setToolTipText
 argument_list|(
-name|model
+name|tmpModel
 operator|.
 name|getToolTipHTMLRepresentation
 argument_list|()
@@ -2739,7 +2722,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|model
+name|tmpModel
 operator|.
 name|getRowCount
 argument_list|()
@@ -2751,7 +2734,7 @@ name|fileLabel
 operator|.
 name|setIcon
 argument_list|(
-name|model
+name|tmpModel
 operator|.
 name|getEntry
 argument_list|(

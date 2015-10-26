@@ -513,8 +513,6 @@ literal|null
 return|;
 block|}
 return|return
-name|this
-operator|.
 name|format
 argument_list|(
 name|text
