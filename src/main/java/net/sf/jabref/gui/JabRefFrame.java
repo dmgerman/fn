@@ -4359,70 +4359,6 @@ specifier|public
 name|GroupSelector
 name|groupSelector
 decl_stmt|;
-comment|// The menus for importing/appending other formats
-DECL|field|importMenu
-specifier|private
-specifier|final
-name|JMenu
-name|importMenu
-init|=
-name|JabRefFrame
-operator|.
-name|subMenu
-argument_list|(
-literal|"Import into current database"
-argument_list|)
-decl_stmt|;
-DECL|field|importNewMenu
-specifier|private
-specifier|final
-name|JMenu
-name|importNewMenu
-init|=
-name|JabRefFrame
-operator|.
-name|subMenu
-argument_list|(
-literal|"Import into new database"
-argument_list|)
-decl_stmt|;
-DECL|field|exportMenu
-specifier|private
-specifier|final
-name|JMenu
-name|exportMenu
-init|=
-name|JabRefFrame
-operator|.
-name|subMenu
-argument_list|(
-literal|"Export"
-argument_list|)
-decl_stmt|;
-DECL|field|customExportMenu
-name|JMenu
-name|customExportMenu
-init|=
-name|JabRefFrame
-operator|.
-name|subMenu
-argument_list|(
-literal|"Custom export"
-argument_list|)
-decl_stmt|;
-DECL|field|newDatabaseMenu
-specifier|private
-specifier|final
-name|JMenu
-name|newDatabaseMenu
-init|=
-name|JabRefFrame
-operator|.
-name|subMenu
-argument_list|(
-literal|"New database"
-argument_list|)
-decl_stmt|;
 comment|// Other submenus
 DECL|field|checkAndFix
 specifier|private
@@ -7756,28 +7692,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Refresh import menus.      */
-DECL|method|setUpImportMenus ()
-specifier|public
-name|void
-name|setUpImportMenus
-parameter_list|()
-block|{
-name|setUpImportMenu
-argument_list|(
-name|importMenu
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-name|setUpImportMenu
-argument_list|(
-name|importNewMenu
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|fillMenu ()
 specifier|private
 name|void
@@ -7902,23 +7816,6 @@ argument_list|(
 literal|"Help"
 argument_list|)
 decl_stmt|;
-name|setUpImportMenus
-argument_list|()
-expr_stmt|;
-name|newDatabaseMenu
-operator|.
-name|add
-argument_list|(
-name|newDatabaseAction
-argument_list|)
-expr_stmt|;
-name|newDatabaseMenu
-operator|.
-name|add
-argument_list|(
-name|newSubDatabaseAction
-argument_list|)
-expr_stmt|;
 name|file
 operator|.
 name|add
@@ -7981,8 +7878,6 @@ operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
-comment|//file.add(importMenu);
-comment|//file.add(importNewMenu);
 name|file
 operator|.
 name|add
@@ -10175,10 +10070,6 @@ argument_list|,
 name|incrementalSearch
 argument_list|,
 name|replaceAll
-argument_list|,
-name|importMenu
-argument_list|,
-name|exportMenu
 argument_list|,
 name|sendAsEmail
 argument_list|,
