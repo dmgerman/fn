@@ -294,14 +294,14 @@ name|FieldContentParser
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Formats the content of a field.      *      * @param s the content of the field      * @param fieldName the name of the field - used to trigger different serializations, e.g., turning off resolution for some strings      * @return a formatted string suitable for output      * @throws IllegalArgumentException if s is not a correct bibtex string, e.g., because of improperly balanced braces or using # not paired      */
-DECL|method|format (String text, String fieldName)
+comment|/**      * Formats the content of a field.      *      * @param content the content of the field      * @param fieldName the name of the field - used to trigger different serializations, e.g., turning off resolution for some strings      * @return a formatted string suitable for output      * @throws IllegalArgumentException if s is not a correct bibtex string, e.g., because of improperly balanced braces or using # not paired      */
+DECL|method|format (String content, String fieldName)
 specifier|public
 name|String
 name|format
 parameter_list|(
 name|String
-name|text
+name|content
 parameter_list|,
 name|String
 name|fieldName
@@ -311,7 +311,7 @@ name|IllegalArgumentException
 block|{
 if|if
 condition|(
-name|text
+name|content
 operator|==
 literal|null
 condition|)
@@ -344,13 +344,13 @@ name|fieldName
 argument_list|)
 condition|)
 block|{
-name|text
+name|content
 operator|=
 name|StringUtil
 operator|.
 name|putBracesAroundCapitals
 argument_list|(
-name|text
+name|content
 argument_list|)
 expr_stmt|;
 block|}
@@ -358,7 +358,7 @@ comment|// normalize newlines
 if|if
 condition|(
 operator|!
-name|text
+name|content
 operator|.
 name|contains
 argument_list|(
@@ -367,7 +367,7 @@ operator|.
 name|NEWLINE
 argument_list|)
 operator|&&
-name|text
+name|content
 operator|.
 name|contains
 argument_list|(
@@ -377,9 +377,9 @@ condition|)
 block|{
 comment|// if we don't have real new lines, but pseudo newlines, we replace them
 comment|// On Win 8.1, this is always true for multiline fields
-name|text
+name|content
 operator|=
-name|text
+name|content
 operator|.
 name|replaceAll
 argument_list|(
@@ -481,7 +481,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|text
+name|content
 operator|.
 name|length
 argument_list|()
@@ -493,7 +493,7 @@ block|{
 name|char
 name|c
 init|=
-name|text
+name|content
 operator|.
 name|charAt
 argument_list|(
@@ -638,7 +638,7 @@ name|StringUtil
 operator|.
 name|wrap
 argument_list|(
-name|text
+name|content
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -660,7 +660,7 @@ name|parser
 operator|.
 name|format
 argument_list|(
-name|text
+name|content
 argument_list|,
 name|fieldName
 argument_list|)
@@ -704,14 +704,14 @@ comment|// ...which will be written to the file like this:
 comment|// jan # { - } # feb
 name|checkBraces
 argument_list|(
-name|text
+name|content
 argument_list|)
 expr_stmt|;
 while|while
 condition|(
 name|pivot
 operator|<
-name|text
+name|content
 operator|.
 name|length
 argument_list|()
@@ -735,7 +735,7 @@ condition|)
 block|{
 name|pos1
 operator|=
-name|text
+name|content
 operator|.
 name|indexOf
 argument_list|(
@@ -750,7 +750,7 @@ name|pos1
 operator|>
 literal|0
 operator|&&
-name|text
+name|content
 operator|.
 name|charAt
 argument_list|(
@@ -793,7 +793,7 @@ condition|)
 block|{
 name|pos1
 operator|=
-name|text
+name|content
 operator|.
 name|length
 argument_list|()
@@ -809,7 +809,7 @@ else|else
 block|{
 name|pos2
 operator|=
-name|text
+name|content
 operator|.
 name|indexOf
 argument_list|(
@@ -869,7 +869,7 @@ else|else
 block|{
 name|pos1
 operator|=
-name|text
+name|content
 operator|.
 name|length
 argument_list|()
@@ -887,7 +887,7 @@ condition|)
 block|{
 name|writeText
 argument_list|(
-name|text
+name|content
 argument_list|,
 name|pivot
 argument_list|,
@@ -899,7 +899,7 @@ if|if
 condition|(
 name|pos1
 argument_list|<
-name|text
+name|content
 operator|.
 name|length
 operator|(
@@ -917,7 +917,7 @@ comment|// an occurrence of ## will simply be ignored. Should it instead
 comment|// cause an error message?
 name|writeStringLabel
 argument_list|(
-name|text
+name|content
 argument_list|,
 name|pos1
 operator|+
@@ -933,7 +933,7 @@ name|pos2
 operator|+
 literal|1
 operator|==
-name|text
+name|content
 operator|.
 name|length
 argument_list|()
