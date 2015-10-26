@@ -76,6 +76,22 @@ name|gui
 operator|.
 name|actions
 operator|.
+name|Actions
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
 name|MnemonicAwareAction
 import|;
 end_import
@@ -351,7 +367,9 @@ name|panel
 operator|.
 name|runCommand
 argument_list|(
-literal|"save"
+name|Actions
+operator|.
+name|SAVE
 argument_list|)
 expr_stmt|;
 comment|// TODO: can we find out whether the save was actually done or not?

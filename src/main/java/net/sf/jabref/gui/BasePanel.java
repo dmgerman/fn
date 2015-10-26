@@ -2175,7 +2175,9 @@ operator|->
 block|{
 name|runCommand
 argument_list|(
-literal|"copy"
+name|Actions
+operator|.
+name|COPY
 argument_list|)
 block|;
 name|BibtexEntry
@@ -6308,7 +6310,9 @@ condition|)
 block|{
 name|runCommand
 argument_list|(
-literal|"openFile"
+name|Actions
+operator|.
+name|OPEN_FILE
 argument_list|)
 expr_stmt|;
 comment|// Fall back on PDF/PS fields???
@@ -6343,7 +6347,9 @@ condition|)
 block|{
 name|runCommand
 argument_list|(
-literal|"openFile"
+name|Actions
+operator|.
+name|OPEN_FILE
 argument_list|)
 expr_stmt|;
 comment|// Fall back on PDF/PS fields???
@@ -10382,7 +10388,9 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-literal|"cut"
+name|Actions
+operator|.
+name|CUT
 argument_list|,
 operator|new
 name|AbstractAction
@@ -10410,7 +10418,9 @@ try|try
 block|{
 name|runCommand
 argument_list|(
-literal|"cut"
+name|Actions
+operator|.
+name|CUT
 argument_list|)
 expr_stmt|;
 block|}
@@ -10437,7 +10447,9 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-literal|"copy"
+name|Actions
+operator|.
+name|COPY
 argument_list|,
 operator|new
 name|AbstractAction
@@ -10465,7 +10477,9 @@ try|try
 block|{
 name|runCommand
 argument_list|(
-literal|"copy"
+name|Actions
+operator|.
+name|COPY
 argument_list|)
 expr_stmt|;
 block|}
@@ -10492,7 +10506,9 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-literal|"paste"
+name|Actions
+operator|.
+name|PASTE
 argument_list|,
 operator|new
 name|AbstractAction
@@ -10520,7 +10536,9 @@ try|try
 block|{
 name|runCommand
 argument_list|(
-literal|"paste"
+name|Actions
+operator|.
+name|PASTE
 argument_list|)
 expr_stmt|;
 block|}
@@ -10793,7 +10811,9 @@ try|try
 block|{
 name|runCommand
 argument_list|(
-literal|"edit"
+name|Actions
+operator|.
+name|EDIT
 argument_list|)
 expr_stmt|;
 block|}
