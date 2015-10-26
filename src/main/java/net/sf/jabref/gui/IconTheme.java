@@ -847,10 +847,10 @@ comment|/*css: library-books */
 DECL|enumConstant|TOGGLE_GROUPS
 name|TOGGLE_GROUPS
 argument_list|(
-literal|"\uf4e8"
+literal|"\uf5a7"
 argument_list|)
 block|,
-comment|/*css: server */
+comment|/*css: view-list */
 DECL|enumConstant|WRITE_XMP
 name|WRITE_XMP
 argument_list|(
