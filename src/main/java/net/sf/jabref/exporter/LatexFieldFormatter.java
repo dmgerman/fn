@@ -324,8 +324,9 @@ operator|+
 name|valueDelimiterEndOfValue
 return|;
 block|}
-if|if
-condition|(
+name|boolean
+name|shouldWrapWithBraces
+init|=
 name|Globals
 operator|.
 name|prefs
@@ -342,6 +343,10 @@ name|equals
 argument_list|(
 name|fieldName
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|shouldWrapWithBraces
 condition|)
 block|{
 name|content
@@ -355,8 +360,9 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// normalize newlines
-if|if
-condition|(
+name|boolean
+name|shouldNormalizeNewlines
+init|=
 operator|!
 name|content
 operator|.
@@ -373,6 +379,10 @@ name|contains
 argument_list|(
 literal|"\n"
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|shouldNormalizeNewlines
 condition|)
 block|{
 comment|// if we don't have real new lines, but pseudo newlines, we replace them
