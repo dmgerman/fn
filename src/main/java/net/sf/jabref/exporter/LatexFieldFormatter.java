@@ -416,6 +416,27 @@ name|fieldName
 argument_list|)
 return|;
 block|}
+return|return
+name|formatAndResolveStrings
+argument_list|(
+name|content
+argument_list|,
+name|fieldName
+argument_list|)
+return|;
+block|}
+DECL|method|formatAndResolveStrings (String content, String fieldName)
+specifier|private
+name|String
+name|formatAndResolveStrings
+parameter_list|(
+name|String
+name|content
+parameter_list|,
+name|String
+name|fieldName
+parameter_list|)
+block|{
 name|stringBuilder
 operator|=
 operator|new
