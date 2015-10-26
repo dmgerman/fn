@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -86,7 +86,7 @@ name|Authors
 extends|extends
 name|AbstractParamLayoutFormatter
 block|{
-comment|/*     AuthorSort = [FirstFirst | LastFirst | LastFirstFirstFirst]     AuthorAbbr = [FullName | Initials | FirstInitial | MiddleInitial | InitialsNoSpace | LastName]     AuthorSep = [Comma | And | Colon | Semicolon | Sep=<string>]     AuthorLastSep = [And | Comma | Colon | Semicolon | Amp | Oxford | LastSep=<string>]     AuthorPunc = [FullPunc | NoPunc | NoComma | NoPeriod]     AuthorNumber = [inf |<number>]     AuthorNumberEtAl = [ {1} |<number>]     EtAlString = [ et al. | EtAl=<string>]     */
+comment|/*     AuthorSort = [FirstFirst | LastFirst | LastFirstFirstFirst]     AuthorAbbr = [FullName | Initials | FirstInitial | MiddleInitial | InitialsNoSpace | LastName]     AuthorSep = [Comma | And | Colon | Semicolon | Sep=<string>]     AuthorLastSep = [And | Comma | Colon | Semicolon | Amp | Oxford | LastSep=<string>]     AuthorPunc = [FullPunc | NoPunc | NoComma | NoPeriod]     AuthorNumber = [inf |<number>]     AuthorNumberEtAl = [ {1} |<number>]     EtAlString = [ et al. | EtAl=<string>]      */
 specifier|private
 specifier|static
 specifier|final
@@ -99,9 +99,7 @@ name|authorOrder
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|authorAbbr
@@ -116,9 +114,7 @@ name|authorAbbr
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|authorPunc
@@ -133,9 +129,7 @@ name|authorPunc
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|separators
@@ -150,9 +144,7 @@ name|separators
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|lastSeparators
@@ -167,9 +159,7 @@ name|lastSeparators
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|numberPattern
@@ -1349,6 +1339,7 @@ block|}
 comment|/**      * Check for case-insensitive equality between two strings after removing      * white space at the beginning and end of the first string.      * @param one The first string - whitespace is trimmed      * @param two The second string      * @return true if the strings are deemed equal      */
 DECL|method|comp (String one, String two)
 specifier|private
+specifier|static
 name|boolean
 name|comp
 parameter_list|(
@@ -1401,16 +1392,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|maxAuthors
 operator|<
 literal|0
+operator|)
 operator|||
+operator|(
 name|al
 operator|.
 name|size
 argument_list|()
 operator|<=
 name|maxAuthors
+operator|)
 condition|)
 block|{
 for|for
@@ -1449,33 +1444,43 @@ name|sb
 argument_list|,
 name|a
 argument_list|,
+operator|(
 name|flMode
 operator|==
 name|Authors
 operator|.
 name|FIRST_FIRST
+operator|)
 operator|||
+operator|(
+operator|(
 name|flMode
 operator|==
 name|Authors
 operator|.
 name|LF_FF
+operator|)
 operator|&&
+operator|(
 name|i
 operator|>
 literal|0
+operator|)
+operator|)
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|al
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|2
+operator|)
 condition|)
 block|{
 name|sb
@@ -1491,12 +1496,14 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|al
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -1630,9 +1637,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|von
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|von
@@ -1660,9 +1669,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|jr
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|jr
@@ -1689,9 +1700,11 @@ if|if
 condition|(
 name|abbreviate
 operator|&&
+operator|(
 name|firstNamePart
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|firstNamePart
@@ -1705,12 +1718,14 @@ if|if
 condition|(
 name|firstInitialOnly
 operator|&&
+operator|(
 name|firstNamePart
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|2
+operator|)
 condition|)
 block|{
 name|firstNamePart
@@ -1840,9 +1855,11 @@ if|if
 condition|(
 name|lastNameOnly
 operator|||
+operator|(
 name|firstNamePart
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|sb

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -57,16 +57,6 @@ operator|.
 name|event
 operator|.
 name|ActionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
 import|;
 end_import
 
@@ -410,7 +400,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *       */
+comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *      */
 DECL|method|setVisibility (boolean vis)
 name|void
 name|setVisibility
@@ -424,7 +414,7 @@ operator|=
 name|vis
 expr_stmt|;
 block|}
-comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *       */
+comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *      */
 DECL|method|hasVisibility ()
 name|boolean
 name|hasVisibility

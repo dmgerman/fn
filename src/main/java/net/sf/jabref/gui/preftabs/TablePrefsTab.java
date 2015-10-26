@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -420,7 +420,7 @@ name|String
 argument_list|>
 name|terSort
 decl_stmt|;
-comment|/**      * Customization of external program paths.      *       * @param prefs      *            a<code>JabRefPreferences</code> value      */
+comment|/**      * Customization of external program paths.      *      * @param prefs      *            a<code>JabRefPreferences</code> value      */
 DECL|method|TablePrefsTab (JabRefPreferences prefs)
 specifier|public
 name|TablePrefsTab
@@ -442,7 +442,7 @@ name|BorderLayout
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/**          * Added Bibtexkey to combobox.          *           * [ 1540646 ] default sort order: bibtexkey          *           * http://sourceforge.net/tracker/index.php?func=detail&aid=1540646&group_id=92314&atid=600306          */
+comment|/**          * Added Bibtexkey to combobox.          *          * [ 1540646 ] default sort order: bibtexkey          *          * http://sourceforge.net/tracker/index.php?func=detail&aid=1540646&group_id=92314&atid=600306          */
 name|Vector
 argument_list|<
 name|String
@@ -451,9 +451,7 @@ name|fieldNames
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -1853,7 +1851,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *       */
+comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *      */
 annotation|@
 name|Override
 DECL|method|storeSettings ()
@@ -2109,25 +2107,40 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
+operator|(
 name|newVal
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|oldVal
 operator|==
 literal|null
+operator|)
+operator|)
 operator|||
+operator|(
+operator|(
 name|newVal
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|oldVal
 operator|!=
 literal|null
+operator|)
+operator|)
 operator|||
+operator|(
+operator|(
 name|newVal
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|newVal
@@ -2136,6 +2149,7 @@ name|equals
 argument_list|(
 name|oldVal
 argument_list|)
+operator|)
 condition|)
 block|{
 name|prefs

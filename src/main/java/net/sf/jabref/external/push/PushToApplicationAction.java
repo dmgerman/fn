@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -341,12 +341,14 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|entry
 operator|.
 name|getCiteKey
 argument_list|()
 operator|==
 literal|null
+operator|)
 operator|||
 name|entry
 operator|.
@@ -462,14 +464,15 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getKeyString (BibtexEntry[] entries)
+DECL|method|getKeyString (BibtexEntry[] bibentries)
 specifier|private
+specifier|static
 name|String
 name|getKeyString
 parameter_list|(
 name|BibtexEntry
 index|[]
-name|entries
+name|bibentries
 parameter_list|)
 block|{
 name|StringBuilder
@@ -492,7 +495,7 @@ control|(
 name|BibtexEntry
 name|bes
 range|:
-name|entries
+name|bibentries
 control|)
 block|{
 name|citeKey
@@ -509,9 +512,11 @@ expr_stmt|;
 comment|// if the key is empty we give a warning and ignore this entry
 if|if
 condition|(
+operator|(
 name|citeKey
 operator|==
 literal|null
+operator|)
 operator|||
 name|citeKey
 operator|.

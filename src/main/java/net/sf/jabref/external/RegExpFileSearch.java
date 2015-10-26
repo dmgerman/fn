@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -221,14 +221,7 @@ name|res
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|List
-argument_list|<
-name|File
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -418,9 +411,7 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -630,13 +621,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|tmp
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|1
+operator|)
 operator|&&
+operator|(
 name|tmp
 operator|.
 name|charAt
@@ -647,6 +641,7 @@ operator|==
 name|File
 operator|.
 name|separatorChar
+operator|)
 condition|)
 block|{
 name|tmp
@@ -725,9 +720,7 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -869,11 +862,13 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|fileParts
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -1065,9 +1060,7 @@ name|toDo
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|toDo
@@ -1300,15 +1293,19 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|matches
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|matches
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|Collections

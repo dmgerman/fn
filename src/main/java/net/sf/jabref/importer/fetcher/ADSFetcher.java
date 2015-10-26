@@ -622,6 +622,7 @@ return|;
 block|}
 DECL|method|constructUrl (String key)
 specifier|private
+specifier|static
 name|String
 name|constructUrl
 parameter_list|(

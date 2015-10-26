@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General public static License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General public static License for more details.      You should have received a copy of the GNU General public static License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General public static License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General public static License for more details.      You should have received a copy of the GNU General public static License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -101,7 +101,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author pattonlk  *   *         Reestructured by ifsteinm. Jan 20th Now it is possible to export more  *         than one jabref database. BD creation, insertions and queries where  *         reformulated to accomodate the changes. The changes include a  *         refactory on import/export to SQL module, creating many other classes  *         making them more readable This class just support Exporters and  *         Importers  */
+comment|/**  *  * @author pattonlk  *  *         Reestructured by ifsteinm. Jan 20th Now it is possible to export more  *         than one jabref database. BD creation, insertions and queries where  *         reformulated to accomodate the changes. The changes include a  *         refactory on import/export to SQL module, creating many other classes  *         making them more readable This class just support Exporters and  *         Importers  */
 end_comment
 
 begin_class
@@ -122,9 +122,7 @@ name|reservedDBWords
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Collections
 operator|.
@@ -171,9 +169,7 @@ name|allFields
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -216,7 +212,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *       * @return All existent fields for a bibtex entry      */
+comment|/**      *      * @return All existent fields for a bibtex entry      */
 DECL|method|getAllFields ()
 specifier|public
 specifier|static
@@ -248,7 +244,7 @@ operator|.
 name|allFields
 return|;
 block|}
-comment|/**      *       * @return Create a common separated field names      */
+comment|/**      *      * @return Create a common separated field names      */
 DECL|method|getFieldStr ()
 specifier|public
 specifier|static
@@ -339,7 +335,7 @@ return|return
 name|fieldstr
 return|;
 block|}
-comment|/**      * Inserts the elements of a String array into an ArrayList making sure not      * to duplicate entries in the ArrayList      *       * @param list      *            The ArrayList containing unique entries      * @param array      *            The String array to be inserted into the ArrayList      * @return The updated ArrayList with new unique entries      */
+comment|/**      * Inserts the elements of a String array into an ArrayList making sure not      * to duplicate entries in the ArrayList      *      * @param list      *            The ArrayList containing unique entries      * @param array      *            The String array to be inserted into the ArrayList      * @return The updated ArrayList with new unique entries      */
 DECL|method|uniqueInsert (ArrayList<String> list, String[] array)
 specifier|private
 specifier|static
@@ -412,7 +408,7 @@ return|return
 name|list
 return|;
 block|}
-comment|/**      * Generates DML specifying table columns and their datatypes. The output of      * this routine should be used within a CREATE TABLE statement.      *       * @param fields      *            Contains unique field names      * @param datatype      *            Specifies the SQL data type that the fields should take on.      * @return The SQL code to be included in a CREATE TABLE statement.      */
+comment|/**      * Generates DML specifying table columns and their datatypes. The output of      * this routine should be used within a CREATE TABLE statement.      *      * @param fields      *            Contains unique field names      * @param datatype      *            Specifies the SQL data type that the fields should take on.      * @return The SQL code to be included in a CREATE TABLE statement.      */
 DECL|method|fieldsAsCols (ArrayList<String> fields, String datatype)
 specifier|public
 specifier|static
@@ -510,7 +506,7 @@ return|return
 name|str
 return|;
 block|}
-comment|/**      *       * @param allFields      *            All existent fields for a given entry type      * @param reqFields      *            list containing required fields for an entry type      * @param optFields      *            list containing optional fields for an entry type      * @param utiFields      *            list containing utility fields for an entry type      * @param origList      *            original list with the correct size filled with the default      *            values for each field      * @return origList changing the values of the fields that appear on      *         reqFields, optFields, utiFields set to 'req', 'opt' and 'uti'      *         respectively      */
+comment|/**      *      * @param allFields      *            All existent fields for a given entry type      * @param reqFields      *            list containing required fields for an entry type      * @param optFields      *            list containing optional fields for an entry type      * @param utiFields      *            list containing utility fields for an entry type      * @param origList      *            original list with the correct size filled with the default      *            values for each field      * @return origList changing the values of the fields that appear on      *         reqFields, optFields, utiFields set to 'req', 'opt' and 'uti'      *         respectively      */
 DECL|method|setFieldRequirement ( ArrayList<String> allFields, List<String> reqFields, List<String> optFields, List<String> utiFields, ArrayList<String> origList)
 specifier|public
 specifier|static
@@ -648,7 +644,7 @@ return|return
 name|origList
 return|;
 block|}
-comment|/**      * Return a message raised from a SQLException      *       * @param ex      *            The SQLException raised      */
+comment|/**      * Return a message raised from a SQLException      *      * @param ex      *            The SQLException raised      */
 DECL|method|getExceptionMessage (Exception ex)
 specifier|public
 specifier|static
@@ -694,7 +690,7 @@ return|return
 name|msg
 return|;
 block|}
-comment|/**      * return a ResultSet with the result of a "SELECT *" query for a given      * table      *       * @param conn      *            Connection to the database      * @param tableName      *            String containing the name of the table you want to get the      *            results.      * @return a ResultSet with the query result returned from the DB      * @throws SQLException      */
+comment|/**      * return a ResultSet with the result of a "SELECT *" query for a given      * table      *      * @param conn      *            Connection to the database      * @param tableName      *            String containing the name of the table you want to get the      *            results.      * @return a ResultSet with the query result returned from the DB      * @throws SQLException      */
 DECL|method|queryAllFromTable (Connection conn, String tableName)
 specifier|public
 specifier|static
@@ -741,7 +737,7 @@ name|getResultSet
 argument_list|()
 return|;
 block|}
-comment|/**      * Utility method for processing DML with proper output      *       * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be sent      * @param dml      *            The DML statements to be processed      */
+comment|/**      * Utility method for processing DML with proper output      *      * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be sent      * @param dml      *            The DML statements to be processed      */
 DECL|method|processQuery (Object out, String dml)
 specifier|public
 specifier|static
@@ -806,7 +802,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Utility method for processing DML with proper output      *       * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be sent      * @param query      *            The DML statements to be processed      * @return the result of the statement      */
+comment|/**      * Utility method for processing DML with proper output      *      * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be sent      * @param query      *            The DML statements to be processed      * @return the result of the statement      */
 DECL|method|processQueryWithResults (Object out, String query)
 specifier|public
 specifier|static
@@ -880,7 +876,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * This routine returns the JDBC url corresponding to the DBStrings input.      *       * @param dbStrings      *            The DBStrings to use to make the connection      * @return The JDBC url corresponding to the input DBStrings      */
+comment|/**      * This routine returns the JDBC url corresponding to the DBStrings input.      *      * @param dbStrings      *            The DBStrings to use to make the connection      * @return The JDBC url corresponding to the input DBStrings      */
 DECL|method|createJDBCurl (DBStrings dbStrings, boolean withDBName)
 specifier|public
 specifier|static
@@ -933,7 +929,7 @@ return|return
 name|url
 return|;
 block|}
-comment|/**      * Process a query and returns only the first result of a result set as a      * String. To be used when it is certain that only one String (single cell)      * will be returned from the DB      *       * @param conn      *            The Connection object to which the DML should be sent      * @param query      *            The query statements to be processed      * @return String with the result returned from the database      * @throws SQLException      */
+comment|/**      * Process a query and returns only the first result of a result set as a      * String. To be used when it is certain that only one String (single cell)      * will be returned from the DB      *      * @param conn      *            The Connection object to which the DML should be sent      * @param query      *            The query statements to be processed      * @return String with the result returned from the database      * @throws SQLException      */
 DECL|method|processQueryWithSingleResult (Connection conn, String query)
 specifier|public
 specifier|static
@@ -991,7 +987,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Utility method for executing DML      *       * @param conn      *            The DML Connection object that will execute the SQL      * @param qry      *            The DML statements to be executed      */
+comment|/**      * Utility method for executing DML      *      * @param conn      *            The DML Connection object that will execute the SQL      * @param qry      *            The DML statements to be executed      */
 DECL|method|executeQuery (Connection conn, String qry)
 specifier|private
 specifier|static
@@ -1053,7 +1049,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Utility method for executing DML      *       * @param conn      *            The DML Connection object that will execute the SQL      * @param qry      *            The DML statements to be executed      */
+comment|/**      * Utility method for executing DML      *      * @param conn      *            The DML Connection object that will execute the SQL      * @param qry      *            The DML statements to be executed      */
 DECL|method|executeQueryWithResults (Connection conn, String qry)
 specifier|private
 specifier|static

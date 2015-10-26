@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -348,11 +348,6 @@ name|stopFetching
 operator|=
 literal|true
 expr_stmt|;
-name|boolean
-name|noAccessFound
-init|=
-literal|false
-decl_stmt|;
 block|}
 annotation|@
 name|Override
@@ -537,6 +532,7 @@ block|}
 comment|/**      *      * @param query      *            The search term to query JStor for.      * @return a list of IDs      * @throws java.io.IOException      */
 DECL|method|getCitations (String query)
 specifier|private
+specifier|static
 name|List
 argument_list|<
 name|String
@@ -560,9 +556,7 @@ name|ids
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 try|try
@@ -593,6 +587,7 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
+operator|(
 name|nextPage
 operator|=
 name|getCitationsFromUrl
@@ -604,12 +599,15 @@ argument_list|)
 operator|)
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|count
 operator|<
 name|ScienceDirectFetcher
 operator|.
 name|MAX_PAGES_TO_LOAD
+operator|)
 condition|)
 block|{
 name|urlQuery
@@ -641,6 +639,7 @@ block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, List<String> ids)
 specifier|private
+specifier|static
 name|String
 name|getCitationsFromUrl
 parameter_list|(

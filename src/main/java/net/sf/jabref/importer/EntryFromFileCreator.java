@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.importer
 package|package
@@ -155,7 +159,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The interface EntryFromFileCreator does twice:<br>  * On the one hand, it defines a set of files, which it can deal with, on the  * other hand it provides the functionality to create a Bibtex entry out of a  * file. The interface extends the java.io.FileFilter to inherit a common way of  * defining file sets.  *   * @author Dan&Nosh  * @version 25.11.2008 | 23:39:03  *   */
+comment|/**  * The interface EntryFromFileCreator does twice:<br>  * On the one hand, it defines a set of files, which it can deal with, on the  * other hand it provides the functionality to create a Bibtex entry out of a  * file. The interface extends the java.io.FileFilter to inherit a common way of  * defining file sets.  *  * @author Dan&Nosh  * @version 25.11.2008 | 23:39:03  *  */
 end_comment
 
 begin_class
@@ -176,7 +180,7 @@ specifier|final
 name|ExternalFileType
 name|externalFileType
 decl_stmt|;
-comment|/**      * Constructor.<br>      * Forces subclasses to provide an {@link ExternalFileType} instance, which      * they build on.      *       * @param externalFileType      */
+comment|/**      * Constructor.<br>      * Forces subclasses to provide an {@link ExternalFileType} instance, which      * they build on.      *      * @param externalFileType      */
 DECL|method|EntryFromFileCreator (ExternalFileType externalFileType)
 name|EntryFromFileCreator
 parameter_list|(
@@ -214,7 +218,7 @@ name|File
 name|f
 parameter_list|)
 function_decl|;
-comment|/**      * Name of this import format.      *       *<p>      * The name must be unique.      *</p>      *       * @return format name, must be unique and not<code>null</code>      */
+comment|/**      * Name of this import format.      *      *<p>      * The name must be unique.      *</p>      *      * @return format name, must be unique and not<code>null</code>      */
 DECL|method|getFormatName ()
 specifier|public
 specifier|abstract
@@ -222,7 +226,7 @@ name|String
 name|getFormatName
 parameter_list|()
 function_decl|;
-comment|/**      * Create one BibtexEntry containing information regarding the given File.      *       * @param f      * @param addPathTokensAsKeywords      * @return      */
+comment|/**      * Create one BibtexEntry containing information regarding the given File.      *      * @param f      * @param addPathTokensAsKeywords      * @return      */
 DECL|method|createEntry (File f, boolean addPathTokensAsKeywords)
 specifier|public
 name|BibtexEntry
@@ -237,9 +241,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|f
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|f
@@ -339,9 +345,10 @@ return|return
 name|externalFileType
 return|;
 block|}
-comment|/**      * Splits the path to the file and builds a keywords String in the format      * that is used by Jabref.      *       * @param absolutePath      * @return      */
+comment|/**      * Splits the path to the file and builds a keywords String in the format      * that is used by Jabref.      *      * @param absolutePath      * @return      */
 DECL|method|extractPathesToKeyWordsfield (String absolutePath)
 specifier|private
+specifier|static
 name|String
 name|extractPathesToKeyWordsfield
 parameter_list|(
@@ -577,9 +584,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|value
 operator|==
 literal|null
+operator|)
 operator|||
 literal|""
 operator|.

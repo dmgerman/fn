@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -180,11 +180,7 @@ name|fieldWeights
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Double
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 static|static
@@ -360,8 +356,6 @@ operator|.
 name|duplicateThreshold
 return|;
 block|}
-else|else
-block|{
 comment|// Close to the threshold value, so we take a look at the optional fields, if any:
 name|fields
 operator|=
@@ -408,6 +402,7 @@ name|double
 name|totValue
 init|=
 operator|(
+operator|(
 name|DuplicateCheck
 operator|.
 name|reqWeight
@@ -421,7 +416,9 @@ name|req
 index|[
 literal|1
 index|]
+operator|)
 operator|+
+operator|(
 name|opt
 index|[
 literal|0
@@ -432,7 +429,9 @@ index|[
 literal|1
 index|]
 operator|)
+operator|)
 operator|/
+operator|(
 operator|(
 name|req
 index|[
@@ -442,6 +441,7 @@ operator|*
 name|DuplicateCheck
 operator|.
 name|reqWeight
+operator|)
 operator|+
 name|opt
 index|[
@@ -457,8 +457,6 @@ operator|.
 name|duplicateThreshold
 return|;
 block|}
-else|else
-block|{
 return|return
 name|req
 index|[
@@ -469,8 +467,6 @@ name|DuplicateCheck
 operator|.
 name|duplicateThreshold
 return|;
-block|}
-block|}
 block|}
 DECL|method|compareFieldSet (String[] fields, BibtexEntry one, BibtexEntry two)
 specifier|private
@@ -608,9 +604,6 @@ name|totWeights
 block|}
 return|;
 block|}
-else|else
-block|{
-comment|// no fields present. This points to a possible duplicate?
 return|return
 operator|new
 name|double
@@ -621,7 +614,6 @@ block|,
 literal|0.0
 block|}
 return|;
-block|}
 block|}
 DECL|method|compareSingleField (String field, BibtexEntry one, BibtexEntry two)
 specifier|private
@@ -677,12 +669,9 @@ return|return
 name|EMPTY_IN_BOTH
 return|;
 block|}
-else|else
-block|{
 return|return
 name|EMPTY_IN_ONE
 return|;
-block|}
 block|}
 elseif|else
 if|if
@@ -788,12 +777,9 @@ return|return
 name|EQUAL
 return|;
 block|}
-else|else
-block|{
 return|return
 name|NOT_EQUAL
 return|;
-block|}
 block|}
 elseif|else
 if|if
@@ -845,12 +831,9 @@ return|return
 name|EQUAL
 return|;
 block|}
-else|else
-block|{
 return|return
 name|NOT_EQUAL
 return|;
-block|}
 block|}
 elseif|else
 if|if
@@ -920,12 +903,9 @@ return|return
 name|EQUAL
 return|;
 block|}
-else|else
-block|{
 return|return
 name|NOT_EQUAL
 return|;
-block|}
 block|}
 else|else
 block|{
@@ -968,13 +948,10 @@ return|return
 name|EQUAL
 return|;
 block|}
-else|else
-block|{
 return|return
 name|NOT_EQUAL
 return|;
 comment|/*if (s1.trim().equals(s2.trim()))                 return Util.EQUAL;             else                 return Util.NOT_EQUAL;*/
-block|}
 block|}
 block|}
 DECL|method|compareEntriesStrictly (BibtexEntry one, BibtexEntry two)
@@ -998,9 +975,7 @@ name|allFields
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// one.getAllFields());
@@ -1059,13 +1034,18 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
+operator|(
 name|en
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|to
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|en
 operator|.
@@ -1073,14 +1053,21 @@ name|equals
 argument_list|(
 name|to
 argument_list|)
+operator|)
 operator|||
+operator|(
+operator|(
 name|en
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|to
 operator|==
 literal|null
+operator|)
+operator|)
 condition|)
 block|{
 name|score
@@ -1105,8 +1092,6 @@ comment|// Just to make sure we can
 comment|// use score>1 without
 comment|// trouble.
 block|}
-else|else
-block|{
 return|return
 operator|(
 name|double
@@ -1118,7 +1103,6 @@ operator|.
 name|size
 argument_list|()
 return|;
-block|}
 block|}
 comment|/**      * Goes through all entries in the given database, and if at least one of      * them is a duplicate of the given entry, as per      * Util.isDuplicate(BibtexEntry, BibtexEntry), the duplicate is returned.      * The search is terminated when the first duplicate is found.      *      * @param database The database to search.      * @param entry    The entry of which we are looking for duplicates.      * @return The first duplicate entry found. null if no duplicates are found.      */
 DECL|method|containsDuplicate (BibtexDatabase database, BibtexEntry entry)
@@ -1332,9 +1316,11 @@ if|if
 condition|(
 name|truncate
 operator|&&
+operator|(
 name|minLength
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
 return|return
@@ -1360,19 +1346,23 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|s1
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
 name|s2
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
 return|return
@@ -1740,13 +1730,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|sigma1
 operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 name|sigma2
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 return|return
@@ -1759,12 +1753,9 @@ name|sigma2
 operator|)
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|0
 return|;
-block|}
 block|}
 DECL|method|numberizeString (String s)
 specifier|private
@@ -1842,17 +1833,21 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|length
 operator|<=
 name|array
 operator|.
 name|length
+operator|)
 operator|||
+operator|(
 name|array
 operator|.
 name|length
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 return|return
@@ -1938,6 +1933,7 @@ index|[
 name|i
 index|]
 operator|=
+operator|(
 name|dist
 operator|*
 name|array
@@ -1957,7 +1953,9 @@ operator|+
 literal|1
 argument_list|)
 index|]
+operator|)
 operator|+
+operator|(
 operator|(
 literal|1.0
 operator|-
@@ -1968,6 +1966,7 @@ name|array
 index|[
 name|baseInd
 index|]
+operator|)
 expr_stmt|;
 block|}
 return|return

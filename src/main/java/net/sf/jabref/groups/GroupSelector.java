@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -850,6 +850,7 @@ name|white
 decl_stmt|;
 DECL|field|groupsTree
 specifier|private
+specifier|final
 name|GroupsTree
 name|groupsTree
 decl_stmt|;
@@ -3660,13 +3661,16 @@ return|return;
 block|}
 if|if
 condition|(
+operator|(
 name|e
 operator|.
 name|getClickCount
 argument_list|()
 operator|==
 literal|2
+operator|)
 operator|&&
+operator|(
 name|e
 operator|.
 name|getButton
@@ -3675,6 +3679,7 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON1
+operator|)
 condition|)
 block|{
 comment|// edit
@@ -3690,13 +3695,16 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|e
 operator|.
 name|getClickCount
 argument_list|()
 operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
 name|e
 operator|.
 name|getButton
@@ -3705,6 +3713,7 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON1
+operator|)
 condition|)
 block|{
 name|annotationEvent
@@ -4609,9 +4618,7 @@ name|toRemove
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entries
 operator|.
@@ -4626,9 +4633,7 @@ name|toAdd
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entries
 operator|.
@@ -4820,16 +4825,20 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|groupsTree
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|groupsTree
 operator|.
 name|getSelectionCount
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 return|return;
@@ -4950,22 +4959,30 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|selection
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|selection
 operator|.
 name|length
 operator|==
 literal|0
+operator|)
 operator|||
+operator|(
+operator|(
 name|selection
 operator|.
 name|length
 operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
 operator|(
 operator|(
 name|GroupTreeNode
@@ -4983,6 +5000,8 @@ name|getGroup
 argument_list|()
 operator|instanceof
 name|AllEntriesGroup
+operator|)
+operator|)
 condition|)
 block|{
 name|panel
@@ -5191,9 +5210,7 @@ name|matches
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|showOverlappingGroupsP
@@ -8018,6 +8035,7 @@ name|canMoveUp
 argument_list|()
 operator|||
 operator|(
+operator|(
 name|undo
 operator|=
 name|node
@@ -8031,6 +8049,7 @@ argument_list|)
 operator|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -8150,6 +8169,7 @@ name|canMoveDown
 argument_list|()
 operator|||
 operator|(
+operator|(
 name|undo
 operator|=
 name|node
@@ -8163,6 +8183,7 @@ argument_list|)
 operator|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -8282,6 +8303,7 @@ name|canMoveLeft
 argument_list|()
 operator|||
 operator|(
+operator|(
 name|undo
 operator|=
 name|node
@@ -8295,6 +8317,7 @@ argument_list|)
 operator|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -8413,6 +8436,7 @@ name|canMoveRight
 argument_list|()
 operator|||
 operator|(
+operator|(
 name|undo
 operator|=
 name|node
@@ -8426,6 +8450,7 @@ argument_list|)
 operator|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -8930,15 +8955,19 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|entries
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|entries
 operator|.
 name|length
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 comment|// nothing selected
@@ -8964,9 +8993,7 @@ name|vec
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|GroupTreeNode
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -9075,11 +9102,13 @@ if|if
 condition|(
 name|requireAll
 operator|&&
+operator|(
 name|i
 operator|>=
 name|entries
 operator|.
 name|length
+operator|)
 condition|)
 comment|// did not break from loop
 block|{
@@ -9188,9 +9217,7 @@ name|nodes
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|GroupTreeNode
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
