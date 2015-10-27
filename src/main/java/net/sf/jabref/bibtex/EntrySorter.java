@@ -449,7 +449,6 @@ break|break;
 case|case
 name|CHANGED_ENTRY
 case|:
-comment|// Entry changed. Resort list:
 name|pos
 operator|=
 name|Collections
