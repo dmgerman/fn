@@ -780,11 +780,6 @@ operator|.
 name|repaint
 argument_list|()
 expr_stmt|;
-name|frame
-operator|.
-name|setUpImportMenus
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1072,11 +1067,6 @@ argument_list|(
 literal|10
 argument_list|)
 expr_stmt|;
-name|frame
-operator|.
-name|setUpImportMenus
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}
@@ -1339,11 +1329,6 @@ expr_stmt|;
 name|customImporterTable
 operator|.
 name|repaint
-argument_list|()
-expr_stmt|;
-name|frame
-operator|.
-name|setUpImportMenus
 argument_list|()
 expr_stmt|;
 block|}
