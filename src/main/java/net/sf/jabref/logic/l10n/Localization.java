@@ -302,7 +302,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * In the translation, %c is translated to ":", %e is translated to "=", %<anythingelse> to<anythingelse>, %0, ... %9 to the respective params given      *      * @param resBundle the ResourceBundle to use      * @param idForErrorMessage output when translation is not found Ã¶     * @param key the key to lookup in resBundle      * @param params a list of Strings to replace %0, %1, ...      * @return      */
+comment|/**      * In the translation, %c is translated to ":", %e is translated to "=", %<anythingelse> to<anythingelse>, %0, ... %9 to the respective params given      *      * @param resBundle the ResourceBundle to use      * @param idForErrorMessage output when translation is not found      * @param key the key to lookup in resBundle      * @param params a list of Strings to replace %0, %1, ...      * @return      */
 DECL|method|translate (ResourceBundle resBundle, String idForErrorMessage, String key, String... params)
 specifier|private
 specifier|static
