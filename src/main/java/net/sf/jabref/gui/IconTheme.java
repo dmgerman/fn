@@ -893,6 +893,20 @@ literal|"\uf2d9"
 argument_list|)
 block|,
 comment|/*css: file-multiple */
+DECL|enumConstant|KEY_BINDINGS
+name|KEY_BINDINGS
+argument_list|(
+literal|"\uf3ad"
+argument_list|)
+block|,
+comment|/*css: keyboard */
+DECL|enumConstant|FIND_DUPLICATES
+name|FIND_DUPLICATES
+argument_list|(
+literal|"\uf233"
+argument_list|)
+block|,
+comment|/*css: code-equal */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR

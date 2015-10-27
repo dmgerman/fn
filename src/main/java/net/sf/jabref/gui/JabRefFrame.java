@@ -3703,6 +3703,15 @@ name|menuTitle
 argument_list|(
 literal|"Find duplicates"
 argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|FIND_DUPLICATES
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|plainTextImport
@@ -3769,6 +3778,8 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|exportToClipboard
+specifier|private
+specifier|final
 name|AbstractAction
 name|exportToClipboard
 init|=
@@ -3790,7 +3801,7 @@ name|JabRefIcon
 operator|.
 name|EXPORT_TO_CLIPBOARD
 operator|.
-name|getSmallIcon
+name|getIcon
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -4249,7 +4260,7 @@ name|JabRefIcon
 operator|.
 name|EMAIL
 operator|.
-name|getSmallIcon
+name|getIcon
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -10872,6 +10883,24 @@ name|lang
 argument_list|(
 literal|"Customize key bindings"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|putValue
+argument_list|(
+name|Action
+operator|.
+name|SMALL_ICON
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|KEY_BINDINGS
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
