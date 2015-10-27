@@ -886,6 +886,13 @@ literal|"\uf2d2"
 argument_list|)
 block|,
 comment|/*css: file-document */
+DECL|enumConstant|FILE_MULTIPLE
+name|FILE_MULTIPLE
+argument_list|(
+literal|"\uf2d9"
+argument_list|)
+block|,
+comment|/*css: file-multiple */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR
