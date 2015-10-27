@@ -714,15 +714,6 @@ name|importInspectionHelp
 init|=
 literal|"ImportInspectionDialog.html"
 decl_stmt|;
-DECL|field|shortIntegrityCheck
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|shortIntegrityCheck
-init|=
-literal|"ShortIntegrityCheck.html"
-decl_stmt|;
 DECL|field|remoteHelp
 specifier|public
 specifier|static
