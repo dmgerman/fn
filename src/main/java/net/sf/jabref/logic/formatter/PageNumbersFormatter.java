@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.cleanup
+DECL|package|net.sf.jabref.logic.formatter
 package|package
 name|net
 operator|.
@@ -10,7 +10,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|cleanup
+name|formatter
 package|;
 end_package
 
@@ -55,23 +55,23 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class includes sensible defaults for consistent formatting of BibTex entries.  */
+comment|/**  * This class includes sensible defaults for consistent formatting of BibTex page numbers.  */
 end_comment
 
 begin_class
-DECL|class|AutoFormatter
+DECL|class|PageNumbersFormatter
 specifier|public
 class|class
-name|AutoFormatter
+name|PageNumbersFormatter
 block|{
 DECL|field|entry
 specifier|private
 name|BibtexEntry
 name|entry
 decl_stmt|;
-DECL|method|AutoFormatter (BibtexEntry entry)
+DECL|method|PageNumbersFormatter (BibtexEntry entry)
 specifier|public
-name|AutoFormatter
+name|PageNumbersFormatter
 parameter_list|(
 name|BibtexEntry
 name|entry
@@ -84,22 +84,11 @@ operator|=
 name|entry
 expr_stmt|;
 block|}
-comment|/**      * Runs all default cleanups for the BibTex entry.      */
-DECL|method|runDefaultCleanups ()
+comment|/**      * Format page numbers, separated either by commas or double-hyphens.      * Converts the range number format of the<code>pages</code> field to page_number--page_number.      * Removes all literals except [0-9,-].      * Keeps the existing String if the resulting field does not match the expected Regex.      *      *<example>      *     1-2 -> 1--2      *     1,2,3 -> 1,2,3      *     {1}-{2} -> 1--2      *     Invalid -> Invalid      *</example>      */
+DECL|method|format ()
 specifier|public
 name|void
-name|runDefaultCleanups
-parameter_list|()
-block|{
-name|formatPageNumbers
-argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * Format page numbers, separated either by commas or double-hyphens.      * Converts the range number format of the<code>pages</code> field to page_number--page_number.      * Keeps the existing String if the field does not match the expected Regex.      *      *<example>      *     1-2 -> 1--2      *     1,2,3 -> 1,2,3      *     Invalid -> Invalid      *</example>      */
-DECL|method|formatPageNumbers ()
-specifier|public
-name|void
-name|formatPageNumbers
+name|format
 parameter_list|()
 block|{
 specifier|final
@@ -109,14 +98,20 @@ init|=
 literal|"pages"
 decl_stmt|;
 specifier|final
+name|String
+name|rejectLiterals
+init|=
+literal|"[^0-9,-]"
+decl_stmt|;
+specifier|final
 name|Pattern
-name|pattern
+name|pagesPattern
 init|=
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\\A\\s*(\\d+)\\s*-{1,2}\\s*(\\d+)\\s*\\Z"
+literal|"\\A(\\d+)-{1,2}(\\d+)\\Z"
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -150,14 +145,28 @@ condition|)
 block|{
 return|return;
 block|}
+comment|// remove unwanted literals incl. whitespace
+name|String
+name|cleanValue
+init|=
+name|value
+operator|.
+name|replaceAll
+argument_list|(
+name|rejectLiterals
+argument_list|,
+literal|""
+argument_list|)
+decl_stmt|;
+comment|// try to find pages pattern
 name|Matcher
 name|matcher
 init|=
-name|pattern
+name|pagesPattern
 operator|.
 name|matcher
 argument_list|(
-name|value
+name|cleanValue
 argument_list|)
 decl_stmt|;
 comment|// replace
@@ -171,6 +180,18 @@ argument_list|(
 name|replace
 argument_list|)
 decl_stmt|;
+comment|// replacement?
+if|if
+condition|(
+operator|!
+name|newValue
+operator|.
+name|equals
+argument_list|(
+name|cleanValue
+argument_list|)
+condition|)
+block|{
 comment|// write field
 name|entry
 operator|.
@@ -181,6 +202,7 @@ argument_list|,
 name|newValue
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class
