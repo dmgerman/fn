@@ -2608,7 +2608,7 @@ if|if
 condition|(
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|contains

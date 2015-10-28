@@ -1010,7 +1010,7 @@ argument_list|<>
 argument_list|(
 name|mergedEntry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 argument_list|)
 decl_stmt|;

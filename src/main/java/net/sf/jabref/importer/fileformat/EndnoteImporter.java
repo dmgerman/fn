@@ -1555,7 +1555,7 @@ condition|(
 operator|!
 name|b
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|isEmpty

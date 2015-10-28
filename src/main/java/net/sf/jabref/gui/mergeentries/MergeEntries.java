@@ -549,7 +549,7 @@ argument_list|<>
 argument_list|(
 name|one
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -559,7 +559,7 @@ name|addAll
 argument_list|(
 name|two
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 argument_list|)
 expr_stmt|;

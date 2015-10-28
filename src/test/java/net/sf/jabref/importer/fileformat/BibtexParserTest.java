@@ -36,22 +36,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
-operator|.
-name|fileformat
-operator|.
-name|BibtexParser
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -247,7 +231,7 @@ literal|2
 argument_list|,
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|size
@@ -262,7 +246,7 @@ name|o
 init|=
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -576,7 +560,7 @@ literal|2
 argument_list|,
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|size
@@ -589,7 +573,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|contains
@@ -1072,7 +1056,7 @@ literal|2
 argument_list|,
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|size
@@ -1085,7 +1069,7 @@ name|assertTrue
 argument_list|(
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|contains
@@ -1243,7 +1227,7 @@ name|field
 range|:
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{

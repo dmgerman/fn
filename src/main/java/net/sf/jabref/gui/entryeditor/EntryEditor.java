@@ -4938,7 +4938,7 @@ name|field
 range|:
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{
@@ -5008,7 +5008,7 @@ name|field
 range|:
 name|newEntry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{

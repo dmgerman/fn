@@ -1381,7 +1381,7 @@ name|fields
 init|=
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 decl_stmt|;
 name|JabRefPreferences

@@ -214,6 +214,22 @@ specifier|public
 class|class
 name|BibtexEntry
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|BibtexEntry
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|TYPE_HEADER
 specifier|public
 specifier|static
@@ -240,22 +256,6 @@ name|String
 name|ID_FIELD
 init|=
 literal|"id"
-decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|BibtexEntry
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 DECL|field|FIELD_ALIASES_OLD_TO_NEW
 specifier|public
@@ -644,14 +644,14 @@ name|WRITEFIELD_USERDEFINEDORDER
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns an set containing the names of all fields that are      * set for this particular entry.      */
-DECL|method|getAllFields ()
+comment|/**      * Returns an set containing the names of all fields that are      * set for this particular entry.      *      * @return a set of existing field names      */
+DECL|method|getFieldNames ()
 specifier|public
 name|Set
 argument_list|<
 name|String
 argument_list|>
-name|getAllFields
+name|getFieldNames
 parameter_list|()
 block|{
 return|return
@@ -664,6 +664,22 @@ operator|.
 name|keySet
 argument_list|()
 argument_list|)
+return|;
+block|}
+comment|/**      * Returns all fields of the BibTex entry      *      * @return a map of key, value pairs      */
+DECL|method|getFields ()
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getFields
+parameter_list|()
+block|{
+return|return
+name|fields
 return|;
 block|}
 comment|/**      * Returns true if this entry contains the fields it needs to be      * complete.      */

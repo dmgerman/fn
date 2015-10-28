@@ -238,7 +238,7 @@ name|field
 range|:
 name|bibtexEntry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{
