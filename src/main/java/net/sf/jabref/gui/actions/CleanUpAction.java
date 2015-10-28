@@ -320,9 +320,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|formatter
+name|cleanup
 operator|.
-name|PageNumbersFormatter
+name|PageNumbersCleanup
 import|;
 end_import
 
@@ -3254,12 +3254,12 @@ argument_list|)
 decl_stmt|;
 comment|// run formatter
 operator|new
-name|PageNumbersFormatter
+name|PageNumbersCleanup
 argument_list|(
 name|entry
 argument_list|)
 operator|.
-name|format
+name|cleanup
 argument_list|()
 expr_stmt|;
 comment|// new value

@@ -16,22 +16,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -63,40 +47,31 @@ DECL|class|PageNumbersFormatter
 specifier|public
 class|class
 name|PageNumbersFormatter
+implements|implements
+name|Formatter
 block|{
-DECL|field|entry
-specifier|private
-name|BibtexEntry
-name|entry
-decl_stmt|;
-DECL|method|PageNumbersFormatter (BibtexEntry entry)
+annotation|@
+name|Override
+DECL|method|getName ()
 specifier|public
-name|PageNumbersFormatter
-parameter_list|(
-name|BibtexEntry
-name|entry
-parameter_list|)
-block|{
-name|this
-operator|.
-name|entry
-operator|=
-name|entry
-expr_stmt|;
-block|}
-comment|/**      * Format page numbers, separated either by commas or double-hyphens.      * Converts the range number format of the<code>pages</code> field to page_number--page_number.      * Removes all literals except [0-9,-].      * Keeps the existing String if the resulting field does not match the expected Regex.      *      *<example>      *     1-2 -> 1--2      *     1,2,3 -> 1,2,3      *     {1}-{2} -> 1--2      *     Invalid -> Invalid      *</example>      */
-DECL|method|format ()
-specifier|public
-name|void
-name|format
+name|String
+name|getName
 parameter_list|()
 block|{
-specifier|final
+return|return
+literal|"Page numbers"
+return|;
+block|}
+comment|/**      * Format page numbers, separated either by commas or double-hyphens.      * Converts the range number format of the<code>pages</code> field to page_number--page_number.      * Removes all literals except [0-9,-].      * Keeps the existing String if the resulting field does not match the expected Regex.      *      *<example>      *     1-2 -> 1--2      *     1,2,3 -> 1,2,3      *     {1}-{2} -> 1--2      *     Invalid -> Invalid      *</example>      */
+DECL|method|format (String value)
+specifier|public
 name|String
-name|field
-init|=
-literal|"pages"
-decl_stmt|;
+name|format
+parameter_list|(
+name|String
+name|value
+parameter_list|)
+block|{
 specifier|final
 name|String
 name|rejectLiterals
@@ -120,16 +95,6 @@ name|replace
 init|=
 literal|"$1--$2"
 decl_stmt|;
-name|String
-name|value
-init|=
-name|entry
-operator|.
-name|getField
-argument_list|(
-name|field
-argument_list|)
-decl_stmt|;
 comment|// nothing to do
 if|if
 condition|(
@@ -143,7 +108,9 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-return|return;
+return|return
+name|value
+return|;
 block|}
 comment|// remove unwanted literals incl. whitespace
 name|String
@@ -193,16 +160,13 @@ argument_list|)
 condition|)
 block|{
 comment|// write field
-name|entry
-operator|.
-name|setField
-argument_list|(
-name|field
-argument_list|,
+return|return
 name|newValue
-argument_list|)
-expr_stmt|;
+return|;
 block|}
+return|return
+name|value
+return|;
 block|}
 block|}
 end_class
