@@ -116,15 +116,6 @@ name|MENU_RESOURCE_PREFIX
 init|=
 literal|"l10n/Menu"
 decl_stmt|;
-DECL|field|INTEGRITY_RESOURCE_PREFIX
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|INTEGRITY_RESOURCE_PREFIX
-init|=
-literal|"l10n/IntegrityMessage"
-decl_stmt|;
 DECL|field|messages
 specifier|private
 specifier|static
@@ -136,12 +127,6 @@ specifier|private
 specifier|static
 name|ResourceBundle
 name|menuTitles
-decl_stmt|;
-DECL|field|intMessages
-specifier|private
-specifier|static
-name|ResourceBundle
-name|intMessages
 decl_stmt|;
 DECL|method|setLanguage (String language)
 specifier|public
@@ -188,23 +173,6 @@ operator|.
 name|getBundle
 argument_list|(
 name|MENU_RESOURCE_PREFIX
-argument_list|,
-name|locale
-argument_list|,
-operator|new
-name|EncodingControl
-argument_list|(
-literal|"UTF-8"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|intMessages
-operator|=
-name|ResourceBundle
-operator|.
-name|getBundle
-argument_list|(
-name|INTEGRITY_RESOURCE_PREFIX
 argument_list|,
 name|locale
 argument_list|,
@@ -310,23 +278,6 @@ literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|intMessages
-operator|=
-name|ResourceBundle
-operator|.
-name|getBundle
-argument_list|(
-name|INTEGRITY_RESOURCE_PREFIX
-argument_list|,
-name|locale
-argument_list|,
-operator|new
-name|EncodingControl
-argument_list|(
-literal|"UTF-8"
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 finally|finally
 block|{
@@ -351,7 +302,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * In the translation, %c is translated to ":", %e is translated to "=", %<anythingelse> to<anythingelse>, %0, ... %9 to the respective params given      *      * @param resBundle the ResourceBundle to use      * @param idForErrorMessage output when translation is not found      * @param key the key to lookup in resBundle      * @param params a list of Strings to replace %0, %1, ...      * @return      */
+comment|/**      * In the translation, %c is translated to ":", %e is translated to "=", %<anythingelse> to<anythingelse>, %0, ... %9 to the respective params given      *      * @param resBundle the ResourceBundle to use      * @param idForErrorMessage output when translation is not found Ã¶     * @param key the key to lookup in resBundle      * @param params a list of Strings to replace %0, %1, ...      * @return      */
 DECL|method|translate (ResourceBundle resBundle, String idForErrorMessage, String key, String... params)
 specifier|private
 specifier|static
@@ -724,33 +675,6 @@ argument_list|(
 name|menuTitles
 argument_list|,
 literal|"menu item"
-argument_list|,
-name|key
-argument_list|,
-name|params
-argument_list|)
-return|;
-block|}
-DECL|method|getIntegrityMessage (String key, String... params)
-specifier|public
-specifier|static
-name|String
-name|getIntegrityMessage
-parameter_list|(
-name|String
-name|key
-parameter_list|,
-name|String
-modifier|...
-name|params
-parameter_list|)
-block|{
-return|return
-name|translate
-argument_list|(
-name|menuTitles
-argument_list|,
-literal|"integrity message"
 argument_list|,
 name|key
 argument_list|,
