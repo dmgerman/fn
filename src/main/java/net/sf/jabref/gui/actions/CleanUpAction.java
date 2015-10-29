@@ -336,6 +336,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|formatter
+operator|.
+name|FieldFormatters
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -3274,6 +3290,17 @@ literal|"pages"
 argument_list|)
 decl_stmt|;
 comment|// undo action
+if|if
+condition|(
+operator|!
+name|oldValue
+operator|.
+name|equals
+argument_list|(
+name|newValue
+argument_list|)
+condition|)
+block|{
 name|ce
 operator|.
 name|addEdit
@@ -3291,6 +3318,7 @@ name|newValue
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|fixWrongFileEntries (BibtexEntry entry, NamedCompound ce)
 specifier|private
