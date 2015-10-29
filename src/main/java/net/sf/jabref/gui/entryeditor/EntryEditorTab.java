@@ -388,7 +388,13 @@ argument_list|(
 name|this
 argument_list|)
 decl_stmt|;
-DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List<String> fields, EntryEditor parent, boolean addKeyField, boolean compressed, String name)
+DECL|field|tabTitle
+specifier|private
+specifier|final
+name|String
+name|tabTitle
+decl_stmt|;
+DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List<String> fields, EntryEditor parent, boolean addKeyField, boolean compressed, String tabTitle)
 specifier|public
 name|EntryEditorTab
 parameter_list|(
@@ -414,7 +420,7 @@ name|boolean
 name|compressed
 parameter_list|,
 name|String
-name|name
+name|tabTitle
 parameter_list|)
 block|{
 if|if
@@ -461,6 +467,12 @@ name|parent
 operator|=
 name|parent
 expr_stmt|;
+name|this
+operator|.
+name|tabTitle
+operator|=
+name|tabTitle
+expr_stmt|;
 name|setupPanel
 argument_list|(
 name|frame
@@ -471,7 +483,7 @@ name|addKeyField
 argument_list|,
 name|compressed
 argument_list|,
-name|name
+name|tabTitle
 argument_list|)
 expr_stmt|;
 comment|/*          * The following line makes sure focus cycles inside tab instead of          * being lost to other parts of the frame:          */
