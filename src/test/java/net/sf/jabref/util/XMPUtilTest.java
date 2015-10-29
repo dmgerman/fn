@@ -1668,9 +1668,7 @@ name|expectedFields
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -4579,6 +4577,7 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4587,7 +4586,9 @@ literal|"<bibtex:bibtexkey>canh05</bibtex:bibtexkey>"
 argument_list|)
 operator|>
 literal|0
+operator|)
 operator|||
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4596,6 +4597,7 @@ literal|"bibtex:bibtexkey="
 argument_list|)
 operator|>
 literal|0
+operator|)
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -4616,6 +4618,7 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4624,7 +4627,9 @@ literal|"id='W5M0MpCehiHzreSzNTczkc9d'?>"
 argument_list|)
 operator|>
 literal|0
+operator|)
 operator|||
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4633,12 +4638,14 @@ literal|"id=\"W5M0MpCehiHzreSzNTczkc9d\"?>"
 argument_list|)
 operator|>
 literal|0
+operator|)
 argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
 name|assertTrue
 argument_list|(
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4647,7 +4654,9 @@ literal|"xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'"
 argument_list|)
 operator|>
 literal|0
+operator|)
 operator|||
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4656,6 +4665,7 @@ literal|"xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\""
 argument_list|)
 operator|>
 literal|0
+operator|)
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -4676,6 +4686,7 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4684,7 +4695,9 @@ literal|"<?xpacket end='w'?>"
 argument_list|)
 operator|>
 literal|0
+operator|)
 operator|||
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -4693,6 +4706,7 @@ literal|"<?xpacket end=\"w\"?>"
 argument_list|)
 operator|>
 literal|0
+operator|)
 argument_list|)
 expr_stmt|;
 comment|/* Test contents of string */
@@ -5013,9 +5027,7 @@ name|l
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|l
@@ -5152,9 +5164,7 @@ name|l
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|l
@@ -5674,9 +5684,7 @@ name|l
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|l
@@ -6938,6 +6946,7 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -6946,7 +6955,9 @@ literal|"<bibtex:bibtexkey>canh05</bibtex:bibtexkey>"
 argument_list|)
 operator|>
 literal|0
+operator|)
 operator|||
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -6955,6 +6966,7 @@ literal|"bibtex:bibtexkey="
 argument_list|)
 operator|>
 literal|0
+operator|)
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -6975,6 +6987,7 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -6983,7 +6996,9 @@ literal|"id='W5M0MpCehiHzreSzNTczkc9d'?>"
 argument_list|)
 operator|>
 literal|0
+operator|)
 operator|||
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -6992,12 +7007,14 @@ literal|"id=\"W5M0MpCehiHzreSzNTczkc9d\"?>"
 argument_list|)
 operator|>
 literal|0
+operator|)
 argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
 name|assertTrue
 argument_list|(
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -7006,7 +7023,9 @@ literal|"xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'"
 argument_list|)
 operator|>
 literal|0
+operator|)
 operator|||
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -7015,6 +7034,7 @@ literal|"xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\""
 argument_list|)
 operator|>
 literal|0
+operator|)
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -7035,6 +7055,7 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -7043,7 +7064,9 @@ literal|"<?xpacket end='w'?>"
 argument_list|)
 operator|>
 literal|0
+operator|)
 operator|||
+operator|(
 name|xmp
 operator|.
 name|indexOf
@@ -7052,6 +7075,7 @@ literal|"<?xpacket end=\"w\"?>"
 argument_list|)
 operator|>
 literal|0
+operator|)
 argument_list|)
 expr_stmt|;
 comment|/* Test contents of string */
@@ -7869,7 +7893,9 @@ parameter_list|(
 name|EncryptionNotSupportedException
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 try|try
 block|{
 name|XMPUtil
@@ -7897,9 +7923,11 @@ parameter_list|(
 name|EncryptionNotSupportedException
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
 block|}
-comment|/**      * A better testcase for resolveStrings. Makes sure that also the document      * information and dublin core are written correctly.      *<p/>      * Data was contributed by Philip K.F. HÃ¶lzenspies (p.k.f.holzenspies [at] utwente.nl).      *      * @throws IOException      * @throws TransformerException      */
+block|}
+comment|/**      * A better testcase for resolveStrings. Makes sure that also the document information and dublin core are written      * correctly.      *<p/>      * Data was contributed by Philip K.F. HÃ¶lzenspies (p.k.f.holzenspies [at] utwente.nl).      *      * @throws IOException      * @throws TransformerException      */
 annotation|@
 name|Test
 DECL|method|testResolveStrings2 ()

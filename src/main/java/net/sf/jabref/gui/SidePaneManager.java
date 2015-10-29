@@ -123,11 +123,7 @@ name|components
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|String
-argument_list|,
-name|SidePaneComponent
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|componentNames
@@ -143,11 +139,7 @@ name|componentNames
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|SidePaneComponent
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|visible
@@ -161,9 +153,7 @@ name|visible
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|SidePaneComponent
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|SidePaneManager (JabRefFrame frame)
@@ -707,6 +697,7 @@ block|}
 block|}
 DECL|method|getPreferredPositions ()
 specifier|private
+specifier|static
 name|Map
 argument_list|<
 name|String
@@ -726,11 +717,7 @@ name|preferredPositions
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -882,7 +869,7 @@ argument_list|()
 decl_stmt|;
 name|String
 index|[]
-name|componentNames
+name|tmpComponentNames
 init|=
 name|var
 operator|.
@@ -920,7 +907,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|componentNames
+name|tmpComponentNames
 operator|.
 name|length
 condition|;
@@ -937,7 +924,7 @@ name|preferredPositions
 operator|.
 name|get
 argument_list|(
-name|componentNames
+name|tmpComponentNames
 index|[
 name|i
 index|]
@@ -957,7 +944,7 @@ name|JabRefPreferences
 operator|.
 name|SIDE_PANE_COMPONENT_NAMES
 argument_list|,
-name|componentNames
+name|tmpComponentNames
 argument_list|)
 expr_stmt|;
 name|Globals
@@ -1194,12 +1181,14 @@ if|if
 condition|(
 name|currIndex
 operator|<
+operator|(
 name|visible
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|int
@@ -1264,7 +1253,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Update all side pane components to show information from the given      * BasePanel.      *       * @param panel      */
+comment|/**      * Update all side pane components to show information from the given      * BasePanel.      *      * @param panel      */
 DECL|method|setActiveBasePanel (BasePanel panel)
 specifier|private
 name|void

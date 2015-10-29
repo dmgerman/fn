@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -328,28 +328,36 @@ name|additionListeners
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|ActionListener
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|list
 specifier|final
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|list
 decl_stmt|;
 DECL|field|sp
 specifier|private
+specifier|final
 name|JScrollPane
 name|sp
 decl_stmt|;
 DECL|field|listModel
 name|DefaultListModel
+argument_list|<
+name|String
+argument_list|>
 name|listModel
 decl_stmt|;
 DECL|field|sel
 specifier|private
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|sel
 decl_stmt|;
 DECL|field|input
@@ -416,12 +424,10 @@ name|modelListeners
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|ListDataListener
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|/**       * Creates a new instance of FieldSetComponent, with preset selection      * values. These are put into a JComboBox.      */
+comment|/**      * Creates a new instance of FieldSetComponent, with preset selection      * values. These are put into a JComboBox.      */
 DECL|method|FieldSetComponent (String title, List<String> fields, List<String> preset, boolean arrows, boolean forceLowerCase)
 specifier|public
 name|FieldSetComponent
@@ -572,6 +578,7 @@ name|listModel
 operator|=
 operator|new
 name|DefaultListModel
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|JLabel
@@ -615,6 +622,7 @@ name|list
 operator|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|listModel
 argument_list|)
@@ -957,6 +965,7 @@ name|sel
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|preset
 operator|.
@@ -1267,10 +1276,14 @@ name|fields
 parameter_list|)
 block|{
 name|DefaultListModel
+argument_list|<
+name|String
+argument_list|>
 name|newListModel
 init|=
 operator|new
 name|DefaultListModel
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1319,7 +1332,7 @@ name|newListModel
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method is called when a new field should be added to the list. Performs validation of the       * field.      */
+comment|/**      * This method is called when a new field should be added to the list. Performs validation of the      * field.      */
 DECL|method|addField (String s)
 name|void
 name|addField
@@ -1387,6 +1400,7 @@ argument_list|(
 name|s
 argument_list|)
 operator|||
+operator|(
 name|s
 operator|.
 name|indexOf
@@ -1395,6 +1409,7 @@ literal|'&'
 argument_list|)
 operator|>=
 literal|0
+operator|)
 condition|)
 block|{
 comment|// Report error and exit.
@@ -1584,9 +1599,7 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|listModel
 operator|.
@@ -1595,6 +1608,9 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|Enumeration
+argument_list|<
+name|String
+argument_list|>
 name|elements
 init|=
 name|listModel
@@ -1614,9 +1630,6 @@ name|res
 operator|.
 name|add
 argument_list|(
-operator|(
-name|String
-operator|)
 name|elements
 operator|.
 name|nextElement
@@ -1735,9 +1748,6 @@ block|}
 name|String
 name|o
 init|=
-operator|(
-name|String
-operator|)
 name|listModel
 operator|.
 name|get
@@ -1825,16 +1835,20 @@ block|{
 comment|// Selection has been made, or add button pressed:
 if|if
 condition|(
+operator|(
 name|sel
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|sel
 operator|.
 name|getSelectedItem
 argument_list|()
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|String
@@ -1857,9 +1871,11 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|input
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|input
@@ -1933,12 +1949,14 @@ argument_list|(
 literal|"comboBoxChanged"
 argument_list|)
 operator|&&
+operator|(
 name|e
 operator|.
 name|getModifiers
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 comment|// These conditions signify arrow key navigation in the dropdown list, so we should

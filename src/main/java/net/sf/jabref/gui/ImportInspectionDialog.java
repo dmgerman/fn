@@ -1202,9 +1202,7 @@ name|entries
 init|=
 operator|new
 name|BasicEventList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|sortedList
@@ -1228,9 +1226,7 @@ name|entriesToDelete
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|undoName
@@ -1250,9 +1246,7 @@ name|callBacks
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|CallBack
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|newDatabase
@@ -1360,14 +1354,7 @@ name|groupAdditions
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|Set
-argument_list|<
-name|GroupTreeNode
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|autoGenerate
@@ -1672,9 +1659,7 @@ name|sortedList
 operator|=
 operator|new
 name|SortedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entries
 argument_list|)
@@ -1687,9 +1672,7 @@ name|tableModelGl
 init|=
 operator|new
 name|EventTableModel
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedList
 argument_list|,
@@ -1781,9 +1764,7 @@ name|selectionModel
 operator|=
 operator|new
 name|EventSelectionModel
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedList
 argument_list|)
@@ -2608,9 +2589,7 @@ name|list
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|list
@@ -2627,7 +2606,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntries(java.util.Collection)      */
-DECL|method|addEntries (Collection<BibtexEntry> entries)
+DECL|method|addEntries (Collection<BibtexEntry> entriesToAdd)
 specifier|public
 name|void
 name|addEntries
@@ -2636,7 +2615,7 @@ name|Collection
 argument_list|<
 name|BibtexEntry
 argument_list|>
-name|entries
+name|entriesToAdd
 parameter_list|)
 block|{
 for|for
@@ -2644,7 +2623,7 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|entries
+name|entriesToAdd
 control|)
 block|{
 comment|// We exploit the entry's search status for indicating "Keep"
@@ -2754,8 +2733,9 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entries A Collection of BibtexEntry instances.      * @param entry   The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
-DECL|method|internalDuplicate (Collection<BibtexEntry> entries, BibtexEntry entry)
+DECL|method|internalDuplicate (Collection<BibtexEntry> entriesDupe, BibtexEntry entry)
 specifier|private
+specifier|static
 name|BibtexEntry
 name|internalDuplicate
 parameter_list|(
@@ -2763,7 +2743,7 @@ name|Collection
 argument_list|<
 name|BibtexEntry
 argument_list|>
-name|entries
+name|entriesDupe
 parameter_list|,
 name|BibtexEntry
 name|entry
@@ -2774,7 +2754,7 @@ control|(
 name|BibtexEntry
 name|othEntry
 range|:
-name|entries
+name|entriesDupe
 control|)
 block|{
 if|if
@@ -2831,9 +2811,7 @@ name|toRemove
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|toRemove
@@ -3047,9 +3025,7 @@ name|selected
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -3132,7 +3108,7 @@ name|BibtexDatabase
 name|database
 decl_stmt|;
 name|MetaData
-name|metaData
+name|localMetaData
 decl_stmt|;
 comment|// Relate to existing database, if any:
 if|if
@@ -3149,7 +3125,7 @@ operator|.
 name|database
 argument_list|()
 expr_stmt|;
-name|metaData
+name|localMetaData
 operator|=
 name|panel
 operator|.
@@ -3165,7 +3141,7 @@ operator|new
 name|BibtexDatabase
 argument_list|()
 expr_stmt|;
-name|metaData
+name|localMetaData
 operator|=
 operator|new
 name|MetaData
@@ -3195,7 +3171,7 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metaData
+name|localMetaData
 argument_list|,
 name|database
 argument_list|,
@@ -3257,7 +3233,7 @@ name|BibtexDatabase
 name|database
 decl_stmt|;
 name|MetaData
-name|metaData
+name|localMetaData
 decl_stmt|;
 comment|// Relate to existing database, if any:
 if|if
@@ -3274,7 +3250,7 @@ operator|.
 name|database
 argument_list|()
 expr_stmt|;
-name|metaData
+name|localMetaData
 operator|=
 name|panel
 operator|.
@@ -3290,7 +3266,7 @@ operator|new
 name|BibtexDatabase
 argument_list|()
 expr_stmt|;
-name|metaData
+name|localMetaData
 operator|=
 operator|new
 name|MetaData
@@ -3305,9 +3281,7 @@ name|keys
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entries
 operator|.
@@ -3347,7 +3321,7 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metaData
+name|localMetaData
 argument_list|,
 name|database
 argument_list|,
@@ -3761,9 +3735,7 @@ name|groups
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|GroupTreeNode
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|groupAdditions
@@ -5384,7 +5356,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{          }
+block|{
+comment|// Nothing
+block|}
 annotation|@
 name|Override
 DECL|method|mouseExited (MouseEvent e)
@@ -5395,7 +5369,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{          }
+block|{
+comment|// Nothing
+block|}
 comment|/**          * Show right-click menu. If the click happened in an icon column that          * presents its own popup menu, show that. Otherwise, show the ordinary          * popup menu.          *          * @param e The mouse event that triggered the popup.          */
 DECL|method|showPopup (MouseEvent e)
 specifier|public
@@ -6746,7 +6722,7 @@ argument_list|()
 expr_stmt|;
 comment|// Hack
 name|FileListTableModel
-name|model
+name|localModel
 init|=
 operator|new
 name|FileListTableModel
@@ -6771,7 +6747,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|model
+name|localModel
 operator|.
 name|setContent
 argument_list|(
@@ -6779,11 +6755,11 @@ name|oldVal
 argument_list|)
 expr_stmt|;
 block|}
-name|model
+name|localModel
 operator|.
 name|addEntry
 argument_list|(
-name|model
+name|localModel
 operator|.
 name|getRowCount
 argument_list|()
@@ -6810,7 +6786,7 @@ name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
-name|model
+name|localModel
 operator|.
 name|getStringRepresentation
 argument_list|()
@@ -6978,7 +6954,7 @@ block|}
 block|}
 specifier|final
 name|FileListTableModel
-name|model
+name|localModel
 init|=
 operator|new
 name|FileListTableModel
@@ -7003,7 +6979,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|model
+name|localModel
 operator|.
 name|setContent
 argument_list|(
@@ -7038,7 +7014,7 @@ name|autoSetLinks
 argument_list|(
 name|entry
 argument_list|,
-name|model
+name|localModel
 argument_list|,
 name|metaData
 argument_list|,
@@ -7085,7 +7061,7 @@ name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
-name|model
+name|localModel
 operator|.
 name|getStringRepresentation
 argument_list|()
@@ -7240,7 +7216,7 @@ argument_list|()
 condition|)
 block|{
 name|FileListTableModel
-name|model
+name|localModel
 init|=
 operator|new
 name|FileListTableModel
@@ -7265,7 +7241,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|model
+name|localModel
 operator|.
 name|setContent
 argument_list|(
@@ -7273,11 +7249,11 @@ name|oldVal
 argument_list|)
 expr_stmt|;
 block|}
-name|model
+name|localModel
 operator|.
 name|addEntry
 argument_list|(
-name|model
+name|localModel
 operator|.
 name|getRowCount
 argument_list|()
@@ -7304,7 +7280,7 @@ name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
-name|model
+name|localModel
 operator|.
 name|getStringRepresentation
 argument_list|()
@@ -7348,7 +7324,7 @@ argument_list|()
 expr_stmt|;
 comment|// Hack
 name|FileListTableModel
-name|model
+name|localModel
 init|=
 operator|new
 name|FileListTableModel
@@ -7373,7 +7349,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|model
+name|localModel
 operator|.
 name|setContent
 argument_list|(
@@ -7381,11 +7357,11 @@ name|oldVal
 argument_list|)
 expr_stmt|;
 block|}
-name|model
+name|localModel
 operator|.
 name|addEntry
 argument_list|(
-name|model
+name|localModel
 operator|.
 name|getRowCount
 argument_list|()
@@ -7412,7 +7388,7 @@ name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
-name|model
+name|localModel
 operator|.
 name|getStringRepresentation
 argument_list|()
@@ -7618,11 +7594,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|setupComparatorChooser ()
 specifier|private
 name|void

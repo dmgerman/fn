@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2005 Andreas Rudert   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
+comment|/* Copyright (C) 2005 Andreas Rudert    Copyright (C) 2015 JabRef contributors      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -183,7 +183,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Imports a New Economics Papers-Message from the REPEC-NEP Service.  *   *<p><a href="http://www.repec.org">RePEc (Research Papers in Economics)</a>  * is a collaborative effort of over 100 volunteers in 49 countries   * to enhance the dissemination of research in economics. The heart of   * the project is a decentralized database of working papers, journal   * articles and software components. All RePEc material is freely available.</p>  * At the time of writing RePEc holds over 300.000 items.</p>  *   *<p><a href="http://nep.repec.org">NEP (New Economic Papers)</a> is an announcement  * service which filters information on new additions to RePEc into edited   * reports. The goal is to provide subscribers with up-to-date information   * to the research literature.</p>  *   *<p>This importer is capable of importing NEP messages into JabRef.</p>  *   *<p>There is no officially defined message format for NEP. NEP messages are assumed to have   * (and almost always have) the form given by the following semi-formal grammar:  *<pre>  * NEPMessage:  *       MessageSection NEPMessage  *       MessageSection  *         * MessageSection:              *       OverviewMessageSection   *       OtherMessageSection  *  * # we skip the overview  * OverviewMessageSection:  *       'In this issue we have: ' SectionSeparator OtherStuff  *  * OtherMessageSection:  *       SectionSeparator  OtherMessageSectionContent  *  * # we skip other stuff and read only full working paper references  * OtherMessageSectionContent:  *       WorkingPaper EmptyLine OtherMessageSectionContent   *       OtherStuff EmptyLine OtherMessageSectionContent  *       ''  *         * OtherStuff:  *       NonEmptyLine OtherStuff  *       NonEmptyLine  *         * NonEmptyLine:  *       a non-empty String that does not start with a number followed by a '.'  *         * # working papers are recognized by a number followed by a '.'   * # in a non-overview section  * WorkingPaper:  *       Number'.' WhiteSpace TitleString EmptyLine Authors EmptyLine Abstract AdditionalFields  *       Number'.' WhiteSpace TitleString AdditionalFields Abstract AdditionalFields  *         * TitleString:  *       a String that may span several lines and should be joined  *         * # there must be at least one author  * Authors:  *       Author '\n' Authors  *       Author '\n'  *   * # optionally, an institution is given for an author  * Author:  *       AuthorName  *       AuthorName '(' Institution ')'  *         * # there are no rules about the name, it may be firstname lastname or lastname, firstname or anything else  * AuthorName:  *       a non-empty String without '(' or ')' characters, not spanning more that one line  *         * Institution:  *       a non-empty String that may span several lines  *         * Abstract:  *       a (possibly empty) String that may span several lines  *  * AdditionalFields:  *       AdditionalField '\n' AdditionalFields  *       EmptyLine AdditionalFields  *       ''  *         * AdditionalField:  *       'Keywords:' KeywordList  *       'URL:' non-empty String  *       'Date:' DateString  *       'JEL:' JelClassificationList  *       'By': Authors  *         * KeywordList:  *        Keyword ',' KeywordList  *        Keyword ';' KeywordList  *        Keyword  *          * Keyword:  *        non-empty String that does not contain ',' (may contain whitespace)  *          * # if no date is given, the current year as given by the system clock is assumed  * DateString:  *        'yyyy-MM-dd'  *        'yyyy-MM'  *        'yyyy'  *          * JelClassificationList:  *        JelClassification JelClassificationList  *        JelClassification  *        * # the JEL Classifications are set into a new BIBTEX-field 'jel'  * # they will appear if you add it as a field to one of the BIBTex Entry sections  * JelClassification:  *        one of the allowed classes, see http://ideas.repec.org/j/  *         * SectionSeparator:  *       '\n-----------------------------'  *</pre>  *</p>  *   * @see<a href="http://nep.repec.org">NEP</a>  * @author andreas_sf at rudert-home dot de  */
+comment|/**  * Imports a New Economics Papers-Message from the REPEC-NEP Service.  *  *<p><a href="http://www.repec.org">RePEc (Research Papers in Economics)</a>  * is a collaborative effort of over 100 volunteers in 49 countries  * to enhance the dissemination of research in economics. The heart of  * the project is a decentralized database of working papers, journal  * articles and software components. All RePEc material is freely available.</p>  * At the time of writing RePEc holds over 300.000 items.</p>  *  *<p><a href="http://nep.repec.org">NEP (New Economic Papers)</a> is an announcement  * service which filters information on new additions to RePEc into edited  * reports. The goal is to provide subscribers with up-to-date information  * to the research literature.</p>  *  *<p>This importer is capable of importing NEP messages into JabRef.</p>  *  *<p>There is no officially defined message format for NEP. NEP messages are assumed to have  * (and almost always have) the form given by the following semi-formal grammar:  *<pre>  * NEPMessage:  *       MessageSection NEPMessage  *       MessageSection  *  * MessageSection:  *       OverviewMessageSection  *       OtherMessageSection  *  * # we skip the overview  * OverviewMessageSection:  *       'In this issue we have: ' SectionSeparator OtherStuff  *  * OtherMessageSection:  *       SectionSeparator  OtherMessageSectionContent  *  * # we skip other stuff and read only full working paper references  * OtherMessageSectionContent:  *       WorkingPaper EmptyLine OtherMessageSectionContent  *       OtherStuff EmptyLine OtherMessageSectionContent  *       ''  *  * OtherStuff:  *       NonEmptyLine OtherStuff  *       NonEmptyLine  *  * NonEmptyLine:  *       a non-empty String that does not start with a number followed by a '.'  *  * # working papers are recognized by a number followed by a '.'  * # in a non-overview section  * WorkingPaper:  *       Number'.' WhiteSpace TitleString EmptyLine Authors EmptyLine Abstract AdditionalFields  *       Number'.' WhiteSpace TitleString AdditionalFields Abstract AdditionalFields  *  * TitleString:  *       a String that may span several lines and should be joined  *  * # there must be at least one author  * Authors:  *       Author '\n' Authors  *       Author '\n'  *  * # optionally, an institution is given for an author  * Author:  *       AuthorName  *       AuthorName '(' Institution ')'  *  * # there are no rules about the name, it may be firstname lastname or lastname, firstname or anything else  * AuthorName:  *       a non-empty String without '(' or ')' characters, not spanning more that one line  *  * Institution:  *       a non-empty String that may span several lines  *  * Abstract:  *       a (possibly empty) String that may span several lines  *  * AdditionalFields:  *       AdditionalField '\n' AdditionalFields  *       EmptyLine AdditionalFields  *       ''  *  * AdditionalField:  *       'Keywords:' KeywordList  *       'URL:' non-empty String  *       'Date:' DateString  *       'JEL:' JelClassificationList  *       'By': Authors  *  * KeywordList:  *        Keyword ',' KeywordList  *        Keyword ';' KeywordList  *        Keyword  *  * Keyword:  *        non-empty String that does not contain ',' (may contain whitespace)  *  * # if no date is given, the current year as given by the system clock is assumed  * DateString:  *        'yyyy-MM-dd'  *        'yyyy-MM'  *        'yyyy'  *  * JelClassificationList:  *        JelClassification JelClassificationList  *        JelClassification  *  * # the JEL Classifications are set into a new BIBTEX-field 'jel'  * # they will appear if you add it as a field to one of the BIBTex Entry sections  * JelClassification:  *        one of the allowed classes, see http://ideas.repec.org/j/  *  * SectionSeparator:  *       '\n-----------------------------'  *</pre>  *</p>  *  * @see<a href="http://nep.repec.org">NEP</a>  * @author andreas_sf at rudert-home dot de  */
 end_comment
 
 begin_class
@@ -342,7 +342,7 @@ comment|// read the first couple of lines
 comment|// NEP message usually contain the String 'NEP: New Economics Papers'
 comment|// or, they are from nep.repec.org
 name|BufferedReader
-name|in
+name|inBR
 init|=
 operator|new
 name|BufferedReader
@@ -361,9 +361,9 @@ init|=
 literal|""
 decl_stmt|;
 name|String
-name|line
+name|tmpLine
 init|=
-name|in
+name|inBR
 operator|.
 name|readLine
 argument_list|()
@@ -375,13 +375,17 @@ name|i
 init|=
 literal|0
 init|;
+operator|(
 name|i
 operator|<
 literal|25
+operator|)
 operator|&&
-name|line
+operator|(
+name|tmpLine
 operator|!=
 literal|null
+operator|)
 condition|;
 name|i
 operator|++
@@ -389,11 +393,11 @@ control|)
 block|{
 name|startOfMessage
 operator|+=
-name|line
+name|tmpLine
 expr_stmt|;
-name|line
+name|tmpLine
 operator|=
-name|in
+name|inBR
 operator|.
 name|readLine
 argument_list|()
@@ -514,7 +518,7 @@ name|readLine
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Read multiple lines.      *       *<p>Reads multiple lines until either      *<ul>      *<li>an empty line</li>      *<li>the end of file</li>      *<li>the next working paper or</li>      *<li>a keyword</li>      *</ul>      * is found. Whitespace at start or end of lines is trimmed except for one blank character.</p>      *       * @return  result      */
+comment|/**      * Read multiple lines.      *      *<p>Reads multiple lines until either      *<ul>      *<li>an empty line</li>      *<li>the end of file</li>      *<li>the next working paper or</li>      *<li>a keyword</li>      *</ul>      * is found. Whitespace at start or end of lines is trimmed except for one blank character.</p>      *      * @return  result      */
 DECL|method|readMultipleLines ()
 specifier|private
 name|String
@@ -538,11 +542,13 @@ argument_list|()
 expr_stmt|;
 while|while
 condition|(
+operator|(
 name|this
 operator|.
 name|lastLine
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|this
@@ -603,7 +609,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Implements grammar rule "TitleString".      *       * @param be      * @throws IOException      */
+comment|/**      * Implements grammar rule "TitleString".      *      * @param be      * @throws IOException      */
 DECL|method|parseTitleString (BibtexEntry be)
 specifier|private
 name|void
@@ -656,7 +662,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Implements grammer rule "Authors"      *       * @param be      * @throws IOException      */
+comment|/**      * Implements grammer rule "Authors"      *      * @param be      * @throws IOException      */
 DECL|method|parseAuthors (BibtexEntry be)
 specifier|private
 name|void
@@ -681,11 +687,13 @@ literal|""
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|this
 operator|.
 name|lastLine
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|this
@@ -789,6 +797,7 @@ literal|1
 argument_list|,
 name|institutionDone
 operator|&&
+operator|(
 name|this
 operator|.
 name|lastLine
@@ -798,6 +807,7 @@ argument_list|(
 literal|')'
 argument_list|)
 operator|>
+operator|(
 name|this
 operator|.
 name|lastLine
@@ -808,6 +818,8 @@ literal|'('
 argument_list|)
 operator|+
 literal|1
+operator|)
+operator|)
 condition|?
 name|this
 operator|.
@@ -866,11 +878,13 @@ condition|(
 operator|!
 name|institutionDone
 operator|&&
+operator|(
 name|this
 operator|.
 name|lastLine
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|institutionDone
@@ -1018,7 +1032,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Implements grammar rule "Abstract".      *       * @param be      * @throws IOException      */
+comment|/**      * Implements grammar rule "Abstract".      *      * @param be      * @throws IOException      */
 DECL|method|parseAbstract (BibtexEntry be)
 specifier|private
 name|void
@@ -1058,7 +1072,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Implements grammar rule "AdditionalFields".      *       * @param be      * @throws IOException      */
+comment|/**      * Implements grammar rule "AdditionalFields".      *      * @param be      * @throws IOException      */
 DECL|method|parseAdditionalFields (BibtexEntry be, boolean multilineUrlFieldAllowed)
 specifier|private
 name|void
@@ -1076,11 +1090,13 @@ block|{
 comment|// one empty line is possible before fields start
 if|if
 condition|(
+operator|(
 name|this
 operator|.
 name|lastLine
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|this
 operator|.
@@ -1102,11 +1118,13 @@ block|}
 comment|// read other fields
 while|while
 condition|(
+operator|(
 name|this
 operator|.
 name|lastLine
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|isStartOfWorkingPaper
@@ -1346,15 +1364,19 @@ decl_stmt|;
 for|for
 control|(
 init|;
+operator|(
 name|i
 operator|<
 name|recognizedDateFormats
 operator|.
 name|length
+operator|)
 operator|&&
+operator|(
 name|date
 operator|==
 literal|null
+operator|)
 condition|;
 name|i
 operator|++
@@ -1430,9 +1452,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|date
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|recognizedDateFormats
 index|[
@@ -1605,9 +1629,7 @@ name|bibitems
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String

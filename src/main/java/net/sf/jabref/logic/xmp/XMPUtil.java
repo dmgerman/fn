@@ -515,11 +515,6 @@ return|;
 block|}
 block|}
 comment|/**      * Try to read the given BibTexEntry from the XMP-stream of the given      * inputstream containing a PDF-file.      *      * @param inputStream      *            The inputstream to read from.      *      * @throws IOException      *             Throws an IOException if the file cannot be read, so the user      *             than remove a lock or cancel the operation.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|readXMP (InputStream inputStream)
 specifier|public
 specifier|static
@@ -546,22 +541,19 @@ name|LinkedList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|document
-operator|=
 name|PDDocument
 operator|.
 name|load
 argument_list|(
 name|inputStream
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|document
@@ -740,22 +732,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|document
-operator|!=
-literal|null
-condition|)
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 comment|// return null, if no metadata was found
 if|if
 condition|(
@@ -774,11 +750,6 @@ name|result
 return|;
 block|}
 comment|/**      * Helper function for retrieving a BibtexEntry from the      * PDDocumentInformation in a PDF file.      *      * To understand how to get hold of a PDDocumentInformation have a look in      * the test cases for XMPUtil.      *      * The BibtexEntry is build by mapping individual fields in the document      * information (like author, title, keywords) to fields in a bibtex entry.      *      * @param di      *            The document information from which to build a BibtexEntry.      *      * @return The bibtex entry found in the document information.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getBibtexEntryFromDocumentInformation ( PDDocumentInformation di)
 specifier|public
 specifier|static
@@ -1029,11 +1000,6 @@ literal|null
 return|;
 block|}
 comment|/**      * Helper function for retrieving a BibtexEntry from the DublinCore metadata      * in a PDF file.      *      * To understand how to get hold of a XMPSchemaDublinCore have a look in the      * test cases for XMPUtil.      *      * The BibtexEntry is build by mapping individual fields in the dublin core      * (like creator, title, subject) to fields in a bibtex entry.      *      * @param dcSchema      *            The document information from which to build a BibtexEntry.      *      * @return The bibtex entry found in the document information.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getBibtexEntryFromDublinCore ( XMPSchemaDublinCore dcSchema)
 specifier|public
 specifier|static
@@ -1313,7 +1279,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{              }
+block|{
+comment|// Ignored
+block|}
 if|if
 condition|(
 name|c
@@ -2101,22 +2069,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|document
-operator|=
 name|PDDocument
 operator|.
 name|load
 argument_list|(
 name|inputStream
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|document
@@ -2141,22 +2106,6 @@ argument_list|(
 name|document
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|document
-operator|!=
-literal|null
-condition|)
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|getXMPMetadata (PDDocument document)
@@ -2870,11 +2819,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Try to write the given BibTexEntries as DublinCore XMP Schemas      *      * Existing DublinCore schemas in the document are removed      *      * @param document      *            The pdf document to write to.      * @param entries      *            The Bibtex entries that are written as schemas      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws IOException      * @throws TransformerException      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|writeDublinCore (PDDocument document, Collection<BibtexEntry> entries, BibtexDatabase database)
 specifier|private
 specifier|static
@@ -3441,11 +3385,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Try to write the given BibTexEntry in the XMP-stream of the given      * PDF-file.      *      * Throws an IOException if the file cannot be read or written, so the user      * can remove a lock or cancel the operation.      *      * The method will overwrite existing BibTeX-XMP-data, but keep other      * existing metadata.      *      * @param file      *            The file to write the entries to.      * @param bibtexEntries      *            The entries to write to the file. *      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @param writePDFInfo      *            Write information also in PDF document properties      * @throws TransformerException      *             If the entry was malformed or unsupported.      * @throws IOException      *             If the file could not be written to or could not be found.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|writeXMP (File file, Collection<BibtexEntry> bibtexEntries, BibtexDatabase database, boolean writePDFInfo)
 specifier|public
 specifier|static
@@ -3491,15 +3430,11 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|document
-operator|=
 name|PDDocument
 operator|.
 name|load
@@ -3509,7 +3444,8 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|document
@@ -3798,22 +3734,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|document
-operator|!=
-literal|null
-condition|)
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 block|}
 comment|/**      * Print usage information for the command line tool xmpUtil.      *      * @see XMPUtil#main(String[])      */
 DECL|method|usage ()
@@ -4096,13 +4016,11 @@ argument_list|)
 condition|)
 block|{
 comment|// Read from bib and write as XMP
-name|ParserResult
-name|result
+try|try
+init|(
+name|FileReader
+name|fr
 init|=
-name|BibtexParser
-operator|.
-name|parse
-argument_list|(
 operator|new
 name|FileReader
 argument_list|(
@@ -4111,6 +4029,16 @@ index|[
 literal|0
 index|]
 argument_list|)
+init|)
+block|{
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+name|fr
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4171,6 +4099,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else

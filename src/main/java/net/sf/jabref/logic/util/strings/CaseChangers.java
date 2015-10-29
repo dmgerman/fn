@@ -232,12 +232,14 @@ name|Word
 block|{
 DECL|field|chars
 specifier|private
+specifier|final
 name|char
 index|[]
 name|chars
 decl_stmt|;
 DECL|field|protectedChars
 specifier|private
+specifier|final
 name|boolean
 index|[]
 name|protectedChars
@@ -1047,6 +1049,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -1479,6 +1483,7 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|title
 operator|.
 name|getWords
@@ -1488,6 +1493,7 @@ name|size
 argument_list|()
 operator|-
 literal|2
+operator|)
 condition|;
 name|i
 operator|++

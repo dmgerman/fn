@@ -556,14 +556,10 @@ name|defaults
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|/* contents of the defaults HashMap that are defined in this class.       * There are more default parameters in this map which belong to separate preference classes.     */
+comment|/* contents of the defaults HashMap that are defined in this class.      * There are more default parameters in this map which belong to separate preference classes.     */
 DECL|field|EMACS_PATH
 specifier|public
 specifier|static
@@ -2982,9 +2978,7 @@ name|putBracesAroundCapitalsFields
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|4
 argument_list|)
@@ -3000,9 +2994,7 @@ name|nonWrappableFields
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|5
 argument_list|)
@@ -3045,9 +3037,7 @@ name|externalFileTypes
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|ExternalFileType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|HTML_FALLBACK_TYPE
@@ -7160,11 +7150,13 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|value
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -7277,9 +7269,7 @@ name|arr
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -7315,7 +7305,9 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 name|String
 index|[]
 name|res
@@ -7547,6 +7539,7 @@ block|}
 comment|/**      * Looks up a color definition in preferences, and returns an array containing the RGB values.      *      * @param value The key for this setting.      * @return The RGB values corresponding to this color setting.      */
 DECL|method|getRgb (String value)
 specifier|private
+specifier|static
 name|int
 index|[]
 name|getRgb
@@ -7567,9 +7560,11 @@ index|]
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|value
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|value
@@ -7905,7 +7900,9 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{                  }
+block|{
+comment|// Ignored
+block|}
 block|}
 return|return
 name|KeyStroke
@@ -8435,14 +8432,19 @@ decl_stmt|;
 comment|// Then set up the key bindings HashMap.
 if|if
 condition|(
+operator|(
 name|bindNames
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|bindings
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|bindNames
 operator|.
 name|length
@@ -8450,6 +8452,7 @@ operator|!=
 name|bindings
 operator|.
 name|length
+operator|)
 condition|)
 block|{
 comment|// Nothing defined in Preferences, or something is wrong.
@@ -8497,6 +8500,7 @@ block|}
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private
+specifier|static
 name|String
 name|getNextUnit
 parameter_list|(
@@ -8540,6 +8544,7 @@ operator|!
 name|done
 operator|&&
 operator|(
+operator|(
 name|c
 operator|=
 name|data
@@ -8550,6 +8555,7 @@ operator|)
 operator|!=
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 if|if
@@ -8675,6 +8681,7 @@ block|}
 block|}
 DECL|method|makeEscape (String s)
 specifier|private
+specifier|static
 name|String
 name|makeEscape
 parameter_list|(
@@ -8721,13 +8728,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|'\\'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|';'
+operator|)
 condition|)
 block|{
 name|sb
@@ -9754,12 +9765,14 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|type
 operator|.
 name|getExtension
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|type
 operator|.
@@ -9812,12 +9825,14 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|type
 operator|.
 name|getExtension
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|filename
 operator|.
@@ -9890,12 +9905,14 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|type
 operator|.
 name|getMimeType
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|type
 operator|.
@@ -9966,9 +9983,7 @@ name|unchanged
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ExternalFileType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|externalFileTypes
@@ -10264,11 +10279,13 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|val
 operator|.
 name|length
 operator|==
 literal|2
+operator|)
 operator|&&
 name|val
 index|[

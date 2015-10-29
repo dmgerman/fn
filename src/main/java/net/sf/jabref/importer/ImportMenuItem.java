@@ -289,7 +289,7 @@ import|;
 end_import
 
 begin_comment
-comment|/*   * TODO: could separate the "menu item" functionality from the importing functionality  *   */
+comment|/*  * TODO: could separate the "menu item" functionality from the importing functionality  *  */
 end_comment
 
 begin_class
@@ -643,11 +643,7 @@ name|imports
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ImportFormatReader
-operator|.
-name|UnknownFormatImport
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

@@ -91,15 +91,6 @@ name|SidePaneComponent
 extends|extends
 name|JXTitledPanel
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|close
 specifier|protected
 specifier|final
@@ -456,14 +447,18 @@ specifier|public
 name|void
 name|componentClosing
 parameter_list|()
-block|{      }
+block|{
+comment|// Nothing right now
+block|}
 comment|/**      * Override this method if the component needs to do any actions when opening.      */
 DECL|method|componentOpening ()
 specifier|public
 name|void
 name|componentOpening
 parameter_list|()
-block|{      }
+block|{
+comment|// Nothing right now
+block|}
 annotation|@
 name|Override
 DECL|method|getMinimumSize ()

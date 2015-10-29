@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -391,15 +391,6 @@ name|ContentSelectorDialog2
 extends|extends
 name|JDialog
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|wordEditFieldListener
 specifier|private
 name|ActionListener
@@ -676,29 +667,41 @@ DECL|field|fieldListModel
 specifier|private
 specifier|final
 name|DefaultListModel
+argument_list|<
+name|String
+argument_list|>
 name|fieldListModel
 init|=
 operator|new
 name|DefaultListModel
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|wordListModel
 specifier|private
 name|DefaultListModel
+argument_list|<
+name|String
+argument_list|>
 name|wordListModel
 init|=
 operator|new
 name|DefaultListModel
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|fieldList
 specifier|private
 specifier|final
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|fieldList
 init|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|fieldListModel
 argument_list|)
@@ -707,10 +710,14 @@ DECL|field|wordList
 specifier|private
 specifier|final
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|wordList
 init|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|wordListModel
 argument_list|)
@@ -775,16 +782,15 @@ argument_list|<
 name|String
 argument_list|,
 name|DefaultListModel
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 name|wordListModels
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|DefaultListModel
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|removedFields
@@ -798,9 +804,7 @@ name|removedFields
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|LOGGER
@@ -819,7 +823,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      *       * @param owner the parent Window (Dialog or Frame)      * @param frame the JabRef Frame      * @param panel the currently selected BasePanel      * @param modal should this dialog be modal?      * @param metaData The metadata of the current database      * @param fieldName the field this selector is initialized for. May be null.      */
+comment|/**      *      * @param owner the parent Window (Dialog or Frame)      * @param frame the JabRef Frame      * @param panel the currently selected BasePanel      * @param modal should this dialog be modal?      * @param metaData The metadata of the current database      * @param fieldName the field this selector is initialized for. May be null.      */
 DECL|method|ContentSelectorDialog2 (Window owner, JabRefFrame frame, BasePanel panel, boolean modal, MetaData metaData, String fieldName)
 specifier|public
 name|ContentSelectorDialog2
@@ -886,13 +890,9 @@ name|currentField
 operator|=
 name|fieldName
 expr_stmt|;
-comment|//help = new JButton(Globals.lang("Help"));
-comment|//help.addActionListener(new HelpAction(frame.helpDiag, GUIGlobals.contentSelectorHelp, "Help"));
-comment|//help = new HelpAction(frame.helpDiag, GUIGlobals.contentSelectorHelp, "Help");
 name|initLayout
 argument_list|()
 expr_stmt|;
-comment|//  wordSelector.addItem(WORD_EMPTY_TEXT);
 name|setupFieldSelector
 argument_list|()
 expr_stmt|;
@@ -960,6 +960,11 @@ name|ListSelectionListener
 argument_list|()
 block|{
 annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
+annotation|@
 name|Override
 specifier|public
 name|void
@@ -973,9 +978,6 @@ name|wordEditField
 operator|.
 name|setText
 argument_list|(
-operator|(
-name|String
-operator|)
 name|wordList
 operator|.
 name|getSelectedValue
@@ -1049,9 +1051,6 @@ decl_stmt|;
 name|String
 name|old
 init|=
-operator|(
-name|String
-operator|)
 name|wordList
 operator|.
 name|getSelectedValue
@@ -1286,9 +1285,6 @@ parameter_list|)
 block|{
 name|currentField
 operator|=
-operator|(
-name|String
-operator|)
 name|fieldList
 operator|.
 name|getSelectedValue
@@ -1316,6 +1312,11 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 annotation|@
 name|Override
 specifier|public
@@ -1617,9 +1618,6 @@ block|}
 name|String
 name|fieldName
 init|=
-operator|(
-name|String
-operator|)
 name|fieldListModel
 operator|.
 name|get
@@ -2024,9 +2022,11 @@ block|{
 comment|// For each field name, store the values:
 if|if
 condition|(
+operator|(
 name|fieldName
 operator|==
 literal|null
+operator|)
 operator|||
 name|FIELD_FIRST_LINE
 operator|.
@@ -2039,6 +2039,9 @@ block|{
 continue|continue;
 block|}
 name|DefaultListModel
+argument_list|<
+name|String
+argument_list|>
 name|lm
 init|=
 name|wordListModels
@@ -2065,12 +2068,14 @@ condition|)
 block|{
 while|while
 condition|(
+operator|(
 name|start
 operator|<
 name|lm
 operator|.
 name|size
 argument_list|()
+operator|)
 operator|&&
 name|lm
 operator|.
@@ -2108,7 +2113,7 @@ name|fieldName
 argument_list|)
 decl_stmt|;
 name|boolean
-name|newField
+name|bNewField
 init|=
 literal|false
 decl_stmt|;
@@ -2119,7 +2124,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|newField
+name|bNewField
 operator|=
 literal|true
 expr_stmt|;
@@ -2127,9 +2132,7 @@ name|data
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|changedFieldSet
@@ -2166,9 +2169,6 @@ block|{
 name|String
 name|word
 init|=
-operator|(
-name|String
-operator|)
 name|lm
 operator|.
 name|get
@@ -2186,7 +2186,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|newField
+name|bNewField
 condition|)
 block|{
 name|metaData
@@ -2263,9 +2263,7 @@ name|contents
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2383,7 +2381,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// a specific field has been chosen at the constructur
+comment|// a specific field has been chosen at the constructor
 comment|// select this field
 name|int
 name|i
@@ -2451,6 +2449,7 @@ name|wordListModel
 operator|=
 operator|new
 name|DefaultListModel
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|wordList
@@ -2502,9 +2501,7 @@ name|wordSet
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|items
 argument_list|)
@@ -2538,12 +2535,16 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|findPos (DefaultListModel lm, String item)
+DECL|method|findPos (DefaultListModel<String> lm, String item)
 specifier|private
+specifier|static
 name|int
 name|findPos
 parameter_list|(
 name|DefaultListModel
+argument_list|<
+name|String
+argument_list|>
 name|lm
 parameter_list|,
 name|String
@@ -2571,9 +2572,6 @@ block|{
 name|String
 name|s
 init|=
-operator|(
-name|String
-operator|)
 name|lm
 operator|.
 name|get

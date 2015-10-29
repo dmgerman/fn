@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -181,7 +181,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for the Refer/Endnote format.  *   * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
+comment|/**  * Importer for the Refer/Endnote format.  *  * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
 end_comment
 
 begin_class
@@ -220,7 +220,7 @@ return|return
 literal|"Medline"
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 annotation|@
 name|Override
 DECL|method|getCLIId ()
@@ -272,6 +272,7 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
+operator|(
 name|str
 operator|=
 name|in
@@ -281,10 +282,13 @@ argument_list|()
 operator|)
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|i
 operator|<
 literal|50
+operator|)
 condition|)
 block|{
 if|if
@@ -312,7 +316,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Fetch and parse an medline item from eutils.ncbi.nlm.nih.gov.      *       * @param id One or several ids, separated by ","      *       * @return Will return an empty list on error.      */
+comment|/**      * Fetch and parse an medline item from eutils.ncbi.nlm.nih.gov.      *      * @param id One or several ids, separated by ","      *      * @return Will return an empty list on error.      */
 DECL|method|fetchMedline (String id, OutputPrinter status)
 specifier|public
 specifier|static
@@ -380,9 +384,7 @@ block|{
 return|return
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 return|;
 block|}
@@ -482,6 +484,8 @@ operator|.
 name|reset
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|FileOutputStream
 name|out
 init|=
@@ -494,7 +498,8 @@ argument_list|(
 literal|"/home/alver/ut.txt"
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|int
 name|c
 decl_stmt|;
@@ -524,11 +529,7 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-name|out
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 block|}
 comment|// When you're done, report the results stored by your handler
 comment|// object

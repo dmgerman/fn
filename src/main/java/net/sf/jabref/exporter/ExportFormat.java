@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -118,6 +118,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -167,7 +195,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for export formats based on templates.  *   */
+comment|/**  * Base class for export formats based on templates.  *  */
 end_comment
 
 begin_class
@@ -227,7 +255,23 @@ name|LAYOUT_PREFIX
 init|=
 literal|"/resource/layout/"
 decl_stmt|;
-comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *       * @param displayName      *            Name to display to the user.      * @param consoleName      *            Name to call this format in the console.      * @param lfFileName      *            Name of the main layout file.      * @param directory      *            Directory in which to find the layout file.      * @param extension      *            Should contain the . (for instance .txt).      */
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ExportFormat
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param displayName      *            Name to display to the user.      * @param consoleName      *            Name to call this format in the console.      * @param lfFileName      *            Name of the main layout file.      * @param directory      *            Directory in which to find the layout file.      * @param extension      *            Should contain the . (for instance .txt).      */
 DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, String extension)
 specifier|public
 name|ExportFormat
@@ -286,7 +330,7 @@ parameter_list|()
 block|{
 comment|// intentionally empty
 block|}
-comment|/**      * Indicate whether this is a custom export. A custom export looks for its      * layout files using a normal file path, while a built-in export looks in      * the classpath.      *       * @param custom      *            true to indicate a custom export format.      */
+comment|/**      * Indicate whether this is a custom export. A custom export looks for its      * layout files using a normal file path, while a built-in export looks in      * the classpath.      *      * @param custom      *            true to indicate a custom export format.      */
 DECL|method|setCustomExport (boolean custom)
 specifier|public
 name|void
@@ -345,7 +389,7 @@ operator|=
 name|encoding
 expr_stmt|;
 block|}
-comment|/**      * This method should return a reader from which the given layout file can      * be read.      *       * This standard implementation of this method will use the      * {@link FileActions#getReader(String)} method.      *       * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *       * @param filename      *            the filename      * @throws IOException      *             if the reader could not be created      *       * @return a newly created reader      */
+comment|/**      * This method should return a reader from which the given layout file can      * be read.      *      * This standard implementation of this method will use the      * {@link FileActions#getReader(String)} method.      *      * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *      * @param filename      *            the filename      * @throws IOException      *             if the reader could not be created      *      * @return a newly created reader      */
 DECL|method|getReader (String filename)
 name|Reader
 name|getReader
@@ -400,10 +444,10 @@ name|filename
 argument_list|)
 return|;
 block|}
-comment|/**      * Perform the export of {@code database}.      *       * @param database      *            The database to export from.      * @param metaData      *            The database's meta data.      * @param file      *            the file to write the resulting export to      * @param encoding      *            The encoding of the database      * @param entryIds      *            Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      *       * @throws IOException      *             if a problem occurred while trying to write to {@code writer}      *             or read from required resources.      * @throws Exception      *             if any other error occurred during export.      *       * @see net.sf.jabref.exporter.IExportFormat#performExport(BibtexDatabase,      *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set)      */
+comment|/**      * Perform the export of {@code database}.      *      * @param database      *            The database to export from.      * @param metaData      *            The database's meta data.      * @param file      *            the file to write the resulting export to      * @param encoding      *            The encoding of the database      * @param entryIds      *            Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      *      * @throws IOException      *             if a problem occurred while trying to write to {@code writer}      *             or read from required resources.      * @throws Exception      *             if any other error occurred during export.      *      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibtexDatabase,      *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set)      */
 annotation|@
 name|Override
-DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> entryIds)
+DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String enc, Set<String> entryIds)
 specifier|public
 name|void
 name|performExport
@@ -422,7 +466,7 @@ name|file
 parameter_list|,
 specifier|final
 name|String
-name|encoding
+name|enc
 parameter_list|,
 name|Set
 argument_list|<
@@ -478,10 +522,14 @@ parameter_list|)
 block|{
 comment|// Perhaps the overriding encoding doesn't work?
 comment|// We will fall back on the default encoding.
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Can not get save session."
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -496,7 +544,7 @@ name|ss
 operator|=
 name|getSaveSession
 argument_list|(
-name|encoding
+name|enc
 argument_list|,
 name|outFile
 argument_list|)
@@ -539,9 +587,7 @@ name|missingFormatters
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|1
 argument_list|)
@@ -611,7 +657,7 @@ name|doLayout
 argument_list|(
 name|database
 argument_list|,
-name|encoding
+name|enc
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -699,11 +745,9 @@ name|getMissingFormatters
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
 name|defLayout
 operator|.
@@ -722,11 +766,7 @@ name|layouts
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Layout
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Layout
@@ -925,11 +965,6 @@ operator|.
 name|FORMATTER_PACKAGE
 argument_list|)
 expr_stmt|;
-name|reader
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1052,11 +1087,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|warn
 argument_list|(
 name|sb
 argument_list|)
@@ -1071,6 +1104,7 @@ block|}
 comment|/**      * See if there is a name formatter file bundled with this export format. If so, read      * all the name formatters so they can be used by the filter layouts.      * @param lfFileName The layout filename.      */
 DECL|method|readFormatterFile (String lfFileName)
 specifier|private
+specifier|static
 name|HashMap
 argument_list|<
 name|String
@@ -1093,11 +1127,7 @@ name|formatters
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|File
@@ -1119,21 +1149,18 @@ name|exists
 argument_list|()
 condition|)
 block|{
+try|try
+init|(
 name|Reader
 name|in
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|in
-operator|=
 operator|new
 name|FileReader
 argument_list|(
 name|formatterFile
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 comment|// Ok, we found and opened the file. Read all contents:
 name|StringBuilder
 name|sb
@@ -1226,18 +1253,24 @@ decl_stmt|;
 comment|// TODO: any need to accept escaped colons here?
 if|if
 condition|(
+operator|(
 name|index
 operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
+operator|(
 name|index
 operator|+
 literal|1
+operator|)
 operator|<
 name|line
 operator|.
 name|length
 argument_list|()
+operator|)
 condition|)
 block|{
 name|String
@@ -1264,8 +1297,6 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("Name: '"+formatterName+"'");
-comment|//System.out.println("Contents: '"+contents+"'");
 name|formatters
 operator|.
 name|put
@@ -1285,55 +1316,28 @@ name|ex
 parameter_list|)
 block|{
 comment|// TODO: show error message here?
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|in
-operator|!=
-literal|null
-condition|)
-block|{
-try|try
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
+name|warn
+argument_list|(
+literal|"Problem opening formatter file."
+argument_list|,
 name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
+argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 return|return
 name|formatters
 return|;
 block|}
-DECL|method|getSaveSession (final String encoding, final File outFile)
+DECL|method|getSaveSession (final String enc, final File outFile)
 name|SaveSession
 name|getSaveSession
 parameter_list|(
 specifier|final
 name|String
-name|encoding
+name|enc
 parameter_list|,
 specifier|final
 name|File
@@ -1348,7 +1352,7 @@ name|SaveSession
 argument_list|(
 name|outFile
 argument_list|,
-name|encoding
+name|enc
 argument_list|,
 literal|false
 argument_list|)
@@ -1424,11 +1428,9 @@ name|couldEncodeAll
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|warn
 argument_list|(
 literal|"Could not encode..."
 argument_list|)

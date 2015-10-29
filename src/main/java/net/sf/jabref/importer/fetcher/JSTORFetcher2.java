@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -647,9 +647,7 @@ name|ids
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 try|try
@@ -703,6 +701,7 @@ name|nextPage
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|count
 operator|<=
 name|Math
@@ -715,7 +714,9 @@ name|MAX_PAGES_TO_LOAD
 argument_list|,
 name|numberOfPagesRequested
 argument_list|)
+operator|)
 operator|&&
+operator|(
 operator|(
 name|nextPage
 operator|=
@@ -736,14 +737,17 @@ argument_list|)
 operator|)
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// If user has cancelled the import, return null to signal this:
 if|if
 condition|(
+operator|(
 name|count
 operator|==
 literal|1
+operator|)
 operator|&&
 name|nextPage
 operator|.
@@ -777,10 +781,12 @@ comment|//System.out.println("JSTORFetcher2 getCitations refsRequested=" + Integ
 name|numberOfPagesRequested
 operator|=
 operator|(
+operator|(
 name|refsRequested
 operator|-
 literal|1
 operator|-
+operator|(
 operator|(
 name|refsRequested
 operator|-
@@ -791,10 +797,12 @@ name|JSTORFetcher2
 operator|.
 name|REFS_PER_PAGE
 operator|)
+operator|)
 operator|/
 name|JSTORFetcher2
 operator|.
 name|REFS_PER_PAGE
+operator|)
 operator|+
 literal|1
 expr_stmt|;
@@ -1122,14 +1130,18 @@ operator|.
 name|find
 argument_list|()
 operator|&&
+operator|(
+operator|(
 name|ids
 operator|.
 name|size
 argument_list|()
 operator|+
 literal|1
+operator|)
 operator|<=
 name|refsRequested
+operator|)
 condition|)
 block|{
 do|do
@@ -1177,14 +1189,18 @@ operator|.
 name|find
 argument_list|()
 operator|&&
+operator|(
+operator|(
 name|ids
 operator|.
 name|size
 argument_list|()
 operator|+
 literal|1
+operator|)
 operator|<=
 name|refsRequested
+operator|)
 condition|)
 do|;
 block|}
@@ -1256,6 +1272,7 @@ block|}
 block|}
 DECL|method|getSingleCitation (String cit)
 specifier|private
+specifier|static
 name|BibtexEntry
 name|getSingleCitation
 parameter_list|(

@@ -480,20 +480,18 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|init (ExternalFileType entry)
+DECL|method|init (ExternalFileType inEntry)
 specifier|private
 name|void
 name|init
 parameter_list|(
 name|ExternalFileType
-name|entry
+name|inEntry
 parameter_list|)
 block|{
-name|this
-operator|.
 name|entry
 operator|=
-name|entry
+name|inEntry
 expr_stmt|;
 name|icon
 operator|.
@@ -1023,6 +1021,11 @@ operator|new
 name|DocumentListener
 argument_list|()
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|private
 name|void
 name|handle
@@ -1214,8 +1217,6 @@ init|=
 operator|new
 name|BrowseListener
 argument_list|(
-name|diag
-argument_list|,
 name|application
 argument_list|)
 decl_stmt|;
@@ -1428,16 +1429,16 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-DECL|method|storeSettings (ExternalFileType entry)
+DECL|method|storeSettings (ExternalFileType fileTypeEntry)
 specifier|private
 name|void
 name|storeSettings
 parameter_list|(
 name|ExternalFileType
-name|entry
+name|fileTypeEntry
 parameter_list|)
 block|{
-name|entry
+name|fileTypeEntry
 operator|.
 name|setName
 argument_list|(
@@ -1450,7 +1451,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|entry
+name|fileTypeEntry
 operator|.
 name|setMimeType
 argument_list|(
@@ -1483,6 +1484,7 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|&&
+operator|(
 name|ext
 operator|.
 name|charAt
@@ -1491,9 +1493,10 @@ literal|0
 argument_list|)
 operator|==
 literal|'.'
+operator|)
 condition|)
 block|{
-name|entry
+name|fileTypeEntry
 operator|.
 name|setExtension
 argument_list|(
@@ -1508,7 +1511,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|entry
+name|fileTypeEntry
 operator|.
 name|setExtension
 argument_list|(
@@ -1523,14 +1526,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|entry
+name|fileTypeEntry
 operator|.
 name|setIconName
 argument_list|(
 name|selectedIcon
 argument_list|)
 expr_stmt|;
-name|entry
+name|fileTypeEntry
 operator|.
 name|setIcon
 argument_list|(
@@ -1538,7 +1541,7 @@ name|IconTheme
 operator|.
 name|getImage
 argument_list|(
-name|entry
+name|fileTypeEntry
 operator|.
 name|getIconName
 argument_list|()
@@ -1554,7 +1557,7 @@ operator|.
 name|WINDOWS
 condition|)
 block|{
-name|entry
+name|fileTypeEntry
 operator|.
 name|setOpenWith
 argument_list|(
@@ -1591,7 +1594,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|entry
+name|fileTypeEntry
 operator|.
 name|setOpenWith
 argument_list|(
@@ -1601,7 +1604,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|entry
+name|fileTypeEntry
 operator|.
 name|setOpenWith
 argument_list|(
@@ -1639,13 +1642,10 @@ specifier|final
 name|JTextField
 name|comp
 decl_stmt|;
-DECL|method|BrowseListener (JDialog parent, JTextField comp)
+DECL|method|BrowseListener (JTextField comp)
 specifier|public
 name|BrowseListener
 parameter_list|(
-name|JDialog
-name|parent
-parameter_list|,
 name|JTextField
 name|comp
 parameter_list|)
