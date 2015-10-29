@@ -1203,6 +1203,8 @@ argument_list|>
 name|fields
 parameter_list|)
 block|{
+name|this
+operator|.
 name|fields
 operator|.
 name|putAll
