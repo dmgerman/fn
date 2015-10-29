@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors and Moritz Ringler, Simo
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.util.strings
+DECL|package|net.sf.jabref.logic.formatter
 package|package
 name|net
 operator|.
@@ -14,9 +14,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
-operator|.
-name|strings
+name|formatter
 package|;
 end_package
 
@@ -1082,32 +1080,13 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|interface|CaseChanger
-specifier|public
-interface|interface
-name|CaseChanger
-block|{
-DECL|method|getName ()
-name|String
-name|getName
-parameter_list|()
-function_decl|;
-DECL|method|changeCase (String input)
-name|String
-name|changeCase
-parameter_list|(
-name|String
-name|input
-parameter_list|)
-function_decl|;
-block|}
 DECL|class|LowerCaseChanger
 specifier|public
 specifier|static
 class|class
 name|LowerCaseChanger
 implements|implements
-name|CaseChanger
+name|Formatter
 block|{
 annotation|@
 name|Override
@@ -1124,10 +1103,10 @@ block|}
 comment|/**          * Converts all characters of the string to lower case, but does not change words starting with "{"          */
 annotation|@
 name|Override
-DECL|method|changeCase (String input)
+DECL|method|format (String input)
 specifier|public
 name|String
-name|changeCase
+name|format
 parameter_list|(
 name|String
 name|input
@@ -1171,7 +1150,7 @@ specifier|static
 class|class
 name|UpperCaseChanger
 implements|implements
-name|CaseChanger
+name|Formatter
 block|{
 annotation|@
 name|Override
@@ -1188,10 +1167,10 @@ block|}
 comment|/**          * Converts all characters of the given string to upper case, but does not change words starting with "{"          */
 annotation|@
 name|Override
-DECL|method|changeCase (String input)
+DECL|method|format (String input)
 specifier|public
 name|String
-name|changeCase
+name|format
 parameter_list|(
 name|String
 name|input
@@ -1235,7 +1214,7 @@ specifier|static
 class|class
 name|UpperFirstCaseChanger
 implements|implements
-name|CaseChanger
+name|Formatter
 block|{
 annotation|@
 name|Override
@@ -1252,10 +1231,10 @@ block|}
 comment|/**          * Converts the first character of the first word of the given string to a upper case (and the remaining characters of the first word to lower case), but does not change anything if word starts with "{"          */
 annotation|@
 name|Override
-DECL|method|changeCase (String input)
+DECL|method|format (String input)
 specifier|public
 name|String
-name|changeCase
+name|format
 parameter_list|(
 name|String
 name|input
@@ -1269,7 +1248,7 @@ name|Title
 argument_list|(
 name|LOWER
 operator|.
-name|changeCase
+name|format
 argument_list|(
 name|input
 argument_list|)
@@ -1307,7 +1286,7 @@ specifier|static
 class|class
 name|UpperEachFirstCaseChanger
 implements|implements
-name|CaseChanger
+name|Formatter
 block|{
 annotation|@
 name|Override
@@ -1324,10 +1303,10 @@ block|}
 comment|/**          * Converts the first character of each word of the given string to a upper case (and all others to lower case), but does not change words starting with "{"          */
 annotation|@
 name|Override
-DECL|method|changeCase (String input)
+DECL|method|format (String input)
 specifier|public
 name|String
-name|changeCase
+name|format
 parameter_list|(
 name|String
 name|input
@@ -1371,7 +1350,7 @@ specifier|static
 class|class
 name|TitleCaseChanger
 implements|implements
-name|CaseChanger
+name|Formatter
 block|{
 annotation|@
 name|Override
@@ -1388,10 +1367,10 @@ block|}
 comment|/**          * Converts all words to upper case, but converts articles, prepositions, and conjunctions to lower case          * Capitalizes first and last word          * Does not change words starting with "{"          */
 annotation|@
 name|Override
-DECL|method|changeCase (String input)
+DECL|method|format (String input)
 specifier|public
 name|String
-name|changeCase
+name|format
 parameter_list|(
 name|String
 name|input
@@ -1601,7 +1580,7 @@ specifier|static
 specifier|final
 name|List
 argument_list|<
-name|CaseChanger
+name|Formatter
 argument_list|>
 name|ALL
 init|=

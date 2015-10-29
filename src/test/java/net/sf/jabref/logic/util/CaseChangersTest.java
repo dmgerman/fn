@@ -24,9 +24,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
-operator|.
-name|strings
+name|formatter
 operator|.
 name|CaseChangers
 import|;
@@ -160,7 +158,7 @@ name|CaseChangers
 operator|.
 name|LOWER
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|""
 argument_list|)
@@ -176,7 +174,7 @@ name|CaseChangers
 operator|.
 name|LOWER
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"LOWER"
 argument_list|)
@@ -192,7 +190,7 @@ name|CaseChangers
 operator|.
 name|LOWER
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"LOWER {UPPER}"
 argument_list|)
@@ -208,7 +206,7 @@ name|CaseChangers
 operator|.
 name|LOWER
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"LOWER {U}PPER"
 argument_list|)
@@ -233,7 +231,7 @@ name|CaseChangers
 operator|.
 name|UPPER
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|""
 argument_list|)
@@ -249,7 +247,7 @@ name|CaseChangers
 operator|.
 name|UPPER
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"LOWER"
 argument_list|)
@@ -265,7 +263,7 @@ name|CaseChangers
 operator|.
 name|UPPER
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"upper"
 argument_list|)
@@ -281,7 +279,7 @@ name|CaseChangers
 operator|.
 name|UPPER
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"UPPER"
 argument_list|)
@@ -297,7 +295,7 @@ name|CaseChangers
 operator|.
 name|UPPER
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"upper {lower}"
 argument_list|)
@@ -313,7 +311,7 @@ name|CaseChangers
 operator|.
 name|UPPER
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"upper {l}ower"
 argument_list|)
@@ -338,7 +336,7 @@ name|CaseChangers
 operator|.
 name|UPPER_FIRST
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|""
 argument_list|)
@@ -354,7 +352,7 @@ name|CaseChangers
 operator|.
 name|UPPER_FIRST
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"upper First"
 argument_list|)
@@ -370,7 +368,7 @@ name|CaseChangers
 operator|.
 name|UPPER_FIRST
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"uPPER FIRST"
 argument_list|)
@@ -386,7 +384,7 @@ name|CaseChangers
 operator|.
 name|UPPER_FIRST
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"upper {NOT} FIRST"
 argument_list|)
@@ -402,7 +400,7 @@ name|CaseChangers
 operator|.
 name|UPPER_FIRST
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"upper {N}OT FIRST"
 argument_list|)
@@ -427,7 +425,7 @@ name|CaseChangers
 operator|.
 name|UPPER_EACH_FIRST
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|""
 argument_list|)
@@ -443,7 +441,7 @@ name|CaseChangers
 operator|.
 name|UPPER_EACH_FIRST
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"upper each First"
 argument_list|)
@@ -459,7 +457,7 @@ name|CaseChangers
 operator|.
 name|UPPER_EACH_FIRST
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"upper each first {NOT} {this}"
 argument_list|)
@@ -475,7 +473,7 @@ name|CaseChangers
 operator|.
 name|UPPER_EACH_FIRST
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"upper each first {N}OT {t}his"
 argument_list|)
@@ -500,7 +498,7 @@ name|CaseChangers
 operator|.
 name|TITLE
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|""
 argument_list|)
@@ -516,7 +514,7 @@ name|CaseChangers
 operator|.
 name|TITLE
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"upper each first"
 argument_list|)
@@ -532,7 +530,7 @@ name|CaseChangers
 operator|.
 name|TITLE
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"an upper each first and"
 argument_list|)
@@ -548,7 +546,7 @@ name|CaseChangers
 operator|.
 name|TITLE
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"an upper each of the and first and"
 argument_list|)
@@ -564,7 +562,7 @@ name|CaseChangers
 operator|.
 name|TITLE
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"an upper each of: the and first and"
 argument_list|)
@@ -580,7 +578,7 @@ name|CaseChangers
 operator|.
 name|TITLE
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"AN UPPER FIRST WITH AND WITHOUT {CURLY} {brackets}"
 argument_list|)
@@ -596,7 +594,7 @@ name|CaseChangers
 operator|.
 name|TITLE
 operator|.
-name|changeCase
+name|format
 argument_list|(
 literal|"AN UPPER FIRST WITH {A}ND WITHOUT {C}URLY {b}rackets"
 argument_list|)
