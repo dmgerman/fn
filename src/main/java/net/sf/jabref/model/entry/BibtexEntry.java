@@ -457,22 +457,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns all fields of the BibTex entry      *      * @return a map of key, value pairs      */
-DECL|method|getFields ()
-specifier|public
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|getFields
-parameter_list|()
-block|{
-return|return
-name|fields
-return|;
-block|}
 comment|/**      * Returns true if this entry contains the fields it needs to be      * complete.      */
 DECL|method|hasAllRequiredFields (BibtexDatabase database)
 specifier|public
