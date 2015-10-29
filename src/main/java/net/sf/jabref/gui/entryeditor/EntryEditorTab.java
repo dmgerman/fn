@@ -822,6 +822,15 @@ argument_list|(
 name|title
 argument_list|)
 expr_stmt|;
+comment|// Use the title for the scrollPane, too.
+comment|// This enables the correct execution of EntryEditor.setVisiblePanel(String name).
+name|scrollPane
+operator|.
+name|setName
+argument_list|(
+name|title
+argument_list|)
+expr_stmt|;
 name|int
 name|fieldsPerRow
 init|=
