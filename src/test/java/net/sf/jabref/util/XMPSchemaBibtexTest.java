@@ -270,7 +270,7 @@ name|assertEquals
 argument_list|(
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|size
@@ -278,7 +278,7 @@ argument_list|()
 argument_list|,
 name|x
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|size
@@ -292,7 +292,7 @@ name|name
 range|:
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{

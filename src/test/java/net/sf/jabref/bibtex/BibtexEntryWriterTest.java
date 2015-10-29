@@ -535,7 +535,7 @@ literal|5
 argument_list|,
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|size
@@ -550,7 +550,7 @@ name|fields
 init|=
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -727,7 +727,7 @@ literal|4
 argument_list|,
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|size
@@ -742,7 +742,7 @@ name|fields
 init|=
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 decl_stmt|;
 name|Assert

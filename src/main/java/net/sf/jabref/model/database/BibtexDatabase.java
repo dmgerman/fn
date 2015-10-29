@@ -496,7 +496,7 @@ name|addAll
 argument_list|(
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1358,7 +1358,7 @@ name|field
 range|:
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{

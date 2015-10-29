@@ -116,7 +116,7 @@ name|searchFields
 argument_list|(
 name|bibtexEntry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 argument_list|,
 name|bibtexEntry

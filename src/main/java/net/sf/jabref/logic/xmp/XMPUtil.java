@@ -988,7 +988,7 @@ return|return
 operator|!
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|isEmpty
@@ -1841,7 +1841,7 @@ return|return
 operator|!
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|isEmpty
@@ -2306,7 +2306,7 @@ name|field
 range|:
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{
@@ -3138,7 +3138,7 @@ name|fields
 init|=
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 decl_stmt|;
 for|for

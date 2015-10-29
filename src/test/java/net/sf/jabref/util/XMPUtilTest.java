@@ -1696,7 +1696,7 @@ name|expectedFields
 argument_list|,
 name|x
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1790,7 +1790,7 @@ name|ts
 init|=
 name|x
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -4357,7 +4357,7 @@ name|field
 range|:
 name|expected
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{
@@ -4457,7 +4457,7 @@ name|assertEquals
 argument_list|(
 name|expected
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|size
@@ -4465,7 +4465,7 @@ argument_list|()
 argument_list|,
 name|actual
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|size

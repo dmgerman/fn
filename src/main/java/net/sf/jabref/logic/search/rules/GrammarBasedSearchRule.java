@@ -745,7 +745,7 @@ name|searchKeys
 init|=
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|toArray
@@ -755,7 +755,7 @@ name|String
 index|[
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|size

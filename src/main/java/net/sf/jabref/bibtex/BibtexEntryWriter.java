@@ -833,7 +833,7 @@ name|key
 range|:
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{
@@ -1281,7 +1281,7 @@ name|key
 range|:
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{
@@ -1526,7 +1526,7 @@ name|key
 range|:
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{

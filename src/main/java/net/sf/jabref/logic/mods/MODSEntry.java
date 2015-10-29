@@ -792,7 +792,7 @@ name|field
 range|:
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{

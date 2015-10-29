@@ -1226,7 +1226,7 @@ name|s
 range|:
 name|be
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{
