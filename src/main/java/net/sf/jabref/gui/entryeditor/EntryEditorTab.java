@@ -1565,6 +1565,36 @@ operator|=
 name|fieldEditor
 expr_stmt|;
 block|}
+DECL|method|setActive (String fieldName)
+specifier|public
+name|void
+name|setActive
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|)
+block|{
+if|if
+condition|(
+name|editors
+operator|.
+name|containsKey
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+name|activeField
+operator|=
+name|editors
+operator|.
+name|get
+argument_list|(
+name|fieldName
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|getActive ()
 specifier|public
 name|FieldEditor
@@ -1981,6 +2011,16 @@ parameter_list|()
 block|{
 return|return
 name|parent
+return|;
+block|}
+DECL|method|getTabTitle ()
+specifier|public
+name|String
+name|getTabTitle
+parameter_list|()
+block|{
+return|return
+name|tabTitle
 return|;
 block|}
 comment|/**      * Set up key bindings and focus listener for the FieldEditor.      *      * @param component      */
