@@ -16,6 +16,24 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|formatter
+operator|.
+name|bibtexfields
+operator|.
+name|PageNumbersFormatter
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -35,10 +53,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|FieldFormatters
+DECL|class|BibtexFieldFormatters
 specifier|public
 class|class
-name|FieldFormatters
+name|BibtexFieldFormatters
 block|{
 DECL|field|PAGE_NUMBERS
 specifier|public

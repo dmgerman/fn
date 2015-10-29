@@ -140,9 +140,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
-operator|.
-name|strings
+name|formatter
 operator|.
 name|CaseChangers
 import|;
@@ -634,7 +632,7 @@ name|CaseChangers
 operator|.
 name|TITLE
 operator|.
-name|changeCase
+name|format
 argument_list|(
 name|s
 argument_list|)

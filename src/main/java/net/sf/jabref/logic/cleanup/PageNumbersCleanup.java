@@ -26,23 +26,7 @@ name|logic
 operator|.
 name|formatter
 operator|.
-name|FieldFormatters
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|formatter
-operator|.
-name|PageNumbersFormatter
+name|BibtexFieldFormatters
 import|;
 end_import
 
@@ -118,7 +102,7 @@ decl_stmt|;
 name|String
 name|newValue
 init|=
-name|FieldFormatters
+name|BibtexFieldFormatters
 operator|.
 name|PAGE_NUMBERS
 operator|.
