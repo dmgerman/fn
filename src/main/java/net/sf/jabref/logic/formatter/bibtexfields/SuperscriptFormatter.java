@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.cleanup
+DECL|package|net.sf.jabref.logic.formatter.bibtexfields
 package|package
 name|net
 operator|.
@@ -10,9 +10,27 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|cleanup
+name|formatter
+operator|.
+name|bibtexfields
 package|;
 end_package
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|formatter
+operator|.
+name|Formatter
+import|;
+end_import
 
 begin_import
 import|import
@@ -55,52 +73,38 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class includes sensible defaults for consistent formatting of BibTex entries.  */
+comment|/**  * This class transforms ordinal numbers into LaTex superscripts.  */
 end_comment
 
 begin_class
-DECL|class|AutoFormatter
+DECL|class|SuperscriptFormatter
 specifier|public
 class|class
-name|AutoFormatter
+name|SuperscriptFormatter
+implements|implements
+name|Formatter
 block|{
-DECL|field|entry
-specifier|private
-name|BibtexEntry
-name|entry
-decl_stmt|;
-DECL|method|AutoFormatter (BibtexEntry entry)
+annotation|@
+name|Override
+DECL|method|getName ()
 specifier|public
-name|AutoFormatter
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"Superscripts"
+return|;
+block|}
+comment|/**      * Converts ordinal numbers to superscripts, e.g. 1st, 2nd or 3rd.      * Will replace ordinal numbers even if they are semantically wrong, e.g. 21rd      *      *<example>      * 1st Conf. Cloud Computing -> 1\textsuperscript{st} Conf. Cloud Computing      *</example>      */
+DECL|method|format (String value)
+specifier|public
+name|String
+name|format
 parameter_list|(
-name|BibtexEntry
-name|entry
+name|String
+name|value
 parameter_list|)
-block|{
-name|this
-operator|.
-name|entry
-operator|=
-name|entry
-expr_stmt|;
-block|}
-comment|/**      * Runs all default cleanups for the BibTex entry.      */
-DECL|method|runDefaultCleanups ()
-specifier|public
-name|void
-name|runDefaultCleanups
-parameter_list|()
-block|{
-name|applySuperscripts
-argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * Converts ordinal numbers to superscripts, e.g. 1st, 2nd or 3rd.      * Run the replacement for every available BibTex field.      * Will replace ordinal numbers even if they are semantically wrong, e.g. 21rd      *      *<example>      *     1st Conf. Cloud Computing -> 1\textsuperscript{st} Conf. Cloud Computing      *</example>      */
-DECL|method|applySuperscripts ()
-specifier|public
-name|void
-name|applySuperscripts
-parameter_list|()
 block|{
 comment|// find possible superscripts on word boundaries
 specifier|final
@@ -129,27 +133,6 @@ name|replace
 init|=
 literal|"$1\\\\textsuperscript{$2}"
 decl_stmt|;
-for|for
-control|(
-name|String
-name|name
-range|:
-name|entry
-operator|.
-name|getAllFields
-argument_list|()
-control|)
-block|{
-name|String
-name|value
-init|=
-name|entry
-operator|.
-name|getField
-argument_list|(
-name|name
-argument_list|)
-decl_stmt|;
 comment|// nothing to do
 if|if
 condition|(
@@ -163,7 +146,9 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-continue|continue;
+return|return
+name|value
+return|;
 block|}
 name|Matcher
 name|matcher
@@ -186,29 +171,9 @@ argument_list|(
 name|replace
 argument_list|)
 decl_stmt|;
-comment|// write field
-if|if
-condition|(
-operator|!
+return|return
 name|newValue
-operator|.
-name|equals
-argument_list|(
-name|value
-argument_list|)
-condition|)
-block|{
-name|entry
-operator|.
-name|setField
-argument_list|(
-name|name
-argument_list|,
-name|newValue
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+return|;
 block|}
 block|}
 end_class
