@@ -354,13 +354,53 @@ parameter_list|)
 block|{
 name|DOI
 name|doi
-init|=
+decl_stmt|;
+try|try
+block|{
+name|doi
+operator|=
 operator|new
 name|DOI
 argument_list|(
 name|doiStr
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Invalid DOI: '%0'."
+argument_list|,
+name|doiStr
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Get BibTeX entry from DOI"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
 comment|// Send the request
 comment|// construct URL
 name|URL
