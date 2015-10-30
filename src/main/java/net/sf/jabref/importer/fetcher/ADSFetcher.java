@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (c) 2009, Ryo IGARASHI<rigarash@gmail.com>  * All rights reserved.  * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions are met:  *  *     * Redistributions of source code must retain the above copyright  *       notice, this list of conditions and the following disclaimer.  *     * Redistributions in binary form must reproduce the above copyright  *        notice, this list of conditions and the following disclaimer in the  *       documentation and/or other materials provided with the distribution.  *  * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS "AS IS" AND ANY  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE  * DISCLAIMED. IN NO EVENT SHALL THE REGENTS AND CONTRIBUTORS BE LIABLE FOR ANY  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
+comment|/* Copyright (C) 2003-2015 JabRef Contributors  * Copyright (c) 2009, Ryo IGARASHI<rigarash@gmail.com>  * All rights reserved.  * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions are met:  *  *     * Redistributions of source code must retain the above copyright  *       notice, this list of conditions and the following disclaimer.  *     * Redistributions in binary form must reproduce the above copyright  *        notice, this list of conditions and the following disclaimer in the  *       documentation and/or other materials provided with the distribution.  *  * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS "AS IS" AND ANY  * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE  * DISCLAIMED. IN NO EVENT SHALL THE REGENTS AND CONTRIBUTORS BE LIABLE FOR ANY  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
 end_comment
 
 begin_package
@@ -24,47 +24,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStreamReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|BufferedInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|BufferedReader
+name|*
 import|;
 end_import
 
@@ -223,7 +183,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * This class handles accessing and obtaining BibTeX entry  * from ADS(The NASA Astrophysics Data System).  * Fetching using DOI(Document Object Identifier) is only supported.  *  * @author Ryo IGARASHI  * @version $Id$  */
+comment|/**  *  * This class handles accessing and obtaining BibTeX entry  * from ADS(The NASA Astrophysics Data System).  * Fetching using DOI(Document Object Identifier) is only supported.  *  * @author Ryo IGARASHI  */
 end_comment
 
 begin_class
@@ -269,7 +229,12 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"ADS from ADS-DOI"
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -281,13 +246,8 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Localization
-operator|.
-name|menuTitle
-argument_list|(
 name|getKeyName
 argument_list|()
-argument_list|)
 return|;
 block|}
 annotation|@
@@ -352,16 +312,12 @@ argument_list|,
 name|status
 argument_list|)
 decl_stmt|;
-comment|/* Add the entry to the inspection dialog */
-name|status
-operator|.
-name|setStatus
-argument_list|(
-literal|"Adding fetched entries"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
+name|bd
+operator|!=
+literal|null
+operator|&&
 name|bd
 operator|.
 name|getEntryCount
@@ -370,6 +326,7 @@ operator|>
 literal|0
 condition|)
 block|{
+comment|/* Add the entry to the inspection dialog */
 for|for
 control|(
 name|BibtexEntry
@@ -398,6 +355,12 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
 block|}
 block|}
 catch|catch
@@ -496,14 +459,8 @@ argument_list|,
 literal|"Jabref"
 argument_list|)
 expr_stmt|;
-name|InputStream
-name|is
-init|=
-name|ADSConnection
-operator|.
-name|getInputStream
-argument_list|()
-decl_stmt|;
+try|try
+init|(
 name|BufferedReader
 name|reader
 init|=
@@ -513,10 +470,14 @@ argument_list|(
 operator|new
 name|InputStreamReader
 argument_list|(
-name|is
+name|ADSConnection
+operator|.
+name|getInputStream
+argument_list|()
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|ParserResult
 name|pr
 init|=
@@ -533,6 +494,47 @@ operator|.
 name|getDatabase
 argument_list|()
 return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|FileNotFoundException
+name|e
+parameter_list|)
+block|{
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"'%0' is not a valid ADS bibcode."
+argument_list|,
+name|key
+argument_list|)
+operator|+
+literal|"\n\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Note: A full text search is currently not supported for %0"
+argument_list|,
+name|getKeyName
+argument_list|()
+argument_list|)
+argument_list|,
+name|getKeyName
+argument_list|()
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -557,13 +559,8 @@ literal|"\n\n"
 operator|+
 name|e
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|getKeyName
 argument_list|()
-argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -587,12 +584,7 @@ name|lang
 argument_list|(
 literal|"An Error occurred while fetching from ADS (%0):"
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
 name|url
-block|}
 argument_list|)
 operator|+
 literal|"\n\n"
@@ -602,13 +594,8 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|getKeyName
 argument_list|()
-argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -843,13 +830,8 @@ argument_list|(
 literal|"An Error occurred while parsing abstract"
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|getKeyName
 argument_list|()
-argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -880,13 +862,8 @@ literal|"\n\n"
 operator|+
 name|e
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|getKeyName
 argument_list|()
-argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -910,12 +887,7 @@ name|lang
 argument_list|(
 literal|"An Error occurred while fetching from ADS (%0):"
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
 name|url
-block|}
 argument_list|)
 operator|+
 literal|"\n\n"
@@ -925,13 +897,8 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|getKeyName
 argument_list|()
-argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
