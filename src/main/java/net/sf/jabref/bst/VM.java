@@ -287,7 +287,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * A Bibtex Virtual machine that can execute .bst files.  *   * Documentation can be found in the original bibtex distribution:  *   * http://texcatalogue.sarovar.org/entries/bibtex.html#Download  *   */
+comment|/**  *  * A Bibtex Virtual machine that can execute .bst files.  *  * Documentation can be found in the original bibtex distribution:  *  * https://www.ctan.org/pkg/bibtex  *  */
 end_comment
 
 begin_class
