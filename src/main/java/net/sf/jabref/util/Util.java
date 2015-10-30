@@ -4976,6 +4976,16 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// set user-agent to avoid being blocked as a crawler
+name|source
+operator|.
+name|setRequestProperty
+argument_list|(
+literal|"User-Agent"
+argument_list|,
+literal|"Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0"
+argument_list|)
+expr_stmt|;
 name|InputStreamReader
 name|in
 decl_stmt|;
