@@ -434,10 +434,12 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Problem creating Bibtex file for mailing."
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -651,11 +653,6 @@ name|URISyntaxException
 name|e1
 parameter_list|)
 block|{
-name|e1
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 name|message
 operator|=
 name|Localization
@@ -663,6 +660,13 @@ operator|.
 name|lang
 argument_list|(
 literal|"Error creating email"
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+name|message
 argument_list|)
 expr_stmt|;
 return|return;
@@ -691,11 +695,6 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 name|message
 operator|=
 name|Localization
@@ -703,6 +702,13 @@ operator|.
 name|lang
 argument_list|(
 literal|"Error creating email"
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+name|message
 argument_list|)
 expr_stmt|;
 return|return;

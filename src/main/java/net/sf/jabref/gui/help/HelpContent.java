@@ -165,12 +165,12 @@ name|HelpContent
 extends|extends
 name|JTextPane
 block|{
-DECL|field|log
+DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
 name|Log
-name|log
+name|LOGGER
 init|=
 name|LogFactory
 operator|.
@@ -704,7 +704,7 @@ block|{
 comment|// TODO show warning to user
 name|HelpContent
 operator|.
-name|log
+name|LOGGER
 operator|.
 name|error
 argument_list|(
@@ -740,10 +740,17 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem when finding help files: "
+operator|+
 name|ex
 operator|.
-name|printStackTrace
+name|getMessage
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 name|forw

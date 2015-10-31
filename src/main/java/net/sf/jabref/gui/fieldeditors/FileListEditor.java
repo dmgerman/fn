@@ -1858,10 +1858,17 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot open selected file: "
+operator|+
 name|e
 operator|.
-name|printStackTrace
+name|getMessage
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2655,10 +2662,17 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot download: "
+operator|+
 name|ex
 operator|.
-name|printStackTrace
+name|getMessage
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}

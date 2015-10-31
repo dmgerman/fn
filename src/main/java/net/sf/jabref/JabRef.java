@@ -826,7 +826,7 @@ operator|.
 name|setLanguageDependentDefaultValues
 argument_list|()
 expr_stmt|;
-comment|/*          * The Plug-in System is started automatically on the first call to          * PluginCore.getManager().          *           * Plug-ins are activated on the first call to their getInstance method.          */
+comment|/*          * The Plug-in System is started automatically on the first call to          * PluginCore.getManager().          *          * Plug-ins are activated on the first call to their getInstance method.          */
 comment|// Update which fields should be treated as numeric, based on preferences:
 name|BibtexFields
 operator|.
@@ -996,9 +996,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|loaded
 operator|==
 literal|null
+operator|)
 operator|||
 name|cli
 operator|.
@@ -1395,6 +1397,7 @@ operator|.
 name|isBlank
 argument_list|()
 operator|&&
+operator|(
 name|cli
 operator|.
 name|getLeftOver
@@ -1403,6 +1406,7 @@ operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 for|for
@@ -1456,15 +1460,19 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|pr
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|pr
 operator|==
 name|ParserResult
 operator|.
 name|INVALID_FORMAT
+operator|)
 condition|)
 block|{
 comment|// We will try to import this file. Normally we
@@ -1784,16 +1792,20 @@ comment|//newBase contains only match entries
 comment|//export database
 if|if
 condition|(
+operator|(
 name|newBase
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|newBase
 operator|.
 name|getEntryCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|String
@@ -2947,7 +2959,7 @@ return|return
 name|loaded
 return|;
 block|}
-comment|/**      * Run an entry fetcher from the command line.      *       * Note that this only works headlessly if the EntryFetcher does not show      * any GUI.      *       * @param fetchCommand      *            A string containing both the fetcher to use (id of      *            EntryFetcherExtension minus Fetcher) and the search query,      *            separated by a :      * @return A parser result containing the entries fetched or null if an      *         error occurred.      */
+comment|/**      * Run an entry fetcher from the command line.      *      * Note that this only works headlessly if the EntryFetcher does not show      * any GUI.      *      * @param fetchCommand      *            A string containing both the fetcher to use (id of      *            EntryFetcherExtension minus Fetcher) and the search query,      *            separated by a :      * @return A parser result containing the entries fetched or null if an      *         error occurred.      */
 DECL|method|fetch (String fetchCommand)
 specifier|private
 name|ParserResult
@@ -2959,9 +2971,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|fetchCommand
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|fetchCommand
@@ -2971,6 +2985,7 @@ argument_list|(
 literal|":"
 argument_list|)
 operator|||
+operator|(
 name|fetchCommand
 operator|.
 name|split
@@ -2981,6 +2996,7 @@ operator|.
 name|length
 operator|!=
 literal|2
+operator|)
 condition|)
 block|{
 name|System
@@ -3223,9 +3239,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|result
 operator|==
 literal|null
+operator|)
 operator|||
 name|result
 operator|.
@@ -3526,9 +3544,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|key
 operator|instanceof
 name|String
+operator|)
 operator|&&
 operator|(
 operator|(
@@ -3738,6 +3758,7 @@ operator|.
 name|OPEN_LAST_EDITED
 argument_list|)
 operator|&&
+operator|(
 name|Globals
 operator|.
 name|prefs
@@ -3750,6 +3771,7 @@ name|LAST_EDITED
 argument_list|)
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// How to handle errors in the databases to open?
@@ -3817,12 +3839,14 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|pr
 operator|.
 name|getFile
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|pr
 operator|.
@@ -4604,13 +4628,16 @@ name|i
 init|=
 literal|0
 init|;
+operator|(
 name|i
 operator|<
 name|loaded
 operator|.
 name|size
 argument_list|()
+operator|)
 operator|&&
+operator|(
 name|i
 operator|<
 name|JabRef
@@ -4619,6 +4646,7 @@ name|jrf
 operator|.
 name|baseCount
 argument_list|()
+operator|)
 condition|;
 name|i
 operator|++
@@ -5029,21 +5057,10 @@ range|:
 name|warn
 control|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Warning"
-argument_list|)
-operator|+
-literal|": "
-operator|+
 name|aWarn
 argument_list|)
 expr_stmt|;
@@ -5131,11 +5148,13 @@ try|try
 block|{
 if|if
 condition|(
+operator|(
 name|data
 operator|.
 name|length
 operator|>
 literal|1
+operator|)
 operator|&&
 operator|!
 literal|"*"
@@ -5458,7 +5477,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Will open a file (like importFile), but will also request JabRef to focus on this database       * @param argument See importFile.      * @return ParserResult with setToOpenTab(true)      */
+comment|/**      * Will open a file (like importFile), but will also request JabRef to focus on this database      * @param argument See importFile.      * @return ParserResult with setToOpenTab(true)      */
 DECL|method|importToOpenBase (String argument)
 specifier|private
 specifier|static

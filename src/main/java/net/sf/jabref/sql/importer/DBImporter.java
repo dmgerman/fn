@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General public static License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General public static License for more details.      You should have received a copy of the GNU General public static License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General public static License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General public static License for more details.      You should have received a copy of the GNU General public static License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -55,6 +55,34 @@ operator|.
 name|util
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -241,7 +269,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author ifsteinm.  *   *         Jan 20th Abstract Class to provide main features to import entries  *         from a DB. To insert a new DB it is necessary to extend this class  *         and add the DB name the enum available at  *         net.sf.jabref.sql.DBImporterAndExporterFactory (and to the GUI). This  *         class and its subclasses import database, entries and related stuff  *         from a DB to bib. Each exported database is imported as a new JabRef  *         (bib) database, presented on a new tab  *   */
+comment|/**  *  * @author ifsteinm.  *  *         Jan 20th Abstract Class to provide main features to import entries  *         from a DB. To insert a new DB it is necessary to extend this class  *         and add the DB name the enum available at  *         net.sf.jabref.sql.DBImporterAndExporterFactory (and to the GUI). This  *         class and its subclasses import database, entries and related stuff  *         from a DB to bib. Each exported database is imported as a new JabRef  *         (bib) database, presented on a new tab  *  */
 end_comment
 
 begin_class
@@ -253,6 +281,22 @@ name|DBImporter
 extends|extends
 name|DBImporterExporter
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|DBImporter
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|columnsNotConsideredForEntries
 specifier|private
 specifier|final
@@ -284,7 +328,7 @@ literal|"entries_id"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/**      * Given a DBStrings it connects to the DB and returns the      * java.sql.Connection object      *       * @param dbstrings      *            The DBStrings to use to make the connection      * @return java.sql.Connection to the DB chosen      * @throws Exception      */
+comment|/**      * Given a DBStrings it connects to the DB and returns the      * java.sql.Connection object      *      * @param dbstrings      *            The DBStrings to use to make the connection      * @return java.sql.Connection to the DB chosen      * @throws Exception      */
 DECL|method|connectToDB (DBStrings dbstrings)
 specifier|protected
 specifier|abstract
@@ -297,7 +341,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      *       * @param conn      *            Connection object to the database      * @return A ResultSet with column name for the entries table      * @throws SQLException      */
+comment|/**      *      * @param conn      *            Connection object to the database      * @return A ResultSet with column name for the entries table      * @throws SQLException      */
 DECL|method|readColumnNames (Connection conn)
 specifier|protected
 specifier|abstract
@@ -310,7 +354,7 @@ parameter_list|)
 throws|throws
 name|SQLException
 function_decl|;
-comment|/**      * Worker method to perform the import from a database      *       * @param keySet      *            The set of IDs of the entries to export.      * @param dbs      *            The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the      *         ArrayList stores three Objects: a BibtexDatabase, a MetaData and      *         a String with the bib database name stored in the DBMS      * @throws Exception      */
+comment|/**      * Worker method to perform the import from a database      *      * @param keySet      *            The set of IDs of the entries to export.      * @param dbs      *            The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the      *         ArrayList stores three Objects: a BibtexDatabase, a MetaData and      *         a String with the bib database name stored in the DBMS      * @throws Exception      */
 DECL|method|performImport (Set<String> keySet, DBStrings dbs, List<String> listOfDBs)
 specifier|public
 name|ArrayList
@@ -929,7 +973,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Look up the group type name from the type ID in the database.      *       * @param groupId      *            The database's groups id      * @param conn      *            The database connection      *       * @return The name (JabRef type id) of the group type.      * @throws SQLException      */
+comment|/**      * Look up the group type name from the type ID in the database.      *      * @param groupId      *            The database's groups id      * @param conn      *            The database connection      *      * @return The name (JabRef type id) of the group type.      * @throws SQLException      */
 DECL|method|findGroupTypeName (String groupId, Connection conn)
 specifier|private
 name|String
@@ -1153,11 +1197,9 @@ name|ID
 argument_list|)
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Keyw: "
 operator|+
@@ -1250,11 +1292,9 @@ name|ID
 argument_list|)
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Search: "
 operator|+

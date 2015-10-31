@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -432,15 +432,6 @@ name|EntryTableTransferHandler
 extends|extends
 name|TransferHandler
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|entryTable
 specifier|private
 specifier|final
@@ -631,7 +622,7 @@ return|;
 comment|//.getTransferable();
 block|}
 block|}
-comment|/**      * This method is called when stuff is drag to the component.      *       * Imports the dropped URL or plain text as a new entry in the current database.      *       */
+comment|/**      * This method is called when stuff is drag to the component.      *      * Imports the dropped URL or plain text as a new entry in the current database.      *      */
 annotation|@
 name|Override
 DECL|method|importData (JComponent comp, Transferable t)
@@ -802,13 +793,11 @@ name|IOException
 name|ioe
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"failed to read dropped data: "
+literal|"Failed to read dropped data: "
 operator|+
 name|ioe
 argument_list|)
@@ -820,26 +809,22 @@ name|UnsupportedFlavorException
 name|ufe
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"drop type error: "
+literal|"Drop type error: "
 operator|+
 name|ufe
 argument_list|)
 expr_stmt|;
 block|}
 comment|// all supported flavors failed
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|info
 argument_list|(
-literal|"can't transfer input: "
+literal|"Can't transfer input: "
 argument_list|)
 expr_stmt|;
 name|DataFlavor
@@ -859,11 +844,9 @@ range|:
 name|inflavs
 control|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"  "
 operator|+
@@ -875,7 +858,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * This method is called to query whether the transfer can be imported.      *       * Will return true for urls, strings, javaFileLists      */
+comment|/**      * This method is called to query whether the transfer can be imported.      *      * Will return true for urls, strings, javaFileLists      */
 annotation|@
 name|Override
 DECL|method|canImport (JComponent comp, DataFlavor[] transferFlavors)
@@ -1043,13 +1026,11 @@ operator|.
 name|FILE
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
-literal|"dragging file"
+literal|"Dragging file"
 argument_list|)
 expr_stmt|;
 name|draggingFile
@@ -1487,7 +1468,7 @@ return|return
 name|files
 return|;
 block|}
-comment|/**      * Handle a String describing a set of files or URLs dragged into JabRef.      *       * @param s String describing a set of files or URLs dragged into JabRef      * @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      *      */
+comment|/**      * Handle a String describing a set of files or URLs dragged into JabRef.      *      * @param s String describing a set of files or URLs dragged into JabRef      * @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      *      */
 DECL|method|handleDraggedFilenames (String s, final int dropRow)
 specifier|private
 name|boolean
@@ -1515,7 +1496,7 @@ name|dropRow
 argument_list|)
 return|;
 block|}
-comment|/**      * Handle a List containing File objects for a set of files to import.      *       * @param files A List containing File instances pointing to files.      * @param dropRow @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      */
+comment|/**      * Handle a List containing File objects for a set of files to import.      *      * @param files A List containing File instances pointing to files.      * @param dropRow @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      */
 DECL|method|handleDraggedFiles (List<File> files, final int dropRow)
 specifier|private
 name|boolean
@@ -1648,7 +1629,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Take a set of filenames. Those with names indicating bib files are opened as such if possible. All other files we      * will attempt to import into the current database.      *       * @param fileNames The names of the files to open.      * @param dropRow success status for the operation      */
+comment|/**      * Take a set of filenames. Those with names indicating bib files are opened as such if possible. All other files we      * will attempt to import into the current database.      *      * @param fileNames The names of the files to open.      * @param dropRow success status for the operation      */
 DECL|method|loadOrImportFiles (String[] fileNames, int dropRow)
 specifier|private
 name|void
@@ -1731,16 +1712,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|index
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|index
 operator|<
 name|fileName
 operator|.
 name|length
 argument_list|()
+operator|)
 condition|)
 block|{
 name|extension
@@ -1804,15 +1789,19 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|pr
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|pr
 operator|==
 name|ParserResult
 operator|.
 name|INVALID_FORMAT
+operator|)
 condition|)
 block|{
 name|notBibFiles
@@ -1867,13 +1856,17 @@ block|}
 comment|/*              * This is a linkable file. If the user dropped it on an entry, we              * should offer options for autolinking to this files:              *              * TODO we should offer an option to highlight the row the user is on too.              */
 if|if
 condition|(
+operator|(
 name|fileType
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|dropRow
 operator|>=
 literal|0
+operator|)
 condition|)
 block|{
 comment|/*                  * TODO: need to signal if this is a local or autodownloaded                  * file                  */
@@ -1911,7 +1904,7 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/*             			if (extension.equals("pdf")) {             				Collection c;             				try {             					c = XMPUtil.readXMP(fileNames[i]);             				} catch (IOException e1) {             					c = null;             					frame.output(Globals.lang("No XMP metadata found in " + fileNames[i]));             				}                          				if (c != null&& c.size()> 0) {             					Iterator it = c.iterator();                          					BasePanel panel = frame.basePanel();                          					if (panel == null) {             						// // Create a new, empty, database.             						BibtexDatabase database = new BibtexDatabase();             						frame.addTab(database, null, null, Globals.prefs.get(JabRefPreferences.DEFAULT_ENCODING),             							true);             						frame.output(Globals.lang("New database created."));             						panel = frame.basePanel();             					}                          					BibtexDatabase database = frame.basePanel().database();                          					NamedCompound ce = new NamedCompound(Glbals.lang("Drop PDF"));                          					while (it.hasNext()) {             						BibtexEntry e = (BibtexEntry) it.next();                          						try {             							e.setId(Util.next());             							database.insertEntry(e);             							ce.addEdit(new UndoableInsertEntry(database, e, panel));             						} catch (Exception e2) {             							// Should not happen?             						}             					}                          					ce.end();             					panel.undoManager.addEdit(ce);             					panel.markBaseChanged();             					continue;             				}             			}             			*/
+comment|/*             			if (extension.equals("pdf")) {             				Collection c;             				try {             					c = XMPUtil.readXMP(fileNames[i]);             				} catch (IOException e1) {             					c = null;             					frame.output(Globals.lang("No XMP metadata found in " + fileNames[i]));             				}              				if (c != null&& c.size()> 0) {             					Iterator it = c.iterator();              					BasePanel panel = frame.basePanel();              					if (panel == null) {             						// // Create a new, empty, database.             						BibtexDatabase database = new BibtexDatabase();             						frame.addTab(database, null, null, Globals.prefs.get(JabRefPreferences.DEFAULT_ENCODING),             							true);             						frame.output(Globals.lang("New database created."));             						panel = frame.basePanel();             					}              					BibtexDatabase database = frame.basePanel().database();              					NamedCompound ce = new NamedCompound(Glbals.lang("Drop PDF"));              					while (it.hasNext()) {             						BibtexEntry e = (BibtexEntry) it.next();              						try {             							e.setId(Util.next());             							database.insertEntry(e);             							ce.addEdit(new UndoableInsertEntry(database, e, panel));             						} catch (Exception e2) {             							// Should not happen?             						}             					}              					ce.end();             					panel.undoManager.addEdit(ce);             					panel.markBaseChanged();             					continue;             				}             			}             			*/
 name|notBibFiles
 operator|.
 name|add

@@ -1116,10 +1116,17 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Search IEEEXplore: "
+operator|+
 name|e
 operator|.
-name|printStackTrace
+name|getMessage
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 return|return
