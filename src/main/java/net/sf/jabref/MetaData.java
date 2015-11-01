@@ -56,9 +56,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|migrations
+name|gui
 operator|.
-name|VersionHandling
+name|util
+operator|.
+name|GUIGlobals
 import|;
 end_import
 
@@ -70,9 +72,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|migrations
 operator|.
-name|GUIGlobals
+name|VersionHandling
 import|;
 end_import
 

@@ -316,7 +316,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|MainTable
 import|;
 end_import
 
@@ -330,7 +330,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|MainTable
+name|util
+operator|.
+name|GUIGlobals
 import|;
 end_import
 
