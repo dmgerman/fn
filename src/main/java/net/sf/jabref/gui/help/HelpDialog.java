@@ -154,11 +154,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|l10n
+name|util
 operator|.
-name|Localization
+name|PositionWindow
 import|;
 end_import
 
@@ -170,9 +170,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Util
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -582,7 +584,7 @@ name|isVisible
 argument_list|()
 condition|)
 block|{
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(

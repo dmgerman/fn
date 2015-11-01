@@ -594,6 +594,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|util
+operator|.
+name|PositionWindow
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|worker
 operator|.
 name|*
@@ -3054,7 +3070,7 @@ operator|.
 name|prefs
 argument_list|)
 decl_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -3310,7 +3326,7 @@ argument_list|,
 name|dbs
 argument_list|)
 decl_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -3647,7 +3663,7 @@ operator|.
 name|this
 argument_list|)
 block|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -7327,7 +7343,7 @@ argument_list|(
 name|frame
 argument_list|)
 decl_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -7400,7 +7416,7 @@ argument_list|,
 name|bibEntry
 argument_list|)
 decl_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -8328,7 +8344,7 @@ argument_list|,
 literal|null
 argument_list|)
 block|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -9403,7 +9419,7 @@ name|frame
 argument_list|)
 decl_stmt|;
 comment|// We want to center the dialog, to make it look nicer.
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(

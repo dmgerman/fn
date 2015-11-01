@@ -184,6 +184,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|PositionWindow
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -237,20 +253,6 @@ operator|.
 name|l10n
 operator|.
 name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -1119,7 +1121,7 @@ expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(

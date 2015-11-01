@@ -96,6 +96,7 @@ specifier|public
 class|class
 name|PositionWindow
 block|{
+comment|// Strings for the corresponding preferences
 DECL|field|MERGEENTRIES
 specifier|public
 specifier|static
@@ -145,6 +146,8 @@ name|String
 name|name
 parameter_list|)
 block|{
+comment|// The actual preference strings ends with the following suffices
+comment|// There might be a better way to do this.
 name|String
 name|prefSizeX
 init|=
@@ -539,6 +542,36 @@ argument_list|,
 name|d
 operator|.
 name|height
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * This method sets the location of a Dialog such that it is centered with regard to another window, but not outside      * the screen on the left and the top.      */
+DECL|method|placeDialog (java.awt.Dialog diag, java.awt.Container win)
+specifier|public
+specifier|static
+name|void
+name|placeDialog
+parameter_list|(
+name|java
+operator|.
+name|awt
+operator|.
+name|Dialog
+name|diag
+parameter_list|,
+name|java
+operator|.
+name|awt
+operator|.
+name|Container
+name|win
+parameter_list|)
+block|{
+name|diag
+operator|.
+name|setLocationRelativeTo
+argument_list|(
+name|win
 argument_list|)
 expr_stmt|;
 block|}

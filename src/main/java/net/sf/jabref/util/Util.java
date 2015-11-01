@@ -922,36 +922,6 @@ operator|new
 name|UnicodeCharMap
 argument_list|()
 decl_stmt|;
-comment|/**      * This method sets the location of a Dialog such that it is centered with regard to another window, but not outside      * the screen on the left and the top.      */
-DECL|method|placeDialog (java.awt.Dialog diag, java.awt.Container win)
-specifier|public
-specifier|static
-name|void
-name|placeDialog
-parameter_list|(
-name|java
-operator|.
-name|awt
-operator|.
-name|Dialog
-name|diag
-parameter_list|,
-name|java
-operator|.
-name|awt
-operator|.
-name|Container
-name|win
-parameter_list|)
-block|{
-name|diag
-operator|.
-name|setLocationRelativeTo
-argument_list|(
-name|win
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * This method translates a field or string from Bibtex notation, with possibly text contained in " " or { }, and      * string references, concatenated by '#' characters, into Bibkeeper notation, where string references are enclosed      * in a pair of '#' characters.      */
 DECL|method|parseField (String content)
 specifier|public

@@ -162,6 +162,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|PositionWindow
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -185,20 +201,6 @@ operator|.
 name|strings
 operator|.
 name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -1146,7 +1148,7 @@ name|pack
 argument_list|()
 expr_stmt|;
 comment|//setSize(400, 170);
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
