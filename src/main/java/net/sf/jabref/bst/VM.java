@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -581,11 +581,7 @@ name|buildInFunctions
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|BstFunction
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|37
 argument_list|)
@@ -2540,7 +2536,7 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/**              * The |built_in| function {\.{preamble\$}} pushes onto the stack              * the concatenation of all the \.{preamble} strings read from the              * database files. (or the empty string if there where none)              *               * @PREAMBLE strings read from the database files.              */
+comment|/**              * The |built_in| function {\.{preamble\$}} pushes onto the stack              * the concatenation of all the \.{preamble} strings read from the              * database files. (or the empty string if there where none)              *              * @PREAMBLE strings read from the database files.              */
 annotation|@
 name|Override
 specifier|public
@@ -3048,7 +3044,7 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/**              * text.length$ Pops the top (string) literal, and pushes the number              * of text characters it contains, where an accented character (more              * precisely, a "special character", defined in Section 4) counts as              * a single text character, even if it's missing its matching right              * brace, and where braces don't count as text characters.              *               * From BibTeXing: For the purposes of counting letters in labels,              * BibTEX considers everything contained inside the braces as a              * single letter.              */
+comment|/**              * text.length$ Pops the top (string) literal, and pushes the number              * of text characters it contains, where an accented character (more              * precisely, a "special character", defined in Section 4) counts as              * a single text character, even if it's missing its matching right              * brace, and where braces don't count as text characters.              *              * From BibTeXing: For the purposes of counting letters in labels,              * BibTEX considers everything contained inside the braces as a              * single letter.              */
 annotation|@
 name|Override
 specifier|public
@@ -3772,7 +3768,7 @@ operator|)
 operator|&&
 name|context
 operator|.
-name|strings
+name|localStrings
 operator|.
 name|containsKey
 argument_list|(
@@ -3782,7 +3778,7 @@ condition|)
 block|{
 name|context
 operator|.
-name|strings
+name|localStrings
 operator|.
 name|put
 argument_list|(
@@ -3838,7 +3834,7 @@ operator|)
 operator|&&
 name|context
 operator|.
-name|integers
+name|localIntegers
 operator|.
 name|containsKey
 argument_list|(
@@ -3848,7 +3844,7 @@ condition|)
 block|{
 name|context
 operator|.
-name|integers
+name|localIntegers
 operator|.
 name|put
 argument_list|(
@@ -3957,9 +3953,7 @@ name|entries
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|BstEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|bibtex
 operator|.
@@ -4087,9 +4081,7 @@ operator|.
 name|SORT
 case|:
 name|sort
-argument_list|(
-name|child
-argument_list|)
+argument_list|()
 expr_stmt|;
 break|break;
 case|case
@@ -4174,22 +4166,14 @@ name|strings
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|integers
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|integers
@@ -4218,11 +4202,7 @@ name|functions
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|BstFunction
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|functions
@@ -4236,13 +4216,11 @@ name|stack
 operator|=
 operator|new
 name|Stack
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Dredges up from the database file the field values for each entry in the      * list. It has no arguments. If a database entry doesn't have a value for a      * field (and probably no database entry will have a value for every field),      * that field variable is marked as missing for the entry.      *       * We use null for the missing entry designator.      */
+comment|/**      * Dredges up from the database file the field values for each entry in the      * list. It has no arguments. If a database entry doesn't have a value for a      * field (and probably no database entry will have a value for every field),      * that field variable is marked as missing for the entry.      *      * We use null for the missing entry designator.      */
 DECL|method|read ()
 specifier|private
 name|void
@@ -4347,7 +4325,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Defines a string macro. It has two arguments; the first is the macro's      * name, which is treated like any other variable or function name, and the      * second is its definition, which must be double-quote-delimited. You must      * have one for each three-letter month abbreviation; in addition, you      * should have one for common journal names. The user's database may      * override any definition you define using this command. If you want to      * define a string the user can't touch, use the FUNCTION command, which has      * a compatible syntax.      *       * @param child      */
+comment|/**      * Defines a string macro. It has two arguments; the first is the macro's      * name, which is treated like any other variable or function name, and the      * second is its definition, which must be double-quote-delimited. You must      * have one for each three-letter month abbreviation; in addition, you      * should have one for common journal names. The user's database may      * override any definition you define using this command. If you want to      * define a string the user can't touch, use the FUNCTION command, which has      * a compatible syntax.      *      * @param child      */
 DECL|method|macro (Tree child)
 specifier|private
 name|void
@@ -4572,7 +4550,7 @@ control|)
 block|{
 name|entry
 operator|.
-name|integers
+name|localIntegers
 operator|.
 name|put
 argument_list|(
@@ -4635,7 +4613,7 @@ control|)
 block|{
 name|entry
 operator|.
-name|strings
+name|localStrings
 operator|.
 name|put
 argument_list|(
@@ -4656,7 +4634,7 @@ control|)
 block|{
 name|entry
 operator|.
-name|strings
+name|localStrings
 operator|.
 name|put
 argument_list|(
@@ -4774,15 +4752,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sorts the entry list using the values of the string entry variable      * sort.key$. It has no arguments.      *       * @param child      */
-DECL|method|sort (Tree child)
+comment|/**      * Sorts the entry list using the values of the string entry variable sort.key$. It has no arguments.      *      * @param      */
+DECL|method|sort ()
 specifier|private
 name|void
 name|sort
-parameter_list|(
-name|Tree
-name|child
-parameter_list|)
+parameter_list|()
 block|{
 name|Collections
 operator|.
@@ -4814,7 +4789,7 @@ return|return
 operator|(
 name|o1
 operator|.
-name|strings
+name|localStrings
 operator|.
 name|get
 argument_list|(
@@ -4826,7 +4801,7 @@ name|compareTo
 argument_list|(
 name|o2
 operator|.
-name|strings
+name|localStrings
 operator|.
 name|get
 argument_list|(
@@ -4935,10 +4910,10 @@ name|StackFunction
 implements|implements
 name|BstFunction
 block|{
-DECL|field|tree
+DECL|field|localTree
 specifier|final
 name|Tree
-name|tree
+name|localTree
 decl_stmt|;
 DECL|method|getTree ()
 specifier|public
@@ -4947,7 +4922,7 @@ name|getTree
 parameter_list|()
 block|{
 return|return
-name|tree
+name|localTree
 return|;
 block|}
 DECL|method|StackFunction (Tree stack)
@@ -4959,7 +4934,7 @@ name|stack
 parameter_list|)
 block|{
 comment|// assert stack.getType() == Bst.STACK;
-name|tree
+name|localTree
 operator|=
 name|stack
 expr_stmt|;
@@ -4984,7 +4959,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|tree
+name|localTree
 operator|.
 name|getChildCount
 argument_list|()
@@ -4996,7 +4971,7 @@ block|{
 name|Tree
 name|c
 init|=
-name|tree
+name|localTree
 operator|.
 name|getChild
 argument_list|(
@@ -5264,7 +5239,7 @@ if|if
 condition|(
 name|context
 operator|.
-name|strings
+name|localStrings
 operator|.
 name|containsKey
 argument_list|(
@@ -5278,7 +5253,7 @@ name|push
 argument_list|(
 name|context
 operator|.
-name|strings
+name|localStrings
 operator|.
 name|get
 argument_list|(
@@ -5292,7 +5267,7 @@ if|if
 condition|(
 name|context
 operator|.
-name|integers
+name|localIntegers
 operator|.
 name|containsKey
 argument_list|(
@@ -5306,7 +5281,7 @@ name|push
 argument_list|(
 name|context
 operator|.
-name|integers
+name|localIntegers
 operator|.
 name|get
 argument_list|(
@@ -5422,7 +5397,7 @@ name|getText
 argument_list|()
 decl_stmt|;
 name|Tree
-name|stack
+name|localStack
 init|=
 name|child
 operator|.
@@ -5440,12 +5415,12 @@ argument_list|,
 operator|new
 name|StackFunction
 argument_list|(
-name|stack
+name|localStack
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Declares global integer variables. It has one argument, a list of      * variable names. There are two such automatically-declared variables,      * entry.max$ and global.max$, used for limiting the lengths of string vari-      * ables. You may have any number of these commands, but a variable's      * declaration must precede its use.      *       * @param child      */
+comment|/**      * Declares global integer variables. It has one argument, a list of      * variable names. There are two such automatically-declared variables,      * entry.max$ and global.max$, used for limiting the lengths of string vari-      * ables. You may have any number of these commands, but a variable's      * declaration must precede its use.      *      * @param child      */
 DECL|method|integers (Tree child)
 specifier|private
 name|void
@@ -5508,7 +5483,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Declares global string variables. It has one argument, a list of variable      * names. You may have any number of these commands, but a variable's      * declaration must precede its use.      *       * @param child      */
+comment|/**      * Declares global string variables. It has one argument, a list of variable      * names. You may have any number of these commands, but a variable's      * declaration must precede its use.      *      * @param child      */
 DECL|method|strings (Tree child)
 specifier|private
 name|void
@@ -5596,7 +5571,7 @@ specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;
-DECL|field|strings
+DECL|field|localStrings
 specifier|final
 name|Map
 argument_list|<
@@ -5604,15 +5579,11 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-name|strings
+name|localStrings
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|fields
@@ -5627,14 +5598,10 @@ name|fields
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|integers
+DECL|field|localIntegers
 specifier|final
 name|Map
 argument_list|<
@@ -5642,15 +5609,11 @@ name|String
 argument_list|,
 name|Integer
 argument_list|>
-name|integers
+name|localIntegers
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|getFields ()
@@ -5699,11 +5662,7 @@ name|strings
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|integers
@@ -5718,11 +5677,7 @@ name|integers
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|functions
@@ -5737,11 +5692,7 @@ name|functions
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|BstFunction
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|stack
@@ -5754,9 +5705,7 @@ name|stack
 init|=
 operator|new
 name|Stack
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|push (Integer integer)

@@ -238,20 +238,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -1369,6 +1355,7 @@ expr_stmt|;
 block|}
 DECL|method|createRadioBg (Iterable<String> radioButtonLabels)
 specifier|private
+specifier|static
 name|ButtonGroup
 name|createRadioBg
 parameter_list|(
@@ -1417,6 +1404,7 @@ return|;
 block|}
 DECL|method|getBgValue (ButtonGroup buttonGroup)
 specifier|private
+specifier|static
 name|int
 name|getBgValue
 parameter_list|(
@@ -1474,6 +1462,7 @@ return|;
 block|}
 DECL|method|setBgSelected (ButtonGroup buttonGroup, int buttonIndex)
 specifier|private
+specifier|static
 name|void
 name|setBgSelected
 parameter_list|(
@@ -1550,6 +1539,7 @@ comment|//        fieldOrderStyle=getBgValue(bgFieldOrderStyle);
 comment|//    }
 DECL|method|createAdFieldOrderBg (DefaultFormBuilder builder, ButtonGroup buttonGroup, JTextField textField)
 specifier|private
+specifier|static
 name|void
 name|createAdFieldOrderBg
 parameter_list|(

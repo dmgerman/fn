@@ -149,7 +149,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Renders a GroupTreeNode using its group's getName() method, rather that its  * toString() method.  *  * @author jzieren  */
+comment|/**  * Renders a GroupTreeNode using its group's getName() method, rather that its toString() method.  *  * @author jzieren  */
 end_comment
 
 begin_class
@@ -235,7 +235,7 @@ literal|null
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|getTreeCellRendererComponent (JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus)
+DECL|method|getTreeCellRendererComponent (JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean tmpHasFocus)
 specifier|public
 name|Component
 name|getTreeCellRendererComponent
@@ -247,7 +247,7 @@ name|Object
 name|value
 parameter_list|,
 name|boolean
-name|selected
+name|sel
 parameter_list|,
 name|boolean
 name|expanded
@@ -259,7 +259,7 @@ name|int
 name|row
 parameter_list|,
 name|boolean
-name|hasFocus
+name|tmpHasFocus
 parameter_list|)
 block|{
 if|if
@@ -274,6 +274,13 @@ operator|=
 literal|true
 expr_stmt|;
 comment|// show as selected
+block|}
+else|else
+block|{
+name|selected
+operator|=
+name|sel
+expr_stmt|;
 block|}
 name|Component
 name|c
@@ -294,7 +301,7 @@ name|leaf
 argument_list|,
 name|row
 argument_list|,
-name|hasFocus
+name|tmpHasFocus
 argument_list|)
 decl_stmt|;
 comment|// this is sometimes called from deep within somewhere, with a dummy
@@ -328,9 +335,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|group
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 operator|(
@@ -355,13 +364,17 @@ name|c
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|highlightBorderCell
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|highlightBorderCell
 operator|==
 name|value
+operator|)
 condition|)
 block|{
 name|label
@@ -635,13 +648,17 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|group
 operator|instanceof
 name|KeywordGroup
+operator|)
 operator|||
+operator|(
 name|group
 operator|instanceof
 name|SearchGroup
+operator|)
 condition|)
 block|{
 name|int
@@ -907,7 +924,7 @@ return|return
 name|c
 return|;
 block|}
-comment|/**      * For use when dragging: The sepcified cell is always rendered as selected.      *      * @param cell      *            The cell over which the user is currently dragging.      */
+comment|/**      * For use when dragging: The specified cell is always rendered as selected.      *      * @param cell The cell over which the user is currently dragging.      */
 DECL|method|setHighlight1Cell (Object cell)
 name|void
 name|setHighlight1Cell
@@ -923,7 +940,7 @@ operator|=
 name|cell
 expr_stmt|;
 block|}
-comment|/**      * Highlights the specified cells (in red), or disables highlight if cells ==      * null.      */
+comment|/**      * Highlights the specified cells (in red), or disables highlight if cells == null.      */
 DECL|method|setHighlight2Cells (Object[] cells)
 name|void
 name|setHighlight2Cells
@@ -940,7 +957,7 @@ operator|=
 name|cells
 expr_stmt|;
 block|}
-comment|/**      * Highlights the specified cells (by unterlining), or disables highlight if      * cells == null.      */
+comment|/**      * Highlights the specified cells (by underlining), or disables highlight if cells == null.      */
 DECL|method|setHighlight3Cells (Object[] cells)
 name|void
 name|setHighlight3Cells
@@ -957,7 +974,7 @@ operator|=
 name|cells
 expr_stmt|;
 block|}
-comment|/**      * Highlights the specified cells (by drawing a border around it),      * or disables highlight if highlightBorderCell == null.      */
+comment|/**      * Highlights the specified cells (by drawing a border around it), or disables highlight if highlightBorderCell ==      * null.      */
 DECL|method|setHighlightBorderCell (Object highlightBorderCell)
 name|void
 name|setHighlightBorderCell

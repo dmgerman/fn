@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -75,7 +75,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helper class to get a Layout object.  *   *<code>  * LayoutHelper helper = new LayoutHelper(...a reader...);  * Layout layout = helper.getLayoutFromText();  *</code>  *  */
+comment|/**  * Helper class to get a Layout object.  *  *<code>  * LayoutHelper helper = new LayoutHelper(...a reader...);  * Layout layout = helper.getLayoutFromText();  *</code>  *  */
 end_comment
 
 begin_class
@@ -197,22 +197,13 @@ name|parsedEntries
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|StringInt
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|_eof
 specifier|private
 name|boolean
 name|_eof
-decl_stmt|;
-DECL|field|line
-specifier|private
-name|int
-name|line
-init|=
-literal|1
 decl_stmt|;
 DECL|method|LayoutHelper (Reader in)
 specifier|public
@@ -275,6 +266,7 @@ name|parsedEntry
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|si
 operator|.
 name|i
@@ -282,7 +274,9 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_SIMPLE_FIELD
+operator|)
 operator|||
+operator|(
 name|si
 operator|.
 name|i
@@ -290,7 +284,9 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_FIELD_START
+operator|)
 operator|||
+operator|(
 name|si
 operator|.
 name|i
@@ -298,7 +294,9 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_FIELD_END
+operator|)
 operator|||
+operator|(
 name|si
 operator|.
 name|i
@@ -306,7 +304,9 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_GROUP_START
+operator|)
 operator|||
+operator|(
 name|si
 operator|.
 name|i
@@ -314,6 +314,7 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_GROUP_END
+operator|)
 condition|)
 block|{
 name|si
@@ -407,7 +408,6 @@ operator|=
 name|read
 argument_list|()
 expr_stmt|;
-comment|//System.out.println((char)c);
 if|if
 condition|(
 name|c
@@ -427,7 +427,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//myStrings.add(buffer.toString());
 name|parsedEntries
 operator|.
 name|add
@@ -444,23 +443,24 @@ name|_field
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("\nbracketedEOF: " + buffer.toString());
 block|}
-comment|//myStrings.add(buffer.toString());
-comment|//System.out.println("aha: " + buffer.toString());
 return|return
 literal|null
 return|;
 block|}
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 condition|)
 block|{
 if|if
@@ -534,11 +534,9 @@ block|{
 if|if
 condition|(
 name|c
-operator|==
+operator|!=
 literal|'}'
 condition|)
-block|{                     }
-else|else
 block|{
 name|buffer
 operator|.
@@ -689,55 +687,72 @@ operator|!
 name|inQuotes
 operator|&&
 operator|(
+operator|(
 name|c
 operator|==
 literal|']'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'['
+operator|)
 operator|||
+operator|(
+name|doneWithOptions
+operator|&&
+operator|(
+operator|(
+name|c
+operator|==
+literal|'{'
+operator|)
+operator|||
+operator|(
+name|c
+operator|==
+literal|'}'
+operator|)
+operator|)
+operator|)
+operator|)
+condition|)
+block|{
+if|if
+condition|(
+operator|(
+name|c
+operator|==
+literal|']'
+operator|)
+operator|||
+operator|(
 name|doneWithOptions
 operator|&&
 operator|(
 name|c
 operator|==
-literal|'{'
-operator|||
-name|c
-operator|==
 literal|'}'
 operator|)
 operator|)
-condition|)
-comment|//if ((c == '{') || (c == '}') || (c == ']') || (c == '['))
-block|{
-if|if
-condition|(
-name|c
-operator|==
-literal|']'
-operator|||
-name|doneWithOptions
-operator|&&
-name|c
-operator|==
-literal|'}'
 condition|)
 block|{
 comment|// changed section start - arudert
 comment|// buffer may be null for parameters
-comment|//if (buffer != null)
-comment|//{
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|']'
+operator|)
 operator|&&
+operator|(
 name|buffer
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// changed section end - arudert
@@ -761,13 +776,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|//myStrings.add(buffer.toString());
-comment|//System.out.println("\nbracketedOption: " + buffer.toString());
-comment|// changed section begin - arudert
-comment|// bracketed option must be followed by an (optionally empty) parameter
-comment|// if empty, the parameter is set to " " (whitespace to avoid that the tokenizer that
-comment|// splits the string later on ignores the empty parameter)
-comment|//if (buffer != null)
 elseif|else
 if|if
 condition|(
@@ -776,6 +784,10 @@ operator|==
 literal|'}'
 condition|)
 block|{
+comment|// changed section begin - arudert
+comment|// bracketed option must be followed by an (optionally empty) parameter
+comment|// if empty, the parameter is set to " " (whitespace to avoid that the tokenizer that
+comment|// splits the string later on ignores the empty parameter)
 name|String
 name|parameter
 init|=
@@ -813,7 +825,6 @@ operator|=
 name|parameter
 expr_stmt|;
 block|}
-comment|//System.out.println("FORMAT: '"+tmp+"'");
 name|parsedEntries
 operator|.
 name|add
@@ -1011,14 +1022,18 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|'\\'
+operator|)
 operator|&&
+operator|(
 name|peek
 argument_list|()
 operator|!=
 literal|'\\'
+operator|)
 operator|&&
 operator|!
 name|escaped
@@ -1084,9 +1099,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|c
 operator|!=
 literal|'\\'
+operator|)
 operator|||
 name|escaped
 condition|)
@@ -1105,9 +1122,11 @@ expr_stmt|;
 block|}
 name|escaped
 operator|=
+operator|(
 name|c
 operator|==
 literal|'\\'
+operator|)
 operator|&&
 operator|!
 name|escaped
@@ -1118,7 +1137,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      *       */
+comment|/**      *      */
 DECL|method|parseField ()
 specifier|private
 name|void
@@ -1181,13 +1200,17 @@ operator|)
 name|c
 argument_list|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'_'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'-'
+operator|)
 condition|)
 block|{
 name|unread
@@ -1639,18 +1662,6 @@ operator|.
 name|read
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|c
-operator|==
-literal|'\n'
-condition|)
-block|{
-name|line
-operator|++
-expr_stmt|;
-block|}
-comment|//System.out.print((char) c);
 return|return
 name|c
 return|;
@@ -1678,14 +1689,18 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 operator|-
 literal|1
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|65535
+operator|)
 condition|)
 block|{
 name|_eof
@@ -1731,17 +1746,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-if|if
-condition|(
-name|c
-operator|==
-literal|'\n'
-condition|)
-block|{
-name|line
-operator|--
-expr_stmt|;
-block|}
 name|_in
 operator|.
 name|unread

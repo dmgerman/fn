@@ -386,7 +386,7 @@ name|s
 operator|+
 literal|"\". "
 operator|+
-literal|"Please report this on www.sf.net/projects/jabref"
+literal|"Please report this on https://github.com/JabRef/jabref/issues"
 argument_list|)
 throw|;
 block|}
@@ -1929,7 +1929,7 @@ name|t
 operator|+
 literal|" in KeywordGroup.deepCopy(). "
 operator|+
-literal|"Please report this on www.sf.net/projects/jabref"
+literal|"Please report this on https://github.com/JabRef/jabref/issues"
 argument_list|)
 expr_stmt|;
 return|return

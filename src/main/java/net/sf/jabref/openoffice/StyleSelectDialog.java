@@ -3164,7 +3164,7 @@ name|setField
 argument_list|(
 literal|"www"
 argument_list|,
-literal|"http://jabref.sf.net"
+literal|"https://github.com/JabRef"
 argument_list|)
 expr_stmt|;
 block|}

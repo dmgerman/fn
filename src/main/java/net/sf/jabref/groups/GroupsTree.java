@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -376,11 +376,11 @@ specifier|private
 name|GroupTreeNode
 name|dragNode
 decl_stmt|;
-DECL|field|cellRenderer
+DECL|field|localCellRenderer
 specifier|private
 specifier|final
 name|GroupTreeCellRenderer
-name|cellRenderer
+name|localCellRenderer
 init|=
 operator|new
 name|GroupTreeCellRenderer
@@ -472,7 +472,7 @@ argument_list|)
 expr_stmt|;
 name|setCellRenderer
 argument_list|(
-name|cellRenderer
+name|localCellRenderer
 argument_list|)
 expr_stmt|;
 name|setFocusable
@@ -619,9 +619,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|target
 operator|==
 literal|null
+operator|)
 operator|||
 name|dragNode
 operator|.
@@ -630,9 +632,11 @@ argument_list|(
 name|target
 argument_list|)
 operator|||
+operator|(
 name|dragNode
 operator|==
 name|target
+operator|)
 condition|)
 block|{
 name|dsde
@@ -899,6 +903,7 @@ block|}
 comment|// auto open
 if|if
 condition|(
+operator|(
 name|Math
 operator|.
 name|abs
@@ -915,7 +920,9 @@ operator|<
 name|GroupsTree
 operator|.
 name|idleMargin
+operator|)
 operator|&&
+operator|(
 name|Math
 operator|.
 name|abs
@@ -932,13 +939,16 @@ operator|<
 name|GroupsTree
 operator|.
 name|idleMargin
+operator|)
 condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|currentTime
 operator|-
 name|idleStartTime
+operator|)
 operator|>=
 name|GroupsTree
 operator|.
@@ -974,11 +984,13 @@ block|}
 comment|// autoscrolling
 if|if
 condition|(
+operator|(
 name|currentTime
 operator|-
 name|GroupsTree
 operator|.
 name|lastDragAutoscroll
+operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -998,6 +1010,7 @@ specifier|final
 name|boolean
 name|scrollUp
 init|=
+operator|(
 name|cursor
 operator|.
 name|y
@@ -1005,6 +1018,7 @@ operator|-
 name|r
 operator|.
 name|y
+operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -1014,6 +1028,8 @@ specifier|final
 name|boolean
 name|scrollDown
 init|=
+operator|(
+operator|(
 name|r
 operator|.
 name|y
@@ -1021,10 +1037,12 @@ operator|+
 name|r
 operator|.
 name|height
+operator|)
 operator|-
 name|cursor
 operator|.
 name|y
+operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -1034,6 +1052,7 @@ specifier|final
 name|boolean
 name|scrollLeft
 init|=
+operator|(
 name|cursor
 operator|.
 name|x
@@ -1041,6 +1060,7 @@ operator|-
 name|r
 operator|.
 name|x
+operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -1050,6 +1070,8 @@ specifier|final
 name|boolean
 name|scrollRight
 init|=
+operator|(
+operator|(
 name|r
 operator|.
 name|x
@@ -1057,10 +1079,12 @@ operator|+
 name|r
 operator|.
 name|width
+operator|)
 operator|-
 name|cursor
 operator|.
 name|x
+operator|)
 operator|<
 name|GroupsTree
 operator|.
@@ -1743,7 +1767,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Refresh paths that may have become invalid due to node movements within      * the tree. This method creates new paths to the last path components      * (which must still exist) of the specified paths.      *       * @param paths      *            Paths that may have become invalid.      * @return Refreshed paths that are all valid.      */
+comment|/**      * Refresh paths that may have become invalid due to node movements within      * the tree. This method creates new paths to the last path components      * (which must still exist) of the specified paths.      *      * @param paths      *            Paths that may have become invalid.      * @return Refreshed paths that are all valid.      */
 end_comment
 
 begin_function
@@ -1770,9 +1794,7 @@ name|freshPaths
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|TreePath
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 while|while
@@ -1819,7 +1841,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Refresh paths that may have become invalid due to node movements within      * the tree. This method creates new paths to the last path components      * (which must still exist) of the specified paths.      *       * @param paths      *            Paths that may have become invalid.      * @return Refreshed paths that are all valid.      */
+comment|/**      * Refresh paths that may have become invalid due to node movements within      * the tree. This method creates new paths to the last path components      * (which must still exist) of the specified paths.      *      * @param paths      *            Paths that may have become invalid.      * @return Refreshed paths that are all valid.      */
 end_comment
 
 begin_function
@@ -1909,7 +1931,7 @@ name|Object
 name|cell
 parameter_list|)
 block|{
-name|cellRenderer
+name|localCellRenderer
 operator|.
 name|setHighlight1Cell
 argument_list|(
@@ -1937,7 +1959,7 @@ index|[]
 name|cells
 parameter_list|)
 block|{
-name|cellRenderer
+name|localCellRenderer
 operator|.
 name|setHighlight2Cells
 argument_list|(
@@ -1965,7 +1987,7 @@ index|[]
 name|cells
 parameter_list|)
 block|{
-name|cellRenderer
+name|localCellRenderer
 operator|.
 name|setHighlight3Cells
 argument_list|(
@@ -1992,7 +2014,7 @@ name|GroupTreeNode
 name|node
 parameter_list|)
 block|{
-name|cellRenderer
+name|localCellRenderer
 operator|.
 name|setHighlightBorderCell
 argument_list|(

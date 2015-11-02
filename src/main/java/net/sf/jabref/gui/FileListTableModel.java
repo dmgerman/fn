@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -161,9 +161,7 @@ name|list
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|FileListEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@
@@ -440,7 +438,9 @@ parameter_list|,
 name|int
 name|columnIndex
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 comment|/**      * Set up the table contents based on the flat string representation of the file list      * @param value The string representation      */
 DECL|method|setContent (String value)
 specifier|public
@@ -515,9 +515,7 @@ name|newList
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|FileListEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|StringBuilder
@@ -535,9 +533,7 @@ name|thisEntry
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -953,6 +949,7 @@ return|;
 block|}
 DECL|method|decodeEntry (ArrayList<String> contents, boolean deduceUnknownType)
 specifier|private
+specifier|static
 name|FileListEntry
 name|decodeEntry
 parameter_list|(
@@ -1130,6 +1127,7 @@ return|;
 block|}
 DECL|method|getElementIfAvailable (ArrayList<String> contents, int index)
 specifier|private
+specifier|static
 name|String
 name|getElementIfAvailable
 parameter_list|(
@@ -1348,6 +1346,7 @@ return|;
 block|}
 DECL|method|encodeEntry (FileListEntry entry)
 specifier|private
+specifier|static
 name|String
 name|encodeEntry
 parameter_list|(

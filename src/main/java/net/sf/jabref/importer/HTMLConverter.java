@@ -5179,8 +5179,6 @@ name|readTag
 argument_list|(
 name|text
 argument_list|,
-name|sb
-argument_list|,
 name|i
 argument_list|)
 expr_stmt|;
@@ -5784,16 +5782,13 @@ literal|100
 decl_stmt|;
 comment|/*private final int MAX_TAG_LENGTH = 30;*/
 comment|/*private final int MAX_CHAR_LENGTH = 10;      private int readHtmlChar(String text, StringBuffer sb, int position) {         // Have just read the< character that starts the tag.         int index = text.indexOf(';', position);         if ((index> position)&& (index-position< MAX_CHAR_LENGTH)) {             //String code = text.substring(position, index);             //System.out.println("Removed code: "+text.substring(position, index));             return index; // Just skip the tag.         } else return position; // Don't do anything.     }*/
-DECL|method|readTag (String text, StringBuffer sb, int position)
+DECL|method|readTag (String text, int position)
 specifier|private
 name|int
 name|readTag
 parameter_list|(
 name|String
 name|text
-parameter_list|,
-name|StringBuffer
-name|sb
 parameter_list|,
 name|int
 name|position
@@ -5831,7 +5826,6 @@ name|MAX_TAG_LENGTH
 operator|)
 condition|)
 block|{
-comment|//System.out.println("Removed tag: "+text.substring(position, index));
 return|return
 name|index
 return|;

@@ -511,9 +511,7 @@ name|dbChooser
 init|=
 operator|new
 name|JComboBox
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|auxFileField
@@ -1221,9 +1219,7 @@ name|notFoundList
 operator|=
 operator|new
 name|JList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|JScrollPane
@@ -1653,9 +1649,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|refBase
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|auxName

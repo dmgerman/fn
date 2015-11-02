@@ -287,7 +287,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+comment|/**      * Parse the entries in the source, and return a List of BibtexEntry objects.      */
 annotation|@
 name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
@@ -325,6 +325,11 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+name|String
+name|str
+decl_stmt|;
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -338,10 +343,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
-name|String
-name|str
-decl_stmt|;
+init|)
+block|{
 while|while
 condition|(
 operator|(
@@ -409,11 +412,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 name|String
 index|[]
 name|entries

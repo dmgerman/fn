@@ -357,9 +357,11 @@ decl_stmt|;
 comment|// Check that the file exists:
 if|if
 condition|(
+operator|(
 name|file
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|file
@@ -462,11 +464,14 @@ argument_list|(
 literal|"ps"
 argument_list|)
 operator|||
+operator|(
+operator|(
 name|split
 operator|.
 name|length
 operator|>=
 literal|3
+operator|)
 operator|&&
 name|split
 index|[
@@ -481,6 +486,7 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"ps"
 argument_list|)
+operator|)
 condition|)
 block|{
 comment|// @formatter:on
@@ -1219,9 +1225,11 @@ name|exists
 argument_list|()
 operator|)
 operator|&&
+operator|(
 name|fileType
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// Open the file:
@@ -1286,12 +1294,14 @@ name|String
 index|[]
 name|cmd
 init|=
+operator|(
 name|fileType
 operator|.
 name|getOpenWith
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|fileType
@@ -1349,12 +1359,14 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|fileType
 operator|.
 name|getOpenWith
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|fileType
@@ -1398,12 +1410,14 @@ name|openWith
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|fileType
 operator|.
 name|getOpenWith
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|fileType
@@ -1874,9 +1888,7 @@ name|fileTypes
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ExternalFileType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|ExternalFileType

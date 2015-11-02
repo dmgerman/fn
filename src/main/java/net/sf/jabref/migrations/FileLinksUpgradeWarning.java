@@ -921,6 +921,7 @@ block|}
 comment|/**      * Check the database to find out whether any of a set of fields are used      * for any of the entries.      * @param database The bib database.      * @param fields The set of fields to look for.      * @return true if at least one of the given fields is set in at least one entry,      *  false otherwise.      */
 DECL|method|linksFound (BibtexDatabase database, String[] fields)
 specifier|private
+specifier|static
 name|boolean
 name|linksFound
 parameter_list|(
@@ -976,6 +977,7 @@ block|}
 comment|/**      * This method performs the actual changes.      * @param panel      * @param pr      * @param fileDir The path to the file directory to set, or null if it should not be set.      */
 DECL|method|makeChanges (BasePanel panel, ParserResult pr, boolean upgradePrefs, boolean upgradeDatabase, String fileDir)
 specifier|private
+specifier|static
 name|void
 name|makeChanges
 parameter_list|(
@@ -1199,6 +1201,7 @@ block|}
 block|}
 DECL|method|showsFileInGenFields ()
 specifier|private
+specifier|static
 name|boolean
 name|showsFileInGenFields
 parameter_list|()

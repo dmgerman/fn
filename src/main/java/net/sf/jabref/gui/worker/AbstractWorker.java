@@ -90,7 +90,9 @@ name|init
 parameter_list|()
 throws|throws
 name|Throwable
-block|{      }
+block|{
+comment|// Do nothing
+block|}
 comment|/**      * This method returns a wrapped Worker instance of this AbstractWorker.      * whose methods will automatically be run off the EDT (Swing) thread.      */
 DECL|method|getWorker ()
 specifier|public
@@ -121,7 +123,9 @@ specifier|public
 name|void
 name|update
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing, see above
+block|}
 block|}
 end_class
 
