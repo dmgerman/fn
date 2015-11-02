@@ -1199,7 +1199,7 @@ condition|)
 block|{
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Keyw: "
 operator|+
@@ -1294,7 +1294,7 @@ condition|)
 block|{
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Search: "
 operator|+

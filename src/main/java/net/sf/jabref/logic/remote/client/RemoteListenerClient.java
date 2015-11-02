@@ -292,7 +292,7 @@ name|LOGGER
 operator|.
 name|debug
 argument_list|(
-literal|"could not send args "
+literal|"Could not send args "
 operator|+
 name|StringUtil
 operator|.

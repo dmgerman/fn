@@ -445,7 +445,7 @@ expr_stmt|;
 block|}
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 name|m
 operator|.

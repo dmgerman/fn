@@ -46,18 +46,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|Charset
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|*
@@ -234,6 +222,8 @@ operator|+
 name|defaultLocale
 operator|+
 literal|"> failed, using locale<en> instead"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 name|locale
@@ -302,7 +292,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * In the translation, %c is translated to ":", %e is translated to "=", %<anythingelse> to<anythingelse>, %0, ... %9 to the respective params given      *      * @param resBundle the ResourceBundle to use      * @param idForErrorMessage output when translation is not found Ã¶     * @param key the key to lookup in resBundle      * @param params a list of Strings to replace %0, %1, ...      * @return      */
+comment|/**      * In the translation, %c is translated to ":", %e is translated to "=", %<anythingelse> to<anythingelse>, %0, ...      * %9 to the respective params given      *      * @param resBundle the ResourceBundle to use      * @param idForErrorMessage output when translation is not found Ã¶ * @param key the key to lookup in resBundle      * @param params a list of Strings to replace %0, %1, ...      * @return      */
 DECL|method|translate (ResourceBundle resBundle, String idForErrorMessage, String key, String... params)
 specifier|private
 specifier|static
@@ -379,6 +369,8 @@ name|Locale
 operator|.
 name|getDefault
 argument_list|()
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -397,9 +389,11 @@ block|}
 comment|// replace %0, %1, ...
 if|if
 condition|(
+operator|(
 name|translation
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|translation
@@ -516,19 +510,25 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|params
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|index
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|index
 operator|<=
 name|params
 operator|.
 name|length
+operator|)
 condition|)
 block|{
 name|sb

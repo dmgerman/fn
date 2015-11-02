@@ -2071,7 +2071,7 @@ name|LabelPatternUtil
 operator|.
 name|database
 operator|.
-name|getNumberOfKeyOccurences
+name|getNumberOfKeyOccurrences
 argument_list|(
 name|key
 argument_list|)
@@ -2234,7 +2234,7 @@ name|LabelPatternUtil
 operator|.
 name|database
 operator|.
-name|getNumberOfKeyOccurences
+name|getNumberOfKeyOccurrences
 argument_list|(
 name|moddedKey
 argument_list|)
@@ -2284,7 +2284,7 @@ name|LabelPatternUtil
 operator|.
 name|database
 operator|.
-name|getNumberOfKeyOccurences
+name|getNumberOfKeyOccurrences
 argument_list|(
 name|moddedKey
 argument_list|)

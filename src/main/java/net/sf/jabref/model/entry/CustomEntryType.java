@@ -522,20 +522,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parseRequiredFields (String required)
+DECL|method|parseRequiredFields (String req)
 specifier|private
 name|void
 name|parseRequiredFields
 parameter_list|(
 name|String
-name|required
+name|req
 parameter_list|)
 block|{
 name|String
 index|[]
 name|parts
 init|=
-name|required
+name|req
 operator|.
 name|split
 argument_list|(
@@ -1087,15 +1087,19 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|reqSets
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|reqSetsPiv
 operator|==
 name|reqSets
 operator|.
 name|length
+operator|)
 condition|)
 block|{
 name|sb
@@ -1166,6 +1170,7 @@ if|if
 condition|(
 name|j
 operator|<
+operator|(
 name|reqSets
 index|[
 name|reqSetsPiv
@@ -1174,6 +1179,7 @@ operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -1218,11 +1224,13 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|required
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -1334,11 +1342,13 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|optional
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb

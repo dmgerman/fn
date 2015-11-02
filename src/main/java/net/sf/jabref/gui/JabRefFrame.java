@@ -168,18 +168,6 @@ name|awt
 operator|.
 name|event
 operator|.
-name|KeyEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|MouseAdapter
 import|;
 end_import
@@ -294,29 +282,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|SortedSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Vector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Collectors
 import|;
 end_import
 
@@ -375,18 +341,6 @@ operator|.
 name|event
 operator|.
 name|ListSelectionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|table
-operator|.
-name|TableColumn
 import|;
 end_import
 
@@ -543,38 +497,6 @@ operator|.
 name|fetcher
 operator|.
 name|GeneralFetcher
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|fileformat
-operator|.
-name|ImportFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|id
-operator|.
-name|IdGenerator
 import|;
 end_import
 
@@ -1460,6 +1382,8 @@ operator|new
 name|ListSelectionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|valueChanged
@@ -5416,7 +5340,7 @@ name|LOGGER
 operator|.
 name|fatal
 argument_list|(
-literal|"could not interface with Mac OS X methods"
+literal|"Could not interface with Mac OS X methods."
 argument_list|,
 name|e
 argument_list|)
@@ -5775,7 +5699,7 @@ name|LOGGER
 operator|.
 name|debug
 argument_list|(
-literal|"Could not open browser"
+literal|"Could not open browser."
 argument_list|,
 name|ex
 argument_list|)

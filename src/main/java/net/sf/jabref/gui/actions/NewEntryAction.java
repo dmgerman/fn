@@ -168,6 +168,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|jabRefFrame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;

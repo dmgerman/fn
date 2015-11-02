@@ -251,7 +251,7 @@ argument_list|)
 expr_stmt|;
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Guessing 'year': '"
 operator|+
@@ -453,7 +453,7 @@ argument_list|)
 expr_stmt|;
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Guessing 'year': '"
 operator|+
@@ -543,7 +543,7 @@ argument_list|)
 expr_stmt|;
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Guessing 'pages': '"
 operator|+
@@ -692,7 +692,7 @@ argument_list|)
 decl_stmt|;
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Guessing 'pages': '"
 operator|+
@@ -806,7 +806,7 @@ argument_list|)
 expr_stmt|;
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Guessing 'volume': '"
 operator|+
@@ -935,7 +935,7 @@ argument_list|)
 expr_stmt|;
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Guessing 'journal': '"
 operator|+
@@ -999,7 +999,7 @@ condition|)
 block|{
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"... "
 operator|+
@@ -1077,7 +1077,7 @@ expr_stmt|;
 block|}
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Free parts:"
 argument_list|)
@@ -1092,7 +1092,7 @@ control|)
 block|{
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|": '"
 operator|+

@@ -144,7 +144,7 @@ name|LOGGER
 operator|.
 name|debug
 argument_list|(
-literal|"interrupting "
+literal|"Interrupting "
 operator|+
 name|this
 operator|.

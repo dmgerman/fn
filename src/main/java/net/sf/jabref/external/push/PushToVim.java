@@ -558,6 +558,8 @@ operator|.
 name|warn
 argument_list|(
 literal|"Could not read from stderr."
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}

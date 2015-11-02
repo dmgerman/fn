@@ -844,6 +844,8 @@ operator|+
 name|name
 operator|+
 literal|"\""
+argument_list|,
+name|exc
 argument_list|)
 expr_stmt|;
 block|}
