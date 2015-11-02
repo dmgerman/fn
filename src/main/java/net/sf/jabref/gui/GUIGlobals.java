@@ -364,7 +364,7 @@ init|=
 operator|new
 name|Dimension
 argument_list|(
-literal|700
+literal|750
 argument_list|,
 literal|600
 argument_list|)
