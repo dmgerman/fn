@@ -3586,6 +3586,16 @@ argument_list|(
 literal|"pages"
 argument_list|)
 decl_stmt|;
+comment|// not set
+if|if
+condition|(
+name|oldValue
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 comment|// run formatter
 operator|new
 name|PageNumbersCleanup
