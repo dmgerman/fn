@@ -488,7 +488,6 @@ return|;
 block|}
 DECL|method|getOptions ()
 specifier|private
-specifier|static
 name|Options
 name|getOptions
 parameter_list|()
@@ -1111,7 +1110,6 @@ expr_stmt|;
 block|}
 DECL|method|getVersionInfo ()
 specifier|private
-specifier|static
 name|String
 name|getVersionInfo
 parameter_list|()

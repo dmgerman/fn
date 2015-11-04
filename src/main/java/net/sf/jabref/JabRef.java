@@ -1030,7 +1030,6 @@ expr_stmt|;
 block|}
 DECL|method|setupLogHandlerForErrorConsole ()
 specifier|private
-specifier|static
 name|void
 name|setupLogHandlerForErrorConsole
 parameter_list|()
@@ -2946,7 +2945,6 @@ block|}
 comment|/**      * Run an entry fetcher from the command line.      *      * Note that this only works headlessly if the EntryFetcher does not show      * any GUI.      *      * @param fetchCommand      *            A string containing both the fetcher to use (id of      *            EntryFetcherExtension minus Fetcher) and the search query,      *            separated by a :      * @return A parser result containing the entries fetched or null if an      *         error occurred.      */
 DECL|method|fetch (String fetchCommand)
 specifier|private
-specifier|static
 name|ParserResult
 name|fetch
 parameter_list|(
@@ -3268,7 +3266,6 @@ return|;
 block|}
 DECL|method|setLookAndFeel ()
 specifier|private
-specifier|static
 name|void
 name|setLookAndFeel
 parameter_list|()

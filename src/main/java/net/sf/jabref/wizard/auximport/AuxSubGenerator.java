@@ -989,7 +989,6 @@ block|}
 comment|/**      * Insert a clone of the given entry. The clone is given a new unique ID.      * @param auxDB The database to insert into.      * @param entry The entry to insert a copy of.      */
 DECL|method|insertEntry (BibtexDatabase bibDB, BibtexEntry entry)
 specifier|private
-specifier|static
 name|void
 name|insertEntry
 parameter_list|(

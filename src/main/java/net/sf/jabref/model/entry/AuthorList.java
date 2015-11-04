@@ -3629,7 +3629,6 @@ block|}
 comment|/**          * @return true if the brackets in s are properly paired          */
 DECL|method|properBrackets (String s)
 specifier|private
-specifier|static
 name|boolean
 name|properBrackets
 parameter_list|(
@@ -3716,7 +3715,6 @@ block|}
 comment|/**          * Removes start and end brace at a string          *<p>          * E.g.,          * * {Vall{\'e}e Poussin} -> Vall{\'e}e Poussin          * * {Vall{\'e}e} {Poussin} -> Vall{\'e}e Poussin          * * Vall{\'e}e Poussin -> Vall{\'e}e Poussin          */
 DECL|method|removeStartAndEndBraces (String name)
 specifier|private
-specifier|static
 name|String
 name|removeStartAndEndBraces
 parameter_list|(

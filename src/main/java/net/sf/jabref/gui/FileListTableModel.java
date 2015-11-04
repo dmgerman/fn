@@ -949,7 +949,6 @@ return|;
 block|}
 DECL|method|decodeEntry (ArrayList<String> contents, boolean deduceUnknownType)
 specifier|private
-specifier|static
 name|FileListEntry
 name|decodeEntry
 parameter_list|(
@@ -1127,7 +1126,6 @@ return|;
 block|}
 DECL|method|getElementIfAvailable (ArrayList<String> contents, int index)
 specifier|private
-specifier|static
 name|String
 name|getElementIfAvailable
 parameter_list|(
@@ -1346,7 +1344,6 @@ return|;
 block|}
 DECL|method|encodeEntry (FileListEntry entry)
 specifier|private
-specifier|static
 name|String
 name|encodeEntry
 parameter_list|(
