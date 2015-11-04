@@ -744,12 +744,9 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Problem when finding help files: "
-operator|+
+literal|"Problem when finding help files."
+argument_list|,
 name|ex
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -439,6 +439,8 @@ operator|.
 name|warn
 argument_list|(
 literal|"Problem creating Bibtex file for mailing."
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -667,6 +669,8 @@ operator|.
 name|warn
 argument_list|(
 name|message
+argument_list|,
+name|e1
 argument_list|)
 expr_stmt|;
 return|return;
@@ -709,6 +713,8 @@ operator|.
 name|warn
 argument_list|(
 name|message
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 return|return;

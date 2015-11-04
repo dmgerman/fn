@@ -1187,6 +1187,8 @@ name|encoding
 operator|.
 name|length
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -1194,11 +1196,6 @@ comment|// we must catch all exceptions to be able notify users that
 comment|// saving failed, no matter what the reason was
 comment|// (and they won't just quit JabRef thinking
 comment|// everything worked and loosing data)
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 throw|throw
 operator|new
 name|SaveException

@@ -1101,6 +1101,8 @@ operator|.
 name|warn
 argument_list|(
 literal|"Problem updating tmp file after accepting external changes"
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}

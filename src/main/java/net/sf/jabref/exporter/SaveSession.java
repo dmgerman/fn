@@ -527,7 +527,9 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Error when creating lock file"
+literal|"Error when creating lock file."
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -675,7 +677,9 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Error when creating lock file"
+literal|"Error when creating lock file."
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
