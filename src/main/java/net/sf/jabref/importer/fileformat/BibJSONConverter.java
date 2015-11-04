@@ -120,6 +120,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|// Fields that are directly accessible at the top level BibJson object
 DECL|field|singleFieldStrings
 specifier|private
 specifier|static
@@ -141,6 +142,7 @@ block|,
 literal|"month"
 block|}
 decl_stmt|;
+comment|// Fields that are accessible in the journal part of the BibJson object
 DECL|field|journalSingleFieldStrings
 specifier|private
 specifier|static
@@ -473,6 +475,17 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"No journal title found."
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Other journal related fields
 for|for
 control|(
@@ -506,7 +519,6 @@ name|field
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -813,6 +825,21 @@ name|i
 operator|++
 control|)
 block|{
+if|if
+condition|(
+name|links
+operator|.
+name|getJSONObject
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|has
+argument_list|(
+literal|"type"
+argument_list|)
+condition|)
+block|{
 name|String
 name|type
 init|=
@@ -838,6 +865,21 @@ literal|"fulltext"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|links
+operator|.
+name|getJSONObject
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|has
+argument_list|(
+literal|"url"
+argument_list|)
+condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -857,6 +899,8 @@ literal|"url"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 block|}
