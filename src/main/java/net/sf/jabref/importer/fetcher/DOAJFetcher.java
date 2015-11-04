@@ -498,6 +498,12 @@ operator|=
 name|hits
 expr_stmt|;
 block|}
+name|int
+name|fetched
+init|=
+literal|0
+decl_stmt|;
+comment|// Keep track of number of items fetched for the progress bar
 for|for
 control|(
 name|int
@@ -658,6 +664,18 @@ operator|.
 name|addEntry
 argument_list|(
 name|entry
+argument_list|)
+expr_stmt|;
+name|fetched
+operator|++
+expr_stmt|;
+name|inspector
+operator|.
+name|setProgress
+argument_list|(
+name|fetched
+argument_list|,
+name|numberToFetch
 argument_list|)
 expr_stmt|;
 block|}
