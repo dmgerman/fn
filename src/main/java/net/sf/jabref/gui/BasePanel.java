@@ -14184,11 +14184,9 @@ argument_list|)
 condition|)
 block|{
 comment|// The file is locked even after the maximum wait. Do nothing.
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"File updated externally, but change scan failed because the file is locked."
 argument_list|)

@@ -1417,7 +1417,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"could not find icon url by name "
+literal|"Could not find icon url by name "
 operator|+
 name|name
 operator|+

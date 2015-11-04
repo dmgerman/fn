@@ -1244,8 +1244,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Take the given collection of BibtexEntry and resolve any string      * references.      *      * @param entries A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the databasee.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
-DECL|method|resolveForStrings (Collection<BibtexEntry> entries, boolean inPlace)
+comment|/**      * Take the given collection of BibtexEntry and resolve any string      * references.      *      * @param ent A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the databasee.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
+DECL|method|resolveForStrings (Collection<BibtexEntry> ent, boolean inPlace)
 specifier|public
 name|List
 argument_list|<
@@ -1257,7 +1257,7 @@ name|Collection
 argument_list|<
 name|BibtexEntry
 argument_list|>
-name|entries
+name|ent
 parameter_list|,
 name|boolean
 name|inPlace
@@ -1265,7 +1265,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|entries
+name|ent
 operator|==
 literal|null
 condition|)
@@ -1288,7 +1288,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|entries
+name|ent
 operator|.
 name|size
 argument_list|()
@@ -1299,7 +1299,7 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|entries
+name|ent
 control|)
 block|{
 name|results
@@ -1809,7 +1809,7 @@ name|String
 name|newKey
 parameter_list|)
 block|{
-comment|// Globals.logger(" checkForDuplicateKeyAndAdd [oldKey = " + oldKey + "] [newKey = " + newKey + "]");
+comment|// LOGGER.debug(" checkForDuplicateKeyAndAdd [oldKey = " + oldKey + "] [newKey = " + newKey + "]");
 name|boolean
 name|duplicate
 decl_stmt|;
@@ -1897,11 +1897,11 @@ return|return
 name|duplicate
 return|;
 block|}
-comment|/**      * Returns the number of occurences of the given key in this database.      */
-DECL|method|getNumberOfKeyOccurences (String key)
+comment|/**      * Returns the number of occurrences of the given key in this database.      */
+DECL|method|getNumberOfKeyOccurrences (String key)
 specifier|public
 name|int
-name|getNumberOfKeyOccurences
+name|getNumberOfKeyOccurrences
 parameter_list|(
 name|String
 name|key
@@ -2117,12 +2117,12 @@ block|{
 for|for
 control|(
 name|DatabaseChangeListener
-name|listener
+name|tmpListener
 range|:
 name|changeListeners
 control|)
 block|{
-name|listener
+name|tmpListener
 operator|.
 name|databaseChanged
 argument_list|(

@@ -132,6 +132,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -401,6 +429,22 @@ name|BibtexString
 operator|.
 name|Type
 name|previousStringType
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|FileActions
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|writePreamble (Writer fw, String preamble)
 specifier|private
@@ -1129,11 +1173,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"Error from encoding: '"
 operator|+
@@ -1145,6 +1187,8 @@ name|encoding
 operator|.
 name|length
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -1152,11 +1196,6 @@ comment|// we must catch all exceptions to be able notify users that
 comment|// saving failed, no matter what the reason was
 comment|// (and they won't just quit JabRef thinking
 comment|// everything worked and loosing data)
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 throw|throw
 operator|new
 name|SaveException

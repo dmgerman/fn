@@ -458,6 +458,8 @@ argument_list|(
 name|doi
 operator|+
 literal|" could not be encoded as URI."
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 return|return

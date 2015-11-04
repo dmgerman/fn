@@ -957,9 +957,11 @@ decl_stmt|;
 comment|// We have to check for "" too as the marked field may be empty
 if|if
 condition|(
+operator|(
 name|marked
 operator|==
 literal|null
+operator|)
 operator|||
 name|marked
 operator|.
@@ -1734,7 +1736,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Remove all types from the menu.       * Then cycle through all available values, and add them.      */
+comment|/**      * Remove all types from the menu.      * Then cycle through all available values, and add them.      */
 DECL|method|populateSpecialFieldMenu (JMenu menu, SpecialField field, JabRefFrame frame)
 specifier|public
 specifier|static
@@ -2808,6 +2810,8 @@ argument_list|(
 literal|"Could not execute command "
 operator|+
 name|command
+operator|+
+literal|"."
 argument_list|,
 name|ex
 argument_list|)

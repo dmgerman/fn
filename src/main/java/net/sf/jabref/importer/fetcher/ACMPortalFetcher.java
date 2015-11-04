@@ -2013,7 +2013,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Citation Unmatched "
+literal|"Citation unmatched "
 operator|+
 name|Integer
 operator|.
@@ -2146,9 +2146,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|items
 operator|==
 literal|null
+operator|)
 operator|||
 name|items
 operator|.
@@ -2478,13 +2480,8 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Unmatched!"
-argument_list|)
-expr_stmt|;
-name|LOGGER
-operator|.
-name|info
-argument_list|(
+literal|"Unmatched! "
+operator|+
 name|substring
 argument_list|)
 expr_stmt|;

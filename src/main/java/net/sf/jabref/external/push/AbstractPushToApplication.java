@@ -418,6 +418,7 @@ name|couldNotCall
 operator|=
 literal|true
 expr_stmt|;
+comment|// @formatter:off
 name|LOGGER
 operator|.
 name|warn
@@ -443,8 +444,11 @@ operator|+
 name|commandPath
 operator|+
 literal|"'."
+argument_list|,
+name|excep
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 block|}
 annotation|@

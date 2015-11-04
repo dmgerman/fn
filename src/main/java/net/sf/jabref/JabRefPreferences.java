@@ -3176,7 +3176,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Could not import preferences from jabref.xml:"
+literal|"Could not import preferences from jabref.xml: "
 operator|+
 name|e
 operator|.

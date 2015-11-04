@@ -94,6 +94,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -465,6 +493,22 @@ init|=
 operator|new
 name|JPanel
 argument_list|()
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|Globals
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/**      * Constructor taking two entries      *      * @param bOne First entry      * @param bTwo Second entry      */
 DECL|method|MergeEntries (BibtexEntry bOne, BibtexEntry bTwo)
@@ -2384,15 +2428,9 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|Localization
-operator|.
-name|lang
+name|error
 argument_list|(
 literal|"Error in entry"
 operator|+
@@ -2402,7 +2440,8 @@ name|ex
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -2839,15 +2878,9 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|Localization
-operator|.
-name|lang
+name|error
 argument_list|(
 literal|"Error in entry"
 operator|+
@@ -2857,7 +2890,8 @@ name|ex
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}

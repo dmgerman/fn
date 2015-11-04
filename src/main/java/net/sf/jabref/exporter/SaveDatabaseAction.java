@@ -222,6 +222,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -300,6 +328,22 @@ DECL|field|fileLockedError
 specifier|private
 name|boolean
 name|fileLockedError
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|SaveDatabaseAction
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|SaveDatabaseAction (BasePanel panel)
 specifier|public
@@ -529,11 +573,9 @@ argument_list|)
 condition|)
 block|{
 comment|// TODO: GUI handling of the situation when the externally modified file keeps being locked.
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"File locked, this will be trouble."
 argument_list|)
@@ -1037,7 +1079,7 @@ condition|)
 block|{
 comment|//System.out.println("Deletion of autosave file failed");
 block|}
-comment|/* else                     System.out.println("Deleted autosave file (if it existed)");*/
+comment|/* else                      System.out.println("Deleted autosave file (if it existed)");*/
 comment|// (Only) after a successful save the following
 comment|// statement marks that the base is unchanged
 comment|// since last save:

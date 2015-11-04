@@ -225,9 +225,9 @@ parameter_list|()
 block|{
 name|LOGGER
 operator|.
-name|info
+name|debug
 argument_list|(
-literal|"search term: "
+literal|"Search term: "
 operator|+
 name|searchTerm
 argument_list|)
