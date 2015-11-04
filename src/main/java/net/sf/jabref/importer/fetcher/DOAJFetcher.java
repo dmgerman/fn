@@ -377,6 +377,20 @@ name|numberToFetch
 init|=
 literal|0
 decl_stmt|;
+if|if
+condition|(
+name|hits
+operator|>
+literal|0
+condition|)
+block|{
+if|if
+condition|(
+name|hits
+operator|>
+name|maxPerPage
+condition|)
+block|{
 while|while
 condition|(
 literal|true
@@ -475,6 +489,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+else|else
+block|{
+name|numberToFetch
+operator|=
+name|hits
+expr_stmt|;
 block|}
 for|for
 control|(
@@ -645,6 +667,38 @@ return|return
 literal|true
 return|;
 block|}
+else|else
+block|{
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"No entries found for the search string '%0'"
+argument_list|,
+name|query
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Search DOAJ"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+block|}
 catch|catch
 parameter_list|(
 name|UnirestException
@@ -674,7 +728,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-literal|"DOAJ (Directory of Open Access Journals"
+literal|"DOAJ (Directory of Open Access Journals)"
 return|;
 block|}
 annotation|@
@@ -685,9 +739,8 @@ name|String
 name|getKeyName
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
-literal|null
+literal|"DOAJ"
 return|;
 block|}
 annotation|@
@@ -698,9 +751,8 @@ name|String
 name|getHelpPage
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
-literal|null
+literal|"DOAJHelp.html"
 return|;
 block|}
 annotation|@

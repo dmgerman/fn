@@ -240,6 +240,21 @@ name|i
 operator|++
 control|)
 block|{
+if|if
+condition|(
+name|authors
+operator|.
+name|getJSONObject
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|has
+argument_list|(
+literal|"name"
+argument_list|)
+condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -276,6 +291,17 @@ operator|.
 name|append
 argument_list|(
 literal|" and "
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Empty author name."
 argument_list|)
 expr_stmt|;
 block|}
