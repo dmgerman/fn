@@ -1182,7 +1182,9 @@ parameter_list|(
 name|DocumentEvent
 name|documentEvent
 parameter_list|)
-block|{             }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 specifier|public

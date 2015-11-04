@@ -712,9 +712,7 @@ name|fileTypes
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ExternalFileType
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|setValues
@@ -1516,13 +1514,13 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|getTableCellRendererComponent (JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+DECL|method|getTableCellRendererComponent (JTable tab, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 specifier|public
 name|Component
 name|getTableCellRendererComponent
 parameter_list|(
 name|JTable
-name|table
+name|tab
 parameter_list|,
 name|Object
 name|value

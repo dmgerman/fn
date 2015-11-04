@@ -199,7 +199,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Preference Tab for XMP.  *   * Allows the user to enable and configure the XMP privacy filter.  */
+comment|/**  * Preference Tab for XMP.  *  * Allows the user to enable and configure the XMP privacy filter.  */
 end_comment
 
 begin_class
@@ -255,9 +255,7 @@ name|tableRows
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|10
 argument_list|)
@@ -989,12 +987,14 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|rows
 index|[
 name|i
 index|]
 operator|+
 name|i
+operator|)
 operator|<
 name|tableRows
 operator|.
@@ -1121,7 +1121,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *       */
+comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *      */
 annotation|@
 name|Override
 DECL|method|storeSettings ()
@@ -1174,6 +1174,7 @@ if|if
 condition|(
 name|tableChanged
 operator|||
+operator|(
 name|privacyFilterCheckBox
 operator|.
 name|isSelected
@@ -1190,6 +1191,7 @@ name|JabRefPreferences
 operator|.
 name|XMP_PRIVACY_FILTERS
 argument_list|)
+operator|)
 condition|)
 block|{
 comment|// First we remove all rows with empty names.

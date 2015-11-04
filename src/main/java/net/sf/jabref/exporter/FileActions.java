@@ -2712,11 +2712,6 @@ name|reader
 return|;
 block|}
 comment|/*      * We have begun to use getSortedEntries() for both database save operations      * and non-database save operations.  In a non-database save operation      * (such as the exportDatabase call), we do not wish to use the      * global preference of saving in standard order.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getSortedEntries (BibtexDatabase database, MetaData metaData, Set<String> keySet, boolean isSaveOperation)
 specifier|public
 specifier|static

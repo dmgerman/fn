@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2004 R. Nagel Copyright (C) 2015 T. Denkinger  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/* Copyright (C) 2004 R. Nagel Copyright (C) 2015 T. Denkinger, JabRef Contributors  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
 end_comment
 
 begin_comment
@@ -268,9 +268,7 @@ name|mySet
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|20
 argument_list|)
@@ -279,9 +277,7 @@ name|notFoundList
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|db
@@ -303,7 +299,7 @@ operator|=
 name|newRefDB
 expr_stmt|;
 block|}
-comment|/**      * parseAuxFile      * read the Aux file and fill up some intern data structures.      * Nested aux files (latex \\include) supported!      *      * @param filename String : Path to LatexAuxFile      * @return boolean, true = no error occurs      */
+comment|/**      * parseAuxFile read the Aux file and fill up some intern data structures. Nested aux files (latex \\include)      * supported!      *      * @param filename String : Path to LatexAuxFile      * @return boolean, true = no error occurs      */
 comment|// found at comp.text.tex
 comment|//> Can anyone tell be the information held within a .aux file?  Is there a
 comment|//> specific format to this file?
@@ -349,7 +345,7 @@ name|matcher
 decl_stmt|;
 comment|// while condition
 name|boolean
-name|weiter
+name|cont
 decl_stmt|;
 comment|// return value -> default: no error
 name|boolean
@@ -357,7 +353,7 @@ name|back
 init|=
 literal|true
 decl_stmt|;
-comment|// fileopen status
+comment|// file open status
 name|boolean
 name|loopFileOpen
 decl_stmt|;
@@ -377,7 +373,7 @@ name|br
 init|=
 literal|null
 decl_stmt|;
-comment|// filelist, used for nested aux files
+comment|// file list, used for nested aux files
 name|Vector
 argument_list|<
 name|String
@@ -386,9 +382,7 @@ name|fileList
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|5
 argument_list|)
@@ -488,7 +482,7 @@ name|fName
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|weiter
+name|cont
 operator|=
 literal|true
 expr_stmt|;
@@ -522,7 +516,7 @@ name|back
 operator|=
 literal|false
 expr_stmt|;
-name|weiter
+name|cont
 operator|=
 literal|false
 expr_stmt|;
@@ -533,7 +527,7 @@ expr_stmt|;
 block|}
 while|while
 condition|(
-name|weiter
+name|cont
 condition|)
 block|{
 name|String
@@ -559,7 +553,7 @@ name|line
 operator|=
 literal|null
 expr_stmt|;
-name|weiter
+name|cont
 operator|=
 literal|false
 expr_stmt|;
@@ -638,13 +632,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|int
-name|keyCount
-init|=
-name|keys
-operator|.
-name|length
-decl_stmt|;
 for|for
 control|(
 name|String
@@ -671,7 +658,6 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//                System.out.println("found " +str +" in AUX") ;
 block|}
 block|}
 block|}
@@ -737,7 +723,7 @@ argument_list|,
 name|end
 argument_list|)
 decl_stmt|;
-comment|// if filename already in filelist
+comment|// if filename already in file list
 if|if
 condition|(
 operator|!
@@ -756,15 +742,15 @@ argument_list|(
 name|str
 argument_list|)
 expr_stmt|;
-comment|// insert file into filelist
+comment|// insert file into file list
 block|}
 block|}
 block|}
 block|}
-comment|// line != null
 else|else
 block|{
-name|weiter
+comment|// line != null
+name|cont
 operator|=
 literal|false
 expr_stmt|;
@@ -774,7 +760,7 @@ if|if
 condition|(
 name|loopFileOpen
 condition|)
-comment|// only close, if open sucessful
+comment|// only close, if open successful
 block|{
 try|try
 block|{
@@ -792,7 +778,9 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{                 }
+block|{
+comment|// Ignored
+block|}
 block|}
 name|fileIndex
 operator|++
@@ -803,7 +791,7 @@ return|return
 name|back
 return|;
 block|}
-comment|/**      * resolveTags      * Try to find an equivalent bibtex entry into reference database for all keys      * (found in aux file). This methode will fill up some intern data structures.....      */
+comment|/**      * resolveTags Try to find an equivalent bibtex entry into reference database for all keys (found in aux file). This      * method will fill up some intern data structures.....      */
 DECL|method|resolveTags ()
 specifier|private
 name|void
@@ -821,7 +809,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-comment|// forall bibtex keys (found in aux-file) try to find an equivalent
+comment|// for all bibtex keys (found in aux-file) try to find an equivalent
 comment|// entry into reference database
 for|for
 control|(
@@ -880,9 +868,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|crossref
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|mySet
@@ -996,14 +986,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Insert a clone of the given entry. The clone is given a new unique ID.      * @param auxDB The database to insert into.      * @param entry The entry to insert a copy of.      */
-DECL|method|insertEntry (BibtexDatabase auxDB, BibtexEntry entry)
+comment|/**      * Insert a clone of the given entry. The clone is given a new unique ID.      *      * @param bibDB The database to insert into.      * @param entry The entry to insert a copy of.      */
+DECL|method|insertEntry (BibtexDatabase bibDB, BibtexEntry entry)
 specifier|private
 name|void
 name|insertEntry
 parameter_list|(
 name|BibtexDatabase
-name|auxDB
+name|bibDB
 parameter_list|,
 name|BibtexEntry
 name|entry
@@ -1030,7 +1020,7 @@ name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|auxDB
+name|bibDB
 operator|.
 name|insertEntry
 argument_list|(
@@ -1038,7 +1028,7 @@ name|clonedEntry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * generate      * Shortcut methode for easy generation.      *      * @param auxFileName String      * @param bibDB BibtexDatabase - reference database      * @return Vector - contains all not resolved bibtex entries      */
+comment|/**      * generate Shortcut method for easy generation.      *      * @param auxFileName String      * @param bibDB BibtexDatabase - reference database      * @return Vector - contains all not resolved bibtex entries      */
 DECL|method|generate (String auxFileName, BibtexDatabase bibDB)
 specifier|public
 specifier|final
@@ -1140,7 +1130,7 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * Query the number of extra entries pulled in due to crossrefs from other      * entries.      * @return The number of additional entries pulled in due to crossref      */
+comment|/**      * Query the number of extra entries pulled in due to crossrefs from other entries.      *      * @return The number of additional entries pulled in due to crossref      */
 DECL|method|getCrossreferencedEntriesCount ()
 specifier|public
 specifier|final
@@ -1152,7 +1142,7 @@ return|return
 name|crossreferencedEntriesCount
 return|;
 block|}
-comment|/** reset all used datastructures */
+comment|/** reset all used data structures */
 DECL|method|clear ()
 specifier|public
 specifier|final
@@ -1176,7 +1166,7 @@ literal|0
 expr_stmt|;
 comment|// db = null ;  ???
 block|}
-comment|/** returns a vector off all not resolved bibtex entries found in auxfile */
+comment|/** returns a vector off all not resolved bibtex entries found in aux file */
 DECL|method|getNotFoundList ()
 specifier|public
 name|Vector
@@ -1190,7 +1180,7 @@ return|return
 name|notFoundList
 return|;
 block|}
-comment|/** returns the number of nested aux files, read by the last call of      *  generate method */
+comment|/**      * returns the number of nested aux files, read by the last call of generate method      */
 DECL|method|getNestedAuxCounter ()
 specifier|public
 name|int

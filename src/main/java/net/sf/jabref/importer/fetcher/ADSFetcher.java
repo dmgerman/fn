@@ -314,16 +314,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|bd
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|bd
 operator|.
 name|getEntryCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 comment|/* Add the entry to the inspection dialog */
@@ -405,7 +409,9 @@ specifier|public
 name|void
 name|stopFetching
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 DECL|method|importADSEntries (String key, OutputPrinter status)
 specifier|private
 name|BibtexDatabase

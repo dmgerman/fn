@@ -1120,19 +1120,6 @@ literal|null
 return|;
 comment|// TODO replace with optional one day
 block|}
-name|boolean
-name|commandMode
-init|=
-name|cli
-operator|.
-name|isDisableGui
-argument_list|()
-operator|||
-name|cli
-operator|.
-name|isFetcherEngine
-argument_list|()
-decl_stmt|;
 comment|// Check if we should reset all preferences to default values:
 if|if
 condition|(
@@ -1371,9 +1358,7 @@ name|loaded
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|ParserResult
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Vector
@@ -1384,9 +1369,7 @@ name|toImport
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -4017,9 +4000,7 @@ name|postponed
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|List
@@ -4030,9 +4011,7 @@ name|failed
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ParserResult
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|List
@@ -4043,9 +4022,7 @@ name|toOpenTab
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ParserResult
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if

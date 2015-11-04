@@ -477,7 +477,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Initial Version:  *   * @author alver  * @version Date: May 7, 2005 Time: 7:17:42 PM  *   */
+comment|/**  * Initial Version:  *  * @author alver  * @version Date: May 7, 2005 Time: 7:17:42 PM  *  */
 end_comment
 
 begin_class
@@ -1424,9 +1424,11 @@ name|retVal
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|directory
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 operator|new
@@ -1524,9 +1526,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|directory
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|position
 operator|.
@@ -1678,9 +1682,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|res
 operator|==
 literal|null
+operator|)
 operator|||
 name|res
 operator|.
@@ -1735,7 +1741,7 @@ name|String
 name|getPlannedFileName
 parameter_list|(
 name|String
-name|res
+name|result
 parameter_list|)
 block|{
 name|String
@@ -1745,7 +1751,7 @@ name|off
 operator|.
 name|getSuffix
 argument_list|(
-name|res
+name|result
 argument_list|)
 decl_stmt|;
 if|if
@@ -1804,9 +1810,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|plannedName
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|off
@@ -1823,7 +1831,7 @@ name|suffix
 expr_stmt|;
 block|}
 block|}
-comment|/*                  * [ 1548875 ] download pdf produces unsupported filename                  *                   * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306                  *                   */
+comment|/*                  * [ 1548875 ] download pdf produces unsupported filename                  *                  * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306                  *                  */
 if|if
 condition|(
 name|OS
@@ -2222,16 +2230,20 @@ block|}
 comment|/*                      * Check if we should update the editor text field, or                      * update the target entry directly:                      */
 if|if
 condition|(
+operator|(
 name|entryEditor
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|entryEditor
 operator|.
 name|getEntry
 argument_list|()
 operator|!=
 name|targetEntry
+operator|)
 condition|)
 block|{
 comment|/*                          * Editor has probably changed to show a different                          * entry. So we must update the target entry directly                          * and not set the text of the editor.                          */
@@ -2265,7 +2277,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/*                          * Need to set the fieldEditor first before running                          * updateField-Action, because otherwise we might get a                          * race condition.                          *                           * (Hopefully a) Fix for: [ 1545601 ] downloading pdf                          * corrupts pdf field text                          *                           * http://sourceforge.net/tracker/index.php?func=detail&aid=1545601&group_id=92314&atid=600306                          */
+comment|/*                          * Need to set the fieldEditor first before running                          * updateField-Action, because otherwise we might get a                          * race condition.                          *                          * (Hopefully a) Fix for: [ 1545601 ] downloading pdf                          * corrupts pdf field text                          *                          * http://sourceforge.net/tracker/index.php?func=detail&aid=1545601&group_id=92314&atid=600306                          */
 name|fieldEditor
 operator|.
 name|setText
@@ -2374,7 +2386,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a Runnable that searches the external file directory for the given      * field name, including subdirectories, and looks for files named after the      * current entry's bibtex key.      *       * @param fieldName      *            The field to set.      * @param editor      *            An EntryEditor instance where to set the value found.      * @return A reference to the Runnable that can perform the operation.      */
+comment|/**      * Creates a Runnable that searches the external file directory for the given      * field name, including subdirectories, and looks for files named after the      * current entry's bibtex key.      *      * @param fieldName      *            The field to set.      * @param editor      *            An EntryEditor instance where to set the value found.      * @return A reference to the Runnable that can perform the operation.      */
 DECL|method|autoSetFile (final String fieldName, final FieldEditor editor)
 specifier|public
 name|Runnable
@@ -2397,10 +2409,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|o
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|Globals
 operator|.
 name|prefs
@@ -2413,6 +2428,7 @@ literal|"Directory"
 argument_list|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|output
@@ -2482,9 +2498,7 @@ name|list
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
