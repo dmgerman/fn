@@ -1137,7 +1137,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      *      */
 DECL|method|parseField ()
 specifier|private
 name|void

@@ -299,7 +299,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog for creating or modifying groups. Operates directly on the Vector  * containing group information.  */
+comment|/**  * Dialog for creating or modifying groups. Operates directly on the Vector containing group information.  */
 end_comment
 
 begin_class
@@ -381,10 +381,10 @@ operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
+DECL|field|keywords
 specifier|private
 specifier|final
 name|JRadioButton
-DECL|field|keywords
 name|keywords
 init|=
 operator|new
@@ -466,11 +466,6 @@ literal|"Ok"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|field|ok_pressed
-specifier|private
-name|boolean
-name|ok_pressed
-decl_stmt|;
 DECL|field|m_groupsRoot
 specifier|private
 specifier|final
@@ -495,16 +490,6 @@ specifier|final
 name|GroupSelector
 name|gs
 decl_stmt|;
-DECL|field|oldRemove
-specifier|private
-name|String
-name|oldRemove
-decl_stmt|;
-DECL|field|oldField
-specifier|private
-name|String
-name|oldField
-decl_stmt|;
 DECL|field|gbl
 name|GridBagLayout
 name|gbl
@@ -521,7 +506,7 @@ operator|new
 name|GridBagConstraints
 argument_list|()
 decl_stmt|;
-comment|/**      * @param groupsRoot      *            The original set of groups, which is required as undo      *            information when all groups are cleared.      */
+comment|/**      * @param groupsRoot The original set of groups, which is required as undo information when all groups are cleared.      */
 DECL|method|AutoGroupDialog (JabRefFrame jabrefFrame, BasePanel basePanel, GroupSelector groupSelector, GroupTreeNode groupsRoot, String defaultField, String defaultRemove, String defaultDeliminator)
 specifier|public
 name|AutoGroupDialog
@@ -623,10 +608,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|ok_pressed
-operator|=
-literal|true
-expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
@@ -661,9 +642,11 @@ init|=
 literal|null
 decl_stmt|;
 name|String
-name|field1
+name|fieldText
 init|=
 name|field
+operator|.
+name|getText
 argument_list|()
 decl_stmt|;
 if|if
@@ -694,6 +677,8 @@ name|getDatabase
 argument_list|()
 argument_list|,
 name|field
+operator|.
+name|getText
 argument_list|()
 operator|.
 name|toLowerCase
@@ -723,6 +708,8 @@ name|getDatabase
 argument_list|()
 argument_list|,
 name|field
+operator|.
+name|getText
 argument_list|()
 operator|.
 name|toLowerCase
@@ -732,6 +719,8 @@ name|trim
 argument_list|()
 argument_list|,
 name|remove
+operator|.
+name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -780,7 +769,7 @@ argument_list|,
 name|fields
 argument_list|)
 expr_stmt|;
-name|field1
+name|fieldText
 operator|=
 literal|"author"
 expr_stmt|;
@@ -828,7 +817,7 @@ argument_list|,
 name|fields
 argument_list|)
 expr_stmt|;
-name|field1
+name|fieldText
 operator|=
 literal|"editor"
 expr_stmt|;
@@ -849,7 +838,7 @@ name|KeywordGroup
 argument_list|(
 name|keyword
 argument_list|,
-name|field1
+name|fieldText
 argument_list|,
 name|keyword
 argument_list|,
@@ -1357,8 +1346,6 @@ operator|.
 name|addGlue
 argument_list|()
 expr_stmt|;
-comment|// Layout starts here.
-comment|/*main.setLayout(gbl);         opt.setLayout(gbl);         main.setBorder(BorderFactory.createTitledBorder(BorderFactory                 .createEtchedBorder(), Globals.lang("Group properties")));         // Main panel:         con.weightx = 0;         con.gridwidth = 1;         con.insets = new Insets(3, 5, 3, 5);         con.anchor = GridBagConstraints.EAST;         con.fill = GridBagConstraints.NONE;         con.gridx = 0;         con.gridy = 0;         gbl.setConstraints(nf, con);         main.add(nf);         con.gridy = 1;         gbl.setConstraints(nr, con);         main.add(nr);         con.gridy = 2;         gbl.setConstraints(nd, con);         main.add(nd);         con.weightx = 1;         con.anchor = GridBagConstraints.WEST;         con.fill = GridBagConstraints.HORIZONTAL;         con.gridy = 0;         con.gridx = 1;         gbl.setConstraints(field, con);         main.add(field);         con.gridy = 1;         gbl.setConstraints(remove, con);         main.add(remove);         con.gridy = 2;         gbl.setConstraints(deliminator, con);         main.add(deliminator);         // Option buttons:         con.gridx = GridBagConstraints.RELATIVE;         con.gridy = GridBagConstraints.RELATIVE;         con.weightx = 1;         con.gridwidth = 1;         con.anchor = GridBagConstraints.EAST;         con.fill = GridBagConstraints.NONE;         gbl.setConstraints(ok, con);         opt.add(ok);         con.anchor = GridBagConstraints.WEST;         con.gridwidth = GridBagConstraints.REMAINDER;         gbl.setConstraints(cancel, con);         opt.add(cancel);*/
 name|main
 operator|.
 name|setBorder
@@ -1434,7 +1421,6 @@ operator|.
 name|SOUTH
 argument_list|)
 expr_stmt|;
-comment|// pack();
 name|updateComponents
 argument_list|()
 expr_stmt|;
@@ -1450,62 +1436,6 @@ argument_list|,
 name|frame
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|okPressed ()
-specifier|public
-name|boolean
-name|okPressed
-parameter_list|()
-block|{
-return|return
-name|ok_pressed
-return|;
-block|}
-DECL|method|oldField ()
-specifier|public
-name|String
-name|oldField
-parameter_list|()
-block|{
-return|return
-name|oldField
-return|;
-block|}
-DECL|method|oldRemove ()
-specifier|public
-name|String
-name|oldRemove
-parameter_list|()
-block|{
-return|return
-name|oldRemove
-return|;
-block|}
-DECL|method|field ()
-specifier|private
-name|String
-name|field
-parameter_list|()
-block|{
-return|return
-name|field
-operator|.
-name|getText
-argument_list|()
-return|;
-block|}
-DECL|method|remove ()
-specifier|private
-name|String
-name|remove
-parameter_list|()
-block|{
-return|return
-name|remove
-operator|.
-name|getText
-argument_list|()
-return|;
 block|}
 annotation|@
 name|Override

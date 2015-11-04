@@ -4752,7 +4752,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sorts the entry list using the values of the string entry variable sort.key$. It has no arguments.      *      * @param      */
+comment|/**      * Sorts the entry list using the values of the string entry variable sort.key$. It has no arguments.      */
 DECL|method|sort ()
 specifier|private
 name|void
