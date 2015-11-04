@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -191,7 +191,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * User: alver  *   * Date: Oct 18, 2006   *   * Time: 9:35:08 PM   */
+comment|/**  * User: alver  *  * Date: Oct 18, 2006  *  * Time: 9:35:08 PM  */
 end_comment
 
 begin_class
@@ -214,11 +214,7 @@ name|exportFormats
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|IExportFormat
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Global variable that is used for counting output entries when exporting:
@@ -744,7 +740,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Build a string listing of all available export formats.      *       * @param maxLineLength      *            The max line length before a line break must be added.      * @param linePrefix      *            If a line break is added, this prefix will be inserted at the      *            beginning of the next line.      * @return The string describing available formats.      */
+comment|/**      * Build a string listing of all available export formats.      *      * @param maxLineLength      *            The max line length before a line break must be added.      * @param linePrefix      *            If a line break is added, this prefix will be inserted at the      *            beginning of the next line.      * @return The string describing available formats.      */
 DECL|method|getConsoleExportList (int maxLineLength, int firstLineSubtr, String linePrefix)
 specifier|public
 specifier|static
@@ -789,6 +785,8 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
+operator|(
 name|sb
 operator|.
 name|length
@@ -800,8 +798,10 @@ name|name
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|-
 name|lastBreak
+operator|)
 operator|>
 name|maxLineLength
 condition|)
@@ -887,7 +887,7 @@ name|exportFormats
 argument_list|)
 return|;
 block|}
-comment|/**      * Look up the named export format.      *       * @param consoleName      *            The export name given in the JabRef console help information.      * @return The ExportFormat, or null if no exportformat with that name is      *         registered.      */
+comment|/**      * Look up the named export format.      *      * @param consoleName      *            The export name given in the JabRef console help information.      * @return The ExportFormat, or null if no exportformat with that name is      *         registered.      */
 DECL|method|getExportFormat (String consoleName)
 specifier|public
 specifier|static
@@ -909,7 +909,7 @@ name|consoleName
 argument_list|)
 return|;
 block|}
-comment|/**      * Create an AbstractAction for performing an export operation.      *       * @param frame      *            The JabRefFrame of this JabRef instance.      * @param selectedOnly      *            true indicates that only selected entries should be exported,      *            false indicates that all entries should be exported.      * @return The action.      */
+comment|/**      * Create an AbstractAction for performing an export operation.      *      * @param frame      *            The JabRefFrame of this JabRef instance.      * @param selectedOnly      *            true indicates that only selected entries should be exported,      *            false indicates that all entries should be exported.      * @return The action.      */
 DECL|method|getExportAction (JabRefFrame frame, boolean selectedOnly)
 specifier|public
 specifier|static
@@ -928,14 +928,6 @@ name|ExportAction
 extends|extends
 name|MnemonicAwareAction
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|639463604530580554L
-decl_stmt|;
 specifier|private
 specifier|final
 name|JabRefFrame
@@ -1204,9 +1196,7 @@ name|entryIds
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 for|for
@@ -1577,9 +1567,7 @@ name|filters
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|FileFilter
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

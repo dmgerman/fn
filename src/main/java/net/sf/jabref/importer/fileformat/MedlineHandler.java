@@ -179,9 +179,7 @@ name|bibitems
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|inTitle
@@ -534,9 +532,7 @@ name|authors
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|descriptors
@@ -550,9 +546,7 @@ name|descriptors
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// To gather keywords
@@ -2221,13 +2215,16 @@ comment|// forename sometimes has initials with " " in middle: is pattern [A-Z] 
 comment|// when above is the case replace it with initials
 if|if
 condition|(
+operator|(
 name|forename
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|3
+operator|)
 operator|&&
+operator|(
 name|forename
 operator|.
 name|charAt
@@ -2236,6 +2233,7 @@ literal|1
 argument_list|)
 operator|==
 literal|' '
+operator|)
 condition|)
 block|{
 name|forename

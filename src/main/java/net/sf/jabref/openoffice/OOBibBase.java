@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -614,6 +614,7 @@ name|text
 decl_stmt|;
 DECL|field|xDesktop
 specifier|private
+specifier|final
 name|XDesktop
 name|xDesktop
 decl_stmt|;
@@ -681,11 +682,7 @@ name|uniquefiers
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|sortedReferenceMarks
@@ -1222,9 +1219,7 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|XTextDocument
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|XEnumerationAccess
@@ -1556,10 +1551,6 @@ name|supplier
 operator|.
 name|getReferenceMarks
 argument_list|()
-decl_stmt|;
-name|String
-index|[]
-name|names
 decl_stmt|;
 name|sortedReferenceMarks
 operator|=
@@ -2136,9 +2127,7 @@ name|tmp
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2230,11 +2219,7 @@ name|linkSourceBase
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexDatabase
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Map
@@ -2300,11 +2285,7 @@ name|newMap
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|BibtexDatabase
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entryComparator
 argument_list|)
@@ -2400,9 +2381,7 @@ name|tmp
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2461,11 +2440,7 @@ name|numbers
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|//HashMap<S
@@ -2855,11 +2830,13 @@ if|if
 condition|(
 name|j
 operator|<
+operator|(
 name|keys
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -3383,14 +3360,7 @@ name|refKeys
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|List
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|HashMap
@@ -3406,14 +3376,7 @@ name|refNums
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|List
-argument_list|<
-name|Integer
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -3487,9 +3450,7 @@ name|l
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|1
 argument_list|)
@@ -3524,9 +3485,7 @@ name|l2
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|1
 argument_list|)
@@ -3709,9 +3668,7 @@ name|seenBefore
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -3873,16 +3830,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|uniq
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|uniq
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|0
+operator|)
 condition|)
 block|{
 name|needsChange
@@ -4297,6 +4258,7 @@ if|if
 condition|(
 name|hadBibSection
 operator|&&
+operator|(
 name|getBookmarkRange
 argument_list|(
 name|OOBibBase
@@ -4305,6 +4267,7 @@ name|BIB_SECTION_NAME
 argument_list|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 comment|// We have overwritten the marker for the start of the reference list.
@@ -4332,7 +4295,7 @@ argument_list|,
 name|cursor
 argument_list|)
 expr_stmt|;
-comment|/* The following is for resetting the paragraph format, but should probably                    not be done.                                     XParagraphCursor parCursor =                     (XParagraphCursor)UnoRuntime.queryInterface(                     java.lang.Class.forName("com.sun.star.text.XParagraphCursor"), cursor);                 parCursor.gotoPreviousParagraph(false);                 parCursor.gotoStartOfParagraph(false);                 parCursor.gotoEndOfParagraph(true);                 XPropertySet props = (XPropertySet) UnoRuntime.queryInterface(                     XPropertySet.class, parCursor);                  try {                     props.setPropertyValue("ParaStyleName", "Default");                 } catch (com.sun.star.lang.IllegalArgumentException ex) {                     throw new UndefinedParagraphFormatException("Default");                 }                 */
+comment|/* The following is for resetting the paragraph format, but should probably                    not be done.                  XParagraphCursor parCursor =                     (XParagraphCursor)UnoRuntime.queryInterface(                     java.lang.Class.forName("com.sun.star.text.XParagraphCursor"), cursor);                 parCursor.gotoPreviousParagraph(false);                 parCursor.gotoStartOfParagraph(false);                 parCursor.gotoEndOfParagraph(true);                 XPropertySet props = (XPropertySet) UnoRuntime.queryInterface(                     XPropertySet.class, parCursor);                  try {                     props.setPropertyValue("ParaStyleName", "Default");                 } catch (com.sun.star.lang.IllegalArgumentException ex) {                     throw new UndefinedParagraphFormatException("Default");                 }                 */
 block|}
 block|}
 name|ArrayList
@@ -4343,9 +4306,7 @@ name|unresolvedKeys
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -4592,9 +4553,7 @@ name|set
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|ComparableMark
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -4713,11 +4672,7 @@ name|linkSourceBase
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexDatabase
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Map
@@ -4776,11 +4731,7 @@ name|newMap
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|BibtexDatabase
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entryComparator
 argument_list|)
@@ -4964,11 +4915,7 @@ name|entries
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|BibtexDatabase
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -5124,9 +5071,7 @@ name|keys
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -5248,11 +5193,7 @@ name|newList
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|BibtexDatabase
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|HashMap
@@ -5265,11 +5206,7 @@ name|adaptedEntries
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -5518,9 +5455,7 @@ name|keys
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Matcher
@@ -5822,11 +5757,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|i
 operator|>=
+operator|(
 name|charBefore
 operator|-
 name|flex
+operator|)
+operator|)
 operator|&&
 name|Character
 operator|.
@@ -5895,9 +5834,11 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|charAfter
 operator|+
 name|length
+operator|)
 condition|;
 name|i
 operator|++
@@ -5921,11 +5862,15 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
+operator|(
 name|charAfter
 operator|+
 name|length
+operator|)
 operator|-
 name|flex
+operator|)
 condition|)
 block|{
 name|String
@@ -6065,11 +6010,7 @@ name|newMap
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|BibtexDatabase
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entryComparator
 argument_list|)
@@ -6229,7 +6170,9 @@ parameter_list|(
 name|NoSuchMethodError
 name|ignore
 parameter_list|)
-block|{              }
+block|{
+comment|// Ignored
+block|}
 name|OOUtil
 operator|.
 name|insertFullReferenceAtCurrentLocation
@@ -6560,11 +6503,6 @@ throws|throws
 name|Exception
 block|{
 comment|// Check if the section exists:
-name|boolean
-name|exists
-init|=
-literal|false
-decl_stmt|;
 name|XTextSectionsSupplier
 name|supp
 init|=
@@ -6757,6 +6695,7 @@ while|while
 condition|(
 name|couldExpand
 operator|&&
+operator|(
 name|compare
 operator|.
 name|compareRegionEnds
@@ -6767,6 +6706,7 @@ name|rangeEnd
 argument_list|)
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|couldExpand
@@ -8029,11 +7969,13 @@ while|while
 condition|(
 name|piv
 operator|<
+operator|(
 name|names
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|XTextRange
@@ -8146,6 +8088,7 @@ while|while
 condition|(
 name|couldExpand
 operator|&&
+operator|(
 name|compare
 operator|.
 name|compareRegionEnds
@@ -8156,6 +8099,7 @@ name|r2
 argument_list|)
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|couldExpand
@@ -8184,6 +8128,7 @@ decl_stmt|;
 comment|// Check if the string contains no line breaks and only whitespace:
 if|if
 condition|(
+operator|(
 name|text
 operator|.
 name|indexOf
@@ -8193,6 +8138,7 @@ argument_list|)
 operator|==
 operator|-
 literal|1
+operator|)
 operator|&&
 name|text
 operator|.
@@ -8320,9 +8266,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

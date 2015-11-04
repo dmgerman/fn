@@ -3209,14 +3209,11 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Generate keys for all entries. All keys will be unique with respect to      * one another, and, if they are destined for an existing database, with      * respect to existing keys in the database.      */
-DECL|method|generateKeys (boolean addColumn)
+DECL|method|generateKeys ()
 specifier|private
 name|void
 name|generateKeys
-parameter_list|(
-name|boolean
-name|addColumn
-parameter_list|)
+parameter_list|()
 block|{
 name|entries
 operator|.
@@ -4019,9 +4016,7 @@ name|generatedKeys
 condition|)
 block|{
 name|generateKeys
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 comment|// Remember the choice until next time:
@@ -4303,9 +4298,7 @@ name|YES_OPTION
 condition|)
 block|{
 name|generateKeys
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 else|else
@@ -4823,9 +4816,7 @@ expr_stmt|;
 comment|// To prevent the button from getting
 comment|// enabled again.
 name|generateKeys
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 comment|// Generate the keys.
 block|}

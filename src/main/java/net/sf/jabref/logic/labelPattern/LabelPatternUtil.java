@@ -1026,9 +1026,7 @@ name|part
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Cleanup: remove unnecessary words.
@@ -1726,9 +1724,7 @@ name|fieldList
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Before we do anything, we add the parameter to the ArrayLIst
@@ -1776,8 +1772,8 @@ return|return
 name|fieldList
 return|;
 block|}
-comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      *      * The given database is used to avoid duplicate keys.      *      * @param database a<code>BibtexDatabase</code>      * @param entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
-DECL|method|makeLabel (MetaData metaData, BibtexDatabase database, BibtexEntry entry)
+comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      *      * The given database is used to avoid duplicate keys.      *      * @param dBase a<code>BibtexDatabase</code>      * @param entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
+DECL|method|makeLabel (MetaData metaData, BibtexDatabase dBase, BibtexEntry entry)
 specifier|public
 specifier|static
 name|BibtexEntry
@@ -1787,7 +1783,7 @@ name|MetaData
 name|metaData
 parameter_list|,
 name|BibtexDatabase
-name|database
+name|dBase
 parameter_list|,
 name|BibtexEntry
 name|entry
@@ -1797,7 +1793,7 @@ name|LabelPatternUtil
 operator|.
 name|database
 operator|=
-name|database
+name|dBase
 expr_stmt|;
 name|ArrayList
 argument_list|<
