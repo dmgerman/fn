@@ -402,7 +402,9 @@ operator|.
 name|IS_FIELD_END
 operator|)
 condition|)
-block|{         }
+block|{
+comment|// Do nothing
+block|}
 elseif|else
 if|if
 condition|(
@@ -423,9 +425,7 @@ name|v
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|WSITools
@@ -531,9 +531,7 @@ name|invalidFormatter
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -597,9 +595,7 @@ name|tmpEntries
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|LayoutEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|LayoutEntry
@@ -723,7 +719,9 @@ operator|.
 name|IS_SIMPLE_FIELD
 operator|)
 condition|)
-block|{             }
+block|{
+comment|// Do nothing
+block|}
 elseif|else
 if|if
 condition|(
@@ -752,9 +750,7 @@ name|blockEntries
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|StringInt
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|blockStart
@@ -884,7 +880,9 @@ name|LayoutHelper
 operator|.
 name|IS_OPTION_FIELD
 condition|)
-block|{             }
+block|{
+comment|// Do nothing
+block|}
 comment|// else if (si.i == LayoutHelper.IS_OPTION_FIELD_PARAM)
 comment|// {
 comment|// }
@@ -985,9 +983,7 @@ name|invalidFormatter
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|1
 argument_list|)
@@ -2173,9 +2169,7 @@ name|results
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|LayoutFormatter
-argument_list|>
+argument_list|<>
 argument_list|(
 name|formatterStrings
 operator|.
@@ -2337,7 +2331,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignored
+block|}
 comment|// Then check whether this is a user defined formatter
 name|String
 name|formatterParameter
@@ -2435,7 +2431,7 @@ return|return
 name|invalidFormatter
 return|;
 block|}
-comment|/**      * Will return the text that was called by the method with HTML tags      * to highlight each word the user has searched for and will skip      * the highlight process if the first Char isn't a letter or a digit.      *      * This check is a quick hack to avoid highlighting of HTML tags      * It does not always work, but it does its job mostly      *      * @param text This is a String in which we search for different words      * @param toHighlight List of all words which must be highlighted      *      * @return String that was called by the method, with HTML Tags if a word was found      */
+comment|/**      * Will return the text that was called by the method with HTML tags to highlight each word the user has searched      * for and will skip the highlight process if the first Char isn't a letter or a digit.      *      * This check is a quick hack to avoid highlighting of HTML tags It does not always work, but it does its job mostly      *      * @param text This is a String in which we search for different words      * @param toHighlight List of all words which must be highlighted      *      * @return String that was called by the method, with HTML Tags if a word was found      */
 DECL|method|highlightWords (String text, ArrayList<String> toHighlight)
 specifier|private
 name|String

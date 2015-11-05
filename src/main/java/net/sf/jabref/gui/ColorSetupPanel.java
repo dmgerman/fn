@@ -150,16 +150,6 @@ name|ColorSetupPanel
 extends|extends
 name|JPanel
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|4634367444666144966L
-decl_stmt|;
 DECL|field|ICON_WIDTH
 specifier|private
 specifier|static
@@ -189,9 +179,7 @@ name|buttons
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ColorButton
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|ColorSetupPanel ()

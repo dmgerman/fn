@@ -1210,6 +1210,8 @@ operator|.
 name|deleteOnExit
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|FileWriter
 name|fw
 init|=
@@ -1218,7 +1220,8 @@ name|FileWriter
 argument_list|(
 name|tmpfile
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|fw
 operator|.
 name|write
@@ -1226,11 +1229,7 @@ argument_list|(
 name|dropStr
 argument_list|)
 expr_stmt|;
-name|fw
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 comment|// System.out.println("importing from " + tmpfile.getAbsolutePath());
 name|ImportMenuItem
 name|importer
@@ -1303,9 +1302,7 @@ name|files
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1662,9 +1659,7 @@ name|notBibFiles
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String

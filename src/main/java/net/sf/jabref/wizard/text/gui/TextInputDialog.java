@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2004 R. Nagel   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
+comment|/*  Copyright (C) 2004 R. Nagel  Copyright (C) 2015 JabRef Contributors.   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_comment
@@ -359,30 +359,6 @@ operator|.
 name|border
 operator|.
 name|TitledBorder
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|ChangeEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|ChangeListener
 import|;
 end_import
 
@@ -1156,7 +1132,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 name|OverlayPanel
 name|testPanel
 init|=
@@ -2121,13 +2099,13 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addStylesToDocument (StyledDocument doc)
+DECL|method|addStylesToDocument (StyledDocument document)
 specifier|private
 name|void
 name|addStylesToDocument
 parameter_list|(
 name|StyledDocument
-name|doc
+name|document
 parameter_list|)
 block|{
 comment|//Initialize some styles.
@@ -2149,7 +2127,7 @@ decl_stmt|;
 name|Style
 name|regular
 init|=
-name|doc
+name|document
 operator|.
 name|addStyle
 argument_list|(
@@ -2179,7 +2157,7 @@ expr_stmt|;
 name|Style
 name|s
 init|=
-name|doc
+name|document
 operator|.
 name|addStyle
 argument_list|(
@@ -2210,7 +2188,7 @@ argument_list|)
 expr_stmt|;
 name|s
 operator|=
-name|doc
+name|document
 operator|.
 name|addStyle
 argument_list|(
@@ -2241,7 +2219,7 @@ argument_list|)
 expr_stmt|;
 name|s
 operator|=
-name|doc
+name|document
 operator|.
 name|addStyle
 argument_list|(
@@ -2272,7 +2250,7 @@ argument_list|)
 expr_stmt|;
 name|s
 operator|=
-name|doc
+name|document
 operator|.
 name|addStyle
 argument_list|(
@@ -2292,7 +2270,7 @@ argument_list|)
 expr_stmt|;
 name|s
 operator|=
-name|doc
+name|document
 operator|.
 name|addStyle
 argument_list|(
@@ -2853,7 +2831,9 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 name|fieldList
 operator|.
 name|clearSelection
@@ -3041,9 +3021,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|selEnd
 operator|-
 name|selStart
+operator|)
 operator|>
 literal|0
 condition|)
@@ -3088,7 +3070,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 block|}
@@ -3244,7 +3228,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 DECL|class|ClearAction
@@ -3329,7 +3315,9 @@ parameter_list|(
 name|ActionEvent
 name|e
 parameter_list|)
-block|{}
+block|{
+comment|// Do nothing
+block|}
 block|}
 DECL|class|FieldListSelectionHandler
 class|class
