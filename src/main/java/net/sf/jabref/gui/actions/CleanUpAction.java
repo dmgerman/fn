@@ -954,7 +954,7 @@ name|fieldName
 argument_list|,
 name|origValue
 argument_list|,
-literal|""
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -964,7 +964,7 @@ name|setField
 argument_list|(
 name|fieldName
 argument_list|,
-literal|""
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
