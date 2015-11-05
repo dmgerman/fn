@@ -164,6 +164,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Strings
+import|;
+end_import
+
 begin_class
 DECL|class|BibtexEntryWriter
 specifier|public
@@ -1705,11 +1719,23 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+comment|// only write field if is is not empty or if empty fields should be included
+comment|// the first condition mirrors mirror behavior of com.jgoodies.common.base.Strings.isNotBlank(str)
 if|if
 condition|(
+operator|!
+name|Strings
+operator|.
+name|nullToEmpty
+argument_list|(
 name|field
-operator|!=
-literal|null
+argument_list|)
+operator|.
+name|trim
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
 operator|||
 name|includeEmptyFields
 condition|)
