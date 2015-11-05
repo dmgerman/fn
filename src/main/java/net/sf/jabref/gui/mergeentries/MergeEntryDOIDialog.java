@@ -909,9 +909,6 @@ literal|"Cancelled merging entries"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dispose
-argument_list|()
-expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1081,20 +1078,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|savePosition
-argument_list|()
-expr_stmt|;
-name|dispose
-argument_list|()
-expr_stmt|;
 block|}
-block|}
-DECL|method|savePosition ()
-specifier|private
-name|void
-name|savePosition
-parameter_list|()
-block|{
+comment|// Save dialog position
 name|PositionWindow
 operator|.
 name|storeWindowPosition
@@ -1105,6 +1090,9 @@ name|PositionWindow
 operator|.
 name|MERGEENTRIES
 argument_list|)
+expr_stmt|;
+name|dispose
+argument_list|()
 expr_stmt|;
 block|}
 block|}
