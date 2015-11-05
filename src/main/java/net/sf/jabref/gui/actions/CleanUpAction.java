@@ -4235,7 +4235,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// something went wrong. Just skipt his entry
+comment|// something went wrong. Just skip this entry
 continue|continue;
 block|}
 name|String
