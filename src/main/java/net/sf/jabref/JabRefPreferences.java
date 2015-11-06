@@ -2813,6 +2813,15 @@ name|USE_IEEE_ABRV
 init|=
 literal|"useIEEEAbrv"
 decl_stmt|;
+DECL|field|PUSH_TO_APPLICATION
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PUSH_TO_APPLICATION
+init|=
+literal|"pushToApplication"
+decl_stmt|;
 comment|//non-default preferences
 DECL|field|CUSTOM_TYPE_NAME
 specifier|private
@@ -3422,6 +3431,15 @@ literal|"-batch -eval"
 argument_list|)
 expr_stmt|;
 block|}
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|PUSH_TO_APPLICATION
+argument_list|,
+literal|"LyX/Kile"
+argument_list|)
+expr_stmt|;
 name|defaults
 operator|.
 name|put

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -193,7 +193,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Customized UI component for pushing to external applications. Has a selection popup  * menu to change the selected external application.  * This class implements the ActionListener interface. When actionPerformed() is  * invoked, the currently selected PushToApplication is activated. The actionPerformed()  * method can be called with a null argument.  */
+comment|/**  * Customized UI component for pushing to external applications. Has a selection popup menu to change the selected  * external application. This class implements the ActionListener interface. When actionPerformed() is invoked, the  * currently selected PushToApplication is activated. The actionPerformed() method can be called with a null argument.  */
 end_comment
 
 begin_class
@@ -327,31 +327,27 @@ literal|"Settings"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|method|PushToApplicationButton (JabRefFrame frame, List<PushToApplication> pushActions)
+DECL|method|PushToApplicationButton (JabRefFrame frameJR, List<PushToApplication> pushActionsList)
 specifier|public
 name|PushToApplicationButton
 parameter_list|(
 name|JabRefFrame
-name|frame
+name|frameJR
 parameter_list|,
 name|List
 argument_list|<
 name|PushToApplication
 argument_list|>
-name|pushActions
+name|pushActionsList
 parameter_list|)
 block|{
-name|this
-operator|.
 name|frame
 operator|=
-name|frame
+name|frameJR
 expr_stmt|;
-name|this
-operator|.
 name|pushActions
 operator|=
-name|pushActions
+name|pushActionsList
 expr_stmt|;
 name|init
 argument_list|()
@@ -457,18 +453,7 @@ operator|new
 name|JButton
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|hasKey
-argument_list|(
-literal|"pushToApplication"
-argument_list|)
-condition|)
-block|{
+comment|// Set the last used external application
 name|String
 name|appSelected
 init|=
@@ -478,7 +463,11 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"pushToApplication"
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|PUSH_TO_APPLICATION
 argument_list|)
 decl_stmt|;
 for|for
@@ -499,21 +488,16 @@ name|i
 operator|++
 control|)
 block|{
-name|PushToApplication
-name|toApp
-init|=
+if|if
+condition|(
 name|pushActions
 operator|.
 name|get
 argument_list|(
 name|i
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|toApp
 operator|.
-name|getName
+name|getApplicationName
 argument_list|()
 operator|.
 name|equals
@@ -527,7 +511,6 @@ operator|=
 name|i
 expr_stmt|;
 break|break;
-block|}
 block|}
 block|}
 name|setSelected
@@ -594,7 +577,6 @@ operator|.
 name|EAST
 argument_list|)
 expr_stmt|;
-comment|//comp.setBorder(BorderFactory.createLineBorder(Color.gray));
 name|comp
 operator|.
 name|setMaximumSize
@@ -751,7 +733,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Update the PushButton to default to the given application.      * @param i The List index of the application to default to.      */
+comment|/**      * Update the PushButton to default to the given application.      *      * @param i The List index of the application to default to.      */
 DECL|method|setSelected (int i)
 specifier|private
 name|void
@@ -761,8 +743,6 @@ name|int
 name|i
 parameter_list|)
 block|{
-name|this
-operator|.
 name|selected
 operator|=
 name|i
@@ -804,17 +784,22 @@ argument_list|(
 name|buttonDim
 argument_list|)
 expr_stmt|;
+comment|// Store the last used application
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"pushToApplication"
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|PUSH_TO_APPLICATION
 argument_list|,
 name|toApp
 operator|.
-name|getName
+name|getApplicationName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -839,7 +824,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the toolbar component for the push button.      * @return The component.      */
+comment|/**      * Get the toolbar component for the push button.      *      * @return The component.      */
 DECL|method|getComponent ()
 specifier|public
 name|Component
@@ -940,19 +925,17 @@ specifier|static
 class|class
 name|BooleanHolder
 block|{
-DECL|method|BooleanHolder (boolean value)
+DECL|method|BooleanHolder (boolean val)
 specifier|public
 name|BooleanHolder
 parameter_list|(
 name|boolean
-name|value
+name|val
 parameter_list|)
 block|{
-name|this
-operator|.
 name|value
 operator|=
-name|value
+name|val
 expr_stmt|;
 block|}
 DECL|field|value
@@ -1289,15 +1272,6 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|4839826710086306753L
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -1389,19 +1363,17 @@ specifier|final
 name|int
 name|index
 decl_stmt|;
-DECL|method|PopupItemActionListener (int index)
+DECL|method|PopupItemActionListener (int idx)
 specifier|public
 name|PopupItemActionListener
 parameter_list|(
 name|int
-name|index
+name|idx
 parameter_list|)
 block|{
-name|this
-operator|.
 name|index
 operator|=
-name|index
+name|idx
 expr_stmt|;
 block|}
 annotation|@
@@ -1484,16 +1456,6 @@ name|MenuAction
 extends|extends
 name|MnemonicAwareAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|4339280220347418559L
-decl_stmt|;
 DECL|method|MenuAction ()
 specifier|public
 name|MenuAction
