@@ -2892,10 +2892,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Choose the URL to download. The default value points to a list provided by the JabRef developers."
+literal|"Choose the URL to download."
 argument_list|)
 argument_list|,
-literal|"http://jabref.sf.net/journals/journal_abbreviations_general.txt"
+literal|""
 argument_list|)
 expr_stmt|;
 if|if
