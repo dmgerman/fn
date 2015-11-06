@@ -849,8 +849,6 @@ comment|// need a modifier except for function keys
 block|}
 block|}
 comment|// second key cannot be a modifiers
-comment|//if ( evt.isActionKey()) {
-comment|//Util.pr(code);
 if|if
 condition|(
 comment|//code.equals("Escape")
@@ -907,7 +905,6 @@ condition|)
 block|{
 return|return;
 block|}
-comment|//}
 name|String
 name|newKey
 decl_stmt|;
@@ -955,7 +952,7 @@ argument_list|(
 name|newKey
 argument_list|)
 expr_stmt|;
-comment|//find which key is selected and set its value int the bindHM
+comment|//find which key is selected and set its value in the bindHM
 name|String
 name|selectedFunction
 init|=

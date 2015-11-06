@@ -442,7 +442,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test for https://sourceforge.net/forum/message.php?msg_id=4498555      * Test the Labelmaker and all kind of accents      * Ã Ã¡ Ä Ä Ã Ã© Ã Ã­ Ä¹ Äº Å Å Ã Ã³ Å Å Å Å Ã Ãº Ã Ã½ Å¹ Åº      */
+comment|/**      * Test for https://sourceforge.net/forum/message.php?msg_id=4498555 Test the Labelmaker and all kind of accents Ã Ã¡      * Ä Ä Ã Ã© Ã Ã­ Ä¹ Äº Å Å Ã Ã³ Å Å Å Å Ã Ãº Ã Ã½ Å¹ Åº      */
 annotation|@
 name|Test
 DECL|method|testMakeLabelAndCheckLegalKeys ()
@@ -813,7 +813,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test the Labelmaker and with accent grave      * Chars to test: "ÃÃÃÃÃ";      */
+comment|/**      * Test the Labelmaker and with accent grave Chars to test: "ÃÃÃÃÃ";      */
 annotation|@
 name|Test
 DECL|method|testMakeLabelAndCheckLegalKeysAccentGrave ()
@@ -1323,7 +1323,9 @@ parameter_list|(
 name|NullPointerException
 name|ignored
 parameter_list|)
-block|{          }
+block|{
+comment|// Ignored
+block|}
 block|}
 annotation|@
 name|Test
@@ -1525,7 +1527,9 @@ parameter_list|(
 name|NullPointerException
 name|ignored
 parameter_list|)
-block|{          }
+block|{
+comment|// Ignored
+block|}
 block|}
 comment|/**      * Tests  [auth.auth.ea]      */
 annotation|@
@@ -2719,7 +2723,9 @@ parameter_list|(
 name|NullPointerException
 name|ignored
 parameter_list|)
-block|{          }
+block|{
+comment|// Ignored
+block|}
 block|}
 annotation|@
 name|Test
@@ -2847,7 +2853,9 @@ parameter_list|(
 name|NullPointerException
 name|ignored
 parameter_list|)
-block|{          }
+block|{
+comment|// Ignored
+block|}
 block|}
 comment|/**      * Tests [veryShortTitle]      */
 annotation|@

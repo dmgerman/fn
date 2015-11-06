@@ -278,6 +278,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|ZipOutputStream
 name|out
 init|=
@@ -294,8 +296,7 @@ name|file
 argument_list|)
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ZipEntry
 name|zipEntry
@@ -378,15 +379,6 @@ argument_list|,
 name|out
 argument_list|)
 expr_stmt|;
-comment|//zipEntry = new ZipEntry()
-block|}
-finally|finally
-block|{
-name|out
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|exportOpenOfficeCalc (File file, BibtexDatabase database, Set<String> keySet)
@@ -435,6 +427,8 @@ name|keySet
 argument_list|)
 expr_stmt|;
 comment|// Then add the content to the zip file:
+try|try
+init|(
 name|BufferedInputStream
 name|in
 init|=
@@ -447,7 +441,8 @@ argument_list|(
 name|tmpFile
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|OpenOfficeDocumentCreator
 operator|.
 name|storeOpenOfficeFile
@@ -457,6 +452,7 @@ argument_list|,
 name|in
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Delete the temporary file:
 name|tmpFile
 operator|.
@@ -495,7 +491,7 @@ name|keySet
 argument_list|)
 decl_stmt|;
 try|try
-block|{
+init|(
 name|Writer
 name|ps
 init|=
@@ -510,10 +506,8 @@ argument_list|)
 argument_list|,
 literal|"UTF8"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
-comment|//            Writer ps = new FileWriter(tmpFile);
 name|DOMSource
 name|source
 init|=
@@ -566,15 +560,6 @@ argument_list|,
 name|result
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|ps
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -666,7 +651,7 @@ name|resource
 argument_list|)
 decl_stmt|;
 try|try
-block|{
+init|(
 name|InputStream
 name|in
 init|=
@@ -674,7 +659,8 @@ name|url
 operator|.
 name|openStream
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|byte
 index|[]
 name|buffer

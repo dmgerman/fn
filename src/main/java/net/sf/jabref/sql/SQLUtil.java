@@ -129,7 +129,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author pattonlk  *  *         Reestructured by ifsteinm. Jan 20th Now it is possible to export more  *         than one jabref database. BD creation, insertions and queries where  *         reformulated to accomodate the changes. The changes include a  *         refactory on import/export to SQL module, creating many other classes  *         making them more readable This class just support Exporters and  *         Importers  */
+comment|/**  *  * @author pattonlk  *  *         Reestructured by ifsteinm. Jan 20th Now it is possible to export more than one jabref database. BD creation,  *         insertions and queries where reformulated to accomodate the changes. The changes include a refactory on  *         import/export to SQL module, creating many other classes making them more readable This class just support  *         Exporters and Importers  */
 end_comment
 
 begin_class
@@ -190,7 +190,7 @@ specifier|private
 name|SQLUtil
 parameter_list|()
 block|{     }
-comment|/**      * loop through entry types to get required, optional, general and utility      * fields for this type.      */
+comment|/**      * loop through entry types to get required, optional, general and utility fields for this type.      */
 DECL|method|refreshFields ()
 specifier|private
 specifier|static
@@ -379,7 +379,7 @@ return|return
 name|fieldstr
 return|;
 block|}
-comment|/**      * Inserts the elements of a String array into an ArrayList making sure not      * to duplicate entries in the ArrayList      *      * @param list      *            The ArrayList containing unique entries      * @param array      *            The String array to be inserted into the ArrayList      * @return The updated ArrayList with new unique entries      */
+comment|/**      * Inserts the elements of a String array into an ArrayList making sure not to duplicate entries in the ArrayList      *      * @param list The ArrayList containing unique entries      * @param array The String array to be inserted into the ArrayList      * @return The updated ArrayList with new unique entries      */
 DECL|method|uniqueInsert (ArrayList<String> list, String[] array)
 specifier|private
 specifier|static
@@ -452,7 +452,7 @@ return|return
 name|list
 return|;
 block|}
-comment|/**      * Generates DML specifying table columns and their datatypes. The output of      * this routine should be used within a CREATE TABLE statement.      *      * @param fields      *            Contains unique field names      * @param datatype      *            Specifies the SQL data type that the fields should take on.      * @return The SQL code to be included in a CREATE TABLE statement.      */
+comment|/**      * Generates DML specifying table columns and their datatypes. The output of this routine should be used within a      * CREATE TABLE statement.      *      * @param fields Contains unique field names      * @param datatype Specifies the SQL data type that the fields should take on.      * @return The SQL code to be included in a CREATE TABLE statement.      */
 DECL|method|fieldsAsCols (ArrayList<String> fields, String datatype)
 specifier|public
 specifier|static
@@ -550,8 +550,8 @@ return|return
 name|str
 return|;
 block|}
-comment|/**      *      * @param allFields      *            All existent fields for a given entry type      * @param reqFields      *            list containing required fields for an entry type      * @param optFields      *            list containing optional fields for an entry type      * @param utiFields      *            list containing utility fields for an entry type      * @param origList      *            original list with the correct size filled with the default      *            values for each field      * @return origList changing the values of the fields that appear on      *         reqFields, optFields, utiFields set to 'req', 'opt' and 'uti'      *         respectively      */
-DECL|method|setFieldRequirement ( ArrayList<String> allFields, List<String> reqFields, List<String> optFields, List<String> utiFields, ArrayList<String> origList)
+comment|/**      *      * @param allFields All existent fields for a given entry type      * @param reqFields list containing required fields for an entry type      * @param optFields list containing optional fields for an entry type      * @param utiFields list containing utility fields for an entry type      * @param origList original list with the correct size filled with the default values for each field      * @return origList changing the values of the fields that appear on reqFields, optFields, utiFields set to 'req',      *         'opt' and 'uti' respectively      */
+DECL|method|setFieldRequirement (ArrayList<String> allFields, List<String> reqFields, List<String> optFields, List<String> utiFields, ArrayList<String> origList)
 specifier|public
 specifier|static
 name|ArrayList
@@ -688,7 +688,7 @@ return|return
 name|origList
 return|;
 block|}
-comment|/**      * Return a message raised from a SQLException      *      * @param ex      *            The SQLException raised      */
+comment|/**      * Return a message raised from a SQLException      *      * @param ex The SQLException raised      */
 DECL|method|getExceptionMessage (Exception ex)
 specifier|public
 specifier|static
@@ -734,7 +734,7 @@ return|return
 name|msg
 return|;
 block|}
-comment|/**      * return a ResultSet with the result of a "SELECT *" query for a given      * table      *      * @param conn      *            Connection to the database      * @param tableName      *            String containing the name of the table you want to get the      *            results.      * @return a ResultSet with the query result returned from the DB      * @throws SQLException      */
+comment|/**      * return a ResultSet with the result of a "SELECT *" query for a given table      *      * @param conn Connection to the database      * @param tableName String containing the name of the table you want to get the results.      * @return a ResultSet with the query result returned from the DB      * @throws SQLException      */
 DECL|method|queryAllFromTable (Connection conn, String tableName)
 specifier|public
 specifier|static
@@ -759,6 +759,8 @@ name|tableName
 operator|+
 literal|';'
 decl_stmt|;
+try|try
+init|(
 name|Statement
 name|res
 init|=
@@ -773,7 +775,8 @@ name|conn
 argument_list|,
 name|query
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 return|return
 name|res
 operator|.
@@ -781,7 +784,8 @@ name|getResultSet
 argument_list|()
 return|;
 block|}
-comment|/**      * Utility method for processing DML with proper output      *      * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be sent      * @param dml      *            The DML statements to be processed      */
+block|}
+comment|/**      * Utility method for processing DML with proper output      *      * @param out The output (PrintStream or Connection) object to which the DML should be sent      * @param dml The DML statements to be processed      */
 DECL|method|processQuery (Object out, String dml)
 specifier|public
 specifier|static
@@ -846,7 +850,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Utility method for processing DML with proper output      *      * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be sent      * @param query      *            The DML statements to be processed      * @return the result of the statement      */
+comment|/**      * Utility method for processing DML with proper output      *      * @param out The output (PrintStream or Connection) object to which the DML should be sent      * @param query The DML statements to be processed      * @return the result of the statement      */
 DECL|method|processQueryWithResults (Object out, String query)
 specifier|public
 specifier|static
@@ -920,7 +924,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * This routine returns the JDBC url corresponding to the DBStrings input.      *      * @param dbStrings      *            The DBStrings to use to make the connection      * @return The JDBC url corresponding to the input DBStrings      */
+comment|/**      * This routine returns the JDBC url corresponding to the DBStrings input.      *      * @param dbStrings The DBStrings to use to make the connection      * @return The JDBC url corresponding to the input DBStrings      */
 DECL|method|createJDBCurl (DBStrings dbStrings, boolean withDBName)
 specifier|public
 specifier|static
@@ -973,7 +977,7 @@ return|return
 name|url
 return|;
 block|}
-comment|/**      * Process a query and returns only the first result of a result set as a      * String. To be used when it is certain that only one String (single cell)      * will be returned from the DB      *      * @param conn      *            The Connection object to which the DML should be sent      * @param query      *            The query statements to be processed      * @return String with the result returned from the database      * @throws SQLException      */
+comment|/**      * Process a query and returns only the first result of a result set as a String. To be used when it is certain that      * only one String (single cell) will be returned from the DB      *      * @param conn The Connection object to which the DML should be sent      * @param query The query statements to be processed      * @return String with the result returned from the database      * @throws SQLException      */
 DECL|method|processQueryWithSingleResult (Connection conn, String query)
 specifier|public
 specifier|static
@@ -989,6 +993,8 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
+try|try
+init|(
 name|ResultSet
 name|rs
 init|=
@@ -1003,7 +1009,8 @@ argument_list|)
 operator|.
 name|getResultSet
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|rs
 operator|.
 name|next
@@ -1031,7 +1038,8 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Utility method for executing DML      *      * @param conn      *            The DML Connection object that will execute the SQL      * @param qry      *            The DML statements to be executed      */
+block|}
+comment|/**      * Utility method for executing DML      *      * @param conn The DML Connection object that will execute the SQL      * @param qry The DML statements to be executed      */
 DECL|method|executeQuery (Connection conn, String qry)
 specifier|private
 specifier|static
@@ -1047,6 +1055,8 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
+try|try
+init|(
 name|Statement
 name|stmnt
 init|=
@@ -1054,7 +1064,8 @@ name|conn
 operator|.
 name|createStatement
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|stmnt
 operator|.
 name|execute
@@ -1091,7 +1102,8 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Utility method for executing DML      *      * @param conn      *            The DML Connection object that will execute the SQL      * @param qry      *            The DML statements to be executed      */
+block|}
+comment|/**      * Utility method for executing DML      *      * @param conn The DML Connection object that will execute the SQL      * @param qry The DML statements to be executed      */
 DECL|method|executeQueryWithResults (Connection conn, String qry)
 specifier|private
 specifier|static

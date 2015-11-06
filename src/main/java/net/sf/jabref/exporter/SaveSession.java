@@ -177,7 +177,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class used to handle safe storage to disk.  *  * Usage: create a SaveSession giving the file to save to, the  * encoding, and whether to make a backup. The SaveSession will provide a Writer to store to, which actually  * goes to a temporary file. The Writer keeps track of whether all characters could be saved, and if not,  * which characters were not encodable.  *  * After saving is finished, the client should close the Writer. If the save should be put into effect, call  * commit(), otherwise call cancel(). When cancelling, the temporary file is simply deleted and the target  * file remains unchanged. When committing, the temporary file is copied to the target file after making  * a backup if requested and if the target file already existed, and finally the temporary file is deleted.  *  * If committing fails, the temporary file will not be deleted.  */
+comment|/**  * Class used to handle safe storage to disk.  *  * Usage: create a SaveSession giving the file to save to, the encoding, and whether to make a backup. The SaveSession  * will provide a Writer to store to, which actually goes to a temporary file. The Writer keeps track of whether all  * characters could be saved, and if not, which characters were not encodable.  *  * After saving is finished, the client should close the Writer. If the save should be put into effect, call commit(),  * otherwise call cancel(). When cancelling, the temporary file is simply deleted and the target file remains unchanged.  * When committing, the temporary file is copied to the target file after making a backup if requested and if the target  * file already existed, and finally the temporary file is deleted.  *  * If committing fails, the temporary file will not be deleted.  */
 end_comment
 
 begin_class
@@ -338,20 +338,29 @@ name|encoding
 operator|=
 name|encoding
 expr_stmt|;
-name|writer
-operator|=
-operator|new
-name|VerifyingWriter
-argument_list|(
+try|try
+init|(
+name|FileOutputStream
+name|fos
+init|=
 operator|new
 name|FileOutputStream
 argument_list|(
 name|tmp
 argument_list|)
+init|)
+block|{
+name|writer
+operator|=
+operator|new
+name|VerifyingWriter
+argument_list|(
+name|fos
 argument_list|,
 name|encoding
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getWriter ()
 specifier|public
@@ -606,7 +615,7 @@ name|delete
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Check if a lock file exists, and create it if it doesn't.      * @return true if the lock file already existed      * @throws IOException if something happens during creation.      */
+comment|/**      * Check if a lock file exists, and create it if it doesn't.      *      * @return true if the lock file already existed      * @throws IOException if something happens during creation.      */
 DECL|method|createLockFile ()
 specifier|private
 name|boolean
@@ -692,7 +701,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Check if a lock file exists, and delete it if it does.      * @return true if the lock file existed, false otherwise.      * @throws IOException if something goes wrong.      */
+comment|/**      * Check if a lock file exists, and delete it if it does.      *      * @return true if the lock file existed, false otherwise.      * @throws IOException if something goes wrong.      */
 DECL|method|deleteLockFile ()
 specifier|private
 name|boolean

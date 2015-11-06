@@ -12796,8 +12796,18 @@ name|exists
 argument_list|()
 condition|)
 block|{
-comment|//Util.pr("Opening last edited file:"
-comment|//+fileToOpen.getName());
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Opening last edited file:"
+operator|+
+name|file
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|open
 operator|.
 name|openIt
@@ -12892,7 +12902,6 @@ name|next
 operator|=
 name|next
 expr_stmt|;
-comment|//Util.pr(""+prefs.getKey("Next tab"));
 name|putValue
 argument_list|(
 name|Action
@@ -13086,7 +13095,21 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|//Util.pr(Globals.focusListener.getFocused().toString());
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+name|Globals
+operator|.
+name|focusListener
+operator|.
+name|getFocused
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|JComponent
 name|source
 init|=

@@ -616,7 +616,9 @@ argument_list|(
 literal|"PubmedArticle"
 argument_list|)
 condition|)
-block|{         }
+block|{
+comment|// Do nothing
+block|}
 elseif|else
 if|if
 condition|(

@@ -11009,7 +11009,7 @@ expr_stmt|;
 comment|// We replace the default FocusTraversalPolicy with a subclass
 comment|// that only allows FieldEditor components to gain keyboard focus,
 comment|// if there is an entry editor open.
-comment|/*splitPane.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy() {                 protected boolean accept(Component c) {                     Util.pr("jaa");                     if (showing == null)                         return super.accept(c);                     else                         return (super.accept(c)&&                                 (c instanceof FieldEditor));                 }                 });*/
+comment|/*splitPane.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy() {                 protected boolean accept(Component c) {                     if (showing == null)                         return super.accept(c);                     else                         return (super.accept(c)&&                                 (c instanceof FieldEditor));                 }                 });*/
 name|createMainTable
 argument_list|()
 expr_stmt|;
@@ -11303,7 +11303,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*     public void refreshTable() {         //System.out.println("hiding="+hidingNonHits+"\tlastHits="+lastSearchHits);         // This method is called by EntryTypeForm when a field value is         // stored. The table is scheduled for repaint.         entryTable.assureNotEditing();         //entryTable.invalidate();         BibtexEntry[] bes = entryTable.getSelectedEntries();     if (hidingNonHits)         tableModel.update(lastSearchHits);     else         tableModel.update();     //tableModel.remap();         if ((bes != null)&& (bes.length> 0))             selectEntries(bes, 0);      //long toc = System.currentTimeMillis();     //	Util.pr("Refresh took: "+(toc-tic)+" ms");     } */
+comment|/*     public void refreshTable() {         //System.out.println("hiding="+hidingNonHits+"\tlastHits="+lastSearchHits);         // This method is called by EntryTypeForm when a field value is         // stored. The table is scheduled for repaint.         entryTable.assureNotEditing();         //entryTable.invalidate();         BibtexEntry[] bes = entryTable.getSelectedEntries();     if (hidingNonHits)         tableModel.update(lastSearchHits);     else         tableModel.update();     //tableModel.remap();         if ((bes != null)&& (bes.length> 0))             selectEntries(bes, 0);      //long toc = System.currentTimeMillis();     //	LOGGER.debug("Refresh took: "+(toc-tic)+" ms");     } */
 end_comment
 
 begin_function
@@ -14028,7 +14028,7 @@ comment|//if (updatedExternally) {
 comment|//  return;
 comment|//}
 comment|// to bad timing. If not, we'll handle it on the next polling.
-comment|//Util.pr("File '"+file.getPath()+"' has been modified.");
+comment|//LOGGER.debug("File '"+file.getPath()+"' has been modified.");
 name|updatedExternally
 operator|=
 literal|true

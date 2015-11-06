@@ -1386,7 +1386,9 @@ parameter_list|(
 name|KeyEvent
 name|arg0
 parameter_list|)
-block|{             }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1396,7 +1398,9 @@ parameter_list|(
 name|KeyEvent
 name|arg0
 parameter_list|)
-block|{             }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1489,7 +1493,9 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{             }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1499,7 +1505,9 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{             }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 specifier|public
