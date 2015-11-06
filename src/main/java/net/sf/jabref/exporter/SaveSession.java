@@ -338,29 +338,21 @@ name|encoding
 operator|=
 name|encoding
 expr_stmt|;
-try|try
-init|(
-name|FileOutputStream
-name|fos
-init|=
-operator|new
-name|FileOutputStream
-argument_list|(
-name|tmp
-argument_list|)
-init|)
-block|{
+comment|/* Using  	   try (FileOutputStream fos = new FileOutputStream(tmp)) { 	       writer = new VerifyingWriter(fos, encoding); 	   } 	   doesn't work since fos is closed after assigning write,  	   leading to that fos may never be closed at all 	 */
 name|writer
 operator|=
 operator|new
 name|VerifyingWriter
 argument_list|(
-name|fos
+operator|new
+name|FileOutputStream
+argument_list|(
+name|tmp
+argument_list|)
 argument_list|,
 name|encoding
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|getWriter ()
 specifier|public

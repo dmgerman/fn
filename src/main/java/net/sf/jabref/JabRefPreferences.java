@@ -10592,8 +10592,6 @@ name|f
 argument_list|)
 init|)
 block|{
-try|try
-block|{
 name|prefs
 operator|.
 name|exportSubtree
@@ -10615,7 +10613,6 @@ argument_list|(
 name|ex
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 comment|/**      * Imports Preferences from an XML file.      *      * @param filename String File to import from      */
@@ -10651,8 +10648,6 @@ name|f
 argument_list|)
 init|)
 block|{
-try|try
-block|{
 name|Preferences
 operator|.
 name|importPreferences
@@ -10676,7 +10671,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-block|}
 comment|/**      * Determines whether the given field should be written without any sort of wrapping.      *      * @param fieldName The field name.      * @return true if the field should not be wrapped.      */
 DECL|method|isNonWrappableField (String fieldName)
 specifier|public
@@ -10696,7 +10690,7 @@ name|fieldName
 argument_list|)
 return|;
 block|}
-comment|/**      * ONLY FOR TESTING!      *      * Do not use in production code. Otherwise the singleton pattern is broken and preferences might get lost.      *       * @param owPrefs      */
+comment|/**      * ONLY FOR TESTING!      *      * Do not use in production code. Otherwise the singleton pattern is broken and preferences might get lost.      *      * @param owPrefs      */
 DECL|method|overwritePreferences (JabRefPreferences owPrefs)
 name|void
 name|overwritePreferences
