@@ -6102,7 +6102,20 @@ comment|//defaults.put("lastAutodetectedImport", "");
 comment|//defaults.put("autoRemoveExactDuplicates", Boolean.FALSE);
 comment|//defaults.put("confirmAutoRemoveExactDuplicates", Boolean.TRUE);
 comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));
-comment|//Util.pr(System.getProperty("java.io.tempdir"));
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Temporary directory: "
+operator|+
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"java.io.tempdir"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//defaults.put("keyPattern", new LabelPattern(KEY_PATTERN));
 name|defaults
 operator|.
@@ -10567,6 +10580,8 @@ argument_list|(
 name|filename
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|OutputStream
 name|os
 init|=
@@ -10575,7 +10590,8 @@ name|FileOutputStream
 argument_list|(
 name|f
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 try|try
 block|{
 name|prefs
@@ -10600,21 +10616,6 @@ name|ex
 argument_list|)
 throw|;
 block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|os
-operator|!=
-literal|null
-condition|)
-block|{
-name|os
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 comment|/**      * Imports Preferences from an XML file.      *      * @param filename String File to import from      */
@@ -10638,6 +10639,8 @@ argument_list|(
 name|filename
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|is
 init|=
@@ -10646,7 +10649,8 @@ name|FileInputStream
 argument_list|(
 name|f
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 try|try
 block|{
 name|Preferences
@@ -10672,6 +10676,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
 comment|/**      * Determines whether the given field should be written without any sort of wrapping.      *      * @param fieldName The field name.      * @return true if the field should not be wrapped.      */
 DECL|method|isNonWrappableField (String fieldName)
 specifier|public
@@ -10691,18 +10696,18 @@ name|fieldName
 argument_list|)
 return|;
 block|}
-comment|/**      * ONLY FOR TESTING!      *      * Do not use in production code. Otherwise the singleton pattern is broken and preferences might get lost.      * @param prefs      */
-DECL|method|overwritePreferences (JabRefPreferences prefs)
+comment|/**      * ONLY FOR TESTING!      *      * Do not use in production code. Otherwise the singleton pattern is broken and preferences might get lost.      *       * @param owPrefs      */
+DECL|method|overwritePreferences (JabRefPreferences owPrefs)
 name|void
 name|overwritePreferences
 parameter_list|(
 name|JabRefPreferences
-name|prefs
+name|owPrefs
 parameter_list|)
 block|{
 name|singleton
 operator|=
-name|prefs
+name|owPrefs
 expr_stmt|;
 block|}
 block|}

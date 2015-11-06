@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -201,7 +201,7 @@ operator|=
 name|completer
 expr_stmt|;
 block|}
-comment|/**      * This method is used if the focus listener should call another focus listener      * after finishing. This is needed because the autocomplete listener must      * run before the focus listener responsible for storing the current edit.      *      * @param listener The listener to call.      */
+comment|/**      * This method is used if the focus listener should call another focus listener after finishing. This is needed      * because the autocomplete listener must run before the focus listener responsible for storing the current edit.      *      * @param listener The listener to call.      */
 DECL|method|setNextFocusListener (FocusListener listener)
 specifier|public
 name|void
@@ -218,7 +218,7 @@ operator|=
 name|listener
 expr_stmt|;
 block|}
-comment|/**      * This setting determines whether the autocomplete listener should consume the Enter key      * stroke when it leads to accepting a completion. If set to false, the JTextComponent will receive      * the Enter key press after the completion is done. The default value if true.      * @param t true to indicate that the Enter key should be consumed, false that it should be forwarded      */
+comment|/**      * This setting determines whether the autocomplete listener should consume the Enter key stroke when it leads to      * accepting a completion. If set to false, the JTextComponent will receive the Enter key press after the completion      * is done. The default value if true.      *      * @param t true to indicate that the Enter key should be consumed, false that it should be forwarded      */
 DECL|method|setConsumeEnterKey (boolean t)
 specifier|public
 name|void
@@ -638,7 +638,16 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//Util.pr(alltext.toString());
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+name|alltext
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|comp
 operator|.
 name|setText
@@ -675,9 +684,19 @@ operator|.
 name|getCaretPosition
 argument_list|()
 expr_stmt|;
-comment|//System.out.println("ToSetIn: '"+toSetIn+"'");
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"ToSetIn: '"
+operator|+
+name|toSetIn
+operator|+
+literal|"'"
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * If user cancels autocompletion by      *   a) entering another letter than the completed word (and there is no other auto completion)      *   b) space      * the casing of the letters has to be kept      *       * Global variable "lastBeginning" keeps track of typed letters.      * We rely on this variable to reconstruct the text       *       * @param wordSeperatorTyped indicates whether the user has typed a white space character or a      */
+comment|/**      * If user cancels autocompletion by a) entering another letter than the completed word (and there is no other auto      * completion) b) space the casing of the letters has to be kept      *      * Global variable "lastBeginning" keeps track of typed letters. We rely on this variable to reconstruct the text      *      * @param wordSeperatorTyped indicates whether the user has typed a white space character or a      */
 DECL|method|setUnmodifiedTypedLetters (JTextComponent comp, boolean lastBeginningContainsTypedCharacter, boolean wordSeperatorTyped)
 specifier|private
 name|void
@@ -868,7 +887,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/**      * Start a new completion attempt      * (instead of treating a continuation of an existing word or an interrupt of the current word)      */
+comment|/**      * Start a new completion attempt (instead of treating a continuation of an existing word or an interrupt of the      * current word)      */
 DECL|method|startCompletion (StringBuffer currentword, KeyEvent e)
 specifier|private
 name|void
@@ -902,8 +921,6 @@ name|currentword
 operator|.
 name|toString
 argument_list|()
-argument_list|,
-name|comp
 argument_list|)
 decl_stmt|;
 name|String
@@ -1431,8 +1448,6 @@ operator|=
 name|findCompletions
 argument_list|(
 name|lastBeginning
-argument_list|,
-name|comp
 argument_list|)
 expr_stmt|;
 name|lastShownCompletion
@@ -1603,8 +1618,6 @@ init|=
 name|findCompletions
 argument_list|(
 name|lastBeginning
-argument_list|,
-name|comp
 argument_list|)
 decl_stmt|;
 if|if
@@ -1675,7 +1688,6 @@ operator|.
 name|getText
 argument_list|()
 decl_stmt|;
-comment|//Util.pr(""+lastLen);
 comment|//we do not use toSetIn as we want to obey the casing of "sno"
 name|comp
 operator|.
@@ -1958,7 +1970,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-DECL|method|findCompletions (String beginning, JTextComponent comp)
+DECL|method|findCompletions (String beginning)
 specifier|private
 name|String
 index|[]
@@ -1966,9 +1978,6 @@ name|findCompletions
 parameter_list|(
 name|String
 name|beginning
-parameter_list|,
-name|JTextComponent
-name|comp
 parameter_list|)
 block|{
 return|return
@@ -2105,7 +2114,7 @@ name|piv
 operator|--
 expr_stmt|;
 block|}
-comment|// priv points to whitespace char or priv is -1
+comment|// piv points to whitespace char or piv is -1
 comment|// copy everything from the next char up to the end of "upToCaret"
 name|res
 operator|.
@@ -2134,14 +2143,27 @@ name|upToCaret
 argument_list|)
 expr_stmt|;
 block|}
-comment|//Util.pr("AutoCompListener: "+res.toString());
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"AutoCompListener: "
+operator|+
+name|res
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
 name|BadLocationException
 name|ignore
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 return|return
 name|res
 return|;

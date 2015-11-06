@@ -685,7 +685,6 @@ name|boolean
 name|copy
 parameter_list|()
 block|{
-comment|//Util.pr("<copy file=\""+tmpFile.getPath()+"\">");
 name|boolean
 name|res
 init|=
@@ -730,11 +729,9 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
-comment|//Util.pr("</copy>");
 return|return
 name|res
 return|;
-comment|//return true;
 block|}
 comment|/**          * Call the listener method to signal that the file has changed.          */
 DECL|method|notifyListener ()

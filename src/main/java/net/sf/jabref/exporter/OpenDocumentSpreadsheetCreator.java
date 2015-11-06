@@ -290,6 +290,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|ZipOutputStream
 name|out
 init|=
@@ -306,8 +308,7 @@ name|file
 argument_list|)
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 comment|//addResourceFile("mimetype", "/resource/ods/mimetype", out);
 name|ZipEntry
@@ -484,15 +485,6 @@ argument_list|,
 name|out
 argument_list|)
 expr_stmt|;
-comment|//zipEntry = new ZipEntry()
-block|}
-finally|finally
-block|{
-name|out
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|exportOpenDocumentSpreadsheet (File file, BibtexDatabase database, Set<String> keySet)
@@ -541,6 +533,8 @@ name|keySet
 argument_list|)
 expr_stmt|;
 comment|// Then add the content to the zip file:
+try|try
+init|(
 name|BufferedInputStream
 name|in
 init|=
@@ -553,7 +547,8 @@ argument_list|(
 name|tmpFile
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|OpenDocumentSpreadsheetCreator
 operator|.
 name|storeOpenDocumentSpreadsheetFile
@@ -563,6 +558,7 @@ argument_list|,
 name|in
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Delete the temporary file:
 name|tmpFile
 operator|.

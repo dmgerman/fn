@@ -834,15 +834,6 @@ name|VetoableChangeListener
 implements|,
 name|EntryContainer
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -1429,13 +1420,16 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|entry
 operator|.
 name|getOptionalFields
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|entry
 operator|.
 name|getOptionalFields
@@ -1445,6 +1439,7 @@ name|size
 argument_list|()
 operator|>=
 literal|1
+operator|)
 condition|)
 block|{
 name|EntryEditorTab
@@ -2607,15 +2602,7 @@ name|typeButton
 init|=
 operator|new
 name|TypeButton
-argument_list|(
-name|entry
-operator|.
-name|getType
 argument_list|()
-operator|.
-name|getName
-argument_list|()
-argument_list|)
 decl_stmt|;
 name|toolBar
 operator|.
@@ -2821,9 +2808,12 @@ name|TIME_STAMP_FIELD
 argument_list|)
 argument_list|)
 operator|||
+operator|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -2831,6 +2821,7 @@ name|equals
 argument_list|(
 literal|"datepicker"
 argument_list|)
+operator|)
 condition|)
 block|{
 comment|// double click AND datefield => insert the current date (today)
@@ -2893,9 +2884,11 @@ expr_stmt|;
 comment|// insert a datepicker, if the extras field contains this command
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -2924,9 +2917,11 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -2958,9 +2953,11 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -3166,9 +3163,11 @@ else|else
 block|{
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -3342,9 +3341,11 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|(
 name|fieldExtras
@@ -3450,9 +3451,11 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -3500,9 +3503,11 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -4427,13 +4432,18 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|comp
 operator|==
 name|source
+operator|)
 operator|||
+operator|(
+operator|(
 name|comp
 operator|instanceof
 name|FieldEditor
+operator|)
 operator|&&
 name|this
 operator|.
@@ -4441,6 +4451,7 @@ name|isAncestorOf
 argument_list|(
 name|comp
 argument_list|)
+operator|)
 condition|)
 block|{
 if|if
@@ -4701,15 +4712,15 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Updates this editor to show the given entry, regardless of type      * correspondence.      *      * @param entry a<code>BibtexEntry</code> value      */
-DECL|method|switchTo (BibtexEntry entry)
+comment|/**      * Updates this editor to show the given entry, regardless of type      * correspondence.      *      * @param swtichEntry a<code>BibtexEntry</code> value      */
+DECL|method|switchTo (BibtexEntry swtichEntry)
 specifier|public
 specifier|synchronized
 name|void
 name|switchTo
 parameter_list|(
 name|BibtexEntry
-name|entry
+name|swtichEntry
 parameter_list|)
 block|{
 if|if
@@ -4718,7 +4729,7 @@ name|this
 operator|.
 name|entry
 operator|==
-name|entry
+name|swtichEntry
 condition|)
 block|{
 comment|/**              * Even if the editor is already showing the same entry, update              * the source panel. I'm not sure if this is the correct place to              * do this, but in some cases the source panel will otherwise not              * be up-to-date when an entry is changed while the entry editor              * is existing, set to the same entry, but not visible.              */
@@ -4741,7 +4752,7 @@ name|this
 argument_list|)
 expr_stmt|;
 comment|// Register as property listener for the new entry:
-name|entry
+name|swtichEntry
 operator|.
 name|addPropertyChangeListener
 argument_list|(
@@ -4752,7 +4763,7 @@ name|this
 operator|.
 name|entry
 operator|=
-name|entry
+name|swtichEntry
 expr_stmt|;
 name|updateAllFields
 argument_list|()
@@ -4767,7 +4778,7 @@ name|panel
 operator|.
 name|newEntryShowing
 argument_list|(
-name|entry
+name|swtichEntry
 argument_list|)
 expr_stmt|;
 block|}
@@ -4976,9 +4987,11 @@ decl_stmt|;
 name|boolean
 name|emptyWarning
 init|=
+operator|(
 name|newKey
 operator|==
 literal|null
+operator|)
 operator|||
 name|newKey
 operator|.
@@ -5108,9 +5121,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|oldValue
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|oldValue
@@ -5684,14 +5699,14 @@ name|newValue
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateField (final Object source)
+DECL|method|updateField (final Object sourceObject)
 specifier|public
 name|void
 name|updateField
 parameter_list|(
 specifier|final
 name|Object
-name|source
+name|sourceObject
 parameter_list|)
 block|{
 name|storeFieldAction
@@ -5701,7 +5716,7 @@ argument_list|(
 operator|new
 name|ActionEvent
 argument_list|(
-name|source
+name|sourceObject
 argument_list|,
 literal|0
 argument_list|,
@@ -5728,22 +5743,10 @@ name|TypeButton
 extends|extends
 name|JButton
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
-DECL|method|TypeButton (String type)
+DECL|method|TypeButton ()
 specifier|public
 name|TypeButton
-parameter_list|(
-name|String
-name|type
-parameter_list|)
+parameter_list|()
 block|{
 name|super
 argument_list|(
@@ -5920,6 +5923,7 @@ operator|.
 name|isPopupTrigger
 argument_list|()
 operator|||
+operator|(
 name|e
 operator|.
 name|getButton
@@ -5928,6 +5932,7 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON3
+operator|)
 condition|)
 block|{
 name|handleTypeChange
@@ -5952,6 +5957,7 @@ operator|.
 name|isPopupTrigger
 argument_list|()
 operator|||
+operator|(
 name|e
 operator|.
 name|getButton
@@ -5960,6 +5966,7 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON3
+operator|)
 condition|)
 block|{
 name|handleTypeChange
@@ -6084,7 +6091,9 @@ parameter_list|(
 name|FocusEvent
 name|e
 parameter_list|)
-block|{         }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|focusLost (FocusEvent event)
@@ -6584,21 +6593,32 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
+operator|(
 name|oldValue
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|newValue
 operator|==
 literal|null
+operator|)
+operator|)
 operator|||
+operator|(
+operator|(
 name|oldValue
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|newValue
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|oldValue
 operator|.
@@ -6606,6 +6626,7 @@ name|equals
 argument_list|(
 name|newValue
 argument_list|)
+operator|)
 condition|)
 block|{
 return|return;
@@ -6624,9 +6645,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|cleaned
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|cleaned
@@ -6918,6 +6941,7 @@ name|set
 operator|=
 operator|!
 operator|(
+operator|(
 name|entry
 operator|.
 name|getField
@@ -6929,6 +6953,7 @@ argument_list|()
 argument_list|)
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|toSet
 operator|.
@@ -7429,12 +7454,14 @@ name|setSelectedIndex
 argument_list|(
 name|i
 operator|<
+operator|(
 name|tabbed
 operator|.
 name|getTabCount
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|?
 name|i
 operator|+
@@ -7530,9 +7557,11 @@ name|newRow
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|thisRow
 operator|+
 literal|1
+operator|)
 operator|<
 name|panel
 operator|.
@@ -7668,9 +7697,11 @@ name|newRow
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|thisRow
 operator|-
 literal|1
+operator|)
 operator|>=
 literal|0
 condition|)
@@ -7687,6 +7718,7 @@ if|if
 condition|(
 name|thisRow
 operator|!=
+operator|(
 name|panel
 operator|.
 name|database
@@ -7695,6 +7727,7 @@ name|getEntryCount
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|newRow
@@ -8395,24 +8428,15 @@ name|ChangeTypeAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
-DECL|field|type
+DECL|field|changeType
 specifier|final
 name|BibtexEntryType
-name|type
+name|changeType
 decl_stmt|;
-DECL|field|panel
+DECL|field|changeTypePanel
 specifier|final
 name|BasePanel
-name|panel
+name|changeTypePanel
 decl_stmt|;
 DECL|method|ChangeTypeAction (BibtexEntryType type, BasePanel bp)
 specifier|public
@@ -8435,11 +8459,11 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|type
+name|changeType
 operator|=
 name|type
 expr_stmt|;
-name|panel
+name|changeTypePanel
 operator|=
 name|bp
 expr_stmt|;
@@ -8455,13 +8479,13 @@ name|ActionEvent
 name|evt
 parameter_list|)
 block|{
-name|panel
+name|changeTypePanel
 operator|.
 name|changeType
 argument_list|(
 name|entry
 argument_list|,
-name|type
+name|changeType
 argument_list|)
 expr_stmt|;
 block|}
@@ -8570,7 +8594,7 @@ name|event
 parameter_list|)
 block|{
 name|FileListEditor
-name|fileListEditor
+name|localFileListEditor
 init|=
 name|EntryEditor
 operator|.
@@ -8580,7 +8604,7 @@ name|fileListEditor
 decl_stmt|;
 if|if
 condition|(
-name|fileListEditor
+name|localFileListEditor
 operator|==
 literal|null
 condition|)
@@ -8595,7 +8619,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|fileListEditor
+name|localFileListEditor
 operator|.
 name|autoSetLinks
 argument_list|()

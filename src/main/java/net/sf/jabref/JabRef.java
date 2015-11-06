@@ -2535,7 +2535,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//Util.pr(": Finished export");
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|": Finished export"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|cli
@@ -3975,7 +3981,13 @@ name|FONT_SIZE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//Util.pr(": Initializing frame");
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|": Initializing frame"
+argument_list|)
+expr_stmt|;
 name|JabRef
 operator|.
 name|jrf
@@ -4663,7 +4675,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|//Util.pr(": Finished adding panels");
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|": Finished adding panels"
+argument_list|)
+expr_stmt|;
 comment|// If any database loading was postponed due to an autosave, schedule them
 comment|// for handing now:
 if|if

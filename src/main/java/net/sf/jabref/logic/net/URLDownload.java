@@ -256,7 +256,9 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{              }
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 DECL|method|openConnection ()
@@ -425,6 +427,8 @@ argument_list|,
 name|encoding
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|BufferedReader
 name|read
 init|=
@@ -433,7 +437,8 @@ name|BufferedReader
 argument_list|(
 name|r
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|line
 decl_stmt|;
@@ -465,6 +470,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|downloadToFile (File destination)
@@ -546,6 +552,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|monitorInputStream
 init|=
@@ -553,7 +561,8 @@ name|monitorInputStream
 argument_list|(
 name|in
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|byte
 index|[]
 name|buffer
@@ -600,6 +609,7 @@ argument_list|,
 name|bytesRead
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|monitorInputStream (InputStream in)
