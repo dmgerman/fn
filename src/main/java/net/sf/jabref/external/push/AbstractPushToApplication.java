@@ -419,6 +419,7 @@ operator|=
 literal|true
 expr_stmt|;
 comment|// @formatter:off
+comment|// Strings also a few lines below
 name|LOGGER
 operator|.
 name|warn

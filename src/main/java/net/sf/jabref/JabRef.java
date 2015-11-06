@@ -4753,6 +4753,7 @@ name|boolean
 name|ignoreAutosave
 parameter_list|)
 block|{
+comment|// String in OpenDatabaseAction.java
 name|LOGGER
 operator|.
 name|info

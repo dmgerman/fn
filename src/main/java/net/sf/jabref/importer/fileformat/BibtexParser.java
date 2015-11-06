@@ -1154,14 +1154,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Dropped comment from database"
-argument_list|)
-operator|+
-literal|":"
+literal|"Dropped comment from database: "
 operator|+
 name|comment
 argument_list|)

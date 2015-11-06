@@ -287,6 +287,7 @@ name|searchTerm
 argument_list|)
 condition|)
 block|{
+comment|// String also in SearchManager.java
 name|LOGGER
 operator|.
 name|warn

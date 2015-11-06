@@ -1249,6 +1249,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// String above and below
 name|LOGGER
 operator|.
 name|info
@@ -1327,17 +1328,12 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error while converting BibtexEntry to XMP %0"
-argument_list|,
+literal|"Error while converting BibtexEntry to XMP "
+operator|+
 name|finalFile
 operator|.
 name|getAbsolutePath
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
