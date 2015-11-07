@@ -327,27 +327,31 @@ literal|"Settings"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|method|PushToApplicationButton (JabRefFrame frameJR, List<PushToApplication> pushActionsList)
+DECL|method|PushToApplicationButton (JabRefFrame frame, List<PushToApplication> pushActions)
 specifier|public
 name|PushToApplicationButton
 parameter_list|(
 name|JabRefFrame
-name|frameJR
+name|frame
 parameter_list|,
 name|List
 argument_list|<
 name|PushToApplication
 argument_list|>
-name|pushActionsList
+name|pushActions
 parameter_list|)
 block|{
+name|this
+operator|.
 name|frame
 operator|=
-name|frameJR
+name|frame
 expr_stmt|;
+name|this
+operator|.
 name|pushActions
 operator|=
-name|pushActionsList
+name|pushActions
 expr_stmt|;
 name|init
 argument_list|()
