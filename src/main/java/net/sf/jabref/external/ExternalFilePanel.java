@@ -1254,17 +1254,12 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error writing XMP to file: %0"
-argument_list|,
+literal|"Error writing XMP to file: "
+operator|+
 name|finalFile
 operator|.
 name|getAbsolutePath
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

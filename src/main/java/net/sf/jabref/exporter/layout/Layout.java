@@ -351,7 +351,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Nested field entries are not implemented !!!"
+literal|"Nested field entries are not implemented!"
 argument_list|)
 expr_stmt|;
 name|Thread
@@ -466,7 +466,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Nested field entries are not implemented !!!"
+literal|"Nested field entries are not implemented!"
 argument_list|)
 expr_stmt|;
 name|Thread

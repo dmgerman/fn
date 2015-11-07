@@ -1898,11 +1898,6 @@ operator|)
 condition|)
 block|{
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-name|e
 operator|=
 operator|new
 name|IOException

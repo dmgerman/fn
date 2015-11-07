@@ -4758,14 +4758,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Opening"
-argument_list|)
-operator|+
-literal|": "
+literal|"Opening: "
 operator|+
 name|name
 argument_list|)

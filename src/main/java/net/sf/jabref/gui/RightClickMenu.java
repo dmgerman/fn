@@ -2807,7 +2807,7 @@ name|LOGGER
 operator|.
 name|debug
 argument_list|(
-literal|"Could not execute command "
+literal|"Cannot execute command "
 operator|+
 name|command
 operator|+

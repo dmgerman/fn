@@ -20,22 +20,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -322,6 +306,7 @@ name|toLowerCase
 argument_list|()
 decl_stmt|;
 return|return
+operator|(
 name|fullNameLowerCase2Abbreviation
 operator|.
 name|get
@@ -330,7 +315,9 @@ name|nameKey
 argument_list|)
 operator|!=
 literal|null
+operator|)
 operator|||
+operator|(
 name|isoLowerCase2Abbreviation
 operator|.
 name|get
@@ -339,7 +326,9 @@ name|nameKey
 argument_list|)
 operator|!=
 literal|null
+operator|)
 operator|||
+operator|(
 name|medlineLowerCase2Abbreviation
 operator|.
 name|get
@@ -348,6 +337,7 @@ name|nameKey
 argument_list|)
 operator|!=
 literal|null
+operator|)
 return|;
 block|}
 DECL|method|isAbbreviatedName (String journalName)
@@ -376,6 +366,7 @@ name|toLowerCase
 argument_list|()
 decl_stmt|;
 return|return
+operator|(
 name|isoLowerCase2Abbreviation
 operator|.
 name|get
@@ -384,7 +375,9 @@ name|nameKey
 argument_list|)
 operator|!=
 literal|null
+operator|)
 operator|||
+operator|(
 name|medlineLowerCase2Abbreviation
 operator|.
 name|get
@@ -393,6 +386,7 @@ name|nameKey
 argument_list|)
 operator|!=
 literal|null
+operator|)
 return|;
 block|}
 comment|/**      * Attempts to get the abbreviated name of the journal given. May contain dots.      *      * @param journalName The journal name to abbreviate.      * @return The abbreviated name      */
@@ -558,24 +552,21 @@ argument_list|)
 expr_stmt|;
 name|LOGGER
 operator|.
-name|debug
+name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Duplicate Journal Abbreviation - old one will be overwritten by new one\nOLD: %0\nNEW: %1"
-argument_list|,
+literal|"Duplicate journal abbreviation - old one will be overwritten by new one\nOLD: "
+operator|+
 name|previous
 operator|.
 name|toString
 argument_list|()
-argument_list|,
+operator|+
+literal|"\nNEW: "
+operator|+
 name|abbreviation
 operator|.
 name|toString
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

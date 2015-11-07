@@ -1099,12 +1099,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Encrypted documents are not supported"
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//return res;

@@ -2201,12 +2201,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Synchronized special fields based on keywords"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
