@@ -3437,7 +3437,7 @@ name|put
 argument_list|(
 name|PUSH_TO_APPLICATION
 argument_list|,
-literal|"LyX/Kile"
+literal|"TeXstudio"
 argument_list|)
 expr_stmt|;
 name|defaults

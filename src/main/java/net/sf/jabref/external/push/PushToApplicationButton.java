@@ -929,17 +929,19 @@ specifier|static
 class|class
 name|BooleanHolder
 block|{
-DECL|method|BooleanHolder (boolean val)
+DECL|method|BooleanHolder (boolean value)
 specifier|public
 name|BooleanHolder
 parameter_list|(
 name|boolean
-name|val
+name|value
 parameter_list|)
 block|{
+name|this
+operator|.
 name|value
 operator|=
-name|val
+name|value
 expr_stmt|;
 block|}
 DECL|field|value
@@ -1367,17 +1369,19 @@ specifier|final
 name|int
 name|index
 decl_stmt|;
-DECL|method|PopupItemActionListener (int idx)
+DECL|method|PopupItemActionListener (int index)
 specifier|public
 name|PopupItemActionListener
 parameter_list|(
 name|int
-name|idx
+name|index
 parameter_list|)
 block|{
+name|this
+operator|.
 name|index
 operator|=
-name|idx
+name|index
 expr_stmt|;
 block|}
 annotation|@
