@@ -66,20 +66,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -254,6 +240,22 @@ specifier|public
 class|class
 name|DownloadExternalFile
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|DownloadExternalFile
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|frame
 specifier|private
 specifier|final
@@ -286,22 +288,6 @@ DECL|field|dontShowDialog
 specifier|private
 name|boolean
 name|dontShowDialog
-decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|DownloadExternalFile
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 DECL|method|DownloadExternalFile (JabRefFrame frame, MetaData metaData, String bibtexKey)
 specifier|public
@@ -373,9 +359,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|res
 operator|==
 literal|null
+operator|)
 operator|||
 name|res
 operator|.
@@ -501,7 +489,6 @@ argument_list|,
 name|url
 argument_list|)
 decl_stmt|;
-comment|//long time = System.currentTimeMillis();
 try|try
 block|{
 comment|// TODO: what if this takes long time?
@@ -582,7 +569,6 @@ name|udlF
 init|=
 name|udl
 decl_stmt|;
-comment|//System.out.println("Time: "+(System.currentTimeMillis()-time));
 name|JabRefExecutorService
 operator|.
 name|INSTANCE
@@ -622,9 +608,11 @@ literal|true
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|editor
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|editor
 operator|.
@@ -730,13 +718,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
-literal|"mimetype:"
+literal|"MIME Type suggested: "
 operator|+
 name|mimeType
 argument_list|)
@@ -752,7 +738,6 @@ argument_list|(
 name|mimeType
 argument_list|)
 expr_stmt|;
-comment|/*if (suggestedType != null)                 System.out.println("Found type '"+suggestedType.getName()+"' by MIME type '"+udl.getMimeType()+"'");*/
 block|}
 comment|// Then, while the download is proceeding, let the user choose the details of the file:
 name|String
@@ -798,16 +783,10 @@ block|}
 name|String
 name|suggestedName
 init|=
-name|bibtexKey
-operator|!=
-literal|null
-condition|?
 name|getSuggestedFileName
 argument_list|(
 name|suffix
 argument_list|)
-else|:
-literal|""
 decl_stmt|;
 name|String
 index|[]
@@ -886,16 +865,10 @@ name|FileListEntry
 argument_list|(
 literal|""
 argument_list|,
-name|bibtexKey
-operator|!=
-literal|null
-condition|?
 name|file
 operator|.
 name|getCanonicalPath
 argument_list|()
-else|:
-literal|""
 argument_list|,
 name|suggestedType
 argument_list|)
@@ -1203,11 +1176,9 @@ name|success
 condition|)
 block|{
 comment|// OOps, the file exists!
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"File already exists! DownloadExternalFile.download()"
 argument_list|)
@@ -1217,9 +1188,11 @@ comment|// If the local file is in or below the main file directory, change the
 comment|// path to relative:
 if|if
 condition|(
+operator|(
 name|directory
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|entry
 operator|.
@@ -1231,6 +1204,7 @@ argument_list|(
 name|directory
 argument_list|)
 operator|&&
+operator|(
 name|entry
 operator|.
 name|getLink
@@ -1243,6 +1217,7 @@ name|dirPrefix
 operator|.
 name|length
 argument_list|()
+operator|)
 condition|)
 block|{
 name|entry
@@ -1420,6 +1395,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// FIXME: will break download if no bibtexkey is present!
 DECL|method|getSuggestedFileName (String suffix)
 specifier|private
 name|String
@@ -1433,6 +1409,12 @@ name|String
 name|plannedName
 init|=
 name|bibtexKey
+operator|!=
+literal|null
+condition|?
+name|bibtexKey
+else|:
+literal|"set-filename"
 decl_stmt|;
 if|if
 condition|(
@@ -1450,7 +1432,7 @@ operator|+
 name|suffix
 expr_stmt|;
 block|}
-comment|/*         * [ 1548875 ] download pdf produces unsupported filename         *         * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306         *         */
+comment|/*         * [ 1548875 ] download pdf produces unsupported filename         *         * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306         * FIXME: rework this! just allow alphanumeric stuff or so?         * https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx#naming_conventions         * http://superuser.com/questions/358855/what-characters-are-safe-in-cross-platform-file-names-for-linux-windows-and-os         * https://support.apple.com/en-us/HT202808         */
 if|if
 condition|(
 name|OS
@@ -1494,7 +1476,7 @@ return|return
 name|plannedName
 return|;
 block|}
-comment|/**      * Look for the last '.' in the link, and returnthe following characters.      * This gives the extension for most reasonably named links.      *      * @param link The link      * @return The suffix, excluding the dot (e.g. "pdf")      */
+comment|/**      * Look for the last '.' in the link, and return the following characters.      * This gives the extension for most reasonably named links.      *      * @param link The link      * @return The suffix, excluding the dot (e.g. "pdf")      */
 DECL|method|getSuffix (final String link)
 specifier|private
 name|String
@@ -1524,13 +1506,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|url
 operator|.
 name|getQuery
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|url
 operator|.
 name|getQuery
@@ -1539,12 +1524,15 @@ operator|.
 name|length
 argument_list|()
 operator|<
+operator|(
 name|link
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
+operator|)
 condition|)
 block|{
 name|strippedLink
@@ -1598,18 +1586,24 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|index
 operator|<=
 literal|0
+operator|)
 operator|||
+operator|(
 name|index
 operator|==
+operator|(
 name|strippedLink
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
+operator|)
 condition|)
 block|{
 name|suffix
@@ -1664,18 +1658,24 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|index
 operator|<=
 literal|0
+operator|)
 operator|||
+operator|(
 name|index
 operator|==
+operator|(
 name|strippedLink
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
+operator|)
 condition|)
 block|{
 comment|// No occurence, or at the end
@@ -1763,7 +1763,7 @@ name|metaData
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -105,6 +105,34 @@ operator|.
 name|tree
 operator|.
 name|DefaultMutableTreeNode
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -240,8 +268,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
 name|bibtex
 operator|.
 name|DuplicateCheck
@@ -256,8 +282,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
 name|bibtex
 operator|.
 name|EntrySorter
@@ -271,8 +295,6 @@ operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|logic
 operator|.
 name|bibtex
 operator|.
@@ -425,6 +447,22 @@ DECL|field|mdInTemp
 specifier|private
 name|MetaData
 name|mdInTemp
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ChangeScanner
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/**      * We create an ArrayList to hold the changes we find. These will be added in the form      * of UndoEdit objects. We instantiate these so that the changes found in the file on disk      * can be reproduced in memory by calling redo() on them. REDO, not UNDO!      */
 comment|//ArrayList changes = new ArrayList();
@@ -1058,13 +1096,13 @@ name|SaveException
 name|ex
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
 literal|"Problem updating tmp file after accepting external changes"
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -1073,16 +1111,16 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|scanMetaData (MetaData inMem, MetaData inTemp, MetaData onDisk)
+DECL|method|scanMetaData (MetaData inMem1, MetaData inTemp1, MetaData onDisk)
 specifier|private
 name|void
 name|scanMetaData
 parameter_list|(
 name|MetaData
-name|inMem
+name|inMem1
 parameter_list|,
 name|MetaData
-name|inTemp
+name|inTemp1
 parameter_list|,
 name|MetaData
 name|onDisk
@@ -1094,9 +1132,9 @@ init|=
 operator|new
 name|MetaDataChange
 argument_list|(
-name|inMem
+name|inMem1
 argument_list|,
-name|inTemp
+name|inTemp1
 argument_list|)
 decl_stmt|;
 name|ArrayList
@@ -1107,9 +1145,7 @@ name|handledOnDisk
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Loop through the metadata entries of the "tmp" database, looking for
@@ -1119,7 +1155,7 @@ control|(
 name|String
 name|key
 range|:
-name|inTemp
+name|inTemp1
 control|)
 block|{
 comment|// See if the key is missing in the disk database:
@@ -1160,7 +1196,7 @@ name|String
 argument_list|>
 name|vit
 init|=
-name|inTemp
+name|inTemp1
 operator|.
 name|getData
 argument_list|(
@@ -1289,9 +1325,7 @@ name|used
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|disk
 operator|.
@@ -1307,9 +1341,7 @@ name|notMatched
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|(
 name|tmp
 operator|.
@@ -1360,12 +1392,14 @@ operator|+
 name|piv2
 argument_list|)
 operator|&&
+operator|(
 name|piv2
 operator|<
 name|disk
 operator|.
 name|getEntryCount
 argument_list|()
+operator|)
 condition|)
 block|{
 name|comp
@@ -1416,12 +1450,14 @@ if|if
 condition|(
 name|piv2
 operator|<
+operator|(
 name|disk
 operator|.
 name|getEntryCount
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 for|for
@@ -1576,12 +1612,14 @@ if|if
 condition|(
 name|piv2
 operator|<
+operator|(
 name|disk
 operator|.
 name|getEntryCount
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 for|for
@@ -1772,7 +1810,7 @@ block|}
 block|}
 block|}
 comment|// Finally, look if there are still untouched entries in the disk database. These
-comment|// mayhave been added.
+comment|// may have been added.
 if|if
 condition|(
 name|used
@@ -1909,6 +1947,7 @@ block|}
 comment|/**      * Finds the entry in neu best fitting the specified entry in old. If no entries get a score      * above zero, an entry is still returned.      * @param old EntrySorter      * @param neu EntrySorter      * @param index int      * @return BibtexEntry      */
 DECL|method|bestFit (EntrySorter old, EntrySorter neu, int index)
 specifier|private
+specifier|static
 name|BibtexEntry
 name|bestFit
 parameter_list|(
@@ -2008,13 +2047,13 @@ name|found
 argument_list|)
 return|;
 block|}
-DECL|method|scanPreamble (BibtexDatabase inMem, BibtexDatabase onTmp, BibtexDatabase onDisk)
+DECL|method|scanPreamble (BibtexDatabase inMem1, BibtexDatabase onTmp, BibtexDatabase onDisk)
 specifier|private
 name|void
 name|scanPreamble
 parameter_list|(
 name|BibtexDatabase
-name|inMem
+name|inMem1
 parameter_list|,
 name|BibtexDatabase
 name|onTmp
@@ -2026,7 +2065,7 @@ block|{
 name|String
 name|mem
 init|=
-name|inMem
+name|inMem1
 operator|.
 name|getPreamble
 argument_list|()
@@ -2056,9 +2095,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|disk
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|tmp
@@ -2089,9 +2130,11 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|disk
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|disk
@@ -2117,13 +2160,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|scanStrings (BibtexDatabase inMem, BibtexDatabase onTmp, BibtexDatabase onDisk)
+DECL|method|scanStrings (BibtexDatabase inMem1, BibtexDatabase onTmp, BibtexDatabase onDisk)
 specifier|private
 name|void
 name|scanStrings
 parameter_list|(
 name|BibtexDatabase
-name|inMem
+name|inMem1
 parameter_list|,
 name|BibtexDatabase
 name|onTmp
@@ -2150,13 +2193,17 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|nTmp
 operator|==
 literal|0
+operator|)
 operator|&&
+operator|(
 name|nDisk
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 return|return;
@@ -2169,9 +2216,7 @@ name|used
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|HashSet
@@ -2182,9 +2227,7 @@ name|usedInMem
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|HashSet
@@ -2195,9 +2238,7 @@ name|notMatched
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|onTmp
 operator|.
@@ -2282,12 +2323,14 @@ block|{
 comment|// We have found a string with a matching name.
 if|if
 condition|(
+operator|(
 name|tmp
 operator|.
 name|getContent
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|tmp
@@ -2310,7 +2353,7 @@ name|mem
 init|=
 name|findString
 argument_list|(
-name|inMem
+name|inMem1
 argument_list|,
 name|tmp
 operator|.
@@ -2348,11 +2391,6 @@ operator|.
 name|getContent
 argument_list|()
 argument_list|,
-name|tmp
-operator|.
-name|getContent
-argument_list|()
-argument_list|,
 name|disk
 operator|.
 name|getContent
@@ -2380,11 +2418,6 @@ name|getName
 argument_list|()
 argument_list|,
 literal|null
-argument_list|,
-name|tmp
-operator|.
-name|getContent
-argument_list|()
 argument_list|,
 name|disk
 operator|.
@@ -2528,7 +2561,7 @@ control|(
 name|String
 name|memId
 range|:
-name|inMem
+name|inMem1
 operator|.
 name|getStringKeySet
 argument_list|()
@@ -2537,7 +2570,7 @@ block|{
 name|BibtexString
 name|bsMem_cand
 init|=
-name|inMem
+name|inMem1
 operator|.
 name|getString
 argument_list|(
@@ -2665,7 +2698,7 @@ name|mem
 init|=
 name|findString
 argument_list|(
-name|inMem
+name|inMem1
 argument_list|,
 name|tmp
 operator|.
@@ -2759,6 +2792,7 @@ block|}
 block|}
 DECL|method|findString (BibtexDatabase base, String name, HashSet<Object> used)
 specifier|private
+specifier|static
 name|BibtexString
 name|findString
 parameter_list|(
@@ -2848,7 +2882,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * This method only detects wheter a change took place or not. It does not      * determine the type of change. This would be possible, but difficult to do      * properly, so I rather only report the change.      */
+comment|/**      * This method only detects whether a change took place or not. It does not determine the type of change. This would      * be possible, but difficult to do properly, so I rather only report the change.      */
 DECL|method|scanGroups (MetaData inMem, MetaData onTmp, MetaData onDisk)
 specifier|private
 name|void
@@ -2884,30 +2918,42 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|groupsTmp
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|groupsDisk
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return;
 block|}
 if|if
 condition|(
+operator|(
+operator|(
 name|groupsTmp
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|groupsDisk
 operator|==
 literal|null
+operator|)
+operator|)
 operator|||
+operator|(
 name|groupsTmp
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|changes

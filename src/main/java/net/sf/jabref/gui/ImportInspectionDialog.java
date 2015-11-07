@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.gui
 package|package
@@ -422,18 +426,6 @@ name|swing
 operator|.
 name|table
 operator|.
-name|DefaultTableModel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|table
-operator|.
 name|TableCellRenderer
 import|;
 end_import
@@ -546,8 +538,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
 name|bibtex
 operator|.
 name|DuplicateCheck
@@ -561,8 +551,6 @@ operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|logic
 operator|.
 name|bibtex
 operator|.
@@ -874,11 +862,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|util
-operator|.
-name|io
+name|desktop
 operator|.
 name|JabRefDesktop
 import|;
@@ -1216,9 +1202,7 @@ name|entries
 init|=
 operator|new
 name|BasicEventList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|sortedList
@@ -1242,9 +1226,7 @@ name|entriesToDelete
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|undoName
@@ -1264,9 +1246,7 @@ name|callBacks
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|CallBack
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|newDatabase
@@ -1374,14 +1354,7 @@ name|groupAdditions
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|Set
-argument_list|<
-name|GroupTreeNode
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|autoGenerate
@@ -1423,10 +1396,12 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"duplicate"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|DUPLICATE
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|fileLabel
@@ -1440,10 +1415,12 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"psSmall"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|FILE
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|pdfLabel
@@ -1457,10 +1434,12 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"pdfSmall"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|PDF_FILE
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|psLabel
@@ -1474,10 +1453,12 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"psSmall"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|FILE
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|urlLabel
@@ -1491,10 +1472,12 @@ name|JLabel
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"wwwSmall"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|WWW
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|DUPL_COL
@@ -1676,9 +1659,7 @@ name|sortedList
 operator|=
 operator|new
 name|SortedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entries
 argument_list|)
@@ -1691,9 +1672,7 @@ name|tableModelGl
 init|=
 operator|new
 name|EventTableModel
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedList
 argument_list|,
@@ -1785,9 +1764,7 @@ name|selectionModel
 operator|=
 operator|new
 name|EventSelectionModel
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedList
 argument_list|)
@@ -2085,15 +2062,19 @@ name|JButton
 name|help
 init|=
 operator|new
-name|JButton
+name|HelpAction
 argument_list|(
-name|Localization
+name|frame
 operator|.
-name|lang
-argument_list|(
-literal|"Help"
+name|helpDiag
+argument_list|,
+name|GUIGlobals
+operator|.
+name|importInspectionHelp
 argument_list|)
-argument_list|)
+operator|.
+name|getIconButton
+argument_list|()
 decl_stmt|;
 name|bb
 operator|.
@@ -2359,23 +2340,6 @@ argument_list|(
 name|deleteListener
 argument_list|)
 expr_stmt|;
-name|help
-operator|.
-name|addActionListener
-argument_list|(
-operator|new
-name|HelpAction
-argument_list|(
-name|frame
-operator|.
-name|helpDiag
-argument_list|,
-name|GUIGlobals
-operator|.
-name|importInspectionHelp
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|getContentPane
 argument_list|()
 operator|.
@@ -2625,9 +2589,7 @@ name|list
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|list
@@ -2644,7 +2606,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntries(java.util.Collection)      */
-DECL|method|addEntries (Collection<BibtexEntry> entries)
+DECL|method|addEntries (Collection<BibtexEntry> entriesToAdd)
 specifier|public
 name|void
 name|addEntries
@@ -2653,7 +2615,7 @@ name|Collection
 argument_list|<
 name|BibtexEntry
 argument_list|>
-name|entries
+name|entriesToAdd
 parameter_list|)
 block|{
 for|for
@@ -2661,7 +2623,7 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|entries
+name|entriesToAdd
 control|)
 block|{
 comment|// We exploit the entry's search status for indicating "Keep"
@@ -2771,8 +2733,9 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entries A Collection of BibtexEntry instances.      * @param entry   The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
-DECL|method|internalDuplicate (Collection<BibtexEntry> entries, BibtexEntry entry)
+DECL|method|internalDuplicate (Collection<BibtexEntry> entriesDupe, BibtexEntry entry)
 specifier|private
+specifier|static
 name|BibtexEntry
 name|internalDuplicate
 parameter_list|(
@@ -2780,7 +2743,7 @@ name|Collection
 argument_list|<
 name|BibtexEntry
 argument_list|>
-name|entries
+name|entriesDupe
 parameter_list|,
 name|BibtexEntry
 name|entry
@@ -2791,7 +2754,7 @@ control|(
 name|BibtexEntry
 name|othEntry
 range|:
-name|entries
+name|entriesDupe
 control|)
 block|{
 if|if
@@ -2848,9 +2811,7 @@ name|toRemove
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|toRemove
@@ -3064,9 +3025,7 @@ name|selected
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -3149,7 +3108,7 @@ name|BibtexDatabase
 name|database
 decl_stmt|;
 name|MetaData
-name|metaData
+name|localMetaData
 decl_stmt|;
 comment|// Relate to existing database, if any:
 if|if
@@ -3166,7 +3125,7 @@ operator|.
 name|database
 argument_list|()
 expr_stmt|;
-name|metaData
+name|localMetaData
 operator|=
 name|panel
 operator|.
@@ -3182,7 +3141,7 @@ operator|new
 name|BibtexDatabase
 argument_list|()
 expr_stmt|;
-name|metaData
+name|localMetaData
 operator|=
 operator|new
 name|MetaData
@@ -3212,7 +3171,7 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metaData
+name|localMetaData
 argument_list|,
 name|database
 argument_list|,
@@ -3250,14 +3209,11 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Generate keys for all entries. All keys will be unique with respect to      * one another, and, if they are destined for an existing database, with      * respect to existing keys in the database.      */
-DECL|method|generateKeys (boolean addColumn)
+DECL|method|generateKeys ()
 specifier|private
 name|void
 name|generateKeys
-parameter_list|(
-name|boolean
-name|addColumn
-parameter_list|)
+parameter_list|()
 block|{
 name|entries
 operator|.
@@ -3274,7 +3230,7 @@ name|BibtexDatabase
 name|database
 decl_stmt|;
 name|MetaData
-name|metaData
+name|localMetaData
 decl_stmt|;
 comment|// Relate to existing database, if any:
 if|if
@@ -3291,7 +3247,7 @@ operator|.
 name|database
 argument_list|()
 expr_stmt|;
-name|metaData
+name|localMetaData
 operator|=
 name|panel
 operator|.
@@ -3307,7 +3263,7 @@ operator|new
 name|BibtexDatabase
 argument_list|()
 expr_stmt|;
-name|metaData
+name|localMetaData
 operator|=
 operator|new
 name|MetaData
@@ -3322,9 +3278,7 @@ name|keys
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|entries
 operator|.
@@ -3364,7 +3318,7 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metaData
+name|localMetaData
 argument_list|,
 name|database
 argument_list|,
@@ -3778,9 +3732,7 @@ name|groups
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|GroupTreeNode
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|groupAdditions
@@ -4064,9 +4016,7 @@ name|generatedKeys
 condition|)
 block|{
 name|generateKeys
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 comment|// Remember the choice until next time:
@@ -4348,9 +4298,7 @@ name|YES_OPTION
 condition|)
 block|{
 name|generateKeys
-argument_list|(
-literal|false
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 else|else
@@ -4679,70 +4627,6 @@ name|i
 operator|++
 control|)
 block|{
-comment|// Check if the Column is a RankingColumn
-comment|// If this is the case, set a certain Column-width,
-comment|// because the RankingIconColumn needs some more width
-if|if
-condition|(
-name|frame
-operator|.
-name|basePanel
-argument_list|()
-operator|.
-name|tableFormat
-operator|.
-name|isRankingColumn
-argument_list|(
-name|i
-argument_list|)
-condition|)
-block|{
-comment|// Lock the width of ranking icon column.
-name|cm
-operator|.
-name|getColumn
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setPreferredWidth
-argument_list|(
-name|GUIGlobals
-operator|.
-name|WIDTH_ICON_COL_RANKING
-argument_list|)
-expr_stmt|;
-name|cm
-operator|.
-name|getColumn
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setMinWidth
-argument_list|(
-name|GUIGlobals
-operator|.
-name|WIDTH_ICON_COL_RANKING
-argument_list|)
-expr_stmt|;
-name|cm
-operator|.
-name|getColumn
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setMaxWidth
-argument_list|(
-name|GUIGlobals
-operator|.
-name|WIDTH_ICON_COL_RANKING
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 comment|// Lock the width of icon columns.
 name|cm
 operator|.
@@ -4786,7 +4670,6 @@ operator|.
 name|WIDTH_ICON_COL
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 for|for
 control|(
@@ -4933,9 +4816,7 @@ expr_stmt|;
 comment|// To prevent the button from getting
 comment|// enabled again.
 name|generateKeys
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 comment|// Generate the keys.
 block|}
@@ -4962,10 +4843,12 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"delete"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|DELETE
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4983,95 +4866,6 @@ block|{
 name|removeSelectedEntries
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-DECL|class|MyTable
-specifier|private
-specifier|static
-class|class
-name|MyTable
-extends|extends
-name|JTable
-block|{
-DECL|method|MyTable (TableModel model)
-specifier|public
-name|MyTable
-parameter_list|(
-name|TableModel
-name|model
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|model
-argument_list|)
-expr_stmt|;
-comment|// setDefaultRenderer(Boolean.class, );
-block|}
-annotation|@
-name|Override
-DECL|method|isCellEditable (int row, int col)
-specifier|public
-name|boolean
-name|isCellEditable
-parameter_list|(
-name|int
-name|row
-parameter_list|,
-name|int
-name|col
-parameter_list|)
-block|{
-return|return
-name|col
-operator|==
-literal|0
-return|;
-block|}
-block|}
-DECL|class|MyTableModel
-specifier|private
-specifier|static
-class|class
-name|MyTableModel
-extends|extends
-name|DefaultTableModel
-block|{
-annotation|@
-name|Override
-DECL|method|getColumnClass (int i)
-specifier|public
-name|Class
-argument_list|<
-name|?
-argument_list|>
-name|getColumnClass
-parameter_list|(
-name|int
-name|i
-parameter_list|)
-block|{
-if|if
-condition|(
-name|i
-operator|==
-literal|0
-condition|)
-block|{
-return|return
-name|Boolean
-operator|.
-name|class
-return|;
-block|}
-else|else
-block|{
-return|return
-name|String
-operator|.
-name|class
-return|;
-block|}
 block|}
 block|}
 DECL|class|SelectionButton
@@ -5420,7 +5214,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -5553,7 +5347,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{          }
+block|{
+comment|// Nothing
+block|}
 annotation|@
 name|Override
 DECL|method|mouseExited (MouseEvent e)
@@ -5564,7 +5360,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{          }
+block|{
+comment|// Nothing
+block|}
 comment|/**          * Show right-click menu. If the click happened in an icon column that          * presents its own popup menu, show that. Otherwise, show the ordinary          * popup menu.          *          * @param e The mouse event that triggered the popup.          */
 DECL|method|showPopup (MouseEvent e)
 specifier|public
@@ -5692,7 +5490,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -6274,6 +6072,100 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|diag
+operator|.
+name|getSelected
+argument_list|()
+operator|==
+name|DuplicateResolverDialog
+operator|.
+name|KEEP_MERGE
+condition|)
+block|{
+comment|// Remove old entry. Or... add it to a list of entries
+comment|// to be deleted. We only delete
+comment|// it after Ok is clicked.
+name|entriesToDelete
+operator|.
+name|add
+argument_list|(
+name|other
+argument_list|)
+expr_stmt|;
+comment|// Store merged entry for later adding
+comment|// Clear duplicate icon, which is controlled by the
+comment|// group hit
+comment|// field of the entry:
+name|entries
+operator|.
+name|getReadWriteLock
+argument_list|()
+operator|.
+name|writeLock
+argument_list|()
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
+name|diag
+operator|.
+name|getMergedEntry
+argument_list|()
+operator|.
+name|setGroupHit
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|diag
+operator|.
+name|getMergedEntry
+argument_list|()
+operator|.
+name|setSearchHit
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|entries
+operator|.
+name|add
+argument_list|(
+name|diag
+operator|.
+name|getMergedEntry
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|entries
+operator|.
+name|remove
+argument_list|(
+name|first
+argument_list|)
+expr_stmt|;
+name|first
+operator|=
+operator|new
+name|BibtexEntry
+argument_list|()
+expr_stmt|;
+comment|// Reset first so the next duplicate doesn't trigger
+name|entries
+operator|.
+name|getReadWriteLock
+argument_list|()
+operator|.
+name|writeLock
+argument_list|()
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|// Check if the duplicate is of another entry in the import:
 name|other
@@ -6292,12 +6184,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|int
-name|answer
-init|=
 name|DuplicateResolverDialog
-operator|.
-name|resolveDuplicate
+name|diag
+init|=
+operator|new
+name|DuplicateResolverDialog
 argument_list|(
 name|ImportInspectionDialog
 operator|.
@@ -6306,7 +6197,44 @@ argument_list|,
 name|first
 argument_list|,
 name|other
+argument_list|,
+name|DuplicateResolverDialog
+operator|.
+name|DUPLICATE_SEARCH
 argument_list|)
+decl_stmt|;
+name|Util
+operator|.
+name|placeDialog
+argument_list|(
+name|diag
+argument_list|,
+name|ImportInspectionDialog
+operator|.
+name|this
+argument_list|)
+expr_stmt|;
+name|diag
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|ImportInspectionDialog
+operator|.
+name|this
+operator|.
+name|toFront
+argument_list|()
+expr_stmt|;
+name|int
+name|answer
+init|=
+name|diag
+operator|.
+name|getSelected
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -6365,6 +6293,61 @@ operator|.
 name|setGroupHit
 argument_list|(
 literal|false
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|answer
+operator|==
+name|DuplicateResolverDialog
+operator|.
+name|KEEP_MERGE
+condition|)
+block|{
+name|diag
+operator|.
+name|getMergedEntry
+argument_list|()
+operator|.
+name|setGroupHit
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|diag
+operator|.
+name|getMergedEntry
+argument_list|()
+operator|.
+name|setSearchHit
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|entries
+operator|.
+name|add
+argument_list|(
+name|diag
+operator|.
+name|getMergedEntry
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|entries
+operator|.
+name|remove
+argument_list|(
+name|first
+argument_list|)
+expr_stmt|;
+name|entries
+operator|.
+name|remove
+argument_list|(
+name|other
 argument_list|)
 expr_stmt|;
 block|}
@@ -6730,7 +6713,7 @@ argument_list|()
 expr_stmt|;
 comment|// Hack
 name|FileListTableModel
-name|model
+name|localModel
 init|=
 operator|new
 name|FileListTableModel
@@ -6743,7 +6726,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -6755,7 +6738,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|model
+name|localModel
 operator|.
 name|setContent
 argument_list|(
@@ -6763,11 +6746,11 @@ name|oldVal
 argument_list|)
 expr_stmt|;
 block|}
-name|model
+name|localModel
 operator|.
 name|addEntry
 argument_list|(
-name|model
+name|localModel
 operator|.
 name|getRowCount
 argument_list|()
@@ -6790,11 +6773,11 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
-name|model
+name|localModel
 operator|.
 name|getStringRepresentation
 argument_list|()
@@ -6962,7 +6945,7 @@ block|}
 block|}
 specifier|final
 name|FileListTableModel
-name|model
+name|localModel
 init|=
 operator|new
 name|FileListTableModel
@@ -6975,7 +6958,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -6987,7 +6970,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|model
+name|localModel
 operator|.
 name|setContent
 argument_list|(
@@ -7022,7 +7005,7 @@ name|autoSetLinks
 argument_list|(
 name|entry
 argument_list|,
-name|model
+name|localModel
 argument_list|,
 name|metaData
 argument_list|,
@@ -7065,11 +7048,11 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
-name|model
+name|localModel
 operator|.
 name|getStringRepresentation
 argument_list|()
@@ -7224,7 +7207,7 @@ argument_list|()
 condition|)
 block|{
 name|FileListTableModel
-name|model
+name|localModel
 init|=
 operator|new
 name|FileListTableModel
@@ -7237,7 +7220,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -7249,7 +7232,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|model
+name|localModel
 operator|.
 name|setContent
 argument_list|(
@@ -7257,11 +7240,11 @@ name|oldVal
 argument_list|)
 expr_stmt|;
 block|}
-name|model
+name|localModel
 operator|.
 name|addEntry
 argument_list|(
-name|model
+name|localModel
 operator|.
 name|getRowCount
 argument_list|()
@@ -7284,11 +7267,11 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
-name|model
+name|localModel
 operator|.
 name|getStringRepresentation
 argument_list|()
@@ -7332,7 +7315,7 @@ argument_list|()
 expr_stmt|;
 comment|// Hack
 name|FileListTableModel
-name|model
+name|localModel
 init|=
 operator|new
 name|FileListTableModel
@@ -7345,7 +7328,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -7357,7 +7340,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|model
+name|localModel
 operator|.
 name|setContent
 argument_list|(
@@ -7365,11 +7348,11 @@ name|oldVal
 argument_list|)
 expr_stmt|;
 block|}
-name|model
+name|localModel
 operator|.
 name|addEntry
 argument_list|(
-name|model
+name|localModel
 operator|.
 name|getRowCount
 argument_list|()
@@ -7392,11 +7375,11 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
-name|model
+name|localModel
 operator|.
 name|getStringRepresentation
 argument_list|()
@@ -7602,11 +7585,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|setupComparatorChooser ()
 specifier|private
 name|void
@@ -7698,7 +7676,7 @@ operator|new
 name|String
 index|[]
 block|{
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 block|}
@@ -8227,7 +8205,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)

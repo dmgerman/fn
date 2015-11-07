@@ -1527,10 +1527,14 @@ operator|++
 expr_stmt|;
 block|}
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|sel
 init|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|values
 argument_list|)
@@ -1646,7 +1650,7 @@ name|field
 range|:
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{

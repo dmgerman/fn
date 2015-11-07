@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -109,6 +109,16 @@ operator|.
 name|util
 operator|.
 name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -385,7 +395,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Preferences dialog. Contains a TabbedPane, and tabs will be defined in  * separate classes. Tabs MUST implement the PrefsTab interface, since this  * dialog will call the storeSettings() method of all tabs when the user presses  * ok.  *   * With this design, it should be very easy to add new tabs later.  *   */
+comment|/**  * Preferences dialog. Contains a TabbedPane, and tabs will be defined in  * separate classes. Tabs MUST implement the PrefsTab interface, since this  * dialog will call the storeSettings() method of all tabs when the user presses  * ok.  *  * With this design, it should be very easy to add new tabs later.  *  */
 end_comment
 
 begin_class
@@ -448,6 +458,9 @@ name|parent
 expr_stmt|;
 specifier|final
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|chooser
 decl_stmt|;
 name|JButton
@@ -550,7 +563,7 @@ expr_stmt|;
 comment|// ----------------------------------------------------------------
 comment|// Add tabs to tabbed here. Remember, tabs must implement PrefsTab.
 comment|// ----------------------------------------------------------------
-name|ArrayList
+name|List
 argument_list|<
 name|PrefsTab
 argument_list|>
@@ -558,9 +571,7 @@ name|tabs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PrefsTab
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|tabs
@@ -851,6 +862,7 @@ name|chooser
 operator|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|names
 argument_list|)
@@ -922,9 +934,6 @@ block|}
 name|String
 name|o
 init|=
-operator|(
-name|String
-operator|)
 name|chooser
 operator|.
 name|getSelectedValue
@@ -1263,6 +1272,7 @@ operator|.
 name|exists
 argument_list|()
 operator|||
+operator|(
 name|JOptionPane
 operator|.
 name|showConfirmDialog
@@ -1302,6 +1312,7 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 try|try

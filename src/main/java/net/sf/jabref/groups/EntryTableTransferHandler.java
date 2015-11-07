@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -396,7 +396,13 @@ end_import
 
 begin_import
 import|import
-name|spl
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|pdfimport
 operator|.
 name|PdfImporter
 import|;
@@ -404,7 +410,13 @@ end_import
 
 begin_import
 import|import
-name|spl
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|pdfimport
 operator|.
 name|PdfImporter
 operator|.
@@ -420,15 +432,6 @@ name|EntryTableTransferHandler
 extends|extends
 name|TransferHandler
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|entryTable
 specifier|private
 specifier|final
@@ -483,7 +486,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Construct the transfer handler.      *      * @param entryTable The table this transfer handler should operate on. This argument is allowed to equal null,      *                   in which case the transfer handler can assume that it works for a JabRef instance      *                   with no databases open, attached to the empty tabbed pane.      * @param frame      The JabRefFrame instance.      * @param panel      The BasePanel this transferhandler works for.      */
+comment|/**      * Construct the transfer handler.      *      * @param entryTable The table this transfer handler should operate on. This argument is allowed to equal null, in      *            which case the transfer handler can assume that it works for a JabRef instance with no databases open,      *            attached to the empty tabbed pane.      * @param frame The JabRefFrame instance.      * @param panel The BasePanel this transferhandler works for.      */
 DECL|method|EntryTableTransferHandler (MainTable entryTable, JabRefFrame frame, BasePanel panel)
 specifier|public
 name|EntryTableTransferHandler
@@ -619,7 +622,7 @@ return|;
 comment|//.getTransferable();
 block|}
 block|}
-comment|/**      * This method is called when stuff is drag to the component.      *       * Imports the dropped URL or plain text as a new entry in the current      * database.      *       */
+comment|/**      * This method is called when stuff is drag to the component.      *      * Imports the dropped URL or plain text as a new entry in the current database.      *      */
 annotation|@
 name|Override
 DECL|method|importData (JComponent comp, Transferable t)
@@ -790,13 +793,11 @@ name|IOException
 name|ioe
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"failed to read dropped data: "
+literal|"Failed to read dropped data: "
 operator|+
 name|ioe
 argument_list|)
@@ -808,26 +809,22 @@ name|UnsupportedFlavorException
 name|ufe
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"drop type error: "
+literal|"Drop type error: "
 operator|+
 name|ufe
 argument_list|)
 expr_stmt|;
 block|}
 comment|// all supported flavors failed
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|info
 argument_list|(
-literal|"can't transfer input: "
+literal|"Can't transfer input: "
 argument_list|)
 expr_stmt|;
 name|DataFlavor
@@ -847,11 +844,9 @@ range|:
 name|inflavs
 control|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"  "
 operator|+
@@ -863,7 +858,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * This method is called to query whether the transfer can be imported.      *       * Will return true for urls, strings, javaFileLists      */
+comment|/**      * This method is called to query whether the transfer can be imported.      *      * Will return true for urls, strings, javaFileLists      */
 annotation|@
 name|Override
 DECL|method|canImport (JComponent comp, DataFlavor[] transferFlavors)
@@ -1031,13 +1026,11 @@ operator|.
 name|FILE
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
-literal|"dragging file"
+literal|"Dragging file"
 argument_list|)
 expr_stmt|;
 name|draggingFile
@@ -1217,6 +1210,8 @@ operator|.
 name|deleteOnExit
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|FileWriter
 name|fw
 init|=
@@ -1225,7 +1220,8 @@ name|FileWriter
 argument_list|(
 name|tmpfile
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|fw
 operator|.
 name|write
@@ -1233,11 +1229,7 @@ argument_list|(
 name|dropStr
 argument_list|)
 expr_stmt|;
-name|fw
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 comment|// System.out.println("importing from " + tmpfile.getAbsolutePath());
 name|ImportMenuItem
 name|importer
@@ -1269,7 +1261,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Translate a String describing a set of files or URLs dragged into JabRef      * into a List of File objects, taking care of URL special characters.      *      * @param s      *            String describing a set of files or URLs dragged into JabRef      * @return a List<File> containing the individual file objects.      *      */
+comment|/**      * Translate a String describing a set of files or URLs dragged into JabRef into a List of File objects, taking care      * of URL special characters.      *      * @param s String describing a set of files or URLs dragged into JabRef      * @return a List<File> containing the individual file objects.      *      */
 DECL|method|getFilesFromDraggedFilesString (String s)
 specifier|public
 specifier|static
@@ -1310,9 +1302,7 @@ name|files
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1475,7 +1465,7 @@ return|return
 name|files
 return|;
 block|}
-comment|/**      * Handle a String describing a set of files or URLs dragged into JabRef.      *       * @param s      *            String describing a set of files or URLs dragged into JabRef      * @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      *      */
+comment|/**      * Handle a String describing a set of files or URLs dragged into JabRef.      *      * @param s String describing a set of files or URLs dragged into JabRef      * @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      *      */
 DECL|method|handleDraggedFilenames (String s, final int dropRow)
 specifier|private
 name|boolean
@@ -1503,7 +1493,7 @@ name|dropRow
 argument_list|)
 return|;
 block|}
-comment|/**      * Handle a List containing File objects for a set of files to import.      *       * @param files      *            A List containing File instances pointing to files.      * @param dropRow @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      */
+comment|/**      * Handle a List containing File objects for a set of files to import.      *      * @param files A List containing File instances pointing to files.      * @param dropRow @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      */
 DECL|method|handleDraggedFiles (List<File> files, final int dropRow)
 specifier|private
 name|boolean
@@ -1636,7 +1626,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Take a set of filenames. Those with names indicating bib files are opened      * as such if possible. All other files we will attempt to import into the      * current database.      *       * @param fileNames      *            The names of the files to open.      * @param dropRow success status for the operation      */
+comment|/**      * Take a set of filenames. Those with names indicating bib files are opened as such if possible. All other files we      * will attempt to import into the current database.      *      * @param fileNames The names of the files to open.      * @param dropRow success status for the operation      */
 DECL|method|loadOrImportFiles (String[] fileNames, int dropRow)
 specifier|private
 name|void
@@ -1669,9 +1659,7 @@ name|notBibFiles
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -1719,16 +1707,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|index
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|index
 operator|<
 name|fileName
 operator|.
 name|length
 argument_list|()
+operator|)
 condition|)
 block|{
 name|extension
@@ -1792,15 +1784,19 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|pr
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|pr
 operator|==
 name|ParserResult
 operator|.
 name|INVALID_FORMAT
+operator|)
 condition|)
 block|{
 name|notBibFiles
@@ -1849,23 +1845,23 @@ argument_list|(
 name|fileName
 argument_list|)
 expr_stmt|;
-comment|// No error message, since we want to try importing the
-comment|// file?
-comment|//
-comment|// Util.showQuickErrorDialog(frame, Globals.lang("Open database"), e);
 block|}
 continue|continue;
 block|}
 comment|/*              * This is a linkable file. If the user dropped it on an entry, we              * should offer options for autolinking to this files:              *              * TODO we should offer an option to highlight the row the user is on too.              */
 if|if
 condition|(
+operator|(
 name|fileType
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|dropRow
 operator|>=
 literal|0
+operator|)
 condition|)
 block|{
 comment|/*                  * TODO: need to signal if this is a local or autodownloaded                  * file                  */

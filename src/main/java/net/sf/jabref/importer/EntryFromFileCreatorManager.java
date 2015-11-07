@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.importer
 package|package
@@ -219,7 +223,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The class EntryFromFileCreatorManager manages entry creators.   * The manager knows all existing implementations of the interface EntryFromFileCreator.   * Given a file, the manager can then provide a creator, which is able to create a Bibtex entry for his file.   * Knowing all implementations of the interface, the manager also knows the set of all files, of which Bibtex entries can be created.   * The GUI uses this capability for offering the user only such files, of which entries could actually be created.  * @author Dan&Nosh  *  */
+comment|/**  * The class EntryFromFileCreatorManager manages entry creators.  * The manager knows all existing implementations of the interface EntryFromFileCreator.  * Given a file, the manager can then provide a creator, which is able to create a Bibtex entry for his file.  * Knowing all implementations of the interface, the manager also knows the set of all files, of which Bibtex entries can be created.  * The GUI uses this capability for offering the user only such files, of which entries could actually be created.  * @author Dan&Nosh  *  */
 end_comment
 
 begin_class
@@ -247,9 +251,7 @@ name|entryCreators
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|EntryFromFileCreator
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|10
 argument_list|)
@@ -327,13 +329,16 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|entryCreator
 operator|.
 name|getExternalFileType
 argument_list|()
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|entryCreator
 operator|.
 name|getExternalFileType
@@ -343,6 +348,7 @@ name|getExtension
 argument_list|()
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 continue|continue;
@@ -375,7 +381,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Returns a EntryFromFileCreator object that is capable of creating a      * BibtexEntry for the given File.      *       * @param file the pdf file      * @return null if there is no EntryFromFileCreator for this File.      */
+comment|/**      * Returns a EntryFromFileCreator object that is capable of creating a      * BibtexEntry for the given File.      *      * @param file the pdf file      * @return null if there is no EntryFromFileCreator for this File.      */
 DECL|method|getEntryCreator (File file)
 specifier|public
 name|EntryFromFileCreator
@@ -387,9 +393,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|file
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|file
@@ -429,7 +437,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Trys to add a entry for each file in the List.      *       * @param files      * @param database      * @param entryType      * @return List of unexcpected import event messages including failures.      */
+comment|/**      * Trys to add a entry for each file in the List.      *      * @param files      * @param database      * @param entryType      * @return List of unexcpected import event messages including failures.      */
 DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile)
 specifier|public
 name|List
@@ -462,9 +470,7 @@ name|importGUIMessages
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addEntriesFromFiles
@@ -488,7 +494,7 @@ return|return
 name|importGUIMessages
 return|;
 block|}
-comment|/**      * Tries to add a entry for each file in the List.      *       * @param files      * @param database      * @param panel      * @param entryType      * @param generateKeywordsFromPathToFile      * @param changeListener      * @param importGUIMessages list of unexpected import event - Messages including      *         failures      * @return Returns The number of entries added      */
+comment|/**      * Tries to add a entry for each file in the List.      *      * @param files      * @param database      * @param panel      * @param entryType      * @param generateKeywordsFromPathToFile      * @param changeListener      * @param importGUIMessages list of unexpected import event - Messages including      *         failures      * @return Returns The number of entries added      */
 DECL|method|addEntriesFromFiles (List<File> files, BibtexDatabase database, BasePanel panel, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener, List<String> importGUIMessages)
 specifier|public
 name|int
@@ -752,13 +758,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|count
 operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 name|panel
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|System
@@ -789,7 +799,7 @@ return|return
 name|count
 return|;
 block|}
-comment|/**      * Returns a {@link FileFilter} instance which will accept all files, for      * which a {@link EntryFromFileCreator} exists, that accepts the files.<br>      *<br>      * This {@link FileFilter} will be displayed in the GUI as      * "All supported files".      *       * @return A {@link FileFilter} that accepts all files for which creators      *         exist.      */
+comment|/**      * Returns a {@link FileFilter} instance which will accept all files, for      * which a {@link EntryFromFileCreator} exists, that accepts the files.<br>      *<br>      * This {@link FileFilter} will be displayed in the GUI as      * "All supported files".      *      * @return A {@link FileFilter} that accepts all files for which creators      *         exist.      */
 DECL|method|getFileFilter ()
 specifier|private
 name|FileFilter
@@ -853,7 +863,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/**      * Returns a list of all {@link FileFilter} instances (i.e.      * {@link EntryFromFileCreator}, plus the file filter that comes with the      * {@link #getFileFilter()} method.      *       * @return A List of all known possible file filters.      */
+comment|/**      * Returns a list of all {@link FileFilter} instances (i.e.      * {@link EntryFromFileCreator}, plus the file filter that comes with the      * {@link #getFileFilter()} method.      *      * @return A List of all known possible file filters.      */
 DECL|method|getFileFilterList ()
 specifier|public
 name|List
@@ -871,9 +881,7 @@ name|filters
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|FileFilter
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|filters

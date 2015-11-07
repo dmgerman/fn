@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -273,7 +273,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * This action goes through all selected entries in the BasePanel, and attempts  * to write the XMP data to the external pdf.  */
+comment|/**  *  * This action goes through all selected entries in the BasePanel, and attempts  * to write the XMP data to the external pdf.  */
 end_comment
 
 begin_class
@@ -571,9 +571,7 @@ name|files
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// First check the (legacy) "pdf" field:
@@ -638,7 +636,7 @@ argument_list|()
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -650,7 +648,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -706,12 +704,14 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|flEntry
 operator|.
 name|getType
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|flEntry
 operator|.
@@ -1380,13 +1380,13 @@ literal|""
 argument_list|)
 expr_stmt|;
 name|JPanel
-name|panel
+name|tmpPanel
 init|=
 operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
-name|panel
+name|tmpPanel
 operator|.
 name|setBorder
 argument_list|(
@@ -1404,7 +1404,7 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|panel
+name|tmpPanel
 operator|.
 name|add
 argument_list|(
@@ -1479,7 +1479,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-name|panel
+name|tmpPanel
 argument_list|,
 name|BorderLayout
 operator|.
@@ -1530,6 +1530,11 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|method|open ()
 specifier|public
 name|void

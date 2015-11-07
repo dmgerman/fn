@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.gui.keyboard
 package|package
@@ -469,15 +473,6 @@ name|MARK_ENTRIES
 init|=
 literal|"Mark entries"
 decl_stmt|;
-DECL|field|MINIMIZE_TO_SYSTEM_TRAY
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|MINIMIZE_TO_SYSTEM_TRAY
-init|=
-literal|"Minimize to system tray"
-decl_stmt|;
 DECL|field|NEW_ARTICLE
 specifier|public
 specifier|static
@@ -666,24 +661,6 @@ name|String
 name|PUSH_TO_APPLICATION
 init|=
 literal|"Push to application"
-decl_stmt|;
-DECL|field|PUSH_TO_LY_X
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PUSH_TO_LY_X
-init|=
-literal|"Push to LyX"
-decl_stmt|;
-DECL|field|PUSH_TO_WIN_EDT
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PUSH_TO_WIN_EDT
-init|=
-literal|"Push to WinEdt"
 decl_stmt|;
 DECL|field|QUIT_JAB_REF
 specifier|public
@@ -892,24 +869,6 @@ name|SYNCHRONIZE_FILES
 init|=
 literal|"Synchronize files"
 decl_stmt|;
-DECL|field|SYNCHRONIZE_PDF
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SYNCHRONIZE_PDF
-init|=
-literal|"Synchronize PDF"
-decl_stmt|;
-DECL|field|SYNCHRONIZE_PS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SYNCHRONIZE_PS
-init|=
-literal|"Synchronize PS"
-decl_stmt|;
 DECL|field|TOGGLE_ENTRY_PREVIEW
 specifier|public
 specifier|static
@@ -977,11 +936,7 @@ name|keyBindMap
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|KeyBinds ()
@@ -996,24 +951,6 @@ argument_list|(
 name|PUSH_TO_APPLICATION
 argument_list|,
 literal|"ctrl L"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|PUSH_TO_LY_X
-argument_list|,
-literal|"ctrl L"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|PUSH_TO_WIN_EDT
-argument_list|,
-literal|"ctrl shift W"
 argument_list|)
 expr_stmt|;
 name|keyBindMap
@@ -1654,24 +1591,6 @@ name|keyBindMap
 operator|.
 name|put
 argument_list|(
-name|SYNCHRONIZE_PDF
-argument_list|,
-literal|"shift F4"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|SYNCHRONIZE_PS
-argument_list|,
-literal|"ctrl shift F4"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
 name|FOCUS_ENTRY_TABLE
 argument_list|,
 literal|"ctrl shift E"
@@ -1890,15 +1809,6 @@ name|keyBindMap
 operator|.
 name|put
 argument_list|(
-name|MINIMIZE_TO_SYSTEM_TRAY
-argument_list|,
-literal|"ctrl alt W"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
 name|HIDE_SHOW_TOOLBAR
 argument_list|,
 literal|"ctrl alt T"
@@ -1937,11 +1847,7 @@ block|{
 return|return
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Collections
 operator|.

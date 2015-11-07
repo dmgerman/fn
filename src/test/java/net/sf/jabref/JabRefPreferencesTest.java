@@ -48,6 +48,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -73,6 +83,11 @@ specifier|private
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
+DECL|field|backup
+specifier|private
+name|JabRefPreferences
+name|backup
+decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setUp ()
@@ -87,6 +102,10 @@ name|JabRefPreferences
 operator|.
 name|getInstance
 argument_list|()
+expr_stmt|;
+name|backup
+operator|=
+name|prefs
 expr_stmt|;
 block|}
 annotation|@
@@ -136,23 +155,28 @@ operator|.
 name|SAVE_PRIMARY_SORT_FIELD
 argument_list|)
 decl_stmt|;
-comment|//clean up preferences to default state
-name|prefs
-operator|.
-name|put
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SAVE_PRIMARY_SORT_FIELD
-argument_list|,
-literal|"author"
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 name|expected
 argument_list|,
 name|actual
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|After
+DECL|method|tearDown ()
+specifier|public
+name|void
+name|tearDown
+parameter_list|()
+block|{
+comment|//clean up preferences to default state
+name|prefs
+operator|.
+name|overwritePreferences
+argument_list|(
+name|backup
 argument_list|)
 expr_stmt|;
 block|}

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -102,11 +102,7 @@ name|CHARS
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 static|static
@@ -2036,9 +2032,11 @@ if|if
 condition|(
 name|escaped
 operator|&&
+operator|(
 name|c
 operator|==
 literal|'\\'
+operator|)
 condition|)
 block|{
 name|sb
@@ -2138,13 +2136,17 @@ operator|!
 name|incommand
 operator|&&
 operator|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 operator|)
 condition|)
 block|{
@@ -2160,9 +2162,11 @@ argument_list|(
 name|c
 argument_list|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'%'
+operator|)
 operator|||
 name|Globals
 operator|.
@@ -2210,12 +2214,14 @@ name|testCharCom
 label|:
 if|if
 condition|(
+operator|(
 name|currentCommand
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|1
+operator|)
 operator|&&
 name|Globals
 operator|.
@@ -2236,12 +2242,14 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 break|break
@@ -2368,9 +2376,11 @@ block|{
 comment|//	Are we already at the end of the string?
 if|if
 condition|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|==
 name|field
 operator|.
@@ -2460,13 +2470,17 @@ argument_list|(
 name|c
 argument_list|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 condition|)
 block|{
 comment|// First test if we are already at the end of the string.
@@ -2676,7 +2690,7 @@ block|}
 comment|/* else if (c == '}') {                     System.out.printf("com term by }: '%s'\n", currentCommand.toString());                      argument = "";                  }*/
 else|else
 block|{
-comment|/*                      * TODO: this point is reached, apparently, if a command is                      * terminated in a strange way, such as with "$\omega$".                      * Also, the command "\&" causes us to get here. The former                      * issue is maybe a little difficult to address, since it                      * involves the LaTeX math mode. We don't have a complete                      * LaTeX parser, so maybe it's better to ignore these                      * commands?                      */
+comment|/*                       * TODO: this point is reached, apparently, if a command is                       * terminated in a strange way, such as with "$\omega$".                       * Also, the command "\&" causes us to get here. The former                       * issue is maybe a little difficult to address, since it                       * involves the LaTeX math mode. We don't have a complete                       * LaTeX parser, so maybe it's better to ignore these                       * commands?                       */
 block|}
 name|incommand
 operator|=

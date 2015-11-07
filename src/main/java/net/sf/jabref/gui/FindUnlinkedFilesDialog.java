@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.gui
 package|package
@@ -750,11 +754,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|util
-operator|.
-name|io
+name|desktop
 operator|.
 name|JabRefDesktop
 import|;
@@ -859,7 +861,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GUI Dialog for the feature "Find unlinked files".  *   * @author Nosh&Dan  * @version 25.11.2008 | 23:13:29  *  */
+comment|/**  * GUI Dialog for the feature "Find unlinked files".  *  * @author Nosh&Dan  * @version 25.11.2008 | 23:13:29  *  */
 end_comment
 
 begin_class
@@ -870,16 +872,6 @@ name|FindUnlinkedFilesDialog
 extends|extends
 name|JDialog
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|5778378185253640030L
-decl_stmt|;
 comment|/**      * Keys to be used for referencing this Action.      */
 DECL|field|ACTION_COMMAND
 specifier|public
@@ -890,23 +882,15 @@ name|ACTION_COMMAND
 init|=
 literal|"findUnlinkedFiles"
 decl_stmt|;
-DECL|field|ACTION_TITLE
+DECL|field|ACTION_MENU_TITLE
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|ACTION_TITLE
+name|ACTION_MENU_TITLE
 init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Find unlinked files"
-argument_list|)
-operator|+
-literal|"..."
+literal|"Find unlinked files..."
 decl_stmt|;
-comment|// this entry is NOT in Menu_en.properties as the same string also appears in JabRef_en.properties
 DECL|field|ACTION_ICON
 specifier|public
 specifier|static
@@ -932,12 +916,7 @@ specifier|final
 name|String
 name|ACTION_SHORT_DESCRIPTION
 init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Searches for unlinked PDF files on the file system"
-argument_list|)
 decl_stmt|;
 DECL|field|GLOBAL_PREFS_WORKING_DIRECTORY_KEY
 specifier|private
@@ -1117,11 +1096,17 @@ decl_stmt|;
 DECL|field|comboBoxFileTypeSelection
 specifier|private
 name|JComboBox
+argument_list|<
+name|FileFilter
+argument_list|>
 name|comboBoxFileTypeSelection
 decl_stmt|;
 DECL|field|comboBoxEntryTypeSelection
 specifier|private
 name|JComboBox
+argument_list|<
+name|BibtexEntryTypeWrapper
+argument_list|>
 name|comboBoxEntryTypeSelection
 decl_stmt|;
 DECL|field|progressBarSearching
@@ -1323,7 +1308,7 @@ block|}
 block|}
 decl_stmt|;
 name|JRootPane
-name|rootPane
+name|rPane
 init|=
 operator|new
 name|JRootPane
@@ -1343,7 +1328,7 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
-name|rootPane
+name|rPane
 operator|.
 name|registerKeyboardAction
 argument_list|(
@@ -1357,7 +1342,7 @@ name|WHEN_IN_FOCUSED_WINDOW
 argument_list|)
 expr_stmt|;
 return|return
-name|rootPane
+name|rPane
 return|;
 block|}
 comment|/**      * Stores the current size of this dialog persistently.      */
@@ -1476,7 +1461,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignored
+block|}
 block|}
 if|if
 condition|(
@@ -1824,21 +1811,19 @@ block|}
 block|}
 expr_stmt|;
 block|}
-comment|/**      * Stores the working directory path for this view in the global      * preferences.      *       * @param lastSelectedDirectory      *            directory that is used as the working directory in this view.      */
-DECL|method|storeLastSelectedDirectory (File lastSelectedDirectory)
+comment|/**      * Stores the working directory path for this view in the global      * preferences.      *      * @param lastSelectedDirectory      *            directory that is used as the working directory in this view.      */
+DECL|method|storeLastSelectedDirectory (File lastSelectedDir)
 specifier|private
 name|void
 name|storeLastSelectedDirectory
 parameter_list|(
 name|File
-name|lastSelectedDirectory
+name|lastSelectedDir
 parameter_list|)
 block|{
-name|this
-operator|.
 name|lastSelectedDirectory
 operator|=
-name|lastSelectedDirectory
+name|lastSelectedDir
 expr_stmt|;
 if|if
 condition|(
@@ -1865,7 +1850,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Loads the working directory path which is persistantly stored for this      * view and returns it as a {@link File}-Object.<br>      *<br>      * If there is no working directory path stored, the general working      * directory will be consulted.      *       * @return The persistently stored working directory path for this view.      */
+comment|/**      * Loads the working directory path which is persistantly stored for this      * view and returns it as a {@link File}-Object.<br>      *<br>      * If there is no working directory path stored, the general working      * directory will be consulted.      *      * @return The persistently stored working directory path for this view.      */
 DECL|method|loadLastSelectedDirectory ()
 specifier|private
 name|File
@@ -1935,7 +1920,7 @@ return|return
 name|lastSelectedDirectory
 return|;
 block|}
-comment|/**      * Opens a {@link JFileChooser} and receives the user input as a      * {@link File} object, which this method returns.<br>      *<br>      * The "Open file" dialog will start at the path that is set in the      * "directory" textfield, or at the last stored path for this dialog, if the      * textfield is empty.<br>      *<br>      * If the user cancels the "Open file" dialog, this method returns null.<br>      *<br>      * If the user has selected a valid directory in the "Open file" dialog,      * this path will be stored persistently for this dialog, so that it can be      * preset at the next time this dialog is opened.      *       * @return The selected directory from the user, or<code>null</code>, if      *         the user has aborted the selection.      */
+comment|/**      * Opens a {@link JFileChooser} and receives the user input as a      * {@link File} object, which this method returns.<br>      *<br>      * The "Open file" dialog will start at the path that is set in the      * "directory" textfield, or at the last stored path for this dialog, if the      * textfield is empty.<br>      *<br>      * If the user cancels the "Open file" dialog, this method returns null.<br>      *<br>      * If the user has selected a valid directory in the "Open file" dialog,      * this path will be stored persistently for this dialog, so that it can be      * preset at the next time this dialog is opened.      *      * @return The selected directory from the user, or<code>null</code>, if      *         the user has aborted the selection.      */
 DECL|method|chooseDirectory ()
 specifier|private
 name|File
@@ -2018,9 +2003,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|path
 operator|==
 literal|null
+operator|)
 operator|||
 name|path
 operator|.
@@ -2114,7 +2101,7 @@ return|return
 name|selectedDirectory
 return|;
 block|}
-comment|/**      * Disables or enables all visible Elements in this Dialog.<br>      *<br>      * This also removes the {@link MouseListener} from the Tree-View to prevent      * it from receiving mouse events when in disabled-state.      *       * @param enable      *<code>true</code> when the elements shall get enabled,      *<code>false</code> when they shall get disabled.      */
+comment|/**      * Disables or enables all visible Elements in this Dialog.<br>      *<br>      * This also removes the {@link MouseListener} from the Tree-View to prevent      * it from receiving mouse events when in disabled-state.      *      * @param enable      *<code>true</code> when the elements shall get enabled,      *<code>false</code> when they shall get disabled.      */
 DECL|method|disOrEnableDialog (boolean enable)
 specifier|private
 name|void
@@ -2157,7 +2144,7 @@ name|enable
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Recursively disables or enables all swing and awt components in this      * dialog, starting with but not including the container      *<code>startContainer</code>.      *       * @param startContainer      *            The GUI Element to start with.      * @param enable      *<code>true</code>, if all elements will get enabled,      *<code>false</code> if all elements will get disabled.      */
+comment|/**      * Recursively disables or enables all swing and awt components in this      * dialog, starting with but not including the container      *<code>startContainer</code>.      *      * @param startContainer      *            The GUI Element to start with.      * @param enable      *<code>true</code>, if all elements will get enabled,      *<code>false</code> if all elements will get disabled.      */
 DECL|method|disOrEnableAllElements (Container startContainer, boolean enable)
 specifier|private
 name|void
@@ -2215,13 +2202,13 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Expands or collapses the specified tree according to the      *<code>expand</code>-parameter.      */
-DECL|method|expandTree (JTree tree, TreePath parent, boolean expand)
+DECL|method|expandTree (JTree currentTree, TreePath parent, boolean expand)
 specifier|private
 name|void
 name|expandTree
 parameter_list|(
 name|JTree
-name|tree
+name|currentTree
 parameter_list|,
 name|TreePath
 name|parent
@@ -2254,6 +2241,9 @@ block|{
 for|for
 control|(
 name|Enumeration
+argument_list|<
+name|TreeNode
+argument_list|>
 name|e
 init|=
 name|node
@@ -2283,7 +2273,7 @@ argument_list|)
 decl_stmt|;
 name|expandTree
 argument_list|(
-name|tree
+name|currentTree
 argument_list|,
 name|path
 argument_list|,
@@ -2297,7 +2287,7 @@ condition|(
 name|expand
 condition|)
 block|{
-name|tree
+name|currentTree
 operator|.
 name|expandPath
 argument_list|(
@@ -2307,7 +2297,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|tree
+name|currentTree
 operator|.
 name|collapsePath
 argument_list|(
@@ -2579,9 +2569,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|fileList
 operator|==
 literal|null
+operator|)
 operator|||
 name|fileList
 operator|.
@@ -2712,9 +2704,7 @@ name|errors
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|int
@@ -2794,7 +2784,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *       * @param errors      */
+comment|/**      *      * @param errors      */
 DECL|method|importFinishedHandler (int count, List<String> errors)
 specifier|private
 name|void
@@ -2812,9 +2802,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|errors
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|errors
@@ -2941,7 +2933,7 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Will be called from the Thread in which the "unlinked files search" is      * processed. As the result of the search, the root node of the determined      * file structure is passed.      *       * @param rootNode      *            The root of the file structure as the result of the search.      */
+comment|/**      * Will be called from the Thread in which the "unlinked files search" is      * processed. As the result of the search, the root node of the determined      * file structure is passed.      *      * @param rootNode      *            The root of the file structure as the result of the search.      */
 DECL|method|searchFinishedHandler (CheckableTreeNode rootNode)
 specifier|private
 name|void
@@ -3152,12 +3144,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a list of {@link File}s for all leaf nodes in the tree structure      *<code>node</code>, which have been marked as<i>selected</i>.<br>      *<br>      *<code>Selected</code> nodes correspond to those entries in the tree,      * whose checkbox is<code>checked</code>.      *       * SIDE EFFECT: The checked nodes are removed from the tree.      *       * @param node      *            The root node representing a tree structure.      * @return A list of files of all checked leaf nodes.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
+comment|/**      * Creates a list of {@link File}s for all leaf nodes in the tree structure      *<code>node</code>, which have been marked as<i>selected</i>.<br>      *<br>      *<code>Selected</code> nodes correspond to those entries in the tree,      * whose checkbox is<code>checked</code>.      *      * SIDE EFFECT: The checked nodes are removed from the tree.      *      * @param node      *            The root node representing a tree structure.      * @return A list of files of all checked leaf nodes.      */
 DECL|method|getFileListFromNode (CheckableTreeNode node)
 specifier|private
 name|List
@@ -3178,9 +3165,7 @@ name|filesList
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Enumeration
@@ -3202,11 +3187,7 @@ name|nodesToRemove
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|FindUnlinkedFilesDialog
-operator|.
-name|CheckableTreeNode
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 while|while
@@ -3255,9 +3236,11 @@ name|file
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|nodeFile
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|nodeFile
 operator|.
@@ -3323,9 +3306,11 @@ expr_stmt|;
 comment|// remove empty parent node
 while|while
 condition|(
+operator|(
 name|parent
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|parent
 operator|.
@@ -5210,7 +5195,7 @@ name|pack
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Adds a component to a container, using the specified gridbag-layout and      * the supplied parameters.<br>      *<br>      * This method is simply used to ged rid of thousands of lines of code,      * which inevitably rise when layouts such as the gridbag-layout is being      * used.      *       * @param layout      *            The layout to be used.      * @param container      *            The {@link Container}, to which the component will be added.      * @param component      *            An AWT {@link Component}, that will be added to the container.      * @param fill      *            A constant describing the fill behaviour (see      *            {@link GridBagConstraints}). Can be<code>null</code>, if no      *            filling wants to be specified.      * @param anchor      *            A constant describing the anchor of the element in its parent      *            container (see {@link GridBagConstraints}). Can be      *<code>null</code>, if no specification is needed.      * @param gridX      *            The relative grid-X coordinate.      * @param gridY      *            The relative grid-Y coordinate.      * @param width      *            The relative width of the component.      * @param height      *            The relative height of the component.      * @param weightX      *            A value for the horizontal weight.      * @param weightY      *            A value for the vertical weight.      * @param insets      *            Insets of the component. Can be<code>null</code>.      */
+comment|/**      * Adds a component to a container, using the specified gridbag-layout and      * the supplied parameters.<br>      *<br>      * This method is simply used to ged rid of thousands of lines of code,      * which inevitably rise when layouts such as the gridbag-layout is being      * used.      *      * @param layout      *            The layout to be used.      * @param container      *            The {@link Container}, to which the component will be added.      * @param component      *            An AWT {@link Component}, that will be added to the container.      * @param fill      *            A constant describing the fill behaviour (see      *            {@link GridBagConstraints}). Can be<code>null</code>, if no      *            filling wants to be specified.      * @param anchor      *            A constant describing the anchor of the element in its parent      *            container (see {@link GridBagConstraints}). Can be      *<code>null</code>, if no specification is needed.      * @param gridX      *            The relative grid-X coordinate.      * @param gridY      *            The relative grid-Y coordinate.      * @param width      *            The relative width of the component.      * @param height      *            The relative height of the component.      * @param weightX      *            A value for the horizontal weight.      * @param weightY      *            A value for the vertical weight.      * @param insets      *            Insets of the component. Can be<code>null</code>.      */
 DECL|method|addComponent (GridBagLayout layout, Container container, Component component, Integer fill, Integer anchor, Insets insets, int gridX, int gridY, int width, int height, double weightX, double weightY, int ipadX, int ipadY)
 specifier|private
 specifier|static
@@ -5481,9 +5466,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|userObject
 operator|instanceof
 name|FileNodeWrapper
+operator|)
 operator|&&
 name|node
 operator|.
@@ -5646,9 +5633,7 @@ name|vector
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|FileFilter
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -5671,6 +5656,7 @@ name|comboBoxFileTypeSelection
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|vector
 argument_list|)
@@ -5683,14 +5669,6 @@ operator|new
 name|DefaultListCellRenderer
 argument_list|()
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|8503499454763947465L
-decl_stmt|;
 comment|/* (non-Javadoc)              * @see javax.swing.DefaultListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object, int, boolean, boolean)              */
 annotation|@
 name|Override
@@ -5812,9 +5790,7 @@ name|list
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|BibtexEntryTypeWrapper
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|list
@@ -5855,12 +5831,13 @@ name|comboBoxEntryTypeSelection
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|list
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Wrapper for displaying the Type {@link BibtexEntryType} in a Combobox.      *       * @author Nosh&Dan      * @version 12.11.2008 | 01:02:30      *      */
+comment|/**      * Wrapper for displaying the Type {@link BibtexEntryType} in a Combobox.      *      * @author Nosh&Dan      * @version 12.11.2008 | 01:02:30      *      */
 DECL|class|BibtexEntryTypeWrapper
 specifier|private
 specifier|static
@@ -6008,11 +5985,6 @@ name|isSelected
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|setSelected (boolean bSelected)
 specifier|public
 name|void
@@ -6030,7 +6002,7 @@ name|Enumeration
 argument_list|<
 name|CheckableTreeNode
 argument_list|>
-name|children
+name|tmpChildren
 init|=
 name|this
 operator|.
@@ -6039,7 +6011,7 @@ argument_list|()
 decl_stmt|;
 while|while
 condition|(
-name|children
+name|tmpChildren
 operator|.
 name|hasMoreElements
 argument_list|()
@@ -6048,7 +6020,7 @@ block|{
 name|CheckableTreeNode
 name|child
 init|=
-name|children
+name|tmpChildren
 operator|.
 name|nextElement
 argument_list|()
@@ -6081,15 +6053,6 @@ name|CheckboxTreeCellRenderer
 extends|extends
 name|DefaultTreeCellRenderer
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|3737245079578074387L
-decl_stmt|;
 DECL|field|fsv
 specifier|final
 name|FileSystemView
@@ -6216,7 +6179,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignored
+block|}
 name|newPanel
 operator|.
 name|setBackground
@@ -6468,7 +6433,7 @@ operator|=
 name|fileCount
 expr_stmt|;
 block|}
-comment|/*          * (non-Javadoc)          *           * @see java.lang.Object#toString()          */
+comment|/*          * (non-Javadoc)          *          * @see java.lang.Object#toString()          */
 annotation|@
 name|Override
 DECL|method|toString ()

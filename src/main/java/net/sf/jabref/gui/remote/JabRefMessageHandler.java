@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.gui.remote
 package|package
@@ -55,16 +59,6 @@ operator|.
 name|server
 operator|.
 name|MessageHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
 import|;
 end_import
 
@@ -155,36 +149,6 @@ name|message
 argument_list|)
 throw|;
 block|}
-comment|// put "bringToFront" in the queue
-comment|// it has to happen before the call to import as the import might open a dialog
-comment|// --> Globals.prefs.getBoolean(JabRefPreferences.USE_IMPORT_INSPECTION_DIALOG)
-comment|// this dialog has to be shown AFTER JabRef has been brought to front
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-name|JabRef
-operator|.
-name|jrf
-operator|.
-name|showIfMinimizedToSysTray
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|int

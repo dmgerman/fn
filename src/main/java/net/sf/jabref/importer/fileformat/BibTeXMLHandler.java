@@ -156,6 +156,11 @@ name|bibitems
 return|;
 block|}
 comment|// SAX parsing methods
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|method|doctypeDecl (String name, String publicId, String systemId)
 specifier|public
 name|void
@@ -170,7 +175,9 @@ parameter_list|,
 name|String
 name|systemId
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|startDocument ()
@@ -183,9 +190,7 @@ name|bibitems
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -196,7 +201,9 @@ specifier|public
 name|void
 name|endDocument
 parameter_list|()
-block|{     }
+block|{
+comment|// Empty method
+block|}
 annotation|@
 name|Override
 DECL|method|characters (char[] ch, int start, int length)

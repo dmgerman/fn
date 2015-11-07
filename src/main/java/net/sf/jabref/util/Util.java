@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     Copyright (C) 2015 Oliver Kopp      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     Copyright (C) 2015 Oliver Kopp      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_comment
@@ -36,37 +36,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|CardLayout
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|Component
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Dimension
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Font
 import|;
 end_import
 
@@ -184,27 +154,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|Box
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|InputMap
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JButton
 import|;
 end_import
 
@@ -234,16 +184,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -264,16 +204,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JPanel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JProgressBar
 import|;
 end_import
@@ -285,26 +215,6 @@ operator|.
 name|swing
 operator|.
 name|JRootPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JScrollPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JTextArea
 import|;
 end_import
 
@@ -662,20 +572,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -932,34 +828,6 @@ name|UndoableFieldChange
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|jgoodies
-operator|.
-name|forms
-operator|.
-name|builder
-operator|.
-name|DefaultFormBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|jgoodies
-operator|.
-name|forms
-operator|.
-name|layout
-operator|.
-name|FormLayout
-import|;
-end_import
-
 begin_comment
 comment|/**  * utility functions  */
 end_comment
@@ -1040,7 +908,7 @@ operator|new
 name|UnicodeCharMap
 argument_list|()
 decl_stmt|;
-comment|/**      * This method sets the location of a Dialog such that it is centered with      * regard to another window, but not outside the screen on the left and the      * top.      */
+comment|/**      * This method sets the location of a Dialog such that it is centered with regard to another window, but not outside      * the screen on the left and the top.      */
 DECL|method|placeDialog (java.awt.Dialog diag, java.awt.Container win)
 specifier|public
 specifier|static
@@ -1070,7 +938,7 @@ name|win
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method translates a field or string from Bibtex notation, with      * possibly text contained in " " or { }, and string references,      * concatenated by '#' characters, into Bibkeeper notation, where string      * references are enclosed in a pair of '#' characters.      */
+comment|/**      * This method translates a field or string from Bibtex notation, with possibly text contained in " " or { }, and      * string references, concatenated by '#' characters, into Bibkeeper notation, where string references are enclosed      * in a pair of '#' characters.      */
 DECL|method|parseField (String content)
 specifier|public
 specifier|static
@@ -1149,13 +1017,17 @@ decl_stmt|;
 comment|// String reference or not?
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'"'
+operator|)
 condition|)
 block|{
 name|result
@@ -1236,7 +1108,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Will return the publication date of the given bibtex entry in conformance      * to ISO 8601, i.e. either YYYY or YYYY-MM.      *       * @param entry      * @return will return the publication date of the entry or null if no year      *         was found.      */
+comment|/**      * Will return the publication date of the given bibtex entry in conformance to ISO 8601, i.e. either YYYY or      * YYYY-MM.      *      * @param entry      * @return will return the publication date of the entry or null if no year was found.      */
 comment|// TODO: Should be instance method of BibTexEntry
 DECL|method|getPublicationDate (BibtexEntry entry)
 specifier|public
@@ -1336,7 +1208,7 @@ return|return
 name|year
 return|;
 block|}
-comment|/**      * This method returns a String similar to the one passed in, except that it      * is molded into a form that is acceptable for bibtex.      *       * Watch-out that the returned string might be of length 0 afterwards.      *       * @param key      *            mayBeNull      */
+comment|/**      * This method returns a String similar to the one passed in, except that it is molded into a form that is      * acceptable for bibtex.      *      * Watch-out that the returned string might be of length 0 afterwards.      *      * @param key mayBeNull      */
 DECL|method|checkLegalKey (String key)
 specifier|public
 specifier|static
@@ -1422,25 +1294,35 @@ argument_list|(
 name|c
 argument_list|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'{'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'\\'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'"'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'}'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|','
+operator|)
 condition|)
 block|{
 name|newKey
@@ -1504,41 +1386,59 @@ argument_list|(
 name|c
 argument_list|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'#'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'{'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'\\'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'"'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'}'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'~'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|','
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'^'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'\''
+operator|)
 condition|)
 block|{
 name|newKey
@@ -1564,7 +1464,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Replace non-english characters like umlauts etc. with a sensible letter      * or letter combination that bibtex can accept. The basis for replacement      * is the HashMap Globals.UNICODE_CHARS.      */
+comment|/**      * Replace non-english characters like umlauts etc. with a sensible letter or letter combination that bibtex can      * accept. The basis for replacement is the HashMap Globals.UNICODE_CHARS.      */
 DECL|method|replaceSpecialCharacters (String s)
 specifier|public
 specifier|static
@@ -1587,6 +1487,8 @@ name|String
 argument_list|>
 name|chrAndReplace
 range|:
+name|Util
+operator|.
 name|UNICODE_CHAR_MAP
 operator|.
 name|entrySet
@@ -1642,9 +1544,7 @@ name|res
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1740,7 +1640,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Returns a HashMap containing all words used in the database in the given      * field type. Characters in<code>remove</code> are not included.      *       * @param db      *            a<code>BibtexDatabase</code> value      * @param field      *            a<code>String</code> value      * @param remove      *            a<code>String</code> value      * @return a<code>HashSet</code> value      */
+comment|/**      * Returns a HashMap containing all words used in the database in the given field type. Characters in      *<code>remove</code> are not included.      *      * @param db a<code>BibtexDatabase</code> value      * @param field a<code>String</code> value      * @param remove a<code>String</code> value      * @return a<code>HashSet</code> value      */
 DECL|method|findAllWordsInField (BibtexDatabase db, String field, String remove)
 specifier|public
 specifier|static
@@ -1768,9 +1668,7 @@ name|res
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|StringTokenizer
@@ -1862,7 +1760,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Finds all authors' last names in all the given fields for the given database.      * @param db The database.      * @param fields The fields to look in.      * @return a set containing the names.      */
+comment|/**      * Finds all authors' last names in all the given fields for the given database.      *      * @param db The database.      * @param fields The fields to look in.      * @return a set containing the names.      */
 DECL|method|findAuthorLastNames (BibtexDatabase db, List<String> fields)
 specifier|public
 specifier|static
@@ -1890,9 +1788,7 @@ name|res
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1936,9 +1832,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|val
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|val
@@ -1997,9 +1895,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|lastName
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|lastName
@@ -2024,7 +1924,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Make sure an URL is "portable", in that it doesn't contain bad characters      * that break the open command in some OSes.      *       * A call to this method will also remove \\url{} enclosings and clean Doi links. 	 *  	 * @param link :the URL to sanitize. 	 * @return Sanitized URL 	 */
+comment|/**      * Make sure an URL is "portable", in that it doesn't contain bad characters that break the open command in some      * OSes.      *      * A call to this method will also remove \\url{} enclosings and clean Doi links.      *      * @param link :the URL to sanitize.      * @return Sanitized URL      */
 DECL|method|sanitizeUrl (String link)
 specifier|public
 specifier|static
@@ -2115,7 +2015,7 @@ argument_list|(
 name|link
 argument_list|)
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 expr_stmt|;
 block|}
@@ -2155,7 +2055,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|getURL
+name|getURLAsASCIIString
 argument_list|()
 expr_stmt|;
 block|}
@@ -2190,8 +2090,10 @@ parameter_list|(
 name|UnsupportedEncodingException
 name|ignored
 parameter_list|)
-block|{         }
-comment|/**          * Fix for: [ 1574773 ] sanitizeUrl() breaks ftp:// and file:///          *           * http://sourceforge.net/tracker/index.php?func=detail&aid=1574773&group_id=92314&atid=600306          */
+block|{
+comment|// Ignored
+block|}
+comment|/**          * Fix for: [ 1574773 ] sanitizeUrl() breaks ftp:// and file:///          *          * http://sourceforge.net/tracker/index.php?func=detail&aid=1574773&group_id=92314&atid=600306          */
 try|try
 block|{
 return|return
@@ -2245,10 +2147,7 @@ name|result
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-index|[]
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|char
@@ -2297,11 +2196,13 @@ operator|++
 expr_stmt|;
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|c
 operator|.
 name|length
+operator|)
 operator|&&
 operator|(
 name|Character
@@ -2314,12 +2215,14 @@ name|i
 index|]
 argument_list|)
 operator|||
+operator|(
 name|c
 index|[
 name|i
 index|]
 operator|==
 literal|'.'
+operator|)
 operator|)
 condition|)
 block|{
@@ -2329,18 +2232,22 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|i
 operator|<
 name|c
 operator|.
 name|length
+operator|)
 operator|&&
+operator|(
 name|c
 index|[
 name|i
 index|]
 operator|==
 literal|'('
+operator|)
 condition|)
 block|{
 name|String
@@ -2398,26 +2305,33 @@ literal|false
 decl_stmt|;
 while|while
 condition|(
+operator|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|<
 name|c
 operator|.
 name|length
+operator|)
 operator|&&
 operator|!
 operator|(
 operator|!
 name|escaped
 operator|&&
+operator|(
 name|c
 index|[
 name|i
 index|]
 operator|==
 literal|'"'
+operator|)
 operator|&&
+operator|(
 name|c
 index|[
 name|i
@@ -2426,6 +2340,7 @@ literal|1
 index|]
 operator|==
 literal|')'
+operator|)
 operator|)
 condition|)
 block|{
@@ -2493,18 +2408,22 @@ name|i
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|c
 operator|.
 name|length
+operator|)
 operator|&&
+operator|(
 name|c
 index|[
 name|i
 index|]
 operator|!=
 literal|')'
+operator|)
 condition|)
 block|{
 name|i
@@ -2592,7 +2511,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Takes a string that contains bracketed expression and expands each of      * these using getFieldAndFormat.      *      * Unknown Bracket expressions are silently dropped.      *      * @param bracketString      * @param entry      * @param database      * @return      */
+comment|/**      * Takes a string that contains bracketed expression and expands each of these using getFieldAndFormat.      *      * Unknown Bracket expressions are silently dropped.      *      * @param bracketString      * @param entry      * @param database      * @return      */
 DECL|field|squareBracketsPattern
 specifier|private
 specifier|static
@@ -2703,7 +2622,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside a List      * to a specified default value. Timestamp field is also set. Preferences      * are checked to see if these options are enabled.      *       * @param bibs      *            List of bibtex entries      */
+comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside a List to a specified default value. Timestamp      * field is also set. Preferences are checked to see if these options are enabled.      *      * @param bibs List of bibtex entries      */
 DECL|method|setAutomaticFields (Collection<BibtexEntry> bibs, boolean overwriteOwner, boolean overwriteTimestamp, boolean markEntries)
 specifier|public
 specifier|static
@@ -2757,6 +2676,8 @@ decl_stmt|;
 name|String
 name|timestamp
 init|=
+name|Util
+operator|.
 name|dateFormatter
 operator|.
 name|getCurrentDate
@@ -2822,6 +2743,7 @@ operator|&&
 operator|(
 name|overwriteOwner
 operator|||
+operator|(
 name|curEntry
 operator|.
 name|getField
@@ -2833,6 +2755,7 @@ argument_list|)
 operator|==
 literal|null
 operator|)
+operator|)
 decl_stmt|;
 name|boolean
 name|setTimeStamp
@@ -2842,6 +2765,7 @@ operator|&&
 operator|(
 name|overwriteTimestamp
 operator|||
+operator|(
 name|curEntry
 operator|.
 name|getField
@@ -2850,6 +2774,7 @@ name|timeStampField
 argument_list|)
 operator|==
 literal|null
+operator|)
 operator|)
 decl_stmt|;
 name|Util
@@ -2896,7 +2821,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Sets empty or non-existing owner fields of a bibtex entry to a specified      * default value. Timestamp field is also set. Preferences are checked to      * see if these options are enabled.      *       * @param entry      *            The entry to set fields for.      * @param overwriteOwner      *              Indicates whether owner should be set if it is already set.      * @param overwriteTimestamp      *              Indicates whether timestamp should be set if it is already set.      */
+comment|/**      * Sets empty or non-existing owner fields of a bibtex entry to a specified default value. Timestamp field is also      * set. Preferences are checked to see if these options are enabled.      *      * @param entry The entry to set fields for.      * @param overwriteOwner Indicates whether owner should be set if it is already set.      * @param overwriteTimestamp Indicates whether timestamp should be set if it is already set.      */
 DECL|method|setAutomaticFields (BibtexEntry entry, boolean overwriteOwner, boolean overwriteTimestamp)
 specifier|public
 specifier|static
@@ -2930,6 +2855,8 @@ decl_stmt|;
 name|String
 name|timestamp
 init|=
+name|Util
+operator|.
 name|dateFormatter
 operator|.
 name|getCurrentDate
@@ -2966,6 +2893,7 @@ operator|&&
 operator|(
 name|overwriteOwner
 operator|||
+operator|(
 name|entry
 operator|.
 name|getField
@@ -2976,6 +2904,7 @@ name|OWNER
 argument_list|)
 operator|==
 literal|null
+operator|)
 operator|)
 decl_stmt|;
 name|boolean
@@ -2995,6 +2924,7 @@ operator|&&
 operator|(
 name|overwriteTimestamp
 operator|||
+operator|(
 name|entry
 operator|.
 name|getField
@@ -3003,6 +2933,7 @@ name|timeStampField
 argument_list|)
 operator|==
 literal|null
+operator|)
 operator|)
 decl_stmt|;
 name|Util
@@ -3087,7 +3018,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Collect file links from the given set of fields, and add them to the list contained      * in the field GUIGlobals.FILE_FIELD.      * @param database The database to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
+comment|/**      * Collect file links from the given set of fields, and add them to the list contained in the field      * GUIGlobals.FILE_FIELD.      *      * @param database The database to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
 DECL|method|upgradePdfPsToFile (BibtexDatabase database, String[] fields)
 specifier|public
 specifier|static
@@ -3119,7 +3050,7 @@ name|fields
 argument_list|)
 return|;
 block|}
-comment|/**      * Collect file links from the given set of fields, and add them to the list contained      * in the field GUIGlobals.FILE_FIELD.      * @param entries The entries to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
+comment|/**      * Collect file links from the given set of fields, and add them to the list contained in the field      * GUIGlobals.FILE_FIELD.      *      * @param entries The entries to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
 DECL|method|upgradePdfPsToFile (Collection<BibtexEntry> entries, String[] fields)
 specifier|public
 specifier|static
@@ -3174,7 +3105,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -3332,7 +3263,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
@@ -3348,7 +3279,7 @@ name|UndoableFieldChange
 argument_list|(
 name|entry
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
@@ -3369,7 +3300,7 @@ return|return
 name|ce
 return|;
 block|}
-comment|/**      * Warns the user of undesired side effects of an explicit      * assignment/removal of entries to/from this group. Currently there are      * four types of groups: AllEntriesGroup, SearchGroup - do not support      * explicit assignment. ExplicitGroup - never modifies entries. KeywordGroup -      * only this modifies entries upon assignment/removal. Modifications are      * acceptable unless they affect a standard field (such as "author") besides      * the "keywords" field.      *       * @param parent      *            The Component used as a parent when displaying a confirmation      *            dialog.      * @return true if the assignment has no undesired side effects, or the user      *         chose to perform it anyway. false otherwise (this indicates that      *         the user has aborted the assignment).      */
+comment|/**      * Warns the user of undesired side effects of an explicit assignment/removal of entries to/from this group.      * Currently there are four types of groups: AllEntriesGroup, SearchGroup - do not support explicit assignment.      * ExplicitGroup - never modifies entries. KeywordGroup - only this modifies entries upon assignment/removal.      * Modifications are acceptable unless they affect a standard field (such as "author") besides the "keywords" field.      *      * @param parent The Component used as a parent when displaying a confirmation dialog.      * @return true if the assignment has no undesired side effects, or the user chose to perform it anyway. false      *         otherwise (this indicates that the user has aborted the assignment).      */
 DECL|method|warnAssignmentSideEffects (AbstractGroup[] groups, BibtexEntry[] entries, BibtexDatabase db, Component parent)
 specifier|public
 specifier|static
@@ -3399,9 +3330,7 @@ name|affectedFields
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -3635,7 +3564,7 @@ comment|// }
 comment|// }
 comment|// return true; // found no side effects
 block|}
-comment|/**      * This method looks up what kind of external binding is used for the given      * field, and constructs on OpenFileFilter suitable for browsing for an      * external file.      *       * @param fieldName      *            The BibTeX field in question.      * @return The file filter.      */
+comment|/**      * This method looks up what kind of external binding is used for the given field, and constructs on OpenFileFilter      * suitable for browsing for an external file.      *      * @param fieldName The BibTeX field in question.      * @return The file filter.      */
 DECL|method|getFileFilterForField (String fieldName)
 specifier|public
 specifier|static
@@ -3723,314 +3652,7 @@ return|return
 name|off
 return|;
 block|}
-comment|/**      * This method can be used to display a "rich" error dialog which offers the      * entire stack trace for an exception.      *       * @param parent      * @param e      */
-DECL|method|showQuickErrorDialog (JFrame parent, String title, Exception e)
-specifier|public
-specifier|static
-name|void
-name|showQuickErrorDialog
-parameter_list|(
-name|JFrame
-name|parent
-parameter_list|,
-name|String
-name|title
-parameter_list|,
-name|Exception
-name|e
-parameter_list|)
-block|{
-comment|// create and configure a text area - fill it with exception text.
-specifier|final
-name|JPanel
-name|pan
-init|=
-operator|new
-name|JPanel
-argument_list|()
-decl_stmt|;
-specifier|final
-name|JPanel
-name|details
-init|=
-operator|new
-name|JPanel
-argument_list|()
-decl_stmt|;
-specifier|final
-name|CardLayout
-name|crd
-init|=
-operator|new
-name|CardLayout
-argument_list|()
-decl_stmt|;
-name|pan
-operator|.
-name|setLayout
-argument_list|(
-name|crd
-argument_list|)
-expr_stmt|;
-specifier|final
-name|JTextArea
-name|textArea
-init|=
-operator|new
-name|JTextArea
-argument_list|()
-decl_stmt|;
-name|textArea
-operator|.
-name|setFont
-argument_list|(
-operator|new
-name|Font
-argument_list|(
-literal|"Sans-Serif"
-argument_list|,
-name|Font
-operator|.
-name|PLAIN
-argument_list|,
-literal|10
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|textArea
-operator|.
-name|setEditable
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|StringWriter
-name|writer
-init|=
-operator|new
-name|StringWriter
-argument_list|()
-decl_stmt|;
-name|e
-operator|.
-name|printStackTrace
-argument_list|(
-operator|new
-name|PrintWriter
-argument_list|(
-name|writer
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|textArea
-operator|.
-name|setText
-argument_list|(
-name|writer
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|JLabel
-name|lab
-init|=
-operator|new
-name|JLabel
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|JButton
-name|flip
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Details"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|FormLayout
-name|layout
-init|=
-operator|new
-name|FormLayout
-argument_list|(
-literal|"left:pref"
-argument_list|,
-literal|""
-argument_list|)
-decl_stmt|;
-name|DefaultFormBuilder
-name|builder
-init|=
-operator|new
-name|DefaultFormBuilder
-argument_list|(
-name|layout
-argument_list|)
-decl_stmt|;
-name|builder
-operator|.
-name|append
-argument_list|(
-name|lab
-argument_list|)
-expr_stmt|;
-name|builder
-operator|.
-name|nextLine
-argument_list|()
-expr_stmt|;
-name|builder
-operator|.
-name|append
-argument_list|(
-name|Box
-operator|.
-name|createVerticalGlue
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|builder
-operator|.
-name|nextLine
-argument_list|()
-expr_stmt|;
-name|builder
-operator|.
-name|append
-argument_list|(
-name|flip
-argument_list|)
-expr_stmt|;
-specifier|final
-name|JPanel
-name|simple
-init|=
-name|builder
-operator|.
-name|getPanel
-argument_list|()
-decl_stmt|;
-comment|// stuff it in a scrollpane with a controlled size.
-name|JScrollPane
-name|scrollPane
-init|=
-operator|new
-name|JScrollPane
-argument_list|(
-name|textArea
-argument_list|)
-decl_stmt|;
-name|scrollPane
-operator|.
-name|setPreferredSize
-argument_list|(
-operator|new
-name|Dimension
-argument_list|(
-literal|350
-argument_list|,
-literal|150
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|details
-operator|.
-name|setLayout
-argument_list|(
-operator|new
-name|BorderLayout
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|details
-operator|.
-name|add
-argument_list|(
-name|scrollPane
-argument_list|,
-name|BorderLayout
-operator|.
-name|CENTER
-argument_list|)
-expr_stmt|;
-name|flip
-operator|.
-name|addActionListener
-argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|event
-parameter_list|)
-block|{
-name|crd
-operator|.
-name|show
-argument_list|(
-name|pan
-argument_list|,
-literal|"details"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-name|pan
-operator|.
-name|add
-argument_list|(
-name|simple
-argument_list|,
-literal|"simple"
-argument_list|)
-expr_stmt|;
-name|pan
-operator|.
-name|add
-argument_list|(
-name|details
-argument_list|,
-literal|"details"
-argument_list|)
-expr_stmt|;
-comment|// pass the scrollpane to the joptionpane.
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|parent
-argument_list|,
-name|pan
-argument_list|,
-name|title
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Set a given field to a given value for all entries in a Collection. This      * method DOES NOT update any UndoManager, but returns a relevant      * CompoundEdit that should be registered by the caller.      *       * @param entries      *            The entries to set the field for.      * @param field      *            The name of the field to set.      * @param text      *            The value to set. This value can be null, indicating that the      *            field should be cleared.      * @param overwriteValues      *            Indicate whether the value should be set even if an entry      *            already has the field set.      * @return A CompoundEdit for the entire operation.      */
+comment|/**      * Set a given field to a given value for all entries in a Collection. This method DOES NOT update any UndoManager,      * but returns a relevant CompoundEdit that should be registered by the caller.      *      * @param entries The entries to set the field for.      * @param field The name of the field to set.      * @param text The value to set. This value can be null, indicating that the field should be cleared.      * @param overwriteValues Indicate whether the value should be set even if an entry already has the field set.      * @return A CompoundEdit for the entire operation.      */
 DECL|method|massSetField (Collection<BibtexEntry> entries, String field, String text, boolean overwriteValues)
 specifier|public
 specifier|static
@@ -4093,9 +3715,11 @@ condition|(
 operator|!
 name|overwriteValues
 operator|&&
+operator|(
 name|oldVal
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|oldVal
@@ -4160,7 +3784,7 @@ return|return
 name|ce
 return|;
 block|}
-comment|/**      * Move contents from one field to another for a Collection of entries.      * @param entries The entries to do this operation for.      * @param field The field to move contents from.      * @param newField The field to move contents into.      * @param overwriteValues If true, overwrites any existing values in the new field.      *          If false, makes no change for entries with existing value in the new field.      * @return A CompoundEdit for the entire operation.      */
+comment|/**      * Move contents from one field to another for a Collection of entries.      *      * @param entries The entries to do this operation for.      * @param field The field to move contents from.      * @param newField The field to move contents into.      * @param overwriteValues If true, overwrites any existing values in the new field. If false, makes no change for      *            entries with existing value in the new field.      * @return A CompoundEdit for the entire operation.      */
 DECL|method|massRenameField (Collection<BibtexEntry> entries, String field, String newField, boolean overwriteValues)
 specifier|public
 specifier|static
@@ -4218,9 +3842,11 @@ decl_stmt|;
 comment|// If there is no value, do nothing:
 if|if
 condition|(
+operator|(
 name|valToMove
 operator|==
 literal|null
+operator|)
 operator|||
 name|valToMove
 operator|.
@@ -4247,9 +3873,11 @@ condition|(
 operator|!
 name|overwriteValues
 operator|&&
+operator|(
 name|valInNewField
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|valInNewField
@@ -4354,10 +3982,13 @@ name|ch
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|str
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 operator|(
 name|end
 operator|=
@@ -4368,7 +3999,10 @@ argument_list|()
 operator|)
 operator|==
 literal|0
+operator|)
 operator|||
+operator|(
+operator|(
 operator|(
 operator|(
 name|ch
@@ -4382,10 +4016,13 @@ argument_list|)
 operator|)
 operator|<
 literal|'0'
+operator|)
 operator|||
+operator|(
 name|ch
 operator|>
 literal|'9'
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -4398,11 +4035,14 @@ operator|==
 literal|'-'
 operator|)
 operator|||
+operator|(
 operator|++
 name|idx
 operator|==
 name|end
+operator|)
 operator|||
+operator|(
 operator|(
 name|ch
 operator|=
@@ -4415,10 +4055,14 @@ argument_list|)
 operator|)
 operator|<
 literal|'0'
+operator|)
 operator|||
+operator|(
 name|ch
 operator|>
 literal|'9'
+operator|)
+operator|)
 operator|)
 condition|)
 block|{
@@ -4465,6 +4109,7 @@ block|}
 if|if
 condition|(
 operator|(
+operator|(
 name|ch
 operator|=
 name|str
@@ -4476,10 +4121,13 @@ argument_list|)
 operator|)
 operator|<
 literal|'0'
+operator|)
 operator|||
+operator|(
 name|ch
 operator|>
 literal|'9'
+operator|)
 condition|)
 block|{
 throw|throw
@@ -4492,7 +4140,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Static equals that can also return the right result when one of the      * objects is null.      *       * @param one      *            The object whose equals method is called if the first is not      *            null.      * @param two      *            The object passed to the first one if the first is not null.      * @return<code>one == null ? two == null : one.equals(two);</code>      */
+comment|/**      * Static equals that can also return the right result when one of the objects is null.      *      * @param one The object whose equals method is called if the first is not null.      * @param two The object passed to the first one if the first is not null.      * @return<code>one == null ? two == null : one.equals(two);</code>      */
 DECL|method|equals (Object one, Object two)
 specifier|public
 specifier|static
@@ -4523,7 +4171,7 @@ name|two
 argument_list|)
 return|;
 block|}
-comment|/**      * Run an AbstractWorker's methods using Spin features to put each method      * on the correct thread.      * @param worker The worker to run.      * @throws Throwable       */
+comment|/**      * Run an AbstractWorker's methods using Spin features to put each method on the correct thread.      *      * @param worker The worker to run.      * @throws Throwable      */
 DECL|method|runAbstractWorker (AbstractWorker worker)
 specifier|public
 specifier|static
@@ -4659,6 +4307,8 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|Util
+operator|.
 name|LOGGER
 operator|.
 name|info
@@ -4720,6 +4370,7 @@ return|return
 name|targetName
 return|;
 block|}
+comment|/**      * @param keywords a String of keywords      * @return an ArrayList containing the keywords. An emtpy list if keywords are null or empty      */
 DECL|method|getSeparatedKeywords (String keywords)
 specifier|public
 specifier|static
@@ -4741,9 +4392,7 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -4769,6 +4418,8 @@ name|StringTokenizer
 argument_list|(
 name|keywords
 argument_list|,
+name|Util
+operator|.
 name|SEPARATING_CHARS_NOSPACE
 argument_list|)
 decl_stmt|;
@@ -4936,22 +4587,28 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|oldValue
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|newValue
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return;
 block|}
 if|if
 condition|(
+operator|(
 name|oldValue
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|oldValue
@@ -5071,9 +4728,11 @@ if|if
 condition|(
 name|nullFieldIfValueIsTheSame
 operator|&&
+operator|(
 name|oldValue
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|oldValue
 operator|.
@@ -5091,22 +4750,28 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|oldValue
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|newValue
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return;
 block|}
 if|if
 condition|(
+operator|(
 name|oldValue
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|oldValue
@@ -5153,7 +4818,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Binds ESC-Key to cancel button      * @param rootPane the pane to bind the action to. Typically, this variable is retrieved by this.getRootPane();      * @param cancelAction the action to bind      */
+comment|/**      * Binds ESC-Key to cancel button      *      * @param rootPane the pane to bind the action to. Typically, this variable is retrieved by this.getRootPane();      * @param cancelAction the action to bind      */
 comment|// TODO: move to GUI
 DECL|method|bindCloseDialogKeyToCancelAction (JRootPane rootPane, Action cancelAction)
 specifier|public
@@ -5214,7 +4879,34 @@ name|cancelAction
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Download the URL and return contents as a String.      * @param source      * @return      * @throws IOException      */
+comment|/**      * Download the URL and return contents as a String.      *      * @param source      * @return      * @throws IOException      */
+DECL|method|getResults (URL source)
+specifier|public
+specifier|static
+name|String
+name|getResults
+parameter_list|(
+name|URL
+name|source
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|Util
+operator|.
+name|getResultsWithEncoding
+argument_list|(
+name|source
+operator|.
+name|openConnection
+argument_list|()
+argument_list|,
+literal|null
+argument_list|)
+return|;
+block|}
+comment|/**      * Download the URL and return contents as a String.      *      * @param source      * @return      * @throws IOException      */
 DECL|method|getResults (URLConnection source)
 specifier|public
 specifier|static
@@ -5238,7 +4930,37 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * Download the URL using specified encoding and return contents as a String.      * @param source      * encoding      * @return      * @throws IOException      */
+comment|/**      * Download the URL using specified encoding and return contents as a String.      *      * @param source encoding      * @return      * @throws IOException      */
+DECL|method|getResultsWithEncoding (URL source, String encoding)
+specifier|public
+specifier|static
+name|String
+name|getResultsWithEncoding
+parameter_list|(
+name|URL
+name|source
+parameter_list|,
+name|String
+name|encoding
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|Util
+operator|.
+name|getResultsWithEncoding
+argument_list|(
+name|source
+operator|.
+name|openConnection
+argument_list|()
+argument_list|,
+name|encoding
+argument_list|)
+return|;
+block|}
+comment|/**      * Download the URL using specified encoding and return contents as a String.      *      * @param source encoding      * @return      * @throws IOException      */
 DECL|method|getResultsWithEncoding (URLConnection source, String encoding)
 specifier|public
 specifier|static
@@ -5254,6 +4976,16 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// set user-agent to avoid being blocked as a crawler
+name|source
+operator|.
+name|setRequestProperty
+argument_list|(
+literal|"User-Agent"
+argument_list|,
+literal|"Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0"
+argument_list|)
+expr_stmt|;
 name|InputStreamReader
 name|in
 decl_stmt|;
@@ -5340,6 +5072,114 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/**      * Read results from a file instead of an URL. Just for faster debugging.      *      * @param f      * @return      * @throws IOException      */
+DECL|method|getResultsFromFile (File f)
+specifier|public
+name|String
+name|getResultsFromFile
+parameter_list|(
+name|File
+name|f
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+try|try
+init|(
+name|InputStream
+name|in
+init|=
+operator|new
+name|BufferedInputStream
+argument_list|(
+operator|new
+name|FileInputStream
+argument_list|(
+name|f
+argument_list|)
+argument_list|)
+init|)
+block|{
+name|StringBuilder
+name|sb
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
+name|byte
+index|[]
+name|buffer
+init|=
+operator|new
+name|byte
+index|[
+literal|256
+index|]
+decl_stmt|;
+while|while
+condition|(
+literal|true
+condition|)
+block|{
+name|int
+name|bytesRead
+init|=
+name|in
+operator|.
+name|read
+argument_list|(
+name|buffer
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|bytesRead
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+break|break;
+block|}
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|bytesRead
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+operator|(
+name|char
+operator|)
+name|buffer
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+block|}
 DECL|method|updateTimeStampIsSet ()
 specifier|public
 specifier|static
@@ -5371,7 +5211,7 @@ name|UPDATE_TIMESTAMP
 argument_list|)
 return|;
 block|}
-comment|/**      * Updates the timestamp of the given entry,      * nests the given undaoableEdit in a named compound,      * and returns that named compound      */
+comment|/**      * Updates the timestamp of the given entry, nests the given undaoableEdit in a named compound, and returns that      * named compound      */
 DECL|method|doUpdateTimeStamp (BibtexEntry entry, AbstractUndoableEdit undoableEdit)
 specifier|public
 specifier|static
@@ -5421,6 +5261,8 @@ decl_stmt|;
 name|String
 name|timestamp
 init|=
+name|Util
+operator|.
 name|dateFormatter
 operator|.
 name|getCurrentDate
@@ -5443,7 +5285,7 @@ return|return
 name|ce
 return|;
 block|}
-comment|/**      * Automatically add links for this set of entries, based on the globally stored list of      * external file types. The entries are modified, and corresponding UndoEdit elements      * added to the NamedCompound given as argument. Furthermore, all entries which are modified      * are added to the Set of entries given as an argument.      *      * The entries' bibtex keys must have been set - entries lacking key are ignored.      * The operation is done in a new thread, which is returned for the caller to wait for      * if needed.      *      * @param entries A collection of BibtexEntry objects to find links for.      * @param ce A NamedCompound to add UndoEdit elements to.      * @param changedEntries MODIFIED, optional. A Set of BibtexEntry objects to which all modified entries is added. This is used for status output and debugging      * @param singleTableModel UGLY HACK. The table model to insert links into. Already existing links are not duplicated or removed. This parameter has to be null if entries.count() != 1.      *   The hack has been introduced as a bibtexentry does not (yet) support the function getListTableModel() and the FileListEntryEditor editor holds an instance of that table model and does not reconstruct it after the search has succeeded.      * @param metaData The MetaData providing the relevant file directory, if any.      * @param callback An ActionListener that is notified (on the event dispatch thread) when the search is      *  finished. The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added.      *  This parameter can be null, which means that no callback will be notified.      * @param diag An instantiated modal JDialog which will be used to display the progress of the autosetting.      *      This parameter can be null, which means that no progress update will be shown.      * @return the thread performing the autosetting      */
+comment|/**      * Automatically add links for this set of entries, based on the globally stored list of external file types. The      * entries are modified, and corresponding UndoEdit elements added to the NamedCompound given as argument.      * Furthermore, all entries which are modified are added to the Set of entries given as an argument.      *      * The entries' bibtex keys must have been set - entries lacking key are ignored. The operation is done in a new      * thread, which is returned for the caller to wait for if needed.      *      * @param entries A collection of BibtexEntry objects to find links for.      * @param ce A NamedCompound to add UndoEdit elements to.      * @param changedEntries MODIFIED, optional. A Set of BibtexEntry objects to which all modified entries is added.      *            This is used for status output and debugging      * @param singleTableModel UGLY HACK. The table model to insert links into. Already existing links are not      *            duplicated or removed. This parameter has to be null if entries.count() != 1. The hack has been      *            introduced as a bibtexentry does not (yet) support the function getListTableModel() and the      *            FileListEntryEditor editor holds an instance of that table model and does not reconstruct it after the      *            search has succeeded.      * @param metaData The MetaData providing the relevant file directory, if any.      * @param callback An ActionListener that is notified (on the event dispatch thread) when the search is finished.      *            The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added. This      *            parameter can be null, which means that no callback will be notified.      * @param diag An instantiated modal JDialog which will be used to display the progress of the autosetting. This      *            parameter can be null, which means that no progress update will be shown.      * @return the thread performing the autosetting      */
 DECL|method|autoSetLinks (final Collection<BibtexEntry> entries, final NamedCompound ce, final Set<BibtexEntry> changedEntries, final FileListTableModel singleTableModel, final MetaData metaData, final ActionListener callback, final JDialog diag)
 specifier|public
 specifier|static
@@ -5643,9 +5485,7 @@ name|dirs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -5656,7 +5496,7 @@ name|metaData
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -5690,9 +5530,7 @@ name|extensions
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -5741,7 +5579,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|USE_REG_EXP_SEARCH_KEY
+name|AUTOLINK_USE_REG_EXP_SEARCH_KEY
 argument_list|)
 condition|)
 block|{
@@ -5818,7 +5656,7 @@ name|anEntry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -5986,12 +5824,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|index
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|index
 operator|<
+operator|(
 name|f
 operator|.
 name|getPath
@@ -6001,6 +5843,8 @@ name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
+operator|)
 condition|)
 block|{
 name|type
@@ -6107,7 +5951,7 @@ name|UndoableFieldChange
 argument_list|(
 name|anEntry
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
@@ -6136,7 +5980,7 @@ name|anEntry
 operator|.
 name|setField
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|,
@@ -6232,21 +6076,22 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
-comment|// FIXME: workaround so that dialog doesn't block run()?
-name|Thread
-name|t
-init|=
-operator|new
-name|Thread
-argument_list|(
-name|r
-argument_list|)
-decl_stmt|;
-name|t
+name|SwingUtilities
 operator|.
-name|start
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
 argument_list|()
-expr_stmt|;
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+comment|// show dialog which will be hidden when the task is done
 if|if
 condition|(
 name|diag
@@ -6262,12 +6107,16 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 return|return
-name|t
+name|r
 return|;
 block|}
-comment|/**      * Automatically add links for this entry to the table model given as an argument, based on      * the globally stored list of external file types. The entry itself is not modified. The entry's      * bibtex key must have been set.      *      * @param entry The BibtexEntry to find links for.      * @param singleTableModel The table model to insert links into. Already existing links are not duplicated or removed.      * @param metaData The MetaData providing the relevant file directory, if any.      * @param callback An ActionListener that is notified (on the event dispatch thread) when the search is      *  finished. The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added.      *  This parameter can be null, which means that no callback will be notified. The passed ActionEvent is constructed with      *  (this, id, ""), where id is 1 if something has been done and 0 if nothing has been done.      * @param diag An instantiated modal JDialog which will be used to display the progress of the autosetting.      *      This parameter can be null, which means that no progress update will be shown.      * @return the runnable able to perform the autosetting      */
-DECL|method|autoSetLinks ( final BibtexEntry entry, final FileListTableModel singleTableModel, final MetaData metaData, final ActionListener callback, final JDialog diag)
+comment|/**      * Automatically add links for this entry to the table model given as an argument, based on the globally stored list      * of external file types. The entry itself is not modified. The entry's bibtex key must have been set.      *      * @param entry The BibtexEntry to find links for.      * @param singleTableModel The table model to insert links into. Already existing links are not duplicated or      *            removed.      * @param metaData The MetaData providing the relevant file directory, if any.      * @param callback An ActionListener that is notified (on the event dispatch thread) when the search is finished.      *            The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added. This      *            parameter can be null, which means that no callback will be notified. The passed ActionEvent is      *            constructed with (this, id, ""), where id is 1 if something has been done and 0 if nothing has been      *            done.      * @param diag An instantiated modal JDialog which will be used to display the progress of the autosetting. This      *            parameter can be null, which means that no progress update will be shown.      * @return the runnable able to perform the autosetting      */
+DECL|method|autoSetLinks (final BibtexEntry entry, final FileListTableModel singleTableModel, final MetaData metaData, final ActionListener callback, final JDialog diag)
 specifier|public
 specifier|static
 name|Runnable
@@ -6303,9 +6152,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|entries
@@ -6336,7 +6183,7 @@ name|diag
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the list of linked files. The files have the absolute filename      *       * @param bes list of BibTeX entries      * @param fileDirs list of directories to try for expansion      *       * @return list of files. May be empty      */
+comment|/**      * Returns the list of linked files. The files have the absolute filename      *      * @param bes list of BibTeX entries      * @param fileDirs list of directories to try for expansion      *      * @return list of files. May be empty      */
 DECL|method|getListOfLinkedFiles (BibtexEntry[] bes, String[] fileDirs)
 specifier|public
 specifier|static
@@ -6363,9 +6210,7 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -6505,14 +6350,7 @@ name|result
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|List
-argument_list|<
-name|File
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// First scan directories
@@ -6617,9 +6455,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|citeKey
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|citeKey
@@ -6697,9 +6537,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|citeKey
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|citeKey
@@ -6742,7 +6584,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Accepts a string like [author:lower] or [title:abbr] or [auth],      * whereas the first part signifies the bibtex-field to get, or the key generator      * field marker to use, while the others are the modifiers that will be applied.      *      * @param fieldAndFormat      * @param entry      * @param database      * @return      */
+comment|/**      * Accepts a string like [author:lower] or [title:abbr] or [auth], whereas the first part signifies the bibtex-field      * to get, or the key generator field marker to use, while the others are the modifiers that will be applied.      *      * @param fieldAndFormat      * @param entry      * @param database      * @return      */
 DECL|method|getFieldAndFormat (String fieldAndFormat, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -6892,9 +6734,11 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|afterColon
 operator|==
 literal|null
+operator|)
 operator|||
 name|afterColon
 operator|.
@@ -6935,7 +6779,7 @@ name|fieldValue
 return|;
 block|}
 comment|// Returns a reg exp pattern in the form (w1)|(w2)| ... wi are escaped if no regex search is enabled
-DECL|method|getPatternForWords (List<String> wordsToHighlight)
+DECL|method|getPatternForWords (List<String> words)
 specifier|public
 specifier|static
 name|Pattern
@@ -6945,21 +6789,23 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|wordsToHighlight
+name|words
 parameter_list|)
 block|{
 if|if
 condition|(
-name|wordsToHighlight
+operator|(
+name|words
 operator|==
 literal|null
+operator|)
 operator|||
-name|wordsToHighlight
+name|words
 operator|.
 name|isEmpty
 argument_list|()
 operator|||
-name|wordsToHighlight
+name|words
 operator|.
 name|get
 argument_list|(
@@ -7003,7 +6849,7 @@ name|concat
 argument_list|(
 name|regExSearch
 condition|?
-name|wordsToHighlight
+name|words
 operator|.
 name|get
 argument_list|(
@@ -7014,7 +6860,7 @@ name|Pattern
 operator|.
 name|quote
 argument_list|(
-name|wordsToHighlight
+name|words
 operator|.
 name|get
 argument_list|(
@@ -7037,7 +6883,7 @@ literal|1
 init|;
 name|i
 operator|<
-name|wordsToHighlight
+name|words
 operator|.
 name|size
 argument_list|()
@@ -7059,7 +6905,7 @@ name|concat
 argument_list|(
 name|regExSearch
 condition|?
-name|wordsToHighlight
+name|words
 operator|.
 name|get
 argument_list|(
@@ -7070,7 +6916,7 @@ name|Pattern
 operator|.
 name|quote
 argument_list|(
-name|wordsToHighlight
+name|words
 operator|.
 name|get
 argument_list|(

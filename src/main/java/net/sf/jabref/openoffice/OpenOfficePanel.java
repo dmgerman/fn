@@ -112,6 +112,8 @@ name|jabref
 operator|.
 name|external
 operator|.
+name|push
+operator|.
 name|PushToApplication
 import|;
 end_import
@@ -463,7 +465,9 @@ parameter_list|(
 name|Exception
 name|ignore
 parameter_list|)
-block|{          }
+block|{
+comment|// Ignored
+block|}
 block|}
 DECL|field|comp
 specifier|private
@@ -677,15 +681,17 @@ name|JButton
 name|help
 init|=
 operator|new
-name|JButton
+name|HelpAction
 argument_list|(
-name|IconTheme
+name|GUIGlobals
 operator|.
-name|getImage
-argument_list|(
-literal|"help"
+name|helpDiag
+argument_list|,
+literal|"OpenOfficeIntegration.html"
 argument_list|)
-argument_list|)
+operator|.
+name|getIconButton
+argument_list|()
 decl_stmt|;
 DECL|field|test
 specifier|private
@@ -823,15 +829,17 @@ specifier|private
 name|OpenOfficePanel
 parameter_list|()
 block|{
-name|ImageIcon
+name|Icon
 name|connectImage
 init|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"connect_no"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|CONNECT_OPEN_OFFICE
+operator|.
+name|getSmallIcon
+argument_list|()
 decl_stmt|;
 name|OpenOfficePanel
 operator|.
@@ -890,10 +898,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"open"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|OPEN
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|OpenOfficePanel
@@ -919,10 +929,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"refresh"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|REFRESH
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|OpenOfficePanel
@@ -939,12 +951,6 @@ literal|"Sync OO bibliography"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|String
-name|defExecutable
-decl_stmt|;
-name|String
-name|defJarsDir
-decl_stmt|;
 if|if
 condition|(
 name|OS
@@ -1220,36 +1226,36 @@ return|return
 name|comp
 return|;
 block|}
-DECL|method|init (JabRefFrame frame, SidePaneManager manager)
+DECL|method|init (JabRefFrame jrFrame, SidePaneManager spManager)
 specifier|public
 name|void
 name|init
 parameter_list|(
 name|JabRefFrame
-name|frame
+name|jrFrame
 parameter_list|,
 name|SidePaneManager
-name|manager
+name|spManager
 parameter_list|)
 block|{
 name|OpenOfficePanel
 operator|.
 name|frame
 operator|=
-name|frame
+name|jrFrame
 expr_stmt|;
 name|this
 operator|.
 name|manager
 operator|=
-name|manager
+name|spManager
 expr_stmt|;
 name|comp
 operator|=
 operator|new
 name|OOPanel
 argument_list|(
-name|manager
+name|spManager
 argument_list|,
 name|IconTheme
 operator|.
@@ -1271,7 +1277,7 @@ block|{
 name|initPanel
 argument_list|()
 expr_stmt|;
-name|manager
+name|spManager
 operator|.
 name|register
 argument_list|(
@@ -2366,23 +2372,6 @@ argument_list|)
 expr_stmt|;
 name|OpenOfficePanel
 operator|.
-name|help
-operator|.
-name|addActionListener
-argument_list|(
-operator|new
-name|HelpAction
-argument_list|(
-name|GUIGlobals
-operator|.
-name|helpDiag
-argument_list|,
-literal|"OpenOfficeIntegration.html"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|OpenOfficePanel
-operator|.
 name|manageCitations
 operator|.
 name|addActionListener
@@ -2880,9 +2869,7 @@ name|databases
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexDatabase
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -3788,6 +3775,9 @@ specifier|private
 specifier|static
 specifier|final
 name|Class
+argument_list|<
+name|?
+argument_list|>
 index|[]
 name|parameters
 init|=
@@ -3813,6 +3803,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|URLClassLoader
 name|sysloader
 init|=
@@ -3823,7 +3815,8 @@ name|ClassLoader
 operator|.
 name|getSystemClassLoader
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|Class
 argument_list|<
 name|URLClassLoader
@@ -3894,6 +3887,7 @@ argument_list|(
 literal|"Error, could not add URL to system classloader"
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 DECL|method|updateConnectionParams (String ooPath, String ooExec, String ooJars, boolean oo3)
@@ -3971,7 +3965,7 @@ literal|false
 expr_stmt|;
 specifier|final
 name|JDialog
-name|diag
+name|cDiag
 init|=
 operator|new
 name|JDialog
@@ -4324,7 +4318,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|diag
+name|cDiag
 operator|.
 name|dispose
 argument_list|()
@@ -4395,7 +4389,7 @@ name|dialogOkPressed
 operator|=
 literal|true
 expr_stmt|;
-name|diag
+name|cDiag
 operator|.
 name|dispose
 argument_list|()
@@ -4422,7 +4416,7 @@ name|ActionEvent
 name|event
 parameter_list|)
 block|{
-name|diag
+name|cDiag
 operator|.
 name|dispose
 argument_list|()
@@ -4502,7 +4496,7 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|diag
+name|cDiag
 operator|.
 name|getContentPane
 argument_list|()
@@ -4519,7 +4513,7 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-name|diag
+name|cDiag
 operator|.
 name|getContentPane
 argument_list|()
@@ -4536,12 +4530,12 @@ operator|.
 name|SOUTH
 argument_list|)
 expr_stmt|;
-name|diag
+name|cDiag
 operator|.
 name|pack
 argument_list|()
 expr_stmt|;
-name|diag
+name|cDiag
 operator|.
 name|setLocationRelativeTo
 argument_list|(
@@ -4550,7 +4544,7 @@ operator|.
 name|frame
 argument_list|)
 expr_stmt|;
-name|diag
+name|cDiag
 operator|.
 name|setVisible
 argument_list|(
@@ -4930,11 +4924,7 @@ name|entries
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|BibtexEntry
-argument_list|,
-name|BibtexDatabase
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -4951,19 +4941,6 @@ init|=
 name|panel
 operator|.
 name|getSelectedEntries
-argument_list|()
-decl_stmt|;
-name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|el
-init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -5191,9 +5168,7 @@ name|el
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Collections
@@ -5936,18 +5911,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getKeyStrokeName ()
-specifier|public
-name|String
-name|getKeyStrokeName
-parameter_list|()
-block|{
-return|return
-literal|null
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|getSettingsPanel ()
 specifier|public
 name|JPanel
@@ -6212,7 +6175,9 @@ parameter_list|(
 name|BasePanel
 name|basePanel
 parameter_list|)
-block|{      }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|requiresBibtexKeys ()
@@ -6231,14 +6196,14 @@ name|OOPanel
 extends|extends
 name|SidePaneComponent
 block|{
-DECL|method|OOPanel (SidePaneManager sidePaneManager, ImageIcon url, String s)
+DECL|method|OOPanel (SidePaneManager sidePaneManager, Icon url, String s)
 specifier|public
 name|OOPanel
 parameter_list|(
 name|SidePaneManager
 name|sidePaneManager
 parameter_list|,
-name|ImageIcon
+name|Icon
 name|url
 parameter_list|,
 name|String

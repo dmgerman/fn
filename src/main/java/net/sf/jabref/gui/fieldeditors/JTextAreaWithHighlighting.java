@@ -466,7 +466,9 @@ parameter_list|(
 name|CannotUndoException
 name|ignored
 parameter_list|)
-block|{                         }
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 argument_list|)
@@ -537,7 +539,9 @@ parameter_list|(
 name|CannotRedoException
 name|ignored
 parameter_list|)
-block|{                         }
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 argument_list|)
@@ -602,11 +606,13 @@ literal|0
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|keys
 operator|.
 name|length
+operator|)
 operator|&&
 operator|!
 name|keys
@@ -657,7 +663,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Highlight words in the Textarea      *       * @param words to highlight      */
+comment|/**      * Highlight words in the Textarea      *      * @param words to highlight      */
 DECL|method|highLight (List<String> words)
 specifier|private
 name|void
@@ -684,9 +690,11 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|words
 operator|==
 literal|null
+operator|)
 operator|||
 name|words
 operator|.

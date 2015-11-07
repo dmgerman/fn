@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -386,7 +386,7 @@ name|s
 operator|+
 literal|"\". "
 operator|+
-literal|"Please report this on www.sf.net/projects/jabref"
+literal|"Please report this on https://github.com/JabRef/jabref/issues"
 argument_list|)
 throw|;
 block|}
@@ -946,15 +946,19 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|entries
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|entries
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|NamedCompound
@@ -1122,15 +1126,19 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|entries
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|entries
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|NamedCompound
@@ -1303,18 +1311,23 @@ operator|.
 name|searchExpression
 argument_list|)
 operator|&&
+operator|(
 name|caseSensitive
 operator|==
 name|other
 operator|.
 name|caseSensitive
+operator|)
 operator|&&
+operator|(
 name|regExp
 operator|==
 name|other
 operator|.
 name|regExp
+operator|)
 operator|&&
+operator|(
 name|getHierarchicalContext
 argument_list|()
 operator|==
@@ -1322,9 +1335,10 @@ name|other
 operator|.
 name|getHierarchicalContext
 argument_list|()
+operator|)
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
+comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
 annotation|@
 name|Override
 DECL|method|contains (String query, BibtexEntry entry)
@@ -1484,9 +1498,11 @@ comment|// Found a match. See if it is a complete word:
 if|if
 condition|(
 operator|(
+operator|(
 name|index
 operator|==
 literal|0
+operator|)
 operator|||
 operator|!
 name|Character
@@ -1505,17 +1521,21 @@ argument_list|)
 operator|)
 operator|&&
 operator|(
+operator|(
+operator|(
 name|index
 operator|+
 name|word
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|==
 name|text
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|||
 operator|!
 name|Character
@@ -1710,12 +1730,17 @@ name|i
 expr_stmt|;
 while|while
 condition|(
+operator|(
+operator|(
 name|j
 operator|-
 literal|1
+operator|)
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|separator
 operator|.
 name|indexOf
@@ -1731,6 +1756,7 @@ argument_list|)
 argument_list|)
 operator|>=
 literal|0
+operator|)
 condition|)
 block|{
 operator|--
@@ -1739,13 +1765,16 @@ expr_stmt|;
 block|}
 while|while
 condition|(
+operator|(
 name|k
 operator|<
 name|haystack
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|&&
+operator|(
 name|separator
 operator|.
 name|indexOf
@@ -1759,6 +1788,7 @@ argument_list|)
 argument_list|)
 operator|>=
 literal|0
+operator|)
 condition|)
 block|{
 operator|++
@@ -1773,16 +1803,20 @@ name|j
 argument_list|,
 name|k
 argument_list|,
+operator|(
 name|j
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|k
 operator|<
 name|sbOrig
 operator|.
 name|length
 argument_list|()
+operator|)
 condition|?
 name|separator
 else|:
@@ -1797,16 +1831,20 @@ name|j
 argument_list|,
 name|k
 argument_list|,
+operator|(
 name|j
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|k
 operator|<
 name|sbOrig
 operator|.
 name|length
 argument_list|()
+operator|)
 condition|?
 name|separator
 else|:
@@ -1891,7 +1929,7 @@ name|t
 operator|+
 literal|" in KeywordGroup.deepCopy(). "
 operator|+
-literal|"Please report this on www.sf.net/projects/jabref"
+literal|"Please report this on https://github.com/JabRef/jabref/issues"
 argument_list|)
 expr_stmt|;
 return|return
@@ -2332,6 +2370,22 @@ return|return
 name|KeywordGroup
 operator|.
 name|ID
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+comment|// TODO Auto-generated method stub
+return|return
+name|super
+operator|.
+name|hashCode
+argument_list|()
 return|;
 block|}
 block|}

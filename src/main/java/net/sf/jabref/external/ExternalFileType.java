@@ -81,7 +81,7 @@ name|mimeType
 decl_stmt|;
 DECL|field|icon
 specifier|private
-name|ImageIcon
+name|Icon
 name|icon
 decl_stmt|;
 DECL|field|label
@@ -94,7 +94,7 @@ operator|new
 name|JLabel
 argument_list|()
 decl_stmt|;
-DECL|method|ExternalFileType (String name, String extension, String mimeType, String openWith, String iconName, ImageIcon icon)
+DECL|method|ExternalFileType (String name, String extension, String mimeType, String openWith, String iconName, Icon icon)
 specifier|public
 name|ExternalFileType
 parameter_list|(
@@ -113,7 +113,7 @@ parameter_list|,
 name|String
 name|iconName
 parameter_list|,
-name|ImageIcon
+name|Icon
 name|icon
 parameter_list|)
 block|{
@@ -512,7 +512,7 @@ return|;
 block|}
 DECL|method|getIcon ()
 specifier|public
-name|ImageIcon
+name|Icon
 name|getIcon
 parameter_list|()
 block|{
@@ -520,12 +520,12 @@ return|return
 name|icon
 return|;
 block|}
-DECL|method|setIcon (ImageIcon icon)
+DECL|method|setIcon (Icon icon)
 specifier|public
 name|void
 name|setIcon
 parameter_list|(
-name|ImageIcon
+name|Icon
 name|icon
 parameter_list|)
 block|{

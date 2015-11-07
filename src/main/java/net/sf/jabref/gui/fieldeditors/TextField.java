@@ -249,7 +249,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the FieldEditor backed by a JTextField.  * Used for single-line input, only BibTex key at the moment?!  */
+comment|/**  * An implementation of the FieldEditor backed by a JTextField. Used for single-line input, only BibTex key at the  * moment?!  */
 end_comment
 
 begin_class
@@ -629,7 +629,9 @@ specifier|public
 name|void
 name|undo
 parameter_list|()
-block|{}
+block|{
+comment|// Nothing
+block|}
 annotation|@
 name|Override
 DECL|method|redo ()
@@ -637,7 +639,9 @@ specifier|public
 name|void
 name|redo
 parameter_list|()
-block|{}
+block|{
+comment|// Nothing
+block|}
 annotation|@
 name|Override
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
@@ -821,7 +825,9 @@ parameter_list|(
 name|CannotUndoException
 name|ignored
 parameter_list|)
-block|{                         }
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 argument_list|)
@@ -890,7 +896,9 @@ parameter_list|(
 name|CannotRedoException
 name|ignored
 parameter_list|)
-block|{                         }
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 argument_list|)

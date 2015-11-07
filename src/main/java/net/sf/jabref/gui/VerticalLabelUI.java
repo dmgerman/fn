@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -143,7 +143,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A UI delegate for JLabel that rotates the label 90Â°  *<P>  * Extends {@link BasicLabelUI}.  *<P>  * The only difference between the appearance of labels in the Basic and Metal  * L&Fs is the manner in which diabled text is painted.  As VerticalLabelUI  * does not override the method paintDisabledText, this class can be adapted  * for Metal L&F by extending MetalLabelUI instead of BasicLabelUI.  *<P>  * No other changes are required.  *   * @author Darryl  */
+comment|/**  * A UI delegate for JLabel that rotates the label 90Â°  *<P>  * Extends {@link BasicLabelUI}.  *<P>  * The only difference between the appearance of labels in the Basic and Metal L&Fs is the manner in which diabled text  * is painted. As VerticalLabelUI does not override the method paintDisabledText, this class can be adapted for Metal  * L&F by extending MetalLabelUI instead of BasicLabelUI.  *<P>  * No other changes are required.  *  * @author Darryl  */
 end_comment
 
 begin_class
@@ -231,7 +231,7 @@ operator|=
 name|clockwise
 expr_stmt|;
 block|}
-comment|/**      * @see ComponentUI#createUI(javax.swing.JComponent)       */
+comment|/**      * @see ComponentUI#createUI(javax.swing.JComponent)      */
 DECL|method|createUI (JComponent c)
 specifier|public
 specifier|static
@@ -267,7 +267,7 @@ name|verticalLabelUI
 return|;
 block|}
 block|}
-comment|/**      * Overridden to always return -1, since a vertical label does not have a      * meaningful baseline.      *       * @see ComponentUI#getBaseline(JComponent, int, int)      */
+comment|/**      * Overridden to always return -1, since a vertical label does not have a      * meaningful baseline.      *      * @see ComponentUI#getBaseline(JComponent, int, int)      */
 annotation|@
 name|Override
 DECL|method|getBaseline (JComponent c, int width, int height)
@@ -301,7 +301,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**      * Overridden to always return Component.BaselineResizeBehavior.OTHER,      * since a vertical label does not have a meaningful baseline       *       * @see ComponentUI#getBaselineResizeBehavior(javax.swing.JComponent)      */
+comment|/**      * Overridden to always return Component.BaselineResizeBehavior.OTHER,      * since a vertical label does not have a meaningful baseline      *      * @see ComponentUI#getBaselineResizeBehavior(javax.swing.JComponent)      */
 annotation|@
 name|Override
 DECL|method|getBaselineResizeBehavior ( JComponent c)
@@ -543,7 +543,7 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns a Dimension appropriate for vertical rendering      *       * @see ComponentUI#getPreferredSize(javax.swing.JComponent)      */
+comment|/**      * Returns a Dimension appropriate for vertical rendering      *      * @see ComponentUI#getPreferredSize(javax.swing.JComponent)      */
 annotation|@
 name|Override
 DECL|method|getPreferredSize (JComponent c)
@@ -567,7 +567,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a Dimension appropriate for vertical rendering      *       * @see ComponentUI#getMaximumSize(javax.swing.JComponent)      */
+comment|/**      * Returns a Dimension appropriate for vertical rendering      *      * @see ComponentUI#getMaximumSize(javax.swing.JComponent)      */
 annotation|@
 name|Override
 DECL|method|getMaximumSize (JComponent c)
@@ -591,7 +591,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a Dimension appropriate for vertical rendering      *       * @see ComponentUI#getMinimumSize(javax.swing.JComponent)      */
+comment|/**      * Returns a Dimension appropriate for vertical rendering      *      * @see ComponentUI#getMinimumSize(javax.swing.JComponent)      */
 annotation|@
 name|Override
 DECL|method|getMinimumSize (JComponent c)
@@ -617,6 +617,7 @@ return|;
 block|}
 DECL|method|transposeDimension (Dimension from)
 specifier|private
+specifier|static
 name|Dimension
 name|transposeDimension
 parameter_list|(
@@ -642,6 +643,7 @@ return|;
 block|}
 DECL|method|transposeRectangle (Rectangle from, Rectangle to)
 specifier|private
+specifier|static
 name|Rectangle
 name|transposeRectangle
 parameter_list|(
@@ -704,6 +706,7 @@ return|;
 block|}
 DECL|method|copyRectangle (Rectangle from, Rectangle to)
 specifier|private
+specifier|static
 name|Rectangle
 name|copyRectangle
 parameter_list|(

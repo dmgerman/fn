@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -159,7 +159,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * This is a non-modal help Dialog. The contents of the help is specified by  * calling showPage().  */
+comment|/**  *  * This is a non-modal help Dialog. The contents of the help is specified by  * calling showPage().  */
 end_comment
 
 begin_class
@@ -532,7 +532,7 @@ name|class
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|showPage (String url, Class resourceOwner)
+DECL|method|showPage (String url, Class<?> resourceOwner)
 specifier|public
 name|void
 name|showPage
@@ -541,6 +541,9 @@ name|String
 name|url
 parameter_list|,
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|resourceOwner
 parameter_list|)
 block|{
@@ -731,10 +734,12 @@ literal|"Back"
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"left"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|LEFT
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// putValue(SHORT_DESCRIPTION, "Show the previous page");
@@ -784,10 +789,12 @@ literal|"Forward"
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"right"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|RIGHT
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -836,10 +843,12 @@ literal|"Contents"
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"helpContents"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|HELP_CONTENTS
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

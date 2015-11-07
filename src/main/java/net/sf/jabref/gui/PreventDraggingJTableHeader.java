@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -101,7 +101,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Related to<code>MainTable</code> class.<br/>  * Prevents dragging of the first header column ("#"). Prevents dragging of  * unnamed (aka special) header columns. This is needed to prevent the user from  * putting the gui table in an inconsistent state.<br/>  *   * This might not be the best way to solve this problem. Overriding  *<code>getDraggedColumn</code> produces some ugly gui dragging artifacts if a  * user attempts to drag something before the first columns.  *   * @author Daniel Waeber  * @author Fabian Bieker  * @since 12/2008  */
+comment|/**  * Related to<code>MainTable</code> class.<br/>  * Prevents dragging of the first header column ("#"). Prevents dragging of  * unnamed (aka special) header columns. This is needed to prevent the user from  * putting the gui table in an inconsistent state.<br/>  *  * This might not be the best way to solve this problem. Overriding  *<code>getDraggedColumn</code> produces some ugly gui dragging artifacts if a  * user attempts to drag something before the first columns.  *  * @author Daniel Waeber  * @author Fabian Bieker  * @since 12/2008  */
 end_comment
 
 begin_class
@@ -290,9 +290,10 @@ return|return
 name|column
 return|;
 block|}
-comment|/**      * Note: used to prevent dragging of other columns before the special      * columns.      *       * @return count of special columns      */
+comment|/**      * Note: used to prevent dragging of other columns before the special      * columns.      *      * @return count of special columns      */
 DECL|method|getSpecialColumnsCount ()
 specifier|private
+specifier|static
 name|int
 name|getSpecialColumnsCount
 parameter_list|()
@@ -552,6 +553,8 @@ operator|==
 literal|null
 operator|)
 operator|||
+operator|(
+operator|(
 name|column
 operator|.
 name|getHeaderValue
@@ -561,6 +564,7 @@ name|toString
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|column
 operator|.
@@ -572,6 +576,7 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
+operator|)
 return|;
 block|}
 comment|/**      * Transform model index<code>mColIndex</code> to a view based index and      * prevent dragging before model index<code>toIndex</code> (inclusive).      */

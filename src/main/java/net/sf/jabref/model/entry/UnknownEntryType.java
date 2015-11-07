@@ -35,7 +35,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class is used to represent an unknown entry type, e.g. encountered  * during bibtex parsing. The only known information is the type name.  * This is useful if the bibtex file contains type definitions that are used  * in the file - because the entries will be parsed before the type definitions  * are found. In the meantime, the entries will be assigned an   * UnknownEntryType giving the name.  */
+comment|/**  * This class is used to represent an unknown entry type, e.g. encountered  * during bibtex parsing. The only known information is the type name.  * This is useful if the bibtex file contains type definitions that are used  * in the file - because the entries will be parsed before the type definitions  * are found. In the meantime, the entries will be assigned an  * UnknownEntryType giving the name.  */
 end_comment
 
 begin_class
@@ -52,30 +52,19 @@ specifier|final
 name|String
 name|name
 decl_stmt|;
-DECL|field|fields
-specifier|private
-specifier|final
-name|String
-index|[]
-name|fields
-init|=
-operator|new
-name|String
-index|[
-literal|0
-index|]
-decl_stmt|;
-DECL|method|UnknownEntryType (String name_)
+DECL|method|UnknownEntryType (String name)
 specifier|public
 name|UnknownEntryType
 parameter_list|(
 name|String
-name|name_
+name|name
 parameter_list|)
 block|{
+name|this
+operator|.
 name|name
 operator|=
-name|name_
+name|name
 expr_stmt|;
 block|}
 annotation|@
@@ -88,32 +77,6 @@ parameter_list|()
 block|{
 return|return
 name|name
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getOptionalFields ()
-specifier|public
-name|String
-index|[]
-name|getOptionalFields
-parameter_list|()
-block|{
-return|return
-name|fields
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRequiredFields ()
-specifier|public
-name|String
-index|[]
-name|getRequiredFields
-parameter_list|()
-block|{
-return|return
-name|fields
 return|;
 block|}
 annotation|@

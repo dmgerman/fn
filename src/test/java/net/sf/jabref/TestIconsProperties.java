@@ -16,16 +16,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -59,18 +49,6 @@ operator|.
 name|file
 operator|.
 name|Files
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Path
 import|;
 end_import
 
@@ -181,7 +159,7 @@ block|{
 name|String
 name|folder
 init|=
-literal|"src/main/resources/images/crystal_16"
+literal|"src/main/resources/images/external"
 decl_stmt|;
 name|String
 name|iconsProperties
@@ -191,9 +169,7 @@ decl_stmt|;
 name|String
 name|iconsPropertiesPath
 init|=
-name|folder
-operator|+
-literal|"/"
+literal|"src/main/resources/images/"
 operator|+
 name|iconsProperties
 decl_stmt|;
@@ -412,7 +388,7 @@ name|assertEquals
 argument_list|(
 literal|"Images are in the folder that are unused"
 argument_list|,
-literal|"[Icons.properties]"
+literal|"[red.png]"
 argument_list|,
 name|fileNamesInFolder
 operator|.

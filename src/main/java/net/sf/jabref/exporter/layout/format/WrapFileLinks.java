@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -96,20 +96,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -176,11 +162,7 @@ name|replacements
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@
@@ -217,11 +199,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|parts
 operator|.
 name|length
 operator|>
 literal|1
+operator|)
 operator|&&
 operator|!
 name|parts
@@ -262,11 +246,13 @@ literal|2
 init|;
 name|i
 operator|<
+operator|(
 name|parts
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|+=
@@ -374,9 +360,11 @@ decl_stmt|;
 comment|// Use this entry if we don't discriminate on types, or if the type fits:
 if|if
 condition|(
+operator|(
 name|fileType
 operator|==
 literal|null
+operator|)
 operator|||
 name|flEntry
 operator|.
@@ -493,7 +481,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
@@ -646,12 +634,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|index
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|index
 operator|<
+operator|(
 name|flEntry
 operator|.
 name|getLink
@@ -661,6 +653,8 @@ name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
+operator|)
 condition|)
 block|{
 name|sb
@@ -870,11 +864,7 @@ name|ESCAPE_SEQ
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|Character
-argument_list|,
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 static|static
@@ -961,6 +951,7 @@ block|}
 comment|/**      * Parse a format string and return a list of FormatEntry objects. The format      * string is basically marked up with "\i" marking that the iteration number should      * be inserted, and with "\p" marking that the file path of the current iteration      * should be inserted, plus additional markers.      *      * @param format The marked-up string.      * @return the resulting format entries.      */
 DECL|method|parseFormatString (String format)
 specifier|private
+specifier|static
 name|List
 argument_list|<
 name|FormatEntry
@@ -979,9 +970,7 @@ name|l
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|FormatEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|StringBuilder

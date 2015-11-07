@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -169,11 +169,7 @@ name|sliders
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|JSlider
-argument_list|,
-name|SliderInfo
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|ok
@@ -210,29 +206,6 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|method|main (String[] args)
-specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
-block|{
-operator|new
-name|FieldWeightDialog
-argument_list|(
-literal|null
-argument_list|)
-operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|FieldWeightDialog (JabRefFrame frame)
 specifier|private
 name|FieldWeightDialog
@@ -348,9 +321,7 @@ name|fields
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// We use this map to remember which slider represents which field name:
@@ -426,6 +397,7 @@ call|(
 name|int
 call|)
 argument_list|(
+operator|(
 literal|100
 operator|*
 name|BibtexFields
@@ -434,6 +406,7 @@ name|getFieldWeight
 argument_list|(
 name|field
 argument_list|)
+operator|)
 operator|/
 name|GUIGlobals
 operator|.
@@ -630,6 +603,7 @@ block|{
 name|double
 name|weight
 init|=
+operator|(
 name|GUIGlobals
 operator|.
 name|MAX_FIELD_WEIGHT
@@ -638,6 +612,7 @@ name|slider
 operator|.
 name|getValue
 argument_list|()
+operator|)
 operator|/
 literal|100d
 decl_stmt|;

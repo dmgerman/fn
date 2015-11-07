@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -148,20 +148,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -173,8 +159,6 @@ operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|logic
 operator|.
 name|bibtex
 operator|.
@@ -222,11 +206,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|util
-operator|.
-name|io
+name|desktop
 operator|.
 name|JabRefDesktop
 import|;
@@ -275,7 +257,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Sends the selected entry as email - by Oliver Kopp  *   * It uses the mailto:-mechanism  *   * Microsoft Outlook does not support attachments via mailto  * Therefore, the folder(s), where the file(s) belonging to the entry are stored,  * are opened. This feature is disabled by default and can be switched on at  * preferences/external programs     */
+comment|/**  * Sends the selected entry as email - by Oliver Kopp  *  * It uses the mailto:-mechanism  *  * Microsoft Outlook does not support attachments via mailto  * Therefore, the folder(s), where the file(s) belonging to the entry are stored,  * are opened. This feature is disabled by default and can be switched on at  * preferences/external programs  */
 end_comment
 
 begin_class
@@ -452,10 +434,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Problem creating Bibtex file for mailing."
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -467,9 +453,7 @@ name|attachments
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// open folders is needed to indirectly support email programs, which cannot handle
@@ -511,7 +495,7 @@ argument_list|()
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -671,11 +655,6 @@ name|URISyntaxException
 name|e1
 parameter_list|)
 block|{
-name|e1
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 name|message
 operator|=
 name|Localization
@@ -683,6 +662,15 @@ operator|.
 name|lang
 argument_list|(
 literal|"Error creating email"
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+name|message
+argument_list|,
+name|e1
 argument_list|)
 expr_stmt|;
 return|return;
@@ -711,11 +699,6 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 name|message
 operator|=
 name|Localization
@@ -723,6 +706,15 @@ operator|.
 name|lang
 argument_list|(
 literal|"Error creating email"
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+name|message
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 return|return;

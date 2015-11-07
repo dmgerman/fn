@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2012-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -32,7 +32,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|ImageIcon
+name|*
 import|;
 end_import
 
@@ -83,15 +83,17 @@ decl_stmt|;
 DECL|field|icon
 specifier|private
 specifier|final
-name|ImageIcon
+name|Icon
 name|icon
 init|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"priority"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|PRIORITY
+operator|.
+name|getIcon
+argument_list|()
 decl_stmt|;
 DECL|method|Priority ()
 specifier|private
@@ -106,9 +108,7 @@ name|values
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|SpecialFieldValue
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|values
@@ -142,17 +142,19 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ImageIcon
-name|icon
+name|Icon
+name|tmpicon
 decl_stmt|;
-name|icon
+name|tmpicon
 operator|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"red"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|PRIORITY_HIGH
+operator|.
+name|getSmallIcon
+argument_list|()
 expr_stmt|;
 comment|// DO NOT TRANSLATE "prio1" etc. as this makes the .bib files non portable
 name|values
@@ -175,7 +177,7 @@ argument_list|(
 literal|"Set priority to high"
 argument_list|)
 argument_list|,
-name|icon
+name|tmpicon
 argument_list|,
 name|Localization
 operator|.
@@ -186,14 +188,16 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|icon
+name|tmpicon
 operator|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"orange"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|PRIORITY_MEDIUM
+operator|.
+name|getSmallIcon
+argument_list|()
 expr_stmt|;
 name|values
 operator|.
@@ -215,7 +219,7 @@ argument_list|(
 literal|"Set priority to medium"
 argument_list|)
 argument_list|,
-name|icon
+name|tmpicon
 argument_list|,
 name|Localization
 operator|.
@@ -226,14 +230,16 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|icon
+name|tmpicon
 operator|=
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"green"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|PRIORITY_LOW
+operator|.
+name|getSmallIcon
+argument_list|()
 expr_stmt|;
 name|values
 operator|.
@@ -255,7 +261,7 @@ argument_list|(
 literal|"Set priority to low"
 argument_list|)
 argument_list|,
-name|icon
+name|tmpicon
 argument_list|,
 name|Localization
 operator|.
@@ -327,7 +333,7 @@ annotation|@
 name|Override
 DECL|method|getRepresentingIcon ()
 specifier|public
-name|ImageIcon
+name|Icon
 name|getRepresentingIcon
 parameter_list|()
 block|{

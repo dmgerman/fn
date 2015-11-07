@@ -124,6 +124,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|actions
+operator|.
+name|MnemonicAwareAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|worker
 operator|.
 name|AbstractWorker
@@ -283,7 +299,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 27, 2008 Time: 6:09:08 PM To  * change this template use File | Settings | File Templates.  *   * Jan. 20th Changed to accomodate the new way to connect to DB and also to show  * the exceptions and to display more than one DB imported (by ifsteinm)  *   */
+comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 27, 2008 Time: 6:09:08 PM To  * change this template use File | Settings | File Templates.  *  * Jan. 20th Changed to accomodate the new way to connect to DB and also to show  * the exceptions and to display more than one DB imported (by ifsteinm)  *  */
 end_comment
 
 begin_class
@@ -368,14 +384,7 @@ name|DbImpAction
 parameter_list|()
 block|{
 name|super
-argument_list|(
-name|IconTheme
-operator|.
-name|getImage
-argument_list|(
-literal|"dbImport"
-argument_list|)
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|putValue
 argument_list|(
@@ -383,7 +392,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Import from external SQL database"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -648,12 +662,7 @@ name|matrix
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|Vector
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 while|while
@@ -668,9 +677,7 @@ name|v
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|v

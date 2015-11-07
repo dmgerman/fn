@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -187,7 +187,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * This class allows to access the Slac INSPIRE database. It is just a port of  * the original SPIRES Fetcher.  *   * It can either be a GeneralFetcher to pose requests to the database or fetch  * individual entries.  *   * @author Fedor Bezrukov  * @author Sheer El-Showk  *   * @version $Id$  *   */
+comment|/**  *  * This class allows to access the Slac INSPIRE database. It is just a port of  * the original SPIRES Fetcher.  *  * It can either be a GeneralFetcher to pose requests to the database or fetch  * individual entries.  *  * @author Fedor Bezrukov  * @author Sheer El-Showk  *  * @version $Id$  *  */
 end_comment
 
 begin_class
@@ -207,7 +207,7 @@ name|INSPIRE_HOST
 init|=
 literal|"inspirehep.net"
 decl_stmt|;
-comment|/**      * Construct the query URL      *      * NOTE: we truncate at 1000 returned entries but its likely INSPIRE returns      * fewer anyway.  This shouldn't be a problem since users should probably do      * more specific searches.      *       * @param key      *            The key of the OAI2 entry that the url should poitn to.      *       * @return a String denoting the query URL      */
+comment|/**      * Construct the query URL      *      * NOTE: we truncate at 1000 returned entries but its likely INSPIRE returns fewer anyway. This shouldn't be a      * problem since users should probably do more specific searches.      *      * @param key The key of the OAI2 entry that the url should point to.      *      * @return a String denoting the query URL      */
 DECL|method|constructUrl (String key)
 specifier|private
 name|String
@@ -310,8 +310,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Constructs a INSPIRE query url from slaccitation field      *       * @param slaccitation      * @return query string      *     public static String constructUrlFromSlaccitation(String slaccitation) {     	String cmd = "j";     	String key = slaccitation.replaceAll("^%%CITATION = ", "").replaceAll(     			";%%$", "");     	if (key.matches("^\\w*-\\w*[ /].*"))     		cmd = "eprint";     	try {     		key = URLEncoder.encode(key, "UTF-8");     	} catch (UnsupportedEncodingException e) {     	}     	StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST)     			.append("/");     	sb.append("spires/find/hep/www").append("?");     	sb.append("rawcmd=find+").append(cmd).append("+");     	sb.append(key);     	return sb.toString();     }      /**      * Construct an INSPIRE query url from eprint field      *       * @param eprint      * @return query string      *     public static String constructUrlFromEprint(String eprint) {     	String key = eprint.replaceAll(" [.*]$", "");     	try {     		key = URLEncoder.encode(key, "UTF-8");     	} catch (UnsupportedEncodingException e) {     		return "";     	}     	StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST)     			.append("/");     	sb.append("spires/find/hep/www").append("?");     	sb.append("rawcmd=find+eprint+");     	sb.append(key);     	return sb.toString();     }*/
-comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to      * have the field OAI2_IDENTIFIER_FIELD set to the search string.      *       * @param key      *            The OAI2 key to fetch from ArXiv.      * @return The imnported BibtexEntry or null if none.      */
+comment|/**      * Constructs a INSPIRE query url from slaccitation field      *      * @param slaccitation      * @return query string      *     public static String constructUrlFromSlaccitation(String slaccitation) {     	String cmd = "j";     	String key = slaccitation.replaceAll("^%%CITATION = ", "").replaceAll(     			";%%$", "");     	if (key.matches("^\\w*-\\w*[ /].*"))     		cmd = "eprint";     	try {     		key = URLEncoder.encode(key, "UTF-8");     	} catch (UnsupportedEncodingException e) {     	}     	StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST)     			.append("/");     	sb.append("spires/find/hep/www").append("?");     	sb.append("rawcmd=find+").append(cmd).append("+");     	sb.append(key);     	return sb.toString();     }      /**      * Construct an INSPIRE query url from eprint field      *      * @param eprint      * @return query string      *     public static String constructUrlFromEprint(String eprint) {     	String key = eprint.replaceAll(" [.*]$", "");     	try {     		key = URLEncoder.encode(key, "UTF-8");     	} catch (UnsupportedEncodingException e) {     		return "";     	}     	StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST)     			.append("/");     	sb.append("spires/find/hep/www").append("?");     	sb.append("rawcmd=find+eprint+");     	sb.append(key);     	return sb.toString();     }*/
+comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to have the field OAI2_IDENTIFIER_FIELD set to      * the search string.      *      * @param key The OAI2 key to fetch from ArXiv.      * @return The imported BibtexEntry or null if none.      */
 DECL|method|importInspireEntries (String key, OutputPrinter frame)
 specifier|private
 name|BibtexDatabase
@@ -544,27 +544,10 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-name|getKeyName
-argument_list|()
+literal|"Fetch INSPIRE"
 argument_list|)
 return|;
 block|}
-comment|/*      * @see net.sf.jabref.gui.ImportInspectionDialog.CallBack      */
-DECL|method|cancelled ()
-specifier|public
-name|void
-name|cancelled
-parameter_list|()
-block|{     }
-DECL|method|done (int entriesImported)
-specifier|public
-name|void
-name|done
-parameter_list|(
-name|int
-name|entriesImported
-parameter_list|)
-block|{     }
 annotation|@
 name|Override
 DECL|method|stopFetching ()
@@ -572,7 +555,9 @@ specifier|public
 name|void
 name|stopFetching
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 comment|/*      * @see java.lang.Runnable      */
 annotation|@
 name|Override

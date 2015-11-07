@@ -337,7 +337,7 @@ name|s
 operator|+
 literal|"\". "
 operator|+
-literal|"Please report this on www.sf.net/projects/jabref"
+literal|"Please report this on https://github.com/JabRef/jabref/issues"
 argument_list|)
 throw|;
 block|}
@@ -816,18 +816,23 @@ operator|.
 name|searchExpression
 argument_list|)
 operator|&&
+operator|(
 name|caseSensitive
 operator|==
 name|other
 operator|.
 name|caseSensitive
+operator|)
 operator|&&
+operator|(
 name|regExp
 operator|==
 name|other
 operator|.
 name|regExp
+operator|)
 operator|&&
+operator|(
 name|getHierarchicalContext
 argument_list|()
 operator|==
@@ -835,9 +840,10 @@ name|other
 operator|.
 name|getHierarchicalContext
 argument_list|()
+operator|)
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
+comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
 annotation|@
 name|Override
 DECL|method|contains (String searchOptions, BibtexEntry entry)
@@ -932,7 +938,7 @@ name|t
 operator|+
 literal|" in SearchGroup.deepCopy(). "
 operator|+
-literal|"Please report this on www.sf.net/projects/jabref"
+literal|"Please report this on https://github.com/JabRef/jabref/issues"
 argument_list|)
 expr_stmt|;
 return|return

@@ -520,7 +520,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Could not find DropTargetDropEvent class"
+literal|"Could not find DropTargetDropEvent class."
 argument_list|,
 name|e
 argument_list|)
@@ -649,7 +649,7 @@ literal|1
 case|:
 try|try
 block|{
-comment|//auto file name:
+comment|//auto filename:
 name|File
 name|file
 init|=
@@ -756,7 +756,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Error while downloading file"
+literal|"Error while downloading file."
 argument_list|,
 name|ioex
 argument_list|)
@@ -807,7 +807,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Could not parse URL"
+literal|"Could not parse URL."
 argument_list|,
 name|nfe
 argument_list|)
@@ -823,7 +823,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Could not perform drage and drop"
+literal|"Could not perform drag and drop."
 argument_list|,
 name|ioex
 argument_list|)
@@ -964,7 +964,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Could not perform drage and drop"
+literal|"Could not perform drag and drop."
 argument_list|,
 name|nfe
 argument_list|)
@@ -980,7 +980,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Could not perform drage and drop"
+literal|"Could not perform drag and drop."
 argument_list|,
 name|ioex
 argument_list|)

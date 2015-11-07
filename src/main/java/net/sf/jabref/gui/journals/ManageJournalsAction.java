@@ -42,6 +42,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|actions
+operator|.
 name|MnemonicAwareAction
 import|;
 end_import
@@ -97,10 +99,6 @@ operator|.
 name|Action
 import|;
 end_import
-
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Sep 22, 2005  * Time: 10:45:02 PM  * To browseOld this template use File | Settings | File Templates.  */
-end_comment
 
 begin_class
 DECL|class|ManageJournalsAction

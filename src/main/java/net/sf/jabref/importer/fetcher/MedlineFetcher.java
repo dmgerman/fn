@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -213,7 +213,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Fetch or search from Pubmed http://www.ncbi.nlm.nih.gov/sites/entrez/  *   */
+comment|/**  * Fetch or search from Pubmed http://www.ncbi.nlm.nih.gov/sites/entrez/  *  */
 end_comment
 
 begin_class
@@ -310,6 +310,7 @@ name|dialog
 decl_stmt|;
 DECL|method|toSearchTerm (String in)
 specifier|private
+specifier|static
 name|String
 name|toSearchTerm
 parameter_list|(
@@ -812,7 +813,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter frame)
+DECL|method|processQuery (String query, ImportInspector iIDialog, OutputPrinter frameOP)
 specifier|public
 name|boolean
 name|processQuery
@@ -821,10 +822,10 @@ name|String
 name|query
 parameter_list|,
 name|ImportInspector
-name|dialog
+name|iIDialog
 parameter_list|,
 name|OutputPrinter
-name|frame
+name|frameOP
 parameter_list|)
 block|{
 name|shouldContinue
@@ -855,7 +856,7 @@ literal|"\\d+[,\\d+]*"
 argument_list|)
 condition|)
 block|{
-name|frame
+name|frameOP
 operator|.
 name|setStatus
 argument_list|(
@@ -879,7 +880,7 @@ name|fetchMedline
 argument_list|(
 name|query
 argument_list|,
-name|frame
+name|frameOP
 argument_list|)
 decl_stmt|;
 if|if
@@ -890,7 +891,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|frame
+name|frameOP
 operator|.
 name|showMessage
 argument_list|(
@@ -911,7 +912,7 @@ range|:
 name|bibs
 control|)
 block|{
-name|dialog
+name|iIDialog
 operator|.
 name|addEntry
 argument_list|(
@@ -932,7 +933,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|frame
+name|frameOP
 operator|.
 name|setStatus
 argument_list|(
@@ -974,7 +975,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|frame
+name|frameOP
 operator|.
 name|showMessage
 argument_list|(
@@ -1053,7 +1054,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|frame
+name|frameOP
 operator|.
 name|setStatus
 argument_list|(
@@ -1091,7 +1092,7 @@ name|RuntimeException
 name|ex
 parameter_list|)
 block|{
-name|frame
+name|frameOP
 operator|.
 name|showMessage
 argument_list|(
@@ -1174,7 +1175,7 @@ name|result
 operator|.
 name|ids
 argument_list|,
-name|frame
+name|frameOP
 argument_list|)
 decl_stmt|;
 for|for
@@ -1185,7 +1186,7 @@ range|:
 name|bibs
 control|)
 block|{
-name|dialog
+name|iIDialog
 operator|.
 name|addEntry
 argument_list|(
@@ -1193,7 +1194,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-name|dialog
+name|iIDialog
 operator|.
 name|setProgress
 argument_list|(
@@ -1209,7 +1210,7 @@ return|return
 literal|true
 return|;
 block|}
-name|frame
+name|frameOP
 operator|.
 name|showMessage
 argument_list|(

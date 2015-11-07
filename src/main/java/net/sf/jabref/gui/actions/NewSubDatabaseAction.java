@@ -163,10 +163,12 @@ name|super
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"new"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|NEW
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -181,7 +183,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"New subdatabase based on AUX file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -198,7 +205,6 @@ literal|"New BibTeX subdatabase"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
 annotation|@
 name|Override

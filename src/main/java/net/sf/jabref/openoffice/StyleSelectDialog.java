@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -584,11 +584,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|util
-operator|.
-name|io
+name|desktop
 operator|.
 name|JabRefDesktop
 import|;
@@ -1524,9 +1522,7 @@ name|styles
 operator|=
 operator|new
 name|BasicEventList
-argument_list|<
-name|OOBibStyle
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|EventList
@@ -1537,9 +1533,7 @@ name|sortedStyles
 init|=
 operator|new
 name|SortedList
-argument_list|<
-name|OOBibStyle
-argument_list|>
+argument_list|<>
 argument_list|(
 name|styles
 argument_list|)
@@ -1572,9 +1566,7 @@ name|tableModel
 operator|=
 operator|new
 name|EventTableModel
-argument_list|<
-name|OOBibStyle
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedStyles
 argument_list|,
@@ -1639,9 +1631,7 @@ name|selectionModel
 operator|=
 operator|new
 name|EventSelectionModel
-argument_list|<
-name|OOBibStyle
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedStyles
 argument_list|)
@@ -3086,12 +3076,9 @@ literal|0
 argument_list|)
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|null
 return|;
-block|}
 block|}
 DECL|method|setupPrevEntry ()
 specifier|private
@@ -3177,7 +3164,7 @@ name|setField
 argument_list|(
 literal|"www"
 argument_list|,
-literal|"http://jabref.sf.net"
+literal|"https://github.com/JabRef"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3318,6 +3305,7 @@ block|}
 block|}
 DECL|method|formatJournals (Set<String> journals)
 specifier|private
+specifier|static
 name|String
 name|formatJournals
 parameter_list|(

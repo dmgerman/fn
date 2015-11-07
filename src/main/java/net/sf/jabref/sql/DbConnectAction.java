@@ -26,6 +26,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|actions
+operator|.
 name|BaseAction
 import|;
 end_import

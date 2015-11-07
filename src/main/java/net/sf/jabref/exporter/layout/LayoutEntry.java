@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -87,6 +87,34 @@ operator|.
 name|regex
 operator|.
 name|Matcher
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -292,6 +320,22 @@ name|HIGHLIGHT_COLOR
 init|=
 literal|"#3399FF"
 decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|LayoutEntry
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|method|LayoutEntry (StringInt si, String classPrefix_)
 specifier|public
 name|LayoutEntry
@@ -358,6 +402,7 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|si
 operator|.
 name|i
@@ -365,7 +410,9 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_FIELD_START
+operator|)
 operator|||
+operator|(
 name|si
 operator|.
 name|i
@@ -373,8 +420,11 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_FIELD_END
+operator|)
 condition|)
-block|{         }
+block|{
+comment|// Do nothing
+block|}
 elseif|else
 if|if
 condition|(
@@ -395,9 +445,7 @@ name|v
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|WSITools
@@ -503,9 +551,7 @@ name|invalidFormatter
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -569,9 +615,7 @@ name|tmpEntries
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|LayoutEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|LayoutEntry
@@ -623,11 +667,9 @@ name|blockEnd
 argument_list|)
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|warn
 argument_list|(
 literal|"Field start and end entry must be equal."
 argument_list|)
@@ -652,12 +694,14 @@ literal|1
 init|;
 name|i
 operator|<
+operator|(
 name|parsedEntries
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -675,6 +719,7 @@ expr_stmt|;
 comment|// System.out.println("PARSED-ENTRY: "+si.s+"="+si.i);
 if|if
 condition|(
+operator|(
 name|si
 operator|.
 name|i
@@ -682,7 +727,9 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_LAYOUT_TEXT
+operator|)
 operator|||
+operator|(
 name|si
 operator|.
 name|i
@@ -690,11 +737,15 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_SIMPLE_FIELD
+operator|)
 condition|)
-block|{             }
+block|{
+comment|// Do nothing
+block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|si
 operator|.
 name|i
@@ -702,7 +753,9 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_FIELD_START
+operator|)
 operator|||
+operator|(
 name|si
 operator|.
 name|i
@@ -710,15 +763,14 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_GROUP_START
+operator|)
 condition|)
 block|{
 name|blockEntries
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|StringInt
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|blockStart
@@ -731,6 +783,7 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|si
 operator|.
 name|i
@@ -738,7 +791,9 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_FIELD_END
+operator|)
 operator|||
+operator|(
 name|si
 operator|.
 name|i
@@ -746,6 +801,7 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_GROUP_END
+operator|)
 condition|)
 block|{
 if|if
@@ -824,11 +880,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
 literal|"Nested field entries are not implemented !!!"
 argument_list|)
@@ -846,7 +900,9 @@ name|LayoutHelper
 operator|.
 name|IS_OPTION_FIELD
 condition|)
-block|{             }
+block|{
+comment|// Do nothing
+block|}
 comment|// else if (si.i == LayoutHelper.IS_OPTION_FIELD_PARAM)
 comment|// {
 comment|// }
@@ -947,9 +1003,7 @@ name|invalidFormatter
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|1
 argument_list|)
@@ -1241,15 +1295,20 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|field
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
+operator|(
 name|type
 operator|==
 name|LayoutHelper
 operator|.
 name|IS_GROUP_START
+operator|)
 operator|&&
 name|field
 operator|.
@@ -1260,6 +1319,7 @@ operator|.
 name|getCurrentGroup
 argument_list|()
 argument_list|)
+operator|)
 condition|)
 block|{
 return|return
@@ -1342,9 +1402,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|<
 name|layoutEntries
 operator|.
@@ -1401,13 +1463,16 @@ literal|0
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|eol
 operator|<
 name|fieldText
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|&&
+operator|(
 operator|(
 name|fieldText
 operator|.
@@ -1417,7 +1482,9 @@ name|eol
 argument_list|)
 operator|==
 literal|'\n'
+operator|)
 operator|||
+operator|(
 name|fieldText
 operator|.
 name|charAt
@@ -1426,6 +1493,7 @@ name|eol
 argument_list|)
 operator|==
 literal|'\r'
+operator|)
 operator|)
 condition|)
 block|{
@@ -1461,7 +1529,7 @@ else|else
 block|{
 comment|//System.out.println("ENTRY-BLOCK: " +
 comment|//layoutEntries[i].doLayout(bibtex));
-comment|/*                              * if fieldText is not null and the bibtexentry is marked                              * as a searchhit, try to highlight the searched words                              *                              */
+comment|/*                              * if fieldText is not null and the bibtexentry is marked                              * as a searchhit, try to highlight the searched words                              *                             */
 if|if
 condition|(
 name|bibtex
@@ -1685,7 +1753,7 @@ return|;
 block|}
 block|}
 comment|// added section - begin (arudert)
-comment|/**      * Do layout for general formatters (no bibtex-entry fields).      *       * @param database      *            Bibtex Database      * @return      */
+comment|/**      * Do layout for general formatters (no bibtex-entry fields).      *      * @param database      *            Bibtex Database      * @return      */
 DECL|method|doLayout (BibtexDatabase database, String encoding)
 specifier|public
 name|String
@@ -1732,17 +1800,21 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|type
 operator|==
 name|LayoutHelper
 operator|.
 name|IS_FIELD_START
+operator|)
 operator|||
+operator|(
 name|type
 operator|==
 name|LayoutHelper
 operator|.
 name|IS_GROUP_START
+operator|)
 condition|)
 block|{
 throw|throw
@@ -1756,17 +1828,21 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|type
 operator|==
 name|LayoutHelper
 operator|.
 name|IS_FIELD_END
+operator|)
 operator|||
+operator|(
 name|type
 operator|==
 name|LayoutHelper
 operator|.
 name|IS_GROUP_END
+operator|)
 condition|)
 block|{
 throw|throw
@@ -2051,7 +2127,7 @@ name|Exception
 argument_list|(
 name|className
 operator|+
-literal|" can not be instantiated."
+literal|" cannot be instantiated."
 argument_list|)
 throw|;
 block|}
@@ -2067,7 +2143,7 @@ name|Exception
 argument_list|(
 name|className
 operator|+
-literal|" can't be accessed."
+literal|" cannot be accessed."
 argument_list|)
 throw|;
 block|}
@@ -2076,7 +2152,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Return an array of LayoutFormatters found in the given formatterName      * string (in order of appearance).      *       */
+comment|/**      * Return an array of LayoutFormatters found in the given formatterName      * string (in order of appearance).      *      */
 DECL|method|getOptionalLayout (String formatterName, String classPrefix)
 specifier|private
 specifier|static
@@ -2113,9 +2189,7 @@ name|results
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|LayoutFormatter
-argument_list|>
+argument_list|<>
 argument_list|(
 name|formatterStrings
 operator|.
@@ -2277,7 +2351,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignored
+block|}
 comment|// Then check whether this is a user defined formatter
 name|String
 name|formatterParameter
@@ -2375,7 +2451,7 @@ return|return
 name|invalidFormatter
 return|;
 block|}
-comment|/**       * Will return the text that was called by the method with HTML tags       * to highlight each word the user has searched for and will skip      * the highlight process if the first Char isn't a letter or a digit.      *       * This check is a quick hack to avoid highlighting of HTML tags      * It does not always work, but it does its job mostly        *       * @param text This is a String in which we search for different words      * @param wordsToHighlight List of all words which must be highlighted      *       * @return String that was called by the method, with HTML Tags if a word was found       */
+comment|/**      * Will return the text that was called by the method with HTML tags to highlight each word the user has searched      * for and will skip the highlight process if the first Char isn't a letter or a digit.      *      * This check is a quick hack to avoid highlighting of HTML tags It does not always work, but it does its job mostly      *      * @param text This is a String in which we search for different words      * @param wordsToHighlight List of all words which must be highlighted      *       * @return String that was called by the method, with HTML Tags if a word was found      */
 DECL|method|highlightWords (String text, List<String> wordsToHighlight)
 specifier|private
 name|String

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -272,6 +272,34 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -295,7 +323,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *   * @author Ulrich St&auml;rk  * @author Christian Kopf  */
+comment|/**  *  * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  */
 end_comment
 
 begin_class
@@ -306,6 +334,22 @@ name|OAI2Fetcher
 implements|implements
 name|EntryFetcher
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|OAI2Fetcher
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|OAI2_ARXIV_PREFIXIDENTIFIER
 specifier|private
 specifier|static
@@ -407,7 +451,7 @@ specifier|private
 name|OutputPrinter
 name|status
 decl_stmt|;
-comment|/**      * some archives - like ArXiv.org - might expect of you to wait some time       */
+comment|/**      * some archives - like ArXiv.org - might expect of you to wait some time      */
 DECL|method|shouldWait ()
 specifier|private
 name|boolean
@@ -433,7 +477,7 @@ specifier|private
 name|Date
 name|lastCall
 decl_stmt|;
-comment|/**      *       *       * @param oai2Host      *            the host to query without leading http:// and without trailing /      * @param oai2Script      *            the relative location of the oai2 interface without leading      *            and trailing /      * @param oai2Metadataprefix      *            the urlencoded metadataprefix      * @param oai2Prefixidentifier      *            the urlencoded prefix identifier      * @param waitTimeMs      *            Time to wait in milliseconds between query-requests.      */
+comment|/**      *      *      * @param oai2Host      *            the host to query without leading http:// and without trailing /      * @param oai2Script      *            the relative location of the oai2 interface without leading      *            and trailing /      * @param oai2Metadataprefix      *            the urlencoded metadataprefix      * @param oai2Prefixidentifier      *            the urlencoded prefix identifier      * @param waitTimeMs      *            Time to wait in milliseconds between query-requests.      */
 DECL|method|OAI2Fetcher (String oai2Host, String oai2Script, String oai2Metadataprefix, String oai2Prefixidentifier, String oai2ArchiveName, long waitTimeMs)
 specifier|public
 name|OAI2Fetcher
@@ -514,29 +558,23 @@ block|}
 catch|catch
 parameter_list|(
 name|ParserConfigurationException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|SAXException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Error creating SAXParser for OAI2Fetcher"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Default Constructor. The archive queried will be ArXiv.org      *       */
+comment|/**      * Default Constructor. The archive queried will be ArXiv.org      *      */
 DECL|method|OAI2Fetcher ()
 specifier|public
 name|OAI2Fetcher
@@ -568,7 +606,7 @@ literal|20000L
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Construct the query URL      *       * @param key      *            The key of the OAI2 entry that the url should point to.      *                  * @return a String denoting the query URL      */
+comment|/**      * Construct the query URL      *      * @param key      *            The key of the OAI2 entry that the url should point to.      *      * @return a String denoting the query URL      */
 DECL|method|constructUrl (String key)
 specifier|public
 name|String
@@ -629,7 +667,7 @@ operator|+
 name|oai2MetaDataPrefix
 return|;
 block|}
-comment|/**      * Strip subcategories from ArXiv key.      *       * @param key The key to fix.      * @return Fixed key.      */
+comment|/**      * Strip subcategories from ArXiv key.      *      * @param key The key to fix.      * @return Fixed key.      */
 DECL|method|fixKey (String key)
 specifier|public
 specifier|static
@@ -685,14 +723,18 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|dot
 operator|>
 operator|-
 literal|1
+operator|)
 operator|&&
+operator|(
 name|dot
 operator|<
 name|slash
+operator|)
 condition|)
 block|{
 name|key
@@ -773,7 +815,7 @@ literal|""
 argument_list|)
 return|;
 block|}
-comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to      * have the field OAI2_IDENTIFIER_FIELD set to the search string.      *       * @param key      *            The OAI2 key to fetch from ArXiv.      * @return The imported BibtexEntry or null if none.      */
+comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to      * have the field OAI2_IDENTIFIER_FIELD set to the search string.      *      * @param key      *            The OAI2 key to fetch from ArXiv.      * @return The imported BibtexEntry or null if none.      */
 DECL|method|importOai2Entry (String key)
 specifier|public
 name|BibtexEntry
@@ -783,7 +825,7 @@ name|String
 name|key
 parameter_list|)
 block|{
-comment|/**          * Fix for problem reported in mailing-list:           *   https://sourceforge.net/forum/message.php?msg_id=4087158          */
+comment|/**          * Fix for problem reported in mailing-list:          *   https://sourceforge.net/forum/message.php?msg_id=4087158          */
 name|key
 operator|=
 name|OAI2Fetcher
@@ -895,7 +937,7 @@ name|name
 range|:
 name|be
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{
@@ -1024,13 +1066,8 @@ literal|"\n\n"
 operator|+
 name|e
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|getKeyName
 argument_list|()
-argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1054,12 +1091,7 @@ name|lang
 argument_list|(
 literal|"An SAXException ocurred while parsing '%0':"
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
 name|url
-block|}
 argument_list|)
 operator|+
 literal|"\n\n"
@@ -1069,13 +1101,8 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|getKeyName
 argument_list|()
-argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1099,12 +1126,7 @@ name|lang
 argument_list|(
 literal|"An Error occurred while fetching from OAI2 source (%0):"
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
 name|url
-block|}
 argument_list|)
 operator|+
 literal|"\n\n"
@@ -1113,14 +1135,21 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|,
+operator|+
+literal|"\n\n"
+operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
+literal|"Note: A full text search is currently not supported for %0"
+argument_list|,
 name|getKeyName
 argument_list|()
 argument_list|)
+argument_list|,
+name|getKeyName
+argument_list|()
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1154,7 +1183,12 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
 name|oai2ArchiveName
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -1183,14 +1217,13 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-name|getKeyName
-argument_list|()
+literal|"Fetch ArXiv.org"
 argument_list|)
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
+DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter statusOP)
 specifier|public
 name|boolean
 name|processQuery
@@ -1202,14 +1235,12 @@ name|ImportInspector
 name|dialog
 parameter_list|,
 name|OutputPrinter
-name|status
+name|statusOP
 parameter_list|)
 block|{
-name|this
-operator|.
 name|status
 operator|=
-name|status
+name|statusOP
 expr_stmt|;
 try|try
 block|{
@@ -1271,9 +1302,11 @@ condition|(
 name|shouldWait
 argument_list|()
 operator|&&
+operator|(
 name|lastCall
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|long
@@ -1310,12 +1343,14 @@ literal|"Waiting for ArXiv..."
 argument_list|)
 operator|+
 operator|(
+operator|(
 name|waitTime
 operator|-
 name|elapsed
 operator|)
 operator|/
 literal|1000
+operator|)
 operator|+
 literal|" s"
 argument_list|)
@@ -1439,19 +1474,16 @@ name|lang
 argument_list|(
 literal|"Error while fetching from OAI2"
 argument_list|)
-operator|+
-literal|": "
-operator|+
-name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Error whil fetching from OAI2"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 return|return

@@ -75,7 +75,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An autocompleter delivers possible completions for a given string. There are different types of autocompleters for  * different use cases.  *   * Example: {@link NameFieldAutoCompleter}, {@link EntireFieldAutoCompleter}  *   * @author kahlert, cordes, olly98  * @see AutoCompleterFactory  */
+comment|/**  * An autocompleter delivers possible completions for a given string. There are different types of autocompleters for  * different use cases.  *   * Example: {@link NameFieldAutoCompleter}, {@link EntireFieldAutoCompleter}  *  * @author kahlert, cordes, olly98  * @see AutoCompleterFactory  */
 end_comment
 
 begin_class
@@ -161,7 +161,7 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**      * Returns one or more possible completions for a given String. The returned completion depends on which      * informations were stored while adding BibtexEntries by the used implementation of {@link AbstractAutoCompleter} .      *       * @see AbstractAutoCompleter#addBibtexEntry(BibtexEntry)      */
+comment|/**      * Returns one or more possible completions for a given String. The returned      * completion depends on which informations were stored while adding      * BibtexEntries by the used implementation of {@link AbstractAutoCompleter}      * .      *      * @see AbstractAutoCompleter#addBibtexEntry(BibtexEntry)      */
 annotation|@
 name|Override
 DECL|method|complete (String toComplete)
@@ -328,7 +328,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Increments the last character of a string.      *       * Example: incrementLastCharacter("abc") returns "abd".      */
+comment|/**      * Increments the last character of a string.      *      * Example: incrementLastCharacter("abc") returns "abd".      */
 DECL|method|incrementLastCharacter (String toIncrement)
 specifier|private
 specifier|static

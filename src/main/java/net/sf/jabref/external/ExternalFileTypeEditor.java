@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -188,6 +188,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|actions
+operator|.
 name|MnemonicAwareAction
 import|;
 end_import
@@ -248,6 +250,15 @@ name|ExternalFileTypeEditor
 extends|extends
 name|JDialog
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|2818719761022588069L
+decl_stmt|;
 DECL|field|frame
 specifier|private
 name|JFrame
@@ -326,10 +337,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"add"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|ADD_NOBOX
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|remove
@@ -343,10 +356,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"remove"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|REMOVE_NOBOX
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|edit
@@ -360,10 +375,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"edit"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|EDIT
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|toDefaults
@@ -565,6 +582,15 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|4147450749465768880L
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -686,9 +712,7 @@ name|fileTypes
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ExternalFileType
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|setValues
@@ -1245,10 +1269,12 @@ literal|"new"
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"new"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|FILE
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// Show the file type editor:
@@ -1488,13 +1514,13 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|getTableCellRendererComponent (JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+DECL|method|getTableCellRendererComponent (JTable tab, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 specifier|public
 name|Component
 name|getTableCellRendererComponent
 parameter_list|(
 name|JTable
-name|table
+name|tab
 parameter_list|,
 name|Object
 name|value
@@ -1524,7 +1550,7 @@ operator|.
 name|setIcon
 argument_list|(
 operator|(
-name|ImageIcon
+name|Icon
 operator|)
 name|value
 argument_list|)
@@ -1541,6 +1567,15 @@ name|FileTypeTableModel
 extends|extends
 name|AbstractTableModel
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|687769574139355925L
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getColumnCount ()
@@ -1851,6 +1886,15 @@ name|EditExternalFileTypesAction
 extends|extends
 name|MnemonicAwareAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|6828273495822942935L
+decl_stmt|;
 DECL|field|frame
 specifier|private
 name|JabRefFrame
@@ -1882,7 +1926,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Manage external file types"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -1909,7 +1958,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Manage external file types"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this

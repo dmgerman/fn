@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -129,8 +129,6 @@ operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|logic
 operator|.
 name|bibtex
 operator|.
@@ -403,7 +401,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * XMPUtils provide support for reading and writing BibTex data as XMP-Metadata  * in PDF-documents.  *   * @author Christopher Oezbek<oezi@oezi.de>  *   * TODO:  *   * Synchronization  */
+comment|/**  * XMPUtils provide support for reading and writing BibTex data as XMP-Metadata  * in PDF-documents.  *  * @author Christopher Oezbek<oezi@oezi.de>  *  * TODO:  *  * Synchronization  */
 end_comment
 
 begin_class
@@ -412,7 +410,7 @@ specifier|public
 class|class
 name|XMPUtil
 block|{
-comment|/**      * Convenience method for readXMP(File).      *       * @param filename      *            The filename from which to open the file.      * @return BibtexEntryies found in the PDF or an empty list      * @throws IOException      */
+comment|/**      * Convenience method for readXMP(File).      *      * @param filename      *            The filename from which to open the file.      * @return BibtexEntryies found in the PDF or an empty list      * @throws IOException      */
 DECL|method|readXMP (String filename)
 specifier|public
 specifier|static
@@ -441,7 +439,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Try to write the given BibTexEntry in the XMP-stream of the given      * PDF-file.      *       * Throws an IOException if the file cannot be read or written, so the user      * can remove a lock or cancel the operation.      *       * The method will overwrite existing BibTeX-XMP-data, but keep other      * existing metadata.      *       * This is a convenience method for writeXMP(File, BibtexEntry).      *       * @param filename      *            The filename from which to open the file.      * @param entry      *            The entry to write.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws TransformerException      *             If the entry was malformed or unsupported.      * @throws IOException      *             If the file could not be written to or could not be found.      */
+comment|/**      * Try to write the given BibTexEntry in the XMP-stream of the given      * PDF-file.      *      * Throws an IOException if the file cannot be read or written, so the user      * can remove a lock or cancel the operation.      *      * The method will overwrite existing BibTeX-XMP-data, but keep other      * existing metadata.      *      * This is a convenience method for writeXMP(File, BibtexEntry).      *      * @param filename      *            The filename from which to open the file.      * @param entry      *            The entry to write.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws TransformerException      *             If the entry was malformed or unsupported.      * @throws IOException      *             If the file could not be written to or could not be found.      */
 DECL|method|writeXMP (String filename, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -478,7 +476,7 @@ name|database
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Try to read the BibTexEntries from the XMP-stream of the given PDF-file.      *       * @param file      *            The file to read from.      *       * @throws IOException      *             Throws an IOException if the file cannot be read, so the user      *             than remove a lock or cancel the operation.      */
+comment|/**      * Try to read the BibTexEntries from the XMP-stream of the given PDF-file.      *      * @param file      *            The file to read from.      *      * @throws IOException      *             Throws an IOException if the file cannot be read, so the user      *             than remove a lock or cancel the operation.      */
 DECL|method|readXMP (File file)
 specifier|public
 specifier|static
@@ -494,6 +492,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|FileInputStream
 name|is
 init|=
@@ -502,8 +502,7 @@ name|FileInputStream
 argument_list|(
 name|file
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 return|return
 name|XMPUtil
@@ -514,21 +513,8 @@ name|is
 argument_list|)
 return|;
 block|}
-finally|finally
-block|{
-name|is
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
-block|}
-comment|/**      * Try to read the given BibTexEntry from the XMP-stream of the given      * inputstream containing a PDF-file.      *       * @param inputStream      *            The inputstream to read from.      *       * @throws IOException      *             Throws an IOException if the file cannot be read, so the user      *             than remove a lock or cancel the operation.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
+comment|/**      * Try to read the given BibTexEntry from the XMP-stream of the given      * inputstream containing a PDF-file.      *      * @param inputStream      *            The inputstream to read from.      *      * @throws IOException      *             Throws an IOException if the file cannot be read, so the user      *             than remove a lock or cancel the operation.      */
 DECL|method|readXMP (InputStream inputStream)
 specifier|public
 specifier|static
@@ -552,27 +538,22 @@ name|result
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|document
-operator|=
 name|PDDocument
 operator|.
 name|load
 argument_list|(
 name|inputStream
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|document
@@ -751,22 +732,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|document
-operator|!=
-literal|null
-condition|)
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 comment|// return null, if no metadata was found
 if|if
 condition|(
@@ -784,12 +749,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Helper function for retrieving a BibtexEntry from the      * PDDocumentInformation in a PDF file.      *       * To understand how to get hold of a PDDocumentInformation have a look in      * the test cases for XMPUtil.      *       * The BibtexEntry is build by mapping individual fields in the document      * information (like author, title, keywords) to fields in a bibtex entry.      *       * @param di      *            The document information from which to build a BibtexEntry.      *       * @return The bibtex entry found in the document information.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
+comment|/**      * Helper function for retrieving a BibtexEntry from the      * PDDocumentInformation in a PDF file.      *      * To understand how to get hold of a PDDocumentInformation have a look in      * the test cases for XMPUtil.      *      * The BibtexEntry is build by mapping individual fields in the document      * information (like author, title, keywords) to fields in a bibtex entry.      *      * @param di      *            The document information from which to build a BibtexEntry.      *      * @return The bibtex entry found in the document information.      */
 DECL|method|getBibtexEntryFromDocumentInformation ( PDDocumentInformation di)
 specifier|public
 specifier|static
@@ -1028,7 +988,7 @@ return|return
 operator|!
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|isEmpty
@@ -1039,12 +999,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      * Helper function for retrieving a BibtexEntry from the DublinCore metadata      * in a PDF file.      *       * To understand how to get hold of a XMPSchemaDublinCore have a look in the      * test cases for XMPUtil.      *       * The BibtexEntry is build by mapping individual fields in the dublin core      * (like creator, title, subject) to fields in a bibtex entry.      *       * @param dcSchema      *            The document information from which to build a BibtexEntry.      *       * @return The bibtex entry found in the document information.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
+comment|/**      * Helper function for retrieving a BibtexEntry from the DublinCore metadata      * in a PDF file.      *      * To understand how to get hold of a XMPSchemaDublinCore have a look in the      * test cases for XMPUtil.      *      * The BibtexEntry is build by mapping individual fields in the dublin core      * (like creator, title, subject) to fields in a bibtex entry.      *      * @param dcSchema      *            The document information from which to build a BibtexEntry.      *      * @return The bibtex entry found in the document information.      */
 DECL|method|getBibtexEntryFromDublinCore ( XMPSchemaDublinCore dcSchema)
 specifier|public
 specifier|static
@@ -1276,9 +1231,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|dates
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|dates
@@ -1322,7 +1279,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{              }
+block|{
+comment|// Ignored
+block|}
 if|if
 condition|(
 name|c
@@ -1540,7 +1499,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**          * Relation -> bibtexkey          *           * We abuse the relationship attribute to store all other values in the          * bibtex document          */
+comment|/**          * Relation -> bibtexkey          *          * We abuse the relationship attribute to store all other values in the          * bibtex document          */
 name|List
 argument_list|<
 name|String
@@ -1822,9 +1781,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|l
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|l
@@ -1880,7 +1841,7 @@ return|return
 operator|!
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|isEmpty
@@ -1891,7 +1852,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      * Try to write the given BibTexEntry in the XMP-stream of the given      * PDF-file.      *       * Throws an IOException if the file cannot be read or written, so the user      * can remove a lock or cancel the operation.      *       * The method will overwrite existing BibTeX-XMP-data, but keep other      * existing metadata.      *       * This is a convenience method for writeXMP(File, Collection).      *       * @param file      *            The file to write to.      * @param entry      *            The entry to write.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws TransformerException      *             If the entry was malformed or unsupported.      * @throws IOException      *             If the file could not be written to or could not be found.      */
+comment|/**      * Try to write the given BibTexEntry in the XMP-stream of the given      * PDF-file.      *      * Throws an IOException if the file cannot be read or written, so the user      * can remove a lock or cancel the operation.      *      * The method will overwrite existing BibTeX-XMP-data, but keep other      * existing metadata.      *      * This is a convenience method for writeXMP(File, Collection).      *      * @param file      *            The file to write to.      * @param entry      *            The entry to write.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws TransformerException      *             If the entry was malformed or unsupported.      * @throws IOException      *             If the file could not be written to or could not be found.      */
 DECL|method|writeXMP (File file, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -1920,9 +1881,7 @@ name|l
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|l
@@ -1946,7 +1905,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Write the given BibtexEntries as XMP-metadata text to the given stream.      *       * The text that is written to the stream contains a complete XMP-document.      *       * @param bibtexEntries      *            The BibtexEntries to write XMP-metadata for.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws TransformerException      *             Thrown if the bibtexEntries could not transformed to XMP.      * @throws IOException      *             Thrown if an IOException occured while writing to the stream.      *       * @see #toXMP(java.util.Collection, BibtexDatabase) if you don't need strings to be      *      resolved.      */
+comment|/**      * Write the given BibtexEntries as XMP-metadata text to the given stream.      *      * The text that is written to the stream contains a complete XMP-document.      *      * @param bibtexEntries      *            The BibtexEntries to write XMP-metadata for.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws TransformerException      *             Thrown if the bibtexEntries could not transformed to XMP.      * @throws IOException      *             Thrown if an IOException occured while writing to the stream.      *      * @see #toXMP(java.util.Collection, BibtexDatabase) if you don't need strings to be      *      resolved.      */
 DECL|method|toXMP (Collection<BibtexEntry> bibtexEntries, BibtexDatabase database, OutputStream outputStream)
 specifier|private
 specifier|static
@@ -2036,7 +1995,7 @@ name|outputStream
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Convenience method for toXMP(Collection<BibtexEntry>, BibtexDatabase,      * OutputStream) returning a String containing the XMP-metadata of the given      * collection of BibtexEntries.      *       * The resulting metadata string is wrapped as a complete XMP-document.      *       * @param bibtexEntries      *            The BibtexEntries to return XMP-metadata for.       * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @return The XMP representation of the given bibtexEntries.      * @throws TransformerException      *             Thrown if the bibtexEntries could not transformed to XMP.      */
+comment|/**      * Convenience method for toXMP(Collection<BibtexEntry>, BibtexDatabase,      * OutputStream) returning a String containing the XMP-metadata of the given      * collection of BibtexEntries.      *      * The resulting metadata string is wrapped as a complete XMP-document.      *      * @param bibtexEntries      *            The BibtexEntries to return XMP-metadata for.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @return The XMP representation of the given bibtexEntries.      * @throws TransformerException      *             Thrown if the bibtexEntries could not transformed to XMP.      */
 DECL|method|toXMP (Collection<BibtexEntry> bibtexEntries, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -2097,7 +2056,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Will read the XMPMetadata from the given pdf file, closing the file      * afterwards.      *       * @param inputStream      *            The inputStream representing a PDF-file to read the      *            XMPMetadata from.      * @return The XMPMetadata object found in the file or null if none is      *         found.      * @throws IOException      */
+comment|/**      * Will read the XMPMetadata from the given pdf file, closing the file      * afterwards.      *      * @param inputStream      *            The inputStream representing a PDF-file to read the      *            XMPMetadata from.      * @return The XMPMetadata object found in the file or null if none is      *         found.      * @throws IOException      */
 DECL|method|readRawXMP (InputStream inputStream)
 specifier|private
 specifier|static
@@ -2110,22 +2069,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|document
-operator|=
 name|PDDocument
 operator|.
 name|load
 argument_list|(
 name|inputStream
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|document
@@ -2150,22 +2106,6 @@ argument_list|(
 name|document
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|document
-operator|!=
-literal|null
-condition|)
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|getXMPMetadata (PDDocument document)
@@ -2241,7 +2181,7 @@ return|return
 name|meta
 return|;
 block|}
-comment|/**      * Will read the XMPMetadata from the given pdf file, closing the file      * afterwards.      *       * @param file      *            The file to read the XMPMetadata from.      * @return The XMPMetadata object found in the file or null if none is      *         found.      * @throws IOException      */
+comment|/**      * Will read the XMPMetadata from the given pdf file, closing the file      * afterwards.      *      * @param file      *            The file to read the XMPMetadata from.      * @return The XMPMetadata object found in the file or null if none is      *         found.      * @throws IOException      */
 DECL|method|readRawXMP (File file)
 specifier|public
 specifier|static
@@ -2254,6 +2194,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|FileInputStream
 name|is
 init|=
@@ -2262,8 +2204,7 @@ name|FileInputStream
 argument_list|(
 name|file
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 return|return
 name|XMPUtil
@@ -2273,14 +2214,6 @@ argument_list|(
 name|is
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|is
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 DECL|method|writeToDCSchema (XMPSchemaDublinCore dcSchema, BibtexEntry entry, BibtexDatabase database)
@@ -2348,9 +2281,7 @@ name|filters
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -2375,7 +2306,7 @@ name|field
 range|:
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{
@@ -2413,7 +2344,7 @@ argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
-comment|/**                  * Editor -> Contributor                  *                   * Field: dc:contributor                  *                   * Type: bag ProperName                  *                   * Category: External                  *                   * Description: Contributors to the resource (other than the                  * authors).                  *                   * Bibtex-Fields used: editor                  */
+comment|/**                  * Editor -> Contributor                  *                  * Field: dc:contributor                  *                  * Type: bag ProperName                  *                  * Category: External                  *                  * Description: Contributors to the resource (other than the                  * authors).                  *                  * Bibtex-Fields used: editor                  */
 name|AuthorList
 name|list
 init|=
@@ -2467,8 +2398,8 @@ expr_stmt|;
 block|}
 continue|continue;
 block|}
-comment|/**              * ? -> Coverage              *               * Unmapped              *               * dc:coverage Text External The extent or scope of the resource.              */
-comment|/**              * Author -> Creator              *               * Field: dc:creator              *               * Type: seq ProperName              *               * Category: External              *               * Description: The authors of the resource (listed in order of              * precedence, if significant).              *               * Bibtex-Fields used: author              */
+comment|/**              * ? -> Coverage              *              * Unmapped              *              * dc:coverage Text External The extent or scope of the resource.              */
+comment|/**              * Author -> Creator              *              * Field: dc:creator              *              * Type: seq ProperName              *              * Category: External              *              * Description: The authors of the resource (listed in order of              * precedence, if significant).              *              * Bibtex-Fields used: author              */
 if|if
 condition|(
 name|field
@@ -2565,7 +2496,7 @@ literal|"year"
 argument_list|)
 condition|)
 block|{
-comment|/**                  * Year + Month -> Date                  *                   * Field: dc:date                  *                   * Type: seq Date                  *                   * Category: External                  *                   * Description: Date(s) that something interesting happened to                  * the resource.                  *                   * Bibtex-Fields used: year, month                  */
+comment|/**                  * Year + Month -> Date                  *                  * Field: dc:date                  *                  * Type: seq Date                  *                  * Category: External                  *                  * Description: Date(s) that something interesting happened to                  * the resource.                  *                  * Bibtex-Fields used: year, month                  */
 name|String
 name|publicationDate
 init|=
@@ -2595,7 +2526,7 @@ expr_stmt|;
 block|}
 continue|continue;
 block|}
-comment|/**              * Abstract -> Description              *               * Field: dc:description              *               * Type: Lang Alt              *               * Category: External              *               * Description: A textual description of the content of the              * resource. Multiple values may be present for different languages.              *               * Bibtex-Fields used: abstract              */
+comment|/**              * Abstract -> Description              *              * Field: dc:description              *              * Type: Lang Alt              *              * Category: External              *              * Description: A textual description of the content of the              * resource. Multiple values may be present for different languages.              *              * Bibtex-Fields used: abstract              */
 if|if
 condition|(
 name|field
@@ -2625,7 +2556,7 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/**              * DOI -> identifier              *               * Field: dc:identifier              *               * Type: Text              *               * Category: External              *               * Description: Unique identifier of the resource.              *               * Bibtex-Fields used: doi              */
+comment|/**              * DOI -> identifier              *              * Field: dc:identifier              *              * Type: Text              *              * Category: External              *              * Description: Unique identifier of the resource.              *              * Bibtex-Fields used: doi              */
 if|if
 condition|(
 name|field
@@ -2655,8 +2586,8 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/**              * ? -> Language              *               * Unmapped              *               * dc:language bag Locale Internal An unordered array specifying the              * languages used in the resource.              */
-comment|/**              * Publisher -> Publisher              *               * Field: dc:publisher              *               * Type: bag ProperName              *               * Category: External              *               * Description: Publishers.              *               * Bibtex-Fields used: doi              */
+comment|/**              * ? -> Language              *              * Unmapped              *              * dc:language bag Locale Internal An unordered array specifying the              * languages used in the resource.              */
+comment|/**              * Publisher -> Publisher              *              * Field: dc:publisher              *              * Type: bag ProperName              *              * Category: External              *              * Description: Publishers.              *              * Bibtex-Fields used: doi              */
 if|if
 condition|(
 name|field
@@ -2686,9 +2617,9 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/**              * ? -> Rights              *               * Unmapped              *               * dc:rights Lang Alt External Informal rights statement, selected              * by language.              */
-comment|/**              * ? -> Source              *               * Unmapped              *               * dc:source Text External Unique identifier of the work from which              * this resource was derived.              */
-comment|/**              * Keywords -> Subject              *               * Field: dc:subject              *               * Type: bag Text              *               * Category: External              *               * Description: An unordered array of descriptive phrases or              * keywords that specify the topic of the content of the resource.              *               * Bibtex-Fields used: doi              */
+comment|/**              * ? -> Rights              *              * Unmapped              *              * dc:rights Lang Alt External Informal rights statement, selected              * by language.              */
+comment|/**              * ? -> Source              *              * Unmapped              *              * dc:source Text External Unique identifier of the work from which              * this resource was derived.              */
+comment|/**              * Keywords -> Subject              *              * Field: dc:subject              *              * Type: bag Text              *              * Category: External              *              * Description: An unordered array of descriptive phrases or              * keywords that specify the topic of the content of the resource.              *              * Bibtex-Fields used: doi              */
 if|if
 condition|(
 name|field
@@ -2741,7 +2672,7 @@ expr_stmt|;
 block|}
 continue|continue;
 block|}
-comment|/**              * Title -> Title              *               * Field: dc:title              *               * Type: Lang Alt              *               * Category: External              *               * Description: The title of the document, or the name given to the              * resource. Typically, it will be a name by which the resource is              * formally known.              *               * Bibtex-Fields used: title              */
+comment|/**              * Title -> Title              *              * Field: dc:title              *              * Type: Lang Alt              *              * Category: External              *              * Description: The title of the document, or the name given to the              * resource. Typically, it will be a name by which the resource is              * formally known.              *              * Bibtex-Fields used: title              */
 if|if
 condition|(
 name|field
@@ -2771,7 +2702,7 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/**              * bibtextype -> relation              *               * Field: dc:relation              *               * Type: bag Text              *               * Category: External              *               * Description: Relationships to other documents.              *               * Bibtex-Fields used: bibtextype              */
+comment|/**              * bibtextype -> relation              *              * Field: dc:relation              *              * Type: bag Text              *              * Category: External              *              * Description: Relationships to other documents.              *              * Bibtex-Fields used: bibtextype              */
 comment|/**              * All others (including the bibtex key) get packaged in the              * relation attribute              */
 name|String
 name|o
@@ -2797,7 +2728,7 @@ name|o
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * ? -> Format          *           * Unmapped          *           * dc:format MIMEType Internal The file format used when saving the          * resource. Tools and applications should set this property to the save          * format of the data. It may include appropriate qualifiers.          */
+comment|/**          * ? -> Format          *          * Unmapped          *          * dc:format MIMEType Internal The file format used when saving the          * resource. Tools and applications should set this property to the save          * format of the data. It may include appropriate qualifiers.          */
 name|dcSchema
 operator|.
 name|setFormat
@@ -2805,7 +2736,7 @@ argument_list|(
 literal|"application/pdf"
 argument_list|)
 expr_stmt|;
-comment|/**          * Type -> Type          *           * Field: dc:type          *           * Type: bag open Choice          *           * Category: External          *           * Description: A document type; for example, novel, poem, or working          * paper.          *           * Bibtex-Fields used: title          */
+comment|/**          * Type -> Type          *          * Field: dc:type          *          * Type: bag open Choice          *          * Category: External          *          * Description: A document type; for example, novel, poem, or working          * paper.          *          * Bibtex-Fields used: title          */
 name|Object
 name|o
 init|=
@@ -2836,7 +2767,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Try to write the given BibTexEntry as a DublinCore XMP Schema      *       * Existing DublinCore schemas in the document are not modified.      *       * @param document      *            The pdf document to write to.      * @param entry      *            The Bibtex entry that is written as a schema.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws IOException      * @throws TransformerException      */
+comment|/**      * Try to write the given BibTexEntry as a DublinCore XMP Schema      *      * Existing DublinCore schemas in the document are not modified.      *      * @param document      *            The pdf document to write to.      * @param entry      *            The Bibtex entry that is written as a schema.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws IOException      * @throws TransformerException      */
 DECL|method|writeDublinCore (PDDocument document, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -2865,9 +2796,7 @@ name|entries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|entries
@@ -2889,12 +2818,7 @@ name|database
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Try to write the given BibTexEntries as DublinCore XMP Schemas      *       * Existing DublinCore schemas in the document are removed      *       * @param document      *            The pdf document to write to.      * @param entries      *            The Bibtex entries that are written as schemas      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws IOException      * @throws TransformerException      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
+comment|/**      * Try to write the given BibTexEntries as DublinCore XMP Schemas      *      * Existing DublinCore schemas in the document are removed      *      * @param document      *            The pdf document to write to.      * @param entries      *            The Bibtex entries that are written as schemas      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws IOException      * @throws TransformerException      */
 DECL|method|writeDublinCore (PDDocument document, Collection<BibtexEntry> entries, BibtexDatabase database)
 specifier|private
 specifier|static
@@ -3114,7 +3038,7 @@ name|metadataStream
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Try to write the given BibTexEntry in the Document Information (the      * properties of the pdf).      *       * Existing fields values are overriden if the bibtex entry has the      * corresponding value set.      *       * @param document      *            The pdf document to write to.      * @param entry      *            The Bibtex entry that is written into the PDF properties. *      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      */
+comment|/**      * Try to write the given BibTexEntry in the Document Information (the      * properties of the pdf).      *      * Existing fields values are overriden if the bibtex entry has the      * corresponding value set.      *      * @param document      *            The pdf document to write to.      * @param entry      *            The Bibtex entry that is written into the PDF properties. *      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      */
 DECL|method|writeDocumentInformation (PDDocument document, BibtexEntry entry, BibtexDatabase database)
 specifier|private
 specifier|static
@@ -3188,9 +3112,7 @@ name|filters
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -3216,7 +3138,7 @@ name|fields
 init|=
 name|entry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 decl_stmt|;
 for|for
@@ -3462,12 +3384,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Try to write the given BibTexEntry in the XMP-stream of the given      * PDF-file.      *       * Throws an IOException if the file cannot be read or written, so the user      * can remove a lock or cancel the operation.      *       * The method will overwrite existing BibTeX-XMP-data, but keep other      * existing metadata.      *       * @param file      *            The file to write the entries to.      * @param bibtexEntries      *            The entries to write to the file. *      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @param writePDFInfo      *            Write information also in PDF document properties      * @throws TransformerException      *             If the entry was malformed or unsupported.      * @throws IOException      *             If the file could not be written to or could not be found.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
+comment|/**      * Try to write the given BibTexEntry in the XMP-stream of the given      * PDF-file.      *      * Throws an IOException if the file cannot be read or written, so the user      * can remove a lock or cancel the operation.      *      * The method will overwrite existing BibTeX-XMP-data, but keep other      * existing metadata.      *      * @param file      *            The file to write the entries to.      * @param bibtexEntries      *            The entries to write to the file. *      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @param writePDFInfo      *            Write information also in PDF document properties      * @throws TransformerException      *             If the entry was malformed or unsupported.      * @throws IOException      *             If the file could not be written to or could not be found.      */
 DECL|method|writeXMP (File file, Collection<BibtexEntry> bibtexEntries, BibtexDatabase database, boolean writePDFInfo)
 specifier|public
 specifier|static
@@ -3513,15 +3430,11 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|document
-operator|=
 name|PDDocument
 operator|.
 name|load
@@ -3531,7 +3444,8 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|document
@@ -3552,12 +3466,14 @@ if|if
 condition|(
 name|writePDFInfo
 operator|&&
+operator|(
 name|bibtexEntries
 operator|.
 name|size
 argument_list|()
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
 name|XMPUtil
@@ -3818,24 +3734,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|document
-operator|!=
-literal|null
-condition|)
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
-block|}
-block|}
-comment|/**      * Print usage information for the command line tool xmpUtil.      *       * @see XMPUtil#main(String[])      */
+comment|/**      * Print usage information for the command line tool xmpUtil.      *      * @see XMPUtil#main(String[])      */
 DECL|method|usage ()
 specifier|private
 specifier|static
@@ -3961,7 +3861,7 @@ literal|"To report bugs visit http://jabref.sourceforge.net"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Command-line tool for working with XMP-data.      *       * Read or write XMP-metadata from or to pdf file.      *       * Usage:      *<dl>      *<dd>Read from PDF and print as bibtex:</dd>      *<dt>xmpUtil PDF</dt>      *<dd>Read from PDF and print raw XMP:</dd>      *<dt>xmpUtil -x PDF</dt>      *<dd>Write the entry in BIB given by KEY to the PDF:</dd>      *<dt>xmpUtil KEY BIB PDF</dt>      *<dd>Write all entries in BIB to the PDF:</dd>      *<dt>xmpUtil BIB PDF</dt>      *</dl>      *       * @param args      *            Command line strings passed to utility.      * @throws IOException      *             If any of the given files could not be read or written.      * @throws TransformerException      *             If the given BibtexEntry is malformed.      */
+comment|/**      * Command-line tool for working with XMP-data.      *      * Read or write XMP-metadata from or to pdf file.      *      * Usage:      *<dl>      *<dd>Read from PDF and print as bibtex:</dd>      *<dt>xmpUtil PDF</dt>      *<dd>Read from PDF and print raw XMP:</dd>      *<dt>xmpUtil -x PDF</dt>      *<dd>Write the entry in BIB given by KEY to the PDF:</dd>      *<dt>xmpUtil KEY BIB PDF</dt>      *<dd>Write all entries in BIB to the PDF:</dd>      *<dt>xmpUtil BIB PDF</dt>      *</dl>      *      * @param args      *            Command line strings passed to utility.      * @throws IOException      *             If any of the given files could not be read or written.      * @throws TransformerException      *             If the given BibtexEntry is malformed.      */
 DECL|method|main (String[] args)
 specifier|public
 specifier|static
@@ -4116,13 +4016,11 @@ argument_list|)
 condition|)
 block|{
 comment|// Read from bib and write as XMP
-name|ParserResult
-name|result
+try|try
+init|(
+name|FileReader
+name|fr
 init|=
-name|BibtexParser
-operator|.
-name|parse
-argument_list|(
 operator|new
 name|FileReader
 argument_list|(
@@ -4131,6 +4029,16 @@ index|[
 literal|0
 index|]
 argument_list|)
+init|)
+block|{
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+name|fr
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -4191,6 +4099,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -4543,7 +4452,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Will try to read XMP metadata from the given file, returning whether      * metadata was found.      *       * Caution: This method is as expensive as it is reading the actual metadata      * itself from the PDF.      *       * @param is      *            The inputstream to read the PDF from.      * @return whether a BibtexEntry was found in the given PDF.      */
+comment|/**      * Will try to read XMP metadata from the given file, returning whether      * metadata was found.      *      * Caution: This method is as expensive as it is reading the actual metadata      * itself from the PDF.      *      * @param is      *            The inputstream to read the PDF from.      * @return whether a BibtexEntry was found in the given PDF.      */
 DECL|method|hasMetadata (InputStream is)
 specifier|public
 specifier|static

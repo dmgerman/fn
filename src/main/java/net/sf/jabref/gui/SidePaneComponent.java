@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -62,61 +62,11 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
 operator|.
-name|BorderFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|ImageIcon
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JButton
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JToolBar
+name|*
 import|;
 end_import
 
@@ -141,15 +91,6 @@ name|SidePaneComponent
 extends|extends
 name|JXTitledPanel
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|close
 specifier|protected
 specifier|final
@@ -161,10 +102,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"close"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|CLOSE
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|visible
@@ -183,14 +126,14 @@ specifier|protected
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|method|SidePaneComponent (SidePaneManager manager, ImageIcon icon, String title)
+DECL|method|SidePaneComponent (SidePaneManager manager, Icon icon, String title)
 specifier|public
 name|SidePaneComponent
 parameter_list|(
 name|SidePaneManager
 name|manager
 parameter_list|,
-name|ImageIcon
+name|Icon
 name|icon
 parameter_list|,
 name|String
@@ -258,10 +201,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"up"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|UP
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|up
@@ -289,10 +234,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"down"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|DOWN
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|down
@@ -444,7 +391,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *       */
+comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *      */
 DECL|method|setVisibility (boolean vis)
 name|void
 name|setVisibility
@@ -458,7 +405,7 @@ operator|=
 name|vis
 expr_stmt|;
 block|}
-comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *       */
+comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *      */
 DECL|method|hasVisibility ()
 name|boolean
 name|hasVisibility
@@ -500,14 +447,18 @@ specifier|public
 name|void
 name|componentClosing
 parameter_list|()
-block|{      }
+block|{
+comment|// Nothing right now
+block|}
 comment|/**      * Override this method if the component needs to do any actions when opening.      */
 DECL|method|componentOpening ()
 specifier|public
 name|void
 name|componentOpening
 parameter_list|()
-block|{      }
+block|{
+comment|// Nothing right now
+block|}
 annotation|@
 name|Override
 DECL|method|getMinimumSize ()

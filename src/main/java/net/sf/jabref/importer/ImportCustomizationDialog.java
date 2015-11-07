@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2005 Andreas Rudert, based on ExportCustomizationDialog by ??   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   Copyright (C) 2005-2014 JabRef contributors.  */
+comment|/*  Copyright (C) 2005-2015 JabRef contributors.  Copyright (C) 2005 Andreas Rudert, based on ExportCustomizationDialog by ??      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -412,9 +412,10 @@ literal|2
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts a path relative to a base-path into a class name.      *       * @param basePath  base path      * @param path  path that includes base-path as a prefix      * @return  class name      */
+comment|/**      * Converts a path relative to a base-path into a class name.      *      * @param basePath  base path      * @param path  path that includes base-path as a prefix      * @return  class name      */
 DECL|method|pathToClass (File basePath, File path)
 specifier|private
+specifier|static
 name|String
 name|pathToClass
 parameter_list|(
@@ -505,7 +506,7 @@ return|return
 name|className
 return|;
 block|}
-comment|/**      * Adds an importer to the model that underlies the custom importers.      *       * @param importer  importer      */
+comment|/**      * Adds an importer to the model that underlies the custom importers.      *      * @param importer  importer      */
 DECL|method|addOrReplaceImporter (CustomImportList.Importer importer)
 name|void
 name|addOrReplaceImporter
@@ -546,7 +547,7 @@ name|fireTableDataChanged
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *       * @param frame_      * @throws HeadlessException      */
+comment|/**      *      * @param frame_      * @throws HeadlessException      */
 DECL|method|ImportCustomizationDialog (JabRefFrame frame_)
 specifier|public
 name|ImportCustomizationDialog
@@ -780,11 +781,6 @@ operator|.
 name|repaint
 argument_list|()
 expr_stmt|;
-name|frame
-operator|.
-name|setUpImportMenus
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -919,11 +915,6 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-name|ZipFile
-name|zipFile
-init|=
-literal|null
-decl_stmt|;
 if|if
 condition|(
 name|basePath
@@ -932,9 +923,10 @@ literal|null
 condition|)
 block|{
 try|try
-block|{
+init|(
+name|ZipFile
 name|zipFile
-operator|=
+init|=
 operator|new
 name|ZipFile
 argument_list|(
@@ -948,6 +940,37 @@ name|ZipFile
 operator|.
 name|OPEN_READ
 argument_list|)
+init|)
+block|{
+name|ZipFileChooser
+name|zipFileChooser
+init|=
+operator|new
+name|ZipFileChooser
+argument_list|(
+name|importCustomizationDialog
+argument_list|,
+name|zipFile
+argument_list|)
+decl_stmt|;
+name|zipFileChooser
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|customImporterTable
+operator|.
+name|revalidate
+argument_list|()
+expr_stmt|;
+name|customImporterTable
+operator|.
+name|repaint
+argument_list|(
+literal|10
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -960,12 +983,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Could not open Zip-archive: \n"
-operator|+
-name|exc
-operator|.
-name|getMessage
-argument_list|()
+literal|"Could not open Zip-archive."
 argument_list|,
 name|exc
 argument_list|)
@@ -1003,10 +1021,14 @@ name|NoClassDefFoundError
 name|exc
 parameter_list|)
 block|{
-name|exc
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|info
+argument_list|(
+literal|"Could not instantiate Zip-archive reader."
+argument_list|,
+name|exc
+argument_list|)
 expr_stmt|;
 name|JOptionPane
 operator|.
@@ -1034,49 +1056,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-if|if
-condition|(
-name|zipFile
-operator|!=
-literal|null
-condition|)
-block|{
-name|ZipFileChooser
-name|zipFileChooser
-init|=
-operator|new
-name|ZipFileChooser
-argument_list|(
-name|importCustomizationDialog
-argument_list|,
-name|zipFile
-argument_list|)
-decl_stmt|;
-name|zipFileChooser
-operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|customImporterTable
-operator|.
-name|revalidate
-argument_list|()
-expr_stmt|;
-name|customImporterTable
-operator|.
-name|repaint
-argument_list|(
-literal|10
-argument_list|)
-expr_stmt|;
-name|frame
-operator|.
-name|setUpImportMenus
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}
@@ -1341,11 +1320,6 @@ operator|.
 name|repaint
 argument_list|()
 expr_stmt|;
-name|frame
-operator|.
-name|setUpImportMenus
-argument_list|()
-expr_stmt|;
 block|}
 else|else
 block|{
@@ -1416,21 +1390,6 @@ name|JButton
 name|helpButton
 init|=
 operator|new
-name|JButton
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Help"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|helpButton
-operator|.
-name|addActionListener
-argument_list|(
-operator|new
 name|HelpAction
 argument_list|(
 name|frame
@@ -1440,11 +1399,11 @@ argument_list|,
 name|GUIGlobals
 operator|.
 name|importCustomizationHelp
-argument_list|,
-literal|"Help"
 argument_list|)
-argument_list|)
-expr_stmt|;
+operator|.
+name|getIconButton
+argument_list|()
+decl_stmt|;
 name|ImportTableModel
 name|tableModel
 init|=

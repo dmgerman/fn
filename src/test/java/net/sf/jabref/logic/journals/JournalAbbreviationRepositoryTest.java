@@ -15,18 +15,6 @@ package|;
 end_package
 
 begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -35,16 +23,6 @@ operator|.
 name|Assert
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -470,6 +448,92 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|testDuplicatesIsoOnly ()
+specifier|public
+name|void
+name|testDuplicatesIsoOnly
+parameter_list|()
+block|{
+name|JournalAbbreviationRepository
+name|repository
+init|=
+operator|new
+name|JournalAbbreviationRepository
+argument_list|()
+decl_stmt|;
+name|repository
+operator|.
+name|addEntry
+argument_list|(
+operator|new
+name|Abbreviation
+argument_list|(
+literal|"Old Long Name"
+argument_list|,
+literal|"L. N."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|repository
+operator|.
+name|addEntry
+argument_list|(
+operator|new
+name|Abbreviation
+argument_list|(
+literal|"New Long Name"
+argument_list|,
+literal|"L. N."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|2
+argument_list|,
+name|repository
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"L N"
+argument_list|,
+name|repository
+operator|.
+name|getNextAbbreviation
+argument_list|(
+literal|"L. N."
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|"WRONG"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"New Long Name"
+argument_list|,
+name|repository
+operator|.
+name|getNextAbbreviation
+argument_list|(
+literal|"L N"
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|"WRONG"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|testDuplicateKeys ()
 specifier|public
 name|void
@@ -576,52 +640,6 @@ name|first
 argument_list|()
 operator|.
 name|toPropertiesLine
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|testParsing ()
-specifier|public
-name|void
-name|testParsing
-parameter_list|()
-block|{
-name|JournalAbbreviationRepository
-name|repository
-init|=
-operator|new
-name|JournalAbbreviationRepository
-argument_list|()
-decl_stmt|;
-name|repository
-operator|.
-name|readJournalListFromResource
-argument_list|(
-name|Globals
-operator|.
-name|JOURNALS_FILE_BUILTIN
-argument_list|)
-expr_stmt|;
-name|repository
-operator|.
-name|readJournalListFromResource
-argument_list|(
-name|Globals
-operator|.
-name|JOURNALS_IEEE_INTERNAL_LIST
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-operator|!
-name|repository
-operator|.
-name|getAbbreviations
-argument_list|()
-operator|.
-name|isEmpty
 argument_list|()
 argument_list|)
 expr_stmt|;

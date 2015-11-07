@@ -1082,7 +1082,7 @@ name|importFormatsList
 operator|+
 name|outFormatsList
 operator|+
-literal|"\nPlease report issues at http://sourceforge.net/p/jabref/bugs/"
+literal|"\nPlease report issues at https://github.com/JabRef/jabref/issues"
 decl_stmt|;
 name|HelpFormatter
 name|formatter

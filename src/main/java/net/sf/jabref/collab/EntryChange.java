@@ -120,8 +120,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
 name|bibtex
 operator|.
 name|DuplicateCheck
@@ -287,7 +285,7 @@ name|addAll
 argument_list|(
 name|memEntry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -297,7 +295,7 @@ name|addAll
 argument_list|(
 name|tmpEntry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -307,7 +305,7 @@ name|addAll
 argument_list|(
 name|diskEntry
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 argument_list|)
 expr_stmt|;

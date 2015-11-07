@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -268,7 +268,39 @@ name|logic
 operator|.
 name|labelPattern
 operator|.
-name|LabelPattern
+name|AbstractLabelPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelPattern
+operator|.
+name|DatabaseLabelPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelPattern
+operator|.
+name|GlobalLabelPattern
 import|;
 end_import
 
@@ -382,11 +414,7 @@ name|textFields
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|JTextField
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|LabelPatternPanel (HelpDialog helpDiag)
@@ -408,7 +436,12 @@ name|GUIGlobals
 operator|.
 name|labelPatternHelp
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Help on key patterns"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|buildGUI
@@ -988,10 +1021,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"helpSmall"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|HELP
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|hlb
@@ -1468,7 +1503,7 @@ name|e
 parameter_list|)
 block|{
 name|JTextField
-name|tf
+name|tField
 init|=
 name|textFields
 operator|.
@@ -1480,7 +1515,7 @@ name|getActionCommand
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|tf
+name|tField
 operator|.
 name|setText
 argument_list|(
@@ -1502,20 +1537,16 @@ return|return
 name|tf
 return|;
 block|}
-comment|/**      * @return the LabelPattern generated from the text fields       */
-DECL|method|getLabelPattern ()
-specifier|public
-name|LabelPattern
-name|getLabelPattern
-parameter_list|()
-block|{
-name|LabelPattern
+comment|/**      * fill the given LabelPattern by values generated from the text fields      */
+DECL|method|fillPatternUsingPanelData (AbstractLabelPattern keypatterns)
+specifier|private
+name|void
+name|fillPatternUsingPanelData
+parameter_list|(
+name|AbstractLabelPattern
 name|keypatterns
-init|=
-operator|new
-name|LabelPattern
-argument_list|()
-decl_stmt|;
+parameter_list|)
+block|{
 comment|// each entry type
 for|for
 control|(
@@ -1598,17 +1629,58 @@ name|text
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|getLabelPatternAsGlobalLabelPattern ()
+specifier|protected
+name|GlobalLabelPattern
+name|getLabelPatternAsGlobalLabelPattern
+parameter_list|()
+block|{
+name|GlobalLabelPattern
+name|res
+init|=
+operator|new
+name|GlobalLabelPattern
+argument_list|()
+decl_stmt|;
+name|fillPatternUsingPanelData
+argument_list|(
+name|res
+argument_list|)
+expr_stmt|;
 return|return
-name|keypatterns
+name|res
 return|;
 block|}
-comment|/**      * Fills the current values to the text fields      *       * @param keypatterns the LabelPattern to use as initial value      */
-DECL|method|setValues (LabelPattern keypatterns)
+DECL|method|getLabelPatternAsDatabaseLabelPattern ()
+specifier|public
+name|DatabaseLabelPattern
+name|getLabelPatternAsDatabaseLabelPattern
+parameter_list|()
+block|{
+name|DatabaseLabelPattern
+name|res
+init|=
+operator|new
+name|DatabaseLabelPattern
+argument_list|()
+decl_stmt|;
+name|fillPatternUsingPanelData
+argument_list|(
+name|res
+argument_list|)
+expr_stmt|;
+return|return
+name|res
+return|;
+block|}
+comment|/**      * Fills the current values to the text fields      *      * @param keypatterns the LabelPattern to use as initial value      */
+DECL|method|setValues (AbstractLabelPattern keypatterns)
 specifier|public
 name|void
 name|setValues
 parameter_list|(
-name|LabelPattern
+name|AbstractLabelPattern
 name|keypatterns
 parameter_list|)
 block|{
@@ -1680,8 +1752,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setValue (JTextField tf, String fieldName, LabelPattern keypatterns)
+DECL|method|setValue (JTextField tf, String fieldName, AbstractLabelPattern keypatterns)
 specifier|private
+specifier|static
 name|void
 name|setValue
 parameter_list|(
@@ -1691,7 +1764,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|LabelPattern
+name|AbstractLabelPattern
 name|keypatterns
 parameter_list|)
 block|{
@@ -1715,7 +1788,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|//System.out.println(":: "+_keypatterns.getValue(fieldName).get(0).toString());
 name|tf
 operator|.
 name|setText

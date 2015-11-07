@@ -404,7 +404,13 @@ argument_list|(
 name|this
 argument_list|)
 decl_stmt|;
-DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List<String> fields, EntryEditor parent, boolean addKeyField, boolean compressed, String name)
+DECL|field|tabTitle
+specifier|private
+specifier|final
+name|String
+name|tabTitle
+decl_stmt|;
+DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List<String> fields, EntryEditor parent, boolean addKeyField, boolean compressed, String tabTitle)
 specifier|public
 name|EntryEditorTab
 parameter_list|(
@@ -430,7 +436,7 @@ name|boolean
 name|compressed
 parameter_list|,
 name|String
-name|name
+name|tabTitle
 parameter_list|)
 block|{
 if|if
@@ -477,6 +483,12 @@ name|parent
 operator|=
 name|parent
 expr_stmt|;
+name|this
+operator|.
+name|tabTitle
+operator|=
+name|tabTitle
+expr_stmt|;
 name|setupPanel
 argument_list|(
 name|frame
@@ -487,7 +499,7 @@ name|addKeyField
 argument_list|,
 name|compressed
 argument_list|,
-name|name
+name|tabTitle
 argument_list|)
 expr_stmt|;
 comment|/*          * The following line makes sure focus cycles inside tab instead of          * being lost to other parts of the frame:          */
@@ -820,6 +832,15 @@ name|prevTab
 argument_list|)
 expr_stmt|;
 name|panel
+operator|.
+name|setName
+argument_list|(
+name|title
+argument_list|)
+expr_stmt|;
+comment|// Use the title for the scrollPane, too.
+comment|// This enables the correct execution of EntryEditor.setVisiblePanel(String name).
+name|scrollPane
 operator|.
 name|setName
 argument_list|(
@@ -1569,6 +1590,36 @@ operator|=
 name|fieldEditor
 expr_stmt|;
 block|}
+DECL|method|setActive (String fieldName)
+specifier|public
+name|void
+name|setActive
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|)
+block|{
+if|if
+condition|(
+name|editors
+operator|.
+name|containsKey
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+name|activeField
+operator|=
+name|editors
+operator|.
+name|get
+argument_list|(
+name|fieldName
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|getActive ()
 specifier|public
 name|FieldEditor
@@ -1804,6 +1855,24 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
+name|int
+name|textLength
+init|=
+name|fieldEditor
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|length
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|initialCaretPosition
+operator|<
+name|textLength
+condition|)
+block|{
 operator|(
 operator|(
 name|JTextComponent
@@ -1816,6 +1885,22 @@ argument_list|(
 name|initialCaretPosition
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+operator|(
+operator|(
+name|JTextComponent
+operator|)
+name|fieldEditor
+operator|)
+operator|.
+name|setCaretPosition
+argument_list|(
+name|textLength
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -1951,6 +2036,16 @@ parameter_list|()
 block|{
 return|return
 name|parent
+return|;
+block|}
+DECL|method|getTabTitle ()
+specifier|public
+name|String
+name|getTabTitle
+parameter_list|()
+block|{
+return|return
+name|tabTitle
 return|;
 block|}
 comment|/**      * Set up key bindings and focus listener for the FieldEditor.      *      * @param component      */

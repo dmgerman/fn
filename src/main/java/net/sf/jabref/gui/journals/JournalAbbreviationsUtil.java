@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.gui.journals
 package|package
@@ -54,7 +58,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|journals
+operator|.
+name|Abbreviation
 import|;
 end_import
 
@@ -70,7 +78,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|Abbreviation
+name|Abbreviations
 import|;
 end_import
 
@@ -308,7 +316,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|Globals
+name|Abbreviations
 operator|.
 name|journalAbbrev
 operator|.
@@ -392,7 +400,7 @@ name|currentText
 parameter_list|)
 block|{
 return|return
-name|Globals
+name|Abbreviations
 operator|.
 name|journalAbbrev
 operator|.
@@ -520,7 +528,7 @@ name|boolean
 name|isCellEditable
 parameter_list|(
 name|int
-name|row
+name|row1
 parameter_list|,
 name|int
 name|column

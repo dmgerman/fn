@@ -272,12 +272,9 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Error extracting resource: "
-operator|+
+literal|"Error extracting resource."
+argument_list|,
 name|ex
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

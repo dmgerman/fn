@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -42,7 +42,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|DefaultFormBuilder
+name|FormBuilder
 import|;
 end_import
 
@@ -222,9 +222,7 @@ name|cbs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|JCheckBox
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|okPressed
@@ -300,24 +298,28 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|DefaultFormBuilder
+name|FormBuilder
 name|b
 init|=
-operator|new
-name|DefaultFormBuilder
+name|FormBuilder
+operator|.
+name|create
+argument_list|()
+operator|.
+name|layout
 argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
 literal|"left:pref, 4dlu, fill:pref"
 argument_list|,
-literal|""
+literal|"p"
 argument_list|)
 argument_list|)
 decl_stmt|;
 name|b
 operator|.
-name|append
+name|add
 argument_list|(
 operator|new
 name|JLabel
@@ -333,14 +335,16 @@ literal|": "
 operator|+
 name|key
 argument_list|)
+argument_list|)
+operator|.
+name|xyw
+argument_list|(
+literal|1
+argument_list|,
+literal|1
 argument_list|,
 literal|3
 argument_list|)
-expr_stmt|;
-name|b
-operator|.
-name|nextLine
-argument_list|()
 expr_stmt|;
 name|b
 operator|.
@@ -367,6 +371,11 @@ name|boolean
 name|first
 init|=
 literal|true
+decl_stmt|;
+name|int
+name|row
+init|=
+literal|3
 decl_stmt|;
 for|for
 control|(
@@ -399,9 +408,23 @@ comment|//pan.add(cb, BorderLayout.NORTH);
 comment|//cb.add(new JPanel(), BorderLayout.CENTER);
 name|b
 operator|.
-name|append
+name|appendRows
+argument_list|(
+literal|"1dlu, p"
+argument_list|)
+expr_stmt|;
+name|b
+operator|.
+name|add
 argument_list|(
 name|cb
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|1
+argument_list|,
+name|row
 argument_list|)
 expr_stmt|;
 name|PreviewPanel
@@ -441,7 +464,7 @@ expr_stmt|;
 comment|//pp.setBorder(BorderFactory.createEtchedBorder());
 name|b
 operator|.
-name|append
+name|add
 argument_list|(
 operator|new
 name|JScrollPane
@@ -449,11 +472,17 @@ argument_list|(
 name|pp
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|b
 operator|.
-name|nextLine
-argument_list|()
+name|xy
+argument_list|(
+literal|3
+argument_list|,
+name|row
+argument_list|)
+expr_stmt|;
+name|row
+operator|+=
+literal|2
 expr_stmt|;
 name|cbs
 operator|.

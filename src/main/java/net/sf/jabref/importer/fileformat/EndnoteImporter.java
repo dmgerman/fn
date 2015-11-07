@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -87,20 +87,6 @@ operator|.
 name|regex
 operator|.
 name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|BibtexFields
 import|;
 end_import
 
@@ -358,9 +344,7 @@ name|bibitems
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|StringBuilder
@@ -501,11 +485,7 @@ name|hm
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -594,7 +574,7 @@ condition|)
 block|{
 continue|continue;
 block|}
-comment|/*                    * Details of Refer format for Journal Article and Book:                    *                    * Generic Ref Journal Article Book Code Author %A Author Author Year %D                    * Year Year Title %T Title Title Secondary Author %E Series Editor                    * Secondary Title %B Journal Series Title Place Published %C City                    * Publisher %I Publisher Volume %V Volume Volume Number of Volumes %6                    * Number of Volumes Number %N Issue Pages %P Pages Number of Pages                    * Edition %7 Edition Subsidiary Author %? Translator Alternate Title %J                    * Alternate Journal Label %F Label Label Keywords %K Keywords Keywords                    * Abstract %X Abstract Abstract Notes %O Notes Notes                    */
+comment|/*                  * Details of Refer format for Journal Article and Book:                  *                  * Generic Ref Journal Article Book Code Author %A Author Author Year %D                  * Year Year Title %T Title Title Secondary Author %E Series Editor                  * Secondary Title %B Journal Series Title Place Published %C City                  * Publisher %I Publisher Volume %V Volume Volume Number of Volumes %6                  * Number of Volumes Number %N Issue Pages %P Pages Number of Pages                  * Edition %7 Edition Subsidiary Author %? Translator Alternate Title %J                  * Alternate Journal Label %F Label Label Keywords %K Keywords Keywords                  * Abstract %X Abstract Abstract Notes %O Notes Notes                  */
 name|String
 name|prefix
 init|=
@@ -1501,6 +1481,7 @@ comment|//if pages missing and article number given, use the article number
 if|if
 condition|(
 operator|(
+operator|(
 name|hm
 operator|.
 name|get
@@ -1509,6 +1490,7 @@ literal|"pages"
 argument_list|)
 operator|==
 literal|null
+operator|)
 operator|||
 name|hm
 operator|.
@@ -1548,8 +1530,6 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|BibtexFields
-operator|.
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,
 name|BibtexEntryTypes
@@ -1575,7 +1555,7 @@ condition|(
 operator|!
 name|b
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 operator|.
 name|isEmpty
@@ -1598,6 +1578,7 @@ block|}
 comment|/**      * We must be careful about the author names, since they can be presented differently      * by different sources. Normally each %A tag brings one name, and we get the authors      * separated by " and ". This is the correct behaviour.      * One source lists the names separated by comma, with a comma at the end. We can detect      * this format and fix it.      * @param s The author string      * @return The fixed author string      */
 DECL|method|fixAuthor (String s)
 specifier|private
+specifier|static
 name|String
 name|fixAuthor
 parameter_list|(
@@ -1645,12 +1626,14 @@ if|if
 condition|(
 name|index
 operator|==
+operator|(
 name|s
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|String

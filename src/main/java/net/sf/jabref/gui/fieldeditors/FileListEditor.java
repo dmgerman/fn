@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -102,7 +102,29 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Files
 import|;
 end_import
 
@@ -272,7 +294,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|DefaultFormBuilder
+name|FormBuilder
 import|;
 end_import
 
@@ -330,6 +352,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|actions
+operator|.
+name|Actions
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|entryeditor
 operator|.
 name|EntryEditor
@@ -349,6 +387,24 @@ operator|.
 name|l10n
 operator|.
 name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|io
+operator|.
+name|FileUtil
 import|;
 end_import
 
@@ -394,11 +450,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|util
-operator|.
-name|io
+name|desktop
 operator|.
 name|JabRefDesktop
 import|;
@@ -649,10 +703,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"add"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|ADD_NOBOX
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|add
@@ -675,10 +731,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"remove"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|REMOVE_NOBOX
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|remove
@@ -701,10 +759,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"up"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|UP
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|JButton
@@ -715,10 +775,12 @@ name|JButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"down"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|DOWN
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|auto
@@ -971,11 +1033,15 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|DefaultFormBuilder
+name|FormBuilder
 name|builder
 init|=
-operator|new
-name|DefaultFormBuilder
+name|FormBuilder
+operator|.
+name|create
+argument_list|()
+operator|.
+name|layout
 argument_list|(
 operator|new
 name|FormLayout
@@ -988,44 +1054,86 @@ argument_list|)
 decl_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|up
 argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|1
+argument_list|,
+literal|1
+argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|add
 argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|3
+argument_list|,
+literal|1
+argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|auto
 argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|5
+argument_list|,
+literal|1
+argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|down
 argument_list|)
-expr_stmt|;
-name|builder
 operator|.
-name|append
+name|xy
 argument_list|(
-name|remove
+literal|1
+argument_list|,
+literal|2
 argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
+argument_list|(
+name|remove
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|3
+argument_list|,
+literal|2
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|add
 argument_list|(
 name|download
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|5
+argument_list|,
+literal|2
 argument_list|)
 expr_stmt|;
 name|panel
@@ -1531,6 +1639,163 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|JMenuItem
+name|deleteFile
+init|=
+operator|new
+name|JMenuItem
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Delete local file"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|menu
+operator|.
+name|add
+argument_list|(
+name|deleteFile
+argument_list|)
+expr_stmt|;
+name|deleteFile
+operator|.
+name|addActionListener
+argument_list|(
+operator|new
+name|ActionListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+name|int
+name|row
+init|=
+name|getSelectedRow
+argument_list|()
+decl_stmt|;
+comment|// no selection
+if|if
+condition|(
+name|row
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+return|return;
+block|}
+name|FileListEntry
+name|entry
+init|=
+name|tableModel
+operator|.
+name|getEntry
+argument_list|(
+name|row
+argument_list|)
+decl_stmt|;
+comment|// null if file does not exist
+name|File
+name|file
+init|=
+name|FileUtil
+operator|.
+name|expandFilename
+argument_list|(
+name|metaData
+argument_list|,
+name|entry
+operator|.
+name|getLink
+argument_list|()
+argument_list|)
+decl_stmt|;
+comment|// transactional delete and unlink
+try|try
+block|{
+if|if
+condition|(
+name|file
+operator|!=
+literal|null
+condition|)
+block|{
+name|Files
+operator|.
+name|delete
+argument_list|(
+name|file
+operator|.
+name|toPath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|removeEntries
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|frame
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"File permission error"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Cannot delete file"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"File permission error while deleting: "
+operator|+
+name|file
+operator|.
+name|toPath
+argument_list|()
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|openSelectedFile ()
 specifier|private
@@ -1611,10 +1876,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Cannot open selected file."
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2042,7 +2311,7 @@ name|toIdx
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Open an editor for this entry.      * @param entry The entry to edit.      * @param openBrowse True to indicate that a Browse dialog should be immediately opened.      * @return true if the edit was accepted, false if it was cancelled.      */
+comment|/**      * Open an editor for this entry.      *      * @param entry      The entry to edit.      * @param openBrowse True to indicate that a Browse dialog should be immediately opened.      * @return true if the edit was accepted, false if it was cancelled.      */
 DECL|method|editListEntry (FileListEntry entry, boolean openBrowse)
 specifier|private
 name|boolean
@@ -2147,8 +2416,9 @@ operator|.
 name|getEntry
 argument_list|()
 decl_stmt|;
+comment|// filesystem lookup
 name|JDialog
-name|diag
+name|dialog
 init|=
 operator|new
 name|JDialog
@@ -2250,11 +2520,32 @@ literal|"No files found."
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// auto download file as no file found before
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|.
+name|runCommand
+argument_list|(
+name|Actions
+operator|.
+name|DOWNLOAD_FULL_TEXT
+argument_list|)
+expr_stmt|;
 block|}
+comment|// reset
+name|auto
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|,
-name|diag
+name|dialog
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2386,14 +2677,18 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Cannot download."
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This is the callback method that the DownloadExternalFile class uses to report the result      * of a download operation. This call may never come, if the user cancelled the operation.      * @param file The FileListEntry linking to the resulting local file.      */
+comment|/**      * This is the callback method that the DownloadExternalFile class uses to report the result      * of a download operation. This call may never come, if the user cancelled the operation.      *      * @param file The FileListEntry linking to the resulting local file.      */
 annotation|@
 name|Override
 DECL|method|downloadComplete (FileListEntry file)
@@ -2633,7 +2928,7 @@ specifier|public
 name|void
 name|undo
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|redo ()
@@ -2641,7 +2936,7 @@ specifier|public
 name|void
 name|redo
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
@@ -2652,7 +2947,7 @@ parameter_list|(
 name|AutoCompleteListener
 name|listener
 parameter_list|)
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|clearAutoCompleteSuggestion ()
@@ -2660,7 +2955,7 @@ specifier|public
 name|void
 name|clearAutoCompleteSuggestion
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|setActiveBackgroundColor ()
@@ -2668,7 +2963,7 @@ specifier|public
 name|void
 name|setActiveBackgroundColor
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|setValidBackgroundColor ()
@@ -2676,7 +2971,7 @@ specifier|public
 name|void
 name|setValidBackgroundColor
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|setInvalidBackgroundColor ()
@@ -2684,7 +2979,7 @@ specifier|public
 name|void
 name|setInvalidBackgroundColor
 parameter_list|()
-block|{     }
+block|{}
 annotation|@
 name|Override
 DECL|method|updateFontColor ()
@@ -2692,7 +2987,7 @@ specifier|public
 name|void
 name|updateFontColor
 parameter_list|()
-block|{     }
+block|{}
 block|}
 end_class
 

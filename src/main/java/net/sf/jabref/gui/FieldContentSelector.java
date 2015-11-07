@@ -262,6 +262,9 @@ DECL|field|comboBox
 specifier|private
 specifier|final
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|comboBox
 decl_stmt|;
 DECL|field|editor
@@ -374,6 +377,9 @@ name|comboBox
 operator|=
 operator|new
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 block|{
 annotation|@

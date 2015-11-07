@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* PdfContentImporter is part of JabRef.  Copyright (C) 2011 Oliver Kopp  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA or see http://www.gnu.org/licenses/gpl-2.0.html */
+comment|/* Copyright (C) 2011 Oliver Kopp    Copyright (C) 2015 JabRef contributors. PdfContentImporter is part of JabRef.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA or see http://www.gnu.org/licenses/gpl-2.0.html */
 end_comment
 
 begin_package
@@ -273,7 +273,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PdfContentImporter parses data of the first page of the PDF and creates a BibTeX entry.  *   * Currently, Springer and IEEE formats are supported.  *   * Integrating XMP support is future work  *   * @author koppor  *  */
+comment|/**  * PdfContentImporter parses data of the first page of the PDF and creates a BibTeX entry.  *  * Currently, Springer and IEEE formats are supported.  *  * Integrating XMP support is future work  *  * @author koppor  *  */
 end_comment
 
 begin_class
@@ -355,9 +355,10 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Removes all non-letter characters at the end      *       * EXCEPTION: a closing bracket is NOT removed      *       * @param input      * @return      * TODO Additionally replace multiple subsequent spaces by one space      */
+comment|/**      * Removes all non-letter characters at the end      *      * EXCEPTION: a closing bracket is NOT removed      *      * @param input      * @return      * TODO Additionally replace multiple subsequent spaces by one space      */
 DECL|method|removeNonLettersAtEnd (String input)
 specifier|private
+specifier|static
 name|String
 name|removeNonLettersAtEnd
 parameter_list|(
@@ -409,9 +410,11 @@ argument_list|(
 name|lastC
 argument_list|)
 operator|&&
+operator|(
 name|lastC
 operator|!=
 literal|')'
+operator|)
 condition|)
 block|{
 comment|// if there is an asterix, a dot or something else at the end: remove it
@@ -466,6 +469,7 @@ return|;
 block|}
 DECL|method|streamlineNames (String names)
 specifier|private
+specifier|static
 name|String
 name|streamlineNames
 parameter_list|(
@@ -778,13 +782,17 @@ argument_list|(
 literal|"et"
 argument_list|)
 operator|&&
+operator|(
 name|splitNames
 operator|.
 name|length
 operator|>
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
+operator|)
 operator|&&
 name|splitNames
 index|[
@@ -961,6 +969,7 @@ return|;
 block|}
 DECL|method|streamlineTitle (String title)
 specifier|private
+specifier|static
 name|String
 name|streamlineTitle
 parameter_list|(
@@ -977,6 +986,7 @@ return|;
 block|}
 DECL|method|isYear (String yearStr)
 specifier|private
+specifier|static
 name|boolean
 name|isYear
 parameter_list|(
@@ -1036,9 +1046,7 @@ name|res
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 literal|1
 argument_list|)
@@ -1191,7 +1199,7 @@ block|{
 comment|// A Doi was found in the text
 comment|// We do NO parsing of the text, but use the Doi fetcher
 name|ImportInspector
-name|i
+name|iI
 init|=
 operator|new
 name|ImportInspector
@@ -1203,7 +1211,9 @@ specifier|public
 name|void
 name|toFront
 parameter_list|()
-block|{                     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1216,7 +1226,9 @@ parameter_list|,
 name|int
 name|max
 parameter_list|)
-block|{                     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1246,7 +1258,7 @@ name|processQuery
 argument_list|(
 name|doi
 argument_list|,
-name|i
+name|iI
 argument_list|,
 name|status
 argument_list|)
@@ -1491,11 +1503,13 @@ literal|null
 expr_stmt|;
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|split
 operator|.
 name|length
+operator|)
 operator|&&
 operator|!
 name|split
@@ -1595,6 +1609,7 @@ index|]
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|curString
 operator|.
 name|length
@@ -1604,6 +1619,7 @@ literal|"Abstract"
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|&&
 name|curString
 operator|.
@@ -1674,11 +1690,13 @@ comment|// fillCurStringWithNonEmptyLines() cannot be used as that uses " " as l
 comment|// whereas we need linebreak as separator
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|split
 operator|.
 name|length
+operator|)
 operator|&&
 operator|!
 name|split
@@ -1724,6 +1742,7 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|curString
 operator|.
 name|length
@@ -1733,6 +1752,7 @@ literal|"Keywords"
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|&&
 name|curString
 operator|.
@@ -1918,13 +1938,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|pos
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|publisher
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 comment|// looks like a Springer last line
@@ -2133,13 +2157,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|delimiter
 operator|==
 literal|':'
+operator|)
 operator|||
+operator|(
 name|delimiter
 operator|==
 literal|' '
+operator|)
 condition|)
 block|{
 name|pos
@@ -2193,9 +2221,11 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|publisher
 operator|==
 literal|null
+operator|)
 operator|&&
 name|curString
 operator|.
@@ -2248,10 +2278,13 @@ literal|2
 expr_stmt|;
 while|while
 condition|(
+operator|(
 name|pos
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|curString
 operator|.
 name|charAt
@@ -2260,6 +2293,7 @@ name|pos
 argument_list|)
 operator|!=
 literal|' '
+operator|)
 condition|)
 block|{
 name|pos
@@ -2342,6 +2376,7 @@ name|editor
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TODO: Set the institution field during parsing
 if|if
 condition|(
 name|institution
@@ -2684,7 +2719,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * PDFTextStripper normally does NOT produce multiple empty lines       * (besides at strange PDFs). These strange PDFs are handled here:      * proceed to next non-empty line      */
+comment|/**      * PDFTextStripper normally does NOT produce multiple empty lines      * (besides at strange PDFs). These strange PDFs are handled here:      * proceed to next non-empty line      */
 DECL|method|proceedToNextNonEmptyLine ()
 specifier|private
 name|void
@@ -2693,11 +2728,13 @@ parameter_list|()
 block|{
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|split
 operator|.
 name|length
+operator|)
 operator|&&
 name|split
 index|[
@@ -2718,7 +2755,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Fill curString with lines until "" is found      * No trailing space is added      * i is advanced to the next non-empty line (ignoring white space)      *       * Lines containing only white spaces are ignored,      * but NOT considered as ""      *       * Uses GLOBAL variables split, curLine, i      */
+comment|/**      * Fill curString with lines until "" is found      * No trailing space is added      * i is advanced to the next non-empty line (ignoring white space)      *      * Lines containing only white spaces are ignored,      * but NOT considered as ""      *      * Uses GLOBAL variables split, curLine, i      */
 DECL|method|fillCurStringWithNonEmptyLines ()
 specifier|private
 name|void
@@ -2735,11 +2772,13 @@ argument_list|()
 expr_stmt|;
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|split
 operator|.
 name|length
+operator|)
 operator|&&
 operator|!
 name|split
@@ -2816,7 +2855,7 @@ name|proceedToNextNonEmptyLine
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * resets curString      * curString now contains the last block (until "" reached)      * Trailing space is added      *       * invariant before/after: i points to line before the last handled block      */
+comment|/**      * resets curString      * curString now contains the last block (until "" reached)      * Trailing space is added      *      * invariant before/after: i points to line before the last handled block      */
 DECL|method|readLastBlock ()
 specifier|private
 name|void
@@ -2825,9 +2864,11 @@ parameter_list|()
 block|{
 while|while
 condition|(
+operator|(
 name|i
 operator|>=
 literal|0
+operator|)
 operator|&&
 name|split
 index|[
@@ -2856,9 +2897,11 @@ decl_stmt|;
 comment|// find beginning
 while|while
 condition|(
+operator|(
 name|i
 operator|>=
 literal|0
+operator|)
 operator|&&
 operator|!
 name|split

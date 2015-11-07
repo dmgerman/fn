@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -180,7 +180,7 @@ name|logic
 operator|.
 name|labelPattern
 operator|.
-name|LabelPattern
+name|GlobalLabelPattern
 import|;
 end_import
 
@@ -642,33 +642,13 @@ operator|.
 name|updateDefaultPattern
 argument_list|()
 expr_stmt|;
-comment|// fetch the old parent from the currently stored patterns
-name|LabelPattern
-name|defKeyPattern
-init|=
-name|prefs
-operator|.
-name|getKeyPattern
-argument_list|()
-operator|.
-name|getParent
-argument_list|()
-decl_stmt|;
 comment|// fetch entries from GUI
-name|LabelPattern
+name|GlobalLabelPattern
 name|keypatterns
 init|=
-name|getLabelPattern
+name|getLabelPatternAsGlobalLabelPattern
 argument_list|()
 decl_stmt|;
-comment|// restore old parent
-name|keypatterns
-operator|.
-name|setParent
-argument_list|(
-name|defKeyPattern
-argument_list|)
-expr_stmt|;
 comment|// store new patterns globally
 name|prefs
 operator|.
@@ -1136,7 +1116,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|boolean
-name|alwaysAddLetter
+name|prefAlwaysAddLetter
 init|=
 name|Globals
 operator|.
@@ -1165,7 +1145,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|alwaysAddLetter
+name|prefAlwaysAddLetter
 condition|)
 block|{
 name|this

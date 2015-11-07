@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -187,7 +187,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * This class allows to access the Slac SPIRES database.  *   * It can either be a GeneralFetcher to pose requests to the database or fetch  * individual entries.  *   * @author Fedor Bezrukov  *   * @version $Id$  *   */
+comment|/**  *  * This class allows to access the Slac SPIRES database.  *  * It can either be a GeneralFetcher to pose requests to the database or fetch  * individual entries.  *  * @author Fedor Bezrukov  *  * @version $Id$  *  */
 end_comment
 
 begin_class
@@ -207,9 +207,10 @@ name|spiresHost
 init|=
 literal|"www-spires.slac.stanford.edu"
 decl_stmt|;
-comment|/**      * Construct the query URL      *       * @param key      *            The key of the OAI2 entry that the url should poitn to.      *       * @return a String denoting the query URL      */
+comment|/**      * Construct the query URL      *      * @param key The key of the OAI2 entry that the url should point to.      *      * @return a String denoting the query URL      */
 DECL|method|constructUrl (String key)
 specifier|private
+specifier|static
 name|String
 name|constructUrl
 parameter_list|(
@@ -264,7 +265,7 @@ operator|+
 literal|"&FORMAT=WWWBRIEFBIBTEX&SEQUENCE="
 return|;
 block|}
-comment|/**      * Constructs a SPIRES query url from slaccitation field      *       * @param slaccitation      * @return query string      */
+comment|/**      * Constructs a SPIRES query url from slaccitation field      *      * @param slaccitation      * @return query string      */
 DECL|method|constructUrlFromSlaccitation (String slaccitation)
 specifier|public
 specifier|static
@@ -333,7 +334,9 @@ parameter_list|(
 name|UnsupportedEncodingException
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 return|return
 literal|"http://"
 operator|+
@@ -356,7 +359,7 @@ operator|+
 name|key
 return|;
 block|}
-comment|/**      * Construct an SPIRES query url from eprint field      *       * @param eprint      * @return query string      */
+comment|/**      * Construct an SPIRES query url from eprint field      *      * @param eprint      * @return query string      */
 DECL|method|constructUrlFromEprint (String eprint)
 specifier|public
 specifier|static
@@ -421,7 +424,7 @@ operator|+
 name|key
 return|;
 block|}
-comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to      * have the field OAI2_IDENTIFIER_FIELD set to the search string.      *       * @param key      *            The OAI2 key to fetch from ArXiv.      * @return The imnported BibtexEntry or null if none.      */
+comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to      * have the field OAI2_IDENTIFIER_FIELD set to the search string.      *      * @param key      *            The OAI2 key to fetch from ArXiv.      * @return The imnported BibtexEntry or null if none.      */
 DECL|method|importSpiresEntries (String key, OutputPrinter frame)
 specifier|private
 name|BibtexDatabase
@@ -476,6 +479,8 @@ operator|.
 name|getInputStream
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|SPIRESBibtexFilterReader
 name|reader
 init|=
@@ -488,7 +493,8 @@ argument_list|(
 name|inputStream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|ParserResult
 name|pr
 init|=
@@ -505,6 +511,7 @@ operator|.
 name|getDatabase
 argument_list|()
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -654,8 +661,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-name|getKeyName
-argument_list|()
+literal|"Fetch_SPIRES"
 argument_list|)
 return|;
 block|}
@@ -665,7 +671,14 @@ specifier|public
 name|void
 name|cancelled
 parameter_list|()
-block|{     }
+block|{
+comment|// Nothing
+block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|method|done (int entriesImported)
 specifier|public
 name|void
@@ -674,7 +687,9 @@ parameter_list|(
 name|int
 name|entriesImported
 parameter_list|)
-block|{     }
+block|{
+comment|// Nothing
+block|}
 annotation|@
 name|Override
 DECL|method|stopFetching ()
@@ -682,7 +697,9 @@ specifier|public
 name|void
 name|stopFetching
 parameter_list|()
-block|{     }
+block|{
+comment|// Nothing
+block|}
 comment|/*      * @see java.lang.Runnable      */
 annotation|@
 name|Override

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -196,6 +196,34 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|w3c
 operator|.
 name|dom
@@ -343,6 +371,22 @@ name|CHARFORMAT
 init|=
 literal|false
 decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MODSEntry
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|method|MODSEntry ()
 specifier|private
 name|MODSEntry
@@ -352,20 +396,14 @@ name|extensionFields
 operator|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|handledExtensions
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -798,7 +836,7 @@ name|field
 range|:
 name|e
 operator|.
-name|getAllFields
+name|getFieldNames
 argument_list|()
 control|)
 block|{
@@ -851,9 +889,7 @@ name|result
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|PersonName
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|LayoutFormatter
@@ -977,6 +1013,7 @@ block|}
 comment|/* construct a MODS date object */
 DECL|method|getDate (BibtexEntry bibtex)
 specifier|private
+specifier|static
 name|String
 name|getDate
 parameter_list|(
@@ -1042,6 +1079,7 @@ block|}
 comment|// must be from http://www.loc.gov/marc/sourcecode/genre/genrelist.html
 DECL|method|getMODSgenre (BibtexEntry bibtex)
 specifier|private
+specifier|static
 name|String
 name|getMODSgenre
 parameter_list|(
@@ -1842,21 +1880,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
 literal|"Exception caught..."
-operator|+
+argument_list|,
 name|e
 argument_list|)
-expr_stmt|;
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
 expr_stmt|;
 throw|throw
 operator|new
@@ -1868,9 +1899,10 @@ throw|;
 block|}
 comment|// return result;
 block|}
-comment|/**      * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *       * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
+comment|/**      * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *      * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
 DECL|method|stripNonValidXMLCharacters (String in)
 specifier|private
+specifier|static
 name|String
 name|stripNonValidXMLCharacters
 parameter_list|(
@@ -1892,18 +1924,24 @@ decl_stmt|;
 comment|// Used to reference the current character.
 if|if
 condition|(
+operator|(
 name|in
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
+operator|(
 name|in
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|in
 operator|.
 name|isEmpty
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return
@@ -1941,41 +1979,65 @@ expr_stmt|;
 comment|// NOTE: No IndexOutOfBoundsException caught here; it should not happen.
 if|if
 condition|(
+operator|(
 name|current
 operator|==
 literal|0x9
+operator|)
 operator|||
+operator|(
 name|current
 operator|==
 literal|0xA
+operator|)
 operator|||
+operator|(
 name|current
 operator|==
 literal|0xD
+operator|)
 operator|||
+operator|(
+operator|(
 name|current
 operator|>=
 literal|0x20
+operator|)
 operator|&&
+operator|(
 name|current
 operator|<=
 literal|0xD7FF
+operator|)
+operator|)
 operator|||
+operator|(
+operator|(
 name|current
 operator|>=
 literal|0xE000
+operator|)
 operator|&&
+operator|(
 name|current
 operator|<=
 literal|0xFFFD
+operator|)
+operator|)
 operator|||
+operator|(
+operator|(
 name|current
 operator|>=
 literal|0x10000
+operator|)
 operator|&&
+operator|(
 name|current
 operator|<=
 literal|0x10FFFF
+operator|)
+operator|)
 condition|)
 block|{
 name|out
@@ -1994,7 +2056,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/*      * render as XML      *       */
+comment|/*      * render as XML      *      */
 annotation|@
 name|Override
 DECL|method|toString ()

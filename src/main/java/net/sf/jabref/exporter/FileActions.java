@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.  This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or  (at your option) any later version.   This program is distributed in the hope that it will be useful,  but WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License for more details.   You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc.,  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.  This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or  (at your option) any later version.   This program is distributed in the hope that it will be useful,  but WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License for more details.   You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc.,  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -132,6 +132,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -164,8 +192,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
 name|bibtex
 operator|.
 name|BibtexEntryWriter
@@ -179,8 +205,6 @@ operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|logic
 operator|.
 name|bibtex
 operator|.
@@ -198,8 +222,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
 name|bibtex
 operator|.
 name|comparator
@@ -216,8 +238,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
 name|bibtex
 operator|.
 name|comparator
@@ -233,8 +253,6 @@ operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|logic
 operator|.
 name|bibtex
 operator|.
@@ -412,6 +430,22 @@ operator|.
 name|Type
 name|previousStringType
 decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|FileActions
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|method|writePreamble (Writer fw, String preamble)
 specifier|private
 specifier|static
@@ -499,9 +533,7 @@ name|strings
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexString
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -552,11 +584,7 @@ name|remaining
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexString
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|int
@@ -637,12 +665,14 @@ name|getName
 argument_list|()
 argument_list|)
 operator|&&
+operator|(
 name|bs
 operator|.
 name|getType
 argument_list|()
 operator|==
 name|t
+operator|)
 condition|)
 block|{
 name|FileActions
@@ -1082,11 +1112,7 @@ name|types
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexEntryType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -1147,11 +1173,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"Error from encoding: '"
 operator|+
@@ -1163,6 +1187,8 @@ name|encoding
 operator|.
 name|length
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -1170,11 +1196,6 @@ comment|// we must catch all exceptions to be able notify users that
 comment|// saving failed, no matter what the reason was
 comment|// (and they won't just quit JabRef thinking
 comment|// everything worked and loosing data)
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 throw|throw
 operator|new
 name|SaveException
@@ -1186,10 +1207,10 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-try|try
-block|{
 comment|// Get our data stream. This stream writes only to a temporary file,
 comment|// until committed.
+try|try
+init|(
 name|VerifyingWriter
 name|fw
 init|=
@@ -1197,7 +1218,8 @@ name|session
 operator|.
 name|getWriter
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 comment|// Write signature.
 name|FileActions
 operator|.
@@ -1479,11 +1501,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|fw
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1608,9 +1625,11 @@ expr_stmt|;
 block|}
 comment|// This case should never be hit as SaveSettings() is never called if InOriginalOrder is true
 assert|assert
+operator|(
 name|storedSaveOrderConfig
 operator|==
 literal|null
+operator|)
 operator|&&
 name|isSaveOperation
 operator|&&
@@ -1627,9 +1646,11 @@ name|SAVE_IN_ORIGINAL_ORDER
 argument_list|)
 assert|;
 assert|assert
+operator|(
 name|storedSaveOrderConfig
 operator|==
 literal|null
+operator|)
 operator|&&
 operator|!
 name|isSaveOperation
@@ -1947,7 +1968,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_FIELD
+name|TABLE_PRIMARY_SORT_FIELD
 argument_list|)
 expr_stmt|;
 name|sec
@@ -1960,7 +1981,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_FIELD
+name|TABLE_SECONDARY_SORT_FIELD
 argument_list|)
 expr_stmt|;
 name|ter
@@ -1973,7 +1994,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_FIELD
+name|TABLE_TERTIARY_SORT_FIELD
 argument_list|)
 expr_stmt|;
 name|priD
@@ -1986,7 +2007,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_DESCENDING
+name|TABLE_PRIMARY_SORT_DESCENDING
 argument_list|)
 expr_stmt|;
 name|secD
@@ -1999,7 +2020,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_DESCENDING
+name|TABLE_SECONDARY_SORT_DESCENDING
 argument_list|)
 expr_stmt|;
 name|terD
@@ -2012,7 +2033,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_DESCENDING
+name|TABLE_TERTIARY_SORT_DESCENDING
 argument_list|)
 expr_stmt|;
 block|}
@@ -2059,12 +2080,7 @@ name|comparators
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Comparator
-argument_list|<
-name|BibtexEntry
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -2192,11 +2208,7 @@ name|types
 init|=
 operator|new
 name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexEntryType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Map
@@ -2258,9 +2270,9 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-try|try
-block|{
 comment|// Define our data stream.
+try|try
+init|(
 name|VerifyingWriter
 name|fw
 init|=
@@ -2268,7 +2280,8 @@ name|session
 operator|.
 name|getWriter
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|saveType
@@ -2343,9 +2356,7 @@ name|sorter
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|bes
 operator|.
@@ -2369,9 +2380,7 @@ name|sorter
 argument_list|,
 operator|new
 name|FieldComparatorStack
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|comparators
 argument_list|)
@@ -2463,15 +2472,19 @@ block|}
 comment|// Write meta data.
 if|if
 condition|(
+operator|(
 name|saveType
 operator|!=
 name|DatabaseSaveType
 operator|.
 name|PLAIN_BIBTEX
+operator|)
 operator|&&
+operator|(
 name|metaData
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|metaData
@@ -2539,11 +2552,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|fw
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -2704,11 +2712,6 @@ name|reader
 return|;
 block|}
 comment|/*      * We have begun to use getSortedEntries() for both database save operations      * and non-database save operations.  In a non-database save operation      * (such as the exportDatabase call), we do not wish to use the      * global preference of saving in standard order.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getSortedEntries (BibtexDatabase database, MetaData metaData, Set<String> keySet, boolean isSaveOperation)
 specifier|public
 specifier|static
@@ -2841,12 +2844,7 @@ name|comparators
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Comparator
-argument_list|<
-name|BibtexEntry
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|comparators
@@ -2890,9 +2888,7 @@ name|comparatorStack
 init|=
 operator|new
 name|FieldComparatorStack
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|comparators
 argument_list|)
@@ -2905,9 +2901,7 @@ name|sorter
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -3008,9 +3002,11 @@ name|field
 argument_list|)
 decl_stmt|;
 return|return
+operator|(
 name|o
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|o

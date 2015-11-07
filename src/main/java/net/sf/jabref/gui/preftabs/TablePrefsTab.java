@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -397,21 +397,30 @@ DECL|field|priSort
 specifier|private
 specifier|final
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|priSort
 decl_stmt|;
 DECL|field|secSort
 specifier|private
 specifier|final
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|secSort
 decl_stmt|;
 DECL|field|terSort
 specifier|private
 specifier|final
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|terSort
 decl_stmt|;
-comment|/**      * Customization of external program paths.      *       * @param prefs      *            a<code>JabRefPreferences</code> value      */
+comment|/**      * Customization of external program paths.      *      * @param prefs      *            a<code>JabRefPreferences</code> value      */
 DECL|method|TablePrefsTab (JabRefPreferences prefs)
 specifier|public
 name|TablePrefsTab
@@ -433,7 +442,7 @@ name|BorderLayout
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/**          * Added Bibtexkey to combobox.          *           * [ 1540646 ] default sort order: bibtexkey          *           * http://sourceforge.net/tracker/index.php?func=detail&aid=1540646&group_id=92314&atid=600306          */
+comment|/**          * Added Bibtexkey to combobox.          *          * [ 1540646 ] default sort order: bibtexkey          *          * http://sourceforge.net/tracker/index.php?func=detail&aid=1540646&group_id=92314&atid=600306          */
 name|Vector
 argument_list|<
 name|String
@@ -442,9 +451,7 @@ name|fieldNames
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -495,6 +502,7 @@ name|priSort
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|allPlusKey
 argument_list|)
@@ -503,6 +511,7 @@ name|secSort
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|allPlusKey
 argument_list|)
@@ -511,6 +520,7 @@ name|terSort
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|allPlusKey
 argument_list|)
@@ -1538,7 +1548,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_FIELD
+name|TABLE_PRIMARY_SORT_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1552,7 +1562,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_FIELD
+name|TABLE_SECONDARY_SORT_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1566,7 +1576,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_FIELD
+name|TABLE_TERTIARY_SORT_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1724,7 +1734,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_DESCENDING
+name|TABLE_PRIMARY_SORT_DESCENDING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1738,7 +1748,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_DESCENDING
+name|TABLE_SECONDARY_SORT_DESCENDING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1752,7 +1762,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_DESCENDING
+name|TABLE_TERTIARY_SORT_DESCENDING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1841,7 +1851,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *       */
+comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *      */
 annotation|@
 name|Override
 DECL|method|storeSettings ()
@@ -1948,7 +1958,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_DESCENDING
+name|TABLE_PRIMARY_SORT_DESCENDING
 argument_list|,
 name|priDesc
 operator|.
@@ -1962,7 +1972,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_DESCENDING
+name|TABLE_SECONDARY_SORT_DESCENDING
 argument_list|,
 name|secDesc
 operator|.
@@ -1976,7 +1986,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_DESCENDING
+name|TABLE_TERTIARY_SORT_DESCENDING
 argument_list|,
 name|terDesc
 operator|.
@@ -1990,7 +2000,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_FIELD
+name|TABLE_PRIMARY_SORT_FIELD
 argument_list|,
 name|priField
 operator|.
@@ -2010,7 +2020,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_FIELD
+name|TABLE_SECONDARY_SORT_FIELD
 argument_list|,
 name|secField
 operator|.
@@ -2030,7 +2040,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_FIELD
+name|TABLE_TERTIARY_SORT_FIELD
 argument_list|,
 name|terField
 operator|.
@@ -2097,25 +2107,40 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
+operator|(
 name|newVal
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|oldVal
 operator|==
 literal|null
+operator|)
+operator|)
 operator|||
+operator|(
+operator|(
 name|newVal
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|oldVal
 operator|!=
 literal|null
+operator|)
+operator|)
 operator|||
+operator|(
+operator|(
 name|newVal
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|newVal
@@ -2124,6 +2149,7 @@ name|equals
 argument_list|(
 name|oldVal
 argument_list|)
+operator|)
 condition|)
 block|{
 name|prefs

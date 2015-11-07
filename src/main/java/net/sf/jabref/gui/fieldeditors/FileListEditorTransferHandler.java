@@ -324,7 +324,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      *       * @param frame      * @param entryContainer      * @param textTransferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat"      */
+comment|/**      *      * @param frame      * @param entryContainer      * @param textTransferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat"      */
 DECL|method|FileListEditorTransferHandler (JabRefFrame frame, EntryContainer entryContainer, TransferHandler textTransferHandler)
 specifier|public
 name|FileListEditorTransferHandler
@@ -539,11 +539,9 @@ argument_list|(
 name|urlFlavor
 argument_list|)
 decl_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"URL: "
 operator|+
@@ -761,8 +759,8 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"failed to read dropped data: "
-operator|+
+literal|"Failed to read dropped data. "
+argument_list|,
 name|ioe
 argument_list|)
 expr_stmt|;
@@ -777,8 +775,8 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"drop type error: "
-operator|+
+literal|"Drop type error. "
+argument_list|,
 name|ufe
 argument_list|)
 expr_stmt|;
@@ -790,7 +788,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"can't transfer input: "
+literal|"Cannot transfer input:"
 argument_list|)
 decl_stmt|;
 name|DataFlavor
@@ -814,7 +812,7 @@ name|logMessage
 operator|.
 name|append
 argument_list|(
-literal|"  "
+literal|" "
 operator|+
 name|inflav
 argument_list|)

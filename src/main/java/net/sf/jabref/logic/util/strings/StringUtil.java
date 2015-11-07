@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.logic.util.strings
 package|package
@@ -118,6 +122,7 @@ specifier|public
 class|class
 name|StringUtil
 block|{
+comment|// contains all possible line breaks, not ommitting any break such as "\\n"
 DECL|field|LINE_BREAKS
 specifier|private
 specifier|static
@@ -129,7 +134,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\\r\\n|\\r"
+literal|"\\r\\n|\\r|\\n"
 argument_list|)
 decl_stmt|;
 comment|/**      * Returns the string, after shaving off whitespace at the beginning and end,      * and removing (at most) one pair of braces or " surrounding it.      *      * @param toShave      * @return      */
@@ -249,9 +254,11 @@ if|if
 condition|(
 name|end
 operator|>
+operator|(
 name|begin
 operator|+
 literal|1
+operator|)
 condition|)
 block|{
 name|first
@@ -299,9 +306,11 @@ if|if
 condition|(
 name|end
 operator|>
+operator|(
 name|begin
 operator|+
 literal|1
+operator|)
 condition|)
 block|{
 name|first
@@ -326,21 +335,33 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
+operator|(
 name|first
 operator|==
 literal|'{'
+operator|)
 operator|&&
+operator|(
 name|second
 operator|==
 literal|'}'
+operator|)
+operator|)
 operator|||
+operator|(
+operator|(
 name|first
 operator|==
 literal|'"'
+operator|)
 operator|&&
+operator|(
 name|second
 operator|==
 literal|'"'
+operator|)
+operator|)
 condition|)
 block|{
 name|begin
@@ -410,15 +431,19 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|strings
 operator|.
 name|length
 operator|==
 literal|0
+operator|)
 operator|||
+operator|(
 name|from
 operator|>=
 name|to
+operator|)
 condition|)
 block|{
 return|return
@@ -465,9 +490,11 @@ name|from
 init|;
 name|i
 operator|<
+operator|(
 name|to
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -847,12 +874,14 @@ operator|++
 expr_stmt|;
 while|while
 condition|(
+operator|(
 name|index
 operator|<
 name|text
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|&&
 name|Character
 operator|.
@@ -896,9 +925,11 @@ condition|(
 operator|!
 name|terminateOnEndBraceOnly
 operator|&&
+operator|(
 name|count
 operator|==
 literal|0
+operator|)
 operator|&&
 name|Character
 operator|.
@@ -913,14 +944,18 @@ break|break;
 block|}
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 operator|&&
+operator|(
 operator|--
 name|count
 operator|<
 literal|0
+operator|)
 condition|)
 block|{
 break|break;
@@ -1177,16 +1212,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|current
 operator|<
 literal|0
+operator|)
 operator|||
+operator|(
 name|current
 operator|>=
 name|result
 operator|.
 name|length
 argument_list|()
+operator|)
 condition|)
 block|{
 break|break;
@@ -1389,6 +1428,7 @@ argument_list|)
 expr_stmt|;
 name|isSpecial
 operator|=
+operator|(
 name|specials
 operator|.
 name|indexOf
@@ -1397,31 +1437,44 @@ name|c
 argument_list|)
 operator|>=
 literal|0
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 name|quoteChar
+operator|)
 expr_stmt|;
 comment|// linebreak?
 if|if
 condition|(
+operator|(
 name|linewrap
 operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 operator|(
 operator|++
 name|lineLength
 operator|>=
 name|linewrap
+operator|)
 operator|||
+operator|(
 name|isSpecial
 operator|&&
+operator|(
 name|lineLength
 operator|>=
+operator|(
 name|linewrap
 operator|-
 literal|1
+operator|)
+operator|)
+operator|)
 operator|)
 condition|)
 block|{
@@ -1664,9 +1717,7 @@ name|encodings
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1788,11 +1839,13 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|values
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -1864,11 +1917,13 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|entry
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -1911,12 +1966,7 @@ name|newList
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ArrayList
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|StringBuilder
@@ -1934,9 +1984,7 @@ name|thisEntry
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -1977,9 +2025,11 @@ condition|(
 operator|!
 name|escaped
 operator|&&
+operator|(
 name|c
 operator|==
 literal|'\\'
+operator|)
 condition|)
 block|{
 name|escaped
@@ -1994,9 +2044,11 @@ condition|(
 operator|!
 name|escaped
 operator|&&
+operator|(
 name|c
 operator|==
 literal|':'
+operator|)
 condition|)
 block|{
 name|thisEntry
@@ -2022,9 +2074,11 @@ condition|(
 operator|!
 name|escaped
 operator|&&
+operator|(
 name|c
 operator|==
 literal|';'
+operator|)
 condition|)
 block|{
 name|thisEntry
@@ -2054,9 +2108,7 @@ name|thisEntry
 operator|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
@@ -2269,17 +2321,23 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|';'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|':'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'\\'
+operator|)
 condition|)
 block|{
 name|sb
@@ -2361,9 +2419,7 @@ name|al
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2608,9 +2664,11 @@ condition|(
 operator|!
 name|escaped
 operator|&&
+operator|(
 name|c
 operator|==
 literal|'#'
+operator|)
 condition|)
 block|{
 name|inString
@@ -2622,9 +2680,11 @@ block|}
 comment|// See if we should start bracing:
 if|if
 condition|(
+operator|(
 name|inBrace
 operator|==
 literal|0
+operator|)
 operator|&&
 operator|!
 name|isBracing
@@ -2720,9 +2780,11 @@ expr_stmt|;
 comment|// Check if we are entering an escape sequence:
 name|escaped
 operator|=
+operator|(
 name|c
 operator|==
 literal|'\\'
+operator|)
 operator|&&
 operator|!
 name|escaped
@@ -2750,7 +2812,7 @@ argument_list|()
 return|;
 comment|/*          * if (s.length() == 0) return s; // Protect against ArrayIndexOutOf....          * StringBuffer buf = new StringBuffer();          *          * Matcher mcr = titleCapitalPattern.matcher(s.substring(1)); while          * (mcr.find()) { String replaceStr = mcr.group();          * mcr.appendReplacement(buf, "{" + replaceStr + "}"); }          * mcr.appendTail(buf); return s.substring(0, 1) + buf.toString();          */
 block|}
-comment|/**      * This method looks for occurences of capital letters enclosed in an      * arbitrary number of pairs of braces, e.g. "{AB}" or "{{T}}". All of these      * pairs of braces are removed.      *      * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
+comment|/**      * This method looks for occurrences of capital letters enclosed in an      * arbitrary number of pairs of braces, e.g. "{AB}" or "{{T}}". All of these      * pairs of braces are removed.      *      * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
 DECL|method|removeBracesAroundCapitals (String s)
 specifier|public
 specifier|static
@@ -2795,7 +2857,7 @@ return|return
 name|s
 return|;
 block|}
-comment|/**      * This method looks for occurences of capital letters enclosed in one pair      * of braces, e.g. "{AB}". All these are replaced by only the capitals in      * between the braces.      *      * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
+comment|/**      * This method looks for occurrences of capital letters enclosed in one pair      * of braces, e.g. "{AB}". All these are replaced by only the capitals in      * between the braces.      *      * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
 DECL|method|removeSingleBracesAroundCapitals (String s)
 specifier|private
 specifier|static
@@ -2886,12 +2948,12 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Replaces all platform-dependent line breaks by UNIX-style newlines.      *      *<example>      * Legacy Macintosh \r -> \n      * Windows \r\n -> \n      *</example>      *      * @return a String with only \n as line breaks      */
-DECL|method|unifyLineBreaks (String s)
+comment|/**      * Replaces all platform-dependent line breaks by Globals.NEWLINE line breaks.      *      * We do NOT use UNIX line breaks as the user explicitly configures its linebreaks and this method is used in bibtex field writing      *      *<example>      * Legacy Macintosh \r -> Globals.NEWLINE      * Windows \r\n -> Globals.NEWLINE      *</example>      *      * @return a String with only Globals.NEWLINE as line breaks      */
+DECL|method|unifyLineBreaksToConfiguredLineBreaks (String s)
 specifier|public
 specifier|static
 name|String
-name|unifyLineBreaks
+name|unifyLineBreaksToConfiguredLineBreaks
 parameter_list|(
 name|String
 name|s
@@ -2907,7 +2969,9 @@ argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-literal|"\n"
+name|Globals
+operator|.
+name|NEWLINE
 argument_list|)
 return|;
 block|}

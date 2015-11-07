@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -242,20 +242,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -473,10 +459,14 @@ operator|++
 expr_stmt|;
 block|}
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|list
 init|=
 operator|new
 name|JList
+argument_list|<>
 argument_list|(
 name|array
 argument_list|)
@@ -605,7 +595,7 @@ argument_list|()
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -628,7 +618,7 @@ operator|.
 name|getFile
 argument_list|()
 expr_stmt|;
-comment|/*final boolean custom = (list.getSelectedIndex()>= Globals.STANDARD_EXPORT_COUNT);         String dir = null;         if (custom) {             int index = list.getSelectedIndex() - Globals.STANDARD_EXPORT_COUNT;             dir = (String) (Globals.prefs.customExports.getElementAt(index)[1]);             File f = new File(dir);             lfName = f.getName();             lfName = lfName.substring(0, lfName.indexOf("."));             // Remove file name - we want the directory only.             dir = f.getParent() + System.getProperty("file.separator");         }         final String format = lfName,                 directory = dir;         */
+comment|/*final boolean custom = (list.getSelectedIndex()>= Globals.STANDARD_EXPORT_COUNT);         String dir = null;         if (custom) {             int index = list.getSelectedIndex() - Globals.STANDARD_EXPORT_COUNT;             dir = (String) (Globals.prefs.customExports.getElementAt(index)[1]);             File f = new File(dir);             lfName = f.getName();             lfName = lfName.substring(0, lfName.indexOf("."));             // Remove filename - we want the directory only.             dir = f.getParent() + System.getProperty("file.separator");         }         final String format = lfName,                 directory = dir;         */
 name|File
 name|tmp
 init|=
@@ -676,9 +666,7 @@ name|entries
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|bes
 operator|.
@@ -802,7 +790,9 @@ parameter_list|,
 name|Transferable
 name|content
 parameter_list|)
-block|{                 }
+block|{
+comment|// Do nothing
+block|}
 block|}
 decl_stmt|;
 comment|//StringSelection ss = new StringSelection(sw.toString());

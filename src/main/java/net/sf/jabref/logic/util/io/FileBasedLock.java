@@ -101,7 +101,9 @@ parameter_list|(
 name|InterruptedException
 name|ignored
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignored
+block|}
 block|}
 return|return
 literal|true

@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.logic.util.io
 package|package
@@ -24,9 +28,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
+name|Globals
 import|;
 end_import
 
@@ -55,6 +57,34 @@ operator|.
 name|util
 operator|.
 name|OS
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -134,7 +164,23 @@ specifier|public
 class|class
 name|FileUtil
 block|{
-comment|/**      * Returns the extension of a file or null if the file does not have one (no . in name).      *      * @param file      *      * @return The extension, trimmed and in lowercase.      */
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|FileUtil
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+comment|/**      * Returns the extension of a file or null if the file does not have one (no . in name).      *      * @param file      * @return The extension, trimmed and in lowercase.      */
 DECL|method|getFileExtension (File file)
 specifier|public
 specifier|static
@@ -165,18 +211,24 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|pos
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|pos
 operator|<
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
+operator|)
 condition|)
 block|{
 return|return
@@ -203,7 +255,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Copies a file.      *      * @param source      *            File Source file      * @param dest      *            File Destination file      * @param deleteIfExists      *            boolean Determines whether the copy goes on even if the file      *            exists.      * @throws IOException      * @return boolean Whether the copy succeeded, or was stopped due to the      *         file already existing.      */
+comment|/**      * Copies a file.      *      * @param source         File Source file      * @param dest           File Destination file      * @param deleteIfExists boolean Determines whether the copy goes on even if the file      *                       exists.      * @return boolean Whether the copy succeeded, or was stopped due to the      * file already existing.      * @throws IOException      */
 DECL|method|copyFile (File source, File dest, boolean deleteIfExists)
 specifier|public
 specifier|static
@@ -344,7 +396,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      *      * @param fileName      * @param destFilename      * @return      */
+comment|/**      * @param fileName      * @param destFilename      * @return      */
 DECL|method|renameFile (String fileName, String destFilename)
 specifier|public
 specifier|static
@@ -388,7 +440,7 @@ name|toFile
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param metaData      *            The MetaData for the database this file belongs to.      * @param name      *            The file name, may also be a relative path to the file      */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param metaData The MetaData for the database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
 DECL|method|expandFilename (final MetaData metaData, String name)
 specifier|public
 specifier|static
@@ -416,18 +468,24 @@ decl_stmt|;
 name|String
 name|extension
 init|=
+operator|(
 name|pos
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|pos
 operator|<
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
+operator|)
 condition|?
 name|name
 operator|.
@@ -467,7 +525,7 @@ name|metaData
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -481,9 +539,7 @@ name|al
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -569,7 +625,7 @@ name|dirs
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      *      * Will look in each of the given dirs starting from the beginning and      * returning the first found file to match if any.      */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      *<p>      * Will look in each of the given dirs starting from the beginning and      * returning the first found file to match if any.      */
 DECL|method|expandFilename (String name, String[] dir)
 specifier|public
 specifier|static
@@ -645,9 +701,11 @@ name|file
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|name
 operator|==
 literal|null
+operator|)
 operator|||
 name|name
 operator|.
@@ -678,9 +736,11 @@ operator|.
 name|exists
 argument_list|()
 operator|&&
+operator|(
 name|dir
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 if|if
@@ -773,11 +833,9 @@ name|StringIndexOutOfBoundsException
 name|exc
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"An internal Java error was caused by the entry "
 operator|+
@@ -786,6 +844,8 @@ operator|+
 name|name
 operator|+
 literal|"\""
+argument_list|,
+name|exc
 argument_list|)
 expr_stmt|;
 block|}
@@ -832,7 +892,7 @@ return|return
 name|file
 return|;
 block|}
-comment|/**      * Converts an absolute filename to a relative one, if necessary.      * Returns the parameter fileName itself if no shortening is possible      *      * This method works correctly only if dirs are sorted decent in their length      * i.e. /home/user/literature/important before /home/user/literature      *      * @param fileName the file name to be shortened      * @param dirs directories to check.      */
+comment|/**      * Converts an absolute filename to a relative one, if necessary.      * Returns the parameter fileName itself if no shortening is possible      *<p>      * This method works correctly only if dirs are sorted decent in their length      * i.e. /home/user/literature/important before /home/user/literature      *      * @param fileName the filename to be shortened      * @param dirs     directories to check.      */
 DECL|method|shortenFileName (File fileName, String[] dirs)
 specifier|public
 specifier|static
@@ -849,16 +909,20 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|fileName
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|fileName
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 return|return
@@ -873,9 +937,11 @@ operator|.
 name|isAbsolute
 argument_list|()
 operator|||
+operator|(
 name|dirs
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return
@@ -909,9 +975,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|result
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|result
@@ -947,16 +1015,20 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|fileName
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|fileName
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 return|return
@@ -971,9 +1043,11 @@ operator|.
 name|isAbsolute
 argument_list|()
 operator|||
+operator|(
 name|dir
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return

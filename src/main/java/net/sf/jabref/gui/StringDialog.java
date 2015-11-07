@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -354,6 +354,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|actions
+operator|.
+name|Actions
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|help
 operator|.
 name|HelpAction
@@ -431,8 +447,6 @@ operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|logic
 operator|.
 name|bibtex
 operator|.
@@ -622,7 +636,12 @@ name|GUIGlobals
 operator|.
 name|stringEditorHelp
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Help"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|addWindowListener
@@ -678,9 +697,11 @@ argument_list|(
 name|c
 argument_list|)
 operator|&&
+operator|(
 name|c
 operator|instanceof
 name|StringTable
+operator|)
 return|;
 block|}
 block|}
@@ -928,10 +949,29 @@ argument_list|,
 name|removeStringAction
 argument_list|)
 expr_stmt|;
-comment|//im.put(prefs.getKey("String dialog, move string up"), "up");
-comment|//am.put("up", stringUpAction);
-comment|//im.put(prefs.getKey("String dialog, move string down"), "down");
-comment|//am.put("down", stringDownAction);
+name|im
+operator|.
+name|put
+argument_list|(
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Save database"
+argument_list|)
+argument_list|,
+literal|"save"
+argument_list|)
+expr_stmt|;
+name|am
+operator|.
+name|put
+argument_list|(
+literal|"save"
+argument_list|,
+name|saveAction
+argument_list|)
+expr_stmt|;
 name|im
 operator|.
 name|put
@@ -1038,8 +1078,6 @@ argument_list|,
 name|redoAction
 argument_list|)
 expr_stmt|;
-comment|//tlb.add(closeAction);
-comment|//tlb.addSeparator();
 name|tlb
 operator|.
 name|add
@@ -1054,13 +1092,6 @@ argument_list|(
 name|removeStringAction
 argument_list|)
 expr_stmt|;
-name|tlb
-operator|.
-name|addSeparator
-argument_list|()
-expr_stmt|;
-comment|//tlb.add(stringUpAction);
-comment|//tlb.add(stringDownAction);
 name|tlb
 operator|.
 name|addSeparator
@@ -1136,6 +1167,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// @formatter:off
 name|setTitle
 argument_list|(
 name|Localization
@@ -1159,6 +1191,7 @@ name|untitledTitle
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 block|}
 DECL|class|StringTable
@@ -1282,7 +1315,6 @@ name|TABLE_BACKGROUND
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// getInputMap().remove(GUIGlobals.exitDialog);
 name|getInputMap
 argument_list|()
 operator|.
@@ -1364,9 +1396,7 @@ name|stringsSet
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|BibtexString
-argument_list|>
+argument_list|<>
 argument_list|(
 operator|new
 name|BibtexStringComparator
@@ -1432,16 +1462,32 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|saveDatabase ()
+specifier|public
+name|void
+name|saveDatabase
+parameter_list|()
+block|{
+name|panel
+operator|.
+name|runCommand
+argument_list|(
+name|Actions
+operator|.
+name|SAVE
+argument_list|)
+expr_stmt|;
+block|}
 DECL|class|StringTableModel
 class|class
 name|StringTableModel
 extends|extends
 name|AbstractTableModel
 block|{
-DECL|field|base
+DECL|field|tbase
 specifier|final
 name|BibtexDatabase
-name|base
+name|tbase
 decl_stmt|;
 DECL|field|parent
 specifier|final
@@ -1467,7 +1513,7 @@ name|parent
 expr_stmt|;
 name|this
 operator|.
-name|base
+name|tbase
 operator|=
 name|base
 expr_stmt|;
@@ -1535,10 +1581,6 @@ name|int
 name|col
 parameter_list|)
 block|{
-comment|//	    if (row>= base.getStringCount())
-comment|//	return; // After a Remove operation the program somehow
-comment|// thinks the user is still editing an entry,
-comment|// which might now be outside
 if|if
 condition|(
 name|col
@@ -1571,7 +1613,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|base
+name|tbase
 operator|.
 name|hasStringLabel
 argument_list|(
@@ -1582,6 +1624,7 @@ name|value
 argument_list|)
 condition|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1636,7 +1679,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The label of the string can not contain spaces."
+literal|"The label of the string cannot contain spaces."
 argument_list|)
 argument_list|,
 name|Localization
@@ -1678,7 +1721,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The label of the string can not contain the '#' character."
+literal|"The label of the string cannot contain the '#' character."
 argument_list|)
 argument_list|,
 name|Localization
@@ -1716,7 +1759,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The label of the string can not be a number."
+literal|"The label of the string cannot be a number."
 argument_list|)
 argument_list|,
 name|Localization
@@ -1731,6 +1774,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 else|else
 block|{
@@ -1918,7 +1962,6 @@ name|strings
 operator|.
 name|length
 return|;
-comment|//base.getStringCount();
 block|}
 annotation|@
 name|Override
@@ -1931,6 +1974,7 @@ name|int
 name|col
 parameter_list|)
 block|{
+comment|// @formatter:off
 return|return
 name|col
 operator|==
@@ -1950,6 +1994,7 @@ argument_list|(
 literal|"Content"
 argument_list|)
 return|;
+comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -1972,6 +2017,7 @@ block|}
 block|}
 DECL|method|isNumber (String name)
 specifier|private
+specifier|static
 name|boolean
 name|isNumber
 parameter_list|(
@@ -1979,7 +2025,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-comment|// A pure integer number can not be used as a string label,
+comment|// A pure integer number cannot be used as a string label,
 comment|// since Bibtex will read it as a number.
 try|try
 block|{
@@ -2085,7 +2131,6 @@ argument_list|(
 literal|"Close window"
 argument_list|)
 expr_stmt|;
-comment|//, new ImageIcon(GUIGlobals.closeIconFile));
 name|putValue
 argument_list|(
 name|Action
@@ -2217,10 +2262,12 @@ literal|"New string"
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"add"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|ADD
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -2289,6 +2336,7 @@ name|name
 argument_list|)
 condition|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2299,7 +2347,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The label of the string can not be a number."
+literal|"The label of the string cannot be a number."
 argument_list|)
 argument_list|,
 name|Localization
@@ -2314,6 +2362,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return;
 block|}
 if|if
@@ -2326,6 +2375,7 @@ literal|"#"
 argument_list|)
 condition|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2336,7 +2386,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The label of the string can not contain the '#' character."
+literal|"The label of the string cannot contain the '#' character."
 argument_list|)
 argument_list|,
 name|Localization
@@ -2351,6 +2401,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return;
 block|}
 if|if
@@ -2363,6 +2414,7 @@ literal|" "
 argument_list|)
 condition|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2373,7 +2425,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The label of the string can not contain spaces."
+literal|"The label of the string cannot contain spaces."
 argument_list|)
 argument_list|,
 name|Localization
@@ -2388,6 +2440,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return;
 block|}
 try|try
@@ -2456,6 +2509,7 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2483,23 +2537,24 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 block|}
 block|}
-DECL|field|storeContentAction
-name|StoreContentAction
-name|storeContentAction
+DECL|field|saveAction
+name|SaveDatabaseAction
+name|saveAction
 init|=
 operator|new
-name|StoreContentAction
+name|SaveDatabaseAction
 argument_list|(
 name|this
 argument_list|)
 decl_stmt|;
-DECL|class|StoreContentAction
+DECL|class|SaveDatabaseAction
 specifier|static
 class|class
-name|StoreContentAction
+name|SaveDatabaseAction
 extends|extends
 name|AbstractAction
 block|{
@@ -2508,9 +2563,9 @@ specifier|final
 name|StringDialog
 name|parent
 decl_stmt|;
-DECL|method|StoreContentAction (StringDialog parent)
+DECL|method|SaveDatabaseAction (StringDialog parent)
 specifier|public
-name|StoreContentAction
+name|SaveDatabaseAction
 parameter_list|(
 name|StringDialog
 name|parent
@@ -2518,14 +2573,16 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|"Store string"
+literal|"Save database"
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"add"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|SAVE
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -2538,7 +2595,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Store string"
+literal|"Save database"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2559,7 +2616,13 @@ parameter_list|(
 name|ActionEvent
 name|e
 parameter_list|)
-block|{         }
+block|{
+name|parent
+operator|.
+name|saveDatabase
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 DECL|class|RemoveStringAction
 class|class
@@ -2586,10 +2649,12 @@ literal|"Remove selected strings"
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"remove"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|REMOVE
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -2647,6 +2712,7 @@ comment|// keystroke. This makes the content hang on the screen.
 name|assureNotEditing
 argument_list|()
 expr_stmt|;
+comment|// @formatter:off
 name|String
 name|msg
 init|=
@@ -2716,6 +2782,7 @@ operator|.
 name|QUESTION_MESSAGE
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 if|if
 condition|(
 name|answer
@@ -2830,14 +2897,11 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-comment|//table.repaint();
-comment|//panel.markBaseChanged();
 block|}
 block|}
 block|}
 block|}
 block|}
-comment|/*    StringUpAction stringUpAction = new StringUpAction();     class StringUpAction extends AbstractAction {     public StringUpAction() {         super("Move string up",     	  new ImageIcon(GUIGlobals.upIconFile));         putValue(SHORT_DESCRIPTION, Globals.lang("Move string up"));     }     public void actionPerformed(ActionEvent e) {         int[] sel = table.getSelectedRows();         if ((sel.length == 1)&& (sel[0]> 0)) {      	// Make sure no cell is being edited, as caused by the     	// keystroke. This makes the content hang on the screen.     	assureNotEditing();     	// Store undo information:     	panel.undoManager.addEdit(new UndoableMoveString     				      (panel, base, sel[0], true));      	BibtexString bs = base.getString(sel[0]);     	base.removeString(sel[0]);     	try {     	    base.addString(bs, sel[0]-1);     	} catch (KeyCollisionException ex) {}     	table.revalidate();     	table.setRowSelectionInterval(sel[0]-1, sel[0]-1);     	table.repaint();     	panel.markBaseChanged();         }     }     }      StringDownAction stringDownAction = new StringDownAction();     class StringDownAction extends AbstractAction {     public StringDownAction() {         super("Move string down",     	  new ImageIcon(GUIGlobals.downIconFile));         putValue(SHORT_DESCRIPTION, Globals.lang("Move string down"));     }     public void actionPerformed(ActionEvent e) {         int[] sel = table.getSelectedRows();         if ((sel.length == 1)&& (sel[0]+1< base.getStringCount())) {      	// Make sure no cell is being edited, as caused by the     	// keystroke. This makes the content hang on the screen.     	assureNotEditing();       	// Store undo information:     	panel.undoManager.addEdit(new UndoableMoveString     				      (panel, base, sel[0], false));       	BibtexString bs = base.getString(sel[0]);     	base.removeString(sel[0]);     	try {     	    base.addString(bs, sel[0]+1);     	} catch (KeyCollisionException ex) {}     	table.revalidate();     	table.setRowSelectionInterval(sel[0]+1, sel[0]+1);     	table.repaint();     	panel.markBaseChanged();         }      }     }*/
 DECL|class|UndoAction
 class|class
 name|UndoAction
@@ -2855,10 +2919,12 @@ literal|"Undo"
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"undo"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|UNDO
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -2893,7 +2959,9 @@ name|panel
 operator|.
 name|runCommand
 argument_list|(
-literal|"undo"
+name|Actions
+operator|.
+name|UNDO
 argument_list|)
 expr_stmt|;
 block|}
@@ -2902,7 +2970,9 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignore
+block|}
 block|}
 block|}
 DECL|class|RedoAction
@@ -2918,14 +2988,16 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"Undo"
+literal|"Redo"
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"redo"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|REDO
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -2960,7 +3032,9 @@ name|panel
 operator|.
 name|runCommand
 argument_list|(
-literal|"redo"
+name|Actions
+operator|.
+name|REDO
 argument_list|)
 expr_stmt|;
 block|}
@@ -2969,7 +3043,9 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignore
+block|}
 block|}
 block|}
 block|}

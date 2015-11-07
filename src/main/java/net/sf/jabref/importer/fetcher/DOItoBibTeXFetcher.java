@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2014 JabRef contributors.     This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>. */
+comment|/*  Copyright (C) 2014 JabRef contributors.     Copyright (C) 2015 Oliver Kopp      This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>.  */
 end_comment
 
 begin_package
@@ -42,16 +42,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|net
 operator|.
 name|MalformedURLException
@@ -75,16 +65,6 @@ operator|.
 name|net
 operator|.
 name|URLConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URLEncoder
 import|;
 end_import
 
@@ -202,6 +182,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|DOI
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|util
 operator|.
 name|Util
@@ -216,15 +212,6 @@ name|DOItoBibTeXFetcher
 implements|implements
 name|EntryFetcher
 block|{
-DECL|field|URL_PATTERN
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|URL_PATTERN
-init|=
-literal|"http://dx.doi.org/%s"
-decl_stmt|;
 DECL|field|caseKeeper
 specifier|private
 specifier|final
@@ -300,12 +287,9 @@ return|return
 literal|true
 return|;
 block|}
-else|else
-block|{
 return|return
 literal|false
 return|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -356,66 +340,69 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|getEntryFromDOI (String doi, OutputPrinter status)
-specifier|private
+DECL|method|getEntryFromDOI (String doiStr, OutputPrinter status)
+specifier|public
 name|BibtexEntry
 name|getEntryFromDOI
 parameter_list|(
 name|String
-name|doi
+name|doiStr
 parameter_list|,
 name|OutputPrinter
 name|status
 parameter_list|)
 block|{
-name|String
-name|q
+name|DOI
+name|doi
 decl_stmt|;
 try|try
 block|{
-name|q
-operator|=
-name|URLEncoder
-operator|.
-name|encode
-argument_list|(
 name|doi
-argument_list|,
-literal|"UTF-8"
+operator|=
+operator|new
+name|DOI
+argument_list|(
+name|doiStr
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UnsupportedEncodingException
+name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
-comment|// this should never happen
-name|e
+name|status
 operator|.
-name|printStackTrace
-argument_list|()
+name|showMessage
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Invalid DOI: '%0'."
+argument_list|,
+name|doiStr
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Get BibTeX entry from DOI"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
+argument_list|)
 expr_stmt|;
 return|return
 literal|null
 return|;
 block|}
-name|String
-name|urlString
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-name|DOItoBibTeXFetcher
-operator|.
-name|URL_PATTERN
-argument_list|,
-name|q
-argument_list|)
-decl_stmt|;
 comment|// Send the request
+comment|// construct URL
 name|URL
 name|url
 decl_stmt|;
@@ -423,11 +410,13 @@ try|try
 block|{
 name|url
 operator|=
-operator|new
-name|URL
-argument_list|(
-name|urlString
-argument_list|)
+name|doi
+operator|.
+name|getURI
+argument_list|()
+operator|.
+name|toURL
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -512,6 +501,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// @formatter:off
 name|status
 operator|.
 name|showMessage
@@ -523,6 +513,9 @@ argument_list|(
 literal|"Unknown DOI: '%0'."
 argument_list|,
 name|doi
+operator|.
+name|getDOI
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization
@@ -537,6 +530,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 return|return
 literal|null

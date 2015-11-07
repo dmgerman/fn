@@ -26,11 +26,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|journals
 operator|.
-name|BibtexEntry
+name|Abbreviations
 import|;
 end_import
 
@@ -42,7 +42,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
 import|;
 end_import
 
@@ -211,7 +215,7 @@ init|=
 operator|new
 name|UndoableAbbreviator
 argument_list|(
-name|Globals
+name|Abbreviations
 operator|.
 name|journalAbbrev
 argument_list|,

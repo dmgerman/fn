@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -25,6 +25,34 @@ operator|.
 name|util
 operator|.
 name|Vector
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -108,10 +136,24 @@ name|missingFormatters
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|Layout
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|Layout (Vector<StringInt> parsedEntries, String classPrefix)
 specifier|public
@@ -140,9 +182,7 @@ name|tmpEntries
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|LayoutEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|parsedEntries
 operator|.
@@ -178,8 +218,10 @@ name|si
 operator|=
 name|parsedEntry
 expr_stmt|;
+comment|// TODO: Rewrite using switch
 if|if
 condition|(
+operator|(
 name|si
 operator|.
 name|i
@@ -187,7 +229,9 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_LAYOUT_TEXT
+operator|)
 operator|||
+operator|(
 name|si
 operator|.
 name|i
@@ -195,8 +239,11 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_SIMPLE_FIELD
+operator|)
 condition|)
-block|{             }
+block|{
+comment|// Do nothing
+block|}
 elseif|else
 if|if
 condition|(
@@ -213,9 +260,7 @@ name|blockEntries
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|StringInt
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|blockStart
@@ -239,13 +284,17 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|blockStart
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|blockEntries
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 if|if
@@ -295,11 +344,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 name|blockStart
 operator|+
@@ -310,11 +357,9 @@ operator|.
 name|s
 argument_list|)
 expr_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
 literal|"Nested field entries are not implemented !!!"
 argument_list|)
@@ -343,9 +388,7 @@ name|blockEntries
 operator|=
 operator|new
 name|Vector
-argument_list|<
-name|StringInt
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|blockStart
@@ -369,13 +412,17 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|blockStart
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|blockEntries
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 if|if
@@ -425,11 +472,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
 literal|"Nested field entries are not implemented !!!"
 argument_list|)
@@ -453,7 +498,9 @@ name|LayoutHelper
 operator|.
 name|IS_OPTION_FIELD
 condition|)
-block|{             }
+block|{
+comment|// Do nothing
+block|}
 if|if
 condition|(
 name|blockEntries
@@ -759,13 +806,16 @@ literal|0
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|eol
 operator|<
 name|fieldText
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|&&
+operator|(
 operator|(
 name|fieldText
 operator|.
@@ -775,7 +825,9 @@ name|eol
 argument_list|)
 operator|==
 literal|'\n'
+operator|)
 operator|||
+operator|(
 name|fieldText
 operator|.
 name|charAt
@@ -784,6 +836,7 @@ name|eol
 argument_list|)
 operator|==
 literal|'\r'
+operator|)
 operator|)
 condition|)
 block|{

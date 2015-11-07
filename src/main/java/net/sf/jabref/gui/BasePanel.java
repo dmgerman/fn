@@ -402,6 +402,54 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|actions
+operator|.
+name|BaseAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|actions
+operator|.
+name|CleanUpAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|desktop
+operator|.
+name|JabRefDesktop
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|entryeditor
 operator|.
 name|EntryEditor
@@ -469,6 +517,38 @@ operator|.
 name|labelPattern
 operator|.
 name|SearchFixDuplicateLabels
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|mergeentries
+operator|.
+name|MergeEntriesDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|mergeentries
+operator|.
+name|MergeEntryDOIDialog
 import|;
 end_import
 
@@ -713,24 +793,6 @@ operator|.
 name|io
 operator|.
 name|FileBasedLock
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|io
-operator|.
-name|JabRefDesktop
 import|;
 end_import
 
@@ -988,7 +1050,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|DefaultFormBuilder
+name|FormBuilder
 import|;
 end_import
 
@@ -1046,15 +1108,6 @@ name|ClipboardOwner
 implements|,
 name|FileUpdateListener
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -1107,7 +1160,7 @@ name|WILL_SHOW_EDITOR
 init|=
 literal|3
 decl_stmt|;
-comment|/*       * The database shown in this panel.      */
+comment|/*      * The database shown in this panel.      */
 DECL|field|database
 specifier|public
 name|BibtexDatabase
@@ -1415,6 +1468,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|sidePaneManager
 specifier|private
+specifier|final
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
@@ -1808,19 +1862,6 @@ operator|::
 name|editSignalled
 argument_list|)
 expr_stmt|;
-name|actions
-operator|.
-name|put
-argument_list|(
-literal|"test"
-argument_list|,
-operator|new
-name|FindFullTextAction
-argument_list|(
-name|this
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|// The action for saving a database.
 name|actions
 operator|.
@@ -1913,15 +1954,19 @@ argument_list|()
 block|;
 if|if
 condition|(
+operator|(
 name|bes
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|TransferableBibtexEntry
@@ -2019,17 +2064,21 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|cols
 operator|.
 name|length
 operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
 name|rows
 operator|.
 name|length
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
 comment|// Copy single value.
@@ -2124,7 +2173,9 @@ operator|->
 block|{
 name|runCommand
 argument_list|(
-literal|"copy"
+name|Actions
+operator|.
+name|COPY
 argument_list|)
 block|;
 name|BibtexEntry
@@ -2139,15 +2190,19 @@ block|;
 comment|//int row0 = mainTable.getSelectedRow();
 if|if
 condition|(
+operator|(
 name|bes
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 comment|// Create a CompoundEdit to make the action undoable.
@@ -2308,15 +2363,19 @@ argument_list|()
 block|;
 if|if
 condition|(
+operator|(
 name|bes
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|boolean
@@ -2731,15 +2790,19 @@ end_comment
 begin_if
 if|if
 condition|(
+operator|(
 name|bes
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|NamedCompound
@@ -3824,6 +3887,7 @@ argument_list|)
 decl_stmt|;
 comment|// First check if any entries have keys set already. If so, possibly remove
 comment|// them from consideration, or warn about overwriting keys.
+comment|// This is a partial clone of net.sf.jabref.gui.entryeditor.EntryEditor.GenerateKeyAction.actionPerformed(ActionEvent)
 for|for
 control|(
 name|Iterator
@@ -4217,10 +4281,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|row
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|mainTable
 operator|.
 name|getSelectedRowCount
@@ -4230,6 +4297,7 @@ name|entries
 operator|.
 name|size
 argument_list|()
+operator|)
 condition|)
 block|{
 name|mainTable
@@ -4490,15 +4558,19 @@ argument_list|()
 block|;
 if|if
 condition|(
+operator|(
 name|bes
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|storeCurrentEdit
@@ -4799,15 +4871,19 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|bes
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|storeCurrentEdit
@@ -5097,15 +5173,19 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|bes
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|storeCurrentEdit
@@ -5406,15 +5486,19 @@ literal|"ps"
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|bes
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|bes
 operator|.
 name|length
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
 name|FileListEntry
@@ -5711,7 +5795,7 @@ name|metaData
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -5729,7 +5813,7 @@ name|metaData
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -5808,7 +5892,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|USE_REG_EXP_SEARCH_KEY
+name|AUTOLINK_USE_REG_EXP_SEARCH_KEY
 argument_list|)
 condition|)
 block|{
@@ -5922,18 +6006,24 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|index
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|index
 operator|<
+operator|(
 name|filepath
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
+operator|)
 condition|)
 block|{
 name|String
@@ -6191,21 +6281,25 @@ decl_stmt|;
 name|String
 name|field
 init|=
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|bes
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|bes
 operator|.
 name|length
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
 name|Object
@@ -6230,7 +6324,9 @@ condition|)
 block|{
 name|runCommand
 argument_list|(
-literal|"openFile"
+name|Actions
+operator|.
+name|OPEN_FILE
 argument_list|)
 expr_stmt|;
 comment|// Fall back on PDF/PS fields???
@@ -6265,7 +6361,9 @@ condition|)
 block|{
 name|runCommand
 argument_list|(
-literal|"openFile"
+name|Actions
+operator|.
+name|OPEN_FILE
 argument_list|)
 expr_stmt|;
 comment|// Fall back on PDF/PS fields???
@@ -6411,7 +6509,7 @@ argument_list|()
 operator|.
 name|getFileDirectory
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
@@ -6501,15 +6599,19 @@ literal|"doi"
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|bes
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|bes
 operator|.
 name|length
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
 name|Object
@@ -6825,6 +6927,31 @@ name|put
 argument_list|(
 name|Actions
 operator|.
+name|MERGE_DOI
+argument_list|,
+call|(
+name|BaseAction
+call|)
+argument_list|()
+operator|->
+operator|new
+name|MergeEntryDOIDialog
+argument_list|(
+name|BasePanel
+operator|.
+name|this
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|actions
+operator|.
+name|put
+argument_list|(
+name|Actions
+operator|.
 name|OPEN_SPIRES
 argument_list|,
 operator|new
@@ -6849,15 +6976,19 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|bes
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|bes
 operator|.
 name|length
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
 name|Object
@@ -8109,29 +8240,11 @@ argument_list|,
 name|enabled
 argument_list|)
 block|;
-name|frame
-operator|.
-name|highlightAny
-operator|.
-name|setSelected
-argument_list|(
-name|enabled
-argument_list|)
-block|;
 if|if
 condition|(
 name|enabled
 condition|)
 block|{
-name|frame
-operator|.
-name|highlightAll
-operator|.
-name|setSelected
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 name|Globals
 operator|.
 name|prefs
@@ -8204,29 +8317,11 @@ argument_list|,
 name|enabled
 argument_list|)
 block|;
-name|frame
-operator|.
-name|highlightAll
-operator|.
-name|setSelected
-argument_list|(
-name|enabled
-argument_list|)
-block|;
 if|if
 condition|(
 name|enabled
 condition|)
 block|{
-name|frame
-operator|.
-name|highlightAny
-operator|.
-name|setSelected
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 name|Globals
 operator|.
 name|prefs
@@ -8453,46 +8548,6 @@ name|put
 argument_list|(
 name|Actions
 operator|.
-name|AUTO_SET_PDF
-argument_list|,
-operator|new
-name|AutoSetExternalFileForEntries
-argument_list|(
-name|this
-argument_list|,
-literal|"pdf"
-argument_list|)
-argument_list|)
-expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
-name|actions
-operator|.
-name|put
-argument_list|(
-name|Actions
-operator|.
-name|AUTO_SET_PS
-argument_list|,
-operator|new
-name|AutoSetExternalFileForEntries
-argument_list|(
-name|this
-argument_list|,
-literal|"ps"
-argument_list|)
-argument_list|)
-expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
-name|actions
-operator|.
-name|put
-argument_list|(
-name|Actions
-operator|.
 name|AUTO_SET_FILE
 argument_list|,
 operator|new
@@ -8630,9 +8685,27 @@ argument_list|)
 expr_stmt|;
 end_expr_stmt
 
+begin_expr_stmt
+name|actions
+operator|.
+name|put
+argument_list|(
+name|Actions
+operator|.
+name|DOWNLOAD_FULL_TEXT
+argument_list|,
+operator|new
+name|FindFullTextAction
+argument_list|(
+name|this
+argument_list|)
+argument_list|)
+expr_stmt|;
+end_expr_stmt
+
 begin_comment
 unit|}
-comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.      */
+comment|/**      * This method is called from JabRefFrame is a database specific action is requested by the user. Runs the command      * if it is defined, or prints an error message to the standard error stream.      *      * @param _command The name of the command to run.      */
 end_comment
 
 begin_function
@@ -8668,9 +8741,8 @@ operator|+
 literal|'\''
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
-else|else
-block|{
 name|Object
 name|o
 init|=
@@ -8778,18 +8850,24 @@ operator|.
 name|unblock
 argument_list|()
 expr_stmt|;
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"runCommand error: "
+operator|+
 name|ex
 operator|.
-name|printStackTrace
+name|getMessage
 argument_list|()
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_function
 
 begin_function
-DECL|method|saveDatabase (File file, boolean selectedOnly, String encoding, FileActions.DatabaseSaveType saveType)
+DECL|method|saveDatabase (File file, boolean selectedOnly, String enc, FileActions.DatabaseSaveType saveType)
 specifier|private
 name|boolean
 name|saveDatabase
@@ -8801,7 +8879,7 @@ name|boolean
 name|selectedOnly
 parameter_list|,
 name|String
-name|encoding
+name|enc
 parameter_list|,
 name|FileActions
 operator|.
@@ -8847,7 +8925,7 @@ literal|false
 argument_list|,
 literal|false
 argument_list|,
-name|encoding
+name|enc
 argument_list|,
 literal|false
 argument_list|)
@@ -8876,7 +8954,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 argument_list|,
-name|encoding
+name|enc
 argument_list|,
 name|saveType
 argument_list|)
@@ -8889,6 +8967,7 @@ name|UnsupportedCharsetException
 name|ex2
 parameter_list|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -8903,7 +8982,7 @@ literal|"Could not save file. "
 operator|+
 literal|"Character encoding '%0' is not supported."
 argument_list|,
-name|encoding
+name|enc
 argument_list|)
 argument_list|,
 name|Localization
@@ -8918,6 +8997,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 throw|throw
 operator|new
 name|SaveException
@@ -9067,18 +9147,22 @@ name|couldEncodeAll
 argument_list|()
 condition|)
 block|{
-name|DefaultFormBuilder
+name|FormBuilder
 name|builder
 init|=
-operator|new
-name|DefaultFormBuilder
+name|FormBuilder
+operator|.
+name|create
+argument_list|()
+operator|.
+name|layout
 argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
 literal|"left:pref, 4dlu, fill:pref"
 argument_list|,
-literal|""
+literal|"pref, 4dlu, pref"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -9106,7 +9190,7 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
 argument_list|(
 name|Localization
 operator|.
@@ -9120,17 +9204,31 @@ name|getEncoding
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|builder
 operator|.
-name|append
+name|xy
 argument_list|(
-name|ta
+literal|1
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|builder
 operator|.
-name|append
+name|add
+argument_list|(
+name|ta
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|3
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|add
 argument_list|(
 name|Localization
 operator|.
@@ -9138,6 +9236,13 @@ name|lang
 argument_list|(
 literal|"What do you want to do?"
 argument_list|)
+argument_list|)
+operator|.
+name|xy
+argument_list|(
+literal|1
+argument_list|,
+literal|3
 argument_list|)
 expr_stmt|;
 name|String
@@ -9248,7 +9353,7 @@ name|Encodings
 operator|.
 name|ENCODINGS
 argument_list|,
-name|encoding
+name|enc
 argument_list|)
 decl_stmt|;
 if|if
@@ -9317,7 +9422,7 @@ name|this
 operator|.
 name|encoding
 operator|=
-name|encoding
+name|enc
 expr_stmt|;
 comment|// Make sure to remember which encoding we used.
 block|}
@@ -9336,7 +9441,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method is called from JabRefFrame when the user wants to      * create a new entry. If the argument is null, the user is      * prompted for an entry type.      *      * @param type The type of the entry to create.      * @return The newly created BibtexEntry or null the operation was canceled by the user.      */
+comment|/**      * This method is called from JabRefFrame when the user wants to create a new entry. If the argument is null, the      * user is prompted for an entry type.      *      * @param type The type of the entry to create.      * @return The newly created BibtexEntry or null the operation was canceled by the user.      */
 end_comment
 
 begin_function
@@ -9607,7 +9712,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This listener is used to add a new entry to a group (or a set of groups)      * in case the Group View is selected and one or more groups are marked      */
+comment|/**      * This listener is used to add a new entry to a group (or a set of groups) in case the Group View is selected and      * one or more groups are marked      */
 end_comment
 
 begin_class
@@ -9631,6 +9736,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|e
 operator|.
 name|getType
@@ -9639,6 +9745,7 @@ operator|==
 name|ChangeType
 operator|.
 name|ADDED_ENTRY
+operator|)
 operator|&&
 name|Globals
 operator|.
@@ -9755,7 +9862,7 @@ block|}
 end_class
 
 begin_comment
-comment|/**      * Ensures that the search auto completer is up to date when entries are changed      * AKA Let the auto completer, if any, harvest words from the entry      */
+comment|/**      * Ensures that the search auto completer is up to date when entries are changed AKA Let the auto completer, if any,      * harvest words from the entry      */
 end_comment
 
 begin_class
@@ -9779,6 +9886,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|e
 operator|.
 name|getType
@@ -9787,7 +9895,9 @@ operator|==
 name|ChangeType
 operator|.
 name|CHANGED_ENTRY
+operator|)
 operator|||
+operator|(
 name|e
 operator|.
 name|getType
@@ -9796,6 +9906,7 @@ operator|==
 name|ChangeType
 operator|.
 name|ADDED_ENTRY
+operator|)
 condition|)
 block|{
 name|searchAutoCompleter
@@ -9814,7 +9925,7 @@ block|}
 end_class
 
 begin_comment
-comment|/**      * Ensures that auto completers are up to date when entries are changed      * AKA Let the auto completer, if any, harvest words from the entry      */
+comment|/**      * Ensures that auto completers are up to date when entries are changed AKA Let the auto completer, if any, harvest      * words from the entry      */
 end_comment
 
 begin_class
@@ -9838,6 +9949,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|e
 operator|.
 name|getType
@@ -9846,7 +9958,9 @@ operator|==
 name|ChangeType
 operator|.
 name|CHANGED_ENTRY
+operator|)
 operator|||
+operator|(
 name|e
 operator|.
 name|getType
@@ -9855,6 +9969,7 @@ operator|==
 name|ChangeType
 operator|.
 name|ADDED_ENTRY
+operator|)
 condition|)
 block|{
 name|BasePanel
@@ -9877,7 +9992,7 @@ block|}
 end_class
 
 begin_comment
-comment|/**      * This method is called from JabRefFrame when the user wants to      * create a new entry.      *      * @param bibEntry The new entry.      */
+comment|/**      * This method is called from JabRefFrame when the user wants to create a new entry.      *      * @param bibEntry The new entry.      */
 end_comment
 
 begin_function
@@ -10038,6 +10153,87 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+end_function
+
+begin_function
+DECL|method|editEntryByKeyAndFocusField (String bibtexKey, String fieldName)
+specifier|public
+name|void
+name|editEntryByKeyAndFocusField
+parameter_list|(
+name|String
+name|bibtexKey
+parameter_list|,
+name|String
+name|fieldName
+parameter_list|)
+block|{
+name|BibtexEntry
+index|[]
+name|entries
+init|=
+name|database
+operator|.
+name|getEntriesByKey
+argument_list|(
+name|bibtexKey
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|entries
+operator|.
+name|length
+operator|==
+literal|1
+condition|)
+block|{
+name|mainTable
+operator|.
+name|setSelected
+argument_list|(
+name|mainTable
+operator|.
+name|findEntry
+argument_list|(
+name|entries
+index|[
+literal|0
+index|]
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|selectionListener
+operator|.
+name|editSignalled
+argument_list|()
+expr_stmt|;
+name|EntryEditor
+name|editor
+init|=
+name|getEntryEditor
+argument_list|(
+name|entries
+index|[
+literal|0
+index|]
+argument_list|)
+decl_stmt|;
+name|editor
+operator|.
+name|setFocusToField
+argument_list|(
+name|fieldName
+argument_list|)
+expr_stmt|;
+operator|new
+name|FocusRequester
+argument_list|(
+name|editor
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_function
@@ -10305,7 +10501,9 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-literal|"cut"
+name|Actions
+operator|.
+name|CUT
 argument_list|,
 operator|new
 name|AbstractAction
@@ -10333,7 +10531,9 @@ try|try
 block|{
 name|runCommand
 argument_list|(
-literal|"cut"
+name|Actions
+operator|.
+name|CUT
 argument_list|)
 expr_stmt|;
 block|}
@@ -10360,7 +10560,9 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-literal|"copy"
+name|Actions
+operator|.
+name|COPY
 argument_list|,
 operator|new
 name|AbstractAction
@@ -10388,7 +10590,9 @@ try|try
 block|{
 name|runCommand
 argument_list|(
-literal|"copy"
+name|Actions
+operator|.
+name|COPY
 argument_list|)
 expr_stmt|;
 block|}
@@ -10415,7 +10619,9 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-literal|"paste"
+name|Actions
+operator|.
+name|PASTE
 argument_list|,
 operator|new
 name|AbstractAction
@@ -10443,7 +10649,9 @@ try|try
 block|{
 name|runCommand
 argument_list|(
-literal|"paste"
+name|Actions
+operator|.
+name|PASTE
 argument_list|)
 expr_stmt|;
 block|}
@@ -10716,7 +10924,9 @@ try|try
 block|{
 name|runCommand
 argument_list|(
-literal|"edit"
+name|Actions
+operator|.
+name|EDIT
 argument_list|)
 expr_stmt|;
 block|}
@@ -11128,15 +11338,10 @@ name|void
 name|adjustSplitter
 parameter_list|()
 block|{
-name|int
-name|mode
-init|=
-name|getMode
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
-name|mode
+name|getMode
+argument_list|()
 operator|==
 name|BasePanel
 operator|.
@@ -11193,7 +11398,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Stores the source view in the entry editor, if one is open, has the source view      * selected and the source has been edited.      *      * @return boolean false if there is a validation error in the source panel, true otherwise.      */
+comment|/**      * Stores the source view in the entry editor, if one is open, has the source view selected and the source has been      * edited.      *      * @return boolean false if there is a validation error in the source panel, true otherwise.      */
 end_comment
 
 begin_function
@@ -11240,6 +11445,11 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|method|moveFocusToEntryEditor ()
 specifier|public
 name|void
@@ -11279,19 +11489,23 @@ name|isShowingEditor
 parameter_list|()
 block|{
 return|return
+operator|(
 name|splitPane
 operator|.
 name|getBottomComponent
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|splitPane
 operator|.
 name|getBottomComponent
 argument_list|()
 operator|instanceof
 name|EntryEditor
+operator|)
 return|;
 block|}
 end_function
@@ -11597,7 +11811,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Get an entry editor ready to edit the given entry. If an appropriate editor is already      * cached, it will be updated and returned.      *      * @param entry The entry to be edited.      * @return A suitable entry editor.      */
+comment|/**      * Get an entry editor ready to edit the given entry. If an appropriate editor is already cached, it will be updated      * and returned.      *      * @param entry The entry to be edited.      * @return A suitable entry editor.      */
 end_comment
 
 begin_function
@@ -11654,13 +11868,17 @@ comment|// If the cached editor is not the same as the currently shown one,
 comment|// make sure the current one stores its current edit:
 if|if
 condition|(
+operator|(
 name|visibleNow
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|form
 operator|!=
 name|visibleNow
+operator|)
 condition|)
 block|{
 name|visibleNow
@@ -11739,7 +11957,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Sets the given entry editor as the bottom component in the split pane. If an entry editor already      * was shown, makes sure that the divider doesn't move.      * Updates the mode to SHOWING_EDITOR.      *      * @param editor The entry editor to add.      */
+comment|/**      * Sets the given entry editor as the bottom component in the split pane. If an entry editor already was shown,      * makes sure that the divider doesn't move. Updates the mode to SHOWING_EDITOR.      *      * @param editor The entry editor to add.      */
 end_comment
 
 begin_function
@@ -11859,7 +12077,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Sets the given preview panel as the bottom component in the split panel.      * Updates the mode to SHOWING_PREVIEW.      *      * @param preview The preview to show.      */
+comment|/**      * Sets the given preview panel as the bottom component in the split panel. Updates the mode to SHOWING_PREVIEW.      *      * @param preview The preview to show.      */
 end_comment
 
 begin_function
@@ -11920,7 +12138,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method selects the given entry, and scrolls it into view in the table.      * If an entryEditor is shown, it is given focus afterwards.      */
+comment|/**      * This method selects the given entry, and scrolls it into view in the table. If an entryEditor is shown, it is      * given focus afterwards.      */
 end_comment
 
 begin_function
@@ -11978,7 +12196,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method is called from an EntryEditor when it should be closed. We relay      * to the selection listener, which takes care of the rest.      *      * @param editor The entry editor to close.      */
+comment|/**      * This method is called from an EntryEditor when it should be closed. We relay to the selection listener, which      * takes care of the rest.      *      * @param editor The entry editor to close.      */
 end_comment
 
 begin_function
@@ -12024,7 +12242,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method selects the given enties.      * If an entryEditor is shown, it is given focus afterwards.      */
+comment|/**      * This method selects the given enties. If an entryEditor is shown, it is given focus afterwards.      */
 end_comment
 
 begin_comment
@@ -12047,18 +12265,22 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|mode
 operator|==
 name|BasePanel
 operator|.
 name|SHOWING_EDITOR
+operator|)
 operator|&&
+operator|(
 name|currentEditor
 operator|.
 name|getEntry
 argument_list|()
 operator|==
 name|be
+operator|)
 condition|)
 block|{
 name|selectionListener
@@ -12145,7 +12367,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * If an entry editor is showing, make sure its currently focused field      * stores its changes, if any.      */
+comment|/**      * If an entry editor is showing, make sure its currently focused field stores its changes, if any.      */
 end_comment
 
 begin_function
@@ -12182,7 +12404,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method iterates through all existing entry editors in this      * BasePanel, telling each to update all its instances of      * FieldContentSelector. This is done to ensure that the list of words      * in each selector is up-to-date after the user has made changes in      * the Manage dialog.      */
+comment|/**      * This method iterates through all existing entry editors in this BasePanel, telling each to update all its      * instances of FieldContentSelector. This is done to ensure that the list of words in each selector is up-to-date      * after the user has made changes in the Manage dialog.      */
 end_comment
 
 begin_function
@@ -12280,7 +12502,7 @@ name|baseChanged
 operator|=
 literal|true
 expr_stmt|;
-comment|// Put an asterix behind the file name to indicate the
+comment|// Put an asterix behind the filename to indicate the
 comment|// database has changed.
 name|String
 name|oldTitle
@@ -12766,15 +12988,19 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|bes
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|bes
 operator|.
 name|length
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 name|output
@@ -13126,7 +13352,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * If the relevant option is set, autogenerate keys for all entries that are      * lacking keys.      */
+comment|/**      * If the relevant option is set, autogenerate keys for all entries that are lacking keys.      */
 end_comment
 
 begin_function
@@ -13190,9 +13416,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|oldKey
 operator|==
 literal|null
+operator|)
 operator|||
 name|oldKey
 operator|.
@@ -13268,7 +13496,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Activates or deactivates the entry preview, depending on the argument.      * When deactivating, makes sure that any visible preview is hidden.      *      * @param enabled      */
+comment|/**      * Activates or deactivates the entry preview, depending on the argument. When deactivating, makes sure that any      * visible preview is hidden.      *      * @param enabled      */
 end_comment
 
 begin_function
@@ -13312,7 +13540,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Depending on whether a preview or an entry editor is showing, save the current      * divider location in the correct preference setting.      */
+comment|/**      * Depending on whether a preview or an entry editor is showing, save the current divider location in the correct      * preference setting.      */
 end_comment
 
 begin_function
@@ -13417,13 +13645,17 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|focused
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|focused
 operator|instanceof
 name|FieldEditor
+operator|)
 operator|&&
 name|focused
 operator|.
@@ -13435,16 +13667,20 @@ comment|// User is currently editing a field:
 comment|// Check if it is the preamble:
 if|if
 condition|(
+operator|(
 name|preambleEditor
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|focused
 operator|==
 name|preambleEditor
 operator|.
 name|getFieldEditor
 argument_list|()
+operator|)
 condition|)
 block|{
 name|preambleEditor
@@ -13550,13 +13786,17 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|focused
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|focused
 operator|instanceof
 name|FieldEditor
+operator|)
 operator|&&
 name|focused
 operator|.
@@ -13643,7 +13883,9 @@ parameter_list|,
 name|Transferable
 name|contents
 parameter_list|)
-block|{     }
+block|{
+comment|// Nothing
+block|}
 end_function
 
 begin_function
@@ -13658,17 +13900,21 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|getShowing
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|splitPane
 operator|.
 name|getBottomComponent
 argument_list|()
 operator|instanceof
 name|EntryEditor
+operator|)
 condition|)
 block|{
 name|EntryEditor
@@ -13866,6 +14112,7 @@ decl_stmt|;
 comment|// Test: running scan automatically in background
 if|if
 condition|(
+operator|(
 name|BasePanel
 operator|.
 name|this
@@ -13874,6 +14121,7 @@ name|getFile
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|FileBasedLock
@@ -13892,11 +14140,9 @@ argument_list|)
 condition|)
 block|{
 comment|// The file is locked even after the maximum wait. Do nothing.
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"File updated externally, but change scan failed because the file is locked."
 argument_list|)
@@ -14071,7 +14317,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Get an array containing the currently selected entries.      * The array is stable and not changed if the selection changes      *      * @return An array containing the selected entries. Is never null.      */
+comment|/**      * Get an array containing the currently selected entries. The array is stable and not changed if the selection      * changes      *      * @return An array containing the selected entries. Is never null.      */
 end_comment
 
 begin_function
@@ -14112,7 +14358,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Get a String containing a comma-separated list of the bibtex keys      * of the selected entries.      *      * @return A comma-separated list of the keys of the selected entries.      */
+comment|/**      * Get a String containing a comma-separated list of the bibtex keys of the selected entries.      *      * @return A comma-separated list of the keys of the selected entries.      */
 end_comment
 
 begin_function
@@ -14163,9 +14409,11 @@ expr_stmt|;
 comment|// if the key is empty we give a warning and ignore this entry
 if|if
 condition|(
+operator|(
 name|citeKey
 operator|==
 literal|null
+operator|)
 operator|||
 name|citeKey
 operator|.
@@ -14374,7 +14622,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Update the pointer to the currently shown entry in all cases where the user has      * moved to a new entry, except when using Back and Forward commands. Also updates      * history for Back command, and clears history for Forward command.      *      * @param entry The entry that is now to be shown.      */
+comment|/**      * Update the pointer to the currently shown entry in all cases where the user has moved to a new entry, except when      * using Back and Forward commands. Also updates history for Back command, and clears history for Forward command.      *      * @param entry The entry that is now to be shown.      */
 end_comment
 
 begin_function
@@ -14468,7 +14716,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Go back (if there is any recorded history) and update the histories for      * the Back and Forward commands.      */
+comment|/**      * Go back (if there is any recorded history) and update the histories for the Back and Forward commands.      */
 end_comment
 
 begin_function
@@ -14749,6 +14997,7 @@ operator|.
 name|exists
 argument_list|()
 operator|||
+operator|(
 name|JOptionPane
 operator|.
 name|showConfirmDialog
@@ -14786,6 +15035,7 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 name|saveDatabase

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -88,7 +88,23 @@ name|logic
 operator|.
 name|labelPattern
 operator|.
-name|LabelPattern
+name|AbstractLabelPattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|labelPattern
+operator|.
+name|DatabaseLabelPattern
 import|;
 end_import
 
@@ -169,16 +185,6 @@ name|KEYPATTERNDEFAULT
 init|=
 literal|"keypatterndefault"
 decl_stmt|;
-DECL|field|METADATA_LINE_LENGTH
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|METADATA_LINE_LENGTH
-init|=
-literal|70
-decl_stmt|;
-comment|// The line length used to wrap metadata.
 DECL|field|metaData
 specifier|private
 specifier|final
@@ -195,14 +201,7 @@ name|metaData
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Vector
-argument_list|<
-name|String
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|groupsRoot
@@ -225,7 +224,7 @@ literal|true
 decl_stmt|;
 DECL|field|labelPattern
 specifier|private
-name|LabelPattern
+name|AbstractLabelPattern
 name|labelPattern
 decl_stmt|;
 DECL|field|dbStrings
@@ -325,9 +324,7 @@ name|orderedData
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// We must allow for ; and \ in escape sequences.
@@ -478,9 +475,11 @@ condition|(
 operator|!
 name|groupsTreePresent
 operator|&&
+operator|(
 name|flatGroupsData
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 try|try
@@ -638,7 +637,7 @@ name|iterator
 argument_list|()
 return|;
 block|}
-comment|/**      * Retrieves the stored meta data.      *       * @param key the key to look up      * @return null if no data is found      */
+comment|/**      * Retrieves the stored meta data.      *      * @param key the key to look up      * @return null if no data is found      */
 DECL|method|getData (String key)
 specifier|public
 name|Vector
@@ -660,7 +659,7 @@ name|key
 argument_list|)
 return|;
 block|}
-comment|/**      * Removes the given key from metadata.      * Nothing is done if key is not found.      *       * @param key the key to remove      */
+comment|/**      * Removes the given key from metadata.      * Nothing is done if key is not found.      *      * @param key the key to remove      */
 DECL|method|remove (String key)
 specifier|public
 name|void
@@ -742,9 +741,7 @@ name|dirs
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|Vector
@@ -788,9 +785,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|vec
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|vec
@@ -825,9 +824,11 @@ operator|.
 name|isAbsolute
 argument_list|()
 operator|&&
+operator|(
 name|file
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|String
@@ -945,10 +946,12 @@ operator|.
 name|BIB_LOCATION_AS_FILE_DIR
 argument_list|)
 operator|&&
+operator|(
 name|getFile
 argument_list|()
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// Check if we should add it as primary file dir (first in the list) or not:
@@ -1122,9 +1125,7 @@ name|sortedKeys
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|metaData
 operator|.
@@ -1236,13 +1237,6 @@ argument_list|(
 literal|"}"
 argument_list|)
 expr_stmt|;
-name|wrapStringBuffer
-argument_list|(
-name|sb
-argument_list|,
-name|METADATA_LINE_LENGTH
-argument_list|)
-expr_stmt|;
 name|sb
 operator|.
 name|append
@@ -1276,16 +1270,20 @@ comment|// write groups if present. skip this if only the root node exists
 comment|// (which is always the AllEntriesGroup).
 if|if
 condition|(
+operator|(
 name|groupsRoot
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|groupsRoot
 operator|.
 name|getChildCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|StringBuffer
@@ -1446,13 +1444,6 @@ operator|+
 literal|";"
 argument_list|)
 decl_stmt|;
-name|wrapStringBuffer
-argument_list|(
-name|s
-argument_list|,
-name|METADATA_LINE_LENGTH
-argument_list|)
-expr_stmt|;
 name|sb
 operator|.
 name|append
@@ -1507,60 +1498,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|wrapStringBuffer (StringBuffer sb, int lineLength)
-specifier|private
-name|void
-name|wrapStringBuffer
-parameter_list|(
-name|StringBuffer
-name|sb
-parameter_list|,
-name|int
-name|lineLength
-parameter_list|)
-block|{
-for|for
-control|(
-name|int
-name|i
-init|=
-name|lineLength
-init|;
-name|i
-operator|<
-name|sb
-operator|.
-name|length
-argument_list|()
-condition|;
-name|i
-operator|+=
-name|lineLength
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|.
-name|length
-argument_list|()
-control|)
-block|{
-name|sb
-operator|.
-name|insert
-argument_list|(
-name|i
-argument_list|,
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-comment|/**      * Reads the next unit. Units are delimited by ';'.       */
+comment|/**      * Reads the next unit. Units are delimited by ';'.      */
 DECL|method|getNextUnit (Reader reader)
 specifier|private
+specifier|static
 name|String
 name|getNextUnit
 parameter_list|(
@@ -1743,7 +1684,7 @@ block|}
 comment|/**      * @return the stored label patterns      */
 DECL|method|getLabelPattern ()
 specifier|public
-name|LabelPattern
+name|AbstractLabelPattern
 name|getLabelPattern
 parameter_list|()
 block|{
@@ -1761,22 +1702,10 @@ block|}
 name|labelPattern
 operator|=
 operator|new
-name|LabelPattern
+name|DatabaseLabelPattern
 argument_list|()
 expr_stmt|;
-comment|// the parent label pattern of a BibTeX data base is the global pattern stored in the preferences
-name|labelPattern
-operator|.
-name|setParent
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getKeyPattern
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// read the data from the metadata and store it into the labelPattern
 for|for
 control|(
 name|String
@@ -1876,13 +1805,13 @@ return|return
 name|labelPattern
 return|;
 block|}
-comment|/**      * Updates the stored key patterns to the given key patterns.      *       * @param labelPattern the key patterns to update to.<br />      * A reference to this object is stored internally and is returned at getLabelPattern();      */
-DECL|method|setLabelPattern (LabelPattern labelPattern)
+comment|/**      * Updates the stored key patterns to the given key patterns.      *      * @param labelPattern the key patterns to update to.<br />      * A reference to this object is stored internally and is returned at getLabelPattern();      */
+DECL|method|setLabelPattern (DatabaseLabelPattern labelPattern)
 specifier|public
 name|void
 name|setLabelPattern
 parameter_list|(
-name|LabelPattern
+name|DatabaseLabelPattern
 name|labelPattern
 parameter_list|)
 block|{
@@ -1934,17 +1863,33 @@ expr_stmt|;
 block|}
 block|}
 comment|// set new value if it is not a default value
-for|for
-control|(
+name|Enumeration
+argument_list|<
 name|String
-name|key
-range|:
+argument_list|>
+name|allKeys
+init|=
 name|labelPattern
 operator|.
-name|keySet
+name|getAllKeys
 argument_list|()
-control|)
+decl_stmt|;
+while|while
+condition|(
+name|allKeys
+operator|.
+name|hasMoreElements
+argument_list|()
+condition|)
 block|{
+name|String
+name|key
+init|=
+name|allKeys
+operator|.
+name|nextElement
+argument_list|()
+decl_stmt|;
 name|String
 name|metaDataKey
 init|=
@@ -1954,6 +1899,17 @@ name|PREFIX_KEYPATTERN
 operator|+
 name|key
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|labelPattern
+operator|.
+name|isDefaultValue
+argument_list|(
+name|key
+argument_list|)
+condition|)
+block|{
 name|ArrayList
 argument_list|<
 name|String
@@ -1962,18 +1918,11 @@ name|value
 init|=
 name|labelPattern
 operator|.
-name|get
+name|getValue
 argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|value
-operator|!=
-literal|null
-condition|)
-block|{
 name|Vector
 argument_list|<
 name|String
@@ -1982,9 +1931,7 @@ name|data
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|data
@@ -2041,9 +1988,7 @@ name|data
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|data

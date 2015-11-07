@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.                   2003-2015 Ulrik Stervbo (ulriks AT ruc.dk)      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -79,6 +79,24 @@ operator|.
 name|regex
 operator|.
 name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|formatter
+operator|.
+name|casechanger
+operator|.
+name|Word
 import|;
 end_import
 
@@ -178,24 +196,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|AuthorList
-operator|.
-name|Author
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|exporter
 operator|.
 name|layout
@@ -221,11 +221,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author Ulrik Stervbo (ulriks AT ruc.dk)  */
-end_comment
-
-begin_comment
-comment|/**  * This is the utility class of the LabelPattern package.  * @author Ulrik Stervbo (ulriks AT ruc.dk)  */
+comment|/**  * This is the utility class of the LabelPattern package.  */
 end_comment
 
 begin_class
@@ -259,28 +255,6 @@ name|LabelPatternUtil
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
-DECL|field|SKIP_WORDS
-specifier|private
-specifier|static
-specifier|final
-name|String
-index|[]
-name|SKIP_WORDS
-init|=
-block|{
-literal|"a"
-block|,
-literal|"an"
-block|,
-literal|"the"
-block|,
-literal|"for"
-block|,
-literal|"on"
-block|,
-literal|"of"
-block|}
 decl_stmt|;
 DECL|field|DEFAULT_LABELPATTERN
 specifier|public
@@ -334,7 +308,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Required fro LabelPatternUtilTest      *       * @param db the DB to use as global database      */
+comment|/**      * Required fro LabelPatternUtilTest      *      * @param db the DB to use as global database      */
 DECL|method|setDataBase (BibtexDatabase db)
 specifier|public
 specifier|static
@@ -415,6 +389,7 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|and
 operator|.
 name|equals
@@ -422,6 +397,7 @@ argument_list|(
 literal|""
 argument_list|)
 operator|&&
+operator|(
 name|content
 operator|.
 name|charAt
@@ -430,7 +406,10 @@ name|p
 argument_list|)
 operator|==
 literal|' '
+operator|)
+operator|)
 operator|||
+operator|(
 name|and
 operator|.
 name|equals
@@ -438,6 +417,7 @@ argument_list|(
 literal|" "
 argument_list|)
 operator|&&
+operator|(
 name|content
 operator|.
 name|charAt
@@ -446,7 +426,10 @@ name|p
 argument_list|)
 operator|==
 literal|'a'
+operator|)
+operator|)
 operator|||
+operator|(
 name|and
 operator|.
 name|equals
@@ -454,6 +437,7 @@ argument_list|(
 literal|" a"
 argument_list|)
 operator|&&
+operator|(
 name|content
 operator|.
 name|charAt
@@ -462,7 +446,10 @@ name|p
 argument_list|)
 operator|==
 literal|'n'
+operator|)
+operator|)
 operator|||
+operator|(
 name|and
 operator|.
 name|equals
@@ -470,6 +457,7 @@ argument_list|(
 literal|" an"
 argument_list|)
 operator|&&
+operator|(
 name|content
 operator|.
 name|charAt
@@ -478,6 +466,8 @@ name|p
 argument_list|)
 operator|==
 literal|'d'
+operator|)
+operator|)
 condition|)
 block|{
 name|and
@@ -500,6 +490,7 @@ argument_list|(
 literal|" and"
 argument_list|)
 operator|&&
+operator|(
 name|content
 operator|.
 name|charAt
@@ -508,6 +499,7 @@ name|p
 argument_list|)
 operator|==
 literal|' '
+operator|)
 condition|)
 block|{
 name|and
@@ -838,22 +830,8 @@ name|String
 name|author
 parameter_list|)
 block|{
-name|Author
-name|a
-init|=
-name|AuthorList
-operator|.
-name|getAuthorList
-argument_list|(
-name|author
-argument_list|)
-operator|.
-name|getAuthor
-argument_list|(
-literal|0
-argument_list|)
-decl_stmt|;
 return|return
+operator|(
 name|author
 operator|.
 name|charAt
@@ -862,7 +840,9 @@ literal|0
 argument_list|)
 operator|==
 literal|'{'
+operator|)
 operator|&&
+operator|(
 name|author
 operator|.
 name|charAt
@@ -876,9 +856,10 @@ literal|1
 argument_list|)
 operator|==
 literal|'}'
+operator|)
 return|;
 block|}
-comment|/**      *<p>      * An author or editor may be and institution not a person. In that case the      * key generator builds very long keys, e.g.: for&ldquo;The Attributed      * Graph Grammar System (AGG)&rdquo; ->      *&ldquo;TheAttributedGraphGrammarSystemAGG&rdquo;.      *</p>      *       *<p>      * An institution name should be inside<code>{}</code> brackets. If the      * institution name also includes its abbreviation this abbreviation should      * be also in<code>{}</code> brackets. For the previous example the value      * should look like:      *<code>{The Attributed Graph Grammar System ({AGG})}</code>.      *</p>      *       *<p>      * If an institution includes its abbreviation, i.e. "...({XYZ})", first      * such abbreviation should be used as the key value part of such author.      *</p>      *       *<p>      * If an institution does not include its abbreviation the key should be      * generated form its name in the following way:      *</p>      *       *<p>      * The institution value can contain: institution name, part of the      * institution, address, etc. Those information should be separated by      * comma. Name of the institution and possible part of the institution      * should be on the beginning, while address and secondary information      * should be on the end.      *</p>      *       * Each part is examined separately:      *<ol>      *<li>We remove all tokens of a part which are one of the defined ignore      * words (the, press), which end with a dot (ltd., co., ...) and which first      * character is lowercase (of, on, di, ...).</li>      *<li>We detect a type of the part: university, technology institute,      * department, school, rest      *<ul>      *<li>University:<code>"Uni[NameOfTheUniversity]"</code></li>      *<li>Department: will be an abbreviation of all words beginning with the      * uppercase letter except of words:<code>d[ei]part.*</code>, school,      * faculty</li>      *<li>School: same as department</li>      *<li>Rest: If there are less than 3 tokens in such part than the result      * will be by concatenating those tokens, otherwise the result will be build      * from the first letters of words starting with and uppercase letter.</li>      *</ul>      *</ol>      *       * Parts are concatenated together in the following way:      *<ul>      *<li>If there is a university part use it otherwise use the rest part.</li>      *<li>If there is a school part append it.</li>      *<li>If there is a department part and it is not same as school part      * append it.</li>      *</ul>      *       * Rest part is only the first part which do not match any other type. All      * other parts (address, ...) are ignored.      *       * @param content the institution to generate a Bibtex key for      * @return<ul>      *<li>the institutation key</li>      *<li>"" in the case of a failure</li>      *<li>null if content is null</li>      *</ul>      */
+comment|/**      *<p>      * An author or editor may be and institution not a person. In that case the      * key generator builds very long keys, e.g.: for&ldquo;The Attributed      * Graph Grammar System (AGG)&rdquo; ->      *&ldquo;TheAttributedGraphGrammarSystemAGG&rdquo;.      *</p>      *      *<p>      * An institution name should be inside<code>{}</code> brackets. If the      * institution name also includes its abbreviation this abbreviation should      * be also in<code>{}</code> brackets. For the previous example the value      * should look like:      *<code>{The Attributed Graph Grammar System ({AGG})}</code>.      *</p>      *      *<p>      * If an institution includes its abbreviation, i.e. "...({XYZ})", first      * such abbreviation should be used as the key value part of such author.      *</p>      *      *<p>      * If an institution does not include its abbreviation the key should be      * generated form its name in the following way:      *</p>      *      *<p>      * The institution value can contain: institution name, part of the      * institution, address, etc. Those information should be separated by      * comma. Name of the institution and possible part of the institution      * should be on the beginning, while address and secondary information      * should be on the end.      *</p>      *      * Each part is examined separately:      *<ol>      *<li>We remove all tokens of a part which are one of the defined ignore      * words (the, press), which end with a dot (ltd., co., ...) and which first      * character is lowercase (of, on, di, ...).</li>      *<li>We detect a type of the part: university, technology institute,      * department, school, rest      *<ul>      *<li>University:<code>"Uni[NameOfTheUniversity]"</code></li>      *<li>Department: will be an abbreviation of all words beginning with the      * uppercase letter except of words:<code>d[ei]part.*</code>, school,      * faculty</li>      *<li>School: same as department</li>      *<li>Rest: If there are less than 3 tokens in such part than the result      * will be by concatenating those tokens, otherwise the result will be build      * from the first letters of words starting with and uppercase letter.</li>      *</ul>      *</ol>      *      * Parts are concatenated together in the following way:      *<ul>      *<li>If there is a university part use it otherwise use the rest part.</li>      *<li>If there is a school part append it.</li>      *<li>If there is a department part and it is not same as school part      * append it.</li>      *</ul>      *      * Rest part is only the first part which do not match any other type. All      * other parts (address, ...) are ignored.      *      * @param content the institution to generate a Bibtex key for      * @return<ul>      *<li>the institutation key</li>      *<li>"" in the case of a failure</li>      *<li>null if content is null</li>      *</ul>      */
 DECL|method|generateInstitutionKey (String content)
 specifier|private
 specifier|static
@@ -1045,9 +1026,7 @@ name|part
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Cleanup: remove unnecessary words.
@@ -1076,6 +1055,7 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 operator|!
 name|k
 operator|.
@@ -1097,6 +1077,7 @@ argument_list|()
 argument_list|)
 comment|// remove ignored words
 operator|&&
+operator|(
 name|k
 operator|.
 name|charAt
@@ -1110,6 +1091,7 @@ literal|1
 argument_list|)
 operator|!=
 literal|'.'
+operator|)
 operator|&&
 operator|(
 name|k
@@ -1126,13 +1108,17 @@ name|matches
 argument_list|(
 literal|"[A-Z]"
 argument_list|)
+operator|)
 operator|||
+operator|(
+operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|3
+operator|)
 operator|&&
 name|k
 operator|.
@@ -1150,6 +1136,7 @@ name|equals
 argument_list|(
 literal|"uni"
 argument_list|)
+operator|)
 condition|)
 block|{
 name|part
@@ -1196,12 +1183,14 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|5
+operator|)
 operator|&&
 name|k
 operator|.
@@ -1228,12 +1217,14 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|6
+operator|)
 operator|&&
 name|k
 operator|.
@@ -1278,12 +1269,15 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
+operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|7
+operator|)
 operator|&&
 name|k
 operator|.
@@ -1301,13 +1295,17 @@ name|matches
 argument_list|(
 literal|"d[ei]part"
 argument_list|)
+operator|)
 operator|||
+operator|(
+operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|4
+operator|)
 operator|&&
 name|k
 operator|.
@@ -1325,6 +1323,7 @@ name|equals
 argument_list|(
 literal|"lab"
 argument_list|)
+operator|)
 condition|)
 block|{
 name|isDepartment
@@ -1367,12 +1366,14 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|5
+operator|)
 operator|&&
 operator|!
 name|k
@@ -1401,13 +1402,17 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|index
 operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 name|department
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|department
@@ -1464,12 +1469,14 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|k
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|7
+operator|)
 operator|&&
 operator|!
 name|k
@@ -1667,13 +1674,18 @@ name|school
 operator|)
 operator|+
 operator|(
+operator|(
 name|department
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
+operator|(
 name|school
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|department
 operator|.
@@ -1681,6 +1693,7 @@ name|equals
 argument_list|(
 name|school
 argument_list|)
+operator|)
 condition|?
 literal|""
 else|:
@@ -1711,9 +1724,7 @@ name|fieldList
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Before we do anything, we add the parameter to the ArrayLIst
@@ -1761,8 +1772,8 @@ return|return
 name|fieldList
 return|;
 block|}
-comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      *      * The given database is used to avoid duplicate keys.      *      * @param database a<code>BibtexDatabase</code>      * @param entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
-DECL|method|makeLabel (MetaData metaData, BibtexDatabase database, BibtexEntry entry)
+comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      *      * The given database is used to avoid duplicate keys.      *      * @param dBase a<code>BibtexDatabase</code>      * @param entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
+DECL|method|makeLabel (MetaData metaData, BibtexDatabase dBase, BibtexEntry entry)
 specifier|public
 specifier|static
 name|BibtexEntry
@@ -1772,7 +1783,7 @@ name|MetaData
 name|metaData
 parameter_list|,
 name|BibtexDatabase
-name|database
+name|dBase
 parameter_list|,
 name|BibtexEntry
 name|entry
@@ -1782,7 +1793,7 @@ name|LabelPatternUtil
 operator|.
 name|database
 operator|=
-name|database
+name|dBase
 expr_stmt|;
 name|ArrayList
 argument_list|<
@@ -2033,9 +2044,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|regex
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|regex
@@ -2112,16 +2125,18 @@ name|LabelPatternUtil
 operator|.
 name|database
 operator|.
-name|getNumberOfKeyOccurences
+name|getNumberOfKeyOccurrences
 argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|oldKey
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|oldKey
 operator|.
@@ -2169,9 +2184,11 @@ condition|(
 operator|!
 name|alwaysAddLetter
 operator|&&
+operator|(
 name|occurrences
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 comment|// No dupes found, so we can just go ahead.
@@ -2275,16 +2292,18 @@ name|LabelPatternUtil
 operator|.
 name|database
 operator|.
-name|getNumberOfKeyOccurences
+name|getNumberOfKeyOccurrences
 argument_list|(
 name|moddedKey
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|oldKey
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|oldKey
 operator|.
@@ -2325,16 +2344,18 @@ name|LabelPatternUtil
 operator|.
 name|database
 operator|.
-name|getNumberOfKeyOccurences
+name|getNumberOfKeyOccurrences
 argument_list|(
 name|moddedKey
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|oldKey
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|oldKey
 operator|.
@@ -2607,12 +2628,14 @@ argument_list|(
 literal|""
 argument_list|)
 operator|&&
+operator|(
 name|modifier
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|2
+operator|)
 condition|)
 block|{
 return|return
@@ -2745,9 +2768,11 @@ else|else
 block|{
 if|if
 condition|(
+operator|(
 name|authString
 operator|==
 literal|null
+operator|)
 operator|||
 name|authString
 operator|.
@@ -2828,6 +2853,26 @@ return|return
 name|LabelPatternUtil
 operator|.
 name|firstAuthorForenameInitials
+argument_list|(
+name|authString
+argument_list|)
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|val
+operator|.
+name|equals
+argument_list|(
+literal|"authFirstFull"
+argument_list|)
+condition|)
+block|{
+return|return
+name|LabelPatternUtil
+operator|.
+name|firstAuthorVonAndLast
 argument_list|(
 name|authString
 argument_list|)
@@ -2925,24 +2970,13 @@ literal|"authorIni"
 argument_list|)
 condition|)
 block|{
-name|String
-name|s
-init|=
+return|return
 name|LabelPatternUtil
 operator|.
 name|oneAuthorPlusIni
 argument_list|(
 name|authString
 argument_list|)
-decl_stmt|;
-return|return
-name|s
-operator|==
-literal|null
-condition|?
-literal|""
-else|:
-name|s
 return|;
 block|}
 elseif|else
@@ -3180,8 +3214,6 @@ index|[
 literal|1
 index|]
 argument_list|)
-operator|-
-literal|1
 argument_list|)
 decl_stmt|;
 return|return
@@ -3480,9 +3512,7 @@ literal|"editorIni"
 argument_list|)
 condition|)
 block|{
-name|String
-name|s
-init|=
+return|return
 name|LabelPatternUtil
 operator|.
 name|oneAuthorPlusIni
@@ -3494,15 +3524,6 @@ argument_list|(
 literal|"editor"
 argument_list|)
 argument_list|)
-decl_stmt|;
-return|return
-name|s
-operator|==
-literal|null
-condition|?
-literal|""
-else|:
-name|s
 return|;
 block|}
 elseif|else
@@ -3872,6 +3893,38 @@ argument_list|(
 literal|3
 argument_list|,
 name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"title"
+argument_list|)
+argument_list|)
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|val
+operator|.
+name|equals
+argument_list|(
+literal|"veryshorttitle"
+argument_list|)
+condition|)
+block|{
+return|return
+name|LabelPatternUtil
+operator|.
+name|getTitleWords
+argument_list|(
+literal|1
+argument_list|,
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"title"
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -3954,41 +4007,13 @@ if|if
 condition|(
 name|val
 operator|.
-name|equals
-argument_list|(
-literal|"veryshorttitle"
-argument_list|)
-condition|)
-block|{
-return|return
-name|LabelPatternUtil
-operator|.
-name|getTitleWords
-argument_list|(
-literal|1
-argument_list|,
-name|entry
-argument_list|)
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|val
-operator|.
 name|matches
 argument_list|(
 literal|"keyword\\d+"
 argument_list|)
 condition|)
 block|{
-name|StringBuilder
-name|sb
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
+comment|// according to LabelPattern.php, it returns keyword number n
 name|int
 name|num
 init|=
@@ -4004,66 +4029,172 @@ literal|7
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|ArrayList
+argument_list|<
 name|String
-name|kw
+argument_list|>
+name|separatedKeywords
 init|=
-name|LabelPatternUtil
+name|Util
 operator|.
-name|getField
+name|getSeparatedKeywords
 argument_list|(
 name|entry
-argument_list|,
-literal|"keywords"
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|kw
-operator|!=
-literal|null
+name|separatedKeywords
+operator|.
+name|size
+argument_list|()
+operator|<
+name|num
 condition|)
 block|{
-comment|// TODO: merge this functionality with Util.getSeparatedKeywords
-name|String
-index|[]
-name|keywords
-init|=
-name|kw
+comment|// not enough keywords
+return|return
+literal|""
+return|;
+block|}
+else|else
+block|{
+comment|// num counts from 1 to n, but index in arrayList count from 0 to n-1
+return|return
+name|separatedKeywords
 operator|.
-name|split
+name|get
 argument_list|(
-literal|"[,;]\\s*"
+name|num
+operator|-
+literal|1
 argument_list|)
+return|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|val
+operator|.
+name|matches
+argument_list|(
+literal|"keywords\\d*"
+argument_list|)
+condition|)
+block|{
+comment|// return all keywords, not separated
+name|int
+name|num
 decl_stmt|;
 if|if
 condition|(
-name|num
-operator|>
-literal|0
-operator|&&
-name|num
-operator|<
-name|keywords
+name|val
 operator|.
 name|length
+argument_list|()
+operator|>
+literal|8
 condition|)
 block|{
+name|num
+operator|=
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|val
+operator|.
+name|substring
+argument_list|(
+literal|8
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|num
+operator|=
+name|Integer
+operator|.
+name|MAX_VALUE
+expr_stmt|;
+block|}
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|separatedKeywords
+init|=
+name|Util
+operator|.
+name|getSeparatedKeywords
+argument_list|(
+name|entry
+argument_list|)
+decl_stmt|;
+name|StringBuilder
+name|sb
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|Math
+operator|.
+name|min
+argument_list|(
+name|separatedKeywords
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|num
+argument_list|)
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|String
+name|keyword
+init|=
+name|separatedKeywords
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+comment|// remove all spaces
+name|keyword
+operator|=
+name|keyword
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 name|sb
 operator|.
 name|append
 argument_list|(
-name|keywords
-index|[
-name|num
-operator|-
-literal|1
-index|]
-operator|.
-name|trim
-argument_list|()
+name|keyword
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 name|sb
@@ -4112,8 +4243,8 @@ name|String
 name|field
 parameter_list|)
 block|{
-name|Object
-name|o
+name|String
+name|s
 init|=
 name|entry
 operator|.
@@ -4123,19 +4254,16 @@ name|field
 argument_list|)
 decl_stmt|;
 return|return
-name|o
-operator|!=
+name|s
+operator|==
 literal|null
 condition|?
-operator|(
-name|String
-operator|)
-name|o
-else|:
 literal|""
+else|:
+name|s
 return|;
 block|}
-comment|/**      * Computes an appendix to a BibTeX key that could make it unique. We use      * a-z for numbers 0-25, and then aa-az, ba-bz, etc.      *       * @param number      *            The appendix number.      * @return The String to append.      */
+comment|/**      * Computes an appendix to a BibTeX key that could make it unique. We use      * a-z for numbers 0-25, and then aa-az, ba-bz, etc.      *      * @param number      *            The appendix number.      * @return The String to append.      */
 DECL|method|getAddition (int number)
 specifier|private
 specifier|static
@@ -4175,6 +4303,7 @@ name|LabelPatternUtil
 operator|.
 name|getAddition
 argument_list|(
+operator|(
 name|number
 operator|/
 name|LabelPatternUtil
@@ -4183,6 +4312,7 @@ name|CHARS
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|-
 literal|1
 argument_list|)
@@ -4219,8 +4349,8 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|getTitleWords (int number, BibtexEntry entry)
-specifier|private
+comment|/**      * Determines "number" words out of the "title" field in the given BibTeX entry      */
+DECL|method|getTitleWords (int number, String title)
 specifier|static
 name|String
 name|getTitleWords
@@ -4228,8 +4358,8 @@ parameter_list|(
 name|int
 name|number
 parameter_list|,
-name|BibtexEntry
-name|entry
+name|String
+name|title
 parameter_list|)
 block|{
 name|String
@@ -4241,12 +4371,7 @@ argument_list|()
 operator|.
 name|format
 argument_list|(
-name|entry
-operator|.
-name|getField
-argument_list|(
-literal|"title"
-argument_list|)
+name|title
 argument_list|)
 decl_stmt|;
 name|StringBuilder
@@ -4275,16 +4400,20 @@ name|mainl
 label|:
 while|while
 condition|(
+operator|(
 name|piv
 operator|<
 name|ss
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|&&
+operator|(
 name|words
 operator|<
 name|number
+operator|)
 condition|)
 block|{
 name|current
@@ -4296,12 +4425,14 @@ expr_stmt|;
 comment|// Get the next word:
 while|while
 condition|(
+operator|(
 name|piv
 operator|<
 name|ss
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|&&
 operator|!
 name|Character
@@ -4316,6 +4447,7 @@ name|piv
 argument_list|)
 argument_list|)
 operator|&&
+operator|(
 name|ss
 operator|.
 name|charAt
@@ -4324,6 +4456,7 @@ name|piv
 argument_list|)
 operator|!=
 literal|'-'
+operator|)
 condition|)
 block|{
 name|current
@@ -4341,7 +4474,6 @@ expr_stmt|;
 name|piv
 operator|++
 expr_stmt|;
-comment|//System.out.println(".. "+piv+" '"+current.toString()+"'");
 block|}
 name|piv
 operator|++
@@ -4370,19 +4502,12 @@ continue|continue;
 block|}
 for|for
 control|(
-name|int
-name|_i
-init|=
-literal|0
-init|;
-name|_i
-operator|<
-name|SKIP_WORDS
+name|String
+name|smallWord
+range|:
+name|Word
 operator|.
-name|length
-condition|;
-name|_i
-operator|++
+name|SMALLER_WORDS
 control|)
 block|{
 if|if
@@ -4391,10 +4516,7 @@ name|word
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-name|SKIP_WORDS
-index|[
-name|_i
-index|]
+name|smallWord
 argument_list|)
 condition|)
 block|{
@@ -4516,9 +4638,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Gets the last name of the first author/editor      *       * @param authorField      *            a<code>String</code>      * @return the surname of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *       * @throws NullPointerException      *             if authorField == null      */
+comment|/**      * Gets the last name of the first author/editor      *      * @param authorField      *            a<code>String</code>      * @return the surname of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
 DECL|method|firstAuthor (String authorField)
-specifier|public
 specifier|static
 name|String
 name|firstAuthor
@@ -4574,9 +4695,8 @@ else|:
 literal|""
 return|;
 block|}
-comment|/**      * Gets the first name initals of the first author/editor      *       * @param authorField      *            a<code>String</code>      * @return the first name initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *       * @throws NullPointerException      *             if authorField == null      */
+comment|/**      * Gets the first name initials of the first author/editor      *      * @param authorField      *            a<code>String</code>      * @return the first name initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
 DECL|method|firstAuthorForenameInitials (String authorField)
-specifier|private
 specifier|static
 name|String
 name|firstAuthorForenameInitials
@@ -4639,9 +4759,8 @@ else|:
 literal|""
 return|;
 block|}
-comment|/**      * Gets the von part and the last name of the first author/editor      *      * @param authorField      *            a<code>String</code>      * @return the von part and surname of an author/editor or "" if no author was found.      *  This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
+comment|/**      * Gets the von part and the last name of the first author/editor      * No spaces are returned      *      * @param authorField      *            a<code>String</code>      * @return the von part and surname of an author/editor or "" if no author was found.      *  This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
 DECL|method|firstAuthorVonAndLast (String authorField)
-specifier|public
 specifier|static
 name|String
 name|firstAuthorVonAndLast
@@ -4686,6 +4805,13 @@ argument_list|)
 operator|.
 name|getVon
 argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|" "
+argument_list|,
+literal|""
+argument_list|)
 decl_stmt|;
 name|StringBuilder
 name|stringBuilder
@@ -4706,13 +4832,6 @@ operator|.
 name|append
 argument_list|(
 name|vonAuthor
-argument_list|)
-expr_stmt|;
-name|stringBuilder
-operator|.
-name|append
-argument_list|(
-literal|' '
 argument_list|)
 expr_stmt|;
 block|}
@@ -4750,9 +4869,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Gets the last name of the last author/editor      * @param authorField a<code>String</code>      * @return the sur name of an author/editor      */
+comment|/**      * Gets the last name of the last author/editor      * @param authorField a<code>String</code>      * @return the surname of an author/editor      */
 DECL|method|lastAuthor (String authorField)
-specifier|private
 specifier|static
 name|String
 name|lastAuthor
@@ -4774,7 +4892,7 @@ argument_list|)
 operator|.
 name|split
 argument_list|(
-literal|"\\band\\b"
+literal|"\\s+\\band\\b\\s+"
 argument_list|)
 decl_stmt|;
 if|if
@@ -4786,7 +4904,6 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|// if author is empty
 name|String
 index|[]
 name|lastAuthor
@@ -4800,19 +4917,9 @@ operator|-
 literal|1
 index|]
 operator|.
-name|replaceAll
-argument_list|(
-literal|"\\s+"
-argument_list|,
-literal|" "
-argument_list|)
-operator|.
-name|trim
-argument_list|()
-operator|.
 name|split
 argument_list|(
-literal|" "
+literal|","
 argument_list|)
 decl_stmt|;
 return|return
@@ -4824,14 +4931,14 @@ return|;
 block|}
 else|else
 block|{
+comment|// if author is empty
 return|return
 literal|""
 return|;
 block|}
 block|}
-comment|/**      * Gets the forename initals of the last author/editor      *       * @param authorField      *            a<code>String</code>      * @return the forename initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *       * @throws NullPointerException      *             if authorField == null      */
+comment|/**      * Gets the forename initals of the last author/editor      *      * @param authorField      *            a<code>String</code>      * @return the forename initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
 DECL|method|lastAuthorForenameInitials (String authorField)
-specifier|private
 specifier|static
 name|String
 name|lastAuthorForenameInitials
@@ -4901,7 +5008,6 @@ return|;
 block|}
 comment|/**      * Gets the last name of all authors/editors      * @param authorField a<code>String</code>      * @return the sur name of all authors/editors      */
 DECL|method|allAuthors (String authorField)
-specifier|private
 specifier|static
 name|String
 name|allAuthors
@@ -4910,85 +5016,20 @@ name|String
 name|authorField
 parameter_list|)
 block|{
-name|String
-name|author
-init|=
-literal|""
-decl_stmt|;
-name|String
-index|[]
-name|tokens
-init|=
-name|AuthorList
-operator|.
-name|fixAuthorForAlphabetization
+comment|// Quick hack to use NAuthors to avoid code duplication
+return|return
+name|NAuthors
 argument_list|(
 name|authorField
-argument_list|)
-operator|.
-name|split
-argument_list|(
-literal|"\\band\\b"
-argument_list|)
-decl_stmt|;
-name|int
-name|i
-init|=
-literal|0
-decl_stmt|;
-while|while
-condition|(
-name|tokens
-operator|.
-name|length
-operator|>
-name|i
-condition|)
-block|{
-comment|// convert lastname, firstname to firstname lastname
-name|String
-index|[]
-name|firstAuthor
-init|=
-name|tokens
-index|[
-name|i
-index|]
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\\s+"
 argument_list|,
-literal|" "
-argument_list|)
+name|Integer
 operator|.
-name|trim
-argument_list|()
-operator|.
-name|split
-argument_list|(
-literal|" "
+name|MAX_VALUE
 argument_list|)
-decl_stmt|;
-comment|// lastname, firstname
-name|author
-operator|+=
-name|firstAuthor
-index|[
-literal|0
-index|]
-expr_stmt|;
-name|i
-operator|++
-expr_stmt|;
-block|}
-return|return
-name|author
 return|;
 block|}
 comment|/**      * Returns the authors according to the BibTeX-alpha-Style      * @param authorField string containing the value of the author field      * @return the initials of all authornames      */
 DECL|method|authorsAlpha (String authorField)
-specifier|private
 specifier|static
 name|String
 name|authorsAlpha
@@ -5094,11 +5135,13 @@ literal|0
 init|;
 name|j
 operator|<
+operator|(
 name|firstAuthor
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 name|j
 operator|++
@@ -5262,7 +5305,6 @@ return|;
 block|}
 comment|/**      * Gets the surnames of the first N authors and appends EtAl if there are more than N authors      * @param authorField a<code>String</code>      * @param n the number of desired authors      * @return Gets the surnames of the first N authors and appends EtAl if there are more than N authors      */
 DECL|method|NAuthors (String authorField, int n)
-specifier|private
 specifier|static
 name|String
 name|NAuthors
@@ -5292,7 +5334,7 @@ argument_list|)
 operator|.
 name|split
 argument_list|(
-literal|"\\band\\b"
+literal|"\\s+\\band\\b\\s+"
 argument_list|)
 decl_stmt|;
 name|int
@@ -5302,21 +5344,23 @@ literal|0
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|tokens
 operator|.
 name|length
 operator|>
 name|i
+operator|)
 operator|&&
+operator|(
 name|i
 operator|<
 name|n
+operator|)
 condition|)
 block|{
-comment|// convert lastname, firstname to firstname lastname
 name|String
-index|[]
-name|firstAuthor
+name|lastName
 init|=
 name|tokens
 index|[
@@ -5325,26 +5369,14 @@ index|]
 operator|.
 name|replaceAll
 argument_list|(
-literal|"\\s+"
+literal|",\\s+.*"
 argument_list|,
-literal|" "
-argument_list|)
-operator|.
-name|trim
-argument_list|()
-operator|.
-name|split
-argument_list|(
-literal|" "
+literal|""
 argument_list|)
 decl_stmt|;
-comment|// lastname, firstname
 name|author
 operator|+=
-name|firstAuthor
-index|[
-literal|0
-index|]
+name|lastName
 expr_stmt|;
 name|i
 operator|++
@@ -5364,12 +5396,13 @@ name|author
 return|;
 block|}
 return|return
+name|author
+operator|+
 literal|"EtAl"
 return|;
 block|}
-comment|/**      * Gets the first part of the last name of the first      * author/editor, and appends the last name initial of the      * remaining authors/editors.      * @param authorField a<code>String</code>      * @return the sur name of all authors/editors      */
+comment|/**      * Gets the first part of the last name of the first      * author/editor, and appends the last name initial of the      * remaining authors/editors.      * Maximum 5 characters      * @param authorField a<code>String</code>      * @return the surname of all authors/editors      */
 DECL|method|oneAuthorPlusIni (String authorField)
-specifier|private
 specifier|static
 name|String
 name|oneAuthorPlusIni
@@ -5406,7 +5439,7 @@ name|authorField
 operator|.
 name|split
 argument_list|(
-literal|"\\band\\b"
+literal|"\\s+\\band\\b\\s+"
 argument_list|)
 decl_stmt|;
 name|int
@@ -5428,7 +5461,6 @@ name|author
 return|;
 block|}
 name|String
-index|[]
 name|firstAuthor
 init|=
 name|tokens
@@ -5436,24 +5468,17 @@ index|[
 literal|0
 index|]
 operator|.
-name|replaceAll
-argument_list|(
-literal|"\\s+"
-argument_list|,
-literal|" "
-argument_list|)
-operator|.
 name|split
 argument_list|(
-literal|" "
+literal|","
 argument_list|)
+index|[
+literal|0
+index|]
 decl_stmt|;
 name|author
 operator|=
 name|firstAuthor
-index|[
-literal|0
-index|]
 operator|.
 name|substring
 argument_list|(
@@ -5466,9 +5491,6 @@ argument_list|(
 name|CHARS_OF_FIRST
 argument_list|,
 name|firstAuthor
-index|[
-literal|0
-index|]
 operator|.
 name|length
 argument_list|()
@@ -5492,9 +5514,6 @@ index|[
 name|i
 index|]
 operator|.
-name|trim
-argument_list|()
-operator|.
 name|charAt
 argument_list|(
 literal|0
@@ -5510,7 +5529,6 @@ return|;
 block|}
 comment|/**      * auth.auth.ea format:      * Isaac Newton and James Maxwell and Albert Einstein (1960)      * Isaac Newton and James Maxwell (1960)      *  give:      * Newton.Maxwell.ea      * Newton.Maxwell      */
 DECL|method|authAuthEa (String authorField)
-specifier|private
 specifier|static
 name|String
 name|authAuthEa
@@ -5543,7 +5561,7 @@ name|authorField
 operator|.
 name|split
 argument_list|(
-literal|"\\band\\b"
+literal|"\\s+\\band\\b\\s+"
 argument_list|)
 decl_stmt|;
 if|if
@@ -5559,6 +5577,7 @@ return|return
 literal|""
 return|;
 block|}
+comment|// append first author
 name|author
 operator|.
 name|append
@@ -5588,6 +5607,7 @@ operator|>=
 literal|2
 condition|)
 block|{
+comment|// append second author
 name|author
 operator|.
 name|append
@@ -5623,6 +5643,7 @@ operator|>
 literal|2
 condition|)
 block|{
+comment|// append ".ea" if more than 2 authors
 name|author
 operator|.
 name|append
@@ -5638,9 +5659,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * auth.etal, authEtAl, ... format:      * Isaac Newton and James Maxwell and Albert Einstein (1960)      * Isaac Newton and James Maxwell (1960)      *      *  auth.etal give (delim=".", append=".etal"):      * Newton.etal      * Newton.Maxwell      *      *  authEtAl give (delim="", append="EtAl"):      * NewtonEtAl      * NewtonMaxwell      */
+comment|/**      * auth.etal, authEtAl, ... format:      * Isaac Newton and James Maxwell and Albert Einstein (1960)      * Isaac Newton and James Maxwell (1960)      *      *  auth.etal give (delim=".", append=".etal"):      * Newton.etal      * Newton.Maxwell      *      *  authEtAl give (delim="", append="EtAl"):      * NewtonEtAl      * NewtonMaxwell      *      * Note that [authEtAl] equals [authors2]      */
 DECL|method|authEtal (String authorField, String delim, String append)
-specifier|private
 specifier|static
 name|String
 name|authEtal
@@ -5679,7 +5699,7 @@ name|authorField
 operator|.
 name|split
 argument_list|(
-literal|"\\band\\b"
+literal|"\\s*\\band\\b\\s*"
 argument_list|)
 decl_stmt|;
 if|if
@@ -5775,9 +5795,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * The first N characters of the Mth author/editor.      */
+comment|/**      * The first N characters of the Mth author/editor.      * M starts counting from 1      */
 DECL|method|authN_M (String authorField, int n, int m)
-specifier|private
 specifier|static
 name|String
 name|authN_M
@@ -5792,6 +5811,10 @@ name|int
 name|m
 parameter_list|)
 block|{
+comment|// have m counting from 0
+name|m
+operator|--
+expr_stmt|;
 name|authorField
 operator|=
 name|AuthorList
@@ -5809,24 +5832,30 @@ name|authorField
 operator|.
 name|split
 argument_list|(
-literal|"\\band\\b"
+literal|"\\s+\\band\\b\\s+"
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|tokens
 operator|.
 name|length
 operator|<=
 name|m
+operator|)
 operator|||
+operator|(
 name|n
 operator|<
 literal|0
+operator|)
 operator|||
+operator|(
 name|m
 operator|<
 literal|0
+operator|)
 condition|)
 block|{
 return|return
@@ -5850,9 +5879,6 @@ operator|)
 index|[
 literal|0
 index|]
-operator|.
-name|trim
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -5882,9 +5908,8 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * authshort format:      * added by Kolja Brix, kbx@users.sourceforge.net      *      * given author names      *       *   Isaac Newton and James Maxwell and Albert Einstein and N. Bohr      *       *   Isaac Newton and James Maxwell and Albert Einstein      *         *   Isaac Newton and James Maxwell      *         *   Isaac Newton      *       * yield      *       *   NME+      *         *   NME      *         *   NM      *         *   Newton      */
+comment|/**      * authshort format:      * added by Kolja Brix, kbx@users.sourceforge.net      *      * given author names      *      *   Isaac Newton and James Maxwell and Albert Einstein and N. Bohr      *      *   Isaac Newton and James Maxwell and Albert Einstein      *      *   Isaac Newton and James Maxwell      *      *   Isaac Newton      *      * yield      *      *   NME+      *      *   NME      *      *   NM      *      *   Newton      */
 DECL|method|authshort (String authorField)
-specifier|private
 specifier|static
 name|String
 name|authshort
@@ -5949,7 +5974,7 @@ operator|.
 name|length
 argument_list|()
 argument_list|,
-literal|0
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5966,15 +5991,19 @@ condition|)
 block|{
 while|while
 condition|(
+operator|(
 name|tokens
 operator|.
 name|length
 operator|>
 name|i
+operator|)
 operator|&&
+operator|(
 name|i
 operator|<
 literal|3
+operator|)
 condition|)
 block|{
 name|author
@@ -5990,6 +6019,8 @@ argument_list|,
 literal|1
 argument_list|,
 name|i
+operator|+
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6022,9 +6053,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * authIniN format:      *       * Each author gets (N div #authors) chars, the remaining (N mod #authors)      * chars are equally distributed to the authors first in the row.      *       * If (N< #authors), only the first N authors get mentioned.      *       * For example if      *       * a) I. Newton and J. Maxwell and A. Einstein and N. Bohr (..)      *       * b) I. Newton and J. Maxwell and A. Einstein      *       * c) I. Newton and J. Maxwell      *       * d) I. Newton      *       * authIni4 gives: a) NMEB, b) NeME, c) NeMa, d) Newt      *       * @param authorField      *            The authors to format.      *       * @param n      *            The maximum number of characters this string will be long. A      *            negative number or zero will lead to "" be returned.      *       * @throws NullPointerException      *             if authorField is null and n> 0      */
+comment|/**      * authIniN format:      *      * Each author gets (N div #authors) chars, the remaining (N mod #authors)      * chars are equally distributed to the authors first in the row.      *      * If (N< #authors), only the first N authors get mentioned.      *      * For example if      *      * a) I. Newton and J. Maxwell and A. Einstein and N. Bohr (..)      *      * b) I. Newton and J. Maxwell and A. Einstein      *      * c) I. Newton and J. Maxwell      *      * d) I. Newton      *      * authIni4 gives: a) NMEB, b) NeME, c) NeMa, d) Newt      *      * @param authorField      *            The authors to format.      *      * @param n      *            The maximum number of characters this string will be long. A      *            negative number or zero will lead to "" be returned.      *      * @throws NullPointerException      *             if authorField is null and n> 0      */
 DECL|method|authIniN (String authorField, int n)
-specifier|public
 specifier|static
 name|String
 name|authIniN
@@ -6117,11 +6147,13 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|n
 operator|%
 name|tokens
 operator|.
 name|length
+operator|)
 condition|)
 block|{
 name|author
@@ -6139,6 +6171,8 @@ operator|+
 literal|1
 argument_list|,
 name|i
+operator|+
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6158,6 +6192,8 @@ argument_list|,
 name|charsAll
 argument_list|,
 name|i
+operator|+
+literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6200,7 +6236,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Split the pages field into separate numbers and return the lowest      *       * @param pages      *            (may not be null) a pages string such as 42--111 or      *            7,41,73--97 or 43+      *       * @return the first page number or "" if no number is found in the string      *       * @throws NullPointerException      *             if pages is null      */
+comment|/**      * Split the pages field into separate numbers and return the lowest      *      * @param pages      *            (may not be null) a pages string such as 42--111 or      *            7,41,73--97 or 43+      *      * @return the first page number or "" if no number is found in the string      *      * @throws NullPointerException      *             if pages is null      */
 DECL|method|firstPage (String pages)
 specifier|public
 specifier|static
@@ -6290,7 +6326,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Split the pages field into separate numbers and return the highest      *       * @param pages      *            a pages string such as 42--111 or 7,41,73--97 or 43+      *       * @return the first page number or "" if no number is found in the string      *       * @throws NullPointerException      *             if pages is null.      */
+comment|/**      * Split the pages field into separate numbers and return the highest      *      * @param pages      *            a pages string such as 42--111 or 7,41,73--97 or 43+      *      * @return the first page number or "" if no number is found in the string      *      * @throws NullPointerException      *             if pages is null.      */
 DECL|method|lastPage (String pages)
 specifier|public
 specifier|static
@@ -6400,9 +6436,7 @@ name|parts
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|StringBuilder
@@ -6442,6 +6476,7 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|arg
 operator|.
 name|charAt
@@ -6450,13 +6485,16 @@ name|i
 argument_list|)
 operator|==
 literal|':'
+operator|)
 operator|&&
 operator|!
 name|escaped
 operator|&&
+operator|(
 name|inParenthesis
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 name|parts
@@ -6479,6 +6517,7 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|arg
 operator|.
 name|charAt
@@ -6487,6 +6526,7 @@ name|i
 argument_list|)
 operator|==
 literal|'('
+operator|)
 operator|&&
 operator|!
 name|escaped
@@ -6511,6 +6551,7 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|arg
 operator|.
 name|charAt
@@ -6519,13 +6560,16 @@ name|i
 argument_list|)
 operator|==
 literal|')'
+operator|)
 operator|&&
 operator|!
 name|escaped
 operator|&&
+operator|(
 name|inParenthesis
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|inParenthesis

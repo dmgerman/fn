@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -106,7 +106,67 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|BorderFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JLabel
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JScrollBar
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JScrollPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JTable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JViewport
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|TransferHandler
 import|;
 end_import
 
@@ -213,8 +273,6 @@ operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|logic
 operator|.
 name|bibtex
 operator|.
@@ -435,7 +493,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The central table which displays the bibtex entries.  *   * User: alver  * Date: Oct 12, 2005  * Time: 10:29:39 PM  *   */
+comment|/**  * The central table which displays the bibtex entries.  *  * User: alver  * Date: Oct 12, 2005  * Time: 10:29:39 PM  *  */
 end_comment
 
 begin_class
@@ -755,9 +813,7 @@ name|sortedForTable
 operator|=
 operator|new
 name|SortedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|list
 argument_list|,
@@ -769,9 +825,7 @@ name|sortedForMarking
 operator|=
 operator|new
 name|SortedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedForTable
 argument_list|,
@@ -783,9 +837,7 @@ name|sortedForSearch
 operator|=
 operator|new
 name|SortedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedForMarking
 argument_list|,
@@ -797,9 +849,7 @@ name|sortedForGrouping
 operator|=
 operator|new
 name|SortedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|sortedForSearch
 argument_list|,
@@ -1814,18 +1864,6 @@ name|isRankingColumn
 argument_list|(
 name|i
 argument_list|)
-operator|&&
-operator|!
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|SpecialFieldsUtils
-operator|.
-name|PREF_RANKING_COMPACT
-argument_list|)
 condition|)
 block|{
 comment|// Lock the width of ranking icon column.
@@ -2063,9 +2101,7 @@ name|order
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|List
@@ -2132,9 +2168,7 @@ name|fields
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2179,11 +2213,6 @@ name|fields
 return|;
 block|}
 comment|/**      * This method sets up what Comparators are used for the various table columns.      * The ComparatorChooser enables and disables such Comparators as the user clicks      * columns, but this is where the Comparators are defined. Also, the ComparatorChooser      * is initialized with the sort order defined in Preferences.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|setupComparatorChooser ()
 specifier|private
 name|void
@@ -2379,7 +2408,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_FIELD
+name|TABLE_PRIMARY_SORT_FIELD
 argument_list|)
 block|,
 name|Globals
@@ -2390,7 +2419,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_FIELD
+name|TABLE_SECONDARY_SORT_FIELD
 argument_list|)
 block|,
 name|Globals
@@ -2401,7 +2430,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_FIELD
+name|TABLE_TERTIARY_SORT_FIELD
 argument_list|)
 block|}
 decl_stmt|;
@@ -2421,7 +2450,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_DESCENDING
+name|TABLE_PRIMARY_SORT_DESCENDING
 argument_list|)
 block|,
 name|Globals
@@ -2432,7 +2461,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_DESCENDING
+name|TABLE_SECONDARY_SORT_DESCENDING
 argument_list|)
 block|,
 name|Globals
@@ -2443,7 +2472,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_DESCENDING
+name|TABLE_TERTIARY_SORT_DESCENDING
 argument_list|)
 block|}
 decl_stmt|;
@@ -2663,7 +2692,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_FIELD
+name|TABLE_PRIMARY_SORT_FIELD
 argument_list|,
 name|fields
 operator|.
@@ -2681,7 +2710,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|PRIMARY_SORT_DESCENDING
+name|TABLE_PRIMARY_SORT_DESCENDING
 argument_list|,
 name|order
 operator|.
@@ -2707,7 +2736,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_FIELD
+name|TABLE_SECONDARY_SORT_FIELD
 argument_list|,
 name|fields
 operator|.
@@ -2725,7 +2754,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_DESCENDING
+name|TABLE_SECONDARY_SORT_DESCENDING
 argument_list|,
 name|order
 operator|.
@@ -2746,7 +2775,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_FIELD
+name|TABLE_SECONDARY_SORT_FIELD
 argument_list|,
 literal|""
 argument_list|)
@@ -2759,7 +2788,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SECONDARY_SORT_DESCENDING
+name|TABLE_SECONDARY_SORT_DESCENDING
 argument_list|,
 literal|false
 argument_list|)
@@ -2780,7 +2809,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_FIELD
+name|TABLE_TERTIARY_SORT_FIELD
 argument_list|,
 name|fields
 operator|.
@@ -2798,7 +2827,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_DESCENDING
+name|TABLE_TERTIARY_SORT_DESCENDING
 argument_list|,
 name|order
 operator|.
@@ -2819,7 +2848,7 @@ name|put
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_FIELD
+name|TABLE_TERTIARY_SORT_FIELD
 argument_list|,
 literal|""
 argument_list|)
@@ -2832,7 +2861,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|TERTIARY_SORT_DESCENDING
+name|TABLE_TERTIARY_SORT_DESCENDING
 argument_list|,
 literal|false
 argument_list|)
@@ -2947,7 +2976,7 @@ name|OTHER
 return|;
 block|}
 block|}
-comment|/**      * Use with caution! If you modify an entry in the table, the selection changes      *       * You can avoid it with      *<code>.getSelected().getReadWriteLock().writeLock().lock()</code>      *   and then<code>.unlock()</code>      */
+comment|/**      * Use with caution! If you modify an entry in the table, the selection changes      *      * You can avoid it with      *<code>.getSelected().getReadWriteLock().writeLock().lock()</code>      *   and then<code>.unlock()</code>      */
 DECL|method|getSelected ()
 specifier|public
 name|EventList
@@ -4102,11 +4131,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Get the first comparator set up for the given column.      * @param index The column number.      * @return The Comparator, or null if none is set.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getComparatorForColumn (int index)
 specifier|public
 name|Comparator

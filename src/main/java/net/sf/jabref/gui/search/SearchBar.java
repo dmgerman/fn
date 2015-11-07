@@ -591,7 +591,7 @@ name|SearchTextListener
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Initializes the search bar.      *       * @param frame the main window      */
+comment|/**      * Initializes the search bar.      *      * @param frame the main window      */
 DECL|method|SearchBar (JabRefFrame frame)
 specifier|public
 name|SearchBar
@@ -726,10 +726,12 @@ name|JSplitButton
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"search"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|SEARCH
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|searchButton
@@ -903,10 +905,12 @@ argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"help"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|HELP
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|help
@@ -1772,7 +1776,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Switches to another search mode.      *       * @param mode the new search mode      */
+comment|/**      * Switches to another search mode.      *      * @param mode the new search mode      */
 DECL|method|setSearchMode (SearchMode mode)
 specifier|private
 name|void
@@ -1793,7 +1797,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns the currently activated search mode.      *       * @return current search mode      */
+comment|/**      * Returns the currently activated search mode.      *      * @return current search mode      */
 DECL|method|getSearchMode ()
 specifier|private
 name|SearchMode
@@ -1890,7 +1894,7 @@ operator|.
 name|Incremental
 return|;
 block|}
-comment|/**      * Adds a SearchTextListener to the search bar. The added listener is immediately informed about the current search.      * Subscribers will be notified about searches.      *       * @param l SearchTextListener to be added      */
+comment|/**      * Adds a SearchTextListener to the search bar. The added listener is immediately informed about the current search.      * Subscribers will be notified about searches.      *      * @param l SearchTextListener to be added      */
 DECL|method|addSearchListener (SearchTextListener l)
 specifier|public
 name|void
@@ -1937,7 +1941,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Remove a SearchTextListener      *       * @param l SearchTextListener to be removed      */
+comment|/**      * Remove a SearchTextListener      *      * @param l SearchTextListener to be removed      */
 DECL|method|removeSearchListener (SearchTextListener l)
 specifier|public
 name|void
@@ -1955,7 +1959,7 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Parses the search query for valid words and returns a list these words. For example, "The great Vikinger" will      * give ["The","great","Vikinger"]      *       * @param searchText the search query      * @return list of words found in the search query      */
+comment|/**      * Parses the search query for valid words and returns a list these words. For example, "The great Vikinger" will      * give ["The","great","Vikinger"]      *      * @param searchText the search query      * @return list of words found in the search query      */
 DECL|method|getSearchwords (String searchText)
 specifier|private
 name|List
@@ -1981,7 +1985,7 @@ name|getWords
 argument_list|()
 return|;
 block|}
-comment|/**      * Fires an event if a search was started (or cleared)      *       * @param searchText the search query      */
+comment|/**      * Fires an event if a search was started (or cleared)      *      * @param searchText the search query      */
 DECL|method|fireSearchlistenerEvent (String searchText)
 specifier|private
 name|void

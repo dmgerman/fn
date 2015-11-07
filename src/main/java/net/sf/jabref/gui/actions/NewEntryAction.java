@@ -168,6 +168,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|jabRefFrame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
@@ -197,10 +198,12 @@ name|super
 argument_list|(
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"add"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|ADD_ENTRY
+operator|.
+name|getIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
@@ -215,7 +218,12 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"New entry"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
