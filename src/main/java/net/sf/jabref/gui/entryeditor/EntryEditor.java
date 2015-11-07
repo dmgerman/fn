@@ -3980,7 +3980,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, store field"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_STORE_FIELD
 argument_list|)
 argument_list|,
 literal|"store"
@@ -4003,7 +4005,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, next panel"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_NEXT_PANEL
 argument_list|)
 argument_list|,
 literal|"right"
@@ -4017,7 +4021,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, next panel 2"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_NEXT_PANEL_2
 argument_list|)
 argument_list|,
 literal|"right"
@@ -4040,7 +4046,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, previous panel"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_PREVIOUS_PANEL
 argument_list|)
 argument_list|,
 literal|"left"
@@ -4054,7 +4062,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, previous panel 2"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_PREVIOUS_PANEL_2
 argument_list|)
 argument_list|,
 literal|"left"

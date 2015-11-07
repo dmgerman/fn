@@ -366,6 +366,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -1320,7 +1336,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"File list editor, move entry up"
+name|KeyBinds
+operator|.
+name|FILE_LIST_EDITOR_MOVE_ENTRY_UP
 argument_list|)
 argument_list|,
 literal|"move up"
@@ -1369,7 +1387,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"File list editor, move entry down"
+name|KeyBinds
+operator|.
+name|FILE_LIST_EDITOR_MOVE_ENTRY_DOWN
 argument_list|)
 argument_list|,
 literal|"move down"
