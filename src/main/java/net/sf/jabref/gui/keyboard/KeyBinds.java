@@ -644,6 +644,15 @@ name|PREVIOUS_TAB
 init|=
 literal|"Previous tab"
 decl_stmt|;
+DECL|field|PRINT_ENTRY_PREVIEW
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PRINT_ENTRY_PREVIEW
+init|=
+literal|"Print entry preview"
+decl_stmt|;
 DECL|field|PUSH_TO_APPLICATION
 specifier|public
 specifier|static
@@ -1758,6 +1767,15 @@ argument_list|(
 name|HIDE_SHOW_TOOLBAR
 argument_list|,
 literal|"ctrl alt T"
+argument_list|)
+expr_stmt|;
+name|keyBindMap
+operator|.
+name|put
+argument_list|(
+name|PRINT_ENTRY_PREVIEW
+argument_list|,
+literal|"alt P"
 argument_list|)
 expr_stmt|;
 block|}

@@ -803,7 +803,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Print Preview"
+literal|"Print entry preview"
 argument_list|)
 argument_list|,
 name|IconTheme
@@ -826,7 +826,26 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Print Preview"
+literal|"Print entry preview"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|putValue
+argument_list|(
+name|Action
+operator|.
+name|ACCELERATOR_KEY
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getKey
+argument_list|(
+name|KeyBinds
+operator|.
+name|PRINT_ENTRY_PREVIEW
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1243,7 +1262,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Print entry preview"
+name|KeyBinds
+operator|.
+name|PRINT_ENTRY_PREVIEW
 argument_list|)
 argument_list|,
 literal|"print"
