@@ -1174,14 +1174,9 @@ condition|)
 block|{
 name|setTitle
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|GUIGlobals
 operator|.
 name|stringsTitle
-argument_list|)
 operator|+
 literal|": "
 operator|+
@@ -1197,31 +1192,19 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// @formatter:off
 name|setTitle
-argument_list|(
-name|Localization
-operator|.
-name|lang
 argument_list|(
 name|GUIGlobals
 operator|.
 name|stringsTitle
-argument_list|)
 operator|+
 literal|": "
 operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|GUIGlobals
 operator|.
 name|untitledTitle
 argument_list|)
-argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 block|}
 DECL|class|StringTable

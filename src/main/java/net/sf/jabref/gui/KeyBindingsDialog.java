@@ -1390,6 +1390,7 @@ name|int
 name|col
 parameter_list|)
 block|{
+comment|// @formatter:off
 return|return
 name|col
 operator|==
@@ -1409,6 +1410,7 @@ argument_list|(
 literal|"Shortcut"
 argument_list|)
 return|;
+comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -1597,7 +1599,10 @@ condition|)
 block|{
 name|int
 name|answer
-init|=
+decl_stmt|;
+comment|// @formatter:off
+name|answer
+operator|=
 name|JOptionPane
 operator|.
 name|showOptionDialog
@@ -1665,7 +1670,8 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+comment|// @formatter:on
 if|if
 condition|(
 name|answer

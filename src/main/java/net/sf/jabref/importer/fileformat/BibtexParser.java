@@ -1309,7 +1309,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error occured when parsing entry"
+literal|"Error occurred when parsing entry"
 argument_list|)
 operator|+
 literal|": '"

@@ -32,6 +32,22 @@ name|Formatter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
 begin_class
 DECL|class|LowerCaseChanger
 specifier|public
@@ -49,7 +65,12 @@ name|getName
 parameter_list|()
 block|{
 return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"lower"
+argument_list|)
 return|;
 block|}
 comment|/**      * Converts all characters of the string to lower case, but does not change words starting with "{"      */

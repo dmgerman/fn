@@ -1707,6 +1707,7 @@ argument_list|(
 literal|"Unable to open file."
 argument_list|)
 decl_stmt|;
+comment|// @formatter:off
 name|String
 index|[]
 name|options
@@ -1742,6 +1743,7 @@ literal|"Cancel"
 argument_list|)
 block|}
 decl_stmt|;
+comment|// @formatter:on
 name|String
 name|defOption
 init|=

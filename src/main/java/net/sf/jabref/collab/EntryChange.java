@@ -259,14 +259,26 @@ condition|)
 block|{
 name|name
 operator|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Modified entry"
+argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
 name|name
 operator|=
-literal|"Modified entry: '"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Modified entry"
+argument_list|)
+operator|+
+literal|": '"
 operator|+
 name|key
 operator|+
@@ -716,6 +728,11 @@ name|String
 name|onDisk
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|field
+argument_list|)
+expr_stmt|;
 name|entry
 operator|=
 name|memEntry
@@ -725,10 +742,6 @@ operator|.
 name|tmpEntry
 operator|=
 name|tmpEntry
-expr_stmt|;
-name|name
-operator|=
-name|field
 expr_stmt|;
 name|this
 operator|.

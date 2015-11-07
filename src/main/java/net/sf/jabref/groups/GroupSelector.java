@@ -1102,7 +1102,7 @@ specifier|private
 name|boolean
 name|editModeIndicator
 decl_stmt|;
-comment|/**      * The first element for each group defines which field to use for the      * quicksearch. The next two define the name and regexp for the group.      */
+comment|/**      * The first element for each group defines which field to use for the quicksearch. The next two define the name and      * regexp for the group.      */
 DECL|method|GroupSelector (JabRefFrame frame, SidePaneManager manager)
 specifier|public
 name|GroupSelector
@@ -2592,9 +2592,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Display only entries belonging to all selected"
-operator|+
-literal|" groups."
+literal|"Display only entries belonging to all selected groups."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2606,9 +2604,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Display all entries belonging to one or more "
-operator|+
-literal|"of the selected groups."
+literal|"Display all entries belonging to one or more of the selected groups."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5410,7 +5406,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.      */
+comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has been changed) and set the specified      * selection and expansion state.      */
 DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration<TreePath> expandedNodes)
 specifier|public
 name|void
@@ -5437,7 +5433,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.      *      * @param node If this is non-null, the view is scrolled to make it visible.      */
+comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has been changed) and set the specified      * selection and expansion state.      *      * @param node If this is non-null, the view is scrolled to make it visible.      */
 DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration<TreePath> expandedNodes, GroupTreeNode node)
 specifier|private
 name|void
@@ -5538,7 +5534,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state.      */
+comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has been changed) and maintain the current      * selection and expansion state.      */
 DECL|method|revalidateGroups ()
 specifier|public
 name|void
@@ -5551,7 +5547,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state.      *      * @param node If this is non-null, the view is scrolled to make it visible.      */
+comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has been changed) and maintain the current      * selection and expansion state.      *      * @param node If this is non-null, the view is scrolled to make it visible.      */
 DECL|method|revalidateGroups (GroupTreeNode node)
 specifier|private
 name|void
@@ -5930,7 +5926,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Adds the specified node as a child of the current root. The group      * contained in<b>newGroups</b> must not be of type AllEntriesGroup, since      * every tree has exactly one AllEntriesGroup (its root). The<b>newGroups      *</b> are inserted directly, i.e. they are not deepCopy()'d.      */
+comment|/**      * Adds the specified node as a child of the current root. The group contained in<b>newGroups</b> must not be of      * type AllEntriesGroup, since every tree has exactly one AllEntriesGroup (its root). The<b>newGroups</b> are      * inserted directly, i.e. they are not deepCopy()'d.      */
 DECL|method|addGroups (GroupTreeNode newGroups, CompoundEdit ce)
 specifier|public
 name|void
@@ -6041,7 +6037,7 @@ operator|=
 name|node
 expr_stmt|;
 block|}
-comment|/**          * Returns the node to use in this action. If a node has been          * set explicitly (via setNode), it is returned. Otherwise, the first          * node in the current selection is returned. If all this fails, null          * is returned.          */
+comment|/**          * Returns the node to use in this action. If a node has been set explicitly (via setNode), it is returned.          * Otherwise, the first node in the current selection is returned. If all this fails, null is returned.          */
 DECL|method|getNodeToUse ()
 specifier|public
 name|GroupTreeNode
@@ -8511,7 +8507,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Concludes the moving of a group tree node by storing the specified      * undo information, marking the change, and setting the status line.      *      * @param undo Undo information for the move operation.      * @param node The node that has been moved.      */
+comment|/**      * Concludes the moving of a group tree node by storing the specified undo information, marking the change, and      * setting the status line.      *      * @param undo Undo information for the move operation.      * @param node The node that has been moved.      */
 DECL|method|concludeMoveGroup (AbstractUndoableEdit undo, GroupTreeNode node)
 specifier|public
 name|void
@@ -8939,7 +8935,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Highlight all groups that contain any/all of the specified entries.      * If entries is null or has zero length, highlight is cleared.      */
+comment|/**      * Highlight all groups that contain any/all of the specified entries. If entries is null or has zero length,      * highlight is cleared.      */
 DECL|method|showMatchingGroups (BibtexEntry[] entries, boolean requireAll)
 specifier|public
 name|void
@@ -9195,7 +9191,7 @@ name|revalidate
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Show groups that, if selected, would show at least one      * of the entries found in the specified search.      */
+comment|/**      * Show groups that, if selected, would show at least one of the entries found in the specified search.      */
 DECL|method|showOverlappingGroups (List<BibtexEntry> matches)
 specifier|private
 name|void

@@ -396,6 +396,7 @@ name|MalformedURLException
 name|ex1
 parameter_list|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -421,6 +422,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return;
 block|}
 name|download

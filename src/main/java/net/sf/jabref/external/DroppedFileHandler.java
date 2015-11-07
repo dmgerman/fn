@@ -1542,9 +1542,11 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|xmpEntriesInFile
 operator|==
 literal|null
+operator|)
 operator|||
 name|xmpEntriesInFile
 operator|.
@@ -1627,7 +1629,7 @@ literal|false
 return|;
 block|}
 comment|// reply == JOptionPane.YES_OPTION)
-comment|/*          * TODO Extract Import functionality from ImportMenuItem then we could          * do:          *           * ImportMenuItem importer = new ImportMenuItem(frame, (mainTable ==          * null), new PdfXmpImporter());          *           * importer.automatedImport(new String[] { fileName });          */
+comment|/*          * TODO Extract Import functionality from ImportMenuItem then we could          * do:          *          * ImportMenuItem importer = new ImportMenuItem(frame, (mainTable ==          * null), new PdfXmpImporter());          *          * importer.automatedImport(new String[] { fileName });          */
 name|boolean
 name|isSingle
 init|=
@@ -2568,11 +2570,13 @@ operator|.
 name|isAbsolute
 argument_list|()
 operator|&&
+operator|(
 name|dirs
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|?
 name|FileUtil
 operator|.
@@ -2633,11 +2637,13 @@ operator|.
 name|isAbsolute
 argument_list|()
 operator|&&
+operator|(
 name|dirs
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|?
 name|FileUtil
 operator|.

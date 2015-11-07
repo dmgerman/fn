@@ -1112,15 +1112,10 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|,
 name|Localization
 operator|.

@@ -173,6 +173,7 @@ name|String
 name|getUndoPresentationName
 parameter_list|()
 block|{
+comment|// @formatter:off
 return|return
 name|Localization
 operator|.
@@ -183,17 +184,25 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
+operator|(
+name|nameChange
+condition|?
 name|Localization
 operator|.
 name|lang
 argument_list|(
-name|nameChange
-condition|?
 literal|"change string name"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"change string content"
 argument_list|)
+operator|)
 return|;
+comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -203,6 +212,7 @@ name|String
 name|getRedoPresentationName
 parameter_list|()
 block|{
+comment|// @formatter:off
 return|return
 name|Localization
 operator|.
@@ -213,17 +223,25 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
+operator|(
+name|nameChange
+condition|?
 name|Localization
 operator|.
 name|lang
 argument_list|(
-name|nameChange
-condition|?
 literal|"change string name"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"change string content"
 argument_list|)
+operator|)
 return|;
+comment|// @formatter:on
 block|}
 annotation|@
 name|Override

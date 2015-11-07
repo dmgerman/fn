@@ -148,6 +148,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|jabRefFrame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
@@ -299,14 +300,9 @@ name|tabbedPane
 operator|.
 name|add
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|GUIGlobals
 operator|.
 name|untitledTitle
-argument_list|)
 argument_list|,
 name|bp
 argument_list|)

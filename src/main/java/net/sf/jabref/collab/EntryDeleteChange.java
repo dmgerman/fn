@@ -144,6 +144,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|bibtex
 operator|.
 name|DuplicateCheck
@@ -240,7 +256,12 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Deleted entry"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this

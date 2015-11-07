@@ -960,6 +960,7 @@ name|selectedOnly
 operator|=
 name|selectedOnly
 expr_stmt|;
+comment|// @formatter:off
 name|putValue
 argument_list|(
 name|Action
@@ -983,6 +984,7 @@ literal|"Export"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 annotation|@
 name|Override

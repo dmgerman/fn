@@ -930,6 +930,7 @@ literal|"Error Page"
 argument_list|)
 condition|)
 block|{
+comment|// @formatter:off
 name|status
 operator|.
 name|showMessage
@@ -953,6 +954,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return
 literal|false
 return|;
@@ -1094,15 +1096,10 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|,
 name|Localization
 operator|.

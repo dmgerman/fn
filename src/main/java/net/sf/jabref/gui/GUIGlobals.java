@@ -321,7 +321,12 @@ specifier|final
 name|String
 name|stringsTitle
 init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Strings for database"
+argument_list|)
 decl_stmt|;
 DECL|field|untitledTitle
 specifier|public
@@ -330,7 +335,12 @@ specifier|final
 name|String
 name|untitledTitle
 init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"untitled"
+argument_list|)
 decl_stmt|;
 DECL|field|NUMBER_COL
 specifier|public
@@ -1532,6 +1542,7 @@ name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// @formatter:off
 name|label
 operator|.
 name|setToolTipText
@@ -1553,6 +1564,7 @@ literal|"web link"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 name|GUIGlobals
 operator|.
 name|tableIcons

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -130,7 +130,7 @@ name|REMOVE_NODE_AND_CHILDREN
 init|=
 literal|2
 decl_stmt|;
-comment|/**      * Creates an object that can undo/redo an edit event.      *       * @param groupsRoot      *            The global groups root.      * @param editType      *            The type of editing (ADD_NODE, REMOVE_NODE_KEEP_CHILDREN,      *            REMOVE_NODE_AND_CHILDREN)      * @param editedNode      *            The edited node (which was added or will be removed). The node      *            must be a descendant of node<b>groupsRoot</b>! This means      *            that, in case of adding, you first have to add it to the tree,      *            then call this constructor. When removing, you first have to      *            call this constructor, then remove the node.      */
+comment|/**      * Creates an object that can undo/redo an edit event.      *      * @param groupsRoot      *            The global groups root.      * @param editType      *            The type of editing (ADD_NODE, REMOVE_NODE_KEEP_CHILDREN,      *            REMOVE_NODE_AND_CHILDREN)      * @param editedNode      *            The edited node (which was added or will be removed). The node      *            must be a descendant of node<b>groupsRoot</b>! This means      *            that, in case of adding, you first have to add it to the tree,      *            then call this constructor. When removing, you first have to      *            call this constructor, then remove the node.      */
 DECL|method|UndoableAddOrRemoveGroup (GroupSelector gs, GroupTreeNode groupsRoot, GroupTreeNode editedNode, int editType)
 specifier|public
 name|UndoableAddOrRemoveGroup
@@ -372,7 +372,7 @@ operator|-
 literal|1
 index|]
 decl_stmt|;
-comment|// traverse path up to butlast element
+comment|// traverse path up to but last element
 for|for
 control|(
 name|int
@@ -382,11 +382,13 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|m_pathToNode
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 operator|++
 name|i
@@ -450,9 +452,11 @@ name|childIndex
 init|;
 name|i
 operator|<
+operator|(
 name|childIndex
 operator|+
 name|m_subtreeRootChildCount
+operator|)
 condition|;
 operator|++
 name|i
@@ -602,7 +606,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Call this method to decide if the group list should be immediately      * revalidated by this operation. Default is true.      *       * @param val      *            a<code>boolean</code> value      */
+comment|/**      * Call this method to decide if the group list should be immediately      * revalidated by this operation. Default is true.      *      * @param val      *            a<code>boolean</code> value      */
 DECL|method|setRevalidate (boolean val)
 specifier|public
 name|void

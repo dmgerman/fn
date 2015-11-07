@@ -341,6 +341,7 @@ name|andSeparator
 argument_list|)
 expr_stmt|;
 block|}
+comment|// @formatter:off
 name|String
 name|caseSensitiveDescription
 init|=
@@ -379,6 +380,7 @@ argument_list|(
 literal|"Hint%c To search specific fields only, enter for example%c<p><tt>author%esmith and title%eelectrical</tt>"
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 return|return
 name|String
 operator|.

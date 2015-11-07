@@ -96,6 +96,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+comment|// @formatter:off
 comment|// action directly set by JabRefFrame
 comment|// DO NOT TRANSLATE "relevant" as this makes the produced .bib files non portable
 name|values
@@ -136,6 +137,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 name|this
 operator|.
 name|setValues

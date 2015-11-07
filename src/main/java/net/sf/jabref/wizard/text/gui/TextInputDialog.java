@@ -314,16 +314,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
-operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -2976,11 +2966,22 @@ specifier|public
 name|PasteAction
 parameter_list|()
 block|{
+comment|// @formatter:off
 name|super
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Paste"
+argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Paste from clipboard"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -2992,6 +2993,7 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -3105,11 +3107,22 @@ specifier|public
 name|LoadAction
 parameter_list|()
 block|{
+comment|// @formatter:off
 name|super
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Open"
+argument_list|)
 argument_list|,
-literal|"Open_file"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Open file"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -3121,6 +3134,7 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -3262,11 +3276,22 @@ specifier|public
 name|ClearAction
 parameter_list|()
 block|{
+comment|// @formatter:off
 name|super
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Clear"
+argument_list|)
 argument_list|,
-literal|"Clear_inputarea"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Clear inputarea"
+argument_list|)
 argument_list|,
 name|IconTheme
 operator|.
@@ -3278,6 +3303,7 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -3312,7 +3338,12 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Edit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -3826,12 +3857,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|text
-argument_list|)
 argument_list|,
 name|icon
 argument_list|)
@@ -3842,72 +3868,11 @@ name|Action
 operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|description
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicAction (String text, String description, URL icon, KeyStroke key)
-specifier|public
-name|BasicAction
-parameter_list|(
-name|String
-name|text
-parameter_list|,
-name|String
-name|description
-parameter_list|,
-name|URL
-name|icon
-parameter_list|,
-name|KeyStroke
-name|key
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-name|text
-argument_list|)
-argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
-name|icon
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|ACCELERATOR_KEY
-argument_list|,
-name|key
-argument_list|)
-expr_stmt|;
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|SHORT_DESCRIPTION
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-name|description
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
+comment|/* TODO: Not used. Will comment out for a while for possible later removal     public BasicAction(String text, String description, URL icon, KeyStroke key) {         super(Localization.lang(text), new ImageIcon(icon));         putValue(Action.ACCELERATOR_KEY, key);         putValue(Action.SHORT_DESCRIPTION, Localization.lang(description));     } */
 DECL|method|BasicAction (String text)
 specifier|public
 name|BasicAction
@@ -3918,46 +3883,11 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|text
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicAction (String text, KeyStroke key)
-specifier|public
-name|BasicAction
-parameter_list|(
-name|String
-name|text
-parameter_list|,
-name|KeyStroke
-name|key
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-name|text
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|putValue
-argument_list|(
-name|Action
-operator|.
-name|ACCELERATOR_KEY
-argument_list|,
-name|key
-argument_list|)
-expr_stmt|;
-block|}
+comment|/* TODO: Not used. Will comment out for a while for possible later removal     public BasicAction(String text, KeyStroke key) {         super(Localization.lang(text));         putValue(Action.ACCELERATOR_KEY, key);     }     */
 annotation|@
 name|Override
 DECL|method|actionPerformed (ActionEvent e)

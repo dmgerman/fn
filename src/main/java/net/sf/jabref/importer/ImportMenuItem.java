@@ -1152,6 +1152,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1162,9 +1163,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No entries found. Please make sure you are "
-operator|+
-literal|"using the correct import filter."
+literal|"No entries found. Please make sure you are using the correct import filter."
 argument_list|)
 argument_list|,
 name|Localization
@@ -1179,6 +1178,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 block|}
 block|}
