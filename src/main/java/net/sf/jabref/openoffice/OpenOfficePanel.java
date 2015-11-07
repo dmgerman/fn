@@ -188,6 +188,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -2818,7 +2834,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Refresh OO"
+name|KeyBinds
+operator|.
+name|REFRESH_OO
 argument_list|)
 argument_list|,
 literal|"Refresh OO"

@@ -158,15 +158,6 @@ name|CLOSE_ENTRY_EDITOR
 init|=
 literal|"Close entry editor"
 decl_stmt|;
-DECL|field|CLOSE_PREAMBLE_EDITOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|CLOSE_PREAMBLE_EDITOR
-init|=
-literal|"Close preamble editor"
-decl_stmt|;
 DECL|field|COPY
 specifier|public
 specifier|static
@@ -824,24 +815,6 @@ name|STRING_DIALOG_ADD_STRING
 init|=
 literal|"String dialog, add string"
 decl_stmt|;
-DECL|field|STRING_DIALOG_MOVE_STRING_DOWN
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|STRING_DIALOG_MOVE_STRING_DOWN
-init|=
-literal|"String dialog, move string down"
-decl_stmt|;
-DECL|field|STRING_DIALOG_MOVE_STRING_UP
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|STRING_DIALOG_MOVE_STRING_UP
-init|=
-literal|"String dialog, move string up"
-decl_stmt|;
 DECL|field|STRING_DIALOG_REMOVE_STRING
 specifier|public
 specifier|static
@@ -1218,24 +1191,6 @@ name|keyBindMap
 operator|.
 name|put
 argument_list|(
-name|CLOSE_ENTRY_EDITOR
-argument_list|,
-literal|"ESCAPE"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|CLOSE_PREAMBLE_EDITOR
-argument_list|,
-literal|"ESCAPE"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
 name|BACK_HELP_DIALOG
 argument_list|,
 literal|"LEFT"
@@ -1264,6 +1219,15 @@ operator|.
 name|put
 argument_list|(
 name|CLEAR_SEARCH
+argument_list|,
+literal|"ESCAPE"
+argument_list|)
+expr_stmt|;
+name|keyBindMap
+operator|.
+name|put
+argument_list|(
+name|CLOSE_ENTRY_EDITOR
 argument_list|,
 literal|"ESCAPE"
 argument_list|)
@@ -1351,24 +1315,6 @@ argument_list|(
 name|STRING_DIALOG_REMOVE_STRING
 argument_list|,
 literal|"shift DELETE"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|STRING_DIALOG_MOVE_STRING_UP
-argument_list|,
-literal|"ctrl UP"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|STRING_DIALOG_MOVE_STRING_DOWN
-argument_list|,
-literal|"ctrl DOWN"
 argument_list|)
 expr_stmt|;
 name|keyBindMap

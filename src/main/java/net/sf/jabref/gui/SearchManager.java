@@ -96,6 +96,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -1862,7 +1878,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Repeat incremental search"
+name|KeyBinds
+operator|.
+name|REPEAT_INCREMENTAL_SEARCH
 argument_list|)
 argument_list|,
 literal|"repeat"
@@ -1920,7 +1938,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Clear search"
+name|KeyBinds
+operator|.
+name|CLEAR_SEARCH
 argument_list|)
 argument_list|,
 literal|"escape"

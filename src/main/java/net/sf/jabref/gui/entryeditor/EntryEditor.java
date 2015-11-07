@@ -1429,13 +1429,16 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|entry
 operator|.
 name|getOptionalFields
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|entry
 operator|.
 name|getOptionalFields
@@ -1445,6 +1448,7 @@ name|size
 argument_list|()
 operator|>=
 literal|1
+operator|)
 condition|)
 block|{
 name|EntryEditorTab
@@ -2821,9 +2825,12 @@ name|TIME_STAMP_FIELD
 argument_list|)
 argument_list|)
 operator|||
+operator|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -2831,6 +2838,7 @@ name|equals
 argument_list|(
 literal|"datepicker"
 argument_list|)
+operator|)
 condition|)
 block|{
 comment|// double click AND datefield => insert the current date (today)
@@ -2893,9 +2901,11 @@ expr_stmt|;
 comment|// insert a datepicker, if the extras field contains this command
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -2924,9 +2934,11 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -2958,9 +2970,11 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -3166,9 +3180,11 @@ else|else
 block|{
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -3342,9 +3358,11 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|(
 name|fieldExtras
@@ -3450,9 +3468,11 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -3500,9 +3520,11 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|fieldExtras
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|fieldExtras
 operator|.
@@ -4055,7 +4077,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Help"
+name|KeyBinds
+operator|.
+name|HELP
 argument_list|)
 argument_list|,
 literal|"help"
@@ -4078,7 +4102,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Save database"
+name|KeyBinds
+operator|.
+name|SAVE_DATABASE
 argument_list|)
 argument_list|,
 literal|"save"
@@ -4103,7 +4129,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Next tab"
+name|KeyBinds
+operator|.
+name|NEXT_TAB
 argument_list|)
 argument_list|,
 literal|"nexttab"
@@ -4130,7 +4158,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Previous tab"
+name|KeyBinds
+operator|.
+name|PREVIOUS_TAB
 argument_list|)
 argument_list|,
 literal|"prevtab"
@@ -4427,13 +4457,18 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|comp
 operator|==
 name|source
+operator|)
 operator|||
+operator|(
+operator|(
 name|comp
 operator|instanceof
 name|FieldEditor
+operator|)
 operator|&&
 name|this
 operator|.
@@ -4441,6 +4476,7 @@ name|isAncestorOf
 argument_list|(
 name|comp
 argument_list|)
+operator|)
 condition|)
 block|{
 if|if
@@ -4976,9 +5012,11 @@ decl_stmt|;
 name|boolean
 name|emptyWarning
 init|=
+operator|(
 name|newKey
 operator|==
 literal|null
+operator|)
 operator|||
 name|newKey
 operator|.
@@ -5108,9 +5146,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|oldValue
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|oldValue
@@ -5920,6 +5960,7 @@ operator|.
 name|isPopupTrigger
 argument_list|()
 operator|||
+operator|(
 name|e
 operator|.
 name|getButton
@@ -5928,6 +5969,7 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON3
+operator|)
 condition|)
 block|{
 name|handleTypeChange
@@ -5952,6 +5994,7 @@ operator|.
 name|isPopupTrigger
 argument_list|()
 operator|||
+operator|(
 name|e
 operator|.
 name|getButton
@@ -5960,6 +6003,7 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON3
+operator|)
 condition|)
 block|{
 name|handleTypeChange
@@ -6584,21 +6628,32 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
+operator|(
 name|oldValue
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|newValue
 operator|==
 literal|null
+operator|)
+operator|)
 operator|||
+operator|(
+operator|(
 name|oldValue
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|newValue
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|oldValue
 operator|.
@@ -6606,6 +6661,7 @@ name|equals
 argument_list|(
 name|newValue
 argument_list|)
+operator|)
 condition|)
 block|{
 return|return;
@@ -6624,9 +6680,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|cleaned
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|cleaned
@@ -6918,6 +6976,7 @@ name|set
 operator|=
 operator|!
 operator|(
+operator|(
 name|entry
 operator|.
 name|getField
@@ -6929,6 +6988,7 @@ argument_list|()
 argument_list|)
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|toSet
 operator|.
@@ -7429,12 +7489,14 @@ name|setSelectedIndex
 argument_list|(
 name|i
 operator|<
+operator|(
 name|tabbed
 operator|.
 name|getTabCount
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|?
 name|i
 operator|+
@@ -7530,9 +7592,11 @@ name|newRow
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|thisRow
 operator|+
 literal|1
+operator|)
 operator|<
 name|panel
 operator|.
@@ -7668,9 +7732,11 @@ name|newRow
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|thisRow
 operator|-
 literal|1
+operator|)
 operator|>=
 literal|0
 condition|)
@@ -7687,6 +7753,7 @@ if|if
 condition|(
 name|thisRow
 operator|!=
+operator|(
 name|panel
 operator|.
 name|database
@@ -7695,6 +7762,7 @@ name|getEntryCount
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|newRow
