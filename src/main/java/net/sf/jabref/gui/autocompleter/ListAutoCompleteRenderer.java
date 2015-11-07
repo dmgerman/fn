@@ -54,6 +54,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|BorderFactory
 import|;
 end_import
@@ -123,7 +133,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Renders possible autocomplete items in form of a simple list.  *   * @param<E> the type of the items  */
+comment|/**  * Renders possible autocomplete items in form of a simple list.  * @param<E> the type of the items  */
 end_comment
 
 begin_class
@@ -174,7 +184,7 @@ DECL|field|acceptAction
 name|ActionListener
 name|acceptAction
 decl_stmt|;
-comment|/**      * Every selection change by the user is interpreted as accepting the new item as autocompletion. Thus we need this      * helper variable to prevent that also programmatical trigger an autocompletion.      */
+comment|/** 	 * Every selection change by the user is interpreted as accepting the new item as autocompletion. 	 * Thus we need this helper variable to prevent that also programmatical trigger an autocompletion. 	 */
 DECL|field|interpretSelectionChangeAsAccept
 name|Boolean
 name|interpretSelectionChangeAsAccept
@@ -303,13 +313,10 @@ if|if
 condition|(
 name|interpretSelectionChangeAsAccept
 operator|&&
-operator|(
 name|acceptAction
 operator|!=
 literal|null
-operator|)
 condition|)
-block|{
 name|acceptAction
 operator|.
 name|actionPerformed
@@ -327,7 +334,6 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)
@@ -421,13 +427,10 @@ expr_stmt|;
 comment|// Set new index if valid otherwise clean selection
 if|if
 condition|(
-operator|(
 name|index
 operator|>=
 literal|0
-operator|)
 operator|&&
-operator|(
 name|index
 operator|<
 name|list
@@ -437,7 +440,6 @@ argument_list|()
 operator|.
 name|getSize
 argument_list|()
-operator|)
 condition|)
 block|{
 name|list
@@ -456,13 +458,11 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
-block|{
 name|list
 operator|.
 name|clearSelection
 argument_list|()
 expr_stmt|;
-block|}
 name|interpretSelectionChangeAsAccept
 operator|=
 literal|true

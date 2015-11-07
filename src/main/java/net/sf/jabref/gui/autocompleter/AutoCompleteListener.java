@@ -209,7 +209,7 @@ operator|=
 name|completer
 expr_stmt|;
 block|}
-comment|/**      * This method is used if the focus listener should call another focus listener after finishing. This is needed      * because the autocomplete listener must run before the focus listener responsible for storing the current edit.      *      * @param listener The listener to call.      */
+comment|/**      * This method is used if the focus listener should call another focus listener      * after finishing. This is needed because the autocomplete listener must      * run before the focus listener responsible for storing the current edit.      *      * @param listener The listener to call.      */
 DECL|method|setNextFocusListener (FocusListener listener)
 specifier|public
 name|void
@@ -226,7 +226,7 @@ operator|=
 name|listener
 expr_stmt|;
 block|}
-comment|/**      * This setting determines whether the autocomplete listener should consume the Enter key stroke when it leads to      * accepting a completion. If set to false, the JTextComponent will receive the Enter key press after the completion      * is done. The default value if true.      *       * @param t true to indicate that the Enter key should be consumed, false that it should be forwarded      */
+comment|/**      * This setting determines whether the autocomplete listener should consume the Enter key      * stroke when it leads to accepting a completion. If set to false, the JTextComponent will receive      * the Enter key press after the completion is done. The default value if true.      * @param t true to indicate that the Enter key should be consumed, false that it should be forwarded      */
 DECL|method|setConsumeEnterKey (boolean t)
 specifier|public
 name|void
@@ -446,8 +446,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -459,8 +457,6 @@ block|}
 block|}
 else|else
 block|{
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -689,7 +685,7 @@ argument_list|()
 expr_stmt|;
 comment|//System.out.println("ToSetIn: '"+toSetIn+"'");
 block|}
-comment|/**      * If user cancels autocompletion by a) entering another letter than the completed word (and there is no other auto      * completion) b) space the casing of the letters has to be kept      *       * Global variable "lastBeginning" keeps track of typed letters. We rely on this variable to reconstruct the text      *       * @param wordSeperatorTyped indicates whether the user has typed a white space character or a      */
+comment|/**      * If user cancels autocompletion by      *   a) entering another letter than the completed word (and there is no other auto completion)      *   b) space      * the casing of the letters has to be kept      *       * Global variable "lastBeginning" keeps track of typed letters.      * We rely on this variable to reconstruct the text       *       * @param wordSeperatorTyped indicates whether the user has typed a white space character or a      */
 DECL|method|setUnmodifiedTypedLetters (JTextComponent comp, boolean lastBeginningContainsTypedCharacter, boolean wordSeperatorTyped)
 specifier|private
 name|void
@@ -712,8 +708,6 @@ operator|==
 literal|null
 condition|)
 block|{
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -725,8 +719,6 @@ comment|// There was no previous input (if the user typed a word, where no autoc
 comment|// Thus, there is nothing to replace
 return|return;
 block|}
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -756,8 +748,6 @@ condition|(
 name|wordSeperatorTyped
 condition|)
 block|{
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -775,8 +765,6 @@ block|}
 block|}
 else|else
 block|{
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -888,7 +876,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/**      * Start a new completion attempt (instead of treating a continuation of an existing word or an interrupt of the      * current word)      */
+comment|/**      * Start a new completion attempt      * (instead of treating a continuation of an existing word or an interrupt of the current word)      */
 DECL|method|startCompletion (StringBuffer currentword, KeyEvent e)
 specifier|private
 name|void
@@ -969,8 +957,6 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -1047,8 +1033,6 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -1151,8 +1135,6 @@ operator|.
 name|getKeyChar
 argument_list|()
 decl_stmt|;
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -1226,8 +1208,6 @@ name|KeyEvent
 name|e
 parameter_list|)
 block|{
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -1326,8 +1306,6 @@ operator|==
 literal|null
 condition|)
 block|{
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -1338,8 +1316,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -1385,8 +1361,6 @@ operator|)
 condition|)
 block|{
 comment|// User continues on the word that was suggested.
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -1615,8 +1589,6 @@ name|lastBeginning
 operator|+
 name|ch
 expr_stmt|;
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -1818,8 +1790,6 @@ expr_stmt|;
 return|return;
 block|}
 block|}
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -1905,8 +1875,6 @@ name|isSingleUnitField
 argument_list|()
 operator|)
 assert|;
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -1936,8 +1904,6 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -1984,8 +1950,6 @@ name|void
 name|resetAutoCompletion
 parameter_list|()
 block|{
-name|AutoCompleteListener
-operator|.
 name|LOGGER
 operator|.
 name|debug

@@ -41,9 +41,12 @@ enum|enum
 name|SearchMode
 block|{
 DECL|enumConstant|Incremental
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|Float
+DECL|enumConstant|Localization.lang
 name|Incremental
 argument_list|(
-DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
 name|lang
@@ -51,7 +54,6 @@ argument_list|(
 literal|"Incremental"
 argument_list|)
 argument_list|,
-DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
 name|lang
@@ -60,10 +62,8 @@ literal|"Incremental search"
 argument_list|)
 argument_list|)
 block|,
-DECL|enumConstant|Float
 name|Float
 argument_list|(
-DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
 name|lang
@@ -71,6 +71,8 @@ argument_list|(
 literal|"Float"
 argument_list|)
 argument_list|,
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|Filter
 DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
@@ -80,10 +82,8 @@ literal|"Gray out non-matching entries"
 argument_list|)
 argument_list|)
 block|,
-DECL|enumConstant|Filter
 name|Filter
 argument_list|(
-DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
 name|lang
@@ -91,6 +91,8 @@ argument_list|(
 literal|"Filter"
 argument_list|)
 argument_list|,
+DECL|enumConstant|Localization.lang
+DECL|enumConstant|LiveFilter
 DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
@@ -100,10 +102,8 @@ literal|"Hide non-matching entries"
 argument_list|)
 argument_list|)
 block|,
-DECL|enumConstant|LiveFilter
 name|LiveFilter
 argument_list|(
-DECL|enumConstant|Localization.lang
 name|Localization
 operator|.
 name|lang
@@ -112,6 +112,7 @@ literal|"Live filter"
 argument_list|)
 argument_list|,
 DECL|enumConstant|Localization.lang
+DECL|enumConstant|ResultsInDialog
 name|Localization
 operator|.
 name|lang
@@ -120,7 +121,6 @@ literal|"Automatically hide non-matching entries"
 argument_list|)
 argument_list|)
 block|,
-DECL|enumConstant|ResultsInDialog
 name|ResultsInDialog
 argument_list|(
 DECL|enumConstant|Localization.lang
@@ -132,6 +132,7 @@ literal|"Show results in dialog"
 argument_list|)
 argument_list|,
 DECL|enumConstant|Localization.lang
+DECL|enumConstant|Global
 name|Localization
 operator|.
 name|lang
@@ -140,7 +141,6 @@ literal|"Show search results in a window"
 argument_list|)
 argument_list|)
 block|,
-DECL|enumConstant|Global
 name|Global
 argument_list|(
 DECL|enumConstant|Localization.lang
