@@ -264,6 +264,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -481,7 +497,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *       * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      */
+comment|/**      *      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      */
 DECL|method|PreviewPanel (BasePanel panel, MetaData metaData, String layoutFile)
 specifier|public
 name|PreviewPanel
@@ -508,7 +524,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *       * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel.       * The user can override this setting by setting the config setting JabRefPreferences.PDF_PREVIEW to false.      */
+comment|/**      *      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel.      * The user can override this setting by setting the config setting JabRefPreferences.PDF_PREVIEW to false.      */
 DECL|method|PreviewPanel (BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
 specifier|private
 name|PreviewPanel
@@ -663,9 +679,11 @@ expr_stmt|;
 comment|/*          * If we have been given a panel and the preference option          * previewPrintButton is set, show the tool bar          */
 if|if
 condition|(
+operator|(
 name|panel
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|JabRefPreferences
 operator|.
@@ -1200,7 +1218,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Close entry preview"
+name|KeyBinds
+operator|.
+name|CLOSE_DIALOG
 argument_list|)
 argument_list|,
 literal|"close"

@@ -110,6 +110,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -275,7 +291,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Automatically link files"
+name|KeyBinds
+operator|.
+name|AUTOMATICALLY_LINK_FILES
 argument_list|)
 argument_list|)
 expr_stmt|;

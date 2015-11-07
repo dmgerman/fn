@@ -96,6 +96,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -1273,7 +1289,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Close dialog"
+name|KeyBinds
+operator|.
+name|CLOSE_DIALOG
 argument_list|)
 argument_list|,
 literal|"close"
@@ -1484,16 +1502,6 @@ name|MenuAction
 extends|extends
 name|MnemonicAwareAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|4339280220347418559L
-decl_stmt|;
 DECL|method|MenuAction ()
 specifier|public
 name|MenuAction
@@ -1511,7 +1519,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Push to application"
+name|KeyBinds
+operator|.
+name|PUSH_TO_APPLICATION
 argument_list|)
 argument_list|)
 expr_stmt|;

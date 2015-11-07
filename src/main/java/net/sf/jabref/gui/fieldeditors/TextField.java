@@ -842,7 +842,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Undo"
+name|KeyBinds
+operator|.
+name|UNDO
 argument_list|)
 argument_list|,
 literal|"Undo"
@@ -913,7 +915,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Redo"
+name|KeyBinds
+operator|.
+name|REDO
 argument_list|)
 argument_list|,
 literal|"Redo"

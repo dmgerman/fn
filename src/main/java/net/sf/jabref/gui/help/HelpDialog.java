@@ -136,6 +136,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -335,7 +351,9 @@ argument_list|()
 operator|.
 name|getKey
 argument_list|(
-literal|"Close dialog"
+name|KeyBinds
+operator|.
+name|CLOSE_DIALOG
 argument_list|)
 argument_list|,
 literal|"close"

@@ -2035,7 +2035,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Help"
+name|KeyBinds
+operator|.
+name|HELP
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4790,10 +4792,13 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"New entry"
+name|KeyBinds
+operator|.
+name|NEW_ENTRY
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// @formatter:off
 DECL|field|newSpecificEntryAction
 specifier|private
 specifier|final
@@ -4816,7 +4821,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"New article"
+name|KeyBinds
+operator|.
+name|NEW_ARTICLE
 argument_list|)
 argument_list|)
 block|,
@@ -4831,7 +4838,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"New book"
+name|KeyBinds
+operator|.
+name|NEW_BOOK
 argument_list|)
 argument_list|)
 block|,
@@ -4846,7 +4855,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"New phdthesis"
+name|KeyBinds
+operator|.
+name|NEW_PHDTHESIS
 argument_list|)
 argument_list|)
 block|,
@@ -4861,7 +4872,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"New inbook"
+name|KeyBinds
+operator|.
+name|NEW_INBOOK
 argument_list|)
 argument_list|)
 block|,
@@ -4876,7 +4889,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"New mastersthesis"
+name|KeyBinds
+operator|.
+name|NEW_MASTERSTHESIS
 argument_list|)
 argument_list|)
 block|,
@@ -4891,7 +4906,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"New proceedings"
+name|KeyBinds
+operator|.
+name|NEW_PROCEEDINGS
 argument_list|)
 argument_list|)
 block|,
@@ -4954,7 +4971,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"New unpublished"
+name|KeyBinds
+operator|.
+name|NEW_UNPUBLISHED
 argument_list|)
 argument_list|)
 block|,
@@ -4975,6 +4994,7 @@ literal|"other"
 argument_list|)
 block|}
 decl_stmt|;
+comment|// @formatter:on
 DECL|method|JabRefFrame (JabRef jabRef)
 specifier|public
 name|JabRefFrame
@@ -11341,7 +11361,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Quit JabRef"
+name|KeyBinds
+operator|.
+name|QUIT_JAB_REF
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -11434,7 +11456,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Close database"
+name|KeyBinds
+operator|.
+name|CLOSE_DATABASE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -12260,7 +12284,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Save session"
+name|KeyBinds
+operator|.
+name|SAVE_SESSION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -12574,7 +12600,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Load session"
+name|KeyBinds
+operator|.
+name|LOAD_SESSION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -12905,14 +12933,18 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Next tab"
+name|KeyBinds
+operator|.
+name|NEXT_TAB
 argument_list|)
 else|:
 name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Previous tab"
+name|KeyBinds
+operator|.
+name|PREVIOUS_TAB
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -13073,7 +13105,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//putValue(ACCELERATOR_KEY,
-comment|//         (next?prefs.getKey("Next tab"):prefs.getKey("Previous tab")));
+comment|//         (next?prefs.getKey(KeyBinds.NEXT_TAB):prefs.getKey(KeyBinds.PREVIOUS_TAB)));
 block|}
 annotation|@
 name|Override
@@ -13607,7 +13639,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Increase table font size"
+name|KeyBinds
+operator|.
+name|INCREASE_TABLE_FONT_SIZE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -13738,7 +13772,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Decrease table font size"
+name|KeyBinds
+operator|.
+name|DECREASE_TABLE_FONT_SIZE
 argument_list|)
 argument_list|)
 expr_stmt|;

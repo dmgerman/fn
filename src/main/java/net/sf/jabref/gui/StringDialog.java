@@ -384,6 +384,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -893,7 +909,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"String dialog, add string"
+name|KeyBinds
+operator|.
+name|STRING_DIALOG_ADD_STRING
 argument_list|)
 argument_list|,
 literal|"add"
@@ -925,7 +943,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"String dialog, remove string"
+name|KeyBinds
+operator|.
+name|STRING_DIALOG_REMOVE_STRING
 argument_list|)
 argument_list|,
 literal|"remove"
@@ -957,7 +977,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Save database"
+name|KeyBinds
+operator|.
+name|SAVE_DATABASE
 argument_list|)
 argument_list|,
 literal|"save"
@@ -980,7 +1002,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Close dialog"
+name|KeyBinds
+operator|.
+name|CLOSE_DIALOG
 argument_list|)
 argument_list|,
 literal|"close"
@@ -1003,7 +1027,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Help"
+name|KeyBinds
+operator|.
+name|HELP
 argument_list|)
 argument_list|,
 literal|"help"
@@ -1026,7 +1052,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Undo"
+name|KeyBinds
+operator|.
+name|UNDO
 argument_list|)
 argument_list|,
 literal|"undo"
@@ -1056,7 +1084,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Redo"
+name|KeyBinds
+operator|.
+name|REDO
 argument_list|)
 argument_list|,
 literal|"redo"
@@ -1326,7 +1356,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Close dialog"
+name|KeyBinds
+operator|.
+name|CLOSE_DIALOG
 argument_list|)
 argument_list|,
 literal|"close"
@@ -1353,7 +1385,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Help"
+name|KeyBinds
+operator|.
+name|HELP
 argument_list|)
 argument_list|,
 literal|"help"

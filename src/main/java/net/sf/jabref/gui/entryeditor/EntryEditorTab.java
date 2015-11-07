@@ -224,6 +224,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|autocompleter
@@ -713,7 +729,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Help"
+name|KeyBinds
+operator|.
+name|HELP
 argument_list|)
 argument_list|,
 literal|"help"
@@ -740,7 +758,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Save database"
+name|KeyBinds
+operator|.
+name|SAVE_DATABASE
 argument_list|)
 argument_list|,
 literal|"save"
@@ -767,7 +787,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Next tab"
+name|KeyBinds
+operator|.
+name|NEXT_TAB
 argument_list|)
 argument_list|,
 literal|"nexttab"
@@ -796,7 +818,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Previous tab"
+name|KeyBinds
+operator|.
+name|PREVIOUS_TAB
 argument_list|)
 argument_list|,
 literal|"prevtab"
@@ -1316,12 +1340,14 @@ block|}
 if|if
 condition|(
 operator|(
+operator|(
 name|i
 operator|+
 literal|1
 operator|)
 operator|%
 name|fieldsPerRow
+operator|)
 operator|==
 literal|0
 condition|)
@@ -1493,9 +1519,11 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
+operator|(
 name|entryValue
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|entryValue
@@ -2291,7 +2319,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Help"
+name|KeyBinds
+operator|.
+name|HELP
 argument_list|)
 argument_list|,
 literal|"help"
@@ -2318,7 +2348,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Save database"
+name|KeyBinds
+operator|.
+name|SAVE_DATABASE
 argument_list|)
 argument_list|,
 literal|"save"
@@ -2345,7 +2377,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Next tab"
+name|KeyBinds
+operator|.
+name|NEXT_TAB
 argument_list|)
 argument_list|,
 literal|"nexttab"
@@ -2374,7 +2408,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Previous tab"
+name|KeyBinds
+operator|.
+name|PREVIOUS_TAB
 argument_list|)
 argument_list|,
 literal|"prevtab"
