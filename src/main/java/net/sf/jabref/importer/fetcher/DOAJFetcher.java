@@ -184,7 +184,7 @@ name|importer
 operator|.
 name|fileformat
 operator|.
-name|BibJSONConverter
+name|JSONConverter
 import|;
 end_import
 
@@ -264,6 +264,16 @@ DECL|field|shouldContinue
 specifier|private
 name|boolean
 name|shouldContinue
+decl_stmt|;
+DECL|field|jsonConverter
+specifier|private
+specifier|final
+name|JSONConverter
+name|jsonConverter
+init|=
+operator|new
+name|JSONConverter
+argument_list|()
 decl_stmt|;
 DECL|method|DOAJFetcher ()
 specifier|public
@@ -652,7 +662,7 @@ decl_stmt|;
 name|BibtexEntry
 name|entry
 init|=
-name|BibJSONConverter
+name|jsonConverter
 operator|.
 name|BibJSONtoBibtex
 argument_list|(

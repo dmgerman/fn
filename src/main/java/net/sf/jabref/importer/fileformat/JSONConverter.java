@@ -99,10 +99,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibJSONConverter
+DECL|class|JSONConverter
 specifier|public
 class|class
-name|BibJSONConverter
+name|JSONConverter
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -115,16 +115,26 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|BibJSONConverter
+name|JSONConverter
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|method|JSONConverter ()
+specifier|public
+name|JSONConverter
+parameter_list|()
+block|{      }
+DECL|method|BibJSONtoBibtex (JSONObject bibJsonEntry)
+specifier|public
+name|BibtexEntry
+name|BibJSONtoBibtex
+parameter_list|(
+name|JSONObject
+name|bibJsonEntry
+parameter_list|)
+block|{
 comment|// Fields that are directly accessible at the top level BibJson object
-DECL|field|singleFieldStrings
-specifier|private
-specifier|static
-specifier|final
 name|String
 index|[]
 name|singleFieldStrings
@@ -143,10 +153,6 @@ literal|"month"
 block|}
 decl_stmt|;
 comment|// Fields that are accessible in the journal part of the BibJson object
-DECL|field|journalSingleFieldStrings
-specifier|private
-specifier|static
-specifier|final
 name|String
 index|[]
 name|journalSingleFieldStrings
@@ -162,21 +168,6 @@ block|,
 literal|"volume"
 block|}
 decl_stmt|;
-DECL|method|BibJSONConverter ()
-specifier|public
-name|BibJSONConverter
-parameter_list|()
-block|{      }
-DECL|method|BibJSONtoBibtex (JSONObject bibJsonEntry)
-specifier|public
-specifier|static
-name|BibtexEntry
-name|BibJSONtoBibtex
-parameter_list|(
-name|JSONObject
-name|bibJsonEntry
-parameter_list|)
-block|{
 name|BibtexEntry
 name|entry
 init|=

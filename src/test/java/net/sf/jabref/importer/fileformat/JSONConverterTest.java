@@ -81,11 +81,21 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibJSONConverterTest
+DECL|class|JSONConverterTest
 specifier|public
 class|class
-name|BibJSONConverterTest
+name|JSONConverterTest
 block|{
+DECL|field|jc
+specifier|private
+specifier|final
+name|JSONConverter
+name|jc
+init|=
+operator|new
+name|JSONConverter
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Test
 DECL|method|testBibJSONConverter ()
@@ -131,7 +141,7 @@ decl_stmt|;
 name|BibtexEntry
 name|be
 init|=
-name|BibJSONConverter
+name|jc
 operator|.
 name|BibJSONtoBibtex
 argument_list|(
