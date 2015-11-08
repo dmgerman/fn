@@ -96,11 +96,39 @@ specifier|public
 class|class
 name|PositionWindow
 block|{
-DECL|method|setWindowPosition (Window window, String posXKey, String posYKey, String sizeXKey, String sizeYKey)
+DECL|field|posXKey
+specifier|private
+specifier|final
+name|String
+name|posXKey
+decl_stmt|;
+DECL|field|posYKey
+specifier|private
+specifier|final
+name|String
+name|posYKey
+decl_stmt|;
+DECL|field|sizeXKey
+specifier|private
+specifier|final
+name|String
+name|sizeXKey
+decl_stmt|;
+DECL|field|sizeYKey
+specifier|private
+specifier|final
+name|String
+name|sizeYKey
+decl_stmt|;
+DECL|field|window
+specifier|private
+specifier|final
+name|Window
+name|window
+decl_stmt|;
+DECL|method|PositionWindow (Window window, String posXKey, String posYKey, String sizeXKey, String sizeYKey)
 specifier|public
-specifier|static
-name|void
-name|setWindowPosition
+name|PositionWindow
 parameter_list|(
 name|Window
 name|window
@@ -117,6 +145,43 @@ parameter_list|,
 name|String
 name|sizeYKey
 parameter_list|)
+block|{
+name|this
+operator|.
+name|posXKey
+operator|=
+name|posXKey
+expr_stmt|;
+name|this
+operator|.
+name|posYKey
+operator|=
+name|posYKey
+expr_stmt|;
+name|this
+operator|.
+name|sizeXKey
+operator|=
+name|sizeXKey
+expr_stmt|;
+name|this
+operator|.
+name|sizeYKey
+operator|=
+name|sizeYKey
+expr_stmt|;
+name|this
+operator|.
+name|window
+operator|=
+name|window
+expr_stmt|;
+block|}
+DECL|method|setWindowPosition ()
+specifier|public
+name|void
+name|setWindowPosition
+parameter_list|()
 block|{
 name|int
 name|sizeX
@@ -397,27 +462,11 @@ name|sizeY
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|storeWindowPosition (Window window, String posXKey, String posYKey, String sizeXKey, String sizeYKey)
+DECL|method|storeWindowPosition ()
 specifier|public
-specifier|static
 name|void
 name|storeWindowPosition
-parameter_list|(
-name|Window
-name|window
-parameter_list|,
-name|String
-name|posXKey
-parameter_list|,
-name|String
-name|posYKey
-parameter_list|,
-name|String
-name|sizeXKey
-parameter_list|,
-name|String
-name|sizeYKey
-parameter_list|)
+parameter_list|()
 block|{
 name|Point
 name|p
@@ -488,7 +537,7 @@ name|height
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method sets the location of a Dialog such that it is centered with regard to another window, but not outside      * the screen on the left and the top.      */
+comment|/**      * This method sets the location of a Dialog such that it is centered with regard to another window, but not outside      * the screen on the left and the top.      *      * Moved from Util      */
 DECL|method|placeDialog (java.awt.Dialog diag, java.awt.Container win)
 specifier|public
 specifier|static

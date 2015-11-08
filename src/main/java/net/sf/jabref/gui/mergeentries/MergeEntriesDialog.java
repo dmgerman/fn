@@ -312,6 +312,11 @@ specifier|private
 name|MergeEntries
 name|mergeEntries
 decl_stmt|;
+DECL|field|pw
+specifier|private
+name|PositionWindow
+name|pw
+decl_stmt|;
 DECL|method|MergeEntriesDialog (BasePanel panel)
 specifier|public
 name|MergeEntriesDialog
@@ -717,9 +722,10 @@ expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
+name|pw
+operator|=
+operator|new
 name|PositionWindow
-operator|.
-name|setWindowPosition
 argument_list|(
 name|this
 argument_list|,
@@ -739,6 +745,11 @@ name|JabRefPreferences
 operator|.
 name|MERGEENTRIES_SIZE_Y
 argument_list|)
+expr_stmt|;
+name|pw
+operator|.
+name|setWindowPosition
+argument_list|()
 expr_stmt|;
 comment|// Show what we've got
 name|setVisible
@@ -920,28 +931,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Save dialog position
-name|PositionWindow
+name|pw
 operator|.
 name|storeWindowPosition
-argument_list|(
-name|this
-argument_list|,
-name|JabRefPreferences
-operator|.
-name|MERGEENTRIES_POS_X
-argument_list|,
-name|JabRefPreferences
-operator|.
-name|MERGEENTRIES_POS_Y
-argument_list|,
-name|JabRefPreferences
-operator|.
-name|MERGEENTRIES_SIZE_X
-argument_list|,
-name|JabRefPreferences
-operator|.
-name|MERGEENTRIES_SIZE_Y
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|dispose
 argument_list|()
