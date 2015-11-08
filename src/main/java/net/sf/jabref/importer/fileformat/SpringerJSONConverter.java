@@ -74,6 +74,24 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|date
+operator|.
+name|MonthUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -120,11 +138,22 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|// Fields that are directly accessible at the top level Json object
-DECL|field|singleFieldStrings
-specifier|private
+DECL|method|SpringerJSONConverter ()
+specifier|public
+name|SpringerJSONConverter
+parameter_list|()
+block|{      }
+DECL|method|SpringerJSONtoBibtex (JSONObject springerJsonEntry)
+specifier|public
 specifier|static
-specifier|final
+name|BibtexEntry
+name|SpringerJSONtoBibtex
+parameter_list|(
+name|JSONObject
+name|springerJsonEntry
+parameter_list|)
+block|{
+comment|// Fields that are directly accessible at the top level Json object
 name|String
 index|[]
 name|singleFieldStrings
@@ -148,21 +177,6 @@ block|,
 literal|"publisher"
 block|}
 decl_stmt|;
-DECL|method|SpringerJSONConverter ()
-specifier|public
-name|SpringerJSONConverter
-parameter_list|()
-block|{      }
-DECL|method|SpringerJSONtoBibtex (JSONObject springerJsonEntry)
-specifier|public
-specifier|static
-name|BibtexEntry
-name|SpringerJSONtoBibtex
-parameter_list|(
-name|JSONObject
-name|springerJsonEntry
-parameter_list|)
-block|{
 name|BibtexEntry
 name|entry
 init|=
@@ -609,6 +623,16 @@ argument_list|(
 literal|"publicationDate"
 argument_list|)
 decl_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"date"
+argument_list|,
+name|date
+argument_list|)
+expr_stmt|;
+comment|// For BibLatex
 name|String
 name|dateparts
 index|[]
@@ -638,10 +662,22 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
+name|MonthUtil
+operator|.
+name|getMonthByNumber
+argument_list|(
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
 name|dateparts
 index|[
 literal|1
 index|]
+argument_list|)
+argument_list|)
+operator|.
+name|bibtexFormat
 argument_list|)
 expr_stmt|;
 block|}
