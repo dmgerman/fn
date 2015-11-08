@@ -896,6 +896,15 @@ name|UNMARK_ENTRIES
 init|=
 literal|"Unmark entries"
 decl_stmt|;
+DECL|field|WEB_SEARCH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|WEB_SEARCH
+init|=
+literal|"Web search"
+decl_stmt|;
 DECL|field|WRITE_XMP
 specifier|public
 specifier|static
@@ -1501,7 +1510,7 @@ name|keyBindMap
 operator|.
 name|put
 argument_list|(
-name|FETCH_MEDLINE
+name|WEB_SEARCH
 argument_list|,
 literal|"F5"
 argument_list|)
