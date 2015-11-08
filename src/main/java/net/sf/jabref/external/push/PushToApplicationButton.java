@@ -1503,7 +1503,7 @@ name|NAME
 argument_list|,
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Push entries to external application (%0)"
 argument_list|,
