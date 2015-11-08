@@ -94,7 +94,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryType
+name|BibtexEntryTypes
 import|;
 end_import
 
@@ -188,12 +188,9 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryType
+name|BibtexEntryTypes
 operator|.
-name|getType
-argument_list|(
-literal|"article"
-argument_list|)
+name|ARTICLE
 argument_list|)
 expr_stmt|;
 comment|// Authors
