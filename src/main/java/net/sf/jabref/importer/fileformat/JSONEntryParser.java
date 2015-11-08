@@ -99,10 +99,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|JSONConverter
+DECL|class|JSONEntryParser
 specifier|public
 class|class
-name|JSONConverter
+name|JSONEntryParser
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -115,14 +115,14 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|JSONConverter
+name|JSONEntryParser
 operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|JSONConverter ()
+DECL|method|JSONEntryParser ()
 specifier|public
-name|JSONConverter
+name|JSONEntryParser
 parameter_list|()
 block|{      }
 DECL|method|BibJSONtoBibtex (JSONObject bibJsonEntry)

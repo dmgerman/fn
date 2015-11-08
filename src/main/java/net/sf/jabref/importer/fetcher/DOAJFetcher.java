@@ -184,7 +184,7 @@ name|importer
 operator|.
 name|fileformat
 operator|.
-name|JSONConverter
+name|JSONEntryParser
 import|;
 end_import
 
@@ -268,11 +268,11 @@ decl_stmt|;
 DECL|field|jsonConverter
 specifier|private
 specifier|final
-name|JSONConverter
+name|JSONEntryParser
 name|jsonConverter
 init|=
 operator|new
-name|JSONConverter
+name|JSONEntryParser
 argument_list|()
 decl_stmt|;
 DECL|method|DOAJFetcher ()

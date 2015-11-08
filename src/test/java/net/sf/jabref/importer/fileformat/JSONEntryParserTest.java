@@ -81,19 +81,19 @@ import|;
 end_import
 
 begin_class
-DECL|class|JSONConverterTest
+DECL|class|JSONEntryParserTest
 specifier|public
 class|class
-name|JSONConverterTest
+name|JSONEntryParserTest
 block|{
 DECL|field|jc
 specifier|private
 specifier|final
-name|JSONConverter
+name|JSONEntryParser
 name|jc
 init|=
 operator|new
-name|JSONConverter
+name|JSONEntryParser
 argument_list|()
 decl_stmt|;
 annotation|@
