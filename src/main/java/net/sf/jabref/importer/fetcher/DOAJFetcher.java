@@ -756,7 +756,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-literal|"DOAJ (Directory of Open Access Journals)"
+literal|"DOAJ"
 return|;
 block|}
 annotation|@
