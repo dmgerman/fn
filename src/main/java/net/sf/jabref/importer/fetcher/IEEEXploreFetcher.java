@@ -4056,8 +4056,6 @@ operator|<
 literal|0
 condition|)
 block|{
-name|IEEEXploreFetcher
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -4073,7 +4071,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not parse number of hits"
+literal|"Cannot parse number of hits"
 argument_list|)
 argument_list|)
 throw|;
@@ -4125,6 +4123,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+name|page
+argument_list|)
+expr_stmt|;
 throw|throw
 operator|new
 name|IOException
@@ -4133,7 +4138,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not parse number of hits"
+literal|"Cannot parse number of hits"
 argument_list|)
 argument_list|)
 throw|;

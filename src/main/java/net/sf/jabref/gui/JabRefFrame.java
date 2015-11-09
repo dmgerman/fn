@@ -5701,7 +5701,7 @@ name|LOGGER
 operator|.
 name|debug
 argument_list|(
-literal|"Could not open browser."
+literal|"Cannot open browser."
 argument_list|,
 name|ex
 argument_list|)

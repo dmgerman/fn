@@ -1880,14 +1880,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Warning there is a duplicate key"
-argument_list|)
-operator|+
-literal|':'
+literal|"Warning there is a duplicate key: "
 operator|+
 name|newKey
 argument_list|)

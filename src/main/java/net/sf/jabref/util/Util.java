@@ -4329,25 +4329,12 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Wrong Format"
-argument_list|)
-operator|.
-name|concat
-argument_list|(
-literal|" "
-argument_list|)
-operator|.
-name|concat
-argument_list|(
+literal|"Wrong format "
+operator|+
 name|e
 operator|.
-name|toString
+name|getMessage
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

@@ -547,7 +547,7 @@ name|LOGGER
 operator|.
 name|debug
 argument_list|(
-literal|"Could not open file"
+literal|"Cannot open file"
 argument_list|,
 name|e
 argument_list|)

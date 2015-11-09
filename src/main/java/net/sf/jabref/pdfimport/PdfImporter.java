@@ -1241,12 +1241,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Import failed"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|entry
@@ -1411,12 +1406,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Import failed"
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -1469,12 +1459,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Import failed"
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
