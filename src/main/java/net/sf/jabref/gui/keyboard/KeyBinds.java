@@ -311,42 +311,6 @@ name|ENTRY_EDITOR_STORE_FIELD
 init|=
 literal|"Entry editor, store field"
 decl_stmt|;
-DECL|field|FETCH_AR_XIV_ORG
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FETCH_AR_XIV_ORG
-init|=
-literal|"Fetch ArXiv.org"
-decl_stmt|;
-DECL|field|FETCH_INSPIRE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FETCH_INSPIRE
-init|=
-literal|"Fetch INSPIRE"
-decl_stmt|;
-DECL|field|FETCH_MEDLINE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FETCH_MEDLINE
-init|=
-literal|"Fetch Medline"
-decl_stmt|;
-DECL|field|FETCH_SPIRES
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FETCH_SPIRES
-init|=
-literal|"Fetch SPIRES"
-decl_stmt|;
 DECL|field|FILE_LIST_EDITOR_MOVE_ENTRY_DOWN
 specifier|public
 specifier|static
@@ -760,51 +724,6 @@ name|String
 name|SEARCH
 init|=
 literal|"Search"
-decl_stmt|;
-DECL|field|SEARCH_ACM_PORTAL
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEARCH_ACM_PORTAL
-init|=
-literal|"Search ACM Portal"
-decl_stmt|;
-DECL|field|SEARCH_ADS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEARCH_ADS
-init|=
-literal|"Search ADS"
-decl_stmt|;
-DECL|field|SEARCH_IEEE_XPLORE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEARCH_IEEE_XPLORE
-init|=
-literal|"Search IEEEXplore"
-decl_stmt|;
-DECL|field|SEARCH_JSTOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEARCH_JSTOR
-init|=
-literal|"Search JSTOR"
-decl_stmt|;
-DECL|field|SEARCH_SCIENCE_DIRECT
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEARCH_SCIENCE_DIRECT
-init|=
-literal|"Search ScienceDirect"
 decl_stmt|;
 DECL|field|SELECT_ALL
 specifier|public
@@ -1519,24 +1438,6 @@ name|keyBindMap
 operator|.
 name|put
 argument_list|(
-name|SEARCH_SCIENCE_DIRECT
-argument_list|,
-literal|"ctrl F5"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|SEARCH_ADS
-argument_list|,
-literal|"ctrl shift F6"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
 name|NEW_FROM_PLAIN_TEXT
 argument_list|,
 literal|"ctrl shift N"
@@ -1582,42 +1483,6 @@ name|keyBindMap
 operator|.
 name|put
 argument_list|(
-name|SEARCH_IEEE_XPLORE
-argument_list|,
-literal|"alt F8"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|SEARCH_ACM_PORTAL
-argument_list|,
-literal|"ctrl shift F8"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|FETCH_AR_XIV_ORG
-argument_list|,
-literal|"shift F8"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|SEARCH_JSTOR
-argument_list|,
-literal|"shift F9"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
 name|CLEANUP
 argument_list|,
 literal|"ctrl shift F7"
@@ -1639,24 +1504,6 @@ argument_list|(
 name|NEW_FILE_LINK
 argument_list|,
 literal|"ctrl N"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|FETCH_SPIRES
-argument_list|,
-literal|"ctrl F8"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|FETCH_INSPIRE
-argument_list|,
-literal|"ctrl F2"
 argument_list|)
 expr_stmt|;
 name|keyBindMap

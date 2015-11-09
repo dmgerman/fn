@@ -419,9 +419,7 @@ argument_list|,
 operator|new
 name|AbstractAction
 argument_list|(
-name|Actions
-operator|.
-name|UNDO
+literal|"Undo"
 argument_list|)
 block|{
 annotation|@

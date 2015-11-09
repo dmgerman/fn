@@ -1159,18 +1159,6 @@ return|return
 literal|"IEEEXploreHelp.html"
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|getKeyName ()
-specifier|public
-name|String
-name|getKeyName
-parameter_list|()
-block|{
-return|return
-literal|"IEEEXplore"
-return|;
-block|}
 comment|/**      * This method is called by the dialog when the user has cancelled the import.      */
 annotation|@
 name|Override

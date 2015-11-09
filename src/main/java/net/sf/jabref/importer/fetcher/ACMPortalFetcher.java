@@ -2600,18 +2600,6 @@ return|return
 literal|"ACMPortalHelp.html"
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|getKeyName ()
-specifier|public
-name|String
-name|getKeyName
-parameter_list|()
-block|{
-return|return
-literal|"ACM Portal"
-return|;
-block|}
 comment|// This method is called by the dialog when the user has cancelled the import.
 DECL|method|cancelled ()
 specifier|public
