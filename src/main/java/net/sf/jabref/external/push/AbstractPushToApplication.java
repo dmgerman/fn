@@ -292,7 +292,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Insert selected citations into %d"
+literal|"Push entries to external application (%0)"
 argument_list|,
 name|getApplicationName
 argument_list|()
