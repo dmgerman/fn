@@ -5706,7 +5706,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Created_group_\"%0\"."
+literal|"Created group \"%0\"."
 argument_list|,
 name|newGroup
 operator|.

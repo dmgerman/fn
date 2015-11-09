@@ -8130,7 +8130,7 @@ name|subMenu
 argument_list|(
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"File"
 argument_list|)
@@ -8145,7 +8145,7 @@ name|subMenu
 argument_list|(
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Sessions"
 argument_list|)
@@ -8160,7 +8160,7 @@ name|subMenu
 argument_list|(
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Edit"
 argument_list|)
@@ -8175,7 +8175,7 @@ name|subMenu
 argument_list|(
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Search"
 argument_list|)
@@ -8190,7 +8190,7 @@ name|subMenu
 argument_list|(
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Groups"
 argument_list|)
@@ -8205,7 +8205,7 @@ name|subMenu
 argument_list|(
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"BibTeX"
 argument_list|)
@@ -8220,7 +8220,7 @@ name|subMenu
 argument_list|(
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"View"
 argument_list|)
@@ -8235,7 +8235,7 @@ name|subMenu
 argument_list|(
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Tools"
 argument_list|)
@@ -8250,7 +8250,7 @@ name|subMenu
 argument_list|(
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Options"
 argument_list|)
@@ -8265,7 +8265,7 @@ name|subMenu
 argument_list|(
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"New entry..."
 argument_list|)
@@ -8280,7 +8280,7 @@ name|subMenu
 argument_list|(
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Help"
 argument_list|)
@@ -8581,7 +8581,12 @@ name|JabRefFrame
 operator|.
 name|subMenu
 argument_list|(
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Mark specific color"
+argument_list|)
 argument_list|)
 decl_stmt|;
 for|for

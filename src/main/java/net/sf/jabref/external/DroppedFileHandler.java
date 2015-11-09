@@ -2916,14 +2916,24 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
 name|toFile
 operator|.
 name|getAbsolutePath
 argument_list|()
-operator|+
-literal|" exists. Overwrite?"
+argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Overwrite file?"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -2961,15 +2971,27 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
+comment|// @formatter:off
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"There was an error moving the file. Please move the file manually and link in place."
+argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Error moving file"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return
 literal|false
 return|;
@@ -3163,20 +3185,16 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"'"
-operator|+
-name|destFile
-operator|.
-name|getPath
-argument_list|()
-operator|+
-literal|"' "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite?"
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
+name|destFile
+operator|.
+name|getPath
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization

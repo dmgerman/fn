@@ -4700,12 +4700,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Warning"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-operator|(
+literal|"Warning: %0 out of %1 entries have undefined BibTeX key."
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|bes
 operator|.
 name|length
@@ -4714,33 +4714,17 @@ name|keys
 operator|.
 name|size
 argument_list|()
-operator|)
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"out of"
 argument_list|)
-operator|+
-literal|' '
-operator|+
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|bes
 operator|.
 name|length
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries have undefined BibTeX key"
 argument_list|)
-operator|+
-literal|'.'
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5004,12 +4988,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Warning"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-operator|(
+literal|"Warning: %0 out of %1 entries have undefined BibTeX key."
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|bes
 operator|.
 name|length
@@ -5018,33 +5002,17 @@ name|keys
 operator|.
 name|size
 argument_list|()
-operator|)
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"out of"
 argument_list|)
-operator|+
-literal|' '
-operator|+
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|bes
 operator|.
 name|length
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries have undefined BibTeX key"
 argument_list|)
-operator|+
-literal|'.'
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -8909,8 +8877,15 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not save file. "
+literal|"Could not save file."
+argument_list|)
 operator|+
+literal|' '
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Character encoding '%0' is not supported."
 argument_list|,
 name|enc
@@ -9023,10 +8998,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not save file"
+literal|"Could not save file."
 argument_list|)
 operator|+
-literal|".\n"
+literal|"\n"
 operator|+
 name|ex
 operator|.
@@ -9522,11 +9497,8 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Added new"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Added new '%0' entry."
+argument_list|,
 name|type
 operator|.
 name|getName
@@ -9534,17 +9506,7 @@ argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
-operator|+
-literal|"' "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
 argument_list|)
-operator|+
-literal|'.'
 argument_list|)
 expr_stmt|;
 comment|// We are going to select the new entry. Before that, make sure that we are in
@@ -10005,11 +9967,8 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Added new"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Added new '%0' entry."
+argument_list|,
 name|bibEntry
 operator|.
 name|getType
@@ -10020,17 +9979,7 @@ argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
-operator|+
-literal|"' "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
 argument_list|)
-operator|+
-literal|'.'
 argument_list|)
 expr_stmt|;
 name|markBaseChanged
@@ -12951,9 +12900,12 @@ condition|)
 block|{
 name|output
 argument_list|(
-literal|"First select the entries you wish to change type "
-operator|+
-literal|"for."
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"First select the entries you wish to change type for."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -12976,18 +12928,25 @@ name|showConfirmDialog
 argument_list|(
 name|this
 argument_list|,
-literal|"Multiple entries selected. Do you want to change"
-operator|+
-literal|"\nthe type of all these to '"
-operator|+
+comment|// @formatter:off
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Multiple entries selected. Do you want to change\nthe type of all these to '%0'?"
+argument_list|,
 name|type
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"'?"
+argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Change type"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -12998,6 +12957,7 @@ operator|.
 name|WARNING_MESSAGE
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 if|if
 condition|(
 name|choice
@@ -13020,7 +12980,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"change type"
+literal|"Change type"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -13061,45 +13021,24 @@ block|}
 comment|// @formatter:off
 name|output
 argument_list|(
+name|formatOutputMessage
+argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Changed type to"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Changed type to '%0' for"
+argument_list|,
 name|type
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"' "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"for"
 argument_list|)
-operator|+
-literal|' '
-operator|+
+argument_list|,
 name|bes
 operator|.
 name|length
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries"
 argument_list|)
-operator|+
-literal|'.'
 argument_list|)
 expr_stmt|;
 comment|// @formatter:on
@@ -13158,19 +13097,8 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Really delete the selected"
+literal|"Really delete the selected entry?"
 argument_list|)
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
-argument_list|)
-operator|+
-literal|'?'
 expr_stmt|;
 comment|// @formatter:on
 name|String
@@ -13196,23 +13124,15 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Really delete the selected"
-argument_list|)
-operator|+
-literal|' '
-operator|+
-name|numberOfEntries
-operator|+
-literal|' '
-operator|+
-name|Localization
+literal|"Really delete the selected %0 entries?"
+argument_list|,
+name|Integer
 operator|.
-name|lang
+name|toString
 argument_list|(
-literal|"entries"
+name|numberOfEntries
 argument_list|)
-operator|+
-literal|'?'
+argument_list|)
 expr_stmt|;
 name|title
 operator|=
@@ -14868,14 +14788,16 @@ parameter_list|)
 block|{
 comment|// @formatter:off
 return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s %d %s."
+argument_list|,
 name|start
-operator|+
-literal|' '
-operator|+
+argument_list|,
 name|count
-operator|+
-literal|' '
-operator|+
+argument_list|,
 operator|(
 name|count
 operator|>
@@ -14895,8 +14817,7 @@ argument_list|(
 literal|"entry"
 argument_list|)
 operator|)
-operator|+
-literal|'.'
+argument_list|)
 return|;
 comment|// @formatter:on
 block|}
@@ -15005,20 +14926,16 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|'\''
-operator|+
-name|expFile
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite file?"
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
+name|expFile
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization
@@ -15080,17 +14997,13 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Saved selected to"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Saved selected to '%0'."
+argument_list|,
 name|expFile
 operator|.
 name|getPath
 argument_list|()
-operator|+
-literal|"'."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
