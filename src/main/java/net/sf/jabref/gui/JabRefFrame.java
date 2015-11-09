@@ -9684,8 +9684,6 @@ name|panel
 argument_list|,
 name|entries
 argument_list|,
-literal|""
-argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
@@ -11760,8 +11758,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *      * @param panel     The BasePanel to add to.      * @param entries   The entries to add.      * @param filename  Name of the file where the import came from.      * @param openInNew Should the entries be imported into a new database?      */
-DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, String filename, final boolean openInNew)
+comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *      * @param panel     The BasePanel to add to.      * @param entries   The entries to add.      * @param openInNew Should the entries be imported into a new database?      */
+DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, final boolean openInNew)
 specifier|private
 name|void
 name|addImportedEntries
@@ -11776,9 +11774,6 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 name|entries
-parameter_list|,
-name|String
-name|filename
 parameter_list|,
 specifier|final
 name|boolean
