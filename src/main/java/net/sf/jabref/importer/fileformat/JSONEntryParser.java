@@ -139,9 +139,6 @@ name|String
 index|[]
 name|singleFieldStrings
 init|=
-operator|new
-name|String
-index|[]
 block|{
 literal|"year"
 block|,
@@ -157,9 +154,6 @@ name|String
 index|[]
 name|journalSingleFieldStrings
 init|=
-operator|new
-name|String
-index|[]
 block|{
 literal|"publisher"
 block|,
