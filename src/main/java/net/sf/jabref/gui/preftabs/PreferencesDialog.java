@@ -1281,20 +1281,16 @@ name|PreferencesDialog
 operator|.
 name|this
 argument_list|,
-literal|'\''
-operator|+
-name|file
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite file?"
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
+name|file
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization

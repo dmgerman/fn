@@ -4052,12 +4052,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Cannot parse number of hits"
-argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -4108,23 +4103,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-name|LOGGER
-operator|.
-name|debug
-argument_list|(
-name|page
-argument_list|)
-expr_stmt|;
 throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Cannot parse number of hits"
-argument_list|)
 argument_list|)
 throw|;
 block|}

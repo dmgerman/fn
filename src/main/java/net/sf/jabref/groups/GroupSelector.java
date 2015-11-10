@@ -2637,7 +2637,12 @@ operator|.
 name|setToolTipText
 argument_list|(
 comment|// JZTODO lyrics
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Highlight groups that contain entries contained in any currently selected group"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|floatCb

@@ -112,27 +112,19 @@ operator|=
 literal|""
 expr_stmt|;
 block|}
-DECL|method|Change (String changeName)
+DECL|method|Change (String name)
 name|Change
 parameter_list|(
 name|String
-name|changeName
+name|name
 parameter_list|)
 block|{
+name|this
+operator|.
 name|name
 operator|=
-name|changeName
-expr_stmt|;
-block|}
-DECL|method|getName ()
-specifier|private
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
 name|name
-return|;
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -143,8 +135,7 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|getName
-argument_list|()
+name|name
 return|;
 block|}
 DECL|method|isAccepted ()

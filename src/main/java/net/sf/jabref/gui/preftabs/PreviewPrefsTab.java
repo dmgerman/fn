@@ -1360,7 +1360,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Look at stderr for details"
+literal|"Look at log for details"
 argument_list|)
 operator|+
 literal|'.'

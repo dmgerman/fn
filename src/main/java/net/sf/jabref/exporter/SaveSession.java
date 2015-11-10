@@ -38,22 +38,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|util
 operator|.
 name|io
@@ -561,14 +545,7 @@ throw|throw
 operator|new
 name|SaveException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Save failed while committing changes"
-argument_list|)
-operator|+
-literal|": "
+literal|"Save failed while committing changes: "
 operator|+
 name|ex2
 operator|.

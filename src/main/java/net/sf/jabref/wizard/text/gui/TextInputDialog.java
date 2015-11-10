@@ -1581,7 +1581,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"append_the_selected_text_to_bibtex_key"
+literal|"Append_the_selected_text_to_bibtex_key"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1622,7 +1622,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"override_the_bibtex_key_by_the_selected_text"
+literal|"Override_the_bibtex_key_by_the_selected_text"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3668,7 +3668,12 @@ name|this
 operator|.
 name|setToolTipText
 argument_list|(
-literal|"filled"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Filled"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3685,7 +3690,12 @@ name|this
 operator|.
 name|setToolTipText
 argument_list|(
-literal|"field is missing"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Field is missing"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3872,7 +3882,6 @@ name|description
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* TODO: Not used. Will comment out for a while for possible later removal     public BasicAction(String text, String description, URL icon, KeyStroke key) {         super(Localization.lang(text), new ImageIcon(icon));         putValue(Action.ACCELERATOR_KEY, key);         putValue(Action.SHORT_DESCRIPTION, Localization.lang(description));     } */
 DECL|method|BasicAction (String text)
 specifier|public
 name|BasicAction
@@ -3887,7 +3896,6 @@ name|text
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* TODO: Not used. Will comment out for a while for possible later removal     public BasicAction(String text, KeyStroke key) {         super(Localization.lang(text));         putValue(Action.ACCELERATOR_KEY, key);     }     */
 annotation|@
 name|Override
 DECL|method|actionPerformed (ActionEvent e)

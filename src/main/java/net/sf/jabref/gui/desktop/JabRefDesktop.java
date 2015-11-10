@@ -374,14 +374,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"File not found"
-argument_list|)
-operator|+
-literal|" ("
+literal|"File not found ("
 operator|+
 name|fieldName
 operator|+

@@ -385,13 +385,6 @@ argument_list|)
 expr_stmt|;
 name|entries
 operator|.
-name|setToolTipText
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|entries
-operator|.
 name|setSelected
 argument_list|(
 literal|true

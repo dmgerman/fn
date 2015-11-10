@@ -82,22 +82,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|util
 operator|.
 name|strings
@@ -608,30 +592,11 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"The # character is not allowed in BibTeX strings unless escaped as in '\\#'."
-argument_list|)
+literal|"The # character is not allowed in BibTeX strings unless escaped as in '\\#'.\n"
 operator|+
-literal|'\n'
+literal|"In JabRef, use pairs of # characters to indicate a string.\n"
 operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"In JabRef, use pairs of # characters to indicate a string."
-argument_list|)
-operator|+
-literal|'\n'
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Note that the entry causing the problem has been selected."
-argument_list|)
 argument_list|)
 throw|;
 block|}
