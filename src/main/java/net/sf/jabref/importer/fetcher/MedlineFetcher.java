@@ -132,8 +132,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|util
-operator|.
 name|GUIGlobals
 import|;
 end_import

@@ -66,22 +66,6 @@ name|JScrollPane
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|util
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
 begin_comment
 comment|/**  * The side pane is displayed at the right side of JabRef and shows instances of  * SidePaneComponents, for instance the GroupSelector, or the SearchManager.  */
 end_comment
