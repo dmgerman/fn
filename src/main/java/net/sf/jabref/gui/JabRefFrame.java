@@ -4192,7 +4192,9 @@ init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"exportToClipboard"
+name|Actions
+operator|.
+name|EXPORT_TO_CLIPBOARD
 argument_list|,
 name|Localization
 operator|.

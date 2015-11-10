@@ -603,7 +603,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Preamble editor, store changes"
+name|KeyBinds
+operator|.
+name|PREAMBLE_EDITOR_STORE_CHANGES
 argument_list|)
 argument_list|,
 literal|"store"

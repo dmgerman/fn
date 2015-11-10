@@ -1066,7 +1066,7 @@ literal|"\n\n"
 operator|+
 name|e
 argument_list|,
-name|getKeyName
+name|getTitle
 argument_list|()
 argument_list|,
 name|JOptionPane
@@ -1101,7 +1101,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|getKeyName
+name|getTitle
 argument_list|()
 argument_list|,
 name|JOptionPane
@@ -1144,11 +1144,11 @@ name|lang
 argument_list|(
 literal|"Note: A full text search is currently not supported for %0"
 argument_list|,
-name|getKeyName
+name|getTitle
 argument_list|()
 argument_list|)
 argument_list|,
-name|getKeyName
+name|getTitle
 argument_list|()
 argument_list|,
 name|JOptionPane
@@ -1172,23 +1172,6 @@ block|{
 comment|// there is no helppage
 return|return
 literal|null
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getKeyName ()
-specifier|public
-name|String
-name|getKeyName
-parameter_list|()
-block|{
-return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
-name|oai2ArchiveName
-argument_list|)
 return|;
 block|}
 annotation|@

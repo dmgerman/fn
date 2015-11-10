@@ -381,7 +381,9 @@ argument_list|()
 operator|.
 name|getKey
 argument_list|(
-literal|"Back, help dialog"
+name|KeyBinds
+operator|.
+name|BACK_HELP_DIALOG
 argument_list|)
 argument_list|,
 literal|"left"
@@ -407,7 +409,9 @@ argument_list|()
 operator|.
 name|getKey
 argument_list|(
-literal|"Forward, help dialog"
+name|KeyBinds
+operator|.
+name|FORWARD_HELP_DIALOG
 argument_list|)
 argument_list|,
 literal|"right"
@@ -452,7 +456,9 @@ argument_list|()
 operator|.
 name|getKey
 argument_list|(
-literal|"Back, help dialog"
+name|KeyBinds
+operator|.
+name|BACK_HELP_DIALOG
 argument_list|)
 argument_list|,
 literal|"left"
@@ -478,7 +484,9 @@ argument_list|()
 operator|.
 name|getKey
 argument_list|(
-literal|"Forward, help dialog"
+name|KeyBinds
+operator|.
+name|FORWARD_HELP_DIALOG
 argument_list|)
 argument_list|,
 literal|"right"

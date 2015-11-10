@@ -222,10 +222,10 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getKeyName ()
+DECL|method|getTitle ()
 specifier|public
 name|String
-name|getKeyName
+name|getTitle
 parameter_list|()
 block|{
 return|return
@@ -235,19 +235,6 @@ name|lang
 argument_list|(
 literal|"ADS from ADS-DOI"
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getTitle ()
-specifier|public
-name|String
-name|getTitle
-parameter_list|()
-block|{
-return|return
-name|getKeyName
-argument_list|()
 return|;
 block|}
 annotation|@
@@ -529,11 +516,11 @@ name|lang
 argument_list|(
 literal|"Note: A full text search is currently not supported for %0"
 argument_list|,
-name|getKeyName
+name|getTitle
 argument_list|()
 argument_list|)
 argument_list|,
-name|getKeyName
+name|getTitle
 argument_list|()
 argument_list|,
 name|JOptionPane
@@ -565,7 +552,7 @@ literal|"\n\n"
 operator|+
 name|e
 argument_list|,
-name|getKeyName
+name|getTitle
 argument_list|()
 argument_list|,
 name|JOptionPane
@@ -600,7 +587,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|getKeyName
+name|getTitle
 argument_list|()
 argument_list|,
 name|JOptionPane
@@ -836,7 +823,7 @@ argument_list|(
 literal|"An Error occurred while parsing abstract"
 argument_list|)
 argument_list|,
-name|getKeyName
+name|getTitle
 argument_list|()
 argument_list|,
 name|JOptionPane
@@ -868,7 +855,7 @@ literal|"\n\n"
 operator|+
 name|e
 argument_list|,
-name|getKeyName
+name|getTitle
 argument_list|()
 argument_list|,
 name|JOptionPane
@@ -903,7 +890,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|getKeyName
+name|getTitle
 argument_list|()
 argument_list|,
 name|JOptionPane
