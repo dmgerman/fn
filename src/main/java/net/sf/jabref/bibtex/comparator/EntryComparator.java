@@ -75,7 +75,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of Comparator takes care of most of the details of sorting BibTeX entries in JabRef.  * It is structured as a node in a linked list of comparators, where each node can contain a link to a  * new comparator that decides the ordering (by recursion) if this one can't find a difference. The next  * node, if any, is given at construction time, and an arbitrary number of nodes can be included.  * If the entries are equal by this comparator, and there is no next entry, the entries' unique IDs will  * decide the ordering. Consequently, this comparator can never return 0 unless the entries are the same  * object.  */
+comment|/**  * This implementation of Comparator takes care of most of the details of sorting BibTeX entries in JabRef. It is  * structured as a node in a linked list of comparators, where each node can contain a link to a new comparator that  * decides the ordering (by recursion) if this one can't find a difference. The next node, if any, is given at  * construction time, and an arbitrary number of nodes can be included. If the entries are equal by this comparator, and  * there is no next entry, the entries' unique IDs will decide the ordering. Consequently, this comparator can never  * return 0 unless the entries are the same object.  */
 end_comment
 
 begin_class
@@ -255,7 +255,6 @@ return|return
 literal|0
 return|;
 block|}
-comment|//Util.pr("EntryComparator: "+e1+" : "+e2);
 name|Object
 name|f1
 init|=
@@ -390,8 +389,8 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
-block|}
 comment|//ImportFormatReader.fixAuthor_lastNameFirst((String)f1);
+block|}
 if|if
 condition|(
 name|f2
@@ -585,8 +584,6 @@ block|}
 name|int
 name|result
 decl_stmt|;
-comment|//String ours = ((String)e1.getField(sortField)).toLowerCase(),
-comment|//    theirs = ((String)e2.getField(sortField)).toLowerCase();
 if|if
 condition|(
 operator|(

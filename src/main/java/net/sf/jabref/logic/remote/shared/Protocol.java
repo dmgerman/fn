@@ -239,6 +239,7 @@ block|{
 while|while
 condition|(
 operator|(
+operator|(
 name|c
 operator|=
 name|in
@@ -248,10 +249,13 @@ argument_list|()
 operator|)
 operator|!=
 literal|'\0'
+operator|)
 operator|&&
+operator|(
 name|c
 operator|>=
 literal|0
+operator|)
 condition|)
 block|{
 name|result
@@ -308,7 +312,9 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 try|try
 block|{
 name|out
@@ -322,7 +328,9 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 try|try
 block|{
 name|socket
@@ -336,7 +344,9 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 end_class

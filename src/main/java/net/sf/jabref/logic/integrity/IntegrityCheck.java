@@ -78,16 +78,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -125,18 +115,6 @@ operator|.
 name|regex
 operator|.
 name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Collectors
 import|;
 end_import
 
@@ -472,6 +450,8 @@ name|AuthorNameChecker
 implements|implements
 name|Checker
 block|{
+annotation|@
+name|Override
 DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
@@ -591,6 +571,8 @@ name|BracketChecker
 implements|implements
 name|Checker
 block|{
+annotation|@
+name|Override
 DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
@@ -759,6 +741,8 @@ operator|.
 name|asPredicate
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
@@ -916,6 +900,8 @@ name|asPredicate
 argument_list|()
 decl_stmt|;
 comment|/**          * Checks, if the number String contains a four digit year          */
+annotation|@
+name|Override
 DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void

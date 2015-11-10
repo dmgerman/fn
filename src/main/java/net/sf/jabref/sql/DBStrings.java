@@ -430,20 +430,20 @@ return|return
 name|isInitialized
 return|;
 block|}
-DECL|method|isInitialized (boolean isInitialized)
+DECL|method|isInitialized (boolean isInit)
 specifier|private
 name|void
 name|isInitialized
 parameter_list|(
 name|boolean
-name|isInitialized
+name|isInit
 parameter_list|)
 block|{
 name|this
 operator|.
 name|isInitialized
 operator|=
-name|isInitialized
+name|isInit
 expr_stmt|;
 block|}
 DECL|method|isConfigValid ()
@@ -456,20 +456,20 @@ return|return
 name|configValid
 return|;
 block|}
-DECL|method|isConfigValid (boolean configValid)
+DECL|method|isConfigValid (boolean confValid)
 specifier|public
 name|void
 name|isConfigValid
 parameter_list|(
 name|boolean
-name|configValid
+name|confValid
 parameter_list|)
 block|{
 name|this
 operator|.
 name|configValid
 operator|=
-name|configValid
+name|confValid
 expr_stmt|;
 block|}
 comment|/**      * Store these db strings into JabRef preferences.      */

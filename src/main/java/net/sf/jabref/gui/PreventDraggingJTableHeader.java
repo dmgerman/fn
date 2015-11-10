@@ -647,8 +647,6 @@ name|toIndex
 operator|)
 condition|)
 block|{
-comment|// Util.pr("prevented! viewIndex = " + c + " modelIndex = "
-comment|// + mColIndex + " toIndex = " + toIndex);
 comment|// prevent dragging (move it back ...)
 name|table
 operator|.

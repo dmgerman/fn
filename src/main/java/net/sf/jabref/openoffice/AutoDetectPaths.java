@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -651,13 +651,17 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|unoil
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|jurt
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|Globals
@@ -851,13 +855,17 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|unoil
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|jurt
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|Globals
@@ -1004,13 +1012,17 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|inUsr
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|inOpt
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return
@@ -1025,13 +1037,17 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|inOpt
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|inUsr
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|Globals
@@ -1084,13 +1100,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|unoil
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|jurt
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|Globals
@@ -1390,13 +1410,17 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|unoil
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|jurt
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|Globals
@@ -1461,9 +1485,7 @@ name|dirList
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|File
@@ -1771,13 +1793,13 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|showProgressDialog (JDialog parent, String title, String message, boolean includeCancelButton)
+DECL|method|showProgressDialog (JDialog progressParent, String title, String message, boolean includeCancelButton)
 specifier|public
 name|JDialog
 name|showProgressDialog
 parameter_list|(
 name|JDialog
-name|parent
+name|progressParent
 parameter_list|,
 name|String
 name|title
@@ -1795,7 +1817,7 @@ literal|false
 expr_stmt|;
 specifier|final
 name|JDialog
-name|prog
+name|progressDialog
 decl_stmt|;
 name|JProgressBar
 name|bar
@@ -1863,12 +1885,12 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|prog
+name|progressDialog
 operator|=
 operator|new
 name|JDialog
 argument_list|(
-name|parent
+name|progressParent
 argument_list|,
 name|title
 argument_list|,
@@ -1905,7 +1927,7 @@ condition|(
 name|includeCancelButton
 condition|)
 block|{
-name|prog
+name|progressDialog
 operator|.
 name|add
 argument_list|(
@@ -1917,7 +1939,7 @@ name|SOUTH
 argument_list|)
 expr_stmt|;
 block|}
-name|prog
+name|progressDialog
 operator|.
 name|add
 argument_list|(
@@ -1932,7 +1954,7 @@ operator|.
 name|NORTH
 argument_list|)
 expr_stmt|;
-name|prog
+name|progressDialog
 operator|.
 name|add
 argument_list|(
@@ -1943,12 +1965,12 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-name|prog
+name|progressDialog
 operator|.
 name|pack
 argument_list|()
 expr_stmt|;
-name|prog
+name|progressDialog
 operator|.
 name|setLocationRelativeTo
 argument_list|(
@@ -1958,7 +1980,7 @@ expr_stmt|;
 comment|//parent);
 comment|//SwingUtilities.invokeLater(new Runnable() {
 comment|//    public void run() {
-name|prog
+name|progressDialog
 operator|.
 name|setVisible
 argument_list|(
@@ -1968,7 +1990,7 @@ expr_stmt|;
 comment|//    }
 comment|//});
 return|return
-name|prog
+name|progressDialog
 return|;
 block|}
 block|}

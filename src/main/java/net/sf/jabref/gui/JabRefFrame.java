@@ -9706,8 +9706,6 @@ name|panel
 argument_list|,
 name|entries
 argument_list|,
-literal|""
-argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
@@ -11786,8 +11784,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *      * @param panel     The BasePanel to add to.      * @param entries   The entries to add.      * @param filename  Name of the file where the import came from.      * @param openInNew Should the entries be imported into a new database?      */
-DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, String filename, final boolean openInNew)
+comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *      * @param panel     The BasePanel to add to.      * @param entries   The entries to add.      * @param openInNew Should the entries be imported into a new database?      */
+DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, final boolean openInNew)
 specifier|private
 name|void
 name|addImportedEntries
@@ -11802,9 +11800,6 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 name|entries
-parameter_list|,
-name|String
-name|filename
 parameter_list|,
 specifier|final
 name|boolean
@@ -12826,8 +12821,18 @@ name|exists
 argument_list|()
 condition|)
 block|{
-comment|//Util.pr("Opening last edited file:"
-comment|//+fileToOpen.getName());
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Opening last edited file:"
+operator|+
+name|file
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|open
 operator|.
 name|openIt
@@ -12922,7 +12927,6 @@ name|next
 operator|=
 name|next
 expr_stmt|;
-comment|//Util.pr(""+prefs.getKey("Next tab"));
 name|putValue
 argument_list|(
 name|Action
@@ -13120,7 +13124,21 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|//Util.pr(Globals.focusListener.getFocused().toString());
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+name|Globals
+operator|.
+name|focusListener
+operator|.
+name|getFocused
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|JComponent
 name|source
 init|=

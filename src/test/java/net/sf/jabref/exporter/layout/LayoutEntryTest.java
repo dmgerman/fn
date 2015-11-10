@@ -536,9 +536,7 @@ name|words
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|words
@@ -625,9 +623,7 @@ name|words
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|words
@@ -725,7 +721,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// define the serach words
+comment|// define the search words
 name|ArrayList
 argument_list|<
 name|String
@@ -734,9 +730,7 @@ name|words
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|words
@@ -816,9 +810,7 @@ name|words
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|words

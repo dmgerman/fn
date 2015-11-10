@@ -187,7 +187,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * This class allows to access the Slac INSPIRE database. It is just a port of  * the original SPIRES Fetcher.  *  * It can either be a GeneralFetcher to pose requests to the database or fetch  * individual entries.  *  * @author Fedor Bezrukov  * @author Sheer El-Showk  *  * @version $Id$  *  */
+comment|/**  *  * This class allows to access the Slac INSPIRE database. It is just a port of the original SPIRES Fetcher.  *  * It can either be a GeneralFetcher to pose requests to the database or fetch individual entries.  *  * @author Fedor Bezrukov  * @author Sheer El-Showk  *  * @version $Id$  *  */
 end_comment
 
 begin_class
@@ -310,7 +310,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Constructs a INSPIRE query url from slaccitation field      *      * @param slaccitation      * @return query string      *     public static String constructUrlFromSlaccitation(String slaccitation) {     	String cmd = "j";     	String key = slaccitation.replaceAll("^%%CITATION = ", "").replaceAll(     			";%%$", "");     	if (key.matches("^\\w*-\\w*[ /].*"))     		cmd = "eprint";     	try {     		key = URLEncoder.encode(key, "UTF-8");     	} catch (UnsupportedEncodingException e) {     	}     	StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST)     			.append("/");     	sb.append("spires/find/hep/www").append("?");     	sb.append("rawcmd=find+").append(cmd).append("+");     	sb.append(key);     	return sb.toString();     }      /**      * Construct an INSPIRE query url from eprint field      *      * @param eprint      * @return query string      *     public static String constructUrlFromEprint(String eprint) {     	String key = eprint.replaceAll(" [.*]$", "");     	try {     		key = URLEncoder.encode(key, "UTF-8");     	} catch (UnsupportedEncodingException e) {     		return "";     	}     	StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST)     			.append("/");     	sb.append("spires/find/hep/www").append("?");     	sb.append("rawcmd=find+eprint+");     	sb.append(key);     	return sb.toString();     }*/
+comment|/**      * Constructs a INSPIRE query url from slaccitation field      *      * @param slaccitation      * @return query string      *      *         public static String constructUrlFromSlaccitation(String slaccitation) { String cmd = "j"; String key =      *         slaccitation.replaceAll("^%%CITATION = ", "").replaceAll( ";%%$", ""); if (key.matches("^\\w*-\\w*[ /].*"      *         )) cmd = "eprint"; try { key = URLEncoder.encode(key, "UTF-8"); } catch (UnsupportedEncodingException e)      *         { } StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST) .append("/");      *         sb.append("spires/find/hep/www").append("?"); sb.append("rawcmd=find+").append(cmd).append("+");      *         sb.append(key); return sb.toString(); }      *      *         /** Construct an INSPIRE query url from eprint field      *      * @param eprint      * @return query string      *      *         public static String constructUrlFromEprint(String eprint) { String key = eprint.replaceAll(" [.*]$",      *         ""); try { key = URLEncoder.encode(key, "UTF-8"); } catch (UnsupportedEncodingException e) { return ""; }      *         StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST) .append("/");      *         sb.append("spires/find/hep/www").append("?"); sb.append("rawcmd=find+eprint+"); sb.append(key); return      *         sb.toString(); }      */
 comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to have the field OAI2_IDENTIFIER_FIELD set to      * the search string.      *      * @param key The OAI2 key to fetch from ArXiv.      * @return The imported BibtexEntry or null if none.      */
 DECL|method|importInspireEntries (String key, OutputPrinter frame)
 specifier|private
@@ -366,6 +366,8 @@ operator|.
 name|getInputStream
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|INSPIREBibtexFilterReader
 name|reader
 init|=
@@ -378,7 +380,8 @@ argument_list|(
 name|inputStream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|ParserResult
 name|pr
 init|=
@@ -395,6 +398,7 @@ operator|.
 name|getDatabase
 argument_list|()
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -419,8 +423,13 @@ literal|"\n\n"
 operator|+
 name|e
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 name|getTitle
 argument_list|()
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -459,8 +468,13 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 name|getTitle
 argument_list|()
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.

@@ -225,13 +225,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ParserResult
-name|result
+try|try
+init|(
+name|FileReader
+name|fr
 init|=
-name|BibtexParser
-operator|.
-name|parse
-argument_list|(
 operator|new
 name|FileReader
 argument_list|(
@@ -239,6 +237,16 @@ name|ImportDataTest
 operator|.
 name|UNLINKED_FILES_TEST_BIB
 argument_list|)
+init|)
+block|{
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+name|fr
 argument_list|)
 decl_stmt|;
 name|BibtexDatabase
@@ -304,7 +312,7 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-comment|/**          * One file doesn't exist, so adding it as an entry should lead to an          * error message.          */
+comment|/**              * One file doesn't exist, so adding it as an entry should lead to an error message.              */
 name|Assert
 operator|.
 name|assertEquals
@@ -409,6 +417,7 @@ argument_list|(
 name|file2Found
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

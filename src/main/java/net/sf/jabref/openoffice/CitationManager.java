@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -368,9 +368,7 @@ name|list
 operator|=
 operator|new
 name|BasicEventList
-argument_list|<
-name|CitEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 name|XNameAccess
@@ -457,9 +455,7 @@ name|tableModel
 operator|=
 operator|new
 name|EventTableModel
-argument_list|<
-name|CitEntry
-argument_list|>
+argument_list|<>
 argument_list|(
 name|list
 argument_list|,
@@ -1273,10 +1269,10 @@ DECL|class|SingleCitDialog
 class|class
 name|SingleCitDialog
 block|{
-DECL|field|diag
+DECL|field|singleCiteDialog
 specifier|final
 name|JDialog
-name|diag
+name|singleCiteDialog
 decl_stmt|;
 DECL|field|pageInfo
 specifier|final
@@ -1294,10 +1290,10 @@ specifier|final
 name|JLabel
 name|title
 decl_stmt|;
-DECL|field|ok
+DECL|field|okButton
 specifier|final
 name|JButton
-name|ok
+name|okButton
 init|=
 operator|new
 name|JButton
@@ -1310,10 +1306,10 @@ literal|"Ok"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|field|cancel
+DECL|field|cancelButton
 specifier|final
 name|JButton
-name|cancel
+name|cancelButton
 init|=
 operator|new
 name|JButton
@@ -1364,7 +1360,7 @@ operator|.
 name|pageInfo
 argument_list|)
 expr_stmt|;
-name|diag
+name|singleCiteDialog
 operator|=
 operator|new
 name|JDialog
@@ -1454,7 +1450,7 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|diag
+name|singleCiteDialog
 operator|.
 name|getContentPane
 argument_list|()
@@ -1487,14 +1483,14 @@ name|bb
 operator|.
 name|addButton
 argument_list|(
-name|ok
+name|okButton
 argument_list|)
 expr_stmt|;
 name|bb
 operator|.
 name|addButton
 argument_list|(
-name|cancel
+name|cancelButton
 argument_list|)
 expr_stmt|;
 name|bb
@@ -1523,7 +1519,7 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|diag
+name|singleCiteDialog
 operator|.
 name|add
 argument_list|(
@@ -1596,7 +1592,7 @@ operator|.
 name|fireTableDataChanged
 argument_list|()
 expr_stmt|;
-name|diag
+name|singleCiteDialog
 operator|.
 name|dispose
 argument_list|()
@@ -1604,7 +1600,7 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
-name|ok
+name|okButton
 operator|.
 name|addActionListener
 argument_list|(
@@ -1628,7 +1624,7 @@ name|ActionEvent
 name|actionEvent
 parameter_list|)
 block|{
-name|diag
+name|singleCiteDialog
 operator|.
 name|dispose
 argument_list|()
@@ -1636,7 +1632,7 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
-name|cancel
+name|cancelButton
 operator|.
 name|addActionListener
 argument_list|(
@@ -1693,22 +1689,22 @@ name|void
 name|showDialog
 parameter_list|()
 block|{
-name|diag
+name|singleCiteDialog
 operator|.
 name|pack
 argument_list|()
 expr_stmt|;
-name|diag
+name|singleCiteDialog
 operator|.
 name|setLocationRelativeTo
 argument_list|(
-name|diag
+name|singleCiteDialog
 operator|.
 name|getParent
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|diag
+name|singleCiteDialog
 operator|.
 name|setVisible
 argument_list|(

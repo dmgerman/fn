@@ -2065,7 +2065,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 name|AuthorList
 operator|.
 name|Author

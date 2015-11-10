@@ -898,7 +898,7 @@ name|StringBuffer
 name|format
 parameter_list|(
 name|Date
-name|date
+name|dDate
 parameter_list|,
 name|StringBuffer
 name|toAppendTo
@@ -1384,14 +1384,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param fields   An array of field names to be checked.      * @param database The database in which to look up crossref'd entries, if any. This      *                 argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
-DECL|method|allFieldsPresent (String[] fields, BibtexDatabase database)
+comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param allFields   An array of field names to be checked.      * @param database The database in which to look up crossref'd entries, if any. This      *                 argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
+DECL|method|allFieldsPresent (String[] allFields, BibtexDatabase database)
 name|boolean
 name|allFieldsPresent
 parameter_list|(
 name|String
 index|[]
-name|fields
+name|allFields
 parameter_list|,
 name|BibtexDatabase
 name|database
@@ -1402,7 +1402,7 @@ control|(
 name|String
 name|field
 range|:
-name|fields
+name|allFields
 control|)
 block|{
 if|if
@@ -1430,7 +1430,7 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|allFieldsPresent (List<String> fields, BibtexDatabase database)
+DECL|method|allFieldsPresent (List<String> allFields, BibtexDatabase database)
 name|boolean
 name|allFieldsPresent
 parameter_list|(
@@ -1438,7 +1438,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|fields
+name|allFields
 parameter_list|,
 name|BibtexDatabase
 name|database
@@ -1447,7 +1447,7 @@ block|{
 return|return
 name|allFieldsPresent
 argument_list|(
-name|fields
+name|allFields
 operator|.
 name|toArray
 argument_list|(
@@ -1462,13 +1462,13 @@ name|database
 argument_list|)
 return|;
 block|}
-DECL|method|atLeastOnePresent (String[] fields, BibtexDatabase database)
+DECL|method|atLeastOnePresent (String[] oneFields, BibtexDatabase database)
 name|boolean
 name|atLeastOnePresent
 parameter_list|(
 name|String
 index|[]
-name|fields
+name|oneFields
 parameter_list|,
 name|BibtexDatabase
 name|database
@@ -1479,7 +1479,7 @@ control|(
 name|String
 name|field
 range|:
-name|fields
+name|oneFields
 control|)
 block|{
 name|String

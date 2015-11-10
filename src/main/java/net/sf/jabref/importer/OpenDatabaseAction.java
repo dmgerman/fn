@@ -424,9 +424,7 @@ name|postOpenActions
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|PostOpenAction
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 static|static
@@ -570,9 +568,7 @@ name|filesToOpen
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|File
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|//File fileToOpen = null;
@@ -1656,7 +1652,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Go through the list of post open actions, and perform those that need      * to be performed.      * @param panel The BasePanel where the database is shown.      * @param pr The result of the bib file parse operation.      */
+comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel The BasePanel where the database is shown.      * @param pr The result of the bib file parse operation.      */
 DECL|method|performPostOpenActions (BasePanel panel, ParserResult pr, boolean mustRaisePanel)
 specifier|public
 specifier|static
@@ -2028,6 +2024,13 @@ comment|// which character encoding is used. However, to read the signature we m
 comment|// encoding in the first place. Since the signature doesn't contain any fancy characters, we can
 comment|// read it regardless of encoding, with either UTF8 or UTF-16. That's the hypothesis, at any rate.
 comment|// 8 bit is most likely, so we try that first:
+name|String
+name|suppliedEncoding
+init|=
+literal|null
+decl_stmt|;
+try|try
+init|(
 name|Reader
 name|utf8Reader
 init|=
@@ -2037,22 +2040,23 @@ name|getUTF8Reader
 argument_list|(
 name|fileToOpen
 argument_list|)
-decl_stmt|;
-name|String
+init|)
+block|{
 name|suppliedEncoding
-init|=
+operator|=
 name|OpenDatabaseAction
 operator|.
 name|checkForEncoding
 argument_list|(
 name|utf8Reader
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|utf8Reader
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 comment|// Now if that didn't get us anywhere, we check with the 16 bit encoding:
 if|if
 condition|(
@@ -2061,6 +2065,8 @@ operator|==
 literal|null
 condition|)
 block|{
+try|try
+init|(
 name|Reader
 name|utf16Reader
 init|=
@@ -2070,7 +2076,8 @@ name|getUTF16Reader
 argument_list|(
 name|fileToOpen
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|suppliedEncoding
 operator|=
 name|OpenDatabaseAction
@@ -2085,6 +2092,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -2560,7 +2568,9 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
 return|return
 name|suppliedEncoding
 operator|!=

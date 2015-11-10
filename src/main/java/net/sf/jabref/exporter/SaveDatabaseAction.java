@@ -506,9 +506,6 @@ index|]
 argument_list|)
 decl_stmt|;
 comment|// @formatter:on
-comment|//  int choice = JOptionPane.showConfirmDialog(frame, Globals.lang("File has been updated externally. "
-comment|// +"Are you sure you want to save?"), Globals.lang("File updated externally"),
-comment|// JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 if|if
 condition|(
 name|answer
@@ -534,7 +531,6 @@ operator|.
 name|YES_OPTION
 condition|)
 block|{
-comment|//try {
 name|cancelled
 operator|=
 literal|true
@@ -1018,9 +1014,6 @@ name|getEncoding
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//Util.pr("Testing resolve string... BasePanel line 237");
-comment|//Util.pr("Resolve aq: "+database.resolveString("aq"));
-comment|//Util.pr("Resolve text: "+database.resolveForStrings("A text which refers to the string #aq# and #billball#, hurra."));
 try|try
 block|{
 name|Globals

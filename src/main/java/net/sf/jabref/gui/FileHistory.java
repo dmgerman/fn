@@ -757,7 +757,6 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-comment|//Util.pr("'"+name+"'");
 specifier|final
 name|File
 name|fileToOpen

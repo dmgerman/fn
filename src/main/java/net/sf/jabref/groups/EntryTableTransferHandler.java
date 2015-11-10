@@ -747,8 +747,6 @@ return|return
 name|handleDropTransfer
 argument_list|(
 name|dropLink
-argument_list|,
-name|dropRow
 argument_list|)
 return|;
 block|}
@@ -1184,8 +1182,6 @@ return|return
 name|handleDropTransfer
 argument_list|(
 name|url
-argument_list|,
-name|dropRow
 argument_list|)
 return|;
 block|}
@@ -1961,16 +1957,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|handleDropTransfer (URL dropLink, int dropRow)
+DECL|method|handleDropTransfer (URL dropLink)
 specifier|private
 name|boolean
 name|handleDropTransfer
 parameter_list|(
 name|URL
 name|dropLink
-parameter_list|,
-name|int
-name|dropRow
 parameter_list|)
 throws|throws
 name|IOException

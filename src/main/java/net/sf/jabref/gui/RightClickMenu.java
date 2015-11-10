@@ -1821,15 +1821,6 @@ name|PopupMenuEvent
 name|e
 parameter_list|)
 block|{
-name|BibtexEntry
-index|[]
-name|bes
-init|=
-name|panel
-operator|.
-name|getSelectedEntries
-argument_list|()
-decl_stmt|;
 name|panel
 operator|.
 name|storeCurrentEdit

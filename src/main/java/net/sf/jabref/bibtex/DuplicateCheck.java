@@ -504,7 +504,6 @@ range|:
 name|fields
 control|)
 block|{
-comment|// Util.pr(":"+compareSingleField(fields[i], one, two));
 name|double
 name|weight
 decl_stmt|;
@@ -557,7 +556,6 @@ argument_list|,
 name|two
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("Field: "+fields[i]+": "+result);
 if|if
 condition|(
 name|result
@@ -685,7 +683,6 @@ return|return
 name|EMPTY_IN_TWO
 return|;
 block|}
-comment|// Util.pr(field+": '"+s1+"' vs '"+s2+"'");
 if|if
 condition|(
 name|field
@@ -749,9 +746,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
-comment|//System.out.println(auth1);
-comment|//System.out.println(auth2);
-comment|//System.out.println(correlateByWords(auth1, auth2));
 name|double
 name|similarity
 init|=
@@ -877,7 +871,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
-comment|//System.out.println(s1+" :: "+s2);
 name|double
 name|similarity
 init|=
@@ -951,7 +944,6 @@ block|}
 return|return
 name|NOT_EQUAL
 return|;
-comment|/*if (s1.trim().equals(s2.trim()))                 return Util.EQUAL;             else                 return Util.NOT_EQUAL;*/
 block|}
 block|}
 DECL|method|compareEntriesStrictly (BibtexEntry one, BibtexEntry two)
@@ -978,7 +970,6 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|// one.getAllFields());
 name|allFields
 operator|.
 name|addAll
@@ -1226,7 +1217,6 @@ name|i
 operator|++
 control|)
 block|{
-comment|/*if (!w1[i].equalsIgnoreCase(w2[i]))                 misses++;*/
 name|double
 name|corr
 init|=

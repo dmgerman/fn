@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2014 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -2535,7 +2535,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//Util.pr(": Finished export");
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Finished export"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|cli
@@ -2942,7 +2948,7 @@ return|return
 name|loaded
 return|;
 block|}
-comment|/**      * Run an entry fetcher from the command line.      *      * Note that this only works headlessly if the EntryFetcher does not show      * any GUI.      *      * @param fetchCommand      *            A string containing both the fetcher to use (id of      *            EntryFetcherExtension minus Fetcher) and the search query,      *            separated by a :      * @return A parser result containing the entries fetched or null if an      *         error occurred.      */
+comment|/**      * Run an entry fetcher from the command line.      *      * Note that this only works headlessly if the EntryFetcher does not show any GUI.      *      * @param fetchCommand A string containing both the fetcher to use (id of EntryFetcherExtension minus Fetcher) and      *            the search query, separated by a :      * @return A parser result containing the entries fetched or null if an error occurred.      */
 DECL|method|fetch (String fetchCommand)
 specifier|private
 name|ParserResult
@@ -3975,7 +3981,13 @@ name|FONT_SIZE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//Util.pr(": Initializing frame");
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Initializing frame"
+argument_list|)
+expr_stmt|;
 name|JabRef
 operator|.
 name|jrf
@@ -4663,7 +4675,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|//Util.pr(": Finished adding panels");
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Finished adding panels"
+argument_list|)
+expr_stmt|;
 comment|// If any database loading was postponed due to an autosave, schedule them
 comment|// for handing now:
 if|if
@@ -5448,7 +5466,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Will open a file (like importFile), but will also request JabRef to focus on this database      * @param argument See importFile.      * @return ParserResult with setToOpenTab(true)      */
+comment|/**      * Will open a file (like importFile), but will also request JabRef to focus on this database      *      * @param argument See importFile.      * @return ParserResult with setToOpenTab(true)      */
 DECL|method|importToOpenBase (String argument)
 specifier|private
 specifier|static
