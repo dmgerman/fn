@@ -90,6 +90,22 @@ name|JabRefPreferences
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|OS
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Apr 14, 2009  * Time: 7:24:07 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -619,16 +635,9 @@ condition|(
 operator|!
 name|dirOnly
 operator|&&
-name|Globals
+name|OS
 operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|USE_NATIVE_FILE_DIALOG_ON_MAC
-argument_list|)
+name|OS_X
 condition|)
 block|{
 return|return
