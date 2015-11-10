@@ -3803,8 +3803,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-try|try
-init|(
 name|URLClassLoader
 name|sysloader
 init|=
@@ -3815,8 +3813,7 @@ name|ClassLoader
 operator|.
 name|getSystemClassLoader
 argument_list|()
-init|)
-block|{
+decl_stmt|;
 name|Class
 argument_list|<
 name|URLClassLoader
@@ -3887,7 +3884,6 @@ argument_list|(
 literal|"Error, could not add URL to system classloader"
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 DECL|method|updateConnectionParams (String ooPath, String ooExec, String ooJars, boolean oo3)
