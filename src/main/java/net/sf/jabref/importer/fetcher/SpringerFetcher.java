@@ -184,7 +184,7 @@ name|importer
 operator|.
 name|fileformat
 operator|.
-name|SpringerJSONConverter
+name|JSONEntryParser
 import|;
 end_import
 
@@ -274,6 +274,12 @@ DECL|field|shouldContinue
 specifier|private
 name|boolean
 name|shouldContinue
+decl_stmt|;
+DECL|field|jep
+specifier|private
+specifier|final
+name|JSONEntryParser
+name|jep
 decl_stmt|;
 annotation|@
 name|Override
@@ -653,7 +659,7 @@ decl_stmt|;
 name|BibtexEntry
 name|entry
 init|=
-name|SpringerJSONConverter
+name|jep
 operator|.
 name|SpringerJSONtoBibtex
 argument_list|(
@@ -793,6 +799,12 @@ name|SpringerFetcher
 parameter_list|()
 block|{
 name|super
+argument_list|()
+expr_stmt|;
+name|jep
+operator|=
+operator|new
+name|JSONEntryParser
 argument_list|()
 expr_stmt|;
 block|}
