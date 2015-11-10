@@ -38,6 +38,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|io
@@ -322,7 +338,7 @@ name|encoding
 operator|=
 name|encoding
 expr_stmt|;
-comment|/* Using  	   try (FileOutputStream fos = new FileOutputStream(tmp)) { 	       writer = new VerifyingWriter(fos, encoding); 	   } 	   doesn't work since fos is closed after assigning write,  	   leading to that fos may never be closed at all 	 */
+comment|/* Using 	   try (FileOutputStream fos = new FileOutputStream(tmp)) { 	       writer = new VerifyingWriter(fos, encoding); 	   } 	   doesn't work since fos is closed after assigning write, 	   leading to that fos may never be closed at all 	 */
 name|writer
 operator|=
 operator|new
@@ -462,7 +478,6 @@ name|SaveException
 operator|.
 name|BACKUP_CREATION
 throw|;
-comment|//throw new SaveException(Globals.lang("Save failed during backup creation")+": "+ex.getMessage());
 block|}
 block|}
 try|try
@@ -551,6 +566,18 @@ name|ex2
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Save failed while committing changes: %0"
+argument_list|,
+name|ex2
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}

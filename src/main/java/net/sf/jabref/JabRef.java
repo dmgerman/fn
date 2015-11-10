@@ -2262,7 +2262,7 @@ literal|"': "
 operator|+
 name|ex
 operator|.
-name|getMessage
+name|getLocalizedMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2850,7 +2850,7 @@ literal|"': "
 operator|+
 name|ex
 operator|.
-name|getMessage
+name|getLocalizedMessage
 argument_list|()
 argument_list|)
 expr_stmt|;

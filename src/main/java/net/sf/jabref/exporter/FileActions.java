@@ -1176,6 +1176,11 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -1498,6 +1503,11 @@ argument_list|(
 name|ex
 operator|.
 name|getMessage
+argument_list|()
+argument_list|,
+name|ex
+operator|.
+name|getLocalizedMessage
 argument_list|()
 argument_list|,
 name|exceptionCause
@@ -2239,6 +2249,11 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -2544,6 +2559,11 @@ argument_list|(
 name|ex
 operator|.
 name|getMessage
+argument_list|()
+argument_list|,
+name|ex
+operator|.
+name|getLocalizedMessage
 argument_list|()
 argument_list|,
 name|be

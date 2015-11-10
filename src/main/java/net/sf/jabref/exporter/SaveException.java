@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -15,6 +15,22 @@ operator|.
 name|exporter
 package|;
 end_package
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
 
 begin_import
 import|import
@@ -55,6 +71,13 @@ operator|new
 name|SaveException
 argument_list|(
 literal|"Could not save, file locked by another JabRef instance."
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Could not save, file locked by another JabRef instance."
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|BACKUP_CREATION
@@ -68,6 +91,13 @@ operator|new
 name|SaveException
 argument_list|(
 literal|"Unable to create backup"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to create backup"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|entry
@@ -81,6 +111,11 @@ specifier|private
 name|int
 name|status
 decl_stmt|;
+DECL|field|localizedMessage
+specifier|private
+name|String
+name|localizedMessage
+decl_stmt|;
 DECL|method|SaveException (String message)
 specifier|public
 name|SaveException
@@ -93,6 +128,33 @@ name|super
 argument_list|(
 name|message
 argument_list|)
+expr_stmt|;
+name|entry
+operator|=
+literal|null
+expr_stmt|;
+block|}
+DECL|method|SaveException (String message, String localizedMessage)
+specifier|public
+name|SaveException
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|String
+name|localizedMessage
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|localizedMessage
+operator|=
+name|localizedMessage
 expr_stmt|;
 name|entry
 operator|=
@@ -149,6 +211,38 @@ operator|=
 name|entry
 expr_stmt|;
 block|}
+DECL|method|SaveException (String message, String localizedMessage, BibtexEntry entry)
+specifier|public
+name|SaveException
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|String
+name|localizedMessage
+parameter_list|,
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|localizedMessage
+operator|=
+name|localizedMessage
+expr_stmt|;
+name|this
+operator|.
+name|entry
+operator|=
+name|entry
+expr_stmt|;
+block|}
 DECL|method|getStatus ()
 specifier|public
 name|int
@@ -180,6 +274,33 @@ name|entry
 operator|!=
 literal|null
 return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getLocalizedMessage ()
+specifier|public
+name|String
+name|getLocalizedMessage
+parameter_list|()
+block|{
+if|if
+condition|(
+name|localizedMessage
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|getMessage
+argument_list|()
+return|;
+block|}
+else|else
+block|{
+return|return
+name|localizedMessage
+return|;
+block|}
 block|}
 block|}
 end_class
