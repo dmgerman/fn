@@ -276,22 +276,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -952,7 +936,7 @@ name|win
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Will return the publication date of the given bibtex entry in conformance to ISO 8601, i.e. either YYYY or      * YYYY-MM.      *      * @param entry      * @return will return the publication date of the entry or null if no year was found.      */
+comment|/**      * Will return the publication date of the given bibtex entry conforming to ISO 8601, i.e. either YYYY or YYYY-MM.      *      * @param entry      * @return will return the publication date of the entry or null if no year was found.      */
 comment|// TODO: Should be instance method of BibTexEntry
 DECL|method|getPublicationDate (BibtexEntry entry)
 specifier|public
@@ -1294,7 +1278,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Replace non-english characters like umlauts etc. with a sensible
+comment|// Replace non-English characters like umlauts etc. with a sensible
 comment|// letter or letter combination that bibtex can accept.
 return|return
 name|net
@@ -1316,7 +1300,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Replace non-english characters like umlauts etc. with a sensible letter or letter combination that bibtex can      * accept. The basis for replacement is the HashMap Globals.UNICODE_CHARS.      */
+comment|/**      * Replace non-English characters like umlauts etc. with a sensible letter or letter combination that bibtex can      * accept. The basis for replacement is the HashMap Globals.UNICODE_CHARS.      */
 DECL|method|replaceSpecialCharacters (String s)
 specifier|public
 specifier|static
@@ -2142,7 +2126,7 @@ block|}
 block|}
 else|else
 block|{
-comment|// Incorrecly terminated open brace
+comment|// Incorrectly terminated open brace
 name|result
 operator|.
 name|add
@@ -3595,7 +3579,7 @@ block|{
 continue|continue;
 block|}
 comment|// If we are not allowed to overwrite values, check if there is a
-comment|// nonempy value already for this entry for the new field:
+comment|// non-empty value already for this entry for the new field:
 name|String
 name|valInNewField
 init|=
@@ -6562,7 +6546,7 @@ return|return
 name|fieldValue
 return|;
 block|}
-comment|// Returns a reg exp pattern in the form (w1)|(w2)| ... wi are escaped if no regex search is enabled
+comment|// Returns a regular expression pattern in the form (w1)|(w2)| ... wi are escaped if no regular expression search is enabled
 DECL|method|getPatternForWords (ArrayList<String> words)
 specifier|public
 specifier|static
@@ -6623,7 +6607,7 @@ operator|.
 name|REG_EXP_SEARCH
 argument_list|)
 decl_stmt|;
-comment|// compile the words to a regex in the form (w1) | (w2) | (w3)
+comment|// compile the words to a regular expression in the form (w1) | (w2) | (w3)
 name|String
 name|searchPattern
 init|=
