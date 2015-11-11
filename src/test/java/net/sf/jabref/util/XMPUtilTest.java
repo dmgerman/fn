@@ -2159,6 +2159,8 @@ else|else
 block|{
 comment|// PDMetadata.getInputStreamAsString() does not work
 comment|// Convert to UTF8 and make available for metadata.
+try|try
+init|(
 name|InputStreamReader
 name|is
 init|=
@@ -2172,7 +2174,8 @@ argument_list|()
 argument_list|,
 literal|"UTF8"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 return|return
 name|XMPUtilTest
 operator|.
@@ -2185,6 +2188,7 @@ name|trim
 argument_list|()
 return|;
 comment|// Trim to kill padding end-newline.
+block|}
 block|}
 block|}
 finally|finally
