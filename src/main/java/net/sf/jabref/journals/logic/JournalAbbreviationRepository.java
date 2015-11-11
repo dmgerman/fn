@@ -562,30 +562,7 @@ name|previous
 argument_list|)
 expr_stmt|;
 comment|// TODO logging strategy required
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Duplicate Journal Abbreviation - old one will be overwritten by new one\nOLD: %0\nNEW: %1"
-argument_list|,
-name|previous
-operator|.
-name|toString
-argument_list|()
-argument_list|,
-name|abbreviation
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// System.out.println(Globals.lang("Duplicate Journal Abbreviation - old one will be overwritten by new one\nOLD: %0\nNEW: %1", previous.toString(), abbreviation.toString()));
 block|}
 name|abbreviations
 operator|.
