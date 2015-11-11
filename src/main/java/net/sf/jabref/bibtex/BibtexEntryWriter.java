@@ -78,22 +78,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|util
 operator|.
 name|strings
@@ -1798,14 +1782,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error in field"
-argument_list|)
-operator|+
-literal|" '"
+literal|"Error in field '"
 operator|+
 name|name
 operator|+

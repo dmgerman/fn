@@ -3318,14 +3318,7 @@ throw|throw
 operator|new
 name|Exception
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"File not found"
-argument_list|)
-operator|+
-literal|": "
+literal|"File not found: "
 operator|+
 name|jarFiles
 index|[

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -197,15 +197,6 @@ name|StringAddChange
 extends|extends
 name|Change
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|string
 specifier|private
 specifier|final
@@ -258,8 +249,8 @@ name|BibtexString
 name|string
 parameter_list|)
 block|{
-name|name
-operator|=
+name|super
+argument_list|(
 name|Localization
 operator|.
 name|lang
@@ -275,6 +266,7 @@ name|getName
 argument_list|()
 operator|+
 literal|'\''
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -282,6 +274,7 @@ name|string
 operator|=
 name|string
 expr_stmt|;
+comment|// @formatter:off
 name|tp
 operator|.
 name|setText
@@ -330,6 +323,7 @@ operator|+
 literal|"</HTML>"
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 annotation|@
 name|Override

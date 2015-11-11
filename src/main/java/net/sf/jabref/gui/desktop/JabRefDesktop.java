@@ -374,14 +374,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"File not found"
-argument_list|)
-operator|+
-literal|" ("
+literal|"File not found ("
 operator|+
 name|fieldName
 operator|+
@@ -1707,6 +1700,7 @@ argument_list|(
 literal|"Unable to open file."
 argument_list|)
 decl_stmt|;
+comment|// @formatter:off
 name|String
 index|[]
 name|options
@@ -1742,6 +1736,7 @@ literal|"Cancel"
 argument_list|)
 block|}
 decl_stmt|;
+comment|// @formatter:on
 name|String
 name|defOption
 init|=

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -172,18 +172,30 @@ name|GroupTreeNode
 name|tmpGroupRoot
 parameter_list|)
 block|{
+comment|// @formatter:off
 name|super
 argument_list|(
 name|changedGroups
 operator|!=
 literal|null
 condition|?
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Modified groups tree"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Removed all groups"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// JZTODO lyrics
+comment|// @formatter:on
 name|this
 operator|.
 name|changedGroups
@@ -461,7 +473,8 @@ name|JLabel
 argument_list|(
 literal|"<html>"
 operator|+
-name|name
+name|toString
+argument_list|()
 operator|+
 literal|'.'
 operator|+
@@ -472,12 +485,17 @@ literal|null
 condition|?
 literal|' '
 operator|+
-literal|"Accepting the change replaces the complete "
-operator|+
-literal|"groups tree with the externally modified groups tree."
+comment|// @formatter:off
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Accepting the change replaces the complete groups tree with the externally modified groups tree."
+argument_list|)
 else|:
 literal|""
 operator|)
+comment|// @formatter:on
 operator|+
 literal|"</html>"
 argument_list|)

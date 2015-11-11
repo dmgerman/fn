@@ -302,22 +302,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -984,21 +968,9 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"The # character is not allowed in BibTeX strings unless escaped as in '\\#'."
-argument_list|)
+literal|"The # character is not allowed in BibTeX strings unless escaped as in '\\#'.\n"
 operator|+
-literal|'\n'
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Before saving, please edit any strings containing the # character."
-argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -1203,6 +1175,11 @@ argument_list|(
 name|e
 operator|.
 name|getMessage
+argument_list|()
+argument_list|,
+name|e
+operator|.
+name|getLocalizedMessage
 argument_list|()
 argument_list|)
 throw|;
@@ -1526,6 +1503,11 @@ argument_list|(
 name|ex
 operator|.
 name|getMessage
+argument_list|()
+argument_list|,
+name|ex
+operator|.
+name|getLocalizedMessage
 argument_list|()
 argument_list|,
 name|exceptionCause
@@ -2267,6 +2249,11 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -2574,6 +2561,11 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
+name|ex
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|,
 name|be
 argument_list|)
 throw|;
@@ -2643,14 +2635,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not find layout file"
-argument_list|)
-operator|+
-literal|": '"
+literal|"Cannot find layout file: '"
 operator|+
 name|name
 operator|+
@@ -2691,14 +2676,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not find layout file"
-argument_list|)
-operator|+
-literal|": '"
+literal|"Cannot find layout file: '"
 operator|+
 name|name
 operator|+

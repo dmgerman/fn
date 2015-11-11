@@ -1580,6 +1580,7 @@ name|WARNING_MESSAGE
 argument_list|,
 literal|null
 argument_list|,
+comment|// @formatter:off
 operator|new
 name|String
 index|[]
@@ -1604,6 +1605,7 @@ argument_list|,
 name|tryDiff
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 if|if
 condition|(
 name|answer
@@ -1971,20 +1973,16 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|'\''
-operator|+
-name|f
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite file?"
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
+name|f
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization

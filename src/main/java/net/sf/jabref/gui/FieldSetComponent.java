@@ -454,6 +454,7 @@ name|boolean
 name|forceLowerCase
 parameter_list|)
 block|{
+comment|// @formatter:off
 name|this
 argument_list|(
 name|title
@@ -462,15 +463,26 @@ name|fields
 argument_list|,
 name|preset
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Add"
+argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Remove"
+argument_list|)
 argument_list|,
 name|arrows
 argument_list|,
 name|forceLowerCase
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 comment|/**      * Creates a new instance of FieldSetComponent without preset selection      * values. Replaces the JComboBox with a JTextField.      */
 DECL|method|FieldSetComponent (String title, List<String> fields, boolean arrows, boolean forceLowerCase)
@@ -492,6 +504,7 @@ name|boolean
 name|forceLowerCase
 parameter_list|)
 block|{
+comment|// @formatter:off
 name|this
 argument_list|(
 name|title
@@ -500,15 +513,26 @@ name|fields
 argument_list|,
 literal|null
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Add"
+argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Remove"
+argument_list|)
 argument_list|,
 name|arrows
 argument_list|,
 name|forceLowerCase
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 DECL|method|FieldSetComponent (String title, List<String> fields, List<String> preset, String addText, String removeText, boolean arrows, boolean forceLowerCase)
 specifier|private
@@ -553,12 +577,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|addText
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|remove
@@ -566,12 +585,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|removeText
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|listModel

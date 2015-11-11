@@ -6377,16 +6377,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Deleted"
-argument_list|)
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
+literal|"Deleted entry"
 argument_list|)
 argument_list|)
 expr_stmt|;

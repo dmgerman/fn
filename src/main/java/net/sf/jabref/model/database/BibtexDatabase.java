@@ -1035,12 +1035,7 @@ throw|throw
 operator|new
 name|KeyCollisionException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"A string with this label already exists"
-argument_list|)
 argument_list|)
 throw|;
 block|}

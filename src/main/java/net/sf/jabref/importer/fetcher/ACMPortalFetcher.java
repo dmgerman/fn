@@ -1112,15 +1112,10 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -2424,12 +2419,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not parse number of hits"
-argument_list|)
+literal|"Cannot parse number of hits"
 argument_list|)
 throw|;
 block|}
@@ -2534,12 +2524,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not parse number of hits"
-argument_list|)
+literal|"Cannot parse number of hits"
 argument_list|)
 throw|;
 block|}
@@ -2553,12 +2538,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not parse number of hits"
-argument_list|)
+literal|"Cannot parse number of hits"
 argument_list|)
 throw|;
 block|}
@@ -2567,12 +2547,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not parse number of hits"
-argument_list|)
+literal|"Cannot parse number of hits"
 argument_list|)
 throw|;
 block|}

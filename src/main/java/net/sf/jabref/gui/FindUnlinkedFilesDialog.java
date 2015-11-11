@@ -889,7 +889,12 @@ specifier|final
 name|String
 name|ACTION_MENU_TITLE
 init|=
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Find unlinked files..."
+argument_list|)
 decl_stmt|;
 DECL|field|ACTION_ICON
 specifier|public
@@ -909,6 +914,7 @@ name|ACTION_KEYBINDING_ACTION
 init|=
 literal|"Find unlinked files"
 decl_stmt|;
+comment|// @formatter:off
 DECL|field|ACTION_SHORT_DESCRIPTION
 specifier|public
 specifier|static
@@ -916,8 +922,14 @@ specifier|final
 name|String
 name|ACTION_SHORT_DESCRIPTION
 init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Searches for unlinked PDF files on the file system"
+argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 DECL|field|GLOBAL_PREFS_WORKING_DIRECTORY_KEY
 specifier|private
 specifier|static

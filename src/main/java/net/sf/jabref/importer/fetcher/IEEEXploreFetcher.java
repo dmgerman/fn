@@ -930,6 +930,7 @@ literal|"Error Page"
 argument_list|)
 condition|)
 block|{
+comment|// @formatter:off
 name|status
 operator|.
 name|showMessage
@@ -953,6 +954,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return
 literal|false
 return|;
@@ -1094,15 +1096,10 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -4055,12 +4052,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Cannot parse number of hits"
-argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -4111,23 +4103,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-name|LOGGER
-operator|.
-name|debug
-argument_list|(
-name|page
-argument_list|)
-expr_stmt|;
 throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Cannot parse number of hits"
-argument_list|)
 argument_list|)
 throw|;
 block|}

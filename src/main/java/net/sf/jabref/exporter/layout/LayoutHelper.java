@@ -58,22 +58,6 @@ name|Vector
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
 begin_comment
 comment|/**  * Helper class to get a Layout object.  *  *<code>  * LayoutHelper helper = new LayoutHelper(...a reader...);  * Layout layout = helper.getLayoutFromText();  *</code>  *  */
 end_comment
@@ -1304,14 +1288,7 @@ throw|throw
 operator|new
 name|StringIndexOutOfBoundsException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Backslash parsing error near"
-argument_list|)
-operator|+
-literal|" \'"
+literal|"Backslash parsing error near \'"
 operator|+
 name|lastFive
 operator|.

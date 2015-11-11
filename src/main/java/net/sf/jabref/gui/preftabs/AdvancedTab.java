@@ -140,30 +140,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|ChangeEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|ChangeListener
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -1903,6 +1879,7 @@ name|NumberFormatException
 name|ex
 parameter_list|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1939,6 +1916,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return
 literal|false
 return|;

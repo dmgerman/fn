@@ -1173,6 +1173,7 @@ name|UnknownExternalFileType
 operator|)
 condition|)
 block|{
+comment|// @formatter:off
 name|String
 index|[]
 name|options
@@ -1211,6 +1212,7 @@ literal|"Cancel"
 argument_list|)
 block|}
 decl_stmt|;
+comment|// @formatter:on
 name|String
 name|defOption
 init|=
@@ -1992,7 +1994,6 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-comment|//"This function helps you keep your external %0 links up-to-date." +
 literal|"Attempt to autoset %0 links for your entries. Autoset works if "
 operator|+
 literal|"a %0 file in your %0 directory or a subdirectory<BR>is named identically to an entry's BibTeX key, plus extension."

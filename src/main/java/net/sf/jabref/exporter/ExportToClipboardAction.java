@@ -527,6 +527,7 @@ name|QUESTION_MESSAGE
 argument_list|,
 literal|null
 argument_list|,
+comment|// @formatter:off
 operator|new
 name|String
 index|[]
@@ -554,6 +555,7 @@ literal|"Ok"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 if|if
 condition|(
 name|answer

@@ -386,26 +386,40 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
+comment|// @formatter:off
+operator|(
 name|add
 condition|?
 operator|(
 name|move
 condition|?
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Move to group"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Add to group"
+argument_list|)
 operator|)
 else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Remove from group"
 argument_list|)
+operator|)
 argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+comment|// formatter:on
 name|ok
 operator|=
 operator|new

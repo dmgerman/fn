@@ -1990,7 +1990,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Key collision occured"
+literal|"Key collision occurred"
 argument_list|,
 name|ex
 argument_list|)

@@ -960,6 +960,7 @@ name|selectedOnly
 operator|=
 name|selectedOnly
 expr_stmt|;
+comment|// @formatter:off
 name|putValue
 argument_list|(
 name|Action
@@ -983,6 +984,7 @@ literal|"Export"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -1122,20 +1124,16 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|'\''
-operator|+
-name|file
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite file?"
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
+name|file
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization

@@ -130,22 +130,6 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
 name|util
 operator|.
 name|strings
@@ -155,7 +139,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Handles versioning of groups, e.g. automatic conversion from previous to  * current versions, or import of flat groups (JabRef<= 1.6) to tree.  *   * @author jzieren (10.04.2005)  */
+comment|/**  * Handles versioning of groups, e.g. automatic conversion from previous to  * current versions, or import of flat groups (JabRef<= 1.6) to tree.  *  * @author jzieren (10.04.2005)  */
 end_comment
 
 begin_class
@@ -173,7 +157,7 @@ name|CURRENT_VERSION
 init|=
 literal|3
 decl_stmt|;
-comment|/**      * Imports old (flat) groups data and converts it to a 2-level tree with an      * AllEntriesGroup at the root.      *       * @return the root of the generated tree.      */
+comment|/**      * Imports old (flat) groups data and converts it to a 2-level tree with an      * AllEntriesGroup at the root.      *      * @return the root of the generated tree.      */
 DECL|method|importFlatGroups (Vector<String> groups)
 specifier|public
 specifier|static
@@ -252,9 +236,11 @@ name|groups
 operator|.
 name|get
 argument_list|(
+operator|(
 literal|3
 operator|*
 name|i
+operator|)
 operator|+
 literal|1
 argument_list|)
@@ -265,9 +251,11 @@ name|groups
 operator|.
 name|get
 argument_list|(
+operator|(
 literal|3
 operator|*
 name|i
+operator|)
 operator|+
 literal|2
 argument_list|)
@@ -374,19 +362,16 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Failed to read groups data (unsupported version: %0)"
-argument_list|,
+literal|"Failed to read groups data (unsupported version: "
+operator|+
 name|Integer
 operator|.
 name|toString
 argument_list|(
 name|version
 argument_list|)
-argument_list|)
+operator|+
+literal|")"
 argument_list|)
 throw|;
 block|}
@@ -398,7 +383,7 @@ specifier|static
 class|class
 name|Version0_1
 block|{
-comment|/**          * Parses the textual representation obtained from          * GroupTreeNode.toString() and recreates that node and all of its          * children from it.          *           * @throws Exception          *             When a group could not be recreated          */
+comment|/**          * Parses the textual representation obtained from          * GroupTreeNode.toString() and recreates that node and all of its          * children from it.          *          * @throws Exception          *             When a group could not be recreated          */
 DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|private
 specifier|static
@@ -613,7 +598,7 @@ return|return
 name|root
 return|;
 block|}
-comment|/**          * Returns the substring delimited by a pair of matching braces, with          * the first brace at index 0. Quoted characters are skipped.          *           * @return the matching substring, or "" if not found.          */
+comment|/**          * Returns the substring delimited by a pair of matching braces, with          * the first brace at index 0. Quoted characters are skipped.          *          * @return the matching substring, or "" if not found.          */
 DECL|method|getSubtree (String s)
 specifier|private
 specifier|static
@@ -702,7 +687,7 @@ return|return
 literal|""
 return|;
 block|}
-comment|/**          * Returns the index of the first occurence of c, skipping quoted          * special characters (escape character: '\\').          *           * @param s          *            The String to search in.          * @param c          *            The character to search          * @return The index of the first unescaped occurence of c in s, or -1          *         if not found.          */
+comment|/**          * Returns the index of the first occurence of c, skipping quoted          * special characters (escape character: '\\').          *          * @param s          *            The String to search in.          * @param c          *            The character to search          * @return The index of the first unescaped occurence of c in s, or -1          *         if not found.          */
 DECL|method|indexOfUnquoted (String s, char c)
 specifier|private
 specifier|static

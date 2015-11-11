@@ -9127,7 +9127,12 @@ argument_list|(
 operator|new
 name|ExternalFileType
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"OpenDocument text"
+argument_list|)
 argument_list|,
 literal|"odt"
 argument_list|,
@@ -9209,7 +9214,12 @@ argument_list|(
 operator|new
 name|ExternalFileType
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"OpenDocument spreadsheet"
+argument_list|)
 argument_list|,
 literal|"ods"
 argument_list|,
@@ -9291,7 +9301,12 @@ argument_list|(
 operator|new
 name|ExternalFileType
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"OpenDocument presentation"
+argument_list|)
 argument_list|,
 literal|"odp"
 argument_list|,
@@ -9541,7 +9556,12 @@ argument_list|(
 operator|new
 name|ExternalFileType
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"TIFF image"
+argument_list|)
 argument_list|,
 literal|"tiff"
 argument_list|,

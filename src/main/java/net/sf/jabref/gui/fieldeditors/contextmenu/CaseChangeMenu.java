@@ -178,15 +178,10 @@ init|=
 operator|new
 name|JMenuItem
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|caseChanger
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|menuItem

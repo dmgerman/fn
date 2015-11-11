@@ -700,7 +700,12 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Open database"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.

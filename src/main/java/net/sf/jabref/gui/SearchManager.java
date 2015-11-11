@@ -4015,6 +4015,7 @@ name|void
 name|updateSearchButtonText
 parameter_list|()
 block|{
+comment|// @formatter:off
 name|search
 operator|.
 name|setText
@@ -4037,6 +4038,7 @@ literal|"Search all fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 DECL|method|isSpecificSearch ()
 specifier|private

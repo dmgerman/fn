@@ -902,7 +902,12 @@ block|{
 name|String
 name|preamble
 init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Could not import from SQL database for the following reason:"
+argument_list|)
 decl_stmt|;
 name|String
 name|errorMessage

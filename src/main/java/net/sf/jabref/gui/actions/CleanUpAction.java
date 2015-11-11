@@ -2978,23 +2978,15 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"File rename failed for"
-argument_list|)
-operator|+
-literal|" "
-operator|+
-name|unsuccessfulRenames
-operator|+
-literal|" "
-operator|+
-name|Localization
+literal|"File rename failed for %0 entries."
+argument_list|,
+name|Integer
 operator|.
-name|lang
+name|toString
 argument_list|(
-literal|"entries"
+name|unsuccessfulRenames
 argument_list|)
-operator|+
-literal|"."
+argument_list|)
 argument_list|,
 name|Localization
 operator|.

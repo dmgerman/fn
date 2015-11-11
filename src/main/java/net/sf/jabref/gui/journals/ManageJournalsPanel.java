@@ -381,7 +381,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Sep 19, 2005  * Time: 7:57:29 PM  * To browseOld this template use File | Settings | File Templates.  */
+comment|/**  * Created by IntelliJ IDEA. User: alver Date: Sep 19, 2005 Time: 7:57:29 PM To browseOld this template use File |  * Settings | File Templates.  */
 end_comment
 
 begin_class
@@ -2419,20 +2419,16 @@ name|showConfirmDialog
 argument_list|(
 name|this
 argument_list|,
-literal|"'"
-operator|+
-name|f
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite file?"
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
+name|f
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization
@@ -3213,6 +3209,7 @@ name|AbstractTableModel
 implements|implements
 name|ActionListener
 block|{
+comment|// @formatter:off
 DECL|field|names
 specifier|final
 name|String
@@ -3238,6 +3235,7 @@ literal|"Abbreviation"
 argument_list|)
 block|}
 decl_stmt|;
+comment|//
 DECL|field|journals
 name|List
 argument_list|<

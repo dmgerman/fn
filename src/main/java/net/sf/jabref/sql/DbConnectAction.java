@@ -125,7 +125,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 27, 2008 Time: 6:05:13 PM To  * change this template use File | Settings | File Templates.  *   * Jan 20th Adjusted to accomodate changes on SQL Exporter module by ifsteinm  *   */
+comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 27, 2008 Time: 6:05:13 PM To  * change this template use File | Settings | File Templates.  *  * Jan 20th Adjusted to accomodate changes on SQL Exporter module by ifsteinm  *  */
 end_comment
 
 begin_class
@@ -372,7 +372,12 @@ expr_stmt|;
 name|String
 name|preamble
 init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Could not connect to SQL database for the following reason:"
+argument_list|)
 decl_stmt|;
 name|panel
 operator|.
@@ -381,12 +386,7 @@ argument_list|()
 operator|.
 name|output
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|preamble
-argument_list|)
 operator|+
 literal|"  "
 operator|+
@@ -402,12 +402,7 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|preamble
-argument_list|)
 operator|+
 literal|'\n'
 operator|+

@@ -425,13 +425,8 @@ literal|"\n\n"
 operator|+
 name|e
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|getTitle
 argument_list|()
-argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.

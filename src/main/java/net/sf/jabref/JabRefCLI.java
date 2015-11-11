@@ -1148,6 +1148,7 @@ name|String
 name|getExportMatchesSyntax
 parameter_list|()
 block|{
+comment|// @formatter:off
 return|return
 name|String
 operator|.
@@ -1177,6 +1178,7 @@ literal|"exportFormat"
 argument_list|)
 argument_list|)
 return|;
+comment|// @formatter:on
 block|}
 block|}
 end_class
