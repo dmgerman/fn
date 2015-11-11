@@ -392,6 +392,34 @@ name|Util
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Preferences dialog. Contains a TabbedPane, and tabs will be defined in  * separate classes. Tabs MUST implement the PrefsTab interface, since this  * dialog will call the storeSettings() method of all tabs when the user presses  * ok.  *  * With this design, it should be very easy to add new tabs later.  *  */
 end_comment
@@ -415,6 +443,22 @@ specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|PreferencesDialog
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|PreferencesDialog (JabRefFrame parent, JabRef jabRef)
 specifier|public
@@ -1460,7 +1504,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|JabRefException
 name|ex
 parameter_list|)
 block|{
@@ -1472,18 +1516,9 @@ name|PreferencesDialog
 operator|.
 name|this
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not import preferences"
-argument_list|)
-operator|+
-literal|": "
-operator|+
 name|ex
 operator|.
-name|getMessage
+name|getLocalizedMessage
 argument_list|()
 argument_list|,
 name|Localization
@@ -1496,6 +1531,18 @@ argument_list|,
 name|JOptionPane
 operator|.
 name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
