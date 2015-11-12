@@ -369,26 +369,6 @@ name|getRequiredFields
 argument_list|()
 return|;
 block|}
-DECL|method|getUserDefinedFields ()
-specifier|public
-name|String
-index|[]
-name|getUserDefinedFields
-parameter_list|()
-block|{
-return|return
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getStringArray
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|WRITEFIELD_USERDEFINEDORDER
-argument_list|)
-return|;
-block|}
 comment|/**      * Returns an set containing the names of all fields that are      * set for this particular entry.      *      * @return a set of existing field names      */
 DECL|method|getFieldNames ()
 specifier|public
