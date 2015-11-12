@@ -104,6 +104,13 @@ name|ContentAutoCompleters
 extends|extends
 name|AutoCompleters
 block|{
+DECL|method|ContentAutoCompleters ()
+specifier|public
+name|ContentAutoCompleters
+parameter_list|()
+block|{
+comment|// Empty AutoCompleter completes nothing
+block|}
 DECL|method|ContentAutoCompleters (BibtexDatabase database, MetaData metaData)
 specifier|public
 name|ContentAutoCompleters
