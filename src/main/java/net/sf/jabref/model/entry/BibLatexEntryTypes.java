@@ -70,6 +70,7 @@ end_comment
 
 begin_class
 DECL|class|BibLatexEntryTypes
+specifier|public
 class|class
 name|BibLatexEntryTypes
 block|{

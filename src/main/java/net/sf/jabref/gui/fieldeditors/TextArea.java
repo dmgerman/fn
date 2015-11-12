@@ -84,13 +84,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|entry
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|Util
 import|;
 end_import
 
@@ -237,7 +235,7 @@ name|FieldNameLabel
 argument_list|(
 literal|' '
 operator|+
-name|StringUtil
+name|Util
 operator|.
 name|capitalizeFirst
 argument_list|(

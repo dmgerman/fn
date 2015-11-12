@@ -184,13 +184,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|bibtex
 operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
+name|EntryTypes
 import|;
 end_import
 
@@ -206,7 +202,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryTypes
+name|Util
 import|;
 end_import
 
@@ -585,7 +581,7 @@ init|=
 operator|new
 name|TypeButton
 argument_list|(
-name|StringUtil
+name|Util
 operator|.
 name|capitalizeFirst
 argument_list|(

@@ -136,6 +136,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|bibtex
+operator|.
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|keyboard
@@ -171,24 +185,6 @@ operator|.
 name|l10n
 operator|.
 name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
 import|;
 end_import
 
@@ -1615,7 +1611,7 @@ comment|//System.out.println("Defaulting: "+typeName);
 name|String
 name|nm
 init|=
-name|StringUtil
+name|Util
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -1776,7 +1772,7 @@ condition|?
 operator|new
 name|CustomEntryType
 argument_list|(
-name|StringUtil
+name|Util
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -1796,7 +1792,7 @@ else|:
 operator|new
 name|CustomEntryType
 argument_list|(
-name|StringUtil
+name|Util
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -1969,7 +1965,7 @@ argument_list|)
 operator|+
 literal|" '"
 operator|+
-name|StringUtil
+name|Util
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -2008,7 +2004,7 @@ argument_list|)
 expr_stmt|;
 name|updateTypesForEntries
 argument_list|(
-name|StringUtil
+name|Util
 operator|.
 name|capitalizeFirst
 argument_list|(
