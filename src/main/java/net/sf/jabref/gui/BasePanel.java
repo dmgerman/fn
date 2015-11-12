@@ -11066,6 +11066,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// create empty ContentAutoCompleters() if autoCompletion is deactivated
+name|autoCompleters
+operator|=
+operator|new
+name|ContentAutoCompleters
+argument_list|()
+expr_stmt|;
+block|}
 name|splitPane
 operator|.
 name|revalidate
