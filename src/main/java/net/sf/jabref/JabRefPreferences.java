@@ -8101,19 +8101,19 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|JabRefException
 name|e
 parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|info
+name|warn
 argument_list|(
-literal|"Could not save preferences for memory stick mode: "
+literal|"Could not export preferences for memory stick mode: "
 operator|+
 name|e
 operator|.
-name|getLocalizedMessage
+name|getMessage
 argument_list|()
 argument_list|,
 name|e
@@ -10739,7 +10739,7 @@ name|String
 name|filename
 parameter_list|)
 throws|throws
-name|IOException
+name|JabRefException
 block|{
 name|File
 name|f
@@ -10773,13 +10773,24 @@ block|}
 catch|catch
 parameter_list|(
 name|BackingStoreException
+decl||
+name|IOException
 name|ex
 parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|JabRefException
 argument_list|(
+literal|"Could not export preferences"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Could not export preferences"
+argument_list|)
+argument_list|,
 name|ex
 argument_list|)
 throw|;
