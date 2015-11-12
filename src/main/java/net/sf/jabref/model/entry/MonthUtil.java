@@ -16,20 +16,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -628,9 +614,9 @@ block|{
 name|int
 name|number
 init|=
-name|Util
+name|Integer
 operator|.
-name|intValueOf
+name|parseInt
 argument_list|(
 name|value
 argument_list|)
