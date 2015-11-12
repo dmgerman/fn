@@ -84,9 +84,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|id
+name|entry
 operator|.
 name|IdGenerator
 import|;
