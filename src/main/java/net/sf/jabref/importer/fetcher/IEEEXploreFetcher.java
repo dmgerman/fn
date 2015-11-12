@@ -164,6 +164,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -3196,7 +3212,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3235,7 +3251,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3267,7 +3283,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3292,7 +3308,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3331,7 +3347,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3356,7 +3372,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3378,7 +3394,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3643,7 +3659,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getStandardType
 argument_list|(
@@ -3850,7 +3866,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getStandardType
 argument_list|(
@@ -3875,7 +3891,7 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getStandardType
 argument_list|(

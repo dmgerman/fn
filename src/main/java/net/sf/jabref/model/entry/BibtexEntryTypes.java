@@ -81,7 +81,7 @@ comment|// decide which entryType object to return
 name|Object
 name|o
 init|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(

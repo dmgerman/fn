@@ -108,7 +108,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryType
+name|EntryTypes
 import|;
 end_import
 
@@ -304,7 +304,7 @@ name|BibtexEntry
 argument_list|(
 literal|"1234"
 argument_list|,
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(

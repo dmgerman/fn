@@ -194,6 +194,22 @@ name|StringUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryTypes
+import|;
+end_import
+
 begin_class
 DECL|class|EntryTypeDialog
 specifier|public
@@ -549,7 +565,7 @@ control|(
 name|BibtexEntryType
 name|tp
 range|:
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getAllValues
 argument_list|()

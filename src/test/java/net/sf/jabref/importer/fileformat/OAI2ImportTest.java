@@ -72,7 +72,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryType
+name|EntryTypes
 import|;
 end_import
 
@@ -230,7 +230,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
