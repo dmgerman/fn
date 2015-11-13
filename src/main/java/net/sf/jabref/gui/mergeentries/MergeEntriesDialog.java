@@ -44,6 +44,30 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ComponentAdapter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ComponentEvent
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -719,8 +743,51 @@ literal|"5px"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|pack
+comment|// Set up a ComponentListener that saves the last size and position of the dialog
+name|this
+operator|.
+name|addComponentListener
+argument_list|(
+operator|new
+name|ComponentAdapter
 argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|componentResized
+parameter_list|(
+name|ComponentEvent
+name|e
+parameter_list|)
+block|{
+comment|// Save dialog position
+name|pw
+operator|.
+name|storeWindowPosition
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|componentMoved
+parameter_list|(
+name|ComponentEvent
+name|e
+parameter_list|)
+block|{
+comment|// Save dialog position
+name|pw
+operator|.
+name|storeWindowPosition
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|)
 expr_stmt|;
 name|pw
 operator|=
@@ -756,9 +823,6 @@ name|setVisible
 argument_list|(
 literal|true
 argument_list|)
-expr_stmt|;
-name|pack
-argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Act on button pressed      *      * @param button Button pressed      */
@@ -930,12 +994,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Save dialog position
-name|pw
-operator|.
-name|storeWindowPosition
-argument_list|()
-expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;

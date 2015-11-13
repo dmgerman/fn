@@ -537,7 +537,7 @@ name|height
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method sets the location of a Dialog such that it is centered with regard to another window, but not outside      * the screen on the left and the top.      *      * Moved from Util      */
+comment|/**      * This method sets the location of a Dialog such that it is centered with regard to another window, but not outside      * the screen on the left and the top.      */
 DECL|method|placeDialog (java.awt.Dialog diag, java.awt.Container win)
 specifier|public
 specifier|static
