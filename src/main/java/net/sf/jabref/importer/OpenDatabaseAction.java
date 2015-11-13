@@ -672,12 +672,14 @@ name|File
 argument_list|(
 name|StringUtil
 operator|.
-name|makeBibtexExtension
+name|getCorrectFileName
 argument_list|(
 name|e
 operator|.
 name|getActionCommand
 argument_list|()
+argument_list|,
+literal|"bib"
 argument_list|)
 argument_list|)
 argument_list|)
