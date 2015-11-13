@@ -226,9 +226,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|formatter
 operator|.
-name|Localization
+name|CaseChangers
 import|;
 end_import
 
@@ -242,11 +242,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|l10n
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|Localization
 import|;
 end_import
 
@@ -1338,9 +1336,11 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
-name|StringUtil
+name|CaseChangers
 operator|.
-name|toUpperFirstLetter
+name|UPPER_FIRST
+operator|.
+name|format
 argument_list|(
 name|field
 argument_list|)

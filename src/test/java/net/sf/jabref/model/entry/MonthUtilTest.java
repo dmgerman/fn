@@ -618,7 +618,7 @@ name|MonthUtil
 operator|.
 name|getMonth
 argument_list|(
-literal|"Decembre"
+literal|"December"
 argument_list|)
 operator|.
 name|index

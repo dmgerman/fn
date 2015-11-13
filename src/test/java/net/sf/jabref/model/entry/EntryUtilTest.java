@@ -35,10 +35,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|UtilTest
+DECL|class|EntryUtilTest
 specifier|public
 class|class
-name|UtilTest
+name|EntryUtilTest
 block|{
 annotation|@
 name|Test
@@ -54,7 +54,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -68,7 +68,7 @@ name|assertEquals
 argument_list|(
 literal|"Hello world"
 argument_list|,
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -82,7 +82,7 @@ name|assertEquals
 argument_list|(
 literal|"A"
 argument_list|,
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -96,7 +96,7 @@ name|assertEquals
 argument_list|(
 literal|"Aa"
 argument_list|,
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(

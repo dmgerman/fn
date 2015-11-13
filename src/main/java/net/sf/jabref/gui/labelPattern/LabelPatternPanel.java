@@ -346,7 +346,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|Util
+name|EntryUtil
 import|;
 end_import
 
@@ -1232,7 +1232,7 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(

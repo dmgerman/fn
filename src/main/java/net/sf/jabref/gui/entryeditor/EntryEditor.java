@@ -644,7 +644,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|Util
+name|EntryUtil
 import|;
 end_import
 
@@ -1696,7 +1696,7 @@ name|String
 index|[]
 name|optionalFieldsNotPrimaryOrDeprecated
 init|=
-name|Util
+name|EntryUtil
 operator|.
 name|getRemainder
 argument_list|(

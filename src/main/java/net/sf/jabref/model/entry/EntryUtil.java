@@ -25,10 +25,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|Util
+DECL|class|EntryUtil
 specifier|public
 class|class
-name|Util
+name|EntryUtil
 block|{
 comment|/**      * Static equals that can also return the right result when one of the objects is null.      *      * @param one The object whose equals method is called if the first is not null.      * @param two The object passed to the first one if the first is not null.      * @return<code>one == null ? two == null : one.equals(two);</code>      */
 DECL|method|equals (Object one, Object two)

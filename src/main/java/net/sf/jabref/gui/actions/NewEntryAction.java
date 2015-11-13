@@ -102,7 +102,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|Util
+name|EntryUtil
 import|;
 end_import
 
@@ -288,7 +288,7 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -328,7 +328,7 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
