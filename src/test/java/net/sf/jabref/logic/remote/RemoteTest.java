@@ -103,6 +103,8 @@ specifier|public
 name|void
 name|testGoodCase
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 specifier|final
 name|int
@@ -116,13 +118,16 @@ name|message
 init|=
 literal|"MYMESSAGE"
 decl_stmt|;
+try|try
+init|(
 name|RemoteListenerServerLifecycle
 name|server
 init|=
 operator|new
 name|RemoteListenerServerLifecycle
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|Assert
 operator|.
 name|assertFalse
@@ -195,6 +200,7 @@ name|isOpen
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
