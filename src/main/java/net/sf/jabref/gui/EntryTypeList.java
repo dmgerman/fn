@@ -160,6 +160,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|bibtex
+operator|.
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|util
 operator|.
 name|Util
@@ -526,7 +540,7 @@ decl_stmt|;
 name|BibtexEntryType
 name|type
 init|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -627,7 +641,7 @@ block|{
 comment|//String s = (String)list.getSelectedValue();
 if|if
 condition|(
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getStandardType
 argument_list|(
@@ -642,7 +656,7 @@ condition|(
 name|isChanged
 operator|||
 operator|(
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(

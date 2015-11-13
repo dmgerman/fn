@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.bibtex
+DECL|package|net.sf.jabref.model.database
 package|package
 name|net
 operator|.
@@ -12,7 +12,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
+operator|.
+name|database
 package|;
 end_package
 
@@ -29,38 +31,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|DatabaseChangeEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|DatabaseChangeListener
 import|;
 end_import
 

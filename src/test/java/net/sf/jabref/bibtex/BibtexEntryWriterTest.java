@@ -98,22 +98,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -304,7 +288,7 @@ name|BibtexEntry
 argument_list|(
 literal|"1234"
 argument_list|,
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(

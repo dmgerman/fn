@@ -70,11 +70,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
-operator|.
-name|date
+name|entry
 operator|.
 name|MonthUtil
 import|;

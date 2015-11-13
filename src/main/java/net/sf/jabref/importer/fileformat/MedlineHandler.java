@@ -100,11 +100,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|bibtex
 operator|.
-name|id
-operator|.
-name|IdGenerator
+name|EntryTypes
 import|;
 end_import
 
@@ -120,7 +118,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryTypes
+name|IdGenerator
 import|;
 end_import
 
@@ -1457,9 +1455,9 @@ name|next
 argument_list|()
 argument_list|,
 comment|//Globals.DEFAULT_BIBTEXENTRY_ID,
-name|BibtexEntryTypes
+name|EntryTypes
 operator|.
-name|getEntryType
+name|getBibtexEntryType
 argument_list|(
 literal|"article"
 argument_list|)

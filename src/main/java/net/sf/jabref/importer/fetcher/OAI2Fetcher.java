@@ -194,9 +194,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|id
+name|entry
 operator|.
 name|IdGenerator
 import|;
@@ -226,11 +226,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
-operator|.
-name|date
+name|entry
 operator|.
 name|MonthUtil
 import|;

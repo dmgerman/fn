@@ -358,9 +358,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
-operator|.
-name|Localization
+name|CustomEntryTypesManager
 import|;
 end_import
 
@@ -372,11 +370,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|l10n
 operator|.
-name|BibtexEntryType
+name|Localization
 import|;
 end_import
 
@@ -1435,7 +1433,7 @@ expr_stmt|;
 name|setValues
 argument_list|()
 expr_stmt|;
-name|BibtexEntryType
+name|CustomEntryTypesManager
 operator|.
 name|loadCustomEntryTypes
 argument_list|(

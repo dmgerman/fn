@@ -108,6 +108,20 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|bibtex
+operator|.
+name|EntryTypes
+import|;
+end_import
+
 begin_comment
 comment|/**  * This action checks whether any new custom entry types were loaded from this  * bib file. If so, an offer to remember these entry types is given.  */
 end_comment
@@ -171,7 +185,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -355,7 +369,7 @@ name|values
 argument_list|()
 control|)
 block|{
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|addOrModifyCustomEntryType
 argument_list|(

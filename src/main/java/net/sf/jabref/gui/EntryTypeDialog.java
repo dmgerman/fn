@@ -184,13 +184,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|bibtex
 operator|.
-name|util
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
 operator|.
-name|strings
+name|sf
 operator|.
-name|StringUtil
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|Util
 import|;
 end_import
 
@@ -549,7 +561,7 @@ control|(
 name|BibtexEntryType
 name|tp
 range|:
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getAllValues
 argument_list|()
@@ -569,7 +581,7 @@ init|=
 operator|new
 name|TypeButton
 argument_list|(
-name|StringUtil
+name|Util
 operator|.
 name|capitalizeFirst
 argument_list|(
