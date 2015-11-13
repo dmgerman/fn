@@ -188,10 +188,6 @@ block|,
 literal|"year"
 block|,
 literal|"bibtexkey"
-block|,
-literal|"volume"
-block|,
-literal|"pages"
 block|}
 argument_list|,
 name|database
