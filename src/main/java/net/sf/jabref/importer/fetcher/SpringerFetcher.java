@@ -20,6 +20,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URLEncoder
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -335,6 +355,17 @@ name|JsonNode
 argument_list|>
 name|jsonResponse
 decl_stmt|;
+name|query
+operator|=
+name|URLEncoder
+operator|.
+name|encode
+argument_list|(
+name|query
+argument_list|,
+literal|"UTF-8"
+argument_list|)
+expr_stmt|;
 name|jsonResponse
 operator|=
 name|Unirest
@@ -596,8 +627,6 @@ operator|.
 name|asJson
 argument_list|()
 expr_stmt|;
-comment|//                    jsonResponse = Unirest.get(searchURL + query + "?page=" + page + "&pageSize=" + noToFetch)
-comment|//                           .header("accept", "application/json").asJson();
 name|jo
 operator|=
 name|jsonResponse
@@ -739,10 +768,26 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot encode query"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 literal|false
 return|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -777,7 +822,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|null
+literal|"SpringerHelp.html"
 return|;
 block|}
 annotation|@
