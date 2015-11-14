@@ -150,9 +150,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
+name|Globals
 import|;
 end_import
 
@@ -164,7 +162,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|GUIGlobals
 import|;
 end_import
 

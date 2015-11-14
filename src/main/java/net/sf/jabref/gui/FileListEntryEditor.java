@@ -274,9 +274,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|util
 operator|.
-name|Util
+name|PositionWindow
 import|;
 end_import
 
@@ -1276,7 +1278,7 @@ operator|.
 name|pack
 argument_list|()
 expr_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(

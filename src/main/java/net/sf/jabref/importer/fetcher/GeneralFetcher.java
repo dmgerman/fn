@@ -278,11 +278,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|l10n
+name|util
 operator|.
-name|Localization
+name|FocusRequester
 import|;
 end_import
 
@@ -294,9 +294,27 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|util
 operator|.
-name|Util
+name|PositionWindow
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -1496,7 +1514,7 @@ argument_list|(
 name|activeFetcher
 argument_list|)
 expr_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -1596,7 +1614,7 @@ argument_list|(
 name|activeFetcher
 argument_list|)
 expr_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(

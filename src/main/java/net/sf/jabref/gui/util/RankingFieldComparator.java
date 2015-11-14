@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2012 JabRef contributors.     This program is free sof
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.util
 package|package
 name|net
 operator|.
@@ -13,8 +13,20 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|util
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+import|;
+end_import
 
 begin_import
 import|import
@@ -46,22 +58,13 @@ name|SpecialFieldsUtils
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Comparator
-import|;
-end_import
-
 begin_comment
-comment|/**  * Comparator that handles the ranking icon column  *   * Based on IconComparator  * Only comparing ranking field  * inverse comparison of ranking as rank5 is higher than rank1  */
+comment|/**  * Comparator that handles the ranking icon column  *  * Based on IconComparator  * Only comparing ranking field  * inverse comparison of ranking as rank5 is higher than rank1  */
 end_comment
 
 begin_class
 DECL|class|RankingFieldComparator
+specifier|public
 class|class
 name|RankingFieldComparator
 implements|implements

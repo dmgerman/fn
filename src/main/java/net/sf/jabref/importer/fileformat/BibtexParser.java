@@ -156,9 +156,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|GUIGlobals
+name|CustomEntryTypesManager
 import|;
 end_import
 
@@ -170,9 +170,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|CustomEntryTypesManager
+name|GUIGlobals
 import|;
 end_import
 

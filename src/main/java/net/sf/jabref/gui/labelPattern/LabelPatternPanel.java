@@ -182,7 +182,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|IconTheme
+name|GUIGlobals
 import|;
 end_import
 
@@ -196,7 +196,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|IconTheme
 import|;
 end_import
 
