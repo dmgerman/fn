@@ -110,11 +110,6 @@ name|getSmallIcon
 argument_list|()
 argument_list|)
 decl_stmt|;
-DECL|field|visible
-specifier|private
-name|boolean
-name|visible
-decl_stmt|;
 DECL|field|manager
 specifier|private
 specifier|final
@@ -390,30 +385,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-block|}
-comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *      */
-DECL|method|setVisibility (boolean vis)
-name|void
-name|setVisibility
-parameter_list|(
-name|boolean
-name|vis
-parameter_list|)
-block|{
-name|visible
-operator|=
-name|vis
-expr_stmt|;
-block|}
-comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *      */
-DECL|method|hasVisibility ()
-name|boolean
-name|hasVisibility
-parameter_list|()
-block|{
-return|return
-name|visible
-return|;
 block|}
 DECL|method|setActiveBasePanel (BasePanel panel)
 specifier|public
