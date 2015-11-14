@@ -186,24 +186,6 @@ name|Localization
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
-import|;
-end_import
-
 begin_comment
 comment|/**  * Dialog for creating or modifying groups. Operates directly on the  * Vector containing group information.  */
 end_comment
@@ -429,10 +411,6 @@ literal|true
 expr_stmt|;
 name|flds
 operator|=
-name|StringUtil
-operator|.
-name|split
-argument_list|(
 name|fields
 operator|.
 name|getText
@@ -440,7 +418,9 @@ argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
-argument_list|,
+operator|.
+name|split
+argument_list|(
 literal|";"
 argument_list|)
 expr_stmt|;
@@ -1192,27 +1172,6 @@ name|selOnly
 operator|.
 name|isSelected
 argument_list|()
-return|;
-block|}
-DECL|method|fields ()
-specifier|public
-name|String
-index|[]
-name|fields
-parameter_list|()
-block|{
-return|return
-name|StringUtil
-operator|.
-name|split
-argument_list|(
-name|field
-operator|.
-name|getText
-argument_list|()
-argument_list|,
-literal|";"
-argument_list|)
 return|;
 block|}
 comment|/**      * Does the actual operation on a Bibtex entry based on the      * settings specified in this same dialog. Returns the number of      * occurences replaced.      */
