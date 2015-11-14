@@ -270,7 +270,7 @@ name|this
 operator|.
 name|name
 operator|=
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -290,7 +290,7 @@ name|priOpt
 expr_stmt|;
 name|optional
 operator|=
-name|Util
+name|EntryUtil
 operator|.
 name|arrayConcat
 argument_list|(
@@ -404,7 +404,7 @@ name|this
 operator|.
 name|name
 operator|=
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -710,7 +710,7 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-name|Util
+name|EntryUtil
 operator|.
 name|getRemainder
 argument_list|(

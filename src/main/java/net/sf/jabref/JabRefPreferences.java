@@ -356,7 +356,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|Util
+name|EntryUtil
 import|;
 end_import
 
@@ -9031,7 +9031,7 @@ return|return
 operator|new
 name|CustomEntryType
 argument_list|(
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -9048,7 +9048,7 @@ name|String
 index|[]
 name|secOpt
 init|=
-name|Util
+name|EntryUtil
 operator|.
 name|getRemainder
 argument_list|(
@@ -9061,7 +9061,7 @@ return|return
 operator|new
 name|CustomEntryType
 argument_list|(
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(

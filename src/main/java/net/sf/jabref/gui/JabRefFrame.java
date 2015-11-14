@@ -648,7 +648,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|Util
+name|EntryUtil
 import|;
 end_import
 
@@ -12949,7 +12949,7 @@ expr_stmt|;
 name|String
 name|nName
 init|=
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(

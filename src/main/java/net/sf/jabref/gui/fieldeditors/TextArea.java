@@ -88,25 +88,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
+name|EntryUtil
 import|;
 end_import
 
@@ -253,7 +235,7 @@ name|FieldNameLabel
 argument_list|(
 literal|' '
 operator|+
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(

@@ -136,7 +136,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|Util
+name|EntryUtil
 import|;
 end_import
 
@@ -344,7 +344,7 @@ name|FieldNameLabel
 argument_list|(
 literal|' '
 operator|+
-name|Util
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
