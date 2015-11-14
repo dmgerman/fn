@@ -386,41 +386,6 @@ name|length
 argument_list|)
 return|;
 block|}
-comment|/**      * Takes a delimited string, splits it and returns      *      * @param names a<code>String</code> value      * @return a<code>String[]</code> value      */
-DECL|method|split (String names, String delimiter)
-specifier|public
-specifier|static
-name|String
-index|[]
-name|split
-parameter_list|(
-name|String
-name|names
-parameter_list|,
-name|String
-name|delimiter
-parameter_list|)
-block|{
-if|if
-condition|(
-name|names
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-return|return
-name|names
-operator|.
-name|split
-argument_list|(
-name|delimiter
-argument_list|)
-return|;
-block|}
 comment|/**      * Removes optional square brackets from the string s      *      * @param toStrip      * @return      */
 DECL|method|stripBrackets (String toStrip)
 specifier|public
