@@ -64,7 +64,7 @@ name|glazedlists
 operator|.
 name|swing
 operator|.
-name|EventTableModel
+name|DefaultEventTableModel
 import|;
 end_import
 
@@ -287,7 +287,7 @@ decl_stmt|;
 DECL|field|tableModel
 specifier|private
 specifier|final
-name|EventTableModel
+name|DefaultEventTableModel
 argument_list|<
 name|CitEntry
 argument_list|>
@@ -454,7 +454,7 @@ block|}
 name|tableModel
 operator|=
 operator|new
-name|EventTableModel
+name|DefaultEventTableModel
 argument_list|<>
 argument_list|(
 name|list

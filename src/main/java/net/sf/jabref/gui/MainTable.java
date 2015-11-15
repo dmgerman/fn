@@ -556,7 +556,7 @@ name|glazedlists
 operator|.
 name|swing
 operator|.
-name|EventSelectionModel
+name|DefaultEventSelectionModel
 import|;
 end_import
 
@@ -570,7 +570,21 @@ name|glazedlists
 operator|.
 name|swing
 operator|.
-name|EventTableModel
+name|DefaultEventTableModel
+import|;
+end_import
+
+begin_import
+import|import
+name|ca
+operator|.
+name|odell
+operator|.
+name|glazedlists
+operator|.
+name|swing
+operator|.
+name|GlazedListsSwing
 import|;
 end_import
 
@@ -683,7 +697,7 @@ decl_stmt|;
 DECL|field|localSelectionModel
 specifier|private
 specifier|final
-name|EventSelectionModel
+name|DefaultEventSelectionModel
 argument_list|<
 name|BibtexEntry
 argument_list|>
@@ -895,7 +909,7 @@ operator|=
 name|panel
 expr_stmt|;
 comment|// This SortedList has a Comparator controlled by the TableComparatorChooser
-comment|// we are going to install, which responds to user sorting selctions:
+comment|// we are going to install, which responds to user sorting selections:
 name|sortedForTable
 operator|=
 operator|new
@@ -959,15 +973,21 @@ name|groupComparator
 operator|=
 literal|null
 expr_stmt|;
-name|EventTableModel
+name|DefaultEventTableModel
 argument_list|<
 name|BibtexEntry
 argument_list|>
 name|tableModel
 init|=
-operator|new
-name|EventTableModel
-argument_list|<>
+operator|(
+name|DefaultEventTableModel
+argument_list|<
+name|BibtexEntry
+argument_list|>
+operator|)
+name|GlazedListsSwing
+operator|.
+name|eventTableModelWithThreadProxyList
 argument_list|(
 name|sortedForGrouping
 argument_list|,
@@ -994,9 +1014,15 @@ argument_list|)
 expr_stmt|;
 name|localSelectionModel
 operator|=
-operator|new
-name|EventSelectionModel
-argument_list|<>
+operator|(
+name|DefaultEventSelectionModel
+argument_list|<
+name|BibtexEntry
+argument_list|>
+operator|)
+name|GlazedListsSwing
+operator|.
+name|eventSelectionModelWithThreadProxyList
 argument_list|(
 name|sortedForGrouping
 argument_list|)
