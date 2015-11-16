@@ -145,6 +145,22 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|formatPageNumbersPlusRange ()
+specifier|public
+name|void
+name|formatPageNumbersPlusRange
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"43+"
+argument_list|,
+literal|"43+"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|ignoreWhitespaceInPageNumbers ()
 specifier|public
 name|void
