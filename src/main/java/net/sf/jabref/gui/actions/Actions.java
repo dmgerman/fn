@@ -510,15 +510,6 @@ name|TOGGLE_PREVIEW
 init|=
 literal|"togglePreview"
 decl_stmt|;
-DECL|field|TOGGLE_SEARCH
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|TOGGLE_SEARCH
-init|=
-literal|"toggleSearch"
-decl_stmt|;
 DECL|field|TOGGLE_TOOLBAR
 specifier|public
 specifier|static

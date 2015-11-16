@@ -16,6 +16,22 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -103,7 +119,12 @@ name|this
 operator|.
 name|textWhenNotFocused
 operator|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Search..."
+argument_list|)
 expr_stmt|;
 name|this
 operator|.

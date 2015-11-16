@@ -199,6 +199,9 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 init|=
 name|AutoCompleterFactory
@@ -249,6 +252,9 @@ name|testDefaultAutoCompleter
 parameter_list|()
 block|{
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 init|=
 name|AutoCompleterFactory
@@ -439,6 +445,9 @@ name|testCrossRefCompleter
 parameter_list|()
 block|{
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 init|=
 name|AutoCompleterFactory
@@ -578,6 +587,9 @@ name|testEntireFieldCompleter
 parameter_list|()
 block|{
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 init|=
 name|AutoCompleterFactory
@@ -726,6 +738,9 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 init|=
 name|AutoCompleterFactory

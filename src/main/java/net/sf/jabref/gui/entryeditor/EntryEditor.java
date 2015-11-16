@@ -3642,19 +3642,8 @@ operator|new
 name|JTextAreaWithHighlighting
 argument_list|()
 expr_stmt|;
-name|frame
-operator|.
-name|getSearchBar
-argument_list|()
-operator|.
-name|addSearchListener
-argument_list|(
-operator|(
-name|SearchTextListener
-operator|)
-name|source
-argument_list|)
-expr_stmt|;
+comment|// TODO SIMON
+comment|// frame.getSearchBar().addSearchListener((SearchTextListener) source);
 name|source
 operator|.
 name|setEditable

@@ -1434,6 +1434,9 @@ block|}
 argument_list|)
 expr_stmt|;
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoComp
 init|=
 name|JabRef

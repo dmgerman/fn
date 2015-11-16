@@ -79,34 +79,16 @@ argument_list|(
 literal|"Hide non-matching entries"
 argument_list|)
 argument_list|)
-block|,
-DECL|enumConstant|GLOBAL
-name|GLOBAL
-argument_list|(
-DECL|enumConstant|Localization.lang
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Global search"
-argument_list|)
-argument_list|,
-DECL|enumConstant|Localization.lang
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Search in all open databases"
-argument_list|)
-argument_list|)
 block|;
 DECL|field|displayName
 specifier|private
+specifier|final
 name|String
 name|displayName
 decl_stmt|;
 DECL|field|toolTipText
 specifier|private
+specifier|final
 name|String
 name|toolTipText
 decl_stmt|;

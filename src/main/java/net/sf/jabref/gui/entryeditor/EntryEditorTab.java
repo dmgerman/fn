@@ -1101,19 +1101,8 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|frame
-operator|.
-name|getSearchBar
-argument_list|()
-operator|.
-name|addSearchListener
-argument_list|(
-operator|(
-name|TextArea
-operator|)
-name|fieldEditor
-argument_list|)
-expr_stmt|;
+comment|// TODO SIMON
+comment|// frame.getSearchBar().addSearchListener((TextArea) fieldEditor);
 name|defaultHeight
 operator|=
 name|fieldEditor
@@ -1144,6 +1133,9 @@ argument_list|)
 decl_stmt|;
 comment|// Add autocompleter listener, if required for this field:
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 init|=
 name|bPanel

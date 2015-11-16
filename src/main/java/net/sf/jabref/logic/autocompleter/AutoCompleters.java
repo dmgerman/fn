@@ -68,6 +68,9 @@ argument_list|<
 name|String
 argument_list|,
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 name|autoCompleters
 init|=
@@ -81,6 +84,9 @@ comment|// autocomplete is active, and references to the autocompleter objects.
 DECL|method|get (String fieldName)
 specifier|public
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|get
 parameter_list|(
 name|String
@@ -135,6 +141,9 @@ block|{
 for|for
 control|(
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 range|:
 name|autoCompleters
@@ -152,7 +161,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|put (String field, AutoCompleter autoCompleter)
+DECL|method|put (String field, AutoCompleter<String> autoCompleter)
 name|void
 name|put
 parameter_list|(
@@ -160,6 +169,9 @@ name|String
 name|field
 parameter_list|,
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 parameter_list|)
 block|{
