@@ -1157,7 +1157,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * A Masters thesis.      *      * Required fields: author, title, school, year.      * Optional fields: type, address, month, note.      */
+comment|/**      * A Master's thesis.      *      * Required fields: author, title, school, year.      * Optional fields: type, address, month, note.      */
 DECL|field|MASTERSTHESIS
 specifier|public
 specifier|static
