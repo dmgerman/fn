@@ -4494,40 +4494,6 @@ unit|})
 empty_stmt|;
 end_empty_stmt
 
-begin_expr_stmt
-name|actions
-operator|.
-name|put
-argument_list|(
-name|Actions
-operator|.
-name|INC_SEARCH
-argument_list|,
-call|(
-name|BaseAction
-call|)
-argument_list|()
-operator|->
-block|{
-name|frame
-operator|.
-name|setSearchBarVisible
-argument_list|(
-literal|true
-argument_list|)
-block|;
-name|frame
-operator|.
-name|getSearchBar
-argument_list|()
-operator|.
-name|startIncrementalSearch
-argument_list|()
-block|;         }
-argument_list|)
-expr_stmt|;
-end_expr_stmt
-
 begin_comment
 comment|// The action for copying the selected entry's key.
 end_comment

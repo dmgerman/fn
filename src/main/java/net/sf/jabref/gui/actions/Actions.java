@@ -240,15 +240,6 @@ name|FORWARD
 init|=
 literal|"forward"
 decl_stmt|;
-DECL|field|INC_SEARCH
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|INC_SEARCH
-init|=
-literal|"incSearch"
-decl_stmt|;
 DECL|field|MAKE_KEY
 specifier|public
 specifier|static

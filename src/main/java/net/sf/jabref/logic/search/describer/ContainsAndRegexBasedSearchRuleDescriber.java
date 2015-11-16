@@ -344,21 +344,8 @@ block|}
 name|String
 name|caseSensitiveDescription
 init|=
-name|caseSensitive
-condition|?
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"case sensitive"
-argument_list|)
-else|:
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"case insensitive"
-argument_list|)
+name|getCaseSensitiveDescription
+argument_list|()
 decl_stmt|;
 name|String
 name|genericDescription
@@ -391,6 +378,30 @@ argument_list|,
 name|caseSensitiveDescription
 argument_list|,
 name|genericDescription
+argument_list|)
+return|;
+block|}
+DECL|method|getCaseSensitiveDescription ()
+specifier|private
+name|String
+name|getCaseSensitiveDescription
+parameter_list|()
+block|{
+return|return
+name|caseSensitive
+condition|?
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"case sensitive"
+argument_list|)
+else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"case insensitive"
 argument_list|)
 return|;
 block|}

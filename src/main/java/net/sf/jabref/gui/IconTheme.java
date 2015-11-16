@@ -907,6 +907,27 @@ literal|"\uf233"
 argument_list|)
 block|,
 comment|/*css: code-equal */
+DECL|enumConstant|REGEX
+name|REGEX
+argument_list|(
+literal|"\uf4f0"
+argument_list|)
+block|,
+comment|/*css: regex */
+DECL|enumConstant|CASE_SENSITIVE
+name|CASE_SENSITIVE
+argument_list|(
+literal|"\uf127"
+argument_list|)
+block|,
+comment|/*css: alphabetical */
+DECL|enumConstant|OPEN_IN_NEW_WINDOW
+name|OPEN_IN_NEW_WINDOW
+argument_list|(
+literal|"\uf47b"
+argument_list|)
+block|,
+comment|/*css: open-in-new */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR

@@ -446,15 +446,6 @@ name|INCREASE_TABLE_FONT_SIZE
 init|=
 literal|"Increase table font size"
 decl_stmt|;
-DECL|field|INCREMENTAL_SEARCH
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|INCREMENTAL_SEARCH
-init|=
-literal|"Incremental search"
-decl_stmt|;
 DECL|field|LOAD_SESSION
 specifier|public
 specifier|static
@@ -688,15 +679,6 @@ name|String
 name|REFRESH_OO
 init|=
 literal|"Refresh OO"
-decl_stmt|;
-DECL|field|REPEAT_INCREMENTAL_SEARCH
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|REPEAT_INCREMENTAL_SEARCH
-init|=
-literal|"Repeat incremental search"
 decl_stmt|;
 DECL|field|REPLACE_STRING
 specifier|public
@@ -1185,24 +1167,6 @@ argument_list|(
 name|SEARCH
 argument_list|,
 literal|"ctrl F"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|INCREMENTAL_SEARCH
-argument_list|,
-literal|"ctrl shift F"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|REPEAT_INCREMENTAL_SEARCH
-argument_list|,
-literal|"ctrl shift F"
 argument_list|)
 expr_stmt|;
 name|keyBindMap
