@@ -10851,11 +10851,19 @@ name|file
 operator|.
 name|getName
 argument_list|()
+operator|+
+literal|" ("
+operator|+
+name|bp
+operator|.
+name|database
+operator|.
+name|getEntryCount
+argument_list|()
+operator|+
+literal|")"
 expr_stmt|;
 block|}
-comment|// idea: "<html><div style='padding:2px 5px;'>" + title + "</div></html>" instead of "title" to get some space around.
-comment|// However, this causes https://sourceforge.net/p/jabref/bugs/1293/
-comment|// Therefore, plain "title" is used
 name|tabbedPane
 operator|.
 name|add
