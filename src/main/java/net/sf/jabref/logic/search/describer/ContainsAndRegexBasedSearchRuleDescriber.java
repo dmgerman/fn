@@ -203,7 +203,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This group contains entries in which any field contains the regular expression<b>%0</b>"
+literal|"This search contains entries in which any field contains the regular expression<b>%0</b>"
 argument_list|,
 name|StringUtil
 operator|.
@@ -217,7 +217,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This group contains entries in which any field contains the term<b>%0</b>"
+literal|"This search contains entries in which any field contains the term<b>%0</b>"
 argument_list|,
 name|StringUtil
 operator|.
@@ -350,13 +350,6 @@ decl_stmt|;
 name|String
 name|genericDescription
 init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Entries cannot be manually assigned to or removed from this group."
-argument_list|)
-operator|+
 literal|"<p><br>"
 operator|+
 name|Localization

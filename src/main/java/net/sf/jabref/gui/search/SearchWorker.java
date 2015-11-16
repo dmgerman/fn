@@ -169,17 +169,10 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|field|rule
+DECL|field|searchQuery
 specifier|private
-name|SearchRule
-name|rule
-decl_stmt|;
-DECL|field|query
-specifier|private
-name|String
-name|query
-init|=
-literal|""
+name|SearchQuery
+name|searchQuery
 decl_stmt|;
 DECL|field|mode
 specifier|private
@@ -219,7 +212,7 @@ operator|=
 name|frame
 expr_stmt|;
 block|}
-comment|/**      * Resets the information and display of the previous search.      * DONE      */
+comment|/**      * Resets the information and display of the previous search.      */
 DECL|method|restart ()
 specifier|public
 name|void
@@ -281,17 +274,14 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * DONE      * Initializes a new search.      */
-DECL|method|initSearch (SearchRule rule, String query, SearchMode mode)
+comment|/**      * Initializes a new search.      */
+DECL|method|initSearch (SearchQuery searchQuery, SearchMode mode)
 specifier|public
 name|void
 name|initSearch
 parameter_list|(
-name|SearchRule
-name|rule
-parameter_list|,
-name|String
-name|query
+name|SearchQuery
+name|searchQuery
 parameter_list|,
 name|SearchMode
 name|mode
@@ -299,15 +289,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|rule
+name|searchQuery
 operator|=
-name|rule
-expr_stmt|;
-name|this
-operator|.
-name|query
-operator|=
-name|query
+name|searchQuery
 expr_stmt|;
 if|if
 condition|(
@@ -353,11 +337,14 @@ literal|"): "
 operator|+
 name|this
 operator|.
-name|query
+name|searchQuery
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see net.sf.jabref.Worker#run()      * DONE      */
+comment|/* (non-Javadoc)      * @see net.sf.jabref.Worker#run()      */
 annotation|@
 name|Override
 DECL|method|run ()
@@ -396,7 +383,7 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-comment|/**      * Searches for matches in all open databases. Saves the number of matches in hits. DONE      */
+comment|/**      * Searches for matches in all open databases. Saves the number of matches in hits.      */
 DECL|method|runGlobal ()
 specifier|private
 name|void
@@ -463,10 +450,14 @@ block|{
 name|boolean
 name|hit
 init|=
+name|searchQuery
+operator|.
 name|rule
 operator|.
 name|applyRule
 argument_list|(
+name|searchQuery
+operator|.
 name|query
 argument_list|,
 name|entry
@@ -490,7 +481,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Searches for matches in the current database. Saves the number of matches in hits. DONE      */
+comment|/**      * Searches for matches in the current database. Saves the number of matches in hits.      */
 DECL|method|runNormal ()
 specifier|private
 name|void
@@ -507,7 +498,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see net.sf.jabref.AbstractWorker#update()      * DONE      */
+comment|/* (non-Javadoc)      * @see net.sf.jabref.AbstractWorker#update()      */
 annotation|@
 name|Override
 DECL|method|update ()
@@ -546,70 +537,20 @@ break|break;
 block|}
 name|frame
 operator|.
-name|basePanel
-argument_list|()
-operator|.
-name|output
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Searched database. Number of hits"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|hits
-argument_list|)
-expr_stmt|;
-name|frame
-operator|.
 name|getSearchBar
 argument_list|()
 operator|.
 name|updateResults
 argument_list|(
 name|hits
-argument_list|)
-expr_stmt|;
-name|String
-name|description
-init|=
-name|SearchDescribers
-operator|.
-name|getSearchDescriberFor
-argument_list|(
-name|this
-operator|.
-name|rule
 argument_list|,
-name|frame
+name|searchQuery
 operator|.
-name|getSearchBar
-argument_list|()
-operator|.
-name|getSearchQuery
-argument_list|()
-operator|.
-name|query
-argument_list|)
-operator|.
-name|getDescription
-argument_list|()
-decl_stmt|;
-name|frame
-operator|.
-name|getSearchBar
-argument_list|()
-operator|.
-name|updateSearchDescription
-argument_list|(
 name|description
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Floats matches to the top of the entry table. DONE      */
+comment|/**      * Floats matches to the top of the entry table.      */
 DECL|method|updateFloat ()
 specifier|private
 name|void
@@ -668,7 +609,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Shows only matches in the entry table by removing non-hits. DONE      */
+comment|/**      * Shows only matches in the entry table by removing non-hits.      */
 DECL|method|updateFilter ()
 specifier|private
 name|void
@@ -725,7 +666,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Displays search results in a dialog window. DONE      */
+comment|/**      * Displays search results in a dialog window.      */
 DECL|method|updateGlobal ()
 specifier|private
 name|void
@@ -819,7 +760,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Initializes the search dialog, unless it has already been instantiated. DONE       */
+comment|/**      * Initializes the search dialog, unless it has already been instantiated.      */
 DECL|method|initSearchDialog ()
 specifier|private
 name|void
