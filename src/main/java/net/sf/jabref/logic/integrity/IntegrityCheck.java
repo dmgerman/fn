@@ -1013,6 +1013,45 @@ name|PagesChecker
 implements|implements
 name|Checker
 block|{
+DECL|field|PAGES_EXP
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PAGES_EXP
+init|=
+literal|""
+operator|+
+literal|"\\A"
+comment|// begin String
+operator|+
+literal|"\\d+"
+comment|// number
+operator|+
+literal|"(?:"
+comment|// non-capture group
+operator|+
+literal|"\\+|\\-{2}\\d+"
+comment|// + or --number (range)
+operator|+
+literal|")?"
+comment|// optional group
+operator|+
+literal|"(?:"
+comment|// non-capture group
+operator|+
+literal|","
+comment|// comma
+operator|+
+literal|"\\d+(?:\\+|\\-{2}\\d+)?"
+comment|// repeat former pattern
+operator|+
+literal|")*"
+comment|// repeat group 0,*
+operator|+
+literal|"\\z"
+decl_stmt|;
+comment|// end String
 DECL|field|VALID_PAGE_NUMBER
 specifier|private
 specifier|static
@@ -1027,7 +1066,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\\A\\d+(?:\\+|\\-{2}\\d+)?(?:,\\d+(?:\\+|\\-{2}\\d+)?)*\\z"
+name|PAGES_EXP
 argument_list|)
 operator|.
 name|asPredicate
