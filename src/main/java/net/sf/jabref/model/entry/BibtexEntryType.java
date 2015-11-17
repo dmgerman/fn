@@ -57,7 +57,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides a list of known entry types  *<p>  * The list of optional and required fields is derived from http://en.wikipedia.org/wiki/BibTeX#Entry_types  */
+comment|/**  * Abstract base class for all entry types.  */
 end_comment
 
 begin_class
@@ -72,13 +72,6 @@ argument_list|<
 name|BibtexEntryType
 argument_list|>
 block|{
-DECL|method|getName ()
-specifier|public
-specifier|abstract
-name|String
-name|getName
-parameter_list|()
-function_decl|;
 DECL|field|requiredFields
 specifier|private
 name|List
@@ -86,11 +79,6 @@ argument_list|<
 name|String
 argument_list|>
 name|requiredFields
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
 decl_stmt|;
 DECL|field|optionalFields
 specifier|private
@@ -99,36 +87,55 @@ argument_list|<
 name|String
 argument_list|>
 name|optionalFields
-init|=
+decl_stmt|;
+DECL|method|BibtexEntryType ()
+specifier|public
+name|BibtexEntryType
+parameter_list|()
+block|{
+name|requiredFields
+operator|=
 operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
-decl_stmt|;
-annotation|@
-name|Override
-DECL|method|compareTo (BibtexEntryType o)
-specifier|public
-name|int
-name|compareTo
-parameter_list|(
-name|BibtexEntryType
-name|o
-parameter_list|)
-block|{
-return|return
-name|getName
+expr_stmt|;
+name|optionalFields
+operator|=
+operator|new
+name|ArrayList
+argument_list|<>
 argument_list|()
+expr_stmt|;
+comment|// key is always required
+name|requiredFields
 operator|.
-name|compareTo
+name|add
 argument_list|(
-name|o
-operator|.
-name|getName
-argument_list|()
+literal|"bibtexkey"
 argument_list|)
-return|;
+expr_stmt|;
 block|}
+DECL|method|getName ()
+specifier|public
+specifier|abstract
+name|String
+name|getName
+parameter_list|()
+function_decl|;
+DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
+specifier|public
+specifier|abstract
+name|boolean
+name|hasAllRequiredFields
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
+parameter_list|)
+function_decl|;
 DECL|method|getOptionalFields ()
 specifier|public
 name|List
@@ -283,19 +290,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
-specifier|public
-specifier|abstract
-name|boolean
-name|hasAllRequiredFields
-parameter_list|(
-name|BibtexEntry
-name|entry
-parameter_list|,
-name|BibtexDatabase
-name|database
-parameter_list|)
-function_decl|;
 DECL|method|getUtilityFields ()
 specifier|public
 name|String
@@ -454,6 +448,7 @@ name|field
 argument_list|)
 return|;
 block|}
+comment|/**      * Overidden for some entry types like IEEETRANBSTCTL      */
 DECL|method|isVisibleAtNewEntryDialog ()
 specifier|public
 name|boolean
@@ -477,6 +472,30 @@ block|{
 return|return
 name|getRequiredFields
 argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|compareTo (BibtexEntryType o)
+specifier|public
+name|int
+name|compareTo
+parameter_list|(
+name|BibtexEntryType
+name|o
+parameter_list|)
+block|{
+return|return
+name|getName
+argument_list|()
+operator|.
+name|compareTo
+argument_list|(
+name|o
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 return|;
 block|}
 block|}
