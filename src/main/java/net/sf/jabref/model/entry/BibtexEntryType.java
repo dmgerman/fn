@@ -290,22 +290,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getUtilityFields ()
-specifier|public
-name|String
-index|[]
-name|getUtilityFields
-parameter_list|()
-block|{
-return|return
-operator|new
-name|String
-index|[]
-block|{
-literal|"search"
-block|}
-return|;
-block|}
 DECL|method|isRequired (String field)
 specifier|public
 name|boolean
