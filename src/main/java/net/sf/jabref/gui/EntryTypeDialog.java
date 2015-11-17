@@ -429,13 +429,6 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-name|JPanel
-name|buttons
-init|=
-operator|new
-name|JPanel
-argument_list|()
-decl_stmt|;
 name|JButton
 name|cancel
 init|=
@@ -495,6 +488,13 @@ argument_list|,
 name|cancelAction
 argument_list|)
 expr_stmt|;
+name|JPanel
+name|buttons
+init|=
+operator|new
+name|JPanel
+argument_list|()
+decl_stmt|;
 name|ButtonBarBuilder
 name|bb
 init|=
@@ -543,6 +543,8 @@ name|addEntryTypeGroup
 argument_list|(
 name|panel
 argument_list|,
+literal|"BibLateX"
+argument_list|,
 name|EntryTypes
 operator|.
 name|getAllValues
@@ -556,6 +558,8 @@ name|addEntryTypeGroup
 argument_list|(
 name|panel
 argument_list|,
+literal|"BibTeX"
+argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ALL
@@ -564,6 +568,8 @@ expr_stmt|;
 name|addEntryTypeGroup
 argument_list|(
 name|panel
+argument_list|,
+literal|"IEEETran"
 argument_list|,
 name|IEEETranEntryTypes
 operator|.
@@ -580,13 +586,16 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addEntryTypeGroup (JPanel panel, Collection<EntryType> entries)
+DECL|method|addEntryTypeGroup (JPanel panel, String groupTitle, Collection<EntryType> entries)
 specifier|private
 name|void
 name|addEntryTypeGroup
 parameter_list|(
 name|JPanel
 name|panel
+parameter_list|,
+name|String
+name|groupTitle
 parameter_list|,
 name|Collection
 argument_list|<
@@ -753,12 +762,7 @@ operator|.
 name|createEtchedBorder
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Entry types"
-argument_list|)
+name|groupTitle
 argument_list|)
 argument_list|)
 expr_stmt|;
