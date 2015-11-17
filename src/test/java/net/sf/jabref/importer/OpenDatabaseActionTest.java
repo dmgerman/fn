@@ -114,7 +114,7 @@ specifier|final
 name|String
 name|defaultEncoding
 init|=
-literal|"UTF-8"
+literal|"CP1252"
 decl_stmt|;
 annotation|@
 name|BeforeClass
@@ -387,6 +387,19 @@ argument_list|,
 name|result
 operator|.
 name|getJabrefMinorVersion
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Encoding
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"UTF-8"
+argument_list|,
+name|result
+operator|.
+name|getEncoding
 argument_list|()
 argument_list|)
 expr_stmt|;
