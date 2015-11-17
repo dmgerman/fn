@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui.search
+DECL|package|net.sf.jabref.logic.search
 package|package
 name|net
 operator|.
@@ -8,7 +8,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
 name|search
 package|;
@@ -98,6 +98,22 @@ name|SearchDescribers
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
 begin_class
 DECL|class|SearchQuery
 specifier|public
@@ -123,7 +139,7 @@ name|boolean
 name|regularExpression
 decl_stmt|;
 DECL|field|rule
-specifier|public
+specifier|private
 specifier|final
 name|SearchRule
 name|rule
@@ -135,6 +151,7 @@ name|String
 name|description
 decl_stmt|;
 DECL|method|SearchQuery (String query, boolean caseSensitive, boolean regularExpression)
+specifier|public
 name|SearchQuery
 parameter_list|(
 name|String
@@ -205,6 +222,45 @@ argument_list|()
 argument_list|,
 name|getRegularExpressionDescription
 argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|isMatch (BibtexEntry entry)
+specifier|public
+name|boolean
+name|isMatch
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|this
+operator|.
+name|rule
+operator|.
+name|applyRule
+argument_list|(
+name|query
+argument_list|,
+name|entry
+argument_list|)
+return|;
+block|}
+DECL|method|isValidQuery ()
+specifier|public
+name|boolean
+name|isValidQuery
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|rule
+operator|.
+name|validateSearchStrings
+argument_list|(
+name|query
 argument_list|)
 return|;
 block|}
