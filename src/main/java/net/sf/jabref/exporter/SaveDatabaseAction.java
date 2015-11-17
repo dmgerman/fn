@@ -842,22 +842,8 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|getFile
+name|getTabTitle
 argument_list|()
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" ("
-operator|+
-name|panel
-operator|.
-name|database
-operator|.
-name|getEntryCount
-argument_list|()
-operator|+
-literal|")"
 argument_list|,
 name|panel
 operator|.

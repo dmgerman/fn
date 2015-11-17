@@ -1691,6 +1691,78 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|getTabTitle ()
+specifier|public
+name|String
+name|getTabTitle
+parameter_list|()
+block|{
+name|String
+name|title
+decl_stmt|;
+if|if
+condition|(
+name|getFile
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+name|title
+operator|=
+name|GUIGlobals
+operator|.
+name|untitledTitle
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|database
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// if the database is not empty and no file is assigned,
+comment|// the database came from an import and has to be treated somehow
+comment|// -> mark as changed
+comment|// This also happens internally at basepanel to ensure consistency line 224
+name|title
+operator|=
+name|title
+operator|+
+literal|'*'
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|title
+operator|=
+name|getFile
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" ("
+operator|+
+name|database
+operator|.
+name|getEntryCount
+argument_list|()
+operator|+
+literal|")"
+expr_stmt|;
+block|}
+return|return
+name|title
+return|;
+block|}
 DECL|method|isBaseChanged ()
 specifier|public
 name|boolean
@@ -1711,7 +1783,6 @@ return|return
 name|mode
 return|;
 block|}
-comment|//Done by MrDlib
 DECL|method|setMode (int mode)
 specifier|public
 name|void
@@ -1728,7 +1799,6 @@ operator|=
 name|mode
 expr_stmt|;
 block|}
-comment|//Done by MrDlib
 DECL|method|database ()
 specifier|public
 name|BibtexDatabase
