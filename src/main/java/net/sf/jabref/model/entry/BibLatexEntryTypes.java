@@ -4517,6 +4517,8 @@ literal|"ctluse_paper"
 argument_list|,
 literal|"ctluse_forced_etal"
 argument_list|,
+literal|"ctluse_url"
+argument_list|,
 literal|"ctlmax_names_forced_etal"
 argument_list|,
 literal|"ctlnames_show_etal"
