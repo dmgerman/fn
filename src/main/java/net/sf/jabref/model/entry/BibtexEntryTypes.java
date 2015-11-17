@@ -1566,8 +1566,6 @@ argument_list|,
 name|UNPUBLISHED
 argument_list|,
 name|MISC
-argument_list|,
-name|OTHER
 argument_list|)
 decl_stmt|;
 block|}
