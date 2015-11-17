@@ -131,6 +131,20 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|getEntryType ()
+specifier|public
+name|EntryTypes
+name|getEntryType
+parameter_list|()
+block|{
+return|return
+name|EntryTypes
+operator|.
+name|BIBLATEX
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getOptionalFields ()
 specifier|public
 name|List
@@ -437,12 +451,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|compareTo (BibLatexEntryType o)
+DECL|method|compareTo (EntryType o)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|BibLatexEntryType
+name|EntryType
 name|o
 parameter_list|)
 block|{

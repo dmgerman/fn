@@ -48,7 +48,7 @@ name|EntryType
 extends|extends
 name|Comparable
 argument_list|<
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 block|{
 DECL|method|getName ()
@@ -98,6 +98,11 @@ parameter_list|(
 name|String
 name|field
 parameter_list|)
+function_decl|;
+DECL|method|getEntryType ()
+name|EntryTypes
+name|getEntryType
+parameter_list|()
 function_decl|;
 DECL|method|isVisibleAtNewEntryDialog ()
 name|boolean
