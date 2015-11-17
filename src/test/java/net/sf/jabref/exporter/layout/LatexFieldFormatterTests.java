@@ -167,7 +167,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|" ipsum lorem ipsum\nlorem ipsum lorem ipsum\r\ntest"
+literal|" ipsum lorem ipsum\nlorem ipsum \rlorem ipsum\r\ntest"
 decl_stmt|;
 comment|// The newlines are normalized according to the globally configured newline setting in the formatter
 name|String
@@ -187,7 +187,13 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"lorem ipsum lorem ipsum"
+literal|"lorem ipsum "
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"lorem ipsum"
 operator|+
 name|Globals
 operator|.
@@ -230,26 +236,22 @@ name|fieldName
 init|=
 literal|"abstract"
 decl_stmt|;
+comment|// The newlines are normalized according to the globally configured newline setting in the formatter
 name|String
 name|text
 init|=
-literal|"lorem ipsum lorem ipsum\nlorem ipsum lorem ipsum\n"
-decl_stmt|;
-comment|// The newlines are normalized according to the globally configured newline setting in the formatter
-comment|// Therefore, "\n" has to be replaced by that
-name|text
-operator|=
-name|text
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\n"
-argument_list|,
+literal|"lorem ipsum lorem ipsum"
+operator|+
 name|Globals
 operator|.
 name|NEWLINE
-argument_list|)
-expr_stmt|;
+operator|+
+literal|"lorem ipsum lorem ipsum"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+decl_stmt|;
 name|String
 name|result
 init|=
@@ -292,26 +294,26 @@ name|fieldName
 init|=
 literal|"abstract"
 decl_stmt|;
+comment|// The newlines are normalized according to the globally configured newline setting in the formatter
 name|String
 name|text
 init|=
-literal|"lorem ipsum lorem ipsum\n\nlorem ipsum lorem ipsum\n"
-decl_stmt|;
-comment|// The newlines are normalized according to the globally configured newline setting in the formatter
-comment|// Therefore, "\n" has to be replaced by that
-name|text
-operator|=
-name|text
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\n"
-argument_list|,
+literal|"lorem ipsum lorem ipsum"
+operator|+
 name|Globals
 operator|.
 name|NEWLINE
-argument_list|)
-expr_stmt|;
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"lorem ipsum lorem ipsum"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+decl_stmt|;
 name|String
 name|result
 init|=
@@ -354,26 +356,22 @@ name|fieldName
 init|=
 literal|"review"
 decl_stmt|;
+comment|// The newlines are normalized according to the globally configured newline setting in the formatter
 name|String
 name|text
 init|=
-literal|"lorem ipsum lorem ipsum\nlorem ipsum lorem ipsum\n"
-decl_stmt|;
-comment|// The newlines are normalized according to the globally configured newline setting in the formatter
-comment|// Therefore, "\n" has to be replaced by that
-name|text
-operator|=
-name|text
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\n"
-argument_list|,
+literal|"lorem ipsum lorem ipsum"
+operator|+
 name|Globals
 operator|.
 name|NEWLINE
-argument_list|)
-expr_stmt|;
+operator|+
+literal|"lorem ipsum lorem ipsum"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+decl_stmt|;
 name|String
 name|result
 init|=
