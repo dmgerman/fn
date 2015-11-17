@@ -7921,12 +7921,8 @@ name|oldValue
 init|=
 name|entry
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -8101,12 +8097,8 @@ name|oldValue
 argument_list|,
 name|entry
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8116,12 +8108,8 @@ name|bibtexKeyData
 init|=
 name|entry
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 decl_stmt|;
 comment|// set the field named for "bibtexkey"
 name|setField

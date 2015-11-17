@@ -1166,8 +1166,6 @@ name|type
 argument_list|)
 expr_stmt|;
 comment|// autogenerate label (BibTeX key)
-name|e
-operator|=
 name|LabelPatternUtil
 operator|.
 name|makeLabel
