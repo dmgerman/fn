@@ -104,11 +104,6 @@ name|EntryTypes
 name|getEntryType
 parameter_list|()
 function_decl|;
-DECL|method|isVisibleAtNewEntryDialog ()
-name|boolean
-name|isVisibleAtNewEntryDialog
-parameter_list|()
-function_decl|;
 DECL|method|getRequiredFieldsForCustomization ()
 name|List
 argument_list|<

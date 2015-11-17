@@ -40,22 +40,6 @@ name|Collectors
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibtexDatabase
-import|;
-end_import
-
 begin_comment
 comment|/**  * Abstract base class for all BibTex entry types.  */
 end_comment
@@ -291,19 +275,6 @@ name|contains
 argument_list|(
 name|field
 argument_list|)
-return|;
-block|}
-comment|/**      * Overidden for some entry types like IEEETRANBSTCTL      */
-annotation|@
-name|Override
-DECL|method|isVisibleAtNewEntryDialog ()
-specifier|public
-name|boolean
-name|isVisibleAtNewEntryDialog
-parameter_list|()
-block|{
-return|return
-literal|true
 return|;
 block|}
 comment|/**      * Get an array of the required fields in a form appropriate for the entry customization      * dialog - that is, the either-or fields together and separated by slashes.      *      * @return Array of the required fields in a form appropriate for the entry customization dialog.      */

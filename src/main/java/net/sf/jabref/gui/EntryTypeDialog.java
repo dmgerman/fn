@@ -567,14 +567,6 @@ name|getAllValues
 argument_list|()
 control|)
 block|{
-if|if
-condition|(
-name|tp
-operator|.
-name|isVisibleAtNewEntryDialog
-argument_list|()
-condition|)
-block|{
 name|TypeButton
 name|b
 init|=
@@ -652,7 +644,6 @@ argument_list|(
 name|b
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|pan
 operator|.

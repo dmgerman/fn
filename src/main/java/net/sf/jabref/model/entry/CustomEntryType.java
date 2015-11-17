@@ -568,18 +568,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|isVisibleAtNewEntryDialog ()
-specifier|public
-name|boolean
-name|isVisibleAtNewEntryDialog
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|compareTo (EntryType o)
 specifier|public
 name|int

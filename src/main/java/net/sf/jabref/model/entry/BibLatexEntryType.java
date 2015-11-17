@@ -419,19 +419,6 @@ name|field
 argument_list|)
 return|;
 block|}
-comment|/**      * Overidden for some entry types like IEEETRANBSTCTL      */
-annotation|@
-name|Override
-DECL|method|isVisibleAtNewEntryDialog ()
-specifier|public
-name|boolean
-name|isVisibleAtNewEntryDialog
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
 comment|/**      * Get an array of the required fields in a form appropriate for the entry customization      * dialog - that is, the either-or fields together and separated by slashes.      *      * @return Array of the required fields in a form appropriate for the entry customization dialog.      */
 annotation|@
 name|Override

@@ -218,17 +218,6 @@ return|return
 literal|true
 return|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|isVisibleAtNewEntryDialog
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
 block|}
 decl_stmt|;
 comment|/**      * The periodical entry type is used for journals and magazines.      *      * Required fields: title, year      * Optional fields: editor, language, series, volume, number, organization, month, note, url      */
