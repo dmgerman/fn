@@ -25,6 +25,12 @@ name|BIBTEX
 block|,
 DECL|enumConstant|BIBLATEX
 name|BIBLATEX
+block|,
+DECL|enumConstant|CUSTOM
+name|CUSTOM
+block|,
+DECL|enumConstant|UNKNOWN
+name|UNKNOWN
 block|}
 end_enum
 
