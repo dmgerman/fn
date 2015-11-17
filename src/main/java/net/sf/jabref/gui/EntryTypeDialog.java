@@ -106,6 +106,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -206,6 +216,10 @@ name|EntryUtil
 import|;
 end_import
 
+begin_comment
+comment|/**  * Dialog that prompts the user to choose a type for an entry.  * Returns null if cancelled.  */
+end_comment
+
 begin_class
 DECL|class|EntryTypeDialog
 specifier|public
@@ -216,11 +230,19 @@ name|JDialog
 implements|implements
 name|ActionListener
 block|{
-comment|/*      * Dialog that prompts the user to choose a type for an entry.      * Returns null if cancelled.      */
 DECL|field|type
 specifier|private
 name|EntryType
 name|type
+decl_stmt|;
+DECL|field|COLUMN
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|COLUMN
+init|=
+literal|3
 decl_stmt|;
 DECL|field|cancelAction
 specifier|private
@@ -231,15 +253,6 @@ init|=
 operator|new
 name|CancelAction
 argument_list|()
-decl_stmt|;
-DECL|field|COLNUM
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|COLNUM
-init|=
-literal|3
 decl_stmt|;
 DECL|class|TypeButton
 specifier|static
@@ -258,7 +271,7 @@ specifier|final
 name|EntryType
 name|type
 decl_stmt|;
-DECL|method|TypeButton (String label, EntryType type_)
+DECL|method|TypeButton (String label, EntryType _type)
 specifier|public
 name|TypeButton
 parameter_list|(
@@ -266,7 +279,7 @@ name|String
 name|label
 parameter_list|,
 name|EntryType
-name|type_
+name|_type
 parameter_list|)
 block|{
 name|super
@@ -276,7 +289,7 @@ argument_list|)
 expr_stmt|;
 name|type
 operator|=
-name|type_
+name|_type
 expr_stmt|;
 block|}
 annotation|@
@@ -308,22 +321,22 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|EntryTypeDialog (JabRefFrame baseFrame_)
+DECL|method|EntryTypeDialog (JabRefFrame _baseFrame)
 specifier|public
 name|EntryTypeDialog
 parameter_list|(
 name|JabRefFrame
-name|baseFrame_
+name|_baseFrame
 parameter_list|)
 block|{
+comment|// modal dialog
 name|super
 argument_list|(
-name|baseFrame_
+name|_baseFrame
 argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// Set modal on.
 name|setTitle
 argument_list|(
 name|Localization
@@ -372,7 +385,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|JPanel
-name|pan
+name|panel
 init|=
 operator|new
 name|JPanel
@@ -383,7 +396,7 @@ argument_list|()
 operator|.
 name|add
 argument_list|(
-name|pan
+name|panel
 argument_list|,
 name|BorderLayout
 operator|.
@@ -398,7 +411,6 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 name|JButton
-comment|// ok = new JButton("Ok"),
 name|cancel
 init|=
 operator|new
@@ -412,7 +424,6 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//ok.addActionListener(this);
 name|cancel
 operator|.
 name|addActionListener
@@ -432,7 +443,7 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-name|baseFrame_
+name|_baseFrame
 operator|.
 name|prefs
 operator|.
@@ -458,7 +469,6 @@ argument_list|,
 name|cancelAction
 argument_list|)
 expr_stmt|;
-comment|//buttons.add(ok);
 name|ButtonBarBuilder
 name|bb
 init|=
@@ -468,7 +478,6 @@ argument_list|(
 name|buttons
 argument_list|)
 decl_stmt|;
-comment|//buttons.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
 name|bb
 operator|.
 name|addGlue
@@ -498,28 +507,63 @@ operator|.
 name|SOUTH
 argument_list|)
 expr_stmt|;
+comment|// Entry types
+name|addEntryTypeGroup
+argument_list|(
+name|panel
+argument_list|,
+name|EntryTypes
+operator|.
+name|getAllValues
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|pack
+argument_list|()
+expr_stmt|;
+name|setResizable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|addEntryTypeGroup (JPanel panel, Collection<EntryType> entries)
+specifier|private
+name|void
+name|addEntryTypeGroup
+parameter_list|(
+name|JPanel
+name|panel
+parameter_list|,
+name|Collection
+argument_list|<
+name|EntryType
+argument_list|>
+name|entries
+parameter_list|)
+block|{
 name|GridBagLayout
-name|gbl
+name|bagLayout
 init|=
 operator|new
 name|GridBagLayout
 argument_list|()
 decl_stmt|;
-name|pan
+name|panel
 operator|.
 name|setLayout
 argument_list|(
-name|gbl
+name|bagLayout
 argument_list|)
 expr_stmt|;
 name|GridBagConstraints
-name|con
+name|constraints
 init|=
 operator|new
 name|GridBagConstraints
 argument_list|()
 decl_stmt|;
-name|con
+name|constraints
 operator|.
 name|anchor
 operator|=
@@ -527,7 +571,7 @@ name|GridBagConstraints
 operator|.
 name|WEST
 expr_stmt|;
-name|con
+name|constraints
 operator|.
 name|fill
 operator|=
@@ -535,7 +579,7 @@ name|GridBagConstraints
 operator|.
 name|HORIZONTAL
 expr_stmt|;
-name|con
+name|constraints
 operator|.
 name|insets
 operator|=
@@ -551,6 +595,7 @@ argument_list|,
 literal|4
 argument_list|)
 expr_stmt|;
+comment|// column count
 name|int
 name|col
 init|=
@@ -559,16 +604,13 @@ decl_stmt|;
 for|for
 control|(
 name|EntryType
-name|tp
+name|entryType
 range|:
-name|EntryTypes
-operator|.
-name|getAllValues
-argument_list|()
+name|entries
 control|)
 block|{
 name|TypeButton
-name|b
+name|entryButton
 init|=
 operator|new
 name|TypeButton
@@ -577,16 +619,16 @@ name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
-name|tp
+name|entryType
 operator|.
 name|getName
 argument_list|()
 argument_list|)
 argument_list|,
-name|tp
+name|entryType
 argument_list|)
 decl_stmt|;
-name|b
+name|entryButton
 operator|.
 name|addActionListener
 argument_list|(
@@ -603,14 +645,14 @@ name|col
 operator|==
 name|EntryTypeDialog
 operator|.
-name|COLNUM
+name|COLUMN
 condition|)
 block|{
 name|col
 operator|=
 literal|0
 expr_stmt|;
-name|con
+name|constraints
 operator|.
 name|gridwidth
 operator|=
@@ -621,31 +663,31 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|con
+name|constraints
 operator|.
 name|gridwidth
 operator|=
 literal|1
 expr_stmt|;
 block|}
-name|gbl
+name|bagLayout
 operator|.
 name|setConstraints
 argument_list|(
-name|b
+name|entryButton
 argument_list|,
-name|con
+name|constraints
 argument_list|)
 expr_stmt|;
-name|pan
+name|panel
 operator|.
 name|add
 argument_list|(
-name|b
+name|entryButton
 argument_list|)
 expr_stmt|;
 block|}
-name|pan
+name|panel
 operator|.
 name|setBorder
 argument_list|(
@@ -665,16 +707,6 @@ argument_list|(
 literal|"Entry types"
 argument_list|)
 argument_list|)
-argument_list|)
-expr_stmt|;
-comment|//pan.setBackground(Color.white);
-comment|//buttons.setBackground(Color.white);
-name|pack
-argument_list|()
-expr_stmt|;
-name|setResizable
-argument_list|(
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -744,9 +776,6 @@ argument_list|(
 literal|"Cancel"
 argument_list|)
 expr_stmt|;
-comment|//  new ImageIcon(GUIGlobals.imagepath+GUIGlobals.closeIconFile));
-comment|//putValue(SHORT_DESCRIPTION, "Cancel");
-comment|//putValue(MNEMONIC_KEY, GUIGlobals.closeKeyCode);
 block|}
 annotation|@
 name|Override
