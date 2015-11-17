@@ -57,7 +57,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract base class for all entry types.  */
+comment|/**  * Abstract base class for all BibTex entry types.  */
 end_comment
 
 begin_class
@@ -67,13 +67,11 @@ specifier|abstract
 class|class
 name|BibtexEntryType
 implements|implements
-name|Comparable
-argument_list|<
-name|BibtexEntryType
-argument_list|>
+name|EntryType
 block|{
 DECL|field|requiredFields
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -82,6 +80,7 @@ name|requiredFields
 decl_stmt|;
 DECL|field|optionalFields
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -116,26 +115,8 @@ literal|"bibtexkey"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getName ()
-specifier|public
-specifier|abstract
-name|String
-name|getName
-parameter_list|()
-function_decl|;
-DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
-specifier|public
-specifier|abstract
-name|boolean
-name|hasAllRequiredFields
-parameter_list|(
-name|BibtexEntry
-name|entry
-parameter_list|,
-name|BibtexDatabase
-name|database
-parameter_list|)
-function_decl|;
+annotation|@
+name|Override
 DECL|method|getOptionalFields ()
 specifier|public
 name|List
@@ -154,6 +135,8 @@ name|optionalFields
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRequiredFields ()
 specifier|public
 name|List
@@ -290,6 +273,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isRequired (String field)
 specifier|public
 name|boolean
@@ -328,6 +313,8 @@ name|field
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isOptional (String field)
 specifier|public
 name|boolean
@@ -405,6 +392,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Overidden for some entry types like IEEETRANBSTCTL      */
+annotation|@
+name|Override
 DECL|method|isVisibleAtNewEntryDialog ()
 specifier|public
 name|boolean
@@ -416,6 +405,8 @@ literal|true
 return|;
 block|}
 comment|/**      * Get an array of the required fields in a form appropriate for the entry customization      * dialog - that is, the either-or fields together and separated by slashes.      *      * @return Array of the required fields in a form appropriate for the entry customization dialog.      */
+annotation|@
+name|Override
 DECL|method|getRequiredFieldsForCustomization ()
 specifier|public
 name|List
