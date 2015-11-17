@@ -98,7 +98,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
 name|search
 operator|.
@@ -129,16 +129,6 @@ operator|.
 name|event
 operator|.
 name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
 import|;
 end_import
 

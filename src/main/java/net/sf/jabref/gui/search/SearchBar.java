@@ -176,7 +176,7 @@ name|logic
 operator|.
 name|search
 operator|.
-name|SearchQuery
+name|SearchObservable
 import|;
 end_import
 
@@ -192,11 +192,7 @@ name|logic
 operator|.
 name|search
 operator|.
-name|rules
-operator|.
-name|util
-operator|.
-name|SentenceAnalyzer
+name|SearchQuery
 import|;
 end_import
 
@@ -271,26 +267,6 @@ operator|.
 name|awt
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -439,6 +415,12 @@ specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
+DECL|field|searchObservable
+specifier|private
+specifier|final
+name|SearchObservable
+name|searchObservable
+decl_stmt|;
 DECL|field|searchField
 specifier|private
 name|JSearchTextField
@@ -508,27 +490,16 @@ specifier|final
 name|SearchWorker
 name|worker
 decl_stmt|;
-DECL|field|listeners
-specifier|private
-specifier|final
-name|ArrayList
-argument_list|<
-name|SearchTextListener
-argument_list|>
-name|listeners
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
 comment|/**      * Initializes the search bar.      *      * @param frame the main window      */
-DECL|method|SearchBar (BasePanel basePanel)
+DECL|method|SearchBar (BasePanel basePanel, SearchObservable searchObservable)
 specifier|public
 name|SearchBar
 parameter_list|(
 name|BasePanel
 name|basePanel
+parameter_list|,
+name|SearchObservable
+name|searchObservable
 parameter_list|)
 block|{
 name|super
@@ -539,6 +510,12 @@ operator|.
 name|basePanel
 operator|=
 name|basePanel
+expr_stmt|;
+name|this
+operator|.
+name|searchObservable
+operator|=
+name|searchObservable
 expr_stmt|;
 name|worker
 operator|=
@@ -1609,163 +1586,6 @@ operator|.
 name|FILTER
 return|;
 block|}
-comment|/**      * Adds a SearchTextListener to the search bar. The added listener is immediately informed about the current search.      * Subscribers will be notified about searches.      *      * @param l SearchTextListener to be added      */
-DECL|method|addSearchListener (SearchTextListener l)
-specifier|public
-name|void
-name|addSearchListener
-parameter_list|(
-name|SearchTextListener
-name|l
-parameter_list|)
-block|{
-if|if
-condition|(
-name|listeners
-operator|.
-name|contains
-argument_list|(
-name|l
-argument_list|)
-condition|)
-block|{
-return|return;
-block|}
-else|else
-block|{
-name|listeners
-operator|.
-name|add
-argument_list|(
-name|l
-argument_list|)
-expr_stmt|;
-block|}
-comment|// fire event for the new subscriber
-name|l
-operator|.
-name|searchText
-argument_list|(
-name|getSearchwords
-argument_list|(
-name|searchField
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Remove a SearchTextListener      *      * @param l SearchTextListener to be removed      */
-DECL|method|removeSearchListener (SearchTextListener l)
-specifier|public
-name|void
-name|removeSearchListener
-parameter_list|(
-name|SearchTextListener
-name|l
-parameter_list|)
-block|{
-name|listeners
-operator|.
-name|remove
-argument_list|(
-name|l
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Parses the search query for valid words and returns a list these words. For example, "The great Vikinger" will      * give ["The","great","Vikinger"]      *      * @param searchText the search query      * @return list of words found in the search query      */
-DECL|method|getSearchwords (String searchText)
-specifier|private
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getSearchwords
-parameter_list|(
-name|String
-name|searchText
-parameter_list|)
-block|{
-return|return
-operator|(
-operator|new
-name|SentenceAnalyzer
-argument_list|(
-name|searchText
-argument_list|)
-operator|)
-operator|.
-name|getWords
-argument_list|()
-return|;
-block|}
-comment|/**      * Fires an event if a search was started (or cleared)      *      * @param searchText the search query      */
-DECL|method|fireSearchlistenerEvent (String searchText)
-specifier|private
-name|void
-name|fireSearchlistenerEvent
-parameter_list|(
-name|String
-name|searchText
-parameter_list|)
-block|{
-comment|// Parse the search string to words
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|words
-decl_stmt|;
-if|if
-condition|(
-operator|(
-name|searchText
-operator|==
-literal|null
-operator|)
-operator|||
-operator|(
-name|searchText
-operator|.
-name|isEmpty
-argument_list|()
-operator|)
-condition|)
-block|{
-name|words
-operator|=
-literal|null
-expr_stmt|;
-block|}
-else|else
-block|{
-name|words
-operator|=
-name|getSearchwords
-argument_list|(
-name|searchText
-argument_list|)
-expr_stmt|;
-block|}
-comment|// Fire an event for every listener
-for|for
-control|(
-name|SearchTextListener
-name|s
-range|:
-name|listeners
-control|)
-block|{
-name|s
-operator|.
-name|searchText
-argument_list|(
-name|words
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 comment|/**      * Save current settings.      */
 DECL|method|updatePrefs ()
 specifier|public
@@ -1999,9 +1819,11 @@ operator|.
 name|WHITE
 argument_list|)
 expr_stmt|;
+name|searchObservable
+operator|.
 name|fireSearchlistenerEvent
 argument_list|(
-literal|null
+literal|""
 argument_list|)
 expr_stmt|;
 name|this
@@ -2033,6 +1855,8 @@ name|getText
 argument_list|()
 decl_stmt|;
 comment|// Notify others about the search
+name|searchObservable
+operator|.
 name|fireSearchlistenerEvent
 argument_list|(
 name|searchText
