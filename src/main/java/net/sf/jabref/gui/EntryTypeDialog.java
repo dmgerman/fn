@@ -136,22 +136,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|keyboard
@@ -202,6 +186,22 @@ name|model
 operator|.
 name|entry
 operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|EntryUtil
 import|;
 end_import
@@ -219,7 +219,7 @@ block|{
 comment|/*      * Dialog that prompts the user to choose a type for an entry.      * Returns null if cancelled.      */
 DECL|field|type
 specifier|private
-name|BibtexEntryType
+name|EntryType
 name|type
 decl_stmt|;
 DECL|field|cancelAction
@@ -255,17 +255,17 @@ argument_list|>
 block|{
 DECL|field|type
 specifier|final
-name|BibtexEntryType
+name|EntryType
 name|type
 decl_stmt|;
-DECL|method|TypeButton (String label, BibtexEntryType type_)
+DECL|method|TypeButton (String label, EntryType type_)
 specifier|public
 name|TypeButton
 parameter_list|(
 name|String
 name|label
 parameter_list|,
-name|BibtexEntryType
+name|EntryType
 name|type_
 parameter_list|)
 block|{
@@ -558,7 +558,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntryType
+name|EntryType
 name|tp
 range|:
 name|EntryTypes
@@ -729,11 +729,10 @@ expr_stmt|;
 block|}
 DECL|method|getChoice ()
 specifier|public
-name|BibtexEntryType
+name|EntryType
 name|getChoice
 parameter_list|()
 block|{
-comment|//return type;
 return|return
 name|type
 return|;

@@ -117,6 +117,24 @@ argument_list|>
 name|getRequiredFieldsForCustomization
 parameter_list|()
 function_decl|;
+comment|/**      * TODO: remove      */
+DECL|method|getPrimaryOptionalFields ()
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getPrimaryOptionalFields
+parameter_list|()
+function_decl|;
+comment|/**      * TODO: remove      */
+DECL|method|getSecondaryOptionalFields ()
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getSecondaryOptionalFields
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

@@ -1058,7 +1058,7 @@ name|TreeMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|types
 init|=
@@ -1261,7 +1261,7 @@ expr_stmt|;
 comment|// Check if we must write the type definition for this
 comment|// entry, as well. Our criterion is that all non-standard
 comment|// types (*not* customized standard types) must be written.
-name|BibtexEntryType
+name|EntryType
 name|tp
 init|=
 name|be
@@ -1406,7 +1406,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|stringBibtexEntryTypeEntry
 range|:
@@ -1416,7 +1416,7 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 name|stringBibtexEntryTypeEntry
@@ -2166,7 +2166,7 @@ name|TreeMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|types
 init|=
@@ -2383,7 +2383,7 @@ expr_stmt|;
 comment|// Check if we must write the type definition for this
 comment|// entry, as well. Our criterion is that all non-standard
 comment|// types (*not* customized standard types) must be written.
-name|BibtexEntryType
+name|EntryType
 name|tp
 init|=
 name|be
@@ -2482,7 +2482,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|stringBibtexEntryTypeEntry
 range|:

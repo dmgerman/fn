@@ -359,7 +359,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|entryTypes
 decl_stmt|;
@@ -799,7 +799,7 @@ init|=
 name|parseTextToken
 argument_list|()
 decl_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|tp
 init|=
 name|EntryTypes
@@ -1779,12 +1779,12 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|parseEntry (BibtexEntryType tp)
+DECL|method|parseEntry (EntryType tp)
 specifier|private
 name|BibtexEntry
 name|parseEntry
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|tp
 parameter_list|)
 throws|throws
@@ -4022,11 +4022,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 operator|(
-name|BibtexEntryType
+name|EntryType
 operator|)
 name|o
 decl_stmt|;

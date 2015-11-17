@@ -68,11 +68,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|bibtex
 operator|.
-name|entry
-operator|.
-name|BibtexEntryType
+name|EntryTypes
 import|;
 end_import
 
@@ -84,9 +82,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
-name|EntryTypes
+name|entry
+operator|.
+name|EntryType
 import|;
 end_import
 
@@ -398,7 +398,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|tp
 init|=
 name|etd

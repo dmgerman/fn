@@ -114,6 +114,22 @@ name|CustomEntryType
 extends|extends
 name|BibtexEntryType
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|CustomEntryType
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|ENTRYTYPE_FLAG
 specifier|public
 specifier|static
@@ -156,22 +172,6 @@ index|[]
 name|reqSets
 decl_stmt|;
 comment|// Sets of either-or required fields, if any
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|CustomEntryType
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 DECL|method|CustomEntryType (String name, List<String> required, List<String> priOpt, List<String> secOpt)
 specifier|public
 name|CustomEntryType

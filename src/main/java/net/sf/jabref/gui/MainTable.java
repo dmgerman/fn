@@ -374,7 +374,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryType
+name|EntryType
 import|;
 end_import
 
@@ -2956,7 +2956,7 @@ argument_list|(
 name|row
 argument_list|)
 decl_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 name|be

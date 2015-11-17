@@ -1216,7 +1216,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 name|EntryTypes
@@ -1623,7 +1623,6 @@ argument_list|)
 condition|)
 block|{
 comment|// This type should be reverted to its default setup.
-comment|//System.out.println("Defaulting: "+typeName);
 name|String
 name|nm
 init|=
@@ -1651,7 +1650,7 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-name|BibtexEntryType
+name|EntryType
 name|oldType
 init|=
 name|EntryTypes
@@ -1779,7 +1778,6 @@ condition|(
 name|changesMade
 condition|)
 block|{
-comment|//System.out.println("Updating: "+typeName);
 name|CustomEntryType
 name|typ
 init|=
@@ -1923,7 +1921,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 name|EntryTypes
@@ -2361,7 +2359,7 @@ name|getEntries
 argument_list|()
 control|)
 block|{
-name|BibtexEntryType
+name|EntryType
 name|newType
 init|=
 name|EntryTypes
@@ -2497,7 +2495,7 @@ argument_list|(
 name|lastSelected
 argument_list|)
 expr_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 name|EntryTypes

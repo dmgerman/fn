@@ -128,6 +128,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -513,22 +529,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
 import|;
 end_import
 
@@ -1809,7 +1809,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 name|etd

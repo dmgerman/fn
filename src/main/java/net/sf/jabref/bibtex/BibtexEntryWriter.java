@@ -104,22 +104,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -159,6 +143,22 @@ operator|.
 name|base
 operator|.
 name|Strings
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
 import|;
 end_import
 
@@ -349,7 +349,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntryType
+name|EntryType
 name|type
 range|:
 name|EntryTypes

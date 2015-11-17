@@ -612,55 +612,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryConverter
+name|*
 import|;
 end_import
 
@@ -873,7 +825,7 @@ decl_stmt|;
 DECL|field|type
 specifier|private
 specifier|final
-name|BibtexEntryType
+name|EntryType
 name|type
 decl_stmt|;
 comment|// The action concerned with closing the window.
@@ -2185,7 +2137,7 @@ expr_stmt|;
 block|}
 DECL|method|getType ()
 specifier|public
-name|BibtexEntryType
+name|EntryType
 name|getType
 parameter_list|()
 block|{
@@ -8481,7 +8433,7 @@ name|AbstractAction
 block|{
 DECL|field|changeType
 specifier|final
-name|BibtexEntryType
+name|EntryType
 name|changeType
 decl_stmt|;
 DECL|field|changeTypePanel
@@ -8489,11 +8441,11 @@ specifier|final
 name|BasePanel
 name|changeTypePanel
 decl_stmt|;
-DECL|method|ChangeTypeAction (BibtexEntryType type, BasePanel bp)
+DECL|method|ChangeTypeAction (EntryType type, BasePanel bp)
 specifier|public
 name|ChangeTypeAction
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|,
 name|BasePanel

@@ -288,7 +288,7 @@ name|id
 decl_stmt|;
 DECL|field|type
 specifier|private
-name|BibtexEntryType
+name|EntryType
 name|type
 decl_stmt|;
 DECL|field|fields
@@ -361,14 +361,14 @@ name|OTHER
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BibtexEntry (String id, BibtexEntryType type)
+DECL|method|BibtexEntry (String id, EntryType type)
 specifier|public
 name|BibtexEntry
 parameter_list|(
 name|String
 name|id
 parameter_list|,
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -473,7 +473,7 @@ block|}
 comment|/**      * Returns this entry's type.      */
 DECL|method|getType ()
 specifier|public
-name|BibtexEntryType
+name|EntryType
 name|getType
 parameter_list|()
 block|{
@@ -482,12 +482,12 @@ name|type
 return|;
 block|}
 comment|/**      * Sets this entry's type.      */
-DECL|method|setType (BibtexEntryType type)
+DECL|method|setType (EntryType type)
 specifier|public
 name|void
 name|setType
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -500,7 +500,7 @@ argument_list|,
 literal|"Every BibtexEntry must have a type.  Instead of null, use type OTHER"
 argument_list|)
 expr_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|oldType
 init|=
 name|this
