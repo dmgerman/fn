@@ -91,46 +91,6 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-DECL|method|getOptionalFields ()
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getOptionalFields
-parameter_list|()
-block|{
-return|return
-name|Collections
-operator|.
-name|unmodifiableList
-argument_list|(
-name|optionalFields
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getRequiredFields ()
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getRequiredFields
-parameter_list|()
-block|{
-return|return
-name|Collections
-operator|.
-name|unmodifiableList
-argument_list|(
-name|requiredFields
-argument_list|)
-return|;
-block|}
 DECL|method|addAllOptional (String... fieldNames)
 name|void
 name|addAllOptional
@@ -177,6 +137,46 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
+DECL|method|getOptionalFields ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getOptionalFields
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableList
+argument_list|(
+name|optionalFields
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getRequiredFields ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getRequiredFields
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableList
+argument_list|(
+name|requiredFields
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|compareTo (EntryType o)
 specifier|public
 name|int
@@ -199,7 +199,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * TODO: remove all methods from here on      * @return      */
 DECL|method|getPrimaryOptionalFields ()
 specifier|public
 name|List
