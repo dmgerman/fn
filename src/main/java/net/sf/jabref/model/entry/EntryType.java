@@ -87,11 +87,13 @@ argument_list|<
 name|EntryType
 argument_list|>
 block|{
+comment|/**      * Returns the tag name of the entry type.      *      * @return tag name of the entry type.      */
 DECL|method|getName ()
 name|String
 name|getName
 parameter_list|()
 function_decl|;
+comment|/**      * Returns all supported optional field names.      *      * @return a List of optional field name Strings      */
 DECL|method|getOptionalFields ()
 name|List
 argument_list|<
@@ -100,6 +102,7 @@ argument_list|>
 name|getOptionalFields
 parameter_list|()
 function_decl|;
+comment|/**      * Returns all required field names.      * If fields have an OR relationship the name includes both field names divided by /, e.g. author/editor.      * If you need all required fields as sole entities use @see{getRequiredFieldsFlat} .      *      * @return a List of required field name Strings      */
 DECL|method|getRequiredFields ()
 name|List
 argument_list|<
@@ -108,6 +111,7 @@ argument_list|>
 name|getRequiredFields
 parameter_list|()
 function_decl|;
+comment|/**      * Returns all required field names.      * No OR relationships are captured here.      *      * @return a List of required field name Strings      */
 DECL|method|getRequiredFieldsFlat ()
 specifier|default
 name|List
@@ -165,11 +169,6 @@ name|requiredFlat
 argument_list|)
 return|;
 block|}
-DECL|method|getEntryType ()
-name|EntryTypes
-name|getEntryType
-parameter_list|()
-function_decl|;
 comment|/**      * TODO: move inside GUI      */
 DECL|method|getPrimaryOptionalFields ()
 name|List

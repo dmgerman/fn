@@ -20,22 +20,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibtexDatabase
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -106,20 +90,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|getEntryType ()
-specifier|public
-name|EntryTypes
-name|getEntryType
-parameter_list|()
-block|{
-return|return
-name|EntryTypes
-operator|.
-name|BIBTEX
-return|;
 block|}
 annotation|@
 name|Override
