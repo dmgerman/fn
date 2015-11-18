@@ -64,6 +64,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|InputStreamReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|Reader
 import|;
 end_import
@@ -105,6 +115,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -2007,7 +2027,8 @@ return|return
 name|bp
 return|;
 block|}
-DECL|method|loadDatabase (File fileToOpen, String encoding)
+comment|/**      * Opens a new database.      */
+DECL|method|loadDatabase (File fileToOpen, String fallbackEncoding)
 specifier|public
 specifier|static
 name|ParserResult
@@ -2017,29 +2038,26 @@ name|File
 name|fileToOpen
 parameter_list|,
 name|String
-name|encoding
+name|fallbackEncoding
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// First we make a quick check to see if this looks like a BibTeX file:
-name|Reader
-name|reader
-decl_stmt|;
-comment|// = ImportFormatReader.getReader(fileToOpen, encoding);
-comment|//if (!BibtexParser.isRecognizedFormat(reader))
-comment|//    return null;
-comment|// The file looks promising. Reinitialize the reader and go on:
-comment|//reader = getReader(fileToOpen, encoding);
 comment|// We want to check if there is a JabRef signature in the file, because that would tell us
 comment|// which character encoding is used. However, to read the signature we must be using a compatible
 comment|// encoding in the first place. Since the signature doesn't contain any fancy characters, we can
-comment|// read it regardless of encoding, with either UTF8 or UTF-16. That's the hypothesis, at any rate.
+comment|// read it regardless of encoding, with either UTF-8 or UTF-16. That's the hypothesis, at any rate.
 comment|// 8 bit is most likely, so we try that first:
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|suppliedEncoding
 init|=
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 decl_stmt|;
 try|try
 init|(
@@ -2058,23 +2076,20 @@ name|suppliedEncoding
 operator|=
 name|OpenDatabaseAction
 operator|.
-name|checkForEncoding
+name|getSuppliedEncoding
 argument_list|(
 name|utf8Reader
 argument_list|)
-expr_stmt|;
-name|utf8Reader
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Now if that didn't get us anywhere, we check with the 16 bit encoding:
 if|if
 condition|(
+operator|!
 name|suppliedEncoding
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 try|try
@@ -2094,84 +2109,29 @@ name|suppliedEncoding
 operator|=
 name|OpenDatabaseAction
 operator|.
-name|checkForEncoding
+name|getSuppliedEncoding
 argument_list|(
 name|utf16Reader
 argument_list|)
 expr_stmt|;
-name|utf16Reader
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|suppliedEncoding
-operator|!=
-literal|null
-condition|)
-block|{
+comment|// Open and parse file
 try|try
-block|{
+init|(
+name|InputStreamReader
 name|reader
-operator|=
-name|ImportFormatReader
-operator|.
-name|getReader
+init|=
+name|openFile
 argument_list|(
 name|fileToOpen
 argument_list|,
 name|suppliedEncoding
-argument_list|)
-expr_stmt|;
-name|encoding
-operator|=
-name|suppliedEncoding
-expr_stmt|;
-comment|// Just so we put the right info into the ParserResult.
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-name|reader
-operator|=
-name|ImportFormatReader
-operator|.
-name|getReader
-argument_list|(
-name|fileToOpen
 argument_list|,
-name|encoding
+name|fallbackEncoding
 argument_list|)
-expr_stmt|;
-comment|// The supplied encoding didn't work out, so we use the default.
-block|}
-block|}
-else|else
+init|)
 block|{
-comment|// We couldn't find a header with info about encoding. Use default:
-name|reader
-operator|=
-name|ImportFormatReader
-operator|.
-name|getReader
-argument_list|(
-name|fileToOpen
-argument_list|,
-name|encoding
-argument_list|)
-expr_stmt|;
-block|}
 name|BibtexParser
 name|bp
 init|=
@@ -2193,7 +2153,10 @@ name|pr
 operator|.
 name|setEncoding
 argument_list|(
-name|encoding
+name|reader
+operator|.
+name|getEncoding
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|pr
@@ -2272,11 +2235,101 @@ return|return
 name|pr
 return|;
 block|}
-DECL|method|checkForEncoding (Reader reader)
+block|}
+comment|/**      * Opens the file with the provided encoding. If this fails (or no encoding is provided), then the fallback encoding      * will be used.      */
+DECL|method|openFile (File fileToOpen, Optional<String> encoding, String fallbackEncoding)
 specifier|private
 specifier|static
+name|InputStreamReader
+name|openFile
+parameter_list|(
+name|File
+name|fileToOpen
+parameter_list|,
+name|Optional
+argument_list|<
 name|String
-name|checkForEncoding
+argument_list|>
+name|encoding
+parameter_list|,
+name|String
+name|fallbackEncoding
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+if|if
+condition|(
+name|encoding
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+try|try
+block|{
+return|return
+name|ImportFormatReader
+operator|.
+name|getReader
+argument_list|(
+name|fileToOpen
+argument_list|,
+name|encoding
+operator|.
+name|get
+argument_list|()
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+comment|// The supplied encoding didn't work out, so we use the fallback.
+return|return
+name|ImportFormatReader
+operator|.
+name|getReader
+argument_list|(
+name|fileToOpen
+argument_list|,
+name|fallbackEncoding
+argument_list|)
+return|;
+block|}
+block|}
+else|else
+block|{
+comment|// We couldn't find a header with info about encoding. Use fallback:
+return|return
+name|ImportFormatReader
+operator|.
+name|getReader
+argument_list|(
+name|fileToOpen
+argument_list|,
+name|fallbackEncoding
+argument_list|)
+return|;
+block|}
+block|}
+comment|/**      * Searches the file for "Encoding: myEncoding" and returns the found supplied encoding.      */
+DECL|method|getSuppliedEncoding (Reader reader)
+specifier|private
+specifier|static
+name|Optional
+argument_list|<
+name|String
+argument_list|>
+name|getSuppliedEncoding
 parameter_list|(
 name|Reader
 name|reader
@@ -2330,7 +2383,10 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 comment|// Only keep the part after %
@@ -2375,6 +2431,10 @@ condition|)
 block|{
 comment|// Line starts with "Encoding: ", so the rest of the line should contain the name of the encoding
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|line
 operator|.
 name|substring
@@ -2389,13 +2449,17 @@ argument_list|)
 operator|.
 name|trim
 argument_list|()
+argument_list|)
 return|;
 block|}
 else|else
 block|{
 comment|// Line not recognized so stop parsing
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
@@ -2409,7 +2473,10 @@ block|{
 comment|// Ignored
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
