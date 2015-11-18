@@ -1194,7 +1194,7 @@ literal|3
 decl_stmt|;
 comment|/*      * The database shown in this panel.      */
 DECL|field|database
-specifier|public
+specifier|private
 name|BibtexDatabase
 name|database
 decl_stmt|;

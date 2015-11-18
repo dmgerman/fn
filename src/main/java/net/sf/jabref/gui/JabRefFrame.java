@@ -10683,7 +10683,8 @@ if|if
 condition|(
 name|bf
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|!=
 literal|null
 condition|)

@@ -4986,7 +4986,8 @@ if|if
 condition|(
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|setCiteKeyForEntry
 argument_list|(
@@ -6301,7 +6302,8 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|removeEntry
 argument_list|(
@@ -6327,7 +6329,8 @@ name|UndoableRemoveEntry
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 argument_list|,
 name|entry
 argument_list|,
@@ -6688,7 +6691,8 @@ name|isDuplicate
 init|=
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|setCiteKeyForEntry
 argument_list|(
@@ -6748,7 +6752,8 @@ name|UndoableKeyChange
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 argument_list|,
 name|entry
 operator|.
@@ -7580,7 +7585,8 @@ operator|)
 operator|<
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|getEntryCount
 argument_list|()
@@ -7736,7 +7742,8 @@ operator|!=
 operator|(
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|getEntryCount
 argument_list|()
@@ -7749,7 +7756,8 @@ name|newRow
 operator|=
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|getEntryCount
 argument_list|()
@@ -8018,7 +8026,8 @@ name|metaData
 argument_list|,
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 argument_list|,
 name|entry
 argument_list|)
@@ -8035,7 +8044,8 @@ name|UndoableKeyChange
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 argument_list|,
 name|entry
 operator|.
