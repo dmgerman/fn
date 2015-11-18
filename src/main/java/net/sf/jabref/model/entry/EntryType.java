@@ -170,14 +170,6 @@ name|EntryTypes
 name|getEntryType
 parameter_list|()
 function_decl|;
-DECL|method|getRequiredFieldsForCustomization ()
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getRequiredFieldsForCustomization
-parameter_list|()
-function_decl|;
 comment|/**      * TODO: move inside GUI      */
 DECL|method|getPrimaryOptionalFields ()
 name|List

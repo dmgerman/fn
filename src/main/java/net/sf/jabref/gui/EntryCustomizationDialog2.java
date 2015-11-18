@@ -1241,7 +1241,7 @@ name|req
 init|=
 name|type
 operator|.
-name|getRequiredFieldsForCustomization
+name|getRequiredFields
 argument_list|()
 decl_stmt|;
 name|List
@@ -2531,7 +2531,7 @@ name|req
 init|=
 name|type
 operator|.
-name|getRequiredFieldsForCustomization
+name|getRequiredFields
 argument_list|()
 decl_stmt|;
 name|List

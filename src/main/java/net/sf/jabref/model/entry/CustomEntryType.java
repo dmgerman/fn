@@ -617,32 +617,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|getRequiredFieldsForCustomization ()
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getRequiredFieldsForCustomization
-parameter_list|()
-block|{
-return|return
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-name|getRequiredFieldsString
-argument_list|()
-operator|.
-name|split
-argument_list|(
-literal|";"
-argument_list|)
-argument_list|)
-return|;
-block|}
 comment|/**      * Get a String describing the required field set for this entry type.      *      * @return Description of required field set for storage in preferences or bib file.      */
 DECL|method|getRequiredFieldsString ()
 specifier|public

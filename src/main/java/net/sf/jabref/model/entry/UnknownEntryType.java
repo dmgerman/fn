@@ -264,22 +264,6 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
-DECL|method|getRequiredFieldsForCustomization ()
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getRequiredFieldsForCustomization
-parameter_list|()
-block|{
-return|return
-name|getRequiredFields
-argument_list|()
-return|;
-block|}
 block|}
 end_class
 

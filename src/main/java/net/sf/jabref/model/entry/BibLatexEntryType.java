@@ -355,23 +355,6 @@ name|field
 argument_list|)
 return|;
 block|}
-comment|/**      * Get an array of the required fields in a form appropriate for the entry customization      * dialog - that is, the either-or fields together and separated by slashes.      *      * @return Array of the required fields in a form appropriate for the entry customization dialog.      */
-annotation|@
-name|Override
-DECL|method|getRequiredFieldsForCustomization ()
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getRequiredFieldsForCustomization
-parameter_list|()
-block|{
-return|return
-name|getRequiredFields
-argument_list|()
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|compareTo (EntryType o)
