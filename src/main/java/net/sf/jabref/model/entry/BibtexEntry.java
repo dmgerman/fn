@@ -1109,27 +1109,13 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * Returns the bibtex key, or null if it is not set.      */
 DECL|method|getCiteKey ()
 specifier|public
 name|String
 name|getCiteKey
 parameter_list|()
 block|{
-if|if
-condition|(
-operator|!
-name|fields
-operator|.
-name|containsKey
-argument_list|(
-name|KEY_FIELD
-argument_list|)
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
 return|return
 name|fields
 operator|.
@@ -1605,10 +1591,8 @@ argument_list|()
 operator|+
 literal|':'
 operator|+
-name|getField
-argument_list|(
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 return|;
 block|}
 DECL|method|isSearchHit ()

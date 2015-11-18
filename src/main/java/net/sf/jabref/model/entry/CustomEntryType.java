@@ -767,12 +767,8 @@ if|if
 condition|(
 name|entry
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 operator|==
 literal|null
 condition|)

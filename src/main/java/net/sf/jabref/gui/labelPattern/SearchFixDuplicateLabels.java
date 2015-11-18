@@ -584,8 +584,6 @@ operator|.
 name|getCiteKey
 argument_list|()
 decl_stmt|;
-name|entry
-operator|=
 name|LabelPatternUtil
 operator|.
 name|makeLabel
@@ -624,12 +622,8 @@ name|oldKey
 argument_list|,
 name|entry
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

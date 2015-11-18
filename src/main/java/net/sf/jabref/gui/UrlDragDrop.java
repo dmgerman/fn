@@ -240,22 +240,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -674,12 +658,8 @@ operator|.
 name|getEntry
 argument_list|()
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 operator|+
 literal|".pdf"
 argument_list|)
