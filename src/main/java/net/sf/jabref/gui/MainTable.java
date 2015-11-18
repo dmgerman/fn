@@ -568,6 +568,22 @@ name|MainTable
 extends|extends
 name|JTable
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MainTable
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|serialVersionUID
 specifier|private
 specifier|static
@@ -791,22 +807,6 @@ init|=
 literal|8
 decl_stmt|;
 comment|// Constant to indicate that an icon cell renderer should be used.
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|MainTable
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 static|static
 block|{
 name|MainTable
@@ -2988,7 +2988,10 @@ argument_list|)
 operator|||
 name|type
 operator|.
-name|isRequired
+name|getRequiredFieldsFlat
+argument_list|()
+operator|.
+name|contains
 argument_list|(
 name|columnName
 argument_list|)
@@ -3004,7 +3007,10 @@ if|if
 condition|(
 name|type
 operator|.
-name|isOptional
+name|getOptionalFields
+argument_list|()
+operator|.
+name|contains
 argument_list|(
 name|columnName
 argument_list|)
@@ -3028,7 +3034,6 @@ name|NullPointerException
 name|ex
 parameter_list|)
 block|{
-comment|//System.out.println("Exception: getCellStatus");
 return|return
 name|MainTable
 operator|.

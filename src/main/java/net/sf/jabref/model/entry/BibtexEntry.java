@@ -1138,6 +1138,34 @@ name|KEY_FIELD
 argument_list|)
 return|;
 block|}
+DECL|method|hasCiteKey ()
+specifier|public
+name|boolean
+name|hasCiteKey
+parameter_list|()
+block|{
+if|if
+condition|(
+name|getCiteKey
+argument_list|()
+operator|==
+literal|null
+operator|||
+name|getCiteKey
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+return|return
+literal|true
+return|;
+block|}
 comment|/**      * Sets a number of fields simultaneously. The given HashMap contains field      * names as keys, each mapped to the value to set.      * WARNING: this method does not notify change listeners, so it should *NOT*      * be used for entries that are being displayed in the GUI. Furthermore, it      * does not check values for content, so e.g. empty strings will be set as such.      */
 DECL|method|setField (Map<String, String> fields)
 specifier|public
@@ -1359,7 +1387,7 @@ specifier|final
 name|String
 name|orSeparator
 init|=
-literal|"|"
+literal|"/"
 decl_stmt|;
 for|for
 control|(
@@ -1388,12 +1416,7 @@ name|field
 operator|.
 name|split
 argument_list|(
-name|Pattern
-operator|.
-name|quote
-argument_list|(
 name|orSeparator
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

@@ -358,16 +358,6 @@ name|getAllValues
 argument_list|()
 control|)
 block|{
-if|if
-condition|(
-name|type
-operator|.
-name|getRequiredFields
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|String
@@ -375,7 +365,7 @@ name|field
 range|:
 name|type
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsFlat
 argument_list|()
 control|)
 block|{
@@ -393,7 +383,6 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(

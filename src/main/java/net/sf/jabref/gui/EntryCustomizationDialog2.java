@@ -1678,7 +1678,7 @@ name|oldReq
 init|=
 name|oldType
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsFlat
 argument_list|()
 decl_stmt|;
 name|List

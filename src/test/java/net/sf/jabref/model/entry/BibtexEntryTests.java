@@ -327,9 +327,7 @@ name|requiredFields
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|requiredFields
@@ -379,13 +377,6 @@ name|requiredFields
 argument_list|,
 literal|null
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|requiredFields
-operator|.
-name|remove
-argument_list|(
-literal|"year"
 argument_list|)
 expr_stmt|;
 block|}
@@ -445,9 +436,7 @@ name|requiredFields
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// XOR required
@@ -455,7 +444,7 @@ name|requiredFields
 operator|.
 name|add
 argument_list|(
-literal|"journal|year"
+literal|"journal/year"
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -476,7 +465,7 @@ name|requiredFields
 operator|.
 name|add
 argument_list|(
-literal|"year|address"
+literal|"year/address"
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -565,7 +554,7 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|e
 operator|.

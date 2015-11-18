@@ -272,7 +272,7 @@ operator|.
 name|getType
 argument_list|()
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsFlat
 argument_list|()
 operator|.
 name|toArray

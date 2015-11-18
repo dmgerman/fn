@@ -1137,7 +1137,7 @@ name|reqFields
 init|=
 name|val
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsFlat
 argument_list|()
 decl_stmt|;
 name|List
