@@ -40,6 +40,10 @@ name|List
 import|;
 end_import
 
+begin_comment
+comment|/**  * Interface for all EntryTypes.  */
+end_comment
+
 begin_interface
 DECL|interface|EntryType
 specifier|public

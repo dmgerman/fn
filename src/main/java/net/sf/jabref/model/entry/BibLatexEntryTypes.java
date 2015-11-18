@@ -65,7 +65,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class defines entry types for BibLatex support.  */
+comment|/**  * This class defines entry types for BibLatex support.  * @see http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/biblatex/doc/biblatex.pdf  */
 end_comment
 
 begin_class

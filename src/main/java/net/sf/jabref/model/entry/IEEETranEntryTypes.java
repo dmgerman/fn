@@ -61,7 +61,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class represents all supported IEEETran entry types.  *  * @see http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/IEEEtran/bibtex/IEEEtran_bst_HOWTO.pdf  *  * Electronic, IEEETranBSTCTL, Periodical, Patent, Standard  */
+comment|/**  * This class represents all supported IEEETran entry types.  * @see http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/IEEEtran/bibtex/IEEEtran_bst_HOWTO.pdf  *  * Electronic, IEEETranBSTCTL, Periodical, Patent, Standard  */
 end_comment
 
 begin_class
@@ -395,25 +395,11 @@ operator|new
 name|String
 index|[]
 block|{
+literal|"year|yearfiled"
+block|,
 literal|"number"
 block|,
 literal|"bibtexkey"
-block|}
-argument_list|,
-name|database
-argument_list|)
-operator|&&
-name|entry
-operator|.
-name|atLeastOnePresent
-argument_list|(
-operator|new
-name|String
-index|[]
-block|{
-literal|"year"
-block|,
-literal|"yearfiled"
 block|}
 argument_list|,
 name|database
@@ -543,25 +529,11 @@ operator|new
 name|String
 index|[]
 block|{
+literal|"organization|institution"
+block|,
 literal|"title"
 block|,
 literal|"bibtexkey"
-block|}
-argument_list|,
-name|database
-argument_list|)
-operator|&&
-name|entry
-operator|.
-name|atLeastOnePresent
-argument_list|(
-operator|new
-name|String
-index|[]
-block|{
-literal|"organization"
-block|,
-literal|"institution"
 block|}
 argument_list|,
 name|database
