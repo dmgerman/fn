@@ -281,269 +281,273 @@ block|{
 DECL|enumConstant|ADD
 name|ADD
 argument_list|(
-literal|"\uf494"
+literal|"\uf4c0"
 argument_list|)
-comment|/*css: plus-box*/
+comment|/*css: mdi-plus-box*/
 block|,
 DECL|enumConstant|ADD_NOBOX
 name|ADD_NOBOX
 argument_list|(
-literal|"\uF493"
+literal|"\uf4bf"
 argument_list|)
 comment|/*css: plus */
 block|,
 DECL|enumConstant|ADD_ENTRY
 name|ADD_ENTRY
 argument_list|(
-literal|"\uF571"
+literal|"\uf5b0"
 argument_list|)
 comment|/*css: tooltip-outline-plus */
 block|,
 DECL|enumConstant|EDIT_ENTRY
 name|EDIT_ENTRY
 argument_list|(
-literal|"\uf56e"
+literal|"\uf5ad"
 argument_list|)
 comment|/*css: tooltip-edit */
 block|,
 DECL|enumConstant|EDIT_STRINGS
 name|EDIT_STRINGS
 argument_list|(
-literal|"\uf572"
+literal|"\uf5b1"
 argument_list|)
 comment|/*css: tooltip-text */
 block|,
 DECL|enumConstant|FOLDER
 name|FOLDER
 argument_list|(
-literal|"\uf07b"
+literal|"\uf316"
 argument_list|)
 block|,
+comment|/*css: folder */
 DECL|enumConstant|REMOVE
 name|REMOVE
 argument_list|(
-literal|"\uf406"
+literal|"\uf429"
 argument_list|)
 block|,
+comment|/*css: minus-box */
 DECL|enumConstant|REMOVE_NOBOX
 name|REMOVE_NOBOX
 argument_list|(
-literal|"\uF405"
+literal|"\uf428"
 argument_list|)
 comment|/*css: minus */
 block|,
 DECL|enumConstant|FILE
 name|FILE
 argument_list|(
-literal|"\uf2cf"
+literal|"\uf2e0"
 argument_list|)
 block|,
+comment|/* css: file*/
 DECL|enumConstant|PDF_FILE
 name|PDF_FILE
 argument_list|(
-literal|"\uf2dc"
+literal|"\uf2f0"
 argument_list|)
 block|,
+comment|/* css: file-pdf*/
 DECL|enumConstant|DOI
 name|DOI
 argument_list|(
-literal|"\uF5D1"
+literal|"\uf61c"
 argument_list|)
 comment|/*css: web*/
 block|,
 DECL|enumConstant|DUPLICATE
 name|DUPLICATE
 argument_list|(
-literal|"\uF255"
+literal|"\uf261"
 argument_list|)
 comment|/*css: content-duplicate */
 block|,
 DECL|enumConstant|EDIT
 name|EDIT
 argument_list|(
-literal|"\uF1AB"
+literal|"\uf499"
 argument_list|)
 comment|/*css: pencil */
 block|,
 DECL|enumConstant|NEW
 name|NEW
 argument_list|(
-literal|"\uF2DB"
+literal|"\uf2ef"
 argument_list|)
 comment|/* css: file-outline */
 block|,
 DECL|enumConstant|SAVE
 name|SAVE
 argument_list|(
-literal|"\uF257"
+literal|"\uf263"
 argument_list|)
 comment|/*css: content-save*/
 block|,
 DECL|enumConstant|SAVE_ALL
 name|SAVE_ALL
 argument_list|(
-literal|"\uF258"
+literal|"\uf264"
 argument_list|)
 comment|/*css: content-save-all*/
 block|,
 DECL|enumConstant|CLOSE
 name|CLOSE
 argument_list|(
-literal|"\uF5DE"
+literal|"\uf22b"
 argument_list|)
 comment|/* css: close */
 block|,
 DECL|enumConstant|PASTE
 name|PASTE
 argument_list|(
-literal|"\uF256"
+literal|"\uf262"
 argument_list|)
 comment|/*css: content-paste*/
 block|,
 DECL|enumConstant|CUT
 name|CUT
 argument_list|(
-literal|"\uF254"
+literal|"\uf260"
 argument_list|)
 comment|/*css: content-cut*/
 block|,
 DECL|enumConstant|COPY
 name|COPY
 argument_list|(
-literal|"\uF253"
+literal|"\uf25f"
 argument_list|)
 comment|/*css: content-copy */
 block|,
 DECL|enumConstant|REDO
 name|REDO
 argument_list|(
-literal|"\uF4B9"
+literal|"\uf4ed"
 argument_list|)
 comment|/*css: redo*/
 block|,
 DECL|enumConstant|UNDO
 name|UNDO
 argument_list|(
-literal|"\uF58F"
+literal|"\uf5d0"
 argument_list|)
 comment|/*css: undo*/
 block|,
 DECL|enumConstant|MARK_ENTRIES
 name|MARK_ENTRIES
 argument_list|(
-literal|"\uF1A2"
+literal|"\uf1a6"
 argument_list|)
 comment|/*css: bookmark */
 block|,
 DECL|enumConstant|UNMARK_ENTRIES
 name|UNMARK_ENTRIES
 argument_list|(
-literal|"\uF1A5"
+literal|"\uf1a9"
 argument_list|)
 comment|/*css: bookmark-outline */
 block|,
 DECL|enumConstant|REFRESH
 name|REFRESH
 argument_list|(
-literal|"\uF4BB"
+literal|"\uf4ef"
 argument_list|)
 comment|/*css: refresh */
 block|,
 DECL|enumConstant|DELETE
 name|DELETE
 argument_list|(
-literal|"\uF280"
+literal|"\uf28d"
 argument_list|)
 comment|/*css: delete */
 block|,
 DECL|enumConstant|SEARCH
 name|SEARCH
 argument_list|(
-literal|"\uF3DE"
+literal|"\uf401"
 argument_list|)
 comment|/*css: magnify */
 block|,
 DECL|enumConstant|PREFERENCES
 name|PREFERENCES
 argument_list|(
-literal|"\uF4F0"
+literal|"\uf529"
 argument_list|)
 comment|/*css: settings */
 block|,
 DECL|enumConstant|HELP
 name|HELP
 argument_list|(
-literal|"\uF37D"
+literal|"\uf396"
 argument_list|)
 comment|/*css: help-circle*/
 block|,
 DECL|enumConstant|HELP_CONTENTS
 name|HELP_CONTENTS
 argument_list|(
-literal|"\uF1A0"
+literal|"\uf1a4"
 argument_list|)
 comment|/*css: book-open */
 block|,
 DECL|enumConstant|UP
 name|UP
 argument_list|(
-literal|"\uF214"
+literal|"\uf21c"
 argument_list|)
 comment|/*css: chevron-up */
 block|,
 DECL|enumConstant|DOWN
 name|DOWN
 argument_list|(
-literal|"\uF211"
+literal|"\uf219"
 argument_list|)
 comment|/*css: chevron-down */
 block|,
 DECL|enumConstant|LEFT
 name|LEFT
 argument_list|(
-literal|"\uF141"
+literal|"\uf145"
 argument_list|)
 comment|/* css; arrow-left-bold */
 block|,
 DECL|enumConstant|RIGHT
 name|RIGHT
 argument_list|(
-literal|"\uF146"
+literal|"\uf14a"
 argument_list|)
 comment|/*css: arrow-right-bold */
 block|,
 DECL|enumConstant|SOURCE
 name|SOURCE
 argument_list|(
-literal|"\uF232"
+literal|"\uf23c"
 argument_list|)
 comment|/*css: code-braces*/
 block|,
 DECL|enumConstant|MAKE_KEY
 name|MAKE_KEY
 argument_list|(
-literal|"\uF3AC"
+literal|"\uf3c5"
 argument_list|)
 comment|/*css: key-variant */
 block|,
 DECL|enumConstant|CLEANUP_ENTRIES
 name|CLEANUP_ENTRIES
 argument_list|(
-literal|"\uF1C2"
+literal|"\uf1c6"
 argument_list|)
 comment|/*css: broom */
 block|,
 DECL|enumConstant|PRIORITY
 name|PRIORITY
 argument_list|(
-literal|"\uF2F0"
+literal|"\uf306"
 argument_list|)
 comment|/*css: flag */
 block|,
 DECL|enumConstant|PRIORITY_HIGH
 name|PRIORITY_HIGH
 argument_list|(
-literal|"\uF2F0"
+literal|"\uf306"
 argument_list|,
 name|Color
 operator|.
@@ -554,7 +558,7 @@ block|,
 DECL|enumConstant|PRIORITY_MEDIUM
 name|PRIORITY_MEDIUM
 argument_list|(
-literal|"\uF2F0"
+literal|"\uf306"
 argument_list|,
 name|Color
 operator|.
@@ -565,7 +569,7 @@ block|,
 DECL|enumConstant|PRIORITY_LOW
 name|PRIORITY_LOW
 argument_list|(
-literal|"\uF2F0"
+literal|"\uf306"
 argument_list|,
 operator|new
 name|Color
@@ -582,147 +586,149 @@ block|,
 DECL|enumConstant|PRINTED
 name|PRINTED
 argument_list|(
-literal|"\uF4A5"
+literal|"\uf4d2"
 argument_list|)
 comment|/*css: printer */
 block|,
 DECL|enumConstant|RANKING
 name|RANKING
 argument_list|(
-literal|"\uf521"
+literal|"\uf55e"
 argument_list|)
-comment|/*css: star */
+comment|/*css: star + star-outline: f561*/
 block|,
 DECL|enumConstant|RANK1
 name|RANK1
 argument_list|(
-literal|"\uf521\uf524\uF524\uF524\uF524"
+literal|"\uf55e\uf561\uf561\uf561\uf561"
 argument_list|)
 block|,
 DECL|enumConstant|RANK2
 name|RANK2
 argument_list|(
-literal|"\uf521\uf521\uF524\uF524\uF524"
+literal|"\uf55e\uf55e\uf561\uf561\uf561"
 argument_list|)
 block|,
 DECL|enumConstant|RANK3
 name|RANK3
 argument_list|(
-literal|"\uf521\uf521\uF521\uF524\uF524"
+literal|"\uf55e\uf55e\uf55e\uf561\uf561"
 argument_list|)
 block|,
 DECL|enumConstant|RANK4
 name|RANK4
 argument_list|(
-literal|"\uf521\uf521\uF521\uF521\uF524"
+literal|"\uf55e\uf55e\uf55e\uf55e\uf561"
 argument_list|)
 block|,
 DECL|enumConstant|RANK5
 name|RANK5
 argument_list|(
-literal|"\uf521\uf521\uF521\uF521\uF521"
+literal|"\uf55e\uf55e\uf55e\uf55e\uf55e"
 argument_list|)
 block|,
 DECL|enumConstant|WWW
 name|WWW
 argument_list|(
-literal|"\uF5D1"
+literal|"\uf61c"
 argument_list|)
 comment|/*css: web*/
 block|,
 DECL|enumConstant|GROUP_INCLUDING
 name|GROUP_INCLUDING
 argument_list|(
-literal|"\uF2E9"
+literal|"\uf2fe"
 argument_list|)
 comment|/*css: filter-outline*/
 block|,
 DECL|enumConstant|GROUP_REFINING
 name|GROUP_REFINING
 argument_list|(
-literal|"\uF2E8"
+literal|"\uf2fe"
 argument_list|)
 comment|/*css: filter*/
 block|,
 DECL|enumConstant|AUTO_GROUP
 name|AUTO_GROUP
 argument_list|(
-literal|"\uF154"
+literal|"\uf158"
 argument_list|)
 block|,
 comment|/*css: auto-fix*/
 DECL|enumConstant|EMAIL
 name|EMAIL
 argument_list|(
-literal|"\uF2AD"
+literal|"\uf2ba"
 argument_list|)
 comment|/*css: email*/
 block|,
 DECL|enumConstant|EXPORT_TO_CLIPBOARD
 name|EXPORT_TO_CLIPBOARD
 argument_list|(
-literal|"\uF21C"
+literal|"\uf224"
 argument_list|)
 comment|/*css: clipboard-arrow-left */
 block|,
 DECL|enumConstant|ATTACH_FILE
 name|ATTACH_FILE
 argument_list|(
-literal|"\uF469"
+literal|"\uf490"
 argument_list|)
 comment|/*css: paperclip*/
 block|,
 DECL|enumConstant|AUTO_FILE_LINK
 name|AUTO_FILE_LINK
 argument_list|(
-literal|"\uF2D6"
+literal|"\uf2e9"
 argument_list|)
 comment|/*css: file-find */
 block|,
 DECL|enumConstant|QUALITY_ASSURED
 name|QUALITY_ASSURED
 argument_list|(
-literal|"\uF5E7"
+literal|"\uf1fe"
 argument_list|)
 block|,
+comment|/*css: certificate */
 DECL|enumConstant|QUALITY
 name|QUALITY
 argument_list|(
-literal|"\uF5E7"
+literal|"\uf1fe"
 argument_list|)
 block|,
+comment|/*css: certificate */
 DECL|enumConstant|OPEN
 name|OPEN
 argument_list|(
-literal|"\uF300"
+literal|"\uf316"
 argument_list|)
 comment|/*css: folder */
 block|,
 DECL|enumConstant|ADD_ROW
 name|ADD_ROW
 argument_list|(
-literal|"\uf4ed"
+literal|"\uf526"
 argument_list|)
 comment|/* css: server-plus*/
 block|,
 DECL|enumConstant|REMOVE_ROW
 name|REMOVE_ROW
 argument_list|(
-literal|"\uF4E9"
+literal|"\uf522"
 argument_list|)
 comment|/*css: server-minus */
 block|,
 DECL|enumConstant|PICTURE
 name|PICTURE
 argument_list|(
-literal|"\uf2d7"
+literal|"\uf2ea"
 argument_list|)
 comment|/*css: file-image */
 block|,
 DECL|enumConstant|READ_STATUS_READ
 name|READ_STATUS_READ
 argument_list|(
-literal|"\uF2C4"
+literal|"\uf2d4"
 argument_list|,
 operator|new
 name|Color
@@ -739,7 +745,7 @@ comment|/*css: eye */
 DECL|enumConstant|READ_STATUS_SKIMMED
 name|READ_STATUS_SKIMMED
 argument_list|(
-literal|"\uF2C4"
+literal|"\uf2d4"
 argument_list|,
 name|Color
 operator|.
@@ -750,77 +756,77 @@ comment|/*css: eye */
 DECL|enumConstant|READ_STATUS
 name|READ_STATUS
 argument_list|(
-literal|"\uF2C4"
+literal|"\uf2d4"
 argument_list|)
 block|,
 comment|/*css: eye */
 DECL|enumConstant|RELEVANCE
 name|RELEVANCE
 argument_list|(
-literal|"\uF522"
+literal|"\uf55f"
 argument_list|)
 block|,
 comment|/*css: star-circle */
 DECL|enumConstant|MERGE_ENTRIES
 name|MERGE_ENTRIES
 argument_list|(
-literal|"\uf24f"
+literal|"\uf25b"
 argument_list|)
 block|,
 comment|/* css: compare */
 DECL|enumConstant|CONNECT_OPEN_OFFICE
 name|CONNECT_OPEN_OFFICE
 argument_list|(
-literal|"\uf454"
+literal|"\uf47a"
 argument_list|)
 comment|/*css: open-in-app */
 block|,
 DECL|enumConstant|PLAIN_TEXT_IMPORT_TODO
 name|PLAIN_TEXT_IMPORT_TODO
 argument_list|(
-literal|"\uf202"
+literal|"\uf20a"
 argument_list|)
 comment|/* css: checkbox-blank-circle-outline*/
 block|,
 DECL|enumConstant|PLAIN_TEXT_IMPORT_DONE
 name|PLAIN_TEXT_IMPORT_DONE
 argument_list|(
-literal|"\uf206"
+literal|"\uf20e"
 argument_list|)
 comment|/* checkbox-marked-circle-outline */
 block|,
 DECL|enumConstant|DONATE
 name|DONATE
 argument_list|(
-literal|"\uf34d"
+literal|"\uf367"
 argument_list|)
 block|,
 comment|/* css: gift */
 DECL|enumConstant|MOVE_TAB_ARROW
 name|MOVE_TAB_ARROW
 argument_list|(
-literal|"\uf14d"
+literal|"\uf151"
 argument_list|)
 block|,
 comment|/*css:  arrow-up-bold */
 DECL|enumConstant|OPTIONAL
 name|OPTIONAL
 argument_list|(
-literal|"\uf3b6"
+literal|"\uf3cf"
 argument_list|)
 block|,
 comment|/*css: label-outline */
 DECL|enumConstant|REQUIRED
 name|REQUIRED
 argument_list|(
-literal|"\uf3b5"
+literal|"\uf3ce"
 argument_list|)
 block|,
 comment|/*css: label */
 DECL|enumConstant|INTEGRITY_FAIL
 name|INTEGRITY_FAIL
 argument_list|(
-literal|"\uF226"
+literal|"\uf22e"
 argument_list|,
 name|Color
 operator|.
@@ -831,98 +837,98 @@ comment|/*css: close-circle */
 DECL|enumConstant|INTEGRITY_INFO
 name|INTEGRITY_INFO
 argument_list|(
-literal|"\uF39E"
+literal|"\uf3b7"
 argument_list|)
 block|,
 comment|/*css: information */
 DECL|enumConstant|INTEGRITY_WARN
 name|INTEGRITY_WARN
 argument_list|(
-literal|"\uF120"
+literal|"\uf124"
 argument_list|)
 block|,
 comment|/*css alert-circle */
 DECL|enumConstant|INTEGRITY_SUCCESS
 name|INTEGRITY_SUCCESS
 argument_list|(
-literal|"\uf206"
+literal|"\uf20e"
 argument_list|)
 comment|/*css: checkbox-marked-circle-outline */
 block|,
 DECL|enumConstant|GITHUB
 name|GITHUB
 argument_list|(
-literal|"\uF350"
+literal|"\uf36a"
 argument_list|)
 block|,
 comment|/*css: github-circle*/
 DECL|enumConstant|TOGGLE_ENTRY_PREVIEW
 name|TOGGLE_ENTRY_PREVIEW
 argument_list|(
-literal|"\uf3c7"
+literal|"\uf3ea"
 argument_list|)
 block|,
 comment|/*css: library-books */
 DECL|enumConstant|TOGGLE_GROUPS
 name|TOGGLE_GROUPS
 argument_list|(
-literal|"\uf5a7"
+literal|"\uf5f1"
 argument_list|)
 block|,
 comment|/*css: view-list */
 DECL|enumConstant|WRITE_XMP
 name|WRITE_XMP
 argument_list|(
-literal|"\uf39c"
+literal|"\uf3b5"
 argument_list|)
 block|,
 comment|/* css: import */
 DECL|enumConstant|FILE_WORD
 name|FILE_WORD
 argument_list|(
-literal|"\uf2e2"
+literal|"\uf2f7"
 argument_list|)
 block|,
 comment|/*css: file-word */
 DECL|enumConstant|FILE_EXCEL
 name|FILE_EXCEL
 argument_list|(
-literal|"\uf2d4"
+literal|"\uf2e7"
 argument_list|)
 block|,
 comment|/*css: file-excel */
 DECL|enumConstant|FILE_POWERPOINT
 name|FILE_POWERPOINT
 argument_list|(
-literal|"\uf2de"
+literal|"\uf2f2"
 argument_list|)
 block|,
 comment|/*css: file-powerpoint */
 DECL|enumConstant|FILE_TEXT
 name|FILE_TEXT
 argument_list|(
-literal|"\uf2d2"
+literal|"\uf2e5"
 argument_list|)
 block|,
 comment|/*css: file-document */
 DECL|enumConstant|FILE_MULTIPLE
 name|FILE_MULTIPLE
 argument_list|(
-literal|"\uf2d9"
+literal|"\uf2ed"
 argument_list|)
 block|,
 comment|/*css: file-multiple */
 DECL|enumConstant|KEY_BINDINGS
 name|KEY_BINDINGS
 argument_list|(
-literal|"\uf3ad"
+literal|"\uf3c6"
 argument_list|)
 block|,
 comment|/*css: keyboard */
 DECL|enumConstant|FIND_DUPLICATES
 name|FIND_DUPLICATES
 argument_list|(
-literal|"\uf233"
+literal|"\uf23e"
 argument_list|)
 block|,
 comment|/*css: code-equal */
