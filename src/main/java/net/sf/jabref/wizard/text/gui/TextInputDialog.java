@@ -2760,7 +2760,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|insertEntry

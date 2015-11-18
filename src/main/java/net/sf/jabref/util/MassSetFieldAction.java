@@ -581,7 +581,7 @@ name|allFields
 operator|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|database
@@ -1381,7 +1381,7 @@ name|bp
 init|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 if|if

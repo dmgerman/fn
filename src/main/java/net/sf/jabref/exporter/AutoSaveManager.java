@@ -266,7 +266,7 @@ name|i
 operator|<
 name|frame
 operator|.
-name|baseCount
+name|getBasePanelCount
 argument_list|()
 condition|;
 name|i
@@ -279,7 +279,7 @@ name|add
 argument_list|(
 name|frame
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -306,7 +306,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -380,7 +380,7 @@ name|getAutoSaveFile
 argument_list|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -476,7 +476,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|==
 literal|null
@@ -495,7 +495,7 @@ name|getAutoSaveFile
 argument_list|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -550,7 +550,7 @@ name|i
 operator|<
 name|frame
 operator|.
-name|baseCount
+name|getBasePanelCount
 argument_list|()
 condition|;
 name|i
@@ -563,7 +563,7 @@ name|add
 argument_list|(
 name|frame
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)

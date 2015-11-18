@@ -395,7 +395,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|==
 literal|null
@@ -561,7 +561,7 @@ name|waitForFileLock
 argument_list|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 literal|10
@@ -592,7 +592,7 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -847,7 +847,7 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getAbsolutePath
@@ -869,7 +869,7 @@ literal|" '"
 operator|+
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getPath
@@ -942,7 +942,7 @@ operator|||
 operator|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|==
 literal|null
@@ -975,7 +975,7 @@ name|waitForFileLock
 argument_list|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 literal|10
@@ -1000,7 +1000,7 @@ name|saveDatabase
 argument_list|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 literal|false
@@ -2089,7 +2089,7 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|)
 argument_list|)

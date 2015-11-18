@@ -1474,7 +1474,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|getAutoCompleters
@@ -1679,7 +1679,7 @@ name|bp
 init|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 if|if
@@ -2378,7 +2378,7 @@ name|bp
 init|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 name|BibtexEntry

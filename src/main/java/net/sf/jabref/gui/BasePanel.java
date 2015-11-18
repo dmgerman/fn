@@ -1702,7 +1702,7 @@ name|title
 decl_stmt|;
 if|if
 condition|(
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|==
 literal|null
@@ -1743,11 +1743,13 @@ else|else
 block|{
 name|title
 operator|=
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getName
 argument_list|()
+operator|+
+literal|" \u2014 "
 operator|+
 literal|" ("
 operator|+
@@ -12617,7 +12619,7 @@ literal|false
 expr_stmt|;
 if|if
 condition|(
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -12631,13 +12633,13 @@ name|BasePanel
 operator|.
 name|this
 argument_list|,
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getAbsolutePath
@@ -13951,7 +13953,7 @@ name|BasePanel
 operator|.
 name|this
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -14023,7 +14025,7 @@ name|this
 argument_list|,
 name|sidePaneManager
 argument_list|,
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 name|scanner
@@ -14062,7 +14064,7 @@ name|BasePanel
 operator|.
 name|this
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -14077,7 +14079,7 @@ name|BasePanel
 operator|.
 name|this
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 literal|10
@@ -14157,7 +14159,7 @@ name|info
 argument_list|(
 literal|"File '"
 operator|+
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getPath
@@ -14287,10 +14289,10 @@ comment|/**      * Get the file where this database was last saved to or loaded 
 end_comment
 
 begin_function
-DECL|method|getFile ()
+DECL|method|getDatabaseFile ()
 specifier|public
 name|File
-name|getFile
+name|getDatabaseFile
 parameter_list|()
 block|{
 return|return

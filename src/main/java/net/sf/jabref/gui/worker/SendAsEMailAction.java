@@ -343,7 +343,7 @@ name|panel
 init|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 if|if
@@ -487,7 +487,7 @@ name|bes
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData

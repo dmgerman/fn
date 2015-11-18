@@ -1300,7 +1300,7 @@ if|if
 condition|(
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|==
 literal|null
@@ -1492,7 +1492,7 @@ name|frame
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|,
 name|BibtexFields
@@ -1592,7 +1592,7 @@ name|frame
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|,
 name|BibtexFields

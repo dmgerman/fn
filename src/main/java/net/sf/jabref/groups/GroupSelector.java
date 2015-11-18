@@ -4261,7 +4261,7 @@ name|selection
 init|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|getSelectedEntries

@@ -1169,7 +1169,7 @@ comment|// until committed.
 try|try
 init|(
 name|VerifyingWriter
-name|fw
+name|writer
 init|=
 name|session
 operator|.
@@ -1182,7 +1182,7 @@ name|FileActions
 operator|.
 name|writeBibFileHeader
 argument_list|(
-name|fw
+name|writer
 argument_list|,
 name|encoding
 argument_list|)
@@ -1192,7 +1192,7 @@ name|FileActions
 operator|.
 name|writePreamble
 argument_list|(
-name|fw
+name|writer
 argument_list|,
 name|database
 operator|.
@@ -1205,7 +1205,7 @@ name|FileActions
 operator|.
 name|writeStrings
 argument_list|(
-name|fw
+name|writer
 argument_list|,
 name|database
 argument_list|)
@@ -1249,22 +1249,22 @@ decl_stmt|;
 for|for
 control|(
 name|BibtexEntry
-name|be
+name|entry
 range|:
 name|sorter
 control|)
 block|{
 name|exceptionCause
 operator|=
-name|be
+name|entry
 expr_stmt|;
 comment|// Check if we must write the type definition for this
 comment|// entry, as well. Our criterion is that all non-standard
 comment|// types (*not* customized standard types) must be written.
 name|EntryType
-name|tp
+name|entryType
 init|=
-name|be
+name|entry
 operator|.
 name|getType
 argument_list|()
@@ -1275,7 +1275,7 @@ name|EntryTypes
 operator|.
 name|getStandardType
 argument_list|(
-name|tp
+name|entryType
 operator|.
 name|getName
 argument_list|()
@@ -1288,12 +1288,12 @@ name|types
 operator|.
 name|put
 argument_list|(
-name|tp
+name|entryType
 operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|tp
+name|entryType
 argument_list|)
 expr_stmt|;
 block|}
@@ -1312,7 +1312,7 @@ name|FileActions
 operator|.
 name|nonZeroField
 argument_list|(
-name|be
+name|entry
 argument_list|,
 name|BibtexFields
 operator|.
@@ -1334,7 +1334,7 @@ name|FileActions
 operator|.
 name|nonZeroField
 argument_list|(
-name|be
+name|entry
 argument_list|,
 name|BibtexFields
 operator|.
@@ -1356,12 +1356,12 @@ name|bibtexEntryWriter
 operator|.
 name|write
 argument_list|(
-name|be
+name|entry
 argument_list|,
-name|fw
+name|writer
 argument_list|)
 expr_stmt|;
-name|fw
+name|writer
 operator|.
 name|write
 argument_list|(
@@ -1384,7 +1384,7 @@ name|metaData
 operator|.
 name|writeMetaData
 argument_list|(
-name|fw
+name|writer
 argument_list|)
 expr_stmt|;
 block|}
@@ -1445,10 +1445,10 @@ name|save
 argument_list|(
 name|tp
 argument_list|,
-name|fw
+name|writer
 argument_list|)
 expr_stmt|;
-name|fw
+name|writer
 operator|.
 name|write
 argument_list|(

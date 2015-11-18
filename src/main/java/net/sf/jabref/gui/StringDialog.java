@@ -1137,7 +1137,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -1153,7 +1153,7 @@ literal|": "
 operator|+
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getName

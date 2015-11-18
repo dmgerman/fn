@@ -1356,7 +1356,7 @@ name|this
 operator|.
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|!=
 literal|null
@@ -1368,7 +1368,7 @@ name|this
 operator|.
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|updateSearchManager
@@ -2981,7 +2981,7 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|mainTable
@@ -3130,7 +3130,7 @@ name|p
 init|=
 name|frame
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -3283,7 +3283,7 @@ name|p
 init|=
 name|frame
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)

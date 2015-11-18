@@ -237,7 +237,7 @@ name|first
 init|=
 name|frame
 operator|.
-name|baseCount
+name|getBasePanelCount
 argument_list|()
 operator|==
 literal|0
@@ -467,7 +467,7 @@ name|pr
 argument_list|,
 name|frame
 operator|.
-name|baseCount
+name|getBasePanelCount
 argument_list|()
 operator|-
 literal|1
@@ -741,7 +741,7 @@ expr_stmt|;
 block|}
 name|frame
 operator|.
-name|showBaseAt
+name|showBasePanelAt
 argument_list|(
 name|location
 operator|.

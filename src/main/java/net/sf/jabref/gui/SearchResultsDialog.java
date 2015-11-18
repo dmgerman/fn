@@ -1214,7 +1214,7 @@ name|trbe
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2871,7 +2871,7 @@ if|if
 condition|(
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|!=
 literal|null
@@ -2880,7 +2880,7 @@ block|{
 return|return
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|tableFormat

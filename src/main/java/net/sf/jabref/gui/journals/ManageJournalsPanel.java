@@ -2826,7 +2826,7 @@ name|i
 operator|<
 name|frame
 operator|.
-name|baseCount
+name|getBasePanelCount
 argument_list|()
 condition|;
 name|i
@@ -2835,7 +2835,7 @@ control|)
 block|{
 name|frame
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)

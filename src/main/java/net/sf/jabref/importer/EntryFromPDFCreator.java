@@ -371,14 +371,14 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|,
 name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|mainTable

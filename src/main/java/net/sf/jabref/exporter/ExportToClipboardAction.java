@@ -342,7 +342,7 @@ name|panel
 init|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 if|if
@@ -589,7 +589,7 @@ name|fileDirForDatabase
 operator|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData
@@ -611,7 +611,7 @@ name|databaseFile
 operator|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData

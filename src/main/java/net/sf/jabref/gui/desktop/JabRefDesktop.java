@@ -2153,7 +2153,7 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|undoManager
@@ -2165,7 +2165,7 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|markBaseChanged

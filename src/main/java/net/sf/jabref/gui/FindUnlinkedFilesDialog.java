@@ -2712,7 +2712,7 @@ name|database
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|,
 name|entryType
@@ -2918,7 +2918,7 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|markBaseChanged
@@ -5488,7 +5488,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData

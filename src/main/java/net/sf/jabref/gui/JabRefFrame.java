@@ -1239,7 +1239,7 @@ name|check
 operator|.
 name|checkBibtexDatabase
 argument_list|(
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|database
@@ -1258,7 +1258,7 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|,
 name|Localization
@@ -1448,7 +1448,7 @@ index|[
 literal|1
 index|]
 decl_stmt|;
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|editEntryByKeyAndFocusField
@@ -5302,7 +5302,7 @@ expr_stmt|;
 name|BasePanel
 name|bp
 init|=
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 if|if
@@ -5548,7 +5548,7 @@ comment|// Set window title:
 name|BasePanel
 name|bp
 init|=
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 if|if
@@ -5583,7 +5583,7 @@ if|if
 condition|(
 name|bp
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -5599,7 +5599,7 @@ literal|" - "
 operator|+
 name|bp
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getPath
@@ -5776,7 +5776,7 @@ name|bp
 init|=
 name|this
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -5786,7 +5786,7 @@ condition|(
 operator|(
 name|bp
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -5794,7 +5794,7 @@ operator|)
 operator|&&
 name|bp
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|equals
@@ -6034,13 +6034,13 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|!=
 literal|null
 condition|)
 block|{
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|saveDividerLocation
@@ -6262,7 +6262,7 @@ comment|// Let the search interface store changes to prefs.
 comment|// But which one? Let's use the one that is visible.
 if|if
 condition|(
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|!=
 literal|null
@@ -6369,7 +6369,7 @@ control|)
 block|{
 if|if
 condition|(
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -6417,12 +6417,12 @@ name|filename
 decl_stmt|;
 if|if
 condition|(
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -6430,12 +6430,12 @@ condition|)
 block|{
 name|filename
 operator|=
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getAbsolutePath
@@ -6531,14 +6531,14 @@ block|{
 comment|// The user wants to save.
 try|try
 block|{
-comment|//basePanel().runCommand("save");
+comment|//getCurrentBasePanel().runCommand("save");
 name|SaveDatabaseAction
 name|saveAction
 init|=
 operator|new
 name|SaveDatabaseAction
 argument_list|(
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -6597,12 +6597,12 @@ block|}
 block|}
 if|if
 condition|(
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -6612,12 +6612,12 @@ name|filenames
 operator|.
 name|add
 argument_list|(
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getAbsolutePath
@@ -6652,7 +6652,7 @@ control|)
 block|{
 if|if
 condition|(
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -7241,10 +7241,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns the indexed BasePanel.      *      * @param i Index of base      */
-DECL|method|baseAt (int i)
+DECL|method|getBasePanelAt (int i)
 specifier|public
 name|BasePanel
-name|baseAt
+name|getBasePanelAt
 parameter_list|(
 name|int
 name|i
@@ -7262,10 +7262,10 @@ name|i
 argument_list|)
 return|;
 block|}
-DECL|method|showBaseAt (int i)
+DECL|method|showBasePanelAt (int i)
 specifier|public
 name|void
-name|showBaseAt
+name|showBasePanelAt
 parameter_list|(
 name|int
 name|i
@@ -7297,10 +7297,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns the currently viewed BasePanel.      */
-DECL|method|basePanel ()
+DECL|method|getCurrentBasePanel ()
 specifier|public
 name|BasePanel
-name|basePanel
+name|getCurrentBasePanel
 parameter_list|()
 block|{
 return|return
@@ -7314,10 +7314,10 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return the BasePanel count.      */
-DECL|method|baseCount ()
+DECL|method|getBasePanelCount ()
 specifier|public
 name|int
-name|baseCount
+name|getBasePanelCount
 parameter_list|()
 block|{
 return|return
@@ -9525,7 +9525,7 @@ comment|// Add the entries to the open tab.
 name|BasePanel
 name|panel
 init|=
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 if|if
@@ -10221,7 +10221,7 @@ name|i
 operator|++
 control|)
 block|{
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -10673,7 +10673,7 @@ block|{
 name|BasePanel
 name|bf
 init|=
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -11314,7 +11314,7 @@ literal|true
 decl_stmt|;
 if|if
 condition|(
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|==
 literal|null
@@ -11326,7 +11326,7 @@ comment|// nbatada nov 7
 block|}
 if|if
 condition|(
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|isBaseChanged
@@ -11406,7 +11406,7 @@ init|=
 operator|new
 name|SaveDatabaseAction
 argument_list|(
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -11471,7 +11471,7 @@ block|{
 name|BasePanel
 name|pan
 init|=
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 name|pan
@@ -11756,7 +11756,7 @@ name|i
 operator|++
 control|)
 block|{
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -12240,7 +12240,7 @@ block|{
 comment|// The user wants to save.
 try|try
 block|{
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|runCommand
@@ -12263,12 +12263,12 @@ block|}
 block|}
 if|if
 condition|(
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -12278,12 +12278,12 @@ name|filenames
 operator|.
 name|add
 argument_list|(
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getPath
@@ -12552,12 +12552,12 @@ control|)
 block|{
 if|if
 condition|(
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -12567,12 +12567,12 @@ name|currentFiles
 operator|.
 name|add
 argument_list|(
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getPath
@@ -13329,7 +13329,7 @@ name|propertiesDialog
 operator|.
 name|setPanel
 argument_list|(
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -13416,7 +13416,7 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -13428,7 +13428,7 @@ name|bibtexKeyPatternDialog
 operator|.
 name|setPanel
 argument_list|(
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -13568,14 +13568,14 @@ literal|0
 init|;
 name|i
 operator|<
-name|baseCount
+name|getBasePanelCount
 argument_list|()
 condition|;
 name|i
 operator|++
 control|)
 block|{
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -13710,14 +13710,14 @@ literal|0
 init|;
 name|i
 operator|<
-name|baseCount
+name|getBasePanelCount
 argument_list|()
 condition|;
 name|i
 operator|++
 control|)
 block|{
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)

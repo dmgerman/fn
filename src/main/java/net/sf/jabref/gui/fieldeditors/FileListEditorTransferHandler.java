@@ -717,7 +717,7 @@ name|frame
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|)
 expr_stmt|;

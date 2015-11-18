@@ -788,7 +788,7 @@ name|bp
 init|=
 name|frame
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -798,7 +798,7 @@ condition|(
 operator|(
 name|bp
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -806,7 +806,7 @@ operator|)
 operator|&&
 name|bp
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|equals
@@ -948,7 +948,7 @@ literal|"File '%0' is already open."
 argument_list|,
 name|toRaise
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getPath
