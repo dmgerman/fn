@@ -472,11 +472,12 @@ name|database
 parameter_list|)
 block|{
 return|return
+name|allFieldsPresent
+argument_list|(
 name|type
 operator|.
-name|hasAllRequiredFields
-argument_list|(
-name|this
+name|getRequiredFields
+argument_list|()
 argument_list|,
 name|database
 argument_list|)

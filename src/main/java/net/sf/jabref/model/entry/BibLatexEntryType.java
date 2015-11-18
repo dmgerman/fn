@@ -20,6 +20,22 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -226,6 +242,32 @@ name|fieldNames
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
+specifier|public
+name|boolean
+name|hasAllRequiredFields
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
+parameter_list|)
+block|{
+return|return
+name|entry
+operator|.
+name|allFieldsPresent
+argument_list|(
+name|getRequiredFields
+argument_list|()
+argument_list|,
+name|database
+argument_list|)
+return|;
 block|}
 DECL|method|getPrimaryOptionalFields ()
 specifier|public
