@@ -371,7 +371,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Misc"
+literal|"Unknown"
 argument_list|,
 name|layout
 argument_list|(
