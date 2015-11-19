@@ -110,11 +110,6 @@ specifier|public
 class|class
 name|BibtexEntryTests
 block|{
-DECL|field|entry
-specifier|private
-name|BibtexEntry
-name|entry
-decl_stmt|;
 annotation|@
 name|Before
 DECL|method|setup ()
@@ -141,12 +136,13 @@ name|void
 name|testDefaultConstructor
 parameter_list|()
 block|{
+name|BibtexEntry
 name|entry
-operator|=
+init|=
 operator|new
 name|BibtexEntry
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 block|}
 annotation|@
 name|Test
@@ -273,10 +269,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAllFieldsPresentDefault ()
+DECL|method|allFieldsPresentDefault ()
 specifier|public
 name|void
-name|testAllFieldsPresentDefault
+name|allFieldsPresentDefault
 parameter_list|()
 block|{
 name|BibtexEntry
@@ -382,10 +378,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testAllFieldsPresentOr ()
+DECL|method|allFieldsPresentOr ()
 specifier|public
 name|void
-name|testAllFieldsPresentOr
+name|allFieldsPresentOr
 parameter_list|()
 block|{
 name|BibtexEntry
@@ -485,10 +481,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testhasAllRequiredFields ()
+DECL|method|hasAllRequiredFields ()
 specifier|public
 name|void
-name|testhasAllRequiredFields
+name|hasAllRequiredFields
 parameter_list|()
 block|{
 name|BibtexEntry
