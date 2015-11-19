@@ -1489,7 +1489,7 @@ name|t
 operator|=
 name|BibtexEntryTypes
 operator|.
-name|OTHER
+name|MISC
 expr_stmt|;
 block|}
 name|BibtexEntry

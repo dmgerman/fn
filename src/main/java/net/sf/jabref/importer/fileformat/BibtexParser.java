@@ -4032,7 +4032,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// migrate other
 name|_pr
 operator|.
 name|addWarning
@@ -4067,7 +4066,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Type set to 'other'"
+literal|"Type set to '@MISC'"
 argument_list|)
 operator|+
 literal|"."
@@ -4079,7 +4078,7 @@ name|setType
 argument_list|(
 name|BibtexEntryTypes
 operator|.
-name|OTHER
+name|MISC
 argument_list|)
 expr_stmt|;
 block|}

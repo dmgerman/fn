@@ -6210,7 +6210,7 @@ name|bibtex
 init|=
 name|BibtexEntryTypes
 operator|.
-name|OTHER
+name|MISC
 decl_stmt|;
 if|if
 condition|(
@@ -6386,7 +6386,7 @@ name|bibtex
 operator|=
 name|BibtexEntryTypes
 operator|.
-name|OTHER
+name|MISC
 expr_stmt|;
 block|}
 else|else

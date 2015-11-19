@@ -369,7 +369,7 @@ name|id
 argument_list|,
 name|BibtexEntryTypes
 operator|.
-name|OTHER
+name|MISC
 argument_list|)
 expr_stmt|;
 block|}
