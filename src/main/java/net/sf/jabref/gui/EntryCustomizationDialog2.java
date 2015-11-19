@@ -2398,7 +2398,7 @@ name|setType
 argument_list|(
 name|BibtexEntryTypes
 operator|.
-name|TYPELESS
+name|OTHER
 argument_list|)
 expr_stmt|;
 block|}
