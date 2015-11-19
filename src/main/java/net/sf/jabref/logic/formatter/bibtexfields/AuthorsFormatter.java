@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.util.strings
+DECL|package|net.sf.jabref.logic.formatter.bibtexfields
 package|package
 name|net
 operator|.
@@ -14,11 +14,27 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|formatter
 operator|.
-name|strings
+name|bibtexfields
 package|;
 end_package
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|formatter
+operator|.
+name|Formatter
+import|;
+end_import
 
 begin_import
 import|import
@@ -45,14 +61,16 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class containing method(s) for normalizing author lists to BibTeX format.  */
+comment|/**  * Class for normalizing author lists to BibTeX format.  */
 end_comment
 
 begin_class
-DECL|class|NameListNormalizer
+DECL|class|AuthorsFormatter
 specifier|public
 class|class
-name|NameListNormalizer
+name|AuthorsFormatter
+implements|implements
+name|Formatter
 block|{
 DECL|field|lastFF
 specifier|private
@@ -124,14 +142,26 @@ argument_list|(
 literal|"(\\p{javaUpperCase}[\\p{javaLowerCase}]*)"
 argument_list|)
 decl_stmt|;
-DECL|method|normalizeAuthorList (String in)
+annotation|@
+name|Override
+DECL|method|getName ()
 specifier|public
-specifier|static
 name|String
-name|normalizeAuthorList
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"BibTex authors format"
+return|;
+block|}
+comment|/**      *      */
+DECL|method|format (String value)
+specifier|public
+name|String
+name|format
 parameter_list|(
 name|String
-name|in
+name|value
 parameter_list|)
 block|{
 name|boolean
@@ -140,9 +170,9 @@ init|=
 literal|false
 decl_stmt|;
 comment|// String can contain newlines. Convert each to a space
-name|in
+name|value
 operator|=
-name|in
+name|value
 operator|.
 name|replaceAll
 argument_list|(
@@ -155,7 +185,7 @@ name|String
 index|[]
 name|authors
 init|=
-name|in
+name|value
 operator|.
 name|split
 argument_list|(
@@ -186,7 +216,7 @@ name|String
 index|[]
 name|authors2
 init|=
-name|in
+name|value
 operator|.
 name|split
 argument_list|(
@@ -211,7 +241,7 @@ else|else
 block|{
 name|authors2
 operator|=
-name|in
+name|value
 operator|.
 name|split
 argument_list|(
@@ -547,7 +577,7 @@ block|{
 name|String
 name|norm
 init|=
-name|NameListNormalizer
+name|AuthorsFormatter
 operator|.
 name|normalizeName
 argument_list|(
@@ -604,7 +634,7 @@ block|{
 name|Matcher
 name|matcher
 init|=
-name|NameListNormalizer
+name|AuthorsFormatter
 operator|.
 name|lastFF
 operator|.
@@ -719,7 +749,7 @@ return|;
 block|}
 name|matcher
 operator|=
-name|NameListNormalizer
+name|AuthorsFormatter
 operator|.
 name|lastFdotF
 operator|.
@@ -841,7 +871,7 @@ return|;
 block|}
 name|matcher
 operator|=
-name|NameListNormalizer
+name|AuthorsFormatter
 operator|.
 name|FFlast
 operator|.
@@ -956,7 +986,7 @@ return|;
 block|}
 name|matcher
 operator|=
-name|NameListNormalizer
+name|AuthorsFormatter
 operator|.
 name|FdotFlast
 operator|.
@@ -1275,7 +1305,7 @@ comment|// Only a single part. Check if it looks like a name or initials:
 name|Matcher
 name|nameMatcher
 init|=
-name|NameListNormalizer
+name|AuthorsFormatter
 operator|.
 name|SINGLE_NAME
 operator|.
@@ -1420,7 +1450,7 @@ control|)
 block|{
 name|matcher
 operator|=
-name|NameListNormalizer
+name|AuthorsFormatter
 operator|.
 name|SINGLE_NAME
 operator|.
