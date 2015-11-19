@@ -1684,7 +1684,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel The BasePanel where the database is shown.      * @param pr The result of the bib file parse operation.      */
+comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel The BasePanel where the database is shown.      * @param pr    The result of the bib file parse operation.      */
 DECL|method|performPostOpenActions (BasePanel panel, ParserResult pr, boolean mustRaisePanel)
 specifier|public
 specifier|static
@@ -2153,10 +2153,10 @@ name|pr
 operator|.
 name|setEncoding
 argument_list|(
+name|getEncodingFromStream
+argument_list|(
 name|reader
-operator|.
-name|getEncoding
-argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|pr
@@ -2233,6 +2233,43 @@ expr_stmt|;
 block|}
 return|return
 name|pr
+return|;
+block|}
+block|}
+DECL|method|getEncodingFromStream (InputStreamReader reader)
+specifier|private
+specifier|static
+name|String
+name|getEncodingFromStream
+parameter_list|(
+name|InputStreamReader
+name|reader
+parameter_list|)
+block|{
+name|String
+name|encoding
+init|=
+name|reader
+operator|.
+name|getEncoding
+argument_list|()
+decl_stmt|;
+comment|// compatibility hack to transfrom the UTF8 string to the version we expect
+if|if
+condition|(
+name|encoding
+operator|==
+literal|"UTF8"
+condition|)
+block|{
+return|return
+literal|"UTF-8"
+return|;
+block|}
+else|else
+block|{
+return|return
+name|encoding
 return|;
 block|}
 block|}
