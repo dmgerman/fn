@@ -239,6 +239,12 @@ name|priOpt
 operator|=
 name|priOpt
 expr_stmt|;
+name|this
+operator|.
+name|required
+operator|=
+name|required
+expr_stmt|;
 name|optional
 operator|=
 name|EntryUtil
