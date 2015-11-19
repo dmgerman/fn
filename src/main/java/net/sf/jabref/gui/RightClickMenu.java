@@ -214,11 +214,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|bibtex
 operator|.
-name|entry
-operator|.
-name|BibtexEntryType
+name|EntryTypes
 import|;
 end_import
 
@@ -230,9 +228,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
-name|EntryTypes
+name|entry
+operator|.
+name|EntryType
 import|;
 end_import
 
@@ -2833,7 +2833,7 @@ name|AbstractAction
 block|{
 DECL|field|type
 specifier|final
-name|BibtexEntryType
+name|EntryType
 name|type
 decl_stmt|;
 DECL|field|panel
@@ -2841,11 +2841,11 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|method|ChangeTypeAction (BibtexEntryType type, BasePanel bp)
+DECL|method|ChangeTypeAction (EntryType type, BasePanel bp)
 specifier|public
 name|ChangeTypeAction
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|,
 name|BasePanel

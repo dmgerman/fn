@@ -706,6 +706,22 @@ name|model
 operator|.
 name|entry
 operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|IdGenerator
 import|;
 end_import
@@ -923,22 +939,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
 import|;
 end_import
 
@@ -7319,7 +7319,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|tp
 init|=
 name|etd
@@ -9350,12 +9350,12 @@ comment|/**      * This method is called from JabRefFrame when the user wants to
 end_comment
 
 begin_function
-DECL|method|newEntry (BibtexEntryType type)
+DECL|method|newEntry (EntryType type)
 specifier|public
 name|BibtexEntry
 name|newEntry
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -12818,7 +12818,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (BibtexEntry entry, BibtexEntryType type)
+DECL|method|changeType (BibtexEntry entry, EntryType type)
 specifier|public
 name|void
 name|changeType
@@ -12826,7 +12826,7 @@ parameter_list|(
 name|BibtexEntry
 name|entry
 parameter_list|,
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -12846,12 +12846,12 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (BibtexEntryType type)
+DECL|method|changeType (EntryType type)
 specifier|public
 name|void
 name|changeType
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -12875,7 +12875,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (BibtexEntry[] bes, BibtexEntryType type)
+DECL|method|changeType (BibtexEntry[] bes, EntryType type)
 specifier|private
 name|void
 name|changeType
@@ -12884,7 +12884,7 @@ name|BibtexEntry
 index|[]
 name|bes
 parameter_list|,
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|)
 block|{

@@ -72,22 +72,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|CustomEntryType
 import|;
 end_import
@@ -119,6 +103,22 @@ operator|.
 name|bibtex
 operator|.
 name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
 import|;
 end_import
 
@@ -357,7 +357,7 @@ block|{
 comment|// Import
 for|for
 control|(
-name|BibtexEntryType
+name|EntryType
 name|typ
 range|:
 name|pr

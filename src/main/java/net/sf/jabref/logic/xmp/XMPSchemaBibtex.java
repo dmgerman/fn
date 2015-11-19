@@ -1463,7 +1463,7 @@ argument_list|(
 literal|"entrytype"
 argument_list|)
 decl_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|t
 decl_stmt|;
 if|if

@@ -190,6 +190,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -288,7 +300,7 @@ name|id
 decl_stmt|;
 DECL|field|type
 specifier|private
-name|BibtexEntryType
+name|EntryType
 name|type
 decl_stmt|;
 DECL|field|fields
@@ -361,14 +373,14 @@ name|OTHER
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BibtexEntry (String id, BibtexEntryType type)
+DECL|method|BibtexEntry (String id, EntryType type)
 specifier|public
 name|BibtexEntry
 parameter_list|(
 name|String
 name|id
 parameter_list|,
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -460,11 +472,12 @@ name|database
 parameter_list|)
 block|{
 return|return
+name|allFieldsPresent
+argument_list|(
 name|type
 operator|.
-name|hasAllRequiredFields
-argument_list|(
-name|this
+name|getRequiredFields
+argument_list|()
 argument_list|,
 name|database
 argument_list|)
@@ -473,7 +486,7 @@ block|}
 comment|/**      * Returns this entry's type.      */
 DECL|method|getType ()
 specifier|public
-name|BibtexEntryType
+name|EntryType
 name|getType
 parameter_list|()
 block|{
@@ -482,12 +495,12 @@ name|type
 return|;
 block|}
 comment|/**      * Sets this entry's type.      */
-DECL|method|setType (BibtexEntryType type)
+DECL|method|setType (EntryType type)
 specifier|public
 name|void
 name|setType
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -500,7 +513,7 @@ argument_list|,
 literal|"Every BibtexEntry must have a type.  Instead of null, use type OTHER"
 argument_list|)
 expr_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|oldType
 init|=
 name|this
@@ -1125,6 +1138,34 @@ name|KEY_FIELD
 argument_list|)
 return|;
 block|}
+DECL|method|hasCiteKey ()
+specifier|public
+name|boolean
+name|hasCiteKey
+parameter_list|()
+block|{
+if|if
+condition|(
+name|getCiteKey
+argument_list|()
+operator|==
+literal|null
+operator|||
+name|getCiteKey
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+return|return
+literal|true
+return|;
+block|}
 comment|/**      * Sets a number of fields simultaneously. The given HashMap contains field      * names as keys, each mapped to the value to set.      * WARNING: this method does not notify change listeners, so it should *NOT*      * be used for entries that are being displayed in the GUI. Furthermore, it      * does not check values for content, so e.g. empty strings will be set as such.      */
 DECL|method|setField (Map<String, String> fields)
 specifier|public
@@ -1342,6 +1383,12 @@ name|BibtexDatabase
 name|database
 parameter_list|)
 block|{
+specifier|final
+name|String
+name|orSeparator
+init|=
+literal|"/"
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -1349,6 +1396,46 @@ name|field
 range|:
 name|allFields
 control|)
+block|{
+comment|// OR fields
+if|if
+condition|(
+name|field
+operator|.
+name|contains
+argument_list|(
+name|orSeparator
+argument_list|)
+condition|)
+block|{
+name|String
+index|[]
+name|altFields
+init|=
+name|field
+operator|.
+name|split
+argument_list|(
+name|orSeparator
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|atLeastOnePresent
+argument_list|(
+name|altFields
+argument_list|,
+name|database
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+else|else
 block|{
 if|if
 condition|(
@@ -1369,6 +1456,7 @@ block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 block|}
 return|return
@@ -1410,13 +1498,14 @@ name|database
 argument_list|)
 return|;
 block|}
-DECL|method|atLeastOnePresent (String[] oneFields, BibtexDatabase database)
+DECL|method|atLeastOnePresent (String[] fields, BibtexDatabase database)
+specifier|private
 name|boolean
 name|atLeastOnePresent
 parameter_list|(
 name|String
 index|[]
-name|oneFields
+name|fields
 parameter_list|,
 name|BibtexDatabase
 name|database
@@ -1427,7 +1516,7 @@ control|(
 name|String
 name|field
 range|:
-name|oneFields
+name|fields
 control|)
 block|{
 name|String

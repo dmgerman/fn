@@ -456,7 +456,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|types
 init|=

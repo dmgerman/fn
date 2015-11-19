@@ -178,6 +178,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -291,22 +307,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
 import|;
 end_import
 
@@ -1958,7 +1958,7 @@ block|}
 block|}
 block|}
 comment|// clean up publication field
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 name|entry
@@ -3093,7 +3093,7 @@ argument_list|,
 name|endIndex
 argument_list|)
 decl_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 literal|null

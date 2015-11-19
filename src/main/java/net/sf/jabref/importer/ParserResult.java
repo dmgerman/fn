@@ -116,6 +116,22 @@ name|MetaData
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
 begin_class
 DECL|class|ParserResult
 specifier|public
@@ -174,7 +190,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|entryTypes
 decl_stmt|;
@@ -280,13 +296,13 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ParserResult (BibtexDatabase base, MetaData metaData, HashMap<String, BibtexEntryType> entryTypes)
+DECL|method|ParserResult (BibtexDatabase base, MetaData metaData, HashMap<String, EntryType> entryTypes)
 specifier|public
 name|ParserResult
 parameter_list|(
@@ -300,7 +316,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|entryTypes
 parameter_list|)
@@ -475,7 +491,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|getEntryTypes
 parameter_list|()

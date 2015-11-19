@@ -728,6 +728,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -2631,7 +2647,7 @@ literal|""
 argument_list|)
 expr_stmt|;
 specifier|final
-name|BibtexEntryType
+name|EntryType
 name|entryType
 init|=
 operator|(
@@ -5746,7 +5762,7 @@ parameter_list|()
 block|{
 name|Iterator
 argument_list|<
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|iterator
 init|=
@@ -5822,13 +5838,13 @@ name|BibtexEntryTypeWrapper
 block|{
 DECL|field|entryType
 specifier|final
-name|BibtexEntryType
+name|EntryType
 name|entryType
 decl_stmt|;
-DECL|method|BibtexEntryTypeWrapper (BibtexEntryType bibtexType)
+DECL|method|BibtexEntryTypeWrapper (EntryType bibtexType)
 name|BibtexEntryTypeWrapper
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|bibtexType
 parameter_list|)
 block|{

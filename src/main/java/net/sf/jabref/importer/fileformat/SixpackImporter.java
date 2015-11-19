@@ -132,6 +132,22 @@ name|model
 operator|.
 name|entry
 operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|IdGenerator
 import|;
 end_import
@@ -149,22 +165,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
 import|;
 end_import
 
@@ -743,7 +743,7 @@ block|{
 continue|continue;
 comment|// Avoid ArrayIndexOutOfBoundsException
 block|}
-name|BibtexEntryType
+name|EntryType
 name|typ
 init|=
 name|EntryTypes
