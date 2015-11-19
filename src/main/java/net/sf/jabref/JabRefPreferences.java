@@ -1981,6 +1981,15 @@ name|HISTORY_SIZE
 init|=
 literal|"historySize"
 decl_stmt|;
+DECL|field|RECENT_FILES
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|RECENT_FILES
+init|=
+literal|"recentFiles"
+decl_stmt|;
 DECL|field|GENERAL_FIELDS
 specifier|public
 specifier|static
