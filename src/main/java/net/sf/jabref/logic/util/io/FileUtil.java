@@ -381,6 +381,17 @@ name|tempString
 operator|.
 name|isEmpty
 argument_list|()
+operator|&&
+operator|!
+name|paths
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|pathSubstrings

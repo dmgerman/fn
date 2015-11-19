@@ -883,6 +883,11 @@ operator|.
 name|setWindowTitle
 argument_list|()
 expr_stmt|;
+name|frame
+operator|.
+name|updateAllTabTitles
+argument_list|()
+expr_stmt|;
 block|}
 elseif|else
 if|if
