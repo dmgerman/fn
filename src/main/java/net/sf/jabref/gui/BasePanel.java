@@ -120,6 +120,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|*
@@ -133,6 +145,18 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
 import|;
 end_import
 
@@ -1748,17 +1772,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" \u2014 "
-operator|+
-literal|" ("
-operator|+
-name|database
-operator|.
-name|getEntryCount
-argument_list|()
-operator|+
-literal|")"
 expr_stmt|;
 block|}
 return|return
