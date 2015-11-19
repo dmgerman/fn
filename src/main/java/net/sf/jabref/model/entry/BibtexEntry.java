@@ -510,7 +510,7 @@ name|requireNonNull
 argument_list|(
 name|type
 argument_list|,
-literal|"Every BibtexEntry must have a type.  Instead of null, use type OTHER"
+literal|"Every BibtexEntry must have a type."
 argument_list|)
 expr_stmt|;
 name|EntryType
