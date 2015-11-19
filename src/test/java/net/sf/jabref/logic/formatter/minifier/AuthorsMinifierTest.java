@@ -119,21 +119,21 @@ argument_list|)
 expr_stmt|;
 name|expectCorrect
 argument_list|(
-literal|"Simon Harrer and Jörg Lenhard"
+literal|"Simon Harrer and JÃ¶rg Lenhard"
 argument_list|,
-literal|"Simon Harrer and Jörg Lenhard"
+literal|"Simon Harrer and JÃ¶rg Lenhard"
 argument_list|)
 expr_stmt|;
 name|expectCorrect
 argument_list|(
-literal|"Simon Harrer and Jörg Lenhard and Guido Wirtz"
+literal|"Simon Harrer and JÃ¶rg Lenhard and Guido Wirtz"
 argument_list|,
 literal|"Simon Harrer and others"
 argument_list|)
 expr_stmt|;
 name|expectCorrect
 argument_list|(
-literal|"Simon Harrer and Jörg Lenhard and Guido Wirtz and others"
+literal|"Simon Harrer and JÃ¶rg Lenhard and Guido Wirtz and others"
 argument_list|,
 literal|"Simon Harrer and others"
 argument_list|)
