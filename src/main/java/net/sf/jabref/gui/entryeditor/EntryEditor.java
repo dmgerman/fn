@@ -3149,14 +3149,7 @@ name|s
 init|=
 name|Abbreviations
 operator|.
-name|journalAbbrev
-operator|.
-name|getNextAbbreviation
-argument_list|(
-name|text
-argument_list|)
-operator|.
-name|orElse
+name|toggleAbbreviation
 argument_list|(
 name|text
 argument_list|)

@@ -352,6 +352,30 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|toggleAbbreviation (String text)
+specifier|public
+specifier|static
+name|String
+name|toggleAbbreviation
+parameter_list|(
+name|String
+name|text
+parameter_list|)
+block|{
+return|return
+name|journalAbbrev
+operator|.
+name|getNextAbbreviation
+argument_list|(
+name|text
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+name|text
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
