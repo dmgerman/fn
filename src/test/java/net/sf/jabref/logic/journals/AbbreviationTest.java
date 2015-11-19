@@ -277,8 +277,16 @@ name|assertTrue
 argument_list|(
 name|abbreviation
 operator|.
-name|hasIsoAndMedlineAbbreviationsAreSame
+name|getIsoAbbreviation
 argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|abbreviation
+operator|.
+name|getMedlineAbbreviation
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
