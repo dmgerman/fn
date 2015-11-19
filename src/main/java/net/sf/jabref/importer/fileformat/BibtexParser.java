@@ -3996,8 +3996,8 @@ name|UnknownEntryType
 condition|)
 block|{
 comment|// Look up the unknown type name in our map of parsed types:
-name|Object
-name|o
+name|EntryType
+name|type
 init|=
 name|entryTypes
 operator|.
@@ -4017,19 +4017,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|type
 operator|!=
 literal|null
 condition|)
 block|{
-name|EntryType
-name|type
-init|=
-operator|(
-name|EntryType
-operator|)
-name|o
-decl_stmt|;
 name|be
 operator|.
 name|setType
@@ -4040,6 +4032,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// migrate other
 name|_pr
 operator|.
 name|addWarning

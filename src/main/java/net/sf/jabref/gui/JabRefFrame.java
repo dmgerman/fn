@@ -11078,34 +11078,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Signal closing of the current tab. Standard warnings will be given if the      * database has been changed.      */
-DECL|method|closeCurrentTab ()
-specifier|public
-name|void
-name|closeCurrentTab
-parameter_list|()
-block|{
-name|closeDatabaseAction
-operator|.
-name|actionPerformed
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Close the current tab without giving any warning if the database has been changed.      */
-DECL|method|closeCurrentTabNoWarning ()
-specifier|public
-name|void
-name|closeCurrentTabNoWarning
-parameter_list|()
-block|{
-name|closeDatabaseAction
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 comment|/**      * Creates icons for the disabled state for all JMenuItems with FontBasedIcons in the given menuElement.      * This is necessary as Swing is not able to generate default disabled icons for font based icons.      *      * @param menuElement the menuElement for which disabled icons should be generated      */
 DECL|method|createDisabledIconsForMenuEntries (MenuElement menuElement)
 specifier|public
@@ -11750,13 +11722,10 @@ operator|+
 literal|'.'
 argument_list|)
 expr_stmt|;
-comment|// FIXME: why?
-name|System
-operator|.
-name|gc
+comment|// update tab titles
+name|updateAllTabTitles
 argument_list|()
 expr_stmt|;
-comment|// Test
 block|}
 block|}
 comment|// The action for opening the preferences dialog.
