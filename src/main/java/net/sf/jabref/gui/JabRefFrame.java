@@ -222,18 +222,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -1910,16 +1898,6 @@ name|this
 argument_list|,
 literal|true
 argument_list|)
-decl_stmt|;
-specifier|private
-specifier|final
-name|AbstractAction
-DECL|field|close
-name|close
-init|=
-operator|new
-name|CloseDatabaseAction
-argument_list|()
 decl_stmt|;
 DECL|field|quit
 specifier|private
@@ -5028,6 +5006,8 @@ argument_list|,
 name|databaseProperties
 argument_list|,
 name|bibtexKeyPattern
+argument_list|,
+name|closeDatabaseAction
 argument_list|)
 expr_stmt|;
 name|MyGlassPane
@@ -8250,7 +8230,7 @@ name|file
 operator|.
 name|add
 argument_list|(
-name|close
+name|closeDatabaseAction
 argument_list|)
 expr_stmt|;
 name|file
@@ -10254,8 +10234,6 @@ name|mergeDatabaseAction
 argument_list|,
 name|newSubDatabaseAction
 argument_list|,
-name|close
-argument_list|,
 name|save
 argument_list|,
 name|saveAs
@@ -10952,9 +10930,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|file
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|uniqPath

@@ -24,30 +24,6 @@ name|awt
 operator|.
 name|event
 operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|MouseEvent
 import|;
 end_import
@@ -84,16 +60,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -109,7 +75,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Adds popup functionality to DragDropPane   *   * Code inspired by http://forums.devx.com/showthread.php?t=151270  */
+comment|/**  * Adds popup functionality to DragDropPane  *  * Code inspired by http://forums.devx.com/showthread.php?t=151270  */
 end_comment
 
 begin_class
@@ -125,7 +91,7 @@ specifier|private
 name|JPopupMenu
 name|popupMenu
 decl_stmt|;
-DECL|method|DragDropPopupPane (AbstractAction manageSelectorsAction, AbstractAction databasePropertiesAction, AbstractAction bibtexKeyPatternAction)
+DECL|method|DragDropPopupPane (AbstractAction manageSelectorsAction, AbstractAction databasePropertiesAction, AbstractAction bibtexKeyPatternAction, AbstractAction closeDatabaseAction)
 specifier|public
 name|DragDropPopupPane
 parameter_list|(
@@ -137,6 +103,9 @@ name|databasePropertiesAction
 parameter_list|,
 name|AbstractAction
 name|bibtexKeyPatternAction
+parameter_list|,
+name|AbstractAction
+name|closeDatabaseAction
 parameter_list|)
 block|{
 name|super
@@ -180,10 +149,12 @@ argument_list|,
 name|databasePropertiesAction
 argument_list|,
 name|bibtexKeyPatternAction
+argument_list|,
+name|closeDatabaseAction
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|initPopupMenu (AbstractAction manageSelectorsAction, AbstractAction databasePropertiesAction, AbstractAction bibtexKeyPatternAction)
+DECL|method|initPopupMenu (AbstractAction manageSelectorsAction, AbstractAction databasePropertiesAction, AbstractAction bibtexKeyPatternAction, AbstractAction closeDatabaseAction)
 specifier|private
 name|void
 name|initPopupMenu
@@ -196,6 +167,9 @@ name|databasePropertiesAction
 parameter_list|,
 name|AbstractAction
 name|bibtexKeyPatternAction
+parameter_list|,
+name|AbstractAction
+name|closeDatabaseAction
 parameter_list|)
 block|{
 name|popupMenu
@@ -315,44 +289,7 @@ name|closeBtn
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-name|closeSelectedTab
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+name|closeDatabaseAction
 argument_list|)
 expr_stmt|;
 name|popupMenu
@@ -374,6 +311,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|e
 operator|.
 name|getButton
@@ -382,13 +320,16 @@ operator|!=
 name|MouseEvent
 operator|.
 name|BUTTON1
+operator|)
 operator|&&
+operator|(
 name|e
 operator|.
 name|getClickCount
 argument_list|()
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
 comment|// if is right-click
