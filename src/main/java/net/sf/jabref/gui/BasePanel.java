@@ -120,6 +120,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|*
@@ -133,6 +145,18 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
 import|;
 end_import
 
@@ -1194,7 +1218,7 @@ literal|3
 decl_stmt|;
 comment|/*      * The database shown in this panel.      */
 DECL|field|database
-specifier|public
+specifier|private
 name|BibtexDatabase
 name|database
 decl_stmt|;
@@ -1691,6 +1715,69 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|getTabTitle ()
+specifier|public
+name|String
+name|getTabTitle
+parameter_list|()
+block|{
+name|String
+name|title
+decl_stmt|;
+if|if
+condition|(
+name|getDatabaseFile
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+name|title
+operator|=
+name|GUIGlobals
+operator|.
+name|untitledTitle
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|database
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// if the database is not empty and no file is assigned,
+comment|// the database came from an import and has to be treated somehow
+comment|// -> mark as changed
+comment|// This also happens internally at basepanel to ensure consistency line 224
+name|title
+operator|=
+name|title
+operator|+
+literal|'*'
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|title
+operator|=
+name|getDatabaseFile
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|title
+return|;
+block|}
 DECL|method|isBaseChanged ()
 specifier|public
 name|boolean
@@ -1711,7 +1798,6 @@ return|return
 name|mode
 return|;
 block|}
-comment|//Done by MrDlib
 DECL|method|setMode (int mode)
 specifier|public
 name|void
@@ -1728,7 +1814,6 @@ operator|=
 name|mode
 expr_stmt|;
 block|}
-comment|//Done by MrDlib
 DECL|method|database ()
 specifier|public
 name|BibtexDatabase
@@ -12547,7 +12632,7 @@ literal|false
 expr_stmt|;
 if|if
 condition|(
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -12561,13 +12646,13 @@ name|BasePanel
 operator|.
 name|this
 argument_list|,
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getAbsolutePath
@@ -13881,7 +13966,7 @@ name|BasePanel
 operator|.
 name|this
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -13953,7 +14038,7 @@ name|this
 argument_list|,
 name|sidePaneManager
 argument_list|,
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 name|scanner
@@ -13992,7 +14077,7 @@ name|BasePanel
 operator|.
 name|this
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -14007,7 +14092,7 @@ name|BasePanel
 operator|.
 name|this
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 literal|10
@@ -14087,7 +14172,7 @@ name|info
 argument_list|(
 literal|"File '"
 operator|+
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getPath
@@ -14217,10 +14302,10 @@ comment|/**      * Get the file where this database was last saved to or loaded 
 end_comment
 
 begin_function
-DECL|method|getFile ()
+DECL|method|getDatabaseFile ()
 specifier|public
 name|File
-name|getFile
+name|getDatabaseFile
 parameter_list|()
 block|{
 return|return

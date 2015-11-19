@@ -1164,14 +1164,14 @@ if|if
 condition|(
 name|parent
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
 operator|==
 name|parent
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 condition|)
 block|{
@@ -1530,7 +1530,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|mainTable
@@ -1542,7 +1542,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|getDatabase

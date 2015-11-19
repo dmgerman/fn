@@ -358,7 +358,7 @@ name|panel
 init|=
 name|frame
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -367,7 +367,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|==
 literal|null
@@ -375,7 +375,7 @@ condition|)
 block|{
 name|frame
 operator|.
-name|showBaseAt
+name|showBasePanelAt
 argument_list|(
 name|i
 argument_list|)

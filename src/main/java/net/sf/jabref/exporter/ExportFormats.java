@@ -1184,7 +1184,7 @@ name|selected
 init|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|getSelectedEntries
@@ -1228,7 +1228,7 @@ name|fileDirForDatabase
 operator|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData
@@ -1250,7 +1250,7 @@ name|databaseFile
 operator|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData
@@ -1333,7 +1333,7 @@ name|performExport
 argument_list|(
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|database
@@ -1341,7 +1341,7 @@ argument_list|()
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData
@@ -1354,7 +1354,7 @@ argument_list|()
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|getEncoding

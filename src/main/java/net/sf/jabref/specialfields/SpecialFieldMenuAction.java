@@ -125,7 +125,7 @@ parameter_list|)
 block|{
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|runCommand

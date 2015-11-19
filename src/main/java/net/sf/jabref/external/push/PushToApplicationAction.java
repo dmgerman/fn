@@ -262,7 +262,7 @@ name|panel
 operator|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 expr_stmt|;
 comment|// Check if a BasePanel exists:

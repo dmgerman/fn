@@ -2095,7 +2095,7 @@ operator|.
 name|style
 argument_list|)
 expr_stmt|;
-comment|//ooBase.sync(frame.basePanel().database(), style);
+comment|//ooBase.sync(frame.getCurrentBasePanel().database(), style);
 if|if
 condition|(
 operator|!
@@ -2469,10 +2469,10 @@ try|try
 block|{
 comment|//pushEntries(false, true, true);
 comment|//ooBase.testFrameHandling();
-comment|//ooBase.combineCiteMarkers(frame.basePanel().database(), style);
+comment|//ooBase.combineCiteMarkers(frame.getCurrentBasePanel().database(), style);
 comment|//insertUsingBST();
 comment|//ooBase.testFootnote();
-comment|//ooBase.refreshCiteMarkers(frame.basePanel().database(), style);
+comment|//ooBase.refreshCiteMarkers(frame.getCurrentBasePanel().database(), style);
 comment|//ooBase.createBibTextSection(true);
 comment|//ooBase.clearBibTextSectionContent();
 block|}
@@ -2915,7 +2915,7 @@ name|OpenOfficePanel
 operator|.
 name|frame
 operator|.
-name|baseCount
+name|getBasePanelCount
 argument_list|()
 condition|;
 name|i
@@ -2930,7 +2930,7 @@ name|OpenOfficePanel
 operator|.
 name|frame
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -2951,7 +2951,7 @@ name|OpenOfficePanel
 operator|.
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|database
@@ -4687,7 +4687,7 @@ name|OpenOfficePanel
 operator|.
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -4909,7 +4909,7 @@ name|OpenOfficePanel
 operator|.
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -5139,7 +5139,7 @@ name|OpenOfficePanel
 operator|.
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -5704,7 +5704,7 @@ name|OpenOfficePanel
 operator|.
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|database

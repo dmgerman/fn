@@ -4572,7 +4572,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|showBaseAt
+name|showBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -4621,9 +4621,9 @@ comment|// any post open actions need to be done. For instance, checking
 comment|// if we found new entry types that can be imported, or checking
 comment|// if the database contents should be modified due to new features
 comment|// in this version of JabRef.
-comment|// Note that we have to check whether i does not go over baseCount().
+comment|// Note that we have to check whether i does not go over getBasePanelCount().
 comment|// This is because importToOpen might have been used, which adds to
-comment|// loaded, but not to baseCount()
+comment|// loaded, but not to getBasePanelCount()
 for|for
 control|(
 name|int
@@ -4647,7 +4647,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|baseCount
+name|getBasePanelCount
 argument_list|()
 operator|)
 condition|;
@@ -4672,7 +4672,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)

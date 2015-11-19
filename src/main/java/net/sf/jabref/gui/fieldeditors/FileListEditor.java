@@ -2519,7 +2519,7 @@ expr_stmt|;
 comment|// auto download file as no file found before
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|runCommand
@@ -2648,7 +2648,7 @@ name|frame
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData

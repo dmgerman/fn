@@ -107,7 +107,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Native pin to taskbar extension for Windows.  * Only use this class after checking for OS Windows 7 and up!  *<example>OS.isWindows7OrLater()</example>  * TODO: Remove when install4j is used.  */
+comment|/**  * Native pin to taskbar extension for Windows.  * Only use this class after checking for OS Windows 7 and up!  *<example>OS.isWindows7OrLater()</example>  */
 end_comment
 
 begin_class

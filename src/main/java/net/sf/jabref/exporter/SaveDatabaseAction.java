@@ -395,7 +395,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|==
 literal|null
@@ -561,7 +561,7 @@ name|waitForFileLock
 argument_list|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 literal|10
@@ -592,7 +592,7 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -842,15 +842,12 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|getFile
-argument_list|()
-operator|.
-name|getName
+name|getTabTitle
 argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getAbsolutePath
@@ -872,7 +869,7 @@ literal|" '"
 operator|+
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getPath
@@ -884,6 +881,11 @@ expr_stmt|;
 name|frame
 operator|.
 name|setWindowTitle
+argument_list|()
+expr_stmt|;
+name|frame
+operator|.
+name|updateAllTabTitles
 argument_list|()
 expr_stmt|;
 block|}
@@ -945,7 +947,7 @@ operator|||
 operator|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|==
 literal|null
@@ -978,7 +980,7 @@ name|waitForFileLock
 argument_list|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 literal|10
@@ -1003,7 +1005,7 @@ name|saveDatabase
 argument_list|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 literal|false
@@ -2092,7 +2094,7 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|)
 argument_list|)

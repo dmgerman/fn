@@ -295,7 +295,8 @@ name|keys
 init|=
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|getKeySet
 argument_list|()
@@ -348,7 +349,8 @@ index|]
 operator|=
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|getEntryById
 argument_list|(
@@ -790,7 +792,8 @@ control|)
 block|{
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|removeEntry
 argument_list|(
@@ -809,7 +812,8 @@ name|UndoableRemoveEntry
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 argument_list|,
 name|entry
 argument_list|,
@@ -844,7 +848,8 @@ control|)
 block|{
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|insertEntry
 argument_list|(
@@ -860,7 +865,8 @@ name|UndoableInsertEntry
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 argument_list|,
 name|entry
 argument_list|,

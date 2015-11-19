@@ -2062,7 +2062,7 @@ if|if
 condition|(
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|!=
 literal|null
@@ -2070,7 +2070,7 @@ condition|)
 block|{
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|mainTable

@@ -330,7 +330,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|getSelectedEntries
@@ -349,7 +349,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|output
@@ -411,7 +411,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData
@@ -459,7 +459,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|undoManager
@@ -473,7 +473,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|markBaseChanged
