@@ -3996,13 +3996,9 @@ name|UnknownEntryType
 condition|)
 block|{
 comment|// Look up the unknown type name in our map of parsed types:
-name|EntryType
-name|type
+name|String
+name|name
 init|=
-name|entryTypes
-operator|.
-name|get
-argument_list|(
 name|be
 operator|.
 name|getType
@@ -4010,6 +4006,15 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
+decl_stmt|;
+name|EntryType
+name|type
+init|=
+name|entryTypes
+operator|.
+name|get
+argument_list|(
+name|name
 operator|.
 name|toLowerCase
 argument_list|()
@@ -4040,45 +4045,41 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"unknown entry type"
+literal|"Unknown entry type"
 argument_list|)
 operator|+
 literal|": "
 operator|+
-name|be
-operator|.
-name|getType
-argument_list|()
-operator|.
-name|getName
-argument_list|()
+name|name
 operator|+
-literal|":"
+literal|"; key: "
 operator|+
 name|be
 operator|.
 name|getCiteKey
 argument_list|()
-operator|+
-literal|" . "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Type set to '@MISC'"
-argument_list|)
-operator|+
-literal|"."
 argument_list|)
 expr_stmt|;
 name|be
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|MISC
+operator|new
+name|BibtexEntryType
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}

@@ -2061,8 +2061,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//messageLabel.setText("'"+type.getName()+"' "+
-comment|//        Globals.lang("is a standard type."));
 block|}
 DECL|method|equalLists (List<String> one, List<String> two)
 specifier|private
@@ -2387,18 +2385,6 @@ operator|.
 name|setType
 argument_list|(
 name|newType
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|entry
-operator|.
-name|setType
-argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|MISC
 argument_list|)
 expr_stmt|;
 block|}
