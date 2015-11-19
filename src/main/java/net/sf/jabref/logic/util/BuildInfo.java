@@ -60,6 +60,14 @@ specifier|final
 name|String
 name|version
 decl_stmt|;
+DECL|field|UNKOWN_VERSION
+specifier|private
+specifier|final
+name|String
+name|UNKOWN_VERSION
+init|=
+literal|"*unknown*"
+decl_stmt|;
 DECL|method|BuildInfo ()
 specifier|public
 name|BuildInfo
@@ -89,7 +97,7 @@ decl_stmt|;
 name|String
 name|versionFromProps
 init|=
-literal|""
+name|UNKOWN_VERSION
 decl_stmt|;
 try|try
 init|(
@@ -120,7 +128,7 @@ name|getProperty
 argument_list|(
 literal|"version"
 argument_list|,
-literal|"dev"
+name|UNKOWN_VERSION
 argument_list|)
 expr_stmt|;
 block|}
@@ -131,7 +139,9 @@ decl||
 name|NullPointerException
 name|ignored
 parameter_list|)
-block|{         }
+block|{
+comment|// nothing to do -> default already set
+block|}
 name|version
 operator|=
 name|versionFromProps
