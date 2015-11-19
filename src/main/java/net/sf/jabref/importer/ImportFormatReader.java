@@ -1639,7 +1639,7 @@ block|}
 DECL|method|getUTF8Reader (File f)
 specifier|public
 specifier|static
-name|Reader
+name|InputStreamReader
 name|getUTF8Reader
 parameter_list|(
 name|File
@@ -1660,7 +1660,7 @@ block|}
 DECL|method|getUTF16Reader (File f)
 specifier|public
 specifier|static
-name|Reader
+name|InputStreamReader
 name|getUTF16Reader
 parameter_list|(
 name|File
@@ -1681,7 +1681,7 @@ block|}
 DECL|method|getReader (File f, String encoding)
 specifier|public
 specifier|static
-name|Reader
+name|InputStreamReader
 name|getReader
 parameter_list|(
 name|File
@@ -1693,11 +1693,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|InputStreamReader
-name|reader
-decl_stmt|;
-name|reader
-operator|=
+return|return
 operator|new
 name|InputStreamReader
 argument_list|(
@@ -1709,9 +1705,6 @@ argument_list|)
 argument_list|,
 name|encoding
 argument_list|)
-expr_stmt|;
-return|return
-name|reader
 return|;
 block|}
 DECL|method|getReaderDefaultEncoding (InputStream in)
