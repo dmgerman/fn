@@ -105,6 +105,13 @@ operator|.
 name|RECENT_FILES
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|old
+operator|!=
+literal|null
+condition|)
+block|{
 name|history
 operator|.
 name|addAll
@@ -117,6 +124,7 @@ name|old
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|size ()
 specifier|public
