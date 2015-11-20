@@ -739,10 +739,10 @@ name|OpenItSwingHelper
 implements|implements
 name|Runnable
 block|{
-DECL|field|bp
+DECL|field|basePanel
 specifier|final
 name|BasePanel
-name|bp
+name|basePanel
 decl_stmt|;
 DECL|field|raisePanel
 specifier|final
@@ -754,11 +754,11 @@ specifier|final
 name|File
 name|file
 decl_stmt|;
-DECL|method|OpenItSwingHelper (BasePanel bp, File file, boolean raisePanel)
+DECL|method|OpenItSwingHelper (BasePanel basePanel, File file, boolean raisePanel)
 name|OpenItSwingHelper
 parameter_list|(
 name|BasePanel
-name|bp
+name|basePanel
 parameter_list|,
 name|File
 name|file
@@ -769,9 +769,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|bp
+name|basePanel
 operator|=
-name|bp
+name|basePanel
 expr_stmt|;
 name|this
 operator|.
@@ -798,7 +798,7 @@ name|frame
 operator|.
 name|addTab
 argument_list|(
-name|bp
+name|basePanel
 argument_list|,
 name|file
 argument_list|,
@@ -985,7 +985,7 @@ operator|++
 control|)
 block|{
 name|BasePanel
-name|bp
+name|basePanel
 init|=
 name|frame
 operator|.
@@ -997,7 +997,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-name|bp
+name|basePanel
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -1005,7 +1005,7 @@ operator|!=
 literal|null
 operator|)
 operator|&&
-name|bp
+name|basePanel
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -1035,7 +1035,7 @@ condition|)
 block|{
 name|toRaise
 operator|=
-name|bp
+name|basePanel
 expr_stmt|;
 block|}
 comment|// no more bps to check, we found a matching one
@@ -1433,7 +1433,7 @@ argument_list|)
 condition|)
 block|{
 name|long
-name|modTime
+name|modificationTIme
 init|=
 name|FileBasedLock
 operator|.
@@ -1445,7 +1445,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-name|modTime
+name|modificationTIme
 operator|!=
 operator|-
 literal|1
@@ -1458,7 +1458,7 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 operator|-
-name|modTime
+name|modificationTIme
 operator|)
 operator|>
 name|SaveSession
@@ -1598,7 +1598,7 @@ return|return;
 block|}
 block|}
 name|ParserResult
-name|pr
+name|result
 decl_stmt|;
 name|String
 name|errorMessage
@@ -1607,7 +1607,7 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-name|pr
+name|result
 operator|=
 name|OpenDatabaseAction
 operator|.
@@ -1621,19 +1621,22 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|//ex.printStackTrace();
-name|errorMessage
-operator|=
-name|ex
+name|LOGGER
 operator|.
-name|getMessage
-argument_list|()
+name|error
+argument_list|(
+literal|"Error loading database "
+operator|+
+name|fileToLoad
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
-name|pr
+name|result
 operator|=
 literal|null
 expr_stmt|;
@@ -1641,13 +1644,13 @@ block|}
 if|if
 condition|(
 operator|(
-name|pr
+name|result
 operator|==
 literal|null
 operator|)
 operator|||
 operator|(
-name|pr
+name|result
 operator|==
 name|ParserResult
 operator|.
@@ -1772,7 +1775,7 @@ name|panel
 init|=
 name|addNewDatabase
 argument_list|(
-name|pr
+name|result
 argument_list|,
 name|file
 argument_list|,
@@ -1797,9 +1800,9 @@ comment|// if the database contents should be modified due to new features
 comment|// in this version of JabRef:
 specifier|final
 name|ParserResult
-name|prf
+name|finalReferenceToResult
 init|=
-name|pr
+name|result
 decl_stmt|;
 name|SwingUtilities
 operator|.
@@ -1822,7 +1825,7 @@ name|performPostOpenActions
 argument_list|(
 name|panel
 argument_list|,
-name|prf
+name|finalReferenceToResult
 argument_list|,
 literal|true
 argument_list|)
@@ -1834,8 +1837,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel The BasePanel where the database is shown.      * @param pr The result of the bib file parse operation.      */
-DECL|method|performPostOpenActions (BasePanel panel, ParserResult pr, boolean mustRaisePanel)
+comment|/**      * Go through the list of post open actions, and perform those that need to be performed.      *      * @param panel  The BasePanel where the database is shown.      * @param result The result of the bib file parse operation.      */
+DECL|method|performPostOpenActions (BasePanel panel, ParserResult result, boolean mustRaisePanel)
 specifier|public
 specifier|static
 name|void
@@ -1845,7 +1848,7 @@ name|BasePanel
 name|panel
 parameter_list|,
 name|ParserResult
-name|pr
+name|result
 parameter_list|,
 name|boolean
 name|mustRaisePanel
@@ -1867,7 +1870,7 @@ name|action
 operator|.
 name|isActionNecessary
 argument_list|(
-name|pr
+name|result
 argument_list|)
 condition|)
 block|{
@@ -1896,19 +1899,19 @@ name|performAction
 argument_list|(
 name|panel
 argument_list|,
-name|pr
+name|result
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addNewDatabase (ParserResult pr, final File file, boolean raisePanel)
+DECL|method|addNewDatabase (ParserResult result, final File file, boolean raisePanel)
 specifier|public
 name|BasePanel
 name|addNewDatabase
 parameter_list|(
 name|ParserResult
-name|pr
+name|result
 parameter_list|,
 specifier|final
 name|File
@@ -1927,9 +1930,9 @@ name|getPath
 argument_list|()
 decl_stmt|;
 name|BibtexDatabase
-name|db
+name|database
 init|=
-name|pr
+name|result
 operator|.
 name|getDatabase
 argument_list|()
@@ -1937,14 +1940,14 @@ decl_stmt|;
 name|MetaData
 name|meta
 init|=
-name|pr
+name|result
 operator|.
 name|getMetaData
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|pr
+name|result
 operator|.
 name|hasWarnings
 argument_list|()
@@ -1953,9 +1956,9 @@ block|{
 specifier|final
 name|String
 index|[]
-name|wrns
+name|warnings
 init|=
-name|pr
+name|result
 operator|.
 name|warnings
 argument_list|()
@@ -1978,7 +1981,7 @@ name|run
 parameter_list|()
 block|{
 name|StringBuilder
-name|wrn
+name|warningStrin
 init|=
 operator|new
 name|StringBuilder
@@ -1993,7 +1996,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|wrns
+name|warnings
 operator|.
 name|length
 condition|;
@@ -2001,7 +2004,7 @@ name|i
 operator|++
 control|)
 block|{
-name|wrn
+name|warningStrin
 operator|.
 name|append
 argument_list|(
@@ -2017,7 +2020,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|wrns
+name|warnings
 index|[
 name|i
 index|]
@@ -2031,7 +2034,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|wrn
+name|warningStrin
 operator|.
 name|length
 argument_list|()
@@ -2039,11 +2042,11 @@ operator|>
 literal|0
 condition|)
 block|{
-name|wrn
+name|warningStrin
 operator|.
 name|deleteCharAt
 argument_list|(
-name|wrn
+name|warningStrin
 operator|.
 name|length
 argument_list|()
@@ -2063,7 +2066,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|wrn
+name|warningStrin
 operator|.
 name|toString
 argument_list|()
@@ -2095,20 +2098,20 @@ argument_list|)
 expr_stmt|;
 block|}
 name|BasePanel
-name|bp
+name|basePanel
 init|=
 operator|new
 name|BasePanel
 argument_list|(
 name|frame
 argument_list|,
-name|db
+name|database
 argument_list|,
 name|file
 argument_list|,
 name|meta
 argument_list|,
-name|pr
+name|result
 operator|.
 name|getEncoding
 argument_list|()
@@ -2122,7 +2125,7 @@ argument_list|(
 operator|new
 name|OpenItSwingHelper
 argument_list|(
-name|bp
+name|basePanel
 argument_list|,
 name|file
 argument_list|,
@@ -2156,7 +2159,7 @@ argument_list|)
 operator|+
 literal|" "
 operator|+
-name|db
+name|database
 operator|.
 name|getEntryCount
 argument_list|()
@@ -2174,7 +2177,7 @@ literal|"."
 argument_list|)
 expr_stmt|;
 return|return
-name|bp
+name|basePanel
 return|;
 block|}
 comment|/**      * Opens a new database.      */
@@ -2283,7 +2286,7 @@ argument_list|)
 init|)
 block|{
 name|BibtexParser
-name|bp
+name|parser
 init|=
 operator|new
 name|BibtexParser
@@ -2292,14 +2295,14 @@ name|reader
 argument_list|)
 decl_stmt|;
 name|ParserResult
-name|pr
+name|result
 init|=
-name|bp
+name|parser
 operator|.
 name|parse
 argument_list|()
 decl_stmt|;
-name|pr
+name|result
 operator|.
 name|setEncoding
 argument_list|(
@@ -2317,7 +2320,7 @@ name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|pr
+name|result
 operator|.
 name|setFile
 argument_list|(
@@ -2337,7 +2340,7 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|pr
+name|result
 operator|.
 name|getDatabase
 argument_list|()
@@ -2367,7 +2370,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|pr
+name|result
 operator|.
 name|getMetaData
 argument_list|()
@@ -2376,7 +2379,7 @@ name|isGroupTreeValid
 argument_list|()
 condition|)
 block|{
-name|pr
+name|result
 operator|.
 name|addWarning
 argument_list|(
@@ -2390,7 +2393,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|pr
+name|result
 return|;
 block|}
 block|}
@@ -2496,7 +2499,7 @@ block|{
 try|try
 block|{
 name|BufferedReader
-name|br
+name|bufferedReader
 init|=
 operator|new
 name|BufferedReader
@@ -2512,7 +2515,7 @@ condition|(
 operator|(
 name|line
 operator|=
-name|br
+name|bufferedReader
 operator|.
 name|readLine
 argument_list|()
