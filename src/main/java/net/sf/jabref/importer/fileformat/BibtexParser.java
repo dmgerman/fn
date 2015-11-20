@@ -1166,9 +1166,6 @@ name|typ
 operator|.
 name|getName
 argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
 argument_list|,
 name|typ
 argument_list|)
@@ -1202,10 +1199,12 @@ operator|=
 operator|new
 name|UnknownEntryType
 argument_list|(
-name|entryType
+name|EntryUtil
 operator|.
-name|toLowerCase
-argument_list|()
+name|capitalizeFirst
+argument_list|(
+name|entryType
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|isEntry
@@ -3996,13 +3995,9 @@ name|UnknownEntryType
 condition|)
 block|{
 comment|// Look up the unknown type name in our map of parsed types:
-name|Object
-name|o
+name|String
+name|name
 init|=
-name|entryTypes
-operator|.
-name|get
-argument_list|(
 name|be
 operator|.
 name|getType
@@ -4010,26 +4005,24 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
+decl_stmt|;
+name|EntryType
+name|type
+init|=
+name|entryTypes
 operator|.
-name|toLowerCase
-argument_list|()
+name|get
+argument_list|(
+name|name
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|type
 operator|!=
 literal|null
 condition|)
 block|{
-name|EntryType
-name|type
-init|=
-operator|(
-name|EntryType
-operator|)
-name|o
-decl_stmt|;
 name|be
 operator|.
 name|setType
@@ -4048,45 +4041,19 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"unknown entry type"
+literal|"Unknown entry type"
 argument_list|)
 operator|+
 literal|": "
 operator|+
-name|be
-operator|.
-name|getType
-argument_list|()
-operator|.
-name|getName
-argument_list|()
+name|name
 operator|+
-literal|":"
+literal|"; key: "
 operator|+
 name|be
 operator|.
 name|getCiteKey
 argument_list|()
-operator|+
-literal|" . "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Type set to 'other'"
-argument_list|)
-operator|+
-literal|"."
-argument_list|)
-expr_stmt|;
-name|be
-operator|.
-name|setType
-argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|OTHER
 argument_list|)
 expr_stmt|;
 block|}

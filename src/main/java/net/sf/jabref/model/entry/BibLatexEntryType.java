@@ -120,14 +120,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
-comment|// key is always required
-name|requiredFields
-operator|.
-name|add
-argument_list|(
-literal|"bibtexkey"
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Override

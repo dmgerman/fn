@@ -776,7 +776,7 @@ block|}
 return|return
 name|BibtexEntryTypes
 operator|.
-name|OTHER
+name|MISC
 return|;
 block|}
 block|}

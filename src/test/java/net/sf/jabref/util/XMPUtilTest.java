@@ -1416,7 +1416,7 @@ name|assertEquals
 argument_list|(
 name|BibtexEntryTypes
 operator|.
-name|OTHER
+name|MISC
 argument_list|,
 name|e
 operator|.
@@ -1553,7 +1553,7 @@ name|assertEquals
 argument_list|(
 name|BibtexEntryTypes
 operator|.
-name|OTHER
+name|MISC
 argument_list|,
 name|e
 operator|.
@@ -1976,7 +1976,7 @@ name|assertEquals
 argument_list|(
 name|BibtexEntryTypes
 operator|.
-name|OTHER
+name|MISC
 argument_list|,
 name|e
 operator|.

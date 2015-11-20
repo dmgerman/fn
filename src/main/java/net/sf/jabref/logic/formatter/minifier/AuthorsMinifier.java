@@ -80,7 +80,7 @@ return|return
 literal|"Minify authors"
 return|;
 block|}
-comment|/**      * Replaces three or more authors with and others.      *      *<example>      *     Stefan Kolb -> Stefan Kolb      *     Stefan Kolb and Simon Harrer -> Stefan Kolb and Simon Harrer      *     Stefan Kolb and Simon Harrer and Jörg Lenhard -> Stefan Kolb and others      *</example>      */
+comment|/**      * Replaces three or more authors with and others.      *      *<example>      *     Stefan Kolb -> Stefan Kolb      *     Stefan Kolb and Simon Harrer -> Stefan Kolb and Simon Harrer      *     Stefan Kolb and Simon Harrer and JÃ¶rg Lenhard -> Stefan Kolb and others      *</example>      */
 DECL|method|format (String value)
 specifier|public
 name|String
