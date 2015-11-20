@@ -114,7 +114,7 @@ specifier|final
 name|String
 name|defaultEncoding
 init|=
-literal|"UTF8"
+literal|"UTF-8"
 decl_stmt|;
 DECL|field|bibNoHeader
 specifier|private
@@ -320,7 +320,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"UTF8"
+literal|"UTF-8"
 argument_list|,
 name|result
 operator|.
@@ -355,7 +355,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"UTF8"
+literal|"UTF-8"
 argument_list|,
 name|result
 operator|.
