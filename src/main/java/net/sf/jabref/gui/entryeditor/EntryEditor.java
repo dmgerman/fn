@@ -590,6 +590,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|search
+operator|.
+name|SearchTextListener
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|date
@@ -3593,8 +3609,22 @@ operator|new
 name|JTextAreaWithHighlighting
 argument_list|()
 expr_stmt|;
-comment|// TODO SIMON
-comment|// frame.getSearchBar().addSearchListener((SearchTextListener) source);
+name|panel
+operator|.
+name|getSearchBar
+argument_list|()
+operator|.
+name|getSearchObservable
+argument_list|()
+operator|.
+name|addSearchListener
+argument_list|(
+operator|(
+name|SearchTextListener
+operator|)
+name|source
+argument_list|)
+expr_stmt|;
 name|source
 operator|.
 name|setEditable

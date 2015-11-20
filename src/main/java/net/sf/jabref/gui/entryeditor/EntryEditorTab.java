@@ -1156,7 +1156,22 @@ literal|null
 argument_list|)
 expr_stmt|;
 comment|// TODO SIMON
-comment|// frame.getSearchBar().addSearchListener((TextArea) fieldEditor);
+name|bPanel
+operator|.
+name|getSearchBar
+argument_list|()
+operator|.
+name|getSearchObservable
+argument_list|()
+operator|.
+name|addSearchListener
+argument_list|(
+operator|(
+name|TextArea
+operator|)
+name|fieldEditor
+argument_list|)
+expr_stmt|;
 name|defaultHeight
 operator|=
 name|fieldEditor

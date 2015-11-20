@@ -183,30 +183,27 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Fires an event if a search was started (or cleared)      *      * @param searchText the search query      */
-DECL|method|fireSearchlistenerEvent (String searchText)
+DECL|method|fireSearchlistenerEvent (SearchQuery searchQuery)
 specifier|public
 name|void
 name|fireSearchlistenerEvent
 parameter_list|(
-name|String
-name|searchText
+name|SearchQuery
+name|searchQuery
 parameter_list|)
 block|{
 comment|// Parse the search string to words
 if|if
 condition|(
-operator|(
-name|searchText
+name|searchQuery
 operator|==
 literal|null
-operator|)
 operator|||
-operator|(
-name|searchText
+operator|!
+name|searchQuery
 operator|.
-name|isEmpty
+name|isContainsBasedSearch
 argument_list|()
-operator|)
 condition|)
 block|{
 name|words
@@ -223,10 +220,22 @@ name|words
 operator|=
 name|getSearchwords
 argument_list|(
-name|searchText
+name|searchQuery
+operator|.
+name|query
 argument_list|)
 expr_stmt|;
 block|}
+name|update
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|update ()
+specifier|private
+name|void
+name|update
+parameter_list|()
+block|{
 comment|// Fire an event for every listener
 for|for
 control|(

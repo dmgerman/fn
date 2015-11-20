@@ -415,33 +415,27 @@ specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
-comment|// TODO make final
 DECL|field|searchObservable
 specifier|private
+specifier|final
 name|SearchObservable
 name|searchObservable
-init|=
-operator|new
-name|SearchObservable
-argument_list|()
 decl_stmt|;
 DECL|field|searchField
 specifier|private
+specifier|final
 name|JSearchTextField
 name|searchField
 decl_stmt|;
 DECL|field|modeFloat
-DECL|field|modeLiveFilter
 specifier|private
 name|JRadioButtonMenuItem
 name|modeFloat
-decl_stmt|,
-name|modeLiveFilter
 decl_stmt|;
-DECL|field|settings
+DECL|field|modeLiveFilter
 specifier|private
-name|JMenu
-name|settings
+name|JRadioButtonMenuItem
+name|modeLiveFilter
 decl_stmt|;
 DECL|field|caseSensitive
 specifier|private
@@ -454,12 +448,6 @@ specifier|private
 specifier|final
 name|JCheckBox
 name|regularExp
-decl_stmt|;
-DECL|field|openCurrentResultsInDialog
-specifier|private
-specifier|final
-name|JButton
-name|openCurrentResultsInDialog
 decl_stmt|;
 DECL|field|currentResults
 specifier|private
@@ -504,8 +492,14 @@ name|basePanel
 operator|=
 name|basePanel
 expr_stmt|;
-comment|//TODO observable
-comment|//this.searchObservable = searchObservable;
+name|this
+operator|.
+name|searchObservable
+operator|=
+operator|new
+name|SearchObservable
+argument_list|()
+expr_stmt|;
 name|worker
 operator|=
 operator|new
@@ -619,8 +613,9 @@ name|updatePrefs
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|JButton
 name|openCurrentResultsInDialog
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -633,7 +628,7 @@ operator|.
 name|getSmallIcon
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|openCurrentResultsInDialog
 operator|.
 name|setToolTipText
@@ -770,6 +765,10 @@ argument_list|(
 name|searchIcon
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|searchField
+operator|=
 name|initSearchField
 argument_list|()
 expr_stmt|;
@@ -806,7 +805,6 @@ name|addActionListener
 argument_list|(
 name|l
 lambda|->
-block|{
 name|settingsMenu
 operator|.
 name|show
@@ -820,8 +818,6 @@ operator|.
 name|getHeight
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 name|JToolBar
@@ -1225,16 +1221,17 @@ block|}
 comment|/**      * Initializes the search text field      */
 DECL|method|initSearchField ()
 specifier|private
-name|void
+name|JSearchTextField
 name|initSearchField
 parameter_list|()
 block|{
+name|JSearchTextField
 name|searchField
-operator|=
+init|=
 operator|new
 name|JSearchTextField
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|searchField
 operator|.
 name|setTextWhenNotFocused
@@ -1402,6 +1399,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+return|return
+name|searchField
+return|;
 block|}
 comment|/**      * Returns the item in the popup menu of the search button corresponding to the given search mode      */
 DECL|method|getSearchModeMenuItem (SearchMode mode)
@@ -1702,7 +1702,7 @@ name|searchObservable
 operator|.
 name|fireSearchlistenerEvent
 argument_list|(
-literal|""
+literal|null
 argument_list|)
 expr_stmt|;
 name|this
@@ -1725,26 +1725,13 @@ name|void
 name|performSearch
 parameter_list|()
 block|{
-name|String
-name|searchText
-init|=
+comment|// An empty search field should cause the search to be cleared.
+if|if
+condition|(
 name|searchField
 operator|.
 name|getText
 argument_list|()
-decl_stmt|;
-comment|// Notify others about the search
-name|searchObservable
-operator|.
-name|fireSearchlistenerEvent
-argument_list|(
-name|searchText
-argument_list|)
-expr_stmt|;
-comment|// An empty search field should cause the search to be cleared.
-if|if
-condition|(
-name|searchText
 operator|.
 name|isEmpty
 argument_list|()
@@ -1770,6 +1757,16 @@ init|=
 name|getSearchQuery
 argument_list|()
 decl_stmt|;
+comment|// Notify others about the search
+comment|// TODO SIMON should be done in update method
+name|searchObservable
+operator|.
+name|fireSearchlistenerEvent
+argument_list|(
+name|getSearchQuery
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1845,6 +1842,16 @@ argument_list|(
 name|searchCompleter
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getSearchObservable ()
+specifier|public
+name|SearchObservable
+name|getSearchObservable
+parameter_list|()
+block|{
+return|return
+name|searchObservable
+return|;
 block|}
 block|}
 end_class

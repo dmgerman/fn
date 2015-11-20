@@ -106,6 +106,24 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|rules
+operator|.
+name|ContainBasedSearchRule
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -262,6 +280,20 @@ name|validateSearchStrings
 argument_list|(
 name|query
 argument_list|)
+return|;
+block|}
+DECL|method|isContainsBasedSearch ()
+specifier|public
+name|boolean
+name|isContainsBasedSearch
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|rule
+operator|instanceof
+name|ContainBasedSearchRule
 return|;
 block|}
 DECL|method|getSearchRule ()
