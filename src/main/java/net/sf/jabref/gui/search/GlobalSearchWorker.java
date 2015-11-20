@@ -233,7 +233,7 @@ name|basePanel
 init|=
 name|frame
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
