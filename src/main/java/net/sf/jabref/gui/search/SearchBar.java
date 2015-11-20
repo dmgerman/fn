@@ -882,10 +882,22 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search in all open databases"
+literal|"Search globally"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|globalSearch
+operator|.
+name|setToolTipText
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Search in all open databases"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|globalSearch
 operator|.
 name|addActionListener
