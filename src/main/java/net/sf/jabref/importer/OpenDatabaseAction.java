@@ -1981,7 +1981,7 @@ name|run
 parameter_list|()
 block|{
 name|StringBuilder
-name|warningStrin
+name|warningString
 init|=
 operator|new
 name|StringBuilder
@@ -2004,7 +2004,7 @@ name|i
 operator|++
 control|)
 block|{
-name|warningStrin
+name|warningString
 operator|.
 name|append
 argument_list|(
@@ -2034,7 +2034,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|warningStrin
+name|warningString
 operator|.
 name|length
 argument_list|()
@@ -2042,11 +2042,11 @@ operator|>
 literal|0
 condition|)
 block|{
-name|warningStrin
+name|warningString
 operator|.
 name|deleteCharAt
 argument_list|(
-name|warningStrin
+name|warningString
 operator|.
 name|length
 argument_list|()
@@ -2066,7 +2066,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|warningStrin
+name|warningString
 operator|.
 name|toString
 argument_list|()
