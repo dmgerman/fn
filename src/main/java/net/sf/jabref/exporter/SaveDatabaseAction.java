@@ -395,7 +395,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|==
 literal|null
@@ -506,9 +506,6 @@ index|]
 argument_list|)
 decl_stmt|;
 comment|// @formatter:on
-comment|//  int choice = JOptionPane.showConfirmDialog(frame, Globals.lang("File has been updated externally. "
-comment|// +"Are you sure you want to save?"), Globals.lang("File updated externally"),
-comment|// JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 if|if
 condition|(
 name|answer
@@ -534,7 +531,6 @@ operator|.
 name|YES_OPTION
 condition|)
 block|{
-comment|//try {
 name|cancelled
 operator|=
 literal|true
@@ -565,7 +561,7 @@ name|waitForFileLock
 argument_list|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 literal|10
@@ -596,7 +592,7 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -846,15 +842,12 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|getFile
-argument_list|()
-operator|.
-name|getName
+name|getTabTitle
 argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getAbsolutePath
@@ -876,7 +869,7 @@ literal|" '"
 operator|+
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getPath
@@ -888,6 +881,11 @@ expr_stmt|;
 name|frame
 operator|.
 name|setWindowTitle
+argument_list|()
+expr_stmt|;
+name|frame
+operator|.
+name|updateAllTabTitles
 argument_list|()
 expr_stmt|;
 block|}
@@ -949,7 +947,7 @@ operator|||
 operator|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|==
 literal|null
@@ -982,7 +980,7 @@ name|waitForFileLock
 argument_list|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 literal|10
@@ -1007,7 +1005,7 @@ name|saveDatabase
 argument_list|(
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 literal|false
@@ -1018,9 +1016,6 @@ name|getEncoding
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//Util.pr("Testing resolve string... BasePanel line 237");
-comment|//Util.pr("Resolve aq: "+database.resolveString("aq"));
-comment|//Util.pr("Resolve text: "+database.resolveForStrings("A text which refers to the string #aq# and #billball#, hurra."));
 try|try
 block|{
 name|Globals
@@ -1587,6 +1582,7 @@ name|WARNING_MESSAGE
 argument_list|,
 literal|null
 argument_list|,
+comment|// @formatter:off
 operator|new
 name|String
 index|[]
@@ -1611,6 +1607,7 @@ argument_list|,
 name|tryDiff
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 if|if
 condition|(
 name|answer
@@ -1978,20 +1975,16 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|'\''
-operator|+
-name|f
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite file?"
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
+name|f
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization
@@ -2101,7 +2094,7 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|)
 argument_list|)

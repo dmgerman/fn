@@ -305,7 +305,9 @@ parameter_list|(
 name|NullPointerException
 name|ignored
 parameter_list|)
-block|{          }
+block|{
+comment|// Ignored
+block|}
 block|}
 annotation|@
 name|Test

@@ -164,6 +164,36 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|bibtex
+operator|.
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -224,9 +254,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|id
+name|entry
 operator|.
 name|IdGenerator
 import|;
@@ -277,22 +307,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
 import|;
 end_import
 
@@ -930,6 +944,7 @@ literal|"Error Page"
 argument_list|)
 condition|)
 block|{
+comment|// @formatter:off
 name|status
 operator|.
 name|showMessage
@@ -953,6 +968,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return
 literal|false
 return|;
@@ -1094,15 +1110,10 @@ name|status
 operator|.
 name|showMessage
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|,
 name|Localization
 operator|.
@@ -1157,18 +1168,6 @@ parameter_list|()
 block|{
 return|return
 literal|"IEEEXploreHelp.html"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getKeyName ()
-specifier|public
-name|String
-name|getKeyName
-parameter_list|()
-block|{
-return|return
-literal|"IEEEXplore"
 return|;
 block|}
 comment|/**      * This method is called by the dialog when the user has cancelled the import.      */
@@ -1959,7 +1958,7 @@ block|}
 block|}
 block|}
 comment|// clean up publication field
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 name|entry
@@ -3094,7 +3093,7 @@ argument_list|,
 name|endIndex
 argument_list|)
 decl_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 literal|null
@@ -3211,7 +3210,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3250,7 +3249,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3282,7 +3281,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3307,7 +3306,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3346,7 +3345,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3371,7 +3370,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3393,7 +3392,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -3658,7 +3657,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getStandardType
 argument_list|(
@@ -3865,7 +3864,7 @@ operator|.
 name|getType
 argument_list|()
 operator|==
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getStandardType
 argument_list|(
@@ -3890,7 +3889,7 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getStandardType
 argument_list|(
@@ -4056,8 +4055,6 @@ operator|<
 literal|0
 condition|)
 block|{
-name|IEEEXploreFetcher
-operator|.
 name|LOGGER
 operator|.
 name|debug
@@ -4069,12 +4066,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not parse number of hits"
-argument_list|)
+literal|"Cannot parse number of hits"
 argument_list|)
 throw|;
 block|}
@@ -4129,12 +4121,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not parse number of hits"
-argument_list|)
+literal|"Cannot parse number of hits"
 argument_list|)
 throw|;
 block|}

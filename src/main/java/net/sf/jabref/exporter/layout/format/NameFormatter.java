@@ -44,22 +44,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|bst
 operator|.
 name|BibtexNameFormatter
@@ -381,7 +365,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|format (String toFormat, String parameters, BibtexEntry currentEntry)
+DECL|method|format (String toFormat, String parameters)
 specifier|public
 name|String
 name|format
@@ -391,9 +375,6 @@ name|toFormat
 parameter_list|,
 name|String
 name|parameters
-parameter_list|,
-name|BibtexEntry
-name|currentEntry
 parameter_list|)
 block|{
 name|AuthorList
@@ -547,8 +528,6 @@ argument_list|(
 name|fieldText
 argument_list|,
 name|parameter
-argument_list|,
-literal|null
 argument_list|)
 return|;
 block|}

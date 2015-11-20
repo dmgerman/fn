@@ -134,6 +134,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|util
+operator|.
 name|FocusRequester
 import|;
 end_import

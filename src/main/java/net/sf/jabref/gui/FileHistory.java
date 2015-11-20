@@ -757,7 +757,6 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-comment|//Util.pr("'"+name+"'");
 specifier|final
 name|File
 name|fileToOpen
@@ -768,6 +767,7 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+comment|// the existence check has to be done here (and not in open.openIt) as we have to call "removeItem" if the file does not exist
 if|if
 condition|(
 operator|!
@@ -832,7 +832,7 @@ name|frame
 operator|.
 name|open
 operator|.
-name|openIt
+name|openFile
 argument_list|(
 name|fileToOpen
 argument_list|,

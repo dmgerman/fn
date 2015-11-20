@@ -120,6 +120,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|*
@@ -133,6 +145,18 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
 import|;
 end_import
 
@@ -594,6 +618,38 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|util
+operator|.
+name|FocusRequester
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|PositionWindow
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|worker
 operator|.
 name|*
@@ -702,9 +758,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|id
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
 operator|.
 name|IdGenerator
 import|;
@@ -907,22 +979,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
 import|;
 end_import
 
@@ -1178,7 +1234,7 @@ literal|3
 decl_stmt|;
 comment|/*      * The database shown in this panel.      */
 DECL|field|database
-specifier|public
+specifier|private
 name|BibtexDatabase
 name|database
 decl_stmt|;
@@ -1698,6 +1754,69 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|getTabTitle ()
+specifier|public
+name|String
+name|getTabTitle
+parameter_list|()
+block|{
+name|String
+name|title
+decl_stmt|;
+if|if
+condition|(
+name|getDatabaseFile
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+name|title
+operator|=
+name|GUIGlobals
+operator|.
+name|untitledTitle
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|database
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// if the database is not empty and no file is assigned,
+comment|// the database came from an import and has to be treated somehow
+comment|// -> mark as changed
+comment|// This also happens internally at basepanel to ensure consistency line 224
+name|title
+operator|=
+name|title
+operator|+
+literal|'*'
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|title
+operator|=
+name|getDatabaseFile
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|title
+return|;
+block|}
 DECL|method|isBaseChanged ()
 specifier|public
 name|boolean
@@ -1718,7 +1837,6 @@ return|return
 name|mode
 return|;
 block|}
-comment|//Done by MrDlib
 DECL|method|setMode (int mode)
 specifier|public
 name|void
@@ -1735,7 +1853,6 @@ operator|=
 name|mode
 expr_stmt|;
 block|}
-comment|//Done by MrDlib
 DECL|method|database ()
 specifier|public
 name|BibtexDatabase
@@ -2039,46 +2156,19 @@ argument_list|)
 expr_stmt|;
 name|output
 argument_list|(
+name|formatOutputMessage
+argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Copied"
 argument_list|)
-operator|+
-literal|' '
-operator|+
-operator|(
+argument_list|,
 name|bes
 operator|.
 name|length
-operator|>
-literal|1
-condition|?
-name|bes
-operator|.
-name|length
-operator|+
-literal|" "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries"
 argument_list|)
-else|:
-literal|"1 "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
-argument_list|)
-operator|+
-literal|'.'
-operator|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2253,22 +2343,31 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|1
 condition|?
+comment|// @formatter:off
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"cut entries"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"cut entry"
 argument_list|)
+operator|)
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 comment|// Loop through the array of entries, and delete them.
 for|for
 control|(
@@ -2316,44 +2415,19 @@ name|frame
 operator|.
 name|output
 argument_list|(
+name|formatOutputMessage
+argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Cut_pr"
 argument_list|)
-operator|+
-literal|' '
-operator|+
-operator|(
+argument_list|,
 name|bes
 operator|.
 name|length
-operator|>
-literal|1
-condition|?
-name|bes
-operator|.
-name|length
-operator|+
-literal|" "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries"
 argument_list|)
-else|:
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
-argument_list|)
-operator|)
-operator|+
-literal|'.'
 argument_list|)
 argument_list|;
 name|ce
@@ -2441,22 +2515,31 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|1
 condition|?
+comment|// @formatter:off
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"delete entries"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"delete entry"
 argument_list|)
+operator|)
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 comment|// Loop through the array of entries, and delete them.
 for|for
 control|(
@@ -2506,44 +2589,19 @@ name|frame
 operator|.
 name|output
 argument_list|(
+name|formatOutputMessage
+argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Deleted"
 argument_list|)
-operator|+
-literal|' '
-operator|+
-operator|(
+argument_list|,
 name|bes
 operator|.
 name|length
-operator|>
-literal|1
-condition|?
-name|bes
-operator|.
-name|length
-operator|+
-literal|" "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries"
 argument_list|)
-else|:
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
-argument_list|)
-operator|)
-operator|+
-literal|'.'
 argument_list|)
 argument_list|;
 name|ce
@@ -2852,22 +2910,31 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|1
 condition|?
+comment|// @formatter:off
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"paste entries"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"paste entry"
 argument_list|)
+operator|)
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 comment|// Store the first inserted bibtexentry.
 comment|// bes[0] does not work as bes[0] is first clonded,
 comment|// then inserted.
@@ -2994,46 +3061,19 @@ comment|//entryTable.clearSelection();
 comment|//entryTable.revalidate();
 name|output
 argument_list|(
+name|formatOutputMessage
+argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Pasted"
 argument_list|)
-operator|+
-literal|' '
-operator|+
-operator|(
+argument_list|,
 name|bes
 operator|.
 name|length
-operator|>
-literal|1
-condition|?
-name|bes
-operator|.
-name|length
-operator|+
-literal|" "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries"
 argument_list|)
-else|:
-literal|"1 "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
-argument_list|)
-operator|)
-operator|+
-literal|'.'
 argument_list|)
 expr_stmt|;
 name|markBaseChanged
@@ -3138,7 +3178,7 @@ operator|.
 name|prefs
 argument_list|)
 decl_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -3221,15 +3261,6 @@ operator|.
 name|prefs
 argument_list|)
 decl_stmt|;
-name|Util
-operator|.
-name|placeDialog
-argument_list|(
-name|form
-argument_list|,
-name|frame
-argument_list|)
-expr_stmt|;
 name|form
 operator|.
 name|setVisible
@@ -3403,7 +3434,7 @@ argument_list|,
 name|dbs
 argument_list|)
 decl_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -3547,11 +3578,18 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
+comment|// @formatter:off
 name|String
 name|preamble
 init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Could not export to SQL database for the following reason:"
+argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 name|errorMessage
 operator|=
 name|SQLUtil
@@ -3579,12 +3617,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|preamble
-argument_list|)
 operator|+
 literal|'\n'
 operator|+
@@ -3650,21 +3683,23 @@ block|}
 else|else
 block|{
 comment|// show an error dialog if an error occurred
+comment|// @formatter:off
 name|String
 name|preamble
 init|=
-literal|"Could not export to SQL database for the following reason:"
-decl_stmt|;
-name|frame
-operator|.
-name|output
-argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
-name|preamble
+literal|"Could not export to SQL database for the following reason:"
 argument_list|)
+decl_stmt|;
+comment|// @formatter:on
+name|frame
+operator|.
+name|output
+argument_list|(
+name|preamble
 operator|+
 literal|"  "
 operator|+
@@ -3677,12 +3712,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|preamble
-argument_list|)
 operator|+
 literal|'\n'
 operator|+
@@ -3741,7 +3771,7 @@ operator|.
 name|this
 argument_list|)
 block|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -3864,40 +3894,17 @@ argument_list|()
 expr_stmt|;
 name|output
 argument_list|(
+name|formatOutputMessage
+argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Generating BibTeX key for"
 argument_list|)
-operator|+
-literal|' '
-operator|+
+argument_list|,
 name|numSelected
-operator|+
-literal|' '
-operator|+
-operator|(
-name|numSelected
-operator|>
-literal|1
-condition|?
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries"
 argument_list|)
-else|:
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
-argument_list|)
-operator|)
-operator|+
-literal|"..."
 argument_list|)
 expr_stmt|;
 block|}
@@ -3960,12 +3967,8 @@ if|if
 condition|(
 name|bes
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -4183,8 +4186,6 @@ name|bes
 operator|=
 name|entry
 expr_stmt|;
-name|bes
-operator|=
 name|LabelPatternUtil
 operator|.
 name|makeLabel
@@ -4359,38 +4360,17 @@ block|}
 comment|////////////////////////////////////////////////////////////////////////////////
 name|output
 argument_list|(
+name|formatOutputMessage
+argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Generated BibTeX key for"
 argument_list|)
-operator|+
-literal|' '
-operator|+
+argument_list|,
 name|numSelected
-operator|+
-literal|' '
-operator|+
-operator|(
-name|numSelected
-operator|!=
-literal|1
-condition|?
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries"
 argument_list|)
-else|:
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
-argument_list|)
-operator|)
 argument_list|)
 expr_stmt|;
 name|frame
@@ -4542,12 +4522,8 @@ if|if
 condition|(
 name|be
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -4558,12 +4534,8 @@ name|add
 argument_list|(
 name|be
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4696,24 +4668,33 @@ block|{
 comment|// All entries had keys.
 name|output
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|1
 condition|?
+comment|// @formatter:off
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Copied keys"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Copied key"
 argument_list|)
+operator|)
 operator|+
 literal|'.'
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 else|else
 block|{
@@ -4723,12 +4704,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Warning"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-operator|(
+literal|"Warning: %0 out of %1 entries have undefined BibTeX key."
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|bes
 operator|.
 name|length
@@ -4737,33 +4718,17 @@ name|keys
 operator|.
 name|size
 argument_list|()
-operator|)
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"out of"
 argument_list|)
-operator|+
-literal|' '
-operator|+
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|bes
 operator|.
 name|length
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries have undefined BibTeX key"
 argument_list|)
-operator|+
-literal|'.'
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4855,12 +4820,8 @@ if|if
 condition|(
 name|be
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -4871,12 +4832,8 @@ name|add
 argument_list|(
 name|be
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4991,6 +4948,7 @@ name|length
 condition|)
 block|{
 comment|// All entries had keys.
+comment|// @formatter:off
 name|output
 argument_list|(
 name|bes
@@ -5016,6 +4974,7 @@ operator|+
 literal|'.'
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 else|else
 block|{
@@ -5025,12 +4984,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Warning"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-operator|(
+literal|"Warning: %0 out of %1 entries have undefined BibTeX key."
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|bes
 operator|.
 name|length
@@ -5039,33 +4998,17 @@ name|keys
 operator|.
 name|size
 argument_list|()
-operator|)
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"out of"
 argument_list|)
-operator|+
-literal|' '
-operator|+
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|bes
 operator|.
 name|length
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries have undefined BibTeX key"
 argument_list|)
-operator|+
-literal|'.'
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5198,12 +5141,8 @@ if|if
 condition|(
 name|be
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -5282,67 +5221,64 @@ block|{
 comment|// All entries had keys.
 name|output
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|1
 condition|?
+comment|// @formatter:off
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Copied keys"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Copied key"
 argument_list|)
+operator|)
 operator|+
 literal|'.'
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 else|else
 block|{
+comment|// @formatter:off
 name|output
 argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Warning"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|copied
-operator|+
-literal|' '
-operator|+
-name|Localization
+literal|"Warning: %0 out of %1 entries have undefined BibTeX key."
+argument_list|,
+name|Integer
 operator|.
-name|lang
+name|toString
 argument_list|(
-literal|"out of"
+name|copied
 argument_list|)
-operator|+
-literal|' '
-operator|+
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|bes
 operator|.
 name|length
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries have undefined BibTeX key"
 argument_list|)
-operator|+
-literal|'.'
+argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 block|}
 block|}
@@ -7244,22 +7180,31 @@ name|counter
 operator|+
 literal|' '
 operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
+operator|(
 name|counter
 operator|==
 literal|1
 condition|?
-literal|"occurence"
-else|:
-literal|"occurences"
+comment|// @formatter:off
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"occurrence"
 argument_list|)
+else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"occurrences"
+argument_list|)
+operator|)
 operator|+
 literal|'.'
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 if|if
 condition|(
 name|counter
@@ -7351,7 +7296,7 @@ argument_list|(
 name|frame
 argument_list|)
 decl_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -7369,7 +7314,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|tp
 init|=
 name|etd
@@ -7424,7 +7369,7 @@ argument_list|,
 name|bibEntry
 argument_list|)
 decl_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -7760,6 +7705,10 @@ begin_comment
 comment|// Note that we can't put the number of entries that have been reverted into the undoText as the concrete number cannot be injected
 end_comment
 
+begin_comment
+comment|// @formatter:off
+end_comment
+
 begin_expr_stmt
 name|actions
 operator|.
@@ -7960,6 +7909,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 end_expr_stmt
+
+begin_comment
+comment|// @formatter:on
+end_comment
 
 begin_for
 for|for
@@ -8344,7 +8297,7 @@ argument_list|,
 literal|null
 argument_list|)
 block|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -8916,8 +8869,15 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not save file. "
+literal|"Could not save file."
+argument_list|)
 operator|+
+literal|' '
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Character encoding '%0' is not supported."
 argument_list|,
 name|enc
@@ -9030,10 +8990,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not save file"
+literal|"Could not save file."
 argument_list|)
 operator|+
-literal|".\n"
+literal|"\n"
 operator|+
 name|ex
 operator|.
@@ -9224,6 +9184,7 @@ name|WARNING_MESSAGE
 argument_list|,
 literal|null
 argument_list|,
+comment|// @formatter:off
 operator|new
 name|String
 index|[]
@@ -9248,6 +9209,7 @@ argument_list|,
 name|tryDiff
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 if|if
 condition|(
 name|answer
@@ -9383,12 +9345,12 @@ comment|/**      * This method is called from JabRefFrame when the user wants to
 end_comment
 
 begin_function
-DECL|method|newEntry (BibtexEntryType type)
+DECL|method|newEntry (EntryType type)
 specifier|public
 name|BibtexEntry
 name|newEntry
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -9410,7 +9372,7 @@ name|frame
 argument_list|)
 decl_stmt|;
 comment|// We want to center the dialog, to make it look nicer.
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -9527,11 +9489,8 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Added new"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Added new '%0' entry."
+argument_list|,
 name|type
 operator|.
 name|getName
@@ -9539,17 +9498,7 @@ argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
-operator|+
-literal|"' "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
 argument_list|)
-operator|+
-literal|'.'
 argument_list|)
 expr_stmt|;
 comment|// We are going to select the new entry. Before that, make sure that we are in
@@ -10023,11 +9972,8 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Added new"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Added new '%0' entry."
+argument_list|,
 name|bibEntry
 operator|.
 name|getType
@@ -10038,17 +9984,7 @@ argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
-operator|+
-literal|"' "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
 argument_list|)
-operator|+
-literal|'.'
 argument_list|)
 expr_stmt|;
 name|markBaseChanged
@@ -10932,7 +10868,7 @@ expr_stmt|;
 comment|// We replace the default FocusTraversalPolicy with a subclass
 comment|// that only allows FieldEditor components to gain keyboard focus,
 comment|// if there is an entry editor open.
-comment|/*splitPane.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy() {                 protected boolean accept(Component c) {                     Util.pr("jaa");                     if (showing == null)                         return super.accept(c);                     else                         return (super.accept(c)&&                                 (c instanceof FieldEditor));                 }                 });*/
+comment|/*splitPane.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy() {                 protected boolean accept(Component c) {                     if (showing == null)                         return super.accept(c);                     else                         return (super.accept(c)&&                                 (c instanceof FieldEditor));                 }                 });*/
 name|createMainTable
 argument_list|()
 expr_stmt|;
@@ -11135,6 +11071,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// create empty ContentAutoCompleters() if autoCompletion is deactivated
+name|autoCompleters
+operator|=
+operator|new
+name|ContentAutoCompleters
+argument_list|()
+expr_stmt|;
+block|}
 name|splitPane
 operator|.
 name|revalidate
@@ -11207,7 +11153,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*     public void refreshTable() {         //System.out.println("hiding="+hidingNonHits+"\tlastHits="+lastSearchHits);         // This method is called by EntryTypeForm when a field value is         // stored. The table is scheduled for repaint.         entryTable.assureNotEditing();         //entryTable.invalidate();         BibtexEntry[] bes = entryTable.getSelectedEntries();     if (hidingNonHits)         tableModel.update(lastSearchHits);     else         tableModel.update();     //tableModel.remap();         if ((bes != null)&& (bes.length> 0))             selectEntries(bes, 0);      //long toc = System.currentTimeMillis();     //	Util.pr("Refresh took: "+(toc-tic)+" ms");     } */
+comment|/*     public void refreshTable() {         //System.out.println("hiding="+hidingNonHits+"\tlastHits="+lastSearchHits);         // This method is called by EntryTypeForm when a field value is         // stored. The table is scheduled for repaint.         entryTable.assureNotEditing();         //entryTable.invalidate();         BibtexEntry[] bes = entryTable.getSelectedEntries();     if (hidingNonHits)         tableModel.update(lastSearchHits);     else         tableModel.update();     //tableModel.remap();         if ((bes != null)&& (bes.length> 0))             selectEntries(bes, 0);      //long toc = System.currentTimeMillis();     //	LOGGER.debug("Refresh took: "+(toc-tic)+" ms");     } */
 end_comment
 
 begin_function
@@ -12590,7 +12536,7 @@ literal|false
 expr_stmt|;
 if|if
 condition|(
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -12604,13 +12550,13 @@ name|BasePanel
 operator|.
 name|this
 argument_list|,
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getAbsolutePath
@@ -12628,12 +12574,9 @@ name|BasePanel
 operator|.
 name|this
 argument_list|,
-name|Localization
+name|GUIGlobals
 operator|.
-name|lang
-argument_list|(
-literal|"untitled"
-argument_list|)
+name|untitledTitle
 argument_list|,
 literal|null
 argument_list|)
@@ -12864,7 +12807,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (BibtexEntry entry, BibtexEntryType type)
+DECL|method|changeType (BibtexEntry entry, EntryType type)
 specifier|public
 name|void
 name|changeType
@@ -12872,7 +12815,7 @@ parameter_list|(
 name|BibtexEntry
 name|entry
 parameter_list|,
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -12892,12 +12835,12 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (BibtexEntryType type)
+DECL|method|changeType (EntryType type)
 specifier|public
 name|void
 name|changeType
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -12921,7 +12864,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (BibtexEntry[] bes, BibtexEntryType type)
+DECL|method|changeType (BibtexEntry[] bes, EntryType type)
 specifier|private
 name|void
 name|changeType
@@ -12930,7 +12873,7 @@ name|BibtexEntry
 index|[]
 name|bes
 parameter_list|,
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|)
 block|{
@@ -12953,9 +12896,12 @@ condition|)
 block|{
 name|output
 argument_list|(
-literal|"First select the entries you wish to change type "
-operator|+
-literal|"for."
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"First select the entries you wish to change type for."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -12978,18 +12924,25 @@ name|showConfirmDialog
 argument_list|(
 name|this
 argument_list|,
-literal|"Multiple entries selected. Do you want to change"
-operator|+
-literal|"\nthe type of all these to '"
-operator|+
+comment|// @formatter:off
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Multiple entries selected. Do you want to change\nthe type of all these to '%0'?"
+argument_list|,
 name|type
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"'?"
+argument_list|)
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Change type"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -13000,6 +12953,7 @@ operator|.
 name|WARNING_MESSAGE
 argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 if|if
 condition|(
 name|choice
@@ -13022,7 +12976,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"change type"
+literal|"Change type"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -13060,49 +13014,30 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
+comment|// @formatter:off
 name|output
+argument_list|(
+name|formatOutputMessage
 argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Changed type to"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Changed type to '%0' for"
+argument_list|,
 name|type
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"' "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"for"
 argument_list|)
-operator|+
-literal|' '
-operator|+
+argument_list|,
 name|bes
 operator|.
 name|length
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entries"
 argument_list|)
-operator|+
-literal|'.'
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 name|ce
 operator|.
 name|end
@@ -13150,25 +13085,18 @@ condition|)
 block|{
 name|String
 name|msg
-init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Really delete the selected"
-argument_list|)
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
-argument_list|)
-operator|+
-literal|'?'
 decl_stmt|;
+comment|// @formatter:off
+name|msg
+operator|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Really delete the selected entry?"
+argument_list|)
+expr_stmt|;
+comment|// @formatter:on
 name|String
 name|title
 init|=
@@ -13192,23 +13120,15 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Really delete the selected"
-argument_list|)
-operator|+
-literal|' '
-operator|+
-name|numberOfEntries
-operator|+
-literal|' '
-operator|+
-name|Localization
+literal|"Really delete the selected %0 entries?"
+argument_list|,
+name|Integer
 operator|.
-name|lang
+name|toString
 argument_list|(
-literal|"entries"
+name|numberOfEntries
 argument_list|)
-operator|+
-literal|'?'
+argument_list|)
 expr_stmt|;
 name|title
 operator|=
@@ -13405,12 +13325,8 @@ literal|null
 argument_list|,
 name|bes
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -13932,7 +13848,7 @@ comment|//if (updatedExternally) {
 comment|//  return;
 comment|//}
 comment|// to bad timing. If not, we'll handle it on the next polling.
-comment|//Util.pr("File '"+file.getPath()+"' has been modified.");
+comment|//LOGGER.debug("File '"+file.getPath()+"' has been modified.");
 name|updatedExternally
 operator|=
 literal|true
@@ -13954,7 +13870,7 @@ name|BasePanel
 operator|.
 name|this
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -14026,7 +13942,7 @@ name|this
 argument_list|,
 name|sidePaneManager
 argument_list|,
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 name|scanner
@@ -14065,7 +13981,7 @@ name|BasePanel
 operator|.
 name|this
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
@@ -14080,7 +13996,7 @@ name|BasePanel
 operator|.
 name|this
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 argument_list|,
 literal|10
@@ -14160,7 +14076,7 @@ name|info
 argument_list|(
 literal|"File '"
 operator|+
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getPath
@@ -14290,10 +14206,10 @@ comment|/**      * Get the file where this database was last saved to or loaded 
 end_comment
 
 begin_function
-DECL|method|getFile ()
+DECL|method|getDatabaseFile ()
 specifier|public
 name|File
-name|getFile
+name|getDatabaseFile
 parameter_list|()
 block|{
 return|return
@@ -14347,12 +14263,8 @@ name|citeKey
 operator|=
 name|bes
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 expr_stmt|;
 comment|// if the key is empty we give a warning and ignore this entry
 if|if
@@ -14849,6 +14761,56 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function
+DECL|method|formatOutputMessage (String start, int count)
+specifier|private
+name|String
+name|formatOutputMessage
+parameter_list|(
+name|String
+name|start
+parameter_list|,
+name|int
+name|count
+parameter_list|)
+block|{
+comment|// @formatter:off
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s %d %s."
+argument_list|,
+name|start
+argument_list|,
+name|count
+argument_list|,
+operator|(
+name|count
+operator|>
+literal|1
+condition|?
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"entries"
+argument_list|)
+else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"entry"
+argument_list|)
+operator|)
+argument_list|)
+return|;
+comment|// @formatter:on
+block|}
+end_function
+
 begin_class
 DECL|class|SaveSelectedAction
 specifier|private
@@ -14952,20 +14914,16 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|'\''
-operator|+
-name|expFile
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite file?"
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
+name|expFile
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization
@@ -15027,17 +14985,13 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Saved selected to"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Saved selected to '%0'."
+argument_list|,
 name|expFile
 operator|.
 name|getPath
 argument_list|()
-operator|+
-literal|"'."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -516,13 +516,17 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|height
 operator|==
 literal|0
+operator|)
 operator|||
+operator|(
 name|width
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 name|height
@@ -822,7 +826,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"no preview available"
+literal|"No preview available"
 argument_list|)
 argument_list|)
 expr_stmt|;

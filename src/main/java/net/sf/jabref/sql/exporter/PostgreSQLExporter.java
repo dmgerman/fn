@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General public static License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General public static License for more details.      You should have received a copy of the GNU General public static License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General public static License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General public static License for more details.      You should have received a copy of the GNU General public static License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -76,9 +76,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|id
+name|entry
 operator|.
 name|IdGenerator
 import|;
@@ -113,7 +113,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author ifsteinm.  *   *  Jan 20th	Extends DBExporter to provide features specific for PostgreSQL  *  			Created after a refactory on SQLUtil  *            */
+comment|/**  *  * @author ifsteinm.  *  *  Jan 20th	Extends DBExporter to provide features specific for PostgreSQL  *  			Created after a refactory on SQLUtil  *  */
 end_comment
 
 begin_class
@@ -135,7 +135,7 @@ specifier|private
 name|PostgreSQLExporter
 parameter_list|()
 block|{     }
-comment|/**      *       * @return The singleton instance of the PostgreSQLExporter      */
+comment|/**      *      * @return The singleton instance of the PostgreSQLExporter      */
 DECL|method|getInstance ()
 specifier|public
 specifier|static
@@ -213,6 +213,8 @@ operator|.
 name|newInstance
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|Connection
 name|conn
 init|=
@@ -232,10 +234,10 @@ operator|.
 name|getPassword
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|;
 name|ResultSet
 name|rs
-init|=
+operator|=
 operator|(
 operator|(
 name|Statement
@@ -259,7 +261,8 @@ operator|)
 operator|.
 name|getResultSet
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|rs
 operator|.
 name|next
@@ -305,8 +308,12 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
+try|try
+init|(
+name|Connection
 name|conn
-operator|=
+init|=
 name|DriverManager
 operator|.
 name|getConnection
@@ -323,7 +330,8 @@ operator|.
 name|getPassword
 argument_list|()
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 name|createPLPGSQLFunction
 argument_list|(
 name|conn
@@ -332,6 +340,7 @@ expr_stmt|;
 return|return
 name|conn
 return|;
+block|}
 block|}
 DECL|method|createPLPGSQLFunction (Connection conn)
 specifier|private
@@ -374,7 +383,7 @@ literal|"Language plpgsql;"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Generates SQL necessary to create all tables in a MySQL database, and      * writes it to appropriate output.      *       * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be written.      */
+comment|/**      * Generates SQL necessary to create all tables in a MySQL database, and      * writes it to appropriate output.      *      * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be written.      */
 annotation|@
 name|Override
 DECL|method|createTables (Object out)

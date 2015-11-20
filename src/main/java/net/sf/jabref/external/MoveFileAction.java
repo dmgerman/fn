@@ -320,7 +320,7 @@ name|dirs
 init|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData
@@ -444,9 +444,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|file
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|file
 operator|.
@@ -801,26 +803,23 @@ operator|.
 name|exists
 argument_list|()
 operator|&&
+operator|(
 name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"'"
-operator|+
-name|newFile
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite file?"
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
+name|newFile
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization
@@ -838,6 +837,7 @@ operator|!=
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 if|if
@@ -942,6 +942,7 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|newFile
 operator|.
 name|getCanonicalPath
@@ -954,7 +955,9 @@ name|canPath
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|&&
+operator|(
 name|newFile
 operator|.
 name|getCanonicalPath
@@ -971,6 +974,7 @@ operator|==
 name|File
 operator|.
 name|separatorChar
+operator|)
 condition|)
 block|{
 name|flEntry

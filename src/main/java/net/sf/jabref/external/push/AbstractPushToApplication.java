@@ -292,7 +292,7 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Insert selected citations into %d"
+literal|"Push entries to external application (%0)"
 argument_list|,
 name|getApplicationName
 argument_list|()
@@ -418,28 +418,11 @@ name|couldNotCall
 operator|=
 literal|true
 expr_stmt|;
-comment|// @formatter:off
 name|LOGGER
 operator|.
 name|warn
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not call executable"
-argument_list|)
-operator|+
-literal|" '"
+literal|"Error: Could not call executable '"
 operator|+
 name|commandPath
 operator|+
@@ -448,7 +431,6 @@ argument_list|,
 name|excep
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 block|}
 annotation|@

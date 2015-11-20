@@ -724,7 +724,10 @@ name|g
 operator|.
 name|drawString
 argument_list|(
-literal|"\uf214"
+name|moveTabArrow
+operator|.
+name|getCode
+argument_list|()
 argument_list|,
 name|locationP
 operator|.

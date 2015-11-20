@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_comment
@@ -20,8 +20,36 @@ name|bst
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
-comment|/**  *   * The |built_in| function {\.{purify\$}} pops the top (string) literal, removes  * nonalphanumeric characters except for |white_space| and |sep_char| characters  * (these get converted to a |space|) and removes certain alphabetic characters  * contained in the control sequences associated with a special character, and  * pushes the resulting string. If the literal isn't a string, it complains and  * pushes the null string.  *   */
+comment|/**  *  * The |built_in| function {\.{purify\$}} pops the top (string) literal, removes  * nonalphanumeric characters except for |white_space| and |sep_char| characters  * (these get converted to a |space|) and removes certain alphabetic characters  * contained in the control sequences associated with a special character, and  * pushes the resulting string. If the literal isn't a string, it complains and  * pushes the null string.  *  */
 end_comment
 
 begin_class
@@ -30,7 +58,23 @@ specifier|public
 class|class
 name|BibtexWidth
 block|{
-comment|/*      * Quoted from Bibtex:      *       * Now we initialize the system-dependent |char_width| array, for which      * |space| is the only |white_space| character given a nonzero printing      * width. The widths here are taken from Stanford's June~'87 $cmr10$~font      * and represent hundredths of a point (rounded), but since they're used      * only for relative comparisons, the units have no meaning.      */
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|BibtexWidth
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+comment|/*      * Quoted from Bibtex:      *      * Now we initialize the system-dependent |char_width| array, for which      * |space| is the only |white_space| character given a nonzero printing      * width. The widths here are taken from Stanford's June~'87 $cmr10$~font      * and represent hundredths of a point (rounded), but since they're used      * only for relative comparisons, the units have no meaning.      */
 DECL|field|widths
 specifier|private
 specifier|static
@@ -1154,8 +1198,8 @@ literal|0
 return|;
 block|}
 block|}
-comment|/**      *       * @param toMeasure      * @param warn      *            may-be-null      * @return      */
-DECL|method|width (String toMeasure, Warn warn)
+comment|/**      *      * @param toMeasure      * @param warn      *            may-be-null      * @return      */
+DECL|method|width (String toMeasure)
 specifier|public
 specifier|static
 name|int
@@ -1163,9 +1207,6 @@ name|width
 parameter_list|(
 name|String
 name|toMeasure
-parameter_list|,
-name|Warn
-name|warn
 parameter_list|)
 block|{
 comment|/*          * From Bibtex: We use the natural width for all but special characters,          * and we complain if the string isn't brace-balanced.          */
@@ -1201,7 +1242,7 @@ name|result
 init|=
 literal|0
 decl_stmt|;
-comment|/*          * From Bibtex:          *           * We use the natural widths of all characters except that some          * characters have no width: braces, control sequences (except for the          * usual 13 accented and foreign characters, whose widths are given in          * the next module), and |white_space| following control sequences (even          * a null control sequence).          *           */
+comment|/*          * From Bibtex:          *          * We use the natural widths of all characters except that some          * characters have no width: braces, control sequences (except for the          * usual 13 accented and foreign characters, whose widths are given in          * the next module), and |white_space| following control sequences (even          * a null control sequence).          *          */
 while|while
 condition|(
 name|i
@@ -1475,10 +1516,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|BibtexCaseChanger
+name|LOGGER
 operator|.
-name|complain
+name|warn
 argument_list|(
+literal|"Too many closing braces in string: "
+operator|+
 name|toMeasure
 argument_list|)
 expr_stmt|;
@@ -1500,15 +1543,23 @@ name|i
 operator|++
 expr_stmt|;
 block|}
-name|BibtexCaseChanger
-operator|.
-name|checkBrace
-argument_list|(
-name|toMeasure
-argument_list|,
+if|if
+condition|(
 name|braceLevel
+operator|>
+literal|0
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"No enough closing braces in string: "
+operator|+
+name|toMeasure
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|result
 return|;

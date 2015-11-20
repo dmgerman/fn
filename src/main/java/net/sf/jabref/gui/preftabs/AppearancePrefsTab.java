@@ -964,16 +964,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|overrideFonts
 operator|.
 name|isSelected
 argument_list|()
 operator|!=
 name|oldOverrideFontSize
+operator|)
 operator|||
+operator|(
 name|size
 operator|!=
 name|oldMenuFontSize
+operator|)
 condition|)
 block|{
 name|prefs
@@ -1128,21 +1132,11 @@ argument_list|)
 operator|+
 literal|" '"
 operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|fieldName
-argument_list|)
 operator|+
 literal|"'"
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|errorTitle
-argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1171,14 +1165,24 @@ condition|(
 operator|!
 name|validateIntegerField
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Menu and label font size"
+argument_list|)
 argument_list|,
 name|fontSize
 operator|.
 name|getText
 argument_list|()
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Changed font settings"
+argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -1192,14 +1196,24 @@ condition|(
 operator|!
 name|validateIntegerField
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Table row height padding"
+argument_list|)
 argument_list|,
 name|rowPadding
 operator|.
 name|getText
 argument_list|()
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Changed table appearance settings"
+argument_list|)
 argument_list|)
 condition|)
 block|{

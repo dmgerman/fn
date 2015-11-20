@@ -166,9 +166,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|id
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
 operator|.
 name|IdGenerator
 import|;
@@ -203,22 +219,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
 import|;
 end_import
 
@@ -438,7 +438,7 @@ literal|null
 return|;
 block|}
 comment|/**      * Trys to add a entry for each file in the List.      *      * @param files      * @param database      * @param entryType      * @return List of unexcpected import event messages including failures.      */
-DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile)
+DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, EntryType entryType, boolean generateKeywordsFromPathToFile)
 specifier|public
 name|List
 argument_list|<
@@ -455,7 +455,7 @@ parameter_list|,
 name|BibtexDatabase
 name|database
 parameter_list|,
-name|BibtexEntryType
+name|EntryType
 name|entryType
 parameter_list|,
 name|boolean
@@ -495,7 +495,7 @@ name|importGUIMessages
 return|;
 block|}
 comment|/**      * Tries to add a entry for each file in the List.      *      * @param files      * @param database      * @param panel      * @param entryType      * @param generateKeywordsFromPathToFile      * @param changeListener      * @param importGUIMessages list of unexpected import event - Messages including      *         failures      * @return Returns The number of entries added      */
-DECL|method|addEntriesFromFiles (List<File> files, BibtexDatabase database, BasePanel panel, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener, List<String> importGUIMessages)
+DECL|method|addEntriesFromFiles (List<File> files, BibtexDatabase database, BasePanel panel, EntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener, List<String> importGUIMessages)
 specifier|public
 name|int
 name|addEntriesFromFiles
@@ -512,7 +512,7 @@ parameter_list|,
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexEntryType
+name|EntryType
 name|entryType
 parameter_list|,
 name|boolean

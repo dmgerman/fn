@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -127,6 +127,22 @@ operator|.
 name|actions
 operator|.
 name|MnemonicAwareAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|PositionWindow
 import|;
 end_import
 
@@ -299,7 +315,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 27, 2008 Time: 6:09:08 PM To  * change this template use File | Settings | File Templates.  *  * Jan. 20th Changed to accomodate the new way to connect to DB and also to show  * the exceptions and to display more than one DB imported (by ifsteinm)  *  */
+comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 27, 2008 Time: 6:09:08 PM To change this template use File | Settings  * | File Templates.  *  * Jan. 20th Changed to accomodate the new way to connect to DB and also to show the exceptions and to display more than  * one DB imported (by ifsteinm)  *  */
 end_comment
 
 begin_class
@@ -514,7 +530,7 @@ argument_list|,
 name|dbs
 argument_list|)
 expr_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -623,6 +639,8 @@ name|getServerType
 argument_list|()
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|Connection
 name|conn
 init|=
@@ -632,7 +650,10 @@ name|connectToDB
 argument_list|(
 name|dbs
 argument_list|)
-decl_stmt|;
+init|)
+block|{
+try|try
+init|(
 name|ResultSet
 name|rs
 init|=
@@ -644,7 +665,8 @@ name|conn
 argument_list|,
 literal|"jabref_database"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|Vector
 argument_list|<
 name|String
@@ -772,8 +794,6 @@ name|importer
 operator|.
 name|performImport
 argument_list|(
-literal|null
-argument_list|,
 name|dbs
 argument_list|,
 name|dialogo
@@ -887,6 +907,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+block|}
 catch|catch
 parameter_list|(
 name|Exception
@@ -896,7 +918,12 @@ block|{
 name|String
 name|preamble
 init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Could not import from SQL database for the following reason:"
+argument_list|)
 decl_stmt|;
 name|String
 name|errorMessage

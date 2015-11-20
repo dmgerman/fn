@@ -210,9 +210,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
+name|Globals
 import|;
 end_import
 
@@ -224,7 +222,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|gui
+operator|.
+name|GUIGlobals
 import|;
 end_import
 
@@ -1237,11 +1237,26 @@ index|[]
 name|_rbs0
 init|=
 block|{
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Save fields sorted in alphabetic order (as in versions 2.10+)"
+argument_list|)
 block|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Save fields in unsorted order (as until version 2.9.2)"
+argument_list|)
 block|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Save fields in user-defined order"
+argument_list|)
 block|}
 decl_stmt|;
 name|ArrayList
@@ -1267,12 +1282,7 @@ name|_rbs
 operator|.
 name|add
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|_rb
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

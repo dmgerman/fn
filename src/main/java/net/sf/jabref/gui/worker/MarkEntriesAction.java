@@ -342,7 +342,7 @@ name|panel
 init|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
 name|BibtexEntry
@@ -458,7 +458,7 @@ literal|1
 case|:
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|markBaseChanged
@@ -477,7 +477,7 @@ break|break;
 default|default:
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|markBaseChanged

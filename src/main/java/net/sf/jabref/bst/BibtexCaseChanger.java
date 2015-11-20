@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -16,12 +16,56 @@ name|bst
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_class
 DECL|class|BibtexCaseChanger
 specifier|public
 class|class
 name|BibtexCaseChanger
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|BibtexCaseChanger
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|// stores whether the char before the current char was a colon
 DECL|field|prevColon
 specifier|private
@@ -389,15 +433,29 @@ expr_stmt|;
 name|i
 operator|++
 expr_stmt|;
+if|if
+condition|(
 name|braceLevel
-operator|=
-name|decrBraceLevel
+operator|==
+literal|0
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|warn
 argument_list|(
+literal|"Too many closing braces in string: "
+operator|+
 name|s
-argument_list|,
-name|braceLevel
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|braceLevel
+operator|--
+expr_stmt|;
+block|}
 name|prevColon
 operator|=
 literal|false
@@ -440,92 +498,6 @@ name|i
 operator|++
 expr_stmt|;
 block|}
-name|BibtexCaseChanger
-operator|.
-name|checkBrace
-argument_list|(
-name|s
-argument_list|,
-name|braceLevel
-argument_list|)
-expr_stmt|;
-return|return
-name|sb
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
-DECL|method|decrBraceLevel (String string, int braceLevel)
-specifier|private
-name|int
-name|decrBraceLevel
-parameter_list|(
-name|String
-name|string
-parameter_list|,
-name|int
-name|braceLevel
-parameter_list|)
-block|{
-if|if
-condition|(
-name|braceLevel
-operator|==
-literal|0
-condition|)
-block|{
-name|BibtexCaseChanger
-operator|.
-name|complain
-argument_list|(
-name|string
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|braceLevel
-operator|--
-expr_stmt|;
-block|}
-return|return
-name|braceLevel
-return|;
-block|}
-DECL|method|complain (String s)
-specifier|static
-name|void
-name|complain
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Warning -- String is not brace-balanced: "
-operator|+
-name|s
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|checkBrace (String s, int braceLevel)
-specifier|static
-name|void
-name|checkBrace
-parameter_list|(
-name|String
-name|s
-parameter_list|,
-name|int
-name|braceLevel
-parameter_list|)
-block|{
 if|if
 condition|(
 name|braceLevel
@@ -533,16 +505,24 @@ operator|>
 literal|0
 condition|)
 block|{
-name|BibtexCaseChanger
+name|LOGGER
 operator|.
-name|complain
+name|warn
 argument_list|(
+literal|"No enough closing braces in string: "
+operator|+
 name|s
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
+return|;
 block|}
-comment|/**      * We're dealing with a special character (usually either an undotted `\i'      * or `\j', or an accent like one in Table~3.1 of the \LaTeX\ manual, or a      * foreign character like one in Table~3.2) if the first character after the      * |left_brace| is a |backslash|; the special character ends with the      * matching |right_brace|. How we handle what's in between depends on the      * special character. In general, this code will do reasonably well if there      * is other stuff, too, between braces, but it doesn't try to do anything      * special with |colon|s.      *       * @param c      * @param i the current position. It points to the opening brace      * @param format      * @return      */
+comment|/**      * We're dealing with a special character (usually either an undotted `\i'      * or `\j', or an accent like one in Table~3.1 of the \LaTeX\ manual, or a      * foreign character like one in Table~3.2) if the first character after the      * |left_brace| is a |backslash|; the special character ends with the      * matching |right_brace|. How we handle what's in between depends on the      * special character. In general, this code will do reasonably well if there      * is other stuff, too, between braces, but it doesn't try to do anything      * special with |colon|s.      *      * @param c      * @param i the current position. It points to the opening brace      * @param format      * @return      */
 DECL|method|convertSpecialChar (StringBuffer sb, char[] c, int i, FORMAT_MODE format)
 specifier|private
 name|int
@@ -726,7 +706,7 @@ return|return
 name|i
 return|;
 block|}
-comment|/**      * Convert the given string according to the format character (title, lower,      * up) and append the result to the stringBuffer, return the updated      * position.      *       * @param c      * @param pos      * @param s      * @param sb      * @param format      * @return the new position      */
+comment|/**      * Convert the given string according to the format character (title, lower,      * up) and append the result to the stringBuffer, return the updated      * position.      *      * @param c      * @param pos      * @param s      * @param sb      * @param format      * @return the new position      */
 DECL|method|convertAccented (char[] c, int pos, String s, StringBuffer sb, FORMAT_MODE format)
 specifier|private
 name|int

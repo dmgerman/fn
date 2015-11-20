@@ -282,13 +282,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ParserResult
-name|result
+try|try
+init|(
+name|FileReader
+name|fr
 init|=
-name|BibtexParser
-operator|.
-name|parse
-argument_list|(
 operator|new
 name|FileReader
 argument_list|(
@@ -296,6 +294,16 @@ name|ImportDataTest
 operator|.
 name|UNLINKED_FILES_TEST_BIB
 argument_list|)
+init|)
+block|{
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+name|fr
 argument_list|)
 decl_stmt|;
 name|database
@@ -330,6 +338,7 @@ argument_list|(
 literal|"entry2"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Tests the prerequisites of this test-class itself.      */
 annotation|@
@@ -959,14 +968,7 @@ function|;
 return|return
 operator|new
 name|ArrayList
-argument_list|<
-name|Constructor
-argument_list|<
-name|?
-extends|extends
-name|T
-argument_list|>
-argument_list|>
+argument_list|<>
 argument_list|(
 name|list
 argument_list|)
@@ -1090,7 +1092,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignored
+block|}
 comment|/**              * Creating proper instances for the parameter types.              */
 name|Object
 index|[]
@@ -1143,7 +1147,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignored
+block|}
 block|}
 return|return
 literal|null

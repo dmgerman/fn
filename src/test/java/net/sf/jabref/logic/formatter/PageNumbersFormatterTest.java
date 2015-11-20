@@ -16,16 +16,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -49,6 +39,16 @@ operator|.
 name|junit
 operator|.
 name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
 import|;
 end_import
 
@@ -140,6 +140,22 @@ argument_list|(
 literal|"1,2,3"
 argument_list|,
 literal|"1,2,3"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|formatPageNumbersPlusRange ()
+specifier|public
+name|void
+name|formatPageNumbersPlusRange
+parameter_list|()
+block|{
+name|expectCorrect
+argument_list|(
+literal|"43+"
+argument_list|,
+literal|"43+"
 argument_list|)
 expr_stmt|;
 block|}

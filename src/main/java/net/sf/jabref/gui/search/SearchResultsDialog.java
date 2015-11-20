@@ -444,6 +444,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|IconComparator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -558,13 +574,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|util
+name|desktop
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|JabRefDesktop
 import|;
 end_import
 
@@ -578,9 +592,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|desktop
+name|keyboard
 operator|.
-name|JabRefDesktop
+name|KeyBinds
 import|;
 end_import
 
@@ -715,6 +729,22 @@ operator|.
 name|swing
 operator|.
 name|TableComparatorChooser
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryUtil
 import|;
 end_import
 
@@ -1226,7 +1256,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Close dialog"
+name|KeyBinds
+operator|.
+name|CLOSE_DIALOG
 argument_list|)
 argument_list|,
 literal|"close"
@@ -1324,7 +1356,7 @@ name|trbe
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2765,7 +2797,7 @@ name|PAD
 condition|)
 block|{
 return|return
-name|StringUtil
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -2981,7 +3013,7 @@ if|if
 condition|(
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|!=
 literal|null
@@ -2990,7 +3022,7 @@ block|{
 return|return
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|tableFormat

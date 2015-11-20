@@ -110,11 +110,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|bibtex
 operator|.
-name|entry
-operator|.
-name|BibtexEntryTypes
+name|EntryTypes
 import|;
 end_import
 
@@ -1957,9 +1955,9 @@ name|BibtexEntry
 argument_list|(
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,
-name|BibtexEntryTypes
+name|EntryTypes
 operator|.
-name|getEntryType
+name|getBibtexEntryType
 argument_list|(
 name|bibtexType
 argument_list|)

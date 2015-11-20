@@ -344,18 +344,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getKeyName ()
-specifier|public
-name|String
-name|getKeyName
-parameter_list|()
-block|{
-return|return
-literal|"JSTOR"
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel

@@ -1011,12 +1011,8 @@ return|return
 name|getEntry
 argument_list|()
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 return|;
 block|}
 DECL|method|output (String s)
@@ -1249,21 +1245,17 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// String above and below
 name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error writing XMP to file: %0"
-argument_list|,
+literal|"Error writing XMP to file: "
+operator|+
 name|finalFile
 operator|.
 name|getAbsolutePath
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -1327,17 +1319,12 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error while converting BibtexEntry to XMP %0"
-argument_list|,
+literal|"Error while converting BibtexEntry to XMP "
+operator|+
 name|finalFile
 operator|.
 name|getAbsolutePath
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)

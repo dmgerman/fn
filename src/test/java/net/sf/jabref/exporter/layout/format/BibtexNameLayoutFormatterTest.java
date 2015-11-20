@@ -70,8 +70,6 @@ argument_list|(
 literal|"Joe Doe"
 argument_list|,
 literal|"1@*@{ll}"
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -88,8 +86,6 @@ argument_list|(
 literal|"Joe Doe and Mary Jane and Bruce Bar and Arthur Kay"
 argument_list|,
 literal|"1@*@{ll}@@2@1..1@{ff}{ll}@2..2@ and {ff}{last}@@*@*@more"
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -106,8 +102,6 @@ argument_list|(
 literal|"Joe Doe"
 argument_list|,
 literal|"1@*@{ll}@@2@1..1@{ff}{ll}@2..2@ and {ff}{last}@@*@*@more"
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -124,8 +118,6 @@ argument_list|(
 literal|"Joe Doe and Mary Jane"
 argument_list|,
 literal|"1@*@{ll}@@2@1..1@{ff}{ll}@2..2@ and {ff}{l}@@*@*@more"
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -142,8 +134,6 @@ argument_list|(
 literal|"Joe Doe and Mary Jane and John Arthur van Kamp"
 argument_list|,
 literal|"1@*@{ll}, {ff}@@*@1@{ll}, {ff}@2..-1@ and {ll}, {f}."
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -160,8 +150,6 @@ argument_list|(
 literal|"Joe Doe and Mary Jane and John Arthur van Kamp"
 argument_list|,
 literal|"1@*@{ll}, {ff}@@*@1@{ll} {ff}@2..-1@ and {ll}, {f}."
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -215,8 +203,6 @@ argument_list|(
 literal|"Mary Ann Vandekamp"
 argument_list|,
 name|formatString
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -234,8 +220,6 @@ argument_list|(
 literal|"John von Neumann and Black Brown, Peter"
 argument_list|,
 name|formatString
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -253,8 +237,6 @@ argument_list|(
 literal|"von Neumann, John and Smith, John and Black Brown, Peter"
 argument_list|,
 name|formatString
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -271,8 +253,6 @@ argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 name|formatString
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -290,8 +270,6 @@ argument_list|(
 literal|"von Neumann, John and Smith, John and Vandekamp, Mary Ann and Black Brown, Peter"
 argument_list|,
 name|formatString
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;

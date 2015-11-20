@@ -36,6 +36,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -89,20 +103,6 @@ operator|.
 name|jabref
 operator|.
 name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|GUIGlobals
 import|;
 end_import
 
@@ -177,7 +177,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class used to handle safe storage to disk.  *  * Usage: create a SaveSession giving the file to save to, the  * encoding, and whether to make a backup. The SaveSession will provide a Writer to store to, which actually  * goes to a temporary file. The Writer keeps track of whether all characters could be saved, and if not,  * which characters were not encodable.  *  * After saving is finished, the client should close the Writer. If the save should be put into effect, call  * commit(), otherwise call cancel(). When cancelling, the temporary file is simply deleted and the target  * file remains unchanged. When committing, the temporary file is copied to the target file after making  * a backup if requested and if the target file already existed, and finally the temporary file is deleted.  *  * If committing fails, the temporary file will not be deleted.  */
+comment|/**  * Class used to handle safe storage to disk.  *  * Usage: create a SaveSession giving the file to save to, the encoding, and whether to make a backup. The SaveSession  * will provide a Writer to store to, which actually goes to a temporary file. The Writer keeps track of whether all  * characters could be saved, and if not, which characters were not encodable.  *  * After saving is finished, the client should close the Writer. If the save should be put into effect, call commit(),  * otherwise call cancel(). When cancelling, the temporary file is simply deleted and the target file remains unchanged.  * When committing, the temporary file is copied to the target file after making a backup if requested and if the target  * file already existed, and finally the temporary file is deleted.  *  * If committing fails, the temporary file will not be deleted.  */
 end_comment
 
 begin_class
@@ -338,6 +338,7 @@ name|encoding
 operator|=
 name|encoding
 expr_stmt|;
+comment|/* Using 	   try (FileOutputStream fos = new FileOutputStream(tmp)) { 	       writer = new VerifyingWriter(fos, encoding); 	   } 	   doesn't work since fos is closed after assigning write, 	   leading to that fos may never be closed at all 	 */
 name|writer
 operator|=
 operator|new
@@ -477,7 +478,6 @@ name|SaveException
 operator|.
 name|BACKUP_CREATION
 throw|;
-comment|//throw new SaveException(Globals.lang("Save failed during backup creation")+": "+ex.getMessage());
 block|}
 block|}
 try|try
@@ -560,19 +560,24 @@ throw|throw
 operator|new
 name|SaveException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Save failed while committing changes"
-argument_list|)
-operator|+
-literal|": "
+literal|"Save failed while committing changes: "
 operator|+
 name|ex2
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Save failed while committing changes: %0"
+argument_list|,
+name|ex2
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -606,7 +611,7 @@ name|delete
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Check if a lock file exists, and create it if it doesn't.      * @return true if the lock file already existed      * @throws IOException if something happens during creation.      */
+comment|/**      * Check if a lock file exists, and create it if it doesn't.      *      * @return true if the lock file already existed      * @throws IOException if something happens during creation.      */
 DECL|method|createLockFile ()
 specifier|private
 name|boolean
@@ -692,7 +697,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Check if a lock file exists, and delete it if it does.      * @return true if the lock file existed, false otherwise.      * @throws IOException if something goes wrong.      */
+comment|/**      * Check if a lock file exists, and delete it if it does.      *      * @return true if the lock file existed, false otherwise.      * @throws IOException if something goes wrong.      */
 DECL|method|deleteLockFile ()
 specifier|private
 name|boolean

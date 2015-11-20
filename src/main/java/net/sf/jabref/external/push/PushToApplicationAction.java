@@ -262,7 +262,7 @@ name|panel
 operator|=
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 expr_stmt|;
 comment|// Check if a BasePanel exists:
@@ -502,12 +502,8 @@ name|citeKey
 operator|=
 name|bes
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 expr_stmt|;
 comment|// if the key is empty we give a warning and ignore this entry
 if|if

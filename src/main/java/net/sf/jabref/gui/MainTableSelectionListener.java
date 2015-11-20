@@ -176,6 +176,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|FocusRequester
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -2199,7 +2215,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*ExternalFileType type = Globals.prefs.getExternalFileTypeByMimeType("text/html");                         ExternalFileMenuItem item = new ExternalFileMenuItem                                 (panel.frame(), entry, "",                                 (String)link, type.getIcon(),                                 panel.metaData(), type);                         boolean success = item.openLink();                         if (!success) {                             panel.output(Globals.lang("Unable to open link."));                         } */
+comment|/*ExternalFileType type = Globals.prefs.getExternalFileTypeByMimeType("text/html");                         ExternalFileMenuItem item = new ExternalFileMenuItem                                 (panel.frame(), entry, "",                                 (String)link, type.getIcon(),                                 panel.metaData(), type);                         boolean success = item.openLink();                         if (!success) {                             panel.output(Localization.lang("Unable to open link."));                         } */
 comment|//Util.openExternalViewer(panel.metaData(), (String)link, fieldName);
 block|}
 comment|//catch (IOException ex) {

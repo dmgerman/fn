@@ -128,6 +128,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -258,20 +274,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|FocusRequester
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -346,6 +348,38 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|FocusRequester
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|PositionWindow
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|importer
 operator|.
 name|OutputPrinter
@@ -392,9 +426,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|id
+name|entry
 operator|.
 name|IdGenerator
 import|;
@@ -495,22 +529,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
 import|;
 end_import
 
@@ -1241,12 +1259,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Import failed"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|entry
@@ -1411,12 +1424,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Import failed"
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -1469,12 +1477,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Import failed"
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -1790,7 +1793,7 @@ name|frame
 argument_list|)
 decl_stmt|;
 comment|// We want to center the dialog, to make it look nicer.
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -1806,7 +1809,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 name|etd
@@ -2005,7 +2008,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Key collision occured"
+literal|"Key collision occurred"
 argument_list|,
 name|ex
 argument_list|)

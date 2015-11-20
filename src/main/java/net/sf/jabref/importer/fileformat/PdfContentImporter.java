@@ -180,22 +180,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|BibtexEntryTypes
 import|;
 end_import
@@ -213,6 +197,22 @@ operator|.
 name|util
 operator|.
 name|DOI
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
 import|;
 end_import
 
@@ -1099,12 +1099,7 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"Encrypted documents are not supported"
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//return res;
@@ -1344,7 +1339,7 @@ name|publisher
 init|=
 literal|null
 decl_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 name|BibtexEntryTypes

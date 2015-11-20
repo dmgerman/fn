@@ -214,11 +214,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|bibtex
+operator|.
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryType
+name|EntryType
 import|;
 end_import
 
@@ -1710,7 +1724,7 @@ control|(
 name|String
 name|key
 range|:
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getAllTypes
 argument_list|()
@@ -1723,7 +1737,7 @@ argument_list|(
 operator|new
 name|ChangeTypeAction
 argument_list|(
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -1821,15 +1835,6 @@ name|PopupMenuEvent
 name|e
 parameter_list|)
 block|{
-name|BibtexEntry
-index|[]
-name|bes
-init|=
-name|panel
-operator|.
-name|getSelectedEntries
-argument_list|()
-decl_stmt|;
 name|panel
 operator|.
 name|storeCurrentEdit
@@ -2807,7 +2812,7 @@ name|LOGGER
 operator|.
 name|debug
 argument_list|(
-literal|"Could not execute command "
+literal|"Cannot execute command "
 operator|+
 name|command
 operator|+
@@ -2828,7 +2833,7 @@ name|AbstractAction
 block|{
 DECL|field|type
 specifier|final
-name|BibtexEntryType
+name|EntryType
 name|type
 decl_stmt|;
 DECL|field|panel
@@ -2836,11 +2841,11 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|method|ChangeTypeAction (BibtexEntryType type, BasePanel bp)
+DECL|method|ChangeTypeAction (EntryType type, BasePanel bp)
 specifier|public
 name|ChangeTypeAction
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|,
 name|BasePanel

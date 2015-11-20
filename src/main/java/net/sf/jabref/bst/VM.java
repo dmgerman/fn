@@ -40,16 +40,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|PrintStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Collection
@@ -286,6 +276,34 @@ name|Tree
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  *  * A Bibtex Virtual machine that can execute .bst files.  *  * Documentation can be found in the original bibtex distribution:  *  * https://www.ctan.org/pkg/bibtex  *  */
 end_comment
@@ -298,15 +316,21 @@ name|VM
 implements|implements
 name|Warn
 block|{
-DECL|field|out
+DECL|field|LOGGER
 specifier|private
+specifier|static
 specifier|final
-name|PrintStream
-name|out
+name|Log
+name|LOGGER
 init|=
-name|System
+name|LogFactory
 operator|.
-name|out
+name|getLog
+argument_list|(
+name|VM
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|class|Identifier
 specifier|public
@@ -2678,11 +2702,9 @@ name|empty
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 name|stack
 operator|.
@@ -3344,7 +3366,7 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-comment|/**              * Pops and prints the top of the stack on the terminal and log              * file. It's useful for debugging.              */
+comment|/**              * Pops and prints the top of the stack to the log file. It's useful for debugging.              */
 annotation|@
 name|Override
 specifier|public
@@ -3355,11 +3377,9 @@ name|BstEntry
 name|context
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 name|stack
 operator|.
@@ -3437,9 +3457,9 @@ name|BstEntry
 name|context
 parameter_list|)
 block|{
-name|out
+name|LOGGER
 operator|.
-name|println
+name|warn
 argument_list|(
 literal|"Warning (#"
 operator|+
@@ -5107,11 +5127,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"ERROR "
 operator|+
@@ -5140,11 +5158,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"ERROR "
 operator|+
@@ -5841,11 +5857,9 @@ name|String
 name|string
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|warn
 argument_list|(
 name|string
 argument_list|)

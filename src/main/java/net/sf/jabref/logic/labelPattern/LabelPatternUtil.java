@@ -1772,11 +1772,11 @@ return|return
 name|fieldList
 return|;
 block|}
-comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      *      * The given database is used to avoid duplicate keys.      *      * @param dBase a<code>BibtexDatabase</code>      * @param entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
+comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and saves the unique label in the      *<code>Bibtexentry</code>.      *      * The given database is used to avoid duplicate keys.      *      * @param dBase a<code>BibtexDatabase</code>      * @param entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
 DECL|method|makeLabel (MetaData metaData, BibtexDatabase dBase, BibtexEntry entry)
 specifier|public
 specifier|static
-name|BibtexEntry
+name|void
 name|makeLabel
 parameter_list|(
 name|MetaData
@@ -2430,9 +2430,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-return|return
-name|entry
-return|;
 block|}
 comment|/**      * Applies modifiers to a label generated based on a field marker.      * @param label The generated label.      * @param parts String array containing the modifiers.      * @param offset The number of initial items in the modifiers array to skip.      * @return The modified label.      */
 DECL|method|applyModifiers (String label, String[] parts, int offset)

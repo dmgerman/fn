@@ -57,7 +57,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class includes sensible defaults for consistent formatting of BibTex page numbers.  */
+comment|/**  * This class includes sensible defaults for consistent formatting of BibTex page numbers.  *  * From BibTex manual:  * One or more page numbers or range of numbers, such as 42--111 or 7,41,73--97 or 43+  * (the '+' in this last example indicates pages following that don't form a simple range).  * To make it easier to maintain Scribe-compatible databases, the standard styles convert  * a single dash (as in 7-33) to the double dash used in TEX to denote number ranges (as in 7--33).  */
 end_comment
 
 begin_class
@@ -80,7 +80,7 @@ return|return
 literal|"Page numbers"
 return|;
 block|}
-comment|/**      * Format page numbers, separated either by commas or double-hyphens.      * Converts the range number format of the<code>pages</code> field to page_number--page_number.      * Removes all literals except [0-9,-].      * Keeps the existing String if the resulting field does not match the expected Regex.      *      *<example>      *     1-2 -> 1--2      *     1,2,3 -> 1,2,3      *     {1}-{2} -> 1--2      *     Invalid -> Invalid      *</example>      */
+comment|/**      * Format page numbers, separated either by commas or double-hyphens.      * Converts the range number format of the<code>pages</code> field to page_number--page_number.      * Removes all literals except [0-9,-+].      * Keeps the existing String if the resulting field does not match the expected Regex.      *      *<example>      *     1-2 -> 1--2      *     1,2,3 -> 1,2,3      *     {1}-{2} -> 1--2      *     43+ -> 43+      *     Invalid -> Invalid      *</example>      */
 DECL|method|format (String value)
 specifier|public
 name|String
@@ -94,7 +94,7 @@ specifier|final
 name|String
 name|rejectLiterals
 init|=
-literal|"[^0-9,-]"
+literal|"[^0-9,\\-\\+]"
 decl_stmt|;
 specifier|final
 name|Pattern

@@ -140,20 +140,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -222,9 +208,39 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|help
 operator|.
 name|HelpAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
 import|;
 end_import
 
@@ -365,7 +381,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Sep 19, 2005  * Time: 7:57:29 PM  * To browseOld this template use File | Settings | File Templates.  */
+comment|/**  * Created by IntelliJ IDEA. User: alver Date: Sep 19, 2005 Time: 7:57:29 PM To browseOld this template use File |  * Settings | File Templates.  */
 end_comment
 
 begin_class
@@ -1819,7 +1835,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Close dialog"
+name|KeyBinds
+operator|.
+name|CLOSE_DIALOG
 argument_list|)
 argument_list|,
 literal|"close"
@@ -2401,20 +2419,16 @@ name|showConfirmDialog
 argument_list|(
 name|this
 argument_list|,
-literal|"'"
-operator|+
-name|f
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite file?"
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
+name|f
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization
@@ -2812,7 +2826,7 @@ name|i
 operator|<
 name|frame
 operator|.
-name|baseCount
+name|getBasePanelCount
 argument_list|()
 condition|;
 name|i
@@ -2821,7 +2835,7 @@ control|)
 block|{
 name|frame
 operator|.
-name|baseAt
+name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
@@ -2892,10 +2906,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Choose the URL to download. The default value points to a list provided by the JabRef developers."
+literal|"Choose the URL to download."
 argument_list|)
 argument_list|,
-literal|"http://jabref.sf.net/journals/journal_abbreviations_general.txt"
+literal|""
 argument_list|)
 expr_stmt|;
 if|if
@@ -3195,6 +3209,7 @@ name|AbstractTableModel
 implements|implements
 name|ActionListener
 block|{
+comment|// @formatter:off
 DECL|field|names
 specifier|final
 name|String
@@ -3220,6 +3235,7 @@ literal|"Abbreviation"
 argument_list|)
 block|}
 decl_stmt|;
+comment|//
 DECL|field|journals
 name|List
 argument_list|<

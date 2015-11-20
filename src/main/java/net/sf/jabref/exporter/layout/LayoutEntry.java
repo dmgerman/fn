@@ -206,22 +206,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -2102,14 +2086,7 @@ throw|throw
 operator|new
 name|Exception
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Formatter not found"
-argument_list|)
-operator|+
-literal|": "
+literal|"Formatter not found: "
 operator|+
 name|className
 argument_list|)

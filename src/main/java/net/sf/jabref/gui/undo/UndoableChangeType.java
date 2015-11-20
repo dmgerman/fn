@@ -58,7 +58,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryType
+name|EntryType
 import|;
 end_import
 
@@ -77,13 +77,13 @@ block|{
 DECL|field|oldType
 specifier|private
 specifier|final
-name|BibtexEntryType
+name|EntryType
 name|oldType
 decl_stmt|;
 DECL|field|newType
 specifier|private
 specifier|final
-name|BibtexEntryType
+name|EntryType
 name|newType
 decl_stmt|;
 DECL|field|be
@@ -92,17 +92,17 @@ specifier|final
 name|BibtexEntry
 name|be
 decl_stmt|;
-DECL|method|UndoableChangeType (BibtexEntry be, BibtexEntryType oldType, BibtexEntryType newType)
+DECL|method|UndoableChangeType (BibtexEntry be, EntryType oldType, EntryType newType)
 specifier|public
 name|UndoableChangeType
 parameter_list|(
 name|BibtexEntry
 name|be
 parameter_list|,
-name|BibtexEntryType
+name|EntryType
 name|oldType
 parameter_list|,
-name|BibtexEntryType
+name|EntryType
 name|newType
 parameter_list|)
 block|{

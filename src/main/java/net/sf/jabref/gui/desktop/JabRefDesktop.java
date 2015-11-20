@@ -172,6 +172,24 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|io
+operator|.
+name|URLUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -374,14 +392,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"File not found"
-argument_list|)
-operator|+
-literal|" ("
+literal|"File not found ("
 operator|+
 name|fieldName
 operator|+
@@ -532,7 +543,7 @@ literal|"url"
 expr_stmt|;
 name|link
 operator|=
-name|Util
+name|URLUtil
 operator|.
 name|sanitizeUrl
 argument_list|(
@@ -1707,6 +1718,7 @@ argument_list|(
 literal|"Unable to open file."
 argument_list|)
 decl_stmt|;
+comment|// @formatter:off
 name|String
 index|[]
 name|options
@@ -1742,6 +1754,7 @@ literal|"Cancel"
 argument_list|)
 block|}
 decl_stmt|;
+comment|// @formatter:on
 name|String
 name|defOption
 init|=
@@ -2140,7 +2153,7 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|undoManager
@@ -2152,7 +2165,7 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|markBaseChanged
@@ -2431,7 +2444,7 @@ name|IOException
 block|{
 name|url
 operator|=
-name|Util
+name|URLUtil
 operator|.
 name|sanitizeUrl
 argument_list|(

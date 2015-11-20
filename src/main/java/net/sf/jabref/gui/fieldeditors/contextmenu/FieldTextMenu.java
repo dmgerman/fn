@@ -158,11 +158,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|formatter
 operator|.
-name|strings
+name|bibtexfields
 operator|.
-name|NameListNormalizer
+name|AuthorsFormatter
 import|;
 end_import
 
@@ -553,9 +553,11 @@ name|field
 operator|.
 name|setText
 argument_list|(
-name|NameListNormalizer
+operator|new
+name|AuthorsFormatter
+argument_list|()
 operator|.
-name|normalizeAuthorList
+name|format
 argument_list|(
 name|input
 argument_list|)

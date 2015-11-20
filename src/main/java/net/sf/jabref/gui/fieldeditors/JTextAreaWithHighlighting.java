@@ -494,7 +494,9 @@ argument_list|,
 operator|new
 name|AbstractAction
 argument_list|(
-literal|"Redo"
+name|Actions
+operator|.
+name|REDO
 argument_list|)
 block|{
 annotation|@

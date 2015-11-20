@@ -166,9 +166,23 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|bibtex
 operator|.
-name|id
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
 operator|.
 name|IdGenerator
 import|;
@@ -203,22 +217,6 @@ operator|.
 name|entry
 operator|.
 name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
 import|;
 end_import
 
@@ -1360,7 +1358,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Look at stderr for details"
+literal|"Look at log for details"
 argument_list|)
 operator|+
 literal|'.'
@@ -1542,7 +1540,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(

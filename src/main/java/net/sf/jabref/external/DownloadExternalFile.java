@@ -396,6 +396,7 @@ name|MalformedURLException
 name|ex1
 parameter_list|)
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -421,6 +422,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 return|return;
 block|}
 name|download
@@ -1002,20 +1004,16 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"'"
-operator|+
-name|f
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite file?"
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
+name|f
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization

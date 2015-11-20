@@ -262,11 +262,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|l10n
+name|keyboard
 operator|.
-name|Localization
+name|KeyBinds
 import|;
 end_import
 
@@ -278,9 +278,43 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|util
 operator|.
-name|Util
+name|FocusRequester
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|PositionWindow
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -1266,7 +1300,7 @@ if|if
 condition|(
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|==
 literal|null
@@ -1458,7 +1492,7 @@ name|frame
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|,
 name|BibtexFields
@@ -1480,7 +1514,7 @@ argument_list|(
 name|activeFetcher
 argument_list|)
 expr_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -1558,7 +1592,7 @@ name|frame
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|,
 name|BibtexFields
@@ -1580,7 +1614,7 @@ argument_list|(
 name|activeFetcher
 argument_list|)
 expr_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -1696,7 +1730,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Fetch Medline"
+name|KeyBinds
+operator|.
+name|WEB_SEARCH
 argument_list|)
 argument_list|)
 expr_stmt|;

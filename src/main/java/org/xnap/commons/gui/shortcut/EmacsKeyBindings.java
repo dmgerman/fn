@@ -279,7 +279,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Generic class which activates Emacs keybindings for java input {@link  * JTextComponent}s.  *   * The inner class actions can also be used independently.  */
+comment|/**  * Generic class which activates Emacs keybindings for java input {@link  * JTextComponent}s.  *  * The inner class actions can also be used independently.  */
 end_comment
 
 begin_class
@@ -1080,7 +1080,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Loads the emacs keybindings for all common<code>JTextComponent</code>s.      *       * The shared keymap instances of the concrete subclasses of       * {@link JTextComponent} are fed with the keybindings.      *      * The original keybindings are stored in a backup array.      */
+comment|/**      * Loads the emacs keybindings for all common<code>JTextComponent</code>s.      *      * The shared keymap instances of the concrete subclasses of      * {@link JTextComponent} are fed with the keybindings.      *      * The original keybindings are stored in a backup array.      */
 DECL|method|load ()
 specifier|public
 specifier|static
@@ -1647,7 +1647,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This action kills the next word.      *       * It removes the next word on the right side of the cursor from the active      * text component and adds it to the clipboard.       */
+comment|/**      * This action kills the next word.      *      * It removes the next word on the right side of the cursor from the active      * text component and adds it to the clipboard.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1773,7 +1773,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * This action kills the previous word.      *       * It removes the previous word on the left side of the cursor from the       * active text component and adds it to the clipboard.      */
+comment|/**      * This action kills the previous word.      *      * It removes the previous word on the left side of the cursor from the      * active text component and adds it to the clipboard.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -2204,7 +2204,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * This actin kills text up to the end of the current line and stores it in       * the killring.      */
+comment|/**      * This actin kills text up to the end of the current line and stores it in      * the killring.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -2282,9 +2282,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|start
 operator|==
 name|end
+operator|)
 operator|&&
 name|jtc
 operator|.
@@ -2461,18 +2463,22 @@ name|jt
 parameter_list|)
 block|{
 return|return
+operator|(
 name|SetMarkCommandAction
 operator|.
 name|jtc
 operator|==
 name|jt
+operator|)
 operator|&&
+operator|(
 name|SetMarkCommandAction
 operator|.
 name|position
 operator|!=
 operator|-
 literal|1
+operator|)
 return|;
 block|}
 DECL|method|reset ()
@@ -2644,7 +2650,9 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{                 }
+block|{
+comment|// Ignored
+block|}
 block|}
 block|}
 block|}
@@ -2817,7 +2825,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Manages all killed (cut) text pieces in a ring which is accessible      * through {@link YankPopAction}.      *<p>      * Also provides an unmodifiable copy of all cut pieces.       */
+comment|/**      * Manages all killed (cut) text pieces in a ring which is accessible      * through {@link YankPopAction}.      *<p>      * Also provides an unmodifiable copy of all cut pieces.      */
 DECL|class|KillRing
 specifier|public
 specifier|static
@@ -2840,9 +2848,7 @@ name|ring
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|iter
@@ -2905,7 +2911,7 @@ return|return
 name|jtc
 return|;
 block|}
-comment|/**          * Adds text to the front of the kill ring.          *<p>          * Deviating from the Emacs implementation we make sure the           * exact same text is not somewhere else in the ring.          */
+comment|/**          * Adds text to the front of the kill ring.          *<p>          * Deviating from the Emacs implementation we make sure the          * exact same text is not somewhere else in the ring.          */
 DECL|method|add (String text)
 name|void
 name|add

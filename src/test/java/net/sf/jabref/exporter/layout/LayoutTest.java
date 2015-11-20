@@ -371,13 +371,13 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Other"
+literal|"Unknown"
 argument_list|,
 name|layout
 argument_list|(
 literal|"\\bibtextype"
 argument_list|,
-literal|"@other{bla, author={This\nis\na\ntext}}"
+literal|"@unknown{bla, author={This\nis\na\ntext}}"
 argument_list|)
 argument_list|)
 expr_stmt|;

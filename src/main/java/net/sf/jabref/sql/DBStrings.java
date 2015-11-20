@@ -40,22 +40,6 @@ name|JabRefPreferences
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
-import|;
-end_import
-
 begin_comment
 comment|/**  *  * @author pattonlk  */
 end_comment
@@ -175,19 +159,9 @@ index|[]
 name|servers
 init|=
 block|{
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"MySQL"
-argument_list|)
 block|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"PostgreSQL"
-argument_list|)
 block|}
 decl_stmt|;
 name|setServerTypes
@@ -430,20 +404,20 @@ return|return
 name|isInitialized
 return|;
 block|}
-DECL|method|isInitialized (boolean isInitialized)
+DECL|method|isInitialized (boolean isInit)
 specifier|private
 name|void
 name|isInitialized
 parameter_list|(
 name|boolean
-name|isInitialized
+name|isInit
 parameter_list|)
 block|{
 name|this
 operator|.
 name|isInitialized
 operator|=
-name|isInitialized
+name|isInit
 expr_stmt|;
 block|}
 DECL|method|isConfigValid ()
@@ -456,20 +430,20 @@ return|return
 name|configValid
 return|;
 block|}
-DECL|method|isConfigValid (boolean configValid)
+DECL|method|isConfigValid (boolean confValid)
 specifier|public
 name|void
 name|isConfigValid
 parameter_list|(
 name|boolean
-name|configValid
+name|confValid
 parameter_list|)
 block|{
 name|this
 operator|.
 name|configValid
 operator|=
-name|configValid
+name|confValid
 expr_stmt|;
 block|}
 comment|/**      * Store these db strings into JabRef preferences.      */

@@ -442,7 +442,47 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test for https://sourceforge.net/forum/message.php?msg_id=4498555      * Test the Labelmaker and all kind of accents      * Ã Ã¡ Ä Ä Ã Ã© Ã Ã­ Ä¹ Äº Å Å Ã Ã³ Å Å Å Å Ã Ãº Ã Ã½ Å¹ Åº      */
+annotation|@
+name|Test
+DECL|method|testSpecialLatexCharacterInAuthorName ()
+specifier|public
+name|void
+name|testSpecialLatexCharacterInAuthorName
+parameter_list|()
+block|{
+name|BibtexEntry
+name|entry
+init|=
+name|BibtexParser
+operator|.
+name|singleFromString
+argument_list|(
+literal|"@ARTICLE{kohn, author={Simon Popovi\\v{c}ov\\'{a}}}"
+argument_list|)
+decl_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Popovicova"
+argument_list|,
+name|Util
+operator|.
+name|checkLegalKey
+argument_list|(
+name|LabelPatternUtil
+operator|.
+name|makeLabel
+argument_list|(
+name|entry
+argument_list|,
+literal|"auth"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Test for https://sourceforge.net/forum/message.php?msg_id=4498555 Test the Labelmaker and all kind of accents Ã Ã¡      * Ä Ä Ã Ã© Ã Ã­ Ä¹ Äº Å Å Ã Ã³ Å Å Å Å Ã Ãº Ã Ã½ Å¹ Åº      */
 annotation|@
 name|Test
 DECL|method|testMakeLabelAndCheckLegalKeys ()
@@ -813,7 +853,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test the Labelmaker and with accent grave      * Chars to test: "ÃÃÃÃÃ";      */
+comment|/**      * Test the Labelmaker and with accent grave Chars to test: "ÃÃÃÃÃ";      */
 annotation|@
 name|Test
 DECL|method|testMakeLabelAndCheckLegalKeysAccentGrave ()
@@ -1323,7 +1363,9 @@ parameter_list|(
 name|NullPointerException
 name|ignored
 parameter_list|)
-block|{          }
+block|{
+comment|// Ignored
+block|}
 block|}
 annotation|@
 name|Test
@@ -1525,7 +1567,9 @@ parameter_list|(
 name|NullPointerException
 name|ignored
 parameter_list|)
-block|{          }
+block|{
+comment|// Ignored
+block|}
 block|}
 comment|/**      * Tests  [auth.auth.ea]      */
 annotation|@
@@ -2518,16 +2562,89 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests the [authorsN] pattern.      */
+comment|/**      * Tests the [authorsN] pattern. -> [authors1]      */
 annotation|@
 name|Test
-DECL|method|testNAuthors ()
+DECL|method|testNAuthors1 ()
 specifier|public
 name|void
-name|testNAuthors
+name|testNAuthors1
 parameter_list|()
 block|{
-comment|// test [authors3]
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Newton"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|NAuthors
+argument_list|(
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
+argument_list|,
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"NewtonEtAl"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|NAuthors
+argument_list|(
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
+argument_list|,
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"NewtonEtAl"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|NAuthors
+argument_list|(
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
+argument_list|,
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"NewtonEtAl"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|NAuthors
+argument_list|(
+name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
+argument_list|,
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Tests the [authorsN] pattern. -> [authors3]      */
+annotation|@
+name|Test
+DECL|method|testNAuthors3 ()
+specifier|public
+name|void
+name|testNAuthors3
+parameter_list|()
+block|{
 name|Assert
 operator|.
 name|assertEquals
@@ -2719,7 +2836,9 @@ parameter_list|(
 name|NullPointerException
 name|ignored
 parameter_list|)
-block|{          }
+block|{
+comment|// Ignored
+block|}
 block|}
 annotation|@
 name|Test
@@ -2847,7 +2966,9 @@ parameter_list|(
 name|NullPointerException
 name|ignored
 parameter_list|)
-block|{          }
+block|{
+comment|// Ignored
+block|}
 block|}
 comment|/**      * Tests [veryShortTitle]      */
 annotation|@

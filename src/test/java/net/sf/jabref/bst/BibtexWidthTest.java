@@ -66,36 +66,6 @@ operator|.
 name|width
 argument_list|(
 name|string
-argument_list|,
-operator|new
-name|Warn
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|warn
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-name|Assert
-operator|.
-name|fail
-argument_list|(
-literal|"Should not Warn! Width should be "
-operator|+
-name|i
-operator|+
-literal|" for "
-operator|+
-name|string
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 argument_list|)
 expr_stmt|;

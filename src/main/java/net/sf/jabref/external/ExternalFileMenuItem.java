@@ -402,7 +402,7 @@ name|openExternalViewer
 argument_list|(
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData

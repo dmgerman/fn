@@ -100,13 +100,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|util
+name|entry
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|EntryUtil
 import|;
 end_import
 
@@ -679,7 +677,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|StringUtil
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(

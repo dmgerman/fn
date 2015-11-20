@@ -154,6 +154,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|PositionWindow
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -271,6 +287,22 @@ operator|.
 name|entry
 operator|.
 name|BibtexString
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
 import|;
 end_import
 
@@ -1013,7 +1045,7 @@ operator|.
 name|entryListComplete
 argument_list|()
 expr_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -1152,6 +1184,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1162,9 +1195,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No entries found. Please make sure you are "
-operator|+
-literal|"using the correct import filter."
+literal|"No entries found. Please make sure you are using the correct import filter."
 argument_list|)
 argument_list|,
 name|Localization
@@ -1179,6 +1210,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+comment|// @formatter:on
 block|}
 block|}
 block|}
@@ -1512,7 +1544,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 argument_list|()
 argument_list|)

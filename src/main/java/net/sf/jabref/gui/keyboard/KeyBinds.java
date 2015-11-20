@@ -158,15 +158,6 @@ name|CLOSE_ENTRY_EDITOR
 init|=
 literal|"Close entry editor"
 decl_stmt|;
-DECL|field|CLOSE_PREAMBLE_EDITOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|CLOSE_PREAMBLE_EDITOR
-init|=
-literal|"Close preamble editor"
-decl_stmt|;
 DECL|field|COPY
 specifier|public
 specifier|static
@@ -319,42 +310,6 @@ name|String
 name|ENTRY_EDITOR_STORE_FIELD
 init|=
 literal|"Entry editor, store field"
-decl_stmt|;
-DECL|field|FETCH_AR_XIV_ORG
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FETCH_AR_XIV_ORG
-init|=
-literal|"Fetch ArXiv.org"
-decl_stmt|;
-DECL|field|FETCH_INSPIRE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FETCH_INSPIRE
-init|=
-literal|"Fetch INSPIRE"
-decl_stmt|;
-DECL|field|FETCH_MEDLINE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FETCH_MEDLINE
-init|=
-literal|"Fetch Medline"
-decl_stmt|;
-DECL|field|FETCH_SPIRES
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FETCH_SPIRES
-init|=
-literal|"Fetch SPIRES"
 decl_stmt|;
 DECL|field|FILE_LIST_EDITOR_MOVE_ENTRY_DOWN
 specifier|public
@@ -644,6 +599,15 @@ name|PREVIOUS_TAB
 init|=
 literal|"Previous tab"
 decl_stmt|;
+DECL|field|PRINT_ENTRY_PREVIEW
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PRINT_ENTRY_PREVIEW
+init|=
+literal|"Print entry preview"
+decl_stmt|;
 DECL|field|PUSH_TO_APPLICATION
 specifier|public
 specifier|static
@@ -743,51 +707,6 @@ name|SEARCH
 init|=
 literal|"Search"
 decl_stmt|;
-DECL|field|SEARCH_ACM_PORTAL
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEARCH_ACM_PORTAL
-init|=
-literal|"Search ACM Portal"
-decl_stmt|;
-DECL|field|SEARCH_ADS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEARCH_ADS
-init|=
-literal|"Search ADS"
-decl_stmt|;
-DECL|field|SEARCH_IEEE_XPLORE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEARCH_IEEE_XPLORE
-init|=
-literal|"Search IEEEXplore"
-decl_stmt|;
-DECL|field|SEARCH_JSTOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEARCH_JSTOR
-init|=
-literal|"Search JSTOR"
-decl_stmt|;
-DECL|field|SEARCH_SCIENCE_DIRECT
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SEARCH_SCIENCE_DIRECT
-init|=
-literal|"Search ScienceDirect"
-decl_stmt|;
 DECL|field|SELECT_ALL
 specifier|public
 specifier|static
@@ -805,24 +724,6 @@ name|String
 name|STRING_DIALOG_ADD_STRING
 init|=
 literal|"String dialog, add string"
-decl_stmt|;
-DECL|field|STRING_DIALOG_MOVE_STRING_DOWN
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|STRING_DIALOG_MOVE_STRING_DOWN
-init|=
-literal|"String dialog, move string down"
-decl_stmt|;
-DECL|field|STRING_DIALOG_MOVE_STRING_UP
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|STRING_DIALOG_MOVE_STRING_UP
-init|=
-literal|"String dialog, move string up"
 decl_stmt|;
 DECL|field|STRING_DIALOG_REMOVE_STRING
 specifier|public
@@ -895,6 +796,15 @@ name|String
 name|UNMARK_ENTRIES
 init|=
 literal|"Unmark entries"
+decl_stmt|;
+DECL|field|WEB_SEARCH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|WEB_SEARCH
+init|=
+literal|"Web search"
 decl_stmt|;
 DECL|field|WRITE_XMP
 specifier|public
@@ -1182,24 +1092,6 @@ name|keyBindMap
 operator|.
 name|put
 argument_list|(
-name|CLOSE_ENTRY_EDITOR
-argument_list|,
-literal|"ESCAPE"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|CLOSE_PREAMBLE_EDITOR
-argument_list|,
-literal|"ESCAPE"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
 name|BACK_HELP_DIALOG
 argument_list|,
 literal|"LEFT"
@@ -1228,6 +1120,15 @@ operator|.
 name|put
 argument_list|(
 name|CLEAR_SEARCH
+argument_list|,
+literal|"ESCAPE"
+argument_list|)
+expr_stmt|;
+name|keyBindMap
+operator|.
+name|put
+argument_list|(
+name|CLOSE_ENTRY_EDITOR
 argument_list|,
 literal|"ESCAPE"
 argument_list|)
@@ -1315,24 +1216,6 @@ argument_list|(
 name|STRING_DIALOG_REMOVE_STRING
 argument_list|,
 literal|"shift DELETE"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|STRING_DIALOG_MOVE_STRING_UP
-argument_list|,
-literal|"ctrl UP"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|STRING_DIALOG_MOVE_STRING_DOWN
-argument_list|,
-literal|"ctrl DOWN"
 argument_list|)
 expr_stmt|;
 name|keyBindMap
@@ -1510,27 +1393,9 @@ name|keyBindMap
 operator|.
 name|put
 argument_list|(
-name|FETCH_MEDLINE
+name|WEB_SEARCH
 argument_list|,
 literal|"F5"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|SEARCH_SCIENCE_DIRECT
-argument_list|,
-literal|"ctrl F5"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|SEARCH_ADS
-argument_list|,
-literal|"ctrl shift F6"
 argument_list|)
 expr_stmt|;
 name|keyBindMap
@@ -1582,42 +1447,6 @@ name|keyBindMap
 operator|.
 name|put
 argument_list|(
-name|SEARCH_IEEE_XPLORE
-argument_list|,
-literal|"alt F8"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|SEARCH_ACM_PORTAL
-argument_list|,
-literal|"ctrl shift F8"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|FETCH_AR_XIV_ORG
-argument_list|,
-literal|"shift F8"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|SEARCH_JSTOR
-argument_list|,
-literal|"shift F9"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
 name|CLEANUP
 argument_list|,
 literal|"ctrl shift F7"
@@ -1639,24 +1468,6 @@ argument_list|(
 name|NEW_FILE_LINK
 argument_list|,
 literal|"ctrl N"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|FETCH_SPIRES
-argument_list|,
-literal|"ctrl F8"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|FETCH_INSPIRE
-argument_list|,
-literal|"ctrl F2"
 argument_list|)
 expr_stmt|;
 name|keyBindMap
@@ -1776,6 +1587,15 @@ argument_list|(
 name|HIDE_SHOW_TOOLBAR
 argument_list|,
 literal|"ctrl alt T"
+argument_list|)
+expr_stmt|;
+name|keyBindMap
+operator|.
+name|put
+argument_list|(
+name|PRINT_ENTRY_PREVIEW
+argument_list|,
+literal|"alt P"
 argument_list|)
 expr_stmt|;
 block|}

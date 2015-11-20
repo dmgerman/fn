@@ -16,16 +16,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -44,17 +34,11 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntry
+name|After
 import|;
 end_import
 
@@ -64,7 +48,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|After
+name|Assert
 import|;
 end_import
 

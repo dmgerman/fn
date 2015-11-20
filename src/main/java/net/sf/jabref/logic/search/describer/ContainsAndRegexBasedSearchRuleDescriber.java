@@ -380,16 +380,23 @@ name|String
 name|getCaseSensitiveDescription
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
 name|caseSensitive
-condition|?
+condition|)
+block|{
+return|return
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"case sensitive"
 argument_list|)
-else|:
+return|;
+block|}
+else|else
+block|{
+return|return
 name|Localization
 operator|.
 name|lang
@@ -397,6 +404,7 @@ argument_list|(
 literal|"case insensitive"
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 end_class

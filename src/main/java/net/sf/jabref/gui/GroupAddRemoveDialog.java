@@ -50,6 +50,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -268,6 +284,7 @@ name|add
 decl_stmt|;
 DECL|field|move
 specifier|private
+specifier|final
 name|boolean
 name|move
 decl_stmt|;
@@ -369,26 +386,40 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
+comment|// @formatter:off
+operator|(
 name|add
 condition|?
 operator|(
 name|move
 condition|?
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Move to group"
+argument_list|)
 else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Add to group"
+argument_list|)
 operator|)
 else|:
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Remove from group"
 argument_list|)
+operator|)
 argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+comment|// formatter:on
 name|ok
 operator|=
 operator|new
@@ -716,7 +747,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Close dialog"
+name|KeyBinds
+operator|.
+name|CLOSE_DIALOG
 argument_list|)
 argument_list|,
 literal|"close"

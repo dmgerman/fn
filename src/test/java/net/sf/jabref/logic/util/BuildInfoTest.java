@@ -77,7 +77,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"dev"
+literal|"*unknown*"
 argument_list|,
 name|buildInfo
 operator|.

@@ -68,11 +68,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|bibtex
 operator|.
-name|entry
-operator|.
-name|BibtexEntryType
+name|EntryTypes
 import|;
 end_import
 
@@ -84,9 +82,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|id
+name|entry
 operator|.
 name|IdGenerator
 import|;
@@ -230,7 +228,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(

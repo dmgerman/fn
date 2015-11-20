@@ -358,9 +358,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
-operator|.
-name|Localization
+name|CustomEntryTypesManager
 import|;
 end_import
 
@@ -372,11 +370,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|l10n
 operator|.
-name|BibtexEntryType
+name|Localization
 import|;
 end_import
 
@@ -1281,20 +1279,16 @@ name|PreferencesDialog
 operator|.
 name|this
 argument_list|,
-literal|'\''
-operator|+
-name|file
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"' "
-operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite file?"
+literal|"'%0' exists. Overwrite file?"
+argument_list|,
+name|file
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization
@@ -1439,7 +1433,7 @@ expr_stmt|;
 name|setValues
 argument_list|()
 expr_stmt|;
-name|BibtexEntryType
+name|CustomEntryTypesManager
 operator|.
 name|loadCustomEntryTypes
 argument_list|(

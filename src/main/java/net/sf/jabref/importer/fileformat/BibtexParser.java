@@ -142,6 +142,34 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|bibtex
+operator|.
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|CustomEntryTypesManager
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|GUIGlobals
@@ -186,9 +214,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|id
+name|entry
 operator|.
 name|IdGenerator
 import|;
@@ -331,7 +359,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|entryTypes
 decl_stmt|;
@@ -771,10 +799,10 @@ init|=
 name|parseTextToken
 argument_list|()
 decl_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|tp
 init|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -1123,7 +1151,7 @@ comment|// "@comment"
 name|CustomEntryType
 name|typ
 init|=
-name|CustomEntryType
+name|CustomEntryTypesManager
 operator|.
 name|parseEntryType
 argument_list|(
@@ -1138,9 +1166,6 @@ name|typ
 operator|.
 name|getName
 argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
 argument_list|,
 name|typ
 argument_list|)
@@ -1154,14 +1179,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Dropped comment from database"
-argument_list|)
-operator|+
-literal|":"
+literal|"Dropped comment from database: "
 operator|+
 name|comment
 argument_list|)
@@ -1181,10 +1199,12 @@ operator|=
 operator|new
 name|UnknownEntryType
 argument_list|(
-name|entryType
+name|EntryUtil
 operator|.
-name|toLowerCase
-argument_list|()
+name|capitalizeFirst
+argument_list|(
+name|entryType
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|isEntry
@@ -1316,7 +1336,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error occured when parsing entry"
+literal|"Error occurred when parsing entry"
 argument_list|)
 operator|+
 literal|": '"
@@ -1758,12 +1778,12 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|parseEntry (BibtexEntryType tp)
+DECL|method|parseEntry (EntryType tp)
 specifier|private
 name|BibtexEntry
 name|parseEntry
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|tp
 parameter_list|)
 throws|throws
@@ -3975,13 +3995,9 @@ name|UnknownEntryType
 condition|)
 block|{
 comment|// Look up the unknown type name in our map of parsed types:
-name|Object
-name|o
+name|String
+name|name
 init|=
-name|entryTypes
-operator|.
-name|get
-argument_list|(
 name|be
 operator|.
 name|getType
@@ -3989,26 +4005,24 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
+decl_stmt|;
+name|EntryType
+name|type
+init|=
+name|entryTypes
 operator|.
-name|toLowerCase
-argument_list|()
+name|get
+argument_list|(
+name|name
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|type
 operator|!=
 literal|null
 condition|)
 block|{
-name|BibtexEntryType
-name|type
-init|=
-operator|(
-name|BibtexEntryType
-operator|)
-name|o
-decl_stmt|;
 name|be
 operator|.
 name|setType
@@ -4027,49 +4041,19 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"unknown entry type"
+literal|"Unknown entry type"
 argument_list|)
 operator|+
 literal|": "
 operator|+
+name|name
+operator|+
+literal|"; key: "
+operator|+
 name|be
 operator|.
-name|getType
+name|getCiteKey
 argument_list|()
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|":"
-operator|+
-name|be
-operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
-operator|+
-literal|" . "
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Type set to 'other'"
-argument_list|)
-operator|+
-literal|"."
-argument_list|)
-expr_stmt|;
-name|be
-operator|.
-name|setType
-argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|OTHER
 argument_list|)
 expr_stmt|;
 block|}

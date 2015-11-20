@@ -94,6 +94,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -172,22 +188,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -226,9 +226,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|formatter
 operator|.
-name|Localization
+name|CaseChangers
 import|;
 end_import
 
@@ -242,11 +242,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|l10n
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|Localization
 import|;
 end_import
 
@@ -995,7 +993,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Start with entry type
-name|BibtexEntryType
+name|EntryType
 name|type1
 init|=
 name|one
@@ -1003,7 +1001,7 @@ operator|.
 name|getType
 argument_list|()
 decl_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|type2
 init|=
 name|two
@@ -1338,9 +1336,11 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
-name|StringUtil
+name|CaseChangers
 operator|.
-name|toUpperFirstLetter
+name|UPPER_FIRST
+operator|.
+name|format
 argument_list|(
 name|field
 argument_list|)

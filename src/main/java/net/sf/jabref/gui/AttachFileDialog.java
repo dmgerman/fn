@@ -188,11 +188,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|l10n
+name|keyboard
 operator|.
-name|Localization
+name|KeyBinds
 import|;
 end_import
 
@@ -206,11 +206,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|l10n
 operator|.
-name|strings
-operator|.
-name|StringUtil
+name|Localization
 import|;
 end_import
 
@@ -238,9 +236,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|model
 operator|.
-name|Util
+name|entry
+operator|.
+name|EntryUtil
 import|;
 end_import
 
@@ -555,6 +555,14 @@ name|entry
 argument_list|,
 name|editor
 argument_list|,
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
 name|Util
 operator|.
 name|getFileFilterForField
@@ -764,7 +772,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Close dialog"
+name|KeyBinds
+operator|.
+name|CLOSE_DIALOG
 argument_list|)
 argument_list|,
 literal|"close"
@@ -810,7 +820,7 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
-name|StringUtil
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(

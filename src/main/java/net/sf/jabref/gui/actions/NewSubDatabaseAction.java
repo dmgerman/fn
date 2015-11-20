@@ -72,11 +72,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|l10n
+name|util
 operator|.
-name|Localization
+name|PositionWindow
 import|;
 end_import
 
@@ -88,9 +88,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Util
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -148,6 +150,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|jabRefFrame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
@@ -235,7 +238,7 @@ operator|.
 name|tabbedPane
 argument_list|)
 decl_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -299,14 +302,9 @@ name|tabbedPane
 operator|.
 name|add
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|GUIGlobals
 operator|.
 name|untitledTitle
-argument_list|)
 argument_list|,
 name|bp
 argument_list|)

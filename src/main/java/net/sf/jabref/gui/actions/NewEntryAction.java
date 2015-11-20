@@ -36,6 +36,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|PositionWindow
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -52,13 +68,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|bibtex
 operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
+name|EntryTypes
 import|;
 end_import
 
@@ -74,7 +86,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryType
+name|EntryType
 import|;
 end_import
 
@@ -86,9 +98,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|model
 operator|.
-name|Util
+name|entry
+operator|.
+name|EntryUtil
 import|;
 end_import
 
@@ -274,7 +288,7 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
-name|StringUtil
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -314,7 +328,7 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
-name|StringUtil
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -368,7 +382,7 @@ argument_list|(
 name|jabRefFrame
 argument_list|)
 decl_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -384,7 +398,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|BibtexEntryType
+name|EntryType
 name|tp
 init|=
 name|etd
@@ -435,7 +449,7 @@ operator|)
 operator|.
 name|newEntry
 argument_list|(
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(

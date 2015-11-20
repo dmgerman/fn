@@ -278,18 +278,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|external
 operator|.
 name|DroppedFileHandler
@@ -377,20 +365,6 @@ operator|.
 name|importer
 operator|.
 name|OpenDatabaseAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
-name|ParserResult
 import|;
 end_import
 
@@ -553,7 +527,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Overriden to indicate which types of drags are supported (only LINK).      */
+comment|/**      * Overridden to indicate which types of drags are supported (only LINK).      */
 annotation|@
 name|Override
 DECL|method|getSourceActions (JComponent c)
@@ -717,9 +691,7 @@ name|dropRow
 argument_list|)
 return|;
 block|}
-comment|// Done by MrDlib
-comment|/*if(t.isDataFlavorSupported(MindMapNodesSelection.mindMapNodesFlavor)){                 String xml = (String)t.getTransferData(MindMapNodesSelection.mindMapNodesFlavor);                 URL mindmapURL = null;                 if(t.isDataFlavorSupported(MindMapNodesSelection.mindmapUrlFlavor)){                     mindmapURL = (URL)t.getTransferData(MindMapNodesSelection.mindmapUrlFlavor);                 }                 List<File> files = new ArrayList<File>();                 String[] xmlNodes = xml.split("<nodeseparator>");                 for(String xmlNode : xmlNodes){                     XMLElement element = new XMLElement();                     element.parseString(xmlNode);                     String link = element.getStringAttribute("Link");                     String absoluteLink = Tools.getLink(link, mindmapURL);                     if(absoluteLink == null) continue;                     File file = new File(absoluteLink);                     if(file.exists()){                         files.add(file);                     }                     else{                         try {                             URL url = new URL(absoluteLink);                             file = new File(url.toURI());                             if(file.exists()){                                 files.add(file);                             }                         } catch (URISyntaxException e) {                             // Todo logging                         } catch(IllegalArgumentException e){                             // Todo logging                         } catch(MalformedURLException e){                             // Todo logging                         }                     }                 }                 if(files.size()> 0){                     return handleDraggedFiles(files, dropRow);                 }                 else{                     return false;                 }             }*/
-comment|// Done by MrDlib
+elseif|else
 if|if
 condition|(
 name|t
@@ -747,11 +719,10 @@ return|return
 name|handleDropTransfer
 argument_list|(
 name|dropLink
-argument_list|,
-name|dropRow
 argument_list|)
 return|;
 block|}
+elseif|else
 if|if
 condition|(
 name|t
@@ -762,8 +733,6 @@ name|stringFlavor
 argument_list|)
 condition|)
 block|{
-comment|// JOptionPane.showMessageDialog(null, "Received stringFlavor:
-comment|// "+dropStr);
 name|String
 name|dropStr
 init|=
@@ -777,6 +746,15 @@ argument_list|(
 name|stringFlavor
 argument_list|)
 decl_stmt|;
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Received stringFlavor: "
+operator|+
+name|dropStr
+argument_list|)
+expr_stmt|;
 return|return
 name|handleDropTransfer
 argument_list|(
@@ -797,8 +775,8 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Failed to read dropped data: "
-operator|+
+literal|"Failed to read dropped data"
+argument_list|,
 name|ioe
 argument_list|)
 expr_stmt|;
@@ -813,8 +791,8 @@ name|LOGGER
 operator|.
 name|error
 argument_list|(
-literal|"Drop type error: "
-operator|+
+literal|"Drop type error"
+argument_list|,
 name|ufe
 argument_list|)
 expr_stmt|;
@@ -1184,8 +1162,6 @@ return|return
 name|handleDropTransfer
 argument_list|(
 name|url
-argument_list|,
-name|dropRow
 argument_list|)
 return|;
 block|}
@@ -1571,7 +1547,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// Done by MrDlib
 specifier|final
 name|ImportPdfFilesResult
 name|importRes
@@ -1616,8 +1591,6 @@ name|dropRow
 argument_list|)
 expr_stmt|;
 block|}
-comment|//loadOrImportFiles(fileNames, dropRow);
-comment|// Done by MrDlib
 block|}
 block|}
 argument_list|)
@@ -1651,7 +1624,7 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1662,19 +1635,16 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+name|List
+argument_list|<
 name|String
-name|encoding
+argument_list|>
+name|bibFiles
 init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|DEFAULT_ENCODING
-argument_list|)
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 decl_stmt|;
 for|for
 control|(
@@ -1737,17 +1707,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
-name|fileType
-operator|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getExternalFileTypeByExt
-argument_list|(
-name|extension
-argument_list|)
-expr_stmt|;
 block|}
 if|if
 condition|(
@@ -1759,95 +1718,28 @@ literal|"bib"
 argument_list|)
 condition|)
 block|{
-name|File
-name|f
-init|=
-operator|new
-name|File
-argument_list|(
-name|fileName
-argument_list|)
-decl_stmt|;
-try|try
-block|{
-name|ParserResult
-name|pr
-init|=
-name|OpenDatabaseAction
-operator|.
-name|loadDatabase
-argument_list|(
-name|f
-argument_list|,
-name|encoding
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|(
-name|pr
-operator|==
-literal|null
-operator|)
-operator|||
-operator|(
-name|pr
-operator|==
-name|ParserResult
-operator|.
-name|INVALID_FORMAT
-operator|)
-condition|)
-block|{
-name|notBibFiles
+comment|// we assume that it is a BibTeX file.
+comment|// When a user wants to import something with file extension "bib", but which is not a BibTeX file, he should use "file -> import"
+name|bibFiles
 operator|.
 name|add
 argument_list|(
 name|fileName
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|openAction
-operator|.
-name|addNewDatabase
-argument_list|(
-name|pr
-argument_list|,
-name|f
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|frame
-operator|.
-name|getFileHistory
-argument_list|()
-operator|.
-name|newFile
-argument_list|(
-name|fileName
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|notBibFiles
-operator|.
-name|add
-argument_list|(
-name|fileName
-argument_list|)
-expr_stmt|;
-block|}
 continue|continue;
 block|}
+name|fileType
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getExternalFileTypeByExt
+argument_list|(
+name|extension
+argument_list|)
+expr_stmt|;
 comment|/*              * This is a linkable file. If the user dropped it on an entry, we              * should offer options for autolinking to this files:              *              * TODO we should offer an option to highlight the row the user is on too.              */
 if|if
 condition|(
@@ -1899,7 +1791,6 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/*             			if (extension.equals("pdf")) {             				Collection c;             				try {             					c = XMPUtil.readXMP(fileNames[i]);             				} catch (IOException e1) {             					c = null;             					frame.output(Globals.lang("No XMP metadata found in " + fileNames[i]));             				}              				if (c != null&& c.size()> 0) {             					Iterator it = c.iterator();              					BasePanel panel = frame.basePanel();              					if (panel == null) {             						// // Create a new, empty, database.             						BibtexDatabase database = new BibtexDatabase();             						frame.addTab(database, null, null, Globals.prefs.get(JabRefPreferences.DEFAULT_ENCODING),             							true);             						frame.output(Globals.lang("New database created."));             						panel = frame.basePanel();             					}              					BibtexDatabase database = frame.basePanel().database();              					NamedCompound ce = new NamedCompound(Glbals.lang("Drop PDF"));              					while (it.hasNext()) {             						BibtexEntry e = (BibtexEntry) it.next();              						try {             							e.setId(Util.next());             							database.insertEntry(e);             							ce.addEdit(new UndoableInsertEntry(database, e, panel));             						} catch (Exception e2) {             							// Should not happen?             						}             					}              					ce.end();             					panel.undoManager.addEdit(ce);             					panel.markBaseChanged();             					continue;             				}             			}             			*/
 name|notBibFiles
 operator|.
 name|add
@@ -1908,6 +1799,15 @@ name|fileName
 argument_list|)
 expr_stmt|;
 block|}
+name|openAction
+operator|.
+name|openFilesAsStringList
+argument_list|(
+name|bibFiles
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1961,16 +1861,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|handleDropTransfer (URL dropLink, int dropRow)
+DECL|method|handleDropTransfer (URL dropLink)
 specifier|private
 name|boolean
 name|handleDropTransfer
 parameter_list|(
 name|URL
 name|dropLink
-parameter_list|,
-name|int
-name|dropRow
 parameter_list|)
 throws|throws
 name|IOException

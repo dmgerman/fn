@@ -278,57 +278,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Enumeration
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|LinkedList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
+name|*
 import|;
 end_import
 
@@ -764,6 +714,36 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|bibtex
+operator|.
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -889,7 +869,12 @@ specifier|final
 name|String
 name|ACTION_MENU_TITLE
 init|=
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Find unlinked files..."
+argument_list|)
 decl_stmt|;
 DECL|field|ACTION_ICON
 specifier|public
@@ -909,6 +894,7 @@ name|ACTION_KEYBINDING_ACTION
 init|=
 literal|"Find unlinked files"
 decl_stmt|;
+comment|// @formatter:off
 DECL|field|ACTION_SHORT_DESCRIPTION
 specifier|public
 specifier|static
@@ -916,8 +902,14 @@ specifier|final
 name|String
 name|ACTION_SHORT_DESCRIPTION
 init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Searches for unlinked PDF files on the file system"
+argument_list|)
 decl_stmt|;
+comment|// @formatter:on
 DECL|field|GLOBAL_PREFS_WORKING_DIRECTORY_KEY
 specifier|private
 specifier|static
@@ -2655,7 +2647,7 @@ literal|""
 argument_list|)
 expr_stmt|;
 specifier|final
-name|BibtexEntryType
+name|EntryType
 name|entryType
 init|=
 operator|(
@@ -2720,7 +2712,7 @@ name|database
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 argument_list|,
 name|entryType
@@ -2926,7 +2918,7 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|markBaseChanged
@@ -5496,7 +5488,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData
@@ -5770,11 +5762,11 @@ parameter_list|()
 block|{
 name|Iterator
 argument_list|<
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|iterator
 init|=
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getAllValues
 argument_list|()
@@ -5846,13 +5838,13 @@ name|BibtexEntryTypeWrapper
 block|{
 DECL|field|entryType
 specifier|final
-name|BibtexEntryType
+name|EntryType
 name|entryType
 decl_stmt|;
-DECL|method|BibtexEntryTypeWrapper (BibtexEntryType bibtexType)
+DECL|method|BibtexEntryTypeWrapper (EntryType bibtexType)
 name|BibtexEntryTypeWrapper
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|bibtexType
 parameter_list|)
 block|{

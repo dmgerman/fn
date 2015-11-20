@@ -344,6 +344,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|exporter
+operator|.
+name|SaveDatabaseAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|actions
@@ -592,24 +606,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -630,7 +626,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|*
 import|;
 end_import
 
@@ -642,27 +638,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|bibtex
 operator|.
-name|entry
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryConverter
+name|EntryTypes
 import|;
 end_import
 
@@ -770,9 +748,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|desktop
+name|util
 operator|.
-name|JabRefDesktop
+name|FocusRequester
 import|;
 end_import
 
@@ -784,9 +762,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|gui
 operator|.
-name|Util
+name|desktop
+operator|.
+name|JabRefDesktop
 import|;
 end_import
 
@@ -834,15 +814,6 @@ name|VetoableChangeListener
 implements|,
 name|EntryContainer
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -868,7 +839,7 @@ decl_stmt|;
 DECL|field|type
 specifier|private
 specifier|final
-name|BibtexEntryType
+name|EntryType
 name|type
 decl_stmt|;
 comment|// The action concerned with closing the window.
@@ -1687,40 +1658,44 @@ operator|.
 name|getSecondaryOptionalFields
 argument_list|()
 decl_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
-name|optionalFieldsNotPrimaryOrDeprecated
+argument_list|>
+name|temp
 init|=
-name|StringUtil
+name|EntryUtil
 operator|.
 name|getRemainder
 argument_list|(
 operator|(
 name|secondaryOptionalFields
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-literal|0
-index|]
-argument_list|)
 operator|)
 argument_list|,
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|deprecatedFields
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|String
+index|[]
+name|optionalFieldsNotPrimaryOrDeprecated
+init|=
+name|temp
 operator|.
 name|toArray
 argument_list|(
 operator|new
 name|String
 index|[
-name|deprecatedFields
+name|temp
 operator|.
 name|size
 argument_list|()
 index|]
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Get list of all optional fields of this entry and their aliases
@@ -2180,7 +2155,7 @@ expr_stmt|;
 block|}
 DECL|method|getType ()
 specifier|public
-name|BibtexEntryType
+name|EntryType
 name|getType
 parameter_list|()
 block|{
@@ -2611,15 +2586,7 @@ name|typeButton
 init|=
 operator|new
 name|TypeButton
-argument_list|(
-name|entry
-operator|.
-name|getType
 argument_list|()
-operator|.
-name|getName
-argument_list|()
-argument_list|)
 decl_stmt|;
 name|toolBar
 operator|.
@@ -3969,7 +3936,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, store field"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_STORE_FIELD
 argument_list|)
 argument_list|,
 literal|"store"
@@ -3992,7 +3961,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, next panel"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_NEXT_PANEL
 argument_list|)
 argument_list|,
 literal|"right"
@@ -4006,7 +3977,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, next panel 2"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_NEXT_PANEL_2
 argument_list|)
 argument_list|,
 literal|"right"
@@ -4029,7 +4002,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, previous panel"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_PREVIOUS_PANEL
 argument_list|)
 argument_list|,
 literal|"left"
@@ -4043,7 +4018,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor, previous panel 2"
+name|KeyBinds
+operator|.
+name|ENTRY_EDITOR_PREVIOUS_PANEL_2
 argument_list|)
 argument_list|,
 literal|"left"
@@ -4066,7 +4043,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Help"
+name|KeyBinds
+operator|.
+name|HELP
 argument_list|)
 argument_list|,
 literal|"help"
@@ -4089,7 +4068,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Save database"
+name|KeyBinds
+operator|.
+name|SAVE_DATABASE
 argument_list|)
 argument_list|,
 literal|"save"
@@ -4114,7 +4095,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Next tab"
+name|KeyBinds
+operator|.
+name|NEXT_TAB
 argument_list|)
 argument_list|,
 literal|"nexttab"
@@ -4141,7 +4124,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Previous tab"
+name|KeyBinds
+operator|.
+name|PREVIOUS_TAB
 argument_list|)
 argument_list|,
 literal|"prevtab"
@@ -4718,15 +4703,15 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Updates this editor to show the given entry, regardless of type      * correspondence.      *      * @param entry a<code>BibtexEntry</code> value      */
-DECL|method|switchTo (BibtexEntry entry)
+comment|/**      * Updates this editor to show the given entry, regardless of type      * correspondence.      *      * @param swtichEntry a<code>BibtexEntry</code> value      */
+DECL|method|switchTo (BibtexEntry swtichEntry)
 specifier|public
 specifier|synchronized
 name|void
 name|switchTo
 parameter_list|(
 name|BibtexEntry
-name|entry
+name|swtichEntry
 parameter_list|)
 block|{
 if|if
@@ -4735,7 +4720,7 @@ name|this
 operator|.
 name|entry
 operator|==
-name|entry
+name|swtichEntry
 condition|)
 block|{
 comment|/**              * Even if the editor is already showing the same entry, update              * the source panel. I'm not sure if this is the correct place to              * do this, but in some cases the source panel will otherwise not              * be up-to-date when an entry is changed while the entry editor              * is existing, set to the same entry, but not visible.              */
@@ -4758,7 +4743,7 @@ name|this
 argument_list|)
 expr_stmt|;
 comment|// Register as property listener for the new entry:
-name|entry
+name|swtichEntry
 operator|.
 name|addPropertyChangeListener
 argument_list|(
@@ -4769,7 +4754,7 @@ name|this
 operator|.
 name|entry
 operator|=
-name|entry
+name|swtichEntry
 expr_stmt|;
 name|updateAllFields
 argument_list|()
@@ -4784,7 +4769,7 @@ name|panel
 operator|.
 name|newEntryShowing
 argument_list|(
-name|entry
+name|swtichEntry
 argument_list|)
 expr_stmt|;
 block|}
@@ -5008,7 +4993,8 @@ if|if
 condition|(
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|setCiteKeyForEntry
 argument_list|(
@@ -5705,14 +5691,14 @@ name|newValue
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateField (final Object source)
+DECL|method|updateField (final Object sourceObject)
 specifier|public
 name|void
 name|updateField
 parameter_list|(
 specifier|final
 name|Object
-name|source
+name|sourceObject
 parameter_list|)
 block|{
 name|storeFieldAction
@@ -5722,7 +5708,7 @@ argument_list|(
 operator|new
 name|ActionEvent
 argument_list|(
-name|source
+name|sourceObject
 argument_list|,
 literal|0
 argument_list|,
@@ -5749,22 +5735,10 @@ name|TypeButton
 extends|extends
 name|JButton
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
-DECL|method|TypeButton (String type)
+DECL|method|TypeButton ()
 specifier|public
 name|TypeButton
-parameter_list|(
-name|String
-name|type
-parameter_list|)
+parameter_list|()
 block|{
 name|super
 argument_list|(
@@ -5816,7 +5790,7 @@ control|(
 name|String
 name|s
 range|:
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getAllTypes
 argument_list|()
@@ -5829,7 +5803,7 @@ argument_list|(
 operator|new
 name|ChangeTypeAction
 argument_list|(
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -6009,7 +5983,7 @@ control|(
 name|String
 name|s
 range|:
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getAllTypes
 argument_list|()
@@ -6022,7 +5996,7 @@ argument_list|(
 operator|new
 name|ChangeTypeAction
 argument_list|(
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -6109,7 +6083,9 @@ parameter_list|(
 name|FocusEvent
 name|e
 parameter_list|)
-block|{         }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|focusLost (FocusEvent event)
@@ -6333,7 +6309,8 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|removeEntry
 argument_list|(
@@ -6359,7 +6336,8 @@ name|UndoableRemoveEntry
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 argument_list|,
 name|entry
 argument_list|,
@@ -6375,16 +6353,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Deleted"
-argument_list|)
-operator|+
-literal|' '
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"entry"
+literal|"Deleted entry"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6652,6 +6621,14 @@ comment|// Make sure the key is legal:
 name|String
 name|cleaned
 init|=
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
 name|Util
 operator|.
 name|checkLegalKey
@@ -6721,7 +6698,8 @@ name|isDuplicate
 init|=
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|setCiteKeyForEntry
 argument_list|(
@@ -6781,7 +6759,8 @@ name|UndoableKeyChange
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 argument_list|,
 name|entry
 operator|.
@@ -6795,6 +6774,14 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
 name|Util
 operator|.
 name|updateTimeStampIsSet
@@ -6804,6 +6791,14 @@ block|{
 name|NamedCompound
 name|ce
 init|=
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
 name|Util
 operator|.
 name|doUpdateTimeStamp
@@ -7075,6 +7070,9 @@ argument_list|()
 expr_stmt|;
 comment|// See if we need to update an AutoCompleter instance:
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|aComp
 init|=
 name|panel
@@ -7126,6 +7124,14 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
 name|Util
 operator|.
 name|updateTimeStampIsSet
@@ -7135,6 +7141,14 @@ block|{
 name|NamedCompound
 name|ce
 init|=
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
 name|Util
 operator|.
 name|doUpdateTimeStamp
@@ -7581,7 +7595,8 @@ operator|)
 operator|<
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|getEntryCount
 argument_list|()
@@ -7737,7 +7752,8 @@ operator|!=
 operator|(
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|getEntryCount
 argument_list|()
@@ -7750,7 +7766,8 @@ name|newRow
 operator|=
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 operator|.
 name|getEntryCount
 argument_list|()
@@ -7874,12 +7891,8 @@ name|oldValue
 init|=
 name|entry
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -8023,7 +8036,8 @@ name|metaData
 argument_list|,
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 argument_list|,
 name|entry
 argument_list|)
@@ -8040,7 +8054,8 @@ name|UndoableKeyChange
 argument_list|(
 name|panel
 operator|.
-name|database
+name|getDatabase
+argument_list|()
 argument_list|,
 name|entry
 operator|.
@@ -8054,12 +8069,8 @@ name|oldValue
 argument_list|,
 name|entry
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8069,12 +8080,8 @@ name|bibtexKeyData
 init|=
 name|entry
 operator|.
-name|getField
-argument_list|(
-name|BibtexEntry
-operator|.
-name|KEY_FIELD
-argument_list|)
+name|getCiteKey
+argument_list|()
 decl_stmt|;
 comment|// set the field named for "bibtexkey"
 name|setField
@@ -8444,30 +8451,21 @@ name|ChangeTypeAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
+DECL|field|changeType
 specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
+name|EntryType
+name|changeType
 decl_stmt|;
-DECL|field|type
-specifier|final
-name|BibtexEntryType
-name|type
-decl_stmt|;
-DECL|field|panel
+DECL|field|changeTypePanel
 specifier|final
 name|BasePanel
-name|panel
+name|changeTypePanel
 decl_stmt|;
-DECL|method|ChangeTypeAction (BibtexEntryType type, BasePanel bp)
+DECL|method|ChangeTypeAction (EntryType type, BasePanel bp)
 specifier|public
 name|ChangeTypeAction
 parameter_list|(
-name|BibtexEntryType
+name|EntryType
 name|type
 parameter_list|,
 name|BasePanel
@@ -8484,11 +8482,11 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|type
+name|changeType
 operator|=
 name|type
 expr_stmt|;
-name|panel
+name|changeTypePanel
 operator|=
 name|bp
 expr_stmt|;
@@ -8504,13 +8502,13 @@ name|ActionEvent
 name|evt
 parameter_list|)
 block|{
-name|panel
+name|changeTypePanel
 operator|.
 name|changeType
 argument_list|(
 name|entry
 argument_list|,
-name|type
+name|changeType
 argument_list|)
 expr_stmt|;
 block|}
@@ -8619,7 +8617,7 @@ name|event
 parameter_list|)
 block|{
 name|FileListEditor
-name|fileListEditor
+name|localFileListEditor
 init|=
 name|EntryEditor
 operator|.
@@ -8629,7 +8627,7 @@ name|fileListEditor
 decl_stmt|;
 if|if
 condition|(
-name|fileListEditor
+name|localFileListEditor
 operator|==
 literal|null
 condition|)
@@ -8644,7 +8642,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|fileListEditor
+name|localFileListEditor
 operator|.
 name|autoSetLinks
 argument_list|()

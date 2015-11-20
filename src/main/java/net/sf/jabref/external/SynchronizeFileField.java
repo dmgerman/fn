@@ -94,6 +94,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|undo
 operator|.
 name|NamedCompound
@@ -113,6 +129,38 @@ operator|.
 name|undo
 operator|.
 name|UndoableFieldChange
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|FocusRequester
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|PositionWindow
 import|;
 end_import
 
@@ -468,7 +516,7 @@ name|fieldName
 argument_list|)
 expr_stmt|;
 block|}
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
@@ -1157,6 +1205,7 @@ name|UnknownExternalFileType
 operator|)
 condition|)
 block|{
+comment|// @formatter:off
 name|String
 index|[]
 name|options
@@ -1195,6 +1244,7 @@ literal|"Cancel"
 argument_list|)
 block|}
 decl_stmt|;
+comment|// @formatter:on
 name|String
 name|defOption
 init|=
@@ -1622,15 +1672,6 @@ name|OptionsDialog
 extends|extends
 name|JDialog
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1909919286125256934L
-decl_stmt|;
 DECL|field|autoSetUnset
 specifier|final
 name|JRadioButton
@@ -1786,15 +1827,6 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|8834440705768095070L
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -1848,7 +1880,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Close dialog"
+name|KeyBinds
+operator|.
+name|CLOSE_DIALOG
 argument_list|)
 argument_list|,
 literal|"close"
@@ -1992,7 +2026,6 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-comment|//"This function helps you keep your external %0 links up-to-date." +
 literal|"Attempt to autoset %0 links for your entries. Autoset works if "
 operator|+
 literal|"a %0 file in your %0 directory or a subdirectory<BR>is named identically to an entry's BibTeX key, plus extension."

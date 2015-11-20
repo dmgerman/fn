@@ -20,20 +20,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -3513,7 +3499,7 @@ operator|)
 name|o
 decl_stmt|;
 return|return
-name|Util
+name|EntryUtil
 operator|.
 name|equals
 argument_list|(
@@ -3524,7 +3510,7 @@ operator|.
 name|firstPart
 argument_list|)
 operator|&&
-name|Util
+name|EntryUtil
 operator|.
 name|equals
 argument_list|(
@@ -3535,7 +3521,7 @@ operator|.
 name|firstAbbr
 argument_list|)
 operator|&&
-name|Util
+name|EntryUtil
 operator|.
 name|equals
 argument_list|(
@@ -3546,7 +3532,7 @@ operator|.
 name|vonPart
 argument_list|)
 operator|&&
-name|Util
+name|EntryUtil
 operator|.
 name|equals
 argument_list|(
@@ -3557,7 +3543,7 @@ operator|.
 name|lastPart
 argument_list|)
 operator|&&
-name|Util
+name|EntryUtil
 operator|.
 name|equals
 argument_list|(

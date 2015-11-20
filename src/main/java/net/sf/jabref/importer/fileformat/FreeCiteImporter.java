@@ -206,22 +206,6 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
 name|BibtexEntryTypes
 import|;
 end_import
@@ -279,6 +263,22 @@ operator|.
 name|labelPattern
 operator|.
 name|LabelPatternUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
 import|;
 end_import
 
@@ -641,7 +641,7 @@ name|BibtexEntry
 argument_list|()
 decl_stmt|;
 comment|// fallback type
-name|BibtexEntryType
+name|EntryType
 name|type
 init|=
 name|BibtexEntryTypes
@@ -1166,8 +1166,6 @@ name|type
 argument_list|)
 expr_stmt|;
 comment|// autogenerate label (BibTeX key)
-name|e
-operator|=
 name|LabelPatternUtil
 operator|.
 name|makeLabel
@@ -1176,7 +1174,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData
@@ -1186,7 +1184,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|database

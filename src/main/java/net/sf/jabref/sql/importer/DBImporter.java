@@ -60,6 +60,36 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|bibtex
+operator|.
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -136,75 +166,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|id
-operator|.
-name|IdGenerator
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
 operator|.
 name|BibtexDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexString
 import|;
 end_import
 
@@ -269,7 +235,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author ifsteinm.  *  *         Jan 20th Abstract Class to provide main features to import entries  *         from a DB. To insert a new DB it is necessary to extend this class  *         and add the DB name the enum available at  *         net.sf.jabref.sql.DBImporterAndExporterFactory (and to the GUI). This  *         class and its subclasses import database, entries and related stuff  *         from a DB to bib. Each exported database is imported as a new JabRef  *         (bib) database, presented on a new tab  *  */
+comment|/**  *  * @author ifsteinm.  *  *         Jan 20th Abstract Class to provide main features to import entries from a DB. To insert a new DB it is  *         necessary to extend this class and add the DB name the enum available at  *         net.sf.jabref.sql.DBImporterAndExporterFactory (and to the GUI). This class and its subclasses import  *         database, entries and related stuff from a DB to bib. Each exported database is imported as a new JabRef  *         (bib) database, presented on a new tab  *  */
 end_comment
 
 begin_class
@@ -308,9 +274,7 @@ name|columnsNotConsideredForEntries
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -328,7 +292,7 @@ literal|"entries_id"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/**      * Given a DBStrings it connects to the DB and returns the      * java.sql.Connection object      *      * @param dbstrings      *            The DBStrings to use to make the connection      * @return java.sql.Connection to the DB chosen      * @throws Exception      */
+comment|/**      * Given a DBStrings it connects to the DB and returns the java.sql.Connection object      *      * @param dbstrings The DBStrings to use to make the connection      * @return java.sql.Connection to the DB chosen      * @throws Exception      */
 DECL|method|connectToDB (DBStrings dbstrings)
 specifier|protected
 specifier|abstract
@@ -341,7 +305,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      *      * @param conn      *            Connection object to the database      * @return A ResultSet with column name for the entries table      * @throws SQLException      */
+comment|/**      *      * @param conn Connection object to the database      * @return A ResultSet with column name for the entries table      * @throws SQLException      */
 DECL|method|readColumnNames (Connection conn)
 specifier|protected
 specifier|abstract
@@ -354,8 +318,8 @@ parameter_list|)
 throws|throws
 name|SQLException
 function_decl|;
-comment|/**      * Worker method to perform the import from a database      *      * @param keySet      *            The set of IDs of the entries to export.      * @param dbs      *            The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the      *         ArrayList stores three Objects: a BibtexDatabase, a MetaData and      *         a String with the bib database name stored in the DBMS      * @throws Exception      */
-DECL|method|performImport (Set<String> keySet, DBStrings dbs, List<String> listOfDBs)
+comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      *         BibtexDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
+DECL|method|performImport (DBStrings dbs, List<String> listOfDBs)
 specifier|public
 name|ArrayList
 argument_list|<
@@ -364,12 +328,6 @@ index|[]
 argument_list|>
 name|performImport
 parameter_list|(
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|keySet
-parameter_list|,
 name|DBStrings
 name|dbs
 parameter_list|,
@@ -391,12 +349,11 @@ name|result
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Object
-index|[]
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|Connection
 name|conn
 init|=
@@ -406,7 +363,8 @@ name|connectToDB
 argument_list|(
 name|dbs
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|Iterator
 argument_list|<
 name|String
@@ -461,6 +419,8 @@ argument_list|)
 operator|+
 literal|')'
 expr_stmt|;
+try|try
+init|(
 name|ResultSet
 name|rsDatabase
 init|=
@@ -474,7 +434,8 @@ literal|"jabref_database WHERE database_name IN "
 operator|+
 name|jabrefDBs
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 while|while
 condition|(
 name|rsDatabase
@@ -495,19 +456,17 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntryType
+name|EntryType
 argument_list|>
 name|types
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexEntryType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|ResultSet
 name|rsEntryType
 init|=
@@ -519,7 +478,8 @@ name|conn
 argument_list|,
 literal|"entry_types"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 while|while
 condition|(
 name|rsEntryType
@@ -539,7 +499,7 @@ argument_list|(
 literal|"entry_types_id"
 argument_list|)
 argument_list|,
-name|BibtexEntryType
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -561,6 +521,9 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
+try|try
+init|(
 name|ResultSet
 name|rsColumns
 init|=
@@ -570,7 +533,8 @@ name|readColumnNames
 argument_list|(
 name|conn
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|ArrayList
 argument_list|<
 name|String
@@ -579,9 +543,7 @@ name|colNames
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 while|while
@@ -651,13 +613,11 @@ name|entries
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|ResultSet
 name|rsEntries
 init|=
@@ -673,7 +633,8 @@ name|database_id
 operator|+
 literal|"';"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 while|while
 condition|(
 name|rsEntries
@@ -825,7 +786,10 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 comment|// Import strings and preamble:
+try|try
+init|(
 name|ResultSet
 name|rsStrings
 init|=
@@ -841,7 +805,8 @@ name|database_id
 operator|+
 literal|'\''
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 while|while
 condition|(
 name|rsStrings
@@ -923,6 +888,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 name|MetaData
 name|metaData
 init|=
@@ -969,11 +935,24 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+name|rsDatabase
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+name|conn
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 return|return
 name|result
 return|;
 block|}
-comment|/**      * Look up the group type name from the type ID in the database.      *      * @param groupId      *            The database's groups id      * @param conn      *            The database connection      *      * @return The name (JabRef type id) of the group type.      * @throws SQLException      */
+block|}
+comment|/**      * Look up the group type name from the type ID in the database.      *      * @param groupId The database's groups id      * @param conn The database connection      *      * @return The name (JabRef type id) of the group type.      * @throws SQLException      */
 DECL|method|findGroupTypeName (String groupId, Connection conn)
 specifier|private
 name|String
@@ -1038,11 +1017,7 @@ name|groups
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|GroupTreeNode
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|LinkedHashMap
@@ -1055,11 +1030,7 @@ name|parentIds
 init|=
 operator|new
 name|LinkedHashMap
-argument_list|<
-name|GroupTreeNode
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|GroupTreeNode
@@ -1073,6 +1044,8 @@ name|AllEntriesGroup
 argument_list|()
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|ResultSet
 name|rsGroups
 init|=
@@ -1088,7 +1061,8 @@ name|database_id
 operator|+
 literal|"' ORDER BY groups_id"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 while|while
 condition|(
 name|rsGroups
@@ -1467,6 +1441,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+try|try
+init|(
 name|ResultSet
 name|rsEntryGroup
 init|=
@@ -1478,7 +1454,8 @@ name|conn
 argument_list|,
 literal|"entry_group"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 while|while
 condition|(
 name|rsEntryGroup
@@ -1568,6 +1545,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 name|metaData
 operator|.
 name|setGroups
@@ -1584,6 +1562,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

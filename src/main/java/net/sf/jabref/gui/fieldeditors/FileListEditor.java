@@ -382,6 +382,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinds
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -405,24 +421,6 @@ operator|.
 name|io
 operator|.
 name|FileUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
 import|;
 end_import
 
@@ -466,9 +464,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|model
 operator|.
-name|Util
+name|entry
+operator|.
+name|EntryUtil
 import|;
 end_import
 
@@ -648,7 +648,7 @@ name|FieldNameLabel
 argument_list|(
 literal|" "
 operator|+
-name|StringUtil
+name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
@@ -1336,7 +1336,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"File list editor, move entry up"
+name|KeyBinds
+operator|.
+name|FILE_LIST_EDITOR_MOVE_ENTRY_UP
 argument_list|)
 argument_list|,
 literal|"move up"
@@ -1385,7 +1387,9 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"File list editor, move entry down"
+name|KeyBinds
+operator|.
+name|FILE_LIST_EDITOR_MOVE_ENTRY_DOWN
 argument_list|)
 argument_list|,
 literal|"move down"
@@ -2434,6 +2438,14 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
 name|Util
 operator|.
 name|autoSetLinks
@@ -2523,7 +2535,7 @@ expr_stmt|;
 comment|// auto download file as no file found before
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|runCommand
@@ -2652,7 +2664,7 @@ name|frame
 argument_list|,
 name|frame
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData

@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.  This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or  (at your option) any later version.   This program is distributed in the hope that it will be useful,  but WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License for more details.   You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc.,  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.importer
 package|package
@@ -145,7 +149,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Search class for files.<br>  *<br>  * This class provides some functionality to search in a {@link BibtexDatabase} for  * files.<br>  *<br>  *   *   * @author Nosh&Dan  * @version 09.11.2008 | 21:21:41  *   */
+comment|/**  * Search class for files.<br>  *<br>  * This class provides some functionality to search in a {@link BibtexDatabase} for  * files.<br>  *<br>  *  *  * @author Nosh&Dan  * @version 09.11.2008 | 21:21:41  *  */
 end_comment
 
 begin_class
@@ -175,11 +179,7 @@ name|fileToFound
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|File
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|entries
@@ -198,7 +198,7 @@ name|String
 index|[]
 name|possibleFilePaths
 decl_stmt|;
-comment|/**      * Creates an instance by passing a {@link BibtexDatabase} which will be      * used for the searches.      *       * @param aDatabase      *            A {@link BibtexDatabase}.      */
+comment|/**      * Creates an instance by passing a {@link BibtexDatabase} which will be      * used for the searches.      *      * @param aDatabase      *            A {@link BibtexDatabase}.      */
 DECL|method|DatabaseFileLookup (BibtexDatabase aDatabase)
 specifier|public
 name|DatabaseFileLookup
@@ -235,7 +235,7 @@ name|JabRef
 operator|.
 name|jrf
 operator|.
-name|basePanel
+name|getCurrentBasePanel
 argument_list|()
 operator|.
 name|metaData
@@ -249,7 +249,7 @@ name|FILE_FIELD
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns whether the File<code>aFile</code> is present in the database      * as an attached File to an {@link BibtexEntry}.<br>      *<br>      * To do this, the field specified by the key<b>file</b> will be searched      * for the provided file for every {@link BibtexEntry} in the database.<br>      *<br>      * For the matching, the absolute file paths will be used.      *       * @param aFile      *            A {@link File} Object.      * @return<code>true</code>, if the file Object is stored in at least one      *         entry in the database, otherwise<code>false</code>.      */
+comment|/**      * Returns whether the File<code>aFile</code> is present in the database      * as an attached File to an {@link BibtexEntry}.<br>      *<br>      * To do this, the field specified by the key<b>file</b> will be searched      * for the provided file for every {@link BibtexEntry} in the database.<br>      *<br>      * For the matching, the absolute file paths will be used.      *      * @param aFile      *            A {@link File} Object.      * @return<code>true</code>, if the file Object is stored in at least one      *         entry in the database, otherwise<code>false</code>.      */
 DECL|method|lookupDatabase (File aFile)
 specifier|public
 name|boolean
@@ -325,7 +325,7 @@ name|res
 return|;
 block|}
 block|}
-comment|/**      * Searches the specified {@link BibtexEntry}<code>anEntry</code> for the      * appearance of the specified {@link File}<code>aFile</code>.<br>      *<br>      * Therefore the<i>file</i>-field of the bibtex-entry will be searched for      * the absolute filepath of the searched file.<br>      *<br>      *       * @param aFile      *            A file that is searched in an bibtex-entry.      * @param anEntry      *            A bibtex-entry, in which the file is searched.      * @return<code>true</code>, if the bibtex entry stores the file in its      *<i>file</i>-field, otherwise<code>false</code>.      */
+comment|/**      * Searches the specified {@link BibtexEntry}<code>anEntry</code> for the      * appearance of the specified {@link File}<code>aFile</code>.<br>      *<br>      * Therefore the<i>file</i>-field of the bibtex-entry will be searched for      * the absolute filepath of the searched file.<br>      *<br>      *      * @param aFile      *            A file that is searched in an bibtex-entry.      * @param anEntry      *            A bibtex-entry, in which the file is searched.      * @return<code>true</code>, if the bibtex entry stores the file in its      *<i>file</i>-field, otherwise<code>false</code>.      */
 DECL|method|lookupEntry (File aFile, BibtexEntry anEntry)
 specifier|private
 name|boolean
@@ -340,13 +340,17 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|aFile
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|anEntry
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return
@@ -438,9 +442,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|expandedFilename
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|expandedFilename
 operator|.

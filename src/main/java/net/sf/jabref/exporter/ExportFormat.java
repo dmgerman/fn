@@ -236,7 +236,7 @@ name|String
 name|encoding
 decl_stmt|;
 comment|// If this value is set, it will be used to override
-comment|// the default encoding for the basePanel.
+comment|// the default encoding for the getCurrentBasePanel.
 DECL|field|fileFilter
 specifier|private
 name|FileFilter

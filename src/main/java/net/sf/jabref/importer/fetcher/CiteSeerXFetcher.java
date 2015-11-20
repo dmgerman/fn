@@ -54,9 +54,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|id
+name|entry
 operator|.
 name|IdGenerator
 import|;
@@ -88,11 +88,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|formatter
 operator|.
-name|strings
+name|bibtexfields
 operator|.
-name|NameListNormalizer
+name|AuthorsFormatter
 import|;
 end_import
 
@@ -380,18 +380,6 @@ DECL|method|getTitle ()
 specifier|public
 name|String
 name|getTitle
-parameter_list|()
-block|{
-return|return
-literal|"CiteSeerX"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getKeyName ()
-specifier|public
-name|String
-name|getKeyName
 parameter_list|()
 block|{
 return|return
@@ -859,9 +847,11 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
-name|NameListNormalizer
+operator|new
+name|AuthorsFormatter
+argument_list|()
 operator|.
-name|normalizeAuthorList
+name|format
 argument_list|(
 name|authors
 argument_list|)

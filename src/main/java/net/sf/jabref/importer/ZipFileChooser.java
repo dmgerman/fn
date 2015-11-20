@@ -256,20 +256,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|FocusRequester
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -283,6 +269,38 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|FocusRequester
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|PositionWindow
 import|;
 end_import
 
@@ -315,20 +333,6 @@ operator|.
 name|l10n
 operator|.
 name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -1194,7 +1198,7 @@ argument_list|()
 decl_stmt|;
 comment|//ActionMap am = mainPanel.getActionMap();
 comment|//InputMap im = mainPanel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-comment|//im.put(prefs.getKey("Close dialog"), "close");
+comment|//im.put(prefs.getKey(KeyBinds.CLOSE_DIALOG), "close");
 comment|//am.put("close", closeAction);
 name|mainPanel
 operator|.
@@ -1284,7 +1288,7 @@ expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(

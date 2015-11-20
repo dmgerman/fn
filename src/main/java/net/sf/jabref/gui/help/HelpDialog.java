@@ -82,9 +82,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
+name|JabRef
 import|;
 end_import
 
@@ -96,7 +94,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
+name|gui
+operator|.
+name|GUIGlobals
 import|;
 end_import
 
@@ -136,11 +136,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|l10n
+name|keyboard
 operator|.
-name|Localization
+name|KeyBinds
 import|;
 end_import
 
@@ -152,9 +152,27 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
 name|util
 operator|.
-name|Util
+name|PositionWindow
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -335,7 +353,9 @@ argument_list|()
 operator|.
 name|getKey
 argument_list|(
-literal|"Close dialog"
+name|KeyBinds
+operator|.
+name|CLOSE_DIALOG
 argument_list|)
 argument_list|,
 literal|"close"
@@ -363,7 +383,9 @@ argument_list|()
 operator|.
 name|getKey
 argument_list|(
-literal|"Back, help dialog"
+name|KeyBinds
+operator|.
+name|BACK_HELP_DIALOG
 argument_list|)
 argument_list|,
 literal|"left"
@@ -389,7 +411,9 @@ argument_list|()
 operator|.
 name|getKey
 argument_list|(
-literal|"Forward, help dialog"
+name|KeyBinds
+operator|.
+name|FORWARD_HELP_DIALOG
 argument_list|)
 argument_list|,
 literal|"right"
@@ -434,7 +458,9 @@ argument_list|()
 operator|.
 name|getKey
 argument_list|(
-literal|"Back, help dialog"
+name|KeyBinds
+operator|.
+name|BACK_HELP_DIALOG
 argument_list|)
 argument_list|,
 literal|"left"
@@ -460,7 +486,9 @@ argument_list|()
 operator|.
 name|getKey
 argument_list|(
-literal|"Forward, help dialog"
+name|KeyBinds
+operator|.
+name|FORWARD_HELP_DIALOG
 argument_list|)
 argument_list|,
 literal|"right"
@@ -554,7 +582,7 @@ name|isVisible
 argument_list|()
 condition|)
 block|{
-name|Util
+name|PositionWindow
 operator|.
 name|placeDialog
 argument_list|(
