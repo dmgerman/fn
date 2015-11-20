@@ -714,12 +714,6 @@ operator|=
 name|enabled
 expr_stmt|;
 block|}
-DECL|method|instantiatePreviews ()
-specifier|private
-name|void
-name|instantiatePreviews
-parameter_list|()
-block|{      }
 DECL|method|updatePreviews ()
 specifier|public
 name|void
