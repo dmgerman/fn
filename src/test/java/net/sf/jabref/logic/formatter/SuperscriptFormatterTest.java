@@ -113,6 +113,37 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|returnsFormatterName ()
+specifier|public
+name|void
+name|returnsFormatterName
+parameter_list|()
+block|{
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+name|formatter
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertNotEquals
+argument_list|(
+literal|""
+argument_list|,
+name|formatter
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|replacesSuperscript ()
 specifier|public
 name|void
