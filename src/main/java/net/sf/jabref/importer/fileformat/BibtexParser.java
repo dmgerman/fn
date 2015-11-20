@@ -1166,9 +1166,6 @@ name|typ
 operator|.
 name|getName
 argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
 argument_list|,
 name|typ
 argument_list|)
@@ -1202,10 +1199,12 @@ operator|=
 operator|new
 name|UnknownEntryType
 argument_list|(
-name|entryType
+name|EntryUtil
 operator|.
-name|toLowerCase
-argument_list|()
+name|capitalizeFirst
+argument_list|(
+name|entryType
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|isEntry
@@ -3999,10 +3998,6 @@ comment|// Look up the unknown type name in our map of parsed types:
 name|String
 name|name
 init|=
-name|EntryUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
 name|be
 operator|.
 name|getType
@@ -4010,7 +4005,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|EntryType
 name|type
@@ -4020,9 +4014,6 @@ operator|.
 name|get
 argument_list|(
 name|name
-operator|.
-name|toLowerCase
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
