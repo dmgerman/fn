@@ -267,6 +267,7 @@ name|EXTRA_YES_NO
 init|=
 literal|"yesNo"
 decl_stmt|;
+comment|// Blank/Yes/No Combo-box
 DECL|field|EXTRA_URL
 specifier|public
 specifier|static
@@ -276,6 +277,7 @@ name|EXTRA_URL
 init|=
 literal|"url"
 decl_stmt|;
+comment|// Drop target for URL
 DECL|field|EXTRA_DATEPICKER
 specifier|public
 specifier|static
@@ -285,6 +287,7 @@ name|EXTRA_DATEPICKER
 init|=
 literal|"datepicker"
 decl_stmt|;
+comment|// Calendar button and double-click in field to set current date
 DECL|field|EXTRA_JOURNAL_NAMES
 specifier|public
 specifier|static
@@ -294,6 +297,7 @@ name|EXTRA_JOURNAL_NAMES
 init|=
 literal|"journalNames"
 decl_stmt|;
+comment|// Journal abbreviation button
 DECL|field|EXTRA_EXTERNAL
 specifier|public
 specifier|static
@@ -303,6 +307,7 @@ name|EXTRA_EXTERNAL
 init|=
 literal|"external"
 decl_stmt|;
+comment|// Open external viewer on double-click
 DECL|field|EXTRA_BROWSE
 specifier|public
 specifier|static
@@ -312,6 +317,7 @@ name|EXTRA_BROWSE
 init|=
 literal|"browse"
 decl_stmt|;
+comment|// Browse button, file dialog
 DECL|field|EXTRA_BROWSE_DOC
 specifier|public
 specifier|static
@@ -321,6 +327,7 @@ name|EXTRA_BROWSE_DOC
 init|=
 literal|"browseDoc"
 decl_stmt|;
+comment|// Browse button, file dialog with extension .fieldname
 DECL|field|EXTRA_BROWSE_DOC_ZIP
 specifier|public
 specifier|static
@@ -330,6 +337,7 @@ name|EXTRA_BROWSE_DOC_ZIP
 init|=
 literal|"browseDocZip"
 decl_stmt|;
+comment|// Browse button, file dialog with extension .fieldname, .fieldname.bz2, .filedname.gz
 DECL|field|EXTRA_SET_OWNER
 specifier|public
 specifier|static
@@ -339,6 +347,7 @@ name|EXTRA_SET_OWNER
 init|=
 literal|"setOwner"
 decl_stmt|;
+comment|// Button to set owner to current used
 DECL|field|DEFAULT_INSPECTION_FIELDS
 specifier|public
 specifier|static
