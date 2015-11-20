@@ -348,7 +348,7 @@ name|panel
 argument_list|,
 name|menu
 argument_list|,
-literal|"IEETran Entries"
+literal|"IEEETran Entries"
 argument_list|,
 name|IEEETranEntryTypes
 operator|.
