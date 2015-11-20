@@ -686,6 +686,15 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|types
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|menu
 operator|.
 name|add
@@ -693,6 +702,7 @@ argument_list|(
 name|header
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|EntryType
