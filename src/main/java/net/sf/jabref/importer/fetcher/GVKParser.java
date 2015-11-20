@@ -1,8 +1,20 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/**  * License: GPLv2, but Jan Frederik Maas agreed to change license upon request  */
+end_comment
+
 begin_package
-DECL|package|gvkPlugin
+DECL|package|net.sf.jabref.importer.fetcher
 package|package
-name|gvkPlugin
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fetcher
 package|;
 end_package
 
@@ -44,6 +56,38 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|bibtex
+operator|.
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|ImportFormatReader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -56,33 +100,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|model
 operator|.
-name|sf
+name|entry
 operator|.
-name|jabref
-operator|.
-name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|ImportFormatReader
+name|IdGenerator
 import|;
 end_import
 
@@ -140,11 +162,6 @@ specifier|public
 class|class
 name|GVKParser
 block|{
-DECL|method|GVKParser ()
-specifier|public
-name|GVKParser
-parameter_list|()
-block|{}
 DECL|method|parseEntries (Document content)
 specifier|public
 name|List
@@ -157,7 +174,7 @@ name|Document
 name|content
 parameter_list|)
 block|{
-name|LinkedList
+name|List
 argument_list|<
 name|BibtexEntry
 argument_list|>
@@ -165,9 +182,7 @@ name|result
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Namespace srwNamespace = Namespace.getNamespace("srw","http://www.loc.gov/zing/srw/");
@@ -985,7 +1000,6 @@ operator|=
 name|isbn_10
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 name|isbn_13
@@ -998,7 +1012,6 @@ operator|=
 name|isbn_13
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
 comment|// Hochschulschriftenvermerk
 comment|// Bei einer Verlagsdissertation ist der Ort schon eingetragen
@@ -1073,11 +1086,10 @@ operator|=
 literal|"phdthesis"
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
 block|}
 comment|//journal oder booktitle
-comment|/* Problematiken hier: Sowohl fÃ¼r Artikel in 			 * Zeitschriften als fÃ¼r BeitrÃ¤ge in BÃ¼chern 			 * wird 027D verwendet. Der Titel muÃ je nach 			 * Fall booktitle oder journal zugeordnet 			 * werden. Auch bei Zeitschriften werden hier 			 * ggf. Verlag und Ort angegeben (sind dann 			 * eigentlich Ã¼berflÃ¼ssig), wÃ¤hrend bei 			 * BuchbeitrÃ¤gen Verlag und Ort wichtig sind 			 * (sonst in Kategorie 033A).   			 */
+comment|/* Problematiken hier: Sowohl fÃ¼r Artikel in              * Zeitschriften als fÃ¼r BeitrÃ¤ge in BÃ¼chern              * wird 027D verwendet. Der Titel muÃ je nach              * Fall booktitle oder journal zugeordnet              * werden. Auch bei Zeitschriften werden hier              * ggf. Verlag und Ort angegeben (sind dann              * eigentlich Ã¼berflÃ¼ssig), wÃ¤hrend bei              * BuchbeitrÃ¤gen Verlag und Ort wichtig sind              * (sonst in Kategorie 033A).               */
 if|if
 condition|(
 name|datafield
@@ -1299,9 +1311,11 @@ argument_list|(
 literal|""
 argument_list|)
 operator|||
+operator|(
 name|quelle
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|quelle
@@ -1410,7 +1424,6 @@ name|author
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 operator|!
@@ -1429,7 +1442,6 @@ name|editor
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 operator|!
@@ -1448,7 +1460,6 @@ name|title
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 operator|!
@@ -1467,7 +1478,6 @@ name|subtitle
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 comment|// Dokumenttyp bestimmen und Eintrag anlegen
 if|if
 condition|(
@@ -1544,21 +1554,21 @@ operator|=
 literal|"online"
 expr_stmt|;
 block|}
-comment|/*  		 * Wahrscheinlichkeit, dass ZDB-ID 		 * vorhanden ist, ist grÃ¶Ãer als ISBN bei 		 * BuchbeitrÃ¤gen. Daher bei As?-SÃ¤tzen am besten immer 		 * dann @incollection annehmen, wenn weder ISBN noch 		 * ZDB-ID vorhanden sind. 		 */
+comment|/*          * Wahrscheinlichkeit, dass ZDB-ID          * vorhanden ist, ist grÃ¶Ãer als ISBN bei          * BuchbeitrÃ¤gen. Daher bei As?-SÃ¤tzen am besten immer          * dann @incollection annehmen, wenn weder ISBN noch          * ZDB-ID vorhanden sind.          */
 name|BibtexEntry
 name|result
 init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|,
-name|Globals
+name|EntryTypes
 operator|.
-name|getEntryType
+name|getType
 argument_list|(
 name|entryType
 argument_list|)
@@ -2001,29 +2011,6 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getSubfield (Element datafield)
-specifier|private
-name|String
-name|getSubfield
-parameter_list|(
-name|Element
-name|datafield
-parameter_list|)
-block|{
-return|return
-operator|(
-name|getChild
-argument_list|(
-literal|"subfield"
-argument_list|,
-name|datafield
-argument_list|)
-operator|.
-name|getTextContent
-argument_list|()
-operator|)
-return|;
-block|}
 DECL|method|getSubfield (String a, Element datafield)
 specifier|private
 name|String
@@ -2156,9 +2143,6 @@ block|{
 name|Node
 name|test
 init|=
-operator|(
-name|Node
-operator|)
 name|children
 operator|.
 name|item
@@ -2211,7 +2195,7 @@ return|;
 block|}
 DECL|method|getChildren (String name, Element e)
 specifier|private
-name|LinkedList
+name|List
 argument_list|<
 name|Element
 argument_list|>
@@ -2224,7 +2208,7 @@ name|Element
 name|e
 parameter_list|)
 block|{
-name|LinkedList
+name|List
 argument_list|<
 name|Element
 argument_list|>
@@ -2232,9 +2216,7 @@ name|result
 init|=
 operator|new
 name|LinkedList
-argument_list|<
-name|Element
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|NodeList
@@ -2271,9 +2253,6 @@ block|{
 name|Node
 name|test
 init|=
-operator|(
-name|Node
-operator|)
 name|children
 operator|.
 name|item

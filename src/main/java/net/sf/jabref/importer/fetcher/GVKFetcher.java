@@ -1,8 +1,20 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/**  * License: GPLv2, but Jan Frederik Maas agreed to change license upon request  */
+end_comment
+
 begin_package
-DECL|package|gvkPlugin
+DECL|package|net.sf.jabref.importer.fetcher
 package|package
-name|gvkPlugin
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|fetcher
 package|;
 end_package
 
@@ -72,7 +84,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|Collections
 import|;
 end_import
 
@@ -146,6 +158,34 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|w3c
 operator|.
 name|dom
@@ -174,7 +214,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntry
+name|importer
+operator|.
+name|ImportInspector
 import|;
 end_import
 
@@ -186,29 +228,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
+name|importer
 operator|.
 name|OutputPrinter
 import|;
@@ -222,7 +242,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -234,37 +258,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|model
 operator|.
-name|ImportInspectionDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|entry
 operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|EntryFetcher
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|ImportInspector
+name|BibtexEntry
 import|;
 end_import
 
@@ -290,6 +288,22 @@ name|GVKFetcher
 implements|implements
 name|EntryFetcher
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|GVKFetcher
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|searchKeys
 name|HashMap
 argument_list|<
@@ -301,11 +315,7 @@ name|searchKeys
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|method|GVKFetcher ()
@@ -413,68 +423,31 @@ literal|"pica.erj%3D"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|field|shouldContinue
-name|boolean
-name|shouldContinue
-decl_stmt|;
-comment|//OutputPrinter frame;
-DECL|field|dialog
-name|ImportInspector
-name|dialog
-decl_stmt|;
 comment|/**      * Necessary for JabRef      */
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
 name|stopFetching
 parameter_list|()
 block|{
-name|shouldContinue
-operator|=
-literal|false
-expr_stmt|;
+comment|// not supported
 block|}
-comment|/**      * Get the name of the help page for this fetcher.      *       * If given, a question mark is displayed in the side pane which leads to      * the help page.      *       * @return The name of the help file or null if this fetcher does not have      *         any help.      */
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
 name|getHelpPage
 parameter_list|()
 block|{
-comment|//return GUIGlobals.medlineHelp;
 return|return
 literal|null
 return|;
 block|}
-comment|/**      * Get the appropriate icon URL for this fetcher.      *       * @return The icon URL      */
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
-comment|/**      * Get the name of the key binding for this fetcher, if any.      *       * @return The name of the key binding or null, if no keybinding should be      *         created.      */
-DECL|method|getKeyName ()
-specifier|public
-name|String
-name|getKeyName
-parameter_list|()
-block|{
-comment|// return "Fetch GVK";
-return|return
-literal|null
-return|;
-block|}
-comment|/**      * If this fetcher requires additional options, a panel for setting up these      * should be returned in a JPanel by this method. This JPanel will be added      * to the side pane component automatically.      *       * @return Options panel for this fetcher or null if this fetcher does not      *         have any options.      */
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -485,7 +458,8 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * The title for this fetcher, displayed in the menu and in the side pane.      *       * @return The title      */
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -493,15 +467,11 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Globals
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Search GVK"
-argument_list|)
+literal|"GVKFetcher"
 return|;
 block|}
-comment|/**      * Handle a query entered by the user.      *       * The method is expected to block the caller until all entries have been      * reported to the inspector.      *       * @param query      *            The query text.      * @param inspector      *            The dialog to add imported entries to.      * @param status      *            An OutputPrinter passed to the fetcher for reporting about the      *            status of the fetching.      *       * @return True if the query was completed successfully, false if an error      *         occurred.      */
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter frame)
 specifier|public
 name|boolean
@@ -521,11 +491,6 @@ name|String
 name|gvkQuery
 init|=
 literal|""
-decl_stmt|;
-name|boolean
-name|shouldContinue
-init|=
-literal|true
 decl_stmt|;
 name|query
 operator|=
@@ -603,17 +568,16 @@ name|UnsupportedEncodingException
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"Unsupported encoding"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
 if|if
 condition|(
@@ -735,7 +699,7 @@ name|frame
 operator|.
 name|showMessage
 argument_list|(
-name|Globals
+name|Localization
 operator|.
 name|lang
 argument_list|(
@@ -952,8 +916,6 @@ name|urlSuffix
 init|=
 literal|"&maximumRecords=50&recordSchema=picaxml&sortKeys=Year%2C%2C1"
 decl_stmt|;
-comment|//Systemmeldung zum Debugging (JabRef Ã¼ber bash starten)
-comment|//System.out.println(urlPrefix+query+urlSuffix);
 name|String
 name|searchstring
 init|=
@@ -965,8 +927,13 @@ operator|+
 name|urlSuffix
 operator|)
 decl_stmt|;
-comment|//Systemmeldung zum Debugging (JabRef Ã¼ber bash starten)
-comment|//System.out.println(searchstring);
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+name|searchstring
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|URI
@@ -991,27 +958,21 @@ name|URISyntaxException
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"URI malformed error"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 return|return
-operator|(
-operator|new
-name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
-argument_list|()
-operator|)
+name|Collections
+operator|.
+name|EMPTY_LIST
 return|;
 block|}
-comment|// URL url = new URL(urlPrefix + urlQuery + urlSuffix);
 name|URL
 name|url
 init|=
@@ -1020,6 +981,8 @@ operator|.
 name|toURL
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|is
 init|=
@@ -1027,7 +990,8 @@ name|url
 operator|.
 name|openStream
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|DocumentBuilder
 name|dbuild
 init|=
@@ -1062,11 +1026,7 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
-name|is
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1074,31 +1034,19 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"GVK plugin: An I/O exception occurred:"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
+literal|"GVK plugin: An I/O exception occurred"
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
-name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
-argument_list|()
+name|Collections
+operator|.
+name|EMPTY_LIST
 return|;
 block|}
 catch|catch
@@ -1107,31 +1055,19 @@ name|ParserConfigurationException
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"GVK plugin: An internal parser error occurred:"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
+literal|"GVK plugin: An internal parser error occurred"
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
-name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
-argument_list|()
+name|Collections
+operator|.
+name|EMPTY_LIST
 return|;
 block|}
 catch|catch
@@ -1140,31 +1076,19 @@ name|SAXException
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"An internal parser error occurred:"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
+literal|"An internal parser error occurred"
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
-name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
-argument_list|()
+name|Collections
+operator|.
+name|EMPTY_LIST
 return|;
 block|}
 return|return
