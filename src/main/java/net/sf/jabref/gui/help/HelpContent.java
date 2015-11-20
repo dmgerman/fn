@@ -619,7 +619,20 @@ name|GUIGlobals
 operator|.
 name|helpPre
 operator|+
+literal|"en/"
+operator|+
 name|file
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"No localization available for file '"
+operator|+
+name|file
+operator|+
+literal|"'. Falling back to English."
 argument_list|)
 expr_stmt|;
 block|}
@@ -632,8 +645,6 @@ literal|null
 condition|)
 block|{
 comment|// TODO show warning to user
-name|HelpContent
-operator|.
 name|LOGGER
 operator|.
 name|error
