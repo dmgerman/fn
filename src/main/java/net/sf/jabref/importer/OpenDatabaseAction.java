@@ -2145,7 +2145,7 @@ argument_list|)
 init|)
 block|{
 name|BibtexParser
-name|bp
+name|parser
 init|=
 operator|new
 name|BibtexParser
@@ -2154,14 +2154,15 @@ name|reader
 argument_list|)
 decl_stmt|;
 name|ParserResult
-name|pr
+name|result
 init|=
-name|bp
+name|parser
 operator|.
 name|parse
 argument_list|()
 decl_stmt|;
-name|pr
+comment|/*             * The InputStreamReader might return 'UTF8', which is a wrong representation.             * Charset does the correct translation              */
+name|result
 operator|.
 name|setEncoding
 argument_list|(
@@ -2179,7 +2180,7 @@ name|name
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|pr
+name|result
 operator|.
 name|setFile
 argument_list|(
@@ -2199,7 +2200,7 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|pr
+name|result
 operator|.
 name|getDatabase
 argument_list|()
@@ -2229,7 +2230,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|pr
+name|result
 operator|.
 name|getMetaData
 argument_list|()
@@ -2238,7 +2239,7 @@ name|isGroupTreeValid
 argument_list|()
 condition|)
 block|{
-name|pr
+name|result
 operator|.
 name|addWarning
 argument_list|(
@@ -2252,7 +2253,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|pr
+name|result
 return|;
 block|}
 block|}
