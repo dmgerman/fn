@@ -1866,11 +1866,11 @@ decl_stmt|;
 DECL|field|fileHistory
 specifier|private
 specifier|final
-name|FileHistory
+name|FileHistoryMenu
 name|fileHistory
 init|=
 operator|new
-name|FileHistory
+name|FileHistoryMenu
 argument_list|(
 name|prefs
 argument_list|,
@@ -11947,7 +11947,7 @@ expr_stmt|;
 block|}
 DECL|method|getFileHistory ()
 specifier|public
-name|FileHistory
+name|FileHistoryMenu
 name|getFileHistory
 parameter_list|()
 block|{
