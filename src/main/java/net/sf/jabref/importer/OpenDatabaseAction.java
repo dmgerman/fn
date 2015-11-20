@@ -685,7 +685,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*             String chosenFile = Globals.getNewFile(frame,                     new File(Globals.prefs.get("workingDirectory")), ".bib",                     JFileChooser.OPEN_DIALOG, true);              if (chosenFile != null) {                 fileToOpen = new File(chosenFile);             }*/
 block|}
 else|else
 block|{
@@ -1487,7 +1486,6 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-comment|//ex.printStackTrace();
 name|errorMessage
 operator|=
 name|ex
