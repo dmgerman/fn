@@ -1572,29 +1572,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|activate ()
-specifier|public
-name|void
-name|activate
-parameter_list|()
-block|{
-name|sel
-operator|.
-name|requestFocus
-argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * Returns true if there have been changes to the field list. Reports true      * if changes have been made, regardless of whether the changes cancel each other.      */
-DECL|method|changesMade ()
-specifier|public
-name|boolean
-name|changesMade
-parameter_list|()
-block|{
-return|return
-name|changesMade
-return|;
-block|}
 comment|/**      * Return the current list.      */
 DECL|method|getFields ()
 specifier|public
@@ -1686,23 +1663,6 @@ block|{
 name|additionListeners
 operator|.
 name|add
-argument_list|(
-name|l
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|removeAdditionActionListener (ActionListener l)
-specifier|public
-name|void
-name|removeAdditionActionListener
-parameter_list|(
-name|ActionListener
-name|l
-parameter_list|)
-block|{
-name|additionListeners
-operator|.
-name|remove
 argument_list|(
 name|l
 argument_list|)
