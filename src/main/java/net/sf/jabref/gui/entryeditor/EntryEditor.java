@@ -2775,7 +2775,7 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
-name|fieldExtras
+name|fieldName
 argument_list|)
 operator|||
 name|BibtexFields
