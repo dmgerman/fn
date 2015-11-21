@@ -20,22 +20,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibtexDatabase
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -87,6 +71,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -262,6 +247,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -454,6 +440,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -818,6 +805,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -954,6 +942,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -1140,6 +1129,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -1418,6 +1408,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -1570,6 +1561,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -1704,6 +1696,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -1814,6 +1807,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -1942,6 +1936,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -2164,6 +2159,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -2338,6 +2334,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -2684,6 +2681,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -2863,6 +2861,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -2999,6 +2998,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -3274,6 +3274,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -3413,6 +3414,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -3552,6 +3554,7 @@ name|BibLatexEntryType
 argument_list|()
 block|{
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|String
