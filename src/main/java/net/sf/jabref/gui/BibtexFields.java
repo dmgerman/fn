@@ -364,6 +364,16 @@ init|=
 literal|"setOwner"
 decl_stmt|;
 comment|// Button to set owner to current used
+DECL|field|EXTRA_MONTH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EXTRA_MONTH
+init|=
+literal|"month"
+decl_stmt|;
+comment|// Button to show the months and set abbreviation
 DECL|field|DEFAULT_INSPECTION_FIELDS
 specifier|public
 specifier|static
@@ -655,8 +665,8 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|add
-argument_list|(
+name|dummy
+operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
@@ -668,6 +678,17 @@ name|GUIGlobals
 operator|.
 name|SMALL_W
 argument_list|)
+expr_stmt|;
+name|dummy
+operator|.
+name|setExtras
+argument_list|(
+name|EXTRA_MONTH
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|dummy
 argument_list|)
 expr_stmt|;
 name|add
@@ -2628,7 +2649,7 @@ specifier|private
 name|String
 name|name
 decl_stmt|;
-comment|// contains the standard, privat, displayable, writable infos
+comment|// contains the standard, private, displayable, writable infos
 comment|// default is: not standard, public, displayable and writable
 DECL|field|flag
 specifier|private
