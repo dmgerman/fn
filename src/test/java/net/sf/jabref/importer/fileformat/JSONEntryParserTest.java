@@ -107,9 +107,6 @@ block|{
 name|String
 name|jsonString
 init|=
-operator|new
-name|String
-argument_list|(
 literal|"{\n\"title\": \"Design of Finite Word Length Linear-Phase FIR Filters in the Logarithmic Number System Domain\",\n"
 operator|+
 literal|"\"journal\": {\n\"publisher\": \"Hindawi Publishing Corporation\",\n\"language\": ["
@@ -127,7 +124,6 @@ operator|+
 literal|"\"id\": \"1563-5171\"},{\"type\": \"doi\",\"id\": \"10.1155/2014/217495\""
 operator|+
 literal|"}],\"created_date\":\"2014-05-09T19:38:31Z\"}\""
-argument_list|)
 decl_stmt|;
 name|JSONObject
 name|jo
@@ -229,6 +225,163 @@ operator|.
 name|getField
 argument_list|(
 literal|"year"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testSpringerJSONToBibtex ()
+specifier|public
+name|void
+name|testSpringerJSONToBibtex
+parameter_list|()
+block|{
+name|String
+name|jsonString
+init|=
+literal|"{\r\n"
+operator|+
+literal|"            \"identifier\":\"doi:10.1007/BF01201962\",\r\n"
+operator|+
+literal|"            \"title\":\"Book reviews\",\r\n"
+operator|+
+literal|"            \"publicationName\":\"World Journal of Microbiology& Biotechnology\",\r\n"
+operator|+
+literal|"            \"issn\":\"1573-0972\",\r\n"
+operator|+
+literal|"            \"isbn\":\"\",\r\n"
+operator|+
+literal|"            \"doi\":\"10.1007/BF01201962\",\r\n"
+operator|+
+literal|"            \"publisher\":\"Springer\",\r\n"
+operator|+
+literal|"            \"publicationDate\":\"1992-09-01\",\r\n"
+operator|+
+literal|"            \"volume\":\"8\",\r\n"
+operator|+
+literal|"            \"number\":\"5\",\r\n"
+operator|+
+literal|"            \"startingPage\":\"550\",\r\n"
+operator|+
+literal|"            \"url\":\"http://dx.doi.org/10.1007/BF01201962\",\"copyright\":\"Â©1992 Rapid Communications of Oxford Ltd.\"\r\n"
+operator|+
+literal|"        }"
+decl_stmt|;
+name|JSONObject
+name|jo
+init|=
+operator|new
+name|JSONObject
+argument_list|(
+name|jsonString
+argument_list|)
+decl_stmt|;
+name|BibtexEntry
+name|be
+init|=
+name|jc
+operator|.
+name|SpringerJSONtoBibtex
+argument_list|(
+name|jo
+argument_list|)
+decl_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"1992"
+argument_list|,
+name|be
+operator|.
+name|getField
+argument_list|(
+literal|"year"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"5"
+argument_list|,
+name|be
+operator|.
+name|getField
+argument_list|(
+literal|"number"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"#sep#"
+argument_list|,
+name|be
+operator|.
+name|getField
+argument_list|(
+literal|"month"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"10.1007/BF01201962"
+argument_list|,
+name|be
+operator|.
+name|getField
+argument_list|(
+literal|"doi"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"8"
+argument_list|,
+name|be
+operator|.
+name|getField
+argument_list|(
+literal|"volume"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Springer"
+argument_list|,
+name|be
+operator|.
+name|getField
+argument_list|(
+literal|"publisher"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"1992-09-01"
+argument_list|,
+name|be
+operator|.
+name|getField
+argument_list|(
+literal|"date"
 argument_list|)
 argument_list|)
 expr_stmt|;
