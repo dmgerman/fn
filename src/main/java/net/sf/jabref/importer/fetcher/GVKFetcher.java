@@ -407,7 +407,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|null
+literal|"GVKHelp.html"
 return|;
 block|}
 annotation|@
