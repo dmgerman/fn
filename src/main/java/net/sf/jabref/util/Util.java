@@ -3190,13 +3190,13 @@ name|off
 decl_stmt|;
 if|if
 condition|(
-name|s
-operator|.
-name|equals
-argument_list|(
 name|BibtexFields
 operator|.
 name|EXTRA_BROWSE_DOC_ZIP
+operator|.
+name|equals
+argument_list|(
+name|s
 argument_list|)
 condition|)
 block|{
