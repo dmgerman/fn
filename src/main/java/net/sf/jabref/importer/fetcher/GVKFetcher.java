@@ -431,7 +431,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-literal|"GVKFetcher"
+literal|"GVK (Gemeinsamer Verbundkatalog)"
 return|;
 block|}
 annotation|@
