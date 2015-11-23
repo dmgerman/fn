@@ -584,15 +584,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|tableFormat
 specifier|private
 specifier|final

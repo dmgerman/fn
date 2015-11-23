@@ -155,15 +155,6 @@ name|AbstractAction
 implements|implements
 name|Runnable
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|9008115216029319314L
-decl_stmt|;
 DECL|field|operation
 specifier|private
 specifier|final

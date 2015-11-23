@@ -446,16 +446,6 @@ name|FromAuxDialog
 extends|extends
 name|JDialog
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|7839874395438295941L
-decl_stmt|;
 DECL|field|statusPanel
 specifier|private
 specifier|final
@@ -1082,15 +1072,6 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|4511569209048851343L
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -1919,7 +1900,6 @@ name|getGeneratedDatabase
 argument_list|()
 return|;
 block|}
-comment|// ---------------------------------------------------------------------------
 comment|/**      * Action used to produce a "Browse" button for one of the text fields.      */
 DECL|class|BrowseAction
 specifier|static
@@ -1928,15 +1908,6 @@ name|BrowseAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|685593871964202310L
-decl_stmt|;
 DECL|field|comp
 specifier|private
 specifier|final

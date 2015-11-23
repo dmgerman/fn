@@ -120,15 +120,6 @@ name|BrowseAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|3007593430933681310L
-decl_stmt|;
 DECL|field|frame
 specifier|private
 specifier|final

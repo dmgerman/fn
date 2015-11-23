@@ -1066,15 +1066,6 @@ name|JFrame
 implements|implements
 name|OutputPrinter
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -1585,15 +1576,6 @@ name|ToolBar
 extends|extends
 name|JToolBar
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|addAction (Action a)
 name|void
 name|addAction

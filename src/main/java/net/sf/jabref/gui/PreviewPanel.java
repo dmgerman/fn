@@ -354,15 +354,6 @@ name|SearchTextListener
 implements|,
 name|EntryContainer
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 comment|/**      * The bibtex entry currently shown      */
 DECL|field|entry
 name|BibtexEntry
@@ -783,15 +774,6 @@ name|PrintAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|PrintAction ()
 specifier|public
 name|PrintAction
@@ -1006,15 +988,6 @@ name|CloseAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|CloseAction ()
 specifier|public
 name|CloseAction
@@ -1353,14 +1326,6 @@ operator|new
 name|JEditorPane
 argument_list|()
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
