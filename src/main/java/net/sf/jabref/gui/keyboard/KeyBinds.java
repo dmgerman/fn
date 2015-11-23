@@ -554,15 +554,6 @@ name|OPEN_FOLDER
 init|=
 literal|"Open folder"
 decl_stmt|;
-DECL|field|OPEN_PDF_OR_PS
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|OPEN_PDF_OR_PS
-init|=
-literal|"Open PDF or PS"
-decl_stmt|;
 DECL|field|OPEN_SPIRES_ENTRY
 specifier|public
 specifier|static
@@ -1351,15 +1342,6 @@ argument_list|(
 name|OPEN_FOLDER
 argument_list|,
 literal|"ctrl shift O"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|OPEN_PDF_OR_PS
-argument_list|,
-literal|"shift F5"
 argument_list|)
 expr_stmt|;
 name|keyBindMap
