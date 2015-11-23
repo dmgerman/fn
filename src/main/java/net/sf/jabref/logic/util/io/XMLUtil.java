@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.util
+DECL|package|net.sf.jabref.logic.util.io
 package|package
 name|net
 operator|.
@@ -8,7 +8,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
+operator|.
+name|io
 package|;
 end_package
 
@@ -164,6 +168,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * Prints out the document to standard out. Used to generate files for test cases.      */
 DECL|method|printDocument (Document doc)
 specifier|public
 specifier|static
