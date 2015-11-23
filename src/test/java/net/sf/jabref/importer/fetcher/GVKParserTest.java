@@ -118,7 +118,7 @@ name|jabref
 operator|.
 name|bibtex
 operator|.
-name|BibtexEntryUtil
+name|BibtexEntryAssert
 import|;
 end_import
 
@@ -235,9 +235,9 @@ range|:
 name|resourceNames
 control|)
 block|{
-name|BibtexEntryUtil
+name|BibtexEntryAssert
 operator|.
-name|doAssertEquals
+name|assertEquals
 argument_list|(
 name|GVKParser
 operator|.
