@@ -1010,15 +1010,6 @@ literal|"Font Preview"
 argument_list|)
 argument_list|)
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|4191591634265068189L
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public

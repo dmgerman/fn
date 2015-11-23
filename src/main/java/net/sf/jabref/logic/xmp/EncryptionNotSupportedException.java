@@ -36,15 +36,6 @@ name|EncryptionNotSupportedException
 extends|extends
 name|IOException
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|3280233692527372333L
-decl_stmt|;
 DECL|method|EncryptionNotSupportedException (String string)
 specifier|public
 name|EncryptionNotSupportedException

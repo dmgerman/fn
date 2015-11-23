@@ -983,14 +983,6 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|812282483921018251L
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public

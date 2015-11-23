@@ -857,8 +857,6 @@ argument_list|)
 expr_stmt|;
 name|scanGroups
 argument_list|(
-name|mdInMem
-argument_list|,
 name|mdInTemp
 argument_list|,
 name|mdOnDisk
@@ -2887,14 +2885,11 @@ literal|null
 return|;
 block|}
 comment|/**      * This method only detects whether a change took place or not. It does not determine the type of change. This would      * be possible, but difficult to do properly, so I rather only report the change.      */
-DECL|method|scanGroups (MetaData inMem, MetaData onTmp, MetaData onDisk)
+DECL|method|scanGroups (MetaData onTmp, MetaData onDisk)
 specifier|private
 name|void
 name|scanGroups
 parameter_list|(
-name|MetaData
-name|inMem
-parameter_list|,
 name|MetaData
 name|onTmp
 parameter_list|,

@@ -321,15 +321,6 @@ name|OPEN_EXTERNAL_FILE
 init|=
 literal|"openExternalFile"
 decl_stmt|;
-DECL|field|OPEN_FILE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|OPEN_FILE
-init|=
-literal|"openFile"
-decl_stmt|;
 DECL|field|OPEN_FOLDER
 specifier|public
 specifier|static

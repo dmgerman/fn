@@ -147,6 +147,84 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|normalizeNewlineInAbstractField ()
+specifier|public
+name|void
+name|normalizeNewlineInAbstractField
+parameter_list|()
+block|{
+name|String
+name|fieldName
+init|=
+literal|"abstract"
+decl_stmt|;
+name|String
+name|text
+init|=
+literal|"lorem"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|" ipsum lorem ipsum\nlorem ipsum \rlorem ipsum\r\ntest"
+decl_stmt|;
+comment|// The newlines are normalized according to the globally configured newline setting in the formatter
+name|String
+name|expected
+init|=
+literal|"{"
+operator|+
+literal|"lorem"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|" ipsum lorem ipsum"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"lorem ipsum "
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"lorem ipsum"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"test"
+operator|+
+literal|"}"
+decl_stmt|;
+name|String
+name|result
+init|=
+name|formatter
+operator|.
+name|format
+argument_list|(
+name|text
+argument_list|,
+name|fieldName
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|preserveNewlineInAbstractField ()
 specifier|public
 name|void
@@ -158,26 +236,84 @@ name|fieldName
 init|=
 literal|"abstract"
 decl_stmt|;
+comment|// The newlines are normalized according to the globally configured newline setting in the formatter
 name|String
 name|text
 init|=
-literal|"lorem ipsum lorem ipsum\nlorem ipsum lorem ipsum\n"
-decl_stmt|;
-comment|// The newlines are normalized according to the globally configured newline setting in the formatter
-comment|// Therefore, "\n" has to be replaced by that
-name|text
-operator|=
-name|text
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\n"
-argument_list|,
+literal|"lorem ipsum lorem ipsum"
+operator|+
 name|Globals
 operator|.
 name|NEWLINE
+operator|+
+literal|"lorem ipsum lorem ipsum"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+decl_stmt|;
+name|String
+name|result
+init|=
+name|formatter
+operator|.
+name|format
+argument_list|(
+name|text
+argument_list|,
+name|fieldName
+argument_list|)
+decl_stmt|;
+name|String
+name|expected
+init|=
+literal|"{"
+operator|+
+name|text
+operator|+
+literal|"}"
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|result
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|preserveMultipleNewlinesInAbstractField ()
+specifier|public
+name|void
+name|preserveMultipleNewlinesInAbstractField
+parameter_list|()
+block|{
+name|String
+name|fieldName
+init|=
+literal|"abstract"
+decl_stmt|;
+comment|// The newlines are normalized according to the globally configured newline setting in the formatter
+name|String
+name|text
+init|=
+literal|"lorem ipsum lorem ipsum"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"lorem ipsum lorem ipsum"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+decl_stmt|;
 name|String
 name|result
 init|=
@@ -220,26 +356,22 @@ name|fieldName
 init|=
 literal|"review"
 decl_stmt|;
+comment|// The newlines are normalized according to the globally configured newline setting in the formatter
 name|String
 name|text
 init|=
-literal|"lorem ipsum lorem ipsum\nlorem ipsum lorem ipsum\n"
-decl_stmt|;
-comment|// The newlines are normalized according to the globally configured newline setting in the formatter
-comment|// Therefore, "\n" has to be replaced by that
-name|text
-operator|=
-name|text
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\n"
-argument_list|,
+literal|"lorem ipsum lorem ipsum"
+operator|+
 name|Globals
 operator|.
 name|NEWLINE
-argument_list|)
-expr_stmt|;
+operator|+
+literal|"lorem ipsum lorem ipsum"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+decl_stmt|;
 name|String
 name|result
 init|=

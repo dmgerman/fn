@@ -184,23 +184,6 @@ name|trim
 argument_list|()
 return|;
 block|}
-DECL|method|hasIsoAndMedlineAbbreviationsAreSame ()
-specifier|public
-name|boolean
-name|hasIsoAndMedlineAbbreviationsAreSame
-parameter_list|()
-block|{
-return|return
-name|getIsoAbbreviation
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|getMedlineAbbreviation
-argument_list|()
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|compareTo (Abbreviation toCompare)
@@ -304,36 +287,6 @@ argument_list|,
 name|getMedlineAbbreviation
 argument_list|()
 argument_list|)
-return|;
-block|}
-DECL|method|toPropertiesLine ()
-specifier|public
-name|String
-name|toPropertiesLine
-parameter_list|()
-block|{
-return|return
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"%s = %s"
-argument_list|,
-name|name
-argument_list|,
-name|getAbbreviation
-argument_list|()
-argument_list|)
-return|;
-block|}
-DECL|method|getAbbreviation ()
-specifier|public
-name|String
-name|getAbbreviation
-parameter_list|()
-block|{
-return|return
-name|abbreviation
 return|;
 block|}
 annotation|@

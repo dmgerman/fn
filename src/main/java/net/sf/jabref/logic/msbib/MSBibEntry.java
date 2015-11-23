@@ -166,6 +166,24 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|exporter
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|RemoveBrackets
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|importer
 operator|.
 name|fileformat
@@ -365,7 +383,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Date: May 15, 2007; May 03, 2007  *<p>  * History  * May 03, 2007 - Added export functionality  * May 15, 2007 - Added import functionality  * May 16, 2007 - Changed all interger entries to strings,  * except LCID which must be an integer.  * To avoid exception during integer parsing  * the exception is caught and LCID is set to zero.  * Jan 06, 2012 - Changed the XML element ConferenceName to present  * the Booktitle instead of the organization field content  *  * @author S M Mahbub Murshed (udvranto@yahoo.com)  * @version 2.0.0  * @see<a href="http://mahbub.wordpress.com/2007/03/24/details-of-microsoft-office-2007-bibliographic-format-compared-to-bibtex/">ms office 2007 bibliography format compared to bibtex</a>  * @see<a href="http://mahbub.wordpress.com/2007/03/22/deciphering-microsoft-office-2007-bibliography-format/">deciphering ms office 2007 bibliography format</a>  */
+comment|/**  * Date: May 15, 2007; May 03, 2007  *<p>  * History  * May 03, 2007 - Added export functionality  * May 15, 2007 - Added import functionality  * May 16, 2007 - Changed all interger entries to strings,  * except LCID which must be an integer.  * To avoid exception during integer parsing  * the exception is caught and LCID is set to zero.  * Jan 06, 2012 - Changed the XML element ConferenceName to present  * the Booktitle instead of the organization field content  *  * @author S M Mahbub Murshed (udvranto@yahoo.com)  * @version 2.0.0  * @see<a href="http://mahbub.wordpress.com/2007/03/24/details-of-microsoft-office-2007-bibliographic-format-compared-to-bibtex/">ms office 2007 bibliography format compared to bibtex</a>  * @see<a href="http://mahbub.wordpress.com/2007/03/22/deciphering-microsoft-office-2007-bibliography-format/">deciphering ms office 2007 bibliography format</a>  * See http://www.ecma-international.org/publications/standards/Ecma-376.htm  */
 end_comment
 
 begin_class
@@ -832,11 +850,6 @@ name|bcol
 init|=
 literal|"b:"
 decl_stmt|;
-DECL|method|MSBibEntry ()
-specifier|private
-name|MSBibEntry
-parameter_list|()
-block|{     }
 DECL|method|MSBibEntry (BibtexEntry bibtex)
 specifier|public
 name|MSBibEntry
@@ -845,9 +858,6 @@ name|BibtexEntry
 name|bibtex
 parameter_list|)
 block|{
-name|this
-argument_list|()
-expr_stmt|;
 name|populateFromBibtex
 argument_list|(
 name|bibtex
@@ -865,9 +875,6 @@ name|String
 name|bcol
 parameter_list|)
 block|{
-name|this
-argument_list|()
-expr_stmt|;
 name|populateFromXml
 argument_list|(
 name|entry
@@ -1915,13 +1922,26 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|title
-operator|=
+name|String
+name|temp
+init|=
 name|bibtex
 operator|.
 name|getField
 argument_list|(
 literal|"title"
+argument_list|)
+decl_stmt|;
+comment|// TODO: remove LaTex syntax
+name|title
+operator|=
+operator|new
+name|RemoveBrackets
+argument_list|()
+operator|.
+name|format
+argument_list|(
+name|temp
 argument_list|)
 expr_stmt|;
 block|}

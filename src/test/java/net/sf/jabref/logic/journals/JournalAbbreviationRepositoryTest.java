@@ -304,21 +304,6 @@ literal|"?"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-literal|"Long Name = L. N.%n"
-argument_list|)
-argument_list|,
-name|repository
-operator|.
-name|toPropertiesString
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -625,22 +610,6 @@ name|orElse
 argument_list|(
 literal|"WRONG"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Long Name = LA. N."
-argument_list|,
-name|repository
-operator|.
-name|getAbbreviations
-argument_list|()
-operator|.
-name|first
-argument_list|()
-operator|.
-name|toPropertiesLine
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -488,15 +488,6 @@ name|ExternalFilePanel
 extends|extends
 name|JPanel
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|3653290879640642718L
-decl_stmt|;
 DECL|field|entryEditor
 specifier|private
 name|EntryEditor

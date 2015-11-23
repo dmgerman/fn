@@ -204,20 +204,16 @@ name|SAXException
 import|;
 end_import
 
+begin_comment
+comment|/**  * Microsoft Word bibliography.  *  * See http://www.ecma-international.org/publications/standards/Ecma-376.htm  */
+end_comment
+
 begin_class
 DECL|class|MSBibDatabase
 specifier|public
 class|class
 name|MSBibDatabase
 block|{
-DECL|field|entries
-specifier|private
-name|Set
-argument_list|<
-name|MSBibEntry
-argument_list|>
-name|entries
-decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -233,6 +229,14 @@ name|MSBibDatabase
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+DECL|field|entries
+specifier|private
+name|Set
+argument_list|<
+name|MSBibEntry
+argument_list|>
+name|entries
 decl_stmt|;
 DECL|method|MSBibDatabase ()
 specifier|public

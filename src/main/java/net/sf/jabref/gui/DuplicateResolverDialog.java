@@ -1107,16 +1107,6 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|isBlocking ()
-specifier|public
-name|boolean
-name|isBlocking
-parameter_list|()
-block|{
-return|return
-name|block
-return|;
-block|}
 DECL|method|getSelected ()
 specifier|public
 name|int

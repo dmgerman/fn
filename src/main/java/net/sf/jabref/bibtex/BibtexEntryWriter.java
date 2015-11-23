@@ -672,7 +672,7 @@ if|if
 condition|(
 name|entry
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsFlat
 argument_list|()
 operator|!=
 literal|null
@@ -948,7 +948,7 @@ argument_list|(
 name|entryTypeName
 argument_list|)
 decl_stmt|;
-comment|// put into chache if necessary
+comment|// put into cache if necessary
 if|if
 condition|(
 name|sortedFields
@@ -964,7 +964,7 @@ argument_list|<>
 argument_list|(
 name|entry
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsFlat
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1147,7 +1147,7 @@ name|fields
 init|=
 name|entry
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsFlat
 argument_list|()
 decl_stmt|;
 if|if
