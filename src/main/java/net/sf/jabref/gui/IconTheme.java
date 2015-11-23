@@ -152,11 +152,11 @@ init|=
 operator|new
 name|Color
 argument_list|(
-literal|98
+literal|79
 argument_list|,
-literal|119
+literal|95
 argument_list|,
-literal|130
+literal|143
 argument_list|)
 decl_stmt|;
 DECL|field|DEFAULT_DISABLED_COLOR

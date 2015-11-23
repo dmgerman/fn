@@ -30,6 +30,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -71,6 +81,7 @@ name|two
 argument_list|)
 return|;
 block|}
+comment|/**      * Make first character of String uppercase, and the      * rest lowercase.      */
 DECL|method|capitalizeFirst (String toCapitalize)
 specifier|public
 specifier|static
@@ -81,8 +92,6 @@ name|String
 name|toCapitalize
 parameter_list|)
 block|{
-comment|// Make first character of String uppercase, and the
-comment|// rest lowercase.
 if|if
 condition|(
 name|toCapitalize
@@ -132,7 +141,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Build a String array containing all those elements of all that are not      * in subset.      * @param all The array of all values.      * @param subset The subset of values.      * @return The remainder that is not part of the subset.      */
+comment|/**      * Build a String array containing all those elements of all that are not      * in subset.      *      * @param all The array of all values.      * @param subset The subset of values.      * @return The remainder that is not part of the subset. - The result MUST NOT be modified      */
 DECL|method|getRemainder (List<String> all, List<String> subset)
 specifier|public
 specifier|static
@@ -159,14 +168,18 @@ if|if
 condition|(
 name|subset
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
+comment|// ensure that "all" does not get modified
 return|return
+name|Collections
+operator|.
+name|unmodifiableList
+argument_list|(
 name|all
+argument_list|)
 return|;
 block|}
 if|if
@@ -180,10 +193,9 @@ argument_list|)
 condition|)
 block|{
 return|return
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
+name|Collections
+operator|.
+name|EMPTY_LIST
 return|;
 block|}
 name|ArrayList

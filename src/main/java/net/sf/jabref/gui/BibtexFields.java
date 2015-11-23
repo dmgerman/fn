@@ -160,6 +160,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|IEEETranEntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|specialfields
 operator|.
 name|SpecialFieldsUtils
@@ -258,6 +274,106 @@ name|ENTRYTYPE
 init|=
 literal|"entrytype"
 decl_stmt|;
+DECL|field|EXTRA_YES_NO
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EXTRA_YES_NO
+init|=
+literal|"yesNo"
+decl_stmt|;
+comment|// Blank/Yes/No Combo-box
+DECL|field|EXTRA_URL
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EXTRA_URL
+init|=
+literal|"url"
+decl_stmt|;
+comment|// Drop target for URL
+DECL|field|EXTRA_DATEPICKER
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EXTRA_DATEPICKER
+init|=
+literal|"datepicker"
+decl_stmt|;
+comment|// Calendar button and double-click in field to set current date
+DECL|field|EXTRA_JOURNAL_NAMES
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EXTRA_JOURNAL_NAMES
+init|=
+literal|"journalNames"
+decl_stmt|;
+comment|// Journal abbreviation button
+DECL|field|EXTRA_EXTERNAL
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EXTRA_EXTERNAL
+init|=
+literal|"external"
+decl_stmt|;
+comment|// Open external viewer on double-click
+DECL|field|EXTRA_BROWSE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EXTRA_BROWSE
+init|=
+literal|"browse"
+decl_stmt|;
+comment|// Browse button, file dialog
+DECL|field|EXTRA_BROWSE_DOC
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EXTRA_BROWSE_DOC
+init|=
+literal|"browseDoc"
+decl_stmt|;
+comment|// Browse button, file dialog with extension .fieldname
+DECL|field|EXTRA_BROWSE_DOC_ZIP
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EXTRA_BROWSE_DOC_ZIP
+init|=
+literal|"browseDocZip"
+decl_stmt|;
+comment|// Browse button, file dialog with extension .fieldname, .fieldname.bz2, .filedname.gz
+DECL|field|EXTRA_SET_OWNER
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EXTRA_SET_OWNER
+init|=
+literal|"setOwner"
+decl_stmt|;
+comment|// Button to set owner to current used
+DECL|field|EXTRA_MONTH
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EXTRA_MONTH
+init|=
+literal|"month"
+decl_stmt|;
+comment|// Button to show the months and set abbreviation
 DECL|field|DEFAULT_INSPECTION_FIELDS
 specifier|public
 specifier|static
@@ -504,7 +620,7 @@ name|dummy
 operator|.
 name|setExtras
 argument_list|(
-literal|"journalNames"
+name|EXTRA_JOURNAL_NAMES
 argument_list|)
 expr_stmt|;
 name|add
@@ -530,7 +646,7 @@ name|dummy
 operator|.
 name|setExtras
 argument_list|(
-literal|"journalNames"
+name|EXTRA_JOURNAL_NAMES
 argument_list|)
 expr_stmt|;
 name|add
@@ -549,8 +665,8 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|add
-argument_list|(
+name|dummy
+operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
@@ -562,6 +678,17 @@ name|GUIGlobals
 operator|.
 name|SMALL_W
 argument_list|)
+expr_stmt|;
+name|dummy
+operator|.
+name|setExtras
+argument_list|(
+name|EXTRA_MONTH
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|dummy
 argument_list|)
 expr_stmt|;
 name|add
@@ -1117,7 +1244,7 @@ name|dummy
 operator|.
 name|setExtras
 argument_list|(
-literal|"external"
+name|EXTRA_EXTERNAL
 argument_list|)
 expr_stmt|;
 name|add
@@ -1229,7 +1356,7 @@ name|dummy
 operator|.
 name|setExtras
 argument_list|(
-literal|"external"
+name|EXTRA_EXTERNAL
 argument_list|)
 expr_stmt|;
 name|add
@@ -1255,7 +1382,7 @@ name|dummy
 operator|.
 name|setExtras
 argument_list|(
-literal|"browseDoc"
+name|EXTRA_BROWSE_DOC
 argument_list|)
 expr_stmt|;
 name|add
@@ -1281,7 +1408,7 @@ name|dummy
 operator|.
 name|setExtras
 argument_list|(
-literal|"browseDocZip"
+name|EXTRA_BROWSE_DOC_ZIP
 argument_list|)
 expr_stmt|;
 name|add
@@ -1418,7 +1545,7 @@ name|dummy
 operator|.
 name|setExtras
 argument_list|(
-literal|"setOwner"
+name|EXTRA_SET_OWNER
 argument_list|)
 expr_stmt|;
 name|dummy
@@ -1451,7 +1578,7 @@ name|dummy
 operator|.
 name|setExtras
 argument_list|(
-literal|"datepicker"
+name|EXTRA_DATEPICKER
 argument_list|)
 expr_stmt|;
 name|dummy
@@ -1597,6 +1724,67 @@ argument_list|(
 name|dummy
 argument_list|)
 expr_stmt|;
+comment|// IEEEtranBSTCTL fields
+for|for
+control|(
+name|String
+name|yesNoField
+range|:
+name|IEEETranEntryTypes
+operator|.
+name|IEEETRANBSTCTL_YES_NO_FIELDS
+control|)
+block|{
+name|dummy
+operator|=
+operator|new
+name|BibtexSingleField
+argument_list|(
+name|yesNoField
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|dummy
+operator|.
+name|setExtras
+argument_list|(
+name|EXTRA_YES_NO
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|dummy
+argument_list|)
+expr_stmt|;
+block|}
+for|for
+control|(
+name|String
+name|numericField
+range|:
+name|IEEETranEntryTypes
+operator|.
+name|IEEETRANBSTCTL_NUMERIC_FIELDS
+control|)
+block|{
+name|add
+argument_list|(
+operator|new
+name|BibtexSingleField
+argument_list|(
+name|numericField
+argument_list|,
+literal|false
+argument_list|)
+operator|.
+name|setNumeric
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|// collect all public fields for the PUBLIC_FIELDS array
 name|Vector
 argument_list|<
@@ -1627,9 +1815,10 @@ control|)
 block|{
 if|if
 condition|(
+operator|!
 name|sField
 operator|.
-name|isPublic
+name|isPrivate
 argument_list|()
 condition|)
 block|{
@@ -1643,7 +1832,7 @@ name|getFieldName
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// or export the complet BibtexSingleField ?
+comment|// or export the complete BibtexSingleField ?
 comment|// BibtexSingleField.toString() { return fieldname ; }
 block|}
 block|}
@@ -2460,7 +2649,7 @@ specifier|private
 name|String
 name|name
 decl_stmt|;
-comment|// contains the standard, privat, displayable, writable infos
+comment|// contains the standard, private, displayable, writable infos
 comment|// default is: not standard, public, displayable and writable
 DECL|field|flag
 specifier|private
@@ -2983,38 +3172,6 @@ name|isPrivate
 parameter_list|()
 block|{
 return|return
-name|isSet
-argument_list|(
-name|BibtexSingleField
-operator|.
-name|PRIVATE
-argument_list|)
-return|;
-block|}
-DECL|method|setPublic ()
-specifier|public
-name|void
-name|setPublic
-parameter_list|()
-block|{
-name|setFlag
-argument_list|(
-literal|false
-argument_list|,
-name|BibtexSingleField
-operator|.
-name|PRIVATE
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|isPublic ()
-specifier|public
-name|boolean
-name|isPublic
-parameter_list|()
-block|{
-return|return
-operator|!
 name|isSet
 argument_list|(
 name|BibtexSingleField

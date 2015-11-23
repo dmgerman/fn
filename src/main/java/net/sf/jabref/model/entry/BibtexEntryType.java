@@ -199,6 +199,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getPrimaryOptionalFields ()
 specifier|public
 name|List
@@ -213,6 +215,8 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSecondaryOptionalFields ()
 specifier|public
 name|List
@@ -226,29 +230,26 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|optionalFields
+name|locOptionalFields
 init|=
 name|getOptionalFields
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|optionalFields
+name|locOptionalFields
 operator|==
 literal|null
 condition|)
 block|{
 return|return
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
-literal|0
-argument_list|)
+name|Collections
+operator|.
+name|EMPTY_LIST
 return|;
 block|}
 return|return
-name|optionalFields
+name|locOptionalFields
 operator|.
 name|stream
 argument_list|()

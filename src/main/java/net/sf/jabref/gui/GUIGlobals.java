@@ -1292,60 +1292,6 @@ name|FIELD_EDITOR_TEXT_COLOR
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * returns the path to language independent help files      */
-DECL|method|getLocaleHelpPath ()
-specifier|public
-specifier|static
-name|String
-name|getLocaleHelpPath
-parameter_list|()
-block|{
-name|JabRefPreferences
-name|prefs
-init|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-decl_stmt|;
-name|String
-name|middle
-init|=
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|LANGUAGE
-argument_list|)
-operator|+
-literal|'/'
-decl_stmt|;
-if|if
-condition|(
-name|middle
-operator|.
-name|equals
-argument_list|(
-literal|"en/"
-argument_list|)
-condition|)
-block|{
-name|middle
-operator|=
-literal|""
-expr_stmt|;
-comment|// English in base help dir.
-block|}
-return|return
-name|GUIGlobals
-operator|.
-name|helpPre
-operator|+
-name|middle
-return|;
-block|}
 comment|/**      * Perform initializations that are only used in graphical mode. This is to prevent      * the "Xlib: connection to ":0.0" refused by server" error when access to the X server      * on Un*x is unavailable.      */
 DECL|method|init ()
 specifier|public

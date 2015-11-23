@@ -4814,72 +4814,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @param deletion != addition      */
-DECL|method|updateGroupContentIfEnabled (boolean deletion)
-specifier|public
-name|void
-name|updateGroupContentIfEnabled
-parameter_list|(
-name|boolean
-name|deletion
-parameter_list|)
-block|{
-if|if
-condition|(
-operator|(
-name|groupsTree
-operator|==
-literal|null
-operator|)
-operator|||
-operator|(
-name|groupsTree
-operator|.
-name|getSelectionCount
-argument_list|()
-operator|==
-literal|0
-operator|)
-condition|)
-block|{
-return|return;
-block|}
-if|if
-condition|(
-operator|!
-name|this
-operator|.
-name|editModeIndicator
-condition|)
-block|{
-comment|// add button selected
-return|return;
-block|}
-name|GroupTreeNode
-name|curNode
-init|=
-call|(
-name|GroupTreeNode
-call|)
-argument_list|(
-name|groupsTree
-operator|.
-name|getSelectionPaths
-argument_list|()
-argument_list|)
-index|[
-literal|0
-index|]
-operator|.
-name|getLastPathComponent
-argument_list|()
-decl_stmt|;
-name|updateGroupContent
-argument_list|(
-name|curNode
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|annotationEvent (GroupTreeNode node)
 specifier|private
 name|void
@@ -4923,9 +4857,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|//    private void annotationEvent() {
-comment|//        this.annotationEvent((GroupTreeNode) ((groupsTree.getSelectionPaths())[0].getLastPathComponent()));
-comment|//    }
 annotation|@
 name|Override
 DECL|method|valueChanged (TreeSelectionEvent e)
@@ -6015,16 +5946,6 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|getNode ()
-specifier|public
-name|GroupTreeNode
-name|getNode
-parameter_list|()
-block|{
-return|return
-name|m_node
-return|;
 block|}
 DECL|method|setNode (GroupTreeNode node)
 specifier|public

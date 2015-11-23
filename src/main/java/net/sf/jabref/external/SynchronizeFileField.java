@@ -680,11 +680,6 @@ name|progress
 init|=
 literal|0
 decl_stmt|;
-name|int
-name|brokenLinks
-init|=
-literal|0
-decl_stmt|;
 specifier|final
 name|NamedCompound
 name|ce
@@ -1185,9 +1180,6 @@ break|break
 name|mainLoop
 break|;
 block|}
-name|brokenLinks
-operator|++
-expr_stmt|;
 block|}
 comment|// Unless we deleted this link, see if its file type is recognized:
 if|if

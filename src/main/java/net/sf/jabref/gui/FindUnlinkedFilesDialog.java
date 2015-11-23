@@ -2766,8 +2766,6 @@ argument_list|)
 decl_stmt|;
 name|importFinishedHandler
 argument_list|(
-name|count
-argument_list|,
 name|errors
 argument_list|)
 expr_stmt|;
@@ -2777,14 +2775,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      *      * @param errors      */
-DECL|method|importFinishedHandler (int count, List<String> errors)
+DECL|method|importFinishedHandler (List<String> errors)
 specifier|private
 name|void
 name|importFinishedHandler
 parameter_list|(
-name|int
-name|count
-parameter_list|,
 name|List
 argument_list|<
 name|String
@@ -5669,6 +5664,9 @@ name|Component
 name|getListCellRendererComponent
 parameter_list|(
 name|JList
+argument_list|<
+name|?
+argument_list|>
 name|list
 parameter_list|,
 name|Object
@@ -5896,16 +5894,6 @@ name|CheckableTreeNode
 extends|extends
 name|DefaultMutableTreeNode
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|1131241777605570737L
-decl_stmt|;
 DECL|field|isSelected
 specifier|private
 name|boolean
@@ -5913,6 +5901,7 @@ name|isSelected
 decl_stmt|;
 DECL|field|checkbox
 specifier|private
+specifier|final
 name|JCheckBox
 name|checkbox
 decl_stmt|;
@@ -5946,23 +5935,6 @@ block|{
 return|return
 name|checkbox
 return|;
-block|}
-comment|/**          * @param checkbox          *            the checkbox to set          */
-DECL|method|setCheckbox (JCheckBox checkbox)
-specifier|public
-name|void
-name|setCheckbox
-parameter_list|(
-name|JCheckBox
-name|checkbox
-parameter_list|)
-block|{
-name|this
-operator|.
-name|checkbox
-operator|=
-name|checkbox
-expr_stmt|;
 block|}
 DECL|method|check ()
 specifier|public

@@ -68,6 +68,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -120,7 +136,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -145,6 +181,21 @@ name|CustomEntryTypesManager
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+DECL|field|ALL
+specifier|public
+specifier|static
+specifier|final
+name|List
+argument_list|<
+name|EntryType
+argument_list|>
+name|ALL
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 decl_stmt|;
 comment|/**      * Load all custom entry types from preferences. This method is      * called from JabRef when the program starts.      */
 DECL|method|loadCustomEntryTypes (JabRefPreferences prefs)
@@ -184,6 +235,13 @@ block|{
 name|EntryTypes
 operator|.
 name|addOrModifyCustomEntryType
+argument_list|(
+name|type
+argument_list|)
+expr_stmt|;
+name|ALL
+operator|.
+name|add
 argument_list|(
 name|type
 argument_list|)
@@ -231,8 +289,8 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-name|Object
-name|o
+name|EntryType
+name|entryType
 init|=
 name|EntryTypes
 operator|.
@@ -246,7 +304,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|entryType
 operator|instanceof
 name|CustomEntryType
 condition|)
@@ -259,7 +317,7 @@ argument_list|(
 operator|(
 name|CustomEntryType
 operator|)
-name|o
+name|entryType
 argument_list|,
 name|number
 argument_list|)

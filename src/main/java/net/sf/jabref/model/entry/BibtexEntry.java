@@ -190,18 +190,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -1146,10 +1134,12 @@ parameter_list|()
 block|{
 if|if
 condition|(
+operator|(
 name|getCiteKey
 argument_list|()
 operator|==
 literal|null
+operator|)
 operator|||
 name|getCiteKey
 argument_list|()
@@ -1498,14 +1488,14 @@ name|database
 argument_list|)
 return|;
 block|}
-DECL|method|atLeastOnePresent (String[] fields, BibtexDatabase database)
+DECL|method|atLeastOnePresent (String[] fieldsToCheck, BibtexDatabase database)
 specifier|private
 name|boolean
 name|atLeastOnePresent
 parameter_list|(
 name|String
 index|[]
-name|fields
+name|fieldsToCheck
 parameter_list|,
 name|BibtexDatabase
 name|database
@@ -1516,7 +1506,7 @@ control|(
 name|String
 name|field
 range|:
-name|fields
+name|fieldsToCheck
 control|)
 block|{
 name|String

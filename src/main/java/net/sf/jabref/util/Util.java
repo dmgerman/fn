@@ -3190,7 +3190,9 @@ name|off
 decl_stmt|;
 if|if
 condition|(
-literal|"browseDocZip"
+name|BibtexFields
+operator|.
+name|EXTRA_BROWSE_DOC_ZIP
 operator|.
 name|equals
 argument_list|(
