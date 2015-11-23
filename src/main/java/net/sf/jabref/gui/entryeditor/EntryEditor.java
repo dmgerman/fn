@@ -1347,7 +1347,7 @@ name|fieldList
 init|=
 name|entry
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsFlat
 argument_list|()
 decl_stmt|;
 name|EntryEditorTab

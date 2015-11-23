@@ -410,7 +410,7 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
-comment|/**      * @return an array describing the required fields for this entry. "null" if no fields are required      */
+comment|/**      * Returns all required field names.      * If fields have an OR relationship the name includes both field names divided by /, e.g. author/editor.      * If you need all required fields as sole entities use @see{getRequiredFieldsFlat} .      *      * @return a List of required field name Strings      */
 DECL|method|getRequiredFields ()
 specifier|public
 name|List
@@ -424,6 +424,23 @@ return|return
 name|type
 operator|.
 name|getRequiredFields
+argument_list|()
+return|;
+block|}
+comment|/**      * Returns all required field names.      * No OR relationships are captured here.      *      * @return a List of required field name Strings      */
+DECL|method|getRequiredFieldsFlat ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getRequiredFieldsFlat
+parameter_list|()
+block|{
+return|return
+name|type
+operator|.
+name|getRequiredFieldsFlat
 argument_list|()
 return|;
 block|}
