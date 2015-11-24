@@ -65,10 +65,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|SearchObservable
+DECL|class|SearchTextObservable
 specifier|public
 class|class
-name|SearchObservable
+name|SearchTextObservable
 block|{
 DECL|field|listeners
 specifier|private

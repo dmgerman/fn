@@ -168,6 +168,9 @@ name|completeFields
 control|)
 block|{
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 init|=
 name|AutoCompleterFactory

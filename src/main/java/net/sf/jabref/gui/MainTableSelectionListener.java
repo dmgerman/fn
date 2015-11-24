@@ -661,7 +661,7 @@ operator|.
 name|getSearchBar
 argument_list|()
 operator|.
-name|getSearchObservable
+name|getSearchTextObservable
 argument_list|()
 operator|.
 name|addSearchListener
@@ -677,7 +677,7 @@ operator|.
 name|getSearchBar
 argument_list|()
 operator|.
-name|getSearchObservable
+name|getSearchTextObservable
 argument_list|()
 operator|.
 name|addSearchListener

@@ -1447,26 +1447,6 @@ specifier|private
 name|SaveDatabaseAction
 name|saveAction
 decl_stmt|;
-DECL|field|showingSearch
-specifier|private
-name|boolean
-name|showingSearch
-decl_stmt|;
-DECL|field|sortingBySearchResults
-specifier|public
-name|boolean
-name|sortingBySearchResults
-decl_stmt|;
-DECL|field|coloringBySearchResults
-specifier|public
-name|boolean
-name|coloringBySearchResults
-decl_stmt|;
-DECL|field|hidingNonHits
-specifier|public
-name|boolean
-name|hidingNonHits
-decl_stmt|;
 DECL|field|sortingByGroup
 specifier|public
 name|boolean
@@ -1482,15 +1462,6 @@ specifier|public
 name|boolean
 name|coloringByGroup
 decl_stmt|;
-DECL|field|lastSearchHits
-name|int
-name|lastSearchHits
-init|=
-operator|-
-literal|1
-decl_stmt|;
-comment|// The number of hits in the latest search.
-comment|// Potential use in hiding non-hits completely.
 comment|// MetaData parses, keeps and writes meta data.
 DECL|field|metaData
 specifier|public
@@ -10319,10 +10290,6 @@ block|}
 block|}
 end_function
 
-begin_comment
-comment|/*     public void refreshTable() {         //System.out.println("hiding="+hidingNonHits+"\tlastHits="+lastSearchHits);         // This method is called by EntryTypeForm when a field value is         // stored. The table is scheduled for repaint.         entryTable.assureNotEditing();         //entryTable.invalidate();         BibtexEntry[] bes = entryTable.getSelectedEntries();     if (hidingNonHits)         tableModel.update(lastSearchHits);     else         tableModel.update();     //tableModel.remap();         if ((bes != null)&& (bes.length> 0))             selectEntries(bes, 0);      //long toc = System.currentTimeMillis();     //	LOGGER.debug("Refresh took: "+(toc-tic)+" ms");     } */
-end_comment
-
 begin_function
 DECL|method|updatePreamble ()
 specifier|public
@@ -11213,8 +11180,6 @@ name|BibtexEntry
 name|be
 parameter_list|)
 block|{
-comment|//SwingUtilities.invokeLater(new Thread() {
-comment|//     public void run() {
 specifier|final
 name|int
 name|row
@@ -11251,8 +11216,6 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
-comment|//     }
-comment|//});
 block|}
 end_function
 
@@ -11301,14 +11264,6 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
-
-begin_comment
-comment|/**      * This method selects the given enties. If an entryEditor is shown, it is given focus afterwards.      */
-end_comment
-
-begin_comment
-comment|/*public void selectEntries(final BibtexEntry[] bes, final int toScrollTo) {          SwingUtilities.invokeLater(new Thread() {              public void run() {                  int rowToScrollTo = 0;                  entryTable.revalidate();                  entryTable.clearSelection();                  loop: for (int i=0; i<bes.length; i++) {                     if (bes[i] == null)                         continue loop;                     int row = tableModel.getNumberFromName(bes[i].getId());                     if (i==toScrollTo)                     rowToScrollTo = row;                     if (row>= 0)                         entryTable.addRowSelectionIntervalQuietly(row, row);                  }                  entryTable.ensureVisible(rowToScrollTo);                  Component comp = splitPane.getBottomComponent();                  //if (comp instanceof EntryEditor)                  //    comp.requestFocus();              }         });     } */
-end_comment
 
 begin_comment
 comment|/**      * Closes the entry editor if it is showing the given entry.      *      * @param be a<code>BibtexEntry</code> value      */
@@ -11799,34 +11754,67 @@ block|}
 end_function
 
 begin_comment
-comment|/* *      * Selects all entries with a non-zero value in the field      * @param field<code>String</code> field name.      */
+comment|/**      * used to cache whether filtering is on/off as this information cannot be retrieved from the FilterList      */
 end_comment
 
-begin_comment
-comment|/*    public void selectResults(String field) {           LinkedList intervals = new LinkedList();           int prevStart = -1, prevToSel = 0;           // First we build a list of intervals to select, without touching the table.           for (int i = 0; i< entryTable.getRowCount(); i++) {             String value = (String) (database.getEntryById                                      (tableModel.getIdForRow(i)))                 .getField(field);             if ( (value != null)&& !value.equals("0")) {               if (prevStart< 0)                 prevStart = i;               prevToSel = i;             }             else if (prevStart>= 0) {               intervals.add(new int[] {prevStart, prevToSel});               prevStart = -1;             }           }           // Then select those intervals, if any.           if (intervals.size()> 0) {             entryTable.setSelectionListenerEnabled(false);             entryTable.clearSelection();             for (Iterator i=intervals.iterator(); i.hasNext();) {               int[] interval = (int[])i.next();               entryTable.addRowSelectionInterval(interval[0], interval[1]);             }             entryTable.setSelectionListenerEnabled(true);           }       */
-end_comment
+begin_decl_stmt
+DECL|field|isFilteringActive
+specifier|private
+name|boolean
+name|isFilteringActive
+init|=
+literal|false
+decl_stmt|;
+end_decl_stmt
 
 begin_function
-DECL|method|setSearchMatcher (SearchMatcher matcher)
+DECL|method|showOnlyMatchedEntries ()
 specifier|public
 name|void
-name|setSearchMatcher
-parameter_list|(
-name|SearchMatcher
-name|matcher
-parameter_list|)
+name|showOnlyMatchedEntries
+parameter_list|()
+block|{
+if|if
+condition|(
+operator|!
+name|isFilteringActive
+condition|)
 block|{
 name|searchFilterList
 operator|.
 name|setMatcher
 argument_list|(
-name|matcher
+name|SearchMatcher
+operator|.
+name|INSTANCE
 argument_list|)
 expr_stmt|;
-name|showingSearch
-operator|=
-literal|true
+block|}
+block|}
+end_function
+
+begin_function
+DECL|method|showAllEntries ()
+specifier|public
+name|void
+name|showAllEntries
+parameter_list|()
+block|{
+if|if
+condition|(
+name|isFilteringActive
+condition|)
+block|{
+name|searchFilterList
+operator|.
+name|setMatcher
+argument_list|(
+name|NoSearchMatcher
+operator|.
+name|INSTANCE
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 
@@ -11849,29 +11837,6 @@ name|setMatcher
 argument_list|(
 name|matcher
 argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
-DECL|method|stopShowingSearchResults ()
-specifier|public
-name|void
-name|stopShowingSearchResults
-parameter_list|()
-block|{
-name|searchFilterList
-operator|.
-name|setMatcher
-argument_list|(
-name|NoSearchMatcher
-operator|.
-name|INSTANCE
-argument_list|)
-expr_stmt|;
-name|showingSearch
-operator|=
-literal|false
 expr_stmt|;
 block|}
 end_function
@@ -11911,23 +11876,6 @@ name|mainTable
 operator|.
 name|isShowingFloatSearch
 argument_list|()
-return|;
-block|}
-end_function
-
-begin_comment
-comment|/**      * Query whether this BasePanel is in the mode where a filter search result is shown.      *      * @return true if showing filter search, false otherwise.      */
-end_comment
-
-begin_function
-DECL|method|isShowingFilterSearch ()
-specifier|public
-name|boolean
-name|isShowingFilterSearch
-parameter_list|()
-block|{
-return|return
-name|showingSearch
 return|;
 block|}
 end_function
