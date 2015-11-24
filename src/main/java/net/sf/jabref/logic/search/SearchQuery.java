@@ -345,23 +345,13 @@ name|caseSensitive
 condition|)
 block|{
 return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"case sensitive"
-argument_list|)
 return|;
 block|}
 else|else
 block|{
 return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"case insensitive"
-argument_list|)
 return|;
 block|}
 block|}
@@ -377,23 +367,13 @@ name|regularExpression
 condition|)
 block|{
 return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"regular expression"
-argument_list|)
 return|;
 block|}
 else|else
 block|{
 return|return
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"plain text"
-argument_list|)
 return|;
 block|}
 block|}
