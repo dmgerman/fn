@@ -923,12 +923,10 @@ name|searchComparator
 operator|=
 literal|null
 expr_stmt|;
-comment|//new HitOrMissComparator(searchMatcher);
 name|groupComparator
 operator|=
 literal|null
 expr_stmt|;
-comment|//new HitOrMissComparator(groupMatcher);
 name|EventTableModel
 argument_list|<
 name|BibtexEntry
@@ -1105,7 +1103,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-comment|/*if (Globals.prefs.getBoolean(PersistenceTableColumnListener.ACTIVATE_PREF_KEY)) {             getColumnModel().addColumnModelListener(this.tableColumnListener );         }*/
 comment|// TODO: Figure out, whether this call is needed.
 name|getSelected
 argument_list|()

@@ -461,6 +461,11 @@ operator|.
 name|INSTANCE
 argument_list|)
 expr_stmt|;
+name|basePanel
+operator|.
+name|showAllEntries
+argument_list|()
+expr_stmt|;
 break|break;
 case|case
 name|FILTER
@@ -468,6 +473,13 @@ case|:
 name|basePanel
 operator|.
 name|showOnlyMatchedEntries
+argument_list|()
+expr_stmt|;
+name|basePanel
+operator|.
+name|mainTable
+operator|.
+name|stopShowingFloatSearch
 argument_list|()
 expr_stmt|;
 break|break;
