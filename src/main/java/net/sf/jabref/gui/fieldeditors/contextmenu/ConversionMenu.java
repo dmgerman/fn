@@ -122,15 +122,6 @@ name|ConversionMenu
 extends|extends
 name|JMenu
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|8553688191031156265L
-decl_stmt|;
 DECL|field|parent
 specifier|private
 specifier|final

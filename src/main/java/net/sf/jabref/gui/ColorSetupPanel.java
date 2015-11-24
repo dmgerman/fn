@@ -841,16 +841,6 @@ name|JButton
 implements|implements
 name|Icon
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-operator|-
-literal|1974112633706382299L
-decl_stmt|;
 DECL|field|color
 specifier|private
 name|Color

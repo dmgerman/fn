@@ -240,12 +240,12 @@ literal|"iconcol:"
 decl_stmt|;
 comment|// Values to gather iconImages for those columns
 comment|// These values are also used to put a heading into the table; see getColumnName(int)
+DECL|field|PDF
 specifier|private
 specifier|static
 specifier|final
 name|String
 index|[]
-DECL|field|PDF
 name|PDF
 init|=
 block|{
@@ -585,6 +585,37 @@ return|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|getIconTypeForColumn
+argument_list|(
+name|col
+argument_list|)
+index|[
+literal|0
+index|]
+operator|.
+name|equals
+argument_list|(
+literal|"ranking"
+argument_list|)
+condition|)
+block|{
+return|return
+name|EntryUtil
+operator|.
+name|capitalizeFirst
+argument_list|(
+name|getIconTypeForColumn
+argument_list|(
+name|col
+argument_list|)
+index|[
+literal|0
+index|]
+argument_list|)
+return|;
+block|}
 return|return
 literal|null
 return|;
@@ -696,9 +727,7 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|/*String disName = BibtexFields.getFieldDisplayName(columns[col - padleft]) ;             if ( disName != null)             {               return disName ;             } */
 block|}
-comment|//return Util.capitalizeFirst(columns[col - padleft]);
 block|}
 comment|/**      * Get the column title, or a string identifying the column if it is an icon      * column without a title.      *      * @param col The column number      * @return the String identifying the column      */
 DECL|method|getColumnType (int col)

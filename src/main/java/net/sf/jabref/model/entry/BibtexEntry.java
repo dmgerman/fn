@@ -410,20 +410,20 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
-comment|/**      * @return an array describing the required fields for this entry. "null" if no fields are required      */
-DECL|method|getRequiredFields ()
+comment|/**      * Returns all required field names.      * No OR relationships are captured here.      *      * @return a List of required field name Strings      */
+DECL|method|getRequiredFieldsFlat ()
 specifier|public
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|getRequiredFields
+name|getRequiredFieldsFlat
 parameter_list|()
 block|{
 return|return
 name|type
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsFlat
 argument_list|()
 return|;
 block|}

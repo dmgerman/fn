@@ -39,15 +39,6 @@ argument_list|,
 name|String
 argument_list|>
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|UnicodeCharMap ()
 specifier|public
 name|UnicodeCharMap

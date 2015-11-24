@@ -1391,7 +1391,7 @@ name|fieldList
 init|=
 name|entry
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsFlat
 argument_list|()
 decl_stmt|;
 name|EntryEditorTab
@@ -6274,15 +6274,6 @@ name|TypeLabel
 extends|extends
 name|JLabel
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|TypeLabel (String type)
 specifier|public
 name|TypeLabel
@@ -6610,15 +6601,6 @@ name|DeleteAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|DeleteAction ()
 specifier|public
 name|DeleteAction
@@ -6755,15 +6737,6 @@ name|CloseAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|CloseAction ()
 specifier|public
 name|CloseAction
@@ -6866,15 +6839,6 @@ name|StoreFieldAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|StoreFieldAction ()
 specifier|public
 name|StoreFieldAction
@@ -7759,15 +7723,6 @@ name|SwitchLeftAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|SwitchLeftAction ()
 specifier|public
 name|SwitchLeftAction
@@ -7829,15 +7784,6 @@ name|SwitchRightAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|SwitchRightAction ()
 specifier|public
 name|SwitchRightAction
@@ -7901,15 +7847,6 @@ name|NextEntryAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|NextEntryAction ()
 specifier|public
 name|NextEntryAction
@@ -8042,15 +7979,6 @@ name|PrevEntryAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|PrevEntryAction ()
 specifier|public
 name|PrevEntryAction
@@ -8195,15 +8123,6 @@ name|GenerateKeyAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|field|parent
 specifier|final
 name|JabRefFrame
@@ -8499,15 +8418,6 @@ name|UndoAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|UndoAction ()
 specifier|public
 name|UndoAction
@@ -8565,15 +8475,6 @@ name|RedoAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|RedoAction ()
 specifier|public
 name|RedoAction
@@ -8631,15 +8532,6 @@ name|SaveDatabaseAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|SaveDatabaseAction ()
 specifier|public
 name|SaveDatabaseAction
@@ -8948,15 +8840,6 @@ name|AutoLinkAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|serialVersionUID
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|1L
-decl_stmt|;
 DECL|method|AutoLinkAction ()
 specifier|public
 name|AutoLinkAction
