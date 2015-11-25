@@ -8758,7 +8758,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Duplicate BibTeX key. Grouping may not work for this entry."
+literal|"Duplicate BibTeX key."
+argument_list|)
+operator|+
+literal|" "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Grouping may not work for this entry."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8777,7 +8786,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Empty BibTeX key. Grouping may not work for this entry."
+literal|"Empty BibTeX key"
+argument_list|)
+operator|+
+literal|". "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Grouping may not work for this entry."
 argument_list|)
 argument_list|)
 expr_stmt|;
