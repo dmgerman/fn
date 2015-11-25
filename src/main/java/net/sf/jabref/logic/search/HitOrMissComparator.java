@@ -149,14 +149,14 @@ name|hitOrMiss
 operator|.
 name|matches
 argument_list|(
-name|o1
+name|o2
 argument_list|)
 argument_list|,
 name|hitOrMiss
 operator|.
 name|matches
 argument_list|(
-name|o2
+name|o1
 argument_list|)
 argument_list|)
 return|;
