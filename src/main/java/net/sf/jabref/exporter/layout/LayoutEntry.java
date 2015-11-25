@@ -330,8 +330,6 @@ parameter_list|,
 name|String
 name|classPrefix_
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|type
 operator|=
@@ -567,8 +565,6 @@ parameter_list|,
 name|int
 name|layoutType
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|classPrefix
 operator|=

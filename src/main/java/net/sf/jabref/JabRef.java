@@ -1004,9 +1004,16 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
 name|openWindow
 argument_list|(
 name|loaded
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

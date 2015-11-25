@@ -168,8 +168,6 @@ parameter_list|,
 name|String
 name|classPrefix
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|StringInt
 name|si
