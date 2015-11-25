@@ -329,6 +329,11 @@ specifier|private
 name|boolean
 name|groupHit
 decl_stmt|;
+DECL|field|serialization
+specifier|private
+name|String
+name|serialization
+decl_stmt|;
 DECL|method|BibtexEntry ()
 specifier|public
 name|BibtexEntry
@@ -1946,6 +1951,32 @@ block|}
 block|}
 return|return
 name|year
+return|;
+block|}
+DECL|method|setSerialization (String serialization)
+specifier|public
+name|void
+name|setSerialization
+parameter_list|(
+name|String
+name|serialization
+parameter_list|)
+block|{
+name|this
+operator|.
+name|serialization
+operator|=
+name|serialization
+expr_stmt|;
+block|}
+DECL|method|getSerialization ()
+specifier|public
+name|String
+name|getSerialization
+parameter_list|()
+block|{
+return|return
+name|serialization
 return|;
 block|}
 block|}
