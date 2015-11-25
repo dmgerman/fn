@@ -328,7 +328,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Searching DOAJ..."
+literal|"Searching..."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -456,7 +456,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"DOAJ search canceled"
+literal|"Search canceled"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -714,7 +714,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search DOAJ"
+literal|"Search %0"
+argument_list|,
+literal|"DOAJ"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -740,6 +742,20 @@ argument_list|(
 literal|"Problem searching DOAJ"
 argument_list|,
 name|e
+argument_list|)
+expr_stmt|;
+name|status
+operator|.
+name|setStatus
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 search canceled"
+argument_list|,
+literal|"DOAJ"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
