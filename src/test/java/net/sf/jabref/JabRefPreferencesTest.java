@@ -116,7 +116,7 @@ name|void
 name|testPreferencesImport
 parameter_list|()
 throws|throws
-name|IOException
+name|JabRefException
 block|{
 comment|// the primary sort field has been changed to "editor" in this case
 name|File

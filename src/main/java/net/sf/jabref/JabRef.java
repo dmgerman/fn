@@ -190,22 +190,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|nativeext
-operator|.
-name|PinToTaskbar
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|fetcher
@@ -670,22 +654,6 @@ index|[]
 name|args
 parameter_list|)
 block|{
-comment|// Native extensions
-if|if
-condition|(
-name|OS
-operator|.
-name|isWindows7OrLater
-argument_list|()
-condition|)
-block|{
-comment|// activate pin to taskbar for Windows 7 and up
-name|PinToTaskbar
-operator|.
-name|enablePinToTaskbar
-argument_list|()
-expr_stmt|;
-block|}
 name|JabRefPreferences
 name|prefs
 init|=
@@ -1348,7 +1316,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|JabRefException
 name|ex
 parameter_list|)
 block|{
@@ -2581,7 +2549,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|JabRefException
 name|ex
 parameter_list|)
 block|{
