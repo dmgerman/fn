@@ -1116,14 +1116,14 @@ name|USE_XMP_PRIVACY_FILTER
 init|=
 literal|"useXmpPrivacyFilter"
 decl_stmt|;
-DECL|field|SEARCH_MODE_LIVE_FILTER
+DECL|field|SEARCH_MODE_FILTER
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|SEARCH_MODE_LIVE_FILTER
+name|SEARCH_MODE_FILTER
 init|=
-literal|"searchModeLiveFilter"
+literal|"searchModeFilter"
 decl_stmt|;
 DECL|field|SEARCH_CASE_SENSITIVE
 specifier|public
@@ -4254,7 +4254,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|SEARCH_MODE_LIVE_FILTER
+name|SEARCH_MODE_FILTER
 argument_list|,
 name|Boolean
 operator|.
@@ -5246,7 +5246,7 @@ name|SEARCH_MODE_FLOAT
 argument_list|,
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults

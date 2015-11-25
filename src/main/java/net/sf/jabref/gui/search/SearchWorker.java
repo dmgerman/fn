@@ -134,6 +134,10 @@ name|Objects
 import|;
 end_import
 
+begin_comment
+comment|/**  * Not reusable. Always create a new instance for each search!  */
+end_comment
+
 begin_class
 DECL|class|SearchWorker
 class|class
@@ -275,20 +279,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// clear
-name|this
-operator|.
-name|hits
-operator|=
-literal|0
-expr_stmt|;
-name|this
-operator|.
-name|matchedEntries
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 comment|// Search the current database
 for|for
 control|(
@@ -384,12 +374,13 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|// mark matched
 for|for
 control|(
 name|BibtexEntry
 name|entry
 range|:
+name|this
+operator|.
 name|matchedEntries
 control|)
 block|{
@@ -401,26 +392,17 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|// resets showing any search results
-if|if
-condition|(
 name|basePanel
-operator|.
-name|isShowingFloatSearch
-argument_list|()
-condition|)
-block|{
-name|basePanel
-operator|.
-name|mainTable
 operator|.
 name|stopShowingFloatSearch
 argument_list|()
 expr_stmt|;
-block|}
 name|basePanel
 operator|.
-name|stopShowingFilterSearch
+name|getFilterSearchToggle
+argument_list|()
+operator|.
+name|stop
 argument_list|()
 expr_stmt|;
 comment|// Show the result in the chosen way:
@@ -434,7 +416,10 @@ name|FLOAT
 case|:
 name|basePanel
 operator|.
-name|stopShowingFilterSearch
+name|getFilterSearchToggle
+argument_list|()
+operator|.
+name|stop
 argument_list|()
 expr_stmt|;
 name|basePanel
@@ -453,7 +438,10 @@ argument_list|()
 expr_stmt|;
 name|basePanel
 operator|.
-name|startShowingFilterSearch
+name|getFilterSearchToggle
+argument_list|()
+operator|.
+name|start
 argument_list|()
 expr_stmt|;
 break|break;

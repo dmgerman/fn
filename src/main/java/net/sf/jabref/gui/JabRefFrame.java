@@ -10022,7 +10022,10 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|stopShowingFilterSearch
+name|getFilterSearchToggle
+argument_list|()
+operator|.
+name|stop
 argument_list|()
 expr_stmt|;
 block|}

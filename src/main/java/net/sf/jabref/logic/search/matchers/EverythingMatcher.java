@@ -55,10 +55,10 @@ comment|/**  * Matcher that accepts all entries. Used for filtering when so sear
 end_comment
 
 begin_class
-DECL|class|NoSearchMatcher
+DECL|class|EverythingMatcher
 specifier|public
 class|class
-name|NoSearchMatcher
+name|EverythingMatcher
 implements|implements
 name|Matcher
 argument_list|<
@@ -76,7 +76,7 @@ argument_list|>
 name|INSTANCE
 init|=
 operator|new
-name|NoSearchMatcher
+name|EverythingMatcher
 argument_list|()
 decl_stmt|;
 annotation|@
