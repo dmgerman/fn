@@ -11769,10 +11769,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|method|showOnlyMatchedEntries ()
+DECL|method|startShowingFilterSearch ()
 specifier|public
 name|void
-name|showOnlyMatchedEntries
+name|startShowingFilterSearch
 parameter_list|()
 block|{
 if|if
@@ -11790,15 +11790,19 @@ operator|.
 name|INSTANCE
 argument_list|)
 expr_stmt|;
+name|isFilteringActive
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 end_function
 
 begin_function
-DECL|method|showAllEntries ()
+DECL|method|stopShowingFilterSearch ()
 specifier|public
 name|void
-name|showAllEntries
+name|stopShowingFilterSearch
 parameter_list|()
 block|{
 if|if
@@ -11814,6 +11818,10 @@ name|NoSearchMatcher
 operator|.
 name|INSTANCE
 argument_list|)
+expr_stmt|;
+name|isFilteringActive
+operator|=
+literal|false
 expr_stmt|;
 block|}
 block|}
@@ -11875,9 +11883,43 @@ block|{
 return|return
 name|mainTable
 operator|.
-name|isShowingFloatSearch
+name|isFloatSearchActive
 argument_list|()
 return|;
+block|}
+end_function
+
+begin_function
+DECL|method|stopShowingFloatSearch ()
+specifier|public
+name|void
+name|stopShowingFloatSearch
+parameter_list|()
+block|{
+name|mainTable
+operator|.
+name|stopShowingFloatSearch
+argument_list|()
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|method|startShowingFloatSearch ()
+specifier|public
+name|void
+name|startShowingFloatSearch
+parameter_list|()
+block|{
+name|mainTable
+operator|.
+name|showFloatSearch
+argument_list|(
+name|SearchMatcher
+operator|.
+name|INSTANCE
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 

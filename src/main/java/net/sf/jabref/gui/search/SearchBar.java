@@ -304,18 +304,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|KeyListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Objects
@@ -1731,7 +1719,7 @@ expr_stmt|;
 block|}
 name|basePanel
 operator|.
-name|showAllEntries
+name|stopShowingFilterSearch
 argument_list|()
 expr_stmt|;
 name|globalSearch

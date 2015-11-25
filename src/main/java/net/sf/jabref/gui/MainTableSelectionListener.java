@@ -763,14 +763,18 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|debug
+argument_list|(
+literal|"error while updating preview"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}

@@ -638,10 +638,10 @@ specifier|final
 name|boolean
 name|tableColorCodes
 decl_stmt|;
-DECL|field|showingFloatSearch
+DECL|field|isFloatSearchActive
 specifier|private
 name|boolean
-name|showingFloatSearch
+name|isFloatSearchActive
 decl_stmt|;
 DECL|field|showingFloatGrouping
 specifier|private
@@ -1280,7 +1280,7 @@ argument_list|>
 name|m
 parameter_list|)
 block|{
-name|showingFloatSearch
+name|isFloatSearchActive
 operator|=
 literal|true
 expr_stmt|;
@@ -1312,7 +1312,7 @@ name|void
 name|stopShowingFloatSearch
 parameter_list|()
 block|{
-name|showingFloatSearch
+name|isFloatSearchActive
 operator|=
 literal|false
 expr_stmt|;
@@ -1361,14 +1361,14 @@ name|refreshSorting
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|isShowingFloatSearch ()
+DECL|method|isFloatSearchActive ()
 specifier|public
 name|boolean
-name|isShowingFloatSearch
+name|isFloatSearchActive
 parameter_list|()
 block|{
 return|return
-name|showingFloatSearch
+name|isFloatSearchActive
 return|;
 block|}
 comment|/**      * Removes sorting by group, and graying out of non-hits.      */
@@ -1478,7 +1478,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|showingFloatSearch
+name|isFloatSearchActive
 operator|||
 name|matches
 argument_list|(
@@ -3364,7 +3364,7 @@ operator|)
 operator|)
 operator|&&
 operator|!
-name|showingFloatSearch
+name|isFloatSearchActive
 operator|)
 condition|)
 block|{

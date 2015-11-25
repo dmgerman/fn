@@ -10022,7 +10022,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|showAllEntries
+name|stopShowingFilterSearch
 argument_list|()
 expr_stmt|;
 block|}
