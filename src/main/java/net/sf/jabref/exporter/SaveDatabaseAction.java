@@ -1388,7 +1388,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not save file"
+literal|"Could not save file."
 argument_list|)
 operator|+
 literal|".\n"

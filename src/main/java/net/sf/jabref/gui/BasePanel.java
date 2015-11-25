@@ -12141,14 +12141,11 @@ literal|0
 operator|)
 condition|)
 block|{
-name|output
-argument_list|(
-name|Localization
+name|LOGGER
 operator|.
-name|lang
+name|error
 argument_list|(
-literal|"First select the entries you wish to change type for."
-argument_list|)
+literal|"At least one entry must be selected to be able to change the type."
 argument_list|)
 expr_stmt|;
 return|return;
@@ -12188,7 +12185,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Change type"
+literal|"Change entry type"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -12223,7 +12220,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Change type"
+literal|"Change entry type"
 argument_list|)
 argument_list|)
 decl_stmt|;

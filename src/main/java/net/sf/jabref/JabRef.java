@@ -2237,17 +2237,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not save file"
+literal|"Could not save file."
 argument_list|)
 operator|+
-literal|" '"
-operator|+
-name|data
-index|[
-literal|0
-index|]
-operator|+
-literal|"': "
+literal|"\n"
 operator|+
 name|ex
 operator|.
@@ -2828,14 +2821,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not save file"
+literal|"Could not save file."
 argument_list|)
 operator|+
-literal|" '"
-operator|+
-name|subName
-operator|+
-literal|"': "
+literal|"\n"
 operator|+
 name|ex
 operator|.
