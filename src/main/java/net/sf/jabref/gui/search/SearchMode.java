@@ -56,7 +56,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Gray out non-matching entries"
+literal|"Gray out non-hits"
 argument_list|)
 argument_list|)
 block|,
@@ -76,7 +76,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Hide non-matching entries"
+literal|"Hide non-hits"
 argument_list|)
 argument_list|)
 block|;
