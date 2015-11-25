@@ -1181,7 +1181,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Changed font settings"
+literal|"Invalid setting"
 argument_list|)
 argument_list|)
 condition|)
@@ -1212,7 +1212,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Changed table appearance settings"
+literal|"Invalid setting"
 argument_list|)
 argument_list|)
 condition|)

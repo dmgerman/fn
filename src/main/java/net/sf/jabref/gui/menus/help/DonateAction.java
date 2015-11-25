@@ -234,7 +234,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not open browser window."
+literal|"Could not open browser."
 argument_list|)
 argument_list|)
 expr_stmt|;
