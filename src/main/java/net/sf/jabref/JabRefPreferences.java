@@ -9348,7 +9348,14 @@ argument_list|(
 operator|new
 name|ExternalFileType
 argument_list|(
-literal|"PNG image"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 image"
+argument_list|,
+literal|"PNG"
+argument_list|)
 argument_list|,
 literal|"png"
 argument_list|,
@@ -9376,7 +9383,14 @@ argument_list|(
 operator|new
 name|ExternalFileType
 argument_list|(
-literal|"GIF image"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 image"
+argument_list|,
+literal|"GIF"
+argument_list|)
 argument_list|,
 literal|"gif"
 argument_list|,
@@ -9404,7 +9418,14 @@ argument_list|(
 operator|new
 name|ExternalFileType
 argument_list|(
-literal|"JPG image"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 image"
+argument_list|,
+literal|"JPG"
+argument_list|)
 argument_list|,
 literal|"jpg"
 argument_list|,
@@ -9548,7 +9569,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"TIFF image"
+literal|"%0 image"
+argument_list|,
+literal|"TIFF"
 argument_list|)
 argument_list|,
 literal|"tiff"
