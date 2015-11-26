@@ -4201,7 +4201,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*JOptionPane.showMessageDialog(null, Globals.lang("Please note that this "             +"is an early beta version. Do not use it without backing up your files!"),                 Globals.lang("Beta version"), JOptionPane.WARNING_MESSAGE);*/
 comment|// Start auto save timer:
 if|if
 condition|(
