@@ -752,9 +752,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"%0 search canceled"
-argument_list|,
-literal|"DOAJ"
+literal|"Search canceled"
 argument_list|)
 argument_list|)
 expr_stmt|;

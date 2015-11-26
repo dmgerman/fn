@@ -2976,7 +2976,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not move file %0."
+literal|"Could not move file '%0'."
 argument_list|,
 name|toFile
 operator|.
