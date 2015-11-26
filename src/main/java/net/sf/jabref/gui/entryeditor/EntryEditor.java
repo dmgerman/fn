@@ -6488,31 +6488,8 @@ name|ChangeEvent
 name|event
 parameter_list|)
 block|{
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-name|activateVisible
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-comment|// After the initial event train has finished, we tell the editor
-comment|// tab to update all
-comment|// its fields. This makes sure they are updated even if the tab we
+comment|// We tell the editor tab to update all its fields.
+comment|//  This makes sure they are updated even if the tab we
 comment|// just left contained one
 comment|// or more of the same fields as this one:
 name|SwingUtilities
