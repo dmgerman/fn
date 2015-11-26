@@ -535,11 +535,11 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not connect to "
-argument_list|)
-operator|+
+literal|"Could not connect to %0"
+argument_list|,
 name|getApplicationName
 argument_list|()
+argument_list|)
 operator|+
 literal|"."
 argument_list|)
