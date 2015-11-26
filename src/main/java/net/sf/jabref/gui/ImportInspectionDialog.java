@@ -1769,7 +1769,7 @@ name|getKey
 argument_list|(
 name|KeyBinds
 operator|.
-name|DELETE
+name|DELETE_ENTRY
 argument_list|)
 argument_list|,
 literal|"delete"
@@ -4881,7 +4881,7 @@ name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|DELETE
+name|DELETE_ENTRY
 operator|.
 name|getSmallIcon
 argument_list|()

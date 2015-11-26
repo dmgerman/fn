@@ -453,8 +453,8 @@ literal|"\uf4ef"
 argument_list|)
 comment|/*css: refresh */
 block|,
-DECL|enumConstant|DELETE
-name|DELETE
+DECL|enumConstant|DELETE_ENTRY
+name|DELETE_ENTRY
 argument_list|(
 literal|"\uf28d"
 argument_list|)

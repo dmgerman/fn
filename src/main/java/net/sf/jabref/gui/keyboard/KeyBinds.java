@@ -212,14 +212,14 @@ name|DECREASE_TABLE_FONT_SIZE
 init|=
 literal|"Decrease table font size"
 decl_stmt|;
-DECL|field|DELETE
+DECL|field|DELETE_ENTRY
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|DELETE
+name|DELETE_ENTRY
 init|=
-literal|"Delete"
+literal|"Delete entry"
 decl_stmt|;
 DECL|field|EDIT_ENTRY
 specifier|public
@@ -1321,7 +1321,7 @@ name|keyBindMap
 operator|.
 name|put
 argument_list|(
-name|DELETE
+name|DELETE_ENTRY
 argument_list|,
 literal|"DELETE"
 argument_list|)

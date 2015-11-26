@@ -6572,7 +6572,7 @@ name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|DELETE
+name|DELETE_ENTRY
 operator|.
 name|getIcon
 argument_list|()
