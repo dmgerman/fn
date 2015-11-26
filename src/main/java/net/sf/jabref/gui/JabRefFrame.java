@@ -2379,14 +2379,14 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Save selected as plain BibTeX ..."
+literal|"Save selected as plain BibTeX..."
 argument_list|)
 argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Save selected as plain BibTeX ..."
+literal|"Save selected as plain BibTeX..."
 argument_list|)
 argument_list|)
 decl_stmt|;
