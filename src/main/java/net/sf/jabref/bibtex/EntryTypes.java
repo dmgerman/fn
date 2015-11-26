@@ -557,9 +557,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|EntryType
-name|entryType
-init|=
+return|return
 name|ALL_TYPES
 operator|.
 name|get
@@ -569,20 +567,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|entryType
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-return|return
-name|entryType
 return|;
 block|}
 comment|/**      * This method returns the standard BibtexEntryType for the      * name of a type, or null if it does not exist.      */
@@ -596,9 +580,7 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|EntryType
-name|entryType
-init|=
+return|return
 name|STANDARD_TYPES
 operator|.
 name|get
@@ -608,24 +590,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|entryType
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|null
 return|;
-block|}
-else|else
-block|{
-return|return
-name|entryType
-return|;
-block|}
 block|}
 DECL|method|addOrModifyCustomEntryType (CustomEntryType type)
 specifier|public

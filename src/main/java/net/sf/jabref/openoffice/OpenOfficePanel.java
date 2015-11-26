@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -982,7 +982,7 @@ name|putDefaultValue
 argument_list|(
 literal|"ooPath"
 argument_list|,
-literal|"C:\\Program Files\\OpenOffice.org 3"
+literal|"C:\\Program Files\\OpenOffice.org 4"
 argument_list|)
 expr_stmt|;
 name|Globals
@@ -993,7 +993,7 @@ name|putDefaultValue
 argument_list|(
 literal|"ooExecutablePath"
 argument_list|,
-literal|"C:\\Program Files\\OpenOffice.org 2.3\\program\\soffice.exe"
+literal|"C:\\Program Files\\OpenOffice.org 4\\program\\soffice.exe"
 argument_list|)
 expr_stmt|;
 name|Globals
@@ -1004,7 +1004,7 @@ name|putDefaultValue
 argument_list|(
 literal|"ooJarsPath"
 argument_list|,
-literal|"C:\\Program Files\\OpenOffice.org 2.3\\program\\classes"
+literal|"C:\\Program Files\\OpenOffice.org 4\\program\\classes"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3146,12 +3146,6 @@ argument_list|(
 literal|"ooExecutablePath"
 argument_list|)
 expr_stmt|;
-name|boolean
-name|openOffice3
-init|=
-literal|true
-decl_stmt|;
-comment|//Globals.prefs.getBoolean("connectToOO3");
 if|if
 condition|(
 name|OS
@@ -3159,18 +3153,17 @@ operator|.
 name|WINDOWS
 condition|)
 block|{
-comment|//if (openOffice3) {
 name|unoilDir
 operator|=
 name|ooPath
 operator|+
-literal|"\\Basis\\program\\classes"
+literal|"\\program\\classes"
 expr_stmt|;
 name|ooBaseDirectory
 operator|=
 name|ooPath
 operator|+
-literal|"\\URE\\java"
+literal|"\\program\\classes"
 expr_stmt|;
 name|sOffice
 operator|=
@@ -3178,7 +3171,6 @@ name|ooPath
 operator|+
 literal|"\\program\\soffice.exe"
 expr_stmt|;
-comment|//}
 block|}
 elseif|else
 if|if
@@ -3188,7 +3180,6 @@ operator|.
 name|OS_X
 condition|)
 block|{
-comment|//if (openOffice3) {
 name|sOffice
 operator|=
 name|ooPath
@@ -3207,12 +3198,10 @@ name|ooPath
 operator|+
 literal|"/Contents/basis-link/program/classes"
 expr_stmt|;
-comment|//}
 block|}
 else|else
 block|{
 comment|// Linux:
-comment|//if (openOffice3) {
 name|unoilDir
 operator|=
 name|ooJars
@@ -3225,8 +3214,6 @@ name|ooJars
 operator|+
 literal|"/ure-link/share/java"
 expr_stmt|;
-comment|//sOffice = ooPath+"/program/soffice";
-comment|//}
 block|}
 block|}
 comment|// Add OO jars to the classpath:
