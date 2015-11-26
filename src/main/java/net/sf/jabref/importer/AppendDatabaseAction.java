@@ -30,6 +30,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -627,9 +639,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Should this be done _after_ we know it was successfully opened?
-name|String
+name|Charset
 name|encoding
 init|=
+name|Charset
+operator|.
+name|forName
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -639,6 +655,7 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|DEFAULT_ENCODING
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|ParserResult

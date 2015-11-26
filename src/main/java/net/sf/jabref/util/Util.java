@@ -88,6 +88,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|*
@@ -4217,7 +4229,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Download the URL using specified encoding and return contents as a String.      *      * @param source encoding      * @return      * @throws IOException      */
-DECL|method|getResultsWithEncoding (URL source, String encoding)
+DECL|method|getResultsWithEncoding (URL source, Charset encoding)
 specifier|public
 specifier|static
 name|String
@@ -4226,7 +4238,7 @@ parameter_list|(
 name|URL
 name|source
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|)
 throws|throws
@@ -4255,7 +4267,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Download the URL using specified encoding and return contents as a String.      *      * @param source encoding      * @return      * @throws IOException      */
-DECL|method|getResultsWithEncoding (URLConnection source, String encoding)
+DECL|method|getResultsWithEncoding (URLConnection source, Charset encoding)
 specifier|public
 specifier|static
 name|String
@@ -4264,7 +4276,7 @@ parameter_list|(
 name|URLConnection
 name|source
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|)
 throws|throws

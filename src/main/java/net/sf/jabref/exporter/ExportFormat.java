@@ -188,6 +188,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|*
@@ -232,7 +244,7 @@ name|String
 name|extension
 decl_stmt|;
 DECL|field|encoding
-name|String
+name|Charset
 name|encoding
 decl_stmt|;
 comment|// If this value is set, it will be used to override
@@ -374,11 +386,11 @@ name|displayName
 return|;
 block|}
 comment|/**      * Set an encoding which will be used in preference to the default value      * obtained from the basepanel.      * @param encoding The name of the encoding to use.      */
-DECL|method|setEncoding (String encoding)
+DECL|method|setEncoding (Charset encoding)
 name|void
 name|setEncoding
 parameter_list|(
-name|String
+name|Charset
 name|encoding
 parameter_list|)
 block|{
@@ -447,7 +459,7 @@ block|}
 comment|/**      * Perform the export of {@code database}.      *      * @param database      *            The database to export from.      * @param metaData      *            The database's meta data.      * @param file      *            the file to write the resulting export to      * @param encoding      *            The encoding of the database      * @param entryIds      *            Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      *      * @throws IOException      *             if a problem occurred while trying to write to {@code writer}      *             or read from required resources.      * @throws Exception      *             if any other error occurred during export.      *      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibtexDatabase,      *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set)      */
 annotation|@
 name|Override
-DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String enc, Set<String> entryIds)
+DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final Charset enc, Set<String> entryIds)
 specifier|public
 name|void
 name|performExport
@@ -465,7 +477,7 @@ name|String
 name|file
 parameter_list|,
 specifier|final
-name|String
+name|Charset
 name|enc
 parameter_list|,
 name|Set
@@ -1331,12 +1343,12 @@ return|return
 name|formatters
 return|;
 block|}
-DECL|method|getSaveSession (final String enc, final File outFile)
+DECL|method|getSaveSession (final Charset enc, final File outFile)
 name|SaveSession
 name|getSaveSession
 parameter_list|(
 specifier|final
-name|String
+name|Charset
 name|enc
 parameter_list|,
 specifier|final

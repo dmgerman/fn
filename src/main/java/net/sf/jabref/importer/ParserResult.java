@@ -28,17 +28,13 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|nio
 operator|.
-name|jabref
+name|charset
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryType
+name|Charset
 import|;
 end_import
 
@@ -235,7 +231,7 @@ decl_stmt|;
 comment|// Which encoding was used?
 DECL|field|encoding
 specifier|private
-name|String
+name|Charset
 name|encoding
 decl_stmt|;
 DECL|field|postponedAutosaveFound
@@ -520,13 +516,13 @@ operator|=
 name|f
 expr_stmt|;
 block|}
-comment|/**      * Sets the variable indicating which encoding was used during parsing.      *      * @param enc String the name of the encoding.      */
-DECL|method|setEncoding (String enc)
+comment|/**      * Sets the variable indicating which encoding was used during parsing.      *      * @param enc the encoding.      */
+DECL|method|setEncoding (Charset enc)
 specifier|public
 name|void
 name|setEncoding
 parameter_list|(
-name|String
+name|Charset
 name|enc
 parameter_list|)
 block|{
@@ -535,10 +531,10 @@ operator|=
 name|enc
 expr_stmt|;
 block|}
-comment|/**      * Returns the name of the encoding used during parsing, or null if not specified      * (indicates that prefs.get(JabRefPreferences.DEFAULT_ENCODING) was used).      */
+comment|/**      * Returns the encoding used during parsing, or null if not specified (indicates that      * prefs.get(JabRefPreferences.DEFAULT_ENCODING) was used).      */
 DECL|method|getEncoding ()
 specifier|public
-name|String
+name|Charset
 name|getEncoding
 parameter_list|()
 block|{
