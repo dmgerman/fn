@@ -1769,9 +1769,15 @@ argument_list|()
 operator|.
 name|createWithNewColor
 argument_list|(
+operator|new
 name|Color
-operator|.
-name|RED
+argument_list|(
+literal|102
+argument_list|,
+literal|255
+argument_list|,
+literal|255
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
