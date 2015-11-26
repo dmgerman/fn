@@ -10541,43 +10541,6 @@ block|}
 end_function
 
 begin_function
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-DECL|method|moveFocusToEntryEditor ()
-specifier|public
-name|void
-name|moveFocusToEntryEditor
-parameter_list|()
-block|{
-name|Component
-name|c
-init|=
-name|splitPane
-operator|.
-name|getBottomComponent
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|c
-operator|instanceof
-name|EntryEditor
-condition|)
-block|{
-operator|new
-name|FocusRequester
-argument_list|(
-name|c
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_function
-
-begin_function
 DECL|method|isShowingEditor ()
 specifier|private
 name|boolean
@@ -10889,8 +10852,6 @@ name|ENTRY_EDITOR_HEIGHT
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//new FocusRequester(form);
-comment|//form.requestFocus();
 block|}
 name|newEntryShowing
 argument_list|(
