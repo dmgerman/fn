@@ -2435,7 +2435,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Cut_pr"
+literal|"Cut"
 argument_list|)
 argument_list|,
 name|bes

@@ -3955,7 +3955,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Bibtex entry creation"
+literal|"BibTeX entry creation"
 argument_list|)
 argument_list|)
 argument_list|)

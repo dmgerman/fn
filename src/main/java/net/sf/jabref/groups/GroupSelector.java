@@ -6425,7 +6425,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Add Group"
+literal|"Add group"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6641,7 +6641,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Add Subgroup"
+literal|"Add subgroup"
 argument_list|)
 argument_list|)
 expr_stmt|;
