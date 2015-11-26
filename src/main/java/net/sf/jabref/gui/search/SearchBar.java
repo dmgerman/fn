@@ -447,6 +447,12 @@ name|String
 argument_list|>
 name|autoCompleteSupport
 decl_stmt|;
+DECL|field|searchIcon
+specifier|private
+specifier|final
+name|JLabel
+name|searchIcon
+decl_stmt|;
 comment|/**      * Initializes the search bar.      *      * @param frame the main window      */
 DECL|method|SearchBar (BasePanel basePanel)
 specifier|public
@@ -720,9 +726,8 @@ name|LEFT
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|JLabel
 name|searchIcon
-init|=
+operator|=
 operator|new
 name|JLabel
 argument_list|(
@@ -735,7 +740,7 @@ operator|.
 name|getSmallIcon
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|this
 operator|.
 name|add
@@ -1332,7 +1337,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Focuses the search field if it is not focused. Otherwise, cycles to the next search type.      */
+comment|/**      * Focuses the search field if it is not focused.      */
 DECL|method|focus ()
 specifier|public
 name|void
@@ -1419,6 +1424,20 @@ operator|.
 name|setEnabled
 argument_list|(
 literal|false
+argument_list|)
+expr_stmt|;
+name|searchIcon
+operator|.
+name|setIcon
+argument_list|(
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|SEARCH
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1636,7 +1655,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|updateResults (int matched, String description)
+DECL|method|updateResults (int matched, String description, boolean grammarBasedSearch)
 specifier|public
 name|void
 name|updateResults
@@ -1646,6 +1665,9 @@ name|matched
 parameter_list|,
 name|String
 name|description
+parameter_list|,
+name|boolean
+name|grammarBasedSearch
 parameter_list|)
 block|{
 if|if
@@ -1727,6 +1749,74 @@ operator|+
 literal|"</html>"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|grammarBasedSearch
+condition|)
+block|{
+name|searchIcon
+operator|.
+name|setIcon
+argument_list|(
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|SEARCH
+operator|.
+name|getSmallIcon
+argument_list|()
+operator|.
+name|createWithNewColor
+argument_list|(
+name|Color
+operator|.
+name|RED
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|searchIcon
+operator|.
+name|setToolTipText
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Advanced search active."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|searchIcon
+operator|.
+name|setIcon
+argument_list|(
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|SEARCH
+operator|.
+name|getSmallIcon
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|searchIcon
+operator|.
+name|setToolTipText
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Normal search active."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|globalSearch
 operator|.
 name|setEnabled

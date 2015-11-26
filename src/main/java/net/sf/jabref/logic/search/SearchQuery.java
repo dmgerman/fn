@@ -124,6 +124,24 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|rules
+operator|.
+name|GrammarBasedSearchRule
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -376,6 +394,20 @@ return|return
 literal|"plain text"
 return|;
 block|}
+block|}
+DECL|method|isGrammarBasedSearch ()
+specifier|public
+name|boolean
+name|isGrammarBasedSearch
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|rule
+operator|instanceof
+name|GrammarBasedSearchRule
+return|;
 block|}
 block|}
 end_class

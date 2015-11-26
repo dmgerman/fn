@@ -489,6 +489,11 @@ argument_list|,
 name|searchQuery
 operator|.
 name|description
+argument_list|,
+name|searchQuery
+operator|.
+name|isGrammarBasedSearch
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|basePanel
