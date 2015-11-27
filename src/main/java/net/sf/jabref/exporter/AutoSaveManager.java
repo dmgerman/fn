@@ -190,6 +190,9 @@ expr_stmt|;
 name|long
 name|interval
 init|=
+operator|(
+name|long
+operator|)
 literal|60000
 operator|*
 name|Globals

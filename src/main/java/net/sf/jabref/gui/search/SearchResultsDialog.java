@@ -1703,7 +1703,7 @@ control|(
 name|int
 name|i
 init|=
-literal|2
+literal|0
 init|;
 name|i
 operator|<
