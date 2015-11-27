@@ -273,9 +273,12 @@ expr_stmt|;
 name|String
 name|key
 init|=
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|numberOfUpdateListener
+argument_list|)
 decl_stmt|;
 name|entries
 operator|.

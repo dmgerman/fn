@@ -303,9 +303,12 @@ block|{
 return|return
 name|valueDelimiterStartOfValue
 operator|+
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|valueDelimiterEndOfValue
+argument_list|)
 return|;
 block|}
 name|boolean
@@ -864,9 +867,12 @@ operator|=
 operator|new
 name|StringBuilder
 argument_list|(
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|valueDelimiterStartOfValue
-operator|+
-literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// these two are also hard coded in net.sf.jabref.importer.fileformat.FieldContentParser.multiLineFields

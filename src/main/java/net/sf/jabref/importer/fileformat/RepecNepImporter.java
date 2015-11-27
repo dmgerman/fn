@@ -955,8 +955,6 @@ literal|" and "
 operator|+
 name|author
 else|:
-literal|""
-operator|+
 name|author
 expr_stmt|;
 block|}
@@ -981,8 +979,6 @@ literal|" and "
 operator|+
 name|institution
 else|:
-literal|""
-operator|+
 name|institution
 expr_stmt|;
 block|}
@@ -1436,8 +1432,10 @@ name|setField
 argument_list|(
 literal|"year"
 argument_list|,
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|cal
 operator|.
 name|get
@@ -1445,6 +1443,7 @@ argument_list|(
 name|Calendar
 operator|.
 name|YEAR
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1475,8 +1474,10 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|cal
 operator|.
 name|get
@@ -1484,6 +1485,7 @@ argument_list|(
 name|Calendar
 operator|.
 name|MONTH
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

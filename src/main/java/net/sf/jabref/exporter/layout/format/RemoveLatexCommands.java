@@ -202,9 +202,12 @@ name|SPECIAL_COMMAND_CHARS
 operator|.
 name|contains
 argument_list|(
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|c
+argument_list|)
 argument_list|)
 condition|)
 block|{
