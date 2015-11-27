@@ -325,9 +325,7 @@ literal|null
 argument_list|,
 operator|new
 name|ListAutoCompleteRenderer
-argument_list|<
-name|E
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -355,9 +353,7 @@ name|autoCompleter
 argument_list|,
 operator|new
 name|ListAutoCompleteRenderer
-argument_list|<
-name|E
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|)
 expr_stmt|;
