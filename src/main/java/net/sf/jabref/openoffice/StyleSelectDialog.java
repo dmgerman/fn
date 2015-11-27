@@ -696,7 +696,7 @@ name|glazedlists
 operator|.
 name|swing
 operator|.
-name|EventSelectionModel
+name|DefaultEventSelectionModel
 import|;
 end_import
 
@@ -710,7 +710,21 @@ name|glazedlists
 operator|.
 name|swing
 operator|.
-name|EventTableModel
+name|DefaultEventTableModel
+import|;
+end_import
+
+begin_import
+import|import
+name|ca
+operator|.
+name|odell
+operator|.
+name|glazedlists
+operator|.
+name|swing
+operator|.
+name|GlazedListsSwing
 import|;
 end_import
 
@@ -814,7 +828,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|tableModel
 specifier|private
-name|EventTableModel
+name|DefaultEventTableModel
 argument_list|<
 name|OOBibStyle
 argument_list|>
@@ -822,7 +836,7 @@ name|tableModel
 decl_stmt|;
 DECL|field|selectionModel
 specifier|private
-name|EventSelectionModel
+name|DefaultEventSelectionModel
 argument_list|<
 name|OOBibStyle
 argument_list|>
@@ -1580,9 +1594,15 @@ expr_stmt|;
 comment|//PreviewPrefsTab.getTestEntry());
 name|tableModel
 operator|=
-operator|new
-name|EventTableModel
-argument_list|<>
+operator|(
+name|DefaultEventTableModel
+argument_list|<
+name|OOBibStyle
+argument_list|>
+operator|)
+name|GlazedListsSwing
+operator|.
+name|eventTableModelWithThreadProxyList
 argument_list|(
 name|sortedStyles
 argument_list|,
@@ -1645,9 +1665,15 @@ argument_list|)
 expr_stmt|;
 name|selectionModel
 operator|=
-operator|new
-name|EventSelectionModel
-argument_list|<>
+operator|(
+name|DefaultEventSelectionModel
+argument_list|<
+name|OOBibStyle
+argument_list|>
+operator|)
+name|GlazedListsSwing
+operator|.
+name|eventSelectionModelWithThreadProxyList
 argument_list|(
 name|sortedStyles
 argument_list|)
