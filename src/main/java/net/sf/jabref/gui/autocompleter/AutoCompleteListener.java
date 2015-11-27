@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.autocompleter
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|autocompleter
 package|;
 end_package
 
@@ -131,6 +133,9 @@ DECL|field|completer
 specifier|private
 specifier|final
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|completer
 decl_stmt|;
 comment|// These variables keep track of the situation from time to time.
@@ -180,11 +185,14 @@ specifier|private
 name|FocusListener
 name|nextFocusListener
 decl_stmt|;
-DECL|method|AutoCompleteListener (AutoCompleter completer)
+DECL|method|AutoCompleteListener (AutoCompleter<String> completer)
 specifier|public
 name|AutoCompleteListener
 parameter_list|(
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|completer
 parameter_list|)
 block|{

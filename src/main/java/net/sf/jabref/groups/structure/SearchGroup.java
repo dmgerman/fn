@@ -1194,6 +1194,22 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+comment|// TODO Auto-generated method stub
+return|return
+name|super
+operator|.
+name|hashCode
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

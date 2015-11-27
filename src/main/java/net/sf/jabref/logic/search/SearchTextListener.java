@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.search.matchers
+DECL|package|net.sf.jabref.logic.search
 package|package
 name|net
 operator|.
@@ -15,87 +15,53 @@ operator|.
 name|logic
 operator|.
 name|search
-operator|.
-name|matchers
 package|;
 end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntry
+name|ArrayList
 import|;
 end_import
 
 begin_import
 import|import
-name|ca
+name|java
 operator|.
-name|odell
+name|util
 operator|.
-name|glazedlists
-operator|.
-name|matchers
-operator|.
-name|Matcher
+name|List
 import|;
 end_import
 
 begin_comment
-comment|/**  * Matcher that accepts all entries. Used for filtering when so search is  * active.  */
+comment|/**  * Every Listener that wants to receive events from a search needs to  * implement this interface  *   * @author Ben  *   */
 end_comment
 
-begin_class
-DECL|class|NoSearchMatcher
+begin_interface
+DECL|interface|SearchTextListener
 specifier|public
-class|class
-name|NoSearchMatcher
-implements|implements
-name|Matcher
-argument_list|<
-name|BibtexEntry
-argument_list|>
+interface|interface
+name|SearchTextListener
 block|{
-DECL|field|INSTANCE
-specifier|public
-specifier|static
-specifier|final
-name|Matcher
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|INSTANCE
-init|=
-operator|new
-name|NoSearchMatcher
-argument_list|()
-decl_stmt|;
-annotation|@
-name|Override
-DECL|method|matches (BibtexEntry object)
-specifier|public
-name|boolean
-name|matches
+comment|/**      * Array of words that were searched for      *       * @param words null if nothing is searched for      */
+DECL|method|searchText (List<String> words)
+name|void
+name|searchText
 parameter_list|(
-name|BibtexEntry
-name|object
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|words
 parameter_list|)
-block|{
-return|return
-literal|true
-return|;
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 

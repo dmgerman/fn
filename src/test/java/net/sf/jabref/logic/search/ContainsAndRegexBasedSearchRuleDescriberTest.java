@@ -83,11 +83,11 @@ literal|true
 argument_list|,
 literal|true
 argument_list|,
-literal|"This group contains entries in which any field contains the regular expression "
+literal|"This search contains entries in which any field contains the regular expression "
 operator|+
-literal|"<b>&#97;</b><b>&#98;</b> (case sensitive). Entries cannot be manually assigned to or removed "
+literal|"<b>&#97;</b><b>&#98;</b> (case sensitive). "
 operator|+
-literal|"from this group.<p><br>Hint: To search specific fields only, "
+literal|"<p><br>Hint: To search specific fields only, "
 operator|+
 literal|"enter for example:<p><tt>author=smith and title=electrical</tt>"
 argument_list|)
@@ -100,11 +100,11 @@ literal|true
 argument_list|,
 literal|false
 argument_list|,
-literal|"This group contains entries in which any field contains the term "
+literal|"This search contains entries in which any field contains the term "
 operator|+
-literal|"<b>&#97;</b><b>&#98;</b> (case sensitive). Entries cannot be manually assigned to or removed from "
+literal|"<b>&#97;</b><b>&#98;</b> (case sensitive). "
 operator|+
-literal|"this group.<p><br>Hint: To search specific fields only, enter for "
+literal|"<p><br>Hint: To search specific fields only, enter for "
 operator|+
 literal|"example:<p><tt>author=smith and title=electrical</tt>"
 argument_list|)
@@ -117,11 +117,11 @@ literal|false
 argument_list|,
 literal|false
 argument_list|,
-literal|"This group contains entries in which any field contains the term "
+literal|"This search contains entries in which any field contains the term "
 operator|+
-literal|"<b>&#97;</b><b>&#98;</b> (case insensitive). Entries cannot be manually assigned to or removed "
+literal|"<b>&#97;</b><b>&#98;</b> (case insensitive). "
 operator|+
-literal|"from this group.<p><br>Hint: To search specific fields only, enter for "
+literal|"<p><br>Hint: To search specific fields only, enter for "
 operator|+
 literal|"example:<p><tt>author=smith and title=electrical</tt>"
 argument_list|)
@@ -134,11 +134,11 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-literal|"This group contains entries in which any field contains the regular "
+literal|"This search contains entries in which any field contains the regular "
 operator|+
-literal|"expression<b>&#97;</b><b>&#98;</b> (case insensitive). Entries cannot be manually assigned "
+literal|"expression<b>&#97;</b><b>&#98;</b> (case insensitive). "
 operator|+
-literal|"to or removed from this group.<p><br>Hint: To search specific fields only, enter for "
+literal|"<p><br>Hint: To search specific fields only, enter for "
 operator|+
 literal|"example:<p><tt>author=smith and title=electrical</tt>"
 argument_list|)

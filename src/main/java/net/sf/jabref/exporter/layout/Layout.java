@@ -68,6 +68,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -158,8 +168,6 @@ parameter_list|,
 name|String
 name|classPrefix
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|StringInt
 name|si
@@ -643,7 +651,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
-DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, ArrayList<String> wordsToHighlight)
+DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, List<String> wordsToHighlight)
 specifier|public
 name|String
 name|doLayout
@@ -654,7 +662,7 @@ parameter_list|,
 name|BibtexDatabase
 name|database
 parameter_list|,
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>

@@ -256,6 +256,9 @@ argument_list|)
 expr_stmt|;
 comment|// test content of stored words in autocompleter ...
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 init|=
 name|JabRef
@@ -391,6 +394,9 @@ argument_list|)
 expr_stmt|;
 comment|// test content of stored words in autocompleter ...
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 init|=
 name|JabRef

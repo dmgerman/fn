@@ -226,7 +226,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This group contains entries in which"
+literal|"This search contains entries in which"
 argument_list|)
 argument_list|)
 operator|.
@@ -568,7 +568,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"%0 contains the Regular Expression<b>%1</b>"
+literal|"%0 contains the regular expression<b>%1</b>"
 argument_list|,
 name|fieldSpecQuoted
 argument_list|,
@@ -611,7 +611,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"%0 matches the Regular Expression<b>%1</b>"
+literal|"%0 matches the regular expression<b>%1</b>"
 argument_list|,
 name|fieldSpecQuoted
 argument_list|,
@@ -654,7 +654,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"%0 doesn't contain the Regular Expression<b>%1</b>"
+literal|"%0 doesn't contain the regular expression<b>%1</b>"
 argument_list|,
 name|fieldSpecQuoted
 argument_list|,

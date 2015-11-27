@@ -4938,7 +4938,10 @@ condition|)
 block|{
 name|panel
 operator|.
-name|stopShowingGroup
+name|getFilterGroupToggle
+argument_list|()
+operator|.
+name|stop
 argument_list|()
 expr_stmt|;
 name|panel
@@ -5278,12 +5281,11 @@ expr_stmt|;
 comment|// Turn off shading, if active.
 name|panel
 operator|.
-name|setGroupMatcher
-argument_list|(
-name|GroupMatcher
+name|getFilterGroupToggle
+argument_list|()
 operator|.
-name|INSTANCE
-argument_list|)
+name|start
+argument_list|()
 expr_stmt|;
 comment|// Turn on filtering.
 block|}
@@ -5298,7 +5300,10 @@ condition|)
 block|{
 name|panel
 operator|.
-name|stopShowingGroup
+name|getFilterGroupToggle
+argument_list|()
+operator|.
+name|stop
 argument_list|()
 expr_stmt|;
 comment|// Turn off filtering, if active.
@@ -5307,11 +5312,7 @@ operator|.
 name|mainTable
 operator|.
 name|showFloatGrouping
-argument_list|(
-name|GroupMatcher
-operator|.
-name|INSTANCE
-argument_list|)
+argument_list|()
 expr_stmt|;
 comment|// Turn on shading.
 block|}
@@ -5790,7 +5791,10 @@ block|{
 comment|// panel may be null if no file is open any more
 name|panel
 operator|.
-name|stopShowingGroup
+name|getFilterGroupToggle
+argument_list|()
+operator|.
+name|stop
 argument_list|()
 expr_stmt|;
 name|panel

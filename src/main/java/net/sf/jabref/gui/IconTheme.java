@@ -453,8 +453,8 @@ literal|"\uf4ef"
 argument_list|)
 comment|/*css: refresh */
 block|,
-DECL|enumConstant|DELETE
-name|DELETE
+DECL|enumConstant|DELETE_ENTRY
+name|DELETE_ENTRY
 argument_list|(
 literal|"\uf28d"
 argument_list|)
@@ -932,6 +932,13 @@ literal|"\uf23e"
 argument_list|)
 block|,
 comment|/*css: code-equal */
+DECL|enumConstant|OPEN_IN_NEW_WINDOW
+name|OPEN_IN_NEW_WINDOW
+argument_list|(
+literal|"\uf47b"
+argument_list|)
+block|,
+comment|/*css: open-in-new */
 comment|// STILL MISSING:
 DECL|enumConstant|GROUP_REGULAR
 name|GROUP_REGULAR
@@ -1327,6 +1334,31 @@ argument_list|,
 name|IconTheme
 operator|.
 name|SMALL_SIZE
+argument_list|)
+return|;
+block|}
+DECL|method|createWithNewColor (Color newColor)
+specifier|public
+name|FontBasedIcon
+name|createWithNewColor
+parameter_list|(
+name|Color
+name|newColor
+parameter_list|)
+block|{
+return|return
+operator|new
+name|FontBasedIcon
+argument_list|(
+name|this
+operator|.
+name|iconCode
+argument_list|,
+name|newColor
+argument_list|,
+name|this
+operator|.
+name|size
 argument_list|)
 return|;
 block|}

@@ -212,14 +212,14 @@ name|DECREASE_TABLE_FONT_SIZE
 init|=
 literal|"Decrease table font size"
 decl_stmt|;
-DECL|field|DELETE
+DECL|field|DELETE_ENTRY
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|DELETE
+name|DELETE_ENTRY
 init|=
-literal|"Delete"
+literal|"Delete entry"
 decl_stmt|;
 DECL|field|EDIT_ENTRY
 specifier|public
@@ -400,15 +400,6 @@ name|String
 name|INCREASE_TABLE_FONT_SIZE
 init|=
 literal|"Increase table font size"
-decl_stmt|;
-DECL|field|INCREMENTAL_SEARCH
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|INCREMENTAL_SEARCH
-init|=
-literal|"Incremental search"
 decl_stmt|;
 DECL|field|LOAD_SESSION
 specifier|public
@@ -643,15 +634,6 @@ name|String
 name|REFRESH_OO
 init|=
 literal|"Refresh OO"
-decl_stmt|;
-DECL|field|REPEAT_INCREMENTAL_SEARCH
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|REPEAT_INCREMENTAL_SEARCH
-init|=
-literal|"Repeat incremental search"
 decl_stmt|;
 DECL|field|REPLACE_STRING
 specifier|public
@@ -1092,24 +1074,6 @@ name|keyBindMap
 operator|.
 name|put
 argument_list|(
-name|INCREMENTAL_SEARCH
-argument_list|,
-literal|"ctrl shift F"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|REPEAT_INCREMENTAL_SEARCH
-argument_list|,
-literal|"ctrl shift F"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
 name|CLOSE_DIALOG
 argument_list|,
 literal|"ESCAPE"
@@ -1321,7 +1285,7 @@ name|keyBindMap
 operator|.
 name|put
 argument_list|(
-name|DELETE
+name|DELETE_ENTRY
 argument_list|,
 literal|"DELETE"
 argument_list|)
