@@ -477,6 +477,20 @@ literal|"."
 argument_list|)
 expr_stmt|;
 comment|// @formatter:on
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"asdf"
+argument_list|)
+expr_stmt|;
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"fdsa"
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
