@@ -300,7 +300,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Import_Metadata_from:"
+literal|"Import_metadata_from:"
 argument_list|)
 argument_list|)
 decl_stmt|;

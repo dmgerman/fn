@@ -664,7 +664,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Regular Expression"
+literal|"regular expression"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -713,7 +713,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Regular Expression"
+literal|"regular expression"
 argument_list|)
 argument_list|)
 decl_stmt|;

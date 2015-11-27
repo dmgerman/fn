@@ -220,6 +220,34 @@ name|BibtexEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_class
 DECL|class|PreviewPrefsTab
 class|class
@@ -229,6 +257,22 @@ name|JPanel
 implements|implements
 name|PrefsTab
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|PrefsTab
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|prefs
 specifier|private
 specifier|final
@@ -1318,10 +1362,14 @@ name|StringIndexOutOfBoundsException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Parsing error."
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 name|JOptionPane
 operator|.
@@ -1351,17 +1399,6 @@ name|ex
 operator|.
 name|getMessage
 argument_list|()
-operator|+
-literal|'\n'
-operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Look at log for details"
-argument_list|)
-operator|+
-literal|'.'
 argument_list|,
 name|Localization
 operator|.
@@ -1473,10 +1510,14 @@ name|StringIndexOutOfBoundsException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Parsing error."
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 name|JOptionPane
 operator|.
@@ -1484,16 +1525,35 @@ name|showMessageDialog
 argument_list|(
 literal|null
 argument_list|,
-literal|"Parsing error: illegal backslash expression.\n"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Parsing error"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"illegal backslash expression"
+argument_list|)
+operator|+
+literal|".\n"
 operator|+
 name|ex
 operator|.
 name|getMessage
 argument_list|()
-operator|+
-literal|"\nLook at stderr for details."
 argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Parsing error"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.

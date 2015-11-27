@@ -1736,7 +1736,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Cite selected entries"
+literal|"Cite selected entries between parenthesis"
 argument_list|)
 argument_list|)
 expr_stmt|;

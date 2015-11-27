@@ -1696,9 +1696,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"A string with that label "
-operator|+
-literal|"already exists"
+literal|"A string with this label already exists"
 argument_list|)
 argument_list|,
 name|Localization
@@ -2518,9 +2516,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"A string with that label "
-operator|+
-literal|"already exists"
+literal|"A string with this label already exists"
 argument_list|)
 argument_list|,
 name|Localization

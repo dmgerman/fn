@@ -528,7 +528,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Sort Automatically"
+literal|"Sort automatically"
 argument_list|)
 argument_list|)
 expr_stmt|;

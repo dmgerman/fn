@@ -1254,8 +1254,13 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not save file. "
+literal|"Could not save file."
+argument_list|)
 operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Character encoding '%0' is not supported."
 argument_list|,
 name|encoding
@@ -1388,7 +1393,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not save file"
+literal|"Could not save file."
 argument_list|)
 operator|+
 literal|".\n"

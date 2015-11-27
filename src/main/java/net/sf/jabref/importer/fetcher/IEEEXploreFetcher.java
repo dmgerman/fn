@@ -620,6 +620,22 @@ name|START_URL
 init|=
 literal|"http://ieeexplore.ieee.org/search/freesearchresult.jsp?queryText="
 decl_stmt|;
+DECL|field|DIALOG_TITLE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|DIALOG_TITLE
+init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Search %0"
+argument_list|,
+literal|"IEEEXplore"
+argument_list|)
+decl_stmt|;
 comment|// Common words in IEEE Xplore that should always be
 DECL|method|IEEEXploreFetcher ()
 specifier|public
@@ -840,12 +856,7 @@ argument_list|,
 name|terms
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Search IEEEXplore"
-argument_list|)
+name|DIALOG_TITLE
 argument_list|,
 name|JOptionPane
 operator|.
@@ -879,12 +890,7 @@ argument_list|,
 name|terms
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Search IEEEXplore"
-argument_list|)
+name|DIALOG_TITLE
 argument_list|,
 name|JOptionPane
 operator|.
@@ -918,12 +924,7 @@ argument_list|,
 name|terms
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Search IEEEXplore"
-argument_list|)
+name|DIALOG_TITLE
 argument_list|,
 name|JOptionPane
 operator|.
@@ -956,12 +957,7 @@ argument_list|(
 literal|"Intermittent errors on the IEEE Xplore server. Please try again in a while."
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Search IEEEXplore"
-argument_list|)
+name|DIALOG_TITLE
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1033,12 +1029,7 @@ argument_list|)
 block|}
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Search IEEEXplore"
-argument_list|)
+name|DIALOG_TITLE
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1087,12 +1078,7 @@ argument_list|(
 literal|"Connection to IEEEXplore failed"
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Search IEEEXplore"
-argument_list|)
+name|DIALOG_TITLE
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1115,12 +1101,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Search IEEEXplore"
-argument_list|)
+name|DIALOG_TITLE
 argument_list|,
 name|JOptionPane
 operator|.

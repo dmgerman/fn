@@ -2237,17 +2237,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not save file"
+literal|"Could not save file."
 argument_list|)
 operator|+
-literal|" '"
-operator|+
-name|data
-index|[
-literal|0
-index|]
-operator|+
-literal|"': "
+literal|"\n"
 operator|+
 name|ex
 operator|.
@@ -2828,14 +2821,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not save file"
+literal|"Could not save file."
 argument_list|)
 operator|+
-literal|" '"
-operator|+
-name|subName
-operator|+
-literal|"': "
+literal|"\n"
 operator|+
 name|ex
 operator|.
@@ -2902,8 +2891,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"no base-bibtex-file specified"
+literal|"no base-BibTeX-file specified"
 argument_list|)
+operator|+
+literal|"!"
 argument_list|)
 expr_stmt|;
 name|System
@@ -2928,7 +2919,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"jabref --aux infile[.aux],outfile[.bib] base-bibtex-file"
+literal|"jabref --aux infile[.aux],outfile[.bib] base-BibTeX-file"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4212,7 +4203,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*JOptionPane.showMessageDialog(null, Globals.lang("Please note that this "             +"is an early beta version. Do not use it without backing up your files!"),                 Globals.lang("Beta version"), JOptionPane.WARNING_MESSAGE);*/
 comment|// Start auto save timer:
 if|if
 condition|(

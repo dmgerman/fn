@@ -1414,7 +1414,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Input"
+literal|"Work_options"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1704,7 +1704,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Available fields"
+literal|"Available BibTeX fields"
 argument_list|)
 argument_list|)
 decl_stmt|;

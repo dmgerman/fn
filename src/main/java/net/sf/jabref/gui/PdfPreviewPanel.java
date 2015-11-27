@@ -821,7 +821,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No preview available"
+literal|"No preview available."
 argument_list|)
 argument_list|)
 expr_stmt|;
