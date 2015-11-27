@@ -8517,10 +8517,6 @@ name|lang
 argument_list|(
 literal|"The group \"%0\" already contains the selection."
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
 name|node
 operator|.
 name|getGroup
@@ -8528,7 +8524,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-block|}
 argument_list|)
 argument_list|)
 expr_stmt|;

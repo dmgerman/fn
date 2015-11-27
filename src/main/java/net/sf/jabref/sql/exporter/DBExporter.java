@@ -1161,12 +1161,7 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
 literal|"search"
-block|}
 argument_list|)
 decl_stmt|;
 name|fieldRequirement
