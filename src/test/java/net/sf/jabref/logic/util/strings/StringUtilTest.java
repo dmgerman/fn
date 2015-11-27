@@ -820,7 +820,19 @@ specifier|public
 name|void
 name|testGetPart
 parameter_list|()
-block|{      }
+block|{
+comment|// Should be added
+block|}
+annotation|@
+name|Test
+DECL|method|testFindEncodingsForString ()
+specifier|public
+name|void
+name|testFindEncodingsForString
+parameter_list|()
+block|{
+comment|// Unused in JabRef, but should be added in case it finds some use
+block|}
 annotation|@
 name|Test
 DECL|method|testWrap ()
@@ -1155,6 +1167,8 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|field|stringArray1
+specifier|static
+specifier|final
 name|String
 index|[]
 index|[]
@@ -1175,12 +1189,16 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|encStringArray1
+specifier|static
+specifier|final
 name|String
 name|encStringArray1
 init|=
 literal|"a:b;c:d"
 decl_stmt|;
 DECL|field|stringArray2null
+specifier|static
+specifier|final
 name|String
 index|[]
 index|[]
@@ -1201,12 +1219,16 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|encStringArray2
+specifier|static
+specifier|final
 name|String
 name|encStringArray2
 init|=
 literal|"a:;c:d"
 decl_stmt|;
 DECL|field|stringArray2
+specifier|static
+specifier|final
 name|String
 index|[]
 index|[]
@@ -1227,6 +1249,8 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|encStringArray2null
+specifier|static
+specifier|final
 name|String
 name|encStringArray2null
 init|=
@@ -1237,6 +1261,8 @@ operator|+
 literal|";c:d"
 decl_stmt|;
 DECL|field|stringArray3
+specifier|static
+specifier|final
 name|String
 index|[]
 index|[]
@@ -1257,6 +1283,8 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|encStringArray3
+specifier|static
+specifier|final
 name|String
 name|encStringArray3
 init|=
