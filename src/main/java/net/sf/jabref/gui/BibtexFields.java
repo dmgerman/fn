@@ -78,6 +78,26 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -109,6 +129,16 @@ operator|.
 name|util
 operator|.
 name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -2435,40 +2465,49 @@ name|isNumeric
 argument_list|()
 return|;
 block|}
-comment|/**      * returns an string-array with all fieldnames      */
+comment|/**      * returns a List with all fieldnames      */
 DECL|method|getAllFieldNames ()
 specifier|public
 specifier|static
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getAllFieldNames
 parameter_list|()
 block|{
 return|return
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|BibtexFields
 operator|.
 name|runtime
 operator|.
 name|PUBLIC_FIELDS
+argument_list|)
 return|;
 block|}
-comment|/**      * returns an string-array with only private fieldnames      */
+comment|/**      * returns a List with only private fieldnames      */
 DECL|method|getAllPrivateFieldNames ()
 specifier|public
 specifier|static
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getAllPrivateFieldNames
 parameter_list|()
 block|{
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|pFields
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2509,18 +2548,6 @@ block|}
 block|}
 return|return
 name|pFields
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-name|pFields
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
 return|;
 block|}
 comment|/**      * returns the fieldname of the entry at index t      */

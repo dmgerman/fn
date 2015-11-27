@@ -2888,8 +2888,10 @@ operator|.
 name|getOptionalFields
 argument_list|()
 decl_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|allFields
 init|=
 name|BibtexFields
