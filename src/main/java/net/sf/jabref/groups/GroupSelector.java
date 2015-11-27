@@ -6966,7 +6966,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Remove all subgroups"
+literal|"Remove subgroups"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7023,7 +7023,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Remove all subgroups"
+literal|"Remove subgroups"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -7056,7 +7056,7 @@ argument_list|()
 argument_list|,
 name|node
 argument_list|,
-literal|"Remove all subgroups"
+literal|"Remove subgroups"
 argument_list|)
 decl_stmt|;
 name|node

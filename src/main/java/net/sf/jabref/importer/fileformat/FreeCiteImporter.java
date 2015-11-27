@@ -530,7 +530,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Unable to connect to freecite online service."
+literal|"Unable to connect to FreeCite online service."
 argument_list|)
 argument_list|)
 expr_stmt|;

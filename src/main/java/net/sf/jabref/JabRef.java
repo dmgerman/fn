@@ -2891,8 +2891,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"no base-bibtex-file specified"
+literal|"no base-BibTeX-file specified"
 argument_list|)
+operator|+
+literal|"!"
 argument_list|)
 expr_stmt|;
 name|System
@@ -2917,7 +2919,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"jabref --aux infile[.aux],outfile[.bib] base-bibtex-file"
+literal|"jabref --aux infile[.aux],outfile[.bib] base-BibTeX-file"
 argument_list|)
 expr_stmt|;
 block|}

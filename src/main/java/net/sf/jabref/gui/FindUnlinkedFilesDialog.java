@@ -3496,7 +3496,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Starts the import of bibtex entries."
+literal|"Starts the import of BibTeX entries."
 argument_list|)
 argument_list|)
 expr_stmt|;
