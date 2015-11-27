@@ -442,10 +442,6 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
 decl_stmt|;
 comment|// read in bibtex string
 name|ParserResult
@@ -634,10 +630,6 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
 decl_stmt|;
 comment|// read in bibtex string
 name|ParserResult
