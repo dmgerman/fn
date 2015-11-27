@@ -362,6 +362,12 @@ specifier|private
 name|String
 name|serialization
 decl_stmt|;
+comment|/*     * marks if the complete serialization, which was read from file, should be used.     * Is set to false, if parts of the entry change      */
+DECL|field|useCustomSerialization
+specifier|private
+name|boolean
+name|useCustomSerialization
+decl_stmt|;
 DECL|method|BibtexEntry ()
 specifier|public
 name|BibtexEntry
@@ -422,6 +428,10 @@ operator|.
 name|id
 operator|=
 name|id
+expr_stmt|;
+name|useCustomSerialization
+operator|=
+literal|false
 expr_stmt|;
 name|setType
 argument_list|(
@@ -555,6 +565,10 @@ name|type
 operator|=
 name|type
 expr_stmt|;
+name|useCustomSerialization
+operator|=
+literal|false
+expr_stmt|;
 name|firePropertyChangedEvent
 argument_list|(
 name|TYPE_HEADER
@@ -646,6 +660,10 @@ operator|.
 name|id
 operator|=
 name|id
+expr_stmt|;
+name|useCustomSerialization
+operator|=
+literal|false
 expr_stmt|;
 block|}
 comment|/**      * Returns this entry's ID.      */
@@ -1190,6 +1208,10 @@ argument_list|>
 name|fields
 parameter_list|)
 block|{
+name|useCustomSerialization
+operator|=
+literal|false
+expr_stmt|;
 name|this
 operator|.
 name|fields
@@ -1237,6 +1259,10 @@ literal|"' is reserved"
 argument_list|)
 throw|;
 block|}
+name|useCustomSerialization
+operator|=
+literal|false
+expr_stmt|;
 name|String
 name|oldValue
 init|=
@@ -1309,6 +1335,10 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|useCustomSerialization
+operator|=
+literal|false
+expr_stmt|;
 if|if
 condition|(
 name|BibtexEntry
@@ -1379,7 +1409,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param allFields   An array of field names to be checked.      * @param database The database in which to look up crossref'd entries, if any. This      *                 argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
+comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param allFields An array of field names to be checked.      * @param database  The database in which to look up crossref'd entries, if any. This      *                  argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
 DECL|method|allFieldsPresent (String[] allFields, BibtexDatabase database)
 name|boolean
 name|allFieldsPresent
@@ -1672,7 +1702,7 @@ return|return
 name|clone
 return|;
 block|}
-comment|/**      * This returns a canonical BibTeX serialization. Special characters such as "{" or "&" are NOT escaped, but written      * as is      *      * Serializes all fields, even the JabRef internal ones. Does NOT serialize "KEY_FIELD" as field, but as key      */
+comment|/**      * This returns a canonical BibTeX serialization. Special characters such as "{" or "&" are NOT escaped, but written      * as is      *<p>      * Serializes all fields, even the JabRef internal ones. Does NOT serialize "KEY_FIELD" as field, but as key      */
 annotation|@
 name|Override
 DECL|method|toString ()
@@ -1973,6 +2003,10 @@ name|String
 name|serialization
 parameter_list|)
 block|{
+name|useCustomSerialization
+operator|=
+literal|true
+expr_stmt|;
 name|this
 operator|.
 name|serialization
@@ -1988,6 +2022,16 @@ parameter_list|()
 block|{
 return|return
 name|serialization
+return|;
+block|}
+DECL|method|shouldUseCustomSerialization ()
+specifier|public
+name|boolean
+name|shouldUseCustomSerialization
+parameter_list|()
+block|{
+return|return
+name|useCustomSerialization
 return|;
 block|}
 DECL|method|putKeywords (List<String> keywords)
