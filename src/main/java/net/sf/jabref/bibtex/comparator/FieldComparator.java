@@ -805,8 +805,9 @@ block|{
 name|Integer
 name|f1AsInteger
 init|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|f1
 operator|.
@@ -839,8 +840,9 @@ block|{
 name|Integer
 name|f2AsInteger
 init|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|f2
 operator|.

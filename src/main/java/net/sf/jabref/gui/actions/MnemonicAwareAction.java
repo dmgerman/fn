@@ -193,8 +193,9 @@ name|Action
 operator|.
 name|MNEMONIC_KEY
 argument_list|,
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|mnemonic
 argument_list|)
