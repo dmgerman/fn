@@ -510,7 +510,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Match case"
+literal|"Case sensitive"
 argument_list|)
 argument_list|,
 name|Globals
@@ -554,7 +554,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Regex"
+literal|"regular expression"
 argument_list|)
 argument_list|,
 name|Globals
@@ -1157,8 +1157,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search..."
+literal|"Search"
 argument_list|)
+operator|+
+literal|"..."
 argument_list|)
 expr_stmt|;
 name|searchField
