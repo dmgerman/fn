@@ -114,16 +114,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Calendar
 import|;
 end_import
@@ -1969,18 +1959,25 @@ return|return
 name|year
 return|;
 block|}
-DECL|method|putKeywords (ArrayList<String> keywords)
+DECL|method|putKeywords (List<String> keywords)
 specifier|public
 name|void
 name|putKeywords
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|keywords
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|keywords
+argument_list|)
+expr_stmt|;
 comment|// Set Keyword Field
 name|String
 name|oldValue
@@ -2078,7 +2075,7 @@ name|String
 name|keyword
 parameter_list|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -2162,12 +2159,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Add multiple keywords to entry      *      * @param keywords Keywords to add      */
-DECL|method|addKeywords (ArrayList<String> keywords)
+DECL|method|addKeywords (List<String> keywords)
 specifier|public
 name|void
 name|addKeywords
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -2201,7 +2198,7 @@ block|}
 block|}
 DECL|method|getSeparatedKeywords ()
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>

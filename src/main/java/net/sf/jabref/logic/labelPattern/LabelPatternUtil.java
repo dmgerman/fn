@@ -4026,7 +4026,7 @@ literal|7
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -4116,7 +4116,7 @@ operator|.
 name|MAX_VALUE
 expr_stmt|;
 block|}
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
