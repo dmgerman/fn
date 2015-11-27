@@ -648,6 +648,17 @@ name|item
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|//otherwise give it back to the reader unmodified
+name|file
+operator|.
+name|append
+argument_list|(
+name|next
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|pushbackReader
 operator|=
