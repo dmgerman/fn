@@ -824,6 +824,10 @@ block|{
 if|if
 condition|(
 operator|!
+literal|""
+operator|.
+name|equals
+argument_list|(
 name|lines
 index|[
 name|i
@@ -831,10 +835,6 @@ index|]
 operator|.
 name|trim
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|""
 argument_list|)
 condition|)
 block|{

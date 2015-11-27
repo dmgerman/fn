@@ -144,11 +144,11 @@ literal|1
 argument_list|)
 decl_stmt|;
 return|return
-name|dateiEndung
+literal|"pdf"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"pdf"
+name|dateiEndung
 argument_list|)
 return|;
 block|}

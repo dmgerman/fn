@@ -1128,14 +1128,14 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+literal|"all"
+operator|.
+name|equals
+argument_list|(
 name|value
 operator|.
 name|trim
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"all"
 argument_list|)
 condition|)
 block|{
@@ -3317,11 +3317,11 @@ block|}
 comment|// At all cost, avoid ending up with the Metal look and feel:
 if|if
 condition|(
-name|lookFeel
+literal|"javax.swing.plaf.metal.MetalLookAndFeel"
 operator|.
 name|equals
 argument_list|(
-literal|"javax.swing.plaf.metal.MetalLookAndFeel"
+name|lookFeel
 argument_list|)
 condition|)
 block|{

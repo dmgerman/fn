@@ -1606,6 +1606,10 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"true"
+operator|.
+name|equals
+argument_list|(
 name|value
 operator|.
 name|toLowerCase
@@ -1613,10 +1617,6 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"true"
 argument_list|)
 condition|)
 block|{
@@ -1630,6 +1630,10 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"false"
+operator|.
+name|equals
+argument_list|(
 name|value
 operator|.
 name|toLowerCase
@@ -1637,10 +1641,6 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"false"
 argument_list|)
 condition|)
 block|{

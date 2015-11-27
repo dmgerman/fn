@@ -1617,11 +1617,11 @@ block|{
 if|if
 condition|(
 operator|!
-name|content
+literal|""
 operator|.
 name|equals
 argument_list|(
-literal|""
+name|content
 argument_list|)
 condition|)
 block|{

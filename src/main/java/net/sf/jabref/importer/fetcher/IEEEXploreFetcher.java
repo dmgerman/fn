@@ -1973,14 +1973,14 @@ literal|""
 decl_stmt|;
 if|if
 condition|(
+literal|"Article"
+operator|.
+name|equals
+argument_list|(
 name|type
 operator|.
 name|getName
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"Article"
 argument_list|)
 condition|)
 block|{
@@ -1999,14 +1999,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Inproceedings"
+operator|.
+name|equals
+argument_list|(
 name|type
 operator|.
 name|getName
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"Inproceedings"
 argument_list|)
 condition|)
 block|{
@@ -2034,14 +2034,14 @@ condition|)
 block|{
 if|if
 condition|(
+literal|"Article"
+operator|.
+name|equals
+argument_list|(
 name|type
 operator|.
 name|getName
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"Article"
 argument_list|)
 condition|)
 block|{
@@ -2152,17 +2152,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|note
-operator|!=
-literal|null
-operator|)
-operator|&&
-name|note
+literal|"Early Access"
 operator|.
 name|equals
 argument_list|(
-literal|"Early Access"
+name|note
 argument_list|)
 condition|)
 block|{
@@ -2444,14 +2438,14 @@ block|}
 block|}
 if|if
 condition|(
+literal|"Article"
+operator|.
+name|equals
+argument_list|(
 name|type
 operator|.
 name|getName
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"Article"
 argument_list|)
 condition|)
 block|{
@@ -2508,14 +2502,14 @@ block|}
 block|}
 if|if
 condition|(
+literal|"Inproceedings"
+operator|.
+name|equals
+argument_list|(
 name|type
 operator|.
 name|getName
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"Inproceedings"
 argument_list|)
 condition|)
 block|{
@@ -3137,74 +3131,74 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|typeName
-operator|.
-name|equalsIgnoreCase
-argument_list|(
 literal|"IEEE Journals&amp; Magazines"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"IEEE Early Access Articles"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"IET Journals&amp; Magazines"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"AIP Journals&amp; Magazines"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"AVS Journals&amp; Magazines"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"IBM Journals&amp; Magazines"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"TUP Journals&amp; Magazines"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"BIAI Journals&amp; Magazines"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"MIT Press Journals"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"Alcatel-Lucent Journal"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|typeName
 argument_list|)
 condition|)
 block|{
@@ -3225,25 +3219,25 @@ block|}
 elseif|else
 if|if
 condition|(
-name|typeName
-operator|.
-name|equalsIgnoreCase
-argument_list|(
 literal|"IEEE Conference Publications"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"IET Conference Publications"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"VDE Conference Publications"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|typeName
 argument_list|)
 condition|)
 block|{
@@ -3264,18 +3258,18 @@ block|}
 elseif|else
 if|if
 condition|(
-name|typeName
+literal|"IEEE Standards"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IEEE Standards"
+name|typeName
 argument_list|)
 operator|||
-name|typeName
+literal|"Standards"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"Standards"
+name|typeName
 argument_list|)
 condition|)
 block|{
@@ -3296,11 +3290,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|typeName
+literal|"IEEE eLearning Library Courses"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IEEE eLearning Library Courses"
+name|typeName
 argument_list|)
 condition|)
 block|{
@@ -3321,25 +3315,25 @@ block|}
 elseif|else
 if|if
 condition|(
-name|typeName
-operator|.
-name|equalsIgnoreCase
-argument_list|(
 literal|"Wiley-IEEE Press eBook Chapters"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"MIT Press eBook Chapters"
-argument_list|)
-operator|||
-name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
+name|typeName
+argument_list|)
+operator|||
 literal|"IEEE USA Books&amp; eBooks"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|typeName
 argument_list|)
 condition|)
 block|{
@@ -3360,11 +3354,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|typeName
+literal|"Morgan and Claypool eBooks"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"Morgan and Claypool eBooks"
+name|typeName
 argument_list|)
 condition|)
 block|{
@@ -3433,11 +3427,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|typeName
+literal|"IEEE Standards"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IEEE Standards"
+name|typeName
 argument_list|)
 condition|)
 block|{
@@ -3453,11 +3447,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|typeName
+literal|"Wiley-IEEE Press eBook Chapters"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"Wiley-IEEE Press eBook Chapters"
+name|typeName
 argument_list|)
 condition|)
 block|{
@@ -3474,11 +3468,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|typeName
+literal|"MIT Press eBook Chapters"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"MIT Press eBook Chapters"
+name|typeName
 argument_list|)
 condition|)
 block|{
@@ -3495,11 +3489,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|typeName
+literal|"IEEE USA Books&amp; eBooks"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IEEE USA Books&amp; eBooks"
+name|typeName
 argument_list|)
 condition|)
 block|{
@@ -3516,11 +3510,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|typeName
+literal|"Morgan \\& Claypool eBooks"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"Morgan \\& Claypool eBooks"
+name|typeName
 argument_list|)
 condition|)
 block|{
@@ -3536,11 +3530,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|typeName
+literal|"IEEE Early Access Articles"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IEEE Early Access Articles"
+name|typeName
 argument_list|)
 condition|)
 block|{
@@ -3622,11 +3616,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|field
+literal|"title"
 operator|.
 name|equals
 argument_list|(
-literal|"title"
+name|field
 argument_list|)
 operator|&&
 name|fieldMatcher
@@ -3689,11 +3683,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|field
+literal|"pages"
 operator|.
 name|equals
 argument_list|(
-literal|"pages"
+name|field
 argument_list|)
 operator|&&
 operator|(
@@ -3872,16 +3866,16 @@ literal|"inproceedings"
 argument_list|)
 operator|)
 operator|&&
+literal|""
+operator|.
+name|equals
+argument_list|(
 name|entry
 operator|.
 name|getField
 argument_list|(
 literal|"author"
 argument_list|)
-operator|.
-name|equals
-argument_list|(
-literal|""
 argument_list|)
 condition|)
 block|{

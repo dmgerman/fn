@@ -661,14 +661,14 @@ block|{
 comment|/**                      * The condition below is there since PostgreSQL automatically escapes the backslashes, so the entry                      * would double the number of slashes after storing/retrieving.                      **/
 if|if
 condition|(
+literal|"MySQL"
+operator|.
+name|equals
+argument_list|(
 name|dbStrings
 operator|.
 name|getServerType
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"MySQL"
 argument_list|)
 condition|)
 block|{

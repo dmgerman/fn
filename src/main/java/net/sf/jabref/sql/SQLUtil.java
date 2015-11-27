@@ -429,11 +429,11 @@ block|{
 if|if
 condition|(
 operator|!
-name|anArray
+literal|"#"
 operator|.
 name|equals
 argument_list|(
-literal|"#"
+name|anArray
 argument_list|)
 condition|)
 block|{

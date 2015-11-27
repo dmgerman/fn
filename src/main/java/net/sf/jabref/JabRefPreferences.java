@@ -9931,11 +9931,11 @@ block|}
 block|}
 if|if
 condition|(
-name|mimeType
+literal|"text/html"
 operator|.
 name|equals
 argument_list|(
-literal|"text/html"
+name|mimeType
 argument_list|)
 condition|)
 block|{

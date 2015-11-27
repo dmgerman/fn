@@ -1700,12 +1700,6 @@ if|if
 condition|(
 operator|(
 name|obj
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|obj
 operator|instanceof
 name|IconTheme
 operator|.
@@ -1785,12 +1779,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|obj
-operator|!=
-literal|null
-operator|)
-operator|&&
 operator|(
 name|obj
 operator|instanceof

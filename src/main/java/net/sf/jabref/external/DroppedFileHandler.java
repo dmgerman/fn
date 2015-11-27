@@ -1498,13 +1498,13 @@ block|{
 if|if
 condition|(
 operator|!
-name|fileType
-operator|.
-name|extension
+literal|"pdf"
 operator|.
 name|equals
 argument_list|(
-literal|"pdf"
+name|fileType
+operator|.
+name|extension
 argument_list|)
 condition|)
 block|{

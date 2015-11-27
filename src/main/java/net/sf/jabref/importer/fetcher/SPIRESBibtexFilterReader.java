@@ -153,11 +153,11 @@ return|;
 block|}
 if|if
 condition|(
-name|l
+literal|"<pre>"
 operator|.
 name|equals
 argument_list|(
-literal|"<pre>"
+name|l
 argument_list|)
 condition|)
 block|{
@@ -175,11 +175,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|l
+literal|"</pre>"
 operator|.
 name|equals
 argument_list|(
-literal|"</pre>"
+name|l
 argument_list|)
 condition|)
 block|{

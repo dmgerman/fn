@@ -1270,11 +1270,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|fieldName
+literal|"Abstract"
 operator|.
 name|equals
 argument_list|(
-literal|"Abstract"
+name|fieldName
 argument_list|)
 condition|)
 block|{
@@ -1291,11 +1291,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|fieldName
+literal|"Publication Type"
 operator|.
 name|equals
 argument_list|(
-literal|"Publication Type"
+name|fieldName
 argument_list|)
 condition|)
 block|{
@@ -1503,11 +1503,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|entryType
+literal|"book"
 operator|.
 name|equals
 argument_list|(
-literal|"book"
+name|entryType
 argument_list|)
 condition|)
 block|{

@@ -2971,11 +2971,11 @@ literal|null
 operator|)
 operator|&&
 operator|!
-name|o
+literal|"0"
 operator|.
 name|equals
 argument_list|(
-literal|"0"
+name|o
 argument_list|)
 return|;
 block|}

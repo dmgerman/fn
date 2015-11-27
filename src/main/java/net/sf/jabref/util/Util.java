@@ -2948,11 +2948,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|field
+literal|"keywords"
 operator|.
 name|equals
 argument_list|(
-literal|"keywords"
+name|field
 argument_list|)
 condition|)
 block|{

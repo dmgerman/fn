@@ -920,11 +920,11 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|dirToProcess
+literal|"."
 operator|.
 name|equals
 argument_list|(
-literal|"."
+name|dirToProcess
 argument_list|)
 condition|)
 block|{
@@ -933,11 +933,11 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|dirToProcess
+literal|".."
 operator|.
 name|equals
 argument_list|(
-literal|".."
+name|dirToProcess
 argument_list|)
 condition|)
 block|{
@@ -956,11 +956,11 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|dirToProcess
+literal|"*"
 operator|.
 name|equals
 argument_list|(
-literal|"*"
+name|dirToProcess
 argument_list|)
 condition|)
 block|{
@@ -1044,11 +1044,11 @@ block|}
 comment|// Do for all direct and indirect subdirs
 if|if
 condition|(
-name|dirToProcess
+literal|"**"
 operator|.
 name|equals
 argument_list|(
-literal|"**"
+name|dirToProcess
 argument_list|)
 condition|)
 block|{

@@ -343,11 +343,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|s
+literal|""
 operator|.
 name|equals
 argument_list|(
-literal|""
+name|s
 argument_list|)
 operator|||
 name|listModel
@@ -427,11 +427,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|s
+literal|"comment"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"comment"
+name|s
 argument_list|)
 condition|)
 block|{
@@ -552,12 +552,6 @@ comment|// the user must have added it and not yet applied it, so we can remove 
 comment|// in this case as well. If it is a standard type it cannot be removed.
 if|if
 condition|(
-operator|(
-name|type
-operator|!=
-literal|null
-operator|)
-operator|&&
 operator|(
 name|type
 operator|instanceof

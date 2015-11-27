@@ -372,11 +372,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|code
+literal|"    "
 operator|.
 name|equals
 argument_list|(
-literal|"    "
+name|code
 argument_list|)
 condition|)
 block|{
@@ -401,6 +401,10 @@ block|{
 comment|// begining of a new item
 if|if
 condition|(
+literal|"TI- "
+operator|.
+name|equals
+argument_list|(
 name|str
 operator|.
 name|substring
@@ -409,10 +413,6 @@ literal|0
 argument_list|,
 literal|4
 argument_list|)
-operator|.
-name|equals
-argument_list|(
-literal|"TI- "
 argument_list|)
 condition|)
 block|{
@@ -566,11 +566,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|code
+literal|"TI- "
 operator|.
 name|equals
 argument_list|(
-literal|"TI- "
+name|code
 argument_list|)
 condition|)
 block|{
@@ -597,11 +597,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|code
+literal|"AU- "
 operator|.
 name|equals
 argument_list|(
-literal|"AU- "
+name|code
 argument_list|)
 condition|)
 block|{
@@ -628,11 +628,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|code
+literal|"PY- "
 operator|.
 name|equals
 argument_list|(
-literal|"PY- "
+name|code
 argument_list|)
 condition|)
 block|{
@@ -659,11 +659,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|code
+literal|"PU- "
 operator|.
 name|equals
 argument_list|(
-literal|"PU- "
+name|code
 argument_list|)
 condition|)
 block|{
@@ -690,11 +690,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|code
+literal|"SE- "
 operator|.
 name|equals
 argument_list|(
-literal|"SE- "
+name|code
 argument_list|)
 condition|)
 block|{
@@ -721,11 +721,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|code
+literal|"IS- "
 operator|.
 name|equals
 argument_list|(
-literal|"IS- "
+name|code
 argument_list|)
 condition|)
 block|{
@@ -752,11 +752,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|code
+literal|"KW- "
 operator|.
 name|equals
 argument_list|(
-literal|"KW- "
+name|code
 argument_list|)
 condition|)
 block|{
@@ -783,11 +783,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|code
+literal|"NT- "
 operator|.
 name|equals
 argument_list|(
-literal|"NT- "
+name|code
 argument_list|)
 condition|)
 block|{
@@ -814,11 +814,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|code
+literal|"PD- "
 operator|.
 name|equals
 argument_list|(
-literal|"PD- "
+name|code
 argument_list|)
 condition|)
 block|{
@@ -845,11 +845,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|code
+literal|"DT- "
 operator|.
 name|equals
 argument_list|(
-literal|"DT- "
+name|code
 argument_list|)
 condition|)
 block|{

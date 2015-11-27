@@ -1478,9 +1478,6 @@ argument_list|(
 literal|"Searching "
 operator|+
 name|searchQuery
-operator|.
-name|toString
-argument_list|()
 operator|+
 literal|" in "
 operator|+

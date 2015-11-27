@@ -101,11 +101,11 @@ name|newGen
 decl_stmt|;
 if|if
 condition|(
-name|genFields
+literal|"abstract"
 operator|.
 name|equals
 argument_list|(
-literal|"abstract"
+name|genFields
 argument_list|)
 condition|)
 block|{

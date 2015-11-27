@@ -261,11 +261,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|ids
+literal|""
 operator|.
 name|equals
 argument_list|(
-literal|""
+name|ids
 argument_list|)
 condition|)
 block|{

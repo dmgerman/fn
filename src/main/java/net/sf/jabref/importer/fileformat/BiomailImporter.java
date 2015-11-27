@@ -348,6 +348,10 @@ block|}
 comment|// begining of a new item
 if|if
 condition|(
+literal|"PMID- "
+operator|.
+name|equals
+argument_list|(
 name|str
 operator|.
 name|substring
@@ -356,10 +360,6 @@ literal|0
 argument_list|,
 literal|6
 argument_list|)
-operator|.
-name|equals
-argument_list|(
-literal|"PMID- "
 argument_list|)
 condition|)
 block|{
@@ -597,11 +597,11 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|beg
+literal|"PT  - "
 operator|.
 name|equals
 argument_list|(
-literal|"PT  - "
+name|beg
 argument_list|)
 condition|)
 block|{
@@ -615,11 +615,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|beg
+literal|"TY  - "
 operator|.
 name|equals
 argument_list|(
-literal|"TY  - "
+name|beg
 argument_list|)
 condition|)
 block|{
@@ -642,11 +642,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|beg
+literal|"JO  - "
 operator|.
 name|equals
 argument_list|(
-literal|"JO  - "
+name|beg
 argument_list|)
 condition|)
 block|{
@@ -663,11 +663,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|beg
+literal|"FAU - "
 operator|.
 name|equals
 argument_list|(
-literal|"FAU - "
+name|beg
 argument_list|)
 condition|)
 block|{
@@ -715,11 +715,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|beg
+literal|"AU  - "
 operator|.
 name|equals
 argument_list|(
-literal|"AU  - "
+name|beg
 argument_list|)
 condition|)
 block|{
@@ -774,11 +774,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|beg
+literal|"TI  - "
 operator|.
 name|equals
 argument_list|(
-literal|"TI  - "
+name|beg
 argument_list|)
 condition|)
 block|{
@@ -802,11 +802,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|beg
+literal|"TA  - "
 operator|.
 name|equals
 argument_list|(
-literal|"TA  - "
+name|beg
 argument_list|)
 condition|)
 block|{
@@ -830,11 +830,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|beg
+literal|"AB  - "
 operator|.
 name|equals
 argument_list|(
-literal|"AB  - "
+name|beg
 argument_list|)
 condition|)
 block|{
@@ -858,11 +858,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|beg
+literal|"PG  - "
 operator|.
 name|equals
 argument_list|(
-literal|"PG  - "
+name|beg
 argument_list|)
 condition|)
 block|{
@@ -881,11 +881,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|beg
+literal|"IP  - "
 operator|.
 name|equals
 argument_list|(
-literal|"IP  - "
+name|beg
 argument_list|)
 condition|)
 block|{
@@ -902,11 +902,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|beg
+literal|"DP  - "
 operator|.
 name|equals
 argument_list|(
-literal|"DP  - "
+name|beg
 argument_list|)
 condition|)
 block|{
@@ -938,11 +938,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|beg
+literal|"VI  - "
 operator|.
 name|equals
 argument_list|(
-literal|"VI  - "
+name|beg
 argument_list|)
 condition|)
 block|{
@@ -959,11 +959,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|beg
+literal|"AID - "
 operator|.
 name|equals
 argument_list|(
-literal|"AID - "
+name|beg
 argument_list|)
 condition|)
 block|{

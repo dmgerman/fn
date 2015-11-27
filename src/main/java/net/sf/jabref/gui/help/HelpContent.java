@@ -784,9 +784,6 @@ operator|new
 name|URL
 argument_list|(
 name|baseUrl
-operator|.
-name|toString
-argument_list|()
 operator|+
 literal|"#"
 operator|+

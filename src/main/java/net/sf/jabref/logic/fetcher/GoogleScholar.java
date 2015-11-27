@@ -343,11 +343,11 @@ comment|// link present?
 if|if
 condition|(
 operator|!
-name|s
+literal|""
 operator|.
 name|equals
 argument_list|(
-literal|""
+name|s
 argument_list|)
 condition|)
 block|{

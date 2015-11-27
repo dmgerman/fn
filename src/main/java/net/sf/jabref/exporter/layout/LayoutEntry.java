@@ -1579,11 +1579,11 @@ name|fieldEntry
 decl_stmt|;
 if|if
 condition|(
-name|text
+literal|"bibtextype"
 operator|.
 name|equals
 argument_list|(
-literal|"bibtextype"
+name|text
 argument_list|)
 condition|)
 block|{

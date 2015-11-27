@@ -1710,11 +1710,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|extension
+literal|"bib"
 operator|.
 name|equals
 argument_list|(
-literal|"bib"
+name|extension
 argument_list|)
 condition|)
 block|{

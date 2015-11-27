@@ -1967,11 +1967,11 @@ operator|==
 literal|null
 operator|)
 operator|||
-name|path
+literal|""
 operator|.
 name|equals
 argument_list|(
-literal|""
+name|path
 argument_list|)
 condition|)
 block|{

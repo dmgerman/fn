@@ -395,15 +395,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|ws
-operator|!=
-literal|null
-operator|&&
-name|ws
+literal|"pre"
 operator|.
 name|equals
 argument_list|(
-literal|"pre"
+name|ws
 argument_list|)
 condition|)
 block|{

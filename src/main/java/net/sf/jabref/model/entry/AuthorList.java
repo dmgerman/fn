@@ -2030,6 +2030,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+literal|"and"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
 name|original
 operator|.
 name|substring
@@ -2038,10 +2042,6 @@ name|tokenStart
 argument_list|,
 name|tokenEnd
 argument_list|)
-operator|.
-name|equalsIgnoreCase
-argument_list|(
-literal|"and"
 argument_list|)
 condition|)
 block|{

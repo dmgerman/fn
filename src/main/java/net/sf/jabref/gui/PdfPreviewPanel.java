@@ -732,6 +732,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+literal|"pdf"
+operator|.
+name|equals
+argument_list|(
 name|flEntry
 operator|.
 name|getType
@@ -742,10 +746,6 @@ argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"pdf"
 argument_list|)
 condition|)
 block|{

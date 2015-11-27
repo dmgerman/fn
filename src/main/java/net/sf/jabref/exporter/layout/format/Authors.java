@@ -1254,6 +1254,10 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"etal"
+operator|.
+name|equals
+argument_list|(
 name|key
 operator|.
 name|trim
@@ -1261,10 +1265,6 @@ argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"etal"
 argument_list|)
 operator|&&
 operator|!

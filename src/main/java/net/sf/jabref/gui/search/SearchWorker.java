@@ -264,9 +264,6 @@ operator|+
 name|this
 operator|.
 name|searchQuery
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

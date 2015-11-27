@@ -985,11 +985,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|button
+literal|"cancel"
 operator|.
 name|equals
 argument_list|(
-literal|"cancel"
+name|button
 argument_list|)
 condition|)
 block|{
@@ -1010,11 +1010,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|button
+literal|"done"
 operator|.
 name|equals
 argument_list|(
-literal|"done"
+name|button
 argument_list|)
 condition|)
 block|{

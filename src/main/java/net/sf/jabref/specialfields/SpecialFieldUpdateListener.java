@@ -157,11 +157,11 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|fieldName
+literal|"keywords"
 operator|.
 name|equals
 argument_list|(
-literal|"keywords"
+name|fieldName
 argument_list|)
 condition|)
 block|{
