@@ -225,6 +225,7 @@ implements|implements
 name|EntryFetcher
 block|{
 DECL|class|SearchResult
+specifier|static
 class|class
 name|SearchResult
 block|{

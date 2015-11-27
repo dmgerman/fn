@@ -87,6 +87,7 @@ argument_list|()
 decl_stmt|;
 comment|/*      * This is a small helper class that cleans the user submitted query. Right      * now, we cannot search for ":" on dblp.org. So, we remove colons from the      * user submitted search string. Also, the search is case sensitive if we      * use capitals. So, we better change the text to lower case.      */
 DECL|class|DBLPQueryCleaner
+specifier|static
 class|class
 name|DBLPQueryCleaner
 block|{

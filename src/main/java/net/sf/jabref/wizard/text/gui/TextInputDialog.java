@@ -3326,6 +3326,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|MenuHeaderAction
+specifier|static
 class|class
 name|MenuHeaderAction
 extends|extends

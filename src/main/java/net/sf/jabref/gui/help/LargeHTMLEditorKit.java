@@ -267,6 +267,7 @@ return|;
 block|}
 DECL|class|MyViewFactory
 specifier|private
+specifier|static
 class|class
 name|MyViewFactory
 extends|extends

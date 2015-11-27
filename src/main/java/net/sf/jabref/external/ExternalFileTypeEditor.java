@@ -1500,6 +1500,7 @@ block|}
 block|}
 block|}
 DECL|class|IconRenderer
+specifier|static
 class|class
 name|IconRenderer
 implements|implements

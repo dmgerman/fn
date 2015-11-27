@@ -349,6 +349,7 @@ name|JDialog
 block|{
 comment|/**      * Table model for the ZIP archive contents.      *      *<p>Contains one row for each entry.      * Does not contain rows for directory entries.</p>      *      *<p>The columns contain information about ZIIP file entries:      *<ol><li>      *   name {@link String}      *</li><li>      *   time of last modification {@link Date}      *</li><li>      *   size (uncompressed) {@link Long}      *</li></ol></p>      */
 DECL|class|ZipFileChooserTableModel
+specifier|static
 class|class
 name|ZipFileChooserTableModel
 extends|extends
@@ -904,11 +905,9 @@ operator|.
 name|Importer
 name|importer
 init|=
-name|prefs
+operator|new
+name|CustomImportList
 operator|.
-name|customImports
-operator|.
-expr|new
 name|Importer
 argument_list|()
 decl_stmt|;

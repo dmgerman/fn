@@ -334,6 +334,7 @@ argument_list|)
 decl_stmt|;
 DECL|class|Identifier
 specifier|public
+specifier|static
 class|class
 name|Identifier
 block|{
@@ -371,6 +372,7 @@ block|}
 block|}
 DECL|class|Variable
 specifier|public
+specifier|static
 class|class
 name|Variable
 block|{
@@ -5564,6 +5566,7 @@ block|}
 block|}
 DECL|class|BstEntry
 specifier|public
+specifier|static
 class|class
 name|BstEntry
 block|{

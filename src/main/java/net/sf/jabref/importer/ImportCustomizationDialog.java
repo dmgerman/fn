@@ -635,11 +635,9 @@ operator|.
 name|Importer
 name|importer
 init|=
-name|prefs
+operator|new
+name|CustomImportList
 operator|.
-name|customImports
-operator|.
-expr|new
 name|Importer
 argument_list|()
 decl_stmt|;

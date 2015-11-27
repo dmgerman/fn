@@ -631,6 +631,7 @@ expr_stmt|;
 block|}
 comment|/**      * A glass panel which sets the marker for Dragging of Tabs.      *       */
 DECL|class|MarkerPane
+specifier|static
 class|class
 name|MarkerPane
 extends|extends

@@ -1209,6 +1209,7 @@ literal|"serial"
 argument_list|)
 DECL|class|KeystrokeTable
 specifier|private
+specifier|static
 class|class
 name|KeystrokeTable
 extends|extends
@@ -1276,6 +1277,7 @@ literal|"serial"
 argument_list|)
 DECL|class|KeystrokeTableModel
 specifier|private
+specifier|static
 class|class
 name|KeystrokeTableModel
 extends|extends

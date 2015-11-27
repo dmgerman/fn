@@ -78,6 +78,7 @@ name|TagToMarkedTextStore
 block|{
 DECL|class|TMarkedStoreItem
 specifier|private
+specifier|static
 class|class
 name|TMarkedStoreItem
 block|{

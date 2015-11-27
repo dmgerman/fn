@@ -1466,6 +1466,7 @@ return|;
 block|}
 DECL|class|Substring
 specifier|private
+specifier|static
 class|class
 name|Substring
 implements|implements

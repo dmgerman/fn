@@ -1626,6 +1626,7 @@ name|okPressed
 return|;
 block|}
 DECL|class|BrowseListener
+specifier|static
 class|class
 name|BrowseListener
 implements|implements
