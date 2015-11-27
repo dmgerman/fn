@@ -424,6 +424,7 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|kind
 operator|==
 name|HTML
@@ -431,7 +432,9 @@ operator|.
 name|Tag
 operator|.
 name|P
+operator|)
 operator|||
+operator|(
 name|kind
 operator|==
 name|HTML
@@ -439,7 +442,9 @@ operator|.
 name|Tag
 operator|.
 name|H1
+operator|)
 operator|||
+operator|(
 name|kind
 operator|==
 name|HTML
@@ -447,7 +452,9 @@ operator|.
 name|Tag
 operator|.
 name|H2
+operator|)
 operator|||
+operator|(
 name|kind
 operator|==
 name|HTML
@@ -455,7 +462,9 @@ operator|.
 name|Tag
 operator|.
 name|H3
+operator|)
 operator|||
+operator|(
 name|kind
 operator|==
 name|HTML
@@ -463,7 +472,9 @@ operator|.
 name|Tag
 operator|.
 name|H4
+operator|)
 operator|||
+operator|(
 name|kind
 operator|==
 name|HTML
@@ -471,7 +482,9 @@ operator|.
 name|Tag
 operator|.
 name|H5
+operator|)
 operator|||
+operator|(
 name|kind
 operator|==
 name|HTML
@@ -479,7 +492,9 @@ operator|.
 name|Tag
 operator|.
 name|H6
+operator|)
 operator|||
+operator|(
 name|kind
 operator|==
 name|HTML
@@ -487,6 +502,7 @@ operator|.
 name|Tag
 operator|.
 name|DT
+operator|)
 condition|)
 block|{
 comment|// paragraph
