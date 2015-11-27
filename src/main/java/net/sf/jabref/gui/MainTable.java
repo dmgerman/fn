@@ -226,6 +226,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|groups
+operator|.
+name|GroupMatcher
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|renderer
@@ -343,6 +357,24 @@ operator|.
 name|comparator
 operator|.
 name|FieldComparator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|matchers
+operator|.
+name|SearchMatcher
 import|;
 end_import
 
@@ -638,15 +670,15 @@ specifier|final
 name|boolean
 name|tableColorCodes
 decl_stmt|;
-DECL|field|showingFloatSearch
+DECL|field|isFloatSearchActive
 specifier|private
 name|boolean
-name|showingFloatSearch
+name|isFloatSearchActive
 decl_stmt|;
-DECL|field|showingFloatGrouping
+DECL|field|isFloatGroupingActive
 specifier|private
 name|boolean
-name|showingFloatGrouping
+name|isFloatGroupingActive
 decl_stmt|;
 DECL|field|localSelectionModel
 specifier|private
@@ -923,12 +955,10 @@ name|searchComparator
 operator|=
 literal|null
 expr_stmt|;
-comment|//new HitOrMissComparator(searchMatcher);
 name|groupComparator
 operator|=
 literal|null
 expr_stmt|;
-comment|//new HitOrMissComparator(groupMatcher);
 name|EventTableModel
 argument_list|<
 name|BibtexEntry
@@ -1105,7 +1135,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-comment|/*if (Globals.prefs.getBoolean(PersistenceTableColumnListener.ACTIVATE_PREF_KEY)) {             getColumnModel().addColumnModelListener(this.tableColumnListener );         }*/
 comment|// TODO: Figure out, whether this call is needed.
 name|getSelected
 argument_list|()
@@ -1168,6 +1197,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|Globals
@@ -1200,6 +1231,9 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+finally|finally
+block|{
 name|sortedForMarking
 operator|.
 name|getReadWriteLock
@@ -1211,6 +1245,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 name|sortedForSearch
 operator|.
 name|getReadWriteLock
@@ -1222,6 +1257,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|sortedForSearch
 operator|.
 name|setComparator
@@ -1229,6 +1266,9 @@ argument_list|(
 name|searchComparator
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|sortedForSearch
 operator|.
 name|getReadWriteLock
@@ -1240,6 +1280,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 name|sortedForGrouping
 operator|.
 name|getReadWriteLock
@@ -1251,6 +1292,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|sortedForGrouping
 operator|.
 name|setComparator
@@ -1258,6 +1301,9 @@ argument_list|(
 name|groupComparator
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|sortedForGrouping
 operator|.
 name|getReadWriteLock
@@ -1270,33 +1316,36 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 comment|/**      * Adds a sorting rule that floats hits to the top, and causes non-hits to be grayed out:      * @param m The Matcher that determines if an entry is a hit or not.      */
-DECL|method|showFloatSearch (Matcher<BibtexEntry> m)
+DECL|method|showFloatSearch ()
 specifier|public
 name|void
 name|showFloatSearch
-parameter_list|(
-name|Matcher
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|m
-parameter_list|)
+parameter_list|()
 block|{
-name|showingFloatSearch
+if|if
+condition|(
+operator|!
+name|isFloatSearchActive
+condition|)
+block|{
+name|isFloatSearchActive
 operator|=
 literal|true
 expr_stmt|;
 name|searchMatcher
 operator|=
-name|m
+name|SearchMatcher
+operator|.
+name|INSTANCE
 expr_stmt|;
 name|searchComparator
 operator|=
 operator|new
 name|HitOrMissComparator
 argument_list|(
-name|m
+name|searchMatcher
 argument_list|)
 expr_stmt|;
 name|refreshSorting
@@ -1308,6 +1357,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|/**      * Removes sorting by search results, and graying out of non-hits.      */
 DECL|method|stopShowingFloatSearch ()
 specifier|public
@@ -1315,7 +1365,12 @@ name|void
 name|stopShowingFloatSearch
 parameter_list|()
 block|{
-name|showingFloatSearch
+if|if
+condition|(
+name|isFloatSearchActive
+condition|)
+block|{
+name|isFloatSearchActive
 operator|=
 literal|false
 expr_stmt|;
@@ -1331,48 +1386,52 @@ name|refreshSorting
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+DECL|method|isFloatSearchActive ()
+specifier|public
+name|boolean
+name|isFloatSearchActive
+parameter_list|()
+block|{
+return|return
+name|isFloatSearchActive
+return|;
+block|}
 comment|/**      * Adds a sorting rule that floats group hits to the top, and causes non-hits to be grayed out:      * @param m The Matcher that determines if an entry is a in the current group selection or not.      */
-DECL|method|showFloatGrouping (Matcher<BibtexEntry> m)
+DECL|method|showFloatGrouping ()
 specifier|public
 name|void
 name|showFloatGrouping
-parameter_list|(
-name|Matcher
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|m
-parameter_list|)
+parameter_list|()
 block|{
-name|showingFloatGrouping
+if|if
+condition|(
+operator|!
+name|isFloatGroupingActive
+condition|)
+block|{
+name|isFloatGroupingActive
 operator|=
 literal|true
 expr_stmt|;
 name|groupMatcher
 operator|=
-name|m
+name|GroupMatcher
+operator|.
+name|INSTANCE
 expr_stmt|;
 name|groupComparator
 operator|=
 operator|new
 name|HitOrMissComparator
 argument_list|(
-name|m
+name|groupMatcher
 argument_list|)
 expr_stmt|;
 name|refreshSorting
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|isShowingFloatSearch ()
-specifier|public
-name|boolean
-name|isShowingFloatSearch
-parameter_list|()
-block|{
-return|return
-name|showingFloatSearch
-return|;
 block|}
 comment|/**      * Removes sorting by group, and graying out of non-hits.      */
 DECL|method|stopShowingFloatGrouping ()
@@ -1381,7 +1440,12 @@ name|void
 name|stopShowingFloatGrouping
 parameter_list|()
 block|{
-name|showingFloatGrouping
+if|if
+condition|(
+name|isFloatGroupingActive
+condition|)
+block|{
+name|isFloatGroupingActive
 operator|=
 literal|false
 expr_stmt|;
@@ -1396,6 +1460,17 @@ expr_stmt|;
 name|refreshSorting
 argument_list|()
 expr_stmt|;
+block|}
+block|}
+DECL|method|isFloatGroupingActive ()
+specifier|public
+name|boolean
+name|isFloatGroupingActive
+parameter_list|()
+block|{
+return|return
+name|isFloatGroupingActive
+return|;
 block|}
 DECL|method|getTableRows ()
 specifier|public
@@ -1481,7 +1556,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|showingFloatSearch
+name|isFloatSearchActive
 operator|||
 name|matches
 argument_list|(
@@ -1498,7 +1573,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|showingFloatGrouping
+name|isFloatGroupingActive
 operator|||
 name|matches
 argument_list|(
@@ -2539,6 +2614,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 for|for
 control|(
 name|int
@@ -2660,6 +2737,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+finally|finally
+block|{
 name|sortedForTable
 operator|.
 name|getReadWriteLock
@@ -2671,6 +2751,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 comment|// Add action listener so we can remember the sort order:
 name|comparatorChooser
 operator|.
@@ -3100,7 +3181,6 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 block|{
-comment|//System.out.println(sortedForGrouping.indexOf(entry));
 return|return
 name|sortedForGrouping
 operator|.
@@ -3197,7 +3277,6 @@ name|NullPointerException
 name|ex
 parameter_list|)
 block|{
-comment|//System.out.println("Exception: isComplete");
 return|return
 literal|true
 return|;
@@ -3239,7 +3318,6 @@ name|NullPointerException
 name|ex
 parameter_list|)
 block|{
-comment|//System.out.println("Exception: isMarked");
 return|return
 literal|0
 return|;
@@ -3367,7 +3445,7 @@ operator|)
 operator|)
 operator|&&
 operator|!
-name|showingFloatSearch
+name|isFloatSearchActive
 operator|)
 condition|)
 block|{

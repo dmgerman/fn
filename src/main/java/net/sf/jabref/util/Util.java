@@ -6415,13 +6415,13 @@ name|fieldValue
 return|;
 block|}
 comment|// Returns a regular expression pattern in the form (w1)|(w2)| ... wi are escaped if no regular expression search is enabled
-DECL|method|getPatternForWords (ArrayList<String> words)
+DECL|method|getPatternForWords (List<String> words)
 specifier|public
 specifier|static
 name|Pattern
 name|getPatternForWords
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -6472,7 +6472,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|REG_EXP_SEARCH
+name|SEARCH_REG_EXP
 argument_list|)
 decl_stmt|;
 comment|// compile the words to a regular expression in the form (w1) | (w2) | (w3)
@@ -6580,7 +6580,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|CASE_SENSITIVE_SEARCH
+name|SEARCH_CASE_SENSITIVE
 argument_list|)
 condition|)
 block|{

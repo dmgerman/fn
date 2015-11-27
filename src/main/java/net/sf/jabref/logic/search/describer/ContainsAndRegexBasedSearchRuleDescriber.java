@@ -203,7 +203,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This group contains entries in which any field contains the regular expression<b>%0</b>"
+literal|"This search contains entries in which any field contains the regular expression<b>%0</b>"
 argument_list|,
 name|StringUtil
 operator|.
@@ -217,7 +217,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This group contains entries in which any field contains the term<b>%0</b>"
+literal|"This search contains entries in which any field contains the term<b>%0</b>"
 argument_list|,
 name|StringUtil
 operator|.
@@ -341,36 +341,15 @@ name|andSeparator
 argument_list|)
 expr_stmt|;
 block|}
-comment|// @formatter:off
 name|String
 name|caseSensitiveDescription
 init|=
-name|caseSensitive
-condition|?
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"case sensitive"
-argument_list|)
-else|:
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"case insensitive"
-argument_list|)
+name|getCaseSensitiveDescription
+argument_list|()
 decl_stmt|;
 name|String
 name|genericDescription
 init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Entries cannot be manually assigned to or removed from this group."
-argument_list|)
-operator|+
 literal|"<p><br>"
 operator|+
 name|Localization
@@ -380,7 +359,6 @@ argument_list|(
 literal|"Hint%c To search specific fields only, enter for example%c<p><tt>author%esmith and title%eelectrical</tt>"
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 return|return
 name|String
 operator|.
@@ -395,6 +373,38 @@ argument_list|,
 name|genericDescription
 argument_list|)
 return|;
+block|}
+DECL|method|getCaseSensitiveDescription ()
+specifier|private
+name|String
+name|getCaseSensitiveDescription
+parameter_list|()
+block|{
+if|if
+condition|(
+name|caseSensitive
+condition|)
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"case sensitive"
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"case insensitive"
+argument_list|)
+return|;
+block|}
 block|}
 block|}
 end_class

@@ -30,13 +30,29 @@ name|BibtexEntry
 import|;
 end_import
 
+begin_comment
+comment|/**  * Delivers possible completions for a given string.  */
+end_comment
+
 begin_interface
 DECL|interface|AutoCompleter
 specifier|public
 interface|interface
 name|AutoCompleter
+parameter_list|<
+name|E
+parameter_list|>
 block|{
-comment|/**      * Add a BibtexEntry to this autocompleter. The autocompleter (respectively      * to the concrete implementations of {@link AbstractAutoCompleter}) itself      * decides which information should be stored for later completion.      */
+comment|/**      * Formats the specified item. This method is called when an item is selected by the user and we need to determine      * the text to be inserted in the textbox.      *       * @param item the item to format      * @return formated string representation of the item      */
+DECL|method|getAutoCompleteText (E item)
+name|String
+name|getAutoCompleteText
+parameter_list|(
+name|E
+name|item
+parameter_list|)
+function_decl|;
+comment|/**      * Add a BibtexEntry to this AutoCompleter. The AutoCompleter (respectively      * to the concrete implementations of {@link AutoCompleter}) itself      * decides which information should be stored for later completion.      */
 DECL|method|addBibtexEntry (BibtexEntry entry)
 name|void
 name|addBibtexEntry
@@ -45,7 +61,7 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**      * States whether the field consists of multiple values (false) or of a single value (true)      *<p/>      * Symptom: if false, net.sf.jabref.gui.AutoCompleteListener#getCurrentWord(JTextComponent comp)      * returns current word only, if true, it returns the text beginning from the buffer      */
+comment|/**      * States whether the field consists of multiple values (false) or of a single value (true)      *      * Symptom: if false, net.sf.jabref.gui.AutoCompleteListener#getCurrentWord(JTextComponent comp)      * returns current word only, if true, it returns the text beginning from the buffer      */
 DECL|method|isSingleUnitField ()
 name|boolean
 name|isSingleUnitField
@@ -64,8 +80,9 @@ name|String
 name|getPrefix
 parameter_list|()
 function_decl|;
+comment|/** 	 * Returns one or more possible completions for a given string. The returned 	 * completion depends on which informations were stored while adding 	 * BibtexEntries by the used implementation of {@link AutoCompleter}. 	 *  	 * @see AutoCompleter#addBibtexEntry(BibtexEntry) 	 */
 DECL|method|complete (String toComplete)
-name|String
+name|E
 index|[]
 name|complete
 parameter_list|(

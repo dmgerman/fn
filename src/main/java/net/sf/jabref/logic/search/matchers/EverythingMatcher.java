@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.logic.search.matchers
 package|package
 name|net
 operator|.
@@ -12,44 +12,90 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
+operator|.
+name|search
+operator|.
+name|matchers
 package|;
 end_package
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|ArrayList
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|ca
+operator|.
+name|odell
+operator|.
+name|glazedlists
+operator|.
+name|matchers
+operator|.
+name|Matcher
 import|;
 end_import
 
 begin_comment
-comment|/**  * Every Listener that wants to receive events from a search needs to  * implement this interface  *   * @author Ben  *   */
+comment|/**  * Matcher that accepts all entries. Used for filtering when so search is  * active.  */
 end_comment
 
-begin_interface
-DECL|interface|SearchTextListener
+begin_class
+DECL|class|EverythingMatcher
 specifier|public
-interface|interface
-name|SearchTextListener
-block|{
-comment|/**      * Array of words that were searched for      *       * @param words null if nothing is searched for      */
-DECL|method|searchText (ArrayList<String> words)
-name|void
-name|searchText
-parameter_list|(
-name|ArrayList
+class|class
+name|EverythingMatcher
+implements|implements
+name|Matcher
 argument_list|<
-name|String
+name|BibtexEntry
 argument_list|>
-name|words
+block|{
+DECL|field|INSTANCE
+specifier|public
+specifier|static
+specifier|final
+name|Matcher
+argument_list|<
+name|BibtexEntry
+argument_list|>
+name|INSTANCE
+init|=
+operator|new
+name|EverythingMatcher
+argument_list|()
+decl_stmt|;
+annotation|@
+name|Override
+DECL|method|matches (BibtexEntry object)
+specifier|public
+name|boolean
+name|matches
+parameter_list|(
+name|BibtexEntry
+name|object
 parameter_list|)
-function_decl|;
+block|{
+return|return
+literal|true
+return|;
 block|}
-end_interface
+block|}
+end_class
 
 end_unit
 

@@ -20,20 +20,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|AutoCompleteListener
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|awt
@@ -69,6 +55,22 @@ operator|.
 name|swing
 operator|.
 name|JLabel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|autocompleter
+operator|.
+name|AutoCompleteListener
 import|;
 end_import
 

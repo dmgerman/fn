@@ -101,9 +101,9 @@ literal|true
 argument_list|,
 literal|true
 argument_list|,
-literal|"This group contains entries in which the field<b>&#97;</b> "
+literal|"This search contains entries in which the field<b>&#97;</b> "
 operator|+
-literal|"contains the Regular Expression<b>&#98;</b>. "
+literal|"contains the regular expression<b>&#98;</b>. "
 operator|+
 literal|"The search is case sensitive."
 argument_list|)
@@ -116,7 +116,7 @@ literal|true
 argument_list|,
 literal|false
 argument_list|,
-literal|"This group contains entries in which the field<b>&#97;</b> "
+literal|"This search contains entries in which the field<b>&#97;</b> "
 operator|+
 literal|"contains the term<b>&#98;</b>. "
 operator|+
@@ -131,7 +131,7 @@ literal|false
 argument_list|,
 literal|false
 argument_list|,
-literal|"This group contains entries in which the field<b>&#97;</b> "
+literal|"This search contains entries in which the field<b>&#97;</b> "
 operator|+
 literal|"contains the term<b>&#98;</b>. "
 operator|+
@@ -146,9 +146,9 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-literal|"This group contains entries in which the field<b>&#97;</b> "
+literal|"This search contains entries in which the field<b>&#97;</b> "
 operator|+
-literal|"contains the Regular Expression<b>&#98;</b>. "
+literal|"contains the regular expression<b>&#98;</b>. "
 operator|+
 literal|"The search is case insensitive."
 argument_list|)
@@ -177,11 +177,11 @@ literal|true
 argument_list|,
 literal|true
 argument_list|,
-literal|"This group contains entries in which not ((the field<b>&#97;</b> "
+literal|"This search contains entries in which not ((the field<b>&#97;</b> "
 operator|+
-literal|"contains the Regular Expression<b>&#98;</b> and the field<b>&#99;</b> contains the "
+literal|"contains the regular expression<b>&#98;</b> and the field<b>&#99;</b> contains the "
 operator|+
-literal|"Regular Expression<b>&#101;</b>) or the field<b>&#101;</b> contains the Regular Expression "
+literal|"regular expression<b>&#101;</b>) or the field<b>&#101;</b> contains the regular expression "
 operator|+
 literal|"<b>&#120;</b>). The search is case sensitive."
 argument_list|)
@@ -194,7 +194,7 @@ literal|true
 argument_list|,
 literal|false
 argument_list|,
-literal|"This group contains entries in which not ((the field<b>&#97;</b> "
+literal|"This search contains entries in which not ((the field<b>&#97;</b> "
 operator|+
 literal|"contains the term<b>&#98;</b> and the field<b>&#99;</b> contains the term<b>&#101;</b>) "
 operator|+
@@ -209,7 +209,7 @@ literal|false
 argument_list|,
 literal|false
 argument_list|,
-literal|"This group contains entries in which not ((the field<b>&#97;</b> "
+literal|"This search contains entries in which not ((the field<b>&#97;</b> "
 operator|+
 literal|"contains the term<b>&#98;</b> and the field<b>&#99;</b> contains the term<b>&#101;</b>) "
 operator|+
@@ -224,13 +224,13 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-literal|"This group contains entries in which not ((the field<b>&#97;</b> "
+literal|"This search contains entries in which not ((the field<b>&#97;</b> "
 operator|+
-literal|"contains the Regular Expression<b>&#98;</b> and the field<b>&#99;</b> contains "
+literal|"contains the regular expression<b>&#98;</b> and the field<b>&#99;</b> contains "
 operator|+
-literal|"the Regular Expression<b>&#101;</b>) or the field<b>&#101;</b> contains the Regular "
+literal|"the regular expression<b>&#101;</b>) or the field<b>&#101;</b> contains the regular "
 operator|+
-literal|"Expression<b>&#120;</b>). The search is case insensitive."
+literal|"expression<b>&#120;</b>). The search is case insensitive."
 argument_list|)
 expr_stmt|;
 block|}

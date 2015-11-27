@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.     This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.     You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -75,16 +75,20 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An autocompleter delivers possible completions for a given String. There are  * different types of autocompleters for different use cases.  *  * Example: {@link NameFieldAutoCompleter}, {@link EntireFieldAutoCompleter}  *  * @author kahlert, cordes, olly98  * @see AutoCompleterFactory  */
+comment|/**  * An autocompleter delivers possible completions for a given string. There are different types of autocompleters for  * different use cases.  *   * Example: {@link NameFieldAutoCompleter}, {@link EntireFieldAutoCompleter}  *  * @author kahlert, cordes, olly98  * @see AutoCompleterFactory  */
 end_comment
 
 begin_class
 DECL|class|AbstractAutoCompleter
+specifier|public
 specifier|abstract
 class|class
 name|AbstractAutoCompleter
 implements|implements
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 block|{
 DECL|field|SHORTEST_WORD
 specifier|private
@@ -335,6 +339,18 @@ name|String
 name|toIncrement
 parameter_list|)
 block|{
+if|if
+condition|(
+name|toIncrement
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+literal|""
+return|;
+block|}
 name|char
 name|lastChar
 init|=
@@ -528,6 +544,24 @@ parameter_list|()
 block|{
 return|return
 literal|""
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getAutoCompleteText (String item)
+specifier|public
+name|String
+name|getAutoCompleteText
+parameter_list|(
+name|String
+name|item
+parameter_list|)
+block|{
+return|return
+name|item
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 block|}

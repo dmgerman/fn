@@ -178,6 +178,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|autocompleter
+operator|.
+name|AutoCompleteListener
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|fieldeditors
 operator|.
 name|FieldEditor
@@ -1139,9 +1155,12 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|frame
+name|bPanel
 operator|.
-name|getSearchManager
+name|getSearchBar
+argument_list|()
+operator|.
+name|getSearchTextObservable
 argument_list|()
 operator|.
 name|addSearchListener
@@ -1182,6 +1201,9 @@ argument_list|)
 decl_stmt|;
 comment|// Add autocompleter listener, if required for this field:
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 init|=
 name|bPanel

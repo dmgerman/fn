@@ -330,6 +330,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|bibtex
+operator|.
+name|BibtexEntryWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|actions
@@ -367,20 +381,6 @@ operator|.
 name|keyboard
 operator|.
 name|KeyBinds
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bibtex
-operator|.
-name|BibtexEntryWriter
 import|;
 end_import
 
@@ -579,6 +579,22 @@ operator|.
 name|labelPattern
 operator|.
 name|LabelPatternUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|SearchTextListener
 import|;
 end_import
 
@@ -3987,9 +4003,12 @@ operator|new
 name|JTextAreaWithHighlighting
 argument_list|()
 expr_stmt|;
-name|frame
+name|panel
 operator|.
-name|getSearchManager
+name|getSearchBar
+argument_list|()
+operator|.
+name|getSearchTextObservable
 argument_list|()
 operator|.
 name|addSearchListener
@@ -6469,31 +6488,8 @@ name|ChangeEvent
 name|event
 parameter_list|)
 block|{
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-name|activateVisible
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-comment|// After the initial event train has finished, we tell the editor
-comment|// tab to update all
-comment|// its fields. This makes sure they are updated even if the tab we
+comment|// We tell the editor tab to update all its fields.
+comment|//  This makes sure they are updated even if the tab we
 comment|// just left contained one
 comment|// or more of the same fields as this one:
 name|SwingUtilities
@@ -7377,6 +7373,9 @@ argument_list|()
 expr_stmt|;
 comment|// See if we need to update an AutoCompleter instance:
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|aComp
 init|=
 name|panel

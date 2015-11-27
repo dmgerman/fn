@@ -168,6 +168,9 @@ name|completeFields
 control|)
 block|{
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 init|=
 name|AutoCompleterFactory
@@ -218,6 +221,9 @@ argument_list|<
 name|String
 argument_list|,
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 name|entry
 range|:
@@ -230,6 +236,9 @@ argument_list|()
 control|)
 block|{
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|ac
 init|=
 name|entry
@@ -311,6 +320,9 @@ name|addJournalListToAutoCompleter
 parameter_list|()
 block|{
 name|AutoCompleter
+argument_list|<
+name|String
+argument_list|>
 name|autoCompleter
 init|=
 name|get
