@@ -109,6 +109,13 @@ name|path
 argument_list|)
 init|)
 block|{
+if|if
+condition|(
+name|stream
+operator|!=
+literal|null
+condition|)
+block|{
 name|properties
 operator|.
 name|load
@@ -116,6 +123,7 @@ argument_list|(
 name|stream
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
