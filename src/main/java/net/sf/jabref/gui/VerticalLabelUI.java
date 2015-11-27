@@ -408,8 +408,6 @@ argument_list|,
 name|verticalTextR
 argument_list|)
 expr_stmt|;
-name|viewR
-operator|=
 name|copyRectangle
 argument_list|(
 name|verticalViewR
@@ -417,8 +415,6 @@ argument_list|,
 name|viewR
 argument_list|)
 expr_stmt|;
-name|iconR
-operator|=
 name|copyRectangle
 argument_list|(
 name|verticalIconR
@@ -426,8 +422,6 @@ argument_list|,
 name|iconR
 argument_list|)
 expr_stmt|;
-name|textR
-operator|=
 name|copyRectangle
 argument_list|(
 name|verticalTextR
@@ -707,7 +701,7 @@ block|}
 DECL|method|copyRectangle (Rectangle from, Rectangle to)
 specifier|private
 specifier|static
-name|Rectangle
+name|void
 name|copyRectangle
 parameter_list|(
 name|Rectangle
@@ -724,12 +718,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|to
-operator|=
-operator|new
-name|Rectangle
-argument_list|()
-expr_stmt|;
+return|return;
 block|}
 name|to
 operator|.
@@ -763,9 +752,6 @@ name|from
 operator|.
 name|height
 expr_stmt|;
-return|return
-name|to
-return|;
 block|}
 block|}
 end_class

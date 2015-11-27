@@ -454,6 +454,34 @@ name|Pattern
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Class for manipulating the Bibliography of the currently start document in OpenOffice.  */
 end_comment
@@ -690,6 +718,22 @@ specifier|private
 name|String
 index|[]
 name|sortedReferenceMarks
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|OOBibBase
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|OOBibBase (String pathToOO, boolean atEnd)
 specifier|public
@@ -1037,6 +1081,8 @@ operator|instanceof
 name|URLClassLoader
 condition|)
 block|{
+try|try
+init|(
 name|URLClassLoader
 name|cl
 init|=
@@ -1044,7 +1090,8 @@ operator|(
 name|URLClassLoader
 operator|)
 name|loader
-decl_stmt|;
+init|)
+block|{
 name|Class
 argument_list|<
 name|URLClassLoader
@@ -1055,8 +1102,6 @@ name|URLClassLoader
 operator|.
 name|class
 decl_stmt|;
-try|try
-block|{
 name|Method
 name|method
 init|=
@@ -1104,27 +1149,31 @@ name|Throwable
 name|t
 parameter_list|)
 block|{
-name|t
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Error, could not add URL to system classloader"
+argument_list|,
+name|t
+argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
 name|IOException
 argument_list|(
 literal|"Error, could not add URL to system classloader"
+argument_list|,
+name|t
 argument_list|)
 throw|;
 block|}
 block|}
 else|else
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"Error occured, URLClassLoader expected but "
 operator|+

@@ -505,15 +505,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|document
-operator|=
 name|PDDocument
 operator|.
 name|load
@@ -523,7 +519,8 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|document
@@ -559,6 +556,8 @@ operator|new
 name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|OutputStreamWriter
 name|os
 init|=
@@ -569,7 +568,8 @@ name|bs
 argument_list|,
 literal|"UTF8"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|os
 operator|.
 name|write
@@ -577,11 +577,7 @@ argument_list|(
 name|xmpString
 argument_list|)
 expr_stmt|;
-name|os
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 name|ByteArrayInputStream
 name|in
 init|=
@@ -624,22 +620,6 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|document
-operator|!=
-literal|null
-condition|)
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|bibtexString2BibtexEntry (String s)
@@ -1131,19 +1111,16 @@ argument_list|,
 literal|".pdf"
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|PDDocument
 name|pdf
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|pdf
-operator|=
 operator|new
 name|PDDocument
 argument_list|()
-expr_stmt|;
+init|)
+block|{
 name|pdf
 operator|.
 name|addPage
@@ -1164,22 +1141,6 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|pdf
-operator|!=
-literal|null
-condition|)
-block|{
-name|pdf
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|// Don't forget to initialize the preferences
 if|if
@@ -1425,7 +1386,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Is UTF8 handling working? This is because Java by default uses the      * platform encoding or a special UTF-kind.      *      * @throws Exception      */
+comment|/**      * Is UTF8 handling working? This is because Java by default uses the platform encoding or a special UTF-kind.      *      * @throws Exception      */
 annotation|@
 name|Test
 DECL|method|testReadXMPUTF8 ()
@@ -1562,7 +1523,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Make sure that the privacy filter works.      *      * @throws IOException          Should not happen.      * @throws TransformerException Should not happen.      */
+comment|/**      * Make sure that the privacy filter works.      *      * @throws IOException Should not happen.      * @throws TransformerException Should not happen.      */
 annotation|@
 name|Test
 DECL|method|testPrivacyFilter ()
@@ -2090,15 +2051,11 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|document
-operator|=
 name|PDDocument
 operator|.
 name|load
@@ -2108,7 +2065,8 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|document
@@ -2189,22 +2147,6 @@ argument_list|()
 return|;
 comment|// Trim to kill padding end-newline.
 block|}
-block|}
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|document
-operator|!=
-literal|null
-condition|)
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}
@@ -2607,7 +2549,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test whether XMP.readFile can deal with text-properties that are not      * element-nodes, but attribute-nodes      *      * @throws Exception      */
+comment|/**      * Test whether XMP.readFile can deal with text-properties that are not element-nodes, but attribute-nodes      *      * @throws Exception      */
 annotation|@
 name|Test
 DECL|method|testAttributeRead ()
@@ -2947,15 +2889,11 @@ argument_list|)
 expr_stmt|;
 comment|// This is what we really want to test: Is the rest of the
 comment|// descriptions still there?
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|document
-operator|=
 name|PDDocument
 operator|.
 name|load
@@ -2965,7 +2903,8 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|document
@@ -3502,22 +3441,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|document
-operator|!=
-literal|null
-condition|)
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 block|}
 comment|// Now alter the Bibtex entry, write it and do all the checks again
 name|BibtexEntry
@@ -3593,15 +3516,11 @@ argument_list|)
 expr_stmt|;
 comment|// This is what we really want to test: Is the rest of the
 comment|// descriptions still there?
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|document
-operator|=
 name|PDDocument
 operator|.
 name|load
@@ -3611,7 +3530,8 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|document
@@ -4145,22 +4065,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|document
-operator|!=
-literal|null
-condition|)
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 comment|/**      * Is XML in text properties properly escaped?      *      * @throws Exception      */
@@ -5192,6 +5096,8 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
@@ -5204,8 +5110,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 if|if
 condition|(
@@ -5659,14 +5564,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -5712,6 +5609,8 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
@@ -5724,8 +5623,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 if|if
 condition|(
@@ -6178,14 +6076,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -6508,7 +6398,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test whether the command-line client works correctly with writing a      * single entry      *      * @throws Exception      */
+comment|/**      * Test whether the command-line client works correctly with writing a single entry      *      * @throws Exception      */
 annotation|@
 name|Test
 DECL|method|testCommandLineSingleBib ()
@@ -6532,21 +6422,18 @@ argument_list|,
 literal|".bib"
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|FileWriter
 name|fileWriter
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|fileWriter
-operator|=
 operator|new
 name|FileWriter
 argument_list|(
 name|tempBib
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 name|fileWriter
 operator|.
 name|write
@@ -6560,13 +6447,16 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|ByteArrayOutputStream
 name|s
 init|=
 operator|new
 name|ByteArrayOutputStream
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|PrintStream
 name|oldOut
 init|=
@@ -6607,11 +6497,6 @@ argument_list|(
 name|oldOut
 argument_list|)
 expr_stmt|;
-name|s
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 name|String
 name|xmp
 init|=
@@ -6627,6 +6512,7 @@ argument_list|,
 name|xmp
 argument_list|)
 expr_stmt|;
+block|}
 name|List
 argument_list|<
 name|BibtexEntry
@@ -6668,19 +6554,6 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-if|if
-condition|(
-name|fileWriter
-operator|!=
-literal|null
-condition|)
-block|{
-name|fileWriter
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 name|tempBib
 operator|.
 name|delete
@@ -6718,13 +6591,16 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|ByteArrayOutputStream
 name|s
 init|=
 operator|new
 name|ByteArrayOutputStream
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|PrintStream
 name|oldOut
 init|=
@@ -6764,11 +6640,6 @@ name|setOut
 argument_list|(
 name|oldOut
 argument_list|)
-expr_stmt|;
-name|s
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 name|String
 name|bibtex
@@ -6837,6 +6708,7 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|// Write XMP to file
 name|BibtexEntry
 name|e
@@ -6855,13 +6727,16 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|ByteArrayOutputStream
 name|s
 init|=
 operator|new
 name|ByteArrayOutputStream
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|PrintStream
 name|oldOut
 init|=
@@ -7129,7 +7004,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test whether the command-line client can pick one of several entries from      * a bibtex file      *      * @throws Exception      */
+block|}
+comment|/**      * Test whether the command-line client can pick one of several entries from a bibtex file      *      * @throws Exception      */
 annotation|@
 name|Test
 annotation|@
@@ -7154,21 +7030,18 @@ argument_list|,
 literal|".bib"
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|FileWriter
 name|fileWriter
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|fileWriter
-operator|=
 operator|new
 name|FileWriter
 argument_list|(
 name|tempBib
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 name|fileWriter
 operator|.
 name|write
@@ -7185,20 +7058,8 @@ name|t2BibtexString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|fileWriter
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|{
 comment|// First try canh05
-name|ByteArrayOutputStream
-name|s
-init|=
-operator|new
-name|ByteArrayOutputStream
-argument_list|()
-decl_stmt|;
 name|PrintStream
 name|oldOut
 init|=
@@ -7206,6 +7067,16 @@ name|System
 operator|.
 name|out
 decl_stmt|;
+try|try
+init|(
+name|ByteArrayOutputStream
+name|s
+init|=
+operator|new
+name|ByteArrayOutputStream
+argument_list|()
+init|)
+block|{
 name|System
 operator|.
 name|setOut
@@ -7217,8 +7088,6 @@ name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|XMPUtil
 operator|.
 name|main
@@ -7250,11 +7119,6 @@ name|setOut
 argument_list|(
 name|oldOut
 argument_list|)
-expr_stmt|;
-name|s
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// PDF should be annotated:
@@ -7298,13 +7162,16 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Now try OezbekC06
+try|try
+init|(
 name|ByteArrayOutputStream
 name|s
 init|=
 operator|new
 name|ByteArrayOutputStream
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|PrintStream
 name|oldOut
 init|=
@@ -7357,11 +7224,7 @@ argument_list|(
 name|oldOut
 argument_list|)
 expr_stmt|;
-name|s
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 block|}
 comment|// PDF should be annotated:
 name|List
@@ -7405,19 +7268,6 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-if|if
-condition|(
-name|fileWriter
-operator|!=
-literal|null
-condition|)
-block|{
-name|fileWriter
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 name|tempBib
 operator|.
 name|delete
@@ -7425,7 +7275,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Test whether the command-line client can deal with several bibtex      * entries.      */
+comment|/**      * Test whether the command-line client can deal with several bibtex entries.      */
 annotation|@
 name|Test
 annotation|@
@@ -7450,21 +7300,18 @@ argument_list|,
 literal|".bib"
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|FileWriter
 name|fileWriter
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|fileWriter
-operator|=
 operator|new
 name|FileWriter
 argument_list|(
 name|tempBib
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 name|fileWriter
 operator|.
 name|write
@@ -7486,13 +7333,16 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|ByteArrayOutputStream
 name|s
 init|=
 operator|new
 name|ByteArrayOutputStream
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|PrintStream
 name|oldOut
 init|=
@@ -7538,11 +7388,7 @@ argument_list|(
 name|oldOut
 argument_list|)
 expr_stmt|;
-name|s
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 name|List
 argument_list|<
 name|BibtexEntry
@@ -7654,19 +7500,6 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-if|if
-condition|(
-name|fileWriter
-operator|!=
-literal|null
-condition|)
-block|{
-name|fileWriter
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 name|tempBib
 operator|.
 name|delete
@@ -7944,6 +7777,18 @@ name|IOException
 throws|,
 name|TransformerException
 block|{
+try|try
+init|(
+name|FileReader
+name|fr
+init|=
+operator|new
+name|FileReader
+argument_list|(
+literal|"src/test/resources/net/sf/jabref/util/twente.bib"
+argument_list|)
+init|)
+block|{
 name|ParserResult
 name|result
 init|=
@@ -7951,11 +7796,7 @@ name|BibtexParser
 operator|.
 name|parse
 argument_list|(
-operator|new
-name|FileReader
-argument_list|(
-literal|"src/test/resources/net/sf/jabref/util/twente.bib"
-argument_list|)
+name|fr
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -8045,6 +7886,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Next check from Document Information
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
@@ -8057,8 +7900,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Assert
 operator|.
@@ -8297,14 +8139,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 finally|finally
 block|{
@@ -8313,6 +8147,7 @@ operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Read the contents of a reader as one string      *      * @param reader      * @return      * @throws IOException      */
