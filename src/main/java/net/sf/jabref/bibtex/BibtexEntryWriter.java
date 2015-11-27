@@ -545,6 +545,27 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// if the entry has not been modified, write it as it was
+if|if
+condition|(
+name|entry
+operator|.
+name|shouldUseCustomSerialization
+argument_list|()
+condition|)
+block|{
+name|out
+operator|.
+name|write
+argument_list|(
+name|entry
+operator|.
+name|getSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 switch|switch
 condition|(
 name|writeFieldSortStyle
