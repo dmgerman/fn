@@ -2384,11 +2384,6 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|createClone (HashSet<String> keywordsToAdd)
 specifier|private
 specifier|static

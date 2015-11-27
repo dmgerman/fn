@@ -1021,11 +1021,6 @@ operator|new
 name|DocumentListener
 argument_list|()
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 specifier|private
 name|void
 name|handle

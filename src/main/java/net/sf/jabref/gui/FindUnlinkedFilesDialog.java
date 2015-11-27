@@ -1181,11 +1181,6 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * For Unit-testing only.<i>Don't remove!</i><br>      * Used via reflection in {@link net.sf.jabref.importer.DatabaseFileLookup} to construct this      * class.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 DECL|method|FindUnlinkedFilesDialog ()
 specifier|private
 name|FindUnlinkedFilesDialog

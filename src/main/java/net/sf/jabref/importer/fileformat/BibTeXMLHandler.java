@@ -170,11 +170,6 @@ name|bibitems
 return|;
 block|}
 comment|// SAX parsing methods
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 DECL|method|doctypeDecl (String name, String publicId, String systemId)
 specifier|public
 name|void
