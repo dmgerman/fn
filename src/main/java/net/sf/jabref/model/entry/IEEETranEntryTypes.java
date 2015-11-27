@@ -34,8 +34,20 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
 begin_comment
-comment|/**  * This class represents all supported IEEETran entry types.  * @see http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/IEEEtran/bibtex/IEEEtran_bst_HOWTO.pdf  *  * Electronic, IEEETranBSTCTL, Periodical, Patent, Standard  */
+comment|/**  * This class represents all supported IEEETran entry types.  *  * @see http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/IEEEtran/bibtex/IEEEtran_bst_HOWTO.pdf  *<p>  * Electronic, IEEETranBSTCTL, Periodical, Patent, Standard  */
 end_comment
 
 begin_class
@@ -44,7 +56,7 @@ specifier|public
 class|class
 name|IEEETranEntryTypes
 block|{
-comment|/**      * Electronic entry type for internet references      *      * Required fields:      * Optional fields: author, month, year, title, language, howpublished, organization, address, note, url      */
+comment|/**      * Electronic entry type for internet references      *<p>      * Required fields:      * Optional fields: author, month, year, title, language, howpublished, organization, address, note, url      */
 DECL|field|ELECTRONIC
 specifier|public
 specifier|static
@@ -186,7 +198,7 @@ block|,
 literal|"ctlalt_stretch_factor"
 block|}
 decl_stmt|;
-comment|/**      * The periodical entry type is used for journals and magazines.      *      * Required fields: title, year      * Optional fields: editor, language, series, volume, number, organization, month, note, url      */
+comment|/**      * The periodical entry type is used for journals and magazines.      *<p>      * Required fields: title, year      * Optional fields: editor, language, series, volume, number, organization, month, note, url      */
 DECL|field|PERIODICAL
 specifier|public
 specifier|static
@@ -241,7 +253,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * Entry type for patents.      *      * Required fields: nationality, number, year or yearfiled      * Optional fields: author, title, language, assignee, address, type, number, day, dayfiled, month, monthfiled, note, url      */
+comment|/**      * Entry type for patents.      *<p>      * Required fields: nationality, number, year or yearfiled      * Optional fields: author, title, language, assignee, address, type, number, day, dayfiled, month, monthfiled, note, url      */
 DECL|field|PATENT
 specifier|public
 specifier|static
@@ -306,7 +318,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * The standard entry type is used for proposed or formally published standards.      *      * Required fields: title, organization or institution      * Optional fields: author, language, howpublished, type, number, revision, address, month, year, note, url      */
+comment|/**      * The standard entry type is used for proposed or formally published standards.      *<p>      * Required fields: title, organization or institution      * Optional fields: author, language, howpublished, type, number, revision, address, month, year, note, url      */
 DECL|field|STANDARD
 specifier|public
 specifier|static
@@ -388,6 +400,36 @@ argument_list|,
 name|PATENT
 argument_list|,
 name|STANDARD
+argument_list|)
+decl_stmt|;
+DECL|field|ENTRY_TYPE_NAMES
+specifier|public
+specifier|static
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|ENTRY_TYPE_NAMES
+init|=
+name|ALL
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|map
+argument_list|(
+name|EntryType
+operator|::
+name|getName
+argument_list|)
+operator|.
+name|collect
+argument_list|(
+name|Collectors
+operator|.
+name|toList
+argument_list|()
 argument_list|)
 decl_stmt|;
 block|}
