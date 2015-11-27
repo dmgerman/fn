@@ -248,6 +248,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IllegalArgumentException
+decl||
+name|NullPointerException
 name|e
 parameter_list|)
 block|{
