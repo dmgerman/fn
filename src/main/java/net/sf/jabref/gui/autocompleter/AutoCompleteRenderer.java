@@ -36,16 +36,6 @@ name|ActionListener
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|Action
-import|;
-end_import
-
 begin_comment
 comment|/**  * Renders the list of possible autocomplete items. Also takes care of the currently selected item.  * @param<E> the type of the items  */
 end_comment

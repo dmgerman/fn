@@ -16,22 +16,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibtexDatabase
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util

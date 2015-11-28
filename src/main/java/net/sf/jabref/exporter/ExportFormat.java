@@ -562,6 +562,8 @@ name|outFile
 argument_list|)
 expr_stmt|;
 block|}
+try|try
+init|(
 name|VerifyingWriter
 name|ps
 init|=
@@ -569,14 +571,12 @@ name|ss
 operator|.
 name|getWriter
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|Layout
 name|beginLayout
 init|=
 literal|null
-decl_stmt|;
-name|Reader
-name|reader
 decl_stmt|;
 comment|// Check if this export filter has bundled name formatters:
 comment|// Set a global field, so all layouts have access to the custom name formatters:
@@ -606,16 +606,18 @@ argument_list|)
 decl_stmt|;
 comment|// Print header
 try|try
-block|{
+init|(
+name|Reader
 name|reader
-operator|=
+init|=
 name|getReader
 argument_list|(
 name|lfFileName
 operator|+
 literal|".begin.layout"
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 name|LayoutHelper
 name|layoutHelper
 init|=
@@ -635,11 +637,6 @@ name|Globals
 operator|.
 name|FORMATTER_PACKAGE
 argument_list|)
-expr_stmt|;
-name|reader
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -684,7 +681,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*          * Write database entries; entries will be sorted as they appear on the          * screen, or sorted by author, depending on Preferences. We also supply          * the Set entries - if we are to export only certain entries, it will          * be non-null, and be used to choose entries. Otherwise, it will be          * null, and be ignored.          */
+comment|/*              * Write database entries; entries will be sorted as they appear on the              * screen, or sorted by author, depending on Preferences. We also supply              * the Set entries - if we are to export only certain entries, it will              * be non-null, and be used to choose entries. Otherwise, it will be              * null, and be ignored.              */
 name|List
 argument_list|<
 name|BibtexEntry
@@ -705,27 +702,39 @@ literal|false
 argument_list|)
 decl_stmt|;
 comment|// Load default layout
+name|Layout
+name|defLayout
+init|=
+literal|null
+decl_stmt|;
+name|LayoutHelper
+name|layoutHelper
+init|=
+literal|null
+decl_stmt|;
+try|try
+init|(
+name|Reader
 name|reader
-operator|=
+init|=
 name|getReader
 argument_list|(
 name|lfFileName
 operator|+
 literal|".layout"
 argument_list|)
-expr_stmt|;
-name|LayoutHelper
+init|)
+block|{
 name|layoutHelper
-init|=
+operator|=
 operator|new
 name|LayoutHelper
 argument_list|(
 name|reader
 argument_list|)
-decl_stmt|;
-name|Layout
+expr_stmt|;
 name|defLayout
-init|=
+operator|=
 name|layoutHelper
 operator|.
 name|getLayoutFromText
@@ -734,12 +743,8 @@ name|Globals
 operator|.
 name|FORMATTER_PACKAGE
 argument_list|)
-decl_stmt|;
-name|reader
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|defLayout
@@ -842,10 +847,10 @@ block|}
 else|else
 block|{
 try|try
-block|{
-comment|// We try to get a type-specific layout for this entry.
+init|(
+name|Reader
 name|reader
-operator|=
+init|=
 name|getReader
 argument_list|(
 name|lfFileName
@@ -856,7 +861,9 @@ name|type
 operator|+
 literal|".layout"
 argument_list|)
-expr_stmt|;
+init|)
+block|{
+comment|// We try to get a type-specific layout for this entry.
 name|layoutHelper
 operator|=
 operator|new
@@ -884,11 +891,6 @@ name|type
 argument_list|,
 name|layout
 argument_list|)
-expr_stmt|;
-name|reader
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -948,16 +950,18 @@ init|=
 literal|null
 decl_stmt|;
 try|try
-block|{
+init|(
+name|Reader
 name|reader
-operator|=
+init|=
 name|getReader
 argument_list|(
 name|lfFileName
 operator|+
 literal|".end.layout"
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 name|layoutHelper
 operator|=
 operator|new
@@ -1106,6 +1110,7 @@ argument_list|(
 name|sb
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|finalizeSaveSession
 argument_list|(

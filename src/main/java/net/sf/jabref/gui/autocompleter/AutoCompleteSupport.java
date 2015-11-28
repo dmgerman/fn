@@ -223,7 +223,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Endows a textbox with the ability to autocomplete the input.  * Based on code by   * 	Santhosh Kumar (http://www.jroller.com/santhosh/date/20050620)  * 	James Lemieux (Glazed Lists AutoCompleteSupport)  *   * @param<E> type of items displayed in the autocomplete popup  */
+comment|/**  * Endows a textbox with the ability to autocomplete the input.  * Based on code by  * 	Santhosh Kumar (http://www.jroller.com/santhosh/date/20050620)  * 	James Lemieux (Glazed Lists AutoCompleteSupport)  *  * @param<E> type of items displayed in the autocomplete popup  */
 end_comment
 
 begin_class
@@ -308,7 +308,7 @@ operator|=
 name|autoCompleter
 expr_stmt|;
 block|}
-comment|/** 	 * Constructs a new AutoCompleteSupport for the textbox. The possible autocomplete items are displayed as a simple list. The autocompletion items are provided by an AutoCompleter which has to be specified later using {@link setAutoCompleter}.  	 * @param textComp the textbox component for which autocompletion should be enabled 	 */
+comment|/** 	 * Constructs a new AutoCompleteSupport for the textbox. The possible autocomplete items are displayed as a simple list. The autocompletion items are provided by an AutoCompleter which has to be specified later using {@link setAutoCompleter}. 	 * @param textComp the textbox component for which autocompletion should be enabled 	 */
 DECL|method|AutoCompleteSupport (JTextComponent textComp)
 specifier|public
 name|AutoCompleteSupport
@@ -358,7 +358,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Inits the autocompletion popup. After this method is called, further input in the specified textbox will be autocompleted.  	 */
+comment|/** 	 * Inits the autocompletion popup. After this method is called, further input in the specified textbox will be autocompleted. 	 */
 DECL|method|install ()
 specifier|public
 name|void
@@ -396,6 +396,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -423,6 +425,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -445,7 +449,9 @@ name|itemToInsert
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|toInsert
 init|=
@@ -506,6 +512,7 @@ name|priv
 argument_list|)
 argument_list|)
 operator|&&
+operator|(
 name|textComp
 operator|.
 name|getText
@@ -517,6 +524,7 @@ name|priv
 argument_list|)
 operator|!=
 literal|','
+operator|)
 condition|)
 block|{
 name|priv
@@ -664,6 +672,8 @@ operator|new
 name|DocumentListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|insertUpdate
@@ -676,6 +686,8 @@ name|postProcessTextChange
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeUpdate
@@ -688,6 +700,8 @@ name|postProcessTextChange
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|changedUpdate
@@ -695,7 +709,9 @@ parameter_list|(
 name|DocumentEvent
 name|e
 parameter_list|)
-block|{             }
+block|{
+comment|// Do nothing
+block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -791,6 +807,8 @@ operator|new
 name|PopupMenuListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|popupMenuWillBecomeVisible
@@ -822,6 +840,8 @@ name|WHEN_FOCUSED
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|popupMenuWillBecomeInvisible
@@ -847,6 +867,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|popupMenuCanceled
@@ -854,12 +876,14 @@ parameter_list|(
 name|PopupMenuEvent
 name|e
 parameter_list|)
-block|{ 			}
+block|{
+comment|// Do nothing
+block|}
 block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns whether the text in the textbox is selected when the textbox gains focus. Defaults to true.  	 * @return  	 */
+comment|/** 	 * Returns whether the text in the textbox is selected when the textbox gains focus. Defaults to true. 	 * @return 	 */
 DECL|method|getSelectsTextOnFocusGain ()
 specifier|public
 name|boolean
@@ -943,15 +967,19 @@ operator|.
 name|isEnabled
 argument_list|()
 operator|&&
+operator|(
 name|candidates
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|candidates
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|renderer
@@ -989,6 +1017,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|popup
 operator|.
 name|setVisible
@@ -996,6 +1025,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1004,11 +1034,13 @@ operator|.
 name|hasFocus
 argument_list|()
 condition|)
+block|{
 name|textComp
 operator|.
 name|requestFocusInWindow
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/** 	 * The action invoked by hitting the up or down arrow key. 	 * If the popup is currently shown, that the action is relayed to it. Otherwise the arrow keys trigger the popup. 	 */
 DECL|class|MoveAction
@@ -1039,6 +1071,8 @@ operator|=
 name|offset
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1113,11 +1147,13 @@ operator|.
 name|isTemporary
 argument_list|()
 condition|)
+block|{
 name|textComp
 operator|.
 name|selectAll
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -1129,7 +1165,9 @@ parameter_list|(
 name|FocusEvent
 name|e
 parameter_list|)
-block|{ 		}
+block|{
+comment|// Do nothing
+block|}
 block|}
 comment|/** 	 * Sets the autocompleter used to present autocomplete suggestions.      * @param autoCompleter the autocompleter providing the data 	 */
 DECL|method|setAutoCompleter (AutoCompleter<E> autoCompleter)
