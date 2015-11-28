@@ -223,7 +223,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Endows a textbox with the ability to autocomplete the input.  * Based on code by  * 	Santhosh Kumar (http://www.jroller.com/santhosh/date/20050620)  * 	James Lemieux (Glazed Lists AutoCompleteSupport)  *  * @param<E> type of items displayed in the autocomplete popup  */
+comment|/**  * Endows a textbox with the ability to autocomplete the input. Based on code by Santhosh Kumar  * (http://www.jroller.com/santhosh/date/20050620) James Lemieux (Glazed Lists AutoCompleteSupport)  *  * @param<E> type of items displayed in the autocomplete popup  */
 end_comment
 
 begin_class
@@ -268,7 +268,7 @@ name|selectsTextOnFocusGain
 init|=
 literal|true
 decl_stmt|;
-comment|/** 	 * Constructs a new AutoCompleteSupport for the textbox using the autocompleter and a renderer. 	 * @param textComp the textbox component for which autocompletion should be enabled 	 * @param autoCompleter the autocompleter providing the data 	 * @param renderer the renderer displaying the popup 	 */
+comment|/**      * Constructs a new AutoCompleteSupport for the textbox using the autocompleter and a renderer.      *      * @param textComp the textbox component for which autocompletion should be enabled      * @param autoCompleter the autocompleter providing the data      * @param renderer the renderer displaying the popup      */
 DECL|method|AutoCompleteSupport (JTextComponent textComp, AutoCompleter<E> autoCompleter, AutoCompleteRenderer<E> renderer)
 specifier|public
 name|AutoCompleteSupport
@@ -308,7 +308,7 @@ operator|=
 name|autoCompleter
 expr_stmt|;
 block|}
-comment|/** 	 * Constructs a new AutoCompleteSupport for the textbox. The possible autocomplete items are displayed as a simple list. The autocompletion items are provided by an AutoCompleter which has to be specified later using {@link setAutoCompleter}. 	 * @param textComp the textbox component for which autocompletion should be enabled 	 */
+comment|/**      * Constructs a new AutoCompleteSupport for the textbox. The possible autocomplete items are displayed as a simple      * list. The autocompletion items are provided by an AutoCompleter which has to be specified later using      * {@link setAutoCompleter}.      *      * @param textComp the textbox component for which autocompletion should be enabled      */
 DECL|method|AutoCompleteSupport (JTextComponent textComp)
 specifier|public
 name|AutoCompleteSupport
@@ -330,7 +330,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Constructs a new AutoCompleteSupport for the textbox using the autocompleter and a renderer. The possible autocomplete items are displayed as a simple list. 	 * @param textComp the textbox component for which autocompletion should be enabled 	 * @param autoCompleter the autocompleter providing the data 	 */
+comment|/**      * Constructs a new AutoCompleteSupport for the textbox using the autocompleter and a renderer. The possible      * autocomplete items are displayed as a simple list.      *      * @param textComp the textbox component for which autocompletion should be enabled      * @param autoCompleter the autocompleter providing the data      */
 DECL|method|AutoCompleteSupport (JTextComponent textComp, AutoCompleter<E> autoCompleter)
 specifier|public
 name|AutoCompleteSupport
@@ -358,7 +358,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Inits the autocompletion popup. After this method is called, further input in the specified textbox will be autocompleted. 	 */
+comment|/**      * Inits the autocompletion popup. After this method is called, further input in the specified textbox will be      * autocompleted.      */
 DECL|method|install ()
 specifier|public
 name|void
@@ -883,7 +883,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns whether the text in the textbox is selected when the textbox gains focus. Defaults to true. 	 * @return 	 */
+comment|/**      * Returns whether the text in the textbox is selected when the textbox gains focus. Defaults to true.      *      * @return      */
 DECL|method|getSelectsTextOnFocusGain ()
 specifier|public
 name|boolean
@@ -894,7 +894,7 @@ return|return
 name|selectsTextOnFocusGain
 return|;
 block|}
-comment|/** 	 * Sets whether the text in the textbox is selected when the textbox gains focus. Default is true. 	 * @param selectsTextOnFocusGain new value 	 */
+comment|/**      * Sets whether the text in the textbox is selected when the textbox gains focus. Default is true.      *      * @param selectsTextOnFocusGain new value      */
 DECL|method|setSelectsTextOnFocusGain (boolean selectsTextOnFocusGain)
 specifier|public
 name|void
@@ -911,7 +911,7 @@ operator|=
 name|selectsTextOnFocusGain
 expr_stmt|;
 block|}
-comment|/** 	 * The text changed so update autocomplete suggestions accordingly. 	 */
+comment|/**      * The text changed so update autocomplete suggestions accordingly.      */
 DECL|method|postProcessTextChange ()
 specifier|private
 name|void
@@ -1042,7 +1042,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * The action invoked by hitting the up or down arrow key. 	 * If the popup is currently shown, that the action is relayed to it. Otherwise the arrow keys trigger the popup. 	 */
+comment|/**      * The action invoked by hitting the up or down arrow key. If the popup is currently shown, that the action is      * relayed to it. Otherwise the arrow keys trigger the popup.      */
 DECL|class|MoveAction
 specifier|private
 class|class
@@ -1117,7 +1117,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Selects all text when the textbox gains focus. The behavior is controlled by the value 	 * returned from {@link AutoCompleteSupport#getSelectsTextOnFocusGain()}. 	 */
+comment|/**      * Selects all text when the textbox gains focus. The behavior is controlled by the value returned from      * {@link AutoCompleteSupport#getSelectsTextOnFocusGain()}.      */
 DECL|class|ComboBoxEditorFocusHandler
 specifier|private
 class|class
@@ -1169,7 +1169,7 @@ block|{
 comment|// Do nothing
 block|}
 block|}
-comment|/** 	 * Sets the autocompleter used to present autocomplete suggestions.      * @param autoCompleter the autocompleter providing the data 	 */
+comment|/**      * Sets the autocompleter used to present autocomplete suggestions.      *      * @param autoCompleter the autocompleter providing the data      */
 DECL|method|setAutoCompleter (AutoCompleter<E> autoCompleter)
 specifier|public
 name|void

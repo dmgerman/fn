@@ -123,7 +123,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Renders possible autocomplete items in form of a simple list.  * @param<E> the type of the items  */
+comment|/**  * Renders possible autocomplete items in form of a simple list.  *  * @param<E> the type of the items  */
 end_comment
 
 begin_class
@@ -170,7 +170,7 @@ DECL|field|acceptAction
 name|ActionListener
 name|acceptAction
 decl_stmt|;
-comment|/** 	 * Every selection change by the user is interpreted as accepting the new item as autocompletion. 	 * Thus we need this helper variable to prevent that also programmatical trigger an autocompletion. 	 */
+comment|/**      * Every selection change by the user is interpreted as accepting the new item as autocompletion. Thus we need this      * helper variable to prevent that also programmatical trigger an autocompletion.      */
 DECL|field|interpretSelectionChangeAsAccept
 name|Boolean
 name|interpretSelectionChangeAsAccept
