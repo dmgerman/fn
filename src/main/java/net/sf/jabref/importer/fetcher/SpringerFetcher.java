@@ -345,7 +345,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Searching Springer..."
+literal|"Searching..."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -498,7 +498,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Springer search canceled"
+literal|"Search canceled"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -740,7 +740,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search Springer"
+literal|"Search %0"
+argument_list|,
+literal|"Springer"
 argument_list|)
 argument_list|,
 name|JOptionPane
