@@ -1510,9 +1510,6 @@ literal|"Search failed: illegal search expression"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|clearSearch
-argument_list|()
-expr_stmt|;
 return|return;
 block|}
 name|SearchWorker
