@@ -9862,6 +9862,19 @@ comment|// We replace the default FocusTraversalPolicy with a subclass
 comment|// that only allows FieldEditor components to gain keyboard focus,
 comment|// if there is an entry editor open.
 comment|/*splitPane.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy() {                 protected boolean accept(Component c) {                     if (showing == null)                         return super.accept(c);                     else                         return (super.accept(c)&&                                 (c instanceof FieldEditor));                 }                 });*/
+comment|// check whether a mainTable already existed and a floatSearch was active
+name|boolean
+name|floatSearchActive
+init|=
+operator|(
+name|mainTable
+operator|!=
+literal|null
+operator|)
+operator|&&
+name|isShowingFloatSearch
+argument_list|()
+decl_stmt|;
 name|createMainTable
 argument_list|()
 expr_stmt|;
@@ -10081,6 +10094,17 @@ name|autoCompleters
 operator|=
 operator|new
 name|ContentAutoCompleters
+argument_list|()
+expr_stmt|;
+block|}
+comment|// restore floating search result
+comment|// (needed if preferences have been changed which causes a recreation of the main table)
+if|if
+condition|(
+name|floatSearchActive
+condition|)
+block|{
+name|startShowingFloatSearch
 argument_list|()
 expr_stmt|;
 block|}
