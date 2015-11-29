@@ -215,15 +215,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|SPIRESFetcher
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|entryFetchers
-operator|.
-name|add
-argument_list|(
-operator|new
 name|ACMPortalFetcher
 argument_list|()
 argument_list|)
