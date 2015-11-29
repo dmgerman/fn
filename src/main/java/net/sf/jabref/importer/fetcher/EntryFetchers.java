@@ -165,24 +165,8 @@ name|ISBNtoBibTeXFetcher
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|entryFetchers
-operator|.
-name|add
-argument_list|(
-operator|new
-name|JSTORFetcher
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|entryFetchers
-operator|.
-name|add
-argument_list|(
-operator|new
-name|JSTORFetcher2
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//entryFetchers.add(new JSTORFetcher()); // currently not working - why are there 2 different versions?
+comment|//entryFetchers.add(new JSTORFetcher2()); // see also https://github.com/koppor/jabref/issues/66
 name|entryFetchers
 operator|.
 name|add
@@ -201,15 +185,7 @@ name|OAI2Fetcher
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|entryFetchers
-operator|.
-name|add
-argument_list|(
-operator|new
-name|ScienceDirectFetcher
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// entryFetchers.add(new ScienceDirectFetcher()); currently not working - removed see #409
 name|entryFetchers
 operator|.
 name|add
