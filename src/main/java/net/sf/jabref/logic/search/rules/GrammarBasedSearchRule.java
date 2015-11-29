@@ -578,12 +578,9 @@ name|LOGGER
 operator|.
 name|debug
 argument_list|(
-literal|"Search failed: "
-operator|+
+literal|"Search failed"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -853,11 +850,13 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|searchKeys
 operator|.
 name|length
 operator|+
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -868,11 +867,13 @@ name|content
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|i
 operator|-
 name|searchKeys
 operator|.
 name|length
+operator|)
 operator|==
 literal|0
 condition|)
@@ -971,11 +972,13 @@ block|}
 return|return
 name|noSuchField
 operator|&&
+operator|(
 name|operator
 operator|==
 name|ComparisonOperator
 operator|.
 name|DOES_NOT_CONTAIN
+operator|)
 return|;
 block|}
 DECL|method|matchInField (String content)
