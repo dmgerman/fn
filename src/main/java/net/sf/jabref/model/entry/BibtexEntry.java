@@ -357,10 +357,10 @@ specifier|private
 name|boolean
 name|groupHit
 decl_stmt|;
-DECL|field|serialization
+DECL|field|parsedSerialization
 specifier|private
 name|String
-name|serialization
+name|parsedSerialization
 decl_stmt|;
 comment|/*     * marks if the complete serialization, which was read from file, should be used.     * Is set to false, if parts of the entry change      */
 DECL|field|useCustomSerialization
@@ -1994,13 +1994,13 @@ return|return
 name|year
 return|;
 block|}
-DECL|method|setSerialization (String serialization)
+DECL|method|setParsedSerialization (String parsedSerialization)
 specifier|public
 name|void
-name|setSerialization
+name|setParsedSerialization
 parameter_list|(
 name|String
-name|serialization
+name|parsedSerialization
 parameter_list|)
 block|{
 name|useCustomSerialization
@@ -2009,19 +2009,19 @@ literal|true
 expr_stmt|;
 name|this
 operator|.
-name|serialization
+name|parsedSerialization
 operator|=
-name|serialization
+name|parsedSerialization
 expr_stmt|;
 block|}
-DECL|method|getSerialization ()
+DECL|method|getParsedSerialization ()
 specifier|public
 name|String
-name|getSerialization
+name|getParsedSerialization
 parameter_list|()
 block|{
 return|return
-name|serialization
+name|parsedSerialization
 return|;
 block|}
 DECL|method|shouldUseCustomSerialization ()

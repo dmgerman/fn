@@ -1373,7 +1373,7 @@ argument_list|)
 decl_stmt|;
 name|be
 operator|.
-name|setSerialization
+name|setParsedSerialization
 argument_list|(
 name|dumpTextReadSoFarToString
 argument_list|()

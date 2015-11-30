@@ -560,7 +560,7 @@ name|write
 argument_list|(
 name|entry
 operator|.
-name|getSerialization
+name|getParsedSerialization
 argument_list|()
 argument_list|)
 expr_stmt|;
