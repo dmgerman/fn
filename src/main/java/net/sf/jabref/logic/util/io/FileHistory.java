@@ -78,6 +78,14 @@ name|LinkedList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|HISTORY_SIZE
+specifier|private
+specifier|final
+name|int
+name|HISTORY_SIZE
+init|=
+literal|8
+decl_stmt|;
 DECL|method|FileHistory (JabRefPreferences prefs)
 specifier|public
 name|FileHistory
@@ -170,14 +178,7 @@ operator|.
 name|size
 argument_list|()
 operator|>
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
 name|HISTORY_SIZE
-argument_list|)
 condition|)
 block|{
 name|history
