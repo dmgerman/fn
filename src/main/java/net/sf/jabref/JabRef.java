@@ -727,7 +727,7 @@ name|PROXY_PORT
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// currently, the following cannot be configured
+comment|// NetworkTab.java ensures that proxyUsername and proxyPassword are neither null nor empty
 if|if
 condition|(
 name|prefs
@@ -797,6 +797,27 @@ literal|"true"
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|USE_PROXY
+argument_list|)
+operator|&&
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|USE_PROXY_AUTHENTICATION
+argument_list|)
+condition|)
+block|{
 name|Authenticator
 operator|.
 name|setDefault
@@ -933,6 +954,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 name|Globals
 operator|.
 name|startBackgroundTasks

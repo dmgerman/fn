@@ -448,6 +448,11 @@ name|defProxyUsername
 operator|.
 name|setEnabled
 argument_list|(
+name|useProxy
+operator|.
+name|isSelected
+argument_list|()
+operator|&&
 name|useProxyAuthentication
 operator|.
 name|isSelected
@@ -458,6 +463,11 @@ name|defProxyPassword
 operator|.
 name|setEnabled
 argument_list|(
+name|useProxy
+operator|.
+name|isSelected
+argument_list|()
+operator|&&
 name|useProxyAuthentication
 operator|.
 name|isSelected
