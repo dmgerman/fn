@@ -18,16 +18,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -128,8 +118,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"some text"
@@ -142,8 +130,6 @@ literal|"{some text}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"some text"
@@ -156,8 +142,6 @@ literal|"{some text"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"some text"
@@ -170,8 +154,6 @@ literal|"some text}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"\\some text\\"

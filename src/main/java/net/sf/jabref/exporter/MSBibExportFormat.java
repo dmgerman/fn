@@ -279,14 +279,6 @@ name|file
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|VerifyingWriter
-name|ps
-init|=
-name|ss
-operator|.
-name|getWriter
-argument_list|()
-decl_stmt|;
 name|MSBibDatabase
 name|md
 init|=
@@ -298,6 +290,17 @@ argument_list|,
 name|keySet
 argument_list|)
 decl_stmt|;
+try|try
+init|(
+name|VerifyingWriter
+name|ps
+init|=
+name|ss
+operator|.
+name|getWriter
+argument_list|()
+init|)
+block|{
 comment|// PS: DOES NOT SUPPORT EXPORTING ONLY A SET OF ENTRIES
 try|try
 block|{
@@ -367,6 +370,7 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
+block|}
 block|}
 try|try
 block|{

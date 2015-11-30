@@ -1054,6 +1054,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|inputStream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 return|return
 name|be
 return|;

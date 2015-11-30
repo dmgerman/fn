@@ -403,9 +403,9 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-return|return
-literal|""
-return|;
+throw|throw
+name|e
+throw|;
 block|}
 block|}
 DECL|method|copy (InputStream in, Writer out, Charset encoding)
@@ -553,6 +553,9 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+throw|throw
+name|e
+throw|;
 block|}
 block|}
 DECL|method|copy (InputStream in, OutputStream out)

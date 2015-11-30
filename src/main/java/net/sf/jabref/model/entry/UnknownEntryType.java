@@ -165,6 +165,8 @@ name|requiredFields
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getPrimaryOptionalFields ()
 specifier|public
 name|List
@@ -179,6 +181,8 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSecondaryOptionalFields ()
 specifier|public
 name|List

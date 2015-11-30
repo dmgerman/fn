@@ -24,30 +24,6 @@ name|awt
 operator|.
 name|event
 operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|FocusEvent
 import|;
 end_import
@@ -2757,7 +2733,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{      }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|mouseExited (MouseEvent e)
@@ -2768,7 +2746,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{      }
+block|{
+comment|// Do nothing
+block|}
 DECL|method|setPreviewActive (boolean enabled)
 specifier|public
 name|void
@@ -3242,7 +3222,9 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|keyPressed (KeyEvent e)
@@ -3253,7 +3235,9 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|focusGained (FocusEvent e)
@@ -3264,7 +3248,9 @@ parameter_list|(
 name|FocusEvent
 name|e
 parameter_list|)
-block|{      }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|focusLost (FocusEvent e)

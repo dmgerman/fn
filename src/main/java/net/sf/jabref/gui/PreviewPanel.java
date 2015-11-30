@@ -517,7 +517,6 @@ name|panel
 decl_stmt|;
 DECL|field|previewPane
 specifier|private
-specifier|final
 name|JEditorPane
 name|previewPane
 decl_stmt|;
@@ -764,10 +763,6 @@ argument_list|(
 name|panel
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|previewPane
-operator|=
 name|createPreviewPane
 argument_list|()
 expr_stmt|;
@@ -1196,13 +1191,12 @@ return|;
 block|}
 DECL|method|createPreviewPane ()
 specifier|private
-name|JEditorPane
+name|void
 name|createPreviewPane
 parameter_list|()
 block|{
-name|JEditorPane
 name|previewPane
-init|=
+operator|=
 operator|new
 name|JEditorPane
 argument_list|()
@@ -1220,7 +1214,7 @@ argument_list|()
 return|;
 block|}
 block|}
-decl_stmt|;
+expr_stmt|;
 name|previewPane
 operator|.
 name|setMargin
@@ -1346,9 +1340,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-return|return
-name|previewPane
-return|;
 block|}
 DECL|method|setMetaData (MetaData metaData)
 specifier|public
@@ -1491,12 +1482,14 @@ operator|.
 name|isPresent
 argument_list|()
 operator|&&
+operator|(
 name|entry
 operator|.
 name|get
 argument_list|()
 operator|!=
 name|newEntry
+operator|)
 condition|)
 block|{
 name|entry

@@ -385,8 +385,6 @@ specifier|public
 name|void
 name|testFindPdf
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|String
 name|pdf
@@ -534,8 +532,6 @@ specifier|public
 name|void
 name|testFindAssociatedFiles
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|Collection
 argument_list|<
@@ -730,8 +726,6 @@ specifier|public
 name|void
 name|testFindPdfInMultiple
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 block|{
 name|String
