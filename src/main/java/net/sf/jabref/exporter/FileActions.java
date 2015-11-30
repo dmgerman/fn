@@ -100,6 +100,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|*
@@ -1013,7 +1025,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Writes the file encoding information.      *      * @param encoding String the name of the encoding, which is part of the file header.      */
-DECL|method|writeBibFileHeader (Writer out, String encoding)
+DECL|method|writeBibFileHeader (Writer out, Charset encoding)
 specifier|private
 specifier|static
 name|void
@@ -1022,7 +1034,7 @@ parameter_list|(
 name|Writer
 name|out
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|)
 throws|throws
@@ -1056,7 +1068,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Saves the database to file. Two boolean values indicate whether only      * entries with a nonzero Globals.SEARCH value and only entries with a      * nonzero Globals.GROUPSEARCH value should be saved. This can be used to      * let the user save only the results of a search. False and false means all      * entries are saved.      */
-DECL|method|saveDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, String encoding, boolean suppressBackup)
+DECL|method|saveDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, Charset encoding, boolean suppressBackup)
 specifier|public
 specifier|static
 name|SaveSession
@@ -1080,7 +1092,7 @@ parameter_list|,
 name|boolean
 name|checkGroup
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|,
 name|boolean
@@ -1167,12 +1179,8 @@ argument_list|(
 literal|"Error from encoding: '"
 operator|+
 name|encoding
-operator|+
-literal|"' Len: "
-operator|+
-name|encoding
 operator|.
-name|length
+name|displayName
 argument_list|()
 argument_list|,
 name|e
@@ -2176,7 +2184,7 @@ name|comparators
 return|;
 block|}
 comment|/**      * Saves the database to file, including only the entries included in the      * supplied input array bes.      *      * @return A List containing warnings, if any.      */
-DECL|method|savePartOfDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibtexEntry[] bes, String encoding, DatabaseSaveType saveType)
+DECL|method|savePartOfDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibtexEntry[] bes, Charset encoding, DatabaseSaveType saveType)
 specifier|public
 specifier|static
 name|SaveSession
@@ -2198,7 +2206,7 @@ name|BibtexEntry
 index|[]
 name|bes
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|,
 name|DatabaseSaveType

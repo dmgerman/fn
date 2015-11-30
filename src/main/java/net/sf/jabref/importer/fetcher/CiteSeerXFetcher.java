@@ -166,6 +166,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -472,7 +484,12 @@ name|encode
 argument_list|(
 name|query
 argument_list|,
-literal|"UTF-8"
+name|StandardCharsets
+operator|.
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -761,7 +778,9 @@ argument_list|)
 operator|.
 name|downloadToString
 argument_list|(
-literal|"UTF8"
+name|StandardCharsets
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 comment|// Find title, and create entry if we do. Otherwise assume we didn't get an entry:

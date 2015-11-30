@@ -32,6 +32,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -179,22 +191,6 @@ operator|.
 name|preftabs
 operator|.
 name|NameFormatterTab
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Encodings
 import|;
 end_import
 
@@ -1734,7 +1730,7 @@ block|}
 block|}
 comment|// added section - begin (arudert)
 comment|/**      * Do layout for general formatters (no bibtex-entry fields).      *      * @param database      *            Bibtex Database      * @return      */
-DECL|method|doLayout (BibtexDatabase database, String encoding)
+DECL|method|doLayout (BibtexDatabase database, Charset encoding)
 specifier|public
 name|String
 name|doLayout
@@ -1742,7 +1738,7 @@ parameter_list|(
 name|BibtexDatabase
 name|database
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|)
 block|{
@@ -1913,27 +1909,11 @@ operator|.
 name|IS_ENCODING_NAME
 condition|)
 block|{
-comment|// Try to translate from Java encoding name to common name:
-name|String
-name|commonName
-init|=
-name|Encodings
-operator|.
-name|ENCODING_NAMES_LOOKUP
-operator|.
-name|get
-argument_list|(
-name|encoding
-argument_list|)
-decl_stmt|;
 return|return
-name|commonName
-operator|!=
-literal|null
-condition|?
-name|commonName
-else|:
 name|encoding
+operator|.
+name|displayName
+argument_list|()
 return|;
 block|}
 elseif|else

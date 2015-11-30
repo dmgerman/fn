@@ -50,16 +50,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|nio
 operator|.
 name|charset
@@ -129,18 +119,16 @@ name|TreeSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|VerifyingWriter (OutputStream out, String encoding)
+DECL|method|VerifyingWriter (OutputStream out, Charset encoding)
 specifier|public
 name|VerifyingWriter
 parameter_list|(
 name|OutputStream
 name|out
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|)
-throws|throws
-name|UnsupportedEncodingException
 block|{
 name|super
 argument_list|(
@@ -151,12 +139,7 @@ argument_list|)
 expr_stmt|;
 name|encoder
 operator|=
-name|Charset
-operator|.
-name|forName
-argument_list|(
 name|encoding
-argument_list|)
 operator|.
 name|newEncoder
 argument_list|()

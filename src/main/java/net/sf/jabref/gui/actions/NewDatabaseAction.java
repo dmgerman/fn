@@ -132,6 +132,18 @@ name|ActionEvent
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
 begin_comment
 comment|/**  * The action concerned with opening a new database.  */
 end_comment
@@ -146,6 +158,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|jabRefFrame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
@@ -236,6 +249,10 @@ operator|new
 name|MetaData
 argument_list|()
 argument_list|,
+name|Charset
+operator|.
+name|forName
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -245,6 +262,7 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|DEFAULT_ENCODING
+argument_list|)
 argument_list|)
 argument_list|,
 literal|true
