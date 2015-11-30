@@ -1414,7 +1414,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Input"
+literal|"Work_options"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1704,7 +1704,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Available fields"
+literal|"Available BibTeX fields"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2888,8 +2888,10 @@ operator|.
 name|getOptionalFields
 argument_list|()
 decl_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|allFields
 init|=
 name|BibtexFields
@@ -3326,6 +3328,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|MenuHeaderAction
+specifier|static
 class|class
 name|MenuHeaderAction
 extends|extends

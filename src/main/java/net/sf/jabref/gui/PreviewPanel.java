@@ -1908,7 +1908,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Printing Entry Preview"
+literal|"Print entry preview"
 argument_list|)
 argument_list|,
 name|JOptionPane

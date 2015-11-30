@@ -3204,11 +3204,11 @@ decl_stmt|;
 comment|// we're at the end of the previous word
 if|if
 condition|(
-name|c
+literal|" "
 operator|.
 name|equals
 argument_list|(
-literal|" "
+name|c
 argument_list|)
 condition|)
 block|{

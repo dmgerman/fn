@@ -490,12 +490,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// .getResource is called at resourceOwner. This method is available at all Class objects
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"rawtypes"
-argument_list|)
-DECL|method|setPage (String filename, Class resourceOwner)
+DECL|method|setPage (String filename, Class<?> resourceOwner)
 specifier|public
 name|void
 name|setPage
@@ -504,6 +499,9 @@ name|String
 name|filename
 parameter_list|,
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|resourceOwner
 parameter_list|)
 block|{
@@ -709,6 +707,16 @@ operator|.
 name|getProtocol
 argument_list|()
 argument_list|)
+operator|||
+literal|"jar"
+operator|.
+name|equals
+argument_list|(
+name|url
+operator|.
+name|getProtocol
+argument_list|()
+argument_list|)
 condition|)
 block|{
 comment|// Creating file by url.toString() and using file.getName() preserves anchors
@@ -784,9 +792,6 @@ operator|new
 name|URL
 argument_list|(
 name|baseUrl
-operator|.
-name|toString
-argument_list|()
 operator|+
 literal|"#"
 operator|+

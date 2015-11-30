@@ -295,9 +295,6 @@ operator|.
 name|append
 argument_list|(
 name|sj
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// append the closing entry bracket

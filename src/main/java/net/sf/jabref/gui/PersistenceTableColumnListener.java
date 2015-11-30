@@ -262,11 +262,11 @@ condition|)
 block|{
 if|if
 condition|(
-name|name
+literal|"#"
 operator|.
 name|equals
 argument_list|(
-literal|"#"
+name|name
 argument_list|)
 condition|)
 block|{

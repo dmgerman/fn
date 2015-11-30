@@ -395,11 +395,11 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|s1
+literal|""
 operator|.
 name|equals
 argument_list|(
-literal|""
+name|s1
 argument_list|)
 condition|)
 block|{

@@ -846,11 +846,11 @@ literal|null
 operator|)
 operator|&&
 operator|!
-name|old
+literal|""
 operator|.
 name|equals
 argument_list|(
-literal|""
+name|old
 argument_list|)
 condition|)
 block|{

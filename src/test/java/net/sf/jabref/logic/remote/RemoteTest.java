@@ -432,13 +432,16 @@ name|isBound
 argument_list|()
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|RemoteListenerServerLifecycle
 name|server
 init|=
 operator|new
 name|RemoteListenerServerLifecycle
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|Assert
 operator|.
 name|assertFalse
@@ -475,6 +478,27 @@ name|isOpen
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// TODO Auto-generated catch block
+name|Assert
+operator|.
+name|fail
+argument_list|(
+literal|"Exception: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@

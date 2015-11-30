@@ -559,9 +559,6 @@ parameter_list|)
 block|{
 return|return
 name|item
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 block|}

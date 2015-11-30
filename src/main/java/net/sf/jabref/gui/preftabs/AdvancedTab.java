@@ -1049,7 +1049,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search IEEEXplore"
+literal|"Search %0"
+argument_list|,
+literal|"IEEEXplorer"
 argument_list|)
 argument_list|)
 expr_stmt|;

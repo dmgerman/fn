@@ -656,11 +656,6 @@ condition|)
 block|{
 comment|// JOptionPane.showMessageDialog(null, "Received
 comment|// javaFileListFlavor");
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 name|List
 argument_list|<
 name|File
@@ -1710,11 +1705,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|extension
+literal|"bib"
 operator|.
 name|equals
 argument_list|(
-literal|"bib"
+name|extension
 argument_list|)
 condition|)
 block|{

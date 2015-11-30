@@ -436,7 +436,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Server Type :"
+literal|"Server Type:"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -448,7 +448,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Server Hostname :"
+literal|"Server Hostname:"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -460,7 +460,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database :"
+literal|"Database:"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -472,7 +472,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Username :"
+literal|"Username:"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -484,7 +484,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Password :"
+literal|"Password:"
 argument_list|)
 argument_list|)
 expr_stmt|;

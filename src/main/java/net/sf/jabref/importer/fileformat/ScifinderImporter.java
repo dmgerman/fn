@@ -250,14 +250,14 @@ condition|)
 block|{
 if|if
 condition|(
+literal|"START_RECORD"
+operator|.
+name|equals
+argument_list|(
 name|str
 operator|.
 name|trim
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"START_RECORD"
 argument_list|)
 condition|)
 block|{
@@ -520,14 +520,14 @@ block|{
 comment|//==2
 if|if
 condition|(
+literal|"Author"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Author"
 argument_list|)
 condition|)
 block|{
@@ -559,14 +559,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Title"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Title"
 argument_list|)
 condition|)
 block|{
@@ -586,14 +586,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Journal Title"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Journal Title"
 argument_list|)
 condition|)
 block|{
@@ -608,14 +608,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Volume"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Volume"
 argument_list|)
 condition|)
 block|{
@@ -635,14 +635,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Page"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Page"
 argument_list|)
 condition|)
 block|{
@@ -662,14 +662,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Publication Year"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Publication Year"
 argument_list|)
 condition|)
 block|{
@@ -689,14 +689,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Abstract"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Abstract"
 argument_list|)
 condition|)
 block|{
@@ -716,14 +716,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Supplementary Terms"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Supplementary Terms"
 argument_list|)
 condition|)
 block|{
@@ -743,14 +743,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Inventor Name"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Inventor Name"
 argument_list|)
 operator|&&
 operator|!
@@ -794,14 +794,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Patent Assignee"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Patent Assignee"
 argument_list|)
 condition|)
 block|{
@@ -821,14 +821,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Patent Kind Code"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Patent Kind Code"
 argument_list|)
 condition|)
 block|{
@@ -845,14 +845,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Patent Country"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Patent Country"
 argument_list|)
 condition|)
 block|{
@@ -869,14 +869,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Patent Number"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Patent Number"
 argument_list|)
 condition|)
 block|{
@@ -891,14 +891,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Priority Application Date"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Priority Application Date"
 argument_list|)
 condition|)
 block|{
@@ -919,14 +919,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Document Type"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|0
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Document Type"
 argument_list|)
 condition|)
 block|{
@@ -961,14 +961,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Dissertation"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|1
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Dissertation"
 argument_list|)
 condition|)
 block|{
@@ -980,14 +980,14 @@ block|}
 elseif|else
 if|if
 condition|(
+literal|"Patent"
+operator|.
+name|equals
+argument_list|(
 name|tmp
 index|[
 literal|1
 index|]
-operator|.
-name|equals
-argument_list|(
-literal|"Patent"
 argument_list|)
 condition|)
 block|{
@@ -1063,11 +1063,11 @@ condition|)
 block|{
 if|if
 condition|(
-name|Type
+literal|"conference"
 operator|.
 name|equals
 argument_list|(
-literal|"conference"
+name|Type
 argument_list|)
 condition|)
 block|{

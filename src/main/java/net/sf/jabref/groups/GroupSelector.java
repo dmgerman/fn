@@ -6425,7 +6425,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Add Group"
+literal|"Add group"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6641,7 +6641,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Add Subgroup"
+literal|"Add subgroup"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6966,7 +6966,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Remove all subgroups"
+literal|"Remove subgroups"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7023,7 +7023,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Remove all subgroups"
+literal|"Remove subgroups"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -7056,7 +7056,7 @@ argument_list|()
 argument_list|,
 name|node
 argument_list|,
-literal|"Remove all subgroups"
+literal|"Remove subgroups"
 argument_list|)
 decl_stmt|;
 name|node
@@ -8517,10 +8517,6 @@ name|lang
 argument_list|(
 literal|"The group \"%0\" already contains the selection."
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
 name|node
 operator|.
 name|getGroup
@@ -8528,7 +8524,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-block|}
 argument_list|)
 argument_list|)
 expr_stmt|;

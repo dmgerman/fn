@@ -352,18 +352,18 @@ comment|// If the field is author or editor, we rearrange names so they are
 comment|// sorted according to last name.
 if|if
 condition|(
-name|sortField
+literal|"author"
 operator|.
 name|equals
 argument_list|(
-literal|"author"
+name|sortField
 argument_list|)
 operator|||
-name|sortField
+literal|"editor"
 operator|.
 name|equals
 argument_list|(
-literal|"editor"
+name|sortField
 argument_list|)
 condition|)
 block|{
@@ -629,8 +629,9 @@ block|{
 name|Integer
 name|f1AsInteger
 init|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|f1
 operator|.
@@ -663,8 +664,9 @@ block|{
 name|Integer
 name|f2AsInteger
 init|=
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|f2
 operator|.

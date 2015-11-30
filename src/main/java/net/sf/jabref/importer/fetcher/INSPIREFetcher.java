@@ -416,7 +416,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Exception ocurred while accessing '%0'"
+literal|"An Exception occurred while accessing '%0'"
 argument_list|,
 name|url
 argument_list|)

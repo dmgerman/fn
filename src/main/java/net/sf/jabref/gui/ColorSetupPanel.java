@@ -758,6 +758,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|ColorButtonListener
+specifier|static
 class|class
 name|ColorButtonListener
 implements|implements
@@ -834,6 +835,7 @@ block|}
 block|}
 comment|/**      * A button to display the chosen color, and hold key information about a color setting.      * Includes a method to produce a Default button for this setting.      */
 DECL|class|ColorButton
+specifier|static
 class|class
 name|ColorButton
 extends|extends

@@ -8001,6 +8001,9 @@ operator|.
 name|equals
 argument_list|(
 name|keyBinds
+operator|.
+name|getKeyBindings
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -8038,38 +8041,41 @@ literal|0
 decl_stmt|;
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|String
-name|nm
+argument_list|,
+name|String
+argument_list|>
+name|keyBinding
 range|:
 name|newBindings
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
 block|{
-name|String
-name|bnd
-init|=
-name|newBindings
-operator|.
-name|get
-argument_list|(
-name|nm
-argument_list|)
-decl_stmt|;
 name|bindNames
 index|[
 name|index
 index|]
 operator|=
-name|nm
+name|keyBinding
+operator|.
+name|getKey
+argument_list|()
 expr_stmt|;
 name|bindings
 index|[
 name|index
 index|]
 operator|=
-name|bnd
+name|keyBinding
+operator|.
+name|getValue
+argument_list|()
 expr_stmt|;
 name|index
 operator|++
@@ -9348,7 +9354,14 @@ argument_list|(
 operator|new
 name|ExternalFileType
 argument_list|(
-literal|"PNG image"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 image"
+argument_list|,
+literal|"PNG"
+argument_list|)
 argument_list|,
 literal|"png"
 argument_list|,
@@ -9376,7 +9389,14 @@ argument_list|(
 operator|new
 name|ExternalFileType
 argument_list|(
-literal|"GIF image"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 image"
+argument_list|,
+literal|"GIF"
+argument_list|)
 argument_list|,
 literal|"gif"
 argument_list|,
@@ -9404,7 +9424,14 @@ argument_list|(
 operator|new
 name|ExternalFileType
 argument_list|(
-literal|"JPG image"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 image"
+argument_list|,
+literal|"JPG"
+argument_list|)
 argument_list|,
 literal|"jpg"
 argument_list|,
@@ -9548,7 +9575,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"TIFF image"
+literal|"%0 image"
+argument_list|,
+literal|"TIFF"
 argument_list|)
 argument_list|,
 literal|"tiff"
@@ -9931,11 +9960,11 @@ block|}
 block|}
 if|if
 condition|(
-name|mimeType
+literal|"text/html"
 operator|.
 name|equals
 argument_list|(
-literal|"text/html"
+name|mimeType
 argument_list|)
 condition|)
 block|{

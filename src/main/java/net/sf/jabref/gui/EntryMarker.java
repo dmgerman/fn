@@ -562,11 +562,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|s
+literal|"0"
 operator|.
 name|equals
 argument_list|(
-literal|"0"
+name|s
 argument_list|)
 condition|)
 block|{
@@ -1088,11 +1088,11 @@ name|fieldVal
 decl_stmt|;
 if|if
 condition|(
-name|s
+literal|"0"
 operator|.
 name|equals
 argument_list|(
-literal|"0"
+name|s
 argument_list|)
 condition|)
 block|{

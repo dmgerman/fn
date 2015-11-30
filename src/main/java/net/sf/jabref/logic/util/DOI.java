@@ -235,7 +235,7 @@ block|{
 return|return
 name|Optional
 operator|.
-name|of
+name|ofNullable
 argument_list|(
 operator|new
 name|DOI
@@ -247,9 +247,9 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|NullPointerException
-decl||
 name|IllegalArgumentException
+decl||
+name|NullPointerException
 name|e
 parameter_list|)
 block|{

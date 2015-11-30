@@ -753,8 +753,10 @@ name|fontSize
 operator|.
 name|setText
 argument_list|(
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|prefs
 operator|.
 name|getInt
@@ -764,13 +766,16 @@ operator|.
 name|MENU_FONT_SIZE
 argument_list|)
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|rowPadding
 operator|.
 name|setText
 argument_list|(
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|prefs
 operator|.
 name|getInt
@@ -778,6 +783,7 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|TABLE_ROW_PADDING
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1181,7 +1187,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Changed font settings"
+literal|"Invalid setting"
 argument_list|)
 argument_list|)
 condition|)
@@ -1212,7 +1218,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Changed table appearance settings"
+literal|"Invalid setting"
 argument_list|)
 argument_list|)
 condition|)

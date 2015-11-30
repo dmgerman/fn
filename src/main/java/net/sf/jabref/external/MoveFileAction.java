@@ -1105,10 +1105,13 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not move file"
+literal|"Could not move file '%0'."
+argument_list|,
+name|file
+operator|.
+name|getAbsolutePath
+argument_list|()
 argument_list|)
-operator|+
-literal|": "
 operator|+
 name|ex
 operator|.
@@ -1149,10 +1152,13 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not move file"
+literal|"Could not move file '%0'."
+argument_list|,
+name|file
+operator|.
+name|getAbsolutePath
+argument_list|()
 argument_list|)
-operator|+
-literal|": "
 operator|+
 name|ex
 operator|.

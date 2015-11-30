@@ -321,15 +321,6 @@ name|OPEN_FOLDER
 init|=
 literal|"openFolder"
 decl_stmt|;
-DECL|field|OPEN_SPIRES
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|OPEN_SPIRES
-init|=
-literal|"openSpires"
-decl_stmt|;
 DECL|field|OPEN_URL
 specifier|public
 specifier|static

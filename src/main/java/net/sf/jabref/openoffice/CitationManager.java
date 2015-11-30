@@ -824,6 +824,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|CitEntry
+specifier|static
 class|class
 name|CitEntry
 implements|implements
@@ -1075,6 +1076,7 @@ block|}
 block|}
 DECL|class|CitEntryFormat
 specifier|private
+specifier|static
 class|class
 name|CitEntryFormat
 implements|implements

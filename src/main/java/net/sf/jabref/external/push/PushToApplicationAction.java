@@ -505,11 +505,11 @@ operator|==
 literal|null
 operator|)
 operator|||
-name|citeKey
+literal|""
 operator|.
 name|equals
 argument_list|(
-literal|""
+name|citeKey
 argument_list|)
 condition|)
 block|{

@@ -598,6 +598,8 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+try|try
+init|(
 name|Writer
 name|ps
 init|=
@@ -612,10 +614,8 @@ argument_list|)
 argument_list|,
 literal|"UTF8"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
-comment|//            Writer ps = new FileWriter(tmpFile);
 name|DOMSource
 name|source
 init|=
@@ -667,14 +667,6 @@ name|source
 argument_list|,
 name|result
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|ps
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

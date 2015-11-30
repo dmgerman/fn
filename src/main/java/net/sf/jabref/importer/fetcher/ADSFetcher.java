@@ -543,7 +543,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Exception ocurred while accessing '%0'"
+literal|"An Exception occurred while accessing '%0'"
 argument_list|,
 name|url
 argument_list|)
@@ -708,10 +708,12 @@ name|isAbstract
 init|=
 literal|false
 decl_stmt|;
-name|String
-name|abstractText
+name|StringBuilder
+name|abstractSB
 init|=
-literal|""
+operator|new
+name|StringBuilder
+argument_list|()
 decl_stmt|;
 while|while
 condition|(
@@ -733,14 +735,14 @@ operator|.
 name|isStartElement
 argument_list|()
 operator|&&
+literal|"abstract"
+operator|.
+name|equals
+argument_list|(
 name|reader
 operator|.
 name|getLocalName
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"abstract"
 argument_list|)
 condition|)
 block|{
@@ -759,14 +761,15 @@ name|isCharacters
 argument_list|()
 condition|)
 block|{
-name|abstractText
-operator|=
-name|abstractText
-operator|+
+name|abstractSB
+operator|.
+name|append
+argument_list|(
 name|reader
 operator|.
 name|getText
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 if|if
@@ -785,6 +788,14 @@ literal|false
 expr_stmt|;
 block|}
 block|}
+name|String
+name|abstractText
+init|=
+name|abstractSB
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
 name|abstractText
 operator|=
 name|abstractText
@@ -846,7 +857,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"An Exception ocurred while accessing '%0'"
+literal|"An Exception occurred while accessing '%0'"
 argument_list|,
 name|url
 argument_list|)

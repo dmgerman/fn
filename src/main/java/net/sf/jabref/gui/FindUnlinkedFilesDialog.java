@@ -1181,11 +1181,6 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * For Unit-testing only.<i>Don't remove!</i><br>      * Used via reflection in {@link net.sf.jabref.importer.DatabaseFileLookup} to construct this      * class.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 DECL|method|FindUnlinkedFilesDialog ()
 specifier|private
 name|FindUnlinkedFilesDialog
@@ -1428,8 +1423,9 @@ operator|=
 operator|new
 name|Dimension
 argument_list|(
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|dim
 index|[
@@ -1437,8 +1433,9 @@ literal|0
 index|]
 argument_list|)
 argument_list|,
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|dim
 index|[
@@ -1967,11 +1964,11 @@ operator|==
 literal|null
 operator|)
 operator|||
-name|path
+literal|""
 operator|.
 name|equals
 argument_list|(
-literal|""
+name|path
 argument_list|)
 condition|)
 block|{
@@ -3496,7 +3493,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Starts the import of bibtex entries."
+literal|"Starts the import of BibTeX entries."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3955,7 +3952,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Bibtex entry creation"
+literal|"BibTeX entry creation"
 argument_list|)
 argument_list|)
 argument_list|)

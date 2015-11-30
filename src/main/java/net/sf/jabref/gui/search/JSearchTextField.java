@@ -123,8 +123,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Search..."
+literal|"Search"
 argument_list|)
+operator|+
+literal|"..."
 expr_stmt|;
 name|this
 operator|.

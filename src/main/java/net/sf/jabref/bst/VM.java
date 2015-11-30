@@ -334,6 +334,7 @@ argument_list|)
 decl_stmt|;
 DECL|class|Identifier
 specifier|public
+specifier|static
 class|class
 name|Identifier
 block|{
@@ -371,6 +372,7 @@ block|}
 block|}
 DECL|class|Variable
 specifier|public
+specifier|static
 class|class
 name|Variable
 block|{
@@ -1929,14 +1931,14 @@ name|stack
 operator|.
 name|push
 argument_list|(
+literal|""
+operator|.
+name|equals
+argument_list|(
 name|s
 operator|.
 name|trim
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|""
 argument_list|)
 condition|?
 name|VM
@@ -5564,6 +5566,7 @@ block|}
 block|}
 DECL|class|BstEntry
 specifier|public
+specifier|static
 class|class
 name|BstEntry
 block|{

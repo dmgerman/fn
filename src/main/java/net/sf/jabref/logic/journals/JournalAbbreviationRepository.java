@@ -557,16 +557,10 @@ argument_list|(
 literal|"Duplicate journal abbreviation - old one will be overwritten by new one\nOLD: "
 operator|+
 name|previous
-operator|.
-name|toString
-argument_list|()
 operator|+
 literal|"\nNEW: "
 operator|+
 name|abbreviation
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

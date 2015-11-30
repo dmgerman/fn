@@ -545,15 +545,6 @@ name|OPEN_FOLDER
 init|=
 literal|"Open folder"
 decl_stmt|;
-DECL|field|OPEN_SPIRES_ENTRY
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|OPEN_SPIRES_ENTRY
-init|=
-literal|"Open SPIRES entry"
-decl_stmt|;
 DECL|field|OPEN_URL_OR_DOI
 specifier|public
 specifier|static
@@ -1315,15 +1306,6 @@ argument_list|(
 name|OPEN_URL_OR_DOI
 argument_list|,
 literal|"F3"
-argument_list|)
-expr_stmt|;
-name|keyBindMap
-operator|.
-name|put
-argument_list|(
-name|OPEN_SPIRES_ENTRY
-argument_list|,
-literal|"ctrl F3"
 argument_list|)
 expr_stmt|;
 name|keyBindMap

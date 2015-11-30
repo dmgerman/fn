@@ -535,11 +535,11 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not connect to "
-argument_list|)
-operator|+
+literal|"Could not connect to %0"
+argument_list|,
 name|getApplicationName
 argument_list|()
+argument_list|)
 operator|+
 literal|"."
 argument_list|)
@@ -579,11 +579,6 @@ literal|true
 return|;
 block|}
 comment|/**      * Function to get the command to be executed for pushing keys to be cited      *      * @param keyString String containing the Bibtex keys to be pushed to the application      * @return String array with the command to call and its arguments      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 DECL|method|getCommandLine (String keyString)
 specifier|protected
 name|String

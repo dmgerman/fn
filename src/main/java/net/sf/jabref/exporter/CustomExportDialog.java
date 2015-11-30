@@ -266,31 +266,11 @@ specifier|private
 name|boolean
 name|ok_pressed
 decl_stmt|;
-DECL|field|index
-specifier|private
-name|int
-name|index
-decl_stmt|;
 DECL|field|parent
 specifier|private
 specifier|final
 name|JabRefFrame
 name|parent
-decl_stmt|;
-DECL|field|oldName
-specifier|private
-name|String
-name|oldName
-decl_stmt|;
-DECL|field|oldRegexp
-specifier|private
-name|String
-name|oldRegexp
-decl_stmt|;
-DECL|field|oldField
-specifier|private
-name|String
-name|oldField
 decl_stmt|;
 DECL|method|CustomExportDialog (JabRefFrame parent_, String name_, String layoutFile_, String extension_)
 specifier|public
@@ -1166,46 +1146,6 @@ parameter_list|()
 block|{
 return|return
 name|ok_pressed
-return|;
-block|}
-DECL|method|index ()
-specifier|public
-name|int
-name|index
-parameter_list|()
-block|{
-return|return
-name|index
-return|;
-block|}
-DECL|method|oldField ()
-specifier|public
-name|String
-name|oldField
-parameter_list|()
-block|{
-return|return
-name|oldField
-return|;
-block|}
-DECL|method|oldName ()
-specifier|public
-name|String
-name|oldName
-parameter_list|()
-block|{
-return|return
-name|oldName
-return|;
-block|}
-DECL|method|oldRegexp ()
-specifier|public
-name|String
-name|oldRegexp
-parameter_list|()
-block|{
-return|return
-name|oldRegexp
 return|;
 block|}
 DECL|method|layoutFile ()

@@ -315,7 +315,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No exceptions have ocurred."
+literal|"No exceptions have occurred."
 argument_list|)
 argument_list|)
 expr_stmt|;

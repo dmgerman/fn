@@ -329,11 +329,6 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 name|List
 argument_list|<
 name|PDPage
@@ -732,6 +727,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+literal|"pdf"
+operator|.
+name|equals
+argument_list|(
 name|flEntry
 operator|.
 name|getType
@@ -742,10 +741,6 @@ argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"pdf"
 argument_list|)
 condition|)
 block|{
@@ -826,7 +821,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No preview available"
+literal|"No preview available."
 argument_list|)
 argument_list|)
 expr_stmt|;

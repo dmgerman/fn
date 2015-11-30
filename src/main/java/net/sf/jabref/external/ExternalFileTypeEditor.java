@@ -631,7 +631,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|/*int reply = JOptionPane.showConfirmDialog(ExternalFileTypeEditor.this,                         Globals.lang("All custom file types will be lost. Proceed?"),                         Globals.lang("Reset file type definitons"), JOptionPane.YES_NO_OPTION,                         JOptionPane.QUESTION_MESSAGE);*/
+comment|/*int reply = JOptionPane.showConfirmDialog(ExternalFileTypeEditor.this,                         Globals.lang("All custom file types will be lost. Proceed?"),                         Globals.lang("Reset file type definitions"), JOptionPane.YES_NO_OPTION,                         JOptionPane.QUESTION_MESSAGE);*/
 comment|//if (reply == JOptionPane.YES_OPTION) {
 name|java
 operator|.
@@ -1500,6 +1500,7 @@ block|}
 block|}
 block|}
 DECL|class|IconRenderer
+specifier|static
 class|class
 name|IconRenderer
 implements|implements

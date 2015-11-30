@@ -837,11 +837,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|label
+literal|"@PREAMBLE"
 operator|.
 name|equals
 argument_list|(
-literal|"@PREAMBLE"
+name|label
 argument_list|)
 condition|)
 block|{

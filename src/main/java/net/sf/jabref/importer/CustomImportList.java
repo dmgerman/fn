@@ -126,6 +126,7 @@ block|{
 comment|/**      * Object with data for a custom importer.      *       *<p>Is also responsible for instantiating the class loader.</p>      */
 DECL|class|Importer
 specifier|public
+specifier|static
 class|class
 name|Importer
 implements|implements

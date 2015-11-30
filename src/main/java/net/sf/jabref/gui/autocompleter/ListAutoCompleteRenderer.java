@@ -159,9 +159,7 @@ name|model
 init|=
 operator|new
 name|DefaultListModel
-argument_list|<
-name|E
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|list
@@ -173,9 +171,7 @@ name|list
 init|=
 operator|new
 name|JList
-argument_list|<
-name|E
-argument_list|>
+argument_list|<>
 argument_list|(
 name|model
 argument_list|)

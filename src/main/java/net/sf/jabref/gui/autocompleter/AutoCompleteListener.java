@@ -2158,9 +2158,6 @@ argument_list|(
 literal|"AutoCompListener: "
 operator|+
 name|res
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

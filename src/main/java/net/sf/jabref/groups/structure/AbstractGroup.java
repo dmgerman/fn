@@ -524,11 +524,6 @@ comment|// something from which this object can be reconstructed
 comment|// using fromString(String).
 comment|// by general AbstractGroup contract, equals() must be implemented
 comment|/**      * Update the group, if necessary, to handle the situation where the group      * is applied to a different BibtexDatabase than it was created for. This      * is for instance used when updating the group tree due to an external change.      *      * @param db The database to refresh for.      */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 DECL|method|refreshForNewDatabase (BibtexDatabase db)
 specifier|public
 name|void

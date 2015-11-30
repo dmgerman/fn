@@ -377,11 +377,14 @@ name|StringTokenizer
 argument_list|(
 name|absolutePath
 argument_list|,
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|File
 operator|.
 name|separatorChar
+argument_list|)
 argument_list|)
 decl_stmt|;
 while|while

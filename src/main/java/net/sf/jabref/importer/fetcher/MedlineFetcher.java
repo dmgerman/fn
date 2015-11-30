@@ -225,6 +225,7 @@ implements|implements
 name|EntryFetcher
 block|{
 DECL|class|SearchResult
+specifier|static
 class|class
 name|SearchResult
 block|{
@@ -261,11 +262,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|ids
+literal|""
 operator|.
 name|equals
 argument_list|(
-literal|""
+name|ids
 argument_list|)
 condition|)
 block|{
