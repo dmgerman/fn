@@ -3464,7 +3464,7 @@ name|put
 argument_list|(
 name|PROXY_HOSTNAME
 argument_list|,
-literal|"my proxy host"
+literal|""
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -3473,7 +3473,7 @@ name|put
 argument_list|(
 name|PROXY_PORT
 argument_list|,
-literal|"my proxy port"
+literal|"80"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -3487,8 +3487,24 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
-comment|//defaults.put(PROXY_USERNAME, "my proxy username");
-comment|//defaults.put(PROXY_PASSWORD, "my proxy password");
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|PROXY_USERNAME
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|PROXY_PASSWORD
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 name|defaults
 operator|.
 name|put
