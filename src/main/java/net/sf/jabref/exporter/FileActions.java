@@ -1399,7 +1399,6 @@ expr_stmt|;
 comment|//only append newline if the entry has changed
 if|if
 condition|(
-operator|!
 name|entry
 operator|.
 name|hasChanged
