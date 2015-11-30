@@ -999,6 +999,14 @@ init|=
 name|parseString
 argument_list|()
 decl_stmt|;
+name|bs
+operator|.
+name|setParsedSerialization
+argument_list|(
+name|dumpTextReadSoFarToString
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|database

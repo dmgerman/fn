@@ -702,6 +702,28 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//if the string has not been modified, write it back as it was
+if|if
+condition|(
+operator|!
+name|bs
+operator|.
+name|hasChanged
+argument_list|()
+condition|)
+block|{
+name|fw
+operator|.
+name|write
+argument_list|(
+name|bs
+operator|.
+name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 comment|// Then we go through the string looking for references to other strings. If we find references
 comment|// to strings that we will write, but still haven't, we write those before proceeding. This ensures
 comment|// that the string order will be acceptable for BibTeX.

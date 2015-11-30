@@ -205,6 +205,16 @@ specifier|private
 name|Type
 name|type
 decl_stmt|;
+DECL|field|parsedSerialization
+specifier|private
+name|String
+name|parsedSerialization
+decl_stmt|;
+DECL|field|hasChanged
+specifier|private
+name|boolean
+name|hasChanged
+decl_stmt|;
 DECL|method|BibtexString (String id, String name, String content)
 specifier|public
 name|BibtexString
@@ -236,6 +246,10 @@ operator|.
 name|content
 operator|=
 name|content
+expr_stmt|;
+name|hasChanged
+operator|=
+literal|true
 expr_stmt|;
 name|type
 operator|=
@@ -288,6 +302,10 @@ name|type
 operator|=
 name|type
 expr_stmt|;
+name|hasChanged
+operator|=
+literal|true
+expr_stmt|;
 block|}
 DECL|method|getId ()
 specifier|public
@@ -314,6 +332,10 @@ name|id
 operator|=
 name|id
 expr_stmt|;
+name|hasChanged
+operator|=
+literal|true
+expr_stmt|;
 block|}
 DECL|method|getName ()
 specifier|public
@@ -339,6 +361,10 @@ operator|.
 name|name
 operator|=
 name|name
+expr_stmt|;
+name|hasChanged
+operator|=
+literal|true
 expr_stmt|;
 name|type
 operator|=
@@ -381,6 +407,10 @@ name|content
 operator|=
 name|content
 expr_stmt|;
+name|hasChanged
+operator|=
+literal|true
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -410,6 +440,46 @@ parameter_list|()
 block|{
 return|return
 name|type
+return|;
+block|}
+DECL|method|setParsedSerialization (String parsedSerialization)
+specifier|public
+name|void
+name|setParsedSerialization
+parameter_list|(
+name|String
+name|parsedSerialization
+parameter_list|)
+block|{
+name|this
+operator|.
+name|parsedSerialization
+operator|=
+name|parsedSerialization
+expr_stmt|;
+name|hasChanged
+operator|=
+literal|false
+expr_stmt|;
+block|}
+DECL|method|getParsedSerialization ()
+specifier|public
+name|String
+name|getParsedSerialization
+parameter_list|()
+block|{
+return|return
+name|parsedSerialization
+return|;
+block|}
+DECL|method|hasChanged ()
+specifier|public
+name|boolean
+name|hasChanged
+parameter_list|()
+block|{
+return|return
+name|hasChanged
 return|;
 block|}
 block|}
