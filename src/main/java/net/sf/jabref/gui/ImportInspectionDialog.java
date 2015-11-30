@@ -142,6 +142,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -4089,6 +4101,10 @@ operator|new
 name|MetaData
 argument_list|()
 argument_list|,
+name|Charset
+operator|.
+name|forName
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -4098,6 +4114,7 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|DEFAULT_ENCODING
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

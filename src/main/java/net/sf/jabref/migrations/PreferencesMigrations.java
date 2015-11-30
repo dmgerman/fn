@@ -172,12 +172,14 @@ argument_list|(
 literal|";abstract"
 argument_list|)
 operator|==
+operator|(
 name|genFields
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|9
+operator|)
 condition|)
 block|{
 name|newGen

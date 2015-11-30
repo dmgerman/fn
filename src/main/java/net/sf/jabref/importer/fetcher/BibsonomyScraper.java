@@ -110,6 +110,18 @@ name|URL
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+import|;
+end_import
+
 begin_comment
 comment|/**  * Convenience class for getting BibTeX entries from the BibSonomy scraper,  * from an URL pointing to an entry.  */
 end_comment
@@ -225,7 +237,9 @@ argument_list|)
 operator|.
 name|downloadToString
 argument_list|(
-literal|"UTF8"
+name|StandardCharsets
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|BibtexParser
@@ -251,10 +265,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|pr
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|pr
 operator|.
 name|getDatabase
@@ -264,6 +281,7 @@ name|getEntryCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 return|return

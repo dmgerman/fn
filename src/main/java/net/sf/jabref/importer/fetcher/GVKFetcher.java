@@ -240,6 +240,18 @@ name|URLEncoder
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+import|;
+end_import
+
 begin_comment
 comment|/**  * Fetch or search from GVK http://gso.gbv.de/sru/DB=2.1/  */
 end_comment
@@ -522,7 +534,12 @@ index|[
 name|x
 index|]
 argument_list|,
-literal|"UTF-8"
+name|StandardCharsets
+operator|.
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

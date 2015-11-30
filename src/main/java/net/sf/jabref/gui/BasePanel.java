@@ -1118,6 +1118,18 @@ name|nio
 operator|.
 name|charset
 operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
 name|UnsupportedCharsetException
 import|;
 end_import
@@ -1209,6 +1221,7 @@ decl_stmt|;
 comment|/*      * The database shown in this panel.      */
 DECL|field|database
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|database
 decl_stmt|;
@@ -1266,7 +1279,7 @@ name|updatedExternally
 decl_stmt|;
 DECL|field|encoding
 specifier|private
-name|String
+name|Charset
 name|encoding
 decl_stmt|;
 DECL|field|gbl
@@ -1530,7 +1543,7 @@ specifier|private
 name|ContentAutoCompleters
 name|autoCompleters
 decl_stmt|;
-DECL|method|BasePanel (JabRefFrame frame, BibtexDatabase db, File file, MetaData metaData, String encoding)
+DECL|method|BasePanel (JabRefFrame frame, BibtexDatabase db, File file, MetaData metaData, Charset encoding)
 specifier|public
 name|BasePanel
 parameter_list|(
@@ -1546,7 +1559,7 @@ parameter_list|,
 name|MetaData
 name|metaData
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|)
 block|{
@@ -1884,7 +1897,7 @@ return|;
 block|}
 DECL|method|getEncoding ()
 specifier|public
-name|String
+name|Charset
 name|getEncoding
 parameter_list|()
 block|{
@@ -1892,12 +1905,12 @@ return|return
 name|encoding
 return|;
 block|}
-DECL|method|setEncoding (String encoding)
+DECL|method|setEncoding (Charset encoding)
 specifier|public
 name|void
 name|setEncoding
 parameter_list|(
-name|String
+name|Charset
 name|encoding
 parameter_list|)
 block|{
@@ -7745,7 +7758,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|saveDatabase (File file, boolean selectedOnly, String enc, FileActions.DatabaseSaveType saveType)
+DECL|method|saveDatabase (File file, boolean selectedOnly, Charset enc, FileActions.DatabaseSaveType saveType)
 specifier|private
 name|boolean
 name|saveDatabase
@@ -7756,7 +7769,7 @@ parameter_list|,
 name|boolean
 name|selectedOnly
 parameter_list|,
-name|String
+name|Charset
 name|enc
 parameter_list|,
 name|FileActions
@@ -7868,6 +7881,9 @@ argument_list|(
 literal|"Character encoding '%0' is not supported."
 argument_list|,
 name|enc
+operator|.
+name|displayName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization
@@ -8087,6 +8103,9 @@ name|session
 operator|.
 name|getEncoding
 argument_list|()
+operator|.
+name|displayName
+argument_list|()
 argument_list|)
 argument_list|)
 operator|.
@@ -8238,7 +8257,7 @@ literal|null
 argument_list|,
 name|Encodings
 operator|.
-name|ENCODINGS
+name|ENCODINGS_DISPLAYNAMES
 argument_list|,
 name|enc
 argument_list|)
@@ -8250,13 +8269,18 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|String
+name|Charset
 name|newEncoding
 init|=
+name|Charset
+operator|.
+name|forName
+argument_list|(
 operator|(
 name|String
 operator|)
 name|choice
+argument_list|)
 decl_stmt|;
 return|return
 name|saveDatabase
@@ -14054,6 +14078,10 @@ name|expFile
 argument_list|,
 literal|true
 argument_list|,
+name|Charset
+operator|.
+name|forName
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -14063,6 +14091,7 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|DEFAULT_ENCODING
+argument_list|)
 argument_list|)
 argument_list|,
 name|saveType
