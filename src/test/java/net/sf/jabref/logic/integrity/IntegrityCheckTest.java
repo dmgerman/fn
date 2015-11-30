@@ -419,6 +419,15 @@ argument_list|)
 expr_stmt|;
 name|assertCorrect
 argument_list|(
+literal|"{C}urrent {C}hronicle"
+argument_list|,
+name|IntegrityCheck
+operator|.
+name|TITLE_CHECKER
+argument_list|)
+expr_stmt|;
+name|assertCorrect
+argument_list|(
 literal|"{A Model-Driven Approach for Monitoring {ebBP} BusinessTransactions}"
 argument_list|,
 name|IntegrityCheck
