@@ -855,6 +855,33 @@ name|USE_PROXY
 init|=
 literal|"useProxy"
 decl_stmt|;
+DECL|field|PROXY_USERNAME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PROXY_USERNAME
+init|=
+literal|"proxyUsername"
+decl_stmt|;
+DECL|field|PROXY_PASSWORD
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PROXY_PASSWORD
+init|=
+literal|"proxyPassword"
+decl_stmt|;
+DECL|field|USE_PROXY_AUTHENTICATION
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|USE_PROXY_AUTHENTICATION
+init|=
+literal|"useProxyAuthentication"
+decl_stmt|;
 DECL|field|TABLE_PRIMARY_SORT_FIELD
 specifier|public
 specifier|static
@@ -3449,6 +3476,19 @@ argument_list|,
 literal|"my proxy port"
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|USE_PROXY_AUTHENTICATION
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
+comment|//defaults.put(PROXY_USERNAME, "my proxy username");
+comment|//defaults.put(PROXY_PASSWORD, "my proxy password");
 name|defaults
 operator|.
 name|put
