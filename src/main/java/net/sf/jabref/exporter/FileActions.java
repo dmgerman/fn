@@ -1380,7 +1380,7 @@ condition|(
 operator|!
 name|entry
 operator|.
-name|shouldUseCustomSerialization
+name|hasChanged
 argument_list|()
 condition|)
 block|{
@@ -2458,7 +2458,7 @@ condition|(
 operator|!
 name|be
 operator|.
-name|shouldUseCustomSerialization
+name|hasChanged
 argument_list|()
 condition|)
 block|{

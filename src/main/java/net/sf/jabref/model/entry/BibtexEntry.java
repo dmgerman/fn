@@ -363,10 +363,10 @@ name|String
 name|parsedSerialization
 decl_stmt|;
 comment|/*     * marks if the complete serialization, which was read from file, should be used.     * Is set to false, if parts of the entry change      */
-DECL|field|useCustomSerialization
+DECL|field|changed
 specifier|private
 name|boolean
-name|useCustomSerialization
+name|changed
 decl_stmt|;
 DECL|method|BibtexEntry ()
 specifier|public
@@ -429,9 +429,9 @@ name|id
 operator|=
 name|id
 expr_stmt|;
-name|useCustomSerialization
+name|changed
 operator|=
-literal|false
+literal|true
 expr_stmt|;
 name|setType
 argument_list|(
@@ -565,9 +565,9 @@ name|type
 operator|=
 name|type
 expr_stmt|;
-name|useCustomSerialization
+name|changed
 operator|=
-literal|false
+literal|true
 expr_stmt|;
 name|firePropertyChangedEvent
 argument_list|(
@@ -661,9 +661,9 @@ name|id
 operator|=
 name|id
 expr_stmt|;
-name|useCustomSerialization
+name|changed
 operator|=
-literal|false
+literal|true
 expr_stmt|;
 block|}
 comment|/**      * Returns this entry's ID.      */
@@ -1208,9 +1208,9 @@ argument_list|>
 name|fields
 parameter_list|)
 block|{
-name|useCustomSerialization
+name|changed
 operator|=
-literal|false
+literal|true
 expr_stmt|;
 name|this
 operator|.
@@ -1259,9 +1259,9 @@ literal|"' is reserved"
 argument_list|)
 throw|;
 block|}
-name|useCustomSerialization
+name|changed
 operator|=
-literal|false
+literal|true
 expr_stmt|;
 name|String
 name|oldValue
@@ -1335,9 +1335,9 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|useCustomSerialization
+name|changed
 operator|=
-literal|false
+literal|true
 expr_stmt|;
 if|if
 condition|(
@@ -2003,9 +2003,9 @@ name|String
 name|parsedSerialization
 parameter_list|)
 block|{
-name|useCustomSerialization
+name|changed
 operator|=
-literal|true
+literal|false
 expr_stmt|;
 name|this
 operator|.
@@ -2024,14 +2024,14 @@ return|return
 name|parsedSerialization
 return|;
 block|}
-DECL|method|shouldUseCustomSerialization ()
+DECL|method|hasChanged ()
 specifier|public
 name|boolean
-name|shouldUseCustomSerialization
+name|hasChanged
 parameter_list|()
 block|{
 return|return
-name|useCustomSerialization
+name|changed
 return|;
 block|}
 DECL|method|putKeywords (List<String> keywords)

@@ -548,9 +548,10 @@ block|{
 comment|// if the entry has not been modified, write it as it was
 if|if
 condition|(
+operator|!
 name|entry
 operator|.
-name|shouldUseCustomSerialization
+name|hasChanged
 argument_list|()
 condition|)
 block|{
