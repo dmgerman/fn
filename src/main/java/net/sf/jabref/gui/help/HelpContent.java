@@ -707,6 +707,16 @@ operator|.
 name|getProtocol
 argument_list|()
 argument_list|)
+operator|||
+literal|"jar"
+operator|.
+name|equals
+argument_list|(
+name|url
+operator|.
+name|getProtocol
+argument_list|()
+argument_list|)
 condition|)
 block|{
 comment|// Creating file by url.toString() and using file.getName() preserves anchors
