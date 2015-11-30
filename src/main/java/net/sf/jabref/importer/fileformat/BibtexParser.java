@@ -730,7 +730,7 @@ decl_stmt|;
 while|while
 condition|(
 name|runningIndex
-operator|>
+operator|>=
 literal|0
 condition|)
 block|{
