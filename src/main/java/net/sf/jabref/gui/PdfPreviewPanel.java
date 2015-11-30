@@ -463,7 +463,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Cannor open file/PDF document"
+literal|"Cannot open file/PDF document"
 argument_list|,
 name|e
 argument_list|)
