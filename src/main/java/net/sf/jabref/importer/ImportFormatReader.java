@@ -30,6 +30,30 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|*
@@ -1653,7 +1677,9 @@ name|getReader
 argument_list|(
 name|f
 argument_list|,
-literal|"UTF-8"
+name|StandardCharsets
+operator|.
+name|UTF_8
 argument_list|)
 return|;
 block|}
@@ -1674,11 +1700,13 @@ name|getReader
 argument_list|(
 name|f
 argument_list|,
-literal|"UTF-16"
+name|StandardCharsets
+operator|.
+name|UTF_16
 argument_list|)
 return|;
 block|}
-DECL|method|getReader (File f, String encoding)
+DECL|method|getReader (File f, Charset charset)
 specifier|public
 specifier|static
 name|InputStreamReader
@@ -1687,8 +1715,8 @@ parameter_list|(
 name|File
 name|f
 parameter_list|,
-name|String
-name|encoding
+name|Charset
+name|charset
 parameter_list|)
 throws|throws
 name|IOException
@@ -1703,7 +1731,7 @@ argument_list|(
 name|f
 argument_list|)
 argument_list|,
-name|encoding
+name|charset
 argument_list|)
 return|;
 block|}
@@ -2027,6 +2055,10 @@ argument_list|(
 name|filename
 argument_list|)
 argument_list|,
+name|Charset
+operator|.
+name|forName
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -2036,6 +2068,7 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|DEFAULT_ENCODING
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;

@@ -144,6 +144,18 @@ name|nio
 operator|.
 name|charset
 operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
 name|UnsupportedCharsetException
 import|;
 end_import
@@ -238,7 +250,7 @@ decl_stmt|;
 DECL|field|encoding
 specifier|private
 specifier|final
-name|String
+name|Charset
 name|encoding
 decl_stmt|;
 DECL|field|backup
@@ -274,14 +286,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|SaveSession (File file, String encoding, boolean backup)
+DECL|method|SaveSession (File file, Charset encoding, boolean backup)
 specifier|public
 name|SaveSession
 parameter_list|(
 name|File
 name|file
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|,
 name|boolean
@@ -366,7 +378,7 @@ return|;
 block|}
 DECL|method|getEncoding ()
 specifier|public
-name|String
+name|Charset
 name|getEncoding
 parameter_list|()
 block|{

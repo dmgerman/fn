@@ -70,6 +70,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -472,7 +484,9 @@ name|getResultsWithEncoding
 argument_list|(
 name|conn
 argument_list|,
-literal|"UTF8"
+name|StandardCharsets
+operator|.
+name|UTF_8
 argument_list|)
 expr_stmt|;
 block|}

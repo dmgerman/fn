@@ -1408,9 +1408,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Should this be done _after_ we know it was successfully opened?
-name|String
+name|Charset
 name|encoding
 init|=
+name|Charset
+operator|.
+name|forName
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -1420,6 +1424,7 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|DEFAULT_ENCODING
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -2181,7 +2186,7 @@ name|basePanel
 return|;
 block|}
 comment|/**      * Opens a new database.      */
-DECL|method|loadDatabase (File fileToOpen, String fallbackEncoding)
+DECL|method|loadDatabase (File fileToOpen, Charset defaultEncoding)
 specifier|public
 specifier|static
 name|ParserResult
@@ -2190,8 +2195,8 @@ parameter_list|(
 name|File
 name|fileToOpen
 parameter_list|,
-name|String
-name|fallbackEncoding
+name|Charset
+name|defaultEncoding
 parameter_list|)
 throws|throws
 name|IOException
@@ -2203,7 +2208,7 @@ comment|// read it regardless of encoding, with either UTF-8 or UTF-16. That's t
 comment|// 8 bit is most likely, so we try that first:
 name|Optional
 argument_list|<
-name|String
+name|Charset
 argument_list|>
 name|suppliedEncoding
 init|=
@@ -2281,7 +2286,7 @@ name|fileToOpen
 argument_list|,
 name|suppliedEncoding
 argument_list|,
-name|fallbackEncoding
+name|defaultEncoding
 argument_list|)
 init|)
 block|{
@@ -2315,9 +2320,6 @@ operator|.
 name|getEncoding
 argument_list|()
 argument_list|)
-operator|.
-name|name
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|result
@@ -2398,7 +2400,7 @@ return|;
 block|}
 block|}
 comment|/**      * Opens the file with the provided encoding. If this fails (or no encoding is provided), then the fallback encoding      * will be used.      */
-DECL|method|openFile (File fileToOpen, Optional<String> encoding, String fallbackEncoding)
+DECL|method|openFile (File fileToOpen, Optional<Charset> encoding, Charset defaultEncoding)
 specifier|private
 specifier|static
 name|InputStreamReader
@@ -2409,12 +2411,12 @@ name|fileToOpen
 parameter_list|,
 name|Optional
 argument_list|<
-name|String
+name|Charset
 argument_list|>
 name|encoding
 parameter_list|,
-name|String
-name|fallbackEncoding
+name|Charset
+name|defaultEncoding
 parameter_list|)
 throws|throws
 name|IOException
@@ -2462,7 +2464,7 @@ name|getReader
 argument_list|(
 name|fileToOpen
 argument_list|,
-name|fallbackEncoding
+name|defaultEncoding
 argument_list|)
 return|;
 block|}
@@ -2477,7 +2479,7 @@ name|getReader
 argument_list|(
 name|fileToOpen
 argument_list|,
-name|fallbackEncoding
+name|defaultEncoding
 argument_list|)
 return|;
 block|}
@@ -2488,7 +2490,7 @@ specifier|private
 specifier|static
 name|Optional
 argument_list|<
-name|String
+name|Charset
 argument_list|>
 name|getSuppliedEncoding
 parameter_list|(
@@ -2591,11 +2593,9 @@ argument_list|)
 condition|)
 block|{
 comment|// Line starts with "Encoding: ", so the rest of the line should contain the name of the encoding
-return|return
-name|Optional
-operator|.
-name|of
-argument_list|(
+name|String
+name|encoding
+init|=
 name|line
 operator|.
 name|substring
@@ -2607,9 +2607,18 @@ operator|.
 name|length
 argument_list|()
 argument_list|)
+decl_stmt|;
+return|return
+name|Optional
 operator|.
-name|trim
-argument_list|()
+name|of
+argument_list|(
+name|Charset
+operator|.
+name|forName
+argument_list|(
+name|encoding
+argument_list|)
 argument_list|)
 return|;
 block|}

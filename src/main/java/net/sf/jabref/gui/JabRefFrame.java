@@ -214,6 +214,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -10409,7 +10421,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addTab (BibtexDatabase db, File file, MetaData metaData, String encoding, boolean raisePanel)
+DECL|method|addTab (BibtexDatabase db, File file, MetaData metaData, Charset encoding, boolean raisePanel)
 specifier|public
 name|BasePanel
 name|addTab
@@ -10423,7 +10435,7 @@ parameter_list|,
 name|MetaData
 name|metaData
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|,
 name|boolean
@@ -10454,6 +10466,10 @@ condition|)
 block|{
 name|encoding
 operator|=
+name|Charset
+operator|.
+name|forName
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -10463,6 +10479,7 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|DEFAULT_ENCODING
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

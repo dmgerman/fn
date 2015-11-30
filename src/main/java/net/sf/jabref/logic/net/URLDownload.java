@@ -110,6 +110,18 @@ name|URLConnection
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
 begin_comment
 comment|/**  * Each call to a public method creates a new HTTP connection. Nothing is cached.  *  * @author Erik Putrycz erik.putrycz-at-nrc-cnrc.gc.ca  * @author Simon Harrer  */
 end_comment
@@ -308,6 +320,10 @@ block|{
 return|return
 name|downloadToString
 argument_list|(
+name|Charset
+operator|.
+name|forName
+argument_list|(
 name|Globals
 operator|.
 name|prefs
@@ -319,14 +335,15 @@ operator|.
 name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
+argument_list|)
 return|;
 block|}
-DECL|method|downloadToString (String encoding)
+DECL|method|downloadToString (Charset encoding)
 specifier|public
 name|String
 name|downloadToString
 parameter_list|(
-name|String
+name|Charset
 name|encoding
 parameter_list|)
 throws|throws
@@ -391,7 +408,7 @@ literal|""
 return|;
 block|}
 block|}
-DECL|method|copy (InputStream in, Writer out, String encoding)
+DECL|method|copy (InputStream in, Writer out, Charset encoding)
 specifier|private
 name|void
 name|copy
@@ -402,7 +419,7 @@ parameter_list|,
 name|Writer
 name|out
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|)
 throws|throws

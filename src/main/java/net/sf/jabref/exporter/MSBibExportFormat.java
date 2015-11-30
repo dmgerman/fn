@@ -40,6 +40,30 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Set
@@ -207,7 +231,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> keySet)
+DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> keySet)
 specifier|public
 name|void
 name|performExport
@@ -225,7 +249,7 @@ name|String
 name|file
 parameter_list|,
 specifier|final
-name|String
+name|Charset
 name|encoding
 parameter_list|,
 name|Set
@@ -244,7 +268,9 @@ name|ss
 init|=
 name|getSaveSession
 argument_list|(
-literal|"UTF8"
+name|StandardCharsets
+operator|.
+name|UTF_8
 argument_list|,
 operator|new
 name|File

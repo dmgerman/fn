@@ -60,6 +60,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -732,7 +744,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Returns the processed text. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
-DECL|method|doLayout (BibtexDatabase database, String encoding)
+DECL|method|doLayout (BibtexDatabase database, Charset encoding)
 specifier|public
 name|String
 name|doLayout
@@ -740,7 +752,7 @@ parameter_list|(
 name|BibtexDatabase
 name|database
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|)
 block|{

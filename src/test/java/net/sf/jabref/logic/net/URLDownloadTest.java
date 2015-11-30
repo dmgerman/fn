@@ -104,6 +104,18 @@ name|URL
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+import|;
+end_import
+
 begin_class
 DECL|class|URLDownloadTest
 specifier|public
@@ -143,7 +155,9 @@ name|dl
 operator|.
 name|downloadToString
 argument_list|(
-literal|"UTF8"
+name|StandardCharsets
+operator|.
+name|UTF_8
 argument_list|)
 operator|.
 name|contains

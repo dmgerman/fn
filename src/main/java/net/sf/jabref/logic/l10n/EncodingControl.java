@@ -106,6 +106,18 @@ name|URLConnection
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
 begin_comment
 comment|/**  * {@link Control} class allowing properties bundles to be in different encodings.  *  * @see<a href="http://stackoverflow.com/questions/4659929/how-to-use-utf-8-in-resource-properties-with-resourcebundle">utf-8  *      and property files</a>  */
 end_comment
@@ -121,14 +133,14 @@ block|{
 DECL|field|encoding
 specifier|private
 specifier|final
-name|String
+name|Charset
 name|encoding
 decl_stmt|;
-DECL|method|EncodingControl (String encoding)
+DECL|method|EncodingControl (Charset encoding)
 specifier|public
 name|EncodingControl
 parameter_list|(
-name|String
+name|Charset
 name|encoding
 parameter_list|)
 block|{

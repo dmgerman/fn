@@ -276,6 +276,18 @@ name|nio
 operator|.
 name|charset
 operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
 name|UnsupportedCharsetException
 import|;
 end_import
@@ -1133,7 +1145,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|saveDatabase (File file, boolean selectedOnly, String encoding)
+DECL|method|saveDatabase (File file, boolean selectedOnly, Charset encoding)
 specifier|private
 name|boolean
 name|saveDatabase
@@ -1144,7 +1156,7 @@ parameter_list|,
 name|boolean
 name|selectedOnly
 parameter_list|,
-name|String
+name|Charset
 name|encoding
 parameter_list|)
 throws|throws
@@ -1264,6 +1276,9 @@ argument_list|(
 literal|"Character encoding '%0' is not supported."
 argument_list|,
 name|encoding
+operator|.
+name|displayName
+argument_list|()
 argument_list|)
 argument_list|,
 name|Localization
@@ -1503,6 +1518,9 @@ name|session
 operator|.
 name|getEncoding
 argument_list|()
+operator|.
+name|displayName
+argument_list|()
 argument_list|)
 argument_list|)
 operator|.
@@ -1654,7 +1672,7 @@ literal|null
 argument_list|,
 name|Encodings
 operator|.
-name|ENCODINGS
+name|ENCODINGS_DISPLAYNAMES
 argument_list|,
 name|encoding
 argument_list|)
@@ -1666,13 +1684,18 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|String
+name|Charset
 name|newEncoding
 init|=
+name|Charset
+operator|.
+name|forName
+argument_list|(
 operator|(
 name|String
 operator|)
 name|choice
+argument_list|)
 decl_stmt|;
 return|return
 name|saveDatabase
