@@ -922,10 +922,7 @@ name|parserResult
 return|;
 block|}
 comment|// Bibtex related contents.
-name|database
-operator|=
-operator|new
-name|BibtexDatabase
+name|initializeParserResult
 argument_list|()
 expr_stmt|;
 name|HashMap
@@ -941,26 +938,6 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|entryTypes
-operator|=
-operator|new
-name|HashMap
-argument_list|<>
-argument_list|()
-expr_stmt|;
-comment|// To store custem entry types parsed.
-name|parserResult
-operator|=
-operator|new
-name|ParserResult
-argument_list|(
-name|database
-argument_list|,
-literal|null
-argument_list|,
-name|entryTypes
-argument_list|)
-expr_stmt|;
 comment|// First see if we can find the version number of the JabRef version that
 comment|// wrote the file:
 name|String
@@ -1670,6 +1647,39 @@ name|kce
 argument_list|)
 throw|;
 block|}
+block|}
+DECL|method|initializeParserResult ()
+specifier|private
+name|void
+name|initializeParserResult
+parameter_list|()
+block|{
+name|database
+operator|=
+operator|new
+name|BibtexDatabase
+argument_list|()
+expr_stmt|;
+name|entryTypes
+operator|=
+operator|new
+name|HashMap
+argument_list|<>
+argument_list|()
+expr_stmt|;
+comment|// To store custem entry types parsed.
+name|parserResult
+operator|=
+operator|new
+name|ParserResult
+argument_list|(
+name|database
+argument_list|,
+literal|null
+argument_list|,
+name|entryTypes
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|skipWhitespace ()
 specifier|private
