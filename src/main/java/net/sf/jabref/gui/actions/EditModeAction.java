@@ -99,7 +99,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Switch_to_%0_mode"
+literal|"Switch to %0 mode"
 argument_list|,
 name|getOppositeMode
 argument_list|()
@@ -167,7 +167,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Switch_to_%0_mode"
+literal|"Switch to %0 mode"
 argument_list|,
 name|getOppositeMode
 argument_list|()
@@ -185,7 +185,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"You have toggled an edit mode switch."
+literal|"You have toggled the %0 mode."
+argument_list|,
+name|getMode
+argument_list|()
 argument_list|)
 operator|.
 name|concat
@@ -202,7 +205,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Switch edit mode"
+literal|"%0 mode"
+argument_list|,
+name|getMode
+argument_list|()
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -245,6 +251,26 @@ condition|?
 literal|"BibTeX"
 else|:
 literal|"Biblatex"
+decl_stmt|;
+return|return
+name|mode
+return|;
+block|}
+DECL|method|getMode ()
+specifier|private
+name|String
+name|getMode
+parameter_list|()
+block|{
+name|String
+name|mode
+init|=
+name|isBiblatexMode
+argument_list|()
+condition|?
+literal|"Biblatex"
+else|:
+literal|"BibTeX"
 decl_stmt|;
 return|return
 name|mode
