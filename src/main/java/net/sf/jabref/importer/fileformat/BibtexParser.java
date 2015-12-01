@@ -576,7 +576,7 @@ name|Collection
 argument_list|<
 name|BibtexEntry
 argument_list|>
-name|c
+name|entries
 init|=
 name|BibtexParser
 operator|.
@@ -588,12 +588,12 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-name|c
+name|entries
 operator|==
 literal|null
 operator|)
 operator|||
-name|c
+name|entries
 operator|.
 name|isEmpty
 argument_list|()
@@ -604,7 +604,7 @@ literal|null
 return|;
 block|}
 return|return
-name|c
+name|entries
 operator|.
 name|iterator
 argument_list|()
@@ -614,14 +614,14 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
-DECL|method|isRecognizedFormat (Reader inOrig)
+DECL|method|isRecognizedFormat (Reader reader)
 specifier|public
 specifier|static
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
 name|Reader
-name|inOrig
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -633,11 +633,11 @@ init|=
 operator|new
 name|BufferedReader
 argument_list|(
-name|inOrig
+name|reader
 argument_list|)
 decl_stmt|;
 name|Pattern
-name|pat1
+name|formatPattern
 init|=
 name|Pattern
 operator|.
@@ -647,12 +647,12 @@ literal|"@[a-zA-Z]*\\s*\\{"
 argument_list|)
 decl_stmt|;
 name|String
-name|str
+name|bibtexString
 decl_stmt|;
 while|while
 condition|(
 operator|(
-name|str
+name|bibtexString
 operator|=
 name|in
 operator|.
@@ -665,11 +665,11 @@ condition|)
 block|{
 if|if
 condition|(
-name|pat1
+name|formatPattern
 operator|.
 name|matcher
 argument_list|(
-name|str
+name|bibtexString
 argument_list|)
 operator|.
 name|find
@@ -964,14 +964,14 @@ expr_stmt|;
 comment|// First see if we can find the version number of the JabRef version that
 comment|// wrote the file:
 name|String
-name|versionNum
+name|versionNumber
 init|=
 name|readJabRefVersionNumber
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|versionNum
+name|versionNumber
 operator|!=
 literal|null
 condition|)
@@ -980,7 +980,7 @@ name|parserResult
 operator|.
 name|setJabrefVersion
 argument_list|(
-name|versionNum
+name|versionNumber
 argument_list|)
 expr_stmt|;
 name|setMajorMinorVersions
@@ -1024,7 +1024,7 @@ name|parseTextToken
 argument_list|()
 decl_stmt|;
 name|EntryType
-name|tp
+name|type
 init|=
 name|EntryTypes
 operator|.
@@ -1036,7 +1036,7 @@ decl_stmt|;
 name|boolean
 name|isEntry
 init|=
-name|tp
+name|type
 operator|!=
 literal|null
 decl_stmt|;
@@ -1087,12 +1087,12 @@ argument_list|)
 condition|)
 block|{
 name|BibtexString
-name|bs
+name|bibtexString
 init|=
 name|parseString
 argument_list|()
 decl_stmt|;
-name|bs
+name|bibtexString
 operator|.
 name|setParsedSerialization
 argument_list|(
@@ -1106,7 +1106,7 @@ name|database
 operator|.
 name|addString
 argument_list|(
-name|bs
+name|bibtexString
 argument_list|)
 expr_stmt|;
 block|}
@@ -1129,7 +1129,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|bs
+name|bibtexString
 operator|.
 name|getName
 argument_list|()
@@ -1152,7 +1152,7 @@ argument_list|)
 condition|)
 block|{
 name|StringBuffer
-name|commentBuf
+name|buffer
 init|=
 name|parseBracketedTextExactly
 argument_list|()
@@ -1161,7 +1161,7 @@ comment|/**                          *                          * Metadata are u
 name|String
 name|comment
 init|=
-name|commentBuf
+name|buffer
 operator|.
 name|toString
 argument_list|()
@@ -1426,7 +1426,7 @@ comment|// appear
 comment|// at the bottom of the file. So we use an
 comment|// UnknownEntryType
 comment|// to remember the type name by.
-name|tp
+name|type
 operator|=
 operator|new
 name|UnknownEntryType
@@ -1455,11 +1455,11 @@ comment|/**                      * Morten Alver 13 Aug 2006: Trying to make the 
 try|try
 block|{
 name|BibtexEntry
-name|be
+name|entry
 init|=
 name|parseEntry
 argument_list|(
-name|tp
+name|type
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -1469,10 +1469,10 @@ name|database
 operator|.
 name|insertEntry
 argument_list|(
-name|be
+name|entry
 argument_list|)
 decl_stmt|;
-name|be
+name|entry
 operator|.
 name|setParsedSerialization
 argument_list|(
@@ -1482,7 +1482,7 @@ argument_list|)
 expr_stmt|;
 name|lastParsedEntry
 operator|=
-name|be
+name|entry
 expr_stmt|;
 if|if
 condition|(
@@ -1493,7 +1493,7 @@ name|parserResult
 operator|.
 name|addDuplicateKey
 argument_list|(
-name|be
+name|entry
 operator|.
 name|getCiteKey
 argument_list|()
@@ -1504,7 +1504,7 @@ elseif|else
 if|if
 condition|(
 operator|(
-name|be
+name|entry
 operator|.
 name|getCiteKey
 argument_list|()
@@ -1516,7 +1516,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|be
+name|entry
 operator|.
 name|getCiteKey
 argument_list|()
@@ -1536,7 +1536,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|be
+name|entry
 operator|.
 name|getAuthorTitleYear
 argument_list|(
@@ -1680,14 +1680,14 @@ throws|throws
 name|IOException
 block|{
 name|int
-name|c
+name|character
 decl_stmt|;
 while|while
 condition|(
 literal|true
 condition|)
 block|{
-name|c
+name|character
 operator|=
 name|read
 argument_list|()
@@ -1696,7 +1696,7 @@ if|if
 condition|(
 name|isEOFCharacter
 argument_list|(
-name|c
+name|character
 argument_list|)
 condition|)
 block|{
@@ -1715,7 +1715,7 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 condition|)
 block|{
@@ -1726,53 +1726,50 @@ block|{
 comment|// found non-whitespace char
 name|unread
 argument_list|(
-name|c
+name|character
 argument_list|)
 expr_stmt|;
 break|break;
 block|}
 block|}
 block|}
-DECL|method|isEOFCharacter (int c)
+DECL|method|isEOFCharacter (int character)
 specifier|private
 name|boolean
 name|isEOFCharacter
 parameter_list|(
 name|int
-name|c
+name|character
 parameter_list|)
 block|{
 return|return
 operator|(
-name|c
+name|character
 operator|==
 operator|-
 literal|1
 operator|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|65535
 operator|)
 return|;
 block|}
-DECL|method|skipAndRecordWhitespace (int j)
+DECL|method|skipAndRecordWhitespace (int character)
 specifier|private
 name|String
 name|skipAndRecordWhitespace
 parameter_list|(
 name|int
-name|j
+name|character
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|int
-name|c
-decl_stmt|;
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
@@ -1780,19 +1777,19 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|j
+name|character
 operator|!=
 literal|' '
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
 operator|(
 name|char
 operator|)
-name|j
+name|character
 argument_list|)
 expr_stmt|;
 block|}
@@ -1801,16 +1798,17 @@ condition|(
 literal|true
 condition|)
 block|{
-name|c
-operator|=
+name|int
+name|nextCharacter
+init|=
 name|read
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|isEOFCharacter
 argument_list|(
-name|c
+name|nextCharacter
 argument_list|)
 condition|)
 block|{
@@ -1819,7 +1817,7 @@ operator|=
 literal|true
 expr_stmt|;
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -1834,25 +1832,25 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|nextCharacter
 argument_list|)
 condition|)
 block|{
 if|if
 condition|(
-name|c
+name|nextCharacter
 operator|!=
 literal|' '
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|nextCharacter
 argument_list|)
 expr_stmt|;
 block|}
@@ -1863,14 +1861,14 @@ block|{
 comment|// found non-whitespace char
 name|unread
 argument_list|(
-name|c
+name|nextCharacter
 argument_list|)
 expr_stmt|;
 break|break;
 block|}
 block|}
 return|return
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -1885,18 +1883,18 @@ throws|throws
 name|IOException
 block|{
 name|int
-name|c
+name|character
 init|=
 name|read
 argument_list|()
 decl_stmt|;
 name|unread
 argument_list|(
-name|c
+name|character
 argument_list|)
 expr_stmt|;
 return|return
-name|c
+name|character
 return|;
 block|}
 DECL|method|read ()
@@ -1908,7 +1906,7 @@ throws|throws
 name|IOException
 block|{
 name|int
-name|c
+name|character
 init|=
 name|pushbackReader
 operator|.
@@ -1926,13 +1924,13 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|c
+name|character
 operator|==
 literal|'\n'
 condition|)
@@ -1942,23 +1940,23 @@ operator|++
 expr_stmt|;
 block|}
 return|return
-name|c
+name|character
 return|;
 block|}
-DECL|method|unread (int c)
+DECL|method|unread (int character)
 specifier|private
 name|void
 name|unread
 parameter_list|(
 name|int
-name|c
+name|character
 parameter_list|)
 throws|throws
 name|IOException
 block|{
 if|if
 condition|(
-name|c
+name|character
 operator|==
 literal|'\n'
 condition|)
@@ -1971,7 +1969,7 @@ name|pushbackReader
 operator|.
 name|unread
 argument_list|(
-name|c
+name|character
 argument_list|)
 expr_stmt|;
 name|pureTextFromFile
@@ -2072,13 +2070,13 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|parseEntry (EntryType tp)
+DECL|method|parseEntry (EntryType entryType)
 specifier|private
 name|BibtexEntry
 name|parseEntry
 parameter_list|(
 name|EntryType
-name|tp
+name|entryType
 parameter_list|)
 throws|throws
 name|IOException
@@ -2099,7 +2097,7 @@ name|BibtexEntry
 argument_list|(
 name|id
 argument_list|,
-name|tp
+name|entryType
 argument_list|)
 decl_stmt|;
 name|skipWhitespace
@@ -2113,7 +2111,7 @@ literal|'('
 argument_list|)
 expr_stmt|;
 name|int
-name|c
+name|character
 init|=
 name|peek
 argument_list|()
@@ -2121,13 +2119,13 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-name|c
+name|character
 operator|!=
 literal|'\n'
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 literal|'\r'
 operator|)
@@ -2177,7 +2175,7 @@ condition|(
 literal|true
 condition|)
 block|{
-name|c
+name|character
 operator|=
 name|peek
 argument_list|()
@@ -2185,13 +2183,13 @@ expr_stmt|;
 if|if
 condition|(
 operator|(
-name|c
+name|character
 operator|==
 literal|'}'
 operator|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|')'
 operator|)
@@ -2201,7 +2199,7 @@ break|break;
 block|}
 if|if
 condition|(
-name|c
+name|character
 operator|==
 literal|','
 condition|)
@@ -2215,7 +2213,7 @@ block|}
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
-name|c
+name|character
 operator|=
 name|peek
 argument_list|()
@@ -2223,13 +2221,13 @@ expr_stmt|;
 if|if
 condition|(
 operator|(
-name|c
+name|character
 operator|==
 literal|'}'
 operator|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|')'
 operator|)
@@ -2419,13 +2417,13 @@ name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|int
-name|c
+name|character
 decl_stmt|;
 while|while
 condition|(
 operator|(
 operator|(
-name|c
+name|character
 operator|=
 name|peek
 argument_list|()
@@ -2435,13 +2433,13 @@ literal|','
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 literal|'}'
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 literal|')'
 operator|)
@@ -2466,7 +2464,7 @@ throw|;
 block|}
 if|if
 condition|(
-name|c
+name|character
 operator|==
 literal|'"'
 condition|)
@@ -2496,7 +2494,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|c
+name|character
 operator|==
 literal|'{'
 condition|)
@@ -2535,13 +2533,13 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 condition|)
 block|{
 comment|// value is a number
 name|String
-name|numString
+name|number
 init|=
 name|parseTextToken
 argument_list|()
@@ -2550,14 +2548,14 @@ name|value
 operator|.
 name|append
 argument_list|(
-name|numString
+name|number
 argument_list|)
 expr_stmt|;
 block|}
 elseif|else
 if|if
 condition|(
-name|c
+name|character
 operator|==
 literal|'#'
 condition|)
@@ -2727,31 +2725,31 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Check if a string at any point has had more ending braces (}) than      * opening ones ({). Will e.g. return true for the string "DNA} blahblal      * {EPA"      *      * @param s The string to check.      * @return true if at any index the brace count is negative.      */
-DECL|method|hasNegativeBraceCount (String s)
+comment|/**      * Check if a string at any point has had more ending braces (}) than      * opening ones ({). Will e.g. return true for the string "DNA} blahblal      * {EPA"      *      * @param toCheck The string to check.      * @return true if at any index the brace count is negative.      */
+DECL|method|hasNegativeBraceCount (String toCheck)
 specifier|private
 name|boolean
 name|hasNegativeBraceCount
 parameter_list|(
 name|String
-name|s
+name|toCheck
 parameter_list|)
 block|{
 name|int
-name|i
+name|index
 init|=
 literal|0
 decl_stmt|;
 name|int
-name|count
+name|braceCount
 init|=
 literal|0
 decl_stmt|;
 while|while
 condition|(
-name|i
+name|index
 operator|<
-name|s
+name|toCheck
 operator|.
 name|length
 argument_list|()
@@ -2759,40 +2757,40 @@ condition|)
 block|{
 if|if
 condition|(
-name|s
+name|toCheck
 operator|.
 name|charAt
 argument_list|(
-name|i
+name|index
 argument_list|)
 operator|==
 literal|'{'
 condition|)
 block|{
-name|count
+name|braceCount
 operator|++
 expr_stmt|;
 block|}
 elseif|else
 if|if
 condition|(
-name|s
+name|toCheck
 operator|.
 name|charAt
 argument_list|(
-name|i
+name|index
 argument_list|)
 operator|==
 literal|'}'
 condition|)
 block|{
-name|count
+name|braceCount
 operator|--
 expr_stmt|;
 block|}
 if|if
 condition|(
-name|count
+name|braceCount
 operator|<
 literal|0
 condition|)
@@ -2801,7 +2799,7 @@ return|return
 literal|true
 return|;
 block|}
-name|i
+name|index
 operator|++
 expr_stmt|;
 block|}
@@ -2818,7 +2816,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// TODO: why default capacity of 20?
 name|StringBuilder
 name|token
 init|=
@@ -2834,7 +2831,7 @@ literal|true
 condition|)
 block|{
 name|int
-name|c
+name|character
 init|=
 name|read
 argument_list|()
@@ -2842,7 +2839,7 @@ decl_stmt|;
 comment|// Util.pr(".. "+c);
 if|if
 condition|(
-name|c
+name|character
 operator|==
 operator|-
 literal|1
@@ -2868,53 +2865,53 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|':'
 operator|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|'-'
 operator|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|'_'
 operator|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|'*'
 operator|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|'+'
 operator|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|'.'
 operator|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|'/'
 operator|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|'\''
 operator|)
@@ -2927,7 +2924,7 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 expr_stmt|;
 block|}
@@ -2935,7 +2932,7 @@ else|else
 block|{
 name|unread
 argument_list|(
-name|c
+name|character
 argument_list|)
 expr_stmt|;
 return|return
@@ -2964,7 +2961,7 @@ name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|int
-name|lookahead_used
+name|lookaheadUsed
 init|=
 literal|0
 decl_stmt|;
@@ -2989,7 +2986,7 @@ argument_list|(
 name|currentChar
 argument_list|)
 expr_stmt|;
-name|lookahead_used
+name|lookaheadUsed
 operator|++
 expr_stmt|;
 block|}
@@ -3014,7 +3011,7 @@ literal|'='
 operator|)
 operator|&&
 operator|(
-name|lookahead_used
+name|lookaheadUsed
 operator|<
 name|BibtexParser
 operator|.
@@ -3280,18 +3277,18 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * removes whitespaces from<code>sb</code>      *      * @param sb      * @return      */
-DECL|method|removeWhitespaces (StringBuilder sb)
+comment|/**      * returns a new<code>StringBuilder</code> which corresponds to<code>toRemove</code> without whitespaces      *      * @param toRemove      * @return      */
+DECL|method|removeWhitespaces (StringBuilder toRemove)
 specifier|private
 name|StringBuilder
 name|removeWhitespaces
 parameter_list|(
 name|StringBuilder
-name|sb
+name|toRemove
 parameter_list|)
 block|{
 name|StringBuilder
-name|newSb
+name|result
 init|=
 operator|new
 name|StringBuilder
@@ -3309,7 +3306,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|sb
+name|toRemove
 operator|.
 name|length
 argument_list|()
@@ -3320,7 +3317,7 @@ control|)
 block|{
 name|current
 operator|=
-name|sb
+name|toRemove
 operator|.
 name|charAt
 argument_list|(
@@ -3338,7 +3335,7 @@ name|current
 argument_list|)
 condition|)
 block|{
-name|newSb
+name|result
 operator|.
 name|append
 argument_list|(
@@ -3348,17 +3345,17 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|newSb
+name|result
 return|;
 block|}
-comment|/**      * pushes buffer back into input      *      * @param sb      * @throws IOException can be thrown if buffer is bigger than LOOKAHEAD      */
-DECL|method|unreadBuffer (StringBuilder sb)
+comment|/**      * pushes buffer back into input      *      * @param stringBuilder      * @throws IOException can be thrown if buffer is bigger than LOOKAHEAD      */
+DECL|method|unreadBuffer (StringBuilder stringBuilder)
 specifier|private
 name|void
 name|unreadBuffer
 parameter_list|(
 name|StringBuilder
-name|sb
+name|stringBuilder
 parameter_list|)
 throws|throws
 name|IOException
@@ -3368,7 +3365,7 @@ control|(
 name|int
 name|i
 init|=
-name|sb
+name|stringBuilder
 operator|.
 name|length
 argument_list|()
@@ -3385,7 +3382,7 @@ control|)
 block|{
 name|unread
 argument_list|(
-name|sb
+name|stringBuilder
 operator|.
 name|charAt
 argument_list|(
@@ -3419,7 +3416,7 @@ literal|true
 condition|)
 block|{
 name|int
-name|c
+name|character
 init|=
 name|read
 argument_list|()
@@ -3427,7 +3424,7 @@ decl_stmt|;
 comment|// Util.pr(".. '"+(char)c+"'\t"+c);
 if|if
 condition|(
-name|c
+name|character
 operator|==
 operator|-
 literal|1
@@ -3457,7 +3454,7 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 operator|&&
 operator|(
@@ -3468,60 +3465,60 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|':'
 operator|)
 operator|||
 operator|(
 operator|(
-name|c
+name|character
 operator|!=
 literal|'#'
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 literal|'{'
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 literal|'}'
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 literal|'\uFFFD'
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 literal|'~'
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 literal|'\uFFFD'
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 literal|','
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 literal|'='
 operator|)
@@ -3536,7 +3533,7 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 expr_stmt|;
 block|}
@@ -3551,7 +3548,7 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 condition|)
 block|{
@@ -3570,14 +3567,14 @@ block|}
 elseif|else
 if|if
 condition|(
-name|c
+name|character
 operator|==
 literal|','
 condition|)
 block|{
 name|unread
 argument_list|(
-name|c
+name|character
 argument_list|)
 expr_stmt|;
 return|return
@@ -3590,7 +3587,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|c
+name|character
 operator|==
 literal|'='
 condition|)
@@ -3621,7 +3618,7 @@ operator|+
 operator|(
 name|char
 operator|)
-name|c
+name|character
 operator|+
 literal|"' is not "
 operator|+
@@ -3677,7 +3674,7 @@ operator|)
 condition|)
 block|{
 name|int
-name|j
+name|character
 init|=
 name|read
 argument_list|()
@@ -3686,7 +3683,7 @@ if|if
 condition|(
 name|isEOFCharacter
 argument_list|(
-name|j
+name|character
 argument_list|)
 condition|)
 block|{
@@ -3705,7 +3702,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|j
+name|character
 operator|==
 literal|'{'
 condition|)
@@ -3717,7 +3714,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|j
+name|character
 operator|==
 literal|'}'
 condition|)
@@ -3738,16 +3735,16 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|j
+name|character
 argument_list|)
 condition|)
 block|{
 name|String
-name|whs
+name|whitespacesReduced
 init|=
 name|skipAndRecordWhitespace
 argument_list|(
-name|j
+name|character
 argument_list|)
 decl_stmt|;
 if|if
@@ -3757,7 +3754,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|whs
+name|whitespacesReduced
 argument_list|)
 operator|&&
 operator|!
@@ -3765,14 +3762,14 @@ literal|"\n\t"
 operator|.
 name|equals
 argument_list|(
-name|whs
+name|whitespacesReduced
 argument_list|)
 condition|)
 block|{
 comment|//&&
-name|whs
+name|whitespacesReduced
 operator|=
-name|whs
+name|whitespacesReduced
 operator|.
 name|replaceAll
 argument_list|(
@@ -3786,7 +3783,7 @@ name|value
 operator|.
 name|append
 argument_list|(
-name|whs
+name|whitespacesReduced
 argument_list|)
 expr_stmt|;
 block|}
@@ -3810,7 +3807,7 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|j
+name|character
 argument_list|)
 expr_stmt|;
 block|}
@@ -3869,7 +3866,7 @@ operator|)
 condition|)
 block|{
 name|int
-name|j
+name|character
 init|=
 name|read
 argument_list|()
@@ -3878,7 +3875,7 @@ if|if
 condition|(
 name|isEOFCharacter
 argument_list|(
-name|j
+name|character
 argument_list|)
 condition|)
 block|{
@@ -3897,7 +3894,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|j
+name|character
 operator|==
 literal|'{'
 condition|)
@@ -3909,7 +3906,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|j
+name|character
 operator|==
 literal|'}'
 condition|)
@@ -3925,7 +3922,7 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|j
+name|character
 argument_list|)
 expr_stmt|;
 block|}
@@ -4064,14 +4061,14 @@ throws|throws
 name|IOException
 block|{
 name|int
-name|c
+name|character
 init|=
 name|read
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|c
+name|character
 operator|!=
 name|expected
 condition|)
@@ -4093,7 +4090,7 @@ operator|+
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 throw|;
 block|}
@@ -4110,13 +4107,13 @@ throws|throws
 name|IOException
 block|{
 name|int
-name|c
+name|character
 decl_stmt|;
 while|while
 condition|(
 operator|(
 operator|(
-name|c
+name|character
 operator|=
 name|read
 argument_list|()
@@ -4126,14 +4123,14 @@ name|expected
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 operator|-
 literal|1
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 literal|65535
 operator|)
@@ -4145,7 +4142,7 @@ if|if
 condition|(
 name|isEOFCharacter
 argument_list|(
-name|c
+name|character
 argument_list|)
 condition|)
 block|{
@@ -4156,28 +4153,28 @@ expr_stmt|;
 block|}
 comment|// Return true if we actually found the character we were looking for:
 return|return
-name|c
+name|character
 operator|==
 name|expected
 return|;
 block|}
-DECL|method|consume (char expected1, char expected2)
+DECL|method|consume (char firstOption, char secondOption)
 specifier|private
 name|void
 name|consume
 parameter_list|(
 name|char
-name|expected1
+name|firstOption
 parameter_list|,
 name|char
-name|expected2
+name|secondOption
 parameter_list|)
 throws|throws
 name|IOException
 block|{
 comment|// Consumes one of the two, doesn't care which appears.
 name|int
-name|c
+name|character
 init|=
 name|read
 argument_list|()
@@ -4185,15 +4182,15 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-name|c
+name|character
 operator|!=
-name|expected1
+name|firstOption
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
-name|expected2
+name|secondOption
 operator|)
 condition|)
 block|{
@@ -4207,32 +4204,32 @@ name|line
 operator|+
 literal|": Expected "
 operator|+
-name|expected1
+name|firstOption
 operator|+
 literal|" or "
 operator|+
-name|expected2
+name|secondOption
 operator|+
 literal|" but received "
 operator|+
-name|c
+name|character
 argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|checkEntryTypes (ParserResult _pr)
+DECL|method|checkEntryTypes (ParserResult parserResult)
 specifier|private
 name|void
 name|checkEntryTypes
 parameter_list|(
 name|ParserResult
-name|_pr
+name|parserResult
 parameter_list|)
 block|{
 for|for
 control|(
 name|BibtexEntry
-name|be
+name|bibtexEntry
 range|:
 name|database
 operator|.
@@ -4242,7 +4239,7 @@ control|)
 block|{
 if|if
 condition|(
-name|be
+name|bibtexEntry
 operator|.
 name|getType
 argument_list|()
@@ -4254,7 +4251,7 @@ comment|// Look up the unknown type name in our map of parsed types:
 name|String
 name|name
 init|=
-name|be
+name|bibtexEntry
 operator|.
 name|getType
 argument_list|()
@@ -4279,7 +4276,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|be
+name|bibtexEntry
 operator|.
 name|setType
 argument_list|(
@@ -4289,7 +4286,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|_pr
+name|parserResult
 operator|.
 name|addWarning
 argument_list|(
@@ -4306,7 +4303,7 @@ name|name
 operator|+
 literal|"; key: "
 operator|+
-name|be
+name|bibtexEntry
 operator|.
 name|getCiteKey
 argument_list|()
@@ -4333,7 +4330,7 @@ name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|boolean
-name|keepon
+name|keepOn
 init|=
 literal|true
 decl_stmt|;
@@ -4343,16 +4340,16 @@ init|=
 literal|0
 decl_stmt|;
 name|int
-name|c
+name|character
 decl_stmt|;
 comment|// We start by reading the standard part of the signature, which precedes
 comment|// the version number: This file was created with JabRef X.y.
 while|while
 condition|(
-name|keepon
+name|keepOn
 condition|)
 block|{
-name|c
+name|character
 operator|=
 name|peek
 argument_list|()
@@ -4364,7 +4361,7 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 expr_stmt|;
 if|if
@@ -4383,11 +4380,11 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 operator|||
 operator|(
-name|c
+name|character
 operator|==
 literal|'%'
 operator|)
@@ -4401,7 +4398,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|c
+name|character
 operator|==
 name|Globals
 operator|.
@@ -4439,13 +4436,13 @@ name|length
 argument_list|()
 condition|)
 block|{
-name|keepon
+name|keepOn
 operator|=
 literal|false
 expr_stmt|;
 comment|// Found the standard part. Now read the version number:
 name|StringBuilder
-name|sb
+name|stringBuilder
 init|=
 operator|new
 name|StringBuilder
@@ -4455,7 +4452,7 @@ while|while
 condition|(
 operator|(
 operator|(
-name|c
+name|character
 operator|=
 name|read
 argument_list|()
@@ -4465,28 +4462,28 @@ literal|'\n'
 operator|)
 operator|&&
 operator|(
-name|c
+name|character
 operator|!=
 operator|-
 literal|1
 operator|)
 condition|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
 operator|(
 name|char
 operator|)
-name|c
+name|character
 argument_list|)
 expr_stmt|;
 block|}
 name|String
-name|versionNum
+name|versionNumber
 init|=
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -4506,7 +4503,7 @@ argument_list|)
 operator|.
 name|matcher
 argument_list|(
-name|versionNum
+name|versionNumber
 argument_list|)
 operator|.
 name|matches
@@ -4515,13 +4512,13 @@ condition|)
 block|{
 comment|// It matched. Remove the last period and return:
 return|return
-name|versionNum
+name|versionNumber
 operator|.
 name|substring
 argument_list|(
 literal|0
 argument_list|,
-name|versionNum
+name|versionNumber
 operator|.
 name|length
 argument_list|()
@@ -4542,7 +4539,7 @@ argument_list|)
 operator|.
 name|matcher
 argument_list|(
-name|versionNum
+name|versionNumber
 argument_list|)
 operator|.
 name|matches
@@ -4551,13 +4548,13 @@ condition|)
 block|{
 comment|// It matched. Remove the last period and return:
 return|return
-name|versionNum
+name|versionNumber
 operator|.
 name|substring
 argument_list|(
 literal|0
 argument_list|,
-name|versionNum
+name|versionNumber
 operator|.
 name|length
 argument_list|()
@@ -4580,7 +4577,7 @@ name|setMajorMinorVersions
 parameter_list|()
 block|{
 name|String
-name|v
+name|version
 init|=
 name|parserResult
 operator|.
@@ -4588,7 +4585,7 @@ name|getJabrefVersion
 argument_list|()
 decl_stmt|;
 name|Pattern
-name|p
+name|versionPattern
 init|=
 name|Pattern
 operator|.
@@ -4598,18 +4595,18 @@ literal|"([0-9]+)\\.([0-9]+).*"
 argument_list|)
 decl_stmt|;
 name|Matcher
-name|m
+name|matcher
 init|=
-name|p
+name|versionPattern
 operator|.
 name|matcher
 argument_list|(
-name|v
+name|version
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|m
+name|matcher
 operator|.
 name|matches
 argument_list|()
@@ -4617,7 +4614,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|m
+name|matcher
 operator|.
 name|groupCount
 argument_list|()
@@ -4633,7 +4630,7 @@ name|Integer
 operator|.
 name|parseInt
 argument_list|(
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -4650,7 +4647,7 @@ name|Integer
 operator|.
 name|parseInt
 argument_list|(
-name|m
+name|matcher
 operator|.
 name|group
 argument_list|(
