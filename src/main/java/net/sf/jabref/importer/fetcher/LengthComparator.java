@@ -26,6 +26,7 @@ end_import
 
 begin_class
 DECL|class|LengthComparator
+specifier|public
 class|class
 name|LengthComparator
 implements|implements
