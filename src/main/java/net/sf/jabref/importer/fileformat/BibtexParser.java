@@ -723,32 +723,9 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|// First see if we can find the version number of the JabRef version that
-comment|// wrote the file:
-name|String
-name|versionNumber
-init|=
-name|readJabRefVersionNumber
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|versionNumber
-operator|!=
-literal|null
-condition|)
-block|{
-name|parserResult
-operator|.
-name|setJabrefVersion
-argument_list|(
-name|versionNumber
-argument_list|)
-expr_stmt|;
-name|setMajorMinorVersions
+name|setVersionNumber
 argument_list|()
 expr_stmt|;
-block|}
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -1465,6 +1442,41 @@ argument_list|,
 name|entryTypes
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|setVersionNumber ()
+specifier|private
+name|void
+name|setVersionNumber
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+comment|// First see if we can find the version number of the JabRef version that
+comment|// wrote the file:
+name|String
+name|versionNumber
+init|=
+name|readJabRefVersionNumber
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|versionNumber
+operator|!=
+literal|null
+condition|)
+block|{
+name|parserResult
+operator|.
+name|setJabrefVersion
+argument_list|(
+name|versionNumber
+argument_list|)
+expr_stmt|;
+name|setMajorMinorVersions
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Puts all text that has been read from the reader, including newlines, etc., since the last call of this method into a string.      * Removes the JabRef file header, if it is found      *      * @return the text read so far      */
 DECL|method|dumpTextReadSoFarToString ()
