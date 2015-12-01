@@ -97,7 +97,7 @@ name|NAME
 argument_list|,
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Switch to %0 mode"
 argument_list|,
@@ -165,7 +165,7 @@ name|NAME
 argument_list|,
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Switch to %0 mode"
 argument_list|,
@@ -250,7 +250,7 @@ argument_list|()
 condition|?
 literal|"BibTeX"
 else|:
-literal|"Biblatex"
+literal|"BibLaTeX"
 decl_stmt|;
 return|return
 name|mode
@@ -268,7 +268,7 @@ init|=
 name|isBiblatexMode
 argument_list|()
 condition|?
-literal|"Biblatex"
+literal|"BibLaTeX"
 else|:
 literal|"BibTeX"
 decl_stmt|;

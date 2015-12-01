@@ -5427,7 +5427,7 @@ name|lang
 argument_list|(
 literal|"%0 mode"
 argument_list|,
-literal|"Biblatex"
+literal|"BibLaTeX"
 argument_list|)
 operator|+
 literal|")"
