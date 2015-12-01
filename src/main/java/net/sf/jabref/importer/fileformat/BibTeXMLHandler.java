@@ -170,23 +170,6 @@ name|bibitems
 return|;
 block|}
 comment|// SAX parsing methods
-DECL|method|doctypeDecl (String name, String publicId, String systemId)
-specifier|public
-name|void
-name|doctypeDecl
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|String
-name|publicId
-parameter_list|,
-name|String
-name|systemId
-parameter_list|)
-block|{
-comment|// Do nothing
-block|}
 annotation|@
 name|Override
 DECL|method|startDocument ()
