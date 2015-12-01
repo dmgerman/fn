@@ -56,20 +56,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|migrations
 operator|.
 name|VersionHandling
@@ -167,6 +153,24 @@ argument_list|<
 name|String
 argument_list|>
 block|{
+DECL|field|META_FLAG
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|META_FLAG
+init|=
+literal|"jabref-meta: "
+decl_stmt|;
+DECL|field|META_FLAG_OLD
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|META_FLAG_OLD
+init|=
+literal|"bibkeeper-meta: "
+decl_stmt|;
 DECL|field|PREFIX_KEYPATTERN
 specifier|private
 specifier|static
@@ -1177,8 +1181,6 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|GUIGlobals
-operator|.
 name|META_FLAG
 argument_list|)
 operator|.
@@ -1310,8 +1312,6 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|GUIGlobals
-operator|.
 name|META_FLAG
 argument_list|)
 operator|.
@@ -1384,8 +1384,6 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|GUIGlobals
-operator|.
 name|META_FLAG
 argument_list|)
 operator|.

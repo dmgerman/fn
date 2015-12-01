@@ -150,20 +150,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -1251,7 +1237,7 @@ operator|.
 name|length
 argument_list|()
 argument_list|,
-name|GUIGlobals
+name|MetaData
 operator|.
 name|META_FLAG
 operator|.
@@ -1262,7 +1248,7 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|MetaData
 operator|.
 name|META_FLAG
 argument_list|)
@@ -1282,7 +1268,7 @@ operator|.
 name|length
 argument_list|()
 argument_list|,
-name|GUIGlobals
+name|MetaData
 operator|.
 name|META_FLAG_OLD
 operator|.
@@ -1293,7 +1279,7 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|MetaData
 operator|.
 name|META_FLAG_OLD
 argument_list|)
@@ -1310,7 +1296,7 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-name|GUIGlobals
+name|MetaData
 operator|.
 name|META_FLAG
 operator|.
@@ -1320,7 +1306,7 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|MetaData
 operator|.
 name|META_FLAG
 argument_list|)
@@ -1332,7 +1318,7 @@ name|comment
 operator|.
 name|substring
 argument_list|(
-name|GUIGlobals
+name|MetaData
 operator|.
 name|META_FLAG
 operator|.
@@ -1349,7 +1335,7 @@ name|comment
 operator|.
 name|substring
 argument_list|(
-name|GUIGlobals
+name|MetaData
 operator|.
 name|META_FLAG_OLD
 operator|.
