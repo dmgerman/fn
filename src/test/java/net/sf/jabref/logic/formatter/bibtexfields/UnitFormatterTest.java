@@ -17,12 +17,24 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|junit
 operator|.
 name|Assert
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
 import|;
 end_import
 
@@ -37,58 +49,58 @@ import|;
 end_import
 
 begin_class
-DECL|class|PageNumbersFormatterTest
+DECL|class|UnitFormatterTest
 specifier|public
 class|class
-name|PageNumbersFormatterTest
+name|UnitFormatterTest
 block|{
 annotation|@
-name|Test
-DECL|method|formatPageNumbers ()
+name|Before
+DECL|method|setUp ()
 specifier|public
 name|void
-name|formatPageNumbers
+name|setUp
+parameter_list|()
+throws|throws
+name|Exception
+block|{     }
+annotation|@
+name|Test
+DECL|method|test ()
+specifier|public
+name|void
+name|test
 parameter_list|()
 block|{
-name|String
-name|formatted
+name|UnitFormatter
+name|uf
 init|=
 operator|new
-name|PageNumbersFormatter
+name|UnitFormatter
 argument_list|()
-operator|.
-name|format
-argument_list|(
-literal|"1-2"
-argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
-literal|"1--2"
+literal|"1~{A}"
 argument_list|,
-name|formatted
-argument_list|)
-expr_stmt|;
-name|formatted
-operator|=
-operator|new
-name|PageNumbersFormatter
-argument_list|()
+name|uf
 operator|.
 name|format
 argument_list|(
-literal|"1"
+literal|"1 A"
+argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
-literal|"1"
+literal|"1\\mbox{-}{mA}"
 argument_list|,
-name|formatted
+name|uf
+operator|.
+name|format
+argument_list|(
+literal|"1-mA"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
