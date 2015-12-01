@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2012 JabRef contributors.     This program is free sof
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.importer.fetcher
+DECL|package|net.sf.jabref.logic.formatter.casechanger
 package|package
 name|net
 operator|.
@@ -12,18 +12,21 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|fetcher
+name|formatter
+operator|.
+name|casechanger
 package|;
 end_package
 
 begin_comment
-comment|/**  * Container class for lists with keywords where the case should be kept independent of bibstyle  *   */
+comment|/**  * Container class for lists with keywords where the case should be kept independent of bibstyle  *  */
 end_comment
 
 begin_class
 DECL|class|CaseKeeperList
+specifier|public
 class|class
 name|CaseKeeperList
 block|{

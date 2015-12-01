@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2012 JabRef contributors.     This program is free sof
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.importer.fetcher
+DECL|package|net.sf.jabref.logic.formatter.casechanger
 package|package
 name|net
 operator|.
@@ -12,9 +12,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|fetcher
+name|formatter
+operator|.
+name|casechanger
 package|;
 end_package
 
@@ -36,11 +38,43 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|importer
 operator|.
-name|layout
+name|fetcher
 operator|.
-name|LayoutFormatter
+name|LengthComparator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|formatter
+operator|.
+name|Formatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -50,7 +84,7 @@ specifier|public
 class|class
 name|CaseKeeper
 implements|implements
-name|LayoutFormatter
+name|Formatter
 block|{
 DECL|method|format (String text, String[] listOfWords)
 specifier|private
@@ -162,6 +196,23 @@ name|list
 operator|.
 name|getAll
 argument_list|()
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getName ()
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"CaseKepper"
 argument_list|)
 return|;
 block|}
