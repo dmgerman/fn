@@ -482,12 +482,6 @@ name|String
 argument_list|>
 name|encodings
 decl_stmt|;
-DECL|field|encodingsModel
-specifier|private
-specifier|final
-name|DefaultComboBoxModel
-name|encodingsModel
-decl_stmt|;
 DECL|method|GeneralTab (JabRefFrame frame, JabRefPreferences prefs)
 specifier|public
 name|GeneralTab
@@ -819,8 +813,10 @@ name|JComboBox
 argument_list|<>
 argument_list|()
 expr_stmt|;
-name|encodingsModel
-operator|=
+name|encodings
+operator|.
+name|setModel
+argument_list|(
 operator|new
 name|DefaultComboBoxModel
 argument_list|(
@@ -828,12 +824,6 @@ name|Encodings
 operator|.
 name|ENCODINGS
 argument_list|)
-expr_stmt|;
-name|encodings
-operator|.
-name|setModel
-argument_list|(
-name|encodingsModel
 argument_list|)
 expr_stmt|;
 name|FormLayout
@@ -1562,7 +1552,7 @@ name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|encodingsModel
+name|encodings
 operator|.
 name|setSelectedItem
 argument_list|(
