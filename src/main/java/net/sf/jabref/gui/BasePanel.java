@@ -1526,7 +1526,6 @@ name|BibtexEntry
 argument_list|>
 name|filterGroupToggle
 decl_stmt|;
-empty_stmt|;
 comment|// Returns a collection of AutoCompleters, which are populated from the current database
 DECL|method|getAutoCompleters ()
 specifier|public

@@ -524,6 +524,22 @@ name|loopFileOpen
 operator|=
 literal|false
 expr_stmt|;
+try|try
+block|{
+name|br
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|// Ignored
+block|}
 block|}
 while|while
 condition|(

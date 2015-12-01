@@ -57,6 +57,8 @@ literal|"Minify authors"
 return|;
 block|}
 comment|/**      * Replaces three or more authors with and others.      *      *<example>      *     Stefan Kolb -> Stefan Kolb      *     Stefan Kolb and Simon Harrer -> Stefan Kolb and Simon Harrer      *     Stefan Kolb and Simon Harrer and Joerg Lenhard -> Stefan Kolb and others      *</example>      */
+annotation|@
+name|Override
 DECL|method|format (String value)
 specifier|public
 name|String
@@ -69,9 +71,11 @@ block|{
 comment|// nothing to do
 if|if
 condition|(
+operator|(
 name|value
 operator|==
 literal|null
+operator|)
 operator|||
 name|value
 operator|.
@@ -183,11 +187,13 @@ literal|1
 index|]
 argument_list|)
 operator|&&
+operator|(
 name|authors
 operator|.
 name|length
 operator|==
 literal|2
+operator|)
 condition|)
 block|{
 return|return

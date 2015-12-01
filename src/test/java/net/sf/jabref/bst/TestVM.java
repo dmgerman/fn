@@ -543,8 +543,6 @@ name|testQuote
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
@@ -598,8 +596,6 @@ name|testVMFunction1
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
@@ -701,8 +697,6 @@ name|testVMExecuteSimple
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 block|{
 name|VM
@@ -1002,8 +996,6 @@ name|testVMIfSkipPop
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
@@ -1241,8 +1233,6 @@ name|testVMArithmetic
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 block|{
 name|VM
@@ -1379,8 +1369,6 @@ name|testNumNames
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 block|{
 name|VM
@@ -1512,8 +1500,6 @@ name|testVMStringOps1
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
@@ -1708,8 +1694,6 @@ name|testSubstring
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
@@ -2093,8 +2077,6 @@ name|testDuplicateEmptyPopSwapIf
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
@@ -2198,8 +2180,6 @@ name|testChangeCase
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
@@ -2341,8 +2321,6 @@ name|testTextLength
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
@@ -2536,8 +2514,6 @@ name|testVMIntToStr
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
@@ -2623,8 +2599,6 @@ name|testVMChrToInt
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 block|{
 name|VM
@@ -2939,8 +2913,6 @@ name|testBuildIn
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
@@ -3009,8 +2981,6 @@ name|testVariables
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
@@ -3066,8 +3036,6 @@ name|testWhile
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm
@@ -4158,8 +4126,6 @@ name|testVMSwap
 parameter_list|()
 throws|throws
 name|RecognitionException
-throws|,
-name|IOException
 block|{
 name|VM
 name|vm

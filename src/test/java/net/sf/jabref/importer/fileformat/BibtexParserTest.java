@@ -1619,8 +1619,6 @@ specifier|public
 name|void
 name|testNewlineHandling
 parameter_list|()
-throws|throws
-name|IOException
 block|{
 name|BibtexEntry
 name|e

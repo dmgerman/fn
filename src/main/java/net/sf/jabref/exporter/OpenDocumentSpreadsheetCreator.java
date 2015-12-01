@@ -786,7 +786,7 @@ name|resource
 argument_list|)
 decl_stmt|;
 try|try
-block|{
+init|(
 name|InputStream
 name|in
 init|=
@@ -794,7 +794,8 @@ name|url
 operator|.
 name|openStream
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|byte
 index|[]
 name|buffer

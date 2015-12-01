@@ -1975,6 +1975,16 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+DECL|field|editModeAction
+specifier|private
+specifier|final
+name|AbstractAction
+name|editModeAction
+init|=
+operator|new
+name|EditModeAction
+argument_list|()
+decl_stmt|;
 DECL|field|quit
 specifier|private
 specifier|final
@@ -5391,22 +5401,54 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Sets the title of the main window.      */
 DECL|method|setWindowTitle ()
 specifier|public
 name|void
 name|setWindowTitle
 parameter_list|()
 block|{
-comment|// Set window title:
 name|BasePanel
-name|bp
+name|panel
 init|=
 name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
+name|String
+name|mode
+init|=
+name|biblatexMode
+condition|?
+literal|" ("
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 mode"
+argument_list|,
+literal|"BibLaTeX"
+argument_list|)
+operator|+
+literal|")"
+else|:
+literal|" ("
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 mode"
+argument_list|,
+literal|"BibTeX"
+argument_list|)
+operator|+
+literal|")"
+decl_stmt|;
+comment|// no database open
 if|if
 condition|(
-name|bp
+name|panel
 operator|==
 literal|null
 condition|)
@@ -5416,14 +5458,16 @@ argument_list|(
 name|GUIGlobals
 operator|.
 name|frameTitle
+operator|+
+name|mode
 argument_list|)
 expr_stmt|;
 return|return;
 block|}
 name|String
-name|star
+name|changeFlag
 init|=
-name|bp
+name|panel
 operator|.
 name|isBaseChanged
 argument_list|()
@@ -5434,7 +5478,7 @@ literal|""
 decl_stmt|;
 if|if
 condition|(
-name|bp
+name|panel
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -5442,6 +5486,17 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|String
+name|databaseFile
+init|=
+name|panel
+operator|.
+name|getDatabaseFile
+argument_list|()
+operator|.
+name|getPath
+argument_list|()
+decl_stmt|;
 name|setTitle
 argument_list|(
 name|GUIGlobals
@@ -5450,15 +5505,11 @@ name|frameTitle
 operator|+
 literal|" - "
 operator|+
-name|bp
-operator|.
-name|getDatabaseFile
-argument_list|()
-operator|.
-name|getPath
-argument_list|()
+name|databaseFile
 operator|+
-name|star
+name|changeFlag
+operator|+
+name|mode
 argument_list|)
 expr_stmt|;
 block|}
@@ -5476,7 +5527,9 @@ name|GUIGlobals
 operator|.
 name|untitledTitle
 operator|+
-name|star
+name|changeFlag
+operator|+
+name|mode
 argument_list|)
 expr_stmt|;
 block|}
@@ -7923,6 +7976,18 @@ operator|.
 name|add
 argument_list|(
 name|fileHistory
+argument_list|)
+expr_stmt|;
+name|file
+operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+name|file
+operator|.
+name|add
+argument_list|(
+name|editModeAction
 argument_list|)
 expr_stmt|;
 name|file

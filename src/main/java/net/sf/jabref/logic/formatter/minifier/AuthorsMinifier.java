@@ -32,30 +32,6 @@ name|Formatter
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Matcher
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
 begin_comment
 comment|/**  * Replaces three or more authors with and others  */
 end_comment
@@ -80,7 +56,9 @@ return|return
 literal|"Minify authors"
 return|;
 block|}
-comment|/**      * Replaces three or more authors with and others.      *      *<example>      *     Stefan Kolb -> Stefan Kolb      *     Stefan Kolb and Simon Harrer -> Stefan Kolb and Simon Harrer      *     Stefan Kolb and Simon Harrer and JÃ¶rg Lenhard -> Stefan Kolb and others      *</example>      */
+comment|/**      * Replaces three or more authors with and others.      *      *<example> Stefan Kolb -> Stefan Kolb Stefan Kolb and Simon Harrer -> Stefan Kolb and Simon Harrer Stefan Kolb and      * Simon Harrer and JÃ¶rg Lenhard -> Stefan Kolb and others</example>      */
+annotation|@
+name|Override
 DECL|method|format (String value)
 specifier|public
 name|String
@@ -93,9 +71,11 @@ block|{
 comment|// nothing to do
 if|if
 condition|(
+operator|(
 name|value
 operator|==
 literal|null
+operator|)
 operator|||
 name|value
 operator|.
@@ -204,11 +184,13 @@ literal|1
 index|]
 argument_list|)
 operator|&&
+operator|(
 name|authors
 operator|.
 name|length
 operator|==
 literal|2
+operator|)
 condition|)
 block|{
 return|return
