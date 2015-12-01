@@ -513,11 +513,6 @@ name|treeNode
 argument_list|)
 expr_stmt|;
 comment|/**          * Select all nodes manually.          */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 name|Enumeration
 argument_list|<
 name|CheckableTreeNode
@@ -850,11 +845,6 @@ return|return
 name|instance
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|orderByParamCount (Constructor<? extends T>[] constructors)
 specifier|private
 specifier|static
