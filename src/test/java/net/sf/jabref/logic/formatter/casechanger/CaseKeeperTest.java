@@ -34,16 +34,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -54,16 +44,6 @@ specifier|public
 class|class
 name|CaseKeeperTest
 block|{
-annotation|@
-name|Before
-DECL|method|setUp ()
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-throws|throws
-name|Exception
-block|{     }
 annotation|@
 name|Test
 DECL|method|test ()
@@ -100,6 +80,30 @@ operator|.
 name|format
 argument_list|(
 literal|"{VLSI}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"VLsI"
+argument_list|,
+name|ck
+operator|.
+name|format
+argument_list|(
+literal|"VLsI"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"{VLSI} {VLSI}"
+argument_list|,
+name|ck
+operator|.
+name|format
+argument_list|(
+literal|"VLSI {VLSI}"
 argument_list|)
 argument_list|)
 expr_stmt|;

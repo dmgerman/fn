@@ -40,13 +40,6 @@ name|LatexFormatter
 implements|implements
 name|Formatter
 block|{
-DECL|method|LatexFormatter ()
-specifier|public
-name|LatexFormatter
-parameter_list|()
-block|{
-comment|// TODO Auto-generated constructor stub
-block|}
 annotation|@
 name|Override
 DECL|method|getName ()
