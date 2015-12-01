@@ -5419,9 +5419,31 @@ name|mode
 init|=
 name|biblatexMode
 condition|?
-literal|" (Biblatex mode)"
+literal|" ("
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 mode"
+argument_list|,
+literal|"Biblatex"
+argument_list|)
+operator|+
+literal|")"
 else|:
-literal|" (BibTeX mode)"
+literal|" ("
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 mode"
+argument_list|,
+literal|"BibTeX"
+argument_list|)
+operator|+
+literal|")"
 decl_stmt|;
 comment|// no database open
 if|if
