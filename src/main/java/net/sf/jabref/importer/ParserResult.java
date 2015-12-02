@@ -249,22 +249,6 @@ specifier|private
 name|boolean
 name|toOpenTab
 decl_stmt|;
-comment|// Which JabRef version wrote the file, if any?
-DECL|field|jabrefVersion
-specifier|private
-name|String
-name|jabrefVersion
-decl_stmt|;
-DECL|field|jabrefMajorVersion
-specifier|private
-name|int
-name|jabrefMajorVersion
-decl_stmt|;
-DECL|field|jabrefMinorVersion
-specifier|private
-name|int
-name|jabrefMinorVersion
-decl_stmt|;
 DECL|method|ParserResult (Collection<BibtexEntry> entries)
 specifier|public
 name|ParserResult
@@ -357,88 +341,6 @@ operator|.
 name|toOpenTab
 operator|=
 name|toOpenTab
-expr_stmt|;
-block|}
-comment|/**      * Find which version of JabRef, if any, produced this bib file.      * @return The version number string, or null if no JabRef signature could be read.      */
-DECL|method|getJabrefVersion ()
-specifier|public
-name|String
-name|getJabrefVersion
-parameter_list|()
-block|{
-return|return
-name|jabrefVersion
-return|;
-block|}
-comment|/**      * Set the JabRef version number string for this parser result.      * @param jabrefVersion The version number string.      */
-DECL|method|setJabrefVersion (String jabrefVersion)
-specifier|public
-name|void
-name|setJabrefVersion
-parameter_list|(
-name|String
-name|jabrefVersion
-parameter_list|)
-block|{
-name|this
-operator|.
-name|jabrefVersion
-operator|=
-name|jabrefVersion
-expr_stmt|;
-block|}
-comment|/**      * @return 0 if not known (e.g., no version header in file)      */
-DECL|method|getJabrefMajorVersion ()
-specifier|public
-name|int
-name|getJabrefMajorVersion
-parameter_list|()
-block|{
-return|return
-name|jabrefMajorVersion
-return|;
-block|}
-DECL|method|setJabrefMajorVersion (int jabrefMajorVersion)
-specifier|public
-name|void
-name|setJabrefMajorVersion
-parameter_list|(
-name|int
-name|jabrefMajorVersion
-parameter_list|)
-block|{
-name|this
-operator|.
-name|jabrefMajorVersion
-operator|=
-name|jabrefMajorVersion
-expr_stmt|;
-block|}
-comment|/**      * @return 0 if not known (e.g., no version header in file)      */
-DECL|method|getJabrefMinorVersion ()
-specifier|public
-name|int
-name|getJabrefMinorVersion
-parameter_list|()
-block|{
-return|return
-name|jabrefMinorVersion
-return|;
-block|}
-DECL|method|setJabrefMinorVersion (int jabrefMinorVersion)
-specifier|public
-name|void
-name|setJabrefMinorVersion
-parameter_list|(
-name|int
-name|jabrefMinorVersion
-parameter_list|)
-block|{
-name|this
-operator|.
-name|jabrefMinorVersion
-operator|=
-name|jabrefMinorVersion
 expr_stmt|;
 block|}
 DECL|method|getDatabase ()

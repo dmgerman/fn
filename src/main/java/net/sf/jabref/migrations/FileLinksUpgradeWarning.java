@@ -257,6 +257,21 @@ block|,
 literal|"ps"
 block|}
 decl_stmt|;
+DECL|field|offerChangeSettings
+specifier|private
+name|boolean
+name|offerChangeSettings
+decl_stmt|;
+DECL|field|offerChangeDatabase
+specifier|private
+name|boolean
+name|offerChangeDatabase
+decl_stmt|;
+DECL|field|offerSetFileDir
+specifier|private
+name|boolean
+name|offerSetFileDir
+decl_stmt|;
 comment|/**      * This method should be performed if the major/minor versions recorded in the ParserResult      * are less than or equal to 2.2.      * @param pr      * @return true if the file was written by a jabref version<=2.2      */
 annotation|@
 name|Override
@@ -269,105 +284,10 @@ name|ParserResult
 name|pr
 parameter_list|)
 block|{
-comment|// First check if this warning is disabled:
-if|if
-condition|(
-operator|!
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SHOW_FILE_LINKS_UPGRADE_WARNING
-argument_list|)
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-if|if
-condition|(
-name|pr
-operator|.
-name|getJabrefMajorVersion
-argument_list|()
-operator|<=
-literal|0
-condition|)
-block|{
-return|return
-literal|false
-return|;
-comment|// non-JabRef file
-block|}
-elseif|else
-if|if
-condition|(
-name|pr
-operator|.
-name|getJabrefMajorVersion
-argument_list|()
-operator|<
-literal|2
-condition|)
-block|{
-return|return
-literal|true
-return|;
-comment|// old
-block|}
-elseif|else
-if|if
-condition|(
-name|pr
-operator|.
-name|getJabrefMajorVersion
-argument_list|()
-operator|==
-literal|2
-condition|)
-block|{
-return|return
-name|pr
-operator|.
-name|getJabrefMinorVersion
-argument_list|()
-operator|<=
-literal|2
-return|;
-block|}
-else|else
-block|{
-comment|// JabRef version 3 does not contain a header, but who knows
-return|return
-literal|true
-return|;
-block|}
-block|}
-comment|/**      * This method presents a dialog box explaining and offering to make the      * changes. If the user confirms, the changes are performed.      * @param panel      * @param pr      */
-annotation|@
-name|Override
-DECL|method|performAction (BasePanel panel, ParserResult pr)
-specifier|public
-name|void
-name|performAction
-parameter_list|(
-name|BasePanel
-name|panel
-parameter_list|,
-name|ParserResult
-name|pr
-parameter_list|)
-block|{
 comment|// Find out which actions should be offered:
 comment|// Only offer to change Preferences if file column is not already visible:
-name|boolean
 name|offerChangeSettings
-init|=
+operator|=
 operator|!
 name|Globals
 operator|.
@@ -383,11 +303,10 @@ operator|||
 operator|!
 name|showsFileInGenFields
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 comment|// Only offer to upgrade links if the pdf/ps fields are used:
-name|boolean
 name|offerChangeDatabase
-init|=
+operator|=
 name|linksFound
 argument_list|(
 name|pr
@@ -399,11 +318,10 @@ name|FileLinksUpgradeWarning
 operator|.
 name|FIELDS_TO_LOOK_FOR
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// If the "file" directory is not set, offer to migrate pdf/ps dir:
-name|boolean
 name|offerSetFileDir
-init|=
+operator|=
 operator|!
 name|Globals
 operator|.
@@ -437,17 +355,44 @@ argument_list|(
 literal|"psDirectory"
 argument_list|)
 operator|)
-decl_stmt|;
+expr_stmt|;
+comment|// First check if this warning is disabled:
+return|return
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SHOW_FILE_LINKS_UPGRADE_WARNING
+argument_list|)
+operator|&&
+name|isThereSomethingToBeDone
+argument_list|()
+return|;
+block|}
+comment|/**      * This method presents a dialog box explaining and offering to make the      * changes. If the user confirms, the changes are performed.      * @param panel      * @param pr      */
+annotation|@
+name|Override
+DECL|method|performAction (BasePanel panel, ParserResult pr)
+specifier|public
+name|void
+name|performAction
+parameter_list|(
+name|BasePanel
+name|panel
+parameter_list|,
+name|ParserResult
+name|pr
+parameter_list|)
+block|{
 if|if
 condition|(
 operator|!
-name|offerChangeDatabase
-operator|&&
-operator|!
-name|offerChangeSettings
-operator|&&
-operator|!
-name|offerSetFileDir
+name|isThereSomethingToBeDone
+argument_list|()
 condition|)
 block|{
 return|return;
@@ -917,6 +862,20 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|isThereSomethingToBeDone ()
+specifier|private
+name|boolean
+name|isThereSomethingToBeDone
+parameter_list|()
+block|{
+return|return
+name|offerChangeSettings
+operator|||
+name|offerChangeDatabase
+operator|||
+name|offerSetFileDir
+return|;
 block|}
 comment|/**      * Check the database to find out whether any of a set of fields are used      * for any of the entries.      * @param database The bib database.      * @param fields The set of fields to look for.      * @return true if at least one of the given fields is set in at least one entry,      *  false otherwise.      */
 DECL|method|linksFound (BibtexDatabase database, String[] fields)
