@@ -1266,7 +1266,7 @@ name|CHECK_INTEGRITY
 argument_list|,
 name|Localization
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Check integrity"
 argument_list|)
