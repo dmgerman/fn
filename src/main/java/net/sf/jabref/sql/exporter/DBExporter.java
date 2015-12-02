@@ -62,6 +62,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|sql
 operator|.
 name|Connection
@@ -2226,11 +2238,11 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified output file.      *      * @param database The BibtexDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet The set of IDs of the entries to export.      * @param file The name of the file to which the DML should be written      */
+comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified output file.      *      * @param database The BibtexDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet The set of IDs of the entries to export.      * @param file The name of the file to which the DML should be written      * @param encoding The encoding to be used      */
 end_comment
 
 begin_function
-DECL|method|exportDatabaseAsFile (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, String file)
+DECL|method|exportDatabaseAsFile (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, String file, Charset encoding)
 specifier|public
 name|void
 name|exportDatabaseAsFile
@@ -2251,6 +2263,9 @@ name|keySet
 parameter_list|,
 name|String
 name|file
+parameter_list|,
+name|Charset
+name|encoding
 parameter_list|)
 throws|throws
 name|Exception

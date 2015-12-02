@@ -2403,16 +2403,12 @@ name|keywordsToAdd
 parameter_list|)
 block|{
 return|return
-operator|(
+operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
-operator|)
+argument_list|<>
+argument_list|(
 name|keywordsToAdd
-operator|.
-name|clone
-argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|fillKeyWordList ()
