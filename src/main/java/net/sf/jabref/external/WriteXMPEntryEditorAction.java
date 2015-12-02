@@ -152,6 +152,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|transform
+operator|.
+name|TransformerException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -169,6 +181,16 @@ operator|.
 name|io
 operator|.
 name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -767,7 +789,9 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
+decl||
+name|TransformerException
 name|e
 parameter_list|)
 block|{
