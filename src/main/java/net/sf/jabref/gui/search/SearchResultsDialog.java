@@ -802,6 +802,7 @@ decl_stmt|;
 DECL|field|FILE_COL
 specifier|private
 specifier|final
+specifier|static
 name|int
 name|FILE_COL
 init|=
@@ -810,6 +811,7 @@ decl_stmt|;
 DECL|field|URL_COL
 specifier|private
 specifier|final
+specifier|static
 name|int
 name|URL_COL
 init|=
@@ -818,6 +820,7 @@ decl_stmt|;
 DECL|field|PAD
 specifier|private
 specifier|final
+specifier|static
 name|int
 name|PAD
 init|=
