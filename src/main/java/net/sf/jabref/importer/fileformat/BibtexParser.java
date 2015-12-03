@@ -86,18 +86,6 @@ name|util
 operator|.
 name|regex
 operator|.
-name|Matcher
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
 name|Pattern
 import|;
 end_import
@@ -310,6 +298,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|pushbackReader
 specifier|private
+specifier|final
 name|PushbackReader
 name|pushbackReader
 decl_stmt|;
@@ -372,6 +361,7 @@ name|autoDoubleBraces
 decl_stmt|;
 DECL|field|pureTextFromFile
 specifier|private
+specifier|final
 name|Deque
 argument_list|<
 name|Character
@@ -1365,6 +1355,10 @@ argument_list|,
 name|typ
 argument_list|)
 expr_stmt|;
+comment|// custom entry types are always re-written by JabRef and not stored in the file
+name|dumpTextReadSoFarToString
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1550,9 +1544,11 @@ block|}
 comment|// only keep newlines if there is an entry before
 if|if
 condition|(
+operator|(
 name|runningIndex
 operator|>
 literal|0
+operator|)
 operator|&&
 operator|!
 literal|"}"
