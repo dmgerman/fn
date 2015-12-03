@@ -1573,7 +1573,7 @@ name|String
 name|suffix
 decl_stmt|;
 name|int
-name|sLIndex
+name|strippedLinkIndex
 init|=
 name|strippedLink
 operator|.
@@ -1585,13 +1585,13 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-name|sLIndex
+name|strippedLinkIndex
 operator|<=
 literal|0
 operator|)
 operator|||
 operator|(
-name|sLIndex
+name|strippedLinkIndex
 operator|==
 operator|(
 name|strippedLink
@@ -1617,7 +1617,7 @@ name|strippedLink
 operator|.
 name|substring
 argument_list|(
-name|sLIndex
+name|strippedLinkIndex
 operator|+
 literal|1
 argument_list|)
@@ -1686,7 +1686,7 @@ name|strippedLink
 operator|.
 name|substring
 argument_list|(
-name|sLIndex
+name|strippedLinkIndex
 operator|+
 literal|1
 argument_list|)
