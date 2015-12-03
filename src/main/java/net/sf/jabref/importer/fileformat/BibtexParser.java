@@ -1272,6 +1272,10 @@ operator|>
 literal|0
 condition|)
 block|{
+comment|// We remove all line breaks in the metadata - these
+comment|// will have been inserted
+comment|// to prevent too long lines when the file was
+comment|// saved, and are not part of the data.
 name|meta
 operator|.
 name|put
@@ -1295,10 +1299,10 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// We remove all line breaks in the metadata - these
-comment|// will have been inserted
-comment|// to prevent too long lines when the file was
-comment|// saved, and are not part of the data.
+comment|// meta comments are always re-written by JabRef and not stored in the file
+name|dumpTextReadSoFarToString
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}
