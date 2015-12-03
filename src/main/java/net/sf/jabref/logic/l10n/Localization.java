@@ -399,6 +399,26 @@ operator|==
 literal|null
 condition|)
 block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Warning: could not get "
+operator|+
+name|idForErrorMessage
+operator|+
+literal|" translation for \""
+operator|+
+name|key
+operator|+
+literal|"\" for locale "
+operator|+
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|translation
 operator|=
 name|key
