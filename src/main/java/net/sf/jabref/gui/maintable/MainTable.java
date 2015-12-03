@@ -2015,7 +2015,7 @@ argument_list|)
 decl_stmt|;
 name|String
 index|[]
-name|widths
+name|widthsFromPreferences
 init|=
 name|Globals
 operator|.
@@ -2046,34 +2046,265 @@ argument_list|(
 name|ncWidth
 argument_list|)
 expr_stmt|;
-comment|// FIXME set correct width for each field
-comment|//        for (int i = 1; i< tableFormat.padleft; i++) {
-comment|//
-comment|//            // Check if the Column is an extended RankingColumn (and not a compact-ranking column)
-comment|//            // If this is the case, set a certain Column-width,
-comment|//            // because the RankingIconColumn needs some more width
-comment|//            if (tableFormat.isRankingColumn(i)) {
-comment|//                // Lock the width of ranking icon column.
-comment|//                cm.getColumn(i).setPreferredWidth(GUIGlobals.WIDTH_ICON_COL_RANKING);
-comment|//                cm.getColumn(i).setMinWidth(GUIGlobals.WIDTH_ICON_COL_RANKING);
-comment|//                cm.getColumn(i).setMaxWidth(GUIGlobals.WIDTH_ICON_COL_RANKING);
-comment|//            } else {
-comment|//                // Lock the width of icon columns.
-comment|//                cm.getColumn(i).setPreferredWidth(GUIGlobals.WIDTH_ICON_COL);
-comment|//                cm.getColumn(i).setMinWidth(GUIGlobals.WIDTH_ICON_COL);
-comment|//                cm.getColumn(i).setMaxWidth(GUIGlobals.WIDTH_ICON_COL);
-comment|//            }
-comment|//
-comment|//        }
-comment|//        for (int i = tableFormat.padleft; i< getModel().getColumnCount(); i++) {
-comment|//            try {
-comment|//                cm.getColumn(i).setPreferredWidth(Integer.parseInt(widths[i - tableFormat.padleft]));
-comment|//            } catch (Throwable ex) {
-comment|//                LOGGER.info("Exception while setting column widths. Choosing default.", ex);
-comment|//                cm.getColumn(i).setPreferredWidth(GUIGlobals.DEFAULT_FIELD_LENGTH);
-comment|//            }
-comment|//
-comment|//        }
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|1
+init|;
+name|i
+operator|<
+name|cm
+operator|.
+name|getColumnCount
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|MainTableColumn
+name|mainTableColumn
+init|=
+name|tableFormat
+operator|.
+name|getTableColumns
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|getModelIndex
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|SpecialFieldsUtils
+operator|.
+name|FIELDNAME_RANKING
+operator|.
+name|equals
+argument_list|(
+name|mainTableColumn
+operator|.
+name|getColumnName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setPreferredWidth
+argument_list|(
+name|GUIGlobals
+operator|.
+name|WIDTH_ICON_COL_RANKING
+argument_list|)
+expr_stmt|;
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setMinWidth
+argument_list|(
+name|GUIGlobals
+operator|.
+name|WIDTH_ICON_COL_RANKING
+argument_list|)
+expr_stmt|;
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setMaxWidth
+argument_list|(
+name|GUIGlobals
+operator|.
+name|WIDTH_ICON_COL_RANKING
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|mainTableColumn
+operator|.
+name|isIconColumn
+argument_list|()
+condition|)
+block|{
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setPreferredWidth
+argument_list|(
+name|GUIGlobals
+operator|.
+name|WIDTH_ICON_COL
+argument_list|)
+expr_stmt|;
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setMinWidth
+argument_list|(
+name|GUIGlobals
+operator|.
+name|WIDTH_ICON_COL
+argument_list|)
+expr_stmt|;
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setMaxWidth
+argument_list|(
+name|GUIGlobals
+operator|.
+name|WIDTH_ICON_COL
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|String
+index|[]
+name|allColumns
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getStringArray
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|COLUMN_NAMES
+argument_list|)
+decl_stmt|;
+comment|// find index of current mainTableColumn in allColumns
+for|for
+control|(
+name|int
+name|j
+init|=
+literal|0
+init|;
+name|j
+operator|<
+name|allColumns
+operator|.
+name|length
+condition|;
+name|j
+operator|++
+control|)
+block|{
+if|if
+condition|(
+name|allColumns
+index|[
+name|j
+index|]
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|mainTableColumn
+operator|.
+name|getDisplayName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+try|try
+block|{
+comment|// set preferred width by using found index j in the width array
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setPreferredWidth
+argument_list|(
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|widthsFromPreferences
+index|[
+name|j
+index|]
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NumberFormatException
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Exception while setting column widths. Choosing default."
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setPreferredWidth
+argument_list|(
+name|GUIGlobals
+operator|.
+name|DEFAULT_FIELD_LENGTH
+argument_list|)
+expr_stmt|;
+block|}
+break|break;
+block|}
+block|}
+block|}
+block|}
 block|}
 DECL|method|getEntryAt (int row)
 specifier|public
