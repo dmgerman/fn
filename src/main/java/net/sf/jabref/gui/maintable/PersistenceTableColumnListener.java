@@ -100,6 +100,20 @@ name|JabRefPreferences
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
 begin_comment
 comment|/**  * Listens for TableColumnModelEvents to keep track of changes made to the  * MainTable columns, like reordering or resizing.  *  * Changes to columns without a name and the "#" column are not saved. To have  * consistent behavior (e.g. as in TableColumnsTab).  *  * @author Fabian Bieker  * @author Daniel Waeber  * @since 12/2008  *  */
 end_comment
@@ -264,7 +278,9 @@ condition|)
 block|{
 if|if
 condition|(
-literal|"#"
+name|GUIGlobals
+operator|.
+name|NUMBER_COL
 operator|.
 name|equals
 argument_list|(
@@ -272,7 +288,6 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// TODO: get "#" from prefs?
 name|ncWidth
 operator|=
 name|mainTable
