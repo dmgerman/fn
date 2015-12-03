@@ -78,11 +78,13 @@ name|MainTableColumn
 block|{
 DECL|field|columnName
 specifier|private
+specifier|final
 name|String
 name|columnName
 decl_stmt|;
 DECL|field|bibtexFields
 specifier|private
+specifier|final
 name|Optional
 argument_list|<
 name|String
@@ -92,6 +94,7 @@ name|bibtexFields
 decl_stmt|;
 DECL|field|isIconColumn
 specifier|private
+specifier|final
 name|boolean
 name|isIconColumn
 decl_stmt|;
