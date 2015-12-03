@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -1380,17 +1380,31 @@ name|getPoint
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// Check if the user has clicked on an icon cell to open url or pdf.
-specifier|final
-name|String
-index|[]
-name|iconType
+comment|// get the MainTableColumn which is currently visible at col
+name|int
+name|modelIndex
 init|=
 name|table
 operator|.
-name|getIconTypeForColumn
+name|getColumnModel
+argument_list|()
+operator|.
+name|getColumn
 argument_list|(
 name|col
+argument_list|)
+operator|.
+name|getModelIndex
+argument_list|()
+decl_stmt|;
+name|MainTableColumn
+name|modelColumn
+init|=
+name|table
+operator|.
+name|getMainTableColumn
+argument_list|(
+name|modelIndex
 argument_list|)
 decl_stmt|;
 comment|// Check if the user has right-clicked. If so, open the right-click menu.
@@ -1415,11 +1429,18 @@ condition|)
 block|{
 if|if
 condition|(
-name|iconType
+name|modelColumn
 operator|==
 literal|null
+operator|||
+operator|!
+name|modelColumn
+operator|.
+name|isIconColumn
+argument_list|()
 condition|)
 block|{
+comment|// show normal right click menu
 name|processPopupTrigger
 argument_list|(
 name|e
@@ -1430,13 +1451,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// show right click menu for icon columns
 name|showIconRightClickMenu
 argument_list|(
 name|e
 argument_list|,
 name|row
 argument_list|,
-name|iconType
+name|modelColumn
 argument_list|)
 expr_stmt|;
 block|}
@@ -2280,8 +2302,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Process popup trigger events occurring on an icon cell in the table. Show      * a menu where the user can choose which external resource to open for the      * entry. If no relevant external resources exist, let the normal popup trigger      * handler do its thing instead.      * @param e The mouse event defining this popup trigger.      * @param row The row where the event occurred.      * @param iconType A string array containing the resource fields associated with      *  this table cell.      */
-DECL|method|showIconRightClickMenu (MouseEvent e, int row, String[] iconType)
+comment|/**      * Process popup trigger events occurring on an icon cell in the table. Show a menu where the user can choose which      * external resource to open for the entry. If no relevant external resources exist, let the normal popup trigger      * handler do its thing instead.      *      * @param e The mouse event defining this popup trigger.      * @param row The row where the event occurred.      * @param column the MainTableColumn associated with this table cell.      */
+DECL|method|showIconRightClickMenu (MouseEvent e, int row, MainTableColumn column)
 specifier|private
 name|void
 name|showIconRightClickMenu
@@ -2292,9 +2314,8 @@ parameter_list|,
 name|int
 name|row
 parameter_list|,
-name|String
-index|[]
-name|iconType
+name|MainTableColumn
+name|column
 parameter_list|)
 block|{
 name|BibtexEntry
@@ -2323,31 +2344,50 @@ comment|// See if this is a simple file link field, or if it is a file-list
 comment|// field that can specify a list of links:
 if|if
 condition|(
-name|iconType
-index|[
-literal|0
-index|]
+name|column
 operator|.
-name|equals
-argument_list|(
+name|getBibtexFields
+argument_list|()
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+for|for
+control|(
+name|String
+name|field
+range|:
+name|column
+operator|.
+name|getBibtexFields
+argument_list|()
+operator|.
+name|get
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
 name|Globals
 operator|.
 name|FILE_FIELD
+operator|.
+name|equals
+argument_list|(
+name|field
 argument_list|)
 condition|)
 block|{
 comment|// We use a FileListTableModel to parse the field content:
-name|Object
-name|o
+name|String
+name|fileFieldContent
 init|=
 name|entry
 operator|.
 name|getField
 argument_list|(
-name|iconType
-index|[
-literal|0
-index|]
+name|field
 argument_list|)
 decl_stmt|;
 name|FileListTableModel
@@ -2361,10 +2401,7 @@ name|fileList
 operator|.
 name|setContent
 argument_list|(
-operator|(
-name|String
-operator|)
-name|o
+name|fileFieldContent
 argument_list|)
 expr_stmt|;
 comment|// If there are one or more links, open the first one:
@@ -2396,72 +2433,19 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-comment|//If file types are specified, ignore files of other types.
-if|if
-condition|(
-name|iconType
-operator|.
-name|length
-operator|>
-literal|1
-condition|)
-block|{
-name|boolean
-name|correctType
-init|=
-literal|false
-decl_stmt|;
-for|for
-control|(
-name|int
-name|j
-init|=
-literal|1
-init|;
-name|j
-operator|<
-name|iconType
-operator|.
-name|length
-condition|;
-name|j
-operator|++
-control|)
-block|{
-if|if
-condition|(
-name|flEntry
-operator|.
-name|getType
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|iconType
-index|[
-name|j
-index|]
-argument_list|)
-condition|)
-block|{
-name|correctType
-operator|=
-literal|true
-expr_stmt|;
-block|}
-block|}
-if|if
-condition|(
-operator|!
-name|correctType
-condition|)
-block|{
-continue|continue;
-block|}
-block|}
+comment|// TODO Enable Filtering for special file type columns
+comment|//                        //If file types are specified, ignore files of other types.
+comment|//                        if (column.length> 1) {
+comment|//                            boolean correctType = false;
+comment|//                            for (int j = 1; j< column.length; j++) {
+comment|//                                if (flEntry.getType().toString().equals(column[j])) {
+comment|//                                    correctType = true;
+comment|//                                }
+comment|//                            }
+comment|//                            if (!correctType) {
+comment|//                                continue;
+comment|//                            }
+comment|//                        }
 name|String
 name|description
 init|=
@@ -2547,28 +2531,25 @@ block|}
 else|else
 block|{
 name|SpecialField
-name|field
+name|specialField
 init|=
 name|SpecialFieldsUtils
 operator|.
 name|getSpecialFieldInstanceFromFieldName
 argument_list|(
-name|iconType
-index|[
-literal|0
-index|]
+name|column
+operator|.
+name|getColumnName
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|field
+name|specialField
 operator|!=
 literal|null
 condition|)
 block|{
-comment|//                for (SpecialFieldValue val: field.getValues()) {
-comment|//                	menu.add(val.getMenuAction(panel.frame()));
-comment|//                }
 comment|// full pop should be shown as left click already shows short popup
 name|showDefaultPopup
 operator|=
@@ -2577,27 +2558,19 @@ expr_stmt|;
 block|}
 else|else
 block|{
-for|for
-control|(
 name|String
-name|anIconType
-range|:
-name|iconType
-control|)
-block|{
-name|Object
-name|o
+name|content
 init|=
 name|entry
 operator|.
 name|getField
 argument_list|(
-name|anIconType
+name|field
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|content
 operator|!=
 literal|null
 condition|)
@@ -2616,21 +2589,15 @@ argument_list|()
 argument_list|,
 name|entry
 argument_list|,
-operator|(
-name|String
-operator|)
-name|o
+name|content
 argument_list|,
-operator|(
-name|String
-operator|)
-name|o
+name|content
 argument_list|,
 name|GUIGlobals
 operator|.
 name|getTableIcon
 argument_list|(
-name|anIconType
+name|field
 argument_list|)
 operator|.
 name|getIcon
@@ -2641,7 +2608,7 @@ operator|.
 name|metaData
 argument_list|()
 argument_list|,
-name|anIconType
+name|field
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2685,6 +2652,7 @@ name|getY
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|entryEditorClosing (EntryEditor editor)

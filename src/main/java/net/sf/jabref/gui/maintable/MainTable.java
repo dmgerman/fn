@@ -4525,6 +4525,27 @@ return|return
 name|sortedForTable
 return|;
 block|}
+DECL|method|getMainTableColumn (int modelIndex)
+specifier|public
+name|MainTableColumn
+name|getMainTableColumn
+parameter_list|(
+name|int
+name|modelIndex
+parameter_list|)
+block|{
+return|return
+name|tableFormat
+operator|.
+name|getTableColumns
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|modelIndex
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
