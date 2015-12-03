@@ -658,7 +658,7 @@ name|info
 argument_list|(
 literal|"Error: could not add string '"
 operator|+
-name|string
+name|bs
 operator|.
 name|getName
 argument_list|()

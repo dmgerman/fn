@@ -3023,7 +3023,6 @@ argument_list|)
 decl_stmt|;
 DECL|field|keyPattern
 specifier|private
-specifier|static
 name|GlobalLabelPattern
 name|keyPattern
 decl_stmt|;
@@ -8178,8 +8177,6 @@ name|GlobalLabelPattern
 name|getKeyPattern
 parameter_list|()
 block|{
-name|JabRefPreferences
-operator|.
 name|keyPattern
 operator|=
 operator|new
@@ -8226,8 +8223,6 @@ range|:
 name|keys
 control|)
 block|{
-name|JabRefPreferences
-operator|.
 name|keyPattern
 operator|.
 name|addLabelPattern
@@ -8264,8 +8259,6 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|JabRefPreferences
-operator|.
 name|keyPattern
 return|;
 block|}
@@ -8279,8 +8272,6 @@ name|GlobalLabelPattern
 name|pattern
 parameter_list|)
 block|{
-name|JabRefPreferences
-operator|.
 name|keyPattern
 operator|=
 name|pattern
