@@ -710,7 +710,7 @@ name|orderedData
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Look up the directory set up for the given field type for this database.      * If no directory is set up, return that defined in global preferences.      * @param fieldName The field type      * @return The default directory for this field type.      */
+comment|/**      * Look up the directory set up for the given field type for this database.      * If no directory is set up, return that defined in global preferences.      * There can be up to three directory definitions for these files:      * the database's metadata can specify a general directory and/or a user-specific directory      * or the preferences can specify one.      *      * The settings are prioritized in the following order and the first defined setting is used:      * 1. metadata user-specific directory      * 2. metadata general directory      * 3. preferences directory.      *      * @param fieldName The field type      * @return The default directory for this field type.      */
 DECL|method|getFileDirectory (String fieldName)
 specifier|public
 name|String
@@ -721,11 +721,17 @@ name|String
 name|fieldName
 parameter_list|)
 block|{
-comment|// There can be up to three directory definitions for these files - the database's
-comment|// metadata can specify a general directory and/or a user-specific directory, or
-comment|// the preferences can specify one. The settings are prioritized in the following
-comment|// order and the first defined setting is used: metadata user-specific directory,
-comment|// metadata general directory, preferences directory.
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|dirs
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
 name|String
 name|key
 init|=
@@ -739,17 +745,6 @@ name|JabRefPreferences
 operator|.
 name|USER_FILE_DIR_INDIVIDUAL
 argument_list|)
-decl_stmt|;
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|dirs
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
 decl_stmt|;
 name|Vector
 argument_list|<
