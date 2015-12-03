@@ -266,7 +266,7 @@ name|editor
 operator|=
 name|editor
 expr_stmt|;
-comment|// normally, the next call should be without "Localization.lang". However, the string "Write XMP" is also used in non-menu places and therefore, the translation must be also available at Localization.lang()
+comment|// normally, the next call should be without "Localization.lang". However, the string "Write XMP" is also used in non-menu places and therefore, the translation must be also available at Localization.lang
 name|putValue
 argument_list|(
 name|Action
