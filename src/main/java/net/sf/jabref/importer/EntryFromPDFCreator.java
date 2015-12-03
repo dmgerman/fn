@@ -221,7 +221,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Uses XMPUtils to get one BibtexEntry for a PDF-File.   * Also imports the non-XMP Data (PDDocument-Information) using XMPUtil.getBibtexEntryFromDocumentInformation.  * If data from more than one entry is read by XMPUtil then this entys are merged into one.    * @author Dan  * @version 12.11.2008 | 22:12:48  *   */
+comment|/**  * Uses XMPUtils to get one BibtexEntry for a PDF-File.  * Also imports the non-XMP Data (PDDocument-Information) using XMPUtil.getBibtexEntryFromDocumentInformation.  * If data from more than one entry is read by XMPUtil then this entys are merged into one.  * @author Dan  * @version 12.11.2008 | 22:12:48  *  */
 end_comment
 
 begin_class
@@ -302,7 +302,7 @@ return|return
 name|pdfFileType
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.imports.EntryFromFileCreator#accept(java.io.File)      *       * Accepts all Files having as suffix ".PDF" (in ignore case mode).      */
+comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.imports.EntryFromFileCreator#accept(java.io.File)      *      * Accepts all Files having as suffix ".PDF" (in ignore case mode).      */
 annotation|@
 name|Override
 DECL|method|accept (File f)
@@ -315,9 +315,11 @@ name|f
 parameter_list|)
 block|{
 return|return
+operator|(
 name|f
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|f
 operator|.
@@ -523,13 +525,14 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// default time stamp follows ISO-8601. Reason: https://xkcd.com/1179/
 name|String
 name|date
 init|=
 operator|new
 name|SimpleDateFormat
 argument_list|(
-literal|"yyyy.MM.dd"
+literal|"yyyy-MM-dd"
 argument_list|)
 operator|.
 name|format
@@ -614,7 +617,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Adds all data Found in all the entrys of this XMP file to the given      * entry. This was implemented without having much knowledge of the XMP      * format.      *       * @param aFile      * @param entry      */
+comment|/**      * Adds all data Found in all the entrys of this XMP file to the given      * entry. This was implemented without having much knowledge of the XMP      * format.      *      * @param aFile      * @param entry      */
 DECL|method|addEntyDataFromXMP (File aFile, BibtexEntry entry)
 specifier|private
 name|void
