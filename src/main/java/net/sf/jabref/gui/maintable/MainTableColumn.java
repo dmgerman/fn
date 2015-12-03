@@ -90,12 +90,20 @@ index|[]
 argument_list|>
 name|bibtexFields
 decl_stmt|;
-DECL|method|MainTableColumn (String columnName)
+DECL|field|isIconColumn
+specifier|private
+name|boolean
+name|isIconColumn
+decl_stmt|;
+DECL|method|MainTableColumn (String columnName, boolean isIconColumn)
 specifier|public
 name|MainTableColumn
 parameter_list|(
 name|String
 name|columnName
+parameter_list|,
+name|boolean
+name|isIconColumn
 parameter_list|)
 block|{
 name|this
@@ -112,6 +120,12 @@ name|Optional
 operator|.
 name|empty
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|isIconColumn
+operator|=
+name|isIconColumn
 expr_stmt|;
 block|}
 DECL|method|MainTableColumn (String columnName, String[] bibtexFields)
@@ -142,6 +156,51 @@ name|of
 argument_list|(
 name|bibtexFields
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|isIconColumn
+operator|=
+literal|false
+expr_stmt|;
+block|}
+DECL|method|MainTableColumn (String columnName, String[] bibtexFields, boolean isIconColumn)
+specifier|public
+name|MainTableColumn
+parameter_list|(
+name|String
+name|columnName
+parameter_list|,
+name|String
+index|[]
+name|bibtexFields
+parameter_list|,
+name|boolean
+name|isIconColumn
+parameter_list|)
+block|{
+name|this
+operator|.
+name|columnName
+operator|=
+name|columnName
+expr_stmt|;
+name|this
+operator|.
+name|bibtexFields
+operator|=
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|bibtexFields
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|isIconColumn
+operator|=
+name|isIconColumn
 expr_stmt|;
 block|}
 comment|/**      * Get the table column name to be displayed in the UI      *      * TODO: use JLabel to be able to display Iconcols?      *      * @return      */
@@ -345,6 +404,16 @@ parameter_list|()
 block|{
 return|return
 name|bibtexFields
+return|;
+block|}
+DECL|method|isIconColumn ()
+specifier|public
+name|boolean
+name|isIconColumn
+parameter_list|()
+block|{
+return|return
+name|isIconColumn
 return|;
 block|}
 DECL|method|getColumnValue (BibtexEntry entry)

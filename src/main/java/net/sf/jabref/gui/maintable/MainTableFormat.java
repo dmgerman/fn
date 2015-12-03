@@ -417,6 +417,19 @@ name|getDisplayName
 argument_list|()
 return|;
 block|}
+DECL|method|getTableColumns ()
+specifier|public
+name|List
+argument_list|<
+name|MainTableColumn
+argument_list|>
+name|getTableColumns
+parameter_list|()
+block|{
+return|return
+name|tableColumns
+return|;
+block|}
 comment|/**      * This method returns a string array indicating the types of icons to be displayed in the given column.      * It returns null if the column is not an icon column, and thereby also serves to identify icon      * columns.      */
 comment|//TODO to be removed?
 DECL|method|getIconTypeForColumn (int col)

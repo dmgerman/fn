@@ -141,6 +141,8 @@ argument_list|(
 name|GUIGlobals
 operator|.
 name|NUMBER_COL
+argument_list|,
+literal|false
 argument_list|)
 block|{
 annotation|@
@@ -181,6 +183,8 @@ name|SpecialFieldsUtils
 operator|.
 name|FIELDNAME_RANKING
 block|}
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -258,6 +262,8 @@ name|SpecialFieldsUtils
 operator|.
 name|FIELDNAME_PRIORITY
 block|}
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -335,6 +341,8 @@ name|SpecialFieldsUtils
 operator|.
 name|FIELDNAME_READ
 block|}
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -481,6 +489,8 @@ name|Globals
 operator|.
 name|FILE_FIELD
 block|}
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -607,6 +617,8 @@ argument_list|(
 name|columnName
 argument_list|,
 name|fields
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
@@ -711,6 +723,8 @@ operator|new
 name|MainTableColumn
 argument_list|(
 name|externalFileTypeName
+argument_list|,
+literal|true
 argument_list|)
 block|{
 annotation|@
