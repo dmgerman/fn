@@ -1404,25 +1404,6 @@ argument_list|,
 name|writer
 argument_list|)
 expr_stmt|;
-comment|//only append newline if the entry has changed
-if|if
-condition|(
-name|entry
-operator|.
-name|hasChanged
-argument_list|()
-condition|)
-block|{
-name|writer
-operator|.
-name|write
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 comment|// Write meta data.
