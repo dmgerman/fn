@@ -5041,12 +5041,7 @@ argument_list|)
 operator|+
 literal|"</html>"
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|""
-argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -5098,12 +5093,7 @@ argument_list|)
 operator|+
 literal|"</html>"
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|""
-argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
