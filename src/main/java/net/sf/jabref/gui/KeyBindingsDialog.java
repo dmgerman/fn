@@ -721,7 +721,6 @@ argument_list|)
 expr_stmt|;
 comment|// TODO: setup so that clicking on list will display the current binding
 block|}
-comment|/*    private void setTop() {         Box topBox = new Box(BoxLayout.X_AXIS);          topBox.add(new JLabel(Localization.lang("Binding") + ":", JLabel.RIGHT));         topBox.add(keyTF);         getContentPane().add(topBox, BorderLayout.NORTH);      }     */
 comment|/**      * respond to grabKey and display the key binding      */
 DECL|class|JBM_CustomKeyBindingsListener
 specifier|private
