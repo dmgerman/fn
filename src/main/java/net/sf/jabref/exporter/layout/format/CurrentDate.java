@@ -57,7 +57,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Inserts the current date (the time a database is being exported).  *   *<p>If a fieldText is given, it must be a valid {@link SimpleDateFormat} pattern.  * If none is given, the format pattern will be<code>yyyy.MM.dd hh:mm:ss z</code></p>  *  * @author andreas_sf at rudert-home dot de  */
+comment|/**  * Inserts the current date (the time a database is being exported).  *  *<p>If a fieldText is given, it must be a valid {@link SimpleDateFormat} pattern.  * If none is given, the format pattern will be<code>yyyy-MM-dd hh:mm:ss z</code>.  * This follows ISO-8601. Reason:<a href="https://xkcd.com/1179/">https://xkcd.com/1179/</a>.</p>  *  * @author andreas_sf at rudert-home dot de  */
 end_comment
 
 begin_class
@@ -68,6 +68,7 @@ name|CurrentDate
 implements|implements
 name|LayoutFormatter
 block|{
+comment|// default time stamp follows ISO-8601. Reason: https://xkcd.com/1179/
 DECL|field|defaultFormat
 specifier|private
 specifier|static
@@ -75,7 +76,7 @@ specifier|final
 name|String
 name|defaultFormat
 init|=
-literal|"yyyy.MM.dd hh:mm:ss z"
+literal|"yyyy-MM-dd hh:mm:ss z"
 decl_stmt|;
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.export.layout.LayoutFormatter#format(java.lang.String)      */
 annotation|@
@@ -98,16 +99,20 @@ name|defaultFormat
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|fieldText
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|fieldText
 operator|.
 name|trim
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|fieldText
