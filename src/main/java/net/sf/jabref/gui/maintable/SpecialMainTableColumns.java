@@ -654,7 +654,7 @@ if|if
 condition|(
 name|entry
 operator|.
-name|getFieldOrAlias
+name|getField
 argument_list|(
 name|field
 argument_list|)
