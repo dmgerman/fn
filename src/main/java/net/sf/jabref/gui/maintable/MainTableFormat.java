@@ -498,35 +498,6 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**      * Checks, if the Column (int col) is a Ranking-Column      *      * @param col Column Number      * @return Is Ranking-Column or not?      */
-DECL|method|isRankingColumn (int col)
-specifier|public
-name|boolean
-name|isRankingColumn
-parameter_list|(
-name|int
-name|col
-parameter_list|)
-block|{
-return|return
-name|tableColumns
-operator|.
-name|get
-argument_list|(
-name|col
-argument_list|)
-operator|.
-name|getColumnName
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|SpecialFieldsUtils
-operator|.
-name|FIELDNAME_RANKING
-argument_list|)
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|getColumnValue (BibtexEntry be, int col)
