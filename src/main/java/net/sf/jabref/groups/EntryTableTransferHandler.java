@@ -322,6 +322,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|maintable
+operator|.
 name|MainTable
 import|;
 end_import
@@ -335,6 +337,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|maintable
 operator|.
 name|MainTableFormat
 import|;
