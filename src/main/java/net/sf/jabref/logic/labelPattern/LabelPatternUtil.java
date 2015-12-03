@@ -1356,13 +1356,13 @@ name|isUniversity
 condition|)
 block|{
 name|StringBuilder
-name|uniSB
+name|universitySB
 init|=
 operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|uniSB
+name|universitySB
 operator|.
 name|append
 argument_list|(
@@ -1407,7 +1407,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|uniSB
+name|universitySB
 operator|.
 name|append
 argument_list|(
@@ -1418,7 +1418,7 @@ block|}
 block|}
 name|university
 operator|=
-name|uniSB
+name|universitySB
 operator|.
 name|toString
 argument_list|()
@@ -2556,7 +2556,7 @@ condition|)
 block|{
 comment|// Abbreviate - that is,
 name|StringBuilder
-name|abbr
+name|abbreviateSB
 init|=
 operator|new
 name|StringBuilder
@@ -2597,7 +2597,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|abbr
+name|abbreviateSB
 operator|.
 name|append
 argument_list|(
@@ -2613,7 +2613,7 @@ block|}
 block|}
 name|label
 operator|=
-name|abbr
+name|abbreviateSB
 operator|.
 name|toString
 argument_list|()
