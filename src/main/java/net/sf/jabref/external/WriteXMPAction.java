@@ -1007,8 +1007,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Operation canceled.\n"
+literal|"Operation canceled."
 argument_list|)
+operator|+
+literal|"\n"
 argument_list|)
 expr_stmt|;
 break|break;
