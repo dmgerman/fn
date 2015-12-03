@@ -1401,7 +1401,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Adds a sorting rule that floats hits to the top, and causes non-hits to be grayed out:      * @param m The Matcher that determines if an entry is a hit or not.      */
+comment|/**      * Adds a sorting rule that floats hits to the top, and causes non-hits to be grayed out:      */
 DECL|method|showFloatSearch ()
 specifier|public
 name|void
@@ -1481,7 +1481,7 @@ return|return
 name|isFloatSearchActive
 return|;
 block|}
-comment|/**      * Adds a sorting rule that floats group hits to the top, and causes non-hits to be grayed out:      * @param m The Matcher that determines if an entry is a in the current group selection or not.      */
+comment|/**      * Adds a sorting rule that floats group hits to the top, and causes non-hits to be grayed out:      */
 DECL|method|showFloatGrouping ()
 specifier|public
 name|void
@@ -2046,206 +2046,34 @@ argument_list|(
 name|ncWidth
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|1
-init|;
-name|i
-operator|<
-name|tableFormat
-operator|.
-name|padleft
-condition|;
-name|i
-operator|++
-control|)
-block|{
-comment|// Check if the Column is an extended RankingColumn (and not a compact-ranking column)
-comment|// If this is the case, set a certain Column-width,
-comment|// because the RankingIconColumn needs some more width
-if|if
-condition|(
-name|tableFormat
-operator|.
-name|isRankingColumn
-argument_list|(
-name|i
-argument_list|)
-condition|)
-block|{
-comment|// Lock the width of ranking icon column.
-name|cm
-operator|.
-name|getColumn
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setPreferredWidth
-argument_list|(
-name|GUIGlobals
-operator|.
-name|WIDTH_ICON_COL_RANKING
-argument_list|)
-expr_stmt|;
-name|cm
-operator|.
-name|getColumn
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setMinWidth
-argument_list|(
-name|GUIGlobals
-operator|.
-name|WIDTH_ICON_COL_RANKING
-argument_list|)
-expr_stmt|;
-name|cm
-operator|.
-name|getColumn
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setMaxWidth
-argument_list|(
-name|GUIGlobals
-operator|.
-name|WIDTH_ICON_COL_RANKING
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// Lock the width of icon columns.
-name|cm
-operator|.
-name|getColumn
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setPreferredWidth
-argument_list|(
-name|GUIGlobals
-operator|.
-name|WIDTH_ICON_COL
-argument_list|)
-expr_stmt|;
-name|cm
-operator|.
-name|getColumn
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setMinWidth
-argument_list|(
-name|GUIGlobals
-operator|.
-name|WIDTH_ICON_COL
-argument_list|)
-expr_stmt|;
-name|cm
-operator|.
-name|getColumn
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setMaxWidth
-argument_list|(
-name|GUIGlobals
-operator|.
-name|WIDTH_ICON_COL
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-for|for
-control|(
-name|int
-name|i
-init|=
-name|tableFormat
-operator|.
-name|padleft
-init|;
-name|i
-operator|<
-name|getModel
-argument_list|()
-operator|.
-name|getColumnCount
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-block|{
-try|try
-block|{
-name|cm
-operator|.
-name|getColumn
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setPreferredWidth
-argument_list|(
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
-name|widths
-index|[
-name|i
-operator|-
-name|tableFormat
-operator|.
-name|padleft
-index|]
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ex
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Exception while setting column widths. Choosing default."
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
-name|cm
-operator|.
-name|getColumn
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setPreferredWidth
-argument_list|(
-name|GUIGlobals
-operator|.
-name|DEFAULT_FIELD_LENGTH
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+comment|// FIXME set correct width for each field
+comment|//        for (int i = 1; i< tableFormat.padleft; i++) {
+comment|//
+comment|//            // Check if the Column is an extended RankingColumn (and not a compact-ranking column)
+comment|//            // If this is the case, set a certain Column-width,
+comment|//            // because the RankingIconColumn needs some more width
+comment|//            if (tableFormat.isRankingColumn(i)) {
+comment|//                // Lock the width of ranking icon column.
+comment|//                cm.getColumn(i).setPreferredWidth(GUIGlobals.WIDTH_ICON_COL_RANKING);
+comment|//                cm.getColumn(i).setMinWidth(GUIGlobals.WIDTH_ICON_COL_RANKING);
+comment|//                cm.getColumn(i).setMaxWidth(GUIGlobals.WIDTH_ICON_COL_RANKING);
+comment|//            } else {
+comment|//                // Lock the width of icon columns.
+comment|//                cm.getColumn(i).setPreferredWidth(GUIGlobals.WIDTH_ICON_COL);
+comment|//                cm.getColumn(i).setMinWidth(GUIGlobals.WIDTH_ICON_COL);
+comment|//                cm.getColumn(i).setMaxWidth(GUIGlobals.WIDTH_ICON_COL);
+comment|//            }
+comment|//
+comment|//        }
+comment|//        for (int i = tableFormat.padleft; i< getModel().getColumnCount(); i++) {
+comment|//            try {
+comment|//                cm.getColumn(i).setPreferredWidth(Integer.parseInt(widths[i - tableFormat.padleft]));
+comment|//            } catch (Throwable ex) {
+comment|//                LOGGER.info("Exception while setting column widths. Choosing default.", ex);
+comment|//                cm.getColumn(i).setPreferredWidth(GUIGlobals.DEFAULT_FIELD_LENGTH);
+comment|//            }
+comment|//
+comment|//        }
 block|}
 DECL|method|getEntryAt (int row)
 specifier|public
@@ -2462,144 +2290,25 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Icon columns:
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|1
-init|;
-name|i
-operator|<
-name|tableFormat
-operator|.
-name|padleft
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|comparators
-operator|=
-name|comparatorChooser
-operator|.
-name|getComparatorsForColumn
-argument_list|(
-name|i
-argument_list|)
-expr_stmt|;
-name|comparators
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|String
-index|[]
-name|iconField
-init|=
-name|tableFormat
-operator|.
-name|getIconTypeForColumn
-argument_list|(
-name|i
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|iconField
-index|[
-literal|0
-index|]
-operator|.
-name|equals
-argument_list|(
-name|SpecialFieldsUtils
-operator|.
-name|FIELDNAME_RANKING
-argument_list|)
-condition|)
-block|{
-name|comparators
-operator|.
-name|add
-argument_list|(
-operator|new
-name|RankingFieldComparator
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|comparators
-operator|.
-name|add
-argument_list|(
-operator|new
-name|IconComparator
-argument_list|(
-name|iconField
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-comment|// Remaining columns:
-for|for
-control|(
-name|int
-name|i
-init|=
-name|tableFormat
-operator|.
-name|padleft
-init|;
-name|i
-operator|<
-name|tableFormat
-operator|.
-name|getColumnCount
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|comparators
-operator|=
-name|comparatorChooser
-operator|.
-name|getComparatorsForColumn
-argument_list|(
-name|i
-argument_list|)
-expr_stmt|;
-name|comparators
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|comparators
-operator|.
-name|add
-argument_list|(
-operator|new
-name|FieldComparator
-argument_list|(
-name|tableFormat
-operator|.
-name|getColumnName
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|toLowerCase
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
+comment|// FIXME set correct comparator for the columns
+comment|//        // Icon columns:
+comment|//        for (int i = 1; i< tableFormat.padleft; i++) {
+comment|//            comparators = comparatorChooser.getComparatorsForColumn(i);
+comment|//            comparators.clear();
+comment|//            String[] iconField = tableFormat.getIconTypeForColumn(i);
+comment|//
+comment|//            if (iconField[0].equals(SpecialFieldsUtils.FIELDNAME_RANKING)) {
+comment|//                comparators.add(new RankingFieldComparator());
+comment|//            } else {
+comment|//                comparators.add(new IconComparator(iconField));
+comment|//            }
+comment|//        }
+comment|//        // Remaining columns:
+comment|//        for (int i = tableFormat.padleft; i< tableFormat.getColumnCount(); i++) {
+comment|//            comparators = comparatorChooser.getComparatorsForColumn(i);
+comment|//            comparators.clear();
+comment|//            comparators.add(new FieldComparator(tableFormat.getColumnName(i).toLowerCase()));
+comment|//        }
 comment|// Set initial sort columns:
 comment|// Default sort order:
 name|String
