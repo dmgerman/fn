@@ -265,15 +265,6 @@ name|COL_DEFINITION_FIELD_SEPARATOR
 init|=
 literal|"/"
 decl_stmt|;
-DECL|field|ICON_COLUMN_PREFIX
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ICON_COLUMN_PREFIX
-init|=
-literal|"iconcol:"
-decl_stmt|;
 comment|// Values to gather iconImages for those columns
 comment|// These values are also used to put a heading into the table; see getColumnName(int)
 DECL|field|PDF
@@ -344,20 +335,6 @@ operator|.
 name|FILE_FIELD
 block|}
 decl_stmt|;
-DECL|field|panel
-specifier|private
-specifier|final
-name|BasePanel
-name|panel
-decl_stmt|;
-DECL|field|columns
-specifier|private
-name|String
-index|[]
-index|[]
-name|columns
-decl_stmt|;
-comment|// Contains the current column names.
 DECL|field|tableColumns
 specifier|private
 name|List
@@ -401,21 +378,6 @@ specifier|private
 name|boolean
 name|namesLastOnly
 decl_stmt|;
-DECL|method|MainTableFormat (BasePanel panel)
-specifier|public
-name|MainTableFormat
-parameter_list|(
-name|BasePanel
-name|panel
-parameter_list|)
-block|{
-name|this
-operator|.
-name|panel
-operator|=
-name|panel
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|getColumnCount ()
@@ -455,79 +417,8 @@ name|getDisplayName
 argument_list|()
 return|;
 block|}
-comment|/**      * Get the column title, or a string identifying the column if it is an icon      * column without a title.      *      * @param col The column number      * @return the String identifying the column      */
-comment|//TODO can be removed?
-DECL|method|getColumnType (int col)
-specifier|public
-name|String
-name|getColumnType
-parameter_list|(
-name|int
-name|col
-parameter_list|)
-block|{
-name|String
-name|name
-init|=
-name|getColumnName
-argument_list|(
-name|col
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|name
-operator|!=
-literal|null
-condition|)
-block|{
-return|return
-name|name
-return|;
-block|}
-name|String
-index|[]
-name|icon
-init|=
-name|getIconTypeForColumn
-argument_list|(
-name|col
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|(
-name|icon
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|icon
-operator|.
-name|length
-operator|>
-literal|0
-operator|)
-condition|)
-block|{
-return|return
-name|MainTableFormat
-operator|.
-name|ICON_COLUMN_PREFIX
-operator|+
-name|icon
-index|[
-literal|0
-index|]
-return|;
-block|}
-return|return
-literal|null
-return|;
-block|}
 comment|/**      * This method returns a string array indicating the types of icons to be displayed in the given column.      * It returns null if the column is not an icon column, and thereby also serves to identify icon      * columns.      */
-comment|//TODO to be removed
+comment|//TODO to be removed?
 DECL|method|getIconTypeForColumn (int col)
 specifier|public
 name|String
@@ -638,90 +529,21 @@ name|col
 parameter_list|)
 block|{
 return|return
-literal|"#"
+name|tableColumns
+operator|.
+name|get
+argument_list|(
+name|col
+argument_list|)
+operator|.
+name|getColumnValue
+argument_list|(
+name|be
+argument_list|)
 return|;
-comment|//        Object o = null;
-comment|//        String[] iconType = getIconTypeForColumn(col); // If non-null, indicates an icon column's type.
-comment|//
-comment|//        if (col == 0) {
-comment|//            o = "#";// + (row + 1);
-comment|//        } else if (iconType != null) {
-comment|//            int hasField;
-comment|//
-comment|//            int[] fieldCount = hasField(be, iconType);
-comment|//            hasField = fieldCount[0];
-comment|//
-comment|//            if (hasField< 0) {
-comment|//                return null;
-comment|//            }
-comment|//
-comment|//            // Ok, so we are going to display an icon. Find out which one, and return it:
-comment|//            if (iconType[hasField].equals(Globals.FILE_FIELD)) {
-comment|//                o = FileListTableModel.getFirstLabel(be.getField(Globals.FILE_FIELD));
-comment|//
-comment|//                if (fieldCount[1]> 1) {
-comment|//                    o = new JLabel(IconTheme.JabRefIcon.FILE_MULTIPLE.getSmallIcon());
-comment|//                }
-comment|//
-comment|//                // Handle priority column special
-comment|//                // Extra handling because the icon depends on a FieldValue
-comment|//            } else if (iconType[hasField].equals(MainTableFormat.PRIORITY[0])) {
-comment|//                SpecialFieldValue prio = Priority.getInstance().parse(be.getField(SpecialFieldsUtils.FIELDNAME_PRIORITY));
-comment|//                if (prio != null) {
-comment|//                    // prio might be null if fieldvalue is an invalid value, therefore we check for != null
-comment|//                    o = prio.createLabel();
-comment|//                }
-comment|//                // Handle ranking column special
-comment|//                // Extra handling because the icon depends on a FieldValue
-comment|//            } else if (iconType[hasField].equals(MainTableFormat.RANKING[0])) {
-comment|//                SpecialFieldValue rank = Rank.getInstance().parse(be.getField(SpecialFieldsUtils.FIELDNAME_RANKING));
-comment|//                if (rank != null) {
-comment|//                    o = rank.createLabel();
-comment|//                }
-comment|//                // Handle read status column special
-comment|//                // Extra handling because the icon depends on a FieldValue
-comment|//            } else if (iconType[hasField].equals(MainTableFormat.READ[0])) {
-comment|//                SpecialFieldValue status = ReadStatus.getInstance().parse(be.getField(SpecialFieldsUtils.FIELDNAME_READ));
-comment|//                if (status != null) {
-comment|//                    o = status.createLabel();
-comment|//                }
-comment|//            } else {
-comment|//                o = GUIGlobals.getTableIcon(iconType[hasField]);
-comment|//
-comment|//                if (fieldCount[1]> 1) {
-comment|//                    o = new JLabel(IconTheme.JabRefIcon.FILE_MULTIPLE.getSmallIcon());
-comment|//                }
-comment|//            }
-comment|//        } else {
-comment|//            String[] fld = columns[col - padleft];
-comment|//            // Go through the fields until we find one with content:
-comment|//            int j = 0;
-comment|//            for (int i = 0; i< fld.length; i++) {
-comment|//                if (fld[i].equals(BibtexEntry.TYPE_HEADER)) {
-comment|//                    o = be.getType().getName();
-comment|//                } else {
-comment|//                    o = be.getFieldOrAlias(fld[i]);
-comment|//                    if ("Author".equals(getColumnName(col))&& (o != null)) {
-comment|//                        o = panel.database().resolveForStrings((String) o);
-comment|//                    }
-comment|//                }
-comment|//                if (o != null) {
-comment|//                    j = i;
-comment|//                    break;
-comment|//                }
-comment|//            }
-comment|//
-comment|//            for (int[] nameCol : nameCols) {
-comment|//                if (((col - padleft) == nameCol[0])&& (nameCol[1] == j)) {
-comment|//                    return formatName((String) o);
-comment|//                }
-comment|//            }
-comment|//
-comment|//        }
-comment|//
-comment|//        return o;
 block|}
 comment|/**      * Format a name field for the table, according to user preferences.      *      * @param nameToFormat The contents of the name field.      * @return The formatted name field.      */
+comment|// TODO move to some Util class?
 DECL|method|formatName (String nameToFormat)
 specifier|public
 name|String
@@ -830,346 +652,6 @@ return|return
 name|nameToFormat
 return|;
 block|}
-DECL|method|hasField (BibtexEntry be, String field)
-specifier|private
-name|boolean
-name|hasField
-parameter_list|(
-name|BibtexEntry
-name|be
-parameter_list|,
-name|String
-name|field
-parameter_list|)
-block|{
-comment|// Returns true iff the entry has a nonzero value in its
-comment|// 'search' field.
-return|return
-operator|(
-operator|(
-name|be
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|be
-operator|.
-name|getFieldOrAlias
-argument_list|(
-name|field
-argument_list|)
-operator|!=
-literal|null
-operator|)
-operator|)
-return|;
-block|}
-DECL|method|hasField (BibtexEntry be, String[] field)
-specifier|private
-name|int
-index|[]
-name|hasField
-parameter_list|(
-name|BibtexEntry
-name|be
-parameter_list|,
-name|String
-index|[]
-name|field
-parameter_list|)
-block|{
-comment|// If the entry has a nonzero value in any of the
-comment|// 'search' fields, returns the smallest index for which it does.
-comment|// Otherwise returns -1. When field indicates one or more file types,
-comment|// returns the index of the first present file type.
-if|if
-condition|(
-operator|(
-name|be
-operator|==
-literal|null
-operator|)
-operator|||
-operator|(
-name|field
-operator|==
-literal|null
-operator|)
-operator|||
-operator|(
-name|field
-operator|.
-name|length
-operator|<
-literal|1
-operator|)
-condition|)
-block|{
-return|return
-operator|new
-name|int
-index|[]
-block|{
-operator|-
-literal|1
-block|,
-operator|-
-literal|1
-block|}
-return|;
-block|}
-name|int
-name|hasField
-init|=
-operator|-
-literal|1
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|field
-index|[
-literal|0
-index|]
-operator|.
-name|equals
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
-condition|)
-block|{
-for|for
-control|(
-name|int
-name|i
-init|=
-name|field
-operator|.
-name|length
-operator|-
-literal|1
-init|;
-name|i
-operator|>=
-literal|0
-condition|;
-name|i
-operator|--
-control|)
-block|{
-if|if
-condition|(
-name|hasField
-argument_list|(
-name|be
-argument_list|,
-name|field
-index|[
-name|i
-index|]
-argument_list|)
-condition|)
-block|{
-name|hasField
-operator|=
-name|i
-expr_stmt|;
-block|}
-block|}
-return|return
-operator|new
-name|int
-index|[]
-block|{
-name|hasField
-block|,
-operator|-
-literal|1
-block|}
-return|;
-block|}
-else|else
-block|{
-comment|// We use a FileListTableModel to parse the field content:
-name|Object
-name|o
-init|=
-name|be
-operator|.
-name|getField
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
-decl_stmt|;
-name|FileListTableModel
-name|fileList
-init|=
-operator|new
-name|FileListTableModel
-argument_list|()
-decl_stmt|;
-name|fileList
-operator|.
-name|setContent
-argument_list|(
-operator|(
-name|String
-operator|)
-name|o
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|field
-operator|.
-name|length
-operator|==
-literal|1
-condition|)
-block|{
-if|if
-condition|(
-name|fileList
-operator|.
-name|getRowCount
-argument_list|()
-operator|==
-literal|0
-condition|)
-block|{
-return|return
-operator|new
-name|int
-index|[]
-block|{
-operator|-
-literal|1
-block|,
-operator|-
-literal|1
-block|}
-return|;
-block|}
-else|else
-block|{
-return|return
-operator|new
-name|int
-index|[]
-block|{
-literal|0
-block|,
-name|fileList
-operator|.
-name|getRowCount
-argument_list|()
-block|}
-return|;
-block|}
-block|}
-name|int
-name|lastLinkPosition
-init|=
-operator|-
-literal|1
-decl_stmt|;
-name|int
-name|countLinks
-init|=
-literal|0
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|1
-init|;
-name|i
-operator|<
-name|field
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
-comment|// Count the number of links of correct type.
-for|for
-control|(
-name|int
-name|j
-init|=
-literal|0
-init|;
-name|j
-operator|<
-name|fileList
-operator|.
-name|getRowCount
-argument_list|()
-condition|;
-name|j
-operator|++
-control|)
-block|{
-name|FileListEntry
-name|flEntry
-init|=
-name|fileList
-operator|.
-name|getEntry
-argument_list|(
-name|j
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|flEntry
-operator|.
-name|getType
-argument_list|()
-operator|.
-name|toString
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-name|field
-index|[
-name|i
-index|]
-argument_list|)
-condition|)
-block|{
-name|lastLinkPosition
-operator|=
-name|i
-expr_stmt|;
-name|countLinks
-operator|++
-expr_stmt|;
-block|}
-block|}
-block|}
-return|return
-operator|new
-name|int
-index|[]
-block|{
-name|lastLinkPosition
-block|,
-name|countLinks
-block|}
-return|;
-block|}
-block|}
 DECL|method|updateTableFormat ()
 specifier|public
 name|void
@@ -1187,13 +669,9 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
-argument_list|(
-name|GUIGlobals
+name|SpecialMainTableColumns
 operator|.
 name|NUMBER_COL
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Add 'normal' bibtex fields as configured in the preferences
@@ -1213,17 +691,6 @@ operator|.
 name|COLUMN_NAMES
 argument_list|)
 decl_stmt|;
-name|columns
-operator|=
-operator|new
-name|String
-index|[
-name|colSettings
-operator|.
-name|length
-index|]
-index|[]
-expr_stmt|;
 for|for
 control|(
 name|int
@@ -1315,13 +782,9 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
-argument_list|(
-name|SpecialFieldsUtils
+name|SpecialMainTableColumns
 operator|.
-name|FIELDNAME_RANKING
-argument_list|)
+name|RANKING_COLUMN
 argument_list|)
 expr_stmt|;
 block|}
@@ -1343,13 +806,9 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
-argument_list|(
-name|SpecialFieldsUtils
+name|SpecialMainTableColumns
 operator|.
-name|FIELDNAME_RELEVANCE
-argument_list|)
+name|RELEVANCE_COLUMN
 argument_list|)
 expr_stmt|;
 block|}
@@ -1371,13 +830,9 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
-argument_list|(
-name|SpecialFieldsUtils
+name|SpecialMainTableColumns
 operator|.
-name|FIELDNAME_QUALITY
-argument_list|)
+name|QUALITY_COLUMN
 argument_list|)
 expr_stmt|;
 block|}
@@ -1399,13 +854,9 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
-argument_list|(
-name|SpecialFieldsUtils
+name|SpecialMainTableColumns
 operator|.
-name|FIELDNAME_PRIORITY
-argument_list|)
+name|PRIORITY_COLUMN
 argument_list|)
 expr_stmt|;
 block|}
@@ -1427,13 +878,9 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
-argument_list|(
-name|SpecialFieldsUtils
+name|SpecialMainTableColumns
 operator|.
-name|FIELDNAME_PRINTED
-argument_list|)
+name|PRINTED_COLUMN
 argument_list|)
 expr_stmt|;
 block|}
@@ -1455,13 +902,9 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
-argument_list|(
-name|SpecialFieldsUtils
+name|SpecialMainTableColumns
 operator|.
-name|FIELDNAME_READ
-argument_list|)
+name|READ_STATUS_COLUMN
 argument_list|)
 expr_stmt|;
 block|}
@@ -1484,13 +927,9 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
-argument_list|(
-name|JabRefPreferences
+name|SpecialMainTableColumns
 operator|.
 name|FILE_COLUMN
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1512,8 +951,9 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
+name|SpecialMainTableColumns
+operator|.
+name|createIconColumn
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -1558,8 +998,9 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
+name|SpecialMainTableColumns
+operator|.
+name|createIconColumn
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -1578,8 +1019,9 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
+name|SpecialMainTableColumns
+operator|.
+name|createIconColumn
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -1611,8 +1053,9 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
+name|SpecialMainTableColumns
+operator|.
+name|createIconColumn
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -1666,19 +1109,11 @@ name|tableColumns
 operator|.
 name|add
 argument_list|(
-operator|new
-name|MainTableColumn
+name|SpecialMainTableColumns
+operator|.
+name|createFileIconColumn
 argument_list|(
 name|desiredColumn
-argument_list|,
-operator|new
-name|String
-index|[]
-block|{
-name|Globals
-operator|.
-name|FILE_FIELD
-block|}
 argument_list|)
 argument_list|)
 expr_stmt|;

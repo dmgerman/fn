@@ -2217,16 +2217,19 @@ range|:
 name|sortCols
 control|)
 block|{
+comment|// TODO check whether this really works
 name|String
 name|name
 init|=
 name|tableFormat
 operator|.
-name|getColumnType
+name|getColumnName
 argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
+comment|//TODO OLD
+comment|// String name = tableFormat.getColumnType(i);
 if|if
 condition|(
 name|name
@@ -2311,491 +2314,72 @@ comment|//            comparators.add(new FieldComparator(tableFormat.getColumnN
 comment|//        }
 comment|// Set initial sort columns:
 comment|// Default sort order:
-name|String
-index|[]
-name|sortFields
-init|=
-operator|new
-name|String
-index|[]
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_PRIMARY_SORT_FIELD
-argument_list|)
-block|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_SECONDARY_SORT_FIELD
-argument_list|)
-block|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_TERTIARY_SORT_FIELD
-argument_list|)
-block|}
-decl_stmt|;
-name|boolean
-index|[]
-name|sortDirections
-init|=
-operator|new
-name|boolean
-index|[]
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_PRIMARY_SORT_DESCENDING
-argument_list|)
-block|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_SECONDARY_SORT_DESCENDING
-argument_list|)
-block|,
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_TERTIARY_SORT_DESCENDING
-argument_list|)
-block|}
-decl_stmt|;
-comment|// descending
-name|sortedForTable
-operator|.
-name|getReadWriteLock
-argument_list|()
-operator|.
-name|writeLock
-argument_list|()
-operator|.
-name|lock
-argument_list|()
-expr_stmt|;
-try|try
-block|{
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|sortFields
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|int
-name|index
-init|=
-operator|-
-literal|1
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|sortFields
-index|[
-name|i
-index|]
-operator|.
-name|startsWith
-argument_list|(
-name|MainTableFormat
-operator|.
-name|ICON_COLUMN_PREFIX
-argument_list|)
-condition|)
-block|{
-name|index
-operator|=
-name|tableFormat
-operator|.
-name|getColumnIndex
-argument_list|(
-name|sortFields
-index|[
-name|i
-index|]
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-for|for
-control|(
-name|int
-name|j
-init|=
-literal|0
-init|;
-name|j
-operator|<
-name|tableFormat
-operator|.
-name|getColumnCount
-argument_list|()
-condition|;
-name|j
-operator|++
-control|)
-block|{
-if|if
-condition|(
-name|sortFields
-index|[
-name|i
-index|]
-operator|.
-name|equals
-argument_list|(
-name|tableFormat
-operator|.
-name|getColumnType
-argument_list|(
-name|j
-argument_list|)
-argument_list|)
-condition|)
-block|{
-name|index
-operator|=
-name|j
-expr_stmt|;
-break|break;
-block|}
-block|}
-block|}
-if|if
-condition|(
-name|index
-operator|>=
-literal|0
-condition|)
-block|{
-name|comparatorChooser
-operator|.
-name|appendComparator
-argument_list|(
-name|index
-argument_list|,
-literal|0
-argument_list|,
-name|sortDirections
-index|[
-name|i
-index|]
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-finally|finally
-block|{
-name|sortedForTable
-operator|.
-name|getReadWriteLock
-argument_list|()
-operator|.
-name|writeLock
-argument_list|()
-operator|.
-name|unlock
-argument_list|()
-expr_stmt|;
-block|}
-comment|// Add action listener so we can remember the sort order:
-name|comparatorChooser
-operator|.
-name|addSortActionListener
-argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|actionEvent
-parameter_list|)
-block|{
-comment|// Get the information about the current sort order:
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|fields
-init|=
-name|getCurrentSortFields
-argument_list|()
-decl_stmt|;
-name|List
-argument_list|<
-name|Boolean
-argument_list|>
-name|order
-init|=
-name|getCurrentSortOrder
-argument_list|()
-decl_stmt|;
-comment|// Update preferences:
-name|int
-name|count
-init|=
-name|Math
-operator|.
-name|min
-argument_list|(
-name|fields
-operator|.
-name|size
-argument_list|()
-argument_list|,
-name|order
-operator|.
-name|size
-argument_list|()
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|count
-operator|>=
-literal|1
-condition|)
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|put
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_PRIMARY_SORT_FIELD
-argument_list|,
-name|fields
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_PRIMARY_SORT_DESCENDING
-argument_list|,
-name|order
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|count
-operator|>=
-literal|2
-condition|)
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|put
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_SECONDARY_SORT_FIELD
-argument_list|,
-name|fields
-operator|.
-name|get
-argument_list|(
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_SECONDARY_SORT_DESCENDING
-argument_list|,
-name|order
-operator|.
-name|get
-argument_list|(
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|put
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_SECONDARY_SORT_FIELD
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_SECONDARY_SORT_DESCENDING
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|count
-operator|>=
-literal|3
-condition|)
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|put
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_TERTIARY_SORT_FIELD
-argument_list|,
-name|fields
-operator|.
-name|get
-argument_list|(
-literal|2
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_TERTIARY_SORT_DESCENDING
-argument_list|,
-name|order
-operator|.
-name|get
-argument_list|(
-literal|2
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|put
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_TERTIARY_SORT_FIELD
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|TABLE_TERTIARY_SORT_DESCENDING
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+comment|//        String[] sortFields = new String[] {
+comment|//                Globals.prefs.get(JabRefPreferences.TABLE_PRIMARY_SORT_FIELD),
+comment|//                Globals.prefs.get(JabRefPreferences.TABLE_SECONDARY_SORT_FIELD),
+comment|//                Globals.prefs.get(JabRefPreferences.TABLE_TERTIARY_SORT_FIELD)
+comment|//        };
+comment|//        boolean[] sortDirections = new boolean[] {
+comment|//                Globals.prefs.getBoolean(JabRefPreferences.TABLE_PRIMARY_SORT_DESCENDING),
+comment|//                Globals.prefs.getBoolean(JabRefPreferences.TABLE_SECONDARY_SORT_DESCENDING),
+comment|//                Globals.prefs.getBoolean(JabRefPreferences.TABLE_TERTIARY_SORT_DESCENDING)
+comment|//        }; // descending
+comment|//
+comment|//        sortedForTable.getReadWriteLock().writeLock().lock();
+comment|//        try {
+comment|//            for (int i = 0; i< sortFields.length; i++) {
+comment|//                int index = -1;
+comment|//                if (!sortFields[i].startsWith(MainTableFormat.ICON_COLUMN_PREFIX)) {
+comment|//                    index = tableFormat.getColumnIndex(sortFields[i]);
+comment|//                } else {
+comment|//                    for (int j = 0; j< tableFormat.getColumnCount(); j++) {
+comment|//                        if (sortFields[i].equals(tableFormat.getColumnType(j))) {
+comment|//                            index = j;
+comment|//                            break;
+comment|//                        }
+comment|//                    }
+comment|//                }
+comment|//                if (index>= 0) {
+comment|//                    comparatorChooser.appendComparator(index, 0, sortDirections[i]);
+comment|//                }
+comment|//            }
+comment|//        } finally {
+comment|//            sortedForTable.getReadWriteLock().writeLock().unlock();
+comment|//        }
+comment|//
+comment|//        // Add action listener so we can remember the sort order:
+comment|//        comparatorChooser.addSortActionListener(new ActionListener() {
+comment|//
+comment|//            @Override
+comment|//            public void actionPerformed(ActionEvent actionEvent) {
+comment|//                // Get the information about the current sort order:
+comment|//                List<String> fields = getCurrentSortFields();
+comment|//                List<Boolean> order = getCurrentSortOrder();
+comment|//                // Update preferences:
+comment|//                int count = Math.min(fields.size(), order.size());
+comment|//                if (count>= 1) {
+comment|//                    Globals.prefs.put(JabRefPreferences.TABLE_PRIMARY_SORT_FIELD, fields.get(0));
+comment|//                    Globals.prefs.putBoolean(JabRefPreferences.TABLE_PRIMARY_SORT_DESCENDING, order.get(0));
+comment|//                }
+comment|//                if (count>= 2) {
+comment|//                    Globals.prefs.put(JabRefPreferences.TABLE_SECONDARY_SORT_FIELD, fields.get(1));
+comment|//                    Globals.prefs.putBoolean(JabRefPreferences.TABLE_SECONDARY_SORT_DESCENDING, order.get(1));
+comment|//                }
+comment|//                else {
+comment|//                    Globals.prefs.put(JabRefPreferences.TABLE_SECONDARY_SORT_FIELD, "");
+comment|//                    Globals.prefs.putBoolean(JabRefPreferences.TABLE_SECONDARY_SORT_DESCENDING, false);
+comment|//                }
+comment|//                if (count>= 3) {
+comment|//                    Globals.prefs.put(JabRefPreferences.TABLE_TERTIARY_SORT_FIELD, fields.get(2));
+comment|//                    Globals.prefs.putBoolean(JabRefPreferences.TABLE_TERTIARY_SORT_DESCENDING, order.get(2));
+comment|//                }
+comment|//                else {
+comment|//                    Globals.prefs.put(JabRefPreferences.TABLE_TERTIARY_SORT_FIELD, "");
+comment|//                    Globals.prefs.putBoolean(JabRefPreferences.TABLE_TERTIARY_SORT_DESCENDING, false);
+comment|//                }
+comment|//            }
+comment|//
+comment|//        });
 block|}
 DECL|method|getCellStatus (int row, int col)
 specifier|private
