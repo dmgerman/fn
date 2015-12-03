@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.importer.fetcher
+DECL|package|net.sf.jabref.logic.util.strings
 package|package
 name|net
 operator|.
@@ -8,9 +8,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|fetcher
+name|util
+operator|.
+name|strings
 package|;
 end_package
 
@@ -25,9 +27,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|LengthComparator
+DECL|class|StringLengthComparator
+specifier|public
 class|class
-name|LengthComparator
+name|StringLengthComparator
 implements|implements
 name|Comparator
 argument_list|<

@@ -1750,8 +1750,10 @@ condition|)
 block|{
 name|entryType
 operator|=
-literal|"online"
+literal|"misc"
 expr_stmt|;
+comment|// FIXME: online only available in Biblatex
+comment|//entryType = "online";
 block|}
 comment|/*          * Wahrscheinlichkeit, dass ZDB-ID          * vorhanden ist, ist grÃ¶Ãer als ISBN bei          * BuchbeitrÃ¤gen. Daher bei As?-SÃ¤tzen am besten immer          * dann @incollection annehmen, wenn weder ISBN noch          * ZDB-ID vorhanden sind.          */
 name|BibtexEntry

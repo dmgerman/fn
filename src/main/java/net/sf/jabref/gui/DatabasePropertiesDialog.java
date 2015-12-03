@@ -423,7 +423,7 @@ specifier|private
 specifier|final
 name|JComboBox
 argument_list|<
-name|String
+name|Charset
 argument_list|>
 name|encoding
 decl_stmt|;
@@ -618,6 +618,7 @@ name|setModel
 argument_list|(
 operator|new
 name|DefaultComboBoxModel
+argument_list|<>
 argument_list|(
 name|Encodings
 operator|.
@@ -2764,18 +2765,13 @@ decl_stmt|;
 name|Charset
 name|newEncoding
 init|=
-name|Charset
-operator|.
-name|forName
-argument_list|(
 operator|(
-name|String
+name|Charset
 operator|)
 name|encoding
 operator|.
 name|getSelectedItem
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|panel
 operator|.

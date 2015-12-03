@@ -15,7 +15,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Formatter Interface  */
+comment|/**  * The Formatter is used for a Filter design-pattern. Implementing classes have to accept a String and returned a  * formatted version of it.  *  * Example:  *  * "John von Neumann" => "von Neumann, John"  *  */
 end_comment
 
 begin_interface
