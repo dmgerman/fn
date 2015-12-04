@@ -667,15 +667,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|fw
-operator|.
-name|write
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|writeString (Writer fw, BibtexString bs, HashMap<String, BibtexString> remaining, int maxKeyLength)
 specifier|private
