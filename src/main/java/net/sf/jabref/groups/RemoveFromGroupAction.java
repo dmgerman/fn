@@ -90,9 +90,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|groups
 operator|.
-name|Localization
+name|GroupsUtil
 import|;
 end_import
 
@@ -104,9 +104,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Util
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -219,7 +221,7 @@ comment|// warn if assignment has undesired side effects (modifies a field != ke
 if|if
 condition|(
 operator|!
-name|Util
+name|GroupsUtil
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(

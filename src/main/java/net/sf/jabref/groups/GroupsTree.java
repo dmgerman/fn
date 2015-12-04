@@ -276,9 +276,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Util
+name|groups
+operator|.
+name|GroupsUtil
 import|;
 end_import
 
@@ -1516,7 +1518,7 @@ comment|// field != keywords)
 if|if
 condition|(
 operator|!
-name|Util
+name|GroupsUtil
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(
