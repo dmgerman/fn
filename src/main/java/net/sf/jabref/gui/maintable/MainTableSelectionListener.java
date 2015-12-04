@@ -2344,12 +2344,13 @@ comment|// See if this is a simple file link field, or if it is a file-list
 comment|// field that can specify a list of links:
 if|if
 condition|(
+operator|!
 name|column
 operator|.
 name|getBibtexFields
 argument_list|()
 operator|.
-name|isPresent
+name|isEmpty
 argument_list|()
 condition|)
 block|{
@@ -2361,9 +2362,6 @@ range|:
 name|column
 operator|.
 name|getBibtexFields
-argument_list|()
-operator|.
-name|get
 argument_list|()
 control|)
 block|{

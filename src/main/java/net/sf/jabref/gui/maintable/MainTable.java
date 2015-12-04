@@ -2614,14 +2614,6 @@ name|tableColumn
 operator|.
 name|getBibtexFields
 argument_list|()
-operator|.
-name|orElse
-argument_list|(
-operator|new
-name|String
-index|[]
-block|{}
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
