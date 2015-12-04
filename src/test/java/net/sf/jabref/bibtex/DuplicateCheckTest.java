@@ -110,16 +110,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -166,8 +156,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testDuplicateDetection ()
 specifier|public
 name|void
@@ -238,7 +226,6 @@ name|two
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//TODO algorithm thinks bob and joyce is the same with high accuracy
 name|two
 operator|.
 name|setField
@@ -498,8 +485,6 @@ argument_list|(
 name|d1
 argument_list|,
 name|d2
-argument_list|,
-literal|false
 argument_list|)
 operator|)
 argument_list|,
@@ -508,7 +493,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|0.88
+literal|0.78
 argument_list|,
 operator|(
 name|DuplicateCheck
@@ -518,8 +503,6 @@ argument_list|(
 name|d1
 argument_list|,
 name|d3
-argument_list|,
-literal|false
 argument_list|)
 operator|)
 argument_list|,
@@ -528,7 +511,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|0.88
+literal|0.78
 argument_list|,
 operator|(
 name|DuplicateCheck
@@ -538,8 +521,6 @@ argument_list|(
 name|d2
 argument_list|,
 name|d3
-argument_list|,
-literal|false
 argument_list|)
 operator|)
 argument_list|,
