@@ -1289,11 +1289,6 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
-name|lastEntry
-init|=
-literal|null
-decl_stmt|;
 for|for
 control|(
 name|BibtexEntry
@@ -1303,10 +1298,6 @@ name|sorter
 control|)
 block|{
 name|exceptionCause
-operator|=
-name|entry
-expr_stmt|;
-name|lastEntry
 operator|=
 name|entry
 expr_stmt|;
