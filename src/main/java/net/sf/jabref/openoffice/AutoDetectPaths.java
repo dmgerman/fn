@@ -946,6 +946,13 @@ operator|.
 name|listFiles
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|files
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|File
@@ -978,6 +985,7 @@ name|file
 expr_stmt|;
 comment|//System.out.println("Setting starting dir to: "+file.getPath());
 break|break;
+block|}
 block|}
 block|}
 comment|//System.out.println("Searching for soffice.bin");
@@ -1841,6 +1849,13 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|dirs
+operator|!=
+literal|null
+condition|)
+block|{
 name|Collections
 operator|.
 name|addAll
@@ -1850,6 +1865,7 @@ argument_list|,
 name|dirs
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|dirList

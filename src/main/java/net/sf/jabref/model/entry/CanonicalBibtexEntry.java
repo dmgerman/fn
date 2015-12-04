@@ -134,7 +134,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"@%s{%s,\n"
+literal|"@%s{%s,%n"
 argument_list|,
 name|e
 operator|.
