@@ -1055,6 +1055,10 @@ operator|+
 name|Globals
 operator|.
 name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
