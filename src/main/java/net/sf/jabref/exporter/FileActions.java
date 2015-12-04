@@ -475,7 +475,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param fw The Writer to send the output to.      * @param database The database whose strings we should write.      * @throws IOException If anthing goes wrong in writing.      */
+comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param fw       The Writer to send the output to.      * @param database The database whose strings we should write.      * @throws IOException If anthing goes wrong in writing.      */
 DECL|method|writeStrings (Writer fw, BibtexDatabase database)
 specifier|private
 specifier|static
@@ -1289,6 +1289,11 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+name|BibtexEntry
+name|lastEntry
+init|=
+literal|null
+decl_stmt|;
 for|for
 control|(
 name|BibtexEntry
@@ -1298,6 +1303,10 @@ name|sorter
 control|)
 block|{
 name|exceptionCause
+operator|=
+name|entry
+expr_stmt|;
+name|lastEntry
 operator|=
 name|entry
 expr_stmt|;
@@ -1493,6 +1502,47 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+comment|//finally write whatever remains of the file, but at least a concluding newline
+if|if
+condition|(
+name|database
+operator|.
+name|getEpilog
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|database
+operator|.
+name|getEpilog
+argument_list|()
+operator|!=
+literal|""
+condition|)
+block|{
+name|writer
+operator|.
+name|write
+argument_list|(
+name|database
+operator|.
+name|getEpilog
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|writer
+operator|.
+name|write
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 catch|catch

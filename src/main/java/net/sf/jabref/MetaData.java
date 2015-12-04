@@ -528,7 +528,7 @@ DECL|method|MetaData ()
 specifier|public
 name|MetaData
 parameter_list|()
-block|{}
+block|{     }
 comment|/**      * Add default metadata for new database:      */
 DECL|method|initializeNewDatabase ()
 specifier|public
@@ -705,7 +705,7 @@ name|orderedData
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Look up the directory set up for the given field type for this database.      * If no directory is set up, return that defined in global preferences.      * @param fieldName The field type      * @return The default directory for this field type.      */
+comment|/**      * Look up the directory set up for the given field type for this database.      * If no directory is set up, return that defined in global preferences.      *      * @param fieldName The field type      * @return The default directory for this field type.      */
 DECL|method|getFileDirectory (String fieldName)
 specifier|public
 name|String
@@ -1016,7 +1016,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**      * Parse the groups metadata string      * @param orderedData The vector of metadata strings      * @param db The BibtexDatabase this metadata belongs to      * @param version The group tree version      * @return true if parsing was successful, false otherwise      */
+comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      * @param db          The BibtexDatabase this metadata belongs to      * @param version     The group tree version      * @return true if parsing was successful, false otherwise      */
 DECL|method|putGroups (Vector<String> orderedData, BibtexDatabase db, int version)
 specifier|private
 name|void
@@ -1135,6 +1135,52 @@ name|keySet
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// if there is something to write, initially append two newlines
+name|boolean
+name|somethingToWrite
+init|=
+name|sortedKeys
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+operator|&&
+name|groupsRoot
+operator|!=
+literal|null
+operator|&&
+name|groupsRoot
+operator|.
+name|getChildCount
+argument_list|()
+operator|>
+literal|0
+decl_stmt|;
+if|if
+condition|(
+name|somethingToWrite
+condition|)
+block|{
+name|out
+operator|.
+name|write
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|write
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
+block|}
 for|for
 control|(
 name|String
@@ -1801,7 +1847,7 @@ return|return
 name|labelPattern
 return|;
 block|}
-comment|/**      * Updates the stored key patterns to the given key patterns.      *      * @param labelPattern the key patterns to update to.<br />      * A reference to this object is stored internally and is returned at getLabelPattern();      */
+comment|/**      * Updates the stored key patterns to the given key patterns.      *      * @param labelPattern the key patterns to update to.<br />      *                     A reference to this object is stored internally and is returned at getLabelPattern();      */
 DECL|method|setLabelPattern (DatabaseLabelPattern labelPattern)
 specifier|public
 name|void

@@ -373,11 +373,6 @@ name|LinkedList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|lastParsedEntry
-specifier|private
-name|BibtexEntry
-name|lastParsedEntry
-decl_stmt|;
 DECL|method|BibtexParser (Reader in)
 specifier|public
 name|BibtexParser
@@ -955,28 +950,14 @@ name|void
 name|parseRemainingContent
 parameter_list|()
 block|{
-if|if
-condition|(
-name|lastParsedEntry
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// read remaining content of file and add it to the parsed serialization of the last entry
-name|lastParsedEntry
+name|database
 operator|.
-name|setParsedSerialization
+name|setEpilog
 argument_list|(
-name|lastParsedEntry
-operator|.
-name|getParsedSerialization
-argument_list|()
-operator|+
 name|dumpTextReadSoFarToString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|parseAndAddEntry (EntryType type)
 specifier|private
@@ -1015,10 +996,6 @@ argument_list|(
 name|dumpTextReadSoFarToString
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|lastParsedEntry
-operator|=
-name|entry
 expr_stmt|;
 if|if
 condition|(

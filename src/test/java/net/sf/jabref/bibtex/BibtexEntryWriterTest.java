@@ -1226,9 +1226,22 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
+comment|//appending newlines are not written by the writer, but by FileActions. So, these should be removed here.
 name|assertEquals
 argument_list|(
 name|bibtexEntry
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|bibtexEntry
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|2
+argument_list|)
 argument_list|,
 name|actual
 argument_list|)

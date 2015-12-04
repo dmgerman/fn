@@ -316,7 +316,7 @@ operator|=
 name|entryTypes
 expr_stmt|;
 block|}
-comment|/**      * Check if this base is marked to be added to the currently open tab. Default is false.      * @return      */
+comment|/**      * Check if this base is marked to be added to the currently open tab. Default is false.      *      * @return      */
 DECL|method|toOpenTab ()
 specifier|public
 name|boolean
@@ -543,7 +543,7 @@ return|return
 name|s
 return|;
 block|}
-comment|/**      * Add a key to the list of duplicated BibTeX keys found in the database.      * @param key The duplicated key      */
+comment|/**      * Add a key to the list of duplicated BibTeX keys found in the database.      *      * @param key The duplicated key      */
 DECL|method|addDuplicateKey (String key)
 specifier|public
 name|void
@@ -573,7 +573,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Query whether any duplicated BibTeX keys have been found in the database.      * @return true if there is at least one duplicate key.      */
+comment|/**      * Query whether any duplicated BibTeX keys have been found in the database.      *      * @return true if there is at least one duplicate key.      */
 DECL|method|hasDuplicateKeys ()
 specifier|public
 name|boolean
@@ -588,7 +588,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Get all duplicated keys found in the database.      * @return An array containing the duplicated keys.      */
+comment|/**      * Get all duplicated keys found in the database.      *      * @return An array containing the duplicated keys.      */
 DECL|method|getDuplicateKeys ()
 specifier|public
 name|String
