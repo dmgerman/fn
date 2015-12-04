@@ -1547,14 +1547,18 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Could not write file"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 name|session
 operator|.
