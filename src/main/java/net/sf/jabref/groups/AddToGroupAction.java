@@ -108,11 +108,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|util
 operator|.
-name|structure
-operator|.
-name|AbstractGroup
+name|Util
 import|;
 end_import
 
@@ -124,11 +122,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
 name|groups
 operator|.
-name|GroupsUtil
+name|structure
+operator|.
+name|AbstractGroup
 import|;
 end_import
 
@@ -477,7 +475,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|GroupsUtil
+name|Util
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(
@@ -507,7 +505,7 @@ comment|// warn if assignment has undesired side effects (modifies a field != ke
 if|if
 condition|(
 operator|!
-name|GroupsUtil
+name|Util
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(
