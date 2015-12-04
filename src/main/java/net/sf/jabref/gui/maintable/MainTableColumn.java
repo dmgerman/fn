@@ -391,6 +391,17 @@ return|return
 name|isIconColumn
 return|;
 block|}
+DECL|method|isFileFilter ()
+specifier|public
+name|boolean
+name|isFileFilter
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+comment|// Overridden in SpecialMainTableColumns for file filter columns
+block|}
 DECL|method|getColumnValue (BibtexEntry entry)
 specifier|public
 name|Object

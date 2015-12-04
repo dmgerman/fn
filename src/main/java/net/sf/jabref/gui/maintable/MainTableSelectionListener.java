@@ -1700,27 +1700,6 @@ operator|.
 name|getBibtexFields
 argument_list|()
 decl_stmt|;
-comment|//If this is a file link field with specified file types,
-comment|//we should also pass the types.
-comment|// TODO enable File Filter IconColumns!
-comment|// String[] fileTypes = {};
-comment|// if ((hasField == 0)&& iconType[hasField].equals(Globals.FILE_FIELD)&& (iconType.length> 1)) {
-comment|//     fileTypes = iconType;
-comment|// }
-comment|//final List<String> listOfFileTypes = Collections.unmodifiableList(Arrays.asList(fileTypes));
-comment|// TODO enable File Filter IconColumns!
-specifier|final
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|listOfFileTypes
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
 comment|// Open it now. We do this in a thread, so the program won't freeze during the wait.
 name|JabRefExecutorService
 operator|.
@@ -1817,15 +1796,12 @@ name|flEntry
 init|=
 literal|null
 decl_stmt|;
-comment|// If there are one or more links of the correct type,
-comment|// open the first one:
-comment|//TODO check when file filter is implemented
+comment|// If there are one or more links of the correct type, open the first one:
 if|if
 condition|(
-operator|!
-name|listOfFileTypes
+name|modelColumn
 operator|.
-name|isEmpty
+name|isFileFilter
 argument_list|()
 condition|)
 block|{
@@ -1847,31 +1823,14 @@ name|i
 operator|++
 control|)
 block|{
-name|flEntry
-operator|=
+if|if
+condition|(
 name|fileList
 operator|.
 name|getEntry
 argument_list|(
 name|i
 argument_list|)
-expr_stmt|;
-name|boolean
-name|correctType
-init|=
-literal|false
-decl_stmt|;
-for|for
-control|(
-name|String
-name|listOfFileType
-range|:
-name|listOfFileTypes
-control|)
-block|{
-if|if
-condition|(
-name|flEntry
 operator|.
 name|getType
 argument_list|()
@@ -1881,27 +1840,24 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|listOfFileType
+name|modelColumn
+operator|.
+name|getColumnName
+argument_list|()
 argument_list|)
 condition|)
 block|{
-name|correctType
-operator|=
-literal|true
-expr_stmt|;
-block|}
-block|}
-if|if
-condition|(
-name|correctType
-condition|)
-block|{
-break|break;
-block|}
 name|flEntry
 operator|=
-literal|null
+name|fileList
+operator|.
+name|getEntry
+argument_list|(
+name|i
+argument_list|)
 expr_stmt|;
+break|break;
+block|}
 block|}
 block|}
 elseif|else
@@ -2369,7 +2325,6 @@ argument_list|(
 name|fileFieldContent
 argument_list|)
 expr_stmt|;
-comment|// If there are one or more links, open the first one:
 for|for
 control|(
 name|int
@@ -2398,19 +2353,33 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-comment|// TODO Enable Filtering for special file type columns
-comment|//                        //If file types are specified, ignore files of other types.
-comment|//                        if (column.length> 1) {
-comment|//                            boolean correctType = false;
-comment|//                            for (int j = 1; j< column.length; j++) {
-comment|//                                if (flEntry.getType().toString().equals(column[j])) {
-comment|//                                    correctType = true;
-comment|//                                }
-comment|//                            }
-comment|//                            if (!correctType) {
-comment|//                                continue;
-comment|//                            }
-comment|//                        }
+if|if
+condition|(
+name|column
+operator|.
+name|isFileFilter
+argument_list|()
+operator|&&
+operator|!
+name|flEntry
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|column
+operator|.
+name|getColumnName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
 name|String
 name|description
 init|=
