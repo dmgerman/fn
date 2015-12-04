@@ -1491,15 +1491,6 @@ argument_list|,
 name|writer
 argument_list|)
 expr_stmt|;
-name|writer
-operator|.
-name|write
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}
