@@ -750,6 +750,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|String
+name|getDisplayName
+parameter_list|()
+block|{
+return|return
+name|externalFileTypeName
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(

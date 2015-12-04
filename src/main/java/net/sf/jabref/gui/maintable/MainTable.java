@@ -1191,6 +1191,8 @@ name|this
 operator|.
 name|getColumnModel
 argument_list|()
+argument_list|,
+name|tableFormat
 argument_list|)
 argument_list|)
 expr_stmt|;
