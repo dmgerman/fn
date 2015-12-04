@@ -835,6 +835,10 @@ name|parsePreamble
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// the preamble is saved verbatim anyways, so the text read so far can be dropped
+name|dumpTextReadSoFarToString
+argument_list|()
+expr_stmt|;
 block|}
 elseif|else
 if|if
