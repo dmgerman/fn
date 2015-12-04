@@ -1603,10 +1603,13 @@ operator|==
 literal|null
 condition|)
 block|{
-name|rest
-operator|=
-literal|""
-expr_stmt|;
+name|StringBuilder
+name|restSB
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
 comment|// Less than 3 parts -> concatenate those
 if|if
 condition|(
@@ -1626,9 +1629,12 @@ range|:
 name|part
 control|)
 block|{
-name|rest
-operator|+=
+name|restSB
+operator|.
+name|append
+argument_list|(
 name|k
+argument_list|)
 expr_stmt|;
 comment|// More than 3 parts -> use 1st letter abbreviation
 block|}
@@ -1665,13 +1671,23 @@ name|k
 argument_list|)
 condition|)
 block|{
-name|rest
-operator|+=
+name|restSB
+operator|.
+name|append
+argument_list|(
 name|k
+argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
+name|rest
+operator|=
+name|restSB
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|// Putting parts together.
@@ -4962,7 +4978,7 @@ literal|""
 return|;
 block|}
 block|}
-comment|/**      * Gets the forename initals of the last author/editor      *      * @param authorField      *            a<code>String</code>      * @return the forename initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
+comment|/**      * Gets the forename initials of the last author/editor      *      * @param authorField      *            a<code>String</code>      * @return the forename initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
 DECL|method|lastAuthorForenameInitials (String authorField)
 specifier|static
 name|String
