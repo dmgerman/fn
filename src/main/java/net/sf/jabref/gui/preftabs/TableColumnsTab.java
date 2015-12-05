@@ -448,12 +448,6 @@ specifier|final
 name|JRadioButton
 name|preferDoi
 decl_stmt|;
-DECL|field|showOneLetterHeadingForIconColumns
-specifier|private
-specifier|final
-name|JCheckBox
-name|showOneLetterHeadingForIconColumns
-decl_stmt|;
 comment|/*** begin: special fields ***/
 DECL|field|specialFieldsEnabled
 specifier|private
@@ -1307,19 +1301,6 @@ operator|.
 name|EAST
 argument_list|)
 expr_stmt|;
-name|showOneLetterHeadingForIconColumns
-operator|=
-operator|new
-name|JCheckBox
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Show one letter heading for icon columns"
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|fileColumn
 operator|=
 operator|new
@@ -2037,24 +2018,6 @@ name|specialTableColumnsBuilder
 operator|.
 name|add
 argument_list|(
-name|showOneLetterHeadingForIconColumns
-argument_list|,
-name|cc
-operator|.
-name|xyw
-argument_list|(
-literal|1
-argument_list|,
-literal|12
-argument_list|,
-literal|4
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|specialTableColumnsBuilder
-operator|.
-name|add
-argument_list|(
 name|helpButton
 argument_list|,
 name|cc
@@ -2063,7 +2026,7 @@ name|xyw
 argument_list|(
 literal|1
 argument_list|,
-literal|13
+literal|12
 argument_list|,
 literal|2
 argument_list|)
@@ -2757,25 +2720,6 @@ argument_list|)
 expr_stmt|;
 comment|// Call twice to make sure the ChangeListener is triggered
 comment|/*** end: special fields ***/
-name|boolean
-name|oldShowOneLetterHeadingForIconColumns
-init|=
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SHOW_ONE_LETTER_HEADING_FOR_ICON_COLUMNS
-argument_list|)
-decl_stmt|;
-name|showOneLetterHeadingForIconColumns
-operator|.
-name|setSelected
-argument_list|(
-name|oldShowOneLetterHeadingForIconColumns
-argument_list|)
-expr_stmt|;
 name|tableRows
 operator|.
 name|clear
@@ -4486,20 +4430,6 @@ block|{}
 argument_list|)
 expr_stmt|;
 block|}
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SHOW_ONE_LETTER_HEADING_FOR_ICON_COLUMNS
-argument_list|,
-name|showOneLetterHeadingForIconColumns
-operator|.
-name|isSelected
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|/*** begin: special fields ***/
 name|boolean
 name|newSpecialFieldsEnabled
