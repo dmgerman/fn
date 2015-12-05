@@ -298,6 +298,22 @@ name|CustomEntryType
 name|type
 parameter_list|)
 block|{
+name|addOrModifyEntryType
+argument_list|(
+name|type
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|addOrModifyEntryType (EntryType type)
+specifier|private
+specifier|static
+name|void
+name|addOrModifyEntryType
+parameter_list|(
+name|EntryType
+name|type
+parameter_list|)
+block|{
 name|ALL_TYPES
 operator|.
 name|put
@@ -409,11 +425,8 @@ condition|)
 block|{
 comment|// In this case the user has removed a customized version
 comment|// of a standard type. We reinstate the standard type.
-name|addOrModifyCustomEntryType
+name|addOrModifyEntryType
 argument_list|(
-operator|(
-name|CustomEntryType
-operator|)
 name|STANDARD_TYPES
 operator|.
 name|get
