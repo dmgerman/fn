@@ -236,9 +236,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|groups
 operator|.
-name|Localization
+name|GroupsUtil
 import|;
 end_import
 
@@ -250,9 +250,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Util
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -699,7 +701,7 @@ condition|)
 block|{
 name|hs
 operator|=
-name|Util
+name|GroupsUtil
 operator|.
 name|findDeliminatedWordsInField
 argument_list|(
@@ -730,7 +732,7 @@ else|else
 block|{
 name|hs
 operator|=
-name|Util
+name|GroupsUtil
 operator|.
 name|findAllWordsInField
 argument_list|(
@@ -789,7 +791,7 @@ argument_list|)
 expr_stmt|;
 name|hs
 operator|=
-name|Util
+name|GroupsUtil
 operator|.
 name|findAuthorLastNames
 argument_list|(
@@ -837,7 +839,7 @@ argument_list|)
 expr_stmt|;
 name|hs
 operator|=
-name|Util
+name|GroupsUtil
 operator|.
 name|findAuthorLastNames
 argument_list|(
