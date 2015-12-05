@@ -4007,7 +4007,7 @@ name|put
 argument_list|(
 name|COLUMN_NAMES
 argument_list|,
-literal|"entrytype;author;title;year;journal;bibtexkey"
+literal|"entrytype;author/editor;title;year;journal/booktitle;bibtexkey"
 argument_list|)
 expr_stmt|;
 name|defaults
