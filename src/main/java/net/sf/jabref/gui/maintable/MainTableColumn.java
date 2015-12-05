@@ -62,6 +62,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -97,15 +107,18 @@ specifier|final
 name|boolean
 name|isIconColumn
 decl_stmt|;
-DECL|method|MainTableColumn (String columnName, boolean isIconColumn)
+DECL|field|iconLabel
+specifier|private
+specifier|final
+name|JLabel
+name|iconLabel
+decl_stmt|;
+DECL|method|MainTableColumn (String columnName)
 specifier|public
 name|MainTableColumn
 parameter_list|(
 name|String
 name|columnName
-parameter_list|,
-name|boolean
-name|isIconColumn
 parameter_list|)
 block|{
 name|this
@@ -127,7 +140,13 @@ name|this
 operator|.
 name|isIconColumn
 operator|=
-name|isIconColumn
+literal|false
+expr_stmt|;
+name|this
+operator|.
+name|iconLabel
+operator|=
+literal|null
 expr_stmt|;
 block|}
 DECL|method|MainTableColumn (String columnName, String[] bibtexFields)
@@ -170,8 +189,14 @@ name|isIconColumn
 operator|=
 literal|false
 expr_stmt|;
+name|this
+operator|.
+name|iconLabel
+operator|=
+literal|null
+expr_stmt|;
 block|}
-DECL|method|MainTableColumn (String columnName, String[] bibtexFields, boolean isIconColumn)
+DECL|method|MainTableColumn (String columnName, String[] bibtexFields, JLabel iconLabel)
 specifier|public
 name|MainTableColumn
 parameter_list|(
@@ -182,8 +207,8 @@ name|String
 index|[]
 name|bibtexFields
 parameter_list|,
-name|boolean
-name|isIconColumn
+name|JLabel
+name|iconLabel
 parameter_list|)
 block|{
 name|this
@@ -212,10 +237,16 @@ name|this
 operator|.
 name|isIconColumn
 operator|=
-name|isIconColumn
+literal|true
+expr_stmt|;
+name|this
+operator|.
+name|iconLabel
+operator|=
+name|iconLabel
 expr_stmt|;
 block|}
-comment|/**      * Get the table column name to be displayed in the UI      *      * TODO: use JLabel to be able to display Iconcols?      *      * @return      */
+comment|/**      * Get the table column name to be displayed in the UI      *      * @return      */
 DECL|method|getDisplayName ()
 specifier|public
 name|String
@@ -513,6 +544,33 @@ block|}
 return|return
 literal|null
 return|;
+block|}
+DECL|method|getHeaderLabel ()
+specifier|public
+name|JLabel
+name|getHeaderLabel
+parameter_list|()
+block|{
+if|if
+condition|(
+name|isIconColumn
+condition|)
+block|{
+return|return
+name|iconLabel
+return|;
+block|}
+else|else
+block|{
+return|return
+operator|new
+name|JLabel
+argument_list|(
+name|getDisplayName
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 block|}
 end_class

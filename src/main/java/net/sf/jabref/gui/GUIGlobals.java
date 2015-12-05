@@ -1072,7 +1072,7 @@ specifier|final
 name|int
 name|WIDTH_ICON_COL
 init|=
-literal|19
+literal|26
 decl_stmt|;
 comment|// Column widths for export customization dialog table:
 DECL|field|EXPORT_DIALOG_COL_0_WIDTH
