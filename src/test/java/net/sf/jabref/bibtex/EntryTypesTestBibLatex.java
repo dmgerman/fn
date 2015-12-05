@@ -289,6 +289,29 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testIsThisBibLatex ()
+specifier|public
+name|void
+name|testIsThisBibLatex
+parameter_list|()
+block|{
+name|assertTrue
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|BIBLATEX_MODE
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
