@@ -164,8 +164,6 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
-try|try
-init|(
 name|Statement
 name|statement
 init|=
@@ -180,15 +178,13 @@ name|conn
 argument_list|,
 literal|"SELECT column_name FROM information_schema.columns WHERE table_name ='entries';"
 argument_list|)
-init|)
-block|{
+decl_stmt|;
 return|return
 name|statement
 operator|.
 name|getResultSet
 argument_list|()
 return|;
-block|}
 block|}
 annotation|@
 name|Override

@@ -260,7 +260,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// connnect to database to test DBStrings
+comment|// connect to database to test DBStrings
 if|if
 condition|(
 name|dbd
@@ -310,6 +310,8 @@ name|getServerType
 argument_list|()
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|Connection
 name|conn
 init|=
@@ -319,12 +321,10 @@ name|connectToDB
 argument_list|(
 name|dbs
 argument_list|)
-decl_stmt|;
-name|conn
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+init|)
+block|{
+comment|// Nothing
+block|}
 name|dbs
 operator|.
 name|isConfigValid

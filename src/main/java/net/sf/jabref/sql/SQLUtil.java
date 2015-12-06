@@ -770,8 +770,6 @@ name|tableName
 operator|+
 literal|';'
 decl_stmt|;
-try|try
-init|(
 name|Statement
 name|res
 init|=
@@ -786,15 +784,13 @@ name|conn
 argument_list|,
 name|query
 argument_list|)
-init|)
-block|{
+decl_stmt|;
 return|return
 name|res
 operator|.
 name|getResultSet
 argument_list|()
 return|;
-block|}
 block|}
 comment|/**      * Utility method for processing DML with proper output      *      * @param out The output (PrintStream or Connection) object to which the DML should be sent      * @param dml The DML statements to be processed      */
 DECL|method|processQuery (Object out, String dml)
