@@ -1438,7 +1438,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 operator|+
-literal|'\''
+literal|"';"
 argument_list|)
 expr_stmt|;
 block|}
