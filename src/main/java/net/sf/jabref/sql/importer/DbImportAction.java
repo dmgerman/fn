@@ -303,7 +303,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 27, 2008 Time: 6:09:08 PM To change this template use File | Settings  * | File Templates.  *  * Jan. 20th Changed to accomodate the new way to connect to DB and also to show the exceptions and to display more than  * one DB imported (by ifsteinm)  *  */
+comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 27, 2008 Time: 6:09:08 PM To change this template use File | Settings  * | File Templates.  *  * Jan. 20th Changed to accommodate the new way to connect to DB and also to show the exceptions and to display more than  * one DB imported (by ifsteinm)  *  */
 end_comment
 
 begin_class
@@ -638,22 +638,10 @@ name|connectToDB
 argument_list|(
 name|dbs
 argument_list|)
-init|)
-block|{
-try|try
-init|(
-name|ResultSet
-name|rs
-init|=
-name|SQLUtil
-operator|.
-name|queryAllFromTable
-argument_list|(
-name|conn
-argument_list|,
-literal|"jabref_database"
-argument_list|)
-init|)
+init|;                         ResultSet rs = SQLUtil.queryAllFromTable(conn
+operator|,
+init|"jabref_database")
+block|)
 block|{
 name|Vector
 argument_list|<
@@ -767,8 +755,7 @@ name|performImport
 argument_list|()
 expr_stmt|;
 block|}
-else|else
-block|{
+elseif|else
 if|if
 condition|(
 name|dialogo
@@ -865,7 +852,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 else|else
 block|{
 name|JOptionPane
@@ -893,7 +879,6 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -936,12 +921,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|preamble
-argument_list|)
 operator|+
 literal|'\n'
 operator|+
@@ -979,7 +959,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_class
+
+begin_comment
 comment|// run third, on EDT:
+end_comment
+
+begin_function
 annotation|@
 name|Override
 DECL|method|update ()
@@ -1112,8 +1098,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 
