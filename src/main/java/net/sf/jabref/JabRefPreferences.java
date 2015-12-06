@@ -10807,6 +10807,7 @@ return|;
 block|}
 comment|/**      * ONLY FOR TESTING!      *      * Do not use in production code. Otherwise the singleton pattern is broken and preferences might get lost.      *      * @param owPrefs      */
 DECL|method|overwritePreferences (JabRefPreferences owPrefs)
+specifier|public
 name|void
 name|overwritePreferences
 parameter_list|(
