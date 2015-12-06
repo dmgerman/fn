@@ -3594,12 +3594,12 @@ operator|+
 literal|"Make sure you have installed OpenOffice with Java support.\nIf connecting manually, please verify program and library paths.\n"
 operator|+
 literal|"\nError message: "
+argument_list|)
 operator|+
 name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
