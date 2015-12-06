@@ -475,7 +475,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param fw The Writer to send the output to.      * @param database The database whose strings we should write.      * @throws IOException If anthing goes wrong in writing.      */
+comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param fw       The Writer to send the output to.      * @param database The database whose strings we should write.      * @throws IOException If anthing goes wrong in writing.      */
 DECL|method|writeStrings (Writer fw, BibtexDatabase database)
 specifier|private
 specifier|static
@@ -667,15 +667,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|fw
-operator|.
-name|write
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|writeString (Writer fw, BibtexString bs, HashMap<String, BibtexString> remaining, int maxKeyLength)
 specifier|private
@@ -714,6 +705,28 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//if the string has not been modified, write it back as it was
+if|if
+condition|(
+operator|!
+name|bs
+operator|.
+name|hasChanged
+argument_list|()
+condition|)
+block|{
+name|fw
+operator|.
+name|write
+argument_list|(
+name|bs
+operator|.
+name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 comment|// Then we go through the string looking for references to other strings. If we find references
 comment|// to strings that we will write, but still haven't, we write those before proceeding. This ensures
 comment|// that the string order will be acceptable for BibTeX.
@@ -1034,6 +1047,10 @@ operator|.
 name|encPrefix
 operator|+
 name|encoding
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 operator|+
 name|Globals
 operator|.
@@ -1382,15 +1399,6 @@ argument_list|,
 name|writer
 argument_list|)
 expr_stmt|;
-name|writer
-operator|.
-name|write
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 comment|// Write meta data.
@@ -1469,6 +1477,40 @@ argument_list|,
 name|writer
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+block|}
+comment|//finally write whatever remains of the file, but at least a concluding newline
+if|if
+condition|(
+name|database
+operator|.
+name|getEpilog
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|database
+operator|.
+name|getEpilog
+argument_list|()
+operator|!=
+literal|""
+condition|)
+block|{
+name|writer
+operator|.
+name|write
+argument_list|(
+name|database
+operator|.
+name|getEpilog
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|writer
 operator|.
 name|write
@@ -1480,18 +1522,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Could not write file"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 name|session
 operator|.
@@ -2449,6 +2493,16 @@ argument_list|,
 name|fw
 argument_list|)
 expr_stmt|;
+comment|//only append newline if the entry has changed
+if|if
+condition|(
+operator|!
+name|be
+operator|.
+name|hasChanged
+argument_list|()
+condition|)
+block|{
 name|fw
 operator|.
 name|write
@@ -2458,6 +2512,7 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Write meta data.
 if|if

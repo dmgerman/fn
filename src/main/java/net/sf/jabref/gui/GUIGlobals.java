@@ -894,24 +894,6 @@ specifier|static
 name|Color
 name|invalidFieldBackgroundColor
 decl_stmt|;
-DECL|field|META_FLAG
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|META_FLAG
-init|=
-literal|"jabref-meta: "
-decl_stmt|;
-DECL|field|META_FLAG_OLD
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|META_FLAG_OLD
-init|=
-literal|"bibkeeper-meta: "
-decl_stmt|;
 comment|// some fieldname constants
 DECL|field|DEFAULT_FIELD_WEIGHT
 specifier|public
