@@ -261,6 +261,10 @@ literal|""
 operator|+
 literal|"Localization.lang(\"one per line\")"
 operator|+
+literal|"Localization.lang(\n"
+operator|+
+literal|"            \"Copy \\\\cite{BibTeX key}\")"
+operator|+
 literal|"Localization.lang(\"two per line\") Localization.lang(\"two per line\")"
 operator|+
 literal|"Localization.lang(\"multi \" + \n"
@@ -284,6 +288,8 @@ operator|.
 name|asList
 argument_list|(
 literal|"one_per_line"
+argument_list|,
+literal|"Copy_\\cite{BibTeX_key}"
 argument_list|,
 literal|"two_per_line"
 argument_list|,
@@ -318,14 +324,13 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|LocalizationParser
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|LocalizationParser
 block|{
 DECL|enum|Type
 specifier|private
-specifier|static
 enum|enum
 name|Type
 block|{
@@ -871,6 +876,13 @@ operator|.
 name|replaceAll
 argument_list|(
 literal|"QUOTATIONPLACEHOLDER"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\\\\\\\"
+argument_list|,
+literal|"\\\\"
 argument_list|)
 decl_stmt|;
 comment|// only retain what is within quotation

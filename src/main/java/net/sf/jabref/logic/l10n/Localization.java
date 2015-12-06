@@ -720,6 +720,28 @@ name|params
 argument_list|)
 return|;
 block|}
+DECL|method|getMenuTitleKeys ()
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getMenuTitleKeys
+parameter_list|()
+block|{
+return|return
+operator|new
+name|LinkedList
+argument_list|<>
+argument_list|(
+name|menuTitles
+operator|.
+name|keySet
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
