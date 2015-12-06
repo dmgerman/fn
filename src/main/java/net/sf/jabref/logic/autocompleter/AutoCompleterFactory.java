@@ -20,30 +20,16 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
+name|Objects
 import|;
 end_import
 
 begin_comment
-comment|/**  * Returns an autocompleter to a given fieldname.  *   * @author kahlert, cordes  */
+comment|/**  * Returns an autocompleter to a given fieldname.  *  * @author kahlert, cordes  */
 end_comment
 
 begin_class
@@ -52,26 +38,34 @@ specifier|public
 class|class
 name|AutoCompleterFactory
 block|{
-DECL|field|SHORTEST_TO_COMPLETE
-specifier|public
-specifier|static
-name|int
-name|SHORTEST_TO_COMPLETE
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SHORTEST_TO_COMPLETE
-argument_list|)
+DECL|field|preferences
+specifier|private
+specifier|final
+name|AutoCompletePreferences
+name|preferences
 decl_stmt|;
+DECL|method|AutoCompleterFactory (AutoCompletePreferences preferences)
+specifier|public
+name|AutoCompleterFactory
+parameter_list|(
+name|AutoCompletePreferences
+name|preferences
+parameter_list|)
+block|{
+name|this
+operator|.
+name|preferences
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|preferences
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|getFor (String fieldName)
 specifier|public
-specifier|static
 name|AutoCompleter
 argument_list|<
 name|String
@@ -104,6 +98,8 @@ operator|new
 name|NameFieldAutoCompleter
 argument_list|(
 name|fieldName
+argument_list|,
+name|preferences
 argument_list|)
 return|;
 block|}
@@ -120,8 +116,10 @@ condition|)
 block|{
 return|return
 operator|new
-name|CrossrefAutoCompleter
-argument_list|()
+name|BibtexKeyAutoCompleter
+argument_list|(
+name|preferences
+argument_list|)
 return|;
 block|}
 elseif|else
@@ -147,6 +145,8 @@ operator|new
 name|EntireFieldAutoCompleter
 argument_list|(
 name|fieldName
+argument_list|,
+name|preferences
 argument_list|)
 return|;
 block|}
@@ -157,13 +157,14 @@ operator|new
 name|DefaultAutoCompleter
 argument_list|(
 name|fieldName
+argument_list|,
+name|preferences
 argument_list|)
 return|;
 block|}
 block|}
 DECL|method|getFor (String fieldName, String secondFieldName)
 specifier|public
-specifier|static
 name|AutoCompleter
 argument_list|<
 name|String
@@ -191,6 +192,8 @@ name|secondFieldName
 block|}
 argument_list|,
 literal|true
+argument_list|,
+name|preferences
 argument_list|)
 return|;
 block|}

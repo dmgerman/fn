@@ -35,7 +35,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Stores the full original value of one field of the given BibtexEntries.  *  * @author kahlert, cordes  */
+comment|/**  * Delivers possible completions for a given string.  * Stores the full original value of one field of the given BibtexEntries.  *  * @author kahlert, cordes  */
 end_comment
 
 begin_class
@@ -52,13 +52,21 @@ name|String
 name|fieldName
 decl_stmt|;
 comment|/**      * @see AutoCompleterFactory      */
-DECL|method|EntireFieldAutoCompleter (String fieldName)
+DECL|method|EntireFieldAutoCompleter (String fieldName, AutoCompletePreferences preferences)
 name|EntireFieldAutoCompleter
 parameter_list|(
 name|String
 name|fieldName
+parameter_list|,
+name|AutoCompletePreferences
+name|preferences
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|preferences
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|fieldName
@@ -78,6 +86,7 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      * {@inheritDoc}      * Stores the full original value of the given field.      */
 annotation|@
 name|Override
 DECL|method|addBibtexEntry (BibtexEntry entry)
@@ -115,7 +124,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|addWordToIndex
+name|addItemToIndex
 argument_list|(
 name|fieldValue
 operator|.

@@ -44,6 +44,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|SortedSet
 import|;
 end_import
@@ -58,24 +68,8 @@ name|TreeSet
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
 begin_comment
-comment|/**  * An autocompleter delivers possible completions for a given string. There are different types of autocompleters for  * different use cases.  *   * Example: {@link NameFieldAutoCompleter}, {@link EntireFieldAutoCompleter}  *  * @author kahlert, cordes, olly98  * @see AutoCompleterFactory  */
+comment|/**  * Delivers possible completions for a given string.  *  * @author kahlert, cordes, olly98  * @see AutoCompleterFactory  */
 end_comment
 
 begin_class
@@ -90,16 +84,42 @@ argument_list|<
 name|String
 argument_list|>
 block|{
-DECL|field|SHORTEST_WORD
+DECL|field|SHORTEST_WORD_TO_ADD
 specifier|private
 specifier|static
 specifier|final
 name|int
-name|SHORTEST_WORD
+name|SHORTEST_WORD_TO_ADD
 init|=
 literal|4
 decl_stmt|;
-comment|// stores the strings as is
+DECL|field|preferences
+specifier|private
+specifier|final
+name|AutoCompletePreferences
+name|preferences
+decl_stmt|;
+DECL|method|AbstractAutoCompleter (AutoCompletePreferences preferences)
+specifier|public
+name|AbstractAutoCompleter
+parameter_list|(
+name|AutoCompletePreferences
+name|preferences
+parameter_list|)
+block|{
+name|this
+operator|.
+name|preferences
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|preferences
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Stores the strings as is.      */
 DECL|field|indexCaseSensitive
 specifier|private
 specifier|final
@@ -114,7 +134,7 @@ name|TreeSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|// stores strings in lowercase
+comment|/**      * Stores strings in lowercase.      */
 DECL|field|indexCaseInsensitive
 specifier|private
 specifier|final
@@ -129,7 +149,7 @@ name|TreeSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|// stores for a lowercase string the possible expanded strings
+comment|/**      * Stores for a lowercase string the possible expanded strings.      */
 DECL|field|possibleStringsForSearchString
 specifier|private
 specifier|final
@@ -149,19 +169,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-annotation|@
-name|Override
-DECL|method|addBibtexEntry (BibtexEntry entry)
-specifier|public
-specifier|abstract
-name|void
-name|addBibtexEntry
-parameter_list|(
-name|BibtexEntry
-name|entry
-parameter_list|)
-function_decl|;
-comment|/**      * Returns one or more possible completions for a given String. The returned      * completion depends on which informations were stored while adding      * BibtexEntries by the used implementation of {@link AbstractAutoCompleter}      * .      *      * @see AbstractAutoCompleter#addBibtexEntry(BibtexEntry)      */
+comment|/**      * {@inheritDoc}      * The completion is case sensitive if the string contains upper case letters.      * Otherwise the completion is case insensitive.      */
 annotation|@
 name|Override
 DECL|method|complete (String toComplete)
@@ -176,9 +184,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|AbstractAutoCompleter
-operator|.
-name|stringMinLength
+name|isTooShortToComplete
 argument_list|(
 name|toComplete
 argument_list|)
@@ -206,7 +212,7 @@ name|toComplete
 argument_list|)
 condition|)
 block|{
-comment|// user typed in lower case word -> we do an case-insenstive search
+comment|// user typed in lower case word -> we do an case-insensitive search
 name|String
 name|ender
 init|=
@@ -396,11 +402,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|stringMinLength (String toCheck)
+comment|/**      * Returns whether the string is to short to be completed.      */
+DECL|method|isTooShortToComplete (String toCheck)
 specifier|private
-specifier|static
 name|boolean
-name|stringMinLength
+name|isTooShortToComplete
 parameter_list|(
 name|String
 name|toCheck
@@ -412,17 +418,18 @@ operator|.
 name|length
 argument_list|()
 operator|<
-name|AutoCompleterFactory
+name|preferences
 operator|.
-name|SHORTEST_TO_COMPLETE
+name|getShortestLengthToComplete
+argument_list|()
 return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addWordToIndex (String word)
+DECL|method|addItemToIndex (String word)
 specifier|public
 name|void
-name|addWordToIndex
+name|addItemToIndex
 parameter_list|(
 name|String
 name|word
@@ -434,12 +441,14 @@ name|word
 operator|.
 name|length
 argument_list|()
-operator|>=
+operator|<
 name|AbstractAutoCompleter
 operator|.
-name|SHORTEST_WORD
+name|SHORTEST_WORD_TO_ADD
 condition|)
 block|{
+return|return;
+block|}
 name|indexCaseSensitive
 operator|.
 name|add
@@ -509,30 +518,6 @@ argument_list|,
 name|set
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-annotation|@
-name|Override
-DECL|method|indexContainsWord (String word)
-specifier|public
-name|boolean
-name|indexContainsWord
-parameter_list|(
-name|String
-name|word
-parameter_list|)
-block|{
-return|return
-name|indexCaseInsensitive
-operator|.
-name|contains
-argument_list|(
-name|word
-operator|.
-name|toLowerCase
-argument_list|()
-argument_list|)
-return|;
 block|}
 annotation|@
 name|Override
