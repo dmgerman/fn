@@ -443,12 +443,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
+name|expandedOldFile
+operator|==
+literal|null
+operator|)
+operator|||
+operator|(
 name|expandedOldFile
 operator|.
 name|getParent
 argument_list|()
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 comment|// something went wrong. Just skip this entry
