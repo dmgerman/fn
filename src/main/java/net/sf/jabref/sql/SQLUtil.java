@@ -1108,11 +1108,6 @@ name|warn
 argument_list|)
 expr_stmt|;
 block|}
-name|stmnt
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 comment|/**      * Utility method for executing DML      *      * @param conn The DML Connection object that will execute the SQL      * @param qry The DML statements to be executed      */
