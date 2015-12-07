@@ -35,16 +35,30 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Crossref autocompleter stores info from the key field.  *  * @author kahlert, cordes  */
+comment|/**  * Delivers possible completions for a given string based on the key fields of the added items.  *  * @author kahlert, cordes  */
 end_comment
 
 begin_class
-DECL|class|CrossrefAutoCompleter
+DECL|class|BibtexKeyAutoCompleter
 class|class
-name|CrossrefAutoCompleter
+name|BibtexKeyAutoCompleter
 extends|extends
 name|AbstractAutoCompleter
 block|{
+DECL|method|BibtexKeyAutoCompleter (AutoCompletePreferences preferences)
+specifier|public
+name|BibtexKeyAutoCompleter
+parameter_list|(
+name|AutoCompletePreferences
+name|preferences
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|preferences
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|isSingleUnitField ()
@@ -57,6 +71,7 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * {@inheritDoc}      * The bibtex key of the entry will be added to the index.      */
 annotation|@
 name|Override
 DECL|method|addBibtexEntry (BibtexEntry entry)
@@ -92,7 +107,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|addWordToIndex
+name|addItemToIndex
 argument_list|(
 name|key
 operator|.
