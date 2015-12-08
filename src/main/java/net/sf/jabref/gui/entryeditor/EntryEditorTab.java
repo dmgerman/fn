@@ -1607,7 +1607,7 @@ name|parent
 operator|.
 name|panel
 operator|.
-name|isBaseChanged
+name|isModified
 argument_list|()
 operator|&&
 name|isFieldModified

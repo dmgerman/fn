@@ -5533,7 +5533,7 @@ name|changeFlag
 init|=
 name|panel
 operator|.
-name|isBaseChanged
+name|isModified
 argument_list|()
 condition|?
 literal|"*"
@@ -6181,7 +6181,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|isBaseChanged
+name|isModified
 argument_list|()
 condition|)
 block|{
@@ -11438,13 +11438,8 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|// Ask here if the user really wants to close, if the base
-comment|// has not been saved since last save.
-name|boolean
-name|close
-init|=
-literal|true
-decl_stmt|;
+comment|// empty tab without database
+comment|// TODO: this menu should be tab based not on the DragDropPopupPane
 if|if
 condition|(
 name|getCurrentBasePanel
@@ -11453,19 +11448,47 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// when it is initially empty
 return|return;
-comment|// nbatada nov 7
 block|}
 if|if
 condition|(
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|isBaseChanged
+name|isModified
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|confirmClose
+argument_list|()
+condition|)
+block|{
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+comment|// Ask if the user really wants to close, if the base has not been saved
+DECL|method|confirmClose ()
+specifier|private
+name|boolean
+name|confirmClose
+parameter_list|()
+block|{
+name|boolean
+name|close
+init|=
+literal|false
+decl_stmt|;
 name|String
 name|filename
 decl_stmt|;
@@ -11511,31 +11534,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|answer
-operator|==
-name|JOptionPane
-operator|.
-name|CANCEL_OPTION
-operator|)
-operator|||
-operator|(
-name|answer
-operator|==
-name|JOptionPane
-operator|.
-name|CLOSED_OPTION
-operator|)
-condition|)
-block|{
-name|close
-operator|=
-literal|false
-expr_stmt|;
-comment|// The user has cancelled.
-block|}
-if|if
-condition|(
 name|answer
 operator|==
 name|JOptionPane
@@ -11565,21 +11563,13 @@ if|if
 condition|(
 name|saveAction
 operator|.
-name|isCancelled
-argument_list|()
-operator|||
-operator|!
-name|saveAction
-operator|.
 name|isSuccess
 argument_list|()
 condition|)
 block|{
-comment|// The action either not cancelled or unsuccessful.
-comment|// Break!
 name|close
 operator|=
-literal|false
+literal|true
 expr_stmt|;
 block|}
 block|}
@@ -11589,38 +11579,26 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
-comment|// Something prevented the file
-comment|// from being saved. Break!!!
+comment|// do not close
+block|}
+block|}
+return|return
 name|close
-operator|=
-literal|false
-expr_stmt|;
-block|}
-block|}
-block|}
-if|if
-condition|(
-name|close
-condition|)
-block|{
-name|close
-argument_list|()
-expr_stmt|;
-block|}
+return|;
 block|}
 DECL|method|close ()
-specifier|public
+specifier|private
 name|void
 name|close
 parameter_list|()
 block|{
 name|BasePanel
-name|pan
+name|panel
 init|=
 name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
-name|pan
+name|panel
 operator|.
 name|cleanUp
 argument_list|()
@@ -11629,15 +11607,14 @@ name|AutoSaveManager
 operator|.
 name|deleteAutoSaveFile
 argument_list|(
-name|pan
+name|panel
 argument_list|)
 expr_stmt|;
-comment|// Delete autosave
 name|tabbedPane
 operator|.
 name|remove
 argument_list|(
-name|pan
+name|panel
 argument_list|)
 expr_stmt|;
 if|if
