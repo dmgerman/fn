@@ -20,6 +20,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -71,7 +81,12 @@ name|this
 operator|.
 name|fieldName
 operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|fieldName
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

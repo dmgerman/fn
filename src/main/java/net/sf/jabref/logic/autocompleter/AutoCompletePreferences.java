@@ -233,6 +233,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Returns how the first names are handled.      * For "ONLY_FULL", the auto completer returns the full name, e.g. "Smith, Bob"      * For "ONLY_ABBREVIATED", the auto completer returns the first name abbreviated, e.g. "Smith, B."      * For "BOTH", the auto completer returns both versions.      */
 DECL|method|getFirstnameMode ()
 specifier|public
 name|AutoCompleteFirstNameMode
@@ -291,10 +292,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getCompleteLastFirst ()
+DECL|method|getOnlyCompleteLastFirst ()
 specifier|public
 name|boolean
-name|getCompleteLastFirst
+name|getOnlyCompleteLastFirst
 parameter_list|()
 block|{
 return|return
@@ -306,10 +307,10 @@ name|PREF_LAST_FIRST
 argument_list|)
 return|;
 block|}
-DECL|method|setCompleteLastFirst (boolean value)
+DECL|method|setOnlyCompleteLastFirst (boolean value)
 specifier|public
 name|void
-name|setCompleteLastFirst
+name|setOnlyCompleteLastFirst
 parameter_list|(
 name|boolean
 name|value
@@ -325,10 +326,10 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getCompleteFirstLast ()
+DECL|method|getOnlyCompleteFirstLast ()
 specifier|public
 name|boolean
-name|getCompleteFirstLast
+name|getOnlyCompleteFirstLast
 parameter_list|()
 block|{
 return|return
@@ -340,10 +341,10 @@ name|PREF_FIRST_LAST
 argument_list|)
 return|;
 block|}
-DECL|method|setCompleteFirstLast (boolean value)
+DECL|method|setOnlyCompleteFirstLast (boolean value)
 specifier|public
 name|void
-name|setCompleteFirstLast
+name|setOnlyCompleteFirstLast
 parameter_list|(
 name|boolean
 name|value

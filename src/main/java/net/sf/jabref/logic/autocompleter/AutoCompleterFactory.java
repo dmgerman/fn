@@ -76,6 +76,13 @@ name|String
 name|fieldName
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|fieldName
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 literal|"author"
@@ -163,20 +170,14 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|getFor (String fieldName, String secondFieldName)
+DECL|method|getPersonAutoCompleter ()
 specifier|public
 name|AutoCompleter
 argument_list|<
 name|String
 argument_list|>
-name|getFor
-parameter_list|(
-name|String
-name|fieldName
-parameter_list|,
-name|String
-name|secondFieldName
-parameter_list|)
+name|getPersonAutoCompleter
+parameter_list|()
 block|{
 return|return
 operator|new
@@ -186,9 +187,9 @@ operator|new
 name|String
 index|[]
 block|{
-name|fieldName
+literal|"author"
 block|,
-name|secondFieldName
+literal|"editor"
 block|}
 argument_list|,
 literal|true

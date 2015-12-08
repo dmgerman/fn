@@ -20,6 +20,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -117,7 +127,12 @@ operator|new
 name|String
 index|[]
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|fieldName
+argument_list|)
 block|}
 argument_list|,
 literal|false
@@ -150,7 +165,12 @@ name|this
 operator|.
 name|fieldNames
 operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|fieldNames
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -162,7 +182,7 @@ if|if
 condition|(
 name|preferences
 operator|.
-name|getCompleteFirstLast
+name|getOnlyCompleteFirstLast
 argument_list|()
 condition|)
 block|{
@@ -180,7 +200,7 @@ if|if
 condition|(
 name|preferences
 operator|.
-name|getCompleteLastFirst
+name|getOnlyCompleteLastFirst
 argument_list|()
 condition|)
 block|{
@@ -210,6 +230,17 @@ name|preferences
 operator|.
 name|getFirstnameMode
 argument_list|()
+operator|!=
+literal|null
+condition|?
+name|preferences
+operator|.
+name|getFirstnameMode
+argument_list|()
+else|:
+name|AutoCompleteFirstNameMode
+operator|.
+name|BOTH
 expr_stmt|;
 block|}
 annotation|@
@@ -556,6 +587,20 @@ name|String
 name|toComplete
 parameter_list|)
 block|{
+if|if
+condition|(
+name|toComplete
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+operator|new
+name|String
+index|[]
+block|{}
+return|;
+block|}
 comment|// Normally, one would implement that using
 comment|// class inheritance. But this seemed overengineered
 if|if
@@ -619,6 +664,18 @@ parameter_list|()
 block|{
 return|return
 name|prefix
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getLengthOfShortestWordToAdd ()
+specifier|protected
+name|int
+name|getLengthOfShortestWordToAdd
+parameter_list|()
+block|{
+return|return
+literal|1
 return|;
 block|}
 block|}
