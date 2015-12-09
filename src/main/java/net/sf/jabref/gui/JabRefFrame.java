@@ -10159,10 +10159,6 @@ argument_list|()
 argument_list|,
 name|closeDatabaseAction
 argument_list|,
-name|closeAllDatabasesAction
-argument_list|,
-name|closeOtherDatabasesAction
-argument_list|,
 name|switchPreview
 argument_list|,
 name|checkIntegrity

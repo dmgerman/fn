@@ -114,9 +114,6 @@ name|AbstractAction
 name|closeOtherDatabaseAction
 parameter_list|)
 block|{
-name|super
-argument_list|()
-expr_stmt|;
 name|addMouseListener
 argument_list|(
 operator|new
@@ -426,20 +423,6 @@ literal|10
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-DECL|method|closeSelectedTab ()
-specifier|private
-name|void
-name|closeSelectedTab
-parameter_list|()
-block|{
-comment|// remove selected tab
-name|remove
-argument_list|(
-name|getSelectedIndex
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
