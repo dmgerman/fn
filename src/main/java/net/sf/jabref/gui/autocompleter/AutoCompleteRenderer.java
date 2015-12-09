@@ -36,6 +36,16 @@ name|ActionListener
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Renders the list of possible autocomplete items. Also takes care of the currently selected item.  *  * @param<E> the type of the items  */
 end_comment
@@ -51,14 +61,16 @@ name|E
 parameter_list|>
 block|{
 comment|/**      * Refreshes the list of possible autocomplete items. Clears the currently selected item.      *      * @param items list of possible autocomplete items      */
-DECL|method|update (E[] items)
+DECL|method|update (List<E> items)
 specifier|public
 specifier|abstract
 name|void
 name|update
 parameter_list|(
+name|List
+argument_list|<
 name|E
-index|[]
+argument_list|>
 name|items
 parameter_list|)
 function_decl|;

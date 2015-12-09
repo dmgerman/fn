@@ -24,6 +24,36 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Objects
 import|;
 end_import
@@ -74,8 +104,10 @@ block|{
 DECL|field|fieldNames
 specifier|private
 specifier|final
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|fieldNames
 decl_stmt|;
 comment|/**      * true if only last names should be completed and there is NO separation by " and ", but by " "      */
@@ -123,17 +155,17 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
 name|fieldName
 argument_list|)
-block|}
+argument_list|)
 argument_list|,
 literal|false
 argument_list|,
@@ -141,12 +173,14 @@ name|preferences
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NameFieldAutoCompleter (String[] fieldNames, boolean lastNameOnlyAndSeparationBySpace, AutoCompletePreferences preferences)
+DECL|method|NameFieldAutoCompleter (List<String> fieldNames, boolean lastNameOnlyAndSeparationBySpace, AutoCompletePreferences preferences)
 specifier|public
 name|NameFieldAutoCompleter
 parameter_list|(
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|fieldNames
 parameter_list|,
 name|boolean
@@ -579,8 +613,10 @@ annotation|@
 name|Override
 DECL|method|complete (String toComplete)
 specifier|public
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|complete
 parameter_list|(
 name|String
@@ -596,9 +632,9 @@ condition|)
 block|{
 return|return
 operator|new
-name|String
-index|[]
-block|{}
+name|ArrayList
+argument_list|<>
+argument_list|()
 return|;
 block|}
 comment|// Normally, one would implement that using
@@ -639,19 +675,6 @@ name|complete
 argument_list|(
 name|toComplete
 argument_list|)
-return|;
-block|}
-DECL|method|getFieldName ()
-specifier|public
-name|String
-name|getFieldName
-parameter_list|()
-block|{
-return|return
-name|fieldNames
-index|[
-literal|0
-index|]
 return|;
 block|}
 annotation|@
