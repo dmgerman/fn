@@ -14013,7 +14013,6 @@ expr_stmt|;
 name|updateEnabledState
 argument_list|()
 expr_stmt|;
-comment|// FIXME: Man, this is what I call a bug that this is not called.
 name|output
 argument_list|(
 name|Localization
