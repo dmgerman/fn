@@ -10024,11 +10024,6 @@ operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
-comment|// Removing the separate push-to buttons, replacing them by the
-comment|// multipurpose button:
-comment|//tlb.addAction(emacsPushAction);
-comment|//tlb.addAction(lyxPushAction);
-comment|//tlb.addAction(winEdtPushAction);
 name|tlb
 operator|.
 name|add
@@ -10051,33 +10046,6 @@ argument_list|(
 name|donationAction
 argument_list|)
 expr_stmt|;
-comment|//        tlb.addAction(openFolder);
-comment|//        tlb.addAction(openFile);
-comment|//tlb.addAction(openPdf);
-comment|//tlb.addAction(openUrl);
-comment|//tlb.addSeparator();
-comment|//tlb.addAction(showPrefs);
-name|tlb
-operator|.
-name|add
-argument_list|(
-name|Box
-operator|.
-name|createHorizontalGlue
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|//tlb.add(new JabRefLabel(GUIGlobals.frameTitle+" "+GUIGlobals.version));
-name|tlb
-operator|.
-name|addAction
-argument_list|(
-name|closeDatabaseAction
-argument_list|)
-expr_stmt|;
-comment|//Insets margin = new Insets(0, 0, 0, 0);
-comment|//for (int i=0; i<tlb.getComponentCount(); i++)
-comment|//  ((JButton)tlb.getComponentAtIndex(i)).setMargin(margin);
 block|}
 DECL|method|output (final String s)
 specifier|public
