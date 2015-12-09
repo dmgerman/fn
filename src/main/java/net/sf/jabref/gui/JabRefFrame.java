@@ -7349,27 +7349,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|getTabTooltip (JComponent comp)
-specifier|public
-name|String
-name|getTabTooltip
-parameter_list|(
-name|JComponent
-name|comp
-parameter_list|)
-block|{
-return|return
-name|tabbedPane
-operator|.
-name|getToolTipTextAt
-argument_list|(
-name|getTabIndex
-argument_list|(
-name|comp
-argument_list|)
-argument_list|)
-return|;
-block|}
 DECL|method|setTabTitle (JComponent comp, String title, String toolTip)
 specifier|public
 name|void
