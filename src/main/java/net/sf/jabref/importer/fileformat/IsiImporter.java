@@ -221,7 +221,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for the ISI Web of Science, INSPEC and Medline format.  *  * Documentation about ISI WOS format:  *  *<ul>  *<li>http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *  *<ul>  *<li>Check compatibility with other ISI2Bib tools like:  * http://www-lab.imr.tohoku.ac.jp/~t-nissie/computer/software/isi/ or  * http://www.tug.org/tex-archive/biblio/bibtex/utils/isi2bibtex/isi2bibtex or  * http://web.mit.edu/emilio/www/utils.html</li>  *<li>Deal with capitalization correctly</li>  *</ul>  */
+comment|/**  * Importer for the ISI Web of Science, INSPEC and Medline format.  *<p>  * Documentation about ISI WOS format:  *<p>  *<ul>  *<li>http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *<p>  *<ul>  *<li>Check compatibility with other ISI2Bib tools like:  * http://www-lab.imr.tohoku.ac.jp/~t-nissie/computer/software/isi/ or  * http://www.tug.org/tex-archive/biblio/bibtex/utils/isi2bibtex/isi2bibtex or  * http://web.mit.edu/emilio/www/utils.html</li>  *<li>Deal with capitalization correctly</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -1770,6 +1770,9 @@ operator|.
 name|put
 argument_list|(
 name|beg
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|,
 name|value
 argument_list|)
@@ -2104,7 +2107,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Will expand ISI first names.      *      * Fixed bug from:      * http://sourceforge.net/tracker/index.php?func=detail&aid=1542552&group_id=92314&atid=600306      *      */
+comment|/**      * Will expand ISI first names.      *<p>      * Fixed bug from:      * http://sourceforge.net/tracker/index.php?func=detail&aid=1542552&group_id=92314&atid=600306      */
 DECL|method|isiAuthorConvert (String author)
 specifier|public
 specifier|static

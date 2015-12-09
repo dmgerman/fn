@@ -1696,7 +1696,7 @@ name|a
 operator|.
 name|getField
 argument_list|(
-literal|"SN"
+literal|"sn"
 argument_list|)
 argument_list|)
 expr_stmt|;
