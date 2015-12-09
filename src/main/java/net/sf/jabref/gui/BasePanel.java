@@ -1832,10 +1832,10 @@ return|return
 name|title
 return|;
 block|}
-DECL|method|isBaseChanged ()
+DECL|method|isModified ()
 specifier|public
 name|boolean
-name|isBaseChanged
+name|isModified
 parameter_list|()
 block|{
 return|return

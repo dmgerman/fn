@@ -301,7 +301,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|isBaseChanged
+name|isModified
 argument_list|()
 condition|)
 block|{
