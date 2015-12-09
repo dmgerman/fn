@@ -255,6 +255,8 @@ block|{
 literal|"pdf"
 block|,
 literal|"ps"
+block|,
+literal|"evastar_pdf"
 block|}
 decl_stmt|;
 DECL|field|offerChangeSettings
