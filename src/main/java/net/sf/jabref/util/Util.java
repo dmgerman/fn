@@ -3679,11 +3679,11 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Get the results of HTTP post on a URL and return contents as a String.      *      * @param source postData encoding      * @return      * @throws IOException      */
-DECL|method|getPostResultsWithEncoding (URL source, String postData, Charset encoding)
+DECL|method|getPostResults (URL source, String postData, Charset encoding)
 specifier|public
 specifier|static
 name|String
-name|getPostResultsWithEncoding
+name|getPostResults
 parameter_list|(
 name|URL
 name|source
@@ -3708,44 +3708,8 @@ operator|.
 name|openConnection
 argument_list|()
 decl_stmt|;
-comment|//add a default request header
-name|con
-operator|.
-name|setRequestMethod
-argument_list|(
-literal|"POST"
-argument_list|)
-expr_stmt|;
-name|con
-operator|.
-name|setRequestProperty
-argument_list|(
-literal|"User-Agent"
-argument_list|,
-literal|"Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0"
-argument_list|)
-expr_stmt|;
-name|con
-operator|.
-name|setRequestProperty
-argument_list|(
-literal|"Accept-Language"
-argument_list|,
-literal|"en-US,en;q=0.5"
-argument_list|)
-expr_stmt|;
 return|return
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-operator|.
-name|getPostResultsWithEncoding
+name|getPostResults
 argument_list|(
 name|con
 argument_list|,
@@ -3756,11 +3720,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Get the results of HTTP post on a URL and return contents as a String.      *      * @param source postData encoding      * @return      * @throws IOException      */
-DECL|method|getPostResultsWithEncoding (HttpURLConnection source, String postData, Charset encoding)
+DECL|method|getPostResults (HttpURLConnection source, String postData, Charset encoding)
 specifier|public
 specifier|static
 name|String
-name|getPostResultsWithEncoding
+name|getPostResults
 parameter_list|(
 name|HttpURLConnection
 name|source
@@ -3774,6 +3738,32 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|//add a default request header
+name|source
+operator|.
+name|setRequestMethod
+argument_list|(
+literal|"POST"
+argument_list|)
+expr_stmt|;
+name|source
+operator|.
+name|setRequestProperty
+argument_list|(
+literal|"User-Agent"
+argument_list|,
+literal|"Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0"
+argument_list|)
+expr_stmt|;
+name|source
+operator|.
+name|setRequestProperty
+argument_list|(
+literal|"Accept-Language"
+argument_list|,
+literal|"en-US,en;q=0.5"
+argument_list|)
+expr_stmt|;
 comment|// Send post request
 name|source
 operator|.
@@ -3884,11 +3874,6 @@ name|inputLine
 argument_list|)
 expr_stmt|;
 block|}
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 else|else
@@ -3934,11 +3919,6 @@ name|inputLine
 argument_list|)
 expr_stmt|;
 block|}
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 return|return
