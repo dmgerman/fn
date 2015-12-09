@@ -375,10 +375,10 @@ name|isThereSomethingToBeDone
 argument_list|()
 return|;
 block|}
-comment|/**      * This method presents a dialog box explaining and offering to make the      * changes. If the user confirms, the changes are performed.      * @param panel      * @param pr      */
+comment|/**      * This method presents a dialog box explaining and offering to make the      * changes. If the user confirms, the changes are performed.      * @param panel      * @param parserResult      */
 annotation|@
 name|Override
-DECL|method|performAction (BasePanel panel, ParserResult pr)
+DECL|method|performAction (BasePanel panel, ParserResult parserResult)
 specifier|public
 name|void
 name|performAction
@@ -387,7 +387,7 @@ name|BasePanel
 name|panel
 parameter_list|,
 name|ParserResult
-name|pr
+name|parserResult
 parameter_list|)
 block|{
 if|if
@@ -483,7 +483,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 name|FormBuilder
-name|b
+name|formBuilder
 init|=
 name|FormBuilder
 operator|.
@@ -508,7 +508,7 @@ name|row
 init|=
 literal|1
 decl_stmt|;
-name|b
+name|formBuilder
 operator|.
 name|add
 argument_list|(
@@ -521,16 +521,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This database was written using an older version of JabRef."
+literal|"This database uses outdated file links."
 argument_list|)
 operator|+
-literal|"<br>"
+literal|"<br><br>"
 operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The current version features a new way of handling links to external files.<br>To take advantage of this, your links must be changed into the new format, and<br>JabRef must be configured to show the new links."
+literal|"JabRef no longer supports 'ps' or 'pdf' fields.<br>File links are now stored in the 'file' field and files are stored in an external file directory.<br>To make use of this feature, JabRef needs to upgrade file links.<br><br>"
 argument_list|)
 operator|+
 literal|"<p>"
@@ -558,7 +558,7 @@ condition|(
 name|offerChangeSettings
 condition|)
 block|{
-name|b
+name|formBuilder
 operator|.
 name|appendRows
 argument_list|(
@@ -569,7 +569,7 @@ name|row
 operator|+=
 literal|2
 expr_stmt|;
-name|b
+name|formBuilder
 operator|.
 name|add
 argument_list|(
@@ -589,7 +589,7 @@ condition|(
 name|offerChangeDatabase
 condition|)
 block|{
-name|b
+name|formBuilder
 operator|.
 name|appendRows
 argument_list|(
@@ -600,7 +600,7 @@ name|row
 operator|+=
 literal|2
 expr_stmt|;
-name|b
+name|formBuilder
 operator|.
 name|add
 argument_list|(
@@ -665,20 +665,20 @@ argument_list|)
 expr_stmt|;
 block|}
 name|JPanel
-name|pan
+name|builderPanel
 init|=
 operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
-name|pan
+name|builderPanel
 operator|.
 name|add
 argument_list|(
 name|setFileDir
 argument_list|)
 expr_stmt|;
-name|pan
+name|builderPanel
 operator|.
 name|add
 argument_list|(
@@ -711,14 +711,14 @@ name|fileDir
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|pan
+name|builderPanel
 operator|.
 name|add
 argument_list|(
 name|browse
 argument_list|)
 expr_stmt|;
-name|b
+name|formBuilder
 operator|.
 name|appendRows
 argument_list|(
@@ -729,11 +729,11 @@ name|row
 operator|+=
 literal|2
 expr_stmt|;
-name|b
+name|formBuilder
 operator|.
 name|add
 argument_list|(
-name|pan
+name|builderPanel
 argument_list|)
 operator|.
 name|xy
@@ -744,14 +744,14 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
-name|b
+name|formBuilder
 operator|.
 name|appendRows
 argument_list|(
 literal|"6dlu, p"
 argument_list|)
 expr_stmt|;
-name|b
+name|formBuilder
 operator|.
 name|add
 argument_list|(
@@ -771,7 +771,7 @@ name|message
 operator|.
 name|add
 argument_list|(
-name|b
+name|formBuilder
 operator|.
 name|build
 argument_list|()
@@ -838,7 +838,7 @@ name|makeChanges
 argument_list|(
 name|panel
 argument_list|,
-name|pr
+name|parserResult
 argument_list|,
 name|changeSettings
 operator|.
