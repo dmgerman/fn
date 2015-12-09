@@ -13797,7 +13797,6 @@ name|BasePanel
 name|panel
 parameter_list|)
 block|{
-comment|// TODO: this menu should be tab based not on the DragDropPopupPane
 comment|// empty tab without database
 if|if
 condition|(
