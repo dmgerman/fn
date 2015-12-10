@@ -321,6 +321,24 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|method|getBibType ()
+specifier|public
+name|BibType
+name|getBibType
+parameter_list|()
+block|{
+return|return
+name|BibTypeDetection
+operator|.
+name|inferType
+argument_list|(
+name|entries
+operator|.
+name|values
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**      * Returns the number of entries.      */
 DECL|method|getEntryCount ()
 specifier|public
