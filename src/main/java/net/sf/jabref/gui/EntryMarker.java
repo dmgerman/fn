@@ -852,6 +852,25 @@ name|newValue
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|newValue
+operator|==
+literal|null
+condition|)
+block|{
+name|be
+operator|.
+name|clearField
+argument_list|(
+name|BibtexFields
+operator|.
+name|MARKED
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|be
 operator|.
 name|setField
@@ -863,6 +882,7 @@ argument_list|,
 name|newValue
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * An entry is marked with a "0", not in the new style with user names. We      * want to unmark it as transparently as possible. Since this shouldn't      * happen too often, we do it by scanning the "owner" fields of the entire      * database, collecting all user names. We then mark the entry for all users      * except the current one. Thus only the user who unmarks will see that it      * is unmarked, and we get rid of the old-style marking.      *      * @param be      * @param ce      */
