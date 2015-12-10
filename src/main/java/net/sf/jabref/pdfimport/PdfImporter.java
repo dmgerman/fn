@@ -530,7 +530,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -798,7 +798,7 @@ DECL|field|entries
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 decl_stmt|;
@@ -895,7 +895,7 @@ comment|// files and noPdfFiles correctly sorted
 comment|// import the files
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -954,7 +954,7 @@ DECL|method|importPdfFiles (List<String> fileNames, OutputPrinter status)
 specifier|private
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importPdfFiles
 parameter_list|(
@@ -1039,7 +1039,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|res
 init|=
@@ -1060,7 +1060,7 @@ control|)
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|xmpEntriesInFile
 init|=
@@ -1156,7 +1156,7 @@ decl_stmt|;
 name|DroppedFileHandler
 name|dfh
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 name|InputStream
@@ -1166,7 +1166,7 @@ literal|null
 decl_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|localRes
 init|=
@@ -1731,14 +1731,14 @@ return|;
 block|}
 DECL|method|createNewBlankEntry (String fileName)
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|createNewBlankEntry
 parameter_list|(
 name|String
 name|fileName
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|newEntry
 init|=
 name|createNewEntry
@@ -1780,7 +1780,7 @@ return|;
 block|}
 DECL|method|createNewEntry ()
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|createNewEntry
 parameter_list|()
 block|{
@@ -1836,11 +1836,11 @@ name|next
 argument_list|()
 decl_stmt|;
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|id
 argument_list|,
@@ -1862,7 +1862,7 @@ expr_stmt|;
 comment|// Set owner/timestamp if options are enabled:
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|list
 init|=
@@ -2026,7 +2026,7 @@ specifier|private
 specifier|static
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|readXmpEntries
 parameter_list|(
@@ -2036,7 +2036,7 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|xmpEntriesInFile
 init|=
@@ -2066,7 +2066,7 @@ return|return
 name|xmpEntriesInFile
 return|;
 block|}
-DECL|method|hasXmpEntries (List<BibtexEntry> xmpEntriesInFile)
+DECL|method|hasXmpEntries (List<BibEntry> xmpEntriesInFile)
 specifier|private
 specifier|static
 name|boolean
@@ -2074,7 +2074,7 @@ name|hasXmpEntries
 parameter_list|(
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|xmpEntriesInFile
 parameter_list|)

@@ -274,7 +274,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -290,7 +290,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1500,7 +1500,7 @@ name|void
 name|select_actionPerformed
 parameter_list|()
 block|{
-name|BibtexDatabase
+name|BibDatabase
 name|db
 init|=
 name|getGenerateDB
@@ -1518,7 +1518,7 @@ argument_list|()
 operator|.
 name|mainTable
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|JabRef
@@ -1538,7 +1538,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|newEntry
 range|:
 name|db
@@ -1550,7 +1550,7 @@ block|{
 comment|// the entries are not the same objects as in the original database
 comment|// therefore, we have to search for the entries in the original database
 comment|// to be able to find them in the maintable
-name|BibtexEntry
+name|BibEntry
 name|origEntry
 init|=
 name|database
@@ -1625,7 +1625,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|refBase
 init|=
 name|bp
@@ -1891,7 +1891,7 @@ return|;
 block|}
 DECL|method|getGenerateDB ()
 specifier|public
-name|BibtexDatabase
+name|BibDatabase
 name|getGenerateDB
 parameter_list|()
 block|{

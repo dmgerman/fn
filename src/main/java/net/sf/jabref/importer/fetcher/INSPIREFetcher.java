@@ -162,7 +162,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -178,7 +178,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -331,7 +331,7 @@ comment|/**      * Constructs a INSPIRE query url from slaccitation field      *
 comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to have the field OAI2_IDENTIFIER_FIELD set to      * the search string.      *      * @param key The OAI2 key to fetch from ArXiv.      * @return The imported BibtexEntry or null if none.      */
 DECL|method|importInspireEntries (String key, OutputPrinter frame)
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|importInspireEntries
 parameter_list|(
 name|String
@@ -547,7 +547,7 @@ literal|"Fetching entries from Inspire"
 argument_list|)
 expr_stmt|;
 comment|/* query the archive and load the results into the BibtexEntry */
-name|BibtexDatabase
+name|BibDatabase
 name|bd
 init|=
 name|importInspireEntries
@@ -578,7 +578,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|bd

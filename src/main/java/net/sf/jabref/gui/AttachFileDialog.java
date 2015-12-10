@@ -214,7 +214,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -354,7 +354,7 @@ decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|metaData
@@ -371,7 +371,7 @@ init|=
 literal|true
 decl_stmt|;
 comment|// Default to true, so a pure close operation implies Cancel.
-DECL|method|AttachFileDialog (Dialog parent, MetaData metaData, BibtexEntry entry, String fieldName)
+DECL|method|AttachFileDialog (Dialog parent, MetaData metaData, BibEntry entry, String fieldName)
 specifier|public
 name|AttachFileDialog
 parameter_list|(
@@ -381,7 +381,7 @@ parameter_list|,
 name|MetaData
 name|metaData
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String

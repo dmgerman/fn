@@ -66,7 +66,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -175,7 +175,7 @@ DECL|method|getBibTexFromPage (final String page)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getBibTexFromPage
 parameter_list|(
@@ -187,7 +187,7 @@ block|{
 specifier|final
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibtexList
 init|=

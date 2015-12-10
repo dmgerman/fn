@@ -42,7 +42,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -120,7 +120,7 @@ parameter_list|()
 block|{
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -129,7 +129,7 @@ operator|.
 name|asList
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"someid"
 argument_list|,
@@ -164,7 +164,7 @@ parameter_list|()
 block|{
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -173,7 +173,7 @@ operator|.
 name|asList
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"someid"
 argument_list|,
@@ -206,11 +206,11 @@ name|void
 name|detectBiblatexFieldBased
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"someid"
 argument_list|,
@@ -230,7 +230,7 @@ argument_list|)
 expr_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -264,11 +264,11 @@ name|void
 name|detectBibtexFieldBased
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"someid"
 argument_list|,
@@ -288,7 +288,7 @@ argument_list|)
 expr_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -322,11 +322,11 @@ name|void
 name|detectUndistinguishableAsBibtex
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"someid"
 argument_list|,
@@ -346,7 +346,7 @@ argument_list|)
 expr_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=

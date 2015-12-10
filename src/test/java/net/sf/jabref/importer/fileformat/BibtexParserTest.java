@@ -64,7 +64,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -229,7 +229,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -253,7 +253,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|c
@@ -561,7 +561,7 @@ block|{
 comment|// Simple case
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -584,7 +584,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|c
@@ -656,7 +656,7 @@ block|{
 comment|// Empty String
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -683,7 +683,7 @@ block|}
 comment|// Error
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -715,7 +715,7 @@ block|{
 comment|/**          * More          */
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -748,7 +748,7 @@ argument_list|)
 expr_stmt|;
 name|Iterator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|i
 init|=
@@ -757,7 +757,7 @@ operator|.
 name|iterator
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|a
 init|=
 name|i
@@ -765,7 +765,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 name|i
@@ -786,7 +786,7 @@ literal|"foo"
 argument_list|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|tmp
 init|=
 name|a
@@ -903,7 +903,7 @@ name|void
 name|testFromStringSingle
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|a
 init|=
 name|BibtexParser
@@ -971,7 +971,7 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 name|BibtexParser
@@ -1056,7 +1056,7 @@ argument_list|()
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -1080,7 +1080,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|c
@@ -1192,11 +1192,11 @@ operator|.
 name|parse
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|""
 argument_list|,
@@ -1225,7 +1225,7 @@ argument_list|)
 expr_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -1249,7 +1249,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e2
 init|=
 name|c
@@ -1354,7 +1354,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -1366,7 +1366,7 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|c
@@ -1464,7 +1464,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -1488,7 +1488,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|c
@@ -1620,7 +1620,7 @@ name|void
 name|testNewlineHandling
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|BibtexParser
@@ -1767,7 +1767,7 @@ name|void
 name|testFileNaming
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|BibtexParser
@@ -1809,7 +1809,7 @@ name|void
 name|testFileNaming1
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|BibtexParser
@@ -1853,7 +1853,7 @@ name|void
 name|testFileNaming3
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|BibtexParser

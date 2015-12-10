@@ -512,7 +512,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -4255,7 +4255,7 @@ name|node
 argument_list|)
 expr_stmt|;
 comment|// add/remove entries to/from group
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|selection
 init|=
@@ -4581,7 +4581,7 @@ name|GroupTreeNode
 name|node
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
@@ -4613,7 +4613,7 @@ comment|// Current members will be removed
 comment|// Current non-members will be added
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|toRemove
 init|=
@@ -4628,7 +4628,7 @@ argument_list|)
 decl_stmt|;
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|toAdd
 init|=
@@ -4643,7 +4643,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -4718,7 +4718,7 @@ operator|.
 name|toArray
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|toRemove
 operator|.
@@ -4750,7 +4750,7 @@ operator|.
 name|toArray
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|toAdd
 operator|.
@@ -5139,7 +5139,7 @@ specifier|private
 specifier|final
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|matches
 init|=
@@ -5199,7 +5199,7 @@ parameter_list|()
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|panel
@@ -8861,12 +8861,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Highlight all groups that contain any/all of the specified entries. If entries is null or has zero length,      * highlight is cleared.      */
-DECL|method|showMatchingGroups (BibtexEntry[] entries, boolean requireAll)
+DECL|method|showMatchingGroups (BibEntry[] entries, boolean requireAll)
 specifier|public
 name|void
 name|showMatchingGroups
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
@@ -9117,14 +9117,14 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Show groups that, if selected, would show at least one of the entries found in the specified search.      */
-DECL|method|showOverlappingGroups (List<BibtexEntry> matches)
+DECL|method|showOverlappingGroups (List<BibEntry> matches)
 specifier|private
 name|void
 name|showOverlappingGroups
 parameter_list|(
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|matches
 parameter_list|)
@@ -9179,7 +9179,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|match
 range|:
 name|matches

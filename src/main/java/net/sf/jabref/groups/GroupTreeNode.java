@@ -120,7 +120,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -136,7 +136,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -499,12 +499,12 @@ name|copy
 return|;
 block|}
 comment|/**      * Update all groups, if necessary, to handle the situation where the group      * tree is applied to a different BibtexDatabase than it was created for. This      * is for instance used when updating the group tree due to an external change.      *      * @param db The database to refresh for.      */
-DECL|method|refreshGroupsForNewDatabase (BibtexDatabase db)
+DECL|method|refreshGroupsForNewDatabase (BibDatabase db)
 specifier|public
 name|void
 name|refreshGroupsForNewDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|)
 block|{
@@ -1478,12 +1478,12 @@ name|cursor
 return|;
 block|}
 comment|/**      * Adds the selected entries to this node's group.      */
-DECL|method|addToGroup (BibtexEntry[] entries)
+DECL|method|addToGroup (BibEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|addToGroup
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
@@ -1537,12 +1537,12 @@ name|undo
 return|;
 block|}
 comment|/**      * Removes the selected entries from this node's group.      */
-DECL|method|removeFromGroup (BibtexEntry[] entries)
+DECL|method|removeFromGroup (BibEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|removeFromGroup
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)

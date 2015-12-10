@@ -96,7 +96,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -297,7 +297,7 @@ name|evt
 parameter_list|)
 block|{
 specifier|final
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
@@ -378,7 +378,7 @@ continue|continue;
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries

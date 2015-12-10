@@ -44,7 +44,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -60,12 +60,12 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
 begin_comment
-comment|/**  * {@link FileFilter} implementation, that allows only files which are not  * linked in any of the {@link BibtexEntry}s of the specified  * {@link BibtexDatabase}.<br>  *<br>  * This {@link FileFilter} sits on top of another {@link FileFilter}  * -implementation, which it first consults. Only if this major filefilter  * has accepted a file, this implementation will verify on that file.  *   * @author Nosh&Dan  * @version 12.11.2008 | 02:00:15  *   */
+comment|/**  * {@link FileFilter} implementation, that allows only files which are not  * linked in any of the {@link BibEntry}s of the specified  * {@link BibDatabase}.<br>  *<br>  * This {@link FileFilter} sits on top of another {@link FileFilter}  * -implementation, which it first consults. Only if this major filefilter  * has accepted a file, this implementation will verify on that file.  *   * @author Nosh&Dan  * @version 12.11.2008 | 02:00:15  *   */
 end_comment
 
 begin_class
@@ -88,14 +88,14 @@ specifier|final
 name|FileFilter
 name|fileFilter
 decl_stmt|;
-DECL|method|UnlinkedPDFFileFilter (FileFilter aFileFilter, BibtexDatabase database)
+DECL|method|UnlinkedPDFFileFilter (FileFilter aFileFilter, BibDatabase database)
 specifier|public
 name|UnlinkedPDFFileFilter
 parameter_list|(
 name|FileFilter
 name|aFileFilter
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{

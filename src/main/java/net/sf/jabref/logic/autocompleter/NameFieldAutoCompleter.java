@@ -86,7 +86,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -302,12 +302,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|addBibtexEntry (BibtexEntry entry)
+DECL|method|addBibtexEntry (BibEntry entry)
 specifier|public
 name|void
 name|addBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

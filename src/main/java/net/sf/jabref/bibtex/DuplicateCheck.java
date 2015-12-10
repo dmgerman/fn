@@ -44,7 +44,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -60,7 +60,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -275,16 +275,16 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Checks if the two entries represent the same publication.      *      * @param one BibtexEntry      * @param two BibtexEntry      * @return boolean      */
-DECL|method|isDuplicate (BibtexEntry one, BibtexEntry two)
+DECL|method|isDuplicate (BibEntry one, BibEntry two)
 specifier|public
 specifier|static
 name|boolean
 name|isDuplicate
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|one
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|two
 parameter_list|)
 block|{
@@ -512,7 +512,7 @@ operator|.
 name|duplicateThreshold
 return|;
 block|}
-DECL|method|compareFieldSet (String[] fields, BibtexEntry one, BibtexEntry two)
+DECL|method|compareFieldSet (String[] fields, BibEntry one, BibEntry two)
 specifier|private
 specifier|static
 name|double
@@ -523,10 +523,10 @@ name|String
 index|[]
 name|fields
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|one
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|two
 parameter_list|)
 block|{
@@ -657,7 +657,7 @@ literal|0.0
 block|}
 return|;
 block|}
-DECL|method|compareSingleField (String field, BibtexEntry one, BibtexEntry two)
+DECL|method|compareSingleField (String field, BibEntry one, BibEntry two)
 specifier|private
 specifier|static
 name|int
@@ -666,10 +666,10 @@ parameter_list|(
 name|String
 name|field
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|one
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|two
 parameter_list|)
 block|{
@@ -984,16 +984,16 @@ name|NOT_EQUAL
 return|;
 block|}
 block|}
-DECL|method|compareEntriesStrictly (BibtexEntry one, BibtexEntry two)
+DECL|method|compareEntriesStrictly (BibEntry one, BibEntry two)
 specifier|public
 specifier|static
 name|double
 name|compareEntriesStrictly
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|one
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|two
 parameter_list|)
 block|{
@@ -1134,22 +1134,22 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Goes through all entries in the given database, and if at least one of      * them is a duplicate of the given entry, as per      * Util.isDuplicate(BibtexEntry, BibtexEntry), the duplicate is returned.      * The search is terminated when the first duplicate is found.      *      * @param database The database to search.      * @param entry    The entry of which we are looking for duplicates.      * @return The first duplicate entry found. null if no duplicates are found.      */
-DECL|method|containsDuplicate (BibtexDatabase database, BibtexEntry entry)
+DECL|method|containsDuplicate (BibDatabase database, BibEntry entry)
 specifier|public
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|containsDuplicate
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|other
 range|:
 name|database

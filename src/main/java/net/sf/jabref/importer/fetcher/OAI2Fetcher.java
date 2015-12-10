@@ -258,7 +258,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -833,7 +833,7 @@ block|}
 comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to      * have the field OAI2_IDENTIFIER_FIELD set to the search string.      *      * @param key      *            The OAI2 key to fetch from ArXiv.      * @return The imported BibtexEntry or null if none.      */
 DECL|method|importOai2Entry (String key)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|importOai2Entry
 parameter_list|(
 name|String
@@ -898,11 +898,11 @@ name|getInputStream
 argument_list|()
 decl_stmt|;
 comment|/* create an empty BibtexEntry and set the oai2identifier field */
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.
@@ -1405,7 +1405,7 @@ block|{
 break|break;
 block|}
 comment|/* query the archive and load the results into the BibtexEntry */
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 name|importOai2Entry

@@ -88,7 +88,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -119,7 +119,7 @@ block|{
 DECL|field|base
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|base
 decl_stmt|;
 DECL|field|panel
@@ -134,14 +134,14 @@ specifier|final
 name|BibtexString
 name|string
 decl_stmt|;
-DECL|method|UndoableInsertString (BasePanel panel, BibtexDatabase base, BibtexString string)
+DECL|method|UndoableInsertString (BasePanel panel, BibDatabase base, BibtexString string)
 specifier|public
 name|UndoableInsertString
 parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|,
 name|BibtexString

@@ -432,7 +432,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1089,11 +1089,11 @@ decl_stmt|;
 DECL|field|prevEntry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|prevEntry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.

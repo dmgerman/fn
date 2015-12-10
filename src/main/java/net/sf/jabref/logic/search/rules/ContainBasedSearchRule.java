@@ -42,7 +42,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -171,7 +171,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
+DECL|method|applyRule (String query, BibEntry bibEntry)
 specifier|public
 name|boolean
 name|applyRule
@@ -179,8 +179,8 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 parameter_list|)
 block|{
 name|String
@@ -236,7 +236,7 @@ control|(
 name|String
 name|field
 range|:
-name|bibtexEntry
+name|bibEntry
 operator|.
 name|getFieldNames
 argument_list|()
@@ -245,7 +245,7 @@ block|{
 name|Object
 name|fieldContentAsObject
 init|=
-name|bibtexEntry
+name|bibEntry
 operator|.
 name|getField
 argument_list|(

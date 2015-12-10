@@ -52,7 +52,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -127,10 +127,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibtexDatabaseTest
+DECL|class|BibDatabaseTest
 specifier|public
 class|class
-name|BibtexDatabaseTest
+name|BibDatabaseTest
 block|{
 annotation|@
 name|Before
@@ -199,7 +199,7 @@ argument_list|(
 name|fr
 argument_list|)
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|db
 init|=
 name|result

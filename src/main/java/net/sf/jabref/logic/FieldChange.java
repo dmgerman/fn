@@ -24,7 +24,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -41,7 +41,7 @@ block|{
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|field
@@ -62,11 +62,11 @@ specifier|final
 name|String
 name|newValue
 decl_stmt|;
-DECL|method|FieldChange (BibtexEntry entry, String field, String oldValue, String newValue)
+DECL|method|FieldChange (BibEntry entry, String field, String oldValue, String newValue)
 specifier|public
 name|FieldChange
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String
@@ -106,7 +106,7 @@ expr_stmt|;
 block|}
 DECL|method|getEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|()
 block|{

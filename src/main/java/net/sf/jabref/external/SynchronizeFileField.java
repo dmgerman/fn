@@ -208,7 +208,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -348,7 +348,7 @@ name|panel
 decl_stmt|;
 DECL|field|sel
 specifier|private
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|sel
 decl_stmt|;
@@ -451,7 +451,7 @@ parameter_list|()
 block|{
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|col
 init|=
@@ -470,7 +470,7 @@ expr_stmt|;
 name|sel
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|col
 operator|.
@@ -702,7 +702,7 @@ comment|//ExternalFilePanel extPan = new ExternalFilePanel(fieldName, panel.meta
 comment|//TextField editor = new TextField(fieldName, "", false);
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|changedEntries
 init|=
@@ -719,7 +719,7 @@ condition|)
 block|{
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -808,7 +808,7 @@ name|mainLoop
 label|:
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|aSel
 range|:
 name|sel

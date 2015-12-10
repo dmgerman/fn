@@ -36,22 +36,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|entryeditor
-operator|.
-name|EntryEditor
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|fieldeditors
 operator|.
 name|FieldEditor
@@ -102,7 +86,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -203,14 +187,14 @@ operator|.
 name|initJabRef
 argument_list|()
 expr_stmt|;
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
-name|bibtexEntry
+name|bibEntry
 operator|.
 name|setField
 argument_list|(
@@ -247,7 +231,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 argument_list|,
-name|bibtexEntry
+name|bibEntry
 argument_list|)
 decl_stmt|;
 comment|// perform action ...
@@ -338,14 +322,14 @@ operator|.
 name|initJabRef
 argument_list|()
 expr_stmt|;
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
-name|bibtexEntry
+name|bibEntry
 operator|.
 name|setField
 argument_list|(
@@ -382,7 +366,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 argument_list|,
-name|bibtexEntry
+name|bibEntry
 argument_list|)
 decl_stmt|;
 comment|// perform action ...

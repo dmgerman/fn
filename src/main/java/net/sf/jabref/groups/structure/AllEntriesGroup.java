@@ -42,7 +42,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -58,7 +58,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -135,7 +135,7 @@ name|INDEPENDENT
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fromString (String s, BibtexDatabase db, int version)
+DECL|method|fromString (String s, BibDatabase db, int version)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -144,7 +144,7 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|int
@@ -236,8 +236,8 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 parameter_list|)
 block|{
 return|return
@@ -288,12 +288,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (BibtexEntry[] entries)
+DECL|method|add (BibEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|add
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
@@ -305,12 +305,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|remove (BibtexEntry[] entries)
+DECL|method|remove (BibEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|remove
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
@@ -322,7 +322,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|contains (String query, BibtexEntry entry)
+DECL|method|contains (String query, BibEntry entry)
 specifier|public
 name|boolean
 name|contains
@@ -330,7 +330,7 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -386,12 +386,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|contains (BibtexEntry entry)
+DECL|method|contains (BibEntry entry)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

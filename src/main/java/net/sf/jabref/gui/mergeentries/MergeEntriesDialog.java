@@ -88,7 +88,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -318,12 +318,12 @@ argument_list|()
 decl_stmt|;
 DECL|field|one
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|one
 decl_stmt|;
 DECL|field|two
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|two
 decl_stmt|;
 DECL|field|ce
@@ -392,12 +392,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Sets up the dialog      *      * @param selected Selected BibtexEntries      */
-DECL|method|init (BibtexEntry[] selected)
+DECL|method|init (BibEntry[] selected)
 specifier|private
 name|void
 name|init
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|selected
 parameter_list|)
@@ -835,7 +835,7 @@ name|String
 name|button
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|mergedEntry
 init|=
 name|mergeEntries

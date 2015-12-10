@@ -168,7 +168,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -184,7 +184,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -220,7 +220,7 @@ decl_stmt|;
 DECL|field|database
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|onlyRelativePaths
@@ -234,7 +234,7 @@ specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|method|RenamePdfCleanup (String[] paths, Boolean onlyRelativePaths, BibtexDatabase database)
+DECL|method|RenamePdfCleanup (String[] paths, Boolean onlyRelativePaths, BibDatabase database)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
@@ -245,7 +245,7 @@ parameter_list|,
 name|Boolean
 name|onlyRelativePaths
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -270,7 +270,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|cleanup (BibtexEntry entry)
+DECL|method|cleanup (BibEntry entry)
 specifier|public
 name|List
 argument_list|<
@@ -278,7 +278,7 @@ name|FieldChange
 argument_list|>
 name|cleanup
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

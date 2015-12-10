@@ -28,7 +28,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -85,7 +85,7 @@ block|{
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|authors
@@ -108,11 +108,11 @@ specifier|private
 name|StringBuffer
 name|characters
 decl_stmt|;
-DECL|method|OAI2Handler (BibtexEntry be)
+DECL|method|OAI2Handler (BibEntry be)
 specifier|public
 name|OAI2Handler
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|)
 block|{

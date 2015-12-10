@@ -168,7 +168,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -217,10 +217,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibtexDatabase
+DECL|class|BibDatabase
 specifier|public
 class|class
-name|BibtexDatabase
+name|BibDatabase
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -233,7 +233,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|class
 argument_list|)
@@ -245,7 +245,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -371,7 +371,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Returns an EntrySorter with the sorted entries from this base,      * sorted by the given Comparator.      */
-DECL|method|getSorter (Comparator<BibtexEntry> comp)
+DECL|method|getSorter (Comparator<BibEntry> comp)
 specifier|public
 specifier|synchronized
 name|EntrySorter
@@ -379,7 +379,7 @@ name|getSorter
 parameter_list|(
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|comp
 parameter_list|)
@@ -411,7 +411,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getEntryMap
 parameter_list|()
@@ -423,7 +423,7 @@ block|}
 comment|/**      * Returns the entry with the given ID (-> entry_type + hashcode).      */
 DECL|method|getEntryById (String id)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getEntryById
 parameter_list|(
 name|String
@@ -443,7 +443,7 @@ DECL|method|getEntries ()
 specifier|public
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getEntries
 parameter_list|()
@@ -477,7 +477,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|e
 range|:
 name|getEntries
@@ -557,14 +557,14 @@ comment|/**      * Returns the entry with the given bibtex key.      */
 DECL|method|getEntryByKey (String key)
 specifier|public
 specifier|synchronized
-name|BibtexEntry
+name|BibEntry
 name|getEntryByKey
 parameter_list|(
 name|String
 name|key
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|back
 init|=
 literal|null
@@ -597,7 +597,7 @@ range|:
 name|keySet
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|getEntryById
@@ -663,7 +663,7 @@ block|}
 DECL|method|getEntriesByKey (String key)
 specifier|public
 specifier|synchronized
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|getEntriesByKey
 parameter_list|(
@@ -673,7 +673,7 @@ parameter_list|)
 block|{
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|result
 init|=
@@ -684,7 +684,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -721,7 +721,7 @@ operator|.
 name|toArray
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|result
 operator|.
@@ -732,13 +732,13 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Inserts the entry, given that its ID is not already in use.      * use Util.createId(...) to make up a unique ID for an entry.      */
-DECL|method|insertEntry (BibtexEntry entry)
+DECL|method|insertEntry (BibEntry entry)
 specifier|public
 specifier|synchronized
 name|boolean
 name|insertEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 throws|throws
@@ -819,14 +819,14 @@ comment|/**      * Removes the entry with the given string.      *<p>      * Ret
 DECL|method|removeEntry (String id)
 specifier|public
 specifier|synchronized
-name|BibtexEntry
+name|BibEntry
 name|removeEntry
 parameter_list|(
 name|String
 name|id
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|oldValue
 init|=
 name|entries
@@ -912,7 +912,7 @@ literal|false
 return|;
 comment|// Entry doesn't exist!
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|getEntryById
@@ -939,7 +939,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -953,7 +953,7 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1234,17 +1234,17 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Take the given collection of BibtexEntry and resolve any string      * references.      *      * @param ent A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the databasee.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
-DECL|method|resolveForStrings (Collection<BibtexEntry> ent, boolean inPlace)
+DECL|method|resolveForStrings (Collection<BibEntry> ent, boolean inPlace)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|resolveForStrings
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|ent
 parameter_list|,
@@ -1269,7 +1269,7 @@ throw|;
 block|}
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|results
 init|=
@@ -1285,7 +1285,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|ent
@@ -1311,12 +1311,12 @@ name|results
 return|;
 block|}
 comment|/**      * Take the given BibtexEntry and resolve any string references.      *      * @param entry   A BibtexEntry in which all strings of the form #xxx# will be      *                resolved against the hash map of string references stored in      *                the databasee.      * @param inPlace If inPlace is true then the given BibtexEntry will be      *                modified, if false then a copy is made using close made before      *                resolving the strings.      * @return a BibtexEntry with all string references resolved. It is      * dependent on the value of inPlace whether a copy is made or the      * given BibtexEntries is modified.      */
-DECL|method|resolveForStrings (BibtexEntry entry, boolean inPlace)
+DECL|method|resolveForStrings (BibEntry entry, boolean inPlace)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|resolveForStrings
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|boolean
@@ -1332,7 +1332,7 @@ block|{
 name|entry
 operator|=
 operator|(
-name|BibtexEntry
+name|BibEntry
 operator|)
 name|entry
 operator|.
@@ -2148,7 +2148,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns the text stored in the given field of the given bibtex entry      * which belongs to the given database.      *<p>      * If a database is given, this function will try to resolve any string      * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any.      *      * @param field    The field to return the value of.      * @param bibtex   maybenull      *                 The bibtex entry which contains the field.      * @param database maybenull      *                 The database of the bibtex entry.      * @return The resolved field value or null if not found.      */
-DECL|method|getResolvedField (String field, BibtexEntry bibtex, BibtexDatabase database)
+DECL|method|getResolvedField (String field, BibEntry bibtex, BibDatabase database)
 specifier|public
 specifier|static
 name|String
@@ -2157,10 +2157,10 @@ parameter_list|(
 name|String
 name|field
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -2222,7 +2222,7 @@ name|field
 operator|.
 name|equals
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -2245,7 +2245,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|referred
 init|=
 name|database
@@ -2280,7 +2280,7 @@ block|}
 block|}
 block|}
 return|return
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getText
 argument_list|(
@@ -2294,7 +2294,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns a text with references resolved according to an optionally given      * database.      *      * @param toResolve maybenull The text to resolve.      * @param database  maybenull The database to use for resolving the text.      * @return The resolved text or the original text if either the text or the database are null      */
-DECL|method|getText (String toResolve, BibtexDatabase database)
+DECL|method|getText (String toResolve, BibDatabase database)
 specifier|public
 specifier|static
 name|String
@@ -2303,7 +2303,7 @@ parameter_list|(
 name|String
 name|toResolve
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -2376,7 +2376,7 @@ argument_list|(
 operator|new
 name|DatabaseChangeEvent
 argument_list|(
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|this
 argument_list|,
@@ -2387,7 +2387,7 @@ operator|.
 name|CHANGING_ENTRY
 argument_list|,
 operator|(
-name|BibtexEntry
+name|BibEntry
 operator|)
 name|propertyChangeEvent
 operator|.
@@ -2412,7 +2412,7 @@ argument_list|)
 condition|)
 block|{
 comment|// locate the entry under its old key
-name|BibtexEntry
+name|BibEntry
 name|oldEntry
 init|=
 name|entries
@@ -2518,7 +2518,7 @@ name|getNewValue
 argument_list|()
 argument_list|,
 operator|(
-name|BibtexEntry
+name|BibEntry
 operator|)
 name|propertyChangeEvent
 operator|.
@@ -2534,7 +2534,7 @@ argument_list|(
 operator|new
 name|DatabaseChangeEvent
 argument_list|(
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|this
 argument_list|,
@@ -2545,7 +2545,7 @@ operator|.
 name|CHANGED_ENTRY
 argument_list|,
 operator|(
-name|BibtexEntry
+name|BibEntry
 operator|)
 name|propertyChangeEvent
 operator|.

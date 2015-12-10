@@ -106,7 +106,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -232,7 +232,7 @@ name|DBStrings
 argument_list|()
 decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
-DECL|method|MetaData (HashMap<String, String> inData, BibtexDatabase db)
+DECL|method|MetaData (HashMap<String, String> inData, BibDatabase db)
 specifier|public
 name|MetaData
 parameter_list|(
@@ -244,7 +244,7 @@ name|String
 argument_list|>
 name|inData
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|)
 block|{
@@ -1017,7 +1017,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      * @param db          The BibtexDatabase this metadata belongs to      * @param version     The group tree version      * @return true if parsing was successful, false otherwise      */
-DECL|method|putGroups (Vector<String> orderedData, BibtexDatabase db, int version)
+DECL|method|putGroups (Vector<String> orderedData, BibDatabase db, int version)
 specifier|private
 name|void
 name|putGroups
@@ -1028,7 +1028,7 @@ name|String
 argument_list|>
 name|orderedData
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|int

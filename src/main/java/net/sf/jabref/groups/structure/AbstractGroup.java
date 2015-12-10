@@ -42,7 +42,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -58,7 +58,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -159,7 +159,7 @@ name|getSearchRule
 parameter_list|()
 function_decl|;
 comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception If an error occured and a group could not be created, e.g.      *                   due to a malformed regular expression.      */
-DECL|method|fromString (String s, BibtexDatabase db, int version)
+DECL|method|fromString (String s, BibDatabase db, int version)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -168,7 +168,7 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|int
@@ -329,31 +329,31 @@ name|supportsRemove
 parameter_list|()
 function_decl|;
 comment|/**      * Adds the specified entries to this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, an object is returned that allows to      * undo this change. null is returned otherwise.      */
-DECL|method|add (BibtexEntry[] entries)
+DECL|method|add (BibEntry[] entries)
 specifier|public
 specifier|abstract
 name|AbstractUndoableEdit
 name|add
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
 function_decl|;
 comment|/**      * Removes the specified entries from this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, an object is returned that allows to      * undo this change. null is returned otherwise.      */
-DECL|method|remove (BibtexEntry[] entries)
+DECL|method|remove (BibEntry[] entries)
 specifier|public
 specifier|abstract
 name|AbstractUndoableEdit
 name|remove
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
 function_decl|;
 comment|/**      * @param query The search option to apply.      * @return true if this group contains the specified entry, false otherwise.      */
-DECL|method|contains (String query, BibtexEntry entry)
+DECL|method|contains (String query, BibEntry entry)
 specifier|public
 specifier|abstract
 name|boolean
@@ -362,35 +362,35 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 function_decl|;
 comment|/**      * @return true if this group contains the specified entry, false otherwise.      */
-DECL|method|contains (BibtexEntry entry)
+DECL|method|contains (BibEntry entry)
 specifier|public
 specifier|abstract
 name|boolean
 name|contains
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 function_decl|;
 comment|/**      * @return true if this group contains any of the specified entries, false      * otherwise.      */
-DECL|method|containsAny (BibtexEntry[] entries)
+DECL|method|containsAny (BibEntry[] entries)
 specifier|public
 name|boolean
 name|containsAny
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -414,19 +414,19 @@ literal|false
 return|;
 block|}
 comment|/**      * @return true if this group contains all of the specified entries, false      * otherwise.      */
-DECL|method|containsAll (BibtexEntry[] entries)
+DECL|method|containsAll (BibEntry[] entries)
 specifier|public
 name|boolean
 name|containsAll
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -524,12 +524,12 @@ comment|// something from which this object can be reconstructed
 comment|// using fromString(String).
 comment|// by general AbstractGroup contract, equals() must be implemented
 comment|/**      * Update the group, if necessary, to handle the situation where the group      * is applied to a different BibtexDatabase than it was created for. This      * is for instance used when updating the group tree due to an external change.      *      * @param db The database to refresh for.      */
-DECL|method|refreshForNewDatabase (BibtexDatabase db)
+DECL|method|refreshForNewDatabase (BibDatabase db)
 specifier|public
 name|void
 name|refreshForNewDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|)
 block|{

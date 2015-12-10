@@ -108,7 +108,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -338,12 +338,12 @@ argument_list|()
 decl_stmt|;
 DECL|field|originalEntry
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|originalEntry
 decl_stmt|;
 DECL|field|doiEntry
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|doiEntry
 decl_stmt|;
 DECL|field|ce
@@ -975,7 +975,7 @@ name|String
 name|button
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|mergedEntry
 init|=
 name|mergeEntries

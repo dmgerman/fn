@@ -122,7 +122,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -447,7 +447,7 @@ name|next
 argument_list|()
 expr_stmt|;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|BibtexParser

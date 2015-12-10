@@ -60,7 +60,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -153,7 +153,7 @@ comment|/**      * Return a BibtexEntry by looking up the given url from the Bib
 DECL|method|getEntry (String entryUrl)
 specifier|public
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|(
 name|String

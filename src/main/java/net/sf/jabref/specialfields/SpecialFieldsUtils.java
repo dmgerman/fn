@@ -62,7 +62,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -358,7 +358,7 @@ comment|/** generic treatment                              **/
 comment|/** no special treatment any more, thanks to enums **/
 comment|/****************************************************/
 comment|/**      * @param e - Field to be handled      * @param value - may be null to state that field should be emptied      * @param be - BibTeXEntry to be handled      * @param ce - Filled with undo info (if necessary)      * @param nullFieldIfValueIsTheSame - true: field is nulled if value is the same than the current value in be      */
-DECL|method|updateField (SpecialField e, String value, BibtexEntry be, NamedCompound ce, boolean nullFieldIfValueIsTheSame)
+DECL|method|updateField (SpecialField e, String value, BibEntry be, NamedCompound ce, boolean nullFieldIfValueIsTheSame)
 specifier|public
 specifier|static
 name|void
@@ -370,7 +370,7 @@ parameter_list|,
 name|String
 name|value
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|NamedCompound
@@ -421,7 +421,7 @@ name|ce
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|exportFieldToKeywords (SpecialField e, BibtexEntry be, NamedCompound ce)
+DECL|method|exportFieldToKeywords (SpecialField e, BibEntry be, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
@@ -430,7 +430,7 @@ parameter_list|(
 name|SpecialField
 name|e
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|NamedCompound
@@ -459,7 +459,7 @@ name|ce
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|exportFieldToKeywords (SpecialField e, String newValue, BibtexEntry be, NamedCompound ce)
+DECL|method|exportFieldToKeywords (SpecialField e, String newValue, BibEntry be, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
@@ -471,7 +471,7 @@ parameter_list|,
 name|String
 name|newValue
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|NamedCompound
@@ -664,13 +664,13 @@ block|}
 block|}
 block|}
 comment|/**      * Update keywords according to values of special fields      *      * @param nc indicates the undo named compound. May be null      */
-DECL|method|syncKeywordsFromSpecialFields (BibtexEntry be, NamedCompound nc)
+DECL|method|syncKeywordsFromSpecialFields (BibEntry be, NamedCompound nc)
 specifier|public
 specifier|static
 name|void
 name|syncKeywordsFromSpecialFields
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|NamedCompound
@@ -762,7 +762,7 @@ name|nc
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|importKeywordsForField (ArrayList<String> keywordList, SpecialField c, BibtexEntry be, NamedCompound nc)
+DECL|method|importKeywordsForField (ArrayList<String> keywordList, SpecialField c, BibEntry be, NamedCompound nc)
 specifier|private
 specifier|static
 name|void
@@ -777,7 +777,7 @@ parameter_list|,
 name|SpecialField
 name|c
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|NamedCompound
@@ -843,13 +843,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * updates field values according to keywords      *      * @param ce indicates the undo named compound. May be null      */
-DECL|method|syncSpecialFieldsFromKeywords (BibtexEntry be, NamedCompound ce)
+DECL|method|syncSpecialFieldsFromKeywords (BibEntry be, NamedCompound ce)
 specifier|public
 specifier|static
 name|void
 name|syncSpecialFieldsFromKeywords
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|NamedCompound

@@ -142,7 +142,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -307,7 +307,7 @@ name|OutputPrinter
 name|status
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|getEntryFromDOI
@@ -378,7 +378,7 @@ return|;
 block|}
 DECL|method|getEntryFromDOI (String doiStr, OutputPrinter status)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getEntryFromDOI
 parameter_list|(
 name|String
@@ -602,7 +602,7 @@ argument_list|,
 literal|"$1--$2"
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|BibtexParser

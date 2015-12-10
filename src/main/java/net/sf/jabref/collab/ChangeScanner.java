@@ -350,7 +350,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -366,7 +366,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -421,7 +421,7 @@ decl_stmt|;
 DECL|field|inMem
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|inMem
 decl_stmt|;
 DECL|field|mdInMem
@@ -444,7 +444,7 @@ name|frame
 decl_stmt|;
 DECL|field|inTemp
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|inTemp
 decl_stmt|;
 DECL|field|mdInTemp
@@ -615,7 +615,7 @@ name|getDefaultEncoding
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|onDisk
 init|=
 name|pr
@@ -1963,7 +1963,7 @@ comment|/**      * Finds the entry in neu best fitting the specified entry in ol
 DECL|method|bestFit (EntrySorter old, EntrySorter neu, int index)
 specifier|private
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|bestFit
 parameter_list|(
 name|EntrySorter
@@ -2062,18 +2062,18 @@ name|found
 argument_list|)
 return|;
 block|}
-DECL|method|scanPreamble (BibtexDatabase inMem1, BibtexDatabase onTmp, BibtexDatabase onDisk)
+DECL|method|scanPreamble (BibDatabase inMem1, BibDatabase onTmp, BibDatabase onDisk)
 specifier|private
 name|void
 name|scanPreamble
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|inMem1
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|onTmp
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|onDisk
 parameter_list|)
 block|{
@@ -2175,18 +2175,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|scanStrings (BibtexDatabase inMem1, BibtexDatabase onTmp, BibtexDatabase onDisk)
+DECL|method|scanStrings (BibDatabase inMem1, BibDatabase onTmp, BibDatabase onDisk)
 specifier|private
 name|void
 name|scanStrings
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|inMem1
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|onTmp
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|onDisk
 parameter_list|)
 block|{
@@ -2805,13 +2805,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|findString (BibtexDatabase base, String name, HashSet<Object> used)
+DECL|method|findString (BibDatabase base, String name, HashSet<Object> used)
 specifier|private
 specifier|static
 name|BibtexString
 name|findString
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|,
 name|String

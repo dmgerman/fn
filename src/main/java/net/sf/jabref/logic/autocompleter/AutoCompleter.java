@@ -36,7 +36,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -63,11 +63,11 @@ name|item
 parameter_list|)
 function_decl|;
 comment|/**      * Add a BibtexEntry to this AutoCompleter.      * @note The AutoCompleter itself decides which information should be stored for later completion.      */
-DECL|method|addBibtexEntry (BibtexEntry entry)
+DECL|method|addBibtexEntry (BibEntry entry)
 name|void
 name|addBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 function_decl|;
@@ -83,7 +83,7 @@ name|String
 name|getPrefix
 parameter_list|()
 function_decl|;
-comment|/**      * Returns one or more possible completions for a given string. The returned      * completion depends on which informations were stored while adding      * BibtexEntries. If no suggestions for completions are found, then an empty list is returned.      *      * @see AutoCompleter#addBibtexEntry(BibtexEntry)      */
+comment|/**      * Returns one or more possible completions for a given string. The returned      * completion depends on which informations were stored while adding      * BibtexEntries. If no suggestions for completions are found, then an empty list is returned.      *      * @see AutoCompleter#addBibtexEntry(BibEntry)      */
 DECL|method|complete (String toComplete)
 name|List
 argument_list|<
@@ -95,7 +95,7 @@ name|String
 name|toComplete
 parameter_list|)
 function_decl|;
-comment|/**      * Directly adds an item to the AutoCompleter.      * This method should be called only if the information does not comes directly from a BibtexEntry.      * Otherwise the {@link #addBibtexEntry(BibtexEntry)} is preferred.      * @param item item to add      */
+comment|/**      * Directly adds an item to the AutoCompleter.      * This method should be called only if the information does not comes directly from a BibtexEntry.      * Otherwise the {@link #addBibtexEntry(BibEntry)} is preferred.      * @param item item to add      */
 DECL|method|addItemToIndex (E item)
 name|void
 name|addItemToIndex

@@ -506,7 +506,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -716,7 +716,7 @@ decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|inputMenu
@@ -762,7 +762,7 @@ specifier|private
 name|boolean
 name|okPressed
 decl_stmt|;
-DECL|method|TextInputDialog (JabRefFrame frame, BasePanel panel, String title, boolean modal, BibtexEntry bibEntry)
+DECL|method|TextInputDialog (JabRefFrame frame, BasePanel panel, String title, boolean modal, BibEntry bibEntry)
 specifier|public
 name|TextInputDialog
 parameter_list|(
@@ -778,7 +778,7 @@ parameter_list|,
 name|boolean
 name|modal
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|bibEntry
 parameter_list|)
 block|{
@@ -2713,7 +2713,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importedEntries
 init|=
@@ -2750,7 +2750,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|e
 range|:
 name|importedEntries

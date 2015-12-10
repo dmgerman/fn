@@ -44,7 +44,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -103,7 +103,7 @@ decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|status
@@ -188,14 +188,14 @@ operator|=
 name|status
 expr_stmt|;
 block|}
-DECL|method|SaveException (String message, BibtexEntry entry)
+DECL|method|SaveException (String message, BibEntry entry)
 specifier|public
 name|SaveException
 parameter_list|(
 name|String
 name|message
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -211,7 +211,7 @@ operator|=
 name|entry
 expr_stmt|;
 block|}
-DECL|method|SaveException (String message, String localizedMessage, BibtexEntry entry)
+DECL|method|SaveException (String message, String localizedMessage, BibEntry entry)
 specifier|public
 name|SaveException
 parameter_list|(
@@ -221,7 +221,7 @@ parameter_list|,
 name|String
 name|localizedMessage
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -255,7 +255,7 @@ return|;
 block|}
 DECL|method|getEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|()
 block|{

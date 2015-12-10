@@ -2336,7 +2336,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|bp

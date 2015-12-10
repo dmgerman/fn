@@ -96,7 +96,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -387,17 +387,17 @@ specifier|private
 name|PositionWindow
 name|pw
 decl_stmt|;
-DECL|method|DuplicateResolverDialog (JFrame frame, BibtexEntry one, BibtexEntry two, int type)
+DECL|method|DuplicateResolverDialog (JFrame frame, BibEntry one, BibEntry two, int type)
 specifier|public
 name|DuplicateResolverDialog
 parameter_list|(
 name|JFrame
 name|frame
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|one
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|two
 parameter_list|,
 name|int
@@ -428,17 +428,17 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|DuplicateResolverDialog (JDialog frame, BibtexEntry one, BibtexEntry two, int type)
+DECL|method|DuplicateResolverDialog (JDialog frame, BibEntry one, BibEntry two, int type)
 specifier|public
 name|DuplicateResolverDialog
 parameter_list|(
 name|JDialog
 name|frame
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|one
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|two
 parameter_list|,
 name|int
@@ -469,15 +469,15 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|init (BibtexEntry one, BibtexEntry two, int type)
+DECL|method|init (BibEntry one, BibEntry two, int type)
 specifier|private
 name|void
 name|init
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|one
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|two
 parameter_list|,
 name|int
@@ -1119,7 +1119,7 @@ return|;
 block|}
 DECL|method|getMergedEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getMergedEntry
 parameter_list|()
 block|{
@@ -1130,7 +1130,7 @@ name|getMergeEntry
 argument_list|()
 return|;
 block|}
-DECL|method|resolveDuplicate (JFrame frame, BibtexEntry one, BibtexEntry two)
+DECL|method|resolveDuplicate (JFrame frame, BibEntry one, BibEntry two)
 specifier|public
 specifier|static
 name|int
@@ -1139,10 +1139,10 @@ parameter_list|(
 name|JFrame
 name|frame
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|one
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|two
 parameter_list|)
 block|{
@@ -1178,7 +1178,7 @@ name|getSelected
 argument_list|()
 return|;
 block|}
-DECL|method|resolveDuplicate (JDialog frame, BibtexEntry one, BibtexEntry two)
+DECL|method|resolveDuplicate (JDialog frame, BibEntry one, BibEntry two)
 specifier|public
 specifier|static
 name|int
@@ -1187,10 +1187,10 @@ parameter_list|(
 name|JDialog
 name|frame
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|one
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|two
 parameter_list|)
 block|{
@@ -1226,7 +1226,7 @@ name|getSelected
 argument_list|()
 return|;
 block|}
-DECL|method|resolveDuplicateInImport (JabRefFrame frame, BibtexEntry existing, BibtexEntry imported)
+DECL|method|resolveDuplicateInImport (JabRefFrame frame, BibEntry existing, BibEntry imported)
 specifier|public
 specifier|static
 name|int
@@ -1235,10 +1235,10 @@ parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|existing
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|imported
 parameter_list|)
 block|{

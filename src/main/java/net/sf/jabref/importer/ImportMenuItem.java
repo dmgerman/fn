@@ -238,7 +238,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -254,7 +254,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1215,11 +1215,11 @@ argument_list|>
 name|imports
 parameter_list|)
 block|{
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 decl_stmt|;
 name|ParserResult
@@ -1317,7 +1317,7 @@ block|}
 comment|// Merge entries:
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|pr
@@ -1390,7 +1390,7 @@ name|parserResult
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -1459,7 +1459,7 @@ expr_stmt|;
 comment|// set timestamp and owner
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries

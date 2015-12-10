@@ -256,7 +256,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -2904,7 +2904,7 @@ return|return;
 block|}
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|vec
 init|=
@@ -2915,7 +2915,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|m_basePanel
@@ -2955,12 +2955,12 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|vec
 operator|.

@@ -30,7 +30,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -53,15 +53,15 @@ name|NULL_QUERY
 init|=
 literal|null
 decl_stmt|;
-DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
+DECL|method|applyRule (String query, BibEntry bibEntry)
 name|boolean
 name|applyRule
 parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 parameter_list|)
 function_decl|;
 DECL|method|validateSearchStrings (String query)

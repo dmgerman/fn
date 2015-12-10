@@ -202,7 +202,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -218,7 +218,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -438,7 +438,7 @@ literal|null
 return|;
 block|}
 comment|/**      * Trys to add a entry for each file in the List.      *      * @param files      * @param database      * @param entryType      * @return List of unexcpected import event messages including failures.      */
-DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, EntryType entryType, boolean generateKeywordsFromPathToFile)
+DECL|method|addEntrysFromFiles (List<File> files, BibDatabase database, EntryType entryType, boolean generateKeywordsFromPathToFile)
 specifier|public
 name|List
 argument_list|<
@@ -452,7 +452,7 @@ name|File
 argument_list|>
 name|files
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|EntryType
@@ -495,7 +495,7 @@ name|importGUIMessages
 return|;
 block|}
 comment|/**      * Tries to add a entry for each file in the List.      *      * @param files      * @param database      * @param panel      * @param entryType      * @param generateKeywordsFromPathToFile      * @param changeListener      * @param importGUIMessages list of unexpected import event - Messages including      *         failures      * @return Returns The number of entries added      */
-DECL|method|addEntriesFromFiles (List<File> files, BibtexDatabase database, BasePanel panel, EntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener, List<String> importGUIMessages)
+DECL|method|addEntriesFromFiles (List<File> files, BibDatabase database, BasePanel panel, EntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener, List<String> importGUIMessages)
 specifier|public
 name|int
 name|addEntriesFromFiles
@@ -506,7 +506,7 @@ name|File
 argument_list|>
 name|files
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|BasePanel
@@ -563,7 +563,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|creator

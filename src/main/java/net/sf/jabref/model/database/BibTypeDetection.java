@@ -42,7 +42,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -62,7 +62,7 @@ specifier|public
 class|class
 name|BibTypeDetection
 block|{
-DECL|method|inferType (Collection<BibtexEntry> entries)
+DECL|method|inferType (Collection<BibEntry> entries)
 specifier|public
 specifier|static
 name|BibType
@@ -70,7 +70,7 @@ name|inferType
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|)

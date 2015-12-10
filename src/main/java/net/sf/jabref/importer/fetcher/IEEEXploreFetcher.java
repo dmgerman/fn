@@ -360,7 +360,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1259,7 +1259,7 @@ name|String
 name|text
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 while|while
@@ -1316,12 +1316,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|cleanup (BibtexEntry entry)
+DECL|method|cleanup (BibEntry entry)
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|cleanup
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -3051,14 +3051,14 @@ return|;
 block|}
 DECL|method|parseNextEntry (String allText)
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|parseNextEntry
 parameter_list|(
 name|String
 name|allText
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 literal|null
@@ -3450,7 +3450,7 @@ block|}
 name|entry
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.

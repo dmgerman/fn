@@ -342,7 +342,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -358,7 +358,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -2326,7 +2326,7 @@ block|}
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|panel
@@ -2713,12 +2713,12 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Collects file links from the pdf or ps field, and adds them to the list contained in the file field.      */
-DECL|method|doUpgradePdfPsToFile (BibtexEntry entry, NamedCompound ce)
+DECL|method|doUpgradePdfPsToFile (BibEntry entry, NamedCompound ce)
 specifier|private
 name|void
 name|doUpgradePdfPsToFile
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -2745,13 +2745,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Converts the text in 1st, 2nd, ... to real superscripts by wrapping in \textsuperscript{st}, ...      */
-DECL|method|doCleanUpSuperscripts (BibtexEntry entry, NamedCompound ce)
+DECL|method|doCleanUpSuperscripts (BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|doCleanUpSuperscripts
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -2775,13 +2775,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Removes the http://... for each DOI. Moves DOIs from URL and NOTE filed to DOI field.      */
-DECL|method|doCleanUpDOI (BibtexEntry entry, NamedCompound ce)
+DECL|method|doCleanUpDOI (BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|doCleanUpDOI
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -2800,13 +2800,13 @@ name|ce
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|doCleanUpMonth (BibtexEntry entry, NamedCompound ce)
+DECL|method|doCleanUpMonth (BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|doCleanUpMonth
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -2825,13 +2825,13 @@ name|ce
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|doCleanUpPageNumbers (BibtexEntry entry, NamedCompound ce)
+DECL|method|doCleanUpPageNumbers (BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|doCleanUpPageNumbers
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -2850,13 +2850,13 @@ name|ce
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fixWrongFileEntries (BibtexEntry entry, NamedCompound ce)
+DECL|method|fixWrongFileEntries (BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|fixWrongFileEntries
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -2875,12 +2875,12 @@ name|ce
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|doMakePathsRelative (BibtexEntry entry, NamedCompound ce)
+DECL|method|doMakePathsRelative (BibEntry entry, NamedCompound ce)
 specifier|private
 name|void
 name|doMakePathsRelative
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -2911,12 +2911,12 @@ name|ce
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|doRenamePDFs (BibtexEntry entry, NamedCompound ce)
+DECL|method|doRenamePDFs (BibEntry entry, NamedCompound ce)
 specifier|private
 name|void
 name|doRenamePDFs
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -2939,7 +2939,7 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|panel
@@ -2986,13 +2986,13 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Converts HTML code to LaTeX code      */
-DECL|method|doConvertHTML (BibtexEntry entry, NamedCompound ce)
+DECL|method|doConvertHTML (BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|doConvertHTML
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -3012,13 +3012,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Converts Unicode characters to LaTeX code      */
-DECL|method|doConvertUnicode (BibtexEntry entry, NamedCompound ce)
+DECL|method|doConvertUnicode (BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|doConvertUnicode
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -3038,13 +3038,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Adds curly brackets {} around keywords      */
-DECL|method|doConvertCase (BibtexEntry entry, NamedCompound ce)
+DECL|method|doConvertCase (BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|doConvertCase
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -3063,13 +3063,13 @@ name|ce
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|doConvertUnits (BibtexEntry entry, NamedCompound ce)
+DECL|method|doConvertUnits (BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|doConvertUnits
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -3088,13 +3088,13 @@ name|ce
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|doConvertLaTeX (BibtexEntry entry, NamedCompound ce)
+DECL|method|doConvertLaTeX (BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|doConvertLaTeX
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -3114,13 +3114,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Converts to BibLatex format      */
-DECL|method|doConvertToBiblatex (BibtexEntry entry, NamedCompound ce)
+DECL|method|doConvertToBiblatex (BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|doConvertToBiblatex
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -3140,13 +3140,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Format dates correctly (yyyy-mm-dd or yyyy-mm)      */
-DECL|method|doCleanUpDate (BibtexEntry entry, NamedCompound ce)
+DECL|method|doCleanUpDate (BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|doCleanUpDate
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound
@@ -3166,7 +3166,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Runs the field formatter on the entry and records the change.      */
-DECL|method|doCleanup (Cleaner cleaner, BibtexEntry entry, NamedCompound ce)
+DECL|method|doCleanup (Cleaner cleaner, BibEntry entry, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
@@ -3175,7 +3175,7 @@ parameter_list|(
 name|Cleaner
 name|cleaner
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|NamedCompound

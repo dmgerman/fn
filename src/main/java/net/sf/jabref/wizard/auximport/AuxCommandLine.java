@@ -60,7 +60,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -113,17 +113,17 @@ decl_stmt|;
 DECL|field|bib
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|bib
 decl_stmt|;
-DECL|method|AuxCommandLine (String auxFileName, BibtexDatabase refDBase)
+DECL|method|AuxCommandLine (String auxFileName, BibDatabase refDBase)
 specifier|public
 name|AuxCommandLine
 parameter_list|(
 name|String
 name|auxFileName
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|refDBase
 parameter_list|)
 block|{
@@ -145,11 +145,11 @@ expr_stmt|;
 block|}
 DECL|method|perform ()
 specifier|public
-name|BibtexDatabase
+name|BibDatabase
 name|perform
 parameter_list|()
 block|{
-name|BibtexDatabase
+name|BibDatabase
 name|back
 init|=
 literal|null

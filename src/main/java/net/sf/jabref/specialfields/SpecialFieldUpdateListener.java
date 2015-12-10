@@ -68,7 +68,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -116,11 +116,11 @@ throws|throws
 name|PropertyVetoException
 block|{
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|(
-name|BibtexEntry
+name|BibEntry
 operator|)
 name|e
 operator|.

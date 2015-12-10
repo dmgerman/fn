@@ -150,11 +150,11 @@ name|void
 name|testDefaultConstructor
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 comment|// we have to use `getType("misc")` in the case of biblatex mode
@@ -206,11 +206,11 @@ name|void
 name|allFieldsPresentDefault
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"id"
 argument_list|,
@@ -315,11 +315,11 @@ name|void
 name|allFieldsPresentOr
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"id"
 argument_list|,
@@ -418,11 +418,11 @@ name|void
 name|hasAllRequiredFields
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"id"
 argument_list|,
@@ -500,11 +500,11 @@ name|void
 name|isNullOrEmptyCiteKey
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"id"
 argument_list|,
@@ -527,7 +527,7 @@ name|e
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -550,7 +550,7 @@ name|e
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -573,7 +573,7 @@ name|e
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -594,7 +594,7 @@ name|e
 operator|.
 name|clearField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -741,7 +741,7 @@ name|void
 name|testKeywordMethods
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 name|BibtexParser
@@ -908,11 +908,11 @@ name|NullPointerException
 name|asExpected
 parameter_list|)
 block|{          }
-name|BibtexEntry
+name|BibEntry
 name|be2
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -1004,11 +1004,11 @@ name|void
 name|testGroupAndSearchHits
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 name|be
@@ -1088,11 +1088,11 @@ name|void
 name|testCiteKeyAndID
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 name|Assert
@@ -1118,7 +1118,7 @@ name|be
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,

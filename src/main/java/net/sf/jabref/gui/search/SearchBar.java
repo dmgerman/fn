@@ -238,7 +238,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -704,7 +704,7 @@ argument_list|()
 operator|.
 name|filter
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|::
 name|isSearchHit
 argument_list|)

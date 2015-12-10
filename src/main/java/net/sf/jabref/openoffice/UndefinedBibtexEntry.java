@@ -28,7 +28,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -57,7 +57,7 @@ DECL|class|UndefinedBibtexEntry
 class|class
 name|UndefinedBibtexEntry
 extends|extends
-name|BibtexEntry
+name|BibEntry
 block|{
 DECL|field|key
 specifier|private

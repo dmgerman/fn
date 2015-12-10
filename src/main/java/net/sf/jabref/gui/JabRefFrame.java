@@ -646,7 +646,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -9472,7 +9472,7 @@ else|else
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -10556,12 +10556,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addTab (BibtexDatabase db, File file, MetaData metaData, Charset encoding, boolean raisePanel)
+DECL|method|addTab (BibDatabase db, File file, MetaData metaData, Charset encoding, boolean raisePanel)
 specifier|public
 name|BasePanel
 name|addTab
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|File
@@ -11445,7 +11445,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *      * @param panel     The BasePanel to add to.      * @param entries   The entries to add.      * @param openInNew Should the entries be imported into a new database?      */
-DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, final boolean openInNew)
+DECL|method|addImportedEntries (final BasePanel panel, final List<BibEntry> entries, final boolean openInNew)
 specifier|private
 name|void
 name|addImportedEntries
@@ -11457,7 +11457,7 @@ parameter_list|,
 specifier|final
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,

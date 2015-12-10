@@ -194,7 +194,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1684,7 +1684,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|openExternalFileUnknown (JabRefFrame frame, BibtexEntry entry, MetaData metaData, String link, UnknownExternalFileType fileType)
+DECL|method|openExternalFileUnknown (JabRefFrame frame, BibEntry entry, MetaData metaData, String link, UnknownExternalFileType fileType)
 specifier|public
 specifier|static
 name|boolean
@@ -1693,7 +1693,7 @@ parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|MetaData

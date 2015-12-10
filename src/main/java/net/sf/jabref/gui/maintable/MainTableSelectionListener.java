@@ -220,7 +220,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -428,7 +428,7 @@ name|MainTableSelectionListener
 implements|implements
 name|ListEventListener
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 implements|,
 name|MouseListener
@@ -461,7 +461,7 @@ specifier|private
 specifier|final
 name|EventList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|tableRows
 decl_stmt|;
@@ -782,14 +782,14 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|listChanged (ListEvent<BibtexEntry> e)
+DECL|method|listChanged (ListEvent<BibEntry> e)
 specifier|public
 name|void
 name|listChanged
 parameter_list|(
 name|ListEvent
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|e
 parameter_list|)
@@ -804,7 +804,7 @@ return|return;
 block|}
 name|EventList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|selected
 init|=
@@ -888,11 +888,11 @@ condition|)
 block|{
 comment|// Ok, we have a single new entry that has been selected. Now decide what to do with it:
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|toShow
 init|=
 operator|(
-name|BibtexEntry
+name|BibEntry
 operator|)
 name|newSelected
 decl_stmt|;
@@ -1070,13 +1070,13 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|updatePreview (final BibtexEntry toShow, final boolean changedPreview)
+DECL|method|updatePreview (final BibEntry toShow, final boolean changedPreview)
 specifier|private
 name|void
 name|updatePreview
 parameter_list|(
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|toShow
 parameter_list|,
 specifier|final
@@ -1094,13 +1094,13 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updatePreview (final BibtexEntry toShow, final boolean changedPreview, int repeats)
+DECL|method|updatePreview (final BibEntry toShow, final boolean changedPreview, int repeats)
 specifier|private
 name|void
 name|updatePreview
 parameter_list|(
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|toShow
 parameter_list|,
 specifier|final
@@ -1162,7 +1162,7 @@ return|return;
 block|}
 name|EventList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|list
 init|=
@@ -1293,12 +1293,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|editSignalled (BibtexEntry entry)
+DECL|method|editSignalled (BibEntry entry)
 specifier|public
 name|void
 name|editSignalled
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -1538,7 +1538,7 @@ operator|==
 literal|2
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|toShow
 init|=
 name|tableRows
@@ -1678,7 +1678,7 @@ return|return;
 comment|// No icon here, so we do nothing.
 block|}
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|tableRows
@@ -2241,7 +2241,7 @@ name|MainTableColumn
 name|column
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|tableRows

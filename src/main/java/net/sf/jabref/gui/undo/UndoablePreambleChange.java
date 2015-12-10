@@ -56,7 +56,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -91,7 +91,7 @@ block|{
 DECL|field|base
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|base
 decl_stmt|;
 DECL|field|oldValue
@@ -112,11 +112,11 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|method|UndoablePreambleChange (BibtexDatabase base, BasePanel panel, String oldValue, String newValue)
+DECL|method|UndoablePreambleChange (BibDatabase base, BasePanel panel, String oldValue, String newValue)
 specifier|public
 name|UndoablePreambleChange
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|,
 name|BasePanel

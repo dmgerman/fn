@@ -34,7 +34,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -110,7 +110,7 @@ annotation|@
 name|Override
 DECL|method|createBibtexEntry (File file)
 specifier|protected
-name|BibtexEntry
+name|BibEntry
 name|createBibtexEntry
 parameter_list|(
 name|File
@@ -132,7 +132,7 @@ return|;
 block|}
 return|return
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 return|;
 block|}

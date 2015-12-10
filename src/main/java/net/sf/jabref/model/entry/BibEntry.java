@@ -256,15 +256,15 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
 begin_class
-DECL|class|BibtexEntry
+DECL|class|BibEntry
 specifier|public
 class|class
-name|BibtexEntry
+name|BibEntry
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -277,7 +277,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|class
 argument_list|)
@@ -368,9 +368,9 @@ specifier|private
 name|boolean
 name|changed
 decl_stmt|;
-DECL|method|BibtexEntry ()
+DECL|method|BibEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 parameter_list|()
 block|{
 name|this
@@ -382,9 +382,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BibtexEntry (String id)
+DECL|method|BibEntry (String id)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 parameter_list|(
 name|String
 name|id
@@ -396,16 +396,16 @@ name|id
 argument_list|,
 name|EntryTypes
 operator|.
-name|getBibtexEntryType
+name|getTypeOrDefault
 argument_list|(
 literal|"misc"
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BibtexEntry (String id, EntryType type)
+DECL|method|BibEntry (String id, EntryType type)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 parameter_list|(
 name|String
 name|id
@@ -496,12 +496,12 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns true if this entry contains the fields it needs to be      * complete.      */
-DECL|method|hasAllRequiredFields (BibtexDatabase database)
+DECL|method|hasAllRequiredFields (BibDatabase database)
 specifier|public
 name|boolean
 name|hasAllRequiredFields
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -627,7 +627,7 @@ try|try
 block|{
 name|firePropertyChangedEvent
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|ID_FIELD
 argument_list|,
@@ -1303,7 +1303,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|ID_FIELD
 operator|.
@@ -1415,7 +1415,7 @@ literal|true
 expr_stmt|;
 if|if
 condition|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|ID_FIELD
 operator|.
@@ -1484,7 +1484,7 @@ throw|;
 block|}
 block|}
 comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param allFields An array of field names to be checked.      * @param database  The database in which to look up crossref'd entries, if any. This      *                  argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
-DECL|method|allFieldsPresent (String[] allFields, BibtexDatabase database)
+DECL|method|allFieldsPresent (String[] allFields, BibDatabase database)
 name|boolean
 name|allFieldsPresent
 parameter_list|(
@@ -1492,7 +1492,7 @@ name|String
 index|[]
 name|allFields
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -1560,7 +1560,7 @@ else|else
 block|{
 if|if
 condition|(
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1584,7 +1584,7 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|allFieldsPresent (List<String> allFields, BibtexDatabase database)
+DECL|method|allFieldsPresent (List<String> allFields, BibDatabase database)
 name|boolean
 name|allFieldsPresent
 parameter_list|(
@@ -1594,7 +1594,7 @@ name|String
 argument_list|>
 name|allFields
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -1619,7 +1619,7 @@ name|database
 argument_list|)
 return|;
 block|}
-DECL|method|atLeastOnePresent (String[] fieldsToCheck, BibtexDatabase database)
+DECL|method|atLeastOnePresent (String[] fieldsToCheck, BibDatabase database)
 specifier|private
 name|boolean
 name|atLeastOnePresent
@@ -1628,7 +1628,7 @@ name|String
 index|[]
 name|fieldsToCheck
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -1651,7 +1651,7 @@ decl_stmt|;
 name|String
 name|value
 init|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1766,11 +1766,11 @@ name|Object
 name|clone
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|clone
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|id
 argument_list|,

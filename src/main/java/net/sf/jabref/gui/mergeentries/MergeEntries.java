@@ -176,7 +176,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -422,23 +422,23 @@ decl_stmt|;
 DECL|field|mergedEntry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|mergedEntry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 DECL|field|one
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|one
 decl_stmt|;
 DECL|field|two
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|two
 decl_stmt|;
 DECL|field|jta
@@ -509,14 +509,14 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Constructor taking two entries      *      * @param bOne First entry      * @param bTwo Second entry      */
-DECL|method|MergeEntries (BibtexEntry bOne, BibtexEntry bTwo)
+DECL|method|MergeEntries (BibEntry bOne, BibEntry bTwo)
 specifier|public
 name|MergeEntries
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bOne
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|bTwo
 parameter_list|)
 block|{
@@ -533,14 +533,14 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Constructor with optional column captions for the two entries      *      * @param bOne First entry      * @param bTwo Second entry      * @param headingOne Heading for first entry      * @param headingTwo Heading for second entry      */
-DECL|method|MergeEntries (BibtexEntry bOne, BibtexEntry bTwo, String headingOne, String headingTwo)
+DECL|method|MergeEntries (BibEntry bOne, BibEntry bTwo, String headingOne, String headingTwo)
 specifier|public
 name|MergeEntries
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bOne
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|bTwo
 parameter_list|,
 name|String
@@ -2627,7 +2627,7 @@ block|}
 comment|/**      * @return Merged BibtexEntry      */
 DECL|method|getMergeEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getMergeEntry
 parameter_list|()
 block|{

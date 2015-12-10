@@ -30,7 +30,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -72,7 +72,7 @@ name|AuthorYearTitleComparator
 implements|implements
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 DECL|field|authComp
@@ -113,15 +113,15 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|compare (BibtexEntry o1, BibtexEntry o2)
+DECL|method|compare (BibEntry o1, BibEntry o2)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|o1
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|o2
 parameter_list|)
 block|{

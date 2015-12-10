@@ -124,7 +124,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -140,7 +140,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -210,7 +210,7 @@ name|String
 argument_list|,
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 argument_list|>
 name|dupes
@@ -250,7 +250,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|foundKeys
 init|=
@@ -259,7 +259,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|db
 init|=
 name|panel
@@ -269,7 +269,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|db
@@ -357,7 +357,7 @@ block|{
 comment|// Construct a list of entries for this key:
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|al
 init|=
@@ -434,7 +434,7 @@ parameter_list|()
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|toGenerateFor
 init|=
@@ -570,7 +570,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|toGenerateFor

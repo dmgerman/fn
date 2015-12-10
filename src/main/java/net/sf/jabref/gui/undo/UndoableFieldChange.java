@@ -100,7 +100,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -135,7 +135,7 @@ decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|field
@@ -156,11 +156,11 @@ specifier|final
 name|String
 name|newValue
 decl_stmt|;
-DECL|method|UndoableFieldChange (BibtexEntry entry, String field, String oldValue, String newValue)
+DECL|method|UndoableFieldChange (BibEntry entry, String field, String oldValue, String newValue)
 specifier|public
 name|UndoableFieldChange
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String

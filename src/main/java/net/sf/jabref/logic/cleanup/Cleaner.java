@@ -50,7 +50,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -61,14 +61,14 @@ interface|interface
 name|Cleaner
 block|{
 comment|/**      * Cleanup the entry.      */
-DECL|method|cleanup (BibtexEntry entry)
+DECL|method|cleanup (BibEntry entry)
 name|List
 argument_list|<
 name|FieldChange
 argument_list|>
 name|cleanup
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 function_decl|;

@@ -182,7 +182,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -198,7 +198,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -225,17 +225,17 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|EntryChange (BibtexEntry memEntry, BibtexEntry tmpEntry, BibtexEntry diskEntry)
+DECL|method|EntryChange (BibEntry memEntry, BibEntry tmpEntry, BibEntry diskEntry)
 specifier|public
 name|EntryChange
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|memEntry
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|tmpEntry
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|diskEntry
 parameter_list|)
 block|{
@@ -548,7 +548,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
 name|makeChange
@@ -556,7 +556,7 @@ parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 name|NamedCompound
@@ -657,12 +657,12 @@ name|Change
 block|{
 DECL|field|entry
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|tmpEntry
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|tmpEntry
 decl_stmt|;
 DECL|field|field
@@ -705,17 +705,17 @@ argument_list|(
 name|tp
 argument_list|)
 decl_stmt|;
-DECL|method|FieldChange (String field, BibtexEntry memEntry, BibtexEntry tmpEntry, String inMem, String onTmp, String onDisk)
+DECL|method|FieldChange (String field, BibEntry memEntry, BibEntry tmpEntry, String inMem, String onTmp, String onDisk)
 specifier|public
 name|FieldChange
 parameter_list|(
 name|String
 name|field
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|memEntry
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|tmpEntry
 parameter_list|,
 name|String
@@ -998,7 +998,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
 name|makeChange
@@ -1006,7 +1006,7 @@ parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 name|NamedCompound

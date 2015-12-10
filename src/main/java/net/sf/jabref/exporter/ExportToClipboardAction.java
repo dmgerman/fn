@@ -180,7 +180,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -196,7 +196,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -263,7 +263,7 @@ decl_stmt|;
 DECL|field|database
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 comment|/**      * written by run() and read by update()      */
@@ -272,14 +272,14 @@ specifier|private
 name|String
 name|message
 decl_stmt|;
-DECL|method|ExportToClipboardAction (JabRefFrame frame, BibtexDatabase database)
+DECL|method|ExportToClipboardAction (JabRefFrame frame, BibDatabase database)
 specifier|public
 name|ExportToClipboardAction
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -651,7 +651,7 @@ operator|.
 name|deleteOnExit
 argument_list|()
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -677,7 +677,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|bes

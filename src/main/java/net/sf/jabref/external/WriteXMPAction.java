@@ -238,7 +238,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -254,7 +254,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -326,13 +326,13 @@ name|panel
 decl_stmt|;
 DECL|field|entries
 specifier|private
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 decl_stmt|;
 DECL|field|database
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|optDiag
@@ -411,7 +411,7 @@ condition|)
 block|{
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|var
 init|=
@@ -427,7 +427,7 @@ operator|.
 name|toArray
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|var
 operator|.
@@ -590,7 +590,7 @@ return|return;
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries

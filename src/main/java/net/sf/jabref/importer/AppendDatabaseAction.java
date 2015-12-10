@@ -306,7 +306,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -322,7 +322,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -769,7 +769,7 @@ parameter_list|)
 throws|throws
 name|KeyCollisionException
 block|{
-name|BibtexDatabase
+name|BibDatabase
 name|fromDatabase
 init|=
 name|pr
@@ -779,7 +779,7 @@ argument_list|()
 decl_stmt|;
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|appendedEntries
 init|=
@@ -790,7 +790,7 @@ argument_list|()
 decl_stmt|;
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|originalEntries
 init|=
@@ -799,7 +799,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|panel
@@ -807,7 +807,7 @@ operator|.
 name|database
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|originalEntry
 decl_stmt|;
 name|NamedCompound
@@ -886,11 +886,11 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 operator|(
-name|BibtexEntry
+name|BibEntry
 operator|)
 name|originalEntry
 operator|.
@@ -1065,7 +1065,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|appendedEntry
 range|:
 name|appendedEntries
@@ -1103,7 +1103,7 @@ decl_stmt|;
 name|ExplicitGroup
 name|group
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 for|for

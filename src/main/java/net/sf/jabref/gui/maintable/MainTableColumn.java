@@ -40,7 +40,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -56,7 +56,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -137,7 +137,7 @@ specifier|private
 specifier|final
 name|Optional
 argument_list|<
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|database
 decl_stmt|;
@@ -189,7 +189,7 @@ name|empty
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|MainTableColumn (String columnName, String[] bibtexFields, BibtexDatabase database)
+DECL|method|MainTableColumn (String columnName, String[] bibtexFields, BibDatabase database)
 specifier|public
 name|MainTableColumn
 parameter_list|(
@@ -200,7 +200,7 @@ name|String
 index|[]
 name|bibtexFields
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -470,12 +470,12 @@ literal|false
 return|;
 comment|// Overridden in SpecialMainTableColumns for file filter columns
 block|}
-DECL|method|getColumnValue (BibtexEntry entry)
+DECL|method|getColumnValue (BibEntry entry)
 specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -510,7 +510,7 @@ name|field
 operator|.
 name|equals
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|TYPE_HEADER
 argument_list|)

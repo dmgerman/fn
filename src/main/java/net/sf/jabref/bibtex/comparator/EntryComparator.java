@@ -60,7 +60,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -86,7 +86,7 @@ name|EntryComparator
 implements|implements
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 DECL|field|sortField
@@ -118,11 +118,11 @@ specifier|private
 specifier|final
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|next
 decl_stmt|;
-DECL|method|EntryComparator (boolean binary, boolean desc, String field, Comparator<BibtexEntry> next)
+DECL|method|EntryComparator (boolean binary, boolean desc, String field, Comparator<BibEntry> next)
 specifier|public
 name|EntryComparator
 parameter_list|(
@@ -137,7 +137,7 @@ name|field
 parameter_list|,
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|next
 parameter_list|)
@@ -230,15 +230,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
+DECL|method|compare (BibEntry e1, BibEntry e2)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|e1
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|e2
 parameter_list|)
 throws|throws
@@ -423,7 +423,7 @@ name|sortField
 operator|.
 name|equals
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|TYPE_HEADER
 argument_list|)
@@ -783,16 +783,16 @@ return|;
 comment|// If still equal, we use the unique IDs.
 block|}
 block|}
-DECL|method|idCompare (BibtexEntry b1, BibtexEntry b2)
+DECL|method|idCompare (BibEntry b1, BibEntry b2)
 specifier|private
 specifier|static
 name|int
 name|idCompare
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|b1
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|b2
 parameter_list|)
 block|{

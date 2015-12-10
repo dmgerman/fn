@@ -26,7 +26,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -126,7 +126,7 @@ name|LayoutEntryTest
 block|{
 DECL|field|mBTE
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|mBTE
 decl_stmt|;
 comment|/**      * Initialize Preferences.      */
@@ -176,7 +176,7 @@ comment|// create Bibtext Entry
 name|mBTE
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"testid"
 argument_list|)
@@ -373,7 +373,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// helper Methods
-DECL|method|layout (String layoutFile, BibtexEntry entry, ArrayList<String> wordsToHighlight)
+DECL|method|layout (String layoutFile, BibEntry entry, ArrayList<String> wordsToHighlight)
 specifier|public
 name|String
 name|layout
@@ -381,7 +381,7 @@ parameter_list|(
 name|String
 name|layoutFile
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|ArrayList

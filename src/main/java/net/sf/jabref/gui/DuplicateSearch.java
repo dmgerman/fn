@@ -184,7 +184,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -212,7 +212,7 @@ name|panel
 decl_stmt|;
 DECL|field|bes
 specifier|private
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 decl_stmt|;
@@ -221,7 +221,7 @@ specifier|private
 specifier|final
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 index|[]
 argument_list|>
 name|duplicates
@@ -318,7 +318,7 @@ block|}
 name|bes
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|keys
 operator|.
@@ -390,7 +390,7 @@ decl_stmt|;
 specifier|final
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|toRemove
 init|=
@@ -402,7 +402,7 @@ decl_stmt|;
 specifier|final
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|toAdd
 init|=
@@ -466,7 +466,7 @@ block|}
 else|else
 comment|// duplicates found
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|be
 init|=
@@ -784,7 +784,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|toRemove
@@ -840,7 +840,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|toAdd
@@ -1036,7 +1036,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[]
 block|{
 name|bes
@@ -1130,13 +1130,13 @@ decl_stmt|;
 DECL|field|one
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|one
 decl_stmt|;
 DECL|field|two
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|two
 decl_stmt|;
 DECL|field|dialogType
@@ -1147,20 +1147,20 @@ name|dialogType
 decl_stmt|;
 DECL|field|merged
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|merged
 decl_stmt|;
-DECL|method|DuplicateCallBack (JabRefFrame frame, BibtexEntry one, BibtexEntry two, int dialogType)
+DECL|method|DuplicateCallBack (JabRefFrame frame, BibEntry one, BibEntry two, int dialogType)
 specifier|public
 name|DuplicateCallBack
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|one
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|two
 parameter_list|,
 name|int
@@ -1204,7 +1204,7 @@ return|;
 block|}
 DECL|method|getMergedEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getMergedEntry
 parameter_list|()
 block|{

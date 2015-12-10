@@ -168,7 +168,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -184,7 +184,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -3928,12 +3928,12 @@ specifier|private
 name|String
 name|preamble
 decl_stmt|;
-DECL|method|run (BibtexDatabase db)
+DECL|method|run (BibDatabase db)
 specifier|public
 name|String
 name|run
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|)
 block|{
@@ -3954,14 +3954,14 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|run (Collection<BibtexEntry> bibtex)
+DECL|method|run (Collection<BibEntry> bibtex)
 specifier|public
 name|String
 name|run
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibtex
 parameter_list|)
@@ -3996,7 +3996,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|bibtex
@@ -5570,11 +5570,11 @@ specifier|static
 class|class
 name|BstEntry
 block|{
-DECL|method|BstEntry (BibtexEntry e)
+DECL|method|BstEntry (BibEntry e)
 specifier|public
 name|BstEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|e
 parameter_list|)
 block|{
@@ -5587,7 +5587,7 @@ expr_stmt|;
 block|}
 DECL|field|entry
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|localStrings
@@ -5652,7 +5652,7 @@ return|;
 block|}
 DECL|method|getBibtexEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getBibtexEntry
 parameter_list|()
 block|{

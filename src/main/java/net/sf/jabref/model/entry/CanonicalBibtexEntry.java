@@ -95,13 +95,13 @@ class|class
 name|CanonicalBibtexEntry
 block|{
 comment|/**      * This returns a canonical BibTeX serialization. Special characters such as "{" or "&" are NOT escaped, but written      * as is      *      * Serializes all fields, even the JabRef internal ones. Does NOT serialize "KEY_FIELD" as field, but as key      */
-DECL|method|getCanonicalRepresentation (BibtexEntry e)
+DECL|method|getCanonicalRepresentation (BibEntry e)
 specifier|public
 specifier|static
 name|String
 name|getCanonicalRepresentation
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|e
 parameter_list|)
 block|{
@@ -207,7 +207,7 @@ name|fieldName
 operator|.
 name|equals
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)

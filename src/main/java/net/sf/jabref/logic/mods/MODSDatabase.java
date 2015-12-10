@@ -74,7 +74,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -90,7 +90,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -206,11 +206,11 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|MODSDatabase (BibtexDatabase bibtex)
+DECL|method|MODSDatabase (BibDatabase bibtex)
 specifier|public
 name|MODSDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|bibtex
 parameter_list|)
 block|{
@@ -225,11 +225,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MODSDatabase (BibtexDatabase bibtex, Set<String> keySet)
+DECL|method|MODSDatabase (BibDatabase bibtex, Set<String> keySet)
 specifier|public
 name|MODSDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|bibtex
 parameter_list|,
 name|Set
@@ -262,12 +262,12 @@ name|keySet
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addEntries (BibtexDatabase database, Set<String> keySet)
+DECL|method|addEntries (BibDatabase database, Set<String> keySet)
 specifier|private
 name|void
 name|addEntries
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|Set
@@ -292,7 +292,7 @@ range|:
 name|keySet
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|database

@@ -112,7 +112,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -162,7 +162,7 @@ block|{      }
 comment|/**      * Convert a JSONObject containing a bibJSON entry to a BibtexEntry      *      * @param bibJsonEntry The JSONObject to convert      * @return the converted BibtexEntry      */
 DECL|method|BibJSONtoBibtex (JSONObject bibJsonEntry)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|BibJSONtoBibtex
 parameter_list|(
 name|JSONObject
@@ -197,11 +197,11 @@ block|,
 literal|"volume"
 block|}
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 name|entry
@@ -895,7 +895,7 @@ comment|/**      * Convert a JSONObject obtained from http://api.springer.com/me
 DECL|method|SpringerJSONtoBibtex (JSONObject springerJsonEntry)
 specifier|public
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|SpringerJSONtoBibtex
 parameter_list|(
 name|JSONObject
@@ -923,11 +923,11 @@ block|,
 literal|"publisher"
 block|}
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 name|String

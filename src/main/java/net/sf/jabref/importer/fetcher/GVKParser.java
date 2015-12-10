@@ -144,7 +144,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -292,7 +292,7 @@ DECL|method|parseEntries (InputStream is)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|parseEntries
 parameter_list|(
@@ -340,7 +340,7 @@ DECL|method|parseEntries (Document content)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|parseEntries
 parameter_list|(
@@ -350,7 +350,7 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|result
 init|=
@@ -461,7 +461,7 @@ return|;
 block|}
 DECL|method|parseEntry (Element e)
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|parseEntry
 parameter_list|(
 name|Element
@@ -1756,11 +1756,11 @@ comment|// FIXME: online only available in Biblatex
 comment|//entryType = "online";
 block|}
 comment|/*          * Wahrscheinlichkeit, dass ZDB-ID          * vorhanden ist, ist grÃ¶Ãer als ISBN bei          * BuchbeitrÃ¤gen. Daher bei As?-SÃ¤tzen am besten immer          * dann @incollection annehmen, wenn weder ISBN noch          * ZDB-ID vorhanden sind.          */
-name|BibtexEntry
+name|BibEntry
 name|result
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.

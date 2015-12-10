@@ -170,7 +170,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -444,11 +444,11 @@ name|next
 argument_list|()
 condition|)
 block|{
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 decl_stmt|;
 comment|// Find entry type IDs and their mappings to type names:
@@ -607,7 +607,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -653,11 +653,11 @@ argument_list|(
 literal|"entries_id"
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.
@@ -681,7 +681,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -982,7 +982,7 @@ literal|"';"
 argument_list|)
 return|;
 block|}
-DECL|method|importGroupsTree (MetaData metaData, HashMap<String, BibtexEntry> entries, Connection conn, String database_id)
+DECL|method|importGroupsTree (MetaData metaData, HashMap<String, BibEntry> entries, Connection conn, String database_id)
 specifier|private
 name|void
 name|importGroupsTree
@@ -994,7 +994,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,

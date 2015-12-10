@@ -30,7 +30,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -60,7 +60,7 @@ block|}
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|type
@@ -72,20 +72,20 @@ decl_stmt|;
 DECL|field|source
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|source
 decl_stmt|;
-DECL|method|DatabaseChangeEvent (BibtexDatabase source, ChangeType type, BibtexEntry entry)
+DECL|method|DatabaseChangeEvent (BibDatabase source, ChangeType type, BibEntry entry)
 specifier|public
 name|DatabaseChangeEvent
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|source
 parameter_list|,
 name|ChangeType
 name|type
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -110,7 +110,7 @@ expr_stmt|;
 block|}
 DECL|method|getSource ()
 specifier|public
-name|BibtexDatabase
+name|BibDatabase
 name|getSource
 parameter_list|()
 block|{
@@ -120,7 +120,7 @@ return|;
 block|}
 DECL|method|getEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|()
 block|{

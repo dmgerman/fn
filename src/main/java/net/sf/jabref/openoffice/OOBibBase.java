@@ -316,7 +316,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -332,7 +332,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1610,21 +1610,21 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * This method inserts a cite marker in the text for the given BibtexEntry,      * and may refresh the bibliography.      * @param entries The entries to cite.      * @param database The database the entry belongs to.      * @param style The bibliography style we are using.      * @param inParenthesis Indicates whether it is an in-text citation or a citation in parenthesis.      *   This is not relevant if numbered citations are used.      * @param withText Indicates whether this should be a normal citation (true) or an empty      *   (invisible) citation (false).      * @param sync Indicates whether the reference list should be refreshed.      * @throws Exception      */
-DECL|method|insertEntry (BibtexEntry[] entries, BibtexDatabase database, List<BibtexDatabase> allBases, OOBibStyle style, boolean inParenthesis, boolean withText, String pageInfo, boolean sync)
+DECL|method|insertEntry (BibEntry[] entries, BibDatabase database, List<BibDatabase> allBases, OOBibStyle style, boolean inParenthesis, boolean withText, String pageInfo, boolean sync)
 specifier|public
 name|void
 name|insertEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|List
 argument_list|<
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|allBases
 parameter_list|,
@@ -1722,7 +1722,7 @@ name|i
 operator|++
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entries
@@ -2069,7 +2069,7 @@ throw|;
 block|}
 block|}
 comment|/**      * Refresh all cite markers in the document.      * @param databases The databases to get entries from.      * @param style The bibliography style to use.      * @return A list of those referenced BibTeX keys that could not be resolved.      * @throws Exception      */
-DECL|method|refreshCiteMarkers (List<BibtexDatabase> databases, OOBibStyle style)
+DECL|method|refreshCiteMarkers (List<BibDatabase> databases, OOBibStyle style)
 specifier|public
 name|List
 argument_list|<
@@ -2079,7 +2079,7 @@ name|refreshCiteMarkers
 parameter_list|(
 name|List
 argument_list|<
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|databases
 parameter_list|,
@@ -2229,7 +2229,7 @@ return|return
 name|names
 return|;
 block|}
-DECL|method|refreshCiteMarkersInternal (List<BibtexDatabase> databases, OOBibStyle style)
+DECL|method|refreshCiteMarkersInternal (List<BibDatabase> databases, OOBibStyle style)
 specifier|private
 name|List
 argument_list|<
@@ -2239,7 +2239,7 @@ name|refreshCiteMarkersInternal
 parameter_list|(
 name|List
 argument_list|<
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|databases
 parameter_list|,
@@ -2262,7 +2262,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|linkSourceBase
 init|=
@@ -2273,9 +2273,9 @@ argument_list|()
 decl_stmt|;
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|entries
 init|=
@@ -2326,9 +2326,9 @@ comment|// We need to sort the reference marks according to the sorting of the b
 comment|// entries:
 name|SortedMap
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|newMap
 init|=
@@ -2345,9 +2345,9 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|bibtexEntryBibtexDatabaseEntry
 range|:
@@ -2385,7 +2385,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -2650,12 +2650,12 @@ index|]
 operator|=
 name|keys
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|cEntries
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|keys
 operator|.
@@ -2679,7 +2679,7 @@ name|j
 operator|++
 control|)
 block|{
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|linkSourceBase
@@ -3772,12 +3772,12 @@ operator|.
 name|length
 index|]
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|cEntries
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|bibtexKeys
 index|[
@@ -3899,7 +3899,7 @@ name|needsChange
 operator|=
 literal|true
 expr_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|linkSourceBase
@@ -3969,7 +3969,7 @@ name|needsChange
 operator|=
 literal|true
 expr_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|linkSourceBase
@@ -4026,7 +4026,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|linkSourceBase
@@ -4360,7 +4360,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -4685,14 +4685,14 @@ name|names
 return|;
 comment|/*final XTextRangeCompare compare = (XTextRangeCompare) UnoRuntime.queryInterface                 (XTextRangeCompare.class, text);         Arrays.sort(names, new Comparator<String>() {             public int compare(String o1, String o2) {                 try {                     XTextRange r1 = ((XTextContent) UnoRuntime.queryInterface                             (XTextContent.class, nameAccess.getByName(o1))).getAnchor();                     XTextRange r2 = ((XTextContent) UnoRuntime.queryInterface                             (XTextContent.class, nameAccess.getByName(o2))).getAnchor();                      try {                         return compare.compareRegionStarts(r2, r1);                     } catch (com.sun.star.lang.IllegalArgumentException ex) {                         // problem comparing reference marks in different areas (text, table, etc.)                         return 0;                     }                 } catch (Exception ex) {                     ex.printStackTrace();                     return 0;                 }             }         });         return names;*/
 block|}
-DECL|method|rebuildBibTextSection (List<BibtexDatabase> databases, OOBibStyle style)
+DECL|method|rebuildBibTextSection (List<BibDatabase> databases, OOBibStyle style)
 specifier|public
 name|void
 name|rebuildBibTextSection
 parameter_list|(
 name|List
 argument_list|<
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|databases
 parameter_list|,
@@ -4715,7 +4715,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|linkSourceBase
 init|=
@@ -4726,9 +4726,9 @@ argument_list|()
 decl_stmt|;
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|entries
 init|=
@@ -4772,9 +4772,9 @@ else|else
 block|{
 name|SortedMap
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|newMap
 init|=
@@ -4791,9 +4791,9 @@ name|Map
 operator|.
 name|Entry
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|bibtexEntryBibtexDatabaseEntry
 range|:
@@ -4923,19 +4923,19 @@ return|return
 name|name
 return|;
 block|}
-DECL|method|findCitedEntries (List<BibtexDatabase> databases, List<String> keys, HashMap<String, BibtexDatabase> linkSourceBase)
+DECL|method|findCitedEntries (List<BibDatabase> databases, List<String> keys, HashMap<String, BibDatabase> linkSourceBase)
 specifier|private
 name|LinkedHashMap
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|findCitedEntries
 parameter_list|(
 name|List
 argument_list|<
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|databases
 parameter_list|,
@@ -4949,16 +4949,16 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|linkSourceBase
 parameter_list|)
 block|{
 name|LinkedHashMap
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|entries
 init|=
@@ -4982,13 +4982,13 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 range|:
 name|databases
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|database
@@ -5199,13 +5199,13 @@ return|return
 name|keys
 return|;
 block|}
-DECL|method|getSortedEntriesFromSortedRefMarks (String[] names, Map<BibtexEntry, BibtexDatabase> entries, HashMap<String, BibtexDatabase> linkSourceBase)
+DECL|method|getSortedEntriesFromSortedRefMarks (String[] names, Map<BibEntry, BibDatabase> entries, HashMap<String, BibDatabase> linkSourceBase)
 specifier|private
 name|LinkedHashMap
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|getSortedEntriesFromSortedRefMarks
 parameter_list|(
@@ -5215,9 +5215,9 @@ name|names
 parameter_list|,
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|entries
 parameter_list|,
@@ -5225,7 +5225,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|linkSourceBase
 parameter_list|)
@@ -5234,9 +5234,9 @@ name|BibtexEntryNotFoundException
 block|{
 name|LinkedHashMap
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|newList
 init|=
@@ -5247,9 +5247,9 @@ argument_list|()
 decl_stmt|;
 name|HashMap
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|adaptedEntries
 init|=
@@ -5308,7 +5308,7 @@ range|:
 name|keys
 control|)
 block|{
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|linkSourceBase
@@ -5318,7 +5318,7 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|origEntry
 init|=
 literal|null
@@ -5390,7 +5390,7 @@ comment|//throw new BibtexEntryNotFoundException(keys[j], "");
 block|}
 else|else
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|adaptedEntries
@@ -6012,7 +6012,7 @@ name|trim
 argument_list|()
 return|;
 block|}
-DECL|method|insertFullReferenceAtCursor (XTextCursor cursor, Map<BibtexEntry, BibtexDatabase> entries, OOBibStyle style, String parFormat)
+DECL|method|insertFullReferenceAtCursor (XTextCursor cursor, Map<BibEntry, BibDatabase> entries, OOBibStyle style, String parFormat)
 specifier|private
 name|void
 name|insertFullReferenceAtCursor
@@ -6022,9 +6022,9 @@ name|cursor
 parameter_list|,
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|entries
 parameter_list|,
@@ -6051,9 +6051,9 @@ condition|)
 block|{
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|newMap
 init|=
@@ -6066,7 +6066,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -6102,7 +6102,7 @@ literal|1
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -6256,16 +6256,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|insertFullReferenceAtViewCursor (Map<BibtexEntry, BibtexDatabase> entries, OOBibStyle style, String parFormat)
+DECL|method|insertFullReferenceAtViewCursor (Map<BibEntry, BibDatabase> entries, OOBibStyle style, String parFormat)
 specifier|public
 name|void
 name|insertFullReferenceAtViewCursor
 parameter_list|(
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|entries
 parameter_list|,
@@ -6817,16 +6817,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|populateBibTextSection (Map<BibtexEntry, BibtexDatabase> entries, OOBibStyle style)
+DECL|method|populateBibTextSection (Map<BibEntry, BibDatabase> entries, OOBibStyle style)
 specifier|private
 name|void
 name|populateBibTextSection
 parameter_list|(
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|entries
 parameter_list|,
@@ -7940,14 +7940,14 @@ name|setFocus
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|combineCiteMarkers (List<BibtexDatabase> databases, OOBibStyle style)
+DECL|method|combineCiteMarkers (List<BibDatabase> databases, OOBibStyle style)
 specifier|public
 name|void
 name|combineCiteMarkers
 parameter_list|(
 name|List
 argument_list|<
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|databases
 parameter_list|,
@@ -8309,7 +8309,7 @@ argument_list|)
 expr_stmt|;
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -8328,13 +8328,13 @@ control|)
 block|{
 for|for
 control|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 range|:
 name|databases
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|database
@@ -8394,7 +8394,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries

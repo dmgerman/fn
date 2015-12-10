@@ -88,7 +88,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -171,7 +171,7 @@ specifier|private
 specifier|final
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibitems
 init|=
@@ -565,7 +565,7 @@ DECL|method|getItems ()
 specifier|public
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getItems
 parameter_list|()
@@ -1443,11 +1443,11 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.
@@ -1457,7 +1457,7 @@ argument_list|,
 comment|//Globals.DEFAULT_BIBTEXENTRY_ID,
 name|EntryTypes
 operator|.
-name|getBibtexEntryType
+name|getTypeOrDefault
 argument_list|(
 literal|"article"
 argument_list|)
