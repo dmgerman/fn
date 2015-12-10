@@ -117,6 +117,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
+DECL|method|getLengthOfShortestWordToAdd ()
+specifier|protected
+name|int
+name|getLengthOfShortestWordToAdd
+parameter_list|()
+block|{
+return|return
+literal|1
+return|;
+block|}
 block|}
 end_class
 

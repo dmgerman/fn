@@ -16,6 +16,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -73,10 +83,12 @@ name|String
 name|getPrefix
 parameter_list|()
 function_decl|;
-comment|/**      * Returns one or more possible completions for a given string. The returned      * completion depends on which informations were stored while adding      * BibtexEntries.      *      * @see AutoCompleter#addBibtexEntry(BibtexEntry)      */
+comment|/**      * Returns one or more possible completions for a given string. The returned      * completion depends on which informations were stored while adding      * BibtexEntries. If no suggestions for completions are found, then an empty list is returned.      *      * @see AutoCompleter#addBibtexEntry(BibtexEntry)      */
 DECL|method|complete (String toComplete)
+name|List
+argument_list|<
 name|E
-index|[]
+argument_list|>
 name|complete
 parameter_list|(
 name|String

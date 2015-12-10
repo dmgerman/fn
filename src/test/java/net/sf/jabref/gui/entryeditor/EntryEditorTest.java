@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui.autocompleter
+DECL|package|net.sf.jabref.gui.entryeditor
 package|package
 name|net
 operator|.
@@ -10,7 +10,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|autocompleter
+name|entryeditor
 package|;
 end_package
 
@@ -126,6 +126,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Ignore
 import|;
 end_import
@@ -152,28 +162,42 @@ name|ActionEvent
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
-DECL|class|AutoCompleterTest
+DECL|class|EntryEditorTest
 specifier|public
 class|class
-name|AutoCompleterTest
+name|EntryEditorTest
 block|{
 annotation|@
 name|Test
 annotation|@
 name|Ignore
-argument_list|(
-name|value
-operator|=
-literal|"works on windows and ubuntu, but not on travis"
-argument_list|)
-DECL|method|testEntryEditorForNameFieldAutoCompleter ()
+DECL|method|changingAuthorUpdatesAutoCompleter ()
 specifier|public
 name|void
-name|testEntryEditorForNameFieldAutoCompleter
+name|changingAuthorUpdatesAutoCompleter
 parameter_list|()
 block|{
-comment|// construct an EntryEditor ...
 name|TestUtils
 operator|.
 name|initJabRef
@@ -266,9 +290,33 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-comment|// TODO: Use other asserts here, we should check that the autocompleter successfully completes "Hans Meiser" and not look at its index.
-comment|//Assert.assertTrue(autoCompleter.indexContainsWord("Hans Meiser"));
-comment|//Assert.assertTrue(autoCompleter.indexContainsWord("Meiser, Hans"));
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|result
+init|=
+name|autoCompleter
+operator|.
+name|complete
+argument_list|(
+literal|"Hans"
+argument_list|)
+decl_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|"Hans Meiser"
+argument_list|)
+argument_list|,
+name|result
+argument_list|)
+expr_stmt|;
 name|TestUtils
 operator|.
 name|closeJabRef
@@ -279,18 +327,12 @@ annotation|@
 name|Test
 annotation|@
 name|Ignore
-argument_list|(
-name|value
-operator|=
-literal|"works on windows and ubuntu, but not on travis"
-argument_list|)
-DECL|method|testEntryEditorForFieldAnotherAutoCompleter ()
+DECL|method|changingSomeFieldUpdatesAutoCompleter ()
 specifier|public
 name|void
-name|testEntryEditorForFieldAnotherAutoCompleter
+name|changingSomeFieldUpdatesAutoCompleter
 parameter_list|()
 block|{
-comment|// construct an EntryEditor ...
 name|TestUtils
 operator|.
 name|initJabRef
@@ -383,8 +425,33 @@ argument_list|(
 literal|"journal"
 argument_list|)
 decl_stmt|;
-comment|// TODO: Use other asserts here, we should check that the autocompleter successfully completes the journal and not look at its index.
-comment|//Assert.assertTrue(autoCompleter.indexContainsWord("New Testtext"));
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|result
+init|=
+name|autoCompleter
+operator|.
+name|complete
+argument_list|(
+literal|"Ne"
+argument_list|)
+decl_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|"New Testtext"
+argument_list|)
+argument_list|,
+name|result
+argument_list|)
+expr_stmt|;
 name|TestUtils
 operator|.
 name|closeJabRef

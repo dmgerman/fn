@@ -10239,12 +10239,8 @@ name|searchAutoCompleter
 operator|=
 name|autoCompleterFactory
 operator|.
-name|getFor
-argument_list|(
-literal|"author"
-argument_list|,
-literal|"editor"
-argument_list|)
+name|getPersonAutoCompleter
+argument_list|()
 expr_stmt|;
 for|for
 control|(
