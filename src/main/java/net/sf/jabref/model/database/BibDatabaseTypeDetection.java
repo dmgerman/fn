@@ -98,37 +98,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
+name|*
 import|;
 end_import
 
@@ -162,20 +132,9 @@ specifier|public
 class|class
 name|BibDatabaseTypeDetection
 block|{
-comment|/**      * Tries to infer the database type by examining a BibEntry collection.      *      * All checks are based on the case-insensitive comparison of entry tag names.      *      * 1. Check if any of the entries is a type exclusive to Biblatex      * 2. Check if all entries belong to the standard BibTex set      * 2.1 Check if any Biblatex fields are present      * 3. Otherwise return BibTex      *      * @param entries a BibEntry collection      * @return the inferred database type      */
-DECL|method|inferType (Collection<BibEntry> entries)
-specifier|public
+DECL|field|bibtex
+specifier|private
 specifier|static
-name|BibDatabaseType
-name|inferType
-parameter_list|(
-name|Collection
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entries
-parameter_list|)
-block|{
 specifier|final
 name|List
 argument_list|<
@@ -187,6 +146,9 @@ name|BibtexEntryTypes
 operator|.
 name|ALL
 decl_stmt|;
+DECL|field|biblatex
+specifier|private
+specifier|static
 specifier|final
 name|List
 argument_list|<
@@ -198,6 +160,9 @@ name|BibLatexEntryTypes
 operator|.
 name|ALL
 decl_stmt|;
+DECL|field|exclusiveBiblatex
+specifier|private
+specifier|static
 specifier|final
 name|List
 argument_list|<
@@ -215,6 +180,20 @@ name|bibtex
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|/**      * Tries to infer the database type by examining a BibEntry collection.      *      * All checks are based on the case-insensitive comparison of entry tag names.      * Only standard BibTex and Biblatex entry types are considered in the decision process.      *      * 1. Check if any of the entries is a type exclusive to Biblatex      * 2. Check if all entries belong to the standard BibTex set      * 2.1 Check if any Biblatex fields are present      * 3. Otherwise return BibTex      *      * @param entries a BibEntry collection      * @return the inferred database type      */
+DECL|method|inferType (Collection<BibEntry> entries)
+specifier|public
+specifier|static
+name|BibDatabaseType
+name|inferType
+parameter_list|(
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+parameter_list|)
+block|{
 specifier|final
 name|List
 argument_list|<
