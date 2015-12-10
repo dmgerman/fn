@@ -162,8 +162,7 @@ specifier|public
 class|class
 name|BibDatabaseTypeDetection
 block|{
-comment|/**      * Tries to infer the database type by examining a BibEntry collection.      *      * All checks are based on the case-insensitive comparison of entry tag names.      *      * 1. Check if any of the entries is a type exclusive to Biblatex      * 2. Check if all entries belong to the standard BibTex set      * 2.1 Check if any Biblatex fields are present      * 3. Otherwise return BibTex      *      * @param entries a BibEntry collection      * @return the infered database type      */
-comment|// TODO: what about custom entry types?, Define type detection on type field in jabref bib file?
+comment|/**      * Tries to infer the database type by examining a BibEntry collection.      *      * All checks are based on the case-insensitive comparison of entry tag names.      *      * 1. Check if any of the entries is a type exclusive to Biblatex      * 2. Check if all entries belong to the standard BibTex set      * 2.1 Check if any Biblatex fields are present      * 3. Otherwise return BibTex      *      * @param entries a BibEntry collection      * @return the inferred database type      */
 DECL|method|inferType (Collection<BibEntry> entries)
 specifier|public
 specifier|static
