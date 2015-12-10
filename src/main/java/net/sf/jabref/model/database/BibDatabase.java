@@ -216,6 +216,10 @@ name|LogFactory
 import|;
 end_import
 
+begin_comment
+comment|/**  * A bibliograhpy database.  */
+end_comment
+
 begin_class
 DECL|class|BibDatabase
 specifier|public
@@ -238,6 +242,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * State attributes      */
 DECL|field|entries
 specifier|private
 specifier|final
@@ -254,10 +259,35 @@ name|ConcurrentHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+comment|// use a map instead of a set since i need to know how many of each key is in there
+DECL|field|allKeys
+specifier|private
+specifier|final
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Integer
+argument_list|>
+name|allKeys
+init|=
+operator|new
+name|HashMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
 DECL|field|preamble
 specifier|private
 name|String
 name|preamble
+decl_stmt|;
+comment|// All file contents below the last entry in the file
+DECL|field|epilog
+specifier|private
+name|String
+name|epilog
+init|=
+literal|""
 decl_stmt|;
 DECL|field|bibtexStrings
 specifier|private
@@ -275,6 +305,15 @@ name|ConcurrentHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+comment|/**      * Configuration      */
+DECL|field|followCrossrefs
+specifier|private
+name|boolean
+name|followCrossrefs
+init|=
+literal|true
+decl_stmt|;
+comment|/**      * Behavior      */
 DECL|field|changeListeners
 specifier|private
 specifier|final
@@ -286,38 +325,6 @@ name|changeListeners
 init|=
 operator|new
 name|HashSet
-argument_list|<>
-argument_list|()
-decl_stmt|;
-DECL|field|followCrossrefs
-specifier|private
-name|boolean
-name|followCrossrefs
-init|=
-literal|true
-decl_stmt|;
-comment|/**      * All file contents below the last entry in the file      */
-DECL|field|epilog
-specifier|private
-name|String
-name|epilog
-init|=
-literal|""
-decl_stmt|;
-comment|/**      * use a map instead of a set since i need to know how many of each key is      * inthere      */
-DECL|field|allKeys
-specifier|private
-specifier|final
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Integer
-argument_list|>
-name|allKeys
-init|=
-operator|new
-name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -404,7 +411,6 @@ return|return
 name|sorter
 return|;
 block|}
-comment|/**      * Just temporary, for testing purposes....      *      * @return      */
 DECL|method|getEntryMap ()
 specifier|public
 name|Map
@@ -1233,8 +1239,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Take the given collection of BibtexEntry and resolve any string      * references.      *      * @param ent A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the databasee.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
-DECL|method|resolveForStrings (Collection<BibEntry> ent, boolean inPlace)
+comment|/**      * Take the given collection of BibtexEntry and resolve any string      * references.      *      * @param entries A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the databasee.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
+DECL|method|resolveForStrings (Collection<BibEntry> entries, boolean inPlace)
 specifier|public
 name|List
 argument_list|<
@@ -1246,7 +1252,7 @@ name|Collection
 argument_list|<
 name|BibEntry
 argument_list|>
-name|ent
+name|entries
 parameter_list|,
 name|boolean
 name|inPlace
@@ -1254,7 +1260,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|ent
+name|entries
 operator|==
 literal|null
 condition|)
@@ -1277,7 +1283,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|ent
+name|entries
 operator|.
 name|size
 argument_list|()
@@ -1288,7 +1294,7 @@ control|(
 name|BibEntry
 name|entry
 range|:
-name|ent
+name|entries
 control|)
 block|{
 name|results
@@ -2293,7 +2299,7 @@ name|database
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a text with references resolved according to an optionally given      * database.      *      * @param toResolve maybenull The text to resolve.      * @param database  maybenull The database to use for resolving the text.      * @return The resolved text or the original text if either the text or the database are null      */
+comment|/**      * Returns a text with references resolved according to an optionally given database.      *      * @param toResolve maybenull The text to resolve.      * @param database  maybenull The database to use for resolving the text.      * @return The resolved text or the original text if either the text or the database are null      */
 DECL|method|getText (String toResolve, BibDatabase database)
 specifier|public
 specifier|static
