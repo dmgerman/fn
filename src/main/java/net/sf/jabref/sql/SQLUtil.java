@@ -22,6 +22,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|Closeable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|PrintStream
 import|;
 end_import
@@ -855,7 +865,7 @@ comment|/**      * Utility method for processing DML with proper output      *  
 DECL|method|processQueryWithResults (Object out, String query)
 specifier|public
 specifier|static
-name|Object
+name|AutoCloseable
 name|processQueryWithResults
 parameter_list|(
 name|Object
