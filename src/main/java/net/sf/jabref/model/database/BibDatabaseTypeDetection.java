@@ -57,15 +57,15 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibTypeDetection
+DECL|class|BibDatabaseTypeDetection
 specifier|public
 class|class
-name|BibTypeDetection
+name|BibDatabaseTypeDetection
 block|{
 DECL|method|inferType (Collection<BibEntry> entries)
 specifier|public
 specifier|static
-name|BibType
+name|BibDatabaseType
 name|inferType
 parameter_list|(
 name|Collection
@@ -75,17 +75,16 @@ argument_list|>
 name|entries
 parameter_list|)
 block|{
+comment|// TODO: work on intersection of types for faster decision?
 comment|// standard mode
-name|BibType
+name|BibDatabaseType
 name|type
 init|=
-name|BibType
+name|BibDatabaseType
 operator|.
 name|BIBTEX
 decl_stmt|;
 comment|// check for biblatex entries
-comment|// TODO must be based on name not type!!!
-comment|// TODO rename BibtexEntry and BibtexDatabase to generic names
 if|if
 condition|(
 name|entries
@@ -97,22 +96,15 @@ name|allMatch
 argument_list|(
 name|e
 lambda|->
-name|BibLatexEntryTypes
-operator|.
-name|ALL
-operator|.
-name|contains
+name|typeBasedBiblatexMatch
 argument_list|(
 name|e
-operator|.
-name|getType
-argument_list|()
 argument_list|)
 argument_list|)
 condition|)
 block|{
 return|return
-name|BibType
+name|BibDatabaseType
 operator|.
 name|BIBLATEX
 return|;
@@ -121,16 +113,50 @@ return|return
 name|type
 return|;
 block|}
-DECL|method|typeBasedCheck ()
+DECL|method|typeBasedBiblatexMatch (BibEntry entry)
+specifier|private
+specifier|static
+name|boolean
+name|typeBasedBiblatexMatch
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|BibLatexEntryTypes
+operator|.
+name|ALL
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|anyMatch
+argument_list|(
+name|e
+lambda|->
+name|e
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|entry
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|fieldBasedMatch ()
 specifier|private
 name|void
-name|typeBasedCheck
-parameter_list|()
-block|{      }
-DECL|method|fieldBasedCheck ()
-specifier|private
-name|void
-name|fieldBasedCheck
+name|fieldBasedMatch
 parameter_list|()
 block|{      }
 block|}

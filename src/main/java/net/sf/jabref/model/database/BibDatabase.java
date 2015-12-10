@@ -323,12 +323,12 @@ argument_list|()
 decl_stmt|;
 DECL|method|getBibType ()
 specifier|public
-name|BibType
+name|BibDatabaseType
 name|getBibType
 parameter_list|()
 block|{
 return|return
-name|BibTypeDetection
+name|BibDatabaseTypeDetection
 operator|.
 name|inferType
 argument_list|(
