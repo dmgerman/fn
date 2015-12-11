@@ -267,20 +267,6 @@ literal|"/"
 decl_stmt|;
 comment|// Values to gather iconImages for those columns
 comment|// These values are also used to put a heading into the table; see getColumnName(int)
-DECL|field|PDF
-specifier|private
-specifier|static
-specifier|final
-name|String
-index|[]
-name|PDF
-init|=
-block|{
-literal|"pdf"
-block|,
-literal|"ps"
-block|}
-decl_stmt|;
 DECL|field|URL_FIRST
 specifier|private
 specifier|static
@@ -417,40 +403,23 @@ name|getDisplayName
 argument_list|()
 return|;
 block|}
-DECL|method|getTableColumns ()
+DECL|method|getTableColumn (int index)
 specifier|public
-name|List
-argument_list|<
 name|MainTableColumn
-argument_list|>
-name|getTableColumns
-parameter_list|()
-block|{
-return|return
-name|tableColumns
-return|;
-block|}
-comment|/**      * This method returns a string array indicating the types of icons to be displayed in the given column.      * It returns null if the column is not an icon column, and thereby also serves to identify icon      * columns.      */
-comment|//TODO to be removed?
-DECL|method|getIconTypeForColumn (int col)
-specifier|public
-name|String
-index|[]
-name|getIconTypeForColumn
+name|getTableColumn
 parameter_list|(
 name|int
-name|col
+name|index
 parameter_list|)
 block|{
 return|return
-literal|null
+name|tableColumns
+operator|.
+name|get
+argument_list|(
+name|index
+argument_list|)
 return|;
-comment|//        Object o = iconCols.get(Integer.valueOf(col));
-comment|//        if (o != null) {
-comment|//            return (String[]) o;
-comment|//        } else {
-comment|//            return null;
-comment|//        }
 block|}
 comment|/**      * Finds the column index for the given column name.      *      * @param colName The column name      * @return The column index if any, or -1 if no column has that name.      */
 DECL|method|getColumnIndex (String colName)

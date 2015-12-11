@@ -226,10 +226,7 @@ name|mainTableColumn
 init|=
 name|tableFormat
 operator|.
-name|getTableColumns
-argument_list|()
-operator|.
-name|get
+name|getTableColumn
 argument_list|(
 name|column
 operator|.
@@ -291,10 +288,7 @@ name|column
 init|=
 name|tableFormat
 operator|.
-name|getTableColumns
-argument_list|()
-operator|.
-name|get
+name|getTableColumn
 argument_list|(
 name|realIndex
 argument_list|)
