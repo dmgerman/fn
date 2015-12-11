@@ -279,14 +279,6 @@ specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
-DECL|field|pan
-name|JPanel
-name|pan
-init|=
-operator|new
-name|JPanel
-argument_list|()
-decl_stmt|;
 DECL|field|layout1
 specifier|private
 specifier|final
