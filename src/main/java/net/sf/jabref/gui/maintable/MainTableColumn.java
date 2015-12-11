@@ -38,6 +38,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|BibtexEntry
@@ -113,6 +129,12 @@ specifier|final
 name|JLabel
 name|iconLabel
 decl_stmt|;
+DECL|field|database
+specifier|private
+specifier|final
+name|BibtexDatabase
+name|database
+decl_stmt|;
 DECL|method|MainTableColumn (String columnName)
 specifier|public
 name|MainTableColumn
@@ -148,8 +170,14 @@ name|iconLabel
 operator|=
 literal|null
 expr_stmt|;
+name|this
+operator|.
+name|database
+operator|=
+literal|null
+expr_stmt|;
 block|}
-DECL|method|MainTableColumn (String columnName, String[] bibtexFields)
+DECL|method|MainTableColumn (String columnName, String[] bibtexFields, BibtexDatabase database)
 specifier|public
 name|MainTableColumn
 parameter_list|(
@@ -159,6 +187,9 @@ parameter_list|,
 name|String
 index|[]
 name|bibtexFields
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 name|this
@@ -194,6 +225,12 @@ operator|.
 name|iconLabel
 operator|=
 literal|null
+expr_stmt|;
+name|this
+operator|.
+name|database
+operator|=
+name|database
 expr_stmt|;
 block|}
 DECL|method|MainTableColumn (String columnName, String[] bibtexFields, JLabel iconLabel)
@@ -245,8 +282,14 @@ name|iconLabel
 operator|=
 name|iconLabel
 expr_stmt|;
+name|this
+operator|.
+name|database
+operator|=
+literal|null
+expr_stmt|;
 block|}
-comment|/**      * Get the table column name to be displayed in the UI      *      * @return      */
+comment|/**      * Get the table column name to be displayed in the UI      *      * @return name to be displayed      */
 DECL|method|getDisplayName ()
 specifier|public
 name|String
@@ -364,8 +407,7 @@ name|boolean
 name|isNameColumn
 parameter_list|()
 block|{
-if|if
-condition|(
+return|return
 name|bibtexFields
 operator|.
 name|contains
@@ -379,14 +421,6 @@ name|contains
 argument_list|(
 literal|"editor"
 argument_list|)
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 DECL|method|getColumnName ()
@@ -500,6 +534,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|database
+operator|!=
+literal|null
+operator|)
+operator|&&
 literal|"Author"
 operator|.
 name|equalsIgnoreCase
@@ -514,8 +554,15 @@ literal|null
 operator|)
 condition|)
 block|{
-comment|//TODO
-comment|// content = panel.database().resolveForStrings((String) content);
+name|content
+operator|=
+name|database
+operator|.
+name|resolveForStrings
+argument_list|(
+name|content
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 if|if
@@ -534,8 +581,14 @@ name|isNameColumn
 argument_list|()
 condition|)
 block|{
-comment|//TODO
-comment|// return formatName(content);
+return|return
+name|MainTableNameFormatter
+operator|.
+name|formatName
+argument_list|(
+name|content
+argument_list|)
+return|;
 block|}
 return|return
 name|content

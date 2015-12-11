@@ -884,16 +884,6 @@ name|BOOLEAN
 init|=
 literal|4
 decl_stmt|;
-DECL|field|ICON_COL
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|ICON_COL
-init|=
-literal|8
-decl_stmt|;
-comment|// Constant to indicate that an icon cell renderer should be used.
 static|static
 block|{
 name|MainTable
@@ -3424,7 +3414,7 @@ name|entry
 argument_list|)
 return|;
 block|}
-comment|/**      * method to check whether a MainTableColumn at the modelIndex refers to the file field      *      * @param modelIndex      * @return      */
+comment|/**      * method to check whether a MainTableColumn at the modelIndex refers to the file field (either as a specific      * file extension filter or not)      *      * @param modelIndex model index of the column to check      * @return true if the column shows the "file" field; false otherwise      */
 DECL|method|isFileColumn (int modelIndex)
 specifier|public
 name|boolean
@@ -3434,8 +3424,7 @@ name|int
 name|modelIndex
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
 name|tableFormat
 operator|.
 name|getTableColumn
@@ -3444,9 +3433,7 @@ name|modelIndex
 argument_list|)
 operator|!=
 literal|null
-condition|)
-block|{
-return|return
+operator|&&
 name|tableFormat
 operator|.
 name|getTableColumn
@@ -3464,13 +3451,6 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-return|return
-literal|false
-return|;
-block|}
 block|}
 DECL|method|matches (int row, Matcher<BibtexEntry> m)
 specifier|private
@@ -4464,26 +4444,14 @@ name|result
 operator|.
 name|addSortActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 comment|// We need to reset the stack of sorted list each time sorting order
 comment|// changes, or the sorting breaks down:
 name|refreshSorting
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;

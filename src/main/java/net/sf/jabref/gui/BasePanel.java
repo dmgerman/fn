@@ -9330,7 +9330,9 @@ name|tableFormat
 operator|=
 operator|new
 name|MainTableFormat
-argument_list|()
+argument_list|(
+name|database
+argument_list|)
 expr_stmt|;
 name|tableFormat
 operator|.
