@@ -54,11 +54,6 @@ name|WrapLayout
 extends|extends
 name|FlowLayout
 block|{
-DECL|field|preferredLayoutSize
-specifier|private
-name|Dimension
-name|preferredLayoutSize
-decl_stmt|;
 comment|/**      * Constructs a new<code>WrapLayout</code> with a left      * alignment and a default 5-unit horizontal and vertical gap.      */
 DECL|method|WrapLayout ()
 specifier|public

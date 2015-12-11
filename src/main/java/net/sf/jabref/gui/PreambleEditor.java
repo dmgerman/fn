@@ -198,10 +198,6 @@ specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
-DECL|field|lab
-name|JLabel
-name|lab
-decl_stmt|;
 DECL|field|ed
 specifier|private
 name|FieldEditor
