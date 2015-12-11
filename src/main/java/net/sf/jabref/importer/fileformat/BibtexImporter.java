@@ -124,7 +124,7 @@ name|BibtexImporter
 extends|extends
 name|ImportFormat
 block|{
-comment|/**      * @return false as that does not cause any harm in the current implementation of JabRef      */
+comment|/**      * @return true as we have no effective way to decide whether a file is in bibtex format or not. See      *         https://github.com/JabRef/jabref/pull/379#issuecomment-158685726 for more details.      */
 annotation|@
 name|Override
 DECL|method|isRecognizedFormat (InputStream in)
@@ -139,16 +139,7 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|BibtexParser
-operator|.
-name|isRecognizedFormat
-argument_list|(
-operator|new
-name|InputStreamReader
-argument_list|(
-name|in
-argument_list|)
-argument_list|)
+literal|true
 return|;
 block|}
 comment|/**      * Parses the given input stream.      * Only plain bibtex entries are returned.      * That especially means that metadata is ignored.      *      * @param in the inputStream to read from      * @param status the OutputPrinter to put status to      * @return a list of BibTeX entries contained in the given inputStream      */
