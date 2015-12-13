@@ -312,7 +312,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * In the translation, %c is translated to ":", %e is translated to "=", %<anythingelse> to<anythingelse>, %0, ...      * %9 to the respective params given      *      * @param resBundle the ResourceBundle to use      * @param idForErrorMessage output when translation is not found Ã¶ * @param key the key to lookup in resBundle      * @param params a list of Strings to replace %0, %1, ...      * @return      */
+comment|/**      * In the translation, %0, ..., %9 is replaced by the respective params given      *      * @param resBundle         the ResourceBundle to use      * @param idForErrorMessage output when translation is not found      * @param key               the key to lookup in resBundle      * @param params            a list of Strings to replace %0, %1, ...      * @return      */
 DECL|method|translate (ResourceBundle resBundle, String idForErrorMessage, String key, String... params)
 specifier|private
 specifier|static
@@ -354,7 +354,7 @@ operator|.
 name|getString
 argument_list|(
 operator|new
-name|TranslationKey
+name|LocalizationKey
 argument_list|(
 name|key
 argument_list|)
@@ -441,9 +441,9 @@ argument_list|()
 condition|)
 block|{
 comment|// also done if no params are given
-comment|//  Then, %c is translated to ":", %e is translated to "=", ...
+return|return
 operator|new
-name|Translation
+name|LocalizationKeyParams
 argument_list|(
 name|translation
 argument_list|,
@@ -452,17 +452,17 @@ argument_list|)
 operator|.
 name|translate
 argument_list|()
-expr_stmt|;
+return|;
 block|}
 return|return
 name|key
 return|;
 block|}
-DECL|class|TranslationKey
+DECL|class|LocalizationKey
 specifier|public
 specifier|static
 class|class
-name|TranslationKey
+name|LocalizationKey
 block|{
 DECL|field|key
 specifier|private
@@ -470,9 +470,9 @@ specifier|final
 name|String
 name|key
 decl_stmt|;
-DECL|method|TranslationKey (String key)
+DECL|method|LocalizationKey (String key)
 specifier|public
-name|TranslationKey
+name|LocalizationKey
 parameter_list|(
 name|String
 name|key
@@ -496,6 +496,7 @@ name|String
 name|getPropertiesKey
 parameter_list|()
 block|{
+comment|// space, = and : are not allowed in properties file keys
 return|return
 name|this
 operator|.
@@ -507,12 +508,33 @@ literal|" "
 argument_list|,
 literal|"_"
 argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|"="
+argument_list|,
+literal|"\\="
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|":"
+argument_list|,
+literal|"\\:"
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|"\\\\"
+argument_list|,
+literal|"\\"
+argument_list|)
 return|;
 block|}
-DECL|method|getHumanReadableKey ()
+DECL|method|getTranslationValue ()
 specifier|public
 name|String
-name|getHumanReadableKey
+name|getTranslationValue
 parameter_list|()
 block|{
 return|return
@@ -526,19 +548,33 @@ literal|"_"
 argument_list|,
 literal|" "
 argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\\\="
+argument_list|,
+literal|"="
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\\\:"
+argument_list|,
+literal|":"
+argument_list|)
 return|;
 block|}
 block|}
-DECL|class|Translation
+DECL|class|LocalizationKeyParams
 specifier|public
 specifier|static
 class|class
-name|Translation
+name|LocalizationKeyParams
 block|{
 DECL|field|key
 specifier|private
 specifier|final
-name|TranslationKey
+name|LocalizationKey
 name|key
 decl_stmt|;
 DECL|field|params
@@ -550,9 +586,9 @@ name|String
 argument_list|>
 name|params
 decl_stmt|;
-DECL|method|Translation (String key, String... params)
+DECL|method|LocalizationKeyParams (String key, String... params)
 specifier|public
-name|Translation
+name|LocalizationKeyParams
 parameter_list|(
 name|String
 name|key
@@ -567,7 +603,7 @@ operator|.
 name|key
 operator|=
 operator|new
-name|TranslationKey
+name|LocalizationKey
 argument_list|(
 name|key
 argument_list|)
@@ -615,7 +651,7 @@ name|translation
 init|=
 name|key
 operator|.
-name|getHumanReadableKey
+name|getTranslationValue
 argument_list|()
 decl_stmt|;
 for|for
@@ -689,29 +725,6 @@ argument_list|,
 name|key
 argument_list|,
 name|params
-argument_list|)
-return|;
-block|}
-DECL|method|lang (String key)
-specifier|public
-specifier|static
-name|String
-name|lang
-parameter_list|(
-name|String
-name|key
-parameter_list|)
-block|{
-return|return
-name|lang
-argument_list|(
-name|key
-argument_list|,
-operator|(
-name|String
-index|[]
-operator|)
-literal|null
 argument_list|)
 return|;
 block|}
