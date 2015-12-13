@@ -12056,7 +12056,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Multiple entries selected. Do you want to change\nthe type of all these to '%0'?"
+literal|"Multiple entries selected. Do you want to change the type of all these to '%0'?"
 argument_list|,
 name|type
 operator|.

@@ -3589,11 +3589,36 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not connect to running OpenOffice.\n"
+literal|"Could not connect to running OpenOffice."
+argument_list|)
 operator|+
-literal|"Make sure you have installed OpenOffice with Java support.\nIf connecting manually, please verify program and library paths.\n"
+literal|"\n"
 operator|+
-literal|"\nError message:"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Make sure you have installed OpenOffice with Java support."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"If connecting manually, please verify program and library paths."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error message:"
 argument_list|)
 operator|+
 literal|" "

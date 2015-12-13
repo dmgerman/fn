@@ -1568,7 +1568,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The PDF contains one or several bibtex-records.\nDo you want to import these as new entries into the current database?"
+literal|"The PDF contains one or several bibtex-records."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Do you want to import these as new entries into the current database?"
 argument_list|)
 argument_list|)
 decl_stmt|;

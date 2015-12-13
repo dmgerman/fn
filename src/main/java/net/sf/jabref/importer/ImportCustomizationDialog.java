@@ -850,7 +850,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Add a (compiled) custom ImportFormat class from a class path. \nThe path need not be on the classpath of JabRef."
+literal|"Add a (compiled) custom ImportFormat class from a class path."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"The path need not be on the classpath of JabRef."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1078,7 +1087,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Add a (compiled) custom ImportFormat class from a Zip-archive.\nThe Zip-archive need not be on the classpath of JabRef."
+literal|"Add a (compiled) custom ImportFormat class from a Zip-archive."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"The Zip-archive need not be on the classpath of JabRef."
 argument_list|)
 argument_list|)
 expr_stmt|;
