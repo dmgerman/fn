@@ -1198,8 +1198,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Please specify the "
+literal|"Please specify the"
 argument_list|)
+operator|+
+literal|" "
 decl_stmt|;
 switch|switch
 condition|(

@@ -190,7 +190,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"insert string "
+literal|"insert string"
 argument_list|)
 return|;
 comment|// @formatter:on
@@ -218,7 +218,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"insert string "
+literal|"insert string"
 argument_list|)
 return|;
 comment|// @formatter:on
