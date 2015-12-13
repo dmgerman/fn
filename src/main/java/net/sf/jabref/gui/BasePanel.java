@@ -604,6 +604,22 @@ name|logic
 operator|.
 name|autocompleter
 operator|.
+name|AutoCompletePreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|autocompleter
+operator|.
 name|AutoCompleter
 import|;
 end_import
@@ -1803,6 +1819,17 @@ block|}
 block|}
 else|else
 block|{
+comment|// check if file is modified
+name|String
+name|changeFlag
+init|=
+name|isModified
+argument_list|()
+condition|?
+literal|"*"
+else|:
+literal|""
+decl_stmt|;
 name|title
 operator|=
 name|getDatabaseFile
@@ -1810,16 +1837,18 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
+operator|+
+name|changeFlag
 expr_stmt|;
 block|}
 return|return
 name|title
 return|;
 block|}
-DECL|method|isBaseChanged ()
+DECL|method|isModified ()
 specifier|public
 name|boolean
-name|isBaseChanged
+name|isModified
 parameter_list|()
 block|{
 return|return
@@ -7750,6 +7779,8 @@ name|ex
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -10070,6 +10101,17 @@ name|SearchAutoCompleterUpdater
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AutoCompletePreferences
+name|autoCompletePreferences
+init|=
+operator|new
+name|AutoCompletePreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+decl_stmt|;
 comment|// Set up AutoCompleters for this panel:
 if|if
 condition|(
@@ -10094,6 +10136,8 @@ name|getDatabase
 argument_list|()
 argument_list|,
 name|metaData
+argument_list|,
+name|autoCompletePreferences
 argument_list|)
 expr_stmt|;
 comment|// ensure that the autocompleters are in sync with entries
@@ -10117,7 +10161,9 @@ name|autoCompleters
 operator|=
 operator|new
 name|ContentAutoCompleters
-argument_list|()
+argument_list|(
+name|autoCompletePreferences
+argument_list|)
 expr_stmt|;
 block|}
 comment|// restore floating search result
@@ -10169,16 +10215,32 @@ name|void
 name|instantiateSearchAutoCompleter
 parameter_list|()
 block|{
+name|AutoCompletePreferences
+name|autoCompletePreferences
+init|=
+operator|new
+name|AutoCompletePreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+decl_stmt|;
+name|AutoCompleterFactory
+name|autoCompleterFactory
+init|=
+operator|new
+name|AutoCompleterFactory
+argument_list|(
+name|autoCompletePreferences
+argument_list|)
+decl_stmt|;
 name|searchAutoCompleter
 operator|=
-name|AutoCompleterFactory
+name|autoCompleterFactory
 operator|.
-name|getFor
-argument_list|(
-literal|"author"
-argument_list|,
-literal|"editor"
-argument_list|)
+name|getPersonAutoCompleter
+argument_list|()
 expr_stmt|;
 for|for
 control|(
@@ -11391,45 +11453,21 @@ name|baseChanged
 operator|=
 literal|true
 expr_stmt|;
-comment|// Put an asterix behind the filename to indicate the
-comment|// database has changed.
-name|String
-name|oldTitle
-init|=
-name|frame
-operator|.
-name|getTabTitle
-argument_list|(
-name|this
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|oldTitle
-operator|.
-name|endsWith
-argument_list|(
-literal|"*"
-argument_list|)
-condition|)
-block|{
+comment|// Put an asterix behind the filename to indicate the database has changed.
 name|frame
 operator|.
 name|setTabTitle
 argument_list|(
 name|this
 argument_list|,
-name|oldTitle
-operator|+
-literal|'*'
+name|getTabTitle
+argument_list|()
 argument_list|,
-name|frame
+name|getDatabaseFile
+argument_list|()
 operator|.
-name|getTabTooltip
-argument_list|(
-name|this
-argument_list|)
+name|getAbsolutePath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|frame
@@ -11437,7 +11475,6 @@ operator|.
 name|setWindowTitle
 argument_list|()
 expr_stmt|;
-block|}
 comment|// If the status line states that the base has been saved, we
 comment|// remove this message, since it is no longer relevant. If a
 comment|// different message is shown, we leave it.
@@ -11541,14 +11578,9 @@ name|frame
 operator|.
 name|setTabTitle
 argument_list|(
-name|BasePanel
-operator|.
 name|this
 argument_list|,
-name|getDatabaseFile
-argument_list|()
-operator|.
-name|getName
+name|getTabTitle
 argument_list|()
 argument_list|,
 name|getDatabaseFile
@@ -11565,8 +11597,6 @@ name|frame
 operator|.
 name|setTabTitle
 argument_list|(
-name|BasePanel
-operator|.
 name|this
 argument_list|,
 name|GUIGlobals

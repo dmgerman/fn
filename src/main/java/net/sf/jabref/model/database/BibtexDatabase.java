@@ -296,6 +296,14 @@ name|followCrossrefs
 init|=
 literal|true
 decl_stmt|;
+comment|/**      * All file contents below the last entry in the file      */
+DECL|field|epilog
+specifier|private
+name|String
+name|epilog
+init|=
+literal|""
+decl_stmt|;
 comment|/**      * use a map instead of a set since i need to know how many of each key is      * inthere      */
 DECL|field|allKeys
 specifier|private
@@ -2531,6 +2539,32 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+DECL|method|setEpilog (String epilog)
+specifier|public
+name|void
+name|setEpilog
+parameter_list|(
+name|String
+name|epilog
+parameter_list|)
+block|{
+name|this
+operator|.
+name|epilog
+operator|=
+name|epilog
+expr_stmt|;
+block|}
+DECL|method|getEpilog ()
+specifier|public
+name|String
+name|getEpilog
+parameter_list|()
+block|{
+return|return
+name|epilog
+return|;
+block|}
 block|}
 end_class
 

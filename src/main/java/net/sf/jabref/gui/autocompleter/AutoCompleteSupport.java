@@ -88,6 +88,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -942,8 +952,10 @@ operator|.
 name|getText
 argument_list|()
 decl_stmt|;
+name|List
+argument_list|<
 name|E
-index|[]
+argument_list|>
 name|candidates
 init|=
 name|autoCompleter
@@ -969,14 +981,9 @@ argument_list|()
 operator|&&
 operator|(
 name|candidates
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|candidates
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|0
 operator|)

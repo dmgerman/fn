@@ -464,9 +464,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Action 'New entry' must be disabled when no "
-operator|+
-literal|"database is open."
+literal|"Action 'New entry' must be disabled when no database is open."
 argument_list|)
 expr_stmt|;
 block|}

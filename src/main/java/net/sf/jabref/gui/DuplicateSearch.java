@@ -411,6 +411,11 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|duplicates
+init|)
+block|{
 while|while
 condition|(
 operator|!
@@ -441,11 +446,6 @@ condition|)
 block|{
 comment|// wait until the search thread puts something into duplicates vector
 comment|// or finish its work
-synchronized|synchronized
-init|(
-name|duplicates
-init|)
-block|{
 try|try
 block|{
 name|duplicates
@@ -456,12 +456,11 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|InterruptedException
 name|ignored
 parameter_list|)
 block|{
 comment|// Ignore
-block|}
 block|}
 block|}
 else|else
@@ -747,6 +746,7 @@ name|getMergedEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

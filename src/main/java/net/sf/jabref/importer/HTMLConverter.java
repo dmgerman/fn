@@ -128,6 +128,22 @@ name|LayoutFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|formatter
+operator|.
+name|Formatter
+import|;
+end_import
+
 begin_class
 DECL|class|HTMLConverter
 specifier|public
@@ -135,6 +151,8 @@ class|class
 name|HTMLConverter
 implements|implements
 name|LayoutFormatter
+implements|,
+name|Formatter
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -5835,6 +5853,18 @@ name|position
 return|;
 comment|// Don't do anything.
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|getName ()
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"HTMLConverter"
+return|;
 block|}
 block|}
 end_class

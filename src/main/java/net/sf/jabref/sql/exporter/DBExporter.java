@@ -397,7 +397,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author igorsteinmacher.  *  *         Jan 20th Abstract Class to provide main features to export entries to a DB. To insert a new DB it is  *         necessary to extend this class and add the DB name the enum available at  *         net.sf.jabref.sql.DBImporterAndExporterFactory (and to the GUI). This class and its subclasses create  *         database, entries and related stuff within a DB.  *  */
+comment|/**  * @author igorsteinmacher.  *<p>  *         Jan 20th Abstract Class to provide main features to export entries to a DB. To insert a new DB it is  *         necessary to extend this class and add the DB name the enum available at  *         net.sf.jabref.sql.DBImporterAndExporterFactory (and to the GUI). This class and its subclasses create  *         database, entries and related stuff within a DB.  */
 end_comment
 
 begin_class
@@ -454,7 +454,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Method for the exportDatabase methods.      *      * @param database The DBTYPE of the database      * @param database The BibtexDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet The set of IDs of the entries to export.      * @param out The output (PrintStream or Connection) object to which the DML should be written.      */
+comment|/**      * Method for the exportDatabase methods.      *      * @param database The DBTYPE of the database      * @param database The BibtexDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet   The set of IDs of the entries to export.      * @param out      The output (PrintStream or Connection) object to which the DML should be written.      */
 DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, Object out, String dbName)
 specifier|private
 name|void
@@ -584,7 +584,7 @@ name|database_id
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Generates the DML required to populate the entries table with jabref data and writes it to the output      * PrintStream.      *      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *            using getDatabaseIDByPath(metaData, out)      * @param entries The BibtexEntries to export      * @param out The output (PrintStream or Connection) object to which the DML should be written.      */
+comment|/**      * Generates the DML required to populate the entries table with jabref data and writes it to the output      * PrintStream.      *      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *                    using getDatabaseIDByPath(metaData, out)      * @param entries     The BibtexEntries to export      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      */
 DECL|method|populateEntriesTable (int database_id, List<BibtexEntry> entries, Object out)
 specifier|private
 name|void
@@ -815,7 +815,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Recursive method to include a tree of groups.      *      * @param cursor The current GroupTreeNode in the GroupsTree      * @param parentID The integer ID associated with the cursors's parent node      * @param currentID The integer value to associate with the cursor      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of jabref database to which the group is part of      */
+comment|/**      * Recursive method to include a tree of groups.      *      * @param cursor      The current GroupTreeNode in the GroupsTree      * @param parentID    The integer ID associated with the cursors's parent node      * @param currentID   The integer value to associate with the cursor      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of jabref database to which the group is part of      */
 DECL|method|populateEntryGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, int database_id)
 specifier|private
 name|int
@@ -926,7 +926,9 @@ expr_stmt|;
 block|}
 block|}
 comment|// recurse on child nodes (depth-first traversal)
-name|Object
+try|try
+init|(
+name|AutoCloseable
 name|response
 init|=
 name|SQLUtil
@@ -955,7 +957,8 @@ name|parentID
 operator|+
 literal|"';"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 comment|// setting values to ID and myID to be used in case of textual SQL
 comment|// export
 operator|++
@@ -1057,6 +1060,24 @@ name|database_id
 argument_list|)
 expr_stmt|;
 block|}
+comment|//Unfortunatley, AutoCloseable throws only Exception
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot close resource"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|currentID
 return|;
@@ -1125,7 +1146,7 @@ name|out
 argument_list|,
 literal|"SELECT label FROM entry_types"
 argument_list|)
-init|;                     ResultSet rs = sm.getResultSet()
+init|;                  ResultSet rs = sm.getResultSet()
 block|)
 block|{
 while|while
@@ -1438,7 +1459,7 @@ block|}
 end_class
 
 begin_comment
-comment|/**      * Recursive worker method for the populateGroupsTable methods.      *      * @param cursor The current GroupTreeNode in the GroupsTree      * @param parentID The integer ID associated with the cursors's parent node      * @param currentID The integer value to associate with the cursor      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of jabref database to which the groups/entries are part of      */
+comment|/**      * Recursive worker method for the populateGroupsTable methods.      *      * @param cursor      The current GroupTreeNode in the GroupsTree      * @param parentID    The integer ID associated with the cursors's parent node      * @param currentID   The integer value to associate with the cursor      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of jabref database to which the groups/entries are part of      */
 end_comment
 
 begin_function
@@ -1770,7 +1791,9 @@ literal|"');"
 argument_list|)
 expr_stmt|;
 comment|// recurse on child nodes (depth-first traversal)
-name|Object
+try|try
+init|(
+name|AutoCloseable
 name|response
 init|=
 name|SQLUtil
@@ -1799,7 +1822,8 @@ name|parentID
 operator|+
 literal|"';"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 comment|// setting values to ID and myID to be used in case of textual SQL
 comment|// export
 name|int
@@ -1901,6 +1925,24 @@ name|database_id
 argument_list|)
 expr_stmt|;
 block|}
+comment|//Unfortunatley, AutoCloseable throws only Exception
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot close resource"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|currentID
 return|;
@@ -1908,7 +1950,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Generates the DML required to populate the group_types table with JabRef data.      *      * @param out The output (PrintSream or Connection) object to which the DML should be written.      *      * @throws SQLException      */
+comment|/**      * Generates the DML required to populate the group_types table with JabRef data.      *      * @param out The output (PrintSream or Connection) object to which the DML should be written.      * @throws SQLException      */
 end_comment
 
 begin_function
@@ -2038,7 +2080,7 @@ end_if
 
 begin_comment
 unit|}
-comment|/**      * Generates the SQL required to populate the strings table with jabref data.      *      * @param database BibtexDatabase object used from where the strings will be exported      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *            using getDatabaseIDByPath(metaData, out)      * @throws SQLException      */
+comment|/**      * Generates the SQL required to populate the strings table with jabref data.      *      * @param database    BibtexDatabase object used from where the strings will be exported      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *                    using getDatabaseIDByPath(metaData, out)      * @throws SQLException      */
 end_comment
 
 begin_function
@@ -2238,7 +2280,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified output file.      *      * @param database The BibtexDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet The set of IDs of the entries to export.      * @param file The name of the file to which the DML should be written      * @param encoding The encoding to be used      */
+comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified output file.      *      * @param database The BibtexDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet   The set of IDs of the entries to export.      * @param file     The name of the file to which the DML should be written      * @param encoding The encoding to be used      */
 end_comment
 
 begin_function
@@ -2350,7 +2392,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified SQL database.      *      * @param database The BibtexDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet The set of IDs of the entries to export.      * @param databaseStrings The necessary database connection information      */
+comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified SQL database.      *      * @param database        The BibtexDatabase to export      * @param metaData        The MetaData object containing the groups information      * @param keySet          The set of IDs of the entries to export.      * @param databaseStrings The necessary database connection information      */
 end_comment
 
 begin_function

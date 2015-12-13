@@ -194,7 +194,7 @@ name|setField
 argument_list|(
 literal|"doi"
 argument_list|,
-literal|"10.1016/j.aasri.2014.09.002"
+literal|"10.1016/j.jrmge.2015.08.004"
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -208,7 +208,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"http://api.elsevier.com/content/article/doi/10.1016/j.aasri.2014.09.002?httpAccept=application/pdf"
+literal|"http://www.sciencedirect.com/science/article/pii/S1674775515001079/pdfft?md5=2b19b19a387cffbae237ca6a987279df&pid=1-s2.0-S1674775515001079-main.pdf"
 argument_list|)
 argument_list|)
 argument_list|,

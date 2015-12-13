@@ -34,8 +34,20 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
+import|;
+end_import
+
 begin_comment
-comment|/**  * This class represents all supported BibTex entry types.  *  * Article, Book, Booklet, Conference, Inbook, Incollection, Inproceedings,  * Manual, Mastersthesis, Misc, Phdthesis, Proceedings, Techreport, Unpublished  */
+comment|/**  * This class represents all supported BibTex entry types.  *<p>  * Article, Book, Booklet, Conference, Inbook, Incollection, Inproceedings,  * Manual, Mastersthesis, Misc, Phdthesis, Proceedings, Techreport, Unpublished  */
 end_comment
 
 begin_class
@@ -44,7 +56,7 @@ specifier|public
 class|class
 name|BibtexEntryTypes
 block|{
-comment|/**      * An article from a journal or magazine.      *      * Required fields: author, title, journal, year.      * Optional fields: volume, number, pages, month, note.      */
+comment|/**      * An article from a journal or magazine.      *<p>      * Required fields: author, title, journal, year.      * Optional fields: volume, number, pages, month, note.      */
 DECL|field|ARTICLE
 specifier|public
 specifier|static
@@ -95,7 +107,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * A book with an explicit publisher.      *      * Required fields: author or editor, title, publisher, year.      * Optional fields: volume or number, series, address, edition, month, note.      */
+comment|/**      * A book with an explicit publisher.      *<p>      * Required fields: author or editor, title, publisher, year.      * Optional fields: volume or number, series, address, edition, month, note.      */
 DECL|field|BOOK
 specifier|public
 specifier|static
@@ -150,7 +162,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * A work that is printed and bound, but without a named publisher or sponsoring institution.      *      * Required field: title.      * Optional fields: author, howpublished, address, month, year, note.      */
+comment|/**      * A work that is printed and bound, but without a named publisher or sponsoring institution.      *<p>      * Required field: title.      * Optional fields: author, howpublished, address, month, year, note.      */
 DECL|field|BOOKLET
 specifier|public
 specifier|static
@@ -197,7 +209,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * An article in a conference proceedings.      *      * Required fields: author, title, booktitle, year.      * Optional fields: editor, volume or number, series, pages, address, month, organization, publisher, note.      */
+comment|/**      * An article in a conference proceedings.      *<p>      * Required fields: author, title, booktitle, year.      * Optional fields: editor, volume or number, series, pages, address, month, organization, publisher, note.      */
 DECL|field|CONFERENCE
 specifier|public
 specifier|static
@@ -258,7 +270,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * A part of a book, which may be a chapter (or section or whatever) and/or a range of pages.      *      * Required fields: author or editor, title, chapter and/or pages, publisher, year.      * Optional fields: volume or number, series, type, address, edition, month, note.      */
+comment|/**      * A part of a book, which may be a chapter (or section or whatever) and/or a range of pages.      *<p>      * Required fields: author or editor, title, chapter and/or pages, publisher, year.      * Optional fields: volume or number, series, type, address, edition, month, note.      */
 DECL|field|INBOOK
 specifier|public
 specifier|static
@@ -382,7 +394,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * An article in a conference proceedings.      *      * Required fields: author, title, booktitle, year.      * Optional fields: editor, volume or number, series, pages, address, month, organization, publisher, note.      */
+comment|/**      * An article in a conference proceedings.      *<p>      * Required fields: author, title, booktitle, year.      * Optional fields: editor, volume or number, series, pages, address, month, organization, publisher, note.      */
 DECL|field|INPROCEEDINGS
 specifier|public
 specifier|static
@@ -492,7 +504,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * A Master's thesis.      *      * Required fields: author, title, school, year.      * Optional fields: type, address, month, note.      */
+comment|/**      * A Master's thesis.      *<p>      * Required fields: author, title, school, year.      * Optional fields: type, address, month, note.      */
 DECL|field|MASTERSTHESIS
 specifier|public
 specifier|static
@@ -541,7 +553,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * Use this type when nothing else fits.      *      * Required fields: none.      * Optional fields: author, title, howpublished, month, year, note.      */
+comment|/**      * Use this type when nothing else fits.      *<p>      * Required fields: none.      * Optional fields: author, title, howpublished, month, year, note.      */
 DECL|field|MISC
 specifier|public
 specifier|static
@@ -583,7 +595,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * A PhD thesis.      *      * Required fields: author, title, school, year.      * Optional fields: type, address, month, note.      */
+comment|/**      * A PhD thesis.      *<p>      * Required fields: author, title, school, year.      * Optional fields: type, address, month, note.      */
 DECL|field|PHDTHESIS
 specifier|public
 specifier|static
@@ -632,7 +644,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * The proceedings of a conference.      *      * Required fields: title, year.      * Optional fields: editor, volume or number, series, address, month, organization, publisher, note.      */
+comment|/**      * The proceedings of a conference.      *<p>      * Required fields: title, year.      * Optional fields: editor, volume or number, series, address, month, organization, publisher, note.      */
 DECL|field|PROCEEDINGS
 specifier|public
 specifier|static
@@ -687,7 +699,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * A report published by a school or other institution, usually numbered within a series.      *      * Required fields: author, title, institution, year.      * Optional fields: type, number, address, month, note.      */
+comment|/**      * A report published by a school or other institution, usually numbered within a series.      *<p>      * Required fields: author, title, institution, year.      * Optional fields: type, number, address, month, note.      */
 DECL|field|TECHREPORT
 specifier|public
 specifier|static
@@ -738,7 +750,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * A document having an author and title, but not formally published.      *      * Required fields: author, title, note.      * Optional fields: month, year.      */
+comment|/**      * A document having an author and title, but not formally published.      *<p>      * Required fields: author, title, note.      * Optional fields: month, year.      */
 DECL|field|UNPUBLISHED
 specifier|public
 specifier|static

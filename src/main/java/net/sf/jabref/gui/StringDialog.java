@@ -588,10 +588,6 @@ name|Object
 index|[]
 name|strings
 decl_stmt|;
-DECL|field|lab
-name|JLabel
-name|lab
-decl_stmt|;
 DECL|field|table
 specifier|private
 specifier|final

@@ -1573,7 +1573,7 @@ name|String
 name|suffix
 decl_stmt|;
 name|int
-name|index
+name|strippedLinkIndex
 init|=
 name|strippedLink
 operator|.
@@ -1585,13 +1585,13 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-name|index
+name|strippedLinkIndex
 operator|<=
 literal|0
 operator|)
 operator|||
 operator|(
-name|index
+name|strippedLinkIndex
 operator|==
 operator|(
 name|strippedLink
@@ -1617,7 +1617,7 @@ name|strippedLink
 operator|.
 name|substring
 argument_list|(
-name|index
+name|strippedLinkIndex
 operator|+
 literal|1
 argument_list|)
@@ -1645,15 +1645,16 @@ else|else
 block|{
 comment|// If the suffix doesn't seem to give any reasonable file type, try
 comment|// with the non-stripped link:
+name|int
 name|index
-operator|=
+init|=
 name|link
 operator|.
 name|lastIndexOf
 argument_list|(
 literal|'.'
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -1666,7 +1667,7 @@ operator|(
 name|index
 operator|==
 operator|(
-name|strippedLink
+name|link
 operator|.
 name|length
 argument_list|()
@@ -1676,12 +1677,19 @@ operator|)
 operator|)
 condition|)
 block|{
-comment|// No occurence, or at the end
+comment|// No occurrence, or at the end
 comment|// Check if there are path separators in the suffix - if so, it is definitely
 comment|// not a proper suffix, so we should give up:
 if|if
 condition|(
-name|suffix
+name|strippedLink
+operator|.
+name|substring
+argument_list|(
+name|strippedLinkIndex
+operator|+
+literal|1
+argument_list|)
 operator|.
 name|indexOf
 argument_list|(
