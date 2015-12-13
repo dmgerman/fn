@@ -312,12 +312,7 @@ operator|.
 name|lang
 argument_list|(
 literal|"An autosave file was found for this database. This could indicate "
-argument_list|)
 operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"that JabRef didn't shut down cleanly last time the file was used."
 argument_list|)
 operator|+

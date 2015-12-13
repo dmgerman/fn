@@ -1002,6 +1002,28 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|languagePropertyKey
+operator|.
+name|endsWith
+argument_list|(
+literal|"_"
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Key "
+operator|+
+name|languageKey
+operator|+
+literal|" ends with a space"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
 operator|!
 name|languagePropertyKey
 operator|.
