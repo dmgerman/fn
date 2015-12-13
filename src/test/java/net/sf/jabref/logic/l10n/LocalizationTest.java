@@ -597,6 +597,8 @@ name|languageKeysInString
 init|=
 name|LocalizationParser
 operator|.
+name|JavaLocalizationEntryParser
+operator|.
 name|getLanguageKeysInString
 argument_list|(
 name|code
