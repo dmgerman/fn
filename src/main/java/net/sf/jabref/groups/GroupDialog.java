@@ -2707,13 +2707,13 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Please enter a search term. For example, to search all fields for<b>Smith</b>, enter%c<p>"
+literal|"Please enter a search term. For example, to search all fields for<b>Smith</b>, enter:<p>"
 operator|+
 literal|"<tt>smith</tt><p>"
 operator|+
-literal|"To search the field<b>Author</b> for<b>Smith</b> and the field<b>Title</b> for<b>electrical</b>, enter%c<p>"
+literal|"To search the field<b>Author</b> for<b>Smith</b> and the field<b>Title</b> for<b>electrical</b>, enter:<p>"
 operator|+
-literal|"<tt>author%esmith and title%eelectrical</tt>"
+literal|"<tt>author=smith and title=electrical</tt>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3141,7 +3141,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The regular expression<b>%0</b> is invalid%c"
+literal|"The regular expression<b>%0</b> is invalid:"
 argument_list|,
 name|StringUtil
 operator|.

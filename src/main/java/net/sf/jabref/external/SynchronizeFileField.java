@@ -1612,24 +1612,19 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Finished synchronizing %0 links. Entries changed%c %1."
+literal|"Finished synchronizing %0 links. Entries changed: %1."
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
 name|fieldName
 operator|.
 name|toUpperCase
 argument_list|()
-block|,
+argument_list|,
 name|String
 operator|.
 name|valueOf
 argument_list|(
 name|entriesChangedCount
 argument_list|)
-block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
