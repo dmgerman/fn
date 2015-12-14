@@ -1155,7 +1155,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Text_Input_Area"
+literal|"paste_text_here"
 argument_list|)
 argument_list|)
 decl_stmt|;
