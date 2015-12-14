@@ -1011,7 +1011,7 @@ throw|throw
 operator|new
 name|KeyCollisionException
 argument_list|(
-literal|"A string with this label already exists"
+literal|"A string with that label already exists"
 argument_list|)
 throw|;
 block|}
