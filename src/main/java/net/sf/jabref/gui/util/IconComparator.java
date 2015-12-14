@@ -78,11 +78,14 @@ name|String
 argument_list|>
 name|fields
 decl_stmt|;
-DECL|method|IconComparator (List fields)
+DECL|method|IconComparator (List<String> fields)
 specifier|public
 name|IconComparator
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|fields
 parameter_list|)
 block|{

@@ -237,6 +237,7 @@ name|database
 decl_stmt|;
 DECL|field|tableColumns
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|MainTableColumn

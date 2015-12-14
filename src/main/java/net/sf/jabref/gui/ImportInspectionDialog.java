@@ -2668,7 +2668,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entries A Collection of BibtexEntry instances.      * @param entry   The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
+comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entriesDupe A Collection of BibtexEntry instances.      * @param entry   The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
 DECL|method|internalDuplicate (Collection<BibtexEntry> entriesDupe, BibtexEntry entry)
 specifier|private
 specifier|static
@@ -7566,9 +7566,9 @@ argument_list|(
 operator|new
 name|IconComparator
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|Globals
 operator|.
@@ -7593,9 +7593,9 @@ argument_list|(
 operator|new
 name|IconComparator
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 literal|"url"
 argument_list|)
