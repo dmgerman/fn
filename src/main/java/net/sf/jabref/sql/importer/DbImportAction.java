@@ -936,12 +936,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|preamble
-argument_list|)
 operator|+
 literal|'\n'
 operator|+
