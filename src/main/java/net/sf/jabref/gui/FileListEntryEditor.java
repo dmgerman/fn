@@ -1216,7 +1216,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Edit file link"
+literal|"Save file"
 argument_list|)
 argument_list|,
 literal|true
