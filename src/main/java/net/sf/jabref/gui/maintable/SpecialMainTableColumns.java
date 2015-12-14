@@ -173,6 +173,17 @@ return|return
 literal|"#"
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getDisplayName
+parameter_list|()
+block|{
+return|return
+literal|"#"
+return|;
+block|}
 block|}
 decl_stmt|;
 DECL|field|RANKING_COLUMN
