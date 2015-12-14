@@ -320,7 +320,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 expr_stmt|;

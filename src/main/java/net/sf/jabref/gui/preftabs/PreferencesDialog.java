@@ -1101,7 +1101,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1563,7 +1563,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 expr_stmt|;
 block|}
