@@ -10,6 +10,16 @@ name|jabref
 package|;
 end_package
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/**  * JabRef MainClass  */
 end_comment
@@ -31,6 +41,12 @@ index|[]
 name|args
 parameter_list|)
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
 operator|new
 name|JabRef
 argument_list|()
@@ -38,6 +54,7 @@ operator|.
 name|start
 argument_list|(
 name|args
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
