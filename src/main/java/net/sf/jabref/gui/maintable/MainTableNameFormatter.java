@@ -71,6 +71,17 @@ name|String
 name|nameToFormat
 parameter_list|)
 block|{
+if|if
+condition|(
+name|nameToFormat
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 comment|// Read name format options:
 name|boolean
 name|namesNatbib
@@ -159,18 +170,6 @@ name|namesLastOnly
 operator|)
 decl_stmt|;
 comment|// None of the above.
-if|if
-condition|(
-name|nameToFormat
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-elseif|else
 if|if
 condition|(
 name|namesAsIs
