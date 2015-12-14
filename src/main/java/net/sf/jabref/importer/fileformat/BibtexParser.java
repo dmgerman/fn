@@ -1062,7 +1062,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"grouping may not work for this entry"
+literal|"Grouping may not work for this entry."
 argument_list|)
 operator|+
 literal|")"
