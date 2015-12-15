@@ -59,6 +59,20 @@ argument_list|,
 operator|new
 name|LocalizationKeyParams
 argument_list|(
+literal|"BibLaTeX mode"
+argument_list|)
+operator|.
+name|replacePlaceholders
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"BibLaTeX mode"
+argument_list|,
+operator|new
+name|LocalizationKeyParams
+argument_list|(
 literal|"%0 mode"
 argument_list|,
 literal|"BibLaTeX"
