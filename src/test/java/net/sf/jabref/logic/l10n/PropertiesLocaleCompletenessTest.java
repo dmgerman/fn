@@ -129,10 +129,10 @@ comment|/**  * Checks that all property files are correctly encoded and can be l
 end_comment
 
 begin_class
-DECL|class|TestL10nFiles
+DECL|class|PropertiesLocaleCompletenessTest
 specifier|public
 class|class
-name|TestL10nFiles
+name|PropertiesLocaleCompletenessTest
 block|{
 annotation|@
 name|Test
