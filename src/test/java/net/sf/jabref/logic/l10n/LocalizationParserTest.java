@@ -40,6 +40,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -70,66 +80,117 @@ name|void
 name|testParsingCode
 parameter_list|()
 block|{
+name|assertLocalizationParsing
+argument_list|(
+literal|"Localization.lang(\"one per line\")"
+argument_list|,
+literal|"one_per_line"
+argument_list|)
+expr_stmt|;
+name|assertLocalizationParsing
+argument_list|(
+literal|"Localization.lang(\n            \"Copy \\\\cite{BibTeX key}\")"
+argument_list|,
+literal|"Copy_\\cite{BibTeX_key}"
+argument_list|)
+expr_stmt|;
+name|assertLocalizationParsing
+argument_list|(
+literal|"Localization.lang(\"two per line\") Localization.lang(\"two per line\")"
+argument_list|,
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|"two_per_line"
+argument_list|,
+literal|"two_per_line"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertLocalizationParsing
+argument_list|(
+literal|"Localization.lang(\"multi \" + \n\"line\")"
+argument_list|,
+literal|"multi_line"
+argument_list|)
+expr_stmt|;
+name|assertLocalizationParsing
+argument_list|(
+literal|"Localization.lang(\"one per line with var\", var)"
+argument_list|,
+literal|"one_per_line_with_var"
+argument_list|)
+expr_stmt|;
+name|assertLocalizationParsing
+argument_list|(
+literal|"Localization.lang(\"Search %0\", \"Springer\")"
+argument_list|,
+literal|"Search_%0"
+argument_list|)
+expr_stmt|;
+name|assertLocalizationParsing
+argument_list|(
+literal|"Localization.lang(\"Reset preferences (key1,key2,... or 'all')\")"
+argument_list|,
+literal|"Reset_preferences_(key1,key2,..._or_'all')"
+argument_list|)
+expr_stmt|;
+name|assertLocalizationParsing
+argument_list|(
+literal|"Localization.lang(\"Multiple entries selected. Do you want to change the type of all these to '%0'?\")"
+argument_list|,
+literal|"Multiple_entries_selected._Do_you_want_to_change_the_type_of_all_these_to_'%0'?"
+argument_list|)
+expr_stmt|;
+name|assertLocalizationParsing
+argument_list|(
+literal|"Localization.lang(\"Run Fetcher, e.g. \\\"--fetch=Medline:cancer\\\"\");"
+argument_list|,
+literal|"Run_Fetcher,_e.g._\"--fetch\\=Medline\\:cancer\""
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|assertLocalizationParsing (String code, String expectedLanguageKeys)
+specifier|private
+name|void
+name|assertLocalizationParsing
+parameter_list|(
 name|String
 name|code
-init|=
-literal|""
-operator|+
-literal|"Localization.lang(\"one per line\")"
-operator|+
-literal|"Localization.lang(\n"
-operator|+
-literal|"            \"Copy \\\\cite{BibTeX key}\")"
-operator|+
-literal|"Localization.lang(\"two per line\") Localization.lang(\"two per line\")"
-operator|+
-literal|"Localization.lang(\"multi \" + \n"
-operator|+
-literal|"\"line\")"
-operator|+
-literal|"Localization.lang(\"one per line with var\", var)"
-operator|+
-literal|"Localization.lang(\"Search %0\", \"Springer\")"
-operator|+
-literal|"Localization.lang(\"Reset preferences (key1,key2,... or 'all')\")"
-operator|+
-literal|"Localization.lang(\"Multiple entries selected. Do you want to change the type of all these to '%0'?\")"
-operator|+
-literal|"Localization.lang(\"Run Fetcher, e.g. \\\"--fetch=Medline:cancer\\\"\");"
-decl_stmt|;
+parameter_list|,
+name|String
+name|expectedLanguageKeys
+parameter_list|)
+block|{
+name|assertLocalizationParsing
+argument_list|(
+name|code
+argument_list|,
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|expectedLanguageKeys
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|assertLocalizationParsing (String code, List<String> expectedLanguageKeys)
+specifier|private
+name|void
+name|assertLocalizationParsing
+parameter_list|(
+name|String
+name|code
+parameter_list|,
 name|List
 argument_list|<
 name|String
 argument_list|>
 name|expectedLanguageKeys
-init|=
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-literal|"one_per_line"
-argument_list|,
-literal|"Copy_\\cite{BibTeX_key}"
-argument_list|,
-literal|"two_per_line"
-argument_list|,
-literal|"two_per_line"
-argument_list|,
-literal|"multi_line"
-argument_list|,
-literal|"one_per_line_with_var"
-argument_list|,
-literal|"Search_%0"
-argument_list|,
-literal|"Reset_preferences_(key1,key2,..._or_'all')"
-argument_list|,
-literal|"Multiple_entries_selected._Do_you_want_to_change_"
-operator|+
-literal|"the_type_of_all_these_to_'%0'?"
-argument_list|,
-literal|"Run_Fetcher,_e.g._\"--fetch\\=Medline\\:cancer\""
-argument_list|)
-decl_stmt|;
+parameter_list|)
+block|{
 name|List
 argument_list|<
 name|String
