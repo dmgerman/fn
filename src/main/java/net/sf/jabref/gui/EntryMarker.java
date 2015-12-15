@@ -84,7 +84,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -100,7 +100,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -193,13 +193,13 @@ name|MARKING_WITH_NUMBER_PATTERN
 argument_list|)
 decl_stmt|;
 comment|/**      * @param increment whether the given increment should be added to the current one. Currently never used in JabRef      */
-DECL|method|markEntry (BibtexEntry be, int markIncrement, boolean increment, NamedCompound ce)
+DECL|method|markEntry (BibEntry be, int markIncrement, boolean increment, NamedCompound ce)
 specifier|public
 specifier|static
 name|void
 name|markEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|int
@@ -514,19 +514,19 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * SIDE EFFECT: Unselectes given entry      */
-DECL|method|unmarkEntry (BibtexEntry be, boolean onlyMaxLevel, BibtexDatabase database, NamedCompound ce)
+DECL|method|unmarkEntry (BibEntry be, boolean onlyMaxLevel, BibDatabase database, NamedCompound ce)
 specifier|public
 specifier|static
 name|void
 name|unmarkEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|boolean
 name|onlyMaxLevel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|NamedCompound
@@ -886,16 +886,16 @@ block|}
 block|}
 block|}
 comment|/**      * An entry is marked with a "0", not in the new style with user names. We      * want to unmark it as transparently as possible. Since this shouldn't      * happen too often, we do it by scanning the "owner" fields of the entire      * database, collecting all user names. We then mark the entry for all users      * except the current one. Thus only the user who unmarks will see that it      * is unmarked, and we get rid of the old-style marking.      *      * @param be      * @param ce      */
-DECL|method|unmarkOldStyle (BibtexEntry be, BibtexDatabase database, NamedCompound ce)
+DECL|method|unmarkOldStyle (BibEntry be, BibDatabase database, NamedCompound ce)
 specifier|private
 specifier|static
 name|void
 name|unmarkOldStyle
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|NamedCompound
@@ -915,7 +915,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|database
@@ -1065,13 +1065,13 @@ name|newVal
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|isMarked (BibtexEntry be)
+DECL|method|isMarked (BibEntry be)
 specifier|public
 specifier|static
 name|int
 name|isMarked
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|)
 block|{

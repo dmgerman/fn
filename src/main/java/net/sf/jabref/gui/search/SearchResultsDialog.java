@@ -144,6 +144,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Comparator
 import|;
 end_import
@@ -442,6 +452,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|maintable
+operator|.
+name|MainTableNameFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|renderer
 operator|.
 name|GeneralRenderer
@@ -476,7 +502,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -901,7 +927,7 @@ specifier|private
 specifier|final
 name|EventList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -915,7 +941,7 @@ specifier|private
 specifier|final
 name|HashMap
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
 name|BasePanel
 argument_list|>
@@ -930,7 +956,7 @@ DECL|field|model
 specifier|private
 name|DefaultEventTableModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|model
 decl_stmt|;
@@ -938,7 +964,7 @@ DECL|field|sortedEntries
 specifier|private
 name|SortedList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sortedEntries
 decl_stmt|;
@@ -1082,7 +1108,7 @@ operator|=
 operator|(
 name|DefaultEventTableModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 operator|)
 name|GlazedListsSwing
@@ -1142,7 +1168,7 @@ argument_list|()
 expr_stmt|;
 name|TableComparatorChooser
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|tableSorter
 init|=
@@ -1176,14 +1202,14 @@ decl_stmt|;
 specifier|final
 name|DefaultEventSelectionModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|selectionModel
 init|=
 operator|(
 name|DefaultEventSelectionModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 operator|)
 name|GlazedListsSwing
@@ -1344,7 +1370,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -1356,7 +1382,7 @@ operator|.
 name|toArray
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|selectionModel
 operator|.
@@ -1652,14 +1678,14 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Set up the comparators for each column, so the user can modify sort order      * by clicking the column labels.      * @param comparatorChooser The comparator chooser controlling the sort order.      */
-DECL|method|setupComparatorChooser (TableComparatorChooser<BibtexEntry> comparatorChooser)
+DECL|method|setupComparatorChooser (TableComparatorChooser<BibEntry> comparatorChooser)
 specifier|private
 name|void
 name|setupComparatorChooser
 parameter_list|(
 name|TableComparatorChooser
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|comparatorChooser
 parameter_list|)
@@ -1745,14 +1771,14 @@ argument_list|(
 operator|new
 name|IconComparator
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|Globals
 operator|.
 name|FILE_FIELD
-block|}
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1772,12 +1798,12 @@ argument_list|(
 operator|new
 name|IconComparator
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 literal|"url"
-block|}
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1990,7 +2016,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Add a list of entries to the table.      * @param newEntries The list of entries.      * @param panel A reference to the BasePanel where the entries belong.      */
-DECL|method|addEntries (java.util.List<BibtexEntry> newEntries, BasePanel panel)
+DECL|method|addEntries (java.util.List<BibEntry> newEntries, BasePanel panel)
 specifier|public
 specifier|synchronized
 name|void
@@ -2002,7 +2028,7 @@ name|util
 operator|.
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|newEntries
 parameter_list|,
@@ -2012,7 +2038,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|newEntries
@@ -2028,13 +2054,13 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Add a single entry to the table.      * @param entry The entry to add.      * @param panel A reference to the BasePanel where the entry belongs.      */
-DECL|method|addEntry (BibtexEntry entry, BasePanel panel)
+DECL|method|addEntry (BibEntry entry, BasePanel panel)
 specifier|public
 specifier|synchronized
 name|void
 name|addEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|BasePanel
@@ -2144,7 +2170,7 @@ literal|2
 condition|)
 block|{
 comment|// Get the selected entry:
-name|BibtexEntry
+name|BibEntry
 name|toShow
 init|=
 name|model
@@ -2245,7 +2271,7 @@ operator|<
 name|PAD
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|sortedEntries
@@ -2434,7 +2460,7 @@ name|MouseEvent
 name|e
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|sortedEntries
@@ -2669,19 +2695,19 @@ name|EntrySelectionListener
 implements|implements
 name|ListEventListener
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|listChanged (ListEvent<BibtexEntry> listEvent)
+DECL|method|listChanged (ListEvent<BibEntry> listEvent)
 specifier|public
 name|void
 name|listChanged
 parameter_list|(
 name|ListEvent
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|listEvent
 parameter_list|)
@@ -2699,7 +2725,7 @@ operator|==
 literal|1
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|listEvent
@@ -2786,7 +2812,7 @@ name|EntryTableFormat
 implements|implements
 name|AdvancedTableFormat
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 annotation|@
@@ -2846,12 +2872,12 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|getColumnValue (BibtexEntry entry, int column)
+DECL|method|getColumnValue (BibEntry entry, int column)
 specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|int
@@ -3047,12 +3073,7 @@ literal|null
 condition|)
 block|{
 return|return
-name|frame
-operator|.
-name|getCurrentBasePanel
-argument_list|()
-operator|.
-name|tableFormat
+name|MainTableNameFormatter
 operator|.
 name|formatName
 argument_list|(

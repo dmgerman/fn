@@ -116,6 +116,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|maintable
+operator|.
+name|MainTable
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|undo
 operator|.
 name|NamedCompound
@@ -198,7 +214,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -214,7 +230,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -651,7 +667,7 @@ name|int
 name|dropRow
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|mainTable
@@ -674,7 +690,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param entry     The target entry for the drop.      */
-DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, boolean localFile, BibtexEntry entry)
+DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, boolean localFile, BibEntry entry)
 specifier|public
 name|void
 name|handleDroppedfile
@@ -688,7 +704,7 @@ parameter_list|,
 name|boolean
 name|localFile
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -945,7 +961,7 @@ name|int
 name|dropRow
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entryTable
@@ -965,7 +981,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|linkPdfToEntry (String fileName, MainTable entryTable, BibtexEntry entry)
+DECL|method|linkPdfToEntry (String fileName, MainTable entryTable, BibEntry entry)
 specifier|public
 name|void
 name|linkPdfToEntry
@@ -976,7 +992,7 @@ parameter_list|,
 name|MainTable
 name|entryTable
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -1194,14 +1210,14 @@ name|edits
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|importXmp (List<BibtexEntry> xmpEntriesInFile, String fileName)
+DECL|method|importXmp (List<BibEntry> xmpEntriesInFile, String fileName)
 specifier|public
 name|void
 name|importXmp
 parameter_list|(
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|xmpEntriesInFile
 parameter_list|,
@@ -1249,7 +1265,7 @@ argument_list|()
 operator|==
 literal|1
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|single
 init|=
 name|isSingle
@@ -1392,7 +1408,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|aXmpEntriesInFile
 range|:
 name|xmpEntriesInFile
@@ -1514,7 +1530,7 @@ return|;
 block|}
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|xmpEntriesInFile
 decl_stmt|;
@@ -1649,7 +1665,7 @@ argument_list|()
 operator|==
 literal|1
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|single
 init|=
 name|isSingle
@@ -1792,7 +1808,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|aXmpEntriesInFile
 range|:
 name|xmpEntriesInFile
@@ -1868,7 +1884,7 @@ block|}
 comment|//
 comment|// @return true if user pushed "Ok", false otherwise
 comment|//
-DECL|method|showLinkMoveCopyRenameDialog (String linkFileName, ExternalFileType fileType, BibtexEntry entry, boolean newEntry, final boolean multipleEntries, BibtexDatabase database)
+DECL|method|showLinkMoveCopyRenameDialog (String linkFileName, ExternalFileType fileType, BibEntry entry, boolean newEntry, final boolean multipleEntries, BibDatabase database)
 specifier|private
 name|boolean
 name|showLinkMoveCopyRenameDialog
@@ -1879,7 +1895,7 @@ parameter_list|,
 name|ExternalFileType
 name|fileType
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|boolean
@@ -1889,7 +1905,7 @@ specifier|final
 name|boolean
 name|multipleEntries
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -2488,12 +2504,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Make a extension to the file.      *      * @param entry    The entry to extension from.      * @param fileType The FileType associated with the file.      * @param filename The path to the file.      * @param edits    An NamedCompound action this action is to be added to. If none      *                 is given, the edit is added to the panel's undoManager.      */
-DECL|method|doLink (BibtexEntry entry, ExternalFileType fileType, String filename, boolean avoidDuplicate, NamedCompound edits)
+DECL|method|doLink (BibEntry entry, ExternalFileType fileType, String filename, boolean avoidDuplicate, NamedCompound edits)
 specifier|private
 name|void
 name|doLink
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|ExternalFileType

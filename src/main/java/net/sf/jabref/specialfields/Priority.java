@@ -92,7 +92,7 @@ name|JabRefIcon
 operator|.
 name|PRIORITY
 operator|.
-name|getIcon
+name|getSmallIcon
 argument_list|()
 decl_stmt|;
 DECL|method|Priority ()

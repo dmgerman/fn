@@ -62,7 +62,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -211,7 +211,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
 name|makeChange
@@ -219,7 +219,7 @@ parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 name|NamedCompound
@@ -343,8 +343,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// the group tree is now appled to a different BibtexDatabase than it was created
-comment|// for, which affects groups such as ExplicitGroup (which links to BibtexEntry objects).
+comment|// the group tree is now appled to a different BibDatabase than it was created
+comment|// for, which affects groups such as ExplicitGroup (which links to BibEntry objects).
 comment|// We must traverse the tree and refresh all groups:
 name|root
 operator|.

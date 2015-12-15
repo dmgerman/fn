@@ -66,7 +66,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -170,12 +170,12 @@ name|query
 argument_list|)
 return|;
 block|}
-comment|/**      * Takes an HTML file (as String) as input and extracts the bibtex      * information. After that, it will convert it into a BibtexEntry and return      * it (them).      *      * @param page      *            page as String      * @return list of BibtexEntry      */
+comment|/**      * Takes an HTML file (as String) as input and extracts the bibtex      * information. After that, it will convert it into a BibEntry and return      * it (them).      *      * @param page      *            page as String      * @return list of BibEntry      */
 DECL|method|getBibTexFromPage (final String page)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getBibTexFromPage
 parameter_list|(
@@ -187,7 +187,7 @@ block|{
 specifier|final
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibtexList
 init|=

@@ -86,7 +86,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -131,13 +131,13 @@ DECL|field|bibitems
 specifier|private
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibitems
 decl_stmt|;
 DECL|field|b
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|b
 decl_stmt|;
 comment|// the entry being read
@@ -160,7 +160,7 @@ DECL|method|getItems ()
 specifier|public
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getItems
 parameter_list|()
@@ -329,7 +329,7 @@ block|}
 name|b
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.
@@ -341,7 +341,7 @@ name|b
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,

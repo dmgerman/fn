@@ -35,10 +35,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|CanonicalBibtexEntryTest
+DECL|class|CanonicalBibEntryTest
 specifier|public
 class|class
-name|CanonicalBibtexEntryTest
+name|CanonicalBibEntryTest
 block|{
 comment|/**      * Simple test for the canonical format      */
 annotation|@
@@ -49,11 +49,11 @@ name|void
 name|canonicalRepresentation
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"id"
 argument_list|,
@@ -66,7 +66,7 @@ name|e
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,

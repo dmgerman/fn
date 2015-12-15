@@ -182,7 +182,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -258,7 +258,7 @@ argument_list|(
 name|fr
 argument_list|)
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|db
 init|=
 name|result

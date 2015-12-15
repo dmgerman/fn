@@ -26,23 +26,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|fetcher
-operator|.
-name|ACS
+name|BibEntry
 import|;
 end_import
 
@@ -141,7 +125,7 @@ name|ACS
 name|finder
 decl_stmt|;
 DECL|field|entry
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 annotation|@
@@ -161,7 +145,7 @@ expr_stmt|;
 name|entry
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 expr_stmt|;
 block|}

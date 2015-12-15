@@ -218,7 +218,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -552,7 +552,7 @@ operator|>
 literal|1
 decl_stmt|;
 comment|// If only one entry is selected, get a reference to it for adapting the menu.
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 literal|null
@@ -1851,12 +1851,12 @@ name|floatMarked
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|buildGroupMenu (BibtexEntry[] bes, boolean add, boolean move)
+DECL|method|buildGroupMenu (BibEntry[] bes, boolean add, boolean move)
 specifier|private
 name|JMenu
 name|buildGroupMenu
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 parameter_list|,
@@ -1946,7 +1946,7 @@ name|groupMenu
 return|;
 block|}
 comment|/**      * @param move For add: if true, remove from previous groups      */
-DECL|method|insertNodes (JMenu menu, GroupTreeNode node, BibtexEntry[] selection, boolean add, boolean move)
+DECL|method|insertNodes (JMenu menu, GroupTreeNode node, BibEntry[] selection, boolean add, boolean move)
 specifier|private
 name|void
 name|insertNodes
@@ -1957,7 +1957,7 @@ parameter_list|,
 name|GroupTreeNode
 name|node
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|selection
 parameter_list|,
@@ -2365,7 +2365,7 @@ block|}
 block|}
 block|}
 comment|/**      * @param move For add: if true, remove from all previous groups      */
-DECL|method|getAction (GroupTreeNode node, BibtexEntry[] selection, boolean add, boolean move)
+DECL|method|getAction (GroupTreeNode node, BibEntry[] selection, boolean add, boolean move)
 specifier|private
 name|AbstractAction
 name|getAction
@@ -2373,7 +2373,7 @@ parameter_list|(
 name|GroupTreeNode
 name|node
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|selection
 parameter_list|,
@@ -2532,7 +2532,7 @@ operator|==
 literal|1
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|panel
@@ -2596,7 +2596,7 @@ operator|==
 literal|1
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|panel

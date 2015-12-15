@@ -66,7 +66,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -82,7 +82,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -203,7 +203,7 @@ operator|new
 name|PagesChecker
 argument_list|()
 decl_stmt|;
-DECL|method|checkBibtexDatabase (BibtexDatabase base)
+DECL|method|checkBibtexDatabase (BibDatabase base)
 specifier|public
 name|List
 argument_list|<
@@ -211,7 +211,7 @@ name|IntegrityMessage
 argument_list|>
 name|checkBibtexDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|)
 block|{
@@ -239,7 +239,7 @@ return|;
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|base
@@ -263,7 +263,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|checkBibtexEntry (BibtexEntry entry)
+DECL|method|checkBibtexEntry (BibEntry entry)
 specifier|public
 name|List
 argument_list|<
@@ -271,7 +271,7 @@ name|IntegrityMessage
 argument_list|>
 name|checkBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -505,7 +505,7 @@ specifier|static
 interface|interface
 name|Checker
 block|{
-DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
 name|void
 name|check
 parameter_list|(
@@ -515,7 +515,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List
@@ -536,7 +536,7 @@ name|Checker
 block|{
 annotation|@
 name|Override
-DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
 name|check
@@ -547,7 +547,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List
@@ -657,7 +657,7 @@ name|Checker
 block|{
 annotation|@
 name|Override
-DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
 name|check
@@ -668,7 +668,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List
@@ -827,7 +827,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
 name|check
@@ -838,7 +838,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List
@@ -986,7 +986,7 @@ decl_stmt|;
 comment|/**          * Checks, if the number String contains a four digit year          */
 annotation|@
 name|Override
-DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
 name|check
@@ -997,7 +997,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List
@@ -1115,7 +1115,7 @@ decl_stmt|;
 comment|/**          * Checks, if the page numbers String conforms to the BibTex manual          */
 annotation|@
 name|Override
-DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
 name|check
@@ -1126,7 +1126,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List

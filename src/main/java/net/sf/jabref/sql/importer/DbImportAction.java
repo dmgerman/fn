@@ -174,7 +174,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -316,7 +316,7 @@ name|AbstractWorker
 block|{
 DECL|field|database
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|metaData
@@ -801,7 +801,7 @@ block|{
 name|database
 operator|=
 operator|(
-name|BibtexDatabase
+name|BibDatabase
 operator|)
 name|res
 index|[
@@ -1004,7 +1004,7 @@ block|{
 name|database
 operator|=
 operator|(
-name|BibtexDatabase
+name|BibDatabase
 operator|)
 name|res
 index|[

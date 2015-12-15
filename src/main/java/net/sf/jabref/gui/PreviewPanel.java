@@ -346,7 +346,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -362,7 +362,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -411,7 +411,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Displays an BibtexEntry using the given layout format.  */
+comment|/**  * Displays an BibEntry using the given layout format.  */
 end_comment
 
 begin_class
@@ -449,7 +449,7 @@ DECL|field|entry
 specifier|private
 name|Optional
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entry
 init|=
@@ -463,7 +463,7 @@ DECL|field|database
 specifier|private
 name|Optional
 argument_list|<
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|database
 init|=
@@ -553,14 +553,14 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|/**      * @param database      *            (may be null) Optionally used to resolve strings.      * @param entry      *            (may be null) If given this entry is shown otherwise you have      *            to call setEntry to make something visible.      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      */
-DECL|method|PreviewPanel (BibtexDatabase database, BibtexEntry entry, BasePanel panel, MetaData metaData, String layoutFile)
+DECL|method|PreviewPanel (BibDatabase database, BibEntry entry, BasePanel panel, MetaData metaData, String layoutFile)
 specifier|public
 name|PreviewPanel
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|BasePanel
@@ -590,14 +590,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @param database      *            (may be null) Optionally used to resolve strings.      * @param entry      *            (may be null) If given this entry is shown otherwise you have      *            to call setEntry to make something visible.      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel      */
-DECL|method|PreviewPanel (BibtexDatabase database, BibtexEntry entry, BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
+DECL|method|PreviewPanel (BibDatabase database, BibEntry entry, BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
 specifier|public
 name|PreviewPanel
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|BasePanel
@@ -1468,12 +1468,12 @@ name|layout
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setEntry (BibtexEntry newEntry)
+DECL|method|setEntry (BibEntry newEntry)
 specifier|public
 name|void
 name|setEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|newEntry
 parameter_list|)
 block|{
@@ -1536,7 +1536,7 @@ annotation|@
 name|Override
 DECL|method|getEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|()
 block|{
@@ -1671,7 +1671,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * The PreviewPanel has registered itself as an event listener with the      * currently displayed BibtexEntry. If the entry changes, an event is      * received here, and we can update the preview immediately.      */
+comment|/**      * The PreviewPanel has registered itself as an event listener with the      * currently displayed BibEntry. If the entry changes, an event is      * received here, and we can update the preview immediately.      */
 annotation|@
 name|Override
 DECL|method|vetoableChange (PropertyChangeEvent evt)
@@ -1838,7 +1838,7 @@ name|entry
 operator|.
 name|map
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|::
 name|getCiteKey
 argument_list|)

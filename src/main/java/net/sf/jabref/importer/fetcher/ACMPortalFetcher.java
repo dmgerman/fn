@@ -294,7 +294,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1241,7 +1241,7 @@ condition|(
 name|sel
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|downloadEntryBibTeX
@@ -2081,7 +2081,7 @@ block|}
 DECL|method|downloadEntryBibTeX (String ID, boolean downloadAbstract)
 specifier|private
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|downloadEntryBibTeX
 parameter_list|(
 name|String
@@ -2134,7 +2134,7 @@ argument_list|)
 expr_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|items
 init|=
@@ -2209,7 +2209,7 @@ return|return
 literal|null
 return|;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|items

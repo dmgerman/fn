@@ -88,7 +88,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -170,16 +170,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|json
-operator|.
-name|JSONString
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|jsoup
 operator|.
 name|Jsoup
@@ -207,16 +197,6 @@ operator|.
 name|nodes
 operator|.
 name|Element
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
 import|;
 end_import
 
@@ -308,7 +288,7 @@ literal|"fb82f2e692b3c72dafe5f4f1fa0ac00b"
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|findFullText (BibtexEntry entry)
+DECL|method|findFullText (BibEntry entry)
 specifier|public
 name|Optional
 argument_list|<
@@ -316,7 +296,7 @@ name|URL
 argument_list|>
 name|findFullText
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 throws|throws

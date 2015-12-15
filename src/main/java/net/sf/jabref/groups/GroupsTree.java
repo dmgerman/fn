@@ -224,7 +224,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1470,7 +1470,7 @@ name|flavorInternal
 argument_list|)
 decl_stmt|;
 specifier|final
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
@@ -1486,7 +1486,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries

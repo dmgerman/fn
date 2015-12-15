@@ -30,7 +30,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -46,7 +46,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -296,7 +296,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Parses s and recreates the SearchGroup from it.      *      * @param s The String representation obtained from      *          SearchGroup.toString(), or null if incompatible      */
-DECL|method|fromString (String s, BibtexDatabase db, int version)
+DECL|method|fromString (String s, BibDatabase db, int version)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -305,7 +305,7 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|int
@@ -732,12 +732,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (BibtexEntry[] entries)
+DECL|method|add (BibEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|add
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
@@ -749,12 +749,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|remove (BibtexEntry[] entries)
+DECL|method|remove (BibEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|remove
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
@@ -843,10 +843,10 @@ argument_list|()
 operator|)
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
+comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibEntry)      */
 annotation|@
 name|Override
-DECL|method|contains (String searchOptions, BibtexEntry entry)
+DECL|method|contains (String searchOptions, BibEntry entry)
 specifier|public
 name|boolean
 name|contains
@@ -854,7 +854,7 @@ parameter_list|(
 name|String
 name|searchOptions
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -872,12 +872,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|contains (BibtexEntry entry)
+DECL|method|contains (BibEntry entry)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

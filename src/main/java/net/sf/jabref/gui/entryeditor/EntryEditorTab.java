@@ -336,7 +336,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -421,7 +421,7 @@ name|fileListEditor
 decl_stmt|;
 DECL|field|entry
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|fieldListener
@@ -1435,7 +1435,7 @@ init|=
 operator|new
 name|TextField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -1510,7 +1510,7 @@ block|}
 block|}
 DECL|method|getEntry ()
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|()
 block|{
@@ -1748,7 +1748,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Reset all fields from the data in the BibtexEntry.      */
+comment|/**      * Reset all fields from the data in the BibEntry.      */
 DECL|method|updateAll ()
 specifier|public
 name|void
@@ -1767,12 +1767,12 @@ specifier|private
 name|boolean
 name|updating
 decl_stmt|;
-DECL|method|setEntry (BibtexEntry entry)
+DECL|method|setEntry (BibEntry entry)
 specifier|public
 name|void
 name|setEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

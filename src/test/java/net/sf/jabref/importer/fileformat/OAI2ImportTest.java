@@ -56,7 +56,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -181,7 +181,7 @@ name|OAI2Handler
 name|handler
 decl_stmt|;
 DECL|field|be
-name|BibtexEntry
+name|BibEntry
 name|be
 decl_stmt|;
 DECL|field|parserFactory
@@ -221,7 +221,7 @@ expr_stmt|;
 name|be
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.

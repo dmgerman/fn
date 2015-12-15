@@ -132,7 +132,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -148,7 +148,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -454,15 +454,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keys, MetaData metaData)
+DECL|method|pushEntries (BibDatabase database, BibEntry[] entries, String keys, MetaData metaData)
 specifier|public
 name|void
 name|pushEntries
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,

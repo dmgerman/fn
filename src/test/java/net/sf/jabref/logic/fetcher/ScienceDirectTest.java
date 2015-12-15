@@ -26,7 +26,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -101,7 +101,7 @@ name|ScienceDirect
 name|finder
 decl_stmt|;
 DECL|field|entry
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 annotation|@
@@ -121,7 +121,7 @@ expr_stmt|;
 name|entry
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 expr_stmt|;
 block|}

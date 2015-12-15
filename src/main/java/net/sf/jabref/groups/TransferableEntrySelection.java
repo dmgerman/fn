@@ -84,7 +84,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -120,7 +120,7 @@ decl_stmt|;
 DECL|field|selectedEntries
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|selectedEntries
 decl_stmt|;
@@ -201,11 +201,11 @@ name|flavorExternal
 block|}
 expr_stmt|;
 block|}
-DECL|method|TransferableEntrySelection (BibtexEntry[] selectedEntries)
+DECL|method|TransferableEntrySelection (BibEntry[] selectedEntries)
 specifier|public
 name|TransferableEntrySelection
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|selectedEntries
 parameter_list|)
@@ -413,7 +413,7 @@ return|;
 block|}
 DECL|method|getSelection ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|getSelection
 parameter_list|()

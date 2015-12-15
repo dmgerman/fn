@@ -94,7 +94,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -206,11 +206,11 @@ name|e
 parameter_list|)
 block|{
 comment|// Create a new, empty, database.
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 decl_stmt|;
 name|jabRefFrame

@@ -148,7 +148,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -608,12 +608,12 @@ name|result
 return|;
 block|}
 comment|/**      * Implements grammar rule "TitleString".      *      * @param be      * @throws IOException      */
-DECL|method|parseTitleString (BibtexEntry be)
+DECL|method|parseTitleString (BibEntry be)
 specifier|private
 name|void
 name|parseTitleString
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|)
 throws|throws
@@ -661,12 +661,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Implements grammer rule "Authors"      *      * @param be      * @throws IOException      */
-DECL|method|parseAuthors (BibtexEntry be)
+DECL|method|parseAuthors (BibEntry be)
 specifier|private
 name|void
 name|parseAuthors
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|)
 throws|throws
@@ -1027,12 +1027,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Implements grammar rule "Abstract".      *      * @param be      * @throws IOException      */
-DECL|method|parseAbstract (BibtexEntry be)
+DECL|method|parseAbstract (BibEntry be)
 specifier|private
 name|void
 name|parseAbstract
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|)
 throws|throws
@@ -1067,12 +1067,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Implements grammar rule "AdditionalFields".      *      * @param be      * @throws IOException      */
-DECL|method|parseAdditionalFields (BibtexEntry be, boolean multilineUrlFieldAllowed)
+DECL|method|parseAdditionalFields (BibEntry be, boolean multilineUrlFieldAllowed)
 specifier|private
 name|void
 name|parseAdditionalFields
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|boolean
@@ -1608,7 +1608,7 @@ DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(
@@ -1623,7 +1623,7 @@ name|IOException
 block|{
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibitems
 init|=
@@ -1705,11 +1705,11 @@ name|isStartOfWorkingPaper
 argument_list|()
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.

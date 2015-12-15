@@ -324,7 +324,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -340,7 +340,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1806,7 +1806,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|dataBase
 init|=
 name|pr
@@ -1825,7 +1825,7 @@ argument_list|,
 name|dataBase
 argument_list|)
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|newBase
 init|=
 name|smng
@@ -2715,7 +2715,7 @@ name|getDatabase
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|newBase
 init|=
 name|acl
@@ -3266,7 +3266,7 @@ argument_list|)
 expr_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|result
 init|=
@@ -5236,7 +5236,7 @@ try|try
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 decl_stmt|;

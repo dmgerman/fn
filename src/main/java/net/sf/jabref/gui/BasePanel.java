@@ -460,6 +460,54 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|maintable
+operator|.
+name|MainTable
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|maintable
+operator|.
+name|MainTableFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|maintable
+operator|.
+name|MainTableSelectionListener
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|mergeentries
 operator|.
 name|MergeEntriesDialog
@@ -770,7 +818,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -852,7 +900,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1238,7 +1286,7 @@ comment|/*      * The database shown in this panel.      */
 DECL|field|database
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|mode
@@ -1265,7 +1313,7 @@ DECL|field|groupsHighlightListener
 specifier|private
 name|ListEventListener
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|groupsHighlightListener
 decl_stmt|;
@@ -1361,7 +1409,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|previousEntries
 init|=
@@ -1375,7 +1423,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|nextEntries
 init|=
@@ -1409,7 +1457,7 @@ DECL|field|searchFilterList
 specifier|private
 name|FilterList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|searchFilterList
 decl_stmt|;
@@ -1417,7 +1465,7 @@ DECL|field|groupFilterList
 specifier|private
 name|FilterList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|groupFilterList
 decl_stmt|;
@@ -1428,7 +1476,7 @@ name|rcm
 decl_stmt|;
 DECL|field|showing
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|showing
 decl_stmt|;
 comment|// Variable to prevent erroneous update of back/forward histories at the time
@@ -1529,7 +1577,7 @@ specifier|private
 specifier|final
 name|StartStopListAction
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|filterSearchToggle
 decl_stmt|;
@@ -1538,7 +1586,7 @@ specifier|private
 specifier|final
 name|StartStopListAction
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|filterGroupToggle
 decl_stmt|;
@@ -1558,14 +1606,14 @@ specifier|private
 name|ContentAutoCompleters
 name|autoCompleters
 decl_stmt|;
-DECL|method|BasePanel (JabRefFrame frame, BibtexDatabase db, File file, MetaData metaData, Charset encoding)
+DECL|method|BasePanel (JabRefFrame frame, BibDatabase db, File file, MetaData metaData, Charset encoding)
 specifier|public
 name|BasePanel
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|File
@@ -1883,7 +1931,7 @@ expr_stmt|;
 block|}
 DECL|method|database ()
 specifier|public
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|()
 block|{
@@ -2129,7 +2177,7 @@ call|)
 argument_list|()
 operator|->
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 operator|=
@@ -2337,7 +2385,7 @@ operator|.
 name|COPY
 argument_list|)
 block|;
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 operator|=
@@ -2399,7 +2447,7 @@ comment|// @formatter:on
 comment|// Loop through the array of entries, and delete them.
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|bes
@@ -2495,7 +2543,7 @@ call|)
 argument_list|()
 operator|->
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 operator|=
@@ -2571,7 +2619,7 @@ comment|// @formatter:on
 comment|// Loop through the array of entries, and delete them.
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|bes
@@ -2718,7 +2766,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -2742,7 +2790,7 @@ block|{
 name|bes
 operator|=
 operator|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 operator|)
 name|content
@@ -2823,7 +2871,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|db
 init|=
 name|bp
@@ -2868,7 +2916,7 @@ operator|.
 name|toArray
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|db
 operator|.
@@ -2968,24 +3016,24 @@ comment|// bes[0] does not work as bes[0] is first clonded,
 comment|// then inserted.
 comment|// This entry is used to open up an entry editor
 comment|// for the first inserted entry.
-name|BibtexEntry
+name|BibEntry
 name|firstBE
 init|=
 literal|null
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be1
 range|:
 name|bes
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 operator|(
-name|BibtexEntry
+name|BibEntry
 operator|)
 name|be1
 operator|.
@@ -3839,7 +3887,7 @@ block|{
 comment|//int[] rows;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 decl_stmt|;
@@ -3944,7 +3992,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|bes
 decl_stmt|;
 name|NamedCompound
@@ -3968,7 +4016,7 @@ for|for
 control|(
 name|Iterator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|i
 init|=
@@ -4130,7 +4178,7 @@ block|}
 block|}
 name|HashMap
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
 name|Object
 argument_list|>
@@ -4160,7 +4208,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -4181,7 +4229,7 @@ name|bes
 operator|.
 name|getField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -4204,7 +4252,7 @@ block|}
 comment|// Finally, set the new keys:
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -4253,7 +4301,7 @@ name|bes
 operator|.
 name|getField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -4317,7 +4365,7 @@ comment|////////////////////////////////////////////////////////////////////////
 for|for
 control|(
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|bibEntry
 range|:
 name|entries
@@ -4493,7 +4541,7 @@ call|)
 argument_list|()
 operator|->
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 operator|=
@@ -4540,7 +4588,7 @@ decl_stmt|;
 comment|// Collect all non-null keys.
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|bes
@@ -4791,7 +4839,7 @@ name|void
 name|action
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -4838,7 +4886,7 @@ decl_stmt|;
 comment|// Collect all non-null keys.
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|bes
@@ -5071,7 +5119,7 @@ name|void
 name|action
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -5159,7 +5207,7 @@ decl_stmt|;
 comment|// Collect all non-null keys.
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|bes
@@ -5390,7 +5438,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -5420,7 +5468,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|bes
@@ -5600,7 +5648,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -5700,7 +5748,7 @@ name|void
 name|action
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -6139,7 +6187,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|database
@@ -6163,7 +6211,7 @@ block|}
 block|}
 else|else
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -6174,7 +6222,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|bes
@@ -6367,11 +6415,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|bibEntry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|id
 argument_list|,
@@ -6495,7 +6543,7 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -6541,7 +6589,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|bes
@@ -6674,7 +6722,7 @@ argument_list|)
 block|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|database
@@ -8382,13 +8430,13 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method is called from JabRefFrame when the user wants to create a new entry. If the argument is null, the      * user is prompted for an entry type.      *      * @param type The type of the entry to create.      * @return The newly created BibtexEntry or null the operation was canceled by the user.      */
+comment|/**      * This method is called from JabRefFrame when the user wants to create a new entry. If the argument is null, the      * user is prompted for an entry type.      *      * @param type The type of the entry to create.      * @return The newly created BibEntry or null the operation was canceled by the user.      */
 end_comment
 
 begin_function
 DECL|method|newEntry (EntryType type)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|newEntry
 parameter_list|(
 name|EntryType
@@ -8454,11 +8502,11 @@ name|next
 argument_list|()
 decl_stmt|;
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|id
 argument_list|,
@@ -8477,7 +8525,7 @@ expr_stmt|;
 comment|// Set owner/timestamp if options are enabled:
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|list
 init|=
@@ -8707,7 +8755,7 @@ name|isSelected
 argument_list|()
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
@@ -8937,12 +8985,12 @@ comment|/**      * This method is called from JabRefFrame when the user wants to
 end_comment
 
 begin_function
-DECL|method|insertEntry (BibtexEntry bibEntry)
+DECL|method|insertEntry (BibEntry bibEntry)
 specifier|public
 name|void
 name|insertEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibEntry
 parameter_list|)
 block|{
@@ -9098,7 +9146,7 @@ name|String
 name|fieldName
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
@@ -9283,7 +9331,7 @@ operator|=
 operator|new
 name|MainTableFormat
 argument_list|(
-name|this
+name|database
 argument_list|)
 expr_stmt|;
 name|tableFormat
@@ -9354,7 +9402,7 @@ operator|=
 operator|new
 name|ListEventListener
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 argument_list|()
 block|{
@@ -9366,7 +9414,7 @@ name|listChanged
 parameter_list|(
 name|ListEvent
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|listEvent
 parameter_list|)
@@ -10244,7 +10292,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|database
@@ -10476,13 +10524,13 @@ block|}
 end_function
 
 begin_function
-DECL|method|showEntry (final BibtexEntry be)
+DECL|method|showEntry (final BibEntry be)
 specifier|public
 name|void
 name|showEntry
 parameter_list|(
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|)
 block|{
@@ -10778,12 +10826,12 @@ comment|/**      * Get an entry editor ready to edit the given entry. If an appr
 end_comment
 
 begin_function
-DECL|method|getEntryEditor (BibtexEntry entry)
+DECL|method|getEntryEditor (BibEntry entry)
 specifier|public
 name|EntryEditor
 name|getEntryEditor
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -11105,13 +11153,13 @@ comment|/**      * This method selects the given entry, and scrolls it into view
 end_comment
 
 begin_function
-DECL|method|highlightEntry (final BibtexEntry be)
+DECL|method|highlightEntry (final BibEntry be)
 specifier|public
 name|void
 name|highlightEntry
 parameter_list|(
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|)
 block|{
@@ -11201,16 +11249,16 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Closes the entry editor if it is showing the given entry.      *      * @param be a<code>BibtexEntry</code> value      */
+comment|/**      * Closes the entry editor if it is showing the given entry.      *      * @param be a<code>BibEntry</code> value      */
 end_comment
 
 begin_function
-DECL|method|ensureNotShowing (BibtexEntry be)
+DECL|method|ensureNotShowing (BibEntry be)
 specifier|public
 name|void
 name|ensureNotShowing
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|)
 block|{
@@ -11661,7 +11709,7 @@ DECL|method|getFilterSearchToggle ()
 specifier|public
 name|StartStopListAction
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getFilterSearchToggle
 parameter_list|()
@@ -11677,7 +11725,7 @@ DECL|method|getFilterGroupToggle ()
 specifier|public
 name|StartStopListAction
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getFilterGroupToggle
 parameter_list|()
@@ -11928,7 +11976,7 @@ end_function
 begin_function
 DECL|method|getDatabase ()
 specifier|public
-name|BibtexDatabase
+name|BibDatabase
 name|getDatabase
 parameter_list|()
 block|{
@@ -11967,12 +12015,12 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (BibtexEntry entry, EntryType type)
+DECL|method|changeType (BibEntry entry, EntryType type)
 specifier|public
 name|void
 name|changeType
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|EntryType
@@ -11982,7 +12030,7 @@ block|{
 name|changeType
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[]
 block|{
 name|entry
@@ -12004,7 +12052,7 @@ name|EntryType
 name|type
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -12024,12 +12072,12 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (BibtexEntry[] bes, EntryType type)
+DECL|method|changeType (BibEntry[] bes, EntryType type)
 specifier|private
 name|void
 name|changeType
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 parameter_list|,
@@ -12139,7 +12187,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|bes
@@ -12422,7 +12470,7 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|bes
 range|:
 name|database
@@ -13344,7 +13392,7 @@ end_comment
 begin_function
 DECL|method|getSelectedEntries ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|getSelectedEntries
 parameter_list|()
@@ -13407,7 +13455,7 @@ literal|true
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|bes
 range|:
 name|mainTable
@@ -13628,7 +13676,7 @@ end_function
 begin_function
 DECL|method|getShowing ()
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|getShowing
 parameter_list|()
 block|{
@@ -13643,12 +13691,12 @@ comment|/**      * Update the pointer to the currently shown entry in all cases 
 end_comment
 
 begin_function
-DECL|method|newEntryShowing (BibtexEntry entry)
+DECL|method|newEntryShowing (BibEntry entry)
 specifier|public
 name|void
 name|newEntryShowing
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -13752,7 +13800,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|toShow
 init|=
 name|previousEntries
@@ -13825,7 +13873,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|toShow
 init|=
 name|nextEntries
@@ -14163,7 +14211,7 @@ block|{
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|basePanel
@@ -14172,11 +14220,11 @@ specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
-DECL|method|SearchAndOpenFile (BibtexEntry entry, BasePanel basePanel)
+DECL|method|SearchAndOpenFile (BibEntry entry, BasePanel basePanel)
 specifier|public
 name|SearchAndOpenFile
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|BasePanel
@@ -14232,7 +14280,7 @@ comment|// see if we can fall back to a filename based on the bibtex key
 specifier|final
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -14353,7 +14401,7 @@ block|}
 comment|// Run the search operation:
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
 name|List
 argument_list|<

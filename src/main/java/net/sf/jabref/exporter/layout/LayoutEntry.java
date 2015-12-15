@@ -196,7 +196,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -212,7 +212,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1007,15 +1007,15 @@ operator|=
 name|formatter
 expr_stmt|;
 block|}
-DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database)
+DECL|method|doLayout (BibEntry bibtex, BibDatabase database)
 specifier|private
 name|String
 name|doLayout
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -1030,15 +1030,15 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, List<String> wordsToHighlight)
+DECL|method|doLayout (BibEntry bibtex, BibDatabase database, List<String> wordsToHighlight)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|List
@@ -1069,7 +1069,7 @@ case|:
 name|String
 name|value
 init|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1138,7 +1138,7 @@ condition|)
 block|{
 name|field
 operator|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1187,7 +1187,7 @@ control|)
 block|{
 name|field
 operator|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1237,7 +1237,7 @@ control|)
 block|{
 name|field
 operator|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1598,7 +1598,7 @@ argument_list|(
 literal|"\\"
 argument_list|)
 condition|?
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1614,7 +1614,7 @@ argument_list|,
 name|database
 argument_list|)
 else|:
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getText
 argument_list|(
@@ -1701,7 +1701,7 @@ comment|// Printing the encoding name is not supported in entry layouts, only
 comment|// in begin/end layouts. This prevents breakage if some users depend
 comment|// on a field called "encoding". We simply return this field instead:
 return|return
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1720,12 +1720,12 @@ block|}
 block|}
 comment|// added section - begin (arudert)
 comment|/**      * Do layout for general formatters (no bibtex-entry fields).      *      * @param database      *            Bibtex Database      * @return      */
-DECL|method|doLayout (BibtexDatabase database, Charset encoding)
+DECL|method|doLayout (BibDatabase database, Charset encoding)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|Charset
@@ -1832,7 +1832,7 @@ block|{
 name|String
 name|field
 init|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getText
 argument_list|(

@@ -94,27 +94,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
-operator|.
-name|fileformat
-operator|.
-name|ImportFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -260,7 +244,7 @@ DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(

@@ -48,7 +48,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -137,11 +137,11 @@ specifier|private
 specifier|final
 name|EventList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|list
 decl_stmt|;
-DECL|method|GlazedEntrySorter (Map<String, BibtexEntry> entries)
+DECL|method|GlazedEntrySorter (Map<String, BibEntry> entries)
 specifier|public
 name|GlazedEntrySorter
 parameter_list|(
@@ -149,7 +149,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|)
@@ -180,7 +180,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entry
 range|:
@@ -230,7 +230,7 @@ DECL|method|getTheList ()
 specifier|public
 name|EventList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getTheList
 parameter_list|()

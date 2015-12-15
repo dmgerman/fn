@@ -86,7 +86,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -123,7 +123,7 @@ parameter_list|()
 block|{      }
 annotation|@
 name|Override
-DECL|method|cleanup (BibtexEntry entry)
+DECL|method|cleanup (BibEntry entry)
 specifier|public
 name|List
 argument_list|<
@@ -131,7 +131,7 @@ name|FieldChange
 argument_list|>
 name|cleanup
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -390,12 +390,12 @@ return|return
 name|changes
 return|;
 block|}
-DECL|method|removeFieldValue (BibtexEntry entry, String field, ArrayList<FieldChange> changes)
+DECL|method|removeFieldValue (BibEntry entry, String field, ArrayList<FieldChange> changes)
 specifier|private
 name|void
 name|removeFieldValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String

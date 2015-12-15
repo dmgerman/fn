@@ -138,7 +138,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -422,11 +422,11 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|MODSEntry (BibtexEntry bibtex)
+DECL|method|MODSEntry (BibEntry bibtex)
 specifier|public
 name|MODSEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|)
 block|{
@@ -483,12 +483,12 @@ name|bibtex
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|populateFromBibtex (BibtexEntry bibtex)
+DECL|method|populateFromBibtex (BibEntry bibtex)
 specifier|private
 name|void
 name|populateFromBibtex
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|)
 block|{
@@ -823,12 +823,12 @@ name|bibtex
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|populateExtensionFields (BibtexEntry e)
+DECL|method|populateExtensionFields (BibEntry e)
 specifier|private
 name|void
 name|populateExtensionFields
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|e
 parameter_list|)
 block|{
@@ -1007,13 +1007,13 @@ name|result
 return|;
 block|}
 comment|/* construct a MODS date object */
-DECL|method|getDate (BibtexEntry bibtex)
+DECL|method|getDate (BibEntry bibtex)
 specifier|private
 specifier|static
 name|String
 name|getDate
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|)
 block|{
@@ -1073,13 +1073,13 @@ name|result
 return|;
 block|}
 comment|// must be from http://www.loc.gov/marc/sourcecode/genre/genrelist.html
-DECL|method|getMODSgenre (BibtexEntry bibtex)
+DECL|method|getMODSgenre (BibEntry bibtex)
 specifier|private
 specifier|static
 name|String
 name|getMODSgenre
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|)
 block|{

@@ -436,7 +436,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -2414,7 +2414,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entryEditor

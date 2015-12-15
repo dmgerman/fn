@@ -100,12 +100,12 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
 begin_comment
-comment|/**  * This class represents a change in any field value. The relevant  * information is the BibtexEntry, the field name, the old and the  * new value. Old/new values can be null.  */
+comment|/**  * This class represents a change in any field value. The relevant  * information is the BibEntry, the field name, the old and the  * new value. Old/new values can be null.  */
 end_comment
 
 begin_class
@@ -135,7 +135,7 @@ decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|field
@@ -156,11 +156,11 @@ specifier|final
 name|String
 name|newValue
 decl_stmt|;
-DECL|method|UndoableFieldChange (BibtexEntry entry, String field, String oldValue, String newValue)
+DECL|method|UndoableFieldChange (BibEntry entry, String field, String oldValue, String newValue)
 specifier|public
 name|UndoableFieldChange
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String

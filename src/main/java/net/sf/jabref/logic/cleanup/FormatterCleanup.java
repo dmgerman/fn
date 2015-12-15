@@ -76,7 +76,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -115,7 +115,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|cleanup (BibtexEntry entry)
+DECL|method|cleanup (BibEntry entry)
 specifier|public
 name|List
 argument_list|<
@@ -123,7 +123,7 @@ name|FieldChange
 argument_list|>
 name|cleanup
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

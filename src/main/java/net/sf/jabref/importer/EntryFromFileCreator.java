@@ -70,7 +70,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -198,7 +198,7 @@ block|}
 DECL|method|createBibtexEntry (File f)
 specifier|protected
 specifier|abstract
-name|BibtexEntry
+name|BibEntry
 name|createBibtexEntry
 parameter_list|(
 name|File
@@ -226,10 +226,10 @@ name|String
 name|getFormatName
 parameter_list|()
 function_decl|;
-comment|/**      * Create one BibtexEntry containing information regarding the given File.      *      * @param f      * @param addPathTokensAsKeywords      * @return      */
+comment|/**      * Create one BibEntry containing information regarding the given File.      *      * @param f      * @param addPathTokensAsKeywords      * @return      */
 DECL|method|createEntry (File f, boolean addPathTokensAsKeywords)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|createEntry
 parameter_list|(
 name|File
@@ -258,7 +258,7 @@ return|return
 literal|null
 return|;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|newEntry
 init|=
 name|createBibtexEntry
@@ -460,12 +460,12 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|addFileInfo (BibtexEntry entry, File file)
+DECL|method|addFileInfo (BibEntry entry, File file)
 specifier|private
 name|void
 name|addFileInfo
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|File
@@ -571,11 +571,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|appendToField (BibtexEntry entry, String field, String value)
+DECL|method|appendToField (BibEntry entry, String field, String value)
 name|void
 name|appendToField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String
@@ -660,16 +660,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addEntrysToEntry (BibtexEntry entry, List<BibtexEntry> entrys)
+DECL|method|addEntrysToEntry (BibEntry entry, List<BibEntry> entrys)
 name|void
 name|addEntrysToEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entrys
 parameter_list|)
@@ -683,7 +683,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|e
 range|:
 name|entrys
@@ -699,14 +699,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addEntryDataToEntry (BibtexEntry entry, BibtexEntry e)
+DECL|method|addEntryDataToEntry (BibEntry entry, BibEntry e)
 name|void
 name|addEntryDataToEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|e
 parameter_list|)
 block|{

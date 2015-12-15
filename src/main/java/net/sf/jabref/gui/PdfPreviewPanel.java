@@ -130,7 +130,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -634,12 +634,12 @@ return|return
 name|resizedImage
 return|;
 block|}
-DECL|method|updatePanel (BibtexEntry entry)
+DECL|method|updatePanel (BibEntry entry)
 specifier|public
 name|void
 name|updatePanel
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

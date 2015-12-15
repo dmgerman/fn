@@ -30,7 +30,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -57,7 +57,7 @@ specifier|private
 specifier|final
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|set
 decl_stmt|;
@@ -66,7 +66,7 @@ specifier|private
 specifier|final
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|comp
 decl_stmt|;
@@ -78,7 +78,7 @@ name|idArray
 decl_stmt|;
 DECL|field|entryArray
 specifier|private
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entryArray
 decl_stmt|;
@@ -87,7 +87,7 @@ specifier|private
 name|boolean
 name|changed
 decl_stmt|;
-DECL|method|EntrySorter (Map<String, BibtexEntry> entries, Comparator<BibtexEntry> comp)
+DECL|method|EntrySorter (Map<String, BibEntry> entries, Comparator<BibEntry> comp)
 specifier|public
 name|EntrySorter
 parameter_list|(
@@ -95,13 +95,13 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|comp
 parameter_list|)
@@ -127,7 +127,7 @@ name|Entry
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|stringBibtexEntryEntry
 range|:
@@ -209,7 +209,7 @@ expr_stmt|;
 name|entryArray
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|count
 index|]
@@ -221,7 +221,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|set
@@ -284,7 +284,7 @@ block|}
 block|}
 DECL|method|getEntryAt (int pos)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getEntryAt
 parameter_list|(
 name|int

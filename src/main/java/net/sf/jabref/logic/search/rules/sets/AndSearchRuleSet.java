@@ -34,7 +34,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -68,7 +68,7 @@ name|SearchRuleSet
 block|{
 annotation|@
 name|Override
-DECL|method|applyRule (String searchString, BibtexEntry bibtexEntry)
+DECL|method|applyRule (String searchString, BibEntry bibEntry)
 specifier|public
 name|boolean
 name|applyRule
@@ -76,8 +76,8 @@ parameter_list|(
 name|String
 name|searchString
 parameter_list|,
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 parameter_list|)
 block|{
 name|int
@@ -102,7 +102,7 @@ name|applyRule
 argument_list|(
 name|searchString
 argument_list|,
-name|bibtexEntry
+name|bibEntry
 argument_list|)
 condition|)
 block|{

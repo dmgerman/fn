@@ -72,7 +72,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -183,7 +183,7 @@ DECL|field|matchedEntries
 specifier|private
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|matchedEntries
 init|=
@@ -279,7 +279,7 @@ block|{
 comment|// Search the current database
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|basePanel
@@ -351,7 +351,7 @@ block|}
 comment|// clear
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|basePanel
@@ -373,7 +373,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|this

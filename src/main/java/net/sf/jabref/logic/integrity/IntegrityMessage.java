@@ -26,7 +26,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -41,7 +41,7 @@ block|{
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|fieldName
@@ -56,14 +56,14 @@ specifier|final
 name|String
 name|message
 decl_stmt|;
-DECL|method|IntegrityMessage (String message, BibtexEntry entry, String fieldName)
+DECL|method|IntegrityMessage (String message, BibEntry entry, String fieldName)
 specifier|public
 name|IntegrityMessage
 parameter_list|(
 name|String
 name|message
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String
@@ -126,7 +126,7 @@ return|;
 block|}
 DECL|method|getEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|()
 block|{

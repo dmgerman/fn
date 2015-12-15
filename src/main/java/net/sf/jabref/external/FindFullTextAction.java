@@ -130,7 +130,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -194,7 +194,7 @@ name|basePanel
 decl_stmt|;
 DECL|field|entry
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|result

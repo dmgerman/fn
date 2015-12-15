@@ -44,7 +44,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -218,7 +218,7 @@ argument_list|(
 name|undoText
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -241,7 +241,7 @@ return|return;
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|bes

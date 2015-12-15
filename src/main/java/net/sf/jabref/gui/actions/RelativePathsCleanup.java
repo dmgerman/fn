@@ -102,22 +102,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|undo
-operator|.
-name|UndoableFieldChange
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|FieldChange
@@ -170,7 +154,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -207,7 +191,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|cleanup (BibtexEntry entry)
+DECL|method|cleanup (BibEntry entry)
 specifier|public
 name|List
 argument_list|<
@@ -215,7 +199,7 @@ name|FieldChange
 argument_list|>
 name|cleanup
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

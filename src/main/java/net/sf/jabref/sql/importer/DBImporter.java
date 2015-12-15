@@ -170,7 +170,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -318,7 +318,7 @@ parameter_list|)
 throws|throws
 name|SQLException
 function_decl|;
-comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      *         BibtexDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
+comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      *         BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
 DECL|method|performImport (DBStrings dbs, List<String> listOfDBs)
 specifier|public
 name|ArrayList
@@ -444,11 +444,11 @@ name|next
 argument_list|()
 condition|)
 block|{
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 decl_stmt|;
 comment|// Find entry type IDs and their mappings to type names:
@@ -602,12 +602,12 @@ argument_list|(
 literal|"database_id"
 argument_list|)
 decl_stmt|;
-comment|// Read the entries and create BibtexEntry instances:
+comment|// Read the entries and create BibEntry instances:
 name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -653,11 +653,11 @@ argument_list|(
 literal|"entries_id"
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.
@@ -681,7 +681,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -982,7 +982,7 @@ literal|"';"
 argument_list|)
 return|;
 block|}
-DECL|method|importGroupsTree (MetaData metaData, HashMap<String, BibtexEntry> entries, Connection conn, String database_id)
+DECL|method|importGroupsTree (MetaData metaData, HashMap<String, BibEntry> entries, Connection conn, String database_id)
 specifier|private
 name|void
 name|importGroupsTree
@@ -994,7 +994,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,

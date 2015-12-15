@@ -28,7 +28,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -98,7 +98,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
+DECL|method|applyRule (String query, BibEntry bibEntry)
 specifier|public
 name|boolean
 name|applyRule
@@ -106,8 +106,8 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 parameter_list|)
 block|{
 return|return
@@ -118,7 +118,7 @@ name|applyRule
 argument_list|(
 name|query
 argument_list|,
-name|bibtexEntry
+name|bibEntry
 argument_list|)
 return|;
 block|}

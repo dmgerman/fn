@@ -526,7 +526,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -557,7 +557,7 @@ comment|// A reference to the entry this object works on.
 DECL|field|base
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|base
 decl_stmt|;
 DECL|field|frame
@@ -595,7 +595,7 @@ specifier|private
 name|PositionWindow
 name|pw
 decl_stmt|;
-DECL|method|StringDialog (JabRefFrame frame, BasePanel panel, BibtexDatabase base, JabRefPreferences prefs)
+DECL|method|StringDialog (JabRefFrame frame, BasePanel panel, BibDatabase base, JabRefPreferences prefs)
 specifier|public
 name|StringDialog
 parameter_list|(
@@ -605,7 +605,7 @@ parameter_list|,
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|,
 name|JabRefPreferences
@@ -1556,7 +1556,7 @@ name|AbstractTableModel
 block|{
 DECL|field|tbase
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|tbase
 decl_stmt|;
 DECL|field|parent
@@ -1564,14 +1564,14 @@ specifier|final
 name|StringDialog
 name|parent
 decl_stmt|;
-DECL|method|StringTableModel (StringDialog parent, BibtexDatabase base)
+DECL|method|StringTableModel (StringDialog parent, BibDatabase base)
 specifier|public
 name|StringTableModel
 parameter_list|(
 name|StringDialog
 name|parent
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|)
 block|{

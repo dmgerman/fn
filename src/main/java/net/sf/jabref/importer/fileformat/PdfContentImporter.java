@@ -164,7 +164,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -990,7 +990,7 @@ DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(
@@ -1006,7 +1006,7 @@ block|{
 specifier|final
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|res
 init|=
@@ -1173,7 +1173,7 @@ specifier|public
 name|void
 name|addEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -2266,11 +2266,11 @@ comment|//
 comment|//					}
 block|}
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 name|entry

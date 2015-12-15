@@ -52,7 +52,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -607,7 +607,7 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -641,7 +641,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entries
@@ -784,7 +784,7 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -818,7 +818,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|a
 init|=
 name|entries
@@ -828,7 +828,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 name|entries
@@ -853,7 +853,7 @@ literal|"Optical and photoelectric spectroscopy of photorefractive Sn$_2$P$_2$S$
 argument_list|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|tmp
 init|=
 name|a
@@ -1094,7 +1094,7 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -1128,7 +1128,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|a
 init|=
 name|entries
@@ -1138,7 +1138,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 name|entries
@@ -1163,7 +1163,7 @@ literal|"Optical waveguides in Sn2P2S6 by low fluence MeV He+ ion implantation"
 argument_list|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|tmp
 init|=
 name|a
@@ -1560,7 +1560,7 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -1594,7 +1594,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|a
 init|=
 name|entries
@@ -1824,7 +1824,7 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -1858,7 +1858,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|a
 init|=
 name|entries
@@ -1868,7 +1868,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 name|entries
@@ -1893,7 +1893,7 @@ literal|"Estrogen"
 argument_list|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|tmp
 init|=
 name|a

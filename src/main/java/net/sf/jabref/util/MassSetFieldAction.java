@@ -288,7 +288,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1394,7 +1394,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
@@ -1453,7 +1453,7 @@ return|return;
 block|}
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entryList
 decl_stmt|;

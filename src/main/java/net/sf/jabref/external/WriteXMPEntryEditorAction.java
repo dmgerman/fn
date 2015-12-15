@@ -102,7 +102,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -360,7 +360,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|editor
@@ -634,10 +634,10 @@ decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
-DECL|method|WriteXMPWorker (List<File> files, BibtexEntry entry)
+DECL|method|WriteXMPWorker (List<File> files, BibEntry entry)
 specifier|public
 name|WriteXMPWorker
 parameter_list|(
@@ -647,7 +647,7 @@ name|File
 argument_list|>
 name|files
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

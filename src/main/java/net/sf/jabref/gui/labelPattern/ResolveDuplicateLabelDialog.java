@@ -144,7 +144,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -277,7 +277,7 @@ literal|"\\begin{year}<b>\\year</b>\\end{year}\\begin{volume}<i>, \\volume</i>\\
 operator|+
 literal|"<p></p></font>"
 decl_stmt|;
-DECL|method|ResolveDuplicateLabelDialog (BasePanel panel, String key, List<BibtexEntry> entries)
+DECL|method|ResolveDuplicateLabelDialog (BasePanel panel, String key, List<BibEntry> entries)
 specifier|public
 name|ResolveDuplicateLabelDialog
 parameter_list|(
@@ -289,7 +289,7 @@ name|key
 parameter_list|,
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|)
@@ -395,7 +395,7 @@ literal|3
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries

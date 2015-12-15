@@ -94,7 +94,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -406,12 +406,12 @@ operator|=
 name|write
 expr_stmt|;
 block|}
-DECL|method|write (BibtexEntry entry, Writer out)
+DECL|method|write (BibEntry entry, Writer out)
 specifier|public
 name|void
 name|write
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|Writer
@@ -496,12 +496,12 @@ break|break;
 block|}
 block|}
 comment|/**      * new style ver>=2.10, sort the field for requiredFields, optionalFields and other fields separately      *      * @param entry      * @param out      * @throws IOException      */
-DECL|method|writeRequiredFieldsFirstOptionalFieldsSecondRemainingFieldsThird (BibtexEntry entry, Writer out)
+DECL|method|writeRequiredFieldsFirstOptionalFieldsSecondRemainingFieldsThird (BibEntry entry, Writer out)
 specifier|private
 name|void
 name|writeRequiredFieldsFirstOptionalFieldsSecondRemainingFieldsThird
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|Writer
@@ -550,7 +550,7 @@ name|writtenFields
 operator|.
 name|add
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -818,7 +818,7 @@ literal|'}'
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getRequiredFieldsSorted (BibtexEntry entry)
+DECL|method|getRequiredFieldsSorted (BibEntry entry)
 specifier|private
 name|List
 argument_list|<
@@ -826,7 +826,7 @@ name|String
 argument_list|>
 name|getRequiredFieldsSorted
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -895,7 +895,7 @@ return|return
 name|sortedFields
 return|;
 block|}
-DECL|method|getOptionalFieldsSorted (BibtexEntry entry)
+DECL|method|getOptionalFieldsSorted (BibEntry entry)
 specifier|private
 name|List
 argument_list|<
@@ -903,7 +903,7 @@ name|String
 argument_list|>
 name|getOptionalFieldsSorted
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -973,12 +973,12 @@ name|sortedFields
 return|;
 block|}
 comment|/**      * old style ver<=2.9.2, write fields in the order of requiredFields, optionalFields and other fields, but does not sort the fields.      *      * @param entry      * @param out      * @throws IOException      */
-DECL|method|writeRequiredFieldsFirstRemainingFieldsSecond (BibtexEntry entry, Writer out)
+DECL|method|writeRequiredFieldsFirstRemainingFieldsSecond (BibEntry entry, Writer out)
 specifier|private
 name|void
 name|writeRequiredFieldsFirstRemainingFieldsSecond
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|Writer
@@ -1034,7 +1034,7 @@ name|written
 operator|.
 name|add
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1262,12 +1262,12 @@ literal|'}'
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|writeUserDefinedOrder (BibtexEntry entry, Writer out)
+DECL|method|writeUserDefinedOrder (BibEntry entry, Writer out)
 specifier|private
 name|void
 name|writeUserDefinedOrder
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|Writer
@@ -1318,7 +1318,7 @@ name|written
 operator|.
 name|put
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -1512,12 +1512,12 @@ literal|'}'
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|writeKeyField (BibtexEntry entry, Writer out)
+DECL|method|writeKeyField (BibEntry entry, Writer out)
 specifier|private
 name|void
 name|writeKeyField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|Writer
@@ -1562,12 +1562,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Write a single field, if it has any content.      *      * @param entry             the entry to write      * @param out               the target of the write      * @param name              The field name      * @param prependWhiteSpace Indicates whether this is the first field written for      *                          this entry - if not, start by writing a comma and newline   @return true if this field was written, false if it was skipped because      *                          it was not set      * @throws IOException In case of an IO error      */
-DECL|method|writeField (BibtexEntry entry, Writer out, String name, boolean prependWhiteSpace)
+DECL|method|writeField (BibEntry entry, Writer out, String name, boolean prependWhiteSpace)
 specifier|private
 name|boolean
 name|writeField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|Writer

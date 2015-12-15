@@ -82,7 +82,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -142,7 +142,7 @@ block|{
 return|return;
 comment|// TODO: display error message?
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|panel

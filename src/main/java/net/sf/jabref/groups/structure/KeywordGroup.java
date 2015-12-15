@@ -166,7 +166,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -182,7 +182,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -345,7 +345,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Parses s and recreates the KeywordGroup from it.      *      * @param s The String representation obtained from      *          KeywordGroup.toString()      */
-DECL|method|fromString (String s, BibtexDatabase db, int version)
+DECL|method|fromString (String s, BibDatabase db, int version)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -354,7 +354,7 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|int
@@ -762,8 +762,8 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 parameter_list|)
 block|{
 return|return
@@ -771,7 +771,7 @@ name|contains
 argument_list|(
 name|query
 argument_list|,
-name|bibtexEntry
+name|bibEntry
 argument_list|)
 return|;
 block|}
@@ -923,12 +923,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (BibtexEntry[] entries)
+DECL|method|add (BibEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|add
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
@@ -982,7 +982,7 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -1103,12 +1103,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|remove (BibtexEntry[] entries)
+DECL|method|remove (BibEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|remove
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
@@ -1162,7 +1162,7 @@ literal|false
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -1338,10 +1338,10 @@ argument_list|()
 operator|)
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
+comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibEntry)      */
 annotation|@
 name|Override
-DECL|method|contains (String query, BibtexEntry entry)
+DECL|method|contains (String query, BibEntry entry)
 specifier|public
 name|boolean
 name|contains
@@ -1349,7 +1349,7 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -1362,12 +1362,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|contains (BibtexEntry entry)
+DECL|method|contains (BibEntry entry)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -1576,12 +1576,12 @@ literal|false
 return|;
 block|}
 comment|/**      * Removes matches of searchString in the entry's field. This is only      * possible if the search expression is not a regExp.      */
-DECL|method|removeMatches (BibtexEntry entry)
+DECL|method|removeMatches (BibEntry entry)
 specifier|private
 name|void
 name|removeMatches
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

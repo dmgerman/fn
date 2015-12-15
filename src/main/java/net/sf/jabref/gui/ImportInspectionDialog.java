@@ -144,77 +144,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
+name|*
 import|;
 end_import
 
@@ -526,7 +456,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -542,7 +472,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1169,7 +1099,7 @@ specifier|private
 specifier|final
 name|TableComparatorChooser
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|comparatorChooser
 decl_stmt|;
@@ -1178,7 +1108,7 @@ specifier|private
 specifier|final
 name|DefaultEventSelectionModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|selectionModel
 decl_stmt|;
@@ -1242,7 +1172,7 @@ specifier|private
 specifier|final
 name|EventList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -1256,7 +1186,7 @@ specifier|private
 specifier|final
 name|SortedList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sortedList
 decl_stmt|;
@@ -1266,7 +1196,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entriesToDelete
 init|=
@@ -1389,7 +1319,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
 name|Set
 argument_list|<
@@ -1656,14 +1586,14 @@ argument_list|)
 expr_stmt|;
 name|DefaultEventTableModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|tableModelGl
 init|=
 operator|(
 name|DefaultEventTableModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 operator|)
 name|GlazedListsSwing
@@ -1764,7 +1694,7 @@ operator|=
 operator|(
 name|DefaultEventSelectionModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 operator|)
 name|GlazedListsSwing
@@ -2577,21 +2507,21 @@ name|current
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibtexEntry)      */
+comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibEntry)      */
 annotation|@
 name|Override
-DECL|method|addEntry (BibtexEntry entry)
+DECL|method|addEntry (BibEntry entry)
 specifier|public
 name|void
 name|addEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|list
 init|=
@@ -2614,21 +2544,21 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntries(java.util.Collection)      */
-DECL|method|addEntries (Collection<BibtexEntry> entriesToAdd)
+DECL|method|addEntries (Collection<BibEntry> entriesToAdd)
 specifier|public
 name|void
 name|addEntries
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entriesToAdd
 parameter_list|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entriesToAdd
@@ -2740,26 +2670,26 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entries A Collection of BibtexEntry instances.      * @param entry   The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
-DECL|method|internalDuplicate (Collection<BibtexEntry> entriesDupe, BibtexEntry entry)
+comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entriesDupe A Collection of BibEntry instances.      * @param entry   The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
+DECL|method|internalDuplicate (Collection<BibEntry> entriesDupe, BibEntry entry)
 specifier|private
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|internalDuplicate
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entriesDupe
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|othEntry
 range|:
 name|entriesDupe
@@ -3020,14 +2950,14 @@ DECL|method|getSelectedEntries ()
 specifier|private
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getSelectedEntries
 parameter_list|()
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|selected
 init|=
@@ -3038,7 +2968,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -3088,7 +3018,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|selectionModel
@@ -3112,7 +3042,7 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 name|MetaData
@@ -3146,7 +3076,7 @@ block|{
 name|database
 operator|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 expr_stmt|;
 name|localMetaData
@@ -3234,7 +3164,7 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 name|MetaData
@@ -3268,7 +3198,7 @@ block|{
 name|database
 operator|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 expr_stmt|;
 name|localMetaData
@@ -3299,7 +3229,7 @@ comment|// with,
 comment|// and generate unique keys:
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -3352,7 +3282,7 @@ comment|// to keep
 comment|// control over key uniqueness.
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -3704,7 +3634,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|selectionModel
@@ -3832,7 +3762,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -3971,7 +3901,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entriesToDelete
@@ -4047,7 +3977,7 @@ expr_stmt|;
 specifier|final
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|selected
 init|=
@@ -4069,11 +3999,11 @@ name|newDatabase
 condition|)
 block|{
 comment|// Create a new BasePanel for the entries:
-name|BibtexDatabase
+name|BibDatabase
 name|base
 init|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 decl_stmt|;
 name|panel
@@ -4171,7 +4101,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|panel
@@ -4203,7 +4133,7 @@ block|}
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|selected
@@ -4359,7 +4289,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[]
 block|{
 name|entry
@@ -5023,19 +4953,19 @@ name|EntrySelectionListener
 implements|implements
 name|ListEventListener
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|listChanged (ListEvent<BibtexEntry> listEvent)
+DECL|method|listChanged (ListEvent<BibEntry> listEvent)
 specifier|public
 name|void
 name|listChanged
 parameter_list|(
 name|ListEvent
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|listEvent
 parameter_list|)
@@ -5181,7 +5111,7 @@ name|col
 argument_list|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|sortedList
@@ -5431,7 +5361,7 @@ name|getPoint
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|sortedList
@@ -5652,7 +5582,7 @@ name|getPoint
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|sortedList
@@ -5821,7 +5751,7 @@ literal|null
 operator|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|first
 init|=
 name|sortedList
@@ -5831,7 +5761,7 @@ argument_list|(
 name|row
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|other
 init|=
 name|DuplicateCheck
@@ -6120,7 +6050,7 @@ expr_stmt|;
 name|first
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 expr_stmt|;
 comment|// Reset first so the next duplicate doesn't trigger
@@ -6380,7 +6310,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|selectionModel
@@ -6497,7 +6427,7 @@ operator|.
 name|DownloadCallback
 block|{
 DECL|field|entry
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|method|DownloadFile ()
@@ -6827,7 +6757,7 @@ block|{
 return|return;
 block|}
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|selectionModel
@@ -7063,7 +6993,7 @@ operator|.
 name|DownloadCallback
 block|{
 DECL|field|entry
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|method|LinkLocalFile ()
@@ -7448,7 +7378,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|selectionModel
@@ -7638,14 +7568,14 @@ argument_list|(
 operator|new
 name|IconComparator
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 name|Globals
 operator|.
 name|FILE_FIELD
-block|}
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7665,12 +7595,12 @@ argument_list|(
 operator|new
 name|IconComparator
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 literal|"url"
-block|}
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7923,7 +7853,7 @@ name|int
 name|column
 parameter_list|)
 block|{
-comment|// Only column 0, which is controlled by BibtexEntry.searchHit, is
+comment|// Only column 0, which is controlled by BibEntry.searchHit, is
 comment|// editable:
 name|entries
 operator|.
@@ -7936,7 +7866,7 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|sortedList
@@ -7976,7 +7906,7 @@ name|EntryTableFormat
 implements|implements
 name|TableFormat
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 annotation|@
@@ -8049,12 +7979,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getColumnValue (BibtexEntry entry, int i)
+DECL|method|getColumnValue (BibEntry entry, int i)
 specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|int

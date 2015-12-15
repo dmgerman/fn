@@ -314,7 +314,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -330,7 +330,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1921,7 +1921,7 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|result
@@ -2326,7 +2326,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|result

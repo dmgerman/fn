@@ -112,7 +112,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -128,7 +128,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -324,7 +324,7 @@ name|OOPreFormatter
 argument_list|()
 decl_stmt|;
 comment|/**      * Insert a reference, formatted using a Layout, at the position of a given cursor.      * @param text The text to insert in.      * @param cursor The cursor giving the insert location.      * @param layout The Layout to format the reference with.      * @param parStyle The name of the paragraph style to use.      * @param entry The entry to insert.      * @param database The database the entry belongs to.      * @param uniquefier Uniqiefier letter, if any, to append to the entry's year.      * @throws Exception      */
-DECL|method|insertFullReferenceAtCurrentLocation (XText text, XTextCursor cursor, Layout layout, String parStyle, BibtexEntry entry, BibtexDatabase database, String uniquefier)
+DECL|method|insertFullReferenceAtCurrentLocation (XText text, XTextCursor cursor, Layout layout, String parStyle, BibEntry entry, BibDatabase database, String uniquefier)
 specifier|public
 specifier|static
 name|void
@@ -342,10 +342,10 @@ parameter_list|,
 name|String
 name|parStyle
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|String
@@ -1610,14 +1610,14 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Make a cloned BibtexEntry and do the necessary preprocessing for use by the plugin.      * If the running JabRef version doesn't support post-processing in Layout, this      * preprocessing includes running the OOPreFormatter formatter for all fields except the      * BibTeX key.      * @param entry the original entry      * @return the cloned and processed entry      */
-DECL|method|createAdaptedEntry (BibtexEntry entry)
+comment|/**      * Make a cloned BibEntry and do the necessary preprocessing for use by the plugin.      * If the running JabRef version doesn't support post-processing in Layout, this      * preprocessing includes running the OOPreFormatter formatter for all fields except the      * BibTeX key.      * @param entry the original entry      * @return the cloned and processed entry      */
+DECL|method|createAdaptedEntry (BibEntry entry)
 specifier|public
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|createAdaptedEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -1632,11 +1632,11 @@ return|return
 literal|null
 return|;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|(
-name|BibtexEntry
+name|BibEntry
 operator|)
 name|entry
 operator|.
@@ -1660,7 +1660,7 @@ name|field
 operator|.
 name|equals
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)

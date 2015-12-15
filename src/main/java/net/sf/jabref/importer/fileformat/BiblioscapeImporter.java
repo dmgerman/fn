@@ -98,7 +98,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -172,14 +172,14 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(
@@ -194,7 +194,7 @@ name|IOException
 block|{
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibItems
 init|=
@@ -1947,17 +1947,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,
 name|EntryTypes
 operator|.
-name|getBibtexEntryType
+name|getTypeOrDefault
 argument_list|(
 name|bibtexType
 argument_list|)
