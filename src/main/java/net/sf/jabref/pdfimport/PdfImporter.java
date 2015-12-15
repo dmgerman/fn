@@ -288,6 +288,8 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|maintable
+operator|.
 name|MainTable
 import|;
 end_import

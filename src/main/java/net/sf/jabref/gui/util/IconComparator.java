@@ -44,6 +44,16 @@ name|Comparator
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Comparator that handles icon columns.  */
 end_comment
@@ -62,16 +72,20 @@ block|{
 DECL|field|fields
 specifier|private
 specifier|final
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|fields
 decl_stmt|;
-DECL|method|IconComparator (String[] fields)
+DECL|method|IconComparator (List<String> fields)
 specifier|public
 name|IconComparator
 parameter_list|(
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|fields
 parameter_list|)
 block|{
