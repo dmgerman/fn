@@ -328,7 +328,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Constructs a INSPIRE query url from slaccitation field      *      * @param slaccitation      * @return query string      *      *         public static String constructUrlFromSlaccitation(String slaccitation) { String cmd = "j"; String key =      *         slaccitation.replaceAll("^%%CITATION = ", "").replaceAll( ";%%$", ""); if (key.matches("^\\w*-\\w*[ /].*"      *         )) cmd = "eprint"; try { key = URLEncoder.encode(key, "UTF-8"); } catch (UnsupportedEncodingException e)      *         { } StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST) .append("/");      *         sb.append("spires/find/hep/www").append("?"); sb.append("rawcmd=find+").append(cmd).append("+");      *         sb.append(key); return sb.toString(); }      *      *         /** Construct an INSPIRE query url from eprint field      *      * @param eprint      * @return query string      *      *         public static String constructUrlFromEprint(String eprint) { String key = eprint.replaceAll(" [.*]$",      *         ""); try { key = URLEncoder.encode(key, "UTF-8"); } catch (UnsupportedEncodingException e) { return ""; }      *         StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST) .append("/");      *         sb.append("spires/find/hep/www").append("?"); sb.append("rawcmd=find+eprint+"); sb.append(key); return      *         sb.toString(); }      */
-comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to have the field OAI2_IDENTIFIER_FIELD set to      * the search string.      *      * @param key The OAI2 key to fetch from ArXiv.      * @return The imported BibtexEntry or null if none.      */
+comment|/**      * Import an entry from an OAI2 archive. The BibEntry provided has to have the field OAI2_IDENTIFIER_FIELD set to      * the search string.      *      * @param key The OAI2 key to fetch from ArXiv.      * @return The imported BibEntry or null if none.      */
 DECL|method|importInspireEntries (String key, OutputPrinter frame)
 specifier|private
 name|BibDatabase
@@ -455,14 +455,14 @@ return|return
 literal|null
 return|;
 block|}
-comment|// public void addSpiresURL(BibtexEntry entry) {
+comment|// public void addSpiresURL(BibEntry entry) {
 comment|// String url = "http://"+spiresHost+"/spires/find/hep/www?texkey+";
 comment|// url = url+entry.getCiteKey();
 comment|// entry.setField("url", url);
 comment|// }
 comment|//
-comment|// public void addSpiresURLtoDatabase(BibtexDatabase db) {
-comment|// Iterator<BibtexEntry> iter = db.getEntries().iterator();
+comment|// public void addSpiresURLtoDatabase(BibDatabase db) {
+comment|// Iterator<BibEntry> iter = db.getEntries().iterator();
 comment|// while (iter.hasNext())
 comment|// addSpiresURL(iter.next());
 comment|// }
@@ -546,7 +546,7 @@ argument_list|(
 literal|"Fetching entries from Inspire"
 argument_list|)
 expr_stmt|;
-comment|/* query the archive and load the results into the BibtexEntry */
+comment|/* query the archive and load the results into the BibEntry */
 name|BibDatabase
 name|bd
 init|=

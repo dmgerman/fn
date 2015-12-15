@@ -1239,7 +1239,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Take the given collection of BibtexEntry and resolve any string      * references.      *      * @param entries A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the databasee.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
+comment|/**      * Take the given collection of BibEntry and resolve any string      * references.      *      * @param entries A collection of BibtexEntries in which all strings of the form      *                #xxx# will be resolved against the hash map of string      *                references stored in the databasee.      * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.      */
 DECL|method|resolveForStrings (Collection<BibEntry> entries, boolean inPlace)
 specifier|public
 name|List
@@ -1316,7 +1316,7 @@ return|return
 name|results
 return|;
 block|}
-comment|/**      * Take the given BibtexEntry and resolve any string references.      *      * @param entry   A BibtexEntry in which all strings of the form #xxx# will be      *                resolved against the hash map of string references stored in      *                the databasee.      * @param inPlace If inPlace is true then the given BibtexEntry will be      *                modified, if false then a copy is made using close made before      *                resolving the strings.      * @return a BibtexEntry with all string references resolved. It is      * dependent on the value of inPlace whether a copy is made or the      * given BibtexEntries is modified.      */
+comment|/**      * Take the given BibEntry and resolve any string references.      *      * @param entry   A BibEntry in which all strings of the form #xxx# will be      *                resolved against the hash map of string references stored in      *                the databasee.      * @param inPlace If inPlace is true then the given BibEntry will be      *                modified, if false then a copy is made using close made before      *                resolving the strings.      * @return a BibEntry with all string references resolved. It is      * dependent on the value of inPlace whether a copy is made or the      * given BibtexEntries is modified.      */
 DECL|method|resolveForStrings (BibEntry entry, boolean inPlace)
 specifier|public
 name|BibEntry
@@ -2357,7 +2357,7 @@ operator|=
 name|followCrossrefs
 expr_stmt|;
 block|}
-comment|/*      * Entries are stored in a HashMap with the ID as key. What happens if      * someone changes a BibtexEntry's ID after it has been added to this      * BibtexDatabase? The key of that entry would be the old ID, not the new      * one. Use a PropertyChangeListener to identify an ID change and update the      * Map.      */
+comment|/*      * Entries are stored in a HashMap with the ID as key. What happens if      * someone changes a BibEntry's ID after it has been added to this      * BibDatabase? The key of that entry would be the old ID, not the new      * one. Use a PropertyChangeListener to identify an ID change and update the      * Map.      */
 DECL|field|listener
 specifier|private
 specifier|final

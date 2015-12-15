@@ -1016,7 +1016,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      * @param db          The BibtexDatabase this metadata belongs to      * @param version     The group tree version      * @return true if parsing was successful, false otherwise      */
+comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      * @param db          The BibDatabase this metadata belongs to      * @param version     The group tree version      * @return true if parsing was successful, false otherwise      */
 DECL|method|putGroups (Vector<String> orderedData, BibDatabase db, int version)
 specifier|private
 name|void

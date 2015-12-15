@@ -318,7 +318,7 @@ parameter_list|)
 throws|throws
 name|SQLException
 function_decl|;
-comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      *         BibtexDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
+comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      *         BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
 DECL|method|performImport (DBStrings dbs, List<String> listOfDBs)
 specifier|public
 name|ArrayList
@@ -602,7 +602,7 @@ argument_list|(
 literal|"database_id"
 argument_list|)
 decl_stmt|;
-comment|// Read the entries and create BibtexEntry instances:
+comment|// Read the entries and create BibEntry instances:
 name|HashMap
 argument_list|<
 name|String

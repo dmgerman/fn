@@ -226,7 +226,7 @@ name|String
 name|getFormatName
 parameter_list|()
 function_decl|;
-comment|/**      * Create one BibtexEntry containing information regarding the given File.      *      * @param f      * @param addPathTokensAsKeywords      * @return      */
+comment|/**      * Create one BibEntry containing information regarding the given File.      *      * @param f      * @param addPathTokensAsKeywords      * @return      */
 DECL|method|createEntry (File f, boolean addPathTokensAsKeywords)
 specifier|public
 name|BibEntry

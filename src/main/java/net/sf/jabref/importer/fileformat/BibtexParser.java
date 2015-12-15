@@ -520,7 +520,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @return The bibtexentry or null if non was found or an error occurred.      */
+comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @return The BibEntry or null if non was found or an error occurred.      */
 DECL|method|singleFromString (String bibtexString)
 specifier|public
 specifier|static

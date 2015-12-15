@@ -502,7 +502,7 @@ name|File
 name|file
 parameter_list|)
 block|{
-comment|//, BibtexDatabase inMem, MetaData mdInMem) {
+comment|//, BibDatabase inMem, MetaData mdInMem) {
 name|this
 operator|.
 name|panel
@@ -1959,7 +1959,7 @@ block|}
 comment|//System.out.println("Suspected new entries in file: "+(disk.getEntryCount()-used.size()));
 block|}
 block|}
-comment|/**      * Finds the entry in neu best fitting the specified entry in old. If no entries get a score      * above zero, an entry is still returned.      * @param old EntrySorter      * @param neu EntrySorter      * @param index int      * @return BibtexEntry      */
+comment|/**      * Finds the entry in neu best fitting the specified entry in old. If no entries get a score      * above zero, an entry is still returned.      * @param old EntrySorter      * @param neu EntrySorter      * @param index int      * @return BibEntry      */
 DECL|method|bestFit (EntrySorter old, EntrySorter neu, int index)
 specifier|private
 specifier|static

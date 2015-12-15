@@ -8430,7 +8430,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * This method is called from JabRefFrame when the user wants to create a new entry. If the argument is null, the      * user is prompted for an entry type.      *      * @param type The type of the entry to create.      * @return The newly created BibtexEntry or null the operation was canceled by the user.      */
+comment|/**      * This method is called from JabRefFrame when the user wants to create a new entry. If the argument is null, the      * user is prompted for an entry type.      *      * @param type The type of the entry to create.      * @return The newly created BibEntry or null the operation was canceled by the user.      */
 end_comment
 
 begin_function
@@ -11249,7 +11249,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Closes the entry editor if it is showing the given entry.      *      * @param be a<code>BibtexEntry</code> value      */
+comment|/**      * Closes the entry editor if it is showing the given entry.      *      * @param be a<code>BibEntry</code> value      */
 end_comment
 
 begin_function

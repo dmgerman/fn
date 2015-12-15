@@ -1609,7 +1609,7 @@ name|nameAccess
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method inserts a cite marker in the text for the given BibtexEntry,      * and may refresh the bibliography.      * @param entries The entries to cite.      * @param database The database the entry belongs to.      * @param style The bibliography style we are using.      * @param inParenthesis Indicates whether it is an in-text citation or a citation in parenthesis.      *   This is not relevant if numbered citations are used.      * @param withText Indicates whether this should be a normal citation (true) or an empty      *   (invisible) citation (false).      * @param sync Indicates whether the reference list should be refreshed.      * @throws Exception      */
+comment|/**      * This method inserts a cite marker in the text for the given BibEntry,      * and may refresh the bibliography.      * @param entries The entries to cite.      * @param database The database the entry belongs to.      * @param style The bibliography style we are using.      * @param inParenthesis Indicates whether it is an in-text citation or a citation in parenthesis.      *   This is not relevant if numbered citations are used.      * @param withText Indicates whether this should be a normal citation (true) or an empty      *   (invisible) citation (false).      * @param sync Indicates whether the reference list should be refreshed.      * @throws Exception      */
 DECL|method|insertEntry (BibEntry[] entries, BibDatabase database, List<BibDatabase> allBases, OOBibStyle style, boolean inParenthesis, boolean withText, String pageInfo, boolean sync)
 specifier|public
 name|void
@@ -3282,7 +3282,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/*System.out.println(style.getBooleanCitProperty("MultiCiteChronological"));                     for (int j = 0; j< cEntries.length; j++) {                         BibtexEntry cEntry = cEntries[j];                         System.out.println(cEntry.getCiteKey());                     } */
+comment|/*System.out.println(style.getBooleanCitProperty("MultiCiteChronological"));                     for (int j = 0; j< cEntries.length; j++) {                         BibEntry cEntry = cEntries[j];                         System.out.println(cEntry.getCiteKey());                     } */
 name|citationMarker
 operator|=
 name|style

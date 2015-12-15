@@ -1837,7 +1837,7 @@ return|return
 name|fieldList
 return|;
 block|}
-comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and saves the unique label in the      *<code>Bibtexentry</code>.      *      * The given database is used to avoid duplicate keys.      *      * @param dBase a<code>BibtexDatabase</code>      * @param entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
+comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and saves the unique label in the      *<code>Bibtexentry</code>.      *      * The given database is used to avoid duplicate keys.      *      * @param dBase a<code>BibDatabase</code>      * @param entry a<code>BibEntry</code>      * @return modified Bibtexentry      */
 DECL|method|makeLabel (MetaData metaData, BibDatabase dBase, BibEntry entry)
 specifier|public
 specifier|static
@@ -4303,7 +4303,7 @@ literal|""
 return|;
 block|}
 block|}
-comment|/**      * Look up a field of a BibtexEntry, returning its String value, or an      * empty string if it isn't set.      * @param entry The entry.      * @param field The field to look up.      * @return The field value.      */
+comment|/**      * Look up a field of a BibEntry, returning its String value, or an      * empty string if it isn't set.      * @param entry The entry.      * @param field The field to look up.      * @return The field value.      */
 DECL|method|getField (BibEntry entry, String field)
 specifier|private
 specifier|static

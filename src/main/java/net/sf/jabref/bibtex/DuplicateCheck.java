@@ -274,7 +274,7 @@ literal|2.
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Checks if the two entries represent the same publication.      *      * @param one BibtexEntry      * @param two BibtexEntry      * @return boolean      */
+comment|/**      * Checks if the two entries represent the same publication.      *      * @param one BibEntry      * @param two BibEntry      * @return boolean      */
 DECL|method|isDuplicate (BibEntry one, BibEntry two)
 specifier|public
 specifier|static
@@ -1133,7 +1133,7 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * Goes through all entries in the given database, and if at least one of      * them is a duplicate of the given entry, as per      * Util.isDuplicate(BibtexEntry, BibtexEntry), the duplicate is returned.      * The search is terminated when the first duplicate is found.      *      * @param database The database to search.      * @param entry    The entry of which we are looking for duplicates.      * @return The first duplicate entry found. null if no duplicates are found.      */
+comment|/**      * Goes through all entries in the given database, and if at least one of      * them is a duplicate of the given entry, as per      * Util.isDuplicate(BibEntry, BibEntry), the duplicate is returned.      * The search is terminated when the first duplicate is found.      *      * @param database The database to search.      * @param entry    The entry of which we are looking for duplicates.      * @return The first duplicate entry found. null if no duplicates are found.      */
 DECL|method|containsDuplicate (BibDatabase database, BibEntry entry)
 specifier|public
 specifier|static

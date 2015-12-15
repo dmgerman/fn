@@ -348,7 +348,7 @@ argument_list|(
 name|citation
 argument_list|)
 decl_stmt|;
-comment|//BibtexEntry entry = BibsonomyScraper.getEntry(citation);
+comment|//BibEntry entry = BibsonomyScraper.getEntry(citation);
 comment|//dialog.setProgress(++i, citations.size());
 if|if
 condition|(

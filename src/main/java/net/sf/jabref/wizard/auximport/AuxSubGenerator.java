@@ -1044,7 +1044,7 @@ name|clonedEntry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * generate Shortcut method for easy generation.      *      * @param auxFileName String      * @param bibDB BibtexDatabase - reference database      * @return Vector - contains all not resolved bibtex entries      */
+comment|/**      * generate Shortcut method for easy generation.      *      * @param auxFileName String      * @param bibDB BibDatabase - reference database      * @return Vector - contains all not resolved bibtex entries      */
 DECL|method|generate (String auxFileName, BibDatabase bibDB)
 specifier|public
 specifier|final

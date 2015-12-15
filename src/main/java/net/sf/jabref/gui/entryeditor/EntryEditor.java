@@ -803,7 +803,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GUI component that allows editing of the fields of a BibtexEntry (i.e. the  * one that shows up, when you double click on an entry in the table)  *<p>  * It hosts the tabs (required, general, optional) and the buttons to the left.  *<p>  * EntryEditor also registers itself as a VetoableChangeListener, receiving  * events whenever a field of the entry changes, enabling the text fields to  * update themselves if the change is made from somewhere else.  */
+comment|/**  * GUI component that allows editing of the fields of a BibEntry (i.e. the  * one that shows up, when you double click on an entry in the table)  *<p>  * It hosts the tabs (required, general, optional) and the buttons to the left.  *<p>  * EntryEditor also registers itself as a VetoableChangeListener, receiving  * events whenever a field of the entry changes, enabling the text fields to  * update themselves if the change is made from somewhere else.  */
 end_comment
 
 begin_class
@@ -5146,7 +5146,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Updates this editor to show the given entry, regardless of type      * correspondence.      *      * @param swtichEntry a<code>BibtexEntry</code> value      */
+comment|/**      * Updates this editor to show the given entry, regardless of type      * correspondence.      *      * @param swtichEntry a<code>BibEntry</code> value      */
 DECL|method|switchTo (BibEntry swtichEntry)
 specifier|public
 specifier|synchronized

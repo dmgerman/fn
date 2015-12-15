@@ -62,7 +62,7 @@ name|E
 name|item
 parameter_list|)
 function_decl|;
-comment|/**      * Add a BibtexEntry to this AutoCompleter.      * @note The AutoCompleter itself decides which information should be stored for later completion.      */
+comment|/**      * Add a BibEntry to this AutoCompleter.      * @note The AutoCompleter itself decides which information should be stored for later completion.      */
 DECL|method|addBibtexEntry (BibEntry entry)
 name|void
 name|addBibtexEntry
@@ -95,7 +95,7 @@ name|String
 name|toComplete
 parameter_list|)
 function_decl|;
-comment|/**      * Directly adds an item to the AutoCompleter.      * This method should be called only if the information does not comes directly from a BibtexEntry.      * Otherwise the {@link #addBibtexEntry(BibEntry)} is preferred.      * @param item item to add      */
+comment|/**      * Directly adds an item to the AutoCompleter.      * This method should be called only if the information does not comes directly from a BibEntry.      * Otherwise the {@link #addBibtexEntry(BibEntry)} is preferred.      * @param item item to add      */
 DECL|method|addItemToIndex (E item)
 name|void
 name|addItemToIndex

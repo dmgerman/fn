@@ -594,7 +594,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**      * Convenience menthod for findPDF. Searches for a file of the given type.      * @param entry The BibtexEntry to search for a link for.      * @param fileType The file type to search for.      * @return The link to the file found, or null if not found.      */
+comment|/**      * Convenience menthod for findPDF. Searches for a file of the given type.      * @param entry The BibEntry to search for a link for.      * @param fileType The file type to search for.      * @return The link to the file found, or null if not found.      */
 DECL|method|findFile (BibEntry entry, ExternalFileType fileType, List<String> extraDirs)
 specifier|public
 specifier|static
@@ -769,7 +769,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Convenience function for absolute search.      *      * Uses findFile(BibtexEntry, BibtexDatabase, (String)null, String, false).      */
+comment|/**      * Convenience function for absolute search.      *      * Uses findFile(BibEntry, BibDatabase, (String)null, String, false).      */
 DECL|method|findFile (BibEntry entry, BibDatabase database, String file)
 specifier|public
 specifier|static

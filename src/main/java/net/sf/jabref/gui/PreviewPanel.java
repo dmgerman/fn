@@ -411,7 +411,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Displays an BibtexEntry using the given layout format.  */
+comment|/**  * Displays an BibEntry using the given layout format.  */
 end_comment
 
 begin_class
@@ -1669,7 +1669,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * The PreviewPanel has registered itself as an event listener with the      * currently displayed BibtexEntry. If the entry changes, an event is      * received here, and we can update the preview immediately.      */
+comment|/**      * The PreviewPanel has registered itself as an event listener with the      * currently displayed BibEntry. If the entry changes, an event is      * received here, and we can update the preview immediately.      */
 annotation|@
 name|Override
 DECL|method|vetoableChange (PropertyChangeEvent evt)

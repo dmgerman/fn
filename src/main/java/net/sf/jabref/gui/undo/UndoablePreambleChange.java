@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class represents a change in any field value. The relevant  * information is the BibtexEntry, the field name, the old and the  * new value. Old/new values can be null.  */
+comment|/**  * This class represents a change in any field value. The relevant  * information is the BibEntry, the field name, the old and the  * new value. Old/new values can be null.  */
 end_comment
 
 begin_class

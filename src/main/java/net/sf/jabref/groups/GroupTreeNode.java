@@ -498,7 +498,7 @@ return|return
 name|copy
 return|;
 block|}
-comment|/**      * Update all groups, if necessary, to handle the situation where the group      * tree is applied to a different BibtexDatabase than it was created for. This      * is for instance used when updating the group tree due to an external change.      *      * @param db The database to refresh for.      */
+comment|/**      * Update all groups, if necessary, to handle the situation where the group      * tree is applied to a different BibDatabase than it was created for. This      * is for instance used when updating the group tree due to an external change.      *      * @param db The database to refresh for.      */
 DECL|method|refreshGroupsForNewDatabase (BibDatabase db)
 specifier|public
 name|void

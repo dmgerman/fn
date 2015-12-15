@@ -2505,7 +2505,7 @@ name|current
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibtexEntry)      */
+comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibEntry)      */
 annotation|@
 name|Override
 DECL|method|addEntry (BibEntry entry)
@@ -2668,7 +2668,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entriesDupe A Collection of BibtexEntry instances.      * @param entry   The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
+comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entriesDupe A Collection of BibEntry instances.      * @param entry   The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
 DECL|method|internalDuplicate (Collection<BibEntry> entriesDupe, BibEntry entry)
 specifier|private
 specifier|static
@@ -7851,7 +7851,7 @@ name|int
 name|column
 parameter_list|)
 block|{
-comment|// Only column 0, which is controlled by BibtexEntry.searchHit, is
+comment|// Only column 0, which is controlled by BibEntry.searchHit, is
 comment|// editable:
 name|entries
 operator|.

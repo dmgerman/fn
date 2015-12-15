@@ -228,7 +228,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Passing a 'null' BibtexDatabase."
+literal|"Passing a 'null' BibDatabase."
 argument_list|)
 throw|;
 block|}

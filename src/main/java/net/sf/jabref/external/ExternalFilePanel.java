@@ -1310,7 +1310,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Error while converting BibtexEntry to XMP "
+literal|"Error while converting BibEntry to XMP "
 operator|+
 name|finalFile
 operator|.

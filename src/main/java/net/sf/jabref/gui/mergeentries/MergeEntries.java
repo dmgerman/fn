@@ -2624,7 +2624,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return Merged BibtexEntry      */
+comment|/**      * @return Merged BibEntry      */
 DECL|method|getMergeEntry ()
 specifier|public
 name|BibEntry
@@ -2646,7 +2646,7 @@ return|return
 name|mainPanel
 return|;
 block|}
-comment|/**      * Update the merged BibtexEntry with source and preview panel everytime something is changed      */
+comment|/**      * Update the merged BibEntry with source and preview panel everytime something is changed      */
 DECL|method|updateAll ()
 specifier|private
 name|void

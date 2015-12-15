@@ -1737,7 +1737,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Reset all fields from the data in the BibtexEntry.      */
+comment|/**      * Reset all fields from the data in the BibEntry.      */
 DECL|method|updateAll ()
 specifier|public
 name|void

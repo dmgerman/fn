@@ -420,7 +420,7 @@ name|requireNonNull
 argument_list|(
 name|id
 argument_list|,
-literal|"Every BibtexEntry must have an ID"
+literal|"Every BibEntry must have an ID"
 argument_list|)
 expr_stmt|;
 name|this
@@ -544,7 +544,7 @@ name|requireNonNull
 argument_list|(
 name|type
 argument_list|,
-literal|"Every BibtexEntry must have a type."
+literal|"Every BibEntry must have a type."
 argument_list|)
 expr_stmt|;
 name|EntryType
@@ -620,7 +620,7 @@ name|requireNonNull
 argument_list|(
 name|id
 argument_list|,
-literal|"Every BibtexEntry must have an ID"
+literal|"Every BibEntry must have an ID"
 argument_list|)
 expr_stmt|;
 try|try

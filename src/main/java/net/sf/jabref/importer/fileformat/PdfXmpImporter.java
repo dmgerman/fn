@@ -168,7 +168,7 @@ name|in
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns whether the given stream contains data that is a.) a pdf and b.)      * contains at least one BibtexEntry.      */
+comment|/**      * Returns whether the given stream contains data that is a.) a pdf and b.)      * contains at least one BibEntry.      */
 annotation|@
 name|Override
 DECL|method|isRecognizedFormat (InputStream in)

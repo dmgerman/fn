@@ -1338,7 +1338,7 @@ argument_list|()
 operator|)
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
+comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibEntry)      */
 annotation|@
 name|Override
 DECL|method|contains (String query, BibEntry entry)

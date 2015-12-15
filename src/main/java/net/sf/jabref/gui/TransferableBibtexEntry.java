@@ -127,7 +127,7 @@ import|;
 end_import
 
 begin_comment
-comment|/*  * A transferable object containing an array of BibtexEntry objects. Used  * for copy-paste operations.  */
+comment|/*  * A transferable object containing an array of BibEntry objects. Used  * for copy-paste operations.  */
 end_comment
 
 begin_class

@@ -771,7 +771,7 @@ block|}
 comment|// Ok, done. Then try to gather in all we have found. Since we might
 comment|// have found
 comment|// one or more bibtex results, it's best to gather them in a
-comment|// BibtexDatabase.
+comment|// BibDatabase.
 name|bibtexResult
 operator|=
 name|mergeImportResults

@@ -274,7 +274,7 @@ name|key
 init|=
 name|query
 decl_stmt|;
-comment|/* Query ADS and load the results into the BibtexDatabase */
+comment|/* Query ADS and load the results into the BibDatabase */
 name|status
 operator|.
 name|setStatus
@@ -631,7 +631,7 @@ name|OutputPrinter
 name|status
 parameter_list|)
 block|{
-comment|/* TODO: construct ADSUrl from BibtexEntry */
+comment|/* TODO: construct ADSUrl from BibEntry */
 name|String
 name|url
 init|=

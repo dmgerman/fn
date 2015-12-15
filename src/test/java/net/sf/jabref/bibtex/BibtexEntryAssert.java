@@ -235,7 +235,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Reads a bibtex database from the given InputStream. The result has to contain a single BibtexEntry. This entry is      * compared to the given entry      *      * @param shouldBeIs the inputStream reading the entry from      * @param entry the entry to compare with      */
+comment|/**      * Reads a bibtex database from the given InputStream. The result has to contain a single BibEntry. This entry is      * compared to the given entry      *      * @param shouldBeIs the inputStream reading the entry from      * @param entry the entry to compare with      */
 DECL|method|assertEquals (InputStream shouldBeIs, BibEntry entry)
 specifier|public
 specifier|static

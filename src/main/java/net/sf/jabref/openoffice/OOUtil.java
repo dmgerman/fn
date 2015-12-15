@@ -1610,7 +1610,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Make a cloned BibtexEntry and do the necessary preprocessing for use by the plugin.      * If the running JabRef version doesn't support post-processing in Layout, this      * preprocessing includes running the OOPreFormatter formatter for all fields except the      * BibTeX key.      * @param entry the original entry      * @return the cloned and processed entry      */
+comment|/**      * Make a cloned BibEntry and do the necessary preprocessing for use by the plugin.      * If the running JabRef version doesn't support post-processing in Layout, this      * preprocessing includes running the OOPreFormatter formatter for all fields except the      * BibTeX key.      * @param entry the original entry      * @return the cloned and processed entry      */
 DECL|method|createAdaptedEntry (BibEntry entry)
 specifier|public
 specifier|static

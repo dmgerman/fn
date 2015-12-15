@@ -381,7 +381,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Returns a EntryFromFileCreator object that is capable of creating a      * BibtexEntry for the given File.      *      * @param file the pdf file      * @return null if there is no EntryFromFileCreator for this File.      */
+comment|/**      * Returns a EntryFromFileCreator object that is capable of creating a      * BibEntry for the given File.      *      * @param file the pdf file      * @return null if there is no EntryFromFileCreator for this File.      */
 DECL|method|getEntryCreator (File file)
 specifier|public
 name|EntryFromFileCreator
@@ -634,7 +634,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*                  * TODO: database.insertEntry(BibtexEntry) is not sensible. Why                  * does 'true' mean "There were duplicates", while 'false' means                  * "Everything alright"?                  */
+comment|/*                  * TODO: database.insertEntry(BibEntry) is not sensible. Why                  * does 'true' mean "There were duplicates", while 'false' means                  * "Everything alright"?                  */
 if|if
 condition|(
 name|database
@@ -673,7 +673,7 @@ operator|.
 name|getPath
 argument_list|()
 operator|+
-literal|": Insert into BibtexDatabase failed."
+literal|": Insert into BibDatabase failed."
 argument_list|)
 expr_stmt|;
 block|}

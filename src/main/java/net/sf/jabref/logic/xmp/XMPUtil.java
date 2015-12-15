@@ -417,7 +417,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Try to write the given BibTexEntry in the XMP-stream of the given      * PDF-file.      *      * Throws an IOException if the file cannot be read or written, so the user      * can remove a lock or cancel the operation.      *      * The method will overwrite existing BibTeX-XMP-data, but keep other      * existing metadata.      *      * This is a convenience method for writeXMP(File, BibtexEntry).      *      * @param filename      *            The filename from which to open the file.      * @param entry      *            The entry to write.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws TransformerException      *             If the entry was malformed or unsupported.      * @throws IOException      *             If the file could not be written to or could not be found.      */
+comment|/**      * Try to write the given BibTexEntry in the XMP-stream of the given      * PDF-file.      *      * Throws an IOException if the file cannot be read or written, so the user      * can remove a lock or cancel the operation.      *      * The method will overwrite existing BibTeX-XMP-data, but keep other      * existing metadata.      *      * This is a convenience method for writeXMP(File, BibEntry).      *      * @param filename      *            The filename from which to open the file.      * @param entry      *            The entry to write.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws TransformerException      *             If the entry was malformed or unsupported.      * @throws IOException      *             If the file could not be written to or could not be found.      */
 DECL|method|writeXMP (String filename, BibEntry entry, BibDatabase database)
 specifier|public
 specifier|static
@@ -727,7 +727,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Helper function for retrieving a BibtexEntry from the      * PDDocumentInformation in a PDF file.      *      * To understand how to get hold of a PDDocumentInformation have a look in      * the test cases for XMPUtil.      *      * The BibtexEntry is build by mapping individual fields in the document      * information (like author, title, keywords) to fields in a bibtex entry.      *      * @param di      *            The document information from which to build a BibtexEntry.      *      * @return The bibtex entry found in the document information.      */
+comment|/**      * Helper function for retrieving a BibEntry from the      * PDDocumentInformation in a PDF file.      *      * To understand how to get hold of a PDDocumentInformation have a look in      * the test cases for XMPUtil.      *      * The BibEntry is build by mapping individual fields in the document      * information (like author, title, keywords) to fields in a bibtex entry.      *      * @param di      *            The document information from which to build a BibEntry.      *      * @return The bibtex entry found in the document information.      */
 DECL|method|getBibtexEntryFromDocumentInformation ( PDDocumentInformation di)
 specifier|public
 specifier|static
@@ -977,7 +977,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      * Helper function for retrieving a BibtexEntry from the DublinCore metadata      * in a PDF file.      *      * To understand how to get hold of a XMPSchemaDublinCore have a look in the      * test cases for XMPUtil.      *      * The BibtexEntry is build by mapping individual fields in the dublin core      * (like creator, title, subject) to fields in a bibtex entry.      *      * @param dcSchema      *            The document information from which to build a BibtexEntry.      *      * @return The bibtex entry found in the document information.      */
+comment|/**      * Helper function for retrieving a BibEntry from the DublinCore metadata      * in a PDF file.      *      * To understand how to get hold of a XMPSchemaDublinCore have a look in the      * test cases for XMPUtil.      *      * The BibEntry is build by mapping individual fields in the dublin core      * (like creator, title, subject) to fields in a bibtex entry.      *      * @param dcSchema      *            The document information from which to build a BibEntry.      *      * @return The bibtex entry found in the document information.      */
 DECL|method|getBibtexEntryFromDublinCore ( XMPSchemaDublinCore dcSchema)
 specifier|public
 specifier|static
@@ -1973,7 +1973,7 @@ name|outputStream
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Convenience method for toXMP(Collection<BibtexEntry>, BibtexDatabase,      * OutputStream) returning a String containing the XMP-metadata of the given      * collection of BibtexEntries.      *      * The resulting metadata string is wrapped as a complete XMP-document.      *      * @param bibtexEntries      *            The BibtexEntries to return XMP-metadata for.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @return The XMP representation of the given bibtexEntries.      * @throws TransformerException      *             Thrown if the bibtexEntries could not transformed to XMP.      */
+comment|/**      * Convenience method for toXMP(Collection<BibEntry>, BibDatabase,      * OutputStream) returning a String containing the XMP-metadata of the given      * collection of BibtexEntries.      *      * The resulting metadata string is wrapped as a complete XMP-document.      *      * @param bibtexEntries      *            The BibtexEntries to return XMP-metadata for.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @return The XMP representation of the given bibtexEntries.      * @throws TransformerException      *             Thrown if the bibtexEntries could not transformed to XMP.      */
 DECL|method|toXMP (Collection<BibEntry> bibtexEntries, BibDatabase database)
 specifier|public
 specifier|static
@@ -3837,7 +3837,7 @@ literal|"To report bugs visit http://jabref.sourceforge.net"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Command-line tool for working with XMP-data.      *      * Read or write XMP-metadata from or to pdf file.      *      * Usage:      *<dl>      *<dd>Read from PDF and print as bibtex:</dd>      *<dt>xmpUtil PDF</dt>      *<dd>Read from PDF and print raw XMP:</dd>      *<dt>xmpUtil -x PDF</dt>      *<dd>Write the entry in BIB given by KEY to the PDF:</dd>      *<dt>xmpUtil KEY BIB PDF</dt>      *<dd>Write all entries in BIB to the PDF:</dd>      *<dt>xmpUtil BIB PDF</dt>      *</dl>      *      * @param args      *            Command line strings passed to utility.      * @throws IOException      *             If any of the given files could not be read or written.      * @throws TransformerException      *             If the given BibtexEntry is malformed.      */
+comment|/**      * Command-line tool for working with XMP-data.      *      * Read or write XMP-metadata from or to pdf file.      *      * Usage:      *<dl>      *<dd>Read from PDF and print as bibtex:</dd>      *<dt>xmpUtil PDF</dt>      *<dd>Read from PDF and print raw XMP:</dd>      *<dt>xmpUtil -x PDF</dt>      *<dd>Write the entry in BIB given by KEY to the PDF:</dd>      *<dt>xmpUtil KEY BIB PDF</dt>      *<dd>Write all entries in BIB to the PDF:</dd>      *<dt>xmpUtil BIB PDF</dt>      *</dl>      *      * @param args      *            Command line strings passed to utility.      * @throws IOException      *             If any of the given files could not be read or written.      * @throws TransformerException      *             If the given BibEntry is malformed.      */
 DECL|method|main (String[] args)
 specifier|public
 specifier|static
@@ -4045,7 +4045,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"Could not find BibtexEntry in "
+literal|"Could not find BibEntry in "
 operator|+
 name|args
 index|[
@@ -4242,7 +4242,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"Could not find BibtexEntry in "
+literal|"Could not find BibEntry in "
 operator|+
 name|args
 index|[
@@ -4375,7 +4375,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"Could not find BibtexEntry "
+literal|"Could not find BibEntry "
 operator|+
 name|args
 index|[
@@ -4433,7 +4433,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Will try to read XMP metadata from the given file, returning whether      * metadata was found.      *      * Caution: This method is as expensive as it is reading the actual metadata      * itself from the PDF.      *      * @param is      *            The inputstream to read the PDF from.      * @return whether a BibtexEntry was found in the given PDF.      */
+comment|/**      * Will try to read XMP metadata from the given file, returning whether      * metadata was found.      *      * Caution: This method is as expensive as it is reading the actual metadata      * itself from the PDF.      *      * @param is      *            The inputstream to read the PDF from.      * @return whether a BibEntry was found in the given PDF.      */
 DECL|method|hasMetadata (InputStream is)
 specifier|public
 specifier|static
