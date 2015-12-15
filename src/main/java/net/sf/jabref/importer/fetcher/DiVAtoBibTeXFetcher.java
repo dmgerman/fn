@@ -615,7 +615,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Do not use the provided key
-comment|// entry.setField(BibtexFields.KEY_FIELD,null);
+comment|// entry.clearField(BibtexFields.KEY_FIELD);
 name|inspector
 operator|.
 name|addEntry

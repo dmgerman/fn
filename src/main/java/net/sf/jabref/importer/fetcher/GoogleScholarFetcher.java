@@ -1509,6 +1509,15 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|entry
+operator|.
+name|clearField
+argument_list|(
+name|BibEntry
+operator|.
+name|KEY_FIELD
+argument_list|)
+expr_stmt|;
 comment|// If the entry's url field is not set, and we have stored an url for this
 comment|// entry, set it:
 if|if
