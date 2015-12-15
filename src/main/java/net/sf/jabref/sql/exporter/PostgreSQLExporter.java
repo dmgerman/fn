@@ -112,10 +112,6 @@ name|SQLUtil
 import|;
 end_import
 
-begin_comment
-comment|/**  *  * @author ifsteinm.  *  *  Jan 20th	Extends DBExporter to provide features specific for PostgreSQL  *  			Created after a refactory on SQLUtil  *  */
-end_comment
-
 begin_class
 DECL|class|PostgreSQLExporter
 specifier|public
