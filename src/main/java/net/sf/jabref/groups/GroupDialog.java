@@ -2852,10 +2852,9 @@ name|void
 name|addPreviousEntries
 parameter_list|()
 block|{
-operator|...
 name|int
 name|i
-operator|=
+init|=
 name|JOptionPane
 operator|.
 name|showConfirmDialog
@@ -2887,7 +2886,7 @@ name|JOptionPane
 operator|.
 name|QUESTION_MESSAGE
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|i

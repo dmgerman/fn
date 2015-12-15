@@ -3933,7 +3933,6 @@ comment|// show a warning, then return
 name|StringBuffer
 name|message
 init|=
-operator|...
 operator|new
 name|StringBuffer
 argument_list|(
