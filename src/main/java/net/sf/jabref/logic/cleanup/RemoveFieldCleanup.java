@@ -148,11 +148,9 @@ return|;
 block|}
 name|entry
 operator|.
-name|setField
+name|clearField
 argument_list|(
 name|field
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 name|FieldChange

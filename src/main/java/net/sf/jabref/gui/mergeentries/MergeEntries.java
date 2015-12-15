@@ -2818,14 +2818,12 @@ else|else
 block|{
 name|mergedEntry
 operator|.
-name|setField
+name|clearField
 argument_list|(
 name|jointStrings
 index|[
 name|i
 index|]
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 block|}
