@@ -76,7 +76,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -183,7 +183,7 @@ comment|// A reference to the entry this object works on.
 DECL|field|base
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|base
 decl_stmt|;
 DECL|field|panel
@@ -203,7 +203,7 @@ specifier|private
 name|FieldEditor
 name|ed
 decl_stmt|;
-DECL|method|PreambleEditor (JabRefFrame baseFrame, BasePanel panel, BibtexDatabase base, JabRefPreferences prefs)
+DECL|method|PreambleEditor (JabRefFrame baseFrame, BasePanel panel, BibDatabase base, JabRefPreferences prefs)
 specifier|public
 name|PreambleEditor
 parameter_list|(
@@ -213,7 +213,7 @@ parameter_list|,
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|,
 name|JabRefPreferences

@@ -204,7 +204,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -850,11 +850,11 @@ name|bcol
 init|=
 literal|"b:"
 decl_stmt|;
-DECL|method|MSBibEntry (BibtexEntry bibtex)
+DECL|method|MSBibEntry (BibEntry bibtex)
 specifier|public
 name|MSBibEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|)
 block|{
@@ -1847,12 +1847,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|populateFromBibtex (BibtexEntry bibtex)
+DECL|method|populateFromBibtex (BibEntry bibtex)
 specifier|private
 name|void
 name|populateFromBibtex
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|)
 block|{
@@ -4164,12 +4164,12 @@ name|result
 return|;
 block|}
 comment|/* construct a MSBib date object */
-DECL|method|getDate (BibtexEntry bibtex)
+DECL|method|getDate (BibEntry bibtex)
 specifier|protected
 name|String
 name|getDate
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|)
 block|{
@@ -4228,12 +4228,12 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getMSBibSourceType (BibtexEntry bibtex)
+DECL|method|getMSBibSourceType (BibEntry bibtex)
 specifier|private
 name|String
 name|getMSBibSourceType
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|)
 block|{
@@ -6448,11 +6448,11 @@ return|;
 block|}
 DECL|method|getBibtexRepresentation ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getBibtexRepresentation
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 literal|null
@@ -6467,7 +6467,7 @@ block|{
 name|entry
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|ImportFormat
 operator|.
@@ -6485,7 +6485,7 @@ block|{
 name|entry
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|tag
 argument_list|,

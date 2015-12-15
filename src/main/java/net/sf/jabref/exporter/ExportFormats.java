@@ -198,7 +198,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1192,7 +1192,7 @@ condition|(
 name|selectedOnly
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|selected
 init|=
@@ -1213,7 +1213,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|bibtexEntry
 range|:
 name|selected

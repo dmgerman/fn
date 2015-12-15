@@ -40,7 +40,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -222,15 +222,15 @@ specifier|public
 class|class
 name|XMPSchemaBibtexTest
 block|{
-DECL|method|assertEqualsBibtexEntry (BibtexEntry e, BibtexEntry x)
+DECL|method|assertEqualsBibtexEntry (BibEntry e, BibEntry x)
 specifier|public
 name|void
 name|assertEqualsBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|e
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|x
 parameter_list|)
 block|{
@@ -1648,7 +1648,7 @@ argument_list|(
 name|xmp
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|BibtexTestData
@@ -1665,7 +1665,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e2
 init|=
 name|bibtex

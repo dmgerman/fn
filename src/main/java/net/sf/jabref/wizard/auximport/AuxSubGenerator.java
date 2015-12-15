@@ -170,7 +170,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -186,7 +186,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -234,13 +234,13 @@ decl_stmt|;
 comment|// all not solved bibtex keys
 DECL|field|db
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|db
 decl_stmt|;
 comment|// reference database
 DECL|field|auxDB
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|auxDB
 decl_stmt|;
 comment|// contains only the bibtex keys who found in aux file
@@ -256,11 +256,11 @@ name|int
 name|crossreferencedEntriesCount
 decl_stmt|;
 comment|// counts entries pulled in due to crossref
-DECL|method|AuxSubGenerator (BibtexDatabase refDBase)
+DECL|method|AuxSubGenerator (BibDatabase refDBase)
 specifier|public
 name|AuxSubGenerator
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|refDBase
 parameter_list|)
 block|{
@@ -285,12 +285,12 @@ operator|=
 name|refDBase
 expr_stmt|;
 block|}
-DECL|method|setReferenceDatabase (BibtexDatabase newRefDB)
+DECL|method|setReferenceDatabase (BibDatabase newRefDB)
 specifier|private
 name|void
 name|setReferenceDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|newRefDB
 parameter_list|)
 block|{
@@ -817,7 +817,7 @@ block|{
 name|auxDB
 operator|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 expr_stmt|;
 name|notFoundList
@@ -835,7 +835,7 @@ range|:
 name|mySet
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|db
@@ -899,7 +899,7 @@ name|crossref
 argument_list|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|refEntry
 init|=
 name|db
@@ -1003,23 +1003,23 @@ block|}
 block|}
 block|}
 comment|/**      * Insert a clone of the given entry. The clone is given a new unique ID.      *      * @param bibDB The database to insert into.      * @param entry The entry to insert a copy of.      */
-DECL|method|insertEntry (BibtexDatabase bibDB, BibtexEntry entry)
+DECL|method|insertEntry (BibDatabase bibDB, BibEntry entry)
 specifier|private
 name|void
 name|insertEntry
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|bibDB
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|clonedEntry
 init|=
 operator|(
-name|BibtexEntry
+name|BibEntry
 operator|)
 name|entry
 operator|.
@@ -1044,8 +1044,8 @@ name|clonedEntry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * generate Shortcut method for easy generation.      *      * @param auxFileName String      * @param bibDB BibtexDatabase - reference database      * @return Vector - contains all not resolved bibtex entries      */
-DECL|method|generate (String auxFileName, BibtexDatabase bibDB)
+comment|/**      * generate Shortcut method for easy generation.      *      * @param auxFileName String      * @param bibDB BibDatabase - reference database      * @return Vector - contains all not resolved bibtex entries      */
+DECL|method|generate (String auxFileName, BibDatabase bibDB)
 specifier|public
 specifier|final
 name|Vector
@@ -1057,7 +1057,7 @@ parameter_list|(
 name|String
 name|auxFileName
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|bibDB
 parameter_list|)
 block|{
@@ -1080,7 +1080,7 @@ return|;
 block|}
 DECL|method|getGeneratedDatabase ()
 specifier|public
-name|BibtexDatabase
+name|BibDatabase
 name|getGeneratedDatabase
 parameter_list|()
 block|{
@@ -1094,7 +1094,7 @@ block|{
 name|auxDB
 operator|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 expr_stmt|;
 block|}

@@ -100,7 +100,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -197,7 +197,7 @@ name|API_URL
 init|=
 literal|"http://api.crossref.org"
 decl_stmt|;
-DECL|method|findDOI (BibtexEntry entry)
+DECL|method|findDOI (BibEntry entry)
 specifier|public
 specifier|static
 name|Optional
@@ -206,7 +206,7 @@ name|DOI
 argument_list|>
 name|findDOI
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

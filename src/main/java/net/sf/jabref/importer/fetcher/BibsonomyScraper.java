@@ -60,7 +60,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -149,11 +149,11 @@ name|BIBSONOMY_SCRAPER_POST
 init|=
 literal|"&format=bibtex"
 decl_stmt|;
-comment|/**      * Return a BibtexEntry by looking up the given url from the BibSonomy scraper.      * @param entryUrl      * @return      */
+comment|/**      * Return a BibEntry by looking up the given url from the BibSonomy scraper.      * @param entryUrl      * @return      */
 DECL|method|getEntry (String entryUrl)
 specifier|public
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|(
 name|String

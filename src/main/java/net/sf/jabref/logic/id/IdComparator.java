@@ -30,7 +30,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -45,7 +45,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Comparator for sorting BibtexEntry objects based on their ID. This  * can be used to sort entries back into the order they were created,  * provided the IDs given to entries are lexically monotonically increasing.  */
+comment|/**  * Comparator for sorting BibEntry objects based on their ID. This  * can be used to sort entries back into the order they were created,  * provided the IDs given to entries are lexically monotonically increasing.  */
 end_comment
 
 begin_class
@@ -56,20 +56,20 @@ name|IdComparator
 implements|implements
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|compare (BibtexEntry one, BibtexEntry two)
+DECL|method|compare (BibEntry one, BibEntry two)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|one
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|two
 parameter_list|)
 block|{

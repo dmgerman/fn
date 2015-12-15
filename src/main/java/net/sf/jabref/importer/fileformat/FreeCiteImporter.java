@@ -230,7 +230,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -375,7 +375,7 @@ DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(
@@ -427,7 +427,7 @@ DECL|method|importEntries (String text, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(
@@ -628,7 +628,7 @@ comment|// output is in conn.getInputStream();
 comment|// new InputStreamReader(conn.getInputStream())
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|res
 init|=
@@ -704,11 +704,11 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 comment|// fallback type

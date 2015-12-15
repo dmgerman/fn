@@ -24,7 +24,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -40,7 +40,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -512,11 +512,11 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|field|database
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|entry
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 annotation|@

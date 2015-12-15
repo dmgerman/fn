@@ -124,7 +124,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -238,7 +238,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|findFullText (BibtexEntry entry)
+DECL|method|findFullText (BibEntry entry)
 specifier|public
 name|Optional
 argument_list|<
@@ -246,7 +246,7 @@ name|URL
 argument_list|>
 name|findFullText
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

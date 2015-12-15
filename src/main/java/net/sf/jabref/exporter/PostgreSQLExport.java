@@ -50,7 +50,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -135,13 +135,13 @@ block|}
 comment|/**      * First method called when user starts the export.      *      * @param database      *            The bibtex database from which to export.      * @param file      *            The filename to which the export should be writtten.      * @param encoding      *            The encoding to use.      * @param keySet      *            The set of IDs of the entries to export.      * @throws java.lang.Exception      *             If something goes wrong, feel free to throw an exception. The      *             error message is shown to the user.      */
 annotation|@
 name|Override
-DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> keySet)
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> keySet)
 specifier|public
 name|void
 name|performExport
 parameter_list|(
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 specifier|final

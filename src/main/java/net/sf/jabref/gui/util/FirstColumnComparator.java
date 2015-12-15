@@ -40,7 +40,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -56,7 +56,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -68,20 +68,20 @@ name|FirstColumnComparator
 implements|implements
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 DECL|field|database
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
-DECL|method|FirstColumnComparator (BibtexDatabase database)
+DECL|method|FirstColumnComparator (BibDatabase database)
 specifier|public
 name|FirstColumnComparator
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -94,15 +94,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
+DECL|method|compare (BibEntry e1, BibEntry e2)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|e1
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|e2
 parameter_list|)
 block|{

@@ -100,7 +100,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -116,7 +116,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -639,15 +639,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database)
+DECL|method|doLayout (BibEntry bibtex, BibDatabase database)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -663,15 +663,15 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
-DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, List<String> wordsToHighlight)
+DECL|method|doLayout (BibEntry bibtex, BibDatabase database, List<String> wordsToHighlight)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|List
@@ -744,12 +744,12 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Returns the processed text. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
-DECL|method|doLayout (BibtexDatabase database, Charset encoding)
+DECL|method|doLayout (BibDatabase database, Charset encoding)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|Charset

@@ -222,7 +222,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -304,7 +304,7 @@ name|pushbackReader
 decl_stmt|;
 DECL|field|database
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|entryTypes
@@ -468,7 +468,7 @@ specifier|public
 specifier|static
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|fromString
 parameter_list|(
@@ -520,11 +520,11 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @return The bibtexentry or null if non was found or an error occurred.      */
+comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *<p>      * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *      * @param bibtexString      * @return The BibEntry or null if non was found or an error occurred.      */
 DECL|method|singleFromString (String bibtexString)
 specifier|public
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|singleFromString
 parameter_list|(
 name|String
@@ -533,7 +533,7 @@ parameter_list|)
 block|{
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -705,7 +705,7 @@ block|{
 name|database
 operator|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 expr_stmt|;
 name|entryTypes
@@ -971,7 +971,7 @@ block|{
 comment|/**          * Morten Alver 13 Aug 2006: Trying to make the parser more          * robust. If an exception is thrown when parsing an entry,          * drop the entry and try to resume parsing. Add a warning          * for the user.          */
 try|try
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|parseEntry
@@ -1997,7 +1997,7 @@ return|;
 block|}
 DECL|method|parseEntry (EntryType entryType)
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|parseEntry
 parameter_list|(
 name|EntryType
@@ -2014,11 +2014,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|result
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|id
 argument_list|,
@@ -2070,7 +2070,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -2162,12 +2162,12 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|parseField (BibtexEntry entry)
+DECL|method|parseField (BibEntry entry)
 specifier|private
 name|void
 name|parseField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 throws|throws
@@ -4138,8 +4138,8 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 range|:
 name|database
 operator|.
@@ -4149,7 +4149,7 @@ control|)
 block|{
 if|if
 condition|(
-name|bibtexEntry
+name|bibEntry
 operator|.
 name|getType
 argument_list|()
@@ -4161,7 +4161,7 @@ comment|// Look up the unknown type name in our map of parsed types:
 name|String
 name|name
 init|=
-name|bibtexEntry
+name|bibEntry
 operator|.
 name|getType
 argument_list|()
@@ -4186,7 +4186,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|bibtexEntry
+name|bibEntry
 operator|.
 name|setType
 argument_list|(
@@ -4213,7 +4213,7 @@ name|name
 operator|+
 literal|"; key: "
 operator|+
-name|bibtexEntry
+name|bibEntry
 operator|.
 name|getCiteKey
 argument_list|()

@@ -178,7 +178,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -194,7 +194,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -208,17 +208,17 @@ block|{
 DECL|field|memEntry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|memEntry
 decl_stmt|;
 DECL|field|tmpEntry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|tmpEntry
 decl_stmt|;
 DECL|field|diskEntry
-name|BibtexEntry
+name|BibEntry
 name|diskEntry
 decl_stmt|;
 DECL|field|sp
@@ -243,14 +243,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|EntryDeleteChange (BibtexEntry memEntry, BibtexEntry tmpEntry)
+DECL|method|EntryDeleteChange (BibEntry memEntry, BibEntry tmpEntry)
 specifier|public
 name|EntryDeleteChange
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|memEntry
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|tmpEntry
 parameter_list|)
 block|{
@@ -356,7 +356,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
 name|makeChange
@@ -364,7 +364,7 @@ parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 name|NamedCompound

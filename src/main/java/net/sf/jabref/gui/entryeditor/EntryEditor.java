@@ -628,7 +628,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -803,7 +803,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GUI component that allows editing of the fields of a BibtexEntry (i.e. the  * one that shows up, when you double click on an entry in the table)  *<p>  * It hosts the tabs (required, general, optional) and the buttons to the left.  *<p>  * EntryEditor also registers itself as a VetoableChangeListener, receiving  * events whenever a field of the entry changes, enabling the text fields to  * update themselves if the change is made from somewhere else.  */
+comment|/**  * GUI component that allows editing of the fields of a BibEntry (i.e. the  * one that shows up, when you double click on an entry in the table)  *<p>  * It hosts the tabs (required, general, optional) and the buttons to the left.  *<p>  * EntryEditor also registers itself as a VetoableChangeListener, receiving  * events whenever a field of the entry changes, enabling the text fields to  * update themselves if the change is made from somewhere else.  */
 end_comment
 
 begin_class
@@ -837,7 +837,7 @@ decl_stmt|;
 comment|// A reference to the entry this object works on.
 DECL|field|entry
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|type
@@ -1153,7 +1153,7 @@ operator|+
 literal|"</B></HTML>"
 decl_stmt|;
 comment|// @formatter:on
-DECL|method|EntryEditor (JabRefFrame frame, BasePanel panel, BibtexEntry entry)
+DECL|method|EntryEditor (JabRefFrame frame, BasePanel panel, BibEntry entry)
 specifier|public
 name|EntryEditor
 parameter_list|(
@@ -1163,7 +1163,7 @@ parameter_list|,
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -2218,7 +2218,7 @@ annotation|@
 name|Override
 DECL|method|getEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|()
 block|{
@@ -2228,7 +2228,7 @@ return|;
 block|}
 DECL|method|getDatabase ()
 specifier|public
-name|BibtexDatabase
+name|BibDatabase
 name|getDatabase
 parameter_list|()
 block|{
@@ -4286,13 +4286,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|getSourceString (BibtexEntry entry)
+DECL|method|getSourceString (BibEntry entry)
 specifier|public
 specifier|static
 name|String
 name|getSourceString
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 throws|throws
@@ -5146,14 +5146,14 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Updates this editor to show the given entry, regardless of type      * correspondence.      *      * @param swtichEntry a<code>BibtexEntry</code> value      */
-DECL|method|switchTo (BibtexEntry swtichEntry)
+comment|/**      * Updates this editor to show the given entry, regardless of type      * correspondence.      *      * @param swtichEntry a<code>BibEntry</code> value      */
+DECL|method|switchTo (BibEntry swtichEntry)
 specifier|public
 specifier|synchronized
 name|void
 name|switchTo
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|swtichEntry
 parameter_list|)
 block|{
@@ -5284,7 +5284,7 @@ operator|.
 name|parse
 argument_list|()
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|parserResult
@@ -5368,7 +5368,7 @@ literal|"source edit"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|newEntry
 init|=
 name|database
@@ -8363,7 +8363,7 @@ decl_stmt|;
 comment|// set the field named for "bibtexkey"
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,

@@ -28,7 +28,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -241,13 +241,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> keySet)
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> keySet)
 specifier|public
 name|void
 name|performExport
 parameter_list|(
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 specifier|final
@@ -405,7 +405,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|exportOpenOfficeCalc (File file, BibtexDatabase database, Set<String> keySet)
+DECL|method|exportOpenOfficeCalc (File file, BibDatabase database, Set<String> keySet)
 specifier|private
 specifier|static
 name|void
@@ -414,7 +414,7 @@ parameter_list|(
 name|File
 name|file
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|Set
@@ -484,7 +484,7 @@ name|delete
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|exportOpenOfficeCalcXML (File tmpFile, BibtexDatabase database, Set<String> keySet)
+DECL|method|exportOpenOfficeCalcXML (File tmpFile, BibDatabase database, Set<String> keySet)
 specifier|private
 specifier|static
 name|void
@@ -493,7 +493,7 @@ parameter_list|(
 name|File
 name|tmpFile
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|Set

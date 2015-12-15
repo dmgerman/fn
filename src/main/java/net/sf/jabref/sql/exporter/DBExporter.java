@@ -170,7 +170,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -186,7 +186,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -454,14 +454,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Method for the exportDatabase methods.      *      * @param database The DBTYPE of the database      * @param database The BibtexDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet   The set of IDs of the entries to export.      * @param out      The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, Object out, String dbName)
+comment|/**      * Method for the exportDatabase methods.      *      * @param database The DBTYPE of the database      * @param database The BibDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet   The set of IDs of the entries to export.      * @param out      The output (PrintStream or Connection) object to which the DML should be written.      */
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, Set<String> keySet, Object out, String dbName)
 specifier|private
 name|void
 name|performExport
 parameter_list|(
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 specifier|final
@@ -485,7 +485,7 @@ name|Exception
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -585,7 +585,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Generates the DML required to populate the entries table with jabref data and writes it to the output      * PrintStream.      *      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *                    using getDatabaseIDByPath(metaData, out)      * @param entries     The BibtexEntries to export      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|populateEntriesTable (int database_id, List<BibtexEntry> entries, Object out)
+DECL|method|populateEntriesTable (int database_id, List<BibEntry> entries, Object out)
 specifier|private
 name|void
 name|populateEntriesTable
@@ -595,7 +595,7 @@ name|database_id
 parameter_list|,
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
@@ -622,7 +622,7 @@ literal|", database_id) VALUES ("
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -863,7 +863,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|grp
@@ -2080,17 +2080,17 @@ end_if
 
 begin_comment
 unit|}
-comment|/**      * Generates the SQL required to populate the strings table with jabref data.      *      * @param database    BibtexDatabase object used from where the strings will be exported      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *                    using getDatabaseIDByPath(metaData, out)      * @throws SQLException      */
+comment|/**      * Generates the SQL required to populate the strings table with jabref data.      *      * @param database    BibDatabase object used from where the strings will be exported      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *                    using getDatabaseIDByPath(metaData, out)      * @throws SQLException      */
 end_comment
 
 begin_function
-DECL|method|populateStringTable (BibtexDatabase database, Object out, int database_id)
+DECL|method|populateStringTable (BibDatabase database, Object out, int database_id)
 unit|private
 specifier|static
 name|void
 name|populateStringTable
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|Object
@@ -2280,17 +2280,17 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified output file.      *      * @param database The BibtexDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet   The set of IDs of the entries to export.      * @param file     The name of the file to which the DML should be written      * @param encoding The encoding to be used      */
+comment|/**      * Accepts the BibDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified output file.      *      * @param database The BibDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet   The set of IDs of the entries to export.      * @param file     The name of the file to which the DML should be written      * @param encoding The encoding to be used      */
 end_comment
 
 begin_function
-DECL|method|exportDatabaseAsFile (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, String file, Charset encoding)
+DECL|method|exportDatabaseAsFile (final BibDatabase database, final MetaData metaData, Set<String> keySet, String file, Charset encoding)
 specifier|public
 name|void
 name|exportDatabaseAsFile
 parameter_list|(
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 specifier|final
@@ -2392,17 +2392,17 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified SQL database.      *      * @param database        The BibtexDatabase to export      * @param metaData        The MetaData object containing the groups information      * @param keySet          The set of IDs of the entries to export.      * @param databaseStrings The necessary database connection information      */
+comment|/**      * Accepts the BibDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified SQL database.      *      * @param database        The BibDatabase to export      * @param metaData        The MetaData object containing the groups information      * @param keySet          The set of IDs of the entries to export.      * @param databaseStrings The necessary database connection information      */
 end_comment
 
 begin_function
-DECL|method|exportDatabaseToDBMS (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, DBStrings databaseStrings, JabRefFrame frame)
+DECL|method|exportDatabaseToDBMS (final BibDatabase database, final MetaData metaData, Set<String> keySet, DBStrings databaseStrings, JabRefFrame frame)
 specifier|public
 name|void
 name|exportDatabaseToDBMS
 parameter_list|(
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 specifier|final

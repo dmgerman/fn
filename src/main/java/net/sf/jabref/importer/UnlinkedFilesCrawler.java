@@ -68,7 +68,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Util class for searching files on the filessystem which are not linked to a  * provided {@link BibtexDatabase}.  *   * @author Nosh&Dan  * @version 09.11.2008 | 19:55:20  *   */
+comment|/**  * Util class for searching files on the filessystem which are not linked to a  * provided {@link BibDatabase}.  *   * @author Nosh&Dan  * @version 09.11.2008 | 19:55:20  *   */
 end_comment
 
 begin_class
@@ -158,15 +158,15 @@ decl_stmt|;
 DECL|field|database
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 comment|/**      * CONSTRUCTOR      *       * @param database      */
-DECL|method|UnlinkedFilesCrawler (BibtexDatabase database)
+DECL|method|UnlinkedFilesCrawler (BibDatabase database)
 specifier|public
 name|UnlinkedFilesCrawler
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{

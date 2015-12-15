@@ -178,7 +178,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -392,7 +392,7 @@ literal|"title"
 block|,
 literal|"year"
 block|,
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 block|}
@@ -1209,7 +1209,7 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,

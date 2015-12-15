@@ -92,7 +92,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -199,10 +199,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibtexEntryWriterTest
+DECL|class|BibEntryWriterTest
 specifier|public
 class|class
-name|BibtexEntryWriterTest
+name|BibEntryWriterTest
 block|{
 DECL|field|writer
 specifier|private
@@ -294,11 +294,11 @@ operator|new
 name|StringWriter
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"1234"
 argument_list|,
@@ -478,7 +478,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -502,7 +502,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entries
@@ -672,7 +672,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -696,7 +696,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entries
@@ -870,7 +870,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -894,7 +894,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entries
@@ -1126,7 +1126,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -1150,7 +1150,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entries
@@ -1378,7 +1378,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -1402,7 +1402,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entries
@@ -1626,7 +1626,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -1650,7 +1650,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entries
@@ -1817,7 +1817,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -1841,7 +1841,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entries

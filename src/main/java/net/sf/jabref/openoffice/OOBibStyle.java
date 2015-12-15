@@ -44,7 +44,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -60,7 +60,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -157,7 +157,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class embodies a bibliography formatting for OpenOffice, which is composed  * of the following elements:  *<p>  * 1) Each OO bib entry type must have a formatting. A formatting is an array of elements, each  * of which is either a piece of constant text, an entry field value, or a tab. Each element has  * a character format associated with it.  *<p>  * 2) Many field values (e.g. author) need to be formatted before input to OpenOffice. The style  * has the responsibility of formatting all field values. Formatting is handled by 0-n  * JabRef LayoutFormatter classes.  *<p>  * 3) If the entries are not numbered, a citation marker must be produced for each entry. This  * operation is performed for each JabRef BibtexEntry.  */
+comment|/**  * This class embodies a bibliography formatting for OpenOffice, which is composed  * of the following elements:  *<p>  * 1) Each OO bib entry type must have a formatting. A formatting is an array of elements, each  * of which is either a piece of constant text, an entry field value, or a tab. Each element has  * a character format associated with it.  *<p>  * 2) Many field values (e.g. author) need to be formatted before input to OpenOffice. The style  * has the responsibility of formatting all field values. Formatting is handled by 0-n  * JabRef LayoutFormatter classes.  *<p>  * 3) If the entries are not numbered, a citation marker must be produced for each entry. This  * operation is performed for each JabRef BibEntry.  */
 end_comment
 
 begin_class
@@ -2233,16 +2233,16 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Format the marker for the in-text citation according to this bib style.      *      * @param entry         The JabRef BibtexEntry providing the data.      * @param inParenthesis Signals whether a parenthesized citation or an in-text citation is wanted.      * @param uniquefier    String to add behind the year in case it's needed to separate similar      *                      entries.      * @return The formatted citation.      */
-DECL|method|getCitationMarker (BibtexEntry entry, BibtexDatabase database, boolean inParenthesis, String uniquefier, int unlimAuthors)
+comment|/**      * Format the marker for the in-text citation according to this bib style.      *      * @param entry         The JabRef BibEntry providing the data.      * @param inParenthesis Signals whether a parenthesized citation or an in-text citation is wanted.      * @param uniquefier    String to add behind the year in case it's needed to separate similar      *                      entries.      * @return The formatted citation.      */
+DECL|method|getCitationMarker (BibEntry entry, BibDatabase database, boolean inParenthesis, String uniquefier, int unlimAuthors)
 specifier|public
 name|String
 name|getCitationMarker
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|boolean
@@ -2259,7 +2259,7 @@ return|return
 name|getCitationMarker
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[]
 block|{
 name|entry
@@ -2285,17 +2285,17 @@ block|}
 argument_list|)
 return|;
 block|}
-comment|/**      * Format the marker for the in-text citation according to this bib style. Uniquefier letters are added as      * provided by the uniquefiers argument. If successive entries within the citation are uniquefied from each other,      * this method will perform a grouping of these entries.      *      * @param entries       The array of JabRef BibtexEntry providing the data.      * @param inParenthesis Signals whether a parenthesized citation or an in-text citation is wanted.      * @param uniquefiers   Strings to add behind the year for each entry in case it's needed to separate similar      *                      entries.      * @param unlimAuthors  Boolean for each entry. If true, we should not use "et al" formatting regardless      *                      of the number of authors. Can be null to indicate that no entries should have unlimited names.      * @return The formatted citation.      */
-DECL|method|getCitationMarker (BibtexEntry[] entries, BibtexDatabase database, boolean inParenthesis, String[] uniquefiers, int[] unlimAuthors)
+comment|/**      * Format the marker for the in-text citation according to this bib style. Uniquefier letters are added as      * provided by the uniquefiers argument. If successive entries within the citation are uniquefied from each other,      * this method will perform a grouping of these entries.      *      * @param entries       The array of JabRef BibEntry providing the data.      * @param inParenthesis Signals whether a parenthesized citation or an in-text citation is wanted.      * @param uniquefiers   Strings to add behind the year for each entry in case it's needed to separate similar      *                      entries.      * @param unlimAuthors  Boolean for each entry. If true, we should not use "et al" formatting regardless      *                      of the number of authors. Can be null to indicate that no entries should have unlimited names.      * @return The formatted citation.      */
+DECL|method|getCitationMarker (BibEntry[] entries, BibDatabase database, boolean inParenthesis, String[] uniquefiers, int[] unlimAuthors)
 specifier|public
 name|String
 name|getCitationMarker
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|boolean
@@ -2411,7 +2411,7 @@ operator|=
 name|getAuthorYearParenthesisMarker
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[]
 block|{
 name|entries
@@ -2522,7 +2522,7 @@ init|=
 name|getAuthorYearParenthesisMarker
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[]
 block|{
 name|entries
@@ -3113,12 +3113,12 @@ return|;
 block|}
 block|}
 comment|/**      * Modify entry and uniqiefier arrays to facilitate a grouped presentation of uniqiefied entries.      *      * @param entries     The entry array.      * @param uniquefiers The uniquefier array.      * @param from        The first index to group (inclusive)      * @param to          The last index to group (inclusive)      * @param separator   The separator for the uniquefier letters.      */
-DECL|method|group (BibtexEntry[] entries, String[] uniquefiers, int from, int to, String separator)
+DECL|method|group (BibEntry[] entries, String[] uniquefiers, int from, int to, String separator)
 specifier|private
 name|void
 name|group
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
@@ -3201,17 +3201,17 @@ name|toString
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * This method produces (Author, year) style citation strings in many different forms.      *      * @param entries           The array of BibtexEntry to get fields from.      * @param authorField       The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField         The bibtex field providing the year, e.g. "year".      * @param maxA              The maximum number of authors to write out in full without using etal. Set to      *                          -1 to always write out all authors.      * @param authorSep         The String to add between author names except the last two, e.g. ", ".      * @param andString         The String to add between the two last author names, e.g. "& ".      * @param etAlString        The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep           The String to separate authors from year, e.g. "; ".      * @param startBrace        The opening parenthesis.      * @param endBrace          The closing parenthesis.      * @param citationSeparator The String to separate citations from each other.      * @param uniquifiers       Optional parameter to separate similar citations. Elements can be null if not needed.      * @return The formatted citation.      */
-DECL|method|getAuthorYearParenthesisMarker (BibtexEntry[] entries, BibtexDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquifiers, int[] unlimAuthors)
+comment|/**      * This method produces (Author, year) style citation strings in many different forms.      *      * @param entries           The array of BibEntry to get fields from.      * @param authorField       The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField         The bibtex field providing the year, e.g. "year".      * @param maxA              The maximum number of authors to write out in full without using etal. Set to      *                          -1 to always write out all authors.      * @param authorSep         The String to add between author names except the last two, e.g. ", ".      * @param andString         The String to add between the two last author names, e.g. "& ".      * @param etAlString        The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep           The String to separate authors from year, e.g. "; ".      * @param startBrace        The opening parenthesis.      * @param endBrace          The closing parenthesis.      * @param citationSeparator The String to separate citations from each other.      * @param uniquifiers       Optional parameter to separate similar citations. Elements can be null if not needed.      * @return The formatted citation.      */
+DECL|method|getAuthorYearParenthesisMarker (BibEntry[] entries, BibDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquifiers, int[] unlimAuthors)
 specifier|private
 name|String
 name|getAuthorYearParenthesisMarker
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|String
@@ -3305,7 +3305,7 @@ name|unlimA
 else|:
 name|maxA
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entries
@@ -3573,17 +3573,17 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * This method produces "Author (year)" style citation strings in many different forms.      *      * @param entries     The array of BibtexEntry to get fields from.      * @param authorField The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField   The bibtex field providing the year, e.g. "year".      * @param maxA        The maximum number of authors to write out in full without using etal. Set to      *                    -1 to always write out all authors.      * @param authorSep   The String to add between author names except the last two, e.g. ", ".      * @param andString   The String to add between the two last author names, e.g. "& ".      * @param etAlString  The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep     The String to separate authors from year, e.g. "; ".      * @param startBrace  The opening parenthesis.      * @param endBrace    The closing parenthesis.      * @param uniquefiers Optional parameters to separate similar citations. Can be null if not needed.      * @return The formatted citation.      */
-DECL|method|getAuthorYearInTextMarker (BibtexEntry[] entries, BibtexDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquefiers, int[] unlimAuthors)
+comment|/**      * This method produces "Author (year)" style citation strings in many different forms.      *      * @param entries     The array of BibEntry to get fields from.      * @param authorField The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField   The bibtex field providing the year, e.g. "year".      * @param maxA        The maximum number of authors to write out in full without using etal. Set to      *                    -1 to always write out all authors.      * @param authorSep   The String to add between author names except the last two, e.g. ", ".      * @param andString   The String to add between the two last author names, e.g. "& ".      * @param etAlString  The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep     The String to separate authors from year, e.g. "; ".      * @param startBrace  The opening parenthesis.      * @param endBrace    The closing parenthesis.      * @param uniquefiers Optional parameters to separate similar citations. Can be null if not needed.      * @return The formatted citation.      */
+DECL|method|getAuthorYearInTextMarker (BibEntry[] entries, BibDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquefiers, int[] unlimAuthors)
 specifier|private
 name|String
 name|getAuthorYearInTextMarker
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|String
@@ -3963,15 +3963,15 @@ argument_list|()
 return|;
 block|}
 comment|/**      * This method looks up a field for en entry in a database. Any number of backup fields can be used      * if the primary field is empty.      *      * @param entry    The entry.      * @param database The database the entry belongs to.      * @param field    The field, or succession of fields, to look up. If backup fields are needed, separate      *                 field names by /. E.g. to use "author" with "editor" as backup, specify "author/editor".      * @return The resolved field content, or an empty string if the field(s) were empty.      */
-DECL|method|getCitationMarkerField (BibtexEntry entry, BibtexDatabase database, String field)
+DECL|method|getCitationMarkerField (BibEntry entry, BibDatabase database, String field)
 specifier|private
 name|String
 name|getCitationMarkerField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|String
@@ -4000,7 +4000,7 @@ block|{
 name|String
 name|content
 init|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(

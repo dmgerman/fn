@@ -70,7 +70,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -290,7 +290,7 @@ name|move
 decl_stmt|;
 DECL|field|selection
 specifier|private
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|selection
 decl_stmt|;

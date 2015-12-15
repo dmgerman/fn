@@ -28,7 +28,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -55,11 +55,11 @@ name|max
 parameter_list|)
 function_decl|;
 comment|/**      * Add the given entry to the list of entries managed by the inspector.      *       * @param entry      *            The entry to add.      */
-DECL|method|addEntry (BibtexEntry entry)
+DECL|method|addEntry (BibEntry entry)
 name|void
 name|addEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 function_decl|;

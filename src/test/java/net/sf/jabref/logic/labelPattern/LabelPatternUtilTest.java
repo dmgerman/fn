@@ -118,7 +118,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -134,7 +134,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -352,7 +352,7 @@ operator|.
 name|setDataBase
 argument_list|(
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -365,7 +365,7 @@ name|void
 name|testAndInAuthorName
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry0
 init|=
 name|BibtexParser
@@ -410,7 +410,7 @@ name|bibtexString
 init|=
 literal|"@ARTICLE{whatevery, author={Mari D. Herland and Mona-Iren Hauge and Ingeborg M. Helgeland}}"
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|BibtexParser
@@ -450,7 +450,7 @@ name|void
 name|testSpecialLatexCharacterInAuthorName
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|BibtexParser
@@ -491,7 +491,7 @@ name|void
 name|testMakeLabelAndCheckLegalKeys
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry0
 init|=
 name|BibtexParser
@@ -862,7 +862,7 @@ name|void
 name|testMakeLabelAndCheckLegalKeysAccentGrave
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry0
 init|=
 name|BibtexParser
@@ -3268,11 +3268,11 @@ name|void
 name|keywordN_keywordsSeparatedBySpace
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 name|entry
@@ -3356,11 +3356,11 @@ name|void
 name|keywordsN_keywordsSeparatedBySpace
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 name|entry

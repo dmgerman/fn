@@ -56,7 +56,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -127,7 +127,7 @@ import|;
 end_import
 
 begin_comment
-comment|/*  * A transferable object containing an array of BibtexEntry objects. Used  * for copy-paste operations.  */
+comment|/*  * A transferable object containing an array of BibEntry objects. Used  * for copy-paste operations.  */
 end_comment
 
 begin_class
@@ -141,7 +141,7 @@ block|{
 DECL|field|data
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|data
 decl_stmt|;
@@ -155,18 +155,18 @@ init|=
 operator|new
 name|DataFlavor
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|class
 argument_list|,
 literal|"JabRef entry"
 argument_list|)
 decl_stmt|;
-DECL|method|TransferableBibtexEntry (BibtexEntry[] data)
+DECL|method|TransferableBibtexEntry (BibEntry[] data)
 specifier|public
 name|TransferableBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|data
 parameter_list|)
@@ -299,7 +299,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|data

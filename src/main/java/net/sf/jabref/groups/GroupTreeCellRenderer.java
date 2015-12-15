@@ -74,7 +74,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -668,7 +668,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|JabRef

@@ -26,7 +26,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -231,7 +231,7 @@ block|}
 DECL|method|bibtexString2BibtexEntry (String s)
 specifier|public
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|bibtexString2BibtexEntry
 parameter_list|(
 name|String
@@ -256,7 +256,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -304,7 +304,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 name|LayoutTest

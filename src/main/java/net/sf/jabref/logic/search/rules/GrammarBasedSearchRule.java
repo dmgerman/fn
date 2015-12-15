@@ -32,7 +32,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -537,7 +537,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
+DECL|method|applyRule (String query, BibEntry bibEntry)
 specifier|public
 name|boolean
 name|applyRule
@@ -545,8 +545,8 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 parameter_list|)
 block|{
 try|try
@@ -559,7 +559,7 @@ name|caseSensitiveSearch
 argument_list|,
 name|regExpSearch
 argument_list|,
-name|bibtexEntry
+name|bibEntry
 argument_list|)
 operator|.
 name|visit
@@ -801,12 +801,12 @@ name|CASE_INSENSITIVE
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|compare (BibtexEntry entry)
+DECL|method|compare (BibEntry entry)
 specifier|public
 name|boolean
 name|compare
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -1089,10 +1089,10 @@ decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
-DECL|method|BibtexSearchVisitor (boolean caseSensitive, boolean regex, BibtexEntry bibtexEntry)
+DECL|method|BibtexSearchVisitor (boolean caseSensitive, boolean regex, BibEntry bibEntry)
 specifier|public
 name|BibtexSearchVisitor
 parameter_list|(
@@ -1102,8 +1102,8 @@ parameter_list|,
 name|boolean
 name|regex
 parameter_list|,
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 parameter_list|)
 block|{
 name|this
@@ -1122,7 +1122,7 @@ name|this
 operator|.
 name|entry
 operator|=
-name|bibtexEntry
+name|bibEntry
 expr_stmt|;
 block|}
 DECL|method|comparison (String field, ComparisonOperator operator, String value)

@@ -152,7 +152,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -483,7 +483,7 @@ return|return
 literal|false
 return|;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|BibtexParser

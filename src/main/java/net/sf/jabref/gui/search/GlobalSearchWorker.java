@@ -118,7 +118,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -258,7 +258,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|basePanel

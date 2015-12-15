@@ -104,7 +104,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -1282,12 +1282,12 @@ literal|"review"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setBibtexEntry (BibtexEntry entry)
+DECL|method|setBibtexEntry (BibEntry entry)
 specifier|public
 name|void
 name|setBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -1300,15 +1300,15 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      *      * @param entry      * @param database maybenull      */
-DECL|method|setBibtexEntry (BibtexEntry entry, BibtexDatabase database)
+DECL|method|setBibtexEntry (BibEntry entry, BibDatabase database)
 specifier|public
 name|void
 name|setBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -1388,7 +1388,7 @@ block|{
 name|String
 name|value
 init|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1451,7 +1451,7 @@ expr_stmt|;
 block|}
 DECL|method|getBibtexEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getBibtexEntry
 parameter_list|()
 block|{
@@ -1492,11 +1492,11 @@ operator|.
 name|MISC
 expr_stmt|;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.

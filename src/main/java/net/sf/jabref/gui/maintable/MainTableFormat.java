@@ -64,7 +64,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -80,7 +80,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -158,7 +158,7 @@ name|MainTableFormat
 implements|implements
 name|TableFormat
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 comment|// Character separating field names that are to be used in sequence as
@@ -232,7 +232,7 @@ decl_stmt|;
 DECL|field|database
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|tableColumns
@@ -249,11 +249,11 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|MainTableFormat (BibtexDatabase database)
+DECL|method|MainTableFormat (BibDatabase database)
 specifier|public
 name|MainTableFormat
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -369,12 +369,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getColumnValue (BibtexEntry be, int col)
+DECL|method|getColumnValue (BibEntry be, int col)
 specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|int

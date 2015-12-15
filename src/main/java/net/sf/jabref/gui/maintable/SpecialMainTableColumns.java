@@ -94,7 +94,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -165,7 +165,7 @@ specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -229,7 +229,7 @@ specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -318,7 +318,7 @@ specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -407,7 +407,7 @@ specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -602,7 +602,7 @@ specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -733,7 +733,7 @@ specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -872,7 +872,7 @@ specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

@@ -438,7 +438,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -454,7 +454,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1634,7 +1634,7 @@ argument_list|(
 literal|"\\[.*?\\]"
 argument_list|)
 decl_stmt|;
-DECL|method|expandBrackets (String bracketString, BibtexEntry entry, BibtexDatabase database)
+DECL|method|expandBrackets (String bracketString, BibEntry entry, BibDatabase database)
 specifier|public
 specifier|static
 name|String
@@ -1643,10 +1643,10 @@ parameter_list|(
 name|String
 name|bracketString
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -1747,7 +1747,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside a List to a specified default value. Timestamp      * field is also set. Preferences are checked to see if these options are enabled.      *      * @param bibs List of bibtex entries      */
-DECL|method|setAutomaticFields (Collection<BibtexEntry> bibs, boolean overwriteOwner, boolean overwriteTimestamp, boolean markEntries)
+DECL|method|setAutomaticFields (Collection<BibEntry> bibs, boolean overwriteOwner, boolean overwriteTimestamp, boolean markEntries)
 specifier|public
 specifier|static
 name|void
@@ -1755,7 +1755,7 @@ name|setAutomaticFields
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibs
 parameter_list|,
@@ -1861,7 +1861,7 @@ block|}
 comment|// Iterate through all entries
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|curEntry
 range|:
 name|bibs
@@ -1962,13 +1962,13 @@ block|}
 block|}
 block|}
 comment|/**      * Sets empty or non-existing owner fields of a bibtex entry to a specified default value. Timestamp field is also      * set. Preferences are checked to see if these options are enabled.      *      * @param entry The entry to set fields for.      * @param overwriteOwner Indicates whether owner should be set if it is already set.      * @param overwriteTimestamp Indicates whether timestamp should be set if it is already set.      */
-DECL|method|setAutomaticFields (BibtexEntry entry, boolean overwriteOwner, boolean overwriteTimestamp)
+DECL|method|setAutomaticFields (BibEntry entry, boolean overwriteOwner, boolean overwriteTimestamp)
 specifier|public
 specifier|static
 name|void
 name|setAutomaticFields
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|boolean
@@ -2110,13 +2110,13 @@ name|timestamp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setAutomaticFields (BibtexEntry entry, boolean setOwner, String owner, boolean setTimeStamp, String timeStampField, String timeStamp)
+DECL|method|setAutomaticFields (BibEntry entry, boolean setOwner, String owner, boolean setTimeStamp, String timeStampField, String timeStamp)
 specifier|private
 specifier|static
 name|void
 name|setAutomaticFields
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|boolean
@@ -2175,13 +2175,13 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Collect file links from the given set of fields, and add them to the list contained in the field      * GUIGlobals.FILE_FIELD.      *      * @param database The database to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
-DECL|method|upgradePdfPsToFile (BibtexDatabase database, String[] fields)
+DECL|method|upgradePdfPsToFile (BibDatabase database, String[] fields)
 specifier|public
 specifier|static
 name|NamedCompound
 name|upgradePdfPsToFile
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|String
@@ -2205,7 +2205,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|database
@@ -2237,13 +2237,13 @@ name|ce
 return|;
 block|}
 comment|/**      * TODO: Move this to cleanup class. Collect file links from the given set of fields, and add them to the list      * contained in the field GUIGlobals.FILE_FIELD.      *      * @param entries The entries to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
-DECL|method|upgradePdfPsToFile (BibtexEntry entry, String[] fields, NamedCompound ce)
+DECL|method|upgradePdfPsToFile (BibEntry entry, String[] fields, NamedCompound ce)
 specifier|public
 specifier|static
 name|void
 name|upgradePdfPsToFile
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String
@@ -2546,7 +2546,7 @@ name|off
 return|;
 block|}
 comment|/**      * Set a given field to a given value for all entries in a Collection. This method DOES NOT update any UndoManager,      * but returns a relevant CompoundEdit that should be registered by the caller.      *      * @param entries The entries to set the field for.      * @param field The name of the field to set.      * @param text The value to set. This value can be null, indicating that the field should be cleared.      * @param overwriteValues Indicate whether the value should be set even if an entry already has the field set.      * @return A CompoundEdit for the entire operation.      */
-DECL|method|massSetField (Collection<BibtexEntry> entries, String field, String text, boolean overwriteValues)
+DECL|method|massSetField (Collection<BibEntry> entries, String field, String text, boolean overwriteValues)
 specifier|public
 specifier|static
 name|UndoableEdit
@@ -2554,7 +2554,7 @@ name|massSetField
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
@@ -2584,7 +2584,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -2678,7 +2678,7 @@ name|ce
 return|;
 block|}
 comment|/**      * Move contents from one field to another for a Collection of entries.      *      * @param entries The entries to do this operation for.      * @param field The field to move contents from.      * @param newField The field to move contents into.      * @param overwriteValues If true, overwrites any existing values in the new field. If false, makes no change for      *            entries with existing value in the new field.      * @return A CompoundEdit for the entire operation.      */
-DECL|method|massRenameField (Collection<BibtexEntry> entries, String field, String newField, boolean overwriteValues)
+DECL|method|massRenameField (Collection<BibEntry> entries, String field, String newField, boolean overwriteValues)
 specifier|public
 specifier|static
 name|UndoableEdit
@@ -2686,7 +2686,7 @@ name|massRenameField
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
@@ -2716,7 +2716,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -3092,16 +3092,16 @@ expr_stmt|;
 comment|// Runs the update() method on the EDT.
 block|}
 comment|/**      * Determines filename provided by an entry in a database      *      * @param database the database, where the entry is located      * @param entry the entry to which the file should be linked to      * @return a suggested fileName      */
-DECL|method|getLinkedFileName (BibtexDatabase database, BibtexEntry entry)
+DECL|method|getLinkedFileName (BibDatabase database, BibEntry entry)
 specifier|public
 specifier|static
 name|String
 name|getLinkedFileName
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -3228,13 +3228,13 @@ name|targetName
 return|;
 block|}
 comment|/**      * @param ce indicates the undo named compound. May be null      */
-DECL|method|updateField (BibtexEntry be, String field, String newValue, NamedCompound ce)
+DECL|method|updateField (BibEntry be, String field, String newValue, NamedCompound ce)
 specifier|public
 specifier|static
 name|void
 name|updateField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|String
@@ -3272,13 +3272,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @param ce indicates the undo named compound. May be null      */
-DECL|method|updateField (BibtexEntry be, String field, String newValue, NamedCompound ce, Boolean nullFieldIfValueIsTheSame)
+DECL|method|updateField (BibEntry be, String field, String newValue, NamedCompound ce, Boolean nullFieldIfValueIsTheSame)
 specifier|public
 specifier|static
 name|void
 name|updateField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|String
@@ -3787,7 +3787,7 @@ return|;
 block|}
 block|}
 comment|/**      * Warns the user of undesired side effects of an explicit assignment/removal of entries to/from this group.      * Currently there are four types of groups: AllEntriesGroup, SearchGroup - do not support explicit assignment.      * ExplicitGroup - never modifies entries. KeywordGroup - only this modifies entries upon assignment/removal.      * Modifications are acceptable unless they affect a standard field (such as "author") besides the "keywords" field.      *      * @param parent The Component used as a parent when displaying a confirmation dialog.      * @return true if the assignment has no undesired side effects, or the user chose to perform it anyway. false      *         otherwise (this indicates that the user has aborted the assignment).      */
-DECL|method|warnAssignmentSideEffects (AbstractGroup[] groups, BibtexEntry[] entries, BibtexDatabase db, Component parent)
+DECL|method|warnAssignmentSideEffects (AbstractGroup[] groups, BibEntry[] entries, BibDatabase db, Component parent)
 specifier|public
 specifier|static
 name|boolean
@@ -3797,11 +3797,11 @@ name|AbstractGroup
 index|[]
 name|groups
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|Component
@@ -4082,13 +4082,13 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Updates the timestamp of the given entry, nests the given undaoableEdit in a named compound, and returns that      * named compound      */
-DECL|method|doUpdateTimeStamp (BibtexEntry entry, AbstractUndoableEdit undoableEdit)
+DECL|method|doUpdateTimeStamp (BibEntry entry, AbstractUndoableEdit undoableEdit)
 specifier|public
 specifier|static
 name|NamedCompound
 name|doUpdateTimeStamp
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|AbstractUndoableEdit
@@ -4171,8 +4171,8 @@ return|return
 name|ce
 return|;
 block|}
-comment|/**      * Automatically add links for this set of entries, based on the globally stored list of external file types. The      * entries are modified, and corresponding UndoEdit elements added to the NamedCompound given as argument.      * Furthermore, all entries which are modified are added to the Set of entries given as an argument.      *      * The entries' bibtex keys must have been set - entries lacking key are ignored. The operation is done in a new      * thread, which is returned for the caller to wait for if needed.      *      * @param entries A collection of BibtexEntry objects to find links for.      * @param ce A NamedCompound to add UndoEdit elements to.      * @param changedEntries MODIFIED, optional. A Set of BibtexEntry objects to which all modified entries is added.      *            This is used for status output and debugging      * @param singleTableModel UGLY HACK. The table model to insert links into. Already existing links are not      *            duplicated or removed. This parameter has to be null if entries.count() != 1. The hack has been      *            introduced as a bibtexentry does not (yet) support the function getListTableModel() and the      *            FileListEntryEditor editor holds an instance of that table model and does not reconstruct it after the      *            search has succeeded.      * @param metaData The MetaData providing the relevant file directory, if any.      * @param callback An ActionListener that is notified (on the event dispatch thread) when the search is finished.      *            The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added. This      *            parameter can be null, which means that no callback will be notified.      * @param diag An instantiated modal JDialog which will be used to display the progress of the autosetting. This      *            parameter can be null, which means that no progress update will be shown.      * @return the thread performing the autosetting      */
-DECL|method|autoSetLinks (final Collection<BibtexEntry> entries, final NamedCompound ce, final Set<BibtexEntry> changedEntries, final FileListTableModel singleTableModel, final MetaData metaData, final ActionListener callback, final JDialog diag)
+comment|/**      * Automatically add links for this set of entries, based on the globally stored list of external file types. The      * entries are modified, and corresponding UndoEdit elements added to the NamedCompound given as argument.      * Furthermore, all entries which are modified are added to the Set of entries given as an argument.      *      * The entries' bibtex keys must have been set - entries lacking key are ignored. The operation is done in a new      * thread, which is returned for the caller to wait for if needed.      *      * @param entries A collection of BibEntry objects to find links for.      * @param ce A NamedCompound to add UndoEdit elements to.      * @param changedEntries MODIFIED, optional. A Set of BibEntry objects to which all modified entries is added.      *            This is used for status output and debugging      * @param singleTableModel UGLY HACK. The table model to insert links into. Already existing links are not      *            duplicated or removed. This parameter has to be null if entries.count() != 1. The hack has been      *            introduced as a bibtexentry does not (yet) support the function getListTableModel() and the      *            FileListEntryEditor editor holds an instance of that table model and does not reconstruct it after the      *            search has succeeded.      * @param metaData The MetaData providing the relevant file directory, if any.      * @param callback An ActionListener that is notified (on the event dispatch thread) when the search is finished.      *            The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added. This      *            parameter can be null, which means that no callback will be notified.      * @param diag An instantiated modal JDialog which will be used to display the progress of the autosetting. This      *            parameter can be null, which means that no progress update will be shown.      * @return the thread performing the autosetting      */
+DECL|method|autoSetLinks (final Collection<BibEntry> entries, final NamedCompound ce, final Set<BibEntry> changedEntries, final FileListTableModel singleTableModel, final MetaData metaData, final ActionListener callback, final JDialog diag)
 specifier|public
 specifier|static
 name|Runnable
@@ -4181,7 +4181,7 @@ parameter_list|(
 specifier|final
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
@@ -4192,7 +4192,7 @@ parameter_list|,
 specifier|final
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|changedEntries
 parameter_list|,
@@ -4442,7 +4442,7 @@ block|}
 comment|// Run the search operation:
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
 name|java
 operator|.
@@ -4533,7 +4533,7 @@ for|for
 control|(
 name|Entry
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
 name|List
 argument_list|<
@@ -5027,15 +5027,15 @@ return|return
 name|r
 return|;
 block|}
-comment|/**      * Automatically add links for this entry to the table model given as an argument, based on the globally stored list      * of external file types. The entry itself is not modified. The entry's bibtex key must have been set.      *      * @param entry The BibtexEntry to find links for.      * @param singleTableModel The table model to insert links into. Already existing links are not duplicated or      *            removed.      * @param metaData The MetaData providing the relevant file directory, if any.      * @param callback An ActionListener that is notified (on the event dispatch thread) when the search is finished.      *            The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added. This      *            parameter can be null, which means that no callback will be notified. The passed ActionEvent is      *            constructed with (this, id, ""), where id is 1 if something has been done and 0 if nothing has been      *            done.      * @param diag An instantiated modal JDialog which will be used to display the progress of the autosetting. This      *            parameter can be null, which means that no progress update will be shown.      * @return the runnable able to perform the autosetting      */
-DECL|method|autoSetLinks (final BibtexEntry entry, final FileListTableModel singleTableModel, final MetaData metaData, final ActionListener callback, final JDialog diag)
+comment|/**      * Automatically add links for this entry to the table model given as an argument, based on the globally stored list      * of external file types. The entry itself is not modified. The entry's bibtex key must have been set.      *      * @param entry The BibEntry to find links for.      * @param singleTableModel The table model to insert links into. Already existing links are not duplicated or      *            removed.      * @param metaData The MetaData providing the relevant file directory, if any.      * @param callback An ActionListener that is notified (on the event dispatch thread) when the search is finished.      *            The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added. This      *            parameter can be null, which means that no callback will be notified. The passed ActionEvent is      *            constructed with (this, id, ""), where id is 1 if something has been done and 0 if nothing has been      *            done.      * @param diag An instantiated modal JDialog which will be used to display the progress of the autosetting. This      *            parameter can be null, which means that no progress update will be shown.      * @return the runnable able to perform the autosetting      */
+DECL|method|autoSetLinks (final BibEntry entry, final FileListTableModel singleTableModel, final MetaData metaData, final ActionListener callback, final JDialog diag)
 specifier|public
 specifier|static
 name|Runnable
 name|autoSetLinks
 parameter_list|(
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 specifier|final
@@ -5058,7 +5058,7 @@ block|{
 specifier|final
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -5104,7 +5104,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the list of linked files. The files have the absolute filename      *      * @param bes list of BibTeX entries      * @param fileDirs list of directories to try for expansion      *      * @return list of files. May be empty      */
-DECL|method|getListOfLinkedFiles (BibtexEntry[] bes, String[] fileDirs)
+DECL|method|getListOfLinkedFiles (BibEntry[] bes, String[] fileDirs)
 specifier|public
 specifier|static
 name|List
@@ -5113,7 +5113,7 @@ name|File
 argument_list|>
 name|getListOfLinkedFiles
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 parameter_list|,
@@ -5135,7 +5135,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|bes
@@ -5224,12 +5224,12 @@ return|return
 name|res
 return|;
 block|}
-DECL|method|findAssociatedFiles (Collection<BibtexEntry> entries, Collection<String> extensions, Collection<File> directories)
+DECL|method|findAssociatedFiles (Collection<BibEntry> entries, Collection<String> extensions, Collection<File> directories)
 specifier|public
 specifier|static
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
 name|List
 argument_list|<
@@ -5240,7 +5240,7 @@ name|findAssociatedFiles
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
@@ -5259,7 +5259,7 @@ parameter_list|)
 block|{
 name|HashMap
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
 name|List
 argument_list|<
@@ -5292,7 +5292,7 @@ decl_stmt|;
 comment|// Initialize Result-Set
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -5359,7 +5359,7 @@ decl_stmt|;
 comment|// First, look for exact matches:
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -5441,7 +5441,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -5505,7 +5505,7 @@ name|result
 return|;
 block|}
 comment|/**      * Accepts a string like [author:lower] or [title:abbr] or [auth], whereas the first part signifies the bibtex-field      * to get, or the key generator field marker to use, while the others are the modifiers that will be applied.      *      * @param fieldAndFormat      * @param entry      * @param database      * @return      */
-DECL|method|getFieldAndFormat (String fieldAndFormat, BibtexEntry entry, BibtexDatabase database)
+DECL|method|getFieldAndFormat (String fieldAndFormat, BibEntry entry, BibDatabase database)
 specifier|public
 specifier|static
 name|String
@@ -5514,10 +5514,10 @@ parameter_list|(
 name|String
 name|fieldAndFormat
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -5610,7 +5610,7 @@ block|}
 name|String
 name|fieldValue
 init|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(

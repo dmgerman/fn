@@ -42,7 +42,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -58,7 +58,7 @@ name|GroupMatcher
 implements|implements
 name|Matcher
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 DECL|field|INSTANCE
@@ -74,12 +74,12 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|matches (BibtexEntry entry)
+DECL|method|matches (BibEntry entry)
 specifier|public
 name|boolean
 name|matches
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

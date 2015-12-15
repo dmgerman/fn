@@ -28,7 +28,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -44,7 +44,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -289,7 +289,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Use the instructions of the loaded bst file for processing a collection of entries.      * @param entries The entries to process.      * @param database The database the entries belong to.      * @return A Map of the entries' bibtex keys linking to their processed strings.      */
-DECL|method|processEntries (Collection<BibtexEntry> entries, BibtexDatabase database)
+DECL|method|processEntries (Collection<BibEntry> entries, BibDatabase database)
 specifier|public
 name|Map
 argument_list|<
@@ -301,11 +301,11 @@ name|processEntries
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{

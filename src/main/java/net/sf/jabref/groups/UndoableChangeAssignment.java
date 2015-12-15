@@ -60,7 +60,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -113,7 +113,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|m_previousAssignmentBackup
 decl_stmt|;
@@ -122,7 +122,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|m_newAssignmentBackup
 decl_stmt|;
@@ -140,19 +140,19 @@ name|GroupTreeNode
 name|m_groupsRootHandle
 decl_stmt|;
 comment|/**      * Constructor for use in a group itself, where the enclosing node is      * unknown. The node must be set using setEditedNode() before this instance      * may be used.      *      * @param previousAssignment      * @param currentAssignment      */
-DECL|method|UndoableChangeAssignment (Set<BibtexEntry> previousAssignment, Set<BibtexEntry> currentAssignment)
+DECL|method|UndoableChangeAssignment (Set<BibEntry> previousAssignment, Set<BibEntry> currentAssignment)
 specifier|public
 name|UndoableChangeAssignment
 parameter_list|(
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|previousAssignment
 parameter_list|,
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|currentAssignment
 parameter_list|)
@@ -176,19 +176,19 @@ name|currentAssignment
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|UndoableChangeAssignment (Set<BibtexEntry> previousAssignment, Set<BibtexEntry> currentAssignment, GroupTreeNode node)
+DECL|method|UndoableChangeAssignment (Set<BibEntry> previousAssignment, Set<BibEntry> currentAssignment, GroupTreeNode node)
 specifier|public
 name|UndoableChangeAssignment
 parameter_list|(
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|previousAssignment
 parameter_list|,
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|currentAssignment
 parameter_list|,
@@ -325,7 +325,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|aM_previousAssignmentBackup
 range|:
 name|m_previousAssignmentBackup
@@ -376,7 +376,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|aM_newAssignmentBackup
 range|:
 name|m_newAssignmentBackup

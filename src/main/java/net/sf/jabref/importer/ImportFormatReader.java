@@ -104,7 +104,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -120,7 +120,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -508,7 +508,7 @@ DECL|method|importFromStream (String format, InputStream in, OutputPrinter statu
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importFromStream
 parameter_list|(
@@ -551,7 +551,7 @@ throw|;
 block|}
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|res
 init|=
@@ -588,7 +588,7 @@ DECL|method|importFromFile (String format, String filename, OutputPrinter status
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importFromFile
 parameter_list|(
@@ -644,7 +644,7 @@ DECL|method|importFromFile (ImportFormat importer, String filename, OutputPrinte
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importFromFile
 parameter_list|(
@@ -712,15 +712,15 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|method|createDatabase (Collection<BibtexEntry> bibentries)
+DECL|method|createDatabase (Collection<BibEntry> bibentries)
 specifier|public
 specifier|static
-name|BibtexDatabase
+name|BibDatabase
 name|createDatabase
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibentries
 parameter_list|)
@@ -732,16 +732,16 @@ argument_list|(
 name|bibentries
 argument_list|)
 expr_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|bibentries
@@ -1604,13 +1604,13 @@ block|}
 comment|//==================================================
 comment|// Set a field, unless the string to set is empty.
 comment|//==================================================
-DECL|method|setIfNecessary (BibtexEntry be, String field, String content)
+DECL|method|setIfNecessary (BibEntry be, String field, String content)
 specifier|public
 specifier|static
 name|void
 name|setIfNecessary
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|String
@@ -1751,8 +1751,8 @@ return|return
 name|reader
 return|;
 block|}
-comment|/**      * Receives an ArrayList of BibtexEntry instances, iterates through them, and      * removes all entries that have no fields set. This is useful for rooting out      * an unsucessful import (wrong format) that returns a number of empty entries.      */
-DECL|method|purgeEmptyEntries (Collection<BibtexEntry> entries)
+comment|/**      * Receives an ArrayList of BibEntry instances, iterates through them, and      * removes all entries that have no fields set. This is useful for rooting out      * an unsucessful import (wrong format) that returns a number of empty entries.      */
+DECL|method|purgeEmptyEntries (Collection<BibEntry> entries)
 specifier|private
 specifier|static
 name|void
@@ -1760,7 +1760,7 @@ name|purgeEmptyEntries
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|)
@@ -1769,7 +1769,7 @@ for|for
 control|(
 name|Iterator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|i
 init|=
@@ -1785,7 +1785,7 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|i
@@ -1879,7 +1879,7 @@ decl_stmt|;
 comment|// stores ref to best result, gets updated at the next loop
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bestResult
 init|=
@@ -1909,7 +1909,7 @@ try|try
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=

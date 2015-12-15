@@ -104,7 +104,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -120,7 +120,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -141,12 +141,12 @@ decl_stmt|;
 DECL|field|database
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|base
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|base
 decl_stmt|;
 DECL|field|LOGGER
@@ -165,14 +165,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|SearchManagerNoGUI (String term, BibtexDatabase dataBase)
+DECL|method|SearchManagerNoGUI (String term, BibDatabase dataBase)
 specifier|public
 name|SearchManagerNoGUI
 parameter_list|(
 name|String
 name|term
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|dataBase
 parameter_list|)
 block|{
@@ -187,7 +187,7 @@ expr_stmt|;
 block|}
 DECL|method|getDBfromMatches ()
 specifier|public
-name|BibtexDatabase
+name|BibDatabase
 name|getDBfromMatches
 parameter_list|()
 block|{
@@ -265,7 +265,7 @@ return|;
 block|}
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -276,7 +276,7 @@ argument_list|()
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|matchEntries
 init|=
@@ -287,7 +287,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries

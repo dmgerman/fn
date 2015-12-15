@@ -236,7 +236,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -685,7 +685,7 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|jep

@@ -280,7 +280,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -2194,7 +2194,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
@@ -2219,7 +2219,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -2425,7 +2425,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
@@ -2455,7 +2455,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -2490,7 +2490,7 @@ name|isSelected
 argument_list|()
 assert|;
 comment|// all keywords from first entry have to be added
-name|BibtexEntry
+name|BibEntry
 name|firstEntry
 init|=
 name|entries
@@ -2535,7 +2535,7 @@ name|i
 operator|++
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entries

@@ -32,7 +32,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -62,7 +62,7 @@ name|EverythingMatcher
 implements|implements
 name|Matcher
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 DECL|field|INSTANCE
@@ -71,7 +71,7 @@ specifier|static
 specifier|final
 name|Matcher
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|INSTANCE
 init|=
@@ -81,12 +81,12 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|matches (BibtexEntry object)
+DECL|method|matches (BibEntry object)
 specifier|public
 name|boolean
 name|matches
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|object
 parameter_list|)
 block|{

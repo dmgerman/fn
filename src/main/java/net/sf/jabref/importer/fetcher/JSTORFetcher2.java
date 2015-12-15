@@ -58,7 +58,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -539,7 +539,7 @@ condition|)
 block|{
 break|break;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|getSingleCitation
@@ -1278,7 +1278,7 @@ block|}
 DECL|method|getSingleCitation (String cit)
 specifier|private
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|getSingleCitation
 parameter_list|(
 name|String

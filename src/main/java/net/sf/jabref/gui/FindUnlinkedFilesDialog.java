@@ -676,7 +676,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -935,7 +935,7 @@ name|frame
 decl_stmt|;
 DECL|field|database
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|creatorManager

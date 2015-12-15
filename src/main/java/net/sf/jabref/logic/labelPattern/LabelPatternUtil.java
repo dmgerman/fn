@@ -128,7 +128,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -144,7 +144,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -276,7 +276,7 @@ block|}
 DECL|field|database
 specifier|private
 specifier|static
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|method|updateDefaultPattern ()
@@ -309,13 +309,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Required fro LabelPatternUtilTest      *      * @param db the DB to use as global database      */
-DECL|method|setDataBase (BibtexDatabase db)
+DECL|method|setDataBase (BibDatabase db)
 specifier|public
 specifier|static
 name|void
 name|setDataBase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|)
 block|{
@@ -1837,8 +1837,8 @@ return|return
 name|fieldList
 return|;
 block|}
-comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and saves the unique label in the      *<code>Bibtexentry</code>.      *      * The given database is used to avoid duplicate keys.      *      * @param dBase a<code>BibtexDatabase</code>      * @param entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
-DECL|method|makeLabel (MetaData metaData, BibtexDatabase dBase, BibtexEntry entry)
+comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and saves the unique label in the      *<code>Bibtexentry</code>.      *      * The given database is used to avoid duplicate keys.      *      * @param dBase a<code>BibDatabase</code>      * @param entry a<code>BibEntry</code>      * @return modified Bibtexentry      */
+DECL|method|makeLabel (MetaData metaData, BibDatabase dBase, BibEntry entry)
 specifier|public
 specifier|static
 name|void
@@ -1847,10 +1847,10 @@ parameter_list|(
 name|MetaData
 name|metaData
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|dBase
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -2290,7 +2290,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -2468,7 +2468,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -2737,13 +2737,13 @@ return|return
 name|label
 return|;
 block|}
-DECL|method|makeLabel (BibtexEntry entry, String val)
+DECL|method|makeLabel (BibEntry entry, String val)
 specifier|public
 specifier|static
 name|String
 name|makeLabel
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String
@@ -4303,14 +4303,14 @@ literal|""
 return|;
 block|}
 block|}
-comment|/**      * Look up a field of a BibtexEntry, returning its String value, or an      * empty string if it isn't set.      * @param entry The entry.      * @param field The field to look up.      * @return The field value.      */
-DECL|method|getField (BibtexEntry entry, String field)
+comment|/**      * Look up a field of a BibEntry, returning its String value, or an      * empty string if it isn't set.      * @param entry The entry.      * @param field The field to look up.      * @return The field value.      */
+DECL|method|getField (BibEntry entry, String field)
 specifier|private
 specifier|static
 name|String
 name|getField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String

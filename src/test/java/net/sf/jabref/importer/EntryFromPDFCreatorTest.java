@@ -24,7 +24,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -197,7 +197,7 @@ name|void
 name|testCreationOfEntry
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entryCreator

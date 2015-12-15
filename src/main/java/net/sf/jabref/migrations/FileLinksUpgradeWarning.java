@@ -194,7 +194,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -210,7 +210,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -880,12 +880,12 @@ name|offerSetFileDir
 return|;
 block|}
 comment|/**      * Check the database to find out whether any of a set of fields are used      * for any of the entries.      * @param database The bib database.      * @param fields The set of fields to look for.      * @return true if at least one of the given fields is set in at least one entry,      *  false otherwise.      */
-DECL|method|linksFound (BibtexDatabase database, String[] fields)
+DECL|method|linksFound (BibDatabase database, String[] fields)
 specifier|private
 name|boolean
 name|linksFound
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|String
@@ -895,7 +895,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|database

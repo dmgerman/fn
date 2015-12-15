@@ -66,7 +66,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -98,7 +98,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -108,7 +108,7 @@ specifier|public
 class|class
 name|GroupsUtil
 block|{
-DECL|method|findDeliminatedWordsInField (BibtexDatabase db, String field, String deliminator)
+DECL|method|findDeliminatedWordsInField (BibDatabase db, String field, String deliminator)
 specifier|public
 specifier|static
 name|TreeSet
@@ -117,7 +117,7 @@ name|String
 argument_list|>
 name|findDeliminatedWordsInField
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|String
@@ -149,7 +149,7 @@ name|getKeySet
 argument_list|()
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 name|db
@@ -241,8 +241,8 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Returns a HashMap containing all words used in the database in the given field type. Characters in      *<code>remove</code> are not included.      *      * @param db a<code>BibtexDatabase</code> value      * @param field a<code>String</code> value      * @param remove a<code>String</code> value      * @return a<code>HashSet</code> value      */
-DECL|method|findAllWordsInField (BibtexDatabase db, String field, String remove)
+comment|/**      * Returns a HashMap containing all words used in the database in the given field type. Characters in      *<code>remove</code> are not included.      *      * @param db a<code>BibDatabase</code> value      * @param field a<code>String</code> value      * @param remove a<code>String</code> value      * @return a<code>HashSet</code> value      */
+DECL|method|findAllWordsInField (BibDatabase db, String field, String remove)
 specifier|public
 specifier|static
 name|TreeSet
@@ -251,7 +251,7 @@ name|String
 argument_list|>
 name|findAllWordsInField
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|String
@@ -286,7 +286,7 @@ name|getKeySet
 argument_list|()
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 name|db
@@ -372,7 +372,7 @@ name|res
 return|;
 block|}
 comment|/**      * Finds all authors' last names in all the given fields for the given database.      *      * @param db The database.      * @param fields The fields to look in.      * @return a set containing the names.      */
-DECL|method|findAuthorLastNames (BibtexDatabase db, List<String> fields)
+DECL|method|findAuthorLastNames (BibDatabase db, List<String> fields)
 specifier|public
 specifier|static
 name|Set
@@ -381,7 +381,7 @@ name|String
 argument_list|>
 name|findAuthorLastNames
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|List
@@ -413,7 +413,7 @@ name|getKeySet
 argument_list|()
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 name|db

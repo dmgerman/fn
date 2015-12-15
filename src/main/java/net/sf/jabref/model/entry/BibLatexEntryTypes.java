@@ -48,6 +48,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class defines entry types for BibLatex support.  * @see http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/biblatex/doc/biblatex.pdf  */
 end_comment
@@ -4328,6 +4338,44 @@ argument_list|,
 name|IEEETRANBSTCTL
 argument_list|)
 decl_stmt|;
+DECL|method|getType (String name)
+specifier|public
+specifier|static
+name|Optional
+argument_list|<
+name|EntryType
+argument_list|>
+name|getType
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|ALL
+operator|.
+name|stream
+argument_list|()
+operator|.
+name|filter
+argument_list|(
+name|e
+lambda|->
+name|e
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|name
+argument_list|)
+argument_list|)
+operator|.
+name|findFirst
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

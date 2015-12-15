@@ -80,7 +80,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -96,7 +96,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -171,7 +171,7 @@ decl_stmt|;
 DECL|field|base
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|base
 decl_stmt|;
 DECL|field|metaData
@@ -249,13 +249,13 @@ specifier|private
 name|boolean
 name|toOpenTab
 decl_stmt|;
-DECL|method|ParserResult (Collection<BibtexEntry> entries)
+DECL|method|ParserResult (Collection<BibEntry> entries)
 specifier|public
 name|ParserResult
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|)
@@ -278,11 +278,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ParserResult (BibtexDatabase base, MetaData metaData, HashMap<String, EntryType> entryTypes)
+DECL|method|ParserResult (BibDatabase base, MetaData metaData, HashMap<String, EntryType> entryTypes)
 specifier|public
 name|ParserResult
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|,
 name|MetaData
@@ -345,7 +345,7 @@ expr_stmt|;
 block|}
 DECL|method|getDatabase ()
 specifier|public
-name|BibtexDatabase
+name|BibDatabase
 name|getDatabase
 parameter_list|()
 block|{

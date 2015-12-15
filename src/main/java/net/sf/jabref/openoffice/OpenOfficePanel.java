@@ -240,7 +240,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -256,7 +256,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -2052,7 +2052,7 @@ name|util
 operator|.
 name|List
 argument_list|<
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|databases
 init|=
@@ -2870,7 +2870,7 @@ name|util
 operator|.
 name|List
 argument_list|<
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|getBaseList
 parameter_list|()
@@ -2881,7 +2881,7 @@ name|util
 operator|.
 name|List
 argument_list|<
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|databases
 init|=
@@ -4685,7 +4685,7 @@ literal|null
 condition|)
 block|{
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|panel
@@ -4693,7 +4693,7 @@ operator|.
 name|database
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
@@ -4901,9 +4901,9 @@ argument_list|()
 decl_stmt|;
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|entries
 init|=
@@ -4920,7 +4920,7 @@ literal|null
 condition|)
 block|{
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|panel
@@ -4928,7 +4928,7 @@ operator|.
 name|database
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|e
 init|=
@@ -4939,7 +4939,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|anE
 range|:
 name|e
@@ -5127,7 +5127,7 @@ literal|null
 condition|)
 block|{
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|panel
@@ -5135,7 +5135,7 @@ operator|.
 name|database
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
@@ -5146,7 +5146,7 @@ argument_list|()
 decl_stmt|;
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|el
 init|=
@@ -5660,7 +5660,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|pushEntries (boolean inParenthesis, BibtexEntry[] entries)
+DECL|method|pushEntries (boolean inParenthesis, BibEntry[] entries)
 specifier|private
 name|void
 name|pushEntries
@@ -5668,13 +5668,13 @@ parameter_list|(
 name|boolean
 name|inParenthesis
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
 block|{
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|OpenOfficePanel
@@ -6039,15 +6039,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|pushEntries (BibtexDatabase bibtexDatabase, BibtexEntry[] entries, String s, MetaData metaData)
+DECL|method|pushEntries (BibDatabase bibDatabase, BibEntry[] entries, String s, MetaData metaData)
 specifier|public
 name|void
 name|pushEntries
 parameter_list|(
-name|BibtexDatabase
-name|bibtexDatabase
+name|BibDatabase
+name|bibDatabase
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,

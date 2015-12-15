@@ -40,7 +40,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -56,7 +56,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -250,25 +250,25 @@ name|DatabaseFileLookupTest
 block|{
 DECL|field|database
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|entries
 specifier|private
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 decl_stmt|;
 DECL|field|entry1
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|entry1
 decl_stmt|;
 DECL|field|entry2
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|entry2
 decl_stmt|;
 comment|/* (non-Javadoc)      * @see junit.framework.TestCase#setUp()      */
@@ -405,7 +405,7 @@ block|{
 name|entry1
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 expr_stmt|;
 name|JabRefPreferences

@@ -72,7 +72,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -148,11 +148,11 @@ name|preferences
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ContentAutoCompleters (BibtexDatabase database, MetaData metaData, AutoCompletePreferences preferences)
+DECL|method|ContentAutoCompleters (BibDatabase database, MetaData metaData, AutoCompletePreferences preferences)
 specifier|public
 name|ContentAutoCompleters
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|MetaData

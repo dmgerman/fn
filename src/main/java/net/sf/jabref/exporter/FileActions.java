@@ -362,7 +362,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -476,7 +476,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param fw       The Writer to send the output to.      * @param database The database whose strings we should write.      * @throws IOException If anthing goes wrong in writing.      */
-DECL|method|writeStrings (Writer fw, BibtexDatabase database)
+DECL|method|writeStrings (Writer fw, BibDatabase database)
 specifier|private
 specifier|static
 name|void
@@ -485,7 +485,7 @@ parameter_list|(
 name|Writer
 name|fw
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 throws|throws
@@ -1051,13 +1051,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Saves the database to file. Two boolean values indicate whether only      * entries with a nonzero Globals.SEARCH value and only entries with a      * nonzero Globals.GROUPSEARCH value should be saved. This can be used to      * let the user save only the results of a search. False and false means all      * entries are saved.      */
-DECL|method|saveDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, Charset encoding, boolean suppressBackup)
+DECL|method|saveDatabase (BibDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, Charset encoding, boolean suppressBackup)
 specifier|public
 specifier|static
 name|SaveSession
 name|saveDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|MetaData
@@ -1122,7 +1122,7 @@ block|}
 name|SaveSession
 name|session
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|exceptionCause
 init|=
 literal|null
@@ -1242,7 +1242,7 @@ comment|// ones. Apart from crossref requirements, entries will be
 comment|// sorted as they appear on the screen.
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sorter
 init|=
@@ -1274,7 +1274,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|sorter
@@ -2063,7 +2063,7 @@ name|List
 argument_list|<
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 argument_list|>
 name|getSaveComparators
@@ -2090,7 +2090,7 @@ name|List
 argument_list|<
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 argument_list|>
 name|comparators
@@ -2173,7 +2173,7 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -2184,13 +2184,13 @@ name|comparators
 return|;
 block|}
 comment|/**      * Saves the database to file, including only the entries included in the      * supplied input array bes.      *      * @return A List containing warnings, if any.      */
-DECL|method|savePartOfDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibtexEntry[] bes, Charset encoding, DatabaseSaveType saveType)
+DECL|method|savePartOfDatabase (BibDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibEntry[] bes, Charset encoding, DatabaseSaveType saveType)
 specifier|public
 specifier|static
 name|SaveSession
 name|savePartOfDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|MetaData
@@ -2202,7 +2202,7 @@ parameter_list|,
 name|JabRefPreferences
 name|prefs
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 parameter_list|,
@@ -2235,7 +2235,7 @@ comment|// entry
 comment|// type
 comment|// definitions
 comment|// that we must save along with entries using them.
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 literal|null
@@ -2355,7 +2355,7 @@ name|List
 argument_list|<
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 argument_list|>
 name|comparators
@@ -2372,7 +2372,7 @@ decl_stmt|;
 comment|// Use glazed lists to get a sorted view of the entries:
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sorter
 init|=
@@ -2423,7 +2423,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|aSorter
 range|:
 name|sorter
@@ -2738,16 +2738,16 @@ name|reader
 return|;
 block|}
 comment|/*      * We have begun to use getSortedEntries() for both database save operations      * and non-database save operations.  In a non-database save operation      * (such as the exportDatabase call), we do not wish to use the      * global preference of saving in standard order.      */
-DECL|method|getSortedEntries (BibtexDatabase database, MetaData metaData, Set<String> keySet, boolean isSaveOperation)
+DECL|method|getSortedEntries (BibDatabase database, MetaData metaData, Set<String> keySet, boolean isSaveOperation)
 specifier|public
 specifier|static
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getSortedEntries
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|MetaData
@@ -2854,7 +2854,7 @@ name|List
 argument_list|<
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 argument_list|>
 name|comparators
@@ -2908,7 +2908,7 @@ expr_stmt|;
 block|}
 name|FieldComparatorStack
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|comparatorStack
 init|=
@@ -2921,7 +2921,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sorter
 init|=
@@ -3004,13 +3004,13 @@ name|sorter
 return|;
 block|}
 comment|/**      * @return true iff the entry has a nonzero value in its field.      */
-DECL|method|nonZeroField (BibtexEntry be, String field)
+DECL|method|nonZeroField (BibEntry be, String field)
 specifier|private
 specifier|static
 name|boolean
 name|nonZeroField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|String

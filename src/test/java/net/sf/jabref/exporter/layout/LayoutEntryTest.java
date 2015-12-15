@@ -26,7 +26,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The test class LayoutEntryTest test the net.sf.jabref.export.layout.LayoutEntry.  * Indirectly the net.sf.jabref.export.layout.Layout is testet too.  *<p/>  * The LayoutEntry creates a human readable String assinged with html formaters.  * To test the Highlighting Feature, an instance of LayoutEntry will be instatiated via Layout and LayoutHelper.  * With these instance the doLayout() Method is called several times for each test case.  * To simulate a search, a BibtexEntry will be created, wich will be used by LayoutEntry.  * The definiton of the search is set by  *<p/>  * LayoutEntry.setWordsToHighlight(words); and  * Globals.prefs.putBoolean("caseSensitiveSearch", false);  *<p/>  * There are five test cases:  * - The shown result text has no words which should be highlighted.  * - There is one word which will be highlighted ignoring case sensitivity.  * - There are two words which will be highlighted ignoring case sensitivity.  * - There is one word which will be highlighted case sensitivity.  * - There are more words which will be highlighted case sensitivity.  *  * @author Arne  */
+comment|/**  * The test class LayoutEntryTest test the net.sf.jabref.export.layout.LayoutEntry.  * Indirectly the net.sf.jabref.export.layout.Layout is testet too.  *<p/>  * The LayoutEntry creates a human readable String assinged with html formaters.  * To test the Highlighting Feature, an instance of LayoutEntry will be instatiated via Layout and LayoutHelper.  * With these instance the doLayout() Method is called several times for each test case.  * To simulate a search, a BibEntry will be created, wich will be used by LayoutEntry.  * The definiton of the search is set by  *<p/>  * LayoutEntry.setWordsToHighlight(words); and  * Globals.prefs.putBoolean("caseSensitiveSearch", false);  *<p/>  * There are five test cases:  * - The shown result text has no words which should be highlighted.  * - There is one word which will be highlighted ignoring case sensitivity.  * - There are two words which will be highlighted ignoring case sensitivity.  * - There is one word which will be highlighted case sensitivity.  * - There are more words which will be highlighted case sensitivity.  *  * @author Arne  */
 end_comment
 
 begin_class
@@ -126,7 +126,7 @@ name|LayoutEntryTest
 block|{
 DECL|field|mBTE
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|mBTE
 decl_stmt|;
 comment|/**      * Initialize Preferences.      */
@@ -176,7 +176,7 @@ comment|// create Bibtext Entry
 name|mBTE
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"testid"
 argument_list|)
@@ -373,7 +373,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// helper Methods
-DECL|method|layout (String layoutFile, BibtexEntry entry, ArrayList<String> wordsToHighlight)
+DECL|method|layout (String layoutFile, BibEntry entry, ArrayList<String> wordsToHighlight)
 specifier|public
 name|String
 name|layout
@@ -381,7 +381,7 @@ parameter_list|(
 name|String
 name|layoutFile
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|ArrayList

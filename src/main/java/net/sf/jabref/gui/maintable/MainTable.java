@@ -440,7 +440,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -697,7 +697,7 @@ specifier|private
 specifier|final
 name|SortedList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sortedForMarking
 decl_stmt|;
@@ -706,7 +706,7 @@ specifier|private
 specifier|final
 name|SortedList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sortedForTable
 decl_stmt|;
@@ -715,7 +715,7 @@ specifier|private
 specifier|final
 name|SortedList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sortedForSearch
 decl_stmt|;
@@ -724,7 +724,7 @@ specifier|private
 specifier|final
 name|SortedList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sortedForGrouping
 decl_stmt|;
@@ -749,7 +749,7 @@ specifier|private
 specifier|final
 name|DefaultEventSelectionModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|localSelectionModel
 decl_stmt|;
@@ -758,7 +758,7 @@ specifier|private
 specifier|final
 name|TableComparatorChooser
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|comparatorChooser
 decl_stmt|;
@@ -772,7 +772,7 @@ DECL|field|searchComparator
 specifier|private
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|searchComparator
 decl_stmt|;
@@ -780,7 +780,7 @@ DECL|field|groupComparator
 specifier|private
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|groupComparator
 decl_stmt|;
@@ -789,7 +789,7 @@ specifier|private
 specifier|final
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|markingComparator
 init|=
@@ -801,7 +801,7 @@ DECL|field|searchMatcher
 specifier|private
 name|Matcher
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|searchMatcher
 decl_stmt|;
@@ -809,7 +809,7 @@ DECL|field|groupMatcher
 specifier|private
 name|Matcher
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|groupMatcher
 decl_stmt|;
@@ -892,7 +892,7 @@ name|updateRenderers
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|MainTable (MainTableFormat tableFormat, EventList<BibtexEntry> list, JabRefFrame frame, BasePanel panel)
+DECL|method|MainTable (MainTableFormat tableFormat, EventList<BibEntry> list, JabRefFrame frame, BasePanel panel)
 specifier|public
 name|MainTable
 parameter_list|(
@@ -901,7 +901,7 @@ name|tableFormat
 parameter_list|,
 name|EventList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|list
 parameter_list|,
@@ -1015,14 +1015,14 @@ literal|null
 expr_stmt|;
 name|DefaultEventTableModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|tableModel
 init|=
 operator|(
 name|DefaultEventTableModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 operator|)
 name|GlazedListsSwing
@@ -1057,7 +1057,7 @@ operator|=
 operator|(
 name|DefaultEventSelectionModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 operator|)
 name|GlazedListsSwing
@@ -1541,7 +1541,7 @@ DECL|method|getTableRows ()
 specifier|public
 name|EventList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getTableRows
 parameter_list|()
@@ -1550,14 +1550,14 @@ return|return
 name|sortedForGrouping
 return|;
 block|}
-DECL|method|addSelectionListener (ListEventListener<BibtexEntry> listener)
+DECL|method|addSelectionListener (ListEventListener<BibEntry> listener)
 specifier|public
 name|void
 name|addSelectionListener
 parameter_list|(
 name|ListEventListener
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|listener
 parameter_list|)
@@ -2396,7 +2396,7 @@ block|}
 block|}
 DECL|method|getEntryAt (int row)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getEntryAt
 parameter_list|(
 name|int
@@ -2415,18 +2415,18 @@ block|}
 comment|/**      * @return the return value is never null      */
 DECL|method|getSelectedEntries ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|getSelectedEntries
 parameter_list|()
 block|{
 specifier|final
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|BE_ARRAY
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 literal|0
 index|]
@@ -3242,7 +3242,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 name|sortedForGrouping
@@ -3277,7 +3277,7 @@ name|columnName
 operator|.
 name|equals
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -3342,7 +3342,7 @@ DECL|method|getSelected ()
 specifier|public
 name|EventList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getSelected
 parameter_list|()
@@ -3396,12 +3396,12 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|findEntry (BibtexEntry entry)
+DECL|method|findEntry (BibEntry entry)
 specifier|public
 name|int
 name|findEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -3452,7 +3452,7 @@ name|FILE_FIELD
 argument_list|)
 return|;
 block|}
-DECL|method|matches (int row, Matcher<BibtexEntry> m)
+DECL|method|matches (int row, Matcher<BibEntry> m)
 specifier|private
 name|boolean
 name|matches
@@ -3462,7 +3462,7 @@ name|row
 parameter_list|,
 name|Matcher
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|m
 parameter_list|)
@@ -3492,7 +3492,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 name|sortedForGrouping
@@ -3536,7 +3536,7 @@ parameter_list|)
 block|{
 try|try
 block|{
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 name|sortedForGrouping
@@ -4401,11 +4401,11 @@ literal|2
 argument_list|)
 return|;
 block|}
-DECL|method|createTableComparatorChooser (JTable table, SortedList<BibtexEntry> list, Object sortingStrategy)
+DECL|method|createTableComparatorChooser (JTable table, SortedList<BibEntry> list, Object sortingStrategy)
 specifier|private
 name|TableComparatorChooser
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|createTableComparatorChooser
 parameter_list|(
@@ -4414,7 +4414,7 @@ name|table
 parameter_list|,
 name|SortedList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|list
 parameter_list|,
@@ -4425,7 +4425,7 @@ block|{
 specifier|final
 name|TableComparatorChooser
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|result
 init|=
@@ -4500,7 +4500,7 @@ DECL|method|getComparatorForColumn (int index)
 specifier|public
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getComparatorForColumn
 parameter_list|(
@@ -4600,7 +4600,7 @@ DECL|method|getSortedForTable ()
 specifier|public
 name|SortedList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getSortedForTable
 parameter_list|()

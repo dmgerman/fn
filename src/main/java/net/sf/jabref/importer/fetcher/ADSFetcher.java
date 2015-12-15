@@ -146,7 +146,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -162,7 +162,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -274,7 +274,7 @@ name|key
 init|=
 name|query
 decl_stmt|;
-comment|/* Query ADS and load the results into the BibtexDatabase */
+comment|/* Query ADS and load the results into the BibDatabase */
 name|status
 operator|.
 name|setStatus
@@ -289,7 +289,7 @@ operator|+
 name|key
 argument_list|)
 expr_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|bd
 init|=
 name|importADSEntries
@@ -320,7 +320,7 @@ block|{
 comment|/* Add the entry to the inspection dialog */
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|bd
@@ -401,7 +401,7 @@ comment|// Do nothing
 block|}
 DECL|method|importADSEntries (String key, OutputPrinter status)
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|importADSEntries
 parameter_list|(
 name|String
@@ -616,7 +616,7 @@ operator|+
 name|key
 return|;
 block|}
-DECL|method|importADSAbstract (String key, BibtexEntry entry, OutputPrinter status)
+DECL|method|importADSAbstract (String key, BibEntry entry, OutputPrinter status)
 specifier|private
 name|void
 name|importADSAbstract
@@ -624,14 +624,14 @@ parameter_list|(
 name|String
 name|key
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|OutputPrinter
 name|status
 parameter_list|)
 block|{
-comment|/* TODO: construct ADSUrl from BibtexEntry */
+comment|/* TODO: construct ADSUrl from BibEntry */
 name|String
 name|url
 init|=

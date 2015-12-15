@@ -166,7 +166,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -213,7 +213,7 @@ name|TreeSelectionListener
 block|{
 DECL|field|secondary
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 decl_stmt|;
 DECL|field|tree
@@ -283,7 +283,7 @@ specifier|private
 name|boolean
 name|okPressed
 decl_stmt|;
-DECL|method|ChangeDisplayDialog (JFrame owner, final BasePanel panel, BibtexDatabase secondary, final DefaultMutableTreeNode root)
+DECL|method|ChangeDisplayDialog (JFrame owner, final BasePanel panel, BibDatabase secondary, final DefaultMutableTreeNode root)
 specifier|public
 name|ChangeDisplayDialog
 parameter_list|(
@@ -294,7 +294,7 @@ specifier|final
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 specifier|final
@@ -335,7 +335,7 @@ operator|.
 name|secondary
 operator|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 expr_stmt|;
 block|}

@@ -26,7 +26,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -202,7 +202,7 @@ literal|10
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|findFullText (BibtexEntry entry)
+DECL|method|findFullText (BibEntry entry)
 specifier|public
 name|Optional
 argument_list|<
@@ -210,7 +210,7 @@ name|URL
 argument_list|>
 name|findFullText
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 throws|throws

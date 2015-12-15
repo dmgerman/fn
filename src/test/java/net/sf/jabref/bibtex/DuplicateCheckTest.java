@@ -64,7 +64,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -162,11 +162,11 @@ name|void
 name|testDuplicateDetection
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|one
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.
@@ -178,11 +178,11 @@ operator|.
 name|ARTICLE
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|two
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.

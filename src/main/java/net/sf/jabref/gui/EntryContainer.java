@@ -28,7 +28,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -43,7 +43,7 @@ interface|interface
 name|EntryContainer
 block|{
 DECL|method|getEntry ()
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|()
 function_decl|;
