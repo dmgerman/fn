@@ -165,7 +165,6 @@ name|String
 name|getUndoPresentationName
 parameter_list|()
 block|{
-comment|// @formatter:off
 return|return
 name|Localization
 operator|.
@@ -183,7 +182,6 @@ argument_list|(
 literal|"change key"
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -193,7 +191,6 @@ name|String
 name|getRedoPresentationName
 parameter_list|()
 block|{
-comment|// @formatter:off
 return|return
 name|Localization
 operator|.
@@ -211,7 +208,6 @@ argument_list|(
 literal|"change key"
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override

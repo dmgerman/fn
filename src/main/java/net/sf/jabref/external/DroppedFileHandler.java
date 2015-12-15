@@ -2996,7 +2996,6 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
@@ -3028,7 +3027,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return
 literal|false
 return|;

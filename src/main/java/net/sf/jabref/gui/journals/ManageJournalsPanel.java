@@ -3210,7 +3210,6 @@ name|AbstractTableModel
 implements|implements
 name|ActionListener
 block|{
-comment|// @formatter:off
 DECL|field|names
 specifier|final
 name|String
@@ -3236,7 +3235,6 @@ literal|"Abbreviation"
 argument_list|)
 block|}
 decl_stmt|;
-comment|//
 DECL|field|journals
 name|List
 argument_list|<

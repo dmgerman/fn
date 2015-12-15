@@ -885,7 +885,6 @@ name|ACTION_ICON
 init|=
 literal|"toggleSearch"
 decl_stmt|;
-comment|// @formatter:off
 DECL|field|ACTION_SHORT_DESCRIPTION
 specifier|public
 specifier|static
@@ -900,7 +899,6 @@ argument_list|(
 literal|"Searches for unlinked PDF files on the file system"
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 DECL|field|GLOBAL_PREFS_WORKING_DIRECTORY_KEY
 specifier|private
 specifier|static

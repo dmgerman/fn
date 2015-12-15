@@ -449,7 +449,6 @@ condition|(
 name|notDefined
 condition|)
 block|{
-comment|// @formatter:off
 name|panel
 operator|.
 name|output
@@ -476,7 +475,6 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 elseif|else
 if|if

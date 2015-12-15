@@ -3933,7 +3933,7 @@ comment|// show a warning, then return
 name|StringBuffer
 name|message
 init|=
-comment|// JZTODO lyrics...
+operator|...
 operator|new
 name|StringBuffer
 argument_list|(
@@ -4033,7 +4033,7 @@ comment|// return true; // this is not undesired
 comment|// for (int i = 0; i< GUIGlobals.ALL_FIELDS.length; ++i) {
 comment|// if (field.equals(GUIGlobals.ALL_FIELDS[i])) {
 comment|// // show a warning, then return
-comment|// String message = Globals // JZTODO lyrics...
+comment|// String message = Globals ...
 comment|// .lang(
 comment|// "This action will modify the \"%0\" field "
 comment|// + "of your entries.\nThis could cause undesired changes to "

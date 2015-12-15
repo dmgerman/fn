@@ -491,7 +491,6 @@ operator|<
 literal|2000
 condition|)
 block|{
-comment|// @formatter:off
 name|regPt1
 operator|=
 literal|"199+["
@@ -540,7 +539,6 @@ name|reg1Set
 operator|=
 literal|true
 expr_stmt|;
-comment|// @formatter:on
 block|}
 block|}
 if|if
@@ -599,7 +597,6 @@ operator|>=
 literal|2000
 condition|)
 block|{
-comment|// @formatter:off
 name|regPt2
 operator|=
 literal|"200+["
@@ -644,7 +641,6 @@ argument_list|)
 operator|+
 literal|"]"
 expr_stmt|;
-comment|// @formatter:on
 name|reg2Set
 operator|=
 literal|true

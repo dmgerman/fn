@@ -1164,7 +1164,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1190,7 +1189,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 block|}
 block|}

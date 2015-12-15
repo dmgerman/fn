@@ -4782,7 +4782,6 @@ name|NEW_ENTRY
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// @formatter:off
 DECL|field|newSpecificEntryAction
 specifier|private
 specifier|final
@@ -12599,7 +12598,6 @@ name|boolean
 name|next
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|putValue
 argument_list|(
 name|Action
@@ -12623,7 +12621,6 @@ literal|"Previous tab"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 name|this
 operator|.
 name|next

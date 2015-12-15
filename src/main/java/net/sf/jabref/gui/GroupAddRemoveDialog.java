@@ -386,7 +386,6 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-comment|// @formatter:off
 operator|(
 name|add
 condition|?
@@ -419,7 +418,6 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-comment|// formatter:on
 name|ok
 operator|=
 operator|new

@@ -172,7 +172,6 @@ name|GroupTreeNode
 name|tmpGroupRoot
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|super
 argument_list|(
 name|changedGroups
@@ -194,8 +193,6 @@ literal|"Removed all groups"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// JZTODO lyrics
-comment|// @formatter:on
 name|this
 operator|.
 name|changedGroups
@@ -485,7 +482,6 @@ literal|null
 condition|?
 literal|' '
 operator|+
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
@@ -495,12 +491,10 @@ argument_list|)
 else|:
 literal|""
 operator|)
-comment|// @formatter:on
 operator|+
 literal|"</html>"
 argument_list|)
 return|;
-comment|// JZTODO lyrics
 block|}
 block|}
 end_class

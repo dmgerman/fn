@@ -1694,7 +1694,6 @@ name|value
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1842,7 +1841,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 else|else
 block|{
@@ -2042,7 +2040,6 @@ name|int
 name|col
 parameter_list|)
 block|{
-comment|// @formatter:off
 return|return
 name|col
 operator|==
@@ -2062,7 +2059,6 @@ argument_list|(
 literal|"Content"
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -2340,7 +2336,6 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2366,7 +2361,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return;
 block|}
 if|if
@@ -2379,7 +2373,6 @@ literal|"#"
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2405,7 +2398,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return;
 block|}
 if|if
@@ -2418,7 +2410,6 @@ literal|" "
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2444,7 +2435,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return;
 block|}
 try|try
@@ -2514,7 +2504,6 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2540,7 +2529,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 block|}
 block|}
@@ -2715,7 +2703,6 @@ comment|// keystroke. This makes the content hang on the screen.
 name|assureNotEditing
 argument_list|()
 expr_stmt|;
-comment|// @formatter:off
 name|String
 name|msg
 init|=
@@ -2785,7 +2772,6 @@ operator|.
 name|QUESTION_MESSAGE
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 if|if
 condition|(
 name|answer

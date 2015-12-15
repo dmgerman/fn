@@ -2031,7 +2031,6 @@ name|boolean
 name|regExp
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|String
 name|header
 init|=
@@ -2132,7 +2131,6 @@ name|expr
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 return|return
 name|String
 operator|.

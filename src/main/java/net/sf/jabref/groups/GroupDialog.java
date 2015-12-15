@@ -534,7 +534,6 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-comment|// JZTODO lyrics
 name|Localization
 operator|.
 name|lang
@@ -552,7 +551,6 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-comment|// JZTODO lyrics
 name|Localization
 operator|.
 name|lang
@@ -570,7 +568,6 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-comment|// JZTODO lyrics
 name|Localization
 operator|.
 name|lang
@@ -1418,7 +1415,6 @@ literal|"Hierarchical context"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// JZTODO lyrics
 name|builderAll
 operator|.
 name|nextLine
@@ -2856,10 +2852,10 @@ name|void
 name|addPreviousEntries
 parameter_list|()
 block|{
-comment|// JZTODO lyrics...
+operator|...
 name|int
 name|i
-init|=
+operator|=
 name|JOptionPane
 operator|.
 name|showConfirmDialog
@@ -2891,7 +2887,7 @@ name|JOptionPane
 operator|.
 name|QUESTION_MESSAGE
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|i

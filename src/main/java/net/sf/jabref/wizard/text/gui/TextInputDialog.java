@@ -2968,7 +2968,6 @@ specifier|public
 name|PasteAction
 parameter_list|()
 block|{
-comment|// @formatter:off
 name|super
 argument_list|(
 name|Localization
@@ -2995,7 +2994,6 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -3109,7 +3107,6 @@ specifier|public
 name|LoadAction
 parameter_list|()
 block|{
-comment|// @formatter:off
 name|super
 argument_list|(
 name|Localization
@@ -3136,7 +3133,6 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -3278,7 +3274,6 @@ specifier|public
 name|ClearAction
 parameter_list|()
 block|{
-comment|// @formatter:off
 name|super
 argument_list|(
 name|Localization
@@ -3305,7 +3300,6 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override

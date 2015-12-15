@@ -1480,7 +1480,6 @@ name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:off
 name|label
 operator|.
 name|setToolTipText
@@ -1502,7 +1501,6 @@ literal|"web link"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 name|GUIGlobals
 operator|.
 name|tableIcons

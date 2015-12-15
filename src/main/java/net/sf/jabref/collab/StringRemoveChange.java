@@ -273,7 +273,6 @@ operator|=
 name|inMem
 expr_stmt|;
 comment|// Holds the version in memory. Check if it has been modified...?
-comment|// @formatter:off
 name|tp
 operator|.
 name|setText
@@ -322,7 +321,6 @@ operator|+
 literal|"</HTML>"
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override

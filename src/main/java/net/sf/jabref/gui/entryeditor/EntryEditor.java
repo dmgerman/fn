@@ -1107,7 +1107,6 @@ operator|new
 name|TabListener
 argument_list|()
 decl_stmt|;
-comment|// @formatter:off
 DECL|field|ABBREVIATION_TOOLTIP_TEXT
 specifier|private
 specifier|final
@@ -1152,7 +1151,6 @@ argument_list|)
 operator|+
 literal|"</B></HTML>"
 decl_stmt|;
-comment|// @formatter:on
 DECL|method|EntryEditor (JabRefFrame frame, BasePanel panel, BibEntry entry)
 specifier|public
 name|EntryEditor

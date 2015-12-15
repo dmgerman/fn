@@ -367,7 +367,6 @@ index|[]
 name|brokenLinkOptions
 init|=
 block|{
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
@@ -404,7 +403,6 @@ literal|"Quit synchronization"
 argument_list|)
 block|}
 decl_stmt|;
-comment|// @formatter:on
 DECL|field|goOn
 specifier|private
 name|boolean
@@ -1197,7 +1195,6 @@ name|UnknownExternalFileType
 operator|)
 condition|)
 block|{
-comment|// @formatter:off
 name|String
 index|[]
 name|options
@@ -1236,7 +1233,6 @@ literal|"Cancel"
 argument_list|)
 block|}
 decl_stmt|;
-comment|// @formatter:on
 name|String
 name|defOption
 init|=

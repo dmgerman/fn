@@ -174,7 +174,6 @@ literal|"Remove entry selection from this group"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// JZTODO lyrics
 block|}
 DECL|method|setNode (GroupTreeNode node)
 specifier|public

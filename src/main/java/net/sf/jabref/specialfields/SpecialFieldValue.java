@@ -98,7 +98,6 @@ decl_stmt|;
 comment|// value when used in a separate vield
 comment|//private String fieldValue;
 comment|/**      *       * @param field The special field this value is a value of      * @param keyword - The keyword to be used at BibTex's keyword field. May be "null" if no keyword is to be set      * @param actionName - the action to call      * @param menuString - the string to display at a menu      * @param icon - the icon of this value      * @param toolTipText - the tool tip text      */
-comment|// @formatter:off
 DECL|method|SpecialFieldValue ( SpecialField field, String keyword, String actionName, String menuString, Icon icon, String toolTipText)
 specifier|public
 name|SpecialFieldValue
@@ -122,7 +121,6 @@ name|String
 name|toolTipText
 parameter_list|)
 block|{
-comment|// @formatter:on
 name|this
 operator|.
 name|field
@@ -280,7 +278,6 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// @formatter:off
 name|action
 operator|=
 operator|new
@@ -323,7 +320,6 @@ operator|.
 name|TEXT_DONE_PATTERN
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 return|return
 name|action

@@ -812,7 +812,6 @@ name|int
 name|col
 parameter_list|)
 block|{
-comment|// @formatter:off
 return|return
 name|col
 operator|==
@@ -832,7 +831,6 @@ argument_list|(
 literal|"Column width"
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override

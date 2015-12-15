@@ -274,7 +274,6 @@ name|string
 operator|=
 name|string
 expr_stmt|;
-comment|// @formatter:off
 name|tp
 operator|.
 name|setText
@@ -323,7 +322,6 @@ operator|+
 literal|"</HTML>"
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override

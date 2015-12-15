@@ -96,7 +96,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|// @formatter:off
 comment|// DO NOT TRANSLATE "qualityAssured" as this makes the produced .bib files non portable
 name|values
 operator|.
@@ -136,7 +135,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 name|this
 operator|.
 name|setValues
