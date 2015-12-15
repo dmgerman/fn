@@ -200,6 +200,17 @@ name|equals
 argument_list|(
 name|locale
 argument_list|)
+operator|&&
+operator|!
+name|menuTitles
+operator|.
+name|getLocale
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|locale
+argument_list|)
 condition|)
 block|{
 name|LOGGER
@@ -216,6 +227,10 @@ name|defaultLocale
 operator|+
 literal|">"
 argument_list|)
+expr_stmt|;
+name|locale
+operator|=
+name|defaultLocale
 expr_stmt|;
 block|}
 block|}
@@ -429,23 +444,22 @@ operator|=
 name|key
 expr_stmt|;
 block|}
-comment|// replace %0, %1, ...
 if|if
 condition|(
-operator|(
 name|translation
-operator|!=
+operator|==
 literal|null
-operator|)
-operator|&&
-operator|!
+operator|||
 name|translation
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// also done if no params are given
+return|return
+name|key
+return|;
+block|}
 return|return
 operator|new
 name|LocalizationKeyParams
@@ -457,10 +471,6 @@ argument_list|)
 operator|.
 name|replacePlaceholders
 argument_list|()
-return|;
-block|}
-return|return
-name|key
 return|;
 block|}
 DECL|method|lang (String key, String... params)

@@ -113,12 +113,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|c
-lambda|->
-name|c
-operator|.
+name|Charset
+operator|::
 name|displayName
-argument_list|()
 argument_list|)
 operator|.
 name|distinct
