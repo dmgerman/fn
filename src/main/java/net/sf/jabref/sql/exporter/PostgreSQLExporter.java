@@ -308,8 +308,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-try|try
-init|(
 name|Connection
 name|conn
 init|=
@@ -329,8 +327,7 @@ operator|.
 name|getPassword
 argument_list|()
 argument_list|)
-init|)
-block|{
+decl_stmt|;
 name|createPLPGSQLFunction
 argument_list|(
 name|conn
@@ -339,7 +336,6 @@ expr_stmt|;
 return|return
 name|conn
 return|;
-block|}
 block|}
 DECL|method|createPLPGSQLFunction (Connection conn)
 specifier|private

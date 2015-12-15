@@ -1094,13 +1094,6 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
-name|StringBuilder
-name|querySB
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
 name|ArrayList
 argument_list|<
 name|String
@@ -1183,6 +1176,13 @@ name|getAllValues
 argument_list|()
 control|)
 block|{
+name|StringBuilder
+name|querySB
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
 name|fieldRequirement
 operator|.
 name|clear
@@ -1438,7 +1438,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 operator|+
-literal|'\''
+literal|"';"
 argument_list|)
 expr_stmt|;
 block|}
