@@ -557,6 +557,8 @@ operator|+
 literal|"Localization.lang(\"Reset preferences (key1,key2,... or 'all')\")"
 operator|+
 literal|"Localization.lang(\"Multiple entries selected. Do you want to change the type of all these to '%0'?\")"
+operator|+
+literal|"Localization.lang(\"Run Fetcher, e.g. \\\"--fetch=Medline:cancer\\\"\");"
 decl_stmt|;
 name|List
 argument_list|<
@@ -587,6 +589,8 @@ argument_list|,
 literal|"Multiple_entries_selected._Do_you_want_to_change_"
 operator|+
 literal|"the_type_of_all_these_to_'%0'?"
+argument_list|,
+literal|"Run_Fetcher,_e.g._\"--fetch\\=Medline\\:cancer\""
 argument_list|)
 decl_stmt|;
 name|List

@@ -1197,7 +1197,7 @@ argument_list|()
 decl_stmt|;
 comment|//ActionMap am = mainPanel.getActionMap();
 comment|//InputMap im = mainPanel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-comment|//im.put(prefs.getKey(KeyBinds.CLOSE_DIALOG), "close");
+comment|//im.put(Globals.getKeyPrefs().getKey(KeyBinds.CLOSE_DIALOG), "close");
 comment|//am.put("close", closeAction);
 name|mainPanel
 operator|.

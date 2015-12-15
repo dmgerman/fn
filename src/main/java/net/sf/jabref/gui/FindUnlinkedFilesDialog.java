@@ -885,15 +885,6 @@ name|ACTION_ICON
 init|=
 literal|"toggleSearch"
 decl_stmt|;
-DECL|field|ACTION_KEYBINDING_ACTION
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ACTION_KEYBINDING_ACTION
-init|=
-literal|"Find unlinked files"
-decl_stmt|;
 comment|// @formatter:off
 DECL|field|ACTION_SHORT_DESCRIPTION
 specifier|public

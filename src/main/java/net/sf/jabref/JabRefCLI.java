@@ -590,7 +590,6 @@ literal|"Do not open any files at startup"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:off
 name|options
 operator|.
 name|addOption
@@ -978,7 +977,6 @@ name|build
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return
 name|options
 return|;
