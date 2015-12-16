@@ -28,7 +28,6 @@ specifier|public
 class|class
 name|OS
 block|{
-comment|// TODO: what OS do we support?
 comment|// https://commons.apache.org/proper/commons-lang/javadocs/api-2.6/org/apache/commons/lang/SystemUtils.html
 DECL|field|osName
 specifier|public

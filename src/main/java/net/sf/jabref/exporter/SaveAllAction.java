@@ -353,7 +353,6 @@ name|getTabCount
 argument_list|()
 condition|)
 block|{
-comment|//System.out.println("Base "+i);
 name|BasePanel
 name|panel
 init|=
