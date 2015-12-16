@@ -190,6 +190,15 @@ operator|.
 name|add
 argument_list|(
 operator|new
+name|DoiResolution
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|finders
+operator|.
+name|add
+argument_list|(
+operator|new
 name|ScienceDirect
 argument_list|()
 argument_list|)
