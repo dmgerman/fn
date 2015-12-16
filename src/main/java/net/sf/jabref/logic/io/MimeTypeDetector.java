@@ -284,7 +284,7 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|debug
+name|info
 argument_list|(
 literal|"Error getting MIME type of URL"
 argument_list|,
