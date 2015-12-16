@@ -3003,9 +3003,7 @@ name|run
 argument_list|(
 operator|new
 name|Vector
-argument_list|<
-name|BibEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|)
 expr_stmt|;
