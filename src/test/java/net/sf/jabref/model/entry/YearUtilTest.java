@@ -36,22 +36,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|YearUtil
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|text
