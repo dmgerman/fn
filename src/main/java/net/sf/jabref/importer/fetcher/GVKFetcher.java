@@ -949,7 +949,8 @@ expr_stmt|;
 return|return
 name|Collections
 operator|.
-name|EMPTY_LIST
+name|emptyList
+argument_list|()
 return|;
 block|}
 name|URL
@@ -1004,7 +1005,8 @@ expr_stmt|;
 return|return
 name|Collections
 operator|.
-name|EMPTY_LIST
+name|emptyList
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -1025,7 +1027,8 @@ expr_stmt|;
 return|return
 name|Collections
 operator|.
-name|EMPTY_LIST
+name|emptyList
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -1046,7 +1049,8 @@ expr_stmt|;
 return|return
 name|Collections
 operator|.
-name|EMPTY_LIST
+name|emptyList
+argument_list|()
 return|;
 block|}
 return|return
