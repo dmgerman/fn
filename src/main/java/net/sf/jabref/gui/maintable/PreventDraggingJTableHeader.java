@@ -66,18 +66,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|table
-operator|.
-name|TableColumnModel
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|awt

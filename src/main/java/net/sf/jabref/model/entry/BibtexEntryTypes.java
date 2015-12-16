@@ -44,18 +44,6 @@ name|Optional
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Collectors
-import|;
-end_import
-
 begin_comment
 comment|/**  * This class represents all supported BibTex entry types.  *<p>  * Article, Book, Booklet, Conference, Inbook, Incollection, Inproceedings,  * Manual, Mastersthesis, Misc, Phdthesis, Proceedings, Techreport, Unpublished  */
 end_comment

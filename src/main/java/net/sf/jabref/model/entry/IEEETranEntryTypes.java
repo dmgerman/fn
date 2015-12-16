@@ -34,18 +34,6 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|stream
-operator|.
-name|Collectors
-import|;
-end_import
-
 begin_comment
 comment|/**  * This class represents all supported IEEETran entry types.  *  * @see http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/IEEEtran/bibtex/IEEEtran_bst_HOWTO.pdf  *<p>  * Electronic, IEEETranBSTCTL, Periodical, Patent, Standard  */
 end_comment
