@@ -91,7 +91,7 @@ class|class
 name|DoiResolutionTest
 block|{
 DECL|field|finder
-name|GoogleScholar
+name|DoiResolution
 name|finder
 decl_stmt|;
 DECL|field|entry
@@ -109,7 +109,7 @@ block|{
 name|finder
 operator|=
 operator|new
-name|GoogleScholar
+name|DoiResolution
 argument_list|()
 expr_stmt|;
 name|entry
@@ -146,10 +146,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|requiresEntryTitle ()
+DECL|method|doiNotPresent ()
 specifier|public
 name|void
-name|requiresEntryTitle
+name|doiNotPresent
 parameter_list|()
 throws|throws
 name|IOException
@@ -174,32 +174,21 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|linkFound ()
+DECL|method|findByDOI ()
 specifier|public
 name|void
-name|linkFound
+name|findByDOI
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is blocked by Google
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+literal|"doi"
 argument_list|,
-literal|"Towards Application Portability in Platform as a Service"
+literal|"10.1051/0004-6361/201527330"
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -213,7 +202,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"https://www.uni-bamberg.de/fileadmin/uni/fakultaeten/wiai_lehrstuehle/praktische_informatik/Dateien/Publikationen/sose14-towards-application-portability-in-paas.pdf"
+literal|"http://www.aanda.org/articles/aa/pdf/2016/01/aa27330-15.pdf"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -227,33 +216,34 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Ignore
+annotation|@
 name|Test
-DECL|method|noLinkFound ()
+DECL|method|notReturnAnythingWhenMultipleLinksAreFound ()
 specifier|public
 name|void
-name|noLinkFound
+name|notReturnAnythingWhenMultipleLinksAreFound
+parameter_list|()
+throws|throws
+name|IOException
+block|{     }
+annotation|@
+name|Test
+DECL|method|notFoundByDOI ()
+specifier|public
+name|void
+name|notFoundByDOI
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// CI server is blocked by Google
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"title"
+literal|"doi"
 argument_list|,
-literal|"Pro WF: Windows Workflow in NET 3.5"
+literal|"10.1186/unknown-doi"
 argument_list|)
 expr_stmt|;
 name|Assert
