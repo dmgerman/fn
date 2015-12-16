@@ -273,7 +273,7 @@ name|result
 operator|=
 name|fft
 operator|.
-name|findFullText
+name|findFullTextPDF
 argument_list|(
 name|entry
 argument_list|)

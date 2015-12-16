@@ -447,12 +447,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"ScienceDirect API request failed: "
-operator|+
-name|e
-operator|.
-name|getMessage
-argument_list|()
+literal|"ScienceDirect API request failed"
 argument_list|,
 name|e
 argument_list|)
@@ -616,12 +611,7 @@ name|LOGGER
 operator|.
 name|debug
 argument_list|(
-literal|"No ScienceDirect link found in API request: "
-operator|+
-name|e
-operator|.
-name|getMessage
-argument_list|()
+literal|"No ScienceDirect link found in API request"
 argument_list|,
 name|e
 argument_list|)

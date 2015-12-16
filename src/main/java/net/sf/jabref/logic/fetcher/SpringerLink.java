@@ -435,12 +435,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"SpringerLink API request failed: "
-operator|+
-name|e
-operator|.
-name|getMessage
-argument_list|()
+literal|"SpringerLink API request failed"
 argument_list|,
 name|e
 argument_list|)
