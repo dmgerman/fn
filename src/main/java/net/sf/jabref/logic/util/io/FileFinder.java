@@ -1346,14 +1346,14 @@ name|List
 argument_list|<
 name|File
 argument_list|>
-name|toDo
+name|files
 init|=
 operator|new
 name|LinkedList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|toDo
+name|files
 operator|.
 name|add
 argument_list|(
@@ -1412,18 +1412,18 @@ block|}
 while|while
 condition|(
 operator|!
-name|toDo
+name|files
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// Get all subdirs of each of the elements found in toDo
+comment|// Get all subdirs of each of the elements found in files
 name|File
 index|[]
 name|subDirs
 init|=
-name|toDo
+name|files
 operator|.
 name|remove
 argument_list|(
@@ -1442,7 +1442,7 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|toDo
+name|files
 operator|.
 name|addAll
 argument_list|(

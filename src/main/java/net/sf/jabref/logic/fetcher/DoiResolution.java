@@ -501,7 +501,7 @@ literal|"abs:href"
 argument_list|)
 decl_stmt|;
 comment|// Only check if pdf is included in the link
-comment|// FIXME: see https://github.com/lehner/LocalCopy for scrape ideas
+comment|// See https://github.com/lehner/LocalCopy for scrape ideas
 if|if
 condition|(
 name|href

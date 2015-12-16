@@ -454,8 +454,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// TODO: title search
-comment|// We can also get abstract automatically!
 return|return
 name|pdfLink
 return|;

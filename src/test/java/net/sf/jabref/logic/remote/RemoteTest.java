@@ -495,7 +495,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-comment|// TODO Auto-generated catch block
 name|Assert
 operator|.
 name|fail

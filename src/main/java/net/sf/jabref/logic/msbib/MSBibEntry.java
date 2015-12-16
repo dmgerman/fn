@@ -3570,7 +3570,7 @@ name|String
 name|language
 parameter_list|)
 block|{
-comment|// TODO: add lanaguage to LCID mapping
+comment|// TODO: add language to LCID mapping
 return|return
 literal|0
 return|;
@@ -3585,7 +3585,7 @@ name|int
 name|LCID
 parameter_list|)
 block|{
-comment|// TODO: add lanaguage to LCID mapping
+comment|// TODO: add language to LCID mapping
 return|return
 literal|"english"
 return|;
