@@ -3191,7 +3191,7 @@ name|ooBaseDirectory
 operator|=
 name|ooPath
 operator|+
-literal|"/Contents/basis-link/ure-link/share/java"
+literal|"/Contents/basis-link/program/classes"
 expr_stmt|;
 name|unoilDir
 operator|=
@@ -3213,7 +3213,7 @@ name|ooBaseDirectory
 operator|=
 name|ooJars
 operator|+
-literal|"/ure-link/share/java"
+literal|"/program/classes"
 expr_stmt|;
 block|}
 block|}
