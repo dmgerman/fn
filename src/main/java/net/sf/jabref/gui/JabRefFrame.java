@@ -14206,9 +14206,6 @@ specifier|final
 name|BasePanel
 name|active
 init|=
-operator|(
-name|BasePanel
-operator|)
 name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
