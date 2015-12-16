@@ -409,12 +409,9 @@ argument_list|()
 operator|.
 name|allMatch
 argument_list|(
-name|p
-lambda|->
-name|p
-operator|.
+name|Vector
+operator|::
 name|isEmpty
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -580,22 +577,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-end_class
-
-begin_return
 return|return
 name|pathSubstrings
 return|;
-end_return
-
-begin_comment
-unit|}
+block|}
 comment|/**      * Copies a file.      *      * @param source         File Source file      * @param dest           File Destination file      * @param deleteIfExists boolean Determines whether the copy goes on even if the file      *                       exists.      * @return boolean Whether the copy succeeded, or was stopped due to the      * file already existing.      * @throws IOException      */
-end_comment
-
-begin_function
 DECL|method|copyFile (File source, File dest, boolean deleteIfExists)
-unit|public
+specifier|public
 specifier|static
 name|boolean
 name|copyFile
@@ -734,13 +722,7 @@ return|return
 literal|true
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * @param fileName      * @param destFilename      * @return      */
-end_comment
-
-begin_function
 DECL|method|renameFile (String fileName, String destFilename)
 specifier|public
 specifier|static
@@ -784,13 +766,7 @@ name|toFile
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *<p>      * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *      * @param metaData The MetaData for the database this file belongs to.      * @param name     The filename, may also be a relative path to the file      */
-end_comment
-
-begin_function
 DECL|method|expandFilename (final MetaData metaData, String name)
 specifier|public
 specifier|static
@@ -975,13 +951,7 @@ name|dirs
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      *<p>      * Will look in each of the given dirs starting from the beginning and      * returning the first found file to match if any.      */
-end_comment
-
-begin_function
 DECL|method|expandFilename (String name, String[] dir)
 specifier|public
 specifier|static
@@ -1038,13 +1008,7 @@ return|return
 literal|null
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      */
-end_comment
-
-begin_function
 DECL|method|expandFilename (String name, String dir)
 specifier|public
 specifier|static
@@ -1254,13 +1218,7 @@ return|return
 name|file
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Converts an absolute filename to a relative one, if necessary.      * Returns the parameter fileName itself if no shortening is possible      *<p>      * This method works correctly only if dirs are sorted decent in their length      * i.e. /home/user/literature/important before /home/user/literature      *      * @param fileName the filename to be shortened      * @param dirs     directories to check.      */
-end_comment
-
-begin_function
 DECL|method|shortenFileName (File fileName, String[] dirs)
 specifier|public
 specifier|static
@@ -1368,9 +1326,6 @@ return|return
 name|fileName
 return|;
 block|}
-end_function
-
-begin_function
 DECL|method|shortenFileName (File fileName, String dir)
 specifier|private
 specifier|static
@@ -1537,8 +1492,8 @@ name|fileName
 return|;
 block|}
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

@@ -96,12 +96,9 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|doi
-lambda|->
-name|doi
-operator|.
+name|DOI
+operator|::
 name|getDOI
-argument_list|()
 argument_list|)
 operator|.
 name|orElse
