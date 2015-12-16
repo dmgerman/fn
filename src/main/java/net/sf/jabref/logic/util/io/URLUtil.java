@@ -320,7 +320,7 @@ name|url
 return|;
 block|}
 block|}
-comment|/**      * Make sure an URL is "portable", in that it doesn't contain bad characters that break the open command in some      * OSes.      *      * A call to this method will also remove \\url{} enclosings and clean Doi links.      *      * @param link :the URL to sanitize.      * @return Sanitized URL      */
+comment|/**      * Make sure an URL is "portable", in that it doesn't contain bad characters that break the open command in some      * OSes. A call to this method will also remove \\url{} enclosings.      *      * It does:      * - trim whitespace      * - remove Latex \\url{} tags      *      * @param link the URL to sanitize.      * @return the sanitized URL      */
 DECL|method|sanitizeUrl (String link)
 specifier|public
 specifier|static
@@ -331,6 +331,7 @@ name|String
 name|link
 parameter_list|)
 block|{
+comment|// remove whitespace
 name|link
 operator|=
 name|link
@@ -338,7 +339,7 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
-comment|// First check if it is enclosed in \\url{}. If so, remove the wrapper.
+comment|// Remove \\url{}
 if|if
 condition|(
 name|link
@@ -371,88 +372,6 @@ argument_list|()
 operator|-
 literal|1
 argument_list|)
-expr_stmt|;
-block|}
-comment|// DOI cleanup
-comment|// converts doi-only link to full http address
-comment|// Morten Alver 6 Nov 2012: this extracts a nonfunctional Doi from some complete
-comment|// http addresses (e.g. http://onlinelibrary.wiley.com/doi/10.1002/rra.999/abstract, where
-comment|// the trailing "/abstract" is included but doesn't lead to a resolvable Doi).
-comment|// To prevent mangling of working URLs I'm disabling this check if the link is already
-comment|// a full http link:
-comment|// TODO: not sure if this is allowed
-if|if
-condition|(
-name|link
-operator|.
-name|matches
-argument_list|(
-literal|"^doi:/*.*"
-argument_list|)
-condition|)
-block|{
-comment|// Remove 'doi:'
-name|link
-operator|=
-name|link
-operator|.
-name|replaceFirst
-argument_list|(
-literal|"^doi:/*"
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-name|link
-operator|=
-operator|new
-name|DOI
-argument_list|(
-name|link
-argument_list|)
-operator|.
-name|getURLAsASCIIString
-argument_list|()
-expr_stmt|;
-block|}
-name|Optional
-argument_list|<
-name|DOI
-argument_list|>
-name|doi
-init|=
-name|DOI
-operator|.
-name|build
-argument_list|(
-name|link
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|doi
-operator|.
-name|isPresent
-argument_list|()
-operator|&&
-operator|!
-name|link
-operator|.
-name|matches
-argument_list|(
-literal|"^https?://.*"
-argument_list|)
-condition|)
-block|{
-name|link
-operator|=
-name|doi
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getURLAsASCIIString
-argument_list|()
 expr_stmt|;
 block|}
 comment|// FIXME: everything below is really flawed atm
