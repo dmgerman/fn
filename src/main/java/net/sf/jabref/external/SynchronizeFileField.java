@@ -96,7 +96,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -367,7 +367,6 @@ index|[]
 name|brokenLinkOptions
 init|=
 block|{
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
@@ -404,7 +403,6 @@ literal|"Quit synchronization"
 argument_list|)
 block|}
 decl_stmt|;
-comment|// @formatter:on
 DECL|field|goOn
 specifier|private
 name|boolean
@@ -1197,7 +1195,6 @@ name|UnknownExternalFileType
 operator|)
 condition|)
 block|{
-comment|// @formatter:off
 name|String
 index|[]
 name|options
@@ -1236,7 +1233,6 @@ literal|"Cancel"
 argument_list|)
 block|}
 decl_stmt|;
-comment|// @formatter:on
 name|String
 name|defOption
 init|=
@@ -1612,24 +1608,19 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Finished synchronizing %0 links. Entries changed%c %1."
+literal|"Finished synchronizing %0 links. Entries changed: %1."
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
 name|fieldName
 operator|.
 name|toUpperCase
 argument_list|()
-block|,
+argument_list|,
 name|String
 operator|.
 name|valueOf
 argument_list|(
 name|entriesChangedCount
 argument_list|)
-block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1696,7 +1687,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1868,11 +1859,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)

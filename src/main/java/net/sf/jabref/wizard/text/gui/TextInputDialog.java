@@ -476,7 +476,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -1031,14 +1031,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|parent
+name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
 argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1155,7 +1155,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Text_Input_Area"
+literal|"paste_text_here"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2968,7 +2968,6 @@ specifier|public
 name|PasteAction
 parameter_list|()
 block|{
-comment|// @formatter:off
 name|super
 argument_list|(
 name|Localization
@@ -2995,7 +2994,6 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -3109,7 +3107,6 @@ specifier|public
 name|LoadAction
 parameter_list|()
 block|{
-comment|// @formatter:off
 name|super
 argument_list|(
 name|Localization
@@ -3136,7 +3133,6 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -3278,7 +3274,6 @@ specifier|public
 name|ClearAction
 parameter_list|()
 block|{
-comment|// @formatter:off
 name|super
 argument_list|(
 name|Localization
@@ -3305,7 +3300,6 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override

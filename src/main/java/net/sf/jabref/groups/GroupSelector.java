@@ -994,7 +994,6 @@ literal|"Highlight overlapping groups"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// JZTODO lyrics
 DECL|field|showNumberOfElements
 specifier|private
 specifier|final
@@ -2636,7 +2635,6 @@ name|showOverlappingGroups
 operator|.
 name|setToolTipText
 argument_list|(
-comment|// JZTODO lyrics
 name|Localization
 operator|.
 name|lang
@@ -6352,7 +6350,6 @@ argument_list|(
 literal|"Modify Group"
 argument_list|)
 decl_stmt|;
-comment|// JZTODO lyrics
 name|nc
 operator|.
 name|addEdit
@@ -7509,7 +7506,6 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-comment|// JZTODO lyrics
 name|frame
 operator|.
 name|output
@@ -8641,7 +8637,6 @@ literal|"Sort alphabetically"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// JZTODO lyrics
 DECL|method|getGroupTreeRoot ()
 specifier|public
 name|GroupTreeNode

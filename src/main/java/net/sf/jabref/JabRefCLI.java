@@ -590,7 +590,6 @@ literal|"Do not open any files at startup"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:off
 name|options
 operator|.
 name|addOption
@@ -978,7 +977,6 @@ name|build
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return
 name|options
 return|;
@@ -1148,7 +1146,6 @@ name|String
 name|getExportMatchesSyntax
 parameter_list|()
 block|{
-comment|// @formatter:off
 return|return
 name|String
 operator|.
@@ -1178,7 +1175,6 @@ literal|"exportFormat"
 argument_list|)
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 block|}
 end_class

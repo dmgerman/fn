@@ -999,7 +999,6 @@ literal|"Error Page"
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|status
 operator|.
 name|showMessage
@@ -1018,7 +1017,6 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return
 literal|false
 return|;
@@ -1050,7 +1048,6 @@ operator|.
 name|MAX_FETCH
 condition|)
 block|{
-comment|// @formatter:off
 name|status
 operator|.
 name|showMessage
@@ -1090,7 +1087,6 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 name|parse
 argument_list|(

@@ -240,7 +240,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -1122,7 +1122,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1831,11 +1831,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -3209,7 +3210,6 @@ name|AbstractTableModel
 implements|implements
 name|ActionListener
 block|{
-comment|// @formatter:off
 DECL|field|names
 specifier|final
 name|String
@@ -3235,7 +3235,6 @@ literal|"Abbreviation"
 argument_list|)
 block|}
 decl_stmt|;
-comment|//
 DECL|field|journals
 name|List
 argument_list|<

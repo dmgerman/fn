@@ -214,7 +214,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"CaseKepper"
+literal|"CaseKeeper"
 argument_list|)
 return|;
 block|}

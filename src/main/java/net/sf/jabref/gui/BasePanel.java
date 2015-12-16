@@ -2426,7 +2426,6 @@ name|length
 operator|>
 literal|1
 condition|?
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
@@ -2443,7 +2442,6 @@ argument_list|)
 operator|)
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 comment|// Loop through the array of entries, and delete them.
 for|for
 control|(
@@ -2598,7 +2596,6 @@ name|length
 operator|>
 literal|1
 condition|?
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
@@ -2615,7 +2612,6 @@ argument_list|)
 operator|)
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 comment|// Loop through the array of entries, and delete them.
 for|for
 control|(
@@ -2993,7 +2989,6 @@ name|length
 operator|>
 literal|1
 condition|?
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
@@ -3010,7 +3005,6 @@ argument_list|)
 operator|)
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 comment|// Store the first inserted bibtexentry.
 comment|// bes[0] does not work as bes[0] is first clonded,
 comment|// then inserted.
@@ -3654,7 +3648,6 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|String
 name|preamble
 init|=
@@ -3665,7 +3658,6 @@ argument_list|(
 literal|"Could not export to SQL database for the following reason:"
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 name|errorMessage
 operator|=
 name|SQLUtil
@@ -3759,7 +3751,6 @@ block|}
 else|else
 block|{
 comment|// show an error dialog if an error occurred
-comment|// @formatter:off
 name|String
 name|preamble
 init|=
@@ -3770,7 +3761,6 @@ argument_list|(
 literal|"Could not export to SQL database for the following reason:"
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 name|frame
 operator|.
 name|output
@@ -4751,7 +4741,6 @@ name|length
 operator|>
 literal|1
 condition|?
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
@@ -4770,7 +4759,6 @@ operator|+
 literal|'.'
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 else|else
 block|{
@@ -5024,7 +5012,6 @@ name|length
 condition|)
 block|{
 comment|// All entries had keys.
-comment|// @formatter:off
 name|output
 argument_list|(
 name|bes
@@ -5050,7 +5037,6 @@ operator|+
 literal|'.'
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 else|else
 block|{
@@ -5304,7 +5290,6 @@ name|length
 operator|>
 literal|1
 condition|?
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
@@ -5323,11 +5308,9 @@ operator|+
 literal|'.'
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 else|else
 block|{
-comment|// @formatter:off
 name|output
 argument_list|(
 name|Localization
@@ -5354,7 +5337,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 block|}
 block|}
@@ -6261,7 +6243,6 @@ name|counter
 operator|==
 literal|1
 condition|?
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
@@ -6280,7 +6261,6 @@ operator|+
 literal|'.'
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 if|if
 condition|(
 name|counter
@@ -6781,10 +6761,6 @@ begin_comment
 comment|// Note that we can't put the number of entries that have been reverted into the undoText as the concrete number cannot be injected
 end_comment
 
-begin_comment
-comment|// @formatter:off
-end_comment
-
 begin_expr_stmt
 name|actions
 operator|.
@@ -6985,10 +6961,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 end_expr_stmt
-
-begin_comment
-comment|// @formatter:on
-end_comment
 
 begin_for
 for|for
@@ -7936,7 +7908,6 @@ name|UnsupportedCharsetException
 name|ex2
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -7976,7 +7947,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 throw|throw
 operator|new
 name|SaveException
@@ -8175,7 +8145,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The chosen encoding '%0' could not encode the following characters: "
+literal|"The chosen encoding '%0' could not encode the following characters:"
 argument_list|,
 name|session
 operator|.
@@ -8268,7 +8238,6 @@ name|WARNING_MESSAGE
 argument_list|,
 literal|null
 argument_list|,
-comment|// @formatter:off
 operator|new
 name|String
 index|[]
@@ -8293,7 +8262,6 @@ argument_list|,
 name|tryDiff
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 if|if
 condition|(
 name|answer
@@ -12129,12 +12097,11 @@ name|showConfirmDialog
 argument_list|(
 name|this
 argument_list|,
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Multiple entries selected. Do you want to change\nthe type of all these to '%0'?"
+literal|"Multiple entries selected. Do you want to change the type of all these to '%0'?"
 argument_list|,
 name|type
 operator|.
@@ -12158,7 +12125,6 @@ operator|.
 name|WARNING_MESSAGE
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 if|if
 condition|(
 name|choice
@@ -12219,7 +12185,6 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
-comment|// @formatter:off
 name|output
 argument_list|(
 name|formatOutputMessage
@@ -12242,7 +12207,6 @@ name|length
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 name|ce
 operator|.
 name|end
@@ -12291,7 +12255,6 @@ block|{
 name|String
 name|msg
 decl_stmt|;
-comment|// @formatter:off
 name|msg
 operator|=
 name|Localization
@@ -12301,7 +12264,6 @@ argument_list|(
 literal|"Really delete the selected entry?"
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 name|String
 name|title
 init|=
@@ -13979,7 +13941,6 @@ name|int
 name|count
 parameter_list|)
 block|{
-comment|// @formatter:off
 return|return
 name|String
 operator|.
@@ -14012,7 +13973,6 @@ argument_list|)
 operator|)
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 end_function
 

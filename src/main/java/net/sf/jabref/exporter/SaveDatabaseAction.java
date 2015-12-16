@@ -440,7 +440,6 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|String
 index|[]
 name|opts
@@ -517,7 +516,6 @@ literal|0
 index|]
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 if|if
 condition|(
 name|answer
@@ -1512,7 +1510,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The chosen encoding '%0' could not encode the following characters: "
+literal|"The chosen encoding '%0' could not encode the following characters:"
 argument_list|,
 name|session
 operator|.
@@ -1605,7 +1603,6 @@ name|WARNING_MESSAGE
 argument_list|,
 literal|null
 argument_list|,
-comment|// @formatter:off
 operator|new
 name|String
 index|[]
@@ -1630,7 +1627,6 @@ argument_list|,
 name|tryDiff
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 if|if
 condition|(
 name|answer

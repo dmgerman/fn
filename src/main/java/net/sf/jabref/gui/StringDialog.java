@@ -212,16 +212,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JOptionPane
 import|;
 end_import
@@ -392,7 +382,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -872,11 +862,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|STRING_DIALOG_ADD_STRING
 argument_list|)
@@ -906,11 +899,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|STRING_DIALOG_REMOVE_STRING
 argument_list|)
@@ -940,11 +936,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|SAVE_DATABASE
 argument_list|)
@@ -965,11 +964,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -990,11 +992,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|HELP
 argument_list|)
@@ -1015,11 +1020,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|UNDO
 argument_list|)
@@ -1047,11 +1055,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|REDO
 argument_list|)
@@ -1373,13 +1384,14 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-name|frame
+name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1402,13 +1414,14 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-name|frame
+name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|HELP
 argument_list|)
@@ -1681,7 +1694,6 @@ name|value
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1692,7 +1704,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"A string with this label already exists"
+literal|"A string with that label already exists"
 argument_list|)
 argument_list|,
 name|Localization
@@ -1829,7 +1841,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 else|else
 block|{
@@ -2029,7 +2040,6 @@ name|int
 name|col
 parameter_list|)
 block|{
-comment|// @formatter:off
 return|return
 name|col
 operator|==
@@ -2049,7 +2059,6 @@ argument_list|(
 literal|"Content"
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -2327,7 +2336,6 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2353,7 +2361,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return;
 block|}
 if|if
@@ -2366,7 +2373,6 @@ literal|"#"
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2392,7 +2398,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return;
 block|}
 if|if
@@ -2405,7 +2410,6 @@ literal|" "
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2431,7 +2435,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return;
 block|}
 try|try
@@ -2501,7 +2504,6 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2512,7 +2514,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"A string with this label already exists"
+literal|"A string with that label already exists"
 argument_list|)
 argument_list|,
 name|Localization
@@ -2527,7 +2529,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 block|}
 block|}
@@ -2702,7 +2703,6 @@ comment|// keystroke. This makes the content hang on the screen.
 name|assureNotEditing
 argument_list|()
 expr_stmt|;
-comment|// @formatter:off
 name|String
 name|msg
 init|=
@@ -2772,7 +2772,6 @@ operator|.
 name|QUESTION_MESSAGE
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 if|if
 condition|(
 name|answer

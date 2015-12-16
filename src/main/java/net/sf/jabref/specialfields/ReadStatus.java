@@ -111,7 +111,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|// @formatter:off
 name|values
 operator|.
 name|add
@@ -231,7 +230,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 name|this
 operator|.
 name|setValues

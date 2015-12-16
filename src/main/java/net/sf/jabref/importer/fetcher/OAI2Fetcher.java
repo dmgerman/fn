@@ -1389,8 +1389,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Processing "
+literal|"Processing"
 argument_list|)
+operator|+
+literal|" "
 operator|+
 name|key
 argument_list|)

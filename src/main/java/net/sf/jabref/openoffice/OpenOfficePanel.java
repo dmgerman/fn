@@ -142,6 +142,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|keyboard
+operator|.
+name|KeyBinding
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|worker
 operator|.
 name|AbstractWorker
@@ -177,22 +193,6 @@ operator|.
 name|help
 operator|.
 name|HelpAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|keyboard
-operator|.
-name|KeyBinds
 import|;
 end_import
 
@@ -2830,11 +2830,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|REFRESH_OO
 argument_list|)
@@ -3589,17 +3590,44 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Could not connect to running OpenOffice.\n"
+literal|"Could not connect to running OpenOffice."
+argument_list|)
 operator|+
-literal|"Make sure you have installed OpenOffice with Java support.\nIf connecting manually, please verify program and library paths.\n"
+literal|"\n"
 operator|+
-literal|"\nError message: "
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Make sure you have installed OpenOffice with Java support."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"If connecting manually, please verify program and library paths."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error message:"
+argument_list|)
+operator|+
+literal|" "
 operator|+
 name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4256,7 +4284,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;

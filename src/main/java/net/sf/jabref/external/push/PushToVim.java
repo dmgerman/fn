@@ -431,7 +431,6 @@ return|return;
 block|}
 try|try
 block|{
-comment|// @formatter:off
 name|String
 index|[]
 name|com
@@ -468,7 +467,6 @@ operator|+
 literal|"}"
 block|}
 decl_stmt|;
-comment|// @formatter:on
 specifier|final
 name|Process
 name|p
@@ -651,7 +649,6 @@ condition|(
 name|couldNotConnect
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -721,7 +718,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// formatter:on
 block|}
 else|else
 block|{

@@ -101,7 +101,6 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// lab.setName("i");
-comment|// @formatter:off
 name|values
 operator|.
 name|add
@@ -133,7 +132,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 comment|// DO NOT TRANSLATE "rank1" etc. as this makes the .bib files non portable
 name|values
 operator|.

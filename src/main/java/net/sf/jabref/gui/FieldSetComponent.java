@@ -454,7 +454,6 @@ name|boolean
 name|forceLowerCase
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|this
 argument_list|(
 name|title
@@ -482,7 +481,6 @@ argument_list|,
 name|forceLowerCase
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 comment|/**      * Creates a new instance of FieldSetComponent without preset selection      * values. Replaces the JComboBox with a JTextField.      */
 DECL|method|FieldSetComponent (String title, List<String> fields, boolean arrows, boolean forceLowerCase)
@@ -504,7 +502,6 @@ name|boolean
 name|forceLowerCase
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|this
 argument_list|(
 name|title
@@ -532,7 +529,6 @@ argument_list|,
 name|forceLowerCase
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 DECL|method|FieldSetComponent (String title, List<String> fields, List<String> preset, String addText, String removeText, boolean arrows, boolean forceLowerCase)
 specifier|private

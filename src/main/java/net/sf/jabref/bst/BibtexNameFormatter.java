@@ -1100,7 +1100,6 @@ name|noDisTie
 init|=
 literal|false
 decl_stmt|;
-comment|// @formatter:off
 if|if
 condition|(
 operator|(
@@ -1201,7 +1200,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// @formatter:on
 block|}
 block|}
 elseif|else

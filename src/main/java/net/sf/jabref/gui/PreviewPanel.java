@@ -294,11 +294,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|search
+name|keyboard
 operator|.
-name|SearchTextListener
+name|KeyBinding
 import|;
 end_import
 
@@ -310,11 +310,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|keyboard
+name|search
 operator|.
-name|KeyBinds
+name|SearchTextListener
 import|;
 end_import
 
@@ -1072,11 +1072,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1101,11 +1102,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|PRINT_ENTRY_PREVIEW
 argument_list|)
@@ -1773,14 +1775,14 @@ name|Action
 operator|.
 name|ACCELERATOR_KEY
 argument_list|,
-name|JabRefPreferences
+name|Globals
 operator|.
-name|getInstance
+name|getKeyPrefs
 argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|PRINT_ENTRY_PREVIEW
 argument_list|)

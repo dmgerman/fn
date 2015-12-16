@@ -882,7 +882,6 @@ argument_list|(
 literal|"bad format"
 argument_list|)
 throw|;
-comment|// JZTODO lyrics
 block|}
 name|level
 operator|=

@@ -252,7 +252,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -566,11 +566,12 @@ name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|OPEN_DATABASE
 argument_list|)
@@ -1316,12 +1317,7 @@ operator|.
 name|lang
 argument_list|(
 literal|"An autosave file was found for this database. This could indicate "
-argument_list|)
 operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"that JabRef didn't shut down cleanly last time the file was used."
 argument_list|)
 operator|+

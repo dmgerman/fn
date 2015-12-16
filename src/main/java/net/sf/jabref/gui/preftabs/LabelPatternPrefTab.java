@@ -1029,6 +1029,8 @@ name|super
 operator|.
 name|setValues
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getKeyPattern

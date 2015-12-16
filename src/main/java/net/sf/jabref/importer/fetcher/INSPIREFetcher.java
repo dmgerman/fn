@@ -614,8 +614,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from Inspire: "
+literal|"Error while fetching from Inspire:"
 argument_list|)
+operator|+
+literal|" "
 operator|+
 name|e
 operator|.

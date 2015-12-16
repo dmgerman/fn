@@ -54,7 +54,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -386,7 +386,6 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-comment|// @formatter:off
 operator|(
 name|add
 condition|?
@@ -419,7 +418,6 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-comment|// formatter:on
 name|ok
 operator|=
 operator|new
@@ -429,7 +427,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -743,11 +741,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)

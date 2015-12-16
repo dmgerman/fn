@@ -156,7 +156,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -534,7 +534,6 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-comment|// JZTODO lyrics
 name|Localization
 operator|.
 name|lang
@@ -552,7 +551,6 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-comment|// JZTODO lyrics
 name|Localization
 operator|.
 name|lang
@@ -570,7 +568,6 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-comment|// JZTODO lyrics
 name|Localization
 operator|.
 name|lang
@@ -717,7 +714,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1418,7 +1415,6 @@ literal|"Hierarchical context"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// JZTODO lyrics
 name|builderAll
 operator|.
 name|nextLine
@@ -1769,11 +1765,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -2707,13 +2704,13 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Please enter a search term. For example, to search all fields for<b>Smith</b>, enter%c<p>"
+literal|"Please enter a search term. For example, to search all fields for<b>Smith</b>, enter:<p>"
 operator|+
 literal|"<tt>smith</tt><p>"
 operator|+
-literal|"To search the field<b>Author</b> for<b>Smith</b> and the field<b>Title</b> for<b>electrical</b>, enter%c<p>"
+literal|"To search the field<b>Author</b> for<b>Smith</b> and the field<b>Title</b> for<b>electrical</b>, enter:<p>"
 operator|+
-literal|"<tt>author%esmith and title%eelectrical</tt>"
+literal|"<tt>author=smith and title=electrical</tt>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2855,7 +2852,6 @@ name|void
 name|addPreviousEntries
 parameter_list|()
 block|{
-comment|// JZTODO lyrics...
 name|int
 name|i
 init|=
@@ -3141,7 +3137,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The regular expression<b>%0</b> is invalid%c"
+literal|"The regular expression<b>%0</b> is invalid:"
 argument_list|,
 name|StringUtil
 operator|.

@@ -539,7 +539,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// @formatter:off
 name|status
 operator|.
 name|showMessage
@@ -568,7 +567,6 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 return|return
 literal|null

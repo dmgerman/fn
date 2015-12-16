@@ -175,7 +175,6 @@ name|String
 name|getUndoPresentationName
 parameter_list|()
 block|{
-comment|// @formatter:off
 return|return
 name|Localization
 operator|.
@@ -190,10 +189,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"insert string "
+literal|"insert string"
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -203,7 +201,6 @@ name|String
 name|getRedoPresentationName
 parameter_list|()
 block|{
-comment|// @formatter:off
 return|return
 name|Localization
 operator|.
@@ -218,10 +215,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"insert string "
+literal|"insert string"
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override

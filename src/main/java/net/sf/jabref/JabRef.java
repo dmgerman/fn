@@ -2266,7 +2266,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The chosen encoding '%0' could not encode the following characters: "
+literal|"The chosen encoding '%0' could not encode the following characters:"
 argument_list|,
 name|session
 operator|.
@@ -2276,6 +2276,8 @@ operator|.
 name|displayName
 argument_list|()
 argument_list|)
+operator|+
+literal|" "
 operator|+
 name|session
 operator|.
@@ -2849,7 +2851,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The chosen encoding '%0' could not encode the following characters: "
+literal|"The chosen encoding '%0' could not encode the following characters:"
 argument_list|,
 name|session
 operator|.
@@ -2859,6 +2861,8 @@ operator|.
 name|displayName
 argument_list|()
 argument_list|)
+operator|+
+literal|" "
 operator|+
 name|session
 operator|.

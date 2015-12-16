@@ -1584,7 +1584,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The PDF contains one or several bibtex-records.\nDo you want to import these as new entries into the current database?"
+literal|"The PDF contains one or several bibtex-records."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Do you want to import these as new entries into the current database?"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2987,7 +2996,6 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
@@ -3019,7 +3027,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return
 literal|false
 return|;

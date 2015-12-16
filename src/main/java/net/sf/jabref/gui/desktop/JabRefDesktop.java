@@ -456,7 +456,6 @@ name|fieldName
 operator|=
 literal|"pdf"
 expr_stmt|;
-comment|// @formatter:off
 block|}
 elseif|else
 if|if
@@ -500,7 +499,6 @@ argument_list|)
 operator|)
 condition|)
 block|{
-comment|// @formatter:on
 name|fieldName
 operator|=
 literal|"ps"
@@ -1300,7 +1298,6 @@ name|OS_X
 condition|)
 block|{
 comment|// Use "-a<application>" if the app is specified, and just "open<filename>" otherwise:
-comment|// @formatter:off
 name|String
 index|[]
 name|cmd
@@ -1348,7 +1345,6 @@ block|,
 name|filePath
 block|}
 decl_stmt|;
-comment|// @formatter:on
 name|Runtime
 operator|.
 name|getRuntime
@@ -1718,7 +1714,6 @@ argument_list|(
 literal|"Unable to open file."
 argument_list|)
 decl_stmt|;
-comment|// @formatter:off
 name|String
 index|[]
 name|options
@@ -1754,7 +1749,6 @@ literal|"Cancel"
 argument_list|)
 block|}
 decl_stmt|;
-comment|// @formatter:on
 name|String
 name|defOption
 init|=

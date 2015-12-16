@@ -329,7 +329,6 @@ class|class
 name|MergeEntries
 block|{
 comment|// Headings
-comment|// @formatter:off
 DECL|field|columnHeadings
 specifier|private
 specifier|final
@@ -381,7 +380,6 @@ literal|"Right entry"
 argument_list|)
 block|}
 decl_stmt|;
-comment|// @formatter:on
 DECL|field|DIM
 specifier|private
 specifier|final

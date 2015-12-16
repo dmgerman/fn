@@ -284,6 +284,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinding
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -583,22 +599,6 @@ operator|.
 name|gui
 operator|.
 name|OpenFileFilter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|keyboard
-operator|.
-name|KeyBinds
 import|;
 end_import
 
@@ -3439,11 +3439,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -3932,7 +3933,6 @@ comment|// show a warning, then return
 name|StringBuffer
 name|message
 init|=
-comment|// JZTODO lyrics...
 operator|new
 name|StringBuffer
 argument_list|(
@@ -4032,7 +4032,7 @@ comment|// return true; // this is not undesired
 comment|// for (int i = 0; i< GUIGlobals.ALL_FIELDS.length; ++i) {
 comment|// if (field.equals(GUIGlobals.ALL_FIELDS[i])) {
 comment|// // show a warning, then return
-comment|// String message = Globals // JZTODO lyrics...
+comment|// String message = Globals ...
 comment|// .lang(
 comment|// "This action will modify the \"%0\" field "
 comment|// + "of your entries.\nThis could cause undesired changes to "

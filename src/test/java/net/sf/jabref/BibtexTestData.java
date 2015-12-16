@@ -130,7 +130,6 @@ name|BibDatabase
 name|getBibtexDatabase
 parameter_list|()
 block|{
-comment|// @formatter:off
 name|StringReader
 name|reader
 init|=
@@ -168,7 +167,6 @@ operator|+
 literal|"}"
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 name|BibtexParser
 name|parser
 init|=
