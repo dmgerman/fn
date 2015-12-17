@@ -990,6 +990,12 @@ argument_list|(
 name|newEditor
 argument_list|)
 expr_stmt|;
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
 name|table
 operator|.
 name|ensureVisible
@@ -998,6 +1004,7 @@ name|table
 operator|.
 name|getSelectedRow
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

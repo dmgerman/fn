@@ -1657,6 +1657,12 @@ name|void
 name|scrollToTop
 parameter_list|()
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
 name|scrollPane
 operator|.
 name|getVerticalScrollBar
@@ -1665,6 +1671,7 @@ operator|.
 name|setValue
 argument_list|(
 literal|0
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
