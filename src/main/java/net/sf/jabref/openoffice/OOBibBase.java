@@ -1081,8 +1081,6 @@ operator|instanceof
 name|URLClassLoader
 condition|)
 block|{
-try|try
-init|(
 name|URLClassLoader
 name|cl
 init|=
@@ -1090,8 +1088,7 @@ operator|(
 name|URLClassLoader
 operator|)
 name|loader
-init|)
-block|{
+decl_stmt|;
 name|Class
 argument_list|<
 name|URLClassLoader
@@ -1102,6 +1099,8 @@ name|URLClassLoader
 operator|.
 name|class
 decl_stmt|;
+try|try
+block|{
 name|Method
 name|method
 init|=
