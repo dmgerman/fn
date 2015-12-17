@@ -1627,28 +1627,8 @@ name|revalidate
 argument_list|()
 expr_stmt|;
 comment|// Scroll to top:
-specifier|final
-name|JScrollBar
-name|bar
-init|=
-name|scrollPane
-operator|.
-name|getVerticalScrollBar
+name|scrollToTop
 argument_list|()
-decl_stmt|;
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
-name|bar
-operator|.
-name|setValue
-argument_list|(
-literal|0
-argument_list|)
-argument_list|)
 expr_stmt|;
 comment|// update pdf preview
 name|pdfPreviewPanel
@@ -1668,6 +1648,23 @@ argument_list|(
 literal|null
 argument_list|)
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|scrollToTop ()
+specifier|private
+name|void
+name|scrollToTop
+parameter_list|()
+block|{
+name|scrollPane
+operator|.
+name|getVerticalScrollBar
+argument_list|()
+operator|.
+name|setValue
+argument_list|(
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
