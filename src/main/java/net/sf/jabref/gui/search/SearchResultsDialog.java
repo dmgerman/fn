@@ -144,37 +144,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Objects
+name|*
 import|;
 end_import
 
@@ -1658,25 +1628,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Remove all entries from the table.      */
-DECL|method|clear ()
-specifier|public
-specifier|synchronized
-name|void
-name|clear
-parameter_list|()
-block|{
-name|entries
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|entryHome
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-block|}
 comment|/**      * Set up the comparators for each column, so the user can modify sort order      * by clicking the column labels.      * @param comparatorChooser The comparator chooser controlling the sort order.      */
 DECL|method|setupComparatorChooser (TableComparatorChooser<BibEntry> comparatorChooser)
 specifier|private
@@ -2016,16 +1967,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Add a list of entries to the table.      * @param newEntries The list of entries.      * @param panel A reference to the BasePanel where the entries belong.      */
-DECL|method|addEntries (java.util.List<BibEntry> newEntries, BasePanel panel)
+DECL|method|addEntries (List<BibEntry> newEntries, BasePanel panel)
 specifier|public
-specifier|synchronized
 name|void
 name|addEntries
 parameter_list|(
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|BibEntry
@@ -2055,8 +2001,7 @@ block|}
 block|}
 comment|/**      * Add a single entry to the table.      * @param entry The entry to add.      * @param panel A reference to the BasePanel where the entry belongs.      */
 DECL|method|addEntry (BibEntry entry, BasePanel panel)
-specifier|public
-specifier|synchronized
+specifier|private
 name|void
 name|addEntry
 parameter_list|(
