@@ -4556,8 +4556,10 @@ name|hasWarnings
 argument_list|()
 condition|)
 block|{
+name|ArrayList
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|wrns
 init|=
 name|pr
@@ -4591,7 +4593,8 @@ name|MAX_DIALOG_WARNINGS
 argument_list|,
 name|wrns
 operator|.
-name|length
+name|size
+argument_list|()
 argument_list|)
 condition|;
 name|j
@@ -4615,9 +4618,11 @@ operator|.
 name|append
 argument_list|(
 name|wrns
-index|[
+operator|.
+name|get
+argument_list|(
 name|j
-index|]
+argument_list|)
 argument_list|)
 operator|.
 name|append
@@ -4630,7 +4635,8 @@ if|if
 condition|(
 name|wrns
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 name|JabRef
 operator|.
@@ -4660,7 +4666,8 @@ name|valueOf
 argument_list|(
 name|wrns
 operator|.
-name|length
+name|size
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)
@@ -5141,8 +5148,10 @@ name|hasWarnings
 argument_list|()
 condition|)
 block|{
+name|ArrayList
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|warn
 init|=
 name|pr

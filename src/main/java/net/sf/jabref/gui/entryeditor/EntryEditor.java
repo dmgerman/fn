@@ -5385,9 +5385,11 @@ name|parserResult
 operator|.
 name|warnings
 argument_list|()
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 argument_list|)
 throw|;
 block|}

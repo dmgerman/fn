@@ -1946,8 +1946,10 @@ argument_list|()
 condition|)
 block|{
 specifier|final
+name|ArrayList
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|warnings
 init|=
 name|result
@@ -1990,7 +1992,8 @@ name|i
 operator|<
 name|warnings
 operator|.
-name|length
+name|size
+argument_list|()
 condition|;
 name|i
 operator|++
@@ -2013,9 +2016,11 @@ operator|.
 name|append
 argument_list|(
 name|warnings
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 argument_list|)
 operator|.
 name|append

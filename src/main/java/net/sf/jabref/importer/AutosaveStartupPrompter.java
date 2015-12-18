@@ -650,8 +650,10 @@ name|hasWarnings
 argument_list|()
 condition|)
 block|{
+name|ArrayList
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|wrns
 init|=
 name|pr
@@ -677,7 +679,8 @@ name|j
 operator|<
 name|wrns
 operator|.
-name|length
+name|size
+argument_list|()
 condition|;
 name|j
 operator|++
@@ -700,9 +703,11 @@ operator|.
 name|append
 argument_list|(
 name|wrns
-index|[
+operator|.
+name|get
+argument_list|(
 name|j
-index|]
+argument_list|)
 argument_list|)
 operator|.
 name|append
