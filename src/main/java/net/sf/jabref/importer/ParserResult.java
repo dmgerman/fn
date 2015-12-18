@@ -44,6 +44,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|ArrayList
 import|;
 end_import
@@ -214,7 +224,7 @@ decl_stmt|;
 DECL|field|warnings
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -228,7 +238,7 @@ decl_stmt|;
 DECL|field|duplicateKeys
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -511,7 +521,7 @@ return|;
 block|}
 DECL|method|warnings ()
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -519,7 +529,12 @@ name|warnings
 parameter_list|()
 block|{
 return|return
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|warnings
+argument_list|)
 return|;
 block|}
 comment|/**      * Add a key to the list of duplicated BibTeX keys found in the database.      *      * @param key The duplicated key      */
