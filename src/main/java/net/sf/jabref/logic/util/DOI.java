@@ -88,6 +88,18 @@ name|java
 operator|.
 name|util
 operator|.
+name|function
+operator|.
+name|Function
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Matcher
@@ -411,7 +423,10 @@ block|}
 comment|/**      * Return a URI presentation for the DOI      *      * @return an encoded URI representation of the DOI      */
 DECL|method|getURI ()
 specifier|public
+name|Optional
+argument_list|<
 name|URI
+argument_list|>
 name|getURI
 parameter_list|()
 block|{
@@ -441,7 +456,12 @@ literal|null
 argument_list|)
 decl_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|uri
+argument_list|)
 return|;
 block|}
 catch|catch
@@ -463,7 +483,10 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
@@ -478,8 +501,17 @@ return|return
 name|getURI
 argument_list|()
 operator|.
+name|map
+argument_list|(
+name|URI
+operator|::
 name|toASCIIString
-argument_list|()
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 return|;
 block|}
 block|}
