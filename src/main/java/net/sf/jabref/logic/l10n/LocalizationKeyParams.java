@@ -34,6 +34,18 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Matcher
+import|;
+end_import
+
 begin_class
 DECL|class|LocalizationKeyParams
 specifier|public
@@ -161,7 +173,12 @@ literal|"%"
 operator|+
 name|i
 argument_list|,
+name|Matcher
+operator|.
+name|quoteReplacement
+argument_list|(
 name|param
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
