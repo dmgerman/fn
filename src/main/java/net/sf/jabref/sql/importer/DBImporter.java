@@ -235,7 +235,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author ifsteinm.  *  *         Jan 20th Abstract Class to provide main features to import entries from a DB. To insert a new DB it is  *         necessary to extend this class and add the DB name the enum available at  *         net.sf.jabref.sql.DBImporterAndExporterFactory (and to the GUI). This class and its subclasses import  *         database, entries and related stuff from a DB to bib. Each exported database is imported as a new JabRef  *         (bib) database, presented on a new tab  *  */
+comment|/**  * @author ifsteinm.  *<p>  *         Jan 20th Abstract Class to provide main features to import entries from a DB. To insert a new DB it is  *         necessary to extend this class and add the DB name the enum available at  *         net.sf.jabref.sql.DBImporterAndExporterFactory (and to the GUI). This class and its subclasses import  *         database, entries and related stuff from a DB to bib. Each exported database is imported as a new JabRef  *         (bib) database, presented on a new tab  */
 end_comment
 
 begin_class
@@ -305,11 +305,14 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      *      * @param conn Connection object to the database      * @return A ResultSet with column name for the entries table      * @throws SQLException      */
+comment|/**      * @param conn Connection object to the database      * @return A ResultSet with column name for the entries table      * @throws SQLException      */
 DECL|method|readColumnNames (Connection conn)
 specifier|protected
 specifier|abstract
-name|ResultSet
+name|List
+argument_list|<
+name|String
+argument_list|>
 name|readColumnNames
 parameter_list|(
 name|Connection
@@ -318,7 +321,7 @@ parameter_list|)
 throws|throws
 name|SQLException
 function_decl|;
-comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      *         BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
+comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
 DECL|method|performImport (DBStrings dbs, List<String> listOfDBs)
 specifier|public
 name|ArrayList
@@ -522,10 +525,11 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-try|try
-init|(
-name|ResultSet
-name|rsColumns
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|colNames
 init|=
 name|this
 operator|.
@@ -533,26 +537,14 @@ name|readColumnNames
 argument_list|(
 name|conn
 argument_list|)
-init|)
-block|{
-name|ArrayList
-argument_list|<
-name|String
-argument_list|>
-name|colNames
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
 decl_stmt|;
-while|while
-condition|(
-name|rsColumns
-operator|.
+for|for
+control|(
+name|String
 name|next
-argument_list|()
-condition|)
+range|:
+name|colNames
+control|)
 block|{
 if|if
 condition|(
@@ -561,12 +553,7 @@ name|columnsNotConsideredForEntries
 operator|.
 name|contains
 argument_list|(
-name|rsColumns
-operator|.
-name|getString
-argument_list|(
-literal|1
-argument_list|)
+name|next
 argument_list|)
 condition|)
 block|{
@@ -574,24 +561,11 @@ name|colNames
 operator|.
 name|add
 argument_list|(
-name|rsColumns
-operator|.
-name|getString
-argument_list|(
-literal|1
-argument_list|)
+name|next
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|rsColumns
-operator|.
-name|getStatement
-argument_list|()
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 name|String
 name|database_id
 init|=
@@ -935,7 +909,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 name|rsDatabase
 operator|.
 name|close
@@ -952,7 +925,7 @@ name|result
 return|;
 block|}
 block|}
-comment|/**      * Look up the group type name from the type ID in the database.      *      * @param groupId The database's groups id      * @param conn The database connection      *      * @return The name (JabRef type id) of the group type.      * @throws SQLException      */
+comment|/**      * Look up the group type name from the type ID in the database.      *      * @param groupId The database's groups id      * @param conn    The database connection      * @return The name (JabRef type id) of the group type.      * @throws SQLException      */
 DECL|method|findGroupTypeName (String groupId, Connection conn)
 specifier|private
 name|String
