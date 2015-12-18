@@ -812,9 +812,7 @@ block|}
 comment|// Before returning the database, update entries with unknown type
 comment|// based on parsed type definitions, if possible.
 name|checkEntryTypes
-argument_list|(
-name|parserResult
-argument_list|)
+argument_list|()
 expr_stmt|;
 comment|// Instantiate meta data:
 name|parserResult
@@ -4020,14 +4018,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|checkEntryTypes (ParserResult result)
+DECL|method|checkEntryTypes ()
 specifier|private
 name|void
 name|checkEntryTypes
-parameter_list|(
-name|ParserResult
-name|result
-parameter_list|)
+parameter_list|()
 block|{
 for|for
 control|(
@@ -4089,7 +4084,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|result
+name|parserResult
 operator|.
 name|addWarning
 argument_list|(
