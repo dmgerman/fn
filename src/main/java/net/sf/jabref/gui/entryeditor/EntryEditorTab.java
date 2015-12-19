@@ -1202,11 +1202,6 @@ name|parent
 operator|.
 name|getExtra
 argument_list|(
-name|fields
-index|[
-name|i
-index|]
-argument_list|,
 name|fieldEditor
 argument_list|)
 decl_stmt|;
