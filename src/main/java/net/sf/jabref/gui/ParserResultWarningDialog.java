@@ -159,20 +159,6 @@ argument_list|(
 name|jabRefFrame
 argument_list|)
 expr_stmt|;
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|maxWarnings
-argument_list|)
-expr_stmt|;
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
-name|dataBaseNumber
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|parserResult
@@ -184,7 +170,7 @@ block|{
 if|if
 condition|(
 name|dataBaseNumber
-operator|<
+operator|>=
 literal|0
 condition|)
 block|{
@@ -201,7 +187,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|wrns
+name|warnings
 init|=
 name|parserResult
 operator|.
@@ -209,7 +195,7 @@ name|warnings
 argument_list|()
 decl_stmt|;
 name|StringBuilder
-name|wrn
+name|dialogContent
 init|=
 operator|new
 name|StringBuilder
@@ -230,7 +216,7 @@ name|min
 argument_list|(
 name|maxWarnings
 argument_list|,
-name|wrns
+name|warnings
 operator|.
 name|size
 argument_list|()
@@ -240,7 +226,7 @@ name|j
 operator|++
 control|)
 block|{
-name|wrn
+name|dialogContent
 operator|.
 name|append
 argument_list|(
@@ -256,7 +242,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|wrns
+name|warnings
 operator|.
 name|get
 argument_list|(
@@ -272,7 +258,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|wrns
+name|warnings
 operator|.
 name|size
 argument_list|()
@@ -280,14 +266,14 @@ operator|>
 name|maxWarnings
 condition|)
 block|{
-name|wrn
+name|dialogContent
 operator|.
 name|append
 argument_list|(
 literal|"... "
 argument_list|)
 expr_stmt|;
-name|wrn
+name|dialogContent
 operator|.
 name|append
 argument_list|(
@@ -301,7 +287,7 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-name|wrns
+name|warnings
 operator|.
 name|size
 argument_list|()
@@ -313,7 +299,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|wrn
+name|dialogContent
 operator|.
 name|length
 argument_list|()
@@ -321,11 +307,11 @@ operator|>
 literal|0
 condition|)
 block|{
-name|wrn
+name|dialogContent
 operator|.
 name|deleteCharAt
 argument_list|(
-name|wrn
+name|dialogContent
 operator|.
 name|length
 argument_list|()
@@ -392,7 +378,7 @@ name|showMessageDialog
 argument_list|(
 name|jabRefFrame
 argument_list|,
-name|wrn
+name|dialogContent
 operator|.
 name|toString
 argument_list|()
