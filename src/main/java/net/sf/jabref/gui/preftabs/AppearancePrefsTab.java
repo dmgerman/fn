@@ -74,6 +74,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -659,7 +669,10 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|Optional
+argument_list|<
 name|Font
+argument_list|>
 name|f
 init|=
 operator|new
@@ -678,13 +691,17 @@ decl_stmt|;
 if|if
 condition|(
 name|f
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|font
 operator|=
 name|f
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 block|}
 block|}
