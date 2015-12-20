@@ -775,9 +775,8 @@ name|tr
 operator|.
 name|name
 return|;
-case|case
-literal|1
-case|:
+default|default:
+comment|// Only two columns
 return|return
 name|tr
 operator|.
@@ -797,10 +796,6 @@ else|:
 literal|""
 return|;
 block|}
-return|return
-literal|null
-return|;
-comment|// Unreachable.
 block|}
 annotation|@
 name|Override

@@ -1654,9 +1654,8 @@ argument_list|(
 literal|"MIME type"
 argument_list|)
 return|;
-case|case
-literal|4
-case|:
+default|default:
+comment|// Five columns
 return|return
 name|Localization
 operator|.
@@ -1664,10 +1663,6 @@ name|lang
 argument_list|(
 literal|"Application"
 argument_list|)
-return|;
-default|default:
-return|return
-literal|null
 return|;
 block|}
 block|}
@@ -1772,18 +1767,13 @@ operator|.
 name|getMimeType
 argument_list|()
 return|;
-case|case
-literal|4
-case|:
+default|default:
+comment|// Five columns
 return|return
 name|type
 operator|.
 name|getOpenWith
 argument_list|()
-return|;
-default|default:
-return|return
-literal|null
 return|;
 block|}
 block|}
