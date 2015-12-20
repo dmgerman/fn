@@ -844,12 +844,12 @@ literal|null
 operator|)
 operator|&&
 operator|!
-literal|""
-operator|.
-name|equals
-argument_list|(
+operator|(
 name|old
-argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
 condition|)
 block|{
 name|FileListTableModel

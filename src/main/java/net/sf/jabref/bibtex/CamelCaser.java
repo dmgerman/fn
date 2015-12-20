@@ -455,12 +455,10 @@ operator|==
 literal|null
 operator|)
 operator|||
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|fieldName
-argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return
