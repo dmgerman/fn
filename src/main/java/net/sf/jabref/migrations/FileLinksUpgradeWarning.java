@@ -224,7 +224,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|Util
+name|CleanupUtil
 import|;
 end_import
 
@@ -965,7 +965,7 @@ comment|// Update file links links in the database:
 name|NamedCompound
 name|ce
 init|=
-name|Util
+name|CleanupUtil
 operator|.
 name|upgradePdfPsToFile
 argument_list|(
