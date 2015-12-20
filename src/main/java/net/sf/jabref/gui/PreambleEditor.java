@@ -204,12 +204,6 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|prefs
-specifier|private
-specifier|final
-name|JabRefPreferences
-name|prefs
-decl_stmt|;
 DECL|field|ed
 specifier|private
 name|FieldEditor
@@ -248,12 +242,6 @@ operator|.
 name|base
 operator|=
 name|base
-expr_stmt|;
-name|this
-operator|.
-name|prefs
-operator|=
-name|prefs
 expr_stmt|;
 name|addWindowListener
 argument_list|(

@@ -560,12 +560,6 @@ specifier|final
 name|BibDatabase
 name|base
 decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|panel
 specifier|private
 specifier|final
@@ -595,7 +589,7 @@ specifier|private
 name|PositionWindow
 name|pw
 decl_stmt|;
-DECL|method|StringDialog (JabRefFrame frame, BasePanel panel, BibDatabase base, JabRefPreferences prefs)
+DECL|method|StringDialog (JabRefFrame frame, BasePanel panel, BibDatabase base)
 specifier|public
 name|StringDialog
 parameter_list|(
@@ -607,21 +601,12 @@ name|panel
 parameter_list|,
 name|BibDatabase
 name|base
-parameter_list|,
-name|JabRefPreferences
-name|prefs
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|frame
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|frame
-operator|=
-name|frame
 expr_stmt|;
 name|this
 operator|.
