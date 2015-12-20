@@ -62,6 +62,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Vector
 import|;
 end_import
@@ -2363,7 +2373,10 @@ argument_list|)
 condition|)
 block|{
 comment|// But they have nonmatching contents, so we've found a change.
+name|Optional
+argument_list|<
 name|BibtexString
+argument_list|>
 name|mem
 init|=
 name|findString
@@ -2381,8 +2394,9 @@ decl_stmt|;
 if|if
 condition|(
 name|mem
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|changes
@@ -2393,6 +2407,9 @@ operator|new
 name|StringChange
 argument_list|(
 name|mem
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|tmp
 argument_list|,
@@ -2402,6 +2419,9 @@ name|getName
 argument_list|()
 argument_list|,
 name|mem
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getContent
 argument_list|()
@@ -2708,7 +2728,10 @@ argument_list|(
 name|nmId
 argument_list|)
 decl_stmt|;
+name|Optional
+argument_list|<
 name|BibtexString
+argument_list|>
 name|mem
 init|=
 name|findString
@@ -2726,8 +2749,9 @@ decl_stmt|;
 if|if
 condition|(
 name|mem
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 comment|// The removed string is not removed from the mem version.
@@ -2743,6 +2767,9 @@ argument_list|,
 name|tmp
 argument_list|,
 name|mem
+operator|.
+name|get
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2808,7 +2835,10 @@ block|}
 DECL|method|findString (BibDatabase base, String name, HashSet<Object> used)
 specifier|private
 specifier|static
+name|Optional
+argument_list|<
 name|BibtexString
+argument_list|>
 name|findString
 parameter_list|(
 name|BibDatabase
@@ -2836,7 +2866,10 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 for|for
@@ -2889,12 +2922,20 @@ name|key
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|bs
+argument_list|)
 return|;
 block|}
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 comment|/**      * This method only detects whether a change took place or not. It does not determine the type of change. This would      * be possible, but difficult to do properly, so I rather only report the change.      */
