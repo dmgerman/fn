@@ -24,16 +24,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|BufferedReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -75,18 +65,6 @@ operator|.
 name|util
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
 import|;
 end_import
 
@@ -446,7 +424,7 @@ name|parse
 argument_list|()
 return|;
 block|}
-comment|/**      * Parses BibtexEntries from the given string and returns the collection of all entries found.      *      * @param bibtexString      * @return Returns null if an error occurred, returns an empty collection if no entries where found.      */
+comment|/**      * Parses BibtexEntries from the given string and returns the collection of all entries found.      *      * @param bibtexString      * @return Returns returns an empty collection if no entries where found or if an error occurred.      */
 DECL|method|fromString (String bibtexString)
 specifier|public
 specifier|static
@@ -500,7 +478,10 @@ name|e
 parameter_list|)
 block|{
 return|return
-literal|null
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 return|;
 block|}
 block|}
@@ -556,79 +537,7 @@ name|next
 argument_list|()
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
-DECL|method|isRecognizedFormat (Reader reader)
-specifier|public
-specifier|static
-name|boolean
-name|isRecognizedFormat
-parameter_list|(
-name|Reader
-name|reader
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-comment|// Our strategy is to look for the "@<type>    {" line.
-name|BufferedReader
-name|in
-init|=
-operator|new
-name|BufferedReader
-argument_list|(
-name|reader
-argument_list|)
-decl_stmt|;
-name|Pattern
-name|formatPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"@[a-zA-Z]*\\s*\\{"
-argument_list|)
-decl_stmt|;
-name|String
-name|bibtexString
-decl_stmt|;
-while|while
-condition|(
-operator|(
-name|bibtexString
-operator|=
-name|in
-operator|.
-name|readLine
-argument_list|()
-operator|)
-operator|!=
-literal|null
-condition|)
-block|{
-if|if
-condition|(
-name|formatPattern
-operator|.
-name|matcher
-argument_list|(
-name|bibtexString
-argument_list|)
-operator|.
-name|find
-argument_list|()
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-block|}
-return|return
-literal|false
-return|;
-block|}
-comment|/**      * Will parse the BibTex-Data found when reading from reader.      *<p>      * The reader will be consumed.      *<p>      * Multiple calls to parse() return the same results      *      * @return ParserResult      * @throws IOException      */
+comment|/**      * Will parse the BibTex-Data found when reading from reader. Ignores any encoding supplied in the file by      * "Encoding: myEncoding".      *<p>      * The reader will be consumed.      *<p>      * Multiple calls to parse() return the same results      *      * @return ParserResult      * @throws IOException      */
 DECL|method|parse ()
 specifier|public
 name|ParserResult
@@ -2346,7 +2255,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IOException
 argument_list|(
 literal|"Error in line "
 operator|+
@@ -2383,7 +2292,7 @@ name|key
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*                  *                  * The following code doesn't handle {"} correctly: // value is                  * a string consume('"');                  *                  * while (!((peek() == '"')&& (j != '\\'))) { j = read(); if                  * (_eof || (j == -1) || (j == 65535)) { throw new                  * RuntimeException("Error in line "+line+ ": EOF in                  * mid-string"); }                  *                  * value.append((char) j); }                  *                  * consume('"');                  */
+comment|/*                  *                  * The following code doesn't handle {"} correctly: // value is                  * a string consume('"');                  *                  * while (!((peek() == '"')&& (j != '\\'))) { j = read(); if                  * (_eof || (j == -1) || (j == 65535)) { throw new                  * IOException("Error in line "+line+ ": EOF in                  * mid-string"); }                  *                  * value.append((char) j); }                  *                  * consume('"');                  */
 block|}
 elseif|else
 if|if
@@ -3583,7 +3492,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IOException
 argument_list|(
 literal|"Error in line "
 operator|+
@@ -3775,7 +3684,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IOException
 argument_list|(
 literal|"Error in line "
 operator|+
@@ -3889,7 +3798,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IOException
 argument_list|(
 literal|"Error in line "
 operator|+
@@ -3969,7 +3878,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IOException
 argument_list|(
 literal|"Error in line "
 operator|+
@@ -4090,7 +3999,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IOException
 argument_list|(
 literal|"Error in line "
 operator|+
@@ -4111,13 +4020,13 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|checkEntryTypes (ParserResult parserResult)
+DECL|method|checkEntryTypes (ParserResult result)
 specifier|private
 name|void
 name|checkEntryTypes
 parameter_list|(
 name|ParserResult
-name|parserResult
+name|result
 parameter_list|)
 block|{
 for|for
@@ -4180,7 +4089,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|parserResult
+name|result
 operator|.
 name|addWarning
 argument_list|(

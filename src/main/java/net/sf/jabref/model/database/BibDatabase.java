@@ -1007,7 +1007,7 @@ return|return
 name|preamble
 return|;
 block|}
-comment|/**      * Inserts a Bibtex String at the given index.      */
+comment|/**      * Inserts a Bibtex String.      */
 DECL|method|addString (BibtexString string)
 specifier|public
 specifier|synchronized
@@ -1073,7 +1073,7 @@ name|string
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes the string at the given index.      */
+comment|/**      * Removes the string with the given id.      */
 DECL|method|removeString (String id)
 specifier|public
 name|void
@@ -1125,14 +1125,14 @@ name|values
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the string at the given index.      */
-DECL|method|getString (String o)
+comment|/**      * Returns the string with the given id.      */
+DECL|method|getString (String id)
 specifier|public
 name|BibtexString
 name|getString
 parameter_list|(
 name|String
-name|o
+name|id
 parameter_list|)
 block|{
 return|return
@@ -1140,7 +1140,7 @@ name|bibtexStrings
 operator|.
 name|get
 argument_list|(
-name|o
+name|id
 argument_list|)
 return|;
 block|}
