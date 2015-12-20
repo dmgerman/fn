@@ -2675,7 +2675,10 @@ block|}
 comment|/**      * getExtra checks the field name against BibtexFields.getFieldExtras(name).      * If the name has an entry, the proper component to be shown is created and      * returned. Otherwise, null is returned. In addition, e.g. listeners can be      * added to the field editor, even if no component is returned.      *      * @param string Field name      * @return Component to show, or null if none.      */
 DECL|method|getExtra (final FieldEditor editor)
 specifier|public
+name|Optional
+argument_list|<
 name|JComponent
+argument_list|>
 name|getExtra
 parameter_list|(
 specifier|final
@@ -3015,7 +3018,10 @@ argument_list|)
 return|;
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 DECL|method|setupSourcePanel ()

@@ -132,6 +132,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -500,7 +510,10 @@ decl_stmt|;
 comment|/**      * Add controls for switching between abbreviated and full journal names.      * If this field also has a FieldContentSelector, we need to combine these.      *      * @param frame      * @param panel      * @param editor      * @param entry      * @param contentSelectors      * @param storeFieldAction      * @return      */
 DECL|method|getJournalExtraComponent (JabRefFrame frame, BasePanel panel, FieldEditor editor, BibEntry entry, HashSet<FieldContentSelector> contentSelectors, StoreFieldAction storeFieldAction)
 specifier|static
+name|Optional
+argument_list|<
 name|JComponent
+argument_list|>
 name|getJournalExtraComponent
 parameter_list|(
 name|JabRefFrame
@@ -745,13 +758,22 @@ name|SOUTH
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|controls
+argument_list|)
 return|;
 block|}
+comment|/**      * Return a "Browse" button for fields with EXTRA_BROWSE      *      * @param frame      * @param fieldEditor      * @param entryEditor      * @return      */
 DECL|method|getBrowseExtraComponent (JabRefFrame frame, FieldEditor fieldEditor, EntryEditor entryEditor)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|JComponent
+argument_list|>
 name|getBrowseExtraComponent
 parameter_list|(
 name|JabRefFrame
@@ -939,12 +961,21 @@ block|}
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|but
+argument_list|)
 return|;
 block|}
+comment|/**      *      * @param frame      * @param panel      * @param fieldEditor      * @param entryEditor      * @param isZip      * @return      */
 DECL|method|getBrowseDocExtraComponent (JabRefFrame frame, BasePanel panel, FieldEditor fieldEditor, EntryEditor entryEditor, Boolean isZip)
 specifier|static
+name|Optional
+argument_list|<
 name|JComponent
+argument_list|>
 name|getBrowseDocExtraComponent
 parameter_list|(
 name|JabRefFrame
@@ -1025,6 +1056,10 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 operator|new
 name|ExternalFilePanel
 argument_list|(
@@ -1046,12 +1081,17 @@ name|off
 argument_list|,
 name|fieldEditor
 argument_list|)
+argument_list|)
 return|;
 block|}
+comment|/**      * Set up a mouse listener for opening an external viewer for with with EXTRA_EXTERNAL      *      * @param fieldEditor      * @param entryEditor      * @return      */
 DECL|method|getExternalExtraComponent (FieldEditor fieldEditor, EntryEditor entryEditor)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|JComponent
+argument_list|>
 name|getExternalExtraComponent
 parameter_list|(
 name|FieldEditor
@@ -1078,13 +1118,20 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
+comment|/**      * Return a dropdown list containing Yes and No for fields with EXTRA_YES_NO      *      * @param fieldEditor      * @param entryEditor      * @return      */
 DECL|method|getYesNoExtraComponent (FieldEditor fieldEditor, EntryEditor entryEditor)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|JComponent
+argument_list|>
 name|getYesNoExtraComponent
 parameter_list|(
 name|FieldEditor
@@ -1168,13 +1215,22 @@ block|}
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|yesno
+argument_list|)
 return|;
 block|}
+comment|/**      * Return a dropdown list with the month names for fields with EXTRA_MONTH      *      * @param fieldEditor      * @param entryEditor      * @return      */
 DECL|method|getMonthExtraComponent (FieldEditor fieldEditor, EntryEditor entryEditor)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|JComponent
+argument_list|>
 name|getMonthExtraComponent
 parameter_list|(
 name|FieldEditor
@@ -1359,13 +1415,22 @@ block|}
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|month
+argument_list|)
 return|;
 block|}
+comment|/**      * Return a button which sets the owner if the field for fields with EXTRA_SET_OWNER      * @param fieldEditor      * @param storeFieldAction      * @return      */
 DECL|method|getSetOwnerExtraComponent (FieldEditor fieldEditor, StoreFieldAction storeFieldAction)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|JComponent
+argument_list|>
 name|getSetOwnerExtraComponent
 parameter_list|(
 name|FieldEditor
@@ -1443,13 +1508,22 @@ block|}
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|button
+argument_list|)
 return|;
 block|}
+comment|/**      * Set up a drop target for URLs for fields with EXTRA_URL      *      * @param fieldEditor      * @param storeFieldAction      * @return      */
 DECL|method|getURLExtraComponent (FieldEditor fieldEditor, StoreFieldAction storeFieldAction)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|JComponent
+argument_list|>
 name|getURLExtraComponent
 parameter_list|(
 name|FieldEditor
@@ -1491,13 +1565,20 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
+comment|/**      * Return a button opening a content selector for fields where one exists      *      * @param frame      * @param panel      * @param editor      * @param contentSelectors      * @param storeFieldAction      * @return      */
 DECL|method|getSelectorExtraComponent (JabRefFrame frame, BasePanel panel, FieldEditor editor, HashSet<FieldContentSelector> contentSelectors, StoreFieldAction storeFieldAction)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|JComponent
+argument_list|>
 name|getSelectorExtraComponent
 parameter_list|(
 name|JabRefFrame
@@ -1574,13 +1655,22 @@ name|ws
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|ws
+argument_list|)
 return|;
 block|}
+comment|/**      * Set up field such that double click inserts the current date      * If isDataPicker is True, a button with a data picker is returned      *      * @param editor      * @param isDatePicker      * @return      */
 DECL|method|getDateTimeExtraComponent (FieldEditor editor, Boolean isDatePicker)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|JComponent
+argument_list|>
 name|getDateTimeExtraComponent
 parameter_list|(
 name|FieldEditor
@@ -1662,16 +1752,24 @@ name|editor
 argument_list|)
 decl_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|datePicker
 operator|.
 name|getDatePicker
 argument_list|()
+argument_list|)
 return|;
 block|}
 else|else
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}

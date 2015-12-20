@@ -122,6 +122,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -1195,7 +1205,10 @@ operator|.
 name|height
 expr_stmt|;
 block|}
+name|Optional
+argument_list|<
 name|JComponent
+argument_list|>
 name|extra
 init|=
 name|parent
@@ -1330,9 +1343,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+operator|(
 name|extra
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
+operator|)
 condition|)
 block|{
 name|builder
@@ -1381,6 +1398,9 @@ operator|.
 name|add
 argument_list|(
 name|extra
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|BorderLayout
 operator|.
