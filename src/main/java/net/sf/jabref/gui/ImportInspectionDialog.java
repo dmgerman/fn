@@ -2599,8 +2599,9 @@ argument_list|()
 argument_list|,
 name|entry
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 operator|)
 operator|||
@@ -2613,8 +2614,9 @@ name|entries
 argument_list|,
 name|entry
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 condition|)
 block|{
@@ -2674,7 +2676,10 @@ comment|/**      * Checks if there are duplicates to the given entry in the Coll
 DECL|method|internalDuplicate (Collection<BibEntry> entriesDupe, BibEntry entry)
 specifier|private
 specifier|static
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|internalDuplicate
 parameter_list|(
 name|Collection
@@ -2718,12 +2723,20 @@ argument_list|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|othEntry
+argument_list|)
 return|;
 block|}
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 comment|/**      * Removes all selected entries from the table. Synchronizes on this.entries      * to prevent conflict with addition of new entries.      */
@@ -5761,7 +5774,10 @@ argument_list|(
 name|row
 argument_list|)
 decl_stmt|;
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|other
 init|=
 name|DuplicateCheck
@@ -5779,8 +5795,9 @@ decl_stmt|;
 if|if
 condition|(
 name|other
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 comment|// This will be true if the duplicate is in the existing
@@ -5796,6 +5813,9 @@ operator|.
 name|this
 argument_list|,
 name|other
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|first
 argument_list|,
@@ -5849,6 +5869,9 @@ operator|.
 name|add
 argument_list|(
 name|other
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Clear duplicate icon, which is controlled by the
@@ -5993,6 +6016,9 @@ operator|.
 name|add
 argument_list|(
 name|other
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Store merged entry for later adding
@@ -6080,8 +6106,9 @@ expr_stmt|;
 if|if
 condition|(
 name|other
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|DuplicateResolverDialog
@@ -6097,6 +6124,9 @@ argument_list|,
 name|first
 argument_list|,
 name|other
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|DuplicateResolverDialog
 operator|.
@@ -6150,6 +6180,9 @@ operator|.
 name|remove
 argument_list|(
 name|other
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|first
@@ -6248,6 +6281,9 @@ operator|.
 name|remove
 argument_list|(
 name|other
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

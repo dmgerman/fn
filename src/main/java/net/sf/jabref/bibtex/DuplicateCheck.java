@@ -86,6 +86,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -1137,7 +1147,10 @@ comment|/**      * Goes through all entries in the given database, and if at lea
 DECL|method|containsDuplicate (BibDatabase database, BibEntry entry)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|containsDuplicate
 parameter_list|(
 name|BibDatabase
@@ -1171,13 +1184,21 @@ argument_list|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|other
+argument_list|)
 return|;
 comment|// Duplicate found.
 block|}
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 comment|// No duplicate found.
 block|}
