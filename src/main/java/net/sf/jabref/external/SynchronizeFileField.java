@@ -695,9 +695,6 @@ name|fieldName
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//final OpenFileFilter off = Util.getFileFilterForField(fieldName);
-comment|//ExternalFilePanel extPan = new ExternalFilePanel(fieldName, panel.metaData(), null, null, off);
-comment|//TextField editor = new TextField(fieldName, "", false);
 name|Set
 argument_list|<
 name|BibEntry
@@ -770,7 +767,6 @@ argument_list|(
 name|r
 argument_list|)
 expr_stmt|;
-comment|/*                 progress += weightAutoSet;                 panel.frame().setProgressBarValue(progress);                  Object old = sel[i].getField(fieldName);                 FileListTableModel tableModel = new FileListTableModel();                 if (old != null)                     tableModel.setContent((String)old);                 Thread t = FileListEditor.autoSetLinks(sel[i], tableModel, null, null);                  if (!tableModel.getStringRepresentation().equals(old)) {                     String toSet = tableModel.getStringRepresentation();                     if (toSet.length() == 0)                         toSet = null;                     ce.addEdit(new UndoableFieldChange(sel[i], fieldName, old, toSet));                     sel[i].setField(fieldName, toSet);                     entriesChanged++;                 }             }    */
 block|}
 name|progress
 operator|+=
@@ -790,7 +786,6 @@ argument_list|(
 name|progress
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Done setting");
 comment|// The following loop checks all external links that are already set.
 if|if
 condition|(

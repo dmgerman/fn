@@ -64,6 +64,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -339,7 +349,10 @@ annotation|@
 name|Override
 DECL|method|createBibtexEntry (File pdfFile)
 specifier|protected
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|createBibtexEntry
 parameter_list|(
 name|File
@@ -356,7 +369,10 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 name|PdfImporter
@@ -425,6 +441,10 @@ operator|==
 literal|1
 assert|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|res
 operator|.
 name|entries
@@ -432,6 +452,7 @@ operator|.
 name|get
 argument_list|(
 literal|0
+argument_list|)
 argument_list|)
 return|;
 comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry);         addEntyDataFromXMP(pdfFile, entry);          if (entry.getField("title") == null) {         	entry.setField("title", pdfFile.getName());         }          return entry;*/

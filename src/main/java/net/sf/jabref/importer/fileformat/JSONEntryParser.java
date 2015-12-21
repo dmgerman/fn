@@ -1190,6 +1190,7 @@ argument_list|(
 literal|"startingPage"
 argument_list|)
 operator|&&
+operator|!
 operator|(
 name|springerJsonEntry
 operator|.
@@ -1198,10 +1199,8 @@ argument_list|(
 literal|"startingPage"
 argument_list|)
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -1214,6 +1213,7 @@ argument_list|(
 literal|"endPage"
 argument_list|)
 operator|&&
+operator|!
 operator|(
 name|springerJsonEntry
 operator|.
@@ -1222,10 +1222,8 @@ argument_list|(
 literal|"endPage"
 argument_list|)
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{

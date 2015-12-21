@@ -2143,7 +2143,7 @@ condition|)
 block|{
 comment|// No or empty owner field?
 comment|// if (entry.getField(Globals.OWNER) == null
-comment|// || ((String) entry.getField(Globals.OWNER)).length() == 0) {
+comment|// || ((String) entry.getField(Globals.OWNER)).isEmpty()) {
 comment|// Set owner field to default value
 name|entry
 operator|.

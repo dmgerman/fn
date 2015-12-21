@@ -133,10 +133,8 @@ operator|||
 operator|(
 name|toShave
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{
@@ -2127,7 +2125,7 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|/*          * if (s.length() == 0) return s; // Protect against ArrayIndexOutOf....          * StringBuffer buf = new StringBuffer();          *          * Matcher mcr = titleCapitalPattern.matcher(s.substring(1)); while          * (mcr.find()) { String replaceStr = mcr.group();          * mcr.appendReplacement(buf, "{" + replaceStr + "}"); }          * mcr.appendTail(buf); return s.substring(0, 1) + buf.toString();          */
+comment|/*          * if (s.isEmpty()) return s; // Protect against ArrayIndexOutOf....          * StringBuffer buf = new StringBuffer();          *          * Matcher mcr = titleCapitalPattern.matcher(s.substring(1)); while          * (mcr.find()) { String replaceStr = mcr.group();          * mcr.appendReplacement(buf, "{" + replaceStr + "}"); }          * mcr.appendTail(buf); return s.substring(0, 1) + buf.toString();          */
 block|}
 comment|/**      * This method looks for occurrences of capital letters enclosed in an      * arbitrary number of pairs of braces, e.g. "{AB}" or "{{T}}". All of these      * pairs of braces are removed.      *      * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
 DECL|method|removeBracesAroundCapitals (String s)

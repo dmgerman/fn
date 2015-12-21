@@ -42,6 +42,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|StringTokenizer
 import|;
 end_import
@@ -198,7 +208,10 @@ block|}
 DECL|method|createBibtexEntry (File f)
 specifier|protected
 specifier|abstract
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|createBibtexEntry
 parameter_list|(
 name|File
@@ -258,7 +271,10 @@ return|return
 literal|null
 return|;
 block|}
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|newEntry
 init|=
 name|createBibtexEntry
@@ -268,9 +284,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+operator|(
 name|newEntry
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
+operator|)
 condition|)
 block|{
 return|return
@@ -285,6 +305,9 @@ block|{
 name|appendToField
 argument_list|(
 name|newEntry
+operator|.
+name|get
+argument_list|()
 argument_list|,
 literal|"keywords"
 argument_list|,
@@ -302,6 +325,9 @@ if|if
 condition|(
 name|newEntry
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getField
 argument_list|(
 literal|"title"
@@ -311,6 +337,9 @@ literal|null
 condition|)
 block|{
 name|newEntry
+operator|.
+name|get
+argument_list|()
 operator|.
 name|setField
 argument_list|(
@@ -326,12 +355,18 @@ block|}
 name|addFileInfo
 argument_list|(
 name|newEntry
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|f
 argument_list|)
 expr_stmt|;
 return|return
 name|newEntry
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 comment|/** Returns the ExternalFileType that is imported here */
