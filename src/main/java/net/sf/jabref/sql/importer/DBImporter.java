@@ -437,6 +437,9 @@ literal|"jabref_database WHERE database_name IN "
 operator|+
 name|jabrefDBs
 argument_list|)
+operator|.
+name|getResultSet
+argument_list|()
 init|)
 block|{
 while|while
@@ -481,6 +484,9 @@ name|conn
 argument_list|,
 literal|"entry_types"
 argument_list|)
+operator|.
+name|getResultSet
+argument_list|()
 init|)
 block|{
 while|while
@@ -607,6 +613,9 @@ name|database_id
 operator|+
 literal|"';"
 argument_list|)
+operator|.
+name|getResultSet
+argument_list|()
 init|)
 block|{
 while|while
@@ -779,6 +788,9 @@ name|database_id
 operator|+
 literal|'\''
 argument_list|)
+operator|.
+name|getResultSet
+argument_list|()
 init|)
 block|{
 while|while
@@ -1034,6 +1046,9 @@ name|database_id
 operator|+
 literal|"' ORDER BY groups_id"
 argument_list|)
+operator|.
+name|getResultSet
+argument_list|()
 init|)
 block|{
 while|while
@@ -1427,6 +1442,9 @@ name|conn
 argument_list|,
 literal|"entry_group"
 argument_list|)
+operator|.
+name|getResultSet
+argument_list|()
 init|)
 block|{
 while|while

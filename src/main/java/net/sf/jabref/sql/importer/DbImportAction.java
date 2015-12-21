@@ -641,6 +641,9 @@ argument_list|)
 init|;                         ResultSet rs = SQLUtil.queryAllFromTable(conn
 operator|,
 init|"jabref_database")
+operator|.
+name|getResultSet
+argument_list|()
 block|)
 block|{
 name|Vector

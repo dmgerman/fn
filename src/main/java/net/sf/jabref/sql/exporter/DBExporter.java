@@ -2892,6 +2892,9 @@ name|conn
 argument_list|,
 literal|"jabref_database"
 argument_list|)
+operator|.
+name|getResultSet
+argument_list|()
 init|)
 block|{
 name|Vector
