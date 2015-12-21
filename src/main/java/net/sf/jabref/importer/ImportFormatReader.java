@@ -237,15 +237,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|BiomailImporter
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|formats
-operator|.
-name|add
-argument_list|(
-operator|new
 name|CopacImporter
 argument_list|()
 argument_list|)
@@ -1721,7 +1712,7 @@ name|parserResult
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Tries to import a file by iterating through the available import filters,      * and keeping the import that seems most promising.      *<p>      * If all fails this method attempts to read this file as bibtex.      *      * @throws IOException      */
+comment|/**      * Tries to import a file by iterating through the available import filters,      * and keeping the import that seems most promising.      *<p/>      * If all fails this method attempts to read this file as bibtex.      *      * @throws IOException      */
 DECL|method|importUnknownFormat (String filename)
 specifier|public
 name|UnknownFormatImport
