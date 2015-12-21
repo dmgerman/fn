@@ -774,10 +774,7 @@ block|{
 if|if
 condition|(
 operator|!
-literal|""
-operator|.
-name|equals
-argument_list|(
+operator|(
 name|lines
 index|[
 name|i
@@ -785,7 +782,10 @@ index|]
 operator|.
 name|trim
 argument_list|()
-argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
 condition|)
 block|{
 name|result

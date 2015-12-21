@@ -1990,10 +1990,14 @@ literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|String
+name|StringBuilder
 name|s
 init|=
+operator|new
+name|StringBuilder
+argument_list|(
 literal|"John von Neumann"
+argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -2023,12 +2027,18 @@ operator|.
 name|size
 argument_list|(
 name|s
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|s
-operator|+=
+operator|.
+name|append
+argument_list|(
 literal|" and Albert Einstein"
+argument_list|)
 expr_stmt|;
 block|}
 block|}

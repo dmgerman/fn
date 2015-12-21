@@ -262,12 +262,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|ids
-argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|ids

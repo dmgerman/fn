@@ -1471,19 +1471,25 @@ block|}
 comment|//finally write whatever remains of the file, but at least a concluding newline
 if|if
 condition|(
+operator|(
 name|database
 operator|.
 name|getEpilog
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|!
+operator|(
 name|database
 operator|.
 name|getEpilog
 argument_list|()
-operator|!=
-literal|""
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
 condition|)
 block|{
 name|writer
