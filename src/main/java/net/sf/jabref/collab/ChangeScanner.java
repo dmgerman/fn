@@ -2728,12 +2728,7 @@ argument_list|(
 name|nmId
 argument_list|)
 decl_stmt|;
-name|Optional
-argument_list|<
-name|BibtexString
-argument_list|>
-name|mem
-init|=
+comment|// The removed string is not removed from the mem version.
 name|findString
 argument_list|(
 name|inMem1
@@ -2745,16 +2740,11 @@ argument_list|()
 argument_list|,
 name|usedInMem
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|mem
 operator|.
-name|isPresent
-argument_list|()
-condition|)
-block|{
-comment|// The removed string is not removed from the mem version.
+name|ifPresent
+argument_list|(
+name|x
+lambda|->
 name|changes
 operator|.
 name|add
@@ -2766,14 +2756,11 @@ name|tmp
 argument_list|,
 name|tmp
 argument_list|,
-name|mem
-operator|.
-name|get
-argument_list|()
+name|x
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|// Finally, see if there are remaining strings in the disk database. They
