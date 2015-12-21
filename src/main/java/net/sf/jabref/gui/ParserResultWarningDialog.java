@@ -159,14 +159,21 @@ argument_list|(
 name|jabRefFrame
 argument_list|)
 expr_stmt|;
+comment|// Return if no warnings
 if|if
 condition|(
+operator|!
+operator|(
 name|parserResult
 operator|.
 name|hasWarnings
 argument_list|()
+operator|)
 condition|)
 block|{
+return|return;
+block|}
+comment|// Switch tab if asked to do so
 if|if
 condition|(
 name|dataBaseNumber
@@ -372,6 +379,7 @@ comment|// ArrayIndexOutOfBoundsException in situations with a large number of
 comment|// warnings; approx. 5000 for the database I opened when I observed the problem
 comment|// (duplicate key warnings). I don't think this is a big problem for normal situations,
 comment|// and it may possibly be a bug in the Swing code.
+comment|// Show dialog
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -390,7 +398,6 @@ operator|.
 name|WARNING_MESSAGE
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class
