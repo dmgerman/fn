@@ -363,15 +363,6 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ScifinderImporter
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|formats
-operator|.
-name|add
-argument_list|(
-operator|new
 name|SilverPlatterImporter
 argument_list|()
 argument_list|)
