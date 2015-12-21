@@ -22,16 +22,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -762,13 +752,13 @@ name|nc
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|importKeywordsForField (ArrayList<String> keywordList, SpecialField c, BibEntry be, NamedCompound nc)
+DECL|method|importKeywordsForField (List<String> keywordList, SpecialField c, BibEntry be, NamedCompound nc)
 specifier|private
 specifier|static
 name|void
 name|importKeywordsForField
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -870,7 +860,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>

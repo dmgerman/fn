@@ -20,7 +20,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|List
 import|;
 end_import
 
@@ -128,7 +128,7 @@ name|keywords
 init|=
 literal|"w1, w2a w2b, w3"
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
