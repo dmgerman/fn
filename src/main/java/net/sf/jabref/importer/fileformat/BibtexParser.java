@@ -608,7 +608,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 expr_stmt|;
-comment|// To store custem entry types parsed.
+comment|// To store custom entry types parsed.
 name|parserResult
 operator|=
 operator|new
@@ -812,9 +812,7 @@ block|}
 comment|// Before returning the database, update entries with unknown type
 comment|// based on parsed type definitions, if possible.
 name|checkEntryTypes
-argument_list|(
-name|parserResult
-argument_list|)
+argument_list|()
 expr_stmt|;
 comment|// Instantiate meta data:
 name|parserResult
@@ -1812,22 +1810,39 @@ argument_list|,
 literal|'('
 argument_list|)
 expr_stmt|;
-comment|// while (read() != '}');
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
-comment|// Util.pr("Parsing string name");
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Parsing string name"
+argument_list|)
+expr_stmt|;
 name|String
 name|name
 init|=
 name|parseTextToken
 argument_list|()
 decl_stmt|;
-comment|// Util.pr("Parsed string name");
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Parsed string name"
+argument_list|)
+expr_stmt|;
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
-comment|// Util.pr("Now the contents");
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Now the contents"
+argument_list|)
+expr_stmt|;
 name|consume
 argument_list|(
 literal|'='
@@ -1841,7 +1856,13 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-comment|// Util.pr("Now I'm going to consume a }");
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Now I'm going to consume a }"
+argument_list|)
+expr_stmt|;
 name|consume
 argument_list|(
 literal|'}'
@@ -1849,7 +1870,13 @@ argument_list|,
 literal|')'
 argument_list|)
 expr_stmt|;
-comment|// Util.pr("Finished string parsing.");
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Finished string parsing."
+argument_list|)
+expr_stmt|;
 name|String
 name|id
 init|=
@@ -4018,14 +4045,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|checkEntryTypes (ParserResult result)
+DECL|method|checkEntryTypes ()
 specifier|private
 name|void
 name|checkEntryTypes
-parameter_list|(
-name|ParserResult
-name|result
-parameter_list|)
+parameter_list|()
 block|{
 for|for
 control|(
@@ -4087,7 +4111,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|result
+name|parserResult
 operator|.
 name|addWarning
 argument_list|(
