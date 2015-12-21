@@ -1959,18 +1959,6 @@ return|return
 name|frame
 return|;
 block|}
-DECL|method|prefs ()
-specifier|public
-name|JabRefPreferences
-name|prefs
-parameter_list|()
-block|{
-return|return
-name|Globals
-operator|.
-name|prefs
-return|;
-block|}
 DECL|method|getEncoding ()
 specifier|public
 name|Charset
@@ -3325,10 +3313,6 @@ operator|.
 name|this
 argument_list|,
 name|database
-argument_list|,
-name|Globals
-operator|.
-name|prefs
 argument_list|)
 decl_stmt|;
 name|form
