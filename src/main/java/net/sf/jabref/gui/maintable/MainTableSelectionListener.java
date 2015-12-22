@@ -633,7 +633,7 @@ operator|.
 name|getSearchBar
 argument_list|()
 operator|.
-name|getSearchTextObservable
+name|getSearchQueryHighlightObservable
 argument_list|()
 operator|.
 name|addSearchListener
@@ -649,7 +649,7 @@ operator|.
 name|getSearchBar
 argument_list|()
 operator|.
-name|getSearchTextObservable
+name|getSearchQueryHighlightObservable
 argument_list|()
 operator|.
 name|addSearchListener

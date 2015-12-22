@@ -142,6 +142,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|print
@@ -314,7 +326,7 @@ name|logic
 operator|.
 name|search
 operator|.
-name|SearchTextListener
+name|SearchQueryHighlightListener
 import|;
 end_import
 
@@ -424,7 +436,7 @@ name|JPanel
 implements|implements
 name|VetoableChangeListener
 implements|,
-name|SearchTextListener
+name|SearchQueryHighlightListener
 implements|,
 name|EntryContainer
 block|{
@@ -538,18 +550,17 @@ specifier|final
 name|CloseAction
 name|closeAction
 decl_stmt|;
-DECL|field|wordsToHighlight
+DECL|field|highlightPattern
 specifier|private
-specifier|final
-name|List
+name|Optional
 argument_list|<
-name|String
+name|Pattern
 argument_list|>
-name|wordsToHighlight
+name|highlightPattern
 init|=
-operator|new
-name|LinkedList
-argument_list|<>
+name|Optional
+operator|.
+name|empty
 argument_list|()
 decl_stmt|;
 comment|/**      * @param database      *            (may be null) Optionally used to resolve strings.      * @param entry      *            (may be null) If given this entry is shown otherwise you have      *            to call setEntry to make something visible.      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      */
@@ -1600,7 +1611,7 @@ argument_list|(
 literal|null
 argument_list|)
 argument_list|,
-name|wordsToHighlight
+name|highlightPattern
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1697,33 +1708,23 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|searchText (List<String> words)
+DECL|method|highlightPattern (Optional<Pattern> highlightPattern)
 specifier|public
 name|void
-name|searchText
+name|highlightPattern
 parameter_list|(
-name|List
+name|Optional
 argument_list|<
-name|String
+name|Pattern
 argument_list|>
-name|words
+name|highlightPattern
 parameter_list|)
 block|{
 name|this
 operator|.
-name|wordsToHighlight
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|wordsToHighlight
-operator|.
-name|addAll
-argument_list|(
-name|words
-argument_list|)
+name|highlightPattern
+operator|=
+name|highlightPattern
 expr_stmt|;
 name|update
 argument_list|()

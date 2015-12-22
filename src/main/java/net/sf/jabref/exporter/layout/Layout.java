@@ -24,6 +24,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Vector
 import|;
 end_import
@@ -85,6 +95,18 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
 import|;
 end_import
 
@@ -663,7 +685,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
-DECL|method|doLayout (BibEntry bibtex, BibDatabase database, List<String> wordsToHighlight)
+DECL|method|doLayout (BibEntry bibtex, BibDatabase database, Optional<Pattern> highlightPattern)
 specifier|public
 name|String
 name|doLayout
@@ -674,11 +696,11 @@ parameter_list|,
 name|BibDatabase
 name|database
 parameter_list|,
-name|List
+name|Optional
 argument_list|<
-name|String
+name|Pattern
 argument_list|>
-name|wordsToHighlight
+name|highlightPattern
 parameter_list|)
 block|{
 name|StringBuilder
@@ -709,7 +731,7 @@ name|bibtex
 argument_list|,
 name|database
 argument_list|,
-name|wordsToHighlight
+name|highlightPattern
 argument_list|)
 decl_stmt|;
 comment|// 2005.05.05 M. Alver

@@ -28,26 +28,48 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
 begin_comment
 comment|/**  * Every Listener that wants to receive events from a search needs to  * implement this interface  *   * @author Ben  *   */
 end_comment
 
 begin_interface
-DECL|interface|SearchTextListener
+DECL|interface|SearchQueryHighlightListener
 specifier|public
 interface|interface
-name|SearchTextListener
+name|SearchQueryHighlightListener
 block|{
-comment|/**      * Array of words that were searched for      *       * @param words null if nothing is searched for      */
-DECL|method|searchText (List<String> words)
+comment|/**      * Pattern with which one can determine what to highlight      *       * @param words null if nothing is searched for      */
+DECL|method|highlightPattern (Optional<Pattern> highlightPattern)
 name|void
-name|searchText
+name|highlightPattern
 parameter_list|(
-name|List
+name|Optional
 argument_list|<
-name|String
+name|Pattern
 argument_list|>
-name|words
+name|highlightPattern
 parameter_list|)
 function_decl|;
 block|}

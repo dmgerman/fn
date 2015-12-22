@@ -46,7 +46,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|*
 import|;
 end_import
 
@@ -56,27 +56,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|regex
 operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
+name|Pattern
 import|;
 end_import
 
@@ -1022,7 +1004,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|doLayout (BibEntry bibtex, BibDatabase database, List<String> wordsToHighlight)
+DECL|method|doLayout (BibEntry bibtex, BibDatabase database, Optional<Pattern> highlightPattern)
 specifier|public
 name|String
 name|doLayout
@@ -1033,11 +1015,11 @@ parameter_list|,
 name|BibDatabase
 name|database
 parameter_list|,
-name|List
+name|Optional
 argument_list|<
-name|String
+name|Pattern
 argument_list|>
-name|wordsToHighlight
+name|highlightPattern
 parameter_list|)
 block|{
 switch|switch
@@ -1506,7 +1488,7 @@ name|highlightWordsWithHTML
 argument_list|(
 name|fieldText
 argument_list|,
-name|wordsToHighlight
+name|highlightPattern
 argument_list|)
 argument_list|)
 expr_stmt|;
