@@ -159,10 +159,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibtexEntryWriter
+DECL|class|BibEntryWriter
 specifier|public
 class|class
-name|BibtexEntryWriter
+name|BibEntryWriter
 block|{
 DECL|field|requiredFieldsSorted
 specifier|private
@@ -365,9 +365,9 @@ operator|.
 name|WRITEFIELD_SORTSTYLE
 argument_list|)
 decl_stmt|;
-DECL|method|BibtexEntryWriter (LatexFieldFormatter fieldFormatter, boolean write)
+DECL|method|BibEntryWriter (LatexFieldFormatter fieldFormatter, boolean write)
 specifier|public
-name|BibtexEntryWriter
+name|BibEntryWriter
 parameter_list|(
 name|LatexFieldFormatter
 name|fieldFormatter
@@ -1719,7 +1719,7 @@ control|(
 name|int
 name|i
 init|=
-name|BibtexEntryWriter
+name|BibEntryWriter
 operator|.
 name|maxFieldLength
 operator|-

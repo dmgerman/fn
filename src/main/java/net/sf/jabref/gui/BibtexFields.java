@@ -2293,45 +2293,6 @@ operator|.
 name|DEFAULT_FIELD_LENGTH
 return|;
 block|}
-comment|// returns an alternative name for the given fieldname
-DECL|method|getFieldDisplayName (String fieldName)
-specifier|public
-specifier|static
-name|String
-name|getFieldDisplayName
-parameter_list|(
-name|String
-name|fieldName
-parameter_list|)
-block|{
-name|BibtexSingleField
-name|sField
-init|=
-name|BibtexFields
-operator|.
-name|getField
-argument_list|(
-name|fieldName
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|sField
-operator|!=
-literal|null
-condition|)
-block|{
-return|return
-name|sField
-operator|.
-name|getAlternativeDisplayName
-argument_list|()
-return|;
-block|}
-return|return
-literal|null
-return|;
-block|}
 DECL|method|isWriteableField (String field)
 specifier|public
 specifier|static
@@ -2600,11 +2561,11 @@ specifier|static
 class|class
 name|BibtexSingleField
 block|{
+DECL|field|STANDARD
 specifier|private
 specifier|static
 specifier|final
 name|int
-DECL|field|STANDARD
 name|STANDARD
 init|=
 literal|0x01
@@ -2861,13 +2822,14 @@ expr_stmt|;
 block|}
 comment|// -----------------------------------------------------------------------
 comment|// -----------------------------------------------------------------------
-DECL|method|setFlag (boolean onOff, int flagID)
+comment|/**          * Sets or onsets the given flag          * @param setToOn if true, set the flag; if false, unset the flat          * @param flagID, the id of the flag          */
+DECL|method|setFlag (boolean setToOn, int flagID)
 specifier|private
 name|void
 name|setFlag
 parameter_list|(
 name|boolean
-name|onOff
+name|setToOn
 parameter_list|,
 name|int
 name|flagID
@@ -2875,10 +2837,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|onOff
+name|setToOn
 condition|)
-comment|// set the flag
 block|{
+comment|// set the flag
 name|flag
 operator|=
 name|flag
@@ -2887,8 +2849,8 @@ name|flagID
 expr_stmt|;
 block|}
 else|else
-comment|// unset the flag,
 block|{
+comment|// unset the flag
 name|flag
 operator|=
 name|flag
@@ -3032,31 +2994,6 @@ name|BibtexSingleField
 operator|.
 name|WRITEABLE
 argument_list|)
-return|;
-block|}
-comment|// -----------------------------------------------------------------------
-DECL|method|setAlternativeDisplayName (String aName)
-specifier|public
-name|void
-name|setAlternativeDisplayName
-parameter_list|(
-name|String
-name|aName
-parameter_list|)
-block|{
-name|alternativeDisplayName
-operator|=
-name|aName
-expr_stmt|;
-block|}
-DECL|method|getAlternativeDisplayName ()
-specifier|public
-name|String
-name|getAlternativeDisplayName
-parameter_list|()
-block|{
-return|return
-name|alternativeDisplayName
 return|;
 block|}
 comment|// -----------------------------------------------------------------------

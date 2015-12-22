@@ -2881,8 +2881,8 @@ argument_list|(
 name|databaseStrings
 argument_list|)
 init|;
-name|ResultSet
-name|rs
+name|Statement
+name|statement
 operator|=
 name|SQLUtil
 operator|.
@@ -2894,6 +2894,14 @@ literal|"jabref_database"
 argument_list|)
 init|)
 block|{
+name|ResultSet
+name|rs
+init|=
+name|statement
+operator|.
+name|getResultSet
+argument_list|()
+decl_stmt|;
 name|Vector
 argument_list|<
 name|String

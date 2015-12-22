@@ -162,7 +162,7 @@ name|jabref
 operator|.
 name|bibtex
 operator|.
-name|BibtexEntryWriter
+name|BibEntryWriter
 import|;
 end_import
 
@@ -395,11 +395,11 @@ name|getSelectedEntries
 argument_list|()
 decl_stmt|;
 comment|// write the entries using sw, which is used later to form the email content
-name|BibtexEntryWriter
+name|BibEntryWriter
 name|bibtexEntryWriter
 init|=
 operator|new
-name|BibtexEntryWriter
+name|BibEntryWriter
 argument_list|(
 operator|new
 name|LatexFieldFormatter

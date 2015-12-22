@@ -129,7 +129,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author pattonlk  *  *         Reestructured by ifsteinm. Jan 20th Now it is possible to export more than one jabref database. BD creation,  *         insertions and queries where reformulated to accomodate the changes. The changes include a refactory on  *         import/export to SQL module, creating many other classes making them more readable This class just support  *         Exporters and Importers  */
+comment|/**  * @author pattonlk  *<p>  *         Reestructured by ifsteinm. Jan 20th Now it is possible to export more than one jabref database. BD creation,  *         insertions and queries where reformulated to accomodate the changes. The changes include a refactory on  *         import/export to SQL module, creating many other classes making them more readable This class just support  *         Exporters and Importers  */
 end_comment
 
 begin_class
@@ -256,7 +256,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *      * @return All existent fields for a bibtex entry      */
+comment|/**      * @return All existent fields for a bibtex entry      */
 DECL|method|getAllFields ()
 specifier|public
 specifier|static
@@ -288,7 +288,7 @@ operator|.
 name|allFields
 return|;
 block|}
-comment|/**      *      * @return Create a common separated field names      */
+comment|/**      * @return Create a common separated field names      */
 DECL|method|getFieldStr ()
 specifier|public
 specifier|static
@@ -454,7 +454,7 @@ return|return
 name|list1
 return|;
 block|}
-comment|/**      * Generates DML specifying table columns and their datatypes. The output of this routine should be used within a      * CREATE TABLE statement.      *      * @param fields Contains unique field names      * @param datatype Specifies the SQL data type that the fields should take on.      * @return The SQL code to be included in a CREATE TABLE statement.      */
+comment|/**      * Generates DML specifying table columns and their datatypes. The output of this routine should be used within a      * CREATE TABLE statement.      *      * @param fields   Contains unique field names      * @param datatype Specifies the SQL data type that the fields should take on.      * @return The SQL code to be included in a CREATE TABLE statement.      */
 DECL|method|fieldsAsCols (ArrayList<String> fields, String datatype)
 specifier|public
 specifier|static
@@ -537,7 +537,7 @@ name|newFields
 argument_list|)
 return|;
 block|}
-comment|/**      *      * @param allFields All existent fields for a given entry type      * @param reqFields list containing required fields for an entry type      * @param optFields list containing optional fields for an entry type      * @param utiFields list containing utility fields for an entry type      * @param origList original list with the correct size filled with the default values for each field      * @return origList changing the values of the fields that appear on reqFields, optFields, utiFields set to 'req',      *         'opt' and 'uti' respectively      */
+comment|/**      * @param allFields All existent fields for a given entry type      * @param reqFields list containing required fields for an entry type      * @param optFields list containing optional fields for an entry type      * @param utiFields list containing utility fields for an entry type      * @param origList  original list with the correct size filled with the default values for each field      * @return origList changing the values of the fields that appear on reqFields, optFields, utiFields set to 'req',      * 'opt' and 'uti' respectively      */
 DECL|method|setFieldRequirement (ArrayList<String> allFields, List<String> reqFields, List<String> optFields, List<String> utiFields, ArrayList<String> origList)
 specifier|public
 specifier|static
@@ -721,11 +721,11 @@ return|return
 name|msg
 return|;
 block|}
-comment|/**      * return a ResultSet with the result of a "SELECT *" query for a given table      *      * @param conn Connection to the database      * @param tableName String containing the name of the table you want to get the results.      * @return a ResultSet with the query result returned from the DB      * @throws SQLException      */
+comment|/**      * return a Statement with the result of a "SELECT *" query for a given table      *      * @param conn      Connection to the database      * @param tableName String containing the name of the table you want to get the results.      * @return a ResultSet with the query result returned from the DB      * @throws SQLException      */
 DECL|method|queryAllFromTable (Connection conn, String tableName)
 specifier|public
 specifier|static
-name|ResultSet
+name|Statement
 name|queryAllFromTable
 parameter_list|(
 name|Connection
@@ -763,9 +763,6 @@ argument_list|)
 decl_stmt|;
 return|return
 name|res
-operator|.
-name|getResultSet
-argument_list|()
 return|;
 block|}
 comment|/**      * Utility method for processing DML with proper output      *      * @param out The output (PrintStream or Connection) object to which the DML should be sent      * @param dml The DML statements to be processed      */
@@ -833,7 +830,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Utility method for processing DML with proper output      *      * @param out The output (PrintStream or Connection) object to which the DML should be sent      * @param query The DML statements to be processed      * @return the result of the statement      */
+comment|/**      * Utility method for processing DML with proper output      *      * @param out   The output (PrintStream or Connection) object to which the DML should be sent      * @param query The DML statements to be processed      * @return the result of the statement      */
 DECL|method|processQueryWithResults (Object out, String query)
 specifier|public
 specifier|static
@@ -960,7 +957,7 @@ return|return
 name|url
 return|;
 block|}
-comment|/**      * Process a query and returns only the first result of a result set as a String. To be used when it is certain that      * only one String (single cell) will be returned from the DB      *      * @param conn The Connection object to which the DML should be sent      * @param query The query statements to be processed      * @return String with the result returned from the database      * @throws SQLException      */
+comment|/**      * Process a query and returns only the first result of a result set as a String. To be used when it is certain that      * only one String (single cell) will be returned from the DB      *      * @param conn  The Connection object to which the DML should be sent      * @param query The query statements to be processed      * @return String with the result returned from the database      * @throws SQLException      */
 DECL|method|processQueryWithSingleResult (Connection conn, String query)
 specifier|public
 specifier|static
@@ -1027,7 +1024,7 @@ name|result
 return|;
 block|}
 block|}
-comment|/**      * Utility method for executing DML      *      * @param conn The DML Connection object that will execute the SQL      * @param qry The DML statements to be executed      */
+comment|/**      * Utility method for executing DML      *      * @param conn The DML Connection object that will execute the SQL      * @param qry  The DML statements to be executed      */
 DECL|method|executeQuery (Connection conn, String qry)
 specifier|private
 specifier|static
@@ -1086,7 +1083,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Utility method for executing DML      *      * @param conn The DML Connection object that will execute the SQL      * @param qry The DML statements to be executed      */
+comment|/**      * Utility method for executing DML      *      * @param conn The DML Connection object that will execute the SQL      * @param qry  The DML statements to be executed      */
 DECL|method|executeQueryWithResults (Connection conn, String qry)
 specifier|private
 specifier|static
@@ -1105,11 +1102,17 @@ block|{
 name|Statement
 name|stmnt
 init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|stmnt
+operator|=
 name|conn
 operator|.
 name|createStatement
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|stmnt
 operator|.
 name|executeQuery
@@ -1143,6 +1146,32 @@ block|}
 return|return
 name|stmnt
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|rethrow
+parameter_list|)
+block|{
+comment|// in case of exception, try to close the statement to avoid a resource leak...
+if|if
+condition|(
+name|stmnt
+operator|!=
+literal|null
+condition|)
+block|{
+name|stmnt
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+comment|//... and rethrow the exception
+throw|throw
+name|rethrow
+throw|;
+block|}
 block|}
 block|}
 end_class

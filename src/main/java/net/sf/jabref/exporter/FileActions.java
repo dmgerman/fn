@@ -250,7 +250,7 @@ name|jabref
 operator|.
 name|bibtex
 operator|.
-name|BibtexEntryWriter
+name|BibEntryWriter
 import|;
 end_import
 
@@ -1259,11 +1259,11 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|BibtexEntryWriter
+name|BibEntryWriter
 name|bibtexEntryWriter
 init|=
 operator|new
-name|BibtexEntryWriter
+name|BibEntryWriter
 argument_list|(
 operator|new
 name|LatexFieldFormatter
@@ -2414,11 +2414,11 @@ name|comparators
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|BibtexEntryWriter
+name|BibEntryWriter
 name|bibtexEntryWriter
 init|=
 operator|new
-name|BibtexEntryWriter
+name|BibEntryWriter
 argument_list|(
 operator|new
 name|LatexFieldFormatter
