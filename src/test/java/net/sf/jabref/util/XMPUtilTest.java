@@ -142,7 +142,7 @@ name|jabref
 operator|.
 name|bibtex
 operator|.
-name|BibtexEntryWriter
+name|BibEntryWriter
 import|;
 end_import
 
@@ -718,7 +718,7 @@ name|StringWriter
 argument_list|()
 decl_stmt|;
 operator|new
-name|BibtexEntryWriter
+name|BibEntryWriter
 argument_list|(
 operator|new
 name|LatexFieldFormatter

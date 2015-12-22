@@ -216,7 +216,7 @@ name|BibEntryWriterTest
 block|{
 DECL|field|writer
 specifier|private
-name|BibtexEntryWriter
+name|BibEntryWriter
 name|writer
 decl_stmt|;
 DECL|field|backup
@@ -308,7 +308,7 @@ block|{
 name|writer
 operator|=
 operator|new
-name|BibtexEntryWriter
+name|BibEntryWriter
 argument_list|(
 operator|new
 name|LatexFieldFormatter
