@@ -93,7 +93,6 @@ decl_stmt|;
 DECL|method|guessProgramPath (String programName, String windowsDirectory)
 specifier|public
 specifier|static
-specifier|final
 name|String
 name|guessProgramPath
 parameter_list|(

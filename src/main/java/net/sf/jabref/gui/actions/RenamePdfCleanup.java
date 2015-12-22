@@ -40,7 +40,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collections
 import|;
 end_import
 
@@ -696,16 +696,11 @@ name|newValue
 argument_list|)
 decl_stmt|;
 return|return
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
-operator|new
-name|FieldChange
-index|[]
-block|{
 name|change
-block|}
 argument_list|)
 return|;
 block|}

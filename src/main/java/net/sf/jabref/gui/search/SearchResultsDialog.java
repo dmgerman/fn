@@ -1722,9 +1722,9 @@ argument_list|(
 operator|new
 name|IconComparator
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|Globals
 operator|.
@@ -1749,9 +1749,9 @@ argument_list|(
 operator|new
 name|IconComparator
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 literal|"url"
 argument_list|)

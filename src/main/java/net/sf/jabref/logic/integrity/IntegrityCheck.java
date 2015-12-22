@@ -501,7 +501,6 @@ return|;
 block|}
 DECL|interface|Checker
 specifier|public
-specifier|static
 interface|interface
 name|Checker
 block|{

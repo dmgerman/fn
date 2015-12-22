@@ -5792,6 +5792,7 @@ return|;
 block|}
 DECL|field|MAX_TAG_LENGTH
 specifier|private
+specifier|static
 specifier|final
 name|int
 name|MAX_TAG_LENGTH

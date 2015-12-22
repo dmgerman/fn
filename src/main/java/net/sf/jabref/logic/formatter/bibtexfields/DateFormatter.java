@@ -199,7 +199,7 @@ block|}
 catch|catch
 parameter_list|(
 name|DateTimeParseException
-name|e
+name|ignored
 parameter_list|)
 block|{             }
 block|}

@@ -1522,6 +1522,7 @@ return|return;
 block|}
 if|if
 condition|(
+operator|!
 name|Character
 operator|.
 name|isWhitespace
@@ -1532,10 +1533,6 @@ operator|)
 name|character
 argument_list|)
 condition|)
-block|{
-continue|continue;
-block|}
-else|else
 block|{
 comment|// found non-whitespace char
 name|unread
@@ -1668,7 +1665,6 @@ name|nextCharacter
 argument_list|)
 expr_stmt|;
 block|}
-continue|continue;
 block|}
 else|else
 block|{

@@ -145,15 +145,11 @@ name|String
 name|url
 parameter_list|)
 block|{
+try|try
+block|{
 name|String
 name|contentType
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|contentType
-operator|=
 name|Unirest
 operator|.
 name|head
@@ -171,7 +167,7 @@ name|getFirst
 argument_list|(
 literal|"content-type"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// HEAD and GET headers might differ, try real GET request
 if|if
 condition|(
@@ -201,6 +197,9 @@ literal|"content-type"
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|contentType
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -217,11 +216,8 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
 return|return
-name|contentType
+literal|null
 return|;
 block|}
 block|}

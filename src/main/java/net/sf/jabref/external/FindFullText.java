@@ -340,7 +340,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-continue|continue;
 block|}
 block|}
 return|return

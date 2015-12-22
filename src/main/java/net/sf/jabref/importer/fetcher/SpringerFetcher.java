@@ -282,11 +282,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|maxPerPage
+DECL|field|MAX_PER_PAGE
 specifier|private
+specifier|static
 specifier|final
 name|int
-name|maxPerPage
+name|MAX_PER_PAGE
 init|=
 literal|100
 decl_stmt|;
@@ -440,7 +441,7 @@ if|if
 condition|(
 name|hits
 operator|>
-name|maxPerPage
+name|MAX_PER_PAGE
 condition|)
 block|{
 while|while
@@ -569,7 +570,7 @@ name|numberToFetch
 condition|;
 name|startItem
 operator|+=
-name|maxPerPage
+name|MAX_PER_PAGE
 control|)
 block|{
 if|if
@@ -587,7 +588,7 @@ name|Math
 operator|.
 name|min
 argument_list|(
-name|maxPerPage
+name|MAX_PER_PAGE
 argument_list|,
 name|numberToFetch
 operator|-
@@ -688,7 +689,7 @@ decl_stmt|;
 name|BibEntry
 name|entry
 init|=
-name|jep
+name|JSONEntryParser
 operator|.
 name|SpringerJSONtoBibtex
 argument_list|(

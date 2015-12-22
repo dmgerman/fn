@@ -1058,17 +1058,13 @@ name|lang
 argument_list|(
 literal|"%0 entries found. To reduce server load, only %1 will be downloaded."
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
 name|String
 operator|.
 name|valueOf
 argument_list|(
 name|hits
 argument_list|)
-block|,
+argument_list|,
 name|String
 operator|.
 name|valueOf
@@ -1077,7 +1073,6 @@ name|IEEEXploreFetcher
 operator|.
 name|MAX_FETCH
 argument_list|)
-block|}
 argument_list|)
 argument_list|,
 name|DIALOG_TITLE

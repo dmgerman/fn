@@ -1630,16 +1630,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|int
-name|c
-init|=
+return|return
 name|_in
 operator|.
 name|read
 argument_list|()
-decl_stmt|;
-return|return
-name|c
 return|;
 block|}
 DECL|method|skipWhitespace ()

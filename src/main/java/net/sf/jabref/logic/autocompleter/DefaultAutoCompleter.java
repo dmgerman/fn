@@ -73,6 +73,7 @@ name|fieldName
 decl_stmt|;
 DECL|field|SEPARATING_CHARS
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|SEPARATING_CHARS

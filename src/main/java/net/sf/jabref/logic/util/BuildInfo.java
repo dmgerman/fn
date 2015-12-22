@@ -133,9 +133,8 @@ parameter_list|)
 block|{
 comment|// nothing to do -> default already set
 block|}
-name|String
-name|versionFromProps
-init|=
+name|version
+operator|=
 name|properties
 operator|.
 name|getProperty
@@ -144,10 +143,6 @@ literal|"version"
 argument_list|,
 name|UNKOWN_VERSION
 argument_list|)
-decl_stmt|;
-name|version
-operator|=
-name|versionFromProps
 expr_stmt|;
 block|}
 DECL|method|getVersion ()

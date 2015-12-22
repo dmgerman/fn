@@ -886,11 +886,6 @@ init|=
 literal|"http://sru.gbv.de/gvk?version=1.1&operation=searchRetrieve&query="
 decl_stmt|;
 name|String
-name|urlQuery
-init|=
-name|query
-decl_stmt|;
-name|String
 name|urlSuffix
 init|=
 literal|"&maximumRecords=50&recordSchema=picaxml&sortKeys=Year%2C%2C1"
@@ -901,7 +896,7 @@ init|=
 operator|(
 name|urlPrefix
 operator|+
-name|urlQuery
+name|query
 operator|+
 name|urlSuffix
 operator|)

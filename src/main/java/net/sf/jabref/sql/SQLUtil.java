@@ -746,9 +746,7 @@ name|tableName
 operator|+
 literal|';'
 decl_stmt|;
-name|Statement
-name|res
-init|=
+return|return
 operator|(
 name|Statement
 operator|)
@@ -760,9 +758,6 @@ name|conn
 argument_list|,
 name|query
 argument_list|)
-decl_stmt|;
-return|return
-name|res
 return|;
 block|}
 comment|/**      * Utility method for processing DML with proper output      *      * @param out The output (PrintStream or Connection) object to which the DML should be sent      * @param dml The DML statements to be processed      */

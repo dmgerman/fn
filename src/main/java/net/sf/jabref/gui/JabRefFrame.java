@@ -10911,21 +10911,13 @@ init|=
 name|collectDatabaseFilePaths
 argument_list|()
 decl_stmt|;
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|uniquePaths
-init|=
+return|return
 name|FileUtil
 operator|.
 name|uniquePathSubstrings
 argument_list|(
 name|dbPaths
 argument_list|)
-decl_stmt|;
-return|return
-name|uniquePaths
 return|;
 block|}
 DECL|method|updateAllTabTitles ()

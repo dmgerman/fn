@@ -606,12 +606,11 @@ name|font
 operator|.
 name|ifPresent
 argument_list|(
-name|f
-lambda|->
+name|FontSelector
+operator|.
+name|this
+operator|::
 name|setFont
-argument_list|(
-name|f
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

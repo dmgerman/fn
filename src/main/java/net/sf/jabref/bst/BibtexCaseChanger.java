@@ -132,7 +132,6 @@ name|char
 name|asChar
 decl_stmt|;
 DECL|method|FORMAT_MODE (char asChar)
-specifier|private
 name|FORMAT_MODE
 parameter_list|(
 name|char

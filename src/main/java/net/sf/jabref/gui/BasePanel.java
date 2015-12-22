@@ -1522,21 +1522,6 @@ specifier|private
 name|SaveDatabaseAction
 name|saveAction
 decl_stmt|;
-DECL|field|sortingByGroup
-specifier|public
-name|boolean
-name|sortingByGroup
-decl_stmt|;
-DECL|field|sortingByCiteSeerResults
-specifier|public
-name|boolean
-name|sortingByCiteSeerResults
-decl_stmt|;
-DECL|field|coloringByGroup
-specifier|public
-name|boolean
-name|coloringByGroup
-decl_stmt|;
 comment|// MetaData parses, keeps and writes meta data.
 DECL|field|metaData
 specifier|public

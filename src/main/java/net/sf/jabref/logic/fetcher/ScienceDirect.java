@@ -598,6 +598,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+return|return
+name|sciLink
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -614,9 +617,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
 return|return
 name|sciLink
 return|;

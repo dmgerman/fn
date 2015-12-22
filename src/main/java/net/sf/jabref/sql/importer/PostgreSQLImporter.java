@@ -203,7 +203,6 @@ name|conn
 argument_list|,
 literal|"SELECT column_name FROM information_schema.columns WHERE table_name ='entries';"
 argument_list|)
-init|;
 init|)
 block|{
 name|List

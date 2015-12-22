@@ -261,6 +261,7 @@ name|customExport
 decl_stmt|;
 DECL|field|LAYOUT_PREFIX
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|LAYOUT_PREFIX

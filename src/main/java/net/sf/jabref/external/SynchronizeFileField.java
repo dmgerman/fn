@@ -1026,20 +1026,15 @@ name|lang
 argument_list|(
 literal|"<HTML>Could not find file '%0'<BR>linked from entry '%1'</HTML>"
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
 name|flEntry
 operator|.
 name|getLink
 argument_list|()
-block|,
+argument_list|,
 name|aSel
 operator|.
 name|getCiteKey
 argument_list|()
-block|}
 argument_list|)
 argument_list|,
 name|Localization
