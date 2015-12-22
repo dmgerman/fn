@@ -279,7 +279,7 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * @return the string that should be put in the column header      */
+comment|/**      * @return the string that should be put in the column header. null if field is empty.      */
 annotation|@
 name|Override
 DECL|method|getColumnName (int col)

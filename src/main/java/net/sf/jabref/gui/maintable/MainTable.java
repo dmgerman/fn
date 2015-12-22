@@ -1653,6 +1653,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|comp
 operator|.
 name|getPreferredSize
@@ -1663,7 +1664,9 @@ operator|>
 name|bounds
 operator|.
 name|width
+operator|)
 operator|&&
+operator|(
 name|getValueAt
 argument_list|(
 name|row
@@ -1672,6 +1675,7 @@ name|col
 argument_list|)
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|toolTipText
@@ -3425,6 +3429,7 @@ name|modelIndex
 parameter_list|)
 block|{
 return|return
+operator|(
 name|tableFormat
 operator|.
 name|getTableColumn
@@ -3433,6 +3438,7 @@ name|modelIndex
 argument_list|)
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|tableFormat
 operator|.

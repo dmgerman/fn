@@ -48,22 +48,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryUtil
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -303,7 +287,7 @@ name|empty
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Get the table column name to be displayed in the UI      *      * @return name to be displayed      */
+comment|/**      * Get the table column name to be displayed in the UI      *      * @return name to be displayed. null if field is empty.      */
 DECL|method|getDisplayName ()
 specifier|public
 name|String
@@ -345,12 +329,7 @@ name|joiner
 operator|.
 name|add
 argument_list|(
-name|EntryUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
 name|field
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
