@@ -102,6 +102,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|AfterClass
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Assert
 import|;
 end_import
@@ -209,6 +219,12 @@ specifier|private
 name|BibtexEntryWriter
 name|writer
 decl_stmt|;
+DECL|field|backup
+specifier|private
+specifier|static
+name|JabRefPreferences
+name|backup
+decl_stmt|;
 annotation|@
 name|BeforeClass
 DECL|method|setUp ()
@@ -226,6 +242,12 @@ name|JabRefPreferences
 operator|.
 name|getInstance
 argument_list|()
+expr_stmt|;
+name|backup
+operator|=
+name|Globals
+operator|.
+name|prefs
 expr_stmt|;
 comment|// make sure that we use the "new style" serialization
 name|Globals
@@ -253,6 +275,25 @@ operator|.
 name|WRITEFIELD_CAMELCASENAME
 argument_list|,
 literal|true
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|AfterClass
+DECL|method|tearDown ()
+specifier|public
+specifier|static
+name|void
+name|tearDown
+parameter_list|()
+block|{
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|overwritePreferences
+argument_list|(
+name|backup
 argument_list|)
 expr_stmt|;
 block|}
