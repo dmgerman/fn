@@ -804,8 +804,6 @@ name|getFieldDisplayName
 argument_list|(
 name|name
 argument_list|)
-operator|+
-literal|" = "
 argument_list|)
 expr_stmt|;
 try|try
@@ -937,6 +935,8 @@ name|field
 operator|.
 name|toLowerCase
 argument_list|()
+operator|+
+literal|" = "
 operator|+
 name|suffix
 expr_stmt|;
