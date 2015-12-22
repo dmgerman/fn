@@ -458,7 +458,8 @@ literal|"--remote-send"
 block|,
 literal|"<C-\\><C-N>a"
 operator|+
-name|citeCommand
+name|getCiteCommand
+argument_list|()
 operator|+
 literal|"{"
 operator|+

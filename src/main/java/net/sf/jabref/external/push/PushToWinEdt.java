@@ -114,7 +114,8 @@ name|commandPath
 block|,
 literal|"\"[InsText('"
 operator|+
-name|citeCommand
+name|getCiteCommand
+argument_list|()
 operator|+
 literal|"{"
 operator|+

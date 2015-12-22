@@ -656,7 +656,8 @@ name|concat
 argument_list|(
 literal|"\\\"\\"
 operator|+
-name|citeCommand
+name|getCiteCommand
+argument_list|()
 operator|.
 name|replaceAll
 argument_list|(
@@ -687,7 +688,8 @@ name|concat
 argument_list|(
 literal|"\""
 operator|+
-name|citeCommand
+name|getCiteCommand
+argument_list|()
 operator|.
 name|replaceAll
 argument_list|(
