@@ -54,6 +54,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Statement
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -303,7 +313,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 27, 2008 Time: 6:09:08 PM To change this template use File | Settings  * | File Templates.  *  * Jan. 20th Changed to accommodate the new way to connect to DB and also to show the exceptions and to display more than  * one DB imported (by ifsteinm)  *  */
+comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 27, 2008 Time: 6:09:08 PM To change this template use File | Settings  * | File Templates.  *<p>  * Jan. 20th Changed to accommodate the new way to connect to DB and also to show the exceptions and to display more than  * one DB imported (by ifsteinm)  */
 end_comment
 
 begin_class
@@ -638,14 +648,19 @@ name|connectToDB
 argument_list|(
 name|dbs
 argument_list|)
-init|;                         ResultSet rs = SQLUtil.queryAllFromTable(conn
+init|;                      Statement statement = SQLUtil.queryAllFromTable(conn
 operator|,
 init|"jabref_database")
+block|)
+block|{
+name|ResultSet
+name|rs
+init|=
+name|statement
 operator|.
 name|getResultSet
 argument_list|()
-block|)
-block|{
+decl_stmt|;
 name|Vector
 argument_list|<
 name|String
