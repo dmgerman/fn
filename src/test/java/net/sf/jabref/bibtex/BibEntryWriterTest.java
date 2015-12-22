@@ -249,20 +249,6 @@ name|Globals
 operator|.
 name|prefs
 expr_stmt|;
-comment|// make sure that we use the "new style" serialization
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|putInt
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|WRITEFIELD_SORTSTYLE
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|AfterClass

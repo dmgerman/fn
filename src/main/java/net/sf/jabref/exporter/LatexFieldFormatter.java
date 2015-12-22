@@ -164,12 +164,6 @@ specifier|final
 name|char
 name|valueDelimiterEndOfValue
 decl_stmt|;
-DECL|field|writefieldWrapfield
-specifier|private
-specifier|final
-name|boolean
-name|writefieldWrapfield
-decl_stmt|;
 DECL|field|doNotResolveStringsFors
 specifier|private
 specifier|final
@@ -256,19 +250,6 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|DO_NOT_RESOLVE_STRINGS_FOR
-argument_list|)
-expr_stmt|;
-name|writefieldWrapfield
-operator|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|WRITEFIELD_WRAPFIELD
 argument_list|)
 expr_stmt|;
 name|parser
@@ -714,8 +695,6 @@ block|}
 comment|// currently, we do not add newlines and new formatting
 if|if
 condition|(
-name|writefieldWrapfield
-operator|&&
 operator|!
 name|Globals
 operator|.
@@ -906,11 +885,8 @@ operator|||
 operator|!
 name|isReview
 decl_stmt|;
-name|boolean
-name|strangePrefSettings
-init|=
-name|writefieldWrapfield
-operator|&&
+if|if
+condition|(
 operator|!
 name|Globals
 operator|.
@@ -920,10 +896,6 @@ name|isNonWrappableField
 argument_list|(
 name|fieldName
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|strangePrefSettings
 operator|&&
 name|doWrap
 condition|)
