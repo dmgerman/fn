@@ -120,7 +120,8 @@ name|commandPath
 block|,
 literal|"-i"
 block|,
-name|citeCommand
+name|getCiteCommand
+argument_list|()
 operator|+
 literal|"{"
 operator|+
