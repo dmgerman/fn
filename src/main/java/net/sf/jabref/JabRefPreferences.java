@@ -2297,15 +2297,6 @@ name|WRITEFIELD_ADDSPACES
 init|=
 literal|"writeFieldAddSpaces"
 decl_stmt|;
-DECL|field|WRITEFIELD_CAMELCASENAME
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|WRITEFIELD_CAMELCASENAME
-init|=
-literal|"writeFieldCamelCase"
-decl_stmt|;
 DECL|field|WRITEFIELD_SORTSTYLE
 specifier|public
 specifier|static
@@ -5426,23 +5417,12 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
-comment|// behavior of JabRef before 2.10: both: false
+comment|// behavior of JabRef before 2.10: false
 name|defaults
 operator|.
 name|put
 argument_list|(
 name|WRITEFIELD_ADDSPACES
-argument_list|,
-name|Boolean
-operator|.
-name|TRUE
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-name|WRITEFIELD_CAMELCASENAME
 argument_list|,
 name|Boolean
 operator|.

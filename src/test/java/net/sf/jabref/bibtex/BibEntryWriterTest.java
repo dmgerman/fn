@@ -241,20 +241,6 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-comment|// make sure that we use camel casing
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|WRITEFIELD_CAMELCASENAME
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Before
@@ -365,6 +351,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
+comment|// @formatter:off
 name|String
 name|expected
 init|=
@@ -382,25 +369,25 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  Author                   = {Foo Bar},"
+literal|"  author                   = {Foo Bar},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  Journal                  = {International Journal of Something},"
+literal|"  journal                  = {International Journal of Something},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  Note                     = {some note},"
+literal|"  note                     = {some note},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  Number                   = {1}"
+literal|"  number                   = {1}"
 operator|+
 name|Globals
 operator|.
@@ -408,6 +395,7 @@ name|NEWLINE
 operator|+
 literal|"}"
 decl_stmt|;
+comment|// @formatter:on
 name|assertEquals
 argument_list|(
 name|expected
@@ -426,6 +414,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// @formatter:off
 name|String
 name|bibtexEntry
 init|=
@@ -461,6 +450,7 @@ name|NEWLINE
 operator|+
 literal|"}"
 decl_stmt|;
+comment|// @formatter:on
 comment|// read in bibtex string
 name|ParserResult
 name|result
@@ -620,6 +610,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// @formatter:off
 name|String
 name|bibtexEntry
 init|=
@@ -655,6 +646,7 @@ name|NEWLINE
 operator|+
 literal|"}"
 decl_stmt|;
+comment|// @formatter:on
 comment|// read in bibtex string
 name|ParserResult
 name|result
@@ -814,6 +806,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// @formatter:off
 name|String
 name|bibtexEntry
 init|=
@@ -853,6 +846,7 @@ name|NEWLINE
 operator|+
 literal|"}"
 decl_stmt|;
+comment|// @formatter:on
 comment|// read in bibtex string
 name|ParserResult
 name|result
@@ -932,6 +926,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Modify entry
 name|entry
 operator|.
 name|setField
@@ -978,7 +973,7 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//write out bibtex string
+comment|// write out bibtex string
 name|StringWriter
 name|stringWriter
 init|=
@@ -1003,6 +998,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
+comment|// @formatter:off
 name|String
 name|expected
 init|=
@@ -1020,64 +1016,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  Author                   = {BlaBla},"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"  Journal                  = {International Journal of Something},"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"  Note                     = {some note},"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"  Number                   = {1}"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"}"
-decl_stmt|;
-name|assertEquals
-argument_list|(
-name|expected
-argument_list|,
-name|actual
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
-DECL|method|roundTripWithCamelCasing ()
-specifier|public
-name|void
-name|roundTripWithCamelCasing
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|String
-name|bibtexEntry
-init|=
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"@Article{test,"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"  author                   = {Foo Bar},"
+literal|"  author                   = {BlaBla},"
 operator|+
 name|Globals
 operator|.
@@ -1095,13 +1034,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  Number                   = {1},"
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-literal|"  howpublished             = {asdf}"
+literal|"  number                   = {1}"
 operator|+
 name|Globals
 operator|.
@@ -1109,6 +1042,72 @@ name|NEWLINE
 operator|+
 literal|"}"
 decl_stmt|;
+comment|// @formatter:on
+name|assertEquals
+argument_list|(
+name|expected
+argument_list|,
+name|actual
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|roundTripWithCamelCasingInTheOriginalEntryAndResultInLowerCase ()
+specifier|public
+name|void
+name|roundTripWithCamelCasingInTheOriginalEntryAndResultInLowerCase
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+comment|// @formatter:off
+name|String
+name|bibtexEntry
+init|=
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Article{test,"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  Author                   = {Foo Bar},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  Journal                  = {International Journal of Something},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  Note                     = {some note},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  Number                   = {1},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  HowPublished             = {asdf}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"}"
+decl_stmt|;
+comment|// @formatter:on
 comment|// read in bibtex string
 name|ParserResult
 name|result
@@ -1188,6 +1187,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// modify entry
 name|entry
 operator|.
 name|setField
@@ -1259,6 +1259,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
+comment|// @formatter:off
 name|String
 name|expected
 init|=
@@ -1276,31 +1277,31 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  Author                   = {BlaBla},"
+literal|"  author                   = {BlaBla},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  Journal                  = {International Journal of Something},"
+literal|"  journal                  = {International Journal of Something},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  Note                     = {some note},"
+literal|"  note                     = {some note},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  Number                   = {1},"
+literal|"  number                   = {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  HowPublished             = {asdf}"
+literal|"  howpublished             = {asdf}"
 operator|+
 name|Globals
 operator|.
@@ -1308,6 +1309,7 @@ name|NEWLINE
 operator|+
 literal|"}"
 decl_stmt|;
+comment|// @formatter:on
 name|assertEquals
 argument_list|(
 name|expected
@@ -1326,6 +1328,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// @formatter:off
 name|String
 name|bibtexEntry
 init|=
@@ -1361,6 +1364,7 @@ name|NEWLINE
 operator|+
 literal|"}\n\n"
 decl_stmt|;
+comment|// @formatter:on
 comment|// read in bibtex string
 name|ParserResult
 name|result
@@ -1533,6 +1537,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// @formatter:off
 name|String
 name|bibtexEntry
 init|=
@@ -1568,6 +1573,7 @@ name|NEWLINE
 operator|+
 literal|"}"
 decl_stmt|;
+comment|// @formatter:on
 name|String
 name|result
 init|=
@@ -1771,6 +1777,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// @formatter:off
 name|String
 name|bibtexEntry
 init|=
@@ -1800,6 +1807,7 @@ name|NEWLINE
 operator|+
 literal|"}"
 decl_stmt|;
+comment|// @formatter:on
 comment|// read in bibtex string
 name|ParserResult
 name|result
