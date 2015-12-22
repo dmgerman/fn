@@ -434,7 +434,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|var
+name|optionalFields
 init|=
 name|one
 operator|.
@@ -446,14 +446,14 @@ argument_list|()
 decl_stmt|;
 name|fields
 operator|=
-name|var
+name|optionalFields
 operator|.
 name|toArray
 argument_list|(
 operator|new
 name|String
 index|[
-name|var
+name|optionalFields
 operator|.
 name|size
 argument_list|()
