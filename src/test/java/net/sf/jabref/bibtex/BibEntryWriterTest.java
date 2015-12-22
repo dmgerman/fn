@@ -408,13 +408,13 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note                     = {some note},"
+literal|"  number                   = {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number                   = {1}"
+literal|"  note                     = {some note}"
 operator|+
 name|Globals
 operator|.
@@ -1055,13 +1055,13 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note                     = {some note},"
+literal|"  number                   = {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number                   = {1}"
+literal|"  note                     = {some note}"
 operator|+
 name|Globals
 operator|.
@@ -1316,13 +1316,13 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note                     = {some note},"
+literal|"  number                   = {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number                   = {1},"
+literal|"  note                     = {some note},"
 operator|+
 name|Globals
 operator|.
