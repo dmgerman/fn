@@ -424,13 +424,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|.
-name|toUpperCase
-argument_list|(
-name|Locale
-operator|.
-name|US
-argument_list|)
 operator|+
 literal|'{'
 argument_list|)
