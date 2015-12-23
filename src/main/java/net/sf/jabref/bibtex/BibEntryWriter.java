@@ -46,18 +46,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|exporter
 operator|.
 name|LatexFieldFormatter
@@ -151,22 +139,6 @@ operator|.
 name|base
 operator|.
 name|Strings
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryType
 import|;
 end_import
 
@@ -269,10 +241,10 @@ name|out
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|writeWithoutPrependingNewlines (BibEntry entry, Writer out)
+DECL|method|writeWithoutPrependedNewlines (BibEntry entry, Writer out)
 specifier|public
 name|void
-name|writeWithoutPrependingNewlines
+name|writeWithoutPrependedNewlines
 parameter_list|(
 name|BibEntry
 name|entry
@@ -300,6 +272,9 @@ argument_list|(
 name|entry
 operator|.
 name|getParsedSerialization
+argument_list|()
+operator|.
+name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;

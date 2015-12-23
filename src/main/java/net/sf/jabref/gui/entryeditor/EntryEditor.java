@@ -526,24 +526,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|date
-operator|.
-name|EasyDateFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -3374,7 +3356,7 @@ argument_list|,
 literal|false
 argument_list|)
 operator|.
-name|write
+name|writeWithoutPrependedNewlines
 argument_list|(
 name|entry
 argument_list|,
@@ -6693,7 +6675,6 @@ literal|true
 argument_list|)
 decl_stmt|;
 block|}
-comment|////////////////////////////////////
 comment|// Make sure we scroll to the entry if it moved in the table.
 comment|// Should only be done if this editor is currently showing:
 comment|//System.out.println(getType().getName()+": movingAway="+movingAway+", isShowing="+isShowing());
