@@ -118,7 +118,17 @@ name|commandPath
 block|,
 literal|"--insert-cite"
 block|,
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s{%s}"
+argument_list|,
+name|getCiteCommand
+argument_list|()
+argument_list|,
 name|keyString
+argument_list|)
 block|}
 return|;
 block|}
