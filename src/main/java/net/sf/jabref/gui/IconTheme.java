@@ -142,6 +142,7 @@ specifier|static
 name|Font
 name|FONT_16
 decl_stmt|;
+comment|//public static final Color DEFAULT_COLOR = new Color(79, 95, 143); // JabRef's default color
 DECL|field|DEFAULT_COLOR
 specifier|public
 specifier|static
@@ -152,13 +153,15 @@ init|=
 operator|new
 name|Color
 argument_list|(
-literal|79
+literal|0xBE
 argument_list|,
-literal|95
+literal|0x05
 argument_list|,
-literal|143
+literal|0x05
 argument_list|)
 decl_stmt|;
+comment|// Christmas edition
+comment|//public static final Color DEFAULT_DISABLED_COLOR = new Color(200, 200, 200); // JabRef's default color
 DECL|field|DEFAULT_DISABLED_COLOR
 specifier|public
 specifier|static
@@ -169,11 +172,11 @@ init|=
 operator|new
 name|Color
 argument_list|(
-literal|200
+literal|0x00
 argument_list|,
-literal|200
+literal|0x99
 argument_list|,
-literal|200
+literal|0x00
 argument_list|)
 decl_stmt|;
 DECL|field|DEFAULT_SIZE
