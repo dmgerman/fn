@@ -153,11 +153,7 @@ init|=
 operator|new
 name|Color
 argument_list|(
-literal|0xBE
-argument_list|,
-literal|0x05
-argument_list|,
-literal|0x05
+literal|0x155115
 argument_list|)
 decl_stmt|;
 comment|// Christmas edition
@@ -172,13 +168,10 @@ init|=
 operator|new
 name|Color
 argument_list|(
-literal|0x00
-argument_list|,
-literal|0x99
-argument_list|,
-literal|0x00
+literal|0x990000
 argument_list|)
 decl_stmt|;
+comment|// Christmas edition
 DECL|field|DEFAULT_SIZE
 specifier|public
 specifier|static
