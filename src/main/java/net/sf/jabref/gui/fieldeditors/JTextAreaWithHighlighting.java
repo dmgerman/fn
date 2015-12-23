@@ -82,22 +82,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|search
-operator|.
-name|MatchesHighlighter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|search
@@ -210,7 +194,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Optional
 import|;
 end_import
 
@@ -223,6 +207,18 @@ operator|.
 name|regex
 operator|.
 name|Matcher
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
 import|;
 end_import
 
@@ -691,9 +687,11 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|highlightPattern
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|highlightPattern
