@@ -269,6 +269,50 @@ name|out
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|writeWithoutPrependingNewlines (BibEntry entry, Writer out)
+specifier|public
+name|void
+name|writeWithoutPrependingNewlines
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|,
+name|Writer
+name|out
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|// if the entry has not been modified, write it as it was
+if|if
+condition|(
+operator|!
+name|entry
+operator|.
+name|hasChanged
+argument_list|()
+condition|)
+block|{
+name|out
+operator|.
+name|write
+argument_list|(
+name|entry
+operator|.
+name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+name|writeRequiredFieldsFirstRemainingFieldsSecond
+argument_list|(
+name|entry
+argument_list|,
+name|out
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Write fields in the order of requiredFields, optionalFields and other fields, but does not sort the fields.      *      * @param entry      * @param out      * @throws IOException      */
 DECL|method|writeRequiredFieldsFirstRemainingFieldsSecond (BibEntry entry, Writer out)
 specifier|private
