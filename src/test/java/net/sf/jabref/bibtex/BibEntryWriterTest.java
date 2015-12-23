@@ -249,18 +249,18 @@ name|Globals
 operator|.
 name|prefs
 expr_stmt|;
-comment|// make sure that we use the "new style" serialization
+comment|// ensure BibTeX mode
 name|Globals
 operator|.
 name|prefs
 operator|.
-name|putInt
+name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|WRITEFIELD_SORTSTYLE
+name|BIBLATEX_MODE
 argument_list|,
-literal|0
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -410,25 +410,25 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  author                   = {Foo Bar},"
+literal|"  author =  {Foo Bar},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  journal                  = {International Journal of Something},"
+literal|"  journal = {International Journal of Something},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note                     = {some note},"
+literal|"  number =  {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number                   = {1}"
+literal|"  note =    {some note}"
 operator|+
 name|Globals
 operator|.
@@ -1057,25 +1057,25 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  author                   = {BlaBla},"
+literal|"  author =  {BlaBla},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  journal                  = {International Journal of Something},"
+literal|"  journal = {International Journal of Something},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note                     = {some note},"
+literal|"  number =  {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number                   = {1}"
+literal|"  note =    {some note}"
 operator|+
 name|Globals
 operator|.
@@ -1318,31 +1318,31 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  author                   = {BlaBla},"
+literal|"  author =       {BlaBla},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  journal                  = {International Journal of Something},"
+literal|"  journal =      {International Journal of Something},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  note                     = {some note},"
+literal|"  number =       {1},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  number                   = {1},"
+literal|"  note =         {some note},"
 operator|+
 name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"  howpublished             = {asdf}"
+literal|"  howpublished = {asdf}"
 operator|+
 name|Globals
 operator|.
@@ -1993,6 +1993,195 @@ decl_stmt|;
 name|assertEquals
 argument_list|(
 name|bibtexEntry
+argument_list|,
+name|actual
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|addFieldWithLongerLength ()
+specifier|public
+name|void
+name|addFieldWithLongerLength
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+comment|// @formatter:off
+name|String
+name|bibtexEntry
+init|=
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Article{test,"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  author =  {BlaBla},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  journal = {International Journal of Something},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  number =  {1},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  note =    {some note}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"}"
+decl_stmt|;
+comment|// @formatter:on
+comment|// read in bibtex string
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|bibtexEntry
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+init|=
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+decl_stmt|;
+name|BibEntry
+name|entry
+init|=
+name|entries
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+comment|// modify entry
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"howpublished"
+argument_list|,
+literal|"asdf"
+argument_list|)
+expr_stmt|;
+comment|//write out bibtex string
+name|StringWriter
+name|stringWriter
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
+name|writer
+operator|.
+name|write
+argument_list|(
+name|entry
+argument_list|,
+name|stringWriter
+argument_list|)
+expr_stmt|;
+name|String
+name|actual
+init|=
+name|stringWriter
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+comment|// @formatter:off
+name|String
+name|expected
+init|=
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"@Article{test,"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  author =       {BlaBla},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  journal =      {International Journal of Something},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  number =       {1},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  note =         {some note},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  howpublished = {asdf}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"}"
+decl_stmt|;
+comment|// @formatter:on
+name|assertEquals
+argument_list|(
+name|expected
 argument_list|,
 name|actual
 argument_list|)
