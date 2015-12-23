@@ -168,7 +168,7 @@ name|icon
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Construct an ExternalFileType from a String array. This constructor is used when      * reading file type definitions from Preferences, where the available data types are      * limited. We assume that the array contains the same values as the main constructor,      * in the same order.      *      * TODO: The icon argument needs special treatment. At the moment, we assume that the fourth      * element of the array contains the icon keyword to be looked up in the current icon theme.      * To support icons found elsewhere on the file system we simply need to prefix the icon name      * with a marker.       *      * @param val Constructor arguments.      */
+comment|/**      * Construct an ExternalFileType from a String array. This constructor is used when      * reading file type definitions from Preferences, where the available data types are      * limited. We assume that the array contains the same values as the main constructor,      * in the same order.      *      * TODO: The icon argument needs special treatment. At the moment, we assume that the fourth      * element of the array contains the icon keyword to be looked up in the current icon theme.      * To support icons found elsewhere on the file system we simply need to prefix the icon name      * with a marker.      *      * @param val Constructor arguments.      */
 DECL|method|ExternalFileType (String[] val)
 specifier|public
 name|ExternalFileType
@@ -180,15 +180,19 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|val
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|val
 operator|.
 name|length
 operator|<
 literal|4
+operator|)
 condition|)
 block|{
 throw|throw
@@ -633,17 +637,9 @@ name|Object
 name|object
 parameter_list|)
 block|{
-name|ExternalFileType
-name|other
-init|=
-operator|(
-name|ExternalFileType
-operator|)
-name|object
-decl_stmt|;
 if|if
 condition|(
-name|other
+name|object
 operator|==
 literal|null
 condition|)
@@ -652,6 +648,28 @@ return|return
 literal|false
 return|;
 block|}
+if|if
+condition|(
+operator|!
+operator|(
+name|object
+operator|instanceof
+name|ExternalFileType
+operator|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+name|ExternalFileType
+name|other
+init|=
+operator|(
+name|ExternalFileType
+operator|)
+name|object
+decl_stmt|;
 return|return
 operator|(
 name|name
