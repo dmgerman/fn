@@ -742,6 +742,15 @@ name|out
 operator|.
 name|println
 argument_list|(
+literal|"EXECUTE gradlew -b localization.gradle compareAndUpdateTranslationsWithEnglishTranslation TO"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
 literal|"PASTE THIS INTO THE NON-ENGLISH LANGUAGE FILES"
 argument_list|)
 expr_stmt|;
