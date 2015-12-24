@@ -271,7 +271,6 @@ specifier|private
 name|BibEntry
 name|entry2
 decl_stmt|;
-comment|/* (non-Javadoc)      * @see junit.framework.TestCase#setUp()      */
 annotation|@
 name|Before
 DECL|method|setUp ()

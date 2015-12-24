@@ -5803,7 +5803,6 @@ operator|=
 name|bibtexType
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)          * @see java.lang.Object#toString()          */
 annotation|@
 name|Override
 DECL|method|toString ()
