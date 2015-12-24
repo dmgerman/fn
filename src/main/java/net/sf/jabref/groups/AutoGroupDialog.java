@@ -820,15 +820,9 @@ operator|=
 literal|"author"
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-name|editors
-operator|.
-name|isSelected
-argument_list|()
-condition|)
+else|else
 block|{
+comment|// editors.isSelected() as it is a radio button group.
 name|List
 argument_list|<
 name|String

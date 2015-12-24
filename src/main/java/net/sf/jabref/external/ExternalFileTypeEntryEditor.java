@@ -419,10 +419,6 @@ argument_list|(
 literal|"Add new file type"
 argument_list|)
 decl_stmt|;
-DECL|field|applicationFieldEmpty
-name|boolean
-name|applicationFieldEmpty
-decl_stmt|;
 DECL|field|entry
 specifier|private
 name|ExternalFileType
