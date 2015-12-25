@@ -543,7 +543,8 @@ operator|.
 name|getType
 argument_list|()
 operator|.
-name|extension
+name|getExtension
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|CheckBoxMessage
