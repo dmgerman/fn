@@ -203,9 +203,6 @@ name|String
 name|classPrefix
 parameter_list|)
 block|{
-name|StringInt
-name|si
-decl_stmt|;
 name|Vector
 argument_list|<
 name|LayoutEntry
@@ -246,15 +243,11 @@ range|:
 name|parsedEntries
 control|)
 block|{
-name|si
-operator|=
-name|parsedEntry
-expr_stmt|;
 comment|// TODO: Rewrite using switch
 if|if
 condition|(
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -264,7 +257,7 @@ name|IS_LAYOUT_TEXT
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -279,7 +272,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -297,7 +290,7 @@ argument_list|()
 expr_stmt|;
 name|blockStart
 operator|=
-name|si
+name|parsedEntry
 operator|.
 name|s
 expr_stmt|;
@@ -305,7 +298,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -335,7 +328,7 @@ name|blockStart
 operator|.
 name|equals
 argument_list|(
-name|si
+name|parsedEntry
 operator|.
 name|s
 argument_list|)
@@ -345,7 +338,7 @@ name|blockEntries
 operator|.
 name|add
 argument_list|(
-name|si
+name|parsedEntry
 argument_list|)
 expr_stmt|;
 name|le
@@ -384,7 +377,7 @@ name|blockStart
 operator|+
 literal|'\n'
 operator|+
-name|si
+name|parsedEntry
 operator|.
 name|s
 argument_list|)
@@ -407,7 +400,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -425,7 +418,7 @@ argument_list|()
 expr_stmt|;
 name|blockStart
 operator|=
-name|si
+name|parsedEntry
 operator|.
 name|s
 expr_stmt|;
@@ -433,7 +426,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -463,7 +456,7 @@ name|blockStart
 operator|.
 name|equals
 argument_list|(
-name|si
+name|parsedEntry
 operator|.
 name|s
 argument_list|)
@@ -473,7 +466,7 @@ name|blockEntries
 operator|.
 name|add
 argument_list|(
-name|si
+name|parsedEntry
 argument_list|)
 expr_stmt|;
 name|le
@@ -522,7 +515,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -547,7 +540,7 @@ argument_list|(
 operator|new
 name|LayoutEntry
 argument_list|(
-name|si
+name|parsedEntry
 argument_list|,
 name|classPrefix
 argument_list|)
@@ -560,7 +553,7 @@ name|blockEntries
 operator|.
 name|add
 argument_list|(
-name|si
+name|parsedEntry
 argument_list|)
 expr_stmt|;
 block|}
@@ -632,7 +625,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|//System.out.println(layoutEntries[i].text);
 block|}
 block|}
 DECL|method|setPostFormatter (LayoutFormatter formatter)

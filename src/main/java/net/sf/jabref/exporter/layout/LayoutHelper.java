@@ -233,9 +233,6 @@ block|{
 name|parse
 argument_list|()
 expr_stmt|;
-name|StringInt
-name|si
-decl_stmt|;
 for|for
 control|(
 name|StringInt
@@ -244,14 +241,10 @@ range|:
 name|parsedEntries
 control|)
 block|{
-name|si
-operator|=
-name|parsedEntry
-expr_stmt|;
 if|if
 condition|(
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -261,7 +254,7 @@ name|IS_SIMPLE_FIELD
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -271,7 +264,7 @@ name|IS_FIELD_START
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -281,7 +274,7 @@ name|IS_FIELD_END
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -291,7 +284,7 @@ name|IS_GROUP_START
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -301,11 +294,11 @@ name|IS_GROUP_END
 operator|)
 condition|)
 block|{
-name|si
+name|parsedEntry
 operator|.
 name|s
 operator|=
-name|si
+name|parsedEntry
 operator|.
 name|s
 operator|.
