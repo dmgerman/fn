@@ -822,26 +822,16 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Removes the entry with the given string.      *<p>      * Returns null if not found.      */
-DECL|method|removeEntry (String id)
+DECL|method|removeEntry (BibEntry oldValue)
 specifier|public
 specifier|synchronized
-name|BibEntry
+name|void
 name|removeEntry
 parameter_list|(
-name|String
-name|id
-parameter_list|)
-block|{
 name|BibEntry
 name|oldValue
-init|=
-name|entries
-operator|.
-name|remove
-argument_list|(
-name|id
-argument_list|)
-decl_stmt|;
+parameter_list|)
+block|{
 if|if
 condition|(
 name|oldValue
@@ -849,10 +839,18 @@ operator|==
 literal|null
 condition|)
 block|{
-return|return
-literal|null
-return|;
+return|return;
 block|}
+name|entries
+operator|.
+name|remove
+argument_list|(
+name|oldValue
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|removeKeyFromSet
 argument_list|(
 name|oldValue
@@ -885,9 +883,6 @@ name|oldValue
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
-name|oldValue
-return|;
 block|}
 DECL|method|setCiteKeyForEntry (String id, String key)
 specifier|public

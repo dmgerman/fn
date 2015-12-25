@@ -2447,9 +2447,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|be
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|ensureNotShowing
@@ -2617,9 +2614,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|be
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|ensureNotShowing
