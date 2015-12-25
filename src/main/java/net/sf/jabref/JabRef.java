@@ -710,15 +710,6 @@ specifier|static
 name|JabRefFrame
 name|jrf
 decl_stmt|;
-DECL|field|MAX_DIALOG_WARNINGS
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|MAX_DIALOG_WARNINGS
-init|=
-literal|10
-decl_stmt|;
 DECL|field|cli
 specifier|private
 name|JabRefCLI
@@ -4549,10 +4540,6 @@ argument_list|,
 name|JabRef
 operator|.
 name|jrf
-argument_list|,
-name|JabRef
-operator|.
-name|MAX_DIALOG_WARNINGS
 argument_list|,
 name|i
 argument_list|)
