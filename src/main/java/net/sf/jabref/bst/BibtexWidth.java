@@ -1379,8 +1379,9 @@ name|c
 argument_list|,
 name|afterBackslash
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|result

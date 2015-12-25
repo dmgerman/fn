@@ -18,6 +18,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -596,7 +606,10 @@ name|i
 operator|++
 expr_stmt|;
 comment|// skip over the |backslash|
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|s
 init|=
 name|BibtexCaseChanger
@@ -611,8 +624,9 @@ decl_stmt|;
 if|if
 condition|(
 name|s
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|i
@@ -624,6 +638,9 @@ argument_list|,
 name|i
 argument_list|,
 name|s
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|sb
 argument_list|,
@@ -1130,7 +1147,10 @@ block|}
 comment|/**      * Determine whether there starts a special char at pos (e.g., oe, AE). Return it as string.      * If nothing found, return null      *      * Also used by BibtexPurify      *      * @param c the current "String"      * @param pos the position      * @return the special LaTeX character or null      */
 DECL|method|findSpecialChar (char[] c, int pos)
 specifier|static
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|findSpecialChar
 parameter_list|(
 name|char
@@ -1178,7 +1198,12 @@ operator|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"oe"
+argument_list|)
 return|;
 block|}
 if|if
@@ -1205,7 +1230,12 @@ operator|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"OE"
+argument_list|)
 return|;
 block|}
 if|if
@@ -1232,7 +1262,12 @@ operator|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"ae"
+argument_list|)
 return|;
 block|}
 if|if
@@ -1259,7 +1294,12 @@ operator|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"AE"
+argument_list|)
 return|;
 block|}
 if|if
@@ -1286,7 +1326,12 @@ operator|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"ss"
+argument_list|)
 return|;
 block|}
 if|if
@@ -1313,7 +1358,12 @@ operator|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"AA"
+argument_list|)
 return|;
 block|}
 if|if
@@ -1340,7 +1390,12 @@ operator|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 literal|"aa"
+argument_list|)
 return|;
 block|}
 block|}
@@ -1355,6 +1410,10 @@ literal|'i'
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|String
 operator|.
 name|valueOf
@@ -1363,6 +1422,7 @@ name|c
 index|[
 name|pos
 index|]
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1377,6 +1437,10 @@ literal|'j'
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|String
 operator|.
 name|valueOf
@@ -1385,6 +1449,7 @@ name|c
 index|[
 name|pos
 index|]
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1399,6 +1464,10 @@ literal|'o'
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|String
 operator|.
 name|valueOf
@@ -1407,6 +1476,7 @@ name|c
 index|[
 name|pos
 index|]
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1421,6 +1491,10 @@ literal|'O'
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|String
 operator|.
 name|valueOf
@@ -1429,6 +1503,7 @@ name|c
 index|[
 name|pos
 index|]
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1443,6 +1518,10 @@ literal|'l'
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|String
 operator|.
 name|valueOf
@@ -1451,6 +1530,7 @@ name|c
 index|[
 name|pos
 index|]
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1465,6 +1545,10 @@ literal|'L'
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|String
 operator|.
 name|valueOf
@@ -1474,10 +1558,14 @@ index|[
 name|pos
 index|]
 argument_list|)
+argument_list|)
 return|;
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
