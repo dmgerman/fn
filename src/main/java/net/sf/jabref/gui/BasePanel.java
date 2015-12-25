@@ -6395,10 +6395,6 @@ name|TextInputDialog
 argument_list|(
 name|frame
 argument_list|,
-name|BasePanel
-operator|.
-name|this
-argument_list|,
 literal|"import"
 argument_list|,
 literal|true
@@ -13082,8 +13078,6 @@ init|=
 operator|new
 name|FileUpdatePanel
 argument_list|(
-name|frame
-argument_list|,
 name|BasePanel
 operator|.
 name|this

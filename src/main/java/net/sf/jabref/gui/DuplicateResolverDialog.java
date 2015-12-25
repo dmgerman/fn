@@ -370,13 +370,6 @@ name|DuplicateResolverDialog
 operator|.
 name|NOT_CHOSEN
 decl_stmt|;
-DECL|field|block
-specifier|private
-name|boolean
-name|block
-init|=
-literal|true
-decl_stmt|;
 DECL|field|me
 specifier|private
 name|MergeEntries
@@ -1098,10 +1091,6 @@ block|{
 name|status
 operator|=
 name|button
-expr_stmt|;
-name|block
-operator|=
-literal|false
 expr_stmt|;
 name|dispose
 argument_list|()

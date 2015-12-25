@@ -2650,13 +2650,6 @@ name|GUIGlobals
 operator|.
 name|STANDARD_EDITOR
 decl_stmt|;
-comment|// a alternative displayname, e.g. used for
-comment|// "citeseercitationcount"="Popularity"
-DECL|field|alternativeDisplayName
-specifier|private
-name|String
-name|alternativeDisplayName
-decl_stmt|;
 comment|// the extras data
 comment|// fieldExtras contains mappings to tell the EntryEditor to add a specific
 comment|// function to this field, for instance a "browse" button for the "pdf" field.
@@ -2679,19 +2672,6 @@ comment|// a Hashmap for a lot of additional "not standard" properties
 comment|// todo: add the handling in a key=value manner
 comment|// private HashMap props = new HashMap() ;
 comment|// some constructors ;-)
-DECL|method|BibtexSingleField (String fieldName)
-specifier|public
-name|BibtexSingleField
-parameter_list|(
-name|String
-name|fieldName
-parameter_list|)
-block|{
-name|name
-operator|=
-name|fieldName
-expr_stmt|;
-block|}
 DECL|method|BibtexSingleField (String fieldName, boolean pStandard)
 specifier|public
 name|BibtexSingleField

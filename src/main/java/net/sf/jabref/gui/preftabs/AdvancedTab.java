@@ -380,11 +380,6 @@ specifier|private
 name|boolean
 name|oldUseDef
 decl_stmt|;
-DECL|field|oldBiblMode
-specifier|private
-name|boolean
-name|oldBiblMode
-decl_stmt|;
 DECL|field|oldPort
 specifier|private
 name|int

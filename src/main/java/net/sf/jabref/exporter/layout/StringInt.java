@@ -130,7 +130,7 @@ specifier|final
 name|int
 name|i
 decl_stmt|;
-comment|/**      *  Constructor for the StringString object      *      * @param  _s  Description of the Parameter      * @param  _i  Description of the Parameter      */
+comment|/**      *  Constructor for the StringInt object      *      * @param  _s  Description of the Parameter      * @param  _i  Description of the Parameter      */
 DECL|method|StringInt (String _s, int _i)
 specifier|public
 name|StringInt

@@ -123,12 +123,6 @@ name|NAME
 init|=
 literal|"fileUpdate"
 decl_stmt|;
-DECL|field|panel
-specifier|private
-specifier|final
-name|BasePanel
-name|panel
-decl_stmt|;
 DECL|field|manager
 specifier|private
 specifier|final
@@ -141,13 +135,10 @@ specifier|final
 name|ChangeScanner
 name|scanner
 decl_stmt|;
-DECL|method|FileUpdatePanel (JabRefFrame frame, BasePanel panel, SidePaneManager manager, File file, ChangeScanner scanner)
+DECL|method|FileUpdatePanel (BasePanel panel, SidePaneManager manager, File file, ChangeScanner scanner)
 specifier|public
 name|FileUpdatePanel
 parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|,
 name|BasePanel
 name|panel
 parameter_list|,
@@ -351,7 +342,7 @@ name|NAME
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * actionPerformed      *       * @param e      *            ActionEvent      */
+comment|/**      * actionPerformed      *      * @param e      *            ActionEvent      */
 annotation|@
 name|Override
 DECL|method|actionPerformed (ActionEvent e)

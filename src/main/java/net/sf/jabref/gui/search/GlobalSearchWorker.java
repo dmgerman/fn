@@ -128,16 +128,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -188,20 +178,6 @@ specifier|private
 specifier|final
 name|SearchResultsDialog
 name|dialog
-decl_stmt|;
-DECL|field|matchedEntries
-specifier|private
-specifier|final
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|matchedEntries
-init|=
-operator|new
-name|LinkedList
-argument_list|<>
-argument_list|()
 decl_stmt|;
 DECL|method|GlobalSearchWorker (JabRefFrame frame, SearchQuery query)
 specifier|public

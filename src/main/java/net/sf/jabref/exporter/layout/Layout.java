@@ -926,7 +926,7 @@ block|}
 comment|// added section - end (arudert)
 DECL|method|getMissingFormatters ()
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -934,7 +934,12 @@ name|getMissingFormatters
 parameter_list|()
 block|{
 return|return
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|missingFormatters
+argument_list|)
 return|;
 block|}
 block|}

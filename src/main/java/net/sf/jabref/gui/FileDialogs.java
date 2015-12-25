@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -23,16 +23,6 @@ operator|.
 name|io
 operator|.
 name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FilenameFilter
 import|;
 end_import
 
@@ -649,15 +639,9 @@ name|owner
 argument_list|,
 name|directory
 argument_list|,
-name|extension
-argument_list|,
 name|dialogType
 argument_list|,
 name|updateWorkingDirectory
-argument_list|,
-name|dirOnly
-argument_list|,
-name|off
 argument_list|)
 return|;
 block|}
@@ -711,15 +695,9 @@ name|owner
 argument_list|,
 name|directory
 argument_list|,
-name|extension
-argument_list|,
 name|dialogType
 argument_list|,
 name|updateWorkingDirectory
-argument_list|,
-name|dirOnly
-argument_list|,
-name|off
 argument_list|)
 return|;
 block|}
@@ -1007,7 +985,7 @@ name|filenames
 return|;
 block|}
 block|}
-DECL|method|getNewFileForMac (JFrame owner, File directory, String extensions, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, FilenameFilter filter)
+DECL|method|getNewFileForMac (JFrame owner, File directory, int dialogType, boolean updateWorkingDirectory)
 specifier|private
 specifier|static
 name|String
@@ -1019,20 +997,11 @@ parameter_list|,
 name|File
 name|directory
 parameter_list|,
-name|String
-name|extensions
-parameter_list|,
 name|int
 name|dialogType
 parameter_list|,
 name|boolean
 name|updateWorkingDirectory
-parameter_list|,
-name|boolean
-name|dirOnly
-parameter_list|,
-name|FilenameFilter
-name|filter
 parameter_list|)
 block|{
 name|java
@@ -1052,7 +1021,6 @@ argument_list|(
 name|owner
 argument_list|)
 decl_stmt|;
-comment|// fc.setFilenameFilter(filter);
 if|if
 condition|(
 name|directory
@@ -1117,7 +1085,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// fc.show(); -> deprecated since 1.5
 if|if
 condition|(
 name|fc
