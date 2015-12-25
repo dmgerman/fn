@@ -1834,20 +1834,6 @@ argument_list|(
 name|comp
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|currentword
-operator|==
-literal|null
-condition|)
-block|{
-name|currentword
-operator|=
-operator|new
-name|StringBuffer
-argument_list|()
-expr_stmt|;
-block|}
 comment|// only "real characters" end up here
 assert|assert
 operator|(
@@ -2113,7 +2099,9 @@ block|{
 comment|// caret is in the middle of the text AND current character is a whitespace
 comment|// that means: a new word is started and there is no current word
 return|return
-literal|null
+operator|new
+name|StringBuffer
+argument_list|()
 return|;
 block|}
 name|int
