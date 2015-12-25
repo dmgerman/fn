@@ -44,22 +44,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|database
-operator|.
-name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|entry
 operator|.
 name|BibEntry
@@ -359,20 +343,16 @@ name|findFile
 argument_list|(
 name|entry
 argument_list|,
-literal|null
-argument_list|,
 name|directories
 argument_list|,
 name|regularExpression
 argument_list|,
 name|extensionRegExp
-argument_list|,
-literal|true
 argument_list|)
 return|;
 block|}
-comment|/**      * Searches the given directory and filename pattern for a file for the      * bibtexentry.      *      * Used to fix:      *      * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309      *      * Requirements:      *  - Be able to find the associated PDF in a set of given directories.      *  - Be able to return a relative path or absolute path.      *  - Be fast.      *  - Allow for flexible naming schemes in the PDFs.      *      * Syntax scheme for file:      *<ul>      *<li>* Any subDir</li>      *<li>** Any subDir (recursiv)</li>      *<li>[key] Key from bibtex file and database</li>      *<li>.* Anything else is taken to be a Regular expression.</li>      *</ul>      *      * @param entry      *            non-null      * @param database      *            non-null      * @param dirs      *            A set of root directories to start the search from. Paths are      *            returned relative to these directories if relative is set to      *            true. These directories will not be expanded or anything. Use      *            the file attribute for this.      * @param file      *            non-null      *      * @param relative      *            whether to return relative file paths or absolute ones      *      * @return Will return the first file found to match the given criteria or      *         null if none was found.      */
-DECL|method|findFile (BibEntry entry, BibDatabase database, Collection<File> dirs, String file, String extensionRegExp, boolean relative)
+comment|/**      * Searches the given directory and filename pattern for a file for the      * bibtexentry.      *      * Used to fix:      *      * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309      *      * Requirements:      *  - Be able to find the associated PDF in a set of given directories.      *  - Be able to return a relative path or absolute path.      *  - Be fast.      *  - Allow for flexible naming schemes in the PDFs.      *      * Syntax scheme for file:      *<ul>      *<li>* Any subDir</li>      *<li>** Any subDir (recursiv)</li>      *<li>[key] Key from bibtex file and database</li>      *<li>.* Anything else is taken to be a Regular expression.</li>      *</ul>      *      * @param entry      *            non-null      * @param dirs      *            A set of root directories to start the search from. Paths are      *            returned relative to these directories if relative is set to      *            true. These directories will not be expanded or anything. Use      *            the file attribute for this.      * @param file      *            non-null      *      * @param relative      *            whether to return relative file paths or absolute ones      *      * @return Will return the first file found to match the given criteria or      *         null if none was found.      */
+DECL|method|findFile (BibEntry entry, Collection<File> dirs, String file, String extensionRegExp)
 specifier|private
 specifier|static
 name|List
@@ -383,9 +363,6 @@ name|findFile
 parameter_list|(
 name|BibEntry
 name|entry
-parameter_list|,
-name|BibDatabase
-name|database
 parameter_list|,
 name|Collection
 argument_list|<
@@ -398,9 +375,6 @@ name|file
 parameter_list|,
 name|String
 name|extensionRegExp
-parameter_list|,
-name|boolean
-name|relative
 parameter_list|)
 block|{
 name|ArrayList
@@ -434,8 +408,6 @@ name|findFile
 argument_list|(
 name|entry
 argument_list|,
-name|database
-argument_list|,
 name|directory
 operator|.
 name|getPath
@@ -444,8 +416,6 @@ argument_list|,
 name|file
 argument_list|,
 name|extensionRegExp
-argument_list|,
-name|relative
 argument_list|)
 decl_stmt|;
 if|if
@@ -469,7 +439,7 @@ name|res
 return|;
 block|}
 comment|/**      * Internal Version of findFile, which also accepts a current directory to      * base the search on.      *      */
-DECL|method|findFile (BibEntry entry, BibDatabase database, String directory, String file, String extensionRegExp, boolean relative)
+DECL|method|findFile (BibEntry entry, String directory, String file, String extensionRegExp)
 specifier|private
 specifier|static
 name|List
@@ -481,9 +451,6 @@ parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
-name|BibDatabase
-name|database
-parameter_list|,
 name|String
 name|directory
 parameter_list|,
@@ -492,9 +459,6 @@ name|file
 parameter_list|,
 name|String
 name|extensionRegExp
-parameter_list|,
-name|boolean
-name|relative
 parameter_list|)
 block|{
 name|List
@@ -553,8 +517,6 @@ operator|.
 name|findFile
 argument_list|(
 name|entry
-argument_list|,
-name|database
 argument_list|,
 name|root
 argument_list|,
@@ -687,7 +649,7 @@ name|res
 return|;
 block|}
 comment|/**      * The actual work-horse. Will find absolute filepaths starting from the      * given directory using the given regular expression string for search.      */
-DECL|method|findFile (BibEntry entry, BibDatabase database, File directory, String file, String extensionRegExp)
+DECL|method|findFile (BibEntry entry, File directory, String file, String extensionRegExp)
 specifier|private
 specifier|static
 name|List
@@ -698,9 +660,6 @@ name|findFile
 parameter_list|(
 name|BibEntry
 name|entry
-parameter_list|,
-name|BibDatabase
-name|database
 parameter_list|,
 name|File
 name|directory
@@ -892,7 +851,7 @@ name|dirToProcess
 argument_list|,
 name|entry
 argument_list|,
-name|database
+literal|null
 argument_list|)
 expr_stmt|;
 if|if
@@ -1026,8 +985,6 @@ operator|.
 name|findFile
 argument_list|(
 name|entry
-argument_list|,
-name|database
 argument_list|,
 name|subDir
 argument_list|,
@@ -1164,8 +1121,6 @@ name|findFile
 argument_list|(
 name|entry
 argument_list|,
-name|database
-argument_list|,
 name|subDir
 argument_list|,
 name|restOfFileString
@@ -1213,7 +1168,7 @@ name|filePart
 argument_list|,
 name|entry
 argument_list|,
-name|database
+literal|null
 argument_list|)
 operator|.
 name|replaceAll
