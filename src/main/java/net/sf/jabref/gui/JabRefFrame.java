@@ -1114,6 +1114,7 @@ name|JSplitPane
 argument_list|()
 decl_stmt|;
 DECL|field|prefs
+specifier|private
 specifier|final
 name|JabRefPreferences
 name|prefs
@@ -1751,6 +1752,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|tlb
+specifier|private
 specifier|final
 name|ToolBar
 name|tlb
@@ -2631,6 +2633,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|deleteEntry
+specifier|private
 specifier|final
 name|AbstractAction
 name|deleteEntry
@@ -4735,6 +4738,7 @@ name|PushToApplicationButton
 name|pushExternalButton
 decl_stmt|;
 DECL|field|generalFetcher
+specifier|private
 name|GeneralFetcher
 name|generalFetcher
 decl_stmt|;
@@ -13115,6 +13119,7 @@ extends|extends
 name|MnemonicAwareAction
 block|{
 DECL|field|propertiesDialog
+specifier|private
 name|DatabasePropertiesDialog
 name|propertiesDialog
 decl_stmt|;
@@ -13202,6 +13207,7 @@ extends|extends
 name|MnemonicAwareAction
 block|{
 DECL|field|bibtexKeyPatternDialog
+specifier|private
 name|BibtexKeyPatternDialog
 name|bibtexKeyPatternDialog
 decl_stmt|;

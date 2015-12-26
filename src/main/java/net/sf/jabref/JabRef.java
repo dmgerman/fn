@@ -1886,9 +1886,6 @@ name|formatName
 init|=
 literal|null
 decl_stmt|;
-name|IExportFormat
-name|format
-decl_stmt|;
 comment|//read in the export format, take default format if no format entered
 switch|switch
 condition|(
@@ -1961,21 +1958,43 @@ return|;
 block|}
 comment|//end switch
 comment|//export new database
+name|IExportFormat
 name|format
-operator|=
+init|=
 name|ExportFormats
 operator|.
 name|getExportFormat
 argument_list|(
 name|formatName
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|format
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unknown export format"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|formatName
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 comment|// We have an ExportFormat instance:
 try|try
@@ -2061,27 +2080,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Unknown export format"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|formatName
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 comment|/*end if newBase != null*/
@@ -2506,9 +2504,33 @@ decl_stmt|;
 if|if
 condition|(
 name|format
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Unknown export format"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|data
+index|[
+literal|1
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 comment|// We have an ExportFormat instance:
 try|try
@@ -2576,30 +2598,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Unknown export format"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|data
-index|[
-literal|1
-index|]
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}
@@ -3135,14 +3133,6 @@ index|[
 literal|0
 index|]
 decl_stmt|;
-name|String
-name|query
-init|=
-name|split
-index|[
-literal|1
-index|]
-decl_stmt|;
 name|EntryFetcher
 name|fetcher
 init|=
@@ -3165,10 +3155,7 @@ if|if
 condition|(
 name|engine
 operator|.
-name|toLowerCase
-argument_list|()
-operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|e
 operator|.
@@ -3184,9 +3171,6 @@ literal|"Fetcher"
 argument_list|,
 literal|""
 argument_list|)
-operator|.
-name|toLowerCase
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -3281,6 +3265,14 @@ name|empty
 argument_list|()
 return|;
 block|}
+name|String
+name|query
+init|=
+name|split
+index|[
+literal|1
+index|]
+decl_stmt|;
 name|System
 operator|.
 name|out
@@ -3494,11 +3486,16 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|ClassNotFoundException
+decl||
+name|InstantiationException
+decl||
+name|IllegalAccessException
+decl||
+name|UnsupportedLookAndFeelException
 name|e
 parameter_list|)
 block|{
-comment|// javax.swing.UnsupportedLookAndFeelException (sure; see bug #1278) or ClassNotFoundException (unsure) may be thrown
 comment|// specified look and feel does not exist on the classpath, so use system l&f
 name|UIManager
 operator|.
@@ -5316,9 +5313,26 @@ block|}
 if|if
 condition|(
 name|importResult
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Could not find a suitable import format."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|System
 operator|.
@@ -5350,23 +5364,6 @@ operator|.
 name|parserResult
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not find a suitable import format."
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}
