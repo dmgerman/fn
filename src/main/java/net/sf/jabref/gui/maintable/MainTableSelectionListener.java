@@ -811,14 +811,9 @@ block|{
 if|if
 condition|(
 name|newSelected
-operator|!=
+operator|==
 literal|null
 condition|)
-block|{
-return|return;
-comment|// More than one new selected. Do nothing.
-block|}
-else|else
 block|{
 if|if
 condition|(
@@ -846,6 +841,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+return|return;
+comment|// More than one new selected. Do nothing.
 block|}
 block|}
 block|}
@@ -1397,9 +1397,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|modelColumn
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|modelColumn
@@ -1459,20 +1461,6 @@ block|{
 comment|// First find the column on which the user has clicked.
 specifier|final
 name|int
-name|col
-init|=
-name|table
-operator|.
-name|columnAtPoint
-argument_list|(
-name|e
-operator|.
-name|getPoint
-argument_list|()
-argument_list|)
-decl_stmt|;
-specifier|final
-name|int
 name|row
 init|=
 name|table
@@ -1513,6 +1501,20 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+specifier|final
+name|int
+name|col
+init|=
+name|table
+operator|.
+name|columnAtPoint
+argument_list|(
+name|e
+operator|.
+name|getPoint
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|// get the MainTableColumn which is currently visible at col
 name|int
 name|modelIndex
@@ -1578,6 +1580,7 @@ operator|.
 name|isIconColumn
 argument_list|()
 operator|&&
+operator|(
 name|SpecialFieldsUtils
 operator|.
 name|getSpecialFieldInstanceFromFieldName
@@ -1589,6 +1592,7 @@ argument_list|()
 argument_list|)
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// handle specialfield
@@ -2438,17 +2442,9 @@ decl_stmt|;
 if|if
 condition|(
 name|specialField
-operator|!=
+operator|==
 literal|null
 condition|)
-block|{
-comment|// full pop should be shown as left click already shows short popup
-name|showDefaultPopup
-operator|=
-literal|true
-expr_stmt|;
-block|}
-else|else
 block|{
 name|String
 name|content
@@ -2509,6 +2505,14 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+comment|// full pop should be shown as left click already shows short popup
+name|showDefaultPopup
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -2640,17 +2644,8 @@ name|enabled
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|previewActive
 condition|)
-block|{
-name|panel
-operator|.
-name|hideBottomComponent
-argument_list|()
-expr_stmt|;
-block|}
-else|else
 block|{
 if|if
 condition|(
@@ -2680,6 +2675,14 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+name|panel
+operator|.
+name|hideBottomComponent
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 DECL|method|switchPreview ()
@@ -2820,6 +2823,7 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+specifier|final
 name|long
 name|QUICK_JUMP_TIMEOUT
 init|=
