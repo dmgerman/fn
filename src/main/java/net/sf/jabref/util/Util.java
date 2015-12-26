@@ -394,7 +394,7 @@ name|util
 operator|.
 name|strings
 operator|.
-name|UnicodeCharMap
+name|UnicodeToReadableCharMap
 import|;
 end_import
 
@@ -864,11 +864,11 @@ DECL|field|UNICODE_CHAR_MAP
 specifier|private
 specifier|static
 specifier|final
-name|UnicodeCharMap
+name|UnicodeToReadableCharMap
 name|UNICODE_CHAR_MAP
 init|=
 operator|new
-name|UnicodeCharMap
+name|UnicodeToReadableCharMap
 argument_list|()
 decl_stmt|;
 comment|/**      * This method returns a String similar to the one passed in, except that it is molded into a form that is      * acceptable for bibtex.      *      * Watch-out that the returned string might be of length 0 afterwards.      *      * @param key mayBeNull      */
@@ -912,7 +912,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Replace non-English characters like umlauts etc. with a sensible letter or letter combination that bibtex can      * accept. The basis for replacement is the HashMap Globals.UNICODE_CHARS.      */
+comment|/**      * Replace non-English characters like umlauts etc. with a sensible letter or letter combination that bibtex can      * accept. The basis for replacement is the HashMap UnicodeToReadableCharMap.      */
 DECL|method|replaceSpecialCharacters (String s)
 specifier|public
 specifier|static
