@@ -144,20 +144,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|JabRefFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|undo
 operator|.
 name|NamedCompound
@@ -300,12 +286,6 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|cc
 specifier|private
 specifier|final
@@ -341,6 +321,29 @@ specifier|private
 name|PositionWindow
 name|pw
 decl_stmt|;
+DECL|field|MERGE_ENTRIES
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MERGE_ENTRIES
+init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Merge entries"
+argument_list|)
+decl_stmt|;
+DECL|field|MARGIN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MARGIN
+init|=
+literal|"5px"
+decl_stmt|;
 DECL|method|MergeEntriesDialog (BasePanel panel)
 specifier|public
 name|MergeEntriesDialog
@@ -356,12 +359,7 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Merge entries"
-argument_list|)
+name|MERGE_ENTRIES
 argument_list|,
 literal|true
 argument_list|)
@@ -371,15 +369,6 @@ operator|.
 name|panel
 operator|=
 name|panel
-expr_stmt|;
-name|this
-operator|.
-name|frame
-operator|=
-name|panel
-operator|.
-name|frame
-argument_list|()
 expr_stmt|;
 comment|// Start setting up the dialog
 name|init
@@ -417,7 +406,10 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|panel
+operator|.
 name|frame
+argument_list|()
 argument_list|,
 name|Localization
 operator|.
@@ -426,12 +418,7 @@ argument_list|(
 literal|"You have to choose exactly two entries to merge."
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Merge entries"
-argument_list|)
+name|MERGE_ENTRIES
 argument_list|,
 name|JOptionPane
 operator|.
@@ -476,12 +463,7 @@ operator|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Merge entries"
-argument_list|)
+name|MERGE_ENTRIES
 argument_list|)
 expr_stmt|;
 name|FormLayout
@@ -610,12 +592,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Merge entries"
-argument_list|)
+name|MERGE_ENTRIES
 argument_list|)
 decl_stmt|;
 name|replaceentries
@@ -697,7 +674,7 @@ name|RowSpec
 operator|.
 name|decode
 argument_list|(
-literal|"5px"
+name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -709,7 +686,7 @@ name|ColumnSpec
 operator|.
 name|decode
 argument_list|(
-literal|"5px"
+name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -723,7 +700,7 @@ name|RowSpec
 operator|.
 name|decode
 argument_list|(
-literal|"5px"
+name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -737,7 +714,7 @@ name|ColumnSpec
 operator|.
 name|decode
 argument_list|(
-literal|"5px"
+name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
