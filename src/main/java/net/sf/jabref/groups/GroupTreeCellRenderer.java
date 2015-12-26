@@ -192,12 +192,12 @@ specifier|private
 name|Object
 name|highlightBorderCell
 decl_stmt|;
-DECL|field|groupRefiningIcon
+DECL|field|GROUP_REFINING_ICON
 specifier|private
 specifier|static
 specifier|final
 name|Icon
-name|groupRefiningIcon
+name|GROUP_REFINING_ICON
 init|=
 name|IconTheme
 operator|.
@@ -208,12 +208,12 @@ operator|.
 name|getSmallIcon
 argument_list|()
 decl_stmt|;
-DECL|field|groupIncludingIcon
+DECL|field|GROUP_INCLUDING_ICON
 specifier|private
 specifier|static
 specifier|final
 name|Icon
-name|groupIncludingIcon
+name|GROUP_INCLUDING_ICON
 init|=
 name|IconTheme
 operator|.
@@ -224,12 +224,12 @@ operator|.
 name|getSmallIcon
 argument_list|()
 decl_stmt|;
-DECL|field|groupRegularIcon
+DECL|field|GROUP_REGULAR_ICON
 specifier|private
 specifier|static
 specifier|final
 name|Icon
-name|groupRegularIcon
+name|GROUP_REGULAR_ICON
 init|=
 literal|null
 decl_stmt|;
@@ -372,8 +372,11 @@ operator|)
 operator|&&
 operator|(
 name|highlightBorderCell
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|value
+argument_list|)
 operator|)
 condition|)
 block|{
@@ -538,7 +541,9 @@ name|sb
 init|=
 operator|new
 name|StringBuilder
-argument_list|()
+argument_list|(
+literal|60
+argument_list|)
 decl_stmt|;
 name|sb
 operator|.
@@ -641,7 +646,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"]"
+literal|']'
 argument_list|)
 expr_stmt|;
 block|}
@@ -714,7 +719,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"]"
+literal|']'
 argument_list|)
 expr_stmt|;
 block|}
@@ -844,7 +849,7 @@ argument_list|()
 operator|!=
 name|GroupTreeCellRenderer
 operator|.
-name|groupRefiningIcon
+name|GROUP_REFINING_ICON
 condition|)
 block|{
 name|label
@@ -853,7 +858,7 @@ name|setIcon
 argument_list|(
 name|GroupTreeCellRenderer
 operator|.
-name|groupRefiningIcon
+name|GROUP_REFINING_ICON
 argument_list|)
 expr_stmt|;
 block|}
@@ -870,7 +875,7 @@ argument_list|()
 operator|!=
 name|GroupTreeCellRenderer
 operator|.
-name|groupIncludingIcon
+name|GROUP_INCLUDING_ICON
 condition|)
 block|{
 name|label
@@ -879,7 +884,7 @@ name|setIcon
 argument_list|(
 name|GroupTreeCellRenderer
 operator|.
-name|groupIncludingIcon
+name|GROUP_INCLUDING_ICON
 argument_list|)
 expr_stmt|;
 block|}
@@ -894,7 +899,7 @@ argument_list|()
 operator|!=
 name|GroupTreeCellRenderer
 operator|.
-name|groupRegularIcon
+name|GROUP_REGULAR_ICON
 condition|)
 block|{
 name|label
@@ -903,7 +908,7 @@ name|setIcon
 argument_list|(
 name|GroupTreeCellRenderer
 operator|.
-name|groupRegularIcon
+name|GROUP_REGULAR_ICON
 argument_list|)
 expr_stmt|;
 block|}
@@ -926,6 +931,7 @@ return|;
 block|}
 comment|/**      * For use when dragging: The specified cell is always rendered as selected.      *      * @param cell The cell over which the user is currently dragging.      */
 DECL|method|setHighlight1Cell (Object cell)
+specifier|public
 name|void
 name|setHighlight1Cell
 parameter_list|(
@@ -942,6 +948,7 @@ expr_stmt|;
 block|}
 comment|/**      * Highlights the specified cells (in red), or disables highlight if cells == null.      */
 DECL|method|setHighlight2Cells (Object[] cells)
+specifier|public
 name|void
 name|setHighlight2Cells
 parameter_list|(
@@ -959,6 +966,7 @@ expr_stmt|;
 block|}
 comment|/**      * Highlights the specified cells (by underlining), or disables highlight if cells == null.      */
 DECL|method|setHighlight3Cells (Object[] cells)
+specifier|public
 name|void
 name|setHighlight3Cells
 parameter_list|(
@@ -976,6 +984,7 @@ expr_stmt|;
 block|}
 comment|/**      * Highlights the specified cells (by drawing a border around it), or disables highlight if highlightBorderCell ==      * null.      */
 DECL|method|setHighlightBorderCell (Object highlightBorderCell)
+specifier|public
 name|void
 name|setHighlightBorderCell
 parameter_list|(

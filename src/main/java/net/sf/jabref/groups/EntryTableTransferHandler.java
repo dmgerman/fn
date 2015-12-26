@@ -476,6 +476,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|draggingFile
+specifier|private
+name|boolean
+name|draggingFile
+decl_stmt|;
 comment|/**      * Construct the transfer handler.      *      * @param entryTable The table this transfer handler should operate on. This argument is allowed to equal null, in      *            which case the transfer handler can assume that it works for a JabRef instance with no databases open,      *            attached to the empty tabbed pane.      * @param frame The JabRefFrame instance.      * @param panel The BasePanel this transferhandler works for.      */
 DECL|method|EntryTableTransferHandler (MainTable entryTable, JabRefFrame frame, BasePanel panel)
 specifier|public
@@ -575,23 +580,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
 name|draggingFile
 condition|)
-block|{
-comment|/* so we can assume it will never be called if entryTable==null: */
-return|return
-operator|new
-name|TransferableEntrySelection
-argument_list|(
-name|entryTable
-operator|.
-name|getSelectedEntries
-argument_list|()
-argument_list|)
-return|;
-block|}
-else|else
 block|{
 name|draggingFile
 operator|=
@@ -610,6 +600,20 @@ argument_list|()
 argument_list|)
 return|;
 comment|//.getTransferable();
+block|}
+else|else
+block|{
+comment|/* so we can assume it will never be called if entryTable==null: */
+return|return
+operator|new
+name|TransferableEntrySelection
+argument_list|(
+name|entryTable
+operator|.
+name|getSelectedEntries
+argument_list|()
+argument_list|)
+return|;
 block|}
 block|}
 comment|/**      * This method is called when stuff is drag to the component.      *      * Imports the dropped URL or plain text as a new entry in the current database.      *      */
@@ -921,11 +925,6 @@ return|return
 literal|false
 return|;
 block|}
-DECL|field|draggingFile
-specifier|private
-name|boolean
-name|draggingFile
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|exportAsDrag (JComponent comp, InputEvent e, int action)
@@ -1158,10 +1157,6 @@ block|}
 name|File
 name|tmpfile
 init|=
-name|java
-operator|.
-name|io
-operator|.
 name|File
 operator|.
 name|createTempFile
@@ -1316,26 +1311,20 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|MalformedURLException
+decl||
 name|URISyntaxException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|MalformedURLException
+name|warn
+argument_list|(
+literal|"Could not get file"
+argument_list|,
 name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 comment|// Unless an exception was thrown, we should have the sanitized path:
@@ -1669,10 +1658,7 @@ name|extension
 operator|.
 name|isPresent
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 literal|"bib"
 operator|.
 name|equals
@@ -1694,7 +1680,6 @@ name|fileName
 argument_list|)
 expr_stmt|;
 continue|continue;
-block|}
 block|}
 name|fileType
 operator|=
@@ -1847,10 +1832,6 @@ block|{
 name|File
 name|tmpfile
 init|=
-name|java
-operator|.
-name|io
-operator|.
 name|File
 operator|.
 name|createTempFile

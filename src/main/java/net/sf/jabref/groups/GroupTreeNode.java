@@ -258,20 +258,20 @@ name|DefaultMutableTreeNode
 implements|implements
 name|Transferable
 block|{
-DECL|field|flavor
+DECL|field|FLAVOR
 specifier|public
 specifier|static
 specifier|final
 name|DataFlavor
-name|flavor
+name|FLAVOR
 decl_stmt|;
-DECL|field|flavors
+DECL|field|FLAVORS
 specifier|private
 specifier|static
 specifier|final
 name|DataFlavor
 index|[]
-name|flavors
+name|FLAVORS
 decl_stmt|;
 static|static
 block|{
@@ -303,11 +303,11 @@ parameter_list|)
 block|{
 comment|// never happens
 block|}
-name|flavor
+name|FLAVOR
 operator|=
 name|df
 expr_stmt|;
-name|flavors
+name|FLAVORS
 operator|=
 operator|new
 name|DataFlavor
@@ -315,7 +315,7 @@ index|[]
 block|{
 name|GroupTreeNode
 operator|.
-name|flavor
+name|FLAVOR
 block|}
 expr_stmt|;
 block|}
@@ -418,7 +418,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
@@ -431,7 +431,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
@@ -922,78 +922,6 @@ expr_stmt|;
 block|}
 return|return
 name|searchRule
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|preorderEnumeration ()
-specifier|public
-name|Enumeration
-argument_list|<
-name|GroupTreeNode
-argument_list|>
-name|preorderEnumeration
-parameter_list|()
-block|{
-return|return
-name|super
-operator|.
-name|preorderEnumeration
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|depthFirstEnumeration ()
-specifier|public
-name|Enumeration
-argument_list|<
-name|GroupTreeNode
-argument_list|>
-name|depthFirstEnumeration
-parameter_list|()
-block|{
-return|return
-name|super
-operator|.
-name|depthFirstEnumeration
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|breadthFirstEnumeration ()
-specifier|public
-name|Enumeration
-argument_list|<
-name|GroupTreeNode
-argument_list|>
-name|breadthFirstEnumeration
-parameter_list|()
-block|{
-return|return
-name|super
-operator|.
-name|breadthFirstEnumeration
-argument_list|()
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|children ()
-specifier|public
-name|Enumeration
-argument_list|<
-name|GroupTreeNode
-argument_list|>
-name|children
-parameter_list|()
-block|{
-return|return
-name|super
-operator|.
-name|children
-argument_list|()
 return|;
 block|}
 DECL|method|canMoveUp ()
@@ -1607,7 +1535,7 @@ block|{
 return|return
 name|GroupTreeNode
 operator|.
-name|flavors
+name|FLAVORS
 return|;
 block|}
 annotation|@
@@ -1628,7 +1556,7 @@ name|equals
 argument_list|(
 name|GroupTreeNode
 operator|.
-name|flavor
+name|FLAVOR
 argument_list|)
 return|;
 block|}

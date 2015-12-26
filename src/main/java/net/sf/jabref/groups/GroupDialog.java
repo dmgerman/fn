@@ -598,16 +598,6 @@ name|TextField
 name|m_kgSearchTerm
 init|=
 operator|new
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|fieldeditors
-operator|.
 name|TextField
 argument_list|(
 literal|"keywords"
@@ -767,10 +757,10 @@ return|;
 block|}
 block|}
 decl_stmt|;
-DECL|field|m_okPressed
+DECL|field|mOkPressed
 specifier|private
 name|boolean
-name|m_okPressed
+name|mOkPressed
 decl_stmt|;
 DECL|field|m_basePanel
 specifier|private
@@ -778,15 +768,15 @@ specifier|final
 name|BasePanel
 name|m_basePanel
 decl_stmt|;
-DECL|field|m_resultingGroup
+DECL|field|mResultingGroup
 specifier|private
 name|AbstractGroup
-name|m_resultingGroup
+name|mResultingGroup
 decl_stmt|;
-DECL|field|m_undoAddPreviousEntires
+DECL|field|mUndoAddPreviousEntires
 specifier|private
 name|AbstractUndoableEdit
-name|m_undoAddPreviousEntires
+name|mUndoAddPreviousEntires
 decl_stmt|;
 DECL|field|m_editedGroup
 specifier|private
@@ -950,11 +940,14 @@ operator|new
 name|JPanel
 argument_list|()
 argument_list|,
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|GroupDialog
 operator|.
 name|INDEX_EXPLICITGROUP
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// ... for keyword group
@@ -1086,11 +1079,14 @@ operator|.
 name|getPanel
 argument_list|()
 argument_list|,
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|GroupDialog
 operator|.
 name|INDEX_KEYWORDGROUP
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// ... for search group
@@ -1168,11 +1164,14 @@ operator|.
 name|getPanel
 argument_list|()
 argument_list|,
-literal|""
-operator|+
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|GroupDialog
 operator|.
 name|INDEX_SEARCHGROUP
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// ... for buttons panel
@@ -1224,7 +1223,7 @@ name|m_ok
 argument_list|)
 expr_stmt|;
 name|JButton
-name|m_cancel
+name|mCancel
 init|=
 operator|new
 name|JButton
@@ -1241,7 +1240,7 @@ name|builderBP
 operator|.
 name|addButton
 argument_list|(
-name|m_cancel
+name|mCancel
 argument_list|)
 expr_stmt|;
 name|builderBP
@@ -1742,7 +1741,7 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
-name|m_cancel
+name|mCancel
 operator|.
 name|addActionListener
 argument_list|(
@@ -1811,7 +1810,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|m_okPressed
+name|mOkPressed
 operator|=
 literal|true
 expr_stmt|;
@@ -1831,14 +1830,14 @@ name|ExplicitGroup
 condition|)
 block|{
 comment|// keep assignments from possible previous ExplicitGroup
-name|m_resultingGroup
+name|mResultingGroup
 operator|=
 name|m_editedGroup
 operator|.
 name|deepCopy
 argument_list|()
 expr_stmt|;
-name|m_resultingGroup
+name|mResultingGroup
 operator|.
 name|setName
 argument_list|(
@@ -1851,7 +1850,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|m_resultingGroup
+name|mResultingGroup
 operator|.
 name|setHierarchicalContext
 argument_list|(
@@ -1862,7 +1861,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|m_resultingGroup
+name|mResultingGroup
 operator|=
 operator|new
 name|ExplicitGroup
@@ -1903,7 +1902,7 @@ condition|)
 block|{
 comment|// regex is correct, otherwise OK would have been disabled
 comment|// therefore I don't catch anything here
-name|m_resultingGroup
+name|mResultingGroup
 operator|=
 operator|new
 name|KeywordGroup
@@ -1962,7 +1961,7 @@ name|SearchGroup
 operator|)
 operator|)
 operator|&&
-name|m_resultingGroup
+name|mResultingGroup
 operator|.
 name|supportsAdd
 argument_list|()
@@ -1987,7 +1986,7 @@ block|{
 comment|// regex is correct, otherwise OK would have been
 comment|// disabled
 comment|// therefore I don't catch anything here
-name|m_resultingGroup
+name|mResultingGroup
 operator|=
 operator|new
 name|SearchGroup
@@ -2351,7 +2350,7 @@ name|okPressed
 parameter_list|()
 block|{
 return|return
-name|m_okPressed
+name|mOkPressed
 return|;
 block|}
 DECL|method|getResultingGroup ()
@@ -2361,7 +2360,7 @@ name|getResultingGroup
 parameter_list|()
 block|{
 return|return
-name|m_resultingGroup
+name|mResultingGroup
 return|;
 block|}
 DECL|method|setLayoutForSelectedGroup ()
@@ -2552,22 +2551,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|okEnabled
 condition|)
-block|{
-name|setDescription
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Please enter the field to search (e.g.<b>keywords</b>) and the keyword to search it for (e.g.<b>electrical</b>)."
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 if|if
 condition|(
@@ -2611,7 +2596,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|PatternSyntaxException
 name|e
 parameter_list|)
 block|{
@@ -2657,6 +2642,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+name|setDescription
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Please enter the field to search (e.g.<b>keywords</b>) and the keyword to search it for (e.g.<b>electrical</b>)."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|setNameFontItalic
 argument_list|(
 literal|true
@@ -2694,28 +2692,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|okEnabled
 condition|)
-block|{
-name|setDescription
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Please enter a search term. For example, to search all fields for<b>Smith</b>, enter:<p>"
-operator|+
-literal|"<tt>smith</tt><p>"
-operator|+
-literal|"To search the field<b>Author</b> for<b>Smith</b> and the field<b>Title</b> for<b>electrical</b>, enter:<p>"
-operator|+
-literal|"<tt>author=smith and title=electrical</tt>"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|setDescription
 argument_list|(
@@ -2761,7 +2739,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|PatternSyntaxException
 name|e
 parameter_list|)
 block|{
@@ -2781,6 +2759,25 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+else|else
+block|{
+name|setDescription
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Please enter a search term. For example, to search all fields for<b>Smith</b>, enter:<p>"
+operator|+
+literal|"<tt>smith</tt><p>"
+operator|+
+literal|"To search the field<b>Author</b> for<b>Smith</b> and the field<b>Title</b> for<b>electrical</b>, enter:<p>"
+operator|+
+literal|"<tt>author=smith and title=electrical</tt>"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 name|setNameFontItalic
 argument_list|(
@@ -2982,7 +2979,7 @@ operator|new
 name|AbstractGroup
 index|[]
 block|{
-name|m_resultingGroup
+name|mResultingGroup
 block|}
 operator|,
 name|entries
@@ -3004,15 +3001,15 @@ if|if
 condition|(
 operator|!
 operator|(
-name|m_resultingGroup
+name|mResultingGroup
 operator|instanceof
 name|ExplicitGroup
 operator|)
 condition|)
 block|{
-name|m_undoAddPreviousEntires
+name|mUndoAddPreviousEntires
 operator|=
-name|m_resultingGroup
+name|mResultingGroup
 operator|.
 name|add
 argument_list|(
@@ -3184,7 +3181,7 @@ name|s
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|"^"
+literal|'^'
 argument_list|)
 decl_stmt|;
 if|if
@@ -3255,7 +3252,7 @@ name|getUndoForAddPreviousEntries
 parameter_list|()
 block|{
 return|return
-name|m_undoAddPreviousEntires
+name|mUndoAddPreviousEntires
 return|;
 block|}
 end_function
