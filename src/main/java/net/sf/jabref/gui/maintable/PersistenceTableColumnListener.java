@@ -144,12 +144,12 @@ name|DEFAULT_ENABLED
 init|=
 literal|true
 decl_stmt|;
-DECL|field|simpleClassName
+DECL|field|SIMPLE_CLASS_NAME
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|simpleClassName
+name|SIMPLE_CLASS_NAME
 init|=
 name|PersistenceTableColumnListener
 operator|.
@@ -165,6 +165,15 @@ specifier|private
 specifier|final
 name|MainTable
 name|mainTable
+decl_stmt|;
+DECL|field|RECEIVED_NULL_EVENT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|RECEIVED_NULL_EVENT
+init|=
+literal|" received null event"
 decl_stmt|;
 comment|/**      * @param mainTable      */
 DECL|method|PersistenceTableColumnListener (final MainTable mainTable)
@@ -427,9 +436,9 @@ literal|null
 operator|:
 name|PersistenceTableColumnListener
 operator|.
-name|simpleClassName
+name|SIMPLE_CLASS_NAME
 operator|+
-literal|" received null event"
+name|RECEIVED_NULL_EVENT
 assert|;
 name|updateColumnPrefs
 argument_list|()
@@ -454,9 +463,9 @@ literal|null
 operator|:
 name|PersistenceTableColumnListener
 operator|.
-name|simpleClassName
+name|SIMPLE_CLASS_NAME
 operator|+
-literal|" received null event"
+name|RECEIVED_NULL_EVENT
 assert|;
 name|updateColumnPrefs
 argument_list|()
@@ -481,9 +490,9 @@ literal|null
 operator|:
 name|PersistenceTableColumnListener
 operator|.
-name|simpleClassName
+name|SIMPLE_CLASS_NAME
 operator|+
-literal|" received null event"
+name|RECEIVED_NULL_EVENT
 assert|;
 comment|// not really moved, ignore ...
 if|if
@@ -524,9 +533,9 @@ literal|null
 operator|:
 name|PersistenceTableColumnListener
 operator|.
-name|simpleClassName
+name|SIMPLE_CLASS_NAME
 operator|+
-literal|" received null event"
+name|RECEIVED_NULL_EVENT
 assert|;
 name|updateColumnPrefs
 argument_list|()
