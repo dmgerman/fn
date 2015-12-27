@@ -299,12 +299,12 @@ DECL|class|OOUtil
 class|class
 name|OOUtil
 block|{
-DECL|field|htmlTag
+DECL|field|HTML_TAG
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|htmlTag
+name|HTML_TAG
 init|=
 name|Pattern
 operator|.
@@ -313,15 +313,24 @@ argument_list|(
 literal|"</?[a-z]+>"
 argument_list|)
 decl_stmt|;
-DECL|field|postformatter
+DECL|field|POSTFORMATTER
 specifier|static
 specifier|final
 name|OOPreFormatter
-name|postformatter
+name|POSTFORMATTER
 init|=
 operator|new
 name|OOPreFormatter
 argument_list|()
+decl_stmt|;
+DECL|field|UNIQUEFIER_FIELD
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|UNIQUEFIER_FIELD
+init|=
+literal|"uniq"
 decl_stmt|;
 comment|/**      * Insert a reference, formatted using a Layout, at the position of a given cursor.      * @param text The text to insert in.      * @param cursor The cursor giving the insert location.      * @param layout The Layout to format the reference with.      * @param parStyle The name of the paragraph style to use.      * @param entry The entry to insert.      * @param database The database the entry belongs to.      * @param uniquefier Uniqiefier letter, if any, to append to the entry's year.      * @throws Exception      */
 DECL|method|insertFullReferenceAtCurrentLocation (XText text, XTextCursor cursor, Layout layout, String parStyle, BibEntry entry, BibDatabase database, String uniquefier)
@@ -354,12 +363,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-specifier|final
-name|String
-name|UNIQUEFIER_FIELD
-init|=
-literal|"uniq"
-decl_stmt|;
 comment|// Backup the value of the uniq field, just in case the entry already has it:
 name|String
 name|oldUniqVal
@@ -372,6 +375,23 @@ name|UNIQUEFIER_FIELD
 argument_list|)
 decl_stmt|;
 comment|// Set the uniq field with the supplied uniquefier:
+if|if
+condition|(
+name|uniquefier
+operator|==
+literal|null
+condition|)
+block|{
+name|entry
+operator|.
+name|clearField
+argument_list|(
+name|UNIQUEFIER_FIELD
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|entry
 operator|.
 name|setField
@@ -381,6 +401,7 @@ argument_list|,
 name|uniquefier
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Do the layout for this entry:
 name|String
 name|lText
@@ -395,6 +416,23 @@ name|database
 argument_list|)
 decl_stmt|;
 comment|// Afterwards, reset the old value:
+if|if
+condition|(
+name|oldUniqVal
+operator|==
+literal|null
+condition|)
+block|{
+name|entry
+operator|.
+name|clearField
+argument_list|(
+name|UNIQUEFIER_FIELD
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|entry
 operator|.
 name|setField
@@ -404,6 +442,7 @@ argument_list|,
 name|oldUniqVal
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Insert the formatted text:
 name|OOUtil
 operator|.
@@ -547,7 +586,7 @@ name|m
 init|=
 name|OOUtil
 operator|.
-name|htmlTag
+name|HTML_TAG
 operator|.
 name|matcher
 argument_list|(
@@ -596,15 +635,19 @@ name|cursor
 argument_list|,
 name|ss
 argument_list|,
+operator|(
 name|bold
 operator|%
 literal|2
+operator|)
 operator|>
 literal|0
 argument_list|,
+operator|(
 name|italic
 operator|%
 literal|2
+operator|)
 operator|>
 literal|0
 argument_list|,
@@ -869,15 +912,19 @@ argument_list|(
 name|piv
 argument_list|)
 argument_list|,
+operator|(
 name|bold
 operator|%
 literal|2
+operator|)
 operator|>
 literal|0
 argument_list|,
+operator|(
 name|italic
 operator|%
 literal|2
+operator|)
 operator|>
 literal|0
 argument_list|,
@@ -1687,9 +1734,11 @@ name|OpenOfficePanel
 operator|.
 name|postLayoutSupported
 operator|&&
+operator|(
 name|value
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|e
@@ -1700,7 +1749,7 @@ name|field
 argument_list|,
 name|OOUtil
 operator|.
-name|postformatter
+name|POSTFORMATTER
 operator|.
 name|format
 argument_list|(

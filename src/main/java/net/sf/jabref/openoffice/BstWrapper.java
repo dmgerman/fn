@@ -260,6 +260,20 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|BIB_ITEM_TAG
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|BIB_ITEM_TAG
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\\\[a-zA-Z]*item\\{.*\\}"
+argument_list|)
+decl_stmt|;
 DECL|method|BstWrapper ()
 specifier|public
 name|BstWrapper
@@ -328,20 +342,6 @@ name|result
 argument_list|)
 return|;
 block|}
-DECL|field|bibitemTag
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|bibitemTag
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\\\[a-zA-Z]*item\\{.*\\}"
-argument_list|)
-decl_stmt|;
 DECL|method|parseResult (String result)
 specifier|private
 name|Map
@@ -375,7 +375,7 @@ name|m
 init|=
 name|BstWrapper
 operator|.
-name|bibitemTag
+name|BIB_ITEM_TAG
 operator|.
 name|matcher
 argument_list|(
