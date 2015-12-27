@@ -10392,53 +10392,6 @@ block|}
 block|}
 end_function
 
-begin_comment
-comment|/**      * Stores the source view in the entry editor, if one is open, has the source view selected and the source has been      * edited.      *      * @return boolean false if there is a validation error in the source panel, true otherwise.      */
-end_comment
-
-begin_function
-DECL|method|entryEditorAllowsChange ()
-specifier|public
-name|boolean
-name|entryEditorAllowsChange
-parameter_list|()
-block|{
-name|Component
-name|c
-init|=
-name|splitPane
-operator|.
-name|getBottomComponent
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|c
-operator|instanceof
-name|EntryEditor
-condition|)
-block|{
-return|return
-operator|(
-operator|(
-name|EntryEditor
-operator|)
-name|c
-operator|)
-operator|.
-name|lastSourceAccepted
-argument_list|()
-return|;
-block|}
-else|else
-block|{
-return|return
-literal|true
-return|;
-block|}
-block|}
-end_function
-
 begin_function
 DECL|method|isShowingEditor ()
 specifier|private
