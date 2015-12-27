@@ -118,15 +118,15 @@ name|RemoveFromGroupAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|m_node
+DECL|field|mNode
 specifier|private
 name|GroupTreeNode
-name|m_node
+name|mNode
 decl_stmt|;
-DECL|field|m_panel
+DECL|field|mPanel
 specifier|private
 name|BasePanel
-name|m_panel
+name|mPanel
 decl_stmt|;
 DECL|method|RemoveFromGroupAction (GroupTreeNode node, BasePanel panel)
 specifier|public
@@ -150,11 +150,11 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|m_node
+name|mNode
 operator|=
 name|node
 expr_stmt|;
-name|m_panel
+name|mPanel
 operator|=
 name|panel
 expr_stmt|;
@@ -184,7 +184,7 @@ name|GroupTreeNode
 name|node
 parameter_list|)
 block|{
-name|m_node
+name|mNode
 operator|=
 name|node
 expr_stmt|;
@@ -198,7 +198,7 @@ name|BasePanel
 name|panel
 parameter_list|)
 block|{
-name|m_panel
+name|mPanel
 operator|=
 name|panel
 expr_stmt|;
@@ -226,23 +226,23 @@ operator|new
 name|AbstractGroup
 index|[]
 block|{
-name|m_node
+name|mNode
 operator|.
 name|getGroup
 argument_list|()
 block|}
 operator|,
-name|m_panel
+name|mPanel
 operator|.
 name|getSelectedEntries
 argument_list|()
 operator|,
-name|m_panel
+name|mPanel
 operator|.
 name|getDatabase
 argument_list|()
 operator|,
-name|m_panel
+name|mPanel
 operator|.
 name|frame
 argument_list|()
@@ -258,11 +258,11 @@ begin_decl_stmt
 name|AbstractUndoableEdit
 name|undo
 init|=
-name|m_node
+name|mNode
 operator|.
 name|removeFromGroup
 argument_list|(
-name|m_panel
+name|mPanel
 operator|.
 name|getSelectedEntries
 argument_list|()
@@ -284,7 +284,7 @@ block|}
 end_if
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|undoManager
 operator|.
@@ -296,7 +296,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|markBaseChanged
 argument_list|()
@@ -304,7 +304,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|updateEntryEditorIfShowing
 argument_list|()
@@ -312,7 +312,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|getGroupSelector
 argument_list|()

@@ -116,10 +116,10 @@ name|Vector
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|m_revalidate
+DECL|field|mRevalidate
 specifier|private
 name|boolean
-name|m_revalidate
+name|mRevalidate
 init|=
 literal|true
 decl_stmt|;
@@ -325,7 +325,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|m_revalidate
+name|mRevalidate
 condition|)
 block|{
 name|m_groupSelector
@@ -400,7 +400,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|m_revalidate
+name|mRevalidate
 condition|)
 block|{
 name|m_groupSelector
@@ -420,7 +420,7 @@ name|boolean
 name|revalidate
 parameter_list|)
 block|{
-name|m_revalidate
+name|mRevalidate
 operator|=
 name|revalidate
 expr_stmt|;

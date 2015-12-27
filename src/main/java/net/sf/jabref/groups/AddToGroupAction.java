@@ -170,10 +170,10 @@ name|AddToGroupAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|m_node
+DECL|field|mNode
 specifier|private
 name|GroupTreeNode
-name|m_node
+name|mNode
 decl_stmt|;
 DECL|field|m_move
 specifier|private
@@ -181,10 +181,10 @@ specifier|final
 name|boolean
 name|m_move
 decl_stmt|;
-DECL|field|m_panel
+DECL|field|mPanel
 specifier|private
 name|BasePanel
-name|m_panel
+name|mPanel
 decl_stmt|;
 comment|/**      * @param move If true, remove node from all other groups.      */
 DECL|method|AddToGroupAction (GroupTreeNode node, boolean move, BasePanel panel)
@@ -212,7 +212,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|m_node
+name|mNode
 operator|=
 name|node
 expr_stmt|;
@@ -220,7 +220,7 @@ name|m_move
 operator|=
 name|move
 expr_stmt|;
-name|m_panel
+name|mPanel
 operator|=
 name|panel
 expr_stmt|;
@@ -266,7 +266,7 @@ name|BasePanel
 name|panel
 parameter_list|)
 block|{
-name|m_panel
+name|mPanel
 operator|=
 name|panel
 expr_stmt|;
@@ -280,7 +280,7 @@ name|GroupTreeNode
 name|node
 parameter_list|)
 block|{
-name|m_node
+name|mNode
 operator|=
 name|node
 expr_stmt|;
@@ -301,7 +301,7 @@ name|BibEntry
 index|[]
 name|entries
 init|=
-name|m_panel
+name|mPanel
 operator|.
 name|getSelectedEntries
 argument_list|()
@@ -335,7 +335,7 @@ operator|(
 operator|(
 name|GroupTreeNode
 operator|)
-name|m_node
+name|mNode
 operator|.
 name|getRoot
 argument_list|()
@@ -467,7 +467,7 @@ operator|-
 literal|1
 index|]
 operator|=
-name|m_node
+name|mNode
 operator|.
 name|getGroup
 argument_list|()
@@ -483,12 +483,12 @@ name|groups
 argument_list|,
 name|entries
 argument_list|,
-name|m_panel
+name|mPanel
 operator|.
 name|getDatabase
 argument_list|()
 argument_list|,
-name|m_panel
+name|mPanel
 operator|.
 name|frame
 argument_list|()
@@ -513,7 +513,7 @@ operator|new
 name|AbstractGroup
 index|[]
 block|{
-name|m_node
+name|mNode
 operator|.
 name|getGroup
 argument_list|()
@@ -521,12 +521,12 @@ block|}
 operator|,
 name|entries
 operator|,
-name|m_panel
+name|mPanel
 operator|.
 name|getDatabase
 argument_list|()
 operator|,
-name|m_panel
+name|mPanel
 operator|.
 name|frame
 argument_list|()
@@ -552,7 +552,7 @@ comment|// edit has to be stored:
 end_comment
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|storeCurrentEdit
 argument_list|()
@@ -642,7 +642,7 @@ comment|// then add
 name|AbstractUndoableEdit
 name|undoAdd
 init|=
-name|m_node
+name|mNode
 operator|.
 name|addToGroup
 argument_list|(
@@ -670,7 +670,7 @@ block|{
 name|AbstractUndoableEdit
 name|undoAdd
 init|=
-name|m_node
+name|mNode
 operator|.
 name|addToGroup
 argument_list|(
@@ -706,7 +706,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|undoManager
 operator|.
@@ -718,7 +718,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|markBaseChanged
 argument_list|()
@@ -726,7 +726,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|updateEntryEditorIfShowing
 argument_list|()
@@ -734,7 +734,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|getGroupSelector
 argument_list|()
