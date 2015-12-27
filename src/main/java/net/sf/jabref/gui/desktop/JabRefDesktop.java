@@ -728,7 +728,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"psviewer"
+name|JabRefPreferences
+operator|.
+name|PSVIEWER
 argument_list|)
 decl_stmt|;
 name|String
@@ -771,7 +773,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|/*                      * cmdArray[0] = Globals.prefs.get("psviewer"); cmdArray[1] =                      * link; Process child = Runtime.getRuntime().exec(                      * cmdArray[0] + " " + cmdArray[1]);                      */
+comment|/*                      * cmdArray[0] = Globals.prefs.get(JabRefPreferences.PSVIEWER); cmdArray[1] =                      * link; Process child = Runtime.getRuntime().exec(                      * cmdArray[0] + " " + cmdArray[1]);                      */
 block|}
 else|else
 block|{
@@ -857,7 +859,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"psviewer"
+name|JabRefPreferences
+operator|.
+name|PSVIEWER
 argument_list|)
 operator|+
 literal|" "
@@ -917,7 +921,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"psviewer"
+name|JabRefPreferences
+operator|.
+name|PSVIEWER
 argument_list|)
 decl_stmt|;
 name|String
@@ -994,7 +1000,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"psviewer"
+name|JabRefPreferences
+operator|.
+name|PSVIEWER
 argument_list|)
 decl_stmt|;
 name|String
@@ -1060,7 +1068,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"pdfviewer"
+name|JabRefPreferences
+operator|.
+name|PDFVIEWER
 argument_list|)
 operator|+
 literal|" #"

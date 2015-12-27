@@ -12276,7 +12276,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"savedSession"
+name|JabRefPreferences
+operator|.
+name|SAVED_SESSION
 argument_list|,
 name|names
 argument_list|)
@@ -12367,7 +12369,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"savedSession"
+name|JabRefPreferences
+operator|.
+name|SAVED_SESSION
 argument_list|)
 operator|==
 literal|null
@@ -12505,7 +12509,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"savedSession"
+name|JabRefPreferences
+operator|.
+name|SAVED_SESSION
 argument_list|)
 decl_stmt|;
 name|ArrayList

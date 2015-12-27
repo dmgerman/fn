@@ -612,7 +612,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"customImportFormat"
+name|JabRefPreferences
+operator|.
+name|CUSTOM_IMPORT_FORMAT
 operator|+
 name|i
 argument_list|)
@@ -657,7 +659,7 @@ operator|+
 literal|" from preferences. Will ignore."
 argument_list|)
 expr_stmt|;
-comment|// Globals.prefs.remove("customImportFormat"+i);
+comment|// Globals.prefs.remove(JabRefPreferences.CUSTOM_IMPORT_FORMAT+i);
 block|}
 name|i
 operator|++
@@ -762,7 +764,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"customImportFormat"
+name|JabRefPreferences
+operator|.
+name|CUSTOM_IMPORT_FORMAT
 operator|+
 name|i
 argument_list|,
@@ -796,7 +800,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"customImportFormat"
+name|JabRefPreferences
+operator|.
+name|CUSTOM_IMPORT_FORMAT
 operator|+
 name|i
 argument_list|)
@@ -813,7 +819,9 @@ name|prefs
 operator|.
 name|remove
 argument_list|(
-literal|"customImportFormat"
+name|JabRefPreferences
+operator|.
+name|CUSTOM_IMPORT_FORMAT
 operator|+
 name|i
 argument_list|)

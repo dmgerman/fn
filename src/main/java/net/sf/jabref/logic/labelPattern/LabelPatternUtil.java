@@ -2123,7 +2123,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"KeyPatternRegex"
+name|JabRefPreferences
+operator|.
+name|KEY_PATTERN_REGEX
 argument_list|)
 decl_stmt|;
 if|if
@@ -2153,7 +2155,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"KeyPatternReplacement"
+name|JabRefPreferences
+operator|.
+name|KEY_PATTERN_REPLACEMENT
 argument_list|)
 decl_stmt|;
 name|key
