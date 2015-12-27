@@ -637,7 +637,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"<strong>(\\d+)</strong> results found"
+literal|"<strong>(\\d+,*\\d*)</strong> results found"
 argument_list|)
 decl_stmt|;
 DECL|field|MAX_HITS_PATTERN
@@ -651,7 +651,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"Result \\d+&ndash; \\d+ of (\\d+)"
+literal|"Result \\d+,*\\d*&ndash; \\d+,*\\d* of (\\d+,*\\d*)"
 argument_list|)
 decl_stmt|;
 DECL|field|FULL_CITATION_PATTERN
@@ -891,6 +891,11 @@ argument_list|(
 name|url
 argument_list|)
 decl_stmt|;
+name|String
+name|resultsFound
+init|=
+literal|"<div id=\"resfound\">"
+decl_stmt|;
 name|int
 name|hits
 init|=
@@ -898,7 +903,7 @@ name|getNumberOfHits
 argument_list|(
 name|page
 argument_list|,
-literal|"<div id=\"resfound\">"
+name|resultsFound
 argument_list|,
 name|ACMPortalFetcher
 operator|.
@@ -912,7 +917,7 @@ name|page
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div id=\"resfound\">"
+name|resultsFound
 argument_list|)
 decl_stmt|;
 if|if
@@ -930,35 +935,12 @@ name|substring
 argument_list|(
 name|index
 operator|+
-literal|5
-argument_list|)
-expr_stmt|;
-name|index
-operator|=
-name|page
+name|resultsFound
 operator|.
-name|indexOf
-argument_list|(
-literal|"<div id=\"resfound\">"
+name|length
+argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|index
-operator|>=
-literal|0
-condition|)
-block|{
-name|page
-operator|=
-name|page
-operator|.
-name|substring
-argument_list|(
-name|index
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -995,6 +977,52 @@ expr_stmt|;
 return|return
 literal|false
 return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|hits
+operator|>
+literal|20
+condition|)
+block|{
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"%0 entries found. To reduce server load, only %1 will be downloaded."
+argument_list|,
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|hits
+argument_list|)
+argument_list|,
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|PER_PAGE
+argument_list|)
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Search ACM Portal"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
+argument_list|)
+expr_stmt|;
 block|}
 name|hits
 operator|=
@@ -2438,17 +2466,34 @@ condition|)
 block|{
 try|try
 block|{
-return|return
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
+name|String
+name|number
+init|=
 name|m
 operator|.
 name|group
 argument_list|(
 literal|1
 argument_list|)
+decl_stmt|;
+name|number
+operator|=
+name|number
+operator|.
+name|replaceAll
+argument_list|(
+literal|","
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+comment|// Remove , as in 1,234
+return|return
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|number
 argument_list|)
 return|;
 block|}
