@@ -3011,7 +3011,7 @@ name|data
 init|=
 name|ClipBoardManager
 operator|.
-name|clipBoard
+name|CLIPBOARD
 operator|.
 name|getClipboardContents
 argument_list|()

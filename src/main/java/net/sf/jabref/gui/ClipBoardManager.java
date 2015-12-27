@@ -180,12 +180,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|clipBoard
+DECL|field|CLIPBOARD
 specifier|public
 specifier|static
 specifier|final
 name|ClipBoardManager
-name|clipBoard
+name|CLIPBOARD
 init|=
 operator|new
 name|ClipBoardManager

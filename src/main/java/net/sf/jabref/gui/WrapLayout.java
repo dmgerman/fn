@@ -202,12 +202,14 @@ name|targetWidth
 operator|==
 literal|0
 condition|)
+block|{
 name|targetWidth
 operator|=
 name|Integer
 operator|.
 name|MAX_VALUE
 expr_stmt|;
+block|}
 name|int
 name|hgap
 init|=
@@ -333,11 +335,13 @@ decl_stmt|;
 comment|//  Can't add the component to current row. Start a new row.
 if|if
 condition|(
+operator|(
 name|rowWidth
 operator|+
 name|d
 operator|.
 name|width
+operator|)
 operator|>
 name|maxWidth
 condition|)
@@ -421,9 +425,11 @@ name|insets
 operator|.
 name|bottom
 operator|+
+operator|(
 name|vgap
 operator|*
 literal|2
+operator|)
 expr_stmt|;
 comment|//	When using a scroll pane or the DecoratedLookAndFeel we need to
 comment|//  make sure the preferred size is less than the size of the

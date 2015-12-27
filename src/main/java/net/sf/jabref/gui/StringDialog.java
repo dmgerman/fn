@@ -586,6 +586,7 @@ name|helpAction
 decl_stmt|;
 DECL|field|pw
 specifier|private
+specifier|final
 name|PositionWindow
 name|pw
 decl_stmt|;
@@ -1131,9 +1132,25 @@ name|panel
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|setTitle
+argument_list|(
+name|GUIGlobals
+operator|.
+name|stringsTitle
+operator|+
+literal|": "
+operator|+
+name|GUIGlobals
+operator|.
+name|untitledTitle
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|setTitle
 argument_list|(
@@ -1150,22 +1167,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|setTitle
-argument_list|(
-name|GUIGlobals
-operator|.
-name|stringsTitle
-operator|+
-literal|": "
-operator|+
-name|GUIGlobals
-operator|.
-name|untitledTitle
 argument_list|)
 expr_stmt|;
 block|}
@@ -1250,6 +1251,7 @@ extends|extends
 name|JTable
 block|{
 DECL|field|sp
+specifier|private
 specifier|final
 name|JScrollPane
 name|sp
@@ -1540,11 +1542,13 @@ extends|extends
 name|AbstractTableModel
 block|{
 DECL|field|tbase
+specifier|private
 specifier|final
 name|BibDatabase
 name|tbase
 decl_stmt|;
 DECL|field|parent
+specifier|private
 specifier|final
 name|StringDialog
 name|parent
@@ -2152,9 +2156,7 @@ name|closeAction
 init|=
 operator|new
 name|CloseAction
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 decl_stmt|;
 DECL|class|CloseAction
 class|class
@@ -2162,18 +2164,10 @@ name|CloseAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|parent
-specifier|final
-name|StringDialog
-name|parent
-decl_stmt|;
-DECL|method|CloseAction (StringDialog parent)
+DECL|method|CloseAction ()
 specifier|public
 name|CloseAction
-parameter_list|(
-name|StringDialog
-name|parent
-parameter_list|)
+parameter_list|()
 block|{
 name|super
 argument_list|(
@@ -2193,12 +2187,6 @@ argument_list|(
 literal|"Close dialog"
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|parent
-operator|=
-name|parent
 expr_stmt|;
 block|}
 annotation|@
@@ -2229,6 +2217,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|parent
+specifier|private
 specifier|final
 name|StringDialog
 name|parent
@@ -2518,6 +2507,8 @@ block|}
 block|}
 block|}
 DECL|field|saveAction
+specifier|private
+specifier|final
 name|SaveDatabaseAction
 name|saveAction
 init|=
@@ -2535,6 +2526,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|parent
+specifier|private
 specifier|final
 name|StringDialog
 name|parent
@@ -2607,6 +2599,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|parent
+specifier|private
 specifier|final
 name|StringDialog
 name|parent

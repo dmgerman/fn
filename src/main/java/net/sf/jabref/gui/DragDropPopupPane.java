@@ -52,6 +52,7 @@ name|DragDropPane
 block|{
 DECL|field|popupMenu
 specifier|private
+specifier|final
 name|JPopupMenu
 name|popupMenu
 decl_stmt|;

@@ -52,7 +52,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|List
 import|;
 end_import
 
@@ -219,7 +219,7 @@ decl_stmt|;
 DECL|field|duplicates
 specifier|private
 specifier|final
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 index|[]
@@ -227,7 +227,7 @@ argument_list|>
 name|duplicates
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -252,31 +252,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-specifier|final
-name|NamedCompound
-name|ce
-init|=
-operator|new
-name|NamedCompound
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"duplicate removal"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|int
-name|duplicateCounter
-init|=
-literal|0
-decl_stmt|;
-name|boolean
-name|autoRemoveExactDuplicates
-init|=
-literal|false
-decl_stmt|;
 name|panel
 operator|.
 name|output
@@ -388,7 +363,7 @@ init|=
 literal|0
 decl_stmt|;
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -400,7 +375,7 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -410,6 +385,16 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
+decl_stmt|;
+name|int
+name|duplicateCounter
+init|=
+literal|0
+decl_stmt|;
+name|boolean
+name|autoRemoveExactDuplicates
+init|=
+literal|false
 decl_stmt|;
 synchronized|synchronized
 init|(
@@ -464,8 +449,8 @@ comment|// Ignore
 block|}
 block|}
 else|else
-comment|// duplicates found
 block|{
+comment|// duplicates found
 name|BibEntry
 index|[]
 name|be
@@ -562,9 +547,9 @@ init|=
 operator|new
 name|DuplicateCallBack
 argument_list|(
-name|panel
+name|JabRef
 operator|.
-name|frame
+name|jrf
 argument_list|,
 name|be
 index|[
@@ -751,6 +736,21 @@ block|}
 block|}
 block|}
 block|}
+specifier|final
+name|NamedCompound
+name|ce
+init|=
+operator|new
+name|NamedCompound
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"duplicate removal"
+argument_list|)
+argument_list|)
+decl_stmt|;
 specifier|final
 name|int
 name|dupliC
@@ -1089,7 +1089,7 @@ name|finished
 return|;
 block|}
 comment|// Thread cancel option
-comment|// no synchronized used because no "realy" critical situations expected
+comment|// no synchronized used because no "really" critical situations expected
 DECL|method|setFinished ()
 specifier|public
 name|void
@@ -1116,10 +1116,6 @@ name|reply
 init|=
 operator|-
 literal|1
-decl_stmt|;
-DECL|field|diag
-name|DuplicateResolverDialog
-name|diag
 decl_stmt|;
 DECL|field|frame
 specifier|private
@@ -1220,8 +1216,9 @@ name|void
 name|update
 parameter_list|()
 block|{
+name|DuplicateResolverDialog
 name|diag
-operator|=
+init|=
 operator|new
 name|DuplicateResolverDialog
 argument_list|(
@@ -1233,7 +1230,7 @@ name|two
 argument_list|,
 name|dialogType
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|diag
 operator|.
 name|setVisible

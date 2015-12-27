@@ -1349,6 +1349,7 @@ implements|implements
 name|TableCellRenderer
 block|{
 DECL|field|label
+specifier|private
 specifier|final
 name|JLabel
 name|label
@@ -1413,6 +1414,7 @@ extends|extends
 name|JTable
 block|{
 DECL|field|renderer
+specifier|private
 specifier|final
 name|PreviewRenderer
 name|renderer

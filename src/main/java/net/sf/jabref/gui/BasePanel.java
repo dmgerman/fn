@@ -1341,6 +1341,8 @@ name|JSplitPane
 name|splitPane
 decl_stmt|;
 DECL|field|frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -3428,6 +3430,8 @@ argument_list|()
 block|{
 name|String
 name|errorMessage
+init|=
+literal|""
 decl_stmt|;
 name|boolean
 name|connectToDB
@@ -3715,8 +3719,9 @@ comment|// if no error, report success
 if|if
 condition|(
 name|errorMessage
-operator|==
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 if|if
@@ -3789,7 +3794,7 @@ argument_list|)
 expr_stmt|;
 name|errorMessage
 operator|=
-literal|null
+literal|""
 expr_stmt|;
 block|}
 block|}
@@ -13764,15 +13769,9 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|!
-operator|(
 name|entry
-operator|.
-name|equals
-argument_list|(
+operator|!=
 name|showing
-argument_list|)
-operator|)
 condition|)
 block|{
 comment|// Add the entry we are leaving to the history:

@@ -312,16 +312,19 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|method|UrlDragDrop (EntryEditor _editor, JabRefFrame _frame, FieldEditor _feditor)
+DECL|method|UrlDragDrop (final EntryEditor _editor, final JabRefFrame _frame, final FieldEditor _feditor)
 specifier|public
 name|UrlDragDrop
 parameter_list|(
+specifier|final
 name|EntryEditor
 name|_editor
 parameter_list|,
+specifier|final
 name|JabRefFrame
 name|_frame
 parameter_list|,
+specifier|final
 name|FieldEditor
 name|_feditor
 parameter_list|)
@@ -405,13 +408,15 @@ specifier|final
 name|int
 name|id
 decl_stmt|;
-DECL|method|JOptionChoice (String _label, int _id)
+DECL|method|JOptionChoice (final String _label, final int _id)
 specifier|public
 name|JOptionChoice
 parameter_list|(
+specifier|final
 name|String
 name|_label
 parameter_list|,
+specifier|final
 name|int
 name|_id
 parameter_list|)

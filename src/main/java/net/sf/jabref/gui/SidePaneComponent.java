@@ -346,6 +346,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|hideAway ()
+specifier|private
 name|void
 name|hideAway
 parameter_list|()
