@@ -322,7 +322,9 @@ name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
-literal|"Directory"
+name|Globals
+operator|.
+name|DIR_SUFFIX
 argument_list|)
 block|}
 expr_stmt|;

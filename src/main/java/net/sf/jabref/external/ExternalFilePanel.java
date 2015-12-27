@@ -2402,7 +2402,9 @@ name|get
 argument_list|(
 name|fieldName
 operator|+
-literal|"Directory"
+name|Globals
+operator|.
+name|DIR_SUFFIX
 argument_list|)
 operator|==
 literal|null

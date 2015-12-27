@@ -218,6 +218,15 @@ name|FOLDER_FIELD
 init|=
 literal|"folder"
 decl_stmt|;
+DECL|field|DIR_SUFFIX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DIR_SUFFIX
+init|=
+literal|"Directory"
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static

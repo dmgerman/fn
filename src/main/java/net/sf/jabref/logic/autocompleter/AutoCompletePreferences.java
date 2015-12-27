@@ -24,7 +24,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
+name|Map
 import|;
 end_import
 
@@ -107,13 +107,13 @@ name|PREF_COMPLETE_FIELDS
 init|=
 literal|"autoCompleteFields"
 decl_stmt|;
-DECL|method|putDefaults (HashMap<String, Object> defaults)
+DECL|method|putDefaults (Map<String, Object> defaults)
 specifier|public
 specifier|static
 name|void
 name|putDefaults
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,

@@ -642,7 +642,9 @@ operator|.
 name|getExtension
 argument_list|()
 operator|+
-literal|"Directory"
+name|Globals
+operator|.
+name|DIR_SUFFIX
 argument_list|)
 condition|)
 block|{
@@ -661,7 +663,9 @@ operator|.
 name|getExtension
 argument_list|()
 operator|+
-literal|"Directory"
+name|Globals
+operator|.
+name|DIR_SUFFIX
 argument_list|)
 argument_list|)
 expr_stmt|;

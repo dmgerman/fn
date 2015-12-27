@@ -24,7 +24,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
+name|List
 import|;
 end_import
 
@@ -34,7 +34,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Map
 import|;
 end_import
 
@@ -528,13 +528,13 @@ name|CLEANUP_CONVERTTOBIBLATEX
 init|=
 literal|"CleanUpConvertToBiblatex"
 decl_stmt|;
-DECL|method|putDefaults (HashMap<String, Object> defaults)
+DECL|method|putDefaults (Map<String, Object> defaults)
 specifier|public
 specifier|static
 name|void
 name|putDefaults
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
