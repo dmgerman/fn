@@ -20,6 +20,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|awt
+operator|.
+name|Dimension
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -43,6 +53,26 @@ operator|.
 name|swing
 operator|.
 name|JOptionPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JScrollPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JTextArea
 import|;
 end_import
 
@@ -76,6 +106,10 @@ name|Localization
 import|;
 end_import
 
+begin_comment
+comment|/**  * Class for generating a dialog showing warnings from ParserResult  *  */
+end_comment
+
 begin_class
 DECL|class|ParserResultWarningDialog
 specifier|public
@@ -83,15 +117,17 @@ class|class
 name|ParserResultWarningDialog
 block|{
 comment|/**      * Shows a dialog with the warnings from an import or open of a file      *      * @param parserResult - ParserResult for the current import/open      * @param jabRefFrame - the JabRefFrame      */
-DECL|method|showParserResultWarningDialog (ParserResult parserResult, JabRefFrame jabRefFrame)
+DECL|method|showParserResultWarningDialog (final ParserResult parserResult, final JabRefFrame jabRefFrame)
 specifier|public
 specifier|static
 name|void
 name|showParserResultWarningDialog
 parameter_list|(
+specifier|final
 name|ParserResult
 name|parserResult
 parameter_list|,
+specifier|final
 name|JabRefFrame
 name|jabRefFrame
 parameter_list|)
@@ -116,31 +152,27 @@ name|parserResult
 argument_list|,
 name|jabRefFrame
 argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
-argument_list|,
 operator|-
 literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Shows a dialog with the warnings from an import or open of a file      *      * @param parserResult - ParserResult for the current import/open      * @param jabRefFrame - the JabRefFrame      * @param maxWarnings - Maximum number of warnings to display      * @param dataBaseNumber - Database tab number to activate when showing the warning dialog      */
-DECL|method|showParserResultWarningDialog (ParserResult parserResult, JabRefFrame jabRefFrame, int maxWarnings, int dataBaseNumber)
+comment|/**      * Shows a dialog with the warnings from an import or open of a file      *      * @param parserResult - ParserResult for the current import/open      * @param jabRefFrame - the JabRefFrame      * @param dataBaseNumber - Database tab number to activate when showing the warning dialog      */
+DECL|method|showParserResultWarningDialog (final ParserResult parserResult, final JabRefFrame jabRefFrame, final int dataBaseNumber)
 specifier|public
 specifier|static
 name|void
 name|showParserResultWarningDialog
 parameter_list|(
+specifier|final
 name|ParserResult
 name|parserResult
 parameter_list|,
+specifier|final
 name|JabRefFrame
 name|jabRefFrame
 parameter_list|,
-name|int
-name|maxWarnings
-parameter_list|,
+specifier|final
 name|int
 name|dataBaseNumber
 parameter_list|)
@@ -190,6 +222,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Generate string with warning texts
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -201,6 +234,7 @@ operator|.
 name|warnings
 argument_list|()
 decl_stmt|;
+specifier|final
 name|StringBuilder
 name|dialogContent
 init|=
@@ -208,112 +242,38 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+name|int
+name|warningCount
+init|=
+literal|1
+decl_stmt|;
 for|for
 control|(
-name|int
-name|j
-init|=
-literal|0
-init|;
-name|j
-operator|<
-name|Math
-operator|.
-name|min
-argument_list|(
-name|maxWarnings
-argument_list|,
+specifier|final
+name|String
+name|warning
+range|:
 name|warnings
-operator|.
-name|size
-argument_list|()
-argument_list|)
-condition|;
-name|j
-operator|++
 control|)
 block|{
 name|dialogContent
 operator|.
 name|append
 argument_list|(
-name|j
-operator|+
-literal|1
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|". "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|warnings
-operator|.
-name|get
-argument_list|(
-name|j
-argument_list|)
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|warnings
-operator|.
-name|size
-argument_list|()
-operator|>
-name|maxWarnings
-condition|)
-block|{
-name|dialogContent
-operator|.
-name|append
-argument_list|(
-literal|"... "
-argument_list|)
-expr_stmt|;
-name|dialogContent
-operator|.
-name|append
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"%0 warnings"
-argument_list|,
 name|String
 operator|.
-name|valueOf
+name|format
 argument_list|(
-name|warnings
-operator|.
-name|size
-argument_list|()
-argument_list|)
+literal|"%d. %s\n"
+argument_list|,
+name|warningCount
+operator|++
+argument_list|,
+name|warning
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-name|dialogContent
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
 name|dialogContent
 operator|.
 name|deleteCharAt
@@ -326,7 +286,6 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Generate dialog title
 name|String
 name|dialogTitle
@@ -372,13 +331,69 @@ operator|+
 literal|")"
 expr_stmt|;
 block|}
-comment|// Comment from the old code:
-comment|//
-comment|// Note to self or to someone else: The following line causes an
-comment|// ArrayIndexOutOfBoundsException in situations with a large number of
-comment|// warnings; approx. 5000 for the database I opened when I observed the problem
-comment|// (duplicate key warnings). I don't think this is a big problem for normal situations,
-comment|// and it may possibly be a bug in the Swing code.
+comment|// Create JTextArea with JScrollPane
+specifier|final
+name|JTextArea
+name|textArea
+init|=
+operator|new
+name|JTextArea
+argument_list|(
+name|dialogContent
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+decl_stmt|;
+specifier|final
+name|JScrollPane
+name|scrollPane
+init|=
+operator|new
+name|JScrollPane
+argument_list|(
+name|textArea
+argument_list|)
+block|{
+annotation|@
+name|Override
+specifier|public
+name|Dimension
+name|getPreferredSize
+parameter_list|()
+block|{
+return|return
+operator|new
+name|Dimension
+argument_list|(
+literal|800
+argument_list|,
+name|Math
+operator|.
+name|min
+argument_list|(
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|100
+argument_list|,
+name|warnings
+operator|.
+name|size
+argument_list|()
+operator|*
+literal|15
+argument_list|)
+argument_list|,
+literal|400
+argument_list|)
+argument_list|)
+return|;
+comment|// Guess a suitable height between 100 and 400
+block|}
+block|}
+decl_stmt|;
 comment|// Show dialog
 name|JOptionPane
 operator|.
@@ -386,10 +401,7 @@ name|showMessageDialog
 argument_list|(
 name|jabRefFrame
 argument_list|,
-name|dialogContent
-operator|.
-name|toString
-argument_list|()
+name|scrollPane
 argument_list|,
 name|dialogTitle
 argument_list|,
