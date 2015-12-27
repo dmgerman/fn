@@ -1364,22 +1364,6 @@ specifier|private
 name|Charset
 name|encoding
 decl_stmt|;
-DECL|field|gbl
-name|GridBagLayout
-name|gbl
-init|=
-operator|new
-name|GridBagLayout
-argument_list|()
-decl_stmt|;
-DECL|field|con
-name|GridBagConstraints
-name|con
-init|=
-operator|new
-name|GridBagConstraints
-argument_list|()
-decl_stmt|;
 comment|// AutoCompleter used in the search bar
 DECL|field|searchAutoCompleter
 specifier|private
@@ -1508,7 +1492,7 @@ comment|// To indicate which entry is currently shown.
 DECL|field|entryEditors
 specifier|public
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1535,11 +1519,6 @@ name|StringDialog
 name|stringDialog
 decl_stmt|;
 comment|// Keeps track of the string dialog if it is open.
-DECL|field|saveAction
-specifier|private
-name|SaveDatabaseAction
-name|saveAction
-decl_stmt|;
 comment|// MetaData parses, keeps and writes meta data.
 DECL|field|metaData
 specifier|public
@@ -1550,7 +1529,7 @@ decl_stmt|;
 DECL|field|actions
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1593,6 +1572,11 @@ name|BibEntry
 argument_list|>
 name|filterGroupToggle
 decl_stmt|;
+DECL|field|autoCompleters
+specifier|private
+name|ContentAutoCompleters
+name|autoCompleters
+decl_stmt|;
 comment|// Returns a collection of AutoCompleters, which are populated from the current database
 DECL|method|getAutoCompleters ()
 specifier|public
@@ -1604,11 +1588,6 @@ return|return
 name|autoCompleters
 return|;
 block|}
-DECL|field|autoCompleters
-specifier|private
-name|ContentAutoCompleters
-name|autoCompleters
-decl_stmt|;
 DECL|method|BasePanel (JabRefFrame frame, BibDatabase db, File file, MetaData metaData, Charset encoding)
 specifier|public
 name|BasePanel
@@ -2011,14 +1990,15 @@ name|void
 name|setupActions
 parameter_list|()
 block|{
+name|SaveDatabaseAction
 name|saveAction
-operator|=
+init|=
 operator|new
 name|SaveDatabaseAction
 argument_list|(
 name|this
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|CleanUpAction
 name|cleanUpAction
 init|=
@@ -2796,10 +2776,14 @@ name|UnsupportedFlavorException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not paste this type"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 end_expr_stmt
@@ -2811,10 +2795,14 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not paste"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 end_catch
@@ -2920,10 +2908,14 @@ name|UnsupportedFlavorException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not paste this type"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -2932,10 +2924,14 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not paste"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -3455,12 +3451,18 @@ decl_stmt|;
 comment|// get DBStrings from user if necessary
 if|if
 condition|(
-operator|!
 name|dbs
 operator|.
 name|isConfigValid
 argument_list|()
 condition|)
+block|{
+name|connectToDB
+operator|=
+literal|true
+expr_stmt|;
+block|}
+else|else
 block|{
 comment|// init DB strings if necessary
 if|if
@@ -3543,13 +3545,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-else|else
-block|{
-name|connectToDB
-operator|=
-literal|true
-expr_stmt|;
-block|}
 block|}
 comment|// run second, on a different thread:
 annotation|@
@@ -3564,6 +3559,7 @@ condition|(
 name|connectToDB
 condition|)
 block|{
+specifier|final
 name|DBStrings
 name|dbs
 init|=
@@ -3586,6 +3582,7 @@ literal|"Attempting SQL export..."
 argument_list|)
 argument_list|)
 expr_stmt|;
+specifier|final
 name|DBExporterAndImporterFactory
 name|factory
 init|=
@@ -3593,6 +3590,7 @@ operator|new
 name|DBExporterAndImporterFactory
 argument_list|()
 decl_stmt|;
+specifier|final
 name|DBExporter
 name|exporter
 init|=
@@ -3635,6 +3633,7 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
+specifier|final
 name|String
 name|preamble
 init|=
@@ -3654,10 +3653,14 @@ argument_list|(
 name|ex
 argument_list|)
 expr_stmt|;
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|info
+argument_list|(
+literal|"Could not export to SQL database"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 name|dbs
 operator|.
@@ -3738,6 +3741,7 @@ block|}
 else|else
 block|{
 comment|// show an error dialog if an error occurred
+specifier|final
 name|String
 name|preamble
 init|=
@@ -3809,6 +3813,7 @@ call|)
 argument_list|()
 operator|->
 block|{
+name|final
 name|FindUnlinkedFilesDialog
 name|dialog
 operator|=
@@ -3972,25 +3977,12 @@ block|{
 name|BibEntry
 name|bes
 decl_stmt|;
-name|NamedCompound
-name|ce
-init|=
-operator|new
-name|NamedCompound
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"autogenerate keys"
-argument_list|)
-argument_list|)
-decl_stmt|;
 comment|// First check if any entries have keys set already. If so, possibly remove
 comment|// them from consideration, or warn about overwriting keys.
 comment|// This is a partial clone of net.sf.jabref.gui.entryeditor.EntryEditor.GenerateKeyAction.actionPerformed(ActionEvent)
 for|for
 control|(
+specifier|final
 name|Iterator
 argument_list|<
 name|BibEntry
@@ -4086,6 +4078,7 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+specifier|final
 name|int
 name|answer
 init|=
@@ -4226,6 +4219,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|final
+name|NamedCompound
+name|ce
+init|=
+operator|new
+name|NamedCompound
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"autogenerate keys"
+argument_list|)
+argument_list|)
+decl_stmt|;
 comment|// Finally, set the new keys:
 for|for
 control|(
@@ -5154,14 +5162,18 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|info
+argument_list|(
+literal|"Could not get layout"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 return|return;
 block|}
@@ -5229,6 +5241,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+specifier|final
 name|StringSelection
 name|ss
 init|=
@@ -5407,6 +5420,7 @@ name|void
 name|run
 parameter_list|()
 block|{
+specifier|final
 name|BibEntry
 index|[]
 name|bes
@@ -5437,6 +5451,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+specifier|final
 name|BibEntry
 name|entry
 init|=
@@ -5445,6 +5460,7 @@ index|[
 literal|0
 index|]
 decl_stmt|;
+specifier|final
 name|String
 name|file
 init|=
@@ -5617,6 +5633,7 @@ name|void
 name|run
 parameter_list|()
 block|{
+specifier|final
 name|BibEntry
 index|[]
 name|bes
@@ -5626,6 +5643,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 decl_stmt|;
+specifier|final
 name|List
 argument_list|<
 name|File
@@ -5651,6 +5669,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
+specifier|final
 name|File
 name|f
 range|:
@@ -5710,6 +5729,30 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+specifier|private
+specifier|final
+specifier|static
+name|String
+name|URL_FIELD
+init|=
+literal|"url"
+decl_stmt|;
+specifier|private
+specifier|final
+specifier|static
+name|String
+name|DOI_FIELD
+init|=
+literal|"doi"
+decl_stmt|;
+specifier|private
+specifier|final
+specifier|static
+name|String
+name|PS_FIELD
+init|=
+literal|"ps"
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -5717,6 +5760,7 @@ name|void
 name|action
 parameter_list|()
 block|{
+specifier|final
 name|BibEntry
 index|[]
 name|bes
@@ -5729,7 +5773,7 @@ decl_stmt|;
 name|String
 name|field
 init|=
-literal|"doi"
+name|DOI_FIELD
 decl_stmt|;
 if|if
 condition|(
@@ -5758,7 +5802,7 @@ index|]
 operator|.
 name|getField
 argument_list|(
-literal|"doi"
+name|DOI_FIELD
 argument_list|)
 decl_stmt|;
 if|if
@@ -5770,7 +5814,7 @@ index|]
 operator|.
 name|getField
 argument_list|(
-literal|"url"
+name|URL_FIELD
 argument_list|)
 operator|!=
 literal|null
@@ -5785,77 +5829,20 @@ index|]
 operator|.
 name|getField
 argument_list|(
-literal|"url"
+name|URL_FIELD
 argument_list|)
 expr_stmt|;
 name|field
 operator|=
-literal|"url"
+name|URL_FIELD
 expr_stmt|;
 block|}
 if|if
 condition|(
 name|link
-operator|!=
+operator|==
 literal|null
 condition|)
-block|{
-try|try
-block|{
-name|JabRefDesktop
-operator|.
-name|openExternalViewer
-argument_list|(
-name|metaData
-argument_list|()
-argument_list|,
-name|link
-operator|.
-name|toString
-argument_list|()
-argument_list|,
-name|field
-argument_list|)
-expr_stmt|;
-name|output
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"External viewer called"
-argument_list|)
-operator|+
-literal|'.'
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|output
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|ex
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-else|else
 block|{
 comment|// No URL or DOI found in the "url" and "doi" fields.
 comment|// Look for web links in the "file" field as a fallback:
@@ -5916,7 +5903,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-literal|"url"
+name|URL_FIELD
 operator|.
 name|equals
 argument_list|(
@@ -5932,7 +5919,7 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 operator|||
-literal|"ps"
+name|PS_FIELD
 operator|.
 name|equals
 argument_list|(
@@ -5959,9 +5946,24 @@ block|}
 if|if
 condition|(
 name|entry
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|output
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"No url defined"
+argument_list|)
+operator|+
+literal|'.'
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 try|try
 block|{
@@ -6011,14 +6013,55 @@ literal|"Could not open link"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|info
+argument_list|(
+literal|"Could not open link"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
+block|{
+try|try
+block|{
+name|JabRefDesktop
+operator|.
+name|openExternalViewer
+argument_list|(
+name|metaData
+argument_list|()
+argument_list|,
+name|link
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|field
+argument_list|)
+expr_stmt|;
+name|output
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"External viewer called"
+argument_list|)
+operator|+
+literal|'.'
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
 block|{
 name|output
 argument_list|(
@@ -6026,10 +6069,15 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"No url defined"
+literal|"Error"
 argument_list|)
 operator|+
-literal|'.'
+literal|": "
+operator|+
+name|ex
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -6099,6 +6147,7 @@ name|void
 name|action
 parameter_list|()
 block|{
+specifier|final
 name|ReplaceStringDialog
 name|rsd
 init|=
@@ -6131,6 +6180,7 @@ name|counter
 init|=
 literal|0
 decl_stmt|;
+specifier|final
 name|NamedCompound
 name|ce
 init|=
@@ -6147,38 +6197,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|rsd
 operator|.
 name|selOnly
 argument_list|()
 condition|)
-block|{
-for|for
-control|(
-name|BibEntry
-name|entry
-range|:
-name|database
-operator|.
-name|getEntries
-argument_list|()
-control|)
-block|{
-name|counter
-operator|+=
-name|rsd
-operator|.
-name|replace
-argument_list|(
-name|entry
-argument_list|,
-name|ce
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-else|else
 block|{
 name|BibEntry
 index|[]
@@ -6204,6 +6227,32 @@ operator|.
 name|replace
 argument_list|(
 name|be
+argument_list|,
+name|ce
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+for|for
+control|(
+name|BibEntry
+name|entry
+range|:
+name|database
+operator|.
+name|getEntries
+argument_list|()
+control|)
+block|{
+name|counter
+operator|+=
+name|rsd
+operator|.
+name|replace
+argument_list|(
+name|entry
 argument_list|,
 name|ce
 argument_list|)
@@ -6646,10 +6695,14 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not unmark"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -7635,11 +7688,12 @@ comment|/**      * This method is called from JabRefFrame is a database specific
 end_comment
 
 begin_function
-DECL|method|runCommand (String _command)
+DECL|method|runCommand (final String _command)
 unit|public
 name|void
 name|runCommand
 parameter_list|(
+specifier|final
 name|String
 name|_command
 parameter_list|)
@@ -7825,41 +7879,23 @@ operator|.
 name|block
 argument_list|()
 expr_stmt|;
+specifier|final
+name|String
+name|SAVE_DATABASE
+init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Save database"
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 if|if
 condition|(
-operator|!
 name|selectedOnly
 condition|)
-block|{
-name|session
-operator|=
-name|FileActions
-operator|.
-name|saveDatabase
-argument_list|(
-name|database
-argument_list|,
-name|metaData
-argument_list|,
-name|file
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-argument_list|,
-literal|false
-argument_list|,
-literal|false
-argument_list|,
-name|enc
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|session
 operator|=
@@ -7885,6 +7921,34 @@ argument_list|,
 name|enc
 argument_list|,
 name|saveType
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|session
+operator|=
+name|FileActions
+operator|.
+name|saveDatabase
+argument_list|(
+name|database
+argument_list|,
+name|metaData
+argument_list|,
+name|file
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+argument_list|,
+literal|false
+argument_list|,
+literal|false
+argument_list|,
+name|enc
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -7922,12 +7986,7 @@ name|displayName
 argument_list|()
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Save database"
-argument_list|)
+name|SAVE_DATABASE
 argument_list|,
 name|JOptionPane
 operator|.
@@ -7956,8 +8015,9 @@ name|specificEntry
 argument_list|()
 condition|)
 block|{
-comment|// Error occured during processing of
+comment|// Error occurred during processing of
 comment|// be. Highlight it:
+specifier|final
 name|int
 name|row
 init|=
@@ -7971,6 +8031,7 @@ name|getEntry
 argument_list|()
 argument_list|)
 decl_stmt|;
+specifier|final
 name|int
 name|topShow
 init|=
@@ -8012,10 +8073,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not save"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 name|JOptionPane
@@ -8038,12 +8103,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Save database"
-argument_list|)
+name|SAVE_DATABASE
 argument_list|,
 name|JOptionPane
 operator|.
@@ -8208,12 +8268,7 @@ operator|.
 name|getPanel
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Save database"
-argument_list|)
+name|SAVE_DATABASE
 argument_list|,
 name|JOptionPane
 operator|.
@@ -8275,12 +8330,7 @@ argument_list|(
 literal|"Select encoding"
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Save database"
-argument_list|)
+name|SAVE_DATABASE
 argument_list|,
 name|JOptionPane
 operator|.
@@ -8298,9 +8348,16 @@ decl_stmt|;
 if|if
 condition|(
 name|choice
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|commit
+operator|=
+literal|false
+expr_stmt|;
+block|}
+else|else
 block|{
 name|Charset
 name|newEncoding
@@ -8327,13 +8384,6 @@ argument_list|,
 name|saveType
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-name|commit
-operator|=
-literal|false
-expr_stmt|;
 block|}
 block|}
 elseif|else
@@ -8406,6 +8456,7 @@ literal|null
 condition|)
 block|{
 comment|// Find out what type is wanted.
+specifier|final
 name|EntryTypeDialog
 name|etd
 init|=
@@ -8478,7 +8529,7 @@ name|be
 argument_list|)
 expr_stmt|;
 comment|// Set owner/timestamp if options are enabled:
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -8669,11 +8720,12 @@ name|DatabaseChangeListener
 block|{
 annotation|@
 name|Override
-DECL|method|databaseChanged (DatabaseChangeEvent e)
+DECL|method|databaseChanged (final DatabaseChangeEvent e)
 specifier|public
 name|void
 name|databaseChanged
 parameter_list|(
+specifier|final
 name|DatabaseChangeEvent
 name|e
 parameter_list|)
@@ -8710,6 +8762,7 @@ name|isSelected
 argument_list|()
 condition|)
 block|{
+specifier|final
 name|BibEntry
 index|[]
 name|entries
@@ -8721,6 +8774,7 @@ name|getEntry
 argument_list|()
 block|}
 decl_stmt|;
+specifier|final
 name|TreePath
 index|[]
 name|selection
@@ -8745,6 +8799,7 @@ block|{
 comment|// it is possible that the user selected nothing. Therefore, checked for "!= null"
 for|for
 control|(
+specifier|final
 name|TreePath
 name|tree
 range|:
@@ -8940,11 +8995,12 @@ comment|/**      * This method is called from JabRefFrame when the user wants to
 end_comment
 
 begin_function
-DECL|method|insertEntry (BibEntry bibEntry)
+DECL|method|insertEntry (final BibEntry bibEntry)
 specifier|public
 name|void
 name|insertEntry
 parameter_list|(
+specifier|final
 name|BibEntry
 name|bibEntry
 parameter_list|)
@@ -9089,18 +9145,21 @@ block|}
 end_function
 
 begin_function
-DECL|method|editEntryByKeyAndFocusField (String bibtexKey, String fieldName)
+DECL|method|editEntryByKeyAndFocusField (final String bibtexKey, final String fieldName)
 specifier|public
 name|void
 name|editEntryByKeyAndFocusField
 parameter_list|(
+specifier|final
 name|String
 name|bibtexKey
 parameter_list|,
+specifier|final
 name|String
 name|fieldName
 parameter_list|)
 block|{
+specifier|final
 name|BibEntry
 index|[]
 name|entries
@@ -9141,6 +9200,7 @@ operator|.
 name|editSignalled
 argument_list|()
 expr_stmt|;
+specifier|final
 name|EntryEditor
 name|editor
 init|=
@@ -9192,6 +9252,7 @@ name|createMainTable
 parameter_list|()
 block|{
 comment|//Comparator comp = new FieldComparator("author");
+specifier|final
 name|GlazedEntrySorter
 name|eventList
 init|=
@@ -9496,10 +9557,14 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not cut"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -9547,10 +9612,14 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not copy"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -9598,10 +9667,14 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not paste"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -9873,10 +9946,14 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not run action based on key press"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -10559,14 +10636,13 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|getShowing
 argument_list|()
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 name|isShowingEditor
 argument_list|()
 condition|)
@@ -10586,7 +10662,6 @@ operator|.
 name|getVisiblePanelName
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -10841,9 +10916,15 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
+operator|(
 name|form
-operator|!=
+operator|.
+name|equals
+argument_list|(
 name|visibleNow
+argument_list|)
+operator|)
 operator|)
 condition|)
 block|{
@@ -11270,7 +11351,7 @@ name|currentEditor
 operator|.
 name|getType
 argument_list|()
-operator|!=
+operator|==
 name|currentEditor
 operator|.
 name|getEntry
@@ -11280,12 +11361,26 @@ name|getType
 argument_list|()
 condition|)
 block|{
+name|currentEditor
+operator|.
+name|updateAllFields
+argument_list|()
+expr_stmt|;
+name|currentEditor
+operator|.
+name|updateSource
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
 comment|// The entry has changed type, so we must get a new editor.
 name|newEntryShowing
 argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+specifier|final
 name|EntryEditor
 name|newEditor
 init|=
@@ -11301,19 +11396,6 @@ name|showEntryEditor
 argument_list|(
 name|newEditor
 argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|currentEditor
-operator|.
-name|updateAllFields
-argument_list|()
-expr_stmt|;
-name|currentEditor
-operator|.
-name|updateSource
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -11337,6 +11419,7 @@ name|isShowingEditor
 argument_list|()
 condition|)
 block|{
+specifier|final
 name|EntryEditor
 name|editor
 init|=
@@ -11573,9 +11656,25 @@ if|if
 condition|(
 name|getDatabaseFile
 argument_list|()
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|frame
+operator|.
+name|setTabTitle
+argument_list|(
+name|this
+argument_list|,
+name|GUIGlobals
+operator|.
+name|untitledTitle
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|frame
 operator|.
@@ -11591,22 +11690,6 @@ argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|frame
-operator|.
-name|setTabTitle
-argument_list|(
-name|this
-argument_list|,
-name|GUIGlobals
-operator|.
-name|untitledTitle
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -12744,10 +12827,14 @@ name|CannotUndoException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Nothing to undo"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 name|frame
 operator|.
@@ -13028,6 +13115,66 @@ name|getDatabaseFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// Test: running scan automatically in background
+if|if
+condition|(
+operator|(
+name|BasePanel
+operator|.
+name|this
+operator|.
+name|getDatabaseFile
+argument_list|()
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|!
+name|FileBasedLock
+operator|.
+name|waitForFileLock
+argument_list|(
+name|BasePanel
+operator|.
+name|this
+operator|.
+name|getDatabaseFile
+argument_list|()
+argument_list|,
+literal|10
+argument_list|)
+condition|)
+block|{
+comment|// The file is locked even after the maximum wait. Do nothing.
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"File updated externally, but change scan failed because the file is locked."
+argument_list|)
+expr_stmt|;
+comment|// Perturb the stored timestamp so successive checks are made:
+name|Globals
+operator|.
+name|fileUpdateMonitor
+operator|.
+name|perturbTimestamp
+argument_list|(
+name|getFileMonitorHandle
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|executeWithLowPriorityInOwnThreadAndWait
+argument_list|(
+name|scanner
+argument_list|)
+expr_stmt|;
 comment|// Adding the sidepane component is Swing work, so we must do this in the Swing
 comment|// thread:
 name|Runnable
@@ -13127,66 +13274,6 @@ comment|//scanner.displayResult();
 block|}
 block|}
 decl_stmt|;
-comment|// Test: running scan automatically in background
-if|if
-condition|(
-operator|(
-name|BasePanel
-operator|.
-name|this
-operator|.
-name|getDatabaseFile
-argument_list|()
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|!
-name|FileBasedLock
-operator|.
-name|waitForFileLock
-argument_list|(
-name|BasePanel
-operator|.
-name|this
-operator|.
-name|getDatabaseFile
-argument_list|()
-argument_list|,
-literal|10
-argument_list|)
-condition|)
-block|{
-comment|// The file is locked even after the maximum wait. Do nothing.
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"File updated externally, but change scan failed because the file is locked."
-argument_list|)
-expr_stmt|;
-comment|// Perturb the stored timestamp so successive checks are made:
-name|Globals
-operator|.
-name|fileUpdateMonitor
-operator|.
-name|perturbTimestamp
-argument_list|(
-name|getFileMonitorHandle
-argument_list|()
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
-name|JabRefExecutorService
-operator|.
-name|INSTANCE
-operator|.
-name|executeWithLowPriorityInOwnThreadAndWait
-argument_list|(
-name|scanner
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|scanner
@@ -13677,9 +13764,15 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|!
+operator|(
 name|entry
-operator|!=
+operator|.
+name|equals
+argument_list|(
 name|showing
+argument_list|)
+operator|)
 condition|)
 block|{
 comment|// Add the entry we are leaving to the history:
@@ -14167,13 +14260,15 @@ specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
-DECL|method|SearchAndOpenFile (BibEntry entry, BasePanel basePanel)
+DECL|method|SearchAndOpenFile (final BibEntry entry, final BasePanel basePanel)
 specifier|public
 name|SearchAndOpenFile
 parameter_list|(
+specifier|final
 name|BibEntry
 name|entry
 parameter_list|,
+specifier|final
 name|BasePanel
 name|basePanel
 parameter_list|)
@@ -14238,6 +14333,7 @@ argument_list|(
 name|entry
 argument_list|)
 decl_stmt|;
+specifier|final
 name|ExternalFileType
 index|[]
 name|types
@@ -14249,7 +14345,8 @@ operator|.
 name|getExternalFileTypeSelection
 argument_list|()
 decl_stmt|;
-name|ArrayList
+specifier|final
+name|List
 argument_list|<
 name|File
 argument_list|>
@@ -14278,6 +14375,7 @@ operator|>
 literal|0
 condition|)
 block|{
+specifier|final
 name|String
 index|[]
 name|mdDirs
@@ -14295,6 +14393,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
+specifier|final
 name|String
 name|mdDir
 range|:
@@ -14314,7 +14413,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|Collection
+specifier|final
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -14429,6 +14529,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+specifier|final
 name|List
 argument_list|<
 name|File
@@ -14451,6 +14552,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
+specifier|final
 name|String
 name|filepath
 init|=
@@ -14464,6 +14566,7 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
+specifier|final
 name|Optional
 argument_list|<
 name|String
