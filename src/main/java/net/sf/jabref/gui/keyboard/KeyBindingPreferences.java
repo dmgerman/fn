@@ -470,7 +470,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"bindNames"
+name|JabRefPreferences
+operator|.
+name|BIND_NAMES
 argument_list|,
 name|bindNames
 argument_list|)
@@ -479,7 +481,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"bindings"
+name|JabRefPreferences
+operator|.
+name|BINDINGS
 argument_list|,
 name|bindings
 argument_list|)
@@ -508,7 +512,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"bindNames"
+name|JabRefPreferences
+operator|.
+name|BIND_NAMES
 argument_list|)
 decl_stmt|;
 name|String
@@ -519,7 +525,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"bindings"
+name|JabRefPreferences
+operator|.
+name|BINDINGS
 argument_list|)
 decl_stmt|;
 comment|// Then set up the key bindings HashMap.

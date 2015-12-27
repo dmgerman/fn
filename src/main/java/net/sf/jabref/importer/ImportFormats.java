@@ -254,7 +254,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"lastUsedImport"
+name|JabRefPreferences
+operator|.
+name|LAST_USED_IMPORT
 argument_list|)
 decl_stmt|;
 name|FileFilter
@@ -658,7 +660,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"lastUsedImport"
+name|JabRefPreferences
+operator|.
+name|LAST_USED_IMPORT
 argument_list|,
 name|format
 operator|.
@@ -675,7 +679,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"lastUsedImport"
+name|JabRefPreferences
+operator|.
+name|LAST_USED_IMPORT
 argument_list|,
 literal|"__all"
 argument_list|)

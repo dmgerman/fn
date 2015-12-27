@@ -2178,6 +2178,96 @@ name|PREVIEW_ENABLED
 init|=
 literal|"previewEnabled"
 decl_stmt|;
+DECL|field|CUSTOM_EXPORT_FORMAT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CUSTOM_EXPORT_FORMAT
+init|=
+literal|"customExportFormat"
+decl_stmt|;
+DECL|field|CUSTOM_IMPORT_FORMAT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CUSTOM_IMPORT_FORMAT
+init|=
+literal|"customImportFormat"
+decl_stmt|;
+DECL|field|PSVIEWER
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PSVIEWER
+init|=
+literal|"psviewer"
+decl_stmt|;
+DECL|field|PDFVIEWER
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PDFVIEWER
+init|=
+literal|"pdfviewer"
+decl_stmt|;
+DECL|field|BINDINGS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|BINDINGS
+init|=
+literal|"bindings"
+decl_stmt|;
+DECL|field|BIND_NAMES
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|BIND_NAMES
+init|=
+literal|"bindNames"
+decl_stmt|;
+DECL|field|MARKED_ENTRY_BACKGROUND
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MARKED_ENTRY_BACKGROUND
+init|=
+literal|"markedEntryBackground"
+decl_stmt|;
+DECL|field|KEY_PATTERN_REGEX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|KEY_PATTERN_REGEX
+init|=
+literal|"KeyPatternRegex"
+decl_stmt|;
+DECL|field|KEY_PATTERN_REPLACEMENT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|KEY_PATTERN_REPLACEMENT
+init|=
+literal|"KeyPatternReplacement"
+decl_stmt|;
+DECL|field|SAVED_SESSION
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SAVED_SESSION
+init|=
+literal|"savedSession"
+decl_stmt|;
 comment|// Currently, it is not possible to specify defaults for specific entry types
 comment|// When this should be made possible, the code to inspect is net.sf.jabref.gui.preftabs.LabelPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getLabelPattern(); etc
 DECL|field|DEFAULT_LABEL_PATTERN
@@ -2359,6 +2449,15 @@ name|String
 name|LAST_USED_EXPORT
 init|=
 literal|"lastUsedExport"
+decl_stmt|;
+DECL|field|LAST_USED_IMPORT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|LAST_USED_IMPORT
+init|=
+literal|"lastUsedImport"
 decl_stmt|;
 DECL|field|FLOAT_MARKED_ENTRIES
 specifier|public
@@ -3123,8 +3222,8 @@ operator|.
 name|OS_X
 condition|)
 block|{
-comment|//defaults.put("pdfviewer", "/Applications/Preview.app");
-comment|//defaults.put("psviewer", "/Applications/Preview.app");
+comment|//defaults.put(JabRefPreferences.PDFVIEWER, "/Applications/Preview.app");
+comment|//defaults.put(JabRefPreferences.PSVIEWER, "/Applications/Preview.app");
 comment|//defaults.put("htmlviewer", "/Applications/Safari.app");
 name|defaults
 operator|.
@@ -3183,8 +3282,8 @@ operator|.
 name|WINDOWS
 condition|)
 block|{
-comment|//defaults.put("pdfviewer", "cmd.exe /c start /b");
-comment|//defaults.put("psviewer", "cmd.exe /c start /b");
+comment|//defaults.put(JabRefPreferences.PDFVIEWER, "cmd.exe /c start /b");
+comment|//defaults.put(JabRefPreferences.PSVIEWER, "cmd.exe /c start /b");
 comment|//defaults.put("htmlviewer", "cmd.exe /c start /b");
 name|defaults
 operator|.
@@ -3234,8 +3333,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|//defaults.put("pdfviewer", "evince");
-comment|//defaults.put("psviewer", "gv");
+comment|//defaults.put(JabRefPreferences.PDFVIEWER, "evince");
+comment|//defaults.put(JabRefPreferences.PSVIEWER, "gv");
 comment|//defaults.put("htmlviewer", "firefox");
 name|defaults
 operator|.

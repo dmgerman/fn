@@ -520,7 +520,7 @@ literal|"General fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//    fieldsArea.setText(parent.prefs.get("generalFields"));
+comment|//    fieldsArea.setText(parent.prefs.get(JabRefPreferences.GENERAL_FIELDS));
 name|setFieldsText
 argument_list|()
 expr_stmt|;
@@ -1193,7 +1193,7 @@ operator|.
 name|updateEntryEditorTabList
 argument_list|()
 expr_stmt|;
-comment|/*         String delimStr = fieldsArea.getText().replaceAll("\\s+","")           .replaceAll("\\n+","").trim();         parent.prefs.putStringArray("generalFields", Util.split(delimStr, ";"));         */
+comment|/*         String delimStr = fieldsArea.getText().replaceAll("\\s+","")           .replaceAll("\\n+","").trim();         parent.prefs.putStringArray(JabRefPreferences.GENERAL_FIELDS, Util.split(delimStr, ";"));         */
 name|parent
 operator|.
 name|removeCachedEntryEditors

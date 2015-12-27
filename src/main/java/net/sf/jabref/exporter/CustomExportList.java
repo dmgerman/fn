@@ -88,6 +88,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|ca
 operator|.
 name|odell
@@ -301,7 +313,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"customExportFormat"
+name|JabRefPreferences
+operator|.
+name|CUSTOM_EXPORT_FORMAT
 operator|+
 name|i
 argument_list|)
@@ -366,7 +380,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"customExportFormat"
+name|JabRefPreferences
+operator|.
+name|CUSTOM_EXPORT_FORMAT
 operator|+
 name|i
 argument_list|)
@@ -636,7 +652,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"customExportFormat"
+name|JabRefPreferences
+operator|.
+name|CUSTOM_EXPORT_FORMAT
 operator|+
 name|i
 argument_list|,
@@ -681,7 +699,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"customExportFormat"
+name|JabRefPreferences
+operator|.
+name|CUSTOM_EXPORT_FORMAT
 operator|+
 name|i
 argument_list|)
@@ -695,7 +715,9 @@ name|prefs
 operator|.
 name|remove
 argument_list|(
-literal|"customExportFormat"
+name|JabRefPreferences
+operator|.
+name|CUSTOM_EXPORT_FORMAT
 operator|+
 name|i
 argument_list|)

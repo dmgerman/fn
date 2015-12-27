@@ -252,7 +252,9 @@ name|prefs
 operator|.
 name|getColor
 argument_list|(
-literal|"markedEntryBackground"
+name|JabRefPreferences
+operator|.
+name|MARKED_ENTRY_BACKGROUND
 operator|+
 name|this
 operator|.
