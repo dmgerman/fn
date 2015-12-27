@@ -722,7 +722,8 @@ literal|"Drop %0"
 argument_list|,
 name|fileType
 operator|.
-name|extension
+name|getExtension
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1022,7 +1023,8 @@ literal|"Drop %0"
 argument_list|,
 name|fileType
 operator|.
-name|extension
+name|getExtension
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1251,7 +1253,8 @@ literal|"Drop %0"
 argument_list|,
 name|fileType
 operator|.
-name|extension
+name|getExtension
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1352,7 +1355,8 @@ literal|"."
 operator|+
 name|fileType
 operator|.
-name|extension
+name|getExtension
+argument_list|()
 expr_stmt|;
 block|}
 if|if
@@ -1520,7 +1524,8 @@ name|equals
 argument_list|(
 name|fileType
 operator|.
-name|extension
+name|getExtension
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1752,7 +1757,8 @@ literal|"."
 operator|+
 name|fileType
 operator|.
-name|extension
+name|getExtension
+argument_list|()
 expr_stmt|;
 block|}
 if|if
@@ -2272,7 +2278,8 @@ name|concat
 argument_list|(
 name|fileType
 operator|.
-name|extension
+name|getExtension
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

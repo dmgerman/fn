@@ -330,16 +330,6 @@ name|SynchronizeFileField
 extends|extends
 name|AbstractWorker
 block|{
-DECL|field|fieldName
-specifier|private
-specifier|final
-name|String
-name|fieldName
-init|=
-name|Globals
-operator|.
-name|FILE_FIELD
-decl_stmt|;
 DECL|field|panel
 specifier|private
 specifier|final
@@ -509,8 +499,6 @@ name|panel
 operator|.
 name|metaData
 argument_list|()
-argument_list|,
-name|fieldName
 argument_list|)
 expr_stmt|;
 block|}
@@ -576,7 +564,9 @@ name|lang
 argument_list|(
 literal|"Synchronizing %0 links..."
 argument_list|,
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
 operator|.
 name|toUpperCase
 argument_list|()
@@ -691,7 +681,9 @@ name|lang
 argument_list|(
 literal|"Autoset %0 field"
 argument_list|,
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -826,7 +818,9 @@ name|aSel
 operator|.
 name|getField
 argument_list|(
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
 argument_list|)
 decl_stmt|;
 comment|// Check if a extension is set:
@@ -1495,11 +1489,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|toSet
-operator|=
-literal|null
-expr_stmt|;
-block|}
 name|ce
 operator|.
 name|addEdit
@@ -1509,7 +1498,40 @@ name|UndoableFieldChange
 argument_list|(
 name|aSel
 argument_list|,
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
+argument_list|,
+name|old
+argument_list|,
+literal|null
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|aSel
+operator|.
+name|clearField
+argument_list|(
+name|Globals
+operator|.
+name|FILE_FIELD
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|ce
+operator|.
+name|addEdit
+argument_list|(
+operator|new
+name|UndoableFieldChange
+argument_list|(
+name|aSel
+argument_list|,
+name|Globals
+operator|.
+name|FILE_FIELD
 argument_list|,
 name|old
 argument_list|,
@@ -1521,11 +1543,14 @@ name|aSel
 operator|.
 name|setField
 argument_list|(
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
 argument_list|,
 name|toSet
 argument_list|)
 expr_stmt|;
+block|}
 name|changedEntries
 operator|.
 name|add
@@ -1533,7 +1558,6 @@ argument_list|(
 name|aSel
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Changed to: "+tableModel.getStringRepresentation());
 block|}
 block|}
 block|}
@@ -1600,7 +1624,9 @@ name|lang
 argument_list|(
 literal|"Finished synchronizing %0 links. Entries changed: %1."
 argument_list|,
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
 operator|.
 name|toUpperCase
 argument_list|()
@@ -1714,7 +1740,7 @@ specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
-DECL|method|OptionsDialog (JFrame parent, MetaData metaData, String fieldName)
+DECL|method|OptionsDialog (JFrame parent, MetaData metaData)
 specifier|public
 name|OptionsDialog
 parameter_list|(
@@ -1723,9 +1749,6 @@ name|parent
 parameter_list|,
 name|MetaData
 name|metaData
-parameter_list|,
-name|String
-name|fieldName
 parameter_list|)
 block|{
 name|super
@@ -1738,7 +1761,9 @@ name|lang
 argument_list|(
 literal|"Synchronize %0 links"
 argument_list|,
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
 operator|.
 name|toUpperCase
 argument_list|()
