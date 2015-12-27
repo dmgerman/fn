@@ -652,7 +652,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|".*Found<b>(\\d+,*\\d*)</b>.*"
+literal|"<strong>(\\d+)</strong> results found"
 argument_list|)
 decl_stmt|;
 DECL|field|maxHitsPattern
@@ -666,10 +666,9 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|".*Results \\d+ - \\d+ of (\\d+,*\\d*).*"
+literal|"Result \\d+&ndash; \\d+ of (\\d+)"
 argument_list|)
 decl_stmt|;
-comment|//private static final Pattern bibPattern = Pattern.compile(".*'(exportformats.cfm\\?id=\\d+&expformat=bibtex)'.*");
 DECL|field|fullCitationPattern
 specifier|private
 specifier|static
@@ -681,7 +680,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"<A HREF=\"(citation.cfm.*)\" class.*"
+literal|"<a href=\"(citation.cfm.*)\" target.*"
 argument_list|)
 decl_stmt|;
 DECL|field|idPattern
@@ -695,7 +694,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"citation.cfm\\?id=\\d*\\.?(\\d+)&.*"
+literal|"citation.cfm\\?id=(\\d+)&.*"
 argument_list|)
 decl_stmt|;
 comment|// Patterns used to extract information for the preview:
@@ -710,21 +709,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"<A HREF=.*?\">([^<]*)</A>"
-argument_list|)
-decl_stmt|;
-DECL|field|monthYearPattern
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|monthYearPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"([A-Za-z]+ [0-9]{4})"
+literal|"<a href=.*?\">([^<]*)</a>"
 argument_list|)
 decl_stmt|;
 DECL|field|absPattern
@@ -739,6 +724,20 @@ operator|.
 name|compile
 argument_list|(
 literal|"<div .*?>(.*?)</div>"
+argument_list|)
+decl_stmt|;
+DECL|field|sourcePattern
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|sourcePattern
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"<span style=\"padding-left:10px\">([^<]*)</span>"
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -867,18 +866,11 @@ operator|.
 name|isSelected
 argument_list|()
 expr_stmt|;
-name|int
-name|firstEntry
-init|=
-literal|1
-decl_stmt|;
 name|String
 name|address
 init|=
 name|makeUrl
-argument_list|(
-name|firstEntry
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|LinkedHashMap
 argument_list|<
@@ -921,7 +913,7 @@ name|getNumberOfHits
 argument_list|(
 name|page
 argument_list|,
-literal|"Found"
+literal|"<div id=\"resfound\">"
 argument_list|,
 name|ACMPortalFetcher
 operator|.
@@ -935,7 +927,7 @@ name|page
 operator|.
 name|indexOf
 argument_list|(
-literal|"Found"
+literal|"<div id=\"resfound\">"
 argument_list|)
 decl_stmt|;
 if|if
@@ -962,7 +954,7 @@ name|page
 operator|.
 name|indexOf
 argument_list|(
-literal|"Found"
+literal|"<div id=\"resfound\">"
 argument_list|)
 expr_stmt|;
 if|if
@@ -1025,47 +1017,29 @@ name|getNumberOfHits
 argument_list|(
 name|page
 argument_list|,
-literal|"Results"
+literal|"<div class=\"pagerange\">"
 argument_list|,
 name|ACMPortalFetcher
 operator|.
 name|maxHitsPattern
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|hits
-condition|;
-name|i
-operator|++
-control|)
-block|{
 name|parse
 argument_list|(
 name|page
 argument_list|,
-literal|0
+name|Math
+operator|.
+name|min
+argument_list|(
+name|hits
 argument_list|,
-name|firstEntry
+name|perPage
+argument_list|)
 argument_list|,
 name|previews
 argument_list|)
 expr_stmt|;
-comment|//address = makeUrl(firstEntry);
-name|firstEntry
-operator|+=
-name|ACMPortalFetcher
-operator|.
-name|perPage
-expr_stmt|;
-block|}
 for|for
 control|(
 name|Map
@@ -1454,14 +1428,11 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|makeUrl (int startIndex)
+DECL|method|makeUrl ()
 specifier|private
 name|String
 name|makeUrl
-parameter_list|(
-name|int
-name|startIndex
-parameter_list|)
+parameter_list|()
 block|{
 name|StringBuilder
 name|sb
@@ -1493,18 +1464,6 @@ literal|" "
 argument_list|,
 literal|"%20"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"&start="
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|startIndex
 argument_list|)
 expr_stmt|;
 name|sb
@@ -1560,7 +1519,7 @@ specifier|private
 name|int
 name|piv
 decl_stmt|;
-DECL|method|parse (String text, int startIndex, int firstEntryNumber, Map<String, JLabel> entries)
+DECL|method|parse (String text, int hits, Map<String, JLabel> entries)
 specifier|private
 name|void
 name|parse
@@ -1569,10 +1528,7 @@ name|String
 name|text
 parameter_list|,
 name|int
-name|startIndex
-parameter_list|,
-name|int
-name|firstEntryNumber
+name|hits
 parameter_list|,
 name|Map
 argument_list|<
@@ -1583,14 +1539,10 @@ argument_list|>
 name|entries
 parameter_list|)
 block|{
-name|piv
-operator|=
-name|startIndex
-expr_stmt|;
 name|int
 name|entryNumber
 init|=
-name|firstEntryNumber
+literal|1
 decl_stmt|;
 while|while
 condition|(
@@ -1598,12 +1550,16 @@ name|getNextEntryURL
 argument_list|(
 name|text
 argument_list|,
-name|piv
-argument_list|,
 name|entryNumber
 argument_list|,
 name|entries
 argument_list|)
+operator|&&
+operator|(
+name|entryNumber
+operator|<=
+name|hits
+operator|)
 condition|)
 block|{
 name|entryNumber
@@ -1664,16 +1620,13 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|getNextEntryURL (String allText, int startIndex, int entryNumber, Map<String, JLabel> entries)
+DECL|method|getNextEntryURL (String allText, int entryNumber, Map<String, JLabel> entries)
 specifier|private
 name|boolean
 name|getNextEntryURL
 parameter_list|(
 name|String
 name|allText
-parameter_list|,
-name|int
-name|startIndex
 parameter_list|,
 name|int
 name|entryNumber
@@ -1690,11 +1643,7 @@ block|{
 name|String
 name|toFind
 init|=
-literal|"<strong>"
-operator|+
-name|entryNumber
-operator|+
-literal|"</strong><br>"
+literal|"<div class=\"numbering\">"
 decl_stmt|;
 name|int
 name|index
@@ -1705,7 +1654,7 @@ name|indexOf
 argument_list|(
 name|toFind
 argument_list|,
-name|startIndex
+name|piv
 argument_list|)
 decl_stmt|;
 name|int
@@ -1713,9 +1662,17 @@ name|endIndex
 init|=
 name|allText
 operator|.
-name|length
-argument_list|()
+name|indexOf
+argument_list|(
+literal|"<br clear=\"all\" />"
+argument_list|,
+name|index
+argument_list|)
 decl_stmt|;
+name|piv
+operator|=
+name|endIndex
+expr_stmt|;
 if|if
 condition|(
 name|index
@@ -1723,12 +1680,6 @@ operator|>=
 literal|0
 condition|)
 block|{
-name|piv
-operator|=
-name|index
-operator|+
-literal|1
-expr_stmt|;
 name|String
 name|text
 init|=
@@ -1754,6 +1705,9 @@ argument_list|(
 name|text
 argument_list|)
 decl_stmt|;
+name|String
+name|item
+decl_stmt|;
 if|if
 condition|(
 name|fullCitation
@@ -1775,22 +1729,9 @@ literal|1
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|String
-name|part
-decl_stmt|;
-name|int
-name|endOfRecord
-init|=
-name|text
-operator|.
-name|indexOf
-argument_list|(
-literal|"<div class=\"abstract2\">"
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
-name|endOfRecord
+name|endIndex
 operator|>
 literal|0
 condition|)
@@ -1802,44 +1743,7 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|part
-operator|=
-name|text
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|endOfRecord
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-name|save
-argument_list|(
-literal|"part"
-operator|+
-name|entryNumber
-operator|+
-literal|".html"
-argument_list|,
-name|part
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-comment|//To change body of catch statement use File | Settings | File Templates.
-block|}
+comment|/*try {                         save("part" + entryNumber + ".html", part);                     } catch (IOException e) {                         e.printStackTrace(); //To change body of catch statement use File | Settings | File Templates.                     } */
 comment|// Find authors:
 name|String
 name|authMarker
@@ -1923,7 +1827,7 @@ name|titlePattern
 operator|.
 name|matcher
 argument_list|(
-name|part
+name|text
 argument_list|)
 decl_stmt|;
 if|if
@@ -1957,22 +1861,80 @@ literal|"</p>"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Find month and year:
+name|String
+name|sourceMarker
+init|=
+literal|"<div class=\"source\">"
+decl_stmt|;
+name|int
+name|sourceStart
+init|=
+name|text
+operator|.
+name|indexOf
+argument_list|(
+name|sourceMarker
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|sourceStart
+operator|>=
+literal|0
+condition|)
+block|{
+name|int
+name|sourceEnd
+init|=
+name|text
+operator|.
+name|indexOf
+argument_list|(
+literal|"</div>"
+argument_list|,
+name|sourceStart
+operator|+
+name|sourceMarker
+operator|.
+name|length
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|sourceEnd
+operator|>=
+literal|0
+condition|)
+block|{
+name|String
+name|sourceText
+init|=
+name|text
+operator|.
+name|substring
+argument_list|(
+name|sourceStart
+argument_list|,
+name|sourceEnd
+argument_list|)
+decl_stmt|;
+comment|// Find source:
 name|Matcher
-name|mY
+name|source
 init|=
 name|ACMPortalFetcher
 operator|.
-name|monthYearPattern
+name|sourcePattern
 operator|.
 name|matcher
 argument_list|(
-name|part
+name|sourceText
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|mY
+name|source
 operator|.
 name|find
 argument_list|()
@@ -1987,7 +1949,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|mY
+name|source
 operator|.
 name|group
 argument_list|(
@@ -2001,7 +1963,9 @@ literal|"</p>"
 argument_list|)
 expr_stmt|;
 block|}
-name|part
+block|}
+block|}
+name|item
 operator|=
 name|sb
 operator|.
@@ -2012,7 +1976,7 @@ comment|/*.replaceAll("</tr>", "<br>");                     part = part.replaceA
 block|}
 else|else
 block|{
-name|part
+name|item
 operator|=
 name|link
 expr_stmt|;
@@ -2025,7 +1989,7 @@ name|JLabel
 argument_list|(
 literal|"<html>"
 operator|+
-name|part
+name|item
 operator|+
 literal|"</html>"
 argument_list|)
@@ -2365,25 +2329,6 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|ConnectException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Cannot connect."
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-return|return
-literal|null
-return|;
-block|}
-catch|catch
-parameter_list|(
 name|IOException
 name|e
 parameter_list|)
@@ -2490,7 +2435,7 @@ name|min
 argument_list|(
 name|ind
 operator|+
-literal|42
+literal|100
 argument_list|,
 name|page
 operator|.
@@ -2543,8 +2488,6 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-comment|//NumberFormat nf = NumberFormat.getInstance();
-comment|//return nf.parse(number).intValue();
 name|number
 operator|=
 name|number
@@ -2556,7 +2499,6 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-comment|//System.out.println(number);
 return|return
 name|Integer
 operator|.
