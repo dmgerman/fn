@@ -272,6 +272,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -386,6 +414,18 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+operator|.
+name|Entry
+import|;
+end_import
+
 begin_comment
 comment|/**  * This test panel can be opened by reflection from JabRef, passing the JabRefFrame as an  * argument to the start() method. It displays buttons for testing interaction functions  * between JabRef and OpenOffice.  */
 end_comment
@@ -400,6 +440,22 @@ name|AbstractWorker
 implements|implements
 name|PushToApplication
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|OpenOfficePanel
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|DEFAULT_AUTHORYEAR_STYLE_PATH
 specifier|public
 specifier|static
@@ -710,11 +766,6 @@ DECL|field|inPar
 specifier|private
 name|JRadioButton
 name|inPar
-decl_stmt|;
-DECL|field|inText
-specifier|private
-name|JRadioButton
-name|inText
 decl_stmt|;
 DECL|field|settings
 specifier|private
@@ -1267,6 +1318,8 @@ name|lang
 argument_list|(
 literal|"OpenOffice"
 argument_list|)
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 try|try
@@ -1676,10 +1729,14 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not read style file"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -3556,7 +3613,7 @@ block|}
 block|}
 comment|// The methods addFile and associated final Class[] parameters were gratefully copied from
 comment|// anthony_miguel @ http://forum.java.sun.com/thread.jsp?forum=32&thread=300557&tstart=0&trange=15
-DECL|field|parameters
+DECL|field|CLASS_PARAMETERS
 specifier|private
 specifier|static
 specifier|final
@@ -3565,7 +3622,7 @@ argument_list|<
 name|?
 argument_list|>
 index|[]
-name|parameters
+name|CLASS_PARAMETERS
 init|=
 operator|new
 name|Class
@@ -3621,7 +3678,7 @@ name|getDeclaredMethod
 argument_list|(
 literal|"addURL"
 argument_list|,
-name|parameters
+name|CLASS_PARAMETERS
 argument_list|)
 decl_stmt|;
 name|method
@@ -3656,10 +3713,14 @@ name|Throwable
 name|t
 parameter_list|)
 block|{
-name|t
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Could not add URL to system classloader"
+argument_list|,
+name|t
+argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
@@ -4949,52 +5010,47 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
+name|Entry
+argument_list|<
 name|String
-name|key
+argument_list|,
+name|String
+argument_list|>
+name|entry
 range|:
 name|result
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"Key: "
 operator|+
-name|key
-argument_list|)
-expr_stmt|;
-name|System
+name|entry
 operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Entry: "
+name|getKey
+argument_list|()
 operator|+
-name|result
+literal|" Entry: "
+operator|+
+name|entry
 operator|.
-name|get
-argument_list|(
-name|key
-argument_list|)
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ooBase
 operator|.
 name|insertMarkedUpTextAtViewCursor
 argument_list|(
-name|result
+name|entry
 operator|.
-name|get
-argument_list|(
-name|key
-argument_list|)
+name|getValue
+argument_list|()
 argument_list|,
 literal|"Default"
 argument_list|)
@@ -5009,10 +5065,14 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not insert entry"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -5319,17 +5379,6 @@ operator|.
 name|OO_JARS_PATH
 argument_list|)
 expr_stmt|;
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|clear
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|OO_JARS_PATH
-argument_list|)
-expr_stmt|;
 name|frame
 operator|.
 name|output
@@ -5563,10 +5612,14 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not insert entry"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -5632,10 +5685,20 @@ name|JPanel
 name|getSettingsPanel
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
+name|settings
+operator|==
 literal|null
+condition|)
+block|{
+name|initSettingsPanel
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|settings
 return|;
-comment|/*if (settings == null)             initSettingsPanel();         return settings;*/
 block|}
 DECL|method|initSettingsPanel ()
 specifier|private
@@ -5672,8 +5735,9 @@ argument_list|,
 name|inParen
 argument_list|)
 expr_stmt|;
+name|JRadioButton
 name|inText
-operator|=
+init|=
 operator|new
 name|JRadioButton
 argument_list|(
@@ -5687,7 +5751,7 @@ argument_list|,
 operator|!
 name|inParen
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|ButtonGroup
 name|bg
 init|=
@@ -5909,7 +5973,13 @@ name|OOPanel
 extends|extends
 name|SidePaneComponent
 block|{
-DECL|method|OOPanel (SidePaneManager sidePaneManager, Icon url, String s)
+DECL|field|panel
+specifier|private
+specifier|final
+name|OpenOfficePanel
+name|panel
+decl_stmt|;
+DECL|method|OOPanel (SidePaneManager sidePaneManager, Icon url, String s, OpenOfficePanel panel)
 specifier|public
 name|OOPanel
 parameter_list|(
@@ -5921,6 +5991,9 @@ name|url
 parameter_list|,
 name|String
 name|s
+parameter_list|,
+name|OpenOfficePanel
+name|panel
 parameter_list|)
 block|{
 name|super
@@ -5932,6 +6005,12 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|panel
+operator|=
+name|panel
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -5942,7 +6021,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-name|this
+name|panel
 operator|.
 name|getName
 argument_list|()
