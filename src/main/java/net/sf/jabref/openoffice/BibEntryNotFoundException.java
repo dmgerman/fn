@@ -21,9 +21,9 @@ comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: 16-Dec-2007  * 
 end_comment
 
 begin_class
-DECL|class|BibtexEntryNotFoundException
+DECL|class|BibEntryNotFoundException
 class|class
-name|BibtexEntryNotFoundException
+name|BibEntryNotFoundException
 extends|extends
 name|Exception
 block|{
@@ -33,9 +33,9 @@ specifier|final
 name|String
 name|bibtexKey
 decl_stmt|;
-DECL|method|BibtexEntryNotFoundException (String bibtexKey, String message)
+DECL|method|BibEntryNotFoundException (String bibtexKey, String message)
 specifier|public
-name|BibtexEntryNotFoundException
+name|BibEntryNotFoundException
 parameter_list|(
 name|String
 name|bibtexKey

@@ -2884,15 +2884,6 @@ name|USE_ALL_OPEN_BASES
 init|=
 literal|"useAllOpenBases"
 decl_stmt|;
-DECL|field|OO_IN_PAR_CITATION
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|OO_IN_PAR_CITATION
-init|=
-literal|"ooInParCitation"
-decl_stmt|;
 DECL|field|OO_BIBLIOGRAPHY_STYLE_FILE
 specifier|public
 specifier|static
