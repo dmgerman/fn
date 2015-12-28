@@ -56,16 +56,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JList
 import|;
 end_import
@@ -159,20 +149,6 @@ operator|.
 name|beans
 operator|.
 name|XPropertySet
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|star
-operator|.
-name|frame
-operator|.
-name|XDesktop
 import|;
 end_import
 
@@ -1413,18 +1389,12 @@ name|property
 argument_list|)
 return|;
 block|}
-DECL|method|selectComponent (JFrame parent, XDesktop xDesktop, List<XTextDocument> list)
+DECL|method|selectComponent (List<XTextDocument> list)
 specifier|public
 specifier|static
 name|XTextDocument
 name|selectComponent
 parameter_list|(
-name|JFrame
-name|parent
-parameter_list|,
-name|XDesktop
-name|xDesktop
-parameter_list|,
 name|List
 argument_list|<
 name|XTextDocument
@@ -1525,7 +1495,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|parent
+literal|null
 argument_list|,
 operator|new
 name|JScrollPane

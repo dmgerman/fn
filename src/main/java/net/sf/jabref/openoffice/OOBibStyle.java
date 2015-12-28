@@ -1374,7 +1374,6 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("'"+line.substring(0, index)+"' : '"+formatString+"'");
 name|boolean
 name|setDefault
 init|=
@@ -1408,7 +1407,6 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-comment|/*typeS = new Short(Short.parseShort(type));                 OOBibFormatParser parser = new OOBibFormatParser(new StringReader(formatString));                 PropertyValue[][] layout = parser.parse();*/
 name|Layout
 name|layout
 init|=

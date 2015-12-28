@@ -565,20 +565,15 @@ specifier|private
 name|XComponent
 name|xCurrentComponent
 decl_stmt|;
-DECL|field|xComponentLoader
+DECL|field|propertySet
 specifier|private
-name|XComponentLoader
-name|xComponentLoader
+name|XPropertySet
+name|propertySet
 decl_stmt|;
 DECL|field|userProperties
 specifier|private
 name|XPropertyContainer
 name|userProperties
-decl_stmt|;
-DECL|field|propertySet
-specifier|private
-name|XPropertySet
-name|propertySet
 decl_stmt|;
 DECL|field|atEnd
 specifier|private
@@ -805,10 +800,6 @@ name|OOUtil
 operator|.
 name|selectComponent
 argument_list|(
-literal|null
-argument_list|,
-name|xDesktop
-argument_list|,
 name|ls
 argument_list|)
 expr_stmt|;
@@ -1133,8 +1124,6 @@ argument_list|,
 name|desktop
 argument_list|)
 decl_stmt|;
-name|xComponentLoader
-operator|=
 name|UnoRuntime
 operator|.
 name|queryInterface
@@ -1596,11 +1585,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Storing page info: "
 operator|+
@@ -2534,11 +2521,9 @@ operator|==
 literal|null
 condition|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Bibtex key not found : '"
 operator|+
@@ -2550,11 +2535,9 @@ operator|+
 literal|'\''
 argument_list|)
 expr_stmt|;
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Problem with reference mark: '"
 operator|+
@@ -2580,7 +2563,6 @@ name|j
 index|]
 argument_list|)
 expr_stmt|;
-comment|//throw new BibtexEntryNotFoundException(keys[j], "");
 block|}
 block|}
 name|String
@@ -2913,25 +2895,9 @@ decl_stmt|;
 if|if
 condition|(
 name|num
-operator|!=
+operator|==
 literal|null
 condition|)
-block|{
-name|citationMarker
-operator|=
-name|style
-operator|.
-name|getNumCitationMarker
-argument_list|(
-name|num
-argument_list|,
-name|minGroupingCount
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 throw|throw
 operator|new
@@ -2955,6 +2921,22 @@ index|]
 argument_list|)
 argument_list|)
 throw|;
+block|}
+else|else
+block|{
+name|citationMarker
+operator|=
+name|style
+operator|.
+name|getNumCitationMarker
+argument_list|(
+name|num
+argument_list|,
+name|minGroupingCount
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 for|for
 control|(
@@ -3079,7 +3061,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/*System.out.println(style.getBooleanCitProperty("MultiCiteChronological"));                     for (int j = 0; j< cEntries.length; j++) {                         BibEntry cEntry = cEntries[j];                         System.out.println(cEntry.getCiteKey());                     } */
 name|citationMarker
 operator|=
 name|style

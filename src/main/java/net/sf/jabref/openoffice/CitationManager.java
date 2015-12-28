@@ -1035,14 +1035,13 @@ name|int
 name|i
 parameter_list|)
 block|{
-switch|switch
+if|if
 condition|(
 name|i
+operator|==
+literal|0
 condition|)
 block|{
-case|case
-literal|0
-case|:
 return|return
 name|Localization
 operator|.
@@ -1051,8 +1050,9 @@ argument_list|(
 literal|"Citation"
 argument_list|)
 return|;
-comment|//case 1: return Globals.lang("Context");
-default|default:
+block|}
+else|else
+block|{
 return|return
 name|Localization
 operator|.
@@ -1077,21 +1077,21 @@ name|int
 name|i
 parameter_list|)
 block|{
-switch|switch
+if|if
 condition|(
 name|i
+operator|==
+literal|0
 condition|)
 block|{
-comment|//case 0: return citEntry.keyString;
-case|case
-literal|0
-case|:
 return|return
 name|citEntry
 operator|.
 name|context
 return|;
-default|default:
+block|}
+else|else
+block|{
 return|return
 name|citEntry
 operator|.
@@ -1190,8 +1190,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|//else if (e.isPopupTrigger())
-comment|//    processPopupTrigger(e);
 block|}
 block|}
 DECL|class|SingleCitDialog
