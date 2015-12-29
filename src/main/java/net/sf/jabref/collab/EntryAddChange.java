@@ -321,6 +321,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|description ()
+specifier|public
 name|JComponent
 name|description
 parameter_list|()

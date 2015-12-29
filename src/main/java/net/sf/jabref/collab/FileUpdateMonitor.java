@@ -76,6 +76,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|io
 operator|.
 name|File
@@ -137,7 +147,7 @@ decl_stmt|;
 DECL|field|entries
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -522,25 +532,30 @@ class|class
 name|Entry
 block|{
 DECL|field|listener
+specifier|private
 specifier|final
 name|FileUpdateListener
 name|listener
 decl_stmt|;
 DECL|field|file
+specifier|private
 specifier|final
 name|File
 name|file
 decl_stmt|;
 DECL|field|tmpFile
+specifier|private
 specifier|final
 name|File
 name|tmpFile
 decl_stmt|;
 DECL|field|timeStamp
+specifier|private
 name|long
 name|timeStamp
 decl_stmt|;
 DECL|field|fileSize
+specifier|private
 name|long
 name|fileSize
 decl_stmt|;
@@ -596,14 +611,14 @@ operator|.
 name|deleteOnExit
 argument_list|()
 expr_stmt|;
-block|}
 name|copy
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 comment|/**          * Check if time stamp or the file size has changed.          * @throws IOException if the file does no longer exist.          * @return boolean true if the file has changed.          */
 DECL|method|hasBeenUpdated ()
-specifier|public
+specifier|private
 name|boolean
 name|hasBeenUpdated
 parameter_list|()
@@ -616,14 +631,6 @@ init|=
 name|file
 operator|.
 name|lastModified
-argument_list|()
-decl_stmt|;
-name|long
-name|fileSizeNow
-init|=
-name|file
-operator|.
-name|length
 argument_list|()
 decl_stmt|;
 if|if
@@ -641,6 +648,14 @@ literal|"File deleted"
 argument_list|)
 throw|;
 block|}
+name|long
+name|fileSizeNow
+init|=
+name|file
+operator|.
+name|length
+argument_list|()
+decl_stmt|;
 return|return
 operator|(
 name|timeStamp
@@ -656,7 +671,7 @@ operator|)
 return|;
 block|}
 DECL|method|updateTimeStamp ()
-specifier|public
+specifier|private
 name|void
 name|updateTimeStamp
 parameter_list|()
@@ -691,7 +706,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|copy ()
-specifier|public
+specifier|private
 name|boolean
 name|copy
 parameter_list|()
@@ -746,7 +761,7 @@ return|;
 block|}
 comment|/**          * Call the listener method to signal that the file has changed.          */
 DECL|method|notifyListener ()
-specifier|public
+specifier|private
 name|void
 name|notifyListener
 parameter_list|()
@@ -774,7 +789,7 @@ expr_stmt|;
 block|}
 comment|/**          * Call the listener method to signal that the file has been removed.          */
 DECL|method|notifyFileRemoved ()
-specifier|public
+specifier|private
 name|void
 name|notifyFileRemoved
 parameter_list|()

@@ -217,10 +217,6 @@ specifier|final
 name|BibEntry
 name|tmpEntry
 decl_stmt|;
-DECL|field|diskEntry
-name|BibEntry
-name|diskEntry
-decl_stmt|;
 DECL|field|sp
 specifier|private
 specifier|final
@@ -294,10 +290,9 @@ comment|// Check if it has been modified locally, since last tempfile was saved.
 name|boolean
 name|isModifiedLocally
 init|=
-operator|!
 operator|(
 name|matchWithTmp
-operator|>
+operator|<=
 literal|1
 operator|)
 decl_stmt|;
@@ -413,6 +408,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|description ()
+specifier|public
 name|JComponent
 name|description
 parameter_list|()

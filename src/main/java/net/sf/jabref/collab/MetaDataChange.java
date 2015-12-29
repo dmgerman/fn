@@ -120,6 +120,16 @@ name|ArrayList
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  *  */
 end_comment
@@ -195,7 +205,7 @@ decl_stmt|;
 DECL|field|changes
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|MetaDataChangeUnit
 argument_list|>
@@ -365,6 +375,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|description ()
+specifier|public
 name|JComponent
 name|description
 parameter_list|()
@@ -411,7 +422,6 @@ operator|.
 name|key
 argument_list|)
 expr_stmt|;
-comment|/*switch (unit.type) {                 case ADD:                     sb.append("<p>Added: "+unit.key);                     break;                 case REMOVE:                     sb.append("<p>Removed: "+unit.key);                     break;                 case MODIFY:                     sb.append("<p>Modified: "+unit.key);                     break;             }*/
 block|}
 name|sb
 operator|.
@@ -560,16 +570,19 @@ class|class
 name|MetaDataChangeUnit
 block|{
 DECL|field|type
+specifier|private
 specifier|final
 name|int
 name|type
 decl_stmt|;
 DECL|field|key
+specifier|private
 specifier|final
 name|String
 name|key
 decl_stmt|;
 DECL|field|value
+specifier|private
 specifier|final
 name|Vector
 argument_list|<
