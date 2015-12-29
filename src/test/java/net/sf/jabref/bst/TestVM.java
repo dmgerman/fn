@@ -192,7 +192,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -2746,14 +2766,14 @@ operator|+
 literal|"FUNCTION {presort} { cite$ 'sort.key$ := } ITERATE { presort } SORT"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2812,7 +2832,7 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BstEntry
 argument_list|>
