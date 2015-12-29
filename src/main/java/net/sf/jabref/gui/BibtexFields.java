@@ -118,16 +118,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashSet
 import|;
 end_import
@@ -139,6 +129,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
 import|;
 end_import
 
@@ -398,12 +398,12 @@ name|KEY_FIELD
 block|}
 decl_stmt|;
 comment|// singleton instance
-DECL|field|runtime
+DECL|field|RUNTIME
 specifier|private
 specifier|static
 specifier|final
 name|BibtexFields
-name|runtime
+name|RUNTIME
 init|=
 operator|new
 name|BibtexFields
@@ -413,7 +413,7 @@ comment|// contains all bibtex-field objects (BibtexSingleField)
 DECL|field|fieldSet
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1786,14 +1786,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// collect all public fields for the PUBLIC_FIELDS array
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|pFields
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|(
 name|fieldSet
@@ -1853,10 +1853,6 @@ index|]
 argument_list|)
 expr_stmt|;
 comment|// sort the entries
-name|java
-operator|.
-name|util
-operator|.
 name|Arrays
 operator|.
 name|sort
@@ -1926,7 +1922,7 @@ name|fieldName
 range|:
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|fieldSet
 operator|.
@@ -1939,7 +1935,7 @@ name|field
 init|=
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|fieldSet
 operator|.
@@ -2015,7 +2011,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|fieldSet
 operator|.
@@ -2079,7 +2075,7 @@ block|{
 return|return
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|fieldSet
 operator|.
@@ -2444,7 +2440,7 @@ name|asList
 argument_list|(
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|PUBLIC_FIELDS
 argument_list|)
@@ -2479,7 +2475,7 @@ name|sField
 range|:
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|fieldSet
 operator|.
@@ -2525,7 +2521,7 @@ block|{
 return|return
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|PUBLIC_FIELDS
 index|[
@@ -2544,7 +2540,7 @@ block|{
 return|return
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|PUBLIC_FIELDS
 operator|.

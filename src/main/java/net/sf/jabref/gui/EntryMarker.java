@@ -617,9 +617,12 @@ block|{
 comment|// Marked 1 for this user.
 if|if
 condition|(
-operator|!
 name|onlyMaxLevel
 condition|)
+block|{
+return|return;
+block|}
+else|else
 block|{
 name|newValue
 operator|=
@@ -648,10 +651,6 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-return|return;
 block|}
 block|}
 else|else

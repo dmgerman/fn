@@ -66,6 +66,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|TreeSet
 import|;
 end_import
@@ -159,7 +169,7 @@ decl_stmt|;
 DECL|field|sliders
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|JSlider
 argument_list|,

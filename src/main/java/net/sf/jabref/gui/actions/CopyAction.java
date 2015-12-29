@@ -224,7 +224,7 @@ condition|)
 block|{
 name|ClipBoardManager
 operator|.
-name|clipBoard
+name|CLIPBOARD
 operator|.
 name|setClipboardContents
 argument_list|(
