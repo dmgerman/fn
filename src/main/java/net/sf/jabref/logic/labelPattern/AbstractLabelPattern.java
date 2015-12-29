@@ -24,27 +24,37 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Enumeration
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Hashtable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -61,7 +71,7 @@ name|AbstractLabelPattern
 block|{
 DECL|field|defaultPattern
 specifier|protected
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -69,11 +79,11 @@ name|defaultPattern
 decl_stmt|;
 DECL|field|data
 specifier|protected
-name|Hashtable
+name|Map
 argument_list|<
 name|String
 argument_list|,
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -117,7 +127,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Remove a label pattern from the LabelPattern.      *       * @param type a<code>String</code>      */
+comment|/**      * Remove a label pattern from the LabelPattern.      *      * @param type a<code>String</code>      */
 DECL|method|removeLabelPattern (String type)
 specifier|public
 name|void
@@ -146,11 +156,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Gets an object for a desired label from this LabelPattern or one of it's      * parents (in the case of DatabaseLAbelPattern). This method first tries to obtain the object from this      * LabelPattern via the<code>get</code> method of<code>Hashtable</code>.      * If this fails, we try the default.<br />      * If that fails, we try the parent.<br />      * If that fails, we return the DEFAULT_LABELPATTERN<br />      *       * @param key a<code>String</code>      * @return the list of Strings for the given key. First entry: the complete key      */
+comment|/**      * Gets an object for a desired label from this LabelPattern or one of it's      * parents (in the case of DatabaseLAbelPattern). This method first tries to obtain the object from this      * LabelPattern via the<code>get</code> method of<code>Hashtable</code>.      * If this fails, we try the default.<br />      * If that fails, we try the parent.<br />      * If that fails, we return the DEFAULT_LABELPATTERN<br />      *      * @param key a<code>String</code>      * @return the list of Strings for the given key. First entry: the complete key      */
 DECL|method|getValue (String key)
 specifier|public
 specifier|abstract
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -171,6 +181,7 @@ name|String
 name|key
 parameter_list|)
 block|{
+specifier|final
 name|Object
 name|_obj
 init|=
@@ -190,7 +201,7 @@ block|}
 comment|/**      * This method is called "...Value" to be in line with the other methods      *      * @return null if not available.      */
 DECL|method|getDefaultValue ()
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -227,7 +238,7 @@ expr_stmt|;
 block|}
 DECL|method|getAllKeys ()
 specifier|public
-name|Enumeration
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -237,7 +248,7 @@ block|{
 return|return
 name|data
 operator|.
-name|keys
+name|keySet
 argument_list|()
 return|;
 block|}

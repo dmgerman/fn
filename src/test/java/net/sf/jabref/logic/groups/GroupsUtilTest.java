@@ -78,16 +78,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TreeSet
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -319,7 +309,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -356,7 +346,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>

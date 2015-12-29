@@ -192,6 +192,20 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|FILE_SEPARATOR
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|FILE_SEPARATOR
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"file.separator"
+argument_list|)
+decl_stmt|;
 comment|/**      * Returns the extension of a file or Optional.empty() if the file does not have one (no . in name).      *      * @param file      * @return The extension, trimmed and in lowercase.      */
 DECL|method|getFileExtension (File file)
 specifier|public
@@ -1069,12 +1083,7 @@ name|dir
 operator|.
 name|endsWith
 argument_list|(
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
-argument_list|)
+name|FILE_SEPARATOR
 argument_list|)
 condition|)
 block|{
@@ -1091,12 +1100,7 @@ name|name
 operator|=
 name|dir
 operator|+
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
-argument_list|)
+name|FILE_SEPARATOR
 operator|+
 name|name
 expr_stmt|;
@@ -1420,12 +1424,7 @@ name|dir
 operator|.
 name|endsWith
 argument_list|(
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
-argument_list|)
+name|FILE_SEPARATOR
 argument_list|)
 condition|)
 block|{
@@ -1435,12 +1434,7 @@ name|dir
 operator|.
 name|concat
 argument_list|(
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
-argument_list|)
+name|FILE_SEPARATOR
 argument_list|)
 expr_stmt|;
 block|}

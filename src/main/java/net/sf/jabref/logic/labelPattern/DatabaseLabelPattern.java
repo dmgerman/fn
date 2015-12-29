@@ -24,7 +24,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|List
 import|;
 end_import
 
@@ -52,7 +52,7 @@ annotation|@
 name|Override
 DECL|method|getValue (String key)
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -62,7 +62,7 @@ name|String
 name|key
 parameter_list|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>

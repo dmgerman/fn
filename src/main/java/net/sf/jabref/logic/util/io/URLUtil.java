@@ -117,6 +117,16 @@ name|URL_EXP
 init|=
 literal|"^(https?|ftp)://.+"
 decl_stmt|;
+comment|// Detect Google search URL
+DECL|field|GOOGLE_SEARCH_EXP
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|GOOGLE_SEARCH_EXP
+init|=
+literal|"^https?://(?:www\\.)?google\\.[\\.a-z]+?/url.*"
+decl_stmt|;
 comment|/**      * Cleans URLs returned by Google search.      *      *<example>      *  If you copy links from search results from Google, all links will be enriched with search meta data, e.g.      *  https://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&&url=http%3A%2F%2Fwww.inrg.csie.ntu.edu.tw%2Falgorithm2014%2Fhomework%2FWagner-74.pdf&ei=DifeVYHkDYWqU5W0j6gD&usg=AFQjCNFl638rl5KVta1jIMWLyb4CPSZidg&sig2=0hSSMw9XZXL3HJWwEcJtOg      *</example>      *      * @param url the Google search URL string      * @return the cleaned Google URL or @code{url} if no search URL was detected      */
 DECL|method|cleanGoogleSearchURL (String url)
 specifier|public
@@ -135,13 +145,6 @@ argument_list|(
 name|url
 argument_list|)
 expr_stmt|;
-comment|// Detect Google search URL
-specifier|final
-name|String
-name|searchExp
-init|=
-literal|"^https?://(?:www\\.)?google\\.[\\.a-z]+?/url.*"
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -149,7 +152,7 @@ name|url
 operator|.
 name|matches
 argument_list|(
-name|searchExp
+name|GOOGLE_SEARCH_EXP
 argument_list|)
 condition|)
 block|{
@@ -232,7 +235,7 @@ name|pair
 operator|.
 name|indexOf
 argument_list|(
-literal|"="
+literal|'='
 argument_list|)
 operator|+
 literal|1

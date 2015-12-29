@@ -29,12 +29,12 @@ class|class
 name|OS
 block|{
 comment|// https://commons.apache.org/proper/commons-lang/javadocs/api-2.6/org/apache/commons/lang/SystemUtils.html
-DECL|field|osName
-specifier|public
+DECL|field|OS_NAME
+specifier|private
 specifier|static
 specifier|final
 name|String
-name|osName
+name|OS_NAME
 init|=
 name|System
 operator|.
@@ -55,7 +55,7 @@ specifier|final
 name|boolean
 name|LINUX
 init|=
-name|osName
+name|OS_NAME
 operator|.
 name|startsWith
 argument_list|(
@@ -69,7 +69,7 @@ specifier|final
 name|boolean
 name|WINDOWS
 init|=
-name|osName
+name|OS_NAME
 operator|.
 name|startsWith
 argument_list|(
@@ -83,7 +83,7 @@ specifier|final
 name|boolean
 name|OS_X
 init|=
-name|osName
+name|OS_NAME
 operator|.
 name|startsWith
 argument_list|(
@@ -105,8 +105,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|OS
-operator|.
 name|WINDOWS
 condition|)
 block|{
