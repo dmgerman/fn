@@ -344,22 +344,6 @@ name|EntryTypes
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryUtil
-import|;
-end_import
-
 begin_class
 DECL|class|LabelPatternPanel
 specifier|public
@@ -1242,9 +1226,9 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|EntryUtil
+name|EntryTypes
 operator|.
-name|capitalizeFirst
+name|getDisplayNameFor
 argument_list|(
 name|name
 argument_list|)

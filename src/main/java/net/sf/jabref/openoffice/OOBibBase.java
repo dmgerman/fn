@@ -5948,9 +5948,6 @@ argument_list|()
 operator|.
 name|getType
 argument_list|()
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 try|try

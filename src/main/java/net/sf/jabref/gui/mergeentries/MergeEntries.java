@@ -104,22 +104,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryType
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -1010,7 +994,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Start with entry type
-name|EntryType
+name|String
 name|type1
 init|=
 name|one
@@ -1018,7 +1002,7 @@ operator|.
 name|getType
 argument_list|()
 decl_stmt|;
-name|EntryType
+name|String
 name|type2
 init|=
 name|two
@@ -1095,9 +1079,6 @@ operator|new
 name|JTextArea
 argument_list|(
 name|type1
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|type1ta
@@ -1286,9 +1267,6 @@ operator|new
 name|JTextArea
 argument_list|(
 name|type2
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|type2ta

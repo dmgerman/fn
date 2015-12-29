@@ -77,7 +77,7 @@ block|{
 DECL|field|type
 specifier|private
 specifier|final
-name|EntryType
+name|String
 name|type
 decl_stmt|;
 DECL|field|panel
@@ -110,6 +110,9 @@ operator|.
 name|type
 operator|=
 name|type
+operator|.
+name|getName
+argument_list|()
 expr_stmt|;
 name|panel
 operator|=

@@ -3279,7 +3279,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"InProceedings"
+literal|"inproceedings"
 argument_list|,
 name|vm
 operator|.
@@ -3294,7 +3294,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Misc"
+literal|"misc"
 argument_list|,
 name|vm
 operator|.
@@ -3309,7 +3309,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Book"
+literal|"book"
 argument_list|,
 name|vm
 operator|.
@@ -3324,7 +3324,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Article"
+literal|"article"
 argument_list|,
 name|vm
 operator|.

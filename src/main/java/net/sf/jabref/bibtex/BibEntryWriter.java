@@ -88,6 +88,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -310,13 +326,15 @@ name|write
 argument_list|(
 literal|'@'
 operator|+
+name|EntryTypes
+operator|.
+name|getDisplayNameFor
+argument_list|(
 name|entry
 operator|.
 name|getType
 argument_list|()
-operator|.
-name|getName
-argument_list|()
+argument_list|)
 operator|+
 literal|'{'
 argument_list|)
@@ -361,6 +379,19 @@ argument_list|(
 name|entry
 argument_list|)
 decl_stmt|;
+name|EntryType
+name|type
+init|=
+name|EntryTypes
+operator|.
+name|getType
+argument_list|(
+name|entry
+operator|.
+name|getType
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|// Write required fields first.
 name|List
 argument_list|<
@@ -368,7 +399,7 @@ name|String
 argument_list|>
 name|fields
 init|=
-name|entry
+name|type
 operator|.
 name|getRequiredFieldsFlat
 argument_list|()
@@ -417,7 +448,7 @@ block|}
 comment|// Then optional fields.
 name|fields
 operator|=
-name|entry
+name|type
 operator|.
 name|getOptionalFields
 argument_list|()

@@ -2539,9 +2539,6 @@ name|bibtex
 operator|.
 name|getType
 argument_list|()
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -2560,9 +2557,6 @@ argument_list|(
 name|bibtex
 operator|.
 name|getType
-argument_list|()
-operator|.
-name|getName
 argument_list|()
 argument_list|)
 condition|)
@@ -2583,9 +2577,6 @@ name|bibtex
 operator|.
 name|getType
 argument_list|()
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -2604,9 +2595,6 @@ argument_list|(
 name|bibtex
 operator|.
 name|getType
-argument_list|()
-operator|.
-name|getName
 argument_list|()
 argument_list|)
 condition|)
@@ -4090,9 +4078,6 @@ init|=
 name|bibtex
 operator|.
 name|getType
-argument_list|()
-operator|.
-name|getName
 argument_list|()
 decl_stmt|;
 name|String

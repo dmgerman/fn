@@ -24,6 +24,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|bibtex
+operator|.
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -61,6 +75,22 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryType
 import|;
 end_import
 
@@ -316,21 +346,38 @@ block|{
 comment|// First check if they are of the same type - a necessary condition:
 if|if
 condition|(
+operator|!
 name|one
 operator|.
 name|getType
 argument_list|()
-operator|!=
+operator|.
+name|equals
+argument_list|(
 name|two
 operator|.
 name|getType
 argument_list|()
+argument_list|)
 condition|)
 block|{
 return|return
 literal|false
 return|;
 block|}
+name|EntryType
+name|type
+init|=
+name|EntryTypes
+operator|.
+name|getType
+argument_list|(
+name|one
+operator|.
+name|getType
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|// The check if they have the same required fields:
 name|java
 operator|.
@@ -342,10 +389,7 @@ name|String
 argument_list|>
 name|var
 init|=
-name|one
-operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getRequiredFieldsFlat
 argument_list|()
@@ -451,10 +495,7 @@ name|String
 argument_list|>
 name|optionalFields
 init|=
-name|one
-operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getOptionalFields
 argument_list|()
@@ -1247,7 +1288,7 @@ argument_list|()
 return|;
 comment|// No duplicate found.
 block|}
-comment|/**      * Compare two strings on the basis of word-by-word correlation analysis.      *      * @param s1       The first string      * @param s2       The second string      * @param truncate if true, always truncate the longer of two words to be compared to      *                 harmonize their length. If false, use interpolation to harmonize the strings.      * @return a value in the interval [0, 1] indicating the degree of match.      */
+comment|/**      * Compare two strings on the basis of word-by-word correlation analysis.      *      * @param s1       The first string      * @param s2       The second string      * @return a value in the interval [0, 1] indicating the degree of match.      */
 DECL|method|correlateByWords (String s1, String s2)
 specifier|public
 specifier|static
