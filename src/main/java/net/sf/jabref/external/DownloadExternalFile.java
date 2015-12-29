@@ -782,9 +782,7 @@ index|[]
 name|fDirectory
 init|=
 name|getFileDirectory
-argument_list|(
-name|res
-argument_list|)
+argument_list|()
 decl_stmt|;
 specifier|final
 name|String
@@ -1741,15 +1739,12 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|getFileDirectory (String link)
+DECL|method|getFileDirectory ()
 specifier|private
 name|String
 index|[]
 name|getFileDirectory
-parameter_list|(
-name|String
-name|link
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 name|metaData

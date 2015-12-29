@@ -200,9 +200,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|entry
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// If the entry has an editor currently open, we must close it.

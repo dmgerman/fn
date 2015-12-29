@@ -762,15 +762,12 @@ specifier|private
 name|boolean
 name|okPressed
 decl_stmt|;
-DECL|method|TextInputDialog (JabRefFrame frame, BasePanel panel, String title, boolean modal, BibEntry bibEntry)
+DECL|method|TextInputDialog (JabRefFrame frame, String title, boolean modal, BibEntry bibEntry)
 specifier|public
 name|TextInputDialog
 parameter_list|(
 name|JabRefFrame
 name|frame
-parameter_list|,
-name|BasePanel
-name|panel
 parameter_list|,
 name|String
 name|title
@@ -808,9 +805,7 @@ expr_stmt|;
 try|try
 block|{
 name|jbInit
-argument_list|(
-name|frame
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|pack
 argument_list|()
@@ -832,14 +827,11 @@ name|updateSourceView
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|jbInit (JabRefFrame parent)
+DECL|method|jbInit ()
 specifier|private
 name|void
 name|jbInit
-parameter_list|(
-name|JabRefFrame
-name|parent
-parameter_list|)
+parameter_list|()
 block|{
 name|this
 operator|.
@@ -2028,7 +2020,6 @@ name|void
 name|initSourcePanel
 parameter_list|()
 block|{
-comment|//    preview =  new PreviewPanel(entry) ;
 name|preview
 operator|=
 operator|new

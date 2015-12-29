@@ -263,7 +263,7 @@ comment|// use a map instead of a set since i need to know how many of each key 
 DECL|field|allKeys
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -463,14 +463,14 @@ return|;
 block|}
 DECL|method|getAllVisibleFields ()
 specifier|public
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|getAllVisibleFields
 parameter_list|()
 block|{
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -501,7 +501,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -627,39 +627,24 @@ argument_list|()
 operator|!=
 literal|null
 operator|)
-condition|)
-block|{
-name|String
-name|citeKey
-init|=
+operator|&&
+operator|(
+name|keyHash
+operator|==
 name|entry
 operator|.
 name|getCiteKey
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|citeKey
-operator|!=
-literal|null
-condition|)
-block|{
-if|if
-condition|(
-name|keyHash
-operator|==
-name|citeKey
 operator|.
 name|hashCode
 argument_list|()
+operator|)
 condition|)
 block|{
 name|back
 operator|=
 name|entry
 expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 return|return
@@ -821,27 +806,17 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Removes the entry with the given string.      *<p>      * Returns null if not found.      */
-DECL|method|removeEntry (String id)
+comment|/**      * Removes the given entry.      */
+DECL|method|removeEntry (BibEntry oldValue)
 specifier|public
 specifier|synchronized
-name|BibEntry
+name|void
 name|removeEntry
 parameter_list|(
-name|String
-name|id
-parameter_list|)
-block|{
 name|BibEntry
 name|oldValue
-init|=
-name|entries
-operator|.
-name|remove
-argument_list|(
-name|id
-argument_list|)
-decl_stmt|;
+parameter_list|)
+block|{
 if|if
 condition|(
 name|oldValue
@@ -849,10 +824,18 @@ operator|==
 literal|null
 condition|)
 block|{
-return|return
-literal|null
-return|;
+return|return;
 block|}
+name|entries
+operator|.
+name|remove
+argument_list|(
+name|oldValue
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|removeKeyFromSet
 argument_list|(
 name|oldValue
@@ -885,9 +868,6 @@ name|oldValue
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
-name|oldValue
-return|;
 block|}
 DECL|method|setCiteKeyForEntry (String id, String key)
 specifier|public
@@ -937,9 +917,21 @@ decl_stmt|;
 if|if
 condition|(
 name|key
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|entry
+operator|.
+name|clearField
+argument_list|(
+name|BibEntry
+operator|.
+name|KEY_FIELD
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|entry
 operator|.
@@ -950,18 +942,6 @@ operator|.
 name|KEY_FIELD
 argument_list|,
 name|key
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|entry
-operator|.
-name|clearField
-argument_list|(
-name|BibEntry
-operator|.
-name|KEY_FIELD
 argument_list|)
 expr_stmt|;
 block|}
@@ -1388,7 +1368,7 @@ name|entry
 return|;
 block|}
 comment|/**      * If the label represents a string contained in this database, returns      * that string's content. Resolves references to other strings, taking      * care not to follow a circular reference pattern.      * If the string is undefined, returns null.      */
-DECL|method|resolveString (String label, HashSet<String> usedIds)
+DECL|method|resolveString (String label, Set<String> usedIds)
 specifier|private
 name|String
 name|resolveString
@@ -1396,7 +1376,7 @@ parameter_list|(
 name|String
 name|label
 parameter_list|,
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1414,7 +1394,6 @@ name|values
 argument_list|()
 control|)
 block|{
-comment|//Util.pr(label+" : "+string.getName());
 if|if
 condition|(
 name|string
@@ -1422,15 +1401,9 @@ operator|.
 name|getName
 argument_list|()
 operator|.
-name|toLowerCase
-argument_list|()
-operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|label
-operator|.
-name|toLowerCase
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1546,7 +1519,7 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|resolveContent (String res, HashSet<String> usedIds)
+DECL|method|resolveContent (String res, Set<String> usedIds)
 specifier|private
 name|String
 name|resolveContent
@@ -1554,7 +1527,7 @@ parameter_list|(
 name|String
 name|res
 parameter_list|,
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1595,7 +1568,7 @@ name|res
 operator|.
 name|indexOf
 argument_list|(
-literal|"#"
+literal|'#'
 argument_list|,
 name|piv
 argument_list|)
@@ -1635,7 +1608,7 @@ name|res
 operator|.
 name|indexOf
 argument_list|(
-literal|"#"
+literal|'#'
 argument_list|,
 name|next
 operator|+
@@ -1938,11 +1911,6 @@ name|String
 name|key
 parameter_list|)
 block|{
-name|boolean
-name|exists
-init|=
-literal|false
-decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -1962,6 +1930,11 @@ literal|false
 return|;
 comment|//don't put empty key
 block|}
+name|boolean
+name|exists
+init|=
+literal|false
+decl_stmt|;
 if|if
 condition|(
 name|allKeys
@@ -2172,11 +2145,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|field
+literal|"bibtextype"
 operator|.
 name|equals
 argument_list|(
-literal|"bibtextype"
+name|field
 argument_list|)
 condition|)
 block|{

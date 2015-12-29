@@ -798,9 +798,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|entry
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|ce

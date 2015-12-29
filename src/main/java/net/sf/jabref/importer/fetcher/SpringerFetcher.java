@@ -296,12 +296,6 @@ specifier|private
 name|boolean
 name|shouldContinue
 decl_stmt|;
-DECL|field|jep
-specifier|private
-specifier|final
-name|JSONEntryParser
-name|jep
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|stopFetching ()
@@ -835,12 +829,6 @@ name|SpringerFetcher
 parameter_list|()
 block|{
 name|super
-argument_list|()
-expr_stmt|;
-name|jep
-operator|=
-operator|new
-name|JSONEntryParser
 argument_list|()
 expr_stmt|;
 block|}

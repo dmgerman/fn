@@ -906,9 +906,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|one
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|ce
@@ -937,9 +934,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|two
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|ce

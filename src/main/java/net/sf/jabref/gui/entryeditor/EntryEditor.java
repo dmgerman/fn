@@ -4202,15 +4202,15 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Updates this editor to show the given entry, regardless of type      * correspondence.      *      * @param swtichEntry a<code>BibEntry</code> value      */
-DECL|method|switchTo (BibEntry swtichEntry)
+comment|/**      * Updates this editor to show the given entry, regardless of type      * correspondence.      *      * @param switchEntry a<code>BibEntry</code> value      */
+DECL|method|switchTo (BibEntry switchEntry)
 specifier|public
 specifier|synchronized
 name|void
 name|switchTo
 parameter_list|(
 name|BibEntry
-name|swtichEntry
+name|switchEntry
 parameter_list|)
 block|{
 if|if
@@ -4219,7 +4219,7 @@ name|this
 operator|.
 name|entry
 operator|==
-name|swtichEntry
+name|switchEntry
 condition|)
 block|{
 comment|/**              * Even if the editor is already showing the same entry, update              * the source panel. I'm not sure if this is the correct place to              * do this, but in some cases the source panel will otherwise not              * be up-to-date when an entry is changed while the entry editor              * is existing, set to the same entry, but not visible.              */
@@ -4242,7 +4242,7 @@ name|this
 argument_list|)
 expr_stmt|;
 comment|// Register as property listener for the new entry:
-name|swtichEntry
+name|switchEntry
 operator|.
 name|addPropertyChangeListener
 argument_list|(
@@ -4253,7 +4253,7 @@ name|this
 operator|.
 name|entry
 operator|=
-name|swtichEntry
+name|switchEntry
 expr_stmt|;
 name|updateAllFields
 argument_list|()
@@ -4268,46 +4268,15 @@ name|panel
 operator|.
 name|newEntryShowing
 argument_list|(
-name|swtichEntry
+name|switchEntry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns false if the contents of the source panel has not been validated,      * true otherwise.      */
-DECL|method|lastSourceAccepted ()
-specifier|public
-name|boolean
-name|lastSourceAccepted
-parameter_list|()
-block|{
-if|if
-condition|(
-name|tabbed
-operator|.
-name|getSelectedComponent
-argument_list|()
-operator|==
-name|srcPanel
-condition|)
-block|{
-name|storeSource
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|lastSourceAccepted
-return|;
-block|}
-comment|/*      * public boolean storeSourceIfNeeded() { if (tabbed.getSelectedIndex() ==      * sourceIndex) return storeSource(); else return true; }      */
-DECL|method|storeSource (boolean showError)
+DECL|method|storeSource ()
 specifier|private
 name|boolean
 name|storeSource
-parameter_list|(
-name|boolean
-name|showError
-parameter_list|)
+parameter_list|()
 block|{
 comment|// Store edited bibtex code.
 name|BibtexParser
@@ -4764,8 +4733,6 @@ elseif|else
 if|if
 condition|(
 name|emptyWarning
-operator|&&
-name|showError
 condition|)
 block|{
 name|warnEmptyBibtexkey
@@ -4908,11 +4875,6 @@ argument_list|(
 name|srcPanel
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|showError
-condition|)
-block|{
 name|Object
 index|[]
 name|options
@@ -4995,7 +4957,6 @@ expr_stmt|;
 name|updateSource
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 return|return
 literal|false
@@ -5713,9 +5674,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|entry
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|panel
@@ -6666,18 +6624,12 @@ name|lastSourceStringAccepted
 argument_list|)
 condition|)
 block|{
-name|boolean
-name|accepted
-init|=
 name|storeSource
-argument_list|(
-literal|true
-argument_list|)
-decl_stmt|;
+argument_list|()
+expr_stmt|;
 block|}
 comment|// Make sure we scroll to the entry if it moved in the table.
 comment|// Should only be done if this editor is currently showing:
-comment|//System.out.println(getType().getName()+": movingAway="+movingAway+", isShowing="+isShowing());
 if|if
 condition|(
 operator|!
@@ -6722,9 +6674,6 @@ operator|>=
 literal|0
 condition|)
 block|{
-comment|//if (panel.mainTable.getSelectedRowCount() == 0)
-comment|//    panel.mainTable.setRowSelectionInterval(row, row);
-comment|//scrollTo(row);
 name|panel
 operator|.
 name|mainTable
@@ -7210,7 +7159,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|// 1. get Bitexentry for selected index (already have)
+comment|// 1. get BibEntry for selected index (already have)
 comment|// 2. update label
 comment|// Store the current edit in case this action is called during the
 comment|// editing of a field:

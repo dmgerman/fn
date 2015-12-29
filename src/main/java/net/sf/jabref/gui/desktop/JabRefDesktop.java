@@ -769,8 +769,6 @@ block|{
 name|openFileOnWindows
 argument_list|(
 name|link
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 comment|/*                      * cmdArray[0] = Globals.prefs.get(JabRefPreferences.PSVIEWER); cmdArray[1] =                      * link; Process child = Runtime.getRuntime().exec(                      * cmdArray[0] + " " + cmdArray[1]);                      */
@@ -962,8 +960,6 @@ block|{
 name|openFileOnWindows
 argument_list|(
 name|link
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 comment|/*                      * String[] spl = link.split("\\\\"); StringBuffer sb = new                      * StringBuffer(); for (int i = 0; i< spl.length; i++) { if                      * (i> 0) sb.append("\\"); if (spl[i].indexOf(" ")>= 0)                      * spl[i] = "\"" + spl[i] + "\""; sb.append(spl[i]); }                      * //pr(sb.toString()); link = sb.toString();                      *                      * String cmd = "cmd.exe /c start " + link;                      *                      * Process child = Runtime.getRuntime().exec(cmd);                      */
@@ -1105,17 +1101,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Opens a file on a Windows system, using its default viewer.      *      * @param link      *            The filename.      * @param localFile      *            true if it is a local file, not an URL.      * @throws IOException      */
-DECL|method|openFileOnWindows (String link, boolean localFile)
+comment|/**      * Opens a file on a Windows system, using its default viewer.      *      * @param link      *            The filename.      * @throws IOException      */
+DECL|method|openFileOnWindows (String link)
 specifier|static
 name|void
 name|openFileOnWindows
 parameter_list|(
 name|String
 name|link
-parameter_list|,
-name|boolean
-name|localFile
 parameter_list|)
 throws|throws
 name|IOException
@@ -1469,8 +1462,6 @@ block|{
 name|openFileOnWindows
 argument_list|(
 name|filePath
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}

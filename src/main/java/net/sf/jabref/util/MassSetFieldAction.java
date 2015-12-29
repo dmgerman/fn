@@ -76,7 +76,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|TreeSet
+name|Set
 import|;
 end_import
 
@@ -370,14 +370,6 @@ specifier|private
 name|JCheckBox
 name|overwrite
 decl_stmt|;
-DECL|field|allFields
-specifier|private
-name|TreeSet
-argument_list|<
-name|String
-argument_list|>
-name|allFields
-decl_stmt|;
 DECL|method|MassSetFieldAction (JabRefFrame frame)
 specifier|public
 name|MassSetFieldAction
@@ -577,8 +569,12 @@ literal|"Move contents of a field into a field with a different name"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Set
+argument_list|<
+name|String
+argument_list|>
 name|allFields
-operator|=
+init|=
 name|frame
 operator|.
 name|getCurrentBasePanel
@@ -589,7 +585,7 @@ argument_list|()
 operator|.
 name|getAllVisibleFields
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 for|for
 control|(
 name|String

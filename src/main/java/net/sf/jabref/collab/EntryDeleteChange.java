@@ -379,9 +379,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|memEntry
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|undoEdit
@@ -407,9 +404,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|tmpEntry
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
