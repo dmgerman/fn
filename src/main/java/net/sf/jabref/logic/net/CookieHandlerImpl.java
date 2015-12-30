@@ -184,7 +184,7 @@ if|if
 condition|(
 name|cookie
 operator|.
-name|equals
+name|equalNameAndDomain
 argument_list|(
 name|existingCookie
 argument_list|)

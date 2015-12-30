@@ -159,7 +159,6 @@ block|}
 comment|/**      * Gets an object for a desired label from this LabelPattern or one of it's      * parents (in the case of DatabaseLAbelPattern). This method first tries to obtain the object from this      * LabelPattern via the<code>get</code> method of<code>Hashtable</code>.      * If this fails, we try the default.<br />      * If that fails, we try the parent.<br />      * If that fails, we return the DEFAULT_LABELPATTERN<br />      *      * @param key a<code>String</code>      * @return the list of Strings for the given key. First entry: the complete key      */
 DECL|method|getValue (String key)
 specifier|public
-specifier|abstract
 name|List
 argument_list|<
 name|String
@@ -169,7 +168,55 @@ parameter_list|(
 name|String
 name|key
 parameter_list|)
-function_decl|;
+block|{
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|result
+init|=
+name|data
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+comment|//  Test to see if we found anything
+if|if
+condition|(
+name|result
+operator|==
+literal|null
+condition|)
+block|{
+comment|// check default value
+name|result
+operator|=
+name|getDefaultValue
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|result
+operator|==
+literal|null
+condition|)
+block|{
+comment|// we are the "last" to ask
+comment|// we don't have anything left
+return|return
+name|getLastLevelLabelPattern
+argument_list|(
+name|key
+argument_list|)
+return|;
+block|}
+block|}
+return|return
+name|result
+return|;
+block|}
 comment|/**      * Checks whether this pattern is customized or the default value.      */
 DECL|method|isDefaultValue (String key)
 specifier|public
@@ -252,6 +299,19 @@ name|keySet
 argument_list|()
 return|;
 block|}
+DECL|method|getLastLevelLabelPattern (String key)
+specifier|public
+specifier|abstract
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getLastLevelLabelPattern
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+function_decl|;
 block|}
 end_class
 

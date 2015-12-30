@@ -616,15 +616,7 @@ name|out
 operator|.
 name|write
 argument_list|(
-operator|(
 name|keyField
-operator|==
-literal|null
-condition|?
-literal|""
-else|:
-name|keyField
-operator|)
 operator|+
 literal|','
 operator|+
