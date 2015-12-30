@@ -965,7 +965,7 @@ name|JabRefPreferences
 operator|.
 name|OO_JARS_PATH
 argument_list|,
-literal|"/Applications/OpenOffice.org.app/Contents/basis-link"
+literal|"/Applications/OpenOffice.org.app/Contents/Resources/java"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2785,7 +2785,7 @@ name|ooBaseDirectory
 operator|=
 name|ooPath
 operator|+
-literal|"/Contents/basis-link/program/classes"
+literal|"/Contents/Resources/java"
 expr_stmt|;
 block|}
 else|else
