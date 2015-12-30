@@ -577,6 +577,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|EXTERNAL_FILE_TYPES
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|EXTERNAL_FILE_TYPES
+init|=
+literal|"externalFileTypes"
+decl_stmt|;
 comment|/**      * HashMap that contains all preferences which are set by default      */
 DECL|field|defaults
 specifier|public
@@ -9738,7 +9747,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"externalFileTypes"
+name|EXTERNAL_FILE_TYPES
 argument_list|,
 literal|null
 argument_list|)
@@ -9774,7 +9783,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"externalFileTypes"
+name|EXTERNAL_FILE_TYPES
 argument_list|,
 literal|""
 argument_list|)
@@ -9872,8 +9881,9 @@ comment|// A new or modified entry type. Construct it from the string array:
 name|ExternalFileType
 name|type
 init|=
-operator|new
 name|ExternalFileType
+operator|.
+name|buildFromArgs
 argument_list|(
 name|val
 argument_list|)

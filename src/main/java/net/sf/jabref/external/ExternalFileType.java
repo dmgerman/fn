@@ -169,10 +169,12 @@ name|icon
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Construct an ExternalFileType from a String array. This constructor is used when      * reading file type definitions from Preferences, where the available data types are      * limited. We assume that the array contains the same values as the main constructor,      * in the same order.      *      * TODO: The icon argument needs special treatment. At the moment, we assume that the fourth      * element of the array contains the icon keyword to be looked up in the current icon theme.      * To support icons found elsewhere on the file system we simply need to prefix the icon name      * with a marker.      *      * @param val Constructor arguments.      */
-DECL|method|ExternalFileType (String[] val)
+comment|/**      * Construct an ExternalFileType from a String array. This is used when      * reading file type definitions from Preferences, where the available data types are      * limited. We assume that the array contains the same values as the main constructor,      * in the same order.      *      * @param val arguments.      */
+DECL|method|buildFromArgs (String[] val)
 specifier|public
+specifier|static
 name|ExternalFileType
+name|buildFromArgs
 parameter_list|(
 name|String
 index|[]
@@ -194,6 +196,12 @@ name|length
 operator|<
 literal|4
 operator|)
+operator|||
+name|val
+operator|.
+name|length
+operator|>
+literal|5
 condition|)
 block|{
 throw|throw
@@ -204,41 +212,34 @@ literal|"Cannot construct ExternalFileType without four elements in String[] arg
 argument_list|)
 throw|;
 block|}
-name|this
-operator|.
+name|String
 name|name
-operator|=
+init|=
 name|val
 index|[
 literal|0
 index|]
-expr_stmt|;
-name|label
-operator|.
-name|setToolTipText
-argument_list|(
-name|this
-operator|.
-name|name
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
+decl_stmt|;
+name|String
 name|extension
-operator|=
+init|=
 name|val
 index|[
 literal|1
 index|]
-expr_stmt|;
-name|label
-operator|.
-name|setText
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-comment|// Up to version 2.4b the mime type is not included:
+decl_stmt|;
+name|String
+name|openWith
+decl_stmt|;
+name|String
+name|mimeType
+decl_stmt|;
+name|String
+name|iconName
+decl_stmt|;
+name|Icon
+name|icon
+decl_stmt|;
 if|if
 condition|(
 name|val
@@ -248,8 +249,11 @@ operator|==
 literal|4
 condition|)
 block|{
-name|this
-operator|.
+comment|// Up to version 2.4b the mime type is not included:
+name|mimeType
+operator|=
+literal|""
+expr_stmt|;
 name|openWith
 operator|=
 name|val
@@ -257,39 +261,17 @@ index|[
 literal|2
 index|]
 expr_stmt|;
-name|setIconName
-argument_list|(
+name|iconName
+operator|=
 name|val
 index|[
 literal|3
 index|]
-argument_list|)
-expr_stmt|;
-name|setIcon
-argument_list|(
-name|IconTheme
-operator|.
-name|getImage
-argument_list|(
-name|getIconName
-argument_list|()
-argument_list|)
-argument_list|)
 expr_stmt|;
 block|}
-comment|// When mime type is included, the array length should be 5:
-elseif|else
-if|if
-condition|(
-name|val
-operator|.
-name|length
-operator|==
-literal|5
-condition|)
+else|else
 block|{
-name|this
-operator|.
+comment|// When mime type is included, the array length should be 5:
 name|mimeType
 operator|=
 name|val
@@ -297,8 +279,6 @@ index|[
 literal|2
 index|]
 expr_stmt|;
-name|this
-operator|.
 name|openWith
 operator|=
 name|val
@@ -306,26 +286,65 @@ index|[
 literal|3
 index|]
 expr_stmt|;
-name|setIconName
-argument_list|(
+name|iconName
+operator|=
 name|val
 index|[
 literal|4
 index|]
-argument_list|)
 expr_stmt|;
-name|setIcon
+block|}
+if|if
+condition|(
+literal|"new"
+operator|.
+name|equals
 argument_list|(
+name|iconName
+argument_list|)
+condition|)
+block|{
+name|icon
+operator|=
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|FILE
+operator|.
+name|getSmallIcon
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|icon
+operator|=
 name|IconTheme
 operator|.
 name|getImage
 argument_list|(
-name|getIconName
-argument_list|()
-argument_list|)
+name|iconName
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+operator|new
+name|ExternalFileType
+argument_list|(
+name|name
+argument_list|,
+name|extension
+argument_list|,
+name|mimeType
+argument_list|,
+name|openWith
+argument_list|,
+name|iconName
+argument_list|,
+name|icon
+argument_list|)
+return|;
 block|}
 comment|/**      * Return a String array representing this file type. This is used for storage into      * Preferences, and the same array can be used to construct the file type later,      * using the String[] constructor.      *      * @return A String[] containing all information about this file type.      */
 DECL|method|getStringArrayRepresentation ()
@@ -439,7 +458,7 @@ operator|=
 name|mimeType
 expr_stmt|;
 block|}
-comment|/**      * Get the bibtex field name used to extension to this file type.      * Currently we assume that field name equals filename extension.      * @return The field name.      */
+comment|/**      * Get the bibtex field name used to extension to this file type.      * Currently we assume that field name equals filename extension.      *      * @return The field name.      */
 DECL|method|getFieldName ()
 specifier|public
 name|String
@@ -493,7 +512,7 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-comment|/**      * Obtain a JLabel instance set with this file type's icon. The same JLabel      * is returned from each call of this method.      * @return the label.      */
+comment|/**      * Obtain a JLabel instance set with this file type's icon. The same JLabel      * is returned from each call of this method.      *      * @return the label.      */
 DECL|method|getIconLabel ()
 specifier|public
 name|JLabel
