@@ -114,6 +114,7 @@ end_import
 
 begin_class
 DECL|class|PostgreSQLExporter
+specifier|final
 specifier|public
 class|class
 name|PostgreSQLExporter

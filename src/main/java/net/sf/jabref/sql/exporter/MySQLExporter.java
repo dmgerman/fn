@@ -93,11 +93,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author ifsteinm.  *   *         Jan 20th Extends DBExporter to provide features specific for MySQL  *         Created after a refactory on SQLUtil  *   */
+comment|/**  *  * @author ifsteinm.  *  *         Jan 20th Extends DBExporter to provide features specific for MySQL  *         Created after a refactory on SQLUtil  *  */
 end_comment
 
 begin_class
 DECL|class|MySQLExporter
+specifier|final
 specifier|public
 class|class
 name|MySQLExporter
@@ -115,7 +116,7 @@ specifier|private
 name|MySQLExporter
 parameter_list|()
 block|{     }
-comment|/**      *       * @return The singleton instance of the MySQLExporter      */
+comment|/**      *      * @return The singleton instance of the MySQLExporter      */
 DECL|method|getInstance ()
 specifier|public
 specifier|static
@@ -249,7 +250,7 @@ return|return
 name|conn
 return|;
 block|}
-comment|/**      * Generates SQLnecessary to create all tables in a MySQL database, and      * writes it to appropriate output.      *       * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be written.      */
+comment|/**      * Generates SQLnecessary to create all tables in a MySQL database, and      * writes it to appropriate output.      *      * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be written.      */
 annotation|@
 name|Override
 DECL|method|createTables (Object out)

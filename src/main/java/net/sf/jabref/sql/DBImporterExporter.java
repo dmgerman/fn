@@ -270,7 +270,7 @@ block|}
 end_class
 
 begin_function
-DECL|method|removeAGivenDB (Object out, int database_id)
+DECL|method|removeAGivenDB (Object out, final int database_id)
 specifier|private
 name|void
 name|removeAGivenDB
@@ -278,6 +278,7 @@ parameter_list|(
 name|Object
 name|out
 parameter_list|,
+specifier|final
 name|int
 name|database_id
 parameter_list|)
@@ -312,7 +313,7 @@ comment|/**      * Removes all records for the database being exported in case i
 end_comment
 
 begin_function
-DECL|method|removeAllRecordsForAGivenDB (Object out, int database_id)
+DECL|method|removeAllRecordsForAGivenDB (Object out, final int database_id)
 specifier|protected
 name|void
 name|removeAllRecordsForAGivenDB
@@ -320,6 +321,7 @@ parameter_list|(
 name|Object
 name|out
 parameter_list|,
+specifier|final
 name|int
 name|database_id
 parameter_list|)

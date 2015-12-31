@@ -134,19 +134,20 @@ end_comment
 
 begin_class
 DECL|class|SQLUtil
+specifier|final
 specifier|public
 class|class
 name|SQLUtil
 block|{
-DECL|field|reservedDBWords
+DECL|field|RESERVED_DB_WORDS
 specifier|private
 specifier|static
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
-name|reservedDBWords
+name|RESERVED_DB_WORDS
 init|=
 operator|new
 name|ArrayList
@@ -163,7 +164,7 @@ decl_stmt|;
 DECL|field|allFields
 specifier|private
 specifier|static
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -260,7 +261,7 @@ comment|/**      * @return All existent fields for a bibtex entry      */
 DECL|method|getAllFields ()
 specifier|public
 specifier|static
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -347,7 +348,7 @@ if|if
 condition|(
 name|SQLUtil
 operator|.
-name|reservedDBWords
+name|RESERVED_DB_WORDS
 operator|.
 name|contains
 argument_list|(
@@ -455,13 +456,13 @@ name|list1
 return|;
 block|}
 comment|/**      * Generates DML specifying table columns and their datatypes. The output of this routine should be used within a      * CREATE TABLE statement.      *      * @param fields   Contains unique field names      * @param datatype Specifies the SQL data type that the fields should take on.      * @return The SQL code to be included in a CREATE TABLE statement.      */
-DECL|method|fieldsAsCols (ArrayList<String> fields, String datatype)
+DECL|method|fieldsAsCols (List<String> fields, String datatype)
 specifier|public
 specifier|static
 name|String
 name|fieldsAsCols
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -474,7 +475,7 @@ block|{
 name|String
 name|field
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -501,7 +502,7 @@ if|if
 condition|(
 name|SQLUtil
 operator|.
-name|reservedDBWords
+name|RESERVED_DB_WORDS
 operator|.
 name|contains
 argument_list|(
@@ -538,16 +539,16 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @param allFields All existent fields for a given entry type      * @param reqFields list containing required fields for an entry type      * @param optFields list containing optional fields for an entry type      * @param utiFields list containing utility fields for an entry type      * @param origList  original list with the correct size filled with the default values for each field      * @return origList changing the values of the fields that appear on reqFields, optFields, utiFields set to 'req',      * 'opt' and 'uti' respectively      */
-DECL|method|setFieldRequirement (ArrayList<String> allFields, List<String> reqFields, List<String> optFields, List<String> utiFields, ArrayList<String> origList)
+DECL|method|setFieldRequirement (List<String> allFields, List<String> reqFields, List<String> optFields, List<String> utiFields, List<String> origList)
 specifier|public
 specifier|static
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|setFieldRequirement
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -571,7 +572,7 @@ name|String
 argument_list|>
 name|utiFields
 parameter_list|,
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>

@@ -66,7 +66,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|List
 import|;
 end_import
 
@@ -352,7 +352,7 @@ name|dbs
 decl_stmt|;
 DECL|field|databases
 specifier|private
-name|ArrayList
+name|List
 argument_list|<
 name|Object
 index|[]
@@ -494,12 +494,18 @@ comment|// panel.metaData().getDBStrings();
 comment|// get DBStrings from user if necessary
 if|if
 condition|(
-operator|!
 name|dbs
 operator|.
 name|isConfigValid
 argument_list|()
 condition|)
+block|{
+name|connectToDB
+operator|=
+literal|true
+expr_stmt|;
+block|}
+else|else
 block|{
 comment|// init DB strings if necessary
 if|if
@@ -570,13 +576,6 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-name|connectToDB
-operator|=
-literal|true
-expr_stmt|;
 block|}
 block|}
 comment|// run second, on a different thread:
@@ -718,12 +717,39 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
 name|matrix
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|frame
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"There are no available databases to be imported"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Import from SQL database"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|DBImportExportDialog
 name|dialogo
@@ -869,34 +895,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"There are no available databases to be imported"
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Import from SQL database"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|INFORMATION_MESSAGE
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}

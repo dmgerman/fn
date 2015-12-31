@@ -421,13 +421,14 @@ name|getFieldStr
 argument_list|()
 decl_stmt|;
 DECL|field|dbStrings
+specifier|protected
 name|DBStrings
 name|dbStrings
 decl_stmt|;
 DECL|field|dbNames
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -510,6 +511,7 @@ operator|.
 name|getGroups
 argument_list|()
 decl_stmt|;
+specifier|final
 name|int
 name|database_id
 init|=
@@ -585,11 +587,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Generates the DML required to populate the entries table with jabref data and writes it to the output      * PrintStream.      *      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *                    using getDatabaseIDByPath(metaData, out)      * @param entries     The BibtexEntries to export      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|populateEntriesTable (int database_id, List<BibEntry> entries, Object out)
+DECL|method|populateEntriesTable (final int database_id, List<BibEntry> entries, Object out)
 specifier|private
 name|void
 name|populateEntriesTable
 parameter_list|(
+specifier|final
 name|int
 name|database_id
 parameter_list|,
@@ -610,7 +613,9 @@ name|query
 init|=
 operator|new
 name|StringBuilder
-argument_list|()
+argument_list|(
+literal|75
+argument_list|)
 decl_stmt|;
 name|String
 name|val
@@ -654,12 +659,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|'\''
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|", (SELECT entry_types_id FROM entry_types WHERE label='"
+literal|"', (SELECT entry_types_id FROM entry_types WHERE label='"
 argument_list|)
 operator|.
 name|append
@@ -742,9 +742,19 @@ expr_stmt|;
 if|if
 condition|(
 name|val
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|query
+operator|.
+name|append
+argument_list|(
+literal|"NULL"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 comment|/**                      * The condition below is there since PostgreSQL automatically escapes the backslashes, so the entry                      * would double the number of slashes after storing/retrieving.                      **/
 if|if
@@ -823,16 +833,6 @@ literal|'\''
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|query
-operator|.
-name|append
-argument_list|(
-literal|"NULL"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 name|query
 operator|.
@@ -866,7 +866,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Recursive method to include a tree of groups.      *      * @param cursor      The current GroupTreeNode in the GroupsTree      * @param parentID    The integer ID associated with the cursors's parent node      * @param currentID   The integer value to associate with the cursor      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of jabref database to which the group is part of      */
-DECL|method|populateEntryGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, int database_id)
+DECL|method|populateEntryGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, final int database_id)
 specifier|private
 name|int
 name|populateEntryGroupsTable
@@ -883,6 +883,7 @@ parameter_list|,
 name|Object
 name|out
 parameter_list|,
+specifier|final
 name|int
 name|database_id
 parameter_list|)
@@ -1144,7 +1145,7 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1155,7 +1156,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1326,7 +1327,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|existentTypes
 operator|.
 name|contains
@@ -1340,82 +1340,6 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 condition|)
-block|{
-name|querySB
-operator|.
-name|append
-argument_list|(
-literal|"INSERT INTO entry_types (label, "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|fieldStr
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|") VALUES ("
-argument_list|)
-expr_stmt|;
-name|querySB
-operator|.
-name|append
-argument_list|(
-literal|'\''
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|val
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|'\''
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|String
-name|aFieldRequirement
-range|:
-name|fieldRequirement
-control|)
-block|{
-name|querySB
-operator|.
-name|append
-argument_list|(
-literal|", '"
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|aFieldRequirement
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|'\''
-argument_list|)
-expr_stmt|;
-block|}
-name|querySB
-operator|.
-name|append
-argument_list|(
-literal|");"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|String
 index|[]
@@ -1525,6 +1449,75 @@ literal|"';"
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|querySB
+operator|.
+name|append
+argument_list|(
+literal|"INSERT INTO entry_types (label, "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|fieldStr
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|") VALUES ('"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|val
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'\''
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|String
+name|aFieldRequirement
+range|:
+name|fieldRequirement
+control|)
+block|{
+name|querySB
+operator|.
+name|append
+argument_list|(
+literal|", '"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|aFieldRequirement
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'\''
+argument_list|)
+expr_stmt|;
+block|}
+name|querySB
+operator|.
+name|append
+argument_list|(
+literal|");"
+argument_list|)
+expr_stmt|;
+block|}
 name|SQLUtil
 operator|.
 name|processQuery
@@ -1546,7 +1539,7 @@ comment|/**      * Recursive worker method for the populateGroupsTable methods. 
 end_comment
 
 begin_function
-DECL|method|populateGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, int database_id)
+DECL|method|populateGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, final int database_id)
 specifier|private
 name|int
 name|populateGroupsTable
@@ -1563,6 +1556,7 @@ parameter_list|,
 name|Object
 name|out
 parameter_list|,
+specifier|final
 name|int
 name|database_id
 parameter_list|)
@@ -1593,7 +1587,7 @@ init|=
 literal|null
 decl_stmt|;
 name|String
-name|reg_exp
+name|regExp
 init|=
 literal|null
 decl_stmt|;
@@ -1652,7 +1646,7 @@ literal|"1"
 else|:
 literal|"0"
 expr_stmt|;
-name|reg_exp
+name|regExp
 operator|=
 operator|(
 operator|(
@@ -1705,7 +1699,7 @@ literal|"1"
 else|:
 literal|"0"
 expr_stmt|;
-name|reg_exp
+name|regExp
 operator|=
 operator|(
 operator|(
@@ -1846,13 +1840,13 @@ operator|+
 literal|", "
 operator|+
 operator|(
-name|reg_exp
+name|regExp
 operator|!=
 literal|null
 condition|?
 literal|'\''
 operator|+
-name|reg_exp
+name|regExp
 operator|+
 literal|'\''
 else|:
@@ -2167,7 +2161,7 @@ comment|/**      * Generates the SQL required to populate the strings table with
 end_comment
 
 begin_function
-DECL|method|populateStringTable (BibDatabase database, Object out, int database_id)
+DECL|method|populateStringTable (BibDatabase database, Object out, final int database_id)
 unit|private
 specifier|static
 name|void
@@ -2179,6 +2173,7 @@ parameter_list|,
 name|Object
 name|out
 parameter_list|,
+specifier|final
 name|int
 name|database_id
 parameter_list|)
@@ -2411,10 +2406,7 @@ name|outfile
 operator|.
 name|exists
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 name|outfile
 operator|.
@@ -2430,7 +2422,6 @@ literal|"Cannot delete/overwrite file."
 argument_list|)
 expr_stmt|;
 return|return;
-block|}
 block|}
 try|try
 init|(
@@ -2688,13 +2679,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|conn
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 operator|!
 name|conn
 operator|.
@@ -2707,7 +2697,6 @@ operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 throw|throw
 name|ex
@@ -2828,9 +2817,35 @@ expr_stmt|;
 if|if
 condition|(
 name|dbName
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|getDBName
+argument_list|(
+name|matrix
+argument_list|,
+name|databaseStrings
+argument_list|,
+name|frame
+argument_list|,
+operator|new
+name|DBImportExportDialog
+argument_list|(
+name|frame
+argument_list|,
+name|matrix
+argument_list|,
+name|DBImportExportDialog
+operator|.
+name|DialogType
+operator|.
+name|EXPORTER
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 while|while
 condition|(
@@ -2864,32 +2879,6 @@ name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-name|getDBName
-argument_list|(
-name|matrix
-argument_list|,
-name|databaseStrings
-argument_list|,
-name|frame
-argument_list|,
-operator|new
-name|DBImportExportDialog
-argument_list|(
-name|frame
-argument_list|,
-name|matrix
-argument_list|,
-name|DBImportExportDialog
-operator|.
-name|DialogType
-operator|.
-name|EXPORTER
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}
@@ -3077,12 +3066,12 @@ block|}
 end_function
 
 begin_function
-DECL|method|isValidDBName (ArrayList<String> databaseNames, String desiredName)
+DECL|method|isValidDBName (List<String> databaseNames, String desiredName)
 specifier|private
 name|boolean
 name|isValidDBName
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>

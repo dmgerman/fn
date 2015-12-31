@@ -288,7 +288,7 @@ decl_stmt|;
 DECL|field|columnsNotConsideredForEntries
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -346,7 +346,7 @@ function_decl|;
 comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
 DECL|method|performImport (DBStrings dbs, List<String> listOfDBs)
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|Object
 index|[]
@@ -365,7 +365,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|Object
 index|[]
@@ -600,6 +600,7 @@ name|toList
 argument_list|()
 argument_list|)
 decl_stmt|;
+specifier|final
 name|String
 name|database_id
 init|=
@@ -1005,7 +1006,7 @@ literal|"';"
 argument_list|)
 return|;
 block|}
-DECL|method|importGroupsTree (MetaData metaData, HashMap<String, BibEntry> entries, Connection conn, String database_id)
+DECL|method|importGroupsTree (MetaData metaData, Map<String, BibEntry> entries, Connection conn, final String database_id)
 specifier|private
 name|void
 name|importGroupsTree
@@ -1013,7 +1014,7 @@ parameter_list|(
 name|MetaData
 name|metaData
 parameter_list|,
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1024,13 +1025,14 @@ parameter_list|,
 name|Connection
 name|conn
 parameter_list|,
+specifier|final
 name|String
 name|database_id
 parameter_list|)
 throws|throws
 name|SQLException
 block|{
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
