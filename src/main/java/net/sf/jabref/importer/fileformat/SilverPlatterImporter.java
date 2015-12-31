@@ -445,7 +445,7 @@ literal|"__::__"
 argument_list|)
 decl_stmt|;
 name|String
-name|Type
+name|type
 init|=
 literal|""
 decl_stmt|;
@@ -761,7 +761,7 @@ name|frest
 operator|.
 name|indexOf
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|)
 decl_stmt|;
 if|if
@@ -814,7 +814,7 @@ name|frest
 operator|.
 name|indexOf
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 expr_stmt|;
 if|if
@@ -865,7 +865,7 @@ name|frest
 operator|.
 name|indexOf
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 if|if
@@ -937,7 +937,7 @@ name|frest
 operator|.
 name|indexOf
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 if|if
@@ -1108,7 +1108,7 @@ name|frest
 argument_list|)
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"book"
 expr_stmt|;
@@ -1124,7 +1124,7 @@ literal|"Dissertation"
 argument_list|)
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"phdthesis"
 expr_stmt|;
@@ -1143,7 +1143,7 @@ literal|"journal"
 argument_list|)
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"article"
 expr_stmt|;
@@ -1166,7 +1166,7 @@ name|frest
 argument_list|)
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"incollection"
 expr_stmt|;
@@ -1179,7 +1179,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Type
+name|type
 operator|=
 name|frest
 operator|.
@@ -1245,7 +1245,7 @@ name|title
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 decl_stmt|;
 if|if
@@ -1315,7 +1315,7 @@ name|EntryTypes
 operator|.
 name|getTypeOrDefault
 argument_list|(
-name|Type
+name|type
 argument_list|)
 argument_list|)
 decl_stmt|;

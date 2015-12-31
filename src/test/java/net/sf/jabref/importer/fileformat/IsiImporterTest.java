@@ -1891,7 +1891,7 @@ literal|false
 argument_list|,
 name|importer
 operator|.
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 argument_list|)
 expr_stmt|;

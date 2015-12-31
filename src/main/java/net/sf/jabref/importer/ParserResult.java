@@ -54,6 +54,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|ArrayList
 import|;
 end_import
@@ -208,7 +218,7 @@ decl_stmt|;
 DECL|field|entryTypes
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -309,7 +319,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ParserResult (BibDatabase base, MetaData metaData, HashMap<String, EntryType> entryTypes)
+DECL|method|ParserResult (BibDatabase base, MetaData metaData, Map<String, EntryType> entryTypes)
 specifier|public
 name|ParserResult
 parameter_list|(
@@ -319,7 +329,7 @@ parameter_list|,
 name|MetaData
 name|metaData
 parameter_list|,
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -412,7 +422,7 @@ expr_stmt|;
 block|}
 DECL|method|getEntryTypes ()
 specifier|public
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,

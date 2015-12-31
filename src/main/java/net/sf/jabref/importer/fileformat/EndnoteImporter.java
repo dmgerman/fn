@@ -190,6 +190,15 @@ name|EndnoteImporter
 extends|extends
 name|ImportFormat
 block|{
+DECL|field|ENDOFRECORD
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|ENDOFRECORD
+init|=
+literal|"__EOREOR__"
+decl_stmt|;
 comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
@@ -367,11 +376,6 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
-name|ENDOFRECORD
-init|=
-literal|"__EOREOR__"
-decl_stmt|;
-name|String
 name|str
 decl_stmt|;
 name|boolean
@@ -455,7 +459,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
@@ -490,7 +494,7 @@ name|String
 name|author
 decl_stmt|;
 name|String
-name|Type
+name|type
 decl_stmt|;
 name|String
 name|editor
@@ -515,7 +519,7 @@ name|author
 operator|=
 literal|""
 expr_stmt|;
-name|Type
+name|type
 operator|=
 literal|""
 expr_stmt|;
@@ -528,7 +532,7 @@ operator|=
 literal|""
 expr_stmt|;
 name|boolean
-name|IsEditedBook
+name|isEditedBook
 init|=
 literal|false
 decl_stmt|;
@@ -710,7 +714,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"article"
 expr_stmt|;
@@ -728,7 +732,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"incollection"
 expr_stmt|;
@@ -746,7 +750,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"book"
 expr_stmt|;
@@ -764,11 +768,11 @@ operator|==
 literal|0
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"book"
 expr_stmt|;
-name|IsEditedBook
+name|isEditedBook
 operator|=
 literal|true
 expr_stmt|;
@@ -786,7 +790,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"inproceedings"
 expr_stmt|;
@@ -804,7 +808,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"techreport"
 expr_stmt|;
@@ -822,7 +826,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"article"
 expr_stmt|;
@@ -840,14 +844,14 @@ operator|==
 literal|0
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"phdthesis"
 expr_stmt|;
 block|}
 else|else
 block|{
-name|Type
+name|type
 operator|=
 literal|"misc"
 expr_stmt|;
@@ -993,7 +997,7 @@ literal|"article"
 operator|.
 name|equals
 argument_list|(
-name|Type
+name|type
 argument_list|)
 condition|)
 block|{
@@ -1014,14 +1018,14 @@ literal|"book"
 operator|.
 name|equals
 argument_list|(
-name|Type
+name|type
 argument_list|)
 operator|||
 literal|"inbook"
 operator|.
 name|equals
 argument_list|(
-name|Type
+name|type
 argument_list|)
 condition|)
 block|{
@@ -1066,7 +1070,7 @@ literal|"phdthesis"
 operator|.
 name|equals
 argument_list|(
-name|Type
+name|type
 argument_list|)
 condition|)
 block|{
@@ -1351,7 +1355,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"phdthesis"
 expr_stmt|;
@@ -1368,7 +1372,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"mastersthesis"
 expr_stmt|;
@@ -1407,7 +1411,7 @@ comment|// For Edited Book, EndNote puts the editors in the author field.
 comment|// We want them in the editor field so that bibtex knows it's an edited book
 if|if
 condition|(
-name|IsEditedBook
+name|isEditedBook
 operator|&&
 literal|""
 operator|.
@@ -1534,7 +1538,7 @@ name|EntryTypes
 operator|.
 name|getTypeOrDefault
 argument_list|(
-name|Type
+name|type
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1617,7 +1621,7 @@ name|s
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 if|if

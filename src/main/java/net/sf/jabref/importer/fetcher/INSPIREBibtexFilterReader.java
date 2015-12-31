@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -69,11 +69,11 @@ name|INSPIREBibtexFilterReader
 extends|extends
 name|FilterReader
 block|{
-DECL|field|in
+DECL|field|inReader
 specifier|private
 specifier|final
 name|BufferedReader
-name|in
+name|inReader
 decl_stmt|;
 DECL|field|line
 specifier|private
@@ -90,9 +90,10 @@ specifier|private
 name|boolean
 name|pre
 decl_stmt|;
-DECL|method|INSPIREBibtexFilterReader (Reader _in)
+DECL|method|INSPIREBibtexFilterReader (final Reader _in)
 name|INSPIREBibtexFilterReader
 parameter_list|(
+specifier|final
 name|Reader
 name|_in
 parameter_list|)
@@ -102,7 +103,7 @@ argument_list|(
 name|_in
 argument_list|)
 expr_stmt|;
-name|in
+name|inReader
 operator|=
 operator|new
 name|BufferedReader
@@ -135,7 +136,7 @@ do|do
 block|{
 name|l
 operator|=
-name|in
+name|inReader
 operator|.
 name|readLine
 argument_list|()
@@ -167,7 +168,7 @@ literal|true
 expr_stmt|;
 name|l
 operator|=
-name|in
+name|inReader
 operator|.
 name|readLine
 argument_list|()
@@ -210,18 +211,19 @@ return|return
 name|l
 return|;
 block|}
-DECL|method|fixBibkey (String in)
+DECL|method|fixBibkey (final String _in)
 specifier|private
 name|String
 name|fixBibkey
 parameter_list|(
+specifier|final
 name|String
-name|in
+name|_in
 parameter_list|)
 block|{
 if|if
 condition|(
-name|in
+name|_in
 operator|==
 literal|null
 condition|)
@@ -233,7 +235,7 @@ block|}
 comment|//System.out.println(in);
 if|if
 condition|(
-name|in
+name|_in
 operator|.
 name|matches
 argument_list|(
@@ -243,7 +245,7 @@ condition|)
 block|{
 comment|//System.out.println(in.replace(' ','_'));
 return|return
-name|in
+name|_in
 operator|.
 name|replace
 argument_list|(
@@ -256,7 +258,7 @@ block|}
 else|else
 block|{
 return|return
-name|in
+name|_in
 return|;
 block|}
 block|}

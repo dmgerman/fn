@@ -152,6 +152,20 @@ name|CopacImporter
 extends|extends
 name|ImportFormat
 block|{
+DECL|field|COPAC_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|COPAC_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"^\\s*TI- "
+argument_list|)
+decl_stmt|;
 comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
@@ -178,20 +192,6 @@ return|return
 literal|"cpc"
 return|;
 block|}
-DECL|field|copacPattern
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|copacPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"^\\s*TI- "
-argument_list|)
-decl_stmt|;
 comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
@@ -241,7 +241,7 @@ if|if
 condition|(
 name|CopacImporter
 operator|.
-name|copacPattern
+name|COPAC_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -384,7 +384,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
@@ -947,7 +947,7 @@ decl_stmt|;
 if|if
 condition|(
 name|o
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -957,10 +957,6 @@ name|setField
 argument_list|(
 name|field
 argument_list|,
-name|o
-operator|+
-name|separator
-operator|+
 name|value
 argument_list|)
 expr_stmt|;
@@ -973,6 +969,10 @@ name|setField
 argument_list|(
 name|field
 argument_list|,
+name|o
+operator|+
+name|separator
+operator|+
 name|value
 argument_list|)
 expr_stmt|;

@@ -454,15 +454,15 @@ name|frame
 decl_stmt|;
 comment|// List of actions that may need to be called after opening the file. Such as
 comment|// upgrade actions etc. that may depend on the JabRef version that wrote the file:
-DECL|field|postOpenActions
+DECL|field|POST_OPEN_ACTIONS
 specifier|private
 specifier|static
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|PostOpenAction
 argument_list|>
-name|postOpenActions
+name|POST_OPEN_ACTIONS
 init|=
 operator|new
 name|ArrayList
@@ -475,7 +475,7 @@ comment|// Add the action for checking for new custom entry types loaded from
 comment|// the bib file:
 name|OpenDatabaseAction
 operator|.
-name|postOpenActions
+name|POST_OPEN_ACTIONS
 operator|.
 name|add
 argument_list|(
@@ -487,7 +487,7 @@ expr_stmt|;
 comment|// Add the action for the new external file handling system in version 2.3:
 name|OpenDatabaseAction
 operator|.
-name|postOpenActions
+name|POST_OPEN_ACTIONS
 operator|.
 name|add
 argument_list|(
@@ -499,7 +499,7 @@ expr_stmt|;
 comment|// Add the action for warning about and handling duplicate BibTeX keys:
 name|OpenDatabaseAction
 operator|.
-name|postOpenActions
+name|POST_OPEN_ACTIONS
 operator|.
 name|add
 argument_list|(
@@ -741,16 +741,19 @@ implements|implements
 name|Runnable
 block|{
 DECL|field|basePanel
+specifier|private
 specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
 DECL|field|raisePanel
+specifier|private
 specifier|final
 name|boolean
 name|raisePanel
 decl_stmt|;
 DECL|field|file
+specifier|private
 specifier|final
 name|File
 name|file
@@ -1404,16 +1407,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Should this be done _after_ we know it was successfully opened?
-name|Charset
-name|encoding
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|FileBasedLock
@@ -1589,6 +1582,16 @@ expr_stmt|;
 return|return;
 block|}
 block|}
+name|Charset
+name|encoding
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
+decl_stmt|;
 name|ParserResult
 name|result
 decl_stmt|;
@@ -1853,7 +1856,7 @@ name|action
 range|:
 name|OpenDatabaseAction
 operator|.
-name|postOpenActions
+name|POST_OPEN_ACTIONS
 control|)
 block|{
 if|if
@@ -2325,10 +2328,14 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Problem getting reader"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 comment|// The supplied encoding didn't work out, so we use the fallback.
 return|return

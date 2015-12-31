@@ -328,7 +328,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -462,10 +462,6 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 name|e3
 parameter_list|)

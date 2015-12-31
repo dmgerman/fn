@@ -406,11 +406,9 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
 literal|"Could not instantiate "
 operator|+
@@ -420,12 +418,9 @@ name|getName
 argument_list|()
 operator|+
 literal|" importer, will ignore it. Please check if the class is still available."
-argument_list|)
-expr_stmt|;
+argument_list|,
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -734,7 +729,7 @@ if|if
 condition|(
 name|format
 operator|.
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 condition|)
 block|{
@@ -785,7 +780,7 @@ condition|(
 operator|!
 name|format
 operator|.
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 condition|)
 block|{
@@ -896,7 +891,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 block|}
@@ -921,7 +916,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1181,7 +1176,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 name|sb
@@ -1471,67 +1466,6 @@ operator|.
 name|trim
 argument_list|()
 return|;
-block|}
-DECL|method|checkAndCreateFile (String filename)
-specifier|static
-name|File
-name|checkAndCreateFile
-parameter_list|(
-name|String
-name|filename
-parameter_list|)
-block|{
-name|File
-name|f
-init|=
-operator|new
-name|File
-argument_list|(
-name|filename
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|f
-operator|.
-name|exists
-argument_list|()
-operator|&&
-operator|!
-name|f
-operator|.
-name|canRead
-argument_list|()
-operator|&&
-operator|!
-name|f
-operator|.
-name|isFile
-argument_list|()
-condition|)
-block|{
-name|LOGGER
-operator|.
-name|info
-argument_list|(
-literal|"Error "
-operator|+
-name|filename
-operator|+
-literal|" is not a valid file and|or is not readable."
-argument_list|)
-expr_stmt|;
-return|return
-literal|null
-return|;
-block|}
-else|else
-block|{
-return|return
-name|f
-return|;
-block|}
 block|}
 comment|//==================================================
 comment|// Set a field, unless the string to set is empty.

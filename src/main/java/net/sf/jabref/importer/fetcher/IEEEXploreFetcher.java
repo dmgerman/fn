@@ -488,12 +488,12 @@ name|MAX_FETCH
 init|=
 literal|100
 decl_stmt|;
-DECL|field|publicationPattern
+DECL|field|PUBLICATION_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|publicationPattern
+name|PUBLICATION_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -502,12 +502,12 @@ argument_list|(
 literal|"(.*), \\d*\\.*\\s?(.*)"
 argument_list|)
 decl_stmt|;
-DECL|field|proceedingPattern
+DECL|field|PROCEEDINGS_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|proceedingPattern
+name|PROCEEDINGS_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -1012,10 +1012,14 @@ name|MalformedURLException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Bad URL"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -1228,7 +1232,9 @@ name|bibtexQueryURLStringBuf
 init|=
 operator|new
 name|StringBuffer
-argument_list|()
+argument_list|(
+literal|45
+argument_list|)
 decl_stmt|;
 name|bibtexQueryURLStringBuf
 operator|.
@@ -1297,8 +1303,11 @@ name|getString
 argument_list|(
 literal|"articleNumber"
 argument_list|)
-operator|+
-literal|","
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|','
 argument_list|)
 expr_stmt|;
 block|}
@@ -2580,7 +2589,7 @@ block|}
 name|Matcher
 name|m1
 init|=
-name|publicationPattern
+name|PUBLICATION_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -2701,7 +2710,6 @@ block|}
 block|}
 if|if
 condition|(
-operator|!
 name|prefix
 operator|.
 name|matches
@@ -2709,6 +2717,17 @@ argument_list|(
 name|abrvPattern
 argument_list|)
 condition|)
+block|{
+name|fullName
+operator|=
+name|postfix
+operator|+
+literal|" "
+operator|+
+name|prefix
+expr_stmt|;
+block|}
+else|else
 block|{
 name|fullName
 operator|=
@@ -2728,17 +2747,6 @@ name|fullName
 operator|.
 name|trim
 argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|fullName
-operator|=
-name|postfix
-operator|+
-literal|" "
-operator|+
-name|prefix
 expr_stmt|;
 block|}
 block|}
@@ -2822,7 +2830,7 @@ block|{
 name|Matcher
 name|m2
 init|=
-name|proceedingPattern
+name|PROCEEDINGS_PATTERN
 operator|.
 name|matcher
 argument_list|(

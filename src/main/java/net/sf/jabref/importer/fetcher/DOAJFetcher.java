@@ -228,11 +228,12 @@ name|DOAJFetcher
 implements|implements
 name|EntryFetcher
 block|{
-DECL|field|searchURL
+DECL|field|SEARCH_URL
 specifier|private
+specifier|static
 specifier|final
 name|String
-name|searchURL
+name|SEARCH_URL
 init|=
 literal|"https://doaj.org/api/v1/search/articles/"
 decl_stmt|;
@@ -252,11 +253,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|maxPerPage
+DECL|field|MAX_PER_PAGE
 specifier|private
+specifier|static
 specifier|final
 name|int
-name|maxPerPage
+name|MAX_PER_PAGE
 init|=
 literal|100
 decl_stmt|;
@@ -344,7 +346,7 @@ name|Unirest
 operator|.
 name|get
 argument_list|(
-name|searchURL
+name|SEARCH_URL
 operator|+
 name|query
 operator|+
@@ -398,7 +400,7 @@ if|if
 condition|(
 name|hits
 operator|>
-name|maxPerPage
+name|MAX_PER_PAGE
 condition|)
 block|{
 while|while
@@ -482,7 +484,7 @@ break|break;
 block|}
 catch|catch
 parameter_list|(
-name|RuntimeException
+name|NumberFormatException
 name|ex
 parameter_list|)
 block|{
@@ -528,7 +530,7 @@ operator|-
 literal|1
 operator|)
 operator|*
-name|maxPerPage
+name|MAX_PER_PAGE
 operator|)
 operator|<=
 name|numberToFetch
@@ -552,7 +554,7 @@ name|Math
 operator|.
 name|min
 argument_list|(
-name|maxPerPage
+name|MAX_PER_PAGE
 argument_list|,
 name|numberToFetch
 operator|-
@@ -563,7 +565,7 @@ operator|-
 literal|1
 operator|)
 operator|*
-name|maxPerPage
+name|MAX_PER_PAGE
 operator|)
 argument_list|)
 decl_stmt|;
@@ -573,7 +575,7 @@ name|Unirest
 operator|.
 name|get
 argument_list|(
-name|searchURL
+name|SEARCH_URL
 operator|+
 name|query
 operator|+

@@ -244,6 +244,20 @@ argument_list|(
 literal|"\\(([0-9][0-9][0-9][0-9])\\)\\. [A-Za-z, ]+([0-9]+) pp\\. ([\\w, ]+): ([\\w, ]+)"
 argument_list|)
 decl_stmt|;
+DECL|field|ovidPattern
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|ovidPattern
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"<[0-9]+>"
+argument_list|)
+decl_stmt|;
 comment|//   public static Pattern ovid_pat_inspec= Pattern.compile("Source ([
 comment|// \\w&\\-]+)");
 comment|/**      * Return the name of this import format.      */
@@ -272,20 +286,6 @@ return|return
 literal|"ovid"
 return|;
 block|}
-DECL|field|ovidPattern
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|ovidPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"<[0-9]+>"
-argument_list|)
-decl_stmt|;
 comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
@@ -1601,7 +1601,7 @@ name|content
 operator|.
 name|indexOf
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 operator|>
 literal|0
