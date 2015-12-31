@@ -943,7 +943,6 @@ condition|)
 block|{
 name|authors
 operator|+=
-operator|!
 literal|""
 operator|.
 name|equals
@@ -951,10 +950,10 @@ argument_list|(
 name|authors
 argument_list|)
 condition|?
-literal|" and "
-operator|+
 name|author
 else|:
+literal|" and "
+operator|+
 name|author
 expr_stmt|;
 block|}
@@ -967,7 +966,6 @@ condition|)
 block|{
 name|institutions
 operator|+=
-operator|!
 literal|""
 operator|.
 name|equals
@@ -975,10 +973,10 @@ argument_list|(
 name|institutions
 argument_list|)
 condition|?
-literal|" and "
-operator|+
 name|institution
 else|:
+literal|" and "
+operator|+
 name|institution
 expr_stmt|;
 block|}
@@ -1416,14 +1414,14 @@ operator|.
 name|setTime
 argument_list|(
 name|date
-operator|!=
+operator|==
 literal|null
 condition|?
-name|date
-else|:
 operator|new
 name|Date
 argument_list|()
+else|:
+name|date
 argument_list|)
 expr_stmt|;
 name|be

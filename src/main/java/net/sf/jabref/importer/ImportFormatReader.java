@@ -370,9 +370,7 @@ expr_stmt|;
 comment|/**          * Get custom import formats          */
 for|for
 control|(
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 name|importer
 range|:
 name|Globals

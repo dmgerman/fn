@@ -124,6 +124,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -395,6 +423,22 @@ argument_list|(
 literal|"<h3>Abstract</h3>\\s*<p>(.*)</p>"
 argument_list|)
 decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|CiteSeerXFetcher
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|processQuery (String query, ImportInspector inspector, OutputPrinter status)
@@ -452,8 +496,6 @@ argument_list|(
 name|citation
 argument_list|)
 decl_stmt|;
-comment|//BibEntry entry = BibsonomyScraper.getEntry(citation);
-comment|//dialog.setProgress(++i, citations.size());
 if|if
 condition|(
 name|entry
@@ -480,10 +522,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not download"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 return|return
 literal|false

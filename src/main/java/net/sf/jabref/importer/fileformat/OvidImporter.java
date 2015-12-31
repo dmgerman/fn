@@ -1509,10 +1509,7 @@ name|equals
 argument_list|(
 name|entryType
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|h
 operator|.
 name|containsKey
@@ -1541,7 +1538,6 @@ literal|"chaptertitle"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|BibEntry
 name|b

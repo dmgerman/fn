@@ -190,6 +190,15 @@ specifier|final
 name|ExternalFileType
 name|externalFileType
 decl_stmt|;
+DECL|field|MIN_PATH_TOKEN_LENGTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MIN_PATH_TOKEN_LENGTH
+init|=
+literal|4
+decl_stmt|;
 comment|/**      * Constructor.<br>      * Forces subclasses to provide an {@link ExternalFileType} instance, which      * they build on.      *      * @param externalFileType      */
 DECL|method|EntryFromFileCreator (ExternalFileType externalFileType)
 name|EntryFromFileCreator
@@ -391,12 +400,6 @@ name|String
 name|absolutePath
 parameter_list|)
 block|{
-specifier|final
-name|int
-name|MIN_PATH_TOKEN_LENGTH
-init|=
-literal|4
-decl_stmt|;
 name|StringBuilder
 name|sb
 init|=
@@ -475,7 +478,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 block|}

@@ -519,13 +519,11 @@ name|className
 return|;
 block|}
 comment|/**      * Adds an importer to the model that underlies the custom importers.      *      * @param importer  importer      */
-DECL|method|addOrReplaceImporter (CustomImportList.Importer importer)
+DECL|method|addOrReplaceImporter (CustomImporter importer)
 name|void
 name|addOrReplaceImporter
 parameter_list|(
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 name|importer
 parameter_list|)
 block|{
@@ -632,15 +630,11 @@ name|chosenFileStr
 init|=
 literal|null
 decl_stmt|;
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 name|importer
 init|=
 operator|new
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 argument_list|()
 decl_stmt|;
 name|importer
@@ -1166,9 +1160,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 name|importer
 init|=
 operator|(
@@ -1215,10 +1207,19 @@ name|Exception
 name|exc
 parameter_list|)
 block|{
-name|exc
+name|LOGGER
 operator|.
-name|printStackTrace
+name|warn
+argument_list|(
+literal|"Could not instantiate importer "
+operator|+
+name|importer
+operator|.
+name|getName
 argument_list|()
+argument_list|,
+name|exc
+argument_list|)
 expr_stmt|;
 name|JOptionPane
 operator|.
@@ -1849,9 +1850,7 @@ name|value
 init|=
 literal|null
 decl_stmt|;
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 name|importer
 init|=
 name|getImporter
@@ -1979,18 +1978,14 @@ return|;
 block|}
 DECL|method|getImporter (int rowIndex)
 specifier|public
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 name|getImporter
 parameter_list|(
 name|int
 name|rowIndex
 parameter_list|)
 block|{
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 index|[]
 name|importers
 init|=
@@ -2003,9 +1998,7 @@ operator|.
 name|toArray
 argument_list|(
 operator|new
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 index|[
 name|Globals
 operator|.

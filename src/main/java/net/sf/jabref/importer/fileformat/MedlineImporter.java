@@ -591,10 +591,6 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 name|e3
 parameter_list|)

@@ -436,12 +436,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|input
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
+break|break;
+block|}
+else|else
 block|{
 name|lastC
 operator|=
@@ -457,10 +460,6 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-break|break;
 block|}
 block|}
 return|return
@@ -727,9 +726,113 @@ do|do
 block|{
 if|if
 condition|(
-operator|!
 name|workedOnFirstOrMiddle
 condition|)
+block|{
+comment|// last item was a first or a middle name
+comment|// we have to check whether we are on a middle name
+comment|// if not, just add the item as last name and add an "and"
+if|if
+condition|(
+name|splitNames
+index|[
+name|i
+index|]
+operator|.
+name|contains
+argument_list|(
+literal|"."
+argument_list|)
+condition|)
+block|{
+comment|// we found a middle name
+name|res
+operator|=
+name|res
+operator|.
+name|concat
+argument_list|(
+name|splitNames
+index|[
+name|i
+index|]
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+literal|" "
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// last name found
+name|res
+operator|=
+name|res
+operator|.
+name|concat
+argument_list|(
+name|removeNonLettersAtEnd
+argument_list|(
+name|splitNames
+index|[
+name|i
+index|]
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|splitNames
+index|[
+name|i
+index|]
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+name|Character
+operator|.
+name|isLowerCase
+argument_list|(
+name|splitNames
+index|[
+name|i
+index|]
+operator|.
+name|charAt
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+condition|)
+block|{
+comment|// it is probably be "van", "vom", ...
+comment|// we just rely on the fact that these things are written in lower case letters
+comment|// do NOT finish name
+name|res
+operator|=
+name|res
+operator|.
+name|concat
+argument_list|(
+literal|" "
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// finish this name
+name|workedOnFirstOrMiddle
+operator|=
+literal|false
+expr_stmt|;
+block|}
+block|}
+block|}
+else|else
 block|{
 if|if
 condition|(
@@ -840,111 +943,6 @@ expr_stmt|;
 name|workedOnFirstOrMiddle
 operator|=
 literal|true
-expr_stmt|;
-block|}
-block|}
-block|}
-else|else
-block|{
-comment|// last item was a first or a middle name
-comment|// we have to check whether we are on a middle name
-comment|// if not, just add the item as last name and add an "and"
-if|if
-condition|(
-name|splitNames
-index|[
-name|i
-index|]
-operator|.
-name|contains
-argument_list|(
-literal|"."
-argument_list|)
-condition|)
-block|{
-comment|// we found a middle name
-name|res
-operator|=
-name|res
-operator|.
-name|concat
-argument_list|(
-name|splitNames
-index|[
-name|i
-index|]
-argument_list|)
-operator|.
-name|concat
-argument_list|(
-literal|" "
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// last name found
-name|res
-operator|=
-name|res
-operator|.
-name|concat
-argument_list|(
-name|removeNonLettersAtEnd
-argument_list|(
-name|splitNames
-index|[
-name|i
-index|]
-argument_list|)
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|splitNames
-index|[
-name|i
-index|]
-operator|.
-name|isEmpty
-argument_list|()
-operator|&&
-name|Character
-operator|.
-name|isLowerCase
-argument_list|(
-name|splitNames
-index|[
-name|i
-index|]
-operator|.
-name|charAt
-argument_list|(
-literal|0
-argument_list|)
-argument_list|)
-condition|)
-block|{
-comment|// it is probably be "van", "vom", ...
-comment|// we just rely on the fact that these things are written in lower case letters
-comment|// do NOT finish name
-name|res
-operator|=
-name|res
-operator|.
-name|concat
-argument_list|(
-literal|" "
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// finish this name
-name|workedOnFirstOrMiddle
-operator|=
-literal|false
 expr_stmt|;
 block|}
 block|}
@@ -1220,6 +1218,63 @@ block|{
 comment|// otherwise, we just parse the PDF
 block|}
 block|}
+specifier|final
+name|String
+name|lineBreak
+init|=
+name|System
+operator|.
+name|lineSeparator
+argument_list|()
+decl_stmt|;
+name|split
+operator|=
+name|textResult
+operator|.
+name|split
+argument_list|(
+name|lineBreak
+argument_list|)
+expr_stmt|;
+comment|// idea: split[] contains the different lines
+comment|// blocks are separated by empty lines
+comment|// treat each block
+comment|//   or do special treatment at authors (which are not broken)
+comment|//   therefore, we do a line-based and not a block-based splitting
+comment|// i points to the current line
+comment|// curString (mostly) contains the current block
+comment|//   the different lines are joined into one and thereby separated by " "
+name|proceedToNextNonEmptyLine
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|i
+operator|>=
+name|split
+operator|.
+name|length
+condition|)
+block|{
+comment|// PDF could not be parsed or is empty
+comment|// return empty list
+return|return
+name|res
+return|;
+block|}
+name|curString
+operator|=
+name|split
+index|[
+name|i
+index|]
+expr_stmt|;
+name|i
+operator|=
+name|i
+operator|+
+literal|1
+expr_stmt|;
 name|String
 name|author
 decl_stmt|;
@@ -1289,63 +1344,6 @@ name|BibtexEntryTypes
 operator|.
 name|INPROCEEDINGS
 decl_stmt|;
-specifier|final
-name|String
-name|lineBreak
-init|=
-name|System
-operator|.
-name|lineSeparator
-argument_list|()
-decl_stmt|;
-name|split
-operator|=
-name|textResult
-operator|.
-name|split
-argument_list|(
-name|lineBreak
-argument_list|)
-expr_stmt|;
-comment|// idea: split[] contains the different lines
-comment|// blocks are separated by empty lines
-comment|// treat each block
-comment|//   or do special treatment at authors (which are not broken)
-comment|//   therefore, we do a line-based and not a block-based splitting
-comment|// i points to the current line
-comment|// curString (mostly) contains the current block
-comment|//   the different lines are joined into one and thereby separated by " "
-name|proceedToNextNonEmptyLine
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|i
-operator|>=
-name|split
-operator|.
-name|length
-condition|)
-block|{
-comment|// PDF could not be parsed or is empty
-comment|// return empty list
-return|return
-name|res
-return|;
-block|}
-name|curString
-operator|=
-name|split
-index|[
-name|i
-index|]
-expr_stmt|;
-name|i
-operator|=
-name|i
-operator|+
-literal|1
-expr_stmt|;
 if|if
 condition|(
 name|curString

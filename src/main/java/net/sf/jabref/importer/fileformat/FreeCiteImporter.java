@@ -502,10 +502,14 @@ name|MalformedURLException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Bad URL"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 return|return
 literal|null
@@ -517,10 +521,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not download"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 return|return
 literal|null
@@ -1129,7 +1137,7 @@ name|noteSB
 operator|.
 name|append
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|noteSB
@@ -1290,10 +1298,14 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not parse"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 return|return
 literal|null
