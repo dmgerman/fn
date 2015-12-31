@@ -108,6 +108,7 @@ end_comment
 
 begin_class
 DECL|class|StringInt
+specifier|public
 class|class
 name|StringInt
 implements|implements
@@ -131,13 +132,15 @@ name|int
 name|i
 decl_stmt|;
 comment|/**      *  Constructor for the StringInt object      *      * @param  _s  Description of the Parameter      * @param  _i  Description of the Parameter      */
-DECL|method|StringInt (String _s, int _i)
+DECL|method|StringInt (final String _s, final int _i)
 specifier|public
 name|StringInt
 parameter_list|(
+specifier|final
 name|String
 name|_s
 parameter_list|,
+specifier|final
 name|int
 name|_i
 parameter_list|)

@@ -33,7 +33,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Replace a non-command tilde ~ by a space.  *   * Useful for formatting Latex code.  */
+comment|/**  * Replace a non-command tilde ~ by a space.  *  * Useful for formatting Latex code.  */
 end_comment
 
 begin_class
@@ -99,9 +99,19 @@ name|c
 index|[
 name|i
 index|]
-operator|!=
+operator|==
 literal|'~'
 condition|)
+block|{
+name|result
+operator|.
+name|append
+argument_list|(
+literal|' '
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|result
 operator|.
@@ -116,20 +126,26 @@ expr_stmt|;
 comment|// Skip the next character if the current one is a backslash
 if|if
 condition|(
+operator|(
 name|c
 index|[
 name|i
 index|]
 operator|==
 literal|'\\'
+operator|)
 operator|&&
+operator|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|<
 name|c
 operator|.
 name|length
+operator|)
 condition|)
 block|{
 name|i
@@ -146,16 +162,6 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-name|result
-operator|.
-name|append
-argument_list|(
-literal|' '
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 return|return

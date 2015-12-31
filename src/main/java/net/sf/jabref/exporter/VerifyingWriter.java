@@ -76,6 +76,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|TreeSet
 import|;
 end_import
@@ -108,7 +118,7 @@ decl_stmt|;
 DECL|field|problemCharacters
 specifier|private
 specifier|final
-name|TreeSet
+name|Set
 argument_list|<
 name|Character
 argument_list|>

@@ -178,12 +178,6 @@ annotation|@
 name|Override
 DECL|method|getTransferDataFlavors ()
 specifier|public
-name|java
-operator|.
-name|awt
-operator|.
-name|datatransfer
-operator|.
 name|DataFlavor
 index|[]
 name|getTransferDataFlavors

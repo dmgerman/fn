@@ -244,6 +244,7 @@ name|String
 name|extension
 decl_stmt|;
 DECL|field|encoding
+specifier|private
 name|Charset
 name|encoding
 decl_stmt|;
@@ -388,6 +389,7 @@ return|;
 block|}
 comment|/**      * Set an encoding which will be used in preference to the default value      * obtained from the basepanel.      * @param encoding The name of the encoding to use.      */
 DECL|method|setEncoding (Charset encoding)
+specifier|public
 name|void
 name|setEncoding
 parameter_list|(
@@ -404,6 +406,7 @@ expr_stmt|;
 block|}
 comment|/**      * This method should return a reader from which the given layout file can      * be read.      *      * This standard implementation of this method will use the      * {@link FileActions#getReader(String)} method.      *      * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *      * @param filename      *            the filename      * @throws IOException      *             if the reader could not be created      *      * @return a newly created reader      */
 DECL|method|getReader (String filename)
+specifier|private
 name|Reader
 name|getReader
 parameter_list|(
@@ -1049,12 +1052,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"The following formatters could not be found"
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|": "
+literal|"The following formatters could not be found: "
 argument_list|)
 decl_stmt|;
 for|for
@@ -1123,7 +1121,7 @@ comment|/**      * See if there is a name formatter file bundled with this expor
 DECL|method|readFormatterFile (String lfFileName)
 specifier|private
 specifier|static
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1265,7 +1263,7 @@ name|line
 operator|.
 name|indexOf
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 comment|// TODO: any need to accept escaped colons here?
@@ -1350,6 +1348,7 @@ name|formatters
 return|;
 block|}
 DECL|method|getSaveSession (final Charset enc, final File outFile)
+specifier|public
 name|SaveSession
 name|getSaveSession
 parameter_list|(
@@ -1408,6 +1407,7 @@ name|fileFilter
 return|;
 block|}
 DECL|method|finalizeSaveSession (final SaveSession ss)
+specifier|public
 name|void
 name|finalizeSaveSession
 parameter_list|(

@@ -120,21 +120,6 @@ name|BIBTEX_STRING
 init|=
 literal|"__string"
 decl_stmt|;
-DECL|method|buildIgnoreHashes ()
-specifier|public
-specifier|static
-name|LatexFieldFormatter
-name|buildIgnoreHashes
-parameter_list|()
-block|{
-return|return
-operator|new
-name|LatexFieldFormatter
-argument_list|(
-literal|true
-argument_list|)
-return|;
-block|}
 DECL|field|stringBuilder
 specifier|private
 name|StringBuilder
@@ -258,6 +243,21 @@ operator|new
 name|FieldContentParser
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|buildIgnoreHashes ()
+specifier|public
+specifier|static
+name|LatexFieldFormatter
+name|buildIgnoreHashes
+parameter_list|()
+block|{
+return|return
+operator|new
+name|LatexFieldFormatter
+argument_list|(
+literal|true
+argument_list|)
+return|;
 block|}
 comment|/**      * Formats the content of a field.      *      * @param content   the content of the field      * @param fieldName the name of the field - used to trigger different serializations, e.g., turning off resolution for some strings      * @return a formatted string suitable for output      * @throws IllegalArgumentException if s is not a correct bibtex string, e.g., because of improperly balanced braces or using # not paired      */
 DECL|method|format (String content, String fieldName)
@@ -568,9 +568,19 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|neverFailOnHashes
 condition|)
+block|{
+name|pos1
+operator|=
+name|content
+operator|.
+name|length
+argument_list|()
+expr_stmt|;
+comment|// just write out the rest of the text, and throw no exception
+block|}
+else|else
 block|{
 throw|throw
 operator|new
@@ -583,17 +593,6 @@ operator|+
 literal|"Note that the entry causing the problem has been selected."
 argument_list|)
 throw|;
-block|}
-else|else
-block|{
-name|pos1
-operator|=
-name|content
-operator|.
-name|length
-argument_list|()
-expr_stmt|;
-comment|// just write out the rest of the text, and throw no exception
 block|}
 block|}
 block|}
@@ -840,7 +839,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|writeText (String text, int start_pos, int end_pos)
+DECL|method|writeText (String text, int startPos, int endPos)
 specifier|private
 name|void
 name|writeText
@@ -849,10 +848,10 @@ name|String
 name|text
 parameter_list|,
 name|int
-name|start_pos
+name|startPos
 parameter_list|,
 name|int
-name|end_pos
+name|endPos
 parameter_list|)
 block|{
 name|stringBuilder
@@ -902,11 +901,11 @@ control|(
 name|int
 name|i
 init|=
-name|start_pos
+name|startPos
 init|;
 name|i
 operator|<
-name|end_pos
+name|endPos
 condition|;
 name|i
 operator|++
@@ -1199,7 +1198,7 @@ name|valueDelimiterEndOfValue
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|writeStringLabel (String text, int start_pos, int end_pos, boolean first, boolean last)
+DECL|method|writeStringLabel (String text, int startPos, int endPos, boolean first, boolean last)
 specifier|private
 name|void
 name|writeStringLabel
@@ -1208,10 +1207,10 @@ name|String
 name|text
 parameter_list|,
 name|int
-name|start_pos
+name|startPos
 parameter_list|,
 name|int
-name|end_pos
+name|endPos
 parameter_list|,
 name|boolean
 name|first
@@ -1220,8 +1219,6 @@ name|boolean
 name|last
 parameter_list|)
 block|{
-comment|//sb.append(Util.wrap((first ? "" : " # ") + text.substring(start_pos, end_pos)
-comment|//		     + (last ? "" : " # "), GUIGlobals.LINE_LENGTH));
 name|putIn
 argument_list|(
 operator|(
@@ -1236,9 +1233,9 @@ name|text
 operator|.
 name|substring
 argument_list|(
-name|start_pos
+name|startPos
 argument_list|,
-name|end_pos
+name|endPos
 argument_list|)
 operator|+
 operator|(

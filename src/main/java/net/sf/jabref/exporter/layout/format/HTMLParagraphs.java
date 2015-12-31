@@ -146,7 +146,9 @@ name|s
 init|=
 operator|new
 name|StringBuffer
-argument_list|()
+argument_list|(
+literal|19
+argument_list|)
 decl_stmt|;
 while|while
 condition|(

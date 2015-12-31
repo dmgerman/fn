@@ -261,10 +261,10 @@ argument_list|(
 literal|60
 argument_list|)
 decl_stmt|;
-DECL|field|ok_pressed
+DECL|field|okPressed
 specifier|private
 name|boolean
-name|ok_pressed
+name|okPressed
 decl_stmt|;
 DECL|field|parent
 specifier|private
@@ -272,19 +272,23 @@ specifier|final
 name|JabRefFrame
 name|parent
 decl_stmt|;
-DECL|method|CustomExportDialog (JabRefFrame parent_, String name_, String layoutFile_, String extension_)
+DECL|method|CustomExportDialog (final JabRefFrame parent_, final String name_, final String layoutFile_, final String extension_)
 specifier|public
 name|CustomExportDialog
 parameter_list|(
+specifier|final
 name|JabRefFrame
 name|parent_
 parameter_list|,
+specifier|final
 name|String
 name|name_
 parameter_list|,
+specifier|final
 name|String
 name|layoutFile_
 parameter_list|,
+specifier|final
 name|String
 name|extension_
 parameter_list|)
@@ -316,10 +320,11 @@ name|extension_
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|CustomExportDialog (JabRefFrame parent_)
+DECL|method|CustomExportDialog (final JabRefFrame parent_)
 specifier|public
 name|CustomExportDialog
 parameter_list|(
+specifier|final
 name|JabRefFrame
 name|parent_
 parameter_list|)
@@ -406,7 +411,7 @@ comment|//     JOptionPane.ERROR_MESSAGE);
 return|return;
 block|}
 comment|// Handling of : and ; must also be done.
-name|ok_pressed
+name|okPressed
 operator|=
 literal|true
 expr_stmt|;
@@ -1145,7 +1150,7 @@ name|okPressed
 parameter_list|()
 block|{
 return|return
-name|ok_pressed
+name|okPressed
 return|;
 block|}
 DECL|method|layoutFile ()

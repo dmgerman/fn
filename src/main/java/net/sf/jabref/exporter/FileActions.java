@@ -383,12 +383,12 @@ name|DEFAULT
 block|,
 name|PLAIN_BIBTEX
 block|}
-DECL|field|refPat
+DECL|field|REFERENCE_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|refPat
+name|REFERENCE_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -668,7 +668,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|writeString (Writer fw, BibtexString bs, HashMap<String, BibtexString> remaining, int maxKeyLength)
+DECL|method|writeString (Writer fw, BibtexString bs, Map<String, BibtexString> remaining, int maxKeyLength)
 specifier|private
 specifier|static
 name|void
@@ -680,7 +680,7 @@ parameter_list|,
 name|BibtexString
 name|bs
 parameter_list|,
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -748,7 +748,7 @@ name|m
 operator|=
 name|FileActions
 operator|.
-name|refPat
+name|REFERENCE_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -907,7 +907,7 @@ name|suffixSB
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 block|}
@@ -1084,19 +1084,6 @@ parameter_list|)
 throws|throws
 name|SaveException
 block|{
-name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|EntryType
-argument_list|>
-name|types
-init|=
-operator|new
-name|TreeMap
-argument_list|<>
-argument_list|()
-decl_stmt|;
 name|boolean
 name|backup
 init|=
@@ -1190,6 +1177,19 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|EntryType
+argument_list|>
+name|types
+init|=
+operator|new
+name|TreeMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
 comment|// Get our data stream. This stream writes only to a temporary file,
 comment|// until committed.
 try|try
@@ -2221,26 +2221,6 @@ parameter_list|)
 throws|throws
 name|SaveException
 block|{
-name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|EntryType
-argument_list|>
-name|types
-init|=
-operator|new
-name|TreeMap
-argument_list|<>
-argument_list|()
-decl_stmt|;
-comment|// Map
-comment|// to
-comment|// collect
-comment|// entry
-comment|// type
-comment|// definitions
-comment|// that we must save along with entries using them.
 name|BibEntry
 name|be
 init|=
@@ -2298,6 +2278,21 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+comment|// Map to collect entry type definitions
+comment|// that we must save along with entries using them.
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|EntryType
+argument_list|>
+name|types
+init|=
+operator|new
+name|TreeMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
 comment|// Define our data stream.
 try|try
 init|(
@@ -2969,15 +2964,13 @@ operator|.
 name|iterator
 argument_list|()
 decl_stmt|;
-for|for
-control|(
-init|;
+while|while
+condition|(
 name|i
 operator|.
 name|hasNext
 argument_list|()
-condition|;
-control|)
+condition|)
 block|{
 name|sorter
 operator|.

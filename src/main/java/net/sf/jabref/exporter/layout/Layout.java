@@ -162,7 +162,7 @@ decl_stmt|;
 DECL|field|missingFormatters
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>

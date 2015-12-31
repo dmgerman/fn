@@ -157,6 +157,7 @@ end_comment
 begin_class
 DECL|class|WSITools
 specifier|public
+specifier|final
 class|class
 name|WSITools
 block|{

@@ -303,16 +303,15 @@ name|panel
 operator|.
 name|isModified
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 name|panel
 operator|.
 name|getDatabaseFile
 argument_list|()
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|AutoSaveManager
@@ -322,7 +321,6 @@ argument_list|(
 name|panel
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
