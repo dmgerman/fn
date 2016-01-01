@@ -122,6 +122,7 @@ end_comment
 
 begin_class
 DECL|class|PostgreSQLImporter
+specifier|final
 specifier|public
 class|class
 name|PostgreSQLImporter

@@ -122,6 +122,7 @@ end_comment
 
 begin_class
 DECL|class|MySQLImporter
+specifier|final
 specifier|public
 class|class
 name|MySQLImporter
