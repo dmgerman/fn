@@ -150,6 +150,7 @@ argument_list|(
 literal|19
 argument_list|)
 decl_stmt|;
+comment|// At least 19 characters are appended later
 while|while
 condition|(
 name|m

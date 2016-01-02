@@ -208,6 +208,36 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testFinalCoverageCase ()
+specifier|public
+name|void
+name|testFinalCoverageCase
+parameter_list|()
+block|{
+name|LayoutFormatter
+name|a
+init|=
+operator|new
+name|LastPage
+argument_list|()
+decl_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|"--"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

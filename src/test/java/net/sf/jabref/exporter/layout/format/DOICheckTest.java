@@ -186,7 +186,7 @@ literal|"/10.1145/354401.354407"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Obviously a wrong doi, will not work.
+comment|// Obviously a wrong doi, will not change anything.
 name|Assert
 operator|.
 name|assertEquals
@@ -201,7 +201,7 @@ literal|"10"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Obviously a wrong doi, will not work.
+comment|// Obviously a wrong doi, will not change anything.
 name|Assert
 operator|.
 name|assertEquals

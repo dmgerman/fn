@@ -84,13 +84,13 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Eds."
+literal|"Ed."
 argument_list|,
 name|a
 operator|.
 name|format
 argument_list|(
-literal|"Bob Bruce and Jolly Jumper"
+literal|"Bob Bruce"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -202,6 +202,36 @@ operator|.
 name|format
 argument_list|(
 literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testNoArgumentSet ()
+specifier|public
+name|void
+name|testNoArgumentSet
+parameter_list|()
+block|{
+name|ParamLayoutFormatter
+name|a
+init|=
+operator|new
+name|IfPlural
+argument_list|()
+decl_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|"Bob Bruce and Jolly Jumper"
 argument_list|)
 argument_list|)
 expr_stmt|;
