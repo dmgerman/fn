@@ -39,6 +39,16 @@ argument_list|<
 name|Abbreviation
 argument_list|>
 block|{
+DECL|field|SPLITTER
+specifier|private
+specifier|final
+specifier|static
+name|String
+name|SPLITTER
+init|=
+literal|";"
+decl_stmt|;
+comment|// elements after SPLITTER are not used at the moment
 DECL|field|name
 specifier|private
 specifier|final
@@ -115,12 +125,6 @@ name|String
 name|getIsoAbbreviation
 parameter_list|()
 block|{
-name|String
-name|SPLITTER
-init|=
-literal|";"
-decl_stmt|;
-comment|// elements after SPLITTER are not used at the moment
 if|if
 condition|(
 name|abbreviation

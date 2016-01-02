@@ -7826,7 +7826,7 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
-name|Enumeration
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -7837,22 +7837,14 @@ operator|.
 name|getAllKeys
 argument_list|()
 decl_stmt|;
-while|while
-condition|(
-name|allKeys
-operator|.
-name|hasMoreElements
-argument_list|()
-condition|)
-block|{
+for|for
+control|(
 name|String
 name|key
-init|=
+range|:
 name|allKeys
-operator|.
-name|nextElement
-argument_list|()
-decl_stmt|;
+control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -7864,19 +7856,6 @@ name|key
 argument_list|)
 condition|)
 block|{
-name|ArrayList
-argument_list|<
-name|String
-argument_list|>
-name|value
-init|=
-name|pattern
-operator|.
-name|getValue
-argument_list|(
-name|key
-argument_list|)
-decl_stmt|;
 comment|// no default value
 comment|// the first entry in the array is the full pattern
 comment|// see net.sf.jabref.logic.labelPattern.LabelPatternUtil.split(String)
@@ -7886,7 +7865,12 @@ name|put
 argument_list|(
 name|key
 argument_list|,
-name|value
+name|pattern
+operator|.
+name|getValue
+argument_list|(
+name|key
+argument_list|)
 operator|.
 name|get
 argument_list|(

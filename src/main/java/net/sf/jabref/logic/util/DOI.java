@@ -147,6 +147,13 @@ argument_list|(
 literal|"http://doi.org"
 argument_list|)
 decl_stmt|;
+comment|// DOI
+DECL|field|doi
+specifier|private
+specifier|final
+name|String
+name|doi
+decl_stmt|;
 comment|// Regex
 comment|// (see http://www.doi.org/doi_handbook/2_Numbering.html)
 DECL|field|DOI_EXP
@@ -261,13 +268,6 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|// DOI
-DECL|field|doi
-specifier|private
-specifier|final
-name|String
-name|doi
-decl_stmt|;
 comment|/**      * Creates a DOI from various schemes including URL, URN, and plain DOIs.      *      * @param doi the DOI string      * @throws NullPointerException if DOI is null      * @throws IllegalArgumentException if doi does not include a valid DOI      * @return an instance of the DOI class      */
 DECL|method|DOI (String doi)
 specifier|public

@@ -111,7 +111,7 @@ block|{
 DECL|method|findDeliminatedWordsInField (BibDatabase db, String field, String deliminator)
 specifier|public
 specifier|static
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -127,7 +127,7 @@ name|String
 name|deliminator
 parameter_list|)
 block|{
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -241,11 +241,11 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Returns a HashMap containing all words used in the database in the given field type. Characters in      *<code>remove</code> are not included.      *      * @param db a<code>BibDatabase</code> value      * @param field a<code>String</code> value      * @param remove a<code>String</code> value      * @return a<code>HashSet</code> value      */
+comment|/**      * Returns a Set containing all words used in the database in the given field type. Characters in      *<code>remove</code> are not included.      *      * @param db a<code>BibDatabase</code> value      * @param field a<code>String</code> value      * @param remove a<code>String</code> value      * @return a<code>Set</code> value      */
 DECL|method|findAllWordsInField (BibDatabase db, String field, String remove)
 specifier|public
 specifier|static
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -261,7 +261,7 @@ name|String
 name|remove
 parameter_list|)
 block|{
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
