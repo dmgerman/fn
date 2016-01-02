@@ -58,6 +58,18 @@ name|Reader
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
 begin_comment
 comment|/**  *  * Warning -- it is not a generic filter, only read is implemented!  *  * Note: this is just a quick port of the original SPIRESBibtexFilterReader.  *  * @author Fedor Bezrukov  * @author Sheer El-Showk  *  * @version $Id$  *  * TODO: Fix grammar in bibtex entries -- it ma return invalid bibkeys (with space)  *  */
 end_comment
@@ -89,6 +101,20 @@ DECL|field|pre
 specifier|private
 name|boolean
 name|pre
+decl_stmt|;
+DECL|field|PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"@Article\\{.*,"
+argument_list|)
 decl_stmt|;
 DECL|method|INSPIREBibtexFilterReader (final Reader _in)
 name|INSPIREBibtexFilterReader
@@ -211,19 +237,19 @@ return|return
 name|l
 return|;
 block|}
-DECL|method|fixBibkey (final String _in)
+DECL|method|fixBibkey (final String preliminaryLine)
 specifier|private
 name|String
 name|fixBibkey
 parameter_list|(
 specifier|final
 name|String
-name|_in
+name|preliminaryLine
 parameter_list|)
 block|{
 if|if
 condition|(
-name|_in
+name|preliminaryLine
 operator|==
 literal|null
 condition|)
@@ -232,20 +258,21 @@ return|return
 literal|null
 return|;
 block|}
-comment|//System.out.println(in);
 if|if
 condition|(
-name|_in
+name|PATTERN
 operator|.
-name|matches
+name|matcher
 argument_list|(
-literal|"@Article\\{.*,"
+name|preliminaryLine
 argument_list|)
+operator|.
+name|find
+argument_list|()
 condition|)
 block|{
-comment|//System.out.println(in.replace(' ','_'));
 return|return
-name|_in
+name|preliminaryLine
 operator|.
 name|replace
 argument_list|(
@@ -258,7 +285,7 @@ block|}
 else|else
 block|{
 return|return
-name|_in
+name|preliminaryLine
 return|;
 block|}
 block|}

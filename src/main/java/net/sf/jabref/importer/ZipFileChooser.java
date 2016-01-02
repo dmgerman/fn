@@ -1061,7 +1061,7 @@ name|table
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Table model for the ZIP archive contents.      *      *<p>Contains one row for each entry.      * Does not contain rows for directory entries.</p>      *      *<p>The columns contain information about ZIIP file entries:      *<ol><li>      *   name {@link String}      *</li><li>      *   time of last modification {@link Date}      *</li><li>      *   size (uncompressed) {@link Long}      *</li></ol></p>      */
+comment|/**      * Table model for the ZIP archive contents.      *      *<p>Contains one row for each entry.      * Does not contain rows for directory entries.</p>      *      *<p>The columns contain information about ZIP file entries:      *<ol><li>      *   name {@link String}      *</li><li>      *   time of last modification {@link Date}      *</li><li>      *   size (uncompressed) {@link Long}      *</li></ol></p>      */
 DECL|class|ZipFileChooserTableModel
 specifier|private
 specifier|static
