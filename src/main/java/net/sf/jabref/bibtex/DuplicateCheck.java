@@ -90,6 +90,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -150,6 +160,7 @@ argument_list|)
 decl_stmt|;
 comment|/*      * Integer values for indicating result of duplicate check (for entries):      *      */
 DECL|field|NOT_EQUAL
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -158,6 +169,7 @@ init|=
 literal|0
 decl_stmt|;
 DECL|field|EQUAL
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -166,6 +178,7 @@ init|=
 literal|1
 decl_stmt|;
 DECL|field|EMPTY_IN_ONE
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -174,6 +187,7 @@ init|=
 literal|2
 decl_stmt|;
 DECL|field|EMPTY_IN_TWO
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -182,6 +196,7 @@ init|=
 literal|3
 decl_stmt|;
 DECL|field|EMPTY_IN_BOTH
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -200,37 +215,37 @@ decl_stmt|;
 comment|// The overall threshold to signal a duplicate pair
 comment|// Non-required fields are investigated only if the required fields give a value within
 comment|// the doubt range of the threshold:
-DECL|field|doubtRange
+DECL|field|DOUBT_RANGE
 specifier|private
 specifier|static
 specifier|final
 name|double
-name|doubtRange
+name|DOUBT_RANGE
 init|=
 literal|0.05
 decl_stmt|;
-DECL|field|reqWeight
+DECL|field|REQUIRED_WEIGHT
 specifier|private
 specifier|static
 specifier|final
 name|double
-name|reqWeight
+name|REQUIRED_WEIGHT
 init|=
 literal|3
 decl_stmt|;
 comment|// Weighting of all required fields
 comment|// Extra weighting of those fields that are most likely to provide correct duplicate detection:
-DECL|field|fieldWeights
+DECL|field|FIELD_WEIGHTS
 specifier|private
 specifier|static
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
 name|Double
 argument_list|>
-name|fieldWeights
+name|FIELD_WEIGHTS
 init|=
 operator|new
 name|HashMap
@@ -241,7 +256,7 @@ static|static
 block|{
 name|DuplicateCheck
 operator|.
-name|fieldWeights
+name|FIELD_WEIGHTS
 operator|.
 name|put
 argument_list|(
@@ -252,7 +267,7 @@ argument_list|)
 expr_stmt|;
 name|DuplicateCheck
 operator|.
-name|fieldWeights
+name|FIELD_WEIGHTS
 operator|.
 name|put
 argument_list|(
@@ -263,7 +278,7 @@ argument_list|)
 expr_stmt|;
 name|DuplicateCheck
 operator|.
-name|fieldWeights
+name|FIELD_WEIGHTS
 operator|.
 name|put
 argument_list|(
@@ -274,7 +289,7 @@ argument_list|)
 expr_stmt|;
 name|DuplicateCheck
 operator|.
-name|fieldWeights
+name|FIELD_WEIGHTS
 operator|.
 name|put
 argument_list|(
@@ -410,7 +425,7 @@ argument_list|)
 operator|>
 name|DuplicateCheck
 operator|.
-name|doubtRange
+name|DOUBT_RANGE
 condition|)
 block|{
 comment|// Far from the threshold value, so we base our decision on the req. fields only
@@ -489,7 +504,7 @@ operator|(
 operator|(
 name|DuplicateCheck
 operator|.
-name|reqWeight
+name|REQUIRED_WEIGHT
 operator|*
 name|req
 index|[
@@ -524,7 +539,7 @@ index|]
 operator|*
 name|DuplicateCheck
 operator|.
-name|reqWeight
+name|REQUIRED_WEIGHT
 operator|)
 operator|+
 name|opt
@@ -595,7 +610,7 @@ if|if
 condition|(
 name|DuplicateCheck
 operator|.
-name|fieldWeights
+name|FIELD_WEIGHTS
 operator|.
 name|containsKey
 argument_list|(
@@ -607,7 +622,7 @@ name|weight
 operator|=
 name|DuplicateCheck
 operator|.
-name|fieldWeights
+name|FIELD_WEIGHTS
 operator|.
 name|get
 argument_list|(
@@ -1234,6 +1249,7 @@ comment|// No duplicate found.
 block|}
 comment|/**      * Compare two strings on the basis of word-by-word correlation analysis.      *      * @param s1       The first string      * @param s2       The second string      * @param truncate if true, always truncate the longer of two words to be compared to      *                 harmonize their length. If false, use interpolation to harmonize the strings.      * @return a value in the interval [0, 1] indicating the degree of match.      */
 DECL|method|correlateByWords (String s1, String s2)
+specifier|public
 specifier|static
 name|double
 name|correlateByWords
