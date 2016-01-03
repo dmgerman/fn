@@ -419,7 +419,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 comment|// Now create a SAXParser object
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>

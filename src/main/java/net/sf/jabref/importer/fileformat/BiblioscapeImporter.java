@@ -192,7 +192,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -220,7 +220,7 @@ decl_stmt|;
 name|String
 name|line
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -233,7 +233,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,

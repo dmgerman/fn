@@ -1284,11 +1284,10 @@ if|if
 condition|(
 operator|(
 name|existingKeywords
-operator|!=
+operator|==
 literal|null
 operator|)
-operator|&&
-operator|!
+operator|||
 name|existingKeywords
 operator|.
 name|contains
@@ -1298,16 +1297,16 @@ argument_list|)
 condition|)
 block|{
 name|existingKeywords
-operator|+=
-literal|", "
-operator|+
+operator|=
 name|value
 expr_stmt|;
 block|}
 else|else
 block|{
 name|existingKeywords
-operator|=
+operator|+=
+literal|", "
+operator|+
 name|value
 expr_stmt|;
 block|}
@@ -1829,7 +1828,7 @@ argument_list|)
 decl_stmt|;
 comment|// id assumes an existing database so don't
 comment|// Remove empty fields:
-name|ArrayList
+name|List
 argument_list|<
 name|Object
 argument_list|>
