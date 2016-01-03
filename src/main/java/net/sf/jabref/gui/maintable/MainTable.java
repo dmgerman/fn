@@ -1442,12 +1442,6 @@ name|void
 name|showFloatGrouping
 parameter_list|()
 block|{
-if|if
-condition|(
-operator|!
-name|isFloatGroupingActive
-condition|)
-block|{
 name|isFloatGroupingActive
 operator|=
 literal|true
@@ -1469,7 +1463,6 @@ expr_stmt|;
 name|refreshSorting
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 comment|/**      * Removes sorting by group, and graying out of non-hits.      */
 DECL|method|stopShowingFloatGrouping ()
