@@ -46,7 +46,7 @@ specifier|public
 class|class
 name|AuthorLF_FFAbbrTest
 block|{
-comment|/**      * Test method for      * {@link net.sf.jabref.exporter.layout.format.AuthorLF_FF#format(java.lang.String)}.      */
+comment|/**      * Test method for      * {@link net.sf.jabref.exporter.layout.format.AuthorLF_FFAbbr#format(java.lang.String)}.      */
 annotation|@
 name|Test
 DECL|method|testFormat ()

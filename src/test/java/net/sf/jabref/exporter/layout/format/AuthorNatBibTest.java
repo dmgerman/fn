@@ -46,7 +46,7 @@ specifier|public
 class|class
 name|AuthorNatBibTest
 block|{
-comment|/**      * Test method for      * {@link net.sf.jabref.exporter.layout.format.AuthorLF_FF#format(java.lang.String)}.      */
+comment|/**      * Test method for      * {@link net.sf.jabref.exporter.layout.format.AuthorNatBib#format(java.lang.String)}.      */
 annotation|@
 name|Test
 DECL|method|testFormatThreeAuthors ()

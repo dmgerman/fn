@@ -143,6 +143,17 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
+if|if
+condition|(
+name|fieldText
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 return|return
 name|fieldText
 operator|.
