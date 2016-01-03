@@ -128,6 +128,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -425,7 +435,7 @@ decl_stmt|;
 DECL|field|actions
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|PushToApplication
 argument_list|,
@@ -1103,6 +1113,11 @@ specifier|static
 class|class
 name|BooleanHolder
 block|{
+DECL|field|value
+specifier|public
+name|boolean
+name|value
+decl_stmt|;
 DECL|method|BooleanHolder (boolean value)
 specifier|public
 name|BooleanHolder
@@ -1118,11 +1133,6 @@ operator|=
 name|value
 expr_stmt|;
 block|}
-DECL|field|value
-specifier|public
-name|boolean
-name|value
-decl_stmt|;
 block|}
 DECL|method|showSettingsDialog (Object parent, PushToApplication toApp, JPanel options)
 specifier|public

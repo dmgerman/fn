@@ -134,6 +134,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -199,6 +227,35 @@ specifier|private
 specifier|final
 name|boolean
 name|toFileDir
+decl_stmt|;
+DECL|field|MOVE_RENAME
+specifier|private
+specifier|final
+name|String
+name|MOVE_RENAME
+init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Move/Rename file"
+argument_list|)
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MoveFileAction
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|MoveFileAction (JabRefFrame frame, EntryEditor eEditor, FileListEditor editor, boolean toFileDir)
 specifier|public
@@ -398,12 +455,7 @@ argument_list|(
 literal|"File_directory_is_not_set_or_does_not_exist!"
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Move/Rename file"
-argument_list|)
+name|MOVE_RENAME
 argument_list|,
 name|JOptionPane
 operator|.
@@ -587,7 +639,6 @@ decl_stmt|;
 comment|// Only ask about renaming file if the file doesn't have the proper name already:
 if|if
 condition|(
-operator|!
 name|suggName
 operator|.
 name|equals
@@ -607,14 +658,14 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-name|cbm
-argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Move/Rename file"
+literal|"Move file to file directory?"
 argument_list|)
+argument_list|,
+name|MOVE_RENAME
 argument_list|,
 name|JOptionPane
 operator|.
@@ -632,19 +683,9 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Move file to file directory?"
-argument_list|)
+name|cbm
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Move/Rename file"
-argument_list|)
+name|MOVE_RENAME
 argument_list|,
 name|JOptionPane
 operator|.
@@ -823,12 +864,7 @@ name|getName
 argument_list|()
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Move/Rename file"
-argument_list|)
+name|MOVE_RENAME
 argument_list|,
 name|JOptionPane
 operator|.
@@ -843,18 +879,17 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|toFileDir
 condition|)
+block|{
+return|return;
+block|}
+else|else
 block|{
 name|repeat
 operator|=
 literal|true
 expr_stmt|;
-block|}
-else|else
-block|{
-return|return;
 block|}
 block|}
 block|}
@@ -1071,12 +1106,7 @@ argument_list|(
 literal|"Move file failed"
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Move/Rename file"
-argument_list|)
+name|MOVE_RENAME
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1088,60 +1118,19 @@ block|}
 catch|catch
 parameter_list|(
 name|SecurityException
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Could not move file '%0'."
-argument_list|,
-name|file
-operator|.
-name|getAbsolutePath
-argument_list|()
-argument_list|)
-operator|+
-name|ex
-operator|.
-name|getMessage
-argument_list|()
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Move/Rename file"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not move file"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 name|JOptionPane
 operator|.
@@ -1166,12 +1155,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Move/Rename file"
-argument_list|)
+name|MOVE_RENAME
 argument_list|,
 name|JOptionPane
 operator|.

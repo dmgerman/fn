@@ -540,18 +540,14 @@ operator|=
 operator|!
 name|optDiag
 operator|.
-name|autoSetNone
-operator|.
-name|isSelected
+name|isAutoSetNone
 argument_list|()
 expr_stmt|;
 name|checkExisting
 operator|=
 name|optDiag
 operator|.
-name|checkLinks
-operator|.
-name|isSelected
+name|isCheckLinks
 argument_list|()
 expr_stmt|;
 name|panel
@@ -1154,9 +1150,7 @@ literal|true
 expr_stmt|;
 comment|// Notify for further cases.
 break|break;
-case|case
-literal|4
-case|:
+default|default:
 comment|// Cancel
 break|break
 name|mainLoop
@@ -1674,26 +1668,31 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|autoSetUnset
+specifier|private
 specifier|final
 name|JRadioButton
 name|autoSetUnset
 decl_stmt|;
 DECL|field|autoSetAll
+specifier|private
 specifier|final
 name|JRadioButton
 name|autoSetAll
 decl_stmt|;
 DECL|field|autoSetNone
+specifier|private
 specifier|final
 name|JRadioButton
 name|autoSetNone
 decl_stmt|;
 DECL|field|checkLinks
+specifier|private
 specifier|final
 name|JCheckBox
 name|checkLinks
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -1710,6 +1709,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -1724,10 +1724,6 @@ argument_list|(
 literal|"Cancel"
 argument_list|)
 argument_list|)
-decl_stmt|;
-DECL|field|description
-name|JLabel
-name|description
 decl_stmt|;
 DECL|field|canceled
 specifier|private
@@ -2016,8 +2012,9 @@ argument_list|(
 name|layout
 argument_list|)
 decl_stmt|;
+name|JLabel
 name|description
-operator|=
+init|=
 operator|new
 name|JLabel
 argument_list|(
@@ -2036,7 +2033,7 @@ argument_list|)
 operator|+
 literal|"</HTML>"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|builder
 operator|.
 name|addSeparator
@@ -2389,6 +2386,32 @@ argument_list|(
 name|visible
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|isAutoSetNone ()
+specifier|public
+name|boolean
+name|isAutoSetNone
+parameter_list|()
+block|{
+return|return
+name|autoSetNone
+operator|.
+name|isSelected
+argument_list|()
+return|;
+block|}
+DECL|method|isCheckLinks ()
+specifier|public
+name|boolean
+name|isCheckLinks
+parameter_list|()
+block|{
+return|return
+name|checkLinks
+operator|.
+name|isSelected
+argument_list|()
+return|;
 block|}
 DECL|method|canceled ()
 specifier|public

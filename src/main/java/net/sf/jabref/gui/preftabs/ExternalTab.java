@@ -1183,7 +1183,7 @@ name|pushToApplication
 range|:
 name|PushToApplications
 operator|.
-name|applications
+name|APPLICATIONS
 control|)
 block|{
 name|addSettingsButton

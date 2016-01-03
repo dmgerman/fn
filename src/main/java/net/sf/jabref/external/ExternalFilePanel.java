@@ -490,6 +490,7 @@ name|JPanel
 block|{
 DECL|field|entryEditor
 specifier|private
+specifier|final
 name|EntryEditor
 name|entryEditor
 decl_stmt|;
@@ -582,12 +583,6 @@ operator|.
 name|entry
 operator|=
 name|entry
-expr_stmt|;
-name|this
-operator|.
-name|entryEditor
-operator|=
-literal|null
 expr_stmt|;
 block|}
 DECL|method|ExternalFilePanel (final JabRefFrame frame, final MetaData metaData, final EntryEditor entryEditor, final String fieldName, final OpenFileFilter off, final FieldEditor editor)

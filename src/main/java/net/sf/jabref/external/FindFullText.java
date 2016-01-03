@@ -301,10 +301,7 @@ name|result
 operator|.
 name|isPresent
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|MimeTypeDetector
 operator|.
 name|isPdfContentType
@@ -322,7 +319,6 @@ block|{
 return|return
 name|result
 return|;
-block|}
 block|}
 block|}
 catch|catch

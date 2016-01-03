@@ -58,7 +58,7 @@ specifier|public
 class|class
 name|PushToApplications
 block|{
-DECL|field|applications
+DECL|field|APPLICATIONS
 specifier|public
 specifier|static
 specifier|final
@@ -66,12 +66,12 @@ name|List
 argument_list|<
 name|PushToApplication
 argument_list|>
-name|applications
+name|APPLICATIONS
 decl_stmt|;
 comment|/**      * Set up the current available choices:      */
 static|static
 block|{
-name|applications
+name|APPLICATIONS
 operator|=
 operator|new
 name|ArrayList
@@ -80,7 +80,7 @@ argument_list|()
 expr_stmt|;
 name|PushToApplications
 operator|.
-name|applications
+name|APPLICATIONS
 operator|.
 name|add
 argument_list|(
@@ -91,7 +91,7 @@ argument_list|)
 expr_stmt|;
 name|PushToApplications
 operator|.
-name|applications
+name|APPLICATIONS
 operator|.
 name|add
 argument_list|(
@@ -102,7 +102,7 @@ argument_list|)
 expr_stmt|;
 name|PushToApplications
 operator|.
-name|applications
+name|APPLICATIONS
 operator|.
 name|add
 argument_list|(
@@ -113,7 +113,7 @@ argument_list|)
 expr_stmt|;
 name|PushToApplications
 operator|.
-name|applications
+name|APPLICATIONS
 operator|.
 name|add
 argument_list|(
@@ -125,7 +125,7 @@ argument_list|)
 expr_stmt|;
 name|PushToApplications
 operator|.
-name|applications
+name|APPLICATIONS
 operator|.
 name|add
 argument_list|(
@@ -136,7 +136,7 @@ argument_list|)
 expr_stmt|;
 name|PushToApplications
 operator|.
-name|applications
+name|APPLICATIONS
 operator|.
 name|add
 argument_list|(
@@ -147,7 +147,7 @@ argument_list|)
 expr_stmt|;
 name|PushToApplications
 operator|.
-name|applications
+name|APPLICATIONS
 operator|.
 name|add
 argument_list|(
@@ -158,7 +158,7 @@ argument_list|)
 expr_stmt|;
 name|PushToApplications
 operator|.
-name|applications
+name|APPLICATIONS
 operator|.
 name|add
 argument_list|(
