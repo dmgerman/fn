@@ -380,14 +380,6 @@ specifier|private
 name|boolean
 name|oldUseDef
 decl_stmt|;
-DECL|field|oldPort
-specifier|private
-name|int
-name|oldPort
-init|=
-operator|-
-literal|1
-decl_stmt|;
 DECL|field|useConvertToEquation
 specifier|private
 specifier|final
@@ -1233,13 +1225,6 @@ name|useRemoteServer
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|oldPort
-operator|=
-name|remotePreferences
-operator|.
-name|getPort
-argument_list|()
-expr_stmt|;
 name|remoteServerPort
 operator|.
 name|setText
@@ -1248,7 +1233,10 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-name|oldPort
+name|remotePreferences
+operator|.
+name|getPort
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1530,10 +1518,7 @@ name|newPort
 operator|.
 name|isPresent
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|remotePreferences
 operator|.
 name|isDifferentPort
@@ -1583,7 +1568,12 @@ argument_list|)
 operator|.
 name|concat
 argument_list|(
-literal|"You must restart JabRef for this change to come into effect."
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"You must restart JabRef for this to come into effect."
+argument_list|)
 argument_list|)
 argument_list|,
 name|Localization
@@ -1598,7 +1588,6 @@ operator|.
 name|WARNING_MESSAGE
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 name|remotePreferences

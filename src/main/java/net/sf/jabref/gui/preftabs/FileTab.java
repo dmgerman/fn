@@ -1099,12 +1099,6 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|JabRefPreferences
 operator|.
 name|NEWLINE
@@ -1348,12 +1342,6 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|JabRefPreferences
 operator|.
 name|NEWLINE
