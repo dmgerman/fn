@@ -1112,12 +1112,12 @@ name|sb
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 name|finalizeSaveSession
 argument_list|(
 name|ss
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * See if there is a name formatter file bundled with this export format. If so, read      * all the name formatters so they can be used by the filter layouts.      * @param lfFileName The layout filename.      */
 DECL|method|readFormatterFile (String lfFileName)
