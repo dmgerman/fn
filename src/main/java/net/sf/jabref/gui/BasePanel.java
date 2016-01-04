@@ -11490,23 +11490,12 @@ expr_stmt|;
 comment|// Put an asterix behind the filename to indicate the database has changed.
 name|frame
 operator|.
-name|setTabTitle
-argument_list|(
-name|this
-argument_list|,
-name|getTabTitle
+name|setWindowTitle
 argument_list|()
-argument_list|,
-name|getDatabaseFile
-argument_list|()
-operator|.
-name|getAbsolutePath
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|setWindowTitle
+name|updateAllTabTitles
 argument_list|()
 expr_stmt|;
 comment|// If the status line states that the base has been saved, we
