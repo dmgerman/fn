@@ -11802,12 +11802,6 @@ name|void
 name|start
 parameter_list|()
 block|{
-if|if
-condition|(
-operator|!
-name|isActive
-condition|)
-block|{
 name|list
 operator|.
 name|setMatcher
@@ -11819,7 +11813,6 @@ name|isActive
 operator|=
 literal|true
 expr_stmt|;
-block|}
 block|}
 DECL|method|stop ()
 specifier|public
