@@ -174,12 +174,12 @@ name|CreateDocBookAuthors
 implements|implements
 name|LayoutFormatter
 block|{
-DECL|field|xc
+DECL|field|XML_CHARS
 specifier|private
 specifier|static
 specifier|final
 name|XMLChars
-name|xc
+name|XML_CHARS
 init|=
 operator|new
 name|XMLChars
@@ -331,7 +331,7 @@ name|append
 argument_list|(
 name|CreateDocBookAuthors
 operator|.
-name|xc
+name|XML_CHARS
 operator|.
 name|format
 argument_list|(
@@ -384,7 +384,7 @@ name|append
 argument_list|(
 name|CreateDocBookAuthors
 operator|.
-name|xc
+name|XML_CHARS
 operator|.
 name|format
 argument_list|(
@@ -437,7 +437,7 @@ name|append
 argument_list|(
 name|CreateDocBookAuthors
 operator|.
-name|xc
+name|XML_CHARS
 operator|.
 name|format
 argument_list|(
@@ -480,7 +480,7 @@ name|append
 argument_list|(
 name|CreateDocBookAuthors
 operator|.
-name|xc
+name|XML_CHARS
 operator|.
 name|format
 argument_list|(

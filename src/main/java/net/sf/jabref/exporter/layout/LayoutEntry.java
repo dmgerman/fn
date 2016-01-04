@@ -258,7 +258,7 @@ name|classPrefix
 decl_stmt|;
 DECL|field|invalidFormatter
 specifier|private
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -280,13 +280,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|LayoutEntry (StringInt si, String classPrefix_)
+DECL|method|LayoutEntry (StringInt si, final String classPrefix_)
 specifier|public
 name|LayoutEntry
 parameter_list|(
 name|StringInt
 name|si
 parameter_list|,
+specifier|final
 name|String
 name|classPrefix_
 parameter_list|)
@@ -499,7 +500,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|LayoutEntry (Vector<StringInt> parsedEntries, String classPrefix_, int layoutType)
+DECL|method|LayoutEntry (Vector<StringInt> parsedEntries, final String classPrefix_, int layoutType)
 specifier|public
 name|LayoutEntry
 parameter_list|(
@@ -509,6 +510,7 @@ name|StringInt
 argument_list|>
 name|parsedEntries
 parameter_list|,
+specifier|final
 name|String
 name|classPrefix_
 parameter_list|,
@@ -1860,15 +1862,15 @@ name|databaseFile
 decl_stmt|;
 return|return
 name|f
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|""
+else|:
 name|f
 operator|.
 name|getName
 argument_list|()
-else|:
-literal|""
 return|;
 block|}
 elseif|else
@@ -1892,15 +1894,15 @@ name|databaseFile
 decl_stmt|;
 return|return
 name|f
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|""
+else|:
 name|f
 operator|.
 name|getPath
 argument_list|()
-else|:
-literal|""
 return|;
 block|}
 return|return
@@ -2182,18 +2184,19 @@ comment|// If this formatter accepts an argument, check if we have one, and
 comment|// set it if so:
 if|if
 condition|(
+operator|(
 name|f
 operator|instanceof
 name|ParamLayoutFormatter
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
+operator|(
 name|strings
 operator|.
 name|length
 operator|>=
 literal|2
+operator|)
 condition|)
 block|{
 operator|(
@@ -2211,7 +2214,6 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|results
 operator|.
@@ -2316,7 +2318,7 @@ return|;
 block|}
 DECL|method|getInvalidFormatters ()
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>

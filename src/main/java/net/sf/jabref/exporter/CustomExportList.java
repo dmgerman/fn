@@ -32,6 +32,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Optional
 import|;
 end_import
@@ -167,7 +177,7 @@ decl_stmt|;
 DECL|field|formats
 specifier|private
 specifier|final
-name|TreeMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -229,7 +239,7 @@ expr_stmt|;
 block|}
 DECL|method|getCustomExportFormats ()
 specifier|public
-name|TreeMap
+name|Map
 argument_list|<
 name|String
 argument_list|,

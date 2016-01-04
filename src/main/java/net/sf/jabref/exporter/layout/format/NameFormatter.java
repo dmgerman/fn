@@ -87,6 +87,15 @@ name|DEFAULT_FORMAT
 init|=
 literal|"1@*@{ff }{vv }{ll}{, jj}@@*@1@{ff }{vv }{ll}{, jj}@*@, {ff }{vv }{ll}{, jj}"
 decl_stmt|;
+DECL|field|parameter
+specifier|private
+name|String
+name|parameter
+init|=
+name|NameFormatter
+operator|.
+name|DEFAULT_FORMAT
+decl_stmt|;
 DECL|method|format (String toFormat, AuthorList al, String[] formats)
 specifier|private
 specifier|static
@@ -531,15 +540,6 @@ name|parameter
 argument_list|)
 return|;
 block|}
-DECL|field|parameter
-specifier|private
-name|String
-name|parameter
-init|=
-name|NameFormatter
-operator|.
-name|DEFAULT_FORMAT
-decl_stmt|;
 DECL|method|setParameter (String parameter)
 specifier|public
 name|void

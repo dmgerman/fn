@@ -350,13 +350,14 @@ operator|=
 name|newGroup
 expr_stmt|;
 block|}
-DECL|method|getBracketedField (int _field)
+DECL|method|getBracketedField (final int field)
 specifier|private
 name|String
 name|getBracketedField
 parameter_list|(
+specifier|final
 name|int
-name|_field
+name|field
 parameter_list|)
 throws|throws
 name|IOException
@@ -416,7 +417,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|_field
+name|field
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -454,7 +455,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//myStrings.add(buffer.toString());
 name|parsedEntries
 operator|.
 name|add
@@ -467,11 +467,10 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|_field
+name|field
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("\nbracketed: " + buffer.toString());
 return|return
 literal|null
 return|;
@@ -506,13 +505,12 @@ block|}
 if|if
 condition|(
 name|start
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 name|c
 operator|!=
 literal|'}'
+operator|)
 condition|)
 block|{
 name|buffer
@@ -525,7 +523,6 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -608,9 +605,19 @@ comment|//myStrings.add(buffer.toString());
 if|if
 condition|(
 name|option
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|tmp
+operator|=
+name|buffer
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+block|}
+else|else
 block|{
 name|tmp
 operator|=
@@ -622,16 +629,6 @@ operator|+
 literal|'\n'
 operator|+
 name|option
-expr_stmt|;
-block|}
-else|else
-block|{
-name|tmp
-operator|=
-name|buffer
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 block|}
 name|parsedEntries
@@ -779,9 +776,16 @@ decl_stmt|;
 if|if
 condition|(
 name|option
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|tmp
+operator|=
+name|parameter
+expr_stmt|;
+block|}
+else|else
 block|{
 name|tmp
 operator|=
@@ -790,13 +794,6 @@ operator|+
 literal|'\n'
 operator|+
 name|option
-expr_stmt|;
-block|}
-else|else
-block|{
-name|tmp
-operator|=
-name|parameter
 expr_stmt|;
 block|}
 name|parsedEntries
@@ -963,7 +960,7 @@ name|_eof
 operator|=
 literal|true
 expr_stmt|;
-comment|/*                  * CO 2006-11-11: Added check for null, otherwise a Layout that                  * finishs with a curly brace throws a NPE                  */
+comment|/*                  * CO 2006-11-11: Added check for null, otherwise a Layout that                  * finishes with a curly brace throws a NPE                  */
 if|if
 condition|(
 name|buffer
@@ -1195,15 +1192,15 @@ comment|//System.out.println("\n#" + (char) c);
 name|name
 operator|=
 name|buffer
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|""
+else|:
 name|buffer
 operator|.
 name|toString
 argument_list|()
-else|:
-literal|""
 expr_stmt|;
 try|try
 block|{

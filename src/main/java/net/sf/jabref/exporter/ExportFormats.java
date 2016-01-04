@@ -212,7 +212,7 @@ specifier|public
 class|class
 name|ExportFormats
 block|{
-DECL|field|exportFormats
+DECL|field|EXPORT_FORMATS
 specifier|private
 specifier|static
 specifier|final
@@ -222,7 +222,7 @@ name|String
 argument_list|,
 name|IExportFormat
 argument_list|>
-name|exportFormats
+name|EXPORT_FORMATS
 init|=
 operator|new
 name|TreeMap
@@ -245,7 +245,7 @@ parameter_list|()
 block|{
 name|ExportFormats
 operator|.
-name|exportFormats
+name|EXPORT_FORMATS
 operator|.
 name|clear
 argument_list|()
@@ -625,11 +625,12 @@ argument_list|)
 decl_stmt|;
 name|ef
 operator|.
-name|encoding
-operator|=
+name|setEncoding
+argument_list|(
 name|StandardCharsets
 operator|.
 name|UTF_8
+argument_list|)
 expr_stmt|;
 name|ExportFormats
 operator|.
@@ -717,7 +718,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Now add custom export formats
-name|TreeMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -791,7 +792,7 @@ name|name
 range|:
 name|ExportFormats
 operator|.
-name|exportFormats
+name|EXPORT_FORMATS
 operator|.
 name|keySet
 argument_list|()
@@ -897,7 +898,7 @@ name|unmodifiableMap
 argument_list|(
 name|ExportFormats
 operator|.
-name|exportFormats
+name|EXPORT_FORMATS
 argument_list|)
 return|;
 block|}
@@ -915,7 +916,7 @@ block|{
 return|return
 name|ExportFormats
 operator|.
-name|exportFormats
+name|EXPORT_FORMATS
 operator|.
 name|get
 argument_list|(
@@ -1594,7 +1595,7 @@ name|e
 range|:
 name|ExportFormats
 operator|.
-name|exportFormats
+name|EXPORT_FORMATS
 operator|.
 name|entrySet
 argument_list|()
@@ -1699,7 +1700,7 @@ parameter_list|)
 block|{
 name|ExportFormats
 operator|.
-name|exportFormats
+name|EXPORT_FORMATS
 operator|.
 name|put
 argument_list|(

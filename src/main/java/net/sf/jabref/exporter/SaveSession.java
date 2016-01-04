@@ -480,10 +480,14 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Problem copying file"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 throw|throw
 name|SaveException

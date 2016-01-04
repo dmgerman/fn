@@ -37,7 +37,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author ralmond  *   * This formatter takes two arguments and examines the field text.    * If the field text represents multiple individuals, that is it contains the string "and"  * then the field text is replaced with the first argument, otherwise it is replaced with the second.  * For example:  *   * \format[IfPlural(Eds.,Ed.)]{\editor}  *   * Should expand to 'Eds.' if the document has more than one editor and 'Ed.' if it only has one.  *   *  */
+comment|/**  * @author ralmond  *  * This formatter takes two arguments and examines the field text.  * If the field text represents multiple individuals, that is it contains the string "and"  * then the field text is replaced with the first argument, otherwise it is replaced with the second.  * For example:  *  * \format[IfPlural(Eds.,Ed.)]{\editor}  *  * Should expand to 'Eds.' if the document has more than one editor and 'Ed.' if it only has one.  *  *  */
 end_comment
 
 begin_class
@@ -120,13 +120,26 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
+name|fieldText
+operator|==
+literal|null
+operator|)
+operator|||
+name|fieldText
+operator|.
+name|isEmpty
+argument_list|()
+operator|||
+operator|(
 name|pluralText
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return
-name|fieldText
+literal|""
 return|;
 comment|// TODO: argument missing or invalid. Print an error message here?
 block|}

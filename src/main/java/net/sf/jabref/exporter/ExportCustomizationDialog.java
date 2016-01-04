@@ -274,13 +274,15 @@ name|frame
 decl_stmt|;
 DECL|field|table
 specifier|private
+specifier|final
 name|JTable
 name|table
 decl_stmt|;
-DECL|method|ExportCustomizationDialog (JabRefFrame frame_)
+DECL|method|ExportCustomizationDialog (final JabRefFrame frame_)
 specifier|public
 name|ExportCustomizationDialog
 parameter_list|(
+specifier|final
 name|JabRefFrame
 name|frame_
 parameter_list|)

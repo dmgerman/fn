@@ -90,7 +90,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
+name|Map
 import|;
 end_import
 
@@ -110,7 +110,7 @@ DECL|field|CHARS
 specifier|private
 specifier|static
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -265,7 +265,7 @@ decl_stmt|;
 if|if
 condition|(
 name|result
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -273,10 +273,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
-name|result
+name|command
 argument_list|)
 expr_stmt|;
 block|}
@@ -286,7 +283,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|command
+operator|(
+name|String
+operator|)
+name|result
 argument_list|)
 expr_stmt|;
 block|}
@@ -589,7 +589,7 @@ comment|/* If found, then use translated version. If not,                       
 if|if
 condition|(
 name|result
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -597,10 +597,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
-name|result
+name|command
 argument_list|)
 expr_stmt|;
 block|}
@@ -610,7 +607,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|command
+operator|(
+name|String
+operator|)
+name|result
 argument_list|)
 expr_stmt|;
 block|}
@@ -733,7 +733,7 @@ comment|// text of the parameter intact.
 if|if
 condition|(
 name|result
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -741,10 +741,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
-name|result
+name|argument
 argument_list|)
 expr_stmt|;
 block|}
@@ -754,7 +751,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|argument
+operator|(
+name|String
+operator|)
+name|result
 argument_list|)
 expr_stmt|;
 block|}
@@ -786,9 +786,20 @@ decl_stmt|;
 if|if
 condition|(
 name|result
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+comment|// If the command is unknown, just print it:
+name|sb
+operator|.
+name|append
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|sb
 operator|.
@@ -798,17 +809,6 @@ operator|(
 name|String
 operator|)
 name|result
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// If the command is unknown, just print it:
-name|sb
-operator|.
-name|append
-argument_list|(
-name|command
 argument_list|)
 expr_stmt|;
 block|}
@@ -830,7 +830,7 @@ decl_stmt|;
 if|if
 condition|(
 name|result
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -838,10 +838,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
-name|result
+name|command
 argument_list|)
 expr_stmt|;
 block|}
@@ -851,7 +848,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|command
+operator|(
+name|String
+operator|)
+name|result
 argument_list|)
 expr_stmt|;
 block|}

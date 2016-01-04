@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.export.layout.format
+DECL|package|net.sf.jabref.exporter.layout.format
 package|package
 name|net
 operator|.
@@ -8,7 +8,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
+name|exporter
 operator|.
 name|layout
 operator|.
@@ -34,29 +34,11 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|exporter
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|RemoveBrackets
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
 operator|.
-name|Before
+name|Assert
 import|;
 end_import
 
@@ -70,44 +52,12 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
 begin_class
-DECL|class|RemoveBracketsTest
+DECL|class|DOIStripTest
 specifier|public
 class|class
-name|RemoveBracketsTest
+name|DOIStripTest
 block|{
-DECL|field|formatter
-specifier|private
-name|LayoutFormatter
-name|formatter
-decl_stmt|;
-annotation|@
-name|Before
-DECL|method|setup ()
-specifier|public
-name|void
-name|setup
-parameter_list|()
-block|{
-name|formatter
-operator|=
-operator|new
-name|RemoveBrackets
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Test
 DECL|method|testFormat ()
@@ -115,54 +65,81 @@ specifier|public
 name|void
 name|testFormat
 parameter_list|()
-throws|throws
-name|Exception
 block|{
+name|LayoutFormatter
+name|lf
+init|=
+operator|new
+name|DOIStrip
+argument_list|()
+decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-literal|"some text"
+literal|""
 argument_list|,
-name|formatter
+name|lf
 operator|.
 name|format
 argument_list|(
-literal|"{some text}"
+literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-literal|"some text"
+literal|null
 argument_list|,
-name|formatter
+name|lf
 operator|.
 name|format
 argument_list|(
-literal|"{some text"
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-literal|"some text"
+literal|"10.1000/ISBN1-900512-44-0"
 argument_list|,
-name|formatter
+name|lf
 operator|.
 name|format
 argument_list|(
-literal|"some text}"
+literal|"10.1000/ISBN1-900512-44-0"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
-literal|"\\some text\\"
+literal|"10.1000/ISBN1-900512-44-0"
 argument_list|,
-name|formatter
+name|lf
 operator|.
 name|format
 argument_list|(
-literal|"\\{some text\\}"
+literal|"http://dx.doi.org/10.1000/ISBN1-900512-44-0"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"10.1000/ISBN1-900512-44-0"
+argument_list|,
+name|lf
+operator|.
+name|format
+argument_list|(
+literal|"http://doi.acm.org/10.1000/ISBN1-900512-44-0"
 argument_list|)
 argument_list|)
 expr_stmt|;

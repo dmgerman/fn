@@ -180,6 +180,12 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|forceReplace
+specifier|private
+name|boolean
+index|[]
+name|forceReplace
+decl_stmt|;
 static|static
 block|{
 name|ASCII_TO_XML_CHARS
@@ -317,12 +323,6 @@ literal|"&#x2013;"
 argument_list|)
 return|;
 block|}
-DECL|field|forceReplace
-specifier|private
-name|boolean
-index|[]
-name|forceReplace
-decl_stmt|;
 DECL|method|restFormat (String toFormat)
 specifier|private
 name|String
