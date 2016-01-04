@@ -973,7 +973,7 @@ name|inCommandOption
 operator|)
 condition|)
 block|{
-comment|//System.out.println("whitespace here");
+comment|// Whitespace
 block|}
 elseif|else
 if|if
@@ -995,7 +995,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|// Or the end of an argument:
 elseif|else
 if|if
 condition|(
@@ -1008,6 +1007,7 @@ literal|']'
 operator|)
 condition|)
 block|{
+comment|// Or the end of an argument:
 name|inCommandOption
 operator|=
 literal|false
@@ -1026,7 +1026,6 @@ literal|'{'
 operator|)
 condition|)
 block|{
-comment|//System.out.println("Read command: '"+commandName.toString()+"'");
 name|inCommandName
 operator|=
 literal|false
@@ -1036,10 +1035,9 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|// Or simply the end of this command altogether:
 else|else
 block|{
-comment|//System.out.println("I think I read command: '"+commandName.toString()+"'");
+comment|// Or simply the end of this command altogether:
 name|commandName
 operator|.
 name|delete
@@ -1070,8 +1068,6 @@ literal|'}'
 operator|)
 condition|)
 block|{
-comment|//System.out.println("nestedEnvironments = " + nestedEnvironments);
-comment|//System.out.println("Done with command: '"+commandName.toString()+"'");
 if|if
 condition|(
 literal|"begin"
@@ -1112,7 +1108,6 @@ name|nestedEnvironments
 operator|--
 expr_stmt|;
 block|}
-comment|//System.out.println("nestedEnvironments = " + nestedEnvironments);
 name|commandName
 operator|.
 name|delete

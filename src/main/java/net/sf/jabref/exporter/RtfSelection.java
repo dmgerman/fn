@@ -183,7 +183,6 @@ index|[]
 name|getTransferDataFlavors
 parameter_list|()
 block|{
-comment|//System.out.println("..");
 return|return
 name|supportedFlavors
 return|;
@@ -215,7 +214,6 @@ name|stringFlavor
 argument_list|)
 condition|)
 block|{
-comment|//System.out.println("Delivering string data.");
 return|return
 name|content
 return|;
@@ -231,7 +229,6 @@ name|rtfFlavor
 argument_list|)
 condition|)
 block|{
-comment|//System.out.println("Delivering rtf data.");
 name|byte
 index|[]
 name|byteArray
