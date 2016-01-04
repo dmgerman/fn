@@ -74,16 +74,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -713,12 +703,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|Optional
-argument_list|<
-name|Font
-argument_list|>
-name|f
-init|=
 operator|new
 name|FontSelectorDialog
 argument_list|(
@@ -731,8 +715,6 @@ argument_list|)
 operator|.
 name|getSelectedFont
 argument_list|()
-decl_stmt|;
-name|f
 operator|.
 name|ifPresent
 argument_list|(
