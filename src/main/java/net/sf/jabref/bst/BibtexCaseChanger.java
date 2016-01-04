@@ -57,6 +57,7 @@ end_import
 begin_class
 DECL|class|BibtexCaseChanger
 specifier|public
+specifier|final
 class|class
 name|BibtexCaseChanger
 block|{
@@ -125,6 +126,12 @@ comment|// Capitalizes first and last word
 comment|// Does not change words starting with "{"
 comment|// DIFFERENCE to old CaseChangers.TITLE: last word is NOT capitalized in all cases
 comment|//TITLE_UPPERS('T');
+DECL|field|asChar
+specifier|private
+specifier|final
+name|char
+name|asChar
+decl_stmt|;
 DECL|method|asChar ()
 specifier|public
 name|char
@@ -135,12 +142,6 @@ return|return
 name|asChar
 return|;
 block|}
-DECL|field|asChar
-specifier|private
-specifier|final
-name|char
-name|asChar
-decl_stmt|;
 DECL|method|FORMAT_MODE (char asChar)
 name|FORMAT_MODE
 parameter_list|(
@@ -890,6 +891,17 @@ argument_list|)
 expr_stmt|;
 block|}
 break|break;
+default|default:
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"convertAccented - Unknown format: "
+operator|+
+name|format
+argument_list|)
+expr_stmt|;
+break|break;
 block|}
 return|return
 name|pos
@@ -964,6 +976,17 @@ argument_list|)
 expr_stmt|;
 name|pos
 operator|++
+expr_stmt|;
+break|break;
+default|default:
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"convertNonControl - Unknown format: "
+operator|+
+name|format
+argument_list|)
 expr_stmt|;
 break|break;
 block|}
@@ -1136,6 +1159,18 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+break|break;
+default|default:
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"convertCharIfBraceLevelIsZero - Unknown format: "
+operator|+
+name|format
+argument_list|)
+expr_stmt|;
+break|break;
 block|}
 name|i
 operator|++
@@ -1146,6 +1181,7 @@ return|;
 block|}
 comment|/**      * Determine whether there starts a special char at pos (e.g., oe, AE). Return it as string.      * If nothing found, return null      *      * Also used by BibtexPurify      *      * @param c the current "String"      * @param pos the position      * @return the special LaTeX character or null      */
 DECL|method|findSpecialChar (char[] c, int pos)
+specifier|public
 specifier|static
 name|Optional
 argument_list|<
