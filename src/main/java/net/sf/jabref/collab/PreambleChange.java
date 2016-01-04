@@ -155,13 +155,10 @@ argument_list|(
 name|tp
 argument_list|)
 decl_stmt|;
-DECL|method|PreambleChange (String tmp, String mem, String disk)
+DECL|method|PreambleChange (String mem, String disk)
 specifier|public
 name|PreambleChange
 parameter_list|(
-name|String
-name|tmp
-parameter_list|,
 name|String
 name|mem
 parameter_list|,
@@ -196,20 +193,15 @@ name|text
 init|=
 operator|new
 name|StringBuilder
-argument_list|()
+argument_list|(
+literal|34
+argument_list|)
 decl_stmt|;
 name|text
 operator|.
 name|append
 argument_list|(
-literal|"<FONT SIZE=3>"
-argument_list|)
-expr_stmt|;
-name|text
-operator|.
-name|append
-argument_list|(
-literal|"<H2>"
+literal|"<FONT SIZE=3><H2>"
 argument_list|)
 operator|.
 name|append
@@ -352,7 +344,6 @@ literal|"</CODE>"
 argument_list|)
 expr_stmt|;
 block|}
-comment|//tp.setContentType("text/html");
 name|tp
 operator|.
 name|setText
@@ -425,6 +416,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|description ()
+specifier|public
 name|JComponent
 name|description
 parameter_list|()

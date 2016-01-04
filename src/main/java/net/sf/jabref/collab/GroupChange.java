@@ -175,21 +175,21 @@ block|{
 name|super
 argument_list|(
 name|changedGroups
-operator|!=
+operator|==
 literal|null
 condition|?
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Modified groups tree"
+literal|"Removed all groups"
 argument_list|)
 else|:
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Removed all groups"
+literal|"Modified groups tree"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -384,6 +384,18 @@ name|undo
 argument_list|)
 expr_stmt|;
 comment|// Update tmp database:
+name|tmpGroupRoot
+operator|.
+name|removeAllChildren
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|changedGroups
+operator|!=
+literal|null
+condition|)
+block|{
 name|GroupTreeNode
 name|copied
 init|=
@@ -392,11 +404,6 @@ operator|.
 name|deepCopy
 argument_list|()
 decl_stmt|;
-name|tmpGroupRoot
-operator|.
-name|removeAllChildren
-argument_list|()
-expr_stmt|;
 name|tmpGroupRoot
 operator|.
 name|setGroup
@@ -446,6 +453,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|tmpGroupRoot
 operator|.
 name|refreshGroupsForNewDatabase
@@ -460,6 +468,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|description ()
+specifier|public
 name|JComponent
 name|description
 parameter_list|()
@@ -477,9 +486,11 @@ literal|'.'
 operator|+
 operator|(
 name|changedGroups
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|""
+else|:
 literal|' '
 operator|+
 name|Localization
@@ -488,8 +499,6 @@ name|lang
 argument_list|(
 literal|"Accepting the change replaces the complete groups tree with the externally modified groups tree."
 argument_list|)
-else|:
-literal|""
 operator|)
 operator|+
 literal|"</html>"

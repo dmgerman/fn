@@ -120,6 +120,16 @@ name|ArrayList
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  *  */
 end_comment
@@ -195,7 +205,7 @@ decl_stmt|;
 DECL|field|changes
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|MetaDataChangeUnit
 argument_list|>
@@ -365,6 +375,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|description ()
+specifier|public
 name|JComponent
 name|description
 parameter_list|()
@@ -401,8 +412,6 @@ name|append
 argument_list|(
 literal|"<br>&nbsp;&nbsp;"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -411,7 +420,6 @@ operator|.
 name|key
 argument_list|)
 expr_stmt|;
-comment|/*switch (unit.type) {                 case ADD:                     sb.append("<p>Added: "+unit.key);                     break;                 case REMOVE:                     sb.append("<p>Removed: "+unit.key);                     break;                 case MODIFY:                     sb.append("<p>Modified: "+unit.key);                     break;             }*/
 block|}
 name|sb
 operator|.
@@ -463,7 +471,8 @@ switch|switch
 condition|(
 name|unit
 operator|.
-name|type
+name|getType
+argument_list|()
 condition|)
 block|{
 case|case
@@ -475,11 +484,13 @@ name|putData
 argument_list|(
 name|unit
 operator|.
-name|key
+name|getKey
+argument_list|()
 argument_list|,
 name|unit
 operator|.
-name|value
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|mdSecondary
@@ -488,11 +499,13 @@ name|putData
 argument_list|(
 name|unit
 operator|.
-name|key
+name|getKey
+argument_list|()
 argument_list|,
 name|unit
 operator|.
-name|value
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
@@ -505,7 +518,8 @@ name|remove
 argument_list|(
 name|unit
 operator|.
-name|key
+name|getKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|mdSecondary
@@ -514,7 +528,8 @@ name|remove
 argument_list|(
 name|unit
 operator|.
-name|key
+name|getKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
@@ -527,11 +542,13 @@ name|putData
 argument_list|(
 name|unit
 operator|.
-name|key
+name|getKey
+argument_list|()
 argument_list|,
 name|unit
 operator|.
-name|value
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|mdSecondary
@@ -540,11 +557,13 @@ name|putData
 argument_list|(
 name|unit
 operator|.
-name|key
+name|getKey
+argument_list|()
 argument_list|,
 name|unit
 operator|.
-name|value
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
@@ -560,16 +579,19 @@ class|class
 name|MetaDataChangeUnit
 block|{
 DECL|field|type
+specifier|private
 specifier|final
 name|int
 name|type
 decl_stmt|;
 DECL|field|key
+specifier|private
 specifier|final
 name|String
 name|key
 decl_stmt|;
 DECL|field|value
+specifier|private
 specifier|final
 name|Vector
 argument_list|<
@@ -612,6 +634,39 @@ name|value
 operator|=
 name|value
 expr_stmt|;
+block|}
+DECL|method|getType ()
+specifier|public
+name|int
+name|getType
+parameter_list|()
+block|{
+return|return
+name|type
+return|;
+block|}
+DECL|method|getKey ()
+specifier|public
+name|String
+name|getKey
+parameter_list|()
+block|{
+return|return
+name|key
+return|;
+block|}
+DECL|method|getValue ()
+specifier|public
+name|Vector
+argument_list|<
+name|String
+argument_list|>
+name|getValue
+parameter_list|()
+block|{
+return|return
+name|value
+return|;
 block|}
 block|}
 block|}
