@@ -176,7 +176,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|Abbreviations
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -657,6 +657,11 @@ specifier|private
 name|JabRefCLI
 name|cli
 decl_stmt|;
+DECL|field|abbreviationLoader
+specifier|private
+name|JournalAbbreviationLoader
+name|abbreviationLoader
+decl_stmt|;
 DECL|method|start (String[] args)
 specifier|public
 name|void
@@ -773,10 +778,11 @@ operator|.
 name|initAllExports
 argument_list|()
 expr_stmt|;
-comment|// Read list(s) of journal names and abbreviations:
-name|Abbreviations
-operator|.
-name|initializeJournalNames
+comment|// Read list(s) of journal names and abbreviations
+name|abbreviationLoader
+operator|=
+operator|new
+name|JournalAbbreviationLoader
 argument_list|(
 name|Globals
 operator|.
@@ -3199,6 +3205,15 @@ index|[
 literal|0
 index|]
 decl_stmt|;
+name|EntryFetchers
+name|fetchers
+init|=
+operator|new
+name|EntryFetchers
+argument_list|(
+name|abbreviationLoader
+argument_list|)
+decl_stmt|;
 name|EntryFetcher
 name|fetcher
 init|=
@@ -3209,9 +3224,7 @@ control|(
 name|EntryFetcher
 name|e
 range|:
-name|EntryFetchers
-operator|.
-name|INSTANCE
+name|fetchers
 operator|.
 name|getEntryFetchers
 argument_list|()
@@ -3288,9 +3301,7 @@ control|(
 name|EntryFetcher
 name|e
 range|:
-name|EntryFetchers
-operator|.
-name|INSTANCE
+name|fetchers
 operator|.
 name|getEntryFetchers
 argument_list|()
@@ -4165,6 +4176,8 @@ operator|new
 name|JabRefFrame
 argument_list|(
 name|this
+argument_list|,
+name|abbreviationLoader
 argument_list|)
 expr_stmt|;
 comment|// Add all loaded databases to the frame:

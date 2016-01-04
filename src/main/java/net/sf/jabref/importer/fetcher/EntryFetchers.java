@@ -48,23 +48,28 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationLoader
+import|;
+end_import
+
 begin_class
 DECL|class|EntryFetchers
 specifier|public
 class|class
 name|EntryFetchers
 block|{
-DECL|field|INSTANCE
-specifier|public
-specifier|static
-specifier|final
-name|EntryFetchers
-name|INSTANCE
-init|=
-operator|new
-name|EntryFetchers
-argument_list|()
-decl_stmt|;
 DECL|field|entryFetchers
 specifier|private
 specifier|final
@@ -79,10 +84,13 @@ name|LinkedList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|EntryFetchers ()
+DECL|method|EntryFetchers (JournalAbbreviationLoader abbreviationLoader)
 specifier|public
 name|EntryFetchers
-parameter_list|()
+parameter_list|(
+name|JournalAbbreviationLoader
+name|abbreviationLoader
+parameter_list|)
 block|{
 name|entryFetchers
 operator|.
@@ -144,7 +152,9 @@ name|add
 argument_list|(
 operator|new
 name|IEEEXploreFetcher
-argument_list|()
+argument_list|(
+name|abbreviationLoader
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|entryFetchers

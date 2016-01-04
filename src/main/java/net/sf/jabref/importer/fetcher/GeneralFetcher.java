@@ -395,9 +395,14 @@ name|EntryFetcher
 argument_list|>
 name|fetchers
 init|=
+operator|new
 name|EntryFetchers
+argument_list|(
+name|frame
 operator|.
-name|INSTANCE
+name|getJournalAbbreviationLoader
+argument_list|()
+argument_list|)
 operator|.
 name|getEntryFetchers
 argument_list|()

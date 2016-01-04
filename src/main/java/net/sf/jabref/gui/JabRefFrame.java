@@ -518,6 +518,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|journals
+operator|.
+name|JournalAbbreviationLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -4802,6 +4818,12 @@ init|=
 name|getNewEntryActions
 argument_list|()
 decl_stmt|;
+DECL|field|abbreviationLoader
+specifier|private
+specifier|final
+name|JournalAbbreviationLoader
+name|abbreviationLoader
+decl_stmt|;
 DECL|method|getNewEntryActions ()
 specifier|private
 name|List
@@ -4900,12 +4922,15 @@ return|return
 name|actions
 return|;
 block|}
-DECL|method|JabRefFrame (JabRef jabRef)
+DECL|method|JabRefFrame (JabRef jabRef, JournalAbbreviationLoader abbreviationLoader)
 specifier|public
 name|JabRefFrame
 parameter_list|(
 name|JabRef
 name|jabRef
+parameter_list|,
+name|JournalAbbreviationLoader
+name|abbreviationLoader
 parameter_list|)
 block|{
 name|this
@@ -4913,6 +4938,17 @@ operator|.
 name|jabRef
 operator|=
 name|jabRef
+expr_stmt|;
+name|this
+operator|.
+name|abbreviationLoader
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|abbreviationLoader
+argument_list|)
 expr_stmt|;
 name|init
 argument_list|()
@@ -13477,6 +13513,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
+DECL|method|getJournalAbbreviationLoader ()
+specifier|public
+name|JournalAbbreviationLoader
+name|getJournalAbbreviationLoader
+parameter_list|()
+block|{
+return|return
+name|abbreviationLoader
+return|;
 block|}
 block|}
 end_class

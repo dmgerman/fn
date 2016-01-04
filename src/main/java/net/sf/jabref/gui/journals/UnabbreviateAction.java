@@ -36,6 +36,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -60,7 +70,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|Abbreviations
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -137,12 +147,21 @@ name|message
 init|=
 literal|""
 decl_stmt|;
-DECL|method|UnabbreviateAction (BasePanel panel)
+DECL|field|abbreviationLoader
+specifier|private
+specifier|final
+name|JournalAbbreviationLoader
+name|abbreviationLoader
+decl_stmt|;
+DECL|method|UnabbreviateAction (BasePanel panel, JournalAbbreviationLoader abbreviationLoader)
 specifier|public
 name|UnabbreviateAction
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|JournalAbbreviationLoader
+name|abbreviationLoader
 parameter_list|)
 block|{
 name|this
@@ -150,6 +169,17 @@ operator|.
 name|panel
 operator|=
 name|panel
+expr_stmt|;
+name|this
+operator|.
+name|abbreviationLoader
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|abbreviationLoader
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -200,9 +230,10 @@ init|=
 operator|new
 name|UndoableUnabbreviator
 argument_list|(
-name|Abbreviations
+name|abbreviationLoader
 operator|.
-name|journalAbbrev
+name|getRepository
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|NamedCompound

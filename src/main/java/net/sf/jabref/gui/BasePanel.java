@@ -7411,6 +7411,11 @@ argument_list|(
 name|this
 argument_list|,
 literal|true
+argument_list|,
+name|frame
+operator|.
+name|getJournalAbbreviationLoader
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7431,6 +7436,11 @@ argument_list|(
 name|this
 argument_list|,
 literal|false
+argument_list|,
+name|frame
+operator|.
+name|getJournalAbbreviationLoader
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7449,6 +7459,11 @@ operator|new
 name|UnabbreviateAction
 argument_list|(
 name|this
+argument_list|,
+name|frame
+operator|.
+name|getJournalAbbreviationLoader
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -10148,6 +10163,11 @@ name|getMetaData
 argument_list|()
 argument_list|,
 name|autoCompletePreferences
+argument_list|,
+name|frame
+operator|.
+name|getJournalAbbreviationLoader
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// ensure that the autocompleters are in sync with entries
@@ -10173,6 +10193,11 @@ operator|new
 name|ContentAutoCompleters
 argument_list|(
 name|autoCompletePreferences
+argument_list|,
+name|frame
+operator|.
+name|getJournalAbbreviationLoader
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
