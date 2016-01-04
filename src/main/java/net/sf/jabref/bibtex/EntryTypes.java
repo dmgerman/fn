@@ -72,7 +72,7 @@ DECL|field|ALL_TYPES
 specifier|private
 specifier|static
 specifier|final
-name|TreeMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -89,7 +89,7 @@ DECL|field|STANDARD_TYPES
 specifier|private
 specifier|static
 specifier|final
-name|TreeMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -111,7 +111,6 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|Globals
 operator|.
 name|prefs
@@ -124,13 +123,13 @@ name|BIBLATEX_MODE
 argument_list|)
 condition|)
 block|{
-name|initBibtexEntryTypes
+name|initBibLatexEntryTypes
 argument_list|()
 expr_stmt|;
 block|}
 else|else
 block|{
-name|initBibLatexEntryTypes
+name|initBibtexEntryTypes
 argument_list|()
 expr_stmt|;
 block|}
