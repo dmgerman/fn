@@ -405,8 +405,8 @@ operator|)
 name|o
 operator|)
 operator|.
-name|timeStamp
-operator|--
+name|decreaseTimeStamp
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Removes a listener from the monitor.      * @param handle String The handle for the listener to remove.      */
@@ -522,7 +522,8 @@ operator|)
 name|o
 operator|)
 operator|.
-name|tmpFile
+name|getTmpFile
+argument_list|()
 return|;
 block|}
 comment|/**      * A class containing the File, the FileUpdateListener and the current time stamp for one file.      */
@@ -618,7 +619,7 @@ block|}
 block|}
 comment|/**          * Check if time stamp or the file size has changed.          * @throws IOException if the file does no longer exist.          * @return boolean true if the file has changed.          */
 DECL|method|hasBeenUpdated ()
-specifier|private
+specifier|public
 name|boolean
 name|hasBeenUpdated
 parameter_list|()
@@ -671,7 +672,7 @@ operator|)
 return|;
 block|}
 DECL|method|updateTimeStamp ()
-specifier|private
+specifier|public
 name|void
 name|updateTimeStamp
 parameter_list|()
@@ -706,7 +707,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|copy ()
-specifier|private
+specifier|public
 name|boolean
 name|copy
 parameter_list|()
@@ -761,7 +762,7 @@ return|;
 block|}
 comment|/**          * Call the listener method to signal that the file has changed.          */
 DECL|method|notifyListener ()
-specifier|private
+specifier|public
 name|void
 name|notifyListener
 parameter_list|()
@@ -789,7 +790,7 @@ expr_stmt|;
 block|}
 comment|/**          * Call the listener method to signal that the file has been removed.          */
 DECL|method|notifyFileRemoved ()
-specifier|private
+specifier|public
 name|void
 name|notifyFileRemoved
 parameter_list|()
@@ -798,6 +799,26 @@ name|listener
 operator|.
 name|fileRemoved
 argument_list|()
+expr_stmt|;
+block|}
+DECL|method|getTmpFile ()
+specifier|public
+name|File
+name|getTmpFile
+parameter_list|()
+block|{
+return|return
+name|tmpFile
+return|;
+block|}
+DECL|method|decreaseTimeStamp ()
+specifier|public
+name|void
+name|decreaseTimeStamp
+parameter_list|()
+block|{
+name|timeStamp
+operator|--
 expr_stmt|;
 block|}
 block|}
