@@ -490,6 +490,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|MATCH_THRESHOLD
 specifier|private
+specifier|static
 specifier|final
 name|double
 name|MATCH_THRESHOLD
