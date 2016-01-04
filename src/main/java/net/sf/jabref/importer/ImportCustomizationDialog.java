@@ -348,6 +348,7 @@ name|frame
 decl_stmt|;
 DECL|field|customImporterTable
 specifier|private
+specifier|final
 name|JTable
 name|customImporterTable
 decl_stmt|;
@@ -463,14 +464,14 @@ argument_list|()
 operator|+
 operator|(
 name|className
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|""
+else|:
 literal|"."
 operator|+
 name|className
-else|:
-literal|""
 operator|)
 expr_stmt|;
 name|path
@@ -518,13 +519,11 @@ name|className
 return|;
 block|}
 comment|/**      * Adds an importer to the model that underlies the custom importers.      *      * @param importer  importer      */
-DECL|method|addOrReplaceImporter (CustomImportList.Importer importer)
+DECL|method|addOrReplaceImporter (CustomImporter importer)
 name|void
 name|addOrReplaceImporter
 parameter_list|(
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 name|importer
 parameter_list|)
 block|{
@@ -559,10 +558,11 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      *      * @param frame_      * @throws HeadlessException      */
-DECL|method|ImportCustomizationDialog (JabRefFrame frame_)
+DECL|method|ImportCustomizationDialog (final JabRefFrame frame_)
 specifier|public
 name|ImportCustomizationDialog
 parameter_list|(
+specifier|final
 name|JabRefFrame
 name|frame_
 parameter_list|)
@@ -630,15 +630,11 @@ name|chosenFileStr
 init|=
 literal|null
 decl_stmt|;
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 name|importer
 init|=
 operator|new
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 argument_list|()
 decl_stmt|;
 name|importer
@@ -1142,14 +1138,29 @@ decl_stmt|;
 if|if
 condition|(
 name|row
-operator|!=
+operator|==
 operator|-
 literal|1
 condition|)
 block|{
-name|CustomImportList
+name|JOptionPane
 operator|.
-name|Importer
+name|showMessageDialog
+argument_list|(
+name|frame
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Please select an importer."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|CustomImporter
 name|importer
 init|=
 operator|(
@@ -1196,10 +1207,19 @@ name|Exception
 name|exc
 parameter_list|)
 block|{
-name|exc
+name|LOGGER
 operator|.
-name|printStackTrace
+name|warn
+argument_list|(
+literal|"Could not instantiate importer "
+operator|+
+name|importer
+operator|.
+name|getName
 argument_list|()
+argument_list|,
+name|exc
+argument_list|)
 expr_stmt|;
 name|JOptionPane
 operator|.
@@ -1228,23 +1248,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Please select an importer."
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}
@@ -1293,10 +1296,27 @@ decl_stmt|;
 if|if
 condition|(
 name|row
-operator|!=
+operator|==
 operator|-
 literal|1
 condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|frame
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Please select an importer."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|customImporterTable
 operator|.
@@ -1345,23 +1365,6 @@ name|customImporterTable
 operator|.
 name|repaint
 argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Please select an importer."
-argument_list|)
-argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1847,9 +1850,7 @@ name|value
 init|=
 literal|null
 decl_stmt|;
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 name|importer
 init|=
 name|getImporter
@@ -1977,18 +1978,14 @@ return|;
 block|}
 DECL|method|getImporter (int rowIndex)
 specifier|public
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 name|getImporter
 parameter_list|(
 name|int
 name|rowIndex
 parameter_list|)
 block|{
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 index|[]
 name|importers
 init|=
@@ -2001,9 +1998,7 @@ operator|.
 name|toArray
 argument_list|(
 operator|new
-name|CustomImportList
-operator|.
-name|Importer
+name|CustomImporter
 index|[
 name|Globals
 operator|.

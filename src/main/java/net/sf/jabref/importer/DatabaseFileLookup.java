@@ -52,6 +52,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Objects
 import|;
 end_import
@@ -179,7 +189,7 @@ decl_stmt|;
 DECL|field|fileToFound
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|File
 argument_list|,

@@ -423,10 +423,24 @@ argument_list|(
 literal|"<div class=\"gs_fl\">"
 argument_list|)
 decl_stmt|;
+DECL|field|INPUT_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|INPUT_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"<input type=([^ ]+) name=([^ ]+) value=([^> ]+)"
+argument_list|)
+decl_stmt|;
 DECL|field|entryLinks
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -590,10 +604,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Error fetching from Google Scholar"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 name|status
 operator|.
@@ -633,11 +651,6 @@ parameter_list|)
 block|{
 name|int
 name|toDownload
-init|=
-literal|0
-decl_stmt|;
-name|int
-name|downloaded
 init|=
 literal|0
 decl_stmt|;
@@ -686,6 +699,11 @@ condition|)
 block|{
 return|return;
 block|}
+name|int
+name|downloaded
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|Map
@@ -871,7 +889,7 @@ name|downloadToString
 argument_list|()
 decl_stmt|;
 comment|// Get the form items and their values from the page:
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1700,24 +1718,10 @@ literal|null
 return|;
 block|}
 block|}
-DECL|field|inputPattern
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|inputPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"<input type=([^ ]+) name=([^ ]+) value=([^> ]+)"
-argument_list|)
-decl_stmt|;
 DECL|method|getFormElements (String page)
 specifier|private
 specifier|static
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1734,7 +1738,7 @@ name|m
 init|=
 name|GoogleScholarFetcher
 operator|.
-name|inputPattern
+name|INPUT_PATTERN
 operator|.
 name|matcher
 argument_list|(

@@ -192,13 +192,14 @@ return|return
 literal|false
 return|;
 block|}
-if|if
-condition|(
+return|return
+operator|(
+operator|(
 name|docin
-operator|!=
+operator|==
 literal|null
-operator|&&
-operator|!
+operator|)
+operator|||
 name|docin
 operator|.
 name|getDocumentElement
@@ -211,20 +212,7 @@ name|contains
 argument_list|(
 literal|"Sources"
 argument_list|)
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-comment|//   		NodeList rootLst = docin.getElementsByTagName("b:Sources");
-comment|//   		if(rootLst.getLength()==0)
-comment|//   			rootLst = docin.getElementsByTagName("Sources");
-comment|//   		if(rootLst.getLength()==0)
-comment|//   			return false;
-comment|// System.out.println(docin.getDocumentElement().getTagName());
-return|return
-literal|true
+operator|)
 return|;
 block|}
 comment|/**      * String used to identify this import filter on the command line.      * @return "msbib"      */

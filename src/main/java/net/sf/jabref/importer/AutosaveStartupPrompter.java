@@ -556,9 +556,26 @@ decl_stmt|;
 if|if
 condition|(
 name|pr
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|message
+operator|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Error opening file '%0'."
+argument_list|,
+name|file
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|message
 operator|=
@@ -584,23 +601,6 @@ argument_list|()
 argument_list|)
 operator|+
 literal|"</html>"
-expr_stmt|;
-block|}
-else|else
-block|{
-name|message
-operator|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Error opening file '%0'."
-argument_list|,
-name|file
-operator|.
-name|getName
-argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 name|JOptionPane
@@ -643,10 +643,7 @@ name|pr
 operator|.
 name|isInvalid
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|Globals
 operator|.
 name|prefs
@@ -670,8 +667,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-comment|/*for (int i = 0; i< loaded.size(); i++) {             ParserResult pr = loaded.get(i);          }*/
 block|}
 block|}
 end_class

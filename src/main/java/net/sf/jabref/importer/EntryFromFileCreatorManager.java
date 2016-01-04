@@ -559,9 +559,26 @@ decl_stmt|;
 if|if
 condition|(
 name|creator
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|importGUIMessages
+operator|.
+name|add
+argument_list|(
+literal|"Problem importing "
+operator|+
+name|f
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|": Unknown filetype."
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|BibEntry
 name|entry
@@ -707,23 +724,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
-else|else
-block|{
-name|importGUIMessages
-operator|.
-name|add
-argument_list|(
-literal|"Problem importing "
-operator|+
-name|f
-operator|.
-name|getPath
-argument_list|()
-operator|+
-literal|": Unknown filetype."
-argument_list|)
-expr_stmt|;
 block|}
 if|if
 condition|(

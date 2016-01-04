@@ -244,6 +244,20 @@ argument_list|(
 literal|"\\(([0-9][0-9][0-9][0-9])\\)\\. [A-Za-z, ]+([0-9]+) pp\\. ([\\w, ]+): ([\\w, ]+)"
 argument_list|)
 decl_stmt|;
+DECL|field|ovidPattern
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|ovidPattern
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"<[0-9]+>"
+argument_list|)
+decl_stmt|;
 comment|//   public static Pattern ovid_pat_inspec= Pattern.compile("Source ([
 comment|// \\w&\\-]+)");
 comment|/**      * Return the name of this import format.      */
@@ -272,20 +286,6 @@ return|return
 literal|"ovid"
 return|;
 block|}
-DECL|field|ovidPattern
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|ovidPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"<[0-9]+>"
-argument_list|)
-decl_stmt|;
 comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
@@ -1509,10 +1509,7 @@ name|equals
 argument_list|(
 name|entryType
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|h
 operator|.
 name|containsKey
@@ -1541,7 +1538,6 @@ literal|"chaptertitle"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|BibEntry
 name|b
@@ -1601,7 +1597,7 @@ name|content
 operator|.
 name|indexOf
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 operator|>
 literal|0

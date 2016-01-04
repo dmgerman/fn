@@ -30,6 +30,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -129,7 +139,7 @@ name|DefaultHandler
 block|{
 DECL|field|bibitems
 specifier|private
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -158,7 +168,7 @@ expr_stmt|;
 block|}
 DECL|method|getItems ()
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>

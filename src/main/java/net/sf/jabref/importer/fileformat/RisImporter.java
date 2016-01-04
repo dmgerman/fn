@@ -354,7 +354,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1491,7 +1491,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|hm
 operator|.
 name|containsKey
@@ -1499,18 +1498,6 @@ argument_list|(
 literal|"keywords"
 argument_list|)
 condition|)
-block|{
-name|hm
-operator|.
-name|put
-argument_list|(
-literal|"keywords"
-argument_list|,
-name|val
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|String
 name|kw
@@ -1532,6 +1519,18 @@ name|kw
 operator|+
 literal|", "
 operator|+
+name|val
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|hm
+operator|.
+name|put
+argument_list|(
+literal|"keywords"
+argument_list|,
 name|val
 argument_list|)
 expr_stmt|;

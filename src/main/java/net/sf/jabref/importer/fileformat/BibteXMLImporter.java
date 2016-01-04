@@ -328,7 +328,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -405,7 +405,7 @@ operator|.
 name|parsers
 operator|.
 name|ParserConfigurationException
-name|e1
+name|e
 parameter_list|)
 block|{
 name|LOGGER
@@ -414,14 +414,14 @@ name|error
 argument_list|(
 literal|"Error with XML parser configuration"
 argument_list|,
-name|e1
+name|e
 argument_list|)
 expr_stmt|;
 name|status
 operator|.
 name|showMessage
 argument_list|(
-name|e1
+name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
@@ -437,7 +437,7 @@ operator|.
 name|sax
 operator|.
 name|SAXException
-name|e2
+name|e
 parameter_list|)
 block|{
 name|LOGGER
@@ -446,14 +446,14 @@ name|error
 argument_list|(
 literal|"Error during XML parsing"
 argument_list|,
-name|e2
+name|e
 argument_list|)
 expr_stmt|;
 name|status
 operator|.
 name|showMessage
 argument_list|(
-name|e2
+name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
@@ -462,12 +462,8 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
-name|e3
+name|e
 parameter_list|)
 block|{
 name|LOGGER
@@ -476,14 +472,14 @@ name|error
 argument_list|(
 literal|"Error during file import"
 argument_list|,
-name|e3
+name|e
 argument_list|)
 expr_stmt|;
 name|status
 operator|.
 name|showMessage
 argument_list|(
-name|e3
+name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()

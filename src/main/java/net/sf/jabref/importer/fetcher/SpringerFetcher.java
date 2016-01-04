@@ -519,7 +519,7 @@ break|break;
 block|}
 catch|catch
 parameter_list|(
-name|RuntimeException
+name|NumberFormatException
 name|ex
 parameter_list|)
 block|{

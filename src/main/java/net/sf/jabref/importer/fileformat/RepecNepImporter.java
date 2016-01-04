@@ -208,7 +208,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|recognizedFields
+DECL|field|RECOGNIZED_FIELDS
 specifier|private
 specifier|static
 specifier|final
@@ -216,7 +216,7 @@ name|Collection
 argument_list|<
 name|String
 argument_list|>
-name|recognizedFields
+name|RECOGNIZED_FIELDS
 init|=
 name|Arrays
 operator|.
@@ -353,10 +353,12 @@ name|stream
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|String
+name|StringBuffer
 name|startOfMessage
 init|=
-literal|""
+operator|new
+name|StringBuffer
+argument_list|()
 decl_stmt|;
 name|String
 name|tmpLine
@@ -390,8 +392,11 @@ operator|++
 control|)
 block|{
 name|startOfMessage
-operator|+=
+operator|.
+name|append
+argument_list|(
 name|tmpLine
+argument_list|)
 expr_stmt|;
 name|tmpLine
 operator|=
@@ -404,12 +409,18 @@ block|}
 return|return
 name|startOfMessage
 operator|.
+name|toString
+argument_list|()
+operator|.
 name|contains
 argument_list|(
 literal|"NEP: New Economics Papers"
 argument_list|)
 operator|||
 name|startOfMessage
+operator|.
+name|toString
+argument_list|()
 operator|.
 name|contains
 argument_list|(
@@ -525,15 +536,19 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|String
+name|StringBuffer
 name|result
 init|=
+operator|new
+name|StringBuffer
+argument_list|(
 name|this
 operator|.
 name|lastLine
 operator|.
 name|trim
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|readLine
 argument_list|()
@@ -566,7 +581,7 @@ name|startsWithKeyword
 argument_list|(
 name|RepecNepImporter
 operator|.
-name|recognizedFields
+name|RECOGNIZED_FIELDS
 argument_list|)
 operator|&&
 operator|!
@@ -575,7 +590,9 @@ argument_list|()
 condition|)
 block|{
 name|result
-operator|+=
+operator|.
+name|append
+argument_list|(
 name|this
 operator|.
 name|lastLine
@@ -598,6 +615,7 @@ name|lastLine
 operator|.
 name|trim
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|readLine
 argument_list|()
@@ -605,6 +623,9 @@ expr_stmt|;
 block|}
 return|return
 name|result
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 comment|/**      * Implements grammar rule "TitleString".      *      * @param be      * @throws IOException      */
@@ -708,7 +729,7 @@ name|startsWithKeyword
 argument_list|(
 name|RepecNepImporter
 operator|.
-name|recognizedFields
+name|RECOGNIZED_FIELDS
 argument_list|)
 condition|)
 block|{
@@ -943,7 +964,6 @@ condition|)
 block|{
 name|authors
 operator|+=
-operator|!
 literal|""
 operator|.
 name|equals
@@ -951,10 +971,10 @@ argument_list|(
 name|authors
 argument_list|)
 condition|?
-literal|" and "
-operator|+
 name|author
 else|:
+literal|" and "
+operator|+
 name|author
 expr_stmt|;
 block|}
@@ -967,7 +987,6 @@ condition|)
 block|{
 name|institutions
 operator|+=
-operator|!
 literal|""
 operator|.
 name|equals
@@ -975,10 +994,10 @@ argument_list|(
 name|institutions
 argument_list|)
 condition|?
-literal|" and "
-operator|+
 name|institution
 else|:
+literal|" and "
+operator|+
 name|institution
 expr_stmt|;
 block|}
@@ -1129,7 +1148,7 @@ name|startsWithKeyword
 argument_list|(
 name|RepecNepImporter
 operator|.
-name|recognizedFields
+name|RECOGNIZED_FIELDS
 argument_list|)
 operator|||
 literal|""
@@ -1251,41 +1270,16 @@ argument_list|(
 literal|"[,;]"
 argument_list|)
 decl_stmt|;
-name|String
-name|keywordStr
-init|=
-literal|""
-decl_stmt|;
-for|for
-control|(
-name|String
-name|keyword1
-range|:
-name|keywords
-control|)
-block|{
-name|keywordStr
-operator|+=
-literal|" '"
-operator|+
-name|keyword1
-operator|.
-name|trim
-argument_list|()
-operator|+
-literal|"'"
-expr_stmt|;
-block|}
 name|be
 operator|.
-name|setField
+name|addKeywords
 argument_list|(
-literal|"keywords"
-argument_list|,
-name|keywordStr
+name|Arrays
 operator|.
-name|trim
-argument_list|()
+name|asList
+argument_list|(
+name|keywords
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// parse JEL field
@@ -1416,14 +1410,14 @@ operator|.
 name|setTime
 argument_list|(
 name|date
-operator|!=
+operator|==
 literal|null
 condition|?
-name|date
-else|:
 operator|new
 name|Date
 argument_list|()
+else|:
+name|date
 argument_list|)
 expr_stmt|;
 name|be
@@ -1760,7 +1754,7 @@ name|startsWithKeyword
 argument_list|(
 name|RepecNepImporter
 operator|.
-name|recognizedFields
+name|RECOGNIZED_FIELDS
 argument_list|)
 condition|)
 block|{
@@ -1795,7 +1789,7 @@ name|startsWithKeyword
 argument_list|(
 name|RepecNepImporter
 operator|.
-name|recognizedFields
+name|RECOGNIZED_FIELDS
 argument_list|)
 condition|)
 block|{

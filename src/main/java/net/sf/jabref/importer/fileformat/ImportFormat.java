@@ -292,11 +292,11 @@ name|isCustomImporter
 expr_stmt|;
 block|}
 comment|/**      * Wether this importer is a custom importer.      *       *<p>Custom importers will have precedence over built-in importers.</p>      *       * @return  wether this is a custom importer      */
-DECL|method|getIsCustomImporter ()
+DECL|method|isCustomImporter ()
 specifier|public
 specifier|final
 name|boolean
-name|getIsCustomImporter
+name|isCustomImporter
 parameter_list|()
 block|{
 return|return
@@ -350,10 +350,10 @@ operator|)
 name|o
 operator|)
 operator|.
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 operator|==
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 operator|&&
 operator|(
@@ -404,12 +404,12 @@ name|result
 decl_stmt|;
 if|if
 condition|(
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 operator|==
 name|importer
 operator|.
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 condition|)
 block|{
@@ -431,7 +431,7 @@ else|else
 block|{
 name|result
 operator|=
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 condition|?
 literal|1

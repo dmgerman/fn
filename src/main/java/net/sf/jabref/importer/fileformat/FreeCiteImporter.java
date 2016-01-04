@@ -471,13 +471,6 @@ parameter_list|)
 block|{
 comment|// e.printStackTrace();
 block|}
-name|String
-name|data
-init|=
-literal|"citation="
-operator|+
-name|urlencodedCitation
-decl_stmt|;
 comment|// Send the request
 name|URL
 name|url
@@ -509,10 +502,14 @@ name|MalformedURLException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Bad URL"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 return|return
 literal|null
@@ -524,10 +521,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not download"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 return|return
 literal|null
@@ -562,6 +563,13 @@ operator|.
 name|getOutputStream
 argument_list|()
 argument_list|)
+decl_stmt|;
+name|String
+name|data
+init|=
+literal|"citation="
+operator|+
+name|urlencodedCitation
 decl_stmt|;
 comment|// write parameters
 name|writer
@@ -1129,7 +1137,7 @@ name|noteSB
 operator|.
 name|append
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|noteSB
@@ -1182,9 +1190,19 @@ decl_stmt|;
 if|if
 condition|(
 name|note
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|note
+operator|=
+name|noteSB
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+block|}
+else|else
 block|{
 comment|// "note" could have been set during the parsing as FreeCite also returns "note"
 name|note
@@ -1205,16 +1223,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|note
-operator|=
-name|noteSB
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 block|}
 name|e
@@ -1290,10 +1298,14 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not parse"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 return|return
 literal|null

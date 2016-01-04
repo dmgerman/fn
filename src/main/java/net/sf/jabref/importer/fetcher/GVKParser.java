@@ -691,9 +691,16 @@ decl_stmt|;
 if|if
 condition|(
 name|author
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|author
+operator|=
+literal|""
+expr_stmt|;
+block|}
+else|else
 block|{
 name|author
 operator|=
@@ -703,13 +710,6 @@ name|concat
 argument_list|(
 literal|" and "
 argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|author
-operator|=
-literal|""
 expr_stmt|;
 block|}
 name|author
@@ -760,9 +760,16 @@ decl_stmt|;
 if|if
 condition|(
 name|author
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|author
+operator|=
+literal|""
+expr_stmt|;
+block|}
+else|else
 block|{
 name|author
 operator|=
@@ -772,13 +779,6 @@ name|concat
 argument_list|(
 literal|" and "
 argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|author
-operator|=
-literal|""
 expr_stmt|;
 block|}
 name|author
@@ -829,9 +829,16 @@ decl_stmt|;
 if|if
 condition|(
 name|editor
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|editor
+operator|=
+literal|""
+expr_stmt|;
+block|}
+else|else
 block|{
 name|editor
 operator|=
@@ -841,13 +848,6 @@ name|concat
 argument_list|(
 literal|" and "
 argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|editor
-operator|=
-literal|""
 expr_stmt|;
 block|}
 name|editor
@@ -1183,6 +1183,7 @@ name|tag
 argument_list|)
 condition|)
 block|{
+specifier|final
 name|String
 name|isbn_10
 init|=
@@ -1193,6 +1194,7 @@ argument_list|,
 name|datafield
 argument_list|)
 decl_stmt|;
+specifier|final
 name|String
 name|isbn_13
 init|=
@@ -2258,11 +2260,6 @@ name|Element
 name|e
 parameter_list|)
 block|{
-name|Element
-name|result
-init|=
-literal|null
-decl_stmt|;
 name|NodeList
 name|children
 init|=
@@ -2344,7 +2341,7 @@ block|}
 block|}
 block|}
 return|return
-name|result
+literal|null
 return|;
 block|}
 DECL|method|getChildren (String name, Element e)

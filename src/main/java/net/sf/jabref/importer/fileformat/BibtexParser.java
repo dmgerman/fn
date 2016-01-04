@@ -271,7 +271,7 @@ name|database
 decl_stmt|;
 DECL|field|entryTypes
 specifier|private
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1017,12 +1017,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parseJabRefComment (HashMap<String, String> meta)
+DECL|method|parseJabRefComment (Map<String, String> meta)
 specifier|private
 name|void
 name|parseJabRefComment
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -2439,7 +2439,7 @@ name|value
 operator|.
 name|append
 argument_list|(
-literal|"#"
+literal|'#'
 argument_list|)
 operator|.
 name|append
@@ -2449,7 +2449,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"#"
+literal|'#'
 argument_list|)
 expr_stmt|;
 block|}
@@ -4132,19 +4132,9 @@ decl_stmt|;
 if|if
 condition|(
 name|type
-operator|!=
+operator|==
 literal|null
 condition|)
-block|{
-name|bibEntry
-operator|.
-name|setType
-argument_list|(
-name|type
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|parserResult
 operator|.
@@ -4167,6 +4157,16 @@ name|bibEntry
 operator|.
 name|getCiteKey
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|bibEntry
+operator|.
+name|setType
+argument_list|(
+name|type
 argument_list|)
 expr_stmt|;
 block|}
