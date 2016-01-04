@@ -461,12 +461,6 @@ name|String
 name|extensionRegExp
 parameter_list|)
 block|{
-name|List
-argument_list|<
-name|File
-argument_list|>
-name|res
-decl_stmt|;
 name|File
 name|root
 decl_stmt|;
@@ -510,8 +504,12 @@ return|return
 literal|null
 return|;
 block|}
+name|List
+argument_list|<
+name|File
+argument_list|>
 name|res
-operator|=
+init|=
 name|RegExpFileSearch
 operator|.
 name|findFile
@@ -524,7 +522,7 @@ name|file
 argument_list|,
 name|extensionRegExp
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|!

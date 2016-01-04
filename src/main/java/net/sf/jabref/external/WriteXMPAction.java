@@ -798,7 +798,8 @@ block|}
 block|}
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -823,7 +824,8 @@ operator|++
 expr_stmt|;
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -864,7 +866,8 @@ operator|++
 expr_stmt|;
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -882,7 +885,8 @@ argument_list|)
 expr_stmt|;
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -914,7 +918,8 @@ argument_list|)
 expr_stmt|;
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -942,7 +947,8 @@ parameter_list|)
 block|{
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -967,7 +973,8 @@ argument_list|)
 expr_stmt|;
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -992,12 +999,14 @@ if|if
 condition|(
 name|optDiag
 operator|.
-name|canceled
+name|isCanceled
+argument_list|()
 condition|)
 block|{
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -1018,7 +1027,8 @@ block|}
 block|}
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -1116,6 +1126,7 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|okButton
+specifier|private
 specifier|final
 name|JButton
 name|okButton
@@ -1132,6 +1143,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancelButton
+specifier|private
 specifier|final
 name|JButton
 name|cancelButton
@@ -1148,10 +1160,12 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|canceled
+specifier|private
 name|boolean
 name|canceled
 decl_stmt|;
 DECL|field|progressArea
+specifier|private
 specifier|final
 name|JTextArea
 name|progressArea
@@ -1607,6 +1621,26 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|isCanceled ()
+specifier|public
+name|boolean
+name|isCanceled
+parameter_list|()
+block|{
+return|return
+name|canceled
+return|;
+block|}
+DECL|method|getProgressArea ()
+specifier|public
+name|JTextArea
+name|getProgressArea
+parameter_list|()
+block|{
+return|return
+name|progressArea
+return|;
 block|}
 block|}
 block|}

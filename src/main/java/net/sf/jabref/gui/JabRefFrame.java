@@ -6692,7 +6692,7 @@ name|this
 argument_list|,
 name|PushToApplications
 operator|.
-name|applications
+name|APPLICATIONS
 argument_list|)
 expr_stmt|;
 name|fillMenu
