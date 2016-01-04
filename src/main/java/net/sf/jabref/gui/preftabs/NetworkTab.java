@@ -1381,7 +1381,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|validAuthenticationSetting
 condition|)
 block|{
@@ -1395,7 +1394,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Please specify both username and password"
+literal|"Please specify both hostname and port"
 argument_list|)
 argument_list|,
 name|Localization
@@ -1423,7 +1422,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Please specify both hostname and port"
+literal|"Please specify both username and password"
 argument_list|)
 argument_list|,
 name|Localization
