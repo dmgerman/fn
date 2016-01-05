@@ -137,14 +137,10 @@ literal|"review"
 argument_list|)
 expr_stmt|;
 comment|// the file field should not be formatted, therefore we treat it as a multi line field
-name|multiLineFields
-operator|.
-name|addAll
-argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
+name|String
+index|[]
+name|nonWrappableFields
+init|=
 name|Globals
 operator|.
 name|prefs
@@ -155,9 +151,27 @@ name|JabRefPreferences
 operator|.
 name|NON_WRAPPABLE_FIELDS
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|nonWrappableFields
+operator|!=
+literal|null
+condition|)
+block|{
+name|multiLineFields
+operator|.
+name|addAll
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|nonWrappableFields
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Performs the reformatting      *      * @param content     StringBuffer containing the field to format. bibtexField contains field name according to field      * @param bibtexField      * @return The formatted field content. The StringBuffer returned may or may not be the same as the argument given.      */
 DECL|method|format (StringBuffer content, String bibtexField)
