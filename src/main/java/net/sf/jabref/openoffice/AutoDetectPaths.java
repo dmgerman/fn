@@ -902,6 +902,7 @@ operator|.
 name|isDirectory
 argument_list|()
 operator|&&
+operator|(
 literal|"OpenOffice.org.app"
 operator|.
 name|equals
@@ -911,6 +912,17 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+operator|||
+literal|"LibreOffice.app"
+operator|.
+name|equals
+argument_list|(
+name|file
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|)
 condition|)
 block|{
 name|rootDir
