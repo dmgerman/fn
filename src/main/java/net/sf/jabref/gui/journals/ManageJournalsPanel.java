@@ -2695,7 +2695,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Store the list of external files set up:
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
