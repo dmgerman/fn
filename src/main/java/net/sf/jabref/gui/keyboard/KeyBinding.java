@@ -246,6 +246,21 @@ argument_list|,
 literal|"ctrl shift alt K"
 argument_list|)
 block|,
+DECL|enumConstant|COPY_PREVIEW
+name|COPY_PREVIEW
+argument_list|(
+literal|"Copy preview"
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Copy preview"
+argument_list|)
+argument_list|,
+literal|"ctrl shift C"
+argument_list|)
+block|,
 DECL|enumConstant|CUT
 name|CUT
 argument_list|(
