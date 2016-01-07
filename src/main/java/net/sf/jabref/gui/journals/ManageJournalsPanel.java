@@ -2176,15 +2176,17 @@ name|void
 name|setupExternals
 parameter_list|()
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|externalFiles
 init|=
 name|Globals
 operator|.
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -2193,19 +2195,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|externalFiles
-operator|==
-literal|null
-operator|)
-operator|||
-operator|(
 name|externalFiles
 operator|.
-name|length
-operator|==
-literal|0
-operator|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|ExternalFileEntry
@@ -2251,8 +2244,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//efe = new ExternalFileEntry();
-comment|//externals.add(efe);
 block|}
 DECL|method|setupUserTable ()
 specifier|private

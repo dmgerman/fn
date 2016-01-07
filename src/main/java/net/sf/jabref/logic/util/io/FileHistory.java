@@ -26,7 +26,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|LinkedList
 import|;
 end_import
 
@@ -36,7 +36,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
+name|List
 import|;
 end_import
 
@@ -101,13 +101,15 @@ name|prefs
 operator|=
 name|prefs
 expr_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|old
 init|=
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -125,12 +127,7 @@ name|history
 operator|.
 name|addAll
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|old
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -12380,13 +12380,15 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|names
 init|=
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.

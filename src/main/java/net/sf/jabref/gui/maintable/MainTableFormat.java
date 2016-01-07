@@ -597,15 +597,17 @@ name|EXTRA_FILE_COLUMNS
 argument_list|)
 condition|)
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|desiredColumns
 init|=
 name|Globals
 operator|.
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -636,15 +638,17 @@ block|}
 block|}
 comment|// Add 'normal' bibtex fields as configured in the preferences
 comment|// Read table columns from prefs:
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|colSettings
 init|=
 name|Globals
 operator|.
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.

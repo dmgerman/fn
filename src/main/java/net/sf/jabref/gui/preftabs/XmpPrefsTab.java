@@ -56,7 +56,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
+name|List
 import|;
 end_import
 
@@ -1069,8 +1069,10 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|names
 init|=
 name|JabRefPreferences
@@ -1078,19 +1080,17 @@ operator|.
 name|getInstance
 argument_list|()
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
 name|XMP_PRIVACY_FILTERS
 argument_list|)
 decl_stmt|;
-name|Collections
+name|tableRows
 operator|.
 name|addAll
 argument_list|(
-name|tableRows
-argument_list|,
 name|names
 argument_list|)
 expr_stmt|;

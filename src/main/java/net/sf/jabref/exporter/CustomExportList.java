@@ -703,11 +703,12 @@ name|from
 decl_stmt|;
 while|while
 condition|(
+operator|!
 name|Globals
 operator|.
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -715,8 +716,9 @@ name|CUSTOM_EXPORT_FORMAT
 operator|+
 name|i
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|Globals

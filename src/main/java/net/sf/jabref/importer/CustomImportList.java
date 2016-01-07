@@ -357,11 +357,13 @@ name|i
 init|=
 literal|0
 init|;
+operator|!
+operator|(
 name|Globals
 operator|.
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -369,8 +371,10 @@ name|CUSTOM_IMPORT_FORMAT
 operator|+
 name|i
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
 condition|;
 name|i
 operator|++
