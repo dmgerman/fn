@@ -467,6 +467,14 @@ argument_list|()
 operator|.
 name|isEmpty
 argument_list|()
+operator|||
+operator|!
+name|entry1
+operator|.
+name|contains
+argument_list|(
+literal|"-"
+argument_list|)
 condition|)
 block|{
 continue|continue;
@@ -532,21 +540,6 @@ name|j
 operator|++
 control|)
 block|{
-if|if
-condition|(
-literal|""
-operator|.
-name|equals
-argument_list|(
-name|fields
-index|[
-name|j
-index|]
-argument_list|)
-condition|)
-block|{
-continue|continue;
-block|}
 name|StringBuilder
 name|current
 init|=
@@ -597,15 +590,10 @@ operator|<=
 literal|4
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"aaa"
-argument_list|)
+name|j
+operator|++
 expr_stmt|;
+continue|continue;
 block|}
 if|if
 condition|(
@@ -756,7 +744,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-literal|"BOOK"
+literal|"book"
 operator|.
 name|equals
 argument_list|(
@@ -837,7 +825,7 @@ argument_list|(
 name|val
 argument_list|)
 operator|||
-literal|"consensus development conference, NIH"
+literal|"consensus development conference, nih"
 operator|.
 name|equals
 argument_list|(
@@ -1757,14 +1745,9 @@ operator|.
 name|getValue
 argument_list|()
 decl_stmt|;
+comment|// content can never be null so only check if content is empty
 if|if
 condition|(
-operator|(
-name|content
-operator|==
-literal|null
-operator|)
-operator|||
 name|content
 operator|.
 name|trim
