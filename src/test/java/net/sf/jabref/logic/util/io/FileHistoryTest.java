@@ -30,6 +30,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -81,8 +91,10 @@ name|JabRefPreferences
 name|prefs
 decl_stmt|;
 DECL|field|oldFileNames
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|oldFileNames
 decl_stmt|;
 annotation|@
@@ -106,7 +118,7 @@ name|oldFileNames
 operator|=
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -124,7 +136,7 @@ parameter_list|()
 block|{
 name|prefs
 operator|.
-name|putStringArray
+name|putStringList
 argument_list|(
 name|JabRefPreferences
 operator|.

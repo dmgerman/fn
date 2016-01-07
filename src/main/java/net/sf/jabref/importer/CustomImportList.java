@@ -22,6 +22,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|TreeSet
 import|;
 end_import
@@ -163,18 +173,22 @@ name|i
 init|=
 literal|0
 decl_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|s
 decl_stmt|;
 while|while
 condition|(
+operator|!
+operator|(
 operator|(
 name|s
 operator|=
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -183,8 +197,10 @@ operator|+
 name|i
 argument_list|)
 operator|)
-operator|!=
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
 condition|)
 block|{
 try|try
@@ -214,9 +230,11 @@ argument_list|(
 literal|"Could not load "
 operator|+
 name|s
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 operator|+
 literal|" from preferences. Will ignore."
 argument_list|,
@@ -325,7 +343,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|putStringArray
+name|putStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -338,7 +356,7 @@ index|[
 name|i
 index|]
 operator|.
-name|getAsStringArray
+name|getAsStringList
 argument_list|()
 argument_list|)
 expr_stmt|;
