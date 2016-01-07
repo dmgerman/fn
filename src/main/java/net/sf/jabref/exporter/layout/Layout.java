@@ -179,7 +179,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|Layout (List<StringInt> parsedEntries, String classPrefix)
+DECL|method|Layout (List<StringInt> parsedEntries)
 specifier|public
 name|Layout
 parameter_list|(
@@ -188,9 +188,6 @@ argument_list|<
 name|StringInt
 argument_list|>
 name|parsedEntries
-parameter_list|,
-name|String
-name|classPrefix
 parameter_list|)
 block|{
 name|List
@@ -338,8 +335,6 @@ name|LayoutEntry
 argument_list|(
 name|blockEntries
 argument_list|,
-name|classPrefix
-argument_list|,
 name|LayoutHelper
 operator|.
 name|IS_FIELD_START
@@ -466,8 +461,6 @@ name|LayoutEntry
 argument_list|(
 name|blockEntries
 argument_list|,
-name|classPrefix
-argument_list|,
 name|LayoutHelper
 operator|.
 name|IS_GROUP_START
@@ -531,8 +524,6 @@ operator|new
 name|LayoutEntry
 argument_list|(
 name|parsedEntry
-argument_list|,
-name|classPrefix
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -329,15 +329,6 @@ name|NONE
 init|=
 literal|"_non__"
 decl_stmt|;
-DECL|field|FORMATTER_PACKAGE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|FORMATTER_PACKAGE
-init|=
-literal|"net.sf.jabref.exporter.layout.format."
-decl_stmt|;
 comment|// In the main program, this field is initialized in JabRef.java
 comment|// Each test case initializes this field if required
 DECL|field|prefs

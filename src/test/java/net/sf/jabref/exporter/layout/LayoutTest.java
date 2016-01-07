@@ -340,11 +340,7 @@ name|sr
 argument_list|)
 operator|.
 name|getLayoutFromText
-argument_list|(
-name|Globals
-operator|.
-name|FORMATTER_PACKAGE
-argument_list|)
+argument_list|()
 decl_stmt|;
 return|return
 name|layout
