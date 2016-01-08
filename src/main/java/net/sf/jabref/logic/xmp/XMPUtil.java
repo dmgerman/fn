@@ -2235,7 +2235,7 @@ name|USE_XMP_PRIVACY_FILTER
 argument_list|)
 decl_stmt|;
 comment|// Fields for which not to write XMP data later on:
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2245,18 +2245,13 @@ operator|new
 name|TreeSet
 argument_list|<>
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
 name|XMP_PRIVACY_FILTERS
-argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3064,7 +3059,7 @@ name|USE_XMP_PRIVACY_FILTER
 argument_list|)
 decl_stmt|;
 comment|// Fields for which not to write XMP data later on:
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3074,18 +3069,13 @@ operator|new
 name|TreeSet
 argument_list|<>
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
 name|XMP_PRIVACY_FILTERS
-argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;

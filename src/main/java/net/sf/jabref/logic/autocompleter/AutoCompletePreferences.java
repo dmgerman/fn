@@ -24,6 +24,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -362,15 +372,17 @@ expr_stmt|;
 block|}
 DECL|method|getCompleteNames ()
 specifier|public
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getCompleteNames
 parameter_list|()
 block|{
 return|return
 name|preferences
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|PREF_COMPLETE_FIELDS
 argument_list|)

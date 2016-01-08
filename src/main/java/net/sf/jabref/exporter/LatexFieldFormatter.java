@@ -96,6 +96,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Vector
 import|;
 end_import
@@ -152,8 +162,10 @@ decl_stmt|;
 DECL|field|doNotResolveStringsFors
 specifier|private
 specifier|final
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|doNotResolveStringsFors
 decl_stmt|;
 DECL|field|parser
@@ -230,7 +242,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -725,18 +737,12 @@ name|resolveStringsAllFields
 condition|)
 block|{
 comment|// Resolve strings for all fields except some:
-name|String
-index|[]
-name|exceptions
-init|=
-name|doNotResolveStringsFors
-decl_stmt|;
 for|for
 control|(
 name|String
 name|exception
 range|:
-name|exceptions
+name|doNotResolveStringsFors
 control|)
 block|{
 if|if

@@ -3866,15 +3866,17 @@ operator|)
 condition|)
 block|{
 comment|// How to handle errors in the databases to open?
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|names
 init|=
 name|Globals
 operator|.
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
