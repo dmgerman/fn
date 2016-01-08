@@ -24,38 +24,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -106,13 +74,33 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
 operator|.
-name|filechooser
+name|jabref
 operator|.
-name|FileFilter
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -141,6 +129,18 @@ operator|.
 name|logging
 operator|.
 name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|filechooser
+operator|.
+name|FileFilter
 import|;
 end_import
 
@@ -207,7 +207,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for export formats based on templates.  *  */
+comment|/**  * Base class for export formats based on templates.  */
 end_comment
 
 begin_class
@@ -285,7 +285,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param displayName      *            Name to display to the user.      * @param consoleName      *            Name to call this format in the console.      * @param lfFileName      *            Name of the main layout file.      * @param directory      *            Directory in which to find the layout file.      * @param extension      *            Should contain the . (for instance .txt).      */
+comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param displayName Name to display to the user.      * @param consoleName Name to call this format in the console.      * @param lfFileName  Name of the main layout file.      * @param directory   Directory in which to find the layout file.      * @param extension   Should contain the . (for instance .txt).      */
 DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, String extension)
 specifier|public
 name|ExportFormat
@@ -337,14 +337,14 @@ operator|=
 name|extension
 expr_stmt|;
 block|}
-comment|/** Empty default constructor for subclasses */
+comment|/**      * Empty default constructor for subclasses      */
 DECL|method|ExportFormat ()
 name|ExportFormat
 parameter_list|()
 block|{
 comment|// intentionally empty
 block|}
-comment|/**      * Indicate whether this is a custom export. A custom export looks for its      * layout files using a normal file path, while a built-in export looks in      * the classpath.      *      * @param custom      *            true to indicate a custom export format.      */
+comment|/**      * Indicate whether this is a custom export. A custom export looks for its      * layout files using a normal file path, while a built-in export looks in      * the classpath.      *      * @param custom true to indicate a custom export format.      */
 DECL|method|setCustomExport (boolean custom)
 specifier|public
 name|void
@@ -387,7 +387,7 @@ return|return
 name|displayName
 return|;
 block|}
-comment|/**      * Set an encoding which will be used in preference to the default value      * obtained from the basepanel.      * @param encoding The name of the encoding to use.      */
+comment|/**      * Set an encoding which will be used in preference to the default value      * obtained from the basepanel.      *      * @param encoding The name of the encoding to use.      */
 DECL|method|setEncoding (Charset encoding)
 specifier|public
 name|void
@@ -404,7 +404,7 @@ operator|=
 name|encoding
 expr_stmt|;
 block|}
-comment|/**      * This method should return a reader from which the given layout file can      * be read.      *      * This standard implementation of this method will use the      * {@link FileActions#getReader(String)} method.      *      * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *      * @param filename      *            the filename      * @throws IOException      *             if the reader could not be created      *      * @return a newly created reader      */
+comment|/**      * This method should return a reader from which the given layout file can      * be read.      *<p>      * This standard implementation of this method will use the      * {@link FileActions#getReader(String)} method.      *<p>      * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *      * @param filename the filename      * @return a newly created reader      * @throws IOException if the reader could not be created      */
 DECL|method|getReader (String filename)
 specifier|private
 name|Reader
@@ -460,10 +460,10 @@ name|filename
 argument_list|)
 return|;
 block|}
-comment|/**      * Perform the export of {@code database}.      *      * @param database      *            The database to export from.      * @param metaData      *            The database's meta data.      * @param file      *            the file to write the resulting export to      * @param encoding      *            The encoding of the database      * @param entryIds      *            Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      *      * @throws IOException      *             if a problem occurred while trying to write to {@code writer}      *             or read from required resources.      * @throws Exception      *             if any other error occurred during export.      *      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibDatabase,      *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set)      */
+comment|/**      * Perform the export of {@code database}.      *      * @param database   The database to export from.      * @param metaData   The database's meta data.      * @param file       the file to write the resulting export to      * @param encoding   The encoding of the database      * @param entryIds   Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      * @throws IOException if a problem occurred while trying to write to {@code writer}      *                     or read from required resources.      * @throws Exception   if any other error occurred during export.      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibDatabase, MetaData, String, Charset, Set)      */
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset enc, Set<String> entryIds)
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> entryIds)
 specifier|public
 name|void
 name|performExport
@@ -482,7 +482,7 @@ name|file
 parameter_list|,
 specifier|final
 name|Charset
-name|enc
+name|encoding
 parameter_list|,
 name|Set
 argument_list|<
@@ -560,7 +560,7 @@ name|ss
 operator|=
 name|getSaveSession
 argument_list|(
-name|enc
+name|encoding
 argument_list|,
 name|outFile
 argument_list|)
@@ -666,7 +666,7 @@ name|doLayout
 argument_list|(
 name|database
 argument_list|,
-name|enc
+name|encoding
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1106,7 +1106,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * See if there is a name formatter file bundled with this export format. If so, read      * all the name formatters so they can be used by the filter layouts.      * @param lfFileName The layout filename.      */
+comment|/**      * See if there is a name formatter file bundled with this export format. If so, read      * all the name formatters so they can be used by the filter layouts.      *      * @param lfFileName The layout filename.      */
 DECL|method|readFormatterFile (String lfFileName)
 specifier|private
 specifier|static

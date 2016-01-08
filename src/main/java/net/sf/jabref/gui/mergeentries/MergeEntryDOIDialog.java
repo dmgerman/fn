@@ -98,6 +98,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|journals
+operator|.
+name|JournalAbbreviationLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -535,7 +551,7 @@ name|init
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Sets up the dialog      *      * @param selected Selected BibtexEntries      */
+comment|/**      * Sets up the dialog      */
 DECL|method|init ()
 specifier|private
 name|void

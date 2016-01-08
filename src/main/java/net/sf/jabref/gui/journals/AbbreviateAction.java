@@ -26,11 +26,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|JournalAbbreviationLoader
+name|Globals
 import|;
 end_import
 
@@ -143,13 +139,7 @@ specifier|final
 name|boolean
 name|iso
 decl_stmt|;
-DECL|field|abbreviationLoader
-specifier|private
-specifier|final
-name|JournalAbbreviationLoader
-name|abbreviationLoader
-decl_stmt|;
-DECL|method|AbbreviateAction (BasePanel panel, boolean iso, JournalAbbreviationLoader abbreviationLoader)
+DECL|method|AbbreviateAction (BasePanel panel, boolean iso)
 specifier|public
 name|AbbreviateAction
 parameter_list|(
@@ -158,9 +148,6 @@ name|panel
 parameter_list|,
 name|boolean
 name|iso
-parameter_list|,
-name|JournalAbbreviationLoader
-name|abbreviationLoader
 parameter_list|)
 block|{
 name|this
@@ -174,12 +161,6 @@ operator|.
 name|iso
 operator|=
 name|iso
-expr_stmt|;
-name|this
-operator|.
-name|abbreviationLoader
-operator|=
-name|abbreviationLoader
 expr_stmt|;
 block|}
 annotation|@
@@ -230,7 +211,9 @@ init|=
 operator|new
 name|UndoableAbbreviator
 argument_list|(
-name|abbreviationLoader
+name|Globals
+operator|.
+name|journalAbbreviationLoader
 operator|.
 name|getRepository
 argument_list|()

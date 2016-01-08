@@ -398,10 +398,9 @@ init|=
 operator|new
 name|EntryFetchers
 argument_list|(
-name|frame
+name|Globals
 operator|.
-name|getJournalAbbreviationLoader
-argument_list|()
+name|journalAbbreviationLoader
 argument_list|)
 operator|.
 name|getEntryFetchers

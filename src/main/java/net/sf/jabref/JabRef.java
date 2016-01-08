@@ -657,11 +657,6 @@ specifier|private
 name|JabRefCLI
 name|cli
 decl_stmt|;
-DECL|field|abbreviationLoader
-specifier|private
-name|JournalAbbreviationLoader
-name|abbreviationLoader
-decl_stmt|;
 DECL|method|start (String[] args)
 specifier|public
 name|void
@@ -779,7 +774,9 @@ name|initAllExports
 argument_list|()
 expr_stmt|;
 comment|// Read list(s) of journal names and abbreviations
-name|abbreviationLoader
+name|Globals
+operator|.
+name|journalAbbreviationLoader
 operator|=
 operator|new
 name|JournalAbbreviationLoader
@@ -3211,7 +3208,9 @@ init|=
 operator|new
 name|EntryFetchers
 argument_list|(
-name|abbreviationLoader
+name|Globals
+operator|.
+name|journalAbbreviationLoader
 argument_list|)
 decl_stmt|;
 name|EntryFetcher
@@ -4176,8 +4175,6 @@ operator|new
 name|JabRefFrame
 argument_list|(
 name|this
-argument_list|,
-name|abbreviationLoader
 argument_list|)
 expr_stmt|;
 comment|// Add all loaded databases to the frame:

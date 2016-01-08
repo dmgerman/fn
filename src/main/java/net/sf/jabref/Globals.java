@@ -126,6 +126,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|journals
+operator|.
+name|JournalAbbreviationLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|remote
 operator|.
 name|server
@@ -336,6 +352,13 @@ specifier|public
 specifier|static
 name|JabRefPreferences
 name|prefs
+decl_stmt|;
+comment|/**      * This field is initialized upon startup.      * Only GUI code is allowed to access it, logic code should use dependency injection.      */
+DECL|field|journalAbbreviationLoader
+specifier|public
+specifier|static
+name|JournalAbbreviationLoader
+name|journalAbbreviationLoader
 decl_stmt|;
 DECL|field|keyPrefs
 specifier|private

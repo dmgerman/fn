@@ -1431,14 +1431,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|JournalAbbreviationLoader
-name|abbreviationLoader
-init|=
-name|frame
-operator|.
-name|getJournalAbbreviationLoader
-argument_list|()
-decl_stmt|;
 name|JTable
 name|table
 init|=
@@ -1449,7 +1441,9 @@ name|JournalAbbreviationsUtil
 operator|.
 name|getTableModel
 argument_list|(
-name|abbreviationLoader
+name|Globals
+operator|.
+name|journalAbbreviationLoader
 operator|.
 name|getRepository
 argument_list|()

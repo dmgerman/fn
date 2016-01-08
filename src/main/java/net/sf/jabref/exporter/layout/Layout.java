@@ -108,6 +108,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -179,7 +195,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|Layout (List<StringInt> parsedEntries)
+DECL|method|Layout (List<StringInt> parsedEntries, JournalAbbreviationRepository repository)
 specifier|public
 name|Layout
 parameter_list|(
@@ -188,6 +204,9 @@ argument_list|<
 name|StringInt
 argument_list|>
 name|parsedEntries
+parameter_list|,
+name|JournalAbbreviationRepository
+name|repository
 parameter_list|)
 block|{
 name|List
@@ -338,6 +357,8 @@ argument_list|,
 name|LayoutHelper
 operator|.
 name|IS_FIELD_START
+argument_list|,
+name|repository
 argument_list|)
 expr_stmt|;
 name|tmpEntries
@@ -464,6 +485,8 @@ argument_list|,
 name|LayoutHelper
 operator|.
 name|IS_GROUP_START
+argument_list|,
+name|repository
 argument_list|)
 expr_stmt|;
 name|tmpEntries
@@ -524,6 +547,8 @@ operator|new
 name|LayoutEntry
 argument_list|(
 name|parsedEntry
+argument_list|,
+name|repository
 argument_list|)
 argument_list|)
 expr_stmt|;
