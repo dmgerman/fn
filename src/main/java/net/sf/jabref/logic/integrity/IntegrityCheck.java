@@ -625,7 +625,7 @@ argument_list|(
 literal|"should contain a protocol"
 argument_list|)
 operator|+
-literal|": http[s]://, file:// or ftp://"
+literal|": http[s]://, file://, ftp://, ..."
 argument_list|,
 name|entry
 argument_list|,
