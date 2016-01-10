@@ -1235,8 +1235,10 @@ condition|(
 name|selectedOnly
 condition|)
 block|{
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|selected
 init|=
 name|frame

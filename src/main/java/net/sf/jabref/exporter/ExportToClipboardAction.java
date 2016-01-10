@@ -372,7 +372,8 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 operator|.
-name|length
+name|size
+argument_list|()
 operator|==
 literal|0
 condition|)
@@ -690,8 +691,10 @@ operator|.
 name|deleteOnExit
 argument_list|()
 expr_stmt|;
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|bes
 init|=
 name|panel
@@ -711,7 +714,8 @@ argument_list|<>
 argument_list|(
 name|bes
 operator|.
-name|length
+name|size
+argument_list|()
 argument_list|)
 decl_stmt|;
 for|for
@@ -874,7 +878,8 @@ literal|": "
 operator|+
 name|bes
 operator|.
-name|length
+name|size
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch

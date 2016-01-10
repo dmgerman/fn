@@ -234,16 +234,6 @@ block|}
 operator|,
 name|mPanel
 operator|.
-name|getSelectedEntries
-argument_list|()
-operator|,
-name|mPanel
-operator|.
-name|getDatabase
-argument_list|()
-operator|,
-name|mPanel
-operator|.
 name|frame
 argument_list|()
 block|)

@@ -58,7 +58,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|Collection
 import|;
 end_import
 
@@ -68,7 +68,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
+name|List
 import|;
 end_import
 
@@ -1404,8 +1404,10 @@ condition|)
 block|{
 return|return;
 block|}
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 init|=
 name|bp
@@ -1433,7 +1435,8 @@ name|prepareDialog
 argument_list|(
 name|entries
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|0
 argument_list|)
@@ -1499,12 +1502,7 @@ else|else
 block|{
 name|entryList
 operator|=
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|entries
-argument_list|)
 expr_stmt|;
 block|}
 name|String

@@ -170,6 +170,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -557,13 +567,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (BibEntry[] entries)
+DECL|method|add (List<BibEntry> entries)
 specifier|public
 name|AbstractUndoableEdit
 name|add
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{
@@ -571,9 +583,8 @@ if|if
 condition|(
 name|entries
 operator|.
-name|length
-operator|==
-literal|0
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return
@@ -596,14 +607,12 @@ operator|.
 name|entries
 argument_list|)
 decl_stmt|;
-name|Collections
-operator|.
-name|addAll
-argument_list|(
 name|this
 operator|.
 name|entries
-argument_list|,
+operator|.
+name|addAll
+argument_list|(
 name|entries
 argument_list|)
 expr_stmt|;
@@ -639,13 +648,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|remove (BibEntry[] entries)
+DECL|method|remove (List<BibEntry> entries)
 specifier|public
 name|AbstractUndoableEdit
 name|remove
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{
@@ -653,9 +664,8 @@ if|if
 condition|(
 name|entries
 operator|.
-name|length
-operator|==
-literal|0
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return
