@@ -933,7 +933,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error occured parsing Bibtex returned from IEEEXplore"
+literal|"Error occured parsing BibTeX returned from IEEEXplore"
 argument_list|)
 argument_list|,
 name|DIALOG_TITLE
