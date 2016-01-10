@@ -150,18 +150,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|UnsupportedCharsetException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -251,12 +239,6 @@ name|TEMP_SUFFIX
 init|=
 literal|"save.bib"
 decl_stmt|;
-DECL|field|file
-specifier|private
-specifier|final
-name|File
-name|file
-decl_stmt|;
 DECL|field|tmp
 specifier|private
 specifier|final
@@ -286,13 +268,10 @@ specifier|final
 name|VerifyingWriter
 name|writer
 decl_stmt|;
-DECL|method|SaveSession (File file, Charset encoding, boolean backup)
+DECL|method|SaveSession (Charset encoding, boolean backup)
 specifier|public
 name|SaveSession
 parameter_list|(
-name|File
-name|file
-parameter_list|,
 name|Charset
 name|encoding
 parameter_list|,
@@ -301,15 +280,7 @@ name|backup
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|UnsupportedCharsetException
 block|{
-name|this
-operator|.
-name|file
-operator|=
-name|file
-expr_stmt|;
 name|tmp
 operator|=
 name|File
@@ -402,11 +373,14 @@ operator|=
 name|useBackup
 expr_stmt|;
 block|}
-DECL|method|commit ()
+DECL|method|commit (File file)
 specifier|public
 name|void
 name|commit
-parameter_list|()
+parameter_list|(
+name|File
+name|file
+parameter_list|)
 throws|throws
 name|SaveException
 block|{
@@ -508,7 +482,9 @@ block|{
 if|if
 condition|(
 name|createLockFile
-argument_list|()
+argument_list|(
+name|file
+argument_list|)
 condition|)
 block|{
 comment|// Oops, the lock file already existed. Try to wait it out:
@@ -605,7 +581,9 @@ name|useLockFile
 condition|)
 block|{
 name|deleteLockFile
-argument_list|()
+argument_list|(
+name|file
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -652,11 +630,14 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Check if a lock file exists, and create it if it doesn't.      *      * @return true if the lock file already existed      * @throws IOException if something happens during creation.      */
-DECL|method|createLockFile ()
+DECL|method|createLockFile (File file)
 specifier|private
 name|boolean
 name|createLockFile
-parameter_list|()
+parameter_list|(
+name|File
+name|file
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -739,11 +720,14 @@ literal|false
 return|;
 block|}
 comment|/**      * Check if a lock file exists, and delete it if it does.      *      * @return true if the lock file existed, false otherwise.      * @throws IOException if something goes wrong.      */
-DECL|method|deleteLockFile ()
+DECL|method|deleteLockFile (File file)
 specifier|private
 name|boolean
 name|deleteLockFile
-parameter_list|()
+parameter_list|(
+name|File
+name|file
+parameter_list|)
 block|{
 name|File
 name|lock
