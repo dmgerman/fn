@@ -621,8 +621,6 @@ name|keySet
 argument_list|)
 decl_stmt|;
 try|try
-block|{
-try|try
 init|(
 name|Writer
 name|ps
@@ -694,7 +692,6 @@ argument_list|,
 name|result
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
