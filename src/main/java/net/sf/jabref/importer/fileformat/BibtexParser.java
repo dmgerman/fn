@@ -3407,6 +3407,10 @@ condition|(
 name|character
 operator|==
 literal|','
+operator|||
+name|character
+operator|==
+literal|'}'
 condition|)
 block|{
 name|unread
