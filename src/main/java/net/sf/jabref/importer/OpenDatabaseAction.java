@@ -2494,6 +2494,7 @@ name|atSymbolIndex
 operator|>
 literal|0
 condition|)
+block|{
 name|encoding
 operator|=
 name|line
@@ -2510,7 +2511,9 @@ argument_list|,
 name|atSymbolIndex
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|encoding
 operator|=
 name|line
@@ -2525,6 +2528,7 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|Optional
 operator|.
