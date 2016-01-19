@@ -596,15 +596,6 @@ name|fieldName
 operator|=
 literal|"url"
 expr_stmt|;
-name|link
-operator|=
-name|URLUtil
-operator|.
-name|sanitizeUrl
-argument_list|(
-name|link
-argument_list|)
-expr_stmt|;
 comment|// Check to see if link field already contains a well formated URL
 if|if
 condition|(
@@ -2494,15 +2485,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|url
-operator|=
-name|URLUtil
-operator|.
-name|sanitizeUrl
-argument_list|(
-name|url
-argument_list|)
-expr_stmt|;
 name|ExternalFileType
 name|fileType
 init|=
