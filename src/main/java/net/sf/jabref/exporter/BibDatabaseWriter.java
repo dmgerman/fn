@@ -387,7 +387,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|getSaveComparators (SavePreferences prefs, MetaData metaData)
+DECL|field|exceptionCause
+specifier|private
+name|BibEntry
+name|exceptionCause
+decl_stmt|;
+DECL|method|getSaveComparators (SavePreferences preferences, MetaData metaData)
 specifier|private
 specifier|static
 name|List
@@ -400,7 +405,7 @@ argument_list|>
 name|getSaveComparators
 parameter_list|(
 name|SavePreferences
-name|prefs
+name|preferences
 parameter_list|,
 name|MetaData
 name|metaData
@@ -425,7 +430,7 @@ if|if
 condition|(
 name|shouldSaveInOriginalOrder
 argument_list|(
-name|prefs
+name|preferences
 argument_list|,
 name|metaData
 argument_list|)
@@ -464,7 +469,7 @@ else|else
 block|{
 if|if
 condition|(
-name|prefs
+name|preferences
 operator|.
 name|isSaveOperation
 argument_list|()
@@ -521,7 +526,7 @@ name|saveOrderConfig
 operator|.
 name|saveInSpecifiedOrder
 assert|;
-name|prefs
+name|preferences
 operator|.
 name|pri
 operator|=
@@ -534,7 +539,7 @@ index|]
 operator|.
 name|field
 expr_stmt|;
-name|prefs
+name|preferences
 operator|.
 name|sec
 operator|=
@@ -547,7 +552,7 @@ index|]
 operator|.
 name|field
 expr_stmt|;
-name|prefs
+name|preferences
 operator|.
 name|ter
 operator|=
@@ -560,7 +565,7 @@ index|]
 operator|.
 name|field
 expr_stmt|;
-name|prefs
+name|preferences
 operator|.
 name|priD
 operator|=
@@ -573,7 +578,7 @@ index|]
 operator|.
 name|descending
 expr_stmt|;
-name|prefs
+name|preferences
 operator|.
 name|secD
 operator|=
@@ -586,7 +591,7 @@ index|]
 operator|.
 name|descending
 expr_stmt|;
-name|prefs
+name|preferences
 operator|.
 name|terD
 operator|=
@@ -603,7 +608,7 @@ block|}
 block|}
 if|if
 condition|(
-name|prefs
+name|preferences
 operator|.
 name|isSaveOperation
 argument_list|()
@@ -626,11 +631,11 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|prefs
+name|preferences
 operator|.
 name|pri
 argument_list|,
-name|prefs
+name|preferences
 operator|.
 name|priD
 argument_list|)
@@ -643,11 +648,11 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|prefs
+name|preferences
 operator|.
 name|sec
 argument_list|,
-name|prefs
+name|preferences
 operator|.
 name|secD
 argument_list|)
@@ -660,11 +665,11 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|prefs
+name|preferences
 operator|.
 name|ter
 argument_list|,
-name|prefs
+name|preferences
 operator|.
 name|terD
 argument_list|)
@@ -689,7 +694,7 @@ name|comparators
 return|;
 block|}
 comment|/*      * We have begun to use getSortedEntries() for both database save operations      * and non-database save operations.  In a non-database save operation      * (such as the exportDatabase call), we do not wish to use the      * global preference of saving in standard order.      */
-DECL|method|getSortedEntries (BibDatabaseContext bibDatabaseContext, Set<String> keySet, SavePreferences prefs)
+DECL|method|getSortedEntries (BibDatabaseContext bibDatabaseContext, Set<String> keySet, SavePreferences preferences)
 specifier|public
 specifier|static
 name|List
@@ -708,7 +713,7 @@ argument_list|>
 name|keySet
 parameter_list|,
 name|SavePreferences
-name|prefs
+name|preferences
 parameter_list|)
 block|{
 comment|//if no meta data are present, simply return in original order
@@ -763,7 +768,7 @@ name|BibDatabaseWriter
 operator|.
 name|getSaveComparators
 argument_list|(
-name|prefs
+name|preferences
 argument_list|,
 name|bibDatabaseContext
 operator|.
@@ -850,14 +855,14 @@ return|return
 name|sorted
 return|;
 block|}
-DECL|method|shouldSaveInOriginalOrder (SavePreferences prefs, MetaData metaData)
+DECL|method|shouldSaveInOriginalOrder (SavePreferences preferences, MetaData metaData)
 specifier|private
 specifier|static
 name|boolean
 name|shouldSaveInOriginalOrder
 parameter_list|(
 name|SavePreferences
-name|prefs
+name|preferences
 parameter_list|,
 name|MetaData
 name|metaData
@@ -868,7 +873,7 @@ name|inOriginalOrder
 decl_stmt|;
 if|if
 condition|(
-name|prefs
+name|preferences
 operator|.
 name|isSaveOperation
 argument_list|()
@@ -955,7 +960,7 @@ operator|.
 name|Type
 name|previousStringType
 decl_stmt|;
-DECL|method|saveDatabase (BibDatabaseContext bibDatabaseContext, SavePreferences prefs)
+DECL|method|saveDatabase (BibDatabaseContext bibDatabaseContext, SavePreferences preferences)
 specifier|public
 name|SaveSession
 name|saveDatabase
@@ -964,7 +969,7 @@ name|BibDatabaseContext
 name|bibDatabaseContext
 parameter_list|,
 name|SavePreferences
-name|prefs
+name|preferences
 parameter_list|)
 throws|throws
 name|SaveException
@@ -974,7 +979,7 @@ name|saveDatabase
 argument_list|(
 name|bibDatabaseContext
 argument_list|,
-name|prefs
+name|preferences
 argument_list|,
 literal|false
 argument_list|,
@@ -982,8 +987,8 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/**      * Saves the database to file. Two boolean values indicate whether only      * entries with a nonzero Globals.SEARCH value and only entries with a      * nonzero Globals.GROUPSEARCH value should be saved. This can be used to      * let the user save only the results of a search. False and false means all      * entries are saved.      */
-DECL|method|saveDatabase (BibDatabaseContext bibDatabaseContext, SavePreferences prefs, boolean checkSearch, boolean checkGroup)
+comment|/**      * Saves the database to file. Two boolean values indicate whether only      * entries which are marked as search / group hit should be saved. This can be used to      * let the user save only the results of a search. False and false means all      * entries are saved.      */
+DECL|method|saveDatabase (BibDatabaseContext bibDatabaseContext, SavePreferences preferences, boolean checkSearch, boolean checkGroup)
 specifier|public
 name|SaveSession
 name|saveDatabase
@@ -992,7 +997,7 @@ name|BibDatabaseContext
 name|bibDatabaseContext
 parameter_list|,
 name|SavePreferences
-name|prefs
+name|preferences
 parameter_list|,
 name|boolean
 name|checkSearch
@@ -1016,7 +1021,7 @@ operator|.
 name|getEntries
 argument_list|()
 argument_list|,
-name|prefs
+name|preferences
 argument_list|,
 name|checkSearch
 argument_list|,
@@ -1024,7 +1029,7 @@ name|checkGroup
 argument_list|)
 return|;
 block|}
-DECL|method|savePartOfDatabase (BibDatabaseContext bibDatabaseContext, Collection<BibEntry> entries, SavePreferences prefs, boolean checkSearch, boolean checkGroup)
+DECL|method|savePartOfDatabase (BibDatabaseContext bibDatabaseContext, Collection<BibEntry> entries, SavePreferences preferences, boolean checkSearch, boolean checkGroup)
 specifier|public
 name|SaveSession
 name|savePartOfDatabase
@@ -1039,7 +1044,7 @@ argument_list|>
 name|entries
 parameter_list|,
 name|SavePreferences
-name|prefs
+name|preferences
 parameter_list|,
 name|boolean
 name|checkSearch
@@ -1060,12 +1065,12 @@ operator|=
 operator|new
 name|SaveSession
 argument_list|(
-name|prefs
+name|preferences
 operator|.
 name|getEncoding
 argument_list|()
 argument_list|,
-name|prefs
+name|preferences
 operator|.
 name|getMakeBackup
 argument_list|()
@@ -1094,6 +1099,109 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+name|exceptionCause
+operator|=
+literal|null
+expr_stmt|;
+comment|// Get our data stream. This stream writes only to a temporary file until committed.
+try|try
+init|(
+name|VerifyingWriter
+name|writer
+init|=
+name|session
+operator|.
+name|getWriter
+argument_list|()
+init|)
+block|{
+name|writePartOfDatabase
+argument_list|(
+name|writer
+argument_list|,
+name|bibDatabaseContext
+argument_list|,
+name|entries
+argument_list|,
+name|preferences
+argument_list|,
+name|checkSearch
+argument_list|,
+name|checkGroup
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"Could not write file"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+name|session
+operator|.
+name|cancel
+argument_list|()
+expr_stmt|;
+throw|throw
+operator|new
+name|SaveException
+argument_list|(
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|ex
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|,
+name|exceptionCause
+argument_list|)
+throw|;
+block|}
+return|return
+name|session
+return|;
+block|}
+DECL|method|writePartOfDatabase (Writer writer, BibDatabaseContext bibDatabaseContext, Collection<BibEntry> entries, SavePreferences preferences, boolean checkSearch, boolean checkGroup)
+specifier|public
+name|void
+name|writePartOfDatabase
+parameter_list|(
+name|Writer
+name|writer
+parameter_list|,
+name|BibDatabaseContext
+name|bibDatabaseContext
+parameter_list|,
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+parameter_list|,
+name|SavePreferences
+name|preferences
+parameter_list|,
+name|boolean
+name|checkSearch
+parameter_list|,
+name|boolean
+name|checkGroup
+parameter_list|)
+throws|throws
+name|IOException
+block|{
 comment|// Map to collect entry type definitions that we must save along with entries using them.
 name|Map
 argument_list|<
@@ -1108,26 +1216,9 @@ name|TreeMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|BibEntry
-name|exceptionCause
-init|=
-literal|null
-decl_stmt|;
-comment|// Get our data stream. This stream writes only to a temporary file until committed.
-try|try
-init|(
-name|VerifyingWriter
-name|writer
-init|=
-name|session
-operator|.
-name|getWriter
-argument_list|()
-init|)
-block|{
 if|if
 condition|(
-name|prefs
+name|preferences
 operator|.
 name|getSaveType
 argument_list|()
@@ -1144,7 +1235,7 @@ name|writeBibFileHeader
 argument_list|(
 name|writer
 argument_list|,
-name|prefs
+name|preferences
 operator|.
 name|getEncoding
 argument_list|()
@@ -1196,12 +1287,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|entry
-lambda|->
-name|entry
-operator|.
+name|BibEntry
+operator|::
 name|getId
-argument_list|()
 argument_list|)
 operator|.
 name|collect
@@ -1212,7 +1300,7 @@ name|toSet
 argument_list|()
 argument_list|)
 argument_list|,
-name|prefs
+name|preferences
 argument_list|)
 decl_stmt|;
 name|sortedEntries
@@ -1393,7 +1481,7 @@ block|}
 block|}
 if|if
 condition|(
-name|prefs
+name|preferences
 operator|.
 name|getSaveType
 argument_list|()
@@ -1426,7 +1514,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//finally write whatever remains of the file, but at least a concluding newline
-name|writeEpilog
+name|writeEpilogue
 argument_list|(
 name|writer
 argument_list|,
@@ -1437,50 +1525,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"Could not write file"
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|cancel
-argument_list|()
-expr_stmt|;
-throw|throw
-operator|new
-name|SaveException
-argument_list|(
-name|ex
-operator|.
-name|getMessage
-argument_list|()
-argument_list|,
-name|ex
-operator|.
-name|getLocalizedMessage
-argument_list|()
-argument_list|,
-name|exceptionCause
-argument_list|)
-throw|;
-block|}
-return|return
-name|session
-return|;
-block|}
 comment|/**      * Saves the database to file, including only the entries included in the      * supplied input array bes.      */
-DECL|method|savePartOfDatabase (BibDatabaseContext bibDatabaseContext, SavePreferences prefs, Collection<BibEntry> entries)
+DECL|method|savePartOfDatabase (BibDatabaseContext bibDatabaseContext, SavePreferences preferences, Collection<BibEntry> entries)
 specifier|public
 name|SaveSession
 name|savePartOfDatabase
@@ -1489,7 +1535,7 @@ name|BibDatabaseContext
 name|bibDatabaseContext
 parameter_list|,
 name|SavePreferences
-name|prefs
+name|preferences
 parameter_list|,
 name|Collection
 argument_list|<
@@ -1507,7 +1553,7 @@ name|bibDatabaseContext
 argument_list|,
 name|entries
 argument_list|,
-name|prefs
+name|preferences
 argument_list|,
 literal|false
 argument_list|,
@@ -1641,12 +1687,12 @@ name|encoding
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|writeEpilog (VerifyingWriter writer, BibDatabase database)
+DECL|method|writeEpilogue (Writer writer, BibDatabase database)
 specifier|private
 name|void
-name|writeEpilog
+name|writeEpilogue
 parameter_list|(
-name|VerifyingWriter
+name|Writer
 name|writer
 parameter_list|,
 name|BibDatabase
@@ -1735,14 +1781,14 @@ range|:
 name|metaData
 control|)
 block|{
-name|StringBuffer
-name|sb
+name|StringBuilder
+name|stringBuilder
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1751,7 +1797,7 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1773,7 +1819,7 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1815,7 +1861,7 @@ name|j
 operator|++
 control|)
 block|{
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1842,7 +1888,7 @@ literal|";"
 argument_list|)
 expr_stmt|;
 block|}
-name|sb
+name|stringBuilder
 operator|.
 name|append
 argument_list|(
@@ -1853,7 +1899,7 @@ name|out
 operator|.
 name|write
 argument_list|(
-name|sb
+name|stringBuilder
 operator|.
 name|toString
 argument_list|()
@@ -1930,7 +1976,14 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"groupsversion:"
+name|MetaData
+operator|.
+name|GROUPSVERSION
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|":"
 argument_list|)
 expr_stmt|;
 name|sb
@@ -2004,7 +2057,14 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"groupstree:"
+name|MetaData
+operator|.
+name|GROUPSTREE
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|":"
 argument_list|)
 expr_stmt|;
 name|sb
@@ -2041,11 +2101,11 @@ name|hasMoreTokens
 argument_list|()
 condition|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|s
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|StringUtil
 operator|.
@@ -2491,7 +2551,7 @@ name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param fw       The Writer to send the output to.      * @param database The database whose strings we should write.      * @throws IOException If anthing goes wrong in writing.      */
+comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param fw       The Writer to send the output to.      * @param database The database whose strings we should write.      * @throws IOException If anything goes wrong in writing.      */
 DECL|method|writeStrings (Writer fw, BibDatabase database)
 specifier|private
 name|void
@@ -2520,35 +2580,29 @@ name|BibtexString
 argument_list|>
 name|strings
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|String
-name|s
-range|:
 name|database
 operator|.
 name|getStringKeySet
 argument_list|()
-control|)
-block|{
-name|strings
 operator|.
-name|add
+name|stream
+argument_list|()
+operator|.
+name|map
 argument_list|(
 name|database
-operator|.
+operator|::
 name|getString
+argument_list|)
+operator|.
+name|collect
 argument_list|(
-name|s
+name|Collectors
+operator|.
+name|toList
+argument_list|()
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 name|strings
 operator|.
 name|sort
@@ -2677,12 +2731,12 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|writeTypeDefinitions (VerifyingWriter writer, Map<String, EntryType> types)
+DECL|method|writeTypeDefinitions (Writer writer, Map<String, EntryType> types)
 specifier|private
 name|void
 name|writeTypeDefinitions
 parameter_list|(
-name|VerifyingWriter
+name|Writer
 name|writer
 parameter_list|,
 name|Map
