@@ -123,6 +123,13 @@ name|void
 name|restorePreferenceLastFocus
 parameter_list|()
 block|{
+if|if
+condition|(
+name|previousValue
+operator|!=
+literal|null
+condition|)
+block|{
 name|JabRefPreferences
 operator|.
 name|getInstance
@@ -137,6 +144,7 @@ argument_list|,
 name|previousValue
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
