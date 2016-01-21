@@ -1791,19 +1791,8 @@ name|ok
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|canceled
 operator|=
@@ -1812,7 +1801,6 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -1996,7 +1984,7 @@ name|FormLayout
 argument_list|(
 literal|"fill:pref"
 argument_list|,
-literal|"pref, 2dlu, pref, 2dlu, pref, pref, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
+literal|"pref, 2dlu, pref, 2dlu, pref, pref, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
 argument_list|)
 decl_stmt|;
 name|FormBuilder
