@@ -88,12 +88,12 @@ specifier|final
 name|FileFilter
 name|fileFilter
 decl_stmt|;
-DECL|method|UnlinkedPDFFileFilter (FileFilter aFileFilter, BibDatabase database)
+DECL|method|UnlinkedPDFFileFilter (FileFilter fileFilter, BibDatabase database)
 specifier|public
 name|UnlinkedPDFFileFilter
 parameter_list|(
 name|FileFilter
-name|aFileFilter
+name|fileFilter
 parameter_list|,
 name|BibDatabase
 name|database
@@ -103,7 +103,7 @@ name|this
 operator|.
 name|fileFilter
 operator|=
-name|aFileFilter
+name|fileFilter
 expr_stmt|;
 name|this
 operator|.
@@ -127,17 +127,14 @@ name|File
 name|pathname
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
 name|fileFilter
 operator|.
 name|accept
 argument_list|(
 name|pathname
 argument_list|)
-condition|)
-block|{
-return|return
+operator|&&
 operator|!
 name|lookup
 operator|.
@@ -145,10 +142,6 @@ name|lookupDatabase
 argument_list|(
 name|pathname
 argument_list|)
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 block|}

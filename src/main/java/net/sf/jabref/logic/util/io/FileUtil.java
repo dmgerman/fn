@@ -1030,9 +1030,6 @@ name|String
 name|dir
 parameter_list|)
 block|{
-name|File
-name|file
-decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -1051,17 +1048,15 @@ return|return
 literal|null
 return|;
 block|}
-else|else
-block|{
+name|File
 name|file
-operator|=
+init|=
 operator|new
 name|File
 argument_list|(
 name|name
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1105,8 +1100,6 @@ operator|+
 name|name
 expr_stmt|;
 block|}
-comment|// System.out.println("expanded to: "+name);
-comment|// if (name.startsWith("ftp"))
 name|file
 operator|=
 operator|new
@@ -1127,17 +1120,13 @@ return|return
 name|file
 return|;
 block|}
-comment|// Ok, try to fix / and \ problems:
+comment|// fix / and \ problems:
 if|if
 condition|(
 name|OS
 operator|.
 name|WINDOWS
 condition|)
-block|{
-comment|// workaround for catching Java bug in regexp replacer
-comment|// and, why, why, why ... I don't get it - wegner 2006/01/22
-try|try
 block|{
 name|name
 operator|=
@@ -1150,29 +1139,6 @@ argument_list|,
 literal|"\\\\"
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|StringIndexOutOfBoundsException
-name|exc
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|error
-argument_list|(
-literal|"An internal Java error was caused by the entry "
-operator|+
-literal|"\""
-operator|+
-name|name
-operator|+
-literal|"\""
-argument_list|,
-name|exc
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 else|else
 block|{
@@ -1188,7 +1154,6 @@ literal|"/"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// System.out.println("expandFilename: "+name);
 name|file
 operator|=
 operator|new

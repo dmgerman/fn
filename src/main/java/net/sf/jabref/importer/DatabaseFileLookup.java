@@ -186,7 +186,7 @@ name|KEY_FILE_FIELD
 init|=
 literal|"file"
 decl_stmt|;
-DECL|field|fileToFound
+DECL|field|cache
 specifier|private
 specifier|final
 name|Map
@@ -195,7 +195,7 @@ name|File
 argument_list|,
 name|Boolean
 argument_list|>
-name|fileToFound
+name|cache
 init|=
 operator|new
 name|HashMap
@@ -269,38 +269,38 @@ name|FILE_FIELD
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns whether the File<code>aFile</code> is present in the database      * as an attached File to an {@link BibEntry}.<br>      *<br>      * To do this, the field specified by the key<b>file</b> will be searched      * for the provided file for every {@link BibEntry} in the database.<br>      *<br>      * For the matching, the absolute file paths will be used.      *      * @param aFile      *            A {@link File} Object.      * @return<code>true</code>, if the file Object is stored in at least one      *         entry in the database, otherwise<code>false</code>.      */
-DECL|method|lookupDatabase (File aFile)
+comment|/**      * Returns whether the File<code>file</code> is present in the database      * as an attached File to an {@link BibEntry}.<br>      *<br>      * To do this, the field specified by the key<b>file</b> will be searched      * for the provided file for every {@link BibEntry} in the database.<br>      *<br>      * For the matching, the absolute file paths will be used.      *      * @param file      *            A {@link File} Object.      * @return<code>true</code>, if the file Object is stored in at least one      *         entry in the database, otherwise<code>false</code>.      */
+DECL|method|lookupDatabase (File file)
 specifier|public
 name|boolean
 name|lookupDatabase
 parameter_list|(
 name|File
-name|aFile
+name|file
 parameter_list|)
 block|{
 if|if
 condition|(
-name|fileToFound
+name|cache
 operator|.
 name|containsKey
 argument_list|(
-name|aFile
+name|file
 argument_list|)
 condition|)
 block|{
 return|return
-name|fileToFound
+name|cache
 operator|.
 name|get
 argument_list|(
-name|aFile
+name|file
 argument_list|)
 return|;
 block|}
 else|else
 block|{
-name|Boolean
+name|boolean
 name|res
 init|=
 literal|false
@@ -317,7 +317,7 @@ if|if
 condition|(
 name|lookupEntry
 argument_list|(
-name|aFile
+name|file
 argument_list|,
 name|entry
 argument_list|)
@@ -330,44 +330,43 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-name|fileToFound
+name|cache
 operator|.
 name|put
 argument_list|(
-name|aFile
+name|file
 argument_list|,
 name|res
 argument_list|)
 expr_stmt|;
-comment|//System.out.println(aFile);
 return|return
 name|res
 return|;
 block|}
 block|}
-comment|/**      * Searches the specified {@link BibEntry}<code>anEntry</code> for the      * appearance of the specified {@link File}<code>aFile</code>.<br>      *<br>      * Therefore the<i>file</i>-field of the bibtex-entry will be searched for      * the absolute filepath of the searched file.<br>      *<br>      *      * @param aFile      *            A file that is searched in an bibtex-entry.      * @param anEntry      *            A bibtex-entry, in which the file is searched.      * @return<code>true</code>, if the bibtex entry stores the file in its      *<i>file</i>-field, otherwise<code>false</code>.      */
-DECL|method|lookupEntry (File aFile, BibEntry anEntry)
+comment|/**      * Searches the specified {@link BibEntry}<code>entry</code> for the      * appearance of the specified {@link File}<code>file</code>.<br>      *<br>      * Therefore the<i>file</i>-field of the bibtex-entry will be searched for      * the absolute filepath of the searched file.<br>      *<br>      *      * @param file      *            A file that is searched in an bibtex-entry.      * @param entry      *            A bibtex-entry, in which the file is searched.      * @return<code>true</code>, if the bibtex entry stores the file in its      *<i>file</i>-field, otherwise<code>false</code>.      */
+DECL|method|lookupEntry (File file, BibEntry entry)
 specifier|private
 name|boolean
 name|lookupEntry
 parameter_list|(
 name|File
-name|aFile
+name|file
 parameter_list|,
 name|BibEntry
-name|anEntry
+name|entry
 parameter_list|)
 block|{
 if|if
 condition|(
 operator|(
-name|aFile
+name|file
 operator|==
 literal|null
 operator|)
 operator|||
 operator|(
-name|anEntry
+name|entry
 operator|==
 literal|null
 operator|)
@@ -387,7 +386,7 @@ decl_stmt|;
 name|String
 name|fileField
 init|=
-name|anEntry
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -468,7 +467,7 @@ name|equals
 argument_list|(
 name|expandedFilename
 argument_list|,
-name|aFile
+name|file
 argument_list|)
 condition|)
 block|{
