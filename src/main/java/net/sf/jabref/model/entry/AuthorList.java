@@ -4168,9 +4168,6 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
-name|getLastOnly
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|abbr
