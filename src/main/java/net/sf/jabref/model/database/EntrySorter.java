@@ -55,7 +55,7 @@ block|{
 DECL|field|set
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
