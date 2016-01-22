@@ -1444,6 +1444,16 @@ literal|null
 return|;
 block|}
 comment|// clean up title
+if|if
+condition|(
+name|entry
+operator|.
+name|hasField
+argument_list|(
+literal|"title"
+argument_list|)
+condition|)
+block|{
 name|String
 name|title
 init|=
@@ -1454,13 +1464,6 @@ argument_list|(
 literal|"title"
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|title
-operator|!=
-literal|null
-condition|)
-block|{
 comment|// USe the alt-text and replace image links
 name|title
 operator|=
@@ -1690,6 +1693,16 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// clean up author
+if|if
+condition|(
+name|entry
+operator|.
+name|hasField
+argument_list|(
+literal|"author"
+argument_list|)
+condition|)
+block|{
 name|String
 name|author
 init|=
@@ -1700,13 +1713,6 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|author
-operator|!=
-literal|null
-condition|)
-block|{
 name|author
 operator|=
 name|author

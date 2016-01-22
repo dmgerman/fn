@@ -872,24 +872,20 @@ expr_stmt|;
 comment|// Check if the entry we just found references another entry which
 comment|// we don't already have in our list of entries to include. If so,
 comment|// pull in that entry as well:
-name|String
-name|crossref
-init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"crossref"
 argument_list|)
-decl_stmt|;
+operator|.
+name|ifPresent
+argument_list|(
+name|crossref
+lambda|->
+block|{
 if|if
 condition|(
-operator|(
-name|crossref
-operator|!=
-literal|null
-operator|)
-operator|&&
 operator|!
 name|mySet
 operator|.
@@ -909,7 +905,7 @@ argument_list|(
 name|crossref
 argument_list|)
 decl_stmt|;
-comment|/**                      * [ 1717849 ] Patch for aux import by Kai Eckert                      */
+comment|/**                          * [ 1717849 ] Patch for aux import by Kai Eckert                          */
 if|if
 condition|(
 name|refEntry
@@ -939,6 +935,9 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// If we have inserted any entries, make sure to copy the source database's preamble and
