@@ -1250,15 +1250,13 @@ return|return
 name|getEntry
 argument_list|()
 operator|.
-name|getField
+name|hasField
 argument_list|(
 name|fieldEditor
 operator|.
 name|getFieldName
 argument_list|()
 argument_list|)
-operator|!=
-literal|null
 return|;
 block|}
 else|else

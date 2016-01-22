@@ -151,12 +151,10 @@ if|if
 condition|(
 name|entry
 operator|.
-name|getField
+name|hasField
 argument_list|(
 literal|"doi"
 argument_list|)
-operator|!=
-literal|null
 condition|)
 block|{
 name|String

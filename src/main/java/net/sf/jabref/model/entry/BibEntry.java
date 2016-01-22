@@ -699,6 +699,28 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns true if the entry has the given field, or false if it is not set.      */
+DECL|method|hasField (String name)
+specifier|public
+name|boolean
+name|hasField
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|fields
+operator|.
+name|containsKey
+argument_list|(
+name|normalizeFieldName
+argument_list|(
+name|name
+argument_list|)
+argument_list|)
+return|;
+block|}
 DECL|method|normalizeFieldName (String fieldName)
 specifier|private
 name|String
