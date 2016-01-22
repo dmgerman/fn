@@ -119,7 +119,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Util class for searching files on the file system which are not linked to a  * provided {@link BibDatabase}.  *  * @author Nosh&Dan  * @version 09.11.2008 | 19:55:20  *  */
+comment|/**  * Util class for searching files on the file system which are not linked to a provided {@link BibDatabase}.  */
 end_comment
 
 begin_class
@@ -168,7 +168,7 @@ operator|=
 name|database
 expr_stmt|;
 block|}
-DECL|method|searchDirectory (File directory, FileFilter aFileFilter)
+DECL|method|searchDirectory (File directory, FileFilter filter)
 specifier|public
 name|CheckableTreeNode
 name|searchDirectory
@@ -177,7 +177,7 @@ name|File
 name|directory
 parameter_list|,
 name|FileFilter
-name|aFileFilter
+name|filter
 parameter_list|)
 block|{
 name|UnlinkedPDFFileFilter
@@ -186,7 +186,7 @@ init|=
 operator|new
 name|UnlinkedPDFFileFilter
 argument_list|(
-name|aFileFilter
+name|filter
 argument_list|,
 name|database
 argument_list|)
@@ -247,7 +247,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/* Return null if the directory is not valid. */
+comment|// Return null if the directory is not valid.
 if|if
 condition|(
 operator|(
