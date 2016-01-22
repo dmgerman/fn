@@ -206,6 +206,34 @@ argument_list|(
 literal|"file.separator"
 argument_list|)
 decl_stmt|;
+DECL|field|SLASH
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|SLASH
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"/"
+argument_list|)
+decl_stmt|;
+DECL|field|BACKSLASH
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|BACKSLASH
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\\\"
+argument_list|)
+decl_stmt|;
 comment|/**      * Returns the extension of a file or Optional.empty() if the file does not have one (no . in name).      *      * @param file      * @return The extension, trimmed and in lowercase.      */
 DECL|method|getFileExtension (File file)
 specifier|public
@@ -836,7 +864,7 @@ decl_stmt|;
 comment|// Find the default directory for this field type, if any:
 name|String
 index|[]
-name|dir
+name|directories
 init|=
 name|metaData
 operator|.
@@ -879,9 +907,9 @@ decl_stmt|;
 for|for
 control|(
 name|String
-name|aDir
-range|:
 name|dir
+range|:
+name|directories
 control|)
 block|{
 if|if
@@ -891,7 +919,7 @@ name|al
 operator|.
 name|contains
 argument_list|(
-name|aDir
+name|dir
 argument_list|)
 condition|)
 block|{
@@ -899,7 +927,7 @@ name|al
 operator|.
 name|add
 argument_list|(
-name|aDir
+name|dir
 argument_list|)
 expr_stmt|;
 block|}
@@ -960,7 +988,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      *<p>      * Will look in each of the given dirs starting from the beginning and      * returning the first found file to match if any.      */
-DECL|method|expandFilename (String name, String[] dir)
+DECL|method|expandFilename (String name, String[] directories)
 specifier|public
 specifier|static
 name|File
@@ -971,20 +999,20 @@ name|name
 parameter_list|,
 name|String
 index|[]
-name|dir
+name|directories
 parameter_list|)
 block|{
 for|for
 control|(
 name|String
-name|aDir
-range|:
 name|dir
+range|:
+name|directories
 control|)
 block|{
 if|if
 condition|(
-name|aDir
+name|dir
 operator|!=
 literal|null
 condition|)
@@ -996,7 +1024,7 @@ name|expandFilename
 argument_list|(
 name|name
 argument_list|,
-name|aDir
+name|dir
 argument_list|)
 decl_stmt|;
 if|if
@@ -1100,26 +1128,6 @@ operator|+
 name|name
 expr_stmt|;
 block|}
-name|file
-operator|=
-operator|new
-name|File
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|file
-operator|.
-name|exists
-argument_list|()
-condition|)
-block|{
-return|return
-name|file
-return|;
-block|}
 comment|// fix / and \ problems:
 if|if
 condition|(
@@ -1130,12 +1138,15 @@ condition|)
 block|{
 name|name
 operator|=
+name|SLASH
+operator|.
+name|matcher
+argument_list|(
 name|name
+argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-literal|"/"
-argument_list|,
 literal|"\\\\"
 argument_list|)
 expr_stmt|;
@@ -1144,12 +1155,15 @@ else|else
 block|{
 name|name
 operator|=
+name|BACKSLASH
+operator|.
+name|matcher
+argument_list|(
 name|name
+argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-literal|"\\\\"
-argument_list|,
 literal|"/"
 argument_list|)
 expr_stmt|;

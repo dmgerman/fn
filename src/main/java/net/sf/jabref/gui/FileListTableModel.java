@@ -858,7 +858,7 @@ name|files
 return|;
 block|}
 DECL|method|setContent (String value, boolean firstOnly, boolean deduceUnknownTypes)
-specifier|public
+specifier|private
 name|FileListEntry
 name|setContent
 parameter_list|(
