@@ -36,10 +36,6 @@ name|FileFilter
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: Christoph Arbeit  * Date: 08.09.2010  * Time: 15:03:36  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|PdfFileFilter
 specifier|public
@@ -48,6 +44,16 @@ name|PdfFileFilter
 implements|implements
 name|FileFilter
 block|{
+DECL|field|INSTANCE
+specifier|public
+specifier|static
+name|PdfFileFilter
+name|INSTANCE
+init|=
+operator|new
+name|PdfFileFilter
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|accept (File file)
@@ -127,7 +133,7 @@ name|path
 parameter_list|)
 block|{
 name|String
-name|dateiEndung
+name|extension
 init|=
 name|path
 operator|.
@@ -148,7 +154,7 @@ literal|"pdf"
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-name|dateiEndung
+name|extension
 argument_list|)
 return|;
 block|}
