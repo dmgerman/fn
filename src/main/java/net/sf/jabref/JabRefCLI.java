@@ -486,10 +486,10 @@ literal|"exportMatches"
 argument_list|)
 return|;
 block|}
-DECL|method|getGenerateBibtexKeys ()
+DECL|method|isGenerateBibtexKeys ()
 specifier|public
 name|boolean
-name|getGenerateBibtexKeys
+name|isGenerateBibtexKeys
 parameter_list|()
 block|{
 return|return
@@ -498,6 +498,21 @@ operator|.
 name|hasOption
 argument_list|(
 literal|"generateBibtexKeys"
+argument_list|)
+return|;
+block|}
+DECL|method|isAutomaticallySetFileLinks ()
+specifier|public
+name|boolean
+name|isAutomaticallySetFileLinks
+parameter_list|()
+block|{
+return|return
+name|cl
+operator|.
+name|hasOption
+argument_list|(
+literal|"automaticallySetFileLinks"
 argument_list|)
 return|;
 block|}
@@ -1015,6 +1030,36 @@ operator|.
 name|lang
 argument_list|(
 literal|"Regenerate all keys for the entries in a bibtex file"
+argument_list|)
+argument_list|)
+operator|.
+name|build
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
+name|addOption
+argument_list|(
+name|Option
+operator|.
+name|builder
+argument_list|(
+literal|"asfl"
+argument_list|)
+operator|.
+name|longOpt
+argument_list|(
+literal|"automaticallySetFileLinks"
+argument_list|)
+operator|.
+name|desc
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Automatically set file links"
 argument_list|)
 argument_list|)
 operator|.
