@@ -113,7 +113,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Imported requried to support --importToOpen someEntry.bib  */
+comment|/**  * This importer exists only to enable `--importToOpen someEntry.bib`  *  * It is NOT intended to import a bib file. This is done via the option action, which treats the metadata fields  * The metadata is not required to be read here, as this class is NOT called at --import  */
 end_comment
 
 begin_class
