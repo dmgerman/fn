@@ -2161,6 +2161,33 @@ operator|.
 name|getDatabase
 argument_list|()
 decl_stmt|;
+name|MetaData
+name|metaData
+init|=
+name|parserResult
+operator|.
+name|getMetaData
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|metaData
+operator|!=
+literal|null
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Regenerating bibtex keys according to metadata"
+argument_list|)
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|BibEntry
@@ -2172,18 +2199,32 @@ name|getEntries
 argument_list|()
 control|)
 block|{
+comment|// try to make a new label
 name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|parserResult
-operator|.
-name|getMetaData
-argument_list|()
+name|metaData
 argument_list|,
 name|database
 argument_list|,
 name|entry
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"No meta data present in bibfile. Cannot regenerate bibtex keys"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3105,7 +3146,7 @@ name|loaded
 argument_list|)
 return|;
 block|}
-comment|/**      * Run an entry fetcher from the command line.      *      * Note that this only works headlessly if the EntryFetcher does not show any GUI.      *      * @param fetchCommand A string containing both the fetcher to use (id of EntryFetcherExtension minus Fetcher) and      *            the search query, separated by a :      * @return A parser result containing the entries fetched or null if an error occurred.      */
+comment|/**      * Run an entry fetcher from the command line.      *<p>      * Note that this only works headlessly if the EntryFetcher does not show any GUI.      *      * @param fetchCommand A string containing both the fetcher to use (id of EntryFetcherExtension minus Fetcher) and      *                     the search query, separated by a :      * @return A parser result containing the entries fetched or null if an error occurred.      */
 DECL|method|fetch (String fetchCommand)
 specifier|private
 name|Optional
