@@ -20,11 +20,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
+name|Globals
 import|;
 end_import
 
@@ -37,6 +33,22 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -120,13 +132,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// externalFileTypes are needed for the EntryFromPDFCreator
+name|Globals
+operator|.
+name|prefs
+operator|=
 name|JabRefPreferences
 operator|.
 name|getInstance
-argument_list|()
-operator|.
-name|updateExternalFileTypes
 argument_list|()
 expr_stmt|;
 block|}

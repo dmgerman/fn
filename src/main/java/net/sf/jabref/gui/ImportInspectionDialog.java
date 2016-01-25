@@ -5264,8 +5264,7 @@ literal|""
 argument_list|,
 name|fl
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 literal|null
 argument_list|,
@@ -5276,8 +5275,7 @@ argument_list|()
 argument_list|,
 name|fl
 operator|.
-name|getType
-argument_list|()
+name|type
 argument_list|)
 operator|)
 operator|.
@@ -5509,8 +5507,7 @@ name|description
 init|=
 name|flEntry
 operator|.
-name|getDescription
-argument_list|()
+name|description
 decl_stmt|;
 if|if
 condition|(
@@ -5535,8 +5532,7 @@ name|description
 operator|=
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 expr_stmt|;
 block|}
 name|menu
@@ -5557,13 +5553,11 @@ name|description
 argument_list|,
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getIcon
 argument_list|()
@@ -5575,8 +5569,7 @@ argument_list|()
 argument_list|,
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8211,8 +8204,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getIcon
 argument_list|()

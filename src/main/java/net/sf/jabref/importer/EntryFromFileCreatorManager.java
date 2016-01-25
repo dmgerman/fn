@@ -110,7 +110,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|external
+operator|.
+name|ExternalFileType
 import|;
 end_import
 
@@ -124,7 +126,7 @@ name|jabref
 operator|.
 name|external
 operator|.
-name|ExternalFileType
+name|ExternalFileTypes
 import|;
 end_import
 
@@ -271,7 +273,7 @@ name|ExternalFileType
 index|[]
 name|fileTypes
 init|=
-name|JabRefPreferences
+name|ExternalFileTypes
 operator|.
 name|getInstance
 argument_list|()

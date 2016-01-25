@@ -379,8 +379,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getLink
-argument_list|()
+name|link
 decl_stmt|;
 if|if
 condition|(
@@ -427,8 +426,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getExtension
 argument_list|()
@@ -543,8 +541,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getDescription
-argument_list|()
+name|description
 decl_stmt|;
 name|ExternalFileType
 name|type
@@ -556,8 +553,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getType
-argument_list|()
+name|type
 decl_stmt|;
 name|flModel
 operator|.

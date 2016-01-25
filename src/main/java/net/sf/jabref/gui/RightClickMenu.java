@@ -1320,7 +1320,9 @@ condition|(
 operator|!
 name|isFieldSetForSelectedEntry
 argument_list|(
-literal|"file"
+name|Globals
+operator|.
+name|FILE_FIELD
 argument_list|)
 condition|)
 block|{
@@ -1362,7 +1364,9 @@ condition|(
 operator|!
 name|isFieldSetForSelectedEntry
 argument_list|(
-literal|"file"
+name|Globals
+operator|.
+name|FILE_FIELD
 argument_list|)
 condition|)
 block|{

@@ -3767,14 +3767,6 @@ argument_list|()
 expr_stmt|;
 comment|// Set up custom or default icon theme:
 comment|// This is now done at processArguments
-comment|// TODO: remove temporary registering of external file types?
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|updateExternalFileTypes
-argument_list|()
-expr_stmt|;
 comment|// This property is set to make the Mac OSX Java VM move the menu bar to
 comment|// the top of the screen, where Mac users expect it to be.
 name|System

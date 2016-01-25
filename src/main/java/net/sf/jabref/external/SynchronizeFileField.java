@@ -933,8 +933,7 @@ name|httpLink
 init|=
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 operator|.
 name|toLowerCase
 argument_list|()
@@ -969,8 +968,7 @@ name|expandFilename
 argument_list|(
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|dirsS
 argument_list|)
@@ -1018,8 +1016,7 @@ literal|"<HTML>Could not find file '%0'<BR>linked from entry '%1'</HTML>"
 argument_list|,
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|aSel
 operator|.
@@ -1166,8 +1163,7 @@ operator|&&
 operator|(
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|instanceof
 name|UnknownExternalFileType
 operator|)
@@ -1189,8 +1185,7 @@ literal|"Define '%0'"
 argument_list|,
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -1239,8 +1234,7 @@ literal|"One or more file links are of the type '%0', which is undefined. What d
 argument_list|,
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -1298,8 +1292,7 @@ name|ExternalFileType
 argument_list|(
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -1367,9 +1360,10 @@ name|ExternalFileType
 index|[]
 name|oldTypes
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeSelection
 argument_list|()
@@ -1397,9 +1391,10 @@ argument_list|(
 name|fileTypes
 argument_list|)
 expr_stmt|;
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|setExternalFileTypes
 argument_list|(

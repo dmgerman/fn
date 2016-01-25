@@ -1000,9 +1000,10 @@ block|{
 name|ExternalFileType
 name|fileType
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
@@ -1230,9 +1231,10 @@ block|{
 name|ExternalFileType
 name|fileType
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
@@ -2662,8 +2664,7 @@ name|File
 argument_list|(
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|)
 operator|.
 name|isAbsolute
@@ -2683,8 +2684,7 @@ name|expandFilename
 argument_list|(
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|dirs
 argument_list|)
@@ -2694,8 +2694,7 @@ argument_list|()
 else|:
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 decl_stmt|;
 name|System
 operator|.
