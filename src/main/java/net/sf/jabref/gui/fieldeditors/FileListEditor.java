@@ -130,6 +130,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -2414,14 +2444,35 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|Collection
+argument_list|<
 name|BibEntry
-name|entry
+argument_list|>
+name|entries
 init|=
-name|entryEditor
-operator|.
-name|getEntry
+operator|new
+name|ArrayList
+argument_list|<>
 argument_list|()
 decl_stmt|;
+name|entries
+operator|.
+name|addAll
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|.
+name|getSelectedEntries
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// filesystem lookup
 name|JDialog
 name|dialog
@@ -2452,7 +2503,11 @@ name|Util
 operator|.
 name|autoSetLinks
 argument_list|(
-name|entry
+name|entries
+argument_list|,
+literal|null
+argument_list|,
+literal|null
 argument_list|,
 name|tableModel
 argument_list|,
@@ -2942,7 +2997,7 @@ specifier|public
 name|void
 name|undo
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|redo ()
@@ -2950,7 +3005,7 @@ specifier|public
 name|void
 name|redo
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
@@ -2961,7 +3016,7 @@ parameter_list|(
 name|AutoCompleteListener
 name|listener
 parameter_list|)
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|clearAutoCompleteSuggestion ()
@@ -2969,7 +3024,7 @@ specifier|public
 name|void
 name|clearAutoCompleteSuggestion
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|setActiveBackgroundColor ()
@@ -2977,7 +3032,7 @@ specifier|public
 name|void
 name|setActiveBackgroundColor
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|setValidBackgroundColor ()
@@ -2985,7 +3040,7 @@ specifier|public
 name|void
 name|setValidBackgroundColor
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|setInvalidBackgroundColor ()
@@ -2993,7 +3048,7 @@ specifier|public
 name|void
 name|setInvalidBackgroundColor
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|updateFontColor ()
@@ -3001,7 +3056,7 @@ specifier|public
 name|void
 name|updateFontColor
 parameter_list|()
-block|{}
+block|{     }
 block|}
 end_class
 
