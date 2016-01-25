@@ -62,7 +62,7 @@ name|logic
 operator|.
 name|logging
 operator|.
-name|CacheableHandler
+name|Cache
 import|;
 end_import
 
@@ -182,13 +182,13 @@ specifier|final
 name|StreamEavesdropper
 name|streamEavesdropper
 decl_stmt|;
-DECL|field|logHandler
+DECL|field|cache
 specifier|private
 specifier|final
-name|CacheableHandler
-name|logHandler
+name|Cache
+name|cache
 decl_stmt|;
-DECL|method|ErrorConsoleAction (JFrame frame, StreamEavesdropper streamEavesdropper, CacheableHandler logHandler)
+DECL|method|ErrorConsoleAction (JFrame frame, StreamEavesdropper streamEavesdropper, Cache cache)
 specifier|public
 name|ErrorConsoleAction
 parameter_list|(
@@ -198,8 +198,8 @@ parameter_list|,
 name|StreamEavesdropper
 name|streamEavesdropper
 parameter_list|,
-name|CacheableHandler
-name|logHandler
+name|Cache
+name|cache
 parameter_list|)
 block|{
 name|super
@@ -220,9 +220,9 @@ name|streamEavesdropper
 expr_stmt|;
 name|this
 operator|.
-name|logHandler
+name|cache
 operator|=
-name|logHandler
+name|cache
 expr_stmt|;
 name|putValue
 argument_list|(
@@ -289,9 +289,9 @@ argument_list|(
 literal|"Log"
 argument_list|)
 argument_list|,
-name|logHandler
+name|cache
 operator|.
-name|getLog
+name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
