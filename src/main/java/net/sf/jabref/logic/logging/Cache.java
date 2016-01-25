@@ -119,6 +119,7 @@ expr_stmt|;
 block|}
 DECL|method|get ()
 specifier|public
+specifier|synchronized
 name|String
 name|get
 parameter_list|()
@@ -175,6 +176,7 @@ block|}
 block|}
 DECL|method|add (String message)
 specifier|public
+specifier|synchronized
 name|void
 name|add
 parameter_list|(
