@@ -918,12 +918,10 @@ if|if
 condition|(
 name|entry
 operator|.
-name|getField
+name|hasField
 argument_list|(
 name|field
 argument_list|)
-operator|!=
-literal|null
 condition|)
 block|{
 return|return

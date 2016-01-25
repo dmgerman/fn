@@ -154,12 +154,10 @@ argument_list|,
 name|citeKey
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
 comment|// we have to introduce a new Map as fields are stored case-sensitive in JabRef (see https://github.com/koppor/jabref/issues/45).
@@ -309,7 +307,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"}"
+literal|'}'
 argument_list|)
 expr_stmt|;
 return|return

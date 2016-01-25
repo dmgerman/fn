@@ -548,10 +548,6 @@ name|Util
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: Christoph Arbeit  * Date: 08.09.2010  * Time: 14:49:08  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|PdfImporter
 specifier|public
@@ -852,9 +848,9 @@ decl_stmt|;
 name|PdfFileFilter
 name|pdfFilter
 init|=
-operator|new
 name|PdfFileFilter
-argument_list|()
+operator|.
+name|INSTANCE
 decl_stmt|;
 for|for
 control|(
