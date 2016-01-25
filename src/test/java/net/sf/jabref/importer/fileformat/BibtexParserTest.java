@@ -5110,8 +5110,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|parseRecognizesPreambleWithWhitespace ()
 specifier|public
 name|void

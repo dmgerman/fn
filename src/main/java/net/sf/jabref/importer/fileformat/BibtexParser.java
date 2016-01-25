@@ -705,6 +705,17 @@ name|type
 operator|!=
 literal|null
 decl_stmt|;
+name|String
+name|trimmedEntryType
+init|=
+name|entryType
+operator|.
+name|toLowerCase
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+decl_stmt|;
 comment|// The entry type name was not recognized. This can mean
 comment|// that it is a string, preamble, or comment. If so,
 comment|// parse and set accordingly. If not, assume it is an entry
@@ -721,10 +732,7 @@ literal|"preamble"
 operator|.
 name|equals
 argument_list|(
-name|entryType
-operator|.
-name|toLowerCase
-argument_list|()
+name|trimmedEntryType
 argument_list|)
 condition|)
 block|{
@@ -748,10 +756,7 @@ literal|"string"
 operator|.
 name|equals
 argument_list|(
-name|entryType
-operator|.
-name|toLowerCase
-argument_list|()
+name|trimmedEntryType
 argument_list|)
 condition|)
 block|{
@@ -766,10 +771,7 @@ literal|"comment"
 operator|.
 name|equals
 argument_list|(
-name|entryType
-operator|.
-name|toLowerCase
-argument_list|()
+name|trimmedEntryType
 argument_list|)
 condition|)
 block|{
@@ -1914,6 +1916,9 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|skipWhitespace
+argument_list|()
+expr_stmt|;
 return|return
 name|parseBracketedText
 argument_list|()
