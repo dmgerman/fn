@@ -1031,8 +1031,10 @@ name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|)
 decl_stmt|;
 comment|// Get a list of file directories:
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirsS
 init|=
 name|panel

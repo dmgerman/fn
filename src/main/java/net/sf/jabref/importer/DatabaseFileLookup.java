@@ -189,8 +189,10 @@ decl_stmt|;
 DECL|field|possibleFilePaths
 specifier|private
 specifier|final
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|possibleFilePaths
 decl_stmt|;
 comment|/**      * Creates an instance by passing a {@link BibDatabase} which will be used for the searches.      *      * @param database A {@link BibDatabase}.      */
@@ -236,9 +238,9 @@ operator|.
 name|orElse
 argument_list|(
 operator|new
-name|String
-index|[]
-block|{}
+name|ArrayList
+argument_list|<>
+argument_list|()
 argument_list|)
 expr_stmt|;
 for|for

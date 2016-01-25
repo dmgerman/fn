@@ -619,8 +619,10 @@ argument_list|(
 literal|"pdf"
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 init|=
 name|panel

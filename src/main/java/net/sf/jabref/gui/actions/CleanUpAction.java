@@ -2923,8 +2923,10 @@ name|NamedCompound
 name|ce
 parameter_list|)
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|paths
 init|=
 name|panel

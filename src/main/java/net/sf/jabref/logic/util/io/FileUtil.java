@@ -906,8 +906,10 @@ name|name
 argument_list|)
 decl_stmt|;
 comment|// Find the default directory for this field type, if any:
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|directories
 init|=
 name|metaData
@@ -923,8 +925,10 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Include the standard "file" directory:
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|fileDir
 init|=
 name|metaData
@@ -1004,35 +1008,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|String
-index|[]
-name|dirs
-init|=
-name|al
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-name|al
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
-decl_stmt|;
 return|return
 name|expandFilename
 argument_list|(
 name|name
 argument_list|,
-name|dirs
+name|al
 argument_list|)
 return|;
 block|}
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      *<p>      * Will look in each of the given dirs starting from the beginning and      * returning the first found file to match if any.      */
-DECL|method|expandFilename (String name, String[] directories)
+DECL|method|expandFilename (String name, List<String> directories)
 specifier|public
 specifier|static
 name|File
@@ -1041,8 +1027,10 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|directories
 parameter_list|)
 block|{
@@ -1242,7 +1230,7 @@ return|;
 block|}
 block|}
 comment|/**      * Converts an absolute filename to a relative one, if necessary.      * Returns the parameter fileName itself if no shortening is possible      *<p>      * This method works correctly only if dirs are sorted decent in their length      * i.e. /home/user/literature/important before /home/user/literature      *      * @param fileName the filename to be shortened      * @param dirs     directories to check.      */
-DECL|method|shortenFileName (File fileName, String[] dirs)
+DECL|method|shortenFileName (File fileName, List<String> dirs)
 specifier|public
 specifier|static
 name|File
@@ -1251,8 +1239,10 @@ parameter_list|(
 name|File
 name|fileName
 parameter_list|,
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 parameter_list|)
 block|{
@@ -1881,18 +1871,6 @@ operator|.
 name|link
 argument_list|,
 name|fileDirs
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-name|fileDirs
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
 argument_list|)
 decl_stmt|;
 if|if

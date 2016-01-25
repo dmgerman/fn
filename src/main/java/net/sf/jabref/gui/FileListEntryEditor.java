@@ -124,6 +124,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -1815,8 +1825,10 @@ decl_stmt|;
 comment|// See if we should trim the file link to be relative to the file directory:
 try|try
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 init|=
 name|metaData
@@ -1832,7 +1844,8 @@ if|if
 condition|(
 name|dirs
 operator|.
-name|length
+name|size
+argument_list|()
 operator|==
 literal|0
 condition|)
@@ -2204,8 +2217,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// If the file is below the file directory, make the path relative:
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirsS
 init|=
 name|metaData

@@ -1929,8 +1929,10 @@ argument_list|,
 name|linkFileName
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 init|=
 name|panel
@@ -1962,7 +1964,8 @@ name|i
 operator|<
 name|dirs
 operator|.
-name|length
+name|size
+argument_list|()
 condition|;
 name|i
 operator|++
@@ -1974,9 +1977,11 @@ operator|new
 name|File
 argument_list|(
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 argument_list|)
 operator|.
 name|exists
@@ -2058,9 +2063,11 @@ argument_list|(
 literal|"File directory is '%0':"
 argument_list|,
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 name|found
-index|]
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2575,8 +2582,10 @@ name|avoidDuplicate
 condition|)
 block|{
 comment|// For comparison, find the absolute filename:
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 init|=
 name|panel
@@ -2607,7 +2616,8 @@ operator|&&
 operator|(
 name|dirs
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|0
 operator|)
@@ -2673,7 +2683,8 @@ operator|&&
 operator|(
 name|dirs
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|0
 operator|)
@@ -2825,8 +2836,10 @@ name|NamedCompound
 name|edits
 parameter_list|)
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 init|=
 name|panel
@@ -2858,7 +2871,8 @@ name|i
 operator|<
 name|dirs
 operator|.
-name|length
+name|size
+argument_list|()
 condition|;
 name|i
 operator|++
@@ -2870,9 +2884,11 @@ operator|new
 name|File
 argument_list|(
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 argument_list|)
 operator|.
 name|exists
@@ -2916,9 +2932,11 @@ operator|new
 name|File
 argument_list|(
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 name|found
-index|]
+argument_list|)
 operator|+
 name|System
 operator|.
@@ -3063,8 +3081,10 @@ name|NamedCompound
 name|edits
 parameter_list|)
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 init|=
 name|panel
@@ -3096,7 +3116,8 @@ name|i
 operator|<
 name|dirs
 operator|.
-name|length
+name|size
+argument_list|()
 condition|;
 name|i
 operator|++
@@ -3108,9 +3129,11 @@ operator|new
 name|File
 argument_list|(
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 argument_list|)
 operator|.
 name|exists
@@ -3142,9 +3165,11 @@ argument_list|(
 literal|"dir: "
 operator|+
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 name|found
-index|]
+argument_list|)
 operator|+
 literal|"\t ext: "
 operator|+
@@ -3176,9 +3201,11 @@ operator|new
 name|File
 argument_list|(
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 name|found
-index|]
+argument_list|)
 operator|+
 name|System
 operator|.

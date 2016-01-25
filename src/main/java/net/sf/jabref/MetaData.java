@@ -708,8 +708,10 @@ block|}
 comment|/**      * Look up the directory set up for the given field type for this database.      * If no directory is set up, return that defined in global preferences.      * There can be up to three directory definitions for these files:      * the database's metadata can specify a general directory and/or a user-specific directory      * or the preferences can specify one.      *      * The settings are prioritized in the following order and the first defined setting is used:      * 1. metadata user-specific directory      * 2. metadata general directory      * 3. preferences directory.      *      * @param fieldName The field type      * @return The default directory for this field type.      */
 DECL|method|getFileDirectory (String fieldName)
 specifier|public
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getFileDirectory
 parameter_list|(
 name|String
@@ -999,18 +1001,6 @@ block|}
 block|}
 return|return
 name|dirs
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-name|dirs
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
 return|;
 block|}
 comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      * @param db          The BibDatabase this metadata belongs to      * @param version     The group tree version      * @return true if parsing was successful, false otherwise      */

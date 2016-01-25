@@ -126,6 +126,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -325,7 +335,12 @@ name|expandFilename
 argument_list|(
 name|link
 argument_list|,
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|dirs
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/*          * Stumbled over this while investigating          *          * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306          */

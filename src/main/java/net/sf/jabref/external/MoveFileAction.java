@@ -246,6 +246,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Action for moving or renaming a file that is linked to from an entry in JabRef.  */
 end_comment
@@ -424,8 +434,10 @@ block|{
 comment|// TODO: notify that this operation cannot be done on remote links
 block|}
 comment|// Get an absolute path representation:
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 init|=
 name|frame
@@ -460,7 +472,8 @@ name|i
 operator|<
 name|dirs
 operator|.
-name|length
+name|size
+argument_list|()
 condition|;
 name|i
 operator|++
@@ -472,9 +485,11 @@ operator|new
 name|File
 argument_list|(
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 argument_list|)
 operator|.
 name|exists
@@ -777,18 +792,22 @@ operator|new
 name|StringBuilder
 argument_list|(
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 name|found
-index|]
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
 operator|!
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 name|found
-index|]
+argument_list|)
 operator|.
 name|endsWith
 argument_list|(
@@ -1005,9 +1024,11 @@ operator|new
 name|File
 argument_list|(
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 name|found
-index|]
+argument_list|)
 argument_list|)
 operator|.
 name|getCanonicalPath

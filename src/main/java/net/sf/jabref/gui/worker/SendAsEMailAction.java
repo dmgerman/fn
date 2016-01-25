@@ -504,10 +504,6 @@ argument_list|(
 name|bes
 argument_list|)
 argument_list|,
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|frame
 operator|.
 name|getCurrentBasePanel
@@ -521,7 +517,6 @@ argument_list|(
 name|Globals
 operator|.
 name|FILE_FIELD
-argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;

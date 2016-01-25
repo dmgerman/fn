@@ -230,6 +230,16 @@ name|URL
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class handles the download of an external file. Typically called when the user clicks  * the "Download" button in a FileListEditor shown in an EntryEditor.  *<p/>  * The FileListEditor constructs the DownloadExternalFile instance, then calls the download()  * method passing a reference to itself as a callback. The download() method asks for the URL,  * then starts the download. When the download is completed, it calls the downloadCompleted()  * method on the callback FileListEditor, which then needs to take care of linking to the file.  * The local filename is passed as an argument to the downloadCompleted() method.  *<p/>  * If the download is cancelled, or failed, the user is informed. The callback is never called.  */
 end_comment
@@ -779,8 +789,10 @@ argument_list|(
 name|suffix
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|fDirectory
 init|=
 name|getFileDirectory
@@ -794,7 +806,8 @@ if|if
 condition|(
 name|fDirectory
 operator|.
-name|length
+name|size
+argument_list|()
 operator|==
 literal|0
 condition|)
@@ -809,9 +822,11 @@ block|{
 name|directory
 operator|=
 name|fDirectory
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 expr_stmt|;
 block|}
 specifier|final
@@ -1746,8 +1761,10 @@ block|}
 block|}
 DECL|method|getFileDirectory ()
 specifier|private
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getFileDirectory
 parameter_list|()
 block|{
