@@ -776,7 +776,7 @@ operator|.
 name|USER_FILE_DIR
 argument_list|)
 expr_stmt|;
-comment|// FILE_DIR_FOR_DIR
+comment|// FILE_DIR_FOR_DB
 name|metaData
 operator|=
 name|getData
@@ -936,28 +936,24 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// 4. bib file directory TODO: remove these options?
+comment|// 4. bib file directory
 if|if
 condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|BIB_LOCATION_AS_FILE_DIR
-argument_list|)
-operator|&&
-operator|(
 name|getFile
 argument_list|()
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
+name|String
+name|parentDir
+init|=
+name|getFile
+argument_list|()
+operator|.
+name|getParent
+argument_list|()
+decl_stmt|;
 comment|// Check if we should add it as primary file dir (first in the list) or not:
 if|if
 condition|(
@@ -979,11 +975,7 @@ name|add
 argument_list|(
 literal|0
 argument_list|,
-name|getFile
-argument_list|()
-operator|.
-name|getParent
-argument_list|()
+name|parentDir
 argument_list|)
 expr_stmt|;
 block|}
@@ -993,11 +985,7 @@ name|fileDirs
 operator|.
 name|add
 argument_list|(
-name|getFile
-argument_list|()
-operator|.
-name|getParent
-argument_list|()
+name|parentDir
 argument_list|)
 expr_stmt|;
 block|}
