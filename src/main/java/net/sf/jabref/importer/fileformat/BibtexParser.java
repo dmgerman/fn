@@ -3069,6 +3069,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+break|break;
 case|case
 literal|'\n'
 case|:
