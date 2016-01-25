@@ -298,7 +298,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|List
 import|;
 end_import
 
@@ -707,7 +707,7 @@ else|else
 block|{
 comment|// User indicated to store anyway.
 comment|// See if the database has the protected flag set:
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>

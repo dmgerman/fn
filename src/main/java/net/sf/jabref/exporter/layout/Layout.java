@@ -30,16 +30,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -189,11 +179,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|Layout (Vector<StringInt> parsedEntries, String classPrefix)
+DECL|method|Layout (List<StringInt> parsedEntries, String classPrefix)
 specifier|public
 name|Layout
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|StringInt
 argument_list|>
@@ -203,14 +193,14 @@ name|String
 name|classPrefix
 parameter_list|)
 block|{
-name|Vector
+name|List
 argument_list|<
 name|LayoutEntry
 argument_list|>
 name|tmpEntries
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|(
 name|parsedEntries
@@ -219,7 +209,7 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|StringInt
 argument_list|>
@@ -284,7 +274,7 @@ block|{
 name|blockEntries
 operator|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
@@ -412,7 +402,7 @@ block|{
 name|blockEntries
 operator|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
