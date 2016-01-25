@@ -817,7 +817,7 @@ block|}
 block|}
 name|Util
 operator|.
-name|updateField
+name|updateNonDisplayableField
 argument_list|(
 name|be
 argument_list|,

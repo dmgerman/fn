@@ -2155,6 +2155,22 @@ return|return
 name|changed
 return|;
 block|}
+DECL|method|setChanged (boolean changed)
+specifier|public
+name|void
+name|setChanged
+parameter_list|(
+name|boolean
+name|changed
+parameter_list|)
+block|{
+name|this
+operator|.
+name|changed
+operator|=
+name|changed
+expr_stmt|;
+block|}
 DECL|method|putKeywords (List<String> keywords)
 specifier|public
 name|void

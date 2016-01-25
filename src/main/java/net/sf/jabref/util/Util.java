@@ -3097,7 +3097,7 @@ return|return
 name|targetName
 return|;
 block|}
-comment|/**      * @param ce indicates the undo named compound. May be null      */
+comment|/**      *      * Updating a field will result in the entry being reformatted on save      *      * @param ce indicates the undo named compound. May be null      */
 DECL|method|updateField (BibEntry be, String field, String newValue, NamedCompound ce)
 specifier|public
 specifier|static
@@ -3137,6 +3137,57 @@ name|newValue
 argument_list|,
 name|ce
 argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Updating a non-displayable field does not result in the entry being reformatted on save      *      * @param ce indicates the undo named compound. May be null      */
+DECL|method|updateNonDisplayableField (BibEntry be, String field, String newValue, NamedCompound ce)
+specifier|public
+specifier|static
+name|void
+name|updateNonDisplayableField
+parameter_list|(
+name|BibEntry
+name|be
+parameter_list|,
+name|String
+name|field
+parameter_list|,
+name|String
+name|newValue
+parameter_list|,
+name|NamedCompound
+name|ce
+parameter_list|)
+block|{
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+operator|.
+name|updateField
+argument_list|(
+name|be
+argument_list|,
+name|field
+argument_list|,
+name|newValue
+argument_list|,
+name|ce
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|be
+operator|.
+name|setChanged
+argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
