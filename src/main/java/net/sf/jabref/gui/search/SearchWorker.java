@@ -485,13 +485,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|hits
 operator|>
 literal|0
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
+operator|(
 name|basePanel
 operator|.
 name|mainTable
@@ -500,6 +500,7 @@ name|getRowCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|basePanel
@@ -511,7 +512,6 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|basePanel
 operator|.

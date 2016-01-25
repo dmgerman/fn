@@ -2369,19 +2369,9 @@ expr_stmt|;
 if|if
 condition|(
 name|wordListModel
-operator|!=
+operator|==
 literal|null
 condition|)
-block|{
-name|wordList
-operator|.
-name|setModel
-argument_list|(
-name|wordListModel
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|wordListModel
 operator|=
@@ -2406,7 +2396,7 @@ argument_list|,
 name|wordListModel
 argument_list|)
 expr_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -2470,6 +2460,16 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+block|}
+else|else
+block|{
+name|wordList
+operator|.
+name|setModel
+argument_list|(
+name|wordListModel
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|findPos (DefaultListModel<String> lm, String item)

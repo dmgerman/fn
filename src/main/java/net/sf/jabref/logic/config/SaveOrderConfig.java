@@ -20,12 +20,22 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Vector
 import|;
 end_import
 
 begin_comment
-comment|/**  * Stores the save order config from MetaData  *   * Format:<choice>, pair of field + ascending (boolean)  */
+comment|/**  * Stores the save order config from MetaData  *  * Format:<choice>, pair of field + ascending (boolean)  */
 end_comment
 
 begin_class
@@ -153,11 +163,11 @@ name|SortCriterion
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|SaveOrderConfig (Vector<String> data)
+DECL|method|SaveOrderConfig (List<String> data)
 specifier|public
 name|SaveOrderConfig
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -196,7 +206,7 @@ name|choice
 init|=
 name|data
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|0
 argument_list|)
@@ -241,14 +251,14 @@ name|SortCriterion
 argument_list|(
 name|data
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|1
 argument_list|)
 argument_list|,
 name|data
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|2
 argument_list|)
@@ -287,14 +297,14 @@ name|SortCriterion
 argument_list|(
 name|data
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|3
 argument_list|)
 argument_list|,
 name|data
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|4
 argument_list|)
@@ -333,14 +343,14 @@ name|SortCriterion
 argument_list|(
 name|data
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|5
 argument_list|)
 argument_list|,
 name|data
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|6
 argument_list|)

@@ -146,6 +146,15 @@ specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
+DECL|field|keyBindingRepository
+specifier|private
+name|KeyBindingRepository
+name|keyBindingRepository
+init|=
+operator|new
+name|KeyBindingRepository
+argument_list|()
+decl_stmt|;
 DECL|method|KeyBindingPreferences (JabRefPreferences prefs)
 specifier|public
 name|KeyBindingPreferences
@@ -169,15 +178,6 @@ name|restoreKeyBindings
 argument_list|()
 expr_stmt|;
 block|}
-DECL|field|keyBindingRepository
-specifier|private
-name|KeyBindingRepository
-name|keyBindingRepository
-init|=
-operator|new
-name|KeyBindingRepository
-argument_list|()
-decl_stmt|;
 comment|/**      * Returns the KeyStroke for this binding, as defined by the defaults, or in the Preferences.      */
 DECL|method|getKey (KeyBinding bindName)
 specifier|public

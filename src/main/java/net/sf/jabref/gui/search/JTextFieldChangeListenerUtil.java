@@ -292,6 +292,7 @@ name|d1
 operator|!=
 literal|null
 condition|)
+block|{
 name|d1
 operator|.
 name|removeDocumentListener
@@ -299,12 +300,14 @@ argument_list|(
 name|dl
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|d2
 operator|!=
 literal|null
 condition|)
+block|{
 name|d2
 operator|.
 name|addDocumentListener
@@ -312,6 +315,7 @@ argument_list|(
 name|dl
 argument_list|)
 expr_stmt|;
+block|}
 name|dl
 operator|.
 name|changedUpdate
@@ -336,6 +340,7 @@ name|d
 operator|!=
 literal|null
 condition|)
+block|{
 name|d
 operator|.
 name|addDocumentListener
@@ -343,6 +348,7 @@ argument_list|(
 name|dl
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

@@ -187,15 +187,11 @@ name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
 DECL|field|type
+specifier|private
 name|String
 name|type
 decl_stmt|;
 comment|// The type of item to create.
-DECL|field|keyStroke
-name|KeyStroke
-name|keyStroke
-decl_stmt|;
-comment|// Used for the specific instances.
 DECL|method|NewEntryAction (JabRefFrame jabRefFrame, KeyStroke key)
 specifier|public
 name|NewEntryAction
@@ -264,7 +260,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NewEntryAction (JabRefFrame jabRefFrame, String type_)
+DECL|method|NewEntryAction (JabRefFrame jabRefFrame, String type)
 specifier|public
 name|NewEntryAction
 parameter_list|(
@@ -272,7 +268,7 @@ name|JabRefFrame
 name|jabRefFrame
 parameter_list|,
 name|String
-name|type_
+name|type
 parameter_list|)
 block|{
 name|this
@@ -292,16 +288,18 @@ name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
-name|type_
+name|type
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|type
 operator|=
-name|type_
+name|type
 expr_stmt|;
 block|}
-DECL|method|NewEntryAction (JabRefFrame jabRefFrame, String type_, KeyStroke key)
+DECL|method|NewEntryAction (JabRefFrame jabRefFrame, String type, KeyStroke key)
 specifier|public
 name|NewEntryAction
 parameter_list|(
@@ -309,7 +307,7 @@ name|JabRefFrame
 name|jabRefFrame
 parameter_list|,
 name|String
-name|type_
+name|type
 parameter_list|,
 name|KeyStroke
 name|key
@@ -332,7 +330,7 @@ name|EntryUtil
 operator|.
 name|capitalizeFirst
 argument_list|(
-name|type_
+name|type
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -345,9 +343,11 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|type
 operator|=
-name|type_
+name|type
 expr_stmt|;
 block|}
 annotation|@

@@ -86,7 +86,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|List
 import|;
 end_import
 
@@ -885,7 +885,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>

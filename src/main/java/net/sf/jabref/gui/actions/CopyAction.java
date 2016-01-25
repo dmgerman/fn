@@ -102,6 +102,7 @@ name|AbstractAction
 block|{
 DECL|field|field
 specifier|private
+specifier|final
 name|JTextComponent
 name|field
 decl_stmt|;
@@ -208,13 +209,12 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|data
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 operator|!
 name|data
 operator|.
@@ -231,7 +231,6 @@ argument_list|(
 name|data
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

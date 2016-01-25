@@ -109,20 +109,6 @@ return|return;
 block|}
 specifier|final
 name|String
-name|code
-init|=
-name|KeyEvent
-operator|.
-name|getKeyText
-argument_list|(
-name|evt
-operator|.
-name|getKeyCode
-argument_list|()
-argument_list|)
-decl_stmt|;
-specifier|final
-name|String
 name|modifier
 init|=
 name|KeyEvent
@@ -208,6 +194,20 @@ return|return;
 comment|// need a modifier except for function, escape and delete keys
 block|}
 block|}
+specifier|final
+name|String
+name|code
+init|=
+name|KeyEvent
+operator|.
+name|getKeyText
+argument_list|(
+name|evt
+operator|.
+name|getKeyCode
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|// second key cannot be a modifiers
 if|if
 condition|(
@@ -269,7 +269,6 @@ name|newKey
 decl_stmt|;
 if|if
 condition|(
-operator|!
 literal|""
 operator|.
 name|equals
@@ -277,6 +276,13 @@ argument_list|(
 name|modifier
 argument_list|)
 condition|)
+block|{
+name|newKey
+operator|=
+name|code
+expr_stmt|;
+block|}
+else|else
 block|{
 name|newKey
 operator|=
@@ -294,13 +300,6 @@ argument_list|)
 operator|+
 literal|" "
 operator|+
-name|code
-expr_stmt|;
-block|}
-else|else
-block|{
-name|newKey
-operator|=
 name|code
 expr_stmt|;
 block|}

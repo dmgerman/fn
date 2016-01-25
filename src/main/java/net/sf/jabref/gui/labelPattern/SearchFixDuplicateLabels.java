@@ -184,6 +184,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_comment
 comment|/**  * Function for resolving duplicate BibTeX keys.  */
 end_comment
@@ -204,7 +214,7 @@ name|panel
 decl_stmt|;
 DECL|field|dupes
 specifier|private
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -305,7 +315,6 @@ block|{
 comment|// See whether this entry's key is already known:
 if|if
 condition|(
-operator|!
 name|foundKeys
 operator|.
 name|containsKey
@@ -313,19 +322,6 @@ argument_list|(
 name|key
 argument_list|)
 condition|)
-block|{
-comment|// Not already known. Add key and entry to map:
-name|foundKeys
-operator|.
-name|put
-argument_list|(
-name|key
-argument_list|,
-name|entry
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 comment|// Already known, so we have found a dupe. See if it was already found as a dupe:
 if|if
@@ -397,6 +393,19 @@ name|al
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+comment|// Not already known. Add key and entry to map:
+name|foundKeys
+operator|.
+name|put
+argument_list|(
+name|key
+argument_list|,
+name|entry
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}

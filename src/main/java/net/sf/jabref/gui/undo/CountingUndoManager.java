@@ -88,6 +88,7 @@ name|current
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -200,10 +201,9 @@ name|hasChanged
 parameter_list|()
 block|{
 return|return
-operator|!
 operator|(
 name|current
-operator|==
+operator|!=
 name|unchangedPoint
 operator|)
 return|;

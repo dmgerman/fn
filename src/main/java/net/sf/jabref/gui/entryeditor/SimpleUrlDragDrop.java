@@ -219,29 +219,33 @@ operator|.
 name|StoreFieldAction
 name|storeFieldAction
 decl_stmt|;
-DECL|method|SimpleUrlDragDrop (FieldEditor _editor, EntryEditor.StoreFieldAction _storeFieldAction)
+DECL|method|SimpleUrlDragDrop (FieldEditor editor, EntryEditor.StoreFieldAction storeFieldAction)
 specifier|public
 name|SimpleUrlDragDrop
 parameter_list|(
 name|FieldEditor
-name|_editor
+name|editor
 parameter_list|,
 name|EntryEditor
 operator|.
 name|StoreFieldAction
-name|_storeFieldAction
+name|storeFieldAction
 parameter_list|)
 block|{
+name|this
+operator|.
 name|editor
 operator|=
-name|_editor
+name|editor
 expr_stmt|;
+name|this
+operator|.
 name|storeFieldAction
 operator|=
-name|_storeFieldAction
+name|storeFieldAction
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dragEnter(java.awt.dnd.DropTargetDragEvent)      */
+comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragEnter(java.awt.dnd.DropTargetDragEvent)      */
 annotation|@
 name|Override
 DECL|method|dragEnter (DropTargetDragEvent dtde)
@@ -253,7 +257,7 @@ name|DropTargetDragEvent
 name|dtde
 parameter_list|)
 block|{     }
-comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dragOver(java.awt.dnd.DropTargetDragEvent)      */
+comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragOver(java.awt.dnd.DropTargetDragEvent)      */
 annotation|@
 name|Override
 DECL|method|dragOver (DropTargetDragEvent dtde)
@@ -265,7 +269,7 @@ name|DropTargetDragEvent
 name|dtde
 parameter_list|)
 block|{     }
-comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dropActionChanged(java.awt.dnd.DropTargetDragEvent)      */
+comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dropActionChanged(java.awt.dnd.DropTargetDragEvent)      */
 annotation|@
 name|Override
 DECL|method|dropActionChanged (DropTargetDragEvent dtde)
@@ -277,7 +281,7 @@ name|DropTargetDragEvent
 name|dtde
 parameter_list|)
 block|{     }
-comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dragExit(java.awt.dnd.DropTargetEvent)      */
+comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragExit(java.awt.dnd.DropTargetEvent)      */
 annotation|@
 name|Override
 DECL|method|dragExit (DropTargetEvent dte)
@@ -289,7 +293,7 @@ name|DropTargetEvent
 name|dte
 parameter_list|)
 block|{     }
-comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#drop(java.awt.dnd.DropTargetDropEvent)      */
+comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#drop(java.awt.dnd.DropTargetDropEvent)      */
 annotation|@
 name|Override
 DECL|method|drop (DropTargetDropEvent event)

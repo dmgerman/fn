@@ -126,7 +126,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashSet
+name|Optional
 import|;
 end_import
 
@@ -136,7 +136,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Optional
+name|Set
 import|;
 end_import
 
@@ -508,7 +508,8 @@ operator|+
 literal|"</B></HTML>"
 decl_stmt|;
 comment|/**      * Add controls for switching between abbreviated and full journal names.      * If this field also has a FieldContentSelector, we need to combine these.      *      * @param frame      * @param panel      * @param editor      * @param entry      * @param contentSelectors      * @param storeFieldAction      * @return      */
-DECL|method|getJournalExtraComponent (JabRefFrame frame, BasePanel panel, FieldEditor editor, BibEntry entry, HashSet<FieldContentSelector> contentSelectors, StoreFieldAction storeFieldAction)
+DECL|method|getJournalExtraComponent (JabRefFrame frame, BasePanel panel, FieldEditor editor, BibEntry entry, Set<FieldContentSelector> contentSelectors, StoreFieldAction storeFieldAction)
+specifier|public
 specifier|static
 name|Optional
 argument_list|<
@@ -528,7 +529,7 @@ parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|,
-name|HashSet
+name|Set
 argument_list|<
 name|FieldContentSelector
 argument_list|>
@@ -971,6 +972,7 @@ return|;
 block|}
 comment|/**      *      * @param frame      * @param panel      * @param fieldEditor      * @param entryEditor      * @param isZip      * @return      */
 DECL|method|getBrowseDocExtraComponent (JabRefFrame frame, BasePanel panel, FieldEditor fieldEditor, EntryEditor entryEditor, Boolean isZip)
+specifier|public
 specifier|static
 name|Optional
 argument_list|<
@@ -1008,7 +1010,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
-specifier|final
 name|OpenFileFilter
 name|off
 decl_stmt|;
@@ -1572,7 +1573,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Return a button opening a content selector for fields where one exists      *      * @param frame      * @param panel      * @param editor      * @param contentSelectors      * @param storeFieldAction      * @return      */
-DECL|method|getSelectorExtraComponent (JabRefFrame frame, BasePanel panel, FieldEditor editor, HashSet<FieldContentSelector> contentSelectors, StoreFieldAction storeFieldAction)
+DECL|method|getSelectorExtraComponent (JabRefFrame frame, BasePanel panel, FieldEditor editor, Set<FieldContentSelector> contentSelectors, StoreFieldAction storeFieldAction)
 specifier|public
 specifier|static
 name|Optional
@@ -1590,7 +1591,7 @@ parameter_list|,
 name|FieldEditor
 name|editor
 parameter_list|,
-name|HashSet
+name|Set
 argument_list|<
 name|FieldContentSelector
 argument_list|>

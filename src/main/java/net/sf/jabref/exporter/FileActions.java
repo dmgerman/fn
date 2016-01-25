@@ -2780,6 +2780,7 @@ name|result
 init|=
 operator|new
 name|LinkedList
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|result
@@ -2804,7 +2805,7 @@ condition|(
 name|isSaveOperation
 condition|)
 block|{
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>

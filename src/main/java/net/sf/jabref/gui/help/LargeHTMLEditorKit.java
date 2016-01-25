@@ -308,11 +308,9 @@ name|Object
 name|o
 init|=
 name|elementName
-operator|!=
+operator|==
 literal|null
 condition|?
-literal|null
-else|:
 name|attrs
 operator|.
 name|getAttribute
@@ -321,6 +319,8 @@ name|StyleConstants
 operator|.
 name|NameAttribute
 argument_list|)
+else|:
+literal|null
 decl_stmt|;
 if|if
 condition|(

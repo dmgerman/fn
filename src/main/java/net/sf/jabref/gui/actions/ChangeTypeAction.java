@@ -75,11 +75,13 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|type
+specifier|private
 specifier|final
 name|EntryType
 name|type
 decl_stmt|;
 DECL|field|panel
+specifier|private
 specifier|final
 name|BasePanel
 name|panel

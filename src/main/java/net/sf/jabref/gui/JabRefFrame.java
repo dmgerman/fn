@@ -4896,7 +4896,7 @@ decl_stmt|;
 if|if
 condition|(
 name|keyStroke
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -4913,8 +4913,6 @@ name|type
 operator|.
 name|getName
 argument_list|()
-argument_list|,
-name|keyStroke
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4934,6 +4932,8 @@ name|type
 operator|.
 name|getName
 argument_list|()
+argument_list|,
+name|keyStroke
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5773,9 +5773,29 @@ name|panel
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|setTitle
+argument_list|(
+name|GUIGlobals
+operator|.
+name|frameTitle
+operator|+
+literal|" - "
+operator|+
+name|GUIGlobals
+operator|.
+name|untitledTitle
+operator|+
+name|changeFlag
+operator|+
+name|mode
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|String
 name|databaseFile
@@ -5797,26 +5817,6 @@ operator|+
 literal|" - "
 operator|+
 name|databaseFile
-operator|+
-name|changeFlag
-operator|+
-name|mode
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|setTitle
-argument_list|(
-name|GUIGlobals
-operator|.
-name|frameTitle
-operator|+
-literal|" - "
-operator|+
-name|GUIGlobals
-operator|.
-name|untitledTitle
 operator|+
 name|changeFlag
 operator|+
@@ -6056,12 +6056,12 @@ name|prefs
 return|;
 block|}
 comment|/**      * Tears down all things started by JabRef      *<p>      * FIXME: Currently some threads remain and therefore hinder JabRef to be closed properly      *      * @param filenames the filenames of all currently opened files - used for storing them if prefs openLastEdited is set to true      */
-DECL|method|tearDownJabRef (Vector<String> filenames)
+DECL|method|tearDownJabRef (List<String> filenames)
 specifier|private
 name|void
 name|tearDownJabRef
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -6318,14 +6318,14 @@ name|close
 init|=
 literal|true
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|filenames
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -6387,9 +6387,18 @@ argument_list|)
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|filename
+operator|=
+name|GUIGlobals
+operator|.
+name|untitledTitle
+expr_stmt|;
+block|}
+else|else
 block|{
 name|filename
 operator|=
@@ -6403,15 +6412,6 @@ argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|filename
-operator|=
-name|GUIGlobals
-operator|.
-name|untitledTitle
 expr_stmt|;
 block|}
 name|int
@@ -10961,15 +10961,15 @@ operator|-
 literal|1
 argument_list|,
 name|file
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|null
+else|:
 name|file
 operator|.
 name|getAbsolutePath
 argument_list|()
-else|:
-literal|null
 argument_list|)
 expr_stmt|;
 comment|// update all tab titles
@@ -11896,14 +11896,14 @@ block|{
 comment|// Here we store the names of all current files. If
 comment|// there is no current file, we remove any
 comment|// previously stored filename.
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|filenames
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -12113,6 +12113,7 @@ extends|extends
 name|MnemonicAwareAction
 block|{
 DECL|field|running
+specifier|private
 specifier|volatile
 name|boolean
 name|running
@@ -13677,9 +13678,18 @@ name|panel
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|filename
+operator|=
+name|GUIGlobals
+operator|.
+name|untitledTitle
+expr_stmt|;
+block|}
+else|else
 block|{
 name|filename
 operator|=
@@ -13690,15 +13700,6 @@ argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|filename
-operator|=
-name|GUIGlobals
-operator|.
-name|untitledTitle
 expr_stmt|;
 block|}
 name|int

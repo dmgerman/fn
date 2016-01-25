@@ -58,6 +58,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -68,7 +78,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|List
 import|;
 end_import
 
@@ -433,14 +443,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|/**          * Added Bibtexkey to combobox.          *          * [ 1540646 ] default sort order: bibtexkey          *          * http://sourceforge.net/tracker/index.php?func=detail&aid=1540646&group_id=92314&atid=600306          */
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|fieldNames
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|(
 name|BibtexFields
