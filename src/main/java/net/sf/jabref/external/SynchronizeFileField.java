@@ -852,8 +852,10 @@ name|old
 argument_list|)
 expr_stmt|;
 comment|// We need to specify which directories to search in for Util.expandFilename:
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirsS
 init|=
 name|panel
@@ -2281,8 +2283,10 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 init|=
 name|metaData
@@ -2298,7 +2302,8 @@ if|if
 condition|(
 name|dirs
 operator|.
-name|length
+name|size
+argument_list|()
 operator|==
 literal|0
 condition|)

@@ -169,16 +169,20 @@ block|{
 DECL|field|paths
 specifier|private
 specifier|final
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|paths
 decl_stmt|;
-DECL|method|RelativePathsCleanup (String[] paths)
+DECL|method|RelativePathsCleanup (List<String> paths)
 specifier|public
 name|RelativePathsCleanup
 parameter_list|(
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|paths
 parameter_list|)
 block|{

@@ -600,6 +600,15 @@ name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
+operator|.
+name|toArray
+argument_list|(
+operator|new
+name|String
+index|[
+literal|0
+index|]
+argument_list|)
 expr_stmt|;
 comment|// Also store the database's file in a global variable:
 name|Globals

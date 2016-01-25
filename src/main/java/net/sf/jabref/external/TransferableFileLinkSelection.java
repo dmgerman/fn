@@ -246,8 +246,10 @@ literal|0
 condition|)
 block|{
 comment|// Find the default directory for this field type, if any:
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 init|=
 name|panel

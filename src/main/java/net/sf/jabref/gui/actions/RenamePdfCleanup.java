@@ -213,8 +213,10 @@ block|{
 DECL|field|paths
 specifier|private
 specifier|final
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|paths
 decl_stmt|;
 DECL|field|database
@@ -234,12 +236,14 @@ specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|method|RenamePdfCleanup (String[] paths, Boolean onlyRelativePaths, BibDatabase database)
+DECL|method|RenamePdfCleanup (List<String> paths, Boolean onlyRelativePaths, BibDatabase database)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|paths
 parameter_list|,
 name|Boolean

@@ -146,6 +146,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -1068,8 +1078,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Find the default directory for this field type, if any:
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 init|=
 name|metaData
@@ -1088,7 +1100,8 @@ if|if
 condition|(
 name|dirs
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|0
 condition|)
@@ -1350,8 +1363,10 @@ name|FieldEditor
 name|editor
 parameter_list|)
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 init|=
 name|metaData
@@ -1370,7 +1385,8 @@ if|if
 condition|(
 name|dirs
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|0
 condition|)
@@ -1378,9 +1394,11 @@ block|{
 name|directory
 operator|=
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 expr_stmt|;
 comment|// Default to the first directory in the list
 block|}
@@ -1908,8 +1926,10 @@ name|res
 argument_list|)
 decl_stmt|;
 comment|// Find the default directory for this field type:
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|dirs
 init|=
 name|metaData
@@ -1963,7 +1983,8 @@ if|if
 condition|(
 name|dirs
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|0
 condition|)
@@ -1983,9 +2004,11 @@ argument_list|,
 name|fieldName
 argument_list|,
 name|dirs
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 argument_list|)
 argument_list|,
 name|Localization
@@ -2453,31 +2476,14 @@ literal|"'..."
 argument_list|)
 expr_stmt|;
 return|return
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
+lambda|->
 block|{
-comment|/*                  * Find the following directories to look in for:                  *                  * default directory for this field type.                  *                  * directory of bibtex-file. // NOT POSSIBLE at the moment.                  *                  * JabRef-directory.                  */
-name|LinkedList
+comment|/*              * Find the following directories to look in for:              *              * default directory for this field type.              *              * directory of bibtex-file. // NOT POSSIBLE at the moment.              *              * JabRef-directory.              */
+name|List
 argument_list|<
 name|String
 argument_list|>
-name|list
-init|=
-operator|new
-name|LinkedList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-name|String
-index|[]
 name|dirs
 init|=
 name|metaData
@@ -2487,15 +2493,6 @@ argument_list|(
 name|fieldName
 argument_list|)
 decl_stmt|;
-name|Collections
-operator|.
-name|addAll
-argument_list|(
-name|list
-argument_list|,
-name|dirs
-argument_list|)
-expr_stmt|;
 name|String
 name|found
 init|=
@@ -2508,14 +2505,14 @@ argument_list|()
 argument_list|,
 name|fieldName
 argument_list|,
-name|list
+name|dirs
 operator|.
 name|toArray
 argument_list|(
 operator|new
 name|String
 index|[
-name|list
+name|dirs
 operator|.
 name|size
 argument_list|()
@@ -2593,7 +2590,6 @@ operator|+
 literal|'.'
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 return|;

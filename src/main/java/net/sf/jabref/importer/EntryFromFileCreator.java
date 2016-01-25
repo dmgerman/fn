@@ -527,8 +527,10 @@ name|getFieldName
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|possibleFilePaths
 init|=
 name|JabRef

@@ -455,7 +455,12 @@ name|flEntry
 operator|.
 name|link
 argument_list|,
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|dirs
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/*                          * Stumbled over this while investigating                          *                          * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306                          */
