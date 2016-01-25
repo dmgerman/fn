@@ -370,14 +370,14 @@ operator|.
 name|IS_OPTION_FIELD
 condition|)
 block|{
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -500,11 +500,11 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|LayoutEntry (Vector<StringInt> parsedEntries, final String classPrefix_, int layoutType)
+DECL|method|LayoutEntry (List<StringInt> parsedEntries, final String classPrefix_, int layoutType)
 specifier|public
 name|LayoutEntry
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|StringInt
 argument_list|>
@@ -522,7 +522,7 @@ name|classPrefix
 operator|=
 name|classPrefix_
 expr_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|StringInt
 argument_list|>
@@ -530,14 +530,14 @@ name|blockEntries
 init|=
 literal|null
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|LayoutEntry
 argument_list|>
 name|tmpEntries
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -672,7 +672,7 @@ block|{
 name|blockEntries
 operator|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;
@@ -2045,7 +2045,7 @@ name|String
 name|classPrefix
 parameter_list|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|String
 index|[]
@@ -2059,7 +2059,7 @@ argument_list|(
 name|formatterName
 argument_list|)
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|LayoutFormatter
 argument_list|>

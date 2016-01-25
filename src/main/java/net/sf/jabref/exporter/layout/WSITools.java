@@ -108,7 +108,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|StringTokenizer
+name|List
 import|;
 end_import
 
@@ -118,7 +118,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|StringTokenizer
 import|;
 end_import
 
@@ -182,18 +182,18 @@ specifier|private
 name|WSITools
 parameter_list|()
 block|{     }
-comment|/**      * @param  vcr  {@link java.util.Vector} of<tt>String</tt>      * @param  buf  Description of the Parameter      * @return      Description of the Return Value      */
-DECL|method|tokenize (Vector<String> vcr, String buf)
+comment|/**      * @param  list  {@link java.util.List} of<tt>String</tt>      * @param  buf  Description of the Parameter      * @return      Description of the Return Value      */
+DECL|method|tokenize (List<String> list, String buf)
 specifier|public
 specifier|static
 name|boolean
 name|tokenize
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
-name|vcr
+name|list
 parameter_list|,
 name|String
 name|buf
@@ -204,7 +204,7 @@ name|WSITools
 operator|.
 name|tokenize
 argument_list|(
-name|vcr
+name|list
 argument_list|,
 name|buf
 argument_list|,
@@ -212,18 +212,18 @@ literal|" \t\n"
 argument_list|)
 return|;
 block|}
-comment|/**      * @param  vcr       {@link java.util.Vector} of<tt>String</tt>      * @param  buf       Description of the Parameter      * @param  delimstr  Description of the Parameter      * @return           Description of the Return Value      */
-DECL|method|tokenize (Vector<String> vcr, String buf, String delimstr)
+comment|/**      * @param  list       {@link java.util.List} of<tt>String</tt>      * @param  buf       Description of the Parameter      * @param  delimstr  Description of the Parameter      * @return           Description of the Return Value      */
+DECL|method|tokenize (List<String> list, String buf, String delimstr)
 specifier|public
 specifier|static
 name|boolean
 name|tokenize
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
-name|vcr
+name|list
 parameter_list|,
 name|String
 name|buf
@@ -232,7 +232,7 @@ name|String
 name|delimstr
 parameter_list|)
 block|{
-name|vcr
+name|list
 operator|.
 name|clear
 argument_list|()
@@ -262,7 +262,7 @@ name|hasMoreTokens
 argument_list|()
 condition|)
 block|{
-name|vcr
+name|list
 operator|.
 name|add
 argument_list|(
@@ -277,18 +277,18 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * @param  vcr       {@link java.util.Vector} of<tt>String</tt>      * @param  s         Description of the Parameter      * @param  delimstr  Description of the Parameter      * @param  limit     Description of the Parameter      * @return           Description of the Return Value      */
-DECL|method|tokenize (Vector<String> vcr, String s, String delimstr, int limit)
+comment|/**      * @param  list       {@link java.util.List} of<tt>String</tt>      * @param  s         Description of the Parameter      * @param  delimstr  Description of the Parameter      * @param  limit     Description of the Parameter      * @return           Description of the Return Value      */
+DECL|method|tokenize (List<String> list, String s, String delimstr, int limit)
 specifier|public
 specifier|static
 name|boolean
 name|tokenize
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
-name|vcr
+name|list
 parameter_list|,
 name|String
 name|s
@@ -311,7 +311,7 @@ operator|+
 literal|'"'
 argument_list|)
 expr_stmt|;
-name|vcr
+name|list
 operator|.
 name|clear
 argument_list|()
@@ -357,7 +357,7 @@ operator|.
 name|nextToken
 argument_list|()
 decl_stmt|;
-name|vcr
+name|list
 operator|.
 name|add
 argument_list|(
@@ -383,7 +383,7 @@ argument_list|(
 name|tmp
 argument_list|)
 expr_stmt|;
-name|vcr
+name|list
 operator|.
 name|add
 argument_list|(

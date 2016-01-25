@@ -54,7 +54,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -173,14 +183,14 @@ decl_stmt|;
 DECL|field|parsedEntries
 specifier|private
 specifier|final
-name|Vector
+name|List
 argument_list|<
 name|StringInt
 argument_list|>
 name|parsedEntries
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;

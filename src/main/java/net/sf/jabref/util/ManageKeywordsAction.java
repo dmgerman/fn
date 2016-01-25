@@ -110,6 +110,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|TreeSet
 import|;
 end_import
@@ -653,7 +663,7 @@ decl_stmt|;
 DECL|field|sortedKeywordsOfAllEntriesBeforeUpdateByUser
 specifier|private
 specifier|final
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1934,7 +1944,7 @@ comment|// we need to check whether a special field is added
 comment|// for each field:
 comment|//   check if something is added
 comment|//   if yes, add all keywords of that special fields to the keywords to be removed
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2251,7 +2261,7 @@ decl_stmt|;
 comment|// we "intercept" with a treeset
 comment|// pro: no duplicates
 comment|// possible con: alphabetical sorting of the keywords
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -2398,16 +2408,16 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|createClone (HashSet<String> keywordsToAdd)
+DECL|method|createClone (Set<String> keywordsToAdd)
 specifier|private
 specifier|static
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
 name|createClone
 parameter_list|(
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
