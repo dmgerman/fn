@@ -3161,6 +3161,14 @@ name|NamedCompound
 name|ce
 parameter_list|)
 block|{
+name|boolean
+name|changed
+init|=
+name|be
+operator|.
+name|hasChanged
+argument_list|()
+decl_stmt|;
 name|net
 operator|.
 name|sf
@@ -3188,7 +3196,7 @@ name|be
 operator|.
 name|setChanged
 argument_list|(
-literal|false
+name|changed
 argument_list|)
 expr_stmt|;
 block|}
