@@ -232,6 +232,11 @@ name|sb
 init|=
 operator|new
 name|StringBuilder
+argument_list|()
+decl_stmt|;
+name|sb
+operator|.
+name|append
 argument_list|(
 name|Localization
 operator|.
@@ -239,10 +244,13 @@ name|lang
 argument_list|(
 literal|"Custom entry types found in file"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|": "
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|Object
 index|[]
 name|types

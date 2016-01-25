@@ -116,7 +116,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -252,7 +252,9 @@ name|prefs
 operator|.
 name|getColor
 argument_list|(
-literal|"markedEntryBackground"
+name|JabRefPreferences
+operator|.
+name|MARKED_ENTRY_BACKGROUND
 operator|+
 name|this
 operator|.
@@ -345,7 +347,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 init|=
@@ -386,7 +388,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|bes

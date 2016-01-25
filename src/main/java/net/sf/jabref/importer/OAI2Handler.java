@@ -28,7 +28,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -71,7 +71,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SAX-Handler to parse OAI2-xml files.  *   * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  */
+comment|/**  * SAX-Handler to parse OAI2-xml files.  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  */
 end_comment
 
 begin_class
@@ -85,7 +85,7 @@ block|{
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|authors
@@ -108,11 +108,11 @@ specifier|private
 name|StringBuffer
 name|characters
 decl_stmt|;
-DECL|method|OAI2Handler (BibtexEntry be)
+DECL|method|OAI2Handler (BibEntry be)
 specifier|public
 name|OAI2Handler
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|)
 block|{
@@ -477,16 +477,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|year
 operator|==
 literal|null
+operator|)
 operator|||
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|year
-argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|entry

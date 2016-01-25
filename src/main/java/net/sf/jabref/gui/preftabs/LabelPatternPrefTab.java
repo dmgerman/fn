@@ -496,7 +496,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"KeyPatternRegex"
+name|JabRefPreferences
+operator|.
+name|KEY_PATTERN_REGEX
 argument_list|,
 name|KeyPatternRegex
 operator|.
@@ -510,7 +512,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"KeyPatternReplacement"
+name|JabRefPreferences
+operator|.
+name|KEY_PATTERN_REPLACEMENT
 argument_list|,
 name|KeyPatternReplacement
 operator|.
@@ -1029,6 +1033,8 @@ name|super
 operator|.
 name|setValues
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getKeyPattern
@@ -1208,7 +1214,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"KeyPatternRegex"
+name|JabRefPreferences
+operator|.
+name|KEY_PATTERN_REGEX
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1222,7 +1230,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"KeyPatternReplacement"
+name|JabRefPreferences
+operator|.
+name|KEY_PATTERN_REPLACEMENT
 argument_list|)
 argument_list|)
 expr_stmt|;

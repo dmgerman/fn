@@ -120,7 +120,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -152,6 +152,20 @@ name|CopacImporter
 extends|extends
 name|ImportFormat
 block|{
+DECL|field|COPAC_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|COPAC_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"^\\s*TI- "
+argument_list|)
+decl_stmt|;
 comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
@@ -178,20 +192,6 @@ return|return
 literal|"cpc"
 return|;
 block|}
-DECL|field|copacPattern
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|copacPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"^\\s*TI- "
-argument_list|)
-decl_stmt|;
 comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
@@ -241,7 +241,7 @@ if|if
 condition|(
 name|CopacImporter
 operator|.
-name|copacPattern
+name|COPAC_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -261,14 +261,14 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(
@@ -384,7 +384,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
@@ -481,7 +481,7 @@ expr_stmt|;
 block|}
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|results
 init|=
@@ -500,11 +500,11 @@ control|)
 block|{
 comment|// Copac does not contain enough information on the type of the
 comment|// document. A book is assumed.
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,
@@ -915,13 +915,13 @@ return|return
 name|results
 return|;
 block|}
-DECL|method|setOrAppend (BibtexEntry b, String field, String value, String separator)
+DECL|method|setOrAppend (BibEntry b, String field, String value, String separator)
 specifier|private
 specifier|static
 name|void
 name|setOrAppend
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|b
 parameter_list|,
 name|String
@@ -934,21 +934,14 @@ name|String
 name|separator
 parameter_list|)
 block|{
-name|String
-name|o
-init|=
+if|if
+condition|(
 name|b
 operator|.
-name|getField
+name|hasField
 argument_list|(
 name|field
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|o
-operator|!=
-literal|null
 condition|)
 block|{
 name|b
@@ -957,7 +950,12 @@ name|setField
 argument_list|(
 name|field
 argument_list|,
-name|o
+name|b
+operator|.
+name|getField
+argument_list|(
+name|field
+argument_list|)
 operator|+
 name|separator
 operator|+

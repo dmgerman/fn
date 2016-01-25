@@ -48,7 +48,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -192,7 +192,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -257,7 +277,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -355,7 +375,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -494,7 +514,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -555,7 +575,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -608,7 +628,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -716,7 +736,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -785,7 +805,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -1022,7 +1042,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -1250,7 +1270,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -1327,7 +1347,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -1384,7 +1404,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -1444,7 +1464,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -1518,7 +1538,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -1735,7 +1755,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -1939,7 +1959,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -2109,7 +2129,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -2220,7 +2240,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -2353,7 +2373,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -2528,7 +2548,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -2614,7 +2634,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -2674,7 +2694,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -2746,14 +2766,14 @@ operator|+
 literal|"FUNCTION {presort} { cite$ 'sort.key$ := } ITERATE { presort } SORT"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2812,7 +2832,7 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BstEntry
 argument_list|>
@@ -2925,7 +2945,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -3003,9 +3023,7 @@ name|run
 argument_list|(
 operator|new
 name|Vector
-argument_list|<
-name|BibtexEntry
-argument_list|>
+argument_list|<>
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3104,7 +3122,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -3178,7 +3196,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -3357,7 +3375,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -3495,7 +3513,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -3565,7 +3583,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -3676,7 +3694,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -3814,7 +3832,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -4062,7 +4080,7 @@ decl_stmt|;
 comment|//
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -4138,7 +4156,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -4203,7 +4221,7 @@ block|}
 DECL|method|bibtexString2BibtexEntry (String s)
 specifier|private
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|bibtexString2BibtexEntry
 parameter_list|(
 name|String
@@ -4228,7 +4246,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -4313,7 +4331,7 @@ argument_list|)
 decl_stmt|;
 name|Vector
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|v
 init|=
@@ -4353,7 +4371,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|t1BibtexEntry ()
-name|BibtexEntry
+name|BibEntry
 name|t1BibtexEntry
 parameter_list|()
 throws|throws

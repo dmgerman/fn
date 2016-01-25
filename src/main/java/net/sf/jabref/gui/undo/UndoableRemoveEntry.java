@@ -72,7 +72,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -88,7 +88,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -107,13 +107,13 @@ block|{
 DECL|field|base
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|base
 decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|panel
@@ -122,14 +122,14 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|method|UndoableRemoveEntry (BibtexDatabase base, BibtexEntry entry, BasePanel panel)
+DECL|method|UndoableRemoveEntry (BibDatabase base, BibEntry entry, BasePanel panel)
 specifier|public
 name|UndoableRemoveEntry
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|BasePanel
@@ -237,9 +237,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|entry
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// If the entry has an editor currently open, we must close it.

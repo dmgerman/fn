@@ -1183,7 +1183,7 @@ name|pushToApplication
 range|:
 name|PushToApplications
 operator|.
-name|applications
+name|APPLICATIONS
 control|)
 block|{
 name|addSettingsButton
@@ -1408,7 +1408,9 @@ name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
-literal|"Directory"
+name|Globals
+operator|.
+name|DIR_SUFFIX
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1640,7 +1642,9 @@ name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
-literal|"Directory"
+name|Globals
+operator|.
+name|DIR_SUFFIX
 argument_list|,
 name|fileDir
 operator|.

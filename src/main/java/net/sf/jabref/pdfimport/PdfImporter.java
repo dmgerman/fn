@@ -216,6 +216,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|external
+operator|.
+name|ExternalFileTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -287,6 +301,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|maintable
 operator|.
 name|MainTable
 import|;
@@ -528,7 +544,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -545,10 +561,6 @@ operator|.
 name|Util
 import|;
 end_import
-
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: Christoph Arbeit  * Date: 08.09.2010  * Time: 14:49:08  * To change this template use File | Settings | File Templates.  */
-end_comment
 
 begin_class
 DECL|class|PdfImporter
@@ -796,7 +808,7 @@ DECL|field|entries
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 decl_stmt|;
@@ -850,9 +862,9 @@ decl_stmt|;
 name|PdfFileFilter
 name|pdfFilter
 init|=
-operator|new
 name|PdfFileFilter
-argument_list|()
+operator|.
+name|INSTANCE
 decl_stmt|;
 for|for
 control|(
@@ -893,7 +905,7 @@ comment|// files and noPdfFiles correctly sorted
 comment|// import the files
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -952,7 +964,7 @@ DECL|method|importPdfFiles (List<String> fileNames, OutputPrinter status)
 specifier|private
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importPdfFiles
 parameter_list|(
@@ -1037,7 +1049,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|res
 init|=
@@ -1058,7 +1070,7 @@ control|)
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|xmpEntriesInFile
 init|=
@@ -1154,7 +1166,7 @@ decl_stmt|;
 name|DroppedFileHandler
 name|dfh
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 name|InputStream
@@ -1164,7 +1176,7 @@ literal|null
 decl_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|localRes
 init|=
@@ -1348,9 +1360,10 @@ operator|.
 name|getPath
 argument_list|()
 argument_list|,
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByName
 argument_list|(
@@ -1729,14 +1742,14 @@ return|;
 block|}
 DECL|method|createNewBlankEntry (String fileName)
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|createNewBlankEntry
 parameter_list|(
 name|String
 name|fileName
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|newEntry
 init|=
 name|createNewEntry
@@ -1778,7 +1791,7 @@ return|;
 block|}
 DECL|method|createNewEntry ()
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|createNewEntry
 parameter_list|()
 block|{
@@ -1834,11 +1847,11 @@ name|next
 argument_list|()
 decl_stmt|;
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|id
 argument_list|,
@@ -1860,7 +1873,7 @@ expr_stmt|;
 comment|// Set owner/timestamp if options are enabled:
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|list
 init|=
@@ -2024,7 +2037,7 @@ specifier|private
 specifier|static
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|readXmpEntries
 parameter_list|(
@@ -2034,7 +2047,7 @@ parameter_list|)
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|xmpEntriesInFile
 init|=
@@ -2064,7 +2077,7 @@ return|return
 name|xmpEntriesInFile
 return|;
 block|}
-DECL|method|hasXmpEntries (List<BibtexEntry> xmpEntriesInFile)
+DECL|method|hasXmpEntries (List<BibEntry> xmpEntriesInFile)
 specifier|private
 specifier|static
 name|boolean
@@ -2072,7 +2085,7 @@ name|hasXmpEntries
 parameter_list|(
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|xmpEntriesInFile
 parameter_list|)

@@ -62,7 +62,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -172,30 +172,27 @@ name|GroupTreeNode
 name|tmpGroupRoot
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|super
 argument_list|(
 name|changedGroups
-operator|!=
+operator|==
 literal|null
 condition|?
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Modified groups tree"
+literal|"Removed all groups"
 argument_list|)
 else|:
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Removed all groups"
+literal|"Modified groups tree"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// JZTODO lyrics
-comment|// @formatter:on
 name|this
 operator|.
 name|changedGroups
@@ -211,7 +208,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
 name|makeChange
@@ -219,7 +216,7 @@ parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 name|NamedCompound
@@ -343,8 +340,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// the group tree is now appled to a different BibtexDatabase than it was created
-comment|// for, which affects groups such as ExplicitGroup (which links to BibtexEntry objects).
+comment|// the group tree is now appled to a different BibDatabase than it was created
+comment|// for, which affects groups such as ExplicitGroup (which links to BibEntry objects).
 comment|// We must traverse the tree and refresh all groups:
 name|root
 operator|.
@@ -387,6 +384,18 @@ name|undo
 argument_list|)
 expr_stmt|;
 comment|// Update tmp database:
+name|tmpGroupRoot
+operator|.
+name|removeAllChildren
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|changedGroups
+operator|!=
+literal|null
+condition|)
+block|{
 name|GroupTreeNode
 name|copied
 init|=
@@ -395,11 +404,6 @@ operator|.
 name|deepCopy
 argument_list|()
 decl_stmt|;
-name|tmpGroupRoot
-operator|.
-name|removeAllChildren
-argument_list|()
-expr_stmt|;
 name|tmpGroupRoot
 operator|.
 name|setGroup
@@ -449,6 +453,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|tmpGroupRoot
 operator|.
 name|refreshGroupsForNewDatabase
@@ -463,6 +468,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|description ()
+specifier|public
 name|JComponent
 name|description
 parameter_list|()
@@ -480,27 +486,24 @@ literal|'.'
 operator|+
 operator|(
 name|changedGroups
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|""
+else|:
 literal|' '
 operator|+
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Accepting the change replaces the complete groups tree with the externally modified groups tree."
 argument_list|)
-else|:
-literal|""
 operator|)
-comment|// @formatter:on
 operator|+
 literal|"</html>"
 argument_list|)
 return|;
-comment|// JZTODO lyrics
 block|}
 block|}
 end_class

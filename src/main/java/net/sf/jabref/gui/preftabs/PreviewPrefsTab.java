@@ -216,7 +216,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -278,14 +278,6 @@ specifier|private
 specifier|final
 name|JabRefPreferences
 name|prefs
-decl_stmt|;
-DECL|field|pan
-name|JPanel
-name|pan
-init|=
-operator|new
-name|JPanel
-argument_list|()
 decl_stmt|;
 DECL|field|layout1
 specifier|private
@@ -493,7 +485,7 @@ decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|method|PreviewPrefsTab (JabRefPreferences prefs)
@@ -1569,7 +1561,7 @@ block|}
 DECL|method|getTestEntry ()
 specifier|private
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|getTestEntry
 parameter_list|()
 block|{
@@ -1593,7 +1585,7 @@ operator|.
 name|entry
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.
@@ -1614,7 +1606,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,

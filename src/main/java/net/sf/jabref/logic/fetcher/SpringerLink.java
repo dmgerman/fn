@@ -88,7 +88,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -243,7 +243,7 @@ literal|"link.springer.com"
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|findFullText (BibtexEntry entry)
+DECL|method|findFullText (BibEntry entry)
 specifier|public
 name|Optional
 argument_list|<
@@ -251,7 +251,7 @@ name|URL
 argument_list|>
 name|findFullText
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 throws|throws
@@ -435,20 +435,13 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"SpringerLink API request failed: "
-operator|+
-name|e
-operator|.
-name|getMessage
-argument_list|()
+literal|"SpringerLink API request failed"
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// TODO: title search
-comment|// We can also get abstract automatically!
 return|return
 name|pdfLink
 return|;

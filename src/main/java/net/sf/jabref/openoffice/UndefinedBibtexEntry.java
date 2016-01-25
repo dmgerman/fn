@@ -28,7 +28,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -49,7 +49,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Subclass of BibtexEntry for representing entries referenced in a document that can't  * be found in JabRef's current database.  */
+comment|/**  * Subclass of BibEntry for representing entries referenced in a document that can't  * be found in JabRef's current database.  */
 end_comment
 
 begin_class
@@ -57,7 +57,7 @@ DECL|class|UndefinedBibtexEntry
 class|class
 name|UndefinedBibtexEntry
 extends|extends
-name|BibtexEntry
+name|BibEntry
 block|{
 DECL|field|key
 specifier|private

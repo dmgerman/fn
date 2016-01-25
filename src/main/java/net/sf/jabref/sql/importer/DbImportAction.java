@@ -54,9 +54,19 @@ begin_import
 import|import
 name|java
 operator|.
+name|sql
+operator|.
+name|Statement
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
-name|ArrayList
+name|List
 import|;
 end_import
 
@@ -174,7 +184,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -303,7 +313,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 27, 2008 Time: 6:09:08 PM To change this template use File | Settings  * | File Templates.  *  * Jan. 20th Changed to accomodate the new way to connect to DB and also to show the exceptions and to display more than  * one DB imported (by ifsteinm)  *  */
+comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 27, 2008 Time: 6:09:08 PM To change this template use File | Settings  * | File Templates.  *<p>  * Jan. 20th Changed to accommodate the new way to connect to DB and also to show the exceptions and to display more than  * one DB imported (by ifsteinm)  */
 end_comment
 
 begin_class
@@ -316,7 +326,7 @@ name|AbstractWorker
 block|{
 DECL|field|database
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|metaData
@@ -342,10 +352,9 @@ name|dbs
 decl_stmt|;
 DECL|field|databases
 specifier|private
-name|ArrayList
+name|List
 argument_list|<
-name|Object
-index|[]
+name|DBImporterResult
 argument_list|>
 name|databases
 decl_stmt|;
@@ -484,12 +493,18 @@ comment|// panel.metaData().getDBStrings();
 comment|// get DBStrings from user if necessary
 if|if
 condition|(
-operator|!
 name|dbs
 operator|.
 name|isConfigValid
 argument_list|()
 condition|)
+block|{
+name|connectToDB
+operator|=
+literal|true
+expr_stmt|;
+block|}
+else|else
 block|{
 comment|// init DB strings if necessary
 if|if
@@ -561,13 +576,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-else|else
-block|{
-name|connectToDB
-operator|=
-literal|true
-expr_stmt|;
-block|}
 block|}
 comment|// run second, on a different thread:
 annotation|@
@@ -638,23 +646,19 @@ name|connectToDB
 argument_list|(
 name|dbs
 argument_list|)
-init|)
+init|;                      Statement statement = SQLUtil.queryAllFromTable(conn
+operator|,
+init|"jabref_database")
+block|)
 block|{
-try|try
-init|(
 name|ResultSet
 name|rs
 init|=
-name|SQLUtil
+name|statement
 operator|.
-name|queryAllFromTable
-argument_list|(
-name|conn
-argument_list|,
-literal|"jabref_database"
-argument_list|)
-init|)
-block|{
+name|getResultSet
+argument_list|()
+decl_stmt|;
 name|Vector
 argument_list|<
 name|String
@@ -712,12 +716,39 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
 name|matrix
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|frame
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"There are no available databases to be imported"
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Import from SQL database"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|DBImportExportDialog
 name|dialogo
@@ -767,8 +798,7 @@ name|performImport
 argument_list|()
 expr_stmt|;
 block|}
-else|else
-block|{
+elseif|else
 if|if
 condition|(
 name|dialogo
@@ -791,8 +821,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|Object
-index|[]
+name|DBImporterResult
 name|res
 range|:
 name|databases
@@ -800,23 +829,17 @@ control|)
 block|{
 name|database
 operator|=
-operator|(
-name|BibtexDatabase
-operator|)
 name|res
-index|[
-literal|0
-index|]
+operator|.
+name|getDatabase
+argument_list|()
 expr_stmt|;
 name|metaData
 operator|=
-operator|(
-name|MetaData
-operator|)
 name|res
-index|[
-literal|1
-index|]
+operator|.
+name|getMetaData
+argument_list|()
 expr_stmt|;
 name|dbs
 operator|.
@@ -866,36 +889,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-else|else
-block|{
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"There are no available databases to be imported"
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Import from SQL database"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|INFORMATION_MESSAGE
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -936,12 +929,7 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
 name|preamble
-argument_list|)
 operator|+
 literal|'\n'
 operator|+
@@ -979,7 +967,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_class
+
+begin_comment
 comment|// run third, on EDT:
+end_comment
+
+begin_function
 annotation|@
 name|Override
 DECL|method|update ()
@@ -999,8 +993,7 @@ return|return;
 block|}
 for|for
 control|(
-name|Object
-index|[]
+name|DBImporterResult
 name|res
 range|:
 name|databases
@@ -1008,23 +1001,17 @@ control|)
 block|{
 name|database
 operator|=
-operator|(
-name|BibtexDatabase
-operator|)
 name|res
-index|[
-literal|0
-index|]
+operator|.
+name|getDatabase
+argument_list|()
 expr_stmt|;
 name|metaData
 operator|=
-operator|(
-name|MetaData
-operator|)
 name|res
-index|[
-literal|1
-index|]
+operator|.
+name|getMetaData
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -1073,9 +1060,9 @@ argument_list|(
 name|pan
 argument_list|,
 name|res
-index|[
-literal|2
-index|]
+operator|.
+name|getName
+argument_list|()
 operator|+
 literal|"(Imported)"
 argument_list|,
@@ -1112,8 +1099,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

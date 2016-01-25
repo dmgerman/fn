@@ -34,6 +34,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -68,7 +82,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -105,7 +119,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Util class for searching files on the filessystem which are not linked to a  * provided {@link BibtexDatabase}.  *   * @author Nosh&Dan  * @version 09.11.2008 | 19:55:20  *   */
+comment|/**  * Util class for searching files on the file system which are not linked to a provided {@link BibDatabase}.  */
 end_comment
 
 begin_class
@@ -114,59 +128,36 @@ specifier|public
 class|class
 name|UnlinkedFilesCrawler
 block|{
-comment|/**      * File filter, that accepts directorys only.      */
-DECL|field|directoryFilter
+comment|/**      * File filter, that accepts directories only.      */
+DECL|field|DIRECTORY_FILTER
 specifier|private
 specifier|final
+specifier|static
 name|FileFilter
-name|directoryFilter
+name|DIRECTORY_FILTER
 init|=
-operator|new
-name|FileFilter
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|accept
-parameter_list|(
-name|File
 name|pathname
-parameter_list|)
-block|{
-if|if
-condition|(
+lambda|->
 name|pathname
-operator|==
+operator|!=
 literal|null
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-return|return
+operator|&&
 name|pathname
 operator|.
 name|isDirectory
 argument_list|()
-return|;
-block|}
-block|}
 decl_stmt|;
 DECL|field|database
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
-comment|/**      * CONSTRUCTOR      *       * @param database      */
-DECL|method|UnlinkedFilesCrawler (BibtexDatabase database)
+DECL|method|UnlinkedFilesCrawler (BibDatabase database)
 specifier|public
 name|UnlinkedFilesCrawler
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -177,7 +168,7 @@ operator|=
 name|database
 expr_stmt|;
 block|}
-DECL|method|searchDirectory (File directory, FileFilter aFileFilter)
+DECL|method|searchDirectory (File directory, FileFilter filter)
 specifier|public
 name|CheckableTreeNode
 name|searchDirectory
@@ -186,7 +177,7 @@ name|File
 name|directory
 parameter_list|,
 name|FileFilter
-name|aFileFilter
+name|filter
 parameter_list|)
 block|{
 name|UnlinkedPDFFileFilter
@@ -195,7 +186,7 @@ init|=
 operator|new
 name|UnlinkedPDFFileFilter
 argument_list|(
-name|aFileFilter
+name|filter
 argument_list|,
 name|database
 argument_list|)
@@ -208,18 +199,17 @@ argument_list|,
 name|ff
 argument_list|,
 operator|new
-name|int
-index|[]
-block|{
-literal|1
-block|}
+name|AtomicBoolean
+argument_list|(
+literal|true
+argument_list|)
 argument_list|,
 literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * Searches recursively all files in the specified directory.<br>      *<br>      * All {@link File}s, which match the {@link FileFilter} that comes with the      * {@link EntryFromFileCreatorManager}, are taken into the resulting tree.<br>      *<br>      * The result will be a tree structure of nodes of the type      * {@link CheckableTreeNode}.<br>      *<br>      * The user objects that are attached to the nodes is the      * {@link FileNodeWrapper}, which wrapps the {@link File}-Object.<br>      *<br>      * For ensuring the capability to cancel the work of this recursive method,      * the first position in the integer array 'state' must be set to 1, to keep      * the recursion running. When the states value changes, the methode will      * resolve its recursion and return what it has saved so far.      */
-DECL|method|searchDirectory (File directory, UnlinkedPDFFileFilter ff, int[] state, ChangeListener changeListener)
+comment|/**      * Searches recursively all files in the specified directory.<br>      *<br>      * All {@link File}s, which match the {@link FileFilter} that comes with the      * {@link EntryFromFileCreatorManager}, are taken into the resulting tree.<br>      *<br>      * The result will be a tree structure of nodes of the type      * {@link CheckableTreeNode}.<br>      *<br>      * The user objects that are attached to the nodes is the      * {@link FileNodeWrapper}, which wraps the {@link File}-Object.<br>      *<br>      * For ensuring the capability to cancel the work of this recursive method,      * the first position in the integer array 'state' must be set to 1, to keep      * the recursion running. When the states value changes, the method will      * resolve its recursion and return what it has saved so far.      */
+DECL|method|searchDirectory (File directory, UnlinkedPDFFileFilter ff, AtomicBoolean state, ChangeListener changeListener)
 specifier|public
 name|CheckableTreeNode
 name|searchDirectory
@@ -230,8 +220,7 @@ parameter_list|,
 name|UnlinkedPDFFileFilter
 name|ff
 parameter_list|,
-name|int
-index|[]
+name|AtomicBoolean
 name|state
 parameter_list|,
 name|ChangeListener
@@ -241,34 +230,31 @@ block|{
 comment|/* Cancellation of the search from outside! */
 if|if
 condition|(
+operator|(
 name|state
 operator|==
 literal|null
+operator|)
 operator|||
+operator|!
 name|state
 operator|.
-name|length
-operator|<
-literal|1
-operator|||
-name|state
-index|[
-literal|0
-index|]
-operator|!=
-literal|1
+name|get
+argument_list|()
 condition|)
 block|{
 return|return
 literal|null
 return|;
 block|}
-comment|/* Return null if the directory is not valid. */
+comment|// Return null if the directory is not valid.
 if|if
 condition|(
+operator|(
 name|directory
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|directory
@@ -320,7 +306,7 @@ name|directory
 operator|.
 name|listFiles
 argument_list|(
-name|directoryFilter
+name|DIRECTORY_FILTER
 argument_list|)
 decl_stmt|;
 for|for
@@ -347,16 +333,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|subRoot
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|subRoot
 operator|.
 name|getChildCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|filesCount

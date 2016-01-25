@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -106,26 +106,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Objects
 import|;
 end_import
@@ -137,6 +117,18 @@ operator|.
 name|util
 operator|.
 name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
 import|;
 end_import
 
@@ -294,11 +286,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
-name|search
+name|keyboard
 operator|.
-name|SearchTextListener
+name|KeyBinding
 import|;
 end_import
 
@@ -310,11 +302,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|logic
 operator|.
-name|keyboard
+name|search
 operator|.
-name|KeyBinds
+name|SearchQueryHighlightListener
 import|;
 end_import
 
@@ -346,7 +338,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -362,7 +354,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -411,7 +403,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Displays an BibtexEntry using the given layout format.  */
+comment|/**  * Displays an BibEntry using the given layout format.  */
 end_comment
 
 begin_class
@@ -424,7 +416,7 @@ name|JPanel
 implements|implements
 name|VetoableChangeListener
 implements|,
-name|SearchTextListener
+name|SearchQueryHighlightListener
 implements|,
 name|EntryContainer
 block|{
@@ -449,7 +441,7 @@ DECL|field|entry
 specifier|private
 name|Optional
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entry
 init|=
@@ -463,7 +455,7 @@ DECL|field|database
 specifier|private
 name|Optional
 argument_list|<
-name|BibtexDatabase
+name|BibDatabase
 argument_list|>
 name|database
 init|=
@@ -538,29 +530,34 @@ specifier|final
 name|CloseAction
 name|closeAction
 decl_stmt|;
-DECL|field|wordsToHighlight
+DECL|field|copyPreviewAction
 specifier|private
 specifier|final
-name|List
+name|CopyPreviewAction
+name|copyPreviewAction
+decl_stmt|;
+DECL|field|highlightPattern
+specifier|private
+name|Optional
 argument_list|<
-name|String
+name|Pattern
 argument_list|>
-name|wordsToHighlight
+name|highlightPattern
 init|=
-operator|new
-name|LinkedList
-argument_list|<>
+name|Optional
+operator|.
+name|empty
 argument_list|()
 decl_stmt|;
 comment|/**      * @param database      *            (may be null) Optionally used to resolve strings.      * @param entry      *            (may be null) If given this entry is shown otherwise you have      *            to call setEntry to make something visible.      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      */
-DECL|method|PreviewPanel (BibtexDatabase database, BibtexEntry entry, BasePanel panel, MetaData metaData, String layoutFile)
+DECL|method|PreviewPanel (BibDatabase database, BibEntry entry, BasePanel panel, MetaData metaData, String layoutFile)
 specifier|public
 name|PreviewPanel
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|BasePanel
@@ -590,14 +587,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @param database      *            (may be null) Optionally used to resolve strings.      * @param entry      *            (may be null) If given this entry is shown otherwise you have      *            to call setEntry to make something visible.      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel      */
-DECL|method|PreviewPanel (BibtexDatabase database, BibtexEntry entry, BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
+DECL|method|PreviewPanel (BibDatabase database, BibEntry entry, BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
 specifier|public
 name|PreviewPanel
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|BasePanel
@@ -750,6 +747,14 @@ name|printAction
 operator|=
 operator|new
 name|PrintAction
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|copyPreviewAction
+operator|=
+operator|new
+name|CopyPreviewAction
 argument_list|()
 expr_stmt|;
 name|this
@@ -985,6 +990,15 @@ operator|.
 name|printAction
 argument_list|)
 expr_stmt|;
+name|menu
+operator|.
+name|add
+argument_list|(
+name|this
+operator|.
+name|copyPreviewAction
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|panel
@@ -1072,11 +1086,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1101,11 +1116,42 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
+operator|.
+name|COPY_PREVIEW
+argument_list|)
+argument_list|,
+literal|"copy"
+argument_list|)
+expr_stmt|;
+name|actionMap
+operator|.
+name|put
+argument_list|(
+literal|"copy"
+argument_list|,
+name|this
+operator|.
+name|copyPreviewAction
+argument_list|)
+expr_stmt|;
+name|inputMap
+operator|.
+name|put
+argument_list|(
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
+operator|.
+name|getKey
+argument_list|(
+name|KeyBinding
 operator|.
 name|PRINT_ENTRY_PREVIEW
 argument_list|)
@@ -1139,6 +1185,20 @@ argument_list|(
 name|this
 operator|.
 name|closeAction
+argument_list|)
+expr_stmt|;
+name|toolBar
+operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+name|toolBar
+operator|.
+name|add
+argument_list|(
+name|this
+operator|.
+name|copyPreviewAction
 argument_list|)
 expr_stmt|;
 name|toolBar
@@ -1329,10 +1389,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not open external viewer"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1466,12 +1530,12 @@ name|layout
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setEntry (BibtexEntry newEntry)
+DECL|method|setEntry (BibEntry newEntry)
 specifier|public
 name|void
 name|setEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|newEntry
 parameter_list|)
 block|{
@@ -1534,7 +1598,7 @@ annotation|@
 name|Override
 DECL|method|getEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|()
 block|{
@@ -1598,7 +1662,7 @@ argument_list|(
 literal|null
 argument_list|)
 argument_list|,
-name|wordsToHighlight
+name|highlightPattern
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1625,28 +1689,8 @@ name|revalidate
 argument_list|()
 expr_stmt|;
 comment|// Scroll to top:
-specifier|final
-name|JScrollBar
-name|bar
-init|=
-name|scrollPane
-operator|.
-name|getVerticalScrollBar
+name|scrollToTop
 argument_list|()
-decl_stmt|;
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-parameter_list|()
-lambda|->
-name|bar
-operator|.
-name|setValue
-argument_list|(
-literal|0
-argument_list|)
-argument_list|)
 expr_stmt|;
 comment|// update pdf preview
 name|pdfPreviewPanel
@@ -1669,7 +1713,31 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * The PreviewPanel has registered itself as an event listener with the      * currently displayed BibtexEntry. If the entry changes, an event is      * received here, and we can update the preview immediately.      */
+DECL|method|scrollToTop ()
+specifier|private
+name|void
+name|scrollToTop
+parameter_list|()
+block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+parameter_list|()
+lambda|->
+name|scrollPane
+operator|.
+name|getVerticalScrollBar
+argument_list|()
+operator|.
+name|setValue
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * The PreviewPanel has registered itself as an event listener with the      * currently displayed BibEntry. If the entry changes, an event is      * received here, and we can update the preview immediately.      */
 annotation|@
 name|Override
 DECL|method|vetoableChange (PropertyChangeEvent evt)
@@ -1691,33 +1759,23 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|searchText (List<String> words)
+DECL|method|highlightPattern (Optional<Pattern> highlightPattern)
 specifier|public
 name|void
-name|searchText
+name|highlightPattern
 parameter_list|(
-name|List
+name|Optional
 argument_list|<
-name|String
+name|Pattern
 argument_list|>
-name|words
+name|highlightPattern
 parameter_list|)
 block|{
 name|this
 operator|.
-name|wordsToHighlight
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|wordsToHighlight
-operator|.
-name|addAll
-argument_list|(
-name|words
-argument_list|)
+name|highlightPattern
+operator|=
+name|highlightPattern
 expr_stmt|;
 name|update
 argument_list|()
@@ -1773,14 +1831,14 @@ name|Action
 operator|.
 name|ACCELERATOR_KEY
 argument_list|,
-name|JabRefPreferences
+name|Globals
 operator|.
-name|getInstance
+name|getKeyPrefs
 argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|PRINT_ENTRY_PREVIEW
 argument_list|)
@@ -1836,7 +1894,7 @@ name|entry
 operator|.
 name|map
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|::
 name|getCiteKey
 argument_list|)
@@ -1979,6 +2037,103 @@ argument_list|(
 name|BasePanel
 operator|::
 name|hideBottomComponent
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|class|CopyPreviewAction
+class|class
+name|CopyPreviewAction
+extends|extends
+name|AbstractAction
+block|{
+DECL|method|CopyPreviewAction ()
+specifier|public
+name|CopyPreviewAction
+parameter_list|()
+block|{
+name|super
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Copy preview"
+argument_list|)
+argument_list|,
+name|IconTheme
+operator|.
+name|JabRefIcon
+operator|.
+name|COPY
+operator|.
+name|getSmallIcon
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|putValue
+argument_list|(
+name|Action
+operator|.
+name|SHORT_DESCRIPTION
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Copy preview"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|putValue
+argument_list|(
+name|Action
+operator|.
+name|ACCELERATOR_KEY
+argument_list|,
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
+operator|.
+name|getKey
+argument_list|(
+name|KeyBinding
+operator|.
+name|COPY_PREVIEW
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|actionPerformed (ActionEvent e)
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+name|previewPane
+operator|.
+name|selectAll
+argument_list|()
+expr_stmt|;
+name|previewPane
+operator|.
+name|copy
+argument_list|()
+expr_stmt|;
+name|previewPane
+operator|.
+name|select
+argument_list|(
+literal|0
+argument_list|,
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 block|}

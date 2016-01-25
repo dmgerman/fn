@@ -32,26 +32,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|GridBagConstraints
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|GridBagLayout
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|event
 operator|.
 name|ActionEvent
@@ -142,6 +122,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|BasePanel
@@ -174,7 +166,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -236,9 +228,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|groups
 operator|.
-name|Localization
+name|GroupsUtil
 import|;
 end_import
 
@@ -250,9 +242,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Util
+name|l10n
+operator|.
+name|Localization
 import|;
 end_import
 
@@ -379,40 +373,6 @@ argument_list|(
 literal|60
 argument_list|)
 decl_stmt|;
-DECL|field|nf
-name|JLabel
-name|nf
-init|=
-operator|new
-name|JLabel
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Field to group by"
-argument_list|)
-operator|+
-literal|":"
-argument_list|)
-decl_stmt|;
-DECL|field|nr
-name|JLabel
-name|nr
-init|=
-operator|new
-name|JLabel
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Characters to ignore"
-argument_list|)
-operator|+
-literal|":"
-argument_list|)
-decl_stmt|;
 DECL|field|keywords
 specifier|private
 specifier|final
@@ -494,7 +454,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -521,22 +481,6 @@ specifier|private
 specifier|final
 name|GroupSelector
 name|gs
-decl_stmt|;
-DECL|field|gbl
-name|GridBagLayout
-name|gbl
-init|=
-operator|new
-name|GridBagLayout
-argument_list|()
-decl_stmt|;
-DECL|field|con
-name|GridBagConstraints
-name|con
-init|=
-operator|new
-name|GridBagConstraints
-argument_list|()
 decl_stmt|;
 comment|/**      * @param groupsRoot The original set of groups, which is required as undo information when all groups are cleared.      */
 DECL|method|AutoGroupDialog (JabRefFrame jabrefFrame, BasePanel basePanel, GroupSelector groupSelector, GroupTreeNode groupsRoot, String defaultField, String defaultRemove, String defaultDeliminator)
@@ -699,7 +643,7 @@ condition|)
 block|{
 name|hs
 operator|=
-name|Util
+name|GroupsUtil
 operator|.
 name|findDeliminatedWordsInField
 argument_list|(
@@ -730,7 +674,7 @@ else|else
 block|{
 name|hs
 operator|=
-name|Util
+name|GroupsUtil
 operator|.
 name|findAllWordsInField
 argument_list|(
@@ -789,7 +733,7 @@ argument_list|)
 expr_stmt|;
 name|hs
 operator|=
-name|Util
+name|GroupsUtil
 operator|.
 name|findAuthorLastNames
 argument_list|(
@@ -806,15 +750,9 @@ operator|=
 literal|"author"
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-name|editors
-operator|.
-name|isSelected
-argument_list|()
-condition|)
+else|else
 block|{
+comment|// editors.isSelected() as it is a radio button group.
 name|List
 argument_list|<
 name|String
@@ -837,7 +775,7 @@ argument_list|)
 expr_stmt|;
 name|hs
 operator|=
-name|Util
+name|GroupsUtil
 operator|.
 name|findAuthorLastNames
 argument_list|(
@@ -1091,14 +1029,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|frame
+name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
 argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)

@@ -44,7 +44,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -60,7 +60,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -157,7 +157,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class embodies a bibliography formatting for OpenOffice, which is composed  * of the following elements:  *  * 1) Each OO bib entry type must have a formatting. A formatting is an array of elements, each  *    of which is either a piece of constant text, an entry field value, or a tab. Each element has  *    a character format associated with it.  *  * 2) Many field values (e.g. author) need to be formatted before input to OpenOffice. The style  *    has the responsibility of formatting all field values. Formatting is handled by 0-n  *    JabRef LayoutFormatter classes.  *  * 3) If the entries are not numbered, a citation marker must be produced for each entry. This  *    operation is performed for each JabRef BibtexEntry.  */
+comment|/**  * This class embodies a bibliography formatting for OpenOffice, which is composed  * of the following elements:  *<p>  * 1) Each OO bib entry type must have a formatting. A formatting is an array of elements, each  * of which is either a piece of constant text, an entry field value, or a tab. Each element has  * a character format associated with it.  *<p>  * 2) Many field values (e.g. author) need to be formatted before input to OpenOffice. The style  * has the responsibility of formatting all field values. Formatting is handled by 0-n  * JabRef LayoutFormatter classes.  *<p>  * 3) If the entries are not numbered, a citation marker must be produced for each entry. This  * operation is performed for each JabRef BibEntry.  */
 end_comment
 
 begin_class
@@ -218,7 +218,7 @@ comment|// reference layout mapped from entry type number:
 DECL|field|bibLayout
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -234,7 +234,7 @@ decl_stmt|;
 DECL|field|properties
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -250,7 +250,7 @@ decl_stmt|;
 DECL|field|citProperties
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -428,15 +428,27 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|this
-argument_list|(
+name|setDefaultProperties
+argument_list|()
+expr_stmt|;
+try|try
+init|(
+name|Reader
+name|in
+init|=
 operator|new
 name|FileReader
 argument_list|(
 name|styleFile
 argument_list|)
+init|)
+block|{
+name|initialize
+argument_list|(
+name|in
 argument_list|)
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|styleFile
@@ -462,6 +474,21 @@ name|in
 parameter_list|)
 throws|throws
 name|Exception
+block|{
+name|setDefaultProperties
+argument_list|()
+expr_stmt|;
+name|initialize
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setDefaultProperties ()
+specifier|private
+name|void
+name|setDefaultProperties
+parameter_list|()
 block|{
 comment|// Set default property values:
 name|properties
@@ -783,11 +810,6 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
-name|initialize
-argument_list|(
-name|in
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|getName ()
 specifier|public
@@ -848,7 +870,7 @@ name|in
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * If this style was initialized from a file on disk, reload the style      * if the file has been modified since it was read.      * @throws Exception      */
+comment|/**      * If this style was initialized from a file on disk, reload the style      * if the file has been modified since it was read.      *      * @throws Exception      */
 DECL|method|ensureUpToDate ()
 specifier|public
 name|void
@@ -869,7 +891,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * If this style was initialized from a file on disk, reload the style      * information.      * @throws Exception      */
+comment|/**      * If this style was initialized from a file on disk, reload the style      * information.      *      * @throws Exception      */
 DECL|method|reload ()
 specifier|private
 name|void
@@ -914,7 +936,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * If this style was initialized from a file on disk, check whether the file      * is unmodified since initialization.      * @return true if the file has not been modified, false otherwise.      */
+comment|/**      * If this style was initialized from a file on disk, check whether the file      * is unmodified since initialization.      *      * @return true if the file has not been modified, false otherwise.      */
 DECL|method|isUpToDate ()
 specifier|private
 name|boolean
@@ -924,9 +946,15 @@ block|{
 if|if
 condition|(
 name|styleFile
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+else|else
 block|{
 return|return
 name|styleFile
@@ -937,12 +965,6 @@ operator|==
 name|OOBibStyle
 operator|.
 name|styleFileModificationTime
-return|;
-block|}
-else|else
-block|{
-return|return
-literal|true
 return|;
 block|}
 block|}
@@ -1287,7 +1309,7 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-comment|/**      * After initalizing this style from a file, this method can be used to check      * whether the file appeared to be a proper style file.      * @return true if the file could be parsed as a style file, false otherwise.      */
+comment|/**      * After initalizing this style from a file, this method can be used to check      * whether the file appeared to be a proper style file.      *      * @return true if the file could be parsed as a style file, false otherwise.      */
 DECL|method|isValid ()
 specifier|public
 name|boolean
@@ -1298,7 +1320,7 @@ return|return
 name|valid
 return|;
 block|}
-comment|/**      * Parse a line providing bibliography structure information for an entry type.      * @param line The string containing the structure description.      * @throws IOException      */
+comment|/**      * Parse a line providing bibliography structure information for an entry type.      *      * @param line The string containing the structure description.      * @throws IOException      */
 DECL|method|handleStructureLine (String line)
 specifier|private
 name|void
@@ -1315,7 +1337,7 @@ name|line
 operator|.
 name|indexOf
 argument_list|(
-literal|"="
+literal|'='
 argument_list|)
 decl_stmt|;
 if|if
@@ -1352,7 +1374,6 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("'"+line.substring(0, index)+"' : '"+formatString+"'");
 name|boolean
 name|setDefault
 init|=
@@ -1386,7 +1407,6 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-comment|/*typeS = new Short(Short.parseShort(type));                 OOBibFormatParser parser = new OOBibFormatParser(new StringReader(formatString));                 PropertyValue[][] layout = parser.parse();*/
 name|Layout
 name|layout
 init|=
@@ -1447,8 +1467,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Parse a line providing a property name and value.      * @param line The line containing the formatter names.      * @throws IOException      */
-DECL|method|handlePropertiesLine (String line, HashMap<String, Object> map)
+comment|/**      * Parse a line providing a property name and value.      *      * @param line The line containing the formatter names.      * @throws IOException      */
+DECL|method|handlePropertiesLine (String line, Map<String, Object> map)
 specifier|private
 name|void
 name|handlePropertiesLine
@@ -1456,7 +1476,7 @@ parameter_list|(
 name|String
 name|line
 parameter_list|,
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1472,7 +1492,7 @@ name|line
 operator|.
 name|indexOf
 argument_list|(
-literal|"="
+literal|'='
 argument_list|)
 decl_stmt|;
 if|if
@@ -1662,7 +1682,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Parse a line providing a journal name for which this style is valid.      * @param line      * @throws IOException      */
+comment|/**      * Parse a line providing a journal name for which this style is valid.      *      * @param line      * @throws IOException      */
 DECL|method|handleJournalsLine (String line)
 specifier|private
 name|void
@@ -1721,23 +1741,23 @@ decl_stmt|;
 if|if
 condition|(
 name|l
-operator|!=
+operator|==
 literal|null
 condition|)
-block|{
-return|return
-name|l
-return|;
-block|}
-else|else
 block|{
 return|return
 name|defaultBibLayout
 return|;
 block|}
+else|else
+block|{
+return|return
+name|l
+return|;
 block|}
-comment|/**      * Get the array of elements composing the reference for a given entry type.      * @param bibType The OO type number.      * @return The format definition.      public PropertyValue[][] getReferenceFormat(short bibType) {         Object o = bibLayout.get(new Short(bibType));         if (o != null)             return (PropertyValue[][])o;         else             return defaultBibLayout;     }*/
-comment|/**      * Format a number-based citation marker for the given number.      * @param number The citation numbers.      * @return The text for the citation.      */
+block|}
+comment|/**      * Get the array of elements composing the reference for a given entry type.      * @param bibType The OO type number.      * @return The format definition.      public PropertyValue[][] getReferenceFormat(short bibType) {     Object o = bibLayout.get(new Short(bibType));     if (o != null)     return (PropertyValue[][])o;     else     return defaultBibLayout;     }*/
+comment|/**      * Format a number-based citation marker for the given number.      *      * @param number The citation numbers.      * @return The text for the citation.      */
 DECL|method|getNumCitationMarker (int[] number, int minGroupingCount, boolean inList)
 specifier|public
 name|String
@@ -2211,16 +2231,16 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Format the marker for the in-text citation according to this bib style.      *      * @param entry The JabRef BibtexEntry providing the data.      * @param inParenthesis Signals whether a parenthesized citation or an in-text citation is wanted.      * @param uniquefier String to add behind the year in case it's needed to separate similar      *   entries.      * @return The formatted citation.      */
-DECL|method|getCitationMarker (BibtexEntry entry, BibtexDatabase database, boolean inParenthesis, String uniquefier, int unlimAuthors)
+comment|/**      * Format the marker for the in-text citation according to this bib style.      *      * @param entry         The JabRef BibEntry providing the data.      * @param inParenthesis Signals whether a parenthesized citation or an in-text citation is wanted.      * @param uniquefier    String to add behind the year in case it's needed to separate similar      *                      entries.      * @return The formatted citation.      */
+DECL|method|getCitationMarker (BibEntry entry, BibDatabase database, boolean inParenthesis, String uniquefier, int unlimAuthors)
 specifier|public
 name|String
 name|getCitationMarker
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|boolean
@@ -2237,7 +2257,7 @@ return|return
 name|getCitationMarker
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[]
 block|{
 name|entry
@@ -2263,17 +2283,17 @@ block|}
 argument_list|)
 return|;
 block|}
-comment|/**      * Format the marker for the in-text citation according to this bib style. Uniquefier letters are added as      * provided by the uniquefiers argument. If successive entries within the citation are uniquefied from each other,      * this method will perform a grouping of these entries.      *      * @param entries The array of JabRef BibtexEntry providing the data.      * @param inParenthesis Signals whether a parenthesized citation or an in-text citation is wanted.      * @param uniquefiers Strings to add behind the year for each entry in case it's needed to separate similar      *   entries.      * @param unlimAuthors Boolean for each entry. If true, we should not use "et al" formatting regardless      *   of the number of authors. Can be null to indicate that no entries should have unlimited names.      * @return The formatted citation.      */
-DECL|method|getCitationMarker (BibtexEntry[] entries, BibtexDatabase database, boolean inParenthesis, String[] uniquefiers, int[] unlimAuthors)
+comment|/**      * Format the marker for the in-text citation according to this bib style. Uniquefier letters are added as      * provided by the uniquefiers argument. If successive entries within the citation are uniquefied from each other,      * this method will perform a grouping of these entries.      *      * @param entries       The array of JabRef BibEntry providing the data.      * @param inParenthesis Signals whether a parenthesized citation or an in-text citation is wanted.      * @param uniquefiers   Strings to add behind the year for each entry in case it's needed to separate similar      *                      entries.      * @param unlimAuthors  Boolean for each entry. If true, we should not use "et al" formatting regardless      *                      of the number of authors. Can be null to indicate that no entries should have unlimited names.      * @return The formatted citation.      */
+DECL|method|getCitationMarker (BibEntry[] entries, BibDatabase database, boolean inParenthesis, String[] uniquefiers, int[] unlimAuthors)
 specifier|public
 name|String
 name|getCitationMarker
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|boolean
@@ -2389,7 +2409,7 @@ operator|=
 name|getAuthorYearParenthesisMarker
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[]
 block|{
 name|entries
@@ -2500,7 +2520,7 @@ init|=
 name|getAuthorYearParenthesisMarker
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[]
 block|{
 name|entries
@@ -3090,13 +3110,13 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Modify entry and uniqiefier arrays to facilitate a grouped presentation of uniqiefied entries.      * @param entries The entry array.      * @param uniquefiers The uniquefier array.      * @param from The first index to group (inclusive)      * @param to The last index to group (inclusive)      * @param separator The separator for the uniquefier letters.      */
-DECL|method|group (BibtexEntry[] entries, String[] uniquefiers, int from, int to, String separator)
+comment|/**      * Modify entry and uniqiefier arrays to facilitate a grouped presentation of uniqiefied entries.      *      * @param entries     The entry array.      * @param uniquefiers The uniquefier array.      * @param from        The first index to group (inclusive)      * @param to          The last index to group (inclusive)      * @param separator   The separator for the uniquefier letters.      */
+DECL|method|group (BibEntry[] entries, String[] uniquefiers, int from, int to, String separator)
 specifier|private
 name|void
 name|group
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
@@ -3179,17 +3199,17 @@ name|toString
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * This method produces (Author, year) style citation strings in many different forms.      *      * @param entries The array of BibtexEntry to get fields from.      * @param authorField The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField The bibtex field providing the year, e.g. "year".      * @param maxA The maximum number of authors to write out in full without using etal. Set to      *              -1 to always write out all authors.      * @param authorSep The String to add between author names except the last two, e.g. ", ".      * @param andString The String to add between the two last author names, e.g. "& ".      * @param etAlString The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep The String to separate authors from year, e.g. "; ".      * @param startBrace The opening parenthesis.      * @param endBrace The closing parenthesis.      * @param citationSeparator The String to separate citations from each other.      * @param uniquifiers Optional parameter to separate similar citations. Elements can be null if not needed.      * @return The formatted citation.      */
-DECL|method|getAuthorYearParenthesisMarker (BibtexEntry[] entries, BibtexDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquifiers, int[] unlimAuthors)
+comment|/**      * This method produces (Author, year) style citation strings in many different forms.      *      * @param entries           The array of BibEntry to get fields from.      * @param authorField       The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField         The bibtex field providing the year, e.g. "year".      * @param maxA              The maximum number of authors to write out in full without using etal. Set to      *                          -1 to always write out all authors.      * @param authorSep         The String to add between author names except the last two, e.g. ", ".      * @param andString         The String to add between the two last author names, e.g. "& ".      * @param etAlString        The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep           The String to separate authors from year, e.g. "; ".      * @param startBrace        The opening parenthesis.      * @param endBrace          The closing parenthesis.      * @param citationSeparator The String to separate citations from each other.      * @param uniquifiers       Optional parameter to separate similar citations. Elements can be null if not needed.      * @return The formatted citation.      */
+DECL|method|getAuthorYearParenthesisMarker (BibEntry[] entries, BibDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquifiers, int[] unlimAuthors)
 specifier|private
 name|String
 name|getAuthorYearParenthesisMarker
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|String
@@ -3261,16 +3281,16 @@ name|int
 name|unlimA
 init|=
 name|unlimAuthors
-operator|!=
+operator|==
 literal|null
 condition|?
+operator|-
+literal|1
+else|:
 name|unlimAuthors
 index|[
 name|j
 index|]
-else|:
-operator|-
-literal|1
 decl_stmt|;
 name|int
 name|maxAuthors
@@ -3283,7 +3303,7 @@ name|unlimA
 else|:
 name|maxA
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|entries
@@ -3551,17 +3571,17 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * This method produces "Author (year)" style citation strings in many different forms.      *      * @param entries The array of BibtexEntry to get fields from.      * @param authorField The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField The bibtex field providing the year, e.g. "year".      * @param maxA The maximum number of authors to write out in full without using etal. Set to      *              -1 to always write out all authors.      * @param authorSep The String to add between author names except the last two, e.g. ", ".      * @param andString The String to add between the two last author names, e.g. "& ".      * @param etAlString The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep The String to separate authors from year, e.g. "; ".      * @param startBrace The opening parenthesis.      * @param endBrace The closing parenthesis.      * @param uniquefiers Optional parameters to separate similar citations. Can be null if not needed.      * @return The formatted citation.      */
-DECL|method|getAuthorYearInTextMarker (BibtexEntry[] entries, BibtexDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquefiers, int[] unlimAuthors)
+comment|/**      * This method produces "Author (year)" style citation strings in many different forms.      *      * @param entries     The array of BibEntry to get fields from.      * @param authorField The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField   The bibtex field providing the year, e.g. "year".      * @param maxA        The maximum number of authors to write out in full without using etal. Set to      *                    -1 to always write out all authors.      * @param authorSep   The String to add between author names except the last two, e.g. ", ".      * @param andString   The String to add between the two last author names, e.g. "& ".      * @param etAlString  The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep     The String to separate authors from year, e.g. "; ".      * @param startBrace  The opening parenthesis.      * @param endBrace    The closing parenthesis.      * @param uniquefiers Optional parameters to separate similar citations. Can be null if not needed.      * @return The formatted citation.      */
+DECL|method|getAuthorYearInTextMarker (BibEntry[] entries, BibDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquefiers, int[] unlimAuthors)
 specifier|private
 name|String
 name|getAuthorYearInTextMarker
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|String
@@ -3631,16 +3651,16 @@ name|int
 name|unlimA
 init|=
 name|unlimAuthors
-operator|!=
+operator|==
 literal|null
 condition|?
+operator|-
+literal|1
+else|:
 name|unlimAuthors
 index|[
 name|i
 index|]
-else|:
-operator|-
-literal|1
 decl_stmt|;
 name|int
 name|maxAuthors
@@ -3940,16 +3960,16 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * This method looks up a field for en entry in a database. Any number of backup fields can be used      * if the primary field is empty.      * @param entry The entry.      * @param database The database the entry belongs to.      * @param field The field, or succession of fields, to look up. If backup fields are needed, separate      *   field names by /. E.g. to use "author" with "editor" as backup, specify "author/editor".      * @return The resolved field content, or an empty string if the field(s) were empty.      */
-DECL|method|getCitationMarkerField (BibtexEntry entry, BibtexDatabase database, String field)
+comment|/**      * This method looks up a field for en entry in a database. Any number of backup fields can be used      * if the primary field is empty.      *      * @param entry    The entry.      * @param database The database the entry belongs to.      * @param field    The field, or succession of fields, to look up. If backup fields are needed, separate      *                 field names by /. E.g. to use "author" with "editor" as backup, specify "author/editor".      * @return The resolved field content, or an empty string if the field(s) were empty.      */
+DECL|method|getCitationMarkerField (BibEntry entry, BibDatabase database, String field)
 specifier|private
 name|String
 name|getCitationMarkerField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|String
@@ -3978,7 +3998,7 @@ block|{
 name|String
 name|content
 init|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -4034,7 +4054,7 @@ return|return
 literal|""
 return|;
 block|}
-comment|/**      * Look up the nth author and return the proper last name for citation markers.      * @param al The author list.      * @param number The number of the author to return.      * @return The author name, or an empty String if inapplicable.      */
+comment|/**      * Look up the nth author and return the proper last name for citation markers.      *      * @param al     The author list.      * @param number The number of the author to return.      * @return The author name, or an empty String if inapplicable.      */
 DECL|method|getAuthorLastName (AuthorList al, int number)
 specifier|private
 name|String
@@ -4139,7 +4159,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Take a finished citation and insert a string at the end (but inside the end bracket)      * separated by "PageInfoSeparator"      * @param citation      * @param pageInfo      * @return      */
+comment|/**      * Take a finished citation and insert a string at the end (but inside the end bracket)      * separated by "PageInfoSeparator"      *      * @param citation      * @param pageInfo      * @return      */
 DECL|method|insertPageInfo (String citation, String pageInfo)
 specifier|public
 name|String
@@ -4217,7 +4237,7 @@ name|pageInfo
 return|;
 block|}
 block|}
-comment|/**      * Convenience method for checking the property for whether we use number citations or      * author-year citations.      * @return true if we use numbered citations, false otherwise.      */
+comment|/**      * Convenience method for checking the property for whether we use number citations or      * author-year citations.      *      * @return true if we use numbered citations, false otherwise.      */
 DECL|method|isNumberEntries ()
 specifier|public
 name|boolean
@@ -4234,7 +4254,7 @@ literal|"IsNumberEntries"
 argument_list|)
 return|;
 block|}
-comment|/**      * Convenience method for checking the property for whether we sort the bibliography      * according to their order of appearance in the text.      * @return true to sort by appearance, false to sort alphabetically.      */
+comment|/**      * Convenience method for checking the property for whether we sort the bibliography      * according to their order of appearance in the text.      *      * @return true to sort by appearance, false to sort alphabetically.      */
 DECL|method|isSortByPosition ()
 specifier|public
 name|boolean
@@ -4251,7 +4271,7 @@ literal|"IsSortByPosition"
 argument_list|)
 return|;
 block|}
-comment|/**      * Convenience method for checking whether citation markers should be italicised.      * Will only be relevant if isFormatCitations() returns true.      * @return true to indicate that citations should be in italics.      */
+comment|/**      * Convenience method for checking whether citation markers should be italicised.      * Will only be relevant if isFormatCitations() returns true.      *      * @return true to indicate that citations should be in italics.      */
 DECL|method|isItalicCitations ()
 specifier|public
 name|boolean
@@ -4270,7 +4290,7 @@ literal|"ItalicCitations"
 argument_list|)
 return|;
 block|}
-comment|/**      * Convenience method for checking whether citation markers should be bold.      * Will only be relevant if isFormatCitations() returns true.      * @return true to indicate that citations should be in bold.      */
+comment|/**      * Convenience method for checking whether citation markers should be bold.      * Will only be relevant if isFormatCitations() returns true.      *      * @return true to indicate that citations should be in bold.      */
 DECL|method|isBoldCitations ()
 specifier|public
 name|boolean
@@ -4289,7 +4309,7 @@ literal|"BoldCitations"
 argument_list|)
 return|;
 block|}
-comment|/**      * Convenience method for checking whether citation markers formatted      * according to the results of the isItalicCitations() and      * isBoldCitations() methods.      * @return true to indicate that citations should be in italics.      */
+comment|/**      * Convenience method for checking whether citation markers formatted      * according to the results of the isItalicCitations() and      * isBoldCitations() methods.      *      * @return true to indicate that citations should be in italics.      */
 DECL|method|isFormatCitations ()
 specifier|public
 name|boolean
@@ -4326,7 +4346,7 @@ literal|"BibtexKeyCitations"
 argument_list|)
 return|;
 block|}
-comment|/**      * Get boolean property.      * @param key The property key      * @return the value      */
+comment|/**      * Get boolean property.      *      * @param key The property key      * @return the value      */
 DECL|method|getBooleanCitProperty (String key)
 specifier|public
 name|boolean
@@ -4408,7 +4428,7 @@ literal|"CitationCharacterFormat"
 argument_list|)
 return|;
 block|}
-comment|/**      * Get a style property.      *       * @param propName The property name.      * @return The property value, or null if it doesn't exist.      */
+comment|/**      * Get a style property.      *      * @param propName The property name.      * @return The property value, or null if it doesn't exist.      */
 DECL|method|getProperty (String propName)
 specifier|public
 name|Object
@@ -4465,9 +4485,15 @@ block|{
 if|if
 condition|(
 name|o
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+else|else
 block|{
 return|return
 name|styleFile
@@ -4483,12 +4509,6 @@ operator|)
 operator|.
 name|styleFile
 argument_list|)
-return|;
-block|}
-else|else
-block|{
-return|return
-literal|false
 return|;
 block|}
 block|}

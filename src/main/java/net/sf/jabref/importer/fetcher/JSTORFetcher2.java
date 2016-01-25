@@ -58,7 +58,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -163,6 +163,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -539,29 +549,23 @@ condition|)
 block|{
 break|break;
 block|}
-name|BibtexEntry
-name|entry
-init|=
 name|getSingleCitation
 argument_list|(
 name|cit
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|entry
-operator|!=
-literal|null
-condition|)
-block|{
+lambda|->
 name|dialog
 operator|.
 name|addEntry
 argument_list|(
 name|entry
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 name|dialog
 operator|.
 name|setProgress
@@ -1278,7 +1282,10 @@ block|}
 DECL|method|getSingleCitation (String cit)
 specifier|private
 specifier|static
-name|BibtexEntry
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
 name|getSingleCitation
 parameter_list|(
 name|String

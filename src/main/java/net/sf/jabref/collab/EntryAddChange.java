@@ -152,7 +152,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -168,7 +168,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -182,7 +182,7 @@ block|{
 DECL|field|diskEntry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|diskEntry
 decl_stmt|;
 DECL|field|sp
@@ -191,11 +191,11 @@ specifier|final
 name|JScrollPane
 name|sp
 decl_stmt|;
-DECL|method|EntryAddChange (BibtexEntry diskEntry)
+DECL|method|EntryAddChange (BibEntry diskEntry)
 specifier|public
 name|EntryAddChange
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|diskEntry
 parameter_list|)
 block|{
@@ -254,7 +254,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
 name|makeChange
@@ -262,7 +262,7 @@ parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 name|NamedCompound
@@ -321,6 +321,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|description ()
+specifier|public
 name|JComponent
 name|description
 parameter_list|()

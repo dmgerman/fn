@@ -192,7 +192,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -262,12 +262,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|ids
-argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|ids
@@ -859,7 +857,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibs
 init|=
@@ -895,7 +893,7 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|bibs
@@ -1152,7 +1150,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibs
 init|=
@@ -1169,7 +1167,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|bibs

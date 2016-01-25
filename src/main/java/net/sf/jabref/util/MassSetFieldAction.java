@@ -76,7 +76,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|TreeSet
+name|Set
 import|;
 end_import
 
@@ -182,7 +182,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -288,7 +288,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -369,14 +369,6 @@ DECL|field|overwrite
 specifier|private
 name|JCheckBox
 name|overwrite
-decl_stmt|;
-DECL|field|allFields
-specifier|private
-name|TreeSet
-argument_list|<
-name|String
-argument_list|>
-name|allFields
 decl_stmt|;
 DECL|method|MassSetFieldAction (JabRefFrame frame)
 specifier|public
@@ -480,7 +472,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -577,8 +569,12 @@ literal|"Move contents of a field into a field with a different name"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Set
+argument_list|<
+name|String
+argument_list|>
 name|allFields
-operator|=
+init|=
 name|frame
 operator|.
 name|getCurrentBasePanel
@@ -589,7 +585,7 @@ argument_list|()
 operator|.
 name|getAllVisibleFields
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -1273,11 +1269,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1393,7 +1390,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
@@ -1452,7 +1449,7 @@ return|return;
 block|}
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entryList
 decl_stmt|;

@@ -24,6 +24,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -34,7 +44,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -110,7 +120,10 @@ annotation|@
 name|Override
 DECL|method|createBibtexEntry (File file)
 specifier|protected
-name|BibtexEntry
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
 name|createBibtexEntry
 parameter_list|(
 name|File
@@ -127,13 +140,21 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
+argument_list|)
 return|;
 block|}
 annotation|@

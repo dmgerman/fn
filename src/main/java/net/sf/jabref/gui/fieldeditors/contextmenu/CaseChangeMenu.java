@@ -104,23 +104,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
+name|util
 operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
+name|Objects
 import|;
 end_import
 
@@ -132,18 +118,13 @@ name|CaseChangeMenu
 extends|extends
 name|JMenu
 block|{
-DECL|field|parent
-specifier|private
-specifier|final
-name|JTextComponent
-name|parent
-decl_stmt|;
-DECL|method|CaseChangeMenu (JTextComponent opener)
+DECL|method|CaseChangeMenu (final JTextComponent parent)
 specifier|public
 name|CaseChangeMenu
 parameter_list|(
+specifier|final
 name|JTextComponent
-name|opener
+name|parent
 parameter_list|)
 block|{
 name|super
@@ -156,9 +137,12 @@ literal|"Change case"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|parent
-operator|=
-name|opener
+argument_list|)
 expr_stmt|;
 comment|// create menu items, one for each case changer
 for|for
@@ -188,20 +172,8 @@ name|menuItem
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|parent
 operator|.
 name|setText
@@ -216,9 +188,6 @@ name|getText
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|this

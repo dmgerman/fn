@@ -48,16 +48,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -70,8 +60,6 @@ name|DOICheckTest
 block|{
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testFormat ()
 specifier|public
 name|void
@@ -117,7 +105,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://dx.doi.org/10.1000/ISBN1-900512-44-0"
+literal|"http://doi.org/10.1000/ISBN1-900512-44-0"
 argument_list|,
 name|lf
 operator|.
@@ -131,7 +119,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://dx.doi.org/10.1000/ISBN1-900512-44-0"
+literal|"http://doi.org/10.1000/ISBN1-900512-44-0"
 argument_list|,
 name|lf
 operator|.
@@ -145,7 +133,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://doi.acm.org/10.1000/ISBN1-900512-44-0"
+literal|"http://doi.org/10.1000/ISBN1-900512-44-0"
 argument_list|,
 name|lf
 operator|.
@@ -159,7 +147,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://doi.acm.org/10.1145/354401.354407"
+literal|"http://doi.org/10.1145/354401.354407"
 argument_list|,
 name|lf
 operator|.
@@ -173,7 +161,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://dx.doi.org/10.1145/354401.354407"
+literal|"http://doi.org/10.1145/354401.354407"
 argument_list|,
 name|lf
 operator|.
@@ -188,7 +176,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://dx.doi.org/10.1145/354401.354407"
+literal|"http://doi.org/10.1145/354401.354407"
 argument_list|,
 name|lf
 operator|.
@@ -198,12 +186,12 @@ literal|"/10.1145/354401.354407"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Obviously a wrong doi, but we still accept it.
+comment|// Obviously a wrong doi, will not change anything.
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"http://dx.doi.org/10"
+literal|"10"
 argument_list|,
 name|lf
 operator|.
@@ -213,7 +201,7 @@ literal|"10"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Obviously a wrong doi, but we still accept it.
+comment|// Obviously a wrong doi, will not change anything.
 name|Assert
 operator|.
 name|assertEquals

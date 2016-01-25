@@ -40,7 +40,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -53,6 +53,30 @@ operator|.
 name|jabref
 operator|.
 name|BibtexTestData
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -91,6 +115,16 @@ operator|.
 name|junit
 operator|.
 name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
 import|;
 end_import
 
@@ -222,15 +256,35 @@ specifier|public
 class|class
 name|XMPSchemaBibtexTest
 block|{
-DECL|method|assertEqualsBibtexEntry (BibtexEntry e, BibtexEntry x)
+annotation|@
+name|Before
+DECL|method|setUp ()
+specifier|public
+name|void
+name|setUp
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Globals
+operator|.
+name|prefs
+operator|=
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|assertEqualsBibtexEntry (BibEntry e, BibEntry x)
 specifier|public
 name|void
 name|assertEqualsBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|e
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|x
 parameter_list|)
 block|{
@@ -1648,7 +1702,7 @@ argument_list|(
 name|xmp
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|BibtexTestData
@@ -1665,7 +1719,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e2
 init|=
 name|bibtex

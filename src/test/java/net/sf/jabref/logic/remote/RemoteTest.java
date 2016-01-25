@@ -84,6 +84,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|OutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|net
 operator|.
 name|ServerSocket
@@ -485,7 +495,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-comment|// TODO Auto-generated catch block
 name|Assert
 operator|.
 name|fail
@@ -589,7 +598,10 @@ name|run
 parameter_list|()
 block|{
 try|try
-block|{
+init|(
+name|OutputStream
+name|os
+init|=
 name|socket
 operator|.
 name|accept
@@ -597,6 +609,9 @@ argument_list|()
 operator|.
 name|getOutputStream
 argument_list|()
+init|)
+block|{
+name|os
 operator|.
 name|write
 argument_list|(

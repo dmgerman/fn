@@ -40,6 +40,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|FieldChange
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -86,12 +100,12 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
 begin_comment
-comment|/**  * This class represents a change in any field value. The relevant  * information is the BibtexEntry, the field name, the old and the  * new value. Old/new values can be null.  */
+comment|/**  * This class represents a change in any field value. The relevant  * information is the BibEntry, the field name, the old and the  * new value. Old/new values can be null.  */
 end_comment
 
 begin_class
@@ -121,7 +135,7 @@ decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|field
@@ -142,11 +156,11 @@ specifier|final
 name|String
 name|newValue
 decl_stmt|;
-DECL|method|UndoableFieldChange (BibtexEntry entry, String field, String oldValue, String newValue)
+DECL|method|UndoableFieldChange (BibEntry entry, String field, String oldValue, String newValue)
 specifier|public
 name|UndoableFieldChange
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String
@@ -184,6 +198,38 @@ operator|=
 name|newValue
 expr_stmt|;
 block|}
+DECL|method|UndoableFieldChange (FieldChange change)
+specifier|public
+name|UndoableFieldChange
+parameter_list|(
+name|FieldChange
+name|change
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|change
+operator|.
+name|getEntry
+argument_list|()
+argument_list|,
+name|change
+operator|.
+name|getField
+argument_list|()
+argument_list|,
+name|change
+operator|.
+name|getOldValue
+argument_list|()
+argument_list|,
+name|change
+operator|.
+name|getNewValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 DECL|method|getPresentationName ()
@@ -209,7 +255,6 @@ name|String
 name|getUndoPresentationName
 parameter_list|()
 block|{
-comment|// @formatter:off
 return|return
 name|Localization
 operator|.
@@ -227,7 +272,6 @@ argument_list|(
 literal|"change field"
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -237,7 +281,6 @@ name|String
 name|getRedoPresentationName
 parameter_list|()
 block|{
-comment|// @formatter:off
 return|return
 name|Localization
 operator|.
@@ -255,7 +298,6 @@ argument_list|(
 literal|"change field"
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override

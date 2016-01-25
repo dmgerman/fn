@@ -44,7 +44,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -60,12 +60,12 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
 begin_comment
-comment|/**  * {@link FileFilter} implementation, that allows only files which are not  * linked in any of the {@link BibtexEntry}s of the specified  * {@link BibtexDatabase}.<br>  *<br>  * This {@link FileFilter} sits on top of another {@link FileFilter}  * -implementation, which it first consults. Only if this major filefilter  * has accepted a file, this implementation will verify on that file.  *   * @author Nosh&Dan  * @version 12.11.2008 | 02:00:15  *   */
+comment|/**  * {@link FileFilter} implementation, that allows only files which are not  * linked in any of the {@link BibEntry}s of the specified  * {@link BibDatabase}.<br>  *<br>  * This {@link FileFilter} sits on top of another {@link FileFilter}  * -implementation, which it first consults. Only if this major filefilter  * has accepted a file, this implementation will verify on that file.  *   * @author Nosh&Dan  * @version 12.11.2008 | 02:00:15  *   */
 end_comment
 
 begin_class
@@ -88,14 +88,14 @@ specifier|final
 name|FileFilter
 name|fileFilter
 decl_stmt|;
-DECL|method|UnlinkedPDFFileFilter (FileFilter aFileFilter, BibtexDatabase database)
+DECL|method|UnlinkedPDFFileFilter (FileFilter fileFilter, BibDatabase database)
 specifier|public
 name|UnlinkedPDFFileFilter
 parameter_list|(
 name|FileFilter
-name|aFileFilter
+name|fileFilter
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -103,7 +103,7 @@ name|this
 operator|.
 name|fileFilter
 operator|=
-name|aFileFilter
+name|fileFilter
 expr_stmt|;
 name|this
 operator|.
@@ -127,17 +127,14 @@ name|File
 name|pathname
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
 name|fileFilter
 operator|.
 name|accept
 argument_list|(
 name|pathname
 argument_list|)
-condition|)
-block|{
-return|return
+operator|&&
 operator|!
 name|lookup
 operator|.
@@ -145,10 +142,6 @@ name|lookupDatabase
 argument_list|(
 name|pathname
 argument_list|)
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 block|}

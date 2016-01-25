@@ -74,7 +74,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -107,7 +107,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -118,12 +118,12 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|addEntry (BibtexEntry entry)
+DECL|method|addEntry (BibEntry entry)
 specifier|public
 name|void
 name|addEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -262,7 +262,7 @@ DECL|method|query (String query, EntryFetcher fetcher)
 specifier|public
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|query
 parameter_list|(

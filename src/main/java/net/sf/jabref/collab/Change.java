@@ -42,7 +42,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -93,6 +93,7 @@ extends|extends
 name|DefaultMutableTreeNode
 block|{
 DECL|field|name
+specifier|protected
 name|String
 name|name
 decl_stmt|;
@@ -209,20 +210,22 @@ block|}
 comment|/**      * This method returns a JComponent detailing the nature of the change.      * @return JComponent      */
 DECL|method|description ()
 specifier|abstract
+specifier|public
 name|JComponent
 name|description
 parameter_list|()
 function_decl|;
-comment|/**      * Perform the change. This method is responsible for adding a proper undo edit to      * the NamedCompound, so the change can be undone.      * @param panel BasePanel The tab where the database lives.      * @param secondary BibtexDatabase The "tmp" database for which the change      *   should also be made.      * @param undoEdit NamedCompound The compound to hold the undo edits.      * @return true if all changes were made, false if not all were accepted.      */
-DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
+comment|/**      * Perform the change. This method is responsible for adding a proper undo edit to      * the NamedCompound, so the change can be undone.      * @param panel BasePanel The tab where the database lives.      * @param secondary BibDatabase The "tmp" database for which the change      *   should also be made.      * @param undoEdit NamedCompound The compound to hold the undo edits.      * @return true if all changes were made, false if not all were accepted.      */
+DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
 specifier|abstract
+specifier|public
 name|boolean
 name|makeChange
 parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 name|NamedCompound

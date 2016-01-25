@@ -30,7 +30,17 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -45,7 +55,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Stores all words which are separated by Globals.SEPARATING_CHARS. This  * autocompleter only processes the field which is given by the fieldname.  *  * @author kahlert, cordes  */
+comment|/**  * Delivers possible completions for a given string.  * Stores all words in the given field which are separated by SEPARATING_CHARS.  *  * @author kahlert, cordes  */
 end_comment
 
 begin_class
@@ -63,6 +73,7 @@ name|fieldName
 decl_stmt|;
 DECL|field|SEPARATING_CHARS
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|SEPARATING_CHARS
@@ -70,18 +81,31 @@ init|=
 literal|";,\n "
 decl_stmt|;
 comment|/**      * @see AutoCompleterFactory      */
-DECL|method|DefaultAutoCompleter (String fieldName)
+DECL|method|DefaultAutoCompleter (String fieldName, AutoCompletePreferences preferences)
 name|DefaultAutoCompleter
 parameter_list|(
 name|String
 name|fieldName
+parameter_list|,
+name|AutoCompletePreferences
+name|preferences
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|preferences
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|fieldName
 operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|fieldName
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -96,14 +120,15 @@ return|return
 literal|false
 return|;
 block|}
+comment|/**      * {@inheritDoc}      * Stores all words in the given field which are separated by SEPARATING_CHARS.      */
 annotation|@
 name|Override
-DECL|method|addBibtexEntry (BibtexEntry entry)
+DECL|method|addBibtexEntry (BibEntry entry)
 specifier|public
 name|void
 name|addBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -116,22 +141,17 @@ condition|)
 block|{
 return|return;
 block|}
-name|String
-name|fieldValue
-init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|fieldName
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|fieldValue
-operator|!=
-literal|null
-condition|)
+lambda|->
 block|{
 name|StringTokenizer
 name|tok
@@ -152,21 +172,18 @@ name|hasMoreTokens
 argument_list|()
 condition|)
 block|{
-name|String
-name|word
-init|=
+name|addItemToIndex
+argument_list|(
 name|tok
 operator|.
 name|nextToken
 argument_list|()
-decl_stmt|;
-name|addWordToIndex
-argument_list|(
-name|word
 argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

@@ -44,6 +44,26 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|ArrayList
 import|;
 end_import
@@ -80,7 +100,23 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabases
 import|;
 end_import
 
@@ -96,7 +132,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -171,7 +207,7 @@ decl_stmt|;
 DECL|field|base
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|base
 decl_stmt|;
 DECL|field|metaData
@@ -182,7 +218,7 @@ decl_stmt|;
 DECL|field|entryTypes
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -198,7 +234,7 @@ decl_stmt|;
 DECL|field|warnings
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -212,7 +248,7 @@ decl_stmt|;
 DECL|field|duplicateKeys
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -249,40 +285,29 @@ specifier|private
 name|boolean
 name|toOpenTab
 decl_stmt|;
-comment|// Which JabRef version wrote the file, if any?
-DECL|field|jabrefVersion
-specifier|private
-name|String
-name|jabrefVersion
-decl_stmt|;
-DECL|field|jabrefMajorVersion
-specifier|private
-name|int
-name|jabrefMajorVersion
-decl_stmt|;
-DECL|field|jabrefMinorVersion
-specifier|private
-name|int
-name|jabrefMinorVersion
-decl_stmt|;
-DECL|method|ParserResult (Collection<BibtexEntry> entries)
+DECL|method|ParserResult (Collection<BibEntry> entries)
 specifier|public
 name|ParserResult
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|)
 block|{
 name|this
 argument_list|(
-name|ImportFormatReader
+name|BibDatabases
 operator|.
 name|createDatabase
 argument_list|(
+name|BibDatabases
+operator|.
+name|purgeEmptyEntries
+argument_list|(
 name|entries
+argument_list|)
 argument_list|)
 argument_list|,
 literal|null
@@ -294,17 +319,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ParserResult (BibtexDatabase base, MetaData metaData, HashMap<String, EntryType> entryTypes)
+DECL|method|ParserResult (BibDatabase base, MetaData metaData, Map<String, EntryType> entryTypes)
 specifier|public
 name|ParserResult
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|,
 name|MetaData
 name|metaData
 parameter_list|,
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -332,7 +357,7 @@ operator|=
 name|entryTypes
 expr_stmt|;
 block|}
-comment|/**      * Check if this base is marked to be added to the currently open tab. Default is false.      * @return      */
+comment|/**      * Check if this base is marked to be added to the currently open tab. Default is false.      *      * @return      */
 DECL|method|toOpenTab ()
 specifier|public
 name|boolean
@@ -359,91 +384,9 @@ operator|=
 name|toOpenTab
 expr_stmt|;
 block|}
-comment|/**      * Find which version of JabRef, if any, produced this bib file.      * @return The version number string, or null if no JabRef signature could be read.      */
-DECL|method|getJabrefVersion ()
-specifier|public
-name|String
-name|getJabrefVersion
-parameter_list|()
-block|{
-return|return
-name|jabrefVersion
-return|;
-block|}
-comment|/**      * Set the JabRef version number string for this parser result.      * @param jabrefVersion The version number string.      */
-DECL|method|setJabrefVersion (String jabrefVersion)
-specifier|public
-name|void
-name|setJabrefVersion
-parameter_list|(
-name|String
-name|jabrefVersion
-parameter_list|)
-block|{
-name|this
-operator|.
-name|jabrefVersion
-operator|=
-name|jabrefVersion
-expr_stmt|;
-block|}
-comment|/**      * @return 0 if not known (e.g., no version header in file)      */
-DECL|method|getJabrefMajorVersion ()
-specifier|public
-name|int
-name|getJabrefMajorVersion
-parameter_list|()
-block|{
-return|return
-name|jabrefMajorVersion
-return|;
-block|}
-DECL|method|setJabrefMajorVersion (int jabrefMajorVersion)
-specifier|public
-name|void
-name|setJabrefMajorVersion
-parameter_list|(
-name|int
-name|jabrefMajorVersion
-parameter_list|)
-block|{
-name|this
-operator|.
-name|jabrefMajorVersion
-operator|=
-name|jabrefMajorVersion
-expr_stmt|;
-block|}
-comment|/**      * @return 0 if not known (e.g., no version header in file)      */
-DECL|method|getJabrefMinorVersion ()
-specifier|public
-name|int
-name|getJabrefMinorVersion
-parameter_list|()
-block|{
-return|return
-name|jabrefMinorVersion
-return|;
-block|}
-DECL|method|setJabrefMinorVersion (int jabrefMinorVersion)
-specifier|public
-name|void
-name|setJabrefMinorVersion
-parameter_list|(
-name|int
-name|jabrefMinorVersion
-parameter_list|)
-block|{
-name|this
-operator|.
-name|jabrefMinorVersion
-operator|=
-name|jabrefMinorVersion
-expr_stmt|;
-block|}
 DECL|method|getDatabase ()
 specifier|public
-name|BibtexDatabase
+name|BibDatabase
 name|getDatabase
 parameter_list|()
 block|{
@@ -479,7 +422,7 @@ expr_stmt|;
 block|}
 DECL|method|getEntryTypes ()
 specifier|public
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -588,60 +531,23 @@ return|;
 block|}
 DECL|method|warnings ()
 specifier|public
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|warnings
 parameter_list|()
 block|{
-name|String
-index|[]
-name|s
-init|=
-operator|new
-name|String
-index|[
-name|warnings
-operator|.
-name|size
-argument_list|()
-index|]
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|warnings
-operator|.
-name|size
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|s
-index|[
-name|i
-index|]
-operator|=
-name|warnings
-operator|.
-name|get
-argument_list|(
-name|i
-argument_list|)
-expr_stmt|;
-block|}
 return|return
-name|s
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
+name|warnings
+argument_list|)
 return|;
 block|}
-comment|/**      * Add a key to the list of duplicated BibTeX keys found in the database.      * @param key The duplicated key      */
+comment|/**      * Add a key to the list of duplicated BibTeX keys found in the database.      *      * @param key The duplicated key      */
 DECL|method|addDuplicateKey (String key)
 specifier|public
 name|void
@@ -671,7 +577,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Query whether any duplicated BibTeX keys have been found in the database.      * @return true if there is at least one duplicate key.      */
+comment|/**      * Query whether any duplicated BibTeX keys have been found in the database.      *      * @return true if there is at least one duplicate key.      */
 DECL|method|hasDuplicateKeys ()
 specifier|public
 name|boolean
@@ -686,7 +592,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**      * Get all duplicated keys found in the database.      * @return An array containing the duplicated keys.      */
+comment|/**      * Get all duplicated keys found in the database.      *      * @return An array containing the duplicated keys.      */
 DECL|method|getDuplicateKeys ()
 specifier|public
 name|String

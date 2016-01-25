@@ -166,6 +166,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|external
+operator|.
+name|ExternalFileTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|help
@@ -894,24 +908,6 @@ specifier|static
 name|Color
 name|invalidFieldBackgroundColor
 decl_stmt|;
-DECL|field|META_FLAG
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|META_FLAG
-init|=
-literal|"jabref-meta: "
-decl_stmt|;
-DECL|field|META_FLAG_OLD
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|META_FLAG_OLD
-init|=
-literal|"bibkeeper-meta: "
-decl_stmt|;
 comment|// some fieldname constants
 DECL|field|DEFAULT_FIELD_WEIGHT
 specifier|public
@@ -1090,7 +1086,7 @@ specifier|final
 name|int
 name|WIDTH_ICON_COL
 init|=
-literal|19
+literal|26
 decl_stmt|;
 comment|// Column widths for export customization dialog table:
 DECL|field|EXPORT_DIALOG_COL_0_WIDTH
@@ -1498,7 +1494,6 @@ name|getSmallIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:off
 name|label
 operator|.
 name|setToolTipText
@@ -1520,7 +1515,6 @@ literal|"web link"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 name|GUIGlobals
 operator|.
 name|tableIcons
@@ -1657,9 +1651,10 @@ control|(
 name|ExternalFileType
 name|fileType
 range|:
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeSelection
 argument_list|()

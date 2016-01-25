@@ -66,7 +66,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -84,6 +84,24 @@ init|=
 operator|new
 name|DBLPQueryCleaner
 argument_list|()
+decl_stmt|;
+DECL|field|START_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|START_PATTERN
+init|=
+literal|"<pre class=\"verbatim select-on-click\">"
+decl_stmt|;
+DECL|field|END_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|END_PATTERN
+init|=
+literal|"</pre>"
 decl_stmt|;
 comment|/*      * This is a small helper class that cleans the user submitted query. Right      * now, we cannot search for ":" on dblp.org. So, we remove colons from the      * user submitted search string. Also, the search is case sensitive if we      * use capitals. So, we better change the text to lower case.      */
 DECL|class|DBLPQueryCleaner
@@ -170,12 +188,12 @@ name|query
 argument_list|)
 return|;
 block|}
-comment|/**      * Takes an HTML file (as String) as input and extracts the bibtex      * information. After that, it will convert it into a BibtexEntry and return      * it (them).      *      * @param page      *            page as String      * @return list of BibtexEntry      */
+comment|/**      * Takes an HTML file (as String) as input and extracts the bibtex      * information. After that, it will convert it into a BibEntry and return      * it (them).      *      * @param page      *            page as String      * @return list of BibEntry      */
 DECL|method|getBibTexFromPage (final String page)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getBibTexFromPage
 parameter_list|(
@@ -187,7 +205,7 @@ block|{
 specifier|final
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibtexList
 init|=
@@ -195,18 +213,6 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
-decl_stmt|;
-specifier|final
-name|String
-name|startPattern
-init|=
-literal|"<pre class=\"verbatim select-on-click\">"
-decl_stmt|;
-specifier|final
-name|String
-name|endPattern
-init|=
-literal|"</pre>"
 decl_stmt|;
 name|String
 name|tmpStr
@@ -220,7 +226,7 @@ name|tmpStr
 operator|.
 name|indexOf
 argument_list|(
-name|startPattern
+name|START_PATTERN
 argument_list|)
 decl_stmt|;
 name|int
@@ -230,7 +236,7 @@ name|tmpStr
 operator|.
 name|indexOf
 argument_list|(
-name|endPattern
+name|END_PATTERN
 argument_list|)
 decl_stmt|;
 comment|// this entry exists for sure
@@ -243,7 +249,7 @@ name|substring
 argument_list|(
 name|startIdx
 operator|+
-name|startPattern
+name|START_PATTERN
 operator|.
 name|length
 argument_list|()
@@ -280,7 +286,7 @@ name|substring
 argument_list|(
 name|endIdx
 operator|+
-name|endPattern
+name|END_PATTERN
 operator|.
 name|length
 argument_list|()
@@ -297,7 +303,7 @@ name|tmpStr
 operator|.
 name|indexOf
 argument_list|(
-name|startPattern
+name|START_PATTERN
 argument_list|)
 expr_stmt|;
 if|if
@@ -314,7 +320,7 @@ name|tmpStr
 operator|.
 name|indexOf
 argument_list|(
-name|endPattern
+name|END_PATTERN
 argument_list|)
 expr_stmt|;
 comment|// this entry exists for sure
@@ -327,7 +333,7 @@ name|substring
 argument_list|(
 name|startIdx
 operator|+
-name|startPattern
+name|START_PATTERN
 operator|.
 name|length
 argument_list|()

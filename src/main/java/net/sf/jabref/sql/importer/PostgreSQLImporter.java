@@ -70,6 +70,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -97,11 +117,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author ifsteinm.  *  *  Jan 20th	Extends DBExporter to provide features specific for PostgreSQL  *  			Created after a refactory on SQLUtil.  *  */
+comment|/**  * @author ifsteinm.  *<p>  *         Jan 20th	Extends DBExporter to provide features specific for PostgreSQL  *         Created after a refactory on SQLUtil.  */
 end_comment
 
 begin_class
 DECL|class|PostgreSQLImporter
+specifier|final
 specifier|public
 class|class
 name|PostgreSQLImporter
@@ -119,7 +140,7 @@ specifier|private
 name|PostgreSQLImporter
 parameter_list|()
 block|{     }
-comment|/**      *      * @return The singleton instance of the MySQLImporter      */
+comment|/**      * @return The singleton instance of the MySQLImporter      */
 DECL|method|getInstance ()
 specifier|public
 specifier|static
@@ -155,7 +176,10 @@ annotation|@
 name|Override
 DECL|method|readColumnNames (Connection conn)
 specifier|protected
-name|ResultSet
+name|List
+argument_list|<
+name|String
+argument_list|>
 name|readColumnNames
 parameter_list|(
 name|Connection
@@ -182,11 +206,48 @@ literal|"SELECT column_name FROM information_schema.columns WHERE table_name ='e
 argument_list|)
 init|)
 block|{
-return|return
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|colNames
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+name|ResultSet
+name|rsColumns
+init|=
 name|statement
 operator|.
 name|getResultSet
 argument_list|()
+decl_stmt|;
+while|while
+condition|(
+name|rsColumns
+operator|.
+name|next
+argument_list|()
+condition|)
+block|{
+name|colNames
+operator|.
+name|add
+argument_list|(
+name|rsColumns
+operator|.
+name|getString
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|colNames
 return|;
 block|}
 block|}

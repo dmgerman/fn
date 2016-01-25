@@ -152,7 +152,6 @@ name|String
 name|dateString
 parameter_list|)
 block|{
-comment|//@formatter:off
 name|String
 index|[]
 name|formatStrings
@@ -173,7 +172,6 @@ block|,
 literal|"d.M.uuuu"
 block|}
 decl_stmt|;
-comment|//@formatter:on
 for|for
 control|(
 name|String
@@ -201,7 +199,7 @@ block|}
 catch|catch
 parameter_list|(
 name|DateTimeParseException
-name|e
+name|ignored
 parameter_list|)
 block|{             }
 block|}

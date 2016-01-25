@@ -255,9 +255,7 @@ return|return
 name|remoteListenerServerThread
 operator|==
 literal|null
-condition|?
-literal|true
-else|:
+operator|||
 name|remoteListenerServerThread
 operator|.
 name|getState

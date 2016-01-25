@@ -22,6 +22,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Enumeration
 import|;
 end_import
@@ -148,7 +158,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
 name|DuplicateCheck
 import|;
@@ -182,7 +192,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -198,7 +208,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -225,17 +235,17 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|EntryChange (BibtexEntry memEntry, BibtexEntry tmpEntry, BibtexEntry diskEntry)
+DECL|method|EntryChange (BibEntry memEntry, BibEntry tmpEntry, BibEntry diskEntry)
 specifier|public
 name|EntryChange
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|memEntry
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|tmpEntry
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|diskEntry
 parameter_list|)
 block|{
@@ -290,7 +300,6 @@ comment|// locally as well, since last tempfile was saved.
 name|boolean
 name|isModifiedLocally
 init|=
-operator|!
 operator|(
 name|DuplicateCheck
 operator|.
@@ -300,7 +309,7 @@ name|memEntry
 argument_list|,
 name|tmpEntry
 argument_list|)
-operator|>
+operator|<=
 literal|1
 operator|)
 decl_stmt|;
@@ -309,6 +318,7 @@ comment|// in the same way. Check for this, too.
 name|boolean
 name|modificationsAgree
 init|=
+operator|(
 name|DuplicateCheck
 operator|.
 name|compareEntriesStrictly
@@ -319,6 +329,7 @@ name|diskEntry
 argument_list|)
 operator|>
 literal|1
+operator|)
 decl_stmt|;
 name|LOGGER
 operator|.
@@ -548,7 +559,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
 name|makeChange
@@ -556,7 +567,7 @@ parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 name|NamedCompound
@@ -579,22 +590,17 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-init|;
-name|e
-operator|.
-name|hasMoreElements
-argument_list|()
-condition|;
-control|)
-block|{
 name|Change
 name|c
-init|=
-name|e
+range|:
+name|Collections
 operator|.
-name|nextElement
-argument_list|()
-decl_stmt|;
+name|list
+argument_list|(
+name|e
+argument_list|)
+control|)
+block|{
 if|if
 condition|(
 name|c
@@ -636,6 +642,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|description ()
+specifier|public
 name|JComponent
 name|description
 parameter_list|()
@@ -656,36 +663,37 @@ extends|extends
 name|Change
 block|{
 DECL|field|entry
+specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|tmpEntry
+specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|tmpEntry
 decl_stmt|;
 DECL|field|field
+specifier|private
 specifier|final
 name|String
 name|field
 decl_stmt|;
 DECL|field|inMem
+specifier|private
 specifier|final
 name|String
 name|inMem
 decl_stmt|;
-DECL|field|onTmp
-specifier|final
-name|String
-name|onTmp
-decl_stmt|;
 DECL|field|onDisk
+specifier|private
 specifier|final
 name|String
 name|onDisk
 decl_stmt|;
 DECL|field|tp
+specifier|private
 specifier|final
 name|InfoPane
 name|tp
@@ -695,6 +703,7 @@ name|InfoPane
 argument_list|()
 decl_stmt|;
 DECL|field|sp
+specifier|private
 specifier|final
 name|JScrollPane
 name|sp
@@ -705,17 +714,17 @@ argument_list|(
 name|tp
 argument_list|)
 decl_stmt|;
-DECL|method|FieldChange (String field, BibtexEntry memEntry, BibtexEntry tmpEntry, String inMem, String onTmp, String onDisk)
+DECL|method|FieldChange (String field, BibEntry memEntry, BibEntry tmpEntry, String inMem, String onTmp, String onDisk)
 specifier|public
 name|FieldChange
 parameter_list|(
 name|String
 name|field
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|memEntry
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|tmpEntry
 parameter_list|,
 name|String
@@ -757,12 +766,6 @@ name|inMem
 expr_stmt|;
 name|this
 operator|.
-name|onTmp
-operator|=
-name|onTmp
-expr_stmt|;
-name|this
-operator|.
 name|onDisk
 operator|=
 name|onDisk
@@ -772,20 +775,15 @@ name|text
 init|=
 operator|new
 name|StringBuilder
-argument_list|()
+argument_list|(
+literal|36
+argument_list|)
 decl_stmt|;
 name|text
 operator|.
 name|append
 argument_list|(
-literal|"<FONT SIZE=10>"
-argument_list|)
-expr_stmt|;
-name|text
-operator|.
-name|append
-argument_list|(
-literal|"<H2>"
+literal|"<FONT SIZE=10><H2>"
 argument_list|)
 operator|.
 name|append
@@ -847,9 +845,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|":</H3>"
-operator|+
-literal|' '
+literal|":</H3> "
 argument_list|)
 operator|.
 name|append
@@ -917,9 +913,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|":</H3>"
-operator|+
-literal|' '
+literal|":</H3> "
 argument_list|)
 operator|.
 name|append
@@ -962,9 +956,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|":</H3>"
-operator|+
-literal|' '
+literal|":</H3> "
 argument_list|)
 operator|.
 name|append
@@ -972,11 +964,6 @@ argument_list|(
 name|onTmp
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-comment|// No value in memory.
-comment|/*if ((onTmp != null)&& !onTmp.equals(inMem))                   text.append("<H2>"+Globals.lang("You have cleared this field. Original value")+":</H2>"                               +" "+onTmp);*/
 block|}
 name|tp
 operator|.
@@ -998,7 +985,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
 name|makeChange
@@ -1006,7 +993,7 @@ parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 name|NamedCompound
@@ -1056,6 +1043,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|description ()
+specifier|public
 name|JComponent
 name|description
 parameter_list|()

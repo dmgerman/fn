@@ -88,7 +88,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -131,20 +131,6 @@ operator|.
 name|gui
 operator|.
 name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|JabRefFrame
 import|;
 end_import
 
@@ -300,12 +286,6 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|cc
 specifier|private
 specifier|final
@@ -318,12 +298,12 @@ argument_list|()
 decl_stmt|;
 DECL|field|one
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|one
 decl_stmt|;
 DECL|field|two
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|two
 decl_stmt|;
 DECL|field|ce
@@ -341,6 +321,29 @@ specifier|private
 name|PositionWindow
 name|pw
 decl_stmt|;
+DECL|field|MERGE_ENTRIES
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MERGE_ENTRIES
+init|=
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Merge entries"
+argument_list|)
+decl_stmt|;
+DECL|field|MARGIN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MARGIN
+init|=
+literal|"5px"
+decl_stmt|;
 DECL|method|MergeEntriesDialog (BasePanel panel)
 specifier|public
 name|MergeEntriesDialog
@@ -356,12 +359,7 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Merge entries"
-argument_list|)
+name|MERGE_ENTRIES
 argument_list|,
 literal|true
 argument_list|)
@@ -371,15 +369,6 @@ operator|.
 name|panel
 operator|=
 name|panel
-expr_stmt|;
-name|this
-operator|.
-name|frame
-operator|=
-name|panel
-operator|.
-name|frame
-argument_list|()
 expr_stmt|;
 comment|// Start setting up the dialog
 name|init
@@ -392,12 +381,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Sets up the dialog      *      * @param selected Selected BibtexEntries      */
-DECL|method|init (BibtexEntry[] selected)
+DECL|method|init (BibEntry[] selected)
 specifier|private
 name|void
 name|init
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|selected
 parameter_list|)
@@ -413,12 +402,14 @@ literal|2
 condition|)
 block|{
 comment|// None selected. Inform the user to select entries first.
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|panel
+operator|.
 name|frame
+argument_list|()
 argument_list|,
 name|Localization
 operator|.
@@ -427,19 +418,13 @@ argument_list|(
 literal|"You have to choose exactly two entries to merge."
 argument_list|)
 argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Merge entries"
-argument_list|)
+name|MERGE_ENTRIES
 argument_list|,
 name|JOptionPane
 operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 name|this
 operator|.
 name|dispose
@@ -478,12 +463,7 @@ operator|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Merge entries"
-argument_list|)
+name|MERGE_ENTRIES
 argument_list|)
 expr_stmt|;
 name|FormLayout
@@ -612,12 +592,7 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Merge entries"
-argument_list|)
+name|MERGE_ENTRIES
 argument_list|)
 decl_stmt|;
 name|replaceentries
@@ -699,7 +674,7 @@ name|RowSpec
 operator|.
 name|decode
 argument_list|(
-literal|"5px"
+name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -711,7 +686,7 @@ name|ColumnSpec
 operator|.
 name|decode
 argument_list|(
-literal|"5px"
+name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -725,7 +700,7 @@ name|RowSpec
 operator|.
 name|decode
 argument_list|(
-literal|"5px"
+name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -739,7 +714,7 @@ name|ColumnSpec
 operator|.
 name|decode
 argument_list|(
-literal|"5px"
+name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -835,7 +810,7 @@ name|String
 name|button
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|mergedEntry
 init|=
 name|mergeEntries
@@ -931,9 +906,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|one
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|ce
@@ -962,9 +934,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|two
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|ce

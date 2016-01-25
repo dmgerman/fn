@@ -53,7 +53,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to fix [ 1588028 ] export HTML table DOI URL.  *   * Will prepend "http://doi.org/" if only DOI and not an URL is given.  */
+comment|/**  * Used to fix [ 1588028 ] export HTML table DOI URL.  *  * Will prepend "http://doi.org/" if only DOI and not an URL is given.  */
 end_comment
 
 begin_class
@@ -86,6 +86,26 @@ return|return
 literal|null
 return|;
 block|}
+if|if
+condition|(
+name|fieldText
+operator|.
+name|startsWith
+argument_list|(
+literal|"/"
+argument_list|)
+condition|)
+block|{
+name|fieldText
+operator|=
+name|fieldText
+operator|.
+name|substring
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|DOI
 operator|.
@@ -96,12 +116,9 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|doi
-lambda|->
-name|doi
-operator|.
+name|DOI
+operator|::
 name|getURLAsASCIIString
-argument_list|()
 argument_list|)
 operator|.
 name|orElse

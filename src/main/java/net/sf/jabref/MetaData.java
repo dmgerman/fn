@@ -56,20 +56,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|migrations
 operator|.
 name|VersionHandling
@@ -120,7 +106,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -167,6 +153,15 @@ argument_list|<
 name|String
 argument_list|>
 block|{
+DECL|field|META_FLAG
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|META_FLAG
+init|=
+literal|"jabref-meta: "
+decl_stmt|;
 DECL|field|PREFIX_KEYPATTERN
 specifier|private
 specifier|static
@@ -237,7 +232,7 @@ name|DBStrings
 argument_list|()
 decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
-DECL|method|MetaData (HashMap<String, String> inData, BibtexDatabase db)
+DECL|method|MetaData (HashMap<String, String> inData, BibDatabase db)
 specifier|public
 name|MetaData
 parameter_list|(
@@ -249,7 +244,7 @@ name|String
 argument_list|>
 name|inData
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|)
 block|{
@@ -533,7 +528,7 @@ DECL|method|MetaData ()
 specifier|public
 name|MetaData
 parameter_list|()
-block|{}
+block|{     }
 comment|/**      * Add default metadata for new database:      */
 DECL|method|initializeNewDatabase ()
 specifier|public
@@ -915,7 +910,9 @@ name|get
 argument_list|(
 name|fieldName
 operator|+
-literal|"Directory"
+name|Globals
+operator|.
+name|DIR_SUFFIX
 argument_list|)
 decl_stmt|;
 if|if
@@ -1016,8 +1013,8 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**      * Parse the groups metadata string      * @param orderedData The vector of metadata strings      * @param db The BibtexDatabase this metadata belongs to      * @param version The group tree version      * @return true if parsing was successful, false otherwise      */
-DECL|method|putGroups (Vector<String> orderedData, BibtexDatabase db, int version)
+comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      * @param db          The BibDatabase this metadata belongs to      * @param version     The group tree version      * @return true if parsing was successful, false otherwise      */
+DECL|method|putGroups (Vector<String> orderedData, BibDatabase db, int version)
 specifier|private
 name|void
 name|putGroups
@@ -1028,7 +1025,7 @@ name|String
 argument_list|>
 name|orderedData
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|int
@@ -1150,6 +1147,24 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
 name|Vector
 argument_list|<
 name|String
@@ -1172,8 +1187,6 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|GUIGlobals
-operator|.
 name|META_FLAG
 argument_list|)
 operator|.
@@ -1239,24 +1252,6 @@ argument_list|(
 literal|"}"
 argument_list|)
 expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
 name|out
 operator|.
 name|write
@@ -1300,13 +1295,29 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
 literal|"@comment{"
 argument_list|)
 operator|.
 name|append
 argument_list|(
-name|GUIGlobals
-operator|.
 name|META_FLAG
 argument_list|)
 operator|.
@@ -1335,24 +1346,6 @@ argument_list|(
 literal|"}"
 argument_list|)
 expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
 name|out
 operator|.
 name|write
@@ -1374,13 +1367,29 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
 literal|"@comment{"
 argument_list|)
 operator|.
 name|append
 argument_list|(
-name|GUIGlobals
-operator|.
 name|META_FLAG
 argument_list|)
 operator|.
@@ -1468,24 +1477,6 @@ operator|.
 name|append
 argument_list|(
 literal|"}"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
 argument_list|)
 expr_stmt|;
 name|out
@@ -1807,7 +1798,7 @@ return|return
 name|labelPattern
 return|;
 block|}
-comment|/**      * Updates the stored key patterns to the given key patterns.      *      * @param labelPattern the key patterns to update to.<br />      * A reference to this object is stored internally and is returned at getLabelPattern();      */
+comment|/**      * Updates the stored key patterns to the given key patterns.      *      * @param labelPattern the key patterns to update to.<br />      *                     A reference to this object is stored internally and is returned at getLabelPattern();      */
 DECL|method|setLabelPattern (DatabaseLabelPattern labelPattern)
 specifier|public
 name|void
@@ -1865,7 +1856,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// set new value if it is not a default value
-name|Enumeration
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1876,22 +1867,14 @@ operator|.
 name|getAllKeys
 argument_list|()
 decl_stmt|;
-while|while
-condition|(
-name|allKeys
-operator|.
-name|hasMoreElements
-argument_list|()
-condition|)
-block|{
+for|for
+control|(
 name|String
 name|key
-init|=
+range|:
 name|allKeys
-operator|.
-name|nextElement
-argument_list|()
-decl_stmt|;
+control|)
+block|{
 name|String
 name|metaDataKey
 init|=
@@ -1912,19 +1895,6 @@ name|key
 argument_list|)
 condition|)
 block|{
-name|ArrayList
-argument_list|<
-name|String
-argument_list|>
-name|value
-init|=
-name|labelPattern
-operator|.
-name|getValue
-argument_list|(
-name|key
-argument_list|)
-decl_stmt|;
 name|Vector
 argument_list|<
 name|String
@@ -1940,7 +1910,12 @@ name|data
 operator|.
 name|add
 argument_list|(
-name|value
+name|labelPattern
+operator|.
+name|getValue
+argument_list|(
+name|key
+argument_list|)
 operator|.
 name|get
 argument_list|(

@@ -222,7 +222,7 @@ name|logic
 operator|.
 name|search
 operator|.
-name|SearchTextObservable
+name|SearchQueryHighlightObservable
 import|;
 end_import
 
@@ -238,7 +238,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -320,7 +320,29 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|stream
+operator|.
+name|Collectors
 import|;
 end_import
 
@@ -427,11 +449,11 @@ specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
-DECL|field|searchTextObservable
+DECL|field|searchQueryHighlightObservable
 specifier|private
 specifier|final
-name|SearchTextObservable
-name|searchTextObservable
+name|SearchQueryHighlightObservable
+name|searchQueryHighlightObservable
 decl_stmt|;
 DECL|field|searchField
 specifier|private
@@ -509,10 +531,10 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|searchTextObservable
+name|searchQueryHighlightObservable
 operator|=
 operator|new
-name|SearchTextObservable
+name|SearchQueryHighlightObservable
 argument_list|()
 expr_stmt|;
 name|currentResults
@@ -691,6 +713,12 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
+init|=
 name|basePanel
 operator|.
 name|getDatabase
@@ -704,23 +732,26 @@ argument_list|()
 operator|.
 name|filter
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|::
 name|isSearchHit
 argument_list|)
 operator|.
-name|forEach
+name|collect
 argument_list|(
-name|entry
-lambda|->
+name|Collectors
+operator|.
+name|toList
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|searchDialog
 operator|.
-name|addEntry
+name|addEntries
 argument_list|(
-name|entry
+name|entries
 argument_list|,
 name|basePanel
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|searchDialog
@@ -1482,7 +1513,7 @@ operator|.
 name|WHITE
 argument_list|)
 expr_stmt|;
-name|searchTextObservable
+name|searchQueryHighlightObservable
 operator|.
 name|fireSearchlistenerEvent
 argument_list|(
@@ -1643,7 +1674,7 @@ argument_list|(
 name|NO_RESULTS_COLOR
 argument_list|)
 expr_stmt|;
-name|searchTextObservable
+name|searchQueryHighlightObservable
 operator|.
 name|fireSearchlistenerEvent
 argument_list|(
@@ -1744,14 +1775,14 @@ name|searchCompleter
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getSearchTextObservable ()
+DECL|method|getSearchQueryHighlightObservable ()
 specifier|public
-name|SearchTextObservable
-name|getSearchTextObservable
+name|SearchQueryHighlightObservable
+name|getSearchQueryHighlightObservable
 parameter_list|()
 block|{
 return|return
-name|searchTextObservable
+name|searchQueryHighlightObservable
 return|;
 block|}
 DECL|method|isStillValidQuery (SearchQuery query)

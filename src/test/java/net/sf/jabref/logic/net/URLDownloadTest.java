@@ -40,22 +40,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|net
-operator|.
-name|URLDownload
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit

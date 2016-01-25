@@ -40,7 +40,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -192,33 +192,18 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|TransferableFileLinkSelection (BasePanel panel, BibtexEntry[] selection)
+DECL|method|TransferableFileLinkSelection (BasePanel panel, BibEntry[] selection)
 specifier|public
 name|TransferableFileLinkSelection
 parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|selection
 parameter_list|)
 block|{
-name|String
-name|s
-init|=
-name|selection
-index|[
-literal|0
-index|]
-operator|.
-name|getField
-argument_list|(
-name|Globals
-operator|.
-name|FILE_FIELD
-argument_list|)
-decl_stmt|;
 name|FileListTableModel
 name|tm
 init|=
@@ -226,21 +211,30 @@ operator|new
 name|FileListTableModel
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|s
-operator|!=
-literal|null
-condition|)
-block|{
+name|selection
+index|[
+literal|0
+index|]
+operator|.
+name|getFieldOptional
+argument_list|(
+name|Globals
+operator|.
+name|FILE_FIELD
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|file
+lambda|->
 name|tm
 operator|.
 name|setContent
 argument_list|(
-name|s
+name|file
+argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|tm
@@ -282,8 +276,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|dirs
 argument_list|)
@@ -399,7 +392,7 @@ return|;
 comment|//else
 comment|//    return "test";
 block|}
-comment|/*     private StringSelection ss;      public TransferableFileLinkSelection(BasePanel panel, BibtexEntry[] selection) {         String s = selection[0].getField(GUIGlobals.FILE_FIELD);         FileListTableModel tm = new FileListTableModel();         if (s != null)             tm.setContent(s);         if (tm.getRowCount()> 0) {             // Find the default directory for this field type, if any:             String dir = panel.metaData().getFileDirectory(GUIGlobals.FILE_FIELD);             // Include the standard "file" directory:             String fileDir = panel.metaData().getFileDirectory(GUIGlobals.FILE_FIELD);             // Include the directory of the bib file:             String[] dirs;             if (panel.metaData().getDatabaseFile() != null) {                 String databaseDir = panel.metaData().getDatabaseFile().getParent();                 dirs = new String[] { dir, fileDir, databaseDir };             }             else                 dirs = new String[] { dir, fileDir };             System.out.println(tm.getEntry(0).getLink());             for (int i = 0; i< dirs.length; i++) {                 String dir1 = dirs[i];                 System.out.println("dir:"+dir1);             }             File expLink = Util.expandFilename(tm.getEntry(0).getLink(), dirs);             try {                 System.out.println(expLink.toURI().toURL().toString());                 ss = new StringSelection(expLink.toURI().toURL().toString());              } catch (MalformedURLException ex) {                 ss = new StringSelection("");             }         }         else             ss = new StringSelection("");      }      public Transferable getTransferable() {         return ss;     } */
+comment|/*     private StringSelection ss;      public TransferableFileLinkSelection(BasePanel panel, BibEntry[] selection) {         String s = selection[0].getField(GUIGlobals.FILE_FIELD);         FileListTableModel tm = new FileListTableModel();         if (s != null)             tm.setContent(s);         if (tm.getRowCount()> 0) {             // Find the default directory for this field type, if any:             String dir = panel.metaData().getFileDirectory(GUIGlobals.FILE_FIELD);             // Include the standard "file" directory:             String fileDir = panel.metaData().getFileDirectory(GUIGlobals.FILE_FIELD);             // Include the directory of the bib file:             String[] dirs;             if (panel.metaData().getDatabaseFile() != null) {                 String databaseDir = panel.metaData().getDatabaseFile().getParent();                 dirs = new String[] { dir, fileDir, databaseDir };             }             else                 dirs = new String[] { dir, fileDir };             System.out.println(tm.getEntry(0).getLink());             for (int i = 0; i< dirs.length; i++) {                 String dir1 = dirs[i];                 System.out.println("dir:"+dir1);             }             File expLink = Util.expandFilename(tm.getEntry(0).getLink(), dirs);             try {                 System.out.println(expLink.toURI().toURL().toString());                 ss = new StringSelection(expLink.toURI().toURL().toString());              } catch (MalformedURLException ex) {                 ss = new StringSelection("");             }         }         else             ss = new StringSelection("");      }      public Transferable getTransferable() {         return ss;     } */
 block|}
 end_class
 

@@ -128,6 +128,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -350,7 +360,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -425,7 +435,7 @@ decl_stmt|;
 DECL|field|actions
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|PushToApplication
 argument_list|,
@@ -1103,6 +1113,11 @@ specifier|static
 class|class
 name|BooleanHolder
 block|{
+DECL|field|value
+specifier|public
+name|boolean
+name|value
+decl_stmt|;
 DECL|method|BooleanHolder (boolean value)
 specifier|public
 name|BooleanHolder
@@ -1118,11 +1133,6 @@ operator|=
 name|value
 expr_stmt|;
 block|}
-DECL|field|value
-specifier|public
-name|boolean
-name|value
-decl_stmt|;
 block|}
 DECL|method|showSettingsDialog (Object parent, PushToApplication toApp, JPanel options)
 specifier|public
@@ -1259,7 +1269,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1432,11 +1442,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1653,11 +1664,12 @@ name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|PUSH_TO_APPLICATION
 argument_list|)

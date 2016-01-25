@@ -179,7 +179,6 @@ name|Document
 name|doc
 parameter_list|)
 block|{
-comment|// code by http://stackoverflow.com/a/10356322/873282
 try|try
 block|{
 name|DOMSource

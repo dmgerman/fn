@@ -76,7 +76,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -88,7 +88,7 @@ block|{
 DECL|field|be
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 literal|null
@@ -137,7 +137,7 @@ expr_stmt|;
 block|}
 DECL|method|getEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|()
 block|{

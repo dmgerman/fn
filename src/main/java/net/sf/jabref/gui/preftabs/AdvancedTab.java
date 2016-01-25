@@ -380,19 +380,6 @@ specifier|private
 name|boolean
 name|oldUseDef
 decl_stmt|;
-DECL|field|oldBiblMode
-specifier|private
-name|boolean
-name|oldBiblMode
-decl_stmt|;
-DECL|field|oldPort
-specifier|private
-name|int
-name|oldPort
-init|=
-operator|-
-literal|1
-decl_stmt|;
 DECL|field|useConvertToEquation
 specifier|private
 specifier|final
@@ -1238,13 +1225,6 @@ name|useRemoteServer
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|oldPort
-operator|=
-name|remotePreferences
-operator|.
-name|getPort
-argument_list|()
-expr_stmt|;
 name|remoteServerPort
 operator|.
 name|setText
@@ -1253,7 +1233,10 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-name|oldPort
+name|remotePreferences
+operator|.
+name|getPort
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1520,22 +1503,13 @@ name|void
 name|storeRemoteSettings
 parameter_list|()
 block|{
-name|Optional
-argument_list|<
-name|Integer
-argument_list|>
-name|newPort
-init|=
 name|getPortAsInt
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|newPort
 operator|.
-name|isPresent
-argument_list|()
-condition|)
+name|ifPresent
+argument_list|(
+name|newPort
+lambda|->
 block|{
 if|if
 condition|(
@@ -1544,9 +1518,6 @@ operator|.
 name|isDifferentPort
 argument_list|(
 name|newPort
-operator|.
-name|get
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1555,9 +1526,6 @@ operator|.
 name|setPort
 argument_list|(
 name|newPort
-operator|.
-name|get
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -1588,7 +1556,12 @@ argument_list|)
 operator|.
 name|concat
 argument_list|(
-literal|"You must restart JabRef for this change to come into effect."
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"You must restart JabRef for this to come into effect."
+argument_list|)
 argument_list|)
 argument_list|,
 name|Localization
@@ -1606,6 +1579,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+argument_list|)
+expr_stmt|;
 name|remotePreferences
 operator|.
 name|setUseRemoteServer
@@ -1749,7 +1724,6 @@ name|NumberFormatException
 name|ex
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1786,7 +1760,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return
 literal|false
 return|;

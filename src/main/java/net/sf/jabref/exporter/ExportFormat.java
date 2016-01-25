@@ -28,7 +28,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -44,7 +44,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -244,6 +244,7 @@ name|String
 name|extension
 decl_stmt|;
 DECL|field|encoding
+specifier|private
 name|Charset
 name|encoding
 decl_stmt|;
@@ -261,6 +262,7 @@ name|customExport
 decl_stmt|;
 DECL|field|LAYOUT_PREFIX
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|LAYOUT_PREFIX
@@ -387,6 +389,7 @@ return|;
 block|}
 comment|/**      * Set an encoding which will be used in preference to the default value      * obtained from the basepanel.      * @param encoding The name of the encoding to use.      */
 DECL|method|setEncoding (Charset encoding)
+specifier|public
 name|void
 name|setEncoding
 parameter_list|(
@@ -403,6 +406,7 @@ expr_stmt|;
 block|}
 comment|/**      * This method should return a reader from which the given layout file can      * be read.      *      * This standard implementation of this method will use the      * {@link FileActions#getReader(String)} method.      *      * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *      * @param filename      *            the filename      * @throws IOException      *             if the reader could not be created      *      * @return a newly created reader      */
 DECL|method|getReader (String filename)
+specifier|private
 name|Reader
 name|getReader
 parameter_list|(
@@ -456,16 +460,16 @@ name|filename
 argument_list|)
 return|;
 block|}
-comment|/**      * Perform the export of {@code database}.      *      * @param database      *            The database to export from.      * @param metaData      *            The database's meta data.      * @param file      *            the file to write the resulting export to      * @param encoding      *            The encoding of the database      * @param entryIds      *            Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      *      * @throws IOException      *             if a problem occurred while trying to write to {@code writer}      *             or read from required resources.      * @throws Exception      *             if any other error occurred during export.      *      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibtexDatabase,      *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set)      */
+comment|/**      * Perform the export of {@code database}.      *      * @param database      *            The database to export from.      * @param metaData      *            The database's meta data.      * @param file      *            the file to write the resulting export to      * @param encoding      *            The encoding of the database      * @param entryIds      *            Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      *      * @throws IOException      *             if a problem occurred while trying to write to {@code writer}      *             or read from required resources.      * @throws Exception      *             if any other error occurred during export.      *      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibDatabase,      *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set)      */
 annotation|@
 name|Override
-DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final Charset enc, Set<String> entryIds)
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset enc, Set<String> entryIds)
 specifier|public
 name|void
 name|performExport
 parameter_list|(
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 specifier|final
@@ -591,7 +595,7 @@ argument_list|(
 name|lfFileName
 argument_list|)
 expr_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -684,7 +688,7 @@ block|}
 comment|/*              * Write database entries; entries will be sorted as they appear on the              * screen, or sorted by author, depending on Preferences. We also supply              * the Set entries - if we are to export only certain entries, it will              * be non-null, and be used to choose entries. Otherwise, it will be              * null, and be ignored.              */
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sorted
 init|=
@@ -762,16 +766,23 @@ name|getMissingFormatters
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|missingFormatters
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|LOGGER
 operator|.
 name|warn
 argument_list|(
-name|defLayout
-operator|.
-name|getMissingFormatters
-argument_list|()
+name|missingFormatters
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|HashMap
 argument_list|<
@@ -797,7 +808,7 @@ literal|0
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|sorted
@@ -1048,12 +1059,7 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
-literal|"The following formatters could not be found"
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|": "
+literal|"The following formatters could not be found: "
 argument_list|)
 decl_stmt|;
 for|for
@@ -1111,18 +1117,18 @@ name|sb
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 name|finalizeSaveSession
 argument_list|(
 name|ss
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|/**      * See if there is a name formatter file bundled with this export format. If so, read      * all the name formatters so they can be used by the filter layouts.      * @param lfFileName The layout filename.      */
 DECL|method|readFormatterFile (String lfFileName)
 specifier|private
 specifier|static
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1264,7 +1270,7 @@ name|line
 operator|.
 name|indexOf
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 comment|// TODO: any need to accept escaped colons here?
@@ -1349,6 +1355,7 @@ name|formatters
 return|;
 block|}
 DECL|method|getSaveSession (final Charset enc, final File outFile)
+specifier|public
 name|SaveSession
 name|getSaveSession
 parameter_list|(
@@ -1407,6 +1414,7 @@ name|fileFilter
 return|;
 block|}
 DECL|method|finalizeSaveSession (final SaveSession ss)
+specifier|public
 name|void
 name|finalizeSaveSession
 parameter_list|(

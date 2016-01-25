@@ -130,7 +130,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -194,7 +194,7 @@ name|basePanel
 decl_stmt|;
 DECL|field|entry
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|result
@@ -273,7 +273,7 @@ name|result
 operator|=
 name|fft
 operator|.
-name|findFullText
+name|findFullTextPDF
 argument_list|(
 name|entry
 argument_list|)
@@ -295,14 +295,6 @@ name|isPresent
 argument_list|()
 condition|)
 block|{
-name|String
-name|bibtexKey
-init|=
-name|entry
-operator|.
-name|getCiteKey
-argument_list|()
-decl_stmt|;
 name|String
 index|[]
 name|dirs
@@ -349,6 +341,14 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|String
+name|bibtexKey
+init|=
+name|entry
+operator|.
+name|getCiteKey
+argument_list|()
+decl_stmt|;
 comment|// TODO: this needs its own thread as it blocks the UI!
 name|DownloadExternalFile
 name|def

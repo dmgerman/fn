@@ -90,7 +90,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -207,7 +207,7 @@ block|{
 comment|//given
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -216,11 +216,11 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 literal|"123"
 argument_list|,
@@ -233,7 +233,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -289,7 +289,7 @@ decl_stmt|;
 comment|//when
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
 name|java
 operator|.

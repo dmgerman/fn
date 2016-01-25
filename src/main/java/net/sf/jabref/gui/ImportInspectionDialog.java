@@ -144,77 +144,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
+name|*
 import|;
 end_import
 
@@ -468,6 +398,50 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|keyboard
+operator|.
+name|KeyBinding
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -510,7 +484,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -526,7 +500,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -538,7 +512,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
 name|DuplicateCheck
 import|;
@@ -755,22 +729,6 @@ operator|.
 name|help
 operator|.
 name|HelpAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|keyboard
-operator|.
-name|KeyBinds
 import|;
 end_import
 
@@ -1108,18 +1066,22 @@ name|ImportInspector
 implements|,
 name|OutputPrinter
 block|{
-DECL|interface|CallBack
-specifier|public
-interface|interface
-name|CallBack
-block|{
-comment|/**          * This method is called by the dialog when the user has cancelled or          * signalled a stop. It is expected that any long-running fetch          * operations will stop after this method is called.          */
-DECL|method|stopFetching ()
-name|void
-name|stopFetching
-parameter_list|()
-function_decl|;
-block|}
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ImportInspectionDialog
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|ths
 specifier|protected
 name|ImportInspectionDialog
@@ -1169,7 +1131,7 @@ specifier|private
 specifier|final
 name|TableComparatorChooser
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|comparatorChooser
 decl_stmt|;
@@ -1178,7 +1140,7 @@ specifier|private
 specifier|final
 name|DefaultEventSelectionModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|selectionModel
 decl_stmt|;
@@ -1216,7 +1178,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1242,7 +1204,7 @@ specifier|private
 specifier|final
 name|EventList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -1256,7 +1218,7 @@ specifier|private
 specifier|final
 name|SortedList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sortedList
 decl_stmt|;
@@ -1266,7 +1228,7 @@ specifier|private
 specifier|final
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entriesToDelete
 init|=
@@ -1284,7 +1246,7 @@ decl_stmt|;
 DECL|field|callBacks
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|CallBack
 argument_list|>
@@ -1389,7 +1351,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|,
 name|Set
 argument_list|<
@@ -1524,6 +1486,27 @@ name|PAD
 init|=
 literal|4
 decl_stmt|;
+DECL|field|URL_FIELD
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|URL_FIELD
+init|=
+literal|"url"
+decl_stmt|;
+DECL|interface|CallBack
+specifier|public
+interface|interface
+name|CallBack
+block|{
+comment|/**          * This method is called by the dialog when the user has cancelled or          * signalled a stop. It is expected that any long-running fetch          * operations will stop after this method is called.          */
+DECL|method|stopFetching ()
+name|void
+name|stopFetching
+parameter_list|()
+function_decl|;
+block|}
 comment|/**      * The "defaultSelected" boolean value determines if new entries added are      * selected for import or not. This value is true by default.      *      * @param defaultSelected The desired value.      */
 DECL|method|setDefaultSelected (boolean defaultSelected)
 specifier|public
@@ -1581,24 +1564,33 @@ name|metaData
 operator|=
 operator|(
 name|panel
-operator|!=
+operator|==
 literal|null
 operator|)
 condition|?
+operator|new
+name|MetaData
+argument_list|()
+else|:
 name|panel
 operator|.
 name|metaData
-argument_list|()
-else|:
-operator|new
-name|MetaData
 argument_list|()
 expr_stmt|;
 name|this
 operator|.
 name|fields
 operator|=
+name|Arrays
+operator|.
+name|copyOf
+argument_list|(
 name|fields
+argument_list|,
+name|fields
+operator|.
+name|length
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -1656,14 +1648,14 @@ argument_list|)
 expr_stmt|;
 name|DefaultEventTableModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|tableModelGl
 init|=
 operator|(
 name|DefaultEventTableModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 operator|)
 name|GlazedListsSwing
@@ -1727,11 +1719,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|DELETE_ENTRY
 argument_list|)
@@ -1763,7 +1756,7 @@ operator|=
 operator|(
 name|DefaultEventSelectionModel
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 operator|)
 name|GlazedListsSwing
@@ -2509,11 +2502,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -2575,21 +2569,21 @@ name|current
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibtexEntry)      */
+comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibEntry)      */
 annotation|@
 name|Override
-DECL|method|addEntry (BibtexEntry entry)
+DECL|method|addEntry (BibEntry entry)
 specifier|public
 name|void
 name|addEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|list
 init|=
@@ -2612,21 +2606,21 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* (non-Javadoc)      * @see net.sf.jabref.gui.ImportInspection#addEntries(java.util.Collection)      */
-DECL|method|addEntries (Collection<BibtexEntry> entriesToAdd)
+DECL|method|addEntries (Collection<BibEntry> entriesToAdd)
 specifier|public
 name|void
 name|addEntries
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entriesToAdd
 parameter_list|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entriesToAdd
@@ -2667,8 +2661,9 @@ argument_list|()
 argument_list|,
 name|entry
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 operator|)
 operator|||
@@ -2681,8 +2676,9 @@ name|entries
 argument_list|,
 name|entry
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 condition|)
 block|{
@@ -2738,26 +2734,29 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entries A Collection of BibtexEntry instances.      * @param entry   The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
-DECL|method|internalDuplicate (Collection<BibtexEntry> entriesDupe, BibtexEntry entry)
+comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entriesDupe A Collection of BibEntry instances.      * @param entry   The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
+DECL|method|internalDuplicate (Collection<BibEntry> entriesDupe, BibEntry entry)
 specifier|private
 specifier|static
-name|BibtexEntry
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
 name|internalDuplicate
 parameter_list|(
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entriesDupe
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|othEntry
 range|:
 name|entriesDupe
@@ -2766,8 +2765,11 @@ block|{
 if|if
 condition|(
 name|othEntry
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|entry
+argument_list|)
 condition|)
 block|{
 continue|continue;
@@ -2786,12 +2788,20 @@ argument_list|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|othEntry
+argument_list|)
 return|;
 block|}
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 comment|/**      * Removes all selected entries from the table. Synchronizes on this.entries      * to prevent conflict with addition of new entries.      */
@@ -2976,6 +2986,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|this
 operator|.
 name|glTable
@@ -2984,10 +2995,9 @@ name|getSelectedRowCount
 argument_list|()
 operator|==
 literal|0
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
+operator|(
 name|this
 operator|.
 name|glTable
@@ -2996,6 +3006,7 @@ name|getRowCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|this
@@ -3012,20 +3023,19 @@ expr_stmt|;
 comment|//Select first row in the table
 block|}
 block|}
-block|}
 comment|/**      * This method returns a List containing all entries that are selected      * (checkbox checked).      *      * @return a List containing the selected entries.      */
 DECL|method|getSelectedEntries ()
 specifier|private
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getSelectedEntries
 parameter_list|()
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|selected
 init|=
@@ -3036,7 +3046,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -3086,7 +3096,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|selectionModel
@@ -3110,7 +3120,7 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 name|MetaData
@@ -3120,9 +3130,24 @@ comment|// Relate to existing database, if any:
 if|if
 condition|(
 name|panel
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|database
+operator|=
+operator|new
+name|BibDatabase
+argument_list|()
+expr_stmt|;
+name|localMetaData
+operator|=
+operator|new
+name|MetaData
+argument_list|()
+expr_stmt|;
+block|}
+else|else
 block|{
 name|database
 operator|=
@@ -3136,21 +3161,6 @@ operator|=
 name|panel
 operator|.
 name|metaData
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|database
-operator|=
-operator|new
-name|BibtexDatabase
-argument_list|()
-expr_stmt|;
-name|localMetaData
-operator|=
-operator|new
-name|MetaData
 argument_list|()
 expr_stmt|;
 block|}
@@ -3192,9 +3202,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|entry
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|entries
@@ -3232,7 +3239,7 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 name|MetaData
@@ -3242,9 +3249,24 @@ comment|// Relate to existing database, if any:
 if|if
 condition|(
 name|panel
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|database
+operator|=
+operator|new
+name|BibDatabase
+argument_list|()
+expr_stmt|;
+name|localMetaData
+operator|=
+operator|new
+name|MetaData
+argument_list|()
+expr_stmt|;
+block|}
+else|else
 block|{
 name|database
 operator|=
@@ -3258,21 +3280,6 @@ operator|=
 name|panel
 operator|.
 name|metaData
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|database
-operator|=
-operator|new
-name|BibtexDatabase
-argument_list|()
-expr_stmt|;
-name|localMetaData
-operator|=
-operator|new
-name|MetaData
 argument_list|()
 expr_stmt|;
 block|}
@@ -3297,7 +3304,7 @@ comment|// with,
 comment|// and generate unique keys:
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -3350,7 +3357,7 @@ comment|// to keep
 comment|// control over key uniqueness.
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -3361,9 +3368,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|entry
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3645,6 +3649,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|node
+specifier|private
 specifier|final
 name|GroupTreeNode
 name|node
@@ -3702,7 +3707,7 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|selectionModel
@@ -3830,7 +3835,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -3969,7 +3974,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entriesToDelete
@@ -4001,9 +4006,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|entry
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4045,7 +4047,7 @@ expr_stmt|;
 specifier|final
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|selected
 init|=
@@ -4067,11 +4069,11 @@ name|newDatabase
 condition|)
 block|{
 comment|// Create a new BasePanel for the entries:
-name|BibtexDatabase
+name|BibDatabase
 name|base
 init|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 decl_stmt|;
 name|panel
@@ -4169,7 +4171,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|panel
@@ -4201,7 +4203,7 @@ block|}
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|selected
@@ -4357,7 +4359,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[]
 block|{
 name|entry
@@ -4391,10 +4393,6 @@ argument_list|(
 name|undo
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-comment|// Shouldn't happen...
 block|}
 block|}
 block|}
@@ -4495,12 +4493,26 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|selected
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"No entries imported."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|frame
 operator|.
@@ -4519,21 +4531,6 @@ name|selected
 operator|.
 name|size
 argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|frame
-operator|.
-name|output
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"No entries imported."
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4877,6 +4874,7 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|enable
+specifier|private
 specifier|final
 name|Boolean
 name|enable
@@ -5021,19 +5019,19 @@ name|EntrySelectionListener
 implements|implements
 name|ListEventListener
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 annotation|@
 name|Override
-DECL|method|listChanged (ListEvent<BibtexEntry> listEvent)
+DECL|method|listChanged (ListEvent<BibEntry> listEvent)
 specifier|public
 name|void
 name|listChanged
 parameter_list|(
 name|ListEvent
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|listEvent
 parameter_list|)
@@ -5110,7 +5108,7 @@ implements|implements
 name|MouseListener
 block|{
 DECL|method|isIconColumn (int col)
-specifier|public
+specifier|private
 name|boolean
 name|isIconColumn
 parameter_list|(
@@ -5179,7 +5177,7 @@ name|col
 argument_list|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|sortedList
@@ -5189,14 +5187,13 @@ argument_list|(
 name|row
 argument_list|)
 decl_stmt|;
-switch|switch
+if|if
 condition|(
 name|col
+operator|==
+name|FILE_COL
 condition|)
 block|{
-case|case
-name|FILE_COL
-case|:
 name|Object
 name|o
 init|=
@@ -5267,8 +5264,7 @@ literal|""
 argument_list|,
 name|fl
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 literal|null
 argument_list|,
@@ -5279,8 +5275,7 @@ argument_list|()
 argument_list|,
 name|fl
 operator|.
-name|getType
-argument_list|()
+name|type
 argument_list|)
 operator|)
 operator|.
@@ -5290,18 +5285,17 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-break|break;
-case|case
-name|URL_COL
-case|:
+block|}
+else|else
+block|{
+comment|// Must be URL_COL
 name|openExternalLink
 argument_list|(
-literal|"url"
+name|URL_FIELD
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-break|break;
 block|}
 block|}
 block|}
@@ -5333,7 +5327,7 @@ comment|// Nothing
 block|}
 comment|/**          * Show right-click menu. If the click happened in an icon column that          * presents its own popup menu, show that. Otherwise, show the ordinary          * popup menu.          *          * @param e The mouse event that triggered the popup.          */
 DECL|method|showPopup (MouseEvent e)
-specifier|public
+specifier|private
 name|void
 name|showPopup
 parameter_list|(
@@ -5355,31 +5349,30 @@ name|getPoint
 argument_list|()
 argument_list|)
 decl_stmt|;
-switch|switch
+if|if
 condition|(
 name|col
+operator|==
+name|FILE_COL
 condition|)
 block|{
-case|case
-name|FILE_COL
-case|:
 name|showFileFieldMenu
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-break|break;
-default|default:
+block|}
+else|else
+block|{
 name|showOrdinaryRightClickMenu
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-break|break;
 block|}
 block|}
 DECL|method|showOrdinaryRightClickMenu (MouseEvent e)
-specifier|public
+specifier|private
 name|void
 name|showOrdinaryRightClickMenu
 parameter_list|(
@@ -5407,7 +5400,7 @@ expr_stmt|;
 block|}
 comment|/**          * Show the popup menu for the FILE field.          *          * @param e The mouse event that triggered the popup.          */
 DECL|method|showFileFieldMenu (MouseEvent e)
-specifier|public
+specifier|private
 name|void
 name|showFileFieldMenu
 parameter_list|(
@@ -5429,7 +5422,7 @@ name|getPoint
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|sortedList
@@ -5514,8 +5507,7 @@ name|description
 init|=
 name|flEntry
 operator|.
-name|getDescription
-argument_list|()
+name|description
 decl_stmt|;
 if|if
 condition|(
@@ -5540,8 +5532,7 @@ name|description
 operator|=
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 expr_stmt|;
 block|}
 name|menu
@@ -5562,13 +5553,11 @@ name|description
 argument_list|,
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getIcon
 argument_list|()
@@ -5580,8 +5569,7 @@ argument_list|()
 argument_list|,
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5625,7 +5613,7 @@ block|}
 block|}
 comment|/**          * Open old-style external links after user clicks icon.          *          * @param fieldName The name of the BibTeX field this icon is used for.          * @param e         The MouseEvent that triggered this operation.          */
 DECL|method|openExternalLink (String fieldName, MouseEvent e)
-specifier|public
+specifier|private
 name|void
 name|openExternalLink
 parameter_list|(
@@ -5650,7 +5638,7 @@ name|getPoint
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|sortedList
@@ -5704,10 +5692,14 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not open link"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -5819,7 +5811,7 @@ literal|null
 operator|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|first
 init|=
 name|sortedList
@@ -5829,7 +5821,10 @@ argument_list|(
 name|row
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
 name|other
 init|=
 name|DuplicateCheck
@@ -5847,8 +5842,9 @@ decl_stmt|;
 if|if
 condition|(
 name|other
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 comment|// This will be true if the duplicate is in the existing
@@ -5864,6 +5860,9 @@ operator|.
 name|this
 argument_list|,
 name|other
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|first
 argument_list|,
@@ -5917,6 +5916,9 @@ operator|.
 name|add
 argument_list|(
 name|other
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Clear duplicate icon, which is controlled by the
@@ -6061,6 +6063,9 @@ operator|.
 name|add
 argument_list|(
 name|other
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Store merged entry for later adding
@@ -6118,7 +6123,7 @@ expr_stmt|;
 name|first
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 expr_stmt|;
 comment|// Reset first so the next duplicate doesn't trigger
@@ -6148,8 +6153,9 @@ expr_stmt|;
 if|if
 condition|(
 name|other
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|DuplicateResolverDialog
@@ -6165,6 +6171,9 @@ argument_list|,
 name|first
 argument_list|,
 name|other
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|DuplicateResolverDialog
 operator|.
@@ -6218,6 +6227,9 @@ operator|.
 name|remove
 argument_list|(
 name|other
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|first
@@ -6316,6 +6328,9 @@ operator|.
 name|remove
 argument_list|(
 name|other
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -6378,7 +6393,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|selectionModel
@@ -6413,7 +6428,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"url"
+name|URL_FIELD
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -6447,7 +6462,7 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-literal|"url"
+name|URL_FIELD
 argument_list|)
 expr_stmt|;
 block|}
@@ -6457,7 +6472,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"url"
+name|URL_FIELD
 argument_list|,
 name|result
 argument_list|)
@@ -6495,7 +6510,8 @@ operator|.
 name|DownloadCallback
 block|{
 DECL|field|entry
-name|BibtexEntry
+specifier|private
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|method|DownloadFile ()
@@ -6654,10 +6670,14 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not downlod file"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -6825,7 +6845,7 @@ block|{
 return|return;
 block|}
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|selectionModel
@@ -7061,7 +7081,8 @@ operator|.
 name|DownloadCallback
 block|{
 DECL|field|entry
-name|BibtexEntry
+specifier|private
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|method|LinkLocalFile ()
@@ -7376,6 +7397,7 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|fileType
+specifier|private
 specifier|final
 name|String
 name|fileType
@@ -7446,7 +7468,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|selectionModel
@@ -7556,10 +7578,6 @@ name|setupComparatorChooser
 parameter_list|()
 block|{
 comment|// First column:
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|Comparator
@@ -7636,14 +7654,14 @@ argument_list|(
 operator|new
 name|IconComparator
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 name|Globals
 operator|.
 name|FILE_FIELD
-block|}
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7663,12 +7681,12 @@ argument_list|(
 operator|new
 name|IconComparator
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
-literal|"url"
-block|}
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|URL_FIELD
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7770,6 +7788,7 @@ extends|extends
 name|JTable
 block|{
 DECL|field|renderer
+specifier|private
 specifier|final
 name|GeneralRenderer
 name|renderer
@@ -7921,7 +7940,7 @@ name|int
 name|column
 parameter_list|)
 block|{
-comment|// Only column 0, which is controlled by BibtexEntry.searchHit, is
+comment|// Only column 0, which is controlled by BibEntry.searchHit, is
 comment|// editable:
 name|entries
 operator|.
@@ -7934,7 +7953,7 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|sortedList
@@ -7974,7 +7993,7 @@ name|EntryTableFormat
 implements|implements
 name|TableFormat
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 annotation|@
@@ -8047,12 +8066,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getColumnValue (BibtexEntry entry, int i)
+DECL|method|getColumnValue (BibEntry entry, int i)
 specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|int
@@ -8127,9 +8146,15 @@ expr_stmt|;
 if|if
 condition|(
 name|o
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+else|else
 block|{
 name|FileListTableModel
 name|model
@@ -8179,8 +8204,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getIcon
 argument_list|()
@@ -8189,12 +8213,6 @@ expr_stmt|;
 block|}
 return|return
 name|fileLabel
-return|;
-block|}
-else|else
-block|{
-return|return
-literal|null
 return|;
 block|}
 case|case
@@ -8206,15 +8224,21 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"url"
+name|URL_FIELD
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
 name|o
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+else|else
 block|{
 name|urlLabel
 operator|.
@@ -8228,12 +8252,6 @@ argument_list|)
 expr_stmt|;
 return|return
 name|urlLabel
-return|;
-block|}
-else|else
-block|{
-return|return
-literal|null
 return|;
 block|}
 default|default:
@@ -8284,18 +8302,18 @@ decl_stmt|;
 return|return
 operator|(
 name|contents
-operator|!=
+operator|==
 literal|null
 operator|)
 condition|?
+literal|""
+else|:
 name|AuthorList
 operator|.
 name|fixAuthor_Natbib
 argument_list|(
 name|contents
 argument_list|)
-else|:
-literal|""
 return|;
 block|}
 else|else
@@ -8311,20 +8329,6 @@ return|;
 block|}
 block|}
 block|}
-block|}
-annotation|@
-name|Override
-DECL|method|toFront ()
-specifier|public
-name|void
-name|toFront
-parameter_list|()
-block|{
-name|super
-operator|.
-name|toFront
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override

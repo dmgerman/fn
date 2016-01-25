@@ -102,7 +102,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -266,7 +266,7 @@ name|editor
 operator|=
 name|editor
 expr_stmt|;
-comment|// normally, the next call should be without "Localization.lang". However, the string "Write XMP" is also used in non-menu places and therefore, the translation must be also available at Localization.lang()
+comment|// normally, the next call should be without "Localization.lang". However, the string "Write XMP" is also used in non-menu places and therefore, the translation must be also available at Localization.lang
 name|putValue
 argument_list|(
 name|Action
@@ -360,7 +360,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 name|editor
@@ -447,23 +447,16 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 expr_stmt|;
-name|String
-name|field
-init|=
+if|if
+condition|(
 name|entry
 operator|.
-name|getField
+name|hasField
 argument_list|(
 name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|field
-operator|!=
-literal|null
 condition|)
 block|{
 name|FileListTableModel
@@ -477,7 +470,14 @@ name|tm
 operator|.
 name|setContent
 argument_list|(
-name|field
+name|entry
+operator|.
+name|getField
+argument_list|(
+name|Globals
+operator|.
+name|FILE_FIELD
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
@@ -513,8 +513,7 @@ condition|(
 operator|(
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|!=
 literal|null
 operator|)
@@ -525,8 +524,7 @@ name|equals
 argument_list|(
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -544,8 +542,7 @@ name|expandFilename
 argument_list|(
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|dirs
 argument_list|)
@@ -634,10 +631,10 @@ decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
-DECL|method|WriteXMPWorker (List<File> files, BibtexEntry entry)
+DECL|method|WriteXMPWorker (List<File> files, BibEntry entry)
 specifier|public
 name|WriteXMPWorker
 parameter_list|(
@@ -647,7 +644,7 @@ name|File
 argument_list|>
 name|files
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -877,7 +874,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append

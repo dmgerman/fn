@@ -54,7 +54,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -204,15 +204,15 @@ expr_stmt|;
 block|}
 DECL|method|makeBibtexEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|makeBibtexEntry
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.

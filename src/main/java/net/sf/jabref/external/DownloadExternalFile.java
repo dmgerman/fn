@@ -396,7 +396,6 @@ name|MalformedURLException
 name|ex1
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -422,7 +421,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return;
 block|}
 name|download
@@ -686,22 +684,11 @@ name|SwingUtilities
 operator|.
 name|invokeLater
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
+name|DownloadExternalFile
+operator|.
+name|this
+operator|::
 name|downloadFinished
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -731,9 +718,10 @@ argument_list|)
 expr_stmt|;
 name|suggestedType
 operator|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByMimeType
 argument_list|(
@@ -772,9 +760,10 @@ argument_list|)
 expr_stmt|;
 name|suggestedType
 operator|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
@@ -795,9 +784,7 @@ index|[]
 name|fDirectory
 init|=
 name|getFileDirectory
-argument_list|(
-name|res
-argument_list|)
+argument_list|()
 decl_stmt|;
 specifier|final
 name|String
@@ -939,8 +926,7 @@ name|directory
 argument_list|,
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|)
 else|:
 operator|new
@@ -948,8 +934,7 @@ name|File
 argument_list|(
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|)
 decl_stmt|;
 if|if
@@ -1085,8 +1070,7 @@ name|directory
 argument_list|,
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|)
 else|:
 operator|new
@@ -1094,8 +1078,7 @@ name|File
 argument_list|(
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|)
 decl_stmt|;
 name|String
@@ -1194,8 +1177,7 @@ operator|)
 operator|&&
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|link
 operator|.
 name|startsWith
 argument_list|(
@@ -1205,8 +1187,7 @@ operator|&&
 operator|(
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|link
 operator|.
 name|length
 argument_list|()
@@ -1219,13 +1200,17 @@ operator|)
 condition|)
 block|{
 name|entry
-operator|.
-name|setLink
+operator|=
+operator|new
+name|FileListEntry
 argument_list|(
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|description
+argument_list|,
+name|entry
+operator|.
+name|link
 operator|.
 name|substring
 argument_list|(
@@ -1234,6 +1219,10 @@ operator|.
 name|length
 argument_list|()
 argument_list|)
+argument_list|,
+name|entry
+operator|.
+name|type
 argument_list|)
 expr_stmt|;
 block|}
@@ -1573,7 +1562,7 @@ name|String
 name|suffix
 decl_stmt|;
 name|int
-name|index
+name|strippedLinkIndex
 init|=
 name|strippedLink
 operator|.
@@ -1585,13 +1574,13 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-name|index
+name|strippedLinkIndex
 operator|<=
 literal|0
 operator|)
 operator|||
 operator|(
-name|index
+name|strippedLinkIndex
 operator|==
 operator|(
 name|strippedLink
@@ -1617,7 +1606,7 @@ name|strippedLink
 operator|.
 name|substring
 argument_list|(
-name|index
+name|strippedLinkIndex
 operator|+
 literal|1
 argument_list|)
@@ -1625,9 +1614,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
@@ -1645,15 +1635,16 @@ else|else
 block|{
 comment|// If the suffix doesn't seem to give any reasonable file type, try
 comment|// with the non-stripped link:
+name|int
 name|index
-operator|=
+init|=
 name|link
 operator|.
 name|lastIndexOf
 argument_list|(
 literal|'.'
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -1666,7 +1657,7 @@ operator|(
 name|index
 operator|==
 operator|(
-name|strippedLink
+name|link
 operator|.
 name|length
 argument_list|()
@@ -1676,12 +1667,19 @@ operator|)
 operator|)
 condition|)
 block|{
-comment|// No occurence, or at the end
+comment|// No occurrence, or at the end
 comment|// Check if there are path separators in the suffix - if so, it is definitely
 comment|// not a proper suffix, so we should give up:
 if|if
 condition|(
-name|suffix
+name|strippedLink
+operator|.
+name|substring
+argument_list|(
+name|strippedLinkIndex
+operator|+
+literal|1
+argument_list|)
 operator|.
 name|indexOf
 argument_list|(
@@ -1746,15 +1744,12 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|getFileDirectory (String link)
+DECL|method|getFileDirectory ()
 specifier|private
 name|String
 index|[]
 name|getFileDirectory
-parameter_list|(
-name|String
-name|link
-parameter_list|)
+parameter_list|()
 block|{
 return|return
 name|metaData

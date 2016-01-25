@@ -52,7 +52,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -68,7 +68,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -101,11 +101,11 @@ block|{
 DECL|method|getBibtexEntry ()
 specifier|public
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|getBibtexEntry
 parameter_list|()
 block|{
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|getBibtexDatabase
@@ -126,11 +126,10 @@ block|}
 DECL|method|getBibtexDatabase ()
 specifier|public
 specifier|static
-name|BibtexDatabase
+name|BibDatabase
 name|getBibtexDatabase
 parameter_list|()
 block|{
-comment|// @formatter:off
 name|StringReader
 name|reader
 init|=
@@ -168,7 +167,6 @@ operator|+
 literal|"}"
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 name|BibtexParser
 name|parser
 init|=

@@ -178,7 +178,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -194,7 +194,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -300,7 +300,7 @@ specifier|private
 specifier|final
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 decl_stmt|;
@@ -320,11 +320,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|OOCalcDatabase (BibtexDatabase bibtex, Set<String> keySet)
+DECL|method|OOCalcDatabase (BibDatabase bibtex, Set<String> keySet)
 specifier|public
 name|OOCalcDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|bibtex
 parameter_list|,
 name|Set
@@ -375,7 +375,7 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -384,7 +384,7 @@ expr_stmt|;
 comment|// Use glazed lists to get a sorted view of the entries:
 name|BasicEventList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entryList
 init|=
@@ -1156,7 +1156,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|e
 range|:
 name|entries
@@ -1217,7 +1217,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1768,40 +1768,31 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getField (BibtexEntry e, String field)
+DECL|method|getField (BibEntry e, String field)
 specifier|private
 specifier|static
 name|String
 name|getField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|e
 parameter_list|,
 name|String
 name|field
 parameter_list|)
 block|{
-name|Object
-name|o
-init|=
+return|return
 name|e
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|field
 argument_list|)
-decl_stmt|;
-return|return
-name|o
-operator|==
-literal|null
-condition|?
-literal|""
-else|:
-name|o
 operator|.
-name|toString
-argument_list|()
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 return|;
 block|}
 DECL|method|addTableCell (Document doc, Element parent, String content)

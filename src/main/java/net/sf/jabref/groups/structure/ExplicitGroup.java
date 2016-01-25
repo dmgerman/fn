@@ -30,7 +30,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -46,7 +46,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -210,7 +210,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -238,7 +238,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fromString (String s, BibtexDatabase db, int version)
+DECL|method|fromString (String s, BibDatabase db, int version)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -247,7 +247,7 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|int
@@ -421,7 +421,7 @@ throw|;
 block|}
 block|}
 comment|/**      * Called only when created fromString      */
-DECL|method|addEntries (QuotedStringTokenizer tok, BibtexDatabase db)
+DECL|method|addEntries (QuotedStringTokenizer tok, BibDatabase db)
 specifier|private
 name|void
 name|addEntries
@@ -429,11 +429,11 @@ parameter_list|(
 name|QuotedStringTokenizer
 name|tok
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 decl_stmt|;
@@ -501,8 +501,8 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 parameter_list|)
 block|{
 return|return
@@ -510,7 +510,7 @@ name|contains
 argument_list|(
 name|query
 argument_list|,
-name|bibtexEntry
+name|bibEntry
 argument_list|)
 return|;
 block|}
@@ -557,12 +557,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (BibtexEntry[] entries)
+DECL|method|add (BibEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|add
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
@@ -583,7 +583,7 @@ comment|// nothing to do
 block|}
 name|HashSet
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entriesBeforeEdit
 init|=
@@ -619,12 +619,12 @@ name|entries
 argument_list|)
 return|;
 block|}
-DECL|method|addEntry (BibtexEntry entry)
+DECL|method|addEntry (BibEntry entry)
 specifier|public
 name|boolean
 name|addEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -639,12 +639,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|remove (BibtexEntry[] entries)
+DECL|method|remove (BibEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
 name|remove
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|)
@@ -665,7 +665,7 @@ comment|// nothing to do
 block|}
 name|HashSet
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entriesBeforeEdit
 init|=
@@ -680,7 +680,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -708,12 +708,12 @@ name|entries
 argument_list|)
 return|;
 block|}
-DECL|method|removeEntry (BibtexEntry entry)
+DECL|method|removeEntry (BibEntry entry)
 specifier|public
 name|boolean
 name|removeEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -728,12 +728,12 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|contains (BibtexEntry entry)
+DECL|method|contains (BibEntry entry)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -748,7 +748,7 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|contains (String query, BibtexEntry entry)
+DECL|method|contains (String query, BibEntry entry)
 specifier|public
 name|boolean
 name|contains
@@ -756,7 +756,7 @@ parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -864,7 +864,7 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 name|String
@@ -873,7 +873,7 @@ decl_stmt|;
 comment|// compare bibtex keys for all entries that have one
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|m_entry1
 range|:
 name|entries
@@ -908,7 +908,7 @@ block|}
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|m_entry
 range|:
 name|other
@@ -1067,7 +1067,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|m_entry
 range|:
 name|entries
@@ -1316,21 +1316,21 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Update the group to handle the situation where the group      * is applied to a different BibtexDatabase than it was created for.      * This group type contains a Set of BibtexEntry objects, and these will not      * be the same objects as in the new database. We must reset the entire Set with      * matching entries from the new database.      *      * @param db The database to refresh for.      */
+comment|/**      * Update the group to handle the situation where the group      * is applied to a different BibDatabase than it was created for.      * This group type contains a Set of BibEntry objects, and these will not      * be the same objects as in the new database. We must reset the entire Set with      * matching entries from the new database.      *      * @param db The database to refresh for.      */
 annotation|@
 name|Override
-DECL|method|refreshForNewDatabase (BibtexDatabase db)
+DECL|method|refreshForNewDatabase (BibDatabase db)
 specifier|public
 name|void
 name|refreshForNewDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|)
 block|{
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|newSet
 init|=
@@ -1341,13 +1341,13 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
 control|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|sameEntry
 init|=
 name|db
@@ -1386,7 +1386,7 @@ DECL|method|getEntries ()
 specifier|public
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getEntries
 parameter_list|()

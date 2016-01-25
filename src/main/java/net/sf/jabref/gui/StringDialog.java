@@ -212,16 +212,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JOptionPane
 import|;
 end_import
@@ -392,7 +382,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -536,7 +526,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -567,14 +557,8 @@ comment|// A reference to the entry this object works on.
 DECL|field|base
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|base
-decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
 decl_stmt|;
 DECL|field|panel
 specifier|private
@@ -587,10 +571,6 @@ specifier|private
 name|Object
 index|[]
 name|strings
-decl_stmt|;
-DECL|field|lab
-name|JLabel
-name|lab
 decl_stmt|;
 DECL|field|table
 specifier|private
@@ -606,10 +586,11 @@ name|helpAction
 decl_stmt|;
 DECL|field|pw
 specifier|private
+specifier|final
 name|PositionWindow
 name|pw
 decl_stmt|;
-DECL|method|StringDialog (JabRefFrame frame, BasePanel panel, BibtexDatabase base, JabRefPreferences prefs)
+DECL|method|StringDialog (JabRefFrame frame, BasePanel panel, BibDatabase base)
 specifier|public
 name|StringDialog
 parameter_list|(
@@ -619,23 +600,14 @@ parameter_list|,
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|base
-parameter_list|,
-name|JabRefPreferences
-name|prefs
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|frame
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|frame
-operator|=
-name|frame
 expr_stmt|;
 name|this
 operator|.
@@ -876,11 +848,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|STRING_DIALOG_ADD_STRING
 argument_list|)
@@ -910,11 +885,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|STRING_DIALOG_REMOVE_STRING
 argument_list|)
@@ -944,11 +922,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|SAVE_DATABASE
 argument_list|)
@@ -969,11 +950,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -994,11 +978,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|HELP
 argument_list|)
@@ -1019,11 +1006,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|UNDO
 argument_list|)
@@ -1051,11 +1041,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|prefs
+name|Globals
+operator|.
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|REDO
 argument_list|)
@@ -1139,9 +1132,25 @@ name|panel
 operator|.
 name|getDatabaseFile
 argument_list|()
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|setTitle
+argument_list|(
+name|GUIGlobals
+operator|.
+name|stringsTitle
+operator|+
+literal|": "
+operator|+
+name|GUIGlobals
+operator|.
+name|untitledTitle
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|setTitle
 argument_list|(
@@ -1158,22 +1167,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|setTitle
-argument_list|(
-name|GUIGlobals
-operator|.
-name|stringsTitle
-operator|+
-literal|": "
-operator|+
-name|GUIGlobals
-operator|.
-name|untitledTitle
 argument_list|)
 expr_stmt|;
 block|}
@@ -1258,6 +1251,7 @@ extends|extends
 name|JTable
 block|{
 DECL|field|sp
+specifier|private
 specifier|final
 name|JScrollPane
 name|sp
@@ -1377,13 +1371,14 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-name|frame
+name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1406,13 +1401,14 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-name|frame
+name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|HELP
 argument_list|)
@@ -1546,23 +1542,25 @@ extends|extends
 name|AbstractTableModel
 block|{
 DECL|field|tbase
+specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|tbase
 decl_stmt|;
 DECL|field|parent
+specifier|private
 specifier|final
 name|StringDialog
 name|parent
 decl_stmt|;
-DECL|method|StringTableModel (StringDialog parent, BibtexDatabase base)
+DECL|method|StringTableModel (StringDialog parent, BibDatabase base)
 specifier|public
 name|StringTableModel
 parameter_list|(
 name|StringDialog
 name|parent
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|)
 block|{
@@ -1685,7 +1683,6 @@ name|value
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1696,7 +1693,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"A string with this label already exists"
+literal|"A string with that label already exists"
 argument_list|)
 argument_list|,
 name|Localization
@@ -1833,7 +1830,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 else|else
 block|{
@@ -2033,7 +2029,6 @@ name|int
 name|col
 parameter_list|)
 block|{
-comment|// @formatter:off
 return|return
 name|col
 operator|==
@@ -2053,7 +2048,6 @@ argument_list|(
 literal|"Content"
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -2162,9 +2156,7 @@ name|closeAction
 init|=
 operator|new
 name|CloseAction
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 decl_stmt|;
 DECL|class|CloseAction
 class|class
@@ -2172,18 +2164,10 @@ name|CloseAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|parent
-specifier|final
-name|StringDialog
-name|parent
-decl_stmt|;
-DECL|method|CloseAction (StringDialog parent)
+DECL|method|CloseAction ()
 specifier|public
 name|CloseAction
-parameter_list|(
-name|StringDialog
-name|parent
-parameter_list|)
+parameter_list|()
 block|{
 name|super
 argument_list|(
@@ -2203,12 +2187,6 @@ argument_list|(
 literal|"Close dialog"
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|parent
-operator|=
-name|parent
 expr_stmt|;
 block|}
 annotation|@
@@ -2239,6 +2217,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|parent
+specifier|private
 specifier|final
 name|StringDialog
 name|parent
@@ -2331,7 +2310,6 @@ name|name
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2357,7 +2335,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return;
 block|}
 if|if
@@ -2370,7 +2347,6 @@ literal|"#"
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2396,7 +2372,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return;
 block|}
 if|if
@@ -2409,7 +2384,6 @@ literal|" "
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2435,7 +2409,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return;
 block|}
 try|try
@@ -2505,7 +2478,6 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2516,7 +2488,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"A string with this label already exists"
+literal|"A string with that label already exists"
 argument_list|)
 argument_list|,
 name|Localization
@@ -2531,11 +2503,12 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 block|}
 block|}
 DECL|field|saveAction
+specifier|private
+specifier|final
 name|SaveDatabaseAction
 name|saveAction
 init|=
@@ -2553,6 +2526,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|parent
+specifier|private
 specifier|final
 name|StringDialog
 name|parent
@@ -2625,6 +2599,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|parent
+specifier|private
 specifier|final
 name|StringDialog
 name|parent
@@ -2706,7 +2681,6 @@ comment|// keystroke. This makes the content hang on the screen.
 name|assureNotEditing
 argument_list|()
 expr_stmt|;
-comment|// @formatter:off
 name|String
 name|msg
 init|=
@@ -2776,7 +2750,6 @@ operator|.
 name|QUESTION_MESSAGE
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 if|if
 condition|(
 name|answer

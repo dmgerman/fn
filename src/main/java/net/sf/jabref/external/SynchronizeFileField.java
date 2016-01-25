@@ -96,7 +96,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -208,7 +208,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -330,16 +330,6 @@ name|SynchronizeFileField
 extends|extends
 name|AbstractWorker
 block|{
-DECL|field|fieldName
-specifier|private
-specifier|final
-name|String
-name|fieldName
-init|=
-name|Globals
-operator|.
-name|FILE_FIELD
-decl_stmt|;
 DECL|field|panel
 specifier|private
 specifier|final
@@ -348,7 +338,7 @@ name|panel
 decl_stmt|;
 DECL|field|sel
 specifier|private
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|sel
 decl_stmt|;
@@ -367,7 +357,6 @@ index|[]
 name|brokenLinkOptions
 init|=
 block|{
-comment|// @formatter:off
 name|Localization
 operator|.
 name|lang
@@ -404,7 +393,6 @@ literal|"Quit synchronization"
 argument_list|)
 block|}
 decl_stmt|;
-comment|// @formatter:on
 DECL|field|goOn
 specifier|private
 name|boolean
@@ -451,7 +439,7 @@ parameter_list|()
 block|{
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|col
 init|=
@@ -470,7 +458,7 @@ expr_stmt|;
 name|sel
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|col
 operator|.
@@ -511,8 +499,6 @@ name|panel
 operator|.
 name|metaData
 argument_list|()
-argument_list|,
-name|fieldName
 argument_list|)
 expr_stmt|;
 block|}
@@ -554,18 +540,14 @@ operator|=
 operator|!
 name|optDiag
 operator|.
-name|autoSetNone
-operator|.
-name|isSelected
+name|isAutoSetNone
 argument_list|()
 expr_stmt|;
 name|checkExisting
 operator|=
 name|optDiag
 operator|.
-name|checkLinks
-operator|.
-name|isSelected
+name|isCheckLinks
 argument_list|()
 expr_stmt|;
 name|panel
@@ -578,7 +560,9 @@ name|lang
 argument_list|(
 literal|"Synchronizing %0 links..."
 argument_list|,
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
 operator|.
 name|toUpperCase
 argument_list|()
@@ -693,16 +677,15 @@ name|lang
 argument_list|(
 literal|"Autoset %0 field"
 argument_list|,
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//final OpenFileFilter off = Util.getFileFilterForField(fieldName);
-comment|//ExternalFilePanel extPan = new ExternalFilePanel(fieldName, panel.metaData(), null, null, off);
-comment|//TextField editor = new TextField(fieldName, "", false);
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|changedEntries
 init|=
@@ -719,7 +702,7 @@ condition|)
 block|{
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -772,7 +755,6 @@ argument_list|(
 name|r
 argument_list|)
 expr_stmt|;
-comment|/*                 progress += weightAutoSet;                 panel.frame().setProgressBarValue(progress);                  Object old = sel[i].getField(fieldName);                 FileListTableModel tableModel = new FileListTableModel();                 if (old != null)                     tableModel.setContent((String)old);                 Thread t = FileListEditor.autoSetLinks(sel[i], tableModel, null, null);                  if (!tableModel.getStringRepresentation().equals(old)) {                     String toSet = tableModel.getStringRepresentation();                     if (toSet.length() == 0)                         toSet = null;                     ce.addEdit(new UndoableFieldChange(sel[i], fieldName, old, toSet));                     sel[i].setField(fieldName, toSet);                     entriesChanged++;                 }             }    */
 block|}
 name|progress
 operator|+=
@@ -792,7 +774,6 @@ argument_list|(
 name|progress
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Done setting");
 comment|// The following loop checks all external links that are already set.
 if|if
 condition|(
@@ -808,7 +789,7 @@ name|mainLoop
 label|:
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|aSel
 range|:
 name|sel
@@ -833,7 +814,9 @@ name|aSel
 operator|.
 name|getField
 argument_list|(
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
 argument_list|)
 decl_stmt|;
 comment|// Check if a extension is set:
@@ -846,12 +829,12 @@ literal|null
 operator|)
 operator|&&
 operator|!
-literal|""
-operator|.
-name|equals
-argument_list|(
+operator|(
 name|old
-argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
 condition|)
 block|{
 name|FileListTableModel
@@ -950,8 +933,7 @@ name|httpLink
 init|=
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 operator|.
 name|toLowerCase
 argument_list|()
@@ -986,8 +968,7 @@ name|expandFilename
 argument_list|(
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|dirsS
 argument_list|)
@@ -1033,20 +1014,14 @@ name|lang
 argument_list|(
 literal|"<HTML>Could not find file '%0'<BR>linked from entry '%1'</HTML>"
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
-block|,
+name|link
+argument_list|,
 name|aSel
 operator|.
 name|getCiteKey
 argument_list|()
-block|}
 argument_list|)
 argument_list|,
 name|Localization
@@ -1172,9 +1147,7 @@ literal|true
 expr_stmt|;
 comment|// Notify for further cases.
 break|break;
-case|case
-literal|4
-case|:
+default|default:
 comment|// Cancel
 break|break
 name|mainLoop
@@ -1190,14 +1163,12 @@ operator|&&
 operator|(
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|instanceof
 name|UnknownExternalFileType
 operator|)
 condition|)
 block|{
-comment|// @formatter:off
 name|String
 index|[]
 name|options
@@ -1214,8 +1185,7 @@ literal|"Define '%0'"
 argument_list|,
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -1236,7 +1206,6 @@ literal|"Cancel"
 argument_list|)
 block|}
 decl_stmt|;
-comment|// @formatter:on
 name|String
 name|defOption
 init|=
@@ -1265,8 +1234,7 @@ literal|"One or more file links are of the type '%0', which is undefined. What d
 argument_list|,
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -1324,8 +1292,7 @@ name|ExternalFileType
 argument_list|(
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -1340,10 +1307,12 @@ literal|"new"
 argument_list|,
 name|IconTheme
 operator|.
-name|getImage
-argument_list|(
-literal|"new"
-argument_list|)
+name|JabRefIcon
+operator|.
+name|FILE
+operator|.
+name|getSmallIcon
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|ExternalFileTypeEntryEditor
@@ -1391,9 +1360,10 @@ name|ExternalFileType
 index|[]
 name|oldTypes
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeSelection
 argument_list|()
@@ -1421,9 +1391,10 @@ argument_list|(
 name|fileTypes
 argument_list|)
 expr_stmt|;
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|setExternalFileTypes
 argument_list|(
@@ -1509,11 +1480,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|toSet
-operator|=
-literal|null
-expr_stmt|;
-block|}
 name|ce
 operator|.
 name|addEdit
@@ -1523,7 +1489,40 @@ name|UndoableFieldChange
 argument_list|(
 name|aSel
 argument_list|,
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
+argument_list|,
+name|old
+argument_list|,
+literal|null
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|aSel
+operator|.
+name|clearField
+argument_list|(
+name|Globals
+operator|.
+name|FILE_FIELD
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|ce
+operator|.
+name|addEdit
+argument_list|(
+operator|new
+name|UndoableFieldChange
+argument_list|(
+name|aSel
+argument_list|,
+name|Globals
+operator|.
+name|FILE_FIELD
 argument_list|,
 name|old
 argument_list|,
@@ -1535,11 +1534,14 @@ name|aSel
 operator|.
 name|setField
 argument_list|(
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
 argument_list|,
 name|toSet
 argument_list|)
 expr_stmt|;
+block|}
 name|changedEntries
 operator|.
 name|add
@@ -1547,7 +1549,6 @@ argument_list|(
 name|aSel
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Changed to: "+tableModel.getStringRepresentation());
 block|}
 block|}
 block|}
@@ -1612,24 +1613,21 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Finished synchronizing %0 links. Entries changed%c %1."
+literal|"Finished synchronizing %0 links. Entries changed: %1."
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
 operator|.
 name|toUpperCase
 argument_list|()
-block|,
+argument_list|,
 name|String
 operator|.
 name|valueOf
 argument_list|(
 name|entriesChangedCount
 argument_list|)
-block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1665,26 +1663,31 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|autoSetUnset
+specifier|private
 specifier|final
 name|JRadioButton
 name|autoSetUnset
 decl_stmt|;
 DECL|field|autoSetAll
+specifier|private
 specifier|final
 name|JRadioButton
 name|autoSetAll
 decl_stmt|;
 DECL|field|autoSetNone
+specifier|private
 specifier|final
 name|JRadioButton
 name|autoSetNone
 decl_stmt|;
 DECL|field|checkLinks
+specifier|private
 specifier|final
 name|JCheckBox
 name|checkLinks
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -1696,11 +1699,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -1716,10 +1720,6 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|field|description
-name|JLabel
-name|description
-decl_stmt|;
 DECL|field|canceled
 specifier|private
 name|boolean
@@ -1733,7 +1733,7 @@ specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
-DECL|method|OptionsDialog (JFrame parent, MetaData metaData, String fieldName)
+DECL|method|OptionsDialog (JFrame parent, MetaData metaData)
 specifier|public
 name|OptionsDialog
 parameter_list|(
@@ -1742,9 +1742,6 @@ name|parent
 parameter_list|,
 name|MetaData
 name|metaData
-parameter_list|,
-name|String
-name|fieldName
 parameter_list|)
 block|{
 name|super
@@ -1757,7 +1754,9 @@ name|lang
 argument_list|(
 literal|"Synchronize %0 links"
 argument_list|,
-name|fieldName
+name|Globals
+operator|.
+name|FILE_FIELD
 operator|.
 name|toUpperCase
 argument_list|()
@@ -1787,19 +1786,8 @@ name|ok
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|canceled
 operator|=
@@ -1808,7 +1796,6 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -1868,11 +1855,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1991,7 +1979,7 @@ name|FormLayout
 argument_list|(
 literal|"fill:pref"
 argument_list|,
-literal|"pref, 2dlu, pref, 2dlu, pref, pref, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
+literal|"pref, 2dlu, pref, 2dlu, pref, pref, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
 argument_list|)
 decl_stmt|;
 name|FormBuilder
@@ -2007,8 +1995,9 @@ argument_list|(
 name|layout
 argument_list|)
 decl_stmt|;
+name|JLabel
 name|description
-operator|=
+init|=
 operator|new
 name|JLabel
 argument_list|(
@@ -2027,7 +2016,7 @@ argument_list|)
 operator|+
 literal|"</HTML>"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|builder
 operator|.
 name|addSeparator
@@ -2380,6 +2369,32 @@ argument_list|(
 name|visible
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|isAutoSetNone ()
+specifier|public
+name|boolean
+name|isAutoSetNone
+parameter_list|()
+block|{
+return|return
+name|autoSetNone
+operator|.
+name|isSelected
+argument_list|()
+return|;
+block|}
+DECL|method|isCheckLinks ()
+specifier|public
+name|boolean
+name|isCheckLinks
+parameter_list|()
+block|{
+return|return
+name|checkLinks
+operator|.
+name|isSelected
+argument_list|()
+return|;
 block|}
 DECL|method|canceled ()
 specifier|public

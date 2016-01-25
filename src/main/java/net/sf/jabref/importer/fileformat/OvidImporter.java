@@ -244,6 +244,20 @@ argument_list|(
 literal|"\\(([0-9][0-9][0-9][0-9])\\)\\. [A-Za-z, ]+([0-9]+) pp\\. ([\\w, ]+): ([\\w, ]+)"
 argument_list|)
 decl_stmt|;
+DECL|field|ovidPattern
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|ovidPattern
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"<[0-9]+>"
+argument_list|)
+decl_stmt|;
 comment|//   public static Pattern ovid_pat_inspec= Pattern.compile("Source ([
 comment|// \\w&\\-]+)");
 comment|/**      * Return the name of this import format.      */
@@ -272,20 +286,6 @@ return|return
 literal|"ovid"
 return|;
 block|}
-DECL|field|ovidPattern
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|ovidPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"<[0-9]+>"
-argument_list|)
-decl_stmt|;
 comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
@@ -371,14 +371,14 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(
@@ -393,7 +393,7 @@ name|IOException
 block|{
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibitems
 init|=
@@ -671,12 +671,10 @@ if|if
 condition|(
 name|fieldName
 operator|.
-name|indexOf
+name|startsWith
 argument_list|(
 literal|"Title"
 argument_list|)
-operator|==
-literal|0
 condition|)
 block|{
 name|content
@@ -735,12 +733,10 @@ if|if
 condition|(
 name|fieldName
 operator|.
-name|indexOf
+name|startsWith
 argument_list|(
 literal|"Chapter Title"
 argument_list|)
-operator|==
-literal|0
 condition|)
 block|{
 name|h
@@ -758,12 +754,10 @@ if|if
 condition|(
 name|fieldName
 operator|.
-name|indexOf
+name|startsWith
 argument_list|(
 literal|"Source"
 argument_list|)
-operator|==
-literal|0
 condition|)
 block|{
 name|Matcher
@@ -1362,6 +1356,108 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+elseif|else
+if|if
+condition|(
+name|fieldName
+operator|.
+name|startsWith
+argument_list|(
+literal|"Language"
+argument_list|)
+condition|)
+block|{
+name|h
+operator|.
+name|put
+argument_list|(
+literal|"language"
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|fieldName
+operator|.
+name|startsWith
+argument_list|(
+literal|"Author Keywords"
+argument_list|)
+condition|)
+block|{
+name|content
+operator|=
+name|content
+operator|.
+name|replaceAll
+argument_list|(
+literal|";"
+argument_list|,
+literal|","
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"  "
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
+name|h
+operator|.
+name|put
+argument_list|(
+literal|"keywords"
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|fieldName
+operator|.
+name|startsWith
+argument_list|(
+literal|"ISSN"
+argument_list|)
+condition|)
+block|{
+name|h
+operator|.
+name|put
+argument_list|(
+literal|"issn"
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|fieldName
+operator|.
+name|startsWith
+argument_list|(
+literal|"DOI Number"
+argument_list|)
+condition|)
+block|{
+name|h
+operator|.
+name|put
+argument_list|(
+literal|"doi"
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// Now we need to check if a book entry has given editors in the author field;
 comment|// if so, rearrange:
@@ -1509,10 +1605,7 @@ name|equals
 argument_list|(
 name|entryType
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|h
 operator|.
 name|containsKey
@@ -1542,12 +1635,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.
@@ -1556,7 +1648,7 @@ argument_list|()
 argument_list|,
 name|EntryTypes
 operator|.
-name|getBibtexEntryType
+name|getTypeOrDefault
 argument_list|(
 name|entryType
 argument_list|)
@@ -1601,7 +1693,7 @@ name|content
 operator|.
 name|indexOf
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 operator|>
 literal|0

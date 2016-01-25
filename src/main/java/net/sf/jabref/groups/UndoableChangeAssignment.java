@@ -60,7 +60,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -113,7 +113,7 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|m_previousAssignmentBackup
 decl_stmt|;
@@ -122,37 +122,37 @@ specifier|private
 specifier|final
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|m_newAssignmentBackup
 decl_stmt|;
 comment|/** The path to the edited node */
-DECL|field|m_pathToNode
+DECL|field|mPathToNode
 specifier|private
 name|int
 index|[]
-name|m_pathToNode
+name|mPathToNode
 decl_stmt|;
 comment|/** The root of the global groups tree */
-DECL|field|m_groupsRootHandle
+DECL|field|mGroupsRootHandle
 specifier|private
 name|GroupTreeNode
-name|m_groupsRootHandle
+name|mGroupsRootHandle
 decl_stmt|;
 comment|/**      * Constructor for use in a group itself, where the enclosing node is      * unknown. The node must be set using setEditedNode() before this instance      * may be used.      *      * @param previousAssignment      * @param currentAssignment      */
-DECL|method|UndoableChangeAssignment (Set<BibtexEntry> previousAssignment, Set<BibtexEntry> currentAssignment)
+DECL|method|UndoableChangeAssignment (Set<BibEntry> previousAssignment, Set<BibEntry> currentAssignment)
 specifier|public
 name|UndoableChangeAssignment
 parameter_list|(
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|previousAssignment
 parameter_list|,
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|currentAssignment
 parameter_list|)
@@ -176,19 +176,19 @@ name|currentAssignment
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|UndoableChangeAssignment (Set<BibtexEntry> previousAssignment, Set<BibtexEntry> currentAssignment, GroupTreeNode node)
+DECL|method|UndoableChangeAssignment (Set<BibEntry> previousAssignment, Set<BibEntry> currentAssignment, GroupTreeNode node)
 specifier|public
 name|UndoableChangeAssignment
 parameter_list|(
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|previousAssignment
 parameter_list|,
 name|Set
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|currentAssignment
 parameter_list|,
@@ -219,7 +219,7 @@ name|GroupTreeNode
 name|node
 parameter_list|)
 block|{
-name|m_groupsRootHandle
+name|mGroupsRootHandle
 operator|=
 operator|(
 name|GroupTreeNode
@@ -229,7 +229,7 @@ operator|.
 name|getRoot
 argument_list|()
 expr_stmt|;
-name|m_pathToNode
+name|mPathToNode
 operator|=
 name|node
 operator|.
@@ -308,11 +308,11 @@ init|=
 operator|(
 name|ExplicitGroup
 operator|)
-name|m_groupsRootHandle
+name|mGroupsRootHandle
 operator|.
 name|getChildAt
 argument_list|(
-name|m_pathToNode
+name|mPathToNode
 argument_list|)
 operator|.
 name|getGroup
@@ -325,7 +325,8 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+specifier|final
+name|BibEntry
 name|aM_previousAssignmentBackup
 range|:
 name|m_previousAssignmentBackup
@@ -359,11 +360,11 @@ init|=
 operator|(
 name|ExplicitGroup
 operator|)
-name|m_groupsRootHandle
+name|mGroupsRootHandle
 operator|.
 name|getChildAt
 argument_list|(
-name|m_pathToNode
+name|mPathToNode
 argument_list|)
 operator|.
 name|getGroup
@@ -376,7 +377,8 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+specifier|final
+name|BibEntry
 name|aM_newAssignmentBackup
 range|:
 name|m_newAssignmentBackup

@@ -42,7 +42,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -63,7 +63,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class represents a change in any field value. The relevant  * information is the BibtexEntry, the field name, the old and the  * new value. Old/new values can be null.  */
+comment|/**  * This class represents a change in any field value. The relevant  * information is the BibEntry, the field name, the old and the  * new value. Old/new values can be null.  */
 end_comment
 
 begin_class
@@ -83,7 +83,7 @@ decl_stmt|;
 DECL|field|base
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|base
 decl_stmt|;
 DECL|field|oldValue
@@ -98,11 +98,11 @@ specifier|final
 name|String
 name|newValue
 decl_stmt|;
-DECL|method|UndoableKeyChange (BibtexDatabase base, String entryId, String oldValue, String newValue)
+DECL|method|UndoableKeyChange (BibDatabase base, String entryId, String oldValue, String newValue)
 specifier|public
 name|UndoableKeyChange
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|,
 name|String
@@ -165,7 +165,6 @@ name|String
 name|getUndoPresentationName
 parameter_list|()
 block|{
-comment|// @formatter:off
 return|return
 name|Localization
 operator|.
@@ -183,7 +182,6 @@ argument_list|(
 literal|"change key"
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -193,7 +191,6 @@ name|String
 name|getRedoPresentationName
 parameter_list|()
 block|{
-comment|// @formatter:off
 return|return
 name|Localization
 operator|.
@@ -211,7 +208,6 @@ argument_list|(
 literal|"change key"
 argument_list|)
 return|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override

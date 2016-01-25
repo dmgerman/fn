@@ -440,7 +440,6 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|// @formatter:off
 name|String
 index|[]
 name|opts
@@ -517,7 +516,6 @@ literal|0
 index|]
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 if|if
 condition|(
 name|answer
@@ -647,16 +645,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
 name|resolved
 condition|)
-block|{
-name|cancelled
-operator|=
-literal|true
-expr_stmt|;
-block|}
-else|else
 block|{
 name|panel
 operator|.
@@ -693,6 +683,13 @@ expr_stmt|;
 block|}
 block|}
 argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|cancelled
+operator|=
+literal|true
 expr_stmt|;
 block|}
 block|}
@@ -985,7 +982,6 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|FileBasedLock
 operator|.
 name|waitForFileLock
@@ -999,18 +995,7 @@ literal|10
 argument_list|)
 condition|)
 block|{
-name|success
-operator|=
-literal|false
-expr_stmt|;
-name|fileLockedError
-operator|=
-literal|true
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// Now save the database:
+comment|// Save the database:
 name|success
 operator|=
 name|saveDatabase
@@ -1053,6 +1038,18 @@ comment|// This means the file has not yet been registered, which is the case
 comment|// when doing a "Save as". Maybe we should change the monitor so no
 comment|// exception is cast.
 block|}
+block|}
+else|else
+block|{
+comment|// No file lock
+name|success
+operator|=
+literal|false
+expr_stmt|;
+name|fileLockedError
+operator|=
+literal|true
+expr_stmt|;
 block|}
 name|panel
 operator|.
@@ -1138,10 +1135,14 @@ literal|true
 expr_stmt|;
 return|return;
 block|}
-name|ex2
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Problem saving file"
+argument_list|,
+name|ex2
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1174,43 +1175,8 @@ try|try
 block|{
 if|if
 condition|(
-operator|!
 name|selectedOnly
 condition|)
-block|{
-name|session
-operator|=
-name|FileActions
-operator|.
-name|saveDatabase
-argument_list|(
-name|panel
-operator|.
-name|database
-argument_list|()
-argument_list|,
-name|panel
-operator|.
-name|metaData
-argument_list|()
-argument_list|,
-name|file
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-argument_list|,
-literal|false
-argument_list|,
-literal|false
-argument_list|,
-name|encoding
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|session
 operator|=
@@ -1246,6 +1212,40 @@ operator|.
 name|DatabaseSaveType
 operator|.
 name|DEFAULT
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|session
+operator|=
+name|FileActions
+operator|.
+name|saveDatabase
+argument_list|(
+name|panel
+operator|.
+name|database
+argument_list|()
+argument_list|,
+name|panel
+operator|.
+name|metaData
+argument_list|()
+argument_list|,
+name|file
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+argument_list|,
+literal|false
+argument_list|,
+literal|false
+argument_list|,
+name|encoding
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -1392,10 +1392,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Problem saving file"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 name|JOptionPane
@@ -1512,7 +1516,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The chosen encoding '%0' could not encode the following characters: "
+literal|"The chosen encoding '%0' could not encode the following characters:"
 argument_list|,
 name|session
 operator|.
@@ -1605,7 +1609,6 @@ name|WARNING_MESSAGE
 argument_list|,
 literal|null
 argument_list|,
-comment|// @formatter:off
 operator|new
 name|String
 index|[]
@@ -1630,7 +1633,6 @@ argument_list|,
 name|tryDiff
 argument_list|)
 decl_stmt|;
-comment|// @formatter:on
 if|if
 condition|(
 name|answer
@@ -1680,9 +1682,16 @@ decl_stmt|;
 if|if
 condition|(
 name|choice
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|commit
+operator|=
+literal|false
+expr_stmt|;
+block|}
+else|else
 block|{
 name|Charset
 name|newEncoding
@@ -1707,13 +1716,6 @@ argument_list|,
 name|newEncoding
 argument_list|)
 return|;
-block|}
-else|else
-block|{
-name|commit
-operator|=
-literal|false
-expr_stmt|;
 block|}
 block|}
 elseif|else
@@ -2134,10 +2136,14 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Problem registering file change notifications"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 name|frame

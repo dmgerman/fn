@@ -108,12 +108,12 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
 begin_comment
-comment|/**  * Imported requried to support --importToOpen someEntry.bib  */
+comment|/**  * This importer exists only to enable `--importToOpen someEntry.bib`  *  * It is NOT intended to import a bib file. This is done via the option action, which treats the metadata fields  * The metadata is not required to be read here, as this class is NOT called at --import  */
 end_comment
 
 begin_class
@@ -124,7 +124,7 @@ name|BibtexImporter
 extends|extends
 name|ImportFormat
 block|{
-comment|/**      * @return false as that does not cause any harm in the current implementation of JabRef      */
+comment|/**      * @return true as we have no effective way to decide whether a file is in bibtex format or not. See      *         https://github.com/JabRef/jabref/pull/379#issuecomment-158685726 for more details.      */
 annotation|@
 name|Override
 DECL|method|isRecognizedFormat (InputStream in)
@@ -139,16 +139,7 @@ throws|throws
 name|IOException
 block|{
 return|return
-name|BibtexParser
-operator|.
-name|isRecognizedFormat
-argument_list|(
-operator|new
-name|InputStreamReader
-argument_list|(
-name|in
-argument_list|)
-argument_list|)
+literal|true
 return|;
 block|}
 comment|/**      * Parses the given input stream.      * Only plain bibtex entries are returned.      * That especially means that metadata is ignored.      *      * @param in the inputStream to read from      * @param status the OutputPrinter to put status to      * @return a list of BibTeX entries contained in the given inputStream      */
@@ -158,7 +149,7 @@ DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(

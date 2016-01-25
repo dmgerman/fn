@@ -356,7 +356,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Hint%c To search specific fields only, enter for example%c<p><tt>author%esmith and title%eelectrical</tt>"
+literal|"Hint: To search specific fields only, enter for example:<p><tt>author=smith and title=electrical</tt>"
 argument_list|)
 decl_stmt|;
 return|return

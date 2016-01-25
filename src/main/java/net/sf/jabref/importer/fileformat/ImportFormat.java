@@ -74,7 +74,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -135,13 +135,13 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      *      * This method can be called in two different contexts - either when importing in      * a specified format, or when importing in unknown format. In the latter case,      * JabRef cycles through all available import formats. No error messages or feedback      * is displayed from individual import formats in this case.      *      * If importing in a specified format, and null or an empty list is returned, JabRef reports      * that no entries were found. If an IOException is thrown, JabRef displays the exception's      * message in unmodified form.      *      * TODO the return type should be changed to "ParseResult" as the parser could use a different encoding than the default encoding      */
+comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      *      * This method can be called in two different contexts - either when importing in      * a specified format, or when importing in unknown format. In the latter case,      * JabRef cycles through all available import formats. No error messages or feedback      * is displayed from individual import formats in this case.      *      * If importing in a specified format, and null or an empty list is returned, JabRef reports      * that no entries were found. If an IOException is thrown, JabRef displays the exception's      * message in unmodified form.      *      * TODO the return type should be changed to "ParseResult" as the parser could use a different encoding than the default encoding      */
 DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 specifier|abstract
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(
@@ -292,11 +292,11 @@ name|isCustomImporter
 expr_stmt|;
 block|}
 comment|/**      * Wether this importer is a custom importer.      *       *<p>Custom importers will have precedence over built-in importers.</p>      *       * @return  wether this is a custom importer      */
-DECL|method|getIsCustomImporter ()
+DECL|method|isCustomImporter ()
 specifier|public
 specifier|final
 name|boolean
-name|getIsCustomImporter
+name|isCustomImporter
 parameter_list|()
 block|{
 return|return
@@ -350,10 +350,10 @@ operator|)
 name|o
 operator|)
 operator|.
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 operator|==
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 operator|&&
 operator|(
@@ -404,12 +404,12 @@ name|result
 decl_stmt|;
 if|if
 condition|(
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 operator|==
 name|importer
 operator|.
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 condition|)
 block|{
@@ -431,7 +431,7 @@ else|else
 block|{
 name|result
 operator|=
-name|getIsCustomImporter
+name|isCustomImporter
 argument_list|()
 condition|?
 literal|1

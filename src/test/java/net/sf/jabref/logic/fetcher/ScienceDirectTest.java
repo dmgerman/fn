@@ -26,7 +26,21 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|support
+operator|.
+name|DevEnvironment
 import|;
 end_import
 
@@ -37,6 +51,16 @@ operator|.
 name|junit
 operator|.
 name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
 import|;
 end_import
 
@@ -101,7 +125,7 @@ name|ScienceDirect
 name|finder
 decl_stmt|;
 DECL|field|entry
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 annotation|@
@@ -121,7 +145,7 @@ expr_stmt|;
 name|entry
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 expr_stmt|;
 block|}
@@ -188,13 +212,24 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// CI server is blocked
+name|Assume
+operator|.
+name|assumeFalse
+argument_list|(
+name|DevEnvironment
+operator|.
+name|isCIServer
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
 literal|"doi"
 argument_list|,
-literal|"10.1016/j.aasri.2014.09.002"
+literal|"10.1016/j.jrmge.2015.08.004"
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -208,7 +243,7 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
-literal|"http://api.elsevier.com/content/article/doi/10.1016/j.aasri.2014.09.002?httpAccept=application/pdf"
+literal|"http://www.sciencedirect.com/science/article/pii/S1674775515001079/pdfft?md5=2b19b19a387cffbae237ca6a987279df&pid=1-s2.0-S1674775515001079-main.pdf"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -231,6 +266,17 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// CI server is blocked
+name|Assume
+operator|.
+name|assumeFalse
+argument_list|(
+name|DevEnvironment
+operator|.
+name|isCIServer
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|entry
 operator|.
 name|setField

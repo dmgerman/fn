@@ -142,7 +142,7 @@ name|jabref
 operator|.
 name|bibtex
 operator|.
-name|BibtexEntryWriter
+name|BibEntryWriter
 import|;
 end_import
 
@@ -174,7 +174,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -639,7 +639,7 @@ block|}
 DECL|method|bibtexString2BibtexEntry (String s)
 specifier|public
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|bibtexString2BibtexEntry
 parameter_list|(
 name|String
@@ -664,7 +664,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -698,13 +698,13 @@ name|next
 argument_list|()
 return|;
 block|}
-DECL|method|bibtexEntry2BibtexString (BibtexEntry e)
+DECL|method|bibtexEntry2BibtexString (BibEntry e)
 specifier|public
 specifier|static
 name|String
 name|bibtexEntry2BibtexString
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|e
 parameter_list|)
 throws|throws
@@ -718,7 +718,7 @@ name|StringWriter
 argument_list|()
 decl_stmt|;
 operator|new
-name|BibtexEntryWriter
+name|BibEntryWriter
 argument_list|(
 operator|new
 name|LatexFieldFormatter
@@ -771,7 +771,7 @@ return|;
 block|}
 DECL|method|t1BibtexEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|t1BibtexEntry
 parameter_list|()
 throws|throws
@@ -833,15 +833,15 @@ return|;
 block|}
 DECL|method|t2BibtexEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|t2BibtexEntry
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.
@@ -904,15 +904,15 @@ return|;
 block|}
 DECL|method|t3BibtexEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|t3BibtexEntry
 parameter_list|()
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 name|e
@@ -1197,7 +1197,7 @@ name|privacyFilters
 operator|=
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -1224,8 +1224,10 @@ name|boolean
 name|use
 decl_stmt|;
 DECL|field|privacyFilters
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|privacyFilters
 decl_stmt|;
 comment|/**      * Delete the temporary file.      */
@@ -1253,7 +1255,7 @@ argument_list|)
 expr_stmt|;
 name|prefs
 operator|.
-name|putStringArray
+name|putStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -1302,7 +1304,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -1328,7 +1330,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|l
@@ -1439,7 +1441,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -1465,7 +1467,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|l
@@ -1551,7 +1553,7 @@ throws|,
 name|TransformerException
 block|{
 block|{
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|t1BibtexEntry
@@ -1568,22 +1570,22 @@ argument_list|)
 expr_stmt|;
 name|prefs
 operator|.
-name|putStringArray
+name|putStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
 name|XMP_PRIVACY_FILTERS
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 literal|"author"
-block|,
+argument_list|,
 literal|"title"
-block|,
+argument_list|,
 literal|"note"
-block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|XMPUtil
@@ -1599,7 +1601,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -1625,7 +1627,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|x
 init|=
 name|l
@@ -1688,21 +1690,21 @@ argument_list|)
 expr_stmt|;
 name|prefs
 operator|.
-name|putStringArray
+name|putStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
 name|XMP_PRIVACY_FILTERS
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 literal|"author;title;note;booktitle;year;owner;timestamp"
-block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|t1BibtexEntry
@@ -1721,7 +1723,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -1747,7 +1749,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|x
 init|=
 name|l
@@ -1862,7 +1864,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -1888,7 +1890,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|l
@@ -1995,7 +1997,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -2021,7 +2023,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|l
@@ -2348,7 +2350,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -2372,7 +2374,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|c
@@ -2396,7 +2398,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -2422,7 +2424,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|x
 init|=
 name|l
@@ -2479,7 +2481,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -2505,7 +2507,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|l
@@ -2597,7 +2599,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -2623,7 +2625,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|l
@@ -2859,7 +2861,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -2885,7 +2887,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|l
@@ -3459,7 +3461,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// Now alter the Bibtex entry, write it and do all the checks again
-name|BibtexEntry
+name|BibEntry
 name|toSet
 init|=
 name|t1BibtexEntry
@@ -3487,7 +3489,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -3513,7 +3515,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|l
@@ -4140,7 +4142,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -4164,7 +4166,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|c
@@ -4188,7 +4190,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -4214,7 +4216,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|x
 init|=
 name|l
@@ -4232,15 +4234,15 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertEqualsBibtexEntry (BibtexEntry expected, BibtexEntry actual)
+DECL|method|assertEqualsBibtexEntry (BibEntry expected, BibEntry actual)
 specifier|public
 name|void
 name|assertEqualsBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|expected
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|actual
 parameter_list|)
 block|{
@@ -4432,7 +4434,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -4643,7 +4645,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -4666,7 +4668,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|a
 init|=
 name|l
@@ -4676,7 +4678,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 name|l
@@ -4699,7 +4701,7 @@ literal|"foo"
 argument_list|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|tmp
 init|=
 name|a
@@ -4843,7 +4845,7 @@ expr_stmt|;
 comment|// Read from file
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -4866,7 +4868,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|a
 init|=
 name|l
@@ -4876,7 +4878,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 name|l
@@ -4899,7 +4901,7 @@ literal|"Clarkson06"
 argument_list|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|tmp
 init|=
 name|a
@@ -4945,7 +4947,7 @@ name|TransformerException
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -5004,7 +5006,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|a
 init|=
 name|l
@@ -5014,7 +5016,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 name|l
@@ -5037,7 +5039,7 @@ literal|"Clarkson06"
 argument_list|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|tmp
 init|=
 name|a
@@ -5082,7 +5084,7 @@ name|TransformerException
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -5595,7 +5597,7 @@ name|TransformerException
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -6133,7 +6135,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -6157,7 +6159,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|c
@@ -6531,7 +6533,7 @@ expr_stmt|;
 block|}
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -6590,7 +6592,7 @@ name|Exception
 block|{
 block|{
 comment|// Write XMP to file
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|t1BibtexEntry
@@ -6681,7 +6683,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -6705,7 +6707,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|x
 init|=
 name|c
@@ -6726,7 +6728,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// Write XMP to file
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|t1BibtexEntry
@@ -6983,7 +6985,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -7140,7 +7142,7 @@ block|}
 comment|// PDF should be annotated:
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -7245,7 +7247,7 @@ block|}
 comment|// PDF should be annotated:
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -7407,7 +7409,7 @@ expr_stmt|;
 block|}
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -7430,7 +7432,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|a
 init|=
 name|l
@@ -7440,7 +7442,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 name|l
@@ -7463,7 +7465,7 @@ literal|"Clarkson06"
 argument_list|)
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|tmp
 init|=
 name|a
@@ -7477,13 +7479,13 @@ operator|=
 name|tmp
 expr_stmt|;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|t1
 init|=
 name|t1BibtexEntry
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|t3
 init|=
 name|t3BibtexEntry
@@ -7588,7 +7590,7 @@ argument_list|)
 decl_stmt|;
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|c
 init|=
@@ -7612,7 +7614,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 name|c
@@ -7639,7 +7641,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|l
 init|=
@@ -7665,7 +7667,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|x
 init|=
 name|l
@@ -7867,7 +7869,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Test whether we the main function can load the bibtex correctly
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 name|XMPUtil

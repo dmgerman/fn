@@ -834,17 +834,9 @@ name|int
 name|getProxyConfigHash
 parameter_list|()
 block|{
-name|StringBuilder
+name|String
 name|sb
 init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
 name|prefs
 operator|.
 name|get
@@ -853,15 +845,9 @@ name|JabRefPreferences
 operator|.
 name|PROXY_USERNAME
 argument_list|)
-argument_list|)
-operator|.
-name|append
-argument_list|(
+operator|+
 literal|':'
-argument_list|)
-operator|.
-name|append
-argument_list|(
+operator|+
 name|prefs
 operator|.
 name|get
@@ -870,17 +856,9 @@ name|JabRefPreferences
 operator|.
 name|PROXY_PASSWORD
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
+operator|+
 literal|'@'
-argument_list|)
-operator|.
-name|append
-argument_list|(
+operator|+
 name|prefs
 operator|.
 name|get
@@ -889,15 +867,9 @@ name|JabRefPreferences
 operator|.
 name|PROXY_HOSTNAME
 argument_list|)
-argument_list|)
-operator|.
-name|append
-argument_list|(
+operator|+
 literal|':'
-argument_list|)
-operator|.
-name|append
-argument_list|(
+operator|+
 name|prefs
 operator|.
 name|get
@@ -906,13 +878,9 @@ name|JabRefPreferences
 operator|.
 name|PROXY_PORT
 argument_list|)
-argument_list|)
-expr_stmt|;
+decl_stmt|;
 return|return
 name|sb
-operator|.
-name|toString
-argument_list|()
 operator|.
 name|hashCode
 argument_list|()
@@ -1413,7 +1381,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|validAuthenticationSetting
 condition|)
 block|{
@@ -1427,7 +1394,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Please specify both username and password"
+literal|"Please specify both hostname and port"
 argument_list|)
 argument_list|,
 name|Localization
@@ -1455,7 +1422,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Please specify both hostname and port"
+literal|"Please specify both username and password"
 argument_list|)
 argument_list|,
 name|Localization

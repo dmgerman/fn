@@ -42,6 +42,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|StringTokenizer
 import|;
 end_import
@@ -70,7 +80,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -112,7 +122,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|external
+operator|.
+name|ExternalFileType
 import|;
 end_import
 
@@ -126,7 +138,7 @@ name|jabref
 operator|.
 name|external
 operator|.
-name|ExternalFileType
+name|ExternalFileTypes
 import|;
 end_import
 
@@ -180,6 +192,15 @@ specifier|final
 name|ExternalFileType
 name|externalFileType
 decl_stmt|;
+DECL|field|MIN_PATH_TOKEN_LENGTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MIN_PATH_TOKEN_LENGTH
+init|=
+literal|4
+decl_stmt|;
 comment|/**      * Constructor.<br>      * Forces subclasses to provide an {@link ExternalFileType} instance, which      * they build on.      *      * @param externalFileType      */
 DECL|method|EntryFromFileCreator (ExternalFileType externalFileType)
 name|EntryFromFileCreator
@@ -198,7 +219,10 @@ block|}
 DECL|method|createBibtexEntry (File f)
 specifier|protected
 specifier|abstract
-name|BibtexEntry
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
 name|createBibtexEntry
 parameter_list|(
 name|File
@@ -226,10 +250,10 @@ name|String
 name|getFormatName
 parameter_list|()
 function_decl|;
-comment|/**      * Create one BibtexEntry containing information regarding the given File.      *      * @param f      * @param addPathTokensAsKeywords      * @return      */
+comment|/**      * Create one BibEntry containing information regarding the given File.      *      * @param f      * @param addPathTokensAsKeywords      * @return      */
 DECL|method|createEntry (File f, boolean addPathTokensAsKeywords)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|createEntry
 parameter_list|(
 name|File
@@ -258,7 +282,10 @@ return|return
 literal|null
 return|;
 block|}
-name|BibtexEntry
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
 name|newEntry
 init|=
 name|createBibtexEntry
@@ -268,9 +295,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+operator|(
 name|newEntry
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
+operator|)
 condition|)
 block|{
 return|return
@@ -285,6 +316,9 @@ block|{
 name|appendToField
 argument_list|(
 name|newEntry
+operator|.
+name|get
+argument_list|()
 argument_list|,
 literal|"keywords"
 argument_list|,
@@ -300,17 +334,22 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 name|newEntry
 operator|.
-name|getField
+name|get
+argument_list|()
+operator|.
+name|hasField
 argument_list|(
 literal|"title"
 argument_list|)
-operator|==
-literal|null
 condition|)
 block|{
 name|newEntry
+operator|.
+name|get
+argument_list|()
 operator|.
 name|setField
 argument_list|(
@@ -326,12 +365,18 @@ block|}
 name|addFileInfo
 argument_list|(
 name|newEntry
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|f
 argument_list|)
 expr_stmt|;
 return|return
 name|newEntry
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 comment|/** Returns the ExternalFileType that is imported here */
@@ -356,12 +401,6 @@ name|String
 name|absolutePath
 parameter_list|)
 block|{
-specifier|final
-name|int
-name|MIN_PATH_TOKEN_LENGTH
-init|=
-literal|4
-decl_stmt|;
 name|StringBuilder
 name|sb
 init|=
@@ -440,7 +479,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 block|}
@@ -460,30 +499,25 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|addFileInfo (BibtexEntry entry, File file)
+DECL|method|addFileInfo (BibEntry entry, File file)
 specifier|private
 name|void
 name|addFileInfo
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|File
 name|file
 parameter_list|)
 block|{
-name|JabRefPreferences
-name|jabRefPreferences
-init|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-decl_stmt|;
 name|ExternalFileType
 name|fileType
 init|=
-name|jabRefPreferences
+name|ExternalFileTypes
+operator|.
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
@@ -562,7 +596,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"file"
+name|Globals
+operator|.
+name|FILE_FIELD
 argument_list|,
 name|model
 operator|.
@@ -571,11 +607,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|appendToField (BibtexEntry entry, String field, String value)
+DECL|method|appendToField (BibEntry entry, String field, String value)
 name|void
 name|appendToField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String
@@ -593,12 +629,10 @@ operator|==
 literal|null
 operator|)
 operator|||
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|value
-argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return;
@@ -660,16 +694,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addEntrysToEntry (BibtexEntry entry, List<BibtexEntry> entrys)
+DECL|method|addEntrysToEntry (BibEntry entry, List<BibEntry> entrys)
 name|void
 name|addEntrysToEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entrys
 parameter_list|)
@@ -683,7 +717,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|e
 range|:
 name|entrys
@@ -699,14 +733,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addEntryDataToEntry (BibtexEntry entry, BibtexEntry e)
+DECL|method|addEntryDataToEntry (BibEntry entry, BibEntry e)
 name|void
 name|addEntryDataToEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|e
 parameter_list|)
 block|{

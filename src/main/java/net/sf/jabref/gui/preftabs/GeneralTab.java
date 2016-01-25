@@ -722,7 +722,6 @@ literal|"Show warning dialog when an empty BibTeX key is entered"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// JZTODO lyrics
 name|enforceLegalKeys
 operator|=
 operator|new

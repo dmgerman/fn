@@ -50,6 +50,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -179,13 +199,15 @@ literal|true
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|update (E[] autoCompletions)
+DECL|method|update (List<E> autoCompletions)
 specifier|public
 name|void
 name|update
 parameter_list|(
+name|List
+argument_list|<
 name|E
-index|[]
+argument_list|>
 name|autoCompletions
 parameter_list|)
 block|{
@@ -200,7 +222,12 @@ name|list
 operator|.
 name|setListData
 argument_list|(
+operator|new
+name|Vector
+argument_list|<>
+argument_list|(
 name|autoCompletions
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|list

@@ -21,7 +21,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  *   * The |built_in| function {\.{purify\$}} pops the top (string) literal, removes  * nonalphanumeric characters except for |white_space| and |sep_char| characters  * (these get converted to a |space|) and removes certain alphabetic characters  * contained in the control sequences associated with a special character, and  * pushes the resulting string. If the literal isn't a string, it complains and  * pushes the null string.  *   */
+comment|/**  *  * The |built_in| function {\.{purify\$}} pops the top (string) literal, removes  * nonalphanumeric characters except for |white_space| and |sep_char| characters  * (these get converted to a |space|) and removes certain alphabetic characters  * contained in the control sequences associated with a special character, and  * pushes the resulting string. If the literal isn't a string, it complains and  * pushes the null string.  *  */
 end_comment
 
 begin_class
@@ -30,7 +30,7 @@ specifier|public
 class|class
 name|BibtexPurify
 block|{
-comment|/**      *       * @param toPurify      * @param warn      *            may-be-null      * @return      */
+comment|/**      *      * @param toPurify      * @param warn      *            may-be-null      * @return      */
 DECL|method|purify (String toPurify, Warn warn)
 specifier|public
 specifier|static
@@ -205,9 +205,6 @@ name|i
 operator|++
 expr_stmt|;
 comment|// skip backslash
-name|String
-name|specialStart
-init|=
 name|BibtexCaseChanger
 operator|.
 name|findSpecialChar
@@ -216,22 +213,19 @@ name|cs
 argument_list|,
 name|i
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|specialStart
-operator|!=
-literal|null
-condition|)
-block|{
+lambda|->
 name|sb
 operator|.
 name|append
 argument_list|(
 name|specialStart
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 while|while
 condition|(
 operator|(

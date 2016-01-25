@@ -236,7 +236,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -282,11 +282,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|field|maxPerPage
+DECL|field|MAX_PER_PAGE
 specifier|private
+specifier|static
 specifier|final
 name|int
-name|maxPerPage
+name|MAX_PER_PAGE
 init|=
 literal|100
 decl_stmt|;
@@ -294,12 +295,6 @@ DECL|field|shouldContinue
 specifier|private
 name|boolean
 name|shouldContinue
-decl_stmt|;
-DECL|field|jep
-specifier|private
-specifier|final
-name|JSONEntryParser
-name|jep
 decl_stmt|;
 annotation|@
 name|Override
@@ -440,7 +435,7 @@ if|if
 condition|(
 name|hits
 operator|>
-name|maxPerPage
+name|MAX_PER_PAGE
 condition|)
 block|{
 while|while
@@ -524,7 +519,7 @@ break|break;
 block|}
 catch|catch
 parameter_list|(
-name|RuntimeException
+name|NumberFormatException
 name|ex
 parameter_list|)
 block|{
@@ -569,7 +564,7 @@ name|numberToFetch
 condition|;
 name|startItem
 operator|+=
-name|maxPerPage
+name|MAX_PER_PAGE
 control|)
 block|{
 if|if
@@ -587,7 +582,7 @@ name|Math
 operator|.
 name|min
 argument_list|(
-name|maxPerPage
+name|MAX_PER_PAGE
 argument_list|,
 name|numberToFetch
 operator|-
@@ -685,10 +680,10 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
-name|jep
+name|JSONEntryParser
 operator|.
 name|SpringerJSONtoBibtex
 argument_list|(
@@ -834,12 +829,6 @@ name|SpringerFetcher
 parameter_list|()
 block|{
 name|super
-argument_list|()
-expr_stmt|;
-name|jep
-operator|=
-operator|new
-name|JSONEntryParser
 argument_list|()
 expr_stmt|;
 block|}

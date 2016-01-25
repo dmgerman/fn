@@ -98,27 +98,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
 import|;
 end_import
 
@@ -139,6 +119,26 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -178,7 +178,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -392,18 +392,18 @@ literal|"title"
 block|,
 literal|"year"
 block|,
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 block|}
 decl_stmt|;
 comment|// singleton instance
-DECL|field|runtime
+DECL|field|RUNTIME
 specifier|private
 specifier|static
 specifier|final
 name|BibtexFields
-name|runtime
+name|RUNTIME
 init|=
 operator|new
 name|BibtexFields
@@ -413,7 +413,7 @@ comment|// contains all bibtex-field objects (BibtexSingleField)
 DECL|field|fieldSet
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -1209,7 +1209,7 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -1786,14 +1786,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// collect all public fields for the PUBLIC_FIELDS array
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|pFields
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|(
 name|fieldSet
@@ -1853,10 +1853,6 @@ index|]
 argument_list|)
 expr_stmt|;
 comment|// sort the entries
-name|java
-operator|.
-name|util
-operator|.
 name|Arrays
 operator|.
 name|sort
@@ -1873,15 +1869,17 @@ name|void
 name|setNumericFieldsFromPrefs
 parameter_list|()
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|numFields
 init|=
 name|Globals
 operator|.
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
@@ -1891,14 +1889,15 @@ decl_stmt|;
 if|if
 condition|(
 name|numFields
-operator|==
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return;
 block|}
 comment|// Build a Set of field names for the fields that should be sorted numerically:
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1909,12 +1908,10 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|Collections
+name|nF
 operator|.
 name|addAll
 argument_list|(
-name|nF
-argument_list|,
 name|numFields
 argument_list|)
 expr_stmt|;
@@ -1926,7 +1923,7 @@ name|fieldName
 range|:
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|fieldSet
 operator|.
@@ -1939,7 +1936,7 @@ name|field
 init|=
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|fieldSet
 operator|.
@@ -2015,7 +2012,7 @@ argument_list|)
 expr_stmt|;
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|fieldSet
 operator|.
@@ -2079,7 +2076,7 @@ block|{
 return|return
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|fieldSet
 operator|.
@@ -2293,45 +2290,6 @@ operator|.
 name|DEFAULT_FIELD_LENGTH
 return|;
 block|}
-comment|// returns an alternative name for the given fieldname
-DECL|method|getFieldDisplayName (String fieldName)
-specifier|public
-specifier|static
-name|String
-name|getFieldDisplayName
-parameter_list|(
-name|String
-name|fieldName
-parameter_list|)
-block|{
-name|BibtexSingleField
-name|sField
-init|=
-name|BibtexFields
-operator|.
-name|getField
-argument_list|(
-name|fieldName
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|sField
-operator|!=
-literal|null
-condition|)
-block|{
-return|return
-name|sField
-operator|.
-name|getAlternativeDisplayName
-argument_list|()
-return|;
-block|}
-return|return
-literal|null
-return|;
-block|}
 DECL|method|isWriteableField (String field)
 specifier|public
 specifier|static
@@ -2483,7 +2441,7 @@ name|asList
 argument_list|(
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|PUBLIC_FIELDS
 argument_list|)
@@ -2518,7 +2476,7 @@ name|sField
 range|:
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|fieldSet
 operator|.
@@ -2564,7 +2522,7 @@ block|{
 return|return
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|PUBLIC_FIELDS
 index|[
@@ -2583,7 +2541,7 @@ block|{
 return|return
 name|BibtexFields
 operator|.
-name|runtime
+name|RUNTIME
 operator|.
 name|PUBLIC_FIELDS
 operator|.
@@ -2600,11 +2558,11 @@ specifier|static
 class|class
 name|BibtexSingleField
 block|{
+DECL|field|STANDARD
 specifier|private
 specifier|static
 specifier|final
 name|int
-DECL|field|STANDARD
 name|STANDARD
 init|=
 literal|0x01
@@ -2689,13 +2647,6 @@ name|GUIGlobals
 operator|.
 name|STANDARD_EDITOR
 decl_stmt|;
-comment|// a alternative displayname, e.g. used for
-comment|// "citeseercitationcount"="Popularity"
-DECL|field|alternativeDisplayName
-specifier|private
-name|String
-name|alternativeDisplayName
-decl_stmt|;
 comment|// the extras data
 comment|// fieldExtras contains mappings to tell the EntryEditor to add a specific
 comment|// function to this field, for instance a "browse" button for the "pdf" field.
@@ -2718,19 +2669,6 @@ comment|// a Hashmap for a lot of additional "not standard" properties
 comment|// todo: add the handling in a key=value manner
 comment|// private HashMap props = new HashMap() ;
 comment|// some constructors ;-)
-DECL|method|BibtexSingleField (String fieldName)
-specifier|public
-name|BibtexSingleField
-parameter_list|(
-name|String
-name|fieldName
-parameter_list|)
-block|{
-name|name
-operator|=
-name|fieldName
-expr_stmt|;
-block|}
 DECL|method|BibtexSingleField (String fieldName, boolean pStandard)
 specifier|public
 name|BibtexSingleField
@@ -2861,13 +2799,14 @@ expr_stmt|;
 block|}
 comment|// -----------------------------------------------------------------------
 comment|// -----------------------------------------------------------------------
-DECL|method|setFlag (boolean onOff, int flagID)
+comment|/**          * Sets or onsets the given flag          * @param setToOn if true, set the flag; if false, unset the flat          * @param flagID, the id of the flag          */
+DECL|method|setFlag (boolean setToOn, int flagID)
 specifier|private
 name|void
 name|setFlag
 parameter_list|(
 name|boolean
-name|onOff
+name|setToOn
 parameter_list|,
 name|int
 name|flagID
@@ -2875,10 +2814,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|onOff
+name|setToOn
 condition|)
-comment|// set the flag
 block|{
+comment|// set the flag
 name|flag
 operator|=
 name|flag
@@ -2887,8 +2826,8 @@ name|flagID
 expr_stmt|;
 block|}
 else|else
-comment|// unset the flag,
 block|{
+comment|// unset the flag
 name|flag
 operator|=
 name|flag
@@ -3032,31 +2971,6 @@ name|BibtexSingleField
 operator|.
 name|WRITEABLE
 argument_list|)
-return|;
-block|}
-comment|// -----------------------------------------------------------------------
-DECL|method|setAlternativeDisplayName (String aName)
-specifier|public
-name|void
-name|setAlternativeDisplayName
-parameter_list|(
-name|String
-name|aName
-parameter_list|)
-block|{
-name|alternativeDisplayName
-operator|=
-name|aName
-expr_stmt|;
-block|}
-DECL|method|getAlternativeDisplayName ()
-specifier|public
-name|String
-name|getAlternativeDisplayName
-parameter_list|()
-block|{
-return|return
-name|alternativeDisplayName
 return|;
 block|}
 comment|// -----------------------------------------------------------------------

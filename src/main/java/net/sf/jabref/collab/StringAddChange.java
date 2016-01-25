@@ -110,7 +110,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -274,7 +274,6 @@ name|string
 operator|=
 name|string
 expr_stmt|;
-comment|// @formatter:off
 name|tp
 operator|.
 name|setText
@@ -323,11 +322,10 @@ operator|+
 literal|"</HTML>"
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
-DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
 name|makeChange
@@ -335,7 +333,7 @@ parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 name|NamedCompound
@@ -497,6 +495,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|description ()
+specifier|public
 name|JComponent
 name|description
 parameter_list|()

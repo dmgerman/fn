@@ -214,10 +214,11 @@ block|{
 return|return
 name|Collections
 operator|.
-name|EMPTY_LIST
+name|emptyList
+argument_list|()
 return|;
 block|}
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -285,11 +286,11 @@ return|return
 name|al
 return|;
 block|}
-comment|/**      * @param keywords a String of keywords      * @return an ArrayList containing the keywords. An emtpy list if keywords are null or empty      */
+comment|/**      * @param keywords a String of keywords      * @return an List containing the keywords. An emtpy list if keywords are null or empty      */
 DECL|method|getSeparatedKeywords (String keywords)
 specifier|public
 specifier|static
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -299,7 +300,7 @@ name|String
 name|keywords
 parameter_list|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>

@@ -130,6 +130,26 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|SortedSet
 import|;
 end_import
@@ -498,18 +518,6 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
-specifier|final
-name|String
-DECL|field|WORD_EMPTY_TEXT
-name|WORD_EMPTY_TEXT
-init|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"<no field>"
-argument_list|)
-decl_stmt|;
 DECL|field|WORD_FIRSTLINE_TEXT
 specifier|private
 specifier|final
@@ -546,13 +554,6 @@ DECL|field|currentField
 specifier|private
 name|String
 name|currentField
-decl_stmt|;
-DECL|field|fieldSet
-name|TreeSet
-argument_list|<
-name|String
-argument_list|>
-name|fieldSet
 decl_stmt|;
 DECL|field|frame
 specifier|private
@@ -647,7 +648,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -792,7 +793,7 @@ decl_stmt|;
 DECL|field|wordListModels
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -811,7 +812,7 @@ decl_stmt|;
 DECL|field|removedFields
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1035,14 +1036,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|int
-name|index
-init|=
-name|wordList
-operator|.
-name|getSelectedIndex
-argument_list|()
-decl_stmt|;
 name|String
 name|old
 init|=
@@ -1079,6 +1072,14 @@ block|{
 return|return;
 comment|// Empty string or no change.
 block|}
+name|int
+name|index
+init|=
+name|wordList
+operator|.
+name|getSelectedIndex
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|wordListModel
@@ -2405,7 +2406,6 @@ argument_list|,
 name|wordListModel
 argument_list|)
 expr_stmt|;
-comment|// wordListModel.addElement(WORD_FIRSTLINE_TEXT);
 name|Vector
 argument_list|<
 name|String

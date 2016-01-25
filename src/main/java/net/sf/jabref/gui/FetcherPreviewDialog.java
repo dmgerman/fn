@@ -366,7 +366,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -502,7 +502,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -975,11 +975,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1147,7 +1148,7 @@ return|return
 name|selection
 return|;
 block|}
-comment|/* (non-Javadoc)     * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibtexEntry)     */
+comment|/* (non-Javadoc)     * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibEntry)     */
 DECL|method|addEntry (String entryId, JLabel preview)
 specifier|public
 name|void
@@ -1348,6 +1349,7 @@ implements|implements
 name|TableCellRenderer
 block|{
 DECL|field|label
+specifier|private
 specifier|final
 name|JLabel
 name|label
@@ -1412,6 +1414,7 @@ extends|extends
 name|JTable
 block|{
 DECL|field|renderer
+specifier|private
 specifier|final
 name|PreviewRenderer
 name|renderer
@@ -1545,7 +1548,7 @@ name|int
 name|column
 parameter_list|)
 block|{
-comment|// Only column 0, which is controlled by BibtexEntry.searchHit, is
+comment|// Only column 0, which is controlled by BibEntry.searchHit, is
 comment|// editable:
 name|entries
 operator|.

@@ -194,7 +194,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -210,7 +210,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -255,7 +255,24 @@ block|{
 literal|"pdf"
 block|,
 literal|"ps"
+block|,
+literal|"evastar_pdf"
 block|}
+decl_stmt|;
+DECL|field|offerChangeSettings
+specifier|private
+name|boolean
+name|offerChangeSettings
+decl_stmt|;
+DECL|field|offerChangeDatabase
+specifier|private
+name|boolean
+name|offerChangeDatabase
+decl_stmt|;
+DECL|field|offerSetFileDir
+specifier|private
+name|boolean
+name|offerSetFileDir
 decl_stmt|;
 comment|/**      * This method should be performed if the major/minor versions recorded in the ParserResult      * are less than or equal to 2.2.      * @param pr      * @return true if the file was written by a jabref version<=2.2      */
 annotation|@
@@ -269,105 +286,10 @@ name|ParserResult
 name|pr
 parameter_list|)
 block|{
-comment|// First check if this warning is disabled:
-if|if
-condition|(
-operator|!
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|SHOW_FILE_LINKS_UPGRADE_WARNING
-argument_list|)
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-if|if
-condition|(
-name|pr
-operator|.
-name|getJabrefMajorVersion
-argument_list|()
-operator|<=
-literal|0
-condition|)
-block|{
-return|return
-literal|false
-return|;
-comment|// non-JabRef file
-block|}
-elseif|else
-if|if
-condition|(
-name|pr
-operator|.
-name|getJabrefMajorVersion
-argument_list|()
-operator|<
-literal|2
-condition|)
-block|{
-return|return
-literal|true
-return|;
-comment|// old
-block|}
-elseif|else
-if|if
-condition|(
-name|pr
-operator|.
-name|getJabrefMajorVersion
-argument_list|()
-operator|==
-literal|2
-condition|)
-block|{
-return|return
-name|pr
-operator|.
-name|getJabrefMinorVersion
-argument_list|()
-operator|<=
-literal|2
-return|;
-block|}
-else|else
-block|{
-comment|// JabRef version 3 does not contain a header, but who knows
-return|return
-literal|true
-return|;
-block|}
-block|}
-comment|/**      * This method presents a dialog box explaining and offering to make the      * changes. If the user confirms, the changes are performed.      * @param panel      * @param pr      */
-annotation|@
-name|Override
-DECL|method|performAction (BasePanel panel, ParserResult pr)
-specifier|public
-name|void
-name|performAction
-parameter_list|(
-name|BasePanel
-name|panel
-parameter_list|,
-name|ParserResult
-name|pr
-parameter_list|)
-block|{
 comment|// Find out which actions should be offered:
 comment|// Only offer to change Preferences if file column is not already visible:
-name|boolean
 name|offerChangeSettings
-init|=
+operator|=
 operator|!
 name|Globals
 operator|.
@@ -383,11 +305,10 @@ operator|||
 operator|!
 name|showsFileInGenFields
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 comment|// Only offer to upgrade links if the pdf/ps fields are used:
-name|boolean
 name|offerChangeDatabase
-init|=
+operator|=
 name|linksFound
 argument_list|(
 name|pr
@@ -399,11 +320,10 @@ name|FileLinksUpgradeWarning
 operator|.
 name|FIELDS_TO_LOOK_FOR
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// If the "file" directory is not set, offer to migrate pdf/ps dir:
-name|boolean
 name|offerSetFileDir
-init|=
+operator|=
 operator|!
 name|Globals
 operator|.
@@ -415,7 +335,9 @@ name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
-literal|"Directory"
+name|Globals
+operator|.
+name|DIR_SUFFIX
 argument_list|)
 operator|&&
 operator|(
@@ -437,17 +359,44 @@ argument_list|(
 literal|"psDirectory"
 argument_list|)
 operator|)
-decl_stmt|;
+expr_stmt|;
+comment|// First check if this warning is disabled:
+return|return
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SHOW_FILE_LINKS_UPGRADE_WARNING
+argument_list|)
+operator|&&
+name|isThereSomethingToBeDone
+argument_list|()
+return|;
+block|}
+comment|/**      * This method presents a dialog box explaining and offering to make the      * changes. If the user confirms, the changes are performed.      * @param panel      * @param parserResult      */
+annotation|@
+name|Override
+DECL|method|performAction (BasePanel panel, ParserResult parserResult)
+specifier|public
+name|void
+name|performAction
+parameter_list|(
+name|BasePanel
+name|panel
+parameter_list|,
+name|ParserResult
+name|parserResult
+parameter_list|)
+block|{
 if|if
 condition|(
 operator|!
-name|offerChangeDatabase
-operator|&&
-operator|!
-name|offerChangeSettings
-operator|&&
-operator|!
-name|offerSetFileDir
+name|isThereSomethingToBeDone
+argument_list|()
 condition|)
 block|{
 return|return;
@@ -536,7 +485,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 name|FormBuilder
-name|b
+name|formBuilder
 init|=
 name|FormBuilder
 operator|.
@@ -561,7 +510,7 @@ name|row
 init|=
 literal|1
 decl_stmt|;
-name|b
+name|formBuilder
 operator|.
 name|add
 argument_list|(
@@ -574,16 +523,16 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"This database was written using an older version of JabRef."
+literal|"This database uses outdated file links."
 argument_list|)
 operator|+
-literal|"<br>"
+literal|"<br><br>"
 operator|+
 name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"The current version features a new way of handling links to external files.<br>To take advantage of this, your links must be changed into the new format, and<br>JabRef must be configured to show the new links."
+literal|"JabRef no longer supports 'ps' or 'pdf' fields.<br>File links are now stored in the 'file' field and files are stored in an external file directory.<br>To make use of this feature, JabRef needs to upgrade file links.<br><br>"
 argument_list|)
 operator|+
 literal|"<p>"
@@ -611,7 +560,7 @@ condition|(
 name|offerChangeSettings
 condition|)
 block|{
-name|b
+name|formBuilder
 operator|.
 name|appendRows
 argument_list|(
@@ -622,7 +571,7 @@ name|row
 operator|+=
 literal|2
 expr_stmt|;
-name|b
+name|formBuilder
 operator|.
 name|add
 argument_list|(
@@ -642,7 +591,7 @@ condition|(
 name|offerChangeDatabase
 condition|)
 block|{
-name|b
+name|formBuilder
 operator|.
 name|appendRows
 argument_list|(
@@ -653,7 +602,7 @@ name|row
 operator|+=
 literal|2
 expr_stmt|;
-name|b
+name|formBuilder
 operator|.
 name|add
 argument_list|(
@@ -718,20 +667,20 @@ argument_list|)
 expr_stmt|;
 block|}
 name|JPanel
-name|pan
+name|builderPanel
 init|=
 operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
-name|pan
+name|builderPanel
 operator|.
 name|add
 argument_list|(
 name|setFileDir
 argument_list|)
 expr_stmt|;
-name|pan
+name|builderPanel
 operator|.
 name|add
 argument_list|(
@@ -764,14 +713,14 @@ name|fileDir
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|pan
+name|builderPanel
 operator|.
 name|add
 argument_list|(
 name|browse
 argument_list|)
 expr_stmt|;
-name|b
+name|formBuilder
 operator|.
 name|appendRows
 argument_list|(
@@ -782,11 +731,11 @@ name|row
 operator|+=
 literal|2
 expr_stmt|;
-name|b
+name|formBuilder
 operator|.
 name|add
 argument_list|(
-name|pan
+name|builderPanel
 argument_list|)
 operator|.
 name|xy
@@ -797,14 +746,14 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
-name|b
+name|formBuilder
 operator|.
 name|appendRows
 argument_list|(
 literal|"6dlu, p"
 argument_list|)
 expr_stmt|;
-name|b
+name|formBuilder
 operator|.
 name|add
 argument_list|(
@@ -824,7 +773,7 @@ name|message
 operator|.
 name|add
 argument_list|(
-name|b
+name|formBuilder
 operator|.
 name|build
 argument_list|()
@@ -891,7 +840,7 @@ name|makeChanges
 argument_list|(
 name|panel
 argument_list|,
-name|pr
+name|parserResult
 argument_list|,
 name|changeSettings
 operator|.
@@ -918,13 +867,27 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|isThereSomethingToBeDone ()
+specifier|private
+name|boolean
+name|isThereSomethingToBeDone
+parameter_list|()
+block|{
+return|return
+name|offerChangeSettings
+operator|||
+name|offerChangeDatabase
+operator|||
+name|offerSetFileDir
+return|;
+block|}
 comment|/**      * Check the database to find out whether any of a set of fields are used      * for any of the entries.      * @param database The bib database.      * @param fields The set of fields to look for.      * @return true if at least one of the given fields is set in at least one entry,      *  false otherwise.      */
-DECL|method|linksFound (BibtexDatabase database, String[] fields)
+DECL|method|linksFound (BibDatabase database, String[] fields)
 specifier|private
 name|boolean
 name|linksFound
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|String
@@ -934,7 +897,7 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|database
@@ -955,12 +918,10 @@ if|if
 condition|(
 name|entry
 operator|.
-name|getField
+name|hasField
 argument_list|(
 name|field
 argument_list|)
-operator|!=
-literal|null
 condition|)
 block|{
 return|return
@@ -1050,7 +1011,9 @@ name|Globals
 operator|.
 name|FILE_FIELD
 operator|+
-literal|"Directory"
+name|Globals
+operator|.
+name|DIR_SUFFIX
 argument_list|,
 name|fileDir
 argument_list|)
@@ -1062,21 +1025,6 @@ name|upgradePrefs
 condition|)
 block|{
 comment|// Exchange table columns:
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|PDF_COLUMN
-argument_list|,
-name|Boolean
-operator|.
-name|FALSE
-argument_list|)
-expr_stmt|;
 name|Globals
 operator|.
 name|prefs
@@ -1117,7 +1065,6 @@ operator|+
 literal|"0"
 argument_list|)
 decl_stmt|;
-comment|//System.out.println(gfs);
 name|StringBuilder
 name|sb
 init|=

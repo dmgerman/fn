@@ -112,7 +112,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -159,10 +159,10 @@ specifier|public
 name|JSONEntryParser
 parameter_list|()
 block|{      }
-comment|/**      * Convert a JSONObject containing a bibJSON entry to a BibtexEntry      *      * @param bibJsonEntry The JSONObject to convert      * @return the converted BibtexEntry      */
+comment|/**      * Convert a JSONObject containing a bibJSON entry to a BibEntry      *      * @param bibJsonEntry The JSONObject to convert      * @return the converted BibEntry      */
 DECL|method|BibJSONtoBibtex (JSONObject bibJsonEntry)
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|BibJSONtoBibtex
 parameter_list|(
 name|JSONObject
@@ -197,11 +197,11 @@ block|,
 literal|"volume"
 block|}
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 name|entry
@@ -846,10 +846,7 @@ name|equals
 argument_list|(
 name|type
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|links
 operator|.
 name|getJSONObject
@@ -886,16 +883,15 @@ block|}
 block|}
 block|}
 block|}
-block|}
 return|return
 name|entry
 return|;
 block|}
-comment|/**      * Convert a JSONObject obtained from http://api.springer.com/metadata/json to a BibtexEntry      *      * @param springerJsonEntry the JSONObject from search results      * @return the converted BibtexEntry      */
+comment|/**      * Convert a JSONObject obtained from http://api.springer.com/metadata/json to a BibEntry      *      * @param springerJsonEntry the JSONObject from search results      * @return the converted BibEntry      */
 DECL|method|SpringerJSONtoBibtex (JSONObject springerJsonEntry)
 specifier|public
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|SpringerJSONtoBibtex
 parameter_list|(
 name|JSONObject
@@ -923,11 +919,11 @@ block|,
 literal|"publisher"
 block|}
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|()
 decl_stmt|;
 name|String
@@ -1190,6 +1186,7 @@ argument_list|(
 literal|"startingPage"
 argument_list|)
 operator|&&
+operator|!
 operator|(
 name|springerJsonEntry
 operator|.
@@ -1198,10 +1195,8 @@ argument_list|(
 literal|"startingPage"
 argument_list|)
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -1214,6 +1209,7 @@ argument_list|(
 literal|"endPage"
 argument_list|)
 operator|&&
+operator|!
 operator|(
 name|springerJsonEntry
 operator|.
@@ -1222,10 +1218,8 @@ argument_list|(
 literal|"endPage"
 argument_list|)
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -1321,9 +1315,26 @@ decl_stmt|;
 if|if
 condition|(
 name|urlarray
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"url"
+argument_list|,
+name|springerJsonEntry
+operator|.
+name|optString
+argument_list|(
+literal|"url"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|entry
 operator|.
@@ -1341,23 +1352,6 @@ operator|.
 name|optString
 argument_list|(
 literal|"value"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"url"
-argument_list|,
-name|springerJsonEntry
-operator|.
-name|optString
-argument_list|(
-literal|"url"
 argument_list|)
 argument_list|)
 expr_stmt|;

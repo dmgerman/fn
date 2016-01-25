@@ -42,7 +42,27 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|maintable
+operator|.
 name|MainTableFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -106,21 +126,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
+name|BibEntry
 import|;
 end_import
 
@@ -165,7 +171,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * A comparator for BibtexEntry fields  *   * Initial Version:  *   * @author alver  * @version Date: Oct 13, 2005 Time: 10:10:04 PM To  *   * TODO: Testcases  *   */
+comment|/**  *   * A comparator for BibEntry fields  *   * Initial Version:  *   * @author alver  * @version Date: Oct 13, 2005 Time: 10:10:04 PM To  *   * TODO: Testcases  *   */
 end_comment
 
 begin_class
@@ -176,7 +182,7 @@ name|FieldComparator
 implements|implements
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 block|{
 DECL|field|collator
@@ -350,7 +356,7 @@ index|]
 operator|.
 name|equals
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|TYPE_HEADER
 argument_list|)
@@ -426,15 +432,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
+DECL|method|compare (BibEntry e1, BibEntry e2)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|e1
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|e2
 parameter_list|)
 block|{
@@ -655,7 +661,7 @@ try|try
 block|{
 name|i1
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|intValueOf
 argument_list|(
@@ -678,7 +684,7 @@ try|try
 block|{
 name|i2
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|intValueOf
 argument_list|(
@@ -915,12 +921,12 @@ operator|*
 name|localMultiplier
 return|;
 block|}
-DECL|method|getField (BibtexEntry entry)
+DECL|method|getField (BibEntry entry)
 specifier|private
 name|Object
 name|getField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

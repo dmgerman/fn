@@ -26,7 +26,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -42,7 +42,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -102,17 +102,17 @@ name|fieldName
 argument_list|)
 return|;
 block|}
-DECL|method|addDatabase (BibtexDatabase database)
+DECL|method|addDatabase (BibDatabase database)
 name|void
 name|addDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|database
@@ -129,13 +129,13 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * This methods assures all words in the given entry are recorded in their      * respective Completers, if any.      */
-DECL|method|addEntry (BibtexEntry bibtexEntry)
+DECL|method|addEntry (BibEntry bibEntry)
 specifier|public
 name|void
 name|addEntry
 parameter_list|(
-name|BibtexEntry
-name|bibtexEntry
+name|BibEntry
+name|bibEntry
 parameter_list|)
 block|{
 for|for
@@ -156,7 +156,7 @@ name|autoCompleter
 operator|.
 name|addBibtexEntry
 argument_list|(
-name|bibtexEntry
+name|bibEntry
 argument_list|)
 expr_stmt|;
 block|}

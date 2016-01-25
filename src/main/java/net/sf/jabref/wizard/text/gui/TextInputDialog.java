@@ -476,7 +476,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -490,7 +490,7 @@ name|jabref
 operator|.
 name|bibtex
 operator|.
-name|BibtexEntryWriter
+name|BibEntryWriter
 import|;
 end_import
 
@@ -506,7 +506,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -716,7 +716,7 @@ decl_stmt|;
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|inputMenu
@@ -762,15 +762,12 @@ specifier|private
 name|boolean
 name|okPressed
 decl_stmt|;
-DECL|method|TextInputDialog (JabRefFrame frame, BasePanel panel, String title, boolean modal, BibtexEntry bibEntry)
+DECL|method|TextInputDialog (JabRefFrame frame, String title, boolean modal, BibEntry bibEntry)
 specifier|public
 name|TextInputDialog
 parameter_list|(
 name|JabRefFrame
 name|frame
-parameter_list|,
-name|BasePanel
-name|panel
 parameter_list|,
 name|String
 name|title
@@ -778,7 +775,7 @@ parameter_list|,
 name|boolean
 name|modal
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|bibEntry
 parameter_list|)
 block|{
@@ -808,9 +805,7 @@ expr_stmt|;
 try|try
 block|{
 name|jbInit
-argument_list|(
-name|frame
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|pack
 argument_list|()
@@ -832,14 +827,11 @@ name|updateSourceView
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|jbInit (JabRefFrame parent)
+DECL|method|jbInit ()
 specifier|private
 name|void
 name|jbInit
-parameter_list|(
-name|JabRefFrame
-name|parent
-parameter_list|)
+parameter_list|()
 block|{
 name|this
 operator|.
@@ -1031,14 +1023,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|parent
+name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
 argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1155,7 +1147,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Text_Input_Area"
+literal|"paste_text_here"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2028,7 +2020,6 @@ name|void
 name|initSourcePanel
 parameter_list|()
 block|{
-comment|//    preview =  new PreviewPanel(entry) ;
 name|preview
 operator|=
 operator|new
@@ -2713,7 +2704,7 @@ argument_list|)
 expr_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importedEntries
 init|=
@@ -2750,7 +2741,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|e
 range|:
 name|importedEntries
@@ -2799,7 +2790,7 @@ decl_stmt|;
 try|try
 block|{
 operator|new
-name|BibtexEntryWriter
+name|BibEntryWriter
 argument_list|(
 operator|new
 name|LatexFieldFormatter
@@ -2968,7 +2959,6 @@ specifier|public
 name|PasteAction
 parameter_list|()
 block|{
-comment|// @formatter:off
 name|super
 argument_list|(
 name|Localization
@@ -2995,7 +2985,6 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -3013,7 +3002,7 @@ name|data
 init|=
 name|ClipBoardManager
 operator|.
-name|clipBoard
+name|CLIPBOARD
 operator|.
 name|getClipboardContents
 argument_list|()
@@ -3109,7 +3098,6 @@ specifier|public
 name|LoadAction
 parameter_list|()
 block|{
-comment|// @formatter:off
 name|super
 argument_list|(
 name|Localization
@@ -3136,7 +3124,6 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -3278,7 +3265,6 @@ specifier|public
 name|ClearAction
 parameter_list|()
 block|{
-comment|// @formatter:off
 name|super
 argument_list|(
 name|Localization
@@ -3305,7 +3291,6 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 annotation|@
 name|Override
@@ -3636,12 +3621,10 @@ if|if
 condition|(
 name|entry
 operator|.
-name|getField
+name|hasField
 argument_list|(
 name|s
 argument_list|)
-operator|!=
-literal|null
 condition|)
 block|{
 name|this

@@ -80,6 +80,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -306,7 +334,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -322,7 +350,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -393,6 +421,22 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|AppendDatabaseAction
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|method|AppendDatabaseAction (JabRefFrame frame, BasePanel panel)
 specifier|public
@@ -708,10 +752,14 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not open database"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 name|JOptionPane
 operator|.
@@ -769,7 +817,7 @@ parameter_list|)
 throws|throws
 name|KeyCollisionException
 block|{
-name|BibtexDatabase
+name|BibDatabase
 name|fromDatabase
 init|=
 name|pr
@@ -779,7 +827,7 @@ argument_list|()
 decl_stmt|;
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|appendedEntries
 init|=
@@ -790,7 +838,7 @@ argument_list|()
 decl_stmt|;
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|originalEntries
 init|=
@@ -799,7 +847,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|panel
@@ -807,7 +855,7 @@ operator|.
 name|database
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|originalEntry
 decl_stmt|;
 name|NamedCompound
@@ -886,11 +934,11 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 operator|(
-name|BibtexEntry
+name|BibEntry
 operator|)
 name|originalEntry
 operator|.
@@ -1065,7 +1113,7 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|appendedEntry
 range|:
 name|appendedEntries
@@ -1103,7 +1151,7 @@ decl_stmt|;
 name|ExplicitGroup
 name|group
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 for|for

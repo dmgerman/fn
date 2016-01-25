@@ -122,6 +122,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -162,7 +190,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -178,7 +206,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -218,6 +246,22 @@ name|String
 name|INSPIRE_HOST
 init|=
 literal|"inspirehep.net"
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|INSPIREFetcher
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/**      * Construct the query URL      *      * NOTE: we truncate at 1000 returned entries but its likely INSPIRE returns fewer anyway. This shouldn't be a      * problem since users should probably do more specific searches.      *      * @param key The key of the OAI2 entry that the url should point to.      *      * @return a String denoting the query URL      */
 DECL|method|constructUrl (String key)
@@ -261,11 +305,17 @@ return|return
 literal|""
 return|;
 block|}
+comment|// At least 87 characters
 name|StringBuilder
 name|sb
 init|=
 operator|new
 name|StringBuilder
+argument_list|(
+literal|87
+argument_list|)
+operator|.
+name|append
 argument_list|(
 literal|"http://"
 argument_list|)
@@ -279,39 +329,23 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"/"
-argument_list|)
-decl_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
 literal|"/search?ln=en&ln=en&p=find+"
 argument_list|)
-expr_stmt|;
-comment|//sb.append("spires/find/hep/www").append("?");
-comment|//sb.append("rawcmd=find+");
-name|sb
 operator|.
 name|append
 argument_list|(
 name|identifier
 argument_list|)
-expr_stmt|;
-comment|//sb.append("&action_search=Search&sf=&so=d&rm=&rg=25&sc=0&of=hx");
-name|sb
 operator|.
 name|append
 argument_list|(
 literal|"&action_search=Search&sf=&so=d&rm=&rg=1000&sc=0&of=hx"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|//sb.append("&FORMAT=WWWBRIEFBIBTEX&SEQUENCE=");
-name|System
+name|LOGGER
 operator|.
-name|out
-operator|.
-name|print
+name|debug
 argument_list|(
 literal|"Inspire URL: "
 operator|+
@@ -328,10 +362,10 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Constructs a INSPIRE query url from slaccitation field      *      * @param slaccitation      * @return query string      *      *         public static String constructUrlFromSlaccitation(String slaccitation) { String cmd = "j"; String key =      *         slaccitation.replaceAll("^%%CITATION = ", "").replaceAll( ";%%$", ""); if (key.matches("^\\w*-\\w*[ /].*"      *         )) cmd = "eprint"; try { key = URLEncoder.encode(key, "UTF-8"); } catch (UnsupportedEncodingException e)      *         { } StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST) .append("/");      *         sb.append("spires/find/hep/www").append("?"); sb.append("rawcmd=find+").append(cmd).append("+");      *         sb.append(key); return sb.toString(); }      *      *         /** Construct an INSPIRE query url from eprint field      *      * @param eprint      * @return query string      *      *         public static String constructUrlFromEprint(String eprint) { String key = eprint.replaceAll(" [.*]$",      *         ""); try { key = URLEncoder.encode(key, "UTF-8"); } catch (UnsupportedEncodingException e) { return ""; }      *         StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST) .append("/");      *         sb.append("spires/find/hep/www").append("?"); sb.append("rawcmd=find+eprint+"); sb.append(key); return      *         sb.toString(); }      */
-comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to have the field OAI2_IDENTIFIER_FIELD set to      * the search string.      *      * @param key The OAI2 key to fetch from ArXiv.      * @return The imported BibtexEntry or null if none.      */
+comment|/**      * Import an entry from an OAI2 archive. The BibEntry provided has to have the field OAI2_IDENTIFIER_FIELD set to      * the search string.      *      * @param key The OAI2 key to fetch from ArXiv.      * @return The imported BibEntry or null if none.      */
 DECL|method|importInspireEntries (String key, OutputPrinter frame)
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|importInspireEntries
 parameter_list|(
 name|String
@@ -455,14 +489,14 @@ return|return
 literal|null
 return|;
 block|}
-comment|// public void addSpiresURL(BibtexEntry entry) {
+comment|// public void addSpiresURL(BibEntry entry) {
 comment|// String url = "http://"+spiresHost+"/spires/find/hep/www?texkey+";
 comment|// url = url+entry.getCiteKey();
 comment|// entry.setField("url", url);
 comment|// }
 comment|//
-comment|// public void addSpiresURLtoDatabase(BibtexDatabase db) {
-comment|// Iterator<BibtexEntry> iter = db.getEntries().iterator();
+comment|// public void addSpiresURLtoDatabase(BibDatabase db) {
+comment|// Iterator<BibEntry> iter = db.getEntries().iterator();
 comment|// while (iter.hasNext())
 comment|// addSpiresURL(iter.next());
 comment|// }
@@ -546,8 +580,8 @@ argument_list|(
 literal|"Fetching entries from Inspire"
 argument_list|)
 expr_stmt|;
-comment|/* query the archive and load the results into the BibtexEntry */
-name|BibtexDatabase
+comment|/* query the archive and load the results into the BibEntry */
+name|BibDatabase
 name|bd
 init|=
 name|importInspireEntries
@@ -578,7 +612,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|bd
@@ -614,8 +648,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from Inspire: "
+literal|"Error while fetching from Inspire:"
 argument_list|)
+operator|+
+literal|" "
 operator|+
 name|e
 operator|.
@@ -623,10 +659,14 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Error while fetching from Inspire"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 return|return

@@ -26,30 +26,6 @@ name|awt
 operator|.
 name|event
 operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|ComponentAdapter
 import|;
 end_import
@@ -108,7 +84,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -151,20 +127,6 @@ operator|.
 name|gui
 operator|.
 name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|JabRefFrame
 import|;
 end_import
 
@@ -320,12 +282,6 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
 DECL|field|cc
 specifier|private
 specifier|final
@@ -338,12 +294,12 @@ argument_list|()
 decl_stmt|;
 DECL|field|originalEntry
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|originalEntry
 decl_stmt|;
 DECL|field|doiEntry
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|doiEntry
 decl_stmt|;
 DECL|field|ce
@@ -370,6 +326,15 @@ init|=
 operator|new
 name|DOItoBibTeXFetcher
 argument_list|()
+decl_stmt|;
+DECL|field|MARGIN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MARGIN
+init|=
+literal|"5px"
 decl_stmt|;
 DECL|method|MergeEntryDOIDialog (BasePanel panel)
 specifier|public
@@ -402,15 +367,6 @@ name|panel
 operator|=
 name|panel
 expr_stmt|;
-name|this
-operator|.
-name|frame
-operator|=
-name|panel
-operator|.
-name|frame
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|panel
@@ -423,12 +379,14 @@ operator|!=
 literal|1
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|panel
+operator|.
 name|frame
+argument_list|()
 argument_list|,
 name|Localization
 operator|.
@@ -449,7 +407,6 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 name|this
 operator|.
 name|dispose
@@ -517,12 +474,14 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|panel
+operator|.
 name|frame
+argument_list|()
 argument_list|,
 name|Localization
 operator|.
@@ -552,7 +511,6 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 name|this
 operator|.
 name|dispose
@@ -584,7 +542,6 @@ name|void
 name|init
 parameter_list|()
 block|{
-comment|// @formatter:off
 name|mergeEntries
 operator|=
 operator|new
@@ -613,7 +570,6 @@ literal|"Entry from DOI"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 comment|// Create undo-compound
 name|ce
 operator|=
@@ -722,20 +678,8 @@ name|cancel
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|buttonPressed
 argument_list|(
 name|e
@@ -743,9 +687,6 @@ operator|.
 name|getActionCommand
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|JButton
@@ -773,20 +714,8 @@ name|replaceentry
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|buttonPressed
 argument_list|(
 name|e
@@ -794,9 +723,6 @@ operator|.
 name|getActionCommand
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|bb
@@ -841,7 +767,7 @@ name|RowSpec
 operator|.
 name|decode
 argument_list|(
-literal|"5px"
+name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -853,7 +779,7 @@ name|ColumnSpec
 operator|.
 name|decode
 argument_list|(
-literal|"5px"
+name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -867,7 +793,7 @@ name|RowSpec
 operator|.
 name|decode
 argument_list|(
-literal|"5px"
+name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -881,7 +807,7 @@ name|ColumnSpec
 operator|.
 name|decode
 argument_list|(
-literal|"5px"
+name|MARGIN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -975,7 +901,7 @@ name|String
 name|button
 parameter_list|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|mergedEntry
 init|=
 name|mergeEntries

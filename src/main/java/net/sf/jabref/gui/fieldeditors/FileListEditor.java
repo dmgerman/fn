@@ -130,6 +130,36 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -386,7 +416,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -436,7 +466,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -1332,11 +1362,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|FILE_LIST_EDITOR_MOVE_ENTRY_UP
 argument_list|)
@@ -1383,11 +1414,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|FILE_LIST_EDITOR_MOVE_ENTRY_DOWN
 argument_list|)
@@ -1541,8 +1573,7 @@ name|openFolderAndSelectFile
 argument_list|(
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|)
 expr_stmt|;
 block|}
@@ -1721,8 +1752,7 @@ name|metaData
 argument_list|,
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|)
 decl_stmt|;
 comment|// transactional delete and unlink
@@ -1835,16 +1865,16 @@ block|{
 name|ExternalFileType
 name|type
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByName
 argument_list|(
 name|entry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -1858,8 +1888,7 @@ name|metaData
 argument_list|,
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|type
 operator|!=
@@ -1869,8 +1898,7 @@ name|type
 else|:
 name|entry
 operator|.
-name|getType
-argument_list|()
+name|type
 argument_list|)
 expr_stmt|;
 block|}
@@ -2453,14 +2481,35 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
-name|entry
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|entries
 init|=
-name|entryEditor
-operator|.
-name|getEntry
+operator|new
+name|ArrayList
+argument_list|<>
 argument_list|()
 decl_stmt|;
+name|entries
+operator|.
+name|addAll
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|.
+name|getSelectedEntries
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// filesystem lookup
 name|JDialog
 name|dialog
@@ -2491,7 +2540,11 @@ name|Util
 operator|.
 name|autoSetLinks
 argument_list|(
-name|entry
+name|entries
+argument_list|,
+literal|null
+argument_list|,
+literal|null
 argument_list|,
 name|tableModel
 argument_list|,
@@ -2981,7 +3034,7 @@ specifier|public
 name|void
 name|undo
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|redo ()
@@ -2989,7 +3042,7 @@ specifier|public
 name|void
 name|redo
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
@@ -3000,7 +3053,7 @@ parameter_list|(
 name|AutoCompleteListener
 name|listener
 parameter_list|)
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|clearAutoCompleteSuggestion ()
@@ -3008,7 +3061,7 @@ specifier|public
 name|void
 name|clearAutoCompleteSuggestion
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|setActiveBackgroundColor ()
@@ -3016,7 +3069,7 @@ specifier|public
 name|void
 name|setActiveBackgroundColor
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|setValidBackgroundColor ()
@@ -3024,7 +3077,7 @@ specifier|public
 name|void
 name|setValidBackgroundColor
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|setInvalidBackgroundColor ()
@@ -3032,7 +3085,7 @@ specifier|public
 name|void
 name|setInvalidBackgroundColor
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 DECL|method|updateFontColor ()
@@ -3040,7 +3093,7 @@ specifier|public
 name|void
 name|updateFontColor
 parameter_list|()
-block|{}
+block|{     }
 block|}
 end_class
 

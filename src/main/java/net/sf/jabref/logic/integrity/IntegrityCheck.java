@@ -66,7 +66,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -82,7 +82,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -203,7 +203,18 @@ operator|new
 name|PagesChecker
 argument_list|()
 decl_stmt|;
-DECL|method|checkBibtexDatabase (BibtexDatabase base)
+DECL|field|URL_CHECKER
+specifier|public
+specifier|static
+specifier|final
+name|Checker
+name|URL_CHECKER
+init|=
+operator|new
+name|UrlChecker
+argument_list|()
+decl_stmt|;
+DECL|method|checkBibtexDatabase (BibDatabase base)
 specifier|public
 name|List
 argument_list|<
@@ -211,7 +222,7 @@ name|IntegrityMessage
 argument_list|>
 name|checkBibtexDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|)
 block|{
@@ -239,7 +250,7 @@ return|;
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|base
@@ -263,7 +274,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|checkBibtexEntry (BibtexEntry entry)
+DECL|method|checkBibtexEntry (BibEntry entry)
 specifier|public
 name|List
 argument_list|<
@@ -271,7 +282,7 @@ name|IntegrityMessage
 argument_list|>
 name|checkBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -297,31 +308,22 @@ return|return
 name|result
 return|;
 block|}
-name|Object
-name|data
-init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"author"
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|data
-operator|!=
-literal|null
-condition|)
-block|{
+lambda|->
 name|AUTHOR_NAME_CHECKER
 operator|.
 name|check
 argument_list|(
 name|data
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 literal|"author"
 argument_list|,
@@ -329,32 +331,24 @@ name|entry
 argument_list|,
 name|result
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
-name|data
-operator|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"editor"
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|data
-operator|!=
-literal|null
-condition|)
-block|{
+lambda|->
 name|AUTHOR_NAME_CHECKER
 operator|.
 name|check
 argument_list|(
 name|data
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 literal|"editor"
 argument_list|,
@@ -362,23 +356,19 @@ name|entry
 argument_list|,
 name|result
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
-name|data
-operator|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"title"
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|data
-operator|!=
-literal|null
-condition|)
+lambda|->
 block|{
 if|if
 condition|(
@@ -400,9 +390,6 @@ operator|.
 name|check
 argument_list|(
 name|data
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 literal|"title"
 argument_list|,
@@ -417,9 +404,6 @@ operator|.
 name|check
 argument_list|(
 name|data
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 literal|"title"
 argument_list|,
@@ -429,30 +413,24 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
-name|data
-operator|=
+argument_list|)
+expr_stmt|;
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"year"
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|data
-operator|!=
-literal|null
-condition|)
-block|{
+lambda|->
 name|YEAR_CHECKER
 operator|.
 name|check
 argument_list|(
 name|data
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 literal|"year"
 argument_list|,
@@ -460,24 +438,19 @@ name|entry
 argument_list|,
 name|result
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
-name|data
-operator|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 literal|"pages"
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|data
-operator|!=
-literal|null
-condition|)
-block|{
+lambda|->
 name|PAGES_CHECKER
 operator|.
 name|check
@@ -493,19 +466,43 @@ name|entry
 argument_list|,
 name|result
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
+name|entry
+operator|.
+name|getFieldOptional
+argument_list|(
+literal|"url"
+argument_list|)
+operator|.
+name|ifPresent
+argument_list|(
+name|data
+lambda|->
+name|URL_CHECKER
+operator|.
+name|check
+argument_list|(
+name|data
+argument_list|,
+literal|"url"
+argument_list|,
+name|entry
+argument_list|,
+name|result
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 name|result
 return|;
 block|}
 DECL|interface|Checker
 specifier|public
-specifier|static
 interface|interface
 name|Checker
 block|{
-DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
 name|void
 name|check
 parameter_list|(
@@ -515,7 +512,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List
@@ -525,6 +522,73 @@ argument_list|>
 name|collector
 parameter_list|)
 function_decl|;
+block|}
+DECL|class|UrlChecker
+specifier|private
+specifier|static
+class|class
+name|UrlChecker
+implements|implements
+name|Checker
+block|{
+annotation|@
+name|Override
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
+specifier|public
+name|void
+name|check
+parameter_list|(
+name|String
+name|value
+parameter_list|,
+name|String
+name|fieldName
+parameter_list|,
+name|BibEntry
+name|entry
+parameter_list|,
+name|List
+argument_list|<
+name|IntegrityMessage
+argument_list|>
+name|collector
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|value
+operator|.
+name|contains
+argument_list|(
+literal|"://"
+argument_list|)
+condition|)
+block|{
+name|collector
+operator|.
+name|add
+argument_list|(
+operator|new
+name|IntegrityMessage
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"should contain a protocol"
+argument_list|)
+operator|+
+literal|": http[s]://, file://, ftp://, ..."
+argument_list|,
+name|entry
+argument_list|,
+name|fieldName
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 DECL|class|AuthorNameChecker
 specifier|private
@@ -536,7 +600,7 @@ name|Checker
 block|{
 annotation|@
 name|Override
-DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
 name|check
@@ -547,7 +611,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List
@@ -657,7 +721,7 @@ name|Checker
 block|{
 annotation|@
 name|Override
-DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
 name|check
@@ -668,7 +732,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List
@@ -827,7 +891,7 @@ argument_list|()
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
 name|check
@@ -838,7 +902,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List
@@ -986,7 +1050,7 @@ decl_stmt|;
 comment|/**          * Checks, if the number String contains a four digit year          */
 annotation|@
 name|Override
-DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
 name|check
@@ -997,7 +1061,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List
@@ -1115,7 +1179,7 @@ decl_stmt|;
 comment|/**          * Checks, if the page numbers String conforms to the BibTex manual          */
 annotation|@
 name|Override
-DECL|method|check (String value, String fieldName, BibtexEntry entry, List<IntegrityMessage> collector)
+DECL|method|check (String value, String fieldName, BibEntry entry, List<IntegrityMessage> collector)
 specifier|public
 name|void
 name|check
@@ -1126,7 +1190,7 @@ parameter_list|,
 name|String
 name|fieldName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|List

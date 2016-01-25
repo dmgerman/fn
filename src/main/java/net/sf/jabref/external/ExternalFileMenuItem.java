@@ -124,7 +124,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -161,7 +161,7 @@ block|{
 DECL|field|entry
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|link
@@ -192,14 +192,14 @@ specifier|private
 name|String
 name|fieldName
 decl_stmt|;
-DECL|method|ExternalFileMenuItem (JabRefFrame frame, BibtexEntry entry, String name, String link, Icon icon, MetaData metaData, ExternalFileType fileType)
+DECL|method|ExternalFileMenuItem (JabRefFrame frame, BibEntry entry, String name, String link, Icon icon, MetaData metaData, ExternalFileType fileType)
 specifier|public
 name|ExternalFileMenuItem
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String
@@ -261,14 +261,14 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ExternalFileMenuItem (JabRefFrame frame, BibtexEntry entry, String name, String link, Icon icon, MetaData metaData, String fieldName)
+DECL|method|ExternalFileMenuItem (JabRefFrame frame, BibEntry entry, String name, String link, Icon icon, MetaData metaData, String fieldName)
 specifier|public
 name|ExternalFileMenuItem
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String
@@ -451,18 +451,24 @@ decl_stmt|;
 name|String
 name|extension
 init|=
+operator|(
 name|pos
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|pos
 operator|<
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
+operator|)
 condition|?
 name|name
 operator|.
@@ -484,9 +490,10 @@ decl_stmt|;
 comment|// Now we know the extension, check if it is one we know about:
 name|type
 operator|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
@@ -554,16 +561,20 @@ comment|// application link. If that link is referred by the error message, we c
 comment|// that the problem is in the open-with-application setting:
 if|if
 condition|(
+operator|(
 name|fileType
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|fileType
 operator|.
 name|getOpenWith
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|fileType

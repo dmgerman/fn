@@ -216,12 +216,12 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for the ISI Web of Science, INSPEC and Medline format.  *  * Documentation about ISI WOS format:  *  *<ul>  *<li>http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *  *<ul>  *<li>Check compatibility with other ISI2Bib tools like:  * http://www-lab.imr.tohoku.ac.jp/~t-nissie/computer/software/isi/ or  * http://www.tug.org/tex-archive/biblio/bibtex/utils/isi2bibtex/isi2bibtex or  * http://web.mit.edu/emilio/www/utils.html</li>  *<li>Deal with capitalization correctly</li>  *</ul>  */
+comment|/**  * Importer for the ISI Web of Science, INSPEC and Medline format.  *<p>  * Documentation about ISI WOS format:  *<p>  *<ul>  *<li>http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *<p>  *<ul>  *<li>Check compatibility with other ISI2Bib tools like:  * http://www-lab.imr.tohoku.ac.jp/~t-nissie/computer/software/isi/ or  * http://www.tug.org/tex-archive/biblio/bibtex/utils/isi2bibtex/isi2bibtex or  * http://web.mit.edu/emilio/www/utils.html</li>  *<li>Deal with capitalization correctly</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -232,6 +232,36 @@ name|IsiImporter
 extends|extends
 name|ImportFormat
 block|{
+DECL|field|SUB_SUP_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|SUB_SUP_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"/(sub|sup)\\s+(.*?)\\s*/"
+argument_list|)
+decl_stmt|;
+comment|// 2006.09.05: Modified pattern to avoid false positives for other files due to an
+comment|// extra | at the end:
+DECL|field|ISI_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|ISI_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"FN ISI Export Format|VR 1.|PY \\d{4}"
+argument_list|)
+decl_stmt|;
 comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
@@ -258,22 +288,6 @@ return|return
 literal|"isi"
 return|;
 block|}
-comment|// 2006.09.05: Modified pattern to avoid false positives for other files due to an
-comment|// extra | at the end:
-DECL|field|isiPattern
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|isiPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"FN ISI Export Format|VR 1.|PY \\d{4}"
-argument_list|)
-decl_stmt|;
 comment|/**      * Check whether the source is in the correct format for this importer.      */
 annotation|@
 name|Override
@@ -337,7 +351,7 @@ if|if
 condition|(
 name|IsiImporter
 operator|.
-name|isiPattern
+name|ISI_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -360,27 +374,13 @@ return|return
 literal|false
 return|;
 block|}
-DECL|field|subsupPattern
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|subsupPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"/(sub|sup)\\s+(.*?)\\s*/"
-argument_list|)
-decl_stmt|;
-DECL|method|processSubSup (HashMap<String, String> map)
+DECL|method|processSubSup (Map<String, String> map)
 specifier|public
 specifier|static
 name|void
 name|processSubSup
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -426,7 +426,7 @@ name|m
 init|=
 name|IsiImporter
 operator|.
-name|subsupPattern
+name|SUB_SUP_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -564,13 +564,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|processCapitalization (HashMap<String, String> map)
+DECL|method|processCapitalization (Map<String, String> map)
 specifier|private
 specifier|static
 name|void
 name|processCapitalization
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -656,14 +656,14 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(
@@ -693,7 +693,7 @@ throw|;
 block|}
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibitems
 init|=
@@ -1284,11 +1284,10 @@ if|if
 condition|(
 operator|(
 name|existingKeywords
-operator|!=
+operator|==
 literal|null
 operator|)
-operator|&&
-operator|!
+operator|||
 name|existingKeywords
 operator|.
 name|contains
@@ -1298,16 +1297,16 @@ argument_list|)
 condition|)
 block|{
 name|existingKeywords
-operator|+=
-literal|", "
-operator|+
+operator|=
 name|value
 expr_stmt|;
 block|}
 else|else
 block|{
 name|existingKeywords
-operator|=
+operator|+=
+literal|", "
+operator|+
 name|value
 expr_stmt|;
 block|}
@@ -1770,6 +1769,9 @@ operator|.
 name|put
 argument_list|(
 name|beg
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|,
 name|value
 argument_list|)
@@ -1808,17 +1810,17 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,
 name|EntryTypes
 operator|.
-name|getBibtexEntryType
+name|getTypeOrDefault
 argument_list|(
 name|Type
 argument_list|)
@@ -1826,7 +1828,7 @@ argument_list|)
 decl_stmt|;
 comment|// id assumes an existing database so don't
 comment|// Remove empty fields:
-name|ArrayList
+name|List
 argument_list|<
 name|Object
 argument_list|>
@@ -1959,7 +1961,7 @@ name|value
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|"-"
+literal|'-'
 argument_list|)
 decl_stmt|;
 return|return
@@ -2104,7 +2106,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Will expand ISI first names.      *      * Fixed bug from:      * http://sourceforge.net/tracker/index.php?func=detail&aid=1542552&group_id=92314&atid=600306      *      */
+comment|/**      * Will expand ISI first names.      *<p>      * Fixed bug from:      * http://sourceforge.net/tracker/index.php?func=detail&aid=1542552&group_id=92314&atid=600306      */
 DECL|method|isiAuthorConvert (String author)
 specifier|public
 specifier|static
@@ -2272,7 +2274,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 if|if
@@ -2293,7 +2295,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 block|}
@@ -2326,7 +2328,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 block|}

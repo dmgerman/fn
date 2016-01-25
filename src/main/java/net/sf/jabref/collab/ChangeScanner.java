@@ -62,6 +62,26 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Vector
 import|;
 end_import
@@ -284,7 +304,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
 name|DuplicateCheck
 import|;
@@ -350,7 +370,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -366,7 +386,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -421,7 +441,7 @@ decl_stmt|;
 DECL|field|inMem
 specifier|private
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|inMem
 decl_stmt|;
 DECL|field|mdInMem
@@ -444,7 +464,7 @@ name|frame
 decl_stmt|;
 DECL|field|inTemp
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|inTemp
 decl_stmt|;
 DECL|field|mdInTemp
@@ -467,6 +487,15 @@ name|ChangeScanner
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+DECL|field|MATCH_THRESHOLD
+specifier|private
+specifier|static
+specifier|final
+name|double
+name|MATCH_THRESHOLD
+init|=
+literal|0.4
 decl_stmt|;
 comment|/**      * We create an ArrayList to hold the changes we find. These will be added in the form      * of UndoEdit objects. We instantiate these so that the changes found in the file on disk      * can be reproduced in memory by calling redo() on them. REDO, not UNDO!      */
 comment|//ArrayList changes = new ArrayList();
@@ -502,7 +531,7 @@ name|File
 name|file
 parameter_list|)
 block|{
-comment|//, BibtexDatabase inMem, MetaData mdInMem) {
+comment|//, BibDatabase inMem, MetaData mdInMem) {
 name|this
 operator|.
 name|panel
@@ -615,7 +644,7 @@ name|getDefaultEncoding
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|onDisk
 init|=
 name|pr
@@ -861,10 +890,14 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Problem running"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1482,7 +1515,6 @@ control|)
 block|{
 if|if
 condition|(
-operator|!
 name|used
 operator|.
 name|contains
@@ -1495,6 +1527,14 @@ name|i
 argument_list|)
 argument_list|)
 condition|)
+block|{
+name|comp
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+block|}
+else|else
 block|{
 name|comp
 operator|=
@@ -1516,14 +1556,6 @@ argument_list|(
 name|i
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|comp
-operator|=
-operator|-
-literal|1
 expr_stmt|;
 block|}
 if|if
@@ -1648,7 +1680,6 @@ control|)
 block|{
 if|if
 condition|(
-operator|!
 name|used
 operator|.
 name|contains
@@ -1661,6 +1692,14 @@ name|i
 argument_list|)
 argument_list|)
 condition|)
+block|{
+name|comp
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+block|}
+else|else
 block|{
 name|comp
 operator|=
@@ -1684,14 +1723,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|comp
-operator|=
-operator|-
-literal|1
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|comp
@@ -1710,11 +1741,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|double
-name|MATCH_THRESHOLD
-init|=
-literal|0.4
-decl_stmt|;
 if|if
 condition|(
 name|bestMatch
@@ -1959,11 +1985,11 @@ block|}
 comment|//System.out.println("Suspected new entries in file: "+(disk.getEntryCount()-used.size()));
 block|}
 block|}
-comment|/**      * Finds the entry in neu best fitting the specified entry in old. If no entries get a score      * above zero, an entry is still returned.      * @param old EntrySorter      * @param neu EntrySorter      * @param index int      * @return BibtexEntry      */
+comment|/**      * Finds the entry in neu best fitting the specified entry in old. If no entries get a score      * above zero, an entry is still returned.      * @param old EntrySorter      * @param neu EntrySorter      * @param index int      * @return BibEntry      */
 DECL|method|bestFit (EntrySorter old, EntrySorter neu, int index)
 specifier|private
 specifier|static
-name|BibtexEntry
+name|BibEntry
 name|bestFit
 parameter_list|(
 name|EntrySorter
@@ -2062,18 +2088,18 @@ name|found
 argument_list|)
 return|;
 block|}
-DECL|method|scanPreamble (BibtexDatabase inMem1, BibtexDatabase onTmp, BibtexDatabase onDisk)
+DECL|method|scanPreamble (BibDatabase inMem1, BibDatabase onTmp, BibDatabase onDisk)
 specifier|private
 name|void
 name|scanPreamble
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|inMem1
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|onTmp
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|onDisk
 parameter_list|)
 block|{
@@ -2104,9 +2130,41 @@ decl_stmt|;
 if|if
 condition|(
 name|tmp
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+if|if
+condition|(
+operator|(
+name|disk
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|!
+name|disk
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|changes
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PreambleChange
+argument_list|(
+name|mem
+argument_list|,
+name|disk
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
 block|{
 if|if
 condition|(
@@ -2132,8 +2190,6 @@ argument_list|(
 operator|new
 name|PreambleChange
 argument_list|(
-name|tmp
-argument_list|,
 name|mem
 argument_list|,
 name|disk
@@ -2142,51 +2198,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-elseif|else
-if|if
-condition|(
-operator|(
-name|disk
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|!
-name|disk
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
-name|changes
-operator|.
-name|add
-argument_list|(
-operator|new
-name|PreambleChange
-argument_list|(
-name|tmp
-argument_list|,
-name|mem
-argument_list|,
-name|disk
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
-block|}
-DECL|method|scanStrings (BibtexDatabase inMem1, BibtexDatabase onTmp, BibtexDatabase onDisk)
+DECL|method|scanStrings (BibDatabase inMem1, BibDatabase onTmp, BibDatabase onDisk)
 specifier|private
 name|void
 name|scanStrings
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|inMem1
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|onTmp
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|onDisk
 parameter_list|)
 block|{
@@ -2363,7 +2387,10 @@ argument_list|)
 condition|)
 block|{
 comment|// But they have nonmatching contents, so we've found a change.
+name|Optional
+argument_list|<
 name|BibtexString
+argument_list|>
 name|mem
 init|=
 name|findString
@@ -2381,8 +2408,9 @@ decl_stmt|;
 if|if
 condition|(
 name|mem
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|changes
@@ -2393,6 +2421,9 @@ operator|new
 name|StringChange
 argument_list|(
 name|mem
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|tmp
 argument_list|,
@@ -2402,6 +2433,9 @@ name|getName
 argument_list|()
 argument_list|,
 name|mem
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getContent
 argument_list|()
@@ -2583,7 +2617,7 @@ argument_list|()
 control|)
 block|{
 name|BibtexString
-name|bsMem_cand
+name|bsMemCandidate
 init|=
 name|inMem1
 operator|.
@@ -2594,7 +2628,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|bsMem_cand
+name|bsMemCandidate
 operator|.
 name|getContent
 argument_list|()
@@ -2625,11 +2659,18 @@ argument_list|)
 expr_stmt|;
 name|bsMem
 operator|=
-name|bsMem_cand
+name|bsMemCandidate
 expr_stmt|;
 break|break;
 block|}
 block|}
+if|if
+condition|(
+name|bsMem
+operator|!=
+literal|null
+condition|)
+block|{
 name|changes
 operator|.
 name|add
@@ -2680,6 +2721,7 @@ block|}
 block|}
 block|}
 block|}
+block|}
 if|if
 condition|(
 operator|!
@@ -2708,9 +2750,7 @@ argument_list|(
 name|nmId
 argument_list|)
 decl_stmt|;
-name|BibtexString
-name|mem
-init|=
+comment|// The removed string is not removed from the mem version.
 name|findString
 argument_list|(
 name|inMem1
@@ -2722,15 +2762,11 @@ argument_list|()
 argument_list|,
 name|usedInMem
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|mem
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// The removed string is not removed from the mem version.
+operator|.
+name|ifPresent
+argument_list|(
+name|x
+lambda|->
 name|changes
 operator|.
 name|add
@@ -2742,11 +2778,11 @@ name|tmp
 argument_list|,
 name|tmp
 argument_list|,
-name|mem
+name|x
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|// Finally, see if there are remaining strings in the disk database. They
@@ -2805,19 +2841,22 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|findString (BibtexDatabase base, String name, HashSet<Object> used)
+DECL|method|findString (BibDatabase base, String name, Set<Object> used)
 specifier|private
 specifier|static
+name|Optional
+argument_list|<
 name|BibtexString
+argument_list|>
 name|findString
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|base
 parameter_list|,
 name|String
 name|name
 parameter_list|,
-name|HashSet
+name|Set
 argument_list|<
 name|Object
 argument_list|>
@@ -2836,7 +2875,10 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 for|for
@@ -2889,12 +2931,20 @@ name|key
 argument_list|)
 expr_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|bs
+argument_list|)
 return|;
 block|}
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 comment|/**      * This method only detects whether a change took place or not. It does not determine the type of change. This would      * be possible, but difficult to do properly, so I rather only report the change.      */

@@ -233,9 +233,6 @@ block|{
 name|parse
 argument_list|()
 expr_stmt|;
-name|StringInt
-name|si
-decl_stmt|;
 for|for
 control|(
 name|StringInt
@@ -244,14 +241,10 @@ range|:
 name|parsedEntries
 control|)
 block|{
-name|si
-operator|=
-name|parsedEntry
-expr_stmt|;
 if|if
 condition|(
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -261,7 +254,7 @@ name|IS_SIMPLE_FIELD
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -271,7 +264,7 @@ name|IS_FIELD_START
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -281,7 +274,7 @@ name|IS_FIELD_END
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -291,7 +284,7 @@ name|IS_GROUP_START
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -301,11 +294,11 @@ name|IS_GROUP_END
 operator|)
 condition|)
 block|{
-name|si
+name|parsedEntry
 operator|.
 name|s
 operator|=
-name|si
+name|parsedEntry
 operator|.
 name|s
 operator|.
@@ -357,13 +350,14 @@ operator|=
 name|newGroup
 expr_stmt|;
 block|}
-DECL|method|getBracketedField (int _field)
+DECL|method|getBracketedField (final int field)
 specifier|private
 name|String
 name|getBracketedField
 parameter_list|(
+specifier|final
 name|int
-name|_field
+name|field
 parameter_list|)
 throws|throws
 name|IOException
@@ -423,7 +417,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|_field
+name|field
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -461,7 +455,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//myStrings.add(buffer.toString());
 name|parsedEntries
 operator|.
 name|add
@@ -474,11 +467,10 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|_field
+name|field
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("\nbracketed: " + buffer.toString());
 return|return
 literal|null
 return|;
@@ -513,13 +505,12 @@ block|}
 if|if
 condition|(
 name|start
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 name|c
 operator|!=
 literal|'}'
+operator|)
 condition|)
 block|{
 name|buffer
@@ -535,20 +526,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
 return|return
 literal|null
 return|;
 block|}
 comment|/**      *      */
-DECL|method|getBracketedOptionField (int _field)
+DECL|method|getBracketedOptionField ()
 specifier|private
 name|String
 name|getBracketedOptionField
-parameter_list|(
-name|int
-name|_field
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 block|{
@@ -618,9 +605,19 @@ comment|//myStrings.add(buffer.toString());
 if|if
 condition|(
 name|option
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|tmp
+operator|=
+name|buffer
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+block|}
+else|else
 block|{
 name|tmp
 operator|=
@@ -632,16 +629,6 @@ operator|+
 literal|'\n'
 operator|+
 name|option
-expr_stmt|;
-block|}
-else|else
-block|{
-name|tmp
-operator|=
-name|buffer
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 block|}
 name|parsedEntries
@@ -789,9 +776,16 @@ decl_stmt|;
 if|if
 condition|(
 name|option
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|tmp
+operator|=
+name|parameter
+expr_stmt|;
+block|}
+else|else
 block|{
 name|tmp
 operator|=
@@ -800,13 +794,6 @@ operator|+
 literal|'\n'
 operator|+
 name|option
-expr_stmt|;
-block|}
-else|else
-block|{
-name|tmp
-operator|=
-name|parameter
 expr_stmt|;
 block|}
 name|parsedEntries
@@ -973,7 +960,7 @@ name|_eof
 operator|=
 literal|true
 expr_stmt|;
-comment|/*                  * CO 2006-11-11: Added check for null, otherwise a Layout that                  * finishs with a curly brace throws a NPE                  */
+comment|/*                  * CO 2006-11-11: Added check for null, otherwise a Layout that                  * finishes with a curly brace throws a NPE                  */
 if|if
 condition|(
 name|buffer
@@ -1205,15 +1192,15 @@ comment|//System.out.println("\n#" + (char) c);
 name|name
 operator|=
 name|buffer
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|""
+else|:
 name|buffer
 operator|.
 name|toString
 argument_list|()
-else|:
-literal|""
 expr_stmt|;
 try|try
 block|{
@@ -1384,11 +1371,7 @@ block|{
 comment|// get format parameter
 comment|// get field name
 name|getBracketedOptionField
-argument_list|(
-name|LayoutHelper
-operator|.
-name|IS_OPTION_FIELD
-argument_list|)
+argument_list|()
 expr_stmt|;
 return|return;
 block|}
@@ -1630,16 +1613,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|int
-name|c
-init|=
+return|return
 name|_in
 operator|.
 name|read
 argument_list|()
-decl_stmt|;
-return|return
-name|c
 return|;
 block|}
 DECL|method|skipWhitespace ()

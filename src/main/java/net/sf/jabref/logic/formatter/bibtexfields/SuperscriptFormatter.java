@@ -153,18 +153,13 @@ name|value
 argument_list|)
 decl_stmt|;
 comment|// replace globally
-name|String
-name|newValue
-init|=
+return|return
 name|matcher
 operator|.
 name|replaceAll
 argument_list|(
 name|replace
 argument_list|)
-decl_stmt|;
-return|return
-name|newValue
 return|;
 block|}
 block|}

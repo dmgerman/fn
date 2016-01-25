@@ -127,9 +127,11 @@ if|if
 condition|(
 name|escaped
 operator|&&
+operator|(
 name|c
 operator|==
 literal|'\\'
+operator|)
 condition|)
 block|{
 name|sb
@@ -174,13 +176,17 @@ operator|!
 name|incommand
 operator|&&
 operator|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 operator|)
 condition|)
 block|{
@@ -217,19 +223,8 @@ literal|false
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|incommand
 condition|)
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-name|c
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|currentCommand
 operator|.
@@ -240,12 +235,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|currentCommand
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|1
+operator|)
 operator|&&
 name|Globals
 operator|.
@@ -261,7 +258,6 @@ argument_list|)
 condition|)
 block|{
 comment|// This indicates that we are in a command of the type \^o or \~{n}
-comment|/*            if (i>= field.length()-1)                                       break testCharCom;                                      String command = currentCommand.toString();                                     i++;                                     c = field.charAt(i);                                     //System.out.println("next: "+(char)c);                                     String combody;                                     if (c == '{') {                                       IntAndString part = getPart(field, i);                                       i += part.i;                                       combody = part.s;                                     }                                     else {                                       combody = field.substring(i,i+1);                                       //System.out.println("... "+combody);                                     }                                     Object result = Globals.HTMLCHARS.get(command+combody);                                     if (result != null)                                       sb.append((String)result);                         */
 name|incommand
 operator|=
 literal|false
@@ -271,6 +267,16 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 elseif|else
@@ -290,22 +296,21 @@ literal|false
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|incommand
 condition|)
 block|{
-name|sb
+comment|// We are in a command, and should not keep the letter.
+name|currentCommand
 operator|.
 name|append
 argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|// Else we are in a command, and should not keep the letter.
 block|}
 else|else
 block|{
-name|currentCommand
+name|sb
 operator|.
 name|append
 argument_list|(
@@ -322,6 +327,7 @@ condition|(
 operator|!
 name|incommand
 operator|||
+operator|(
 operator|!
 name|Character
 operator|.
@@ -330,9 +336,12 @@ argument_list|(
 name|c
 argument_list|)
 operator|&&
+operator|(
 name|c
 operator|!=
 literal|'{'
+operator|)
+operator|)
 condition|)
 block|{
 name|sb

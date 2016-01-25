@@ -64,6 +64,20 @@ name|jabref
 operator|.
 name|external
 operator|.
+name|ExternalFileTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|external
+operator|.
 name|UnknownExternalFileType
 import|;
 end_import
@@ -142,6 +156,22 @@ name|logic
 operator|.
 name|util
 operator|.
+name|DOI
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
 name|OS
 import|;
 end_import
@@ -194,7 +224,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -299,6 +329,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -456,7 +496,6 @@ name|fieldName
 operator|=
 literal|"pdf"
 expr_stmt|;
-comment|// @formatter:off
 block|}
 elseif|else
 if|if
@@ -500,7 +539,6 @@ argument_list|)
 operator|)
 condition|)
 block|{
-comment|// @formatter:on
 name|fieldName
 operator|=
 literal|"ps"
@@ -519,12 +557,43 @@ name|fieldName
 argument_list|)
 condition|)
 block|{
+name|Optional
+argument_list|<
+name|DOI
+argument_list|>
+name|doiUrl
+init|=
+name|DOI
+operator|.
+name|build
+argument_list|(
+name|link
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|doiUrl
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|link
+operator|=
+name|doiUrl
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getURLAsASCIIString
+argument_list|()
+expr_stmt|;
+block|}
+comment|// should be opened in browser
 name|fieldName
 operator|=
 literal|"url"
 expr_stmt|;
-comment|// sanitizing is done below at the treatment of "URL"
-comment|// in sanitizeUrl a doi-link is correctly treated
 block|}
 elseif|else
 if|if
@@ -540,15 +609,6 @@ block|{
 name|fieldName
 operator|=
 literal|"url"
-expr_stmt|;
-name|link
-operator|=
-name|URLUtil
-operator|.
-name|sanitizeUrl
-argument_list|(
-name|link
-argument_list|)
 expr_stmt|;
 comment|// Check to see if link field already contains a well formated URL
 if|if
@@ -646,9 +706,10 @@ block|{
 name|ExternalFileType
 name|type
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
@@ -673,7 +734,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"psviewer"
+name|JabRefPreferences
+operator|.
+name|PSVIEWER
 argument_list|)
 decl_stmt|;
 name|String
@@ -712,20 +775,19 @@ block|{
 name|openFileOnWindows
 argument_list|(
 name|link
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
-comment|/*                      * cmdArray[0] = Globals.prefs.get("psviewer"); cmdArray[1] =                      * link; Process child = Runtime.getRuntime().exec(                      * cmdArray[0] + " " + cmdArray[1]);                      */
+comment|/*                      * cmdArray[0] = Globals.prefs.get(JabRefPreferences.PSVIEWER); cmdArray[1] =                      * link; Process child = Runtime.getRuntime().exec(                      * cmdArray[0] + " " + cmdArray[1]);                      */
 block|}
 else|else
 block|{
 name|ExternalFileType
 name|type
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
@@ -802,7 +864,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"psviewer"
+name|JabRefPreferences
+operator|.
+name|PSVIEWER
 argument_list|)
 operator|+
 literal|" "
@@ -835,9 +899,10 @@ block|{
 name|ExternalFileType
 name|type
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
@@ -862,7 +927,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"psviewer"
+name|JabRefPreferences
+operator|.
+name|PSVIEWER
 argument_list|)
 decl_stmt|;
 name|String
@@ -901,8 +968,6 @@ block|{
 name|openFileOnWindows
 argument_list|(
 name|link
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 comment|/*                      * String[] spl = link.split("\\\\"); StringBuffer sb = new                      * StringBuffer(); for (int i = 0; i< spl.length; i++) { if                      * (i> 0) sb.append("\\"); if (spl[i].indexOf(" ")>= 0)                      * spl[i] = "\"" + spl[i] + "\""; sb.append(spl[i]); }                      * //pr(sb.toString()); link = sb.toString();                      *                      * String cmd = "cmd.exe /c start " + link;                      *                      * Process child = Runtime.getRuntime().exec(cmd);                      */
@@ -912,9 +977,10 @@ block|{
 name|ExternalFileType
 name|type
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
@@ -939,7 +1005,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"psviewer"
+name|JabRefPreferences
+operator|.
+name|PSVIEWER
 argument_list|)
 decl_stmt|;
 name|String
@@ -1005,7 +1073,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"pdfviewer"
+name|JabRefPreferences
+operator|.
+name|PDFVIEWER
 argument_list|)
 operator|+
 literal|" #"
@@ -1040,17 +1110,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Opens a file on a Windows system, using its default viewer.      *      * @param link      *            The filename.      * @param localFile      *            true if it is a local file, not an URL.      * @throws IOException      */
-DECL|method|openFileOnWindows (String link, boolean localFile)
+comment|/**      * Opens a file on a Windows system, using its default viewer.      *      * @param link      *            The filename.      * @throws IOException      */
+DECL|method|openFileOnWindows (String link)
 specifier|static
 name|void
 name|openFileOnWindows
 parameter_list|(
 name|String
 name|link
-parameter_list|,
-name|boolean
-name|localFile
 parameter_list|)
 throws|throws
 name|IOException
@@ -1300,7 +1367,6 @@ name|OS_X
 condition|)
 block|{
 comment|// Use "-a<application>" if the app is specified, and just "open<filename>" otherwise:
-comment|// @formatter:off
 name|String
 index|[]
 name|cmd
@@ -1348,7 +1414,6 @@ block|,
 name|filePath
 block|}
 decl_stmt|;
-comment|// @formatter:on
 name|Runtime
 operator|.
 name|getRuntime
@@ -1406,8 +1471,6 @@ block|{
 name|openFileOnWindows
 argument_list|(
 name|filePath
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -1609,18 +1672,6 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|MalformedURLException
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
 name|IOException
 name|ex
 parameter_list|)
@@ -1684,7 +1735,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|openExternalFileUnknown (JabRefFrame frame, BibtexEntry entry, MetaData metaData, String link, UnknownExternalFileType fileType)
+DECL|method|openExternalFileUnknown (JabRefFrame frame, BibEntry entry, MetaData metaData, String link, UnknownExternalFileType fileType)
 specifier|public
 specifier|static
 name|boolean
@@ -1693,7 +1744,7 @@ parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|MetaData
@@ -1718,7 +1769,6 @@ argument_list|(
 literal|"Unable to open file."
 argument_list|)
 decl_stmt|;
-comment|// @formatter:off
 name|String
 index|[]
 name|options
@@ -1754,7 +1804,6 @@ literal|"Cancel"
 argument_list|)
 block|}
 decl_stmt|;
-comment|// @formatter:on
 name|String
 name|defOption
 init|=
@@ -1908,9 +1957,10 @@ name|ExternalFileType
 index|[]
 name|oldTypes
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeSelection
 argument_list|()
@@ -1938,9 +1988,10 @@ argument_list|(
 name|fileTypes
 argument_list|)
 expr_stmt|;
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|setExternalFileTypes
 argument_list|(
@@ -2042,8 +2093,7 @@ if|if
 condition|(
 name|iEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 operator|.
 name|equals
 argument_list|(
@@ -2179,13 +2229,11 @@ name|metaData
 argument_list|,
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 argument_list|)
 return|;
 block|}
@@ -2442,21 +2490,13 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|url
-operator|=
-name|URLUtil
-operator|.
-name|sanitizeUrl
-argument_list|(
-name|url
-argument_list|)
-expr_stmt|;
 name|ExternalFileType
 name|fileType
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(

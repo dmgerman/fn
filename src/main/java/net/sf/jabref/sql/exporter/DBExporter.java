@@ -170,7 +170,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -186,7 +186,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -397,7 +397,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author igorsteinmacher.  *  *         Jan 20th Abstract Class to provide main features to export entries to a DB. To insert a new DB it is  *         necessary to extend this class and add the DB name the enum available at  *         net.sf.jabref.sql.DBImporterAndExporterFactory (and to the GUI). This class and its subclasses create  *         database, entries and related stuff within a DB.  *  */
+comment|/**  * @author igorsteinmacher.  *<p>  *         Jan 20th Abstract Class to provide main features to export entries to a DB. To insert a new DB it is  *         necessary to extend this class and add the DB name the enum available at  *         net.sf.jabref.sql.DBImporterAndExporterFactory (and to the GUI). This class and its subclasses create  *         database, entries and related stuff within a DB.  */
 end_comment
 
 begin_class
@@ -421,13 +421,14 @@ name|getFieldStr
 argument_list|()
 decl_stmt|;
 DECL|field|dbStrings
+specifier|protected
 name|DBStrings
 name|dbStrings
 decl_stmt|;
 DECL|field|dbNames
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -454,14 +455,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Method for the exportDatabase methods.      *      * @param database The DBTYPE of the database      * @param database The BibtexDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet The set of IDs of the entries to export.      * @param out The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, Object out, String dbName)
+comment|/**      * Method for the exportDatabase methods.      *      * @param database The DBTYPE of the database      * @param database The BibDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet   The set of IDs of the entries to export.      * @param out      The output (PrintStream or Connection) object to which the DML should be written.      */
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, Set<String> keySet, Object out, String dbName)
 specifier|private
 name|void
 name|performExport
 parameter_list|(
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 specifier|final
@@ -485,7 +486,7 @@ name|Exception
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -510,6 +511,7 @@ operator|.
 name|getGroups
 argument_list|()
 decl_stmt|;
+specifier|final
 name|int
 name|database_id
 init|=
@@ -584,18 +586,19 @@ name|database_id
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Generates the DML required to populate the entries table with jabref data and writes it to the output      * PrintStream.      *      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *            using getDatabaseIDByPath(metaData, out)      * @param entries The BibtexEntries to export      * @param out The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|populateEntriesTable (int database_id, List<BibtexEntry> entries, Object out)
+comment|/**      * Generates the DML required to populate the entries table with jabref data and writes it to the output      * PrintStream.      *      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *                    using getDatabaseIDByPath(metaData, out)      * @param entries     The BibtexEntries to export      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      */
+DECL|method|populateEntriesTable (final int database_id, List<BibEntry> entries, Object out)
 specifier|private
 name|void
 name|populateEntriesTable
 parameter_list|(
+specifier|final
 name|int
 name|database_id
 parameter_list|,
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 parameter_list|,
@@ -605,11 +608,14 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
-name|String
+name|StringBuilder
 name|query
-decl_stmt|;
-name|String
-name|val
+init|=
+operator|new
+name|StringBuilder
+argument_list|(
+literal|75
+argument_list|)
 decl_stmt|;
 name|String
 name|insert
@@ -622,27 +628,39 @@ literal|", database_id) VALUES ("
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
 control|)
 block|{
 name|query
-operator|=
+operator|.
+name|append
+argument_list|(
 name|insert
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|'\''
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|entry
 operator|.
 name|getId
 argument_list|()
-operator|+
-literal|'\''
-operator|+
-literal|", (SELECT entry_types_id FROM entry_types WHERE label='"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"', (SELECT entry_types_id FROM entry_types WHERE label='"
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|entry
 operator|.
 name|getType
@@ -653,15 +671,25 @@ argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"'), '"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|entry
 operator|.
 name|getCiteKey
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|'\''
+argument_list|)
 expr_stmt|;
 for|for
 control|(
@@ -685,13 +713,33 @@ operator|++
 control|)
 block|{
 name|query
-operator|=
-name|query
-operator|+
+operator|.
+name|append
+argument_list|(
 literal|", "
+argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|entry
+operator|.
+name|hasField
+argument_list|(
+name|SQLUtil
+operator|.
+name|getAllFields
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+argument_list|)
+condition|)
+block|{
+name|String
 name|val
-operator|=
+init|=
 name|entry
 operator|.
 name|getField
@@ -706,14 +754,7 @@ argument_list|(
 name|i
 argument_list|)
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|val
-operator|!=
-literal|null
-condition|)
-block|{
+decl_stmt|;
 comment|/**                      * The condition below is there since PostgreSQL automatically escapes the backslashes, so the entry                      * would double the number of slashes after storing/retrieving.                      **/
 if|if
 condition|(
@@ -774,35 +815,50 @@ argument_list|)
 expr_stmt|;
 block|}
 name|query
-operator|=
-name|query
-operator|+
+operator|.
+name|append
+argument_list|(
 literal|'\''
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|val
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|'\''
+argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
 name|query
-operator|=
-name|query
-operator|+
+operator|.
+name|append
+argument_list|(
 literal|"NULL"
+argument_list|)
 expr_stmt|;
 block|}
 block|}
 name|query
-operator|=
-name|query
-operator|+
+operator|.
+name|append
+argument_list|(
 literal|", '"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|database_id
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"');"
+argument_list|)
 expr_stmt|;
 name|SQLUtil
 operator|.
@@ -811,12 +867,15 @@ argument_list|(
 name|out
 argument_list|,
 name|query
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Recursive method to include a tree of groups.      *      * @param cursor The current GroupTreeNode in the GroupsTree      * @param parentID The integer ID associated with the cursors's parent node      * @param currentID The integer value to associate with the cursor      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of jabref database to which the group is part of      */
-DECL|method|populateEntryGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, int database_id)
+comment|/**      * Recursive method to include a tree of groups.      *      * @param cursor      The current GroupTreeNode in the GroupsTree      * @param parentID    The integer ID associated with the cursors's parent node      * @param currentID   The integer value to associate with the cursor      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of jabref database to which the group is part of      */
+DECL|method|populateEntryGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, final int database_id)
 specifier|private
 name|int
 name|populateEntryGroupsTable
@@ -833,6 +892,7 @@ parameter_list|,
 name|Object
 name|out
 parameter_list|,
+specifier|final
 name|int
 name|database_id
 parameter_list|)
@@ -863,7 +923,7 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|be
 range|:
 name|grp
@@ -926,7 +986,9 @@ expr_stmt|;
 block|}
 block|}
 comment|// recurse on child nodes (depth-first traversal)
-name|Object
+try|try
+init|(
+name|AutoCloseable
 name|response
 init|=
 name|SQLUtil
@@ -955,7 +1017,8 @@ name|parentID
 operator|+
 literal|"';"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 comment|// setting values to ID and myID to be used in case of textual SQL
 comment|// export
 operator|++
@@ -1057,6 +1120,24 @@ name|database_id
 argument_list|)
 expr_stmt|;
 block|}
+comment|//Unfortunatley, AutoCloseable throws only Exception
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot close resource"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|currentID
 return|;
@@ -1073,14 +1154,7 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
-name|StringBuilder
-name|querySB
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1091,7 +1165,7 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1125,7 +1199,7 @@ name|out
 argument_list|,
 literal|"SELECT label FROM entry_types"
 argument_list|)
-init|;                     ResultSet rs = sm.getResultSet()
+init|;                  ResultSet rs = sm.getResultSet()
 block|)
 block|{
 while|while
@@ -1162,6 +1236,13 @@ name|getAllValues
 argument_list|()
 control|)
 block|{
+name|StringBuilder
+name|querySB
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
 name|fieldRequirement
 operator|.
 name|clear
@@ -1226,9 +1307,9 @@ name|String
 argument_list|>
 name|utiFields
 init|=
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 literal|"search"
 argument_list|)
@@ -1255,7 +1336,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|existentTypes
 operator|.
 name|contains
@@ -1269,64 +1349,6 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 condition|)
-block|{
-name|querySB
-operator|.
-name|append
-argument_list|(
-literal|"INSERT INTO entry_types (label, "
-operator|+
-name|fieldStr
-operator|+
-literal|") VALUES ("
-argument_list|)
-expr_stmt|;
-name|querySB
-operator|.
-name|append
-argument_list|(
-literal|'\''
-operator|+
-name|val
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
-operator|+
-literal|'\''
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|String
-name|aFieldRequirement
-range|:
-name|fieldRequirement
-control|)
-block|{
-name|querySB
-operator|.
-name|append
-argument_list|(
-literal|", '"
-operator|+
-name|aFieldRequirement
-operator|+
-literal|'\''
-argument_list|)
-expr_stmt|;
-block|}
-name|querySB
-operator|.
-name|append
-argument_list|(
-literal|");"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|String
 index|[]
@@ -1372,16 +1394,25 @@ name|update
 index|[
 name|i
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"='"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|fieldRequirement
 operator|.
 name|get
 argument_list|(
 name|i
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"',"
 argument_list|)
 expr_stmt|;
@@ -1408,7 +1439,10 @@ operator|.
 name|append
 argument_list|(
 literal|" WHERE label='"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|val
 operator|.
 name|getName
@@ -1416,8 +1450,80 @@ argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"';"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|querySB
+operator|.
+name|append
+argument_list|(
+literal|"INSERT INTO entry_types (label, "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|fieldStr
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|") VALUES ('"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|val
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|'\''
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|String
+name|aFieldRequirement
+range|:
+name|fieldRequirement
+control|)
+block|{
+name|querySB
+operator|.
+name|append
+argument_list|(
+literal|", '"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|aFieldRequirement
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'\''
+argument_list|)
+expr_stmt|;
+block|}
+name|querySB
+operator|.
+name|append
+argument_list|(
+literal|");"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1438,11 +1544,11 @@ block|}
 end_class
 
 begin_comment
-comment|/**      * Recursive worker method for the populateGroupsTable methods.      *      * @param cursor The current GroupTreeNode in the GroupsTree      * @param parentID The integer ID associated with the cursors's parent node      * @param currentID The integer value to associate with the cursor      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of jabref database to which the groups/entries are part of      */
+comment|/**      * Recursive worker method for the populateGroupsTable methods.      *      * @param cursor      The current GroupTreeNode in the GroupsTree      * @param parentID    The integer ID associated with the cursors's parent node      * @param currentID   The integer value to associate with the cursor      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of jabref database to which the groups/entries are part of      */
 end_comment
 
 begin_function
-DECL|method|populateGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, int database_id)
+DECL|method|populateGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, final int database_id)
 specifier|private
 name|int
 name|populateGroupsTable
@@ -1459,6 +1565,7 @@ parameter_list|,
 name|Object
 name|out
 parameter_list|,
+specifier|final
 name|int
 name|database_id
 parameter_list|)
@@ -1489,7 +1596,7 @@ init|=
 literal|null
 decl_stmt|;
 name|String
-name|reg_exp
+name|regExp
 init|=
 literal|null
 decl_stmt|;
@@ -1548,7 +1655,7 @@ literal|"1"
 else|:
 literal|"0"
 expr_stmt|;
-name|reg_exp
+name|regExp
 operator|=
 operator|(
 operator|(
@@ -1601,7 +1708,7 @@ literal|"1"
 else|:
 literal|"0"
 expr_stmt|;
-name|reg_exp
+name|regExp
 operator|=
 operator|(
 operator|(
@@ -1742,13 +1849,13 @@ operator|+
 literal|", "
 operator|+
 operator|(
-name|reg_exp
+name|regExp
 operator|!=
 literal|null
 condition|?
 literal|'\''
 operator|+
-name|reg_exp
+name|regExp
 operator|+
 literal|'\''
 else|:
@@ -1770,7 +1877,9 @@ literal|"');"
 argument_list|)
 expr_stmt|;
 comment|// recurse on child nodes (depth-first traversal)
-name|Object
+try|try
+init|(
+name|AutoCloseable
 name|response
 init|=
 name|SQLUtil
@@ -1799,7 +1908,8 @@ name|parentID
 operator|+
 literal|"';"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 comment|// setting values to ID and myID to be used in case of textual SQL
 comment|// export
 name|int
@@ -1901,6 +2011,24 @@ name|database_id
 argument_list|)
 expr_stmt|;
 block|}
+comment|//Unfortunatley, AutoCloseable throws only Exception
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Cannot close resource"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|currentID
 return|;
@@ -1908,7 +2036,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Generates the DML required to populate the group_types table with JabRef data.      *      * @param out The output (PrintSream or Connection) object to which the DML should be written.      *      * @throws SQLException      */
+comment|/**      * Generates the DML required to populate the group_types table with JabRef data.      *      * @param out The output (PrintSream or Connection) object to which the DML should be written.      * @throws SQLException      */
 end_comment
 
 begin_function
@@ -2038,22 +2166,23 @@ end_if
 
 begin_comment
 unit|}
-comment|/**      * Generates the SQL required to populate the strings table with jabref data.      *      * @param database BibtexDatabase object used from where the strings will be exported      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *            using getDatabaseIDByPath(metaData, out)      * @throws SQLException      */
+comment|/**      * Generates the SQL required to populate the strings table with jabref data.      *      * @param database    BibDatabase object used from where the strings will be exported      * @param out         The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id ID of Jabref database related to the entries to be exported This information can be gathered      *                    using getDatabaseIDByPath(metaData, out)      * @throws SQLException      */
 end_comment
 
 begin_function
-DECL|method|populateStringTable (BibtexDatabase database, Object out, int database_id)
+DECL|method|populateStringTable (BibDatabase database, Object out, final int database_id)
 unit|private
 specifier|static
 name|void
 name|populateStringTable
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|Object
 name|out
 parameter_list|,
+specifier|final
 name|int
 name|database_id
 parameter_list|)
@@ -2238,17 +2367,17 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified output file.      *      * @param database The BibtexDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet The set of IDs of the entries to export.      * @param file The name of the file to which the DML should be written      * @param encoding The encoding to be used      */
+comment|/**      * Accepts the BibDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified output file.      *      * @param database The BibDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet   The set of IDs of the entries to export.      * @param file     The name of the file to which the DML should be written      * @param encoding The encoding to be used      */
 end_comment
 
 begin_function
-DECL|method|exportDatabaseAsFile (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, String file, Charset encoding)
+DECL|method|exportDatabaseAsFile (final BibDatabase database, final MetaData metaData, Set<String> keySet, String file, Charset encoding)
 specifier|public
 name|void
 name|exportDatabaseAsFile
 parameter_list|(
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 specifier|final
@@ -2286,10 +2415,7 @@ name|outfile
 operator|.
 name|exists
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 name|outfile
 operator|.
@@ -2305,7 +2431,6 @@ literal|"Cannot delete/overwrite file."
 argument_list|)
 expr_stmt|;
 return|return;
-block|}
 block|}
 try|try
 init|(
@@ -2350,17 +2475,17 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified SQL database.      *      * @param database The BibtexDatabase to export      * @param metaData The MetaData object containing the groups information      * @param keySet The set of IDs of the entries to export.      * @param databaseStrings The necessary database connection information      */
+comment|/**      * Accepts the BibDatabase and MetaData, generates the DML required to create and populate SQL database tables,      * and writes this DML to the specified SQL database.      *      * @param database        The BibDatabase to export      * @param metaData        The MetaData object containing the groups information      * @param keySet          The set of IDs of the entries to export.      * @param databaseStrings The necessary database connection information      */
 end_comment
 
 begin_function
-DECL|method|exportDatabaseToDBMS (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, DBStrings databaseStrings, JabRefFrame frame)
+DECL|method|exportDatabaseToDBMS (final BibDatabase database, final MetaData metaData, Set<String> keySet, DBStrings databaseStrings, JabRefFrame frame)
 specifier|public
 name|void
 name|exportDatabaseToDBMS
 parameter_list|(
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 specifier|final
@@ -2563,13 +2688,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|conn
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 operator|!
 name|conn
 operator|.
@@ -2582,7 +2706,6 @@ operator|.
 name|rollback
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 throw|throw
 name|ex
@@ -2703,9 +2826,35 @@ expr_stmt|;
 if|if
 condition|(
 name|dbName
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|getDBName
+argument_list|(
+name|matrix
+argument_list|,
+name|databaseStrings
+argument_list|,
+name|frame
+argument_list|,
+operator|new
+name|DBImportExportDialog
+argument_list|(
+name|frame
+argument_list|,
+name|matrix
+argument_list|,
+name|DBImportExportDialog
+operator|.
+name|DialogType
+operator|.
+name|EXPORTER
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 while|while
 condition|(
@@ -2739,32 +2888,6 @@ name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-name|getDBName
-argument_list|(
-name|matrix
-argument_list|,
-name|databaseStrings
-argument_list|,
-name|frame
-argument_list|,
-operator|new
-name|DBImportExportDialog
-argument_list|(
-name|frame
-argument_list|,
-name|matrix
-argument_list|,
-name|DBImportExportDialog
-operator|.
-name|DialogType
-operator|.
-name|EXPORTER
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}
@@ -2825,8 +2948,8 @@ argument_list|(
 name|databaseStrings
 argument_list|)
 init|;
-name|ResultSet
-name|rs
+name|Statement
+name|statement
 operator|=
 name|SQLUtil
 operator|.
@@ -2838,6 +2961,14 @@ literal|"jabref_database"
 argument_list|)
 init|)
 block|{
+name|ResultSet
+name|rs
+init|=
+name|statement
+operator|.
+name|getResultSet
+argument_list|()
+decl_stmt|;
 name|Vector
 argument_list|<
 name|String
@@ -2944,12 +3075,12 @@ block|}
 end_function
 
 begin_function
-DECL|method|isValidDBName (ArrayList<String> databaseNames, String desiredName)
+DECL|method|isValidDBName (List<String> databaseNames, String desiredName)
 specifier|private
 name|boolean
 name|isValidDBName
 parameter_list|(
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>

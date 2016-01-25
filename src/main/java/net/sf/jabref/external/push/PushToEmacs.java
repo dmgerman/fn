@@ -132,7 +132,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -148,7 +148,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -454,15 +454,15 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keys, MetaData metaData)
+DECL|method|pushEntries (BibDatabase database, BibEntry[] entries, String keys, MetaData metaData)
 specifier|public
 name|void
 name|pushEntries
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
@@ -656,7 +656,8 @@ name|concat
 argument_list|(
 literal|"\\\"\\"
 operator|+
-name|citeCommand
+name|getCiteCommand
+argument_list|()
 operator|.
 name|replaceAll
 argument_list|(
@@ -687,7 +688,8 @@ name|concat
 argument_list|(
 literal|"\""
 operator|+
-name|citeCommand
+name|getCiteCommand
+argument_list|()
 operator|.
 name|replaceAll
 argument_list|(
@@ -895,7 +897,6 @@ condition|(
 name|couldNotConnect
 condition|)
 block|{
-comment|// @formatter:off
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -969,7 +970,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 else|else
 block|{

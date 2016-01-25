@@ -52,7 +52,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|List
 import|;
 end_import
 
@@ -150,7 +150,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
 name|DuplicateCheck
 import|;
@@ -184,7 +184,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -212,22 +212,22 @@ name|panel
 decl_stmt|;
 DECL|field|bes
 specifier|private
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 decl_stmt|;
 DECL|field|duplicates
 specifier|private
 specifier|final
-name|Vector
+name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 index|[]
 argument_list|>
 name|duplicates
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -252,31 +252,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-specifier|final
-name|NamedCompound
-name|ce
-init|=
-operator|new
-name|NamedCompound
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"duplicate removal"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|int
-name|duplicateCounter
-init|=
-literal|0
-decl_stmt|;
-name|boolean
-name|autoRemoveExactDuplicates
-init|=
-literal|false
-decl_stmt|;
 name|panel
 operator|.
 name|output
@@ -318,7 +293,7 @@ block|}
 name|bes
 operator|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|keys
 operator|.
@@ -388,9 +363,9 @@ init|=
 literal|0
 decl_stmt|;
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|toRemove
 init|=
@@ -400,9 +375,9 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|toAdd
 init|=
@@ -411,6 +386,21 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+name|int
+name|duplicateCounter
+init|=
+literal|0
+decl_stmt|;
+name|boolean
+name|autoRemoveExactDuplicates
+init|=
+literal|false
+decl_stmt|;
+synchronized|synchronized
+init|(
+name|duplicates
+init|)
+block|{
 while|while
 condition|(
 operator|!
@@ -441,11 +431,6 @@ condition|)
 block|{
 comment|// wait until the search thread puts something into duplicates vector
 comment|// or finish its work
-synchronized|synchronized
-init|(
-name|duplicates
-init|)
-block|{
 try|try
 block|{
 name|duplicates
@@ -456,18 +441,17 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|InterruptedException
 name|ignored
 parameter_list|)
 block|{
 comment|// Ignore
 block|}
 block|}
-block|}
 else|else
-comment|// duplicates found
 block|{
-name|BibtexEntry
+comment|// duplicates found
+name|BibEntry
 index|[]
 name|be
 init|=
@@ -563,9 +547,9 @@ init|=
 operator|new
 name|DuplicateCallBack
 argument_list|(
-name|panel
+name|JabRef
 operator|.
-name|frame
+name|jrf
 argument_list|,
 name|be
 index|[
@@ -751,6 +735,22 @@ block|}
 block|}
 block|}
 block|}
+block|}
+specifier|final
+name|NamedCompound
+name|ce
+init|=
+operator|new
+name|NamedCompound
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"duplicate removal"
+argument_list|)
+argument_list|)
+decl_stmt|;
 specifier|final
 name|int
 name|dupliC
@@ -784,7 +784,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|toRemove
@@ -798,9 +798,6 @@ operator|.
 name|removeEntry
 argument_list|(
 name|entry
-operator|.
-name|getId
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|ce
@@ -840,7 +837,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|toAdd
@@ -1036,7 +1033,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[]
 block|{
 name|bes
@@ -1089,7 +1086,7 @@ name|finished
 return|;
 block|}
 comment|// Thread cancel option
-comment|// no synchronized used because no "realy" critical situations expected
+comment|// no synchronized used because no "really" critical situations expected
 DECL|method|setFinished ()
 specifier|public
 name|void
@@ -1117,10 +1114,6 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-DECL|field|diag
-name|DuplicateResolverDialog
-name|diag
-decl_stmt|;
 DECL|field|frame
 specifier|private
 specifier|final
@@ -1130,13 +1123,13 @@ decl_stmt|;
 DECL|field|one
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|one
 decl_stmt|;
 DECL|field|two
 specifier|private
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|two
 decl_stmt|;
 DECL|field|dialogType
@@ -1147,20 +1140,20 @@ name|dialogType
 decl_stmt|;
 DECL|field|merged
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|merged
 decl_stmt|;
-DECL|method|DuplicateCallBack (JabRefFrame frame, BibtexEntry one, BibtexEntry two, int dialogType)
+DECL|method|DuplicateCallBack (JabRefFrame frame, BibEntry one, BibEntry two, int dialogType)
 specifier|public
 name|DuplicateCallBack
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|one
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|two
 parameter_list|,
 name|int
@@ -1204,7 +1197,7 @@ return|;
 block|}
 DECL|method|getMergedEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getMergedEntry
 parameter_list|()
 block|{
@@ -1220,8 +1213,9 @@ name|void
 name|update
 parameter_list|()
 block|{
+name|DuplicateResolverDialog
 name|diag
-operator|=
+init|=
 operator|new
 name|DuplicateResolverDialog
 argument_list|(
@@ -1233,7 +1227,7 @@ name|two
 argument_list|,
 name|dialogType
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|diag
 operator|.
 name|setVisible

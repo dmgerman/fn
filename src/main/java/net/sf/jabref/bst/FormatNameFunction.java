@@ -93,7 +93,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * From Bibtex:  *   * "The |built_in| function {\.{format.name\$}} pops the  * top three literals (they are a string, an integer, and a string  * literal, in that order). The last string literal represents a  * name list (each name corresponding to a person), the integer  * literal specifies which name to pick from this list, and the  * first string literal specifies how to format this name, as  * described in the \BibTeX\ documentation. Finally, this function  * pushes the formatted name. If any of the types is incorrect, it  * complains and pushes the null string."  *   * All the pain is encapsulated in BibtexNameFormatter. :-)  *   */
+comment|/**  * From Bibtex:  *  * "The |built_in| function {\.{format.name\$}} pops the  * top three literals (they are a string, an integer, and a string  * literal, in that order). The last string literal represents a  * name list (each name corresponding to a person), the integer  * literal specifies which name to pick from this list, and the  * first string literal specifies how to format this name, as  * described in the \BibTeX\ documentation. Finally, this function  * pushes the formatted name. If any of the types is incorrect, it  * complains and pushes the null string."  *  * All the pain is encapsulated in BibtexNameFormatter. :-)  *  */
 end_comment
 
 begin_class
@@ -250,9 +250,19 @@ decl_stmt|;
 if|if
 condition|(
 name|names
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|stack
+operator|.
+name|push
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|AuthorList
 name|a
@@ -314,16 +324,6 @@ name|format
 argument_list|,
 name|vm
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|stack
-operator|.
-name|push
-argument_list|(
-literal|""
 argument_list|)
 expr_stmt|;
 block|}

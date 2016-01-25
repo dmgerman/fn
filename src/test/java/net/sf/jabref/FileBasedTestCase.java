@@ -22,7 +22,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -38,7 +38,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -94,12 +94,12 @@ name|FileBasedTestCase
 block|{
 DECL|field|database
 specifier|protected
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|entry
 specifier|protected
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|root

@@ -110,7 +110,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -331,7 +331,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
 name|makeChange
@@ -339,7 +339,7 @@ parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 name|NamedCompound
@@ -381,38 +381,9 @@ block|}
 if|if
 condition|(
 name|string
-operator|!=
+operator|==
 literal|null
 condition|)
-block|{
-name|string
-operator|.
-name|setName
-argument_list|(
-name|disk
-argument_list|)
-expr_stmt|;
-name|undoEdit
-operator|.
-name|addEdit
-argument_list|(
-operator|new
-name|UndoableStringChange
-argument_list|(
-name|panel
-argument_list|,
-name|string
-argument_list|,
-literal|true
-argument_list|,
-name|mem
-argument_list|,
-name|disk
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 comment|// The string was removed or renamed locally. We guess that it was removed.
 name|String
@@ -496,23 +467,42 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Update tmp database:
-if|if
-condition|(
-name|tmpString
-operator|!=
-literal|null
-condition|)
+else|else
 block|{
-name|tmpString
+name|string
 operator|.
 name|setName
 argument_list|(
 name|disk
 argument_list|)
 expr_stmt|;
+name|undoEdit
+operator|.
+name|addEdit
+argument_list|(
+operator|new
+name|UndoableStringChange
+argument_list|(
+name|panel
+argument_list|,
+name|string
+argument_list|,
+literal|true
+argument_list|,
+name|mem
+argument_list|,
+name|disk
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
-else|else
+comment|// Update tmp database:
+if|if
+condition|(
+name|tmpString
+operator|==
+literal|null
+condition|)
 block|{
 name|String
 name|newId
@@ -543,6 +533,16 @@ name|bs
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|tmpString
+operator|.
+name|setName
+argument_list|(
+name|disk
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 literal|true
 return|;
@@ -550,6 +550,7 @@ block|}
 annotation|@
 name|Override
 DECL|method|description ()
+specifier|public
 name|JComponent
 name|description
 parameter_list|()

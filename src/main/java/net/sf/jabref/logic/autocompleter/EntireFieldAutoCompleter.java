@@ -20,6 +20,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -30,12 +40,12 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
 begin_comment
-comment|/**  * Stores the full original value of one field of the given BibtexEntries.  *  * @author kahlert, cordes  */
+comment|/**  * Delivers possible completions for a given string.  * Stores the full original value of one field of the given BibtexEntries.  *  * @author kahlert, cordes  */
 end_comment
 
 begin_class
@@ -52,18 +62,31 @@ name|String
 name|fieldName
 decl_stmt|;
 comment|/**      * @see AutoCompleterFactory      */
-DECL|method|EntireFieldAutoCompleter (String fieldName)
+DECL|method|EntireFieldAutoCompleter (String fieldName, AutoCompletePreferences preferences)
 name|EntireFieldAutoCompleter
 parameter_list|(
 name|String
 name|fieldName
+parameter_list|,
+name|AutoCompletePreferences
+name|preferences
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|preferences
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|fieldName
 operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|fieldName
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -78,14 +101,15 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      * {@inheritDoc}      * Stores the full original value of the given field.      */
 annotation|@
 name|Override
-DECL|method|addBibtexEntry (BibtexEntry entry)
+DECL|method|addBibtexEntry (BibEntry entry)
 specifier|public
 name|void
 name|addBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -98,32 +122,26 @@ condition|)
 block|{
 return|return;
 block|}
-name|String
-name|fieldValue
-init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOptional
 argument_list|(
 name|fieldName
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|fieldValue
-operator|!=
-literal|null
-condition|)
-block|{
-name|addWordToIndex
+lambda|->
+name|addItemToIndex
 argument_list|(
 name|fieldValue
 operator|.
 name|trim
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class

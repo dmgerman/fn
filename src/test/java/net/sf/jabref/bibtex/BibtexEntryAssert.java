@@ -76,6 +76,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -142,7 +152,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -169,7 +179,7 @@ class|class
 name|BibtexEntryAssert
 block|{
 comment|/**      * Reads a single entry from the resource using `getResourceAsStream` from the given class. The resource has to      * contain a single entry      *      * @param clazz the class where to call `getResourceAsStream`      * @param resourceName the resource to read      * @param entry the entry to compare with      */
-DECL|method|assertEquals (Class<GVKParser> clazz, String resourceName, BibtexEntry entry)
+DECL|method|assertEquals (Class<GVKParser> clazz, String resourceName, BibEntry entry)
 specifier|public
 specifier|static
 name|void
@@ -184,7 +194,7 @@ parameter_list|,
 name|String
 name|resourceName
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 throws|throws
@@ -235,8 +245,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Reads a bibtex database from the given InputStream. The result has to contain a single BibtexEntry. This entry is      * compared to the given entry      *      * @param shouldBeIs the inputStream reading the entry from      * @param entry the entry to compare with      */
-DECL|method|assertEquals (InputStream shouldBeIs, BibtexEntry entry)
+comment|/**      * Reads a bibtex database from the given InputStream. The result has to contain a single BibEntry. This entry is      * compared to the given entry      *      * @param shouldBeIs the inputStream reading the entry from      * @param entry the entry to compare with      */
+DECL|method|assertEquals (InputStream shouldBeIs, BibEntry entry)
 specifier|public
 specifier|static
 name|void
@@ -245,7 +255,7 @@ parameter_list|(
 name|InputStream
 name|shouldBeIs
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 throws|throws
@@ -336,7 +346,7 @@ name|getEntryCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|shouldBeEntry
 init|=
 name|result
@@ -361,17 +371,103 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Compares to lists of bibtex entries      *      * @param shouldBeIs the list with the expected entries      * @param actualEntries the list with the actual entries      */
+DECL|method|assertEquals (List<BibEntry> shouldBeIs, List<BibEntry> actualEntries)
+specifier|public
+specifier|static
+name|void
+name|assertEquals
+parameter_list|(
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|shouldBeIs
+parameter_list|,
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|actualEntries
+parameter_list|)
+block|{
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+name|shouldBeIs
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+name|actualEntries
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+name|shouldBeIs
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|actualEntries
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|actualEntries
+operator|.
+name|size
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|assertEquals
+argument_list|(
+name|shouldBeIs
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+argument_list|,
+name|actualEntries
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|/**      * Compares to BibTeX entries using their canonical representation      */
-DECL|method|assertEquals (BibtexEntry shouldBeEntry, BibtexEntry entry)
+DECL|method|assertEquals (BibEntry shouldBeEntry, BibEntry entry)
 specifier|private
 specifier|static
 name|void
 name|assertEquals
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|shouldBeEntry
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

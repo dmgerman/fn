@@ -118,7 +118,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -285,14 +285,14 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibtexEntry objects.      */
+comment|/**      * Parse the entries in the source, and return a List of BibEntry objects.      */
 annotation|@
 name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(
@@ -307,7 +307,7 @@ name|IOException
 block|{
 name|ArrayList
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibitems
 init|=
@@ -426,7 +426,7 @@ literal|"__::__"
 argument_list|)
 decl_stmt|;
 name|String
-name|Type
+name|type
 init|=
 literal|""
 decl_stmt|;
@@ -653,7 +653,7 @@ name|frest
 operator|.
 name|indexOf
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|)
 decl_stmt|;
 if|if
@@ -706,7 +706,7 @@ name|frest
 operator|.
 name|indexOf
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 expr_stmt|;
 if|if
@@ -754,7 +754,7 @@ name|frest
 operator|.
 name|indexOf
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 if|if
@@ -836,7 +836,7 @@ name|frest
 argument_list|)
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"article"
 expr_stmt|;
@@ -859,14 +859,14 @@ name|frest
 argument_list|)
 condition|)
 block|{
-name|Type
+name|type
 operator|=
 literal|"inproceedings"
 expr_stmt|;
 block|}
 else|else
 block|{
-name|Type
+name|type
 operator|=
 name|frest
 operator|.
@@ -880,19 +880,19 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,
 name|EntryTypes
 operator|.
-name|getBibtexEntryType
+name|getTypeOrDefault
 argument_list|(
-name|Type
+name|type
 argument_list|)
 argument_list|)
 decl_stmt|;

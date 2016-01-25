@@ -44,6 +44,26 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|TreeSet
 import|;
 end_import
@@ -88,7 +108,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -155,12 +175,12 @@ name|MedlineHandler
 extends|extends
 name|DefaultHandler
 block|{
-DECL|field|htmlConverter
+DECL|field|HTML_CONVERTER
 specifier|private
 specifier|static
 specifier|final
 name|HTMLConverter
-name|htmlConverter
+name|HTML_CONVERTER
 init|=
 operator|new
 name|HTMLConverter
@@ -169,9 +189,9 @@ decl_stmt|;
 DECL|field|bibitems
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibitems
 init|=
@@ -428,36 +448,48 @@ init|=
 literal|""
 decl_stmt|;
 DECL|field|series
+specifier|private
+specifier|final
 name|String
 name|series
 init|=
 literal|""
 decl_stmt|;
 DECL|field|editor
+specifier|private
+specifier|final
 name|String
 name|editor
 init|=
 literal|""
 decl_stmt|;
 DECL|field|booktitle
+specifier|private
+specifier|final
 name|String
 name|booktitle
 init|=
 literal|""
 decl_stmt|;
 DECL|field|type
+specifier|private
+specifier|final
 name|String
 name|type
 init|=
 literal|"article"
 decl_stmt|;
 DECL|field|key
+specifier|private
+specifier|final
 name|String
 name|key
 init|=
 literal|""
 decl_stmt|;
 DECL|field|address
+specifier|private
+specifier|final
 name|String
 name|address
 init|=
@@ -522,7 +554,7 @@ decl_stmt|;
 DECL|field|authors
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -536,7 +568,7 @@ decl_stmt|;
 DECL|field|descriptors
 specifier|private
 specifier|final
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -548,10 +580,6 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// To gather keywords
-DECL|field|rowNum
-name|int
-name|rowNum
-decl_stmt|;
 DECL|field|KEYWORD_SEPARATOR
 specifier|private
 specifier|static
@@ -563,9 +591,9 @@ literal|"; "
 decl_stmt|;
 DECL|method|getItems ()
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getItems
 parameter_list|()
@@ -1251,60 +1279,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|makeBibtexString ()
-name|String
-name|makeBibtexString
-parameter_list|()
-block|{
-name|String
-name|out
-decl_stmt|;
-comment|// PENDING jeffrey.kuhn@yale.edu 2005-05-27 : added call to fixPageRange
-name|out
-operator|=
-literal|"article{,\n"
-operator|+
-literal|" author = { "
-operator|+
-name|author
-operator|+
-literal|" },\n title = { "
-operator|+
-name|title
-operator|+
-literal|"},\n journal ={ "
-operator|+
-name|journal
-operator|+
-literal|"},\n year = "
-operator|+
-name|year
-operator|+
-literal|"},\n volume = { "
-operator|+
-name|volume
-operator|+
-literal|"},\n number = { "
-operator|+
-name|number
-operator|+
-literal|"},\n pages = { "
-operator|+
-name|fixPageRange
-argument_list|(
-name|page
-argument_list|)
-operator|+
-literal|"},\n abstract = { "
-operator|+
-name|abstractText
-operator|+
-literal|"},\n}"
-expr_stmt|;
-return|return
-name|out
-return|;
-block|}
 annotation|@
 name|Override
 DECL|method|endElement (String uri, String localName, String qName)
@@ -1342,10 +1316,7 @@ name|equals
 argument_list|(
 name|year
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 literal|""
 operator|.
@@ -1371,7 +1342,6 @@ expr_stmt|;
 comment|//Matcher m = Pattern.compile("\\b[0-9]{4}\\b").matcher(MedlineDate);
 comment|//if(m.matches())
 comment|//year = m.group();
-block|}
 block|}
 comment|// Build a string from the collected keywords:
 name|StringBuilder
@@ -1443,11 +1413,11 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|b
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.
@@ -1457,7 +1427,7 @@ argument_list|,
 comment|//Globals.DEFAULT_BIBTEXENTRY_ID,
 name|EntryTypes
 operator|.
-name|getBibtexEntryType
+name|getTypeOrDefault
 argument_list|(
 literal|"article"
 argument_list|)
@@ -1483,7 +1453,7 @@ literal|"author"
 argument_list|,
 name|MedlineHandler
 operator|.
-name|htmlConverter
+name|HTML_CONVERTER
 operator|.
 name|formatUnicode
 argument_list|(
@@ -1521,7 +1491,7 @@ literal|"title"
 argument_list|,
 name|MedlineHandler
 operator|.
-name|htmlConverter
+name|HTML_CONVERTER
 operator|.
 name|formatUnicode
 argument_list|(
@@ -2248,7 +2218,7 @@ name|lastname
 operator|.
 name|indexOf
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 operator|>
 literal|0

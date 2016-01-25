@@ -51,7 +51,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * From Bibtex:  *   * "The |built_in| function {\.{format.name\$}} pops the  * top three literals (they are a string, an integer, and a string  * literal, in that order). The last string literal represents a  * name list (each name corresponding to a person), the integer  * literal specifies which name to pick from this list, and the  * first string literal specifies how to format this name, as  * described in the \BibTeX\ documentation. Finally, this function  * pushes the formatted name. If any of the types is incorrect, it  * complains and pushes the null string."  *   * Sounds easy - is a nightmare... X-(  *   */
+comment|/**  * From Bibtex:  *  * "The |built_in| function {\.{format.name\$}} pops the  * top three literals (they are a string, an integer, and a string  * literal, in that order). The last string literal represents a  * name list (each name corresponding to a person), the integer  * literal specifies which name to pick from this list, and the  * first string literal specifies how to format this name, as  * described in the \BibTeX\ documentation. Finally, this function  * pushes the formatted name. If any of the types is incorrect, it  * complains and pushes the null string."  *  * Sounds easy - is a nightmare... X-(  *  */
 end_comment
 
 begin_class
@@ -144,7 +144,7 @@ name|warn
 argument_list|)
 return|;
 block|}
-comment|/**      *       * @param author      * @param format      * @param warn may-be-null      * @return      */
+comment|/**      *      * @param author      * @param format      * @param warn may-be-null      * @return      */
 DECL|method|formatName (Author author, String format, Warn warn)
 specifier|public
 specifier|static
@@ -219,14 +219,6 @@ block|{
 name|group
 operator|++
 expr_stmt|;
-name|int
-name|groupStart
-init|=
-name|sb
-operator|.
-name|length
-argument_list|()
-decl_stmt|;
 name|i
 operator|++
 expr_stmt|;
@@ -310,13 +302,12 @@ continue|continue;
 block|}
 if|if
 condition|(
+operator|(
 name|braceLevel
 operator|==
 literal|1
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 name|Character
 operator|.
 name|isLetter
@@ -378,7 +369,6 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 name|i
@@ -659,6 +649,14 @@ name|interToken
 init|=
 literal|null
 decl_stmt|;
+name|int
+name|groupStart
+init|=
+name|sb
+operator|.
+name|length
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -715,6 +713,7 @@ block|}
 if|if
 condition|(
 operator|(
+operator|(
 name|j
 operator|+
 literal|1
@@ -723,10 +722,9 @@ operator|<
 name|d
 operator|.
 name|length
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
+operator|(
 name|d
 index|[
 name|j
@@ -735,6 +733,7 @@ literal|1
 index|]
 operator|==
 literal|'{'
+operator|)
 condition|)
 block|{
 name|StringBuffer
@@ -775,7 +774,6 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 for|for
 control|(
@@ -942,7 +940,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -991,7 +989,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"~"
+literal|'~'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1001,7 +999,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 block|}
@@ -1100,7 +1098,6 @@ name|noDisTie
 init|=
 literal|false
 decl_stmt|;
-comment|// @formatter:off
 if|if
 condition|(
 operator|(
@@ -1201,7 +1198,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// @formatter:on
 block|}
 block|}
 elseif|else
@@ -1253,9 +1249,17 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|braceLevel
 operator|!=
 literal|0
+operator|)
+operator|&&
+operator|(
+name|warn
+operator|!=
+literal|null
+operator|)
 condition|)
 block|{
 name|warn
@@ -1275,7 +1279,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Including the matching brace.      *       * @param sb      * @param c      * @param pos      * @return      *       * assert c[pos] == '{'      */
+comment|/**      * Including the matching brace.      *      * @param sb      * @param c      * @param pos      * @return      *      * assert c[pos] == '{'      */
 DECL|method|consumeToMatchingBrace (StringBuffer sb, char[] c, int pos)
 specifier|public
 specifier|static
@@ -1380,7 +1384,7 @@ operator|.
 name|length
 return|;
 block|}
-comment|/**      * Takes care of special characters too      *       * @param s      * @return      */
+comment|/**      * Takes care of special characters too      *      * @param s      * @return      */
 DECL|method|getFirstCharOfString (String s)
 specifier|public
 specifier|static
@@ -1444,16 +1448,15 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|c
 index|[
 name|i
 index|]
 operator|==
 literal|'{'
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 operator|(
 operator|(
 name|i
@@ -1502,7 +1505,6 @@ operator|.
 name|toString
 argument_list|()
 return|;
-block|}
 block|}
 block|}
 return|return

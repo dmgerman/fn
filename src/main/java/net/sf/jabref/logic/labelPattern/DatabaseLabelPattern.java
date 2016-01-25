@@ -24,7 +24,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|List
 import|;
 end_import
 
@@ -50,55 +50,19 @@ name|AbstractLabelPattern
 block|{
 annotation|@
 name|Override
-DECL|method|getValue (String key)
+DECL|method|getLastLevelLabelPattern (String key)
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
-name|getValue
+name|getLastLevelLabelPattern
 parameter_list|(
 name|String
 name|key
 parameter_list|)
 block|{
-name|ArrayList
-argument_list|<
-name|String
-argument_list|>
-name|result
-init|=
-name|data
-operator|.
-name|get
-argument_list|(
-name|key
-argument_list|)
-decl_stmt|;
-comment|//  Test to see if we found anything
-if|if
-condition|(
-name|result
-operator|==
-literal|null
-condition|)
-block|{
-comment|// check default value
-name|result
-operator|=
-name|getDefaultValue
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|result
-operator|==
-literal|null
-condition|)
-block|{
-comment|// no default value, ask global label pattern
-name|result
-operator|=
+return|return
 name|Globals
 operator|.
 name|prefs
@@ -110,11 +74,6 @@ name|getValue
 argument_list|(
 name|key
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-return|return
-name|result
 return|;
 block|}
 block|}

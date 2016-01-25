@@ -136,6 +136,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Enumeration
 import|;
 end_import
@@ -166,7 +176,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -213,7 +223,7 @@ name|TreeSelectionListener
 block|{
 DECL|field|secondary
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 decl_stmt|;
 DECL|field|tree
@@ -283,7 +293,7 @@ specifier|private
 name|boolean
 name|okPressed
 decl_stmt|;
-DECL|method|ChangeDisplayDialog (JFrame owner, final BasePanel panel, BibtexDatabase secondary, final DefaultMutableTreeNode root)
+DECL|method|ChangeDisplayDialog (JFrame owner, final BasePanel panel, BibDatabase secondary, final DefaultMutableTreeNode root)
 specifier|public
 name|ChangeDisplayDialog
 parameter_list|(
@@ -294,7 +304,7 @@ specifier|final
 name|BasePanel
 name|panel
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|secondary
 parameter_list|,
 specifier|final
@@ -335,7 +345,7 @@ operator|.
 name|secondary
 operator|=
 operator|new
-name|BibtexDatabase
+name|BibDatabase
 argument_list|()
 expr_stmt|;
 block|}
@@ -475,7 +485,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -653,22 +663,19 @@ name|anyDisabled
 init|=
 literal|false
 decl_stmt|;
-while|while
-condition|(
-name|enumer
-operator|.
-name|hasMoreElements
-argument_list|()
-condition|)
-block|{
+for|for
+control|(
 name|Change
 name|c
-init|=
-name|enumer
+range|:
+name|Collections
 operator|.
-name|nextElement
-argument_list|()
-decl_stmt|;
+name|list
+argument_list|(
+name|enumer
+argument_list|)
+control|)
+block|{
 name|boolean
 name|allAccepted
 init|=

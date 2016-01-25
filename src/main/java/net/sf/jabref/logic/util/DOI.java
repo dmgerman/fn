@@ -147,6 +147,13 @@ argument_list|(
 literal|"http://doi.org"
 argument_list|)
 decl_stmt|;
+comment|// DOI
+DECL|field|doi
+specifier|private
+specifier|final
+name|String
+name|doi
+decl_stmt|;
 comment|// Regex
 comment|// (see http://www.doi.org/doi_handbook/2_Numbering.html)
 DECL|field|DOI_EXP
@@ -261,13 +268,6 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|// DOI
-DECL|field|doi
-specifier|private
-specifier|final
-name|String
-name|doi
-decl_stmt|;
 comment|/**      * Creates a DOI from various schemes including URL, URN, and plain DOIs.      *      * @param doi the DOI string      * @throws NullPointerException if DOI is null      * @throws IllegalArgumentException if doi does not include a valid DOI      * @return an instance of the DOI class      */
 DECL|method|DOI (String doi)
 specifier|public
@@ -411,7 +411,10 @@ block|}
 comment|/**      * Return a URI presentation for the DOI      *      * @return an encoded URI representation of the DOI      */
 DECL|method|getURI ()
 specifier|public
+name|Optional
+argument_list|<
 name|URI
+argument_list|>
 name|getURI
 parameter_list|()
 block|{
@@ -441,7 +444,12 @@ literal|null
 argument_list|)
 decl_stmt|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|uri
+argument_list|)
 return|;
 block|}
 catch|catch
@@ -463,7 +471,10 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
@@ -478,8 +489,17 @@ return|return
 name|getURI
 argument_list|()
 operator|.
+name|map
+argument_list|(
+name|URI
+operator|::
 name|toASCIIString
-argument_list|()
+argument_list|)
+operator|.
+name|orElse
+argument_list|(
+literal|""
+argument_list|)
 return|;
 block|}
 block|}

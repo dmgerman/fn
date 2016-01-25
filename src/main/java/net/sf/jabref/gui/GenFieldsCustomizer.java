@@ -126,7 +126,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -431,7 +431,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -520,7 +520,7 @@ literal|"General fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//    fieldsArea.setText(parent.prefs.get("generalFields"));
+comment|//    fieldsArea.setText(parent.prefs.get(JabRefPreferences.GENERAL_FIELDS));
 name|setFieldsText
 argument_list|()
 expr_stmt|;
@@ -877,11 +877,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1192,7 +1193,7 @@ operator|.
 name|updateEntryEditorTabList
 argument_list|()
 expr_stmt|;
-comment|/*         String delimStr = fieldsArea.getText().replaceAll("\\s+","")           .replaceAll("\\n+","").trim();         parent.prefs.putStringArray("generalFields", Util.split(delimStr, ";"));         */
+comment|/*         String delimStr = fieldsArea.getText().replaceAll("\\s+","")           .replaceAll("\\n+","").trim();         parent.prefs.putStringArray(JabRefPreferences.GENERAL_FIELDS, Util.split(delimStr, ";"));         */
 name|parent
 operator|.
 name|removeCachedEntryEditors

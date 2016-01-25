@@ -26,7 +26,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -42,7 +42,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -134,15 +134,15 @@ name|journalAbbreviationRepository
 expr_stmt|;
 block|}
 comment|/**      * Unabbreviate the journal name of the given entry.      *      * @param entry     The entry to be treated.      * @param fieldName The field name (e.g. "journal")      * @param ce        If the entry is changed, add an edit to this compound.      * @return true if the entry was changed, false otherwise.      */
-DECL|method|unabbreviate (BibtexDatabase database, BibtexEntry entry, String fieldName, CompoundEdit ce)
+DECL|method|unabbreviate (BibDatabase database, BibEntry entry, String fieldName, CompoundEdit ce)
 specifier|public
 name|boolean
 name|unabbreviate
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 name|String
@@ -152,6 +152,21 @@ name|CompoundEdit
 name|ce
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|entry
+operator|.
+name|hasField
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
 name|String
 name|text
 init|=
@@ -162,17 +177,6 @@ argument_list|(
 name|fieldName
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|text
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
 name|String
 name|origText
 init|=

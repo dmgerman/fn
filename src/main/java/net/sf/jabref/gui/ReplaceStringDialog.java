@@ -98,11 +98,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntry
+name|Globals
 import|;
 end_import
 
@@ -118,7 +114,23 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -440,7 +452,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -541,13 +553,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|parent_
+name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1175,12 +1188,12 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Does the actual operation on a Bibtex entry based on the      * settings specified in this same dialog. Returns the number of      * occurences replaced.      */
-DECL|method|replace (BibtexEntry be, NamedCompound ce)
+DECL|method|replace (BibEntry be, NamedCompound ce)
 specifier|public
 name|int
 name|replace
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|NamedCompound
@@ -1216,7 +1229,7 @@ name|s
 operator|.
 name|equals
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1253,7 +1266,7 @@ name|fld
 operator|.
 name|equals
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1277,12 +1290,12 @@ return|return
 name|counter
 return|;
 block|}
-DECL|method|replaceField (BibtexEntry be, String fieldname, NamedCompound ce)
+DECL|method|replaceField (BibEntry be, String fieldname, NamedCompound ce)
 specifier|private
 name|int
 name|replaceField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|String

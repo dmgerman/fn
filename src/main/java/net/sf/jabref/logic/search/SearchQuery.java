@@ -26,38 +26,6 @@ name|logic
 operator|.
 name|search
 operator|.
-name|SearchRule
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|SearchRules
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|search
-operator|.
 name|describer
 operator|.
 name|SearchDescriber
@@ -130,7 +98,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -245,12 +213,12 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|isMatch (BibtexEntry entry)
+DECL|method|isMatch (BibEntry entry)
 specifier|public
 name|boolean
 name|isMatch
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{

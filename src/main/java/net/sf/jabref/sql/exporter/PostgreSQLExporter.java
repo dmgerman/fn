@@ -112,12 +112,9 @@ name|SQLUtil
 import|;
 end_import
 
-begin_comment
-comment|/**  *  * @author ifsteinm.  *  *  Jan 20th	Extends DBExporter to provide features specific for PostgreSQL  *  			Created after a refactory on SQLUtil  *  */
-end_comment
-
 begin_class
 DECL|class|PostgreSQLExporter
+specifier|final
 specifier|public
 class|class
 name|PostgreSQLExporter
@@ -135,7 +132,7 @@ specifier|private
 name|PostgreSQLExporter
 parameter_list|()
 block|{     }
-comment|/**      *      * @return The singleton instance of the PostgreSQLExporter      */
+comment|/**      * @return The singleton instance of the PostgreSQLExporter      */
 DECL|method|getInstance ()
 specifier|public
 specifier|static
@@ -235,10 +232,9 @@ name|getPassword
 argument_list|()
 argument_list|)
 init|;
-name|ResultSet
-name|rs
+name|Statement
+name|statement
 operator|=
-operator|(
 operator|(
 name|Statement
 operator|)
@@ -257,12 +253,16 @@ argument_list|()
 operator|+
 literal|'\''
 argument_list|)
-operator|)
+init|)
+block|{
+name|ResultSet
+name|rs
+init|=
+name|statement
 operator|.
 name|getResultSet
 argument_list|()
-init|)
-block|{
+decl_stmt|;
 name|rs
 operator|.
 name|next
@@ -309,8 +309,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-try|try
-init|(
 name|Connection
 name|conn
 init|=
@@ -330,8 +328,7 @@ operator|.
 name|getPassword
 argument_list|()
 argument_list|)
-init|)
-block|{
+decl_stmt|;
 name|createPLPGSQLFunction
 argument_list|(
 name|conn
@@ -340,7 +337,6 @@ expr_stmt|;
 return|return
 name|conn
 return|;
-block|}
 block|}
 DECL|method|createPLPGSQLFunction (Connection conn)
 specifier|private
@@ -383,7 +379,7 @@ literal|"Language plpgsql;"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Generates SQL necessary to create all tables in a MySQL database, and      * writes it to appropriate output.      *      * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be written.      */
+comment|/**      * Generates SQL necessary to create all tables in a MySQL database, and      * writes it to appropriate output.      *      * @param out The output (PrintStream or Connection) object to which the DML      *            should be written.      */
 annotation|@
 name|Override
 DECL|method|createTables (Object out)

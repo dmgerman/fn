@@ -93,10 +93,10 @@ specifier|final
 name|GroupSelector
 name|m_groupSelector
 decl_stmt|;
-DECL|field|m_revalidate
+DECL|field|mRevalidate
 specifier|private
 name|boolean
-name|m_revalidate
+name|mRevalidate
 init|=
 literal|true
 decl_stmt|;
@@ -271,6 +271,8 @@ argument_list|(
 literal|"remove group and subgroups"
 argument_list|)
 return|;
+default|default:
+break|break;
 block|}
 return|return
 literal|"? ("
@@ -504,6 +506,8 @@ name|childIndex
 argument_list|)
 expr_stmt|;
 break|break;
+default|default:
+break|break;
 block|}
 block|}
 else|else
@@ -592,11 +596,13 @@ name|childIndex
 argument_list|)
 expr_stmt|;
 break|break;
+default|default:
+break|break;
 block|}
 block|}
 if|if
 condition|(
-name|m_revalidate
+name|mRevalidate
 condition|)
 block|{
 name|m_groupSelector
@@ -616,7 +622,7 @@ name|boolean
 name|val
 parameter_list|)
 block|{
-name|m_revalidate
+name|mRevalidate
 operator|=
 name|val
 expr_stmt|;

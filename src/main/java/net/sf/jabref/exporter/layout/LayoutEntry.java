@@ -46,37 +46,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
+name|*
 import|;
 end_import
 
@@ -88,7 +58,23 @@ name|util
 operator|.
 name|regex
 operator|.
-name|Matcher
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|search
+operator|.
+name|MatchesHighlighter
 import|;
 end_import
 
@@ -196,7 +182,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -212,7 +198,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -272,23 +258,11 @@ name|classPrefix
 decl_stmt|;
 DECL|field|invalidFormatter
 specifier|private
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|invalidFormatter
-decl_stmt|;
-comment|// used at highlighting in preview area.
-comment|// Color chosen similar to JTextComponent.getSelectionColor(), which is
-comment|// used at highlighting words at the editor
-DECL|field|HIGHLIGHT_COLOR
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|HIGHLIGHT_COLOR
-init|=
-literal|"#3399FF"
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -306,13 +280,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|LayoutEntry (StringInt si, String classPrefix_)
+DECL|method|LayoutEntry (StringInt si, final String classPrefix_)
 specifier|public
 name|LayoutEntry
 parameter_list|(
 name|StringInt
 name|si
 parameter_list|,
+specifier|final
 name|String
 name|classPrefix_
 parameter_list|)
@@ -329,9 +304,7 @@ name|classPrefix_
 expr_stmt|;
 if|if
 condition|(
-name|si
-operator|.
-name|i
+name|type
 operator|==
 name|LayoutHelper
 operator|.
@@ -348,9 +321,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
-operator|.
-name|i
+name|type
 operator|==
 name|LayoutHelper
 operator|.
@@ -371,9 +342,7 @@ elseif|else
 if|if
 condition|(
 operator|(
-name|si
-operator|.
-name|i
+name|type
 operator|==
 name|LayoutHelper
 operator|.
@@ -381,9 +350,7 @@ name|IS_FIELD_START
 operator|)
 operator|||
 operator|(
-name|si
-operator|.
-name|i
+name|type
 operator|==
 name|LayoutHelper
 operator|.
@@ -396,9 +363,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
-operator|.
-name|i
+name|type
 operator|==
 name|LayoutHelper
 operator|.
@@ -535,7 +500,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|LayoutEntry (Vector<StringInt> parsedEntries, String classPrefix_, int layoutType)
+DECL|method|LayoutEntry (Vector<StringInt> parsedEntries, final String classPrefix_, int layoutType)
 specifier|public
 name|LayoutEntry
 parameter_list|(
@@ -545,6 +510,7 @@ name|StringInt
 argument_list|>
 name|parsedEntries
 parameter_list|,
+specifier|final
 name|String
 name|classPrefix_
 parameter_list|,
@@ -556,15 +522,6 @@ name|classPrefix
 operator|=
 name|classPrefix_
 expr_stmt|;
-name|String
-name|blockStart
-decl_stmt|;
-name|String
-name|blockEnd
-decl_stmt|;
-name|StringInt
-name|si
-decl_stmt|;
 name|Vector
 argument_list|<
 name|StringInt
@@ -587,23 +544,21 @@ decl_stmt|;
 name|LayoutEntry
 name|le
 decl_stmt|;
-name|si
-operator|=
+name|String
+name|blockStart
+init|=
 name|parsedEntries
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-expr_stmt|;
-name|blockStart
-operator|=
-name|si
 operator|.
 name|s
-expr_stmt|;
-name|si
-operator|=
+decl_stmt|;
+name|String
+name|blockEnd
+init|=
 name|parsedEntries
 operator|.
 name|get
@@ -615,13 +570,9 @@ argument_list|()
 operator|-
 literal|1
 argument_list|)
-expr_stmt|;
-name|blockEnd
-operator|=
-name|si
 operator|.
 name|s
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -647,46 +598,32 @@ name|layoutType
 expr_stmt|;
 name|text
 operator|=
-name|si
-operator|.
-name|s
+name|blockEnd
 expr_stmt|;
 for|for
 control|(
-name|int
-name|i
-init|=
+name|StringInt
+name|parsedEntry
+range|:
+name|parsedEntries
+operator|.
+name|subList
+argument_list|(
 literal|1
-init|;
-name|i
-operator|<
-operator|(
+argument_list|,
 name|parsedEntries
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
-operator|)
-condition|;
-name|i
-operator|++
+argument_list|)
 control|)
 block|{
-name|si
-operator|=
-name|parsedEntries
-operator|.
-name|get
-argument_list|(
-name|i
-argument_list|)
-expr_stmt|;
-comment|// System.out.println("PARSED-ENTRY: "+si.s+"="+si.i);
 if|if
 condition|(
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -696,7 +633,7 @@ name|IS_LAYOUT_TEXT
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -712,7 +649,7 @@ elseif|else
 if|if
 condition|(
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -722,7 +659,7 @@ name|IS_FIELD_START
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -741,7 +678,7 @@ argument_list|()
 expr_stmt|;
 name|blockStart
 operator|=
-name|si
+name|parsedEntry
 operator|.
 name|s
 expr_stmt|;
@@ -750,7 +687,7 @@ elseif|else
 if|if
 condition|(
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -760,7 +697,7 @@ name|IS_FIELD_END
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -776,7 +713,7 @@ name|blockStart
 operator|.
 name|equals
 argument_list|(
-name|si
+name|parsedEntry
 operator|.
 name|s
 argument_list|)
@@ -786,12 +723,12 @@ name|blockEntries
 operator|.
 name|add
 argument_list|(
-name|si
+name|parsedEntry
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -858,7 +795,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -869,9 +806,6 @@ condition|)
 block|{
 comment|// Do nothing
 block|}
-comment|// else if (si.i == LayoutHelper.IS_OPTION_FIELD_PARAM)
-comment|// {
-comment|// }
 if|if
 condition|(
 name|blockEntries
@@ -879,7 +813,6 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// System.out.println("BLOCK ADD: "+si.s+"="+si.i);
 name|tmpEntries
 operator|.
 name|add
@@ -887,7 +820,7 @@ argument_list|(
 operator|new
 name|LayoutEntry
 argument_list|(
-name|si
+name|parsedEntry
 argument_list|,
 name|classPrefix
 argument_list|)
@@ -900,7 +833,7 @@ name|blockEntries
 operator|.
 name|add
 argument_list|(
-name|si
+name|parsedEntry
 argument_list|)
 expr_stmt|;
 block|}
@@ -1007,15 +940,15 @@ operator|=
 name|formatter
 expr_stmt|;
 block|}
-DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database)
+DECL|method|doLayout (BibEntry bibtex, BibDatabase database)
 specifier|private
 name|String
 name|doLayout
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -1030,22 +963,22 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, List<String> wordsToHighlight)
+DECL|method|doLayout (BibEntry bibtex, BibDatabase database, Optional<Pattern> highlightPattern)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
-name|List
+name|Optional
 argument_list|<
-name|String
+name|Pattern
 argument_list|>
-name|wordsToHighlight
+name|highlightPattern
 parameter_list|)
 block|{
 switch|switch
@@ -1069,7 +1002,7 @@ case|:
 name|String
 name|value
 init|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1138,7 +1071,7 @@ condition|)
 block|{
 name|field
 operator|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1187,7 +1120,7 @@ control|)
 block|{
 name|field
 operator|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1237,7 +1170,7 @@ control|)
 block|{
 name|field
 operator|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1508,11 +1441,13 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|highlightWords
+name|MatchesHighlighter
+operator|.
+name|highlightWordsWithHTML
 argument_list|(
 name|fieldText
 argument_list|,
-name|wordsToHighlight
+name|highlightPattern
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1598,7 +1533,7 @@ argument_list|(
 literal|"\\"
 argument_list|)
 condition|?
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1614,7 +1549,7 @@ argument_list|,
 name|database
 argument_list|)
 else|:
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getText
 argument_list|(
@@ -1701,7 +1636,7 @@ comment|// Printing the encoding name is not supported in entry layouts, only
 comment|// in begin/end layouts. This prevents breakage if some users depend
 comment|// on a field called "encoding". We simply return this field instead:
 return|return
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1720,12 +1655,12 @@ block|}
 block|}
 comment|// added section - begin (arudert)
 comment|/**      * Do layout for general formatters (no bibtex-entry fields).      *      * @param database      *            Bibtex Database      * @return      */
-DECL|method|doLayout (BibtexDatabase database, Charset encoding)
+DECL|method|doLayout (BibDatabase database, Charset encoding)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|Charset
@@ -1832,7 +1767,7 @@ block|{
 name|String
 name|field
 init|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getText
 argument_list|(
@@ -1927,15 +1862,15 @@ name|databaseFile
 decl_stmt|;
 return|return
 name|f
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|""
+else|:
 name|f
 operator|.
 name|getName
 argument_list|()
-else|:
-literal|""
 return|;
 block|}
 elseif|else
@@ -1959,15 +1894,15 @@ name|databaseFile
 decl_stmt|;
 return|return
 name|f
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|""
+else|:
 name|f
 operator|.
 name|getPath
 argument_list|()
-else|:
-literal|""
 return|;
 block|}
 return|return
@@ -2249,18 +2184,19 @@ comment|// If this formatter accepts an argument, check if we have one, and
 comment|// set it if so:
 if|if
 condition|(
+operator|(
 name|f
 operator|instanceof
 name|ParamLayoutFormatter
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
+operator|(
 name|strings
 operator|.
 name|length
 operator|>=
 literal|2
+operator|)
 condition|)
 block|{
 operator|(
@@ -2278,7 +2214,6 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|results
 operator|.
@@ -2383,7 +2318,7 @@ return|;
 block|}
 DECL|method|getInvalidFormatters ()
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -2392,152 +2327,6 @@ parameter_list|()
 block|{
 return|return
 name|invalidFormatter
-return|;
-block|}
-comment|/**      * Will return the text that was called by the method with HTML tags to highlight each word the user has searched      * for and will skip the highlight process if the first Char isn't a letter or a digit.      *      * This check is a quick hack to avoid highlighting of HTML tags It does not always work, but it does its job mostly      *      * @param text This is a String in which we search for different words      * @param wordsToHighlight List of all words which must be highlighted      *       * @return String that was called by the method, with HTML Tags if a word was found      */
-DECL|method|highlightWords (String text, List<String> wordsToHighlight)
-specifier|private
-name|String
-name|highlightWords
-parameter_list|(
-name|String
-name|text
-parameter_list|,
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|wordsToHighlight
-parameter_list|)
-block|{
-if|if
-condition|(
-name|wordsToHighlight
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-name|text
-return|;
-block|}
-name|Matcher
-name|matcher
-init|=
-name|Util
-operator|.
-name|getPatternForWords
-argument_list|(
-name|wordsToHighlight
-argument_list|)
-operator|.
-name|matcher
-argument_list|(
-name|text
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|Character
-operator|.
-name|isLetterOrDigit
-argument_list|(
-name|text
-operator|.
-name|charAt
-argument_list|(
-literal|0
-argument_list|)
-argument_list|)
-condition|)
-block|{
-name|String
-name|hlColor
-init|=
-name|HIGHLIGHT_COLOR
-decl_stmt|;
-name|StringBuffer
-name|sb
-init|=
-operator|new
-name|StringBuffer
-argument_list|()
-decl_stmt|;
-name|boolean
-name|foundSomething
-init|=
-literal|false
-decl_stmt|;
-name|String
-name|found
-decl_stmt|;
-while|while
-condition|(
-name|matcher
-operator|.
-name|find
-argument_list|()
-condition|)
-block|{
-name|matcher
-operator|.
-name|end
-argument_list|()
-expr_stmt|;
-name|found
-operator|=
-name|matcher
-operator|.
-name|group
-argument_list|()
-expr_stmt|;
-comment|// color the search keyword	-
-comment|// put first String Part and then html + word + html to a StringBuffer
-name|matcher
-operator|.
-name|appendReplacement
-argument_list|(
-name|sb
-argument_list|,
-literal|"<span style=\"background-color:"
-operator|+
-name|hlColor
-operator|+
-literal|";\">"
-operator|+
-name|found
-operator|+
-literal|"</span>"
-argument_list|)
-expr_stmt|;
-name|foundSomething
-operator|=
-literal|true
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|foundSomething
-condition|)
-block|{
-name|matcher
-operator|.
-name|appendTail
-argument_list|(
-name|sb
-argument_list|)
-expr_stmt|;
-name|text
-operator|=
-name|sb
-operator|.
-name|toString
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-return|return
-name|text
 return|;
 block|}
 block|}

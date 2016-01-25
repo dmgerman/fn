@@ -106,6 +106,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -206,7 +216,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -278,7 +288,7 @@ name|dialog
 decl_stmt|;
 DECL|field|fileTypes
 specifier|private
-name|ArrayList
+name|List
 argument_list|<
 name|ExternalFileType
 argument_list|>
@@ -312,7 +322,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -497,9 +507,10 @@ name|ExternalFileType
 index|[]
 name|types
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeSelection
 argument_list|()
@@ -538,9 +549,10 @@ name|void
 name|storeSettings
 parameter_list|()
 block|{
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|setExternalFileTypes
 argument_list|(
@@ -643,9 +655,10 @@ name|ExternalFileType
 argument_list|>
 name|list
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getDefaultExternalFileTypes
 argument_list|()
@@ -1059,11 +1072,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1110,11 +1124,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1134,13 +1149,13 @@ expr_stmt|;
 if|if
 condition|(
 name|frame
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
 name|setLocationRelativeTo
 argument_list|(
-name|frame
+name|dialog
 argument_list|)
 expr_stmt|;
 block|}
@@ -1148,7 +1163,7 @@ else|else
 block|{
 name|setLocationRelativeTo
 argument_list|(
-name|dialog
+name|frame
 argument_list|)
 expr_stmt|;
 block|}
@@ -1507,6 +1522,7 @@ implements|implements
 name|TableCellRenderer
 block|{
 DECL|field|lab
+specifier|private
 specifier|final
 name|JLabel
 name|lab
@@ -1652,9 +1668,8 @@ argument_list|(
 literal|"MIME type"
 argument_list|)
 return|;
-case|case
-literal|4
-case|:
+default|default:
+comment|// Five columns
 return|return
 name|Localization
 operator|.
@@ -1662,10 +1677,6 @@ name|lang
 argument_list|(
 literal|"Application"
 argument_list|)
-return|;
-default|default:
-return|return
-literal|null
 return|;
 block|}
 block|}
@@ -1770,18 +1781,13 @@ operator|.
 name|getMimeType
 argument_list|()
 return|;
-case|case
-literal|4
-case|:
+default|default:
+comment|// Five columns
 return|return
 name|type
 operator|.
 name|getOpenWith
 argument_list|()
-return|;
-default|default:
-return|return
-literal|null
 return|;
 block|}
 block|}
@@ -1891,6 +1897,7 @@ name|JDialog
 name|dialog
 decl_stmt|;
 DECL|field|editor
+specifier|private
 name|ExternalFileTypeEditor
 name|editor
 decl_stmt|;
@@ -1979,7 +1986,7 @@ block|{
 if|if
 condition|(
 name|frame
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -1988,7 +1995,7 @@ operator|=
 operator|new
 name|ExternalFileTypeEditor
 argument_list|(
-name|frame
+name|dialog
 argument_list|)
 expr_stmt|;
 block|}
@@ -1999,7 +2006,7 @@ operator|=
 operator|new
 name|ExternalFileTypeEditor
 argument_list|(
-name|dialog
+name|frame
 argument_list|)
 expr_stmt|;
 block|}
@@ -2018,19 +2025,20 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|frame
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
+operator|(
 name|frame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -2043,7 +2051,6 @@ operator|.
 name|repaint
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

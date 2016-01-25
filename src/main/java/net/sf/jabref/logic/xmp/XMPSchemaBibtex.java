@@ -104,7 +104,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -1282,12 +1282,12 @@ literal|"review"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setBibtexEntry (BibtexEntry entry)
+DECL|method|setBibtexEntry (BibEntry entry)
 specifier|public
 name|void
 name|setBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -1300,15 +1300,15 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      *      * @param entry      * @param database maybenull      */
-DECL|method|setBibtexEntry (BibtexEntry entry, BibtexDatabase database)
+DECL|method|setBibtexEntry (BibEntry entry, BibDatabase database)
 specifier|public
 name|void
 name|setBibtexEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -1344,7 +1344,7 @@ name|USE_XMP_PRIVACY_FILTER
 argument_list|)
 condition|)
 block|{
-name|TreeSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1354,18 +1354,13 @@ operator|new
 name|TreeSet
 argument_list|<>
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|prefs
 operator|.
-name|getStringArray
+name|getStringList
 argument_list|(
 name|JabRefPreferences
 operator|.
 name|XMP_PRIVACY_FILTERS
-argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1388,7 +1383,7 @@ block|{
 name|String
 name|value
 init|=
-name|BibtexDatabase
+name|BibDatabase
 operator|.
 name|getResolvedField
 argument_list|(
@@ -1451,7 +1446,7 @@ expr_stmt|;
 block|}
 DECL|method|getBibtexEntry ()
 specifier|public
-name|BibtexEntry
+name|BibEntry
 name|getBibtexEntry
 parameter_list|()
 block|{
@@ -1492,11 +1487,11 @@ operator|.
 name|MISC
 expr_stmt|;
 block|}
-name|BibtexEntry
+name|BibEntry
 name|e
 init|=
 operator|new
-name|BibtexEntry
+name|BibEntry
 argument_list|(
 name|IdGenerator
 operator|.

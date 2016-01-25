@@ -32,6 +32,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -128,6 +138,22 @@ name|LayoutFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|formatter
+operator|.
+name|Formatter
+import|;
+end_import
+
 begin_class
 DECL|class|HTMLConverter
 specifier|public
@@ -135,6 +161,8 @@ class|class
 name|HTMLConverter
 implements|implements
 name|LayoutFormatter
+implements|,
+name|Formatter
 block|{
 DECL|field|LOGGER
 specifier|private
@@ -151,6 +179,15 @@ name|HTMLConverter
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+DECL|field|MAX_TAG_LENGTH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_TAG_LENGTH
+init|=
+literal|100
 decl_stmt|;
 comment|/*   Portions Â© International Organization for Standardization 1986:      Permission to copy in any form is granted for use with      conforming SGML systems and applications as defined in      ISO 8879, provided this notice is included in all copies.      */
 comment|// most of the LaTeX commands can be read at http://en.wikibooks.org/wiki/LaTeX/Accents
@@ -4683,7 +4720,7 @@ decl_stmt|;
 DECL|field|escapedSymbols
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -4699,7 +4736,7 @@ decl_stmt|;
 DECL|field|escapedAccents
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|Integer
 argument_list|,
@@ -4715,7 +4752,7 @@ decl_stmt|;
 DECL|field|numSymbols
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|Integer
 argument_list|,
@@ -4731,7 +4768,7 @@ decl_stmt|;
 DECL|field|unicodeSymbols
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|Character
 argument_list|,
@@ -4763,28 +4800,30 @@ control|)
 block|{
 if|if
 condition|(
+operator|!
+operator|(
 name|aConversionList
 index|[
 literal|2
 index|]
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>=
-literal|1
+operator|)
 condition|)
 block|{
 if|if
 condition|(
+operator|!
+operator|(
 name|aConversionList
 index|[
 literal|1
 index|]
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>=
-literal|1
+operator|)
 condition|)
 block|{
 name|escapedSymbols
@@ -4809,15 +4848,16 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
+operator|(
 name|aConversionList
 index|[
 literal|0
 index|]
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>=
-literal|1
+operator|)
 condition|)
 block|{
 name|numSymbols
@@ -5769,14 +5809,6 @@ name|trim
 argument_list|()
 return|;
 block|}
-DECL|field|MAX_TAG_LENGTH
-specifier|private
-specifier|final
-name|int
-name|MAX_TAG_LENGTH
-init|=
-literal|100
-decl_stmt|;
 comment|/*private final int MAX_TAG_LENGTH = 30;*/
 comment|/*private final int MAX_CHAR_LENGTH = 10;      private int readHtmlChar(String text, StringBuffer sb, int position) {         // Have just read the< character that starts the tag.         int index = text.indexOf(';', position);         if ((index> position)&& (index-position< MAX_CHAR_LENGTH)) {             //String code = text.substring(position, index);             //System.out.println("Removed code: "+text.substring(position, index));             return index; // Just skip the tag.         } else return position; // Don't do anything.     }*/
 DECL|method|readTag (String text, int position)
@@ -5835,6 +5867,18 @@ name|position
 return|;
 comment|// Don't do anything.
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|getName ()
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"HTMLConverter"
+return|;
 block|}
 block|}
 end_class

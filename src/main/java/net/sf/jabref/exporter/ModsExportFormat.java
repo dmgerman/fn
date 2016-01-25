@@ -28,7 +28,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -231,13 +231,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> keySet)
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> keySet)
 specifier|public
 name|void
 name|performExport
 parameter_list|(
 specifier|final
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 specifier|final
@@ -277,6 +277,8 @@ name|file
 argument_list|)
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|VerifyingWriter
 name|ps
 init|=
@@ -284,7 +286,8 @@ name|ss
 operator|.
 name|getWriter
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|MODSDatabase
 name|md
 init|=
@@ -365,8 +368,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-try|try
-block|{
 name|finalizeSaveSession
 argument_list|(
 name|ss
@@ -375,32 +376,15 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|SaveException
-name|ex
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-name|ex
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
 name|Exception
-name|e
+name|ex
 parameter_list|)
 block|{
 throw|throw
 operator|new
 name|IOException
 argument_list|(
-name|e
+name|ex
 operator|.
 name|getMessage
 argument_list|()

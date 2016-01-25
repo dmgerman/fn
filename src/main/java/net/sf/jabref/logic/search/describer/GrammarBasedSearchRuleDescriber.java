@@ -701,7 +701,6 @@ argument_list|(
 literal|". "
 argument_list|)
 expr_stmt|;
-comment|// @formatter:off
 name|stringBuilder
 operator|.
 name|append
@@ -723,7 +722,6 @@ literal|"The search is case insensitive."
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 return|return
 name|stringBuilder
 operator|.

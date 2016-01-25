@@ -206,7 +206,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -375,7 +375,7 @@ decl_stmt|;
 comment|// Last retrieve the Bibtex-entries of the citations found
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entries
 init|=
@@ -425,7 +425,7 @@ return|;
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -479,7 +479,7 @@ specifier|private
 specifier|static
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getBibtexEntries
 parameter_list|(

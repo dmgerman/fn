@@ -250,7 +250,7 @@ name|jabref
 operator|.
 name|bibtex
 operator|.
-name|BibtexEntryWriter
+name|BibEntryWriter
 import|;
 end_import
 
@@ -362,7 +362,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -383,12 +383,12 @@ name|DEFAULT
 block|,
 name|PLAIN_BIBTEX
 block|}
-DECL|field|refPat
+DECL|field|REFERENCE_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|refPat
+name|REFERENCE_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -475,8 +475,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param fw The Writer to send the output to.      * @param database The database whose strings we should write.      * @throws IOException If anthing goes wrong in writing.      */
-DECL|method|writeStrings (Writer fw, BibtexDatabase database)
+comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param fw       The Writer to send the output to.      * @param database The database whose strings we should write.      * @throws IOException If anthing goes wrong in writing.      */
+DECL|method|writeStrings (Writer fw, BibDatabase database)
 specifier|private
 specifier|static
 name|void
@@ -485,7 +485,7 @@ parameter_list|(
 name|Writer
 name|fw
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 throws|throws
@@ -667,17 +667,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|fw
-operator|.
-name|write
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
 block|}
-DECL|method|writeString (Writer fw, BibtexString bs, HashMap<String, BibtexString> remaining, int maxKeyLength)
+DECL|method|writeString (Writer fw, BibtexString bs, Map<String, BibtexString> remaining, int maxKeyLength)
 specifier|private
 specifier|static
 name|void
@@ -689,7 +680,7 @@ parameter_list|,
 name|BibtexString
 name|bs
 parameter_list|,
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -714,6 +705,28 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//if the string has not been modified, write it back as it was
+if|if
+condition|(
+operator|!
+name|bs
+operator|.
+name|hasChanged
+argument_list|()
+condition|)
+block|{
+name|fw
+operator|.
+name|write
+argument_list|(
+name|bs
+operator|.
+name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 comment|// Then we go through the string looking for references to other strings. If we find references
 comment|// to strings that we will write, but still haven't, we write those before proceeding. This ensures
 comment|// that the string order will be acceptable for BibTeX.
@@ -735,7 +748,7 @@ name|m
 operator|=
 name|FileActions
 operator|.
-name|refPat
+name|REFERENCE_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -894,7 +907,7 @@ name|suffixSB
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 block|}
@@ -1034,25 +1047,17 @@ operator|.
 name|encPrefix
 operator|+
 name|encoding
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Saves the database to file. Two boolean values indicate whether only      * entries with a nonzero Globals.SEARCH value and only entries with a      * nonzero Globals.GROUPSEARCH value should be saved. This can be used to      * let the user save only the results of a search. False and false means all      * entries are saved.      */
-DECL|method|saveDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, Charset encoding, boolean suppressBackup)
+DECL|method|saveDatabase (BibDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, Charset encoding, boolean suppressBackup)
 specifier|public
 specifier|static
 name|SaveSession
 name|saveDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|MetaData
@@ -1079,19 +1084,6 @@ parameter_list|)
 throws|throws
 name|SaveException
 block|{
-name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|EntryType
-argument_list|>
-name|types
-init|=
-operator|new
-name|TreeMap
-argument_list|<>
-argument_list|()
-decl_stmt|;
 name|boolean
 name|backup
 init|=
@@ -1117,7 +1109,7 @@ block|}
 name|SaveSession
 name|session
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|exceptionCause
 init|=
 literal|null
@@ -1185,6 +1177,19 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|EntryType
+argument_list|>
+name|types
+init|=
+operator|new
+name|TreeMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
 comment|// Get our data stream. This stream writes only to a temporary file,
 comment|// until committed.
 try|try
@@ -1237,7 +1242,7 @@ comment|// ones. Apart from crossref requirements, entries will be
 comment|// sorted as they appear on the screen.
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sorter
 init|=
@@ -1254,11 +1259,11 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|BibtexEntryWriter
+name|BibEntryWriter
 name|bibtexEntryWriter
 init|=
 operator|new
-name|BibtexEntryWriter
+name|BibEntryWriter
 argument_list|(
 operator|new
 name|LatexFieldFormatter
@@ -1269,7 +1274,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|sorter
@@ -1382,15 +1387,6 @@ argument_list|,
 name|writer
 argument_list|)
 expr_stmt|;
-name|writer
-operator|.
-name|write
-argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 comment|// Write meta data.
@@ -1469,6 +1465,46 @@ argument_list|,
 name|writer
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+block|}
+comment|//finally write whatever remains of the file, but at least a concluding newline
+if|if
+condition|(
+operator|(
+name|database
+operator|.
+name|getEpilog
+argument_list|()
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|!
+operator|(
+name|database
+operator|.
+name|getEpilog
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
+condition|)
+block|{
+name|writer
+operator|.
+name|write
+argument_list|(
+name|database
+operator|.
+name|getEpilog
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|writer
 operator|.
 name|write
@@ -1480,18 +1516,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
-block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Could not write file"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 name|session
 operator|.
@@ -2031,7 +2069,7 @@ name|List
 argument_list|<
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 argument_list|>
 name|getSaveComparators
@@ -2058,7 +2096,7 @@ name|List
 argument_list|<
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 argument_list|>
 name|comparators
@@ -2141,7 +2179,7 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -2152,13 +2190,13 @@ name|comparators
 return|;
 block|}
 comment|/**      * Saves the database to file, including only the entries included in the      * supplied input array bes.      *      * @return A List containing warnings, if any.      */
-DECL|method|savePartOfDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibtexEntry[] bes, Charset encoding, DatabaseSaveType saveType)
+DECL|method|savePartOfDatabase (BibDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibEntry[] bes, Charset encoding, DatabaseSaveType saveType)
 specifier|public
 specifier|static
 name|SaveSession
 name|savePartOfDatabase
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|MetaData
@@ -2170,7 +2208,7 @@ parameter_list|,
 name|JabRefPreferences
 name|prefs
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|bes
 parameter_list|,
@@ -2183,27 +2221,7 @@ parameter_list|)
 throws|throws
 name|SaveException
 block|{
-name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|EntryType
-argument_list|>
-name|types
-init|=
-operator|new
-name|TreeMap
-argument_list|<>
-argument_list|()
-decl_stmt|;
-comment|// Map
-comment|// to
-comment|// collect
-comment|// entry
-comment|// type
-comment|// definitions
-comment|// that we must save along with entries using them.
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 literal|null
@@ -2260,6 +2278,21 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+comment|// Map to collect entry type definitions
+comment|// that we must save along with entries using them.
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|EntryType
+argument_list|>
+name|types
+init|=
+operator|new
+name|TreeMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
 comment|// Define our data stream.
 try|try
 init|(
@@ -2323,7 +2356,7 @@ name|List
 argument_list|<
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 argument_list|>
 name|comparators
@@ -2340,7 +2373,7 @@ decl_stmt|;
 comment|// Use glazed lists to get a sorted view of the entries:
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sorter
 init|=
@@ -2376,11 +2409,11 @@ name|comparators
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|BibtexEntryWriter
+name|BibEntryWriter
 name|bibtexEntryWriter
 init|=
 operator|new
-name|BibtexEntryWriter
+name|BibEntryWriter
 argument_list|(
 operator|new
 name|LatexFieldFormatter
@@ -2391,7 +2424,7 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|aSorter
 range|:
 name|sorter
@@ -2449,6 +2482,16 @@ argument_list|,
 name|fw
 argument_list|)
 expr_stmt|;
+comment|//only append newline if the entry has changed
+if|if
+condition|(
+operator|!
+name|be
+operator|.
+name|hasChanged
+argument_list|()
+condition|)
+block|{
 name|fw
 operator|.
 name|write
@@ -2458,6 +2501,7 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Write meta data.
 if|if
@@ -2695,16 +2739,16 @@ name|reader
 return|;
 block|}
 comment|/*      * We have begun to use getSortedEntries() for both database save operations      * and non-database save operations.  In a non-database save operation      * (such as the exportDatabase call), we do not wish to use the      * global preference of saving in standard order.      */
-DECL|method|getSortedEntries (BibtexDatabase database, MetaData metaData, Set<String> keySet, boolean isSaveOperation)
+DECL|method|getSortedEntries (BibDatabase database, MetaData metaData, Set<String> keySet, boolean isSaveOperation)
 specifier|public
 specifier|static
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|getSortedEntries
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|MetaData
@@ -2720,6 +2764,38 @@ name|boolean
 name|isSaveOperation
 parameter_list|)
 block|{
+comment|//if no meta data are present, simply return in original order
+if|if
+condition|(
+name|metaData
+operator|==
+literal|null
+condition|)
+block|{
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|result
+init|=
+operator|new
+name|LinkedList
+argument_list|()
+decl_stmt|;
+name|result
+operator|.
+name|addAll
+argument_list|(
+name|database
+operator|.
+name|getEntries
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+name|result
+return|;
+block|}
 name|boolean
 name|inOriginalOrder
 decl_stmt|;
@@ -2811,7 +2887,7 @@ name|List
 argument_list|<
 name|Comparator
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 argument_list|>
 name|comparators
@@ -2865,7 +2941,7 @@ expr_stmt|;
 block|}
 name|FieldComparatorStack
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|comparatorStack
 init|=
@@ -2878,7 +2954,7 @@ argument_list|)
 decl_stmt|;
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|sorter
 init|=
@@ -2902,32 +2978,12 @@ name|getKeySet
 argument_list|()
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|keySet
-operator|!=
-literal|null
-condition|)
-block|{
-name|Iterator
-argument_list|<
-name|String
-argument_list|>
-name|i
-init|=
-name|keySet
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
 for|for
 control|(
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
+name|String
+name|id
+range|:
+name|keySet
 control|)
 block|{
 name|sorter
@@ -2938,14 +2994,10 @@ name|database
 operator|.
 name|getEntryById
 argument_list|(
-name|i
-operator|.
-name|next
-argument_list|()
+name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|Collections
 operator|.
@@ -2961,44 +3013,50 @@ name|sorter
 return|;
 block|}
 comment|/**      * @return true iff the entry has a nonzero value in its field.      */
-DECL|method|nonZeroField (BibtexEntry be, String field)
+DECL|method|nonZeroField (BibEntry be, String field)
 specifier|private
 specifier|static
 name|boolean
 name|nonZeroField
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|be
 parameter_list|,
 name|String
 name|field
 parameter_list|)
 block|{
-name|String
-name|o
-init|=
+if|if
+condition|(
+name|be
+operator|.
+name|hasField
+argument_list|(
+name|field
+argument_list|)
+condition|)
+block|{
+return|return
+operator|!
+literal|"0"
+operator|.
+name|equals
+argument_list|(
 name|be
 operator|.
 name|getField
 argument_list|(
 name|field
 argument_list|)
-decl_stmt|;
-return|return
-operator|(
-name|o
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|!
-literal|"0"
-operator|.
-name|equals
-argument_list|(
-name|o
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 block|}
 end_class

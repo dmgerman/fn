@@ -89,7 +89,7 @@ block|{
 DECL|field|fullNameLowerCase2Abbreviation
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -105,7 +105,7 @@ decl_stmt|;
 DECL|field|isoLowerCase2Abbreviation
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -121,7 +121,7 @@ decl_stmt|;
 DECL|field|medlineLowerCase2Abbreviation
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,

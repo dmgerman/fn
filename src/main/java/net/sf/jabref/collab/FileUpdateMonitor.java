@@ -76,6 +76,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|io
 operator|.
 name|File
@@ -137,7 +147,7 @@ decl_stmt|;
 DECL|field|entries
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -395,8 +405,8 @@ operator|)
 name|o
 operator|)
 operator|.
-name|timeStamp
-operator|--
+name|decreaseTimeStamp
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Removes a listener from the monitor.      * @param handle String The handle for the listener to remove.      */
@@ -512,7 +522,8 @@ operator|)
 name|o
 operator|)
 operator|.
-name|tmpFile
+name|getTmpFile
+argument_list|()
 return|;
 block|}
 comment|/**      * A class containing the File, the FileUpdateListener and the current time stamp for one file.      */
@@ -522,25 +533,30 @@ class|class
 name|Entry
 block|{
 DECL|field|listener
+specifier|private
 specifier|final
 name|FileUpdateListener
 name|listener
 decl_stmt|;
 DECL|field|file
+specifier|private
 specifier|final
 name|File
 name|file
 decl_stmt|;
 DECL|field|tmpFile
+specifier|private
 specifier|final
 name|File
 name|tmpFile
 decl_stmt|;
 DECL|field|timeStamp
+specifier|private
 name|long
 name|timeStamp
 decl_stmt|;
 DECL|field|fileSize
+specifier|private
 name|long
 name|fileSize
 decl_stmt|;
@@ -584,6 +600,13 @@ operator|.
 name|getTempFile
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|tmpFile
+operator|!=
+literal|null
+condition|)
+block|{
 name|tmpFile
 operator|.
 name|deleteOnExit
@@ -592,6 +615,7 @@ expr_stmt|;
 name|copy
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**          * Check if time stamp or the file size has changed.          * @throws IOException if the file does no longer exist.          * @return boolean true if the file has changed.          */
 DECL|method|hasBeenUpdated ()
@@ -610,14 +634,6 @@ operator|.
 name|lastModified
 argument_list|()
 decl_stmt|;
-name|long
-name|fileSizeNow
-init|=
-name|file
-operator|.
-name|length
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|modified
@@ -633,6 +649,14 @@ literal|"File deleted"
 argument_list|)
 throw|;
 block|}
+name|long
+name|fileSizeNow
+init|=
+name|file
+operator|.
+name|length
+argument_list|()
+decl_stmt|;
 return|return
 operator|(
 name|timeStamp
@@ -775,6 +799,26 @@ name|listener
 operator|.
 name|fileRemoved
 argument_list|()
+expr_stmt|;
+block|}
+DECL|method|getTmpFile ()
+specifier|public
+name|File
+name|getTmpFile
+parameter_list|()
+block|{
+return|return
+name|tmpFile
+return|;
+block|}
+DECL|method|decreaseTimeStamp ()
+specifier|public
+name|void
+name|decreaseTimeStamp
+parameter_list|()
+block|{
+name|timeStamp
+operator|--
 expr_stmt|;
 block|}
 block|}

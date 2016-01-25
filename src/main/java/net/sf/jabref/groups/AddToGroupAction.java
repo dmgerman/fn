@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -25,6 +25,16 @@ operator|.
 name|event
 operator|.
 name|ActionEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
 import|;
 end_import
 
@@ -96,7 +106,21 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
 import|;
 end_import
 
@@ -140,20 +164,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|gui
 operator|.
 name|undo
@@ -170,10 +180,10 @@ name|AddToGroupAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|m_node
+DECL|field|mNode
 specifier|private
 name|GroupTreeNode
-name|m_node
+name|mNode
 decl_stmt|;
 DECL|field|m_move
 specifier|private
@@ -181,10 +191,10 @@ specifier|final
 name|boolean
 name|m_move
 decl_stmt|;
-DECL|field|m_panel
+DECL|field|mPanel
 specifier|private
 name|BasePanel
-name|m_panel
+name|mPanel
 decl_stmt|;
 comment|/**      * @param move If true, remove node from all other groups.      */
 DECL|method|AddToGroupAction (GroupTreeNode node, boolean move, BasePanel panel)
@@ -212,7 +222,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|m_node
+name|mNode
 operator|=
 name|node
 expr_stmt|;
@@ -220,7 +230,7 @@ name|m_move
 operator|=
 name|move
 expr_stmt|;
-name|m_panel
+name|mPanel
 operator|=
 name|panel
 expr_stmt|;
@@ -266,7 +276,7 @@ name|BasePanel
 name|panel
 parameter_list|)
 block|{
-name|m_panel
+name|mPanel
 operator|=
 name|panel
 expr_stmt|;
@@ -280,7 +290,7 @@ name|GroupTreeNode
 name|node
 parameter_list|)
 block|{
-name|m_node
+name|mNode
 operator|=
 name|node
 expr_stmt|;
@@ -297,11 +307,11 @@ name|evt
 parameter_list|)
 block|{
 specifier|final
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
-name|m_panel
+name|mPanel
 operator|.
 name|getSelectedEntries
 argument_list|()
@@ -335,7 +345,7 @@ operator|(
 operator|(
 name|GroupTreeNode
 operator|)
-name|m_node
+name|mNode
 operator|.
 name|getRoot
 argument_list|()
@@ -344,24 +354,19 @@ operator|.
 name|preorderEnumeration
 argument_list|()
 decl_stmt|;
+for|for
+control|(
 name|GroupTreeNode
 name|node
-decl_stmt|;
-while|while
-condition|(
-name|e
+range|:
+name|Collections
 operator|.
-name|hasMoreElements
-argument_list|()
-condition|)
+name|list
+argument_list|(
+name|e
+argument_list|)
+control|)
 block|{
-name|node
-operator|=
-name|e
-operator|.
-name|nextElement
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -378,7 +383,7 @@ continue|continue;
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -467,7 +472,7 @@ operator|-
 literal|1
 index|]
 operator|=
-name|m_node
+name|mNode
 operator|.
 name|getGroup
 argument_list|()
@@ -483,12 +488,12 @@ name|groups
 argument_list|,
 name|entries
 argument_list|,
-name|m_panel
+name|mPanel
 operator|.
 name|getDatabase
 argument_list|()
 argument_list|,
-name|m_panel
+name|mPanel
 operator|.
 name|frame
 argument_list|()
@@ -513,7 +518,7 @@ operator|new
 name|AbstractGroup
 index|[]
 block|{
-name|m_node
+name|mNode
 operator|.
 name|getGroup
 argument_list|()
@@ -521,12 +526,12 @@ block|}
 operator|,
 name|entries
 operator|,
-name|m_panel
+name|mPanel
 operator|.
 name|getDatabase
 argument_list|()
 operator|,
-name|m_panel
+name|mPanel
 operator|.
 name|frame
 argument_list|()
@@ -552,7 +557,7 @@ comment|// edit has to be stored:
 end_comment
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|storeCurrentEdit
 argument_list|()
@@ -642,7 +647,7 @@ comment|// then add
 name|AbstractUndoableEdit
 name|undoAdd
 init|=
-name|m_node
+name|mNode
 operator|.
 name|addToGroup
 argument_list|(
@@ -670,7 +675,7 @@ block|{
 name|AbstractUndoableEdit
 name|undoAdd
 init|=
-name|m_node
+name|mNode
 operator|.
 name|addToGroup
 argument_list|(
@@ -706,7 +711,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|undoManager
 operator|.
@@ -718,7 +723,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|markBaseChanged
 argument_list|()
@@ -726,7 +731,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|updateEntryEditorIfShowing
 argument_list|()
@@ -734,7 +739,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_expr_stmt
-name|m_panel
+name|mPanel
 operator|.
 name|getGroupSelector
 argument_list|()

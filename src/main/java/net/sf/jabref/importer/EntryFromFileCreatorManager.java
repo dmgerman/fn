@@ -110,7 +110,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|external
+operator|.
+name|ExternalFileType
 import|;
 end_import
 
@@ -124,7 +126,7 @@ name|jabref
 operator|.
 name|external
 operator|.
-name|ExternalFileType
+name|ExternalFileTypes
 import|;
 end_import
 
@@ -202,7 +204,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -218,7 +220,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -271,7 +273,7 @@ name|ExternalFileType
 index|[]
 name|fileTypes
 init|=
-name|JabRefPreferences
+name|ExternalFileTypes
 operator|.
 name|getInstance
 argument_list|()
@@ -381,7 +383,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Returns a EntryFromFileCreator object that is capable of creating a      * BibtexEntry for the given File.      *      * @param file the pdf file      * @return null if there is no EntryFromFileCreator for this File.      */
+comment|/**      * Returns a EntryFromFileCreator object that is capable of creating a      * BibEntry for the given File.      *      * @param file the pdf file      * @return null if there is no EntryFromFileCreator for this File.      */
 DECL|method|getEntryCreator (File file)
 specifier|public
 name|EntryFromFileCreator
@@ -438,7 +440,7 @@ literal|null
 return|;
 block|}
 comment|/**      * Trys to add a entry for each file in the List.      *      * @param files      * @param database      * @param entryType      * @return List of unexcpected import event messages including failures.      */
-DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, EntryType entryType, boolean generateKeywordsFromPathToFile)
+DECL|method|addEntrysFromFiles (List<File> files, BibDatabase database, EntryType entryType, boolean generateKeywordsFromPathToFile)
 specifier|public
 name|List
 argument_list|<
@@ -452,7 +454,7 @@ name|File
 argument_list|>
 name|files
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|EntryType
@@ -495,7 +497,7 @@ name|importGUIMessages
 return|;
 block|}
 comment|/**      * Tries to add a entry for each file in the List.      *      * @param files      * @param database      * @param panel      * @param entryType      * @param generateKeywordsFromPathToFile      * @param changeListener      * @param importGUIMessages list of unexpected import event - Messages including      *         failures      * @return Returns The number of entries added      */
-DECL|method|addEntriesFromFiles (List<File> files, BibtexDatabase database, BasePanel panel, EntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener, List<String> importGUIMessages)
+DECL|method|addEntriesFromFiles (List<File> files, BibDatabase database, BasePanel panel, EntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener, List<String> importGUIMessages)
 specifier|public
 name|int
 name|addEntriesFromFiles
@@ -506,7 +508,7 @@ name|File
 argument_list|>
 name|files
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|BasePanel
@@ -559,11 +561,28 @@ decl_stmt|;
 if|if
 condition|(
 name|creator
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
-name|BibtexEntry
+name|importGUIMessages
+operator|.
+name|add
+argument_list|(
+literal|"Problem importing "
+operator|+
+name|f
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|": Unknown filetype."
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|BibEntry
 name|entry
 init|=
 name|creator
@@ -634,7 +653,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*                  * TODO: database.insertEntry(BibtexEntry) is not sensible. Why                  * does 'true' mean "There were duplicates", while 'false' means                  * "Everything alright"?                  */
+comment|/*                  * TODO: database.insertEntry(BibEntry) is not sensible. Why                  * does 'true' mean "There were duplicates", while 'false' means                  * "Everything alright"?                  */
 if|if
 condition|(
 name|database
@@ -673,7 +692,7 @@ operator|.
 name|getPath
 argument_list|()
 operator|+
-literal|": Insert into BibtexDatabase failed."
+literal|": Insert into BibDatabase failed."
 argument_list|)
 expr_stmt|;
 block|}
@@ -707,23 +726,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
-else|else
-block|{
-name|importGUIMessages
-operator|.
-name|add
-argument_list|(
-literal|"Problem importing "
-operator|+
-name|f
-operator|.
-name|getPath
-argument_list|()
-operator|+
-literal|": Unknown filetype."
-argument_list|)
-expr_stmt|;
 block|}
 if|if
 condition|(

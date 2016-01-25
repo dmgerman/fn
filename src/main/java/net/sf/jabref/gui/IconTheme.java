@@ -142,6 +142,8 @@ specifier|static
 name|Font
 name|FONT_16
 decl_stmt|;
+comment|/* Colors */
+comment|// JabRef's default colors
 DECL|field|DEFAULT_COLOR
 specifier|public
 specifier|static
@@ -159,6 +161,7 @@ argument_list|,
 literal|143
 argument_list|)
 decl_stmt|;
+comment|// The purple color of the logo
 DECL|field|DEFAULT_DISABLED_COLOR
 specifier|public
 specifier|static
@@ -176,6 +179,9 @@ argument_list|,
 literal|200
 argument_list|)
 decl_stmt|;
+comment|// Christmas edition
+comment|//public static final Color DEFAULT_COLOR = new Color(0x155115);
+comment|//public static final Color DEFAULT_DISABLED_COLOR = new Color(0x990000);
 DECL|field|DEFAULT_SIZE
 specifier|public
 specifier|static
@@ -193,6 +199,41 @@ name|int
 name|SMALL_SIZE
 init|=
 literal|16
+decl_stmt|;
+DECL|field|KEY_TO_ICON
+specifier|private
+specifier|static
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|KEY_TO_ICON
+init|=
+name|readIconThemeFile
+argument_list|(
+name|IconTheme
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+literal|"/images/Icons.properties"
+argument_list|)
+argument_list|,
+literal|"/images/external/"
+argument_list|)
+decl_stmt|;
+DECL|field|DEFAULT_ICON_PATH
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_ICON_PATH
+init|=
+literal|"/images/external/red.png"
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -1363,41 +1404,6 @@ argument_list|)
 return|;
 block|}
 block|}
-DECL|field|KEY_TO_ICON
-specifier|private
-specifier|static
-specifier|final
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|KEY_TO_ICON
-init|=
-name|readIconThemeFile
-argument_list|(
-name|IconTheme
-operator|.
-name|class
-operator|.
-name|getResource
-argument_list|(
-literal|"/images/Icons.properties"
-argument_list|)
-argument_list|,
-literal|"/images/external/"
-argument_list|)
-decl_stmt|;
-DECL|field|DEFAULT_ICON_PATH
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|DEFAULT_ICON_PATH
-init|=
-literal|"/images/external/red.png"
-decl_stmt|;
 comment|/**      * Constructs an ImageIcon for the image representing the given function, in the resource      * file listing images.      *      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The ImageIcon for the function.      */
 DECL|method|getImage (String name)
 specifier|public
@@ -1607,7 +1613,7 @@ name|line
 operator|.
 name|indexOf
 argument_list|(
-literal|"="
+literal|'='
 argument_list|)
 decl_stmt|;
 name|String

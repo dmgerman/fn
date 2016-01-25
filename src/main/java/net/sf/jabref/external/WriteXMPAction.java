@@ -158,7 +158,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -238,7 +238,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -254,7 +254,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -326,13 +326,13 @@ name|panel
 decl_stmt|;
 DECL|field|entries
 specifier|private
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 decl_stmt|;
 DECL|field|database
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|optDiag
@@ -411,7 +411,7 @@ condition|)
 block|{
 name|Collection
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|var
 init|=
@@ -427,7 +427,7 @@ operator|.
 name|toArray
 argument_list|(
 operator|new
-name|BibtexEntry
+name|BibEntry
 index|[
 name|var
 operator|.
@@ -590,7 +590,7 @@ return|return;
 block|}
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -675,23 +675,16 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 expr_stmt|;
-name|String
-name|field
-init|=
+if|if
+condition|(
 name|entry
 operator|.
-name|getField
+name|hasField
 argument_list|(
 name|Globals
 operator|.
 name|FILE_FIELD
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|field
-operator|!=
-literal|null
 condition|)
 block|{
 name|FileListTableModel
@@ -705,7 +698,14 @@ name|tm
 operator|.
 name|setContent
 argument_list|(
-name|field
+name|entry
+operator|.
+name|getField
+argument_list|(
+name|Globals
+operator|.
+name|FILE_FIELD
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
@@ -741,8 +741,7 @@ condition|(
 operator|(
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|!=
 literal|null
 operator|)
@@ -753,8 +752,7 @@ name|equals
 argument_list|(
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -772,8 +770,7 @@ name|expandFilename
 argument_list|(
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|dirs
 argument_list|)
@@ -798,7 +795,8 @@ block|}
 block|}
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -823,7 +821,8 @@ operator|++
 expr_stmt|;
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -864,7 +863,8 @@ operator|++
 expr_stmt|;
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -882,7 +882,8 @@ argument_list|)
 expr_stmt|;
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -914,7 +915,8 @@ argument_list|)
 expr_stmt|;
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -924,7 +926,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 operator|+
 literal|".\n"
@@ -942,7 +944,8 @@ parameter_list|)
 block|{
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -967,7 +970,8 @@ argument_list|)
 expr_stmt|;
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -992,12 +996,14 @@ if|if
 condition|(
 name|optDiag
 operator|.
-name|canceled
+name|isCanceled
+argument_list|()
 condition|)
 block|{
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -1007,8 +1013,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Operation canceled.\n"
+literal|"Operation canceled."
 argument_list|)
+operator|+
+literal|"\n"
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1016,7 +1024,8 @@ block|}
 block|}
 name|optDiag
 operator|.
-name|progressArea
+name|getProgressArea
+argument_list|()
 operator|.
 name|append
 argument_list|(
@@ -1114,6 +1123,7 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|okButton
+specifier|private
 specifier|final
 name|JButton
 name|okButton
@@ -1125,11 +1135,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"OK"
 argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancelButton
+specifier|private
 specifier|final
 name|JButton
 name|cancelButton
@@ -1146,10 +1157,12 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|canceled
+specifier|private
 name|boolean
 name|canceled
 decl_stmt|;
 DECL|field|progressArea
+specifier|private
 specifier|final
 name|JTextArea
 name|progressArea
@@ -1265,11 +1278,12 @@ name|put
 argument_list|(
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -1604,6 +1618,26 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|isCanceled ()
+specifier|public
+name|boolean
+name|isCanceled
+parameter_list|()
+block|{
+return|return
+name|canceled
+return|;
+block|}
+DECL|method|getProgressArea ()
+specifier|public
+name|JTextArea
+name|getProgressArea
+parameter_list|()
+block|{
+return|return
+name|progressArea
+return|;
 block|}
 block|}
 block|}

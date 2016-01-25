@@ -350,7 +350,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -366,7 +366,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -490,6 +490,7 @@ name|JPanel
 block|{
 DECL|field|entryEditor
 specifier|private
+specifier|final
 name|EntryEditor
 name|entryEditor
 decl_stmt|;
@@ -507,12 +508,12 @@ name|off
 decl_stmt|;
 DECL|field|entry
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|entry
 decl_stmt|;
 DECL|field|database
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|metaData
@@ -537,7 +538,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|ExternalFilePanel (final String fieldName, final MetaData metaData, final BibtexEntry entry, final FieldEditor editor, final OpenFileFilter off)
+DECL|method|ExternalFilePanel (final String fieldName, final MetaData metaData, final BibEntry entry, final FieldEditor editor, final OpenFileFilter off)
 specifier|public
 name|ExternalFilePanel
 parameter_list|(
@@ -550,7 +551,7 @@ name|MetaData
 name|metaData
 parameter_list|,
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
 specifier|final
@@ -582,12 +583,6 @@ operator|.
 name|entry
 operator|=
 name|entry
-expr_stmt|;
-name|this
-operator|.
-name|entryEditor
-operator|=
-literal|null
 expr_stmt|;
 block|}
 DECL|method|ExternalFilePanel (final JabRefFrame frame, final MetaData metaData, final EntryEditor entryEditor, final String fieldName, final OpenFileFilter off, final FieldEditor editor)
@@ -929,15 +924,15 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Change which entry this panel is operating on. This is used only when      * this panel is not attached to an entry editor.      */
-DECL|method|setEntry (BibtexEntry entry, BibtexDatabase database)
+DECL|method|setEntry (BibEntry entry, BibDatabase database)
 specifier|public
 name|void
 name|setEntry
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -956,7 +951,7 @@ expr_stmt|;
 block|}
 DECL|method|getDatabase ()
 specifier|private
-name|BibtexDatabase
+name|BibDatabase
 name|getDatabase
 parameter_list|()
 block|{
@@ -975,7 +970,7 @@ return|;
 block|}
 DECL|method|getEntry ()
 specifier|private
-name|BibtexEntry
+name|BibEntry
 name|getEntry
 parameter_list|()
 block|{
@@ -1310,7 +1305,7 @@ name|LOGGER
 operator|.
 name|info
 argument_list|(
-literal|"Error while converting BibtexEntry to XMP "
+literal|"Error while converting BibEntry to XMP "
 operator|+
 name|finalFile
 operator|.
@@ -1679,7 +1674,7 @@ return|return;
 block|}
 comment|/*          * If this panel belongs in an entry editor, note which entry is          * currently shown:          */
 specifier|final
-name|BibtexEntry
+name|BibEntry
 name|targetEntry
 decl_stmt|;
 if|if
@@ -2402,7 +2397,9 @@ name|get
 argument_list|(
 name|fieldName
 operator|+
-literal|"Directory"
+name|Globals
+operator|.
+name|DIR_SUFFIX
 argument_list|)
 operator|==
 literal|null

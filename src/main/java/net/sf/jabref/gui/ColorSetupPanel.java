@@ -100,6 +100,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -171,7 +181,7 @@ decl_stmt|;
 DECL|field|buttons
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|ColorButton
 argument_list|>

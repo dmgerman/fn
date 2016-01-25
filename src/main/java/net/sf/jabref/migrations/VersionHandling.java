@@ -38,7 +38,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -292,7 +292,7 @@ return|return
 name|root
 return|;
 block|}
-DECL|method|importGroups (Vector<String> orderedData, BibtexDatabase db, int version)
+DECL|method|importGroups (Vector<String> orderedData, BibDatabase db, int version)
 specifier|public
 specifier|static
 name|GroupTreeNode
@@ -304,7 +304,7 @@ name|String
 argument_list|>
 name|orderedData
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|int
@@ -384,7 +384,7 @@ class|class
 name|Version0_1
 block|{
 comment|/**          * Parses the textual representation obtained from          * GroupTreeNode.toString() and recreates that node and all of its          * children from it.          *          * @throws Exception          *             When a group could not be recreated          */
-DECL|method|fromString (String s, BibtexDatabase db, int version)
+DECL|method|fromString (String s, BibDatabase db, int version)
 specifier|private
 specifier|static
 name|GroupTreeNode
@@ -393,7 +393,7 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|int
@@ -768,7 +768,7 @@ specifier|static
 class|class
 name|Version2_3
 block|{
-DECL|method|fromString (Vector<String> data, BibtexDatabase db, int version)
+DECL|method|fromString (Vector<String> data, BibDatabase db, int version)
 specifier|private
 specifier|static
 name|GroupTreeNode
@@ -780,7 +780,7 @@ name|String
 argument_list|>
 name|data
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|db
 parameter_list|,
 name|int
@@ -882,7 +882,6 @@ argument_list|(
 literal|"bad format"
 argument_list|)
 throw|;
-comment|// JZTODO lyrics
 block|}
 name|level
 operator|=

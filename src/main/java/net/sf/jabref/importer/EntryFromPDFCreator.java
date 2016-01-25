@@ -64,6 +64,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -116,7 +126,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -170,7 +180,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|external
+operator|.
+name|ExternalFileType
 import|;
 end_import
 
@@ -184,7 +196,7 @@ name|jabref
 operator|.
 name|external
 operator|.
-name|ExternalFileType
+name|ExternalFileTypes
 import|;
 end_import
 
@@ -221,7 +233,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Uses XMPUtils to get one BibtexEntry for a PDF-File.  * Also imports the non-XMP Data (PDDocument-Information) using XMPUtil.getBibtexEntryFromDocumentInformation.  * If data from more than one entry is read by XMPUtil then this entys are merged into one.  * @author Dan  * @version 12.11.2008 | 22:12:48  *  */
+comment|/**  * Uses XMPUtils to get one BibEntry for a PDF-File.  * Also imports the non-XMP Data (PDDocument-Information) using XMPUtil.getBibtexEntryFromDocumentInformation.  * If data from more than one entry is read by XMPUtil then this entys are merged into one.  * @author Dan  * @version 12.11.2008 | 22:12:48  *  */
 end_comment
 
 begin_class
@@ -256,7 +268,7 @@ block|{
 name|ExternalFileType
 name|pdfFileType
 init|=
-name|JabRefPreferences
+name|ExternalFileTypes
 operator|.
 name|getInstance
 argument_list|()
@@ -339,7 +351,10 @@ annotation|@
 name|Override
 DECL|method|createBibtexEntry (File pdfFile)
 specifier|protected
-name|BibtexEntry
+name|Optional
+argument_list|<
+name|BibEntry
+argument_list|>
 name|createBibtexEntry
 parameter_list|(
 name|File
@@ -356,7 +371,10 @@ argument_list|)
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 name|PdfImporter
@@ -425,6 +443,10 @@ operator|==
 literal|1
 assert|;
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|res
 operator|.
 name|entries
@@ -433,11 +455,12 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
+argument_list|)
 return|;
 comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry);         addEntyDataFromXMP(pdfFile, entry);          if (entry.getField("title") == null) {         	entry.setField("title", pdfFile.getName());         }          return entry;*/
 block|}
 comment|/** Adds entry data read from the PDDocument information of the file.      * @param pdfFile      * @param entry      */
-DECL|method|addEntryDataFromPDDocumentInformation (File pdfFile, BibtexEntry entry)
+DECL|method|addEntryDataFromPDDocumentInformation (File pdfFile, BibEntry entry)
 specifier|private
 name|void
 name|addEntryDataFromPDDocumentInformation
@@ -445,7 +468,7 @@ parameter_list|(
 name|File
 name|pdfFile
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -483,7 +506,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|BibtexEntry
+name|BibEntry
 name|entryDI
 init|=
 name|XMPUtil
@@ -618,7 +641,7 @@ block|}
 block|}
 block|}
 comment|/**      * Adds all data Found in all the entrys of this XMP file to the given      * entry. This was implemented without having much knowledge of the XMP      * format.      *      * @param aFile      * @param entry      */
-DECL|method|addEntyDataFromXMP (File aFile, BibtexEntry entry)
+DECL|method|addEntyDataFromXMP (File aFile, BibEntry entry)
 specifier|private
 name|void
 name|addEntyDataFromXMP
@@ -626,7 +649,7 @@ parameter_list|(
 name|File
 name|aFile
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 block|{
@@ -634,7 +657,7 @@ try|try
 block|{
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|entrys
 init|=

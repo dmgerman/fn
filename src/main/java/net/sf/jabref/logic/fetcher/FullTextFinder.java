@@ -26,7 +26,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -71,14 +71,14 @@ interface|interface
 name|FullTextFinder
 block|{
 comment|/**      * Tries to find a fulltext URL for a given BibTex entry.      *      * @param entry The Bibtex entry      * @return The fulltext PDF URL Optional, if found, or an empty Optional if not found.      * @throws NullPointerException if no BibTex entry is given      * @throws java.io.IOException      */
-DECL|method|findFullText (BibtexEntry entry)
+DECL|method|findFullText (BibEntry entry)
 name|Optional
 argument_list|<
 name|URL
 argument_list|>
 name|findFullText
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 parameter_list|)
 throws|throws

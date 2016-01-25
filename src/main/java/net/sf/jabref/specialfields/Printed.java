@@ -96,7 +96,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|// @formatter:off
 comment|// DO NOT TRANSLATE "printed" as this makes the produced .bib files non portable
 name|values
 operator|.
@@ -115,7 +114,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Toogle print status"
+literal|"Toggle print status"
 argument_list|)
 argument_list|,
 name|IconTheme
@@ -131,12 +130,11 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Toogle print status"
+literal|"Toggle print status"
 argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 name|this
 operator|.
 name|setValues

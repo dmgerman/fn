@@ -98,6 +98,16 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by Morten O. Alver, 16 Feb. 2007  */
 end_comment
@@ -1824,20 +1834,6 @@ argument_list|(
 name|comp
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|currentword
-operator|==
-literal|null
-condition|)
-block|{
-name|currentword
-operator|=
-operator|new
-name|StringBuffer
-argument_list|()
-expr_stmt|;
-block|}
 comment|// only "real characters" end up here
 assert|assert
 operator|(
@@ -1988,12 +1984,32 @@ name|String
 name|beginning
 parameter_list|)
 block|{
-return|return
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|results
+init|=
 name|completer
 operator|.
 name|complete
 argument_list|(
 name|beginning
+argument_list|)
+decl_stmt|;
+return|return
+name|results
+operator|.
+name|toArray
+argument_list|(
+operator|new
+name|String
+index|[
+name|results
+operator|.
+name|size
+argument_list|()
+index|]
 argument_list|)
 return|;
 block|}
@@ -2083,7 +2099,9 @@ block|{
 comment|// caret is in the middle of the text AND current character is a whitespace
 comment|// that means: a new word is started and there is no current word
 return|return
-literal|null
+operator|new
+name|StringBuffer
+argument_list|()
 return|;
 block|}
 name|int

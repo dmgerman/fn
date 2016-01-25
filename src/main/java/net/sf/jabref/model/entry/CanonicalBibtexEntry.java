@@ -95,13 +95,13 @@ class|class
 name|CanonicalBibtexEntry
 block|{
 comment|/**      * This returns a canonical BibTeX serialization. Special characters such as "{" or "&" are NOT escaped, but written      * as is      *      * Serializes all fields, even the JabRef internal ones. Does NOT serialize "KEY_FIELD" as field, but as key      */
-DECL|method|getCanonicalRepresentation (BibtexEntry e)
+DECL|method|getCanonicalRepresentation (BibEntry e)
 specifier|public
 specifier|static
 name|String
 name|getCanonicalRepresentation
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|e
 parameter_list|)
 block|{
@@ -134,7 +134,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"@%s{%s,\n"
+literal|"@%s{%s,"
 argument_list|,
 name|e
 operator|.
@@ -153,6 +153,11 @@ argument_list|)
 argument_list|,
 name|citeKey
 argument_list|)
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'\n'
 argument_list|)
 expr_stmt|;
 comment|// we have to introduce a new Map as fields are stored case-sensitive in JabRef (see https://github.com/koppor/jabref/issues/45).
@@ -200,7 +205,7 @@ name|fieldName
 operator|.
 name|equals
 argument_list|(
-name|BibtexEntry
+name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -302,7 +307,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"}"
+literal|'}'
 argument_list|)
 expr_stmt|;
 return|return

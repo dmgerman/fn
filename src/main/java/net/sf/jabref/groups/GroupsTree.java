@@ -224,7 +224,21 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
 import|;
 end_import
 
@@ -268,20 +282,6 @@ name|AbstractGroup
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
 begin_class
 DECL|class|GroupsTree
 specifier|public
@@ -297,22 +297,22 @@ implements|,
 name|DragGestureListener
 block|{
 comment|/** distance from component borders from which on autoscrolling starts. */
-DECL|field|dragScrollActivationMargin
+DECL|field|DRAG_SCROLL_ACTIVATION_MARGIN
 specifier|private
 specifier|static
 specifier|final
 name|int
-name|dragScrollActivationMargin
+name|DRAG_SCROLL_ACTIVATION_MARGIN
 init|=
 literal|10
 decl_stmt|;
 comment|/** number of pixels to scroll each time handler is called. */
-DECL|field|dragScrollDistance
+DECL|field|DRAG_SCROLL_DISTANCE
 specifier|private
 specifier|static
 specifier|final
 name|int
-name|dragScrollDistance
+name|DRAG_SCROLL_DISTANCE
 init|=
 literal|5
 decl_stmt|;
@@ -324,12 +324,12 @@ name|long
 name|lastDragAutoscroll
 decl_stmt|;
 comment|/** minimum interval between two autoscroll events (for limiting speed). */
-DECL|field|minAutoscrollInterval
+DECL|field|MIN_AUTOSCROLL_INTERVAL
 specifier|private
 specifier|static
 specifier|final
 name|long
-name|minAutoscrollInterval
+name|MIN_AUTOSCROLL_INTERVAL
 init|=
 literal|50L
 decl_stmt|;
@@ -346,22 +346,22 @@ name|long
 name|idleStartTime
 decl_stmt|;
 comment|/** max. distance cursor may move in x or y direction while idling. */
-DECL|field|idleMargin
+DECL|field|IDLE_MARGIN
 specifier|private
 specifier|static
 specifier|final
 name|int
-name|idleMargin
+name|IDLE_MARGIN
 init|=
 literal|1
 decl_stmt|;
 comment|/** idle time after which the node below is expanded. */
-DECL|field|idleTimeToExpandNode
+DECL|field|IDLE_TIME_TO_EXPAND_NODE
 specifier|private
 specifier|static
 specifier|final
 name|long
-name|idleTimeToExpandNode
+name|IDLE_TIME_TO_EXPAND_NODE
 init|=
 literal|1000L
 decl_stmt|;
@@ -634,8 +634,11 @@ argument_list|)
 operator|||
 operator|(
 name|dragNode
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|target
+argument_list|)
 operator|)
 condition|)
 block|{
@@ -811,7 +814,7 @@ name|isDataFlavorSupported
 argument_list|(
 name|GroupTreeNode
 operator|.
-name|flavor
+name|FLAVOR
 argument_list|)
 condition|)
 block|{
@@ -835,7 +838,7 @@ name|isDataFlavorSupported
 argument_list|(
 name|TransferableEntrySelection
 operator|.
-name|flavorInternal
+name|FLAVOR_INTERNAL
 argument_list|)
 condition|)
 block|{
@@ -919,7 +922,7 @@ argument_list|)
 operator|<
 name|GroupsTree
 operator|.
-name|idleMargin
+name|IDLE_MARGIN
 operator|)
 operator|&&
 operator|(
@@ -938,12 +941,13 @@ argument_list|)
 operator|<
 name|GroupsTree
 operator|.
-name|idleMargin
+name|IDLE_MARGIN
 operator|)
 condition|)
 block|{
 if|if
 condition|(
+operator|(
 operator|(
 name|currentTime
 operator|-
@@ -952,14 +956,14 @@ operator|)
 operator|>=
 name|GroupsTree
 operator|.
-name|idleTimeToExpandNode
-condition|)
-block|{
-if|if
-condition|(
+name|IDLE_TIME_TO_EXPAND_NODE
+operator|)
+operator|&&
+operator|(
 name|path
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|expandPath
@@ -967,7 +971,6 @@ argument_list|(
 name|path
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 else|else
@@ -994,7 +997,7 @@ operator|)
 operator|<
 name|GroupsTree
 operator|.
-name|minAutoscrollInterval
+name|MIN_AUTOSCROLL_INTERVAL
 condition|)
 block|{
 return|return;
@@ -1022,7 +1025,7 @@ operator|)
 operator|<
 name|GroupsTree
 operator|.
-name|dragScrollActivationMargin
+name|DRAG_SCROLL_ACTIVATION_MARGIN
 decl_stmt|;
 specifier|final
 name|boolean
@@ -1046,7 +1049,7 @@ operator|)
 operator|<
 name|GroupsTree
 operator|.
-name|dragScrollActivationMargin
+name|DRAG_SCROLL_ACTIVATION_MARGIN
 decl_stmt|;
 specifier|final
 name|boolean
@@ -1064,7 +1067,7 @@ operator|)
 operator|<
 name|GroupsTree
 operator|.
-name|dragScrollActivationMargin
+name|DRAG_SCROLL_ACTIVATION_MARGIN
 decl_stmt|;
 specifier|final
 name|boolean
@@ -1088,7 +1091,7 @@ operator|)
 operator|<
 name|GroupsTree
 operator|.
-name|dragScrollActivationMargin
+name|DRAG_SCROLL_ACTIVATION_MARGIN
 decl_stmt|;
 if|if
 condition|(
@@ -1104,7 +1107,7 @@ argument_list|,
 operator|-
 name|GroupsTree
 operator|.
-name|dragScrollDistance
+name|DRAG_SCROLL_DISTANCE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1123,7 +1126,7 @@ argument_list|,
 operator|+
 name|GroupsTree
 operator|.
-name|dragScrollDistance
+name|DRAG_SCROLL_DISTANCE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1139,7 +1142,7 @@ argument_list|(
 operator|-
 name|GroupsTree
 operator|.
-name|dragScrollDistance
+name|DRAG_SCROLL_DISTANCE
 argument_list|,
 literal|0
 argument_list|)
@@ -1158,7 +1161,7 @@ argument_list|(
 operator|+
 name|GroupsTree
 operator|.
-name|dragScrollDistance
+name|DRAG_SCROLL_DISTANCE
 argument_list|,
 literal|0
 argument_list|)
@@ -1208,15 +1211,6 @@ expr_stmt|;
 try|try
 block|{
 comment|// initializations common to all flavors
-specifier|final
-name|Transferable
-name|transferable
-init|=
-name|dtde
-operator|.
-name|getTransferable
-argument_list|()
-decl_stmt|;
 specifier|final
 name|Point
 name|p
@@ -1268,6 +1262,15 @@ name|getLastPathComponent
 argument_list|()
 decl_stmt|;
 comment|// check supported flavors
+specifier|final
+name|Transferable
+name|transferable
+init|=
+name|dtde
+operator|.
+name|getTransferable
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|transferable
@@ -1276,7 +1279,7 @@ name|isDataFlavorSupported
 argument_list|(
 name|GroupTreeNode
 operator|.
-name|flavor
+name|FLAVOR
 argument_list|)
 condition|)
 block|{
@@ -1292,7 +1295,7 @@ name|getTransferData
 argument_list|(
 name|GroupTreeNode
 operator|.
-name|flavor
+name|FLAVOR
 argument_list|)
 decl_stmt|;
 if|if
@@ -1422,7 +1425,7 @@ name|isDataFlavorSupported
 argument_list|(
 name|TransferableEntrySelection
 operator|.
-name|flavorInternal
+name|FLAVOR_INTERNAL
 argument_list|)
 condition|)
 block|{
@@ -1466,11 +1469,11 @@ name|getTransferData
 argument_list|(
 name|TransferableEntrySelection
 operator|.
-name|flavorInternal
+name|FLAVOR_INTERNAL
 argument_list|)
 decl_stmt|;
 specifier|final
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 init|=
@@ -1486,7 +1489,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|entries
@@ -1750,9 +1753,11 @@ argument_list|()
 decl_stmt|;
 return|return
 name|selectionPath
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|null
+else|:
 operator|(
 name|GroupTreeNode
 operator|)
@@ -1760,8 +1765,6 @@ name|selectionPath
 operator|.
 name|getLastPathComponent
 argument_list|()
-else|:
-literal|null
 return|;
 block|}
 end_function

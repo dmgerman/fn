@@ -47,7 +47,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Converts Enntry models from BibTex to BibLaTex and back.  */
+comment|/**  * Converts Entry models from BibTex to BibLaTex and back.  */
 end_comment
 
 begin_class

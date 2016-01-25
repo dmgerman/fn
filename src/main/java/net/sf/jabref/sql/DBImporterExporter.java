@@ -186,9 +186,14 @@ operator|instanceof
 name|Connection
 condition|)
 block|{
-name|Object
+try|try
+init|(
+name|Statement
 name|response
 init|=
+operator|(
+name|Statement
+operator|)
 name|SQLUtil
 operator|.
 name|processQueryWithResults
@@ -201,22 +206,8 @@ name|dbName
 operator|+
 literal|"';"
 argument_list|)
-decl_stmt|;
-try|try
-init|(
-name|ResultSet
-name|rs
-init|=
-operator|(
-operator|(
-name|Statement
-operator|)
-name|response
-operator|)
-operator|.
-name|getResultSet
-argument_list|()
-init|)
+init|;                     ResultSet rs = response.getResultSet()
+block|)
 block|{
 if|if
 condition|(
@@ -276,7 +267,10 @@ literal|1
 return|;
 block|}
 block|}
-DECL|method|removeAGivenDB (Object out, int database_id)
+end_class
+
+begin_function
+DECL|method|removeAGivenDB (Object out, final int database_id)
 specifier|private
 name|void
 name|removeAGivenDB
@@ -284,6 +278,7 @@ parameter_list|(
 name|Object
 name|out
 parameter_list|,
+specifier|final
 name|int
 name|database_id
 parameter_list|)
@@ -311,8 +306,14 @@ literal|"';"
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Removes all records for the database being exported in case it was exported before.      *      * @param out The output (PrintStream or Connection) object to which the DML should be written.      * @param database_id Id of the database being exported.      * @throws SQLException      */
-DECL|method|removeAllRecordsForAGivenDB (Object out, int database_id)
+end_comment
+
+begin_function
+DECL|method|removeAllRecordsForAGivenDB (Object out, final int database_id)
 specifier|protected
 name|void
 name|removeAllRecordsForAGivenDB
@@ -320,6 +321,7 @@ parameter_list|(
 name|Object
 name|out
 parameter_list|,
+specifier|final
 name|int
 name|database_id
 parameter_list|)
@@ -366,7 +368,13 @@ literal|"';"
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method creates a new row into jabref_database table enabling to export more than one .bib      *      * @param metaData The MetaData object containing the groups information      * @param out The output (PrintStream or Connection) object to which the DML should be written.      *      * @throws SQLException      */
+end_comment
+
+begin_function
 DECL|method|insertJabRefDatabase (final MetaData metaData, Object out, String dbName)
 specifier|private
 name|void
@@ -434,8 +442,8 @@ literal|"'));"
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

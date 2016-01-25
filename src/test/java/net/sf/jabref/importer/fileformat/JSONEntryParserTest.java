@@ -60,7 +60,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -134,7 +134,7 @@ argument_list|(
 name|jsonString
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 name|jc
@@ -277,7 +277,7 @@ argument_list|(
 name|jsonString
 argument_list|)
 decl_stmt|;
-name|BibtexEntry
+name|BibEntry
 name|be
 init|=
 name|jc

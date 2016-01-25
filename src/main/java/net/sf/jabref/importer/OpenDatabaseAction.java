@@ -252,7 +252,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -314,7 +314,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -330,7 +330,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -454,15 +454,15 @@ name|frame
 decl_stmt|;
 comment|// List of actions that may need to be called after opening the file. Such as
 comment|// upgrade actions etc. that may depend on the JabRef version that wrote the file:
-DECL|field|postOpenActions
+DECL|field|POST_OPEN_ACTIONS
 specifier|private
 specifier|static
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|PostOpenAction
 argument_list|>
-name|postOpenActions
+name|POST_OPEN_ACTIONS
 init|=
 operator|new
 name|ArrayList
@@ -475,7 +475,7 @@ comment|// Add the action for checking for new custom entry types loaded from
 comment|// the bib file:
 name|OpenDatabaseAction
 operator|.
-name|postOpenActions
+name|POST_OPEN_ACTIONS
 operator|.
 name|add
 argument_list|(
@@ -487,7 +487,7 @@ expr_stmt|;
 comment|// Add the action for the new external file handling system in version 2.3:
 name|OpenDatabaseAction
 operator|.
-name|postOpenActions
+name|POST_OPEN_ACTIONS
 operator|.
 name|add
 argument_list|(
@@ -499,7 +499,7 @@ expr_stmt|;
 comment|// Add the action for warning about and handling duplicate BibTeX keys:
 name|OpenDatabaseAction
 operator|.
-name|postOpenActions
+name|POST_OPEN_ACTIONS
 operator|.
 name|add
 argument_list|(
@@ -566,11 +566,12 @@ name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
+argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|OPEN_DATABASE
 argument_list|)
@@ -740,16 +741,19 @@ implements|implements
 name|Runnable
 block|{
 DECL|field|basePanel
+specifier|private
 specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
 DECL|field|raisePanel
+specifier|private
 specifier|final
 name|boolean
 name|raisePanel
 decl_stmt|;
 DECL|field|file
+specifier|private
 specifier|final
 name|File
 name|file
@@ -1316,12 +1320,7 @@ operator|.
 name|lang
 argument_list|(
 literal|"An autosave file was found for this database. This could indicate "
-argument_list|)
 operator|+
-name|Localization
-operator|.
-name|lang
-argument_list|(
 literal|"that JabRef didn't shut down cleanly last time the file was used."
 argument_list|)
 operator|+
@@ -1408,16 +1407,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Should this be done _after_ we know it was successfully opened?
-name|Charset
-name|encoding
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getDefaultEncoding
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|FileBasedLock
@@ -1593,6 +1582,16 @@ expr_stmt|;
 return|return;
 block|}
 block|}
+name|Charset
+name|encoding
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
+decl_stmt|;
 name|ParserResult
 name|result
 decl_stmt|;
@@ -1857,7 +1856,7 @@ name|action
 range|:
 name|OpenDatabaseAction
 operator|.
-name|postOpenActions
+name|POST_OPEN_ACTIONS
 control|)
 block|{
 if|if
@@ -1925,7 +1924,7 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
-name|BibtexDatabase
+name|BibDatabase
 name|database
 init|=
 name|result
@@ -1949,16 +1948,6 @@ name|hasWarnings
 argument_list|()
 condition|)
 block|{
-specifier|final
-name|String
-index|[]
-name|warnings
-init|=
-name|result
-operator|.
-name|warnings
-argument_list|()
-decl_stmt|;
 name|JabRefExecutorService
 operator|.
 name|INSTANCE
@@ -1976,116 +1965,13 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|StringBuilder
-name|warningString
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|warnings
+name|ParserResultWarningDialog
 operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|warningString
-operator|.
-name|append
+name|showParserResultWarningDialog
 argument_list|(
-name|i
-operator|+
-literal|1
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|". "
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|warnings
-index|[
-name|i
-index|]
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|warningString
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
-name|warningString
-operator|.
-name|deleteCharAt
-argument_list|(
-name|warningString
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-comment|// Note to self or to someone else: The following line causes an
-comment|// ArrayIndexOutOfBoundsException in situations with a large number of
-comment|// warnings; approx. 5000 for the database I opened when I observed the problem
-comment|// (duplicate key warnings). I don't think this is a big problem for normal situations,
-comment|// and it may possibly be a bug in the Swing code.
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
+name|result
+argument_list|,
 name|frame
-argument_list|,
-name|warningString
-operator|.
-name|toString
-argument_list|()
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Warnings"
-argument_list|)
-operator|+
-literal|" ("
-operator|+
-name|file
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|")"
-argument_list|,
-name|JOptionPane
-operator|.
-name|WARNING_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -2330,7 +2216,7 @@ condition|)
 block|{
 for|for
 control|(
-name|BibtexEntry
+name|BibEntry
 name|entry
 range|:
 name|result
@@ -2442,10 +2328,14 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Problem getting reader"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 comment|// The supplied encoding didn't work out, so we use the fallback.
 return|return
@@ -2584,9 +2474,48 @@ argument_list|)
 condition|)
 block|{
 comment|// Line starts with "Encoding: ", so the rest of the line should contain the name of the encoding
+comment|// Except if there is already a @ symbol signalising the starting of a BibEntry
+name|Integer
+name|atSymbolIndex
+init|=
+name|line
+operator|.
+name|indexOf
+argument_list|(
+literal|"@"
+argument_list|)
+decl_stmt|;
 name|String
 name|encoding
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|atSymbolIndex
+operator|>
+literal|0
+condition|)
+block|{
+name|encoding
+operator|=
+name|line
+operator|.
+name|substring
+argument_list|(
+name|Globals
+operator|.
+name|encPrefix
+operator|.
+name|length
+argument_list|()
+argument_list|,
+name|atSymbolIndex
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|encoding
+operator|=
 name|line
 operator|.
 name|substring
@@ -2598,7 +2527,8 @@ operator|.
 name|length
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 return|return
 name|Optional
 operator|.

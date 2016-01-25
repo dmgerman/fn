@@ -24,6 +24,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Vector
 import|;
 end_import
@@ -90,6 +100,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -100,7 +122,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -116,7 +138,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -140,7 +162,7 @@ decl_stmt|;
 DECL|field|missingFormatters
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -181,9 +203,6 @@ name|String
 name|classPrefix
 parameter_list|)
 block|{
-name|StringInt
-name|si
-decl_stmt|;
 name|Vector
 argument_list|<
 name|LayoutEntry
@@ -224,15 +243,11 @@ range|:
 name|parsedEntries
 control|)
 block|{
-name|si
-operator|=
-name|parsedEntry
-expr_stmt|;
 comment|// TODO: Rewrite using switch
 if|if
 condition|(
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -242,7 +257,7 @@ name|IS_LAYOUT_TEXT
 operator|)
 operator|||
 operator|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -257,7 +272,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -275,7 +290,7 @@ argument_list|()
 expr_stmt|;
 name|blockStart
 operator|=
-name|si
+name|parsedEntry
 operator|.
 name|s
 expr_stmt|;
@@ -283,7 +298,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -313,7 +328,7 @@ name|blockStart
 operator|.
 name|equals
 argument_list|(
-name|si
+name|parsedEntry
 operator|.
 name|s
 argument_list|)
@@ -323,7 +338,7 @@ name|blockEntries
 operator|.
 name|add
 argument_list|(
-name|si
+name|parsedEntry
 argument_list|)
 expr_stmt|;
 name|le
@@ -362,7 +377,7 @@ name|blockStart
 operator|+
 literal|'\n'
 operator|+
-name|si
+name|parsedEntry
 operator|.
 name|s
 argument_list|)
@@ -385,7 +400,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -403,7 +418,7 @@ argument_list|()
 expr_stmt|;
 name|blockStart
 operator|=
-name|si
+name|parsedEntry
 operator|.
 name|s
 expr_stmt|;
@@ -411,7 +426,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -441,7 +456,7 @@ name|blockStart
 operator|.
 name|equals
 argument_list|(
-name|si
+name|parsedEntry
 operator|.
 name|s
 argument_list|)
@@ -451,7 +466,7 @@ name|blockEntries
 operator|.
 name|add
 argument_list|(
-name|si
+name|parsedEntry
 argument_list|)
 expr_stmt|;
 name|le
@@ -500,7 +515,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|si
+name|parsedEntry
 operator|.
 name|i
 operator|==
@@ -525,7 +540,7 @@ argument_list|(
 operator|new
 name|LayoutEntry
 argument_list|(
-name|si
+name|parsedEntry
 argument_list|,
 name|classPrefix
 argument_list|)
@@ -538,7 +553,7 @@ name|blockEntries
 operator|.
 name|add
 argument_list|(
-name|si
+name|parsedEntry
 argument_list|)
 expr_stmt|;
 block|}
@@ -610,7 +625,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|//System.out.println(layoutEntries[i].text);
 block|}
 block|}
 DECL|method|setPostFormatter (LayoutFormatter formatter)
@@ -639,15 +653,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database)
+DECL|method|doLayout (BibEntry bibtex, BibDatabase database)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|)
 block|{
@@ -663,22 +677,22 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
-DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, List<String> wordsToHighlight)
+DECL|method|doLayout (BibEntry bibtex, BibDatabase database, Optional<Pattern> highlightPattern)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
-name|BibtexEntry
+name|BibEntry
 name|bibtex
 parameter_list|,
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
-name|List
+name|Optional
 argument_list|<
-name|String
+name|Pattern
 argument_list|>
-name|wordsToHighlight
+name|highlightPattern
 parameter_list|)
 block|{
 name|StringBuilder
@@ -709,7 +723,7 @@ name|bibtex
 argument_list|,
 name|database
 argument_list|,
-name|wordsToHighlight
+name|highlightPattern
 argument_list|)
 decl_stmt|;
 comment|// 2005.05.05 M. Alver
@@ -744,12 +758,12 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Returns the processed text. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
-DECL|method|doLayout (BibtexDatabase database, Charset encoding)
+DECL|method|doLayout (BibDatabase database, Charset encoding)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
 name|Charset
@@ -904,7 +918,7 @@ block|}
 comment|// added section - end (arudert)
 DECL|method|getMissingFormatters ()
 specifier|public
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -912,7 +926,12 @@ name|getMissingFormatters
 parameter_list|()
 block|{
 return|return
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|missingFormatters
+argument_list|)
 return|;
 block|}
 block|}

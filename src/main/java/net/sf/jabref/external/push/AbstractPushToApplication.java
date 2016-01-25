@@ -136,7 +136,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibtexDatabase
+name|BibDatabase
 import|;
 end_import
 
@@ -152,7 +152,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -258,22 +258,6 @@ specifier|protected
 name|String
 name|commandPathPreferenceKey
 decl_stmt|;
-DECL|field|citeCommand
-specifier|protected
-name|String
-name|citeCommand
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|CITE_COMMAND
-argument_list|)
-decl_stmt|;
 DECL|field|builder
 specifier|protected
 name|FormBuilder
@@ -321,15 +305,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keyString, MetaData metaData)
+DECL|method|pushEntries (BibDatabase database, BibEntry[] entries, String keyString, MetaData metaData)
 specifier|public
 name|void
 name|pushEntries
 parameter_list|(
-name|BibtexDatabase
+name|BibDatabase
 name|database
 parameter_list|,
-name|BibtexEntry
+name|BibEntry
 index|[]
 name|entries
 parameter_list|,
@@ -449,7 +433,6 @@ condition|(
 name|notDefined
 condition|)
 block|{
-comment|// @formatter:off
 name|panel
 operator|.
 name|output
@@ -476,7 +459,6 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
-comment|// @formatter:on
 block|}
 elseif|else
 if|if
@@ -590,7 +572,11 @@ name|keyString
 parameter_list|)
 block|{
 return|return
-literal|null
+operator|new
+name|String
+index|[
+literal|0
+index|]
 return|;
 block|}
 comment|/**      * Function to get the command name in case it is different from the application name      *      * @return String with the command name      */
@@ -683,9 +669,12 @@ literal|"p"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|String
+name|StringBuffer
 name|label
 init|=
+operator|new
+name|StringBuffer
+argument_list|(
 name|Localization
 operator|.
 name|lang
@@ -695,31 +684,44 @@ argument_list|,
 name|getApplicationName
 argument_list|()
 argument_list|)
+argument_list|)
 decl_stmt|;
 comment|// In case the application name and the actual command is not the same, add the command in brackets
 if|if
 condition|(
 name|getCommandName
 argument_list|()
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
 name|label
-operator|+=
-literal|" ("
-operator|+
-name|getCommandName
-argument_list|()
-operator|+
-literal|"):"
+operator|.
+name|append
+argument_list|(
+literal|':'
+argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
 name|label
-operator|+=
-literal|":"
+operator|.
+name|append
+argument_list|(
+literal|" ("
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|getCommandName
+argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"):"
+argument_list|)
 expr_stmt|;
 block|}
 name|builder
@@ -727,6 +729,9 @@ operator|.
 name|add
 argument_list|(
 name|label
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 operator|.
 name|xy
@@ -825,6 +830,25 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getCiteCommand ()
+specifier|protected
+name|String
+name|getCiteCommand
+parameter_list|()
+block|{
+return|return
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND
+argument_list|)
+return|;
 block|}
 block|}
 end_class

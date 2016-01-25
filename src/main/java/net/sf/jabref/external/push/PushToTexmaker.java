@@ -118,7 +118,8 @@ name|commandPath
 block|,
 literal|"-insert"
 block|,
-name|citeCommand
+name|getCiteCommand
+argument_list|()
 operator|+
 literal|"{"
 operator|+

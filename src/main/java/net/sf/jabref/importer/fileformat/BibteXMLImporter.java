@@ -114,22 +114,6 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|fileformat
-operator|.
-name|BibTeXMLHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
 name|ImportFormatReader
 import|;
 end_import
@@ -160,7 +144,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|BibtexEntry
+name|BibEntry
 import|;
 end_import
 
@@ -324,14 +308,14 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
 name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|importEntries
 parameter_list|(
@@ -344,9 +328,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ArrayList
+name|List
 argument_list|<
-name|BibtexEntry
+name|BibEntry
 argument_list|>
 name|bibItems
 init|=
@@ -421,7 +405,7 @@ operator|.
 name|parsers
 operator|.
 name|ParserConfigurationException
-name|e1
+name|e
 parameter_list|)
 block|{
 name|LOGGER
@@ -430,14 +414,14 @@ name|error
 argument_list|(
 literal|"Error with XML parser configuration"
 argument_list|,
-name|e1
+name|e
 argument_list|)
 expr_stmt|;
 name|status
 operator|.
 name|showMessage
 argument_list|(
-name|e1
+name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
@@ -453,7 +437,7 @@ operator|.
 name|sax
 operator|.
 name|SAXException
-name|e2
+name|e
 parameter_list|)
 block|{
 name|LOGGER
@@ -462,14 +446,14 @@ name|error
 argument_list|(
 literal|"Error during XML parsing"
 argument_list|,
-name|e2
+name|e
 argument_list|)
 expr_stmt|;
 name|status
 operator|.
 name|showMessage
 argument_list|(
-name|e2
+name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
@@ -478,12 +462,8 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
-name|e3
+name|e
 parameter_list|)
 block|{
 name|LOGGER
@@ -492,14 +472,14 @@ name|error
 argument_list|(
 literal|"Error during file import"
 argument_list|,
-name|e3
+name|e
 argument_list|)
 expr_stmt|;
 name|status
 operator|.
 name|showMessage
 argument_list|(
-name|e3
+name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()

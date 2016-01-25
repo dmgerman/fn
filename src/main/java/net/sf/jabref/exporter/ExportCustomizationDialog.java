@@ -160,7 +160,7 @@ name|gui
 operator|.
 name|keyboard
 operator|.
-name|KeyBinds
+name|KeyBinding
 import|;
 end_import
 
@@ -274,13 +274,15 @@ name|frame
 decl_stmt|;
 DECL|field|table
 specifier|private
+specifier|final
 name|JTable
 name|table
 decl_stmt|;
-DECL|method|ExportCustomizationDialog (JabRefFrame frame_)
+DECL|method|ExportCustomizationDialog (final JabRefFrame frame_)
 specifier|public
 name|ExportCustomizationDialog
 parameter_list|(
+specifier|final
 name|JabRefFrame
 name|frame_
 parameter_list|)
@@ -960,14 +962,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|frame
+name|Globals
 operator|.
-name|prefs
+name|getKeyPrefs
 argument_list|()
 operator|.
 name|getKey
 argument_list|(
-name|KeyBinds
+name|KeyBinding
 operator|.
 name|CLOSE_DIALOG
 argument_list|)
@@ -986,7 +988,7 @@ argument_list|)
 expr_stmt|;
 comment|//am = table.getActionMap();
 comment|//im = table.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-comment|//im.put(frame.prefs().getKey(KeyBinds.CLOSE_DIALOG), "close");
+comment|//im.put(Globals.getKeyPrefs().getKey()KeyBinds.CLOSE_DIALOG), "close");
 comment|//am.put("close", closeAction);
 name|main
 operator|.
