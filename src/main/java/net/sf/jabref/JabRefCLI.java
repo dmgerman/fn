@@ -426,6 +426,21 @@ literal|"importToOpen"
 argument_list|)
 return|;
 block|}
+DECL|method|isDebugLogging ()
+specifier|public
+name|boolean
+name|isDebugLogging
+parameter_list|()
+block|{
+return|return
+name|cl
+operator|.
+name|hasOption
+argument_list|(
+literal|"debug"
+argument_list|)
+return|;
+block|}
 DECL|method|isFetcherEngine ()
 specifier|public
 name|boolean
@@ -617,6 +632,24 @@ operator|.
 name|lang
 argument_list|(
 literal|"Do not open any files at startup"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
+name|addOption
+argument_list|(
+literal|null
+argument_list|,
+literal|"debug"
+argument_list|,
+literal|false
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Show debug level messages"
 argument_list|)
 argument_list|)
 expr_stmt|;
