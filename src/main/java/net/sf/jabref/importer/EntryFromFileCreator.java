@@ -122,7 +122,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|external
+operator|.
+name|ExternalFileType
 import|;
 end_import
 
@@ -136,7 +138,7 @@ name|jabref
 operator|.
 name|external
 operator|.
-name|ExternalFileType
+name|ExternalFileTypes
 import|;
 end_import
 
@@ -509,18 +511,13 @@ name|File
 name|file
 parameter_list|)
 block|{
-name|JabRefPreferences
-name|jabRefPreferences
-init|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-decl_stmt|;
 name|ExternalFileType
 name|fileType
 init|=
-name|jabRefPreferences
+name|ExternalFileTypes
+operator|.
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByExt
 argument_list|(
@@ -599,7 +596,9 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"file"
+name|Globals
+operator|.
+name|FILE_FIELD
 argument_list|,
 name|model
 operator|.

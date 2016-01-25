@@ -513,8 +513,7 @@ condition|(
 operator|(
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|!=
 literal|null
 operator|)
@@ -525,8 +524,7 @@ name|equals
 argument_list|(
 name|flEntry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -544,8 +542,7 @@ name|expandFilename
 argument_list|(
 name|flEntry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|dirs
 argument_list|)

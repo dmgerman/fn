@@ -276,8 +276,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|dirs
 argument_list|)

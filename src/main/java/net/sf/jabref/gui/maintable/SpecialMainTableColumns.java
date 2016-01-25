@@ -674,8 +674,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getType
-argument_list|()
+name|type
 decl_stmt|;
 if|if
 condition|(
@@ -933,8 +932,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|!=
 literal|null
 operator|)
@@ -950,8 +948,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -990,8 +987,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getIconLabel
 argument_list|()

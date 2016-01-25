@@ -1543,8 +1543,7 @@ name|openFolderAndSelectFile
 argument_list|(
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|)
 expr_stmt|;
 block|}
@@ -1723,8 +1722,7 @@ name|metaData
 argument_list|,
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|)
 decl_stmt|;
 comment|// transactional delete and unlink
@@ -1837,16 +1835,16 @@ block|{
 name|ExternalFileType
 name|type
 init|=
-name|Globals
+name|ExternalFileTypes
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getExternalFileTypeByName
 argument_list|(
 name|entry
 operator|.
-name|getType
-argument_list|()
+name|type
 operator|.
 name|getName
 argument_list|()
@@ -1860,8 +1858,7 @@ name|metaData
 argument_list|,
 name|entry
 operator|.
-name|getLink
-argument_list|()
+name|link
 argument_list|,
 name|type
 operator|!=
@@ -1871,8 +1868,7 @@ name|type
 else|:
 name|entry
 operator|.
-name|getType
-argument_list|()
+name|type
 argument_list|)
 expr_stmt|;
 block|}
