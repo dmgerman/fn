@@ -2361,8 +2361,6 @@ block|}
 comment|/**      * Test for SF Bug #1269      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|parseCombinesMultipleKeywordsFields ()
 specifier|public
 name|void
