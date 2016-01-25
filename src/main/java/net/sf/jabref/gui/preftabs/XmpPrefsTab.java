@@ -56,7 +56,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|ArrayList
 import|;
 end_import
 
@@ -66,7 +66,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|List
 import|;
 end_import
 
@@ -259,14 +259,14 @@ decl_stmt|;
 DECL|field|tableRows
 specifier|private
 specifier|final
-name|Vector
+name|List
 argument_list|<
 name|Object
 argument_list|>
 name|tableRows
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|(
 literal|10
@@ -346,7 +346,7 @@ name|rowContent
 init|=
 name|tableRows
 operator|.
-name|elementAt
+name|get
 argument_list|(
 name|row
 argument_list|)
@@ -451,9 +451,17 @@ operator|<=
 name|row
 condition|)
 block|{
+operator|(
+operator|(
+name|ArrayList
+argument_list|<
+name|Object
+argument_list|>
+operator|)
 name|tableRows
+operator|)
 operator|.
-name|setSize
+name|ensureCapacity
 argument_list|(
 name|row
 operator|+
@@ -463,11 +471,11 @@ expr_stmt|;
 block|}
 name|tableRows
 operator|.
-name|setElementAt
+name|set
 argument_list|(
-name|value
-argument_list|,
 name|row
+argument_list|,
+name|value
 argument_list|)
 expr_stmt|;
 block|}
@@ -1232,7 +1240,7 @@ condition|(
 operator|(
 name|tableRows
 operator|.
-name|elementAt
+name|get
 argument_list|(
 name|i
 argument_list|)
@@ -1242,7 +1250,7 @@ operator|)
 operator|||
 name|tableRows
 operator|.
-name|elementAt
+name|get
 argument_list|(
 name|i
 argument_list|)
@@ -1256,7 +1264,7 @@ condition|)
 block|{
 name|tableRows
 operator|.
-name|removeElementAt
+name|remove
 argument_list|(
 name|i
 argument_list|)

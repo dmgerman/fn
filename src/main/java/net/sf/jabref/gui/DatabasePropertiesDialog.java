@@ -2060,7 +2060,7 @@ name|getEncoding
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>

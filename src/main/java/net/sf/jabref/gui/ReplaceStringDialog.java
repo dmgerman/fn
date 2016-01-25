@@ -310,10 +310,10 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-DECL|field|ok_pressed
+DECL|field|okPressed
 specifier|private
 name|boolean
-name|ok_pressed
+name|okPressed
 decl_stmt|;
 DECL|field|flds
 specifier|private
@@ -331,17 +331,17 @@ specifier|private
 name|String
 name|s2
 decl_stmt|;
-DECL|method|ReplaceStringDialog (JabRefFrame parent_)
+DECL|method|ReplaceStringDialog (JabRefFrame parent)
 specifier|public
 name|ReplaceStringDialog
 parameter_list|(
 name|JabRefFrame
-name|parent_
+name|parent
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|parent_
+name|parent
 argument_list|,
 name|Localization
 operator|.
@@ -417,7 +417,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|ok_pressed
+name|okPressed
 operator|=
 literal|true
 expr_stmt|;
@@ -1147,7 +1147,7 @@ name|placeDialog
 argument_list|(
 name|this
 argument_list|,
-name|parent_
+name|parent
 argument_list|)
 expr_stmt|;
 block|}
@@ -1158,7 +1158,7 @@ name|okPressed
 parameter_list|()
 block|{
 return|return
-name|ok_pressed
+name|okPressed
 return|;
 block|}
 DECL|method|allFields ()

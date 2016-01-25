@@ -877,11 +877,13 @@ argument_list|()
 decl_stmt|;
 comment|// JTabbedPane.RIGHT);
 DECL|field|frame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|panel
+specifier|private
 specifier|final
 name|BasePanel
 name|panel
@@ -897,7 +899,7 @@ decl_stmt|;
 DECL|field|contentSelectors
 specifier|private
 specifier|final
-name|HashSet
+name|Set
 argument_list|<
 name|FieldContentSelector
 argument_list|>
@@ -1112,11 +1114,7 @@ name|generateKeyAction
 operator|=
 operator|new
 name|GenerateKeyAction
-argument_list|(
-name|this
-operator|.
-name|frame
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|storeFieldAction
 operator|=
@@ -4499,10 +4497,7 @@ name|isDisplayableField
 argument_list|(
 name|field
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 name|newEntry
 operator|.
@@ -4545,7 +4540,6 @@ name|anyChanged
 operator|=
 literal|true
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|// Then set all fields that have been set by the user.
@@ -4764,9 +4758,16 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|changedType
 condition|)
+block|{
+name|panel
+operator|.
+name|updateEntryEditorIfShowing
+argument_list|()
+expr_stmt|;
+block|}
+else|else
 block|{
 name|updateAllFields
 argument_list|()
@@ -4778,14 +4779,6 @@ expr_stmt|;
 name|updateSource
 operator|=
 literal|true
-expr_stmt|;
-block|}
-else|else
-block|{
-name|panel
-operator|.
-name|updateEntryEditorIfShowing
-argument_list|()
 expr_stmt|;
 block|}
 comment|// TODO: does updating work properly after source stored?
@@ -5128,9 +5121,11 @@ name|e
 operator|.
 name|getNewValue
 argument_list|()
-operator|!=
+operator|==
 literal|null
 condition|?
+literal|""
+else|:
 name|e
 operator|.
 name|getNewValue
@@ -5138,8 +5133,6 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
-else|:
-literal|""
 decl_stmt|;
 name|setField
 argument_list|(
@@ -6051,9 +6044,15 @@ decl_stmt|;
 if|if
 condition|(
 name|newValue
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|warnEmptyBibtexkey
+argument_list|()
+expr_stmt|;
+block|}
+else|else
 block|{
 if|if
 condition|(
@@ -6079,13 +6078,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
-comment|// key is null/empty
-name|warnEmptyBibtexkey
-argument_list|()
-expr_stmt|;
 block|}
 comment|// Add an UndoableKeyChange to the baseframe's undoManager.
 name|UndoableKeyChange
@@ -6366,9 +6358,22 @@ decl_stmt|;
 if|if
 condition|(
 name|toSet
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|entry
+operator|.
+name|clearField
+argument_list|(
+name|fieldEditor
+operator|.
+name|getFieldName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|entry
 operator|.
@@ -6380,19 +6385,6 @@ name|getFieldName
 argument_list|()
 argument_list|,
 name|toSet
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|entry
-operator|.
-name|clearField
-argument_list|(
-name|fieldEditor
-operator|.
-name|getFieldName
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -7092,18 +7084,10 @@ name|GenerateKeyAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|parent
-specifier|final
-name|JabRefFrame
-name|parent
-decl_stmt|;
-DECL|method|GenerateKeyAction (JabRefFrame parentFrame)
+DECL|method|GenerateKeyAction ()
 specifier|public
 name|GenerateKeyAction
-parameter_list|(
-name|JabRefFrame
-name|parentFrame
-parameter_list|)
+parameter_list|()
 block|{
 name|super
 argument_list|(
@@ -7123,10 +7107,6 @@ operator|.
 name|getIcon
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|parent
-operator|=
-name|parentFrame
 expr_stmt|;
 name|putValue
 argument_list|(
@@ -7702,11 +7682,13 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|changeType
+specifier|private
 specifier|final
 name|EntryType
 name|changeType
 decl_stmt|;
 DECL|field|changeTypePanel
+specifier|private
 specifier|final
 name|BasePanel
 name|changeTypePanel

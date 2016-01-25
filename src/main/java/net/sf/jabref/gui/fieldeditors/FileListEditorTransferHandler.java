@@ -808,7 +808,7 @@ name|logMessage
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append

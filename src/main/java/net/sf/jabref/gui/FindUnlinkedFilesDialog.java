@@ -1151,6 +1151,7 @@ name|dialogPositionListener
 decl_stmt|;
 DECL|field|threadState
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|threadState
 init|=
@@ -3066,7 +3067,7 @@ argument_list|()
 operator|&&
 name|child
 operator|.
-name|getSelected
+name|isSelected
 argument_list|()
 condition|)
 block|{
@@ -5858,10 +5859,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getSelected ()
+DECL|method|isSelected ()
 specifier|public
 name|boolean
-name|getSelected
+name|isSelected
 parameter_list|()
 block|{
 return|return
@@ -5878,6 +5879,7 @@ extends|extends
 name|DefaultTreeCellRenderer
 block|{
 DECL|field|fsv
+specifier|private
 specifier|final
 name|FileSystemView
 name|fsv
@@ -5979,7 +5981,7 @@ name|setSelected
 argument_list|(
 name|node
 operator|.
-name|getSelected
+name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;

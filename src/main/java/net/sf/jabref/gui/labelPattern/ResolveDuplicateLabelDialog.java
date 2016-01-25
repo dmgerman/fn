@@ -246,12 +246,12 @@ specifier|private
 name|boolean
 name|okPressed
 decl_stmt|;
-DECL|field|layout
+DECL|field|LAYOUT
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|layout
+name|LAYOUT
 init|=
 literal|"<font face=\"arial\"><b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>\\end{bibtexkey}</b><br>\n"
 operator|+
@@ -461,7 +461,7 @@ argument_list|()
 argument_list|,
 name|ResolveDuplicateLabelDialog
 operator|.
-name|layout
+name|LAYOUT
 argument_list|)
 decl_stmt|;
 name|pp

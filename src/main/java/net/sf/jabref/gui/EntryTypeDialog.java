@@ -250,6 +250,7 @@ literal|3
 decl_stmt|;
 DECL|field|biblatexMode
 specifier|private
+specifier|final
 name|boolean
 name|biblatexMode
 decl_stmt|;
@@ -280,7 +281,7 @@ specifier|final
 name|EntryType
 name|type
 decl_stmt|;
-DECL|method|TypeButton (String label, EntryType _type)
+DECL|method|TypeButton (String label, EntryType type)
 specifier|public
 name|TypeButton
 parameter_list|(
@@ -288,7 +289,7 @@ name|String
 name|label
 parameter_list|,
 name|EntryType
-name|_type
+name|type
 parameter_list|)
 block|{
 name|super
@@ -296,9 +297,11 @@ argument_list|(
 name|label
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
 name|type
 operator|=
-name|_type
+name|type
 expr_stmt|;
 block|}
 annotation|@

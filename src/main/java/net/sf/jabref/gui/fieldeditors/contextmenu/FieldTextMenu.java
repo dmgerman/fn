@@ -335,13 +335,12 @@ literal|false
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|txt
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 operator|!
 name|txt
 operator|.
@@ -353,7 +352,6 @@ name|cStat
 operator|=
 literal|true
 expr_stmt|;
-block|}
 block|}
 name|copyAct
 operator|.

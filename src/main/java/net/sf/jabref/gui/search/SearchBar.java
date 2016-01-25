@@ -494,6 +494,7 @@ literal|""
 argument_list|)
 decl_stmt|;
 DECL|field|autoCompleteSupport
+specifier|private
 name|AutoCompleteSupport
 argument_list|<
 name|String
@@ -1823,6 +1824,7 @@ name|getText
 argument_list|()
 argument_list|)
 operator|&&
+operator|(
 name|query
 operator|.
 name|regularExpression
@@ -1831,7 +1833,9 @@ name|regularExp
 operator|.
 name|isSelected
 argument_list|()
+operator|)
 operator|&&
+operator|(
 name|query
 operator|.
 name|caseSensitive
@@ -1840,6 +1844,7 @@ name|caseSensitive
 operator|.
 name|isSelected
 argument_list|()
+operator|)
 return|;
 block|}
 DECL|method|getSearchQuery ()

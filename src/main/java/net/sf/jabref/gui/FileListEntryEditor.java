@@ -1844,10 +1844,8 @@ if|if
 condition|(
 name|dirs
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|link

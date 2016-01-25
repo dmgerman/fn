@@ -202,24 +202,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|io
-operator|.
-name|URLUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -279,16 +261,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|MalformedURLException
 import|;
 end_import
 
@@ -1114,6 +1086,7 @@ block|}
 block|}
 comment|/**      * Opens a file on a Windows system, using its default viewer.      *      * @param link      *            The filename.      * @throws IOException      */
 DECL|method|openFileOnWindows (String link)
+specifier|private
 specifier|static
 name|void
 name|openFileOnWindows
@@ -1154,6 +1127,7 @@ expr_stmt|;
 block|}
 comment|/**      * Opens a file on a Windows system, using the given application.      *      * @param link The filename.      * @param application Link to the app that opens the file.      * @throws IOException      */
 DECL|method|openFileWithApplicationOnWindows (String link, String application)
+specifier|private
 specifier|static
 name|void
 name|openFileWithApplicationOnWindows
@@ -1345,6 +1319,7 @@ comment|// No file matched the name, or we didn't know the file type.
 block|}
 block|}
 DECL|method|openExternalFilePlatformIndependent (ExternalFileType fileType, String filePath)
+specifier|private
 specifier|static
 name|void
 name|openExternalFilePlatformIndependent

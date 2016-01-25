@@ -115,6 +115,7 @@ end_comment
 begin_class
 DECL|class|BrowseAction
 specifier|public
+specifier|final
 class|class
 name|BrowseAction
 extends|extends
