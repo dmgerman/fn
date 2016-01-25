@@ -705,7 +705,7 @@ name|orderedData
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Look up the directory set up for the given field type for this database.      * If no directory is set up, return that defined in global preferences.      * There can be up to three directory definitions for these files:      * the database's metadata can specify a general directory and/or a user-specific directory      * or the preferences can specify one.      *      * The settings are prioritized in the following order and the first defined setting is used:      * 1. metadata user-specific directory      * 2. metadata general directory      * 3. preferences directory.      *      * @param fieldName The field type      * @return The default directory for this field type.      */
+comment|/**      * Look up the directory set up for the given field type for this database.      * If no directory is set up, return that defined in global preferences.      * There can be up to three directory definitions for these files:      * the database's metadata can specify a general directory and/or a user-specific directory      * or the preferences can specify one.      *      * The settings are prioritized in the following order and the first defined setting is used:      * 1. metadata user-specific directory      * 2. metadata general directory      * 3. preferences directory      * 4. bib file directory      *      * @param fieldName The field type      * @return The default directory for this field type.      */
 DECL|method|getFileDirectory (String fieldName)
 specifier|public
 name|List
@@ -722,13 +722,14 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|dirs
+name|fileDirs
 init|=
 operator|new
 name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+comment|// 1. metadata user-specific directory
 name|String
 name|key
 init|=
@@ -743,11 +744,12 @@ operator|.
 name|USER_FILE_DIR_INDIVIDUAL
 argument_list|)
 decl_stmt|;
-name|Vector
+comment|// USER_SPECIFIC_FILE_DIR_FOR_DB
+name|List
 argument_list|<
 name|String
 argument_list|>
-name|vec
+name|metaData
 init|=
 name|getData
 argument_list|(
@@ -756,7 +758,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|vec
+name|metaData
 operator|==
 literal|null
 condition|)
@@ -774,7 +776,8 @@ operator|.
 name|USER_FILE_DIR
 argument_list|)
 expr_stmt|;
-name|vec
+comment|// FILE_DIR_FOR_DIR
+name|metaData
 operator|=
 name|getData
 argument_list|(
@@ -782,16 +785,17 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
+comment|// 2. metadata general directory
 if|if
 condition|(
 operator|(
-name|vec
+name|metaData
 operator|!=
 literal|null
 operator|)
 operator|&&
 operator|!
-name|vec
+name|metaData
 operator|.
 name|isEmpty
 argument_list|()
@@ -802,7 +806,7 @@ name|dir
 decl_stmt|;
 name|dir
 operator|=
-name|vec
+name|metaData
 operator|.
 name|get
 argument_list|(
@@ -861,12 +865,9 @@ operator|.
 name|getParent
 argument_list|()
 operator|+
-name|System
+name|File
 operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
-argument_list|)
+name|separator
 operator|+
 name|dir
 expr_stmt|;
@@ -891,7 +892,7 @@ name|relDir
 expr_stmt|;
 block|}
 block|}
-name|dirs
+name|fileDirs
 operator|.
 name|add
 argument_list|(
@@ -901,6 +902,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// 3. preferences directory?
 name|String
 name|dir
 init|=
@@ -917,6 +919,7 @@ operator|.
 name|DIR_SUFFIX
 argument_list|)
 decl_stmt|;
+comment|// FILE_DIR
 if|if
 condition|(
 name|dir
@@ -924,7 +927,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|dirs
+name|fileDirs
 operator|.
 name|add
 argument_list|(
@@ -933,7 +936,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Check if the bib file location should be included, and if so, if it is set:
+comment|// 4. bib file directory TODO: remove these options?
 if|if
 condition|(
 name|Globals
@@ -970,7 +973,7 @@ name|BIB_LOC_AS_PRIMARY_DIR
 argument_list|)
 condition|)
 block|{
-name|dirs
+name|fileDirs
 operator|.
 name|add
 argument_list|(
@@ -986,7 +989,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|dirs
+name|fileDirs
 operator|.
 name|add
 argument_list|(
@@ -1000,7 +1003,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|dirs
+name|fileDirs
 return|;
 block|}
 comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      * @param db          The BibDatabase this metadata belongs to      * @param version     The group tree version      * @return true if parsing was successful, false otherwise      */
