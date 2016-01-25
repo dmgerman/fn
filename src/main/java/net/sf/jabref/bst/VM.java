@@ -4330,7 +4330,7 @@ name|entrySet
 argument_list|()
 control|)
 block|{
-name|Object
+name|String
 name|fieldValue
 init|=
 name|e
@@ -4350,18 +4350,7 @@ name|mEntry
 operator|.
 name|setValue
 argument_list|(
-operator|(
 name|fieldValue
-operator|==
-literal|null
-condition|?
-literal|null
-else|:
-name|fieldValue
-operator|.
-name|toString
-argument_list|()
-operator|)
 argument_list|)
 expr_stmt|;
 block|}
