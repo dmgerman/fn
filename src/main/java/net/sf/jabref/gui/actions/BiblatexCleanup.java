@@ -279,14 +279,13 @@ comment|// Dates: create date out of year and month, save it and delete old fiel
 if|if
 condition|(
 operator|(
+operator|!
 name|entry
 operator|.
-name|getField
+name|hasField
 argument_list|(
 literal|"date"
 argument_list|)
-operator|==
-literal|null
 operator|)
 operator|||
 operator|(

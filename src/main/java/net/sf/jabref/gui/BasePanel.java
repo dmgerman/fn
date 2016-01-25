@@ -5811,12 +5811,10 @@ index|[
 literal|0
 index|]
 operator|.
-name|getField
+name|hasField
 argument_list|(
 name|URL_FIELD
 argument_list|)
-operator|!=
-literal|null
 condition|)
 block|{
 name|link

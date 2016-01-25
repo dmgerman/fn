@@ -1704,6 +1704,20 @@ range|:
 name|fieldNames
 control|)
 block|{
+if|if
+condition|(
+operator|!
+name|entry
+operator|.
+name|hasField
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+continue|continue;
+comment|// There is no content for this field continue with the next one
+block|}
 name|String
 name|link
 init|=
@@ -1714,16 +1728,6 @@ argument_list|(
 name|fieldName
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|link
-operator|==
-literal|null
-condition|)
-block|{
-continue|continue;
-comment|// There is no content for this field continue with the next one
-block|}
 comment|// See if this is a simple file link field, or if it is a file-list
 comment|// field that can specify a list of links:
 if|if
@@ -2446,6 +2450,16 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|entry
+operator|.
+name|hasField
+argument_list|(
+name|field
+argument_list|)
+condition|)
+block|{
 name|String
 name|content
 init|=
@@ -2456,13 +2470,6 @@ argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|content
-operator|!=
-literal|null
-condition|)
-block|{
 name|menu
 operator|.
 name|add

@@ -848,14 +848,13 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
 name|be
 operator|.
-name|getField
+name|hasField
 argument_list|(
 literal|"keywords"
 argument_list|)
-operator|==
-literal|null
 condition|)
 block|{
 return|return;

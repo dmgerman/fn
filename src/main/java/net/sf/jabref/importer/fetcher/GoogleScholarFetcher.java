@@ -1540,14 +1540,13 @@ comment|// If the entry's url field is not set, and we have stored an url for th
 comment|// entry, set it:
 if|if
 condition|(
+operator|!
 name|entry
 operator|.
-name|getField
+name|hasField
 argument_list|(
 literal|"url"
 argument_list|)
-operator|==
-literal|null
 condition|)
 block|{
 name|String

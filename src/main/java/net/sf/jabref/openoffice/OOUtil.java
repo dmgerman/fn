@@ -1601,16 +1601,6 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|String
-name|value
-init|=
-name|e
-operator|.
-name|getField
-argument_list|(
-name|field
-argument_list|)
-decl_stmt|;
 comment|// If the running JabRef version doesn't support post-processing in Layout,
 comment|// preprocess fields instead:
 if|if
@@ -1621,9 +1611,12 @@ operator|.
 name|postLayoutSupported
 operator|&&
 operator|(
-name|value
-operator|!=
-literal|null
+name|e
+operator|.
+name|hasField
+argument_list|(
+name|field
+argument_list|)
 operator|)
 condition|)
 block|{
@@ -1639,7 +1632,12 @@ name|POSTFORMATTER
 operator|.
 name|format
 argument_list|(
-name|value
+name|e
+operator|.
+name|getField
+argument_list|(
+name|field
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
