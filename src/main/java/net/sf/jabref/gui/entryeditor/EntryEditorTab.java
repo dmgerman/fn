@@ -1296,7 +1296,7 @@ return|;
 block|}
 else|else
 block|{
-name|Object
+name|String
 name|entryValue
 init|=
 name|getEntry
@@ -1319,9 +1319,6 @@ operator|)
 operator|||
 operator|!
 name|entryValue
-operator|.
-name|toString
-argument_list|()
 operator|.
 name|equals
 argument_list|(
