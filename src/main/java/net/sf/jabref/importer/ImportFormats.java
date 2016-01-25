@@ -552,7 +552,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|WORKING_DIRECTORY
+name|IMPORT_WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 decl_stmt|;

@@ -4031,6 +4031,7 @@ argument_list|,
 name|USER_HOME
 argument_list|)
 expr_stmt|;
+comment|// Remembers working directory of last import
 name|defaults
 operator|.
 name|put
