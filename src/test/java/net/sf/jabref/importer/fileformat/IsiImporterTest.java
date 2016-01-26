@@ -1351,30 +1351,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"We report on the generation of continuous-wave (cw) ultraviolet"
-operator|+
-literal|" (UV) laser light at lambda =278 nm by optical frequency doubling of"
-operator|+
-literal|" visible light in beta -BaB$_2$O$_4$ waveguides. Ridge-type "
-operator|+
-literal|"waveguides were produced by He$^+$ implantation, photolithography"
-operator|+
-literal|" masking, and plasma etching. The final waveguides have core dimension"
-operator|+
-literal|" of a few mu m$^2$ and show transmission losses of 5 dB/cm at 532 nm "
-operator|+
-literal|"and less than 10 dB/cm at 266 nm. In our first experiments, a second "
-operator|+
-literal|"harmonic power of 24 mu W has been generated at 278 nm in an 8 mm long "
-operator|+
-literal|"waveguide pumped by 153 mW at 556 nm."
-operator|.
-name|replaceFirst
-argument_list|(
-literal|"266"
-argument_list|,
-literal|"\n"
-argument_list|)
+literal|"Lorem ipsum abstract"
 argument_list|,
 name|a
 operator|.
@@ -2089,41 +2066,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"In this letter, the problem of detecting urban road "
-operator|+
-literal|"networks from high-resolution optical/synthetic aperture "
-operator|+
-literal|"radar (SAR) images is addressed. To this end, this letter "
-operator|+
-literal|"exploits a priori knowledge about road direction "
-operator|+
-literal|"distribution in urban areas. In particular, this letter "
-operator|+
-literal|"presents an adaptive filtering procedure able to capture the "
-operator|+
-literal|"predominant directions of these roads and enhance the "
-operator|+
-literal|"extraction results. After road element extraction, to both "
-operator|+
-literal|"discard redundant segments and avoid gaps, a special "
-operator|+
-literal|"perceptual grouping algorithm is devised, exploiting "
-operator|+
-literal|"colinearity as well as proximity concepts. Finally, the road "
-operator|+
-literal|"network topology is considered, checking for road "
-operator|+
-literal|"intersections and regularizing the overall patterns using "
-operator|+
-literal|"these focal points. The proposed procedure was tested on a "
-operator|+
-literal|"pair of very high resolution images, one from an optical "
-operator|+
-literal|"sensor and one from a SAR sensor. The experiments show an "
-operator|+
-literal|"increase in both the completeness and the quality indexes "
-operator|+
-literal|"for the extracted road network."
+literal|"Lorem ipsum abstract"
 argument_list|,
 name|a
 operator|.
@@ -2348,41 +2291,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"In this letter, the problem of detecting urban road "
-operator|+
-literal|"networks from high-resolution optical/synthetic aperture "
-operator|+
-literal|"radar (SAR) images is addressed. To this end, this letter "
-operator|+
-literal|"exploits a priori knowledge about road direction "
-operator|+
-literal|"distribution in urban areas. In particular, this letter "
-operator|+
-literal|"presents an adaptive filtering procedure able to capture the "
-operator|+
-literal|"predominant directions of these roads and enhance the "
-operator|+
-literal|"extraction results. After road element extraction, to both "
-operator|+
-literal|"discard redundant segments and avoid gaps, a special "
-operator|+
-literal|"perceptual grouping algorithm is devised, exploiting "
-operator|+
-literal|"colinearity as well as proximity concepts. Finally, the road "
-operator|+
-literal|"network topology is considered, checking for road "
-operator|+
-literal|"intersections and regularizing the overall patterns using "
-operator|+
-literal|"these focal points. The proposed procedure was tested on a "
-operator|+
-literal|"pair of very high resolution images, one from an optical "
-operator|+
-literal|"sensor and one from a SAR sensor. The experiments show an "
-operator|+
-literal|"increase in both the completeness and the quality indexes "
-operator|+
-literal|"for the extracted road network."
+literal|"Lorem ipsum abstract"
 argument_list|,
 name|a
 operator|.
