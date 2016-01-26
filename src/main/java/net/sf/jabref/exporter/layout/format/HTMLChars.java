@@ -121,9 +121,9 @@ argument_list|,
 literal|"<p>"
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\n"
+literal|"\n"
 argument_list|,
 literal|"<br>"
 argument_list|)

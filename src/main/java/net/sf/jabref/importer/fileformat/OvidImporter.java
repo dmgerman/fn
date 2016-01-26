@@ -1069,9 +1069,9 @@ argument_list|(
 literal|1
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|" \\(Ed\\)"
+literal|" (Ed)"
 argument_list|,
 literal|""
 argument_list|)
@@ -1251,7 +1251,7 @@ argument_list|(
 literal|"pages"
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"-"
 argument_list|,
@@ -1392,14 +1392,14 @@ name|content
 operator|=
 name|content
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|";"
 argument_list|,
 literal|","
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"  "
 argument_list|,
@@ -1502,9 +1502,9 @@ literal|"editor"
 argument_list|,
 name|auth
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|" \\[Ed\\]"
+literal|" [Ed]"
 argument_list|,
 literal|""
 argument_list|)
@@ -1711,7 +1711,7 @@ argument_list|,
 literal|""
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|";"
 argument_list|,

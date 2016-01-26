@@ -1256,7 +1256,7 @@ name|query
 operator|=
 name|query
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" "
 argument_list|,

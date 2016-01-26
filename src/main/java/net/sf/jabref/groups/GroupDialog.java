@@ -3226,7 +3226,7 @@ operator|+
 literal|4
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" "
 argument_list|,

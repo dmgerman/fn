@@ -720,7 +720,7 @@ literal|'.'
 argument_list|)
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"/"
 argument_list|,

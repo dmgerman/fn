@@ -129,7 +129,7 @@ name|newGen
 operator|=
 name|genFields
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|";abstract;"
 argument_list|,
@@ -154,7 +154,7 @@ name|newGen
 operator|=
 name|genFields
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"abstract;"
 argument_list|,
@@ -186,7 +186,7 @@ name|newGen
 operator|=
 name|genFields
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|";abstract"
 argument_list|,

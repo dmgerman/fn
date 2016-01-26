@@ -625,14 +625,14 @@ name|fixAuthor_lastNameFirst
 argument_list|(
 name|ed
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|",-"
 argument_list|,
 literal|", "
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|";"
 argument_list|,
@@ -656,14 +656,14 @@ name|fixAuthor_lastNameFirst
 argument_list|(
 name|frest
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|",-"
 argument_list|,
 literal|", "
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|";"
 argument_list|,
@@ -711,7 +711,7 @@ name|kw
 init|=
 name|frest
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"-;"
 argument_list|,
@@ -791,7 +791,7 @@ literal|"journal"
 argument_list|,
 name|jr
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"-"
 argument_list|,
@@ -967,7 +967,7 @@ literal|"publisher"
 argument_list|,
 name|jr
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"-"
 argument_list|,
@@ -1183,7 +1183,7 @@ name|type
 operator|=
 name|frest
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" "
 argument_list|,
@@ -1292,7 +1292,7 @@ argument_list|(
 name|pgPos
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"-"
 argument_list|,
