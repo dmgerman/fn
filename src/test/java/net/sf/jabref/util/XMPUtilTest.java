@@ -128,7 +128,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -749,7 +749,7 @@ name|e
 argument_list|,
 name|sw
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)

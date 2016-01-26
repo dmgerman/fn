@@ -38,7 +38,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -54,7 +54,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseTypeDetection
+name|BibDatabaseModeDetection
 import|;
 end_import
 
@@ -94,15 +94,6 @@ specifier|public
 class|class
 name|LoadedDatabase
 block|{
-DECL|field|DATABASE_TYPE
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|DATABASE_TYPE
-init|=
-literal|"DATABASE_TYPE"
-decl_stmt|;
 DECL|field|database
 specifier|private
 specifier|final
@@ -181,9 +172,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|setType
+name|setMode
 argument_list|(
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -219,10 +210,10 @@ name|file
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getType ()
+DECL|method|getMode ()
 specifier|public
-name|BibDatabaseType
-name|getType
+name|BibDatabaseMode
+name|getMode
 parameter_list|()
 block|{
 name|Vector
@@ -235,6 +226,8 @@ name|metaData
 operator|.
 name|getData
 argument_list|(
+name|MetaData
+operator|.
 name|DATABASE_TYPE
 argument_list|)
 decl_stmt|;
@@ -246,16 +239,16 @@ literal|null
 condition|)
 block|{
 return|return
-name|BibDatabaseTypeDetection
+name|BibDatabaseModeDetection
 operator|.
-name|inferType
+name|inferMode
 argument_list|(
 name|database
 argument_list|)
 return|;
 block|}
 return|return
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|valueOf
 argument_list|(
@@ -268,13 +261,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|setType (BibDatabaseType type)
+DECL|method|setMode (BibDatabaseMode bibDatabaseMode)
 specifier|public
 name|void
-name|setType
+name|setMode
 parameter_list|(
-name|BibDatabaseType
-name|type
+name|BibDatabaseMode
+name|bibDatabaseMode
 parameter_list|)
 block|{
 name|Vector
@@ -292,7 +285,7 @@ name|list
 operator|.
 name|add
 argument_list|(
-name|type
+name|bibDatabaseMode
 operator|.
 name|name
 argument_list|()
@@ -302,6 +295,8 @@ name|metaData
 operator|.
 name|putData
 argument_list|(
+name|MetaData
+operator|.
 name|DATABASE_TYPE
 argument_list|,
 name|list
@@ -349,10 +344,10 @@ name|isBiblatexMode
 parameter_list|()
 block|{
 return|return
-name|getType
+name|getMode
 argument_list|()
 operator|==
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBLATEX
 return|;

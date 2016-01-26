@@ -114,7 +114,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -468,7 +468,7 @@ decl_stmt|;
 DECL|field|type
 specifier|private
 specifier|final
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 decl_stmt|;
 DECL|field|jta
@@ -532,7 +532,7 @@ init|=
 literal|"10px"
 decl_stmt|;
 comment|/**      * Constructor taking two entries      *      * @param bOne First entry      * @param bTwo Second entry      */
-DECL|method|MergeEntries (BibEntry bOne, BibEntry bTwo, BibDatabaseType type)
+DECL|method|MergeEntries (BibEntry bOne, BibEntry bTwo, BibDatabaseMode type)
 specifier|public
 name|MergeEntries
 parameter_list|(
@@ -542,7 +542,7 @@ parameter_list|,
 name|BibEntry
 name|bTwo
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 block|{
@@ -565,7 +565,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Constructor with optional column captions for the two entries      *      * @param bOne First entry      * @param bTwo Second entry      * @param headingOne Heading for first entry      * @param headingTwo Heading for second entry      */
-DECL|method|MergeEntries (BibEntry bOne, BibEntry bTwo, String headingOne, String headingTwo, BibDatabaseType type)
+DECL|method|MergeEntries (BibEntry bOne, BibEntry bTwo, String headingOne, String headingTwo, BibDatabaseMode type)
 specifier|public
 name|MergeEntries
 parameter_list|(
@@ -581,7 +581,7 @@ parameter_list|,
 name|String
 name|headingTwo
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 block|{

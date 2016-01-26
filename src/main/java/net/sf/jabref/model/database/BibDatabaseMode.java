@@ -15,10 +15,10 @@ package|;
 end_package
 
 begin_enum
-DECL|enum|BibDatabaseType
+DECL|enum|BibDatabaseMode
 specifier|public
 enum|enum
-name|BibDatabaseType
+name|BibDatabaseMode
 block|{
 DECL|enumConstant|BIBTEX
 name|BIBTEX

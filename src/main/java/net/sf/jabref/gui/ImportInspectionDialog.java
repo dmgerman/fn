@@ -2633,7 +2633,7 @@ operator|.
 name|getLoadedDatabase
 argument_list|()
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 operator|.
@@ -2764,7 +2764,7 @@ operator|.
 name|getLoadedDatabase
 argument_list|()
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 condition|)
@@ -5819,7 +5819,7 @@ operator|.
 name|getLoadedDatabase
 argument_list|()
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 decl_stmt|;

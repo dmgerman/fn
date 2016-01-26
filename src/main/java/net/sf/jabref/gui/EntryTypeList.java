@@ -116,7 +116,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -230,11 +230,11 @@ decl_stmt|;
 DECL|field|type
 specifier|private
 specifier|final
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 decl_stmt|;
 comment|/** Creates a new instance of EntryTypeList */
-DECL|method|EntryTypeList (List<String> fields, BibDatabaseType type)
+DECL|method|EntryTypeList (List<String> fields, BibDatabaseMode type)
 specifier|public
 name|EntryTypeList
 parameter_list|(
@@ -244,7 +244,7 @@ name|String
 argument_list|>
 name|fields
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 block|{

@@ -128,18 +128,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|LoadedDatabase
 import|;
 end_import
@@ -507,7 +495,7 @@ name|getAllValues
 argument_list|(
 name|loadedDatabase
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 argument_list|)

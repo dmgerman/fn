@@ -46,7 +46,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -221,7 +221,7 @@ name|getType
 argument_list|(
 literal|"article"
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -235,7 +235,7 @@ name|getType
 argument_list|(
 literal|"aaaaarticle"
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -249,7 +249,7 @@ name|getStandardType
 argument_list|(
 literal|"aaaaarticle"
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -263,7 +263,7 @@ name|bibtexentrytypes
 operator|.
 name|getAllValues
 argument_list|(
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -280,7 +280,7 @@ name|bibtexentrytypes
 operator|.
 name|getAllTypes
 argument_list|(
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -353,7 +353,7 @@ name|getType
 argument_list|(
 literal|"article"
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -366,7 +366,7 @@ name|removeType
 argument_list|(
 literal|"article"
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -384,7 +384,7 @@ name|getType
 argument_list|(
 literal|"article"
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -418,7 +418,7 @@ name|getTypeOrDefault
 argument_list|(
 literal|"unknowntype"
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)

@@ -154,7 +154,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -571,7 +571,7 @@ argument_list|,
 name|metaData
 argument_list|)
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1176,7 +1176,7 @@ name|currentID
 return|;
 block|}
 comment|/**      * Generates the SQL required to populate the entry_types table with jabref data.      *      * @param out The output (PrintSream or Connection) object to which the DML should be written.      * @param type      */
-DECL|method|populateEntryTypesTable (Object out, BibDatabaseType type)
+DECL|method|populateEntryTypesTable (Object out, BibDatabaseMode type)
 specifier|private
 name|void
 name|populateEntryTypesTable
@@ -1184,7 +1184,7 @@ parameter_list|(
 name|Object
 name|out
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 throws|throws

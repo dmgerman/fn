@@ -565,7 +565,7 @@ name|getAllTypes
 argument_list|(
 name|loadedDatabase
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 control|)
@@ -587,7 +587,7 @@ name|entryTypes
 argument_list|,
 name|loadedDatabase
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1228,7 +1228,7 @@ name|s
 argument_list|,
 name|loadedDatabase
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1643,7 +1643,7 @@ name|nm
 argument_list|,
 name|loadedDatabase
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1668,7 +1668,7 @@ argument_list|()
 argument_list|,
 name|loadedDatabase
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1869,7 +1869,7 @@ name|getAllTypes
 argument_list|(
 name|loadedDatabase
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 control|)
@@ -1946,7 +1946,7 @@ name|name
 argument_list|,
 name|loadedDatabase
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1967,7 +1967,7 @@ name|name
 argument_list|,
 name|loadedDatabase
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 operator|==
@@ -2041,7 +2041,7 @@ name|name
 argument_list|,
 name|loadedDatabase
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2376,7 +2376,7 @@ argument_list|()
 argument_list|,
 name|loadedDatabase
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2497,7 +2497,7 @@ name|lastSelected
 argument_list|,
 name|loadedDatabase
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 decl_stmt|;

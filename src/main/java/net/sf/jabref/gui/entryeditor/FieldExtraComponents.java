@@ -436,7 +436,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -1252,7 +1252,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Return a dropdown list with the month names for fields with EXTRA_MONTH      *      * @param fieldEditor      * @param entryEditor      * @param type      * @return      */
-DECL|method|getMonthExtraComponent (FieldEditor fieldEditor, EntryEditor entryEditor, BibDatabaseType type)
+DECL|method|getMonthExtraComponent (FieldEditor fieldEditor, EntryEditor entryEditor, BibDatabaseMode type)
 specifier|public
 specifier|static
 name|Optional
@@ -1267,7 +1267,7 @@ parameter_list|,
 name|EntryEditor
 name|entryEditor
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 block|{
@@ -1374,7 +1374,7 @@ if|if
 condition|(
 name|type
 operator|==
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBLATEX
 condition|)

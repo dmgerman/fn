@@ -60,7 +60,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -108,17 +108,17 @@ decl_stmt|;
 DECL|field|type
 specifier|private
 specifier|final
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 decl_stmt|;
-DECL|method|TypedBibEntry (BibEntry entry, BibDatabaseType type)
+DECL|method|TypedBibEntry (BibEntry entry, BibDatabaseMode type)
 specifier|public
 name|TypedBibEntry
 parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 block|{
@@ -135,7 +135,7 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|TypedBibEntry (BibEntry entry, Optional<BibDatabase> database, BibDatabaseType type)
+DECL|method|TypedBibEntry (BibEntry entry, Optional<BibDatabase> database, BibDatabaseMode type)
 specifier|public
 name|TypedBibEntry
 parameter_list|(
@@ -148,7 +148,7 @@ name|BibDatabase
 argument_list|>
 name|database
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 block|{

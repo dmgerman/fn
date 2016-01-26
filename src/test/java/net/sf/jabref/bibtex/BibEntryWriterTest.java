@@ -92,7 +92,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -380,7 +380,7 @@ name|entry
 argument_list|,
 name|stringWriter
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -625,7 +625,7 @@ name|entry
 argument_list|,
 name|stringWriter
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -825,7 +825,7 @@ name|entry
 argument_list|,
 name|stringWriter
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -1039,7 +1039,7 @@ name|entry
 argument_list|,
 name|stringWriter
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -1304,7 +1304,7 @@ name|entry
 argument_list|,
 name|stringWriter
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -1555,7 +1555,7 @@ name|entry
 argument_list|,
 name|stringWriter
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -1809,7 +1809,7 @@ name|entry
 argument_list|,
 name|stringWriter
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -2006,7 +2006,7 @@ name|entry
 argument_list|,
 name|stringWriter
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -2148,7 +2148,7 @@ name|entry
 argument_list|,
 name|stringWriter
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)

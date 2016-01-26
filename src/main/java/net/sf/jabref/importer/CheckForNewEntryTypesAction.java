@@ -84,7 +84,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -173,7 +173,7 @@ name|ParserResult
 name|pr
 parameter_list|)
 block|{
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 init|=
 operator|new
@@ -190,7 +190,7 @@ name|getMetaData
 argument_list|()
 argument_list|)
 operator|.
-name|getType
+name|getMode
 argument_list|()
 decl_stmt|;
 comment|// See if any custom entry types were imported, but disregard those we already know:

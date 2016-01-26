@@ -34,18 +34,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|bibtex
 operator|.
 name|EntryTypes
@@ -140,7 +128,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -525,7 +513,7 @@ name|EntryTypes
 operator|.
 name|getAllTypes
 argument_list|(
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBLATEX
 argument_list|)
@@ -544,7 +532,7 @@ name|getType
 argument_list|(
 name|key
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBLATEX
 argument_list|)

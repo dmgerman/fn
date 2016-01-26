@@ -78,20 +78,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bibtex
-operator|.
-name|EntryTypes
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -232,14 +218,14 @@ argument_list|()
 decl_stmt|;
 DECL|method|getBibType ()
 specifier|public
-name|BibDatabaseType
+name|BibDatabaseMode
 name|getBibType
 parameter_list|()
 block|{
 return|return
-name|BibDatabaseTypeDetection
+name|BibDatabaseModeDetection
 operator|.
-name|inferType
+name|inferMode
 argument_list|(
 name|this
 argument_list|)

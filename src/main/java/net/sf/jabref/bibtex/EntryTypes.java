@@ -24,7 +24,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -434,7 +434,7 @@ name|ALL
 argument_list|)
 decl_stmt|;
 comment|/**      * This method returns the BibtexEntryType for the name of a type,      * or null if it does not exist.      */
-DECL|method|getType (String name, BibDatabaseType type)
+DECL|method|getType (String name, BibDatabaseMode type)
 specifier|public
 specifier|static
 name|EntryType
@@ -443,14 +443,14 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 block|{
 return|return
 name|type
 operator|==
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBLATEX
 condition|?
@@ -471,7 +471,7 @@ return|;
 block|}
 comment|/**      * This method returns the EntryType for the name of a type,      * or the default type (*.MISC) if it does not exist.      */
 comment|// Get an entry type defined in BibtexEntryType
-DECL|method|getTypeOrDefault (String name, BibDatabaseType type)
+DECL|method|getTypeOrDefault (String name, BibDatabaseMode type)
 specifier|public
 specifier|static
 name|EntryType
@@ -480,14 +480,14 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 block|{
 return|return
 name|type
 operator|==
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBLATEX
 condition|?
@@ -507,7 +507,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * This method returns the standard BibtexEntryType for the      * name of a type, or null if it does not exist.      */
-DECL|method|getStandardType (String name, BibDatabaseType type)
+DECL|method|getStandardType (String name, BibDatabaseMode type)
 specifier|public
 specifier|static
 name|EntryType
@@ -516,14 +516,14 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 block|{
 return|return
 name|type
 operator|==
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBLATEX
 condition|?
@@ -583,7 +583,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getAllTypes (BibDatabaseType type)
+DECL|method|getAllTypes (BibDatabaseMode type)
 specifier|public
 specifier|static
 name|Set
@@ -592,14 +592,14 @@ name|String
 argument_list|>
 name|getAllTypes
 parameter_list|(
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 block|{
 return|return
 name|type
 operator|==
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBLATEX
 condition|?
@@ -614,7 +614,7 @@ name|getAllTypes
 argument_list|()
 return|;
 block|}
-DECL|method|getAllValues (BibDatabaseType type)
+DECL|method|getAllValues (BibDatabaseMode type)
 specifier|public
 specifier|static
 name|Collection
@@ -623,14 +623,14 @@ name|EntryType
 argument_list|>
 name|getAllValues
 parameter_list|(
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 block|{
 return|return
 name|type
 operator|==
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBLATEX
 condition|?
@@ -646,7 +646,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Removes a customized entry type from the type map. If this type      * overrode a standard type, we reinstate the standard one.      *      * @param name The customized entry type to remove.      */
-DECL|method|removeType (String name, BibDatabaseType type)
+DECL|method|removeType (String name, BibDatabaseMode type)
 specifier|public
 specifier|static
 name|void
@@ -655,7 +655,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 block|{
@@ -663,7 +663,7 @@ if|if
 condition|(
 name|type
 operator|==
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBLATEX
 condition|)

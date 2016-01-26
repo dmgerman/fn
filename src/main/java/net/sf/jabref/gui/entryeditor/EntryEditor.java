@@ -560,7 +560,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -1246,7 +1246,7 @@ operator|.
 name|getLoadedDatabase
 argument_list|()
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2551,7 +2551,7 @@ operator|.
 name|getLoadedDatabase
 argument_list|()
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3088,7 +3088,7 @@ operator|.
 name|getLoadedDatabase
 argument_list|()
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 return|;
@@ -3269,7 +3269,7 @@ operator|.
 name|getLoadedDatabase
 argument_list|()
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -3403,7 +3403,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|getSourceString (BibEntry entry, BibDatabaseType type)
+DECL|method|getSourceString (BibEntry entry, BibDatabaseMode type)
 specifier|public
 specifier|static
 name|String
@@ -3412,7 +3412,7 @@ parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 throws|throws

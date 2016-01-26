@@ -113,10 +113,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibDatabaseTypeDetection
+DECL|class|BibDatabaseModeDetection
 specifier|public
 class|class
-name|BibDatabaseTypeDetection
+name|BibDatabaseModeDetection
 block|{
 DECL|field|bibtex
 specifier|private
@@ -167,11 +167,11 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/**      * Tries to infer the database type by examining a BibDatabase database.      *      * All checks are based on the case-insensitive comparison of entry tag names.      * Only standard BibTex and Biblatex entry types are considered in the decision process.      *      * 1. Check if any of the entries is a type exclusive to Biblatex      * 2. Check if any exclusive Biblatex fields are present      * 3. Otherwise return BibTex      *      * @param database a BibDatabase database      * @return the inferred database type      */
-DECL|method|inferType (BibDatabase database)
+DECL|method|inferMode (BibDatabase database)
 specifier|public
 specifier|static
-name|BibDatabaseType
-name|inferType
+name|BibDatabaseMode
+name|inferMode
 parameter_list|(
 name|BibDatabase
 name|database
@@ -210,7 +210,7 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBLATEX
 return|;
@@ -236,14 +236,14 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBLATEX
 return|;
 block|}
 block|}
 return|return
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 return|;

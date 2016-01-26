@@ -26,7 +26,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -130,7 +130,7 @@ operator|.
 name|empty
 argument_list|()
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
@@ -219,7 +219,7 @@ operator|.
 name|empty
 argument_list|()
 argument_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)

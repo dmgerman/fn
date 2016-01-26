@@ -826,7 +826,7 @@ operator|.
 name|getLoadedDatabase
 argument_list|()
 operator|.
-name|getType
+name|getMode
 argument_list|()
 argument_list|)
 expr_stmt|;

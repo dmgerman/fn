@@ -180,6 +180,14 @@ name|KEYPATTERNDEFAULT
 init|=
 literal|"keypatterndefault"
 decl_stmt|;
+DECL|field|DATABASE_TYPE
+specifier|static
+specifier|final
+name|String
+name|DATABASE_TYPE
+init|=
+literal|"DATABASE_TYPE"
+decl_stmt|;
 DECL|field|metaData
 specifier|private
 specifier|final

@@ -106,7 +106,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabaseType
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -360,7 +360,7 @@ throws|throws
 name|SQLException
 function_decl|;
 comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @param type      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
-DECL|method|performImport (DBStrings dbs, List<String> listOfDBs, BibDatabaseType type)
+DECL|method|performImport (DBStrings dbs, List<String> listOfDBs, BibDatabaseMode type)
 specifier|public
 name|List
 argument_list|<
@@ -377,7 +377,7 @@ name|String
 argument_list|>
 name|listOfDBs
 parameter_list|,
-name|BibDatabaseType
+name|BibDatabaseMode
 name|type
 parameter_list|)
 throws|throws
