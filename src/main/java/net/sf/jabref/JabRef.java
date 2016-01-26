@@ -3759,10 +3759,15 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|LOGGER
+operator|.
+name|error
+argument_list|(
 name|e
 operator|.
-name|printStackTrace
+name|getMessage
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 comment|// In JabRef v2.8, we did it only on NON-Mac. Now, we try on all platforms
@@ -4018,10 +4023,12 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Swing look and feel could not be loaded."
+argument_list|)
 expr_stmt|;
 block|}
 comment|// If the option is enabled, open the last edited databases, if any.
