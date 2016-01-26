@@ -828,12 +828,12 @@ name|PROXY_HOSTNAME
 init|=
 literal|"proxyHostname"
 decl_stmt|;
-DECL|field|USE_PROXY
+DECL|field|PROXY_USE
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|USE_PROXY
+name|PROXY_USE
 init|=
 literal|"useProxy"
 decl_stmt|;
@@ -855,12 +855,12 @@ name|PROXY_PASSWORD
 init|=
 literal|"proxyPassword"
 decl_stmt|;
-DECL|field|USE_PROXY_AUTHENTICATION
+DECL|field|PROXY_USE_AUTHENTICATION
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|USE_PROXY_AUTHENTICATION
+name|PROXY_USE_AUTHENTICATION
 init|=
 literal|"useProxyAuthentication"
 decl_stmt|;
@@ -3326,11 +3326,12 @@ argument_list|,
 literal|"TeXstudio"
 argument_list|)
 expr_stmt|;
+comment|// Proxy
 name|defaults
 operator|.
 name|put
 argument_list|(
-name|USE_PROXY
+name|PROXY_USE
 argument_list|,
 name|Boolean
 operator|.
@@ -3359,7 +3360,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|USE_PROXY_AUTHENTICATION
+name|PROXY_USE_AUTHENTICATION
 argument_list|,
 name|Boolean
 operator|.
