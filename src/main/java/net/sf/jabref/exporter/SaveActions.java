@@ -217,6 +217,8 @@ operator|+=
 literal|2
 control|)
 block|{
+try|try
+block|{
 name|String
 name|field
 init|=
@@ -251,6 +253,16 @@ argument_list|,
 name|formatter
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IndexOutOfBoundsException
+name|e
+parameter_list|)
+block|{
+comment|// the meta data string in the file is broken. -> Ignore the last item
+break|break;
+block|}
 block|}
 block|}
 DECL|method|setAvailableFormatters ()

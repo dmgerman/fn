@@ -323,6 +323,106 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+DECL|method|invalidSaveActionSting ()
+specifier|public
+name|void
+name|invalidSaveActionSting
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|BibtexParser
+name|parser
+init|=
+operator|new
+name|BibtexParser
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+literal|"@InProceedings{6055279,\n"
+operator|+
+literal|"  Title                    = {Educational session 1},\n"
+operator|+
+literal|"  Booktitle                = {Custom Integrated Circuits Conference (CICC), 2011 IEEE},\n"
+operator|+
+literal|"  Year                     = {2011},\n"
+operator|+
+literal|"  Month                    = {Sept},\n"
+operator|+
+literal|"  Pages                    = {1-7},\n"
+operator|+
+literal|"  Abstract                 = {Start of the above-titled section of the conference proceedings record.},\n"
+operator|+
+literal|"  DOI                      = {10.1109/CICC.2011.6055279},\n"
+operator|+
+literal|"  ISSN                     = {0886-5930}\n"
+operator|+
+literal|"}\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"@comment{jabref-meta: saveActions:title;}"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|ParserResult
+name|parserResult
+init|=
+name|parser
+operator|.
+name|parse
+argument_list|()
+decl_stmt|;
+name|SaveActions
+name|actions
+init|=
+operator|new
+name|SaveActions
+argument_list|(
+name|parserResult
+operator|.
+name|getMetaData
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|BibEntry
+name|actedUpon
+init|=
+name|actions
+operator|.
+name|applySaveActions
+argument_list|(
+name|parserResult
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Educational session 1"
+argument_list|,
+name|actedUpon
+operator|.
+name|getField
+argument_list|(
+literal|"title"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
 DECL|method|checkLowerCaseSaveAction ()
 specifier|public
 name|void
