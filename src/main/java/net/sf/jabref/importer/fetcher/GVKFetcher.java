@@ -431,7 +431,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"GVKHelp.html"
+literal|"GVKHelp"
 return|;
 block|}
 annotation|@
