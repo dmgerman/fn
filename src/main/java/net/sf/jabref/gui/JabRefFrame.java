@@ -8108,14 +8108,9 @@ argument_list|)
 expr_stmt|;
 name|file
 operator|.
-name|addSeparator
-argument_list|()
-expr_stmt|;
-name|file
-operator|.
 name|add
 argument_list|(
-name|fileHistory
+name|editModeAction
 argument_list|)
 expr_stmt|;
 name|file
@@ -8127,7 +8122,7 @@ name|file
 operator|.
 name|add
 argument_list|(
-name|editModeAction
+name|fileHistory
 argument_list|)
 expr_stmt|;
 name|file
