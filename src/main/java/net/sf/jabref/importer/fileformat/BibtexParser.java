@@ -2279,7 +2279,6 @@ name|key
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*                  *                  * The following code doesn't handle {"} correctly: // value is                  * a string consume('"');                  *                  * while (!((peek() == '"')&& (j != '\\'))) { j = read(); if                  * (_eof || (j == -1) || (j == 65535)) { throw new                  * IOException("Error in line "+line+ ": EOF in                  * mid-string"); }                  *                  * value.append((char) j); }                  *                  * consume('"');                  */
 block|}
 elseif|else
 if|if
