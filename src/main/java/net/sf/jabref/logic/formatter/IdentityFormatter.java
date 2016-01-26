@@ -40,6 +40,19 @@ return|;
 block|}
 annotation|@
 name|Override
+DECL|method|getKey ()
+specifier|public
+name|String
+name|getKey
+parameter_list|()
+block|{
+return|return
+name|getName
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|format (String value)
 specifier|public
 name|String

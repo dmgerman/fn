@@ -572,6 +572,18 @@ literal|"UnitFormatter"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getKey ()
+specifier|public
+name|String
+name|getKey
+parameter_list|()
+block|{
+return|return
+literal|"UnitFormatter"
+return|;
+block|}
 block|}
 end_class
 

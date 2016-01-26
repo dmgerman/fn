@@ -154,6 +154,18 @@ return|return
 literal|"BibTex authors format"
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getKey ()
+specifier|public
+name|String
+name|getKey
+parameter_list|()
+block|{
+return|return
+literal|"AuthorsFormatter"
+return|;
+block|}
 comment|/**      *      */
 annotation|@
 name|Override

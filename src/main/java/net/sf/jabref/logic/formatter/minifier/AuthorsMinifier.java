@@ -56,6 +56,18 @@ return|return
 literal|"Minify authors"
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getKey ()
+specifier|public
+name|String
+name|getKey
+parameter_list|()
+block|{
+return|return
+literal|"MinifyAuthors"
+return|;
+block|}
 comment|/**      * Replaces three or more authors with and others.      *      *<example> Stefan Kolb -> Stefan Kolb Stefan Kolb and Simon Harrer -> Stefan Kolb and Simon Harrer Stefan Kolb and      * Simon Harrer and JÃ¶rg Lenhard -> Stefan Kolb and others</example>      */
 annotation|@
 name|Override
