@@ -3761,12 +3761,11 @@ parameter_list|)
 block|{
 name|LOGGER
 operator|.
-name|error
+name|warn
 argument_list|(
+literal|"Look and feel could not be set"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4028,6 +4027,8 @@ operator|.
 name|error
 argument_list|(
 literal|"Swing look and feel could not be loaded."
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}

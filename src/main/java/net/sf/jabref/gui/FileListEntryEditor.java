@@ -1520,11 +1520,8 @@ operator|.
 name|error
 argument_list|(
 literal|"File could not be opened"
-operator|+
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
