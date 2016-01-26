@@ -1437,7 +1437,7 @@ DECL|class|ToolBar
 class|class
 name|ToolBar
 extends|extends
-name|JToolBar
+name|OSXCompatibleToolbar
 block|{
 DECL|method|addAction (Action a)
 name|void
