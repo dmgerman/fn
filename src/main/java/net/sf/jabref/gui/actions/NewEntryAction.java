@@ -454,6 +454,17 @@ operator|.
 name|getType
 argument_list|(
 name|thisType
+argument_list|,
+name|jabRefFrame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
+name|getType
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

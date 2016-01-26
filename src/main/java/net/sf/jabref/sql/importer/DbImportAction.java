@@ -817,6 +817,17 @@ argument_list|,
 name|dialogo
 operator|.
 name|listOfDBs
+argument_list|,
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
+name|getType
+argument_list|()
 argument_list|)
 expr_stmt|;
 for|for

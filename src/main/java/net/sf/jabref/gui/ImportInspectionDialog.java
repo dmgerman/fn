@@ -1059,7 +1059,7 @@ name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|frame
-specifier|private
+specifier|public
 specifier|final
 name|JabRefFrame
 name|frame
@@ -2626,6 +2626,14 @@ name|database
 argument_list|()
 argument_list|,
 name|entry
+argument_list|,
+name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
+name|getType
+argument_list|()
 argument_list|)
 operator|.
 name|isPresent
@@ -2703,7 +2711,6 @@ block|}
 comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *      * @param entriesDupe A Collection of BibEntry instances.      * @param entry   The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
 DECL|method|internalDuplicate (Collection<BibEntry> entriesDupe, BibEntry entry)
 specifier|private
-specifier|static
 name|Optional
 argument_list|<
 name|BibEntry
@@ -2750,6 +2757,14 @@ argument_list|(
 name|entry
 argument_list|,
 name|othEntry
+argument_list|,
+name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
+name|getType
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -5792,6 +5807,14 @@ name|database
 argument_list|()
 argument_list|,
 name|first
+argument_list|,
+name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
+name|getType
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if

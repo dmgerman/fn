@@ -1081,6 +1081,9 @@ name|FileActions
 operator|.
 name|saveDatabase
 argument_list|(
+operator|new
+name|LoadedDatabase
+argument_list|(
 name|inTemp
 argument_list|,
 name|mdInTemp
@@ -1095,6 +1098,7 @@ name|panel
 operator|.
 name|fileMonitorHandle
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals

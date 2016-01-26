@@ -104,6 +104,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
+name|BibDatabaseType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|*
@@ -343,8 +359,8 @@ parameter_list|)
 throws|throws
 name|SQLException
 function_decl|;
-comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
-DECL|method|performImport (DBStrings dbs, List<String> listOfDBs)
+comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @param type      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
+DECL|method|performImport (DBStrings dbs, List<String> listOfDBs, BibDatabaseType type)
 specifier|public
 name|List
 argument_list|<
@@ -360,6 +376,9 @@ argument_list|<
 name|String
 argument_list|>
 name|listOfDBs
+parameter_list|,
+name|BibDatabaseType
+name|type
 parameter_list|)
 throws|throws
 name|Exception
@@ -568,6 +587,8 @@ name|getString
 argument_list|(
 literal|"label"
 argument_list|)
+argument_list|,
+name|type
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -710,6 +731,9 @@ argument_list|(
 literal|"entry_types_id"
 argument_list|)
 argument_list|)
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|entry

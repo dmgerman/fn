@@ -1862,6 +1862,9 @@ argument_list|(
 name|id
 argument_list|,
 name|type
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 try|try

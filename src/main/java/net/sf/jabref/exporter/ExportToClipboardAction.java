@@ -626,10 +626,7 @@ argument_list|()
 operator|.
 name|loadedDatabase
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 expr_stmt|;
 name|File

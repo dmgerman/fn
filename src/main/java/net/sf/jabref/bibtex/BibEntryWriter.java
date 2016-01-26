@@ -80,6 +80,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
+name|BibDatabaseType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|BibEntry
@@ -216,7 +232,7 @@ operator|=
 name|write
 expr_stmt|;
 block|}
-DECL|method|write (BibEntry entry, Writer out)
+DECL|method|write (BibEntry entry, Writer out, BibDatabaseType bibDatabaseType)
 specifier|public
 name|void
 name|write
@@ -226,6 +242,9 @@ name|entry
 parameter_list|,
 name|Writer
 name|out
+parameter_list|,
+name|BibDatabaseType
+name|bibDatabaseType
 parameter_list|)
 throws|throws
 name|IOException
@@ -270,10 +289,12 @@ argument_list|(
 name|entry
 argument_list|,
 name|out
+argument_list|,
+name|bibDatabaseType
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|writeWithoutPrependedNewlines (BibEntry entry, Writer out)
+DECL|method|writeWithoutPrependedNewlines (BibEntry entry, Writer out, BibDatabaseType bibDatabaseType)
 specifier|public
 name|void
 name|writeWithoutPrependedNewlines
@@ -283,6 +304,9 @@ name|entry
 parameter_list|,
 name|Writer
 name|out
+parameter_list|,
+name|BibDatabaseType
+name|bibDatabaseType
 parameter_list|)
 throws|throws
 name|IOException
@@ -317,11 +341,13 @@ argument_list|(
 name|entry
 argument_list|,
 name|out
+argument_list|,
+name|bibDatabaseType
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Write fields in the order of requiredFields, optionalFields and other fields, but does not sort the fields.      *      * @param entry      * @param out      * @throws IOException      */
-DECL|method|writeRequiredFieldsFirstRemainingFieldsSecond (BibEntry entry, Writer out)
+DECL|method|writeRequiredFieldsFirstRemainingFieldsSecond (BibEntry entry, Writer out, BibDatabaseType bibDatabaseType)
 specifier|private
 name|void
 name|writeRequiredFieldsFirstRemainingFieldsSecond
@@ -331,6 +357,9 @@ name|entry
 parameter_list|,
 name|Writer
 name|out
+parameter_list|,
+name|BibDatabaseType
+name|bibDatabaseType
 parameter_list|)
 throws|throws
 name|IOException
@@ -348,6 +377,8 @@ name|Optional
 operator|.
 name|empty
 argument_list|()
+argument_list|,
+name|bibDatabaseType
 argument_list|)
 decl_stmt|;
 name|out
@@ -415,6 +446,8 @@ name|entry
 operator|.
 name|getType
 argument_list|()
+argument_list|,
+name|bibDatabaseType
 argument_list|)
 decl_stmt|;
 comment|// Write required fields first.

@@ -166,18 +166,15 @@ name|bibtex
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/**      * Tries to infer the database type by examining a BibEntry collection.      *      * All checks are based on the case-insensitive comparison of entry tag names.      * Only standard BibTex and Biblatex entry types are considered in the decision process.      *      * 1. Check if any of the entries is a type exclusive to Biblatex      * 2. Check if any exclusive Biblatex fields are present      * 3. Otherwise return BibTex      *      * @param entries a BibEntry collection      * @return the inferred database type      */
-DECL|method|inferType (Collection<BibEntry> entries)
+comment|/**      * Tries to infer the database type by examining a BibDatabase database.      *      * All checks are based on the case-insensitive comparison of entry tag names.      * Only standard BibTex and Biblatex entry types are considered in the decision process.      *      * 1. Check if any of the entries is a type exclusive to Biblatex      * 2. Check if any exclusive Biblatex fields are present      * 3. Otherwise return BibTex      *      * @param database a BibDatabase database      * @return the inferred database type      */
+DECL|method|inferType (BibDatabase database)
 specifier|public
 specifier|static
 name|BibDatabaseType
 name|inferType
 parameter_list|(
-name|Collection
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entries
+name|BibDatabase
+name|database
 parameter_list|)
 block|{
 specifier|final
@@ -189,7 +186,10 @@ name|entryTypes
 init|=
 name|getEntryTypes
 argument_list|(
-name|entries
+name|database
+operator|.
+name|getEntries
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// type-based check
@@ -220,7 +220,10 @@ block|{
 comment|// field-based check
 if|if
 condition|(
-name|entries
+name|database
+operator|.
+name|getEntries
+argument_list|()
 operator|.
 name|stream
 argument_list|()

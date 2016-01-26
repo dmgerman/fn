@@ -132,6 +132,34 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|LoadedDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -534,6 +562,17 @@ expr_stmt|;
 name|populateEntryTypesTable
 argument_list|(
 name|out
+argument_list|,
+operator|new
+name|LoadedDatabase
+argument_list|(
+name|database
+argument_list|,
+name|metaData
+argument_list|)
+operator|.
+name|getType
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|populateEntriesTable
@@ -1136,14 +1175,17 @@ return|return
 name|currentID
 return|;
 block|}
-comment|/**      * Generates the SQL required to populate the entry_types table with jabref data.      *      * @param out The output (PrintSream or Connection) object to which the DML should be written.      */
-DECL|method|populateEntryTypesTable (Object out)
+comment|/**      * Generates the SQL required to populate the entry_types table with jabref data.      *      * @param out The output (PrintSream or Connection) object to which the DML should be written.      * @param type      */
+DECL|method|populateEntryTypesTable (Object out, BibDatabaseType type)
 specifier|private
 name|void
 name|populateEntryTypesTable
 parameter_list|(
 name|Object
 name|out
+parameter_list|,
+name|BibDatabaseType
+name|type
 parameter_list|)
 throws|throws
 name|SQLException
@@ -1227,7 +1269,9 @@ range|:
 name|EntryTypes
 operator|.
 name|getAllValues
-argument_list|()
+argument_list|(
+name|type
+argument_list|)
 control|)
 block|{
 name|StringBuilder

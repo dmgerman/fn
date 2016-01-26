@@ -114,6 +114,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
+name|BibDatabaseType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|CustomEntryType
@@ -211,8 +227,14 @@ literal|"Default"
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|type
+specifier|private
+specifier|final
+name|BibDatabaseType
+name|type
+decl_stmt|;
 comment|/** Creates a new instance of EntryTypeList */
-DECL|method|EntryTypeList (List<String> fields)
+DECL|method|EntryTypeList (List<String> fields, BibDatabaseType type)
 specifier|public
 name|EntryTypeList
 parameter_list|(
@@ -221,6 +243,9 @@ argument_list|<
 name|String
 argument_list|>
 name|fields
+parameter_list|,
+name|BibDatabaseType
+name|type
 parameter_list|)
 block|{
 name|super
@@ -238,6 +263,12 @@ literal|false
 argument_list|,
 literal|true
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|type
+operator|=
+name|type
 expr_stmt|;
 name|con
 operator|.
@@ -545,6 +576,10 @@ operator|.
 name|getType
 argument_list|(
 name|typeName
+argument_list|,
+name|this
+operator|.
+name|type
 argument_list|)
 decl_stmt|;
 comment|// If it is a custom entry type, we can remove it. If type == null, it means
@@ -640,6 +675,8 @@ operator|.
 name|getStandardType
 argument_list|(
 name|typeName
+argument_list|,
+name|type
 argument_list|)
 operator|==
 literal|null
@@ -672,6 +709,8 @@ operator|.
 name|getType
 argument_list|(
 name|typeName
+argument_list|,
+name|type
 argument_list|)
 operator|instanceof
 name|CustomEntryType

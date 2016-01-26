@@ -50,6 +50,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseType
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -89,7 +105,51 @@ name|BibDatabase
 argument_list|>
 name|database
 decl_stmt|;
-DECL|method|TypedBibEntry (BibEntry entry, Optional<BibDatabase> database)
+DECL|field|type
+specifier|private
+specifier|final
+name|BibDatabaseType
+name|type
+decl_stmt|;
+DECL|method|TypedBibEntry (BibEntry entry, BibDatabaseType type)
+specifier|public
+name|TypedBibEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|,
+name|BibDatabaseType
+name|type
+parameter_list|)
+block|{
+name|this
+operator|.
+name|type
+operator|=
+name|type
+expr_stmt|;
+name|this
+operator|.
+name|entry
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|database
+operator|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|TypedBibEntry (BibEntry entry, Optional<BibDatabase> database, BibDatabaseType type)
 specifier|public
 name|TypedBibEntry
 parameter_list|(
@@ -101,6 +161,9 @@ argument_list|<
 name|BibDatabase
 argument_list|>
 name|database
+parameter_list|,
+name|BibDatabaseType
+name|type
 parameter_list|)
 block|{
 name|this
@@ -125,6 +188,12 @@ argument_list|(
 name|database
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|type
+operator|=
+name|type
+expr_stmt|;
 block|}
 comment|/**      * Returns true if this entry contains the fields it needs to be      * complete.      */
 DECL|method|hasAllRequiredFields ()
@@ -144,6 +213,10 @@ name|entry
 operator|.
 name|getType
 argument_list|()
+argument_list|,
+name|this
+operator|.
+name|type
 argument_list|)
 decl_stmt|;
 return|return
@@ -183,6 +256,8 @@ name|entry
 operator|.
 name|getType
 argument_list|()
+argument_list|,
+name|type
 argument_list|)
 decl_stmt|;
 if|if

@@ -758,6 +758,11 @@ argument_list|,
 name|parent
 operator|.
 name|helpDiag
+argument_list|,
+name|parent
+operator|.
+name|getCurrentBasePanel
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1483,13 +1488,6 @@ argument_list|)
 expr_stmt|;
 name|setValues
 argument_list|()
-expr_stmt|;
-name|CustomEntryTypesManager
-operator|.
-name|loadCustomEntryTypes
-argument_list|(
-name|prefs
-argument_list|)
 expr_stmt|;
 name|ExportFormats
 operator|.

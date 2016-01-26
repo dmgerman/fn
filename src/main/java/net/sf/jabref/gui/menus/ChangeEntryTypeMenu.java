@@ -138,6 +138,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
+name|BibDatabaseType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|BibtexEntryTypes
@@ -222,27 +238,8 @@ specifier|public
 class|class
 name|ChangeEntryTypeMenu
 block|{
-DECL|field|biblatexMode
-specifier|private
-specifier|static
-specifier|final
-name|boolean
-name|biblatexMode
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|BIBLATEX_MODE
-argument_list|)
-decl_stmt|;
 DECL|field|entryShortCuts
 specifier|public
-specifier|static
 specifier|final
 name|Map
 argument_list|<
@@ -257,7 +254,10 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-static|static
+DECL|method|ChangeEntryTypeMenu ()
+specifier|public
+name|ChangeEntryTypeMenu
+parameter_list|()
 block|{
 name|entryShortCuts
 operator|.
@@ -430,7 +430,6 @@ expr_stmt|;
 block|}
 DECL|method|getChangeEntryTypeMenu (BasePanel panel)
 specifier|public
-specifier|static
 name|JMenu
 name|getChangeEntryTypeMenu
 parameter_list|(
@@ -465,7 +464,6 @@ return|;
 block|}
 DECL|method|getChangeentryTypePopupMenu (BasePanel panel)
 specifier|public
-specifier|static
 name|JPopupMenu
 name|getChangeentryTypePopupMenu
 parameter_list|(
@@ -491,7 +489,6 @@ block|}
 comment|/**      * Remove all types from the menu. Then cycle through all available      * types, and add them.      */
 DECL|method|populateChangeEntryTypeMenu (JMenu menu, BasePanel panel)
 specifier|private
-specifier|static
 name|void
 name|populateChangeEntryTypeMenu
 parameter_list|(
@@ -510,7 +507,13 @@ expr_stmt|;
 comment|// biblatex?
 if|if
 condition|(
-name|biblatexMode
+name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
+name|isBiblatexMode
+argument_list|()
 condition|)
 block|{
 for|for
@@ -521,7 +524,11 @@ range|:
 name|EntryTypes
 operator|.
 name|getAllTypes
-argument_list|()
+argument_list|(
+name|BibDatabaseType
+operator|.
+name|BIBLATEX
+argument_list|)
 control|)
 block|{
 name|menu
@@ -536,6 +543,10 @@ operator|.
 name|getType
 argument_list|(
 name|key
+argument_list|,
+name|BibDatabaseType
+operator|.
+name|BIBLATEX
 argument_list|)
 argument_list|,
 name|panel
@@ -602,7 +613,6 @@ block|}
 block|}
 DECL|method|createEntryTypeSection (BasePanel panel, JMenu menu, String title, java.util.List<EntryType> types)
 specifier|private
-specifier|static
 name|void
 name|createEntryTypeSection
 parameter_list|(

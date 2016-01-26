@@ -6407,6 +6407,9 @@ argument_list|(
 name|id
 argument_list|,
 name|tp
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|TextInputDialog
@@ -7869,6 +7872,9 @@ name|FileActions
 operator|.
 name|savePartOfDatabase
 argument_list|(
+operator|new
+name|LoadedDatabase
+argument_list|(
 name|database
 argument_list|,
 name|loadedDatabase
@@ -7877,6 +7883,7 @@ name|getMetaData
 argument_list|()
 argument_list|,
 name|file
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -7901,6 +7908,9 @@ name|FileActions
 operator|.
 name|saveDatabase
 argument_list|(
+operator|new
+name|LoadedDatabase
+argument_list|(
 name|database
 argument_list|,
 name|loadedDatabase
@@ -7909,6 +7919,7 @@ name|getMetaData
 argument_list|()
 argument_list|,
 name|file
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -8489,6 +8500,9 @@ argument_list|(
 name|id
 argument_list|,
 name|type
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 try|try

@@ -76,20 +76,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
-operator|.
-name|EntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|fileformat
@@ -115,16 +101,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Optional
 import|;
 end_import
 
@@ -222,6 +198,9 @@ argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|e
@@ -331,6 +310,9 @@ argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|e
@@ -434,6 +416,9 @@ argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Assert

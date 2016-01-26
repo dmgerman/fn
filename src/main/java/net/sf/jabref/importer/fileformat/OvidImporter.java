@@ -1646,12 +1646,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|EntryTypes
-operator|.
-name|getTypeOrDefault
-argument_list|(
 name|entryType
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|b

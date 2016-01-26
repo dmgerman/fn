@@ -1279,10 +1279,7 @@ argument_list|()
 operator|.
 name|loadedDatabase
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 expr_stmt|;
 comment|// Make sure we remember which filter was used, to set

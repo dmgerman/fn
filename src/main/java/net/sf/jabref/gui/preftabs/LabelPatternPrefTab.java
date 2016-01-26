@@ -146,6 +146,20 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|help
 operator|.
 name|HelpDialog
@@ -406,7 +420,7 @@ argument_list|(
 literal|20
 argument_list|)
 decl_stmt|;
-DECL|method|LabelPatternPrefTab (JabRefPreferences prefs, HelpDialog helpDiag)
+DECL|method|LabelPatternPrefTab (JabRefPreferences prefs, HelpDialog helpDiag, BasePanel panel)
 specifier|public
 name|LabelPatternPrefTab
 parameter_list|(
@@ -415,11 +429,16 @@ name|prefs
 parameter_list|,
 name|HelpDialog
 name|helpDiag
+parameter_list|,
+name|BasePanel
+name|panel
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|helpDiag
+argument_list|,
+name|panel
 argument_list|)
 expr_stmt|;
 name|this

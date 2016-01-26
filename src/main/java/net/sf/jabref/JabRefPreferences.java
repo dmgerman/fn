@@ -2504,15 +2504,6 @@ name|VALUE_DELIMITERS2
 init|=
 literal|"valueDelimiters"
 decl_stmt|;
-DECL|field|BIBLATEX_MODE
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|BIBLATEX_MODE
-init|=
-literal|"biblatexMode"
-decl_stmt|;
 DECL|field|ENFORCE_LEGAL_BIBTEX_KEY
 specifier|public
 specifier|static
@@ -5673,17 +5664,6 @@ argument_list|,
 name|Boolean
 operator|.
 name|TRUE
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-name|BIBLATEX_MODE
-argument_list|,
-name|Boolean
-operator|.
-name|FALSE
 argument_list|)
 expr_stmt|;
 comment|// Curly brackets ({}) are the default delimiters, not quotes (") as these cause trouble when they appear within the field value:

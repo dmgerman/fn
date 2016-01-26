@@ -289,6 +289,8 @@ argument_list|(
 name|parent
 operator|.
 name|helpDiag
+argument_list|,
+name|panel
 argument_list|)
 expr_stmt|;
 name|setPanel

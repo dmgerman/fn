@@ -1210,6 +1210,9 @@ name|FileActions
 operator|.
 name|savePartOfDatabase
 argument_list|(
+operator|new
+name|LoadedDatabase
+argument_list|(
 name|panel
 operator|.
 name|database
@@ -1223,6 +1226,7 @@ name|getMetaData
 argument_list|()
 argument_list|,
 name|file
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -1251,6 +1255,9 @@ name|FileActions
 operator|.
 name|saveDatabase
 argument_list|(
+operator|new
+name|LoadedDatabase
+argument_list|(
 name|panel
 operator|.
 name|database
@@ -1264,6 +1271,7 @@ name|getMetaData
 argument_list|()
 argument_list|,
 name|file
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -2085,10 +2093,7 @@ name|panel
 operator|.
 name|loadedDatabase
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 decl_stmt|;
 name|panel
@@ -2196,10 +2201,7 @@ name|panel
 operator|.
 name|loadedDatabase
 operator|.
-name|getMetaData
-argument_list|()
-operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 operator|.
 name|getPath

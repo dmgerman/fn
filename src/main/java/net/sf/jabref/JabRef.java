@@ -2253,6 +2253,9 @@ name|FileActions
 operator|.
 name|saveDatabase
 argument_list|(
+operator|new
+name|LoadedDatabase
+argument_list|(
 name|pr
 operator|.
 name|getDatabase
@@ -2270,6 +2273,7 @@ name|data
 index|[
 literal|0
 index|]
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -2853,17 +2857,20 @@ name|FileActions
 operator|.
 name|saveDatabase
 argument_list|(
+operator|new
+name|LoadedDatabase
+argument_list|(
 name|newBase
 argument_list|,
 operator|new
 name|MetaData
 argument_list|()
 argument_list|,
-comment|// no Metadata
 operator|new
 name|File
 argument_list|(
 name|subName
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals

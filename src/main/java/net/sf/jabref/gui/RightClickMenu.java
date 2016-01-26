@@ -531,7 +531,9 @@ expr_stmt|;
 name|JMenu
 name|typeMenu
 init|=
+operator|new
 name|ChangeEntryTypeMenu
+argument_list|()
 operator|.
 name|getChangeEntryTypeMenu
 argument_list|(

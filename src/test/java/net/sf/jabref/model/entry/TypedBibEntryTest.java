@@ -16,6 +16,22 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseType
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -69,6 +85,9 @@ argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|e
@@ -110,6 +129,10 @@ name|Optional
 operator|.
 name|empty
 argument_list|()
+argument_list|,
+name|BibDatabaseType
+operator|.
+name|BIBTEX
 argument_list|)
 decl_stmt|;
 name|Assert
@@ -142,6 +165,9 @@ argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|e
@@ -192,6 +218,10 @@ name|Optional
 operator|.
 name|empty
 argument_list|()
+argument_list|,
+name|BibDatabaseType
+operator|.
+name|BIBTEX
 argument_list|)
 decl_stmt|;
 name|Assert

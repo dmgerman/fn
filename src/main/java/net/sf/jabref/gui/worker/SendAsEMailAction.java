@@ -439,6 +439,14 @@ argument_list|(
 name|entry
 argument_list|,
 name|sw
+argument_list|,
+name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
+name|getType
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
