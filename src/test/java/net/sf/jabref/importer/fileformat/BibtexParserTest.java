@@ -4248,12 +4248,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-DECL|method|parseIgnoresAndWarnsAboutEntryWithUnmatchedClosingBracket ()
+DECL|method|parseIgnoresArbitraryContentAfterEntry ()
 specifier|public
 name|void
-name|parseIgnoresAndWarnsAboutEntryWithUnmatchedClosingBracket
+name|parseIgnoresArbitraryContentAfterEntry
 parameter_list|()
 throws|throws
 name|IOException
@@ -4268,20 +4266,10 @@ argument_list|(
 operator|new
 name|StringReader
 argument_list|(
-literal|"@article{test,author={author bracket } to much}}"
+literal|"@article{test,author={author bracket }}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
-name|assertTrue
-argument_list|(
-name|result
-operator|.
-name|hasWarnings
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|Collection
 argument_list|<
 name|BibEntry
@@ -4300,18 +4288,35 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Size should be zero, but was "
+literal|"Size should be one, but was "
 operator|+
 name|c
 operator|.
 name|size
 argument_list|()
 argument_list|,
-literal|0
+literal|1
 argument_list|,
 name|c
 operator|.
 name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Epilog should be preserved"
+argument_list|,
+literal|"}"
+argument_list|,
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEpilog
 argument_list|()
 argument_list|)
 expr_stmt|;
