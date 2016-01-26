@@ -303,7 +303,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>

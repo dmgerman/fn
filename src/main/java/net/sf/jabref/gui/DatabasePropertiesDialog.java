@@ -2306,7 +2306,7 @@ argument_list|(
 name|selected
 argument_list|)
 expr_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>

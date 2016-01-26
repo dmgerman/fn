@@ -22,6 +22,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Vector
 import|;
 end_import
@@ -158,13 +168,13 @@ init|=
 literal|3
 decl_stmt|;
 comment|/**      * Imports old (flat) groups data and converts it to a 2-level tree with an      * AllEntriesGroup at the root.      *      * @return the root of the generated tree.      */
-DECL|method|importFlatGroups (Vector<String> groups)
+DECL|method|importFlatGroups (List<String> groups)
 specifier|public
 specifier|static
 name|GroupTreeNode
 name|importFlatGroups
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -292,13 +302,13 @@ return|return
 name|root
 return|;
 block|}
-DECL|method|importGroups (Vector<String> orderedData, BibDatabase db, int version)
+DECL|method|importGroups (List<String> orderedData, BibDatabase db, int version)
 specifier|public
 specifier|static
 name|GroupTreeNode
 name|importGroups
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -331,8 +341,10 @@ name|fromString
 argument_list|(
 name|orderedData
 operator|.
-name|firstElement
-argument_list|()
+name|get
+argument_list|(
+literal|0
+argument_list|)
 argument_list|,
 name|db
 argument_list|,
@@ -768,13 +780,13 @@ specifier|static
 class|class
 name|Version2_3
 block|{
-DECL|method|fromString (Vector<String> data, BibDatabase db, int version)
+DECL|method|fromString (List<String> data, BibDatabase db, int version)
 specifier|private
 specifier|static
 name|GroupTreeNode
 name|fromString
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -836,7 +848,7 @@ name|s
 operator|=
 name|data
 operator|.
-name|elementAt
+name|get
 argument_list|(
 name|i
 argument_list|)

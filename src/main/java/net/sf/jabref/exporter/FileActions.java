@@ -1618,7 +1618,7 @@ name|metaData
 parameter_list|)
 block|{
 comment|/* three options:              * 1. original order (saveInOriginalOrder) -- not hit here as SaveSettings is not called in that case              * 2. current table sort order              * 3. ordered by specified order              */
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>

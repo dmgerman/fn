@@ -187,7 +187,7 @@ name|HashMap
 argument_list|<
 name|String
 argument_list|,
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -253,7 +253,7 @@ name|groupsTreePresent
 init|=
 literal|false
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -261,7 +261,7 @@ name|flatGroupsData
 init|=
 literal|null
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -316,14 +316,14 @@ decl_stmt|;
 name|String
 name|unit
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|orderedData
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -400,8 +400,10 @@ name|parseInt
 argument_list|(
 name|orderedData
 operator|.
-name|firstElement
-argument_list|()
+name|get
+argument_list|(
+literal|0
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -642,7 +644,7 @@ block|}
 comment|/**      * Retrieves the stored meta data.      *      * @param key the key to look up      * @return null if no data is found      */
 DECL|method|getData (String key)
 specifier|public
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -680,7 +682,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Stores the specified data in this object, using the specified key. For      * certain keys (e.g. "groupstree"), the objects in orderedData are      * reconstructed from their textual (String) representation if they are of      * type String, and stored as an actual instance.      */
-DECL|method|putData (String key, Vector<String> orderedData)
+DECL|method|putData (String key, List<String> orderedData)
 specifier|public
 name|void
 name|putData
@@ -688,7 +690,7 @@ parameter_list|(
 name|String
 name|key
 parameter_list|,
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -995,12 +997,12 @@ name|fileDirs
 return|;
 block|}
 comment|/**      * Parse the groups metadata string      *      * @param orderedData The vector of metadata strings      * @param db          The BibDatabase this metadata belongs to      * @param version     The group tree version      * @return true if parsing was successful, false otherwise      */
-DECL|method|putGroups (Vector<String> orderedData, BibDatabase db, int version)
+DECL|method|putGroups (List<String> orderedData, BibDatabase db, int version)
 specifier|private
 name|void
 name|putGroups
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1146,7 +1148,7 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1209,7 +1211,7 @@ name|quote
 argument_list|(
 name|orderedData
 operator|.
-name|elementAt
+name|get
 argument_list|(
 name|j
 argument_list|)
@@ -1700,7 +1702,7 @@ name|PREFIX_KEYPATTERN
 argument_list|)
 condition|)
 block|{
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1742,7 +1744,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -1876,14 +1878,14 @@ name|key
 argument_list|)
 condition|)
 block|{
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|data
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -1938,14 +1940,14 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|data
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
