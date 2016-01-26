@@ -621,21 +621,6 @@ argument_list|,
 literal|"ctrl PLUS"
 argument_list|)
 block|,
-DECL|enumConstant|LOAD_SESSION
-name|LOAD_SESSION
-argument_list|(
-literal|"Load session"
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Load session"
-argument_list|)
-argument_list|,
-literal|"F12"
-argument_list|)
-block|,
 DECL|enumConstant|MARK_ENTRIES
 name|MARK_ENTRIES
 argument_list|(
