@@ -5150,8 +5150,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|parseRecognizesPreambleInParenthesis ()
 specifier|public
 name|void
