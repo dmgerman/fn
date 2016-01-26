@@ -2223,15 +2223,6 @@ name|KEY_PATTERN_REPLACEMENT
 init|=
 literal|"KeyPatternReplacement"
 decl_stmt|;
-DECL|field|SAVED_SESSION
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SAVED_SESSION
-init|=
-literal|"savedSession"
-decl_stmt|;
 comment|// Currently, it is not possible to specify defaults for specific entry types
 comment|// When this should be made possible, the code to inspect is net.sf.jabref.gui.preftabs.LabelPatternPrefTab.storeSettings() -> LabelPattern keypatterns = getLabelPattern(); etc
 DECL|field|DEFAULT_LABEL_PATTERN
