@@ -792,7 +792,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"BibtexKeyCitations"
+literal|"BibTeXKeyCitations"
 argument_list|,
 name|Boolean
 operator|.
@@ -4342,7 +4342,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BibtexKeyCitations"
+literal|"BibTeXKeyCitations"
 argument_list|)
 return|;
 block|}
