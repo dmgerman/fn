@@ -307,7 +307,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Write BibtexEntry as XMP-metadata to PDF."
+literal|"Write BibTeXEntry as XMP-metadata to PDF."
 argument_list|)
 argument_list|)
 expr_stmt|;
