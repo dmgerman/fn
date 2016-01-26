@@ -1301,7 +1301,9 @@ condition|)
 block|{
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|putData

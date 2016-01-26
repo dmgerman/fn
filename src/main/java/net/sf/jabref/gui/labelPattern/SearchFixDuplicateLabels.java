@@ -599,7 +599,9 @@ name|makeLabel
 argument_list|(
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|panel

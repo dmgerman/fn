@@ -579,7 +579,9 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|Globals
@@ -610,7 +612,9 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|Globals
@@ -1882,7 +1886,9 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|flEntry
@@ -1929,7 +1935,9 @@ name|openExternalViewer
 argument_list|(
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|link
@@ -2165,7 +2173,9 @@ name|panel
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2403,7 +2413,9 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|flEntry
@@ -2490,7 +2502,9 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|field

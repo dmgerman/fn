@@ -859,7 +859,9 @@ name|frame
 argument_list|,
 name|bPanel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|fields

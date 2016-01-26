@@ -1925,7 +1925,7 @@ name|AbstractAction
 name|editModeAction
 init|=
 operator|new
-name|EditModeAction
+name|SwitchBibtexModeAction
 argument_list|()
 decl_stmt|;
 DECL|field|quit
@@ -5751,6 +5751,9 @@ if|if
 condition|(
 name|panel
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|==
@@ -5781,6 +5784,9 @@ name|String
 name|databaseFile
 init|=
 name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -6184,6 +6190,9 @@ init|=
 name|getCurrentBasePanel
 argument_list|()
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 decl_stmt|;
@@ -6365,6 +6374,9 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|==
@@ -6386,6 +6398,9 @@ name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -6508,6 +6523,9 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|!=
@@ -6522,6 +6540,9 @@ name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -10554,11 +10575,15 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
+operator|new
+name|LoadedDatabase
+argument_list|(
 name|db
 argument_list|,
-name|file
-argument_list|,
 name|metaData
+argument_list|,
+name|file
+argument_list|)
 argument_list|,
 name|encoding
 argument_list|)
@@ -10625,6 +10650,9 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|==
@@ -10649,6 +10677,9 @@ name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -10758,6 +10789,9 @@ name|getBasePanelAt
 argument_list|(
 name|i
 argument_list|)
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -13075,6 +13109,9 @@ if|if
 condition|(
 name|panel
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|==
@@ -13093,6 +13130,9 @@ block|{
 name|filename
 operator|=
 name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()

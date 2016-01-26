@@ -627,7 +627,9 @@ name|dirs
 init|=
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFileDirectory
@@ -667,7 +669,9 @@ name|dirs
 operator|=
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFileDirectory

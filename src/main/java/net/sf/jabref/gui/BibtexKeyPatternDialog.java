@@ -322,7 +322,9 @@ name|metaData
 operator|=
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 expr_stmt|;
 name|AbstractLabelPattern

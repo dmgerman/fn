@@ -559,7 +559,10 @@ if|if
 condition|(
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getData
 argument_list|(
@@ -592,7 +595,10 @@ name|editor
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 name|storeFieldAction
 argument_list|,
@@ -1068,7 +1074,9 @@ name|frame
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|entryEditor
@@ -1617,7 +1625,10 @@ name|editor
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 name|storeFieldAction
 argument_list|,

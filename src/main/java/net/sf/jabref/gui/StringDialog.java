@@ -1130,6 +1130,9 @@ if|if
 condition|(
 name|panel
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|==
@@ -1161,6 +1164,9 @@ operator|+
 literal|": "
 operator|+
 name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()

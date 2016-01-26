@@ -1031,7 +1031,9 @@ name|m_kgSearchTerm
 argument_list|,
 name|m_basePanel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 literal|null

@@ -207,7 +207,9 @@ name|dbs
 init|=
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getDBStrings
@@ -427,7 +429,9 @@ finally|finally
 block|{
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|setDBStrings

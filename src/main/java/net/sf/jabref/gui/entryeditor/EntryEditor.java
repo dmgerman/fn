@@ -2836,7 +2836,10 @@ if|if
 condition|(
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getData
 argument_list|(
@@ -7310,7 +7313,10 @@ name|makeLabel
 argument_list|(
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 name|panel
 operator|.
@@ -7664,7 +7670,9 @@ name|openExternalViewer
 argument_list|(
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|link

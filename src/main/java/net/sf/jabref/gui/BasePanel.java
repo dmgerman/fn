@@ -106,43 +106,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefExecutorService
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|MetaData
+name|*
 import|;
 end_import
 
@@ -1300,12 +1264,17 @@ name|WILL_SHOW_EDITOR
 init|=
 literal|3
 decl_stmt|;
-comment|/*      * The database shown in this panel.      */
 DECL|field|database
 specifier|private
 specifier|final
 name|BibDatabase
 name|database
+decl_stmt|;
+DECL|field|loadedDatabase
+specifier|public
+specifier|final
+name|LoadedDatabase
+name|loadedDatabase
 decl_stmt|;
 DECL|field|mode
 specifier|private
@@ -1521,13 +1490,6 @@ name|StringDialog
 name|stringDialog
 decl_stmt|;
 comment|// Keeps track of the string dialog if it is open.
-comment|// MetaData parses, keeps and writes meta data.
-DECL|field|metaData
-specifier|public
-specifier|final
-name|MetaData
-name|metaData
-decl_stmt|;
 DECL|field|actions
 specifier|private
 specifier|final
@@ -1590,21 +1552,15 @@ return|return
 name|autoCompleters
 return|;
 block|}
-DECL|method|BasePanel (JabRefFrame frame, BibDatabase db, File file, MetaData metaData, Charset encoding)
+DECL|method|BasePanel (JabRefFrame frame, LoadedDatabase loadedDatabase, Charset encoding)
 specifier|public
 name|BasePanel
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|BibDatabase
-name|db
-parameter_list|,
-name|File
-name|file
-parameter_list|,
-name|MetaData
-name|metaData
+name|LoadedDatabase
+name|loadedDatabase
 parameter_list|,
 name|Charset
 name|encoding
@@ -1621,14 +1577,6 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|db
-argument_list|)
-expr_stmt|;
-comment|//file may be null
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
 name|encoding
 argument_list|)
 expr_stmt|;
@@ -1636,7 +1584,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|metaData
+name|loadedDatabase
 argument_list|)
 expr_stmt|;
 name|this
@@ -1647,9 +1595,9 @@ name|encoding
 expr_stmt|;
 name|this
 operator|.
-name|metaData
+name|loadedDatabase
 operator|=
-name|metaData
+name|loadedDatabase
 expr_stmt|;
 name|this
 operator|.
@@ -1665,9 +1613,14 @@ name|frame
 operator|=
 name|frame
 expr_stmt|;
+name|this
+operator|.
 name|database
 operator|=
-name|db
+name|loadedDatabase
+operator|.
+name|getDatabase
+argument_list|()
 expr_stmt|;
 name|searchBar
 operator|=
@@ -1683,15 +1636,18 @@ expr_stmt|;
 name|setupActions
 argument_list|()
 expr_stmt|;
-name|metaData
-operator|.
-name|setFile
-argument_list|(
+name|File
 name|file
-argument_list|)
-expr_stmt|;
+init|=
+name|loadedDatabase
+operator|.
+name|getDatabaseFile
+argument_list|()
+decl_stmt|;
 comment|// ensure that at each addition of a new entry, the entry is added to the groups interface
-name|db
+name|this
+operator|.
+name|database
 operator|.
 name|addDatabaseChangeListener
 argument_list|(
@@ -1812,6 +1768,9 @@ name|title
 decl_stmt|;
 if|if
 condition|(
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|==
@@ -1864,6 +1823,9 @@ literal|""
 decl_stmt|;
 name|title
 operator|=
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|.
@@ -1921,16 +1883,6 @@ parameter_list|()
 block|{
 return|return
 name|database
-return|;
-block|}
-DECL|method|metaData ()
-specifier|public
-name|MetaData
-name|metaData
-parameter_list|()
-block|{
-return|return
-name|metaData
 return|;
 block|}
 DECL|method|frame ()
@@ -3441,7 +3393,10 @@ block|{
 name|DBStrings
 name|dbs
 init|=
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getDBStrings
 argument_list|()
@@ -3529,7 +3484,10 @@ operator|.
 name|getDBStrings
 argument_list|()
 expr_stmt|;
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|setDBStrings
 argument_list|(
@@ -3561,7 +3519,10 @@ specifier|final
 name|DBStrings
 name|dbs
 init|=
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getDBStrings
 argument_list|()
@@ -3608,7 +3569,10 @@ name|exportDatabaseToDBMS
 argument_list|(
 name|database
 argument_list|,
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 literal|null
 argument_list|,
@@ -3692,7 +3656,10 @@ name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|setDBStrings
 argument_list|(
@@ -4250,7 +4217,10 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 name|database
 argument_list|,
@@ -5569,7 +5539,9 @@ operator|.
 name|getIcon
 argument_list|()
 argument_list|,
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|flEntry
@@ -5649,7 +5621,9 @@ argument_list|(
 name|bes
 argument_list|)
 argument_list|,
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFileDirectory
@@ -5961,7 +5935,10 @@ name|JabRefDesktop
 operator|.
 name|openExternalFileAnyFormat
 argument_list|(
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 name|entry
 operator|.
@@ -6021,7 +5998,9 @@ name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|link
@@ -7364,7 +7343,10 @@ name|this
 argument_list|,
 literal|false
 argument_list|,
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 literal|null
 argument_list|)
@@ -7889,7 +7871,10 @@ name|savePartOfDatabase
 argument_list|(
 name|database
 argument_list|,
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 name|file
 argument_list|,
@@ -7918,7 +7903,10 @@ name|saveDatabase
 argument_list|(
 name|database
 argument_list|,
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 name|file
 argument_list|,
@@ -10193,7 +10181,10 @@ argument_list|(
 name|getDatabase
 argument_list|()
 argument_list|,
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 name|autoCompletePreferences
 argument_list|)
@@ -11559,6 +11550,9 @@ literal|false
 expr_stmt|;
 if|if
 condition|(
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|==
@@ -11590,6 +11584,9 @@ argument_list|,
 name|getTabTitle
 argument_list|()
 argument_list|,
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|.
@@ -12429,7 +12426,10 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 name|database
 argument_list|,
@@ -12999,9 +12999,8 @@ name|BasePanel
 operator|.
 name|this
 argument_list|,
-name|BasePanel
-operator|.
-name|this
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -13011,9 +13010,8 @@ comment|// Test: running scan automatically in background
 if|if
 condition|(
 operator|(
-name|BasePanel
-operator|.
-name|this
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -13026,9 +13024,8 @@ name|FileBasedLock
 operator|.
 name|waitForFileLock
 argument_list|(
-name|BasePanel
-operator|.
-name|this
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -13133,6 +13130,9 @@ name|this
 argument_list|,
 name|sidePaneManager
 argument_list|,
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 argument_list|,
@@ -13207,6 +13207,9 @@ name|info
 argument_list|(
 literal|"File '"
 operator|+
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|.
@@ -13332,22 +13335,17 @@ return|;
 block|}
 end_function
 
-begin_comment
-comment|/**      * Get the file where this database was last saved to or loaded from, if any.      *      * @return The relevant File, or null if none is defined.      */
-end_comment
-
 begin_function
-DECL|method|getDatabaseFile ()
+DECL|method|getLoadedDatabase ()
 specifier|public
-name|File
-name|getDatabaseFile
+name|LoadedDatabase
+name|getLoadedDatabase
 parameter_list|()
 block|{
 return|return
-name|metaData
+name|this
 operator|.
-name|getFile
-argument_list|()
+name|loadedDatabase
 return|;
 block|}
 end_function
@@ -14246,7 +14244,10 @@ if|if
 condition|(
 name|basePanel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getFileDirectory
 argument_list|(
@@ -14270,7 +14271,10 @@ name|mdDirs
 init|=
 name|basePanel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getFileDirectory
 argument_list|(
@@ -14507,7 +14511,10 @@ name|openExternalFileAnyFormat
 argument_list|(
 name|basePanel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 name|filepath
 argument_list|,

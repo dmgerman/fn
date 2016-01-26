@@ -540,7 +540,9 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFileDirectory

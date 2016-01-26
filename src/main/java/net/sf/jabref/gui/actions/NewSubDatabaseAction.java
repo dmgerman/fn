@@ -34,6 +34,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|LoadedDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|MetaData
 import|;
 end_import
@@ -258,18 +270,14 @@ name|BasePanel
 argument_list|(
 name|jabRefFrame
 argument_list|,
+operator|new
+name|LoadedDatabase
+argument_list|(
 name|dialog
 operator|.
 name|getGenerateDB
 argument_list|()
-argument_list|,
-comment|// database
-literal|null
-argument_list|,
-comment|// file
-operator|new
-name|MetaData
-argument_list|()
+argument_list|)
 argument_list|,
 name|Globals
 operator|.

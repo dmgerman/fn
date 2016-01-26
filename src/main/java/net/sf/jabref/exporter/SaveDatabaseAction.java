@@ -407,6 +407,9 @@ if|if
 condition|(
 name|panel
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|==
@@ -571,6 +574,9 @@ name|waitForFileLock
 argument_list|(
 name|panel
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 argument_list|,
@@ -601,6 +607,9 @@ argument_list|,
 name|panel
 argument_list|,
 name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -715,7 +724,9 @@ name|pd
 init|=
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getData
@@ -856,6 +867,9 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|.
@@ -877,6 +891,9 @@ operator|+
 literal|" '"
 operator|+
 name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -956,6 +973,9 @@ operator|||
 operator|(
 name|panel
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|==
@@ -988,6 +1008,9 @@ name|waitForFileLock
 argument_list|(
 name|panel
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 argument_list|,
@@ -1001,6 +1024,9 @@ operator|=
 name|saveDatabase
 argument_list|(
 name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -1191,7 +1217,9 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|file
@@ -1230,7 +1258,9 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|file
@@ -2053,7 +2083,9 @@ name|oldFile
 init|=
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFile
@@ -2061,7 +2093,9 @@ argument_list|()
 decl_stmt|;
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|setFile
@@ -2097,7 +2131,9 @@ condition|)
 block|{
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|setFile
@@ -2123,6 +2159,9 @@ argument_list|(
 name|panel
 argument_list|,
 name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -2155,7 +2194,9 @@ name|newFile
 argument_list|(
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFile

@@ -1045,7 +1045,9 @@ argument_list|)
 decl_stmt|;
 name|pan
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|setDBStrings

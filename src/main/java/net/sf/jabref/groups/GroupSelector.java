@@ -8683,7 +8683,9 @@ name|metaData
 init|=
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 decl_stmt|;
 if|if

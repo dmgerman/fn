@@ -2177,7 +2177,10 @@ name|addContentSelectorValuesToAutoCompleters
 argument_list|(
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

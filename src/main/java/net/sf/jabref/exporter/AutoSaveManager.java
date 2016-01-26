@@ -307,6 +307,9 @@ operator|&&
 operator|(
 name|panel
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|!=
@@ -381,6 +384,9 @@ name|getAutoSaveFile
 argument_list|(
 name|panel
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 argument_list|)
@@ -401,7 +407,9 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|backupFile
@@ -477,6 +485,9 @@ if|if
 condition|(
 name|panel
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|==
@@ -495,6 +506,9 @@ operator|.
 name|getAutoSaveFile
 argument_list|(
 name|panel
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()

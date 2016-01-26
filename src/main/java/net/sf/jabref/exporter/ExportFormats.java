@@ -1244,7 +1244,9 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFileDirectory
@@ -1275,7 +1277,9 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFile
@@ -1366,7 +1370,9 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|metaData
+name|loadedDatabase
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|finFile

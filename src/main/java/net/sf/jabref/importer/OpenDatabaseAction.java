@@ -1003,6 +1003,9 @@ condition|(
 operator|(
 name|basePanel
 operator|.
+name|getLoadedDatabase
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|!=
@@ -1010,6 +1013,9 @@ literal|null
 operator|)
 operator|&&
 name|basePanel
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -1153,6 +1159,9 @@ argument_list|(
 literal|"File '%0' is already open."
 argument_list|,
 name|toRaise
+operator|.
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -1954,17 +1963,8 @@ name|INSTANCE
 operator|.
 name|execute
 argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|run
 parameter_list|()
-block|{
+lambda|->
 name|ParserResultWarningDialog
 operator|.
 name|showParserResultWarningDialog
@@ -1973,9 +1973,6 @@ name|result
 argument_list|,
 name|frame
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -1987,11 +1984,15 @@ name|BasePanel
 argument_list|(
 name|frame
 argument_list|,
+operator|new
+name|LoadedDatabase
+argument_list|(
 name|database
 argument_list|,
-name|file
-argument_list|,
 name|meta
+argument_list|,
+name|file
+argument_list|)
 argument_list|,
 name|result
 operator|.

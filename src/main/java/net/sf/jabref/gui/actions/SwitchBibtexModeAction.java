@@ -56,6 +56,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseType
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -77,16 +93,16 @@ import|;
 end_import
 
 begin_class
-DECL|class|EditModeAction
+DECL|class|SwitchBibtexModeAction
 specifier|public
 class|class
-name|EditModeAction
+name|SwitchBibtexModeAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|method|EditModeAction ()
+DECL|method|SwitchBibtexModeAction ()
 specifier|public
-name|EditModeAction
+name|SwitchBibtexModeAction
 parameter_list|()
 block|{
 name|putValue
@@ -172,48 +188,6 @@ argument_list|,
 name|getOppositeMode
 argument_list|()
 argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// TODO: enable this change per file and without GUI restart
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-literal|null
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"You have toggled the %0 mode."
-argument_list|,
-name|getMode
-argument_list|()
-argument_list|)
-operator|.
-name|concat
-argument_list|(
-literal|" "
-argument_list|)
-operator|.
-name|concat
-argument_list|(
-literal|"You must restart JabRef for this change to come into effect."
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"%0 mode"
-argument_list|,
-name|getMode
-argument_list|()
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|WARNING_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
