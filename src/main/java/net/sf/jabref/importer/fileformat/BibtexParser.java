@@ -3864,9 +3864,11 @@ literal|'{'
 operator|)
 operator|&&
 operator|(
+operator|!
+name|isEscapeSymbol
+argument_list|(
 name|lastCharacter
-operator|!=
-literal|'\\'
+argument_list|)
 operator|)
 condition|)
 block|{
@@ -3884,6 +3886,36 @@ name|brackets
 operator|--
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|isAtSymbol
+argument_list|(
+name|character
+argument_list|)
+operator|&&
+operator|(
+operator|!
+name|isEscapeSymbol
+argument_list|(
+name|lastCharacter
+argument_list|)
+operator|)
+condition|)
+block|{
+comment|// we have an unescaped @ symbol
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Error in line "
+operator|+
+name|line
+operator|+
+literal|": unescaped @ in field content"
+argument_list|)
+throw|;
+block|}
 name|value
 operator|.
 name|append
@@ -3896,6 +3928,36 @@ operator|=
 name|character
 expr_stmt|;
 block|}
+block|}
+DECL|method|isAtSymbol (char character)
+specifier|private
+name|boolean
+name|isAtSymbol
+parameter_list|(
+name|char
+name|character
+parameter_list|)
+block|{
+return|return
+literal|'@'
+operator|==
+name|character
+return|;
+block|}
+DECL|method|isEscapeSymbol (char character)
+specifier|private
+name|boolean
+name|isEscapeSymbol
+parameter_list|(
+name|char
+name|character
+parameter_list|)
+block|{
+return|return
+literal|'\\'
+operator|==
+name|character
+return|;
 block|}
 DECL|method|parseQuotedFieldExactly ()
 specifier|private

@@ -4280,6 +4280,13 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
+literal|"Size should be zero, but was "
+operator|+
+name|c
+operator|.
+name|size
+argument_list|()
+argument_list|,
 literal|0
 argument_list|,
 name|c
@@ -4291,8 +4298,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|parseIgnoresAndWarnsAboutEntryWithAtSymbolInBrackets ()
 specifier|public
 name|void
@@ -4319,6 +4324,8 @@ name|Assert
 operator|.
 name|assertTrue
 argument_list|(
+literal|"There should be warnings, but none are found"
+argument_list|,
 name|result
 operator|.
 name|hasWarnings
