@@ -398,6 +398,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|help
+operator|.
+name|OnlineHelpAction
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -2059,12 +2075,8 @@ name|JButton
 name|help
 init|=
 operator|new
-name|HelpAction
+name|OnlineHelpAction
 argument_list|(
-name|frame
-operator|.
-name|helpDiag
-argument_list|,
 name|GUIGlobals
 operator|.
 name|importInspectionHelp

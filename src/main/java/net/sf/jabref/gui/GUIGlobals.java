@@ -602,7 +602,7 @@ specifier|final
 name|String
 name|baseFrameHelp
 init|=
-literal|"BaseFrameHelp.html"
+literal|"Contents"
 decl_stmt|;
 DECL|field|entryEditorHelp
 specifier|public
@@ -611,7 +611,7 @@ specifier|final
 name|String
 name|entryEditorHelp
 init|=
-literal|"EntryEditorHelp.html"
+literal|"EntryEditorHelp"
 decl_stmt|;
 DECL|field|stringEditorHelp
 specifier|public
@@ -620,16 +620,7 @@ specifier|final
 name|String
 name|stringEditorHelp
 init|=
-literal|"StringEditorHelp.html"
-decl_stmt|;
-DECL|field|helpContents
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|helpContents
-init|=
-literal|"Contents.html"
+literal|"StringEditorHelp"
 decl_stmt|;
 DECL|field|searchHelp
 specifier|public
@@ -638,7 +629,7 @@ specifier|final
 name|String
 name|searchHelp
 init|=
-literal|"SearchHelp.html"
+literal|"SearchHelp"
 decl_stmt|;
 DECL|field|groupsHelp
 specifier|public
@@ -647,7 +638,7 @@ specifier|final
 name|String
 name|groupsHelp
 init|=
-literal|"GroupsHelp.html"
+literal|"GroupsHelp"
 decl_stmt|;
 DECL|field|contentSelectorHelp
 specifier|public
@@ -656,7 +647,7 @@ specifier|final
 name|String
 name|contentSelectorHelp
 init|=
-literal|"ContentSelectorHelp.html"
+literal|"ContentSelectorHelp"
 decl_stmt|;
 DECL|field|specialFieldsHelp
 specifier|public
@@ -665,7 +656,7 @@ specifier|final
 name|String
 name|specialFieldsHelp
 init|=
-literal|"SpecialFieldsHelp.html"
+literal|"SpecialFieldsHelp"
 decl_stmt|;
 DECL|field|labelPatternHelp
 specifier|public
@@ -674,7 +665,7 @@ specifier|final
 name|String
 name|labelPatternHelp
 init|=
-literal|"LabelPatterns.html"
+literal|"LabelPatterns"
 decl_stmt|;
 DECL|field|ownerHelp
 specifier|public
@@ -683,7 +674,7 @@ specifier|final
 name|String
 name|ownerHelp
 init|=
-literal|"OwnerHelp.html"
+literal|"OwnerHelp"
 decl_stmt|;
 DECL|field|timeStampHelp
 specifier|public
@@ -692,7 +683,7 @@ specifier|final
 name|String
 name|timeStampHelp
 init|=
-literal|"TimeStampHelp.html"
+literal|"TimeStampHelp"
 decl_stmt|;
 DECL|field|exportCustomizationHelp
 specifier|public
@@ -701,7 +692,7 @@ specifier|final
 name|String
 name|exportCustomizationHelp
 init|=
-literal|"CustomExports.html"
+literal|"CustomExports"
 decl_stmt|;
 DECL|field|importCustomizationHelp
 specifier|public
@@ -710,7 +701,7 @@ specifier|final
 name|String
 name|importCustomizationHelp
 init|=
-literal|"CustomImports.html"
+literal|"CustomImports"
 decl_stmt|;
 DECL|field|medlineHelp
 specifier|public
@@ -719,7 +710,7 @@ specifier|final
 name|String
 name|medlineHelp
 init|=
-literal|"MedlineHelp.html"
+literal|"MedlineHelp"
 decl_stmt|;
 DECL|field|generalFieldsHelp
 specifier|public
@@ -728,7 +719,7 @@ specifier|final
 name|String
 name|generalFieldsHelp
 init|=
-literal|"GeneralFields.html"
+literal|"GeneralFields"
 decl_stmt|;
 DECL|field|aboutPage
 specifier|public
@@ -746,7 +737,7 @@ specifier|final
 name|String
 name|importInspectionHelp
 init|=
-literal|"ImportInspectionDialog.html"
+literal|"ImportInspectionDialog"
 decl_stmt|;
 DECL|field|remoteHelp
 specifier|public
@@ -755,7 +746,7 @@ specifier|final
 name|String
 name|remoteHelp
 init|=
-literal|"RemoteHelp.html"
+literal|"RemoteHelp"
 decl_stmt|;
 DECL|field|journalAbbrHelp
 specifier|public
@@ -764,7 +755,7 @@ specifier|final
 name|String
 name|journalAbbrHelp
 init|=
-literal|"JournalAbbreviations.html"
+literal|"JournalAbbreviations"
 decl_stmt|;
 DECL|field|regularExpressionSearchHelp
 specifier|public
@@ -773,7 +764,7 @@ specifier|final
 name|String
 name|regularExpressionSearchHelp
 init|=
-literal|"ExternalFiles.html#RegularExpressionSearch"
+literal|"ExternalFiles#RegularExpressionSearch"
 decl_stmt|;
 DECL|field|nameFormatterHelp
 specifier|public
@@ -782,7 +773,7 @@ specifier|final
 name|String
 name|nameFormatterHelp
 init|=
-literal|"CustomExports.html#NameFormatter"
+literal|"CustomExports#NameFormatter"
 decl_stmt|;
 DECL|field|previewHelp
 specifier|public
@@ -791,7 +782,7 @@ specifier|final
 name|String
 name|previewHelp
 init|=
-literal|"PreviewHelp.html"
+literal|"PreviewHelp"
 decl_stmt|;
 DECL|field|autosaveHelp
 specifier|public
@@ -800,7 +791,7 @@ specifier|final
 name|String
 name|autosaveHelp
 init|=
-literal|"Autosave.html"
+literal|"Autosave"
 decl_stmt|;
 comment|//	Colors.
 DECL|field|entryEditorLabelColor

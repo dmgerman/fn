@@ -242,6 +242,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|help
+operator|.
+name|OnlineHelpAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|l10n
@@ -392,7 +408,7 @@ decl_stmt|;
 DECL|field|help
 specifier|private
 specifier|final
-name|HelpAction
+name|OnlineHelpAction
 name|help
 decl_stmt|;
 comment|// default pattern
@@ -434,20 +450,18 @@ block|{
 name|help
 operator|=
 operator|new
-name|HelpAction
+name|OnlineHelpAction
 argument_list|(
-name|helpDiag
-argument_list|,
-name|GUIGlobals
-operator|.
-name|labelPatternHelp
-argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Help on key patterns"
 argument_list|)
+argument_list|,
+name|GUIGlobals
+operator|.
+name|labelPatternHelp
 argument_list|)
 expr_stmt|;
 name|buildGUI
