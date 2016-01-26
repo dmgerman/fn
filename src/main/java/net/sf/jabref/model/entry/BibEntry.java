@@ -335,6 +335,15 @@ name|ID_FIELD
 init|=
 literal|"id"
 decl_stmt|;
+DECL|field|DEFAULT_TYPE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|DEFAULT_TYPE
+init|=
+literal|"misc"
+decl_stmt|;
 DECL|field|id
 specifier|private
 name|String
@@ -420,7 +429,7 @@ name|this
 argument_list|(
 name|id
 argument_list|,
-literal|"misc"
+name|DEFAULT_TYPE
 argument_list|)
 expr_stmt|;
 block|}
