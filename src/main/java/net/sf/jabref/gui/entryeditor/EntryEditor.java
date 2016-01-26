@@ -2128,7 +2128,7 @@ name|JToolBar
 name|toolBar
 init|=
 operator|new
-name|JToolBar
+name|OSXCompatibleToolbar
 argument_list|(
 name|SwingConstants
 operator|.
