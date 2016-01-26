@@ -603,24 +603,6 @@ name|options
 operator|.
 name|addOption
 argument_list|(
-literal|"l"
-argument_list|,
-literal|"loads"
-argument_list|,
-literal|false
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Load session"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|options
-operator|.
-name|addOption
-argument_list|(
 literal|"b"
 argument_list|,
 literal|"blank"
