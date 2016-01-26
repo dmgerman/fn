@@ -7881,9 +7881,9 @@ name|loadedDatabase
 operator|.
 name|getMetaData
 argument_list|()
+argument_list|)
 argument_list|,
 name|file
-argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -7917,9 +7917,9 @@ name|loadedDatabase
 operator|.
 name|getMetaData
 argument_list|()
+argument_list|)
 argument_list|,
 name|file
-argument_list|)
 argument_list|,
 name|Globals
 operator|.

@@ -60,6 +60,7 @@ specifier|public
 class|class
 name|EntryTypes
 block|{
+comment|/**      * This class is used to specify entry types for either BIBTEX and BIBLATEX.      */
 DECL|class|InternalEntryTypes
 specifier|private
 specifier|static

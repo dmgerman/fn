@@ -1051,7 +1051,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Saves the database to file. Two boolean values indicate whether only      * entries with a nonzero Globals.SEARCH value and only entries with a      * nonzero Globals.GROUPSEARCH value should be saved. This can be used to      * let the user save only the results of a search. False and false means all      * entries are saved.      */
-DECL|method|saveDatabase (LoadedDatabase loadedDatabase, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, Charset encoding, boolean suppressBackup)
+DECL|method|saveDatabase (LoadedDatabase loadedDatabase, File target, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, Charset encoding, boolean suppressBackup)
 specifier|public
 specifier|static
 name|SaveSession
@@ -1059,6 +1059,9 @@ name|saveDatabase
 parameter_list|(
 name|LoadedDatabase
 name|loadedDatabase
+parameter_list|,
+name|File
+name|target
 parameter_list|,
 name|JabRefPreferences
 name|prefs
@@ -1115,10 +1118,7 @@ operator|=
 operator|new
 name|SaveSession
 argument_list|(
-name|loadedDatabase
-operator|.
-name|getDatabaseFile
-argument_list|()
+name|target
 argument_list|,
 name|encoding
 argument_list|,
@@ -2234,7 +2234,7 @@ name|comparators
 return|;
 block|}
 comment|/**      * Saves the database to file, including only the entries included in the      * supplied input array bes.      *      * @return A List containing warnings, if any.      */
-DECL|method|savePartOfDatabase (LoadedDatabase loadedDatabase, JabRefPreferences prefs, BibEntry[] bes, Charset encoding, DatabaseSaveType saveType)
+DECL|method|savePartOfDatabase (LoadedDatabase loadedDatabase, File target, JabRefPreferences prefs, BibEntry[] bes, Charset encoding, DatabaseSaveType saveType)
 specifier|public
 specifier|static
 name|SaveSession
@@ -2242,6 +2242,9 @@ name|savePartOfDatabase
 parameter_list|(
 name|LoadedDatabase
 name|loadedDatabase
+parameter_list|,
+name|File
+name|target
 parameter_list|,
 name|JabRefPreferences
 name|prefs
@@ -2286,10 +2289,7 @@ operator|=
 operator|new
 name|SaveSession
 argument_list|(
-name|loadedDatabase
-operator|.
-name|getDatabaseFile
-argument_list|()
+name|target
 argument_list|,
 name|encoding
 argument_list|,

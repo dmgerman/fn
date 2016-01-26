@@ -460,9 +460,9 @@ name|loadedDatabase
 operator|.
 name|getMetaData
 argument_list|()
+argument_list|)
 argument_list|,
 name|backupFile
-argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -515,22 +515,6 @@ expr_stmt|;
 return|return
 literal|false
 return|;
-block|}
-finally|finally
-block|{
-comment|// HACK required to reset the file field of the metadata
-name|panel
-operator|.
-name|loadedDatabase
-operator|.
-name|getMetaData
-argument_list|()
-operator|.
-name|setFile
-argument_list|(
-name|databaseFile
-argument_list|)
-expr_stmt|;
 block|}
 return|return
 literal|true
