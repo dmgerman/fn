@@ -2114,7 +2114,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
-comment|// Util.pr("Field: _"+key+"_");
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -3294,7 +3293,6 @@ init|=
 name|read
 argument_list|()
 decl_stmt|;
-comment|// Util.pr(".. '"+(char)c+"'\t"+c);
 if|if
 condition|(
 name|character
@@ -3314,9 +3312,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|// Ikke: #{}\uFFFD~\uFFFD
-comment|//
-comment|// G\uFFFDr: $_*+.-\/?"^
 if|if
 condition|(
 operator|!
