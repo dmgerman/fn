@@ -828,7 +828,8 @@ argument_list|)
 argument_list|,
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -1102,7 +1103,8 @@ argument_list|)
 argument_list|,
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -1328,7 +1330,8 @@ argument_list|)
 argument_list|,
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -1732,7 +1735,8 @@ argument_list|)
 argument_list|,
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -1955,7 +1959,8 @@ name|dirs
 init|=
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -2607,7 +2612,8 @@ name|dirs
 init|=
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -2868,7 +2874,8 @@ name|dirs
 init|=
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -3115,7 +3122,8 @@ name|dirs
 init|=
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()

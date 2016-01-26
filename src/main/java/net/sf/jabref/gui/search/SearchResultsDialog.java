@@ -2357,7 +2357,8 @@ literal|null
 argument_list|,
 name|p
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -2398,7 +2399,8 @@ name|openExternalViewer
 argument_list|(
 name|p
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -2615,7 +2617,8 @@ argument_list|()
 argument_list|,
 name|p
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -2727,7 +2730,8 @@ name|setMetaData
 argument_list|(
 name|p
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()

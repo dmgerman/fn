@@ -1248,7 +1248,8 @@ argument_list|,
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|isBiblatexMode
 argument_list|()
@@ -4930,7 +4931,8 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|isBiblatexMode
 argument_list|()

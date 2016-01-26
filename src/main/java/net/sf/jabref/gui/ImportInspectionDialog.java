@@ -1538,7 +1538,8 @@ argument_list|()
 else|:
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -3141,7 +3142,8 @@ name|localMetaData
 operator|=
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -3262,7 +3264,8 @@ name|localMetaData
 operator|=
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -5241,7 +5244,8 @@ literal|null
 argument_list|,
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -5536,7 +5540,8 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -5642,7 +5647,8 @@ name|openExternalViewer
 argument_list|(
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()

@@ -313,7 +313,8 @@ name|dirs
 init|=
 name|basePanel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -378,7 +379,8 @@ argument_list|()
 argument_list|,
 name|basePanel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()

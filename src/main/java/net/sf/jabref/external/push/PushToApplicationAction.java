@@ -423,7 +423,8 @@ argument_list|)
 argument_list|,
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()

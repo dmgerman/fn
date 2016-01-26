@@ -207,7 +207,8 @@ name|dbs
 init|=
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -429,7 +430,8 @@ finally|finally
 block|{
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()

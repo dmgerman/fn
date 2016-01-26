@@ -1271,7 +1271,7 @@ name|BibDatabase
 name|database
 decl_stmt|;
 DECL|field|loadedDatabase
-specifier|public
+specifier|private
 specifier|final
 name|LoadedDatabase
 name|loadedDatabase
@@ -14258,7 +14258,8 @@ if|if
 condition|(
 name|basePanel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -14285,7 +14286,8 @@ name|mdDirs
 init|=
 name|basePanel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -14525,7 +14527,8 @@ name|openExternalFileAnyFormat
 argument_list|(
 name|basePanel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()

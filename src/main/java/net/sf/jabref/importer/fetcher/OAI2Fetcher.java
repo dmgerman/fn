@@ -909,12 +909,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|BibtexEntryTypes
-operator|.
-name|ARTICLE
-operator|.
-name|getName
-argument_list|()
+literal|"article"
 argument_list|)
 decl_stmt|;
 name|be

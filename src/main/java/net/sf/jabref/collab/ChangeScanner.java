@@ -559,7 +559,8 @@ name|mdInMem
 operator|=
 name|bp
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()

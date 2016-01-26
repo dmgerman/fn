@@ -5315,7 +5315,8 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()

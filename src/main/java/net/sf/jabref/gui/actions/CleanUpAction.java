@@ -2894,7 +2894,8 @@ name|RelativePathsCleanup
 argument_list|(
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
@@ -2933,7 +2934,8 @@ name|paths
 init|=
 name|panel
 operator|.
-name|loadedDatabase
+name|getLoadedDatabase
+argument_list|()
 operator|.
 name|getMetaData
 argument_list|()
