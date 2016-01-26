@@ -4951,8 +4951,6 @@ block|}
 comment|/**      * Test for SF Bug #1283      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|parseRecognizesMonthFieldsWithFollowingComma ()
 specifier|public
 name|void
@@ -4971,7 +4969,7 @@ argument_list|(
 operator|new
 name|StringReader
 argument_list|(
-literal|"@article{test,author={Ed von Test}},month={8,},"
+literal|"@article{test,author={Ed von Test},month={8,}},"
 argument_list|)
 argument_list|)
 decl_stmt|;
