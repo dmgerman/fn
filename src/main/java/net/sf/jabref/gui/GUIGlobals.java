@@ -595,14 +595,14 @@ name|HelpDialog
 name|helpDiag
 decl_stmt|;
 comment|//Help files (in HTML format):
-DECL|field|baseFrameHelp
+DECL|field|helpContents
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|baseFrameHelp
+name|helpContents
 init|=
-literal|"Contents"
+literal|""
 decl_stmt|;
 DECL|field|entryEditorHelp
 specifier|public

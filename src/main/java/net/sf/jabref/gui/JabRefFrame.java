@@ -2033,7 +2033,7 @@ argument_list|)
 argument_list|,
 name|GUIGlobals
 operator|.
-name|baseFrameHelp
+name|helpContents
 argument_list|,
 name|Globals
 operator|.
