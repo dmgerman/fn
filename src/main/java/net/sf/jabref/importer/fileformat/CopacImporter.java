@@ -124,22 +124,6 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryTypes
-import|;
-end_import
-
 begin_comment
 comment|/**  * Importer for COPAC format.  *  * Documentation can be found online at:  *  * http://copac.ac.uk/faq/#format  */
 end_comment
@@ -508,9 +492,7 @@ name|BibEntry
 argument_list|(
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,
-name|BibtexEntryTypes
-operator|.
-name|BOOK
+literal|"book"
 argument_list|)
 decl_stmt|;
 name|String

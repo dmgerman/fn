@@ -58,22 +58,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexEntryTypes
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -653,9 +637,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|ARTICLE
+literal|"article"
 argument_list|,
 name|entry
 operator|.

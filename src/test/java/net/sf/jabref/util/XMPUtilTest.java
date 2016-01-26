@@ -1391,9 +1391,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|MISC
+literal|"misc"
 argument_list|,
 name|e
 operator|.
@@ -1528,9 +1526,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|MISC
+literal|"misc"
 argument_list|,
 name|e
 operator|.
@@ -1951,9 +1947,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|MISC
+literal|"misc"
 argument_list|,
 name|e
 operator|.
@@ -2044,9 +2038,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|ARTICLE
+literal|"article"
 argument_list|,
 name|e
 operator|.
@@ -4759,9 +4751,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|ARTICLE
+literal|"article"
 argument_list|,
 name|a
 operator|.
@@ -4799,9 +4789,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-name|BibtexEntryTypes
-operator|.
-name|INPROCEEDINGS
+literal|"inproceedings"
 argument_list|,
 name|b
 operator|.

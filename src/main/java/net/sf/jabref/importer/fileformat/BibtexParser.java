@@ -88,20 +88,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
-operator|.
-name|EntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|CustomEntryTypesManager
@@ -681,34 +667,12 @@ block|}
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
-comment|// try to read the entry type
+comment|// Try to read the entry type
 name|String
 name|entryType
 init|=
 name|parseTextToken
 argument_list|()
-decl_stmt|;
-name|EntryType
-name|type
-init|=
-name|EntryTypes
-operator|.
-name|getType
-argument_list|(
-name|entryType
-argument_list|)
-decl_stmt|;
-name|boolean
-name|isEntry
-init|=
-name|type
-operator|!=
-literal|null
-decl_stmt|;
-name|String
-name|trimmedEntryType
-init|=
-name|entryType
 operator|.
 name|toLowerCase
 argument_list|()
@@ -716,23 +680,13 @@ operator|.
 name|trim
 argument_list|()
 decl_stmt|;
-comment|// The entry type name was not recognized. This can mean
-comment|// that it is a string, preamble, or comment. If so,
-comment|// parse and set accordingly. If not, assume it is an entry
-comment|// with an unknown type.
-if|if
-condition|(
-operator|!
-name|isEntry
-condition|)
-block|{
 if|if
 condition|(
 literal|"preamble"
 operator|.
 name|equals
 argument_list|(
-name|trimmedEntryType
+name|entryType
 argument_list|)
 condition|)
 block|{
@@ -756,7 +710,7 @@ literal|"string"
 operator|.
 name|equals
 argument_list|(
-name|trimmedEntryType
+name|entryType
 argument_list|)
 condition|)
 block|{
@@ -771,7 +725,7 @@ literal|"comment"
 operator|.
 name|equals
 argument_list|(
-name|trimmedEntryType
+name|entryType
 argument_list|)
 condition|)
 block|{
@@ -783,40 +737,10 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// The entry type was not recognized. This may mean that
-comment|// it is a custom entry type whose definition will
-comment|// appear
-comment|// at the bottom of the file. So we use an
-comment|// UnknownEntryType
-comment|// to remember the type name by.
-name|type
-operator|=
-operator|new
-name|UnknownEntryType
-argument_list|(
-name|EntryUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
-name|entryType
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|isEntry
-operator|=
-literal|true
-expr_stmt|;
-block|}
-block|}
-comment|// True if not comment, preamble or string.
-if|if
-condition|(
-name|isEntry
-condition|)
-block|{
+comment|// Not a comment, preamble or string thus it is an entry
 name|parseAndAddEntry
 argument_list|(
-name|type
+name|entryType
 argument_list|)
 expr_stmt|;
 block|}
@@ -824,11 +748,6 @@ name|skipWhitespace
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Before returning the database, update entries with unknown type
-comment|// based on parsed type definitions, if possible.
-name|checkEntryTypes
-argument_list|()
-expr_stmt|;
 comment|// Instantiate meta data:
 name|parserResult
 operator|.
@@ -865,12 +784,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseAndAddEntry (EntryType type)
+DECL|method|parseAndAddEntry (String type)
 specifier|private
 name|void
 name|parseAndAddEntry
 parameter_list|(
-name|EntryType
+name|String
 name|type
 parameter_list|)
 block|{
@@ -1927,12 +1846,12 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|parseEntry (EntryType entryType)
+DECL|method|parseEntry (String entryType)
 specifier|private
 name|BibEntry
 name|parseEntry
 parameter_list|(
-name|EntryType
+name|String
 name|entryType
 parameter_list|)
 throws|throws
@@ -4189,99 +4108,6 @@ operator|+
 name|character
 argument_list|)
 throw|;
-block|}
-block|}
-DECL|method|checkEntryTypes ()
-specifier|private
-name|void
-name|checkEntryTypes
-parameter_list|()
-block|{
-for|for
-control|(
-name|BibEntry
-name|bibEntry
-range|:
-name|database
-operator|.
-name|getEntries
-argument_list|()
-control|)
-block|{
-if|if
-condition|(
-name|bibEntry
-operator|.
-name|getType
-argument_list|()
-operator|instanceof
-name|UnknownEntryType
-condition|)
-block|{
-comment|// Look up the unknown type name in our map of parsed types:
-name|String
-name|name
-init|=
-name|bibEntry
-operator|.
-name|getType
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
-name|EntryType
-name|type
-init|=
-name|entryTypes
-operator|.
-name|get
-argument_list|(
-name|name
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|type
-operator|==
-literal|null
-condition|)
-block|{
-name|parserResult
-operator|.
-name|addWarning
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Unknown entry type"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|name
-operator|+
-literal|"; key: "
-operator|+
-name|bibEntry
-operator|.
-name|getCiteKey
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|bibEntry
-operator|.
-name|setType
-argument_list|(
-name|type
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 block|}

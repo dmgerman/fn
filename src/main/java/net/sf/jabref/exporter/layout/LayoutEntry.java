@@ -1514,9 +1514,6 @@ name|bibtex
 operator|.
 name|getType
 argument_list|()
-operator|.
-name|getName
-argument_list|()
 expr_stmt|;
 block|}
 else|else

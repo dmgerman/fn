@@ -1925,12 +1925,6 @@ name|entry
 operator|.
 name|getType
 argument_list|()
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
 decl_stmt|;
 comment|// Get the arrayList corresponding to the type
 name|typeList

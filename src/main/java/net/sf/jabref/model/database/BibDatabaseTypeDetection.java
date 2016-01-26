@@ -183,7 +183,7 @@ block|{
 specifier|final
 name|List
 argument_list|<
-name|EntryType
+name|String
 argument_list|>
 name|entryTypes
 init|=
@@ -245,7 +245,7 @@ operator|.
 name|BIBTEX
 return|;
 block|}
-DECL|method|exclusiveBiblatexFields (EntryType type)
+DECL|method|exclusiveBiblatexFields (String type)
 specifier|private
 specifier|static
 name|List
@@ -254,7 +254,7 @@ name|String
 argument_list|>
 name|exclusiveBiblatexFields
 parameter_list|(
-name|EntryType
+name|String
 name|type
 parameter_list|)
 block|{
@@ -270,9 +270,6 @@ operator|.
 name|getType
 argument_list|(
 name|type
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -287,9 +284,6 @@ operator|.
 name|getType
 argument_list|(
 name|type
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// return empty array if this is no Biblatex or BibTex type
@@ -380,7 +374,7 @@ specifier|private
 specifier|static
 name|List
 argument_list|<
-name|EntryType
+name|String
 argument_list|>
 name|getEntryTypes
 parameter_list|(
@@ -503,7 +497,7 @@ specifier|private
 specifier|static
 name|Predicate
 argument_list|<
-name|EntryType
+name|String
 argument_list|>
 name|isIncludedIn
 parameter_list|(
@@ -534,9 +528,6 @@ operator|.
 name|equalsIgnoreCase
 argument_list|(
 name|entry
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 argument_list|)
 return|;

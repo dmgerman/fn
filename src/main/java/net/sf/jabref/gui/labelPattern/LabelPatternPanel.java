@@ -356,7 +356,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryUtil
+name|EntryType
 import|;
 end_import
 
@@ -874,12 +874,12 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|String
-name|s
+name|EntryType
+name|type
 range|:
 name|EntryTypes
 operator|.
-name|getAllTypes
+name|getAllValues
 argument_list|()
 control|)
 block|{
@@ -887,13 +887,19 @@ name|textFields
 operator|.
 name|put
 argument_list|(
-name|s
+name|type
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|,
 name|addEntryType
 argument_list|(
 name|pan
 argument_list|,
-name|s
+name|type
 argument_list|,
 name|y
 argument_list|)
@@ -1221,7 +1227,7 @@ name|btnDefaultAll
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addEntryType (Container c, String name, int y)
+DECL|method|addEntryType (Container c, EntryType type, int y)
 specifier|private
 name|JTextField
 name|addEntryType
@@ -1229,8 +1235,8 @@ parameter_list|(
 name|Container
 name|c
 parameter_list|,
-name|String
-name|name
+name|EntryType
+name|type
 parameter_list|,
 name|int
 name|y
@@ -1242,21 +1248,12 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-name|EntryUtil
+name|type
 operator|.
-name|capitalizeFirst
-argument_list|(
-name|name
-argument_list|)
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
-name|name
-operator|=
-name|name
-operator|.
-name|toLowerCase
-argument_list|()
-expr_stmt|;
 name|con
 operator|.
 name|gridx
@@ -1487,7 +1484,13 @@ name|but
 operator|.
 name|setActionCommand
 argument_list|(
-name|name
+name|type
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|but

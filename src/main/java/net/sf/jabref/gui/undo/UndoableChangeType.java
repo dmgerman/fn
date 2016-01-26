@@ -46,22 +46,6 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryType
-import|;
-end_import
-
 begin_comment
 comment|/**  * This class represents the change of type for an entry.  */
 end_comment
@@ -77,13 +61,13 @@ block|{
 DECL|field|oldType
 specifier|private
 specifier|final
-name|EntryType
+name|String
 name|oldType
 decl_stmt|;
 DECL|field|newType
 specifier|private
 specifier|final
-name|EntryType
+name|String
 name|newType
 decl_stmt|;
 DECL|field|be
@@ -92,17 +76,17 @@ specifier|final
 name|BibEntry
 name|be
 decl_stmt|;
-DECL|method|UndoableChangeType (BibEntry be, EntryType oldType, EntryType newType)
+DECL|method|UndoableChangeType (BibEntry be, String oldType, String newType)
 specifier|public
 name|UndoableChangeType
 parameter_list|(
 name|BibEntry
 name|be
 parameter_list|,
-name|EntryType
+name|String
 name|oldType
 parameter_list|,
-name|EntryType
+name|String
 name|newType
 parameter_list|)
 block|{

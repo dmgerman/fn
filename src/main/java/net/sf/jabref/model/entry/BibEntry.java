@@ -326,7 +326,7 @@ name|id
 decl_stmt|;
 DECL|field|type
 specifier|private
-name|EntryType
+name|String
 name|type
 decl_stmt|;
 DECL|field|fields
@@ -424,6 +424,28 @@ name|EntryType
 name|type
 parameter_list|)
 block|{
+name|this
+argument_list|(
+name|id
+argument_list|,
+name|type
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|BibEntry (String id, String type)
+specifier|public
+name|BibEntry
+parameter_list|(
+name|String
+name|id
+parameter_list|,
+name|String
+name|type
+parameter_list|)
+block|{
 name|Objects
 operator|.
 name|requireNonNull
@@ -449,40 +471,6 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return An array describing the optional fields for this entry. "null" if no fields are required      */
-DECL|method|getOptionalFields ()
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getOptionalFields
-parameter_list|()
-block|{
-return|return
-name|type
-operator|.
-name|getOptionalFields
-argument_list|()
-return|;
-block|}
-comment|/**      * Returns all required field names.      * No OR relationships are captured here.      *      * @return a List of required field name Strings      */
-DECL|method|getRequiredFieldsFlat ()
-specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|getRequiredFieldsFlat
-parameter_list|()
-block|{
-return|return
-name|type
-operator|.
-name|getRequiredFieldsFlat
-argument_list|()
-return|;
-block|}
 comment|/**      * Returns an set containing the names of all fields that are      * set for this particular entry.      *      * @return a set of existing field names      */
 DECL|method|getFieldNames ()
 specifier|public
@@ -505,32 +493,10 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns true if this entry contains the fields it needs to be      * complete.      */
-DECL|method|hasAllRequiredFields (BibDatabase database)
-specifier|public
-name|boolean
-name|hasAllRequiredFields
-parameter_list|(
-name|BibDatabase
-name|database
-parameter_list|)
-block|{
-return|return
-name|allFieldsPresent
-argument_list|(
-name|type
-operator|.
-name|getRequiredFields
-argument_list|()
-argument_list|,
-name|database
-argument_list|)
-return|;
-block|}
 comment|/**      * Returns this entry's type.      */
 DECL|method|getType ()
 specifier|public
-name|EntryType
+name|String
 name|getType
 parameter_list|()
 block|{
@@ -539,12 +505,12 @@ name|type
 return|;
 block|}
 comment|/**      * Sets this entry's type.      */
-DECL|method|setType (EntryType type)
+DECL|method|setType (String type)
 specifier|public
 name|void
 name|setType
 parameter_list|(
-name|EntryType
+name|String
 name|type
 parameter_list|)
 block|{
@@ -557,13 +523,20 @@ argument_list|,
 literal|"Every BibEntry must have a type."
 argument_list|)
 expr_stmt|;
-name|EntryType
+name|String
 name|oldType
 init|=
 name|this
 operator|.
 name|type
 decl_stmt|;
+name|type
+operator|=
+name|type
+operator|.
+name|toLowerCase
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 comment|// We set the type before throwing the changeEvent, to enable
@@ -590,14 +563,8 @@ condition|?
 literal|null
 else|:
 name|oldType
-operator|.
-name|getName
-argument_list|()
 argument_list|,
 name|type
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -615,6 +582,27 @@ name|pve
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**      * Sets this entry's type.      */
+DECL|method|setType (EntryType type)
+specifier|public
+name|void
+name|setType
+parameter_list|(
+name|EntryType
+name|type
+parameter_list|)
+block|{
+name|this
+operator|.
+name|setType
+argument_list|(
+name|type
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Sets this entry's ID, provided the database containing it      * doesn't veto the change.      */
 DECL|method|setId (String id)
@@ -1549,6 +1537,7 @@ block|}
 block|}
 comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param allFields An array of field names to be checked.      * @param database  The database in which to look up crossref'd entries, if any. This      *                  argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
 DECL|method|allFieldsPresent (List<String> allFields, BibDatabase database)
+specifier|public
 name|boolean
 name|allFieldsPresent
 parameter_list|(
@@ -2264,10 +2253,18 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|keyword
+operator|==
+literal|null
+operator|)
+operator|||
+operator|(
 name|keyword
 operator|.
 name|isEmpty
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return;

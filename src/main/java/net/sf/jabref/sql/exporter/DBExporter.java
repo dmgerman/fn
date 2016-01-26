@@ -665,12 +665,6 @@ name|entry
 operator|.
 name|getType
 argument_list|()
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
 argument_list|)
 operator|.
 name|append

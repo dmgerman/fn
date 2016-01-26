@@ -9062,12 +9062,6 @@ name|bibEntry
 operator|.
 name|getType
 argument_list|()
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -10626,9 +10620,6 @@ name|be
 operator|.
 name|getType
 argument_list|()
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -10642,9 +10633,6 @@ argument_list|(
 name|be
 operator|.
 name|getType
-argument_list|()
-operator|.
-name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -10726,9 +10714,6 @@ argument_list|(
 name|be
 operator|.
 name|getType
-argument_list|()
-operator|.
-name|getName
 argument_list|()
 argument_list|,
 name|form
@@ -10815,9 +10800,6 @@ name|entry
 operator|.
 name|getType
 argument_list|()
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -10836,9 +10818,6 @@ argument_list|(
 name|entry
 operator|.
 name|getType
-argument_list|()
-operator|.
-name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -10912,9 +10891,6 @@ argument_list|(
 name|entry
 operator|.
 name|getType
-argument_list|()
-operator|.
-name|getName
 argument_list|()
 argument_list|,
 name|form
@@ -11288,7 +11264,9 @@ name|currentEditor
 operator|.
 name|getType
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|currentEditor
 operator|.
 name|getEntry
@@ -11296,6 +11274,7 @@ argument_list|()
 operator|.
 name|getType
 argument_list|()
+argument_list|)
 condition|)
 block|{
 name|currentEditor
@@ -11972,7 +11951,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (BibEntry entry, EntryType type)
+DECL|method|changeType (BibEntry entry, String type)
 specifier|public
 name|void
 name|changeType
@@ -11980,7 +11959,7 @@ parameter_list|(
 name|BibEntry
 name|entry
 parameter_list|,
-name|EntryType
+name|String
 name|type
 parameter_list|)
 block|{
@@ -12000,12 +11979,12 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (EntryType type)
+DECL|method|changeType (String type)
 specifier|public
 name|void
 name|changeType
 parameter_list|(
-name|EntryType
+name|String
 name|type
 parameter_list|)
 block|{
@@ -12029,7 +12008,7 @@ block|}
 end_function
 
 begin_function
-DECL|method|changeType (BibEntry[] bes, EntryType type)
+DECL|method|changeType (BibEntry[] bes, String type)
 specifier|private
 name|void
 name|changeType
@@ -12038,7 +12017,7 @@ name|BibEntry
 index|[]
 name|bes
 parameter_list|,
-name|EntryType
+name|String
 name|type
 parameter_list|)
 block|{
@@ -12093,9 +12072,6 @@ argument_list|(
 literal|"Multiple entries selected. Do you want to change the type of all these to '%0'?"
 argument_list|,
 name|type
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 argument_list|,
 name|Localization
@@ -12185,9 +12161,6 @@ argument_list|(
 literal|"Changed type to '%0' for"
 argument_list|,
 name|type
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 argument_list|,
 name|bes
