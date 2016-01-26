@@ -5115,11 +5115,13 @@ operator|.
 name|OS_X
 condition|)
 block|{
-name|setState
-argument_list|(
-name|Frame
+name|JabRefFrame
 operator|.
-name|ICONIFIED
+name|this
+operator|.
+name|setVisible
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
