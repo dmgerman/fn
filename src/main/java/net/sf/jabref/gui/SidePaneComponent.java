@@ -164,6 +164,13 @@ operator|new
 name|JToolBar
 argument_list|()
 decl_stmt|;
+name|tlb
+operator|.
+name|setOpaque
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|close
 operator|.
 name|setMargin
