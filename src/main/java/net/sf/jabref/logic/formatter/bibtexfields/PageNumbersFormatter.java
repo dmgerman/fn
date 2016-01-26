@@ -80,6 +80,18 @@ return|return
 literal|"Page numbers"
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getKey ()
+specifier|public
+name|String
+name|getKey
+parameter_list|()
+block|{
+return|return
+literal|"PageNumbersFormatter"
+return|;
+block|}
 comment|/**      * Format page numbers, separated either by commas or double-hyphens.      * Converts the range number format of the<code>pages</code> field to page_number--page_number.      * Removes all literals except [0-9,-+].      * Keeps the existing String if the resulting field does not match the expected Regex.      *      *<example>      *     1-2 -> 1--2      *     1,2,3 -> 1,2,3      *     {1}-{2} -> 1--2      *     43+ -> 43+      *     Invalid -> Invalid      *</example>      */
 annotation|@
 name|Override

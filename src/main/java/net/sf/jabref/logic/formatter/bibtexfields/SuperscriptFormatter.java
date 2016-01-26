@@ -84,6 +84,18 @@ return|return
 literal|"Superscripts"
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getKey ()
+specifier|public
+name|String
+name|getKey
+parameter_list|()
+block|{
+return|return
+literal|"SuperscriptFormatter"
+return|;
+block|}
 comment|/**      * Converts ordinal numbers to superscripts, e.g. 1st, 2nd or 3rd.      * Will replace ordinal numbers even if they are semantically wrong, e.g. 21rd      *      *<example>      * 1st Conf. Cloud Computing -> 1\textsuperscript{st} Conf. Cloud Computing      *</example>      */
 annotation|@
 name|Override

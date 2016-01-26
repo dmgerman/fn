@@ -30,6 +30,12 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
+comment|/**      * Returns a unique key for the formatter that can be used for its identification      * @return      */
+DECL|method|getKey ()
+name|String
+name|getKey
+parameter_list|()
+function_decl|;
 comment|/**      * Formats a field value by with a particular formatter transformation.      *      * @param value the input String      * @return the formatted output String      */
 DECL|method|format (String value)
 name|String

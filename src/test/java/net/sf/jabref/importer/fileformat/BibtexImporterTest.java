@@ -143,7 +143,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class tests the BibtexImporter.  * That importer is only used for --importToOpen, which is currently untested  *  * TODO:  *   1. Add test for --importToOpen  *   2. Move these tests to the code opening a bibtex file  */
+comment|/**  * This class tests the BibtexImporter.  * That importer is only used for --importToOpen, which is currently untested  *<p>  * TODO:  * 1. Add test for --importToOpen  * 2. Move these tests to the code opening a bibtex file  */
 end_comment
 
 begin_class
@@ -272,23 +272,34 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+for|for
+control|(
 name|BibEntry
-name|be0
-init|=
+name|entry
+range|:
 name|bibEntries
+control|)
+block|{
+if|if
+condition|(
+name|entry
 operator|.
-name|get
+name|getCiteKey
+argument_list|()
+operator|.
+name|equals
 argument_list|(
-literal|0
+literal|"aksin"
 argument_list|)
-decl_stmt|;
+condition|)
+block|{
 name|assertEquals
 argument_list|(
 literal|"Aks{\\i}n, {\\\"O}zge and T{\\\"u}rkmen, Hayati and Artok, Levent and {\\c{C}}etinkaya, "
 operator|+
 literal|"Bekir and Ni, Chaoying and B{\\\"u}y{\\\"u}kg{\\\"u}ng{\\\"o}r, Orhan and {\\\"O}zkal, Erhan"
 argument_list|,
-name|be0
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -300,7 +311,7 @@ name|assertEquals
 argument_list|(
 literal|"aksin"
 argument_list|,
-name|be0
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -312,7 +323,7 @@ name|assertEquals
 argument_list|(
 literal|"2006"
 argument_list|,
-name|be0
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -324,7 +335,7 @@ name|assertEquals
 argument_list|(
 literal|"Effect of immobilization on catalytic characteristics"
 argument_list|,
-name|be0
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -336,7 +347,7 @@ name|assertEquals
 argument_list|(
 literal|"#jomch#"
 argument_list|,
-name|be0
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -348,7 +359,7 @@ name|assertEquals
 argument_list|(
 literal|"13"
 argument_list|,
-name|be0
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -360,7 +371,7 @@ name|assertEquals
 argument_list|(
 literal|"3027-3036"
 argument_list|,
-name|be0
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -374,7 +385,7 @@ literal|"Effect of immobilization on catalytic characteristics of saturated {Pd-
 operator|+
 literal|"carbenes in {Mizoroki-Heck} reactions"
 argument_list|,
-name|be0
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -386,7 +397,7 @@ name|assertEquals
 argument_list|(
 literal|"691"
 argument_list|,
-name|be0
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -394,16 +405,21 @@ literal|"volume"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|BibEntry
-name|be1
-init|=
-name|bibEntries
+block|}
+elseif|else
+if|if
+condition|(
+name|entry
 operator|.
-name|get
+name|getCiteKey
+argument_list|()
+operator|.
+name|equals
 argument_list|(
-literal|1
+literal|"stdmodel"
 argument_list|)
-decl_stmt|;
+condition|)
+block|{
 name|assertEquals
 argument_list|(
 literal|"A \\texttt{set} with three members discussing the standard model of particle physics. "
@@ -412,7 +428,7 @@ literal|"The \\texttt{crossref} field in the \\texttt{@set} entry and the \\text
 operator|+
 literal|"each set member entry is needed only when using BibTeX as the backend"
 argument_list|,
-name|be1
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -424,7 +440,7 @@ name|assertEquals
 argument_list|(
 literal|"stdmodel"
 argument_list|,
-name|be1
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -436,7 +452,7 @@ name|assertEquals
 argument_list|(
 literal|"glashow,weinberg,salam"
 argument_list|,
-name|be1
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -444,16 +460,21 @@ literal|"entryset"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|BibEntry
-name|be2
-init|=
-name|bibEntries
+block|}
+elseif|else
+if|if
+condition|(
+name|entry
 operator|.
-name|get
+name|getCiteKey
+argument_list|()
+operator|.
+name|equals
 argument_list|(
-literal|2
+literal|"set"
 argument_list|)
-decl_stmt|;
+condition|)
+block|{
 name|assertEquals
 argument_list|(
 literal|"A \\texttt{set} with three members. The \\texttt{crossref} field in the \\texttt{@set} "
@@ -462,7 +483,7 @@ literal|"entry and the \\texttt{entryset} field in each set member entry is need
 operator|+
 literal|"BibTeX as the backend"
 argument_list|,
-name|be2
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -474,7 +495,7 @@ name|assertEquals
 argument_list|(
 literal|"set"
 argument_list|,
-name|be2
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -486,7 +507,7 @@ name|assertEquals
 argument_list|(
 literal|"herrmann,aksin,yoon"
 argument_list|,
-name|be2
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -494,21 +515,26 @@ literal|"entryset"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|BibEntry
-name|be3
-init|=
-name|bibEntries
+block|}
+elseif|else
+if|if
+condition|(
+name|entry
 operator|.
-name|get
+name|getCiteKey
+argument_list|()
+operator|.
+name|equals
 argument_list|(
-literal|3
+literal|"Preissel2016"
 argument_list|)
-decl_stmt|;
+condition|)
+block|{
 name|assertEquals
 argument_list|(
 literal|"Heidelberg"
 argument_list|,
-name|be3
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -520,7 +546,7 @@ name|assertEquals
 argument_list|(
 literal|"PreiÃel, RenÃ©"
 argument_list|,
-name|be3
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -532,7 +558,7 @@ name|assertEquals
 argument_list|(
 literal|"Preissel2016"
 argument_list|,
-name|be3
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -544,7 +570,7 @@ name|assertEquals
 argument_list|(
 literal|"3., aktualisierte und erweiterte Auflage"
 argument_list|,
-name|be3
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -556,7 +582,7 @@ name|assertEquals
 argument_list|(
 literal|"978-3-86490-311-3"
 argument_list|,
-name|be3
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -568,7 +594,7 @@ name|assertEquals
 argument_list|(
 literal|"Versionsverwaltung"
 argument_list|,
-name|be3
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -580,7 +606,7 @@ name|assertEquals
 argument_list|(
 literal|"XX, 327 Seiten"
 argument_list|,
-name|be3
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -592,7 +618,7 @@ name|assertEquals
 argument_list|(
 literal|"dpunkt.verlag"
 argument_list|,
-name|be3
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -604,7 +630,7 @@ name|assertEquals
 argument_list|(
 literal|"Git: dezentrale Versionsverwaltung im Team : Grundlagen und Workflows"
 argument_list|,
-name|be3
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -616,7 +642,7 @@ name|assertEquals
 argument_list|(
 literal|"http://d-nb.info/107601965X"
 argument_list|,
-name|be3
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -628,7 +654,7 @@ name|assertEquals
 argument_list|(
 literal|"2016"
 argument_list|,
-name|be3
+name|entry
 operator|.
 name|getField
 argument_list|(
@@ -636,6 +662,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 annotation|@
