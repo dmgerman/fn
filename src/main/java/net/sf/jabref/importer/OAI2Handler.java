@@ -437,7 +437,7 @@ name|pages
 operator|=
 name|pages
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" "
 argument_list|,

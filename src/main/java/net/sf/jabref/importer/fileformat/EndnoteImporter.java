@@ -1655,7 +1655,7 @@ operator|-
 literal|1
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|", "
 argument_list|,

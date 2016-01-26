@@ -1467,7 +1467,7 @@ name|append
 argument_list|(
 name|terms
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" "
 argument_list|,
@@ -2470,7 +2470,7 @@ name|number
 operator|=
 name|number
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|","
 argument_list|,

@@ -176,7 +176,7 @@ name|value
 operator|=
 name|value
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,

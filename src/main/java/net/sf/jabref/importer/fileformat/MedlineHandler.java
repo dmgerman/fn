@@ -1650,11 +1650,11 @@ literal|"abstract"
 argument_list|,
 name|abstractText
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"%"
 argument_list|,
-literal|"\\\\%"
+literal|"\\%"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1816,11 +1816,11 @@ literal|"institution"
 argument_list|,
 name|affiliation
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"#"
 argument_list|,
-literal|"\\\\#"
+literal|"\\#"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -1111,7 +1111,7 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
@@ -1148,7 +1148,7 @@ operator|.
 name|PREVIEW_0
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"__NEWLINE__"
 argument_list|,
@@ -1201,7 +1201,7 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
@@ -1238,7 +1238,7 @@ operator|.
 name|PREVIEW_1
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"__NEWLINE__"
 argument_list|,
@@ -1810,7 +1810,7 @@ operator|.
 name|PREVIEW_0
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"__NEWLINE__"
 argument_list|,
@@ -1831,7 +1831,7 @@ operator|.
 name|PREVIEW_1
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"__NEWLINE__"
 argument_list|,
@@ -1875,7 +1875,7 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
@@ -1896,7 +1896,7 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,
