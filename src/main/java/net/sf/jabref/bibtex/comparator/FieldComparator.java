@@ -170,6 +170,16 @@ name|Comparator
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
 begin_comment
 comment|/**  *  * A comparator for BibEntry fields  *  * Initial Version:  *  * @author alver  * @version Date: Oct 13, 2005 Time: 10:10:04 PM To  *  * TODO: Testcases  *  */
 end_comment
@@ -321,7 +331,12 @@ name|this
 operator|.
 name|fieldName
 operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|field
+argument_list|)
 expr_stmt|;
 name|this
 operator|.

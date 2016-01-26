@@ -278,10 +278,6 @@ argument_list|(
 name|Globals
 operator|.
 name|NEWLINE
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
 argument_list|)
 expr_stmt|;
 name|writeRequiredFieldsFirstRemainingFieldsSecond
@@ -291,6 +287,15 @@ argument_list|,
 name|out
 argument_list|,
 name|bibDatabaseMode
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|write
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}

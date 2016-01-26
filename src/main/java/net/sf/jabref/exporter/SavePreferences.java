@@ -26,6 +26,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Charsets
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -83,6 +97,37 @@ specifier|final
 name|boolean
 name|isSaveOperation
 decl_stmt|;
+DECL|method|isSaveInOriginalOrder ()
+specifier|public
+name|boolean
+name|isSaveInOriginalOrder
+parameter_list|()
+block|{
+return|return
+name|saveInOriginalOrder
+return|;
+block|}
+DECL|method|setSaveInOriginalOrder (boolean saveInOriginalOrder)
+specifier|public
+name|void
+name|setSaveInOriginalOrder
+parameter_list|(
+name|boolean
+name|saveInOriginalOrder
+parameter_list|)
+block|{
+name|this
+operator|.
+name|saveInOriginalOrder
+operator|=
+name|saveInOriginalOrder
+expr_stmt|;
+block|}
+DECL|field|saveInOriginalOrder
+specifier|private
+name|boolean
+name|saveInOriginalOrder
+decl_stmt|;
 DECL|field|pri
 specifier|public
 name|String
@@ -113,6 +158,20 @@ specifier|public
 name|boolean
 name|terD
 decl_stmt|;
+DECL|method|SavePreferences ()
+specifier|public
+name|SavePreferences
+parameter_list|()
+block|{
+comment|//this.makeBackup = false;
+comment|//this.encoding = Charsets.UTF_8;
+name|this
+operator|.
+name|isSaveOperation
+operator|=
+literal|true
+expr_stmt|;
+block|}
 DECL|method|SavePreferences (JabRefPreferences prefs)
 specifier|public
 name|SavePreferences
@@ -175,6 +234,32 @@ operator|=
 name|DatabaseSaveType
 operator|.
 name|ALL
+expr_stmt|;
+if|if
+condition|(
+name|isSaveOperation
+condition|)
+name|this
+operator|.
+name|saveInOriginalOrder
+operator|=
+literal|true
+expr_stmt|;
+else|else
+name|this
+operator|.
+name|saveInOriginalOrder
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EXPORT_IN_ORIGINAL_ORDER
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
