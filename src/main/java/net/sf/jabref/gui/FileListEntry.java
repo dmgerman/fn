@@ -194,24 +194,6 @@ operator|+
 name|type
 return|;
 block|}
-DECL|method|switchLinkAndDescription ()
-specifier|public
-name|FileListEntry
-name|switchLinkAndDescription
-parameter_list|()
-block|{
-return|return
-operator|new
-name|FileListEntry
-argument_list|(
-name|link
-argument_list|,
-name|description
-argument_list|,
-name|type
-argument_list|)
-return|;
-block|}
 block|}
 end_class
 

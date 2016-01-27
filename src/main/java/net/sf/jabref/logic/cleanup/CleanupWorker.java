@@ -157,6 +157,11 @@ specifier|final
 name|BibDatabase
 name|database
 decl_stmt|;
+DECL|field|unsuccessfulRenames
+specifier|private
+name|int
+name|unsuccessfulRenames
+decl_stmt|;
 DECL|method|CleanupWorker (CleanupPreset preset)
 specifier|public
 name|CleanupWorker
@@ -245,6 +250,16 @@ name|database
 operator|=
 name|database
 expr_stmt|;
+block|}
+DECL|method|getUnsuccessfulRenames ()
+specifier|public
+name|int
+name|getUnsuccessfulRenames
+parameter_list|()
+block|{
+return|return
+name|unsuccessfulRenames
+return|;
 block|}
 DECL|method|cleanup (BibEntry entry)
 specifier|public
@@ -520,8 +535,13 @@ argument_list|(
 name|cleaner
 argument_list|)
 expr_stmt|;
-comment|// Reenable this:
-comment|//unsuccessfulRenames += cleaner.getUnsuccessfulRenames();
+name|unsuccessfulRenames
+operator|+=
+name|cleaner
+operator|.
+name|getUnsuccessfulRenames
+argument_list|()
+expr_stmt|;
 block|}
 if|if
 condition|(
