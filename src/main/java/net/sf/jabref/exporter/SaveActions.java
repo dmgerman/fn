@@ -182,6 +182,9 @@ name|HashMap
 argument_list|<>
 argument_list|()
 expr_stmt|;
+name|setAvailableFormatters
+argument_list|()
+expr_stmt|;
 name|List
 argument_list|<
 name|String
@@ -195,9 +198,17 @@ argument_list|(
 name|META_KEY
 argument_list|)
 decl_stmt|;
-name|setAvailableFormatters
-argument_list|()
-expr_stmt|;
+if|if
+condition|(
+name|formatters
+operator|==
+literal|null
+condition|)
+block|{
+comment|// no save actions defined in the meta data
+block|}
+else|else
+block|{
 for|for
 control|(
 name|int
@@ -262,6 +273,7 @@ parameter_list|)
 block|{
 comment|// the meta data string in the file is broken. -> Ignore the last item
 break|break;
+block|}
 block|}
 block|}
 block|}
