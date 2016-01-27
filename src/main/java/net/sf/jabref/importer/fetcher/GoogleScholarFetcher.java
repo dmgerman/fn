@@ -815,7 +815,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"GoogleScholarHelp.html"
+literal|"GoogleScholarHelp"
 return|;
 block|}
 annotation|@

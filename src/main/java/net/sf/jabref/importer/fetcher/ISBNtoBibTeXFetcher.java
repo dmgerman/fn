@@ -650,7 +650,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"ISBNtoBibTeXHelp.html"
+literal|"ISBNtoBibTeXHelp"
 return|;
 block|}
 annotation|@

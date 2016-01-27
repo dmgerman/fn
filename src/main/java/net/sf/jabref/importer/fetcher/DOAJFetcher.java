@@ -784,7 +784,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"DOAJHelp.html"
+literal|"DOAJHelp"
 return|;
 block|}
 annotation|@

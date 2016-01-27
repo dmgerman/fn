@@ -563,10 +563,6 @@ operator|=
 operator|new
 name|HelpAction
 argument_list|(
-name|GUIGlobals
-operator|.
-name|helpDiag
-argument_list|,
 name|activeFetcher
 operator|.
 name|getHelpPage
@@ -577,7 +573,7 @@ name|helpBut
 operator|=
 name|help
 operator|.
-name|getIconButton
+name|getHelpButton
 argument_list|()
 expr_stmt|;
 name|helpBut
@@ -1151,26 +1147,6 @@ operator|.
 name|addActionListener
 argument_list|(
 name|this
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|setHelpResourceOwner (Class<?> c)
-specifier|public
-name|void
-name|setHelpResourceOwner
-parameter_list|(
-name|Class
-argument_list|<
-name|?
-argument_list|>
-name|c
-parameter_list|)
-block|{
-name|help
-operator|.
-name|setResourceOwner
-argument_list|(
-name|c
 argument_list|)
 expr_stmt|;
 block|}
