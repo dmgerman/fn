@@ -160,7 +160,25 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|help
+operator|.
+name|AboutDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|help
+operator|.
+name|HelpFiles
 import|;
 end_import
 
@@ -177,22 +195,6 @@ operator|.
 name|help
 operator|.
 name|HelpAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpDialog
 import|;
 end_import
 
@@ -410,14 +412,14 @@ specifier|final
 name|RemotePreferences
 name|remotePreferences
 decl_stmt|;
-DECL|method|AdvancedTab (JabRefPreferences prefs, HelpDialog diag, JabRef jabRef)
+DECL|method|AdvancedTab (JabRefPreferences prefs, AboutDialog diag, JabRef jabRef)
 specifier|public
 name|AdvancedTab
 parameter_list|(
 name|JabRefPreferences
 name|prefs
 parameter_list|,
-name|HelpDialog
+name|AboutDialog
 name|diag
 parameter_list|,
 name|JabRef
@@ -985,14 +987,12 @@ argument_list|(
 operator|new
 name|HelpAction
 argument_list|(
-name|diag
-argument_list|,
-name|GUIGlobals
+name|HelpFiles
 operator|.
 name|remoteHelp
 argument_list|)
 operator|.
-name|getIconButton
+name|getHelpButton
 argument_list|()
 argument_list|)
 expr_stmt|;

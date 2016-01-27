@@ -2514,7 +2514,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"ACMPortalHelp.html"
+literal|"ACMPortalHelp"
 return|;
 block|}
 comment|// This method is called by the dialog when the user has cancelled or

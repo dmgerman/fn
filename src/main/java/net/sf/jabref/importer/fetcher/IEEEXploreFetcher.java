@@ -1155,7 +1155,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"IEEEXploreHelp.html"
+literal|"IEEEXploreHelp"
 return|;
 block|}
 comment|/**      * This method is called by the dialog when the user has cancelled the import.      */

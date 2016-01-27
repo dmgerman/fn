@@ -807,7 +807,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"SpringerHelp.html"
+literal|"SpringerHelp"
 return|;
 block|}
 annotation|@

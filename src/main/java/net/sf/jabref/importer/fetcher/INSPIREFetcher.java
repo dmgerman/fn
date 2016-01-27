@@ -528,7 +528,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"Spires.html"
+literal|"Spires"
 return|;
 block|}
 annotation|@

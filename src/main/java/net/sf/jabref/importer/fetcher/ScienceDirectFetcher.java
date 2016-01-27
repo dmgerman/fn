@@ -331,7 +331,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"ScienceDirect.html"
+literal|"ScienceDirect"
 return|;
 block|}
 annotation|@

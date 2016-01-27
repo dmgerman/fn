@@ -124,7 +124,21 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|PreviewPanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|bibtex
+operator|.
+name|EntryTypes
 import|;
 end_import
 
@@ -138,7 +152,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|PreviewPanel
+name|help
+operator|.
+name|HelpFiles
 import|;
 end_import
 
@@ -155,20 +171,6 @@ operator|.
 name|help
 operator|.
 name|HelpAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bibtex
-operator|.
-name|EntryTypes
 import|;
 end_import
 
@@ -320,23 +322,19 @@ init|=
 operator|new
 name|HelpAction
 argument_list|(
-name|GUIGlobals
-operator|.
-name|helpDiag
-argument_list|,
-name|GUIGlobals
-operator|.
-name|previewHelp
-argument_list|,
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Help on Preview Settings"
 argument_list|)
+argument_list|,
+name|HelpFiles
+operator|.
+name|previewHelp
 argument_list|)
 operator|.
-name|getIconButton
+name|getHelpButton
 argument_list|()
 decl_stmt|;
 DECL|field|testButton

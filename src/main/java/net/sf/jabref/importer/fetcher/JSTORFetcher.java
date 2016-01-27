@@ -297,7 +297,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"JSTOR.html"
+literal|"JSTOR"
 return|;
 block|}
 annotation|@
