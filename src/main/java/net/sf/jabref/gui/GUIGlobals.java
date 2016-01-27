@@ -427,7 +427,7 @@ specifier|final
 name|int
 name|SPLIT_PANE_DIVIDER_LOCATION
 init|=
-literal|145
+literal|160
 operator|+
 literal|15
 decl_stmt|;
