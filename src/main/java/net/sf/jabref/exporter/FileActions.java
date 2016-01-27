@@ -1594,6 +1594,28 @@ name|MetaData
 name|metaData
 parameter_list|)
 block|{
+if|if
+condition|(
+name|metaData
+operator|.
+name|getData
+argument_list|(
+name|SaveActions
+operator|.
+name|META_KEY
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// no save actions defined -> do nothing
+return|return
+name|toChange
+return|;
+block|}
+else|else
+block|{
+comment|// save actions defined -> apply for every entry
 name|List
 argument_list|<
 name|BibEntry
@@ -1643,6 +1665,7 @@ block|}
 return|return
 name|result
 return|;
+block|}
 block|}
 DECL|class|SaveSettings
 specifier|private
