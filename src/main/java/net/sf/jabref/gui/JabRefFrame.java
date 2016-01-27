@@ -12057,7 +12057,7 @@ name|JDialog
 name|dl
 init|=
 operator|new
-name|EntryCustomizationDialog2
+name|EntryCustomizationDialog
 argument_list|(
 name|JabRefFrame
 operator|.

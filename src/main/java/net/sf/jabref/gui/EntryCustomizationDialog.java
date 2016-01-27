@@ -221,10 +221,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|EntryCustomizationDialog2
+DECL|class|EntryCustomizationDialog
 specifier|public
 class|class
-name|EntryCustomizationDialog2
+name|EntryCustomizationDialog
 extends|extends
 name|JDialog
 implements|implements
@@ -420,10 +420,10 @@ specifier|private
 name|boolean
 name|biblatexMode
 decl_stmt|;
-comment|/**      * Creates a new instance of EntryCustomizationDialog2      */
-DECL|method|EntryCustomizationDialog2 (JabRefFrame frame)
+comment|/**      * Creates a new instance of EntryCustomizationDialog      */
+DECL|method|EntryCustomizationDialog (JabRefFrame frame)
 specifier|public
-name|EntryCustomizationDialog2
+name|EntryCustomizationDialog
 parameter_list|(
 name|JabRefFrame
 name|frame
@@ -1563,7 +1563,7 @@ decl_stmt|;
 if|if
 condition|(
 name|opt2Str
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
