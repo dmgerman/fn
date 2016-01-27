@@ -87,12 +87,6 @@ specifier|final
 name|String
 name|year
 decl_stmt|;
-DECL|field|licenseInformation
-specifier|private
-specifier|final
-name|String
-name|licenseInformation
-decl_stmt|;
 DECL|method|BuildInfo ()
 specifier|public
 name|BuildInfo
@@ -179,17 +173,6 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-name|licenseInformation
-operator|=
-name|properties
-operator|.
-name|getProperty
-argument_list|(
-literal|"licenseInformation"
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
 name|year
 operator|=
 name|properties
@@ -251,16 +234,6 @@ parameter_list|()
 block|{
 return|return
 name|year
-return|;
-block|}
-DECL|method|getLicenseInformation ()
-specifier|public
-name|String
-name|getLicenseInformation
-parameter_list|()
-block|{
-return|return
-name|licenseInformation
 return|;
 block|}
 block|}
