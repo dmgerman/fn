@@ -866,6 +866,22 @@ name|FindUnlinkedFilesDialog
 extends|extends
 name|JDialog
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|FindUnlinkedFilesDialog
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Keys to be used for referencing this Action.      */
 DECL|field|ACTION_COMMAND
 specifier|public
@@ -889,15 +905,6 @@ name|menuTitle
 argument_list|(
 literal|"Find unlinked files..."
 argument_list|)
-decl_stmt|;
-DECL|field|ACTION_ICON
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|ACTION_ICON
-init|=
-literal|"toggleSearch"
 decl_stmt|;
 DECL|field|ACTION_SHORT_DESCRIPTION
 specifier|public
@@ -1163,22 +1170,6 @@ DECL|field|checkBoxWhyIsThereNoGetSelectedStupidSwing
 specifier|private
 name|boolean
 name|checkBoxWhyIsThereNoGetSelectedStupidSwing
-decl_stmt|;
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|FindUnlinkedFilesDialog
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 comment|/**      * For Unit-testing only.<i>Don't remove!</i><br>      * Used via reflection in {@link net.sf.jabref.importer.DatabaseFileLookup} to construct this      * class.      */
 DECL|method|FindUnlinkedFilesDialog ()
