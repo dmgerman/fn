@@ -254,20 +254,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -300,23 +286,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpDialog
+name|AboutDialog
 import|;
 end_import
 
@@ -360,7 +330,23 @@ name|gui
 operator|.
 name|help
 operator|.
-name|OnlineHelpAction
+name|HelpFiles
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|help
+operator|.
+name|HelpAction
 import|;
 end_import
 
@@ -495,7 +481,7 @@ literal|"Autolink files with names starting with the BibTeX key"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|method|ExternalTab (JabRefFrame frame, PreferencesDialog prefsDiag, JabRefPreferences prefs, HelpDialog helpDialog)
+DECL|method|ExternalTab (JabRefFrame frame, PreferencesDialog prefsDiag, JabRefPreferences prefs, AboutDialog aboutDialog)
 specifier|public
 name|ExternalTab
 parameter_list|(
@@ -508,8 +494,8 @@ parameter_list|,
 name|JabRefPreferences
 name|prefs
 parameter_list|,
-name|HelpDialog
-name|helpDialog
+name|AboutDialog
+name|aboutDialog
 parameter_list|)
 block|{
 name|this
@@ -986,7 +972,7 @@ operator|.
 name|append
 argument_list|(
 operator|new
-name|OnlineHelpAction
+name|HelpAction
 argument_list|(
 name|Localization
 operator|.
@@ -995,12 +981,12 @@ argument_list|(
 literal|"Help on Regular Expression Search"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|HelpFiles
 operator|.
 name|regularExpressionSearchHelp
 argument_list|)
 operator|.
-name|getIconButton
+name|getHelpButton
 argument_list|()
 argument_list|)
 expr_stmt|;

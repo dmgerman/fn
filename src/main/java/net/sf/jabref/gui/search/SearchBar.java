@@ -66,20 +66,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|IconTheme
 import|;
 end_import
@@ -126,7 +112,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpAction
+name|HelpFiles
 import|;
 end_import
 
@@ -142,7 +128,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|OnlineHelpAction
+name|HelpAction
 import|;
 end_import
 
@@ -1057,9 +1043,9 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|OnlineHelpAction
+name|HelpAction
 argument_list|(
-name|GUIGlobals
+name|HelpFiles
 operator|.
 name|searchHelp
 argument_list|)

@@ -98,7 +98,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpAction
+name|HelpFiles
 import|;
 end_import
 
@@ -114,7 +114,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|OnlineHelpAction
+name|HelpAction
 import|;
 end_import
 
@@ -369,14 +369,14 @@ expr_stmt|;
 name|helpBut
 operator|=
 operator|new
-name|OnlineHelpAction
+name|HelpAction
 argument_list|(
-name|GUIGlobals
+name|HelpFiles
 operator|.
 name|generalFieldsHelp
 argument_list|)
 operator|.
-name|getIconButton
+name|getHelpButton
 argument_list|()
 expr_stmt|;
 try|try

@@ -366,7 +366,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpAction
+name|HelpFiles
 import|;
 end_import
 
@@ -382,7 +382,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|OnlineHelpAction
+name|HelpAction
 import|;
 end_import
 
@@ -597,7 +597,7 @@ decl_stmt|;
 DECL|field|helpAction
 specifier|private
 specifier|final
-name|OnlineHelpAction
+name|HelpAction
 name|helpAction
 decl_stmt|;
 DECL|field|pw
@@ -643,7 +643,7 @@ expr_stmt|;
 name|helpAction
 operator|=
 operator|new
-name|OnlineHelpAction
+name|HelpAction
 argument_list|(
 name|Localization
 operator|.
@@ -652,7 +652,7 @@ argument_list|(
 literal|"Help"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|HelpFiles
 operator|.
 name|stringEditorHelp
 argument_list|)

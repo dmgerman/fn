@@ -85,16 +85,16 @@ comment|/**  * This is a non-modal help Dialog. The contents of the help is spec
 end_comment
 
 begin_class
-DECL|class|HelpDialog
+DECL|class|AboutDialog
 specifier|public
 class|class
-name|HelpDialog
+name|AboutDialog
 extends|extends
 name|JDialog
 block|{
-DECL|method|HelpDialog (JabRefFrame bf)
+DECL|method|AboutDialog (JabRefFrame bf)
 specifier|public
-name|HelpDialog
+name|AboutDialog
 parameter_list|(
 name|JabRefFrame
 name|bf
@@ -108,7 +108,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"JabRef help"
+literal|"About JabRef"
 argument_list|)
 argument_list|,
 literal|false

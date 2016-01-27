@@ -176,20 +176,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|IconTheme
 import|;
 end_import
@@ -206,23 +192,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpDialog
+name|AboutDialog
 import|;
 end_import
 
@@ -266,7 +236,23 @@ name|gui
 operator|.
 name|help
 operator|.
-name|OnlineHelpAction
+name|HelpFiles
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|help
+operator|.
+name|HelpAction
 import|;
 end_import
 
@@ -602,12 +588,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Tab to create custom Name Formatters      *      */
-DECL|method|NameFormatterTab (HelpDialog helpDialog)
+DECL|method|NameFormatterTab (AboutDialog aboutDialog)
 specifier|public
 name|NameFormatterTab
 parameter_list|(
-name|HelpDialog
-name|helpDialog
+name|AboutDialog
+name|aboutDialog
 parameter_list|)
 block|{
 name|setLayout
@@ -1068,7 +1054,7 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|OnlineHelpAction
+name|HelpAction
 argument_list|(
 name|Localization
 operator|.
@@ -1077,7 +1063,7 @@ argument_list|(
 literal|"Help on Name Formatting"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|HelpFiles
 operator|.
 name|nameFormatterHelp
 argument_list|)

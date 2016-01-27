@@ -192,20 +192,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|IconTheme
 import|;
 end_import
@@ -246,7 +232,23 @@ name|gui
 operator|.
 name|help
 operator|.
-name|OnlineHelpAction
+name|HelpFiles
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|help
+operator|.
+name|HelpAction
 import|;
 end_import
 
@@ -326,23 +328,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpDialog
+name|AboutDialog
 import|;
 end_import
 
@@ -408,7 +394,7 @@ decl_stmt|;
 DECL|field|help
 specifier|private
 specifier|final
-name|OnlineHelpAction
+name|HelpAction
 name|help
 decl_stmt|;
 comment|// default pattern
@@ -439,18 +425,18 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|LabelPatternPanel (HelpDialog helpDiag)
+DECL|method|LabelPatternPanel (AboutDialog helpDiag)
 specifier|public
 name|LabelPatternPanel
 parameter_list|(
-name|HelpDialog
+name|AboutDialog
 name|helpDiag
 parameter_list|)
 block|{
 name|help
 operator|=
 operator|new
-name|OnlineHelpAction
+name|HelpAction
 argument_list|(
 name|Localization
 operator|.
@@ -459,7 +445,7 @@ argument_list|(
 literal|"Help on key patterns"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|HelpFiles
 operator|.
 name|labelPatternHelp
 argument_list|)

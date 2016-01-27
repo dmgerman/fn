@@ -132,7 +132,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|GUIGlobals
+name|help
+operator|.
+name|HelpFiles
 import|;
 end_import
 
@@ -768,7 +770,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-name|GUIGlobals
+name|HelpFiles
 operator|.
 name|medlineHelp
 return|;

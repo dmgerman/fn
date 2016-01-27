@@ -128,7 +128,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|OnlineHelpAction
+name|HelpAction
 import|;
 end_import
 
@@ -177,22 +177,6 @@ operator|.
 name|actions
 operator|.
 name|BrowseAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|HelpAction
 import|;
 end_import
 
@@ -670,12 +654,12 @@ name|JButton
 name|help
 init|=
 operator|new
-name|OnlineHelpAction
+name|HelpAction
 argument_list|(
 literal|"OpenOfficeIntegration.html"
 argument_list|)
 operator|.
-name|getIconButton
+name|getHelpButton
 argument_list|()
 decl_stmt|;
 DECL|field|styleFile

@@ -288,7 +288,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpAction
+name|HelpFiles
 import|;
 end_import
 
@@ -304,7 +304,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|OnlineHelpAction
+name|HelpAction
 import|;
 end_import
 
@@ -1665,7 +1665,7 @@ name|JButton
 name|helpButton
 init|=
 operator|new
-name|OnlineHelpAction
+name|HelpAction
 argument_list|(
 name|Localization
 operator|.
@@ -1674,12 +1674,12 @@ argument_list|(
 literal|"Help on special fields"
 argument_list|)
 argument_list|,
-name|GUIGlobals
+name|HelpFiles
 operator|.
 name|specialFieldsHelp
 argument_list|)
 operator|.
-name|getIconButton
+name|getHelpButton
 argument_list|()
 decl_stmt|;
 name|specialFieldsEnabled
