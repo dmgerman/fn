@@ -317,7 +317,7 @@ name|JToolBar
 name|tlb
 init|=
 operator|new
-name|JToolBar
+name|OSXCompatibleToolbar
 argument_list|()
 decl_stmt|;
 name|tlb

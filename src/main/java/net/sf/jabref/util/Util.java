@@ -957,6 +957,18 @@ name|c
 operator|!=
 literal|','
 operator|)
+operator|&&
+operator|(
+name|c
+operator|!=
+literal|'('
+operator|)
+operator|&&
+operator|(
+name|c
+operator|!=
+literal|')'
+operator|)
 condition|)
 block|{
 name|newKey
@@ -1072,6 +1084,18 @@ operator|(
 name|c
 operator|!=
 literal|'\''
+operator|)
+operator|&&
+operator|(
+name|c
+operator|!=
+literal|'('
+operator|)
+operator|&&
+operator|(
+name|c
+operator|!=
+literal|')'
 operator|)
 condition|)
 block|{
@@ -2088,7 +2112,7 @@ return|return
 name|ce
 return|;
 block|}
-comment|/**      * TODO: Move this to cleanup class. Collect file links from the given set of fields, and add them to the list      * contained in the field GUIGlobals.FILE_FIELD.      *<<<<<<< HEAD      * @param entries The entries to modify. =======      * @param entry The entry to modify.>>>>>>> origin/master      * @param fields  The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
+comment|/**      * TODO: Move this to cleanup class. Collect file links from the given set of fields, and add them to the list      * contained in the field GUIGlobals.FILE_FIELD.      *<p>      * @param entry   The entry to modify.      *>>>>>>> origin/master      * @param fields  The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
 DECL|method|upgradePdfPsToFile (BibEntry entry, String[] fields, NamedCompound ce)
 specifier|public
 specifier|static
@@ -2878,7 +2902,7 @@ return|return
 name|targetName
 return|;
 block|}
-comment|/**      *      * Updating a field will result in the entry being reformatted on save      *      * @param ce indicates the undo named compound. May be null      */
+comment|/**      * Updating a field will result in the entry being reformatted on save      *      * @param ce indicates the undo named compound. May be null      */
 DECL|method|updateField (BibEntry be, String field, String newValue, NamedCompound ce)
 specifier|public
 specifier|static
@@ -4099,7 +4123,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *  Shortcut method for setting a single entry      *      * @param entry      * @param ce      * @param changedEntries      * @param singleTableModel      * @param metaData      * @param callback      * @param diag      * @return      */
+comment|/**      * Shortcut method for setting a single entry      *      * @param entry      * @param ce      * @param changedEntries      * @param singleTableModel      * @param metaData      * @param callback      * @param diag      * @return      */
 DECL|method|autoSetLinks (BibEntry entry, final NamedCompound ce, final Set<BibEntry> changedEntries, final FileListTableModel singleTableModel, final MetaData metaData, final ActionListener callback, final JDialog diag)
 specifier|public
 specifier|static
