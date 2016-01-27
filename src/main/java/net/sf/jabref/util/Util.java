@@ -3525,14 +3525,6 @@ name|postData
 argument_list|)
 expr_stmt|;
 block|}
-name|int
-name|responseCode
-init|=
-name|source
-operator|.
-name|getResponseCode
-argument_list|()
-decl_stmt|;
 name|String
 name|inputLine
 decl_stmt|;
