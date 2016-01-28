@@ -592,8 +592,6 @@ name|JabRefPreferences
 operator|.
 name|PREVIEW_0
 argument_list|)
-argument_list|,
-literal|true
 argument_list|)
 block|,
 operator|new
@@ -623,8 +621,6 @@ name|JabRefPreferences
 operator|.
 name|PREVIEW_1
 argument_list|)
-argument_list|,
-literal|true
 argument_list|)
 block|}
 expr_stmt|;
