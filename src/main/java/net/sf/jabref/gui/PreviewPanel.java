@@ -1465,8 +1465,6 @@ parameter_list|(
 name|String
 name|layoutFormat
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|layoutFile
 operator|=

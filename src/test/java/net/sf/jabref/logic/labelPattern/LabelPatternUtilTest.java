@@ -1343,7 +1343,21 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
+block|}
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|NullPointerException
+operator|.
+name|class
+argument_list|)
+DECL|method|testFirstAuthorNull ()
+specifier|public
+name|void
+name|testFirstAuthorNull
+parameter_list|()
 block|{
 name|LabelPatternUtil
 operator|.
@@ -1352,20 +1366,6 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NullPointerException
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
 block|}
 annotation|@
 name|Test
@@ -1545,7 +1545,21 @@ literal|7
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
+block|}
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|NullPointerException
+operator|.
+name|class
+argument_list|)
+DECL|method|testAuthIniNNull ()
+specifier|public
+name|void
+name|testAuthIniNNull
+parameter_list|()
 block|{
 name|LabelPatternUtil
 operator|.
@@ -1556,20 +1570,6 @@ argument_list|,
 literal|3
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NullPointerException
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
 block|}
 comment|/**      * Tests  [auth.auth.ea]      */
 annotation|@
@@ -2816,7 +2816,21 @@ literal|"43+"
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
+block|}
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|NullPointerException
+operator|.
+name|class
+argument_list|)
+DECL|method|testFirstPageNull ()
+specifier|public
+name|void
+name|testFirstPageNull
+parameter_list|()
 block|{
 name|LabelPatternUtil
 operator|.
@@ -2825,20 +2839,6 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NullPointerException
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
 block|}
 annotation|@
 name|Test
@@ -2946,7 +2946,21 @@ literal|"43+"
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
+block|}
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|NullPointerException
+operator|.
+name|class
+argument_list|)
+DECL|method|testLastPageNull ()
+specifier|public
+name|void
+name|testLastPageNull
+parameter_list|()
 block|{
 name|LabelPatternUtil
 operator|.
@@ -2955,20 +2969,6 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
-name|fail
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NullPointerException
-name|ignored
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
 block|}
 comment|/**      * Tests [veryShortTitle]      */
 annotation|@

@@ -879,14 +879,6 @@ argument_list|,
 literal|"JabRef"
 argument_list|)
 expr_stmt|;
-name|InputStream
-name|inputStream
-init|=
-name|oai2Connection
-operator|.
-name|getInputStream
-argument_list|()
-decl_stmt|;
 comment|/* create an empty BibEntry and set the oai2identifier field */
 name|BibEntry
 name|be
@@ -924,6 +916,17 @@ argument_list|(
 name|be
 argument_list|)
 decl_stmt|;
+try|try
+init|(
+name|InputStream
+name|inputStream
+init|=
+name|oai2Connection
+operator|.
+name|getInputStream
+argument_list|()
+init|)
+block|{
 comment|/* parse the result */
 name|saxParser
 operator|.
@@ -1044,11 +1047,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|inputStream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 return|return
 name|be
 return|;

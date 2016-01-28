@@ -1590,8 +1590,6 @@ parameter_list|(
 name|InputStream
 name|in
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|InputStreamReader
 name|reader
