@@ -692,8 +692,6 @@ name|void
 name|updatePreviews
 parameter_list|()
 block|{
-try|try
-block|{
 name|previewPanel
 index|[
 literal|0
@@ -732,23 +730,6 @@ name|PREVIEW_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|debug
-argument_list|(
-literal|"error while updating preview"
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override

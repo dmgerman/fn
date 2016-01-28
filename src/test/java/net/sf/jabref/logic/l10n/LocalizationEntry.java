@@ -142,15 +142,20 @@ name|this
 operator|==
 name|o
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
+operator|(
 name|o
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|getClass
 argument_list|()
 operator|!=
@@ -158,10 +163,13 @@ name|o
 operator|.
 name|getClass
 argument_list|()
+operator|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|LocalizationEntry
 name|that
 init|=
@@ -192,9 +200,11 @@ name|key
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 return|return
 name|bundle
 operator|==
@@ -227,9 +237,11 @@ literal|0
 decl_stmt|;
 name|result
 operator|=
+operator|(
 literal|31
 operator|*
 name|result
+operator|)
 operator|+
 operator|(
 name|bundle
@@ -258,6 +270,8 @@ return|return
 name|bundle
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
