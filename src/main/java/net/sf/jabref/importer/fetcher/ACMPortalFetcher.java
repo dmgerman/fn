@@ -174,11 +174,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|net
 operator|.
-name|BibEntry
+name|NetUtil
 import|;
 end_import
 
@@ -190,9 +190,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|model
 operator|.
-name|Util
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -852,7 +854,7 @@ decl_stmt|;
 name|String
 name|page
 init|=
-name|Util
+name|NetUtil
 operator|.
 name|getResults
 argument_list|(
@@ -2187,7 +2189,7 @@ expr_stmt|;
 name|String
 name|page
 init|=
-name|Util
+name|NetUtil
 operator|.
 name|getResults
 argument_list|(

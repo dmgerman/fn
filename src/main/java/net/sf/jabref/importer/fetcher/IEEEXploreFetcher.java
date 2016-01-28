@@ -374,11 +374,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|net
 operator|.
-name|BibEntry
+name|NetUtil
 import|;
 end_import
 
@@ -390,9 +390,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|model
 operator|.
-name|Util
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -713,7 +715,7 @@ comment|//retrieve the search results
 name|String
 name|page
 init|=
-name|Util
+name|NetUtil
 operator|.
 name|getPostResults
 argument_list|(
@@ -873,7 +875,7 @@ decl_stmt|;
 name|String
 name|bibtexPage
 init|=
-name|Util
+name|NetUtil
 operator|.
 name|getResults
 argument_list|(
