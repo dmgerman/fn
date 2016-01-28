@@ -664,6 +664,8 @@ return|return
 literal|true
 return|;
 block|}
+try|try
+init|(
 name|FileOutputStream
 name|out
 init|=
@@ -672,7 +674,8 @@ name|FileOutputStream
 argument_list|(
 name|lock
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|out
 operator|.
 name|write
@@ -680,8 +683,6 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|out
 operator|.
 name|close

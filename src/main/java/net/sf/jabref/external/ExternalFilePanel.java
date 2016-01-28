@@ -1769,6 +1769,13 @@ block|}
 comment|/*                  * [ 1548875 ] download pdf produces unsupported filename                  *                  * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306                  *                  */
 if|if
 condition|(
+name|plannedName
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
 name|OS
 operator|.
 name|WINDOWS
@@ -1805,6 +1812,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|plannedName

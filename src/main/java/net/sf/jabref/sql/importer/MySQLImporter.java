@@ -204,9 +204,17 @@ name|conn
 argument_list|,
 literal|"SHOW columns FROM entries;"
 argument_list|)
+init|;
+name|ResultSet
+name|rsColumns
+operator|=
+name|statement
+operator|.
+name|getResultSet
+argument_list|()
 init|)
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -215,14 +223,6 @@ init|=
 operator|new
 name|ArrayList
 argument_list|<>
-argument_list|()
-decl_stmt|;
-name|ResultSet
-name|rsColumns
-init|=
-name|statement
-operator|.
-name|getResultSet
 argument_list|()
 decl_stmt|;
 while|while
