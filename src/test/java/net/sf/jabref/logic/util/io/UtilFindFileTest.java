@@ -459,6 +459,13 @@ argument_list|)
 decl_stmt|;
 name|Assert
 operator|.
+name|assertNotNull
+argument_list|(
+name|fullPath
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
