@@ -204,6 +204,14 @@ name|conn
 argument_list|,
 literal|"SELECT column_name FROM information_schema.columns WHERE table_name ='entries';"
 argument_list|)
+init|;
+name|ResultSet
+name|rsColumns
+operator|=
+name|statement
+operator|.
+name|getResultSet
+argument_list|()
 init|)
 block|{
 name|List
@@ -215,14 +223,6 @@ init|=
 operator|new
 name|ArrayList
 argument_list|<>
-argument_list|()
-decl_stmt|;
-name|ResultSet
-name|rsColumns
-init|=
-name|statement
-operator|.
-name|getResultSet
 argument_list|()
 decl_stmt|;
 while|while
