@@ -321,6 +321,16 @@ name|shouldContinue
 operator|=
 literal|true
 expr_stmt|;
+comment|// we save the duplicate check threshold
+comment|// we need to overcome the "smart" approach of this heuristic
+comment|// and we will set it back afterwards, so maybe someone is happy again
+name|double
+name|saveThreshold
+init|=
+name|DuplicateCheck
+operator|.
+name|duplicateThreshold
+decl_stmt|;
 try|try
 block|{
 name|String
@@ -429,16 +439,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// we save the duplicate check threshold
-comment|// we need to overcome the "smart" approach of this heuristic
-comment|// and we will set it back afterwards, so maybe someone is happy again
-name|double
-name|saveThreshold
-init|=
-name|DuplicateCheck
-operator|.
-name|duplicateThreshold
-decl_stmt|;
 name|DuplicateCheck
 operator|.
 name|duplicateThreshold
@@ -668,12 +668,6 @@ name|count
 operator|++
 expr_stmt|;
 block|}
-name|DuplicateCheck
-operator|.
-name|duplicateThreshold
-operator|=
-name|saveThreshold
-expr_stmt|;
 comment|// everything went smooth
 name|res
 operator|=
@@ -704,6 +698,16 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+comment|// Restore the threshold
+name|DuplicateCheck
+operator|.
+name|duplicateThreshold
+operator|=
+name|saveThreshold
 expr_stmt|;
 block|}
 return|return

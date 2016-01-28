@@ -995,9 +995,17 @@ block|}
 comment|// Write footer
 if|if
 condition|(
+operator|(
 name|endLayout
 operator|!=
 literal|null
+operator|)
+operator|&&
+operator|(
+name|encoding
+operator|!=
+literal|null
+operator|)
 condition|)
 block|{
 name|ps
