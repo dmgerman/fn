@@ -1069,8 +1069,6 @@ parameter_list|()
 block|{
 name|Node
 name|result
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

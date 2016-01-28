@@ -614,8 +614,6 @@ argument_list|<
 name|String
 argument_list|>
 name|hs
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|fieldText

@@ -1651,8 +1651,6 @@ argument_list|)
 decl_stmt|;
 name|ExternalFileType
 name|fileType
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

@@ -708,13 +708,9 @@ decl_stmt|;
 comment|// Load default layout
 name|Layout
 name|defLayout
-init|=
-literal|null
 decl_stmt|;
 name|LayoutHelper
 name|layoutHelper
-init|=
-literal|null
 decl_stmt|;
 try|try
 init|(

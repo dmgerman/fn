@@ -569,8 +569,6 @@ block|}
 block|}
 name|String
 name|gvkQuery
-init|=
-literal|""
 decl_stmt|;
 if|if
 condition|(
@@ -915,8 +913,6 @@ try|try
 block|{
 name|URI
 name|uri
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

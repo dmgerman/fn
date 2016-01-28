@@ -342,12 +342,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|entries
-init|=
 name|testImporter
 operator|.
 name|importEntries
@@ -358,7 +352,7 @@ operator|new
 name|OutputPrinterToNull
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
 annotation|@
 name|Test

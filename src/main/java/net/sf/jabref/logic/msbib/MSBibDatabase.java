@@ -351,8 +351,6 @@ argument_list|()
 expr_stmt|;
 name|Document
 name|inputDocument
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

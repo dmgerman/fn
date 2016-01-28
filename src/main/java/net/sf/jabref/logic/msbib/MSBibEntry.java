@@ -965,8 +965,6 @@ parameter_list|)
 block|{
 name|String
 name|temp
-init|=
-literal|null
 decl_stmt|;
 name|sourceType
 operator|=
@@ -3438,8 +3436,6 @@ return|;
 block|}
 name|String
 name|result
-init|=
-literal|null
 decl_stmt|;
 name|LayoutFormatter
 name|chars
@@ -6286,8 +6282,6 @@ parameter_list|()
 block|{
 name|BibEntry
 name|entry
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
