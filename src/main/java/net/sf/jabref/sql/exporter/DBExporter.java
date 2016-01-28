@@ -3087,6 +3087,12 @@ block|{
 return|return
 operator|(
 name|desiredName
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+name|desiredName
 operator|.
 name|trim
 argument_list|()
