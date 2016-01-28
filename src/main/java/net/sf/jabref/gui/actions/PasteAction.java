@@ -68,9 +68,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
-operator|.
-name|io
+name|net
 operator|.
 name|URLUtil
 import|;
