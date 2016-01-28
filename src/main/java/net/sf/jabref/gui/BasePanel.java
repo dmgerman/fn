@@ -350,7 +350,7 @@ name|gui
 operator|.
 name|actions
 operator|.
-name|CleanUpAction
+name|CleanupAction
 import|;
 end_import
 
@@ -2001,13 +2001,17 @@ argument_list|(
 name|this
 argument_list|)
 decl_stmt|;
-name|CleanUpAction
+name|CleanupAction
 name|cleanUpAction
 init|=
 operator|new
-name|CleanUpAction
+name|CleanupAction
 argument_list|(
 name|this
+argument_list|,
+name|Globals
+operator|.
+name|prefs
 argument_list|)
 decl_stmt|;
 name|actions

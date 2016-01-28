@@ -1257,6 +1257,28 @@ name|array
 argument_list|)
 return|;
 block|}
+DECL|method|getStringRepresentation (ParsedFileField field)
+specifier|public
+specifier|static
+name|String
+name|getStringRepresentation
+parameter_list|(
+name|ParsedFileField
+name|field
+parameter_list|)
+block|{
+return|return
+name|getStringRepresentation
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|field
+argument_list|)
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
