@@ -371,7 +371,7 @@ name|content
 operator|=
 name|content
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"\n"
 argument_list|,

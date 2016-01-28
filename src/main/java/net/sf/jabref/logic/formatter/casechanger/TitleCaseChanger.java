@@ -73,6 +73,18 @@ literal|"Title"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getKey ()
+specifier|public
+name|String
+name|getKey
+parameter_list|()
+block|{
+return|return
+literal|"TitleCaseChanger"
+return|;
+block|}
 comment|/**      * Converts all words to upper case, but converts articles, prepositions, and conjunctions to lower case      * Capitalizes first and last word      * Does not change words starting with "{"      */
 annotation|@
 name|Override

@@ -73,6 +73,18 @@ literal|"Upper Each First"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getKey ()
+specifier|public
+name|String
+name|getKey
+parameter_list|()
+block|{
+return|return
+literal|"UpperEachFirstCaseChanger"
+return|;
+block|}
 comment|/**      * Converts the first character of each word of the given string to a upper case (and all others to lower case), but does not change words starting with "{"      */
 annotation|@
 name|Override

@@ -30,7 +30,83 @@ name|model
 operator|.
 name|entry
 operator|.
-name|*
+name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibtexString
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|EntryUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|MonthUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -76,36 +152,8 @@ name|ConcurrentHashMap
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  * A bibliograhpy database.  */
+comment|/**  * A bibliography database.  */
 end_comment
 
 begin_class
@@ -921,7 +969,7 @@ throw|throw
 operator|new
 name|KeyCollisionException
 argument_list|(
-literal|"Duplicate BibtexString id."
+literal|"Duplicate BibTeXString id."
 argument_list|)
 throw|;
 block|}
@@ -2005,7 +2053,7 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns the text stored in the given field of the given bibtex entry      * which belongs to the given database.      *<p>      * If a database is given, this function will try to resolve any string      * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any.      *      * @param field    The field to return the value of.      * @param entry   maybenull      *                 The bibtex entry which contains the field.      * @param database maybenull      *                 The database of the bibtex entry.      * @return The resolved field value or null if not found.      */
+comment|/**      * Returns the text stored in the given field of the given bibtex entry      * which belongs to the given database.      *<p>      * If a database is given, this function will try to resolve any string      * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any.      *      * @param field    The field to return the value of.      * @param entry    maybenull      *                 The bibtex entry which contains the field.      * @param database maybenull      *                 The database of the bibtex entry.      * @return The resolved field value or null if not found.      */
 DECL|method|getResolvedField (String field, BibEntry entry, BibDatabase database)
 specifier|public
 specifier|static

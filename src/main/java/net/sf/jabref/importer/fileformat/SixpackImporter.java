@@ -711,7 +711,7 @@ name|s
 operator|=
 name|s
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"<par>"
 argument_list|,
@@ -917,14 +917,14 @@ index|[
 name|i
 index|]
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" and "
 argument_list|,
 literal|", "
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|", "
 argument_list|,
@@ -957,7 +957,7 @@ index|[
 name|i
 index|]
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"-"
 argument_list|,

@@ -106,16 +106,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|ArrayList
 import|;
 end_import
@@ -279,7 +269,7 @@ name|size
 argument_list|()
 return|;
 block|}
-DECL|method|insertMetaDataAddition (String key, Vector<String> value)
+DECL|method|insertMetaDataAddition (String key, List<String> value)
 specifier|public
 name|void
 name|insertMetaDataAddition
@@ -287,7 +277,7 @@ parameter_list|(
 name|String
 name|key
 parameter_list|,
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -339,7 +329,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|insertMetaDataChange (String key, Vector<String> value)
+DECL|method|insertMetaDataChange (String key, List<String> value)
 specifier|public
 name|void
 name|insertMetaDataChange
@@ -347,7 +337,7 @@ parameter_list|(
 name|String
 name|key
 parameter_list|,
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -593,13 +583,13 @@ decl_stmt|;
 DECL|field|value
 specifier|private
 specifier|final
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|value
 decl_stmt|;
-DECL|method|MetaDataChangeUnit (int type, String key, Vector<String> value)
+DECL|method|MetaDataChangeUnit (int type, String key, List<String> value)
 specifier|public
 name|MetaDataChangeUnit
 parameter_list|(
@@ -609,7 +599,7 @@ parameter_list|,
 name|String
 name|key
 parameter_list|,
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -657,7 +647,7 @@ return|;
 block|}
 DECL|method|getValue ()
 specifier|public
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>

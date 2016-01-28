@@ -557,7 +557,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"CiteSeerHelp.html"
+literal|"CiteSeerHelp"
 return|;
 block|}
 annotation|@

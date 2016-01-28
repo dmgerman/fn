@@ -424,7 +424,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"DOItoBibTeXHelp.html"
+literal|"DOItoBibTeXHelp"
 return|;
 block|}
 annotation|@

@@ -695,7 +695,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"DiVAtoBibTeXHelp.html"
+literal|"DiVAtoBibTeXHelp"
 return|;
 block|}
 annotation|@

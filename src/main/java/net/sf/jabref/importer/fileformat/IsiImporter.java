@@ -1133,7 +1133,7 @@ name|isiAuthorsConvert
 argument_list|(
 name|value
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"EOLEOL"
 argument_list|,
@@ -1197,7 +1197,7 @@ literal|"title"
 argument_list|,
 name|value
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"EOLEOL"
 argument_list|,
@@ -1263,7 +1263,7 @@ name|value
 operator|=
 name|value
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"EOLEOL"
 argument_list|,
@@ -1339,7 +1339,7 @@ literal|"abstract"
 argument_list|,
 name|value
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"EOLEOL"
 argument_list|,
@@ -1716,7 +1716,7 @@ literal|"CitedReferences"
 argument_list|,
 name|value
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"EOLEOL"
 argument_list|,
@@ -2230,9 +2230,9 @@ name|first
 operator|=
 name|first
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\."
+literal|"."
 argument_list|,
 literal|""
 argument_list|)

@@ -875,7 +875,7 @@ argument_list|,
 literal|false
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" and "
 argument_list|,
@@ -897,7 +897,7 @@ argument_list|,
 literal|false
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" and "
 argument_list|,
@@ -1006,9 +1006,9 @@ name|s1
 operator|=
 name|s1
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\."
+literal|"."
 argument_list|,
 literal|""
 argument_list|)
@@ -1020,9 +1020,9 @@ name|s2
 operator|=
 name|s2
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\."
+literal|"."
 argument_list|,
 literal|""
 argument_list|)

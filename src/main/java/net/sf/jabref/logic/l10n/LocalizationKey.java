@@ -68,7 +68,7 @@ name|this
 operator|.
 name|key
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" "
 argument_list|,
@@ -88,7 +88,7 @@ name|this
 operator|.
 name|key
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" "
 argument_list|,
@@ -128,7 +128,7 @@ name|this
 operator|.
 name|key
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"_"
 argument_list|,

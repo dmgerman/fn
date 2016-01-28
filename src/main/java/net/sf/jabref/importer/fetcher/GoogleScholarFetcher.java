@@ -815,7 +815,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"GoogleScholarHelp.html"
+literal|"GoogleScholarHelp"
 return|;
 block|}
 annotation|@
@@ -1211,7 +1211,7 @@ argument_list|(
 literal|1
 argument_list|)
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"&amp;"
 argument_list|,
@@ -1336,9 +1336,9 @@ name|pText
 operator|=
 name|pText
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\[PDF\\]"
+literal|"[PDF]"
 argument_list|,
 literal|""
 argument_list|)

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -286,9 +286,7 @@ expr_stmt|;
 try|try
 block|{
 name|jbInit
-argument_list|(
-name|frame
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|pack
 argument_list|()
@@ -307,16 +305,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|jbInit (JabRefFrame parent)
+DECL|method|jbInit ()
 specifier|private
 name|void
 name|jbInit
-parameter_list|(
-name|JabRefFrame
-name|parent
-parameter_list|)
+parameter_list|()
 block|{
-comment|//  titledBorder1 = new TitledBorder(BorderFactory.createLineBorder(new Color(153, 153, 153),2),Globals.lang("Options"));
 name|panel1
 operator|.
 name|setLayout
@@ -775,13 +769,10 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ok_actionPerformed (ActionEvent e)
+DECL|method|ok_actionPerformed ()
 name|void
 name|ok_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+parameter_list|()
 block|{
 name|okPressed
 operator|=
@@ -791,13 +782,10 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Cancel_actionPerformed (ActionEvent e)
+DECL|method|Cancel_actionPerformed ()
 name|void
 name|Cancel_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+parameter_list|()
 block|{
 name|dispose
 argument_list|()
@@ -915,9 +903,7 @@ block|{
 name|adaptee
 operator|.
 name|ok_actionPerformed
-argument_list|(
-name|e
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -970,9 +956,7 @@ block|{
 name|adaptee
 operator|.
 name|Cancel_actionPerformed
-argument_list|(
-name|e
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 block|}

@@ -73,6 +73,18 @@ literal|"UPPER"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+DECL|method|getKey ()
+specifier|public
+name|String
+name|getKey
+parameter_list|()
+block|{
+return|return
+literal|"UpperCaseChanger"
+return|;
+block|}
 comment|/**      * Converts all characters of the given string to upper case, but does not change words starting with "{"      */
 annotation|@
 name|Override

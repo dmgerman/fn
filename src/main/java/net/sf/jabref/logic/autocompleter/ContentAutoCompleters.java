@@ -46,16 +46,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -303,7 +293,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>

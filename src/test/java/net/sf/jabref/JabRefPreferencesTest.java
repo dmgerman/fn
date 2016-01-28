@@ -143,7 +143,7 @@ expr_stmt|;
 name|String
 name|expected
 init|=
-literal|"editor"
+literal|"my proxy host"
 decl_stmt|;
 name|String
 name|actual
@@ -154,7 +154,7 @@ name|get
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SAVE_PRIMARY_SORT_FIELD
+name|PROXY_HOSTNAME
 argument_list|)
 decl_stmt|;
 name|assertEquals

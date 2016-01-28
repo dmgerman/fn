@@ -1155,7 +1155,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"IEEEXploreHelp.html"
+literal|"IEEEXploreHelp"
 return|;
 block|}
 comment|/**      * This method is called by the dialog when the user has cancelled the import.      */
@@ -1770,62 +1770,42 @@ name|author
 operator|=
 name|author
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\."
+literal|"."
 argument_list|,
 literal|". "
 argument_list|)
-expr_stmt|;
-name|author
-operator|=
-name|author
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"  "
 argument_list|,
 literal|" "
 argument_list|)
-expr_stmt|;
-name|author
-operator|=
-name|author
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\. -"
+literal|". -"
 argument_list|,
 literal|".-"
 argument_list|)
-expr_stmt|;
-name|author
-operator|=
-name|author
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"; "
 argument_list|,
 literal|" and "
 argument_list|)
-expr_stmt|;
-name|author
-operator|=
-name|author
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" ,"
 argument_list|,
 literal|","
 argument_list|)
-expr_stmt|;
-name|author
-operator|=
-name|author
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"  "
 argument_list|,
@@ -1884,9 +1864,9 @@ name|month
 operator|=
 name|month
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\."
+literal|"."
 argument_list|,
 literal|""
 argument_list|)
@@ -2520,7 +2500,7 @@ name|fullName
 operator|=
 name|fullName
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"International"
 argument_list|,
@@ -2531,7 +2511,7 @@ name|fullName
 operator|=
 name|fullName
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"Symposium"
 argument_list|,
@@ -2542,7 +2522,7 @@ name|fullName
 operator|=
 name|fullName
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|"Conference"
 argument_list|,
@@ -2553,7 +2533,7 @@ name|fullName
 operator|=
 name|fullName
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 literal|" on"
 argument_list|,
@@ -3248,11 +3228,11 @@ name|abstr
 operator|=
 name|abstr
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
-literal|"\\\\infin"
+literal|"\\infin"
 argument_list|,
-literal|"\\\\infty"
+literal|"\\infty"
 argument_list|)
 expr_stmt|;
 comment|// Write back

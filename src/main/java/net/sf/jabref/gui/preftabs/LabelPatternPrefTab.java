@@ -162,7 +162,7 @@ name|gui
 operator|.
 name|help
 operator|.
-name|HelpDialog
+name|AboutDialog
 import|;
 end_import
 
@@ -420,14 +420,14 @@ argument_list|(
 literal|20
 argument_list|)
 decl_stmt|;
-DECL|method|LabelPatternPrefTab (JabRefPreferences prefs, HelpDialog helpDiag, BasePanel panel)
+DECL|method|LabelPatternPrefTab (JabRefPreferences prefs, AboutDialog helpDiag, BasePanel panel)
 specifier|public
 name|LabelPatternPrefTab
 parameter_list|(
 name|JabRefPreferences
 name|prefs
 parameter_list|,
-name|HelpDialog
+name|AboutDialog
 name|helpDiag
 parameter_list|,
 name|BasePanel
