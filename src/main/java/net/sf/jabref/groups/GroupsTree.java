@@ -446,6 +446,13 @@ argument_list|,
 name|this
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|dgr
+operator|!=
+literal|null
+condition|)
+block|{
 comment|// Eliminates right mouse clicks as valid actions
 name|dgr
 operator|.
@@ -462,6 +469,7 @@ operator|.
 name|BUTTON3_MASK
 argument_list|)
 expr_stmt|;
+block|}
 operator|new
 name|DropTarget
 argument_list|(
@@ -560,6 +568,13 @@ name|getLocation
 argument_list|()
 decl_stmt|;
 comment|// screen coordinates!
+if|if
+condition|(
+name|p
+operator|!=
+literal|null
+condition|)
+block|{
 name|SwingUtilities
 operator|.
 name|convertPointFromScreen
@@ -668,6 +683,7 @@ operator|.
 name|DefaultMoveDrop
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
