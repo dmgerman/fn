@@ -34,6 +34,16 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URISyntaxException
+import|;
+end_import
+
 begin_class
 DECL|class|DOITest
 specifier|public
@@ -180,6 +190,28 @@ operator|new
 name|DOI
 argument_list|(
 literal|"12.1006/jmbi.1998.2354 end"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|)
+DECL|method|rejectInvalidDoiUri ()
+specifier|public
+name|void
+name|rejectInvalidDoiUri
+parameter_list|()
+block|{
+operator|new
+name|DOI
+argument_list|(
+literal|"https://thisisnouri"
 argument_list|)
 expr_stmt|;
 block|}
