@@ -1421,7 +1421,9 @@ name|SaveSession
 name|ss
 parameter_list|)
 throws|throws
-name|Exception
+name|SaveException
+throws|,
+name|IOException
 block|{
 name|ss
 operator|.

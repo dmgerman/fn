@@ -143,6 +143,7 @@ end_import
 begin_class
 DECL|class|ExternalFileTypes
 specifier|public
+specifier|final
 class|class
 name|ExternalFileTypes
 block|{

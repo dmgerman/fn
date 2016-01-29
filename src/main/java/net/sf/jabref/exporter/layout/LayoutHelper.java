@@ -194,10 +194,10 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|_eof
+DECL|field|endOfFile
 specifier|private
 name|boolean
-name|_eof
+name|endOfFile
 decl_stmt|;
 DECL|method|LayoutHelper (Reader in)
 specifier|public
@@ -388,7 +388,7 @@ decl_stmt|;
 while|while
 condition|(
 operator|!
-name|_eof
+name|endOfFile
 condition|)
 block|{
 name|c
@@ -404,7 +404,7 @@ operator|-
 literal|1
 condition|)
 block|{
-name|_eof
+name|endOfFile
 operator|=
 literal|true
 expr_stmt|;
@@ -583,7 +583,7 @@ decl_stmt|;
 while|while
 condition|(
 operator|!
-name|_eof
+name|endOfFile
 condition|)
 block|{
 name|c
@@ -600,7 +600,7 @@ operator|-
 literal|1
 condition|)
 block|{
-name|_eof
+name|endOfFile
 operator|=
 literal|true
 expr_stmt|;
@@ -950,7 +950,7 @@ decl_stmt|;
 while|while
 condition|(
 operator|!
-name|_eof
+name|endOfFile
 condition|)
 block|{
 name|c
@@ -966,7 +966,7 @@ operator|-
 literal|1
 condition|)
 block|{
-name|_eof
+name|endOfFile
 operator|=
 literal|true
 expr_stmt|;
@@ -1145,7 +1145,7 @@ decl_stmt|;
 while|while
 condition|(
 operator|!
-name|_eof
+name|endOfFile
 condition|)
 block|{
 name|c
@@ -1162,7 +1162,7 @@ operator|-
 literal|1
 condition|)
 block|{
-name|_eof
+name|endOfFile
 operator|=
 literal|true
 expr_stmt|;
@@ -1667,7 +1667,7 @@ literal|65535
 operator|)
 condition|)
 block|{
-name|_eof
+name|endOfFile
 operator|=
 literal|true
 expr_stmt|;
