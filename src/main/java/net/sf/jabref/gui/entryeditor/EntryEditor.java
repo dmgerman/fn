@@ -2741,7 +2741,7 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * getExtra checks the field name against BibtexFields.getFieldExtras(name).      * If the name has an entry, the proper component to be shown is created and      * returned. Otherwise, null is returned. In addition, e.g. listeners can be      * added to the field editor, even if no component is returned.      *      * @param string Field name      * @return Component to show, or null if none.      */
+comment|/**      * getExtra checks the field name against InternalBibtexFields.getFieldExtras(name).      * If the name has an entry, the proper component to be shown is created and      * returned. Otherwise, null is returned. In addition, e.g. listeners can be      * added to the field editor, even if no component is returned.      *      * @param string Field name      * @return Component to show, or null if none.      */
 DECL|method|getExtra (final FieldEditor editor)
 specifier|public
 name|Optional
@@ -2768,7 +2768,7 @@ specifier|final
 name|String
 name|fieldExtras
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getFieldExtras
 argument_list|(
@@ -2794,7 +2794,7 @@ argument_list|(
 name|fieldName
 argument_list|)
 operator|||
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_DATEPICKER
 operator|.
@@ -2812,7 +2812,7 @@ name|getDateTimeExtraComponent
 argument_list|(
 name|editor
 argument_list|,
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_DATEPICKER
 operator|.
@@ -2826,7 +2826,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_EXTERNAL
 operator|.
@@ -2851,7 +2851,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_JOURNAL_NAMES
 operator|.
@@ -2925,7 +2925,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_BROWSE
 operator|.
@@ -2951,7 +2951,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_BROWSE_DOC
 operator|.
@@ -2960,7 +2960,7 @@ argument_list|(
 name|fieldExtras
 argument_list|)
 operator|||
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_BROWSE_DOC_ZIP
 operator|.
@@ -2983,7 +2983,7 @@ name|editor
 argument_list|,
 name|this
 argument_list|,
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_BROWSE_DOC_ZIP
 operator|.
@@ -2997,7 +2997,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_URL
 operator|.
@@ -3021,7 +3021,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_SET_OWNER
 operator|.
@@ -3045,7 +3045,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_YES_NO
 operator|.
@@ -3069,7 +3069,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_MONTH
 operator|.
@@ -4577,7 +4577,7 @@ control|)
 block|{
 if|if
 condition|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|isDisplayableField
 argument_list|(

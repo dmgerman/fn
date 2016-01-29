@@ -297,7 +297,7 @@ init|=
 literal|"bibtexkey"
 decl_stmt|;
 DECL|field|ID_FIELD
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String
@@ -306,7 +306,7 @@ init|=
 literal|"id"
 decl_stmt|;
 DECL|field|DEFAULT_TYPE
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|String

@@ -349,7 +349,7 @@ literal|0
 init|,
 name|len
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|numberOfPublicFields
 argument_list|()
@@ -366,7 +366,7 @@ name|fields
 operator|.
 name|add
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getFieldName
 argument_list|(
@@ -410,7 +410,7 @@ argument_list|(
 operator|(
 literal|100
 operator|*
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getFieldWeight
 argument_list|(
@@ -626,7 +626,7 @@ operator|)
 operator|/
 literal|100d
 decl_stmt|;
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|setFieldWeight
 argument_list|(

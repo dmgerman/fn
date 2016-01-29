@@ -320,7 +320,7 @@ name|String
 argument_list|>
 name|preset
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getAllFieldNames
 argument_list|()

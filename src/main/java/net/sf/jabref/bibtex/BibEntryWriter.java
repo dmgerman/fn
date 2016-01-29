@@ -22,7 +22,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BibtexFields
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -593,14 +593,14 @@ name|writeIt
 init|=
 name|write
 condition|?
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|isWriteableField
 argument_list|(
 name|key
 argument_list|)
 else|:
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|isDisplayableField
 argument_list|(

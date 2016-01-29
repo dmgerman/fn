@@ -28,7 +28,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BibtexFields
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -170,7 +170,7 @@ name|this
 operator|.
 name|numeric
 operator|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|isNumeric
 argument_list|(
@@ -220,7 +220,7 @@ name|this
 operator|.
 name|numeric
 operator|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|isNumeric
 argument_list|(

@@ -124,7 +124,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BibtexFields
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -236,7 +236,7 @@ name|SQLUtil
 operator|.
 name|allFields
 argument_list|,
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getAllFieldNames
 argument_list|()
@@ -250,7 +250,7 @@ name|SQLUtil
 operator|.
 name|allFields
 argument_list|,
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getAllPrivateFieldNames
 argument_list|()

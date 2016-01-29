@@ -11409,7 +11409,7 @@ name|this
 argument_list|,
 name|panel
 argument_list|,
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|DEFAULT_INSPECTION_FIELDS
 argument_list|,
