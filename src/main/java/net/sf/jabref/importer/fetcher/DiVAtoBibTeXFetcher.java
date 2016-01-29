@@ -660,7 +660,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Do not use the provided key
-comment|// entry.clearField(BibtexFields.KEY_FIELD);
+comment|// entry.clearField(InternalBibtexFields.KEY_FIELD);
 name|inspector
 operator|.
 name|addEntry

@@ -945,7 +945,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|MARKED
 argument_list|)

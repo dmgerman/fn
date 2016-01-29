@@ -1408,7 +1408,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 argument_list|,
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|DEFAULT_INSPECTION_FIELDS
 argument_list|,
@@ -1508,7 +1508,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 argument_list|,
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|DEFAULT_INSPECTION_FIELDS
 argument_list|,

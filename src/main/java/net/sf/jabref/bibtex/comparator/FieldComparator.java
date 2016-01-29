@@ -28,7 +28,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BibtexFields
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -417,7 +417,7 @@ argument_list|)
 expr_stmt|;
 name|isNumeric
 operator|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|isNumeric
 argument_list|(

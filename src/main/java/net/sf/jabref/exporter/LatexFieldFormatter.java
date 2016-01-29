@@ -38,7 +38,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BibtexFields
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -768,7 +768,7 @@ block|{
 comment|// Default operation - we only resolve strings for standard fields:
 name|resolveStrings
 operator|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|isStandardField
 argument_list|(

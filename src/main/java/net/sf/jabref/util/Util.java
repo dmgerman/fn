@@ -1703,7 +1703,7 @@ name|curEntry
 operator|.
 name|hasField
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|OWNER
 argument_list|)
@@ -1867,7 +1867,7 @@ name|entry
 operator|.
 name|hasField
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|OWNER
 argument_list|)
@@ -1967,7 +1967,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|OWNER
 argument_list|,
@@ -2006,7 +2006,7 @@ block|{
 name|String
 name|s
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getFieldExtras
 argument_list|(
@@ -2029,7 +2029,7 @@ name|off
 decl_stmt|;
 if|if
 condition|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|EXTRA_BROWSE_DOC_ZIP
 operator|.
@@ -2972,7 +2972,7 @@ literal|0
 init|,
 name|len
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|numberOfPublicFields
 argument_list|()
@@ -2991,7 +2991,7 @@ name|field
 operator|.
 name|equals
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getFieldName
 argument_list|(

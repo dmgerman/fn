@@ -213,10 +213,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibtexFields
+DECL|class|InternalBibtexFields
 specifier|public
 class|class
-name|BibtexFields
+name|InternalBibtexFields
 block|{
 comment|// some internal fields
 DECL|field|SEARCH
@@ -402,11 +402,11 @@ DECL|field|RUNTIME
 specifier|private
 specifier|static
 specifier|final
-name|BibtexFields
+name|InternalBibtexFields
 name|RUNTIME
 init|=
 operator|new
-name|BibtexFields
+name|InternalBibtexFields
 argument_list|()
 decl_stmt|;
 comment|// contains all bibtex-field objects (BibtexSingleField)
@@ -429,9 +429,9 @@ name|String
 index|[]
 name|PUBLIC_FIELDS
 decl_stmt|;
-DECL|method|BibtexFields ()
+DECL|method|InternalBibtexFields ()
 specifier|private
-name|BibtexFields
+name|InternalBibtexFields
 parameter_list|()
 block|{
 name|fieldSet
@@ -1530,7 +1530,7 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|OWNER
 argument_list|,
@@ -1563,7 +1563,7 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|TIMESTAMP
 argument_list|,
@@ -1596,7 +1596,7 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|ENTRYTYPE
 argument_list|,
@@ -1620,7 +1620,7 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|SEARCH
 argument_list|,
@@ -1656,7 +1656,7 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|GROUPSEARCH
 argument_list|,
@@ -1692,7 +1692,7 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|MARKED
 argument_list|,
@@ -1921,7 +1921,7 @@ control|(
 name|String
 name|fieldName
 range|:
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|RUNTIME
 operator|.
@@ -1934,7 +1934,7 @@ block|{
 name|BibtexSingleField
 name|field
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|RUNTIME
 operator|.
@@ -2010,7 +2010,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|RUNTIME
 operator|.
@@ -2074,7 +2074,7 @@ literal|null
 condition|)
 block|{
 return|return
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|RUNTIME
 operator|.
@@ -2106,7 +2106,7 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getField
 argument_list|(
@@ -2144,7 +2144,7 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getField
 argument_list|(
@@ -2184,7 +2184,7 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getField
 argument_list|(
@@ -2227,7 +2227,7 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getField
 argument_list|(
@@ -2263,7 +2263,7 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getField
 argument_list|(
@@ -2303,7 +2303,7 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getField
 argument_list|(
@@ -2336,7 +2336,7 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getField
 argument_list|(
@@ -2370,7 +2370,7 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getField
 argument_list|(
@@ -2403,7 +2403,7 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getField
 argument_list|(
@@ -2439,7 +2439,7 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|RUNTIME
 operator|.
@@ -2474,7 +2474,7 @@ control|(
 name|BibtexSingleField
 name|sField
 range|:
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|RUNTIME
 operator|.
@@ -2520,7 +2520,7 @@ name|t
 parameter_list|)
 block|{
 return|return
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|RUNTIME
 operator|.
@@ -2539,7 +2539,7 @@ name|numberOfPublicFields
 parameter_list|()
 block|{
 return|return
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|RUNTIME
 operator|.

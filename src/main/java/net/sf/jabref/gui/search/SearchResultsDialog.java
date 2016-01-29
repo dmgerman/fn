@@ -322,7 +322,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BibtexFields
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -1980,7 +1980,7 @@ block|{
 name|int
 name|width
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getFieldLength
 argument_list|(

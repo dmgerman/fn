@@ -805,7 +805,7 @@ comment|// Create the text area:
 name|int
 name|editorType
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getEditorType
 argument_list|(
@@ -830,7 +830,7 @@ call|)
 argument_list|(
 literal|50.0
 operator|*
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getFieldWeight
 argument_list|(

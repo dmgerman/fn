@@ -858,7 +858,7 @@ name|setLanguageDependentDefaultValues
 argument_list|()
 expr_stmt|;
 comment|// Update which fields should be treated as numeric, based on preferences:
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|setNumericFieldsFromPrefs
 argument_list|()

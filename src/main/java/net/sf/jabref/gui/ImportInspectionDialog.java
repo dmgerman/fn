@@ -4702,7 +4702,7 @@ block|{
 name|int
 name|width
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getFieldLength
 argument_list|(
