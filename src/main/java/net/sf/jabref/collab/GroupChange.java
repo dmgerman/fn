@@ -229,7 +229,7 @@ name|root
 init|=
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -252,7 +252,7 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData

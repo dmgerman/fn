@@ -420,10 +420,10 @@ specifier|private
 name|boolean
 name|biblatexMode
 decl_stmt|;
-DECL|field|loadedDatabase
+DECL|field|bibDatabaseContext
 specifier|private
-name|LoadedDatabase
-name|loadedDatabase
+name|BibDatabaseContext
+name|bibDatabaseContext
 decl_stmt|;
 comment|/**      * Creates a new instance of EntryCustomizationDialog      */
 DECL|method|EntryCustomizationDialog (JabRefFrame frame)
@@ -479,19 +479,19 @@ name|BorderLayout
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|loadedDatabase
+name|bibDatabaseContext
 operator|=
 name|frame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 expr_stmt|;
 name|biblatexMode
 operator|=
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|isBiblatexMode
 argument_list|()
@@ -563,7 +563,7 @@ name|EntryTypes
 operator|.
 name|getAllTypes
 argument_list|(
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()
@@ -585,7 +585,7 @@ name|EntryTypeList
 argument_list|(
 name|entryTypes
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()
@@ -1226,7 +1226,7 @@ name|getType
 argument_list|(
 name|s
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()
@@ -1641,7 +1641,7 @@ name|removeType
 argument_list|(
 name|nm
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()
@@ -1666,7 +1666,7 @@ operator|.
 name|getKey
 argument_list|()
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()
@@ -1867,7 +1867,7 @@ name|EntryTypes
 operator|.
 name|getAllTypes
 argument_list|(
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()
@@ -1944,7 +1944,7 @@ name|getType
 argument_list|(
 name|name
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()
@@ -1965,7 +1965,7 @@ name|getStandardType
 argument_list|(
 name|name
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()
@@ -2039,7 +2039,7 @@ name|removeType
 argument_list|(
 name|name
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()
@@ -2374,7 +2374,7 @@ operator|.
 name|getType
 argument_list|()
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()
@@ -2495,7 +2495,7 @@ name|getStandardType
 argument_list|(
 name|lastSelected
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()

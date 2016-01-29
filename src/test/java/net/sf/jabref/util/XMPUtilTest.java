@@ -2673,7 +2673,10 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 argument_list|,
 name|XMPUtil
 operator|.
@@ -2759,8 +2762,13 @@ expr_stmt|;
 comment|// Nothing there yet, but should not crash
 name|Assert
 operator|.
-name|assertNull
+name|assertEquals
 argument_list|(
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
+argument_list|,
 name|XMPUtil
 operator|.
 name|readXMP
@@ -5483,6 +5491,9 @@ operator|.
 name|assertEquals
 argument_list|(
 literal|"InProceedings"
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|,
 name|dcSchema
 operator|.
@@ -5493,6 +5504,9 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -5995,6 +6009,9 @@ operator|.
 name|assertEquals
 argument_list|(
 literal|"InProceedings"
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|,
 name|dcSchema
 operator|.
@@ -6005,6 +6022,9 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -6346,7 +6366,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Article"
+literal|"article"
 argument_list|,
 name|bib
 operator|.

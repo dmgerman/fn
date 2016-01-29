@@ -454,7 +454,7 @@ name|sw
 argument_list|,
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMode
@@ -529,7 +529,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData

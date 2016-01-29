@@ -482,7 +482,7 @@ block|}
 name|String
 name|type
 init|=
-literal|""
+literal|"misc"
 decl_stmt|;
 name|String
 name|author

@@ -485,7 +485,7 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -729,7 +729,7 @@ literal|null
 argument_list|,
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -854,7 +854,7 @@ name|dirsS
 init|=
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -1085,7 +1085,7 @@ literal|true
 argument_list|,
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -1435,7 +1435,7 @@ literal|true
 argument_list|,
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData

@@ -254,7 +254,7 @@ name|metaData
 operator|=
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData

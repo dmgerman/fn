@@ -1253,7 +1253,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMode
@@ -1390,7 +1390,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|isBiblatexMode
@@ -2558,7 +2558,7 @@ argument_list|()
 argument_list|,
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMode
@@ -2887,7 +2887,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -3095,7 +3095,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMode
@@ -3276,7 +3276,7 @@ name|entry
 argument_list|,
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMode
@@ -4312,21 +4312,6 @@ name|BibEntry
 name|switchEntry
 parameter_list|)
 block|{
-if|if
-condition|(
-name|this
-operator|.
-name|entry
-operator|==
-name|switchEntry
-condition|)
-block|{
-comment|/**              * Even if the editor is already showing the same entry, update              * the source panel. I'm not sure if this is the correct place to              * do this, but in some cases the source panel will otherwise not              * be up-to-date when an entry is changed while the entry editor              * is existing, set to the same entry, but not visible.              */
-name|updateSource
-argument_list|()
-expr_stmt|;
-return|return;
-block|}
 name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
@@ -7393,7 +7378,7 @@ name|makeLabel
 argument_list|(
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -7751,7 +7736,7 @@ name|openExternalViewer
 argument_list|(
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData

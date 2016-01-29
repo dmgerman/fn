@@ -128,7 +128,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|LoadedDatabase
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -264,11 +264,11 @@ operator|new
 name|CancelAction
 argument_list|()
 decl_stmt|;
-DECL|field|loadedDatabase
+DECL|field|bibDatabaseContext
 specifier|private
 specifier|final
-name|LoadedDatabase
-name|loadedDatabase
+name|BibDatabaseContext
+name|bibDatabaseContext
 decl_stmt|;
 DECL|class|TypeButton
 specifier|static
@@ -355,19 +355,19 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-name|loadedDatabase
+name|bibDatabaseContext
 operator|=
 name|frame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 expr_stmt|;
 name|biblatexMode
 operator|=
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|isBiblatexMode
 argument_list|()
@@ -493,7 +493,7 @@ name|EntryTypes
 operator|.
 name|getAllValues
 argument_list|(
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMode
 argument_list|()

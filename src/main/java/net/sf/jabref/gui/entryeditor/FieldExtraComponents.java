@@ -575,7 +575,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -612,7 +612,7 @@ name|editor
 argument_list|,
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -1092,7 +1092,7 @@ name|frame
 argument_list|,
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -1642,7 +1642,7 @@ name|editor
 argument_list|,
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData

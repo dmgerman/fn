@@ -1301,7 +1301,7 @@ condition|)
 block|{
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData

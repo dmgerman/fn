@@ -627,7 +627,7 @@ name|dirs
 init|=
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -670,7 +670,7 @@ name|dirs
 operator|=
 name|panel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData

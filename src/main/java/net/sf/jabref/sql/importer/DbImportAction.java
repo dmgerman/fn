@@ -871,7 +871,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMode
@@ -1102,7 +1102,7 @@ argument_list|)
 decl_stmt|;
 name|pan
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData

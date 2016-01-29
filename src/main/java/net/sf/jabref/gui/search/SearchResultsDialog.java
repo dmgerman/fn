@@ -2357,7 +2357,7 @@ literal|null
 argument_list|,
 name|p
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -2399,7 +2399,7 @@ name|openExternalViewer
 argument_list|(
 name|p
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -2617,7 +2617,7 @@ argument_list|()
 argument_list|,
 name|p
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -2730,7 +2730,7 @@ name|setMetaData
 argument_list|(
 name|p
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData

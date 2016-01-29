@@ -800,23 +800,7 @@ name|model
 operator|.
 name|database
 operator|.
-name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|DatabaseChangeEvent
+name|*
 import|;
 end_import
 
@@ -835,38 +819,6 @@ operator|.
 name|DatabaseChangeEvent
 operator|.
 name|ChangeType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|DatabaseChangeListener
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|KeyCollisionException
 import|;
 end_import
 
@@ -1270,11 +1222,11 @@ specifier|final
 name|BibDatabase
 name|database
 decl_stmt|;
-DECL|field|loadedDatabase
+DECL|field|bibDatabaseContext
 specifier|private
 specifier|final
-name|LoadedDatabase
-name|loadedDatabase
+name|BibDatabaseContext
+name|bibDatabaseContext
 decl_stmt|;
 DECL|field|mode
 specifier|private
@@ -1552,15 +1504,15 @@ return|return
 name|autoCompleters
 return|;
 block|}
-DECL|method|BasePanel (JabRefFrame frame, LoadedDatabase loadedDatabase, Charset encoding)
+DECL|method|BasePanel (JabRefFrame frame, BibDatabaseContext bibDatabaseContext, Charset encoding)
 specifier|public
 name|BasePanel
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|LoadedDatabase
-name|loadedDatabase
+name|BibDatabaseContext
+name|bibDatabaseContext
 parameter_list|,
 name|Charset
 name|encoding
@@ -1584,7 +1536,7 @@ name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|loadedDatabase
+name|bibDatabaseContext
 argument_list|)
 expr_stmt|;
 name|this
@@ -1595,9 +1547,9 @@ name|encoding
 expr_stmt|;
 name|this
 operator|.
-name|loadedDatabase
+name|bibDatabaseContext
 operator|=
-name|loadedDatabase
+name|bibDatabaseContext
 expr_stmt|;
 name|this
 operator|.
@@ -1617,7 +1569,7 @@ name|this
 operator|.
 name|database
 operator|=
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getDatabase
 argument_list|()
@@ -1639,7 +1591,7 @@ expr_stmt|;
 name|File
 name|file
 init|=
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getDatabaseFile
 argument_list|()
@@ -1768,7 +1720,7 @@ name|title
 decl_stmt|;
 if|if
 condition|(
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
@@ -1823,7 +1775,7 @@ literal|""
 decl_stmt|;
 name|title
 operator|=
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
@@ -3397,7 +3349,7 @@ block|{
 name|DBStrings
 name|dbs
 init|=
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -3488,7 +3440,7 @@ operator|.
 name|getDBStrings
 argument_list|()
 expr_stmt|;
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -3523,7 +3475,7 @@ specifier|final
 name|DBStrings
 name|dbs
 init|=
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -3573,7 +3525,7 @@ name|exportDatabaseToDBMS
 argument_list|(
 name|database
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -3660,7 +3612,7 @@ name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -4221,7 +4173,7 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -5543,7 +5495,7 @@ operator|.
 name|getIcon
 argument_list|()
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -5625,7 +5577,7 @@ argument_list|(
 name|bes
 argument_list|)
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -5939,7 +5891,7 @@ name|JabRefDesktop
 operator|.
 name|openExternalFileAnyFormat
 argument_list|(
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -6002,7 +5954,7 @@ name|JabRefDesktop
 operator|.
 name|openExternalViewer
 argument_list|(
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -7350,7 +7302,7 @@ name|this
 argument_list|,
 literal|false
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -7863,6 +7815,29 @@ argument_list|(
 literal|"Save database"
 argument_list|)
 decl_stmt|;
+name|Defaults
+name|defaults
+init|=
+operator|new
+name|Defaults
+argument_list|(
+name|BibDatabaseMode
+operator|.
+name|fromPreference
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|BIBLATEX_MODE
+argument_list|)
+argument_list|)
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 if|if
@@ -7877,14 +7852,16 @@ operator|.
 name|savePartOfDatabase
 argument_list|(
 operator|new
-name|LoadedDatabase
+name|BibDatabaseContext
 argument_list|(
 name|database
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
+argument_list|,
+name|defaults
 argument_list|)
 argument_list|,
 name|file
@@ -7913,14 +7890,16 @@ operator|.
 name|saveDatabase
 argument_list|(
 operator|new
-name|LoadedDatabase
+name|BibDatabaseContext
 argument_list|(
 name|database
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
+argument_list|,
+name|defaults
 argument_list|)
 argument_list|,
 name|file
@@ -10199,7 +10178,7 @@ argument_list|(
 name|getDatabase
 argument_list|()
 argument_list|,
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -11568,7 +11547,7 @@ literal|false
 expr_stmt|;
 if|if
 condition|(
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
@@ -11602,7 +11581,7 @@ argument_list|,
 name|getTabTitle
 argument_list|()
 argument_list|,
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
@@ -12444,7 +12423,7 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|loadedDatabase
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -13017,7 +12996,7 @@ name|BasePanel
 operator|.
 name|this
 argument_list|,
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
@@ -13028,7 +13007,7 @@ comment|// Test: running scan automatically in background
 if|if
 condition|(
 operator|(
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
@@ -13042,7 +13021,7 @@ name|FileBasedLock
 operator|.
 name|waitForFileLock
 argument_list|(
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
@@ -13148,7 +13127,7 @@ name|this
 argument_list|,
 name|sidePaneManager
 argument_list|,
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
@@ -13225,7 +13204,7 @@ name|info
 argument_list|(
 literal|"File '"
 operator|+
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile
@@ -13354,16 +13333,16 @@ block|}
 end_function
 
 begin_function
-DECL|method|getLoadedDatabase ()
+DECL|method|getBibDatabaseContext ()
 specifier|public
-name|LoadedDatabase
-name|getLoadedDatabase
+name|BibDatabaseContext
+name|getBibDatabaseContext
 parameter_list|()
 block|{
 return|return
 name|this
 operator|.
-name|loadedDatabase
+name|bibDatabaseContext
 return|;
 block|}
 end_function
@@ -14262,7 +14241,7 @@ if|if
 condition|(
 name|basePanel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -14290,7 +14269,7 @@ name|mdDirs
 init|=
 name|basePanel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData
@@ -14531,7 +14510,7 @@ name|openExternalFileAnyFormat
 argument_list|(
 name|basePanel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData

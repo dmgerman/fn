@@ -26,7 +26,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|LoadedDatabase
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -96,14 +96,14 @@ block|{
 DECL|field|database
 specifier|private
 specifier|final
-name|LoadedDatabase
+name|BibDatabaseContext
 name|database
 decl_stmt|;
-DECL|method|FirstColumnComparator (LoadedDatabase database)
+DECL|method|FirstColumnComparator (BibDatabaseContext database)
 specifier|public
 name|FirstColumnComparator
 parameter_list|(
-name|LoadedDatabase
+name|BibDatabaseContext
 name|database
 parameter_list|)
 block|{

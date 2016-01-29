@@ -249,15 +249,12 @@ decl_stmt|;
 if|if
 condition|(
 name|entryType
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
 return|return
-name|entryType
-operator|.
-name|getName
-argument_list|()
+literal|""
 return|;
 block|}
 else|else

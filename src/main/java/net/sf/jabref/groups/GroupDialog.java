@@ -1031,7 +1031,7 @@ name|m_kgSearchTerm
 argument_list|,
 name|m_basePanel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getMetaData

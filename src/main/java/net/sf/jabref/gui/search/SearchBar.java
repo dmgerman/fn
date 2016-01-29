@@ -728,7 +728,7 @@ literal|"Search results in database %0 for %1"
 argument_list|,
 name|basePanel
 operator|.
-name|getLoadedDatabase
+name|getBibDatabaseContext
 argument_list|()
 operator|.
 name|getDatabaseFile

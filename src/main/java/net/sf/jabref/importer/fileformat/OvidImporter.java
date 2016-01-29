@@ -1588,7 +1588,7 @@ argument_list|(
 literal|"entrytype"
 argument_list|)
 else|:
-literal|"other"
+literal|"misc"
 decl_stmt|;
 name|h
 operator|.

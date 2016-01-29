@@ -521,7 +521,7 @@ literal|""
 expr_stmt|;
 name|type
 operator|=
-literal|""
+literal|"misc"
 expr_stmt|;
 name|editor
 operator|=

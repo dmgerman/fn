@@ -329,12 +329,12 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|// Frame titles.
-DECL|field|frameTitle
+DECL|field|FRAME_TITLE
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|frameTitle
+name|FRAME_TITLE
 init|=
 literal|"JabRef"
 decl_stmt|;
