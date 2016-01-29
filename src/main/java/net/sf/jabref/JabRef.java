@@ -1674,8 +1674,6 @@ condition|)
 block|{
 name|String
 name|formatName
-init|=
-literal|null
 decl_stmt|;
 comment|//read in the export format, take default format if no format entered
 switch|switch

@@ -1424,6 +1424,13 @@ operator|>
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|diag
+operator|!=
+literal|null
+condition|)
+block|{
 name|PositionWindow
 operator|.
 name|placeDialog
@@ -1440,6 +1447,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|cancelled

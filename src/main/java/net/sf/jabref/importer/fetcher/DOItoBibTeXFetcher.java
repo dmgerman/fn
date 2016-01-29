@@ -280,9 +280,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|util
+name|net
 operator|.
-name|DOI
+name|NetUtil
 import|;
 end_import
 
@@ -294,9 +294,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
 name|util
 operator|.
-name|Util
+name|DOI
 import|;
 end_import
 
@@ -612,7 +614,7 @@ try|try
 block|{
 name|bibtexString
 operator|=
-name|Util
+name|NetUtil
 operator|.
 name|getResultsWithEncoding
 argument_list|(

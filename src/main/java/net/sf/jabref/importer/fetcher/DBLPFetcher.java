@@ -154,11 +154,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|net
 operator|.
-name|BibEntry
+name|NetUtil
 import|;
 end_import
 
@@ -170,9 +170,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|model
 operator|.
-name|Util
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -321,6 +323,16 @@ name|shouldContinue
 operator|=
 literal|true
 expr_stmt|;
+comment|// we save the duplicate check threshold
+comment|// we need to overcome the "smart" approach of this heuristic
+comment|// and we will set it back afterwards, so maybe someone is happy again
+name|double
+name|saveThreshold
+init|=
+name|DuplicateCheck
+operator|.
+name|duplicateThreshold
+decl_stmt|;
 try|try
 block|{
 name|String
@@ -342,7 +354,7 @@ decl_stmt|;
 name|String
 name|page
 init|=
-name|Util
+name|NetUtil
 operator|.
 name|getResults
 argument_list|(
@@ -429,16 +441,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// we save the duplicate check threshold
-comment|// we need to overcome the "smart" approach of this heuristic
-comment|// and we will set it back afterwards, so maybe someone is happy again
-name|double
-name|saveThreshold
-init|=
-name|DuplicateCheck
-operator|.
-name|duplicateThreshold
-decl_stmt|;
 name|DuplicateCheck
 operator|.
 name|duplicateThreshold
@@ -487,7 +489,7 @@ specifier|final
 name|String
 name|bibtexHTMLPage
 init|=
-name|Util
+name|NetUtil
 operator|.
 name|getResults
 argument_list|(
@@ -587,7 +589,7 @@ specifier|final
 name|String
 name|bibtexPage
 init|=
-name|Util
+name|NetUtil
 operator|.
 name|getResults
 argument_list|(
@@ -668,12 +670,6 @@ name|count
 operator|++
 expr_stmt|;
 block|}
-name|DuplicateCheck
-operator|.
-name|duplicateThreshold
-operator|=
-name|saveThreshold
-expr_stmt|;
 comment|// everything went smooth
 name|res
 operator|=
@@ -704,6 +700,16 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+comment|// Restore the threshold
+name|DuplicateCheck
+operator|.
+name|duplicateThreshold
+operator|=
+name|saveThreshold
 expr_stmt|;
 block|}
 return|return

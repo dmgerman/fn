@@ -602,6 +602,13 @@ literal|0
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|res
+operator|!=
+literal|null
+condition|)
+block|{
 switch|switch
 condition|(
 name|res
@@ -778,6 +785,7 @@ argument_list|)
 expr_stmt|;
 block|}
 break|break;
+block|}
 block|}
 return|return;
 block|}

@@ -1519,7 +1519,9 @@ name|openExternalFileUnknown
 argument_list|(
 name|frame
 argument_list|,
-literal|null
+operator|new
+name|BibEntry
+argument_list|()
 argument_list|,
 operator|new
 name|MetaData

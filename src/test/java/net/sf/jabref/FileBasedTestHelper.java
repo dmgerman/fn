@@ -78,6 +78,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|tempFile
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+if|if
+condition|(
 operator|!
 name|tempFile
 operator|.

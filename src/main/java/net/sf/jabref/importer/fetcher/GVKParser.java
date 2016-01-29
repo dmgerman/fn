@@ -425,6 +425,13 @@ argument_list|,
 name|record
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|e
+operator|!=
+literal|null
+condition|)
+block|{
 name|e
 operator|=
 name|getChild
@@ -434,6 +441,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 name|result
 operator|.
 name|add
@@ -1258,6 +1266,13 @@ argument_list|,
 name|datafield
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|address
+operator|!=
+literal|null
+condition|)
+block|{
 name|address
 operator|=
 name|removeSortCharacters
@@ -1265,6 +1280,7 @@ argument_list|(
 name|address
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 name|st

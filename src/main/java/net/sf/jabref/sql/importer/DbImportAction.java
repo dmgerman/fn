@@ -112,6 +112,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -324,6 +352,22 @@ name|DbImportAction
 extends|extends
 name|AbstractWorker
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|DbImportAction
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|database
 specifier|private
 name|BibDatabase
@@ -443,10 +487,14 @@ name|Throwable
 name|throwable
 parameter_list|)
 block|{
-name|throwable
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Problem importing from database"
+argument_list|,
+name|throwable
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -646,11 +694,10 @@ name|connectToDB
 argument_list|(
 name|dbs
 argument_list|)
-init|;                      Statement statement = SQLUtil.queryAllFromTable(conn
+init|;                         Statement statement = SQLUtil.queryAllFromTable(conn
 operator|,
 init|"jabref_database")
-block|)
-block|{
+empty_stmt|;
 name|ResultSet
 name|rs
 init|=
@@ -658,7 +705,8 @@ name|statement
 operator|.
 name|getResultSet
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|Vector
 argument_list|<
 name|String
@@ -970,21 +1018,19 @@ literal|"Error importing from database"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|error
+argument_list|(
+literal|"Error importing from databae"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-end_class
-
-begin_comment
 comment|// run third, on EDT:
-end_comment
-
-begin_function
 annotation|@
 name|Override
 DECL|method|update ()
@@ -1113,8 +1159,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 
