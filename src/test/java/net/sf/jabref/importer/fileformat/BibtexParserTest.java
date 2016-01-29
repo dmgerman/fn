@@ -185,7 +185,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test the BibtexParser  *  * @author Christopher Oezbek<oezi@oezi.de>  * @version $revision: 1.1$ $date: $  */
+comment|/**  * Test the BibtexParser  */
 end_comment
 
 begin_class
@@ -213,6 +213,11 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 annotation|@
 name|Test
 argument_list|(
