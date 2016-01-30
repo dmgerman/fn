@@ -85,7 +85,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener triggering   *  * an update of keywords if special field has been updated  *  * an update of special fields if keywords have been updated   */
+comment|/**  * Listener triggering  *  * an update of keywords if special field has been updated  *  * an update of special fields if keywords have been updated  */
 end_comment
 
 begin_class
@@ -209,25 +209,18 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|SpecialField
-name|field
-init|=
+if|if
+condition|(
 name|SpecialFieldsUtils
 operator|.
-name|getSpecialFieldInstanceFromFieldName
+name|isSpecialField
 argument_list|(
 name|fieldName
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|field
-operator|!=
-literal|null
 condition|)
 block|{
 comment|// we do NOT pass a named component indicating that we do not want to have undo capabilities
-comment|// if the user undoes the change in the sepcial field, this method is also called and
+comment|// if the user undoes the change in the special field, this method is also called and
 comment|// the keyword field is updated accordingly
 name|SpecialFieldsUtils
 operator|.

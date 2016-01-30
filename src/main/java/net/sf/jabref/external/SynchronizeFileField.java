@@ -992,9 +992,16 @@ name|answer
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|removeAllBroken
 condition|)
+block|{
+name|answer
+operator|=
+literal|2
+expr_stmt|;
+comment|// We should delete this link.
+block|}
+else|else
 block|{
 name|answer
 operator|=
@@ -1048,14 +1055,6 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|answer
-operator|=
-literal|2
-expr_stmt|;
-comment|// We should delete this link.
 block|}
 switch|switch
 condition|(
@@ -2305,10 +2304,8 @@ if|if
 condition|(
 name|dirs
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|autoSetNone

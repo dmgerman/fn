@@ -22,6 +22,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Vector
 import|;
 end_import
@@ -105,7 +115,7 @@ comment|/** This holds the new subtree (the root's modified children) to allow r
 DECL|field|m_modifiedSubtree
 specifier|private
 specifier|final
-name|Vector
+name|List
 argument_list|<
 name|TreeNode
 argument_list|>
@@ -391,7 +401,7 @@ name|GroupTreeNode
 operator|)
 name|m_modifiedSubtree
 operator|.
-name|elementAt
+name|get
 argument_list|(
 name|i
 argument_list|)

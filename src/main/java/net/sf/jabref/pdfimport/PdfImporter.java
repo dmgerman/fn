@@ -62,6 +62,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|FileNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -1136,7 +1146,7 @@ name|doNotShowAgain
 operator|=
 name|importDialog
 operator|.
-name|getDoNotShowAgain
+name|isDoNotShowAgain
 argument_list|()
 expr_stmt|;
 block|}
@@ -1232,10 +1242,14 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Cannot import entries"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally
@@ -1250,7 +1264,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
 name|ignored
 parameter_list|)
 block|{
@@ -1433,7 +1447,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|FileNotFoundException
 name|e
 parameter_list|)
 block|{
@@ -1446,11 +1460,6 @@ literal|"Import failed"
 argument_list|,
 name|e
 argument_list|)
-expr_stmt|;
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
 expr_stmt|;
 name|entry
 operator|=
@@ -1486,7 +1495,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
 name|e
 parameter_list|)
 block|{
@@ -1499,11 +1508,6 @@ literal|"Import failed"
 argument_list|,
 name|e
 argument_list|)
-expr_stmt|;
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
 expr_stmt|;
 name|entry
 operator|=
@@ -1535,7 +1539,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
 name|ignored
 parameter_list|)
 block|{
@@ -2078,7 +2082,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
 name|e
 parameter_list|)
 block|{

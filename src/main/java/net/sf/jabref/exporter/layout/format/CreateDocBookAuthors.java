@@ -126,7 +126,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -324,8 +334,6 @@ name|append
 argument_list|(
 literal|"<firstname>"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -341,8 +349,6 @@ name|getFirst
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -377,8 +383,6 @@ name|append
 argument_list|(
 literal|"<othername>"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -394,8 +398,6 @@ name|getVon
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -430,8 +432,6 @@ name|append
 argument_list|(
 literal|"<surname>"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -568,14 +568,14 @@ name|author
 parameter_list|)
 block|{
 comment|// TODO: replace special characters
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -616,8 +616,6 @@ name|append
 argument_list|(
 literal|"<surname>"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -628,8 +626,6 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -654,8 +650,6 @@ name|append
 argument_list|(
 literal|"<firstname>"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -666,22 +660,11 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
-literal|"</firstname>"
+literal|"</firstname><surname>"
 argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"<surname>"
-argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -692,8 +675,6 @@ argument_list|(
 literal|1
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -709,8 +690,6 @@ name|append
 argument_list|(
 literal|"<firstname>"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -721,19 +700,10 @@ argument_list|(
 literal|0
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
-literal|"</firstname>"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"<othername role=\"mi\">"
+literal|"</firstname><othername role=\"mi\">"
 argument_list|)
 expr_stmt|;
 for|for
@@ -797,17 +767,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"</othername>"
+literal|"</othername><surname>"
 argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"<surname>"
-argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -823,8 +784,6 @@ operator|-
 literal|1
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(

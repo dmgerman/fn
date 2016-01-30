@@ -134,6 +134,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_class
 DECL|class|SaveActions
 specifier|public
@@ -142,7 +152,8 @@ name|SaveActions
 block|{
 DECL|field|actions
 specifier|private
-name|HashMap
+specifier|final
+name|Map
 argument_list|<
 name|String
 argument_list|,

@@ -18,6 +18,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -97,7 +107,7 @@ name|toolTipText
 decl_stmt|;
 comment|// value when used in a separate vield
 comment|//private String fieldValue;
-comment|/**      *       * @param field The special field this value is a value of      * @param keyword - The keyword to be used at BibTex's keyword field. May be "null" if no keyword is to be set      * @param actionName - the action to call      * @param menuString - the string to display at a menu      * @param icon - the icon of this value      * @param toolTipText - the tool tip text      */
+comment|/**      *      * @param field The special field this value is a value of      * @param keyword - The keyword to be used at BibTex's keyword field. May be "null" if no keyword is to be set      * @param actionName - the action to call      * @param menuString - the string to display at a menu      * @param icon - the icon of this value      * @param toolTipText - the tool tip text      */
 DECL|method|SpecialFieldValue ( SpecialField field, String keyword, String actionName, String menuString, Icon icon, String toolTipText)
 specifier|public
 name|SpecialFieldValue
@@ -160,14 +170,22 @@ expr_stmt|;
 block|}
 DECL|method|getKeyword ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getKeyword
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|this
 operator|.
 name|keyword
+argument_list|)
 return|;
 block|}
 DECL|method|getActionName ()
@@ -226,14 +244,22 @@ return|;
 block|}
 DECL|method|getFieldValue ()
 specifier|public
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|getFieldValue
 parameter_list|()
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|this
 operator|.
 name|keyword
+argument_list|)
 return|;
 block|}
 DECL|method|getIcon ()
@@ -292,6 +318,9 @@ argument_list|,
 name|this
 operator|.
 name|getFieldValue
+argument_list|()
+operator|.
+name|get
 argument_list|()
 argument_list|,
 comment|// if field contains only one value, it has to be nulled

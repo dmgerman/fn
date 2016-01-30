@@ -60,6 +60,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -76,6 +86,20 @@ specifier|public
 class|class
 name|TagToMarkedTextStore
 block|{
+DECL|field|tagMap
+specifier|private
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|LinkedList
+argument_list|<
+name|TMarkedStoreItem
+argument_list|>
+argument_list|>
+name|tagMap
+decl_stmt|;
 DECL|class|TMarkedStoreItem
 specifier|private
 specifier|static
@@ -91,20 +115,6 @@ name|int
 name|end
 decl_stmt|;
 block|}
-DECL|field|tagMap
-specifier|private
-specifier|final
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|LinkedList
-argument_list|<
-name|TMarkedStoreItem
-argument_list|>
-argument_list|>
-name|tagMap
-decl_stmt|;
 DECL|method|TagToMarkedTextStore ()
 specifier|public
 name|TagToMarkedTextStore
@@ -200,7 +210,7 @@ operator|=
 name|start
 expr_stmt|;
 block|}
-comment|/** insert selection propertie for tag, old entries were deleted */
+comment|/** insert selection properties for tag, old entries were deleted */
 DECL|method|insertPosition (String tag, int start, int end)
 specifier|public
 name|void

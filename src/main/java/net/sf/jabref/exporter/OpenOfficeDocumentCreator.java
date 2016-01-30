@@ -126,6 +126,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -214,6 +242,22 @@ name|OpenOfficeDocumentCreator
 extends|extends
 name|ExportFormat
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|OpenOfficeDocumentCreator
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Creates a new instance of OpenOfficeDocumentCreator      */
 DECL|method|OpenOfficeDocumentCreator ()
 specifier|public
@@ -747,10 +791,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Cannot get resource"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}

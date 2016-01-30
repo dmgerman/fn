@@ -1083,7 +1083,7 @@ block|}
 if|if
 condition|(
 name|dParent
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -1092,7 +1092,7 @@ operator|=
 operator|new
 name|JDialog
 argument_list|(
-name|dParent
+name|fParent
 argument_list|,
 name|title
 argument_list|,
@@ -1107,7 +1107,7 @@ operator|=
 operator|new
 name|JDialog
 argument_list|(
-name|fParent
+name|dParent
 argument_list|,
 name|title
 argument_list|,
@@ -1173,7 +1173,7 @@ expr_stmt|;
 if|if
 condition|(
 name|dParent
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -1181,7 +1181,7 @@ name|diag
 operator|.
 name|setLocationRelativeTo
 argument_list|(
-name|dParent
+name|fParent
 argument_list|)
 expr_stmt|;
 block|}
@@ -1191,7 +1191,7 @@ name|diag
 operator|.
 name|setLocationRelativeTo
 argument_list|(
-name|fParent
+name|dParent
 argument_list|)
 expr_stmt|;
 block|}
@@ -1459,27 +1459,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
 name|OS
 operator|.
 name|WINDOWS
 condition|)
-block|{
-name|fileTypeEntry
-operator|.
-name|setOpenWith
-argument_list|(
-name|application
-operator|.
-name|getText
-argument_list|()
-operator|.
-name|trim
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 comment|// On Windows, store application as empty if the "Default" option is selected,
 comment|// or if the application name is empty:
@@ -1526,6 +1509,22 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+name|fileTypeEntry
+operator|.
+name|setOpenWith
+argument_list|(
+name|application
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|okPressed ()
