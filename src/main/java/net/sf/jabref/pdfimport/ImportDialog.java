@@ -1307,10 +1307,10 @@ argument_list|()
 throw|;
 block|}
 block|}
-DECL|method|getDoNotShowAgain ()
+DECL|method|isDoNotShowAgain ()
 specifier|public
 name|boolean
-name|getDoNotShowAgain
+name|isDoNotShowAgain
 parameter_list|()
 block|{
 return|return
