@@ -46,6 +46,7 @@ name|FileFilter
 block|{
 DECL|field|INSTANCE
 specifier|public
+specifier|final
 specifier|static
 name|PdfFileFilter
 name|INSTANCE
@@ -143,7 +144,7 @@ name|path
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|)
 operator|+
 literal|1
