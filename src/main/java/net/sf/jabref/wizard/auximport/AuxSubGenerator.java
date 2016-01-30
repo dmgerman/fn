@@ -348,6 +348,20 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+DECL|field|TAG_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|TAG_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\\\(citation|abx@aux@cite)\\{(.+)\\}"
+argument_list|)
+decl_stmt|;
 DECL|method|AuxSubGenerator (BibDatabase refDBase)
 specifier|public
 name|AuxSubGenerator
@@ -399,9 +413,6 @@ name|filename
 parameter_list|)
 block|{
 comment|// regular expressions
-name|Pattern
-name|pattern
-decl_stmt|;
 name|Matcher
 name|matcher
 decl_stmt|;
@@ -415,16 +426,6 @@ name|back
 init|=
 literal|true
 decl_stmt|;
-comment|// the important tag
-name|pattern
-operator|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\\\(citation|abx@aux@cite)\\{(.+)\\}"
-argument_list|)
-expr_stmt|;
 comment|// file list, used for nested aux files
 name|List
 argument_list|<
@@ -597,7 +598,7 @@ argument_list|()
 decl_stmt|;
 name|matcher
 operator|=
-name|pattern
+name|TAG_PATTERN
 operator|.
 name|matcher
 argument_list|(

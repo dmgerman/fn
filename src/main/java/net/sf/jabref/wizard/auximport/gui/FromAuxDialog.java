@@ -660,8 +660,6 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|jbInit
 argument_list|()
 expr_stmt|;
@@ -675,23 +673,6 @@ argument_list|,
 literal|500
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ex
-parameter_list|)
-block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Problem creating dialog"
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 DECL|method|jbInit ()
 specifier|private
@@ -1524,13 +1505,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|generate_actionPerformed (ActionEvent e)
+DECL|method|generate_actionPerformed ()
 name|void
 name|generate_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+parameter_list|()
 block|{
 name|generatePressed
 operator|=
@@ -1540,13 +1518,10 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|cancel_actionPerformed (ActionEvent e)
+DECL|method|cancel_actionPerformed ()
 name|void
 name|cancel_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+parameter_list|()
 block|{
 name|dispose
 argument_list|()
@@ -1636,13 +1611,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|parse_actionPerformed (ActionEvent e)
+DECL|method|parse_actionPerformed ()
 name|void
 name|parse_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+parameter_list|()
 block|{
 name|parseButton
 operator|.
@@ -2009,9 +1981,7 @@ block|{
 name|adaptee
 operator|.
 name|generate_actionPerformed
-argument_list|(
-name|e
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -2058,9 +2028,7 @@ block|{
 name|adaptee
 operator|.
 name|cancel_actionPerformed
-argument_list|(
-name|e
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -2107,9 +2075,7 @@ block|{
 name|adaptee
 operator|.
 name|parse_actionPerformed
-argument_list|(
-name|e
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 block|}
