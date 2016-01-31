@@ -437,13 +437,18 @@ name|Long
 operator|.
 name|MIN_VALUE
 decl_stmt|;
-comment|//private Pattern quoted = Pattern.compile("\".*^\\\\\"");
-DECL|field|quoted
+DECL|field|repository
+specifier|private
+specifier|final
+name|JournalAbbreviationRepository
+name|repository
+decl_stmt|;
+DECL|field|QUOTED
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|quoted
+name|QUOTED
 init|=
 name|Pattern
 operator|.
@@ -451,12 +456,6 @@ name|compile
 argument_list|(
 literal|"\".*\""
 argument_list|)
-decl_stmt|;
-DECL|field|repository
-specifier|private
-specifier|final
-name|JournalAbbreviationRepository
-name|repository
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -1643,7 +1642,7 @@ operator|>
 literal|2
 operator|)
 operator|&&
-name|quoted
+name|QUOTED
 operator|.
 name|matcher
 argument_list|(
@@ -3185,7 +3184,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Modify entry and uniqiefier arrays to facilitate a grouped presentation of uniqiefied entries.      *      * @param entries     The entry array.      * @param uniquefiers The uniquefier array.      * @param from        The first index to group (inclusive)      * @param to          The last index to group (inclusive)      * @param separator   The separator for the uniquefier letters.      */
+comment|/**      * Modify entry and uniquefier arrays to facilitate a grouped presentation of uniquefied entries.      *      * @param entries     The entry array.      * @param uniquefiers The uniquefier array.      * @param from        The first index to group (inclusive)      * @param to          The last index to group (inclusive)      * @param separator   The separator for the uniquefier letters.      */
 DECL|method|group (BibEntry[] entries, String[] uniquefiers, int from, int to, String separator)
 specifier|private
 name|void
@@ -3352,6 +3351,24 @@ name|j
 operator|++
 control|)
 block|{
+name|BibEntry
+name|entry
+init|=
+name|entries
+index|[
+name|j
+index|]
+decl_stmt|;
+comment|// Check if this entry has been nulled due to grouping with the previous entry(ies):
+if|if
+condition|(
+name|entry
+operator|==
+literal|null
+condition|)
+block|{
+continue|continue;
+block|}
 name|int
 name|unlimA
 init|=
@@ -3378,24 +3395,6 @@ name|unlimA
 else|:
 name|maxA
 decl_stmt|;
-name|BibEntry
-name|entry
-init|=
-name|entries
-index|[
-name|j
-index|]
-decl_stmt|;
-comment|// Check if this entry has been nulled due to grouping with the previous entry(ies):
-if|if
-condition|(
-name|entry
-operator|==
-literal|null
-condition|)
-block|{
-continue|continue;
-block|}
 if|if
 condition|(
 name|j
