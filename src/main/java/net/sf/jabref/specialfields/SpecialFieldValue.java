@@ -320,8 +320,10 @@ operator|.
 name|getFieldValue
 argument_list|()
 operator|.
-name|get
-argument_list|()
+name|orElse
+argument_list|(
+literal|null
+argument_list|)
 argument_list|,
 comment|// if field contains only one value, it has to be nulled
 comment|// otherwise, another setting does not empty the field
