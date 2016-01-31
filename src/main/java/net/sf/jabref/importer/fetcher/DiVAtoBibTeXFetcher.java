@@ -272,7 +272,7 @@ name|logic
 operator|.
 name|net
 operator|.
-name|NetUtil
+name|URLDownload
 import|;
 end_import
 
@@ -473,14 +473,21 @@ name|bibtexString
 decl_stmt|;
 try|try
 block|{
-name|bibtexString
-operator|=
-name|NetUtil
-operator|.
-name|getResultsWithEncoding
+name|URLDownload
+name|dl
+init|=
+operator|new
+name|URLDownload
 argument_list|(
 name|url
-argument_list|,
+argument_list|)
+decl_stmt|;
+name|bibtexString
+operator|=
+name|dl
+operator|.
+name|downloadToString
+argument_list|(
 name|StandardCharsets
 operator|.
 name|UTF_8

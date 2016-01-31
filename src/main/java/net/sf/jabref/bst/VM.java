@@ -1814,6 +1814,21 @@ name|BstEntry
 name|context
 parameter_list|)
 block|{
+if|if
+condition|(
+name|context
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|VMException
+argument_list|(
+literal|"Must have an entry to cite$"
+argument_list|)
+throw|;
+block|}
 name|stack
 operator|.
 name|push
@@ -5409,6 +5424,7 @@ name|name
 argument_list|)
 condition|)
 block|{
+comment|// OK to have a null context
 name|functions
 operator|.
 name|get

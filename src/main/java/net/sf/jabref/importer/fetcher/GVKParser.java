@@ -441,7 +441,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 name|result
 operator|.
 name|add
@@ -452,6 +451,7 @@ name|e
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|result
@@ -643,6 +643,18 @@ argument_list|,
 name|datafield
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|mak
+operator|==
+literal|null
+condition|)
+block|{
+name|mak
+operator|=
+literal|""
+expr_stmt|;
+block|}
 block|}
 comment|//ppn
 if|if
@@ -1385,6 +1397,13 @@ argument_list|,
 name|datafield
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|pagetotal
+operator|!=
+literal|null
+condition|)
+block|{
 comment|// S, S. etc. entfernen
 name|pagetotal
 operator|=
@@ -1397,6 +1416,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Behandlung von Konferenzen
 if|if
