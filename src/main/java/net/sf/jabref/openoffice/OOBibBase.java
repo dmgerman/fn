@@ -655,6 +655,17 @@ DECL|class|OOBibBase
 class|class
 name|OOBibBase
 block|{
+DECL|field|POSTFORMATTER
+specifier|private
+specifier|static
+specifier|final
+name|OOPreFormatter
+name|POSTFORMATTER
+init|=
+operator|new
+name|OOPreFormatter
+argument_list|()
+decl_stmt|;
 DECL|field|BIB_SECTION_NAME
 specifier|private
 specifier|static
@@ -1577,7 +1588,9 @@ name|void
 name|updateSortedReferenceMarks
 parameter_list|()
 throws|throws
-name|Exception
+name|WrappedTargetException
+throws|,
+name|NoSuchElementException
 block|{
 name|XReferenceMarksSupplier
 name|supplier
@@ -2237,7 +2250,7 @@ init|=
 name|findCitedKeys
 argument_list|()
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -2401,7 +2414,7 @@ name|sortedReferenceMarks
 expr_stmt|;
 block|}
 comment|// Remove all reference marks that don't look like JabRef citations:
-name|ArrayList
+name|List
 argument_list|<
 name|String
 argument_list|>
@@ -2458,7 +2471,7 @@ argument_list|()
 index|]
 argument_list|)
 expr_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -2471,7 +2484,6 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|//HashMap<S
 name|int
 name|lastNum
 init|=
@@ -2690,10 +2702,6 @@ index|[
 name|j
 index|]
 operator|=
-name|OOUtil
-operator|.
-name|createAdaptedEntry
-argument_list|(
 name|database
 operator|.
 name|getEntryByKey
@@ -2702,7 +2710,6 @@ name|keys
 index|[
 name|j
 index|]
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3327,8 +3334,16 @@ name|OOBibBase
 operator|.
 name|AUTHORYEAR_PAR
 argument_list|,
+operator|(
+name|String
+index|[]
+operator|)
 literal|null
 argument_list|,
+operator|(
+name|int
+index|[]
+operator|)
 literal|null
 argument_list|)
 expr_stmt|;
@@ -3419,7 +3434,7 @@ condition|)
 block|{
 comment|// See if there are duplicate citations marks referring to different entries. If so, we need to
 comment|// use uniquefiers:
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -3435,7 +3450,7 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -3731,7 +3746,7 @@ argument_list|(
 literal|"MaxAuthorsFirst"
 argument_list|)
 decl_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -3949,10 +3964,6 @@ index|[
 name|k
 index|]
 operator|=
-name|OOUtil
-operator|.
-name|createAdaptedEntry
-argument_list|(
 name|database
 operator|.
 name|getEntryByKey
@@ -3964,7 +3975,6 @@ index|]
 index|[
 name|k
 index|]
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4019,10 +4029,6 @@ index|[
 name|k
 index|]
 operator|=
-name|OOUtil
-operator|.
-name|createAdaptedEntry
-argument_list|(
 name|database
 operator|.
 name|getEntryByKey
@@ -4034,7 +4040,6 @@ index|]
 index|[
 name|k
 index|]
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4076,10 +4081,6 @@ index|[
 name|k
 index|]
 operator|=
-name|OOUtil
-operator|.
-name|createAdaptedEntry
-argument_list|(
 name|database
 operator|.
 name|getEntryByKey
@@ -4091,7 +4092,6 @@ index|]
 index|[
 name|k
 index|]
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4452,7 +4452,9 @@ name|XNameAccess
 name|nameAccess
 parameter_list|)
 throws|throws
-name|Exception
+name|WrappedTargetException
+throws|,
+name|NoSuchElementException
 block|{
 name|XTextViewCursorSupplier
 name|css
@@ -4736,7 +4738,7 @@ init|=
 name|findCitedKeys
 argument_list|()
 decl_stmt|;
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -5034,12 +5036,7 @@ name|entries
 operator|.
 name|put
 argument_list|(
-name|OOUtil
-operator|.
-name|createAdaptedEntry
-argument_list|(
 name|entry
-argument_list|)
 argument_list|,
 name|database
 argument_list|)
@@ -5416,12 +5413,13 @@ condition|)
 block|{
 name|entry
 operator|=
-name|OOUtil
-operator|.
-name|createAdaptedEntry
-argument_list|(
+operator|(
+name|BibEntry
+operator|)
 name|origEntry
-argument_list|)
+operator|.
+name|clone
+argument_list|()
 expr_stmt|;
 name|adaptedEntries
 operator|.
@@ -6234,26 +6232,13 @@ name|getType
 argument_list|()
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 name|layout
 operator|.
 name|setPostFormatter
 argument_list|(
-name|OOUtil
-operator|.
 name|POSTFORMATTER
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NoSuchMethodError
-name|ignore
-parameter_list|)
-block|{
-comment|// Ignored
-block|}
 name|OOUtil
 operator|.
 name|insertFullReferenceAtCurrentLocation
@@ -6291,55 +6276,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-DECL|method|insertMarkedUpTextAtViewCursor (String lText, String parFormat)
-specifier|public
-name|void
-name|insertMarkedUpTextAtViewCursor
-parameter_list|(
-name|String
-name|lText
-parameter_list|,
-name|String
-name|parFormat
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-name|XTextViewCursor
-name|xViewCursor
-init|=
-name|xViewCursorSupplier
-operator|.
-name|getViewCursor
-argument_list|()
-decl_stmt|;
-name|XTextCursor
-name|cursor
-init|=
-name|text
-operator|.
-name|createTextCursorByRange
-argument_list|(
-name|xViewCursor
-operator|.
-name|getEnd
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|OOUtil
-operator|.
-name|insertOOFormattedTextAtCurrentLocation
-argument_list|(
-name|text
-argument_list|,
-name|cursor
-argument_list|,
-name|lText
-argument_list|,
-name|parFormat
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|createBibTextSection2 (boolean end)
 specifier|private
@@ -7174,7 +7110,9 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|Exception
+name|NoSuchElementException
+throws|,
+name|WrappedTargetException
 block|{
 name|XReferenceMarksSupplier
 name|xSupplier
@@ -7239,7 +7177,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Get the XTextRange corresponding to the named bookmark.      * @param name The name of the bookmark to find.      * @return The XTextRange for the bookmark.      * @throws Exception      */
+comment|/**      * Get the XTextRange corresponding to the named bookmark.      * @param name The name of the bookmark to find.      * @return The XTextRange for the bookmark.      * @throws WrappedTargetException      * @throws NoSuchElementException      * @throws Exception      */
 DECL|method|getBookmarkRange (String name)
 specifier|private
 name|XTextRange
@@ -7249,7 +7187,9 @@ name|String
 name|name
 parameter_list|)
 throws|throws
-name|Exception
+name|NoSuchElementException
+throws|,
+name|WrappedTargetException
 block|{
 comment|// query XBookmarksSupplier from document model and get bookmarks collection
 name|XBookmarksSupplier
@@ -7695,7 +7635,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -7743,12 +7683,7 @@ name|entries
 operator|.
 name|add
 argument_list|(
-name|OOUtil
-operator|.
-name|createAdaptedEntry
-argument_list|(
 name|entry
-argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
