@@ -1182,8 +1182,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|initPanel
 argument_list|()
 expr_stmt|;
@@ -1197,19 +1195,6 @@ argument_list|,
 name|comp
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 DECL|method|getMenuItem ()
 specifier|public
@@ -2019,10 +2004,14 @@ name|Exception
 name|e1
 parameter_list|)
 block|{
-name|e1
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not update bibliography"
+argument_list|,
+name|e1
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2096,10 +2085,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Problem combining cite markers"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2174,10 +2167,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Problem showing citation manager"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -3058,10 +3055,14 @@ name|UnsatisfiedLinkError
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not connect to running OpenOffice/LibreOffice"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 name|JOptionPane
 operator|.
@@ -3086,10 +3087,14 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not connect to running OpenOffice/LibreOffice"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 name|JOptionPane
 operator|.
@@ -4329,10 +4334,14 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Could not insert entry"
+argument_list|,
+name|ex
+argument_list|)
 expr_stmt|;
 block|}
 block|}
