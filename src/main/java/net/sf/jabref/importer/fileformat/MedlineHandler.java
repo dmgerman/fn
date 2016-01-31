@@ -1424,13 +1424,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-comment|//Globals.DEFAULT_BIBTEXENTRY_ID,
-name|EntryTypes
-operator|.
-name|getTypeOrDefault
-argument_list|(
 literal|"article"
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// id assumes an existing database so don't create one here

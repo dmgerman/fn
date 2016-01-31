@@ -1752,12 +1752,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|EntryTypes
-operator|.
-name|getType
-argument_list|(
 name|entryType
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Zuordnung der Felder in AbhÃ¤ngigkeit vom Dokumenttyp

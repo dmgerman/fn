@@ -367,6 +367,9 @@ if|if
 condition|(
 name|panel
 operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
 name|getDatabaseFile
 argument_list|()
 operator|==

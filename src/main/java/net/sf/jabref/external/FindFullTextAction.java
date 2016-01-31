@@ -357,7 +357,10 @@ name|dirs
 init|=
 name|basePanel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFileDirectory
@@ -418,7 +421,10 @@ argument_list|()
 argument_list|,
 name|basePanel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|bibtexKey

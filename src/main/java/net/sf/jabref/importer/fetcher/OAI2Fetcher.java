@@ -891,9 +891,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|BibtexEntryTypes
-operator|.
-name|ARTICLE
+literal|"article"
 argument_list|)
 decl_stmt|;
 name|be

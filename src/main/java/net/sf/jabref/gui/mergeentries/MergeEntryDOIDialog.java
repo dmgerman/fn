@@ -568,6 +568,14 @@ name|lang
 argument_list|(
 literal|"Entry from DOI"
 argument_list|)
+argument_list|,
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMode
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Create undo-compound

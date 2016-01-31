@@ -531,7 +531,9 @@ expr_stmt|;
 name|JMenu
 name|typeMenu
 init|=
+operator|new
 name|ChangeEntryTypeMenu
+argument_list|()
 operator|.
 name|getChangeEntryTypeMenu
 argument_list|(
@@ -1785,7 +1787,10 @@ name|groups
 init|=
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getGroups

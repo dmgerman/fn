@@ -1521,12 +1521,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|EntryTypes
-operator|.
-name|getType
-argument_list|(
 literal|"article"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|PreviewPrefsTab

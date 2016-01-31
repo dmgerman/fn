@@ -198,6 +198,9 @@ argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|e
@@ -307,6 +310,9 @@ argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|e
@@ -410,6 +416,9 @@ argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Assert

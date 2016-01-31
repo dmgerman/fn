@@ -1588,7 +1588,7 @@ argument_list|(
 literal|"entrytype"
 argument_list|)
 else|:
-literal|"other"
+literal|"misc"
 decl_stmt|;
 name|h
 operator|.
@@ -1646,12 +1646,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|EntryTypes
-operator|.
-name|getTypeOrDefault
-argument_list|(
 name|entryType
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|b

@@ -8695,7 +8695,10 @@ name|metaData
 init|=
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 decl_stmt|;
 if|if

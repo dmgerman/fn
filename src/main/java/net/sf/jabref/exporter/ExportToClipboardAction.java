@@ -625,7 +625,10 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFileDirectory
@@ -656,10 +659,10 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|metaData
+name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 expr_stmt|;
 name|File
@@ -739,7 +742,10 @@ name|database
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|tmp

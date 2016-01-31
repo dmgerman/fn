@@ -219,6 +219,8 @@ argument_list|(
 name|parent
 operator|.
 name|helpDiag
+argument_list|,
+name|panel
 argument_list|)
 expr_stmt|;
 name|setPanel
@@ -252,7 +254,10 @@ name|metaData
 operator|=
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 expr_stmt|;
 name|AbstractLabelPattern

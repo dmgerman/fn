@@ -40,6 +40,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
+name|BibDatabaseMode
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|AuthorList
@@ -330,7 +346,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Checks if the two entries represent the same publication.      *      * @param one BibEntry      * @param two BibEntry      * @return boolean      */
-DECL|method|isDuplicate (BibEntry one, BibEntry two)
+DECL|method|isDuplicate (BibEntry one, BibEntry two, BibDatabaseMode bibDatabaseMode)
 specifier|public
 specifier|static
 name|boolean
@@ -341,6 +357,9 @@ name|one
 parameter_list|,
 name|BibEntry
 name|two
+parameter_list|,
+name|BibDatabaseMode
+name|bibDatabaseMode
 parameter_list|)
 block|{
 comment|// First check if they are of the same type - a necessary condition:
@@ -376,6 +395,8 @@ name|one
 operator|.
 name|getType
 argument_list|()
+argument_list|,
+name|bibDatabaseMode
 argument_list|)
 decl_stmt|;
 comment|// The check if they have the same required fields:
@@ -1230,7 +1251,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Goes through all entries in the given database, and if at least one of      * them is a duplicate of the given entry, as per      * Util.isDuplicate(BibEntry, BibEntry), the duplicate is returned.      * The search is terminated when the first duplicate is found.      *      * @param database The database to search.      * @param entry    The entry of which we are looking for duplicates.      * @return The first duplicate entry found. null if no duplicates are found.      */
-DECL|method|containsDuplicate (BibDatabase database, BibEntry entry)
+DECL|method|containsDuplicate (BibDatabase database, BibEntry entry, BibDatabaseMode bibDatabaseMode)
 specifier|public
 specifier|static
 name|Optional
@@ -1244,6 +1265,9 @@ name|database
 parameter_list|,
 name|BibEntry
 name|entry
+parameter_list|,
+name|BibDatabaseMode
+name|bibDatabaseMode
 parameter_list|)
 block|{
 for|for
@@ -1266,6 +1290,8 @@ argument_list|(
 name|entry
 argument_list|,
 name|other
+argument_list|,
+name|bibDatabaseMode
 argument_list|)
 condition|)
 block|{

@@ -694,7 +694,10 @@ name|metaData
 operator|=
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 expr_stmt|;
 block|}

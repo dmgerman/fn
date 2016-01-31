@@ -22,6 +22,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Defaults
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Globals
 import|;
 end_import
@@ -34,7 +46,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|MetaData
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -100,6 +112,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseMode
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -138,12 +166,21 @@ specifier|final
 name|JabRefFrame
 name|jabRefFrame
 decl_stmt|;
-DECL|method|NewDatabaseAction (JabRefFrame jabRefFrame)
+DECL|field|mode
+specifier|private
+specifier|final
+name|BibDatabaseMode
+name|mode
+decl_stmt|;
+DECL|method|NewDatabaseAction (JabRefFrame jabRefFrame, BibDatabaseMode mode)
 specifier|public
 name|NewDatabaseAction
 parameter_list|(
 name|JabRefFrame
 name|jabRefFrame
+parameter_list|,
+name|BibDatabaseMode
+name|mode
 parameter_list|)
 block|{
 name|super
@@ -164,6 +201,12 @@ name|jabRefFrame
 operator|=
 name|jabRefFrame
 expr_stmt|;
+name|this
+operator|.
+name|mode
+operator|=
+name|mode
+expr_stmt|;
 name|putValue
 argument_list|(
 name|Action
@@ -174,7 +217,12 @@ name|Localization
 operator|.
 name|menuTitle
 argument_list|(
-literal|"New database"
+literal|"New %0 database"
+argument_list|,
+name|mode
+operator|.
+name|getFormattedName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -188,11 +236,15 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"New BibTeX database"
+literal|"New %0 database"
+argument_list|,
+name|mode
+operator|.
+name|getFormattedName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
 annotation|@
 name|Override
@@ -206,23 +258,42 @@ name|e
 parameter_list|)
 block|{
 comment|// Create a new, empty, database.
-name|BibDatabase
-name|database
+name|BibDatabaseContext
+name|bibDatabaseContext
 init|=
 operator|new
-name|BibDatabase
-argument_list|()
+name|BibDatabaseContext
+argument_list|(
+operator|new
+name|Defaults
+argument_list|(
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
+argument_list|)
+argument_list|)
 decl_stmt|;
+name|bibDatabaseContext
+operator|.
+name|setMode
+argument_list|(
+name|mode
+argument_list|)
+expr_stmt|;
 name|jabRefFrame
 operator|.
 name|addTab
 argument_list|(
-name|database
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|,
 literal|null
 argument_list|,
-operator|new
-name|MetaData
+name|bibDatabaseContext
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|Globals
@@ -243,7 +314,12 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"New database created."
+literal|"New %0 database created."
+argument_list|,
+name|mode
+operator|.
+name|getFormattedName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

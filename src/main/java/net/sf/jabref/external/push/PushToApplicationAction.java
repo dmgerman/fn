@@ -423,7 +423,10 @@ argument_list|)
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|)
 expr_stmt|;

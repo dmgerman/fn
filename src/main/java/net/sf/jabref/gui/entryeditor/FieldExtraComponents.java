@@ -434,6 +434,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
+name|BibDatabaseMode
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|BibEntry
@@ -559,7 +575,11 @@ if|if
 condition|(
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|getData
 argument_list|(
@@ -592,7 +612,11 @@ name|editor
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 name|storeFieldAction
 argument_list|,
@@ -1068,7 +1092,10 @@ name|frame
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|entryEditor
@@ -1224,8 +1251,8 @@ name|yesno
 argument_list|)
 return|;
 block|}
-comment|/**      * Return a dropdown list with the month names for fields with EXTRA_MONTH      *      * @param fieldEditor      * @param entryEditor      * @return      */
-DECL|method|getMonthExtraComponent (FieldEditor fieldEditor, EntryEditor entryEditor)
+comment|/**      * Return a dropdown list with the month names for fields with EXTRA_MONTH      *      * @param fieldEditor      * @param entryEditor      * @param type      * @return      */
+DECL|method|getMonthExtraComponent (FieldEditor fieldEditor, EntryEditor entryEditor, BibDatabaseMode type)
 specifier|public
 specifier|static
 name|Optional
@@ -1239,6 +1266,9 @@ name|fieldEditor
 parameter_list|,
 name|EntryEditor
 name|entryEditor
+parameter_list|,
+name|BibDatabaseMode
+name|type
 parameter_list|)
 block|{
 specifier|final
@@ -1342,16 +1372,11 @@ condition|)
 block|{
 if|if
 condition|(
-name|Globals
+name|type
+operator|==
+name|BibDatabaseMode
 operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|BIBLATEX_MODE
-argument_list|)
+name|BIBLATEX
 condition|)
 block|{
 name|fieldEditor
@@ -1617,7 +1642,11 @@ name|editor
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 name|storeFieldAction
 argument_list|,

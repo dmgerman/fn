@@ -1288,7 +1288,10 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFileDirectory
@@ -1319,10 +1322,10 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|metaData
+name|getBibDatabaseContext
 argument_list|()
 operator|.
-name|getFile
+name|getDatabaseFile
 argument_list|()
 expr_stmt|;
 comment|// Make sure we remember which filter was used, to set
@@ -1410,7 +1413,10 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|finFile

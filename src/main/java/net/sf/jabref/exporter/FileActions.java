@@ -1050,20 +1050,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Saves the database to file. Two boolean values indicate whether only      * entries with a nonzero Globals.SEARCH value and only entries with a      * nonzero Globals.GROUPSEARCH value should be saved. This can be used to      * let the user save only the results of a search. False and false means all      * entries are saved.      */
-DECL|method|saveDatabase (BibDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, Charset encoding, boolean suppressBackup)
+DECL|method|saveDatabase (BibDatabaseContext bibDatabaseContext, File target, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, Charset encoding, boolean suppressBackup)
 specifier|public
 specifier|static
 name|SaveSession
 name|saveDatabase
 parameter_list|(
-name|BibDatabase
-name|database
-parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|bibDatabaseContext
 parameter_list|,
 name|File
-name|file
+name|target
 parameter_list|,
 name|JabRefPreferences
 name|prefs
@@ -1120,7 +1117,7 @@ operator|=
 operator|new
 name|SaveSession
 argument_list|(
-name|file
+name|target
 argument_list|,
 name|encoding
 argument_list|,
@@ -1219,7 +1216,10 @@ name|writePreamble
 argument_list|(
 name|writer
 argument_list|,
-name|database
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
 operator|.
 name|getPreamble
 argument_list|()
@@ -1232,7 +1232,10 @@ name|writeStrings
 argument_list|(
 name|writer
 argument_list|,
-name|database
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Write database entries. Take care, using CrossRefEntry-
@@ -1249,9 +1252,15 @@ name|FileActions
 operator|.
 name|getSortedEntries
 argument_list|(
-name|database
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|,
-name|metaData
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|,
 literal|null
 argument_list|,
@@ -1266,7 +1275,10 @@ name|applySaveActions
 argument_list|(
 name|sorter
 argument_list|,
-name|metaData
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|BibEntryWriter
@@ -1308,6 +1320,11 @@ name|entry
 operator|.
 name|getType
 argument_list|()
+argument_list|,
+name|bibDatabaseContext
+operator|.
+name|getMode
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1319,6 +1336,11 @@ argument_list|(
 name|entryType
 operator|.
 name|getName
+argument_list|()
+argument_list|,
+name|bibDatabaseContext
+operator|.
+name|getMode
 argument_list|()
 argument_list|)
 operator|==
@@ -1400,6 +1422,11 @@ argument_list|(
 name|entry
 argument_list|,
 name|writer
+argument_list|,
+name|bibDatabaseContext
+operator|.
+name|getMode
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1407,12 +1434,18 @@ block|}
 comment|// Write meta data.
 if|if
 condition|(
-name|metaData
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
 operator|!=
 literal|null
 condition|)
 block|{
-name|metaData
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|writeMetaData
 argument_list|(
@@ -1487,7 +1520,10 @@ comment|//finally write whatever remains of the file, but at least a concluding 
 if|if
 condition|(
 operator|(
-name|database
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
 operator|.
 name|getEpilog
 argument_list|()
@@ -1497,7 +1533,10 @@ operator|)
 operator|&&
 operator|!
 operator|(
-name|database
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
 operator|.
 name|getEpilog
 argument_list|()
@@ -1511,7 +1550,10 @@ name|writer
 operator|.
 name|write
 argument_list|(
-name|database
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
 operator|.
 name|getEpilog
 argument_list|()
@@ -2180,20 +2222,17 @@ name|comparators
 return|;
 block|}
 comment|/**      * Saves the database to file, including only the entries included in the      * supplied input array bes.      *      * @return A List containing warnings, if any.      */
-DECL|method|savePartOfDatabase (BibDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibEntry[] bes, Charset encoding, DatabaseSaveType saveType)
+DECL|method|savePartOfDatabase (BibDatabaseContext bibDatabaseContext, File target, JabRefPreferences prefs, BibEntry[] bes, Charset encoding, DatabaseSaveType saveType)
 specifier|public
 specifier|static
 name|SaveSession
 name|savePartOfDatabase
 parameter_list|(
-name|BibDatabase
-name|database
-parameter_list|,
-name|MetaData
-name|metaData
+name|BibDatabaseContext
+name|bibDatabaseContext
 parameter_list|,
 name|File
-name|file
+name|target
 parameter_list|,
 name|JabRefPreferences
 name|prefs
@@ -2238,7 +2277,7 @@ operator|=
 operator|new
 name|SaveSession
 argument_list|(
-name|file
+name|target
 argument_list|,
 name|encoding
 argument_list|,
@@ -2322,7 +2361,10 @@ name|writePreamble
 argument_list|(
 name|fw
 argument_list|,
-name|database
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
 operator|.
 name|getPreamble
 argument_list|()
@@ -2335,7 +2377,10 @@ name|writeStrings
 argument_list|(
 name|fw
 argument_list|,
-name|database
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Write database entries. Take care, using CrossRefEntry-
@@ -2357,7 +2402,10 @@ name|getSaveComparators
 argument_list|(
 literal|true
 argument_list|,
-name|metaData
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// Use glazed lists to get a sorted view of the entries:
@@ -2438,6 +2486,11 @@ name|be
 operator|.
 name|getType
 argument_list|()
+argument_list|,
+name|bibDatabaseContext
+operator|.
+name|getMode
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -2449,6 +2502,11 @@ argument_list|(
 name|tp
 operator|.
 name|getName
+argument_list|()
+argument_list|,
+name|bibDatabaseContext
+operator|.
+name|getMode
 argument_list|()
 argument_list|)
 operator|==
@@ -2475,6 +2533,11 @@ argument_list|(
 name|be
 argument_list|,
 name|fw
+argument_list|,
+name|bibDatabaseContext
+operator|.
+name|getMode
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//only append newline if the entry has changed
@@ -2510,13 +2573,19 @@ name|PLAIN_BIBTEX
 operator|)
 operator|&&
 operator|(
-name|metaData
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
 operator|!=
 literal|null
 operator|)
 condition|)
 block|{
-name|metaData
+name|bibDatabaseContext
+operator|.
+name|getMetaData
+argument_list|()
 operator|.
 name|writeMetaData
 argument_list|(

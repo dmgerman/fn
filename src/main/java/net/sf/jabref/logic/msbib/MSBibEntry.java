@@ -6303,6 +6303,9 @@ name|mapMSBibToBibtexType
 argument_list|(
 name|sourceType
 argument_list|)
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -6319,6 +6322,9 @@ name|mapMSBibToBibtexType
 argument_list|(
 name|sourceType
 argument_list|)
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// id assumes an existing database so don't

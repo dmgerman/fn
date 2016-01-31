@@ -1955,12 +1955,7 @@ name|BibEntry
 argument_list|(
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,
-name|EntryTypes
-operator|.
-name|getTypeOrDefault
-argument_list|(
 name|bibtexType
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|b

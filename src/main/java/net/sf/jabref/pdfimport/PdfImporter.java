@@ -1049,7 +1049,10 @@ name|dirsS
 init|=
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFileDirectory
@@ -1608,7 +1611,10 @@ name|makeLabel
 argument_list|(
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|panel
@@ -1862,6 +1868,9 @@ argument_list|(
 name|id
 argument_list|,
 name|type
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 try|try

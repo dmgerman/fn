@@ -451,6 +451,14 @@ argument_list|(
 name|entry
 argument_list|,
 name|sw
+argument_list|,
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMode
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -521,7 +529,10 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFileDirectory

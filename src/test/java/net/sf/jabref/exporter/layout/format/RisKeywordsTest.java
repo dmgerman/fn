@@ -30,6 +30,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -57,7 +69,7 @@ argument_list|(
 literal|""
 argument_list|,
 operator|new
-name|RisMonth
+name|RisKeywords
 argument_list|()
 operator|.
 name|format
@@ -80,7 +92,7 @@ argument_list|(
 literal|""
 argument_list|,
 operator|new
-name|RisMonth
+name|RisKeywords
 argument_list|()
 operator|.
 name|format
@@ -92,46 +104,52 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testMonth ()
+DECL|method|testSingleKeyword ()
 specifier|public
 name|void
-name|testMonth
+name|testSingleKeyword
 parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"12"
+literal|"KW  - abcd"
 argument_list|,
 operator|new
-name|RisMonth
+name|RisKeywords
 argument_list|()
 operator|.
 name|format
 argument_list|(
-literal|"dec"
+literal|"abcd"
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testInvalidMonth ()
+DECL|method|testTwoKeywords ()
 specifier|public
 name|void
-name|testInvalidMonth
+name|testTwoKeywords
 parameter_list|()
 block|{
 name|assertEquals
 argument_list|(
-literal|"abcd"
+literal|"KW  - abcd"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"KW  - efg"
 argument_list|,
 operator|new
-name|RisMonth
+name|RisKeywords
 argument_list|()
 operator|.
 name|format
 argument_list|(
-literal|"abcd"
+literal|"abcd, efg"
 argument_list|)
 argument_list|)
 expr_stmt|;

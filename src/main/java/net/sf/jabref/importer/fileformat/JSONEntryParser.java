@@ -958,12 +958,7 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|EntryTypes
-operator|.
-name|getType
-argument_list|(
 literal|"article"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|nametype
@@ -978,12 +973,7 @@ name|entry
 operator|.
 name|setType
 argument_list|(
-name|EntryTypes
-operator|.
-name|getType
-argument_list|(
 literal|"incollection"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|nametype

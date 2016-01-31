@@ -2357,7 +2357,10 @@ literal|null
 argument_list|,
 name|p
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|fl
@@ -2396,7 +2399,10 @@ name|openExternalViewer
 argument_list|(
 name|p
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|link
@@ -2611,7 +2617,10 @@ argument_list|()
 argument_list|,
 name|p
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|,
 name|flEntry
@@ -2721,7 +2730,10 @@ name|setMetaData
 argument_list|(
 name|p
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|)
 expr_stmt|;
