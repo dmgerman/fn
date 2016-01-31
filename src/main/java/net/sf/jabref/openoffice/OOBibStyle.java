@@ -1295,6 +1295,7 @@ name|trim
 argument_list|()
 expr_stmt|;
 block|}
+break|break;
 case|case
 name|LAYOUT
 case|:
@@ -2695,22 +2696,14 @@ comment|//System.out.println("i="+i+" thisMarker='"+thisMarker+"'");
 name|int
 name|prevALim
 init|=
-name|i
-operator|>
-literal|0
-condition|?
 name|unlimAuthors
 index|[
 name|i
 operator|-
 literal|1
 index|]
-else|:
-name|unlimAuthors
-index|[
-literal|0
-index|]
 decl_stmt|;
+comment|// i always at least 1 here
 if|if
 condition|(
 operator|!
@@ -4539,7 +4532,13 @@ return|return
 literal|false
 return|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|o
+operator|instanceof
+name|OOBibStyle
+condition|)
 block|{
 return|return
 name|styleFile
@@ -4557,6 +4556,9 @@ name|styleFile
 argument_list|)
 return|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 annotation|@
 name|Override
