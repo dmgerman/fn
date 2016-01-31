@@ -3348,7 +3348,10 @@ argument_list|(
 name|row
 argument_list|)
 decl_stmt|;
+name|Optional
+argument_list|<
 name|EntryType
+argument_list|>
 name|type
 init|=
 name|EntryTypes
@@ -3369,6 +3372,14 @@ name|getMode
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|type
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
 name|String
 name|columnName
 init|=
@@ -3393,6 +3404,9 @@ argument_list|)
 operator|||
 name|type
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getRequiredFieldsFlat
 argument_list|()
 operator|.
@@ -3412,6 +3426,9 @@ if|if
 condition|(
 name|type
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getOptionalFields
 argument_list|()
 operator|.
@@ -3426,6 +3443,7 @@ name|MainTable
 operator|.
 name|OPTIONAL
 return|;
+block|}
 block|}
 return|return
 name|MainTable

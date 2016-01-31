@@ -1312,16 +1312,7 @@ name|expectedEntry
 operator|.
 name|setType
 argument_list|(
-name|EntryTypes
-operator|.
-name|getType
-argument_list|(
 literal|"article"
-argument_list|,
-name|BibDatabaseMode
-operator|.
-name|BIBTEX
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|BibtexEntryAssert

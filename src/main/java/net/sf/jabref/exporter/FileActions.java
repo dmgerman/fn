@@ -1308,10 +1308,31 @@ name|entry
 expr_stmt|;
 comment|// Check if we must write the type definition for this
 comment|// entry, as well. Our criterion is that all non-standard
-comment|// types (*not* customized standard types) must be written.
-name|EntryType
-name|entryType
-init|=
+comment|// types (*not* all customized standard types) must be written.
+if|if
+condition|(
+operator|!
+name|EntryTypes
+operator|.
+name|getStandardType
+argument_list|(
+name|entry
+operator|.
+name|getType
+argument_list|()
+argument_list|,
+name|bibDatabaseContext
+operator|.
+name|getMode
+argument_list|()
+argument_list|)
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+comment|// If user-defined entry type, then add it
+comment|// Otherwise (getType returns empty optional) it is a completely unknown entry type, so ignore it
 name|EntryTypes
 operator|.
 name|getType
@@ -1326,27 +1347,11 @@ operator|.
 name|getMode
 argument_list|()
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|EntryTypes
 operator|.
-name|getStandardType
+name|ifPresent
 argument_list|(
 name|entryType
-operator|.
-name|getName
-argument_list|()
-argument_list|,
-name|bibDatabaseContext
-operator|.
-name|getMode
-argument_list|()
-argument_list|)
-operator|==
-literal|null
-condition|)
-block|{
+lambda|->
 name|types
 operator|.
 name|put
@@ -1357,6 +1362,7 @@ name|getName
 argument_list|()
 argument_list|,
 name|entryType
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2474,10 +2480,31 @@ name|aSorter
 expr_stmt|;
 comment|// Check if we must write the type definition for this
 comment|// entry, as well. Our criterion is that all non-standard
-comment|// types (*not* customized standard types) must be written.
-name|EntryType
-name|tp
-init|=
+comment|// types (*not* all customized standard types) must be written.
+if|if
+condition|(
+operator|!
+name|EntryTypes
+operator|.
+name|getStandardType
+argument_list|(
+name|be
+operator|.
+name|getType
+argument_list|()
+argument_list|,
+name|bibDatabaseContext
+operator|.
+name|getMode
+argument_list|()
+argument_list|)
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+comment|// If user-defined entry type, then add it
+comment|// Otherwise (getType returns empty optional) it is a completely unknown entry type, so ignore it
 name|EntryTypes
 operator|.
 name|getType
@@ -2492,37 +2519,22 @@ operator|.
 name|getMode
 argument_list|()
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|EntryTypes
 operator|.
-name|getStandardType
+name|ifPresent
 argument_list|(
-name|tp
-operator|.
-name|getName
-argument_list|()
-argument_list|,
-name|bibDatabaseContext
-operator|.
-name|getMode
-argument_list|()
-argument_list|)
-operator|==
-literal|null
-condition|)
-block|{
+name|entryType
+lambda|->
 name|types
 operator|.
 name|put
 argument_list|(
-name|tp
+name|entryType
 operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|tp
+name|entryType
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

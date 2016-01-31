@@ -233,7 +233,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|BibDatabaseMode
-name|type
+name|mode
 init|=
 operator|new
 name|BibDatabaseContext
@@ -300,10 +300,11 @@ name|getType
 argument_list|(
 name|typeName
 argument_list|,
-name|type
+name|mode
 argument_list|)
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|i

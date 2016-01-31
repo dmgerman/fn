@@ -52,6 +52,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -225,10 +235,18 @@ name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
 name|bibtexentrytypes
 operator|.
 name|getType
@@ -241,8 +259,13 @@ name|BIBTEX
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertEquals
 argument_list|(
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
 name|bibtexentrytypes
 operator|.
 name|getStandardType
@@ -357,6 +380,9 @@ name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Remove the custom "article" entry type, which should restore the original
@@ -388,6 +414,9 @@ name|BibDatabaseMode
 operator|.
 name|BIBTEX
 argument_list|)
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -389,7 +389,7 @@ name|type
 init|=
 name|EntryTypes
 operator|.
-name|getType
+name|getTypeOrDefault
 argument_list|(
 name|one
 operator|.

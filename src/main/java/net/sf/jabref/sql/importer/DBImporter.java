@@ -359,8 +359,8 @@ parameter_list|)
 throws|throws
 name|SQLException
 function_decl|;
-comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @param type      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
-DECL|method|performImport (DBStrings dbs, List<String> listOfDBs, BibDatabaseMode type)
+comment|/**      * Worker method to perform the import from a database      *      * @param dbs The necessary database connection information      * @param mode      * @return An ArrayList containing pairs of Objects. Each position of the ArrayList stores three Objects: a      * BibDatabase, a MetaData and a String with the bib database name stored in the DBMS      * @throws Exception      */
+DECL|method|performImport (DBStrings dbs, List<String> listOfDBs, BibDatabaseMode mode)
 specifier|public
 name|List
 argument_list|<
@@ -378,7 +378,7 @@ argument_list|>
 name|listOfDBs
 parameter_list|,
 name|BibDatabaseMode
-name|type
+name|mode
 parameter_list|)
 throws|throws
 name|Exception
@@ -566,17 +566,12 @@ name|next
 argument_list|()
 condition|)
 block|{
-name|types
-operator|.
-name|put
-argument_list|(
-name|rsEntryType
-operator|.
-name|getString
-argument_list|(
-literal|"entry_types_id"
-argument_list|)
-argument_list|,
+name|Optional
+argument_list|<
+name|EntryType
+argument_list|>
+name|entryType
+init|=
 name|EntryTypes
 operator|.
 name|getType
@@ -588,10 +583,35 @@ argument_list|(
 literal|"label"
 argument_list|)
 argument_list|,
-name|type
+name|mode
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|entryType
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
+name|types
+operator|.
+name|put
+argument_list|(
+name|rsEntryType
+operator|.
+name|getString
+argument_list|(
+literal|"entry_types_id"
+argument_list|)
+argument_list|,
+name|entryType
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|rsEntryType
 operator|.

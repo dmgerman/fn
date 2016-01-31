@@ -170,7 +170,10 @@ block|}
 comment|/**          * This method returns the BibtexEntryType for the name of a type,          * or null if it does not exist.          */
 DECL|method|getType (String name)
 specifier|public
+name|Optional
+argument_list|<
 name|EntryType
+argument_list|>
 name|getType
 parameter_list|(
 name|String
@@ -178,6 +181,10 @@ name|name
 parameter_list|)
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|ALL_TYPES
 operator|.
 name|get
@@ -186,6 +193,7 @@ name|name
 operator|.
 name|toLowerCase
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -200,33 +208,25 @@ name|String
 name|type
 parameter_list|)
 block|{
-name|EntryType
-name|entryType
-init|=
+return|return
 name|getType
 argument_list|(
 name|type
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|entryType
-operator|==
-literal|null
-condition|)
-block|{
-return|return
+operator|.
+name|orElse
+argument_list|(
 name|defaultType
-return|;
-block|}
-return|return
-name|entryType
+argument_list|)
 return|;
 block|}
 comment|/**          * This method returns the standard BibtexEntryType for the          * name of a type, or null if it does not exist.          */
 DECL|method|getStandardType (String name)
 specifier|public
+name|Optional
+argument_list|<
 name|EntryType
+argument_list|>
 name|getStandardType
 parameter_list|(
 name|String
@@ -234,6 +234,10 @@ name|name
 parameter_list|)
 block|{
 return|return
+name|Optional
+operator|.
+name|ofNullable
+argument_list|(
 name|STANDARD_TYPES
 operator|.
 name|get
@@ -242,6 +246,7 @@ name|name
 operator|.
 name|toLowerCase
 argument_list|()
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -437,7 +442,10 @@ comment|/**      * This method returns the BibtexEntryType for the name of a typ
 DECL|method|getType (String name, BibDatabaseMode type)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|EntryType
+argument_list|>
 name|getType
 parameter_list|(
 name|String
@@ -471,7 +479,7 @@ return|;
 block|}
 comment|/**      * This method returns the EntryType for the name of a type,      * or the default type (*.MISC) if it does not exist.      */
 comment|// Get an entry type defined in BibtexEntryType
-DECL|method|getTypeOrDefault (String name, BibDatabaseMode type)
+DECL|method|getTypeOrDefault (String name, BibDatabaseMode mode)
 specifier|public
 specifier|static
 name|EntryType
@@ -481,11 +489,11 @@ name|String
 name|name
 parameter_list|,
 name|BibDatabaseMode
-name|type
+name|mode
 parameter_list|)
 block|{
 return|return
-name|type
+name|mode
 operator|==
 name|BibDatabaseMode
 operator|.
@@ -507,21 +515,24 @@ argument_list|)
 return|;
 block|}
 comment|/**      * This method returns the standard BibtexEntryType for the      * name of a type, or null if it does not exist.      */
-DECL|method|getStandardType (String name, BibDatabaseMode type)
+DECL|method|getStandardType (String name, BibDatabaseMode mode)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|EntryType
+argument_list|>
 name|getStandardType
 parameter_list|(
 name|String
 name|name
 parameter_list|,
 name|BibDatabaseMode
-name|type
+name|mode
 parameter_list|)
 block|{
 return|return
-name|type
+name|mode
 operator|==
 name|BibDatabaseMode
 operator|.
