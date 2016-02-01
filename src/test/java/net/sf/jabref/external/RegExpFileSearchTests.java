@@ -172,6 +172,7 @@ name|RegExpFileSearchTests
 block|{
 DECL|field|filesDirectory
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|filesDirectory

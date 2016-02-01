@@ -425,7 +425,10 @@ name|BibEntry
 argument_list|>
 name|bibItems
 init|=
-literal|null
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 decl_stmt|;
 try|try
 block|{
@@ -518,11 +521,14 @@ block|}
 comment|// When you're done, report the results stored by your handler
 comment|// object
 name|bibItems
-operator|=
+operator|.
+name|addAll
+argument_list|(
 name|handler
 operator|.
 name|getItems
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch

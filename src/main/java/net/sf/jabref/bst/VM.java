@@ -3489,6 +3489,21 @@ name|BstEntry
 name|context
 parameter_list|)
 block|{
+if|if
+condition|(
+name|context
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|VMException
+argument_list|(
+literal|"type$ need a context."
+argument_list|)
+throw|;
+block|}
 name|stack
 operator|.
 name|push

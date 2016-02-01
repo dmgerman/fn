@@ -1659,6 +1659,13 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|temp
+operator|!=
+literal|null
+condition|)
+block|{
 specifier|final
 name|String
 name|ln
@@ -1711,6 +1718,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|openExternalFileUnknown (JabRefFrame frame, BibEntry entry, MetaData metaData, String link, UnknownExternalFileType fileType)
 specifier|public
