@@ -212,14 +212,9 @@ argument_list|,
 operator|new
 name|JLabel
 argument_list|(
-name|EntryUtil
-operator|.
-name|capitalizeFirst
-argument_list|(
 name|SpecialFieldsUtils
 operator|.
 name|FIELDNAME_RANKING
-argument_list|)
 argument_list|)
 argument_list|)
 block|{
