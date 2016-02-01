@@ -335,7 +335,7 @@ name|filenm
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|,
 name|dotPos
 operator|-
@@ -442,7 +442,7 @@ name|filenm
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|,
 name|dotPos
 operator|-

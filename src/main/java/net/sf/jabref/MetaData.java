@@ -191,7 +191,7 @@ decl_stmt|;
 DECL|field|metaData
 specifier|private
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -240,11 +240,11 @@ name|DBStrings
 argument_list|()
 decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
-DECL|method|MetaData (HashMap<String, String> inData, BibDatabase db)
+DECL|method|MetaData (Map<String, String> inData, BibDatabase db)
 specifier|public
 name|MetaData
 parameter_list|(
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -392,12 +392,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|orderedData
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>=
-literal|1
 condition|)
 block|{
 name|groupsVersionOnDisk
@@ -1146,8 +1145,6 @@ name|Globals
 operator|.
 name|NEWLINE
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -1188,7 +1185,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 for|for
@@ -1232,7 +1229,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1240,7 +1237,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"}"
+literal|'}'
 argument_list|)
 expr_stmt|;
 name|out
@@ -1290,8 +1287,6 @@ name|Globals
 operator|.
 name|NEWLINE
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -1321,20 +1316,14 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|""
-operator|+
 name|VersionHandling
 operator|.
 name|CURRENT_VERSION
-operator|+
-literal|";"
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
-literal|"}"
+literal|";}"
 argument_list|)
 expr_stmt|;
 name|out
@@ -1362,8 +1351,6 @@ name|Globals
 operator|.
 name|NEWLINE
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -1442,8 +1429,11 @@ literal|";"
 argument_list|,
 literal|'\\'
 argument_list|)
-operator|+
-literal|";"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|';'
 argument_list|)
 decl_stmt|;
 name|sb
@@ -1467,7 +1457,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"}"
+literal|'}'
 argument_list|)
 expr_stmt|;
 name|out
