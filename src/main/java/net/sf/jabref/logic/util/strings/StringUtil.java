@@ -111,6 +111,20 @@ argument_list|(
 literal|"\\r\\n|\\r|\\n"
 argument_list|)
 decl_stmt|;
+DECL|field|BRACED_TITLE_CAPITAL_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|BRACED_TITLE_CAPITAL_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\{[A-Z]+\\}"
+argument_list|)
+decl_stmt|;
 comment|/**      * Returns the string, after shaving off whitespace at the beginning and end,      * and removing (at most) one pair of braces or " surrounding it.      *      * @param toShave      * @return      */
 DECL|method|shaveString (String toShave)
 specifier|public
@@ -1874,17 +1888,6 @@ name|String
 name|s
 parameter_list|)
 block|{
-specifier|final
-name|Pattern
-name|BRACED_TITLE_CAPITAL_PATTERN
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\{[A-Z]+\\}"
-argument_list|)
-decl_stmt|;
 name|Matcher
 name|mcr
 init|=

@@ -502,12 +502,12 @@ specifier|private
 name|boolean
 name|dontOpenBrowseUntilDisposed
 decl_stmt|;
-DECL|field|remoteLinkPattern
+DECL|field|REMOTE_LINK_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|remoteLinkPattern
+name|REMOTE_LINK_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -1382,7 +1382,7 @@ if|if
 condition|(
 name|FileListEntryEditor
 operator|.
-name|remoteLinkPattern
+name|REMOTE_LINK_PATTERN
 operator|.
 name|matcher
 argument_list|(

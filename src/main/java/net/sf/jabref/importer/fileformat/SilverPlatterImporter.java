@@ -150,20 +150,6 @@ name|Pattern
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bibtex
-operator|.
-name|EntryTypes
-import|;
-end_import
-
 begin_comment
 comment|/**  * Imports a SilverPlatter exported file. This is a poor format to parse,  * so it currently doesn't handle everything correctly.  */
 end_comment
@@ -176,6 +162,20 @@ name|SilverPlatterImporter
 extends|extends
 name|ImportFormat
 block|{
+DECL|field|START_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|START_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"Record.*INSPEC.*"
+argument_list|)
+decl_stmt|;
 comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
@@ -234,16 +234,6 @@ comment|// This format is very similar to Inspec, so we have a two-fold strategy
 comment|// If we see the flag signalling that it is an inspec file, return false.
 comment|// This flag should appear above the first entry and prevent us from
 comment|// accepting the Inspec format. Then we look for the title entry.
-name|Pattern
-name|pat1
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"Record.*INSPEC.*"
-argument_list|)
-decl_stmt|;
 name|String
 name|str
 decl_stmt|;
@@ -263,7 +253,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|pat1
+name|START_PATTERN
 operator|.
 name|matcher
 argument_list|(

@@ -864,6 +864,42 @@ name|bcol
 init|=
 literal|"b:"
 decl_stmt|;
+comment|// reduced subset, supports only "CITY , STATE, COUNTRY"
+comment|// \b(\w+)\s?[,]?\s?(\w+)\s?[,]?\s?(\w+)\b
+comment|// WORD SPACE , SPACE WORD SPACE , SPACE WORD
+comment|// tested using http://www.javaregex.com/test.html
+DECL|field|ADDRESS_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|ADDRESS_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\b(\\w+)\\s*[,]?\\s*(\\w+)\\s*[,]?\\s*(\\w+)\\b"
+argument_list|)
+decl_stmt|;
+comment|// Allows 20.3-2007|||20/3-  2007 etc.
+comment|// (\d{1,2})\s?[.,-/]\s?(\d{1,2})\s?[.,-/]\s?(\d{2,4})
+comment|// 1-2 DIGITS SPACE SEPERATOR SPACE 1-2 DIGITS SPACE SEPERATOR SPACE 2-4 DIGITS
+comment|// tested using http://www.javaregex.com/test.html
+DECL|field|DATE_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|DATE_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"(\\d{1,2})\\s*[.,-/]\\s*(\\d{1,2})\\s*[.,-/]\\s*(\\d{2,4})"
+argument_list|)
+decl_stmt|;
 DECL|method|MSBibEntry (BibEntry bibtex)
 specifier|public
 name|MSBibEntry
@@ -4667,10 +4703,10 @@ name|authorTop
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addAdrress (Document document, Element parent, String address)
+DECL|method|addAddress (Document document, Element parent, String address)
 specifier|private
 name|void
-name|addAdrress
+name|addAddress
 parameter_list|(
 name|Document
 name|document
@@ -4691,24 +4727,10 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// reduced subset, supports only "CITY , STATE, COUNTRY"
-comment|// \b(\w+)\s?[,]?\s?(\w+)\s?[,]?\s?(\w+)\b
-comment|// WORD SPACE , SPACE WORD SPACE , SPACE WORD
-comment|// tested using http://www.javaregex.com/test.html
-name|Pattern
-name|pattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\b(\\w+)\\s*[,]?\\s*(\\w+)\\s*[,]?\\s*(\\w+)\\b"
-argument_list|)
-decl_stmt|;
 name|Matcher
 name|matcher
 init|=
-name|pattern
+name|ADDRESS_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -4824,24 +4846,10 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// Allows 20.3-2007|||20/3-  2007 etc.
-comment|// (\d{1,2})\s?[.,-/]\s?(\d{1,2})\s?[.,-/]\s?(\d{2,4})
-comment|// 1-2 DIGITS SPACE SEPERATOR SPACE 1-2 DIGITS SPACE SEPERATOR SPACE 2-4 DIGITS
-comment|// tested using http://www.javaregex.com/test.html
-name|Pattern
-name|pattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"(\\d{1,2})\\s*[.,-/]\\s*(\\d{1,2})\\s*[.,-/]\\s*(\\d{2,4})"
-argument_list|)
-decl_stmt|;
 name|Matcher
 name|matcher
 init|=
-name|pattern
+name|DATE_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -5324,7 +5332,7 @@ argument_list|,
 name|publisher
 argument_list|)
 expr_stmt|;
-name|addAdrress
+name|addAddress
 argument_list|(
 name|document
 argument_list|,

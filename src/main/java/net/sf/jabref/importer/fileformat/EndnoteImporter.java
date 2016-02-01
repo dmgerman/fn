@@ -158,20 +158,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
-operator|.
-name|EntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|util
 operator|.
 name|Util
@@ -198,6 +184,34 @@ name|String
 name|ENDOFRECORD
 init|=
 literal|"__EOREOR__"
+decl_stmt|;
+DECL|field|A_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|A_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"%A .*"
+argument_list|)
+decl_stmt|;
+DECL|field|E_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|E_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"%E .*"
+argument_list|)
 decl_stmt|;
 comment|/**      * Return the name of this import format.      */
 annotation|@
@@ -254,26 +268,6 @@ name|stream
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Pattern
-name|pat1
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"%A .*"
-argument_list|)
-decl_stmt|;
-name|Pattern
-name|pat2
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"%E .*"
-argument_list|)
-decl_stmt|;
 name|String
 name|str
 decl_stmt|;
@@ -293,7 +287,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|pat1
+name|A_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -303,7 +297,7 @@ operator|.
 name|matches
 argument_list|()
 operator|||
-name|pat2
+name|E_PATTERN
 operator|.
 name|matcher
 argument_list|(

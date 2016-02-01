@@ -156,6 +156,20 @@ name|RisImporter
 extends|extends
 name|ImportFormat
 block|{
+DECL|field|RECOGNIZED_FORMAT_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|RECOGNIZED_FORMAT_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"TY  - .*"
+argument_list|)
+decl_stmt|;
 comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
@@ -211,16 +225,6 @@ name|stream
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Pattern
-name|pat1
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"TY  - .*"
-argument_list|)
-decl_stmt|;
 name|String
 name|str
 decl_stmt|;
@@ -240,7 +244,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|pat1
+name|RECOGNIZED_FORMAT_PATTERN
 operator|.
 name|matcher
 argument_list|(

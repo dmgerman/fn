@@ -693,11 +693,12 @@ name|BIB_CITATION
 init|=
 literal|"JR_cite"
 decl_stmt|;
-DECL|field|citePattern
+DECL|field|CITE_PATTERN
 specifier|private
+specifier|static
 specifier|final
 name|Pattern
-name|citePattern
+name|CITE_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -2181,7 +2182,7 @@ control|)
 block|{
 if|if
 condition|(
-name|citePattern
+name|CITE_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -2435,7 +2436,7 @@ control|)
 block|{
 if|if
 condition|(
-name|citePattern
+name|CITE_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -2572,7 +2573,7 @@ block|{
 name|Matcher
 name|m
 init|=
-name|citePattern
+name|CITE_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -5278,7 +5279,7 @@ block|{
 name|Matcher
 name|m
 init|=
-name|citePattern
+name|CITE_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -5515,7 +5516,7 @@ decl_stmt|;
 name|Matcher
 name|m
 init|=
-name|citePattern
+name|CITE_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -5601,7 +5602,7 @@ block|{
 name|Matcher
 name|m
 init|=
-name|citePattern
+name|CITE_PATTERN
 operator|.
 name|matcher
 argument_list|(

@@ -293,6 +293,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|numPattern
 specifier|private
+specifier|static
 specifier|final
 name|Pattern
 name|numPattern
@@ -435,6 +436,7 @@ decl_stmt|;
 comment|//private Pattern quoted = Pattern.compile("\".*^\\\\\"");
 DECL|field|quoted
 specifier|private
+specifier|static
 specifier|final
 name|Pattern
 name|quoted

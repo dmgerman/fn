@@ -68,6 +68,20 @@ name|PageNumbersFormatter
 implements|implements
 name|Formatter
 block|{
+DECL|field|PAGES_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|PAGES_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\A(\\d+)-{1,2}(\\d+)\\Z"
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getName ()
@@ -111,17 +125,6 @@ init|=
 literal|"[^0-9,\\-\\+]"
 decl_stmt|;
 specifier|final
-name|Pattern
-name|pagesPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\A(\\d+)-{1,2}(\\d+)\\Z"
-argument_list|)
-decl_stmt|;
-specifier|final
 name|String
 name|replace
 init|=
@@ -163,7 +166,7 @@ comment|// try to find pages pattern
 name|Matcher
 name|matcher
 init|=
-name|pagesPattern
+name|PAGES_PATTERN
 operator|.
 name|matcher
 argument_list|(
