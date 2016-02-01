@@ -1239,7 +1239,7 @@ name|type
 init|=
 name|EntryTypes
 operator|.
-name|getType
+name|getTypeOrDefault
 argument_list|(
 name|entry
 operator|.
@@ -2741,7 +2741,7 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * getExtra checks the field name against InternalBibtexFields.getFieldExtras(name).      * If the name has an entry, the proper component to be shown is created and      * returned. Otherwise, null is returned. In addition, e.g. listeners can be      * added to the field editor, even if no component is returned.      *      * @param string Field name      * @return Component to show, or null if none.      */
+comment|/**      * getExtra checks the field name against InternalBibtexFields.getFieldExtras(name).      * If the name has an entry, the proper component to be shown is created and      * returned. Otherwise, null is returned. In addition, e.g. listeners can be      * added to the field editor, even if no component is returned.      *      * @param editor Field editor      * @return Component to show, or null if none.      */
 DECL|method|getExtra (final FieldEditor editor)
 specifier|public
 name|Optional

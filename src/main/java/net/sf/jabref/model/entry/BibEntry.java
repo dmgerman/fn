@@ -482,15 +482,18 @@ name|String
 name|type
 parameter_list|)
 block|{
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
+if|if
+condition|(
 name|type
-argument_list|,
-literal|"Every BibEntry must have a type."
-argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+name|type
+operator|=
+name|DEFAULT_TYPE
 expr_stmt|;
+block|}
 name|String
 name|oldType
 init|=

@@ -1464,17 +1464,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|Optional
-operator|.
-name|ofNullable
-argument_list|(
 name|type
-argument_list|)
-operator|.
-name|orElse
-argument_list|(
-literal|"misc"
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Get Text Properties
