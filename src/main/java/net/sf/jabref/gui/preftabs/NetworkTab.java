@@ -691,8 +691,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Username:"
+literal|"Username"
 argument_list|)
+operator|+
+literal|':'
 argument_list|)
 operator|.
 name|xy
@@ -724,8 +726,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Password:"
+literal|"Password"
 argument_list|)
+operator|+
+literal|':'
 argument_list|)
 operator|.
 name|xy
