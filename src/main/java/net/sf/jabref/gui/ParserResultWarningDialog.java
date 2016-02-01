@@ -264,7 +264,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"%d. %s\n"
+literal|"%d. %s%n"
 argument_list|,
 name|warningCount
 operator|++

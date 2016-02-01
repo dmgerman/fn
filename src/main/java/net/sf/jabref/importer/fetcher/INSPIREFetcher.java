@@ -621,6 +621,13 @@ comment|/* add the entry to the inspection dialog */
 if|if
 condition|(
 name|bd
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|bd
 operator|.
 name|getEntryCount
 argument_list|()
@@ -647,6 +654,17 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+else|else
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Error while fetching from Inspire"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/* update the dialogs progress bar */
 comment|// dialog.setProgress(i + 1, keys.length);

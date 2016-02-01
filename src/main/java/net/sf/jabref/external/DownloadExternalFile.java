@@ -1284,11 +1284,23 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
 name|tmp
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Cannot delete temporary file"
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -1298,11 +1310,23 @@ condition|(
 name|downloadFinished
 condition|)
 block|{
+if|if
+condition|(
+operator|!
 name|tmp
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Cannot delete temporary file"
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

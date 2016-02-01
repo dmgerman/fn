@@ -100,6 +100,16 @@ name|ServerSocket
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|Socket
+import|;
+end_import
+
 begin_class
 DECL|class|RemoteTest
 specifier|public
@@ -599,9 +609,17 @@ parameter_list|()
 block|{
 try|try
 init|(
+name|Socket
+name|socket2
+init|=
+name|socket
+operator|.
+name|accept
+argument_list|()
+init|;
 name|OutputStream
 name|os
-init|=
+operator|=
 name|socket
 operator|.
 name|accept

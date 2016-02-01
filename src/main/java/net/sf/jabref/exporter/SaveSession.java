@@ -609,11 +609,23 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+operator|!
 name|tmp
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Cannot delete temporary file"
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|cancel ()
 specifier|public
@@ -621,11 +633,23 @@ name|void
 name|cancel
 parameter_list|()
 block|{
+if|if
+condition|(
+operator|!
 name|tmp
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Cannot delete temporary file"
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Check if a lock file exists, and create it if it doesn't.      *      * @return true if the lock file already existed      * @throws IOException if something happens during creation.      */
 DECL|method|createLockFile ()
@@ -750,11 +774,23 @@ return|return
 literal|false
 return|;
 block|}
+if|if
+condition|(
+operator|!
 name|lock
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Cannot delete lock file"
+argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|true
 return|;

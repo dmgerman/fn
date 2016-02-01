@@ -977,11 +977,23 @@ name|success
 condition|)
 block|{
 comment|// Remove the original file:
+if|if
+condition|(
+operator|!
 name|file
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Cannot delete original file"
+argument_list|)
 expr_stmt|;
+block|}
 comment|// Relativise path, if possible.
 name|String
 name|canPath

@@ -913,11 +913,23 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+operator|!
 name|tmp
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Cannot delete temporary clipboard file"
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

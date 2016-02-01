@@ -2368,7 +2368,6 @@ comment|// applicable) and against entries already in the table.
 if|if
 condition|(
 operator|(
-operator|(
 name|panel
 operator|!=
 literal|null
@@ -2397,8 +2396,6 @@ argument_list|)
 operator|.
 name|isPresent
 argument_list|()
-operator|)
-operator|)
 operator|||
 operator|(
 name|internalDuplicate
@@ -2412,6 +2409,7 @@ argument_list|)
 operator|.
 name|isPresent
 argument_list|()
+operator|)
 operator|)
 condition|)
 block|{

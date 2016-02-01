@@ -1387,7 +1387,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|NumberFormatException
 name|ignored
 parameter_list|)
 block|{

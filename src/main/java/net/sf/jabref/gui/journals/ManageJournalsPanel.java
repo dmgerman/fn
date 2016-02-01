@@ -3003,7 +3003,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
 name|ex
 parameter_list|)
 block|{
