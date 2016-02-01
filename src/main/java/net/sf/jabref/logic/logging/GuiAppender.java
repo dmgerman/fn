@@ -16,22 +16,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|logging
-operator|.
-name|Cache
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -231,12 +215,12 @@ name|GuiAppender
 extends|extends
 name|AbstractAppender
 block|{
-DECL|field|cache
+DECL|field|CACHE
 specifier|public
 specifier|static
 specifier|final
 name|Cache
-name|cache
+name|CACHE
 init|=
 operator|new
 name|Cache
@@ -363,7 +347,7 @@ name|LogEvent
 name|event
 parameter_list|)
 block|{
-name|cache
+name|CACHE
 operator|.
 name|add
 argument_list|(

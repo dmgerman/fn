@@ -4392,7 +4392,7 @@ name|streamEavesdropper
 argument_list|,
 name|GuiAppender
 operator|.
-name|cache
+name|CACHE
 argument_list|)
 decl_stmt|;
 DECL|field|dbConnect

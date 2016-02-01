@@ -1150,6 +1150,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|field|stringArray1
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -1172,6 +1173,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|encStringArray1
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -1180,6 +1182,7 @@ init|=
 literal|"a:b;c:d"
 decl_stmt|;
 DECL|field|stringArray2null
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -1202,6 +1205,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|encStringArray2
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -1210,6 +1214,7 @@ init|=
 literal|"a:;c:d"
 decl_stmt|;
 DECL|field|stringArray2
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -1232,6 +1237,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|encStringArray2null
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -1244,6 +1250,7 @@ operator|+
 literal|";c:d"
 decl_stmt|;
 DECL|field|stringArray3
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -1266,6 +1273,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|encStringArray3
+specifier|private
 specifier|static
 specifier|final
 name|String
