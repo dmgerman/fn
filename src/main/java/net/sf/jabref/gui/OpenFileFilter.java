@@ -46,6 +46,16 @@ name|HashSet
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_class
 DECL|class|OpenFileFilter
 specifier|public
@@ -65,7 +75,7 @@ block|{
 DECL|field|extSet
 specifier|private
 specifier|final
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -303,7 +313,7 @@ name|filenm
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|)
 decl_stmt|;
 if|if
@@ -325,7 +335,7 @@ name|filenm
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|,
 name|dotPos
 operator|-
@@ -379,16 +389,13 @@ block|{
 name|int
 name|dotPos
 decl_stmt|;
-name|String
-name|suffix
-decl_stmt|;
 name|dotPos
 operator|=
 name|filenm
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 if|if
@@ -403,6 +410,9 @@ return|return
 literal|null
 return|;
 block|}
+name|String
+name|suffix
+decl_stmt|;
 name|suffix
 operator|=
 name|filenm
@@ -432,7 +442,7 @@ name|filenm
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|,
 name|dotPos
 operator|-

@@ -268,7 +268,7 @@ if|if
 condition|(
 name|dbd
 operator|.
-name|getConnectToDB
+name|isConnectedToDB
 argument_list|()
 condition|)
 block|{

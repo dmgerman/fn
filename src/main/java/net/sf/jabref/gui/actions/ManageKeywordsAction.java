@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.      This program is fr
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.util
+DECL|package|net.sf.jabref.gui.actions
 package|package
 name|net
 operator|.
@@ -12,7 +12,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|gui
+operator|.
+name|actions
 package|;
 end_package
 
@@ -372,22 +374,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|actions
-operator|.
-name|MnemonicAwareAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|autocompleter
@@ -601,7 +587,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An Action for launching mass field.  *  * Functionality:  * * Defaults to selected entries, or all entries if none are selected.  * * Input field name  * * Either set field, or clear field.  */
+comment|/**  * An Action for launching keyword managing dialog  *  */
 end_comment
 
 begin_class

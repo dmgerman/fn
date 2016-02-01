@@ -378,10 +378,10 @@ specifier|private
 name|MetaData
 name|metaData
 decl_stmt|;
-DECL|field|connectToDB
+DECL|field|connectedToDB
 specifier|private
 name|boolean
-name|connectToDB
+name|connectedToDB
 decl_stmt|;
 DECL|field|frame
 specifier|private
@@ -547,7 +547,7 @@ name|isConfigValid
 argument_list|()
 condition|)
 block|{
-name|connectToDB
+name|connectedToDB
 operator|=
 literal|true
 expr_stmt|;
@@ -597,17 +597,17 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|connectToDB
+name|connectedToDB
 operator|=
 name|dbd
 operator|.
-name|getConnectToDB
+name|isConnectedToDB
 argument_list|()
 expr_stmt|;
 comment|// store database strings
 if|if
 condition|(
-name|connectToDB
+name|connectedToDB
 condition|)
 block|{
 name|dbs
@@ -646,7 +646,7 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|connectToDB
+name|connectedToDB
 condition|)
 block|{
 try|try

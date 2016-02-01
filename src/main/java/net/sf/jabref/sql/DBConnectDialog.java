@@ -72,6 +72,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -250,10 +270,10 @@ operator|new
 name|DBStrings
 argument_list|()
 decl_stmt|;
-DECL|field|connectToDB
+DECL|field|connectedToDB
 specifier|private
 name|boolean
-name|connectToDB
+name|connectedToDB
 decl_stmt|;
 comment|/** Creates a new instance of DBConnectDialog */
 DECL|method|DBConnectDialog (JFrame parent, DBStrings dbs)
@@ -436,7 +456,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Server Type:"
+literal|"Server type"
+operator|+
+literal|':'
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -448,7 +470,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Server Hostname:"
+literal|"Server hostname"
+operator|+
+literal|':'
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -460,8 +484,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Database:"
+literal|"Database"
 argument_list|)
+operator|+
+literal|':'
 argument_list|)
 expr_stmt|;
 name|lblUsername
@@ -472,8 +498,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Username:"
+literal|"Username"
 argument_list|)
+operator|+
+literal|':'
 argument_list|)
 expr_stmt|;
 name|lblPassword
@@ -484,8 +512,10 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Password:"
+literal|"Password"
 argument_list|)
+operator|+
+literal|':'
 argument_list|)
 expr_stmt|;
 comment|// set label text alignment
@@ -555,8 +585,10 @@ operator|.
 name|getServerType
 argument_list|()
 decl_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|srv
 init|=
 name|dbStrings
@@ -893,7 +925,10 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|errorMessage
 init|=
 name|checkInput
@@ -902,9 +937,36 @@ decl_stmt|;
 if|if
 condition|(
 name|errorMessage
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+name|errorMessage
+operator|.
+name|get
+argument_list|()
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Input error"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|storeSettings
 argument_list|()
@@ -917,24 +979,6 @@ expr_stmt|;
 name|setConnectToDB
 argument_list|(
 literal|true
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-literal|null
-argument_list|,
-name|errorMessage
-argument_list|,
-literal|"Input Error"
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1075,7 +1119,10 @@ block|}
 comment|/**      * Checks the user input, and ensures that required fields have entries      *      * @return      *      Appropriate error message to be displayed to user      */
 DECL|method|checkInput ()
 specifier|private
+name|Optional
+argument_list|<
 name|String
+argument_list|>
 name|checkInput
 parameter_list|()
 block|{
@@ -1084,11 +1131,26 @@ index|[]
 name|fields
 init|=
 block|{
-literal|"Server Hostname"
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Server hostname"
+argument_list|)
 block|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Database"
+argument_list|)
 block|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Username"
+argument_list|)
 block|}
 decl_stmt|;
 name|String
@@ -1192,17 +1254,24 @@ name|cnt
 operator|++
 expr_stmt|;
 block|}
-name|String
+name|StringBuilder
 name|errMsg
 init|=
+operator|new
+name|StringBuilder
+argument_list|(
 name|Localization
 operator|.
 name|lang
 argument_list|(
 literal|"Please specify the"
 argument_list|)
-operator|+
-literal|" "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|' '
+argument_list|)
 decl_stmt|;
 switch|switch
 condition|(
@@ -1214,77 +1283,138 @@ literal|0
 case|:
 name|errMsg
 operator|=
-literal|null
+operator|new
+name|StringBuilder
+argument_list|()
 expr_stmt|;
 break|break;
 case|case
 literal|1
 case|:
 name|errMsg
-operator|=
-name|errMsg
-operator|+
+operator|.
+name|append
+argument_list|(
 name|errors
 index|[
 literal|0
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|'.'
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
 literal|2
 case|:
 name|errMsg
-operator|=
-name|errMsg
-operator|+
+operator|.
+name|append
+argument_list|(
 name|errors
 index|[
 literal|0
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" and "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|errors
 index|[
 literal|1
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|'.'
+argument_list|)
 expr_stmt|;
 break|break;
 default|default:
 comment|// Will be 3 at most
 name|errMsg
-operator|=
-name|errMsg
-operator|+
+operator|.
+name|append
+argument_list|(
 name|errors
 index|[
 literal|0
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|", "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|errors
 index|[
 literal|1
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|", and "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|errors
 index|[
 literal|2
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|'.'
+argument_list|)
 expr_stmt|;
 block|}
-return|return
+if|if
+condition|(
 name|errMsg
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
+block|}
+else|else
+block|{
+return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
+name|errMsg
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+return|;
+block|}
 block|}
 comment|/**      * Save user input.      */
 DECL|method|storeSettings ()
@@ -1403,14 +1533,14 @@ operator|=
 name|dbStrings
 expr_stmt|;
 block|}
-DECL|method|getConnectToDB ()
+DECL|method|isConnectedToDB ()
 specifier|public
 name|boolean
-name|getConnectToDB
+name|isConnectedToDB
 parameter_list|()
 block|{
 return|return
-name|connectToDB
+name|connectedToDB
 return|;
 block|}
 DECL|method|setConnectToDB (boolean connectToDB)
@@ -1424,7 +1554,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|connectToDB
+name|connectedToDB
 operator|=
 name|connectToDB
 expr_stmt|;
