@@ -191,6 +191,20 @@ name|EXT_MARKER
 init|=
 literal|"__EXTENSION__"
 decl_stmt|;
+DECL|field|ESCAPE_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|ESCAPE_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"([^\\\\])\\\\([^\\\\])"
+argument_list|)
+decl_stmt|;
 comment|/**      * Search for file links for a set of entries using regexp. Lists of extensions and directories      * are given.      * @param entries The entries to search for.      * @param extensions The extensions that are acceptable.      * @param directories The root directories to search.      * @param regExp The expression deciding which names are acceptable.      * @return A map linking each given entry to a list of files matching the given criteria.      */
 DECL|method|findFilesForSet (Collection<BibEntry> entries, Collection<String> extensions, List<File> directories, String regExp)
 specifier|public
@@ -760,12 +774,7 @@ comment|// Escape handling...
 name|Matcher
 name|m
 init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"([^\\\\])\\\\([^\\\\])"
-argument_list|)
+name|ESCAPE_PATTERN
 operator|.
 name|matcher
 argument_list|(

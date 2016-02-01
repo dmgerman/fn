@@ -314,6 +314,18 @@ name|Optional
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
 begin_comment
 comment|/**  * TODO: Replace by http://docs.oracle.com/javase/7/docs/api/java/awt/Desktop.html  * http://stackoverflow.com/questions/18004150/desktop-api-is-not-supported-on-the-current-platform  */
 end_comment
@@ -324,6 +336,20 @@ specifier|public
 class|class
 name|JabRefDesktop
 block|{
+DECL|field|REMOTE_LINK_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|REMOTE_LINK_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"[a-z]+://.*"
+argument_list|)
+decl_stmt|;
 comment|/**      * Open a http/pdf/ps viewer for the given link string.      */
 DECL|method|openExternalViewer (MetaData metaData, String link, String fieldName)
 specifier|public
@@ -1202,8 +1228,6 @@ literal|false
 decl_stmt|;
 if|if
 condition|(
-name|Util
-operator|.
 name|REMOTE_LINK_PATTERN
 operator|.
 name|matcher

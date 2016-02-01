@@ -150,20 +150,6 @@ name|Pattern
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bibtex
-operator|.
-name|EntryTypes
-import|;
-end_import
-
 begin_comment
 comment|/**  * INSPEC format importer.  */
 end_comment
@@ -176,6 +162,20 @@ name|InspecImporter
 extends|extends
 name|ImportFormat
 block|{
+DECL|field|INSPEC_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|INSPEC_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"Record.*INSPEC.*"
+argument_list|)
+decl_stmt|;
 comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
@@ -232,16 +232,6 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|//Pattern pat1 = Pattern.compile("PY:  \\d{4}");
-name|Pattern
-name|pat1
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"Record.*INSPEC.*"
-argument_list|)
-decl_stmt|;
 comment|//was PY \\\\d{4}? before
 name|String
 name|str
@@ -265,7 +255,7 @@ comment|//str = str.replace(" - ", "");
 comment|//System.out.println(str);
 if|if
 condition|(
-name|pat1
+name|INSPEC_PATTERN
 operator|.
 name|matcher
 argument_list|(

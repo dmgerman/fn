@@ -72,6 +72,29 @@ name|SuperscriptFormatter
 implements|implements
 name|Formatter
 block|{
+comment|// find possible superscripts on word boundaries
+DECL|field|PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\b(\\d+)(st|nd|rd|th)\\b"
+argument_list|,
+name|Pattern
+operator|.
+name|CASE_INSENSITIVE
+operator||
+name|Pattern
+operator|.
+name|MULTILINE
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getName ()
@@ -108,26 +131,6 @@ name|String
 name|value
 parameter_list|)
 block|{
-comment|// find possible superscripts on word boundaries
-specifier|final
-name|Pattern
-name|pattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\b(\\d+)(st|nd|rd|th)\\b"
-argument_list|,
-name|Pattern
-operator|.
-name|CASE_INSENSITIVE
-operator||
-name|Pattern
-operator|.
-name|MULTILINE
-argument_list|)
-decl_stmt|;
 comment|// adds superscript tag
 specifier|final
 name|String
@@ -157,7 +160,7 @@ block|}
 name|Matcher
 name|matcher
 init|=
-name|pattern
+name|PATTERN
 operator|.
 name|matcher
 argument_list|(

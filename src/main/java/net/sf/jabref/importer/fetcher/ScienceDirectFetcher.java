@@ -303,20 +303,6 @@ operator|+
 literal|"([^\"]+)\"\""
 argument_list|)
 decl_stmt|;
-DECL|field|NEXT_PAGE_PATTERN
-specifier|protected
-specifier|static
-specifier|final
-name|Pattern
-name|NEXT_PAGE_PATTERN
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"<a href=\"(.*)\">Next&gt;"
-argument_list|)
-decl_stmt|;
 DECL|field|stopFetching
 specifier|private
 name|boolean
@@ -707,7 +693,6 @@ operator|.
 name|downloadToString
 argument_list|()
 decl_stmt|;
-comment|//String entirePage = cont;
 name|Matcher
 name|m
 init|=
@@ -783,7 +768,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|/*m = nextPagePattern.matcher(entirePage);         if (m.find()) {             String newQuery = WEBSITE_URL +m.group(1);             return newQuery;         }         else*/
 return|return
 literal|null
 return|;

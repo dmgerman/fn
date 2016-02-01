@@ -458,6 +458,20 @@ specifier|private
 name|String
 name|preamble
 decl_stmt|;
+DECL|field|ADD_PERIOD_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|ADD_PERIOD_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"([^\\.\\?\\!\\}\\s])(\\}|\\s)*$"
+argument_list|)
+decl_stmt|;
 DECL|class|Identifier
 specifier|public
 specifier|static
@@ -1440,17 +1454,6 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-specifier|final
-name|Pattern
-name|p
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"([^\\.\\?\\!\\}\\s])(\\}|\\s)*$"
-argument_list|)
-decl_stmt|;
 comment|/**              * Pops the top (string) literal, adds a `.' to it if the last non              * '}' character isn't a `.', `?', or `!', and pushes this resulting              * string.              */
 annotation|@
 name|Override
@@ -1517,7 +1520,7 @@ decl_stmt|;
 name|Matcher
 name|m
 init|=
-name|p
+name|ADD_PERIOD_PATTERN
 operator|.
 name|matcher
 argument_list|(
