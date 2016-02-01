@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.util
+DECL|package|net.sf.jabref.gui.actions
 package|package
 name|net
 operator|.
@@ -12,7 +12,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|gui
+operator|.
+name|actions
 package|;
 end_package
 
@@ -164,22 +166,6 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|actions
-operator|.
-name|MnemonicAwareAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
 name|keyboard
 operator|.
 name|KeyBinding
@@ -289,6 +275,20 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
 import|;
 end_import
 
