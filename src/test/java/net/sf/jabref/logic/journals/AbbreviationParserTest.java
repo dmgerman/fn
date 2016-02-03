@@ -63,9 +63,7 @@ name|ap
 operator|.
 name|readJournalListFromResource
 argument_list|(
-name|Abbreviations
-operator|.
-name|JOURNALS_FILE_BUILTIN
+literal|"/journals/journalList.txt"
 argument_list|)
 expr_stmt|;
 name|assertFalse

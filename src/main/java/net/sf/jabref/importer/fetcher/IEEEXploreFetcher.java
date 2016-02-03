@@ -140,6 +140,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Matcher
@@ -336,7 +346,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|Abbreviations
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -560,13 +570,33 @@ specifier|private
 name|boolean
 name|shouldContinue
 decl_stmt|;
-DECL|method|IEEEXploreFetcher ()
+DECL|field|abbreviationLoader
+specifier|private
+specifier|final
+name|JournalAbbreviationLoader
+name|abbreviationLoader
+decl_stmt|;
+DECL|method|IEEEXploreFetcher (JournalAbbreviationLoader abbreviationLoader)
 specifier|public
 name|IEEEXploreFetcher
-parameter_list|()
+parameter_list|(
+name|JournalAbbreviationLoader
+name|abbreviationLoader
+parameter_list|)
 block|{
 name|super
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|abbreviationLoader
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|abbreviationLoader
+argument_list|)
 expr_stmt|;
 name|CookieHandler
 operator|.
@@ -2757,9 +2787,10 @@ condition|)
 block|{
 name|fullName
 operator|=
-name|Abbreviations
+name|abbreviationLoader
 operator|.
-name|journalAbbrev
+name|getRepository
+argument_list|()
 operator|.
 name|getMedlineAbbreviation
 argument_list|(

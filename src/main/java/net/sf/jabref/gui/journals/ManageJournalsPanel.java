@@ -316,7 +316,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|Abbreviations
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -1431,22 +1431,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|JournalAbbreviationRepository
-name|abbr
-init|=
-operator|new
-name|JournalAbbreviationRepository
-argument_list|()
-decl_stmt|;
-name|abbr
-operator|.
-name|readJournalListFromResource
-argument_list|(
-name|Abbreviations
-operator|.
-name|JOURNALS_FILE_BUILTIN
-argument_list|)
-expr_stmt|;
 name|JTable
 name|table
 init|=
@@ -1457,9 +1441,15 @@ name|JournalAbbreviationsUtil
 operator|.
 name|getTableModel
 argument_list|(
-name|Abbreviations
+name|Globals
 operator|.
-name|journalAbbrev
+name|journalAbbreviationLoader
+operator|.
+name|getRepository
+argument_list|()
+operator|.
+name|getAbbreviations
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2298,11 +2288,15 @@ name|void
 name|setupUserTable
 parameter_list|()
 block|{
-name|JournalAbbreviationRepository
-name|userAbbr
+name|List
+argument_list|<
+name|Abbreviation
+argument_list|>
+name|userAbbreviations
 init|=
 operator|new
-name|JournalAbbreviationRepository
+name|ArrayList
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|String
@@ -2315,13 +2309,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 operator|!
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|filename
-argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
 operator|&&
 operator|new
 name|File
@@ -2335,7 +2329,9 @@ condition|)
 block|{
 try|try
 block|{
-name|userAbbr
+name|userAbbreviations
+operator|=
+name|JournalAbbreviationLoader
 operator|.
 name|readJournalListFromFile
 argument_list|(
@@ -2368,10 +2364,7 @@ name|tableModel
 operator|.
 name|setJournals
 argument_list|(
-name|userAbbr
-operator|.
-name|getAbbreviations
-argument_list|()
+name|userAbbreviations
 argument_list|)
 expr_stmt|;
 name|userTable
@@ -2807,15 +2800,6 @@ argument_list|,
 name|extFiles
 argument_list|)
 expr_stmt|;
-name|Abbreviations
-operator|.
-name|initializeJournalNames
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-argument_list|)
-expr_stmt|;
 comment|// Update the autocompleter for the "journal" field in all base panels,
 comment|// so added journal names are available:
 for|for
@@ -3242,16 +3226,16 @@ specifier|public
 name|AbbreviationsTableModel
 parameter_list|()
 block|{          }
-DECL|method|setJournals (SortedSet<Abbreviation> journals)
+DECL|method|setJournals (List<Abbreviation> abbreviations)
 specifier|public
 name|void
 name|setJournals
 parameter_list|(
-name|SortedSet
+name|List
 argument_list|<
 name|Abbreviation
 argument_list|>
-name|journals
+name|abbreviations
 parameter_list|)
 block|{
 name|this
@@ -3268,7 +3252,7 @@ control|(
 name|Abbreviation
 name|abbreviation
 range|:
-name|journals
+name|abbreviations
 control|)
 block|{
 name|this
@@ -4082,7 +4066,13 @@ operator|new
 name|JournalAbbreviationRepository
 argument_list|()
 decl_stmt|;
-name|abbr
+name|List
+argument_list|<
+name|Abbreviation
+argument_list|>
+name|abbreviations
+init|=
+name|JournalAbbreviationLoader
 operator|.
 name|readJournalListFromFile
 argument_list|(
@@ -4095,7 +4085,7 @@ name|getText
 argument_list|()
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|JTable
 name|table
 init|=
@@ -4106,7 +4096,7 @@ name|JournalAbbreviationsUtil
 operator|.
 name|getTableModel
 argument_list|(
-name|abbr
+name|abbreviations
 argument_list|)
 argument_list|)
 decl_stmt|;

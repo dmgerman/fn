@@ -5078,11 +5078,7 @@ name|sr
 argument_list|)
 operator|.
 name|getLayoutFromText
-argument_list|(
-name|Globals
-operator|.
-name|FORMATTER_PACKAGE
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -10148,6 +10144,10 @@ name|getMetaData
 argument_list|()
 argument_list|,
 name|autoCompletePreferences
+argument_list|,
+name|Globals
+operator|.
+name|journalAbbreviationLoader
 argument_list|)
 expr_stmt|;
 comment|// ensure that the autocompleters are in sync with entries
@@ -10173,6 +10173,10 @@ operator|new
 name|ContentAutoCompleters
 argument_list|(
 name|autoCompletePreferences
+argument_list|,
+name|Globals
+operator|.
+name|journalAbbreviationLoader
 argument_list|)
 expr_stmt|;
 block|}

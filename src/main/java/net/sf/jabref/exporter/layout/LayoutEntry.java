@@ -80,6 +80,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationRepository
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -115,6 +131,24 @@ operator|.
 name|jabref
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|exporter
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|JournalAbbreviator
 import|;
 end_import
 
@@ -250,12 +284,6 @@ specifier|final
 name|int
 name|type
 decl_stmt|;
-DECL|field|classPrefix
-specifier|private
-specifier|final
-name|String
-name|classPrefix
-decl_stmt|;
 DECL|field|invalidFormatter
 specifier|private
 name|List
@@ -280,16 +308,15 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|LayoutEntry (StringInt si, final String classPrefix_)
+DECL|method|LayoutEntry (StringInt si, JournalAbbreviationRepository repository)
 specifier|public
 name|LayoutEntry
 parameter_list|(
 name|StringInt
 name|si
 parameter_list|,
-specifier|final
-name|String
-name|classPrefix_
+name|JournalAbbreviationRepository
+name|repository
 parameter_list|)
 block|{
 name|type
@@ -297,10 +324,6 @@ operator|=
 name|si
 operator|.
 name|i
-expr_stmt|;
-name|classPrefix
-operator|=
-name|classPrefix_
 expr_stmt|;
 if|if
 condition|(
@@ -441,7 +464,7 @@ argument_list|(
 literal|1
 argument_list|)
 argument_list|,
-name|classPrefix
+name|repository
 argument_list|)
 expr_stmt|;
 comment|// See if there was an undefined formatter:
@@ -500,7 +523,7 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|LayoutEntry (List<StringInt> parsedEntries, final String classPrefix_, int layoutType)
+DECL|method|LayoutEntry (List<StringInt> parsedEntries, int layoutType, JournalAbbreviationRepository repository)
 specifier|public
 name|LayoutEntry
 parameter_list|(
@@ -510,18 +533,13 @@ name|StringInt
 argument_list|>
 name|parsedEntries
 parameter_list|,
-specifier|final
-name|String
-name|classPrefix_
-parameter_list|,
 name|int
 name|layoutType
+parameter_list|,
+name|JournalAbbreviationRepository
+name|repository
 parameter_list|)
 block|{
-name|classPrefix
-operator|=
-name|classPrefix_
-expr_stmt|;
 name|List
 argument_list|<
 name|StringInt
@@ -744,11 +762,11 @@ name|LayoutEntry
 argument_list|(
 name|blockEntries
 argument_list|,
-name|classPrefix
-argument_list|,
 name|LayoutHelper
 operator|.
 name|IS_GROUP_START
+argument_list|,
+name|repository
 argument_list|)
 expr_stmt|;
 block|}
@@ -761,11 +779,11 @@ name|LayoutEntry
 argument_list|(
 name|blockEntries
 argument_list|,
-name|classPrefix
-argument_list|,
 name|LayoutHelper
 operator|.
 name|IS_FIELD_START
+argument_list|,
+name|repository
 argument_list|)
 expr_stmt|;
 block|}
@@ -822,7 +840,7 @@ name|LayoutEntry
 argument_list|(
 name|parsedEntry
 argument_list|,
-name|classPrefix
+name|repository
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1907,7 +1925,7 @@ literal|""
 return|;
 block|}
 comment|// added section - end (arudert)
-DECL|method|getLayoutFormatterByClassName (String className, String classPrefix)
+DECL|method|getLayoutFormatterByClassName (String className, JournalAbbreviationRepository repostiory)
 specifier|private
 specifier|static
 name|LayoutFormatter
@@ -1916,25 +1934,49 @@ parameter_list|(
 name|String
 name|className
 parameter_list|,
-name|String
-name|classPrefix
+name|JournalAbbreviationRepository
+name|repostiory
 parameter_list|)
 throws|throws
 name|Exception
 block|{
 if|if
 condition|(
-operator|!
 name|className
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
+return|return
+literal|null
+return|;
+block|}
+if|if
+condition|(
+name|className
+operator|.
+name|equals
+argument_list|(
+literal|"JournalAbbreviator"
+argument_list|)
+condition|)
+block|{
+return|return
+operator|new
+name|JournalAbbreviator
+argument_list|(
+name|repostiory
+argument_list|)
+return|;
+block|}
 try|try
 block|{
-try|try
-block|{
+name|String
+name|prefix
+init|=
+literal|"net.sf.jabref.exporter.layout.format."
+decl_stmt|;
 return|return
 operator|(
 name|LayoutFormatter
@@ -1943,7 +1985,7 @@ name|Class
 operator|.
 name|forName
 argument_list|(
-name|classPrefix
+name|prefix
 operator|+
 name|className
 argument_list|)
@@ -1951,28 +1993,6 @@ operator|.
 name|newInstance
 argument_list|()
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ex2
-parameter_list|)
-block|{
-return|return
-operator|(
-name|LayoutFormatter
-operator|)
-name|Class
-operator|.
-name|forName
-argument_list|(
-name|className
-argument_list|)
-operator|.
-name|newInstance
-argument_list|()
-return|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2023,12 +2043,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-return|return
-literal|null
-return|;
-block|}
-comment|/**      * Return an array of LayoutFormatters found in the given formatterName      * string (in order of appearance).      *      */
-DECL|method|getOptionalLayout (String formatterName, String classPrefix)
+comment|/**      * Return an array of LayoutFormatters found in the given formatterName      * string (in order of appearance).      * @param repository      *      */
+DECL|method|getOptionalLayout (String formatterName, JournalAbbreviationRepository repository)
 specifier|private
 specifier|static
 name|LayoutFormatter
@@ -2038,8 +2054,8 @@ parameter_list|(
 name|String
 name|formatterName
 parameter_list|,
-name|String
-name|classPrefix
+name|JournalAbbreviationRepository
+name|repository
 parameter_list|)
 block|{
 name|List
@@ -2174,7 +2190,7 @@ name|getLayoutFormatterByClassName
 argument_list|(
 name|className
 argument_list|,
-name|classPrefix
+name|repository
 argument_list|)
 decl_stmt|;
 comment|// If this formatter accepts an argument, check if we have one, and

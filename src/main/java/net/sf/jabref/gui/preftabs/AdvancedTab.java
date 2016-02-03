@@ -200,22 +200,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|Abbreviations
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|jgoodies
@@ -1457,9 +1441,11 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Abbreviations
+name|Globals
 operator|.
-name|initializeJournalNames
+name|journalAbbreviationLoader
+operator|.
+name|update
 argument_list|(
 name|preferences
 argument_list|)

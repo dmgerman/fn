@@ -26,11 +26,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|Abbreviations
+name|Globals
 import|;
 end_import
 
@@ -215,9 +211,12 @@ init|=
 operator|new
 name|UndoableAbbreviator
 argument_list|(
-name|Abbreviations
+name|Globals
 operator|.
-name|journalAbbrev
+name|journalAbbreviationLoader
+operator|.
+name|getRepository
+argument_list|()
 argument_list|,
 name|iso
 argument_list|)

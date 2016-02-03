@@ -2989,6 +2989,13 @@ operator|new
 name|OOBibStyle
 argument_list|(
 name|file
+argument_list|,
+name|Globals
+operator|.
+name|journalAbbreviationLoader
+operator|.
+name|getRepository
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// Check if the parse was successful before adding it:

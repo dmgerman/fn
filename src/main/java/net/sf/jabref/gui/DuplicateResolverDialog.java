@@ -409,12 +409,12 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|DuplicateResolverDialog (ImportInspectionDialog frame, BibEntry one, BibEntry two, int type)
+DECL|method|DuplicateResolverDialog (ImportInspectionDialog dialog, BibEntry one, BibEntry two, int type)
 specifier|public
 name|DuplicateResolverDialog
 parameter_list|(
 name|ImportInspectionDialog
-name|frame
+name|dialog
 parameter_list|,
 name|BibEntry
 name|one
@@ -428,7 +428,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|frame
+name|dialog
 argument_list|,
 name|Localization
 operator|.
@@ -444,7 +444,7 @@ name|this
 operator|.
 name|frame
 operator|=
-name|frame
+name|dialog
 operator|.
 name|frame
 expr_stmt|;
