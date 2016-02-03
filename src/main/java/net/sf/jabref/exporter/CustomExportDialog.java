@@ -1118,9 +1118,9 @@ expr_stmt|;
 comment|//pack();
 name|setSize
 argument_list|(
-literal|600
+literal|700
 argument_list|,
-literal|170
+literal|200
 argument_list|)
 expr_stmt|;
 name|PositionWindow

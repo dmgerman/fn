@@ -428,7 +428,6 @@ name|BasicEventList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|//protected SortedList<TableEntry> sortedList;
 DECL|field|glTable
 specifier|private
 specifier|final
