@@ -660,6 +660,10 @@ name|parsePreamble
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Consume new line which signals end of preamble
+name|skipOneNewline
+argument_list|()
+expr_stmt|;
 comment|// the preamble is saved verbatim anyways, so the text read so far can be dropped
 name|dumpTextReadSoFarToString
 argument_list|()
@@ -742,6 +746,9 @@ operator|.
 name|setEpilog
 argument_list|(
 name|dumpTextReadSoFarToString
+argument_list|()
+operator|.
+name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1923,6 +1930,10 @@ literal|'}'
 argument_list|,
 literal|')'
 argument_list|)
+expr_stmt|;
+comment|// Consume new line which signals end of entry
+name|skipOneNewline
+argument_list|()
 expr_stmt|;
 name|LOGGER
 operator|.
