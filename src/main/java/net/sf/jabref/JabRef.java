@@ -2061,8 +2061,9 @@ expr_stmt|;
 name|SavePreferences
 name|prefs
 init|=
-operator|new
 name|SavePreferences
+operator|.
+name|loadForSaveFromPreferences
 argument_list|(
 name|Globals
 operator|.
@@ -2693,8 +2694,9 @@ expr_stmt|;
 name|SavePreferences
 name|prefs
 init|=
-operator|new
 name|SavePreferences
+operator|.
+name|loadForSaveFromPreferences
 argument_list|(
 name|Globals
 operator|.

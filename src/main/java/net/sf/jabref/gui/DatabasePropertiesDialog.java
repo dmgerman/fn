@@ -487,15 +487,6 @@ specifier|private
 name|JRadioButton
 name|saveInSpecifiedOrder
 decl_stmt|;
-DECL|field|SAVE_ORDER_CONFIG
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|SAVE_ORDER_CONFIG
-init|=
-literal|"saveOrderConfig"
-decl_stmt|;
 DECL|field|protect
 specifier|private
 specifier|final
@@ -1351,7 +1342,7 @@ name|metaData
 operator|.
 name|getData
 argument_list|(
-name|DatabasePropertiesDialog
+name|MetaData
 operator|.
 name|SAVE_ORDER_CONFIG
 argument_list|)
@@ -1805,7 +1796,7 @@ name|metaData
 operator|.
 name|putData
 argument_list|(
-name|DatabasePropertiesDialog
+name|MetaData
 operator|.
 name|SAVE_ORDER_CONFIG
 argument_list|,

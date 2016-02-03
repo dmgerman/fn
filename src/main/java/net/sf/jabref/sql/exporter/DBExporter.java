@@ -553,14 +553,13 @@ decl_stmt|;
 name|SavePreferences
 name|savePrefs
 init|=
-operator|new
 name|SavePreferences
+operator|.
+name|loadForExportFromPreferences
 argument_list|(
 name|Globals
 operator|.
 name|prefs
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|List

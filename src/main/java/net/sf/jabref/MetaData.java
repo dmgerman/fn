@@ -144,6 +144,15 @@ name|META_FLAG
 init|=
 literal|"jabref-meta: "
 decl_stmt|;
+DECL|field|SAVE_ORDER_CONFIG
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SAVE_ORDER_CONFIG
+init|=
+literal|"saveOrderConfig"
+decl_stmt|;
 DECL|field|PREFIX_KEYPATTERN
 specifier|private
 specifier|static
