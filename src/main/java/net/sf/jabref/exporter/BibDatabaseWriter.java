@@ -983,6 +983,7 @@ return|return
 name|inOriginalOrder
 return|;
 block|}
+comment|/**      * Saves the database to file. Two boolean values indicate whether only      * entries which are marked as search / group hit should be saved. This can be used to      * let the user save only the results of a search. False and false means all      * entries are saved.      */
 DECL|method|saveDatabase (BibDatabaseContext bibDatabaseContext, SavePreferences preferences)
 specifier|public
 name|SaveSession
@@ -993,40 +994,6 @@ name|bibDatabaseContext
 parameter_list|,
 name|SavePreferences
 name|preferences
-parameter_list|)
-throws|throws
-name|SaveException
-block|{
-return|return
-name|saveDatabase
-argument_list|(
-name|bibDatabaseContext
-argument_list|,
-name|preferences
-argument_list|,
-literal|false
-argument_list|,
-literal|false
-argument_list|)
-return|;
-block|}
-comment|/**      * Saves the database to file. Two boolean values indicate whether only      * entries which are marked as search / group hit should be saved. This can be used to      * let the user save only the results of a search. False and false means all      * entries are saved.      */
-DECL|method|saveDatabase (BibDatabaseContext bibDatabaseContext, SavePreferences preferences, boolean checkSearch, boolean checkGroup)
-specifier|public
-name|SaveSession
-name|saveDatabase
-parameter_list|(
-name|BibDatabaseContext
-name|bibDatabaseContext
-parameter_list|,
-name|SavePreferences
-name|preferences
-parameter_list|,
-name|boolean
-name|checkSearch
-parameter_list|,
-name|boolean
-name|checkGroup
 parameter_list|)
 throws|throws
 name|SaveException
@@ -1045,14 +1012,10 @@ name|getEntries
 argument_list|()
 argument_list|,
 name|preferences
-argument_list|,
-name|checkSearch
-argument_list|,
-name|checkGroup
 argument_list|)
 return|;
 block|}
-DECL|method|savePartOfDatabase (BibDatabaseContext bibDatabaseContext, Collection<BibEntry> entries, SavePreferences preferences, boolean checkSearch, boolean checkGroup)
+DECL|method|savePartOfDatabase (BibDatabaseContext bibDatabaseContext, Collection<BibEntry> entries, SavePreferences preferences)
 specifier|public
 name|SaveSession
 name|savePartOfDatabase
@@ -1068,12 +1031,6 @@ name|entries
 parameter_list|,
 name|SavePreferences
 name|preferences
-parameter_list|,
-name|boolean
-name|checkSearch
-parameter_list|,
-name|boolean
-name|checkGroup
 parameter_list|)
 throws|throws
 name|SaveException
@@ -1147,10 +1104,6 @@ argument_list|,
 name|entries
 argument_list|,
 name|preferences
-argument_list|,
-name|checkSearch
-argument_list|,
-name|checkGroup
 argument_list|)
 expr_stmt|;
 block|}
@@ -1196,7 +1149,7 @@ return|return
 name|session
 return|;
 block|}
-DECL|method|writePartOfDatabase (Writer writer, BibDatabaseContext bibDatabaseContext, Collection<BibEntry> entries, SavePreferences preferences, boolean checkSearch, boolean checkGroup)
+DECL|method|writePartOfDatabase (Writer writer, BibDatabaseContext bibDatabaseContext, Collection<BibEntry> entries, SavePreferences preferences)
 specifier|public
 name|void
 name|writePartOfDatabase
@@ -1215,12 +1168,6 @@ name|entries
 parameter_list|,
 name|SavePreferences
 name|preferences
-parameter_list|,
-name|boolean
-name|checkSearch
-parameter_list|,
-name|boolean
-name|checkGroup
 parameter_list|)
 throws|throws
 name|IOException
@@ -1372,47 +1319,6 @@ name|exceptionCause
 operator|=
 name|entry
 expr_stmt|;
-comment|// Check if the entry should be written.
-name|boolean
-name|write
-init|=
-literal|true
-decl_stmt|;
-if|if
-condition|(
-name|checkSearch
-operator|&&
-name|entry
-operator|.
-name|isSearchHit
-argument_list|()
-condition|)
-block|{
-name|write
-operator|=
-literal|false
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|checkGroup
-operator|&&
-name|entry
-operator|.
-name|isGroupHit
-argument_list|()
-condition|)
-block|{
-name|write
-operator|=
-literal|false
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|write
-condition|)
-block|{
 comment|// Check if we must write the type definition for this
 comment|// entry, as well. Our criterion is that all non-standard
 comment|// types (*not* all customized standard types) must be written.
@@ -1487,7 +1393,6 @@ name|getMode
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -1564,10 +1469,6 @@ argument_list|,
 name|entries
 argument_list|,
 name|preferences
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 return|;
 block|}

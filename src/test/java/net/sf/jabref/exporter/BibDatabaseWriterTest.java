@@ -430,10 +430,6 @@ name|SavePreferences
 operator|.
 name|class
 argument_list|)
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -482,10 +478,6 @@ argument_list|,
 operator|new
 name|SavePreferences
 argument_list|()
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -541,10 +533,6 @@ argument_list|,
 operator|new
 name|SavePreferences
 argument_list|()
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -601,10 +589,6 @@ name|emptyList
 argument_list|()
 argument_list|,
 literal|null
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -672,10 +656,6 @@ name|emptyList
 argument_list|()
 argument_list|,
 name|preferences
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -766,10 +746,6 @@ argument_list|,
 operator|new
 name|SavePreferences
 argument_list|()
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -878,10 +854,6 @@ name|emptyList
 argument_list|()
 argument_list|,
 name|preferences
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1000,10 +972,6 @@ argument_list|,
 operator|new
 name|SavePreferences
 argument_list|()
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1136,10 +1104,6 @@ name|entry
 argument_list|)
 argument_list|,
 name|preferences
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1246,10 +1210,6 @@ argument_list|,
 operator|new
 name|SavePreferences
 argument_list|()
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1358,10 +1318,6 @@ name|emptyList
 argument_list|()
 argument_list|,
 name|preferences
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1480,10 +1436,6 @@ argument_list|,
 operator|new
 name|SavePreferences
 argument_list|()
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1610,10 +1562,6 @@ name|emptyList
 argument_list|()
 argument_list|,
 name|preferences
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1748,10 +1696,6 @@ argument_list|,
 operator|new
 name|SavePreferences
 argument_list|()
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 comment|// @formatter:off
@@ -1924,10 +1868,6 @@ name|emptyList
 argument_list|()
 argument_list|,
 name|preferences
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 comment|// @formatter:off
@@ -2066,10 +2006,6 @@ argument_list|,
 operator|new
 name|SavePreferences
 argument_list|()
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -2186,10 +2122,6 @@ name|emptyList
 argument_list|()
 argument_list|,
 name|preferences
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -2321,10 +2253,6 @@ argument_list|,
 operator|new
 name|SavePreferences
 argument_list|()
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -2484,10 +2412,6 @@ name|getEntries
 argument_list|()
 argument_list|,
 name|preferences
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 expr_stmt|;
 name|Assert

@@ -2747,10 +2747,6 @@ name|defaults
 argument_list|)
 argument_list|,
 name|prefs
-argument_list|,
-literal|false
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 comment|// Show just a warning message if encoding didn't work for all characters:
