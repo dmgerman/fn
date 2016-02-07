@@ -804,6 +804,12 @@ decl_stmt|;
 comment|/**                      * The condition below is there since PostgreSQL automatically escapes the backslashes, so the entry                      * would double the number of slashes after storing/retrieving.                      **/
 if|if
 condition|(
+operator|(
+name|out
+operator|instanceof
+name|Connection
+operator|)
+operator|&&
 literal|"MySQL"
 operator|.
 name|equals
