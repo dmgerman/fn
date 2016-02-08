@@ -1082,6 +1082,11 @@ name|bibDatabaseContext
 operator|.
 name|getDatabase
 argument_list|()
+argument_list|,
+name|preferences
+operator|.
+name|isReformatFile
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Write database entries.
@@ -1230,6 +1235,11 @@ argument_list|,
 name|bibDatabaseContext
 operator|.
 name|getMode
+argument_list|()
+argument_list|,
+name|preferences
+operator|.
+name|isReformatFile
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1962,7 +1972,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|writeString (Writer fw, BibtexString bs, Map<String, BibtexString> remaining, int maxKeyLength)
+DECL|method|writeString (Writer fw, BibtexString bs, Map<String, BibtexString> remaining, int maxKeyLength, Boolean reformatFile)
 specifier|private
 name|void
 name|writeString
@@ -1983,6 +1993,9 @@ name|remaining
 parameter_list|,
 name|int
 name|maxKeyLength
+parameter_list|,
+name|Boolean
+name|reformatFile
 parameter_list|)
 throws|throws
 name|IOException
@@ -2001,6 +2014,9 @@ expr_stmt|;
 comment|//if the string has not been modified, write it back as it was
 if|if
 condition|(
+operator|!
+name|reformatFile
+operator|&&
 operator|!
 name|bs
 operator|.
@@ -2144,6 +2160,8 @@ argument_list|,
 name|remaining
 argument_list|,
 name|maxKeyLength
+argument_list|,
+name|reformatFile
 argument_list|)
 expr_stmt|;
 block|}
@@ -2291,8 +2309,8 @@ name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param fw       The Writer to send the output to.      * @param database The database whose strings we should write.      * @throws IOException If anything goes wrong in writing.      */
-DECL|method|writeStrings (Writer fw, BibDatabase database)
+comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param fw       The Writer to send the output to.      * @param database The database whose strings we should write.      * @param reformatFile      * @throws IOException If anything goes wrong in writing.      */
+DECL|method|writeStrings (Writer fw, BibDatabase database, Boolean reformatFile)
 specifier|private
 name|void
 name|writeStrings
@@ -2302,6 +2320,9 @@ name|fw
 parameter_list|,
 name|BibDatabase
 name|database
+parameter_list|,
+name|Boolean
+name|reformatFile
 parameter_list|)
 throws|throws
 name|IOException
@@ -2461,6 +2482,8 @@ argument_list|,
 name|remaining
 argument_list|,
 name|maxKeyLength
+argument_list|,
+name|reformatFile
 argument_list|)
 expr_stmt|;
 name|isFirstStringInType

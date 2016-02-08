@@ -70,6 +70,11 @@ specifier|public
 class|class
 name|SavePreferences
 block|{
+DECL|field|reformatFile
+specifier|private
+name|boolean
+name|reformatFile
+decl_stmt|;
 DECL|field|saveInOriginalOrder
 specifier|private
 name|boolean
@@ -105,7 +110,7 @@ specifier|public
 name|SavePreferences
 parameter_list|()
 block|{      }
-DECL|method|SavePreferences (Boolean saveInOriginalOrder, SaveOrderConfig saveOrder, Charset encoding, Boolean makeBackup, DatabaseSaveType saveType, Boolean takeMetadataSaveOrderInAccount)
+DECL|method|SavePreferences (Boolean saveInOriginalOrder, SaveOrderConfig saveOrder, Charset encoding, Boolean makeBackup, DatabaseSaveType saveType, Boolean takeMetadataSaveOrderInAccount, Boolean reformatFile)
 specifier|public
 name|SavePreferences
 parameter_list|(
@@ -126,6 +131,9 @@ name|saveType
 parameter_list|,
 name|Boolean
 name|takeMetadataSaveOrderInAccount
+parameter_list|,
+name|Boolean
+name|reformatFile
 parameter_list|)
 block|{
 name|this
@@ -163,6 +171,12 @@ operator|.
 name|takeMetadataSaveOrderInAccount
 operator|=
 name|takeMetadataSaveOrderInAccount
+expr_stmt|;
+name|this
+operator|.
+name|reformatFile
+operator|=
+name|reformatFile
 expr_stmt|;
 block|}
 DECL|method|loadForExportFromPreferences (JabRefPreferences preferences)
@@ -269,6 +283,18 @@ name|takeMetadataSaveOrderInAccount
 init|=
 literal|false
 decl_stmt|;
+name|Boolean
+name|reformatFile
+init|=
+name|preferences
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|REFORMAT_FILE_ON_SAVE_AND_EXPORT
+argument_list|)
+decl_stmt|;
 return|return
 operator|new
 name|SavePreferences
@@ -284,6 +310,8 @@ argument_list|,
 name|saveType
 argument_list|,
 name|takeMetadataSaveOrderInAccount
+argument_list|,
+name|reformatFile
 argument_list|)
 return|;
 block|}
@@ -339,6 +367,18 @@ name|takeMetadataSaveOrderInAccount
 init|=
 literal|true
 decl_stmt|;
+name|Boolean
+name|reformatFile
+init|=
+name|preferences
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|REFORMAT_FILE_ON_SAVE_AND_EXPORT
+argument_list|)
+decl_stmt|;
 return|return
 operator|new
 name|SavePreferences
@@ -354,6 +394,8 @@ argument_list|,
 name|saveType
 argument_list|,
 name|takeMetadataSaveOrderInAccount
+argument_list|,
+name|reformatFile
 argument_list|)
 return|;
 block|}
@@ -479,6 +521,32 @@ operator|.
 name|saveType
 operator|=
 name|saveType
+expr_stmt|;
+block|}
+DECL|method|isReformatFile ()
+specifier|public
+name|Boolean
+name|isReformatFile
+parameter_list|()
+block|{
+return|return
+name|reformatFile
+return|;
+block|}
+DECL|method|setReformatFile (boolean reformatFile)
+specifier|public
+name|void
+name|setReformatFile
+parameter_list|(
+name|boolean
+name|reformatFile
+parameter_list|)
+block|{
+name|this
+operator|.
+name|reformatFile
+operator|=
+name|reformatFile
 expr_stmt|;
 block|}
 DECL|enum|DatabaseSaveType
