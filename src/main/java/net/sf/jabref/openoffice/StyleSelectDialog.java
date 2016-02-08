@@ -150,7 +150,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|Arrays
 import|;
 end_import
 
@@ -160,7 +160,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|List
 import|;
 end_import
 
@@ -2880,22 +2880,22 @@ name|isDirectory
 argument_list|()
 condition|)
 block|{
+name|List
+argument_list|<
 name|File
-index|[]
+argument_list|>
 name|files
 init|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|dirF
 operator|.
 name|listFiles
 argument_list|()
+argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|files
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|File
@@ -2934,7 +2934,6 @@ name|file
 argument_list|)
 expr_stmt|;
 block|}
-comment|// If the file is a directory, and we should recurse, do:
 elseif|else
 if|if
 condition|(
@@ -2946,6 +2945,7 @@ operator|&&
 name|recurse
 condition|)
 block|{
+comment|// If the file is a directory, and we should recurse, do:
 name|addStyles
 argument_list|(
 name|file
@@ -2956,7 +2956,6 @@ argument_list|,
 name|recurse
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -3433,8 +3432,12 @@ case|case
 literal|1
 case|:
 return|return
-name|formatJournals
+name|String
+operator|.
+name|join
 argument_list|(
+literal|", "
+argument_list|,
 name|style
 operator|.
 name|getJournals
@@ -3458,82 +3461,6 @@ return|return
 literal|""
 return|;
 block|}
-block|}
-DECL|method|formatJournals (Set<String> journals)
-specifier|private
-specifier|static
-name|String
-name|formatJournals
-parameter_list|(
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|journals
-parameter_list|)
-block|{
-name|StringBuilder
-name|sb
-init|=
-operator|new
-name|StringBuilder
-argument_list|(
-literal|""
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|Iterator
-argument_list|<
-name|String
-argument_list|>
-name|i
-init|=
-name|journals
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-name|i
-operator|.
-name|next
-argument_list|()
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|", "
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-return|return
-name|sb
-operator|.
-name|toString
-argument_list|()
-return|;
 block|}
 block|}
 DECL|method|isOkPressed ()
@@ -3936,7 +3863,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Problem showing defualt style"
+literal|"Problem showing default style"
 argument_list|,
 name|ex
 argument_list|)
