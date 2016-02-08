@@ -2086,7 +2086,15 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// Todo Logging
+name|LOGGER
+operator|.
+name|error
+argument_list|(
+literal|"XMPUtil.readXMP failed"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|xmpEntriesInFile
