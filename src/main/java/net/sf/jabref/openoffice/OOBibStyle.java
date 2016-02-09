@@ -295,12 +295,12 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|numPattern
+DECL|field|NUM_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|numPattern
+name|NUM_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -437,13 +437,324 @@ name|Long
 operator|.
 name|MIN_VALUE
 decl_stmt|;
-comment|//private Pattern quoted = Pattern.compile("\".*^\\\\\"");
-DECL|field|quoted
+DECL|field|BRACKET_AFTER_IN_LIST
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|BRACKET_AFTER_IN_LIST
+init|=
+literal|"BracketAfterInList"
+decl_stmt|;
+DECL|field|BRACKET_BEFORE_IN_LIST
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|BRACKET_BEFORE_IN_LIST
+init|=
+literal|"BracketBeforeInList"
+decl_stmt|;
+DECL|field|UNIQUEFIER_SEPARATOR
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|UNIQUEFIER_SEPARATOR
+init|=
+literal|"UniquefierSeparator"
+decl_stmt|;
+DECL|field|ITALIC_ET_AL
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ITALIC_ET_AL
+init|=
+literal|"ItalicEtAl"
+decl_stmt|;
+DECL|field|BIBTEX_KEY_CITATIONS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|BIBTEX_KEY_CITATIONS
+init|=
+literal|"BibTeXKeyCitations"
+decl_stmt|;
+DECL|field|MULTI_CITE_CHRONOLOGICAL
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MULTI_CITE_CHRONOLOGICAL
+init|=
+literal|"MultiCiteChronological"
+decl_stmt|;
+DECL|field|SUBSCRIPT_CITATIONS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SUBSCRIPT_CITATIONS
+init|=
+literal|"SubscriptCitations"
+decl_stmt|;
+DECL|field|SUPERSCRIPT_CITATIONS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SUPERSCRIPT_CITATIONS
+init|=
+literal|"SuperscriptCitations"
+decl_stmt|;
+DECL|field|BOLD_CITATIONS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|BOLD_CITATIONS
+init|=
+literal|"BoldCitations"
+decl_stmt|;
+DECL|field|ITALIC_CITATIONS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|ITALIC_CITATIONS
+init|=
+literal|"ItalicCitations"
+decl_stmt|;
+DECL|field|CITATION_CHARACTER_FORMAT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|CITATION_CHARACTER_FORMAT
+init|=
+literal|"CitationCharacterFormat"
+decl_stmt|;
+DECL|field|FORMAT_CITATIONS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|FORMAT_CITATIONS
+init|=
+literal|"FormatCitations"
+decl_stmt|;
+DECL|field|MINIMUM_GROUPING_COUNT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MINIMUM_GROUPING_COUNT
+init|=
+literal|"MinimumGroupingCount"
+decl_stmt|;
+DECL|field|GROUPED_NUMBERS_SEPARATOR
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|GROUPED_NUMBERS_SEPARATOR
+init|=
+literal|"GroupedNumbersSeparator"
+decl_stmt|;
+DECL|field|PAGE_INFO_SEPARATOR
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PAGE_INFO_SEPARATOR
+init|=
+literal|"PageInfoSeparator"
+decl_stmt|;
+DECL|field|CITATION_SEPARATOR
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|CITATION_SEPARATOR
+init|=
+literal|"CitationSeparator"
+decl_stmt|;
+DECL|field|IN_TEXT_YEAR_SEPARATOR
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|IN_TEXT_YEAR_SEPARATOR
+init|=
+literal|"InTextYearSeparator"
+decl_stmt|;
+DECL|field|ET_AL_STRING
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ET_AL_STRING
+init|=
+literal|"EtAlString"
+decl_stmt|;
+DECL|field|MAX_AUTHORS_FIRST
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MAX_AUTHORS_FIRST
+init|=
+literal|"MaxAuthorsFirst"
+decl_stmt|;
+DECL|field|MAX_AUTHORS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MAX_AUTHORS
+init|=
+literal|"MaxAuthors"
+decl_stmt|;
+DECL|field|YEAR_FIELD
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|YEAR_FIELD
+init|=
+literal|"YearField"
+decl_stmt|;
+DECL|field|AUTHOR_FIELD
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_FIELD
+init|=
+literal|"AuthorField"
+decl_stmt|;
+DECL|field|REFERENCE_HEADER_PARAGRAPH_FORMAT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFERENCE_HEADER_PARAGRAPH_FORMAT
+init|=
+literal|"ReferenceHeaderParagraphFormat"
+decl_stmt|;
+DECL|field|REFERENCE_PARAGRAPH_FORMAT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|REFERENCE_PARAGRAPH_FORMAT
+init|=
+literal|"ReferenceParagraphFormat"
+decl_stmt|;
+DECL|field|BRACKET_AFTER
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|BRACKET_AFTER
+init|=
+literal|"BracketAfter"
+decl_stmt|;
+DECL|field|BRACKET_BEFORE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|BRACKET_BEFORE
+init|=
+literal|"BracketBefore"
+decl_stmt|;
+DECL|field|IS_NUMBER_ENTRIES
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|IS_NUMBER_ENTRIES
+init|=
+literal|"IsNumberEntries"
+decl_stmt|;
+DECL|field|IS_SORT_BY_POSITION
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|IS_SORT_BY_POSITION
+init|=
+literal|"IsSortByPosition"
+decl_stmt|;
+DECL|field|SORT_ALGORITHM
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SORT_ALGORITHM
+init|=
+literal|"SortAlgorithm"
+decl_stmt|;
+DECL|field|TITLE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TITLE
+init|=
+literal|"Title"
+decl_stmt|;
+DECL|field|YEAR_SEPARATOR
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|YEAR_SEPARATOR
+init|=
+literal|"YearSeparator"
+decl_stmt|;
+DECL|field|AUTHOR_LAST_SEPARATOR_IN_TEXT
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_LAST_SEPARATOR_IN_TEXT
+init|=
+literal|"AuthorLastSeparatorInText"
+decl_stmt|;
+DECL|field|AUTHOR_LAST_SEPARATOR
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_LAST_SEPARATOR
+init|=
+literal|"AuthorLastSeparator"
+decl_stmt|;
+DECL|field|AUTHOR_SEPARATOR
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_SEPARATOR
+init|=
+literal|"AuthorSeparator"
+decl_stmt|;
+DECL|field|repository
+specifier|private
+specifier|final
+name|JournalAbbreviationRepository
+name|repository
+decl_stmt|;
+DECL|field|QUOTED
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|quoted
+name|QUOTED
 init|=
 name|Pattern
 operator|.
@@ -451,12 +762,6 @@ name|compile
 argument_list|(
 literal|"\".*\""
 argument_list|)
-decl_stmt|;
-DECL|field|repository
-specifier|private
-specifier|final
-name|JournalAbbreviationRepository
-name|repository
 decl_stmt|;
 DECL|field|LOGGER
 specifier|private
@@ -579,7 +884,7 @@ name|properties
 operator|.
 name|put
 argument_list|(
-literal|"Title"
+name|TITLE
 argument_list|,
 literal|"Bibliography"
 argument_list|)
@@ -588,7 +893,7 @@ name|properties
 operator|.
 name|put
 argument_list|(
-literal|"SortAlgorithm"
+name|SORT_ALGORITHM
 argument_list|,
 literal|"alphanumeric"
 argument_list|)
@@ -597,7 +902,7 @@ name|properties
 operator|.
 name|put
 argument_list|(
-literal|"IsSortByPosition"
+name|IS_SORT_BY_POSITION
 argument_list|,
 name|Boolean
 operator|.
@@ -608,7 +913,7 @@ name|properties
 operator|.
 name|put
 argument_list|(
-literal|"IsNumberEntries"
+name|IS_NUMBER_ENTRIES
 argument_list|,
 name|Boolean
 operator|.
@@ -619,7 +924,7 @@ name|properties
 operator|.
 name|put
 argument_list|(
-literal|"BracketBefore"
+name|BRACKET_BEFORE
 argument_list|,
 literal|"["
 argument_list|)
@@ -628,7 +933,7 @@ name|properties
 operator|.
 name|put
 argument_list|(
-literal|"BracketAfter"
+name|BRACKET_AFTER
 argument_list|,
 literal|"]"
 argument_list|)
@@ -637,7 +942,7 @@ name|properties
 operator|.
 name|put
 argument_list|(
-literal|"ReferenceParagraphFormat"
+name|REFERENCE_PARAGRAPH_FORMAT
 argument_list|,
 literal|"Default"
 argument_list|)
@@ -646,7 +951,7 @@ name|properties
 operator|.
 name|put
 argument_list|(
-literal|"ReferenceHeaderParagraphFormat"
+name|REFERENCE_HEADER_PARAGRAPH_FORMAT
 argument_list|,
 literal|"Heading 1"
 argument_list|)
@@ -656,7 +961,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"AuthorField"
+name|AUTHOR_FIELD
 argument_list|,
 literal|"author/editor"
 argument_list|)
@@ -665,7 +970,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"YearField"
+name|YEAR_FIELD
 argument_list|,
 literal|"year"
 argument_list|)
@@ -674,7 +979,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"MaxAuthors"
+name|MAX_AUTHORS
 argument_list|,
 literal|3
 argument_list|)
@@ -683,7 +988,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"MaxAuthorsFirst"
+name|MAX_AUTHORS_FIRST
 argument_list|,
 operator|-
 literal|1
@@ -693,7 +998,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"AuthorSeparator"
+name|AUTHOR_SEPARATOR
 argument_list|,
 literal|", "
 argument_list|)
@@ -702,7 +1007,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"AuthorLastSeparator"
+name|AUTHOR_LAST_SEPARATOR
 argument_list|,
 literal|"& "
 argument_list|)
@@ -711,7 +1016,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"AuthorLastSeparatorInText"
+name|AUTHOR_LAST_SEPARATOR_IN_TEXT
 argument_list|,
 literal|null
 argument_list|)
@@ -720,7 +1025,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"EtAlString"
+name|ET_AL_STRING
 argument_list|,
 literal|" et al."
 argument_list|)
@@ -729,7 +1034,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"YearSeparator"
+name|YEAR_SEPARATOR
 argument_list|,
 literal|", "
 argument_list|)
@@ -738,7 +1043,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"InTextYearSeparator"
+name|IN_TEXT_YEAR_SEPARATOR
 argument_list|,
 literal|" "
 argument_list|)
@@ -747,7 +1052,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"BracketBefore"
+name|BRACKET_BEFORE
 argument_list|,
 literal|"("
 argument_list|)
@@ -756,7 +1061,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"BracketAfter"
+name|BRACKET_AFTER
 argument_list|,
 literal|")"
 argument_list|)
@@ -765,7 +1070,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"CitationSeparator"
+name|CITATION_SEPARATOR
 argument_list|,
 literal|"; "
 argument_list|)
@@ -774,7 +1079,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"PageInfoSeparator"
+name|PAGE_INFO_SEPARATOR
 argument_list|,
 literal|"; "
 argument_list|)
@@ -783,7 +1088,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"GroupedNumbersSeparator"
+name|GROUPED_NUMBERS_SEPARATOR
 argument_list|,
 literal|"-"
 argument_list|)
@@ -792,7 +1097,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"MinimumGroupingCount"
+name|MINIMUM_GROUPING_COUNT
 argument_list|,
 literal|3
 argument_list|)
@@ -801,7 +1106,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"FormatCitations"
+name|FORMAT_CITATIONS
 argument_list|,
 name|Boolean
 operator|.
@@ -812,7 +1117,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"CitationCharacterFormat"
+name|CITATION_CHARACTER_FORMAT
 argument_list|,
 literal|"Default"
 argument_list|)
@@ -821,7 +1126,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"ItalicCitations"
+name|ITALIC_CITATIONS
 argument_list|,
 name|Boolean
 operator|.
@@ -832,7 +1137,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"BoldCitations"
+name|BOLD_CITATIONS
 argument_list|,
 name|Boolean
 operator|.
@@ -843,7 +1148,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"SuperscriptCitations"
+name|SUPERSCRIPT_CITATIONS
 argument_list|,
 name|Boolean
 operator|.
@@ -854,7 +1159,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"SubscriptCitations"
+name|SUBSCRIPT_CITATIONS
 argument_list|,
 name|Boolean
 operator|.
@@ -865,7 +1170,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"MultiCiteChronological"
+name|MULTI_CITE_CHRONOLOGICAL
 argument_list|,
 name|Boolean
 operator|.
@@ -876,7 +1181,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"BibTeXKeyCitations"
+name|BIBTEX_KEY_CITATIONS
 argument_list|,
 name|Boolean
 operator|.
@@ -887,7 +1192,7 @@ name|citProperties
 operator|.
 name|put
 argument_list|(
-literal|"ItalicEtAl"
+name|ITALIC_ET_AL
 argument_list|,
 name|Boolean
 operator|.
@@ -954,7 +1259,7 @@ name|in
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * If this style was initialized from a file on disk, reload the style      * if the file has been modified since it was read.      *      * @throws Exception      */
+comment|/**      * If this style was initialized from a file on disk, reload the style      * if the file has been modified since it was read.      *      * @throws IOException      */
 DECL|method|ensureUpToDate ()
 specifier|public
 name|void
@@ -1394,7 +1699,7 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-comment|/**      * After initalizing this style from a file, this method can be used to check      * whether the file appeared to be a proper style file.      *      * @return true if the file could be parsed as a style file, false otherwise.      */
+comment|/**      * After initializing this style from a file, this method can be used to check      * whether the file appeared to be a proper style file.      *      * @return true if the file could be parsed as a style file, false otherwise.      */
 DECL|method|isValid ()
 specifier|public
 name|boolean
@@ -1643,7 +1948,7 @@ operator|>
 literal|2
 operator|)
 operator|&&
-name|quoted
+name|QUOTED
 operator|.
 name|matcher
 argument_list|(
@@ -1687,7 +1992,7 @@ name|value
 decl_stmt|;
 if|if
 condition|(
-name|numPattern
+name|NUM_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -1713,12 +2018,9 @@ if|if
 condition|(
 literal|"true"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|value
-operator|.
-name|toLowerCase
-argument_list|()
 operator|.
 name|trim
 argument_list|()
@@ -1737,12 +2039,9 @@ if|if
 condition|(
 literal|"false"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|value
-operator|.
-name|toLowerCase
-argument_list|()
 operator|.
 name|trim
 argument_list|()
@@ -1871,7 +2170,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketBefore"
+name|BRACKET_BEFORE
 argument_list|)
 decl_stmt|;
 if|if
@@ -1883,7 +2182,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketBeforeInList"
+name|BRACKET_BEFORE_IN_LIST
 argument_list|)
 operator|!=
 literal|null
@@ -1899,7 +2198,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketBeforeInList"
+name|BRACKET_BEFORE_IN_LIST
 argument_list|)
 expr_stmt|;
 block|}
@@ -1913,7 +2212,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketAfter"
+name|BRACKET_AFTER
 argument_list|)
 decl_stmt|;
 if|if
@@ -1925,7 +2224,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketAfterInList"
+name|BRACKET_AFTER_IN_LIST
 argument_list|)
 operator|!=
 literal|null
@@ -1941,7 +2240,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketAfterInList"
+name|BRACKET_AFTER_IN_LIST
 argument_list|)
 expr_stmt|;
 block|}
@@ -2081,7 +2380,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"CitationSeparator"
+name|CITATION_SEPARATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2176,7 +2475,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"CitationSeparator"
+name|CITATION_SEPARATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2222,7 +2521,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"GroupedNumbersSeparator"
+name|GROUPED_NUMBERS_SEPARATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2281,7 +2580,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"CitationSeparator"
+name|CITATION_SEPARATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2459,7 +2758,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"AuthorField"
+name|AUTHOR_FIELD
 argument_list|)
 decl_stmt|;
 name|int
@@ -2472,7 +2771,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"MaxAuthors"
+name|MAX_AUTHORS
 argument_list|)
 decl_stmt|;
 if|if
@@ -2512,7 +2811,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"YearField"
+name|YEAR_FIELD
 argument_list|)
 argument_list|,
 name|maxAuthors
@@ -2524,7 +2823,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"AuthorSeparator"
+name|AUTHOR_SEPARATOR
 argument_list|)
 argument_list|,
 operator|(
@@ -2534,7 +2833,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"AuthorLastSeparator"
+name|AUTHOR_LAST_SEPARATOR
 argument_list|)
 argument_list|,
 operator|(
@@ -2544,7 +2843,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"EtAlString"
+name|ET_AL_STRING
 argument_list|)
 argument_list|,
 operator|(
@@ -2554,7 +2853,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"YearSeparator"
+name|YEAR_SEPARATOR
 argument_list|)
 argument_list|,
 operator|(
@@ -2564,7 +2863,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketBefore"
+name|BRACKET_BEFORE
 argument_list|)
 argument_list|,
 operator|(
@@ -2574,7 +2873,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketAfter"
+name|BRACKET_AFTER
 argument_list|)
 argument_list|,
 operator|(
@@ -2584,7 +2883,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"CitationSeparator"
+name|CITATION_SEPARATOR
 argument_list|)
 argument_list|,
 literal|null
@@ -2623,7 +2922,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"YearField"
+name|YEAR_FIELD
 argument_list|)
 argument_list|,
 name|maxAuthors
@@ -2635,7 +2934,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"AuthorSeparator"
+name|AUTHOR_SEPARATOR
 argument_list|)
 argument_list|,
 operator|(
@@ -2645,7 +2944,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"AuthorLastSeparator"
+name|AUTHOR_LAST_SEPARATOR
 argument_list|)
 argument_list|,
 operator|(
@@ -2655,7 +2954,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"EtAlString"
+name|ET_AL_STRING
 argument_list|)
 argument_list|,
 operator|(
@@ -2665,7 +2964,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"YearSeparator"
+name|YEAR_SEPARATOR
 argument_list|)
 argument_list|,
 operator|(
@@ -2675,7 +2974,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketBefore"
+name|BRACKET_BEFORE
 argument_list|)
 argument_list|,
 operator|(
@@ -2685,7 +2984,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketAfter"
+name|BRACKET_AFTER
 argument_list|)
 argument_list|,
 operator|(
@@ -2695,7 +2994,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"CitationSeparator"
+name|CITATION_SEPARATOR
 argument_list|)
 argument_list|,
 literal|null
@@ -2813,7 +3112,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"UniquefierSeparator"
+name|UNIQUEFIER_SEPARATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2873,7 +3172,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"UniquefierSeparator"
+name|UNIQUEFIER_SEPARATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2915,7 +3214,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"UniquefierSeparator"
+name|UNIQUEFIER_SEPARATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2940,7 +3239,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"AuthorField"
+name|AUTHOR_FIELD
 argument_list|)
 argument_list|,
 operator|(
@@ -2950,7 +3249,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"YearField"
+name|YEAR_FIELD
 argument_list|)
 argument_list|,
 operator|(
@@ -2960,7 +3259,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"MaxAuthors"
+name|MAX_AUTHORS
 argument_list|)
 argument_list|,
 operator|(
@@ -2970,7 +3269,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"AuthorSeparator"
+name|AUTHOR_SEPARATOR
 argument_list|)
 argument_list|,
 operator|(
@@ -2980,7 +3279,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"AuthorLastSeparator"
+name|AUTHOR_LAST_SEPARATOR
 argument_list|)
 argument_list|,
 operator|(
@@ -2990,7 +3289,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"EtAlString"
+name|ET_AL_STRING
 argument_list|)
 argument_list|,
 operator|(
@@ -3000,7 +3299,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"YearSeparator"
+name|YEAR_SEPARATOR
 argument_list|)
 argument_list|,
 operator|(
@@ -3010,7 +3309,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketBefore"
+name|BRACKET_BEFORE
 argument_list|)
 argument_list|,
 operator|(
@@ -3020,7 +3319,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketAfter"
+name|BRACKET_AFTER
 argument_list|)
 argument_list|,
 operator|(
@@ -3030,7 +3329,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"CitationSeparator"
+name|CITATION_SEPARATOR
 argument_list|)
 argument_list|,
 name|uniquefiers
@@ -3051,7 +3350,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"AuthorLastSeparator"
+name|AUTHOR_LAST_SEPARATOR
 argument_list|)
 decl_stmt|;
 name|String
@@ -3064,7 +3363,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"AuthorLastSeparatorInText"
+name|AUTHOR_LAST_SEPARATOR_IN_TEXT
 argument_list|)
 decl_stmt|;
 if|if
@@ -3093,7 +3392,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"AuthorField"
+name|AUTHOR_FIELD
 argument_list|)
 argument_list|,
 operator|(
@@ -3103,7 +3402,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"YearField"
+name|YEAR_FIELD
 argument_list|)
 argument_list|,
 operator|(
@@ -3113,7 +3412,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"MaxAuthors"
+name|MAX_AUTHORS
 argument_list|)
 argument_list|,
 operator|(
@@ -3123,7 +3422,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"AuthorSeparator"
+name|AUTHOR_SEPARATOR
 argument_list|)
 argument_list|,
 name|authorLastSeparator
@@ -3135,7 +3434,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"EtAlString"
+name|ET_AL_STRING
 argument_list|)
 argument_list|,
 operator|(
@@ -3145,7 +3444,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"InTextYearSeparator"
+name|IN_TEXT_YEAR_SEPARATOR
 argument_list|)
 argument_list|,
 operator|(
@@ -3155,7 +3454,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketBefore"
+name|BRACKET_BEFORE
 argument_list|)
 argument_list|,
 operator|(
@@ -3165,7 +3464,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BracketAfter"
+name|BRACKET_AFTER
 argument_list|)
 argument_list|,
 operator|(
@@ -3175,7 +3474,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"CitationSeparator"
+name|CITATION_SEPARATOR
 argument_list|)
 argument_list|,
 name|uniquefiers
@@ -3185,7 +3484,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Modify entry and uniqiefier arrays to facilitate a grouped presentation of uniqiefied entries.      *      * @param entries     The entry array.      * @param uniquefiers The uniquefier array.      * @param from        The first index to group (inclusive)      * @param to          The last index to group (inclusive)      * @param separator   The separator for the uniquefier letters.      */
+comment|/**      * Modify entry and uniquefier arrays to facilitate a grouped presentation of uniquefied entries.      *      * @param entries     The entry array.      * @param uniquefiers The uniquefier array.      * @param from        The first index to group (inclusive)      * @param to          The last index to group (inclusive)      * @param separator   The separator for the uniquefier letters.      */
 DECL|method|group (BibEntry[] entries, String[] uniquefiers, int from, int to, String separator)
 specifier|private
 name|void
@@ -3352,6 +3651,24 @@ name|j
 operator|++
 control|)
 block|{
+name|BibEntry
+name|entry
+init|=
+name|entries
+index|[
+name|j
+index|]
+decl_stmt|;
+comment|// Check if this entry has been nulled due to grouping with the previous entry(ies):
+if|if
+condition|(
+name|entry
+operator|==
+literal|null
+condition|)
+block|{
+continue|continue;
+block|}
 name|int
 name|unlimA
 init|=
@@ -3378,24 +3695,6 @@ name|unlimA
 else|:
 name|maxA
 decl_stmt|;
-name|BibEntry
-name|entry
-init|=
-name|entries
-index|[
-name|j
-index|]
-decl_stmt|;
-comment|// Check if this entry has been nulled due to grouping with the previous entry(ies):
-if|if
-condition|(
-name|entry
-operator|==
-literal|null
-condition|)
-block|{
-continue|continue;
-block|}
 if|if
 condition|(
 name|j
@@ -4044,7 +4343,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * This method looks up a field for en entry in a database. Any number of backup fields can be used      * if the primary field is empty.      *      * @param entry    The entry.      * @param database The database the entry belongs to.      * @param field    The field, or succession of fields, to look up. If backup fields are needed, separate      *                 field names by /. E.g. to use "author" with "editor" as backup, specify "author/editor".      * @return The resolved field content, or an empty string if the field(s) were empty.      */
+comment|/**      * This method looks up a field for an entry in a database. Any number of backup fields can be used      * if the primary field is empty.      *      * @param entry    The entry.      * @param database The database the entry belongs to.      * @param field    The field, or succession of fields, to look up. If backup fields are needed, separate      *                 field names by /. E.g. to use "author" with "editor" as backup, specify "author/editor".      * @return The resolved field content, or an empty string if the field(s) were empty.      */
 DECL|method|getCitationMarkerField (BibEntry entry, BibDatabase database, String field)
 specifier|private
 name|String
@@ -4261,7 +4560,7 @@ name|bracketAfter
 init|=
 name|getStringCitProperty
 argument_list|(
-literal|"BracketAfter"
+name|BRACKET_AFTER
 argument_list|)
 decl_stmt|;
 if|if
@@ -4299,7 +4598,7 @@ name|first
 operator|+
 name|getStringCitProperty
 argument_list|(
-literal|"PageInfoSeparator"
+name|PAGE_INFO_SEPARATOR
 argument_list|)
 operator|+
 name|pageInfo
@@ -4314,7 +4613,7 @@ name|citation
 operator|+
 name|getStringCitProperty
 argument_list|(
-literal|"PageInfoSeparator"
+name|PAGE_INFO_SEPARATOR
 argument_list|)
 operator|+
 name|pageInfo
@@ -4334,7 +4633,7 @@ name|Boolean
 operator|)
 name|getProperty
 argument_list|(
-literal|"IsNumberEntries"
+name|IS_NUMBER_ENTRIES
 argument_list|)
 return|;
 block|}
@@ -4351,11 +4650,11 @@ name|Boolean
 operator|)
 name|getProperty
 argument_list|(
-literal|"IsSortByPosition"
+name|IS_SORT_BY_POSITION
 argument_list|)
 return|;
 block|}
-comment|/**      * Convenience method for checking whether citation markers should be italicised.      * Will only be relevant if isFormatCitations() returns true.      *      * @return true to indicate that citations should be in italics.      */
+comment|/**      * Convenience method for checking whether citation markers should be italicized.      * Will only be relevant if isFormatCitations() returns true.      *      * @return true to indicate that citations should be in italics.      */
 DECL|method|isItalicCitations ()
 specifier|public
 name|boolean
@@ -4370,7 +4669,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"ItalicCitations"
+name|ITALIC_CITATIONS
 argument_list|)
 return|;
 block|}
@@ -4389,7 +4688,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BoldCitations"
+name|BOLD_CITATIONS
 argument_list|)
 return|;
 block|}
@@ -4408,7 +4707,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"FormatCitations"
+name|FORMAT_CITATIONS
 argument_list|)
 return|;
 block|}
@@ -4426,7 +4725,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"BibTeXKeyCitations"
+name|BIBTEX_KEY_CITATIONS
 argument_list|)
 return|;
 block|}
@@ -4508,7 +4807,7 @@ name|citProperties
 operator|.
 name|get
 argument_list|(
-literal|"CitationCharacterFormat"
+name|CITATION_CHARACTER_FORMAT
 argument_list|)
 return|;
 block|}
