@@ -1641,8 +1641,12 @@ name|MetaData
 name|metaData
 parameter_list|)
 block|{
-if|if
-condition|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|saveActionConfig
+init|=
 name|metaData
 operator|.
 name|getData
@@ -1651,7 +1655,11 @@ name|SaveActions
 operator|.
 name|META_KEY
 argument_list|)
-operator|==
+decl_stmt|;
+if|if
+condition|(
+name|saveActionConfig
+operator|!=
 literal|null
 condition|)
 block|{
