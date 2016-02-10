@@ -2962,6 +2962,16 @@ argument_list|)
 expr_stmt|;
 block|}
 name|boolean
+name|saveActionsChanged
+init|=
+name|saveActionsPanel
+operator|.
+name|storeSetting
+argument_list|(
+name|metaData
+argument_list|)
+decl_stmt|;
+name|boolean
 name|changed
 init|=
 name|saveOrderConfigChanged
@@ -3004,6 +3014,8 @@ operator|.
 name|isSelected
 argument_list|()
 operator|)
+operator|||
+name|saveActionsChanged
 decl_stmt|;
 comment|// ... if so, mark base changed. Prevent the Undo button from removing
 comment|// change marking:
