@@ -1227,14 +1227,12 @@ name|Globals
 operator|.
 name|prefs
 argument_list|)
-decl_stmt|;
-name|prefs
 operator|.
-name|setEncoding
+name|withEncoding
 argument_list|(
 name|encoding
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|BibDatabaseWriter
 name|databaseWriter
 init|=
