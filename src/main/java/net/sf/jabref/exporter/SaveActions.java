@@ -253,6 +253,24 @@ name|actions
 argument_list|)
 return|;
 block|}
+DECL|method|getAvailableFormatters ()
+specifier|public
+name|List
+argument_list|<
+name|Formatter
+argument_list|>
+name|getAvailableFormatters
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableList
+argument_list|(
+name|availableFormatters
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|equals (Object o)
