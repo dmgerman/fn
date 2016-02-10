@@ -814,7 +814,7 @@ name|FormLayout
 argument_list|(
 literal|"left:pref, 4dlu, left:pref, 4dlu, fill:pref"
 argument_list|,
-literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
+literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1334,6 +1334,27 @@ name|bb
 operator|.
 name|addGlue
 argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|addSeparator
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Save actions"
+argument_list|)
+argument_list|)
+operator|.
+name|xyw
+argument_list|(
+literal|1
+argument_list|,
+literal|25
+argument_list|,
+literal|5
+argument_list|)
 expr_stmt|;
 name|getContentPane
 argument_list|()
