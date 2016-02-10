@@ -572,12 +572,6 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|saveActionsPanel
-operator|=
-operator|new
-name|SaveActionsPanel
-argument_list|()
-expr_stmt|;
 name|init
 argument_list|(
 name|parent
@@ -1184,6 +1178,12 @@ literal|25
 argument_list|,
 literal|5
 argument_list|)
+expr_stmt|;
+name|saveActionsPanel
+operator|=
+operator|new
+name|SaveActionsPanel
+argument_list|()
 expr_stmt|;
 name|builder
 operator|.
@@ -2507,6 +2507,14 @@ name|protect
 operator|.
 name|isSelected
 argument_list|()
+expr_stmt|;
+comment|//set save actions
+name|saveActionsPanel
+operator|.
+name|setValues
+argument_list|(
+name|metaData
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|storeSettings ()
