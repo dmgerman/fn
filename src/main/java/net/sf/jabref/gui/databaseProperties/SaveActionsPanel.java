@@ -14,15 +14,23 @@ name|databaseProperties
 package|;
 end_package
 
-begin_comment
-comment|/**  * Created by joerg on 10.02.2016.  */
-end_comment
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
 
 begin_class
 DECL|class|SaveActionsPanel
 specifier|public
 class|class
 name|SaveActionsPanel
+extends|extends
+name|JPanel
 block|{ }
 end_class
 
