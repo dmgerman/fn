@@ -220,7 +220,7 @@ literal|"}\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"@comment{jabref-meta: saveActions:title;IdentityFormatter;}"
+literal|"@comment{jabref-meta: saveActions:enabled;title;IdentityFormatter;}"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -252,7 +252,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"title"
+literal|"enabled"
 argument_list|,
 name|saveActions
 operator|.
@@ -264,13 +264,25 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"IdentityFormatter"
+literal|"title"
 argument_list|,
 name|saveActions
 operator|.
 name|get
 argument_list|(
 literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"IdentityFormatter"
+argument_list|,
+name|saveActions
+operator|.
+name|get
+argument_list|(
+literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -362,7 +374,7 @@ literal|"}\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"@comment{jabref-meta: saveActions:title;}"
+literal|"@comment{jabref-meta: saveActions:enabled;title;}"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -462,7 +474,7 @@ literal|"}\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"@comment{jabref-meta: saveActions:title;LowerCaseChanger;}"
+literal|"@comment{jabref-meta: saveActions:enabled;title;LowerCaseChanger;}"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -494,7 +506,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"title"
+literal|"enabled"
 argument_list|,
 name|saveActions
 operator|.
@@ -506,13 +518,25 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"LowerCaseChanger"
+literal|"title"
 argument_list|,
 name|saveActions
 operator|.
 name|get
 argument_list|(
 literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"LowerCaseChanger"
+argument_list|,
+name|saveActions
+operator|.
+name|get
+argument_list|(
+literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -604,7 +628,7 @@ literal|"}\n"
 operator|+
 literal|"\n"
 operator|+
-literal|"@comment{jabref-meta: saveActions:title;LowerCaseChanger;pages;PageNumbersFormatter;}"
+literal|"@comment{jabref-meta: saveActions:enabled;title;LowerCaseChanger;pages;PageNumbersFormatter;}"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -636,7 +660,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"title"
+literal|"enabled"
 argument_list|,
 name|saveActions
 operator|.
@@ -648,13 +672,25 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"LowerCaseChanger"
+literal|"title"
 argument_list|,
 name|saveActions
 operator|.
 name|get
 argument_list|(
 literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"LowerCaseChanger"
+argument_list|,
+name|saveActions
+operator|.
+name|get
+argument_list|(
+literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
