@@ -200,6 +200,18 @@ name|URL
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
 begin_comment
 comment|/**  *  * This class handles accessing and obtaining BibTeX entry  * from ADS(The NASA Astrophysics Data System).  * Fetching using DOI(Document Object Identifier) is only supported.  *  * @author Ryo IGARASHI  */
 end_comment
@@ -487,6 +499,13 @@ name|ADSConnection
 operator|.
 name|getInputStream
 argument_list|()
+argument_list|,
+name|Charset
+operator|.
+name|forName
+argument_list|(
+literal|"ISO-8859-1"
+argument_list|)
 argument_list|)
 argument_list|)
 init|)

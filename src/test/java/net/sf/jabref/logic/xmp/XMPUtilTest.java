@@ -1279,7 +1279,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"Error: Cannot delete temporary file (already deleted)."
+literal|"Note: Cannot delete temporary file (already deleted so the corresponding test passed)."
 argument_list|)
 expr_stmt|;
 block|}
@@ -4305,6 +4305,20 @@ name|BibEntry
 name|actual
 parameter_list|)
 block|{
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+name|expected
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+name|actual
+argument_list|)
+expr_stmt|;
 name|Assert
 operator|.
 name|assertEquals

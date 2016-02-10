@@ -236,6 +236,13 @@ argument_list|(
 literal|"UtilFindFileTest"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+name|root
+argument_list|)
+expr_stmt|;
 name|Globals
 operator|.
 name|prefs
