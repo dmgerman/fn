@@ -82,6 +82,24 @@ argument_list|(
 literal|"\\A(\\d+)-{1,2}(\\d+)\\Z"
 argument_list|)
 decl_stmt|;
+DECL|field|REJECT_LITERALS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|REJECT_LITERALS
+init|=
+literal|"[^0-9,\\-\\+]"
+decl_stmt|;
+DECL|field|REPLACE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|REPLACE
+init|=
+literal|"$1--$2"
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getName ()
@@ -118,18 +136,6 @@ name|String
 name|value
 parameter_list|)
 block|{
-specifier|final
-name|String
-name|rejectLiterals
-init|=
-literal|"[^0-9,\\-\\+]"
-decl_stmt|;
-specifier|final
-name|String
-name|replace
-init|=
-literal|"$1--$2"
-decl_stmt|;
 comment|// nothing to do
 if|if
 condition|(
@@ -157,7 +163,7 @@ name|value
 operator|.
 name|replaceAll
 argument_list|(
-name|rejectLiterals
+name|REJECT_LITERALS
 argument_list|,
 literal|""
 argument_list|)
@@ -181,7 +187,7 @@ name|matcher
 operator|.
 name|replaceFirst
 argument_list|(
-name|replace
+name|REPLACE
 argument_list|)
 decl_stmt|;
 comment|// replacement?

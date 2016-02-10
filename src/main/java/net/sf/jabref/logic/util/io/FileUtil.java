@@ -720,10 +720,7 @@ name|dest
 operator|.
 name|exists
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 name|deleteIfExists
 condition|)
@@ -731,8 +728,6 @@ block|{
 return|return
 literal|false
 return|;
-comment|// else dest.delete();
-block|}
 block|}
 try|try
 init|(
@@ -1213,9 +1208,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|fileName
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|fileName
@@ -1301,9 +1298,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|fileName
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|fileName

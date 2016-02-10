@@ -95,7 +95,7 @@ block|{
 DECL|field|listeners
 specifier|private
 specifier|final
-name|ArrayList
+name|List
 argument_list|<
 name|SearchQueryHighlightListener
 argument_list|>
@@ -230,9 +230,11 @@ block|{
 comment|// Parse the search string to words
 if|if
 condition|(
+operator|(
 name|searchQuery
 operator|==
 literal|null
+operator|)
 operator|||
 name|searchQuery
 operator|.

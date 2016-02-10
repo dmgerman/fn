@@ -179,24 +179,26 @@ decl_stmt|;
 name|String
 name|firstWord
 init|=
-operator|!
 name|words
 operator|.
 name|isEmpty
 argument_list|()
 condition|?
+literal|""
+else|:
 name|words
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-else|:
-literal|""
 decl_stmt|;
-name|String
+name|StringBuilder
 name|searchDescription
 init|=
+operator|new
+name|StringBuilder
+argument_list|(
 name|regExp
 condition|?
 name|Localization
@@ -224,6 +226,7 @@ operator|.
 name|quoteForHTML
 argument_list|(
 name|firstWord
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -330,7 +333,9 @@ index|]
 argument_list|)
 decl_stmt|;
 name|searchDescription
-operator|+=
+operator|.
+name|append
+argument_list|(
 name|StringUtil
 operator|.
 name|join
@@ -338,6 +343,7 @@ argument_list|(
 name|unprocessedWordsInHtmlFormatArray
 argument_list|,
 name|andSeparator
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -367,6 +373,9 @@ argument_list|(
 literal|"%s (%s). %s"
 argument_list|,
 name|searchDescription
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|caseSensitiveDescription
 argument_list|,

@@ -95,6 +95,16 @@ operator|.
 name|MULTILINE
 argument_list|)
 decl_stmt|;
+comment|// adds superscript tag
+DECL|field|REPLACE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|REPLACE
+init|=
+literal|"$1\\\\textsuperscript{$2}"
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getName ()
@@ -131,13 +141,6 @@ name|String
 name|value
 parameter_list|)
 block|{
-comment|// adds superscript tag
-specifier|final
-name|String
-name|replace
-init|=
-literal|"$1\\\\textsuperscript{$2}"
-decl_stmt|;
 comment|// nothing to do
 if|if
 condition|(
@@ -173,7 +176,7 @@ name|matcher
 operator|.
 name|replaceAll
 argument_list|(
-name|replace
+name|REPLACE
 argument_list|)
 return|;
 block|}
