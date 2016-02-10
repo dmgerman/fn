@@ -424,12 +424,6 @@ name|port
 init|=
 literal|34567
 decl_stmt|;
-specifier|final
-name|String
-name|message
-init|=
-literal|"MYMESSAGE"
-decl_stmt|;
 try|try
 init|(
 name|ServerSocket
@@ -620,10 +614,7 @@ init|;
 name|OutputStream
 name|os
 operator|=
-name|socket
-operator|.
-name|accept
-argument_list|()
+name|socket2
 operator|.
 name|getOutputStream
 argument_list|()
@@ -636,7 +627,9 @@ argument_list|(
 literal|"whatever"
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+literal|"UTF8"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
