@@ -2259,10 +2259,15 @@ name|BibEntry
 argument_list|>
 name|bes
 operator|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
+argument_list|)
 block|;
 comment|//int row0 = mainTable.getSelectedRow();
 if|if
@@ -2313,7 +2318,7 @@ argument_list|)
 operator|)
 argument_list|)
 decl_stmt|;
-comment|// Loop through the array of entries, and delete them.
+comment|// Loop through the list of entries, and delete them.
 for|for
 control|(
 name|BibEntry
@@ -2322,18 +2327,6 @@ range|:
 name|bes
 control|)
 block|{
-name|database
-operator|.
-name|removeEntry
-argument_list|(
-name|be
-argument_list|)
-expr_stmt|;
-name|ensureNotShowing
-argument_list|(
-name|be
-argument_list|)
-expr_stmt|;
 name|ce
 operator|.
 name|addEdit
@@ -2349,6 +2342,18 @@ name|BasePanel
 operator|.
 name|this
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|database
+operator|.
+name|removeEntry
+argument_list|(
+name|be
+argument_list|)
+expr_stmt|;
+name|ensureNotShowing
+argument_list|(
+name|be
 argument_list|)
 expr_stmt|;
 block|}
@@ -2416,10 +2421,15 @@ name|BibEntry
 argument_list|>
 name|bes
 operator|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
+argument_list|)
 block|;
 if|if
 condition|(
@@ -2485,7 +2495,7 @@ argument_list|)
 operator|)
 argument_list|)
 decl_stmt|;
-comment|// Loop through the array of entries, and delete them.
+comment|// Loop through the list of entries, and delete them.
 for|for
 control|(
 name|BibEntry
@@ -2494,18 +2504,6 @@ range|:
 name|bes
 control|)
 block|{
-name|database
-operator|.
-name|removeEntry
-argument_list|(
-name|be
-argument_list|)
-expr_stmt|;
-name|ensureNotShowing
-argument_list|(
-name|be
-argument_list|)
-expr_stmt|;
 name|ce
 operator|.
 name|addEdit
@@ -2521,6 +2519,18 @@ name|BasePanel
 operator|.
 name|this
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|database
+operator|.
+name|removeEntry
+argument_list|(
+name|be
+argument_list|)
+expr_stmt|;
+name|ensureNotShowing
+argument_list|(
+name|be
 argument_list|)
 expr_stmt|;
 block|}
