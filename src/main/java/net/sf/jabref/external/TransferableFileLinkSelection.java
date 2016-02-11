@@ -192,15 +192,17 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|TransferableFileLinkSelection (BasePanel panel, BibEntry[] selection)
+DECL|method|TransferableFileLinkSelection (BasePanel panel, List<BibEntry> selection)
 specifier|public
 name|TransferableFileLinkSelection
 parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|selection
 parameter_list|)
 block|{
@@ -212,9 +214,11 @@ name|FileListTableModel
 argument_list|()
 decl_stmt|;
 name|selection
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 operator|.
 name|getFieldOptional
 argument_list|(

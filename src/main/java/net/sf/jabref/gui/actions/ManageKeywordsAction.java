@@ -1710,10 +1710,8 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|bp
@@ -1777,7 +1775,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1788,7 +1786,7 @@ name|HashSet
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -1855,7 +1853,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>

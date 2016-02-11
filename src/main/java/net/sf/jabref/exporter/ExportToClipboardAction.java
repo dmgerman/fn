@@ -372,10 +372,8 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|message
@@ -702,7 +700,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 decl_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>

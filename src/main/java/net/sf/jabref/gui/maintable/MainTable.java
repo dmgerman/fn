@@ -2512,30 +2512,16 @@ block|}
 comment|/**      * @return the return value is never null      */
 DECL|method|getSelectedEntries ()
 specifier|public
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|getSelectedEntries
 parameter_list|()
 block|{
-specifier|final
-name|BibEntry
-index|[]
-name|BE_ARRAY
-init|=
-operator|new
-name|BibEntry
-index|[
-literal|0
-index|]
-decl_stmt|;
 return|return
 name|getSelected
 argument_list|()
-operator|.
-name|toArray
-argument_list|(
-name|BE_ARRAY
-argument_list|)
 return|;
 block|}
 DECL|method|getCurrentSortOrder ()
