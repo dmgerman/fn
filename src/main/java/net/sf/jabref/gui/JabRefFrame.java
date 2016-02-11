@@ -5776,14 +5776,6 @@ name|this
 operator|.
 name|sidePaneManager
 expr_stmt|;
-name|GUIGlobals
-operator|.
-name|helpDiag
-operator|=
-name|this
-operator|.
-name|helpDiag
-expr_stmt|;
 name|groupSelector
 operator|=
 operator|new
