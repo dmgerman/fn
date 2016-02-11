@@ -4238,12 +4238,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|entries
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 try|try
