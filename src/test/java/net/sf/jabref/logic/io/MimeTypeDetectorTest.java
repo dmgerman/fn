@@ -195,21 +195,10 @@ name|void
 name|useGetRequestIfHeadRequestHasNoContentType
 parameter_list|()
 block|{
-comment|// FIXME: Fails on CI server
-name|Assume
-operator|.
-name|assumeFalse
-argument_list|(
-name|DevEnvironment
-operator|.
-name|isCIServer
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|String
 name|pdfUrl
 init|=
-literal|"http://iopscience.iop.org/article/10.1088/0004-637X/815/1/23/pdf"
+literal|"http://iopscience.iop.org/article/10.1088/1749-4699/8/1/014010/pdf"
 decl_stmt|;
 name|assertEquals
 argument_list|(
