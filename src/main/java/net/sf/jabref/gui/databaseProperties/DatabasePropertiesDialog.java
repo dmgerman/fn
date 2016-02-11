@@ -617,9 +617,9 @@ argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
-literal|"left:pref, 4dlu, left:pref, 4dlu, fill:pref"
+literal|"left:pref, 4dlu, left:pref, 4dlu, pref:grow"
 argument_list|,
-literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref"
+literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 40dlu, pref, "
 argument_list|)
 argument_list|)
 decl_stmt|;
