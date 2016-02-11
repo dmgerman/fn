@@ -64,22 +64,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|TypedBibEntry
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -191,15 +175,17 @@ name|empty
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|MainTableColumn (String columnName, String[] bibtexFields, BibDatabase database)
+DECL|method|MainTableColumn (String columnName, List<String> bibtexFields, BibDatabase database)
 specifier|public
 name|MainTableColumn
 parameter_list|(
 name|String
 name|columnName
 parameter_list|,
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|bibtexFields
 parameter_list|,
 name|BibDatabase
@@ -220,12 +206,7 @@ name|Collections
 operator|.
 name|unmodifiableList
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|bibtexFields
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -255,15 +236,17 @@ name|database
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MainTableColumn (String columnName, String[] bibtexFields, JLabel iconLabel)
+DECL|method|MainTableColumn (String columnName, List<String> bibtexFields, JLabel iconLabel)
 specifier|public
 name|MainTableColumn
 parameter_list|(
 name|String
 name|columnName
 parameter_list|,
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|bibtexFields
 parameter_list|,
 name|JLabel
@@ -284,12 +267,7 @@ name|Collections
 operator|.
 name|unmodifiableList
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|bibtexFields
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|this

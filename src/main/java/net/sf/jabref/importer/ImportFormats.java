@@ -44,6 +44,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|SortedSet
 import|;
 end_import
@@ -678,15 +688,15 @@ name|imi
 operator|.
 name|automatedImport
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|file
 operator|.
 name|getAbsolutePath
 argument_list|()
-block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Make sure we remember which filter was used, to set the default

@@ -14189,8 +14189,10 @@ name|entry
 argument_list|)
 decl_stmt|;
 specifier|final
+name|Collection
+argument_list|<
 name|ExternalFileType
-index|[]
+argument_list|>
 name|types
 init|=
 name|ExternalFileTypes
