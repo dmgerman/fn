@@ -635,8 +635,10 @@ condition|(
 name|showDialog
 condition|)
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|chosenStrings
 init|=
 name|FileDialogs
@@ -665,13 +667,6 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|chosenStrings
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|String
@@ -698,7 +693,6 @@ name|chosen
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

@@ -298,7 +298,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|BorderLayout
 import|;
 end_import
 
@@ -387,6 +387,16 @@ operator|.
 name|util
 operator|.
 name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -4215,8 +4225,10 @@ operator|.
 name|database
 argument_list|()
 decl_stmt|;
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 init|=
 name|panel
@@ -4226,11 +4238,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|entries
 operator|.
-name|length
-operator|>
-literal|0
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 try|try

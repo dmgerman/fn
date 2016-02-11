@@ -372,9 +372,8 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 operator|.
-name|length
-operator|==
-literal|0
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|message
@@ -690,8 +689,10 @@ operator|.
 name|deleteOnExit
 argument_list|()
 expr_stmt|;
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|bes
 init|=
 name|panel
@@ -699,7 +700,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 decl_stmt|;
-name|HashSet
+name|Set
 argument_list|<
 name|String
 argument_list|>
@@ -711,7 +712,8 @@ argument_list|<>
 argument_list|(
 name|bes
 operator|.
-name|length
+name|size
+argument_list|()
 argument_list|)
 decl_stmt|;
 for|for
@@ -874,7 +876,8 @@ literal|": "
 operator|+
 name|bes
 operator|.
-name|length
+name|size
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch

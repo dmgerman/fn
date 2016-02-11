@@ -12102,8 +12102,9 @@ operator|.
 name|getFocused
 argument_list|()
 decl_stmt|;
-try|try
-block|{
+name|Action
+name|action
+init|=
 name|source
 operator|.
 name|getActionMap
@@ -12113,6 +12114,15 @@ name|get
 argument_list|(
 name|command
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|action
+operator|!=
+literal|null
+condition|)
+block|{
+name|action
 operator|.
 name|actionPerformed
 argument_list|(
@@ -12127,14 +12137,6 @@ name|command
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NullPointerException
-name|ex
-parameter_list|)
-block|{
-comment|// No component is focused, so we do nothing.
 block|}
 block|}
 block|}

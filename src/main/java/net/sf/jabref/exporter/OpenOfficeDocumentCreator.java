@@ -522,11 +522,23 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Delete the temporary file:
+if|if
+condition|(
+operator|!
 name|tmpFile
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Cannot delete temporary export file"
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|exportOpenOfficeCalcXML (File tmpFile, BibDatabase database, Set<String> keySet)
 specifier|private

@@ -390,7 +390,8 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 operator|.
-name|length
+name|size
+argument_list|()
 operator|!=
 literal|1
 condition|)
@@ -438,9 +439,11 @@ name|panel
 operator|.
 name|getSelectedEntries
 argument_list|()
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 expr_stmt|;
 name|panel
 operator|.

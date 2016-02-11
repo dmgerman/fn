@@ -444,13 +444,15 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Automatically imports the files given as arguments      * @param filenames List of files to import      */
-DECL|method|automatedImport (String[] filenames)
+DECL|method|automatedImport (List<String> filenames)
 specifier|public
 name|void
 name|automatedImport
 parameter_list|(
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|filenames
 parameter_list|)
 block|{
@@ -499,8 +501,10 @@ name|AbstractWorker
 block|{
 DECL|field|filenames
 specifier|private
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|filenames
 decl_stmt|;
 DECL|field|bibtexResult
@@ -565,19 +569,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
-name|filenames
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
+operator|!
 name|filenames
 operator|.
-name|length
-operator|>
-literal|0
-operator|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|frame
@@ -612,9 +608,11 @@ operator|.
 name|WORKING_DIRECTORY
 argument_list|,
 name|filenames
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

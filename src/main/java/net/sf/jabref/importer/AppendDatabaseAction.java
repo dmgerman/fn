@@ -518,8 +518,10 @@ name|isOkPressed
 argument_list|()
 condition|)
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|chosen
 init|=
 name|FileDialogs
@@ -553,8 +555,9 @@ comment|//                                       null, JFileChooser.OPEN_DIALOG,
 if|if
 condition|(
 name|chosen
-operator|==
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return;

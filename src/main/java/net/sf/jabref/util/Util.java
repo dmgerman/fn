@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     Copyright (C) 2015 Oliver Kopp      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     Copyright (C) 2015 Oliver Kopp      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_comment
@@ -2548,22 +2548,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Warns the user of undesired side effects of an explicit assignment/removal of entries to/from this group.      * Currently there are four types of groups: AllEntriesGroup, SearchGroup - do not support explicit assignment.      * ExplicitGroup - never modifies entries. KeywordGroup - only this modifies entries upon assignment/removal.      * Modifications are acceptable unless they affect a standard field (such as "author") besides the "keywords" field.      *      * @param parent The Component used as a parent when displaying a confirmation dialog.      * @return true if the assignment has no undesired side effects, or the user chose to perform it anyway. false      * otherwise (this indicates that the user has aborted the assignment).      */
-DECL|method|warnAssignmentSideEffects (AbstractGroup[] groups, BibEntry[] entries, BibDatabase db, Component parent)
+DECL|method|warnAssignmentSideEffects (List<AbstractGroup> groups, Component parent)
 specifier|public
 specifier|static
 name|boolean
 name|warnAssignmentSideEffects
 parameter_list|(
+name|List
+argument_list|<
 name|AbstractGroup
-index|[]
+argument_list|>
 name|groups
-parameter_list|,
-name|BibEntry
-index|[]
-name|entries
-parameter_list|,
-name|BibDatabase
-name|db
 parameter_list|,
 name|Component
 name|parent
@@ -3071,8 +3066,10 @@ name|diag
 parameter_list|)
 block|{
 specifier|final
+name|Collection
+argument_list|<
 name|ExternalFileType
-index|[]
+argument_list|>
 name|types
 init|=
 name|ExternalFileTypes
@@ -3105,7 +3102,8 @@ literal|0
 argument_list|,
 name|types
 operator|.
-name|length
+name|size
+argument_list|()
 operator|-
 literal|1
 argument_list|)

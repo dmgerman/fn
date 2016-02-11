@@ -312,9 +312,11 @@ name|basePanel
 operator|.
 name|getSelectedEntries
 argument_list|()
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 expr_stmt|;
 name|FindFullText
 name|fft

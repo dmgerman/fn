@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -384,7 +384,27 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -2898,14 +2918,14 @@ condition|)
 block|{
 return|return;
 block|}
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|vec
+name|list
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2933,7 +2953,7 @@ name|entry
 argument_list|)
 condition|)
 block|{
-name|vec
+name|list
 operator|.
 name|add
 argument_list|(
@@ -2945,32 +2965,12 @@ block|}
 if|if
 condition|(
 operator|!
-name|vec
+name|list
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|BibEntry
-index|[]
-name|entries
-init|=
-operator|new
-name|BibEntry
-index|[
-name|vec
-operator|.
-name|size
-argument_list|()
-index|]
-decl_stmt|;
-name|vec
-operator|.
-name|toArray
-argument_list|(
-name|entries
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -2978,23 +2978,16 @@ name|Util
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(
-operator|new
-name|AbstractGroup
-index|[]
-block|{
-name|mResultingGroup
-block|}
-operator|,
-name|entries
-operator|,
-name|m_basePanel
+name|Arrays
 operator|.
-name|getDatabase
-argument_list|()
-operator|,
+name|asList
+argument_list|(
+name|mResultingGroup
+argument_list|)
+argument_list|,
 name|this
-block|)
-block|)
+argument_list|)
+condition|)
 block|{
 return|return;
 block|}
@@ -3016,16 +3009,14 @@ name|mResultingGroup
 operator|.
 name|add
 argument_list|(
-name|entries
+name|list
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_function
-unit|}      private
+block|}
 DECL|method|setDescription (String description)
+specifier|private
 name|void
 name|setDescription
 parameter_list|(
@@ -3045,9 +3036,6 @@ literal|"</html>"
 argument_list|)
 expr_stmt|;
 block|}
-end_function
-
-begin_function
 DECL|method|formatRegExException (String regExp, Exception e)
 specifier|private
 specifier|static
@@ -3241,13 +3229,7 @@ return|return
 name|s
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Returns an undo object for adding the edited group's entries to the new      * group, or null if this did not occur.      */
-end_comment
-
-begin_function
 DECL|method|getUndoForAddPreviousEntries ()
 specifier|public
 name|AbstractUndoableEdit
@@ -3258,13 +3240,7 @@ return|return
 name|mUndoAddPreviousEntires
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/**      * Sets the font of the name entry field.      */
-end_comment
-
-begin_function
 DECL|method|setNameFontItalic (boolean italic)
 specifier|private
 name|void
@@ -3318,13 +3294,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
-
-begin_comment
 comment|/**      * Returns the int representing the selected hierarchical group context.      */
-end_comment
-
-begin_function
 DECL|method|getContext ()
 specifier|private
 name|GroupHierarchyType
@@ -3380,9 +3350,6 @@ name|INDEPENDENT
 return|;
 comment|// default
 block|}
-end_function
-
-begin_function
 DECL|method|setContext (GroupHierarchyType context)
 specifier|private
 name|void
@@ -3438,8 +3405,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-end_function
+block|}
+end_class
 
-unit|}
 end_unit
 

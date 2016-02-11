@@ -74,6 +74,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -1406,13 +1416,15 @@ name|cursor
 return|;
 block|}
 comment|/**      * Adds the selected entries to this node's group.      */
-DECL|method|addToGroup (BibEntry[] entries)
+DECL|method|addToGroup (List<BibEntry> entries)
 specifier|public
 name|AbstractUndoableEdit
 name|addToGroup
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{
@@ -1465,13 +1477,15 @@ name|undo
 return|;
 block|}
 comment|/**      * Removes the selected entries from this node's group.      */
-DECL|method|removeFromGroup (BibEntry[] entries)
+DECL|method|removeFromGroup (List<BibEntry> entries)
 specifier|public
 name|AbstractUndoableEdit
 name|removeFromGroup
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{

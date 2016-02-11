@@ -28,6 +28,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -974,25 +984,15 @@ return|;
 block|}
 DECL|method|getExternalFileTypeSelection ()
 specifier|public
+name|Collection
+argument_list|<
 name|ExternalFileType
-index|[]
+argument_list|>
 name|getExternalFileTypeSelection
 parameter_list|()
 block|{
 return|return
 name|externalFileTypes
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|ExternalFileType
-index|[
-name|externalFileTypes
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
 return|;
 block|}
 comment|/**      * Look up the external file type registered with this name, if any.      *      * @param name The file type name.      * @return The ExternalFileType registered, or null if none.      */

@@ -220,7 +220,27 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|BorderLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Color
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Component
 import|;
 end_import
 
@@ -258,6 +278,16 @@ name|Enumeration
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created with IntelliJ IDEA.  * User: alver  * Date: 1/22/13  * Time: 6:24 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -290,8 +320,10 @@ name|move
 decl_stmt|;
 DECL|field|selection
 specifier|private
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|selection
 decl_stmt|;
 DECL|field|tree

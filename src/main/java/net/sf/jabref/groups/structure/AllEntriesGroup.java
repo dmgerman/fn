@@ -20,6 +20,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -288,13 +298,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (BibEntry[] entries)
+DECL|method|add (List<BibEntry> entries)
 specifier|public
 name|AbstractUndoableEdit
 name|add
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{
@@ -305,13 +317,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|remove (BibEntry[] entries)
+DECL|method|remove (List<BibEntry> entries)
 specifier|public
 name|AbstractUndoableEdit
 name|remove
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{
