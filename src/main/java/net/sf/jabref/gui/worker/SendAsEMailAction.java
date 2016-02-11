@@ -388,9 +388,8 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 operator|.
-name|length
-operator|==
-literal|0
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|message
@@ -411,8 +410,10 @@ operator|new
 name|StringWriter
 argument_list|()
 decl_stmt|;
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|bes
 init|=
 name|panel
@@ -517,12 +518,7 @@ name|FileUtil
 operator|.
 name|getListOfLinkedFiles
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|bes
-argument_list|)
 argument_list|,
 name|frame
 operator|.
@@ -778,7 +774,8 @@ argument_list|)
 argument_list|,
 name|bes
 operator|.
-name|length
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

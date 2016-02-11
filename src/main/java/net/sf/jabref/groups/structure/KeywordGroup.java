@@ -24,6 +24,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -923,13 +933,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (BibEntry[] entries)
+DECL|method|add (List<BibEntry> entries)
 specifier|public
 name|AbstractUndoableEdit
 name|add
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{
@@ -952,12 +964,12 @@ operator|!=
 literal|null
 operator|)
 operator|&&
+operator|!
 operator|(
 name|entries
 operator|.
-name|length
-operator|>
-literal|0
+name|isEmpty
+argument_list|()
 operator|)
 condition|)
 block|{
@@ -1103,13 +1115,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|remove (BibEntry[] entries)
+DECL|method|remove (List<BibEntry> entries)
 specifier|public
 name|AbstractUndoableEdit
 name|remove
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{
@@ -1135,7 +1149,8 @@ operator|&&
 operator|(
 name|entries
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|0
 operator|)

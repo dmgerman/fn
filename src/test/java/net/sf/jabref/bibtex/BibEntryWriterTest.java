@@ -401,10 +401,6 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
 literal|"@Article{,"
 operator|+
 name|Globals
@@ -436,6 +432,10 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 decl_stmt|;
 comment|// @formatter:on
 name|assertEquals
@@ -1060,10 +1060,6 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
 literal|"@Article{test,"
 operator|+
 name|Globals
@@ -1095,6 +1091,10 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 decl_stmt|;
 comment|// @formatter:on
 name|assertEquals
@@ -1325,10 +1325,6 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
 literal|"@Article{test,"
 operator|+
 name|Globals
@@ -1366,6 +1362,10 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 decl_stmt|;
 comment|// @formatter:on
 name|assertEquals
@@ -1568,7 +1568,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-comment|//appending newlines are not written by the writer, but by FileActions. So, these should be removed here.
+comment|// Only one appending newline is written by the writer, the rest by FileActions. So, these should be removed here.
 name|assertEquals
 argument_list|(
 name|bibtexEntry
@@ -1582,7 +1582,7 @@ operator|.
 name|length
 argument_list|()
 operator|-
-literal|2
+literal|1
 argument_list|)
 argument_list|,
 name|actual
@@ -2169,10 +2169,6 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
 literal|"@Article{test,"
 operator|+
 name|Globals
@@ -2210,6 +2206,10 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 decl_stmt|;
 comment|// @formatter:on
 name|assertEquals

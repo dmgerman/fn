@@ -1670,13 +1670,15 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * This method inserts a cite marker in the text for the given BibEntry,      * and may refresh the bibliography.      * @param entries The entries to cite.      * @param database The database the entry belongs to.      * @param style The bibliography style we are using.      * @param inParenthesis Indicates whether it is an in-text citation or a citation in parenthesis.      *   This is not relevant if numbered citations are used.      * @param withText Indicates whether this should be a normal citation (true) or an empty      *   (invisible) citation (false).      * @param sync Indicates whether the reference list should be refreshed.      * @throws Exception      */
-DECL|method|insertEntry (BibEntry[] entries, BibDatabase database, List<BibDatabase> allBases, OOBibStyle style, boolean inParenthesis, boolean withText, String pageInfo, boolean sync)
+DECL|method|insertEntry (List<BibEntry> entries, BibDatabase database, List<BibDatabase> allBases, OOBibStyle style, boolean inParenthesis, boolean withText, String pageInfo, boolean sync)
 specifier|public
 name|void
 name|insertEntry
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|,
 name|BibDatabase
@@ -1720,7 +1722,8 @@ if|if
 condition|(
 name|entries
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|1
 condition|)
@@ -1737,24 +1740,20 @@ name|MULTI_CITE_CHRONOLOGICAL
 argument_list|)
 condition|)
 block|{
-name|Arrays
+name|entries
 operator|.
 name|sort
 argument_list|(
-name|entries
-argument_list|,
 name|yearAuthorTitleComparator
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-name|Arrays
+name|entries
 operator|.
 name|sort
 argument_list|(
-name|entries
-argument_list|,
 name|entryComparator
 argument_list|)
 expr_stmt|;
@@ -1778,7 +1777,8 @@ name|i
 operator|<
 name|entries
 operator|.
-name|length
+name|size
+argument_list|()
 condition|;
 name|i
 operator|++
@@ -1788,9 +1788,11 @@ name|BibEntry
 name|entry
 init|=
 name|entries
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -3361,7 +3363,12 @@ name|style
 operator|.
 name|getCitationMarker
 argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|cEntries
+argument_list|)
 argument_list|,
 name|entries
 operator|.
@@ -4154,7 +4161,12 @@ name|style
 operator|.
 name|getCitationMarker
 argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|cEntries
+argument_list|)
 argument_list|,
 name|entries
 operator|.

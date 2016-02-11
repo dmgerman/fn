@@ -40,6 +40,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -454,7 +464,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|pushEntries (BibDatabase database, BibEntry[] entries, String keys, MetaData metaData)
+DECL|method|pushEntries (BibDatabase database, List<BibEntry> entries, String keys, MetaData metaData)
 specifier|public
 name|void
 name|pushEntries
@@ -462,8 +472,10 @@ parameter_list|(
 name|BibDatabase
 name|database
 parameter_list|,
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|,
 name|String

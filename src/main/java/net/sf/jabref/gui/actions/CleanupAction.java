@@ -379,7 +379,8 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 operator|.
-name|length
+name|size
+argument_list|()
 decl_stmt|;
 if|if
 condition|(

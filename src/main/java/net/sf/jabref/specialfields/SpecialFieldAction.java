@@ -50,6 +50,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -138,7 +148,7 @@ specifier|final
 name|String
 name|undoText
 decl_stmt|;
-comment|/**      *       * @param nullFieldIfValueIsTheSame - false also causes that doneTextPattern has two place holders %0 for the value and %1 for the sum of entries      * @param doneTextPattern - the pattern to use to update status information shown in MainFrame      */
+comment|/**      *      * @param nullFieldIfValueIsTheSame - false also causes that doneTextPattern has two place holders %0 for the value and %1 for the sum of entries      * @param doneTextPattern - the pattern to use to update status information shown in MainFrame      */
 DECL|method|SpecialFieldAction ( JabRefFrame frame, SpecialField c, String value, boolean nullFieldIfValueIsTheSame, String undoText, String doneTextPattern)
 specifier|public
 name|SpecialFieldAction
@@ -218,8 +228,10 @@ argument_list|(
 name|undoText
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|bes
 init|=
 name|frame
@@ -327,7 +339,8 @@ name|toString
 argument_list|(
 name|bes
 operator|.
-name|length
+name|size
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -350,7 +363,8 @@ name|toString
 argument_list|(
 name|bes
 operator|.
-name|length
+name|size
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

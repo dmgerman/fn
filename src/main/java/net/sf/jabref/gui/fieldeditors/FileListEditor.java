@@ -2513,10 +2513,6 @@ name|entries
 operator|.
 name|addAll
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|frame
 operator|.
 name|getCurrentBasePanel
@@ -2524,7 +2520,6 @@ argument_list|()
 operator|.
 name|getSelectedEntries
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// filesystem lookup

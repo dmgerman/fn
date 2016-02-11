@@ -2638,12 +2638,12 @@ block|{
 return|return
 name|getCitationMarker
 argument_list|(
-operator|new
-name|BibEntry
-index|[]
-block|{
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 name|entry
-block|}
+argument_list|)
 argument_list|,
 name|database
 argument_list|,
@@ -2666,13 +2666,15 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Format the marker for the in-text citation according to this bib style. Uniquefier letters are added as      * provided by the uniquefiers argument. If successive entries within the citation are uniquefied from each other,      * this method will perform a grouping of these entries.      *      * @param entries       The array of JabRef BibEntry providing the data.      * @param inParenthesis Signals whether a parenthesized citation or an in-text citation is wanted.      * @param uniquefiers   Strings to add behind the year for each entry in case it's needed to separate similar      *                      entries.      * @param unlimAuthors  Boolean for each entry. If true, we should not use "et al" formatting regardless      *                      of the number of authors. Can be null to indicate that no entries should have unlimited names.      * @return The formatted citation.      */
-DECL|method|getCitationMarker (BibEntry[] entries, BibDatabase database, boolean inParenthesis, String[] uniquefiers, int[] unlimAuthors)
+DECL|method|getCitationMarker (List<BibEntry> entries, BibDatabase database, boolean inParenthesis, String[] uniquefiers, int[] unlimAuthors)
 specifier|public
 name|String
 name|getCitationMarker
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|,
 name|BibDatabase
@@ -2790,15 +2792,17 @@ name|tmpMarker
 operator|=
 name|getAuthorYearParenthesisMarker
 argument_list|(
-operator|new
-name|BibEntry
-index|[]
-block|{
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 name|entries
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
-block|}
+argument_list|)
+argument_list|)
 argument_list|,
 name|database
 argument_list|,
@@ -2901,15 +2905,17 @@ name|thisMarker
 init|=
 name|getAuthorYearParenthesisMarker
 argument_list|(
-operator|new
-name|BibEntry
-index|[]
-block|{
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
 name|entries
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
-block|}
+argument_list|)
+argument_list|)
 argument_list|,
 name|database
 argument_list|,
@@ -3008,9 +3014,11 @@ init|=
 name|getCitationMarkerField
 argument_list|(
 name|entries
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 argument_list|,
 name|database
 argument_list|,
@@ -3485,13 +3493,15 @@ return|;
 block|}
 block|}
 comment|/**      * Modify entry and uniquefier arrays to facilitate a grouped presentation of uniquefied entries.      *      * @param entries     The entry array.      * @param uniquefiers The uniquefier array.      * @param from        The first index to group (inclusive)      * @param to          The last index to group (inclusive)      * @param separator   The separator for the uniquefier letters.      */
-DECL|method|group (BibEntry[] entries, String[] uniquefiers, int from, int to, String separator)
+DECL|method|group (List<BibEntry> entries, String[] uniquefiers, int from, int to, String separator)
 specifier|private
 name|void
 name|group
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|,
 name|String
@@ -3555,11 +3565,13 @@ index|]
 argument_list|)
 expr_stmt|;
 name|entries
-index|[
+operator|.
+name|set
+argument_list|(
 name|i
-index|]
-operator|=
+argument_list|,
 literal|null
+argument_list|)
 expr_stmt|;
 block|}
 name|uniquefiers
@@ -3574,13 +3586,15 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * This method produces (Author, year) style citation strings in many different forms.      *      * @param entries           The array of BibEntry to get fields from.      * @param authorField       The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField         The bibtex field providing the year, e.g. "year".      * @param maxA              The maximum number of authors to write out in full without using etal. Set to      *                          -1 to always write out all authors.      * @param authorSep         The String to add between author names except the last two, e.g. ", ".      * @param andString         The String to add between the two last author names, e.g. "& ".      * @param etAlString        The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep           The String to separate authors from year, e.g. "; ".      * @param startBrace        The opening parenthesis.      * @param endBrace          The closing parenthesis.      * @param citationSeparator The String to separate citations from each other.      * @param uniquifiers       Optional parameter to separate similar citations. Elements can be null if not needed.      * @return The formatted citation.      */
-DECL|method|getAuthorYearParenthesisMarker (BibEntry[] entries, BibDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquifiers, int[] unlimAuthors)
+DECL|method|getAuthorYearParenthesisMarker (List<BibEntry> entries, BibDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquifiers, int[] unlimAuthors)
 specifier|private
 name|String
 name|getAuthorYearParenthesisMarker
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|,
 name|BibDatabase
@@ -3645,7 +3659,8 @@ name|j
 operator|<
 name|entries
 operator|.
-name|length
+name|size
+argument_list|()
 condition|;
 name|j
 operator|++
@@ -3655,9 +3670,11 @@ name|BibEntry
 name|entry
 init|=
 name|entries
-index|[
+operator|.
+name|get
+argument_list|(
 name|j
-index|]
+argument_list|)
 decl_stmt|;
 comment|// Check if this entry has been nulled due to grouping with the previous entry(ies):
 if|if
@@ -3956,13 +3973,15 @@ argument_list|()
 return|;
 block|}
 comment|/**      * This method produces "Author (year)" style citation strings in many different forms.      *      * @param entries     The array of BibEntry to get fields from.      * @param authorField The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField   The bibtex field providing the year, e.g. "year".      * @param maxA        The maximum number of authors to write out in full without using etal. Set to      *                    -1 to always write out all authors.      * @param authorSep   The String to add between author names except the last two, e.g. ", ".      * @param andString   The String to add between the two last author names, e.g. "& ".      * @param etAlString  The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep     The String to separate authors from year, e.g. "; ".      * @param startBrace  The opening parenthesis.      * @param endBrace    The closing parenthesis.      * @param uniquefiers Optional parameters to separate similar citations. Can be null if not needed.      * @return The formatted citation.      */
-DECL|method|getAuthorYearInTextMarker (BibEntry[] entries, BibDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquefiers, int[] unlimAuthors)
+DECL|method|getAuthorYearInTextMarker (List<BibEntry> entries, BibDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquefiers, int[] unlimAuthors)
 specifier|private
 name|String
 name|getAuthorYearInTextMarker
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|,
 name|BibDatabase
@@ -4025,7 +4044,8 @@ name|i
 operator|<
 name|entries
 operator|.
-name|length
+name|size
+argument_list|()
 condition|;
 name|i
 operator|++
@@ -4061,9 +4081,11 @@ comment|// Check if this entry has been nulled due to grouping with the previous
 if|if
 condition|(
 name|entries
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 operator|==
 literal|null
 condition|)
@@ -4091,9 +4113,11 @@ init|=
 name|getCitationMarkerField
 argument_list|(
 name|entries
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 argument_list|,
 name|database
 argument_list|,
@@ -4275,9 +4299,11 @@ init|=
 name|getCitationMarkerField
 argument_list|(
 name|entries
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 argument_list|,
 name|database
 argument_list|,
