@@ -1258,7 +1258,7 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Default TeX mode"
+literal|"Default bibliography mode"
 argument_list|)
 argument_list|)
 expr_stmt|;
