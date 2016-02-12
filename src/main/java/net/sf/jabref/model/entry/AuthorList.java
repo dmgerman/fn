@@ -2645,12 +2645,6 @@ index|[
 name|abbrInt
 index|]
 operator|=
-name|String
-operator|.
-name|join
-argument_list|(
-literal|" and "
-argument_list|,
 name|getAuthorList
 argument_list|()
 operator|.
@@ -2673,8 +2667,9 @@ name|collect
 argument_list|(
 name|Collectors
 operator|.
-name|toList
-argument_list|()
+name|joining
+argument_list|(
+literal|" and "
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3109,12 +3104,6 @@ return|;
 block|}
 name|authorsFirstFirstAnds
 operator|=
-name|String
-operator|.
-name|join
-argument_list|(
-literal|" and "
-argument_list|,
 name|getAuthorList
 argument_list|()
 operator|.
@@ -3137,8 +3126,9 @@ name|collect
 argument_list|(
 name|Collectors
 operator|.
-name|toList
-argument_list|()
+name|joining
+argument_list|(
+literal|" and "
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3166,12 +3156,6 @@ return|;
 block|}
 name|authorsAlph
 operator|=
-name|String
-operator|.
-name|join
-argument_list|(
-literal|" and "
-argument_list|,
 name|getAuthorList
 argument_list|()
 operator|.
@@ -3192,8 +3176,9 @@ name|collect
 argument_list|(
 name|Collectors
 operator|.
-name|toList
-argument_list|()
+name|joining
+argument_list|(
+literal|" and "
 argument_list|)
 argument_list|)
 expr_stmt|;

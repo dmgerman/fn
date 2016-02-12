@@ -6048,12 +6048,6 @@ block|}
 name|String
 name|allAuthors
 init|=
-name|String
-operator|.
-name|join
-argument_list|(
-literal|" and "
-argument_list|,
 name|authors
 operator|.
 name|stream
@@ -6073,8 +6067,9 @@ name|collect
 argument_list|(
 name|Collectors
 operator|.
-name|toList
-argument_list|()
+name|joining
+argument_list|(
+literal|" and "
 argument_list|)
 argument_list|)
 decl_stmt|;
