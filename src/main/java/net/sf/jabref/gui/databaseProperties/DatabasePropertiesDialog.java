@@ -911,7 +911,9 @@ name|saveActionsPanel
 operator|=
 operator|new
 name|SaveActionsPanel
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 name|builder
 operator|.
@@ -2074,7 +2076,7 @@ name|saveActionsChanged
 init|=
 name|saveActionsPanel
 operator|.
-name|storeSetting
+name|storeSettings
 argument_list|(
 name|metaData
 argument_list|)
