@@ -698,6 +698,8 @@ name|append
 argument_list|(
 literal|". "
 argument_list|)
+expr_stmt|;
+name|stringBuilder
 operator|.
 name|append
 argument_list|(

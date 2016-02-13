@@ -68,12 +68,12 @@ name|PageNumbersFormatter
 implements|implements
 name|Formatter
 block|{
-DECL|field|PAGES_PATTERN
+DECL|field|PAGES_DETECT_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|PAGES_PATTERN
+name|PAGES_DETECT_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -91,12 +91,12 @@ name|REJECT_LITERALS
 init|=
 literal|"[^0-9,\\-\\+]"
 decl_stmt|;
-DECL|field|REPLACE
+DECL|field|PAGES_REPLACE_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|REPLACE
+name|PAGES_REPLACE_PATTERN
 init|=
 literal|"$1--$2"
 decl_stmt|;
@@ -172,7 +172,7 @@ comment|// try to find pages pattern
 name|Matcher
 name|matcher
 init|=
-name|PAGES_PATTERN
+name|PAGES_DETECT_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -187,7 +187,7 @@ name|matcher
 operator|.
 name|replaceFirst
 argument_list|(
-name|REPLACE
+name|PAGES_REPLACE_PATTERN
 argument_list|)
 decl_stmt|;
 comment|// replacement?

@@ -73,12 +73,12 @@ implements|implements
 name|Formatter
 block|{
 comment|// find possible superscripts on word boundaries
-DECL|field|PATTERN
+DECL|field|SUPERSCRIPT_DETECT_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|PATTERN
+name|SUPERSCRIPT_DETECT_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -95,13 +95,12 @@ operator|.
 name|MULTILINE
 argument_list|)
 decl_stmt|;
-comment|// adds superscript tag
-DECL|field|REPLACE
+DECL|field|SUPERSCRIPT_REPLACE_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|REPLACE
+name|SUPERSCRIPT_REPLACE_PATTERN
 init|=
 literal|"$1\\\\textsuperscript{$2}"
 decl_stmt|;
@@ -163,7 +162,7 @@ block|}
 name|Matcher
 name|matcher
 init|=
-name|PATTERN
+name|SUPERSCRIPT_DETECT_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -171,12 +170,13 @@ name|value
 argument_list|)
 decl_stmt|;
 comment|// replace globally
+comment|// adds superscript tag
 return|return
 name|matcher
 operator|.
 name|replaceAll
 argument_list|(
-name|REPLACE
+name|SUPERSCRIPT_REPLACE_PATTERN
 argument_list|)
 return|;
 block|}
