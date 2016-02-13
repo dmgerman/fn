@@ -124,10 +124,6 @@ name|ContentAutoCompleters
 extends|extends
 name|AutoCompleters
 block|{
-DECL|field|preferences
-name|AutoCompletePreferences
-name|preferences
-decl_stmt|;
 DECL|field|abbreviationLoader
 specifier|private
 specifier|final
@@ -145,10 +141,6 @@ name|JournalAbbreviationLoader
 name|abbreviationLoader
 parameter_list|)
 block|{
-name|this
-operator|.
-name|preferences
-operator|=
 name|Objects
 operator|.
 name|requireNonNull

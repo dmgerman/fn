@@ -2831,10 +2831,6 @@ block|{
 name|String
 name|medlineID
 init|=
-literal|""
-decl_stmt|;
-name|medlineID
-operator|+=
 operator|new
 name|String
 argument_list|(
@@ -2844,7 +2840,7 @@ name|start
 argument_list|,
 name|length
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 block|}
 elseif|else
 if|if
@@ -2855,10 +2851,6 @@ block|{
 name|String
 name|url
 init|=
-literal|""
-decl_stmt|;
-name|url
-operator|+=
 operator|new
 name|String
 argument_list|(
@@ -2868,7 +2860,7 @@ name|start
 argument_list|,
 name|length
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 block|}
 elseif|else
 if|if
