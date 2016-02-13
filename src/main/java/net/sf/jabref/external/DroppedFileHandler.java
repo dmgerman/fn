@@ -2673,6 +2673,9 @@ argument_list|,
 name|dirs
 argument_list|)
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getAbsolutePath
 argument_list|()
 else|:
@@ -2740,6 +2743,9 @@ name|link
 argument_list|,
 name|dirs
 argument_list|)
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()

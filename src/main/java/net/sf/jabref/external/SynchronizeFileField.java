@@ -956,7 +956,10 @@ init|=
 literal|false
 decl_stmt|;
 comment|// Get an absolute path representation:
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|file
 init|=
 name|FileUtil
@@ -973,13 +976,18 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
+operator|!
 name|file
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 operator|||
 operator|!
 name|file
+operator|.
+name|get
+argument_list|()
 operator|.
 name|exists
 argument_list|()

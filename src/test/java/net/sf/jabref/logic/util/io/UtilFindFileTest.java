@@ -376,6 +376,9 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|Assert
 operator|.
@@ -456,6 +459,9 @@ argument_list|()
 operator|+
 literal|"/pdfs/"
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|Assert
 operator|.
@@ -745,6 +751,9 @@ argument_list|(
 name|dirsToSearch
 argument_list|)
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|Assert
 operator|.
@@ -820,6 +829,9 @@ argument_list|(
 name|dirsToSearch
 argument_list|)
 argument_list|)
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 name|Assert
 operator|.
@@ -873,6 +885,9 @@ literal|0
 index|]
 argument_list|)
 argument_list|)
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 name|Assert
 operator|.
@@ -899,6 +914,9 @@ literal|1
 index|]
 argument_list|)
 argument_list|)
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 name|Assert
 operator|.
@@ -995,6 +1013,9 @@ argument_list|(
 name|dirsToSearch
 argument_list|)
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|Assert
 operator|.
@@ -1070,6 +1091,9 @@ argument_list|(
 name|dirsToSearch
 argument_list|)
 argument_list|)
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 name|Assert
 operator|.
@@ -1123,6 +1147,9 @@ literal|0
 index|]
 argument_list|)
 argument_list|)
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 name|Assert
 operator|.
@@ -1149,6 +1176,9 @@ literal|1
 index|]
 argument_list|)
 argument_list|)
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 name|Assert
 operator|.

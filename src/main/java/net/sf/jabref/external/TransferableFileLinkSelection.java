@@ -289,6 +289,9 @@ name|link
 argument_list|,
 name|dirs
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 name|fileList
 operator|.

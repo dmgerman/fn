@@ -521,6 +521,9 @@ name|ln
 argument_list|,
 name|dirs
 argument_list|)
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 block|}
 if|if

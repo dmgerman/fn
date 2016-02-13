@@ -68,6 +68,16 @@ name|TemporalAccessor
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class transforms date to the format yyyy-mm-dd or yyyy-mm..  */
 end_comment
@@ -116,7 +126,10 @@ name|String
 name|value
 parameter_list|)
 block|{
+name|Optional
+argument_list|<
 name|TemporalAccessor
+argument_list|>
 name|parsedDate
 init|=
 name|tryParseDate
@@ -126,9 +139,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|parsedDate
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return
@@ -151,13 +166,19 @@ operator|.
 name|format
 argument_list|(
 name|parsedDate
+operator|.
+name|get
+argument_list|()
 argument_list|)
 return|;
 block|}
 comment|/*      * Try to parse the following formats      *  "M/y" (covers 9/15, 9/2015, and 09/2015)      *  "MMMM (dd), yyyy" (covers September 1, 2015 and September, 2015)      *  "yyyy-MM-dd" (covers 2009-1-15)      *  "d.M.uuuu" (covers 15.1.2015)      * The code is essentially taken from http://stackoverflow.com/questions/4024544/how-to-parse-dates-in-multiple-formats-using-simpledateformat.      */
 DECL|method|tryParseDate (String dateString)
 specifier|private
+name|Optional
+argument_list|<
 name|TemporalAccessor
+argument_list|>
 name|tryParseDate
 parameter_list|(
 name|String
@@ -195,6 +216,10 @@ block|{
 try|try
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|DateTimeFormatter
 operator|.
 name|ofPattern
@@ -205,6 +230,7 @@ operator|.
 name|parse
 argument_list|(
 name|dateString
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -218,7 +244,10 @@ comment|// Ignored
 block|}
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
