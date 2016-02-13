@@ -140,6 +140,24 @@ name|LayoutFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|strings
+operator|.
+name|XmlCharsMap
+import|;
+end_import
+
 begin_comment
 comment|/**  * Changes {\^o} or {\^{o}} to ?  */
 end_comment
