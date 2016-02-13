@@ -700,7 +700,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Offer copy/move/linking options for a dragged external file. Perform the      * chosen operation, if any.      *      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param mainTable The MainTable the file was dragged to.      * @param dropRow   The row where the file was dropped.      */
-DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, boolean localFile, MainTable mainTable, int dropRow)
+DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, MainTable mainTable, int dropRow)
 specifier|public
 name|void
 name|handleDroppedfile
@@ -710,9 +710,6 @@ name|fileName
 parameter_list|,
 name|ExternalFileType
 name|fileType
-parameter_list|,
-name|boolean
-name|localFile
 parameter_list|,
 name|MainTable
 name|mainTable
@@ -737,14 +734,12 @@ name|fileName
 argument_list|,
 name|fileType
 argument_list|,
-name|localFile
-argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @param fileName  The name of the dragged file.      * @param fileType  The FileType associated with the file.      * @param localFile Indicate whether this is a local file, or a remote file copied      *                  to a local temporary file.      * @param entry     The target entry for the drop.      */
-DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, boolean localFile, BibEntry entry)
+DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, BibEntry entry)
 specifier|public
 name|void
 name|handleDroppedfile
@@ -754,9 +749,6 @@ name|fileName
 parameter_list|,
 name|ExternalFileType
 name|fileType
-parameter_list|,
-name|boolean
-name|localFile
 parameter_list|,
 name|BibEntry
 name|entry
@@ -788,8 +780,6 @@ argument_list|(
 name|fileName
 argument_list|,
 name|fileType
-argument_list|,
-name|localFile
 argument_list|,
 name|edits
 argument_list|)
@@ -927,8 +917,6 @@ name|doCopy
 argument_list|(
 name|fileName
 argument_list|,
-name|fileType
-argument_list|,
 name|destFilename
 argument_list|,
 name|edits
@@ -949,8 +937,6 @@ operator|=
 name|doMove
 argument_list|(
 name|fileName
-argument_list|,
-name|fileType
 argument_list|,
 name|destFilename
 argument_list|,
@@ -1033,22 +1019,17 @@ name|linkPdfToEntry
 argument_list|(
 name|fileName
 argument_list|,
-name|entryTable
-argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|linkPdfToEntry (String fileName, MainTable entryTable, BibEntry entry)
+DECL|method|linkPdfToEntry (String fileName, BibEntry entry)
 specifier|public
 name|void
 name|linkPdfToEntry
 parameter_list|(
 name|String
 name|fileName
-parameter_list|,
-name|MainTable
-name|entryTable
 parameter_list|,
 name|BibEntry
 name|entry
@@ -1202,8 +1183,6 @@ name|doCopy
 argument_list|(
 name|fileName
 argument_list|,
-name|fileType
-argument_list|,
 name|destFilename
 argument_list|,
 name|edits
@@ -1224,8 +1203,6 @@ operator|=
 name|doMove
 argument_list|(
 name|fileName
-argument_list|,
-name|fileType
 argument_list|,
 name|destFilename
 argument_list|,
@@ -1438,8 +1415,6 @@ name|doCopy
 argument_list|(
 name|fileName
 argument_list|,
-name|fileType
-argument_list|,
 name|destFilename
 argument_list|,
 name|edits
@@ -1460,8 +1435,6 @@ operator|=
 name|doMove
 argument_list|(
 name|fileName
-argument_list|,
-name|fileType
 argument_list|,
 name|destFilename
 argument_list|,
@@ -1562,7 +1535,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Done by MrDlib
-DECL|method|tryXmpImport (String fileName, ExternalFileType fileType, boolean localFile, NamedCompound edits)
+DECL|method|tryXmpImport (String fileName, ExternalFileType fileType, NamedCompound edits)
 specifier|private
 name|boolean
 name|tryXmpImport
@@ -1572,9 +1545,6 @@ name|fileName
 parameter_list|,
 name|ExternalFileType
 name|fileType
-parameter_list|,
-name|boolean
-name|localFile
 parameter_list|,
 name|NamedCompound
 name|edits
@@ -1852,8 +1822,6 @@ name|doCopy
 argument_list|(
 name|fileName
 argument_list|,
-name|fileType
-argument_list|,
 name|destFilename
 argument_list|,
 name|edits
@@ -1874,8 +1842,6 @@ operator|=
 name|doMove
 argument_list|(
 name|fileName
-argument_list|,
-name|fileType
 argument_list|,
 name|destFilename
 argument_list|,
@@ -2897,17 +2863,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Move the given file to the base directory for its file type, and rename      * it to the given filename.      *      * @param fileName     The name of the source file.      * @param fileType     The FileType associated with the file.      * @param destFilename The destination filename.      * @param edits        TODO we should be able to undo this action      * @return true if the operation succeeded.      */
-DECL|method|doMove (String fileName, ExternalFileType fileType, String destFilename, NamedCompound edits)
+comment|/**      * Move the given file to the base directory for its file type, and rename      * it to the given filename.      *      * @param fileName     The name of the source file.      * @param destFilename The destination filename.      * @param edits        TODO we should be able to undo this action      * @return true if the operation succeeded.      */
+DECL|method|doMove (String fileName, String destFilename, NamedCompound edits)
 specifier|private
 name|boolean
 name|doMove
 parameter_list|(
 name|String
 name|fileName
-parameter_list|,
-name|ExternalFileType
-name|fileType
 parameter_list|,
 name|String
 name|destFilename
@@ -3145,16 +3108,13 @@ return|;
 block|}
 block|}
 comment|/**      * Copy the given file to the base directory for its file type, and give it      * the given name.      *      * @param fileName The name of the source file.      * @param fileType The FileType associated with the file.      * @param toFile   The destination filename. An existing path-component will be removed.      * @param edits    TODO we should be able to undo this!      * @return      */
-DECL|method|doCopy (String fileName, ExternalFileType fileType, String toFile, NamedCompound edits)
+DECL|method|doCopy (String fileName, String toFile, NamedCompound edits)
 specifier|private
 name|boolean
 name|doCopy
 parameter_list|(
 name|String
 name|fileName
-parameter_list|,
-name|ExternalFileType
-name|fileType
 parameter_list|,
 name|String
 name|toFile
@@ -3241,29 +3201,7 @@ condition|)
 block|{
 comment|// OOps, we don't know which directory to put it in, or the given
 comment|// dir doesn't exist....
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"dir: "
-operator|+
-name|dirs
-operator|.
-name|get
-argument_list|(
-name|found
-argument_list|)
-operator|+
-literal|"\t ext: "
-operator|+
-name|fileType
-operator|.
-name|getExtension
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// This should not happen!!
 return|return
 literal|false
 return|;

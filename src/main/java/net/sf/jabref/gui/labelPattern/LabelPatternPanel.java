@@ -96,22 +96,6 @@ name|gui
 operator|.
 name|help
 operator|.
-name|AboutDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
 name|HelpAction
 import|;
 end_import
@@ -345,13 +329,10 @@ specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|method|LabelPatternPanel (AboutDialog helpDiag, BasePanel panel)
+DECL|method|LabelPatternPanel (BasePanel panel)
 specifier|public
 name|LabelPatternPanel
 parameter_list|(
-name|AboutDialog
-name|helpDiag
-parameter_list|,
 name|BasePanel
 name|panel
 parameter_list|)

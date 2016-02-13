@@ -1641,8 +1641,6 @@ name|linkPdfToEntry
 argument_list|(
 name|fileName
 argument_list|,
-name|entryTable
-argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
@@ -1790,8 +1788,6 @@ operator|.
 name|linkPdfToEntry
 argument_list|(
 name|fileName
-argument_list|,
-name|entryTable
 argument_list|,
 name|newEntry
 argument_list|)
