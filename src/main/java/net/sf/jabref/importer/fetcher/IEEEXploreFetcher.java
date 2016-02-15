@@ -738,7 +738,7 @@ name|dl
 operator|.
 name|addParameters
 argument_list|(
-literal|"Content-type"
+literal|"Content-Type"
 argument_list|,
 literal|"application/json"
 argument_list|)

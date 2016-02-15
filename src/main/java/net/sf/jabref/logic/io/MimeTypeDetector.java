@@ -158,7 +158,7 @@ argument_list|()
 operator|.
 name|getFirst
 argument_list|(
-literal|"content-type"
+literal|"Content-Type"
 argument_list|)
 decl_stmt|;
 comment|// HEAD and GET headers might differ, try real GET request
@@ -186,7 +186,7 @@ argument_list|()
 operator|.
 name|getFirst
 argument_list|(
-literal|"content-type"
+literal|"Content-Type"
 argument_list|)
 expr_stmt|;
 block|}
