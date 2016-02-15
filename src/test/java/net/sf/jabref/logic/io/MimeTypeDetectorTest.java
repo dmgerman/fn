@@ -159,7 +159,7 @@ block|{
 name|String
 name|pdfUrl
 init|=
-literal|"https://www.uni-bamberg.de/fileadmin/uni/fakultaeten/wiai_lehrstuehle/praktische_informatik/Dateien/Publikationen/cloud15-application-migration-effort-in-the-cloud.pdf"
+literal|"http://docs.oasis-open.org/wsbpel/2.0/OS/wsbpel-v2.0-OS.pdf"
 decl_stmt|;
 name|assertTrue
 argument_list|(

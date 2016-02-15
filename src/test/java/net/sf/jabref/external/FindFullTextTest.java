@@ -171,7 +171,7 @@ init|=
 operator|new
 name|URL
 argument_list|(
-literal|"https://www.uni-bamberg.de/fileadmin/uni/fakultaeten/wiai_lehrstuehle/praktische_informatik/Dateien/Publikationen/cloud15-application-migration-effort-in-the-cloud.pdf"
+literal|"http://docs.oasis-open.org/wsbpel/2.0/OS/wsbpel-v2.0-OS.pdf"
 argument_list|)
 decl_stmt|;
 name|FullTextFinder
