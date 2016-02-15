@@ -339,6 +339,15 @@ name|actionsToDisplay
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|actionsList
+operator|.
+name|setSelectionMode
+argument_list|(
+name|ListSelectionModel
+operator|.
+name|SINGLE_SELECTION
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|add
