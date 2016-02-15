@@ -683,12 +683,12 @@ name|NAMES_FIRST_LAST
 init|=
 literal|"namesFf"
 decl_stmt|;
-DECL|field|BIBLATEX_MODE
+DECL|field|BIBLATEX_DEFAULT_MODE
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|BIBLATEX_MODE
+name|BIBLATEX_DEFAULT_MODE
 init|=
 literal|"biblatexMode"
 decl_stmt|;
@@ -3359,7 +3359,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|BIBLATEX_MODE
+name|BIBLATEX_DEFAULT_MODE
 argument_list|,
 literal|false
 argument_list|)

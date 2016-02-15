@@ -116,10 +116,6 @@ name|*
 import|;
 end_import
 
-begin_comment
-comment|/**  * This is a non-modal help Dialog. The contents of the help is specified by  * calling showPage().  */
-end_comment
-
 begin_class
 DECL|class|AboutDialog
 specifier|public
@@ -147,7 +143,7 @@ argument_list|(
 literal|"About JabRef"
 argument_list|)
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 name|setSize
@@ -159,6 +155,11 @@ literal|750
 argument_list|,
 literal|600
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|setLocationRelativeTo
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 name|JPanel

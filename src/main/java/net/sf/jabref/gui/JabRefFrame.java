@@ -5792,14 +5792,6 @@ name|this
 operator|.
 name|sidePaneManager
 expr_stmt|;
-name|GUIGlobals
-operator|.
-name|helpDiag
-operator|=
-name|this
-operator|.
-name|helpDiag
-expr_stmt|;
 name|groupSelector
 operator|=
 operator|new
@@ -9573,7 +9565,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|BIBLATEX_MODE
+name|BIBLATEX_DEFAULT_MODE
 argument_list|)
 condition|)
 block|{
@@ -10626,7 +10618,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|BIBLATEX_MODE
+name|BIBLATEX_DEFAULT_MODE
 argument_list|)
 argument_list|)
 argument_list|)
