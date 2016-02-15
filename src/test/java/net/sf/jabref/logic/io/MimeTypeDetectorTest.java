@@ -159,7 +159,7 @@ block|{
 name|String
 name|pdfUrl
 init|=
-literal|"https://www.uni-bamberg.de/fileadmin/uni/fakultaeten/wiai_lehrstuehle/praktische_informatik/Dateien/Publikationen/cloud15-application-migration-effort-in-the-cloud.pdf"
+literal|"https://github.com/JabRef/jabref/tree/master/src/test/resources/net/sf/jabref/logic/io/empty.pdf"
 decl_stmt|;
 name|assertTrue
 argument_list|(
