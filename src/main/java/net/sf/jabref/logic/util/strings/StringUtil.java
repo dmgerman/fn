@@ -2183,11 +2183,6 @@ name|str
 parameter_list|)
 block|{
 name|int
-name|ival
-init|=
-literal|0
-decl_stmt|;
-name|int
 name|idx
 init|=
 literal|0
@@ -2297,6 +2292,11 @@ name|str
 argument_list|)
 throw|;
 block|}
+name|int
+name|ival
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 init|;

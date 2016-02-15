@@ -24,7 +24,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -142,14 +152,14 @@ name|String
 name|author
 parameter_list|)
 block|{
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|names
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;

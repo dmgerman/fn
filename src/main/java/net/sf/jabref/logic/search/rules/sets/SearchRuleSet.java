@@ -44,6 +44,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Objects
 import|;
 end_import
@@ -70,7 +80,7 @@ block|{
 DECL|field|ruleSet
 specifier|protected
 specifier|final
-name|Vector
+name|List
 argument_list|<
 name|SearchRule
 argument_list|>

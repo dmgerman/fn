@@ -68,12 +68,12 @@ name|PageNumbersFormatter
 implements|implements
 name|Formatter
 block|{
-DECL|field|PAGES_PATTERN
+DECL|field|PAGES_DETECT_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|PAGES_PATTERN
+name|PAGES_DETECT_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -81,6 +81,24 @@ name|compile
 argument_list|(
 literal|"\\A(\\d+)-{1,2}(\\d+)\\Z"
 argument_list|)
+decl_stmt|;
+DECL|field|REJECT_LITERALS
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|REJECT_LITERALS
+init|=
+literal|"[^0-9,\\-\\+]"
+decl_stmt|;
+DECL|field|PAGES_REPLACE_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PAGES_REPLACE_PATTERN
+init|=
+literal|"$1--$2"
 decl_stmt|;
 annotation|@
 name|Override
@@ -118,18 +136,6 @@ name|String
 name|value
 parameter_list|)
 block|{
-specifier|final
-name|String
-name|rejectLiterals
-init|=
-literal|"[^0-9,\\-\\+]"
-decl_stmt|;
-specifier|final
-name|String
-name|replace
-init|=
-literal|"$1--$2"
-decl_stmt|;
 comment|// nothing to do
 if|if
 condition|(
@@ -157,7 +163,7 @@ name|value
 operator|.
 name|replaceAll
 argument_list|(
-name|rejectLiterals
+name|REJECT_LITERALS
 argument_list|,
 literal|""
 argument_list|)
@@ -166,7 +172,7 @@ comment|// try to find pages pattern
 name|Matcher
 name|matcher
 init|=
-name|PAGES_PATTERN
+name|PAGES_DETECT_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -181,7 +187,7 @@ name|matcher
 operator|.
 name|replaceFirst
 argument_list|(
-name|replace
+name|PAGES_REPLACE_PATTERN
 argument_list|)
 decl_stmt|;
 comment|// replacement?

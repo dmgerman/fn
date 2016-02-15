@@ -213,7 +213,9 @@ parameter_list|(
 name|DateTimeParseException
 name|ignored
 parameter_list|)
-block|{             }
+block|{
+comment|// Ignored
+block|}
 block|}
 return|return
 literal|null
