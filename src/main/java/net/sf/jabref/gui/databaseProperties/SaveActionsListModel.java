@@ -188,6 +188,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|getAllActions ()
+specifier|public
+name|List
+argument_list|<
+name|SaveAction
+argument_list|>
+name|getAllActions
+parameter_list|()
+block|{
+return|return
+name|saveActions
+return|;
+block|}
 annotation|@
 name|Override
 DECL|method|getSize ()
