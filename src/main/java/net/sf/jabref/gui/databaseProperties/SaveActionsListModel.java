@@ -73,19 +73,19 @@ DECL|class|SaveActionsListModel
 class|class
 name|SaveActionsListModel
 parameter_list|<
-name|SaveAction
+name|FieldFormatterCleanup
 parameter_list|>
 implements|implements
 name|ListModel
 argument_list|<
-name|SaveAction
+name|FieldFormatterCleanup
 argument_list|>
 block|{
 DECL|field|saveActions
 specifier|private
 name|List
 argument_list|<
-name|SaveAction
+name|FieldFormatterCleanup
 argument_list|>
 name|saveActions
 decl_stmt|;
@@ -97,13 +97,13 @@ name|ListDataListener
 argument_list|>
 name|listeners
 decl_stmt|;
-DECL|method|SaveActionsListModel (List<SaveAction> saveActions)
+DECL|method|SaveActionsListModel (List<FieldFormatterCleanup> saveActions)
 specifier|public
 name|SaveActionsListModel
 parameter_list|(
 name|List
 argument_list|<
-name|SaveAction
+name|FieldFormatterCleanup
 argument_list|>
 name|saveActions
 parameter_list|)
@@ -137,12 +137,12 @@ argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|addSaveAction (SaveAction action)
+DECL|method|addSaveAction (FieldFormatterCleanup action)
 specifier|public
 name|void
 name|addSaveAction
 parameter_list|(
-name|SaveAction
+name|FieldFormatterCleanup
 name|action
 parameter_list|)
 block|{
@@ -228,7 +228,7 @@ name|index
 argument_list|)
 throw|;
 block|}
-name|SaveAction
+name|FieldFormatterCleanup
 name|action
 init|=
 name|saveActions
@@ -271,7 +271,7 @@ DECL|method|getAllActions ()
 specifier|public
 name|List
 argument_list|<
-name|SaveAction
+name|FieldFormatterCleanup
 argument_list|>
 name|getAllActions
 parameter_list|()
@@ -299,7 +299,7 @@ annotation|@
 name|Override
 DECL|method|getElementAt (int index)
 specifier|public
-name|SaveAction
+name|FieldFormatterCleanup
 name|getElementAt
 parameter_list|(
 name|int
