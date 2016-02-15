@@ -619,7 +619,7 @@ name|FormLayout
 argument_list|(
 literal|"left:pref, 4dlu, left:pref, 4dlu, pref:grow"
 argument_list|,
-literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 40dlu, pref, "
+literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 135dlu, pref,"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -728,7 +728,7 @@ name|xy
 argument_list|(
 literal|3
 argument_list|,
-literal|5
+literal|1
 argument_list|)
 expr_stmt|;
 name|builder
