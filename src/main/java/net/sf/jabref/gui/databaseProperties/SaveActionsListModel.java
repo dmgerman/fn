@@ -68,6 +68,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
 begin_class
 DECL|class|SaveActionsListModel
 class|class
@@ -108,21 +118,13 @@ argument_list|>
 name|saveActions
 parameter_list|)
 block|{
-if|if
-condition|(
-name|saveActions
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
+name|Objects
+operator|.
+name|requireNonNull
 argument_list|(
-literal|"Input data must not be null"
+name|saveActions
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 name|this
 operator|.
 name|saveActions

@@ -175,21 +175,13 @@ name|MetaData
 name|metaData
 parameter_list|)
 block|{
-if|if
-condition|(
-name|metaData
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
+name|Objects
+operator|.
+name|requireNonNull
 argument_list|(
-literal|"MetaData must not be null"
+name|metaData
 argument_list|)
-throw|;
-block|}
+expr_stmt|;
 name|actions
 operator|=
 operator|new
