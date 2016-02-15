@@ -911,9 +911,7 @@ name|saveActionsPanel
 operator|=
 operator|new
 name|SaveActionsPanel
-argument_list|(
-name|this
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|builder
 operator|.
