@@ -162,22 +162,6 @@ name|gui
 operator|.
 name|help
 operator|.
-name|AboutDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
 name|HelpFiles
 import|;
 end_import
@@ -396,15 +380,12 @@ specifier|final
 name|RemotePreferences
 name|remotePreferences
 decl_stmt|;
-DECL|method|AdvancedTab (JabRefPreferences prefs, AboutDialog diag, JabRef jabRef)
+DECL|method|AdvancedTab (JabRefPreferences prefs, JabRef jabRef)
 specifier|public
 name|AdvancedTab
 parameter_list|(
 name|JabRefPreferences
 name|prefs
-parameter_list|,
-name|AboutDialog
-name|diag
 parameter_list|,
 name|JabRef
 name|jabRef

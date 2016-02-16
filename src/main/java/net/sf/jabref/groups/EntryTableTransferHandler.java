@@ -1724,12 +1724,6 @@ literal|0
 operator|)
 condition|)
 block|{
-comment|/*                  * TODO: need to signal if this is a local or autodownloaded                  * file                  */
-name|boolean
-name|local
-init|=
-literal|true
-decl_stmt|;
 comment|/*                  * TODO: make this an instance variable?                  */
 name|DroppedFileHandler
 name|dfh
@@ -1749,8 +1743,6 @@ argument_list|(
 name|fileName
 argument_list|,
 name|fileType
-argument_list|,
-name|local
 argument_list|,
 name|entryTable
 argument_list|,

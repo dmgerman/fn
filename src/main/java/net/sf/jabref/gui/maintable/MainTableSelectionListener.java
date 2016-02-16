@@ -2103,7 +2103,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Process general right-click events on the table. Show the table context menu at      * the position where the user right-clicked.      * @param e The mouse event defining the popup trigger.      * @param row The row where the event occured.      */
+comment|/**      * Process general right-click events on the table. Show the table context menu at      * the position where the user right-clicked.      * @param e The mouse event defining the popup trigger.      * @param row The row where the event occurred.      */
 DECL|method|processPopupTrigger (MouseEvent e, int row)
 specifier|private
 name|void
@@ -2835,7 +2835,6 @@ operator|.
 name|getKeyChar
 argument_list|()
 argument_list|)
-comment|//&& !e.isControlDown()&& !e.isAltDown()&& !e.isMetaDown()) {
 operator|&&
 operator|(
 name|e
@@ -2936,29 +2935,12 @@ block|}
 comment|// TODO: the following lookup should be done by a faster algorithm,
 comment|// such as binary search. But the table may not be sorted properly,
 comment|// due to marked entries, search etc., which rules out the binary search.
-name|int
-name|startRow
-init|=
-literal|0
-decl_stmt|;
-comment|/*if ((c == lastPressed)&& (lastQuickJumpRow>= 0)) {                 if (lastQuickJumpRow< table.getRowCount()-1)                     startRow = lastQuickJumpRow+1;             }*/
-name|boolean
-name|done
-init|=
-literal|false
-decl_stmt|;
-while|while
-condition|(
-operator|!
-name|done
-condition|)
-block|{
 for|for
 control|(
 name|int
 name|i
 init|=
-name|startRow
+literal|0
 init|;
 name|i
 operator|<
@@ -3078,30 +3060,6 @@ expr_stmt|;
 return|return;
 block|}
 block|}
-comment|//if ((s.length()>= 1)&& (s.charAt(0) == c)) {
-comment|//}
-block|}
-block|}
-comment|// Finished, no result. If we didn't start at the beginning of
-comment|// the table, try that. Otherwise, exit the while loop.
-if|if
-condition|(
-name|startRow
-operator|>
-literal|0
-condition|)
-block|{
-name|startRow
-operator|=
-literal|0
-expr_stmt|;
-block|}
-else|else
-block|{
-name|done
-operator|=
-literal|true
-expr_stmt|;
 block|}
 block|}
 block|}

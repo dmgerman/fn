@@ -276,22 +276,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|AboutDialog
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|jgoodies
@@ -481,7 +465,7 @@ literal|"Autolink files with names starting with the BibTeX key"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|method|ExternalTab (JabRefFrame frame, PreferencesDialog prefsDiag, JabRefPreferences prefs, AboutDialog aboutDialog)
+DECL|method|ExternalTab (JabRefFrame frame, PreferencesDialog prefsDiag, JabRefPreferences prefs)
 specifier|public
 name|ExternalTab
 parameter_list|(
@@ -493,9 +477,6 @@ name|prefsDiag
 parameter_list|,
 name|JabRefPreferences
 name|prefs
-parameter_list|,
-name|AboutDialog
-name|aboutDialog
 parameter_list|)
 block|{
 name|this
