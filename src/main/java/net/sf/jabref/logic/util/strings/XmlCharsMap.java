@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.exporter.layout.format
+DECL|package|net.sf.jabref.logic.util.strings
 package|package
 name|net
 operator|.
@@ -8,11 +8,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|logic
 operator|.
-name|layout
+name|util
 operator|.
-name|format
+name|strings
 package|;
 end_package
 
@@ -28,6 +28,7 @@ end_import
 
 begin_class
 DECL|class|XmlCharsMap
+specifier|public
 class|class
 name|XmlCharsMap
 extends|extends

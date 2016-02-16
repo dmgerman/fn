@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -198,6 +198,34 @@ name|AbstractUndoableEdit
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Internally, it consists of a search pattern.  *  * @author jzieren  */
 end_comment
@@ -242,6 +270,22 @@ specifier|private
 specifier|final
 name|SearchRule
 name|searchRule
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|SearchGroup
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/**      * Creates a SearchGroup with the specified properties.      */
 DECL|method|SearchGroup (String name, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context)
@@ -940,19 +984,15 @@ parameter_list|)
 block|{
 comment|// this should never happen, because the constructor obviously
 comment|// succeeded in creating _this_ instance!
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"Internal error: Exception "
-operator|+
-name|t
-operator|+
-literal|" in SearchGroup.deepCopy(). "
+literal|"Internal error in SearchGroup.deepCopy(). "
 operator|+
 literal|"Please report this on https://github.com/JabRef/jabref/issues"
+argument_list|,
+name|t
 argument_list|)
 expr_stmt|;
 return|return

@@ -88,13 +88,13 @@ name|UnitFormatter
 implements|implements
 name|Formatter
 block|{
-DECL|field|unitList
+DECL|field|UNIT_LIST
 specifier|private
 specifier|static
 specifier|final
 name|String
 index|[]
-name|unitList
+name|UNIT_LIST
 init|=
 operator|new
 name|String
@@ -219,13 +219,13 @@ block|,
 comment|// steradians
 block|}
 decl_stmt|;
-DECL|field|unitPrefixList
+DECL|field|UNIT_PREFIX_LIST
 specifier|private
 specifier|static
 specifier|final
 name|String
 index|[]
-name|unitPrefixList
+name|UNIT_PREFIX_LIST
 init|=
 operator|new
 name|String
@@ -299,13 +299,13 @@ block|,
 comment|// yotta
 block|}
 decl_stmt|;
-DECL|field|unitCombinations
+DECL|field|UNIT_COMBINATIONS
 specifier|private
 specifier|static
 specifier|final
 name|String
 index|[]
-name|unitCombinations
+name|UNIT_COMBINATIONS
 decl_stmt|;
 static|static
 block|{
@@ -314,7 +314,7 @@ name|uLLength
 init|=
 name|UnitFormatter
 operator|.
-name|unitList
+name|UNIT_LIST
 operator|.
 name|length
 decl_stmt|;
@@ -323,7 +323,7 @@ name|uPLLength
 init|=
 name|UnitFormatter
 operator|.
-name|unitPrefixList
+name|UNIT_PREFIX_LIST
 operator|.
 name|length
 decl_stmt|;
@@ -334,7 +334,7 @@ name|uLLength
 operator|*
 name|uPLLength
 decl_stmt|;
-name|unitCombinations
+name|UNIT_COMBINATIONS
 operator|=
 operator|new
 name|String
@@ -374,7 +374,7 @@ control|)
 block|{
 name|UnitFormatter
 operator|.
-name|unitCombinations
+name|UNIT_COMBINATIONS
 index|[
 operator|(
 name|i
@@ -387,14 +387,14 @@ index|]
 operator|=
 name|UnitFormatter
 operator|.
-name|unitPrefixList
+name|UNIT_PREFIX_LIST
 index|[
 name|j
 index|]
 operator|+
 name|UnitFormatter
 operator|.
-name|unitList
+name|UNIT_LIST
 index|[
 name|i
 index|]
@@ -551,7 +551,7 @@ name|text
 argument_list|,
 name|UnitFormatter
 operator|.
-name|unitCombinations
+name|UNIT_COMBINATIONS
 argument_list|)
 return|;
 block|}

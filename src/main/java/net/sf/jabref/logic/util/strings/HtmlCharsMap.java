@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.exporter.layout.format
+DECL|package|net.sf.jabref.logic.util.strings
 package|package
 name|net
 operator|.
@@ -8,11 +8,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|logic
 operator|.
-name|layout
+name|util
 operator|.
-name|format
+name|strings
 package|;
 end_package
 
@@ -27,9 +27,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|RtfCharMap
+DECL|class|HtmlCharsMap
+specifier|public
 class|class
-name|RtfCharMap
+name|HtmlCharsMap
 extends|extends
 name|HashMap
 argument_list|<
@@ -38,485 +39,196 @@ argument_list|,
 name|String
 argument_list|>
 block|{
-DECL|method|RtfCharMap ()
+DECL|method|HtmlCharsMap ()
 specifier|public
-name|RtfCharMap
+name|HtmlCharsMap
 parameter_list|()
 block|{
-name|put
-argument_list|(
-literal|"`a"
-argument_list|,
-literal|"\\'e0"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"`e"
-argument_list|,
-literal|"\\'e8"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"`i"
-argument_list|,
-literal|"\\'ec"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"`o"
-argument_list|,
-literal|"\\'f2"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"`u"
-argument_list|,
-literal|"\\'f9"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"?a"
-argument_list|,
-literal|"\\'e1"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"?e"
-argument_list|,
-literal|"\\'e9"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"?i"
-argument_list|,
-literal|"\\'ed"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"?o"
-argument_list|,
-literal|"\\'f3"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"?u"
-argument_list|,
-literal|"\\'fa"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"^a"
-argument_list|,
-literal|"\\'e2"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"^e"
-argument_list|,
-literal|"\\'ea"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"^i"
-argument_list|,
-literal|"\\'ee"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"^o"
-argument_list|,
-literal|"\\'f4"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"^u"
-argument_list|,
-literal|"\\'fa"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"\"a"
-argument_list|,
-literal|"\\'e4"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"\"e"
-argument_list|,
-literal|"\\'eb"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"\"i"
-argument_list|,
-literal|"\\'ef"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"\"o"
-argument_list|,
-literal|"\\'f6"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"\"u"
-argument_list|,
-literal|"\\u252u"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"~n"
-argument_list|,
-literal|"\\'f1"
-argument_list|)
-expr_stmt|;
+comment|// HTML named entities from #192 - #255 (UNICODE Latin-1)
 name|put
 argument_list|(
 literal|"`A"
 argument_list|,
-literal|"\\'c0"
+literal|"&Agrave;"
 argument_list|)
 expr_stmt|;
-name|put
-argument_list|(
-literal|"`E"
-argument_list|,
-literal|"\\'c8"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"`I"
-argument_list|,
-literal|"\\'cc"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"`O"
-argument_list|,
-literal|"\\'d2"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"`U"
-argument_list|,
-literal|"\\'d9"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"?A"
-argument_list|,
-literal|"\\'c1"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"?E"
-argument_list|,
-literal|"\\'c9"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"?I"
-argument_list|,
-literal|"\\'cd"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"?O"
-argument_list|,
-literal|"\\'d3"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"?U"
-argument_list|,
-literal|"\\'da"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"^A"
-argument_list|,
-literal|"\\'c2"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"^E"
-argument_list|,
-literal|"\\'ca"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"^I"
-argument_list|,
-literal|"\\'ce"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"^O"
-argument_list|,
-literal|"\\'d4"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"^U"
-argument_list|,
-literal|"\\'db"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"\"A"
-argument_list|,
-literal|"\\'c4"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"\"E"
-argument_list|,
-literal|"\\'cb"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"\"I"
-argument_list|,
-literal|"\\'cf"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"\"O"
-argument_list|,
-literal|"\\'d6"
-argument_list|)
-expr_stmt|;
-name|put
-argument_list|(
-literal|"\"U"
-argument_list|,
-literal|"\\'dc"
-argument_list|)
-expr_stmt|;
-comment|// Use UNICODE characters for RTF-Chars which can not be found in the
-comment|// standard codepage
-name|put
-argument_list|(
-literal|"`A"
-argument_list|,
-literal|"\\u192A"
-argument_list|)
-expr_stmt|;
-comment|// "Agrave"
+comment|// #192
 name|put
 argument_list|(
 literal|"'A"
 argument_list|,
-literal|"\\u193A"
+literal|"&Aacute;"
 argument_list|)
 expr_stmt|;
-comment|// "Aacute"
+comment|// #193
 name|put
 argument_list|(
 literal|"^A"
 argument_list|,
-literal|"\\u194A"
+literal|"&Acirc;"
 argument_list|)
 expr_stmt|;
-comment|// "Acirc"
+comment|// #194
 name|put
 argument_list|(
 literal|"~A"
 argument_list|,
-literal|"\\u195A"
+literal|"&Atilde;"
 argument_list|)
 expr_stmt|;
-comment|// "Atilde"
+comment|// #195
 name|put
 argument_list|(
 literal|"\"A"
 argument_list|,
-literal|"\\u196A"
+literal|"&Auml;"
 argument_list|)
 expr_stmt|;
-comment|// "Auml"
+comment|// #196
 name|put
 argument_list|(
 literal|"AA"
 argument_list|,
-literal|"\\u197A"
+literal|"&Aring;"
 argument_list|)
 expr_stmt|;
-comment|// "Aring"
-comment|// RTFCHARS.put("AE", "{\\uc2\\u198AE}"); // "AElig"
+comment|// #197
 name|put
 argument_list|(
 literal|"AE"
 argument_list|,
-literal|"{\\u198A}"
+literal|"&AElig;"
 argument_list|)
 expr_stmt|;
-comment|// "AElig"
+comment|// #198
 name|put
 argument_list|(
 literal|"cC"
 argument_list|,
-literal|"\\u199C"
+literal|"&Ccedil;"
 argument_list|)
 expr_stmt|;
-comment|// "Ccedil"
+comment|// #199
 name|put
 argument_list|(
 literal|"`E"
 argument_list|,
-literal|"\\u200E"
+literal|"&Egrave;"
 argument_list|)
 expr_stmt|;
-comment|// "Egrave"
+comment|// #200
 name|put
 argument_list|(
 literal|"'E"
 argument_list|,
-literal|"\\u201E"
+literal|"&Eacute;"
 argument_list|)
 expr_stmt|;
-comment|// "Eacute"
+comment|// #201
 name|put
 argument_list|(
 literal|"^E"
 argument_list|,
-literal|"\\u202E"
+literal|"&Ecirc;"
 argument_list|)
 expr_stmt|;
-comment|// "Ecirc"
+comment|// #202
 name|put
 argument_list|(
 literal|"\"E"
 argument_list|,
-literal|"\\u203E"
+literal|"&Euml;"
 argument_list|)
 expr_stmt|;
-comment|// "Euml"
+comment|// #203
 name|put
 argument_list|(
 literal|"`I"
 argument_list|,
-literal|"\\u204I"
+literal|"&Igrave;"
 argument_list|)
 expr_stmt|;
-comment|// "Igrave
+comment|// #204
 name|put
 argument_list|(
 literal|"'I"
 argument_list|,
-literal|"\\u205I"
+literal|"&Iacute;"
 argument_list|)
 expr_stmt|;
-comment|// "Iacute"
+comment|// #205
 name|put
 argument_list|(
 literal|"^I"
 argument_list|,
-literal|"\\u206I"
+literal|"&Icirc;"
 argument_list|)
 expr_stmt|;
-comment|// "Icirc"
+comment|// #206
 name|put
 argument_list|(
 literal|"\"I"
 argument_list|,
-literal|"\\u207I"
+literal|"&Iuml;"
 argument_list|)
 expr_stmt|;
-comment|// "Iuml"
+comment|// #207
 name|put
 argument_list|(
 literal|"DH"
 argument_list|,
-literal|"\\u208D"
+literal|"&ETH;"
 argument_list|)
 expr_stmt|;
-comment|// "ETH"
+comment|// #208
 name|put
 argument_list|(
 literal|"~N"
 argument_list|,
-literal|"\\u209N"
+literal|"&Ntilde;"
 argument_list|)
 expr_stmt|;
-comment|// "Ntilde"
+comment|// #209
 name|put
 argument_list|(
 literal|"`O"
 argument_list|,
-literal|"\\u210O"
+literal|"&Ograve;"
 argument_list|)
 expr_stmt|;
-comment|// "Ograve"
+comment|// #210
 name|put
 argument_list|(
 literal|"'O"
 argument_list|,
-literal|"\\u211O"
+literal|"&Oacute;"
 argument_list|)
 expr_stmt|;
-comment|// "Oacute"
+comment|// #211
 name|put
 argument_list|(
 literal|"^O"
 argument_list|,
-literal|"\\u212O"
+literal|"&Ocirc;"
 argument_list|)
 expr_stmt|;
-comment|// "Ocirc"
+comment|// #212
 name|put
 argument_list|(
 literal|"~O"
 argument_list|,
-literal|"\\u213O"
+literal|"&Otilde;"
 argument_list|)
 expr_stmt|;
-comment|// "Otilde"
+comment|// #213
 name|put
 argument_list|(
 literal|"\"O"
 argument_list|,
-literal|"\\u214O"
+literal|"&Ouml;"
 argument_list|)
 expr_stmt|;
-comment|// "Ouml"
+comment|// #214
 comment|// According to ISO 8859-1 the "\times" symbol should be placed here
 comment|// (#215).
 comment|// Omitting this, because it is a mathematical symbol.
@@ -524,260 +236,250 @@ name|put
 argument_list|(
 literal|"O"
 argument_list|,
-literal|"\\u216O"
+literal|"&Oslash;"
 argument_list|)
 expr_stmt|;
-comment|// "Oslash"
-comment|//  RTFCHARS.put("O", "\\'d8");
-name|put
-argument_list|(
-literal|"o"
-argument_list|,
-literal|"\\'f8"
-argument_list|)
-expr_stmt|;
+comment|// #216
 name|put
 argument_list|(
 literal|"`U"
 argument_list|,
-literal|"\\u217U"
+literal|"&Ugrave;"
 argument_list|)
 expr_stmt|;
-comment|// "Ugrave"
+comment|// #217
 name|put
 argument_list|(
 literal|"'U"
 argument_list|,
-literal|"\\u218U"
+literal|"&Uacute;"
 argument_list|)
 expr_stmt|;
-comment|// "Uacute"
+comment|// #218
 name|put
 argument_list|(
 literal|"^U"
 argument_list|,
-literal|"\\u219U"
+literal|"&Ucirc;"
 argument_list|)
 expr_stmt|;
-comment|// "Ucirc"
+comment|// #219
 name|put
 argument_list|(
 literal|"\"U"
 argument_list|,
-literal|"\\u220U"
+literal|"&Uuml;"
 argument_list|)
 expr_stmt|;
-comment|// "Uuml"
+comment|// #220
 name|put
 argument_list|(
 literal|"'Y"
 argument_list|,
-literal|"\\u221Y"
+literal|"&Yacute;"
 argument_list|)
 expr_stmt|;
-comment|// "Yacute"
+comment|// #221
 name|put
 argument_list|(
 literal|"TH"
 argument_list|,
-literal|"{\\uc2\\u222TH}"
+literal|"&THORN;"
 argument_list|)
 expr_stmt|;
-comment|// "THORN"
+comment|// #222
 name|put
 argument_list|(
 literal|"ss"
 argument_list|,
-literal|"{\\uc2\\u223ss}"
+literal|"&szlig;"
 argument_list|)
 expr_stmt|;
-comment|// "szlig"
-comment|//RTFCHARS.put("ss", "AFFEN"); // "szlig"
+comment|// #223
 name|put
 argument_list|(
 literal|"`a"
 argument_list|,
-literal|"\\u224a"
+literal|"&agrave;"
 argument_list|)
 expr_stmt|;
-comment|// "agrave"
+comment|// #224
 name|put
 argument_list|(
 literal|"'a"
 argument_list|,
-literal|"\\u225a"
+literal|"&aacute;"
 argument_list|)
 expr_stmt|;
-comment|// "aacute"
+comment|// #225
 name|put
 argument_list|(
 literal|"^a"
 argument_list|,
-literal|"\\u226a"
+literal|"&acirc;"
 argument_list|)
 expr_stmt|;
-comment|// "acirc"
+comment|// #226
 name|put
 argument_list|(
 literal|"~a"
 argument_list|,
-literal|"\\u227a"
+literal|"&atilde;"
 argument_list|)
 expr_stmt|;
-comment|// "atilde"
+comment|// #227
 name|put
 argument_list|(
 literal|"\"a"
 argument_list|,
-literal|"\\u228a"
+literal|"&auml;"
 argument_list|)
 expr_stmt|;
-comment|// "auml"
+comment|// #228
 name|put
 argument_list|(
 literal|"aa"
 argument_list|,
-literal|"\\u229a"
+literal|"&aring;"
 argument_list|)
 expr_stmt|;
-comment|// "aring"
-comment|//  RTFCHARS.put("ae", "{\\uc2\\u230ae}"); // "aelig" \\u230e6
+comment|// #229
 name|put
 argument_list|(
 literal|"ae"
 argument_list|,
-literal|"{\\u230a}"
+literal|"&aelig;"
 argument_list|)
 expr_stmt|;
-comment|// "aelig" \\u230e6
+comment|// #230
 name|put
 argument_list|(
 literal|"cc"
 argument_list|,
-literal|"\\u231c"
+literal|"&ccedil;"
 argument_list|)
 expr_stmt|;
-comment|// "ccedil"
+comment|// #231
 name|put
 argument_list|(
 literal|"`e"
 argument_list|,
-literal|"\\u232e"
+literal|"&egrave;"
 argument_list|)
 expr_stmt|;
-comment|// "egrave"
+comment|// #232
 name|put
 argument_list|(
 literal|"'e"
 argument_list|,
-literal|"\\u233e"
+literal|"&eacute;"
 argument_list|)
 expr_stmt|;
-comment|// "eacute"
+comment|// #233
 name|put
 argument_list|(
 literal|"^e"
 argument_list|,
-literal|"\\u234e"
+literal|"&ecirc;"
 argument_list|)
 expr_stmt|;
-comment|// "ecirc"
+comment|// #234
 name|put
 argument_list|(
 literal|"\"e"
 argument_list|,
-literal|"\\u235e"
+literal|"&euml;"
 argument_list|)
 expr_stmt|;
-comment|// "euml"
+comment|// #235
 name|put
 argument_list|(
 literal|"`i"
 argument_list|,
-literal|"\\u236i"
+literal|"&igrave;"
 argument_list|)
 expr_stmt|;
-comment|// "igrave"
+comment|// #236
 name|put
 argument_list|(
 literal|"'i"
 argument_list|,
-literal|"\\u237i"
+literal|"&iacute;"
 argument_list|)
 expr_stmt|;
-comment|// "iacute"
+comment|// #237
 name|put
 argument_list|(
 literal|"^i"
 argument_list|,
-literal|"\\u238i"
+literal|"&icirc;"
 argument_list|)
 expr_stmt|;
-comment|// "icirc"
+comment|// #238
 name|put
 argument_list|(
 literal|"\"i"
 argument_list|,
-literal|"\\u239i"
+literal|"&iuml;"
 argument_list|)
 expr_stmt|;
-comment|// "iuml"
+comment|// #239
 name|put
 argument_list|(
 literal|"dh"
 argument_list|,
-literal|"\\u240d"
+literal|"&eth;"
 argument_list|)
 expr_stmt|;
-comment|// "eth"
+comment|// #240
 name|put
 argument_list|(
 literal|"~n"
 argument_list|,
-literal|"\\u241n"
+literal|"&ntilde;"
 argument_list|)
 expr_stmt|;
-comment|// "ntilde"
+comment|// #241
 name|put
 argument_list|(
 literal|"`o"
 argument_list|,
-literal|"\\u242o"
+literal|"&ograve;"
 argument_list|)
 expr_stmt|;
-comment|// "ograve"
+comment|// #242
 name|put
 argument_list|(
 literal|"'o"
 argument_list|,
-literal|"\\u243o"
+literal|"&oacute;"
 argument_list|)
 expr_stmt|;
-comment|// "oacute"
+comment|// #243
 name|put
 argument_list|(
 literal|"^o"
 argument_list|,
-literal|"\\u244o"
+literal|"&ocirc;"
 argument_list|)
 expr_stmt|;
-comment|// "ocirc"
+comment|// #244
 name|put
 argument_list|(
 literal|"~o"
 argument_list|,
-literal|"\\u245o"
+literal|"&otilde;"
 argument_list|)
 expr_stmt|;
-comment|// "otilde"
+comment|// #245
 name|put
 argument_list|(
 literal|"\"o"
 argument_list|,
-literal|"\\u246o"
+literal|"&ouml;"
 argument_list|)
 expr_stmt|;
-comment|// "ouml"
+comment|// #246
 comment|// According to ISO 8859-1 the "\div" symbol should be placed here
 comment|// (#247).
 comment|// Omitting this, because it is a mathematical symbol.
@@ -785,65 +487,73 @@ name|put
 argument_list|(
 literal|"o"
 argument_list|,
-literal|"\\u248o"
+literal|"&oslash;"
 argument_list|)
 expr_stmt|;
-comment|// "oslash"
+comment|// #248
 name|put
 argument_list|(
 literal|"`u"
 argument_list|,
-literal|"\\u249u"
+literal|"&ugrave;"
 argument_list|)
 expr_stmt|;
-comment|// "ugrave"
+comment|// #249
 name|put
 argument_list|(
 literal|"'u"
 argument_list|,
-literal|"\\u250u"
+literal|"&uacute;"
 argument_list|)
 expr_stmt|;
-comment|// "uacute"
+comment|// #250
 name|put
 argument_list|(
 literal|"^u"
 argument_list|,
-literal|"\\u251u"
+literal|"&ucirc;"
 argument_list|)
 expr_stmt|;
-comment|// "ucirc"
-comment|// RTFCHARS.put("\"u", "\\u252"); // "uuml" exists in standard
-comment|// codepage
+comment|// #251
+name|put
+argument_list|(
+literal|"\"u"
+argument_list|,
+literal|"&uuml;"
+argument_list|)
+expr_stmt|;
+comment|// #252
 name|put
 argument_list|(
 literal|"'y"
 argument_list|,
-literal|"\\u253y"
+literal|"&yacute;"
 argument_list|)
 expr_stmt|;
-comment|// "yacute"
+comment|// #253
 name|put
 argument_list|(
 literal|"th"
 argument_list|,
-literal|"{\\uc2\\u254th}"
+literal|"&thorn;"
 argument_list|)
 expr_stmt|;
-comment|// "thorn"
+comment|// #254
 name|put
 argument_list|(
 literal|"\"y"
 argument_list|,
-literal|"\\u255y"
+literal|"&yuml;"
 argument_list|)
 expr_stmt|;
-comment|// "yuml"
+comment|// #255
+comment|// HTML special characters without names (UNICODE Latin Extended-A),
+comment|// indicated by UNICODE number
 name|put
 argument_list|(
 literal|"=A"
 argument_list|,
-literal|"\\u256A"
+literal|"&#256;"
 argument_list|)
 expr_stmt|;
 comment|// "Amacr"
@@ -851,7 +561,7 @@ name|put
 argument_list|(
 literal|"=a"
 argument_list|,
-literal|"\\u257a"
+literal|"&#257;"
 argument_list|)
 expr_stmt|;
 comment|// "amacr"
@@ -859,7 +569,7 @@ name|put
 argument_list|(
 literal|"uA"
 argument_list|,
-literal|"\\u258A"
+literal|"&#258;"
 argument_list|)
 expr_stmt|;
 comment|// "Abreve"
@@ -867,7 +577,7 @@ name|put
 argument_list|(
 literal|"ua"
 argument_list|,
-literal|"\\u259a"
+literal|"&#259;"
 argument_list|)
 expr_stmt|;
 comment|// "abreve"
@@ -875,7 +585,7 @@ name|put
 argument_list|(
 literal|"kA"
 argument_list|,
-literal|"\\u260A"
+literal|"&#260;"
 argument_list|)
 expr_stmt|;
 comment|// "Aogon"
@@ -883,7 +593,7 @@ name|put
 argument_list|(
 literal|"ka"
 argument_list|,
-literal|"\\u261a"
+literal|"&#261;"
 argument_list|)
 expr_stmt|;
 comment|// "aogon"
@@ -891,7 +601,7 @@ name|put
 argument_list|(
 literal|"'C"
 argument_list|,
-literal|"\\u262C"
+literal|"&#262;"
 argument_list|)
 expr_stmt|;
 comment|// "Cacute"
@@ -899,7 +609,7 @@ name|put
 argument_list|(
 literal|"'c"
 argument_list|,
-literal|"\\u263c"
+literal|"&#263;"
 argument_list|)
 expr_stmt|;
 comment|// "cacute"
@@ -907,7 +617,7 @@ name|put
 argument_list|(
 literal|"^C"
 argument_list|,
-literal|"\\u264C"
+literal|"&#264;"
 argument_list|)
 expr_stmt|;
 comment|// "Ccirc"
@@ -915,7 +625,7 @@ name|put
 argument_list|(
 literal|"^c"
 argument_list|,
-literal|"\\u265c"
+literal|"&#265;"
 argument_list|)
 expr_stmt|;
 comment|// "ccirc"
@@ -923,7 +633,7 @@ name|put
 argument_list|(
 literal|".C"
 argument_list|,
-literal|"\\u266C"
+literal|"&#266;"
 argument_list|)
 expr_stmt|;
 comment|// "Cdot"
@@ -931,7 +641,7 @@ name|put
 argument_list|(
 literal|".c"
 argument_list|,
-literal|"\\u267c"
+literal|"&#267;"
 argument_list|)
 expr_stmt|;
 comment|// "cdot"
@@ -939,7 +649,7 @@ name|put
 argument_list|(
 literal|"vC"
 argument_list|,
-literal|"\\u268C"
+literal|"&#268;"
 argument_list|)
 expr_stmt|;
 comment|// "Ccaron"
@@ -947,7 +657,7 @@ name|put
 argument_list|(
 literal|"vc"
 argument_list|,
-literal|"\\u269c"
+literal|"&#269;"
 argument_list|)
 expr_stmt|;
 comment|// "ccaron"
@@ -955,7 +665,7 @@ name|put
 argument_list|(
 literal|"vD"
 argument_list|,
-literal|"\\u270D"
+literal|"&#270;"
 argument_list|)
 expr_stmt|;
 comment|// "Dcaron"
@@ -964,7 +674,7 @@ name|put
 argument_list|(
 literal|"DJ"
 argument_list|,
-literal|"\\u272D"
+literal|"&#272;"
 argument_list|)
 expr_stmt|;
 comment|// "Dstrok"
@@ -972,7 +682,7 @@ name|put
 argument_list|(
 literal|"dj"
 argument_list|,
-literal|"\\u273d"
+literal|"&#273;"
 argument_list|)
 expr_stmt|;
 comment|// "dstrok"
@@ -980,7 +690,7 @@ name|put
 argument_list|(
 literal|"=E"
 argument_list|,
-literal|"\\u274E"
+literal|"&#274;"
 argument_list|)
 expr_stmt|;
 comment|// "Emacr"
@@ -988,7 +698,7 @@ name|put
 argument_list|(
 literal|"=e"
 argument_list|,
-literal|"\\u275e"
+literal|"&#275;"
 argument_list|)
 expr_stmt|;
 comment|// "emacr"
@@ -996,7 +706,7 @@ name|put
 argument_list|(
 literal|"uE"
 argument_list|,
-literal|"\\u276E"
+literal|"&#276;"
 argument_list|)
 expr_stmt|;
 comment|// "Ebreve"
@@ -1004,7 +714,7 @@ name|put
 argument_list|(
 literal|"ue"
 argument_list|,
-literal|"\\u277e"
+literal|"&#277;"
 argument_list|)
 expr_stmt|;
 comment|// "ebreve"
@@ -1012,7 +722,7 @@ name|put
 argument_list|(
 literal|".E"
 argument_list|,
-literal|"\\u278E"
+literal|"&#278;"
 argument_list|)
 expr_stmt|;
 comment|// "Edot"
@@ -1020,7 +730,7 @@ name|put
 argument_list|(
 literal|".e"
 argument_list|,
-literal|"\\u279e"
+literal|"&#279;"
 argument_list|)
 expr_stmt|;
 comment|// "edot"
@@ -1028,7 +738,7 @@ name|put
 argument_list|(
 literal|"kE"
 argument_list|,
-literal|"\\u280E"
+literal|"&#280;"
 argument_list|)
 expr_stmt|;
 comment|// "Eogon"
@@ -1036,7 +746,7 @@ name|put
 argument_list|(
 literal|"ke"
 argument_list|,
-literal|"\\u281e"
+literal|"&#281;"
 argument_list|)
 expr_stmt|;
 comment|// "eogon"
@@ -1044,7 +754,7 @@ name|put
 argument_list|(
 literal|"vE"
 argument_list|,
-literal|"\\u282E"
+literal|"&#282;"
 argument_list|)
 expr_stmt|;
 comment|// "Ecaron"
@@ -1052,7 +762,7 @@ name|put
 argument_list|(
 literal|"ve"
 argument_list|,
-literal|"\\u283e"
+literal|"&#283;"
 argument_list|)
 expr_stmt|;
 comment|// "ecaron"
@@ -1060,7 +770,7 @@ name|put
 argument_list|(
 literal|"^G"
 argument_list|,
-literal|"\\u284G"
+literal|"&#284;"
 argument_list|)
 expr_stmt|;
 comment|// "Gcirc"
@@ -1068,7 +778,7 @@ name|put
 argument_list|(
 literal|"^g"
 argument_list|,
-literal|"\\u285g"
+literal|"&#285;"
 argument_list|)
 expr_stmt|;
 comment|// "gcirc"
@@ -1076,7 +786,7 @@ name|put
 argument_list|(
 literal|"uG"
 argument_list|,
-literal|"\\u286G"
+literal|"&#286;"
 argument_list|)
 expr_stmt|;
 comment|// "Gbreve"
@@ -1084,7 +794,7 @@ name|put
 argument_list|(
 literal|"ug"
 argument_list|,
-literal|"\\u287g"
+literal|"&#287;"
 argument_list|)
 expr_stmt|;
 comment|// "gbreve"
@@ -1092,7 +802,7 @@ name|put
 argument_list|(
 literal|".G"
 argument_list|,
-literal|"\\u288G"
+literal|"&#288;"
 argument_list|)
 expr_stmt|;
 comment|// "Gdot"
@@ -1100,7 +810,7 @@ name|put
 argument_list|(
 literal|".g"
 argument_list|,
-literal|"\\u289g"
+literal|"&#289;"
 argument_list|)
 expr_stmt|;
 comment|// "gdot"
@@ -1108,7 +818,7 @@ name|put
 argument_list|(
 literal|"cG"
 argument_list|,
-literal|"\\u290G"
+literal|"&#290;"
 argument_list|)
 expr_stmt|;
 comment|// "Gcedil"
@@ -1116,7 +826,7 @@ name|put
 argument_list|(
 literal|"'g"
 argument_list|,
-literal|"\\u291g"
+literal|"&#291;"
 argument_list|)
 expr_stmt|;
 comment|// "gacute"
@@ -1124,7 +834,7 @@ name|put
 argument_list|(
 literal|"^H"
 argument_list|,
-literal|"\\u292H"
+literal|"&#292;"
 argument_list|)
 expr_stmt|;
 comment|// "Hcirc"
@@ -1132,7 +842,7 @@ name|put
 argument_list|(
 literal|"^h"
 argument_list|,
-literal|"\\u293h"
+literal|"&#293;"
 argument_list|)
 expr_stmt|;
 comment|// "hcirc"
@@ -1140,7 +850,7 @@ name|put
 argument_list|(
 literal|"Hstrok"
 argument_list|,
-literal|"\\u294H"
+literal|"&#294;"
 argument_list|)
 expr_stmt|;
 comment|// "Hstrok"
@@ -1148,7 +858,7 @@ name|put
 argument_list|(
 literal|"hstrok"
 argument_list|,
-literal|"\\u295h"
+literal|"&#295;"
 argument_list|)
 expr_stmt|;
 comment|// "hstrok"
@@ -1156,7 +866,7 @@ name|put
 argument_list|(
 literal|"~I"
 argument_list|,
-literal|"\\u296I"
+literal|"&#296;"
 argument_list|)
 expr_stmt|;
 comment|// "Itilde"
@@ -1164,7 +874,7 @@ name|put
 argument_list|(
 literal|"~i"
 argument_list|,
-literal|"\\u297i"
+literal|"&#297;"
 argument_list|)
 expr_stmt|;
 comment|// "itilde"
@@ -1172,7 +882,7 @@ name|put
 argument_list|(
 literal|"=I"
 argument_list|,
-literal|"\\u298I"
+literal|"&#298;"
 argument_list|)
 expr_stmt|;
 comment|// "Imacr"
@@ -1180,7 +890,7 @@ name|put
 argument_list|(
 literal|"=i"
 argument_list|,
-literal|"\\u299i"
+literal|"&#299;"
 argument_list|)
 expr_stmt|;
 comment|// "imacr"
@@ -1188,7 +898,7 @@ name|put
 argument_list|(
 literal|"uI"
 argument_list|,
-literal|"\\u300I"
+literal|"&#300;"
 argument_list|)
 expr_stmt|;
 comment|// "Ibreve"
@@ -1196,7 +906,7 @@ name|put
 argument_list|(
 literal|"ui"
 argument_list|,
-literal|"\\u301i"
+literal|"&#301;"
 argument_list|)
 expr_stmt|;
 comment|// "ibreve"
@@ -1204,7 +914,7 @@ name|put
 argument_list|(
 literal|"kI"
 argument_list|,
-literal|"\\u302I"
+literal|"&#302;"
 argument_list|)
 expr_stmt|;
 comment|// "Iogon"
@@ -1212,7 +922,7 @@ name|put
 argument_list|(
 literal|"ki"
 argument_list|,
-literal|"\\u303i"
+literal|"&#303;"
 argument_list|)
 expr_stmt|;
 comment|// "iogon"
@@ -1220,7 +930,7 @@ name|put
 argument_list|(
 literal|".I"
 argument_list|,
-literal|"\\u304I"
+literal|"&#304;"
 argument_list|)
 expr_stmt|;
 comment|// "Idot"
@@ -1228,7 +938,7 @@ name|put
 argument_list|(
 literal|"i"
 argument_list|,
-literal|"\\u305i"
+literal|"&#305;"
 argument_list|)
 expr_stmt|;
 comment|// "inodot"
@@ -1238,7 +948,7 @@ name|put
 argument_list|(
 literal|"^J"
 argument_list|,
-literal|"\\u308J"
+literal|"&#308;"
 argument_list|)
 expr_stmt|;
 comment|// "Jcirc"
@@ -1246,7 +956,7 @@ name|put
 argument_list|(
 literal|"^j"
 argument_list|,
-literal|"\\u309j"
+literal|"&#309;"
 argument_list|)
 expr_stmt|;
 comment|// "jcirc"
@@ -1254,7 +964,7 @@ name|put
 argument_list|(
 literal|"cK"
 argument_list|,
-literal|"\\u310K"
+literal|"&#310;"
 argument_list|)
 expr_stmt|;
 comment|// "Kcedil"
@@ -1262,7 +972,7 @@ name|put
 argument_list|(
 literal|"ck"
 argument_list|,
-literal|"\\u311k"
+literal|"&#311;"
 argument_list|)
 expr_stmt|;
 comment|// "kcedil"
@@ -1271,7 +981,7 @@ name|put
 argument_list|(
 literal|"'L"
 argument_list|,
-literal|"\\u313L"
+literal|"&#313;"
 argument_list|)
 expr_stmt|;
 comment|// "Lacute"
@@ -1279,7 +989,7 @@ name|put
 argument_list|(
 literal|"'l"
 argument_list|,
-literal|"\\u314l"
+literal|"&#314;"
 argument_list|)
 expr_stmt|;
 comment|// "lacute"
@@ -1287,7 +997,7 @@ name|put
 argument_list|(
 literal|"cL"
 argument_list|,
-literal|"\\u315L"
+literal|"&#315;"
 argument_list|)
 expr_stmt|;
 comment|// "Lcedil"
@@ -1295,7 +1005,7 @@ name|put
 argument_list|(
 literal|"cl"
 argument_list|,
-literal|"\\u316l"
+literal|"&#316;"
 argument_list|)
 expr_stmt|;
 comment|// "lcedil"
@@ -1305,7 +1015,7 @@ name|put
 argument_list|(
 literal|"Lmidot"
 argument_list|,
-literal|"\\u319L"
+literal|"&#319;"
 argument_list|)
 expr_stmt|;
 comment|// "Lmidot"
@@ -1313,7 +1023,7 @@ name|put
 argument_list|(
 literal|"lmidot"
 argument_list|,
-literal|"\\u320l"
+literal|"&#320;"
 argument_list|)
 expr_stmt|;
 comment|// "lmidot"
@@ -1321,7 +1031,7 @@ name|put
 argument_list|(
 literal|"L"
 argument_list|,
-literal|"\\u321L"
+literal|"&#321;"
 argument_list|)
 expr_stmt|;
 comment|// "Lstrok"
@@ -1329,7 +1039,7 @@ name|put
 argument_list|(
 literal|"l"
 argument_list|,
-literal|"\\u322l"
+literal|"&#322;"
 argument_list|)
 expr_stmt|;
 comment|// "lstrok"
@@ -1337,7 +1047,7 @@ name|put
 argument_list|(
 literal|"'N"
 argument_list|,
-literal|"\\u323N"
+literal|"&#323;"
 argument_list|)
 expr_stmt|;
 comment|// "Nacute"
@@ -1345,7 +1055,7 @@ name|put
 argument_list|(
 literal|"'n"
 argument_list|,
-literal|"\\u324n"
+literal|"&#324;"
 argument_list|)
 expr_stmt|;
 comment|// "nacute"
@@ -1353,7 +1063,7 @@ name|put
 argument_list|(
 literal|"cN"
 argument_list|,
-literal|"\\u325N"
+literal|"&#325;"
 argument_list|)
 expr_stmt|;
 comment|// "Ncedil"
@@ -1361,7 +1071,7 @@ name|put
 argument_list|(
 literal|"cn"
 argument_list|,
-literal|"\\u326n"
+literal|"&#326;"
 argument_list|)
 expr_stmt|;
 comment|// "ncedil"
@@ -1369,7 +1079,7 @@ name|put
 argument_list|(
 literal|"vN"
 argument_list|,
-literal|"\\u327N"
+literal|"&#327;"
 argument_list|)
 expr_stmt|;
 comment|// "Ncaron"
@@ -1377,7 +1087,7 @@ name|put
 argument_list|(
 literal|"vn"
 argument_list|,
-literal|"\\u328n"
+literal|"&#328;"
 argument_list|)
 expr_stmt|;
 comment|// "ncaron"
@@ -1386,7 +1096,7 @@ name|put
 argument_list|(
 literal|"NG"
 argument_list|,
-literal|"\\u330G"
+literal|"&#330;"
 argument_list|)
 expr_stmt|;
 comment|// "ENG"
@@ -1394,7 +1104,7 @@ name|put
 argument_list|(
 literal|"ng"
 argument_list|,
-literal|"\\u331g"
+literal|"&#331;"
 argument_list|)
 expr_stmt|;
 comment|// "eng"
@@ -1402,7 +1112,7 @@ name|put
 argument_list|(
 literal|"=O"
 argument_list|,
-literal|"\\u332O"
+literal|"&#332;"
 argument_list|)
 expr_stmt|;
 comment|// "Omacr"
@@ -1410,7 +1120,7 @@ name|put
 argument_list|(
 literal|"=o"
 argument_list|,
-literal|"\\u333o"
+literal|"&#333;"
 argument_list|)
 expr_stmt|;
 comment|// "omacr"
@@ -1418,7 +1128,7 @@ name|put
 argument_list|(
 literal|"uO"
 argument_list|,
-literal|"\\u334O"
+literal|"&#334;"
 argument_list|)
 expr_stmt|;
 comment|// "Obreve"
@@ -1426,7 +1136,7 @@ name|put
 argument_list|(
 literal|"uo"
 argument_list|,
-literal|"\\u335o"
+literal|"&#335;"
 argument_list|)
 expr_stmt|;
 comment|// "obreve"
@@ -1434,7 +1144,7 @@ name|put
 argument_list|(
 literal|"HO"
 argument_list|,
-literal|"\\u336?"
+literal|"&#336;"
 argument_list|)
 expr_stmt|;
 comment|// "Odblac"
@@ -1442,7 +1152,7 @@ name|put
 argument_list|(
 literal|"Ho"
 argument_list|,
-literal|"\\u337?"
+literal|"&#337;"
 argument_list|)
 expr_stmt|;
 comment|// "odblac"
@@ -1450,7 +1160,7 @@ name|put
 argument_list|(
 literal|"OE"
 argument_list|,
-literal|"{\\uc2\\u338OE}"
+literal|"&#338;"
 argument_list|)
 expr_stmt|;
 comment|// "OElig"
@@ -1458,7 +1168,7 @@ name|put
 argument_list|(
 literal|"oe"
 argument_list|,
-literal|"{\\uc2\\u339oe}"
+literal|"&#339;"
 argument_list|)
 expr_stmt|;
 comment|// "oelig"
@@ -1466,7 +1176,7 @@ name|put
 argument_list|(
 literal|"'R"
 argument_list|,
-literal|"\\u340R"
+literal|"&#340;"
 argument_list|)
 expr_stmt|;
 comment|// "Racute"
@@ -1474,7 +1184,7 @@ name|put
 argument_list|(
 literal|"'r"
 argument_list|,
-literal|"\\u341r"
+literal|"&#341;"
 argument_list|)
 expr_stmt|;
 comment|// "racute"
@@ -1482,7 +1192,7 @@ name|put
 argument_list|(
 literal|"cR"
 argument_list|,
-literal|"\\u342R"
+literal|"&#342;"
 argument_list|)
 expr_stmt|;
 comment|// "Rcedil"
@@ -1490,7 +1200,7 @@ name|put
 argument_list|(
 literal|"cr"
 argument_list|,
-literal|"\\u343r"
+literal|"&#343;"
 argument_list|)
 expr_stmt|;
 comment|// "rcedil"
@@ -1498,7 +1208,7 @@ name|put
 argument_list|(
 literal|"vR"
 argument_list|,
-literal|"\\u344R"
+literal|"&#344;"
 argument_list|)
 expr_stmt|;
 comment|// "Rcaron"
@@ -1506,7 +1216,7 @@ name|put
 argument_list|(
 literal|"vr"
 argument_list|,
-literal|"\\u345r"
+literal|"&#345;"
 argument_list|)
 expr_stmt|;
 comment|// "rcaron"
@@ -1514,7 +1224,7 @@ name|put
 argument_list|(
 literal|"'S"
 argument_list|,
-literal|"\\u346S"
+literal|"&#346;"
 argument_list|)
 expr_stmt|;
 comment|// "Sacute"
@@ -1522,7 +1232,7 @@ name|put
 argument_list|(
 literal|"'s"
 argument_list|,
-literal|"\\u347s"
+literal|"&#347;"
 argument_list|)
 expr_stmt|;
 comment|// "sacute"
@@ -1530,7 +1240,7 @@ name|put
 argument_list|(
 literal|"^S"
 argument_list|,
-literal|"\\u348S"
+literal|"&#348;"
 argument_list|)
 expr_stmt|;
 comment|// "Scirc"
@@ -1538,7 +1248,7 @@ name|put
 argument_list|(
 literal|"^s"
 argument_list|,
-literal|"\\u349s"
+literal|"&#349;"
 argument_list|)
 expr_stmt|;
 comment|// "scirc"
@@ -1546,7 +1256,7 @@ name|put
 argument_list|(
 literal|"cS"
 argument_list|,
-literal|"\\u350S"
+literal|"&#350;"
 argument_list|)
 expr_stmt|;
 comment|// "Scedil"
@@ -1554,7 +1264,7 @@ name|put
 argument_list|(
 literal|"cs"
 argument_list|,
-literal|"\\u351s"
+literal|"&#351;"
 argument_list|)
 expr_stmt|;
 comment|// "scedil"
@@ -1562,7 +1272,7 @@ name|put
 argument_list|(
 literal|"vS"
 argument_list|,
-literal|"\\u352S"
+literal|"&#352;"
 argument_list|)
 expr_stmt|;
 comment|// "Scaron"
@@ -1570,7 +1280,7 @@ name|put
 argument_list|(
 literal|"vs"
 argument_list|,
-literal|"\\u353s"
+literal|"&#353;"
 argument_list|)
 expr_stmt|;
 comment|// "scaron"
@@ -1578,7 +1288,7 @@ name|put
 argument_list|(
 literal|"cT"
 argument_list|,
-literal|"\\u354T"
+literal|"&#354;"
 argument_list|)
 expr_stmt|;
 comment|// "Tcedil"
@@ -1586,7 +1296,7 @@ name|put
 argument_list|(
 literal|"ct"
 argument_list|,
-literal|"\\u355t"
+literal|"&#355;"
 argument_list|)
 expr_stmt|;
 comment|// "tcedil"
@@ -1594,7 +1304,7 @@ name|put
 argument_list|(
 literal|"vT"
 argument_list|,
-literal|"\\u356T"
+literal|"&#356;"
 argument_list|)
 expr_stmt|;
 comment|// "Tcaron"
@@ -1603,7 +1313,7 @@ name|put
 argument_list|(
 literal|"Tstrok"
 argument_list|,
-literal|"\\u358T"
+literal|"&#358;"
 argument_list|)
 expr_stmt|;
 comment|// "Tstrok"
@@ -1611,7 +1321,7 @@ name|put
 argument_list|(
 literal|"tstrok"
 argument_list|,
-literal|"\\u359t"
+literal|"&#359;"
 argument_list|)
 expr_stmt|;
 comment|// "tstrok"
@@ -1619,7 +1329,7 @@ name|put
 argument_list|(
 literal|"~U"
 argument_list|,
-literal|"\\u360U"
+literal|"&#360;"
 argument_list|)
 expr_stmt|;
 comment|// "Utilde"
@@ -1627,7 +1337,7 @@ name|put
 argument_list|(
 literal|"~u"
 argument_list|,
-literal|"\\u361u"
+literal|"&#361;"
 argument_list|)
 expr_stmt|;
 comment|// "utilde"
@@ -1635,7 +1345,7 @@ name|put
 argument_list|(
 literal|"=U"
 argument_list|,
-literal|"\\u362U"
+literal|"&#362;"
 argument_list|)
 expr_stmt|;
 comment|// "Umacr"
@@ -1643,7 +1353,7 @@ name|put
 argument_list|(
 literal|"=u"
 argument_list|,
-literal|"\\u363u"
+literal|"&#363;"
 argument_list|)
 expr_stmt|;
 comment|// "umacr"
@@ -1651,7 +1361,7 @@ name|put
 argument_list|(
 literal|"uU"
 argument_list|,
-literal|"\\u364U"
+literal|"&#364;"
 argument_list|)
 expr_stmt|;
 comment|// "Ubreve"
@@ -1659,7 +1369,7 @@ name|put
 argument_list|(
 literal|"uu"
 argument_list|,
-literal|"\\u365u"
+literal|"&#365;"
 argument_list|)
 expr_stmt|;
 comment|// "ubreve"
@@ -1667,7 +1377,7 @@ name|put
 argument_list|(
 literal|"rU"
 argument_list|,
-literal|"\\u366U"
+literal|"&#366;"
 argument_list|)
 expr_stmt|;
 comment|// "Uring"
@@ -1675,7 +1385,7 @@ name|put
 argument_list|(
 literal|"ru"
 argument_list|,
-literal|"\\u367u"
+literal|"&#367;"
 argument_list|)
 expr_stmt|;
 comment|// "uring"
@@ -1683,7 +1393,7 @@ name|put
 argument_list|(
 literal|"HU"
 argument_list|,
-literal|"\\u368?"
+literal|"&#368;"
 argument_list|)
 expr_stmt|;
 comment|// "Odblac"
@@ -1691,7 +1401,7 @@ name|put
 argument_list|(
 literal|"Hu"
 argument_list|,
-literal|"\\u369?"
+literal|"&#369;"
 argument_list|)
 expr_stmt|;
 comment|// "odblac"
@@ -1699,7 +1409,7 @@ name|put
 argument_list|(
 literal|"kU"
 argument_list|,
-literal|"\\u370U"
+literal|"&#370;"
 argument_list|)
 expr_stmt|;
 comment|// "Uogon"
@@ -1707,7 +1417,7 @@ name|put
 argument_list|(
 literal|"ku"
 argument_list|,
-literal|"\\u371u"
+literal|"&#371;"
 argument_list|)
 expr_stmt|;
 comment|// "uogon"
@@ -1715,7 +1425,7 @@ name|put
 argument_list|(
 literal|"^W"
 argument_list|,
-literal|"\\u372W"
+literal|"&#372;"
 argument_list|)
 expr_stmt|;
 comment|// "Wcirc"
@@ -1723,7 +1433,7 @@ name|put
 argument_list|(
 literal|"^w"
 argument_list|,
-literal|"\\u373w"
+literal|"&#373;"
 argument_list|)
 expr_stmt|;
 comment|// "wcirc"
@@ -1731,7 +1441,7 @@ name|put
 argument_list|(
 literal|"^Y"
 argument_list|,
-literal|"\\u374Y"
+literal|"&#374;"
 argument_list|)
 expr_stmt|;
 comment|// "Ycirc"
@@ -1739,7 +1449,7 @@ name|put
 argument_list|(
 literal|"^y"
 argument_list|,
-literal|"\\u375y"
+literal|"&#375;"
 argument_list|)
 expr_stmt|;
 comment|// "ycirc"
@@ -1747,7 +1457,7 @@ name|put
 argument_list|(
 literal|"\"Y"
 argument_list|,
-literal|"\\u376Y"
+literal|"&#376;"
 argument_list|)
 expr_stmt|;
 comment|// "Yuml"
@@ -1755,7 +1465,7 @@ name|put
 argument_list|(
 literal|"'Z"
 argument_list|,
-literal|"\\u377Z"
+literal|"&#377;"
 argument_list|)
 expr_stmt|;
 comment|// "Zacute"
@@ -1763,7 +1473,7 @@ name|put
 argument_list|(
 literal|"'z"
 argument_list|,
-literal|"\\u378z"
+literal|"&#378;"
 argument_list|)
 expr_stmt|;
 comment|// "zacute"
@@ -1771,7 +1481,7 @@ name|put
 argument_list|(
 literal|".Z"
 argument_list|,
-literal|"\\u379Z"
+literal|"&#379;"
 argument_list|)
 expr_stmt|;
 comment|// "Zdot"
@@ -1779,7 +1489,7 @@ name|put
 argument_list|(
 literal|".z"
 argument_list|,
-literal|"\\u380z"
+literal|"&#380;"
 argument_list|)
 expr_stmt|;
 comment|// "zdot"
@@ -1787,7 +1497,7 @@ name|put
 argument_list|(
 literal|"vZ"
 argument_list|,
-literal|"\\u381Z"
+literal|"&#381;"
 argument_list|)
 expr_stmt|;
 comment|// "Zcaron"
@@ -1795,11 +1505,19 @@ name|put
 argument_list|(
 literal|"vz"
 argument_list|,
-literal|"\\u382z"
+literal|"&#382;"
 argument_list|)
 expr_stmt|;
 comment|// "zcaron"
 comment|// Symbol #383 (f) has no special Latex command
+name|put
+argument_list|(
+literal|"%"
+argument_list|,
+literal|"%"
+argument_list|)
+expr_stmt|;
+comment|// percent sign
 block|}
 block|}
 end_class

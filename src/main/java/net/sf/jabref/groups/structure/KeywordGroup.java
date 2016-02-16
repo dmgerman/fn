@@ -54,6 +54,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -245,6 +273,22 @@ DECL|field|pattern
 specifier|private
 name|Pattern
 name|pattern
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|KeywordGroup
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/**      * Creates a KeywordGroup with the specified properties.      */
 DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context)
@@ -1951,19 +1995,15 @@ parameter_list|)
 block|{
 comment|// this should never happen, because the constructor obviously
 comment|// succeeded in creating _this_ instance!
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"Internal error: Exception "
-operator|+
-name|t
-operator|+
-literal|" in KeywordGroup.deepCopy(). "
+literal|"Internal error in KeywordGroup.deepCopy(). "
 operator|+
 literal|"Please report this on https://github.com/JabRef/jabref/issues"
+argument_list|,
+name|t
 argument_list|)
 expr_stmt|;
 return|return
