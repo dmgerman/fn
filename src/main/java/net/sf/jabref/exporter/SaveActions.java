@@ -517,11 +517,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|commaIndex
-operator|==
-name|endIndex
-operator|-
-literal|1
+name|remainingString
+operator|.
+name|startsWith
+argument_list|(
+literal|"]"
+argument_list|)
 condition|)
 block|{
 break|break;
