@@ -1,19 +1,7 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.external
+DECL|package|net.sf.jabref.logic.fetcher
 package|package
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|external
-package|;
-end_package
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -23,10 +11,8 @@ operator|.
 name|logic
 operator|.
 name|fetcher
-operator|.
-name|FullTextFinder
-import|;
-end_import
+package|;
+end_package
 
 begin_import
 import|import

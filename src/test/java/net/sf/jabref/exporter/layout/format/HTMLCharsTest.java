@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.exporter.layout
+DECL|package|net.sf.jabref.exporter.layout.format
 package|package
 name|net
 operator|.
@@ -11,6 +11,8 @@ operator|.
 name|exporter
 operator|.
 name|layout
+operator|.
+name|format
 package|;
 end_package
 
@@ -26,9 +28,7 @@ name|exporter
 operator|.
 name|layout
 operator|.
-name|format
-operator|.
-name|HTMLChars
+name|LayoutFormatter
 import|;
 end_import
 
