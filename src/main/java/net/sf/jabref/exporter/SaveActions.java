@@ -515,6 +515,17 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|commaIndex
+operator|==
+name|endIndex
+operator|-
+literal|1
+condition|)
+block|{
+break|break;
+block|}
 name|commaIndex
 operator|=
 name|remainingString
@@ -912,7 +923,7 @@ name|result
 operator|.
 name|append
 argument_list|(
-literal|"],"
+literal|"]"
 argument_list|)
 expr_stmt|;
 block|}
