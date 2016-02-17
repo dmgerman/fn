@@ -186,7 +186,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
 name|EntryTypes
 import|;

@@ -136,7 +136,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
 name|EntryTypes
 import|;
@@ -2407,14 +2407,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|newType
-lambda|->
 name|entry
-operator|.
+operator|::
 name|setType
-argument_list|(
-name|newType
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

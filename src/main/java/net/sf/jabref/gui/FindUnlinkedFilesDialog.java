@@ -698,7 +698,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
 name|EntryTypes
 import|;
@@ -2405,7 +2405,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This will start the import of all file of all selected nodes in this      * dialogs tree view.<br>      *<br>      * The import itself will run in a seperate thread, whilst this dialog will      * be showing a progress bar, until the thread has finished its work.<br>      *<br>      * When the import has finished, the {@link #importFinishedHandler(int, java.util.List)} is      * invoked.      */
+comment|/**      * This will start the import of all file of all selected nodes in this      * dialogs tree view.<br>      *<br>      * The import itself will run in a seperate thread, whilst this dialog will      * be showing a progress bar, until the thread has finished its work.<br>      *<br>      * When the import has finished, the {@link #importFinishedHandler(java.util.List)} is      * invoked.      */
 DECL|method|startImport ()
 specifier|private
 name|void
@@ -3503,27 +3503,12 @@ name|checkboxCreateKeywords
 operator|.
 name|addItemListener
 argument_list|(
-operator|new
-name|ItemListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|itemStateChanged
-parameter_list|(
-name|ItemEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|checkBoxWhyIsThereNoGetSelectedStupidSwing
 operator|=
 operator|!
 name|checkBoxWhyIsThereNoGetSelectedStupidSwing
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|textfieldDirectoryPath

@@ -951,13 +951,6 @@ name|readLine
 argument_list|()
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|author
-operator|!=
-literal|null
-condition|)
-block|{
 name|authors
 operator|+=
 literal|""
@@ -973,7 +966,6 @@ literal|" and "
 operator|+
 name|author
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|institution
