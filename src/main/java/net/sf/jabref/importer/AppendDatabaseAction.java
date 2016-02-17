@@ -1126,22 +1126,18 @@ argument_list|(
 name|group
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|BibEntry
-name|appendedEntry
-range|:
 name|appendedEntries
-control|)
-block|{
-name|group
 operator|.
-name|addEntry
+name|stream
+argument_list|()
+operator|.
+name|map
 argument_list|(
-name|appendedEntry
+name|group
+operator|::
+name|addEntry
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// groupsSelector is always created, even when no groups
 comment|// have been defined. therefore, no check for null is
