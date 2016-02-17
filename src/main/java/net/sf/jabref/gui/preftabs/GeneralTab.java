@@ -104,20 +104,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|JabRefFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|JabRefPreferences
 import|;
 end_import
@@ -438,12 +424,15 @@ name|DefaultListCellRenderer
 block|{
 annotation|@
 name|Override
-DECL|method|getListCellRendererComponent (JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
+DECL|method|getListCellRendererComponent (JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus)
 specifier|public
 name|Component
 name|getListCellRendererComponent
 parameter_list|(
 name|JList
+argument_list|<
+name|?
+argument_list|>
 name|list
 parameter_list|,
 name|Object
@@ -492,13 +481,10 @@ name|this
 return|;
 block|}
 block|}
-DECL|method|GeneralTab (JabRefFrame frame, JabRefPreferences prefs)
+DECL|method|GeneralTab (JabRefPreferences prefs)
 specifier|public
 name|GeneralTab
 parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|,
 name|JabRefPreferences
 name|prefs
 parameter_list|)
@@ -520,6 +506,7 @@ name|biblatexMode
 operator|=
 operator|new
 name|JComboBox
+argument_list|<>
 argument_list|(
 name|BibDatabaseMode
 operator|.

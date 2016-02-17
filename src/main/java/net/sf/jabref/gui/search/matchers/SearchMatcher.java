@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.search.rules.sets
+DECL|package|net.sf.jabref.gui.search.matchers
 package|package
 name|net
 operator|.
@@ -12,13 +12,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
 name|search
 operator|.
-name|rules
-operator|.
-name|sets
+name|matchers
 package|;
 end_package
 
@@ -40,84 +38,62 @@ end_import
 
 begin_import
 import|import
-name|net
+name|ca
 operator|.
-name|sf
+name|odell
 operator|.
-name|jabref
+name|glazedlists
 operator|.
-name|logic
+name|matchers
 operator|.
-name|search
-operator|.
-name|SearchRule
+name|Matcher
 import|;
 end_import
 
 begin_comment
-comment|/**  * Subclass of SearchRuleSet that ANDs or ORs between its rules, returning 0 or  * 1.  */
+comment|/**  * Matcher for filtering or sorting the table according to whether entries are  * tagged as search matches.  */
 end_comment
 
 begin_class
-DECL|class|AndSearchRuleSet
+DECL|class|SearchMatcher
 specifier|public
 class|class
-name|AndSearchRuleSet
-extends|extends
-name|SearchRuleSet
+name|SearchMatcher
+implements|implements
+name|Matcher
+argument_list|<
+name|BibEntry
+argument_list|>
 block|{
+DECL|field|INSTANCE
+specifier|public
+specifier|static
+specifier|final
+name|Matcher
+argument_list|<
+name|BibEntry
+argument_list|>
+name|INSTANCE
+init|=
+operator|new
+name|SearchMatcher
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Override
-DECL|method|applyRule (String searchString, BibEntry bibEntry)
+DECL|method|matches (BibEntry entry)
 specifier|public
 name|boolean
-name|applyRule
+name|matches
 parameter_list|(
-name|String
-name|searchString
-parameter_list|,
 name|BibEntry
-name|bibEntry
+name|entry
 parameter_list|)
 block|{
-name|int
-name|score
-init|=
-literal|0
-decl_stmt|;
-comment|// We let each rule add a maximum of 1 to the score.
-for|for
-control|(
-name|SearchRule
-name|rule
-range|:
-name|ruleSet
-control|)
-block|{
-if|if
-condition|(
-name|rule
-operator|.
-name|applyRule
-argument_list|(
-name|searchString
-argument_list|,
-name|bibEntry
-argument_list|)
-condition|)
-block|{
-name|score
-operator|++
-expr_stmt|;
-block|}
-block|}
-comment|// Then an AND rule demands that score == number of rules
 return|return
-name|score
-operator|==
-name|ruleSet
+name|entry
 operator|.
-name|size
+name|isSearchHit
 argument_list|()
 return|;
 block|}

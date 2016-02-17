@@ -524,7 +524,8 @@ name|hits
 argument_list|,
 name|searchQuery
 operator|.
-name|description
+name|getDescription
+argument_list|()
 argument_list|,
 name|searchQuery
 operator|.

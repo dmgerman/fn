@@ -726,8 +726,6 @@ name|name
 argument_list|,
 name|fileType
 argument_list|,
-literal|true
-argument_list|,
 name|entryContainer
 operator|.
 name|getEntry

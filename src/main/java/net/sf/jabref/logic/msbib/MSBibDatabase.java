@@ -395,7 +395,10 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 name|String

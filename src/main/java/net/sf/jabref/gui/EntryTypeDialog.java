@@ -186,7 +186,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
 name|EntryTypes
 import|;
@@ -283,6 +283,7 @@ name|TypeButton
 argument_list|>
 block|{
 DECL|field|type
+specifier|private
 specifier|final
 name|EntryType
 name|type
@@ -336,6 +337,16 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+return|;
+block|}
+DECL|method|getType ()
+specifier|public
+name|EntryType
+name|getType
+parameter_list|()
+block|{
+return|return
+name|type
 return|;
 block|}
 block|}
@@ -870,7 +881,8 @@ name|getSource
 argument_list|()
 operator|)
 operator|.
-name|type
+name|getType
+argument_list|()
 expr_stmt|;
 block|}
 name|dispose

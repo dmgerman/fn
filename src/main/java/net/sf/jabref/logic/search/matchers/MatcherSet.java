@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.search.rules.sets
+DECL|package|net.sf.jabref.logic.search.matchers
 package|package
 name|net
 operator|.
@@ -16,9 +16,7 @@ name|logic
 operator|.
 name|search
 operator|.
-name|rules
-operator|.
-name|sets
+name|matchers
 package|;
 end_package
 
@@ -34,7 +32,7 @@ name|logic
 operator|.
 name|search
 operator|.
-name|SearchRule
+name|SearchMatcher
 import|;
 end_import
 
@@ -69,38 +67,38 @@ import|;
 end_import
 
 begin_class
-DECL|class|SearchRuleSet
+DECL|class|MatcherSet
 specifier|public
 specifier|abstract
 class|class
-name|SearchRuleSet
+name|MatcherSet
 implements|implements
-name|SearchRule
+name|SearchMatcher
 block|{
-DECL|field|ruleSet
+DECL|field|matchers
 specifier|protected
 specifier|final
 name|List
 argument_list|<
-name|SearchRule
+name|SearchMatcher
 argument_list|>
-name|ruleSet
+name|matchers
 init|=
 operator|new
 name|Vector
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|addRule (SearchRule newRule)
+DECL|method|addRule (SearchMatcher newRule)
 specifier|public
 name|void
 name|addRule
 parameter_list|(
-name|SearchRule
+name|SearchMatcher
 name|newRule
 parameter_list|)
 block|{
-name|ruleSet
+name|matchers
 operator|.
 name|add
 argument_list|(
@@ -112,45 +110,6 @@ name|newRule
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|validateSearchStrings (String query)
-specifier|public
-name|boolean
-name|validateSearchStrings
-parameter_list|(
-name|String
-name|query
-parameter_list|)
-block|{
-for|for
-control|(
-name|SearchRule
-name|searchRule
-range|:
-name|ruleSet
-control|)
-block|{
-if|if
-condition|(
-operator|!
-name|searchRule
-operator|.
-name|validateSearchStrings
-argument_list|(
-name|query
-argument_list|)
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-block|}
-return|return
-literal|true
-return|;
 block|}
 block|}
 end_class

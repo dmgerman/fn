@@ -158,22 +158,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|AboutDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -420,15 +404,12 @@ argument_list|(
 literal|20
 argument_list|)
 decl_stmt|;
-DECL|method|LabelPatternPrefTab (JabRefPreferences prefs, AboutDialog helpDiag, BasePanel panel)
+DECL|method|LabelPatternPrefTab (JabRefPreferences prefs, BasePanel panel)
 specifier|public
 name|LabelPatternPrefTab
 parameter_list|(
 name|JabRefPreferences
 name|prefs
-parameter_list|,
-name|AboutDialog
-name|helpDiag
 parameter_list|,
 name|BasePanel
 name|panel
@@ -436,8 +417,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|helpDiag
-argument_list|,
 name|panel
 argument_list|)
 expr_stmt|;

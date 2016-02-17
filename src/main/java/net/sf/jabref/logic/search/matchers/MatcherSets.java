@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.search.rules.sets
+DECL|package|net.sf.jabref.logic.search.matchers
 package|package
 name|net
 operator|.
@@ -12,22 +12,20 @@ name|logic
 operator|.
 name|search
 operator|.
-name|rules
-operator|.
-name|sets
+name|matchers
 package|;
 end_package
 
 begin_class
-DECL|class|SearchRuleSets
+DECL|class|MatcherSets
 specifier|public
 class|class
-name|SearchRuleSets
+name|MatcherSets
 block|{
-DECL|enum|RuleSetType
+DECL|enum|MatcherType
 specifier|public
 enum|enum
-name|RuleSetType
+name|MatcherType
 block|{
 DECL|enumConstant|AND
 name|AND
@@ -35,13 +33,13 @@ block|,
 DECL|enumConstant|OR
 name|OR
 block|}
-DECL|method|build (RuleSetType ruleSet)
+DECL|method|build (MatcherType ruleSet)
 specifier|public
 specifier|static
-name|SearchRuleSet
+name|MatcherSet
 name|build
 parameter_list|(
-name|RuleSetType
+name|MatcherType
 name|ruleSet
 parameter_list|)
 block|{
@@ -49,14 +47,14 @@ if|if
 condition|(
 name|ruleSet
 operator|==
-name|RuleSetType
+name|MatcherType
 operator|.
 name|AND
 condition|)
 block|{
 return|return
 operator|new
-name|AndSearchRuleSet
+name|AndMatcher
 argument_list|()
 return|;
 block|}
@@ -64,7 +62,7 @@ else|else
 block|{
 return|return
 operator|new
-name|OrSearchRuleSet
+name|OrMatcher
 argument_list|()
 return|;
 block|}

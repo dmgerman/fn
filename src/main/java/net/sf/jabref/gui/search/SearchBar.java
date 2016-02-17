@@ -222,22 +222,6 @@ name|logic
 operator|.
 name|search
 operator|.
-name|SearchQueryLocalizer
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|search
-operator|.
 name|SearchQueryHighlightObservable
 import|;
 end_import
@@ -539,7 +523,7 @@ specifier|final
 name|JLabel
 name|searchIcon
 decl_stmt|;
-comment|/**      * Initializes the search bar.      *      * @param frame the main window      */
+comment|/**      * Initializes the search bar.      *      * @param basePanel the base panel      */
 DECL|method|SearchBar (BasePanel basePanel)
 specifier|public
 name|SearchBar
@@ -737,15 +721,13 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|SearchQueryLocalizer
-operator|.
-name|localize
-argument_list|(
 name|this
 operator|.
 name|getSearchQuery
 argument_list|()
-argument_list|)
+operator|.
+name|localize
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1675,7 +1657,7 @@ condition|(
 operator|!
 name|searchQuery
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 condition|)
 block|{
@@ -1850,7 +1832,8 @@ block|{
 return|return
 name|query
 operator|.
-name|query
+name|getQuery
+argument_list|()
 operator|.
 name|equals
 argument_list|(
@@ -1865,7 +1848,8 @@ operator|&&
 operator|(
 name|query
 operator|.
-name|regularExpression
+name|isRegularExpression
+argument_list|()
 operator|==
 name|regularExp
 operator|.
@@ -1876,7 +1860,8 @@ operator|&&
 operator|(
 name|query
 operator|.
-name|caseSensitive
+name|isCaseSensitive
+argument_list|()
 operator|==
 name|caseSensitive
 operator|.

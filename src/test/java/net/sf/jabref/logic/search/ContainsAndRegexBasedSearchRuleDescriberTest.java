@@ -26,6 +26,8 @@ name|logic
 operator|.
 name|search
 operator|.
+name|rules
+operator|.
 name|describer
 operator|.
 name|ContainsAndRegexBasedSearchRuleDescriber

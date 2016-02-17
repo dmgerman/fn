@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.search.rules.util
+DECL|package|net.sf.jabref.logic.search.rules
 package|package
 name|net
 operator|.
@@ -13,8 +13,6 @@ operator|.
 name|search
 operator|.
 name|rules
-operator|.
-name|util
 package|;
 end_package
 

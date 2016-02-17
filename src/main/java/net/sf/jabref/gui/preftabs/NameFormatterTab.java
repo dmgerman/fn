@@ -102,22 +102,6 @@ name|gui
 operator|.
 name|help
 operator|.
-name|AboutDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
 name|HelpFiles
 import|;
 end_import
@@ -592,13 +576,10 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Tab to create custom Name Formatters      *      */
-DECL|method|NameFormatterTab (AboutDialog aboutDialog)
+DECL|method|NameFormatterTab ()
 specifier|public
 name|NameFormatterTab
-parameter_list|(
-name|AboutDialog
-name|aboutDialog
-parameter_list|)
+parameter_list|()
 block|{
 name|setLayout
 argument_list|(

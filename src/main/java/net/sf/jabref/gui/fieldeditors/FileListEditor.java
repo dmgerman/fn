@@ -144,16 +144,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collection
 import|;
 end_import
@@ -165,6 +155,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -1751,7 +1751,10 @@ name|row
 argument_list|)
 decl_stmt|;
 comment|// null if file does not exist
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|file
 init|=
 name|FileUtil
@@ -1771,8 +1774,9 @@ block|{
 if|if
 condition|(
 name|file
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|Files
@@ -1780,6 +1784,9 @@ operator|.
 name|delete
 argument_list|(
 name|file
+operator|.
+name|get
+argument_list|()
 operator|.
 name|toPath
 argument_list|()
@@ -1827,10 +1834,9 @@ name|warn
 argument_list|(
 literal|"File permission error while deleting: "
 operator|+
-name|file
+name|entry
 operator|.
-name|toPath
-argument_list|()
+name|link
 argument_list|,
 name|ex
 argument_list|)

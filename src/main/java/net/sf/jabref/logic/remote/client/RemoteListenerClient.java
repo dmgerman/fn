@@ -52,24 +52,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|util
-operator|.
-name|strings
-operator|.
-name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -259,13 +241,13 @@ name|protocol
 operator|.
 name|sendMessage
 argument_list|(
-name|StringUtil
+name|String
 operator|.
 name|join
 argument_list|(
-name|args
-argument_list|,
 literal|"\n"
+argument_list|,
+name|args
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -294,13 +276,13 @@ name|debug
 argument_list|(
 literal|"Could not send args "
 operator|+
-name|StringUtil
+name|String
 operator|.
 name|join
 argument_list|(
-name|args
-argument_list|,
 literal|", "
+argument_list|,
+name|args
 argument_list|)
 operator|+
 literal|" to the server at port "

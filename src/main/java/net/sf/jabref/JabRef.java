@@ -1688,7 +1688,7 @@ argument_list|,
 name|dataBase
 argument_list|)
 operator|.
-name|getDatabasefromMatches
+name|getDatabaseFromMatches
 argument_list|()
 decl_stmt|;
 comment|//newBase contains only match entries

@@ -708,7 +708,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
 name|search
 operator|.
@@ -726,7 +726,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
 name|search
 operator|.
@@ -1699,8 +1699,12 @@ name|String
 name|getTabTitle
 parameter_list|()
 block|{
-name|String
+name|StringBuilder
 name|title
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1714,10 +1718,13 @@ literal|null
 condition|)
 block|{
 name|title
-operator|=
+operator|.
+name|append
+argument_list|(
 name|GUIGlobals
 operator|.
 name|untitledTitle
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -1737,10 +1744,11 @@ comment|// the database came from an import and has to be treated somehow
 comment|// -> mark as changed
 comment|// This also happens internally at basepanel to ensure consistency line 224
 name|title
-operator|=
-name|title
-operator|+
+operator|.
+name|append
+argument_list|(
 literal|'*'
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1758,7 +1766,9 @@ else|:
 literal|""
 decl_stmt|;
 name|title
-operator|=
+operator|.
+name|append
+argument_list|(
 name|getBibDatabaseContext
 argument_list|()
 operator|.
@@ -1767,12 +1777,19 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|changeFlag
+argument_list|)
 expr_stmt|;
 block|}
 return|return
 name|title
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 DECL|method|isModified ()
@@ -10118,8 +10135,6 @@ operator|=
 operator|new
 name|ContentAutoCompleters
 argument_list|(
-name|autoCompletePreferences
-argument_list|,
 name|Globals
 operator|.
 name|journalAbbreviationLoader
