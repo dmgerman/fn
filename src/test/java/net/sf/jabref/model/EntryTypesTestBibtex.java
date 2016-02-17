@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.bibtex
+DECL|package|net.sf.jabref.model
 package|package
 name|net
 operator|.
@@ -8,7 +8,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 package|;
 end_package
 
@@ -166,57 +166,6 @@ specifier|public
 class|class
 name|EntryTypesTestBibtex
 block|{
-DECL|field|backup
-specifier|private
-name|JabRefPreferences
-name|backup
-decl_stmt|;
-annotation|@
-name|Before
-DECL|method|setUp ()
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|=
-name|JabRefPreferences
-operator|.
-name|getInstance
-argument_list|()
-expr_stmt|;
-name|backup
-operator|=
-name|Globals
-operator|.
-name|prefs
-expr_stmt|;
-block|}
-annotation|@
-name|After
-DECL|method|tearDown ()
-specifier|public
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|overwritePreferences
-argument_list|(
-name|backup
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Test
 DECL|method|testBibtexMode ()
