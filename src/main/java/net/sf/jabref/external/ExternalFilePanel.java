@@ -430,6 +430,16 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * Initial Version:  *  * @author alver  * @version Date: May 7, 2005 Time: 7:17:42 PM  *  */
 end_comment
@@ -1050,7 +1060,10 @@ operator|>
 literal|0
 condition|)
 block|{
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|tmp
 init|=
 name|FileUtil
@@ -1068,13 +1081,17 @@ decl_stmt|;
 if|if
 condition|(
 name|tmp
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|file
 operator|=
 name|tmp
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 block|}
 block|}

@@ -271,9 +271,6 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 decl_stmt|;
-name|File
-name|expLink
-init|=
 name|FileUtil
 operator|.
 name|expandFilename
@@ -289,12 +286,12 @@ name|link
 argument_list|,
 name|dirs
 argument_list|)
-decl_stmt|;
-name|fileList
 operator|.
-name|add
+name|ifPresent
 argument_list|(
-name|expLink
+name|fileList
+operator|::
+name|add
 argument_list|)
 expr_stmt|;
 block|}
