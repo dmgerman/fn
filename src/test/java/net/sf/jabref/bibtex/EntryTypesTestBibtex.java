@@ -226,20 +226,13 @@ name|testBibtexMode
 parameter_list|()
 block|{
 comment|// Bibtex mode
-name|EntryTypes
-name|bibtexentrytypes
-init|=
-operator|new
-name|EntryTypes
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
-name|bibtexentrytypes
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -261,7 +254,7 @@ operator|.
 name|empty
 argument_list|()
 argument_list|,
-name|bibtexentrytypes
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -280,7 +273,7 @@ operator|.
 name|empty
 argument_list|()
 argument_list|,
-name|bibtexentrytypes
+name|EntryTypes
 operator|.
 name|getStandardType
 argument_list|(
@@ -296,7 +289,7 @@ name|assertEquals
 argument_list|(
 literal|19
 argument_list|,
-name|bibtexentrytypes
+name|EntryTypes
 operator|.
 name|getAllValues
 argument_list|(
@@ -313,7 +306,7 @@ name|assertEquals
 argument_list|(
 literal|19
 argument_list|,
-name|bibtexentrytypes
+name|EntryTypes
 operator|.
 name|getAllTypes
 argument_list|(
@@ -370,7 +363,7 @@ name|getOptionalFields
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|bibtexentrytypes
+name|EntryTypes
 operator|.
 name|addOrModifyCustomEntryType
 argument_list|(
@@ -384,7 +377,7 @@ name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
-name|bibtexentrytypes
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -400,7 +393,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Remove the custom "article" entry type, which should restore the original
-name|bibtexentrytypes
+name|EntryTypes
 operator|.
 name|removeType
 argument_list|(
@@ -418,7 +411,7 @@ name|BibtexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
-name|bibtexentrytypes
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -455,7 +448,7 @@ name|BibtexEntryTypes
 operator|.
 name|MISC
 argument_list|,
-name|types
+name|EntryTypes
 operator|.
 name|getTypeOrDefault
 argument_list|(

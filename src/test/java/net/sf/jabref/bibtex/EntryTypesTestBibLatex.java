@@ -212,20 +212,13 @@ name|testBibLatexMode
 parameter_list|()
 block|{
 comment|// BibLatex mode
-name|EntryTypes
-name|biblatexentrytypes
-init|=
-operator|new
-name|EntryTypes
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 name|BibLatexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
-name|biblatexentrytypes
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -247,7 +240,7 @@ operator|.
 name|empty
 argument_list|()
 argument_list|,
-name|biblatexentrytypes
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -266,7 +259,7 @@ operator|.
 name|empty
 argument_list|()
 argument_list|,
-name|biblatexentrytypes
+name|EntryTypes
 operator|.
 name|getStandardType
 argument_list|(
@@ -282,7 +275,7 @@ name|assertEquals
 argument_list|(
 literal|34
 argument_list|,
-name|biblatexentrytypes
+name|EntryTypes
 operator|.
 name|getAllValues
 argument_list|(
@@ -299,7 +292,7 @@ name|assertEquals
 argument_list|(
 literal|34
 argument_list|,
-name|biblatexentrytypes
+name|EntryTypes
 operator|.
 name|getAllTypes
 argument_list|(
@@ -312,7 +305,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|biblatexentrytypes
+name|EntryTypes
 operator|.
 name|removeType
 argument_list|(
@@ -330,7 +323,7 @@ name|BibLatexEntryTypes
 operator|.
 name|ARTICLE
 argument_list|,
-name|biblatexentrytypes
+name|EntryTypes
 operator|.
 name|getType
 argument_list|(
@@ -367,7 +360,7 @@ name|BibLatexEntryTypes
 operator|.
 name|MISC
 argument_list|,
-name|types
+name|EntryTypes
 operator|.
 name|getTypeOrDefault
 argument_list|(

@@ -262,7 +262,7 @@ decl_stmt|;
 name|BibEntry
 name|be
 init|=
-name|jc
+name|JSONEntryParser
 operator|.
 name|SpringerJSONtoBibtex
 argument_list|(
