@@ -72,7 +72,8 @@ literal|"\"%s\" (%s, %s)"
 argument_list|,
 name|searchQuery
 operator|.
-name|query
+name|getQuery
+argument_list|()
 argument_list|,
 name|getLocalizedCaseSensitiveDescription
 argument_list|(
@@ -100,7 +101,8 @@ if|if
 condition|(
 name|searchQuery
 operator|.
-name|caseSensitive
+name|isCaseSensitive
+argument_list|()
 condition|)
 block|{
 return|return
@@ -138,7 +140,8 @@ if|if
 condition|(
 name|searchQuery
 operator|.
-name|regularExpression
+name|isRegularExpression
+argument_list|()
 condition|)
 block|{
 return|return

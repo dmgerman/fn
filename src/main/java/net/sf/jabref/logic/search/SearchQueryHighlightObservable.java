@@ -217,7 +217,7 @@ name|getWords
 argument_list|()
 return|;
 block|}
-comment|/**      * Fires an event if a search was started (or cleared)      *      * @param searchText the search query      */
+comment|/**      * Fires an event if a search was started (or cleared)      *      * @param searchQuery the search query      */
 DECL|method|fireSearchlistenerEvent (SearchQuery searchQuery)
 specifier|public
 name|void
@@ -260,16 +260,19 @@ name|getSearchwords
 argument_list|(
 name|searchQuery
 operator|.
-name|query
+name|getQuery
+argument_list|()
 argument_list|)
 argument_list|,
 name|searchQuery
 operator|.
-name|regularExpression
+name|isRegularExpression
+argument_list|()
 argument_list|,
 name|searchQuery
 operator|.
-name|caseSensitive
+name|isCaseSensitive
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
