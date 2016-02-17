@@ -606,28 +606,15 @@ name|enablementString
 parameter_list|)
 block|{
 comment|//read if save actions should be enabled
-if|if
-condition|(
+name|enabled
+operator|=
 literal|"enabled"
 operator|.
 name|equals
 argument_list|(
 name|enablementString
 argument_list|)
-condition|)
-block|{
-name|enabled
-operator|=
-literal|true
 expr_stmt|;
-block|}
-else|else
-block|{
-name|enabled
-operator|=
-literal|false
-expr_stmt|;
-block|}
 block|}
 DECL|method|setAvailableFormatters ()
 specifier|private
