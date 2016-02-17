@@ -366,20 +366,6 @@ argument_list|>
 name|entries
 parameter_list|)
 function_decl|;
-comment|/**      * @param query The search option to apply.      * @return true if this group contains the specified entry, false otherwise.      */
-DECL|method|contains (String query, BibEntry entry)
-specifier|public
-specifier|abstract
-name|boolean
-name|contains
-parameter_list|(
-name|String
-name|query
-parameter_list|,
-name|BibEntry
-name|entry
-parameter_list|)
-function_decl|;
 comment|/**      * @return true if this group contains the specified entry, false otherwise.      */
 DECL|method|contains (BibEntry entry)
 specifier|public

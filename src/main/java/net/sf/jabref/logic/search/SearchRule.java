@@ -47,12 +47,6 @@ name|DUMMY_QUERY
 init|=
 literal|"dummy"
 decl_stmt|;
-DECL|field|NULL_QUERY
-name|String
-name|NULL_QUERY
-init|=
-literal|null
-decl_stmt|;
 DECL|method|applyRule (String query, BibEntry bibEntry)
 name|boolean
 name|applyRule

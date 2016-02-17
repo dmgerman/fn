@@ -336,25 +336,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|contains (String query, BibEntry entry)
-specifier|public
-name|boolean
-name|contains
-parameter_list|(
-name|String
-name|query
-parameter_list|,
-name|BibEntry
-name|entry
-parameter_list|)
-block|{
-return|return
-literal|true
-return|;
-comment|// contains everything
-block|}
-annotation|@
-name|Override
 DECL|method|deepCopy ()
 specifier|public
 name|AbstractGroup

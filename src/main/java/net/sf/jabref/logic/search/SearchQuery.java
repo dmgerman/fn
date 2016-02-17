@@ -127,7 +127,7 @@ name|boolean
 name|regularExpression
 decl_stmt|;
 DECL|field|rule
-specifier|private
+specifier|public
 specifier|final
 name|SearchRule
 name|rule
