@@ -30,7 +30,7 @@ name|search
 operator|.
 name|rules
 operator|.
-name|MockSearchRule
+name|MockSearchMatcher
 import|;
 end_import
 
@@ -131,7 +131,7 @@ operator|.
 name|addRule
 argument_list|(
 operator|new
-name|MockSearchRule
+name|MockSearchMatcher
 argument_list|(
 literal|true
 argument_list|)
@@ -154,7 +154,7 @@ operator|.
 name|addRule
 argument_list|(
 operator|new
-name|MockSearchRule
+name|MockSearchMatcher
 argument_list|(
 literal|false
 argument_list|)
@@ -214,7 +214,7 @@ operator|.
 name|addRule
 argument_list|(
 operator|new
-name|MockSearchRule
+name|MockSearchMatcher
 argument_list|(
 literal|true
 argument_list|)
@@ -237,7 +237,7 @@ operator|.
 name|addRule
 argument_list|(
 operator|new
-name|MockSearchRule
+name|MockSearchMatcher
 argument_list|(
 literal|false
 argument_list|)
@@ -271,7 +271,7 @@ operator|new
 name|NotMatcher
 argument_list|(
 operator|new
-name|MockSearchRule
+name|MockSearchMatcher
 argument_list|(
 literal|true
 argument_list|)
@@ -305,7 +305,7 @@ operator|new
 name|NotMatcher
 argument_list|(
 operator|new
-name|MockSearchRule
+name|MockSearchMatcher
 argument_list|(
 literal|false
 argument_list|)

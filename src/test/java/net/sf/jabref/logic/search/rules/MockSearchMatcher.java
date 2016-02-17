@@ -53,10 +53,10 @@ comment|/**  * Mock search rule that returns the values passed. Useful for testi
 end_comment
 
 begin_class
-DECL|class|MockSearchRule
+DECL|class|MockSearchMatcher
 specifier|public
 class|class
-name|MockSearchRule
+name|MockSearchMatcher
 implements|implements
 name|SearchMatcher
 block|{
@@ -66,9 +66,9 @@ specifier|final
 name|boolean
 name|result
 decl_stmt|;
-DECL|method|MockSearchRule (boolean result)
+DECL|method|MockSearchMatcher (boolean result)
 specifier|public
-name|MockSearchRule
+name|MockSearchMatcher
 parameter_list|(
 name|boolean
 name|result
