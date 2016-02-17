@@ -30,6 +30,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|nio
 operator|.
 name|charset
@@ -751,7 +761,9 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|IOException
+decl||
+name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{

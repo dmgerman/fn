@@ -375,8 +375,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Simon Holland}}"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Holland"
@@ -420,8 +418,6 @@ argument_list|(
 name|bibtexString
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"HerlandHaugeHelgeland"
@@ -460,8 +456,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Simon Popovi\\v{c}ov\\'{a}}}"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Popovicova"
@@ -501,8 +495,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas KÃ¶ning}, year={2000}}"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Koen"
@@ -531,8 +523,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Aoen"
@@ -561,8 +551,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Eoen"
@@ -591,8 +579,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ioen"
@@ -621,8 +607,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas Ä¹Ã¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Loen"
@@ -651,8 +635,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÅÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Noen"
@@ -681,8 +663,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ooen"
@@ -711,8 +691,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÅÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Roen"
@@ -741,8 +719,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÅÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Soen"
@@ -771,8 +747,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Uoen"
@@ -801,8 +775,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Yoen"
@@ -831,8 +803,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas Å¹Ã¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Zoen"
@@ -872,8 +842,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Aoen"
@@ -902,8 +870,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Eoen"
@@ -932,8 +898,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ioen"
@@ -962,8 +926,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ooen"
@@ -992,8 +954,6 @@ argument_list|(
 literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Uoen"
@@ -1286,8 +1246,6 @@ name|void
 name|testFirstAuthor
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -1300,8 +1258,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_5
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -1315,8 +1271,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// https://sourceforge.net/forum/message.php?msg_id=4498555
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"K{\\\"o}ning"
@@ -1329,8 +1283,6 @@ literal|"K{\\\"o}ning"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -1375,8 +1327,6 @@ name|void
 name|testAuthIniN
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NMEB"
@@ -1391,8 +1341,6 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NMEB"
@@ -1407,8 +1355,6 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NeME"
@@ -1423,8 +1369,6 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NeMa"
@@ -1439,8 +1383,6 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newt"
@@ -1455,8 +1397,6 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -1464,8 +1404,6 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"N"
@@ -1480,8 +1418,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -1496,8 +1432,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -1513,8 +1447,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -1529,8 +1461,6 @@ literal|6
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -1580,8 +1510,6 @@ name|void
 name|authAuthEa
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -1594,8 +1522,6 @@ name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton.Maxwell"
@@ -1608,8 +1534,6 @@ name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton.Maxwell.ea"
@@ -1644,8 +1568,6 @@ name|append
 init|=
 literal|".etal"
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton.etal"
@@ -1662,8 +1584,6 @@ name|append
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton.Maxwell"
@@ -1689,8 +1609,6 @@ name|append
 operator|=
 literal|"EtAl"
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtonEtAl"
@@ -1707,8 +1625,6 @@ name|append
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtonMaxwell"
@@ -1736,8 +1652,6 @@ name|testAuthShort
 parameter_list|()
 block|{
 comment|// tests taken from the comments
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NME+"
@@ -1750,8 +1664,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NME"
@@ -1764,8 +1676,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NM"
@@ -1778,8 +1688,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -1802,8 +1710,6 @@ name|void
 name|authN_M
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"N"
@@ -1820,8 +1726,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Max"
@@ -1838,8 +1742,6 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"New"
@@ -1856,8 +1758,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bo"
@@ -1874,8 +1774,6 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bohr"
@@ -1892,8 +1790,6 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Aal"
@@ -1910,8 +1806,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Less"
@@ -1928,8 +1822,6 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -1983,8 +1875,6 @@ name|void
 name|firstAuthorForenameInitials
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"I"
@@ -1997,8 +1887,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"I"
@@ -2011,8 +1899,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"I"
@@ -2025,8 +1911,6 @@ name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"I"
@@ -2049,8 +1933,6 @@ name|void
 name|firstAuthorVonAndLast
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"vanderAalst"
@@ -2063,8 +1945,6 @@ name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"vanderAalst"
@@ -2087,8 +1967,6 @@ name|void
 name|testAllAuthors
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -2101,8 +1979,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtonMaxwell"
@@ -2115,8 +1991,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtonMaxwellEinstein"
@@ -2139,8 +2013,6 @@ name|void
 name|authorsAlpha
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"New"
@@ -2153,8 +2025,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NM"
@@ -2167,8 +2037,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NME"
@@ -2181,8 +2049,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NMEB"
@@ -2195,8 +2061,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NME+"
@@ -2209,8 +2073,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_5
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"vdAal"
@@ -2223,8 +2085,6 @@ name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"vdAvL"
@@ -2247,8 +2107,6 @@ name|void
 name|lastAuthor
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -2261,8 +2119,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Maxwell"
@@ -2275,8 +2131,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Einstein"
@@ -2289,8 +2143,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bohr"
@@ -2303,8 +2155,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Unknown"
@@ -2317,8 +2167,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_5
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Aalst"
@@ -2331,8 +2179,6 @@ name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Lessen"
@@ -2355,8 +2201,6 @@ name|void
 name|lastAuthorForenameInitials
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"I"
@@ -2369,8 +2213,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"J"
@@ -2383,8 +2225,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"A"
@@ -2397,8 +2237,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"N"
@@ -2411,8 +2249,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"H"
@@ -2425,8 +2261,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_5
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"W"
@@ -2439,8 +2273,6 @@ name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"T"
@@ -2463,8 +2295,6 @@ name|void
 name|oneAuthorPlusIni
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newto"
@@ -2477,8 +2307,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtoM"
@@ -2491,8 +2319,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtoME"
@@ -2505,8 +2331,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtoMEB"
@@ -2519,8 +2343,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtoMEBU"
@@ -2533,8 +2355,6 @@ name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_5
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Aalst"
@@ -2547,8 +2367,6 @@ name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"AalstL"
@@ -2571,8 +2389,6 @@ name|void
 name|testNAuthors1
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -2587,8 +2403,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtonEtAl"
@@ -2603,8 +2417,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtonEtAl"
@@ -2619,8 +2431,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtonEtAl"
@@ -2645,8 +2455,6 @@ name|void
 name|testNAuthors3
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Newton"
@@ -2661,8 +2469,6 @@ literal|3
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtonMaxwell"
@@ -2677,8 +2483,6 @@ literal|3
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtonMaxwellEinstein"
@@ -2693,8 +2497,6 @@ literal|3
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"NewtonMaxwellEinsteinEtAl"
@@ -2718,8 +2520,6 @@ name|void
 name|testFirstPage
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"7"
@@ -2732,8 +2532,6 @@ literal|"7--27"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"27"
@@ -2746,8 +2544,6 @@ literal|"--27"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -2760,8 +2556,6 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"42"
@@ -2774,8 +2568,6 @@ literal|"42--111"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"7"
@@ -2788,8 +2580,6 @@ literal|"7,41,73--97"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"7"
@@ -2802,8 +2592,6 @@ literal|"41,7,73--97"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"43"
@@ -2848,8 +2636,6 @@ name|void
 name|testLastPage
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"27"
@@ -2862,8 +2648,6 @@ literal|"7--27"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"27"
@@ -2876,8 +2660,6 @@ literal|"--27"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -2890,8 +2672,6 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"111"
@@ -2904,8 +2684,6 @@ literal|"42--111"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"97"
@@ -2918,8 +2696,6 @@ literal|"7,41,73--97"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"97"
@@ -2932,8 +2708,6 @@ literal|"7,41,97--73"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"43"
@@ -2986,8 +2760,6 @@ name|count
 init|=
 literal|1
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"application"
@@ -3002,8 +2774,6 @@ name|TITLE_STRING_ALL_LOWER_FOUR_SMALL_WORDS_ONE_EN_DASH
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BPEL"
@@ -3018,8 +2788,6 @@ name|TITLE_STRING_ALL_LOWER_FIRST_WORD_IN_BRACKETS_TWO_SMALL_WORDS_SMALL_WORD_AF
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Process"
@@ -3034,8 +2802,6 @@ name|TITLE_STRING_CASED
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BPMN"
@@ -3050,8 +2816,6 @@ name|TITLE_STRING_CASED_ONE_UPPER_WORD_ONE_SMALL_WORD
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Difference"
@@ -3066,8 +2830,6 @@ name|TITLE_STRING_CASED_TWO_SMALL_WORDS_SMALL_WORD_AT_THE_BEGINNING
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Cloud"
@@ -3082,8 +2844,6 @@ name|TITLE_STRING_CASED_TWO_SMALL_WORDS_SMALL_WORD_AFTER_COLON
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Towards"
@@ -3098,8 +2858,6 @@ name|TITLE_STRING_CASED_TWO_SMALL_WORDS_ONE_CONNECTED_WORD
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Measurement"
@@ -3131,8 +2889,6 @@ name|count
 init|=
 literal|3
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"applicationmigrationeffort"
@@ -3147,8 +2903,6 @@ name|TITLE_STRING_ALL_LOWER_FOUR_SMALL_WORDS_ONE_EN_DASH
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BPELconformanceopen"
@@ -3163,8 +2917,6 @@ name|TITLE_STRING_ALL_LOWER_FIRST_WORD_IN_BRACKETS_TWO_SMALL_WORDS_SMALL_WORD_AF
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"ProcessViewingPatterns"
@@ -3179,8 +2931,6 @@ name|TITLE_STRING_CASED
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BPMNConformanceOpen"
@@ -3195,8 +2945,6 @@ name|TITLE_STRING_CASED_ONE_UPPER_WORD_ONE_SMALL_WORD
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"DifferenceGraphBased"
@@ -3211,8 +2959,6 @@ name|TITLE_STRING_CASED_TWO_SMALL_WORDS_SMALL_WORD_AT_THE_BEGINNING
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"CloudComputingNext"
@@ -3227,8 +2973,6 @@ name|TITLE_STRING_CASED_TWO_SMALL_WORDS_SMALL_WORD_AFTER_COLON
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"TowardsChoreographybased"
@@ -3243,8 +2987,6 @@ name|TITLE_STRING_CASED_TWO_SMALL_WORDS_ONE_CONNECTED_WORD
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"MeasurementDesignTime"
@@ -3296,8 +3038,6 @@ argument_list|,
 literal|"keyword1"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"w1"
@@ -3317,8 +3057,6 @@ argument_list|,
 literal|"keyword2"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"w2a w2b"
@@ -3338,8 +3076,6 @@ argument_list|,
 literal|"keyword4"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -3385,8 +3121,6 @@ argument_list|,
 literal|"keywords"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"w1w2aw2bw3"
@@ -3406,8 +3140,6 @@ argument_list|,
 literal|"keywords2"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"w1w2aw2b"
@@ -3427,8 +3159,6 @@ argument_list|,
 literal|"keywords55"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"w1w2aw2bw3"
