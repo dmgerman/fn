@@ -4,7 +4,7 @@ comment|/* Copyright (C) 2003  Nathan Dunn  All programs in this directory and s
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.search
+DECL|package|net.sf.jabref.logic.search.rules
 package|package
 name|net
 operator|.
@@ -15,6 +15,8 @@ operator|.
 name|logic
 operator|.
 name|search
+operator|.
+name|rules
 package|;
 end_package
 
@@ -40,13 +42,6 @@ specifier|public
 interface|interface
 name|SearchRule
 block|{
-comment|/*      * Because some rules require the query in the constructor,      * the parameter query is not always used as expected.      * The two constants provide means to mark this as dummy.      * As I am not sure whether null could be substituted by "dummy" I leave everything as is.      */
-DECL|field|DUMMY_QUERY
-name|String
-name|DUMMY_QUERY
-init|=
-literal|"dummy"
-decl_stmt|;
 DECL|method|applyRule (String query, BibEntry bibEntry)
 name|boolean
 name|applyRule

@@ -120,7 +120,7 @@ name|logic
 operator|.
 name|search
 operator|.
-name|SearchRule
+name|SearchMatcher
 import|;
 end_import
 
@@ -792,57 +792,6 @@ name|version
 argument_list|)
 throw|;
 block|}
-block|}
-comment|/**      * @see AbstractGroup#getSearchRule()      */
-annotation|@
-name|Override
-DECL|method|getSearchRule ()
-specifier|public
-name|SearchRule
-name|getSearchRule
-parameter_list|()
-block|{
-return|return
-operator|new
-name|SearchRule
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|applyRule
-parameter_list|(
-name|String
-name|query
-parameter_list|,
-name|BibEntry
-name|bibEntry
-parameter_list|)
-block|{
-return|return
-name|contains
-argument_list|(
-name|bibEntry
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|validateSearchStrings
-parameter_list|(
-name|String
-name|query
-parameter_list|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-block|}
-return|;
 block|}
 comment|/**      * Returns a String representation of this object that can be used to      * reconstruct it.      */
 annotation|@

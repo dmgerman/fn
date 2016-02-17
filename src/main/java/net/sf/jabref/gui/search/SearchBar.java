@@ -1675,7 +1675,7 @@ condition|(
 operator|!
 name|searchQuery
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 condition|)
 block|{

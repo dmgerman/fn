@@ -26,6 +26,8 @@ name|logic
 operator|.
 name|search
 operator|.
+name|rules
+operator|.
 name|describer
 operator|.
 name|SearchDescriber
@@ -43,6 +45,8 @@ operator|.
 name|logic
 operator|.
 name|search
+operator|.
+name|rules
 operator|.
 name|describer
 operator|.
@@ -94,6 +98,42 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|rules
+operator|.
+name|SearchRule
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|rules
+operator|.
+name|SearchRules
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -107,6 +147,8 @@ DECL|class|SearchQuery
 specifier|public
 class|class
 name|SearchQuery
+implements|implements
+name|SearchMatcher
 block|{
 DECL|field|query
 specifier|private
@@ -238,10 +280,10 @@ name|entry
 argument_list|)
 return|;
 block|}
-DECL|method|isValidQuery ()
+DECL|method|isValid ()
 specifier|public
 name|boolean
-name|isValidQuery
+name|isValid
 parameter_list|()
 block|{
 return|return
@@ -415,7 +457,7 @@ name|description
 return|;
 block|}
 DECL|method|getRule ()
-specifier|public
+specifier|private
 name|SearchRule
 name|getRule
 parameter_list|()

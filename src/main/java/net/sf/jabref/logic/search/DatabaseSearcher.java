@@ -208,7 +208,7 @@ condition|(
 operator|!
 name|query
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 condition|)
 block|{

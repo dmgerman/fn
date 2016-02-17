@@ -24,11 +24,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|search
 operator|.
-name|BibEntry
+name|SearchMatcher
 import|;
 end_import
 
@@ -40,11 +40,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|model
 operator|.
-name|search
+name|entry
 operator|.
-name|SearchRule
+name|BibEntry
 import|;
 end_import
 
@@ -58,7 +58,7 @@ specifier|public
 class|class
 name|MockSearchRule
 implements|implements
-name|SearchRule
+name|SearchMatcher
 block|{
 DECL|field|result
 specifier|private
@@ -66,21 +66,12 @@ specifier|final
 name|boolean
 name|result
 decl_stmt|;
-DECL|field|valid
-specifier|private
-specifier|final
-name|boolean
-name|valid
-decl_stmt|;
-DECL|method|MockSearchRule (boolean result, boolean valid)
+DECL|method|MockSearchRule (boolean result)
 specifier|public
 name|MockSearchRule
 parameter_list|(
 name|boolean
 name|result
-parameter_list|,
-name|boolean
-name|valid
 parameter_list|)
 block|{
 name|this
@@ -89,44 +80,20 @@ name|result
 operator|=
 name|result
 expr_stmt|;
-name|this
-operator|.
-name|valid
-operator|=
-name|valid
-expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyRule (String query, BibEntry bibEntry)
+DECL|method|isMatch (BibEntry entry)
 specifier|public
 name|boolean
-name|applyRule
+name|isMatch
 parameter_list|(
-name|String
-name|query
-parameter_list|,
 name|BibEntry
-name|bibEntry
+name|entry
 parameter_list|)
 block|{
 return|return
 name|result
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|validateSearchStrings (String query)
-specifier|public
-name|boolean
-name|validateSearchStrings
-parameter_list|(
-name|String
-name|query
-parameter_list|)
-block|{
-return|return
-name|valid
 return|;
 block|}
 block|}

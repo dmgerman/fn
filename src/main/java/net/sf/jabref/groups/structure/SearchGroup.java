@@ -30,6 +30,22 @@ name|logic
 operator|.
 name|search
 operator|.
+name|SearchMatcher
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|search
+operator|.
 name|SearchQuery
 import|;
 end_import
@@ -103,22 +119,6 @@ operator|.
 name|l10n
 operator|.
 name|Localization
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|SearchRule
 import|;
 end_import
 
@@ -594,24 +594,6 @@ return|return
 name|SearchGroup
 operator|.
 name|ID
-return|;
-block|}
-comment|/**      * @see AbstractGroup#getSearchRule()      */
-annotation|@
-name|Override
-DECL|method|getSearchRule ()
-specifier|public
-name|SearchRule
-name|getSearchRule
-parameter_list|()
-block|{
-return|return
-name|this
-operator|.
-name|query
-operator|.
-name|getRule
-argument_list|()
 return|;
 block|}
 comment|/**      * Returns a String representation of this object that can be used to      * reconstruct it.      */

@@ -48,6 +48,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|SearchMatcher
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -72,22 +88,6 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|SearchRule
-import|;
-end_import
-
 begin_comment
 comment|/**  * A group of BibtexEntries.  */
 end_comment
@@ -98,6 +98,8 @@ specifier|public
 specifier|abstract
 class|class
 name|AbstractGroup
+implements|implements
+name|SearchMatcher
 block|{
 comment|/**      * The group's name (every type of group has one).      */
 DECL|field|name
@@ -160,14 +162,6 @@ name|SEPARATOR
 init|=
 literal|";"
 decl_stmt|;
-comment|/**      * @return A search rule that will identify this group's entries.      */
-DECL|method|getSearchRule ()
-specifier|public
-specifier|abstract
-name|SearchRule
-name|getSearchRule
-parameter_list|()
-function_decl|;
 comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception If an error occured and a group could not be created, e.g.      *                   due to a malformed regular expression.      */
 DECL|method|fromString (String s, BibDatabase db, int version)
 specifier|public
@@ -377,6 +371,22 @@ name|BibEntry
 name|entry
 parameter_list|)
 function_decl|;
+DECL|method|isMatch (BibEntry entry)
+specifier|public
+name|boolean
+name|isMatch
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|contains
+argument_list|(
+name|entry
+argument_list|)
+return|;
+block|}
 comment|/**      * @return true if this group contains any of the specified entries, false      * otherwise.      */
 DECL|method|containsAny (List<BibEntry> entries)
 specifier|public

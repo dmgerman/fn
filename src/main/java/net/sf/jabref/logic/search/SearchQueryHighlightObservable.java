@@ -28,8 +28,6 @@ name|search
 operator|.
 name|rules
 operator|.
-name|util
-operator|.
 name|SentenceAnalyzer
 import|;
 end_import

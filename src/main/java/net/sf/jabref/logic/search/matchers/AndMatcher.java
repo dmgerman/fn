@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.search.rules.sets
+DECL|package|net.sf.jabref.logic.search.matchers
 package|package
 name|net
 operator|.
@@ -16,11 +16,25 @@ name|logic
 operator|.
 name|search
 operator|.
-name|rules
-operator|.
-name|sets
+name|matchers
 package|;
 end_package
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|SearchMatcher
+import|;
+end_import
 
 begin_import
 import|import
@@ -38,44 +52,25 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|SearchRule
-import|;
-end_import
-
 begin_comment
-comment|/**  * Subclass of SearchRuleSet that ANDs or ORs between its rules, returning 0 or  * 1.  */
+comment|/**  * Subclass of MatcherSet that ANDs or ORs between its rules, returning 0 or  * 1.  */
 end_comment
 
 begin_class
-DECL|class|OrSearchRuleSet
+DECL|class|AndMatcher
 specifier|public
 class|class
-name|OrSearchRuleSet
+name|AndMatcher
 extends|extends
-name|SearchRuleSet
+name|MatcherSet
 block|{
 annotation|@
 name|Override
-DECL|method|applyRule (String searchString, BibEntry bibEntry)
+DECL|method|isMatch (BibEntry bibEntry)
 specifier|public
 name|boolean
-name|applyRule
+name|isMatch
 parameter_list|(
-name|String
-name|searchString
-parameter_list|,
 name|BibEntry
 name|bibEntry
 parameter_list|)
@@ -88,20 +83,18 @@ decl_stmt|;
 comment|// We let each rule add a maximum of 1 to the score.
 for|for
 control|(
-name|SearchRule
+name|SearchMatcher
 name|rule
 range|:
-name|ruleSet
+name|matchers
 control|)
 block|{
 if|if
 condition|(
 name|rule
 operator|.
-name|applyRule
+name|isMatch
 argument_list|(
-name|searchString
-argument_list|,
 name|bibEntry
 argument_list|)
 condition|)
@@ -111,11 +104,14 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|// OR rule demands score> 0.
+comment|// Then an AND rule demands that score == number of rules
 return|return
 name|score
-operator|>
-literal|0
+operator|==
+name|matchers
+operator|.
+name|size
+argument_list|()
 return|;
 block|}
 block|}

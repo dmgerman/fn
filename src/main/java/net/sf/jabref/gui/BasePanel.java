@@ -708,7 +708,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
 name|search
 operator|.
@@ -726,7 +726,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
+name|gui
 operator|.
 name|search
 operator|.
