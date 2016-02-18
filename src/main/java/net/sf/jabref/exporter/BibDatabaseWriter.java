@@ -1125,8 +1125,6 @@ argument_list|,
 name|preferences
 argument_list|)
 decl_stmt|;
-name|sortedEntries
-operator|=
 name|BibDatabaseWriter
 operator|.
 name|applySaveActions
@@ -1325,10 +1323,7 @@ block|}
 DECL|method|applySaveActions (List<BibEntry> toChange, MetaData metaData)
 specifier|private
 specifier|static
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
+name|void
 name|applySaveActions
 parameter_list|(
 name|List
@@ -1356,22 +1351,6 @@ literal|null
 condition|)
 block|{
 comment|// save actions defined -> apply for every entry
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|result
-init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
-name|toChange
-operator|.
-name|size
-argument_list|()
-argument_list|)
-decl_stmt|;
 name|SaveActions
 name|saveActions
 init|=
@@ -1388,29 +1367,14 @@ range|:
 name|toChange
 control|)
 block|{
-name|result
-operator|.
-name|add
-argument_list|(
 name|saveActions
 operator|.
 name|applySaveActions
 argument_list|(
 name|entry
 argument_list|)
-argument_list|)
 expr_stmt|;
 block|}
-return|return
-name|result
-return|;
-block|}
-else|else
-block|{
-comment|// no save actions defined -> do nothing
-return|return
-name|toChange
-return|;
 block|}
 block|}
 comment|/**      * Writes the file encoding information.      *      * @param encoding String the name of the encoding, which is part of the file header.      */

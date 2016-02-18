@@ -644,7 +644,7 @@ expr_stmt|;
 block|}
 DECL|method|applySaveActions (BibEntry entry)
 specifier|public
-name|BibEntry
+name|void
 name|applySaveActions
 parameter_list|(
 name|BibEntry
@@ -662,9 +662,6 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-name|entry
-return|;
 block|}
 DECL|method|applyAllActions (BibEntry entry)
 specifier|private
