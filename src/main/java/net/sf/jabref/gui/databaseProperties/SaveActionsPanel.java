@@ -891,6 +891,7 @@ expr_stmt|;
 name|boolean
 name|hasChanged
 init|=
+operator|!
 name|saveActions
 operator|.
 name|equals
