@@ -1375,11 +1375,10 @@ decl_stmt|;
 name|SaveActions
 name|saveActions
 init|=
-operator|new
-name|SaveActions
-argument_list|(
 name|metaData
-argument_list|)
+operator|.
+name|getSaveActions
+argument_list|()
 decl_stmt|;
 for|for
 control|(
