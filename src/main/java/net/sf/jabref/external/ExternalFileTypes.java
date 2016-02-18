@@ -146,7 +146,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|EntryUtil
+name|FileField
 import|;
 end_import
 
@@ -1651,7 +1651,7 @@ name|put
 argument_list|(
 literal|"externalFileTypes"
 argument_list|,
-name|EntryUtil
+name|FileField
 operator|.
 name|encodeStringArray
 argument_list|(

@@ -224,22 +224,6 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|EntryUtil
-import|;
-end_import
-
 begin_comment
 comment|/**  * @author jzieren  */
 end_comment
@@ -823,7 +807,7 @@ name|KeywordGroup
 operator|.
 name|ID
 operator|+
-name|EntryUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -851,7 +835,7 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-name|EntryUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -870,7 +854,7 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-name|EntryUtil
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
