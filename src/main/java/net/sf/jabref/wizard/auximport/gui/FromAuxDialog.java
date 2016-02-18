@@ -656,9 +656,7 @@ name|auxParser
 operator|=
 operator|new
 name|AuxSubGenerator
-argument_list|(
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|jbInit
 argument_list|()

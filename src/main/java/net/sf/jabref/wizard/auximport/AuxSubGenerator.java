@@ -362,19 +362,11 @@ argument_list|(
 literal|"\\\\(citation|abx@aux@cite)\\{(.+)\\}"
 argument_list|)
 decl_stmt|;
-DECL|method|AuxSubGenerator (BibDatabase refDBase)
+DECL|method|AuxSubGenerator ()
 specifier|public
 name|AuxSubGenerator
-parameter_list|(
-name|BibDatabase
-name|refDBase
-parameter_list|)
-block|{
-name|db
-operator|=
-name|refDBase
-expr_stmt|;
-block|}
+parameter_list|()
+block|{     }
 comment|/**      * parseAuxFile read the Aux file and fill up some intern data structures. Nested aux files (latex \\include)      * supported!      *      * @param filename String : Path to LatexAuxFile      * @return boolean, true = no error occurs      */
 comment|// found at comp.text.tex
 comment|//> Can anyone tell be the information held within a .aux file?  Is there a
@@ -1228,7 +1220,18 @@ name|crossreferencedEntriesCount
 operator|=
 literal|0
 expr_stmt|;
-comment|// db = null ;  ???
+name|nestedAuxCounter
+operator|=
+literal|0
+expr_stmt|;
+name|db
+operator|=
+literal|null
+expr_stmt|;
+name|auxDB
+operator|=
+literal|null
+expr_stmt|;
 block|}
 comment|/**      * returns the number of nested aux files, read by the last call of generate method      */
 DECL|method|getNestedAuxCounter ()
