@@ -154,13 +154,11 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|swing
+name|util
 operator|.
-name|undo
-operator|.
-name|AbstractUndoableEdit
+name|Optional
 import|;
 end_import
 
@@ -708,41 +706,53 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (List<BibEntry> entries)
+DECL|method|add (List<BibEntry> entriesToAdd)
 specifier|public
-name|AbstractUndoableEdit
+name|Optional
+argument_list|<
+name|EntriesGroupChange
+argument_list|>
 name|add
 parameter_list|(
 name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|entries
+name|entriesToAdd
 parameter_list|)
 block|{
-comment|// nothing to do, add is not supported
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"Search group does not support adding entries."
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override
-DECL|method|remove (List<BibEntry> entries)
+DECL|method|remove (List<BibEntry> entriesToRemove)
 specifier|public
-name|AbstractUndoableEdit
+name|Optional
+argument_list|<
+name|EntriesGroupChange
+argument_list|>
 name|remove
 parameter_list|(
 name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|entries
+name|entriesToRemove
 parameter_list|)
 block|{
-comment|// nothing to do, remove is not supported
-return|return
-literal|null
-return|;
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"Search group does not support removing entries."
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Override

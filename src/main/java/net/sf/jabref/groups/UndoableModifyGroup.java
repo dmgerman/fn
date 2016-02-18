@@ -67,11 +67,11 @@ name|UndoableModifyGroup
 extends|extends
 name|AbstractUndoableEdit
 block|{
-DECL|field|m_groupSelector
+DECL|field|groupSelector
 specifier|private
 specifier|final
 name|GroupSelector
-name|m_groupSelector
+name|groupSelector
 decl_stmt|;
 DECL|field|m_oldGroupBackup
 specifier|private
@@ -116,7 +116,7 @@ name|AbstractGroup
 name|newGroup
 parameter_list|)
 block|{
-name|m_groupSelector
+name|groupSelector
 operator|=
 name|gs
 expr_stmt|;
@@ -229,7 +229,7 @@ name|deepCopy
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|m_groupSelector
+name|groupSelector
 operator|.
 name|revalidateGroups
 argument_list|()
@@ -263,7 +263,7 @@ name|deepCopy
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|m_groupSelector
+name|groupSelector
 operator|.
 name|revalidateGroups
 argument_list|()

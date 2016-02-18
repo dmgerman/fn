@@ -30,6 +30,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -40,13 +50,17 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
 operator|.
-name|undo
+name|jabref
 operator|.
-name|AbstractUndoableEdit
+name|groups
+operator|.
+name|structure
+operator|.
+name|EntriesGroupChange
 import|;
 end_import
 
@@ -221,7 +235,10 @@ block|{
 return|return;
 comment|// user aborted operation
 block|}
-name|AbstractUndoableEdit
+name|Optional
+argument_list|<
+name|EntriesGroupChange
+argument_list|>
 name|undo
 init|=
 name|mNode
@@ -236,9 +253,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|undo
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return;
@@ -250,7 +269,17 @@ name|undoManager
 operator|.
 name|addEdit
 argument_list|(
+name|UndoableChangeEntriesOfGroup
+operator|.
+name|getUndoableEdit
+argument_list|(
+name|mNode
+argument_list|,
 name|undo
+operator|.
+name|get
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|mPanel

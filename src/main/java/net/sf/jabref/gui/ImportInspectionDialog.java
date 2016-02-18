@@ -272,7 +272,7 @@ name|jabref
 operator|.
 name|groups
 operator|.
-name|UndoableChangeAssignment
+name|UndoableChangeEntriesOfGroup
 import|;
 end_import
 
@@ -305,6 +305,22 @@ operator|.
 name|structure
 operator|.
 name|AllEntriesGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|groups
+operator|.
+name|structure
+operator|.
+name|EntriesGroupChange
 import|;
 end_import
 
@@ -709,18 +725,6 @@ operator|.
 name|table
 operator|.
 name|TableModel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|undo
-operator|.
-name|AbstractUndoableEdit
 import|;
 end_import
 
@@ -4106,7 +4110,10 @@ argument_list|()
 condition|)
 block|{
 comment|// Add the entry:
-name|AbstractUndoableEdit
+name|Optional
+argument_list|<
+name|EntriesGroupChange
+argument_list|>
 name|undo
 init|=
 name|node
@@ -4121,13 +4128,32 @@ name|entry
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|undo
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
 name|ce
 operator|.
 name|addEdit
 argument_list|(
+name|UndoableChangeEntriesOfGroup
+operator|.
+name|getUndoableEdit
+argument_list|(
+name|node
+argument_list|,
 name|undo
+operator|.
+name|get
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

@@ -30,13 +30,11 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|swing
+name|util
 operator|.
-name|undo
-operator|.
-name|AbstractUndoableEdit
+name|Optional
 import|;
 end_import
 
@@ -333,31 +331,37 @@ name|supportsRemove
 parameter_list|()
 function_decl|;
 comment|/**      * Adds the specified entries to this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, an object is returned that allows to      * undo this change. null is returned otherwise.      */
-DECL|method|add (List<BibEntry> entries)
+DECL|method|add (List<BibEntry> entriesToAdd)
 specifier|public
 specifier|abstract
-name|AbstractUndoableEdit
+name|Optional
+argument_list|<
+name|EntriesGroupChange
+argument_list|>
 name|add
 parameter_list|(
 name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|entries
+name|entriesToAdd
 parameter_list|)
 function_decl|;
 comment|/**      * Removes the specified entries from this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, an object is returned that allows to      * undo this change. null is returned otherwise.      */
-DECL|method|remove (List<BibEntry> entries)
+DECL|method|remove (List<BibEntry> entriesToRemove)
 specifier|public
 specifier|abstract
-name|AbstractUndoableEdit
+name|Optional
+argument_list|<
+name|EntriesGroupChange
+argument_list|>
 name|remove
 parameter_list|(
 name|List
 argument_list|<
 name|BibEntry
 argument_list|>
-name|entries
+name|entriesToRemove
 parameter_list|)
 function_decl|;
 comment|/**      * @return true if this group contains the specified entry, false otherwise.      */
