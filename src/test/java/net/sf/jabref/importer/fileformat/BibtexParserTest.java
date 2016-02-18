@@ -46,6 +46,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|exporter
+operator|.
+name|SaveActions
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|importer
 operator|.
 name|ParserResult
@@ -181,6 +195,18 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -8710,6 +8736,102 @@ argument_list|()
 operator|.
 name|getEpilog
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|checkSaveActionsParsing ()
+specifier|public
+name|void
+name|checkSaveActionsParsing
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|BibtexParser
+name|parser
+init|=
+operator|new
+name|BibtexParser
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+literal|"@InProceedings{6055279,\n"
+operator|+
+literal|"  Title                    = {Educational session 1},\n"
+operator|+
+literal|"  Booktitle                = {Custom Integrated Circuits Conference (CICC), 2011 IEEE},\n"
+operator|+
+literal|"  Year                     = {2011},\n"
+operator|+
+literal|"  Month                    = {Sept},\n"
+operator|+
+literal|"  Pages                    = {1-7},\n"
+operator|+
+literal|"  Abstract                 = {Start of the above-titled section of the conference proceedings record.},\n"
+operator|+
+literal|"  DOI                      = {10.1109/CICC.2011.6055279},\n"
+operator|+
+literal|"  ISSN                     = {0886-5930}\n"
+operator|+
+literal|"}\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"@comment{jabref-meta: saveActions:enabled;title[LowerCaseChanger]}"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|ParserResult
+name|parserResult
+init|=
+name|parser
+operator|.
+name|parse
+argument_list|()
+decl_stmt|;
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|saveActions
+init|=
+name|parserResult
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
+name|getData
+argument_list|(
+name|SaveActions
+operator|.
+name|META_KEY
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"enabled"
+argument_list|,
+name|saveActions
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"title[LowerCaseChanger]"
+argument_list|,
+name|saveActions
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
