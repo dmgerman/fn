@@ -2790,6 +2790,33 @@ comment|// }
 comment|// }
 comment|// return true; // found no side effects
 block|}
+DECL|method|warnAssignmentSideEffects (AbstractGroup group, Component parent)
+specifier|public
+specifier|static
+name|boolean
+name|warnAssignmentSideEffects
+parameter_list|(
+name|AbstractGroup
+name|group
+parameter_list|,
+name|Component
+name|parent
+parameter_list|)
+block|{
+return|return
+name|warnAssignmentSideEffects
+argument_list|(
+name|Collections
+operator|.
+name|singletonList
+argument_list|(
+name|group
+argument_list|)
+argument_list|,
+name|parent
+argument_list|)
+return|;
+block|}
 DECL|method|updateTimeStampIsSet ()
 specifier|public
 specifier|static

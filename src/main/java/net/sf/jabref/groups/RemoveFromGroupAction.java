@@ -30,16 +30,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -216,15 +206,10 @@ name|Util
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|mNode
 operator|.
 name|getGroup
 argument_list|()
-argument_list|)
 argument_list|,
 name|mPanel
 operator|.

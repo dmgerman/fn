@@ -2952,12 +2952,7 @@ name|Util
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|mResultingGroup
-argument_list|)
 argument_list|,
 name|this
 argument_list|)
