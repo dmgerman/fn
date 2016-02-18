@@ -156,6 +156,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|util
+operator|.
+name|JTextFieldWithUnfocusedText
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|worker
 operator|.
 name|AbstractWorker
@@ -474,7 +490,7 @@ decl_stmt|;
 DECL|field|searchField
 specifier|private
 specifier|final
-name|JSearchTextField
+name|JTextFieldWithUnfocusedText
 name|searchField
 decl_stmt|;
 DECL|field|searchMode
@@ -1280,20 +1296,15 @@ block|}
 comment|/**      * Initializes the search text field      */
 DECL|method|initSearchField ()
 specifier|private
-name|JSearchTextField
+name|JTextFieldWithUnfocusedText
 name|initSearchField
 parameter_list|()
 block|{
-name|JSearchTextField
+name|JTextFieldWithUnfocusedText
 name|searchField
 init|=
 operator|new
-name|JSearchTextField
-argument_list|()
-decl_stmt|;
-name|searchField
-operator|.
-name|setTextWhenNotFocused
+name|JTextFieldWithUnfocusedText
 argument_list|(
 name|Localization
 operator|.
@@ -1304,7 +1315,7 @@ argument_list|)
 operator|+
 literal|"..."
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|searchField
 operator|.
 name|setColumns
