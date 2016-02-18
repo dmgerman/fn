@@ -400,11 +400,7 @@ name|startIndex
 init|=
 literal|0
 decl_stmt|;
-name|int
-name|index
-init|=
-literal|0
-decl_stmt|;
+comment|// first remove all newlines for easier parsing
 name|formatterString
 operator|=
 name|StringUtil
@@ -441,15 +437,16 @@ argument_list|()
 condition|)
 block|{
 comment|// read the field name
-name|index
-operator|=
+name|int
+name|currentIndex
+init|=
 name|remainingString
 operator|.
 name|indexOf
 argument_list|(
 literal|"["
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|String
 name|fieldKey
 init|=
@@ -459,7 +456,7 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-name|index
+name|currentIndex
 argument_list|)
 decl_stmt|;
 name|int
@@ -529,7 +526,7 @@ name|remainingString
 operator|.
 name|substring
 argument_list|(
-name|index
+name|currentIndex
 operator|+
 literal|1
 argument_list|,
@@ -586,7 +583,7 @@ argument_list|(
 literal|","
 argument_list|)
 expr_stmt|;
-name|index
+name|currentIndex
 operator|=
 operator|-
 literal|1
