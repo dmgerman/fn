@@ -74,9 +74,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|logic
 operator|.
-name|structure
+name|groups
 operator|.
 name|AllEntriesGroup
 import|;
@@ -89,6 +89,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|groups
 operator|.
@@ -103,6 +105,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|gui
 operator|.
 name|groups
 operator|.

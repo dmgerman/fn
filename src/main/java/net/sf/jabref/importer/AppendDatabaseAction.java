@@ -126,9 +126,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|logic
 operator|.
-name|structure
+name|groups
 operator|.
 name|GroupHierarchyType
 import|;
@@ -156,9 +156,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|logic
 operator|.
-name|structure
+name|groups
 operator|.
 name|AllEntriesGroup
 import|;
@@ -172,9 +172,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|logic
 operator|.
-name|structure
+name|groups
 operator|.
 name|ExplicitGroup
 import|;
@@ -187,6 +187,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|logic
 operator|.
 name|groups
 operator|.

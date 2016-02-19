@@ -152,9 +152,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|logic
 operator|.
-name|structure
+name|groups
 operator|.
 name|AbstractGroup
 import|;
@@ -168,9 +168,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|logic
 operator|.
-name|structure
+name|groups
 operator|.
 name|KeywordGroup
 import|;
