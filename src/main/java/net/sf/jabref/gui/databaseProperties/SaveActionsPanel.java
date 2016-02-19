@@ -76,6 +76,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|util
+operator|.
+name|JTextFieldWithUnfocusedText
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|cleanup
@@ -251,7 +267,7 @@ name|actionsList
 decl_stmt|;
 DECL|field|keyField
 specifier|private
-name|JTextField
+name|JTextFieldWithUnfocusedText
 name|keyField
 decl_stmt|;
 DECL|field|formatters
@@ -619,16 +635,21 @@ decl_stmt|;
 name|keyField
 operator|=
 operator|new
-name|JTextField
+name|JTextFieldWithUnfocusedText
 argument_list|(
-literal|20
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Enter field name (e.g., title, author)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|keyField
 operator|.
-name|setText
+name|setColumns
 argument_list|(
-literal|"field name"
+literal|25
 argument_list|)
 expr_stmt|;
 name|keyField
