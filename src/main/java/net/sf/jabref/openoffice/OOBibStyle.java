@@ -142,6 +142,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|*
@@ -779,7 +791,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|OOBibStyle (File styleFile, JournalAbbreviationRepository repository)
+DECL|method|OOBibStyle (File styleFile, JournalAbbreviationRepository repository, Charset encoding)
 specifier|public
 name|OOBibStyle
 parameter_list|(
@@ -788,6 +800,9 @@ name|styleFile
 parameter_list|,
 name|JournalAbbreviationRepository
 name|repository
+parameter_list|,
+name|Charset
+name|encoding
 parameter_list|)
 throws|throws
 name|IOException
@@ -808,13 +823,24 @@ argument_list|()
 expr_stmt|;
 try|try
 init|(
-name|Reader
-name|in
+name|InputStream
+name|stream
 init|=
 operator|new
-name|FileReader
+name|FileInputStream
 argument_list|(
 name|styleFile
+argument_list|)
+init|;
+name|Reader
+name|in
+operator|=
+operator|new
+name|InputStreamReader
+argument_list|(
+name|stream
+argument_list|,
+name|encoding
 argument_list|)
 init|)
 block|{

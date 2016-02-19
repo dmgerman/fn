@@ -148,6 +148,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Arrays
@@ -2967,6 +2979,13 @@ block|{
 name|addSingleFile
 argument_list|(
 name|file
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3001,18 +3020,28 @@ comment|// The file wasn't a directory, so we simply parse it:
 name|addSingleFile
 argument_list|(
 name|dirF
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getDefaultEncoding
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 comment|/**      * Parse a single file, and add it to the list of styles if parse was successful.      * @param file the file to parse.      */
-DECL|method|addSingleFile (File file)
+DECL|method|addSingleFile (File file, Charset encoding)
 specifier|private
 name|void
 name|addSingleFile
 parameter_list|(
 name|File
 name|file
+parameter_list|,
+name|Charset
+name|encoding
 parameter_list|)
 block|{
 try|try
@@ -3031,6 +3060,8 @@ name|journalAbbreviationLoader
 operator|.
 name|getRepository
 argument_list|()
+argument_list|,
+name|encoding
 argument_list|)
 decl_stmt|;
 comment|// Check if the parse was successful before adding it:

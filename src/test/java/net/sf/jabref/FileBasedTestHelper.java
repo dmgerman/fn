@@ -179,11 +179,25 @@ expr_stmt|;
 block|}
 block|}
 block|}
+if|if
+condition|(
+operator|!
 name|file
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Cannot delete file"
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

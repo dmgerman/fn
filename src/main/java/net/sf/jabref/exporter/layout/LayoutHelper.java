@@ -378,10 +378,10 @@ operator|=
 name|newGroup
 expr_stmt|;
 block|}
-DECL|method|getBracketedField (final int field)
+DECL|method|doBracketedField (final int field)
 specifier|private
 name|void
-name|getBracketedField
+name|doBracketedField
 parameter_list|(
 specifier|final
 name|int
@@ -550,13 +550,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-return|return;
 block|}
 comment|/**      *      */
-DECL|method|getBracketedOptionField ()
+DECL|method|doBracketedOptionField ()
 specifier|private
 name|void
-name|getBracketedOptionField
+name|doBracketedOptionField
 parameter_list|()
 throws|throws
 name|IOException
@@ -603,7 +602,6 @@ operator|=
 name|read
 argument_list|()
 expr_stmt|;
-comment|//System.out.println((char)c);
 if|if
 condition|(
 name|c
@@ -668,7 +666,6 @@ name|IS_OPTION_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("\nbracketedOptionEOF: " + buffer.toString());
 block|}
 return|return;
 block|}
@@ -925,7 +922,6 @@ comment|// changed section end - arudert
 block|}
 block|}
 block|}
-return|return;
 block|}
 DECL|method|parse ()
 specifier|private
@@ -1118,7 +1114,6 @@ name|escaped
 expr_stmt|;
 block|}
 block|}
-return|return;
 block|}
 DECL|method|parseField ()
 specifier|private
@@ -1155,7 +1150,6 @@ operator|=
 name|read
 argument_list|()
 expr_stmt|;
-comment|// System.out.print((char)c);
 if|if
 condition|(
 name|c
@@ -1200,7 +1194,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("\n#" + (char) c);
 name|name
 operator|=
 name|buffer
@@ -1305,7 +1298,6 @@ literal|'\''
 argument_list|)
 throw|;
 block|}
-comment|//System.out.println("NAME:" + name);
 if|if
 condition|(
 name|firstLetter
@@ -1324,7 +1316,7 @@ argument_list|)
 condition|)
 block|{
 comment|// get field name
-name|getBracketedField
+name|doBracketedField
 argument_list|(
 name|LayoutHelper
 operator|.
@@ -1345,7 +1337,7 @@ argument_list|)
 condition|)
 block|{
 comment|// get field name
-name|getBracketedField
+name|doBracketedField
 argument_list|(
 name|LayoutHelper
 operator|.
@@ -1382,7 +1374,7 @@ condition|)
 block|{
 comment|// get format parameter
 comment|// get field name
-name|getBracketedOptionField
+name|doBracketedOptionField
 argument_list|()
 expr_stmt|;
 return|return;
@@ -1390,7 +1382,7 @@ block|}
 else|else
 block|{
 comment|// get field name
-name|getBracketedField
+name|doBracketedField
 argument_list|(
 name|LayoutHelper
 operator|.
@@ -1482,7 +1474,7 @@ argument_list|)
 condition|)
 block|{
 comment|// get field name
-name|getBracketedField
+name|doBracketedField
 argument_list|(
 name|LayoutHelper
 operator|.
@@ -1503,7 +1495,7 @@ argument_list|)
 condition|)
 block|{
 comment|// get field name
-name|getBracketedField
+name|doBracketedField
 argument_list|(
 name|LayoutHelper
 operator|.
@@ -1560,7 +1552,6 @@ name|IS_SIMPLE_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//System.out.println(name);
 return|return;
 block|}
 else|else
