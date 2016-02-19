@@ -60,6 +60,16 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 DECL|class|UndoableModifyGroup
 class|class
@@ -94,8 +104,10 @@ decl_stmt|;
 DECL|field|m_pathToNode
 specifier|private
 specifier|final
-name|int
-index|[]
+name|List
+argument_list|<
+name|Integer
+argument_list|>
 name|m_pathToNode
 decl_stmt|;
 comment|/**      * @param node      *            The node which still contains the old group.      * @param newGroup      *            The new group to replace the one currently stored in<b>node      *</b>.      */

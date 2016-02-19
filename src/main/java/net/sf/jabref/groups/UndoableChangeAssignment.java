@@ -32,6 +32,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -129,8 +139,10 @@ decl_stmt|;
 comment|/**      * The path to the edited node      */
 DECL|field|pathToNode
 specifier|private
-name|int
-index|[]
+name|List
+argument_list|<
+name|Integer
+argument_list|>
 name|pathToNode
 decl_stmt|;
 comment|/**      * The root of the global groups tree      */
@@ -186,9 +198,6 @@ name|this
 operator|.
 name|root
 operator|=
-operator|(
-name|GroupTreeNode
-operator|)
 name|node
 operator|.
 name|getRoot

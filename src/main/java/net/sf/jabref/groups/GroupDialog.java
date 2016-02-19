@@ -2970,6 +2970,11 @@ name|mResultingGroup
 operator|instanceof
 name|ExplicitGroup
 operator|)
+operator|&&
+name|mResultingGroup
+operator|.
+name|supportsAdd
+argument_list|()
 condition|)
 block|{
 name|Optional

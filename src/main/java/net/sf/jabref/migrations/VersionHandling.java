@@ -961,9 +961,6 @@ condition|)
 block|{
 name|cursor
 operator|=
-operator|(
-name|GroupTreeNode
-operator|)
 name|cursor
 operator|.
 name|getParent

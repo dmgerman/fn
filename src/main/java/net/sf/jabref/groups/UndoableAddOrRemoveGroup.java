@@ -44,6 +44,16 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 DECL|class|UndoableAddOrRemoveGroup
 class|class
@@ -76,8 +86,10 @@ comment|/** The path to the edited subtree's root node */
 DECL|field|m_pathToNode
 specifier|private
 specifier|final
-name|int
-index|[]
+name|List
+argument_list|<
+name|Integer
+argument_list|>
 name|m_pathToNode
 decl_stmt|;
 comment|/**      * The type of the editing (ADD_NODE, REMOVE_NODE_KEEP_CHILDREN,      * REMOVE_NODE_AND_CHILDREN)      */
@@ -366,13 +378,16 @@ name|int
 name|childIndex
 init|=
 name|m_pathToNode
-index|[
+operator|.
+name|get
+argument_list|(
 name|m_pathToNode
 operator|.
-name|length
+name|size
+argument_list|()
 operator|-
 literal|1
-index|]
+argument_list|)
 decl_stmt|;
 comment|// traverse path up to but last element
 for|for
@@ -387,7 +402,8 @@ operator|<
 operator|(
 name|m_pathToNode
 operator|.
-name|length
+name|size
+argument_list|()
 operator|-
 literal|1
 operator|)
@@ -398,17 +414,16 @@ control|)
 block|{
 name|cursor
 operator|=
-operator|(
-name|GroupTreeNode
-operator|)
 name|cursor
 operator|.
 name|getChildAt
 argument_list|(
 name|m_pathToNode
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -468,9 +483,6 @@ name|newNode
 operator|.
 name|add
 argument_list|(
-operator|(
-name|GroupTreeNode
-operator|)
 name|cursor
 operator|.
 name|getChildAt
@@ -541,9 +553,6 @@ comment|// remove node, then insert all children
 name|GroupTreeNode
 name|removedNode
 init|=
-operator|(
-name|GroupTreeNode
-operator|)
 name|cursor
 operator|.
 name|getChildAt
@@ -572,9 +581,6 @@ name|cursor
 operator|.
 name|insert
 argument_list|(
-operator|(
-name|GroupTreeNode
-operator|)
 name|removedNode
 operator|.
 name|getFirstChild

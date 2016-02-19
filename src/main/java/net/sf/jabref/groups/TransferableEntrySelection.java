@@ -259,12 +259,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|entry
-lambda|->
-name|entry
-operator|.
+name|BibEntry
+operator|::
 name|getCiteKey
-argument_list|()
 argument_list|)
 operator|.
 name|collect

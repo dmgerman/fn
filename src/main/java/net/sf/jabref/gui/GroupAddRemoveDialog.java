@@ -485,7 +485,11 @@ operator|=
 operator|new
 name|JTree
 argument_list|(
+operator|new
+name|GroupTreeNodeViewModel
+argument_list|(
 name|groups
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|tree
