@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui.search
+DECL|package|net.sf.jabref.gui.util
 package|package
 name|net
 operator|.
@@ -10,7 +10,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|search
+name|util
 package|;
 end_package
 
@@ -79,10 +79,10 @@ comment|/**  * A text field which displays a predefined text (e.g. "Search") if 
 end_comment
 
 begin_class
-DECL|class|JSearchTextField
+DECL|class|JTextFieldWithUnfocusedText
 specifier|public
 class|class
-name|JSearchTextField
+name|JTextFieldWithUnfocusedText
 extends|extends
 name|JTextField
 implements|implements
@@ -90,13 +90,17 @@ name|FocusListener
 block|{
 DECL|field|textWhenNotFocused
 specifier|private
+specifier|final
 name|String
 name|textWhenNotFocused
 decl_stmt|;
-DECL|method|JSearchTextField ()
+DECL|method|JTextFieldWithUnfocusedText (String textWhenNotFocused)
 specifier|public
-name|JSearchTextField
-parameter_list|()
+name|JTextFieldWithUnfocusedText
+parameter_list|(
+name|String
+name|textWhenNotFocused
+parameter_list|)
 block|{
 name|super
 argument_list|()
@@ -119,14 +123,7 @@ name|this
 operator|.
 name|textWhenNotFocused
 operator|=
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Search"
-argument_list|)
-operator|+
-literal|"..."
+name|textWhenNotFocused
 expr_stmt|;
 name|this
 operator|.
@@ -134,34 +131,6 @@ name|addFocusListener
 argument_list|(
 name|this
 argument_list|)
-expr_stmt|;
-block|}
-DECL|method|getTextWhenNotFocused ()
-specifier|public
-name|String
-name|getTextWhenNotFocused
-parameter_list|()
-block|{
-return|return
-name|this
-operator|.
-name|textWhenNotFocused
-return|;
-block|}
-DECL|method|setTextWhenNotFocused (String newText)
-specifier|public
-name|void
-name|setTextWhenNotFocused
-parameter_list|(
-name|String
-name|newText
-parameter_list|)
-block|{
-name|this
-operator|.
-name|textWhenNotFocused
-operator|=
-name|newText
 expr_stmt|;
 block|}
 annotation|@
