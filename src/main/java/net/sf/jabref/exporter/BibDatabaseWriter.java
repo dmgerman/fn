@@ -102,6 +102,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|FieldChange
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -935,6 +949,12 @@ name|getWriter
 argument_list|()
 init|)
 block|{
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|undoableChanges
+init|=
 name|writePartOfDatabase
 argument_list|(
 name|writer
@@ -944,6 +964,13 @@ argument_list|,
 name|entries
 argument_list|,
 name|preferences
+argument_list|)
+decl_stmt|;
+name|session
+operator|.
+name|addUndoableFieldChanges
+argument_list|(
+name|undoableChanges
 argument_list|)
 expr_stmt|;
 block|}
@@ -991,7 +1018,10 @@ return|;
 block|}
 DECL|method|writePartOfDatabase (Writer writer, BibDatabaseContext bibDatabaseContext, Collection<BibEntry> entries, SavePreferences preferences)
 specifier|public
-name|void
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
 name|writePartOfDatabase
 parameter_list|(
 name|Writer
@@ -1125,6 +1155,12 @@ argument_list|,
 name|preferences
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|undoableChanges
+init|=
 name|BibDatabaseWriter
 operator|.
 name|applySaveActions
@@ -1136,7 +1172,7 @@ operator|.
 name|getMetaData
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|BibEntryWriter
 name|bibtexEntryWriter
 init|=
@@ -1287,6 +1323,9 @@ name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return
+name|undoableChanges
+return|;
 block|}
 comment|/**      * Saves the database to file, including only the entries included in the      * supplied input array bes.      */
 DECL|method|savePartOfDatabase (BibDatabaseContext bibDatabaseContext, SavePreferences preferences, Collection<BibEntry> entries)
@@ -1323,7 +1362,10 @@ block|}
 DECL|method|applySaveActions (List<BibEntry> toChange, MetaData metaData)
 specifier|private
 specifier|static
-name|void
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
 name|applySaveActions
 parameter_list|(
 name|List
@@ -1336,6 +1378,17 @@ name|MetaData
 name|metaData
 parameter_list|)
 block|{
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|changes
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|metaData
@@ -1367,15 +1420,23 @@ range|:
 name|toChange
 control|)
 block|{
+name|changes
+operator|.
+name|addAll
+argument_list|(
 name|saveActions
 operator|.
 name|applySaveActions
 argument_list|(
 name|entry
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 block|}
+return|return
+name|changes
+return|;
 block|}
 comment|/**      * Writes the file encoding information.      *      * @param encoding String the name of the encoding, which is part of the file header.      */
 DECL|method|writeBibFileHeader (Writer out, Charset encoding)
