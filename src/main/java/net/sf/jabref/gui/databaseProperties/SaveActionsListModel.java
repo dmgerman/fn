@@ -148,6 +148,17 @@ name|FieldFormatterCleanup
 name|action
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|saveActions
+operator|.
+name|contains
+argument_list|(
+name|action
+argument_list|)
+condition|)
+block|{
 name|saveActions
 operator|.
 name|add
@@ -188,6 +199,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|removeAtIndex (int index)
