@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -380,7 +380,7 @@ expr_stmt|;
 block|}
 DECL|method|getBracketedField (final int field)
 specifier|private
-name|String
+name|void
 name|getBracketedField
 parameter_list|(
 specifier|final
@@ -450,9 +450,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-literal|null
-return|;
+return|return;
 block|}
 if|if
 condition|(
@@ -499,9 +497,7 @@ name|field
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
+return|return;
 block|}
 block|}
 else|else
@@ -554,14 +550,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-return|return
-literal|null
-return|;
+return|return;
 block|}
 comment|/**      *      */
 DECL|method|getBracketedOptionField ()
 specifier|private
-name|String
+name|void
 name|getBracketedOptionField
 parameter_list|()
 throws|throws
@@ -676,9 +670,7 @@ argument_list|)
 expr_stmt|;
 comment|//System.out.println("\nbracketedOptionEOF: " + buffer.toString());
 block|}
-return|return
-literal|null
-return|;
+return|return;
 block|}
 if|if
 condition|(
@@ -839,9 +831,7 @@ name|IS_OPTION_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
+return|return;
 block|}
 comment|// changed section end - arudert
 comment|// changed section start - arudert
@@ -935,13 +925,11 @@ comment|// changed section end - arudert
 block|}
 block|}
 block|}
-return|return
-literal|null
-return|;
+return|return;
 block|}
 DECL|method|parse ()
 specifier|private
-name|Object
+name|void
 name|parse
 parameter_list|()
 throws|throws
@@ -1015,9 +1003,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-literal|null
-return|;
+return|return;
 block|}
 if|if
 condition|(
@@ -1132,9 +1118,7 @@ name|escaped
 expr_stmt|;
 block|}
 block|}
-return|return
-literal|null
-return|;
+return|return;
 block|}
 DECL|method|parseField ()
 specifier|private

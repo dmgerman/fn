@@ -384,6 +384,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -1824,10 +1836,6 @@ operator|.
 name|updateSortedReferenceMarks
 argument_list|()
 expr_stmt|;
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|BibDatabase
@@ -1837,10 +1845,6 @@ init|=
 name|getBaseList
 argument_list|()
 decl_stmt|;
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|String
@@ -2457,10 +2461,6 @@ expr_stmt|;
 block|}
 DECL|method|getBaseList ()
 specifier|private
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|BibDatabase
@@ -2468,10 +2468,6 @@ argument_list|>
 name|getBaseList
 parameter_list|()
 block|{
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|BibDatabase
@@ -3220,6 +3216,10 @@ name|defPath
 operator|.
 name|openStream
 argument_list|()
+argument_list|,
+name|StandardCharsets
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|style
@@ -3266,6 +3266,10 @@ name|defPath
 operator|.
 name|openStream
 argument_list|()
+argument_list|,
+name|StandardCharsets
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|style

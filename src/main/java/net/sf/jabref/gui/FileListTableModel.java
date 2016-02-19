@@ -843,6 +843,11 @@ name|String
 name|getStringRepresentation
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|list
+init|)
+block|{
 name|String
 index|[]
 index|[]
@@ -894,6 +899,7 @@ name|array
 argument_list|)
 return|;
 block|}
+block|}
 comment|/**      * Transform the file list shown in the table into a HTML string representation      * suitable for displaying the contents in a tooltip.      * @return Tooltip representation.      */
 DECL|method|getToolTipHTMLRepresentation ()
 specifier|public
@@ -914,6 +920,11 @@ argument_list|,
 literal|"</html>"
 argument_list|)
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|list
+init|)
+block|{
 for|for
 control|(
 name|FileListEntry
@@ -942,6 +953,7 @@ name|link
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
