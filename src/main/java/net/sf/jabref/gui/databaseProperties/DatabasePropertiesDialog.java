@@ -1389,13 +1389,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-assert|assert
-operator|(
-name|saveOrderConfig
-operator|.
-name|saveInSpecifiedOrder
-operator|)
-assert|;
 name|saveInSpecifiedOrder
 operator|.
 name|setSelected

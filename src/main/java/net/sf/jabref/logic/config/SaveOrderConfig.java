@@ -81,11 +81,6 @@ specifier|public
 name|boolean
 name|saveInOriginalOrder
 decl_stmt|;
-DECL|field|saveInSpecifiedOrder
-specifier|public
-name|boolean
-name|saveInSpecifiedOrder
-decl_stmt|;
 comment|// quick hack for outside modifications
 DECL|field|sortCriteria
 specifier|public
@@ -351,17 +346,6 @@ operator|.
 name|saveInOriginalOrder
 argument_list|)
 operator|&&
-name|Objects
-operator|.
-name|equals
-argument_list|(
-name|saveInSpecifiedOrder
-argument_list|,
-name|that
-operator|.
-name|saveInSpecifiedOrder
-argument_list|)
-operator|&&
 name|sortCriteriaEquals
 return|;
 block|}
@@ -379,8 +363,6 @@ operator|.
 name|hash
 argument_list|(
 name|saveInOriginalOrder
-argument_list|,
-name|saveInSpecifiedOrder
 argument_list|,
 name|Arrays
 operator|.
@@ -647,12 +629,6 @@ name|saveInOriginalOrder
 operator|=
 literal|true
 expr_stmt|;
-name|this
-operator|.
-name|saveInSpecifiedOrder
-operator|=
-literal|false
-expr_stmt|;
 block|}
 DECL|method|setSaveInSpecifiedOrder ()
 specifier|public
@@ -666,23 +642,6 @@ name|saveInOriginalOrder
 operator|=
 literal|false
 expr_stmt|;
-name|this
-operator|.
-name|saveInSpecifiedOrder
-operator|=
-literal|true
-expr_stmt|;
-block|}
-DECL|method|getSortCriteria ()
-specifier|public
-name|SortCriterion
-index|[]
-name|getSortCriteria
-parameter_list|()
-block|{
-return|return
-name|sortCriteria
-return|;
 block|}
 DECL|method|loadExportSaveOrderFromPreferences (JabRefPreferences preferences)
 specifier|public
@@ -1088,9 +1047,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-assert|assert
-name|saveInSpecifiedOrder
-assert|;
 name|res
 operator|.
 name|insertElementAt
