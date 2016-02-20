@@ -46,10 +46,10 @@ name|RemoveWhitespaceTest
 block|{
 annotation|@
 name|Test
-DECL|method|testEmpty ()
+DECL|method|testEmptyExpectEmpty ()
 specifier|public
 name|void
-name|testEmpty
+name|testEmptyExpectEmpty
 parameter_list|()
 block|{
 name|assertEquals
@@ -69,10 +69,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNull ()
+DECL|method|testNullExpectNull ()
 specifier|public
 name|void
-name|testNull
+name|testNullExpectNull
 parameter_list|()
 block|{
 name|assertNull

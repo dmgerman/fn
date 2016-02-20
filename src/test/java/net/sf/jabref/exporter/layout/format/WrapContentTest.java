@@ -77,20 +77,20 @@ name|a
 operator|.
 name|setArgument
 argument_list|(
-literal|"Bob,Ben"
+literal|"<,>"
 argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"BobBob BruceBen"
+literal|"<Bob>"
 argument_list|,
 name|a
 operator|.
 name|format
 argument_list|(
-literal|"Bob Bruce"
+literal|"Bob"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -114,20 +114,20 @@ name|a
 operator|.
 name|setArgument
 argument_list|(
-literal|",Ben"
+literal|",:"
 argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Bob BruceBen"
+literal|"Bob:"
 argument_list|,
 name|a
 operator|.
 name|format
 argument_list|(
-literal|"Bob Bruce"
+literal|"Bob"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -151,30 +151,67 @@ name|a
 operator|.
 name|setArgument
 argument_list|(
-literal|"Bob,"
+literal|"Content: ,"
 argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"BobBob Bruce"
+literal|"Content: Bob"
 argument_list|,
 name|a
 operator|.
 name|format
 argument_list|(
-literal|"Bob Bruce"
+literal|"Bob"
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFormatNull ()
+DECL|method|testEscaping ()
 specifier|public
 name|void
-name|testFormatNull
+name|testEscaping
+parameter_list|()
+block|{
+name|ParamLayoutFormatter
+name|a
+init|=
+operator|new
+name|WrapContent
+argument_list|()
+decl_stmt|;
+name|a
+operator|.
+name|setArgument
+argument_list|(
+literal|"Name\\,Field\\,,\\,Author"
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Name,Field,Bob,Author"
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|"Bob"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testFormatNullExpectNothingAdded ()
+specifier|public
+name|void
+name|testFormatNullExpectNothingAdded
 parameter_list|()
 block|{
 name|ParamLayoutFormatter
@@ -208,10 +245,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testFormatEmpty ()
+DECL|method|testFormatEmptyExpectNothingAdded ()
 specifier|public
 name|void
-name|testFormatEmpty
+name|testFormatEmptyExpectNothingAdded
 parameter_list|()
 block|{
 name|ParamLayoutFormatter
@@ -245,10 +282,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNoArgumentSet ()
+DECL|method|testNoArgumentSetExpectNothingAdded ()
 specifier|public
 name|void
-name|testNoArgumentSet
+name|testNoArgumentSetExpectNothingAdded
 parameter_list|()
 block|{
 name|ParamLayoutFormatter
@@ -275,10 +312,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testNoProperArgument ()
+DECL|method|testNoProperArgumentExpectNothingAdded ()
 specifier|public
 name|void
-name|testNoProperArgument
+name|testNoProperArgumentExpectNothingAdded
 parameter_list|()
 block|{
 name|ParamLayoutFormatter
