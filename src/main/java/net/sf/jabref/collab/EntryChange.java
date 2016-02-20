@@ -1000,7 +1000,6 @@ name|NamedCompound
 name|undoEdit
 parameter_list|)
 block|{
-comment|//System.out.println(field+" "+onDisk);
 name|entry
 operator|.
 name|setField
