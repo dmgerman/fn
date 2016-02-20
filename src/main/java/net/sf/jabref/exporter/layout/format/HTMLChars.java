@@ -146,6 +146,7 @@ literal|"&|\\\\&"
 argument_list|,
 literal|"&amp;"
 argument_list|)
+comment|// Replace& and \& with&amp;
 operator|.
 name|replaceAll
 argument_list|(
@@ -153,6 +154,7 @@ literal|"[\\n]{2,}"
 argument_list|,
 literal|"<p>"
 argument_list|)
+comment|// Replace double line breaks with<p>
 operator|.
 name|replace
 argument_list|(
@@ -160,7 +162,24 @@ literal|"\n"
 argument_list|,
 literal|"<br>"
 argument_list|)
+comment|// Replace single line breaks with<br>
+operator|.
+name|replace
+argument_list|(
+literal|"\\$"
+argument_list|,
+literal|"&dollar;"
+argument_list|)
+comment|// Replace \$ with&dollar;
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\$([^\\$]*)\\$"
+argument_list|,
+literal|"\\{$1\\}"
+argument_list|)
 expr_stmt|;
+comment|// Replace $...$ with {...} to simplify conversion
 name|StringBuilder
 name|sb
 init|=
@@ -996,7 +1015,15 @@ name|sb
 operator|.
 name|toString
 argument_list|()
+operator|.
+name|replace
+argument_list|(
+literal|"~"
+argument_list|,
+literal|"&nbsp;"
+argument_list|)
 return|;
+comment|// Replace any remaining ~ with&nbsp; (non-breaking spaces)
 block|}
 block|}
 end_class

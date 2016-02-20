@@ -4761,6 +4761,15 @@ literal|2
 index|]
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|strippedLaTeX
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|LATEX_HTML_CONVERSION_MAP
 operator|.
 name|put
@@ -4778,6 +4787,7 @@ literal|";"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -4791,6 +4801,15 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|)
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|strippedLaTeX
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|LATEX_HTML_CONVERSION_MAP
@@ -4809,6 +4828,7 @@ operator|+
 literal|";"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -4890,6 +4910,15 @@ literal|2
 index|]
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|strippedLaTeX
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|LATEX_UNICODE_CONVERSION_MAP
 operator|.
 name|put
@@ -4902,6 +4931,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -4936,6 +4966,36 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Manually added values which are killed by cleanLaTeX
+name|LATEX_HTML_CONVERSION_MAP
+operator|.
+name|put
+argument_list|(
+literal|"$"
+argument_list|,
+literal|"&dollar;"
+argument_list|)
+expr_stmt|;
+name|LATEX_UNICODE_CONVERSION_MAP
+operator|.
+name|put
+argument_list|(
+literal|"$"
+argument_list|,
+literal|"$"
+argument_list|)
+expr_stmt|;
+comment|// Manual corrections
+name|LATEX_HTML_CONVERSION_MAP
+operator|.
+name|put
+argument_list|(
+literal|"AA"
+argument_list|,
+literal|"&Aring;"
+argument_list|)
+expr_stmt|;
+comment|// Overwritten by&angst; which is less supported
 block|}
 DECL|method|cleanLaTeX (String escapedString)
 specifier|private
