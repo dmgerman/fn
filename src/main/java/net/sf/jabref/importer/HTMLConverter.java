@@ -299,7 +299,7 @@ name|chars
 init|=
 name|HTMLUnicodeConversionMaps
 operator|.
-name|UNICODE_SYMBOLS
+name|UNICODE_LATEX_CONVERSION_MAP
 operator|.
 name|keySet
 argument_list|()
@@ -325,7 +325,7 @@ argument_list|()
 argument_list|,
 name|HTMLUnicodeConversionMaps
 operator|.
-name|UNICODE_SYMBOLS
+name|UNICODE_LATEX_CONVERSION_MAP
 operator|.
 name|get
 argument_list|(
@@ -743,7 +743,7 @@ name|patterns
 init|=
 name|HTMLUnicodeConversionMaps
 operator|.
-name|ESCAPED_SYMBOLS
+name|HTML_LATEX_CONVERSION_MAP
 operator|.
 name|keySet
 argument_list|()
@@ -766,7 +766,7 @@ name|pattern
 argument_list|,
 name|HTMLUnicodeConversionMaps
 operator|.
-name|ESCAPED_SYMBOLS
+name|HTML_LATEX_CONVERSION_MAP
 operator|.
 name|get
 argument_list|(
@@ -827,7 +827,7 @@ if|if
 condition|(
 name|HTMLUnicodeConversionMaps
 operator|.
-name|NUMERICAL_SYMBOLS
+name|NUMERICAL_LATEX_CONVERSION_MAP
 operator|.
 name|containsKey
 argument_list|(
@@ -868,7 +868,7 @@ literal|";"
 argument_list|,
 name|HTMLUnicodeConversionMaps
 operator|.
-name|NUMERICAL_SYMBOLS
+name|NUMERICAL_LATEX_CONVERSION_MAP
 operator|.
 name|get
 argument_list|(

@@ -22,6 +22,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -62,7 +72,7 @@ name|util
 operator|.
 name|strings
 operator|.
-name|HtmlCharsMap
+name|HTMLUnicodeConversionMaps
 import|;
 end_import
 
@@ -100,12 +110,17 @@ DECL|field|HTML_CHARS
 specifier|private
 specifier|static
 specifier|final
-name|HtmlCharsMap
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|HTML_CHARS
 init|=
-operator|new
-name|HtmlCharsMap
-argument_list|()
+name|HTMLUnicodeConversionMaps
+operator|.
+name|LATEX_HTML_CONVERSION_MAP
 decl_stmt|;
 annotation|@
 name|Override

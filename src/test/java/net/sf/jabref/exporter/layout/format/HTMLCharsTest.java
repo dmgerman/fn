@@ -133,7 +133,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"&#305;&#305;"
+literal|"&imath;&imath;"
 argument_list|,
 name|layout
 operator|.
@@ -147,7 +147,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"&#305;"
+literal|"&imath;"
 argument_list|,
 name|layout
 operator|.
@@ -161,7 +161,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"&#305;"
+literal|"&imath;"
 argument_list|,
 name|layout
 operator|.
@@ -175,7 +175,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"&#305;&#305;"
+literal|"&imath;&imath;"
 argument_list|,
 name|layout
 operator|.
@@ -189,7 +189,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"&#319;&#305;"
+literal|"&Lmidot;&imath;"
 argument_list|,
 name|layout
 operator|.
@@ -203,7 +203,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"&ntilde;&ntilde;&iacute;&#305;&#305;"
+literal|"&ntilde;&ntilde;&iacute;&imath;&imath;"
 argument_list|,
 name|layout
 operator|.

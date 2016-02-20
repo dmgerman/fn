@@ -64,7 +64,7 @@ name|util
 operator|.
 name|strings
 operator|.
-name|LatexToUnicodeCharMap
+name|HTMLUnicodeConversionMaps
 import|;
 end_import
 
@@ -118,9 +118,9 @@ name|String
 argument_list|>
 name|CHARS
 init|=
-operator|new
-name|LatexToUnicodeCharMap
-argument_list|()
+name|HTMLUnicodeConversionMaps
+operator|.
+name|LATEX_UNICODE_CONVERSION_MAP
 decl_stmt|;
 annotation|@
 name|Override
