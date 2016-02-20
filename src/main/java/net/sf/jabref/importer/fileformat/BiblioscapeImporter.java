@@ -314,14 +314,14 @@ name|titleTI
 init|=
 literal|null
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|String
 argument_list|>
 name|comments
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;

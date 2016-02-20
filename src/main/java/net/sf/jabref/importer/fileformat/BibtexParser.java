@@ -2304,19 +2304,8 @@ block|{
 comment|//multiple keywords fields should be combined to one
 name|entry
 operator|.
-name|setField
+name|addKeyword
 argument_list|(
-literal|"keywords"
-argument_list|,
-name|entry
-operator|.
-name|getField
-argument_list|(
-literal|"keywords"
-argument_list|)
-operator|+
-literal|", "
-operator|+
 name|content
 argument_list|)
 expr_stmt|;
@@ -3449,13 +3438,17 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|character
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|character
 operator|==
 literal|'('
+operator|)
 condition|)
 block|{
 name|brackets
@@ -3465,13 +3458,17 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|character
 operator|==
 literal|'}'
+operator|)
 operator|||
+operator|(
 name|character
 operator|==
 literal|')'
+operator|)
 condition|)
 block|{
 name|brackets

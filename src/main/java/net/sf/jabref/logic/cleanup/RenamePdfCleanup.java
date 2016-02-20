@@ -383,10 +383,8 @@ name|newFilename
 operator|.
 name|append
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|)
-expr_stmt|;
-name|newFilename
 operator|.
 name|append
 argument_list|(

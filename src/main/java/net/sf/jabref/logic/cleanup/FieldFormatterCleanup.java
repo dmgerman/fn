@@ -223,6 +223,7 @@ decl_stmt|;
 DECL|field|PAGE_NUMBERS
 specifier|public
 specifier|static
+specifier|final
 name|CleanupJob
 name|PAGE_NUMBERS
 init|=
@@ -239,6 +240,7 @@ decl_stmt|;
 DECL|field|DATES
 specifier|public
 specifier|static
+specifier|final
 name|CleanupJob
 name|DATES
 init|=
@@ -255,6 +257,7 @@ decl_stmt|;
 DECL|field|MONTH
 specifier|public
 specifier|static
+specifier|final
 name|CleanupJob
 name|MONTH
 init|=
@@ -271,6 +274,7 @@ decl_stmt|;
 DECL|field|TITLE_CASE
 specifier|public
 specifier|static
+specifier|final
 name|CleanupJob
 name|TITLE_CASE
 init|=
@@ -287,6 +291,7 @@ decl_stmt|;
 DECL|field|TITLE_UNITS
 specifier|public
 specifier|static
+specifier|final
 name|CleanupJob
 name|TITLE_UNITS
 init|=
@@ -303,6 +308,7 @@ decl_stmt|;
 DECL|field|TITLE_LATEX
 specifier|public
 specifier|static
+specifier|final
 name|CleanupJob
 name|TITLE_LATEX
 init|=
@@ -319,6 +325,7 @@ decl_stmt|;
 DECL|field|TITLE_HTML
 specifier|public
 specifier|static
+specifier|final
 name|CleanupJob
 name|TITLE_HTML
 init|=
