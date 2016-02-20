@@ -2622,6 +2622,15 @@ block|}
 block|,
 comment|// Right bracket
 block|{
+literal|"42"
+block|,
+literal|""
+block|,
+literal|"*"
+block|}
+block|,
+comment|// Asterisk
+block|{
 literal|"43"
 block|,
 literal|"plus"
