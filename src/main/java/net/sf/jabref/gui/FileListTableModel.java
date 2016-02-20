@@ -506,13 +506,13 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setContent (String value, boolean firstOnly, boolean deduceUnknownTypes)
+DECL|method|setContent (String val, boolean firstOnly, boolean deduceUnknownTypes)
 specifier|private
 name|FileListEntry
 name|setContent
 parameter_list|(
 name|String
-name|value
+name|val
 parameter_list|,
 name|boolean
 name|firstOnly
@@ -521,6 +521,11 @@ name|boolean
 name|deduceUnknownTypes
 parameter_list|)
 block|{
+name|String
+name|value
+init|=
+name|val
+decl_stmt|;
 if|if
 condition|(
 name|value

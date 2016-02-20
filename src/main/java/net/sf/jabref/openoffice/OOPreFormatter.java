@@ -143,14 +143,14 @@ argument_list|,
 literal|"&"
 argument_list|)
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|currentCommand
 init|=
 literal|null
@@ -291,7 +291,7 @@ expr_stmt|;
 name|currentCommand
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}

@@ -719,37 +719,6 @@ specifier|static
 name|OpenOfficePanel
 name|instance
 decl_stmt|;
-DECL|method|getInstance ()
-specifier|public
-specifier|static
-name|OpenOfficePanel
-name|getInstance
-parameter_list|()
-block|{
-if|if
-condition|(
-name|OpenOfficePanel
-operator|.
-name|instance
-operator|==
-literal|null
-condition|)
-block|{
-name|OpenOfficePanel
-operator|.
-name|instance
-operator|=
-operator|new
-name|OpenOfficePanel
-argument_list|()
-expr_stmt|;
-block|}
-return|return
-name|OpenOfficePanel
-operator|.
-name|instance
-return|;
-block|}
 DECL|method|OpenOfficePanel ()
 specifier|private
 name|OpenOfficePanel
@@ -1116,6 +1085,37 @@ operator|.
 name|OO_BIBLIOGRAPHY_STYLE_FILE
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getInstance ()
+specifier|public
+specifier|static
+name|OpenOfficePanel
+name|getInstance
+parameter_list|()
+block|{
+if|if
+condition|(
+name|OpenOfficePanel
+operator|.
+name|instance
+operator|==
+literal|null
+condition|)
+block|{
+name|OpenOfficePanel
+operator|.
+name|instance
+operator|=
+operator|new
+name|OpenOfficePanel
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|OpenOfficePanel
+operator|.
+name|instance
+return|;
 block|}
 DECL|method|getSidePaneComponent ()
 specifier|public
@@ -1786,8 +1786,6 @@ parameter_list|)
 block|{
 try|try
 block|{
-try|try
-block|{
 if|if
 condition|(
 name|style
@@ -1806,40 +1804,6 @@ operator|.
 name|ensureUpToDate
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"You must select either a valid style file, or use one of the default styles."
-argument_list|)
-argument_list|,
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"No valid style file defined"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
-argument_list|)
-expr_stmt|;
-return|return;
 block|}
 name|ooBase
 operator|.
@@ -1879,7 +1843,6 @@ argument_list|,
 name|style
 argument_list|)
 expr_stmt|;
-comment|//ooBase.sync(frame.getCurrentBasePanel().database(), style);
 if|if
 condition|(
 operator|!
@@ -1956,6 +1919,48 @@ block|{
 name|showConnectionLostErrorMessage
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|frame
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"You must select either a valid style file, or use one of the default styles."
+argument_list|)
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"No valid style file defined"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem with style file"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+return|return;
 block|}
 catch|catch
 parameter_list|(
@@ -4097,13 +4102,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|pushEntries (boolean inParenthesis, boolean withText, boolean addPageInfo)
+DECL|method|pushEntries (boolean inParenthesisIn, boolean withText, boolean addPageInfo)
 specifier|private
 name|void
 name|pushEntries
 parameter_list|(
 name|boolean
-name|inParenthesis
+name|inParenthesisIn
 parameter_list|,
 name|boolean
 name|withText
@@ -4150,6 +4155,11 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|Boolean
+name|inParenthesis
+init|=
+name|inParenthesisIn
+decl_stmt|;
 name|String
 name|pageInfo
 init|=
@@ -4330,6 +4340,15 @@ argument_list|,
 name|JOptionPane
 operator|.
 name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem with style file"
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -4908,11 +4927,11 @@ name|OOPanel
 extends|extends
 name|SidePaneComponent
 block|{
-DECL|field|ooPanel
+DECL|field|openOfficePanel
 specifier|private
 specifier|final
 name|OpenOfficePanel
-name|ooPanel
+name|openOfficePanel
 decl_stmt|;
 DECL|method|OOPanel (SidePaneManager sidePaneManager, Icon url, String s, OpenOfficePanel panel)
 specifier|public
@@ -4940,7 +4959,7 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
-name|ooPanel
+name|openOfficePanel
 operator|=
 name|panel
 expr_stmt|;
@@ -4954,7 +4973,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-name|ooPanel
+name|openOfficePanel
 operator|.
 name|getName
 argument_list|()

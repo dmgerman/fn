@@ -390,7 +390,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|StringBuffer
+name|StringBuilder
 name|buffer
 init|=
 literal|null
@@ -520,7 +520,7 @@ block|{
 name|buffer
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|100
 argument_list|)
@@ -560,7 +560,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|StringBuffer
+name|StringBuilder
 name|buffer
 init|=
 literal|null
@@ -621,7 +621,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//myStrings.add(buffer.toString());
 if|if
 condition|(
 name|option
@@ -866,7 +865,7 @@ block|{
 name|buffer
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|100
 argument_list|)
@@ -892,7 +891,7 @@ block|{
 name|buffer
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|100
 argument_list|)
@@ -939,7 +938,7 @@ expr_stmt|;
 name|int
 name|c
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|buffer
 init|=
 literal|null
@@ -1072,7 +1071,7 @@ block|{
 name|buffer
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|100
 argument_list|)
@@ -1128,7 +1127,7 @@ block|{
 name|int
 name|c
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|buffer
 init|=
 literal|null
@@ -1566,7 +1565,7 @@ block|{
 name|buffer
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|100
 argument_list|)

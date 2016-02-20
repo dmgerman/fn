@@ -1700,7 +1700,6 @@ argument_list|(
 name|prevEntry
 argument_list|)
 expr_stmt|;
-comment|//PreviewPrefsTab.getTestEntry());
 name|tableModel
 operator|=
 operator|(
