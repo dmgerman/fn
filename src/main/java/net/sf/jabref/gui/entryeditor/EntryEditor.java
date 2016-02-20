@@ -128,18 +128,6 @@ name|awt
 operator|.
 name|event
 operator|.
-name|ActionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|FocusAdapter
 import|;
 end_import
@@ -7347,7 +7335,6 @@ operator|.
 name|getCiteKey
 argument_list|()
 decl_stmt|;
-comment|// set the field named for "bibtexkey"
 name|setField
 argument_list|(
 name|BibEntry

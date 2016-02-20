@@ -466,7 +466,9 @@ name|MODSEntry
 operator|.
 name|BIBTEX
 operator|+
-literal|"bibtexkey"
+name|BibEntry
+operator|.
+name|KEY_FIELD
 argument_list|)
 expr_stmt|;
 name|handledExtensions
@@ -587,7 +589,9 @@ name|bibtex
 operator|.
 name|hasField
 argument_list|(
-literal|"bibtexkey"
+name|BibEntry
+operator|.
+name|KEY_FIELD
 argument_list|)
 condition|)
 block|{
@@ -597,7 +601,9 @@ name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"bibtexkey"
+name|BibEntry
+operator|.
+name|KEY_FIELD
 argument_list|)
 expr_stmt|;
 block|}
