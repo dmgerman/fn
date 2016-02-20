@@ -111,6 +111,15 @@ specifier|static
 name|MySQLExporter
 name|instance
 decl_stmt|;
+DECL|field|OPT_ALLOW_MULTI_QUERIES
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|OPT_ALLOW_MULTI_QUERIES
+init|=
+literal|"?allowMultiQueries=true"
+decl_stmt|;
 DECL|method|MySQLExporter ()
 specifier|private
 name|MySQLExporter
@@ -166,6 +175,13 @@ operator|.
 name|dbStrings
 operator|=
 name|dbstrings
+expr_stmt|;
+name|dbStrings
+operator|.
+name|setDbParameters
+argument_list|(
+name|OPT_ALLOW_MULTI_QUERIES
+argument_list|)
 expr_stmt|;
 name|String
 name|url
@@ -230,20 +246,14 @@ operator|+
 literal|'`'
 argument_list|)
 expr_stmt|;
-name|SQLUtil
-operator|.
-name|processQuery
-argument_list|(
 name|conn
-argument_list|,
-literal|"USE `"
-operator|+
+operator|.
+name|setCatalog
+argument_list|(
 name|dbStrings
 operator|.
 name|getDatabase
 argument_list|()
-operator|+
-literal|'`'
 argument_list|)
 expr_stmt|;
 return|return
