@@ -1174,11 +1174,11 @@ name|TreeSelectionEvent
 name|e
 parameter_list|)
 block|{
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 operator|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 operator|)
 name|e
 operator|.
@@ -1192,6 +1192,9 @@ name|AbstractGroup
 name|group
 init|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -1235,11 +1238,11 @@ return|;
 block|}
 else|else
 block|{
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 operator|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 operator|)
 name|path
 operator|.
@@ -1250,6 +1253,9 @@ name|AbstractGroup
 name|group
 init|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()

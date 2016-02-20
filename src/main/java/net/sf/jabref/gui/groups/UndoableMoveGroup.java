@@ -134,7 +134,7 @@ decl_stmt|;
 DECL|field|root
 specifier|private
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|root
 decl_stmt|;
 DECL|field|pathToNewParent
@@ -308,6 +308,9 @@ name|newParent
 init|=
 name|root
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|getDescendant
 argument_list|(
 name|pathToNewParent
@@ -324,6 +327,9 @@ name|newChildIndex
 argument_list|)
 decl_stmt|;
 name|root
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getDescendant
 argument_list|(
@@ -361,6 +367,9 @@ name|oldParent
 init|=
 name|root
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|getDescendant
 argument_list|(
 name|pathToOldParent
@@ -377,6 +386,9 @@ name|oldChildIndex
 argument_list|)
 decl_stmt|;
 name|root
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getDescendant
 argument_list|(

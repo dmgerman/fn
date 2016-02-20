@@ -145,17 +145,17 @@ argument_list|>
 name|m_pathToNode
 decl_stmt|;
 comment|/**      * @param node      *            The node which still contains the old group.      * @param newGroup      *            The new group to replace the one currently stored in<b>node      *</b>.      */
-DECL|method|UndoableModifyGroup (GroupSelector gs, GroupTreeNode groupsRoot, GroupTreeNode node, AbstractGroup newGroup)
+DECL|method|UndoableModifyGroup (GroupSelector gs, GroupTreeNodeViewModel groupsRoot, GroupTreeNodeViewModel node, AbstractGroup newGroup)
 specifier|public
 name|UndoableModifyGroup
 parameter_list|(
 name|GroupSelector
 name|gs
 parameter_list|,
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|groupsRoot
 parameter_list|,
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|,
 name|AbstractGroup
@@ -169,6 +169,9 @@ expr_stmt|;
 name|m_oldGroupBackup
 operator|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -187,12 +190,18 @@ name|m_pathToNode
 operator|=
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|getIndexedPath
 argument_list|()
 expr_stmt|;
 name|m_groupsRootHandle
 operator|=
 name|groupsRoot
+operator|.
+name|getNode
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

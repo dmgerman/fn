@@ -851,7 +851,7 @@ name|groupsTreeModel
 decl_stmt|;
 DECL|field|groupsRoot
 specifier|private
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|groupsRoot
 decl_stmt|;
 DECL|field|frame
@@ -1361,11 +1361,15 @@ operator|.
 name|groupsRoot
 operator|=
 operator|new
+name|GroupTreeNodeViewModel
+argument_list|(
+operator|new
 name|GroupTreeNode
 argument_list|(
 operator|new
 name|AllEntriesGroup
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -3134,11 +3138,7 @@ operator|=
 operator|new
 name|DefaultTreeModel
 argument_list|(
-operator|new
-name|GroupTreeNodeViewModel
-argument_list|(
 name|groupsRoot
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3839,11 +3839,11 @@ condition|)
 block|{
 return|return;
 block|}
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 operator|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 operator|)
 name|path
 operator|.
@@ -3854,6 +3854,9 @@ comment|// the root node is "AllEntries" and cannot be edited
 if|if
 condition|(
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|isRoot
 argument_list|()
@@ -4139,11 +4142,11 @@ literal|null
 condition|)
 block|{
 comment|// some path dependent enabling/disabling
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 operator|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 operator|)
 name|path
 operator|.
@@ -4224,6 +4227,9 @@ name|AbstractGroup
 name|group
 init|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -4368,6 +4374,9 @@ name|setEnabled
 argument_list|(
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|canMoveUp
 argument_list|()
 argument_list|)
@@ -4377,6 +4386,9 @@ operator|.
 name|setEnabled
 argument_list|(
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|canMoveDown
 argument_list|()
@@ -4388,6 +4400,9 @@ name|setEnabled
 argument_list|(
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|canMoveLeft
 argument_list|()
 argument_list|)
@@ -4397,6 +4412,9 @@ operator|.
 name|setEnabled
 argument_list|(
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|canMoveRight
 argument_list|()
@@ -4484,6 +4502,9 @@ if|if
 condition|(
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|getGroup
 argument_list|()
 operator|.
@@ -4492,6 +4513,9 @@ argument_list|()
 operator|&&
 operator|!
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -4549,6 +4573,9 @@ if|if
 condition|(
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|getGroup
 argument_list|()
 operator|.
@@ -4556,6 +4583,9 @@ name|supportsRemove
 argument_list|()
 operator|&&
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -4776,12 +4806,12 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @param node deletion != addition      */
-DECL|method|updateGroupContent (GroupTreeNode node)
+DECL|method|updateGroupContent (GroupTreeNodeViewModel node)
 specifier|private
 name|void
 name|updateGroupContent
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|)
 block|{
@@ -4800,6 +4830,9 @@ name|AbstractGroup
 name|group
 init|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -4931,6 +4964,9 @@ name|changesRemove
 operator|=
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|removeFromGroup
 argument_list|(
 name|toRemove
@@ -4950,6 +4986,9 @@ block|{
 name|changesAdd
 operator|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|addToGroup
 argument_list|(
@@ -5051,12 +5090,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|annotationEvent (GroupTreeNode node)
+DECL|method|annotationEvent (GroupTreeNodeViewModel node)
 specifier|private
 name|void
 name|annotationEvent
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|)
 block|{
@@ -5154,7 +5193,7 @@ operator|&&
 operator|(
 operator|(
 operator|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 operator|)
 name|selection
 index|[
@@ -5164,6 +5203,9 @@ operator|.
 name|getLastPathComponent
 argument_list|()
 operator|)
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -5303,13 +5345,16 @@ name|searchRule
 init|=
 operator|(
 operator|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 operator|)
 name|aSelection
 operator|.
 name|getLastPathComponent
 argument_list|()
 operator|)
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getSearchRule
 argument_list|()
@@ -5591,7 +5636,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has been changed) and set the specified      * selection and expansion state.      *      * @param node If this is non-null, the view is scrolled to make it visible.      */
-DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration<TreePath> expandedNodes, GroupTreeNode node)
+DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration<TreePath> expandedNodes, GroupTreeNodeViewModel node)
 specifier|private
 name|void
 name|revalidateGroups
@@ -5606,7 +5651,7 @@ name|TreePath
 argument_list|>
 name|expandedNodes
 parameter_list|,
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|)
 block|{
@@ -5679,14 +5724,10 @@ name|groupsTree
 operator|.
 name|scrollPathToVisible
 argument_list|(
-operator|new
-name|TreePath
-argument_list|(
 name|node
 operator|.
-name|getPath
+name|getTreePath
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5705,12 +5746,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has been changed) and maintain the current      * selection and expansion state.      *      * @param node If this is non-null, the view is scrolled to make it visible.      */
-DECL|method|revalidateGroups (GroupTreeNode node)
+DECL|method|revalidateGroups (GroupTreeNodeViewModel node)
 specifier|private
 name|void
 name|revalidateGroups
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|)
 block|{
@@ -5814,6 +5855,9 @@ argument_list|)
 decl_stmt|;
 name|groupsRoot
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|add
 argument_list|(
 name|newNode
@@ -5834,7 +5878,11 @@ name|this
 argument_list|,
 name|groupsRoot
 argument_list|,
+operator|new
+name|GroupTreeNodeViewModel
+argument_list|(
 name|newNode
+argument_list|)
 argument_list|,
 name|UndoableAddOrRemoveGroup
 operator|.
@@ -6035,24 +6083,15 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setGroups (GroupTreeNode groupsRoot)
+DECL|method|setGroups (GroupTreeNodeViewModel groupsRoot)
 specifier|private
 name|void
 name|setGroups
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|groupsRoot
 parameter_list|)
 block|{
-name|GroupTreeNodeViewModel
-name|root
-init|=
-operator|new
-name|GroupTreeNodeViewModel
-argument_list|(
-name|groupsRoot
-argument_list|)
-decl_stmt|;
 name|groupsTree
 operator|.
 name|setModel
@@ -6062,7 +6101,7 @@ operator|=
 operator|new
 name|DefaultTreeModel
 argument_list|(
-name|root
+name|groupsRoot
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6086,7 +6125,7 @@ name|GROUP_EXPAND_TREE
 argument_list|)
 condition|)
 block|{
-name|root
+name|groupsRoot
 operator|.
 name|expandSubtree
 argument_list|(
@@ -6094,6 +6133,25 @@ name|groupsTree
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|setGroups (GroupTreeNode groupsRoot)
+specifier|private
+name|void
+name|setGroups
+parameter_list|(
+name|GroupTreeNode
+name|groupsRoot
+parameter_list|)
+block|{
+name|setGroups
+argument_list|(
+operator|new
+name|GroupTreeNodeViewModel
+argument_list|(
+name|groupsRoot
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Adds the specified node as a child of the current root. The group contained in<b>newGroups</b> must not be of      * type AllEntriesGroup, since every tree has exactly one AllEntriesGroup (its root). The<b>newGroups</b> are      * inserted directly, i.e. they are not deepCopy()'d.      */
 DECL|method|addGroups (GroupTreeNode newGroups, CompoundEdit ce)
@@ -6124,6 +6182,9 @@ comment|// this should be impossible anyway
 block|}
 name|groupsRoot
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|add
 argument_list|(
 name|newGroups
@@ -6139,7 +6200,11 @@ name|this
 argument_list|,
 name|groupsRoot
 argument_list|,
+operator|new
+name|GroupTreeNodeViewModel
+argument_list|(
 name|newGroups
+argument_list|)
 argument_list|,
 name|UndoableAddOrRemoveGroup
 operator|.
@@ -6164,7 +6229,7 @@ name|AbstractAction
 block|{
 DECL|field|mNode
 specifier|private
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|mNode
 decl_stmt|;
 DECL|method|NodeAction (String s)
@@ -6181,12 +6246,12 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setNode (GroupTreeNode node)
+DECL|method|setNode (GroupTreeNodeViewModel node)
 specifier|public
 name|void
 name|setNode
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|)
 block|{
@@ -6200,7 +6265,7 @@ block|}
 comment|/**          * Returns the node to use in this action. If a node has been set explicitly (via setNode), it is returned.          * Otherwise, the first node in the current selection is returned. If all this fails, null is returned.          */
 DECL|method|getNodeToUse ()
 specifier|public
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|getNodeToUse
 parameter_list|()
 block|{
@@ -6232,7 +6297,7 @@ condition|)
 block|{
 return|return
 operator|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 operator|)
 name|path
 operator|.
@@ -6280,7 +6345,7 @@ name|e
 parameter_list|)
 block|{
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -6291,6 +6356,9 @@ name|AbstractGroup
 name|oldGroup
 init|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -6358,6 +6426,9 @@ name|newGroup
 argument_list|)
 decl_stmt|;
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|setGroup
 argument_list|(
@@ -6539,7 +6610,7 @@ name|newGroup
 argument_list|)
 decl_stmt|;
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -6554,6 +6625,9 @@ condition|)
 block|{
 name|groupsRoot
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|add
 argument_list|(
 name|newNode
@@ -6562,9 +6636,17 @@ expr_stmt|;
 block|}
 else|else
 block|{
+operator|(
+operator|(
+name|GroupTreeNodeViewModel
+operator|)
 name|node
 operator|.
 name|getParent
+argument_list|()
+operator|)
+operator|.
+name|getNode
 argument_list|()
 operator|.
 name|insert
@@ -6597,7 +6679,11 @@ name|this
 argument_list|,
 name|groupsRoot
 argument_list|,
+operator|new
+name|GroupTreeNodeViewModel
+argument_list|(
 name|newNode
+argument_list|)
 argument_list|,
 name|UndoableAddOrRemoveGroup
 operator|.
@@ -6611,9 +6697,6 @@ name|groupsTree
 operator|.
 name|expandPath
 argument_list|(
-operator|new
-name|TreePath
-argument_list|(
 operator|(
 name|node
 operator|==
@@ -6624,9 +6707,8 @@ else|:
 name|node
 operator|)
 operator|.
-name|getPath
+name|getTreePath
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Store undo information.
@@ -6750,13 +6832,16 @@ name|newGroup
 argument_list|)
 decl_stmt|;
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
 argument_list|()
 decl_stmt|;
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|add
 argument_list|(
@@ -6775,7 +6860,11 @@ name|this
 argument_list|,
 name|groupsRoot
 argument_list|,
+operator|new
+name|GroupTreeNodeViewModel
+argument_list|(
 name|newNode
+argument_list|)
 argument_list|,
 name|UndoableAddOrRemoveGroup
 operator|.
@@ -6789,14 +6878,10 @@ name|groupsTree
 operator|.
 name|expandPath
 argument_list|(
-operator|new
-name|TreePath
-argument_list|(
 name|node
 operator|.
-name|getPath
+name|getTreePath
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Store undo information.
@@ -6868,7 +6953,7 @@ name|e
 parameter_list|)
 block|{
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -6879,6 +6964,9 @@ name|AbstractGroup
 name|group
 init|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -6946,6 +7034,9 @@ name|REMOVE_NODE_AND_CHILDREN
 argument_list|)
 decl_stmt|;
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|removeFromParent
 argument_list|()
@@ -7023,7 +7114,7 @@ name|e
 parameter_list|)
 block|{
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -7034,6 +7125,9 @@ name|AbstractGroup
 name|group
 init|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -7100,6 +7194,9 @@ literal|"Remove subgroups"
 argument_list|)
 decl_stmt|;
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|removeAllChildren
 argument_list|()
@@ -7177,7 +7274,7 @@ name|e
 parameter_list|)
 block|{
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -7188,6 +7285,9 @@ name|AbstractGroup
 name|group
 init|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -7255,9 +7355,12 @@ name|REMOVE_NODE_KEEP_CHILDREN
 argument_list|)
 decl_stmt|;
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|parent
 init|=
+operator|(
+name|GroupTreeNodeViewModel
+operator|)
 name|node
 operator|.
 name|getParent
@@ -7276,6 +7379,9 @@ argument_list|)
 decl_stmt|;
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|removeFromParent
 argument_list|()
 expr_stmt|;
@@ -7291,9 +7397,15 @@ condition|)
 block|{
 name|parent
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|insert
 argument_list|(
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getFirstChild
 argument_list|()
@@ -7388,7 +7500,7 @@ name|ae
 parameter_list|)
 block|{
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -7490,7 +7602,7 @@ name|ae
 parameter_list|)
 block|{
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -7557,43 +7669,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|field|clearHighlightAction
-specifier|public
-specifier|final
-name|AbstractAction
-name|clearHighlightAction
-init|=
-operator|new
-name|AbstractAction
-argument_list|(
-name|Localization
-operator|.
-name|lang
-argument_list|(
-literal|"Clear highlight"
-argument_list|)
-argument_list|)
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|ae
-parameter_list|)
-block|{
-name|groupsTree
-operator|.
-name|setHighlight3Cells
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-decl_stmt|;
 DECL|class|ExpandSubtreeAction
 specifier|private
 class|class
@@ -7629,7 +7704,7 @@ name|ae
 parameter_list|)
 block|{
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -7638,14 +7713,10 @@ decl_stmt|;
 name|TreePath
 name|path
 init|=
-operator|new
-name|TreePath
-argument_list|(
 name|node
 operator|.
-name|getPath
+name|getTreePath
 argument_list|()
-argument_list|)
 decl_stmt|;
 operator|(
 operator|(
@@ -7702,7 +7773,7 @@ name|ae
 parameter_list|)
 block|{
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -7711,14 +7782,10 @@ decl_stmt|;
 name|TreePath
 name|path
 init|=
-operator|new
-name|TreePath
-argument_list|(
 name|node
 operator|.
-name|getPath
+name|getTreePath
 argument_list|()
-argument_list|)
 decl_stmt|;
 operator|(
 operator|(
@@ -7775,7 +7842,7 @@ name|e
 parameter_list|)
 block|{
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -7825,7 +7892,7 @@ name|e
 parameter_list|)
 block|{
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -7875,7 +7942,7 @@ name|e
 parameter_list|)
 block|{
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -7925,7 +7992,7 @@ name|e
 parameter_list|)
 block|{
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 name|getNodeToUse
@@ -7941,12 +8008,12 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @param node The node to move      * @return true if move was successful, false if not.      */
-DECL|method|moveNodeUp (GroupTreeNode node, boolean checkSingleSelection)
+DECL|method|moveNodeUp (GroupTreeNodeViewModel node, boolean checkSingleSelection)
 specifier|public
 name|boolean
 name|moveNodeUp
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|,
 name|boolean
@@ -7990,6 +8057,9 @@ condition|(
 operator|!
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|canMoveUp
 argument_list|()
 operator|||
@@ -7999,6 +8069,9 @@ operator|(
 name|moveChange
 operator|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|moveUp
 argument_list|()
@@ -8021,6 +8094,9 @@ literal|"Cannot move group \"%0\" up."
 argument_list|,
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|getGroup
 argument_list|()
 operator|.
@@ -8072,12 +8148,12 @@ literal|true
 return|;
 block|}
 comment|/**      * @param node The node to move      * @return true if move was successful, false if not.      */
-DECL|method|moveNodeDown (GroupTreeNode node, boolean checkSingleSelection)
+DECL|method|moveNodeDown (GroupTreeNodeViewModel node, boolean checkSingleSelection)
 specifier|public
 name|boolean
 name|moveNodeDown
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|,
 name|boolean
@@ -8121,6 +8197,9 @@ condition|(
 operator|!
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|canMoveDown
 argument_list|()
 operator|||
@@ -8130,6 +8209,9 @@ operator|(
 name|moveChange
 operator|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|moveDown
 argument_list|()
@@ -8152,6 +8234,9 @@ literal|"Cannot move group \"%0\" down."
 argument_list|,
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|getGroup
 argument_list|()
 operator|.
@@ -8203,12 +8288,12 @@ literal|true
 return|;
 block|}
 comment|/**      * @param node The node to move      * @return true if move was successful, false if not.      */
-DECL|method|moveNodeLeft (GroupTreeNode node, boolean checkSingleSelection)
+DECL|method|moveNodeLeft (GroupTreeNodeViewModel node, boolean checkSingleSelection)
 specifier|public
 name|boolean
 name|moveNodeLeft
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|,
 name|boolean
@@ -8252,6 +8337,9 @@ condition|(
 operator|!
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|canMoveLeft
 argument_list|()
 operator|||
@@ -8261,6 +8349,9 @@ operator|(
 name|moveChange
 operator|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|moveLeft
 argument_list|()
@@ -8282,6 +8373,9 @@ argument_list|(
 literal|"Cannot move group \"%0\" left."
 argument_list|,
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -8333,12 +8427,12 @@ literal|true
 return|;
 block|}
 comment|/**      * @param node The node to move      * @return true if move was successful, false if not.      */
-DECL|method|moveNodeRight (GroupTreeNode node, boolean checkSingleSelection)
+DECL|method|moveNodeRight (GroupTreeNodeViewModel node, boolean checkSingleSelection)
 specifier|public
 name|boolean
 name|moveNodeRight
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|,
 name|boolean
@@ -8382,6 +8476,9 @@ condition|(
 operator|!
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|canMoveRight
 argument_list|()
 operator|||
@@ -8391,6 +8488,9 @@ operator|(
 name|moveChange
 operator|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|moveRight
 argument_list|()
@@ -8412,6 +8512,9 @@ argument_list|(
 literal|"Cannot move group \"%0\" right."
 argument_list|,
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -8463,7 +8566,7 @@ literal|true
 return|;
 block|}
 comment|/**      * Concludes the moving of a group tree node by storing the specified undo information, marking the change, and      * setting the status line.      *      * @param moveChange Undo information for the move operation.      * @param node The node that has been moved.      */
-DECL|method|concludeMoveGroup (MoveGroupChange moveChange, GroupTreeNode node)
+DECL|method|concludeMoveGroup (MoveGroupChange moveChange, GroupTreeNodeViewModel node)
 specifier|public
 name|void
 name|concludeMoveGroup
@@ -8471,7 +8574,7 @@ parameter_list|(
 name|MoveGroupChange
 name|moveChange
 parameter_list|,
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|)
 block|{
@@ -8506,6 +8609,9 @@ argument_list|(
 literal|"Moved group \"%0\"."
 argument_list|,
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -8640,7 +8746,7 @@ block|}
 block|}
 DECL|method|getGroupTreeRoot ()
 specifier|public
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|getGroupTreeRoot
 parameter_list|()
 block|{
@@ -8662,14 +8768,10 @@ name|groupsTree
 operator|.
 name|getExpandedDescendants
 argument_list|(
-operator|new
-name|TreePath
-argument_list|(
 name|groupsRoot
 operator|.
-name|getPath
+name|getTreePath
 argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -8914,6 +9016,9 @@ name|nodeList
 init|=
 name|groupsRoot
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|getContainingGroups
 argument_list|(
 name|list
@@ -8960,13 +9065,13 @@ operator|.
 name|expandPath
 argument_list|(
 operator|new
-name|TreePath
+name|GroupTreeNodeViewModel
 argument_list|(
 name|parentNode
-operator|.
-name|getPath
-argument_list|()
 argument_list|)
+operator|.
+name|getTreePath
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -8998,6 +9103,9 @@ argument_list|>
 name|nodes
 init|=
 name|groupsRoot
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getMatchingGroups
 argument_list|(

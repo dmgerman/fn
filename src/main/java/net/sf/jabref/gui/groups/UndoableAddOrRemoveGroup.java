@@ -83,7 +83,7 @@ comment|/** The root of the global groups tree */
 DECL|field|m_groupsRootHandle
 specifier|private
 specifier|final
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|m_groupsRootHandle
 decl_stmt|;
 comment|/** The subtree that was added or removed */
@@ -161,17 +161,17 @@ init|=
 literal|2
 decl_stmt|;
 comment|/**      * Creates an object that can undo/redo an edit event.      *      * @param groupsRoot      *            The global groups root.      * @param editType      *            The type of editing (ADD_NODE, REMOVE_NODE_KEEP_CHILDREN,      *            REMOVE_NODE_AND_CHILDREN)      * @param editedNode      *            The edited node (which was added or will be removed). The node      *            must be a descendant of node<b>groupsRoot</b>! This means      *            that, in case of adding, you first have to add it to the tree,      *            then call this constructor. When removing, you first have to      *            call this constructor, then remove the node.      */
-DECL|method|UndoableAddOrRemoveGroup (GroupSelector gs, GroupTreeNode groupsRoot, GroupTreeNode editedNode, int editType)
+DECL|method|UndoableAddOrRemoveGroup (GroupSelector gs, GroupTreeNodeViewModel groupsRoot, GroupTreeNodeViewModel editedNode, int editType)
 specifier|public
 name|UndoableAddOrRemoveGroup
 parameter_list|(
 name|GroupSelector
 name|gs
 parameter_list|,
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|groupsRoot
 parameter_list|,
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|editedNode
 parameter_list|,
 name|int
@@ -202,15 +202,26 @@ comment|// are kept
 name|m_subtreeBackup
 operator|=
 name|editType
-operator|==
+operator|!=
 name|UndoableAddOrRemoveGroup
 operator|.
 name|REMOVE_NODE_KEEP_CHILDREN
 condition|?
+name|editedNode
+operator|.
+name|getNode
+argument_list|()
+operator|.
+name|deepCopy
+argument_list|()
+else|:
 operator|new
 name|GroupTreeNode
 argument_list|(
 name|editedNode
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -218,11 +229,6 @@ operator|.
 name|deepCopy
 argument_list|()
 argument_list|)
-else|:
-name|editedNode
-operator|.
-name|deepCopy
-argument_list|()
 expr_stmt|;
 comment|// remember path to edited node. this cannot be stored as a reference,
 comment|// because the reference itself might change. the method below is more
@@ -230,6 +236,9 @@ comment|// robust.
 name|m_pathToNode
 operator|=
 name|editedNode
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getIndexedPath
 argument_list|()
@@ -390,6 +399,9 @@ name|GroupTreeNode
 name|cursor
 init|=
 name|m_groupsRootHandle
+operator|.
+name|getNode
+argument_list|()
 decl_stmt|;
 specifier|final
 name|int

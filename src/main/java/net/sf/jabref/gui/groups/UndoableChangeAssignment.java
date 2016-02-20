@@ -170,11 +170,11 @@ name|GroupTreeNode
 name|root
 decl_stmt|;
 comment|/**      * @param node The node whose assignments were edited.      */
-DECL|method|UndoableChangeAssignment (GroupTreeNode node, Set<BibEntry> previousAssignments, Set<BibEntry> newAssignments)
+DECL|method|UndoableChangeAssignment (GroupTreeNodeViewModel node, Set<BibEntry> previousAssignments, Set<BibEntry> newAssignments)
 specifier|public
 name|UndoableChangeAssignment
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|,
 name|Set
@@ -218,6 +218,9 @@ name|root
 operator|=
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|getRoot
 argument_list|()
 expr_stmt|;
@@ -226,6 +229,9 @@ operator|.
 name|pathToNode
 operator|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getIndexedPath
 argument_list|()

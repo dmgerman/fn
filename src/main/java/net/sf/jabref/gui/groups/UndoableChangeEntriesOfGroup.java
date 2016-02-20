@@ -146,13 +146,13 @@ specifier|public
 class|class
 name|UndoableChangeEntriesOfGroup
 block|{
-DECL|method|getUndoableEdit (GroupTreeNode node, EntriesGroupChange change)
+DECL|method|getUndoableEdit (GroupTreeNodeViewModel node, EntriesGroupChange change)
 specifier|public
 specifier|static
 name|AbstractUndoableEdit
 name|getUndoableEdit
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|,
 name|EntriesGroupChange

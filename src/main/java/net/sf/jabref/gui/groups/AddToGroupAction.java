@@ -212,7 +212,7 @@ name|move
 decl_stmt|;
 DECL|field|node
 specifier|private
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 decl_stmt|;
 DECL|field|panel
@@ -221,11 +221,11 @@ name|BasePanel
 name|panel
 decl_stmt|;
 comment|/**      * @param move If true, remove entries from all other groups.      */
-DECL|method|AddToGroupAction (GroupTreeNode node, boolean move, BasePanel panel)
+DECL|method|AddToGroupAction (GroupTreeNodeViewModel node, boolean move, BasePanel panel)
 specifier|public
 name|AddToGroupAction
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|,
 name|boolean
@@ -238,6 +238,9 @@ block|{
 name|super
 argument_list|(
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -315,12 +318,12 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
-DECL|method|setNode (GroupTreeNode node)
+DECL|method|setNode (GroupTreeNodeViewModel node)
 specifier|public
 name|void
 name|setNode
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|)
 block|{
@@ -456,6 +459,9 @@ name|groupsContainingEntries
 init|=
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|getRoot
 argument_list|()
 operator|.
@@ -495,6 +501,9 @@ operator|.
 name|add
 argument_list|(
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -577,6 +586,9 @@ name|undoAdd
 init|=
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|addToGroup
 argument_list|(
 name|entries
@@ -633,6 +645,9 @@ name|warnAssignmentSideEffects
 argument_list|(
 name|node
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|getGroup
 argument_list|()
 argument_list|,
@@ -653,6 +668,9 @@ argument_list|>
 name|undoAdd
 init|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|addToGroup
 argument_list|(

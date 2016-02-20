@@ -164,17 +164,17 @@ name|String
 name|m_name
 decl_stmt|;
 comment|/**      *      * @param subtree      *            The root node of the subtree that was modified (this node may      *            not be modified, it is just used as a convenience handle).      */
-DECL|method|UndoableModifySubtree (GroupSelector groupSelector, GroupTreeNode groupRoot, GroupTreeNode subtree, String name)
+DECL|method|UndoableModifySubtree (GroupSelector groupSelector, GroupTreeNodeViewModel groupRoot, GroupTreeNodeViewModel subtree, String name)
 specifier|public
 name|UndoableModifySubtree
 parameter_list|(
 name|GroupSelector
 name|groupSelector
 parameter_list|,
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|groupRoot
 parameter_list|,
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|subtree
 parameter_list|,
 name|String
@@ -185,16 +185,25 @@ name|m_subtreeBackup
 operator|=
 name|subtree
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|deepCopy
 argument_list|()
 expr_stmt|;
 name|m_groupRoot
 operator|=
 name|groupRoot
+operator|.
+name|getNode
+argument_list|()
 expr_stmt|;
 name|m_subtreeRootPath
 operator|=
 name|subtree
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getIndexedPath
 argument_list|()

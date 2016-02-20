@@ -136,7 +136,7 @@ name|AbstractAction
 block|{
 DECL|field|mNode
 specifier|private
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|mNode
 decl_stmt|;
 DECL|field|mPanel
@@ -144,11 +144,11 @@ specifier|private
 name|BasePanel
 name|mPanel
 decl_stmt|;
-DECL|method|RemoveFromGroupAction (GroupTreeNode node, BasePanel panel)
+DECL|method|RemoveFromGroupAction (GroupTreeNodeViewModel node, BasePanel panel)
 specifier|public
 name|RemoveFromGroupAction
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|,
 name|BasePanel
@@ -158,6 +158,9 @@ block|{
 name|super
 argument_list|(
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
@@ -191,12 +194,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setNode (GroupTreeNode node)
+DECL|method|setNode (GroupTreeNodeViewModel node)
 specifier|public
 name|void
 name|setNode
 parameter_list|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 parameter_list|)
 block|{
@@ -240,6 +243,9 @@ name|warnAssignmentSideEffects
 argument_list|(
 name|mNode
 operator|.
+name|getNode
+argument_list|()
+operator|.
 name|getGroup
 argument_list|()
 argument_list|,
@@ -260,6 +266,9 @@ argument_list|>
 name|undo
 init|=
 name|mNode
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|removeFromGroup
 argument_list|(
