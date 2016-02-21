@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui.labelPattern
+DECL|package|net.sf.jabref.gui.labelpattern
 package|package
 name|net
 operator|.
@@ -14,7 +14,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|labelPattern
+name|labelpattern
 package|;
 end_package
 
@@ -142,7 +142,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|AbstractLabelPattern
 import|;
@@ -158,7 +158,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|DatabaseLabelPattern
 import|;
@@ -174,7 +174,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|GlobalLabelPattern
 import|;

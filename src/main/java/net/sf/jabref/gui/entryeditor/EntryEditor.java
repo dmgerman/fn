@@ -514,7 +514,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|LabelPatternUtil
 import|;
