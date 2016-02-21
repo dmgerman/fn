@@ -185,13 +185,6 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-name|expectCorrect
-argument_list|(
-literal|null
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|expectCorrect (String input, String expected)
 specifier|private
