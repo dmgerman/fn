@@ -2408,7 +2408,7 @@ literal|null
 condition|)
 block|{
 return|return
-literal|null
+literal|""
 return|;
 block|}
 name|StringBuilder
@@ -2530,7 +2530,7 @@ literal|null
 condition|)
 block|{
 return|return
-literal|null
+literal|""
 return|;
 block|}
 if|if

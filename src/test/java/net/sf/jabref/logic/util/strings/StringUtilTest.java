@@ -1769,8 +1769,10 @@ name|void
 name|testQuoteNullString
 parameter_list|()
 block|{
-name|assertNull
+name|assertEquals
 argument_list|(
+literal|""
+argument_list|,
 name|StringUtil
 operator|.
 name|quote
@@ -1905,8 +1907,10 @@ name|void
 name|testLimitStringLengthNullInput
 parameter_list|()
 block|{
-name|assertNull
+name|assertEquals
 argument_list|(
+literal|""
+argument_list|,
 name|StringUtil
 operator|.
 name|limitStringLength
