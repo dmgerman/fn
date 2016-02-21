@@ -362,11 +362,6 @@ argument_list|(
 literal|"\\\\(citation|abx@aux@cite)\\{(.+)\\}"
 argument_list|)
 decl_stmt|;
-DECL|method|AuxSubGenerator ()
-specifier|public
-name|AuxSubGenerator
-parameter_list|()
-block|{     }
 comment|/**      * parseAuxFile read the Aux file and fill up some intern data structures. Nested aux files (latex \\include)      * supported!      *      * @param filename String : Path to LatexAuxFile      * @return boolean, true = no error occurs      */
 comment|// found at comp.text.tex
 comment|//> Can anyone tell be the information held within a .aux file?  Is there a
@@ -648,13 +643,6 @@ argument_list|(
 literal|","
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|keys
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|String
@@ -662,13 +650,6 @@ name|dummyStr
 range|:
 name|keys
 control|)
-block|{
-if|if
-condition|(
-name|dummyStr
-operator|!=
-literal|null
-condition|)
 block|{
 comment|// delete all unnecessary blanks and save key into an set
 name|mySet
@@ -681,8 +662,6 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 block|}
@@ -1255,11 +1234,11 @@ name|boolean
 name|includeMissingEntries
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|result
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 comment|// print statistics
@@ -1390,6 +1369,11 @@ name|append
 argument_list|(
 name|getCrossreferencedEntriesCount
 argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'\n'
 argument_list|)
 expr_stmt|;
 if|if
