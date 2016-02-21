@@ -61,7 +61,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Converts numbers to ordinals  */
+comment|/**  * Converts number to ordinal  */
 end_comment
 
 begin_class
@@ -149,7 +149,7 @@ name|value
 init|=
 name|Integer
 operator|.
-name|valueOf
+name|parseInt
 argument_list|(
 name|result
 argument_list|)
@@ -191,6 +191,7 @@ name|ordinalString
 operator|=
 literal|"th"
 expr_stmt|;
+break|break;
 block|}
 name|m
 operator|.

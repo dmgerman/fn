@@ -11642,8 +11642,6 @@ DECL|field|isActive
 specifier|private
 name|boolean
 name|isActive
-init|=
-literal|false
 decl_stmt|;
 DECL|method|StartStopListAction (FilterList<E> list, Matcher<E> active, Matcher<E> inactive)
 specifier|private
