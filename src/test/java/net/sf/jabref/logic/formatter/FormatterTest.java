@@ -546,6 +546,15 @@ operator|new
 name|UnitFormatter
 argument_list|()
 block|}
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+operator|new
+name|RemoveBracesFormatter
+argument_list|()
+block|}
 argument_list|)
 return|;
 block|}
