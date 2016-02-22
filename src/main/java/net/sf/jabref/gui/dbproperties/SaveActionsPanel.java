@@ -522,7 +522,7 @@ name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|REMOVE
+name|REMOVE_NOBOX
 operator|.
 name|getSmallIcon
 argument_list|()
@@ -798,7 +798,7 @@ name|IconTheme
 operator|.
 name|JabRefIcon
 operator|.
-name|ADD
+name|ADD_NOBOX
 operator|.
 name|getSmallIcon
 argument_list|()
