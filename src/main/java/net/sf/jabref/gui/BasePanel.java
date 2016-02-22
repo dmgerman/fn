@@ -2276,15 +2276,10 @@ name|BibEntry
 argument_list|>
 name|bes
 operator|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
 name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
-argument_list|)
 block|;
 comment|//int row0 = mainTable.getSelectedRow();
 if|if
@@ -2438,15 +2433,10 @@ name|BibEntry
 argument_list|>
 name|bes
 operator|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
 name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
-argument_list|)
 block|;
 if|if
 condition|(
