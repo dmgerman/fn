@@ -136,7 +136,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|DatabaseLabelPattern
 import|;
