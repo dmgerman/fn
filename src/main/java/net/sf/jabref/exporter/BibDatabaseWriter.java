@@ -953,7 +953,7 @@ name|List
 argument_list|<
 name|FieldChange
 argument_list|>
-name|undoableChanges
+name|saveActionChanges
 init|=
 name|writePartOfDatabase
 argument_list|(
@@ -968,9 +968,9 @@ argument_list|)
 decl_stmt|;
 name|session
 operator|.
-name|addUndoableFieldChanges
+name|addFieldChanges
 argument_list|(
-name|undoableChanges
+name|saveActionChanges
 argument_list|)
 expr_stmt|;
 block|}
@@ -1159,7 +1159,7 @@ name|List
 argument_list|<
 name|FieldChange
 argument_list|>
-name|undoableChanges
+name|saveActionChanges
 init|=
 name|BibDatabaseWriter
 operator|.
@@ -1324,7 +1324,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-name|undoableChanges
+name|saveActionChanges
 return|;
 block|}
 comment|/**      * Saves the database to file, including only the entries included in the      * supplied input array bes.      */

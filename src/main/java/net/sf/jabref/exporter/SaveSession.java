@@ -837,23 +837,23 @@ return|return
 name|tmp
 return|;
 block|}
-DECL|method|getUndoableFieldChanges ()
+DECL|method|getFieldChanges ()
 specifier|public
 name|List
 argument_list|<
 name|FieldChange
 argument_list|>
-name|getUndoableFieldChanges
+name|getFieldChanges
 parameter_list|()
 block|{
 return|return
 name|undoableFieldChanges
 return|;
 block|}
-DECL|method|addUndoableFieldChanges (List<FieldChange> undoableFieldChanges)
+DECL|method|addFieldChanges (List<FieldChange> undoableFieldChanges)
 specifier|public
 name|void
-name|addUndoableFieldChanges
+name|addFieldChanges
 parameter_list|(
 name|List
 argument_list|<

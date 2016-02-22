@@ -8368,7 +8368,7 @@ name|change
 range|:
 name|session
 operator|.
-name|getUndoableFieldChanges
+name|getFieldChanges
 argument_list|()
 control|)
 block|{
