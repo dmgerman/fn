@@ -76,11 +76,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|logic
 operator|.
-name|layout
+name|formatter
 operator|.
-name|LayoutFormatter
+name|Formatter
 import|;
 end_import
 
@@ -94,9 +94,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|formatter
+name|layout
 operator|.
-name|Formatter
+name|LayoutFormatter
 import|;
 end_import
 

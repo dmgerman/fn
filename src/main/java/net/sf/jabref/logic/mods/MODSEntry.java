@@ -150,7 +150,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|logic
 operator|.
 name|layout
 operator|.
@@ -166,7 +166,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|logic
 operator|.
 name|layout
 operator|.

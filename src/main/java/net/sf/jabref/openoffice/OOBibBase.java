@@ -450,11 +450,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|logic
 operator|.
-name|layout
+name|l10n
 operator|.
-name|Layout
+name|Localization
 import|;
 end_import
 
@@ -468,9 +468,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|layout
 operator|.
-name|Localization
+name|Layout
 import|;
 end_import
 
