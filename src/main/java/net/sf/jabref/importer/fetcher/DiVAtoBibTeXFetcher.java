@@ -329,16 +329,6 @@ operator|new
 name|UnitFormatter
 argument_list|()
 decl_stmt|;
-DECL|field|htmlConverter
-specifier|private
-specifier|final
-name|HTMLConverter
-name|htmlConverter
-init|=
-operator|new
-name|HTMLConverter
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|stopFetching ()
@@ -657,9 +647,11 @@ name|setField
 argument_list|(
 literal|"institution"
 argument_list|,
-name|htmlConverter
+operator|new
+name|UnicodeConverter
+argument_list|()
 operator|.
-name|formatUnicode
+name|format
 argument_list|(
 name|institution
 argument_list|)

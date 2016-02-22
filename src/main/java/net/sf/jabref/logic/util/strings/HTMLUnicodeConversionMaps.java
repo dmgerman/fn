@@ -5005,6 +5005,16 @@ literal|"&Aring;"
 argument_list|)
 expr_stmt|;
 comment|// Overwritten by&angst; which is less supported
+name|LATEX_UNICODE_CONVERSION_MAP
+operator|.
+name|put
+argument_list|(
+literal|"AA"
+argument_list|,
+literal|"Ã"
+argument_list|)
+expr_stmt|;
+comment|// Overwritten by Ãngstrom symbol
 block|}
 DECL|method|cleanLaTeX (String escapedString)
 specifier|private

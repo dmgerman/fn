@@ -48,7 +48,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|HTMLConverter
+name|UnicodeConverter
 import|;
 end_import
 
@@ -132,6 +132,14 @@ block|,
 literal|"abstract"
 block|}
 decl_stmt|;
+specifier|final
+name|UnicodeConverter
+name|unicodeConverter
+init|=
+operator|new
+name|UnicodeConverter
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -163,20 +171,12 @@ argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
-specifier|final
-name|HTMLConverter
-name|htmlConverter
-init|=
-operator|new
-name|HTMLConverter
-argument_list|()
-decl_stmt|;
 name|String
 name|newValue
 init|=
-name|htmlConverter
+name|unicodeConverter
 operator|.
-name|formatUnicode
+name|format
 argument_list|(
 name|oldValue
 argument_list|)

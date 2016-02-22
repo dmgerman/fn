@@ -256,7 +256,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Object
+name|String
 name|result
 init|=
 name|OOPreFormatter
@@ -289,9 +289,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -513,7 +510,7 @@ argument_list|)
 expr_stmt|;
 comment|// System.out.println("... "+combody);
 block|}
-name|Object
+name|String
 name|result
 init|=
 name|OOPreFormatter
@@ -538,9 +535,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -1184,7 +1178,7 @@ operator|=
 name|part
 expr_stmt|;
 comment|// handle common case of general latex command
-name|Object
+name|String
 name|result
 init|=
 name|OOPreFormatter
@@ -1222,9 +1216,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -1241,7 +1232,7 @@ block|{
 comment|// This end brace terminates a command. This can be the case in
 comment|// constructs like {\aa}. The correct behaviour should be to
 comment|// substitute the evaluated command and swallow the brace:
-name|Object
+name|String
 name|result
 init|=
 name|OOPreFormatter
@@ -1275,9 +1266,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -1285,7 +1273,7 @@ block|}
 block|}
 else|else
 block|{
-name|Object
+name|String
 name|result
 init|=
 name|OOPreFormatter
@@ -1318,9 +1306,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
