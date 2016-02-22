@@ -86,7 +86,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationRepository
 import|;
 end_import
 
@@ -245,11 +249,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getLayoutFromText ()
+DECL|method|getLayoutFromText (JournalAbbreviationRepository repository)
 specifier|public
 name|Layout
 name|getLayoutFromText
-parameter_list|()
+parameter_list|(
+name|JournalAbbreviationRepository
+name|repository
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -339,12 +346,7 @@ name|Layout
 argument_list|(
 name|parsedEntries
 argument_list|,
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-operator|.
-name|getRepository
-argument_list|()
+name|repository
 argument_list|)
 return|;
 block|}
