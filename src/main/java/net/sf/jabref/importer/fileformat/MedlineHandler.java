@@ -90,9 +90,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|UnicodeConverter
+name|formatter
+operator|.
+name|bibtexfields
+operator|.
+name|UnicodeToLatexFormatter
 import|;
 end_import
 
@@ -165,11 +169,11 @@ DECL|field|UNICODE_CONVERTER
 specifier|private
 specifier|static
 specifier|final
-name|UnicodeConverter
+name|UnicodeToLatexFormatter
 name|UNICODE_CONVERTER
 init|=
 operator|new
-name|UnicodeConverter
+name|UnicodeToLatexFormatter
 argument_list|()
 decl_stmt|;
 DECL|field|bibitems

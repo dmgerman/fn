@@ -46,9 +46,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|UnicodeConverter
+name|FieldChange
 import|;
 end_import
 
@@ -62,7 +62,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|FieldChange
+name|formatter
+operator|.
+name|bibtexfields
+operator|.
+name|UnicodeToLatexFormatter
 import|;
 end_import
 
@@ -133,11 +137,11 @@ literal|"abstract"
 block|}
 decl_stmt|;
 specifier|final
-name|UnicodeConverter
+name|UnicodeToLatexFormatter
 name|unicodeConverter
 init|=
 operator|new
-name|UnicodeConverter
+name|UnicodeToLatexFormatter
 argument_list|()
 decl_stmt|;
 for|for

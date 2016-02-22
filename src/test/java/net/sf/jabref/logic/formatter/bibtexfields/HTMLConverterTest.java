@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.importer
+DECL|package|net.sf.jabref.logic.formatter.bibtexfields
 package|package
 name|net
 operator|.
@@ -8,7 +8,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
+operator|.
+name|formatter
+operator|.
+name|bibtexfields
 package|;
 end_package
 
@@ -68,6 +72,24 @@ name|JabRefPreferences
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|formatter
+operator|.
+name|bibtexfields
+operator|.
+name|HTMLToLatexFormatter
+import|;
+end_import
+
 begin_class
 DECL|class|HTMLConverterTest
 specifier|public
@@ -75,11 +97,11 @@ class|class
 name|HTMLConverterTest
 block|{
 DECL|field|conv
-name|HTMLConverter
+name|HTMLToLatexFormatter
 name|conv
 init|=
 operator|new
-name|HTMLConverter
+name|HTMLToLatexFormatter
 argument_list|()
 decl_stmt|;
 annotation|@

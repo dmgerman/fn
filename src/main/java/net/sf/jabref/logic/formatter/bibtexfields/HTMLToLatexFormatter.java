@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.importer
+DECL|package|net.sf.jabref.logic.formatter.bibtexfields
 package|package
 name|net
 operator|.
@@ -12,7 +12,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
+operator|.
+name|formatter
+operator|.
+name|bibtexfields
 package|;
 end_package
 
@@ -163,10 +167,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|HTMLConverter
+DECL|class|HTMLToLatexFormatter
 specifier|public
 class|class
-name|HTMLConverter
+name|HTMLToLatexFormatter
 implements|implements
 name|LayoutFormatter
 implements|,
@@ -183,7 +187,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|HTMLConverter
+name|HTMLToLatexFormatter
 operator|.
 name|class
 argument_list|)
@@ -253,9 +257,9 @@ argument_list|(
 literal|"&(\\w+);"
 argument_list|)
 decl_stmt|;
-DECL|method|HTMLConverter ()
+DECL|method|HTMLToLatexFormatter ()
 specifier|public
-name|HTMLConverter
+name|HTMLToLatexFormatter
 parameter_list|()
 block|{
 name|super
