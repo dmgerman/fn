@@ -132,16 +132,6 @@ specifier|final
 name|char
 name|asChar
 decl_stmt|;
-DECL|method|asChar ()
-specifier|public
-name|char
-name|asChar
-parameter_list|()
-block|{
-return|return
-name|asChar
-return|;
-block|}
 DECL|method|FORMAT_MODE (char asChar)
 name|FORMAT_MODE
 parameter_list|(
@@ -155,6 +145,16 @@ name|asChar
 operator|=
 name|asChar
 expr_stmt|;
+block|}
+DECL|method|asChar ()
+specifier|public
+name|char
+name|asChar
+parameter_list|()
+block|{
+return|return
+name|asChar
+return|;
 block|}
 comment|/**          * Convert bstFormat char into ENUM          *          * @throws IllegalArgumentException if char is not 't', 'l', 'u'          */
 DECL|method|getFormatModeForBSTFormat (final char bstFormat)
@@ -255,11 +255,11 @@ operator|.
 name|toCharArray
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|int
@@ -379,16 +379,6 @@ operator|)
 operator|)
 condition|)
 block|{
-assert|assert
-operator|(
-name|c
-index|[
-name|i
-index|]
-operator|==
-literal|'{'
-operator|)
-assert|;
 name|sb
 operator|.
 name|append
@@ -533,12 +523,12 @@ argument_list|()
 return|;
 block|}
 comment|/**      * We're dealing with a special character (usually either an undotted `\i'      * or `\j', or an accent like one in Table~3.1 of the \LaTeX\ manual, or a      * foreign character like one in Table~3.2) if the first character after the      * |left_brace| is a |backslash|; the special character ends with the      * matching |right_brace|. How we handle what's in between depends on the      * special character. In general, this code will do reasonably well if there      * is other stuff, too, between braces, but it doesn't try to do anything      * special with |colon|s.      *      * @param c      * @param i the current position. It points to the opening brace      * @param format      * @return      */
-DECL|method|convertSpecialChar (StringBuffer sb, char[] c, int i, FORMAT_MODE format)
+DECL|method|convertSpecialChar (StringBuilder sb, char[] c, int start, FORMAT_MODE format)
 specifier|private
 name|int
 name|convertSpecialChar
 parameter_list|(
-name|StringBuffer
+name|StringBuilder
 name|sb
 parameter_list|,
 name|char
@@ -546,22 +536,17 @@ index|[]
 name|c
 parameter_list|,
 name|int
-name|i
+name|start
 parameter_list|,
 name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
-assert|assert
-operator|(
-name|c
-index|[
+name|int
 name|i
-index|]
-operator|==
-literal|'{'
-operator|)
-assert|;
+init|=
+name|start
+decl_stmt|;
 name|sb
 operator|.
 name|append
@@ -723,8 +708,8 @@ return|return
 name|i
 return|;
 block|}
-comment|/**      * Convert the given string according to the format character (title, lower,      * up) and append the result to the stringBuffer, return the updated      * position.      *      * @param c      * @param pos      * @param s      * @param sb      * @param format      * @return the new position      */
-DECL|method|convertAccented (char[] c, int pos, String s, StringBuffer sb, FORMAT_MODE format)
+comment|/**      * Convert the given string according to the format character (title, lower,      * up) and append the result to the stringBuffer, return the updated      * position.      *      * @param c      * @param start      * @param s      * @param sb      * @param format      * @return the new position      */
+DECL|method|convertAccented (char[] c, int start, String s, StringBuilder sb, FORMAT_MODE format)
 specifier|private
 name|int
 name|convertAccented
@@ -734,18 +719,23 @@ index|[]
 name|c
 parameter_list|,
 name|int
-name|pos
+name|start
 parameter_list|,
 name|String
 name|s
 parameter_list|,
-name|StringBuffer
+name|StringBuilder
 name|sb
 parameter_list|,
 name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
+name|int
+name|pos
+init|=
+name|start
+decl_stmt|;
 name|pos
 operator|+=
 name|s
@@ -907,7 +897,7 @@ return|return
 name|pos
 return|;
 block|}
-DECL|method|convertNonControl (char[] c, int pos, StringBuffer sb, FORMAT_MODE format)
+DECL|method|convertNonControl (char[] c, int start, StringBuilder sb, FORMAT_MODE format)
 specifier|private
 name|int
 name|convertNonControl
@@ -917,15 +907,20 @@ index|[]
 name|c
 parameter_list|,
 name|int
-name|pos
+name|start
 parameter_list|,
-name|StringBuffer
+name|StringBuilder
 name|sb
 parameter_list|,
 name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
+name|int
+name|pos
+init|=
+name|start
+decl_stmt|;
 switch|switch
 condition|(
 name|format
@@ -994,7 +989,7 @@ return|return
 name|pos
 return|;
 block|}
-DECL|method|convertCharIfBraceLevelIsZero (char[] c, int i, StringBuffer sb, FORMAT_MODE format)
+DECL|method|convertCharIfBraceLevelIsZero (char[] c, int start, StringBuilder sb, FORMAT_MODE format)
 specifier|private
 name|int
 name|convertCharIfBraceLevelIsZero
@@ -1004,15 +999,20 @@ index|[]
 name|c
 parameter_list|,
 name|int
-name|i
+name|start
 parameter_list|,
-name|StringBuffer
+name|StringBuilder
 name|sb
 parameter_list|,
 name|FORMAT_MODE
 name|format
 parameter_list|)
 block|{
+name|int
+name|i
+init|=
+name|start
+decl_stmt|;
 switch|switch
 condition|(
 name|format
@@ -1023,25 +1023,13 @@ name|TITLE_LOWERS
 case|:
 if|if
 condition|(
+operator|(
 name|i
 operator|==
 literal|0
-condition|)
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-name|c
-index|[
-name|i
-index|]
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
+operator|)
+operator|||
+operator|(
 name|prevColon
 operator|&&
 name|Character
@@ -1055,6 +1043,7 @@ operator|-
 literal|1
 index|]
 argument_list|)
+operator|)
 condition|)
 block|{
 name|sb

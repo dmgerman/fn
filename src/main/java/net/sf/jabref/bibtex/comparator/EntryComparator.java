@@ -241,8 +241,6 @@ parameter_list|,
 name|BibEntry
 name|e2
 parameter_list|)
-throws|throws
-name|ClassCastException
 block|{
 if|if
 condition|(
@@ -389,7 +387,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
-comment|//ImportFormatReader.fixAuthor_lastNameFirst((String)f1);
 block|}
 if|if
 condition|(
@@ -413,7 +410,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
-comment|//ImportFormatReader.fixAuthor_lastNameFirst((String)f2);
 block|}
 block|}
 elseif|else

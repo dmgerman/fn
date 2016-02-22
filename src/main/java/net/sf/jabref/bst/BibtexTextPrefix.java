@@ -21,7 +21,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * The |built_in| function {\.{text.prefix\$}} pops the top two literals (the  * integer literal |pop_lit1| and a string literal, in that order). It pushes  * the substring of the (at most) |pop_lit1| consecutive text characters  * starting from the beginning of the string. This function is similar to  * {\.{substring\$}}, but this one considers an accented character (or more  * precisely, a ``special character''$\!$, even if it's missing its matching  * |right_brace|) to be a single text character (rather than however many  * |ASCII_code| characters it actually comprises), and this function doesn't  * consider braces to be text characters; furthermore, this function appends any  * needed matching |right_brace|s. If any of the types is incorrect, it  * complains and pushes the null string.  *   */
+comment|/**  * The |built_in| function {\.{text.prefix\$}} pops the top two literals (the  * integer literal |pop_lit1| and a string literal, in that order). It pushes  * the substring of the (at most) |pop_lit1| consecutive text characters  * starting from the beginning of the string. This function is similar to  * {\.{substring\$}}, but this one considers an accented character (or more  * precisely, a ``special character''$\!$, even if it's missing its matching  * |right_brace|) to be a single text character (rather than however many  * |ASCII_code| characters it actually comprises), and this function doesn't  * consider braces to be text characters; furthermore, this function appends any  * needed matching |right_brace|s. If any of the types is incorrect, it  * complains and pushes the null string.  *  */
 end_comment
 
 begin_class
@@ -30,15 +30,15 @@ specifier|public
 class|class
 name|BibtexTextPrefix
 block|{
-comment|/**      *       * @param numOfChars      * @param toPrefix      * @param warn may-be-null      * @return      */
-DECL|method|textPrefix (int numOfChars, String toPrefix, Warn warn)
+comment|/**      *      * @param numOfChars      * @param toPrefix      * @param warn may-be-null      * @return      */
+DECL|method|textPrefix (int inNumOfChars, String toPrefix, Warn warn)
 specifier|public
 specifier|static
 name|String
 name|textPrefix
 parameter_list|(
 name|int
-name|numOfChars
+name|inNumOfChars
 parameter_list|,
 name|String
 name|toPrefix
@@ -47,11 +47,16 @@ name|Warn
 name|warn
 parameter_list|)
 block|{
-name|StringBuffer
+name|int
+name|numOfChars
+init|=
+name|inNumOfChars
+decl_stmt|;
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|char

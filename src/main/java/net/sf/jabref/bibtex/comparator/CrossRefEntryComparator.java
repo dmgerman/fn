@@ -81,8 +81,6 @@ parameter_list|,
 name|BibEntry
 name|e2
 parameter_list|)
-throws|throws
-name|ClassCastException
 block|{
 name|Boolean
 name|b1
