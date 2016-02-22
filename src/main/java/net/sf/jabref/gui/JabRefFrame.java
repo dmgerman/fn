@@ -166,7 +166,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|databaseProperties
+name|dbproperties
 operator|.
 name|DatabasePropertiesDialog
 import|;
