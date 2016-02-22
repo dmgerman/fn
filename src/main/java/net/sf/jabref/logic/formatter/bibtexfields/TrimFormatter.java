@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.logic.formatter
+DECL|package|net.sf.jabref.logic.formatter.bibtexfields
 package|package
 name|net
 operator|.
@@ -11,8 +11,42 @@ operator|.
 name|logic
 operator|.
 name|formatter
+operator|.
+name|bibtexfields
 package|;
 end_package
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|formatter
+operator|.
+name|Formatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|MonthUtil
+import|;
+end_import
 
 begin_import
 import|import
@@ -24,15 +58,11 @@ name|Objects
 import|;
 end_import
 
-begin_comment
-comment|/**  * It may seem useless, but is needed as a fallback option  */
-end_comment
-
 begin_class
-DECL|class|IdentityFormatter
+DECL|class|TrimFormatter
 specifier|public
 class|class
-name|IdentityFormatter
+name|TrimFormatter
 implements|implements
 name|Formatter
 block|{
@@ -45,7 +75,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"IdentityFormatter"
+literal|"Trim whitespace"
 return|;
 block|}
 annotation|@
@@ -57,8 +87,7 @@ name|getKey
 parameter_list|()
 block|{
 return|return
-name|getName
-argument_list|()
+literal|"TrimFormatter"
 return|;
 block|}
 annotation|@
@@ -81,6 +110,9 @@ argument_list|)
 expr_stmt|;
 return|return
 name|value
+operator|.
+name|trim
+argument_list|()
 return|;
 block|}
 block|}
