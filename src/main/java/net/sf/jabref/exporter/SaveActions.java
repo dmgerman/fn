@@ -440,13 +440,18 @@ init|=
 literal|0
 decl_stmt|;
 comment|// first remove all newlines for easier parsing
+name|String
+name|remainingString
+init|=
 name|formatterString
+decl_stmt|;
+name|remainingString
 operator|=
 name|StringUtil
 operator|.
 name|unifyLineBreaksToConfiguredLineBreaks
 argument_list|(
-name|formatterString
+name|remainingString
 argument_list|)
 operator|.
 name|replaceAll
@@ -458,11 +463,6 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-name|String
-name|remainingString
-init|=
-name|formatterString
-decl_stmt|;
 try|try
 block|{
 while|while
@@ -483,7 +483,7 @@ name|remainingString
 operator|.
 name|indexOf
 argument_list|(
-literal|"["
+literal|'['
 argument_list|)
 decl_stmt|;
 name|String
@@ -505,7 +505,7 @@ name|remainingString
 operator|.
 name|indexOf
 argument_list|(
-literal|"]"
+literal|']'
 argument_list|)
 decl_stmt|;
 name|startIndex
@@ -522,7 +522,7 @@ name|remainingString
 operator|.
 name|indexOf
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 decl_stmt|;
 do|do
@@ -550,7 +550,7 @@ name|remainingString
 operator|.
 name|indexOf
 argument_list|(
-literal|"]"
+literal|']'
 argument_list|)
 expr_stmt|;
 name|doBreak
@@ -619,7 +619,7 @@ name|remainingString
 operator|.
 name|indexOf
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 name|currentIndex
