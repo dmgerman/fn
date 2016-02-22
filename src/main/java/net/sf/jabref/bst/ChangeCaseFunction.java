@@ -220,7 +220,6 @@ name|format
 init|=
 operator|(
 operator|(
-operator|(
 name|String
 operator|)
 name|o1
@@ -233,7 +232,6 @@ name|charAt
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 decl_stmt|;
 name|String
 name|s

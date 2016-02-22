@@ -2360,7 +2360,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
 name|ex
 parameter_list|)
 block|{
@@ -2510,7 +2510,7 @@ argument_list|)
 condition|)
 block|{
 comment|// Line starts with "Encoding: ", so the rest of the line should contain the name of the encoding
-comment|// Except if there is already a @ symbol signalising the starting of a BibEntry
+comment|// Except if there is already a @ symbol signaling the starting of a BibEntry
 name|Integer
 name|atSymbolIndex
 init|=
@@ -2518,7 +2518,7 @@ name|line
 operator|.
 name|indexOf
 argument_list|(
-literal|"@"
+literal|'@'
 argument_list|)
 decl_stmt|;
 name|String

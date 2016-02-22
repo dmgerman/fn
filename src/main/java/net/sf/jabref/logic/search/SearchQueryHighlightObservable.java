@@ -263,6 +263,23 @@ name|update
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|reset ()
+specifier|public
+name|void
+name|reset
+parameter_list|()
+block|{
+name|pattern
+operator|=
+name|Optional
+operator|.
+name|empty
+argument_list|()
+expr_stmt|;
+name|update
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|update ()
 specifier|private
 name|void

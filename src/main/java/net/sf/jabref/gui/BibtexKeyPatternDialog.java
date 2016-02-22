@@ -52,7 +52,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|LabelPatternPanel
 import|;
@@ -84,7 +84,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|AbstractLabelPattern
 import|;

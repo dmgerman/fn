@@ -37,10 +37,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibtexNameLayoutFormatterTest
+DECL|class|NameFormatterTest
 specifier|public
 class|class
-name|BibtexNameLayoutFormatterTest
+name|NameFormatterTest
 block|{
 annotation|@
 name|Test

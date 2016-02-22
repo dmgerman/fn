@@ -192,7 +192,7 @@ operator|.
 name|MARKING_WITH_NUMBER_PATTERN
 argument_list|)
 decl_stmt|;
-comment|/**      * @param increment whether the given increment should be added to the current one. Currently never used in JabRef      */
+comment|/**      * @param increment whether the given increment should be added to the current one. Currently never used in JabRef. Could be used to increase marking color ("Mark in specific color").      */
 DECL|method|markEntry (BibEntry be, int markIncrement, boolean increment, NamedCompound ce)
 specifier|public
 specifier|static

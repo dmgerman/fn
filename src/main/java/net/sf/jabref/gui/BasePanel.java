@@ -392,7 +392,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|SearchFixDuplicateLabels
 import|;
@@ -708,7 +708,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|LabelPatternUtil
 import|;
@@ -2290,15 +2290,10 @@ name|BibEntry
 argument_list|>
 name|bes
 operator|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
 name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
-argument_list|)
 block|;
 comment|//int row0 = mainTable.getSelectedRow();
 if|if
@@ -2452,15 +2447,10 @@ name|BibEntry
 argument_list|>
 name|bes
 operator|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|(
 name|mainTable
 operator|.
 name|getSelectedEntries
 argument_list|()
-argument_list|)
 block|;
 if|if
 condition|(
@@ -11732,8 +11722,6 @@ DECL|field|isActive
 specifier|private
 name|boolean
 name|isActive
-init|=
-literal|false
 decl_stmt|;
 DECL|method|StartStopListAction (FilterList<E> list, Matcher<E> active, Matcher<E> inactive)
 specifier|private

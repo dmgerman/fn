@@ -137,27 +137,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testHTMLNull ()
-specifier|public
-name|void
-name|testHTMLNull
-parameter_list|()
-block|{
-name|assertEquals
-argument_list|(
-literal|null
-argument_list|,
-name|conv
-operator|.
-name|format
-argument_list|(
-literal|null
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|testHTMLEmpty ()
 specifier|public
 name|void
@@ -401,22 +380,24 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|expected
+operator|=
+name|NullPointerException
+operator|.
+name|class
+argument_list|)
 DECL|method|testUnicodeNull ()
 specifier|public
 name|void
 name|testUnicodeNull
 parameter_list|()
 block|{
-name|assertEquals
-argument_list|(
-literal|null
-argument_list|,
 name|conv
 operator|.
 name|formatUnicode
 argument_list|(
 literal|null
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

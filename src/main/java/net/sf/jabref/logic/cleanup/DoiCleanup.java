@@ -108,6 +108,8 @@ name|CleanupJob
 block|{
 comment|/**      * Fields to check for DOIs.      */
 DECL|field|fields
+specifier|private
+specifier|final
 name|String
 index|[]
 name|fields
@@ -392,7 +394,7 @@ return|return
 name|changes
 return|;
 block|}
-DECL|method|removeFieldValue (BibEntry entry, String field, ArrayList<FieldChange> changes)
+DECL|method|removeFieldValue (BibEntry entry, String field, List<FieldChange> changes)
 specifier|private
 name|void
 name|removeFieldValue
@@ -403,7 +405,7 @@ parameter_list|,
 name|String
 name|field
 parameter_list|,
-name|ArrayList
+name|List
 argument_list|<
 name|FieldChange
 argument_list|>

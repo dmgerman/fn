@@ -206,7 +206,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|LabelPatternUtil
 import|;
@@ -2962,12 +2962,12 @@ name|loaded
 argument_list|)
 return|;
 block|}
-DECL|method|automaticallySetFileLinks (Vector<ParserResult> loaded)
+DECL|method|automaticallySetFileLinks (List<ParserResult> loaded)
 specifier|private
 name|void
 name|automaticallySetFileLinks
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|ParserResult
 argument_list|>
@@ -3032,12 +3032,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|regenerateBibtexKeys (Vector<ParserResult> loaded)
+DECL|method|regenerateBibtexKeys (List<ParserResult> loaded)
 specifier|private
 name|void
 name|regenerateBibtexKeys
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|ParserResult
 argument_list|>
@@ -3839,12 +3839,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|openWindow (Vector<ParserResult> loaded)
+DECL|method|openWindow (List<ParserResult> loaded)
 specifier|private
 name|void
 name|openWindow
 parameter_list|(
-name|Vector
+name|List
 argument_list|<
 name|ParserResult
 argument_list|>
@@ -4024,7 +4024,7 @@ name|pr
 init|=
 name|loaded
 operator|.
-name|elementAt
+name|get
 argument_list|(
 name|j
 argument_list|)
@@ -4601,7 +4601,7 @@ name|showParserResultWarningDialog
 argument_list|(
 name|loaded
 operator|.
-name|elementAt
+name|get
 argument_list|(
 name|i
 argument_list|)
@@ -4659,7 +4659,7 @@ name|pr
 init|=
 name|loaded
 operator|.
-name|elementAt
+name|get
 argument_list|(
 name|i
 argument_list|)

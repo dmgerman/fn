@@ -237,13 +237,6 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-name|expectCorrect
-argument_list|(
-literal|null
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
 block|}
 annotation|@
 name|Test

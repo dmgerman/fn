@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.                   2003 
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.logic.labelPattern
+DECL|package|net.sf.jabref.logic.labelpattern
 package|package
 name|net
 operator|.
@@ -14,7 +14,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelPattern
+name|labelpattern
 package|;
 end_package
 
