@@ -1227,7 +1227,13 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
+decl||
+name|ClassNotFoundException
+decl||
+name|InstantiationException
+decl||
+name|IllegalAccessException
 name|exc
 parameter_list|)
 block|{
