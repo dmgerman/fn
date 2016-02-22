@@ -1253,6 +1253,13 @@ name|prefs
 argument_list|)
 expr_stmt|;
 block|}
+name|panel
+operator|.
+name|registerUndoableChanges
+argument_list|(
+name|session
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
