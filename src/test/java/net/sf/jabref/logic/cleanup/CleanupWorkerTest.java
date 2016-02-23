@@ -160,7 +160,7 @@ name|mockito
 operator|.
 name|Mockito
 operator|.
-name|mock
+name|*
 import|;
 end_import
 

@@ -220,17 +220,26 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+DECL|field|repository
+specifier|private
+specifier|final
+name|JournalAbbreviationRepository
+name|repository
+decl_stmt|;
 DECL|field|endOfFile
 specifier|private
 name|boolean
 name|endOfFile
 decl_stmt|;
-DECL|method|LayoutHelper (Reader in)
+DECL|method|LayoutHelper (Reader in, JournalAbbreviationRepository repository)
 specifier|public
 name|LayoutHelper
 parameter_list|(
 name|Reader
 name|in
+parameter_list|,
+name|JournalAbbreviationRepository
+name|repository
 parameter_list|)
 block|{
 name|this
@@ -248,15 +257,23 @@ name|in
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|repository
+operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|repository
+argument_list|)
+expr_stmt|;
 block|}
-DECL|method|getLayoutFromText (JournalAbbreviationRepository repository)
+DECL|method|getLayoutFromText ()
 specifier|public
 name|Layout
 name|getLayoutFromText
-parameter_list|(
-name|JournalAbbreviationRepository
-name|repository
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 block|{
