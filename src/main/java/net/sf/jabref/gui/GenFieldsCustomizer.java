@@ -1157,7 +1157,6 @@ operator|.
 name|updateEntryEditorTabList
 argument_list|()
 expr_stmt|;
-comment|/*         String delimStr = fieldsArea.getText().replaceAll("\\s+","")           .replaceAll("\\n+","").trim();         parent.prefs.putStringArray(JabRefPreferences.GENERAL_FIELDS, Util.split(delimStr, ";"));         */
 name|parentFrame
 operator|.
 name|removeCachedEntryEditors
@@ -1501,18 +1500,18 @@ specifier|final
 name|GenFieldsCustomizer
 name|adaptee
 decl_stmt|;
-DECL|method|GenFieldsCustomizerRevertActionAdapter (GenFieldsCustomizer adaptee)
+DECL|method|GenFieldsCustomizerRevertActionAdapter (GenFieldsCustomizer adapter)
 name|GenFieldsCustomizerRevertActionAdapter
 parameter_list|(
 name|GenFieldsCustomizer
-name|adaptee
+name|adapter
 parameter_list|)
 block|{
 name|this
 operator|.
 name|adaptee
 operator|=
-name|adaptee
+name|adapter
 expr_stmt|;
 block|}
 annotation|@

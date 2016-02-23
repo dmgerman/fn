@@ -2029,6 +2029,16 @@ argument_list|(
 literal|"bibtexkey"
 argument_list|)
 expr_stmt|;
+name|otherFields
+operator|.
+name|removeAll
+argument_list|(
+name|prefs
+operator|.
+name|getCustomTabFieldNames
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
