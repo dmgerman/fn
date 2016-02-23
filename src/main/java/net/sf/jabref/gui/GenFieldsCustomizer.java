@@ -42,9 +42,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|awt
 operator|.
-name|Iterator
+name|event
+operator|.
+name|ActionListener
 import|;
 end_import
 
@@ -236,12 +238,9 @@ argument_list|()
 decl_stmt|;
 DECL|field|helpBut
 specifier|private
+specifier|final
 name|JButton
 name|helpBut
-init|=
-operator|new
-name|JButton
-argument_list|()
 decl_stmt|;
 DECL|field|jLabel1
 specifier|private
@@ -323,11 +322,11 @@ operator|new
 name|GridBagLayout
 argument_list|()
 decl_stmt|;
-DECL|field|parent
+DECL|field|parentFrame
 specifier|private
 specifier|final
 name|JabRefFrame
-name|parent
+name|parentFrame
 decl_stmt|;
 DECL|field|revert
 specifier|private
@@ -362,7 +361,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-name|parent
+name|parentFrame
 operator|=
 name|frame
 expr_stmt|;
@@ -379,8 +378,6 @@ operator|.
 name|getHelpButton
 argument_list|()
 expr_stmt|;
-try|try
-block|{
 name|jbInit
 argument_list|()
 expr_stmt|;
@@ -395,19 +392,6 @@ literal|300
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 DECL|method|jbInit ()
 specifier|private
@@ -432,7 +416,7 @@ operator|.
 name|addActionListener
 argument_list|(
 operator|new
-name|GenFieldsCustomizer_ok_actionAdapter
+name|GenFieldsCustomizerOKActionAdapter
 argument_list|(
 name|this
 argument_list|)
@@ -455,13 +439,12 @@ operator|.
 name|addActionListener
 argument_list|(
 operator|new
-name|GenFieldsCustomizer_cancel_actionAdapter
+name|GenFieldsCustomizerCancelActionAdapter
 argument_list|(
 name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//buttons.setBackground(GUIGlobals.lightGray);
 name|jLabel1
 operator|.
 name|setText
@@ -512,11 +495,9 @@ literal|"General fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//    fieldsArea.setText(parent.prefs.get(JabRefPreferences.GENERAL_FIELDS));
 name|setFieldsText
 argument_list|()
 expr_stmt|;
-comment|//jPanel3.setBackground(GUIGlobals.lightGray);
 name|revert
 operator|.
 name|setText
@@ -534,7 +515,7 @@ operator|.
 name|addActionListener
 argument_list|(
 operator|new
-name|GenFieldsCustomizer_revert_actionAdapter
+name|GenFieldsCustomizerRevertActionAdapter
 argument_list|(
 name|this
 argument_list|)
@@ -905,19 +886,15 @@ block|{
 name|dispose
 argument_list|()
 expr_stmt|;
-comment|//diag.requestFocus();
 block|}
 block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ok_actionPerformed (ActionEvent e)
+DECL|method|okActionPerformed ()
 name|void
-name|ok_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+name|okActionPerformed
+parameter_list|()
 block|{
 name|String
 index|[]
@@ -1186,7 +1163,7 @@ name|updateEntryEditorTabList
 argument_list|()
 expr_stmt|;
 comment|/*         String delimStr = fieldsArea.getText().replaceAll("\\s+","")           .replaceAll("\\n+","").trim();         parent.prefs.putStringArray(JabRefPreferences.GENERAL_FIELDS, Util.split(delimStr, ";"));         */
-name|parent
+name|parentFrame
 operator|.
 name|removeCachedEntryEditors
 argument_list|()
@@ -1194,20 +1171,15 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
-comment|//diag.requestFocus();
 block|}
-DECL|method|cancel_actionPerformed (ActionEvent e)
+DECL|method|cancelActionPerformed ()
 name|void
-name|cancel_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+name|cancelActionPerformed
+parameter_list|()
 block|{
 name|dispose
 argument_list|()
 expr_stmt|;
-comment|//diag.requestFocus();
 block|}
 DECL|method|setFieldsText ()
 specifier|private
@@ -1215,11 +1187,11 @@ name|void
 name|setFieldsText
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|EntryEditorTabList
@@ -1269,63 +1241,25 @@ argument_list|(
 literal|':'
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|Iterator
-argument_list|<
+name|sb
+operator|.
+name|append
+argument_list|(
 name|String
-argument_list|>
-name|j
-init|=
+operator|.
+name|join
+argument_list|(
+literal|";"
+argument_list|,
 name|tabList
 operator|.
 name|getTabFields
 argument_list|(
 name|i
 argument_list|)
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|j
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-name|String
-name|field
-init|=
-name|j
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|field
+argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|j
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|';'
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 name|sb
 operator|.
 name|append
@@ -1345,19 +1279,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|revert_actionPerformed (ActionEvent e)
+DECL|method|revertActionPerformed ()
 name|void
-name|revert_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+name|revertActionPerformed
+parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|String
@@ -1469,16 +1400,10 @@ block|}
 end_class
 
 begin_class
-DECL|class|GenFieldsCustomizer_ok_actionAdapter
+DECL|class|GenFieldsCustomizerOKActionAdapter
 class|class
-name|GenFieldsCustomizer_ok_actionAdapter
+name|GenFieldsCustomizerOKActionAdapter
 implements|implements
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
@@ -1487,8 +1412,8 @@ specifier|final
 name|GenFieldsCustomizer
 name|adaptee
 decl_stmt|;
-DECL|method|GenFieldsCustomizer_ok_actionAdapter (GenFieldsCustomizer adaptee)
-name|GenFieldsCustomizer_ok_actionAdapter
+DECL|method|GenFieldsCustomizerOKActionAdapter (GenFieldsCustomizer adaptee)
+name|GenFieldsCustomizerOKActionAdapter
 parameter_list|(
 name|GenFieldsCustomizer
 name|adaptee
@@ -1514,26 +1439,18 @@ parameter_list|)
 block|{
 name|adaptee
 operator|.
-name|ok_actionPerformed
-argument_list|(
-name|e
-argument_list|)
+name|okActionPerformed
+argument_list|()
 expr_stmt|;
 block|}
 block|}
 end_class
 
 begin_class
-DECL|class|GenFieldsCustomizer_cancel_actionAdapter
+DECL|class|GenFieldsCustomizerCancelActionAdapter
 class|class
-name|GenFieldsCustomizer_cancel_actionAdapter
+name|GenFieldsCustomizerCancelActionAdapter
 implements|implements
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
@@ -1542,8 +1459,8 @@ specifier|final
 name|GenFieldsCustomizer
 name|adaptee
 decl_stmt|;
-DECL|method|GenFieldsCustomizer_cancel_actionAdapter (GenFieldsCustomizer adaptee)
-name|GenFieldsCustomizer_cancel_actionAdapter
+DECL|method|GenFieldsCustomizerCancelActionAdapter (GenFieldsCustomizer adaptee)
+name|GenFieldsCustomizerCancelActionAdapter
 parameter_list|(
 name|GenFieldsCustomizer
 name|adaptee
@@ -1569,26 +1486,18 @@ parameter_list|)
 block|{
 name|adaptee
 operator|.
-name|cancel_actionPerformed
-argument_list|(
-name|e
-argument_list|)
+name|cancelActionPerformed
+argument_list|()
 expr_stmt|;
 block|}
 block|}
 end_class
 
 begin_class
-DECL|class|GenFieldsCustomizer_revert_actionAdapter
+DECL|class|GenFieldsCustomizerRevertActionAdapter
 class|class
-name|GenFieldsCustomizer_revert_actionAdapter
+name|GenFieldsCustomizerRevertActionAdapter
 implements|implements
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
@@ -1597,8 +1506,8 @@ specifier|final
 name|GenFieldsCustomizer
 name|adaptee
 decl_stmt|;
-DECL|method|GenFieldsCustomizer_revert_actionAdapter (GenFieldsCustomizer adaptee)
-name|GenFieldsCustomizer_revert_actionAdapter
+DECL|method|GenFieldsCustomizerRevertActionAdapter (GenFieldsCustomizer adaptee)
+name|GenFieldsCustomizerRevertActionAdapter
 parameter_list|(
 name|GenFieldsCustomizer
 name|adaptee
@@ -1624,10 +1533,8 @@ parameter_list|)
 block|{
 name|adaptee
 operator|.
-name|revert_actionPerformed
-argument_list|(
-name|e
-argument_list|)
+name|revertActionPerformed
+argument_list|()
 expr_stmt|;
 block|}
 block|}

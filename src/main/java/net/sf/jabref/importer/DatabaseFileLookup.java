@@ -347,9 +347,6 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|File
-name|expandedFilename
-init|=
 name|FileUtil
 operator|.
 name|expandFilename
@@ -358,12 +355,12 @@ name|link
 argument_list|,
 name|possibleFilePaths
 argument_list|)
-decl_stmt|;
-name|fileLinks
 operator|.
-name|add
+name|ifPresent
 argument_list|(
-name|expandedFilename
+name|fileLinks
+operator|::
+name|add
 argument_list|)
 expr_stmt|;
 block|}

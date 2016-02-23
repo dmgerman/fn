@@ -34,24 +34,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|exporter
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|RemoveBrackets
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -95,10 +77,10 @@ name|formatter
 decl_stmt|;
 annotation|@
 name|Before
-DECL|method|setup ()
+DECL|method|setUp ()
 specifier|public
 name|void
-name|setup
+name|setUp
 parameter_list|()
 block|{
 name|formatter

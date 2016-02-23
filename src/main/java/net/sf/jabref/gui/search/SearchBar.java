@@ -156,6 +156,22 @@ name|jabref
 operator|.
 name|gui
 operator|.
+name|util
+operator|.
+name|JTextFieldWithUnfocusedText
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
 name|worker
 operator|.
 name|AbstractWorker
@@ -207,22 +223,6 @@ operator|.
 name|search
 operator|.
 name|SearchQuery
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|SearchQueryLocalizer
 import|;
 end_import
 
@@ -490,7 +490,7 @@ decl_stmt|;
 DECL|field|searchField
 specifier|private
 specifier|final
-name|JSearchTextField
+name|JTextFieldWithUnfocusedText
 name|searchField
 decl_stmt|;
 DECL|field|searchMode
@@ -539,7 +539,7 @@ specifier|final
 name|JLabel
 name|searchIcon
 decl_stmt|;
-comment|/**      * Initializes the search bar.      *      * @param frame the main window      */
+comment|/**      * Initializes the search bar.      *      * @param basePanel the base panel      */
 DECL|method|SearchBar (BasePanel basePanel)
 specifier|public
 name|SearchBar
@@ -737,15 +737,13 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|SearchQueryLocalizer
-operator|.
-name|localize
-argument_list|(
 name|this
 operator|.
 name|getSearchQuery
 argument_list|()
-argument_list|)
+operator|.
+name|localize
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1298,20 +1296,15 @@ block|}
 comment|/**      * Initializes the search text field      */
 DECL|method|initSearchField ()
 specifier|private
-name|JSearchTextField
+name|JTextFieldWithUnfocusedText
 name|initSearchField
 parameter_list|()
 block|{
-name|JSearchTextField
+name|JTextFieldWithUnfocusedText
 name|searchField
 init|=
 operator|new
-name|JSearchTextField
-argument_list|()
-decl_stmt|;
-name|searchField
-operator|.
-name|setTextWhenNotFocused
+name|JTextFieldWithUnfocusedText
 argument_list|(
 name|Localization
 operator|.
@@ -1322,7 +1315,7 @@ argument_list|)
 operator|+
 literal|"..."
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|searchField
 operator|.
 name|setColumns
@@ -1568,10 +1561,8 @@ argument_list|)
 expr_stmt|;
 name|searchQueryHighlightObservable
 operator|.
-name|fireSearchlistenerEvent
-argument_list|(
-literal|null
-argument_list|)
+name|reset
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -1675,7 +1666,7 @@ condition|(
 operator|!
 name|searchQuery
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 condition|)
 block|{
@@ -1729,10 +1720,8 @@ argument_list|)
 expr_stmt|;
 name|searchQueryHighlightObservable
 operator|.
-name|fireSearchlistenerEvent
-argument_list|(
-literal|null
-argument_list|)
+name|reset
+argument_list|()
 expr_stmt|;
 name|globalSearch
 operator|.
@@ -1850,7 +1839,8 @@ block|{
 return|return
 name|query
 operator|.
-name|query
+name|getQuery
+argument_list|()
 operator|.
 name|equals
 argument_list|(
@@ -1865,7 +1855,8 @@ operator|&&
 operator|(
 name|query
 operator|.
-name|regularExpression
+name|isRegularExpression
+argument_list|()
 operator|==
 name|regularExp
 operator|.
@@ -1876,7 +1867,8 @@ operator|&&
 operator|(
 name|query
 operator|.
-name|caseSensitive
+name|isCaseSensitive
+argument_list|()
 operator|==
 name|caseSensitive
 operator|.

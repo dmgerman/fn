@@ -1434,8 +1434,6 @@ block|}
 block|}
 else|else
 block|{
-comment|//System.out.println("ENTRY-BLOCK: " +
-comment|//layoutEntries[i].doLayout(bibtex));
 comment|/*                              * if fieldText is not null and the bibtexentry is marked                              * as a searchhit, try to highlight the searched words                              *                             */
 if|if
 condition|(
@@ -1584,7 +1582,6 @@ name|field
 expr_stmt|;
 block|}
 block|}
-comment|//System.out.println("OPTION: "+option);
 if|if
 condition|(
 name|option
@@ -1944,11 +1941,11 @@ return|;
 block|}
 if|if
 condition|(
-name|className
+literal|"JournalAbbreviator"
 operator|.
 name|equals
 argument_list|(
-literal|"JournalAbbreviator"
+name|className
 argument_list|)
 condition|)
 block|{

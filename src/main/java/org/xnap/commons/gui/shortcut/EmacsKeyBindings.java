@@ -2406,7 +2406,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * This action sets a beginning mark for a selection.      */
+comment|/**      * This action matchers a beginning mark for a selection.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(

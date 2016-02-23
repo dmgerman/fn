@@ -172,16 +172,11 @@ comment|// are kept
 name|m_subtreeBackup
 operator|=
 name|editType
-operator|!=
+operator|==
 name|UndoableAddOrRemoveGroup
 operator|.
 name|REMOVE_NODE_KEEP_CHILDREN
 condition|?
-name|editedNode
-operator|.
-name|deepCopy
-argument_list|()
-else|:
 operator|new
 name|GroupTreeNode
 argument_list|(
@@ -193,6 +188,11 @@ operator|.
 name|deepCopy
 argument_list|()
 argument_list|)
+else|:
+name|editedNode
+operator|.
+name|deepCopy
+argument_list|()
 expr_stmt|;
 comment|// remember path to edited node. this cannot be stored as a reference,
 comment|// because the reference itself might change. the method below is more

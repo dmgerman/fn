@@ -18,26 +18,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|rules
-operator|.
-name|util
-operator|.
-name|SentenceAnalyzer
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit

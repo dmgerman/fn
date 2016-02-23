@@ -128,16 +128,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Before
 import|;
 end_import
@@ -220,7 +210,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
+name|*
 import|;
 end_import
 
@@ -522,8 +512,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -545,8 +533,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -557,8 +543,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -583,8 +567,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -595,8 +577,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Foo Bar"
@@ -722,8 +702,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -745,8 +723,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -757,8 +733,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -783,8 +757,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -795,8 +767,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Foo Bar"
@@ -926,8 +896,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -949,8 +917,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -961,8 +927,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -997,8 +961,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -1009,8 +971,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BlaBla"
@@ -1191,8 +1151,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1214,8 +1172,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1226,8 +1182,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|6
@@ -1262,8 +1216,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -1274,8 +1226,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BlaBla"
@@ -1452,8 +1402,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1475,8 +1423,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1487,8 +1433,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -1513,8 +1457,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -1525,8 +1467,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Foo Bar"
@@ -1706,8 +1646,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1729,8 +1667,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1741,8 +1677,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -1767,8 +1701,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -1779,8 +1711,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Foo Bar"
@@ -1903,8 +1833,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1926,8 +1854,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1938,8 +1864,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -1964,8 +1888,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -1976,8 +1898,6 @@ literal|"month"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"#mar#"

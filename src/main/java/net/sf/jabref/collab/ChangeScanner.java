@@ -394,12 +394,13 @@ name|ChangeScanner
 implements|implements
 name|Runnable
 block|{
-DECL|field|sortBy
+DECL|field|SORT_BY
 specifier|private
+specifier|static
 specifier|final
 name|String
 index|[]
-name|sortBy
+name|SORT_BY
 init|=
 operator|new
 name|String
@@ -478,7 +479,6 @@ init|=
 literal|0.4
 decl_stmt|;
 comment|/**      * We create an ArrayList to hold the changes we find. These will be added in the form      * of UndoEdit objects. We instantiate these so that the changes found in the file on disk      * can be reproduced in memory by calling redo() on them. REDO, not UNDO!      */
-comment|//ArrayList changes = new ArrayList();
 DECL|field|changes
 specifier|private
 specifier|final
@@ -511,7 +511,6 @@ name|File
 name|file
 parameter_list|)
 block|{
-comment|//, BibDatabase inMem, MetaData mdInMem) {
 name|this
 operator|.
 name|panel
@@ -654,7 +653,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|2
 index|]
@@ -669,7 +668,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|1
 index|]
@@ -686,7 +685,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|0
 index|]
@@ -713,7 +712,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|2
 index|]
@@ -728,7 +727,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|1
 index|]
@@ -745,7 +744,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|0
 index|]
@@ -772,7 +771,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|2
 index|]
@@ -787,7 +786,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|1
 index|]
@@ -804,7 +803,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|0
 index|]
@@ -2317,7 +2316,6 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// First try to match by string names.
-comment|//int piv2 = -1;
 name|mainLoop
 label|:
 for|for
@@ -2341,7 +2339,6 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-comment|//      for (int j=piv2+1; j<nDisk; j++)
 for|for
 control|(
 name|String
@@ -2515,8 +2512,6 @@ argument_list|(
 name|diskId
 argument_list|)
 expr_stmt|;
-comment|//if (j==piv2)
-comment|//  piv2++;
 continue|continue
 name|mainLoop
 continue|;
@@ -2850,7 +2845,6 @@ argument_list|(
 name|diskId
 argument_list|)
 decl_stmt|;
-comment|//System.out.println(disk.getName());
 name|used
 operator|.
 name|add

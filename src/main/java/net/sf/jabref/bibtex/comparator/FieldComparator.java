@@ -968,7 +968,6 @@ argument_list|,
 name|theirs
 argument_list|)
 expr_stmt|;
-comment|//ours.compareTo(theirs);
 block|}
 return|return
 name|result

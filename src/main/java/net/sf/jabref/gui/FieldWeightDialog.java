@@ -148,6 +148,22 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Aug 23, 2005  * Time: 11:30:48 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -379,7 +395,9 @@ name|fields
 operator|.
 name|remove
 argument_list|(
-literal|"bibtexkey"
+name|BibEntry
+operator|.
+name|KEY_FIELD
 argument_list|)
 expr_stmt|;
 comment|// bibtex key doesn't need weight.

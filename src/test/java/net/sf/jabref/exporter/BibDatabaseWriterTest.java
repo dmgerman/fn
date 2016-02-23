@@ -46,7 +46,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
 name|EntryTypes
 import|;
@@ -136,7 +136,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|DatabaseLabelPattern
 import|;

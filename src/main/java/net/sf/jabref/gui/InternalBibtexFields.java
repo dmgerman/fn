@@ -2668,7 +2668,6 @@ comment|// private String otherNames = null ;
 comment|// a Hashmap for a lot of additional "not standard" properties
 comment|// todo: add the handling in a key=value manner
 comment|// private HashMap props = new HashMap() ;
-comment|// some constructors ;-)
 DECL|method|BibtexSingleField (String fieldName, boolean pStandard)
 specifier|public
 name|BibtexSingleField
@@ -3053,7 +3052,7 @@ operator|.
 name|weight
 return|;
 block|}
-comment|// -----------------------------------------------------------------------
+comment|/**          * @return The maximum (expected) length of the field value;<em>not</em> the length of the field name          */
 DECL|method|getLength ()
 specifier|public
 name|int
@@ -3077,7 +3076,7 @@ return|return
 name|name
 return|;
 block|}
-comment|/**          * Set this field's numeric propery          *          * @param numeric true to indicate that this is a numeric field.          * @return this BibtexSingleField instance. Makes it easier to call this          * method on the fly while initializing without using a local variable.          */
+comment|/**          * Set this field's numeric property          *          * @param numeric true to indicate that this is a numeric field.          * @return this BibtexSingleField instance. Makes it easier to call this          * method on the fly while initializing without using a local variable.          */
 DECL|method|setNumeric (boolean numeric)
 specifier|public
 name|BibtexSingleField

@@ -472,15 +472,11 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
+try|try
+init|(
 name|PDDocument
 name|document
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|document
-operator|=
 name|PDDocument
 operator|.
 name|load
@@ -490,7 +486,8 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 name|PDDocumentInformation
 name|pdfDocInfo
 init|=
@@ -506,7 +503,10 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|entryDI
 init|=
 name|XMPUtil
@@ -522,8 +522,9 @@ decl_stmt|;
 if|if
 condition|(
 name|entryDI
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|addEntryDataToEntry
@@ -531,6 +532,9 @@ argument_list|(
 name|entry
 argument_list|,
 name|entryDI
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Calendar
@@ -611,33 +615,6 @@ name|e
 parameter_list|)
 block|{
 comment|// no canceling here, just no data added.
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|document
-operator|!=
-literal|null
-condition|)
-block|{
-try|try
-block|{
-name|document
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|// no canceling here, just no data added.
-block|}
-block|}
 block|}
 block|}
 comment|/**      * Adds all data Found in all the entrys of this XMP file to the given      * entry. This was implemented without having much knowledge of the XMP      * format.      *      * @param aFile      * @param entry      */

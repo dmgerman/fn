@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Remove non printable character formatter.  *   * Based on the RemoveBrackets.java class (Revision 1.2) by mortenalver  */
+comment|/**  * Remove non printable character formatter.  *  * Based on the RemoveBrackets.java class (Revision 1.2) by mortenalver  */
 end_comment
 
 begin_class
@@ -143,6 +143,17 @@ name|String
 name|fieldEntry
 parameter_list|)
 block|{
+if|if
+condition|(
+name|fieldEntry
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|StringBuilder
 name|sb
 init|=

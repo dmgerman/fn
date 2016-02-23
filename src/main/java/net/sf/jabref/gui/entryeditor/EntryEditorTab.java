@@ -1193,7 +1193,9 @@ name|editors
 operator|.
 name|put
 argument_list|(
-literal|"bibtexkey"
+name|BibEntry
+operator|.
+name|KEY_FIELD
 argument_list|,
 name|textField
 argument_list|)

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -73,7 +73,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Extends the JTabbedPane class to support Drag&Drop of Tabs.  *   * @author kleinms, strassfn  */
+comment|/**  * Extends the JTabbedPane class to support Drag&Drop of Tabs.  *  * @author kleinms, strassfn  */
 end_comment
 
 begin_class
@@ -173,38 +173,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|draggingState
 condition|)
 block|{
-comment|// We are not at tab dragging
-if|if
-condition|(
-name|indexActTab
-operator|>=
-literal|0
-condition|)
-block|{
-comment|// Mouse is above a tab, otherwise tabNumber would be -1
-comment|// -->Now we are at tab tragging
-name|draggingState
-operator|=
-literal|true
-expr_stmt|;
-comment|// Mark now we are at dragging
-name|indexDraggedTab
-operator|=
-name|indexActTab
-expr_stmt|;
-comment|// Set draggedTabIndex to the tabNumber where we are now
-name|repaint
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-else|else
-block|{
-comment|//We are at tab tragging
+comment|// We are at tab dragging
 if|if
 condition|(
 operator|(
@@ -372,6 +344,33 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+comment|//We are not at tab dragging
+if|if
+condition|(
+name|indexActTab
+operator|>=
+literal|0
+condition|)
+block|{
+comment|// Mouse is above a tab, otherwise tabNumber would be -1
+comment|// -->Now we are at tab tragging
+name|draggingState
+operator|=
+literal|true
+expr_stmt|;
+comment|// Mark now we are at dragging
+name|indexDraggedTab
+operator|=
+name|indexActTab
+expr_stmt|;
+comment|// Set draggedTabIndex to the tabNumber where we are now
+name|repaint
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 name|super
 operator|.
 name|mouseDragged
@@ -461,7 +460,7 @@ condition|(
 name|draggingState
 condition|)
 block|{
-comment|//We are at tab tragging
+comment|//We are at tab dragging
 name|boolean
 name|toTheLeft
 init|=
@@ -629,7 +628,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * A glass panel which sets the marker for Dragging of Tabs.      *       */
+comment|/**      * A glass panel which sets the marker for Dragging of Tabs.      *      */
 DECL|class|MarkerPane
 specifier|static
 class|class
@@ -681,12 +680,15 @@ name|Graphics
 name|g
 parameter_list|)
 block|{
-operator|(
+name|Graphics2D
+name|g2
+init|=
 operator|(
 name|Graphics2D
 operator|)
 name|g
-operator|)
+decl_stmt|;
+name|g2
 operator|.
 name|setComposite
 argument_list|(
@@ -764,7 +766,7 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Sets the new location, where the marker should be placed.          *           * @param pt the point for the marker          */
+comment|/**          * Sets the new location, where the marker should be placed.          *          * @param pt the point for the marker          */
 DECL|method|setPicLocation (Point pt)
 specifier|public
 name|void
