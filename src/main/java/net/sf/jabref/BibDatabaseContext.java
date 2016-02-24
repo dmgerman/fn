@@ -126,6 +126,19 @@ specifier|final
 name|Defaults
 name|defaults
 decl_stmt|;
+DECL|method|BibDatabaseContext ()
+specifier|public
+name|BibDatabaseContext
+parameter_list|()
+block|{
+name|this
+argument_list|(
+operator|new
+name|Defaults
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|BibDatabaseContext (Defaults defaults)
 specifier|public
 name|BibDatabaseContext
