@@ -753,16 +753,6 @@ operator|.
 name|getType
 argument_list|()
 argument_list|)
-operator|&&
-name|entry
-operator|.
-name|getFieldOptional
-argument_list|(
-literal|"pages"
-argument_list|)
-operator|.
-name|isPresent
-argument_list|()
 condition|)
 block|{
 name|collector
