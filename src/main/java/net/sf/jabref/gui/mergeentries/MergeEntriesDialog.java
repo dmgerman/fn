@@ -68,6 +68,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -381,13 +391,15 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Sets up the dialog      *      * @param selected Selected BibtexEntries      */
-DECL|method|init (BibEntry[] selected)
+DECL|method|init (List<BibEntry> selected)
 specifier|private
 name|void
 name|init
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|selected
 parameter_list|)
 block|{
@@ -396,7 +408,8 @@ if|if
 condition|(
 name|selected
 operator|.
-name|length
+name|size
+argument_list|()
 operator|!=
 literal|2
 condition|)
@@ -436,16 +449,20 @@ comment|// Store the two entries
 name|one
 operator|=
 name|selected
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 expr_stmt|;
 name|two
 operator|=
 name|selected
-index|[
+operator|.
+name|get
+argument_list|(
 literal|1
-index|]
+argument_list|)
 expr_stmt|;
 name|mergeEntries
 operator|=
@@ -455,6 +472,14 @@ argument_list|(
 name|one
 argument_list|,
 name|two
+argument_list|,
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMode
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Create undo-compound

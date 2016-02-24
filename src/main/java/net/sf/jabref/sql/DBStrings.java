@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -15,6 +15,36 @@ operator|.
 name|sql
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
 
 begin_import
 import|import
@@ -75,10 +105,19 @@ specifier|private
 name|String
 name|password
 decl_stmt|;
-DECL|field|serverTypes
+DECL|field|dbParameters
 specifier|private
 name|String
-index|[]
+name|dbParameters
+init|=
+literal|""
+decl_stmt|;
+DECL|field|serverTypes
+specifier|private
+name|List
+argument_list|<
+name|String
+argument_list|>
 name|serverTypes
 decl_stmt|;
 DECL|field|isInitialized
@@ -99,10 +138,12 @@ parameter_list|()
 block|{
 name|this
 operator|.
-name|setServerType
-argument_list|(
-literal|null
-argument_list|)
+name|serverTypes
+operator|=
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -154,19 +195,17 @@ name|void
 name|initialize
 parameter_list|()
 block|{
-name|String
-index|[]
-name|servers
-init|=
-block|{
-literal|"MySQL"
-block|,
-literal|"PostgreSQL"
-block|}
-decl_stmt|;
-name|setServerTypes
+name|this
+operator|.
+name|serverTypes
+operator|=
+name|Arrays
+operator|.
+name|asList
 argument_list|(
-name|servers
+literal|"MySQL"
+argument_list|,
+literal|"PostgreSQL"
 argument_list|)
 expr_stmt|;
 name|setServerType
@@ -368,31 +407,16 @@ return|;
 block|}
 DECL|method|getServerTypes ()
 specifier|public
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getServerTypes
 parameter_list|()
 block|{
 return|return
 name|serverTypes
 return|;
-block|}
-DECL|method|setServerTypes (String[] serverTypes)
-specifier|private
-name|void
-name|setServerTypes
-parameter_list|(
-name|String
-index|[]
-name|serverTypes
-parameter_list|)
-block|{
-name|this
-operator|.
-name|serverTypes
-operator|=
-name|serverTypes
-expr_stmt|;
 block|}
 DECL|method|isInitialized ()
 specifier|public
@@ -444,6 +468,34 @@ operator|.
 name|configValid
 operator|=
 name|confValid
+expr_stmt|;
+block|}
+comment|/**      * Returns the database parameters set      * @return dbParameters: The concatenated parameters      */
+DECL|method|getDbParameters ()
+specifier|public
+name|String
+name|getDbParameters
+parameter_list|()
+block|{
+return|return
+name|dbParameters
+return|;
+block|}
+comment|/**      * Add server specific database parameter(s)<br>      * Multiple parameters must be concatenated in the format<br>      * {@code ?Parameter1=value&parameter2=value2}      * @param dbParameter The concatendated parameter      */
+DECL|method|setDbParameters (String dbParameters)
+specifier|public
+name|void
+name|setDbParameters
+parameter_list|(
+name|String
+name|dbParameters
+parameter_list|)
+block|{
+name|this
+operator|.
+name|dbParameters
+operator|=
+name|dbParameters
 expr_stmt|;
 block|}
 comment|/**      * Store these db strings into JabRef preferences.      */

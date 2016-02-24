@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -86,7 +86,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
+name|Map
 import|;
 end_import
 
@@ -106,7 +106,7 @@ DECL|field|CHARS
 specifier|private
 specifier|static
 specifier|final
-name|HashMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
@@ -143,14 +143,14 @@ argument_list|,
 literal|"&"
 argument_list|)
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|currentCommand
 init|=
 literal|null
@@ -254,7 +254,7 @@ decl_stmt|;
 if|if
 condition|(
 name|result
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -262,10 +262,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
-name|result
+name|command
 argument_list|)
 expr_stmt|;
 block|}
@@ -275,7 +272,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|command
+operator|(
+name|String
+operator|)
+name|result
 argument_list|)
 expr_stmt|;
 block|}
@@ -291,7 +291,7 @@ expr_stmt|;
 name|currentCommand
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}
@@ -578,9 +578,19 @@ comment|/* If found, then use translated version. If not,                       
 if|if
 condition|(
 name|result
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|sb
 operator|.
@@ -593,16 +603,6 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-name|command
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -611,8 +611,6 @@ else|else
 block|{
 name|String
 name|argument
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -811,13 +809,6 @@ name|argument
 operator|=
 name|part
 expr_stmt|;
-if|if
-condition|(
-name|argument
-operator|!=
-literal|null
-condition|)
-block|{
 comment|// handle common case of general latex command
 name|Object
 name|result
@@ -833,17 +824,25 @@ operator|+
 name|argument
 argument_list|)
 decl_stmt|;
-comment|// System.out.print("command: "+command+", arg: "+argument);
-comment|// System.out.print(", result: ");
 comment|// If found, then use translated version. If not, then keep
 comment|// the
 comment|// text of the parameter intact.
 if|if
 condition|(
 name|result
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|argument
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|sb
 operator|.
@@ -855,17 +854,6 @@ operator|)
 name|result
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-name|argument
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 elseif|else
@@ -894,9 +882,20 @@ decl_stmt|;
 if|if
 condition|(
 name|result
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+comment|// If the command is unknown, just print it:
+name|sb
+operator|.
+name|append
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|sb
 operator|.
@@ -906,17 +905,6 @@ operator|(
 name|String
 operator|)
 name|result
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|// If the command is unknown, just print it:
-name|sb
-operator|.
-name|append
-argument_list|(
-name|command
 argument_list|)
 expr_stmt|;
 block|}
@@ -938,7 +926,7 @@ decl_stmt|;
 if|if
 condition|(
 name|result
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
@@ -946,10 +934,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
-name|result
+name|command
 argument_list|)
 expr_stmt|;
 block|}
@@ -959,7 +944,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|command
+operator|(
+name|String
+operator|)
+name|result
 argument_list|)
 expr_stmt|;
 block|}

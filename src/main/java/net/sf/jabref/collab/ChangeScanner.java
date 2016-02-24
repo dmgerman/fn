@@ -80,6 +80,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseMode
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -128,7 +144,7 @@ name|jabref
 operator|.
 name|exporter
 operator|.
-name|FileActions
+name|BibDatabaseWriter
 import|;
 end_import
 
@@ -143,6 +159,20 @@ operator|.
 name|exporter
 operator|.
 name|SaveException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|exporter
+operator|.
+name|SavePreferences
 import|;
 end_import
 
@@ -364,12 +394,13 @@ name|ChangeScanner
 implements|implements
 name|Runnable
 block|{
-DECL|field|sortBy
+DECL|field|SORT_BY
 specifier|private
+specifier|static
 specifier|final
 name|String
 index|[]
-name|sortBy
+name|SORT_BY
 init|=
 operator|new
 name|String
@@ -448,7 +479,6 @@ init|=
 literal|0.4
 decl_stmt|;
 comment|/**      * We create an ArrayList to hold the changes we find. These will be added in the form      * of UndoEdit objects. We instantiate these so that the changes found in the file on disk      * can be reproduced in memory by calling redo() on them. REDO, not UNDO!      */
-comment|//ArrayList changes = new ArrayList();
 DECL|field|changes
 specifier|private
 specifier|final
@@ -481,7 +511,6 @@ name|File
 name|file
 parameter_list|)
 block|{
-comment|//, BibDatabase inMem, MetaData mdInMem) {
 name|this
 operator|.
 name|panel
@@ -509,7 +538,10 @@ name|mdInMem
 operator|=
 name|bp
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 expr_stmt|;
 name|this
@@ -621,7 +653,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|2
 index|]
@@ -636,7 +668,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|1
 index|]
@@ -653,7 +685,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|0
 index|]
@@ -680,7 +712,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|2
 index|]
@@ -695,7 +727,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|1
 index|]
@@ -712,7 +744,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|0
 index|]
@@ -739,7 +771,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|2
 index|]
@@ -754,7 +786,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|1
 index|]
@@ -771,7 +803,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|sortBy
+name|SORT_BY
 index|[
 literal|0
 index|]
@@ -1022,17 +1054,85 @@ parameter_list|()
 block|{
 try|try
 block|{
+name|SavePreferences
+name|prefs
+init|=
+name|SavePreferences
+operator|.
+name|loadForSaveFromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+operator|.
+name|withMakeBackup
+argument_list|(
+literal|false
+argument_list|)
+operator|.
+name|withEncoding
+argument_list|(
+name|panel
+operator|.
+name|getEncoding
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|Defaults
+name|defaults
+init|=
+operator|new
+name|Defaults
+argument_list|(
+name|BibDatabaseMode
+operator|.
+name|fromPreference
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|BIBLATEX_DEFAULT_MODE
+argument_list|)
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|BibDatabaseWriter
+name|databaseWriter
+init|=
+operator|new
+name|BibDatabaseWriter
+argument_list|()
+decl_stmt|;
 name|SaveSession
 name|ss
 init|=
-name|FileActions
+name|databaseWriter
 operator|.
 name|saveDatabase
+argument_list|(
+operator|new
+name|BibDatabaseContext
 argument_list|(
 name|inTemp
 argument_list|,
 name|mdInTemp
 argument_list|,
+name|defaults
+argument_list|)
+argument_list|,
+name|prefs
+argument_list|)
+decl_stmt|;
+name|ss
+operator|.
+name|commit
+argument_list|(
 name|Globals
 operator|.
 name|fileUpdateMonitor
@@ -1044,27 +1144,7 @@ operator|.
 name|fileMonitorHandle
 argument_list|()
 argument_list|)
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-argument_list|,
-literal|false
-argument_list|,
-literal|false
-argument_list|,
-name|panel
-operator|.
-name|getEncoding
-argument_list|()
-argument_list|,
-literal|true
 argument_list|)
-decl_stmt|;
-name|ss
-operator|.
-name|commit
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -1935,7 +2015,7 @@ block|}
 comment|//System.out.println("Suspected new entries in file: "+(disk.getEntryCount()-used.size()));
 block|}
 block|}
-comment|/**      * Finds the entry in neu best fitting the specified entry in old. If no entries get a score      * above zero, an entry is still returned.      * @param old EntrySorter      * @param neu EntrySorter      * @param index int      * @return BibEntry      */
+comment|/**      * Finds the entry in neu best fitting the specified entry in old. If no entries get a score      * above zero, an entry is still returned.      *      * @param old   EntrySorter      * @param neu   EntrySorter      * @param index int      * @return BibEntry      */
 DECL|method|bestFit (EntrySorter old, EntrySorter neu, int index)
 specifier|private
 specifier|static
@@ -2236,7 +2316,6 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// First try to match by string names.
-comment|//int piv2 = -1;
 name|mainLoop
 label|:
 for|for
@@ -2260,7 +2339,6 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-comment|//      for (int j=piv2+1; j<nDisk; j++)
 for|for
 control|(
 name|String
@@ -2434,8 +2512,6 @@ argument_list|(
 name|diskId
 argument_list|)
 expr_stmt|;
-comment|//if (j==piv2)
-comment|//  piv2++;
 continue|continue
 name|mainLoop
 continue|;
@@ -2769,7 +2845,6 @@ argument_list|(
 name|diskId
 argument_list|)
 decl_stmt|;
-comment|//System.out.println(disk.getName());
 name|used
 operator|.
 name|add

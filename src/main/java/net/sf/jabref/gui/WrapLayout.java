@@ -183,7 +183,7 @@ name|getTreeLock
 argument_list|()
 init|)
 block|{
-comment|//  Each row must fit with the width allocated to the containter.
+comment|//  Each row must fit with the width allocated to the container.
 comment|//  When the container width = 0, the preferred width of the container
 comment|//  has not yet been calculated so lets ask for the maximum.
 name|int
@@ -332,6 +332,13 @@ operator|.
 name|getMinimumSize
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|d
+operator|!=
+literal|null
+condition|)
+block|{
 comment|//  Can't add the component to current row. Start a new row.
 if|if
 condition|(
@@ -398,6 +405,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 name|addRow
 argument_list|(
 name|dim
@@ -433,7 +441,7 @@ operator|)
 expr_stmt|;
 comment|//	When using a scroll pane or the DecoratedLookAndFeel we need to
 comment|//  make sure the preferred size is less than the size of the
-comment|//  target containter so shrinking the container size works
+comment|//  target container so shrinking the container size works
 comment|//  correctly. Removing the horizontal gap is an easy way to do this.
 name|Container
 name|scrollPane

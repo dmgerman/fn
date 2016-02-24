@@ -405,9 +405,10 @@ name|getDefault
 argument_list|()
 argument_list|)
 expr_stmt|;
-return|return
+name|translation
+operator|=
 name|key
-return|;
+expr_stmt|;
 block|}
 return|return
 operator|new

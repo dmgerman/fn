@@ -124,7 +124,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BibtexFields
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -236,7 +236,7 @@ name|SQLUtil
 operator|.
 name|allFields
 argument_list|,
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getAllFieldNames
 argument_list|()
@@ -250,7 +250,7 @@ name|SQLUtil
 operator|.
 name|allFields
 argument_list|,
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getAllPrivateFieldNames
 argument_list|()
@@ -298,9 +298,6 @@ name|getFieldStr
 parameter_list|()
 block|{
 comment|// create comma separated list of field names
-name|String
-name|field
-decl_stmt|;
 name|List
 argument_list|<
 name|String
@@ -333,8 +330,12 @@ name|i
 operator|++
 control|)
 block|{
+name|StringBuilder
 name|field
-operator|=
+init|=
+operator|new
+name|StringBuilder
+argument_list|(
 name|SQLUtil
 operator|.
 name|allFields
@@ -343,7 +344,8 @@ name|get
 argument_list|(
 name|i
 argument_list|)
-expr_stmt|;
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|SQLUtil
@@ -353,12 +355,18 @@ operator|.
 name|contains
 argument_list|(
 name|field
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 condition|)
 block|{
 name|field
-operator|+=
-literal|"_"
+operator|.
+name|append
+argument_list|(
+literal|'_'
+argument_list|)
 expr_stmt|;
 block|}
 name|fieldNames
@@ -366,6 +374,9 @@ operator|.
 name|add
 argument_list|(
 name|field
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -380,7 +391,7 @@ name|fieldNames
 argument_list|)
 return|;
 block|}
-comment|/**      * Inserts the elements of a List into another List making sure not to duplicate entries in the resulting List      *      * @param list1 The List containing unique entries      * @param list2 The second List to be inserted into the first ArrayList      * @return The updated list1 with new unique entries      */
+comment|/**      * Inserts the elements of a List into another List making sure not to duplicate entries in the resulting List      *      * @param list1 The List containing unique entries      * @param list2 The second List to be inserted into the first List      * @return The updated list1 with new unique entries      */
 DECL|method|uniqueListInsert (List<String> list1, List<String> list2)
 specifier|private
 specifier|static
@@ -427,10 +438,8 @@ name|contains
 argument_list|(
 name|fromList2
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 operator|!
 literal|"#"
 operator|.
@@ -438,6 +447,7 @@ name|equals
 argument_list|(
 name|fromList2
 argument_list|)
+operator|)
 condition|)
 block|{
 name|list1
@@ -447,7 +457,6 @@ argument_list|(
 name|fromList2
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -472,9 +481,6 @@ name|String
 name|datatype
 parameter_list|)
 block|{
-name|String
-name|field
-decl_stmt|;
 name|List
 argument_list|<
 name|String
@@ -494,10 +500,15 @@ range|:
 name|fields
 control|)
 block|{
+name|StringBuilder
 name|field
-operator|=
+init|=
+operator|new
+name|StringBuilder
+argument_list|(
 name|field1
-expr_stmt|;
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|SQLUtil
@@ -507,23 +518,35 @@ operator|.
 name|contains
 argument_list|(
 name|field
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 condition|)
 block|{
 name|field
-operator|=
-name|field
-operator|+
+operator|.
+name|append
+argument_list|(
 literal|'_'
+argument_list|)
 expr_stmt|;
 block|}
+name|field
+operator|.
+name|append
+argument_list|(
+name|datatype
+argument_list|)
+expr_stmt|;
 name|newFields
 operator|.
 name|add
 argument_list|(
 name|field
-operator|+
-name|datatype
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -948,6 +971,11 @@ argument_list|()
 else|:
 literal|""
 operator|)
+operator|+
+name|dbStrings
+operator|.
+name|getDbParameters
+argument_list|()
 expr_stmt|;
 return|return
 name|url

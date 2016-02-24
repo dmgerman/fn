@@ -52,6 +52,20 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|FieldChange
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -152,11 +166,19 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
+name|util
 operator|.
-name|charset
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|UnsupportedCharsetException
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -189,7 +211,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class used to handle safe storage to disk.  *  * Usage: create a SaveSession giving the file to save to, the encoding, and whether to make a backup. The SaveSession  * will provide a Writer to store to, which actually goes to a temporary file. The Writer keeps track of whether all  * characters could be saved, and if not, which characters were not encodable.  *  * After saving is finished, the client should close the Writer. If the save should be put into effect, call commit(),  * otherwise call cancel(). When cancelling, the temporary file is simply deleted and the target file remains unchanged.  * When committing, the temporary file is copied to the target file after making a backup if requested and if the target  * file already existed, and finally the temporary file is deleted.  *  * If committing fails, the temporary file will not be deleted.  */
+comment|/**  * Class used to handle safe storage to disk.  *<p>  * Usage: create a SaveSession giving the file to save to, the encoding, and whether to make a backup. The SaveSession  * will provide a Writer to store to, which actually goes to a temporary file. The Writer keeps track of whether all  * characters could be saved, and if not, which characters were not encodable.  *<p>  * After saving is finished, the client should close the Writer. If the save should be put into effect, call commit(),  * otherwise call cancel(). When cancelling, the temporary file is simply deleted and the target file remains unchanged.  * When committing, the temporary file is copied to the target file after making a backup if requested and if the target  * file already existed, and finally the temporary file is deleted.  *<p>  * If committing fails, the temporary file will not be deleted.  */
 end_comment
 
 begin_class
@@ -251,12 +273,6 @@ name|TEMP_SUFFIX
 init|=
 literal|"save.bib"
 decl_stmt|;
-DECL|field|file
-specifier|private
-specifier|final
-name|File
-name|file
-decl_stmt|;
 DECL|field|tmp
 specifier|private
 specifier|final
@@ -286,13 +302,24 @@ specifier|final
 name|VerifyingWriter
 name|writer
 decl_stmt|;
-DECL|method|SaveSession (File file, Charset encoding, boolean backup)
+DECL|field|undoableFieldChanges
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|undoableFieldChanges
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+DECL|method|SaveSession (Charset encoding, boolean backup)
 specifier|public
 name|SaveSession
 parameter_list|(
-name|File
-name|file
-parameter_list|,
 name|Charset
 name|encoding
 parameter_list|,
@@ -301,15 +328,7 @@ name|backup
 parameter_list|)
 throws|throws
 name|IOException
-throws|,
-name|UnsupportedCharsetException
 block|{
-name|this
-operator|.
-name|file
-operator|=
-name|file
-expr_stmt|;
 name|tmp
 operator|=
 name|File
@@ -402,11 +421,14 @@ operator|=
 name|useBackup
 expr_stmt|;
 block|}
-DECL|method|commit ()
+DECL|method|commit (File file)
 specifier|public
 name|void
 name|commit
-parameter_list|()
+parameter_list|(
+name|File
+name|file
+parameter_list|)
 throws|throws
 name|SaveException
 block|{
@@ -508,7 +530,9 @@ block|{
 if|if
 condition|(
 name|createLockFile
-argument_list|()
+argument_list|(
+name|file
+argument_list|)
 condition|)
 block|{
 comment|// Oops, the lock file already existed. Try to wait it out:
@@ -605,15 +629,29 @@ name|useLockFile
 condition|)
 block|{
 name|deleteLockFile
-argument_list|()
+argument_list|(
+name|file
+argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+operator|!
 name|tmp
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Cannot delete temporary file"
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|cancel ()
 specifier|public
@@ -621,18 +659,33 @@ name|void
 name|cancel
 parameter_list|()
 block|{
+if|if
+condition|(
+operator|!
 name|tmp
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Cannot delete temporary file"
+argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|/**      * Check if a lock file exists, and create it if it doesn't.      *      * @return true if the lock file already existed      * @throws IOException if something happens during creation.      */
-DECL|method|createLockFile ()
+DECL|method|createLockFile (File file)
 specifier|private
 name|boolean
 name|createLockFile
-parameter_list|()
+parameter_list|(
+name|File
+name|file
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -664,6 +717,8 @@ return|return
 literal|true
 return|;
 block|}
+try|try
+init|(
 name|FileOutputStream
 name|out
 init|=
@@ -672,7 +727,8 @@ name|FileOutputStream
 argument_list|(
 name|lock
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|out
 operator|.
 name|write
@@ -680,8 +736,6 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|out
 operator|.
 name|close
@@ -714,11 +768,14 @@ literal|false
 return|;
 block|}
 comment|/**      * Check if a lock file exists, and delete it if it does.      *      * @return true if the lock file existed, false otherwise.      * @throws IOException if something goes wrong.      */
-DECL|method|deleteLockFile ()
+DECL|method|deleteLockFile (File file)
 specifier|private
 name|boolean
 name|deleteLockFile
-parameter_list|()
+parameter_list|(
+name|File
+name|file
+parameter_list|)
 block|{
 name|File
 name|lock
@@ -749,11 +806,23 @@ return|return
 literal|false
 return|;
 block|}
+if|if
+condition|(
+operator|!
 name|lock
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Cannot delete lock file"
+argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|true
 return|;
@@ -767,6 +836,41 @@ block|{
 return|return
 name|tmp
 return|;
+block|}
+DECL|method|getFieldChanges ()
+specifier|public
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|getFieldChanges
+parameter_list|()
+block|{
+return|return
+name|undoableFieldChanges
+return|;
+block|}
+DECL|method|addFieldChanges (List<FieldChange> undoableFieldChanges)
+specifier|public
+name|void
+name|addFieldChanges
+parameter_list|(
+name|List
+argument_list|<
+name|FieldChange
+argument_list|>
+name|undoableFieldChanges
+parameter_list|)
+block|{
+name|this
+operator|.
+name|undoableFieldChanges
+operator|.
+name|addAll
+argument_list|(
+name|undoableFieldChanges
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

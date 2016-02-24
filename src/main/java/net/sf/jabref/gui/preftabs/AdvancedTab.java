@@ -162,22 +162,6 @@ name|gui
 operator|.
 name|help
 operator|.
-name|AboutDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|help
-operator|.
 name|HelpFiles
 import|;
 end_import
@@ -195,22 +179,6 @@ operator|.
 name|help
 operator|.
 name|HelpAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|Abbreviations
 import|;
 end_import
 
@@ -412,15 +380,12 @@ specifier|final
 name|RemotePreferences
 name|remotePreferences
 decl_stmt|;
-DECL|method|AdvancedTab (JabRefPreferences prefs, AboutDialog diag, JabRef jabRef)
+DECL|method|AdvancedTab (JabRefPreferences prefs, JabRef jabRef)
 specifier|public
 name|AdvancedTab
 parameter_list|(
 name|JabRefPreferences
 name|prefs
-parameter_list|,
-name|AboutDialog
-name|diag
 parameter_list|,
 name|JabRef
 name|jabRef
@@ -1376,9 +1341,11 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Abbreviations
+name|Globals
 operator|.
-name|initializeJournalNames
+name|journalAbbreviationLoader
+operator|.
+name|update
 argument_list|(
 name|preferences
 argument_list|)

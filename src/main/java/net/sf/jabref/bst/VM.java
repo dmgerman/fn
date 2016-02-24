@@ -458,6 +458,20 @@ specifier|private
 name|String
 name|preamble
 decl_stmt|;
+DECL|field|ADD_PERIOD_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|ADD_PERIOD_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"([^\\.\\?\\!\\}\\s])(\\}|\\s)*$"
+argument_list|)
+decl_stmt|;
 DECL|class|Identifier
 specifier|public
 specifier|static
@@ -598,65 +612,6 @@ name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|charStream2CommonTree (CharStream bst)
-specifier|private
-specifier|static
-name|CommonTree
-name|charStream2CommonTree
-parameter_list|(
-name|CharStream
-name|bst
-parameter_list|)
-throws|throws
-name|RecognitionException
-block|{
-name|BstLexer
-name|lex
-init|=
-operator|new
-name|BstLexer
-argument_list|(
-name|bst
-argument_list|)
-decl_stmt|;
-name|CommonTokenStream
-name|tokens
-init|=
-operator|new
-name|CommonTokenStream
-argument_list|(
-name|lex
-argument_list|)
-decl_stmt|;
-name|BstParser
-name|parser
-init|=
-operator|new
-name|BstParser
-argument_list|(
-name|tokens
-argument_list|)
-decl_stmt|;
-name|BstParser
-operator|.
-name|program_return
-name|r
-init|=
-name|parser
-operator|.
-name|program
-argument_list|()
-decl_stmt|;
-return|return
-operator|(
-name|CommonTree
-operator|)
-name|r
-operator|.
-name|getTree
-argument_list|()
-return|;
 block|}
 DECL|method|VM (CharStream bst)
 specifier|private
@@ -1440,17 +1395,6 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
-specifier|final
-name|Pattern
-name|p
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"([^\\.\\?\\!\\}\\s])(\\}|\\s)*$"
-argument_list|)
-decl_stmt|;
 comment|/**              * Pops the top (string) literal, adds a `.' to it if the last non              * '}' character isn't a `.', `?', or `!', and pushes this resulting              * string.              */
 annotation|@
 name|Override
@@ -1466,10 +1410,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -1517,7 +1459,7 @@ decl_stmt|;
 name|Matcher
 name|m
 init|=
-name|p
+name|ADD_PERIOD_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -1710,10 +1652,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -1814,6 +1754,21 @@ name|BstEntry
 name|context
 parameter_list|)
 block|{
+if|if
+condition|(
+name|context
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|VMException
+argument_list|(
+literal|"Must have an entry to cite$"
+argument_list|)
+throw|;
+block|}
 name|stack
 operator|.
 name|push
@@ -1856,10 +1811,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -1921,10 +1874,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -2201,10 +2152,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -2296,10 +2245,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -2375,10 +2322,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -2515,10 +2460,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -3143,10 +3086,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -3474,6 +3415,21 @@ name|BstEntry
 name|context
 parameter_list|)
 block|{
+if|if
+condition|(
+name|context
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|VMException
+argument_list|(
+literal|"type$ need a context."
+argument_list|)
+throw|;
+block|}
 name|stack
 operator|.
 name|push
@@ -3769,6 +3725,65 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|charStream2CommonTree (CharStream bst)
+specifier|private
+specifier|static
+name|CommonTree
+name|charStream2CommonTree
+parameter_list|(
+name|CharStream
+name|bst
+parameter_list|)
+throws|throws
+name|RecognitionException
+block|{
+name|BstLexer
+name|lex
+init|=
+operator|new
+name|BstLexer
+argument_list|(
+name|bst
+argument_list|)
+decl_stmt|;
+name|CommonTokenStream
+name|tokens
+init|=
+operator|new
+name|CommonTokenStream
+argument_list|(
+name|lex
+argument_list|)
+decl_stmt|;
+name|BstParser
+name|parser
+init|=
+operator|new
+name|BstParser
+argument_list|(
+name|tokens
+argument_list|)
+decl_stmt|;
+name|BstParser
+operator|.
+name|program_return
+name|r
+init|=
+name|parser
+operator|.
+name|program
+argument_list|()
+decl_stmt|;
+return|return
+operator|(
+name|CommonTree
+operator|)
+name|r
+operator|.
+name|getTree
+argument_list|()
+return|;
 block|}
 DECL|method|assign (BstEntry context, Object o1, Object o2)
 specifier|private
@@ -4118,7 +4133,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// assert tree.getType() == Bst.COMMANDS;
 comment|// Go
 for|for
 control|(
@@ -4504,7 +4518,6 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
 name|int
@@ -4568,7 +4581,6 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
 name|int
@@ -4631,7 +4643,6 @@ argument_list|(
 literal|2
 argument_list|)
 expr_stmt|;
-comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
 name|int
@@ -4994,7 +5005,6 @@ name|Tree
 name|stack
 parameter_list|)
 block|{
-comment|// assert stack.getType() == Bst.STACK;
 name|localTree
 operator|=
 name|stack
@@ -5409,6 +5419,7 @@ name|name
 argument_list|)
 condition|)
 block|{
+comment|// OK to have a null context
 name|functions
 operator|.
 name|get
@@ -5499,7 +5510,6 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
 name|int
@@ -5562,7 +5572,6 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
 name|int

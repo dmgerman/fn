@@ -120,20 +120,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
-operator|.
-name|EntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -1424,13 +1410,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-comment|//Globals.DEFAULT_BIBTEXENTRY_ID,
-name|EntryTypes
-operator|.
-name|getTypeOrDefault
-argument_list|(
 literal|"article"
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// id assumes an existing database so don't create one here
@@ -2851,10 +2831,6 @@ block|{
 name|String
 name|medlineID
 init|=
-literal|""
-decl_stmt|;
-name|medlineID
-operator|+=
 operator|new
 name|String
 argument_list|(
@@ -2864,7 +2840,7 @@ name|start
 argument_list|,
 name|length
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 block|}
 elseif|else
 if|if
@@ -2875,10 +2851,6 @@ block|{
 name|String
 name|url
 init|=
-literal|""
-decl_stmt|;
-name|url
-operator|+=
 operator|new
 name|String
 argument_list|(
@@ -2888,7 +2860,7 @@ name|start
 argument_list|,
 name|length
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 block|}
 elseif|else
 if|if

@@ -216,14 +216,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|specialStart
-lambda|->
 name|sb
-operator|.
+operator|::
 name|append
-argument_list|(
-name|specialStart
-argument_list|)
 argument_list|)
 expr_stmt|;
 while|while

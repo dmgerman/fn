@@ -43,6 +43,7 @@ class|class
 name|BibtexWidthTest
 block|{
 DECL|method|assertBibtexWidth (final int i, final String string)
+specifier|private
 name|void
 name|assertBibtexWidth
 parameter_list|(

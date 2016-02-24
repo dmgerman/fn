@@ -56,7 +56,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|Abbreviations
+name|JournalAbbreviationLoader
 import|;
 end_import
 
@@ -124,31 +124,33 @@ name|ContentAutoCompleters
 extends|extends
 name|AutoCompleters
 block|{
-DECL|field|preferences
-name|AutoCompletePreferences
-name|preferences
+DECL|field|abbreviationLoader
+specifier|private
+specifier|final
+name|JournalAbbreviationLoader
+name|abbreviationLoader
 decl_stmt|;
-DECL|method|ContentAutoCompleters (AutoCompletePreferences preferences)
+DECL|method|ContentAutoCompleters (JournalAbbreviationLoader abbreviationLoader)
 specifier|public
 name|ContentAutoCompleters
 parameter_list|(
-name|AutoCompletePreferences
-name|preferences
+name|JournalAbbreviationLoader
+name|abbreviationLoader
 parameter_list|)
 block|{
 name|this
 operator|.
-name|preferences
+name|abbreviationLoader
 operator|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
-name|preferences
+name|abbreviationLoader
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ContentAutoCompleters (BibDatabase database, MetaData metaData, AutoCompletePreferences preferences)
+DECL|method|ContentAutoCompleters (BibDatabase database, MetaData metaData, AutoCompletePreferences preferences, JournalAbbreviationLoader abbreviationLoader)
 specifier|public
 name|ContentAutoCompleters
 parameter_list|(
@@ -160,9 +162,19 @@ name|metaData
 parameter_list|,
 name|AutoCompletePreferences
 name|preferences
+parameter_list|,
+name|JournalAbbreviationLoader
+name|abbreviationLoader
 parameter_list|)
 block|{
 name|this
+argument_list|(
+name|abbreviationLoader
+argument_list|)
+expr_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
 argument_list|(
 name|preferences
 argument_list|)
@@ -370,9 +382,10 @@ control|(
 name|Abbreviation
 name|abbreviation
 range|:
-name|Abbreviations
+name|abbreviationLoader
 operator|.
-name|journalAbbrev
+name|getRepository
+argument_list|()
 operator|.
 name|getAbbreviations
 argument_list|()

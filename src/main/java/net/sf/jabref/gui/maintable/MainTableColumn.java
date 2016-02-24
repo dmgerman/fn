@@ -58,7 +58,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|TypedBibEntry
+name|EntryUtil
 import|;
 end_import
 
@@ -175,15 +175,17 @@ name|empty
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|MainTableColumn (String columnName, String[] bibtexFields, BibDatabase database)
+DECL|method|MainTableColumn (String columnName, List<String> bibtexFields, BibDatabase database)
 specifier|public
 name|MainTableColumn
 parameter_list|(
 name|String
 name|columnName
 parameter_list|,
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|bibtexFields
 parameter_list|,
 name|BibDatabase
@@ -204,12 +206,7 @@ name|Collections
 operator|.
 name|unmodifiableList
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|bibtexFields
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -239,15 +236,17 @@ name|database
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MainTableColumn (String columnName, String[] bibtexFields, JLabel iconLabel)
+DECL|method|MainTableColumn (String columnName, List<String> bibtexFields, JLabel iconLabel)
 specifier|public
 name|MainTableColumn
 parameter_list|(
 name|String
 name|columnName
 parameter_list|,
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|bibtexFields
 parameter_list|,
 name|JLabel
@@ -268,12 +267,7 @@ name|Collections
 operator|.
 name|unmodifiableList
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|bibtexFields
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -469,23 +463,17 @@ name|TYPE_HEADER
 argument_list|)
 condition|)
 block|{
-name|TypedBibEntry
-name|typedEntry
-init|=
-operator|new
-name|TypedBibEntry
-argument_list|(
-name|entry
-argument_list|,
-name|database
-argument_list|)
-decl_stmt|;
 name|content
 operator|=
-name|typedEntry
+name|EntryUtil
 operator|.
-name|getTypeForDisplay
+name|capitalizeFirst
+argument_list|(
+name|entry
+operator|.
+name|getType
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 else|else

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -114,11 +114,51 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ActionListener
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -134,6 +174,22 @@ name|MergeDialog
 extends|extends
 name|JDialog
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|MergeDialog
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|panel1
 specifier|private
 specifier|final
@@ -184,17 +240,16 @@ operator|new
 name|JButton
 argument_list|()
 decl_stmt|;
-DECL|field|Cancel
+DECL|field|cancel
 specifier|private
 specifier|final
 name|JButton
-name|Cancel
+name|cancel
 init|=
 operator|new
 name|JButton
 argument_list|()
 decl_stmt|;
-comment|//TitledBorder titledBorder1;
 DECL|field|entries
 specifier|private
 specifier|final
@@ -250,16 +305,6 @@ specifier|private
 name|boolean
 name|okPressed
 decl_stmt|;
-DECL|method|isOkPressed ()
-specifier|public
-name|boolean
-name|isOkPressed
-parameter_list|()
-block|{
-return|return
-name|okPressed
-return|;
-block|}
 DECL|method|MergeDialog (JabRefFrame frame, String title, boolean modal)
 specifier|public
 name|MergeDialog
@@ -283,40 +328,29 @@ argument_list|,
 name|modal
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|jbInit
-argument_list|(
-name|frame
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ex
-parameter_list|)
+DECL|method|isOkPressed ()
+specifier|public
+name|boolean
+name|isOkPressed
+parameter_list|()
 block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
+return|return
+name|okPressed
+return|;
 block|}
-block|}
-DECL|method|jbInit (JabRefFrame parent)
+DECL|method|jbInit ()
 specifier|private
 name|void
 name|jbInit
-parameter_list|(
-name|JabRefFrame
-name|parent
-parameter_list|)
+parameter_list|()
 block|{
-comment|//  titledBorder1 = new TitledBorder(BorderFactory.createLineBorder(new Color(153, 153, 153),2),Globals.lang("Options"));
 name|panel1
 operator|.
 name|setLayout
@@ -341,13 +375,13 @@ operator|.
 name|addActionListener
 argument_list|(
 operator|new
-name|MergeDialog_ok_actionAdapter
+name|MergeDialogOKActionAdapter
 argument_list|(
 name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Cancel
+name|cancel
 operator|.
 name|setText
 argument_list|(
@@ -359,12 +393,12 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Cancel
+name|cancel
 operator|.
 name|addActionListener
 argument_list|(
 operator|new
-name|MergeDialog_Cancel_actionAdapter
+name|MergeDialogCancelActionAdapter
 argument_list|(
 name|this
 argument_list|)
@@ -503,7 +537,7 @@ name|jPanel2
 operator|.
 name|add
 argument_list|(
-name|Cancel
+name|cancel
 argument_list|,
 literal|null
 argument_list|)
@@ -775,13 +809,10 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ok_actionPerformed (ActionEvent e)
+DECL|method|okActionPerformed ()
 name|void
-name|ok_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+name|okActionPerformed
+parameter_list|()
 block|{
 name|okPressed
 operator|=
@@ -791,13 +822,10 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Cancel_actionPerformed (ActionEvent e)
+DECL|method|cancelActionPerformed ()
 name|void
-name|Cancel_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+name|cancelActionPerformed
+parameter_list|()
 block|{
 name|dispose
 argument_list|()
@@ -869,16 +897,10 @@ block|}
 end_class
 
 begin_class
-DECL|class|MergeDialog_ok_actionAdapter
+DECL|class|MergeDialogOKActionAdapter
 class|class
-name|MergeDialog_ok_actionAdapter
+name|MergeDialogOKActionAdapter
 implements|implements
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
@@ -887,8 +909,8 @@ specifier|final
 name|MergeDialog
 name|adaptee
 decl_stmt|;
-DECL|method|MergeDialog_ok_actionAdapter (MergeDialog adaptee)
-name|MergeDialog_ok_actionAdapter
+DECL|method|MergeDialogOKActionAdapter (MergeDialog adaptee)
+name|MergeDialogOKActionAdapter
 parameter_list|(
 name|MergeDialog
 name|adaptee
@@ -914,26 +936,18 @@ parameter_list|)
 block|{
 name|adaptee
 operator|.
-name|ok_actionPerformed
-argument_list|(
-name|e
-argument_list|)
+name|okActionPerformed
+argument_list|()
 expr_stmt|;
 block|}
 block|}
 end_class
 
 begin_class
-DECL|class|MergeDialog_Cancel_actionAdapter
+DECL|class|MergeDialogCancelActionAdapter
 class|class
-name|MergeDialog_Cancel_actionAdapter
+name|MergeDialogCancelActionAdapter
 implements|implements
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
@@ -942,8 +956,8 @@ specifier|final
 name|MergeDialog
 name|adaptee
 decl_stmt|;
-DECL|method|MergeDialog_Cancel_actionAdapter (MergeDialog adaptee)
-name|MergeDialog_Cancel_actionAdapter
+DECL|method|MergeDialogCancelActionAdapter (MergeDialog adaptee)
+name|MergeDialogCancelActionAdapter
 parameter_list|(
 name|MergeDialog
 name|adaptee
@@ -969,10 +983,8 @@ parameter_list|)
 block|{
 name|adaptee
 operator|.
-name|Cancel_actionPerformed
-argument_list|(
-name|e
-argument_list|)
+name|cancelActionPerformed
+argument_list|()
 expr_stmt|;
 block|}
 block|}

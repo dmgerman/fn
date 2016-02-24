@@ -216,16 +216,6 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
 begin_class
 DECL|class|TestVM
 specifier|public
@@ -275,14 +265,14 @@ literal|"src/test/resources/net/sf/jabref/bst/abbrv.bst"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -346,8 +336,6 @@ init|=
 operator|new
 name|VM
 argument_list|(
-literal|""
-operator|+
 literal|"ENTRY  { "
 operator|+
 literal|"  address "
@@ -373,14 +361,14 @@ operator|+
 literal|"READ"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -501,8 +489,6 @@ init|=
 operator|new
 name|VM
 argument_list|(
-literal|""
-operator|+
 literal|"ENTRY  { title }  {}  { label } "
 operator|+
 literal|"FUNCTION { test } { label #0 = title 'label := #5 label #6 pop$ } "
@@ -512,14 +498,14 @@ operator|+
 literal|"ITERATE { test }"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -573,14 +559,14 @@ argument_list|(
 literal|"FUNCTION {a}{ quote$ quote$ * } EXECUTE {a}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -626,14 +612,14 @@ argument_list|(
 literal|"FUNCTION {init.state.consts}{ #0 'before.all := } "
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -725,8 +711,6 @@ init|=
 operator|new
 name|VM
 argument_list|(
-literal|""
-operator|+
 literal|"INTEGERS { variable.a } "
 operator|+
 literal|"FUNCTION {init.state.consts}{ #5 'variable.a := } "
@@ -734,14 +718,14 @@ operator|+
 literal|"EXECUTE {init.state.consts}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -756,8 +740,9 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 literal|5
 argument_list|)
@@ -803,14 +788,14 @@ operator|+
 literal|"EXECUTE {a}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -1040,14 +1025,14 @@ operator|+
 literal|"EXECUTE {test}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -1268,14 +1253,14 @@ operator|+
 literal|"EXECUTE {test}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -1345,14 +1330,14 @@ operator|+
 literal|"EXECUTE {test}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -1402,14 +1387,14 @@ operator|+
 literal|"EXECUTE {test}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -1462,14 +1447,14 @@ operator|+
 literal|"EXECUTE {test}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -1536,14 +1521,14 @@ operator|+
 literal|"EXECUTE {test}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -1753,14 +1738,14 @@ comment|// 78
 literal|"} EXECUTE {test} "
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -1957,14 +1942,14 @@ comment|// FALSE
 literal|" \" HALLO \" empty$ } ITERATE {test} "
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2127,14 +2112,14 @@ operator|+
 literal|"EXECUTE {test} "
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2238,14 +2223,14 @@ operator|+
 literal|"EXECUTE {test} "
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2371,14 +2356,14 @@ operator|+
 literal|"EXECUTE {test} "
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2546,14 +2531,14 @@ operator|+
 literal|"EXECUTE {test}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2632,14 +2617,14 @@ operator|+
 literal|"EXECUTE {test}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2692,14 +2677,14 @@ operator|+
 literal|"EXECUTE {test}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -2759,8 +2744,6 @@ init|=
 operator|new
 name|VM
 argument_list|(
-literal|""
-operator|+
 literal|"ENTRY  { title }  { }  { label }"
 operator|+
 literal|"FUNCTION {presort} { cite$ 'sort.key$ := } ITERATE { presort } SORT"
@@ -2943,14 +2926,14 @@ argument_list|(
 literal|"EXECUTE {global.max$}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -3022,7 +3005,7 @@ operator|.
 name|run
 argument_list|(
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 argument_list|)
@@ -3120,14 +3103,14 @@ operator|+
 literal|" EXECUTE {n.dashify} "
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -3187,21 +3170,19 @@ init|=
 operator|new
 name|VM
 argument_list|(
-literal|""
-operator|+
 literal|"ENTRY  { title }  { }  { label }"
 operator|+
 literal|"FUNCTION {presort} { cite$ 'sort.key$ := } ITERATE { presort } SORT FUNCTION {test} { type$ } ITERATE { test }"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -3373,14 +3354,14 @@ comment|//
 literal|"ITERATE  { test }"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -3511,14 +3492,14 @@ operator|+
 literal|"EXECUTE {format}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -3581,14 +3562,14 @@ operator|+
 literal|"ITERATE {format}"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -3692,14 +3673,14 @@ operator|+
 literal|" ITERATE { call.type$ }"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -3809,8 +3790,6 @@ init|=
 operator|new
 name|VM
 argument_list|(
-literal|""
-operator|+
 literal|"ENTRY  { "
 operator|+
 literal|"  address "
@@ -3830,14 +3809,14 @@ operator|+
 literal|"ITERATE { test }"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -3913,11 +3892,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|s1
+literal|"canh05"
 operator|.
 name|equals
 argument_list|(
-literal|"canh05"
+name|s1
 argument_list|)
 condition|)
 block|{
@@ -4072,20 +4051,17 @@ literal|"}"
 operator|+
 comment|//
 literal|"EXECUTE {begin.bib}"
-operator|+
-comment|//
-literal|""
 argument_list|)
 decl_stmt|;
 comment|//
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -4154,14 +4130,14 @@ argument_list|(
 literal|"FUNCTION {a}{ #3 \"Hallo\" swap$ } EXECUTE { a }"
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -4282,6 +4258,7 @@ return|;
 block|}
 comment|/* TEST DATA */
 DECL|method|t1BibtexString ()
+specifier|private
 name|String
 name|t1BibtexString
 parameter_list|()
@@ -4329,14 +4306,14 @@ literal|"src/test/resources/net/sf/jabref/bst/abbrv.bst"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|v
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
@@ -4371,6 +4348,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|t1BibtexEntry ()
+specifier|private
 name|BibEntry
 name|t1BibtexEntry
 parameter_list|()

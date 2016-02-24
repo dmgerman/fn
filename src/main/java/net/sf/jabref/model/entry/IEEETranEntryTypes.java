@@ -163,7 +163,7 @@ literal|"ctluse_paper"
 block|,
 literal|"ctluse_url"
 block|,
-literal|"ctluseforced_etal"
+literal|"ctluse_forced_etal"
 block|,
 literal|"ctluse_alt_spacing"
 block|,

@@ -158,6 +158,16 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
+import|;
+end_import
+
 begin_comment
 comment|/**  * Testing Util.findFile for finding files based on regular expressions.  *  * @author Christopher Oezbek<oezi@oezi.de>  */
 end_comment
@@ -362,7 +372,10 @@ argument_list|,
 name|pdf
 argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|fullPath
 init|=
 name|FileUtil
@@ -379,11 +392,14 @@ argument_list|)
 decl_stmt|;
 name|Assert
 operator|.
-name|assertNotNull
+name|assertTrue
 argument_list|(
 literal|"expanded file must not be null"
 argument_list|,
 name|fullPath
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -391,6 +407,9 @@ operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|exists
 argument_list|()
@@ -440,7 +459,10 @@ argument_list|,
 name|pdf
 argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|fullPath
 init|=
 name|FileUtil
@@ -462,6 +484,19 @@ operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|isPresent
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertTrue
+argument_list|(
+name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|exists
 argument_list|()
@@ -722,7 +757,10 @@ argument_list|,
 name|pdf
 argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|fullPath
 init|=
 name|FileUtil
@@ -741,9 +779,12 @@ argument_list|)
 decl_stmt|;
 name|Assert
 operator|.
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -751,6 +792,9 @@ operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|exists
 argument_list|()
@@ -768,6 +812,9 @@ operator|+
 literal|"/HipKro03 - Hello.pdf"
 argument_list|,
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()
@@ -816,9 +863,12 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -826,6 +876,9 @@ operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|exists
 argument_list|()
@@ -843,6 +896,9 @@ operator|+
 literal|"/HipKro03 - Hello.pdf"
 argument_list|,
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()
@@ -869,9 +925,12 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertNull
+name|assertFalse
 argument_list|(
 name|fullPath
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|fullPath
@@ -895,9 +954,12 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -905,6 +967,9 @@ operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|exists
 argument_list|()
@@ -922,6 +987,9 @@ operator|+
 literal|"/HipKro03 - Hello.pdf"
 argument_list|,
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()
@@ -972,7 +1040,10 @@ argument_list|,
 name|pdf
 argument_list|)
 expr_stmt|;
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|fullPath
 init|=
 name|FileUtil
@@ -991,9 +1062,12 @@ argument_list|)
 decl_stmt|;
 name|Assert
 operator|.
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1001,6 +1075,9 @@ operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|exists
 argument_list|()
@@ -1018,6 +1095,9 @@ operator|+
 literal|"/pdfs/sub/HipKro03-sub.pdf"
 argument_list|,
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()
@@ -1066,9 +1146,12 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1076,6 +1159,9 @@ operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|exists
 argument_list|()
@@ -1093,6 +1179,9 @@ operator|+
 literal|"/pdfs/sub/HipKro03-sub.pdf"
 argument_list|,
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()
@@ -1119,9 +1208,12 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertNull
+name|assertFalse
 argument_list|(
 name|fullPath
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|fullPath
@@ -1145,9 +1237,12 @@ argument_list|)
 expr_stmt|;
 name|Assert
 operator|.
-name|assertNotNull
+name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|isPresent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -1155,6 +1250,9 @@ operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|exists
 argument_list|()
@@ -1172,6 +1270,9 @@ operator|+
 literal|"/pdfs/sub/HipKro03-sub.pdf"
 argument_list|,
 name|fullPath
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()

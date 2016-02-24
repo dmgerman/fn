@@ -26,11 +26,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|journals
-operator|.
-name|Abbreviations
+name|Globals
 import|;
 end_import
 
@@ -47,6 +43,16 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -191,8 +197,10 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 init|=
 name|panel
@@ -215,9 +223,12 @@ init|=
 operator|new
 name|UndoableAbbreviator
 argument_list|(
-name|Abbreviations
+name|Globals
 operator|.
-name|journalAbbrev
+name|journalAbbreviationLoader
+operator|.
+name|getRepository
+argument_list|()
 argument_list|,
 name|iso
 argument_list|)

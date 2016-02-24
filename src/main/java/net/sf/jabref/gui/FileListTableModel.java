@@ -506,13 +506,13 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setContent (String value, boolean firstOnly, boolean deduceUnknownTypes)
+DECL|method|setContent (String val, boolean firstOnly, boolean deduceUnknownTypes)
 specifier|private
 name|FileListEntry
 name|setContent
 parameter_list|(
 name|String
-name|value
+name|val
 parameter_list|,
 name|boolean
 name|firstOnly
@@ -521,6 +521,11 @@ name|boolean
 name|deduceUnknownTypes
 parameter_list|)
 block|{
+name|String
+name|value
+init|=
+name|val
+decl_stmt|;
 if|if
 condition|(
 name|value
@@ -843,6 +848,11 @@ name|String
 name|getStringRepresentation
 parameter_list|()
 block|{
+synchronized|synchronized
+init|(
+name|list
+init|)
+block|{
 name|String
 index|[]
 index|[]
@@ -894,6 +904,7 @@ name|array
 argument_list|)
 return|;
 block|}
+block|}
 comment|/**      * Transform the file list shown in the table into a HTML string representation      * suitable for displaying the contents in a tooltip.      * @return Tooltip representation.      */
 DECL|method|getToolTipHTMLRepresentation ()
 specifier|public
@@ -914,6 +925,11 @@ argument_list|,
 literal|"</html>"
 argument_list|)
 decl_stmt|;
+synchronized|synchronized
+init|(
+name|list
+init|)
+block|{
 for|for
 control|(
 name|FileListEntry
@@ -942,6 +958,7 @@ name|link
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb

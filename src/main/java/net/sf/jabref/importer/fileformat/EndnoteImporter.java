@@ -126,6 +126,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|labelpattern
+operator|.
+name|LabelPatternUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|entry
@@ -150,34 +166,6 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bibtex
-operator|.
-name|EntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
 begin_comment
 comment|/**  * Importer for the Refer/Endnote format.  * modified to use article number for pages if pages are missing (some  * journals, e.g., Physical Review Letters, don't use pages anymore)  *  * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
 end_comment
@@ -198,6 +186,34 @@ name|String
 name|ENDOFRECORD
 init|=
 literal|"__EOREOR__"
+decl_stmt|;
+DECL|field|A_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|A_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"%A .*"
+argument_list|)
+decl_stmt|;
+DECL|field|E_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|E_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"%E .*"
+argument_list|)
 decl_stmt|;
 comment|/**      * Return the name of this import format.      */
 annotation|@
@@ -254,26 +270,6 @@ name|stream
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Pattern
-name|pat1
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"%A .*"
-argument_list|)
-decl_stmt|;
-name|Pattern
-name|pat2
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"%E .*"
-argument_list|)
-decl_stmt|;
 name|String
 name|str
 decl_stmt|;
@@ -293,7 +289,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|pat1
+name|A_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -303,7 +299,7 @@ operator|.
 name|matches
 argument_list|()
 operator|||
-name|pat2
+name|E_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -521,7 +517,7 @@ literal|""
 expr_stmt|;
 name|type
 operator|=
-literal|""
+literal|"misc"
 expr_stmt|;
 name|editor
 operator|=
@@ -1397,7 +1393,7 @@ name|BibEntry
 operator|.
 name|KEY_FIELD
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1534,12 +1530,7 @@ name|BibEntry
 argument_list|(
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,
-name|EntryTypes
-operator|.
-name|getTypeOrDefault
-argument_list|(
 name|type
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// id assumes an existing database so don't

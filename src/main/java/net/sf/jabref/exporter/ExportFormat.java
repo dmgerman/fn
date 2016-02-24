@@ -24,51 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|MetaData
+name|*
 import|;
 end_import
 
@@ -106,13 +62,49 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
 operator|.
-name|filechooser
+name|jabref
 operator|.
-name|FileFilter
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseMode
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -146,11 +138,33 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|filechooser
+operator|.
+name|FileFilter
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
 operator|.
 name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileNotFoundException
 import|;
 end_import
 
@@ -180,7 +194,27 @@ name|java
 operator|.
 name|io
 operator|.
+name|InputStreamReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|Reader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
 import|;
 end_import
 
@@ -207,7 +241,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for export formats based on templates.  *  */
+comment|/**  * Base class for export formats based on templates.  */
 end_comment
 
 begin_class
@@ -285,7 +319,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param displayName      *            Name to display to the user.      * @param consoleName      *            Name to call this format in the console.      * @param lfFileName      *            Name of the main layout file.      * @param directory      *            Directory in which to find the layout file.      * @param extension      *            Should contain the . (for instance .txt).      */
+comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *      * @param displayName Name to display to the user.      * @param consoleName Name to call this format in the console.      * @param lfFileName  Name of the main layout file.      * @param directory   Directory in which to find the layout file.      * @param extension   Should contain the . (for instance .txt).      */
 DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, String extension)
 specifier|public
 name|ExportFormat
@@ -337,14 +371,14 @@ operator|=
 name|extension
 expr_stmt|;
 block|}
-comment|/** Empty default constructor for subclasses */
+comment|/**      * Empty default constructor for subclasses      */
 DECL|method|ExportFormat ()
 name|ExportFormat
 parameter_list|()
 block|{
 comment|// intentionally empty
 block|}
-comment|/**      * Indicate whether this is a custom export. A custom export looks for its      * layout files using a normal file path, while a built-in export looks in      * the classpath.      *      * @param custom      *            true to indicate a custom export format.      */
+comment|/**      * Indicate whether this is a custom export. A custom export looks for its      * layout files using a normal file path, while a built-in export looks in      * the classpath.      *      * @param custom true to indicate a custom export format.      */
 DECL|method|setCustomExport (boolean custom)
 specifier|public
 name|void
@@ -387,7 +421,7 @@ return|return
 name|displayName
 return|;
 block|}
-comment|/**      * Set an encoding which will be used in preference to the default value      * obtained from the basepanel.      * @param encoding The name of the encoding to use.      */
+comment|/**      * Set an encoding which will be used in preference to the default value      * obtained from the basepanel.      *      * @param encoding The name of the encoding to use.      */
 DECL|method|setEncoding (Charset encoding)
 specifier|public
 name|void
@@ -404,7 +438,7 @@ operator|=
 name|encoding
 expr_stmt|;
 block|}
-comment|/**      * This method should return a reader from which the given layout file can      * be read.      *      * This standard implementation of this method will use the      * {@link FileActions#getReader(String)} method.      *      * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *      * @param filename      *            the filename      * @throws IOException      *             if the reader could not be created      *      * @return a newly created reader      */
+comment|/**      * This method should return a reader from which the given layout file can      * be read.      *<p>      *<p>      * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *      * @param filename the filename      * @return a newly created reader      * @throws IOException if the reader could not be created      */
 DECL|method|getReader (String filename)
 specifier|private
 name|Reader
@@ -449,21 +483,101 @@ literal|'/'
 operator|)
 expr_stmt|;
 block|}
-return|return
-name|FileActions
-operator|.
-name|getReader
-argument_list|(
+comment|// Attempt to get a Reader for the file path given, either by
+comment|// loading it as a resource (from within jar), or as a normal file. If
+comment|// unsuccessful (e.g. file not found), an IOException is thrown.
+name|String
+name|name
+init|=
 name|dir
 operator|+
 name|filename
+decl_stmt|;
+name|Reader
+name|reader
+decl_stmt|;
+comment|// Try loading as a resource first. This works for files inside the jar:
+name|URL
+name|reso
+init|=
+name|Globals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|name
 argument_list|)
+decl_stmt|;
+comment|// If that didn't work, try loading as a normal file URL:
+try|try
+block|{
+if|if
+condition|(
+name|reso
+operator|==
+literal|null
+condition|)
+block|{
+name|File
+name|f
+init|=
+operator|new
+name|File
+argument_list|(
+name|name
+argument_list|)
+decl_stmt|;
+name|reader
+operator|=
+operator|new
+name|FileReader
+argument_list|(
+name|f
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|reader
+operator|=
+operator|new
+name|InputStreamReader
+argument_list|(
+name|reso
+operator|.
+name|openStream
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|FileNotFoundException
+name|ex
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Cannot find layout file: '"
+operator|+
+name|name
+operator|+
+literal|"'."
+argument_list|)
+throw|;
+block|}
+return|return
+name|reader
 return|;
 block|}
-comment|/**      * Perform the export of {@code database}.      *      * @param database      *            The database to export from.      * @param metaData      *            The database's meta data.      * @param file      *            the file to write the resulting export to      * @param encoding      *            The encoding of the database      * @param entryIds      *            Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      *      * @throws IOException      *             if a problem occurred while trying to write to {@code writer}      *             or read from required resources.      * @throws Exception      *             if any other error occurred during export.      *      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibDatabase,      *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set)      */
+comment|/**      * Perform the export of {@code database}.      *      * @param database   The database to export from.      * @param metaData   The database's meta data.      * @param file       the file to write the resulting export to      * @param encoding   The encoding of the database      * @param entryIds   Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      * @throws IOException if a problem occurred while trying to write to {@code writer}      *                     or read from required resources.      * @throws Exception   if any other error occurred during export.      * @see net.sf.jabref.exporter.IExportFormat#performExport(BibDatabase, MetaData, String, Charset, Set)      */
 annotation|@
 name|Override
-DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset enc, Set<String> entryIds)
+DECL|method|performExport (final BibDatabase database, final MetaData metaData, final String file, final Charset encoding, Set<String> entryIds)
 specifier|public
 name|void
 name|performExport
@@ -482,7 +596,7 @@ name|file
 parameter_list|,
 specifier|final
 name|Charset
-name|enc
+name|encoding
 parameter_list|,
 name|Set
 argument_list|<
@@ -520,13 +634,14 @@ try|try
 block|{
 name|ss
 operator|=
-name|getSaveSession
+operator|new
+name|SaveSession
 argument_list|(
 name|this
 operator|.
 name|encoding
 argument_list|,
-name|outFile
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -558,11 +673,12 @@ condition|)
 block|{
 name|ss
 operator|=
-name|getSaveSession
+operator|new
+name|SaveSession
 argument_list|(
-name|enc
+name|encoding
 argument_list|,
-name|outFile
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -636,11 +752,7 @@ operator|=
 name|layoutHelper
 operator|.
 name|getLayoutFromText
-argument_list|(
-name|Globals
-operator|.
-name|FORMATTER_PACKAGE
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -670,7 +782,7 @@ name|doLayout
 argument_list|(
 name|database
 argument_list|,
-name|enc
+name|encoding
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -686,35 +798,72 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/*              * Write database entries; entries will be sorted as they appear on the              * screen, or sorted by author, depending on Preferences. We also supply              * the Set entries - if we are to export only certain entries, it will              * be non-null, and be used to choose entries. Otherwise, it will be              * null, and be ignored.              */
+name|Defaults
+name|defaults
+init|=
+operator|new
+name|Defaults
+argument_list|(
+name|BibDatabaseMode
+operator|.
+name|fromPreference
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|BIBLATEX_DEFAULT_MODE
+argument_list|)
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|SavePreferences
+name|savePrefs
+init|=
+name|SavePreferences
+operator|.
+name|loadForExportFromPreferences
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+decl_stmt|;
 name|List
 argument_list|<
 name|BibEntry
 argument_list|>
 name|sorted
 init|=
-name|FileActions
+name|BibDatabaseWriter
 operator|.
 name|getSortedEntries
+argument_list|(
+operator|new
+name|BibDatabaseContext
 argument_list|(
 name|database
 argument_list|,
 name|metaData
 argument_list|,
+name|defaults
+argument_list|)
+argument_list|,
 name|entryIds
 argument_list|,
-literal|false
+name|savePrefs
 argument_list|)
 decl_stmt|;
 comment|// Load default layout
 name|Layout
 name|defLayout
-init|=
-literal|null
 decl_stmt|;
 name|LayoutHelper
 name|layoutHelper
-init|=
-literal|null
 decl_stmt|;
 try|try
 init|(
@@ -742,11 +891,7 @@ operator|=
 name|layoutHelper
 operator|.
 name|getLayoutFromText
-argument_list|(
-name|Globals
-operator|.
-name|FORMATTER_PACKAGE
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 if|if
@@ -882,11 +1027,7 @@ operator|=
 name|layoutHelper
 operator|.
 name|getLayoutFromText
-argument_list|(
-name|Globals
-operator|.
-name|FORMATTER_PACKAGE
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|layouts
 operator|.
@@ -980,11 +1121,7 @@ operator|=
 name|layoutHelper
 operator|.
 name|getLayoutFromText
-argument_list|(
-name|Globals
-operator|.
-name|FORMATTER_PACKAGE
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -999,9 +1136,19 @@ block|}
 comment|// Write footer
 if|if
 condition|(
+operator|(
 name|endLayout
 operator|!=
 literal|null
+operator|)
+operator|&&
+operator|(
+name|this
+operator|.
+name|encoding
+operator|!=
+literal|null
+operator|)
 condition|)
 block|{
 name|ps
@@ -1014,6 +1161,8 @@ name|doLayout
 argument_list|(
 name|database
 argument_list|,
+name|this
+operator|.
 name|encoding
 argument_list|)
 argument_list|)
@@ -1056,53 +1205,20 @@ argument_list|(
 literal|"The following formatters could not be found: "
 argument_list|)
 decl_stmt|;
-for|for
-control|(
-name|Iterator
-argument_list|<
-name|String
-argument_list|>
-name|i
-init|=
-name|missingFormatters
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-name|i
+name|String
 operator|.
-name|next
-argument_list|()
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-name|sb
-operator|.
-name|append
+name|join
 argument_list|(
 literal|", "
+argument_list|,
+name|missingFormatters
+argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 name|LOGGER
 operator|.
 name|warn
@@ -1114,11 +1230,13 @@ block|}
 name|finalizeSaveSession
 argument_list|(
 name|ss
+argument_list|,
+name|outFile
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * See if there is a name formatter file bundled with this export format. If so, read      * all the name formatters so they can be used by the filter layouts.      * @param lfFileName The layout filename.      */
+comment|/**      * See if there is a name formatter file bundled with this export format. If so, read      * all the name formatters so they can be used by the filter layouts.      *      * @param lfFileName The layout filename.      */
 DECL|method|readFormatterFile (String lfFileName)
 specifier|private
 specifier|static
@@ -1348,34 +1466,6 @@ return|return
 name|formatters
 return|;
 block|}
-DECL|method|getSaveSession (final Charset enc, final File outFile)
-specifier|public
-name|SaveSession
-name|getSaveSession
-parameter_list|(
-specifier|final
-name|Charset
-name|enc
-parameter_list|,
-specifier|final
-name|File
-name|outFile
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-return|return
-operator|new
-name|SaveSession
-argument_list|(
-name|outFile
-argument_list|,
-name|enc
-argument_list|,
-literal|false
-argument_list|)
-return|;
-block|}
 comment|/**      * @see net.sf.jabref.exporter.IExportFormat#getFileFilter()      */
 annotation|@
 name|Override
@@ -1407,7 +1497,7 @@ return|return
 name|fileFilter
 return|;
 block|}
-DECL|method|finalizeSaveSession (final SaveSession ss)
+DECL|method|finalizeSaveSession (final SaveSession ss, File file)
 specifier|public
 name|void
 name|finalizeSaveSession
@@ -1415,9 +1505,14 @@ parameter_list|(
 specifier|final
 name|SaveSession
 name|ss
+parameter_list|,
+name|File
+name|file
 parameter_list|)
 throws|throws
-name|Exception
+name|SaveException
+throws|,
+name|IOException
 block|{
 name|ss
 operator|.
@@ -1458,7 +1553,9 @@ block|}
 name|ss
 operator|.
 name|commit
-argument_list|()
+argument_list|(
+name|file
+argument_list|)
 expr_stmt|;
 block|}
 block|}

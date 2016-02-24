@@ -498,6 +498,13 @@ name|getParentFile
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|className
+operator|!=
+literal|null
+condition|)
+block|{
 name|int
 name|lastDot
 init|=
@@ -530,6 +537,7 @@ argument_list|,
 name|lastDot
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|className
 return|;
@@ -1219,7 +1227,13 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
+decl||
+name|ClassNotFoundException
+decl||
+name|InstantiationException
+decl||
+name|IllegalAccessException
 name|exc
 parameter_list|)
 block|{

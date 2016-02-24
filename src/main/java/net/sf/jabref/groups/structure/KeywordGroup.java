@@ -24,6 +24,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Pattern
@@ -39,6 +49,34 @@ operator|.
 name|undo
 operator|.
 name|AbstractUndoableEdit
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -82,7 +120,7 @@ name|logic
 operator|.
 name|search
 operator|.
-name|SearchRule
+name|SearchMatcher
 import|;
 end_import
 
@@ -235,6 +273,22 @@ DECL|field|pattern
 specifier|private
 name|Pattern
 name|pattern
+decl_stmt|;
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|KeywordGroup
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 comment|/**      * Creates a KeywordGroup with the specified properties.      */
 DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context)
@@ -739,59 +793,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @see AbstractGroup#getSearchRule()      */
-annotation|@
-name|Override
-DECL|method|getSearchRule ()
-specifier|public
-name|SearchRule
-name|getSearchRule
-parameter_list|()
-block|{
-return|return
-operator|new
-name|SearchRule
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|applyRule
-parameter_list|(
-name|String
-name|query
-parameter_list|,
-name|BibEntry
-name|bibEntry
-parameter_list|)
-block|{
-return|return
-name|contains
-argument_list|(
-name|query
-argument_list|,
-name|bibEntry
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|validateSearchStrings
-parameter_list|(
-name|String
-name|query
-parameter_list|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-block|}
-return|;
-block|}
 comment|/**      * Returns a String representation of this object that can be used to      * reconstruct it.      */
 annotation|@
 name|Override
@@ -923,13 +924,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|add (BibEntry[] entries)
+DECL|method|add (List<BibEntry> entries)
 specifier|public
 name|AbstractUndoableEdit
 name|add
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{
@@ -952,12 +955,12 @@ operator|!=
 literal|null
 operator|)
 operator|&&
+operator|!
 operator|(
 name|entries
 operator|.
-name|length
-operator|>
-literal|0
+name|isEmpty
+argument_list|()
 operator|)
 condition|)
 block|{
@@ -991,15 +994,8 @@ block|{
 if|if
 condition|(
 operator|!
-name|getSearchRule
-argument_list|()
-operator|.
-name|applyRule
+name|contains
 argument_list|(
-name|SearchRule
-operator|.
-name|NULL_QUERY
-argument_list|,
 name|entry
 argument_list|)
 condition|)
@@ -1103,13 +1099,15 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|remove (BibEntry[] entries)
+DECL|method|remove (List<BibEntry> entries)
 specifier|public
 name|AbstractUndoableEdit
 name|remove
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{
@@ -1135,7 +1133,8 @@ operator|&&
 operator|(
 name|entries
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|0
 operator|)
@@ -1170,15 +1169,8 @@ control|)
 block|{
 if|if
 condition|(
-name|getSearchRule
-argument_list|()
-operator|.
-name|applyRule
+name|contains
 argument_list|(
-name|SearchRule
-operator|.
-name|NULL_QUERY
-argument_list|,
 name|entry
 argument_list|)
 condition|)
@@ -1336,28 +1328,6 @@ operator|.
 name|getHierarchicalContext
 argument_list|()
 operator|)
-return|;
-block|}
-comment|/*      * (non-Javadoc)      *      * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibEntry)      */
-annotation|@
-name|Override
-DECL|method|contains (String query, BibEntry entry)
-specifier|public
-name|boolean
-name|contains
-parameter_list|(
-name|String
-name|query
-parameter_list|,
-name|BibEntry
-name|entry
-parameter_list|)
-block|{
-return|return
-name|contains
-argument_list|(
-name|entry
-argument_list|)
 return|;
 block|}
 annotation|@
@@ -1936,19 +1906,15 @@ parameter_list|)
 block|{
 comment|// this should never happen, because the constructor obviously
 comment|// succeeded in creating _this_ instance!
-name|System
+name|LOGGER
 operator|.
-name|err
-operator|.
-name|println
+name|error
 argument_list|(
-literal|"Internal error: Exception "
-operator|+
-name|t
-operator|+
-literal|" in KeywordGroup.deepCopy(). "
+literal|"Internal error in KeywordGroup.deepCopy(). "
 operator|+
 literal|"Please report this on https://github.com/JabRef/jabref/issues"
+argument_list|,
+name|t
 argument_list|)
 expr_stmt|;
 return|return

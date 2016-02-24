@@ -572,7 +572,9 @@ name|Localization
 operator|.
 name|lang
 argument_list|(
-literal|"Invalid ISBN"
+literal|"No entry found for IBSN %0 at www.ebook.de"
+argument_list|,
+name|query
 argument_list|)
 argument_list|)
 expr_stmt|;

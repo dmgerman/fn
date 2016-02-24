@@ -395,9 +395,13 @@ name|EntryFetcher
 argument_list|>
 name|fetchers
 init|=
+operator|new
 name|EntryFetchers
+argument_list|(
+name|Globals
 operator|.
-name|INSTANCE
+name|journalAbbreviationLoader
+argument_list|)
 operator|.
 name|getEntryFetchers
 argument_list|()
@@ -1408,7 +1412,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 argument_list|,
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|DEFAULT_INSPECTION_FIELDS
 argument_list|,
@@ -1508,7 +1512,7 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 argument_list|,
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|DEFAULT_INSPECTION_FIELDS
 argument_list|,

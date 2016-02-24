@@ -240,6 +240,18 @@ name|nio
 operator|.
 name|charset
 operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
 name|StandardCharsets
 import|;
 end_import
@@ -447,6 +459,13 @@ operator|new
 name|InputStreamReader
 argument_list|(
 name|inputStream
+argument_list|,
+name|Charset
+operator|.
+name|forName
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 argument_list|)
 argument_list|)
 init|)
@@ -621,6 +640,13 @@ comment|/* add the entry to the inspection dialog */
 if|if
 condition|(
 name|bd
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|bd
 operator|.
 name|getEntryCount
 argument_list|()
@@ -647,6 +673,17 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+else|else
+block|{
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Error while fetching from Inspire"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/* update the dialogs progress bar */
 comment|// dialog.setProgress(i + 1, keys.length);

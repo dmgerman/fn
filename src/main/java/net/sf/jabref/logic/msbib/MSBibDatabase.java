@@ -351,8 +351,6 @@ argument_list|()
 expr_stmt|;
 name|Document
 name|inputDocument
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -397,7 +395,10 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|Collections
+operator|.
+name|emptyList
+argument_list|()
 return|;
 block|}
 name|String

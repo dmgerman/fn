@@ -164,6 +164,20 @@ specifier|public
 class|class
 name|FileFinder
 block|{
+DECL|field|ESCAPE_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|ESCAPE_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"([^\\\\])\\\\([^\\\\])"
+argument_list|)
+decl_stmt|;
 DECL|method|findFiles (Collection<String> extensions, Collection<File> directories)
 specifier|public
 specifier|static
@@ -813,12 +827,7 @@ comment|// Escape handling...
 name|Matcher
 name|m
 init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"([^\\\\])\\\\([^\\\\])"
-argument_list|)
+name|ESCAPE_PATTERN
 operator|.
 name|matcher
 argument_list|(

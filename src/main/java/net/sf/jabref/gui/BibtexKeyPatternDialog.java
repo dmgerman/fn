@@ -52,7 +52,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|LabelPatternPanel
 import|;
@@ -84,7 +84,7 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|labelPattern
+name|labelpattern
 operator|.
 name|AbstractLabelPattern
 import|;
@@ -216,9 +216,7 @@ operator|=
 operator|new
 name|LabelPatternPanel
 argument_list|(
-name|parent
-operator|.
-name|helpDiag
+name|panel
 argument_list|)
 expr_stmt|;
 name|setPanel
@@ -230,7 +228,7 @@ name|init
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Used for updating an existing Dialog      *       * @param panel the panel to read the data from      */
+comment|/**      * Used for updating an existing Dialog      *      * @param panel the panel to read the data from      */
 DECL|method|setPanel (BasePanel panel)
 specifier|public
 name|void
@@ -252,7 +250,10 @@ name|metaData
 operator|=
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 expr_stmt|;
 name|AbstractLabelPattern

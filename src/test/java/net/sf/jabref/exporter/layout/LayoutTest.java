@@ -22,22 +22,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -51,6 +35,20 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|importer
+operator|.
+name|ParserResult
 import|;
 end_import
 
@@ -78,9 +76,27 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|ParserResult
+name|journals
+operator|.
+name|JournalAbbreviationLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
 import|;
 end_import
 
@@ -154,6 +170,18 @@ name|Collection
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|mockito
+operator|.
+name|Mockito
+operator|.
+name|mock
+import|;
+end_import
+
 begin_class
 DECL|class|LayoutTest
 specifier|public
@@ -190,6 +218,17 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
+name|Globals
+operator|.
+name|journalAbbreviationLoader
+operator|=
+name|mock
+argument_list|(
+name|JournalAbbreviationLoader
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Return Test data.      */
 DECL|method|t1BibtexString ()
@@ -340,11 +379,7 @@ name|sr
 argument_list|)
 operator|.
 name|getLayoutFromText
-argument_list|(
-name|Globals
-operator|.
-name|FORMATTER_PACKAGE
-argument_list|)
+argument_list|()
 decl_stmt|;
 return|return
 name|layout

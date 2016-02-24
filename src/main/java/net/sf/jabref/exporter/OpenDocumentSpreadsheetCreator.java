@@ -126,6 +126,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -226,6 +254,22 @@ name|OpenDocumentSpreadsheetCreator
 extends|extends
 name|ExportFormat
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|OpenDocumentSpreadsheetCreator
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/**      * Creates a new instance of OpenOfficeDocumentCreator      */
 DECL|method|OpenDocumentSpreadsheetCreator ()
 specifier|public
@@ -584,11 +628,23 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Delete the temporary file:
+if|if
+condition|(
+operator|!
 name|tmpFile
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"Cannot delete temporary export file"
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|exportOpenDocumentSpreadsheetXML (File tmpFile, BibDatabase database, Set<String> keySet)
 specifier|private
@@ -853,10 +909,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Cannot get resource"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}

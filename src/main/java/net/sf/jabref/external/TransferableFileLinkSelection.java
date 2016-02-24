@@ -192,15 +192,17 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|TransferableFileLinkSelection (BasePanel panel, BibEntry[] selection)
+DECL|method|TransferableFileLinkSelection (BasePanel panel, List<BibEntry> selection)
 specifier|public
 name|TransferableFileLinkSelection
 parameter_list|(
 name|BasePanel
 name|panel
 parameter_list|,
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|selection
 parameter_list|)
 block|{
@@ -212,9 +214,11 @@ name|FileListTableModel
 argument_list|()
 decl_stmt|;
 name|selection
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 operator|.
 name|getFieldOptional
 argument_list|(
@@ -254,7 +258,10 @@ name|dirs
 init|=
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getFileDirectory
@@ -264,9 +271,6 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 decl_stmt|;
-name|File
-name|expLink
-init|=
 name|FileUtil
 operator|.
 name|expandFilename
@@ -282,12 +286,12 @@ name|link
 argument_list|,
 name|dirs
 argument_list|)
-decl_stmt|;
-name|fileList
 operator|.
-name|add
+name|ifPresent
 argument_list|(
-name|expLink
+name|fileList
+operator|::
+name|add
 argument_list|)
 expr_stmt|;
 block|}

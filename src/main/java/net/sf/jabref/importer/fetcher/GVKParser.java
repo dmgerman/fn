@@ -102,20 +102,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
-operator|.
-name|EntryTypes
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|importer
 operator|.
 name|ImportFormatReader
@@ -425,6 +411,13 @@ argument_list|,
 name|record
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|e
+operator|!=
+literal|null
+condition|)
+block|{
 name|e
 operator|=
 name|getChild
@@ -434,6 +427,13 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|e
+operator|!=
+literal|null
+condition|)
+block|{
 name|result
 operator|.
 name|add
@@ -444,6 +444,8 @@ name|e
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 return|return
 name|result
@@ -635,6 +637,18 @@ argument_list|,
 name|datafield
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|mak
+operator|==
+literal|null
+condition|)
+block|{
+name|mak
+operator|=
+literal|""
+expr_stmt|;
+block|}
 block|}
 comment|//ppn
 if|if
@@ -1258,6 +1272,13 @@ argument_list|,
 name|datafield
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|address
+operator|!=
+literal|null
+condition|)
+block|{
 name|address
 operator|=
 name|removeSortCharacters
@@ -1265,6 +1286,7 @@ argument_list|(
 name|address
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 name|st
@@ -1369,6 +1391,13 @@ argument_list|,
 name|datafield
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|pagetotal
+operator|!=
+literal|null
+condition|)
+block|{
 comment|// S, S. etc. entfernen
 name|pagetotal
 operator|=
@@ -1381,6 +1410,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Behandlung von Konferenzen
 if|if
@@ -1736,12 +1766,7 @@ operator|.
 name|next
 argument_list|()
 argument_list|,
-name|EntryTypes
-operator|.
-name|getType
-argument_list|(
 name|entryType
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Zuordnung der Felder in AbhÃ¤ngigkeit vom Dokumenttyp

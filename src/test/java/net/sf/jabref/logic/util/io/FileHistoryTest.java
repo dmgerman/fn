@@ -154,15 +154,12 @@ name|void
 name|testConstructor
 parameter_list|()
 block|{
-name|FileHistory
-name|fh
-init|=
 operator|new
 name|FileHistory
 argument_list|(
 name|prefs
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
 annotation|@
 name|Test

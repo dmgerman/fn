@@ -24,11 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabase
+name|MetaData
 import|;
 end_import
 
@@ -40,7 +36,23 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|MetaData
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|filechooser
+operator|.
+name|FileFilter
 import|;
 end_import
 
@@ -63,18 +75,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|filechooser
-operator|.
-name|FileFilter
 import|;
 end_import
 

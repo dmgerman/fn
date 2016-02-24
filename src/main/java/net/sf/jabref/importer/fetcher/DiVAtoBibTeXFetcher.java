@@ -268,9 +268,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Util
+name|net
+operator|.
+name|URLDownload
 import|;
 end_import
 
@@ -471,14 +473,21 @@ name|bibtexString
 decl_stmt|;
 try|try
 block|{
-name|bibtexString
-operator|=
-name|Util
-operator|.
-name|getResultsWithEncoding
+name|URLDownload
+name|dl
+init|=
+operator|new
+name|URLDownload
 argument_list|(
 name|url
-argument_list|,
+argument_list|)
+decl_stmt|;
+name|bibtexString
+operator|=
+name|dl
+operator|.
+name|downloadToString
+argument_list|(
 name|StandardCharsets
 operator|.
 name|UTF_8
@@ -658,7 +667,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Do not use the provided key
-comment|// entry.clearField(BibtexFields.KEY_FIELD);
+comment|// entry.clearField(InternalBibtexFields.KEY_FIELD);
 name|inspector
 operator|.
 name|addEntry

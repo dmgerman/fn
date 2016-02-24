@@ -374,7 +374,8 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 operator|.
-name|length
+name|size
+argument_list|()
 operator|!=
 literal|1
 condition|)
@@ -422,9 +423,11 @@ name|panel
 operator|.
 name|getSelectedEntries
 argument_list|()
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 expr_stmt|;
 name|panel
 operator|.
@@ -535,7 +538,7 @@ name|init
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Sets up the dialog      *      * @param selected Selected BibtexEntries      */
+comment|/**      * Sets up the dialog      */
 DECL|method|init ()
 specifier|private
 name|void
@@ -568,6 +571,14 @@ name|lang
 argument_list|(
 literal|"Entry from DOI"
 argument_list|)
+argument_list|,
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMode
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Create undo-compound
@@ -944,19 +955,34 @@ name|button
 argument_list|)
 condition|)
 block|{
-comment|// Create a new entry and add it to the undo stack
-comment|// Remove the old entry and add it to the undo stack (which is not working...)
+comment|// Updated the original entry with the new fields
 name|Set
 argument_list|<
 name|String
 argument_list|>
-name|joint
+name|jointFields
 init|=
 operator|new
 name|TreeSet
 argument_list|<>
 argument_list|(
 name|mergedEntry
+operator|.
+name|getFieldNames
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|originalFields
+init|=
+operator|new
+name|TreeSet
+argument_list|<>
+argument_list|(
+name|originalEntry
 operator|.
 name|getFieldNames
 argument_list|()
@@ -972,7 +998,7 @@ control|(
 name|String
 name|field
 range|:
-name|joint
+name|jointFields
 control|)
 block|{
 name|String
@@ -1049,6 +1075,67 @@ literal|true
 expr_stmt|;
 block|}
 block|}
+comment|// Remove fields which are not in the merged entry
+for|for
+control|(
+name|String
+name|field
+range|:
+name|originalFields
+control|)
+block|{
+if|if
+condition|(
+operator|!
+name|jointFields
+operator|.
+name|contains
+argument_list|(
+name|field
+argument_list|)
+condition|)
+block|{
+name|String
+name|originalString
+init|=
+name|originalEntry
+operator|.
+name|getField
+argument_list|(
+name|field
+argument_list|)
+decl_stmt|;
+name|originalEntry
+operator|.
+name|clearField
+argument_list|(
+name|field
+argument_list|)
+expr_stmt|;
+name|ce
+operator|.
+name|addEdit
+argument_list|(
+operator|new
+name|UndoableFieldChange
+argument_list|(
+name|originalEntry
+argument_list|,
+name|field
+argument_list|,
+name|originalString
+argument_list|,
+literal|null
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|edited
+operator|=
+literal|true
+expr_stmt|;
+block|}
+block|}
+comment|//
 if|if
 condition|(
 name|edited

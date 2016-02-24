@@ -1015,6 +1015,14 @@ name|bes
 index|[
 name|j
 index|]
+argument_list|,
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMode
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// If (suspected) duplicates, add them to the duplicates vector.

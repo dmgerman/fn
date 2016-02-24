@@ -180,22 +180,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|AboutDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -329,12 +313,12 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|// Frame titles.
-DECL|field|frameTitle
+DECL|field|FRAME_TITLE
 specifier|public
 specifier|static
 specifier|final
 name|String
-name|frameTitle
+name|FRAME_TITLE
 init|=
 literal|"JabRef"
 decl_stmt|;
@@ -427,7 +411,7 @@ specifier|final
 name|int
 name|SPLIT_PANE_DIVIDER_LOCATION
 init|=
-literal|145
+literal|160
 operator|+
 literal|15
 decl_stmt|;
@@ -562,12 +546,6 @@ specifier|public
 specifier|static
 name|SidePaneManager
 name|sidePaneManager
-decl_stmt|;
-DECL|field|helpDiag
-specifier|public
-specifier|static
-name|AboutDialog
-name|helpDiag
 decl_stmt|;
 comment|//	Colors.
 DECL|field|entryEditorLabelColor

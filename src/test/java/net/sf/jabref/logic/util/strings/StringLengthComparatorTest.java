@@ -55,6 +55,7 @@ class|class
 name|StringLengthComparatorTest
 block|{
 DECL|field|slc
+specifier|private
 name|StringLengthComparator
 name|slc
 decl_stmt|;

@@ -46,6 +46,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|exporter
+operator|.
+name|SaveActions
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|importer
 operator|.
 name|ParserResult
@@ -184,8 +198,20 @@ name|List
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
 begin_comment
-comment|/**  * Test the BibtexParser  *  * @author Christopher Oezbek<oezi@oezi.de>  * @version $revision: 1.1$ $date: $  */
+comment|/**  * Test the BibtexParser  */
 end_comment
 
 begin_class
@@ -213,6 +239,11 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 annotation|@
 name|Test
 argument_list|(
@@ -258,8 +289,6 @@ argument_list|(
 literal|"@article{test,author={Ed von Test}}"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -281,8 +310,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -293,8 +320,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -305,8 +330,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -320,8 +343,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -363,8 +384,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -404,8 +423,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -439,8 +456,6 @@ operator|+
 literal|"  title = {Title A}}\n"
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -451,8 +466,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"canh05"
@@ -463,8 +476,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Crowston, K. and Annabi, H."
@@ -477,8 +488,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Title A"
@@ -627,8 +636,6 @@ operator|.
 name|parse
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|result
@@ -678,8 +685,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -701,8 +706,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -713,8 +716,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -725,8 +726,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -740,8 +739,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -793,8 +790,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -816,8 +811,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -828,8 +821,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -840,8 +831,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -855,8 +844,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -908,8 +895,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -931,8 +916,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -943,8 +926,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -994,8 +975,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1017,8 +996,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -1029,8 +1006,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1041,8 +1016,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1056,8 +1029,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -1109,8 +1080,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1132,8 +1101,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -1144,8 +1111,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1156,8 +1121,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1171,8 +1134,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -1224,8 +1185,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1247,8 +1206,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -1259,8 +1216,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1271,8 +1226,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1286,8 +1239,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -1339,8 +1290,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1362,8 +1311,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"unknown"
@@ -1374,8 +1321,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1386,8 +1331,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1401,8 +1344,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -1454,8 +1395,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1477,8 +1416,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"thisisalongstringtotestmaybeitistolongwhoknowsnotme"
@@ -1489,8 +1426,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1501,8 +1436,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1516,8 +1449,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -1569,8 +1500,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1592,8 +1521,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -1604,8 +1531,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1616,8 +1541,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1631,8 +1554,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -1704,8 +1625,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -1716,8 +1635,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"canh05"
@@ -1728,8 +1645,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1234567890123456789"
@@ -1742,8 +1657,6 @@ literal|"isbn"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1234567890123456789"
@@ -1756,8 +1669,6 @@ literal|"isbn2"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1234"
@@ -1820,8 +1731,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -1832,8 +1741,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"te_st:with-special(characters)"
@@ -1844,8 +1751,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1859,8 +1764,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -1912,8 +1815,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1935,8 +1836,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -1947,8 +1846,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1959,8 +1856,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1974,8 +1869,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -2035,8 +1928,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -2102,8 +1993,6 @@ operator|=
 name|tmp
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -2114,8 +2003,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"canh05"
@@ -2126,8 +2013,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Crowston, K. and Annabi, H."
@@ -2140,8 +2025,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Title A"
@@ -2154,8 +2037,6 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"inproceedings"
@@ -2166,8 +2047,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"foo"
@@ -2178,8 +2057,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Norton Bar"
@@ -2208,14 +2085,22 @@ name|firstEntry
 init|=
 literal|"@article{canh05,"
 operator|+
-literal|"  author = {Crowston, K. and Annabi, H.},\n"
+literal|"  author = {Crowston, K. and Annabi, H.},"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 operator|+
 literal|"  title = {Title A}}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 decl_stmt|;
 name|String
 name|secondEntry
 init|=
-literal|"\n@inProceedings{foo,"
+literal|"@inProceedings{foo,"
 operator|+
 literal|"  author={Norton Bar}}"
 decl_stmt|;
@@ -2262,8 +2147,6 @@ literal|"canh05"
 argument_list|)
 condition|)
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|firstEntry
@@ -2277,8 +2160,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|secondEntry
@@ -2291,6 +2172,152 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+annotation|@
+name|Test
+DECL|method|parseRecognizesMultipleEntriesOnSameLine ()
+specifier|public
+name|void
+name|parseRecognizesMultipleEntriesOnSameLine
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+literal|"@article{canh05}"
+operator|+
+literal|"@inProceedings{foo}"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|c
+init|=
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|2
+argument_list|,
+name|c
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Iterator
+argument_list|<
+name|BibEntry
+argument_list|>
+name|i
+init|=
+name|c
+operator|.
+name|iterator
+argument_list|()
+decl_stmt|;
+name|BibEntry
+name|a
+init|=
+name|i
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|BibEntry
+name|b
+init|=
+name|i
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+comment|// Sort them because we can't be sure about the order
+if|if
+condition|(
+name|a
+operator|.
+name|getCiteKey
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"foo"
+argument_list|)
+condition|)
+block|{
+name|BibEntry
+name|tmp
+init|=
+name|a
+decl_stmt|;
+name|a
+operator|=
+name|b
+expr_stmt|;
+name|b
+operator|=
+name|tmp
+expr_stmt|;
+block|}
+name|assertEquals
+argument_list|(
+literal|"article"
+argument_list|,
+name|a
+operator|.
+name|getType
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"canh05"
+argument_list|,
+name|a
+operator|.
+name|getCiteKey
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"inproceedings"
+argument_list|,
+name|b
+operator|.
+name|getType
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"foo"
+argument_list|,
+name|b
+operator|.
+name|getCiteKey
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -2330,8 +2357,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2353,8 +2378,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -2365,8 +2388,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -2377,8 +2398,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -2392,8 +2411,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test and Second Author and Third Author"
@@ -2445,8 +2462,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2468,8 +2483,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -2480,8 +2493,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -2492,8 +2503,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -2507,8 +2516,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test and Second Author and Third Author"
@@ -2561,8 +2568,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2584,8 +2589,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -2596,8 +2599,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -2608,8 +2609,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -2623,8 +2622,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Test, Second Keyword, Third Keyword"
@@ -2730,8 +2727,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2753,8 +2748,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"inproceedings"
@@ -2765,8 +2758,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|8
@@ -2780,8 +2771,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"CroAnnHow05"
@@ -2792,8 +2781,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Crowston, K. and Annabi, H. and Howison, J. and Masango, C."
@@ -2806,8 +2793,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Effective work practices for floss development: A model and propositions"
@@ -2820,8 +2805,6 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Hawaii International Conference On System Sciences (HICSS)"
@@ -2834,8 +2817,6 @@ literal|"booktitle"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2005"
@@ -2848,8 +2829,6 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"oezbek"
@@ -2862,8 +2841,6 @@ literal|"owner"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2006.05.29"
@@ -2876,8 +2853,6 @@ literal|"timestamp"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"http://james.howison.name/publications.html"
@@ -2961,8 +2936,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2984,8 +2957,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"inproceedings"
@@ -2996,8 +2967,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|8
@@ -3011,8 +2980,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"CroAnnHow05"
@@ -3023,8 +2990,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Crowston, K. and Annabi, H. and Howison, J. and Masango, C."
@@ -3037,8 +3002,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Effective work practices for floss development: A model and propositions"
@@ -3051,8 +3014,6 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Hawaii International Conference On System Sciences (HICSS)"
@@ -3065,8 +3026,6 @@ literal|"booktitle"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2005"
@@ -3079,8 +3038,6 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"oezbek"
@@ -3093,8 +3050,6 @@ literal|"owner"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2006.05.29"
@@ -3107,8 +3062,6 @@ literal|"timestamp"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"http://james.howison.name/publications.html"
@@ -3160,8 +3113,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3183,8 +3134,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -3195,8 +3144,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -3207,8 +3154,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -3222,8 +3167,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -3275,8 +3218,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3298,8 +3239,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -3310,8 +3249,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -3322,8 +3259,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -3337,8 +3272,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2005"
@@ -3390,8 +3323,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3413,8 +3344,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -3425,8 +3354,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -3437,8 +3364,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -3452,8 +3377,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -3506,8 +3429,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3529,8 +3450,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -3541,8 +3460,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -3553,8 +3470,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -3568,8 +3483,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"D:\\Documents\\literature\\Tansel-PRL2006.pdf"
@@ -3622,8 +3535,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3645,8 +3556,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -3657,8 +3566,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -3669,8 +3576,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -3684,8 +3589,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"1-4~#nov#"
@@ -3765,8 +3668,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -3822,8 +3723,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -3876,8 +3775,6 @@ operator|.
 name|getDuplicateKeys
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3887,8 +3784,6 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"canh05"
@@ -3948,8 +3843,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3971,8 +3864,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -3983,8 +3874,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -3995,8 +3884,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -4010,8 +3897,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -4073,8 +3958,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -4135,8 +4018,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -4158,8 +4039,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -4170,8 +4049,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -4182,8 +4059,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"escaped \\{ bracket"
@@ -4245,8 +4120,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -4268,8 +4141,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -4280,8 +4151,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -4292,8 +4161,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"escaped \\} bracket"
@@ -4355,8 +4222,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -4406,8 +4271,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Size should be one, but was "
@@ -4425,8 +4288,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Epilog should be preserved"
@@ -4493,8 +4354,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Size should be zero, but was "
@@ -4568,8 +4427,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Size should be zero, but was "
@@ -4646,8 +4503,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -4658,8 +4513,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"author @ good"
@@ -4716,8 +4569,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -4739,8 +4590,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -4751,8 +4600,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -4763,8 +4610,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -4778,8 +4623,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"author @ good"
@@ -4831,8 +4674,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -4854,8 +4695,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -4866,8 +4705,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -4878,8 +4715,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -4893,8 +4728,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Test {Ed {von} Test}"
@@ -4947,8 +4780,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -4970,8 +4801,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -4982,8 +4811,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -4994,8 +4821,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -5009,8 +4834,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Test {\" Test}"
@@ -5072,8 +4895,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -5135,8 +4956,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -5158,8 +4977,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -5170,8 +4987,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -5182,8 +4997,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -5197,8 +5010,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -5251,8 +5062,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -5274,8 +5083,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -5286,8 +5093,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -5298,8 +5103,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|3
@@ -5313,8 +5116,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -5327,8 +5128,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"8,"
@@ -5366,8 +5165,6 @@ literal|"@preamble{some text and \\latex}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"some text and \\latex"
@@ -5406,8 +5203,6 @@ literal|"@PREAMBLE{some text and \\latex}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"some text and \\latex"
@@ -5446,8 +5241,6 @@ literal|"@preamble {some text and \\latex}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"some text and \\latex"
@@ -5486,8 +5279,6 @@ literal|"@preamble(some text and \\latex)"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"some text and \\latex"
@@ -5526,8 +5317,6 @@ literal|"@preamble{\"some text\" # \"and \\latex\"}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"\"some text\" # \"and \\latex\""
@@ -5566,8 +5355,6 @@ literal|"@string{bourdieu = {Bourdieu, Pierre}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -5598,8 +5385,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"bourdieu"
@@ -5610,8 +5395,6 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bourdieu, Pierre"
@@ -5619,6 +5402,88 @@ argument_list|,
 name|s
 operator|.
 name|getContent
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseSavesOneNewlineAfterStringInParsedSerialization ()
+specifier|public
+name|void
+name|parseSavesOneNewlineAfterStringInParsedSerialization
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|String
+name|string
+init|=
+literal|"@string{bourdieu = {Bourdieu, Pierre}}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+decl_stmt|;
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|string
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getStringCount
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|BibtexString
+name|s
+init|=
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getStringValues
+argument_list|()
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|string
+argument_list|,
+name|s
+operator|.
+name|getParsedSerialization
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -5647,8 +5512,6 @@ literal|"@string {bourdieu = {Bourdieu, Pierre}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -5679,8 +5542,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"bourdieu"
@@ -5691,8 +5552,6 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bourdieu, Pierre"
@@ -5728,8 +5587,6 @@ literal|"@string(bourdieu = {Bourdieu, Pierre})"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -5760,8 +5617,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"bourdieu"
@@ -5772,8 +5627,6 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bourdieu, Pierre"
@@ -5811,8 +5664,6 @@ literal|"@string{adieu = {Adieu, Pierre}}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -5887,8 +5738,6 @@ operator|=
 name|tmp
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"bourdieu"
@@ -5899,8 +5748,6 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bourdieu, Pierre"
@@ -5911,8 +5758,6 @@ name|getContent
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"adieu"
@@ -5923,8 +5768,6 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Adieu, Pierre"
@@ -5978,8 +5821,6 @@ literal|"}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -6010,8 +5851,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"bourdieu"
@@ -6022,8 +5861,6 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Bourdieu, Pierre"
@@ -6048,8 +5885,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -6071,8 +5906,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"book"
@@ -6083,8 +5916,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"bourdieu-2002-questions-sociologie"
@@ -6095,8 +5926,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Paris"
@@ -6109,8 +5938,6 @@ literal|"address"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"#bourdieu#"
@@ -6123,8 +5950,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2707318256"
@@ -6137,8 +5962,6 @@ literal|"isbn"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Minuit"
@@ -6151,8 +5974,6 @@ literal|"publisher"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Questions de sociologie"
@@ -6165,8 +5986,6 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"2002"
@@ -6216,8 +6035,6 @@ name|hasWarnings
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -6256,8 +6073,6 @@ literal|"@comment{some text and \\latex}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -6299,8 +6114,6 @@ literal|"@COMMENT{some text and \\latex}"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -6358,8 +6171,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -6381,8 +6192,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -6393,8 +6202,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -6405,8 +6212,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -6420,8 +6225,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -6475,8 +6278,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -6498,8 +6299,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -6510,8 +6309,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -6522,8 +6319,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -6537,8 +6332,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -6576,8 +6369,6 @@ literal|"comment{some text and \\latex"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -6635,8 +6426,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -6658,8 +6447,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -6670,8 +6457,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -6682,8 +6467,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -6697,8 +6480,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -6752,8 +6533,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -6775,8 +6554,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -6787,8 +6564,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -6799,8 +6574,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -6814,8 +6587,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ed von Test"
@@ -6878,8 +6649,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"a b"
@@ -6946,8 +6715,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"a b"
@@ -6960,8 +6727,6 @@ literal|"a"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"a b"
@@ -6974,8 +6739,6 @@ literal|"b"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"a b"
@@ -7038,8 +6801,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"a b"
@@ -7106,8 +6867,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"a b"
@@ -7120,8 +6879,6 @@ literal|"a"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"a b"
@@ -7134,8 +6891,6 @@ literal|"b"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"a b"
@@ -7199,8 +6954,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"ups  sala"
@@ -7269,8 +7022,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"ups  sala"
@@ -7339,8 +7090,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"ups  sala"
@@ -7403,8 +7152,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -7426,8 +7173,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -7438,8 +7183,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -7450,8 +7193,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"H\'{e}lne Fiaux"
@@ -7500,8 +7241,6 @@ name|hasWarnings
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"some text and \\latex"
@@ -7529,8 +7268,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -7552,8 +7289,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"article"
@@ -7564,8 +7299,6 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -7576,8 +7309,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"H\'{e}lne Fiaux"
@@ -7626,8 +7357,6 @@ name|hasWarnings
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"some text and \\latex"
@@ -7639,6 +7368,882 @@ argument_list|()
 operator|.
 name|getPreamble
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseSavesEntryInParsedSerialization ()
+specifier|public
+name|void
+name|parseSavesEntryInParsedSerialization
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|String
+name|testEntry
+init|=
+literal|"@article{test,author={Ed von Test}}"
+decl_stmt|;
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|testEntry
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|c
+init|=
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|c
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|BibEntry
+name|e
+init|=
+name|c
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|testEntry
+argument_list|,
+name|e
+operator|.
+name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseSavesOneNewlineAfterEntryInParsedSerialization ()
+specifier|public
+name|void
+name|parseSavesOneNewlineAfterEntryInParsedSerialization
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|String
+name|testEntry
+init|=
+literal|"@article{test,author={Ed von Test}}"
+decl_stmt|;
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|testEntry
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|c
+init|=
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|c
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|BibEntry
+name|e
+init|=
+name|c
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|testEntry
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|,
+name|e
+operator|.
+name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseSavesNewlinesBeforeEntryInParsedSerialization ()
+specifier|public
+name|void
+name|parseSavesNewlinesBeforeEntryInParsedSerialization
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|String
+name|testEntry
+init|=
+literal|"@article{test,author={Ed von Test}}"
+decl_stmt|;
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|testEntry
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|c
+init|=
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|c
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|BibEntry
+name|e
+init|=
+name|c
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|testEntry
+argument_list|,
+name|e
+operator|.
+name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseSavesOnlyRealNewlinesBeforeEntryInParsedSerialization ()
+specifier|public
+name|void
+name|parseSavesOnlyRealNewlinesBeforeEntryInParsedSerialization
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|String
+name|testEntry
+init|=
+literal|"@article{test,author={Ed von Test}}"
+decl_stmt|;
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+literal|"%Encoding: no"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|testEntry
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|c
+init|=
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|c
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|BibEntry
+name|e
+init|=
+name|c
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|testEntry
+argument_list|,
+name|e
+operator|.
+name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseSavesNewlinesBetweenEntriesInParsedSerialization ()
+specifier|public
+name|void
+name|parseSavesNewlinesBetweenEntriesInParsedSerialization
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|String
+name|testEntryOne
+init|=
+literal|"@article{test1,author={Ed von Test}}"
+decl_stmt|;
+name|String
+name|testEntryTwo
+init|=
+literal|"@article{test2,author={Ed von Test}}"
+decl_stmt|;
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|testEntryOne
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|testEntryTwo
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|c
+init|=
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|2
+argument_list|,
+name|c
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Iterator
+argument_list|<
+name|BibEntry
+argument_list|>
+name|i
+init|=
+name|c
+operator|.
+name|iterator
+argument_list|()
+decl_stmt|;
+name|BibEntry
+name|a
+init|=
+name|i
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|BibEntry
+name|b
+init|=
+name|i
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+comment|// Sort them because we can't be sure about the order
+if|if
+condition|(
+name|a
+operator|.
+name|getCiteKey
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"test2"
+argument_list|)
+condition|)
+block|{
+name|BibEntry
+name|tmp
+init|=
+name|a
+decl_stmt|;
+name|a
+operator|=
+name|b
+expr_stmt|;
+name|b
+operator|=
+name|tmp
+expr_stmt|;
+block|}
+name|assertEquals
+argument_list|(
+name|testEntryOne
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|,
+name|a
+operator|.
+name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|testEntryTwo
+argument_list|,
+name|b
+operator|.
+name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseIgnoresWhitespaceInEpilogue ()
+specifier|public
+name|void
+name|parseIgnoresWhitespaceInEpilogue
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+literal|"   "
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEpilog
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseIgnoresWhitespaceInEpilogueAfterEntry ()
+specifier|public
+name|void
+name|parseIgnoresWhitespaceInEpilogueAfterEntry
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|String
+name|testEntry
+init|=
+literal|"@article{test,author={Ed von Test}}"
+decl_stmt|;
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|testEntry
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"  "
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|c
+init|=
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|c
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|BibEntry
+name|e
+init|=
+name|c
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|testEntry
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|,
+name|e
+operator|.
+name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEpilog
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|parseTrimsWhitespaceInEpilogueAfterEntry ()
+specifier|public
+name|void
+name|parseTrimsWhitespaceInEpilogueAfterEntry
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|String
+name|testEntry
+init|=
+literal|"@article{test,author={Ed von Test}}"
+decl_stmt|;
+name|ParserResult
+name|result
+init|=
+name|BibtexParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|testEntry
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|" epilogue "
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|Collection
+argument_list|<
+name|BibEntry
+argument_list|>
+name|c
+init|=
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEntries
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|c
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|BibEntry
+name|e
+init|=
+name|c
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|testEntry
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|,
+name|e
+operator|.
+name|getParsedSerialization
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"epilogue"
+argument_list|,
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+operator|.
+name|getEpilog
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|checkSaveActionsParsing ()
+specifier|public
+name|void
+name|checkSaveActionsParsing
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|BibtexParser
+name|parser
+init|=
+operator|new
+name|BibtexParser
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+literal|"@InProceedings{6055279,\n"
+operator|+
+literal|"  Title                    = {Educational session 1},\n"
+operator|+
+literal|"  Booktitle                = {Custom Integrated Circuits Conference (CICC), 2011 IEEE},\n"
+operator|+
+literal|"  Year                     = {2011},\n"
+operator|+
+literal|"  Month                    = {Sept},\n"
+operator|+
+literal|"  Pages                    = {1-7},\n"
+operator|+
+literal|"  Abstract                 = {Start of the above-titled section of the conference proceedings record.},\n"
+operator|+
+literal|"  DOI                      = {10.1109/CICC.2011.6055279},\n"
+operator|+
+literal|"  ISSN                     = {0886-5930}\n"
+operator|+
+literal|"}\n"
+operator|+
+literal|"\n"
+operator|+
+literal|"@comment{jabref-meta: saveActions:enabled;title[LowerCaseChanger]}"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|ParserResult
+name|parserResult
+init|=
+name|parser
+operator|.
+name|parse
+argument_list|()
+decl_stmt|;
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|saveActions
+init|=
+name|parserResult
+operator|.
+name|getMetaData
+argument_list|()
+operator|.
+name|getData
+argument_list|(
+name|SaveActions
+operator|.
+name|META_KEY
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"enabled"
+argument_list|,
+name|saveActions
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"title[LowerCaseChanger]"
+argument_list|,
+name|saveActions
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

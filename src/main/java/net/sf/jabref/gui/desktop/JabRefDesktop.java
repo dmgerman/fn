@@ -314,6 +314,18 @@ name|Optional
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
 begin_comment
 comment|/**  * TODO: Replace by http://docs.oracle.com/javase/7/docs/api/java/awt/Desktop.html  * http://stackoverflow.com/questions/18004150/desktop-api-is-not-supported-on-the-current-platform  */
 end_comment
@@ -324,6 +336,20 @@ specifier|public
 class|class
 name|JabRefDesktop
 block|{
+DECL|field|REMOTE_LINK_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|REMOTE_LINK_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"[a-z]+://.*"
+argument_list|)
+decl_stmt|;
 comment|/**      * Open a http/pdf/ps viewer for the given link string.      */
 DECL|method|openExternalViewer (MetaData metaData, String link, String fieldName)
 specifier|public
@@ -374,7 +400,10 @@ argument_list|(
 name|fieldName
 argument_list|)
 decl_stmt|;
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|file
 init|=
 name|FileUtil
@@ -389,14 +418,17 @@ decl_stmt|;
 comment|// Check that the file exists:
 if|if
 condition|(
-operator|(
+operator|!
 name|file
-operator|==
-literal|null
-operator|)
+operator|.
+name|isPresent
+argument_list|()
 operator|||
 operator|!
 name|file
+operator|.
+name|get
+argument_list|()
 operator|.
 name|exists
 argument_list|()
@@ -422,6 +454,9 @@ name|link
 operator|=
 name|file
 operator|.
+name|get
+argument_list|()
+operator|.
 name|getCanonicalPath
 argument_list|()
 expr_stmt|;
@@ -431,6 +466,9 @@ index|[]
 name|split
 init|=
 name|file
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getName
 argument_list|()
@@ -1202,8 +1240,6 @@ literal|false
 decl_stmt|;
 if|if
 condition|(
-name|Util
-operator|.
 name|REMOTE_LINK_PATTERN
 operator|.
 name|matcher
@@ -1242,7 +1278,10 @@ operator|!
 name|httpLink
 condition|)
 block|{
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|tmp
 init|=
 name|FileUtil
@@ -1257,13 +1296,17 @@ decl_stmt|;
 if|if
 condition|(
 name|tmp
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 name|file
 operator|=
 name|tmp
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -1659,6 +1702,13 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|temp
+operator|!=
+literal|null
+condition|)
+block|{
 specifier|final
 name|String
 name|ln
@@ -1711,6 +1761,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|openExternalFileUnknown (JabRefFrame frame, BibEntry entry, MetaData metaData, String link, UnknownExternalFileType fileType)
 specifier|public
@@ -1928,12 +1979,7 @@ init|=
 operator|new
 name|ArrayList
 argument_list|<>
-argument_list|()
-decl_stmt|;
-name|ExternalFileType
-index|[]
-name|oldTypes
-init|=
+argument_list|(
 name|ExternalFileTypes
 operator|.
 name|getInstance
@@ -1941,16 +1987,8 @@ argument_list|()
 operator|.
 name|getExternalFileTypeSelection
 argument_list|()
-decl_stmt|;
-name|Collections
-operator|.
-name|addAll
-argument_list|(
-name|fileTypes
-argument_list|,
-name|oldTypes
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|fileTypes
 operator|.
 name|add

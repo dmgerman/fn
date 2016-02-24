@@ -207,7 +207,10 @@ name|dbs
 init|=
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|getDBStrings
@@ -265,7 +268,7 @@ if|if
 condition|(
 name|dbd
 operator|.
-name|getConnectToDB
+name|isConnectedToDB
 argument_list|()
 condition|)
 block|{
@@ -427,7 +430,10 @@ finally|finally
 block|{
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 operator|.
 name|setDBStrings

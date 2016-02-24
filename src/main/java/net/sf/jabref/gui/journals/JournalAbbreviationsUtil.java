@@ -44,25 +44,19 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|journals
+name|l10n
 operator|.
-name|JournalAbbreviationRepository
+name|Localization
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|l10n
-operator|.
-name|Localization
+name|Collection
 import|;
 end_import
 
@@ -96,14 +90,17 @@ specifier|public
 class|class
 name|JournalAbbreviationsUtil
 block|{
-DECL|method|getTableModel (JournalAbbreviationRepository journalAbbreviationRepository)
+DECL|method|getTableModel (Collection<Abbreviation> abbreviations)
 specifier|public
 specifier|static
 name|TableModel
 name|getTableModel
 parameter_list|(
-name|JournalAbbreviationRepository
-name|journalAbbreviationRepository
+name|Collection
+argument_list|<
+name|Abbreviation
+argument_list|>
+name|abbreviations
 parameter_list|)
 block|{
 name|Object
@@ -114,7 +111,7 @@ init|=
 operator|new
 name|Object
 index|[
-name|journalAbbreviationRepository
+name|abbreviations
 operator|.
 name|size
 argument_list|()
@@ -133,10 +130,7 @@ control|(
 name|Abbreviation
 name|abbreviation
 range|:
-name|journalAbbreviationRepository
-operator|.
-name|getAbbreviations
-argument_list|()
+name|abbreviations
 control|)
 block|{
 name|cells

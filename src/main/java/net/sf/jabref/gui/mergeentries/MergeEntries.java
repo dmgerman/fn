@@ -104,6 +104,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseMode
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -449,6 +465,12 @@ specifier|final
 name|BibEntry
 name|two
 decl_stmt|;
+DECL|field|type
+specifier|private
+specifier|final
+name|BibDatabaseMode
+name|type
+decl_stmt|;
 DECL|field|jta
 specifier|private
 name|JTextArea
@@ -510,7 +532,7 @@ init|=
 literal|"10px"
 decl_stmt|;
 comment|/**      * Constructor taking two entries      *      * @param bOne First entry      * @param bTwo Second entry      */
-DECL|method|MergeEntries (BibEntry bOne, BibEntry bTwo)
+DECL|method|MergeEntries (BibEntry bOne, BibEntry bTwo, BibDatabaseMode type)
 specifier|public
 name|MergeEntries
 parameter_list|(
@@ -519,6 +541,9 @@ name|bOne
 parameter_list|,
 name|BibEntry
 name|bTwo
+parameter_list|,
+name|BibDatabaseMode
+name|type
 parameter_list|)
 block|{
 name|one
@@ -529,12 +554,18 @@ name|two
 operator|=
 name|bTwo
 expr_stmt|;
+name|this
+operator|.
+name|type
+operator|=
+name|type
+expr_stmt|;
 name|initialize
 argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Constructor with optional column captions for the two entries      *      * @param bOne First entry      * @param bTwo Second entry      * @param headingOne Heading for first entry      * @param headingTwo Heading for second entry      */
-DECL|method|MergeEntries (BibEntry bOne, BibEntry bTwo, String headingOne, String headingTwo)
+DECL|method|MergeEntries (BibEntry bOne, BibEntry bTwo, String headingOne, String headingTwo, BibDatabaseMode type)
 specifier|public
 name|MergeEntries
 parameter_list|(
@@ -549,6 +580,9 @@ name|headingOne
 parameter_list|,
 name|String
 name|headingTwo
+parameter_list|,
+name|BibDatabaseMode
+name|type
 parameter_list|)
 block|{
 name|columnHeadings
@@ -572,6 +606,12 @@ expr_stmt|;
 name|two
 operator|=
 name|bTwo
+expr_stmt|;
+name|this
+operator|.
+name|type
+operator|=
+name|type
 expr_stmt|;
 name|initialize
 argument_list|()
@@ -2408,6 +2448,8 @@ argument_list|(
 name|mergedEntry
 argument_list|,
 name|sw
+argument_list|,
+name|type
 argument_list|)
 expr_stmt|;
 block|}
@@ -2856,6 +2898,8 @@ argument_list|(
 name|mergedEntry
 argument_list|,
 name|sw
+argument_list|,
+name|type
 argument_list|)
 expr_stmt|;
 block|}

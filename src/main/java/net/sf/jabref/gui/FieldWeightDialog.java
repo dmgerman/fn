@@ -148,6 +148,22 @@ name|Localization
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|entry
+operator|.
+name|BibEntry
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Aug 23, 2005  * Time: 11:30:48 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -349,7 +365,7 @@ literal|0
 init|,
 name|len
 init|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|numberOfPublicFields
 argument_list|()
@@ -366,7 +382,7 @@ name|fields
 operator|.
 name|add
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getFieldName
 argument_list|(
@@ -379,7 +395,9 @@ name|fields
 operator|.
 name|remove
 argument_list|(
-literal|"bibtexkey"
+name|BibEntry
+operator|.
+name|KEY_FIELD
 argument_list|)
 expr_stmt|;
 comment|// bibtex key doesn't need weight.
@@ -410,7 +428,7 @@ argument_list|(
 operator|(
 literal|100
 operator|*
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getFieldWeight
 argument_list|(
@@ -626,7 +644,7 @@ operator|)
 operator|/
 literal|100d
 decl_stmt|;
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|setFieldWeight
 argument_list|(

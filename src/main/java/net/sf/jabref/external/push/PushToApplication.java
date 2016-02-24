@@ -78,6 +78,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -128,16 +138,18 @@ name|void
 name|storeSettings
 parameter_list|()
 function_decl|;
-comment|/**      * The actual operation. This method will not be called on the event dispatch thread, so it should not do GUI      * operations without utilizing invokeLater().      *       * @param database      * @param entries      * @param metaData      */
-DECL|method|pushEntries (BibDatabase database, BibEntry[] entries, String keyString, MetaData metaData)
+comment|/**      * The actual operation. This method will not be called on the event dispatch thread, so it should not do GUI      * operations without utilizing invokeLater().      *      * @param database      * @param entries      * @param metaData      */
+DECL|method|pushEntries (BibDatabase database, List<BibEntry> entries, String keyString, MetaData metaData)
 name|void
 name|pushEntries
 parameter_list|(
 name|BibDatabase
 name|database
 parameter_list|,
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|,
 name|String
@@ -156,7 +168,7 @@ name|BasePanel
 name|panel
 parameter_list|)
 function_decl|;
-comment|/**      * Check whether this operation requires BibTeX keys to be set for the entries. If true is returned an error message      * will be displayed if keys are missing.      *       * @return true if BibTeX keys are required for this operation.      */
+comment|/**      * Check whether this operation requires BibTeX keys to be set for the entries. If true is returned an error message      * will be displayed if keys are missing.      *      * @return true if BibTeX keys are required for this operation.      */
 DECL|method|requiresBibtexKeys ()
 name|boolean
 name|requiresBibtexKeys

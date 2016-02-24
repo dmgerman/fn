@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -41,6 +41,22 @@ operator|.
 name|bibtex
 operator|.
 name|BibEntryWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -126,6 +142,16 @@ name|StringWriter
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/*  * A transferable object containing an array of BibEntry objects. Used  * for copy-paste operations.  */
 end_comment
@@ -141,8 +167,10 @@ block|{
 DECL|field|data
 specifier|private
 specifier|final
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|data
 decl_stmt|;
 DECL|field|entryFlavor
@@ -162,20 +190,22 @@ argument_list|,
 literal|"JabRef entry"
 argument_list|)
 decl_stmt|;
-DECL|method|TransferableBibtexEntry (BibEntry[] data)
+DECL|method|TransferableBibtexEntry (List<BibEntry> bes)
 specifier|public
 name|TransferableBibtexEntry
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
-name|data
+argument_list|>
+name|bes
 parameter_list|)
 block|{
 name|this
 operator|.
 name|data
 operator|=
-name|data
+name|bes
 expr_stmt|;
 block|}
 annotation|@
@@ -312,6 +342,10 @@ argument_list|(
 name|entry
 argument_list|,
 name|sw
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 block|}

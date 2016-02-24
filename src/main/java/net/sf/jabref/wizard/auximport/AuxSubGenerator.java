@@ -348,19 +348,20 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|AuxSubGenerator (BibDatabase refDBase)
-specifier|public
-name|AuxSubGenerator
-parameter_list|(
-name|BibDatabase
-name|refDBase
-parameter_list|)
-block|{
-name|db
-operator|=
-name|refDBase
-expr_stmt|;
-block|}
+DECL|field|TAG_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|TAG_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\\\(citation|abx@aux@cite)\\{(.+)\\}"
+argument_list|)
+decl_stmt|;
 comment|/**      * parseAuxFile read the Aux file and fill up some intern data structures. Nested aux files (latex \\include)      * supported!      *      * @param filename String : Path to LatexAuxFile      * @return boolean, true = no error occurs      */
 comment|// found at comp.text.tex
 comment|//> Can anyone tell be the information held within a .aux file?  Is there a
@@ -399,9 +400,6 @@ name|filename
 parameter_list|)
 block|{
 comment|// regular expressions
-name|Pattern
-name|pattern
-decl_stmt|;
 name|Matcher
 name|matcher
 decl_stmt|;
@@ -415,16 +413,6 @@ name|back
 init|=
 literal|true
 decl_stmt|;
-comment|// the important tag
-name|pattern
-operator|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\\\(citation|abx@aux@cite)\\{(.+)\\}"
-argument_list|)
-expr_stmt|;
 comment|// file list, used for nested aux files
 name|List
 argument_list|<
@@ -597,7 +585,7 @@ argument_list|()
 decl_stmt|;
 name|matcher
 operator|=
-name|pattern
+name|TAG_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -655,13 +643,6 @@ argument_list|(
 literal|","
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|keys
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|String
@@ -669,13 +650,6 @@ name|dummyStr
 range|:
 name|keys
 control|)
-block|{
-if|if
-condition|(
-name|dummyStr
-operator|!=
-literal|null
-condition|)
 block|{
 comment|// delete all unnecessary blanks and save key into an set
 name|mySet
@@ -688,8 +662,6 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 block|}
@@ -1227,7 +1199,18 @@ name|crossreferencedEntriesCount
 operator|=
 literal|0
 expr_stmt|;
-comment|// db = null ;  ???
+name|nestedAuxCounter
+operator|=
+literal|0
+expr_stmt|;
+name|db
+operator|=
+literal|null
+expr_stmt|;
+name|auxDB
+operator|=
+literal|null
+expr_stmt|;
 block|}
 comment|/**      * returns the number of nested aux files, read by the last call of generate method      */
 DECL|method|getNestedAuxCounter ()
@@ -1251,11 +1234,11 @@ name|boolean
 name|includeMissingEntries
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|result
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 comment|// print statistics
@@ -1386,6 +1369,11 @@ name|append
 argument_list|(
 name|getCrossreferencedEntriesCount
 argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'\n'
 argument_list|)
 expr_stmt|;
 if|if

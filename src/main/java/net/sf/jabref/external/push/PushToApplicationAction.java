@@ -32,6 +32,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -174,8 +184,10 @@ name|panel
 decl_stmt|;
 DECL|field|entries
 specifier|private
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 decl_stmt|;
 DECL|method|PushToApplicationAction (JabRefFrame frame, PushToApplication operation)
@@ -278,9 +290,8 @@ if|if
 condition|(
 name|entries
 operator|.
-name|length
-operator|==
-literal|0
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|JOptionPane
@@ -423,7 +434,10 @@ argument_list|)
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -455,14 +469,16 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getKeyString (BibEntry[] bibentries)
+DECL|method|getKeyString (List<BibEntry> bibentries)
 specifier|private
 specifier|static
 name|String
 name|getKeyString
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|bibentries
 parameter_list|)
 block|{

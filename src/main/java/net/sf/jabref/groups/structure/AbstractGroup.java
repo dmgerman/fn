@@ -20,6 +20,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -27,6 +37,22 @@ operator|.
 name|undo
 operator|.
 name|AbstractUndoableEdit
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|SearchMatcher
 import|;
 end_import
 
@@ -62,22 +88,6 @@ name|BibEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|SearchRule
-import|;
-end_import
-
 begin_comment
 comment|/**  * A group of BibtexEntries.  */
 end_comment
@@ -88,6 +98,8 @@ specifier|public
 specifier|abstract
 class|class
 name|AbstractGroup
+implements|implements
+name|SearchMatcher
 block|{
 comment|/**      * The group's name (every type of group has one).      */
 DECL|field|name
@@ -150,14 +162,6 @@ name|SEPARATOR
 init|=
 literal|";"
 decl_stmt|;
-comment|/**      * @return A search rule that will identify this group's entries.      */
-DECL|method|getSearchRule ()
-specifier|public
-specifier|abstract
-name|SearchRule
-name|getSearchRule
-parameter_list|()
-function_decl|;
 comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception If an error occured and a group could not be created, e.g.      *                   due to a malformed regular expression.      */
 DECL|method|fromString (String s, BibDatabase db, int version)
 specifier|public
@@ -329,41 +333,31 @@ name|supportsRemove
 parameter_list|()
 function_decl|;
 comment|/**      * Adds the specified entries to this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, an object is returned that allows to      * undo this change. null is returned otherwise.      */
-DECL|method|add (BibEntry[] entries)
+DECL|method|add (List<BibEntry> entries)
 specifier|public
 specifier|abstract
 name|AbstractUndoableEdit
 name|add
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 function_decl|;
 comment|/**      * Removes the specified entries from this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, an object is returned that allows to      * undo this change. null is returned otherwise.      */
-DECL|method|remove (BibEntry[] entries)
+DECL|method|remove (List<BibEntry> entries)
 specifier|public
 specifier|abstract
 name|AbstractUndoableEdit
 name|remove
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
-parameter_list|)
-function_decl|;
-comment|/**      * @param query The search option to apply.      * @return true if this group contains the specified entry, false otherwise.      */
-DECL|method|contains (String query, BibEntry entry)
-specifier|public
-specifier|abstract
-name|boolean
-name|contains
-parameter_list|(
-name|String
-name|query
-parameter_list|,
-name|BibEntry
-name|entry
 parameter_list|)
 function_decl|;
 comment|/**      * @return true if this group contains the specified entry, false otherwise.      */
@@ -377,14 +371,32 @@ name|BibEntry
 name|entry
 parameter_list|)
 function_decl|;
+DECL|method|isMatch (BibEntry entry)
+specifier|public
+name|boolean
+name|isMatch
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|contains
+argument_list|(
+name|entry
+argument_list|)
+return|;
+block|}
 comment|/**      * @return true if this group contains any of the specified entries, false      * otherwise.      */
-DECL|method|containsAny (BibEntry[] entries)
+DECL|method|containsAny (List<BibEntry> entries)
 specifier|public
 name|boolean
 name|containsAny
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{
@@ -414,13 +426,15 @@ literal|false
 return|;
 block|}
 comment|/**      * @return true if this group contains all of the specified entries, false      * otherwise.      */
-DECL|method|containsAll (BibEntry[] entries)
+DECL|method|containsAll (List<BibEntry> entries)
 specifier|public
 name|boolean
 name|containsAll
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{

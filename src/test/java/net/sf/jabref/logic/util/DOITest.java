@@ -192,6 +192,28 @@ name|IllegalArgumentException
 operator|.
 name|class
 argument_list|)
+DECL|method|rejectInvalidDoiUri ()
+specifier|public
+name|void
+name|rejectInvalidDoiUri
+parameter_list|()
+block|{
+operator|new
+name|DOI
+argument_list|(
+literal|"https://thisisnouri"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|IllegalArgumentException
+operator|.
+name|class
+argument_list|)
 DECL|method|rejectMissingDivider ()
 specifier|public
 name|void

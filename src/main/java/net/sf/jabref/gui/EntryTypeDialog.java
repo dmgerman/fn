@@ -128,7 +128,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefPreferences
+name|BibDatabaseContext
 import|;
 end_import
 
@@ -186,7 +186,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
 name|EntryTypes
 import|;
@@ -264,6 +264,12 @@ operator|new
 name|CancelAction
 argument_list|()
 decl_stmt|;
+DECL|field|bibDatabaseContext
+specifier|private
+specifier|final
+name|BibDatabaseContext
+name|bibDatabaseContext
+decl_stmt|;
 DECL|class|TypeButton
 specifier|static
 class|class
@@ -277,6 +283,7 @@ name|TypeButton
 argument_list|>
 block|{
 DECL|field|type
+specifier|private
 specifier|final
 name|EntryType
 name|type
@@ -332,6 +339,16 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+DECL|method|getType ()
+specifier|public
+name|EntryType
+name|getType
+parameter_list|()
+block|{
+return|return
+name|type
+return|;
+block|}
 block|}
 DECL|method|EntryTypeDialog (JabRefFrame frame)
 specifier|public
@@ -349,18 +366,22 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+name|bibDatabaseContext
+operator|=
+name|frame
+operator|.
+name|getCurrentBasePanel
+argument_list|()
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+expr_stmt|;
 name|biblatexMode
 operator|=
-name|Globals
+name|bibDatabaseContext
 operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|BIBLATEX_MODE
-argument_list|)
+name|isBiblatexMode
+argument_list|()
 expr_stmt|;
 name|setTitle
 argument_list|(
@@ -482,7 +503,12 @@ argument_list|,
 name|EntryTypes
 operator|.
 name|getAllValues
+argument_list|(
+name|bibDatabaseContext
+operator|.
+name|getMode
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -855,7 +881,8 @@ name|getSource
 argument_list|()
 operator|)
 operator|.
-name|type
+name|getType
+argument_list|()
 expr_stmt|;
 block|}
 name|dispose

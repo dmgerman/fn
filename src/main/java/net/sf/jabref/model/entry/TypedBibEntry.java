@@ -26,7 +26,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
 name|EntryTypes
 import|;
@@ -45,6 +45,22 @@ operator|.
 name|database
 operator|.
 name|BibDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
+name|database
+operator|.
+name|BibDatabaseMode
 import|;
 end_import
 
@@ -89,7 +105,37 @@ name|BibDatabase
 argument_list|>
 name|database
 decl_stmt|;
-DECL|method|TypedBibEntry (BibEntry entry, Optional<BibDatabase> database)
+DECL|field|mode
+specifier|private
+specifier|final
+name|BibDatabaseMode
+name|mode
+decl_stmt|;
+DECL|method|TypedBibEntry (BibEntry entry, BibDatabaseMode mode)
+specifier|public
+name|TypedBibEntry
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|,
+name|BibDatabaseMode
+name|mode
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|entry
+argument_list|,
+name|Optional
+operator|.
+name|empty
+argument_list|()
+argument_list|,
+name|mode
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|TypedBibEntry (BibEntry entry, Optional<BibDatabase> database, BibDatabaseMode mode)
 specifier|public
 name|TypedBibEntry
 parameter_list|(
@@ -101,6 +147,9 @@ argument_list|<
 name|BibDatabase
 argument_list|>
 name|database
+parameter_list|,
+name|BibDatabaseMode
+name|mode
 parameter_list|)
 block|{
 name|this
@@ -125,6 +174,12 @@ argument_list|(
 name|database
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|mode
+operator|=
+name|mode
+expr_stmt|;
 block|}
 comment|/**      * Returns true if this entry contains the fields it needs to be      * complete.      */
 DECL|method|hasAllRequiredFields ()
@@ -133,7 +188,10 @@ name|boolean
 name|hasAllRequiredFields
 parameter_list|()
 block|{
+name|Optional
+argument_list|<
 name|EntryType
+argument_list|>
 name|type
 init|=
 name|EntryTypes
@@ -144,14 +202,29 @@ name|entry
 operator|.
 name|getType
 argument_list|()
+argument_list|,
+name|this
+operator|.
+name|mode
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|type
+operator|.
+name|isPresent
+argument_list|()
+condition|)
+block|{
 return|return
 name|entry
 operator|.
 name|allFieldsPresent
 argument_list|(
 name|type
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getRequiredFields
 argument_list|()
@@ -165,6 +238,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+else|else
+block|{
+return|return
+literal|true
+return|;
+block|}
+block|}
 comment|/**      * Gets the display name for the type of the entry.      */
 DECL|method|getTypeForDisplay ()
 specifier|public
@@ -172,7 +252,10 @@ name|String
 name|getTypeForDisplay
 parameter_list|()
 block|{
+name|Optional
+argument_list|<
 name|EntryType
+argument_list|>
 name|entryType
 init|=
 name|EntryTypes
@@ -183,17 +266,23 @@ name|entry
 operator|.
 name|getType
 argument_list|()
+argument_list|,
+name|mode
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
 name|entryType
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return
 name|entryType
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getName
 argument_list|()

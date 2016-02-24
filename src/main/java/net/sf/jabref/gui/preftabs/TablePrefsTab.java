@@ -234,7 +234,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BibtexFields
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -453,7 +453,7 @@ operator|new
 name|ArrayList
 argument_list|<>
 argument_list|(
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|getAllFieldNames
 argument_list|()
@@ -2158,7 +2158,7 @@ argument_list|,
 name|newVal
 argument_list|)
 expr_stmt|;
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|setNumericFieldsFromPrefs
 argument_list|()

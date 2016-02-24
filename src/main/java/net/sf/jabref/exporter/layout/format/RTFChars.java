@@ -66,6 +66,24 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|strings
+operator|.
+name|RtfCharMap
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache

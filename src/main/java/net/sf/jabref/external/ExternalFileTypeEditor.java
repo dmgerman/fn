@@ -100,6 +100,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -503,8 +513,10 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+name|Collection
+argument_list|<
 name|ExternalFileType
-index|[]
+argument_list|>
 name|types
 init|=
 name|ExternalFileTypes
@@ -645,10 +657,6 @@ parameter_list|)
 block|{
 comment|/*int reply = JOptionPane.showConfirmDialog(ExternalFileTypeEditor.this,                         Globals.lang("All custom file types will be lost. Proceed?"),                         Globals.lang("Reset file type definitions"), JOptionPane.YES_NO_OPTION,                         JOptionPane.QUESTION_MESSAGE);*/
 comment|//if (reply == JOptionPane.YES_OPTION) {
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|ExternalFileType

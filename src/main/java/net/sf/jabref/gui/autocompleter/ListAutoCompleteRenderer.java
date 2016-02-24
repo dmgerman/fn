@@ -161,6 +161,8 @@ name|E
 argument_list|>
 block|{
 DECL|field|model
+specifier|private
+specifier|final
 name|DefaultListModel
 argument_list|<
 name|E
@@ -173,6 +175,8 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|list
+specifier|private
+specifier|final
 name|JList
 argument_list|<
 name|E
@@ -190,7 +194,7 @@ DECL|field|acceptAction
 name|ActionListener
 name|acceptAction
 decl_stmt|;
-comment|/**      * Every selection change by the user is interpreted as accepting the new item as autocompletion. Thus we need this      * helper variable to prevent that also programmatical trigger an autocompletion.      */
+comment|/**      * Every selection change by the user is interpreted as accepting the new item as autocompletion. Thus we need this      * helper variable to prevent that also programmatically trigger an autocompletion.      */
 DECL|field|interpretSelectionChangeAsAccept
 name|Boolean
 name|interpretSelectionChangeAsAccept
@@ -214,9 +218,17 @@ block|{
 if|if
 condition|(
 name|autoCompletions
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+name|model
+operator|.
+name|removeAllElements
+argument_list|()
+expr_stmt|;
+block|}
+else|else
 block|{
 name|list
 operator|.
@@ -233,14 +245,6 @@ expr_stmt|;
 name|list
 operator|.
 name|clearSelection
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|model
-operator|.
-name|removeAllElements
 argument_list|()
 expr_stmt|;
 block|}

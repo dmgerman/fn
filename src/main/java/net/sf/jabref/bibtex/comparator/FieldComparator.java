@@ -28,7 +28,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|BibtexFields
+name|InternalBibtexFields
 import|;
 end_import
 
@@ -45,6 +45,22 @@ operator|.
 name|maintable
 operator|.
 name|MainTableFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|config
+operator|.
+name|SaveOrderConfig
 import|;
 end_import
 
@@ -167,6 +183,16 @@ operator|.
 name|util
 operator|.
 name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
 import|;
 end_import
 
@@ -321,7 +347,12 @@ name|this
 operator|.
 name|fieldName
 operator|=
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|field
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -417,7 +448,7 @@ argument_list|)
 expr_stmt|;
 name|isNumeric
 operator|=
-name|BibtexFields
+name|InternalBibtexFields
 operator|.
 name|isNumeric
 argument_list|(
@@ -427,6 +458,28 @@ name|field
 index|[
 literal|0
 index|]
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|FieldComparator (SaveOrderConfig.SortCriterion sortCriterion)
+specifier|public
+name|FieldComparator
+parameter_list|(
+name|SaveOrderConfig
+operator|.
+name|SortCriterion
+name|sortCriterion
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|sortCriterion
+operator|.
+name|field
+argument_list|,
+name|sortCriterion
+operator|.
+name|descending
 argument_list|)
 expr_stmt|;
 block|}
@@ -915,7 +968,6 @@ argument_list|,
 name|theirs
 argument_list|)
 expr_stmt|;
-comment|//ours.compareTo(theirs);
 block|}
 return|return
 name|result

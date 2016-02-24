@@ -134,7 +134,8 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 operator|.
-name|length
+name|size
+argument_list|()
 operator|!=
 literal|1
 condition|)
@@ -149,9 +150,11 @@ name|panel
 operator|.
 name|getSelectedEntries
 argument_list|()
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 decl_stmt|;
 name|FileListEntry
 name|flEntry
@@ -185,7 +188,10 @@ literal|true
 argument_list|,
 name|panel
 operator|.
-name|metaData
+name|getBibDatabaseContext
+argument_list|()
+operator|.
+name|getMetaData
 argument_list|()
 argument_list|)
 decl_stmt|;

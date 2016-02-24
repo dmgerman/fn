@@ -559,6 +559,13 @@ name|Container
 name|win
 parameter_list|)
 block|{
+if|if
+condition|(
+name|diag
+operator|!=
+literal|null
+condition|)
+block|{
 name|diag
 operator|.
 name|setLocationRelativeTo
@@ -566,6 +573,7 @@ argument_list|(
 name|win
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

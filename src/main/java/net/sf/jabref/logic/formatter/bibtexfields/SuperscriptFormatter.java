@@ -42,6 +42,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Matcher
@@ -72,6 +82,38 @@ name|SuperscriptFormatter
 implements|implements
 name|Formatter
 block|{
+comment|// find possible superscripts on word boundaries
+DECL|field|SUPERSCRIPT_DETECT_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|SUPERSCRIPT_DETECT_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\b(\\d+)(st|nd|rd|th)\\b"
+argument_list|,
+name|Pattern
+operator|.
+name|CASE_INSENSITIVE
+operator||
+name|Pattern
+operator|.
+name|MULTILINE
+argument_list|)
+decl_stmt|;
+DECL|field|SUPERSCRIPT_REPLACE_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SUPERSCRIPT_REPLACE_PATTERN
+init|=
+literal|"$1\\\\textsuperscript{$2}"
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getName ()
@@ -108,48 +150,22 @@ name|String
 name|value
 parameter_list|)
 block|{
-comment|// find possible superscripts on word boundaries
-specifier|final
-name|Pattern
-name|pattern
-init|=
-name|Pattern
+name|Objects
 operator|.
-name|compile
+name|requireNonNull
 argument_list|(
-literal|"\\b(\\d+)(st|nd|rd|th)\\b"
-argument_list|,
-name|Pattern
-operator|.
-name|CASE_INSENSITIVE
-operator||
-name|Pattern
-operator|.
-name|MULTILINE
+name|value
 argument_list|)
-decl_stmt|;
-comment|// adds superscript tag
-specifier|final
-name|String
-name|replace
-init|=
-literal|"$1\\\\textsuperscript{$2}"
-decl_stmt|;
-comment|// nothing to do
+expr_stmt|;
 if|if
 condition|(
-operator|(
-name|value
-operator|==
-literal|null
-operator|)
-operator|||
 name|value
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
+comment|// nothing to do
 return|return
 name|value
 return|;
@@ -157,7 +173,7 @@ block|}
 name|Matcher
 name|matcher
 init|=
-name|pattern
+name|SUPERSCRIPT_DETECT_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -165,12 +181,13 @@ name|value
 argument_list|)
 decl_stmt|;
 comment|// replace globally
+comment|// adds superscript tag
 return|return
 name|matcher
 operator|.
 name|replaceAll
 argument_list|(
-name|replace
+name|SUPERSCRIPT_REPLACE_PATTERN
 argument_list|)
 return|;
 block|}

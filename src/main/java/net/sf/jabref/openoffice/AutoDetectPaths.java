@@ -230,6 +230,24 @@ name|AutoDetectPaths
 extends|extends
 name|AbstractWorker
 block|{
+DECL|field|SOFFICE
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SOFFICE
+init|=
+literal|"soffice"
+decl_stmt|;
+DECL|field|SOFFICE_BIN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SOFFICE_BIN
+init|=
+literal|"soffice.bin"
+decl_stmt|;
 DECL|field|LOGGER
 specifier|private
 specifier|static
@@ -940,7 +958,7 @@ name|findFileDir
 argument_list|(
 name|rootDir
 argument_list|,
-literal|"soffice.bin"
+name|SOFFICE_BIN
 argument_list|)
 decl_stmt|;
 if|if
@@ -972,7 +990,7 @@ name|rootDir
 argument_list|,
 name|sOffice
 argument_list|,
-literal|"soffice.bin"
+name|SOFFICE_BIN
 argument_list|)
 return|;
 block|}
@@ -996,7 +1014,7 @@ argument_list|(
 name|usrRoot
 argument_list|)
 argument_list|,
-literal|"soffice"
+name|SOFFICE
 argument_list|)
 decl_stmt|;
 if|if
@@ -1025,7 +1043,7 @@ argument_list|(
 literal|"/usr/lib64"
 argument_list|)
 argument_list|,
-literal|"soffice"
+name|SOFFICE
 argument_list|)
 expr_stmt|;
 if|if
@@ -1061,7 +1079,7 @@ argument_list|(
 literal|"/opt"
 argument_list|)
 argument_list|,
-literal|"soffice"
+name|SOFFICE
 argument_list|)
 decl_stmt|;
 if|if
@@ -1095,7 +1113,7 @@ name|usrRoot
 argument_list|,
 name|inUsr
 argument_list|,
-literal|"soffice.bin"
+name|SOFFICE_BIN
 argument_list|)
 return|;
 block|}
@@ -1121,7 +1139,7 @@ literal|"/opt"
 argument_list|,
 name|inOpt
 argument_list|,
-literal|"soffice.bin"
+name|SOFFICE_BIN
 argument_list|)
 return|;
 block|}
@@ -1297,7 +1315,7 @@ literal|"/opt"
 argument_list|,
 name|inOpt
 argument_list|,
-literal|"soffice.bin"
+name|SOFFICE_BIN
 argument_list|)
 return|;
 block|}
@@ -1310,7 +1328,7 @@ name|usrRoot
 argument_list|,
 name|inUsr
 argument_list|,
-literal|"soffice.bin"
+name|SOFFICE_BIN
 argument_list|)
 return|;
 block|}
@@ -1954,9 +1972,6 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-comment|//parent);
-comment|//SwingUtilities.invokeLater(new Runnable() {
-comment|//    public void run() {
 name|progressDialog
 operator|.
 name|setVisible
@@ -1964,8 +1979,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//    }
-comment|//});
 return|return
 name|progressDialog
 return|;

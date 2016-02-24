@@ -90,6 +90,22 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|database
+operator|.
+name|BibDatabaseMode
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|entry
 operator|.
 name|BibEntry
@@ -103,16 +119,6 @@ operator|.
 name|junit
 operator|.
 name|AfterClass
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
 import|;
 end_import
 
@@ -204,7 +210,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
+name|*
 import|;
 end_import
 
@@ -248,20 +254,6 @@ operator|=
 name|Globals
 operator|.
 name|prefs
-expr_stmt|;
-comment|// ensure BibTeX mode
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|BIBLATEX_MODE
-argument_list|,
-literal|false
-argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -329,12 +321,7 @@ name|BibEntry
 argument_list|(
 literal|"1234"
 argument_list|,
-name|EntryTypes
-operator|.
-name|getType
-argument_list|(
-literal|"Article"
-argument_list|)
+literal|"article"
 argument_list|)
 decl_stmt|;
 comment|//set a required field
@@ -382,6 +369,10 @@ argument_list|(
 name|entry
 argument_list|,
 name|stringWriter
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 name|String
@@ -396,10 +387,6 @@ comment|// @formatter:off
 name|String
 name|expected
 init|=
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
 name|Globals
 operator|.
 name|NEWLINE
@@ -435,6 +422,10 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 decl_stmt|;
 comment|// @formatter:on
 name|assertEquals
@@ -521,8 +512,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -544,8 +533,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -556,8 +543,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -582,8 +567,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -594,8 +577,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Foo Bar"
@@ -623,6 +604,10 @@ argument_list|(
 name|entry
 argument_list|,
 name|stringWriter
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 name|String
@@ -717,8 +702,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -740,8 +723,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -752,8 +733,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -778,8 +757,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -790,8 +767,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Foo Bar"
@@ -819,6 +794,10 @@ argument_list|(
 name|entry
 argument_list|,
 name|stringWriter
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 name|String
@@ -917,8 +896,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -940,8 +917,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -952,8 +927,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -988,8 +961,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -1000,8 +971,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BlaBla"
@@ -1029,6 +998,10 @@ argument_list|(
 name|entry
 argument_list|,
 name|stringWriter
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 name|String
@@ -1043,10 +1016,6 @@ comment|// @formatter:off
 name|String
 name|expected
 init|=
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
 name|Globals
 operator|.
 name|NEWLINE
@@ -1082,6 +1051,10 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 decl_stmt|;
 comment|// @formatter:on
 name|assertEquals
@@ -1178,8 +1151,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1201,8 +1172,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1213,8 +1182,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|6
@@ -1249,8 +1216,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -1261,8 +1226,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"BlaBla"
@@ -1290,6 +1253,10 @@ argument_list|(
 name|entry
 argument_list|,
 name|stringWriter
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 name|String
@@ -1304,10 +1271,6 @@ comment|// @formatter:off
 name|String
 name|expected
 init|=
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
 name|Globals
 operator|.
 name|NEWLINE
@@ -1349,6 +1312,10 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 decl_stmt|;
 comment|// @formatter:on
 name|assertEquals
@@ -1435,8 +1402,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1458,8 +1423,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1470,8 +1433,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -1496,8 +1457,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -1508,8 +1467,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Foo Bar"
@@ -1537,6 +1494,10 @@ argument_list|(
 name|entry
 argument_list|,
 name|stringWriter
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 name|String
@@ -1547,7 +1508,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-comment|//appending newlines are not written by the writer, but by FileActions. So, these should be removed here.
+comment|// Only one appending newline is written by the writer, the rest by FileActions. So, these should be removed here.
 name|assertEquals
 argument_list|(
 name|bibtexEntry
@@ -1561,7 +1522,7 @@ operator|.
 name|length
 argument_list|()
 operator|-
-literal|2
+literal|1
 argument_list|)
 argument_list|,
 name|actual
@@ -1685,8 +1646,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1708,8 +1667,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1720,8 +1677,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|5
@@ -1746,8 +1701,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -1758,8 +1711,6 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Foo Bar"
@@ -1787,6 +1738,10 @@ argument_list|(
 name|entry
 argument_list|,
 name|stringWriter
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 name|String
@@ -1878,8 +1833,6 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1901,8 +1854,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"test"
@@ -1913,8 +1864,6 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -1939,8 +1888,6 @@ operator|.
 name|getFieldNames
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|fields
@@ -1951,8 +1898,6 @@ literal|"month"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"#mar#"
@@ -1980,6 +1925,10 @@ argument_list|(
 name|entry
 argument_list|,
 name|stringWriter
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 name|String
@@ -2118,6 +2067,10 @@ argument_list|(
 name|entry
 argument_list|,
 name|stringWriter
+argument_list|,
+name|BibDatabaseMode
+operator|.
+name|BIBTEX
 argument_list|)
 expr_stmt|;
 name|String
@@ -2132,10 +2085,6 @@ comment|// @formatter:off
 name|String
 name|expected
 init|=
-name|Globals
-operator|.
-name|NEWLINE
-operator|+
 name|Globals
 operator|.
 name|NEWLINE
@@ -2177,6 +2126,10 @@ operator|.
 name|NEWLINE
 operator|+
 literal|"}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 decl_stmt|;
 comment|// @formatter:on
 name|assertEquals

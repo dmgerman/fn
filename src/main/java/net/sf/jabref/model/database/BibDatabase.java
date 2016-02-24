@@ -62,7 +62,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|MonthUtil
+name|EntryUtil
 import|;
 end_import
 
@@ -78,7 +78,7 @@ name|model
 operator|.
 name|entry
 operator|.
-name|TypedBibEntry
+name|MonthUtil
 import|;
 end_import
 
@@ -152,84 +152,8 @@ name|ConcurrentHashMap
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|BibtexString
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|entry
-operator|.
-name|TypedBibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
 begin_comment
-comment|/**  * A bibliograhpy database.  */
+comment|/**  * A bibliography database.  */
 end_comment
 
 begin_class
@@ -342,19 +266,16 @@ argument_list|()
 decl_stmt|;
 DECL|method|getBibType ()
 specifier|public
-name|BibDatabaseType
+name|BibDatabaseMode
 name|getBibType
 parameter_list|()
 block|{
 return|return
-name|BibDatabaseTypeDetection
+name|BibDatabaseModeDetection
 operator|.
-name|inferType
+name|inferMode
 argument_list|(
-name|entries
-operator|.
-name|values
-argument_list|()
+name|this
 argument_list|)
 return|;
 block|}
@@ -2132,7 +2053,7 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns the text stored in the given field of the given bibtex entry      * which belongs to the given database.      *<p>      * If a database is given, this function will try to resolve any string      * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any.      *      * @param field    The field to return the value of.      * @param entry   maybenull      *                 The bibtex entry which contains the field.      * @param database maybenull      *                 The database of the bibtex entry.      * @return The resolved field value or null if not found.      */
+comment|/**      * Returns the text stored in the given field of the given bibtex entry      * which belongs to the given database.      *<p>      * If a database is given, this function will try to resolve any string      * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any.      *      * @param field    The field to return the value of.      * @param entry    maybenull      *                 The bibtex entry which contains the field.      * @param database maybenull      *                 The database of the bibtex entry.      * @return The resolved field value or null if not found.      */
 DECL|method|getResolvedField (String field, BibEntry entry, BibDatabase database)
 specifier|public
 specifier|static
@@ -2159,27 +2080,16 @@ name|field
 argument_list|)
 condition|)
 block|{
-name|TypedBibEntry
-name|typedEntry
-init|=
-operator|new
-name|TypedBibEntry
+return|return
+name|EntryUtil
+operator|.
+name|capitalizeFirst
 argument_list|(
 name|entry
-argument_list|,
-name|Optional
 operator|.
-name|ofNullable
-argument_list|(
-name|database
-argument_list|)
-argument_list|)
-decl_stmt|;
-return|return
-name|typedEntry
-operator|.
-name|getTypeForDisplay
+name|getType
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|// TODO: Changed this to also consider alias fields, which is the expected

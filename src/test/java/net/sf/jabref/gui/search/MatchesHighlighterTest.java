@@ -162,11 +162,11 @@ name|MatchesHighlighterTest
 block|{
 annotation|@
 name|BeforeClass
-DECL|method|setup ()
+DECL|method|setUp ()
 specifier|public
 specifier|static
 name|void
-name|setup
+name|setUp
 parameter_list|()
 block|{
 name|Globals

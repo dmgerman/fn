@@ -172,6 +172,7 @@ name|RegExpFileSearchTests
 block|{
 DECL|field|filesDirectory
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|filesDirectory
@@ -227,6 +228,9 @@ argument_list|,
 name|BibtexEntryTypes
 operator|.
 name|ARTICLE
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|entry
