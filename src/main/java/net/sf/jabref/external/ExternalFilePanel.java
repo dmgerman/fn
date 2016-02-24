@@ -706,7 +706,6 @@ argument_list|,
 name|editor
 argument_list|)
 expr_stmt|;
-comment|// editor.setText(chosenValue);
 name|entryEditor
 operator|.
 name|storeFieldAction
@@ -1052,12 +1051,11 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|dirs
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|Optional
@@ -2471,21 +2469,8 @@ argument_list|,
 name|fieldName
 argument_list|,
 name|dirs
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|String
-index|[
-name|dirs
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// , off);
 comment|// To activate findFile:
 comment|// String found = Util.findFile(getEntry(), null, dir,
 comment|// ".*[bibtexkey].*");

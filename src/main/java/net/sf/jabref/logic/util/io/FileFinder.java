@@ -389,17 +389,17 @@ name|entry
 argument_list|,
 name|extension
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|directory
-block|}
+argument_list|)
 argument_list|)
 return|;
 block|}
 comment|/**      * Convenience method for findPDF. Can search multiple PDF directories.      */
-DECL|method|findPdf (BibEntry entry, String extension, String[] directories)
+DECL|method|findPdf (BibEntry entry, String extension, List<String> directories)
 specifier|public
 specifier|static
 name|String
@@ -411,8 +411,10 @@ parameter_list|,
 name|String
 name|extension
 parameter_list|,
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|directories
 parameter_list|)
 block|{
@@ -491,8 +493,8 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**      * Searches the given directory and filename pattern for a file for the      * bibtexentry.      *      * Used to fix:      *      * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309      *      * Requirements:      *  - Be able to find the associated PDF in a set of given directories.      *  - Be able to return a relative path or absolute path.      *  - Be fast.      *  - Allow for flexible naming schemes in the PDFs.      *      * Syntax scheme for file:      *<ul>      *<li>* Any subDir</li>      *<li>** Any subDir (recursiv)</li>      *<li>[key] Key from bibtex file and database</li>      *<li>.* Anything else is taken to be a Regular expression.</li>      *</ul>      *      * @param entry      *            non-null      * @param database      *            non-null      * @param directory      *            A set of root directories to start the search from. Paths are      *            returned relative to these directories if relative is set to      *            true. These directories will not be expanded or anything. Use      *            the file attribute for this.      * @param file      *            non-null      *      * @param relative      *            whether to return relative file paths or absolute ones      *      * @return Will return the first file found to match the given criteria or      *         null if none was found.      */
-DECL|method|findFile (BibEntry entry, BibDatabase database, String[] directory, String file, boolean relative)
+comment|/**      * Searches the given directory and filename pattern for a file for the      * bibtexentry.      *      * Used to fix:      *      * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309      *      * Requirements:      *  - Be able to find the associated PDF in a set of given directories.      *  - Be able to return a relative path or absolute path.      *  - Be fast.      *  - Allow for flexible naming schemes in the PDFs.      *      * Syntax scheme for file:      *<ul>      *<li>* Any subDir</li>      *<li>** Any subDir (recursiv)</li>      *<li>[key] Key from bibtex file and database</li>      *<li>.* Anything else is taken to be a Regular expression.</li>      *</ul>      *      * @param entry      *            non-null      * @param database      *            non-null      * @param directories      *            A list of root directories to start the search from. Paths are      *            returned relative to these directories if relative is set to      *            true. These directories will not be expanded or anything. Use      *            the file attribute for this.      * @param file      *            non-null      *      * @param relative      *            whether to return relative file paths or absolute ones      *      * @return Will return the first file found to match the given criteria or      *         null if none was found.      */
+DECL|method|findFile (BibEntry entry, BibDatabase database, List<String> directories, String file, boolean relative)
 specifier|private
 specifier|static
 name|String
@@ -504,9 +506,11 @@ parameter_list|,
 name|BibDatabase
 name|database
 parameter_list|,
+name|List
+argument_list|<
 name|String
-index|[]
-name|directory
+argument_list|>
+name|directories
 parameter_list|,
 name|String
 name|file
@@ -520,7 +524,7 @@ control|(
 name|String
 name|aDirectory
 range|:
-name|directory
+name|directories
 control|)
 block|{
 name|String

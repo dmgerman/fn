@@ -1967,7 +1967,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * This method looks up what kind of external binding is used for the given field, and constructs on OpenFileFilter      * suitable for browsing for an external file.      *      * @param fieldName The BibTeX field in question.      * @return The file filter.      */
-DECL|method|getFileFilterForField (String fieldName)
+DECL|method|getFileFilterForField (String fieldName, boolean isZip)
 specifier|public
 specifier|static
 name|OpenFileFilter
@@ -1975,18 +1975,11 @@ name|getFileFilterForField
 parameter_list|(
 name|String
 name|fieldName
+parameter_list|,
+name|boolean
+name|isZip
 parameter_list|)
 block|{
-name|String
-name|s
-init|=
-name|InternalBibtexFields
-operator|.
-name|getFieldExtras
-argument_list|(
-name|fieldName
-argument_list|)
-decl_stmt|;
 specifier|final
 name|String
 name|ext
@@ -2003,14 +1996,7 @@ name|off
 decl_stmt|;
 if|if
 condition|(
-name|InternalBibtexFields
-operator|.
-name|EXTRA_BROWSE_DOC_ZIP
-operator|.
-name|equals
-argument_list|(
-name|s
-argument_list|)
+name|isZip
 condition|)
 block|{
 name|off
@@ -2053,6 +2039,37 @@ expr_stmt|;
 block|}
 return|return
 name|off
+return|;
+block|}
+DECL|method|getFileFilterForField (String fieldName)
+specifier|public
+specifier|static
+name|OpenFileFilter
+name|getFileFilterForField
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|)
+block|{
+return|return
+name|getFileFilterForField
+argument_list|(
+name|fieldName
+argument_list|,
+name|InternalBibtexFields
+operator|.
+name|EXTRA_BROWSE_DOC_ZIP
+operator|.
+name|equals
+argument_list|(
+name|InternalBibtexFields
+operator|.
+name|getFieldExtras
+argument_list|(
+name|fieldName
+argument_list|)
+argument_list|)
+argument_list|)
 return|;
 block|}
 comment|/**      * Run an AbstractWorker's methods using Spin features to put each method on the correct thread.      *      * @param worker The worker to run.      * @throws Throwable      */

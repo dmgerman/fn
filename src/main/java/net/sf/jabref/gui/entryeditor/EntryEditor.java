@@ -2928,6 +2928,8 @@ name|editor
 argument_list|,
 name|this
 argument_list|,
+name|fieldName
+argument_list|,
 name|InternalBibtexFields
 operator|.
 name|EXTRA_BROWSE_DOC_ZIP
