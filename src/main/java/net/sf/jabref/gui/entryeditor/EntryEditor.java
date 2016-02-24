@@ -5956,9 +5956,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Util
+name|labelpattern
+operator|.
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(

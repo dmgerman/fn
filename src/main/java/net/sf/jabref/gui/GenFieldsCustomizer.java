@@ -188,9 +188,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Util
+name|labelpattern
+operator|.
+name|LabelPatternUtil
 import|;
 end_import
 
@@ -1015,7 +1017,7 @@ block|}
 name|String
 name|testString
 init|=
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
