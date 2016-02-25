@@ -78,7 +78,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|List
 import|;
 end_import
 
@@ -88,7 +88,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Objects
 import|;
 end_import
 
