@@ -1455,9 +1455,7 @@ argument_list|(
 name|e
 lambda|->
 operator|new
-name|JabRefPreferencesFilter
-operator|.
-name|JabRefPreferencesDialog
+name|JabRefPreferencesFilterDialog
 argument_list|(
 operator|new
 name|JabRefPreferencesFilter
