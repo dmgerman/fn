@@ -4686,18 +4686,6 @@ block|{
 if|if
 condition|(
 name|o
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|o
 operator|instanceof
 name|OOBibStyle
 condition|)
@@ -4730,12 +4718,13 @@ name|int
 name|hashCode
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
 return|return
-name|super
+name|Objects
 operator|.
-name|hashCode
-argument_list|()
+name|hash
+argument_list|(
+name|styleFile
+argument_list|)
 return|;
 block|}
 DECL|method|createAuthorList (String author, int maxAuthors, String authorSep, String andString, String etAlString, String yearSep)
