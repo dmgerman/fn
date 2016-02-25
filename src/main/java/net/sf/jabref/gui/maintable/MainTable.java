@@ -352,6 +352,8 @@ name|gui
 operator|.
 name|util
 operator|.
+name|comparator
+operator|.
 name|FirstColumnComparator
 import|;
 end_import
@@ -367,6 +369,8 @@ operator|.
 name|gui
 operator|.
 name|util
+operator|.
+name|comparator
 operator|.
 name|IconComparator
 import|;
@@ -384,6 +388,8 @@ name|gui
 operator|.
 name|util
 operator|.
+name|comparator
+operator|.
 name|IsMarkedComparator
 import|;
 end_import
@@ -399,6 +405,8 @@ operator|.
 name|gui
 operator|.
 name|util
+operator|.
+name|comparator
 operator|.
 name|RankingFieldComparator
 import|;

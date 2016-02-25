@@ -140,9 +140,11 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|help
+name|util
 operator|.
-name|HelpAction
+name|component
+operator|.
+name|JTextFieldWithUnfocusedText
 import|;
 end_import
 
@@ -156,9 +158,9 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|util
+name|help
 operator|.
-name|JTextFieldWithUnfocusedText
+name|HelpAction
 import|;
 end_import
 
