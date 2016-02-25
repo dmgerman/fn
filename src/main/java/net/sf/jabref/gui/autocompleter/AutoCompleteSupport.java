@@ -980,12 +980,11 @@ name|isEnabled
 argument_list|()
 operator|&&
 operator|(
+operator|!
 name|candidates
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{

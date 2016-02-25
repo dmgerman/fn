@@ -391,7 +391,13 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
+decl||
+name|ClassNotFoundException
+decl||
+name|InstantiationException
+decl||
+name|IllegalAccessException
 name|e
 parameter_list|)
 block|{
@@ -1657,35 +1663,6 @@ name|String
 name|filename
 parameter_list|)
 block|{
-comment|// we don't use a provided OutputPrinter (such as the JabRef frame),
-comment|// as we don't want to see any outputs from failed importers:
-comment|// we expect failures and do not want to report them to the user
-name|OutputPrinterToNull
-name|nullOutput
-init|=
-operator|new
-name|OutputPrinterToNull
-argument_list|()
-decl_stmt|;
-comment|// stores ref to best result, gets updated at the next loop
-name|List
-argument_list|<
-name|BibEntry
-argument_list|>
-name|bestResult
-init|=
-literal|null
-decl_stmt|;
-name|int
-name|bestResultCount
-init|=
-literal|0
-decl_stmt|;
-name|String
-name|bestFormatName
-init|=
-literal|null
-decl_stmt|;
 comment|// First, see if it is a BibTeX file:
 try|try
 block|{
@@ -1763,10 +1740,41 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|IOException
 name|ignore
 parameter_list|)
-block|{         }
+block|{
+comment|// Ignored
+block|}
+comment|// we don't use a provided OutputPrinter (such as the JabRef frame),
+comment|// as we don't want to see any outputs from failed importers:
+comment|// we expect failures and do not want to report them to the user
+name|OutputPrinterToNull
+name|nullOutput
+init|=
+operator|new
+name|OutputPrinterToNull
+argument_list|()
+decl_stmt|;
+comment|// stores ref to best result, gets updated at the next loop
+name|List
+argument_list|<
+name|BibEntry
+argument_list|>
+name|bestResult
+init|=
+literal|null
+decl_stmt|;
+name|int
+name|bestResultCount
+init|=
+literal|0
+decl_stmt|;
+name|String
+name|bestFormatName
+init|=
+literal|null
+decl_stmt|;
 comment|// Cycle through all importers:
 for|for
 control|(

@@ -343,8 +343,6 @@ DECL|field|entriesChangedCount
 specifier|private
 name|int
 name|entriesChangedCount
-init|=
-literal|0
 decl_stmt|;
 DECL|field|brokenLinkOptions
 specifier|private

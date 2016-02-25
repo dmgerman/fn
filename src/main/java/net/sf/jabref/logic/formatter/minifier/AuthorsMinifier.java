@@ -32,6 +32,16 @@ name|Formatter
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
 begin_comment
 comment|/**  * Replaces three or more authors with and others  */
 end_comment
@@ -80,21 +90,22 @@ name|String
 name|value
 parameter_list|)
 block|{
-comment|// nothing to do
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
-operator|(
-name|value
-operator|==
-literal|null
-operator|)
-operator|||
 name|value
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
+comment|// nothing to do
 return|return
 name|value
 return|;

@@ -400,6 +400,7 @@ return|;
 block|}
 DECL|method|isComponentVisible (String name)
 specifier|public
+specifier|synchronized
 name|boolean
 name|isComponentVisible
 parameter_list|(
@@ -475,6 +476,7 @@ block|}
 block|}
 DECL|method|show (String name)
 specifier|public
+specifier|synchronized
 name|void
 name|show
 parameter_list|(
@@ -525,6 +527,7 @@ block|}
 block|}
 DECL|method|hide (String name)
 specifier|public
+specifier|synchronized
 name|void
 name|hide
 parameter_list|(
@@ -660,6 +663,7 @@ block|}
 block|}
 DECL|method|getComponent (String name)
 specifier|public
+specifier|synchronized
 name|SidePaneComponent
 name|getComponent
 parameter_list|(
@@ -678,6 +682,7 @@ return|;
 block|}
 DECL|method|getComponentName (SidePaneComponent comp)
 specifier|private
+specifier|synchronized
 name|String
 name|getComponentName
 parameter_list|(
@@ -1316,6 +1321,7 @@ block|}
 comment|/**      * Update all side pane components to show information from the given      * BasePanel.      *      * @param panel      */
 DECL|method|setActiveBasePanel (BasePanel panel)
 specifier|private
+specifier|synchronized
 name|void
 name|setActiveBasePanel
 parameter_list|(
@@ -1355,6 +1361,7 @@ block|}
 block|}
 DECL|method|updateView ()
 specifier|public
+specifier|synchronized
 name|void
 name|updateView
 parameter_list|()

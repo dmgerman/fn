@@ -163,10 +163,12 @@ class|class
 name|OAI2ImportTest
 block|{
 DECL|field|handler
+specifier|protected
 name|OAI2Handler
 name|handler
 decl_stmt|;
 DECL|field|be
+specifier|protected
 name|BibEntry
 name|be
 decl_stmt|;

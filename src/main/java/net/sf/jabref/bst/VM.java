@@ -613,65 +613,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|charStream2CommonTree (CharStream bst)
-specifier|private
-specifier|static
-name|CommonTree
-name|charStream2CommonTree
-parameter_list|(
-name|CharStream
-name|bst
-parameter_list|)
-throws|throws
-name|RecognitionException
-block|{
-name|BstLexer
-name|lex
-init|=
-operator|new
-name|BstLexer
-argument_list|(
-name|bst
-argument_list|)
-decl_stmt|;
-name|CommonTokenStream
-name|tokens
-init|=
-operator|new
-name|CommonTokenStream
-argument_list|(
-name|lex
-argument_list|)
-decl_stmt|;
-name|BstParser
-name|parser
-init|=
-operator|new
-name|BstParser
-argument_list|(
-name|tokens
-argument_list|)
-decl_stmt|;
-name|BstParser
-operator|.
-name|program_return
-name|r
-init|=
-name|parser
-operator|.
-name|program
-argument_list|()
-decl_stmt|;
-return|return
-operator|(
-name|CommonTree
-operator|)
-name|r
-operator|.
-name|getTree
-argument_list|()
-return|;
-block|}
 DECL|method|VM (CharStream bst)
 specifier|private
 name|VM
@@ -1469,10 +1410,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -1713,10 +1652,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -1874,10 +1811,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -1939,10 +1874,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -2219,10 +2152,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -2314,10 +2245,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -2393,10 +2322,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -2533,10 +2460,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -3161,10 +3086,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw
@@ -3803,6 +3726,65 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|charStream2CommonTree (CharStream bst)
+specifier|private
+specifier|static
+name|CommonTree
+name|charStream2CommonTree
+parameter_list|(
+name|CharStream
+name|bst
+parameter_list|)
+throws|throws
+name|RecognitionException
+block|{
+name|BstLexer
+name|lex
+init|=
+operator|new
+name|BstLexer
+argument_list|(
+name|bst
+argument_list|)
+decl_stmt|;
+name|CommonTokenStream
+name|tokens
+init|=
+operator|new
+name|CommonTokenStream
+argument_list|(
+name|lex
+argument_list|)
+decl_stmt|;
+name|BstParser
+name|parser
+init|=
+operator|new
+name|BstParser
+argument_list|(
+name|tokens
+argument_list|)
+decl_stmt|;
+name|BstParser
+operator|.
+name|program_return
+name|r
+init|=
+name|parser
+operator|.
+name|program
+argument_list|()
+decl_stmt|;
+return|return
+operator|(
+name|CommonTree
+operator|)
+name|r
+operator|.
+name|getTree
+argument_list|()
+return|;
+block|}
 DECL|method|assign (BstEntry context, Object o1, Object o2)
 specifier|private
 name|boolean
@@ -4151,7 +4133,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// assert tree.getType() == Bst.COMMANDS;
 comment|// Go
 for|for
 control|(
@@ -4537,7 +4518,6 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
 name|int
@@ -4601,7 +4581,6 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
 name|int
@@ -4664,7 +4643,6 @@ argument_list|(
 literal|2
 argument_list|)
 expr_stmt|;
-comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
 name|int
@@ -5027,7 +5005,6 @@ name|Tree
 name|stack
 parameter_list|)
 block|{
-comment|// assert stack.getType() == Bst.STACK;
 name|localTree
 operator|=
 name|stack
@@ -5533,7 +5510,6 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
 name|int
@@ -5596,7 +5572,6 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
 name|int

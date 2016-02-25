@@ -2530,8 +2530,13 @@ name|getSelectedEntries
 parameter_list|()
 block|{
 return|return
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|getSelected
 argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|getCurrentSortOrder ()

@@ -56,6 +56,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -115,10 +125,10 @@ name|entry
 decl_stmt|;
 annotation|@
 name|Before
-DECL|method|setup ()
+DECL|method|setUp ()
 specifier|public
 name|void
-name|setup
+name|setUp
 parameter_list|()
 block|{
 name|entry
@@ -130,10 +140,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|After
-DECL|method|teardown ()
+DECL|method|tearDown ()
 specifier|public
 name|void
-name|teardown
+name|tearDown
 parameter_list|()
 block|{
 name|entry
@@ -141,6 +151,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+annotation|@
+name|Ignore
 annotation|@
 name|Test
 DECL|method|acceptPdfUrls ()

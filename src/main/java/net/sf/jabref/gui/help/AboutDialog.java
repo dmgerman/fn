@@ -116,6 +116,16 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
 begin_class
 DECL|class|AboutDialog
 specifier|public
@@ -134,7 +144,12 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
 name|bf
+argument_list|)
 argument_list|,
 name|Localization
 operator|.

@@ -1308,10 +1308,7 @@ comment|// Cancelled. Just delete the temp file:
 if|if
 condition|(
 name|downloadFinished
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 name|tmp
 operator|.
@@ -1326,7 +1323,6 @@ argument_list|(
 literal|"Cannot delete temporary file"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

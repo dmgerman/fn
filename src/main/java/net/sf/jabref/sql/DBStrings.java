@@ -105,6 +105,13 @@ specifier|private
 name|String
 name|password
 decl_stmt|;
+DECL|field|dbParameters
+specifier|private
+name|String
+name|dbParameters
+init|=
+literal|""
+decl_stmt|;
 DECL|field|serverTypes
 specifier|private
 name|List
@@ -461,6 +468,34 @@ operator|.
 name|configValid
 operator|=
 name|confValid
+expr_stmt|;
+block|}
+comment|/**      * Returns the database parameters set      * @return dbParameters: The concatenated parameters      */
+DECL|method|getDbParameters ()
+specifier|public
+name|String
+name|getDbParameters
+parameter_list|()
+block|{
+return|return
+name|dbParameters
+return|;
+block|}
+comment|/**      * Add server specific database parameter(s)<br>      * Multiple parameters must be concatenated in the format<br>      * {@code ?Parameter1=value&parameter2=value2}      * @param dbParameter The concatendated parameter      */
+DECL|method|setDbParameters (String dbParameters)
+specifier|public
+name|void
+name|setDbParameters
+parameter_list|(
+name|String
+name|dbParameters
+parameter_list|)
+block|{
+name|this
+operator|.
+name|dbParameters
+operator|=
+name|dbParameters
 expr_stmt|;
 block|}
 comment|/**      * Store these db strings into JabRef preferences.      */

@@ -680,10 +680,16 @@ throws|throws
 name|IOException
 block|{
 comment|// read authors and institutions
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|authors
 init|=
-literal|""
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
 decl_stmt|;
 name|StringBuffer
 name|institutions
@@ -952,19 +958,11 @@ argument_list|()
 expr_stmt|;
 block|}
 name|authors
-operator|+=
-literal|""
 operator|.
-name|equals
+name|add
 argument_list|(
-name|authors
+name|author
 argument_list|)
-condition|?
-name|author
-else|:
-literal|" and "
-operator|+
-name|author
 expr_stmt|;
 if|if
 condition|(
@@ -1007,12 +1005,10 @@ block|}
 if|if
 condition|(
 operator|!
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|authors
-argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|be
@@ -1021,7 +1017,14 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
+name|String
+operator|.
+name|join
+argument_list|(
+literal|" and "
+argument_list|,
 name|authors
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

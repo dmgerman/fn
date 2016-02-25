@@ -117,10 +117,8 @@ if|if
 condition|(
 name|stack
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|<
-literal|1
 condition|)
 block|{
 throw|throw

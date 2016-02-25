@@ -1040,8 +1040,6 @@ name|getEncoding
 argument_list|()
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|Globals
 operator|.
 name|fileUpdateMonitor
@@ -1054,17 +1052,6 @@ name|getFileMonitorHandle
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|ex
-parameter_list|)
-block|{
-comment|// This means the file has not yet been registered, which is the case
-comment|// when doing a "Save as". Maybe we should change the monitor so no
-comment|// exception is cast.
-block|}
 block|}
 else|else
 block|{
@@ -1266,6 +1253,13 @@ name|prefs
 argument_list|)
 expr_stmt|;
 block|}
+name|panel
+operator|.
+name|registerUndoableChanges
+argument_list|(
+name|session
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
