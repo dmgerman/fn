@@ -188,10 +188,10 @@ name|database
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getDatabasefromMatches ()
+DECL|method|getDatabaseFromMatches ()
 specifier|public
 name|BibDatabase
-name|getDatabasefromMatches
+name|getDatabaseFromMatches
 parameter_list|()
 block|{
 name|LOGGER
@@ -208,7 +208,7 @@ condition|(
 operator|!
 name|query
 operator|.
-name|isValidQuery
+name|isValid
 argument_list|()
 condition|)
 block|{

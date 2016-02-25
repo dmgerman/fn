@@ -635,8 +635,10 @@ condition|(
 name|showDialog
 condition|)
 block|{
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|chosenStrings
 init|=
 name|FileDialogs
@@ -665,13 +667,6 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|chosenStrings
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|String
@@ -698,7 +693,6 @@ name|chosen
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -2010,7 +2004,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|BIBLATEX_MODE
+name|BIBLATEX_DEFAULT_MODE
 argument_list|)
 argument_list|)
 argument_list|)
@@ -2366,7 +2360,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|IOException
 name|ex
 parameter_list|)
 block|{
@@ -2516,7 +2510,7 @@ argument_list|)
 condition|)
 block|{
 comment|// Line starts with "Encoding: ", so the rest of the line should contain the name of the encoding
-comment|// Except if there is already a @ symbol signalising the starting of a BibEntry
+comment|// Except if there is already a @ symbol signaling the starting of a BibEntry
 name|Integer
 name|atSymbolIndex
 init|=
@@ -2524,7 +2518,7 @@ name|line
 operator|.
 name|indexOf
 argument_list|(
-literal|"@"
+literal|'@'
 argument_list|)
 decl_stmt|;
 name|String

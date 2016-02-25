@@ -74,6 +74,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -105,6 +115,40 @@ operator|.
 name|undo
 operator|.
 name|AbstractUndoableEdit
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|SearchMatcher
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|search
+operator|.
+name|matchers
+operator|.
+name|MatcherSet
 import|;
 end_import
 
@@ -200,47 +244,9 @@ name|logic
 operator|.
 name|search
 operator|.
-name|SearchRule
-import|;
-end_import
-
-begin_import
-import|import
-name|net
+name|matchers
 operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|rules
-operator|.
-name|sets
-operator|.
-name|SearchRuleSets
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|rules
-operator|.
-name|sets
-operator|.
-name|SearchRuleSet
+name|MatcherSets
 import|;
 end_import
 
@@ -732,7 +738,7 @@ block|}
 comment|/**      * A GroupTreeNode can create a SearchRule that finds elements contained in      * its own group, or the union of those elements in its own group and its      * children's groups (recursively), or the intersection of the elements in      * its own group and its parent's group. This setting is configured in the      * group contained in this node.      *      * @return A SearchRule that finds the desired elements.      */
 DECL|method|getSearchRule ()
 specifier|public
-name|SearchRule
+name|SearchMatcher
 name|getSearchRule
 parameter_list|()
 block|{
@@ -749,7 +755,7 @@ return|;
 block|}
 DECL|method|getSearchRule (GroupHierarchyType originalContext)
 specifier|private
-name|SearchRule
+name|SearchMatcher
 name|getSearchRule
 parameter_list|(
 name|GroupHierarchyType
@@ -778,15 +784,12 @@ block|{
 return|return
 name|getGroup
 argument_list|()
-operator|.
-name|getSearchRule
-argument_list|()
 return|;
 block|}
-name|SearchRuleSet
+name|MatcherSet
 name|searchRule
 init|=
-name|SearchRuleSets
+name|MatcherSets
 operator|.
 name|build
 argument_list|(
@@ -796,15 +799,15 @@ name|GroupHierarchyType
 operator|.
 name|REFINING
 condition|?
-name|SearchRuleSets
+name|MatcherSets
 operator|.
-name|RuleSetType
+name|MatcherType
 operator|.
 name|AND
 else|:
-name|SearchRuleSets
+name|MatcherSets
 operator|.
-name|RuleSetType
+name|MatcherType
 operator|.
 name|OR
 argument_list|)
@@ -814,9 +817,6 @@ operator|.
 name|addRule
 argument_list|(
 name|getGroup
-argument_list|()
-operator|.
-name|getSearchRule
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1406,13 +1406,15 @@ name|cursor
 return|;
 block|}
 comment|/**      * Adds the selected entries to this node's group.      */
-DECL|method|addToGroup (BibEntry[] entries)
+DECL|method|addToGroup (List<BibEntry> entries)
 specifier|public
 name|AbstractUndoableEdit
 name|addToGroup
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{
@@ -1465,13 +1467,15 @@ name|undo
 return|;
 block|}
 comment|/**      * Removes the selected entries from this node's group.      */
-DECL|method|removeFromGroup (BibEntry[] entries)
+DECL|method|removeFromGroup (List<BibEntry> entries)
 specifier|public
 name|AbstractUndoableEdit
 name|removeFromGroup
 parameter_list|(
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|)
 block|{

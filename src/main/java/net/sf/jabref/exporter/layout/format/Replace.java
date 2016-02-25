@@ -120,9 +120,17 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
+name|fieldText
+operator|==
+literal|null
+operator|)
+operator|||
+operator|(
 name|regex
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return

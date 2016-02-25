@@ -79,7 +79,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Role of an importer for JabRef.  *   *<p>Importers are sorted according to following criteria  *<ol><li>  *   custom importers come first, then importers shipped with JabRef  *</li><li>  *   then importers are sorted by name.  *</li></ol>  *</p>  */
+comment|/**  * Role of an importer for JabRef.  *  *<p>Importers are sorted according to following criteria  *<ol><li>  *   custom importers come first, then importers shipped with JabRef  *</li><li>  *   then importers are sorted by name.  *</li></ol>  *</p>  */
 end_comment
 
 begin_class
@@ -154,7 +154,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Name of this import format.      *       *<p>The name must be unique.</p>      *       * @return format name, must be unique and not<code>null</code>      */
+comment|/**      * Name of this import format.      *      *<p>The name must be unique.</p>      *      * @return format name, must be unique and not<code>null</code>      */
 DECL|method|getFormatName ()
 specifier|public
 specifier|abstract
@@ -162,7 +162,7 @@ name|String
 name|getFormatName
 parameter_list|()
 function_decl|;
-comment|/**      * Extensions that this importer can read.      *       * @return comma separated list of extensions or<code>null</code> for the default      */
+comment|/**      * Extensions that this importer can read.      *      * @return comma separated list of extensions or<code>null</code> for the default      */
 DECL|method|getExtensions ()
 specifier|public
 name|String
@@ -173,7 +173,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Short, one token ID to identify the format from the command line.      *       * @return command line ID      */
+comment|/**      * Short, one token ID to identify the format from the command line.      *      * @return command line ID      */
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -257,7 +257,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Description  of the ImportFormat.      *       *<p>Implementors of ImportFormats should override this. Ideally, it should specify      *<ul><li>      *   what kind of entries from what sources and based on what specification it is able to import      *</li><li>      *   by what criteria it {@link #isRecognizedFormat(InputStream) recognizes} an import format      *</li></ul>      *       * @return description of the import format      */
+comment|/**      * Description  of the ImportFormat.      *      *<p>Implementors of ImportFormats should override this. Ideally, it should specify      *<ul><li>      *   what kind of entries from what sources and based on what specification it is able to import      *</li><li>      *   by what criteria it {@link #isRecognizedFormat(InputStream) recognizes} an import format      *</li></ul>      *      * @return description of the import format      */
 DECL|method|getDescription ()
 specifier|public
 name|String
@@ -273,7 +273,7 @@ operator|+
 literal|"."
 return|;
 block|}
-comment|/**      * Sets if this is a custom importer.      *       *<p>For custom importers added dynamically to JabRef, this will be      * set automatically by JabRef.</p>      *       * @param isCustomImporter if this is a custom importer      */
+comment|/**      * Sets if this is a custom importer.      *      *<p>For custom importers added dynamically to JabRef, this will be      * set automatically by JabRef.</p>      *      * @param isCustomImporter if this is a custom importer      */
 DECL|method|setIsCustomImporter (boolean isCustomImporter)
 specifier|public
 specifier|final
@@ -291,7 +291,7 @@ operator|=
 name|isCustomImporter
 expr_stmt|;
 block|}
-comment|/**      * Wether this importer is a custom importer.      *       *<p>Custom importers will have precedence over built-in importers.</p>      *       * @return  wether this is a custom importer      */
+comment|/**      * Wether this importer is a custom importer.      *      *<p>Custom importers will have precedence over built-in importers.</p>      *      * @return  wether this is a custom importer      */
 DECL|method|isCustomImporter ()
 specifier|public
 specifier|final
@@ -334,34 +334,44 @@ name|Object
 name|o
 parameter_list|)
 block|{
-return|return
+if|if
+condition|(
+name|this
+operator|==
 name|o
-operator|!=
-literal|null
-operator|&&
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+if|if
+condition|(
 name|o
 operator|instanceof
 name|ImportFormat
-operator|&&
-operator|(
+condition|)
+block|{
+name|ImportFormat
+name|format
+init|=
 operator|(
 name|ImportFormat
 operator|)
 name|o
-operator|)
+decl_stmt|;
+return|return
+operator|(
+name|format
 operator|.
 name|isCustomImporter
 argument_list|()
 operator|==
 name|isCustomImporter
 argument_list|()
+operator|)
 operator|&&
-operator|(
-operator|(
-name|ImportFormat
-operator|)
-name|o
-operator|)
+name|format
 operator|.
 name|getFormatName
 argument_list|()
@@ -371,6 +381,10 @@ argument_list|(
 name|getFormatName
 argument_list|()
 argument_list|)
+return|;
+block|}
+return|return
+literal|false
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see java.lang.Object#toString()      */

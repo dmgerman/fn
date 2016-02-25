@@ -111,6 +111,17 @@ operator|new
 name|TitleCaseChanger
 argument_list|()
 decl_stmt|;
+DECL|field|CASE_KEEPER
+specifier|public
+specifier|static
+specifier|final
+name|CaseKeeper
+name|CASE_KEEPER
+init|=
+operator|new
+name|CaseKeeper
+argument_list|()
+decl_stmt|;
 DECL|field|ALL
 specifier|public
 specifier|static
@@ -134,6 +145,8 @@ argument_list|,
 name|UPPER_EACH_FIRST
 argument_list|,
 name|TITLE
+argument_list|,
+name|CASE_KEEPER
 argument_list|)
 decl_stmt|;
 block|}

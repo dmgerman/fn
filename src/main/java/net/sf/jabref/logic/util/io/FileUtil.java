@@ -720,10 +720,7 @@ name|dest
 operator|.
 name|exists
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 name|deleteIfExists
 condition|)
@@ -731,8 +728,6 @@ block|{
 return|return
 literal|false
 return|;
-comment|// else dest.delete();
-block|}
 block|}
 try|try
 init|(
@@ -846,7 +841,10 @@ comment|/**      * Converts a relative filename to an absolute one, if necessary
 DECL|method|expandFilename (final MetaData metaData, String name)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|expandFilename
 parameter_list|(
 specifier|final
@@ -984,7 +982,10 @@ comment|/**      * Converts a relative filename to an absolute one, if necessary
 DECL|method|expandFilename (String name, List<String> directories)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|expandFilename
 parameter_list|(
 name|String
@@ -1012,7 +1013,10 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|result
 init|=
 name|expandFilename
@@ -1025,8 +1029,9 @@ decl_stmt|;
 if|if
 condition|(
 name|result
-operator|!=
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 condition|)
 block|{
 return|return
@@ -1036,14 +1041,20 @@ block|}
 block|}
 block|}
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      */
 DECL|method|expandFilename (String name, String dir)
 specifier|public
 specifier|static
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|expandFilename
 parameter_list|(
 name|String
@@ -1068,7 +1079,10 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 name|File
@@ -1095,7 +1109,12 @@ operator|)
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|file
+argument_list|)
 return|;
 block|}
 if|if
@@ -1184,13 +1203,21 @@ argument_list|()
 condition|)
 block|{
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|fileInDir
+argument_list|)
 return|;
 block|}
 else|else
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 block|}
@@ -1213,9 +1240,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|fileName
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|fileName
@@ -1301,9 +1330,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|fileName
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|fileName
@@ -1790,9 +1821,6 @@ range|:
 name|fileList
 control|)
 block|{
-name|File
-name|f
-init|=
 name|expandFilename
 argument_list|(
 name|file
@@ -1801,22 +1829,19 @@ name|link
 argument_list|,
 name|fileDirs
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|f
-operator|!=
-literal|null
-condition|)
-block|{
+lambda|->
 name|result
 operator|.
 name|add
 argument_list|(
 name|f
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 return|return

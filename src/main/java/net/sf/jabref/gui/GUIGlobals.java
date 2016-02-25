@@ -180,22 +180,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|help
-operator|.
-name|AboutDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|l10n
@@ -562,12 +546,6 @@ specifier|public
 specifier|static
 name|SidePaneManager
 name|sidePaneManager
-decl_stmt|;
-DECL|field|helpDiag
-specifier|public
-specifier|static
-name|AboutDialog
-name|helpDiag
 decl_stmt|;
 comment|//	Colors.
 DECL|field|entryEditorLabelColor

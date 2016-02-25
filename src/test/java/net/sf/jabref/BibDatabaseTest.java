@@ -134,10 +134,10 @@ name|BibDatabaseTest
 block|{
 annotation|@
 name|Before
-DECL|method|setup ()
+DECL|method|setUp ()
 specifier|public
 name|void
-name|setup
+name|setUp
 parameter_list|()
 block|{
 name|Globals
@@ -153,10 +153,10 @@ comment|// set preferences for this test
 block|}
 annotation|@
 name|After
-DECL|method|teardown ()
+DECL|method|tearDown ()
 specifier|public
 name|void
-name|teardown
+name|tearDown
 parameter_list|()
 block|{
 name|Globals

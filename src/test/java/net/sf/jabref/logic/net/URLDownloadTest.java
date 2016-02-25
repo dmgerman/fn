@@ -273,11 +273,25 @@ block|}
 finally|finally
 block|{
 comment|// cleanup
+if|if
+condition|(
+operator|!
 name|destination
 operator|.
 name|delete
 argument_list|()
+condition|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Cannot delete downloaded file"
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@

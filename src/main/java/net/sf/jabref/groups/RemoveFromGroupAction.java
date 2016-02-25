@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -25,6 +25,16 @@ operator|.
 name|event
 operator|.
 name|ActionEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
 import|;
 end_import
 
@@ -61,22 +71,6 @@ operator|.
 name|gui
 operator|.
 name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|groups
-operator|.
-name|structure
-operator|.
-name|AbstractGroup
 import|;
 end_import
 
@@ -222,39 +216,26 @@ name|Util
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(
-operator|new
-name|AbstractGroup
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|mNode
 operator|.
 name|getGroup
 argument_list|()
-block|}
-operator|,
-name|mPanel
-operator|.
-name|getSelectedEntries
-argument_list|()
-operator|,
-name|mPanel
-operator|.
-name|getDatabase
-argument_list|()
-operator|,
+argument_list|)
+argument_list|,
 name|mPanel
 operator|.
 name|frame
 argument_list|()
-block|)
-block|)
+argument_list|)
+condition|)
 block|{
 return|return;
 comment|// user aborted operation
 block|}
-end_class
-
-begin_decl_stmt
 name|AbstractUndoableEdit
 name|undo
 init|=
@@ -268,9 +249,6 @@ name|getSelectedEntries
 argument_list|()
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_if
 if|if
 condition|(
 name|undo
@@ -281,9 +259,6 @@ block|{
 return|return;
 comment|// no changed made
 block|}
-end_if
-
-begin_expr_stmt
 name|mPanel
 operator|.
 name|undoManager
@@ -293,25 +268,16 @@ argument_list|(
 name|undo
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|mPanel
 operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|mPanel
 operator|.
 name|updateEntryEditorIfShowing
 argument_list|()
 expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
 name|mPanel
 operator|.
 name|getGroupSelector
@@ -322,8 +288,9 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-end_expr_stmt
+block|}
+block|}
+end_class
 
-unit|} }
 end_unit
 

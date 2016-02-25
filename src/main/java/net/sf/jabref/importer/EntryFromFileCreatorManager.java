@@ -52,6 +52,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedList
 import|;
 end_import
@@ -269,8 +279,10 @@ argument_list|)
 expr_stmt|;
 comment|// add a creator for each ExternalFileType if there is no specialised
 comment|// creator existing.
+name|Collection
+argument_list|<
 name|ExternalFileType
-index|[]
+argument_list|>
 name|fileTypes
 init|=
 name|ExternalFileTypes

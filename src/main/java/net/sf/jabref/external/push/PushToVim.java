@@ -164,6 +164,16 @@ name|InputStream
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA. User: alver Date: Mar 7, 2007 Time: 6:55:56 PM To change this template use File | Settings  * | File Templates.  */
 end_comment
@@ -361,7 +371,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|pushEntries (BibDatabase database, BibEntry[] entries, String keys, MetaData metaData)
+DECL|method|pushEntries (BibDatabase database, List<BibEntry> entries, String keys, MetaData metaData)
 specifier|public
 name|void
 name|pushEntries
@@ -369,8 +379,10 @@ parameter_list|(
 name|BibDatabase
 name|database
 parameter_list|,
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 parameter_list|,
 name|String

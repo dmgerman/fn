@@ -14,6 +14,16 @@ name|formatter
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
 begin_comment
 comment|/**  * It may seem useless, but is needed as a fallback option  */
 end_comment
@@ -62,6 +72,13 @@ name|String
 name|value
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
 return|return
 name|value
 return|;

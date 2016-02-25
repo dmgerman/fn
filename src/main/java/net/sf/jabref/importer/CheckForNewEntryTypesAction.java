@@ -164,7 +164,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 operator|.
 name|EntryTypes
 import|;
@@ -227,7 +227,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|BIBLATEX_MODE
+name|BIBLATEX_DEFAULT_MODE
 argument_list|)
 argument_list|)
 argument_list|)

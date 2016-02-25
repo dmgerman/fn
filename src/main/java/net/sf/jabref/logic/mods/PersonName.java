@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -24,7 +24,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|List
 import|;
 end_import
 
@@ -36,11 +36,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|logic
 operator|.
-name|layout
+name|util
 operator|.
-name|WSITools
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -142,17 +144,6 @@ name|String
 name|author
 parameter_list|)
 block|{
-name|Vector
-argument_list|<
-name|String
-argument_list|>
-name|names
-init|=
-operator|new
-name|Vector
-argument_list|<>
-argument_list|()
-decl_stmt|;
 name|String
 name|authorMod
 init|=
@@ -180,12 +171,16 @@ argument_list|)
 decl_stmt|;
 comment|// Tokenize just the firstName and middleNames as we have the surname
 comment|// before the comma.
-name|WSITools
-operator|.
-name|tokenize
-argument_list|(
+name|List
+argument_list|<
+name|String
+argument_list|>
 name|names
-argument_list|,
+init|=
+name|StringUtil
+operator|.
+name|tokenizeToList
+argument_list|(
 name|authorMod
 operator|.
 name|substring
@@ -200,7 +195,7 @@ argument_list|()
 argument_list|,
 literal|" \n\r"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|endOfLastName

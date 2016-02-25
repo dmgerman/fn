@@ -415,12 +415,6 @@ block|{
 return|return
 operator|(
 name|o
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|o
 operator|instanceof
 name|CustomImporter
 operator|)

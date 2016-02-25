@@ -32,6 +32,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -172,8 +182,10 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|entries
 init|=
 name|panel

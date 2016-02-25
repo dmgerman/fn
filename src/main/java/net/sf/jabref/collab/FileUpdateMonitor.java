@@ -318,8 +318,6 @@ parameter_list|(
 name|String
 name|handle
 parameter_list|)
-throws|throws
-name|IllegalArgumentException
 block|{
 name|Object
 name|o
@@ -342,7 +340,6 @@ return|return
 literal|false
 return|;
 block|}
-comment|//	    throw new IllegalArgumentException("Entry not found");
 try|try
 block|{
 return|return
@@ -435,8 +432,6 @@ parameter_list|(
 name|String
 name|key
 parameter_list|)
-throws|throws
-name|IllegalArgumentException
 block|{
 name|Object
 name|o
@@ -451,18 +446,10 @@ decl_stmt|;
 if|if
 condition|(
 name|o
-operator|==
+operator|!=
 literal|null
 condition|)
 block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Entry not found"
-argument_list|)
-throw|;
-block|}
 name|Entry
 name|entry
 init|=
@@ -476,6 +463,7 @@ operator|.
 name|updateTimeStamp
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Method for getting the temporary file used for this database. The tempfile      * is used for comparison with the changed on-disk version.      * @param key String The handle for this monitor.      * @throws IllegalArgumentException If the handle doesn't correspond to an entry.      * @return File The temporary file.      */
 DECL|method|getTempFile (String key)

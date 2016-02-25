@@ -75,10 +75,10 @@ name|formatter
 decl_stmt|;
 annotation|@
 name|Before
-DECL|method|setup ()
+DECL|method|setUp ()
 specifier|public
 name|void
-name|setup
+name|setUp
 parameter_list|()
 block|{
 name|formatter

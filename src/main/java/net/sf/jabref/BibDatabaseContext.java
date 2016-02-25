@@ -214,14 +214,6 @@ argument_list|(
 name|metaData
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|setMode
-argument_list|(
-name|getMode
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|BibDatabaseContext (BibDatabase database, MetaData metaData, File file, Defaults defaults)
 specifier|public

@@ -154,6 +154,16 @@ name|ActionListener
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  *  */
 end_comment
@@ -347,8 +357,10 @@ operator|.
 name|getCurrentBasePanel
 argument_list|()
 decl_stmt|;
+name|List
+argument_list|<
 name|BibEntry
-index|[]
+argument_list|>
 name|bes
 init|=
 name|panel
@@ -361,15 +373,16 @@ name|besLength
 operator|=
 name|bes
 operator|.
-name|length
+name|size
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|bes
 operator|.
-name|length
-operator|!=
-literal|0
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|NamedCompound

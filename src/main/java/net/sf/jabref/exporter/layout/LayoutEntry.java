@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -91,6 +91,24 @@ operator|.
 name|journals
 operator|.
 name|JournalAbbreviationRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|util
+operator|.
+name|strings
+operator|.
+name|StringUtil
 import|;
 end_import
 
@@ -257,8 +275,10 @@ name|LayoutEntry
 block|{
 DECL|field|option
 specifier|private
+name|List
+argument_list|<
 name|LayoutFormatter
-index|[]
+argument_list|>
 name|option
 decl_stmt|;
 comment|// Formatter to be run after other formatters:
@@ -274,8 +294,10 @@ name|text
 decl_stmt|;
 DECL|field|layoutEntries
 specifier|private
+name|List
+argument_list|<
 name|LayoutEntry
-index|[]
+argument_list|>
 name|layoutEntries
 decl_stmt|;
 DECL|field|type
@@ -399,24 +421,17 @@ name|String
 argument_list|>
 name|v
 init|=
-operator|new
-name|ArrayList
-argument_list|<>
-argument_list|()
-decl_stmt|;
-name|WSITools
+name|StringUtil
 operator|.
-name|tokenize
+name|tokenizeToList
 argument_list|(
-name|v
-argument_list|,
 name|si
 operator|.
 name|s
 argument_list|,
 literal|"\n"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|v
@@ -859,51 +874,23 @@ block|}
 name|layoutEntries
 operator|=
 operator|new
-name|LayoutEntry
-index|[
+name|ArrayList
+argument_list|<>
+argument_list|(
 name|tmpEntries
-operator|.
-name|size
-argument_list|()
-index|]
+argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|tmpEntries
-operator|.
-name|size
-argument_list|()
-condition|;
-name|i
-operator|++
+name|LayoutEntry
+name|layoutEntry
+range|:
+name|layoutEntries
 control|)
 block|{
-name|layoutEntries
-index|[
-name|i
-index|]
-operator|=
-name|tmpEntries
-operator|.
-name|get
-argument_list|(
-name|i
-argument_list|)
-expr_stmt|;
-comment|// Note if one of the entries has an invalid formatter:
 if|if
 condition|(
-name|layoutEntries
-index|[
-name|i
-index|]
+name|layoutEntry
 operator|.
 name|isInvalidFormatter
 argument_list|()
@@ -930,10 +917,7 @@ name|invalidFormatter
 operator|.
 name|addAll
 argument_list|(
-name|layoutEntries
-index|[
-name|i
-index|]
+name|layoutEntry
 operator|.
 name|getInvalidFormatters
 argument_list|()
@@ -1290,7 +1274,8 @@ name|i
 operator|<
 name|layoutEntries
 operator|.
-name|length
+name|size
+argument_list|()
 condition|;
 name|i
 operator|++
@@ -1299,9 +1284,11 @@ block|{
 name|fieldText
 operator|=
 name|layoutEntries
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 operator|.
 name|doLayout
 argument_list|(
@@ -1327,17 +1314,20 @@ operator|)
 operator|<
 name|layoutEntries
 operator|.
-name|length
+name|size
+argument_list|()
 condition|)
 block|{
 if|if
 condition|(
 name|layoutEntries
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
 operator|+
 literal|1
-index|]
+argument_list|)
 operator|.
 name|doLayout
 argument_list|(
@@ -1444,8 +1434,6 @@ block|}
 block|}
 else|else
 block|{
-comment|//System.out.println("ENTRY-BLOCK: " +
-comment|//layoutEntries[i].doLayout(bibtex));
 comment|/*                              * if fieldText is not null and the bibtexentry is marked                              * as a searchhit, try to highlight the searched words                              *                             */
 if|if
 condition|(
@@ -1594,7 +1582,6 @@ name|field
 expr_stmt|;
 block|}
 block|}
-comment|//System.out.println("OPTION: "+option);
 if|if
 condition|(
 name|option
@@ -1954,11 +1941,11 @@ return|;
 block|}
 if|if
 condition|(
-name|className
+literal|"JournalAbbreviator"
 operator|.
 name|equals
 argument_list|(
-literal|"JournalAbbreviator"
+name|className
 argument_list|)
 condition|)
 block|{
@@ -2047,8 +2034,10 @@ comment|/**      * Return an array of LayoutFormatters found in the given format
 DECL|method|getOptionalLayout (String formatterName, JournalAbbreviationRepository repository)
 specifier|private
 specifier|static
+name|List
+argument_list|<
 name|LayoutFormatter
-index|[]
+argument_list|>
 name|getOptionalLayout
 parameter_list|(
 name|String
@@ -2303,18 +2292,6 @@ comment|//throw new Exception(Globals.lang("Formatter not found") + ": "+ classN
 block|}
 return|return
 name|results
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|LayoutFormatter
-index|[
-name|results
-operator|.
-name|size
-argument_list|()
-index|]
-argument_list|)
 return|;
 block|}
 DECL|method|isInvalidFormatter ()

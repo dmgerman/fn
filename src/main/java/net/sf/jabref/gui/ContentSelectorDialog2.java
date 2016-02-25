@@ -166,16 +166,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -2085,7 +2075,7 @@ expr_stmt|;
 name|data
 operator|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<>
 argument_list|()
 expr_stmt|;

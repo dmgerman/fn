@@ -80,6 +80,20 @@ name|jabref
 operator|.
 name|model
 operator|.
+name|EntryTypes
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|model
+operator|.
 name|database
 operator|.
 name|BibDatabaseMode
@@ -249,9 +263,45 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|write
+argument_list|(
+name|entry
+argument_list|,
+name|out
+argument_list|,
+name|bibDatabaseMode
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Writes the given BibEntry using the given writer      *      * @param entry The entry to write      * @param out The writer to use      * @param bibDatabaseMode The database mode (bibtex or biblatex)      * @param reformat Should the entry be in any case, even if no change occurred?      */
+DECL|method|write (BibEntry entry, Writer out, BibDatabaseMode bibDatabaseMode, Boolean reformat)
+specifier|public
+name|void
+name|write
+parameter_list|(
+name|BibEntry
+name|entry
+parameter_list|,
+name|Writer
+name|out
+parameter_list|,
+name|BibDatabaseMode
+name|bibDatabaseMode
+parameter_list|,
+name|Boolean
+name|reformat
+parameter_list|)
+throws|throws
+name|IOException
+block|{
 comment|// if the entry has not been modified, write it as it was
 if|if
 condition|(
+operator|!
+name|reformat
+operator|&&
 operator|!
 name|entry
 operator|.
@@ -278,10 +328,6 @@ argument_list|(
 name|Globals
 operator|.
 name|NEWLINE
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
 argument_list|)
 expr_stmt|;
 name|writeRequiredFieldsFirstRemainingFieldsSecond
@@ -291,6 +337,15 @@ argument_list|,
 name|out
 argument_list|,
 name|bibDatabaseMode
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|write
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
@@ -907,7 +962,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**      * Get display version of a entry field.      *<p>      * BibTeX is case-insensitive therefore there is no difference between:      * howpublished, HOWPUBLISHED, HowPublished, etc.      *<p>      * The was a long discussion about how JabRef should write the fields.      * See https://github.com/JabRef/jabref/issues/116      *<p>      * The team decided to do the biber way and use lower case for the field names.      *      * @param field The name of the field.      * @return The display version of the field name.      */
+comment|/**      * Get display version of a entry field.      *<p>      * BibTeX is case-insensitive therefore there is no difference between:      * howpublished, HOWPUBLISHED, HowPublished, etc.      *<p>      * The was a long discussion about how JabRef should write the fields.      * See https://github.com/JabRef/jabref/issues/116      *<p>      * The team decided to do the biblatex way and use lower case for the field names.      *      * @param field The name of the field.      * @return The display version of the field name.      */
 DECL|method|getFieldDisplayName (String field, int intendation)
 specifier|private
 name|String

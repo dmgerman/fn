@@ -551,13 +551,87 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"Bruce, Manson and Jumper"
+literal|"Bruce, von Manson and Jumper"
 argument_list|,
 name|a
 operator|.
 name|format
 argument_list|(
-literal|"Bruce, Bob Croydon and Charles Manson and Jolly Jumper"
+literal|"Bruce, Bob Croydon and Charles von Manson and Jolly Jumper"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testMiddleInitial ()
+specifier|public
+name|void
+name|testMiddleInitial
+parameter_list|()
+block|{
+name|ParamLayoutFormatter
+name|a
+init|=
+operator|new
+name|Authors
+argument_list|()
+decl_stmt|;
+name|a
+operator|.
+name|setArgument
+argument_list|(
+literal|"MiddleInitial"
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Bob C. Bruce, Charles K. von Manson and Jolly Jumper"
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|"Bruce, Bob Croydon and Charles Kermit von Manson and Jumper, Jolly"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testNoPeriod ()
+specifier|public
+name|void
+name|testNoPeriod
+parameter_list|()
+block|{
+name|ParamLayoutFormatter
+name|a
+init|=
+operator|new
+name|Authors
+argument_list|()
+decl_stmt|;
+name|a
+operator|.
+name|setArgument
+argument_list|(
+literal|"NoPeriod"
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"B C Bruce, C K von Manson and J Jumper"
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|"Bruce, Bob Croydon and Charles Kermit von Manson and Jumper, Jolly"
 argument_list|)
 argument_list|)
 expr_stmt|;

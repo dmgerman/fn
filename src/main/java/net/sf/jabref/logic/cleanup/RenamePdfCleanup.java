@@ -383,10 +383,8 @@ name|newFilename
 operator|.
 name|append
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|)
-expr_stmt|;
-name|newFilename
 operator|.
 name|append
 argument_list|(
@@ -405,7 +403,10 @@ argument_list|)
 expr_stmt|;
 comment|//get new Filename with path
 comment|//Create new Path based on old Path and new filename
+name|Optional
+argument_list|<
 name|File
+argument_list|>
 name|expandedOldFile
 init|=
 name|FileUtil
@@ -420,13 +421,18 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
+operator|!
 name|expandedOldFile
-operator|==
-literal|null
+operator|.
+name|isPresent
+argument_list|()
 operator|)
 operator|||
 operator|(
 name|expandedOldFile
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getParent
 argument_list|()
@@ -442,6 +448,9 @@ name|String
 name|newPath
 init|=
 name|expandedOldFile
+operator|.
+name|get
+argument_list|()
 operator|.
 name|getParent
 argument_list|()
@@ -489,6 +498,9 @@ operator|.
 name|renameFile
 argument_list|(
 name|expandedOldFile
+operator|.
+name|get
+argument_list|()
 operator|.
 name|toString
 argument_list|()
@@ -540,9 +552,11 @@ name|newFileEntryFileName
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|parent
 operator|==
 literal|null
+operator|)
 operator|||
 name|paths
 operator|.

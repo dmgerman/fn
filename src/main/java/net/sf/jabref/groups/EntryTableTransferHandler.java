@@ -140,6 +140,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -1209,15 +1219,15 @@ name|importer
 operator|.
 name|automatedImport
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|tmpfile
 operator|.
 name|getAbsolutePath
 argument_list|()
-block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -1714,12 +1724,6 @@ literal|0
 operator|)
 condition|)
 block|{
-comment|/*                  * TODO: need to signal if this is a local or autodownloaded                  * file                  */
-name|boolean
-name|local
-init|=
-literal|true
-decl_stmt|;
 comment|/*                  * TODO: make this an instance variable?                  */
 name|DroppedFileHandler
 name|dfh
@@ -1739,8 +1743,6 @@ argument_list|(
 name|fileName
 argument_list|,
 name|fileType
-argument_list|,
-name|local
 argument_list|,
 name|entryTable
 argument_list|,
@@ -1775,26 +1777,6 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-name|String
-index|[]
-name|toImport
-init|=
-operator|new
-name|String
-index|[
-name|notBibFiles
-operator|.
-name|size
-argument_list|()
-index|]
-decl_stmt|;
-name|notBibFiles
-operator|.
-name|toArray
-argument_list|(
-name|toImport
-argument_list|)
-expr_stmt|;
 comment|// Import into new if entryTable==null, otherwise into current
 comment|// database:
 name|ImportMenuItem
@@ -1814,7 +1796,7 @@ name|importer
 operator|.
 name|automatedImport
 argument_list|(
-name|toImport
+name|notBibFiles
 argument_list|)
 expr_stmt|;
 block|}
@@ -1881,15 +1863,15 @@ name|importer
 operator|.
 name|automatedImport
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|tmpfile
 operator|.
 name|getAbsolutePath
 argument_list|()
-block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

@@ -100,10 +100,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|After
-DECL|method|teardown ()
+DECL|method|tearDown ()
 specifier|public
 name|void
-name|teardown
+name|tearDown
 parameter_list|()
 block|{
 name|formatter
@@ -235,13 +235,6 @@ argument_list|(
 literal|""
 argument_list|,
 literal|""
-argument_list|)
-expr_stmt|;
-name|expectCorrect
-argument_list|(
-literal|null
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 block|}

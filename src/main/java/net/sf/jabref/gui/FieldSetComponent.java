@@ -268,9 +268,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|util
+name|logic
 operator|.
-name|Util
+name|labelpattern
+operator|.
+name|LabelPatternUtil
 import|;
 end_import
 
@@ -302,6 +304,7 @@ argument_list|<>
 argument_list|()
 decl_stmt|;
 DECL|field|list
+specifier|protected
 specifier|final
 name|JList
 argument_list|<
@@ -316,6 +319,7 @@ name|JScrollPane
 name|sp
 decl_stmt|;
 DECL|field|listModel
+specifier|protected
 name|DefaultListModel
 argument_list|<
 name|String
@@ -342,6 +346,7 @@ name|JButton
 name|add
 decl_stmt|;
 DECL|field|remove
+specifier|protected
 specifier|final
 name|JButton
 name|remove
@@ -357,6 +362,7 @@ name|JButton
 name|down
 decl_stmt|;
 DECL|field|gbl
+specifier|protected
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -366,6 +372,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|protected
 specifier|final
 name|GridBagConstraints
 name|con
@@ -375,11 +382,13 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|forceLowerCase
+specifier|protected
 specifier|final
 name|boolean
 name|forceLowerCase
 decl_stmt|;
 DECL|field|changesMade
+specifier|protected
 name|boolean
 name|changesMade
 decl_stmt|;
@@ -1327,6 +1336,7 @@ expr_stmt|;
 block|}
 comment|/**      * This method is called when a new field should be added to the list. Performs validation of the      * field.      */
 DECL|method|addField (String s)
+specifier|protected
 name|void
 name|addField
 parameter_list|(
@@ -1376,7 +1386,7 @@ block|}
 name|String
 name|testString
 init|=
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1445,6 +1455,7 @@ expr_stmt|;
 block|}
 comment|/**      * This method adds a new field to the list, without any regard to validation. This method can be      * useful for classes that overrides addField(s) to provide different validation.      */
 DECL|method|addFieldUncritically (String s)
+specifier|protected
 name|void
 name|addFieldUncritically
 parameter_list|(
@@ -1489,6 +1500,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|removeSelected ()
+specifier|protected
 name|void
 name|removeSelected
 parameter_list|()
