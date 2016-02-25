@@ -7698,10 +7698,18 @@ block|}
 catch|catch
 parameter_list|(
 name|BackingStoreException
-name|ignore
+name|e
 parameter_list|)
 block|{
-comment|// could not handle this
+name|LOGGER
+operator|.
+name|info
+argument_list|(
+literal|"could not retrieve preference keys"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|prefs
