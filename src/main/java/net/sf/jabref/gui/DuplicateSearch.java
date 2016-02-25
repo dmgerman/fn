@@ -878,6 +878,11 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
+synchronized|synchronized
+init|(
+name|duplicates
+init|)
+block|{
 name|panel
 operator|.
 name|output
@@ -910,6 +915,7 @@ operator|+
 name|dupliC
 argument_list|)
 expr_stmt|;
+block|}
 name|ce
 operator|.
 name|end
