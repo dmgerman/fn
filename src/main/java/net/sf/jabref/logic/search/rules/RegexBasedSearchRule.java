@@ -28,11 +28,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|model
+name|logic
 operator|.
-name|entry
+name|layout
 operator|.
-name|BibEntry
+name|format
+operator|.
+name|RemoveLatexCommands
 import|;
 end_import
 
@@ -44,13 +46,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|model
 operator|.
-name|layout
+name|entry
 operator|.
-name|format
-operator|.
-name|RemoveLatexCommands
+name|BibEntry
 import|;
 end_import
 

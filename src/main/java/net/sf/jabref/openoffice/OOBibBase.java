@@ -450,11 +450,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|exporter
+name|logic
 operator|.
-name|layout
+name|l10n
 operator|.
-name|Layout
+name|Localization
 import|;
 end_import
 
@@ -468,9 +468,9 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|l10n
+name|layout
 operator|.
-name|Localization
+name|Layout
 import|;
 end_import
 
@@ -1933,7 +1933,6 @@ operator|.
 name|INVISIBLE_CIT
 argument_list|)
 decl_stmt|;
-comment|//XTextContent content = insertBookMark(bName, xViewCursor);
 comment|// If we should store metadata for page info, do that now:
 if|if
 condition|(
@@ -2139,7 +2138,6 @@ argument_list|,
 name|style
 argument_list|)
 expr_stmt|;
-comment|//xViewCursor.collapseToEnd();
 name|xViewCursor
 operator|.
 name|collapseToEnd
@@ -2457,7 +2455,6 @@ argument_list|()
 condition|)
 block|{
 comment|// We need to sort the reference marks according to their order of appearance:
-comment|/*if (sortedReferenceMarks == null)                 updateSortedReferenceMarks();*/
 name|names
 operator|=
 name|sortedReferenceMarks
@@ -2570,7 +2567,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/*if (sortedReferenceMarks == null)                 updateSortedReferenceMarks();*/
 name|names
 operator|=
 name|sortedReferenceMarks
@@ -6296,17 +6292,13 @@ argument_list|,
 literal|true
 argument_list|)
 argument_list|,
-literal|false
-argument_list|,
-literal|false
-argument_list|,
-literal|false
-argument_list|,
-literal|false
-argument_list|,
-literal|false
-argument_list|,
-literal|false
+operator|new
+name|BitSet
+argument_list|(
+name|OOUtil
+operator|.
+name|TOTAL_FORMAT_COUNT
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
