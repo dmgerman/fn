@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.gui.util
+DECL|package|net.sf.jabref.gui.util.component
 package|package
 name|net
 operator|.
@@ -11,6 +11,8 @@ operator|.
 name|gui
 operator|.
 name|util
+operator|.
+name|component
 package|;
 end_package
 

@@ -350,8 +350,9 @@ name|JsonNode
 argument_list|>
 name|jsonResponse
 decl_stmt|;
-name|query
-operator|=
+name|String
+name|encodedQuery
+init|=
 name|URLEncoder
 operator|.
 name|encode
@@ -360,7 +361,7 @@ name|query
 argument_list|,
 literal|"UTF-8"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|jsonResponse
 operator|=
 name|Unirest
@@ -369,7 +370,7 @@ name|get
 argument_list|(
 name|API_URL
 operator|+
-name|query
+name|encodedQuery
 operator|+
 literal|"&api_key="
 operator|+
@@ -597,7 +598,7 @@ name|get
 argument_list|(
 name|API_URL
 operator|+
-name|query
+name|encodedQuery
 operator|+
 literal|"&api_key="
 operator|+
@@ -728,7 +729,7 @@ name|lang
 argument_list|(
 literal|"No entries found for the search string '%0'"
 argument_list|,
-name|query
+name|encodedQuery
 argument_list|)
 argument_list|,
 name|Localization

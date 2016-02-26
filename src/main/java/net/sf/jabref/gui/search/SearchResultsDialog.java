@@ -484,6 +484,8 @@ name|gui
 operator|.
 name|util
 operator|.
+name|comparator
+operator|.
 name|IconComparator
 import|;
 end_import

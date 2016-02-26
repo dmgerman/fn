@@ -341,7 +341,6 @@ init|=
 name|makeSearchURL
 argument_list|()
 decl_stmt|;
-comment|//System.out.println(address);
 name|URL
 name|url
 init|=
@@ -368,7 +367,6 @@ operator|.
 name|downloadToString
 argument_list|()
 decl_stmt|;
-comment|//System.out.println(page);
 name|String
 index|[]
 name|lines
@@ -438,7 +436,6 @@ operator|-
 literal|2
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("key address: " + addr);
 name|bibtexUrlList
 operator|.
 name|add
@@ -593,7 +590,6 @@ argument_list|(
 name|bibtexUrl
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("URL:|"+bibtexUrl+"|");
 specifier|final
 name|String
 name|bibtexPage

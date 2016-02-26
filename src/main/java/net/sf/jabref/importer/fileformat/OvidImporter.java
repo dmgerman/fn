@@ -158,12 +158,12 @@ name|OvidImporter
 extends|extends
 name|ImportFormat
 block|{
-DECL|field|ovid_src_pat
+DECL|field|OVID_SOURCE_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|ovid_src_pat
+name|OVID_SOURCE_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -172,12 +172,12 @@ argument_list|(
 literal|"Source ([ \\w&\\-,:]+)\\.[ ]+([0-9]+)\\(([\\w\\-]+)\\):([0-9]+\\-?[0-9]+?)\\,.*([0-9][0-9][0-9][0-9])"
 argument_list|)
 decl_stmt|;
-DECL|field|ovid_src_pat_no_issue
+DECL|field|OVID_SOURCE_PATTERN_NO_ISSUE
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|ovid_src_pat_no_issue
+name|OVID_SOURCE_PATTERN_NO_ISSUE
 init|=
 name|Pattern
 operator|.
@@ -186,12 +186,12 @@ argument_list|(
 literal|"Source ([ \\w&\\-,:]+)\\.[ ]+([0-9]+):([0-9]+\\-?[0-9]+?)\\,.*([0-9][0-9][0-9][0-9])"
 argument_list|)
 decl_stmt|;
-DECL|field|ovid_src_pat_2
+DECL|field|OVID_SOURCE_PATTERN_2
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|ovid_src_pat_2
+name|OVID_SOURCE_PATTERN_2
 init|=
 name|Pattern
 operator|.
@@ -200,12 +200,12 @@ argument_list|(
 literal|"([ \\w&\\-,]+)\\. Vol ([0-9]+)\\(([\\w\\-]+)\\) ([A-Za-z]+) ([0-9][0-9][0-9][0-9]), ([0-9]+\\-?[0-9]+)"
 argument_list|)
 decl_stmt|;
-DECL|field|incollection_pat
+DECL|field|INCOLLECTION_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|incollection_pat
+name|INCOLLECTION_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -216,12 +216,12 @@ operator|+
 literal|"([\\w, ]+): ([\\w, ]+)"
 argument_list|)
 decl_stmt|;
-DECL|field|book_pat
+DECL|field|BOOK_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|book_pat
+name|BOOK_PATTERN
 init|=
 name|Pattern
 operator|.
@@ -230,22 +230,38 @@ argument_list|(
 literal|"\\(([0-9][0-9][0-9][0-9])\\)\\. [A-Za-z, ]+([0-9]+) pp\\. ([\\w, ]+): ([\\w, ]+)"
 argument_list|)
 decl_stmt|;
-DECL|field|ovidPattern
+DECL|field|OVID_PATTERN_STRING
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|OVID_PATTERN_STRING
+init|=
+literal|"<[0-9]+>"
+decl_stmt|;
+DECL|field|OVID_PATTERN
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|ovidPattern
+name|OVID_PATTERN
 init|=
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"<[0-9]+>"
+name|OVID_PATTERN_STRING
 argument_list|)
 decl_stmt|;
-comment|//   public static Pattern ovid_pat_inspec= Pattern.compile("Source ([
-comment|// \\w&\\-]+)");
+DECL|field|MAX_ITEMS
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_ITEMS
+init|=
+literal|50
+decl_stmt|;
 comment|/**      * Return the name of this import format.      */
 annotation|@
 name|Override
@@ -286,6 +302,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -299,7 +317,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -326,7 +345,7 @@ operator|&&
 operator|(
 name|i
 operator|<
-literal|50
+name|MAX_ITEMS
 operator|)
 condition|)
 block|{
@@ -334,7 +353,7 @@ if|if
 condition|(
 name|OvidImporter
 operator|.
-name|ovidPattern
+name|OVID_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -356,6 +375,7 @@ block|}
 return|return
 literal|false
 return|;
+block|}
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@
@@ -480,7 +500,7 @@ argument_list|()
 operator|.
 name|split
 argument_list|(
-literal|"<[0-9]+>"
+name|OVID_PATTERN_STRING
 argument_list|)
 decl_stmt|;
 for|for
@@ -636,7 +656,6 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|//fields[j] = fields[j].trim();
 if|if
 condition|(
 name|isAuthor
@@ -756,7 +775,7 @@ name|matcher
 operator|=
 name|OvidImporter
 operator|.
-name|ovid_src_pat
+name|OVID_SOURCE_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -847,7 +866,7 @@ name|matcher
 operator|=
 name|OvidImporter
 operator|.
-name|ovid_src_pat_no_issue
+name|OVID_SOURCE_PATTERN_NO_ISSUE
 operator|.
 name|matcher
 argument_list|(
@@ -925,7 +944,7 @@ name|matcher
 operator|=
 name|OvidImporter
 operator|.
-name|ovid_src_pat_2
+name|OVID_SOURCE_PATTERN_2
 operator|.
 name|matcher
 argument_list|(
@@ -1030,7 +1049,7 @@ name|matcher
 operator|=
 name|OvidImporter
 operator|.
-name|incollection_pat
+name|INCOLLECTION_PATTERN
 operator|.
 name|matcher
 argument_list|(
@@ -1142,7 +1161,7 @@ name|matcher
 operator|=
 name|OvidImporter
 operator|.
-name|book_pat
+name|BOOK_PATTERN
 operator|.
 name|matcher
 argument_list|(
