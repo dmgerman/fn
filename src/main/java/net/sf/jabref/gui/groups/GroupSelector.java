@@ -855,6 +855,7 @@ name|GroupTreeNodeViewModel
 name|groupsRoot
 decl_stmt|;
 DECL|field|frame
+specifier|protected
 specifier|final
 name|JabRefFrame
 name|frame

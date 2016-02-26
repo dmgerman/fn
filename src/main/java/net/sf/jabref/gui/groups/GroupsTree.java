@@ -1326,8 +1326,11 @@ decl_stmt|;
 if|if
 condition|(
 name|source
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|target
+argument_list|)
 condition|)
 block|{
 name|dtde
@@ -1681,15 +1684,9 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|ioe
-parameter_list|)
-block|{
-comment|// ignore
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|UnsupportedFlavorException
-name|e
+name|ioe
 parameter_list|)
 block|{
 comment|// ignore

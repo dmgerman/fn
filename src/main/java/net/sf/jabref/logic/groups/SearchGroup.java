@@ -44,22 +44,6 @@ name|jabref
 operator|.
 name|model
 operator|.
-name|database
-operator|.
-name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
 name|entry
 operator|.
 name|BibEntry
@@ -277,7 +261,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Parses s and recreates the SearchGroup from it.      *      * @param s The String representation obtained from      *          SearchGroup.toString(), or null if incompatible      */
-DECL|method|fromString (String s, BibDatabase db, int version)
+DECL|method|fromString (String s, int version)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -285,9 +269,6 @@ name|fromString
 parameter_list|(
 name|String
 name|s
-parameter_list|,
-name|BibDatabase
-name|db
 parameter_list|,
 name|int
 name|version
@@ -596,7 +577,8 @@ name|StringUtil
 operator|.
 name|quote
 argument_list|(
-name|name
+name|getName
+argument_list|()
 argument_list|,
 name|AbstractGroup
 operator|.
@@ -611,7 +593,8 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-name|context
+name|getContext
+argument_list|()
 operator|.
 name|ordinal
 argument_list|()
@@ -788,13 +771,15 @@ operator|)
 name|o
 decl_stmt|;
 return|return
-name|name
+name|getName
+argument_list|()
 operator|.
 name|equals
 argument_list|(
 name|other
 operator|.
-name|name
+name|getName
+argument_list|()
 argument_list|)
 operator|&&
 name|this

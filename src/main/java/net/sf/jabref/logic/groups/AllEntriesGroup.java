@@ -46,38 +46,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|search
-operator|.
-name|SearchMatcher
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|database
-operator|.
-name|BibDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|entry
@@ -143,7 +111,7 @@ name|INDEPENDENT
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|fromString (String s, BibDatabase db, int version)
+DECL|method|fromString (String s, int version)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -151,9 +119,6 @@ name|fromString
 parameter_list|(
 name|String
 name|s
-parameter_list|,
-name|BibDatabase
-name|db
 parameter_list|,
 name|int
 name|version

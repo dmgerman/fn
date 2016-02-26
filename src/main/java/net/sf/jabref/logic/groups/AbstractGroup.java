@@ -99,13 +99,35 @@ name|AbstractGroup
 implements|implements
 name|SearchMatcher
 block|{
+comment|/**      * Character used for quoting in the string representation.      */
+DECL|field|QUOTE_CHAR
+specifier|public
+specifier|static
+specifier|final
+name|char
+name|QUOTE_CHAR
+init|=
+literal|'\\'
+decl_stmt|;
+comment|/**      * For separating units (e.g. name, which every group has) in the string      * representation      */
+DECL|field|SEPARATOR
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SEPARATOR
+init|=
+literal|";"
+decl_stmt|;
 comment|/**      * The group's name (every type of group has one).      */
 DECL|field|name
+specifier|private
 name|String
 name|name
 decl_stmt|;
 comment|/**      * The hierarchical context of the group (INDEPENDENT, REFINING, or      * INCLUDING). Defaults to INDEPENDENT, which will be used if and      * only if the context specified in the constructor is invalid.      */
 DECL|field|context
+specifier|private
 name|GroupHierarchyType
 name|context
 init|=
@@ -113,13 +135,6 @@ name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 decl_stmt|;
-DECL|method|getTypeId ()
-specifier|public
-specifier|abstract
-name|String
-name|getTypeId
-parameter_list|()
-function_decl|;
 DECL|method|AbstractGroup (String name, GroupHierarchyType context)
 name|AbstractGroup
 parameter_list|(
@@ -142,24 +157,6 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Character used for quoting in the string representation.      */
-DECL|field|QUOTE_CHAR
-specifier|static
-specifier|final
-name|char
-name|QUOTE_CHAR
-init|=
-literal|'\\'
-decl_stmt|;
-comment|/**      * For separating units (e.g. name, which every group has) in the string      * representation      */
-DECL|field|SEPARATOR
-specifier|static
-specifier|final
-name|String
-name|SEPARATOR
-init|=
-literal|";"
-decl_stmt|;
 comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception If an error occured and a group could not be created, e.g.      *                   due to a malformed regular expression.      */
 DECL|method|fromString (String s, BibDatabase db, int version)
 specifier|public
@@ -198,8 +195,6 @@ name|fromString
 argument_list|(
 name|s
 argument_list|,
-name|db
-argument_list|,
 name|version
 argument_list|)
 return|;
@@ -223,8 +218,6 @@ name|fromString
 argument_list|(
 name|s
 argument_list|,
-name|db
-argument_list|,
 name|version
 argument_list|)
 return|;
@@ -247,8 +240,6 @@ operator|.
 name|fromString
 argument_list|(
 name|s
-argument_list|,
-name|db
 argument_list|,
 name|version
 argument_list|)
@@ -284,6 +275,23 @@ literal|null
 return|;
 comment|// unknown group
 block|}
+DECL|method|getContext ()
+specifier|public
+name|GroupHierarchyType
+name|getContext
+parameter_list|()
+block|{
+return|return
+name|context
+return|;
+block|}
+DECL|method|getTypeId ()
+specifier|public
+specifier|abstract
+name|String
+name|getTypeId
+parameter_list|()
+function_decl|;
 comment|/**      * Returns this group's name, e.g. for display in a list/tree.      */
 DECL|method|getName ()
 specifier|public
@@ -476,6 +484,17 @@ name|boolean
 name|isDynamic
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the group's hierarchical context.      */
+DECL|method|getHierarchicalContext ()
+specifier|public
+name|GroupHierarchyType
+name|getHierarchicalContext
+parameter_list|()
+block|{
+return|return
+name|context
+return|;
+block|}
 comment|/**      * Sets the groups's hierarchical context. If context is not a valid      * value, the call is ignored.      */
 DECL|method|setHierarchicalContext (GroupHierarchyType context)
 specifier|public
@@ -501,17 +520,6 @@ name|context
 operator|=
 name|context
 expr_stmt|;
-block|}
-comment|/**      * Returns the group's hierarchical context.      */
-DECL|method|getHierarchicalContext ()
-specifier|public
-name|GroupHierarchyType
-name|getHierarchicalContext
-parameter_list|()
-block|{
-return|return
-name|context
-return|;
 block|}
 comment|/**      * Returns a lengthy textual description of this instance (for      * the groups editor). The text is formatted in HTML.      */
 DECL|method|getDescription ()

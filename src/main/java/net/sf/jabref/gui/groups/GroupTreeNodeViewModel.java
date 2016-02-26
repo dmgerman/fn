@@ -488,13 +488,9 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|node
-lambda|->
-operator|new
 name|GroupTreeNodeViewModel
-argument_list|(
-name|node
-argument_list|)
+operator|::
+operator|new
 argument_list|)
 operator|.
 name|orElse
@@ -542,13 +538,9 @@ name|parent
 operator|.
 name|map
 argument_list|(
-name|node
-lambda|->
-operator|new
 name|GroupTreeNodeViewModel
-argument_list|(
-name|node
-argument_list|)
+operator|::
+operator|new
 argument_list|)
 operator|.
 name|orElse
@@ -831,6 +823,7 @@ name|children
 return|;
 block|}
 DECL|method|printInItalics ()
+specifier|protected
 name|boolean
 name|printInItalics
 parameter_list|()
@@ -1146,13 +1139,9 @@ argument_list|()
 operator|.
 name|map
 argument_list|(
-name|node
-lambda|->
-operator|new
 name|GroupTreeNodeViewModel
-argument_list|(
-name|node
-argument_list|)
+operator|::
+operator|new
 argument_list|)
 operator|.
 name|toArray
