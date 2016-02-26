@@ -64,7 +64,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
+name|*
 import|;
 end_import
 
@@ -665,6 +665,11 @@ operator|.
 name|println
 argument_list|()
 expr_stmt|;
+name|fail
+argument_list|(
+literal|"Obsolete keys found in properties file which should be removed"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 annotation|@
@@ -752,6 +757,11 @@ name|out
 operator|.
 name|println
 argument_list|()
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Obsolete keys found in menu properties file which should be removed"
+argument_list|)
 expr_stmt|;
 block|}
 block|}
