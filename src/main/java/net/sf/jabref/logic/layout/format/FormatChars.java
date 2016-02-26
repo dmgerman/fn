@@ -124,21 +124,22 @@ name|LATEX_UNICODE_CONVERSION_MAP
 decl_stmt|;
 annotation|@
 name|Override
-DECL|method|format (String field)
+DECL|method|format (String inField)
 specifier|public
 name|String
 name|format
 parameter_list|(
 name|String
-name|field
+name|inField
 parameter_list|)
 block|{
 name|int
 name|i
 decl_stmt|;
+name|String
 name|field
-operator|=
-name|field
+init|=
+name|inField
 operator|.
 name|replaceAll
 argument_list|(
@@ -168,7 +169,7 @@ literal|"\\$([^\\$]*)\\$"
 argument_list|,
 literal|"\\{$1\\}"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|StringBuilder
 name|sb
 init|=
@@ -176,7 +177,7 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|currentCommand
 init|=
 literal|null
@@ -317,7 +318,7 @@ expr_stmt|;
 name|currentCommand
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}
@@ -468,7 +469,6 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
-comment|// System.out.println("next: "+(char)c);
 name|String
 name|combody
 decl_stmt|;
@@ -520,7 +520,6 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// System.out.println("... "+combody);
 block|}
 name|Object
 name|result
@@ -740,8 +739,6 @@ operator|+
 name|argument
 argument_list|)
 decl_stmt|;
-comment|// System.out.print("command: "+command+", arg: "+argument);
-comment|// System.out.print(", result: ");
 comment|// If found, then use translated version. If not, then keep
 comment|// the
 comment|// text of the parameter intact.

@@ -86,9 +86,14 @@ return|return
 literal|null
 return|;
 block|}
+name|String
+name|result
+init|=
+name|fieldText
+decl_stmt|;
 if|if
 condition|(
-name|fieldText
+name|result
 operator|.
 name|startsWith
 argument_list|(
@@ -96,9 +101,9 @@ literal|"/"
 argument_list|)
 condition|)
 block|{
-name|fieldText
+name|result
 operator|=
-name|fieldText
+name|result
 operator|.
 name|substring
 argument_list|(
@@ -111,7 +116,7 @@ name|DOI
 operator|.
 name|build
 argument_list|(
-name|fieldText
+name|result
 argument_list|)
 operator|.
 name|map
@@ -123,7 +128,7 @@ argument_list|)
 operator|.
 name|orElse
 argument_list|(
-name|fieldText
+name|result
 argument_list|)
 return|;
 block|}

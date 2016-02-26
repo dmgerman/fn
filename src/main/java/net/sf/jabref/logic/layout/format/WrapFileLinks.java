@@ -829,6 +829,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
+default|default:
+break|break;
 block|}
 block|}
 name|piv
@@ -853,6 +855,11 @@ name|String
 name|text
 parameter_list|)
 block|{
+name|String
+name|result
+init|=
+name|text
+decl_stmt|;
 for|for
 control|(
 name|Map
@@ -879,9 +886,9 @@ operator|.
 name|getValue
 argument_list|()
 decl_stmt|;
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -895,7 +902,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|text
+name|result
 return|;
 block|}
 comment|/**      * Parse a format string and return a list of FormatEntry objects. The format      * string is basically marked up with "\i" marking that the iteration number should      * be inserted, and with "\p" marking that the file path of the current iteration      * should be inserted, plus additional markers.      *      * @param format The marked-up string.      * @return the resulting format entries.      */
@@ -1100,7 +1107,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Error: unknown escape sequence: \\"+String.valueOf(c));
 block|}
 block|}
 block|}

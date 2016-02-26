@@ -249,15 +249,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|fieldText
-operator|=
+return|return
 name|sb
 operator|.
 name|toString
 argument_list|()
-expr_stmt|;
-return|return
-name|fieldText
 return|;
 block|}
 comment|/**      * @param sb      * @param author      * @param position      */

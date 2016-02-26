@@ -97,6 +97,8 @@ class|class
 name|HTMLConverterTest
 block|{
 DECL|field|conv
+specifier|private
+specifier|final
 name|HTMLToLatexFormatter
 name|conv
 init|=

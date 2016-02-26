@@ -434,7 +434,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|format (String toFormat, String parameters)
+DECL|method|format (String toFormat, String inParameters)
 specifier|public
 name|String
 name|format
@@ -443,7 +443,7 @@ name|String
 name|toFormat
 parameter_list|,
 name|String
-name|parameters
+name|inParameters
 parameter_list|)
 block|{
 name|AuthorList
@@ -456,15 +456,18 @@ argument_list|(
 name|toFormat
 argument_list|)
 decl_stmt|;
+name|String
+name|parameters
+decl_stmt|;
 if|if
 condition|(
 operator|(
-name|parameters
+name|inParameters
 operator|==
 literal|null
 operator|)
 operator|||
-name|parameters
+name|inParameters
 operator|.
 name|isEmpty
 argument_list|()
@@ -473,6 +476,13 @@ block|{
 name|parameters
 operator|=
 literal|"*:*:\"{ff}{vv}{ll}{,jj} \""
+expr_stmt|;
+block|}
+else|else
+block|{
+name|parameters
+operator|=
+name|inParameters
 expr_stmt|;
 block|}
 name|String

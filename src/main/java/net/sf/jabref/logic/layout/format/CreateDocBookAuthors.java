@@ -239,6 +239,7 @@ comment|//<author><firstname>J.</firstname><surname>Bajorath</surname></author>
 comment|/*         if (fieldText.indexOf(" and ") == -1)         {           sb.append("<author>");           singleAuthor(sb, fieldText);           sb.append("</author>");         }         else         {             String[] names = fieldText.split(" and ");             for (int i=0; i<names.length; i++)             {               sb.append("<author>");               singleAuthor(sb, names[i]);               sb.append("</author>");               if (i< names.length -1)                 sb.append("\n       ");             }         }            fieldText = sb.toString();          return fieldText;*/
 block|}
 DECL|method|addBody (StringBuilder sb, AuthorList al, String tagName)
+specifier|public
 name|void
 name|addBody
 parameter_list|(

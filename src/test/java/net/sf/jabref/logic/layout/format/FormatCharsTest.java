@@ -38,16 +38,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -65,24 +55,6 @@ operator|.
 name|layout
 operator|.
 name|LayoutFormatter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|FormatChars
 import|;
 end_import
 
@@ -190,8 +162,6 @@ operator|new
 name|FormatChars
 argument_list|()
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"$"
@@ -204,8 +174,6 @@ literal|"\\$"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Ï"
@@ -218,8 +186,6 @@ literal|"$\\sigma$"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"A 32\u00A0mA Î£Î-modulator"

@@ -144,15 +144,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|UnicodeToLatexFormatter ()
-specifier|public
-name|UnicodeToLatexFormatter
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|format (String text)
@@ -164,23 +155,26 @@ name|String
 name|text
 parameter_list|)
 block|{
+name|String
+name|result
+init|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
 name|text
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-name|text
+name|result
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
 return|return
-name|text
+name|result
 return|;
 block|}
 comment|// Standard symbols
@@ -205,9 +199,9 @@ range|:
 name|chars
 control|)
 block|{
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -250,7 +244,7 @@ init|;
 name|i
 operator|<=
 operator|(
-name|text
+name|result
 operator|.
 name|length
 argument_list|()
@@ -271,7 +265,7 @@ operator|(
 name|i
 operator|<
 operator|(
-name|text
+name|result
 operator|.
 name|length
 argument_list|()
@@ -284,7 +278,7 @@ block|{
 name|int
 name|cpCurrent
 init|=
-name|text
+name|result
 operator|.
 name|codePointAt
 argument_list|(
@@ -294,7 +288,7 @@ decl_stmt|;
 name|Integer
 name|cpNext
 init|=
-name|text
+name|result
 operator|.
 name|codePointAt
 argument_list|(
@@ -380,11 +374,11 @@ argument_list|(
 operator|(
 name|char
 operator|)
-name|text
+name|result
 operator|.
 name|codePointAt
 argument_list|(
-name|text
+name|result
 operator|.
 name|length
 argument_list|()
@@ -394,7 +388,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|text
+name|result
 operator|=
 name|sb
 operator|.
@@ -412,7 +406,7 @@ init|;
 name|i
 operator|<=
 operator|(
-name|text
+name|result
 operator|.
 name|length
 argument_list|()
@@ -427,7 +421,7 @@ block|{
 name|int
 name|cp
 init|=
-name|text
+name|result
 operator|.
 name|codePointAt
 argument_list|(
@@ -453,7 +447,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|text
+name|result
 return|;
 block|}
 annotation|@

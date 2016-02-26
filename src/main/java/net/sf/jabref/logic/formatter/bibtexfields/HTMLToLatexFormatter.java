@@ -257,15 +257,6 @@ argument_list|(
 literal|"&(\\w+);"
 argument_list|)
 decl_stmt|;
-DECL|method|HTMLToLatexFormatter ()
-specifier|public
-name|HTMLToLatexFormatter
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|format (String text)
@@ -277,30 +268,33 @@ name|String
 name|text
 parameter_list|)
 block|{
+name|String
+name|result
+init|=
 name|Objects
 operator|.
 name|requireNonNull
 argument_list|(
 name|text
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-name|text
+name|result
 operator|.
 name|isEmpty
 argument_list|()
 condition|)
 block|{
 return|return
-name|text
+name|result
 return|;
 block|}
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 comment|// Deal with the form<sup>k</sup>and<sub>k</sub>
@@ -320,9 +314,9 @@ name|USE_CONVERT_TO_EQUATION
 argument_list|)
 condition|)
 block|{
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -331,9 +325,9 @@ argument_list|,
 literal|"\\$\\^\\{$1\\}\\$"
 argument_list|)
 expr_stmt|;
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -345,9 +339,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -356,9 +350,9 @@ argument_list|,
 literal|"\\\\textsuperscript\\{$1\\}"
 argument_list|)
 expr_stmt|;
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -380,7 +374,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|text
+name|result
 operator|.
 name|length
 argument_list|()
@@ -392,7 +386,7 @@ block|{
 name|int
 name|c
 init|=
-name|text
+name|result
 operator|.
 name|charAt
 argument_list|(
@@ -410,7 +404,7 @@ name|i
 operator|=
 name|readTag
 argument_list|(
-name|text
+name|result
 argument_list|,
 name|i
 argument_list|)
@@ -430,7 +424,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|text
+name|result
 operator|=
 name|sb
 operator|.
@@ -459,9 +453,9 @@ range|:
 name|patterns
 control|)
 block|{
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -486,7 +480,7 @@ name|ESCAPED_PATTERN
 operator|.
 name|matcher
 argument_list|(
-name|text
+name|result
 argument_list|)
 decl_stmt|;
 while|while
@@ -538,9 +532,9 @@ name|num
 argument_list|)
 condition|)
 block|{
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -588,7 +582,7 @@ name|ESCAPED_PATTERN2
 operator|.
 name|matcher
 argument_list|(
-name|text
+name|result
 argument_list|)
 expr_stmt|;
 while|while
@@ -655,9 +649,9 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -724,9 +718,9 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -779,9 +773,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -850,7 +844,7 @@ name|ESCAPED_PATTERN3
 operator|.
 name|matcher
 argument_list|(
-name|text
+name|result
 argument_list|)
 expr_stmt|;
 while|while
@@ -929,9 +923,9 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Remove $$ in case of two adjacent conversions
-name|text
+name|result
 operator|=
-name|text
+name|result
 operator|.
 name|replace
 argument_list|(
@@ -947,7 +941,7 @@ name|ESCAPED_PATTERN4
 operator|.
 name|matcher
 argument_list|(
-name|text
+name|result
 argument_list|)
 expr_stmt|;
 while|while
@@ -974,7 +968,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|text
+name|result
 operator|.
 name|trim
 argument_list|()

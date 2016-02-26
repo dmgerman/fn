@@ -42,24 +42,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|RisKeywords
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -168,6 +150,47 @@ operator|.
 name|format
 argument_list|(
 literal|"abcd, efg"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testMultipleKeywords ()
+specifier|public
+name|void
+name|testMultipleKeywords
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"KW  - abcd"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"KW  - efg"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"KW  - hij"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+operator|+
+literal|"KW  - klm"
+argument_list|,
+operator|new
+name|RisKeywords
+argument_list|()
+operator|.
+name|format
+argument_list|(
+literal|"abcd, efg, hij, klm"
 argument_list|)
 argument_list|)
 expr_stmt|;

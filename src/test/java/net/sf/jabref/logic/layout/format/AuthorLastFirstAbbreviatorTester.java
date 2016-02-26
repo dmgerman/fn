@@ -46,24 +46,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|AuthorLastFirstAbbreviator
-import|;
-end_import
-
 begin_comment
 comment|/**  * Test case  that verifies the functionalities of the  * formater AuthorLastFirstAbbreviator.  *  * @author Carlos Silla  * @author Christopher Oezbek<oezi@oezi.de>  */
 end_comment

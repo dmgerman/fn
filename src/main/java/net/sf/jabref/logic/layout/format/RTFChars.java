@@ -161,16 +161,16 @@ name|String
 name|field
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|""
 argument_list|)
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|currentCommand
 init|=
 literal|null
@@ -255,7 +255,7 @@ expr_stmt|;
 name|currentCommand
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}
@@ -491,7 +491,6 @@ block|}
 block|}
 else|else
 block|{
-comment|// if (!incommand || ((c!='{')&& !Character.isWhitespace(c)))
 name|testContent
 label|:
 if|if
@@ -699,6 +698,13 @@ name|equals
 argument_list|(
 name|command
 argument_list|)
+operator|||
+literal|"it"
+operator|.
+name|equals
+argument_list|(
+name|command
+argument_list|)
 condition|)
 block|{
 name|StringInt
@@ -745,6 +751,13 @@ elseif|else
 if|if
 condition|(
 literal|"textbf"
+operator|.
+name|equals
+argument_list|(
+name|command
+argument_list|)
+operator|||
+literal|"bf"
 operator|.
 name|equals
 argument_list|(
@@ -851,7 +864,7 @@ decl_stmt|;
 name|sb
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 for|for
@@ -960,6 +973,11 @@ name|count
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|icount
+init|=
+name|i
+decl_stmt|;
 name|StringBuilder
 name|part
 init|=
@@ -978,7 +996,7 @@ literal|0
 operator|)
 operator|&&
 operator|(
-name|i
+name|icount
 operator|<
 name|text
 operator|.
@@ -987,7 +1005,7 @@ argument_list|()
 operator|)
 condition|)
 block|{
-name|i
+name|icount
 operator|++
 expr_stmt|;
 name|c
@@ -996,7 +1014,7 @@ name|text
 operator|.
 name|charAt
 argument_list|(
-name|i
+name|icount
 argument_list|)
 expr_stmt|;
 switch|switch

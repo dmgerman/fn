@@ -97,6 +97,8 @@ class|class
 name|UnicodeConverterTest
 block|{
 DECL|field|conv
+specifier|private
+specifier|final
 name|UnicodeToLatexFormatter
 name|conv
 init|=
