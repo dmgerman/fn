@@ -167,7 +167,7 @@ class|class
 name|IntegrityCheck
 block|{
 DECL|field|AUTHOR_NAME_CHECKER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Checker
@@ -178,7 +178,7 @@ name|AuthorNameChecker
 argument_list|()
 decl_stmt|;
 DECL|field|YEAR_CHECKER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Checker
@@ -189,7 +189,7 @@ name|YearChecker
 argument_list|()
 decl_stmt|;
 DECL|field|TITLE_CHECKER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Checker
@@ -200,7 +200,7 @@ name|TitleChecker
 argument_list|()
 decl_stmt|;
 DECL|field|BRACKET_CHECKER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Checker
@@ -211,7 +211,7 @@ name|BracketChecker
 argument_list|()
 decl_stmt|;
 DECL|field|PAGES_CHECKER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Checker
@@ -222,7 +222,7 @@ name|PagesChecker
 argument_list|()
 decl_stmt|;
 DECL|field|URL_CHECKER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Checker
@@ -233,7 +233,7 @@ name|UrlChecker
 argument_list|()
 decl_stmt|;
 DECL|field|FILE_CHECKER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Checker
@@ -244,7 +244,7 @@ name|FileChecker
 argument_list|()
 decl_stmt|;
 DECL|field|ABBREVIATION_CHECKER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Checker
@@ -255,7 +255,7 @@ name|AbbreviationChecker
 argument_list|()
 decl_stmt|;
 DECL|field|TYPE_CHECKER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Checker
@@ -341,7 +341,7 @@ name|result
 return|;
 block|}
 DECL|method|checkBibtexEntry (BibEntry entry)
-specifier|public
+specifier|private
 name|List
 argument_list|<
 name|IntegrityMessage
