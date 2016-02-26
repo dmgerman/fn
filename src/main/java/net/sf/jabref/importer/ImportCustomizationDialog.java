@@ -544,6 +544,7 @@ return|;
 block|}
 comment|/**      * Adds an importer to the model that underlies the custom importers.      *      * @param importer  importer      */
 DECL|method|addOrReplaceImporter (CustomImporter importer)
+specifier|public
 name|void
 name|addOrReplaceImporter
 parameter_list|(

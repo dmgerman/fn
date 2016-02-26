@@ -2528,7 +2528,8 @@ name|getSelectedItem
 argument_list|()
 operator|)
 operator|.
-name|entryType
+name|getEntryType
+argument_list|()
 decl_stmt|;
 name|threadState
 operator|.
@@ -5535,7 +5536,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates the ComboBox-View vor the Listbox that holds the Bibtex entry      * types.      */
+comment|/**      * Creates the ComboBox-View for the Listbox that holds the Bibtex entry      * types.      */
 DECL|method|createEntryTypesCombobox ()
 specifier|private
 name|void
@@ -5630,6 +5631,7 @@ class|class
 name|BibtexEntryTypeWrapper
 block|{
 DECL|field|entryType
+specifier|private
 specifier|final
 name|EntryType
 name|entryType
@@ -5677,6 +5679,16 @@ name|entryType
 operator|.
 name|getName
 argument_list|()
+return|;
+block|}
+DECL|method|getEntryType ()
+specifier|public
+name|EntryType
+name|getEntryType
+parameter_list|()
+block|{
+return|return
+name|entryType
 return|;
 block|}
 block|}

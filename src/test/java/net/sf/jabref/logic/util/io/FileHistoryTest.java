@@ -87,10 +87,12 @@ class|class
 name|FileHistoryTest
 block|{
 DECL|field|prefs
+specifier|private
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
 DECL|field|oldFileNames
+specifier|private
 name|List
 argument_list|<
 name|String

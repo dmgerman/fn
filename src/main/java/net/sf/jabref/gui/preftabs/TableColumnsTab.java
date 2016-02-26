@@ -3298,6 +3298,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|swap (int i, int j)
+specifier|public
 name|void
 name|swap
 parameter_list|(
