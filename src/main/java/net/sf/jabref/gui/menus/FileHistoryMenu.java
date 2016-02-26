@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.gui
+DECL|package|net.sf.jabref.gui.menus
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|gui
+operator|.
+name|menus
 package|;
 end_package
 
@@ -37,6 +39,20 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|JabRefFrame
 import|;
 end_import
 
@@ -579,7 +595,8 @@ parameter_list|()
 block|{
 name|frame
 operator|.
-name|open
+name|getOpenDatabaseAction
+argument_list|()
 operator|.
 name|openFile
 argument_list|(
