@@ -94,6 +94,8 @@ name|gui
 operator|.
 name|util
 operator|.
+name|component
+operator|.
 name|JTextFieldWithUnfocusedText
 import|;
 end_import
