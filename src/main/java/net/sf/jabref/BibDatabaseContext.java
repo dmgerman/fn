@@ -290,6 +290,11 @@ condition|(
 name|data
 operator|==
 literal|null
+operator|||
+name|data
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|BibDatabaseMode
