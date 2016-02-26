@@ -319,10 +319,6 @@ name|void
 name|updateModel
 parameter_list|()
 block|{
-name|java
-operator|.
-name|util
-operator|.
 name|List
 argument_list|<
 name|JabRefPreferencesFilter
