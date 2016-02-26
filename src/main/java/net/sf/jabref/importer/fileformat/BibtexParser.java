@@ -2224,7 +2224,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|entry
 operator|.
 name|hasField
@@ -2232,18 +2231,6 @@ argument_list|(
 name|key
 argument_list|)
 condition|)
-block|{
-name|entry
-operator|.
-name|setField
-argument_list|(
-name|key
-argument_list|,
-name|content
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 comment|// The following hack enables the parser to deal with multiple
 comment|// author or
@@ -2310,6 +2297,18 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|key
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -2573,7 +2572,6 @@ init|=
 name|read
 argument_list|()
 decl_stmt|;
-comment|// Util.pr(".. "+c);
 if|if
 condition|(
 name|character
