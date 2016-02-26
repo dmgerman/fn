@@ -261,12 +261,7 @@ name|this
 operator|.
 name|repository
 operator|=
-name|Objects
-operator|.
-name|requireNonNull
-argument_list|(
 name|repository
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getLayoutFromText ()

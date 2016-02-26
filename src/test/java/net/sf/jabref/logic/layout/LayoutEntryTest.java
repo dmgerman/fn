@@ -187,7 +187,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The test class LayoutEntryTest test the net.sf.jabref.export.layout.LayoutEntry.  * Indirectly the net.sf.jabref.export.layout.Layout is testet too.  *<p/>  * The LayoutEntry creates a human readable String assinged with html formaters.  * To test the Highlighting Feature, an instance of LayoutEntry will be instatiated via Layout and LayoutHelper.  * With these instance the doLayout() Method is called several times for each test case.  * To simulate a search, a BibEntry will be created, wich will be used by LayoutEntry.  * The definiton of the search is set by  *<p/>  * LayoutEntry.setWordsToHighlight(words); and  * Globals.prefs.putBoolean("caseSensitiveSearch", false);  *<p/>  * There are five test cases:  * - The shown result text has no words which should be highlighted.  * - There is one word which will be highlighted ignoring case sensitivity.  * - There are two words which will be highlighted ignoring case sensitivity.  * - There is one word which will be highlighted case sensitivity.  * - There are more words which will be highlighted case sensitivity.  *  * @author Arne  */
+comment|/**  * The test class LayoutEntryTest test the net.sf.jabref.export.layout.LayoutEntry.  * Indirectly the net.sf.jabref.export.layout.Layout is tested too.  *<p/>  * The LayoutEntry creates a human readable String assigned with HTML formatters.  * To test the Highlighting Feature, an instance of LayoutEntry will be instantiated via Layout and LayoutHelper.  * With these instance the doLayout() Method is called several times for each test case.  * To simulate a search, a BibEntry will be created, which will be used by LayoutEntry.  * The definition of the search is set by  *<p/>  * LayoutEntry.setWordsToHighlight(words); and  * Globals.prefs.putBoolean("caseSensitiveSearch", false);  *<p/>  * There are five test cases:  * - The shown result text has no words which should be highlighted.  * - There is one word which will be highlighted ignoring case sensitivity.  * - There are two words which will be highlighted ignoring case sensitivity.  * - There is one word which will be highlighted case sensitivity.  * - There are more words which will be highlighted case sensitivity.  *  * @author Arne  */
 end_comment
 
 begin_class
@@ -244,17 +244,6 @@ name|TRUE
 argument_list|)
 expr_stmt|;
 block|}
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-operator|=
-name|mock
-argument_list|(
-name|JournalAbbreviationLoader
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
 comment|// create Bibtext Entry
 name|mBTE
 operator|=

@@ -250,6 +250,15 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|Globals
+operator|.
+name|journalAbbreviationLoader
+operator|==
+literal|null
+condition|)
+block|{
 name|Globals
 operator|.
 name|journalAbbreviationLoader
@@ -261,6 +270,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Return Test data.      */
 DECL|method|t1BibtexString ()

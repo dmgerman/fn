@@ -160,7 +160,7 @@ name|mockito
 operator|.
 name|Mockito
 operator|.
-name|*
+name|mock
 import|;
 end_import
 
@@ -228,6 +228,15 @@ name|void
 name|setUp
 parameter_list|()
 block|{
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|==
+literal|null
+condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -237,6 +246,16 @@ operator|.
 name|getInstance
 argument_list|()
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|Globals
+operator|.
+name|journalAbbreviationLoader
+operator|==
+literal|null
+condition|)
+block|{
 name|Globals
 operator|.
 name|journalAbbreviationLoader
@@ -248,6 +267,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Rule
