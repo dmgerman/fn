@@ -4048,14 +4048,14 @@ comment|// script capital U -- possibly use \mathscr
 block|}
 decl_stmt|;
 comment|// List of combining accents
-DECL|field|accentList
+DECL|field|ACCENT_LIST
 specifier|private
 specifier|static
 specifier|final
 name|String
 index|[]
 index|[]
-name|accentList
+name|ACCENT_LIST
 init|=
 operator|new
 name|String
@@ -4810,10 +4810,7 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 name|strippedLaTeX
 operator|.
@@ -4837,7 +4834,6 @@ operator|+
 literal|";"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -4951,7 +4947,7 @@ name|String
 index|[]
 name|anAccentList
 range|:
-name|accentList
+name|ACCENT_LIST
 control|)
 block|{
 name|ESCAPED_ACCENTS
@@ -5027,9 +5023,7 @@ name|escapedString
 parameter_list|)
 block|{
 comment|// Get rid of \{}$ from the LaTeX-string
-name|String
-name|result
-init|=
+return|return
 name|escapedString
 operator|.
 name|replaceAll
@@ -5038,9 +5032,6 @@ literal|"[\\\\\\{\\}\\$]"
 argument_list|,
 literal|""
 argument_list|)
-decl_stmt|;
-return|return
-name|result
 return|;
 block|}
 block|}
