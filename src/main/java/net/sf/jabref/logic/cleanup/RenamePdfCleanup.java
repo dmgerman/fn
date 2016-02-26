@@ -54,6 +54,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|journals
+operator|.
+name|JournalAbbreviationRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|io
@@ -208,7 +224,13 @@ specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|method|RenamePdfCleanup (List<String> paths, Boolean onlyRelativePaths, BibDatabase database)
+DECL|field|repository
+specifier|private
+specifier|final
+name|JournalAbbreviationRepository
+name|repository
+decl_stmt|;
+DECL|method|RenamePdfCleanup (List<String> paths, Boolean onlyRelativePaths, BibDatabase database, JournalAbbreviationRepository repository)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
@@ -223,6 +245,9 @@ name|onlyRelativePaths
 parameter_list|,
 name|BibDatabase
 name|database
+parameter_list|,
+name|JournalAbbreviationRepository
+name|repository
 parameter_list|)
 block|{
 name|this
@@ -242,6 +267,12 @@ operator|.
 name|onlyRelativePaths
 operator|=
 name|onlyRelativePaths
+expr_stmt|;
+name|this
+operator|.
+name|repository
+operator|=
+name|repository
 expr_stmt|;
 block|}
 annotation|@
@@ -374,6 +405,8 @@ argument_list|(
 name|database
 argument_list|,
 name|entry
+argument_list|,
+name|repository
 argument_list|)
 argument_list|)
 decl_stmt|;

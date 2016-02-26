@@ -26,7 +26,7 @@ name|logic
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviationLoader
+name|JournalAbbreviationRepository
 import|;
 end_import
 
@@ -459,13 +459,10 @@ name|sr
 argument_list|,
 name|mock
 argument_list|(
-name|JournalAbbreviationLoader
+name|JournalAbbreviationRepository
 operator|.
 name|class
 argument_list|)
-operator|.
-name|getRepository
-argument_list|()
 argument_list|)
 operator|.
 name|getLayoutFromText

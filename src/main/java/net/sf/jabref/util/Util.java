@@ -280,6 +280,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|journals
+operator|.
+name|JournalAbbreviationRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|l10n
 operator|.
 name|Localization
@@ -1189,8 +1205,8 @@ argument_list|()
 expr_stmt|;
 comment|// Runs the update() method on the EDT.
 block|}
-comment|/**      * Determines filename provided by an entry in a database      *      * @param database the database, where the entry is located      * @param entry    the entry to which the file should be linked to      * @return a suggested fileName      */
-DECL|method|getLinkedFileName (BibDatabase database, BibEntry entry)
+comment|/**      * Determines filename provided by an entry in a database      *      * @param database the database, where the entry is located      * @param entry    the entry to which the file should be linked to      * @param repository      * @return a suggested fileName      */
+DECL|method|getLinkedFileName (BibDatabase database, BibEntry entry, JournalAbbreviationRepository repository)
 specifier|public
 specifier|static
 name|String
@@ -1201,6 +1217,9 @@ name|database
 parameter_list|,
 name|BibEntry
 name|entry
+parameter_list|,
+name|JournalAbbreviationRepository
+name|repository
 parameter_list|)
 block|{
 name|String
@@ -1252,12 +1271,7 @@ name|LayoutHelper
 argument_list|(
 name|sr
 argument_list|,
-name|Globals
-operator|.
-name|journalAbbreviationLoader
-operator|.
-name|getRepository
-argument_list|()
+name|repository
 argument_list|)
 operator|.
 name|getLayoutFromText
