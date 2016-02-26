@@ -1442,11 +1442,11 @@ argument_list|,
 name|hasFocus
 argument_list|)
 decl_stmt|;
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 name|node
 init|=
 operator|(
-name|GroupTreeNode
+name|GroupTreeNodeViewModel
 operator|)
 name|value
 decl_stmt|;
@@ -1454,6 +1454,9 @@ name|AbstractGroup
 name|group
 init|=
 name|node
+operator|.
+name|getNode
+argument_list|()
 operator|.
 name|getGroup
 argument_list|()
