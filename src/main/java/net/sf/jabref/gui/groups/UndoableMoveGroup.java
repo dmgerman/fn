@@ -38,22 +38,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|groups
-operator|.
-name|GroupSelector
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|logic
 operator|.
 name|groups
@@ -210,7 +194,7 @@ operator|.
 name|getOldParent
 argument_list|()
 operator|.
-name|getIndexedPath
+name|getIndexedPathFromRoot
 argument_list|()
 expr_stmt|;
 name|pathToNewParent
@@ -220,7 +204,7 @@ operator|.
 name|getNewParent
 argument_list|()
 operator|.
-name|getIndexedPath
+name|getIndexedPathFromRoot
 argument_list|()
 expr_stmt|;
 name|oldChildIndex
@@ -315,7 +299,11 @@ name|getDescendant
 argument_list|(
 name|pathToNewParent
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
+comment|//TODO: NULL
 name|GroupTreeNode
 name|node
 init|=
@@ -325,7 +313,16 @@ name|getChildAt
 argument_list|(
 name|newChildIndex
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
+comment|//TODO: Null
+comment|//TODO: NULL
+name|node
+operator|.
+name|moveTo
+argument_list|(
 name|root
 operator|.
 name|getNode
@@ -336,9 +333,8 @@ argument_list|(
 name|pathToOldParent
 argument_list|)
 operator|.
-name|insert
-argument_list|(
-name|node
+name|get
+argument_list|()
 argument_list|,
 name|oldChildIndex
 argument_list|)
@@ -374,7 +370,11 @@ name|getDescendant
 argument_list|(
 name|pathToOldParent
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
+comment|//TODO: NULL
 name|GroupTreeNode
 name|node
 init|=
@@ -384,7 +384,16 @@ name|getChildAt
 argument_list|(
 name|oldChildIndex
 argument_list|)
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
+comment|//TODO:Null
+comment|//TODO: NULL
+name|node
+operator|.
+name|moveTo
+argument_list|(
 name|root
 operator|.
 name|getNode
@@ -395,9 +404,8 @@ argument_list|(
 name|pathToNewParent
 argument_list|)
 operator|.
-name|insert
-argument_list|(
-name|node
+name|get
+argument_list|()
 argument_list|,
 name|newChildIndex
 argument_list|)

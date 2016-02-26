@@ -1171,7 +1171,7 @@ name|child
 range|:
 name|cursor
 operator|.
-name|children
+name|getChildren
 argument_list|()
 control|)
 block|{
@@ -2052,7 +2052,7 @@ name|child
 range|:
 name|cursor
 operator|.
-name|children
+name|getChildren
 argument_list|()
 control|)
 block|{

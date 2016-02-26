@@ -1691,7 +1691,7 @@ operator|&&
 operator|(
 name|groupsRoot
 operator|.
-name|getChildCount
+name|getNumberOfChildren
 argument_list|()
 operator|>
 literal|0

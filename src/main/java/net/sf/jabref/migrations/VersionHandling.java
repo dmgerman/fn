@@ -264,7 +264,7 @@ argument_list|)
 expr_stmt|;
 name|root
 operator|.
-name|add
+name|addChild
 argument_list|(
 operator|new
 name|GroupTreeNode
@@ -591,7 +591,7 @@ else|else
 block|{
 name|root
 operator|.
-name|add
+name|addChild
 argument_list|(
 name|newNode
 argument_list|)
@@ -967,11 +967,14 @@ name|cursor
 operator|.
 name|getParent
 argument_list|()
+operator|.
+name|get
+argument_list|()
 expr_stmt|;
 block|}
 name|cursor
 operator|.
-name|add
+name|addChild
 argument_list|(
 name|newNode
 argument_list|)

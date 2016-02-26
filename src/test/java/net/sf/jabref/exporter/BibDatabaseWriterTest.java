@@ -1586,7 +1586,7 @@ argument_list|)
 decl_stmt|;
 name|groupRoot
 operator|.
-name|add
+name|addChild
 argument_list|(
 operator|new
 name|GroupTreeNode
@@ -1758,7 +1758,7 @@ argument_list|)
 decl_stmt|;
 name|groupRoot
 operator|.
-name|add
+name|addChild
 argument_list|(
 operator|new
 name|GroupTreeNode

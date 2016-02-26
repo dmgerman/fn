@@ -775,7 +775,7 @@ argument_list|)
 decl_stmt|;
 name|autoGroupsRoot
 operator|.
-name|add
+name|addChild
 argument_list|(
 operator|new
 name|GroupTreeNode
@@ -785,14 +785,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|autoGroupsRoot
+operator|.
+name|moveTo
+argument_list|(
 name|m_groupsRoot
 operator|.
 name|getNode
 argument_list|()
-operator|.
-name|add
-argument_list|(
-name|autoGroupsRoot
 argument_list|)
 expr_stmt|;
 name|NamedCompound
