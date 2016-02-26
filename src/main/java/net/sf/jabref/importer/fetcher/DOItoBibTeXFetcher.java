@@ -489,6 +489,15 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Invalid DOI"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
@@ -635,6 +644,15 @@ name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Unknown DOI"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;

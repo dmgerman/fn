@@ -259,6 +259,8 @@ throws|throws
 name|IOException
 block|{
 comment|// Our strategy is to look for the "<bibtex:file *" line.
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -272,7 +274,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -311,6 +314,7 @@ block|}
 return|return
 literal|false
 return|;
+block|}
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibEntry      * objects.      */
 annotation|@

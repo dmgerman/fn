@@ -172,6 +172,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -224,6 +252,22 @@ name|ADSFetcher
 implements|implements
 name|EntryFetcher
 block|{
+DECL|field|LOGGER
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|LOGGER
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|ADSFetcher
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|getOptionsPanel ()
@@ -411,10 +455,14 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|e
+name|LOGGER
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Error while fetching from ADS"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -567,6 +615,15 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"File not found"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -597,6 +654,15 @@ argument_list|,
 name|JOptionPane
 operator|.
 name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Problem accessing URL"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -632,6 +698,15 @@ argument_list|,
 name|JOptionPane
 operator|.
 name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem fetching from ADS"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}

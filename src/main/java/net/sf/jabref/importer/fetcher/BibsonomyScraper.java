@@ -220,8 +220,9 @@ block|{
 try|try
 block|{
 comment|// Replace special characters by corresponding sequences:
-name|entryUrl
-operator|=
+name|String
+name|cleanURL
+init|=
 name|entryUrl
 operator|.
 name|replace
@@ -265,7 +266,7 @@ literal|"="
 argument_list|,
 literal|"%3D"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|URL
 name|url
 init|=
@@ -276,7 +277,7 @@ name|BibsonomyScraper
 operator|.
 name|BIBSONOMY_SCRAPER
 operator|+
-name|entryUrl
+name|cleanURL
 operator|+
 name|BibsonomyScraper
 operator|.
