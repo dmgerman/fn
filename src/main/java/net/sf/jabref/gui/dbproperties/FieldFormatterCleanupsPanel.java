@@ -64,7 +64,7 @@ name|jabref
 operator|.
 name|exporter
 operator|.
-name|SaveActions
+name|FieldFormatterCleanups
 import|;
 end_import
 
@@ -235,10 +235,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|SaveActionsPanel
+DECL|class|FieldFormatterCleanupsPanel
 specifier|public
 class|class
-name|SaveActionsPanel
+name|FieldFormatterCleanupsPanel
 extends|extends
 name|JPanel
 block|{
@@ -248,10 +248,10 @@ specifier|final
 name|JCheckBox
 name|enabled
 decl_stmt|;
-DECL|field|saveActions
+DECL|field|fieldFormatterCleanups
 specifier|private
-name|SaveActions
-name|saveActions
+name|FieldFormatterCleanups
+name|fieldFormatterCleanups
 decl_stmt|;
 DECL|field|actionsList
 specifier|private
@@ -281,9 +281,9 @@ specifier|private
 name|JButton
 name|deleteButton
 decl_stmt|;
-DECL|method|SaveActionsPanel ()
+DECL|method|FieldFormatterCleanupsPanel ()
 specifier|public
-name|SaveActionsPanel
+name|FieldFormatterCleanupsPanel
 parameter_list|()
 block|{
 name|enabled
@@ -326,9 +326,9 @@ name|metaData
 operator|.
 name|getData
 argument_list|(
-name|SaveActions
+name|MetaData
 operator|.
-name|META_KEY
+name|SAVE_ACTIONS
 argument_list|)
 decl_stmt|;
 name|initializeSaveActions
@@ -348,7 +348,7 @@ name|FieldFormatterCleanup
 argument_list|>
 name|configuredActions
 init|=
-name|saveActions
+name|fieldFormatterCleanups
 operator|.
 name|getConfiguredActions
 argument_list|()
@@ -561,7 +561,7 @@ argument_list|(
 operator|new
 name|EnablementStatusListener
 argument_list|(
-name|saveActions
+name|fieldFormatterCleanups
 operator|.
 name|isEnabled
 argument_list|()
@@ -572,7 +572,7 @@ name|enabled
 operator|.
 name|setSelected
 argument_list|(
-name|saveActions
+name|fieldFormatterCleanups
 operator|.
 name|isEnabled
 argument_list|()
@@ -634,10 +634,10 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-name|saveActions
+name|fieldFormatterCleanups
 operator|=
 operator|new
-name|SaveActions
+name|FieldFormatterCleanups
 argument_list|(
 name|enablementStatus
 argument_list|,
@@ -648,9 +648,9 @@ block|}
 else|else
 block|{
 comment|// apply default actions
-name|saveActions
+name|fieldFormatterCleanups
 operator|=
-name|SaveActions
+name|FieldFormatterCleanups
 operator|.
 name|DEFAULT_ACTIONS
 expr_stmt|;
@@ -721,7 +721,7 @@ name|String
 argument_list|>
 name|formatterNames
 init|=
-name|saveActions
+name|fieldFormatterCleanups
 operator|.
 name|getAvailableFormatters
 argument_list|()
@@ -902,9 +902,9 @@ name|metaData
 operator|.
 name|remove
 argument_list|(
-name|SaveActions
+name|MetaData
 operator|.
-name|META_KEY
+name|SAVE_ACTIONS
 argument_list|)
 expr_stmt|;
 return|return;
@@ -912,7 +912,7 @@ block|}
 name|String
 name|formatterString
 init|=
-name|SaveActions
+name|FieldFormatterCleanups
 operator|.
 name|getMetaDataString
 argument_list|(
@@ -930,9 +930,9 @@ name|metaData
 operator|.
 name|putData
 argument_list|(
-name|SaveActions
+name|MetaData
 operator|.
-name|META_KEY
+name|SAVE_ACTIONS
 argument_list|,
 name|actions
 argument_list|)
@@ -966,21 +966,23 @@ decl_stmt|;
 name|String
 name|formatterString
 init|=
-name|SaveActions
+name|FieldFormatterCleanups
 operator|.
 name|getMetaDataString
 argument_list|(
 name|newActions
 argument_list|)
 decl_stmt|;
-return|return
+name|boolean
+name|hasChanged
+init|=
 operator|!
-name|saveActions
+name|fieldFormatterCleanups
 operator|.
 name|equals
 argument_list|(
 operator|new
-name|SaveActions
+name|FieldFormatterCleanups
 argument_list|(
 name|enabled
 operator|.
@@ -990,6 +992,9 @@ argument_list|,
 name|formatterString
 argument_list|)
 argument_list|)
+decl_stmt|;
+return|return
+name|hasChanged
 return|;
 block|}
 DECL|method|isDefaultSaveActions ()
@@ -1020,22 +1025,24 @@ decl_stmt|;
 name|String
 name|formatterString
 init|=
-name|SaveActions
+name|FieldFormatterCleanups
 operator|.
 name|getMetaDataString
 argument_list|(
 name|newActions
 argument_list|)
 decl_stmt|;
-return|return
-name|SaveActions
+name|boolean
+name|isDefault
+init|=
+name|FieldFormatterCleanups
 operator|.
 name|DEFAULT_ACTIONS
 operator|.
 name|equals
 argument_list|(
 operator|new
-name|SaveActions
+name|FieldFormatterCleanups
 argument_list|(
 name|enabled
 operator|.
@@ -1045,6 +1052,9 @@ argument_list|,
 name|formatterString
 argument_list|)
 argument_list|)
+decl_stmt|;
+return|return
+name|isDefault
 return|;
 block|}
 DECL|class|AddButtonListener
@@ -1085,7 +1095,7 @@ control|(
 name|Formatter
 name|formatter
 range|:
-name|saveActions
+name|fieldFormatterCleanups
 operator|.
 name|getAvailableFormatters
 argument_list|()

@@ -44,7 +44,7 @@ name|jabref
 operator|.
 name|exporter
 operator|.
-name|SaveActions
+name|FieldFormatterCleanups
 import|;
 end_import
 
@@ -216,6 +216,15 @@ name|String
 name|SAVE_ORDER_CONFIG
 init|=
 literal|"saveOrderConfig"
+decl_stmt|;
+DECL|field|SAVE_ACTIONS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SAVE_ACTIONS
+init|=
+literal|"saveActions"
 decl_stmt|;
 DECL|field|PREFIX_KEYPATTERN
 specifier|private
@@ -1750,7 +1759,7 @@ expr_stmt|;
 block|}
 DECL|method|getSaveActions ()
 specifier|public
-name|SaveActions
+name|FieldFormatterCleanups
 name|getSaveActions
 parameter_list|()
 block|{
@@ -1760,9 +1769,7 @@ name|this
 operator|.
 name|getData
 argument_list|(
-name|SaveActions
-operator|.
-name|META_KEY
+name|SAVE_ACTIONS
 argument_list|)
 operator|==
 literal|null
@@ -1770,7 +1777,7 @@ condition|)
 block|{
 return|return
 operator|new
-name|SaveActions
+name|FieldFormatterCleanups
 argument_list|(
 literal|false
 argument_list|,
@@ -1787,9 +1794,7 @@ name|this
 operator|.
 name|getData
 argument_list|(
-name|SaveActions
-operator|.
-name|META_KEY
+name|SAVE_ACTIONS
 argument_list|)
 operator|.
 name|get
@@ -1809,9 +1814,7 @@ name|this
 operator|.
 name|getData
 argument_list|(
-name|SaveActions
-operator|.
-name|META_KEY
+name|SAVE_ACTIONS
 argument_list|)
 operator|.
 name|get
@@ -1821,7 +1824,7 @@ argument_list|)
 decl_stmt|;
 return|return
 operator|new
-name|SaveActions
+name|FieldFormatterCleanups
 argument_list|(
 name|enablementStatus
 argument_list|,
@@ -2191,9 +2194,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-name|SaveActions
-operator|.
-name|META_KEY
+name|SAVE_ACTIONS
 argument_list|)
 operator|&&
 literal|"enabled"
@@ -2393,12 +2394,12 @@ return|return
 name|serializedMetaData
 return|;
 block|}
-DECL|method|setSaveActions (SaveActions saveActions)
+DECL|method|setSaveActions (FieldFormatterCleanups saveActions)
 specifier|public
 name|void
 name|setSaveActions
 parameter_list|(
-name|SaveActions
+name|FieldFormatterCleanups
 name|saveActions
 parameter_list|)
 block|{
@@ -2442,7 +2443,7 @@ block|}
 name|String
 name|formatterString
 init|=
-name|SaveActions
+name|FieldFormatterCleanups
 operator|.
 name|getMetaDataString
 argument_list|(
@@ -2461,9 +2462,7 @@ argument_list|)
 expr_stmt|;
 name|putData
 argument_list|(
-name|SaveActions
-operator|.
-name|META_KEY
+name|SAVE_ACTIONS
 argument_list|,
 name|actionsSerialized
 argument_list|)

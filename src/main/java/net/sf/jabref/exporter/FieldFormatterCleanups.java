@@ -163,10 +163,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|SaveActions
+DECL|class|FieldFormatterCleanups
 specifier|public
 class|class
-name|SaveActions
+name|FieldFormatterCleanups
 block|{
 DECL|field|actions
 specifier|private
@@ -185,15 +185,6 @@ name|Formatter
 argument_list|>
 name|availableFormatters
 decl_stmt|;
-DECL|field|META_KEY
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|META_KEY
-init|=
-literal|"saveActions"
-decl_stmt|;
 DECL|field|enabled
 specifier|private
 name|boolean
@@ -203,7 +194,7 @@ DECL|field|DEFAULT_ACTIONS
 specifier|public
 specifier|static
 specifier|final
-name|SaveActions
+name|FieldFormatterCleanups
 name|DEFAULT_ACTIONS
 decl_stmt|;
 static|static
@@ -216,7 +207,7 @@ decl_stmt|;
 name|DEFAULT_ACTIONS
 operator|=
 operator|new
-name|SaveActions
+name|FieldFormatterCleanups
 argument_list|(
 literal|false
 argument_list|,
@@ -224,9 +215,9 @@ name|defaultFormatterString
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|SaveActions (boolean enabled, String formatterString)
+DECL|method|FieldFormatterCleanups (boolean enabled, String formatterString)
 specifier|public
-name|SaveActions
+name|FieldFormatterCleanups
 parameter_list|(
 name|boolean
 name|enabled
@@ -272,7 +263,7 @@ return|return;
 block|}
 else|else
 block|{
-name|parseSaveActions
+name|parse
 argument_list|(
 name|formatterString
 argument_list|)
@@ -370,11 +361,11 @@ return|return
 literal|false
 return|;
 block|}
-name|SaveActions
+name|FieldFormatterCleanups
 name|that
 init|=
 operator|(
-name|SaveActions
+name|FieldFormatterCleanups
 operator|)
 name|o
 decl_stmt|;
@@ -421,10 +412,10 @@ name|enabled
 argument_list|)
 return|;
 block|}
-DECL|method|parseSaveActions (String formatterString)
+DECL|method|parse (String formatterString)
 specifier|private
 name|void
-name|parseSaveActions
+name|parse
 parameter_list|(
 name|String
 name|formatterString

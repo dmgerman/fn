@@ -1366,16 +1366,16 @@ name|metaData
 operator|.
 name|getData
 argument_list|(
-name|SaveActions
+name|MetaData
 operator|.
-name|META_KEY
+name|SAVE_ACTIONS
 argument_list|)
 operator|!=
 literal|null
 condition|)
 block|{
 comment|// save actions defined -> apply for every entry
-name|SaveActions
+name|FieldFormatterCleanups
 name|saveActions
 init|=
 name|metaData

@@ -46,9 +46,21 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|exporter
 operator|.
-name|SaveActions
+name|FieldFormatterCleanups
 import|;
 end_import
 
@@ -8375,9 +8387,9 @@ argument_list|()
 operator|.
 name|getData
 argument_list|(
-name|SaveActions
+name|MetaData
 operator|.
-name|META_KEY
+name|SAVE_ACTIONS
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -8436,7 +8448,7 @@ operator|.
 name|parse
 argument_list|()
 decl_stmt|;
-name|SaveActions
+name|FieldFormatterCleanups
 name|saveActions
 init|=
 name|parserResult
@@ -8457,9 +8469,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 operator|new
 name|FieldFormatterCleanup
@@ -8841,7 +8853,7 @@ name|Globals
 operator|.
 name|NEWLINE
 operator|+
-literal|"1 KeywordGroup:FrÃ©chet\\;0\\;keywords\\;FrechetSpace\\;0\\;1\\;;"
+literal|"1 KeywordGroup:Frï¿½chet\\;0\\;keywords\\;FrechetSpace\\;0\\;1\\;;"
 operator|+
 name|Globals
 operator|.
@@ -8891,7 +8903,7 @@ argument_list|(
 operator|new
 name|KeywordGroup
 argument_list|(
-literal|"FrÃ©chet"
+literal|"Frï¿½chet"
 argument_list|,
 literal|"keywords"
 argument_list|,
