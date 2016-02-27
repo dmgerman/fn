@@ -127,15 +127,6 @@ specifier|private
 name|String
 name|currentChars
 decl_stmt|;
-DECL|method|BibTeXMLHandler ()
-specifier|public
-name|BibTeXMLHandler
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|getItems ()
 specifier|public
 name|List

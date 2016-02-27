@@ -310,8 +310,6 @@ name|getURLAsASCIIString
 argument_list|()
 decl_stmt|;
 comment|// follow all redirects and scan for a single pdf link
-try|try
-block|{
 if|if
 condition|(
 operator|!
@@ -320,6 +318,8 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
+try|try
 block|{
 name|Connection
 name|connection
@@ -417,10 +417,7 @@ name|contains
 argument_list|(
 literal|"pdf"
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|MimeTypeDetector
 operator|.
 name|isPdfContentType
@@ -445,7 +442,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|// return if only one link was found (high accuracy)
@@ -479,7 +475,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 catch|catch
 parameter_list|(
 name|IOException
@@ -495,6 +490,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return

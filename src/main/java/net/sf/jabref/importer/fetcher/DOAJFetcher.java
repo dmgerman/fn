@@ -277,15 +277,6 @@ operator|new
 name|JSONEntryParser
 argument_list|()
 decl_stmt|;
-DECL|method|DOAJFetcher ()
-specifier|public
-name|DOAJFetcher
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|stopFetching ()
