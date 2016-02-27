@@ -506,6 +506,35 @@ name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|String
+name|expandedOldFilePath
+init|=
+name|expandedOldFile
+operator|.
+name|get
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|Boolean
+name|pathsDifferOnlyByCase
+init|=
+name|newPath
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|expandedOldFilePath
+argument_list|)
+operator|&&
+operator|!
+name|newPath
+operator|.
+name|equals
+argument_list|(
+name|expandedOldFilePath
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 operator|new
@@ -516,9 +545,14 @@ argument_list|)
 operator|.
 name|exists
 argument_list|()
+operator|&&
+operator|!
+name|pathsDifferOnlyByCase
 condition|)
 block|{
 comment|// we do not overwrite files
+comment|// Since File.exists is sometimes not case-sensitive, the check pathsDifferOnlyByCase ensures that we
+comment|// nonetheless rename files to a new name which just differs by case.
 comment|// TODO: we could check here if the newPath file is linked with the current entry. And if not, we could add a link
 continue|continue;
 block|}
@@ -530,13 +564,7 @@ name|FileUtil
 operator|.
 name|renameFile
 argument_list|(
-name|expandedOldFile
-operator|.
-name|get
-argument_list|()
-operator|.
-name|toString
-argument_list|()
+name|expandedOldFilePath
 argument_list|,
 name|newPath
 argument_list|)
