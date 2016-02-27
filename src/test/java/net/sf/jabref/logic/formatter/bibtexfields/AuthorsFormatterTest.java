@@ -18,24 +18,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|formatter
-operator|.
-name|bibtexfields
-operator|.
-name|AuthorsFormatter
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|junit
@@ -102,10 +84,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|After
-DECL|method|teardown ()
+DECL|method|tearDown ()
 specifier|public
 name|void
-name|teardown
+name|tearDown
 parameter_list|()
 block|{
 name|formatter
