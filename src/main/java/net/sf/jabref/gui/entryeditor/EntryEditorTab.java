@@ -1862,7 +1862,8 @@ literal|"prev"
 argument_list|,
 name|parent
 operator|.
-name|prevEntryAction
+name|getPrevEntryAction
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -1892,7 +1893,8 @@ literal|"next"
 argument_list|,
 name|parent
 operator|.
-name|nextEntryAction
+name|getNextEntryAction
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -1922,7 +1924,8 @@ literal|"store"
 argument_list|,
 name|parent
 operator|.
-name|storeFieldAction
+name|getStoreFieldAction
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -1971,7 +1974,8 @@ literal|"left"
 argument_list|,
 name|parent
 operator|.
-name|switchLeftAction
+name|getSwitchLeftAction
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -2020,7 +2024,8 @@ literal|"right"
 argument_list|,
 name|parent
 operator|.
-name|switchRightAction
+name|getSwitchRightAction
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -2050,7 +2055,8 @@ literal|"help"
 argument_list|,
 name|parent
 operator|.
-name|helpAction
+name|getHelpAction
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|inputMap
@@ -2080,7 +2086,8 @@ literal|"save"
 argument_list|,
 name|parent
 operator|.
-name|saveDatabaseAction
+name|getSaveDatabaseAction
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|inputMap

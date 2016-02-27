@@ -2745,7 +2745,8 @@ name|l
 init|=
 name|entryEditor
 operator|.
-name|generateKeyAction
+name|getGenerateKeyAction
+argument_list|()
 decl_stmt|;
 name|l
 operator|.
