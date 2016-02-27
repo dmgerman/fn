@@ -1022,7 +1022,14 @@ name|fieldFormatterCleanupsPanel
 operator|=
 operator|new
 name|FieldFormatterCleanupsPanel
-argument_list|()
+argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"Enable save actions"
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|builder
 operator|.
