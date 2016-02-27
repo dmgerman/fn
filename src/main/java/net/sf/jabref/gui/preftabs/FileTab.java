@@ -1335,6 +1335,7 @@ name|newline
 operator|=
 literal|"\r\n"
 expr_stmt|;
+break|break;
 block|}
 name|prefs
 operator|.

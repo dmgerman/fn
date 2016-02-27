@@ -466,6 +466,7 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
+break|break;
 block|}
 block|}
 if|if

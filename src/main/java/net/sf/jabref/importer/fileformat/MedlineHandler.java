@@ -430,10 +430,10 @@ name|page
 init|=
 literal|""
 decl_stmt|;
-DECL|field|MedlineDate
+DECL|field|medlineDate
 specifier|private
 name|String
-name|MedlineDate
+name|medlineDate
 init|=
 literal|""
 decl_stmt|;
@@ -592,15 +592,6 @@ return|return
 name|bibitems
 return|;
 block|}
-DECL|method|MedlineHandler ()
-specifier|public
-name|MedlineHandler
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|startElement (String uri, String localName, String qName, Attributes atts)
@@ -621,7 +612,6 @@ name|Attributes
 name|atts
 parameter_list|)
 block|{
-comment|//		public void startElement(String localName, Attributes atts) {
 comment|// Get the number of attribute
 if|if
 condition|(
@@ -1312,7 +1302,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|MedlineDate
+name|medlineDate
 argument_list|)
 condition|)
 block|{
@@ -1320,7 +1310,7 @@ comment|// multi-year date format
 comment|//System.out.println(MedlineDate);
 name|year
 operator|=
-name|MedlineDate
+name|medlineDate
 operator|.
 name|substring
 argument_list|(
@@ -1955,7 +1945,7 @@ name|url
 init|=
 literal|""
 decl_stmt|;
-name|MedlineDate
+name|medlineDate
 operator|=
 literal|""
 expr_stmt|;
@@ -2989,7 +2979,7 @@ condition|(
 name|inMedlineDate
 condition|)
 block|{
-name|MedlineDate
+name|medlineDate
 operator|+=
 operator|new
 name|String

@@ -328,11 +328,6 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|field|removeExact
-specifier|private
-name|JButton
-name|removeExact
-decl_stmt|;
 DECL|field|options
 specifier|private
 specifier|final
@@ -481,6 +476,11 @@ name|second
 decl_stmt|;
 name|JButton
 name|first
+decl_stmt|;
+name|JButton
+name|removeExact
+init|=
+literal|null
 decl_stmt|;
 switch|switch
 condition|(
@@ -781,6 +781,7 @@ name|getMode
 argument_list|()
 argument_list|)
 expr_stmt|;
+break|break;
 block|}
 if|if
 condition|(

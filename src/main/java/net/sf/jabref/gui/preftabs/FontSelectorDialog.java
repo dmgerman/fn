@@ -527,18 +527,6 @@ specifier|final
 name|JLabel
 name|preview
 decl_stmt|;
-DECL|field|ok
-specifier|private
-specifier|final
-name|JButton
-name|ok
-decl_stmt|;
-DECL|field|cancel
-specifier|private
-specifier|final
-name|JButton
-name|cancel
-decl_stmt|;
 comment|/**      * For some reason the default Java fonts show up in the      * list with .bold, .bolditalic, and .italic extensions.      */
 DECL|field|HIDEFONTS
 specifier|private
@@ -994,8 +982,9 @@ name|createGlue
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|JButton
 name|ok
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -1006,7 +995,7 @@ argument_list|(
 literal|"OK"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|ok
 operator|.
 name|addActionListener
@@ -1063,8 +1052,9 @@ literal|6
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|JButton
 name|cancel
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -1075,7 +1065,7 @@ argument_list|(
 literal|"Cancel"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|cancel
 operator|.
 name|addActionListener

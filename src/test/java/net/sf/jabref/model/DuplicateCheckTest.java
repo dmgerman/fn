@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.bibtex
+DECL|package|net.sf.jabref.model
 package|package
 name|net
 operator|.
@@ -8,7 +8,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|bibtex
+name|model
 package|;
 end_package
 
@@ -33,20 +33,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|model
-operator|.
-name|DuplicateCheck
 import|;
 end_import
 
@@ -120,16 +106,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Before
 import|;
 end_import
@@ -152,7 +128,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
+name|*
 import|;
 end_import
 
@@ -248,8 +224,6 @@ argument_list|,
 literal|"Billy Bob"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|DuplicateCheck
@@ -275,8 +249,6 @@ argument_list|,
 literal|"James Joyce"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|DuplicateCheck
@@ -311,8 +283,6 @@ operator|.
 name|BOOK
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|DuplicateCheck
@@ -392,8 +362,6 @@ argument_list|,
 literal|"A"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|DuplicateCheck
@@ -410,8 +378,6 @@ name|BIBTEX
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|1.01
@@ -437,8 +403,6 @@ argument_list|,
 literal|"B"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|DuplicateCheck
@@ -455,8 +419,6 @@ name|BIBTEX
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|0.75
@@ -518,8 +480,6 @@ argument_list|,
 literal|"334--337"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|DuplicateCheck
@@ -554,8 +514,6 @@ argument_list|,
 literal|"21"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|DuplicateCheck
@@ -581,8 +539,6 @@ argument_list|,
 literal|"22"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|DuplicateCheck
@@ -608,8 +564,6 @@ argument_list|,
 literal|"B"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|DuplicateCheck
@@ -644,8 +598,6 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|DuplicateCheck
@@ -671,8 +623,6 @@ argument_list|,
 literal|"Another title"
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertFalse
 argument_list|(
 name|DuplicateCheck
