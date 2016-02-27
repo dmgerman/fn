@@ -36,7 +36,7 @@ name|String
 name|getKey
 parameter_list|()
 function_decl|;
-comment|/**      * Formats a field value by with a particular formatter transformation.      *      * Calling this method with a null argument results in a NullPointerException.      *      * @param value the input String      * @return the formatted output String, always not null      */
+comment|/**      * Formats a field value by with a particular formatter transformation.      *      * Calling this method with a null argument results in a NullPointerException.      *      * @param value the input String      * @return the formatted output String      */
 DECL|method|format (String value)
 name|String
 name|format
