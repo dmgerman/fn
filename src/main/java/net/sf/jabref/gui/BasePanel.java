@@ -9920,6 +9920,8 @@ name|consume
 argument_list|()
 expr_stmt|;
 break|break;
+default|default:
+break|break;
 block|}
 block|}
 elseif|else
@@ -9978,7 +9980,6 @@ name|void
 name|setupMainPanel
 parameter_list|()
 block|{
-comment|//System.out.println("setupMainPanel");
 comment|//splitPane = new com.jgoodies.uif_lite.component.UIFSplitPane(JSplitPane.VERTICAL_SPLIT);
 name|splitPane
 operator|=
