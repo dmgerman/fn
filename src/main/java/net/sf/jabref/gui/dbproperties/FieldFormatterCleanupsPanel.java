@@ -383,7 +383,7 @@ argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
-literal|"left:pref, 4dlu, left:pref, 4dlu, pref:grow"
+literal|"left:pref, 13dlu, left:pref, 4dlu, pref:grow"
 argument_list|,
 literal|"pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref, 2dlu, pref,"
 argument_list|)
@@ -391,37 +391,18 @@ argument_list|)
 decl_stmt|;
 name|builder
 operator|.
-name|getPanel
-argument_list|()
-operator|.
-name|setBorder
-argument_list|(
-name|BorderFactory
-operator|.
-name|createEmptyBorder
-argument_list|(
-literal|5
-argument_list|,
-literal|5
-argument_list|,
-literal|5
-argument_list|,
-literal|5
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|builder
-operator|.
 name|add
 argument_list|(
 name|enabled
 argument_list|)
 operator|.
-name|xy
+name|xyw
 argument_list|(
-literal|3
+literal|1
 argument_list|,
 literal|1
+argument_list|,
+literal|3
 argument_list|)
 expr_stmt|;
 name|builder

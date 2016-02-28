@@ -245,6 +245,7 @@ init|=
 literal|"keypatterndefault"
 decl_stmt|;
 DECL|field|DATABASE_TYPE
+specifier|public
 specifier|static
 specifier|final
 name|String
