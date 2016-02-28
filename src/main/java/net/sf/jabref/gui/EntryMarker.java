@@ -928,14 +928,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|owner
-lambda|->
 name|owners
-operator|.
+operator|::
 name|add
-argument_list|(
-name|owner
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

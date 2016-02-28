@@ -1241,35 +1241,6 @@ name|URL_FIELD
 init|=
 literal|"url"
 decl_stmt|;
-DECL|interface|CallBack
-specifier|public
-interface|interface
-name|CallBack
-block|{
-comment|/**          * This method is called by the dialog when the user has cancelled or          * signalled a stop. It is expected that any long-running fetch          * operations will stop after this method is called.          */
-DECL|method|stopFetching ()
-name|void
-name|stopFetching
-parameter_list|()
-function_decl|;
-block|}
-comment|/**      * The "defaultSelected" boolean value determines if new entries added are      * selected for import or not. This value is true by default.      *      * @param defaultSelected The desired value.      */
-DECL|method|setDefaultSelected (boolean defaultSelected)
-specifier|public
-name|void
-name|setDefaultSelected
-parameter_list|(
-name|boolean
-name|defaultSelected
-parameter_list|)
-block|{
-name|this
-operator|.
-name|defaultSelected
-operator|=
-name|defaultSelected
-expr_stmt|;
-block|}
 comment|/**      * Creates a dialog that displays the given list of fields in the table. The      * dialog allows another process to add entries dynamically while the dialog      * is shown.      *      * @param frame      * @param panel      * @param fields      */
 DECL|method|ImportInspectionDialog (JabRefFrame frame, BasePanel panel, String[] fields, String undoName, boolean newDatabase)
 specifier|public
@@ -1729,8 +1700,6 @@ name|AutoSetLinks
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// popup.add(new AttachFile("pdf"));
-comment|// popup.add(new AttachFile("ps"));
 name|popup
 operator|.
 name|add
@@ -2827,7 +2796,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*          * for (int i = 0; i< table.getRowCount(); i++) { Boolean sel =          * (Boolean) table.getValueAt(i, 0); if (sel.booleanValue()) {          * selected.add(entries.get(i)); } }          */
 return|return
 name|selected
 return|;
@@ -5240,14 +5208,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|file
-lambda|->
 name|fileList
-operator|.
+operator|::
 name|setContent
-argument_list|(
-name|file
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// If there are one or more links, open the first one:
@@ -6503,14 +6466,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|oldVal
-lambda|->
 name|localModel
-operator|.
+operator|::
 name|setContent
-argument_list|(
-name|oldVal
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|localModel
@@ -6717,14 +6675,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|oldVal
-lambda|->
 name|localModel
-operator|.
+operator|::
 name|setContent
-argument_list|(
-name|oldVal
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// We have a static utility method for searching for all relevant
@@ -6982,14 +6935,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|oldVal
-lambda|->
 name|localModel
-operator|.
+operator|::
 name|setContent
-argument_list|(
-name|oldVal
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|localModel
@@ -7084,14 +7032,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|oldVal
-lambda|->
 name|localModel
-operator|.
+operator|::
 name|setContent
-argument_list|(
-name|oldVal
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|localModel
@@ -7357,6 +7300,37 @@ argument_list|()
 operator|.
 name|unlock
 argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|FunctionalInterface
+DECL|interface|CallBack
+specifier|public
+interface|interface
+name|CallBack
+block|{
+comment|/**          * This method is called by the dialog when the user has cancelled or          * signaled a stop. It is expected that any long-running fetch          * operations will stop after this method is called.          */
+DECL|method|stopFetching ()
+name|void
+name|stopFetching
+parameter_list|()
+function_decl|;
+block|}
+comment|/**      * The "defaultSelected" boolean value determines if new entries added are      * selected for import or not. This value is true by default.      *      * @param defaultSelected The desired value.      */
+DECL|method|setDefaultSelected (boolean defaultSelected)
+specifier|public
+name|void
+name|setDefaultSelected
+parameter_list|(
+name|boolean
+name|defaultSelected
+parameter_list|)
+block|{
+name|this
+operator|.
+name|defaultSelected
+operator|=
+name|defaultSelected
 expr_stmt|;
 block|}
 DECL|class|EntryTable
@@ -7868,14 +7842,9 @@ argument_list|)
 operator|.
 name|map
 argument_list|(
-name|contents
-lambda|->
 name|AuthorList
-operator|.
+operator|::
 name|fixAuthor_Natbib
-argument_list|(
-name|contents
-argument_list|)
 argument_list|)
 operator|.
 name|orElse

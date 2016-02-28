@@ -861,7 +861,8 @@ operator|.
 name|frame
 argument_list|()
 operator|.
-name|switchPreview
+name|getSwitchPreviewAction
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
