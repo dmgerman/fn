@@ -106,6 +106,15 @@ specifier|public
 class|class
 name|SpecialFieldsUtils
 block|{
+DECL|field|KEYWORDS_FIELD
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|KEYWORDS_FIELD
+init|=
+literal|"keywords"
+decl_stmt|;
 DECL|field|FIELDNAME_PRIORITY
 specifier|public
 specifier|static
@@ -589,7 +598,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-literal|"keywords"
+name|KEYWORDS_FIELD
 argument_list|)
 decl_stmt|;
 name|be
@@ -606,11 +615,12 @@ name|be
 operator|.
 name|getField
 argument_list|(
-literal|"keywords"
+name|KEYWORDS_FIELD
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 operator|(
 name|oldValue
 operator|==
@@ -624,13 +634,13 @@ name|equals
 argument_list|(
 name|updatedValue
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
+operator|(
 name|ce
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|ce
@@ -642,7 +652,7 @@ name|UndoableFieldChange
 argument_list|(
 name|be
 argument_list|,
-literal|"keywords"
+name|KEYWORDS_FIELD
 argument_list|,
 name|oldValue
 argument_list|,
@@ -650,7 +660,6 @@ name|updatedValue
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|/**      * Update keywords according to values of special fields      *      * @param nc indicates the undo named compound. May be null      */
@@ -853,7 +862,7 @@ name|be
 operator|.
 name|hasField
 argument_list|(
-literal|"keywords"
+name|KEYWORDS_FIELD
 argument_list|)
 condition|)
 block|{
@@ -883,7 +892,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-literal|"keywords"
+name|KEYWORDS_FIELD
 argument_list|)
 argument_list|)
 decl_stmt|;

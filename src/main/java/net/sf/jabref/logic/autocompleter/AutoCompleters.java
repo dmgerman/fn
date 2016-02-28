@@ -72,6 +72,7 @@ class|class
 name|AutoCompleters
 block|{
 DECL|field|autoCompleters
+specifier|protected
 specifier|final
 name|Map
 argument_list|<
@@ -113,6 +114,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|addDatabase (BibDatabase database)
+specifier|protected
 name|void
 name|addDatabase
 parameter_list|(
@@ -172,6 +174,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|put (String field, AutoCompleter<String> autoCompleter)
+specifier|protected
 name|void
 name|put
 parameter_list|(

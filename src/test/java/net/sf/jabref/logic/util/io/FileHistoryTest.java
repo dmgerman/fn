@@ -150,21 +150,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testConstructor ()
-specifier|public
-name|void
-name|testConstructor
-parameter_list|()
-block|{
-operator|new
-name|FileHistory
-argument_list|(
-name|prefs
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Test
 DECL|method|testFileHistory ()
 specifier|public
 name|void
