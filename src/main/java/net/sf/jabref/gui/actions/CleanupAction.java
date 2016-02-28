@@ -26,6 +26,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibDatabaseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Globals
 import|;
 end_import
@@ -882,7 +894,15 @@ name|NamedCompound
 name|ce
 parameter_list|)
 block|{
-comment|// Run cleaner
+comment|// Create and run cleaner
+name|BibDatabaseContext
+name|bibDatabaseContext
+init|=
+name|panel
+operator|.
+name|getBibDatabaseContext
+argument_list|()
+decl_stmt|;
 name|CleanupWorker
 name|cleaner
 init|=
@@ -891,10 +911,7 @@ name|CleanupWorker
 argument_list|(
 name|preset
 argument_list|,
-name|panel
-operator|.
-name|getBibDatabaseContext
-argument_list|()
+name|bibDatabaseContext
 operator|.
 name|getMetaData
 argument_list|()
@@ -906,7 +923,10 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 argument_list|,
-literal|null
+name|bibDatabaseContext
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|,
 name|Globals
 operator|.
