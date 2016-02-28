@@ -184,8 +184,8 @@ specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
+comment|/**      * This constructor is only used by CleanupWorkerTest. Therefore, the visibility is restricted.      */
 DECL|method|CleanupWorker (CleanupPreset preset)
-specifier|public
 name|CleanupWorker
 parameter_list|(
 name|CleanupPreset
@@ -203,8 +203,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * This constructor is only used by CleanupWorkerTest. Therefore, the visibility is restricted.      */
 DECL|method|CleanupWorker (CleanupPreset preset, List<String> paths)
-specifier|public
 name|CleanupWorker
 parameter_list|(
 name|CleanupPreset
