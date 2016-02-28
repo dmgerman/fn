@@ -3459,7 +3459,6 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-comment|//        setIcon((s.length> 10) ? longIcon : shortIcon);
 if|if
 condition|(
 name|entry

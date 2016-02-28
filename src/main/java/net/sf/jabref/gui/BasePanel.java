@@ -11494,7 +11494,7 @@ name|baseChanged
 operator|=
 literal|true
 expr_stmt|;
-comment|// Put an asterix behind the filename to indicate the database has changed.
+comment|// Put an asterisk behind the filename to indicate the database has changed.
 name|frame
 operator|.
 name|setWindowTitle
@@ -11512,9 +11512,7 @@ if|if
 condition|(
 name|frame
 operator|.
-name|statusLine
-operator|.
-name|getText
+name|getStatusLineText
 argument_list|()
 operator|.
 name|startsWith
@@ -13916,7 +13914,8 @@ parameter_list|()
 block|{
 name|frame
 operator|.
-name|back
+name|getBackAction
+argument_list|()
 operator|.
 name|setEnabled
 argument_list|(
@@ -13929,7 +13928,8 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|forward
+name|getForwardAction
+argument_list|()
 operator|.
 name|setEnabled
 argument_list|(

@@ -32,18 +32,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -1617,19 +1605,8 @@ name|floatMarked
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|Globals
 operator|.
@@ -1655,7 +1632,6 @@ name|refreshSorting
 argument_list|()
 expr_stmt|;
 comment|// Bad remote access
-block|}
 block|}
 argument_list|)
 expr_stmt|;

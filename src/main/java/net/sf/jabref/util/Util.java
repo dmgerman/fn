@@ -1783,11 +1783,11 @@ return|;
 comment|// no side effects
 block|}
 comment|// show a warning, then return
-name|StringBuffer
+name|StringBuilder
 name|message
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|"This action will modify the following field(s)\n"
 operator|+
@@ -1969,31 +1969,11 @@ decl_stmt|;
 name|String
 name|timestamp
 init|=
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-operator|.
 name|DATE_FORMATTER
 operator|.
 name|getCurrentDate
 argument_list|()
 decl_stmt|;
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-operator|.
 name|updateField
 argument_list|(
 name|entry

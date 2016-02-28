@@ -53,7 +53,8 @@ block|{
 return|return
 name|LabelPatternUtil
 operator|.
-name|DEFAULT_LABELPATTERN
+name|getDefaultLabelPattern
+argument_list|()
 return|;
 block|}
 block|}

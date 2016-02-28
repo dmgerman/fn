@@ -474,14 +474,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|entry
-lambda|->
 name|dialog
-operator|.
+operator|::
 name|addEntry
-argument_list|(
-name|entry
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|dialog

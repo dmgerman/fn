@@ -4538,19 +4538,16 @@ argument_list|,
 name|sortingStrategy
 argument_list|)
 decl_stmt|;
+comment|// We need to reset the stack of sorted list each time sorting order
+comment|// changes, or the sorting breaks down:
 name|result
 operator|.
 name|addSortActionListener
 argument_list|(
 name|e
 lambda|->
-block|{
-comment|// We need to reset the stack of sorted list each time sorting order
-comment|// changes, or the sorting breaks down:
 name|refreshSorting
 argument_list|()
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 return|return

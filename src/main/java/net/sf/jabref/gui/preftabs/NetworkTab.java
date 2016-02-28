@@ -1010,7 +1010,8 @@ parameter_list|()
 block|{
 name|boolean
 name|validSetting
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|validAuthenticationSetting
 init|=
 literal|false

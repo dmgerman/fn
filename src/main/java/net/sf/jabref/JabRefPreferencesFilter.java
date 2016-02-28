@@ -295,9 +295,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|defaultValue
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|Objects
@@ -403,6 +405,8 @@ name|isUnchanged
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
