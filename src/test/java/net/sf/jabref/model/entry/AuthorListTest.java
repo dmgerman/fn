@@ -65,7 +65,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_Natbib
+name|fixAuthorNatbib
 argument_list|(
 literal|""
 argument_list|)
@@ -79,7 +79,7 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_Natbib
+name|fixAuthorNatbib
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -93,7 +93,7 @@ literal|"Smith and Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_Natbib
+name|fixAuthorNatbib
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -107,7 +107,7 @@ literal|"von Neumann et al."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_Natbib
+name|fixAuthorNatbib
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -120,7 +120,7 @@ name|assertTrue
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_Natbib
+name|fixAuthorNatbib
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -129,7 +129,7 @@ name|equals
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_Natbib
+name|fixAuthorNatbib
 argument_list|(
 literal|"John von Neumann"
 operator|+
@@ -219,7 +219,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|""
 argument_list|,
@@ -237,7 +237,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|""
 argument_list|,
@@ -255,7 +255,7 @@ literal|"John Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John Smith"
 argument_list|,
@@ -273,7 +273,7 @@ literal|"J. Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John Smith"
 argument_list|,
@@ -290,7 +290,7 @@ name|assertTrue
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -303,7 +303,7 @@ name|equals
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John von Neumann"
 operator|+
@@ -334,7 +334,7 @@ literal|"John Smith and Peter Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
@@ -352,7 +352,7 @@ literal|"J. Smith and P. Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
@@ -372,7 +372,7 @@ literal|"John von Neumann, John Smith and Peter Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -390,7 +390,7 @@ literal|"J. von Neumann, J. Smith and P. Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -408,7 +408,7 @@ literal|"J. P. von Neumann"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John Peter von Neumann"
 argument_list|,
@@ -427,7 +427,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|""
 argument_list|,
@@ -445,7 +445,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|""
 argument_list|,
@@ -463,7 +463,7 @@ literal|"John Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John Smith"
 argument_list|,
@@ -481,7 +481,7 @@ literal|"J. Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John Smith"
 argument_list|,
@@ -498,7 +498,7 @@ name|assertTrue
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -511,7 +511,7 @@ name|equals
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John von Neumann"
 operator|+
@@ -542,7 +542,7 @@ literal|"John Smith and Peter Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
@@ -560,7 +560,7 @@ literal|"J. Smith and P. Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
@@ -580,7 +580,7 @@ literal|"John von Neumann, John Smith, and Peter Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -598,7 +598,7 @@ literal|"J. von Neumann, J. Smith, and P. Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -616,7 +616,7 @@ literal|"J. P. von Neumann"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 literal|"John Peter von Neumann"
 argument_list|,
@@ -648,7 +648,7 @@ literal|"John Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirst
+name|fixAuthorFirstNameFirst
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -662,7 +662,7 @@ literal|"John Smith and Peter Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirst
+name|fixAuthorFirstNameFirst
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -676,7 +676,7 @@ literal|"John von Neumann and John Smith and Peter Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirst
+name|fixAuthorFirstNameFirst
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -690,7 +690,7 @@ literal|"First von Last, Jr. III"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirst
+name|fixAuthorFirstNameFirst
 argument_list|(
 literal|"von Last, Jr. III, First"
 argument_list|)
@@ -703,7 +703,7 @@ name|assertTrue
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirst
+name|fixAuthorFirstNameFirst
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -712,7 +712,7 @@ name|equals
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirst
+name|fixAuthorFirstNameFirst
 argument_list|(
 literal|"John von Neumann"
 operator|+
@@ -755,7 +755,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|""
 argument_list|,
@@ -773,7 +773,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|""
 argument_list|,
@@ -791,7 +791,7 @@ literal|"Smith, John"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John Smith"
 argument_list|,
@@ -809,7 +809,7 @@ literal|"Smith, J."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John Smith"
 argument_list|,
@@ -824,7 +824,7 @@ name|a
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -838,7 +838,7 @@ name|b
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John von Neumann"
 operator|+
@@ -889,7 +889,7 @@ literal|"Smith, John and Black Brown, Peter"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
@@ -907,7 +907,7 @@ literal|"Smith, J. and Black Brown, P."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
@@ -925,7 +925,7 @@ literal|"von Neumann, John, Smith, John and Black Brown, Peter"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -943,7 +943,7 @@ literal|"von Neumann, J., Smith, J. and Black Brown, P."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -961,7 +961,7 @@ literal|"von Neumann, J. P."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John Peter von Neumann"
 argument_list|,
@@ -981,7 +981,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|""
 argument_list|,
@@ -999,7 +999,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|""
 argument_list|,
@@ -1017,7 +1017,7 @@ literal|"Smith, John"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John Smith"
 argument_list|,
@@ -1035,7 +1035,7 @@ literal|"Smith, J."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John Smith"
 argument_list|,
@@ -1050,7 +1050,7 @@ name|a
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -1064,7 +1064,7 @@ name|b
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John von Neumann"
 operator|+
@@ -1115,7 +1115,7 @@ literal|"Smith, John and Black Brown, Peter"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
@@ -1133,7 +1133,7 @@ literal|"Smith, J. and Black Brown, P."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
@@ -1151,7 +1151,7 @@ literal|"von Neumann, John, Smith, John, and Black Brown, Peter"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -1169,7 +1169,7 @@ literal|"von Neumann, J., Smith, J., and Black Brown, P."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -1187,7 +1187,7 @@ literal|"von Neumann, J. P."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 literal|"John Peter von Neumann"
 argument_list|,
@@ -1220,7 +1220,7 @@ literal|"Smith, John"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -1234,7 +1234,7 @@ literal|"Smith, John and Black Brown, Peter"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -1248,7 +1248,7 @@ literal|"von Neumann, John and Smith, John and Black Brown, Peter"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -1262,7 +1262,7 @@ literal|"von Last, Jr, First"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"von Last, Jr ,First"
 argument_list|)
@@ -1274,7 +1274,7 @@ name|assertTrue
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -1283,7 +1283,7 @@ name|equals
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John von Neumann"
 operator|+
@@ -1311,7 +1311,7 @@ literal|"Smith, John"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John Smith"
 argument_list|,
@@ -1327,7 +1327,7 @@ literal|"Smith, John and Black Brown, Peter"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
@@ -1343,7 +1343,7 @@ literal|"von Neumann, John and Smith, John and Black Brown, Peter"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -1359,7 +1359,7 @@ literal|"von Last, Jr, First"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"von Last, Jr ,First"
 argument_list|,
@@ -1373,7 +1373,7 @@ name|assertTrue
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -1384,7 +1384,7 @@ name|equals
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John von Neumann"
 operator|+
@@ -1414,7 +1414,7 @@ literal|"Smith, J."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John Smith"
 argument_list|,
@@ -1430,7 +1430,7 @@ literal|"Smith, J. and Black Brown, P."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
@@ -1446,7 +1446,7 @@ literal|"von Neumann, J. and Smith, J. and Black Brown, P."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -1462,7 +1462,7 @@ literal|"von Last, Jr, F."
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"von Last, Jr ,First"
 argument_list|,
@@ -1476,7 +1476,7 @@ name|assertTrue
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -1487,7 +1487,7 @@ name|equals
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 literal|"John von Neumann"
 operator|+
@@ -1531,7 +1531,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 literal|""
 argument_list|,
@@ -1547,7 +1547,7 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 literal|"John Smith"
 argument_list|,
@@ -1563,7 +1563,7 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 literal|"Smith, Jr, John"
 argument_list|,
@@ -1577,7 +1577,7 @@ name|assertTrue
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -1588,7 +1588,7 @@ name|equals
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 literal|"John von Neumann"
 operator|+
@@ -1617,7 +1617,7 @@ literal|"von Neumann, Smith and Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -1634,7 +1634,7 @@ literal|""
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 literal|""
 argument_list|,
@@ -1650,7 +1650,7 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 literal|"John Smith"
 argument_list|,
@@ -1666,7 +1666,7 @@ literal|"Smith"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 literal|"Smith, Jr, John"
 argument_list|,
@@ -1680,7 +1680,7 @@ name|assertTrue
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
@@ -1691,7 +1691,7 @@ name|equals
 argument_list|(
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 literal|"John von Neumann"
 operator|+
@@ -1720,7 +1720,7 @@ literal|"von Neumann, Smith, and Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,

@@ -1599,7 +1599,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|s
 argument_list|)
@@ -1656,7 +1656,7 @@ decl_stmt|;
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|mod
 argument_list|)
@@ -1667,7 +1667,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|s
 argument_list|)

@@ -78,7 +78,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_Natbib
+name|fixAuthorNatbib
 argument_list|(
 name|fieldText
 argument_list|)
