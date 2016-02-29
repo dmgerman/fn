@@ -824,15 +824,6 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|SpringerFetcher ()
-specifier|public
-name|SpringerFetcher
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 end_class
 

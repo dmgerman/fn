@@ -152,14 +152,14 @@ name|nonWrappableFields
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Performs the reformatting      *      * @param content     StringBuffer containing the field to format. bibtexField contains field name according to field      * @param bibtexField      * @return The formatted field content. The StringBuffer returned may or may not be the same as the argument given.      */
-DECL|method|format (StringBuffer content, String bibtexField)
+comment|/**      * Performs the reformatting      *      * @param text2     StringBuffer containing the field to format. bibtexField contains field name according to field      * @param bibtexField      * @return The formatted field content. The StringBuffer returned may or may not be the same as the argument given.      */
+DECL|method|format (StringBuilder text2, String bibtexField)
 specifier|public
-name|StringBuffer
+name|StringBuilder
 name|format
 parameter_list|(
-name|StringBuffer
-name|content
+name|StringBuilder
+name|text2
 parameter_list|,
 name|String
 name|bibtexField
@@ -173,7 +173,7 @@ name|StringUtil
 operator|.
 name|unifyLineBreaksToConfiguredLineBreaks
 argument_list|(
-name|content
+name|text2
 operator|.
 name|toString
 argument_list|()
@@ -192,7 +192,7 @@ condition|)
 block|{
 return|return
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|text
 argument_list|)
@@ -212,7 +212,7 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|text
 argument_list|)
@@ -234,7 +234,7 @@ return|return
 name|format
 argument_list|(
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|content
 argument_list|)

@@ -281,7 +281,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|mouseEntered (MouseEvent e)
@@ -292,7 +294,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|mouseExited (MouseEvent e)
@@ -303,7 +307,9 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|mousePressed (MouseEvent e)
@@ -353,13 +359,12 @@ name|e
 operator|.
 name|isPopupTrigger
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 name|field
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|field
@@ -536,7 +541,6 @@ name|getY
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|method|initMenu ()

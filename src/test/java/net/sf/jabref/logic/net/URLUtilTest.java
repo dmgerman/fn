@@ -34,22 +34,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|logic
-operator|.
-name|net
-operator|.
-name|URLUtil
-import|;
-end_import
-
 begin_class
 DECL|class|URLUtilTest
 specifier|public
