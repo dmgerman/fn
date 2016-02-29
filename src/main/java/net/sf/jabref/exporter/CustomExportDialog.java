@@ -340,19 +340,8 @@ expr_stmt|;
 name|ActionListener
 name|okListener
 init|=
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 comment|// Check that there are no empty strings.
 if|if
@@ -408,7 +397,6 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 decl_stmt|;
 name|JButton
@@ -515,19 +503,8 @@ name|browse
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|File
 name|directory
@@ -612,7 +589,6 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -1115,7 +1091,6 @@ operator|.
 name|SOUTH
 argument_list|)
 expr_stmt|;
-comment|//pack();
 name|setSize
 argument_list|(
 literal|700
