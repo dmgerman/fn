@@ -642,9 +642,6 @@ name|list
 init|=
 name|ExternalFileTypes
 operator|.
-name|getInstance
-argument_list|()
-operator|.
 name|getDefaultExternalFileTypes
 argument_list|()
 decl_stmt|;

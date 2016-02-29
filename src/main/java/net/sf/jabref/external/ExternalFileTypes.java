@@ -261,6 +261,7 @@ expr_stmt|;
 block|}
 DECL|method|getDefaultExternalFileTypes ()
 specifier|public
+specifier|static
 name|List
 argument_list|<
 name|ExternalFileType
