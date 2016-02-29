@@ -106,34 +106,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -220,22 +192,6 @@ specifier|public
 class|class
 name|FileUtil
 block|{
-DECL|field|LOGGER
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|LOGGER
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|FileUtil
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 DECL|field|FILE_SEPARATOR
 specifier|private
 specifier|static
@@ -593,8 +549,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
+elseif|else
 if|if
 condition|(
 operator|!
@@ -632,7 +587,6 @@ operator|+
 name|tempString
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 for|for
@@ -1048,7 +1002,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      */
-DECL|method|expandFilename (String name, String dir)
+DECL|method|expandFilename (String filename, String dir)
 specifier|public
 specifier|static
 name|Optional
@@ -1058,7 +1012,7 @@ argument_list|>
 name|expandFilename
 parameter_list|(
 name|String
-name|name
+name|filename
 parameter_list|,
 name|String
 name|dir
@@ -1067,12 +1021,12 @@ block|{
 if|if
 condition|(
 operator|(
-name|name
+name|filename
 operator|==
 literal|null
 operator|)
 operator|||
-name|name
+name|filename
 operator|.
 name|isEmpty
 argument_list|()
@@ -1085,6 +1039,11 @@ name|empty
 argument_list|()
 return|;
 block|}
+name|String
+name|name
+init|=
+name|filename
+decl_stmt|;
 name|File
 name|file
 init|=
@@ -1315,7 +1274,7 @@ return|return
 name|fileName
 return|;
 block|}
-DECL|method|shortenFileName (File fileName, String dir)
+DECL|method|shortenFileName (File fileName, String directory)
 specifier|private
 specifier|static
 name|File
@@ -1325,7 +1284,7 @@ name|File
 name|fileName
 parameter_list|,
 name|String
-name|dir
+name|directory
 parameter_list|)
 block|{
 if|if
@@ -1343,7 +1302,7 @@ name|isAbsolute
 argument_list|()
 operator|||
 operator|(
-name|dir
+name|directory
 operator|==
 literal|null
 operator|)
@@ -1353,6 +1312,11 @@ return|return
 name|fileName
 return|;
 block|}
+name|String
+name|dir
+init|=
+name|directory
+decl_stmt|;
 name|String
 name|longName
 decl_stmt|;
@@ -1615,17 +1579,13 @@ name|citeKey
 operator|.
 name|isEmpty
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 name|dot
 operator|>
 literal|0
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 name|name
 operator|.
 name|substring
@@ -1656,8 +1616,6 @@ expr_stmt|;
 continue|continue
 name|nextFile
 continue|;
-block|}
-block|}
 block|}
 block|}
 comment|// If we get here, we didn't find any exact matches. If non-exact
@@ -1697,10 +1655,7 @@ name|citeKey
 operator|.
 name|isEmpty
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|name
 operator|.
 name|startsWith
@@ -1724,7 +1679,6 @@ expr_stmt|;
 continue|continue
 name|nextFile
 continue|;
-block|}
 block|}
 block|}
 block|}
@@ -1832,14 +1786,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|f
-lambda|->
 name|result
-operator|.
+operator|::
 name|add
-argument_list|(
-name|f
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

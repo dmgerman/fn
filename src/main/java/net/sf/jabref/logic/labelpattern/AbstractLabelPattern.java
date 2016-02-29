@@ -24,7 +24,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Hashtable
+name|HashMap
 import|;
 end_import
 
@@ -91,15 +91,10 @@ argument_list|>
 name|data
 init|=
 operator|new
-name|Hashtable
+name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|method|AbstractLabelPattern ()
-specifier|public
-name|AbstractLabelPattern
-parameter_list|()
-block|{     }
 DECL|method|addLabelPattern (String type, String pattern)
 specifier|public
 name|void

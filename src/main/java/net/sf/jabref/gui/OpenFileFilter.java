@@ -290,26 +290,27 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|accept (String filenm)
+DECL|method|accept (String filename)
 specifier|public
 name|boolean
 name|accept
 parameter_list|(
 name|String
-name|filenm
+name|filename
 parameter_list|)
 block|{
-name|filenm
-operator|=
-name|filenm
+name|String
+name|lowerCaseFileName
+init|=
+name|filename
 operator|.
 name|toLowerCase
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|int
 name|dotPos
 init|=
-name|filenm
+name|lowerCaseFileName
 operator|.
 name|lastIndexOf
 argument_list|(
@@ -331,7 +332,7 @@ block|}
 name|int
 name|dotDotPos
 init|=
-name|filenm
+name|lowerCaseFileName
 operator|.
 name|lastIndexOf
 argument_list|(
@@ -348,7 +349,7 @@ name|extSet
 operator|.
 name|contains
 argument_list|(
-name|filenm
+name|lowerCaseFileName
 operator|.
 name|substring
 argument_list|(
@@ -367,7 +368,7 @@ name|extSet
 operator|.
 name|contains
 argument_list|(
-name|filenm
+name|lowerCaseFileName
 operator|.
 name|substring
 argument_list|(

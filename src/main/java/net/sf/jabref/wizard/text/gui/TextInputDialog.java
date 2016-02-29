@@ -142,18 +142,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|bibtex
 operator|.
 name|BibEntryWriter
@@ -736,7 +724,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//this.setResizable( false ) ;
 name|getContentPane
 argument_list|()
 operator|.
@@ -1328,7 +1315,6 @@ argument_list|(
 name|titledBorder1
 argument_list|)
 expr_stmt|;
-comment|//inputPanel.setPreferredSize( new Dimension( 200, 255 ) ) ;
 name|inputPanel
 operator|.
 name|setMinimumSize
@@ -1419,8 +1405,6 @@ operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|)
 expr_stmt|;
-comment|//fieldScroller.setPreferredSize( new Dimension( 180, 190 ) ) ;
-comment|//fieldScroller.setMinimumSize( new Dimension( 180, 190 ) ) ;
 comment|// insert buttons
 name|insertButton
 operator|.
@@ -1757,7 +1741,6 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*infoText.setEditable(false);         infoText.setBackground(GUIGlobals.infoField);         infoText.setBorder(new EtchedBorder(EtchedBorder.LOWERED));         infoText.setPreferredSize( new Dimension(220, 50));         infoText.setMinimumSize( new Dimension(180, 50));*/
 name|rawPanel
 operator|.
 name|add
@@ -2295,18 +2278,22 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// insert a new author with an additional "and"
+comment|// insert a new author or editor with an additional "and"
 if|if
 condition|(
-name|type
-operator|.
-name|hashCode
-argument_list|()
-operator|==
 literal|"author"
 operator|.
-name|hashCode
-argument_list|()
+name|equals
+argument_list|(
+name|type
+argument_list|)
+operator|||
+literal|"editor"
+operator|.
+name|equals
+argument_list|(
+name|type
+argument_list|)
 condition|)
 block|{
 name|entry
@@ -2548,9 +2535,7 @@ name|importEntries
 argument_list|(
 name|text
 argument_list|,
-name|JabRef
-operator|.
-name|jrf
+name|frame
 argument_list|)
 decl_stmt|;
 if|if
@@ -2587,9 +2572,7 @@ range|:
 name|importedEntries
 control|)
 block|{
-name|JabRef
-operator|.
-name|jrf
+name|frame
 operator|.
 name|getCurrentBasePanel
 argument_list|()
@@ -3476,7 +3459,6 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-comment|//        setIcon((s.length> 10) ? longIcon : shortIcon);
 if|if
 condition|(
 name|entry

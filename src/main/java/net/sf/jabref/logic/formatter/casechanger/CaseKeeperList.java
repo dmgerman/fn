@@ -20,6 +20,36 @@ name|casechanger
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Container class for lists with keywords where the case should be kept independent of bibstyle  *  */
 end_comment
@@ -34,6 +64,7 @@ comment|// @formatter:off
 comment|// Common words in IEEE Xplore that should always be in the given case
 DECL|field|wordListIEEEXplore
 specifier|private
+specifier|static
 specifier|final
 name|String
 index|[]
@@ -1328,6 +1359,7 @@ decl_stmt|;
 comment|// Weekdays and months
 DECL|field|wordListDayMonth
 specifier|private
+specifier|static
 specifier|final
 name|String
 index|[]
@@ -1378,6 +1410,7 @@ block|}
 decl_stmt|;
 DECL|field|wordListCountries
 specifier|private
+specifier|static
 specifier|final
 name|String
 index|[]
@@ -1965,6 +1998,7 @@ decl_stmt|;
 comment|// List of all keyword lists
 DECL|field|allLists
 specifier|private
+specifier|static
 specifier|final
 name|String
 index|[]
@@ -1985,6 +2019,7 @@ block|}
 decl_stmt|;
 DECL|field|genericLists
 specifier|private
+specifier|static
 specifier|final
 name|String
 index|[]
@@ -2003,20 +2038,25 @@ block|}
 decl_stmt|;
 comment|// @formatter:on
 DECL|method|CaseKeeperList ()
-specifier|public
+specifier|private
 name|CaseKeeperList
 parameter_list|()
-block|{      }
+block|{
+comment|// Only static methods
+block|}
 comment|/* Return all lists concatenated      * Can be done faster once deciding on Java 6.0      * see: http://stackoverflow.com/questions/80476/how-to-concatenate-two-arrays-in-java      */
 DECL|method|getAll ()
 specifier|public
+specifier|static
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|getAll
 parameter_list|()
 block|{
 name|int
-name|lengh
+name|length
 init|=
 literal|0
 decl_stmt|;
@@ -2029,27 +2069,25 @@ range|:
 name|allLists
 control|)
 block|{
-name|lengh
+name|length
 operator|+=
 name|array
 operator|.
 name|length
 expr_stmt|;
 block|}
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|result
 init|=
 operator|new
-name|String
-index|[
-name|lengh
-index|]
-decl_stmt|;
-name|int
-name|pos
-init|=
-literal|0
+name|ArrayList
+argument_list|<>
+argument_list|(
+name|length
+argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -2060,25 +2098,18 @@ range|:
 name|allLists
 control|)
 block|{
-for|for
-control|(
-name|String
-name|element
-range|:
-name|array
-control|)
-block|{
 name|result
-index|[
-name|pos
-index|]
-operator|=
-name|element
+operator|.
+name|addAll
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|array
+argument_list|)
+argument_list|)
 expr_stmt|;
-name|pos
-operator|++
-expr_stmt|;
-block|}
 block|}
 return|return
 name|result

@@ -854,7 +854,7 @@ name|auth1
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 name|s1
 argument_list|,
@@ -876,7 +876,7 @@ name|auth2
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 name|s2
 argument_list|,

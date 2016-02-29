@@ -237,7 +237,8 @@ decl_stmt|;
 comment|// perform action ...
 name|editor
 operator|.
-name|storeFieldAction
+name|getStoreFieldAction
+argument_list|()
 operator|.
 name|actionPerformed
 argument_list|(
@@ -372,7 +373,8 @@ decl_stmt|;
 comment|// perform action ...
 name|editor
 operator|.
-name|storeFieldAction
+name|getStoreFieldAction
+argument_list|()
 operator|.
 name|actionPerformed
 argument_list|(

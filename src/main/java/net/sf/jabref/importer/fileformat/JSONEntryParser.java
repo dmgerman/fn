@@ -140,11 +140,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-DECL|method|JSONEntryParser ()
-specifier|public
-name|JSONEntryParser
-parameter_list|()
-block|{      }
 comment|/**      * Convert a JSONObject containing a bibJSON entry to a BibEntry      *      * @param bibJsonEntry The JSONObject to convert      * @return the converted BibEntry      */
 DECL|method|BibJSONtoBibtex (JSONObject bibJsonEntry)
 specifier|public
@@ -1360,8 +1355,8 @@ argument_list|)
 expr_stmt|;
 comment|// For BibLatex
 name|String
-name|dateparts
 index|[]
+name|dateparts
 init|=
 name|date
 operator|.

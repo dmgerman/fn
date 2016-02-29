@@ -179,7 +179,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_Natbib
+name|fixAuthorNatbib
 argument_list|(
 name|nameToFormat
 argument_list|)
@@ -194,7 +194,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 name|nameToFormat
 argument_list|,
@@ -211,7 +211,7 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 argument_list|(
 name|nameToFormat
 argument_list|,
@@ -225,7 +225,7 @@ comment|// None of namesAsIs, namesNatbib, namesAsIs, namesFf
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 argument_list|(
 name|nameToFormat
 argument_list|,

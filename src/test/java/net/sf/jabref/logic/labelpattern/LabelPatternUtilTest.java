@@ -1708,7 +1708,7 @@ literal|"N"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
@@ -1724,7 +1724,7 @@ literal|"Max"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|,
@@ -1740,7 +1740,7 @@ literal|"New"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|,
@@ -1756,7 +1756,7 @@ literal|"Bo"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|,
@@ -1772,7 +1772,7 @@ literal|"Bohr"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_5
 argument_list|,
@@ -1788,7 +1788,7 @@ literal|"Aal"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_1
 argument_list|,
@@ -1804,7 +1804,7 @@ literal|"Less"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_2
 argument_list|,
@@ -1820,7 +1820,7 @@ literal|""
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 literal|""
 argument_list|,
@@ -1848,7 +1848,7 @@ parameter_list|()
 block|{
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 literal|null
 argument_list|,
@@ -2387,7 +2387,7 @@ literal|"Newton"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
@@ -2401,7 +2401,7 @@ literal|"NewtonEtAl"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|,
@@ -2415,7 +2415,7 @@ literal|"NewtonEtAl"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|,
@@ -2429,7 +2429,7 @@ literal|"NewtonEtAl"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|,
@@ -2453,7 +2453,7 @@ literal|"Newton"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
@@ -2467,7 +2467,7 @@ literal|"NewtonMaxwell"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|,
@@ -2481,7 +2481,7 @@ literal|"NewtonMaxwellEinstein"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|,
@@ -2495,7 +2495,7 @@ literal|"NewtonMaxwellEinsteinEtAl"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|,

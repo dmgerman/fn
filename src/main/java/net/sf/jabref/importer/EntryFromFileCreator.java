@@ -30,6 +30,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|FileFilter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -181,13 +191,10 @@ specifier|abstract
 class|class
 name|EntryFromFileCreator
 implements|implements
-name|java
-operator|.
-name|io
-operator|.
 name|FileFilter
 block|{
 DECL|field|externalFileType
+specifier|protected
 specifier|final
 name|ExternalFileType
 name|externalFileType
@@ -613,6 +620,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|appendToField (BibEntry entry, String field, String value)
+specifier|protected
 name|void
 name|appendToField
 parameter_list|(
@@ -700,6 +708,7 @@ block|}
 block|}
 block|}
 DECL|method|addEntrysToEntry (BibEntry entry, List<BibEntry> entrys)
+specifier|protected
 name|void
 name|addEntrysToEntry
 parameter_list|(
@@ -739,6 +748,7 @@ block|}
 block|}
 block|}
 DECL|method|addEntryDataToEntry (BibEntry entry, BibEntry e)
+specifier|protected
 name|void
 name|addEntryDataToEntry
 parameter_list|(

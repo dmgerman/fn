@@ -46,9 +46,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|HTMLConverter
+name|FieldChange
 import|;
 end_import
 
@@ -62,7 +62,11 @@ name|jabref
 operator|.
 name|logic
 operator|.
-name|FieldChange
+name|formatter
+operator|.
+name|bibtexfields
+operator|.
+name|UnicodeToLatexFormatter
 import|;
 end_import
 
@@ -132,6 +136,14 @@ block|,
 literal|"abstract"
 block|}
 decl_stmt|;
+specifier|final
+name|UnicodeToLatexFormatter
+name|unicodeConverter
+init|=
+operator|new
+name|UnicodeToLatexFormatter
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -163,20 +175,12 @@ argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
-specifier|final
-name|HTMLConverter
-name|htmlConverter
-init|=
-operator|new
-name|HTMLConverter
-argument_list|()
-decl_stmt|;
 name|String
 name|newValue
 init|=
-name|htmlConverter
+name|unicodeConverter
 operator|.
-name|formatUnicode
+name|format
 argument_list|(
 name|oldValue
 argument_list|)

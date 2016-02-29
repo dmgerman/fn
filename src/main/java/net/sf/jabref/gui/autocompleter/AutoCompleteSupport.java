@@ -253,6 +253,7 @@ argument_list|>
 name|renderer
 decl_stmt|;
 DECL|field|autoCompleter
+specifier|private
 name|AutoCompleter
 argument_list|<
 name|E
@@ -894,10 +895,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns whether the text in the textbox is selected when the textbox gains focus. Defaults to true.      *      * @return      */
-DECL|method|getSelectsTextOnFocusGain ()
+DECL|method|isSelectsTextOnFocusGain ()
 specifier|public
 name|boolean
-name|getSelectsTextOnFocusGain
+name|isSelectsTextOnFocusGain
 parameter_list|()
 block|{
 return|return
@@ -1123,7 +1124,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Selects all text when the textbox gains focus. The behavior is controlled by the value returned from      * {@link AutoCompleteSupport#getSelectsTextOnFocusGain()}.      */
+comment|/**      * Selects all text when the textbox gains focus. The behavior is controlled by the value returned from      * {@link AutoCompleteSupport#isSelectsTextOnFocusGain()}.      */
 DECL|class|ComboBoxEditorFocusHandler
 specifier|private
 class|class
@@ -1144,7 +1145,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|getSelectsTextOnFocusGain
+name|isSelectsTextOnFocusGain
 argument_list|()
 operator|&&
 operator|!

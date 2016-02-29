@@ -1542,6 +1542,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+break|break;
 block|}
 comment|// one field less than the option is enough. If one filed changes, another one also changes.
 name|oldAutoCompFModeAbbr

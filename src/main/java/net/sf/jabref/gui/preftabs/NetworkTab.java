@@ -252,12 +252,6 @@ specifier|final
 name|JPasswordField
 name|passwordTextField
 decl_stmt|;
-DECL|field|passwordWarningLabel
-specifier|private
-specifier|final
-name|JLabel
-name|passwordWarningLabel
-decl_stmt|;
 DECL|field|preferences
 specifier|private
 specifier|final
@@ -375,8 +369,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|JLabel
 name|passwordWarningLabel
-operator|=
+init|=
 operator|new
 name|JLabel
 argument_list|(
@@ -387,7 +382,7 @@ argument_list|(
 literal|"Attention: Password is stored in plain text!"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|passwordWarningLabel
 operator|.
 name|setEnabled
@@ -1015,7 +1010,8 @@ parameter_list|()
 block|{
 name|boolean
 name|validSetting
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|validAuthenticationSetting
 init|=
 literal|false

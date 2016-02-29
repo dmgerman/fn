@@ -187,34 +187,35 @@ return|return
 literal|""
 return|;
 block|}
-name|toShave
-operator|=
+name|String
+name|shaved
+init|=
 name|toShave
 operator|.
 name|trim
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|isInCurlyBrackets
 argument_list|(
-name|toShave
+name|shaved
 argument_list|)
 operator|||
 name|isInCitationMarks
 argument_list|(
-name|toShave
+name|shaved
 argument_list|)
 condition|)
 block|{
 return|return
-name|toShave
+name|shaved
 operator|.
 name|substring
 argument_list|(
 literal|1
 argument_list|,
-name|toShave
+name|shaved
 operator|.
 name|length
 argument_list|()
@@ -224,7 +225,7 @@ argument_list|)
 return|;
 block|}
 return|return
-name|toShave
+name|shaved
 return|;
 block|}
 comment|/**      * Concatenate all strings in the array from index 'from' to 'to' (excluding      * to) with the given separator.      *<p>      * Example:      *<p>      * String[] s = "ab/cd/ed".split("/"); join(s, "\\", 0, s.length) ->      * "ab\\cd\\ed"      *      * @param strings      * @param separator      * @param from      * @param to        Excluding strings[to]      * @return      */
@@ -269,8 +270,9 @@ return|return
 literal|""
 return|;
 block|}
-name|from
-operator|=
+name|int
+name|updatedFrom
+init|=
 name|Math
 operator|.
 name|max
@@ -279,9 +281,10 @@ name|from
 argument_list|,
 literal|0
 argument_list|)
-expr_stmt|;
-name|to
-operator|=
+decl_stmt|;
+name|int
+name|updatedTo
+init|=
 name|Math
 operator|.
 name|min
@@ -292,7 +295,7 @@ name|length
 argument_list|,
 name|to
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|StringBuilder
 name|stringBuilder
 init|=
@@ -305,12 +308,12 @@ control|(
 name|int
 name|i
 init|=
-name|from
+name|updatedFrom
 init|;
 name|i
 operator|<
 operator|(
-name|to
+name|updatedTo
 operator|-
 literal|1
 operator|)
@@ -342,7 +345,7 @@ name|append
 argument_list|(
 name|strings
 index|[
-name|to
+name|updatedTo
 operator|-
 literal|1
 index|]
@@ -458,21 +461,20 @@ operator|<
 literal|1
 condition|)
 block|{
-name|orgName
-operator|=
+return|return
 name|orgName
 operator|+
 literal|"."
 operator|+
 name|defaultExtension
-expr_stmt|;
+return|;
 block|}
 return|return
 name|orgName
 return|;
 block|}
-comment|/**      * Creates a substring from a text      *      * @param text      * @param index      * @param terminateOnEndBraceOnly      * @return      */
-DECL|method|getPart (String text, int index, boolean terminateOnEndBraceOnly)
+comment|/**      * Creates a substring from a text      *      * @param text      * @param startIndex      * @param terminateOnEndBraceOnly      * @return      */
+DECL|method|getPart (String text, int startIndex, boolean terminateOnEndBraceOnly)
 specifier|public
 specifier|static
 name|String
@@ -482,7 +484,7 @@ name|String
 name|text
 parameter_list|,
 name|int
-name|index
+name|startIndex
 parameter_list|,
 name|boolean
 name|terminateOnEndBraceOnly
@@ -504,9 +506,13 @@ name|StringBuilder
 argument_list|()
 decl_stmt|;
 comment|// advance to first char and skip whitespace
+name|int
 name|index
-operator|++
-expr_stmt|;
+init|=
+name|startIndex
+operator|+
+literal|1
+decl_stmt|;
 while|while
 condition|(
 operator|(
@@ -1668,7 +1674,6 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|/*          * if (s.isEmpty()) return s; // Protect against ArrayIndexOutOf....          * StringBuffer buf = new StringBuffer();          *          * Matcher mcr = titleCapitalPattern.matcher(s.substring(1)); while          * (mcr.find()) { String replaceStr = mcr.group();          * mcr.appendReplacement(buf, "{" + replaceStr + "}"); }          * mcr.appendTail(buf); return s.substring(0, 1) + buf.toString();          */
 block|}
 comment|/**      * This method looks for occurrences of capital letters enclosed in an      * arbitrary number of pairs of braces, e.g. "{AB}" or "{{T}}". All of these      * pairs of braces are removed.      *      * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
 DECL|method|removeBracesAroundCapitals (String s)
@@ -1682,6 +1687,11 @@ name|s
 parameter_list|)
 block|{
 name|String
+name|current
+init|=
+name|s
+decl_stmt|;
+name|String
 name|previous
 init|=
 name|s
@@ -1689,11 +1699,11 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
-name|s
+name|current
 operator|=
 name|removeSingleBracesAroundCapitals
 argument_list|(
-name|s
+name|current
 argument_list|)
 operator|)
 operator|.
@@ -1708,11 +1718,11 @@ condition|)
 block|{
 name|previous
 operator|=
-name|s
+name|current
 expr_stmt|;
 block|}
 return|return
-name|s
+name|current
 return|;
 block|}
 comment|/**      * This method looks for occurrences of capital letters enclosed in one pair      * of braces, e.g. "{AB}". All these are replaced by only the capitals in      * between the braces.      *      * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
@@ -2364,19 +2374,20 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|buf
-operator|=
+name|String
+name|buffer
+init|=
 name|buf
 operator|+
 literal|'\n'
-expr_stmt|;
+decl_stmt|;
 name|StringTokenizer
 name|st
 init|=
 operator|new
 name|StringTokenizer
 argument_list|(
-name|buf
+name|buffer
 argument_list|,
 name|delimstr
 argument_list|)

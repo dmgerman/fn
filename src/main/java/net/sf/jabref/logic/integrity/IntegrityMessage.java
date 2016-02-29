@@ -100,18 +100,21 @@ block|{
 return|return
 literal|"["
 operator|+
-name|entry
+name|getEntry
+argument_list|()
 operator|.
 name|getCiteKey
 argument_list|()
 operator|+
 literal|"] in "
 operator|+
-name|fieldName
+name|getFieldName
+argument_list|()
 operator|+
 literal|": "
 operator|+
-name|message
+name|getMessage
+argument_list|()
 return|;
 block|}
 DECL|method|getMessage ()

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2014 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -78,7 +78,7 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|HTMLConverter
+name|ImportFormatReader
 import|;
 end_import
 
@@ -90,9 +90,13 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|importer
+name|logic
 operator|.
-name|ImportFormatReader
+name|formatter
+operator|.
+name|bibtexfields
+operator|.
+name|UnicodeToLatexFormatter
 import|;
 end_import
 
@@ -161,15 +165,15 @@ name|MedlineHandler
 extends|extends
 name|DefaultHandler
 block|{
-DECL|field|HTML_CONVERTER
+DECL|field|UNICODE_CONVERTER
 specifier|private
 specifier|static
 specifier|final
-name|HTMLConverter
-name|HTML_CONVERTER
+name|UnicodeToLatexFormatter
+name|UNICODE_CONVERTER
 init|=
 operator|new
-name|HTMLConverter
+name|UnicodeToLatexFormatter
 argument_list|()
 decl_stmt|;
 DECL|field|bibitems
@@ -426,10 +430,10 @@ name|page
 init|=
 literal|""
 decl_stmt|;
-DECL|field|MedlineDate
+DECL|field|medlineDate
 specifier|private
 name|String
-name|MedlineDate
+name|medlineDate
 init|=
 literal|""
 decl_stmt|;
@@ -588,15 +592,6 @@ return|return
 name|bibitems
 return|;
 block|}
-DECL|method|MedlineHandler ()
-specifier|public
-name|MedlineHandler
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|startElement (String uri, String localName, String qName, Attributes atts)
@@ -617,7 +612,6 @@ name|Attributes
 name|atts
 parameter_list|)
 block|{
-comment|//		public void startElement(String localName, Attributes atts) {
 comment|// Get the number of attribute
 if|if
 condition|(
@@ -1308,7 +1302,7 @@ literal|""
 operator|.
 name|equals
 argument_list|(
-name|MedlineDate
+name|medlineDate
 argument_list|)
 condition|)
 block|{
@@ -1316,7 +1310,7 @@ comment|// multi-year date format
 comment|//System.out.println(MedlineDate);
 name|year
 operator|=
-name|MedlineDate
+name|medlineDate
 operator|.
 name|substring
 argument_list|(
@@ -1433,9 +1427,9 @@ literal|"author"
 argument_list|,
 name|MedlineHandler
 operator|.
-name|HTML_CONVERTER
+name|UNICODE_CONVERTER
 operator|.
-name|formatUnicode
+name|format
 argument_list|(
 name|ImportFormatReader
 operator|.
@@ -1471,9 +1465,9 @@ literal|"title"
 argument_list|,
 name|MedlineHandler
 operator|.
-name|HTML_CONVERTER
+name|UNICODE_CONVERTER
 operator|.
-name|formatUnicode
+name|format
 argument_list|(
 name|title
 argument_list|)
@@ -1951,7 +1945,7 @@ name|url
 init|=
 literal|""
 decl_stmt|;
-name|MedlineDate
+name|medlineDate
 operator|=
 literal|""
 expr_stmt|;
@@ -2985,7 +2979,7 @@ condition|(
 name|inMedlineDate
 condition|)
 block|{
-name|MedlineDate
+name|medlineDate
 operator|+=
 operator|new
 name|String

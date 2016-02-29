@@ -312,34 +312,40 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|method|UrlDragDrop (final EntryEditor _editor, final JabRefFrame _frame, final FieldEditor _feditor)
+DECL|method|UrlDragDrop (final EntryEditor editor, final JabRefFrame frame, final FieldEditor feditor)
 specifier|public
 name|UrlDragDrop
 parameter_list|(
 specifier|final
 name|EntryEditor
-name|_editor
+name|editor
 parameter_list|,
 specifier|final
 name|JabRefFrame
-name|_frame
+name|frame
 parameter_list|,
 specifier|final
 name|FieldEditor
-name|_feditor
+name|feditor
 parameter_list|)
 block|{
+name|this
+operator|.
 name|editor
 operator|=
-name|_editor
+name|editor
 expr_stmt|;
+name|this
+operator|.
 name|feditor
 operator|=
-name|_feditor
+name|feditor
 expr_stmt|;
+name|this
+operator|.
 name|frame
 operator|=
-name|_frame
+name|frame
 expr_stmt|;
 block|}
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragEnter(java.awt.dnd.DropTargetDragEvent)      */
@@ -353,7 +359,9 @@ parameter_list|(
 name|DropTargetDragEvent
 name|dtde
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragOver(java.awt.dnd.DropTargetDragEvent)      */
 annotation|@
 name|Override
@@ -365,7 +373,9 @@ parameter_list|(
 name|DropTargetDragEvent
 name|dtde
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dropActionChanged(java.awt.dnd.DropTargetDragEvent)      */
 annotation|@
 name|Override
@@ -377,7 +387,9 @@ parameter_list|(
 name|DropTargetDragEvent
 name|dtde
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragExit(java.awt.dnd.DropTargetEvent)      */
 annotation|@
 name|Override
@@ -389,7 +401,9 @@ parameter_list|(
 name|DropTargetEvent
 name|dte
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 DECL|class|JOptionChoice
 specifier|private
 specifier|static
@@ -408,26 +422,30 @@ specifier|final
 name|int
 name|id
 decl_stmt|;
-DECL|method|JOptionChoice (final String _label, final int _id)
+DECL|method|JOptionChoice (final String label, final int id)
 specifier|public
 name|JOptionChoice
 parameter_list|(
 specifier|final
 name|String
-name|_label
+name|label
 parameter_list|,
 specifier|final
 name|int
-name|_id
+name|id
 parameter_list|)
 block|{
+name|this
+operator|.
 name|label
 operator|=
-name|_label
+name|label
 expr_stmt|;
+name|this
+operator|.
 name|id
 operator|=
-name|_id
+name|id
 expr_stmt|;
 block|}
 annotation|@
@@ -784,6 +802,15 @@ name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
+break|break;
+default|default:
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Unknown selection (should not happen)"
+argument_list|)
+expr_stmt|;
 break|break;
 block|}
 block|}

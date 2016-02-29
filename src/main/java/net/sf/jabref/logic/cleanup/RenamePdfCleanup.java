@@ -54,6 +54,22 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|journals
+operator|.
+name|JournalAbbreviationRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|io
@@ -208,7 +224,13 @@ specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
-DECL|method|RenamePdfCleanup (List<String> paths, Boolean onlyRelativePaths, BibDatabase database)
+DECL|field|repository
+specifier|private
+specifier|final
+name|JournalAbbreviationRepository
+name|repository
+decl_stmt|;
+DECL|method|RenamePdfCleanup (List<String> paths, Boolean onlyRelativePaths, BibDatabase database, JournalAbbreviationRepository repository)
 specifier|public
 name|RenamePdfCleanup
 parameter_list|(
@@ -223,6 +245,9 @@ name|onlyRelativePaths
 parameter_list|,
 name|BibDatabase
 name|database
+parameter_list|,
+name|JournalAbbreviationRepository
+name|repository
 parameter_list|)
 block|{
 name|this
@@ -242,6 +267,12 @@ operator|.
 name|onlyRelativePaths
 operator|=
 name|onlyRelativePaths
+expr_stmt|;
+name|this
+operator|.
+name|repository
+operator|=
+name|repository
 expr_stmt|;
 block|}
 annotation|@
@@ -374,6 +405,8 @@ argument_list|(
 name|database
 argument_list|,
 name|entry
+argument_list|,
+name|repository
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -473,6 +506,35 @@ name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|String
+name|expandedOldFilePath
+init|=
+name|expandedOldFile
+operator|.
+name|get
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|Boolean
+name|pathsDifferOnlyByCase
+init|=
+name|newPath
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|expandedOldFilePath
+argument_list|)
+operator|&&
+operator|!
+name|newPath
+operator|.
+name|equals
+argument_list|(
+name|expandedOldFilePath
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 operator|new
@@ -483,9 +545,14 @@ argument_list|)
 operator|.
 name|exists
 argument_list|()
+operator|&&
+operator|!
+name|pathsDifferOnlyByCase
 condition|)
 block|{
 comment|// we do not overwrite files
+comment|// Since File.exists is sometimes not case-sensitive, the check pathsDifferOnlyByCase ensures that we
+comment|// nonetheless rename files to a new name which just differs by case.
 comment|// TODO: we could check here if the newPath file is linked with the current entry. And if not, we could add a link
 continue|continue;
 block|}
@@ -497,13 +564,7 @@ name|FileUtil
 operator|.
 name|renameFile
 argument_list|(
-name|expandedOldFile
-operator|.
-name|get
-argument_list|()
-operator|.
-name|toString
-argument_list|()
+name|expandedOldFilePath
 argument_list|,
 name|newPath
 argument_list|)
