@@ -7844,7 +7844,7 @@ name|map
 argument_list|(
 name|AuthorList
 operator|::
-name|fixAuthor_Natbib
+name|fixAuthorNatbib
 argument_list|)
 operator|.
 name|orElse

@@ -5050,7 +5050,7 @@ name|fixedAuthors
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 name|authorField
 argument_list|,

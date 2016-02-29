@@ -1818,7 +1818,7 @@ block|}
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|names
 argument_list|)
