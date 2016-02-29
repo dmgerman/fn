@@ -922,155 +922,65 @@ name|add
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|addEntry
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|remove
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|removeEntries
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|up
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|moveEntry
 argument_list|(
 operator|-
 literal|1
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|down
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|moveEntry
 argument_list|(
 literal|1
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|auto
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|autoSetLinks
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|download
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
-block|{
+lambda|->
 name|downloadFile
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|FormBuilder
@@ -1492,25 +1402,10 @@ name|openLink
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|actionEvent
-parameter_list|)
-block|{
+name|e
+lambda|->
 name|openSelectedFile
 argument_list|()
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 name|JMenuItem
@@ -1538,19 +1433,8 @@ name|openFolder
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|int
 name|row
@@ -1602,7 +1486,6 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -1709,19 +1592,8 @@ name|deleteFile
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|int
 name|row
@@ -1733,13 +1605,11 @@ comment|// no selection
 if|if
 condition|(
 name|row
-operator|==
+operator|!=
 operator|-
 literal|1
 condition|)
 block|{
-return|return;
-block|}
 name|FileListEntry
 name|entry
 init|=
@@ -2059,7 +1929,9 @@ parameter_list|(
 name|String
 name|text
 parameter_list|)
-block|{      }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|updateFont ()
@@ -2067,7 +1939,9 @@ specifier|public
 name|void
 name|updateFont
 parameter_list|()
-block|{      }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|paste (String textToInsert)
@@ -2078,7 +1952,9 @@ parameter_list|(
 name|String
 name|textToInsert
 parameter_list|)
-block|{      }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|getSelectedText ()
@@ -3056,7 +2932,9 @@ specifier|public
 name|void
 name|undo
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|redo ()
@@ -3064,7 +2942,9 @@ specifier|public
 name|void
 name|redo
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
@@ -3075,7 +2955,9 @@ parameter_list|(
 name|AutoCompleteListener
 name|listener
 parameter_list|)
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|clearAutoCompleteSuggestion ()
@@ -3083,7 +2965,9 @@ specifier|public
 name|void
 name|clearAutoCompleteSuggestion
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|setActiveBackgroundColor ()
@@ -3091,7 +2975,9 @@ specifier|public
 name|void
 name|setActiveBackgroundColor
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|setValidBackgroundColor ()
@@ -3099,7 +2985,9 @@ specifier|public
 name|void
 name|setValidBackgroundColor
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|setInvalidBackgroundColor ()
@@ -3107,7 +2995,9 @@ specifier|public
 name|void
 name|setInvalidBackgroundColor
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 annotation|@
 name|Override
 DECL|method|updateFontColor ()
@@ -3115,7 +3005,9 @@ specifier|public
 name|void
 name|updateFontColor
 parameter_list|()
-block|{     }
+block|{
+comment|// Do nothing
+block|}
 block|}
 end_class
 
