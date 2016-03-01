@@ -123,13 +123,6 @@ specifier|final
 name|GroupSelector
 name|m_groupSelector
 decl_stmt|;
-DECL|field|mRevalidate
-specifier|private
-name|boolean
-name|mRevalidate
-init|=
-literal|true
-decl_stmt|;
 comment|/** Adding of a single node (group). */
 DECL|field|ADD_NODE
 specifier|public
@@ -648,31 +641,10 @@ default|default:
 break|break;
 block|}
 block|}
-if|if
-condition|(
-name|mRevalidate
-condition|)
-block|{
 name|m_groupSelector
 operator|.
 name|revalidateGroups
 argument_list|()
-expr_stmt|;
-block|}
-block|}
-comment|/**      * Call this method to decide if the group list should be immediately      * revalidated by this operation. Default is true.      *      * @param val      *            a<code>boolean</code> value      */
-DECL|method|setRevalidate (boolean val)
-specifier|public
-name|void
-name|setRevalidate
-parameter_list|(
-name|boolean
-name|val
-parameter_list|)
-block|{
-name|mRevalidate
-operator|=
-name|val
 expr_stmt|;
 block|}
 block|}

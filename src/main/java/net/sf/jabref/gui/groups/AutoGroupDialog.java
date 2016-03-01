@@ -830,13 +830,6 @@ operator|.
 name|ADD_NODE
 argument_list|)
 decl_stmt|;
-name|undo
-operator|.
-name|setRevalidate
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|ce
 operator|.
 name|addEdit
