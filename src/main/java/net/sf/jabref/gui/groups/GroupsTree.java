@@ -2046,11 +2046,6 @@ argument_list|(
 name|recursive
 argument_list|)
 expr_stmt|;
-name|groupSelector
-operator|.
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
 block|}
 comment|/**      * Returns true if the node specified by path has at least one descendant      * that is currently expanded.      */
 DECL|method|hasExpandedDescendant (TreePath path)

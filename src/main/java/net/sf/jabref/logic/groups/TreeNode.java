@@ -24,6 +24,18 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|function
+operator|.
+name|Consumer
+import|;
+end_import
+
 begin_comment
 comment|/**  * Represents a node in a tree.  *<p>  * Usually, tree nodes have a value property which allows access to the value stored in the node.  * In contrast to this approach, the TreeNode<T> class is designed to be used as a base class which provides the  * tree traversing functionality via inheritance.  *<p>  * Example usage:  * private class BasicTreeNode extends TreeNode<BasicTreeNode> {  * public BasicTreeNode() {  * super(BasicTreeNode.class);  * }  * }  *<p>  * This class started out as a copy of javax.swing.tree.DefaultMutableTreeNode.  *  * @param<T> the type of the class  */
 end_comment
@@ -846,7 +858,7 @@ condition|)
 block|{
 name|parent
 operator|.
-name|remove
+name|removeChild
 argument_list|(
 operator|(
 name|T
@@ -871,7 +883,7 @@ operator|>
 literal|0
 condition|)
 block|{
-name|remove
+name|removeChild
 argument_list|(
 literal|0
 argument_list|)
@@ -963,10 +975,10 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Removes the given child from this node's child list, giving it an empty parent.      *      * @param child a child of this node to remove      */
-DECL|method|remove (T child)
+DECL|method|removeChild (T child)
 specifier|public
 name|void
-name|remove
+name|removeChild
 parameter_list|(
 name|T
 name|child
@@ -993,12 +1005,20 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|notifyAboutDescendantChange
+argument_list|(
+operator|(
+name|T
+operator|)
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Removes the child at the specified index from this node's children and sets that node's parent to empty.      *<p>      * Does nothing if the index does not point to a child.      *      * @param childIndex the index in this node's child array of the child to remove      */
-DECL|method|remove (int childIndex)
+DECL|method|removeChild (int childIndex)
 specifier|public
 name|void
-name|remove
+name|removeChild
 parameter_list|(
 name|int
 name|childIndex
@@ -1041,17 +1061,26 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+name|notifyAboutDescendantChange
+argument_list|(
+operator|(
+name|T
+operator|)
+name|this
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * Adds the node at the end the children collection. Also sets the parent of the given node to this node.      * The given node is not allowed to already be in a tree (i.e. it has to have no parent).      *      * @param child the node to add      */
+comment|/**      * Adds the node at the end the children collection. Also sets the parent of the given node to this node.      * The given node is not allowed to already be in a tree (i.e. it has to have no parent).      *      * @param child the node to add      * @return the child node      */
 DECL|method|addChild (T child)
 specifier|public
-name|void
+name|T
 name|addChild
 parameter_list|(
 name|T
 name|child
 parameter_list|)
 block|{
+return|return
 name|addChild
 argument_list|(
 name|child
@@ -1061,12 +1090,12 @@ operator|.
 name|size
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
-comment|/**      * Adds the node at the given position in the children collection. Also sets the parent of the given node to this node.      * The given node is not allowed to already be in a tree (i.e. it has to have no parent).      *      * @param child the node to add      * @param index the position where the node should be added      * @throws IndexOutOfBoundsException if the index is out of range      */
+comment|/**      * Adds the node at the given position in the children collection. Also sets the parent of the given node to this node.      * The given node is not allowed to already be in a tree (i.e. it has to have no parent).      *      * @param child the node to add      * @param index the position where the node should be added      * @return the child node      * @throws IndexOutOfBoundsException if the index is out of range      */
 DECL|method|addChild (T child, int index)
 specifier|public
-name|void
+name|T
 name|addChild
 parameter_list|(
 name|T
@@ -1121,6 +1150,17 @@ argument_list|,
 name|child
 argument_list|)
 expr_stmt|;
+name|notifyAboutDescendantChange
+argument_list|(
+operator|(
+name|T
+operator|)
+name|this
+argument_list|)
+expr_stmt|;
+return|return
+name|child
+return|;
 block|}
 comment|/**      * Removes all children from this node and makes them a child of the specified node      * by adding it to the specified position in the children list.      *      * @param target      the new parent      * @param targetIndex the position where the children should be inserted      * @throws NullPointerException           if target is null      * @throws ArrayIndexOutOfBoundsException if targetIndex is out of bounds      * @throws UnsupportedOperationException  if target is an descendant of one of the children of this node      */
 DECL|method|moveAllChildrenTo (T target, int targetIndex)
@@ -1383,7 +1423,7 @@ operator|.
 name|get
 argument_list|()
 operator|.
-name|remove
+name|removeChild
 argument_list|(
 operator|(
 name|T
@@ -1451,6 +1491,75 @@ name|T
 name|copyNode
 parameter_list|()
 function_decl|;
+comment|/**      * The function which is invoked when something changed in the subtree.      */
+DECL|field|onDescendantChanged
+specifier|private
+name|Consumer
+argument_list|<
+name|T
+argument_list|>
+name|onDescendantChanged
+init|=
+name|t
+lambda|->
+block|{}
+decl_stmt|;
+comment|/**      * Adds the given function to the list of subscribers which are notified when something changes in the subtree.      *      * The following events are supported (the text in parentheses specifies which node is passed as the source):      *  - addChild (new parent)      *  - removeChild (old parent)      *  - move (old parent and new parent)      * @param subscriber function to be invoked upon a change      */
+DECL|method|subscribeToDescendantChanged (Consumer<T> subscriber)
+specifier|public
+name|void
+name|subscribeToDescendantChanged
+parameter_list|(
+name|Consumer
+argument_list|<
+name|T
+argument_list|>
+name|subscriber
+parameter_list|)
+block|{
+name|onDescendantChanged
+operator|=
+name|onDescendantChanged
+operator|.
+name|andThen
+argument_list|(
+name|subscriber
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Helper method which notifies all subscribers about a change in the subtree and bubbles the event to all parents.      * @param source the node which changed      */
+DECL|method|notifyAboutDescendantChange (T source)
+specifier|protected
+name|void
+name|notifyAboutDescendantChange
+parameter_list|(
+name|T
+name|source
+parameter_list|)
+block|{
+name|onDescendantChanged
+operator|.
+name|accept
+argument_list|(
+name|source
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|isRoot
+argument_list|()
+condition|)
+block|{
+name|parent
+operator|.
+name|notifyAboutDescendantChange
+argument_list|(
+name|source
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 end_class
 

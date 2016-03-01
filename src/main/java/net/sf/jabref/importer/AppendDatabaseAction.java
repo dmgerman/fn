@@ -1157,13 +1157,6 @@ argument_list|,
 name|appendedEntries
 argument_list|)
 expr_stmt|;
-name|frame
-operator|.
-name|groupSelector
-operator|.
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 if|if

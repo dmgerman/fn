@@ -339,11 +339,6 @@ argument_list|,
 name|oldChildIndex
 argument_list|)
 expr_stmt|;
-name|groupSelector
-operator|.
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -409,11 +404,6 @@ argument_list|()
 argument_list|,
 name|newChildIndex
 argument_list|)
-expr_stmt|;
-name|groupSelector
-operator|.
-name|revalidateGroups
-argument_list|()
 expr_stmt|;
 block|}
 block|}

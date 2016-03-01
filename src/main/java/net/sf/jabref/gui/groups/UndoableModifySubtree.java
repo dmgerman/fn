@@ -113,12 +113,6 @@ name|Integer
 argument_list|>
 name|m_subtreeRootPath
 decl_stmt|;
-DECL|field|m_groupSelector
-specifier|private
-specifier|final
-name|GroupSelector
-name|m_groupSelector
-decl_stmt|;
 comment|/** This holds the new subtree (the root's modified children) to allow redo. */
 DECL|field|m_modifiedSubtree
 specifier|private
@@ -134,13 +128,6 @@ name|Vector
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|mRevalidate
-specifier|private
-name|boolean
-name|mRevalidate
-init|=
-literal|true
-decl_stmt|;
 DECL|field|m_name
 specifier|private
 specifier|final
@@ -148,13 +135,10 @@ name|String
 name|m_name
 decl_stmt|;
 comment|/**      *      * @param subtree      *            The root node of the subtree that was modified (this node may      *            not be modified, it is just used as a convenience handle).      */
-DECL|method|UndoableModifySubtree (GroupSelector groupSelector, GroupTreeNodeViewModel groupRoot, GroupTreeNodeViewModel subtree, String name)
+DECL|method|UndoableModifySubtree (GroupTreeNodeViewModel groupRoot, GroupTreeNodeViewModel subtree, String name)
 specifier|public
 name|UndoableModifySubtree
 parameter_list|(
-name|GroupSelector
-name|groupSelector
-parameter_list|,
 name|GroupTreeNodeViewModel
 name|groupRoot
 parameter_list|,
@@ -191,10 +175,6 @@ argument_list|()
 operator|.
 name|getIndexedPathFromRoot
 argument_list|()
-expr_stmt|;
-name|m_groupSelector
-operator|=
-name|groupSelector
 expr_stmt|;
 name|m_name
 operator|=
@@ -325,17 +305,6 @@ name|subtreeRoot
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|mRevalidate
-condition|)
-block|{
-name|m_groupSelector
-operator|.
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -386,32 +355,6 @@ name|subtreeRoot
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|mRevalidate
-condition|)
-block|{
-name|m_groupSelector
-operator|.
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-comment|/**      * Call this method to decide if the group list should be immediately      * revalidated by this operation. Default is true.      */
-DECL|method|setRevalidate (boolean revalidate)
-specifier|public
-name|void
-name|setRevalidate
-parameter_list|(
-name|boolean
-name|revalidate
-parameter_list|)
-block|{
-name|mRevalidate
-operator|=
-name|revalidate
-expr_stmt|;
 block|}
 block|}
 end_class

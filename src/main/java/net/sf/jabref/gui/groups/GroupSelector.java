@@ -2691,9 +2691,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
 name|panel
 operator|.
 name|markBaseChanged
@@ -5750,6 +5747,18 @@ argument_list|(
 name|groupsRoot
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|groupsRoot
+operator|.
+name|subscribeToDescendantChanged
+argument_list|(
+name|source
+lambda|->
+name|revalidateGroups
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|groupsTree
 operator|.
 name|setModel
@@ -6317,9 +6326,6 @@ operator|.
 name|ADD_NODE
 argument_list|)
 decl_stmt|;
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
 name|groupsTree
 operator|.
 name|expandPath
@@ -6501,9 +6507,6 @@ operator|.
 name|ADD_NODE
 argument_list|)
 decl_stmt|;
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
 name|groupsTree
 operator|.
 name|expandPath
@@ -6674,9 +6677,6 @@ operator|.
 name|removeFromParent
 argument_list|()
 expr_stmt|;
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
 comment|// Store undo information.
 name|panel
 operator|.
@@ -6805,10 +6805,6 @@ init|=
 operator|new
 name|UndoableModifySubtree
 argument_list|(
-name|GroupSelector
-operator|.
-name|this
-argument_list|,
 name|getGroupTreeRoot
 argument_list|()
 argument_list|,
@@ -6825,9 +6821,7 @@ operator|.
 name|removeAllChildren
 argument_list|()
 expr_stmt|;
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
+comment|//revalidateGroups();
 comment|// Store undo information.
 name|panel
 operator|.
@@ -7021,9 +7015,6 @@ name|node
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
 comment|// Store undo information.
 name|panel
 operator|.
@@ -7126,10 +7117,6 @@ init|=
 operator|new
 name|UndoableModifySubtree
 argument_list|(
-name|GroupSelector
-operator|.
-name|this
-argument_list|,
 name|getGroupTreeRoot
 argument_list|()
 argument_list|,
@@ -7231,10 +7218,6 @@ init|=
 operator|new
 name|UndoableModifySubtree
 argument_list|(
-name|GroupSelector
-operator|.
-name|this
-argument_list|,
 name|getGroupTreeRoot
 argument_list|()
 argument_list|,

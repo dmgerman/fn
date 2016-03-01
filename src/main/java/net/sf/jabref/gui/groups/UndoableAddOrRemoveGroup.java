@@ -468,7 +468,7 @@ name|ADD_NODE
 case|:
 name|cursor
 operator|.
-name|remove
+name|removeChild
 argument_list|(
 name|childIndex
 argument_list|)
@@ -594,7 +594,7 @@ argument_list|()
 decl_stmt|;
 name|cursor
 operator|.
-name|remove
+name|removeChild
 argument_list|(
 name|childIndex
 argument_list|)
@@ -631,7 +631,7 @@ name|REMOVE_NODE_AND_CHILDREN
 case|:
 name|cursor
 operator|.
-name|remove
+name|removeChild
 argument_list|(
 name|childIndex
 argument_list|)
@@ -641,11 +641,6 @@ default|default:
 break|break;
 block|}
 block|}
-name|m_groupSelector
-operator|.
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 end_class

@@ -843,11 +843,6 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 comment|// a change always occurs
-name|gs
-operator|.
-name|revalidateGroups
-argument_list|()
-expr_stmt|;
 name|frame
 operator|.
 name|output
