@@ -7707,9 +7707,6 @@ name|moveChange
 operator|=
 name|node
 operator|.
-name|getNode
-argument_list|()
-operator|.
 name|moveUp
 argument_list|()
 operator|)
@@ -7849,9 +7846,6 @@ operator|(
 name|moveChange
 operator|=
 name|node
-operator|.
-name|getNode
-argument_list|()
 operator|.
 name|moveDown
 argument_list|()
@@ -7993,9 +7987,6 @@ name|moveChange
 operator|=
 name|node
 operator|.
-name|getNode
-argument_list|()
-operator|.
 name|moveLeft
 argument_list|()
 operator|)
@@ -8134,9 +8125,6 @@ operator|(
 name|moveChange
 operator|=
 name|node
-operator|.
-name|getNode
-argument_list|()
 operator|.
 name|moveRight
 argument_list|()

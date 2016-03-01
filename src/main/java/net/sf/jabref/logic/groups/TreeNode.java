@@ -1406,6 +1406,51 @@ name|targetIndex
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Creates a deep copy of this node and all of its children.      *      * @return a deep copy of the subtree      */
+DECL|method|copySubtree ()
+specifier|public
+name|T
+name|copySubtree
+parameter_list|()
+block|{
+name|T
+name|copy
+init|=
+name|copyNode
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|T
+name|child
+range|:
+name|getChildren
+argument_list|()
+control|)
+block|{
+name|child
+operator|.
+name|copySubtree
+argument_list|()
+operator|.
+name|moveTo
+argument_list|(
+name|copy
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|copy
+return|;
+block|}
+comment|/**      * Creates a copy of this node, completely separated from the tree (i.e. no children and no parent)      *      * @return a deep copy of this node      */
+DECL|method|copyNode ()
+specifier|public
+specifier|abstract
+name|T
+name|copyNode
+parameter_list|()
+function_decl|;
 block|}
 end_class
 

@@ -8720,10 +8720,7 @@ name|getLastPathComponent
 argument_list|()
 operator|)
 operator|.
-name|getNode
-argument_list|()
-operator|.
-name|addToGroup
+name|addEntriesToGroup
 argument_list|(
 name|entries
 argument_list|)

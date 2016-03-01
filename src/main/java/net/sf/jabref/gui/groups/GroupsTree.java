@@ -1612,10 +1612,7 @@ name|undo
 init|=
 name|target
 operator|.
-name|getNode
-argument_list|()
-operator|.
-name|addToGroup
+name|addEntriesToGroup
 argument_list|(
 name|selection
 operator|.

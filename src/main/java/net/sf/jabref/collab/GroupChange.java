@@ -348,7 +348,7 @@ control|)
 block|{
 name|child
 operator|.
-name|deepCopy
+name|copySubtree
 argument_list|()
 operator|.
 name|moveTo
@@ -421,7 +421,7 @@ name|copied
 init|=
 name|changedGroups
 operator|.
-name|deepCopy
+name|copySubtree
 argument_list|()
 decl_stmt|;
 name|tmpGroupRoot
@@ -447,7 +447,7 @@ control|)
 block|{
 name|child
 operator|.
-name|deepCopy
+name|copySubtree
 argument_list|()
 operator|.
 name|moveTo

@@ -205,7 +205,7 @@ operator|.
 name|getNode
 argument_list|()
 operator|.
-name|deepCopy
+name|copySubtree
 argument_list|()
 else|:
 operator|new
@@ -483,7 +483,7 @@ name|newNode
 init|=
 name|m_subtreeBackup
 operator|.
-name|deepCopy
+name|copySubtree
 argument_list|()
 decl_stmt|;
 for|for
@@ -536,7 +536,7 @@ name|REMOVE_NODE_AND_CHILDREN
 case|:
 name|m_subtreeBackup
 operator|.
-name|deepCopy
+name|copySubtree
 argument_list|()
 operator|.
 name|moveTo
@@ -564,7 +564,7 @@ name|ADD_NODE
 case|:
 name|m_subtreeBackup
 operator|.
-name|deepCopy
+name|copySubtree
 argument_list|()
 operator|.
 name|moveTo

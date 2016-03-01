@@ -251,10 +251,7 @@ name|undo
 init|=
 name|mNode
 operator|.
-name|getNode
-argument_list|()
-operator|.
-name|removeFromGroup
+name|removeEntriesFromGroup
 argument_list|(
 name|mPanel
 operator|.

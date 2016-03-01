@@ -172,7 +172,7 @@ operator|.
 name|getNode
 argument_list|()
 operator|.
-name|deepCopy
+name|copySubtree
 argument_list|()
 expr_stmt|;
 name|m_groupRoot
@@ -316,7 +316,7 @@ control|)
 block|{
 name|child
 operator|.
-name|deepCopy
+name|copySubtree
 argument_list|()
 operator|.
 name|moveTo
