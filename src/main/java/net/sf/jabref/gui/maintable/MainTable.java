@@ -1269,6 +1269,27 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+comment|// set table header render AFTER creation of comparatorChooser (this enables sort arrow rendering)
+name|this
+operator|.
+name|getTableHeader
+argument_list|()
+operator|.
+name|setDefaultRenderer
+argument_list|(
+operator|new
+name|MainTableHeaderRenderer
+argument_list|(
+name|this
+operator|.
+name|getTableHeader
+argument_list|()
+operator|.
+name|getDefaultRenderer
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// TODO: Figure out, whether this call is needed.
 name|getSelected
 argument_list|()
