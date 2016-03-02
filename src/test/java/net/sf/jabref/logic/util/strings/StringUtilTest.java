@@ -1376,6 +1376,26 @@ literal|"{a}"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
+name|StringUtil
+operator|.
+name|isInCurlyBrackets
+argument_list|(
+literal|"{a{a}}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|StringUtil
+operator|.
+name|isInCurlyBrackets
+argument_list|(
+literal|"{{\\AA}sa {\\AA}Stor{\\aa}}"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertFalse
 argument_list|(
 name|StringUtil
@@ -1403,6 +1423,16 @@ operator|.
 name|isInCurlyBrackets
 argument_list|(
 literal|"a{}a"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+name|StringUtil
+operator|.
+name|isInCurlyBrackets
+argument_list|(
+literal|"{\\AA}sa {\\AA}Stor{\\aa}"
 argument_list|)
 argument_list|)
 expr_stmt|;

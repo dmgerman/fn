@@ -330,7 +330,7 @@ operator|)
 operator|)
 condition|)
 block|{
-comment|// Swallow the brace.
+comment|//Swallow braces, necessary for replacing encoded characters
 block|}
 elseif|else
 if|if
