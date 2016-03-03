@@ -148,18 +148,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Paths
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|*
@@ -191,7 +179,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * LaTeX Aux to BibTeX Parser  *  * Extracts a subset of BibTeX entries from a BibDatabase that are included in an aux file.  */
+comment|/**  * LaTeX Aux to BibTeX Parser  *<p>  * Extracts a subset of BibTeX entries from a BibDatabase that are included in an aux file.  */
 end_comment
 
 begin_class
@@ -214,6 +202,34 @@ argument_list|(
 name|AuxFileParser
 operator|.
 name|class
+argument_list|)
+decl_stmt|;
+DECL|field|CITE_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|CITE_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\\\(citation|abx@aux@cite)\\{(.+)\\}"
+argument_list|)
+decl_stmt|;
+DECL|field|INPUT_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|INPUT_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\\\@input\\{(.+)\\}"
 argument_list|)
 decl_stmt|;
 DECL|field|masterDatabase
@@ -592,34 +608,6 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|field|CITE_PATTERN
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|CITE_PATTERN
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\\\(citation|abx@aux@cite)\\{(.+)\\}"
-argument_list|)
-decl_stmt|;
-DECL|field|INPUT_PATTERN
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|INPUT_PATTERN
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\\\@input\\{(.+)\\}"
-argument_list|)
-decl_stmt|;
 comment|/*      * Parses the aux file and extracts all bib keys.      * Also supports nested aux files (latex \\include).      *      * There exists no specification of the aux file.      * Every package, class or document can write to the aux file.      * The aux file consists of LaTeX macros and is read at the \begin{document} and again at the \end{document}.      *      * BibTeX citation: \citation{x,y,z}      * Biblatex citation: \abx@aux@cite{x,y,z}      * Nested aux files: \@input{x}      */
 DECL|method|parseAuxFile (String filename)
 specifier|private
