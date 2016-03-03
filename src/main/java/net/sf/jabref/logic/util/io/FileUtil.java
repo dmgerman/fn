@@ -1003,7 +1003,7 @@ return|;
 block|}
 comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      */
 DECL|method|expandFilename (String filename, String dir)
-specifier|public
+specifier|private
 specifier|static
 name|Optional
 argument_list|<
