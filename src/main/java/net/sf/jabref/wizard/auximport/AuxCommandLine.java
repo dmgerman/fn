@@ -143,16 +143,16 @@ literal|null
 operator|)
 condition|)
 block|{
-name|AuxSubGenerator
+name|AuxFileParser
 name|auxParser
 init|=
 operator|new
-name|AuxSubGenerator
+name|AuxFileParser
 argument_list|()
 decl_stmt|;
 name|auxParser
 operator|.
-name|generate
+name|generateBibDatabase
 argument_list|(
 name|auxName
 argument_list|,
@@ -163,7 +163,7 @@ name|back
 operator|=
 name|auxParser
 operator|.
-name|getGeneratedDatabase
+name|getGeneratedBibDatabase
 argument_list|()
 expr_stmt|;
 comment|// print statistics

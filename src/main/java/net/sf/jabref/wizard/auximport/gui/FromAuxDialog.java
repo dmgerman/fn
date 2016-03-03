@@ -392,7 +392,7 @@ name|wizard
 operator|.
 name|auximport
 operator|.
-name|AuxSubGenerator
+name|AuxFileParser
 import|;
 end_import
 
@@ -553,7 +553,7 @@ decl_stmt|;
 DECL|field|auxParser
 specifier|private
 specifier|final
-name|AuxSubGenerator
+name|AuxFileParser
 name|auxParser
 decl_stmt|;
 DECL|field|parentFrame
@@ -599,7 +599,7 @@ expr_stmt|;
 name|auxParser
 operator|=
 operator|new
-name|AuxSubGenerator
+name|AuxFileParser
 argument_list|()
 expr_stmt|;
 name|jbInit
@@ -1604,7 +1604,7 @@ name|list
 init|=
 name|auxParser
 operator|.
-name|generate
+name|generateBibDatabase
 argument_list|(
 name|auxName
 argument_list|,
@@ -1662,7 +1662,10 @@ if|if
 condition|(
 name|auxParser
 operator|.
-name|emptyGeneratedDatabase
+name|getGeneratedBibDatabase
+argument_list|()
+operator|.
+name|isEmpty
 argument_list|()
 condition|)
 block|{
@@ -1715,7 +1718,7 @@ block|{
 return|return
 name|auxParser
 operator|.
-name|getGeneratedDatabase
+name|getGeneratedBibDatabase
 argument_list|()
 return|;
 block|}

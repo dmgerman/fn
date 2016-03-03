@@ -293,6 +293,22 @@ name|size
 argument_list|()
 return|;
 block|}
+comment|/**      * Checks if the database contains no entries.      */
+DECL|method|isEmpty ()
+specifier|public
+name|boolean
+name|isEmpty
+parameter_list|()
+block|{
+return|return
+name|entries
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|0
+return|;
+block|}
 comment|/**      * Returns a Set containing the keys to all entries.      * Use getKeySet().iterator() to iterate over all entries.      */
 DECL|method|getKeySet ()
 specifier|public
