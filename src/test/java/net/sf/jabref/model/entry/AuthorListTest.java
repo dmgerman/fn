@@ -51,10 +51,10 @@ literal|"unused"
 argument_list|)
 annotation|@
 name|Test
-DECL|method|testFixAuthor_Natbib ()
+DECL|method|testFixAuthorNatbib ()
 specifier|public
 name|void
-name|testFixAuthor_Natbib
+name|testFixAuthorNatbib
 parameter_list|()
 block|{
 name|Assert
@@ -204,10 +204,10 @@ literal|"unused"
 argument_list|)
 annotation|@
 name|Test
-DECL|method|testFixAuthor_firstNameFirstCommas ()
+DECL|method|testFixAuthorFirstNameFirstCommas ()
 specifier|public
 name|void
-name|testFixAuthor_firstNameFirstCommas
+name|testFixAuthorFirstNameFirstCommas
 parameter_list|()
 block|{
 comment|// No Commas
@@ -634,10 +634,10 @@ literal|"unused"
 argument_list|)
 annotation|@
 name|Test
-DECL|method|testFixAuthor_firstNameFirst ()
+DECL|method|testFixAuthorFirstNameFirst ()
 specifier|public
 name|void
-name|testFixAuthor_firstNameFirst
+name|testFixAuthorFirstNameFirst
 parameter_list|()
 block|{
 name|Assert
@@ -739,10 +739,10 @@ literal|"unused"
 argument_list|)
 annotation|@
 name|Test
-DECL|method|testFixAuthor_lastNameFirstCommas ()
+DECL|method|testFixAuthorLastNameFirstCommas ()
 specifier|public
 name|void
-name|testFixAuthor_lastNameFirstCommas
+name|testFixAuthorLastNameFirstCommas
 parameter_list|()
 block|{
 block|{
@@ -1205,10 +1205,10 @@ literal|"unused"
 argument_list|)
 annotation|@
 name|Test
-DECL|method|testFixAuthor_lastNameFirst ()
+DECL|method|testFixAuthorLastNameFirst ()
 specifier|public
 name|void
-name|testFixAuthor_lastNameFirst
+name|testFixAuthorLastNameFirst
 parameter_list|()
 block|{
 comment|// Test helper method
@@ -1516,10 +1516,10 @@ literal|"unused"
 argument_list|)
 annotation|@
 name|Test
-DECL|method|testFixAuthor_lastNameOnlyCommas ()
+DECL|method|testFixAuthorLastNameOnlyCommas ()
 specifier|public
 name|void
-name|testFixAuthor_lastNameOnlyCommas
+name|testFixAuthorLastNameOnlyCommas
 parameter_list|()
 block|{
 comment|// No comma before and

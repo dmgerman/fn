@@ -141,10 +141,10 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Convert a JSONObject containing a bibJSON entry to a BibEntry      *      * @param bibJsonEntry The JSONObject to convert      * @return the converted BibEntry      */
-DECL|method|BibJSONtoBibtex (JSONObject bibJsonEntry)
+DECL|method|parseBibJSONtoBibtex (JSONObject bibJsonEntry)
 specifier|public
 name|BibEntry
-name|BibJSONtoBibtex
+name|parseBibJSONtoBibtex
 parameter_list|(
 name|JSONObject
 name|bibJsonEntry
@@ -864,11 +864,11 @@ name|entry
 return|;
 block|}
 comment|/**      * Convert a JSONObject obtained from http://api.springer.com/metadata/json to a BibEntry      *      * @param springerJsonEntry the JSONObject from search results      * @return the converted BibEntry      */
-DECL|method|SpringerJSONtoBibtex (JSONObject springerJsonEntry)
+DECL|method|parseSpringerJSONtoBibtex (JSONObject springerJsonEntry)
 specifier|public
 specifier|static
 name|BibEntry
-name|SpringerJSONtoBibtex
+name|parseSpringerJSONtoBibtex
 parameter_list|(
 name|JSONObject
 name|springerJsonEntry

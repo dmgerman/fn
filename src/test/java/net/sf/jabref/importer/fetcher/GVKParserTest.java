@@ -363,10 +363,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|GMP ()
+DECL|method|testGMP ()
 specifier|public
 name|void
-name|GMP
+name|testGMP
 parameter_list|()
 throws|throws
 name|Exception
