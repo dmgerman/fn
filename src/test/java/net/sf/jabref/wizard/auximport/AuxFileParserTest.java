@@ -558,6 +558,7 @@ block|}
 block|}
 comment|// TODO strings and preamble test
 comment|// TODO return type of generate during error should be false
+comment|// TODO resolve nested aux files
 block|}
 end_class
 
