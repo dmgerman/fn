@@ -167,7 +167,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Latex Aux to Bibtex  *<p>  * Description: generates a sub-database which contains only bibtex entries  * from input aux file</p>  * Now - the unknown BibTeX entries cannot inserted into the reference  * database without closing the dialog.  */
+comment|/**  * LaTeX Aux to BibTeX Parser  *  * Extracts a subset of BibTeX entries from a BibDatabase that are included in an aux file.  */
 end_comment
 
 begin_class
@@ -244,25 +244,20 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-DECL|field|nestedAuxCounter
+DECL|field|nestedAuxCount
 specifier|private
 name|int
-name|nestedAuxCounter
+name|nestedAuxCount
 decl_stmt|;
-DECL|field|crossreferencedEntriesCount
+DECL|field|crossRefEntriesCount
 specifier|private
 name|int
-name|crossreferencedEntriesCount
+name|crossRefEntriesCount
 decl_stmt|;
-comment|/**      * generate Shortcut method for easy generation.      *      * @param auxFile String      * @param database BibDatabase - reference database      * @return Vector - contains all not resolved bibtex entries      */
-DECL|method|generateBibDatabase (String auxFile, BibDatabase database)
+comment|/**      * Generates a database based on the given aux file and BibTeX database      *      * @param auxFile Path to the LaTeX aux file      * @param database BibTeX database      */
+DECL|method|AuxFileParser (String auxFile, BibDatabase database)
 specifier|public
-specifier|final
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|generateBibDatabase
+name|AuxFileParser
 parameter_list|(
 name|String
 name|auxFile
@@ -271,6 +266,12 @@ name|BibDatabase
 name|database
 parameter_list|)
 block|{
+name|auxDatabase
+operator|=
+operator|new
+name|BibDatabase
+argument_list|()
+expr_stmt|;
 name|masterDatabase
 operator|=
 name|database
@@ -283,9 +284,6 @@ expr_stmt|;
 name|resolveTags
 argument_list|()
 expr_stmt|;
-return|return
-name|unresolvedKeys
-return|;
 block|}
 DECL|method|getGeneratedBibDatabase ()
 specifier|public
@@ -293,27 +291,25 @@ name|BibDatabase
 name|getGeneratedBibDatabase
 parameter_list|()
 block|{
-if|if
-condition|(
-name|auxDatabase
-operator|==
-literal|null
-condition|)
-block|{
-name|auxDatabase
-operator|=
-operator|new
-name|BibDatabase
-argument_list|()
-expr_stmt|;
-block|}
 return|return
 name|auxDatabase
 return|;
 block|}
+DECL|method|getUnresolvedKeys ()
+specifier|public
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getUnresolvedKeys
+parameter_list|()
+block|{
+return|return
+name|unresolvedKeys
+return|;
+block|}
 DECL|method|getFoundKeysInAux ()
 specifier|public
-specifier|final
 name|int
 name|getFoundKeysInAux
 parameter_list|()
@@ -327,7 +323,6 @@ return|;
 block|}
 DECL|method|getResolvedKeysCount ()
 specifier|public
-specifier|final
 name|int
 name|getResolvedKeysCount
 parameter_list|()
@@ -338,14 +333,13 @@ operator|.
 name|getEntryCount
 argument_list|()
 operator|-
-name|crossreferencedEntriesCount
+name|crossRefEntriesCount
 return|;
 block|}
-DECL|method|getNotResolvedKeysCount ()
+DECL|method|getUnresolvedKeysCount ()
 specifier|public
-specifier|final
 name|int
-name|getNotResolvedKeysCount
+name|getUnresolvedKeysCount
 parameter_list|()
 block|{
 return|return
@@ -356,52 +350,17 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Query the number of extra entries pulled in due to crossrefs from other entries.      *      * @return The number of additional entries pulled in due to crossref      */
-DECL|method|getCrossreferencedEntriesCount ()
+DECL|method|getCrossRefEntriesCount ()
 specifier|public
-specifier|final
 name|int
-name|getCrossreferencedEntriesCount
+name|getCrossRefEntriesCount
 parameter_list|()
 block|{
 return|return
-name|crossreferencedEntriesCount
+name|crossRefEntriesCount
 return|;
 block|}
-comment|/** reset all used data structures */
-DECL|method|clear ()
-specifier|public
-specifier|final
-name|void
-name|clear
-parameter_list|()
-block|{
-name|uniqueKeys
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|unresolvedKeys
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|crossreferencedEntriesCount
-operator|=
-literal|0
-expr_stmt|;
-name|nestedAuxCounter
-operator|=
-literal|0
-expr_stmt|;
-name|masterDatabase
-operator|=
-literal|null
-expr_stmt|;
-name|auxDatabase
-operator|=
-literal|null
-expr_stmt|;
-block|}
+comment|/**      * Prints parsing statistics      *      * @param includeMissingEntries      * @return      */
 DECL|method|getInformation (boolean includeMissingEntries)
 specifier|public
 name|String
@@ -418,7 +377,6 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-comment|// print statistics
 name|result
 operator|.
 name|append
@@ -518,7 +476,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|getNotResolvedKeysCount
+name|getUnresolvedKeysCount
 argument_list|()
 argument_list|)
 operator|.
@@ -544,7 +502,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|getCrossreferencedEntriesCount
+name|getCrossRefEntriesCount
 argument_list|()
 argument_list|)
 operator|.
@@ -558,7 +516,7 @@ condition|(
 name|includeMissingEntries
 operator|&&
 operator|(
-name|getNotResolvedKeysCount
+name|getUnresolvedKeysCount
 argument_list|()
 operator|>
 literal|0
@@ -589,7 +547,7 @@ block|}
 block|}
 if|if
 condition|(
-name|nestedAuxCounter
+name|nestedAuxCount
 operator|>
 literal|0
 condition|)
@@ -613,7 +571,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|nestedAuxCounter
+name|nestedAuxCount
 argument_list|)
 expr_stmt|;
 block|}
@@ -624,7 +582,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * parseAuxFile read the Aux file and fill up some intern data structures. Nested aux files (latex \\include)      * supported!      *      *     // found at comp.text.tex      //> Can anyone tell be the information held within a .aux file?  Is there a      //> specific format to this file?      //      // I don't think there is a particular format. Every package, class      // or document can write to the aux file. The aux file consists of LaTeX macros      // and is read at the \begin{document} and again at the \end{document}.      //      // It usually contains information about existing labels      //  \\newlabel{sec:Intro}{{1}{1}}      // and citations      //  \citation{hiri:conv:1993}      // and macros to write information to other files (like toc, lof or lot files)      //  \@writefile{toc}{\contentsline {section}{\numberline      // {1}Intro}{1}}      // but as I said, there can be a lot more       // aux file :      //      // \\citation{x}  x = used reference of bibtex library entry      //      // \\@input{x}  x = nested aux file      //      // the \\bibdata{x} directive contains information about the      // bibtex library file -> x = name of bib file      //      // \\bibcite{x}{y}      //   x is a label for an item and y is the index in bibliography      * @param filename String : Path to LatexAuxFile      * @return boolean, true = no error occurs      */
+comment|/*      * parseAuxFile read the Aux file and fill up some intern data structures. Nested aux files (latex \\include)      * supported!      *      *     // found at comp.text.tex      //> Can anyone tell be the information held within a .aux file?  Is there a      //> specific format to this file?      //      // I don't think there is a particular format. Every package, class      // or document can write to the aux file. The aux file consists of LaTeX macros      // and is read at the \begin{document} and again at the \end{document}.      //      // It usually contains information about existing labels      //  \\newlabel{sec:Intro}{{1}{1}}      // and citations      //  \citation{hiri:conv:1993}      // and macros to write information to other files (like toc, lof or lot files)      //  \@writefile{toc}{\contentsline {section}{\numberline      // {1}Intro}{1}}      // but as I said, there can be a lot more       // aux file :      //      // \\citation{x}  x = used reference of bibtex library entry      //      // \\@input{x}  x = nested aux file      //      // the \\bibdata{x} directive contains information about the      // bibtex library file -> x = name of bib file      //      // \\bibcite{x}{y}      //   x is a label for an item and y is the index in bibliography      * @param filename String : Path to LatexAuxFile      * @return boolean, true = no error occurs      */
 DECL|method|parseAuxFile (String filename)
 specifier|private
 name|boolean
@@ -700,7 +658,7 @@ operator|.
 name|separator
 expr_stmt|;
 block|}
-name|nestedAuxCounter
+name|nestedAuxCount
 operator|=
 operator|-
 literal|1
@@ -986,7 +944,7 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-name|nestedAuxCounter
+name|nestedAuxCount
 operator|++
 expr_stmt|;
 block|}
@@ -1031,7 +989,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * resolveTags Try to find an equivalent bibtex entry into reference database for all keys (found in aux file).      * This method will fill up some intern data structures.      */
+comment|/*      * Try to find an equivalent BibTeX entry inside the reference database for all keys inside the aux file.      */
 DECL|method|resolveTags ()
 specifier|private
 name|void
@@ -1088,8 +1046,6 @@ else|else
 block|{
 name|insertEntry
 argument_list|(
-name|auxDatabase
-argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
@@ -1129,7 +1085,6 @@ argument_list|(
 name|crossref
 argument_list|)
 decl_stmt|;
-comment|/**                          * [ 1717849 ] Patch for aux import by Kai Eckert                          */
 if|if
 condition|(
 name|refEntry
@@ -1149,12 +1104,10 @@ else|else
 block|{
 name|insertEntry
 argument_list|(
-name|auxDatabase
-argument_list|,
 name|refEntry
 argument_list|)
 expr_stmt|;
-name|crossreferencedEntriesCount
+name|crossRefEntriesCount
 operator|++
 expr_stmt|;
 block|}
@@ -1234,15 +1187,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Insert a clone of the given entry. The clone is given a new unique ID.      *      * @param database The database to insert into.      * @param entry The entry to insert a copy of.      */
-DECL|method|insertEntry (BibDatabase database, BibEntry entry)
+comment|/*      * Insert a clone of the given entry.      * The clone is given a new unique ID.      */
+DECL|method|insertEntry (BibEntry entry)
 specifier|private
 name|void
 name|insertEntry
 parameter_list|(
-name|BibDatabase
-name|database
-parameter_list|,
 name|BibEntry
 name|entry
 parameter_list|)
@@ -1268,7 +1218,7 @@ name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|database
+name|auxDatabase
 operator|.
 name|insertEntry
 argument_list|(
