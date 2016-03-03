@@ -2071,13 +2071,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetAuthor ()
+argument_list|(
+name|expected
+operator|=
+name|Exception
+operator|.
+name|class
+argument_list|)
+DECL|method|testGetEmptyAuthor ()
 specifier|public
 name|void
-name|testGetAuthor
+name|testGetEmptyAuthor
 parameter_list|()
-block|{
-try|try
 block|{
 name|AuthorList
 operator|.
@@ -2097,14 +2102,14 @@ name|fail
 argument_list|()
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ignored
-parameter_list|)
+annotation|@
+name|Test
+DECL|method|testGetAuthor ()
+specifier|public
+name|void
+name|testGetAuthor
+parameter_list|()
 block|{
-comment|// Ignored
-block|}
 name|AuthorList
 operator|.
 name|Author
