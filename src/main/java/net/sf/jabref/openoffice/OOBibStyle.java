@@ -1725,6 +1725,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 default|default:
+break|break;
 block|}
 block|}
 comment|// Set validity boolean based on whether we found anything interesting
@@ -4288,25 +4289,17 @@ name|content
 argument_list|)
 condition|)
 block|{
-name|content
-operator|=
+return|return
+literal|"{"
+operator|+
 name|fieldFormatter
 operator|.
 name|format
 argument_list|(
 name|content
 argument_list|)
-expr_stmt|;
-name|content
-operator|=
-literal|"{"
-operator|+
-name|content
 operator|+
 literal|"}"
-expr_stmt|;
-return|return
-name|content
 return|;
 block|}
 return|return

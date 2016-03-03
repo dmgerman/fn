@@ -6167,6 +6167,14 @@ name|PropertyVetoException
 throws|,
 name|WrappedTargetException
 block|{
+name|Map
+argument_list|<
+name|BibEntry
+argument_list|,
+name|BibDatabase
+argument_list|>
+name|correctEntries
+decl_stmt|;
 comment|// If we don't have numbered entries, we need to sort the entries before adding them:
 if|if
 condition|(
@@ -6199,9 +6207,17 @@ argument_list|(
 name|entries
 argument_list|)
 expr_stmt|;
-name|entries
+name|correctEntries
 operator|=
 name|newMap
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// If not, use the received map directly
+name|correctEntries
+operator|=
+name|entries
 expr_stmt|;
 block|}
 name|int
@@ -6221,7 +6237,7 @@ name|BibDatabase
 argument_list|>
 name|entry
 range|:
-name|entries
+name|correctEntries
 operator|.
 name|entrySet
 argument_list|()
@@ -6779,7 +6795,7 @@ return|return
 name|xTextContent
 return|;
 block|}
-DECL|method|insertReferenceMark (String name, String citText, XTextCursor position, boolean withText, OOBibStyle style)
+DECL|method|insertReferenceMark (String name, String citationText, XTextCursor position, boolean withText, OOBibStyle style)
 specifier|private
 name|void
 name|insertReferenceMark
@@ -6788,7 +6804,7 @@ name|String
 name|name
 parameter_list|,
 name|String
-name|citText
+name|citationText
 parameter_list|,
 name|XTextCursor
 name|position
@@ -6812,6 +6828,9 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+name|String
+name|citText
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -6833,10 +6852,17 @@ name|style
 operator|.
 name|insertPageInfo
 argument_list|(
-name|citText
+name|citationText
 argument_list|,
 name|pageInfo
 argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|citText
+operator|=
+name|citationText
 expr_stmt|;
 block|}
 name|Object
@@ -7320,7 +7346,6 @@ name|getBookmarks
 argument_list|()
 decl_stmt|;
 comment|// retrieve bookmark by name
-comment|//System.out.println("Name="+name+" : "+xNamedBookmarks.hasByName(name));
 if|if
 condition|(
 operator|!
