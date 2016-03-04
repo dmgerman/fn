@@ -558,7 +558,7 @@ name|metaData
 operator|=
 name|metaData
 expr_stmt|;
-name|AbstractAction
+name|Action
 name|okAction
 init|=
 operator|new

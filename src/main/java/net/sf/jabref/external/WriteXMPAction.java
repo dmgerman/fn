@@ -617,14 +617,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|f
-lambda|->
 name|files
-operator|.
+operator|::
 name|add
-argument_list|(
-name|f
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Then check the "file" field:
@@ -745,14 +740,9 @@ argument_list|)
 operator|.
 name|ifPresent
 argument_list|(
-name|f
-lambda|->
 name|files
-operator|.
+operator|::
 name|add
-argument_list|(
-name|f
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

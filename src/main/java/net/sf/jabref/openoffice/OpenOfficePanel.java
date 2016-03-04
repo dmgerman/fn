@@ -1642,7 +1642,7 @@ literal|"Ensure that the bibliography is up-to-date"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|AbstractAction
+name|Action
 name|updateAction
 init|=
 operator|new
