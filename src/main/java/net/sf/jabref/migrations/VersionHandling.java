@@ -386,14 +386,14 @@ class|class
 name|Version0_1
 block|{
 comment|/**          * Parses the textual representation obtained from          * GroupTreeNode.toString() and recreates that node and all of its          * children from it.          *          * @throws Exception          *             When a group could not be recreated          */
-DECL|method|fromString (String s, BibDatabase db, int version)
+DECL|method|fromString (String str, BibDatabase db, int version)
 specifier|private
 specifier|static
 name|GroupTreeNode
 name|fromString
 parameter_list|(
 name|String
-name|s
+name|str
 parameter_list|,
 name|BibDatabase
 name|db
@@ -417,6 +417,11 @@ name|i
 decl_stmt|;
 name|String
 name|g
+decl_stmt|;
+name|String
+name|s
+init|=
+name|str
 decl_stmt|;
 while|while
 condition|(
@@ -680,6 +685,8 @@ argument_list|)
 return|;
 block|}
 break|break;
+default|default:
+break|break;
 block|}
 operator|++
 name|i
@@ -689,7 +696,7 @@ return|return
 literal|""
 return|;
 block|}
-comment|/**          * Returns the index of the first occurence of c, skipping quoted          * special characters (escape character: '\\').          *          * @param s          *            The String to search in.          * @param c          *            The character to search          * @return The index of the first unescaped occurence of c in s, or -1          *         if not found.          */
+comment|/**          * Returns the index of the first occurrence of c, skipping quoted          * special characters (escape character: '\\').          *          * @param s          *            The String to search in.          * @param c          *            The character to search          * @return The index of the first unescaped occurrence of c in s, or -1          *         if not found.          */
 DECL|method|indexOfUnquoted (String s, char c)
 specifier|private
 specifier|static
