@@ -1087,6 +1087,63 @@ name|size
 argument_list|()
 return|;
 block|}
+comment|/**      * Copies the preamble of another BibDatabase.      *      * @param database another BibDatabase      */
+DECL|method|copyPreamble (BibDatabase database)
+specifier|public
+name|void
+name|copyPreamble
+parameter_list|(
+name|BibDatabase
+name|database
+parameter_list|)
+block|{
+name|setPreamble
+argument_list|(
+name|database
+operator|.
+name|getPreamble
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Copies all Strings from another BibDatabase.      *      * @param database another BibDatabase      */
+DECL|method|copyStrings (BibDatabase database)
+specifier|public
+name|void
+name|copyStrings
+parameter_list|(
+name|BibDatabase
+name|database
+parameter_list|)
+block|{
+for|for
+control|(
+name|String
+name|key
+range|:
+name|database
+operator|.
+name|getStringKeySet
+argument_list|()
+control|)
+block|{
+name|BibtexString
+name|string
+init|=
+name|database
+operator|.
+name|getString
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+name|addString
+argument_list|(
+name|string
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|/**      * Returns true if a string with the given label already exists.      */
 DECL|method|hasStringLabel (String label)
 specifier|public
