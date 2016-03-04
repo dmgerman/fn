@@ -1241,20 +1241,8 @@ name|item
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|event
-parameter_list|)
-block|{
+lambda|->
 name|manager
 operator|.
 name|show
@@ -1262,9 +1250,6 @@ argument_list|(
 name|getName
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-block|}
 argument_list|)
 expr_stmt|;
 return|return
@@ -1413,6 +1398,15 @@ argument_list|,
 name|JOptionPane
 operator|.
 name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem connecting"
+argument_list|,
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
@@ -1879,11 +1873,20 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"BibEntry not found"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e1
+name|ex
 parameter_list|)
 block|{
 name|LOGGER
@@ -1892,7 +1895,7 @@ name|warn
 argument_list|(
 literal|"Could not update bibliography"
 argument_list|,
-name|e1
+name|ex
 argument_list|)
 expr_stmt|;
 block|}
