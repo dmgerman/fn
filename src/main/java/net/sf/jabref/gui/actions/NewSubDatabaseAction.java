@@ -132,11 +132,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|wizard
+name|gui
 operator|.
 name|auximport
-operator|.
-name|gui
 operator|.
 name|FromAuxDialog
 import|;

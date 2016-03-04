@@ -494,9 +494,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|wizard
-operator|.
-name|auximport
+name|cli
 operator|.
 name|AuxCommandLine
 import|;

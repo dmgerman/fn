@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.wizard.auximport
+DECL|package|net.sf.jabref.cli
 package|package
 name|net
 operator|.
@@ -8,23 +8,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|wizard
-operator|.
-name|auximport
+name|cli
 package|;
 end_package
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
 
 begin_import
 import|import
@@ -63,6 +49,16 @@ operator|.
 name|io
 operator|.
 name|InputStreamReader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
 import|;
 end_import
 
@@ -268,11 +264,15 @@ operator|.
 name|perform
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|newDB
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -293,6 +293,8 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|fail
 argument_list|(
 literal|"Cannot open file"

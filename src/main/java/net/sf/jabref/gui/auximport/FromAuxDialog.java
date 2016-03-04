@@ -28,7 +28,7 @@ comment|//            insert a "short info" section
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.wizard.auximport.gui
+DECL|package|net.sf.jabref.gui.auximport
 package|package
 name|net
 operator|.
@@ -36,11 +36,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|wizard
+name|gui
 operator|.
 name|auximport
-operator|.
-name|gui
 package|;
 end_package
 
@@ -346,9 +344,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|wizard
+name|logic
 operator|.
-name|auximport
+name|auxparser
 operator|.
 name|AuxFileParser
 import|;
