@@ -149,7 +149,7 @@ name|authorMod
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 argument_list|(
 name|author
 argument_list|,

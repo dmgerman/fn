@@ -138,10 +138,8 @@ name|equalsIgnoreCase
 argument_list|(
 name|host
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 name|Integer
 operator|.
 name|parseInt
@@ -151,6 +149,7 @@ argument_list|)
 operator|==
 name|getRequestingPort
 argument_list|()
+operator|)
 condition|)
 block|{
 return|return
@@ -165,7 +164,6 @@ name|toCharArray
 argument_list|()
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 return|return

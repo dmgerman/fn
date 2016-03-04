@@ -476,6 +476,7 @@ block|}
 block|}
 DECL|method|show (String name)
 specifier|public
+specifier|synchronized
 name|void
 name|show
 parameter_list|(
@@ -526,6 +527,7 @@ block|}
 block|}
 DECL|method|hide (String name)
 specifier|public
+specifier|synchronized
 name|void
 name|hide
 parameter_list|(
@@ -1319,6 +1321,7 @@ block|}
 comment|/**      * Update all side pane components to show information from the given      * BasePanel.      *      * @param panel      */
 DECL|method|setActiveBasePanel (BasePanel panel)
 specifier|private
+specifier|synchronized
 name|void
 name|setActiveBasePanel
 parameter_list|(

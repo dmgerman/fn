@@ -37,15 +37,6 @@ name|KeyBindingTable
 extends|extends
 name|JTable
 block|{
-DECL|method|KeyBindingTable ()
-specifier|public
-name|KeyBindingTable
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|isCellEditable (int row, int col)

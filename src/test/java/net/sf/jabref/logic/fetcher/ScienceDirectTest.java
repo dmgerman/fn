@@ -121,19 +121,21 @@ class|class
 name|ScienceDirectTest
 block|{
 DECL|field|finder
+specifier|private
 name|ScienceDirect
 name|finder
 decl_stmt|;
 DECL|field|entry
+specifier|private
 name|BibEntry
 name|entry
 decl_stmt|;
 annotation|@
 name|Before
-DECL|method|setup ()
+DECL|method|setUp ()
 specifier|public
 name|void
-name|setup
+name|setUp
 parameter_list|()
 block|{
 name|finder
@@ -172,6 +174,11 @@ name|findFullText
 argument_list|(
 literal|null
 argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
+name|fail
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

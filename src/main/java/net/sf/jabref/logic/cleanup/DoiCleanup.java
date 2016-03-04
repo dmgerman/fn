@@ -107,12 +107,13 @@ implements|implements
 name|CleanupJob
 block|{
 comment|/**      * Fields to check for DOIs.      */
-DECL|field|fields
+DECL|field|FIELDS
 specifier|private
+specifier|static
 specifier|final
 name|String
 index|[]
-name|fields
+name|FIELDS
 init|=
 block|{
 literal|"note"
@@ -122,11 +123,6 @@ block|,
 literal|"ee"
 block|}
 decl_stmt|;
-DECL|method|DoiCleanup ()
-specifier|public
-name|DoiCleanup
-parameter_list|()
-block|{      }
 annotation|@
 name|Override
 DECL|method|cleanup (BibEntry entry)
@@ -254,7 +250,7 @@ control|(
 name|String
 name|field
 range|:
-name|fields
+name|FIELDS
 control|)
 block|{
 name|DOI
@@ -296,7 +292,7 @@ control|(
 name|String
 name|field
 range|:
-name|fields
+name|FIELDS
 control|)
 block|{
 name|Optional

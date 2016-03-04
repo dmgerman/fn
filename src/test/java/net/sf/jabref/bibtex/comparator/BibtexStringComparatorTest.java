@@ -75,6 +75,8 @@ class|class
 name|BibtexStringComparatorTest
 block|{
 DECL|field|bsc1
+specifier|private
+specifier|final
 name|BibtexStringComparator
 name|bsc1
 init|=
@@ -85,6 +87,8 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|bsc2
+specifier|private
+specifier|final
 name|BibtexStringComparator
 name|bsc2
 init|=

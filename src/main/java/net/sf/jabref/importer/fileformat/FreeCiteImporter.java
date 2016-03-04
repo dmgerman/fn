@@ -481,7 +481,15 @@ name|UnsupportedEncodingException
 name|e
 parameter_list|)
 block|{
-comment|// e.printStackTrace();
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Unsupported encoding"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 comment|// Send the request
 name|URL

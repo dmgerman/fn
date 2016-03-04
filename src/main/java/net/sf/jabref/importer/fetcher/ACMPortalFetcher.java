@@ -66,20 +66,6 @@ name|jabref
 operator|.
 name|importer
 operator|.
-name|HTMLConverter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|importer
-operator|.
 name|ImportInspector
 import|;
 end_import
@@ -111,6 +97,24 @@ operator|.
 name|fileformat
 operator|.
 name|BibtexParser
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|formatter
+operator|.
+name|bibtexfields
+operator|.
+name|HTMLToLatexFormatter
 import|;
 end_import
 
@@ -324,7 +328,7 @@ name|nio
 operator|.
 name|charset
 operator|.
-name|Charset
+name|StandardCharsets
 import|;
 end_import
 
@@ -365,6 +369,16 @@ operator|.
 name|util
 operator|.
 name|NoSuchElementException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Optional
 import|;
 end_import
 
@@ -419,11 +433,11 @@ decl_stmt|;
 DECL|field|htmlConverter
 specifier|private
 specifier|final
-name|HTMLConverter
+name|HTMLToLatexFormatter
 name|htmlConverter
 init|=
 operator|new
-name|HTMLConverter
+name|HTMLToLatexFormatter
 argument_list|()
 decl_stmt|;
 DECL|field|caseKeeper
@@ -514,6 +528,60 @@ name|String
 name|ABSTRACT_URL
 init|=
 literal|"tab_abstract.cfm?id="
+decl_stmt|;
+DECL|field|NEXT_ENTRY_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|NEXT_ENTRY_PATTERN
+init|=
+literal|"<div class=\"numbering\">"
+decl_stmt|;
+DECL|field|AUTHOR_MARKER
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AUTHOR_MARKER
+init|=
+literal|"<div class=\"authors\">"
+decl_stmt|;
+DECL|field|SOURCE_MARKER
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|SOURCE_MARKER
+init|=
+literal|"<div class=\"source\">"
+decl_stmt|;
+DECL|field|END_ENTRY_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|END_ENTRY_PATTERN
+init|=
+literal|"<br clear=\"all\" />"
+decl_stmt|;
+DECL|field|RESULTS_FOUND_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|RESULTS_FOUND_PATTERN
+init|=
+literal|"<div id=\"resfound\">"
+decl_stmt|;
+DECL|field|PAGE_RANGE_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|PAGE_RANGE_PATTERN
+init|=
+literal|"<div class=\"pagerange\">"
 decl_stmt|;
 DECL|field|acmButton
 specifier|private
@@ -880,11 +948,6 @@ operator|.
 name|downloadToString
 argument_list|()
 decl_stmt|;
-name|String
-name|resultsFound
-init|=
-literal|"<div id=\"resfound\">"
-decl_stmt|;
 name|int
 name|hits
 init|=
@@ -892,7 +955,7 @@ name|getNumberOfHits
 argument_list|(
 name|page
 argument_list|,
-name|resultsFound
+name|RESULTS_FOUND_PATTERN
 argument_list|,
 name|ACMPortalFetcher
 operator|.
@@ -906,7 +969,7 @@ name|page
 operator|.
 name|indexOf
 argument_list|(
-name|resultsFound
+name|RESULTS_FOUND_PATTERN
 argument_list|)
 decl_stmt|;
 if|if
@@ -924,7 +987,7 @@ name|substring
 argument_list|(
 name|index
 operator|+
-name|resultsFound
+name|RESULTS_FOUND_PATTERN
 operator|.
 name|length
 argument_list|()
@@ -1019,7 +1082,7 @@ name|getNumberOfHits
 argument_list|(
 name|page
 argument_list|,
-literal|"<div class=\"pagerange\">"
+name|PAGE_RANGE_PATTERN
 argument_list|,
 name|ACMPortalFetcher
 operator|.
@@ -1125,6 +1188,15 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+name|LOGGER
+operator|.
+name|warn
+argument_list|(
+literal|"Problem with ACM connection"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1212,22 +1284,14 @@ condition|)
 block|{
 break|break;
 block|}
-name|boolean
-name|sel
-init|=
+if|if
+condition|(
 name|selentry
 operator|.
 name|getValue
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|sel
 condition|)
 block|{
-name|BibEntry
-name|entry
-init|=
 name|downloadEntryBibTeX
 argument_list|(
 name|selentry
@@ -1237,13 +1301,11 @@ argument_list|()
 argument_list|,
 name|fetchAbstract
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
+operator|.
+name|ifPresent
+argument_list|(
 name|entry
-operator|!=
-literal|null
-condition|)
+lambda|->
 block|{
 comment|// Convert from HTML and optionally add curly brackets around key words to keep the case
 name|entry
@@ -1356,7 +1418,6 @@ name|ifPresent
 argument_list|(
 name|abstr
 lambda|->
-block|{
 name|entry
 operator|.
 name|setField
@@ -1368,8 +1429,6 @@ argument_list|(
 name|abstr
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
 argument_list|)
 expr_stmt|;
 name|inspector
@@ -1380,6 +1439,8 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -1631,11 +1692,6 @@ argument_list|>
 name|entries
 parameter_list|)
 block|{
-name|String
-name|toFind
-init|=
-literal|"<div class=\"numbering\">"
-decl_stmt|;
 name|int
 name|index
 init|=
@@ -1643,7 +1699,7 @@ name|allText
 operator|.
 name|indexOf
 argument_list|(
-name|toFind
+name|NEXT_ENTRY_PATTERN
 argument_list|,
 name|piv
 argument_list|)
@@ -1655,7 +1711,7 @@ name|allText
 operator|.
 name|indexOf
 argument_list|(
-literal|"<br clear=\"all\" />"
+name|END_ENTRY_PATTERN
 argument_list|,
 name|index
 argument_list|)
@@ -1735,11 +1791,6 @@ name|StringBuilder
 argument_list|()
 decl_stmt|;
 comment|// Find authors:
-name|String
-name|authMarker
-init|=
-literal|"<div class=\"authors\">"
-decl_stmt|;
 name|int
 name|authStart
 init|=
@@ -1747,7 +1798,7 @@ name|text
 operator|.
 name|indexOf
 argument_list|(
-name|authMarker
+name|AUTHOR_MARKER
 argument_list|)
 decl_stmt|;
 if|if
@@ -1768,7 +1819,7 @@ literal|"</div>"
 argument_list|,
 name|authStart
 operator|+
-name|authMarker
+name|AUTHOR_MARKER
 operator|.
 name|length
 argument_list|()
@@ -1851,11 +1902,6 @@ literal|"</p>"
 argument_list|)
 expr_stmt|;
 block|}
-name|String
-name|sourceMarker
-init|=
-literal|"<div class=\"source\">"
-decl_stmt|;
 name|int
 name|sourceStart
 init|=
@@ -1863,7 +1909,7 @@ name|text
 operator|.
 name|indexOf
 argument_list|(
-name|sourceMarker
+name|SOURCE_MARKER
 argument_list|)
 decl_stmt|;
 if|if
@@ -1884,7 +1930,7 @@ literal|"</div>"
 argument_list|,
 name|sourceStart
 operator|+
-name|sourceMarker
+name|SOURCE_MARKER
 operator|.
 name|length
 argument_list|()
@@ -2034,7 +2080,10 @@ block|}
 DECL|method|downloadEntryBibTeX (String id, boolean downloadAbstract)
 specifier|private
 specifier|static
+name|Optional
+argument_list|<
 name|BibEntry
+argument_list|>
 name|downloadEntryBibTeX
 parameter_list|(
 name|String
@@ -2109,12 +2158,9 @@ operator|.
 name|getInputStream
 argument_list|()
 argument_list|,
-name|Charset
+name|StandardCharsets
 operator|.
-name|forName
-argument_list|(
-literal|"UTF-8"
-argument_list|)
+name|UTF_8
 argument_list|)
 argument_list|)
 init|)
@@ -2166,7 +2212,10 @@ argument_list|()
 condition|)
 block|{
 return|return
-literal|null
+name|Optional
+operator|.
+name|empty
+argument_list|()
 return|;
 block|}
 name|BibEntry
@@ -2279,7 +2328,12 @@ expr_stmt|;
 comment|//wait between requests or you will be blocked by ACM
 block|}
 return|return
+name|Optional
+operator|.
+name|of
+argument_list|(
 name|entry
+argument_list|)
 return|;
 block|}
 catch|catch
@@ -2307,9 +2361,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
 catch|catch
 parameter_list|(
@@ -2326,9 +2377,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
 catch|catch
 parameter_list|(
@@ -2345,9 +2393,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
 catch|catch
 parameter_list|(
@@ -2355,10 +2400,14 @@ name|InterruptedException
 name|ignored
 parameter_list|)
 block|{
-return|return
-literal|null
-return|;
+comment|// Ignored
 block|}
+return|return
+name|Optional
+operator|.
+name|empty
+argument_list|()
+return|;
 block|}
 comment|/**      * This method must convert HTML style char sequences to normal characters.      * @param text The text to handle.      * @return The converted text.      */
 DECL|method|convertHTMLChars (String text)
@@ -2492,8 +2541,6 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IllegalStateException
-decl||
 name|NumberFormatException
 name|ex
 parameter_list|)

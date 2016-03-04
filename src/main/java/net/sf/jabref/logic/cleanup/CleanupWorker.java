@@ -106,6 +106,22 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|logic
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviationRepository
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|model
 operator|.
 name|database
@@ -157,13 +173,19 @@ specifier|final
 name|BibDatabase
 name|database
 decl_stmt|;
+DECL|field|repository
+specifier|private
+specifier|final
+name|JournalAbbreviationRepository
+name|repository
+decl_stmt|;
 DECL|field|unsuccessfulRenames
 specifier|private
 name|int
 name|unsuccessfulRenames
 decl_stmt|;
+comment|/**      * This constructor is only used by CleanupWorkerTest. Therefore, the visibility is restricted.      */
 DECL|method|CleanupWorker (CleanupPreset preset)
-specifier|public
 name|CleanupWorker
 parameter_list|(
 name|CleanupPreset
@@ -181,8 +203,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * This constructor is only used by CleanupWorkerTest. Therefore, the visibility is restricted.      */
 DECL|method|CleanupWorker (CleanupPreset preset, List<String> paths)
-specifier|public
 name|CleanupWorker
 parameter_list|(
 name|CleanupPreset
@@ -202,10 +224,12 @@ argument_list|,
 name|paths
 argument_list|,
 literal|null
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|CleanupWorker (CleanupPreset preset, List<String> paths, BibDatabase database)
+DECL|method|CleanupWorker (CleanupPreset preset, List<String> paths, BibDatabase database, JournalAbbreviationRepository repository)
 specifier|public
 name|CleanupWorker
 parameter_list|(
@@ -220,6 +244,9 @@ name|paths
 parameter_list|,
 name|BibDatabase
 name|database
+parameter_list|,
+name|JournalAbbreviationRepository
+name|repository
 parameter_list|)
 block|{
 name|this
@@ -249,6 +276,12 @@ operator|.
 name|database
 operator|=
 name|database
+expr_stmt|;
+name|this
+operator|.
+name|repository
+operator|=
+name|repository
 expr_stmt|;
 block|}
 DECL|method|getUnsuccessfulRenames ()
@@ -526,6 +559,8 @@ name|isRenamePdfOnlyRelativePaths
 argument_list|()
 argument_list|,
 name|database
+argument_list|,
+name|repository
 argument_list|)
 decl_stmt|;
 name|jobs

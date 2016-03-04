@@ -38,11 +38,27 @@ name|jabref
 operator|.
 name|logic
 operator|.
+name|layout
+operator|.
+name|LayoutFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
 name|util
 operator|.
 name|strings
 operator|.
-name|LatexToUnicodeCharMap
+name|HTMLUnicodeConversionMaps
 import|;
 end_import
 
@@ -61,22 +77,6 @@ operator|.
 name|strings
 operator|.
 name|StringUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|exporter
-operator|.
-name|layout
-operator|.
-name|LayoutFormatter
 import|;
 end_import
 
@@ -114,9 +114,9 @@ name|String
 argument_list|>
 name|CHARS
 init|=
-operator|new
-name|LatexToUnicodeCharMap
-argument_list|()
+name|HTMLUnicodeConversionMaps
+operator|.
+name|LATEX_UNICODE_CONVERSION_MAP
 decl_stmt|;
 annotation|@
 name|Override
@@ -132,8 +132,9 @@ block|{
 name|int
 name|i
 decl_stmt|;
-name|field
-operator|=
+name|String
+name|finalResult
+init|=
 name|field
 operator|.
 name|replaceAll
@@ -142,7 +143,24 @@ literal|"&|\\\\&"
 argument_list|,
 literal|"&"
 argument_list|)
-expr_stmt|;
+comment|// Replace& and \& with&
+operator|.
+name|replace
+argument_list|(
+literal|"\\$"
+argument_list|,
+literal|"&dollar;"
+argument_list|)
+comment|// Replace \$ with&dollar;
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\$([^\\$]*)\\$"
+argument_list|,
+literal|"\\{$1\\}"
+argument_list|)
+decl_stmt|;
+comment|// Replace $...$ with {...} to simplify conversion
 name|StringBuilder
 name|sb
 init|=
@@ -176,7 +194,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|field
+name|finalResult
 operator|.
 name|length
 argument_list|()
@@ -187,7 +205,7 @@ control|)
 block|{
 name|c
 operator|=
-name|field
+name|finalResult
 operator|.
 name|charAt
 argument_list|(
@@ -239,7 +257,7 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|Object
+name|String
 name|result
 init|=
 name|OOPreFormatter
@@ -272,9 +290,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -316,7 +331,7 @@ operator|)
 operator|)
 condition|)
 block|{
-comment|// Swallow the brace.
+comment|//Swallow braces, necessary for replacing encoded characters
 block|}
 elseif|else
 if|if
@@ -409,7 +424,7 @@ condition|(
 name|i
 operator|>=
 operator|(
-name|field
+name|finalResult
 operator|.
 name|length
 argument_list|()
@@ -435,14 +450,13 @@ operator|++
 expr_stmt|;
 name|c
 operator|=
-name|field
+name|finalResult
 operator|.
 name|charAt
 argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
-comment|// System.out.println("next: "+(char)c);
 name|String
 name|combody
 decl_stmt|;
@@ -460,7 +474,7 @@ name|StringUtil
 operator|.
 name|getPart
 argument_list|(
-name|field
+name|finalResult
 argument_list|,
 name|i
 argument_list|,
@@ -483,7 +497,7 @@ else|else
 block|{
 name|combody
 operator|=
-name|field
+name|finalResult
 operator|.
 name|substring
 argument_list|(
@@ -494,9 +508,8 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// System.out.println("... "+combody);
 block|}
-name|Object
+name|String
 name|result
 init|=
 name|OOPreFormatter
@@ -521,9 +534,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -548,7 +558,7 @@ operator|+
 literal|1
 operator|)
 operator|==
-name|field
+name|finalResult
 operator|.
 name|length
 argument_list|()
@@ -649,9 +659,6 @@ literal|'}'
 operator|)
 condition|)
 block|{
-comment|// First test if we are already at the end of the string.
-comment|// if (i>= field.length()-1)
-comment|// break testContent;
 name|String
 name|command
 init|=
@@ -660,31 +667,24 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-comment|// Then test if we are dealing with a italics or bold
+comment|// Test if we are dealing with a formatting
 comment|// command.
 comment|// If so, handle.
+name|String
+name|tag
+init|=
+name|getHTMLTag
+argument_list|(
+name|command
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
-literal|"em"
+operator|!
+name|tag
 operator|.
-name|equals
-argument_list|(
-name|command
-argument_list|)
-operator|||
-literal|"emph"
-operator|.
-name|equals
-argument_list|(
-name|command
-argument_list|)
-operator|||
-literal|"textit"
-operator|.
-name|equals
-argument_list|(
-name|command
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|String
@@ -694,7 +694,7 @@ name|StringUtil
 operator|.
 name|getPart
 argument_list|(
-name|field
+name|finalResult
 argument_list|,
 name|i
 argument_list|,
@@ -712,7 +712,17 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"<em>"
+literal|'<'
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|tag
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'>'
 argument_list|)
 operator|.
 name|append
@@ -722,57 +732,17 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"</em>"
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"textbf"
-operator|.
-name|equals
-argument_list|(
-name|command
-argument_list|)
-condition|)
-block|{
-name|String
-name|part
-init|=
-name|StringUtil
-operator|.
-name|getPart
-argument_list|(
-name|field
-argument_list|,
-name|i
-argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|i
-operator|+=
-name|part
-operator|.
-name|length
-argument_list|()
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"<b>"
+literal|"</"
 argument_list|)
 operator|.
 name|append
 argument_list|(
-name|part
+name|tag
 argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"</b>"
+literal|'>'
 argument_list|)
 expr_stmt|;
 block|}
@@ -791,7 +761,7 @@ name|StringUtil
 operator|.
 name|getPart
 argument_list|(
-name|field
+name|finalResult
 argument_list|,
 name|i
 argument_list|,
@@ -810,7 +780,7 @@ operator|=
 name|part
 expr_stmt|;
 comment|// handle common case of general latex command
-name|Object
+name|String
 name|result
 init|=
 name|OOPreFormatter
@@ -848,9 +818,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -867,7 +834,7 @@ block|{
 comment|// This end brace terminates a command. This can be the case in
 comment|// constructs like {\aa}. The correct behaviour should be to
 comment|// substitute the evaluated command and swallow the brace:
-name|Object
+name|String
 name|result
 init|=
 name|OOPreFormatter
@@ -901,9 +868,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -911,7 +875,7 @@ block|}
 block|}
 else|else
 block|{
-name|Object
+name|String
 name|result
 init|=
 name|OOPreFormatter
@@ -944,9 +908,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -980,6 +941,126 @@ name|sb
 operator|.
 name|toString
 argument_list|()
+operator|.
+name|replace
+argument_list|(
+literal|"&dollar;"
+argument_list|,
+literal|"$"
+argument_list|)
+return|;
+comment|// Replace&dollar; with $
+block|}
+DECL|method|getHTMLTag (String latexCommand)
+specifier|private
+name|String
+name|getHTMLTag
+parameter_list|(
+name|String
+name|latexCommand
+parameter_list|)
+block|{
+name|String
+name|result
+init|=
+literal|""
+decl_stmt|;
+switch|switch
+condition|(
+name|latexCommand
+condition|)
+block|{
+comment|// Italic
+case|case
+literal|"textit"
+case|:
+case|case
+literal|"it"
+case|:
+case|case
+literal|"emph"
+case|:
+comment|// Should really separate between emphasized and italic but since in later stages both are converted to italic...
+case|case
+literal|"em"
+case|:
+name|result
+operator|=
+literal|"i"
+expr_stmt|;
+break|break;
+comment|// Bold font
+case|case
+literal|"textbf"
+case|:
+case|case
+literal|"bf"
+case|:
+name|result
+operator|=
+literal|"b"
+expr_stmt|;
+break|break;
+comment|// Small capitals
+case|case
+literal|"textsc"
+case|:
+name|result
+operator|=
+literal|"smallcaps"
+expr_stmt|;
+comment|// Not a proper HTML tag, but used here for convenience
+break|break;
+comment|// Underline
+case|case
+literal|"underline"
+case|:
+name|result
+operator|=
+literal|"u"
+expr_stmt|;
+break|break;
+comment|// Strikeout, sout is the "standard" command, although it is actually based on the package ulem
+case|case
+literal|"sout"
+case|:
+name|result
+operator|=
+literal|"s"
+expr_stmt|;
+break|break;
+comment|// Monospace font
+case|case
+literal|"texttt"
+case|:
+name|result
+operator|=
+literal|"tt"
+expr_stmt|;
+break|break;
+comment|// Superscript
+case|case
+literal|"textsuperscript"
+case|:
+name|result
+operator|=
+literal|"sup"
+expr_stmt|;
+break|break;
+comment|// Subscript
+case|case
+literal|"textsubscript"
+case|:
+name|result
+operator|=
+literal|"sub"
+expr_stmt|;
+break|break;
+default|default:
+break|break;
+block|}
+return|return
+name|result
 return|;
 block|}
 block|}

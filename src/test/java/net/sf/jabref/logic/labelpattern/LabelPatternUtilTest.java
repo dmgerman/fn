@@ -22,7 +22,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
+name|*
 import|;
 end_import
 
@@ -104,22 +104,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|labelpattern
-operator|.
-name|LabelPatternUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -141,20 +125,6 @@ operator|.
 name|entry
 operator|.
 name|BibEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
 import|;
 end_import
 
@@ -385,7 +355,7 @@ name|assertEquals
 argument_list|(
 literal|"Holland"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -428,7 +398,7 @@ name|assertEquals
 argument_list|(
 literal|"HerlandHaugeHelgeland"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -466,7 +436,7 @@ name|assertEquals
 argument_list|(
 literal|"Popovicova"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -505,7 +475,7 @@ name|assertEquals
 argument_list|(
 literal|"Koen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -533,7 +503,7 @@ name|assertEquals
 argument_list|(
 literal|"Aoen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -561,7 +531,7 @@ name|assertEquals
 argument_list|(
 literal|"Eoen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -589,7 +559,7 @@ name|assertEquals
 argument_list|(
 literal|"Ioen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -617,7 +587,7 @@ name|assertEquals
 argument_list|(
 literal|"Loen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -645,7 +615,7 @@ name|assertEquals
 argument_list|(
 literal|"Noen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -673,7 +643,7 @@ name|assertEquals
 argument_list|(
 literal|"Ooen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -701,7 +671,7 @@ name|assertEquals
 argument_list|(
 literal|"Roen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -729,7 +699,7 @@ name|assertEquals
 argument_list|(
 literal|"Soen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -757,7 +727,7 @@ name|assertEquals
 argument_list|(
 literal|"Uoen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -785,7 +755,7 @@ name|assertEquals
 argument_list|(
 literal|"Yoen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -813,7 +783,7 @@ name|assertEquals
 argument_list|(
 literal|"Zoen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -852,7 +822,7 @@ name|assertEquals
 argument_list|(
 literal|"Aoen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -880,7 +850,7 @@ name|assertEquals
 argument_list|(
 literal|"Eoen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -908,7 +878,7 @@ name|assertEquals
 argument_list|(
 literal|"Ioen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -936,7 +906,7 @@ name|assertEquals
 argument_list|(
 literal|"Ooen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -964,7 +934,7 @@ name|assertEquals
 argument_list|(
 literal|"Uoen"
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -980,7 +950,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests if checkLegalKey replaces Non-ASCII chars.      * There are quite a few chars that should be replaced. Perhaps there is a better method than the current.      *      * @see Util#checkLegalKey(String)      */
+comment|/**      * Tests if checkLegalKey replaces Non-ASCII chars.      * There are quite a few chars that should be replaced. Perhaps there is a better method than the current.      *      * @see LabelPatternUtil#checkLegalKey(String)      */
 annotation|@
 name|Test
 DECL|method|testCheckLegalKey ()
@@ -1008,7 +978,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1028,7 +998,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1048,7 +1018,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1068,7 +1038,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1088,7 +1058,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1109,7 +1079,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1129,7 +1099,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1149,7 +1119,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1169,7 +1139,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1189,7 +1159,7 @@ name|assertEquals
 argument_list|(
 name|expectedResult
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1235,7 +1205,7 @@ name|assertEquals
 argument_list|(
 name|expectedResults
 argument_list|,
-name|Util
+name|LabelPatternUtil
 operator|.
 name|checkLegalKey
 argument_list|(
@@ -1710,10 +1680,10 @@ block|}
 comment|/**      * Test the [authN_M] pattern      */
 annotation|@
 name|Test
-DECL|method|authN_M ()
+DECL|method|authNM ()
 specifier|public
 name|void
-name|authN_M
+name|authNM
 parameter_list|()
 block|{
 name|assertEquals
@@ -1722,7 +1692,7 @@ literal|"N"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
@@ -1738,7 +1708,7 @@ literal|"Max"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|,
@@ -1754,7 +1724,7 @@ literal|"New"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|,
@@ -1770,7 +1740,7 @@ literal|"Bo"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|,
@@ -1786,7 +1756,7 @@ literal|"Bohr"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_5
 argument_list|,
@@ -1802,7 +1772,7 @@ literal|"Aal"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_1
 argument_list|,
@@ -1818,7 +1788,7 @@ literal|"Less"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_FULL_LASTNAME_FULL_WITH_VAN_COUNT_2
 argument_list|,
@@ -1834,7 +1804,7 @@ literal|""
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 literal|""
 argument_list|,
@@ -1854,15 +1824,15 @@ name|NullPointerException
 operator|.
 name|class
 argument_list|)
-DECL|method|authN_MThrowsNPE ()
+DECL|method|authNMThrowsNPE ()
 specifier|public
 name|void
-name|authN_MThrowsNPE
+name|authNMThrowsNPE
 parameter_list|()
 block|{
 name|LabelPatternUtil
 operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 literal|null
 argument_list|,
@@ -2401,7 +2371,7 @@ literal|"Newton"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
@@ -2415,7 +2385,7 @@ literal|"NewtonEtAl"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|,
@@ -2429,7 +2399,7 @@ literal|"NewtonEtAl"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|,
@@ -2443,7 +2413,7 @@ literal|"NewtonEtAl"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|,
@@ -2467,7 +2437,7 @@ literal|"Newton"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_1
 argument_list|,
@@ -2481,7 +2451,7 @@ literal|"NewtonMaxwell"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_2
 argument_list|,
@@ -2495,7 +2465,7 @@ literal|"NewtonMaxwellEinstein"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_3
 argument_list|,
@@ -2509,7 +2479,7 @@ literal|"NewtonMaxwellEinsteinEtAl"
 argument_list|,
 name|LabelPatternUtil
 operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|AUTHOR_STRING_FIRSTNAME_INITIAL_LASTNAME_FULL_COUNT_4
 argument_list|,
@@ -2760,7 +2730,6 @@ name|veryShortTitle
 parameter_list|()
 block|{
 comment|// veryShortTitle is getTitleWords with "1" as count
-specifier|final
 name|int
 name|count
 init|=
@@ -2889,7 +2858,6 @@ name|shortTitle
 parameter_list|()
 block|{
 comment|// veryShortTitle is getTitleWords with "3" as count
-specifier|final
 name|int
 name|count
 init|=
@@ -3010,10 +2978,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|keywordN_keywordsSeparatedBySpace ()
+DECL|method|keywordNKeywordsSeparatedBySpace ()
 specifier|public
 name|void
-name|keywordN_keywordsSeparatedBySpace
+name|keywordNKeywordsSeparatedBySpace
 parameter_list|()
 block|{
 name|BibEntry
@@ -3092,10 +3060,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|keywordsN_keywordsSeparatedBySpace ()
+DECL|method|keywordsNKeywordsSeparatedBySpace ()
 specifier|public
 name|void
-name|keywordsN_keywordsSeparatedBySpace
+name|keywordsNKeywordsSeparatedBySpace
 parameter_list|()
 block|{
 name|BibEntry
@@ -3170,6 +3138,161 @@ argument_list|(
 literal|"w1w2aw2bw3"
 argument_list|,
 name|result
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+DECL|method|testCheckLegalKey2 ()
+specifier|public
+name|void
+name|testCheckLegalKey2
+parameter_list|()
+block|{
+comment|// Enforce legal keys
+name|assertEquals
+argument_list|(
+literal|"AAAA"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|"AA AA"
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"SPECIALCHARS"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|"SPECIAL CHARS#{\\\"}~,^"
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|"\n\t\r"
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Do not enforce legal keys
+name|assertEquals
+argument_list|(
+literal|"AAAA"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|"AA AA"
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"SPECIALCHARS#~^"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|"SPECIAL CHARS#{\\\"}~,^"
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|"\n\t\r"
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Check null input
+name|assertNull
+argument_list|(
+name|LabelPatternUtil
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|null
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertNull
+argument_list|(
+name|LabelPatternUtil
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|null
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertNull
+argument_list|(
+name|LabelPatternUtil
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|null
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Use preferences setting
+name|assertEquals
+argument_list|(
+literal|"AAAA"
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|"AA AA"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|LabelPatternUtil
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|"\n\t\r"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

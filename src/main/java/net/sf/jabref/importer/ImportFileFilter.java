@@ -179,17 +179,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
-name|o
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
 name|o
 operator|instanceof
 name|ImportFileFilter
-operator|)
 condition|)
 block|{
 return|return

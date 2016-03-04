@@ -1362,6 +1362,7 @@ argument_list|(
 literal|'.'
 argument_list|)
 expr_stmt|;
+break|break;
 block|}
 if|if
 condition|(

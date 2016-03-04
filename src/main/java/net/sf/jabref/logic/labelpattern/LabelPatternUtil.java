@@ -90,6 +90,42 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|logic
 operator|.
 name|formatter
@@ -97,6 +133,24 @@ operator|.
 name|casechanger
 operator|.
 name|Word
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|logic
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|RemoveLatexCommands
 import|;
 end_import
 
@@ -194,50 +248,6 @@ name|LogFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|exporter
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|RemoveLatexCommands
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|Util
-import|;
-end_import
-
 begin_comment
 comment|/**  * This is the utility class of the LabelPattern package.  */
 end_comment
@@ -248,6 +258,15 @@ specifier|public
 class|class
 name|LabelPatternUtil
 block|{
+DECL|field|STARTING_CAPITAL_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|STARTING_CAPITAL_PATTERN
+init|=
+literal|"[^A-Z]"
+decl_stmt|;
 comment|// All single characters that we can use for extending a key to make it unique:
 DECL|field|CHARS
 specifier|private
@@ -288,19 +307,26 @@ argument_list|(
 literal|".*\\(\\{([A-Z]+)\\}\\).*"
 argument_list|)
 decl_stmt|;
-DECL|field|DEFAULT_LABELPATTERN
-specifier|public
+DECL|field|defaultLabelPattern
+specifier|private
 specifier|static
 name|List
 argument_list|<
 name|String
 argument_list|>
-name|DEFAULT_LABELPATTERN
+name|defaultLabelPattern
+decl_stmt|;
+DECL|field|CHARS_OF_FIRST
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|CHARS_OF_FIRST
+init|=
+literal|5
 decl_stmt|;
 static|static
 block|{
-name|LabelPatternUtil
-operator|.
 name|updateDefaultPattern
 argument_list|()
 expr_stmt|;
@@ -318,9 +344,7 @@ name|void
 name|updateDefaultPattern
 parameter_list|()
 block|{
-name|LabelPatternUtil
-operator|.
-name|DEFAULT_LABELPATTERN
+name|defaultLabelPattern
 operator|=
 name|LabelPatternUtil
 operator|.
@@ -351,8 +375,6 @@ name|BibDatabase
 name|db
 parameter_list|)
 block|{
-name|LabelPatternUtil
-operator|.
 name|database
 operator|=
 name|db
@@ -384,18 +406,18 @@ name|b
 init|=
 literal|0
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|and
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|token
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
@@ -556,7 +578,7 @@ block|{
 name|and
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 name|tokens
@@ -575,7 +597,7 @@ expr_stmt|;
 name|token
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}
@@ -623,7 +645,7 @@ expr_stmt|;
 name|and
 operator|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 expr_stmt|;
 name|token
@@ -712,8 +734,6 @@ name|normalized
 operator|.
 name|append
 argument_list|(
-name|LabelPatternUtil
-operator|.
 name|isInstitution
 argument_list|(
 name|tokens
@@ -724,8 +744,6 @@ name|i
 argument_list|)
 argument_list|)
 condition|?
-name|LabelPatternUtil
-operator|.
 name|generateInstitutionKey
 argument_list|(
 name|tokens
@@ -736,8 +754,6 @@ name|i
 argument_list|)
 argument_list|)
 else|:
-name|LabelPatternUtil
-operator|.
 name|removeDiacritics
 argument_list|(
 name|tokens
@@ -780,10 +796,15 @@ return|return
 name|content
 return|;
 block|}
-comment|// Replace umaut with '?e'
+name|String
+name|result
+init|=
 name|content
+decl_stmt|;
+comment|// Replace umlaut with '?e'
+name|result
 operator|=
-name|content
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -792,9 +813,9 @@ argument_list|,
 literal|"$1e"
 argument_list|)
 expr_stmt|;
-name|content
+name|result
 operator|=
-name|content
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -803,9 +824,9 @@ argument_list|,
 literal|"$1e"
 argument_list|)
 expr_stmt|;
-name|content
+name|result
 operator|=
-name|content
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -815,9 +836,9 @@ literal|"$1e"
 argument_list|)
 expr_stmt|;
 comment|// Remove diacritics
-name|content
+name|result
 operator|=
-name|content
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -826,9 +847,9 @@ argument_list|,
 literal|"$1"
 argument_list|)
 expr_stmt|;
-name|content
+name|result
 operator|=
-name|content
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -837,9 +858,9 @@ argument_list|,
 literal|"$1"
 argument_list|)
 expr_stmt|;
-name|content
+name|result
 operator|=
-name|content
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -849,7 +870,7 @@ literal|"$1"
 argument_list|)
 expr_stmt|;
 return|return
-name|content
+name|result
 return|;
 block|}
 comment|/**      * Unifies umlauts.      *      * Replaces: $\ddot{\mathrm{X}}$ (an alternative umlaut) with: {\"X}      * Replaces: \?{X} and \?X with {\?X}, where ? is a diacritic symbol      *      * @param content The content.      * @return The content with unified diacritics.      */
@@ -901,7 +922,7 @@ name|author
 argument_list|)
 return|;
 block|}
-comment|/**      *<p>      * An author or editor may be and institution not a person. In that case the      * key generator builds very long keys, e.g.: for&ldquo;The Attributed      * Graph Grammar System (AGG)&rdquo; ->      *&ldquo;TheAttributedGraphGrammarSystemAGG&rdquo;.      *</p>      *      *<p>      * An institution name should be inside<code>{}</code> brackets. If the      * institution name also includes its abbreviation this abbreviation should      * be also in<code>{}</code> brackets. For the previous example the value      * should look like:      *<code>{The Attributed Graph Grammar System ({AGG})}</code>.      *</p>      *      *<p>      * If an institution includes its abbreviation, i.e. "...({XYZ})", first      * such abbreviation should be used as the key value part of such author.      *</p>      *      *<p>      * If an institution does not include its abbreviation the key should be      * generated form its name in the following way:      *</p>      *      *<p>      * The institution value can contain: institution name, part of the      * institution, address, etc. Those information should be separated by      * comma. Name of the institution and possible part of the institution      * should be on the beginning, while address and secondary information      * should be on the end.      *</p>      *      * Each part is examined separately:      *<ol>      *<li>We remove all tokens of a part which are one of the defined ignore      * words (the, press), which end with a dot (ltd., co., ...) and which first      * character is lowercase (of, on, di, ...).</li>      *<li>We detect a type of the part: university, technology institute,      * department, school, rest      *<ul>      *<li>University:<code>"Uni[NameOfTheUniversity]"</code></li>      *<li>Department: will be an abbreviation of all words beginning with the      * uppercase letter except of words:<code>d[ei]part.*</code>, school,      * faculty</li>      *<li>School: same as department</li>      *<li>Rest: If there are less than 3 tokens in such part than the result      * will be by concatenating those tokens, otherwise the result will be build      * from the first letters of words starting with and uppercase letter.</li>      *</ul>      *</ol>      *      * Parts are concatenated together in the following way:      *<ul>      *<li>If there is a university part use it otherwise use the rest part.</li>      *<li>If there is a school part append it.</li>      *<li>If there is a department part and it is not same as school part      * append it.</li>      *</ul>      *      * Rest part is only the first part which do not match any other type. All      * other parts (address, ...) are ignored.      *      * @param content the institution to generate a Bibtex key for      * @return<ul>      *<li>the institution key</li>      *<li>"" in the case of a failure</li>      *<li>null if content is null</li>      *</ul>      */
+comment|/**      *<p>      * An author or editor may be and institution not a person. In that case the      * key generator builds very long keys, e.g.: for&ldquo;The Attributed      * Graph Grammar System (AGG)&rdquo; ->      *&ldquo;TheAttributedGraphGrammarSystemAGG&rdquo;.      *</p>      *      *<p>      * An institution name should be inside<code>{}</code> brackets. If the      * institution name also includes its abbreviation this abbreviation should      * be also in<code>{}</code> brackets. For the previous example the value      * should look like:      *<code>{The Attributed Graph Grammar System ({AGG})}</code>.      *</p>      *      *<p>      * If an institution includes its abbreviation, i.e. "...({XYZ})", first      * such abbreviation should be used as the key value part of such author.      *</p>      *      *<p>      * If an institution does not include its abbreviation the key should be      * generated form its name in the following way:      *</p>      *      *<p>      * The institution value can contain: institution name, part of the      * institution, address, etc. Those information should be separated by      * comma. Name of the institution and possible part of the institution      * should be on the beginning, while address and secondary information      * should be on the end.      *</p>      *      * Each part is examined separately:      *<ol>      *<li>We remove all tokens of a part which are one of the defined ignore      * words (the, press), which end with a dot (ltd., co., ...) and which first      * character is lowercase (of, on, di, ...).</li>      *<li>We detect a type of the part: university, technology institute,      * department, school, rest      *<ul>      *<li>University:<code>"Uni[NameOfTheUniversity]"</code></li>      *<li>Department: will be an abbreviation of all words beginning with the      * uppercase letter except of words:<code>d[ei]part.*</code>, school,      * faculty</li>      *<li>School: same as department</li>      *<li>Rest: If there are less than 3 tokens in such part than the result      * will be by concatenating those tokens, otherwise the result will be build      * from the first letters of words starting with and uppercase letter.</li>      *</ul>      *</ol>      *      * Parts are concatenated together in the following way:      *<ul>      *<li>If there is a university part use it otherwise use the rest part.</li>      *<li>If there is a school part append it.</li>      *<li>If there is a department part and it is not same as school part      * append it.</li>      *</ul>      *      * Rest part is only the first part which do not match any other type. All      * other parts (address, ...) are ignored.      *      * @param result the institution to generate a Bibtex key for      * @return<ul>      *<li>the institution key</li>      *<li>"" in the case of a failure</li>      *<li>null if content is null</li>      *</ul>      */
 DECL|method|generateInstitutionKey (String content)
 specifier|private
 specifier|static
@@ -924,18 +945,21 @@ return|return
 name|content
 return|;
 block|}
+name|String
+name|result
+init|=
 name|content
+decl_stmt|;
+name|result
 operator|=
-name|LabelPatternUtil
-operator|.
 name|unifyDiacritics
 argument_list|(
-name|content
+name|result
 argument_list|)
 expr_stmt|;
-name|content
+name|result
 operator|=
-name|content
+name|result
 operator|.
 name|replaceAll
 argument_list|(
@@ -958,7 +982,7 @@ name|REGEX_PATTERN
 operator|.
 name|matcher
 argument_list|(
-name|content
+name|result
 argument_list|)
 decl_stmt|;
 if|if
@@ -978,20 +1002,18 @@ literal|1
 argument_list|)
 return|;
 block|}
-name|content
+name|result
 operator|=
-name|LabelPatternUtil
-operator|.
 name|removeDiacritics
 argument_list|(
-name|content
+name|result
 argument_list|)
 expr_stmt|;
 name|String
 index|[]
 name|parts
 init|=
-name|content
+name|result
 operator|.
 name|split
 argument_list|(
@@ -1158,12 +1180,9 @@ operator|)
 operator|&&
 literal|"uni"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|k
-operator|.
-name|toLowerCase
-argument_list|()
 operator|.
 name|substring
 argument_list|(
@@ -1230,12 +1249,9 @@ operator|)
 operator|&&
 literal|"univ"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|k
-operator|.
-name|toLowerCase
-argument_list|()
 operator|.
 name|substring
 argument_list|(
@@ -1264,12 +1280,9 @@ operator|)
 operator|&&
 literal|"techn"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|k
-operator|.
-name|toLowerCase
-argument_list|()
 operator|.
 name|substring
 argument_list|(
@@ -1289,12 +1302,9 @@ if|if
 condition|(
 literal|"school"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|k
-operator|.
-name|toLowerCase
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1345,12 +1355,9 @@ operator|)
 operator|&&
 literal|"lab"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|k
-operator|.
-name|toLowerCase
-argument_list|()
 operator|.
 name|substring
 argument_list|(
@@ -1424,12 +1431,9 @@ operator|&&
 operator|!
 literal|"univ"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|k
-operator|.
-name|toLowerCase
-argument_list|()
 operator|.
 name|substring
 argument_list|(
@@ -1549,23 +1553,17 @@ operator|&&
 operator|!
 literal|"school"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|k
-operator|.
-name|toLowerCase
-argument_list|()
 argument_list|)
 operator|&&
 operator|!
 literal|"faculty"
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|k
-operator|.
-name|toLowerCase
-argument_list|()
 argument_list|)
 operator|&&
 operator|!
@@ -1574,7 +1572,7 @@ name|k
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[^A-Z]"
+name|STARTING_CAPITAL_PATTERN
 argument_list|,
 literal|""
 argument_list|)
@@ -1597,7 +1595,7 @@ name|k
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[^A-Z]"
+name|STARTING_CAPITAL_PATTERN
 argument_list|,
 literal|""
 argument_list|)
@@ -1617,7 +1615,7 @@ name|k
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[^A-Z]"
+name|STARTING_CAPITAL_PATTERN
 argument_list|,
 literal|""
 argument_list|)
@@ -1714,7 +1712,7 @@ name|k
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[^A-Z]"
+name|STARTING_CAPITAL_PATTERN
 argument_list|,
 literal|""
 argument_list|)
@@ -1833,7 +1831,6 @@ argument_list|(
 name|labelPattern
 argument_list|)
 expr_stmt|;
-comment|//String[] ss = labelPattern.split("\\[|\\]");
 name|StringTokenizer
 name|tok
 init|=
@@ -1887,8 +1884,6 @@ name|BibEntry
 name|entry
 parameter_list|)
 block|{
-name|LabelPatternUtil
-operator|.
 name|database
 operator|=
 name|dBase
@@ -2015,24 +2010,18 @@ condition|)
 block|{
 comment|// check whether there is a modifier on the end such as
 comment|// ":lower"
-comment|// String modifier = null;
 name|String
 index|[]
 name|parts
 init|=
-name|LabelPatternUtil
-operator|.
 name|parseFieldMarker
 argument_list|(
 name|typeListEntry
 argument_list|)
 decl_stmt|;
-comment|//val.split(":");
 name|String
 name|label
 init|=
-name|LabelPatternUtil
-operator|.
 name|makeLabel
 argument_list|(
 name|entry
@@ -2055,8 +2044,6 @@ condition|)
 block|{
 name|label
 operator|=
-name|LabelPatternUtil
-operator|.
 name|applyModifiers
 argument_list|(
 name|label
@@ -2106,8 +2093,6 @@ block|}
 comment|// Remove all illegal characters from the key.
 name|key
 operator|=
-name|Util
-operator|.
 name|checkLegalKey
 argument_list|(
 name|stringBuilder
@@ -2212,8 +2197,6 @@ decl_stmt|;
 name|int
 name|occurrences
 init|=
-name|LabelPatternUtil
-operator|.
 name|database
 operator|.
 name|getNumberOfKeyOccurrences
@@ -2296,8 +2279,6 @@ condition|)
 block|{
 if|if
 condition|(
-name|LabelPatternUtil
-operator|.
 name|database
 operator|.
 name|getEntryById
@@ -2326,8 +2307,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|LabelPatternUtil
-operator|.
 name|database
 operator|.
 name|setCiteKeyForEntry
@@ -2370,8 +2349,6 @@ name|moddedKey
 init|=
 name|key
 operator|+
-name|LabelPatternUtil
-operator|.
 name|getAddition
 argument_list|(
 name|number
@@ -2379,8 +2356,6 @@ argument_list|)
 decl_stmt|;
 name|occurrences
 operator|=
-name|LabelPatternUtil
-operator|.
 name|database
 operator|.
 name|getNumberOfKeyOccurrences
@@ -2422,8 +2397,6 @@ name|moddedKey
 operator|=
 name|key
 operator|+
-name|LabelPatternUtil
-operator|.
 name|getAddition
 argument_list|(
 name|number
@@ -2431,8 +2404,6 @@ argument_list|)
 expr_stmt|;
 name|occurrences
 operator|=
-name|LabelPatternUtil
-operator|.
 name|database
 operator|.
 name|getNumberOfKeyOccurrences
@@ -2474,8 +2445,6 @@ condition|)
 block|{
 if|if
 condition|(
-name|LabelPatternUtil
-operator|.
 name|database
 operator|.
 name|getEntryById
@@ -2504,8 +2473,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|LabelPatternUtil
-operator|.
 name|database
 operator|.
 name|setCiteKeyForEntry
@@ -2522,7 +2489,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Applies modifiers to a label generated based on a field marker.      * @param label The generated label.      * @param parts String array containing the modifiers.      * @param offset The number of initial items in the modifiers array to skip.      * @return The modified label.      */
+comment|/**      * Applies modifiers to a label generated based on a field marker.      * @param resultingLabel The generated label.      * @param parts String array containing the modifiers.      * @param offset The number of initial items in the modifiers array to skip.      * @return The modified label.      */
 DECL|method|applyModifiers (String label, String[] parts, int offset)
 specifier|public
 specifier|static
@@ -2540,6 +2507,11 @@ name|int
 name|offset
 parameter_list|)
 block|{
+name|String
+name|resultingLabel
+init|=
+name|label
+decl_stmt|;
 if|if
 condition|(
 name|parts
@@ -2584,9 +2556,9 @@ name|modifier
 argument_list|)
 condition|)
 block|{
-name|label
+name|resultingLabel
 operator|=
-name|label
+name|resultingLabel
 operator|.
 name|toLowerCase
 argument_list|()
@@ -2603,9 +2575,9 @@ name|modifier
 argument_list|)
 condition|)
 block|{
-name|label
+name|resultingLabel
 operator|=
-name|label
+name|resultingLabel
 operator|.
 name|toUpperCase
 argument_list|()
@@ -2634,7 +2606,7 @@ name|String
 index|[]
 name|words
 init|=
-name|label
+name|resultingLabel
 operator|.
 name|replaceAll
 argument_list|(
@@ -2679,7 +2651,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|label
+name|resultingLabel
 operator|=
 name|abbreviateSB
 operator|.
@@ -2719,7 +2691,7 @@ comment|// Alternate text modifier in parentheses. Should be inserted if
 comment|// the label is empty:
 if|if
 condition|(
-name|label
+name|resultingLabel
 operator|.
 name|isEmpty
 argument_list|()
@@ -2768,10 +2740,10 @@ block|}
 block|}
 block|}
 return|return
-name|label
+name|resultingLabel
 return|;
 block|}
-DECL|method|makeLabel (BibEntry entry, String val)
+DECL|method|makeLabel (BibEntry entry, String value)
 specifier|public
 specifier|static
 name|String
@@ -2781,9 +2753,14 @@ name|BibEntry
 name|entry
 parameter_list|,
 name|String
-name|val
+name|value
 parameter_list|)
 block|{
+name|String
+name|val
+init|=
+name|value
+decl_stmt|;
 try|try
 block|{
 if|if
@@ -2823,12 +2800,8 @@ condition|)
 block|{
 name|authString
 operator|=
-name|LabelPatternUtil
-operator|.
 name|normalize
 argument_list|(
-name|LabelPatternUtil
-operator|.
 name|database
 operator|.
 name|resolveForStrings
@@ -2899,12 +2872,8 @@ else|else
 block|{
 name|authString
 operator|=
-name|LabelPatternUtil
-operator|.
 name|normalize
 argument_list|(
-name|LabelPatternUtil
-operator|.
 name|database
 operator|.
 name|resolveForStrings
@@ -2928,8 +2897,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|firstAuthor
 argument_list|(
 name|authString
@@ -2948,8 +2915,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|firstAuthorForenameInitials
 argument_list|(
 name|authString
@@ -2968,8 +2933,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|firstAuthorVonAndLast
 argument_list|(
 name|authString
@@ -2988,8 +2951,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|allAuthors
 argument_list|(
 name|authString
@@ -3008,8 +2969,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|authorsAlpha
 argument_list|(
 name|authString
@@ -3029,8 +2988,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|lastAuthor
 argument_list|(
 name|authString
@@ -3049,8 +3006,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|lastAuthorForenameInitials
 argument_list|(
 name|authString
@@ -3069,8 +3024,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|oneAuthorPlusIni
 argument_list|(
 name|authString
@@ -3106,8 +3059,6 @@ decl_stmt|;
 name|String
 name|s
 init|=
-name|LabelPatternUtil
-operator|.
 name|authIniN
 argument_list|(
 name|authString
@@ -3139,8 +3090,6 @@ block|{
 name|String
 name|s
 init|=
-name|LabelPatternUtil
-operator|.
 name|authAuthEa
 argument_list|(
 name|authString
@@ -3170,8 +3119,6 @@ block|{
 name|String
 name|s
 init|=
-name|LabelPatternUtil
-operator|.
 name|authEtal
 argument_list|(
 name|authString
@@ -3205,8 +3152,6 @@ block|{
 name|String
 name|s
 init|=
-name|LabelPatternUtil
-operator|.
 name|authEtal
 argument_list|(
 name|authString
@@ -3240,8 +3185,6 @@ block|{
 name|String
 name|s
 init|=
-name|LabelPatternUtil
-operator|.
 name|authshort
 argument_list|(
 name|authString
@@ -3287,9 +3230,7 @@ decl_stmt|;
 name|String
 name|s
 init|=
-name|LabelPatternUtil
-operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|authString
 argument_list|,
@@ -3340,8 +3281,6 @@ comment|// name.
 name|String
 name|fa
 init|=
-name|LabelPatternUtil
-operator|.
 name|firstAuthor
 argument_list|(
 name|authString
@@ -3416,9 +3355,7 @@ block|{
 name|String
 name|s
 init|=
-name|LabelPatternUtil
-operator|.
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|authString
 argument_list|,
@@ -3450,8 +3387,6 @@ block|{
 comment|// This "auth" business was a dead end, so just
 comment|// use it literally:
 return|return
-name|LabelPatternUtil
-operator|.
 name|getField
 argument_list|(
 name|entry
@@ -3485,8 +3420,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|firstAuthor
 argument_list|(
 name|entry
@@ -3510,8 +3443,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|firstAuthorForenameInitials
 argument_list|(
 name|entry
@@ -3535,8 +3466,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|allAuthors
 argument_list|(
 name|entry
@@ -3561,8 +3490,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|lastAuthor
 argument_list|(
 name|entry
@@ -3586,8 +3513,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|lastAuthorForenameInitials
 argument_list|(
 name|entry
@@ -3611,8 +3536,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|oneAuthorPlusIni
 argument_list|(
 name|entry
@@ -3653,8 +3576,6 @@ decl_stmt|;
 name|String
 name|s
 init|=
-name|LabelPatternUtil
-operator|.
 name|authIniN
 argument_list|(
 name|entry
@@ -3707,9 +3628,7 @@ decl_stmt|;
 name|String
 name|s
 init|=
-name|LabelPatternUtil
-operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
 name|entry
 operator|.
@@ -3765,8 +3684,6 @@ block|{
 name|String
 name|s
 init|=
-name|LabelPatternUtil
-operator|.
 name|authAuthEa
 argument_list|(
 name|entry
@@ -3801,8 +3718,6 @@ block|{
 name|String
 name|s
 init|=
-name|LabelPatternUtil
-operator|.
 name|authshort
 argument_list|(
 name|entry
@@ -3839,8 +3754,6 @@ block|{
 name|String
 name|fa
 init|=
-name|LabelPatternUtil
-operator|.
 name|firstAuthor
 argument_list|(
 name|entry
@@ -3911,8 +3824,6 @@ block|{
 comment|// This "ed" business was a dead end, so just
 comment|// use it literally:
 return|return
-name|LabelPatternUtil
-operator|.
 name|getField
 argument_list|(
 name|entry
@@ -3934,8 +3845,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|firstPage
 argument_list|(
 name|entry
@@ -3959,8 +3868,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|lastPage
 argument_list|(
 name|entry
@@ -3984,8 +3891,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|getTitleWords
 argument_list|(
 literal|3
@@ -4011,8 +3916,6 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|getTitleWords
 argument_list|(
 literal|1
@@ -4313,8 +4216,6 @@ else|else
 block|{
 comment|// we haven't seen any special demands
 return|return
-name|LabelPatternUtil
-operator|.
 name|getField
 argument_list|(
 name|entry
@@ -4330,6 +4231,15 @@ name|NullPointerException
 name|ex
 parameter_list|)
 block|{
+name|LOGGER
+operator|.
+name|debug
+argument_list|(
+literal|"Problem making label"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
 return|return
 literal|""
 return|;
@@ -4384,8 +4294,6 @@ if|if
 condition|(
 name|number
 operator|>=
-name|LabelPatternUtil
-operator|.
 name|CHARS
 operator|.
 name|length
@@ -4397,23 +4305,17 @@ name|lastChar
 init|=
 name|number
 operator|%
-name|LabelPatternUtil
-operator|.
 name|CHARS
 operator|.
 name|length
 argument_list|()
 decl_stmt|;
 return|return
-name|LabelPatternUtil
-operator|.
 name|getAddition
 argument_list|(
 operator|(
 name|number
 operator|/
-name|LabelPatternUtil
-operator|.
 name|CHARS
 operator|.
 name|length
@@ -4423,8 +4325,6 @@ operator|-
 literal|1
 argument_list|)
 operator|+
-name|LabelPatternUtil
-operator|.
 name|CHARS
 operator|.
 name|substring
@@ -4440,8 +4340,6 @@ block|}
 else|else
 block|{
 return|return
-name|LabelPatternUtil
-operator|.
 name|CHARS
 operator|.
 name|substring
@@ -4457,6 +4355,7 @@ block|}
 block|}
 comment|/**      * Determines "number" words out of the "title" field in the given BibTeX entry      */
 DECL|method|getTitleWords (int number, String title)
+specifier|public
 specifier|static
 name|String
 name|getTitleWords
@@ -4662,8 +4561,6 @@ operator|++
 expr_stmt|;
 block|}
 return|return
-name|LabelPatternUtil
-operator|.
 name|keepLettersAndDigitsOnly
 argument_list|(
 name|stringBuilder
@@ -4746,6 +4643,7 @@ return|;
 block|}
 comment|/**      * Gets the last name of the first author/editor      *      * @param authorField      *            a<code>String</code>      * @return the surname of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
 DECL|method|firstAuthor (String authorField)
+specifier|public
 specifier|static
 name|String
 name|firstAuthor
@@ -4801,6 +4699,7 @@ return|;
 block|}
 comment|/**      * Gets the first name initials of the first author/editor      *      * @param authorField      *            a<code>String</code>      * @return the first name initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
 DECL|method|firstAuthorForenameInitials (String authorField)
+specifier|public
 specifier|static
 name|String
 name|firstAuthorForenameInitials
@@ -4863,6 +4762,7 @@ return|;
 block|}
 comment|/**      * Gets the von part and the last name of the first author/editor      * No spaces are returned      *      * @param authorField      *            a<code>String</code>      * @return the von part and surname of an author/editor or "" if no author was found.      *  This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
 DECL|method|firstAuthorVonAndLast (String authorField)
+specifier|public
 specifier|static
 name|String
 name|firstAuthorVonAndLast
@@ -4971,6 +4871,7 @@ return|;
 block|}
 comment|/**      * Gets the last name of the last author/editor      * @param authorField a<code>String</code>      * @return the surname of an author/editor      */
 DECL|method|lastAuthor (String authorField)
+specifier|public
 specifier|static
 name|String
 name|lastAuthor
@@ -5039,6 +4940,7 @@ block|}
 block|}
 comment|/**      * Gets the forename initials of the last author/editor      *      * @param authorField      *            a<code>String</code>      * @return the forename initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *      * @throws NullPointerException      *             if authorField == null      */
 DECL|method|lastAuthorForenameInitials (String authorField)
+specifier|public
 specifier|static
 name|String
 name|lastAuthorForenameInitials
@@ -5106,6 +5008,7 @@ return|;
 block|}
 comment|/**      * Gets the last name of all authors/editors      * @param authorField a<code>String</code>      * @return the sur name of all authors/editors      */
 DECL|method|allAuthors (String authorField)
+specifier|public
 specifier|static
 name|String
 name|allAuthors
@@ -5116,7 +5019,7 @@ parameter_list|)
 block|{
 comment|// Quick hack to use NAuthors to avoid code duplication
 return|return
-name|NAuthors
+name|nAuthors
 argument_list|(
 name|authorField
 argument_list|,
@@ -5128,6 +5031,7 @@ return|;
 block|}
 comment|/**      * Returns the authors according to the BibTeX-alpha-Style      * @param authorField string containing the value of the author field      * @return the initials of all authornames      */
 DECL|method|authorsAlpha (String authorField)
+specifier|public
 specifier|static
 name|String
 name|authorsAlpha
@@ -5146,7 +5050,7 @@ name|fixedAuthors
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 name|authorField
 argument_list|,
@@ -5402,10 +5306,11 @@ name|authors
 return|;
 block|}
 comment|/**      * Gets the surnames of the first N authors and appends EtAl if there are more than N authors      * @param authorField a<code>String</code>      * @param n the number of desired authors      * @return Gets the surnames of the first N authors and appends EtAl if there are more than N authors      */
-DECL|method|NAuthors (String authorField, int n)
+DECL|method|nAuthors (String authorField, int n)
+specifier|public
 specifier|static
 name|String
-name|NAuthors
+name|nAuthors
 parameter_list|(
 name|String
 name|authorField
@@ -5511,6 +5416,7 @@ return|;
 block|}
 comment|/**      * Gets the first part of the last name of the first      * author/editor, and appends the last name initial of the      * remaining authors/editors.      * Maximum 5 characters      * @param authorField a<code>String</code>      * @return the surname of all authors/editors      */
 DECL|method|oneAuthorPlusIni (String authorField)
+specifier|public
 specifier|static
 name|String
 name|oneAuthorPlusIni
@@ -5519,26 +5425,21 @@ name|String
 name|authorField
 parameter_list|)
 block|{
-specifier|final
-name|int
-name|CHARS_OF_FIRST
+name|String
+name|fixedAuthorField
 init|=
-literal|5
-decl_stmt|;
-name|authorField
-operator|=
 name|AuthorList
 operator|.
 name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|String
 index|[]
 name|tokens
 init|=
-name|authorField
+name|fixedAuthorField
 operator|.
 name|split
 argument_list|(
@@ -5648,6 +5549,7 @@ return|;
 block|}
 comment|/**      * auth.auth.ea format:      * Isaac Newton and James Maxwell and Albert Einstein (1960)      * Isaac Newton and James Maxwell (1960)      *  give:      * Newton.Maxwell.ea      * Newton.Maxwell      */
 DECL|method|authAuthEa (String authorField)
+specifier|public
 specifier|static
 name|String
 name|authAuthEa
@@ -5656,20 +5558,21 @@ name|String
 name|authorField
 parameter_list|)
 block|{
-name|authorField
-operator|=
+name|String
+name|fixedAuthorField
+init|=
 name|AuthorList
 operator|.
 name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|String
 index|[]
 name|tokens
 init|=
-name|authorField
+name|fixedAuthorField
 operator|.
 name|split
 argument_list|(
@@ -5780,6 +5683,7 @@ return|;
 block|}
 comment|/**      * auth.etal, authEtAl, ... format:      * Isaac Newton and James Maxwell and Albert Einstein (1960)      * Isaac Newton and James Maxwell (1960)      *      *  auth.etal give (delim=".", append=".etal"):      * Newton.etal      * Newton.Maxwell      *      *  authEtAl give (delim="", append="EtAl"):      * NewtonEtAl      * NewtonMaxwell      *      * Note that [authEtAl] equals [authors2]      */
 DECL|method|authEtal (String authorField, String delim, String append)
+specifier|public
 specifier|static
 name|String
 name|authEtal
@@ -5794,20 +5698,21 @@ name|String
 name|append
 parameter_list|)
 block|{
-name|authorField
-operator|=
+name|String
+name|fixedAuthorField
+init|=
 name|AuthorList
 operator|.
 name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|String
 index|[]
 name|tokens
 init|=
-name|authorField
+name|fixedAuthorField
 operator|.
 name|split
 argument_list|(
@@ -5915,10 +5820,11 @@ argument_list|()
 return|;
 block|}
 comment|/**      * The first N characters of the Mth author/editor.      * M starts counting from 1      */
-DECL|method|authN_M (String authorField, int n, int m)
+DECL|method|authNofMth (String authorField, int n, int m)
+specifier|public
 specifier|static
 name|String
-name|authN_M
+name|authNofMth
 parameter_list|(
 name|String
 name|authorField
@@ -5931,23 +5837,28 @@ name|m
 parameter_list|)
 block|{
 comment|// have m counting from 0
+name|int
+name|mminusone
+init|=
 name|m
-operator|--
-expr_stmt|;
-name|authorField
-operator|=
+operator|-
+literal|1
+decl_stmt|;
+name|String
+name|fixedAuthorField
+init|=
 name|AuthorList
 operator|.
 name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|String
 index|[]
 name|tokens
 init|=
-name|authorField
+name|fixedAuthorField
 operator|.
 name|split
 argument_list|(
@@ -5961,7 +5872,7 @@ name|tokens
 operator|.
 name|length
 operator|<=
-name|m
+name|mminusone
 operator|)
 operator|||
 operator|(
@@ -5971,7 +5882,7 @@ literal|0
 operator|)
 operator|||
 operator|(
-name|m
+name|mminusone
 operator|<
 literal|0
 operator|)
@@ -5987,7 +5898,7 @@ init|=
 operator|(
 name|tokens
 index|[
-name|m
+name|mminusone
 index|]
 operator|.
 name|split
@@ -6029,6 +5940,7 @@ block|}
 block|}
 comment|/**      * authshort format:      * added by Kolja Brix, kbx@users.sourceforge.net      *      * given author names      *      *   Isaac Newton and James Maxwell and Albert Einstein and N. Bohr      *      *   Isaac Newton and James Maxwell and Albert Einstein      *      *   Isaac Newton and James Maxwell      *      *   Isaac Newton      *      * yield      *      *   NME+      *      *   NME      *      *   NM      *      *   Newton      */
 DECL|method|authshort (String authorField)
+specifier|public
 specifier|static
 name|String
 name|authshort
@@ -6037,15 +5949,16 @@ name|String
 name|authorField
 parameter_list|)
 block|{
-name|authorField
-operator|=
+name|String
+name|fixedAuthorField
+init|=
 name|AuthorList
 operator|.
 name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|StringBuilder
 name|author
 init|=
@@ -6057,7 +5970,7 @@ name|String
 index|[]
 name|tokens
 init|=
-name|authorField
+name|fixedAuthorField
 operator|.
 name|split
 argument_list|(
@@ -6082,13 +5995,11 @@ name|author
 operator|.
 name|append
 argument_list|(
-name|LabelPatternUtil
-operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
-name|authorField
+name|fixedAuthorField
 argument_list|,
-name|authorField
+name|fixedAuthorField
 operator|.
 name|length
 argument_list|()
@@ -6129,11 +6040,9 @@ name|author
 operator|.
 name|append
 argument_list|(
-name|LabelPatternUtil
-operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
-name|authorField
+name|fixedAuthorField
 argument_list|,
 literal|1
 argument_list|,
@@ -6174,6 +6083,7 @@ return|;
 block|}
 comment|/**      * authIniN format:      *      * Each author gets (N div #authors) chars, the remaining (N mod #authors)      * chars are equally distributed to the authors first in the row.      *      * If (N< #authors), only the first N authors get mentioned.      *      * For example if      *      * a) I. Newton and J. Maxwell and A. Einstein and N. Bohr (..)      *      * b) I. Newton and J. Maxwell and A. Einstein      *      * c) I. Newton and J. Maxwell      *      * d) I. Newton      *      * authIni4 gives: a) NMEB, b) NeME, c) NeMa, d) Newt      *      * @param authorField      *            The authors to format.      *      * @param n      *            The maximum number of characters this string will be long. A      *            negative number or zero will lead to "" be returned.      *      * @throws NullPointerException      *             if authorField is null and n> 0      */
 DECL|method|authIniN (String authorField, int n)
+specifier|public
 specifier|static
 name|String
 name|authIniN
@@ -6196,15 +6106,16 @@ return|return
 literal|""
 return|;
 block|}
-name|authorField
-operator|=
+name|String
+name|fixedAuthorField
+init|=
 name|AuthorList
 operator|.
 name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|StringBuilder
 name|author
 init|=
@@ -6216,7 +6127,7 @@ name|String
 index|[]
 name|tokens
 init|=
-name|authorField
+name|fixedAuthorField
 operator|.
 name|split
 argument_list|(
@@ -6279,11 +6190,9 @@ name|author
 operator|.
 name|append
 argument_list|(
-name|LabelPatternUtil
-operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
-name|authorField
+name|fixedAuthorField
 argument_list|,
 name|charsAll
 operator|+
@@ -6302,11 +6211,9 @@ name|author
 operator|.
 name|append
 argument_list|(
-name|LabelPatternUtil
-operator|.
-name|authN_M
+name|authNofMth
 argument_list|(
-name|authorField
+name|fixedAuthorField
 argument_list|,
 name|charsAll
 argument_list|,
@@ -6369,7 +6276,7 @@ block|{
 specifier|final
 name|String
 index|[]
-name|_pages
+name|splitPages
 init|=
 name|pages
 operator|.
@@ -6390,7 +6297,7 @@ control|(
 name|String
 name|n
 range|:
-name|_pages
+name|splitPages
 control|)
 block|{
 if|if
@@ -6460,7 +6367,7 @@ block|{
 specifier|final
 name|String
 index|[]
-name|_pages
+name|splitPages
 init|=
 name|pages
 operator|.
@@ -6481,7 +6388,7 @@ control|(
 name|String
 name|n
 range|:
-name|_pages
+name|splitPages
 control|)
 block|{
 if|if
@@ -6815,6 +6722,250 @@ name|size
 argument_list|()
 index|]
 argument_list|)
+return|;
+block|}
+comment|/**      * This method returns a String similar to the one passed in, except that it is molded into a form that is      * acceptable for bibtex.      *<p>      * Watch-out that the returned string might be of length 0 afterwards.      *      * @param key mayBeNull      */
+DECL|method|checkLegalKey (String key)
+specifier|public
+specifier|static
+name|String
+name|checkLegalKey
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
+if|if
+condition|(
+name|key
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+return|return
+name|checkLegalKey
+argument_list|(
+name|key
+argument_list|,
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|ENFORCE_LEGAL_BIBTEX_KEY
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**      * This method returns a String similar to the one passed in, except that it is molded into a form that is      * acceptable for bibtex.      *<p>      * Watch-out that the returned string might be of length 0 afterwards.      *      * @param key             mayBeNull      * @param enforceLegalKey make sure that the key is legal in all respects      */
+DECL|method|checkLegalKey (String key, boolean enforceLegalKey)
+specifier|public
+specifier|static
+name|String
+name|checkLegalKey
+parameter_list|(
+name|String
+name|key
+parameter_list|,
+name|boolean
+name|enforceLegalKey
+parameter_list|)
+block|{
+if|if
+condition|(
+name|key
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+if|if
+condition|(
+operator|!
+name|enforceLegalKey
+condition|)
+block|{
+comment|// User doesn't want us to enforce legal characters. We must still look
+comment|// for whitespace and some characters such as commas, since these would
+comment|// interfere with parsing:
+name|StringBuilder
+name|newKey
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|key
+operator|.
+name|length
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|char
+name|c
+init|=
+name|key
+operator|.
+name|charAt
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+name|c
+argument_list|)
+operator|&&
+operator|(
+literal|"{}(),\\\""
+operator|.
+name|indexOf
+argument_list|(
+name|c
+argument_list|)
+operator|==
+operator|-
+literal|1
+operator|)
+condition|)
+block|{
+name|newKey
+operator|.
+name|append
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+return|return
+name|newKey
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+name|StringBuilder
+name|newKey
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|key
+operator|.
+name|length
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|char
+name|c
+init|=
+name|key
+operator|.
+name|charAt
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+name|c
+argument_list|)
+operator|&&
+operator|(
+literal|"{}(),\\\"#~^'"
+operator|.
+name|indexOf
+argument_list|(
+name|c
+argument_list|)
+operator|==
+operator|-
+literal|1
+operator|)
+condition|)
+block|{
+name|newKey
+operator|.
+name|append
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|// Replace non-English characters like umlauts etc. with a sensible
+comment|// letter or letter combination that bibtex can accept.
+return|return
+name|StringUtil
+operator|.
+name|replaceSpecialCharacters
+argument_list|(
+name|newKey
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|getDefaultLabelPattern ()
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|getDefaultLabelPattern
+parameter_list|()
+block|{
+return|return
+name|defaultLabelPattern
 return|;
 block|}
 block|}

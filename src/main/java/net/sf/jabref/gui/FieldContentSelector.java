@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2016 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -65,18 +65,6 @@ operator|.
 name|event
 operator|.
 name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
 import|;
 end_import
 
@@ -281,18 +269,6 @@ specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
-DECL|field|frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|frame
-decl_stmt|;
-DECL|field|owner
-specifier|private
-specifier|final
-name|Window
-name|owner
-decl_stmt|;
 DECL|field|action
 specifier|private
 specifier|final
@@ -341,12 +317,6 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|frame
-operator|=
-name|frame
-expr_stmt|;
-name|this
-operator|.
 name|editor
 operator|=
 name|editor
@@ -356,12 +326,6 @@ operator|.
 name|metaData
 operator|=
 name|metaData
-expr_stmt|;
-name|this
-operator|.
-name|owner
-operator|=
-name|owner
 expr_stmt|;
 name|this
 operator|.
@@ -506,21 +470,10 @@ name|comboBox
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
-comment|/*                  * These conditions signify arrow key navigation in the dropdown                  * list, so we should not react to it. I'm not sure if this is                  * well defined enough to be guaranteed to work everywhere.                  */
+comment|/*              * These conditions signify arrow key navigation in the dropdown              * list, so we should not react to it. I'm not sure if this is              * well defined enough to be guaranteed to work everywhere.              */
 if|if
 condition|(
 literal|"comboBoxChanged"
@@ -548,7 +501,6 @@ block|}
 name|selectionMade
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -667,19 +619,8 @@ name|manage
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|ActionListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
 name|e
-parameter_list|)
+lambda|->
 block|{
 name|ContentSelectorDialog2
 name|csd
@@ -687,16 +628,8 @@ init|=
 operator|new
 name|ContentSelectorDialog2
 argument_list|(
-name|FieldContentSelector
-operator|.
-name|this
-operator|.
 name|owner
 argument_list|,
-name|FieldContentSelector
-operator|.
-name|this
-operator|.
 name|frame
 argument_list|,
 name|panel
@@ -717,10 +650,6 @@ name|placeDialog
 argument_list|(
 name|csd
 argument_list|,
-name|FieldContentSelector
-operator|.
-name|this
-operator|.
 name|frame
 argument_list|)
 expr_stmt|;
@@ -737,7 +666,6 @@ comment|// So we need to rebuild the ComboBox afterwards
 name|rebuildComboBox
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 argument_list|)
 expr_stmt|;

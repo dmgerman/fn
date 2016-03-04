@@ -442,7 +442,8 @@ expr_stmt|;
 return|return
 name|Collections
 operator|.
-name|EMPTY_LIST
+name|emptyList
+argument_list|()
 return|;
 block|}
 block|}
@@ -923,7 +924,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|StringBuffer
+name|StringBuilder
 name|buffer
 init|=
 name|parseBracketedTextExactly
@@ -2224,7 +2225,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|entry
 operator|.
 name|hasField
@@ -2232,18 +2232,6 @@ argument_list|(
 name|key
 argument_list|)
 condition|)
-block|{
-name|entry
-operator|.
-name|setField
-argument_list|(
-name|key
-argument_list|,
-name|content
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 comment|// The following hack enables the parser to deal with multiple
 comment|// author or
@@ -2310,6 +2298,18 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+else|else
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|key
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -2387,7 +2387,7 @@ operator|==
 literal|'"'
 condition|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|text
 init|=
 name|parseQuotedFieldExactly
@@ -2419,7 +2419,7 @@ block|{
 comment|// Value is a string enclosed in brackets. There can be pairs
 comment|// of brackets inside of a field, so we need to count the
 comment|// brackets to know when the string is finished.
-name|StringBuffer
+name|StringBuilder
 name|text
 init|=
 name|parseBracketedTextExactly
@@ -2573,7 +2573,6 @@ init|=
 name|read
 argument_list|()
 decl_stmt|;
-comment|// Util.pr(".. "+c);
 if|if
 condition|(
 name|character
@@ -3622,17 +3621,17 @@ block|}
 block|}
 DECL|method|parseBracketedTextExactly ()
 specifier|private
-name|StringBuffer
+name|StringBuilder
 name|parseBracketedTextExactly
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|StringBuffer
+name|StringBuilder
 name|value
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|consume
@@ -3779,17 +3778,17 @@ return|;
 block|}
 DECL|method|parseQuotedFieldExactly ()
 specifier|private
-name|StringBuffer
+name|StringBuilder
 name|parseQuotedFieldExactly
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|StringBuffer
+name|StringBuilder
 name|value
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|consume
@@ -3951,15 +3950,18 @@ block|{
 name|int
 name|character
 decl_stmt|;
-while|while
-condition|(
-operator|(
-operator|(
+do|do
+block|{
 name|character
 operator|=
 name|read
 argument_list|()
-operator|)
+expr_stmt|;
+block|}
+do|while
+condition|(
+operator|(
+name|character
 operator|!=
 name|expected
 operator|)
@@ -3977,9 +3979,7 @@ operator|!=
 literal|65535
 operator|)
 condition|)
-block|{
-comment|// do nothing
-block|}
+do|;
 if|if
 condition|(
 name|isEOFCharacter

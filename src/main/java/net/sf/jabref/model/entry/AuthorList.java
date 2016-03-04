@@ -224,8 +224,7 @@ name|OFFSET_TOKEN_ABBR
 init|=
 literal|1
 decl_stmt|;
-comment|// String -- token
-comment|// abbreviation;
+comment|// String -- token abbreviation;
 DECL|field|OFFSET_TOKEN_TERM
 specifier|private
 specifier|static
@@ -235,10 +234,8 @@ name|OFFSET_TOKEN_TERM
 init|=
 literal|2
 decl_stmt|;
-comment|// Character -- token
-comment|// terminator (either " " or
-comment|// "-")
-comment|// comma)
+comment|// Character -- token terminator (either " " or
+comment|// "-") comma)
 comment|// Token types (returned by getToken procedure)
 DECL|field|TOKEN_EOF
 specifier|private
@@ -276,7 +273,7 @@ name|TOKEN_WORD
 init|=
 literal|3
 decl_stmt|;
-comment|// Constant Hashtable containing names of TeX special characters
+comment|// Constant HashSet containing names of TeX special characters
 DECL|field|TEX_NAMES
 specifier|private
 specifier|static
@@ -530,11 +527,11 @@ name|authorList
 return|;
 block|}
 comment|/**      * This is a convenience method for getAuthorsFirstFirst()      *      * @see AuthorList#getAuthorsFirstFirst      */
-DECL|method|fixAuthor_firstNameFirstCommas (String authors, boolean abbr, boolean oxfordComma)
+DECL|method|fixAuthorFirstNameFirstCommas (String authors, boolean abbr, boolean oxfordComma)
 specifier|public
 specifier|static
 name|String
-name|fixAuthor_firstNameFirstCommas
+name|fixAuthorFirstNameFirstCommas
 parameter_list|(
 name|String
 name|authors
@@ -563,11 +560,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      * This is a convenience method for getAuthorsFirstFirstAnds()      *      * @see AuthorList#getAuthorsFirstFirstAnds      */
-DECL|method|fixAuthor_firstNameFirst (String authors)
+DECL|method|fixAuthorFirstNameFirst (String authors)
 specifier|public
 specifier|static
 name|String
-name|fixAuthor_firstNameFirst
+name|fixAuthorFirstNameFirst
 parameter_list|(
 name|String
 name|authors
@@ -586,11 +583,11 @@ argument_list|()
 return|;
 block|}
 comment|/**      * This is a convenience method for getAuthorsLastFirst()      *      * @see AuthorList#getAuthorsLastFirst      */
-DECL|method|fixAuthor_lastNameFirstCommas (String authors, boolean abbr, boolean oxfordComma)
+DECL|method|fixAuthorLastNameFirstCommas (String authors, boolean abbr, boolean oxfordComma)
 specifier|public
 specifier|static
 name|String
-name|fixAuthor_lastNameFirstCommas
+name|fixAuthorLastNameFirstCommas
 parameter_list|(
 name|String
 name|authors
@@ -619,11 +616,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      * This is a convenience method for getAuthorsLastFirstAnds(true)      *      * @see AuthorList#getAuthorsLastFirstAnds      */
-DECL|method|fixAuthor_lastNameFirst (String authors)
+DECL|method|fixAuthorLastNameFirst (String authors)
 specifier|public
 specifier|static
 name|String
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 parameter_list|(
 name|String
 name|authors
@@ -644,11 +641,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      * This is a convenience method for getAuthorsLastFirstAnds()      *      * @see AuthorList#getAuthorsLastFirstAnds      */
-DECL|method|fixAuthor_lastNameFirst (String authors, boolean abbreviate)
+DECL|method|fixAuthorLastNameFirst (String authors, boolean abbreviate)
 specifier|public
 specifier|static
 name|String
-name|fixAuthor_lastNameFirst
+name|fixAuthorLastNameFirst
 parameter_list|(
 name|String
 name|authors
@@ -672,11 +669,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      * This is a convenience method for getAuthorsLastOnly()      *      * @see AuthorList#getAuthorsLastOnly      */
-DECL|method|fixAuthor_lastNameOnlyCommas (String authors, boolean oxfordComma)
+DECL|method|fixAuthorLastNameOnlyCommas (String authors, boolean oxfordComma)
 specifier|public
 specifier|static
 name|String
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 parameter_list|(
 name|String
 name|authors
@@ -723,11 +720,11 @@ argument_list|()
 return|;
 block|}
 comment|/**      * This is a convenience method for getAuthorsNatbib()      *      * @see AuthorList#getAuthorsNatbib      */
-DECL|method|fixAuthor_Natbib (String authors)
+DECL|method|fixAuthorNatbib (String authors)
 specifier|public
 specifier|static
 name|String
-name|fixAuthor_Natbib
+name|fixAuthorNatbib
 parameter_list|(
 name|String
 name|authors
@@ -785,11 +782,14 @@ operator|-
 literal|1
 decl_stmt|;
 comment|// First step: collect tokens in 'tokens' Vector and calculate indices
-name|token_loop
-label|:
+name|boolean
+name|continueLoop
+init|=
+literal|true
+decl_stmt|;
 while|while
 condition|(
-literal|true
+name|continueLoop
 condition|)
 block|{
 name|int
@@ -809,9 +809,11 @@ case|:
 case|case
 name|TOKEN_AND
 case|:
-break|break
-name|token_loop
-break|;
+name|continueLoop
+operator|=
+literal|false
+expr_stmt|;
+break|break;
 case|case
 name|TOKEN_COMMA
 case|:
@@ -962,6 +964,9 @@ name|TOKEN_GROUP_LENGTH
 expr_stmt|;
 break|break;
 block|}
+break|break;
+default|default:
+break|break;
 block|}
 block|}
 comment|// Second step: split name into parts (here: calculate indices
@@ -1462,7 +1467,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Concatenates list of tokens from 'tokens' Vector. Tokens are separated by      * spaces or dashes, dependeing on stored in 'tokens'. Callers always ensure      * that start< end; thus, there exists at least one token to be      * concatenated.      *      * @param start     index of the first token to be concatenated in 'tokens' Vector      *                  (always divisible by TOKEN_GROUP_LENGTH).      * @param end       index of the first token not to be concatenated in 'tokens'      *                  Vector (always divisible by TOKEN_GROUP_LENGTH).      * @param offset    offset within token group (used to request concatenation of      *                  either full tokens or abbreviation).      * @param dotAfter<CODE>true</CODE> -- add period after each token,<CODE>false</CODE> --      *                  do not add.      * @return the result of concatenation.      */
+comment|/**      * Concatenates list of tokens from 'tokens' Vector. Tokens are separated by      * spaces or dashes, depending on stored in 'tokens'. Callers always ensure      * that start< end; thus, there exists at least one token to be      * concatenated.      *      * @param start     index of the first token to be concatenated in 'tokens' Vector      *                  (always divisible by TOKEN_GROUP_LENGTH).      * @param end       index of the first token not to be concatenated in 'tokens'      *                  Vector (always divisible by TOKEN_GROUP_LENGTH).      * @param offset    offset within token group (used to request concatenation of      *                  either full tokens or abbreviation).      * @param dotAfter<CODE>true</CODE> -- add period after each token,<CODE>false</CODE> --      *                  do not add.      * @return the result of concatenation.      */
 DECL|method|concatTokens (int start, int end, int offset, boolean dotAfter)
 specifier|private
 name|String
@@ -1519,15 +1524,18 @@ literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
+name|int
+name|updatedStart
+init|=
 name|start
-operator|+=
+operator|+
 name|AuthorList
 operator|.
 name|TOKEN_GROUP_LENGTH
-expr_stmt|;
+decl_stmt|;
 while|while
 condition|(
-name|start
+name|updatedStart
 operator|<
 name|end
 condition|)
@@ -1541,7 +1549,7 @@ operator|.
 name|get
 argument_list|(
 operator|(
-name|start
+name|updatedStart
 operator|-
 name|AuthorList
 operator|.
@@ -1565,7 +1573,7 @@ name|tokens
 operator|.
 name|get
 argument_list|(
-name|start
+name|updatedStart
 operator|+
 name|offset
 argument_list|)
@@ -1584,7 +1592,7 @@ literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
-name|start
+name|updatedStart
 operator|+=
 name|AuthorList
 operator|.
@@ -1942,29 +1950,23 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|bracesLevel
 operator|==
 literal|0
-condition|)
-block|{
-if|if
-condition|(
-operator|(
-name|c
-operator|==
-literal|','
 operator|)
-operator|||
+operator|&&
 operator|(
-name|c
-operator|==
-literal|'~'
-operator|)
-operator|||
 operator|(
+literal|",~-"
+operator|.
+name|indexOf
+argument_list|(
 name|c
-operator|==
-literal|'-'
+argument_list|)
+operator|!=
+operator|-
+literal|1
 operator|)
 operator|||
 name|Character
@@ -1973,10 +1975,10 @@ name|isWhitespace
 argument_list|(
 name|c
 argument_list|)
+operator|)
 condition|)
 block|{
 break|break;
-block|}
 block|}
 comment|// Morten Alver 18 Apr 2006: Removed check for hyphen '-' above to
 comment|// prevent
@@ -3047,40 +3049,13 @@ name|int
 name|hashCode
 parameter_list|()
 block|{
-specifier|final
-name|int
-name|prime
-init|=
-literal|31
-decl_stmt|;
-name|int
-name|result
-init|=
-literal|1
-decl_stmt|;
-name|result
-operator|=
-operator|(
-name|prime
-operator|*
-name|result
-operator|)
-operator|+
-operator|(
-name|authors
-operator|==
-literal|null
-condition|?
-literal|0
-else|:
-name|authors
-operator|.
-name|hashCode
-argument_list|()
-operator|)
-expr_stmt|;
 return|return
-name|result
+name|Objects
+operator|.
+name|hash
+argument_list|(
+name|authors
+argument_list|)
 return|;
 block|}
 comment|/**      * Returns the list of authors separated by "and"s with first names before      * last name; first names are not abbreviated.      *<p>      *<ul>      *<li>"John Smith" ==> "John Smith"</li>      *<li>"John Smith and Black Brown, Peter" ==> "John Smith and Peter Black      * Brown"</li>      *<li>"John von Neumann and John Smith and Black Brown, Peter" ==> "John      * von Neumann and John Smith and Peter Black Brown"</li>      *</li>      *      * @return formatted list of authors.      */
@@ -3223,225 +3198,6 @@ specifier|final
 name|String
 name|jrPart
 decl_stmt|;
-annotation|@
-name|Override
-DECL|method|hashCode ()
-specifier|public
-name|int
-name|hashCode
-parameter_list|()
-block|{
-specifier|final
-name|int
-name|prime
-init|=
-literal|31
-decl_stmt|;
-name|int
-name|result
-init|=
-literal|1
-decl_stmt|;
-name|result
-operator|=
-operator|(
-name|prime
-operator|*
-name|result
-operator|)
-operator|+
-operator|(
-name|firstAbbr
-operator|==
-literal|null
-condition|?
-literal|0
-else|:
-name|firstAbbr
-operator|.
-name|hashCode
-argument_list|()
-operator|)
-expr_stmt|;
-name|result
-operator|=
-operator|(
-name|prime
-operator|*
-name|result
-operator|)
-operator|+
-operator|(
-name|firstPart
-operator|==
-literal|null
-condition|?
-literal|0
-else|:
-name|firstPart
-operator|.
-name|hashCode
-argument_list|()
-operator|)
-expr_stmt|;
-name|result
-operator|=
-operator|(
-name|prime
-operator|*
-name|result
-operator|)
-operator|+
-operator|(
-name|jrPart
-operator|==
-literal|null
-condition|?
-literal|0
-else|:
-name|jrPart
-operator|.
-name|hashCode
-argument_list|()
-operator|)
-expr_stmt|;
-name|result
-operator|=
-operator|(
-name|prime
-operator|*
-name|result
-operator|)
-operator|+
-operator|(
-name|lastPart
-operator|==
-literal|null
-condition|?
-literal|0
-else|:
-name|lastPart
-operator|.
-name|hashCode
-argument_list|()
-operator|)
-expr_stmt|;
-name|result
-operator|=
-operator|(
-name|prime
-operator|*
-name|result
-operator|)
-operator|+
-operator|(
-name|vonPart
-operator|==
-literal|null
-condition|?
-literal|0
-else|:
-name|vonPart
-operator|.
-name|hashCode
-argument_list|()
-operator|)
-expr_stmt|;
-return|return
-name|result
-return|;
-block|}
-comment|/**          * Compare this object with the given one.          *<p>          * Will return true iff the other object is an Author and all fields are identical on a string comparison.          */
-annotation|@
-name|Override
-DECL|method|equals (Object o)
-specifier|public
-name|boolean
-name|equals
-parameter_list|(
-name|Object
-name|o
-parameter_list|)
-block|{
-if|if
-condition|(
-operator|!
-operator|(
-name|o
-operator|instanceof
-name|Author
-operator|)
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-name|Author
-name|a
-init|=
-operator|(
-name|Author
-operator|)
-name|o
-decl_stmt|;
-return|return
-name|EntryUtil
-operator|.
-name|equals
-argument_list|(
-name|firstPart
-argument_list|,
-name|a
-operator|.
-name|firstPart
-argument_list|)
-operator|&&
-name|EntryUtil
-operator|.
-name|equals
-argument_list|(
-name|firstAbbr
-argument_list|,
-name|a
-operator|.
-name|firstAbbr
-argument_list|)
-operator|&&
-name|EntryUtil
-operator|.
-name|equals
-argument_list|(
-name|vonPart
-argument_list|,
-name|a
-operator|.
-name|vonPart
-argument_list|)
-operator|&&
-name|EntryUtil
-operator|.
-name|equals
-argument_list|(
-name|lastPart
-argument_list|,
-name|a
-operator|.
-name|lastPart
-argument_list|)
-operator|&&
-name|EntryUtil
-operator|.
-name|equals
-argument_list|(
-name|jrPart
-argument_list|,
-name|a
-operator|.
-name|jrPart
-argument_list|)
-return|;
-block|}
 comment|/**          * Creates the Author object. If any part of the name is absent,<CODE>null</CODE>          * must be passed; otherwise other methods may return erroneous results.          *          * @param first     the first name of the author (may consist of several          *                  tokens, like "Charles Louis Xavier Joseph" in "Charles          *                  Louis Xavier Joseph de la Vall{\'e}e Poussin")          * @param firstabbr the abbreviated first name of the author (may consist of          *                  several tokens, like "C. L. X. J." in "Charles Louis          *                  Xavier Joseph de la Vall{\'e}e Poussin"). It is a          *                  responsibility of the caller to create a reasonable          *                  abbreviation of the first name.          * @param von       the von part of the author's name (may consist of several          *                  tokens, like "de la" in "Charles Louis Xavier Joseph de la          *                  Vall{\'e}e Poussin")          * @param last      the lats name of the author (may consist of several          *                  tokens, like "Vall{\'e}e Poussin" in "Charles Louis Xavier          *                  Joseph de la Vall{\'e}e Poussin")          * @param jr        the junior part of the author's name (may consist of          *                  several tokens, like "Jr. III" in "Smith, Jr. III, John")          */
 DECL|method|Author (String first, String firstabbr, String von, String last, String jr)
 specifier|public
@@ -3498,6 +3254,130 @@ argument_list|(
 name|jr
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|Objects
+operator|.
+name|hash
+argument_list|(
+name|firstAbbr
+argument_list|,
+name|firstPart
+argument_list|,
+name|jrPart
+argument_list|,
+name|lastPart
+argument_list|,
+name|vonPart
+argument_list|)
+return|;
+block|}
+comment|/**          * Compare this object with the given one.          *<p>          * Will return true iff the other object is an Author and all fields are identical on a string comparison.          */
+annotation|@
+name|Override
+DECL|method|equals (Object o)
+specifier|public
+name|boolean
+name|equals
+parameter_list|(
+name|Object
+name|o
+parameter_list|)
+block|{
+if|if
+condition|(
+name|this
+operator|==
+name|o
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+if|if
+condition|(
+name|o
+operator|instanceof
+name|Author
+condition|)
+block|{
+name|Author
+name|a
+init|=
+operator|(
+name|Author
+operator|)
+name|o
+decl_stmt|;
+return|return
+name|EntryUtil
+operator|.
+name|equals
+argument_list|(
+name|firstPart
+argument_list|,
+name|a
+operator|.
+name|firstPart
+argument_list|)
+operator|&&
+name|EntryUtil
+operator|.
+name|equals
+argument_list|(
+name|firstAbbr
+argument_list|,
+name|a
+operator|.
+name|firstAbbr
+argument_list|)
+operator|&&
+name|EntryUtil
+operator|.
+name|equals
+argument_list|(
+name|vonPart
+argument_list|,
+name|a
+operator|.
+name|vonPart
+argument_list|)
+operator|&&
+name|EntryUtil
+operator|.
+name|equals
+argument_list|(
+name|lastPart
+argument_list|,
+name|a
+operator|.
+name|lastPart
+argument_list|)
+operator|&&
+name|EntryUtil
+operator|.
+name|equals
+argument_list|(
+name|jrPart
+argument_list|,
+name|a
+operator|.
+name|jrPart
+argument_list|)
+return|;
+block|}
+return|return
+literal|false
+return|;
 block|}
 comment|/**          * @return true if the brackets in s are properly paired          */
 DECL|method|properBrackets (String s)
@@ -3574,6 +3454,8 @@ name|loop
 break|;
 block|}
 break|break;
+default|default:
+break|break;
 block|}
 name|i
 operator|++
@@ -3649,16 +3531,15 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|s
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|2
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 name|s
 operator|.
 name|startsWith
@@ -3727,15 +3608,12 @@ name|inner
 expr_stmt|;
 block|}
 block|}
-block|}
 name|b
 operator|.
 name|append
 argument_list|(
 name|s
 argument_list|)
-expr_stmt|;
-name|b
 operator|.
 name|append
 argument_list|(
@@ -3759,23 +3637,24 @@ expr_stmt|;
 comment|// now, all inner words are cleared
 comment|// case {word word word} remains
 comment|// as above, we have to be aware of {w}ord word wor{d} and {{w}ord word word}
-name|name
-operator|=
+name|String
+name|newName
+init|=
 name|b
 operator|.
 name|toString
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-name|name
+name|newName
 operator|.
 name|startsWith
 argument_list|(
 literal|"{"
 argument_list|)
 operator|&&
-name|name
+name|newName
 operator|.
 name|endsWith
 argument_list|(
@@ -3786,13 +3665,13 @@ block|{
 name|String
 name|inner
 init|=
-name|name
+name|newName
 operator|.
 name|substring
 argument_list|(
 literal|1
 argument_list|,
-name|name
+name|newName
 operator|.
 name|length
 argument_list|()
@@ -3815,14 +3694,14 @@ block|}
 else|else
 block|{
 return|return
-name|name
+name|newName
 return|;
 block|}
 block|}
 else|else
 block|{
 return|return
-name|name
+name|newName
 return|;
 block|}
 block|}

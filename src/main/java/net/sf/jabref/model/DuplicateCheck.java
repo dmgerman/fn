@@ -854,7 +854,7 @@ name|auth1
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 name|s1
 argument_list|,
@@ -876,7 +876,7 @@ name|auth2
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameOnlyCommas
+name|fixAuthorLastNameOnlyCommas
 argument_list|(
 name|s2
 argument_list|,
@@ -1437,7 +1437,8 @@ name|String
 name|longer
 init|=
 name|s1
-decl_stmt|,
+decl_stmt|;
+name|String
 name|shorter
 init|=
 name|s2
@@ -1539,20 +1540,22 @@ name|String
 name|s2
 parameter_list|)
 block|{
-name|s1
-operator|=
+name|String
+name|s1LowerCase
+init|=
 name|s1
 operator|.
 name|toLowerCase
 argument_list|()
-expr_stmt|;
-name|s2
-operator|=
+decl_stmt|;
+name|String
+name|s2LowerCase
+init|=
 name|s2
 operator|.
 name|toLowerCase
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|int
 index|[]
 name|costs
@@ -1560,7 +1563,7 @@ init|=
 operator|new
 name|int
 index|[
-name|s2
+name|s2LowerCase
 operator|.
 name|length
 argument_list|()
@@ -1577,7 +1580,7 @@ literal|0
 init|;
 name|i
 operator|<=
-name|s1
+name|s1LowerCase
 operator|.
 name|length
 argument_list|()
@@ -1600,7 +1603,7 @@ literal|0
 init|;
 name|j
 operator|<=
-name|s2
+name|s2LowerCase
 operator|.
 name|length
 argument_list|()
@@ -1624,8 +1627,7 @@ operator|=
 name|j
 expr_stmt|;
 block|}
-else|else
-block|{
+elseif|else
 if|if
 condition|(
 name|j
@@ -1645,7 +1647,7 @@ index|]
 decl_stmt|;
 if|if
 condition|(
-name|s1
+name|s1LowerCase
 operator|.
 name|charAt
 argument_list|(
@@ -1654,7 +1656,7 @@ operator|-
 literal|1
 argument_list|)
 operator|!=
-name|s2
+name|s2LowerCase
 operator|.
 name|charAt
 argument_list|(
@@ -1703,7 +1705,6 @@ name|newValue
 expr_stmt|;
 block|}
 block|}
-block|}
 if|if
 condition|(
 name|i
@@ -1713,7 +1714,7 @@ condition|)
 block|{
 name|costs
 index|[
-name|s2
+name|s2LowerCase
 operator|.
 name|length
 argument_list|()
@@ -1729,17 +1730,17 @@ name|debug
 argument_list|(
 literal|"String 1: "
 operator|+
-name|s1
+name|s1LowerCase
 operator|+
 literal|" String 2: "
 operator|+
-name|s2
+name|s2LowerCase
 operator|+
 literal|" Distance: "
 operator|+
 name|costs
 index|[
-name|s2
+name|s2LowerCase
 operator|.
 name|length
 argument_list|()
@@ -1749,7 +1750,7 @@ expr_stmt|;
 return|return
 name|costs
 index|[
-name|s2
+name|s2LowerCase
 operator|.
 name|length
 argument_list|()

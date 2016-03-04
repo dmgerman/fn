@@ -1197,17 +1197,6 @@ block|{
 if|if
 condition|(
 name|o
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-if|if
-condition|(
-name|o
 operator|instanceof
 name|CitEntry
 condition|)
