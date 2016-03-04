@@ -256,6 +256,8 @@ throws|throws
 name|IOException
 block|{
 comment|// Our strategy is to look for the "%A *" line.
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -269,7 +271,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -315,6 +318,7 @@ literal|true
 return|;
 block|}
 block|}
+block|}
 return|return
 literal|false
 return|;
@@ -339,7 +343,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -357,6 +361,8 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -370,7 +376,8 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|str
 decl_stmt|;
@@ -400,7 +407,6 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
-comment|// if(str.equals("")) continue;
 if|if
 condition|(
 name|str
@@ -458,6 +464,7 @@ argument_list|(
 literal|'\n'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 index|[]
@@ -551,7 +558,6 @@ argument_list|(
 literal|"\n%"
 argument_list|)
 decl_stmt|;
-comment|//String lastPrefix = "";
 for|for
 control|(
 name|String
@@ -1037,7 +1043,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* if (Type.equals("inproceedings")) */
+comment|/* type = inproceedings */
 name|hm
 operator|.
 name|put
@@ -1338,7 +1344,6 @@ name|prefix
 argument_list|)
 condition|)
 block|{
-comment|//Util.pr(val);
 if|if
 condition|(
 name|val
@@ -1542,7 +1547,6 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
-comment|//if (hm.isEmpty())
 if|if
 condition|(
 operator|!

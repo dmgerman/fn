@@ -216,6 +216,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|BufferedReader
 name|in
 init|=
@@ -229,9 +231,10 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 comment|// This format is very similar to Inspec, so we have a two-fold strategy:
-comment|// If we see the flag signalling that it is an inspec file, return false.
+comment|// If we see the flag signaling that it is an Inspec file, return false.
 comment|// This flag should appear above the first entry and prevent us from
 comment|// accepting the Inspec format. Then we look for the title entry.
 name|String
@@ -267,7 +270,7 @@ block|{
 return|return
 literal|false
 return|;
-comment|// This is an inspec file, so return false.
+comment|// This is an Inspec file, so return false.
 block|}
 if|if
 condition|(
@@ -300,6 +303,7 @@ literal|true
 return|;
 block|}
 block|}
+block|}
 return|return
 literal|false
 return|;
@@ -324,7 +328,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|ArrayList
+name|List
 argument_list|<
 name|BibEntry
 argument_list|>
@@ -475,7 +479,6 @@ condition|)
 block|{
 continue|continue;
 block|}
-comment|//System.out.println("'"+entries[i]+"'");
 name|h
 operator|.
 name|clear
@@ -512,7 +515,6 @@ condition|)
 block|{
 continue|continue;
 block|}
-comment|//System.out.println(">"+fields[j]+"<");
 name|String
 name|f3
 init|=

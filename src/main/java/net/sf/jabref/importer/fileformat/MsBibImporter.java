@@ -194,7 +194,6 @@ return|;
 block|}
 return|return
 operator|(
-operator|(
 name|docin
 operator|==
 literal|null
@@ -212,7 +211,6 @@ name|contains
 argument_list|(
 literal|"Sources"
 argument_list|)
-operator|)
 return|;
 block|}
 comment|/**      * String used to identify this import filter on the command line.      * @return "msbib"      */
