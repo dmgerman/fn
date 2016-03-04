@@ -657,7 +657,7 @@ name|entry
 init|=
 name|jsonConverter
 operator|.
-name|BibJSONtoBibtex
+name|parseBibJSONtoBibtex
 argument_list|(
 name|bibJsonEntry
 argument_list|)

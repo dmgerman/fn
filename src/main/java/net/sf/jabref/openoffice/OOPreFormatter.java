@@ -132,8 +132,9 @@ block|{
 name|int
 name|i
 decl_stmt|;
-name|field
-operator|=
+name|String
+name|finalResult
+init|=
 name|field
 operator|.
 name|replaceAll
@@ -158,7 +159,7 @@ literal|"\\$([^\\$]*)\\$"
 argument_list|,
 literal|"\\{$1\\}"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// Replace $...$ with {...} to simplify conversion
 name|StringBuilder
 name|sb
@@ -193,7 +194,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|field
+name|finalResult
 operator|.
 name|length
 argument_list|()
@@ -204,7 +205,7 @@ control|)
 block|{
 name|c
 operator|=
-name|field
+name|finalResult
 operator|.
 name|charAt
 argument_list|(
@@ -423,7 +424,7 @@ condition|(
 name|i
 operator|>=
 operator|(
-name|field
+name|finalResult
 operator|.
 name|length
 argument_list|()
@@ -449,7 +450,7 @@ operator|++
 expr_stmt|;
 name|c
 operator|=
-name|field
+name|finalResult
 operator|.
 name|charAt
 argument_list|(
@@ -473,7 +474,7 @@ name|StringUtil
 operator|.
 name|getPart
 argument_list|(
-name|field
+name|finalResult
 argument_list|,
 name|i
 argument_list|,
@@ -496,7 +497,7 @@ else|else
 block|{
 name|combody
 operator|=
-name|field
+name|finalResult
 operator|.
 name|substring
 argument_list|(
@@ -557,7 +558,7 @@ operator|+
 literal|1
 operator|)
 operator|==
-name|field
+name|finalResult
 operator|.
 name|length
 argument_list|()
@@ -693,7 +694,7 @@ name|StringUtil
 operator|.
 name|getPart
 argument_list|(
-name|field
+name|finalResult
 argument_list|,
 name|i
 argument_list|,
@@ -760,7 +761,7 @@ name|StringUtil
 operator|.
 name|getPart
 argument_list|(
-name|field
+name|finalResult
 argument_list|,
 name|i
 argument_list|,

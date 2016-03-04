@@ -104,22 +104,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|logic
-operator|.
-name|labelpattern
-operator|.
-name|LabelPatternUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|model
 operator|.
 name|database
@@ -1696,10 +1680,10 @@ block|}
 comment|/**      * Test the [authN_M] pattern      */
 annotation|@
 name|Test
-DECL|method|authN_M ()
+DECL|method|authNM ()
 specifier|public
 name|void
-name|authN_M
+name|authNM
 parameter_list|()
 block|{
 name|assertEquals
@@ -1840,10 +1824,10 @@ name|NullPointerException
 operator|.
 name|class
 argument_list|)
-DECL|method|authN_MThrowsNPE ()
+DECL|method|authNMThrowsNPE ()
 specifier|public
 name|void
-name|authN_MThrowsNPE
+name|authNMThrowsNPE
 parameter_list|()
 block|{
 name|LabelPatternUtil
@@ -2746,7 +2730,6 @@ name|veryShortTitle
 parameter_list|()
 block|{
 comment|// veryShortTitle is getTitleWords with "1" as count
-specifier|final
 name|int
 name|count
 init|=
@@ -2875,7 +2858,6 @@ name|shortTitle
 parameter_list|()
 block|{
 comment|// veryShortTitle is getTitleWords with "3" as count
-specifier|final
 name|int
 name|count
 init|=
@@ -2996,10 +2978,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|keywordN_keywordsSeparatedBySpace ()
+DECL|method|keywordNKeywordsSeparatedBySpace ()
 specifier|public
 name|void
-name|keywordN_keywordsSeparatedBySpace
+name|keywordNKeywordsSeparatedBySpace
 parameter_list|()
 block|{
 name|BibEntry
@@ -3078,10 +3060,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|keywordsN_keywordsSeparatedBySpace ()
+DECL|method|keywordsNKeywordsSeparatedBySpace ()
 specifier|public
 name|void
-name|keywordsN_keywordsSeparatedBySpace
+name|keywordsNKeywordsSeparatedBySpace
 parameter_list|()
 block|{
 name|BibEntry

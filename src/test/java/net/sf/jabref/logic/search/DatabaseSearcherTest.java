@@ -93,10 +93,10 @@ argument_list|)
 decl_stmt|;
 annotation|@
 name|Test
-DECL|method|testGetDatabaseFromMatches_emptyDatabase ()
+DECL|method|testGetDatabaseFromMatchesEmptyDatabase ()
 specifier|public
 name|void
-name|testGetDatabaseFromMatches_emptyDatabase
+name|testGetDatabaseFromMatchesEmptyDatabase
 parameter_list|()
 throws|throws
 name|Exception
@@ -144,10 +144,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetDatabaseFromMatches_emptyDatabaseInvalidSearchExpression ()
+DECL|method|testGetDatabaseFromMatchesEmptyDatabaseInvalidSearchExpression ()
 specifier|public
 name|void
-name|testGetDatabaseFromMatches_emptyDatabaseInvalidSearchExpression
+name|testGetDatabaseFromMatchesEmptyDatabaseInvalidSearchExpression
 parameter_list|()
 throws|throws
 name|Exception
@@ -187,10 +187,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetDatabaseFromMatches_databaseWithEmptyEntries ()
+DECL|method|testGetDatabaseFromMatchesDatabaseWithEmptyEntries ()
 specifier|public
 name|void
-name|testGetDatabaseFromMatches_databaseWithEmptyEntries
+name|testGetDatabaseFromMatchesDatabaseWithEmptyEntries
 parameter_list|()
 throws|throws
 name|Exception
@@ -247,10 +247,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetDatabaseFromMatches_databaseWithEntries ()
+DECL|method|testGetDatabaseFromMatchesDatabaseWithEntries ()
 specifier|public
 name|void
-name|testGetDatabaseFromMatches_databaseWithEntries
+name|testGetDatabaseFromMatchesDatabaseWithEntries
 parameter_list|()
 throws|throws
 name|Exception
@@ -328,10 +328,10 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|testGetDatabaseFromMatches_databaseWithEntriesWithCorrectMatch ()
+DECL|method|testGetDatabaseFromMatchesDatabaseWithEntriesWithCorrectMatch ()
 specifier|public
 name|void
-name|testGetDatabaseFromMatches_databaseWithEntriesWithCorrectMatch
+name|testGetDatabaseFromMatchesDatabaseWithEntriesWithCorrectMatch
 parameter_list|()
 throws|throws
 name|Exception

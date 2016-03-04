@@ -686,7 +686,7 @@ name|entry
 init|=
 name|JSONEntryParser
 operator|.
-name|SpringerJSONtoBibtex
+name|parseSpringerJSONtoBibtex
 argument_list|(
 name|springerJsonEntry
 argument_list|)
