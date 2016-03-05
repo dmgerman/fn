@@ -304,6 +304,11 @@ name|valueDelimiterEndOfValue
 argument_list|)
 return|;
 block|}
+name|String
+name|result
+init|=
+name|content
+decl_stmt|;
 name|boolean
 name|shouldWrapWithBraces
 init|=
@@ -329,13 +334,13 @@ condition|(
 name|shouldWrapWithBraces
 condition|)
 block|{
-name|content
+name|result
 operator|=
 name|StringUtil
 operator|.
 name|putBracesAroundCapitals
 argument_list|(
-name|content
+name|result
 argument_list|)
 expr_stmt|;
 block|}
@@ -344,7 +349,7 @@ name|boolean
 name|shouldNormalizeNewlines
 init|=
 operator|!
-name|content
+name|result
 operator|.
 name|contains
 argument_list|(
@@ -353,7 +358,7 @@ operator|.
 name|NEWLINE
 argument_list|)
 operator|&&
-name|content
+name|result
 operator|.
 name|contains
 argument_list|(
@@ -367,9 +372,9 @@ condition|)
 block|{
 comment|// if we don't have real new lines, but pseudo newlines, we replace them
 comment|// On Win 8.1, this is always true for multiline fields
-name|content
+name|result
 operator|=
-name|content
+name|result
 operator|.
 name|replace
 argument_list|(
@@ -400,7 +405,7 @@ block|{
 return|return
 name|formatWithoutResolvingStrings
 argument_list|(
-name|content
+name|result
 argument_list|,
 name|fieldName
 argument_list|)
@@ -409,7 +414,7 @@ block|}
 return|return
 name|formatAndResolveStrings
 argument_list|(
-name|content
+name|result
 argument_list|,
 name|fieldName
 argument_list|)
