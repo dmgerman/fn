@@ -184,10 +184,6 @@ name|LabelPatternUtil
 import|;
 end_import
 
-begin_comment
-comment|/**  *<p>Title:</p>  *<p>Description:</p>  *<p>Copyright: Copyright (c) 2003</p>  *<p>Company:</p>  * @author not attributable  * @version 1.0  */
-end_comment
-
 begin_class
 DECL|class|GenFieldsCustomizer
 specifier|public
@@ -328,13 +324,12 @@ operator|new
 name|JButton
 argument_list|()
 decl_stmt|;
-DECL|method|GenFieldsCustomizer (JabRefFrame frame )
+DECL|method|GenFieldsCustomizer (JabRefFrame frame)
 specifier|public
 name|GenFieldsCustomizer
 parameter_list|(
 name|JabRefFrame
 name|frame
-comment|/*, EntryCustomizationDialog diag*/
 parameter_list|)
 block|{
 name|super
