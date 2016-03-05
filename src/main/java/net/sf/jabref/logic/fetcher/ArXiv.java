@@ -458,13 +458,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|doiTag
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|)
+operator|&&
 name|doiTag
 operator|.
 name|getTextContent
@@ -594,7 +593,6 @@ argument_list|(
 literal|"Fulltext PDF found @ arXiv."
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

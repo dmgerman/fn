@@ -270,6 +270,7 @@ name|toFileDir
 decl_stmt|;
 DECL|field|MOVE_RENAME
 specifier|private
+specifier|static
 specifier|final
 name|String
 name|MOVE_RENAME

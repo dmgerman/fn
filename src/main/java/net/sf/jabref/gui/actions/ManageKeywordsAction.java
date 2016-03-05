@@ -1836,10 +1836,7 @@ name|SpecialFieldsUtils
 operator|.
 name|keywordSyncEnabled
 argument_list|()
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 name|keywordsToAdd
 operator|.
@@ -2120,7 +2117,6 @@ name|getKeyWords
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 name|List

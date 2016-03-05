@@ -1486,7 +1486,28 @@ operator|>
 literal|1
 condition|)
 block|{
-comment|// TODO: message: can only rename a single field
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|diag
+argument_list|,
+name|Localization
+operator|.
+name|lang
+argument_list|(
+literal|"You can only rename one field at a time"
+argument_list|)
+argument_list|,
+literal|""
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+return|return;
+comment|// Do not close the dialog.
 block|}
 else|else
 block|{
