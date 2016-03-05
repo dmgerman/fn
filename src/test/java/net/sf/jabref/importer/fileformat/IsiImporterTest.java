@@ -169,6 +169,18 @@ class|class
 name|IsiImporterTest
 block|{
 annotation|@
+name|Rule
+DECL|field|thrown
+specifier|public
+name|ExpectedException
+name|thrown
+init|=
+name|ExpectedException
+operator|.
+name|none
+argument_list|()
+decl_stmt|;
+annotation|@
 name|BeforeClass
 DECL|method|setUp ()
 specifier|public
@@ -187,18 +199,6 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Rule
-DECL|field|thrown
-specifier|public
-name|ExpectedException
-name|thrown
-init|=
-name|ExpectedException
-operator|.
-name|none
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Test
 DECL|method|testImportEntriesException ()

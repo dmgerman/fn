@@ -207,6 +207,17 @@ class|class
 name|IntegrityCheckTest
 block|{
 annotation|@
+name|Rule
+DECL|field|testFolder
+specifier|public
+name|TemporaryFolder
+name|testFolder
+init|=
+operator|new
+name|TemporaryFolder
+argument_list|()
+decl_stmt|;
+annotation|@
 name|BeforeClass
 DECL|method|setUp ()
 specifier|public
@@ -898,17 +909,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Rule
-DECL|field|testFolder
-specifier|public
-name|TemporaryFolder
-name|testFolder
-init|=
-operator|new
-name|TemporaryFolder
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Test
 DECL|method|fileCheckFindsFilesRelativeToBibFile ()
