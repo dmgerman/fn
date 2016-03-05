@@ -185,7 +185,12 @@ name|panel
 operator|.
 name|output
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Abbreviating..."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -239,7 +244,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Abbreviate journal names"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|int

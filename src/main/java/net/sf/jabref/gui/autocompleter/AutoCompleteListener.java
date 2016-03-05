@@ -1434,7 +1434,6 @@ name|getCaretPosition
 argument_list|()
 decl_stmt|;
 comment|//comp.setCaretPosition(cp+1-toSetIn.);
-comment|//System.out.println(cp-toSetIn.length()+" - "+cp);
 name|comp
 operator|.
 name|select
@@ -1471,8 +1470,6 @@ operator|.
 name|getCaretPosition
 argument_list|()
 expr_stmt|;
-comment|//System.out.println("Added char: '"+toSetIn+"'");
-comment|//System.out.println("LastBeginning: '"+lastBeginning+"'");
 name|lastCompletions
 operator|=
 name|findCompletions
@@ -1512,7 +1509,6 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("Completion["+i+"] = "+lastCompletion);
 if|if
 condition|(
 name|lastCompletion
@@ -1530,7 +1526,6 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-comment|//System.out.println("Index now: "+lastShownCompletion);
 if|if
 condition|(
 name|toSetIn

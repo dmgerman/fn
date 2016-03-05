@@ -806,7 +806,12 @@ name|JabRefFrame
 operator|.
 name|subMenu
 argument_list|(
+name|Localization
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Mark specific color"
+argument_list|)
 argument_list|)
 decl_stmt|;
 for|for

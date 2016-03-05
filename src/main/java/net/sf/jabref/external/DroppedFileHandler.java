@@ -1914,7 +1914,12 @@ name|renameToTextBox
 operator|.
 name|setText
 argument_list|(
+name|Localization
+operator|.
+name|lang
+argument_list|(
 literal|"Multiple entries"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
