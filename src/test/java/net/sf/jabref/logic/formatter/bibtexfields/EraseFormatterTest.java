@@ -46,16 +46,18 @@ name|EraseFormatterTest
 block|{
 annotation|@
 name|Test
-DECL|method|formatReturnsNullForEmptyString ()
+DECL|method|formatReturnsEmptyForEmptyString ()
 specifier|public
 name|void
-name|formatReturnsNullForEmptyString
+name|formatReturnsEmptyForEmptyString
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assertNull
+name|assertEquals
 argument_list|(
+literal|""
+argument_list|,
 operator|new
 name|EraseFormatter
 argument_list|()
@@ -69,16 +71,18 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-DECL|method|formatReturnsNullForSomeString ()
+DECL|method|formatReturnsEmptyForSomeString ()
 specifier|public
 name|void
-name|formatReturnsNullForSomeString
+name|formatReturnsEmptyForSomeString
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assertNull
+name|assertEquals
 argument_list|(
+literal|""
+argument_list|,
 operator|new
 name|EraseFormatter
 argument_list|()

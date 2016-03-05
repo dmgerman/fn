@@ -195,6 +195,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * Runs the formatter on the specified field in the given entry.      *      * If the formatter returns an empty string, then the field is removed.      * @param field the field on which to run the formatter      * @param entry the entry to be cleaned up      * @return a list of changes of the entry      */
 DECL|method|cleanupSingleField (String field, BibEntry entry)
 specifier|private
 name|List
@@ -272,8 +273,9 @@ block|{
 if|if
 condition|(
 name|newValue
-operator|==
-literal|null
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|entry

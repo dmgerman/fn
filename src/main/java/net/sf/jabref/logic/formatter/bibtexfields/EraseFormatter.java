@@ -32,6 +32,16 @@ name|Formatter
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
 begin_class
 DECL|class|EraseFormatter
 specifier|public
@@ -75,8 +85,15 @@ name|String
 name|oldString
 parameter_list|)
 block|{
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|oldString
+argument_list|)
+expr_stmt|;
 return|return
-literal|null
+literal|""
 return|;
 block|}
 block|}

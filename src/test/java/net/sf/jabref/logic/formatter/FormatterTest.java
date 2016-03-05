@@ -541,8 +541,15 @@ operator|new
 name|RemoveBracesFormatter
 argument_list|()
 block|}
-comment|// The EraseFormatter is special since it always returns null to indicate that the field should be deleted.
-comment|// new Object[]{new EraseFormatter()}
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
+operator|new
+name|EraseFormatter
+argument_list|()
+block|}
 argument_list|)
 return|;
 block|}
