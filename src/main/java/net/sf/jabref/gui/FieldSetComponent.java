@@ -1335,22 +1335,23 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * This method is called when a new field should be added to the list. Performs validation of the      * field.      */
-DECL|method|addField (String s)
+DECL|method|addField (String str)
 specifier|protected
 name|void
 name|addField
 parameter_list|(
 name|String
-name|s
+name|str
 parameter_list|)
 block|{
+name|String
 name|s
-operator|=
-name|s
+init|=
+name|str
 operator|.
 name|trim
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|forceLowerCase

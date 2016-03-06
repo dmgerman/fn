@@ -3020,8 +3020,9 @@ return|return
 literal|false
 return|;
 block|}
-name|toFile
-operator|=
+name|String
+name|destinationFileName
+init|=
 operator|new
 name|File
 argument_list|(
@@ -3030,7 +3031,7 @@ argument_list|)
 operator|.
 name|getName
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|File
 name|destFile
 init|=
@@ -3051,7 +3052,7 @@ argument_list|(
 literal|"file.separator"
 argument_list|)
 operator|+
-name|toFile
+name|destinationFileName
 argument_list|)
 decl_stmt|;
 if|if

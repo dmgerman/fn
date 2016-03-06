@@ -6064,7 +6064,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-comment|//defaults.put("oooWarning", Boolean.TRUE);
 name|updateSpecialFieldHandling
 argument_list|()
 expr_stmt|;
@@ -6966,11 +6965,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|value
 operator|==
 literal|null
-operator|)
 condition|)
 block|{
 name|remove
@@ -8320,13 +8317,18 @@ name|int
 name|number
 parameter_list|)
 block|{
+name|int
+name|n
+init|=
+name|number
+decl_stmt|;
 while|while
 condition|(
 name|get
 argument_list|(
 name|prefix
 operator|+
-name|number
+name|n
 argument_list|)
 operator|!=
 literal|null
@@ -8336,10 +8338,10 @@ name|remove
 argument_list|(
 name|prefix
 operator|+
-name|number
+name|n
 argument_list|)
 expr_stmt|;
-name|number
+name|n
 operator|++
 expr_stmt|;
 block|}

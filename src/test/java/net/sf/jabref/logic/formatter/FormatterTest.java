@@ -181,6 +181,26 @@ specifier|public
 class|class
 name|FormatterTest
 block|{
+DECL|field|formatter
+specifier|public
+name|Formatter
+name|formatter
+decl_stmt|;
+DECL|method|FormatterTest (Formatter formatter)
+specifier|public
+name|FormatterTest
+parameter_list|(
+name|Formatter
+name|formatter
+parameter_list|)
+block|{
+name|this
+operator|.
+name|formatter
+operator|=
+name|formatter
+expr_stmt|;
+block|}
 annotation|@
 name|BeforeClass
 DECL|method|setUp ()
@@ -333,26 +353,6 @@ argument_list|(
 literal|"string"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-DECL|field|formatter
-specifier|public
-name|Formatter
-name|formatter
-decl_stmt|;
-DECL|method|FormatterTest (Formatter formatter)
-specifier|public
-name|FormatterTest
-parameter_list|(
-name|Formatter
-name|formatter
-parameter_list|)
-block|{
-name|this
-operator|.
-name|formatter
-operator|=
-name|formatter
 expr_stmt|;
 block|}
 annotation|@
